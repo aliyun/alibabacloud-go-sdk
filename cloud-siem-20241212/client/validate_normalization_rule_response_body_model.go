@@ -16,7 +16,7 @@ type iValidateNormalizationRuleResponseBody interface {
 }
 
 type ValidateNormalizationRuleResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *ValidateNormalizationRuleResponseBody) Validate() error {
 }
 
 type ValidateNormalizationRuleResponseBodyValidateResult struct {
-	// The field name.
+	// The name of the field.
 	//
 	// example:
 	//
 	// host
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The field value.
+	// The field information.
 	//
 	// example:
 	//
@@ -94,23 +94,27 @@ type ValidateNormalizationRuleResponseBodyValidateResult struct {
 	//
 	// - OperationDenied.TheValueIsRequired: A required parameter is empty.
 	//
-	// - OperationDenied.TheValueIsNull: The parameter value is empty.
+	// - OperationDenied.TheValueIsNull: The parameter value is null.
 	//
-	// - OperationDenied.TheEnumValueNotSupport: The field value is not within the valid enumeration.
+	// - OperationDenied.TheEnumValueNotSupport: The field value is not within the valid enum values.
 	//
-	// - OperationDenied.TheValueLessThanMin: The field value is less than the minimum value.
+	// - OperationDenied.TheValueLessThanMin: The field value is less than the specified minimum value.
 	//
-	// - OperationDenied.TheValueMoreThanMax: The field value is greater than the maximum value.
+	// - OperationDenied.TheValueMoreThanMax: The field value is greater than the specified maximum value.
 	//
-	// - OperationDenied.TheValueNotMatchRegularExpression: The field value does not match the regular expression.
+	// - OperationDenied.TheValueNotMatchRegularExpression: The field value fails the regular expression match.
 	//
-	// - success: The validation passed.
+	// - success: The validation is passed.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The source of the normalized field. Valid values: \\`preset\\` (built-in) and \\`custom\\`.
+	// The source of the normalized field. Valid values:
+	//
+	// - preset: Built-in.
+	//
+	// - custom: Custom.
 	//
 	// example:
 	//
@@ -122,39 +126,39 @@ type ValidateNormalizationRuleResponseBodyValidateResult struct {
 	//
 	// host
 	NormalizationFieldName *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
-	// Indicates whether the normalized field is required.
+	// Specifies whether the normalized field is required.
 	//
 	// example:
 	//
 	// true
 	NormalizationFieldRequired *bool `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
-	// Indicates whether the name of the normalized field is a built-in field name.
+	// Specifies whether the normalized field name is built into the system.
 	NormalizationFieldReserved *bool `json:"NormalizationFieldReserved,omitempty" xml:"NormalizationFieldReserved,omitempty"`
-	// The type of the normalized field. Supported types: \\`text\\`, \\`long\\`, \\`double\\`, and \\`json\\`.
+	// The type of the normalized field. Valid values: text, long, double, and json.
 	//
 	// example:
 	//
 	// text
 	NormalizationFieldType *string `json:"NormalizationFieldType,omitempty" xml:"NormalizationFieldType,omitempty"`
-	// The reason why the validation of the normalized field failed.
+	// The reason why the normalized field fails the validation.
 	//
 	// example:
 	//
 	// OperationDenied.TheValueIsRequired
 	NormalizationFieldValidationReason *string `json:"NormalizationFieldValidationReason,omitempty" xml:"NormalizationFieldValidationReason,omitempty"`
-	// The validation status of the normalized field. Valid values: \\`pass\\` and \\`fail\\`.
+	// The validation status of the normalized field. Valid values: pass and fail.
 	//
 	// example:
 	//
 	// pass
 	NormalizationFieldValidationStatus *string `json:"NormalizationFieldValidationStatus,omitempty" xml:"NormalizationFieldValidationStatus,omitempty"`
-	// The result of the validation. Valid values:
+	// The validation result. Valid values:
 	//
-	// - 1: The validation passed.
+	// - 1: The validation is passed.
 	//
 	// - 0: A warning is returned.
 	//
-	// - -1: The validation failed.
+	// - 1: The validation fails.
 	//
 	// example:
 	//

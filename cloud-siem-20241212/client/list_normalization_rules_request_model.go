@@ -52,6 +52,8 @@ type ListNormalizationRulesRequest struct {
 	//
 	// - **en**: English.
 	//
+	// This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error (The specified Lang can not be empty.).
+	//
 	// example:
 	//
 	// zh
@@ -65,13 +67,13 @@ type ListNormalizationRulesRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If a next query is required, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The category ID of the normalization rule.
+	// The normalization rule category ID.
 	//
 	// example:
 	//
@@ -79,13 +81,13 @@ type ListNormalizationRulesRequest struct {
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
 	// The list of normalization rule IDs.
 	NormalizationRuleIds []*string `json:"NormalizationRuleIds,omitempty" xml:"NormalizationRuleIds,omitempty" type:"Repeated"`
-	// The name of the normalization rule.
+	// The normalization rule name.
 	//
 	// example:
 	//
 	// normalization_rule_Z57np
 	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
-	// The type of the normalization rule. Valid values:
+	// The normalization rule type. Valid values:
 	//
 	// - predefined: predefined normalization rule.
 	//
@@ -101,6 +103,8 @@ type ListNormalizationRulesRequest struct {
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// The security domain ID.
+	//
 	// example:
 	//
 	// NETWORK_AND_WEB_SECURITY
@@ -115,7 +119,7 @@ type ListNormalizationRulesRequest struct {
 	//
 	// - desc
 	//
-	// - asc.
+	// - asc
 	//
 	// example:
 	//
@@ -139,17 +143,17 @@ type ListNormalizationRulesRequest struct {
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region where the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The data management center of threat analysis. Specify the management center based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: the Chinese mainland.
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: outside China.
+	// - ap-southeast-1: Your assets reside outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member to which the administrator switches the view.
+	// The ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//

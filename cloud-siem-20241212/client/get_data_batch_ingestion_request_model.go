@@ -24,21 +24,23 @@ type GetDataBatchIngestionRequest struct {
 	//
 	// - **en**: English.
 	//
+	// Note: Although this parameter is marked as optional, it is actually required. If this parameter is not specified, the API returns a 400 error.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the Data Management Center for threat analysis is located. Select the region of the Management Center based on the region where your assets are located. Valid values:
+	// The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are in a region outside China.
+	// - ap-southeast-1: The assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of a member. An administrator can use this parameter to switch to the member\\"s perspective.
+	// The ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iUpdateDataSourceResponseBody interface {
 }
 
 type UpdateDataSourceResponseBody struct {
-	// The ID of the request.
+	// The request message ID.
 	//
 	// example:
 	//

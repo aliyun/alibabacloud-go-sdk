@@ -14,7 +14,7 @@ type iExecuteUpgradeResponseBody interface {
 }
 
 type ExecuteUpgradeResponseBody struct {
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 

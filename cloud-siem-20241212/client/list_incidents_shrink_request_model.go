@@ -63,9 +63,10 @@ type ListIncidentsShrinkRequest struct {
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
-	AlertUuid        *string   `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The list of detection rule IDs.
 	DetectionRuleIds []*string `json:"DetectionRuleIds,omitempty" xml:"DetectionRuleIds,omitempty" type:"Repeated"`
-	// The timestamp of the end time, in milliseconds (ms).
+	// The end time timestamp, in milliseconds (ms).
 	//
 	// example:
 	//
@@ -79,10 +80,20 @@ type ListIncidentsShrinkRequest struct {
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
 	// The event status. Valid values:
 	//
+	// - 0: Unhandled.
+	//
+	// - 1: Handling.
+	//
+	// - 5: Handling failed.
+	//
+	// - 10: Handled.
+	//
 	// example:
 	//
 	// 0
 	IncidentStatus *int32 `json:"IncidentStatus,omitempty" xml:"IncidentStatus,omitempty"`
+	// The list of event statuses.
+	//
 	// example:
 	//
 	// [0,1,5]
@@ -93,21 +104,27 @@ type ListIncidentsShrinkRequest struct {
 	//
 	// [{\\"data_source\\":[\\"sas\\"]}]
 	IncidentTags *string `json:"IncidentTags,omitempty" xml:"IncidentTags,omitempty"`
-	// The list of event UUIDs, separated by commas (,).
+	// The list of event UUIDs, separated by commas (half-width).
 	IncidentUuidsShrink *string `json:"IncidentUuids,omitempty" xml:"IncidentUuids,omitempty"`
-	// The language type of the response message. Valid values:
+	// The language of the response messages. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
+	// Note: This parameter is required in actual API calls. If it is not provided, the service returns a 400 error: "The specified Lang can not be empty." Pass the language code explicitly.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of entries to read in this request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token used to retrieve the next page of results. Leave this parameter empty for the first request or when there are no more pages. If more pages exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -115,15 +132,19 @@ type ListIncidentsShrinkRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The sort direction. Valid values:
 	//
+	// - **desc*	- (default): Descending order.
+	//
+	// - **asc**: Ascending order.
+	//
 	// example:
 	//
 	// desc
 	OrderDirection *string `json:"OrderDirection,omitempty" xml:"OrderDirection,omitempty"`
-	// The field by which the list is sorted.
+	// The field used to sort the list. Valid values:
 	//
-	// - GmtModified: event update time (default).
+	// - GmtModified: The event update time (default).
 	//
-	// - ThreatScore: threat score.
+	// - ThreatScore: The threat score.
 	//
 	// example:
 	//
@@ -131,7 +152,7 @@ type ListIncidentsShrinkRequest struct {
 	OrderFieldName *string `json:"OrderFieldName,omitempty" xml:"OrderFieldName,omitempty"`
 	// The UID of the account responsible for the event.
 	Owners []*string `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number for pagination.
 	//
 	// This parameter is required.
 	//
@@ -139,7 +160,7 @@ type ListIncidentsShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to display per page.
 	//
 	// This parameter is required.
 	//
@@ -147,7 +168,11 @@ type ListIncidentsShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the threat analysis data management center is located. Select the management center based on the region of your assets. Valid values:
+	// The location of the data management center for Cloud Threat Detection and Response (CTDR). Select the management center location based on the region where your assets reside. Valid values:
+	//
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
+	//
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
@@ -165,7 +190,7 @@ type ListIncidentsShrinkRequest struct {
 	//
 	// b920ed22259f5412099e97dfda96****
 	RelateEntityId *string `json:"RelateEntityId,omitempty" xml:"RelateEntityId,omitempty"`
-	// The user ID that the administrator switches to for viewing from another member\\"s perspective.
+	// The user ID that the administrator uses to switch to another member\\"s view.
 	//
 	// example:
 	//
@@ -173,17 +198,31 @@ type ListIncidentsShrinkRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
+	// - 0: The current Alibaba Cloud account view.
+	//
+	// - 1: The view of all accounts in the enterprise.
+	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The timestamp of the start time, in milliseconds (ms).
+	// The start time timestamp, in milliseconds (ms).
 	//
 	// example:
 	//
 	// 1690102943000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The threat level. Valid values:
+	//
+	// - 5: Critical.
+	//
+	// - 4: High.
+	//
+	// - 3: Medium.
+	//
+	// - 2: Low.
+	//
+	// - 1: Informational.
 	//
 	// example:
 	//

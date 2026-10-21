@@ -32,45 +32,49 @@ type DeleteLogStoreRequest struct {
 	//
 	// - **en**: English.
 	//
+	// > Note: This parameter is required in practice. If this parameter is not specified, the API returns a 400 error: "The specified Lang can not be empty."
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the Simple Log Service project.
+	// The Simple Log Service project name.
+	//
+	// > Note: This parameter is required in practice. If this parameter is not specified, the API returns a 400 error: "SLS log project name is empty."
 	//
 	// example:
 	//
 	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
-	// The ID of the log storage region.
+	// The log storage region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The name of the Simple Log Service Logstore.
+	// The Simple Log Service LogStore name.
 	//
 	// example:
 	//
 	// rds-logstore
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The user ID for data ingestion.
+	// The user ID for data access.
 	//
 	// example:
 	//
 	// 173326*******
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	// The region of the Management Hub. Select a region based on the location of your assets. Valid values:
+	// The region where the Cloud Threat Detection and Response (CTDR) data management center is located. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: if your assets are in the Chinese mainland.
+	// - cn-hangzhou: Your assets belong to the Chinese mainland.
 	//
-	// - ap-southeast-1: if your assets are outside China.
+	// - ap-southeast-1: Your assets belong to regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member whose perspective the administrator wants to switch to.
+	// The user ID that the administrator switches to when viewing from the perspective of another member.
 	//
 	// example:
 	//

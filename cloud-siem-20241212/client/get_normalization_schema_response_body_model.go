@@ -62,25 +62,27 @@ func (s *GetNormalizationSchemaResponseBody) Validate() error {
 }
 
 type GetNormalizationSchemaResponseBodyNormalizationSchema struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the normalization rule category.
+	// The ID of the normalized rule category.
 	//
 	// example:
 	//
 	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// The source of the field. Valid values: normalized: normalized field, native: native field.
+	//
 	// example:
 	//
 	// native
 	NormalizationFieldSource *string `json:"NormalizationFieldSource,omitempty" xml:"NormalizationFieldSource,omitempty"`
 	// The list of normalization fields.
 	NormalizationFields []*GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFields `json:"NormalizationFields,omitempty" xml:"NormalizationFields,omitempty" type:"Repeated"`
-	// The normalization schema description.
+	// The description of the normalization schema.
 	//
 	// example:
 	//
@@ -96,13 +98,13 @@ type GetNormalizationSchemaResponseBodyNormalizationSchema struct {
 	//
 	// preset
 	NormalizationSchemaFrom *string `json:"NormalizationSchemaFrom,omitempty" xml:"NormalizationSchemaFrom,omitempty"`
-	// The normalization schema ID.
+	// The ID of the normalization schema.
 	//
 	// example:
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-	// The normalization schema name.
+	// The name of the normalization schema.
 	//
 	// example:
 	//
@@ -110,7 +112,7 @@ type GetNormalizationSchemaResponseBodyNormalizationSchema struct {
 	NormalizationSchemaName *string `json:"NormalizationSchemaName,omitempty" xml:"NormalizationSchemaName,omitempty"`
 	// The list of normalization schema references.
 	NormalizationSchemaReferences []*GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationSchemaReferences `json:"NormalizationSchemaReferences,omitempty" xml:"NormalizationSchemaReferences,omitempty" type:"Repeated"`
-	// The normalization schema type. Valid values:
+	// The type of the normalization schema. Valid values:
 	//
 	// - log
 	//
@@ -122,16 +124,21 @@ type GetNormalizationSchemaResponseBodyNormalizationSchema struct {
 	//
 	// log
 	NormalizationSchemaType *string `json:"NormalizationSchemaType,omitempty" xml:"NormalizationSchemaType,omitempty"`
+	// The security domain ID.
+	//
 	// example:
 	//
 	// DATA_SECURITY
 	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
 	// alibaba_cloud_bastionhost
-	ProductId         *string   `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The list of recommended entities.
 	RecommendEntities []*string `json:"RecommendEntities,omitempty" xml:"RecommendEntities,omitempty" type:"Repeated"`
-	// The Simple Log Service LogStore.
+	// The Simple Log Service Logstore.
 	//
 	// example:
 	//
@@ -143,12 +150,14 @@ type GetNormalizationSchemaResponseBodyNormalizationSchema struct {
 	//
 	// network_activity
 	TargetStoreView *string `json:"TargetStoreView,omitempty" xml:"TargetStoreView,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The vendor ID.
+	//
 	// example:
 	//
 	// alibaba_cloud
@@ -339,25 +348,25 @@ func (s *GetNormalizationSchemaResponseBodyNormalizationSchema) Validate() error
 }
 
 type GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFields struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1736386610000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The normalization field description.
+	// The description of the normalization field.
 	//
 	// example:
 	//
 	// cloud_user
 	NormalizationFieldDescription *string `json:"NormalizationFieldDescription,omitempty" xml:"NormalizationFieldDescription,omitempty"`
-	// The normalization field example.
+	// The example of the normalization field.
 	//
 	// example:
 	//
 	// 173326*******
 	NormalizationFieldExample *string `json:"NormalizationFieldExample,omitempty" xml:"NormalizationFieldExample,omitempty"`
-	// The source of the standard field. Valid values:
+	// The source of the normalization field. Valid values:
 	//
 	// - preset: built-in.
 	//
@@ -367,33 +376,33 @@ type GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFields st
 	//
 	// preset
 	NormalizationFieldFrom *string `json:"NormalizationFieldFrom,omitempty" xml:"NormalizationFieldFrom,omitempty"`
-	// Indicates whether indexes are created for all keys of the JSON-type standard field.
+	// Specifies whether indexes are created for all keys of a JSON normalization field.
 	NormalizationFieldJsonIndexAll *bool `json:"NormalizationFieldJsonIndexAll,omitempty" xml:"NormalizationFieldJsonIndexAll,omitempty"`
-	// The key list of the JSON-type standard field.
+	// The list of keys for a JSON normalization field.
 	NormalizationFieldJsonKeys []*GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFieldsNormalizationFieldJsonKeys `json:"NormalizationFieldJsonKeys,omitempty" xml:"NormalizationFieldJsonKeys,omitempty" type:"Repeated"`
-	// The normalization field name.
+	// The name of the normalization field.
 	//
 	// example:
 	//
 	// cloud_user
 	NormalizationFieldName *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
-	// Indicates whether the field is required.
+	// Specifies whether the field is required.
 	NormalizationFieldRequired *bool `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
-	// Indicates whether the normalization field is required.
+	// Specifies whether the normalization field is required.
 	//
 	// example:
 	//
 	// true
 	NormalizationFieldRequirement *bool `json:"NormalizationFieldRequirement,omitempty" xml:"NormalizationFieldRequirement,omitempty"`
-	// Indicates whether the normalization field is reserved.
+	// Specifies whether the normalization field is reserved.
 	//
 	// example:
 	//
 	// true
 	NormalizationFieldReserved *bool `json:"NormalizationFieldReserved,omitempty" xml:"NormalizationFieldReserved,omitempty"`
-	// Indicates whether the standard field is tokenized.
+	// Specifies whether the normalization field is tokenized.
 	NormalizationFieldTokenize *bool `json:"NormalizationFieldTokenize,omitempty" xml:"NormalizationFieldTokenize,omitempty"`
-	// The normalization field type. Valid values:
+	// The type of the normalization field. Valid values:
 	//
 	// - varchar
 	//
@@ -405,7 +414,7 @@ type GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFields st
 	//
 	// varchar
 	NormalizationFieldType *string `json:"NormalizationFieldType,omitempty" xml:"NormalizationFieldType,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -552,49 +561,49 @@ func (s *GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationField
 }
 
 type GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFieldsNormalizationFieldJsonKeys struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1736386610000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The key description of the JSON-type standard field.
+	// The description of the key for a JSON normalization field.
 	//
 	// example:
 	//
 	// Cloud Provider Code
 	NormalizationFieldDescription *string `json:"NormalizationFieldDescription,omitempty" xml:"NormalizationFieldDescription,omitempty"`
-	// The key example of the JSON-type standard field.
+	// The example of the key for a JSON normalization field.
 	//
 	// example:
 	//
 	// alibaba_cloud
 	NormalizationFieldExample *string `json:"NormalizationFieldExample,omitempty" xml:"NormalizationFieldExample,omitempty"`
-	// The key source of the JSON-type standard field.
+	// The source of the key for a JSON normalization field.
 	//
 	// example:
 	//
 	// preset
 	NormalizationFieldFrom *string `json:"NormalizationFieldFrom,omitempty" xml:"NormalizationFieldFrom,omitempty"`
-	// The key name of the JSON-type standard field.
+	// The name of the key for a JSON normalization field.
 	//
 	// example:
 	//
 	// cloud_code
 	NormalizationFieldName *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
-	// Indicates whether the key of the JSON-type standard field is required.
+	// Specifies whether the key of a JSON normalization field is required.
 	NormalizationFieldRequired *bool `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
-	// Indicates whether the field is a system built-in standard field name.
+	// Specifies whether the normalization field name is a system built-in name.
 	NormalizationFieldReserved *bool `json:"NormalizationFieldReserved,omitempty" xml:"NormalizationFieldReserved,omitempty"`
-	// Indicates whether the key of the JSON-type standard field is tokenized.
+	// Specifies whether the key of a JSON normalization field is tokenized.
 	NormalizationFieldTokenize *bool `json:"NormalizationFieldTokenize,omitempty" xml:"NormalizationFieldTokenize,omitempty"`
-	// The key type of the JSON-type standard field.
+	// The type of the key for a JSON normalization field.
 	//
 	// example:
 	//
 	// varchar
 	NormalizationFieldType *string `json:"NormalizationFieldType,omitempty" xml:"NormalizationFieldType,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -705,7 +714,7 @@ func (s *GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationField
 }
 
 type GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationSchemaReferences struct {
-	// The normalization rule ID.
+	// The ID of the normalization rule.
 	//
 	// example:
 	//

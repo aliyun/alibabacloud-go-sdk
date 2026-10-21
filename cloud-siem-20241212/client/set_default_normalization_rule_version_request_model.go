@@ -22,7 +22,7 @@ type iSetDefaultNormalizationRuleVersionRequest interface {
 }
 
 type SetDefaultNormalizationRuleVersionRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -32,7 +32,7 @@ type SetDefaultNormalizationRuleVersionRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The normalization rule ID.
+	// The normalization rule ID. Only custom-type normalization rules are supported. This operation does not support preset normalization rules.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type SetDefaultNormalizationRuleVersionRequest struct {
 	//
 	// V1
 	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the data management center of the threat analysis feature is located. Select the region based on the region where your assets reside. Valid values:
 	//
 	// - cn-hangzhou: Your assets reside in the Chinese mainland.
 	//
@@ -54,7 +54,7 @@ type SetDefaultNormalizationRuleVersionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member to which the administrator switches the view.
+	// The user ID that the administrator uses to switch to the view of another member account.
 	//
 	// example:
 	//

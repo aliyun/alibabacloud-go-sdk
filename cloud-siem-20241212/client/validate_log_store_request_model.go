@@ -26,17 +26,19 @@ type iValidateLogStoreRequest interface {
 }
 
 type ValidateLogStoreRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
+	// This parameter is actually required. If it is not provided, the service returns a 400 error: "The specified Lang can not be empty." This parameter is actually required. If it is not provided, the service returns a 400 error.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the Simple Log Service project.
+	// The name of the Simple Log Service project. You can call GetDataStorage to obtain a valid project name.
 	//
 	// example:
 	//
@@ -48,29 +50,29 @@ type ValidateLogStoreRequest struct {
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The name of the Simple Log Service Logstore.
+	// The name of the Simple Log Service Logstore. This parameter is actually required. You can call GetDataStorage to obtain a valid Logstore name.
 	//
 	// example:
 	//
 	// ssglauncher-log
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The user ID for data access.
+	// The ID of the data ingestion user.
 	//
 	// example:
 	//
 	// 173326*******
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	// The region of the Data Management Center for threat analysis. Select a region based on the location of your assets. Valid values:
+	// The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: The Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Regions outside China.
+	// - ap-southeast-1: The assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of a member. This lets an administrator switch to the member\\"s perspective.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//

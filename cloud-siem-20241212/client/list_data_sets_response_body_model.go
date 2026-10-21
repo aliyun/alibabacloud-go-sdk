@@ -28,13 +28,13 @@ type iListDataSetsResponseBody interface {
 type ListDataSetsResponseBody struct {
 	// The list of datasets.
 	DataSets []*ListDataSetsResponseBodyDataSets `json:"DataSets,omitempty" xml:"DataSets,omitempty" type:"Repeated"`
-	// The maximum number of results to return for the request. This parameter is used for queries that use NextToken. Valid values: 1 to 100. Default value: 50.
+	// The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to start the next query.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListDataSetsResponseBody struct {
 	//
 	// 157CFBB5-B56F-566F-8991-B3C51799****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -151,25 +151,25 @@ func (s *ListDataSetsResponseBody) Validate() error {
 }
 
 type ListDataSetsResponseBodyDataSets struct {
-	// The time when the dataset was created.
+	// The creation time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1713787368000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the dataset.
+	// The dataset description.
 	//
 	// example:
 	//
 	// lmftest desc
 	DataSetDescription *string `json:"DataSetDescription,omitempty" xml:"DataSetDescription,omitempty"`
-	// The name of the unique key for the dataset.
+	// The unique key name of the dataset.
 	//
 	// example:
 	//
 	// ip
 	DataSetFieldKeyName *string `json:"DataSetFieldKeyName,omitempty" xml:"DataSetFieldKeyName,omitempty"`
-	// The names of the fields in the dataset.
+	// The field names of the dataset.
 	//
 	// example:
 	//
@@ -181,21 +181,21 @@ type ListDataSetsResponseBodyDataSets struct {
 	//
 	// cloudsiem-dataset/1358117679873357_174338773****.csv
 	DataSetFileName *string `json:"DataSetFileName,omitempty" xml:"DataSetFileName,omitempty"`
-	// The ID of the dataset.
+	// The dataset ID.
 	//
 	// example:
 	//
 	// dataset-t8ha6p7k61rmniqw****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	// The name of the dataset.
+	// The dataset name.
 	//
 	// example:
 	//
 	// lmftest
 	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
-	// The dataset references.
+	// The dataset reference data.
 	DataSetReferences []*ListDataSetsResponseBodyDataSetsDataSetReferences `json:"DataSetReferences,omitempty" xml:"DataSetReferences,omitempty" type:"Repeated"`
-	// The status of the dataset. Valid values:
+	// The dataset status. Valid values:
 	//
 	// - 0: deleted.
 	//
@@ -205,11 +205,11 @@ type ListDataSetsResponseBodyDataSets struct {
 	//
 	// 1
 	DataSetStatus *int32 `json:"DataSetStatus,omitempty" xml:"DataSetStatus,omitempty"`
-	// The type of the dataset. Valid values:
+	// The dataset type. Valid values:
 	//
-	// - custom: custom.
+	// - custom: custom dataset.
 	//
-	// - preset: predefined.
+	// - preset: predefined dataset.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type ListDataSetsResponseBodyDataSets struct {
 	DataSetType *string `json:"DataSetType,omitempty" xml:"DataSetType,omitempty"`
 	// The list of recognizers.
 	IpWhitelistRecognizers []*ListDataSetsResponseBodyDataSetsIpWhitelistRecognizers `json:"IpWhitelistRecognizers,omitempty" xml:"IpWhitelistRecognizers,omitempty" type:"Repeated"`
-	// The time when the dataset was updated.
+	// The update time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -364,25 +364,25 @@ func (s *ListDataSetsResponseBodyDataSets) Validate() error {
 }
 
 type ListDataSetsResponseBodyDataSetsDataSetReferences struct {
-	// The ID of the dataset.
+	// The dataset ID.
 	//
 	// example:
 	//
 	// dataset-nhcrmjpx1zsorlaq****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	// The ID of the rule or playbook that is associated with the dataset.
+	// The ID of the rule or playbook associated with the dataset.
 	//
 	// example:
 	//
 	// 456232
 	DataSetReferenceId *string `json:"DataSetReferenceId,omitempty" xml:"DataSetReferenceId,omitempty"`
-	// The name of the rule or playbook that is associated with the dataset.
+	// The name of the rule or playbook associated with the dataset.
 	//
 	// example:
 	//
 	// playbook_name
 	DataSetReferenceName *string `json:"DataSetReferenceName,omitempty" xml:"DataSetReferenceName,omitempty"`
-	// The type of the service that is associated with the dataset. Valid values:
+	// The type of service associated with the dataset. Valid values:
 	//
 	// - custom_rule: custom rule.
 	//
@@ -443,7 +443,7 @@ func (s *ListDataSetsResponseBodyDataSetsDataSetReferences) Validate() error {
 }
 
 type ListDataSetsResponseBodyDataSetsIpWhitelistRecognizers struct {
-	// The status of automatic detection. Valid values:
+	// The automatic recognition status. Valid values:
 	//
 	// - enabled: enabled.
 	//
@@ -453,41 +453,41 @@ type ListDataSetsResponseBodyDataSetsIpWhitelistRecognizers struct {
 	//
 	// enabled
 	AutoRecognizeStatus *string `json:"AutoRecognizeStatus,omitempty" xml:"AutoRecognizeStatus,omitempty"`
-	// The type of IP address that the recognizer detects. Valid values:
+	// The IP type identified by the recognizer. Valid values:
 	//
-	// - sas_vulnerability_scanner_ip: Security Center web vulnerability scanner IP address.
+	// - sas_vulnerability_scanner_ip: IP addresses of the Security Center vulnerability web scanner.
 	//
-	// - waf_back_source_ip: Web Application Firewall back-to-origin IP address.
+	// - waf_back_source_ip: back-to-origin IP addresses of Web Application Firewall (WAF).
 	//
-	// - ddos_back_source_ip: Anti-DDoS back-to-origin IP address.
+	// - ddos_back_source_ip: back-to-origin IP addresses of Anti-DDoS.
 	//
-	// - esa_back_source_ip: Edge Security Acceleration (ESA) back-to-origin node IP address.
+	// - esa_back_source_ip: back-to-origin node IP addresses of Edge Security Acceleration (ESA).
 	//
-	// - ecs_public_ip: Elastic Compute Service (ECS) public IP address.
+	// - ecs_public_ip: public IP addresses of Elastic Compute Service (ECS) instances.
 	//
-	// - slb_public_ip: Server Load Balancer (SLB) public IP address.
+	// - slb_public_ip: public IP addresses of Server Load Balancer (SLB) instances.
 	//
-	// - vpc_eip: Elastic IP Address (EIP).
+	// - vpc_eip: elastic IP addresses (EIPs).
 	//
-	// - cdn_back_source_ip: Alibaba Cloud CDN back-to-origin IP address.
+	// - cdn_back_source_ip: back-to-origin IP addresses of Content Delivery Network (CDN).
 	//
-	// - ga_back_source_ip: Global Accelerator (GA) back-to-origin IP address.
+	// - ga_back_source_ip: back-to-origin IP addresses of Global Accelerator (GA).
 	//
 	// example:
 	//
 	// waf_back_source_ip
 	IpWhitelistRecognizerType *string `json:"IpWhitelistRecognizerType,omitempty" xml:"IpWhitelistRecognizerType,omitempty"`
-	// The detection scope. Valid values:
+	// The recognition scope. Valid values:
 	//
 	// - current_account: current account only.
 	//
-	// - rd_accounts: multiple accounts.
+	// - rd_accounts: multi-account enabled.
 	//
 	// example:
 	//
 	// current_account
 	RecognizeScope *string `json:"RecognizeScope,omitempty" xml:"RecognizeScope,omitempty"`
-	// The time when the dataset was updated.
+	// The update time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

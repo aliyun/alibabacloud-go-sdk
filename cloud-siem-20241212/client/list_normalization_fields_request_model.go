@@ -34,11 +34,13 @@ type ListNormalizationFieldsRequest struct {
 	//
 	// - **en**: English.
 	//
+	// This parameter is required and cannot be omitted.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of entries to return.
 	//
 	// if can be null:
 	// true
@@ -53,31 +55,35 @@ type ListNormalizationFieldsRequest struct {
 	//
 	// category
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether a next query token exists. You do not need to specify this parameter for the first query or if no next query exists. If a next query exists, set this parameter to the NextToken value returned by the previous API call.
+	// Specifies whether a next query token exists. Leave this parameter empty for the first query or when no more results are available. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The field source.
+	//
 	// example:
 	//
 	// native
 	NormalizationFieldSource *string `json:"NormalizationFieldSource,omitempty" xml:"NormalizationFieldSource,omitempty"`
+	// The schema type.
+	//
 	// example:
 	//
 	// log
 	NormalizationSchemaType *string `json:"NormalizationSchemaType,omitempty" xml:"NormalizationSchemaType,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the threat analysis data management center resides. Specify the management center region based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	// - cn-hangzhou: The assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets reside outside China.
+	// - ap-southeast-1: The assets reside outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member to which the administrator switches the view.
+	// The user ID that the administrator switches to when viewing as another member.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iListNormalizationRuleVersionsResponseBody interface {
 }
 
 type ListNormalizationRuleVersionsResponseBody struct {
-	// The maximum number of entries returned on each page.
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no more results are available.
+	// The pagination token. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListNormalizationRuleVersionsResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The list of normalization rule versions.
 	NormalizationRuleVersions []*ListNormalizationRuleVersionsResponseBodyNormalizationRuleVersions `json:"NormalizationRuleVersions,omitempty" xml:"NormalizationRuleVersions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,31 +117,31 @@ func (s *ListNormalizationRuleVersionsResponseBody) Validate() error {
 }
 
 type ListNormalizationRuleVersionsResponseBodyNormalizationRuleVersions struct {
-	// The time when the version was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expression of the normalization rule.
+	// The normalization rule expression.
 	//
 	// example:
 	//
 	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
-	// The ID of the normalization rule.
+	// The normalization rule ID.
 	//
 	// example:
 	//
 	// nr-z0b2ssjteut85uoh9nzp
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The version of the normalization rule.
+	// The normalization rule version.
 	//
 	// example:
 	//
 	// V1
 	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
-	// The time when the version was updated.
+	// The update time.
 	//
 	// example:
 	//

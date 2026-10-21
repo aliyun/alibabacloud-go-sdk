@@ -34,7 +34,7 @@ type ListNormalizationRulesResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If a next query is required, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ func (s *ListNormalizationRulesResponseBody) Validate() error {
 }
 
 type ListNormalizationRulesResponseBodyNormalizationRules struct {
-	// The creation time.
+	// The creation time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -184,35 +184,43 @@ type ListNormalizationRulesResponseBodyNormalizationRules struct {
 	//
 	// enabled
 	ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
-	// The storage mode for extended fields. Valid values: flat (ingest as-is), reject (do not ingest), and pack (pack into the extend_content field).
+	// The extended field storage mode. Valid values:
+	//
+	// - flat: ingested as-is.
+	//
+	// - reject: not ingested.
+	//
+	// - pack: packed into the extend_content field.
 	//
 	// example:
 	//
 	// flat
 	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
-	// The category ID of the normalization rule.
+	// The normalization rule category ID.
 	//
 	// example:
 	//
 	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// The field source.
+	//
 	// example:
 	//
 	// normalized
 	NormalizationFieldSource *string `json:"NormalizationFieldSource,omitempty" xml:"NormalizationFieldSource,omitempty"`
-	// The description of the normalization rule.
+	// The normalization rule description.
 	//
 	// example:
 	//
 	// normalization_rule_Z57np
 	NormalizationRuleDescription *string `json:"NormalizationRuleDescription,omitempty" xml:"NormalizationRuleDescription,omitempty"`
-	// The expression of the normalization rule.
+	// The normalization rule expression.
 	//
 	// example:
 	//
 	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
-	// The format of the normalization rule.
+	// The normalization rule format.
 	//
 	// example:
 	//
@@ -224,33 +232,33 @@ type ListNormalizationRulesResponseBodyNormalizationRules struct {
 	//
 	// nr-z0b2ssjteut85uoh9nzp
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The mode of the normalization rule. Valid values:
+	// The normalization rule mode. Valid values:
 	//
 	// - both
 	//
 	// - scan
 	//
-	// - realtime.
+	// - realtime
 	//
 	// example:
 	//
 	// both
 	NormalizationRuleMode *string `json:"NormalizationRuleMode,omitempty" xml:"NormalizationRuleMode,omitempty"`
-	// The name of the normalization rule.
+	// The normalization rule name.
 	//
 	// example:
 	//
 	// normalization_rule_Z57np
 	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
-	// The list of associated ingestion policies.
+	// The list of associated collection policies.
 	NormalizationRuleReferences []*ListNormalizationRulesResponseBodyNormalizationRulesNormalizationRuleReferences `json:"NormalizationRuleReferences,omitempty" xml:"NormalizationRuleReferences,omitempty" type:"Repeated"`
-	// The status of the normalization rule.
+	// The normalization rule status.
 	//
 	// example:
 	//
 	// started
 	NormalizationRuleStatus *string `json:"NormalizationRuleStatus,omitempty" xml:"NormalizationRuleStatus,omitempty"`
-	// The type of the normalization rule. Valid values:
+	// The normalization rule type. Valid values:
 	//
 	// - predefined: predefined normalization rule.
 	//
@@ -272,6 +280,8 @@ type ListNormalizationRulesResponseBodyNormalizationRules struct {
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// The security domain ID.
+	//
 	// example:
 	//
 	// NETWORK_AND_WEB_SECURITY
@@ -282,7 +292,7 @@ type ListNormalizationRulesResponseBodyNormalizationRules struct {
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The update time.
+	// The update time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

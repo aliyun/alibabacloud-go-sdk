@@ -88,14 +88,15 @@ type iCreateDetectionRuleRequest interface {
 }
 
 type CreateDetectionRuleRequest struct {
-	// The alert ATT&CK technique.
+	// The ATT&CK information of the alert.
 	//
 	// example:
 	//
 	// Discovery
-	AlertAttCk        *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
+	AlertAttCk *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
+	// The MITRE ATT&CK technique mapping.
 	AlertAttCkMapping *string `json:"AlertAttCkMapping,omitempty" xml:"AlertAttCkMapping,omitempty"`
-	// The alert description. You can use $$ to reference query output fields.
+	// The alert description. Supports referencing query output fields using $$.
 	//
 	// example:
 	//
@@ -103,28 +104,29 @@ type CreateDetectionRuleRequest struct {
 	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
 	// The threat level of the alert. Valid values:
 	//
-	// - 5: Critical.
+	// - 5: critical.
 	//
-	// - 4: High.
+	// - 4: high.
 	//
-	// - 3: Medium.
+	// - 3: medium.
 	//
-	// - 2: Low.
+	// - 2: low.
 	//
-	// - 1: Informational.
+	// - 1: informational.
 	//
 	// example:
 	//
 	// 1
-	AlertLevel        *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The alert level mapping.
 	AlertLevelMapping *string `json:"AlertLevelMapping,omitempty" xml:"AlertLevelMapping,omitempty"`
-	// The alert name. You can use $$ to reference query output fields.
+	// The alert name. Supports referencing query output fields using $$.
 	//
 	// example:
 	//
 	// Detected high-frequency multi-type network attacks from $src_ip$
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// The ID of the detection rule alert template. Valid values:
+	// The ID of the alert template for the detection rule. Valid values:
 	//
 	// - ALERT_ACTIVITY: other alerts.
 	//
@@ -132,13 +134,13 @@ type CreateDetectionRuleRequest struct {
 	//
 	// - FIREWALL_ALERT_ACTIVITY: firewall alerts.
 	//
-	// - WAF_ALERT_ACTIVITY: web application firewall alerts.
+	// - WAF_ALERT_ACTIVITY: Web Application Firewall alerts.
 	//
 	// example:
 	//
 	// ALERT_ACTIVITY
 	AlertSchemaId *string `json:"AlertSchemaId,omitempty" xml:"AlertSchemaId,omitempty"`
-	// The alert tactic stage.
+	// The tactic phase of the alert.
 	//
 	// example:
 	//
@@ -150,7 +152,7 @@ type CreateDetectionRuleRequest struct {
 	//
 	// 10
 	AlertThresholdCount *int32 `json:"AlertThresholdCount,omitempty" xml:"AlertThresholdCount,omitempty"`
-	// The list of alert threshold fields, separated by commas (,).
+	// The list of alert threshold fields, separated by commas.
 	//
 	// example:
 	//
@@ -162,14 +164,15 @@ type CreateDetectionRuleRequest struct {
 	//
 	// 5m
 	AlertThresholdPeriod *string `json:"AlertThresholdPeriod,omitempty" xml:"AlertThresholdPeriod,omitempty"`
-	// The Alarm Metric of the alerting rule.
+	// The alert type.
 	//
 	// example:
 	//
 	// WebShell
-	AlertType        *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The alert type mapping.
 	AlertTypeMapping *string `json:"AlertTypeMapping,omitempty" xml:"AlertTypeMapping,omitempty"`
-	// The content of the detection rule expression.
+	// The expression content of the detection rule.
 	//
 	// example:
 	//
@@ -201,7 +204,7 @@ type CreateDetectionRuleRequest struct {
 	//
 	// )
 	DetectionExpressionContent *string `json:"DetectionExpressionContent,omitempty" xml:"DetectionExpressionContent,omitempty"`
-	// The type of the detection rule expression. Valid values:
+	// The expression type of the detection rule. Valid values:
 	//
 	// - sql: SQL.
 	//
@@ -253,7 +256,8 @@ type CreateDetectionRuleRequest struct {
 	//
 	// custom
 	DetectionRuleType *string `json:"DetectionRuleType,omitempty" xml:"DetectionRuleType,omitempty"`
-	DetectionRules    *string `json:"DetectionRules,omitempty" xml:"DetectionRules,omitempty"`
+	// The list of detection rule conditions.
+	DetectionRules *string `json:"DetectionRules,omitempty" xml:"DetectionRules,omitempty"`
 	// The entity mapping configuration.
 	//
 	// example:
@@ -268,25 +272,27 @@ type CreateDetectionRuleRequest struct {
 	IncidentAggregationExpression *string `json:"IncidentAggregationExpression,omitempty" xml:"IncidentAggregationExpression,omitempty"`
 	// The event aggregation type. Valid values:
 	//
-	// - none: No event is generated.
+	// - none: no event is generated.
 	//
-	// - graph_compute: Graph computing. This value is supported by predefined rules.
+	// - graph_compute: graph computing (supported by predefined rules).
 	//
-	// - expert: Expert rule.
+	// - expert: expert rule.
 	//
-	// - passthrough: Alerting pass-through (one-to-one).
+	// - passthrough: alert passthrough (one-to-one).
 	//
-	// - window: Same-type aggregation (window).
+	// - window: same-type aggregation (window).
 	//
 	// example:
 	//
 	// window
 	IncidentAggregationType *string `json:"IncidentAggregationType,omitempty" xml:"IncidentAggregationType,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
+	//
+	// Note: This parameter is required in actual API calls. If it is not provided, the service returns a 400 error: "The specified Lang can not be empty." Pass the language code explicitly.
 	//
 	// example:
 	//
@@ -304,7 +310,7 @@ type CreateDetectionRuleRequest struct {
 	//
 	// API_RISK_ACTIVITY
 	LogSchemaId *string `json:"LogSchemaId,omitempty" xml:"LogSchemaId,omitempty"`
-	// The custom parameters of the playbook.
+	// The user-defined parameters of the playbook.
 	//
 	// example:
 	//
@@ -324,41 +330,41 @@ type CreateDetectionRuleRequest struct {
 	//
 	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets reside outside the Chinese mainland.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member to which the administrator switches the view.
+	// The user ID that the administrator switches to in order to view another member\\"s perspective.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The scheduling start time. The value is a 13-digit UNIX timestamp.
+	// The scheduling start time, expressed as a 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1733269771123
 	ScheduleBeginTime *int64 `json:"ScheduleBeginTime,omitempty" xml:"ScheduleBeginTime,omitempty"`
-	// The scheduling cron expression. This parameter is required when ScheduleType is set to cron.
+	// The scheduling cron expression. Required when ScheduleType is set to cron.
 	//
 	// example:
 	//
 	// 0/5 	- 	- 	- *
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
-	// The maximum number of retries upon timeout. Valid values: 1 to 100.
+	// The maximum number of retries on timeout. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 1
 	ScheduleMaxRetries *int32 `json:"ScheduleMaxRetries,omitempty" xml:"ScheduleMaxRetries,omitempty"`
-	// The maximum timeout period, in seconds. Valid values: 60 to 1800.
+	// The maximum timeout duration, in seconds. Valid values: 60 to 1800.
 	//
 	// example:
 	//

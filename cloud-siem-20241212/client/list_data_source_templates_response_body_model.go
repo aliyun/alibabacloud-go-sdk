@@ -100,23 +100,23 @@ func (s *ListDataSourceTemplatesResponseBody) Validate() error {
 }
 
 type ListDataSourceTemplatesResponseBodyDataSourceTemplates struct {
-	// Indicates whether to automatically discover new users. Valid values:
+	// Indicates whether automatic discovery of new users is enabled. Valid values:
 	//
-	// - enabled: enabled.
+	// - enabled: Enabled.
 	//
-	// - disabled: disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	AutoScanNew *string `json:"AutoScanNew,omitempty" xml:"AutoScanNew,omitempty"`
-	// The time when the template was created.
+	// The creation time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The source of the data. Valid values:
+	// The data source origin. Valid values:
 	//
 	// - center
 	//
@@ -126,7 +126,7 @@ type ListDataSourceTemplatesResponseBodyDataSourceTemplates struct {
 	//
 	// custom
 	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
-	// Indicates whether to automatically discover new data sources.
+	// Indicates whether automatic discovery of new data sources is enabled.
 	//
 	// example:
 	//
@@ -138,19 +138,19 @@ type ListDataSourceTemplatesResponseBodyDataSourceTemplates struct {
 	//
 	// alibaba_cloud_actiontrail_event_ingestion
 	DataSourceRecognizer *string `json:"DataSourceRecognizer,omitempty" xml:"DataSourceRecognizer,omitempty"`
-	// The ID of the data source template.
+	// The data source template ID.
 	//
 	// example:
 	//
 	// alibaba_cloud_actiontrail_event_ingestion
 	DataSourceTemplateId *string `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
-	// The name of the data source template.
+	// The data source template name.
 	//
 	// example:
 	//
 	// alibaba_cloud_actiontrail_event_ingestion
 	DataSourceTemplateName *string `json:"DataSourceTemplateName,omitempty" xml:"DataSourceTemplateName,omitempty"`
-	// The rule for matching the name of the Simple Log Service project.
+	// The matching rule for the Simple Log Service project name.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ListDataSourceTemplatesResponseBodyDataSourceTemplates struct {
 	LogProjectPattern *string `json:"LogProjectPattern,omitempty" xml:"LogProjectPattern,omitempty"`
 	// The list of log storage region IDs.
 	LogRegionIds []*string `json:"LogRegionIds,omitempty" xml:"LogRegionIds,omitempty" type:"Repeated"`
-	// The rule for matching the name of the Simple Log Service Logstore.
+	// The matching rule for the Simple Log Service Logstore name.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type ListDataSourceTemplatesResponseBodyDataSourceTemplates struct {
 	LogStorePattern *string `json:"LogStorePattern,omitempty" xml:"LogStorePattern,omitempty"`
 	// The list of user IDs for batch data ingestion.
 	LogUserIds []*string `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty" type:"Repeated"`
-	// The time when the template was updated.
+	// The update time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

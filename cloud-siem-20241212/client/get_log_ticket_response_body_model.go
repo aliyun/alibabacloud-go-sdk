@@ -16,13 +16,13 @@ type iGetLogTicketResponseBody interface {
 }
 
 type GetLogTicketResponseBody struct {
-	// The ticket for Simple Log Service.
+	// The Simple Log Service ticket.
 	//
 	// example:
 	//
 	// *******
 	LogTicket *string `json:"LogTicket,omitempty" xml:"LogTicket,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

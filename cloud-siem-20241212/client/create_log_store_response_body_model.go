@@ -14,7 +14,7 @@ type iCreateLogStoreResponseBody interface {
 }
 
 type CreateLogStoreResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

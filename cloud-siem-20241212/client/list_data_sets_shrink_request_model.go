@@ -40,7 +40,7 @@ type iListDataSetsShrinkRequest interface {
 }
 
 type ListDataSetsShrinkRequest struct {
-	// The ID of the dataset.
+	// The dataset ID.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ListDataSetsShrinkRequest struct {
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
 	// The list of dataset IDs.
 	DataSetIdsShrink *string `json:"DataSetIds,omitempty" xml:"DataSetIds,omitempty"`
-	// The name of the dataset.
+	// The dataset name.
 	//
 	// example:
 	//
 	// lmftest
 	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
-	// The status of the dataset. Valid values:
+	// The dataset status. Valid values:
 	//
 	// - 0: deleted.
 	//
@@ -64,11 +64,11 @@ type ListDataSetsShrinkRequest struct {
 	//
 	// 0
 	DataSetStatus *int32 `json:"DataSetStatus,omitempty" xml:"DataSetStatus,omitempty"`
-	// The type of the dataset. Valid values:
+	// The dataset type. Valid values:
 	//
-	// - custom: custom.
+	// - custom: custom dataset.
 	//
-	// - preset: predefined.
+	// - preset: predefined dataset.
 	//
 	// example:
 	//
@@ -80,17 +80,19 @@ type ListDataSetsShrinkRequest struct {
 	//
 	// - **en**: English.
 	//
+	// This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error (The specified Lang can not be empty.). Valid values: zh and en.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of results to return for the request. This parameter is used for queries that use NextToken. Valid values: 1 to 100. Default value: 50.
+	// The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to start the next query.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
@@ -98,15 +100,15 @@ type ListDataSetsShrinkRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - **asc*	- (default): ascending.
+	// - **asc*	- (default): ascending order.
 	//
-	// - **desc**: descending.
+	// - **desc**: descending order.
 	//
 	// example:
 	//
 	// asc
 	OrderDirection *string `json:"OrderDirection,omitempty" xml:"OrderDirection,omitempty"`
-	// The field to use for sorting. Valid values:
+	// The field used for sorting. Valid values:
 	//
 	// - GmtCreate: creation time.
 	//
@@ -128,17 +130,17 @@ type ListDataSetsShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the Data Management Center for threat analysis is deployed. Select a region based on the location of your assets. Valid values:
+	// The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: The assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are in a region outside China.
+	// - ap-southeast-1: The assets reside outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID that an administrator uses to switch to the perspective of a member.
+	// The ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//

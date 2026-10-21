@@ -16,9 +16,9 @@ type iGetDataBatchIngestionResponseBody interface {
 }
 
 type GetDataBatchIngestionResponseBody struct {
-	// The details of the batch data ingestion task.
+	// The data batch ingestion configuration.
 	DataBatchIngestion *GetDataBatchIngestionResponseBodyDataBatchIngestion `json:"DataBatchIngestion,omitempty" xml:"DataBatchIngestion,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,61 +62,61 @@ func (s *GetDataBatchIngestionResponseBody) Validate() error {
 }
 
 type GetDataBatchIngestionResponseBodyDataBatchIngestion struct {
-	// The list of data ingestion IDs for Alibaba Cloud services.
+	// The list of cloud native mode ingestion IDs.
 	ApsaraDataIngestionIds []*string `json:"ApsaraDataIngestionIds,omitempty" xml:"ApsaraDataIngestionIds,omitempty" type:"Repeated"`
-	// Specifies whether to automatically discover new users. Valid values:
+	// Indicates whether new users are automatically discovered. Valid values:
 	//
-	// - enabled: New users are automatically discovered.
+	// - enabled: Enabled.
 	//
-	// - disabled: New users are not automatically discovered.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	AutoScanNew *string `json:"AutoScanNew,omitempty" xml:"AutoScanNew,omitempty"`
-	// The time when the configuration of the batch data ingestion task took effect.
+	// The effective period of the data batch ingestion. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	DataBatchIngestionEffectTime *string `json:"DataBatchIngestionEffectTime,omitempty" xml:"DataBatchIngestionEffectTime,omitempty"`
-	// The mode of the batch data ingestion task.
+	// The batch data ingestion mode.
 	//
 	// example:
 	//
 	// full
 	DataBatchIngestionMode *string `json:"DataBatchIngestionMode,omitempty" xml:"DataBatchIngestionMode,omitempty"`
-	// The time when the batch data ingestion task was configured.
+	// The time when the data batch ingestion was configured. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	DataBatchIngestionSetTime *string `json:"DataBatchIngestionSetTime,omitempty" xml:"DataBatchIngestionSetTime,omitempty"`
-	// The status of the batch data ingestion task. Valid values:
+	// The accessed state of the data batch ingestion. Valid values:
 	//
-	// - pending: The configuration is pending to take effect.
+	// - pending: Pending.
 	//
-	// - running: The configuration is taking effect.
+	// - running: In effect.
 	//
-	// - success: The configuration has taken effect.
+	// - success: Succeeded.
 	//
-	// - failed: The configuration failed to take effect.
+	// - failed: Failed.
 	//
 	// example:
 	//
 	// pending
 	DataBatchIngestionStatus *string `json:"DataBatchIngestionStatus,omitempty" xml:"DataBatchIngestionStatus,omitempty"`
-	// The list of data ingestion tasks.
+	// The list of data ingestions.
 	DataIngestions []*GetDataBatchIngestionResponseBodyDataBatchIngestionDataIngestions `json:"DataIngestions,omitempty" xml:"DataIngestions,omitempty" type:"Repeated"`
-	// Specifies whether to automatically discover new Logstores.
+	// Indicates whether automatic discovery of new Logstores is enabled.
 	//
 	// example:
 	//
 	// true
 	DataSourceRecognizeEnabled *bool `json:"DataSourceRecognizeEnabled,omitempty" xml:"DataSourceRecognizeEnabled,omitempty"`
-	// The list of user IDs for batch data ingestion.
+	// The list of user IDs for data batch ingestion.
 	LogUserIds []*string `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty" type:"Repeated"`
-	// The list of recommended data ingestion IDs.
+	// The list of recommended ingestion IDs.
 	RecommendDataIngestionIds []*string `json:"RecommendDataIngestionIds,omitempty" xml:"RecommendDataIngestionIds,omitempty" type:"Repeated"`
 }
 
@@ -232,35 +232,35 @@ func (s *GetDataBatchIngestionResponseBodyDataBatchIngestion) Validate() error {
 }
 
 type GetDataBatchIngestionResponseBodyDataBatchIngestionDataIngestions struct {
-	// The ID of the data ingestion task.
+	// The data ingestion ID.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas_process_ingestion_173326*******
 	DataIngestionId *string `json:"DataIngestionId,omitempty" xml:"DataIngestionId,omitempty"`
-	// The status of the data ingestion task. Valid values:
+	// The accessed state of the data ingestion. Valid values:
 	//
-	// - enabled: enabled
+	// - enabled: Enabled.
 	//
-	// - disabled: disabled
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	DataIngestionStatus *string `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas_process_log_173326*******
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The ID of the product.
+	// The product ID.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The ID of the vendor.
+	// The vendor ID.
 	//
 	// example:
 	//

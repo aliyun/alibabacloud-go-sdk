@@ -28,7 +28,7 @@ type iListAlertsResponseBody interface {
 type ListAlertsResponseBody struct {
 	// The alert details.
 	Alerts []*ListAlertsResponseBodyAlerts `json:"Alerts,omitempty" xml:"Alerts,omitempty" type:"Repeated"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ func (s *ListAlertsResponseBody) Validate() error {
 }
 
 type ListAlertsResponseBodyAlerts struct {
-	// The alert details.
+	// The detailed content of the alert.
 	//
 	// example:
 	//
 	// {"alert_uuid":"a3f8c2e1-9b7d-4f6a-8c2e-1d5b9a7f****"}
 	AlertRecord *string `json:"AlertRecord,omitempty" xml:"AlertRecord,omitempty"`
-	// The alert UUID.
+	// The UUID of the alert.
 	//
 	// example:
 	//

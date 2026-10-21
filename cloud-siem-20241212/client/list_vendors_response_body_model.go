@@ -22,7 +22,7 @@ type iListVendorsResponseBody interface {
 }
 
 type ListVendorsResponseBody struct {
-	// The maximum number of entries returned for this request.
+	// The maximum number of entries to return in this request.
 	//
 	// if can be null:
 	// true
@@ -31,13 +31,13 @@ type ListVendorsResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. If this is your first query or if no next page exists, you do not need to specify this parameter. If a next page exists, set the value to the NextToken value that is returned in the last response.
+	// The pagination token for the next query. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ func (s *ListVendorsResponseBody) Validate() error {
 }
 
 type ListVendorsResponseBodyVendors struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

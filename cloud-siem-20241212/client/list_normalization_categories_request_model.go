@@ -30,11 +30,13 @@ type ListNormalizationCategoriesRequest struct {
 	//
 	// - **en**: English.
 	//
+	// This parameter is effectively required. If you do not specify this parameter, the server returns a 400 error (The specified Lang can not be empty.) instead of using the default value zh.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of entries to return in this request.
 	//
 	// if can be null:
 	// true
@@ -43,7 +45,7 @@ type ListNormalizationCategoriesRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. Set this parameter to the NextToken value returned in the previous API call to retrieve the next page of results. You do not need to specify this parameter for the first query.
+	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -59,17 +61,17 @@ type ListNormalizationCategoriesRequest struct {
 	//
 	// entity
 	NormalizationCategoryType *string `json:"NormalizationCategoryType,omitempty" xml:"NormalizationCategoryType,omitempty"`
-	// The region of the Data Management center for threat analysis. Select the region for the Data Management center based on the region where your assets are located. Valid values:
+	// The region where the threat analysis data management center resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Assets are in the Chinese mainland.
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets are in a region outside China.
+	// - ap-southeast-1: Your assets reside outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member. An administrator can use this parameter to switch to the perspective of this member.
+	// The user ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//

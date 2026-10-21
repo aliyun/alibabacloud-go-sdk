@@ -66,7 +66,7 @@ func (s *ListDataIngestionsResponseBody) Validate() error {
 }
 
 type ListDataIngestionsResponseBodyDataIngestions struct {
-	// The time when the data ingestion was enabled.
+	// The activation time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -78,19 +78,19 @@ type ListDataIngestionsResponseBodyDataIngestions struct {
 	//
 	// 3
 	CapacityCount *int32 `json:"CapacityCount,omitempty" xml:"CapacityCount,omitempty"`
-	// The time when the data ingestion was created.
+	// The creation time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the data ingestion.
+	// The data ingestion ID.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas_netstat_ingestion_173326*******
 	DataIngestionId *string `json:"DataIngestionId,omitempty" xml:"DataIngestionId,omitempty"`
-	// The mode of the data ingestion. Valid values:
+	// The data ingestion mode. Valid values:
 	//
 	// - realtime
 	//
@@ -106,7 +106,7 @@ type ListDataIngestionsResponseBodyDataIngestions struct {
 	//
 	// true
 	DataIngestionModeEditable *bool `json:"DataIngestionModeEditable,omitempty" xml:"DataIngestionModeEditable,omitempty"`
-	// The state of the data ingestion. Valid values:
+	// The data ingestion state. Valid values:
 	//
 	// - ingested
 	//
@@ -118,29 +118,29 @@ type ListDataIngestionsResponseBodyDataIngestions struct {
 	//
 	// ingested
 	DataIngestionState *string `json:"DataIngestionState,omitempty" xml:"DataIngestionState,omitempty"`
-	// The error code for the data ingestion anomaly.
+	// The error code for the data ingestion exception state.
 	//
 	// example:
 	//
 	// UserUnauthorized
 	DataIngestionStateCode *string `json:"DataIngestionStateCode,omitempty" xml:"DataIngestionStateCode,omitempty"`
-	// The status of the data ingestion. Valid values:
+	// The accessed state of data ingestion. Valid values:
 	//
-	// - enabled: The data ingestion is enabled.
+	// - enabled: Enabled.
 	//
-	// - disabled: The data ingestion is disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	DataIngestionStatus *string `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
-	// The ID of the data ingestion template.
+	// The data ingestion template ID.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas_netstat_ingestion
 	DataIngestionTemplateId *string `json:"DataIngestionTemplateId,omitempty" xml:"DataIngestionTemplateId,omitempty"`
-	// The type of the data ingestion. Valid values:
+	// The data ingestion type. Valid values:
 	//
 	// - preset
 	//
@@ -156,7 +156,7 @@ type ListDataIngestionsResponseBodyDataIngestions struct {
 	//
 	// true
 	DataSourceEditable *bool `json:"DataSourceEditable,omitempty" xml:"DataSourceEditable,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// example:
 	//
@@ -168,31 +168,31 @@ type ListDataIngestionsResponseBodyDataIngestions struct {
 	//
 	// true
 	NormalizationRuleEditable *bool `json:"NormalizationRuleEditable,omitempty" xml:"NormalizationRuleEditable,omitempty"`
-	// The ID of the normalization rule.
+	// The normalization rule ID.
 	//
 	// example:
 	//
 	// nr-0aywiqdtaqdvwac7xkbjsf3a
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The ID of the data source for real-time ingestion.
+	// The data source ID in real-time mode.
 	//
 	// example:
 	//
 	// ds-scpfegri73oyoknbc90c
 	RealtimeDataSourceId *string `json:"RealtimeDataSourceId,omitempty" xml:"RealtimeDataSourceId,omitempty"`
-	// The ID of the data source for scan-based ingestion.
+	// The data source ID in scan mode.
 	//
 	// example:
 	//
 	// ds-scpfegri73oyoknbc90c
 	ScanDataSourceId *string `json:"ScanDataSourceId,omitempty" xml:"ScanDataSourceId,omitempty"`
-	// The job ID of the stream processing task.
+	// The stream job ID.
 	//
 	// example:
 	//
 	// 73a78aa245e3b1299d6ceed093de7bd8
 	StreamJobId *string `json:"StreamJobId,omitempty" xml:"StreamJobId,omitempty"`
-	// The time when the data ingestion was last updated.
+	// The update time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -25,10 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shanghai":    dara.String("cloud-siem.cn-shanghai.aliyuncs.com"),
-		"ap-southeast-1": dara.String("cloud-siem.ap-southeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -62,11 +58,97 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Checks for available version upgrades.
+// Requests cancellation of a specified security operations Agent conversation turn and returns the turn status after the cancellation request is processed.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class that includes configuration examples is provided. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// Cancels a specified security operations Agent conversation turn. Before calling this operation, use CreateCopilotConversation to create a session and obtain the ConversationId, then use CreateCopilotChat to initiate a streaming conversation and obtain the TurnId from the response.
+//
+// @param request - CancelCopilotTurnRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelCopilotTurnResponse
+func (client *Client) CancelCopilotTurnWithOptions(request *CancelCopilotTurnRequest, runtime *dara.RuntimeOptions) (_result *CancelCopilotTurnResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		body["TraceId"] = request.TraceId
+	}
+
+	if !dara.IsNil(request.TurnId) {
+		body["TurnId"] = request.TurnId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelCopilotTurn"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelCopilotTurnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Requests cancellation of a specified security operations Agent conversation turn and returns the turn status after the cancellation request is processed.
+//
+// Description:
+//
+// Cancels a specified security operations Agent conversation turn. Before calling this operation, use CreateCopilotConversation to create a session and obtain the ConversationId, then use CreateCopilotChat to initiate a streaming conversation and obtain the TurnId from the response.
+//
+// @param request - CancelCopilotTurnRequest
+//
+// @return CancelCopilotTurnResponse
+func (client *Client) CancelCopilotTurn(request *CancelCopilotTurnRequest) (_result *CancelCopilotTurnResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelCopilotTurnResponse{}
+	_body, _err := client.CancelCopilotTurnWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks the status of a version upgrade item.
+//
+// Description:
+//
+// Checks the execution status of a specified upgrade item. You must specify the upgrade item ID (UpgradeItemId) when calling this operation. The response includes the checkpoint status (CheckStatus) and check result (CheckResult) of the upgrade item.
 //
 // @param request - CheckUpgradeItemRequest
 //
@@ -122,11 +204,11 @@ func (client *Client) CheckUpgradeItemWithOptions(request *CheckUpgradeItemReque
 
 // Summary:
 //
-// Checks for available version upgrades.
+// Checks the status of a version upgrade item.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class that includes configuration examples is provided. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// Checks the execution status of a specified upgrade item. You must specify the upgrade item ID (UpgradeItemId) when calling this operation. The response includes the checkpoint status (CheckStatus) and check result (CheckResult) of the upgrade item.
 //
 // @param request - CheckUpgradeItemRequest
 //
@@ -222,11 +304,274 @@ func (client *Client) CreateAutoDisposeConfig(request *CreateAutoDisposeConfigRe
 
 // Summary:
 //
-// Creates a data ingestion policy.
+// Sends a message to the security operations Agent and returns an event stream through SSE. The first request can implicitly create a conversation.
 //
 // Description:
 //
-// The frequency and timing of notifications are limited. Each user receives a maximum of two notifications per day between 08:00 and 20:00.
+// Sends a message to a security operations Agent conversation and returns results as an SSE event stream.
+//
+// @param tmpReq - CreateCopilotChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCopilotChatResponse
+func (client *Client) CreateCopilotChatWithSSE(tmpReq *CreateCopilotChatRequest, runtime *dara.RuntimeOptions, _yield chan *CreateCopilotChatResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.createCopilotChatWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// Sends a message to the security operations Agent and returns an event stream through SSE. The first request can implicitly create a conversation.
+//
+// Description:
+//
+// Sends a message to a security operations Agent conversation and returns results as an SSE event stream.
+//
+// @param tmpReq - CreateCopilotChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCopilotChatResponse
+func (client *Client) CreateCopilotChatWithOptions(tmpReq *CreateCopilotChatRequest, runtime *dara.RuntimeOptions) (_result *CreateCopilotChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateCopilotChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateConversation) {
+		request.CreateConversationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateConversation, dara.String("CreateConversation"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Messages) {
+		request.MessagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Messages, dara.String("Messages"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientConversationId) {
+		body["ClientConversationId"] = request.ClientConversationId
+	}
+
+	if !dara.IsNil(request.ClientMessageId) {
+		body["ClientMessageId"] = request.ClientMessageId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.CreateConversationShrink) {
+		body["CreateConversation"] = request.CreateConversationShrink
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MessagesShrink) {
+		body["Messages"] = request.MessagesShrink
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.PlanMode) {
+		body["PlanMode"] = request.PlanMode
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReplaceTurnId) {
+		body["ReplaceTurnId"] = request.ReplaceTurnId
+	}
+
+	if !dara.IsNil(request.RouteTarget) {
+		body["RouteTarget"] = request.RouteTarget
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["Stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.ThinkingMode) {
+		body["ThinkingMode"] = request.ThinkingMode
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		body["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCopilotChat"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("string"),
+	}
+	_result = &CreateCopilotChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends a message to the security operations Agent and returns an event stream through SSE. The first request can implicitly create a conversation.
+//
+// Description:
+//
+// Sends a message to a security operations Agent conversation and returns results as an SSE event stream.
+//
+// @param request - CreateCopilotChatRequest
+//
+// @return CreateCopilotChatResponse
+func (client *Client) CreateCopilotChat(request *CreateCopilotChatRequest) (_result *CreateCopilotChatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCopilotChatResponse{}
+	_body, _err := client.CreateCopilotChatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a security operations Agent session that belongs to the current tenant and owner, and returns the session ID, status, and session configuration.
+//
+// Description:
+//
+// Creates a security operations Agent session.
+//
+// @param request - CreateCopilotConversationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCopilotConversationResponse
+func (client *Client) CreateCopilotConversationWithOptions(request *CreateCopilotConversationRequest, runtime *dara.RuntimeOptions) (_result *CreateCopilotConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.PlanMode) {
+		body["PlanMode"] = request.PlanMode
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ThinkingMode) {
+		body["ThinkingMode"] = request.ThinkingMode
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		body["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCopilotConversation"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCopilotConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a security operations Agent session that belongs to the current tenant and owner, and returns the session ID, status, and session configuration.
+//
+// Description:
+//
+// Creates a security operations Agent session.
+//
+// @param request - CreateCopilotConversationRequest
+//
+// @return CreateCopilotConversationResponse
+func (client *Client) CreateCopilotConversation(request *CreateCopilotConversationRequest) (_result *CreateCopilotConversationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCopilotConversationResponse{}
+	_body, _err := client.CreateCopilotConversationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an access policy.
+//
+// Description:
+//
+// Creates an access policy to ingest log data from a data source into threat analysis.
+//
+// Before you begin:
+//
+// 1. Call the CreateDataSource operation to create a data source and obtain the data source ID (DataSourceId).
+//
+// 2. Call the CreateNormalizationRule operation to create a normalization rule and obtain the normalization rule ID (NormalizationRuleId).
 //
 // @param request - CreateDataIngestionRequest
 //
@@ -326,11 +671,17 @@ func (client *Client) CreateDataIngestionWithOptions(request *CreateDataIngestio
 
 // Summary:
 //
-// Creates a data ingestion policy.
+// Creates an access policy.
 //
 // Description:
 //
-// The frequency and timing of notifications are limited. Each user receives a maximum of two notifications per day between 08:00 and 20:00.
+// Creates an access policy to ingest log data from a data source into threat analysis.
+//
+// Before you begin:
+//
+// 1. Call the CreateDataSource operation to create a data source and obtain the data source ID (DataSourceId).
+//
+// 2. Call the CreateNormalizationRule operation to create a normalization rule and obtain the normalization rule ID (NormalizationRuleId).
 //
 // @param request - CreateDataIngestionRequest
 //
@@ -884,11 +1235,11 @@ func (client *Client) CreateExportTask(request *CreateExportTaskRequest) (_resul
 
 // Summary:
 //
-// Configure client-side storage restrictions.
+// Creates a restrictive user-side storage.
 //
 // Description:
 //
-// The JsonConfig input parameter uses a complex JSON structure. A supporting tool class is provided to simplify this configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON Configurations string. We provide a utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateLogStoreRequest
 //
@@ -956,11 +1307,11 @@ func (client *Client) CreateLogStoreWithOptions(request *CreateLogStoreRequest, 
 
 // Summary:
 //
-// Configure client-side storage restrictions.
+// Creates a restrictive user-side storage.
 //
 // Description:
 //
-// The JsonConfig input parameter uses a complex JSON structure. A supporting tool class is provided to simplify this configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON Configurations string. We provide a utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateLogStoreRequest
 //
@@ -982,7 +1333,7 @@ func (client *Client) CreateLogStore(request *CreateLogStoreRequest) (_result *C
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param tmpReq - CreateNormalizationRuleRequest
 //
@@ -1108,7 +1459,7 @@ func (client *Client) CreateNormalizationRuleWithOptions(tmpReq *CreateNormaliza
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateNormalizationRuleRequest
 //
@@ -1130,7 +1481,7 @@ func (client *Client) CreateNormalizationRule(request *CreateNormalizationRuleRe
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class provides configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help with specific configuration examples, we provide a supporting utility class. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateNormalizationSchemaRequest
 //
@@ -1230,7 +1581,7 @@ func (client *Client) CreateNormalizationSchemaWithOptions(request *CreateNormal
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class provides configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help with specific configuration examples, we provide a supporting utility class. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateNormalizationSchemaRequest
 //
@@ -1252,7 +1603,7 @@ func (client *Client) CreateNormalizationSchema(request *CreateNormalizationSche
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class is available and provides configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex set of JSON Configurations. We provide a utility class with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateProductRequest
 //
@@ -1316,7 +1667,7 @@ func (client *Client) CreateProductWithOptions(request *CreateProductRequest, ru
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class is available and provides configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex set of JSON Configurations. We provide a utility class with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateProductRequest
 //
@@ -1338,7 +1689,7 @@ func (client *Client) CreateProduct(request *CreateProductRequest) (_result *Cre
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, we provide a supporting tool with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateResponseRuleRequest
 //
@@ -1434,7 +1785,7 @@ func (client *Client) CreateResponseRuleWithOptions(request *CreateResponseRuleR
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, we provide a supporting tool with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateResponseRuleRequest
 //
@@ -1456,7 +1807,9 @@ func (client *Client) CreateResponseRule(request *CreateResponseRuleRequest) (_r
 //
 // Description:
 //
-// Notifications are limited by frequency and time. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside this time frame.
+// Creates a vendor.
+//
+// Before you begin: You must have purchased the cloud-siem service and have a valid order before calling this operation. If you have not purchased the service or your order has expired, the API returns "The order doesn\\"t exist or is expired." Purchase or renew the service before calling this operation.
 //
 // @param request - CreateVendorRequest
 //
@@ -1516,7 +1869,9 @@ func (client *Client) CreateVendorWithOptions(request *CreateVendorRequest, runt
 //
 // Description:
 //
-// Notifications are limited by frequency and time. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside this time frame.
+// Creates a vendor.
+//
+// Before you begin: You must have purchased the cloud-siem service and have a valid order before calling this operation. If you have not purchased the service or your order has expired, the API returns "The order doesn\\"t exist or is expired." Purchase or renew the service before calling this operation.
 //
 // @param request - CreateVendorRequest
 //
@@ -1772,7 +2127,9 @@ func (client *Client) DeleteDataSetRecord(request *DeleteDataSetRecordRequest) (
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class provides configuration examples. For more information, see the [demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// Deletes a specified data source.
+//
+// Before you begin: The calling account must have a valid SIEM data source management value-added feature subscription.
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -1832,7 +2189,9 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class provides configuration examples. For more information, see the [demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// Deletes a specified data source.
+//
+// Before you begin: The calling account must have a valid SIEM data source management value-added feature subscription.
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -1924,11 +2283,11 @@ func (client *Client) DeleteDetectionRule(request *DeleteDetectionRuleRequest) (
 
 // Summary:
 //
-// Deletes a Logstore.
+// Deletes a LogStore.
 //
 // Description:
 //
-// The \\`JsonConfig\\` request parameter is a complex JSON configuration. A supporting tool class with configuration examples is available. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration string. We provide a utility class with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - DeleteLogStoreRequest
 //
@@ -1996,11 +2355,11 @@ func (client *Client) DeleteLogStoreWithOptions(request *DeleteLogStoreRequest, 
 
 // Summary:
 //
-// Deletes a Logstore.
+// Deletes a LogStore.
 //
 // Description:
 //
-// The \\`JsonConfig\\` request parameter is a complex JSON configuration. A supporting tool class with configuration examples is available. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration string. We provide a utility class with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - DeleteLogStoreRequest
 //
@@ -2526,11 +2885,13 @@ func (client *Client) DeleteVendor(request *DeleteVendorRequest) (_result *Delet
 
 // Summary:
 //
-// Disables a data ingestion policy.
+// Stops a collection policy.
 //
 // Description:
 //
-// The frequency and time of notifications are limited. Each user receives a maximum of two notifications per day between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - DisableDataIngestionRequest
 //
@@ -2586,11 +2947,13 @@ func (client *Client) DisableDataIngestionWithOptions(request *DisableDataIngest
 
 // Summary:
 //
-// Disables a data ingestion policy.
+// Stops a collection policy.
 //
 // Description:
 //
-// The frequency and time of notifications are limited. Each user receives a maximum of two notifications per day between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - DisableDataIngestionRequest
 //
@@ -2779,7 +3142,7 @@ func (client *Client) ExecuteAutoDisposeRecords(request *ExecuteAutoDisposeRecor
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON Configurations. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, a utility class is provided. For specific configuration examples, refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ExecuteLogQueryRequest
 //
@@ -2875,7 +3238,7 @@ func (client *Client) ExecuteLogQueryWithOptions(request *ExecuteLogQueryRequest
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON Configurations. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, a utility class is provided. For specific configuration examples, refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ExecuteLogQueryRequest
 //
@@ -2897,7 +3260,15 @@ func (client *Client) ExecuteLogQuery(request *ExecuteLogQueryRequest) (_result 
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class is provided to assist with this configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig input parameter is a complex JSON configuration string. We provide a utility class to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+//
+// ### Before you begin
+//
+// 1. Before calling this operation, ensure that a pending upgrade order exists (created through the Alibaba Cloud Management Console or a business flow).
+//
+// 2. Call ListUpgradeItems to view the items that can be upgraded, and call CheckUpgradeItem to perform a dry run.
+//
+// 3. If no items can be upgraded, the API returns an error.
 //
 // @param request - ExecuteUpgradeRequest
 //
@@ -2953,7 +3324,15 @@ func (client *Client) ExecuteUpgradeWithOptions(request *ExecuteUpgradeRequest, 
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class is provided to assist with this configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig input parameter is a complex JSON configuration string. We provide a utility class to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+//
+// ### Before you begin
+//
+// 1. Before calling this operation, ensure that a pending upgrade order exists (created through the Alibaba Cloud Management Console or a business flow).
+//
+// 2. Call ListUpgradeItems to view the items that can be upgraded, and call CheckUpgradeItem to perform a dry run.
+//
+// 3. If no items can be upgraded, the API returns an error.
 //
 // @param request - ExecuteUpgradeRequest
 //
@@ -2971,7 +3350,7 @@ func (client *Client) ExecuteUpgrade(request *ExecuteUpgradeRequest) (_result *E
 
 // Summary:
 //
-// Retrieves the details of an alert.
+// Retrieves alert details.
 //
 // Description:
 //
@@ -3035,7 +3414,7 @@ func (client *Client) GetAlertWithOptions(request *GetAlertRequest, runtime *dar
 
 // Summary:
 //
-// Retrieves the details of an alert.
+// Retrieves alert details.
 //
 // Description:
 //
@@ -3131,11 +3510,265 @@ func (client *Client) GetAutoDisposeConfig(request *GetAutoDisposeConfigRequest)
 
 // Summary:
 //
-// Retrieves the details of a batch data ingestion task.
+// Queries the metadata, status, configuration, and historical summary of a specified security operations agent session.
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class with configuration examples is provided. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// Queries a specified security operations agent session.
+//
+// @param request - GetCopilotConversationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCopilotConversationResponse
+func (client *Client) GetCopilotConversationWithOptions(request *GetCopilotConversationRequest, runtime *dara.RuntimeOptions) (_result *GetCopilotConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		body["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCopilotConversation"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCopilotConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the metadata, status, configuration, and historical summary of a specified security operations agent session.
+//
+// Description:
+//
+// Queries a specified security operations agent session.
+//
+// @param request - GetCopilotConversationRequest
+//
+// @return GetCopilotConversationResponse
+func (client *Client) GetCopilotConversation(request *GetCopilotConversationRequest) (_result *GetCopilotConversationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCopilotConversationResponse{}
+	_body, _err := client.GetCopilotConversationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the conversation turn status of the Security Operations agent.
+//
+// Description:
+//
+// Queries a specified Security Operations agent conversation turn. Before calling this operation, call CreateCopilotConversation to create a session and obtain the ConversationId, and then call CreateCopilotChat to initiate a conversation and obtain the TurnId.
+//
+// @param request - GetCopilotTurnRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCopilotTurnResponse
+func (client *Client) GetCopilotTurnWithOptions(request *GetCopilotTurnRequest, runtime *dara.RuntimeOptions) (_result *GetCopilotTurnResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		body["TraceId"] = request.TraceId
+	}
+
+	if !dara.IsNil(request.TurnId) {
+		body["TurnId"] = request.TurnId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCopilotTurn"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCopilotTurnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the conversation turn status of the Security Operations agent.
+//
+// Description:
+//
+// Queries a specified Security Operations agent conversation turn. Before calling this operation, call CreateCopilotConversation to create a session and obtain the ConversationId, and then call CreateCopilotChat to initiate a conversation and obtain the TurnId.
+//
+// @param request - GetCopilotTurnRequest
+//
+// @return GetCopilotTurnResponse
+func (client *Client) GetCopilotTurn(request *GetCopilotTurnRequest) (_result *GetCopilotTurnResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCopilotTurnResponse{}
+	_body, _err := client.GetCopilotTurnWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of the security operations agent conversation turn based on the conversation ID and client message ID.
+//
+// Description:
+//
+// Queries the security operations agent conversation turn based on the client message ID. Before calling this operation, call CreateCopilotConversation to create a conversation and then call CreateCopilotChat to initiate a conversation. The ClientMessageId is specified by the client when initiating the conversation.
+//
+// @param request - GetCopilotTurnByClientMessageIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCopilotTurnByClientMessageIdResponse
+func (client *Client) GetCopilotTurnByClientMessageIdWithOptions(request *GetCopilotTurnByClientMessageIdRequest, runtime *dara.RuntimeOptions) (_result *GetCopilotTurnByClientMessageIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientMessageId) {
+		body["ClientMessageId"] = request.ClientMessageId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		body["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCopilotTurnByClientMessageId"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCopilotTurnByClientMessageIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of the security operations agent conversation turn based on the conversation ID and client message ID.
+//
+// Description:
+//
+// Queries the security operations agent conversation turn based on the client message ID. Before calling this operation, call CreateCopilotConversation to create a conversation and then call CreateCopilotChat to initiate a conversation. The ClientMessageId is specified by the client when initiating the conversation.
+//
+// @param request - GetCopilotTurnByClientMessageIdRequest
+//
+// @return GetCopilotTurnByClientMessageIdResponse
+func (client *Client) GetCopilotTurnByClientMessageId(request *GetCopilotTurnByClientMessageIdRequest) (_result *GetCopilotTurnByClientMessageIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCopilotTurnByClientMessageIdResponse{}
+	_body, _err := client.GetCopilotTurnByClientMessageIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the data batch ingestion configuration.
+//
+// Description:
+//
+// The input parameter JsonConfig is a complex JSON configuration string. We provide a utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetDataBatchIngestionRequest
 //
@@ -3187,11 +3820,11 @@ func (client *Client) GetDataBatchIngestionWithOptions(request *GetDataBatchInge
 
 // Summary:
 //
-// Retrieves the details of a batch data ingestion task.
+// Retrieves the data batch ingestion configuration.
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class with configuration examples is provided. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration string. We provide a utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetDataBatchIngestionRequest
 //
@@ -3210,6 +3843,10 @@ func (client *Client) GetDataBatchIngestion(request *GetDataBatchIngestionReques
 // Summary:
 //
 // Retrieves the details of user logs in log management.
+//
+// Description:
+//
+// Queries the log storage region, project, capacity, Logstore, and multi-account delivery settings of the current account. Before you update the multi-account configuration, read Data.DeliverySettings.ConfigurationVersion and TargetProject, and pass them to the write operation as is. The capacity is measured in GB, and the TTL is measured in days. The account UID in DeliverySettings is a string. If the system fails to read the optional delivery settings, the cause is returned in DeliverySettingsError, and other storage information is still returned.
 //
 // @param request - GetDataStorageRequest
 //
@@ -3262,6 +3899,10 @@ func (client *Client) GetDataStorageWithOptions(request *GetDataStorageRequest, 
 // Summary:
 //
 // Retrieves the details of user logs in log management.
+//
+// Description:
+//
+// Queries the log storage region, project, capacity, Logstore, and multi-account delivery settings of the current account. Before you update the multi-account configuration, read Data.DeliverySettings.ConfigurationVersion and TargetProject, and pass them to the write operation as is. The capacity is measured in GB, and the TTL is measured in days. The account UID in DeliverySettings is a string. If the system fails to read the optional delivery settings, the cause is returned in DeliverySettingsError, and other storage information is still returned.
 //
 // @param request - GetDataStorageRequest
 //
@@ -3427,7 +4068,7 @@ func (client *Client) GetExportTask(request *GetExportTaskRequest) (_result *Get
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration string. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. We provide a supporting utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetIncidentRequest
 //
@@ -3487,7 +4128,7 @@ func (client *Client) GetIncidentWithOptions(request *GetIncidentRequest, runtim
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration string. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. We provide a supporting utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetIncidentRequest
 //
@@ -3505,11 +4146,125 @@ func (client *Client) GetIncident(request *GetIncidentRequest) (_result *GetInci
 
 // Summary:
 //
-// Retrieves a log ticket.
+// Queries the AI investigation details of a specified incident, including the report ID, investigation time, judgment category, summary, conclusion, and report content.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class is provided to assist with the configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// Queries the AI investigation results that have been generated for a specified incident. You can call ListIncidentInvestigations to obtain the report ID or display ID first, and then call this operation to query the details.
+//
+// The query priority is as follows:
+//
+// 1. If IncidentInvestigationId is specified, the query is performed by report ID.
+//
+// 2. If the report ID is not specified but IncidentInvestigationDisplayId is specified, the query is performed by display ID.
+//
+// 3. If neither identifier is specified, the most recent successfully completed investigation result for the incident corresponding to IncidentUuid is returned, selected in descending order of investigation end time.
+//
+// If no matching investigation record is found, IncidentInvestigation is empty.
+//
+// IncidentInvestigationStatus indicates the judgment category in the report. Both IncidentInvestigationReport and IncidentInvestigationOutput are JSON-formatted strings that must be parsed before their fields can be used. Internal fields may change across report versions, and callers should handle missing fields gracefully. The examples show only partial report content.
+//
+// @param request - GetIncidentInvestigationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIncidentInvestigationResponse
+func (client *Client) GetIncidentInvestigationWithOptions(request *GetIncidentInvestigationRequest, runtime *dara.RuntimeOptions) (_result *GetIncidentInvestigationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IncidentInvestigationDisplayId) {
+		body["IncidentInvestigationDisplayId"] = request.IncidentInvestigationDisplayId
+	}
+
+	if !dara.IsNil(request.IncidentInvestigationId) {
+		body["IncidentInvestigationId"] = request.IncidentInvestigationId
+	}
+
+	if !dara.IsNil(request.IncidentUuid) {
+		body["IncidentUuid"] = request.IncidentUuid
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIncidentInvestigation"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIncidentInvestigationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the AI investigation details of a specified incident, including the report ID, investigation time, judgment category, summary, conclusion, and report content.
+//
+// Description:
+//
+// Queries the AI investigation results that have been generated for a specified incident. You can call ListIncidentInvestigations to obtain the report ID or display ID first, and then call this operation to query the details.
+//
+// The query priority is as follows:
+//
+// 1. If IncidentInvestigationId is specified, the query is performed by report ID.
+//
+// 2. If the report ID is not specified but IncidentInvestigationDisplayId is specified, the query is performed by display ID.
+//
+// 3. If neither identifier is specified, the most recent successfully completed investigation result for the incident corresponding to IncidentUuid is returned, selected in descending order of investigation end time.
+//
+// If no matching investigation record is found, IncidentInvestigation is empty.
+//
+// IncidentInvestigationStatus indicates the judgment category in the report. Both IncidentInvestigationReport and IncidentInvestigationOutput are JSON-formatted strings that must be parsed before their fields can be used. Internal fields may change across report versions, and callers should handle missing fields gracefully. The examples show only partial report content.
+//
+// @param request - GetIncidentInvestigationRequest
+//
+// @return GetIncidentInvestigationResponse
+func (client *Client) GetIncidentInvestigation(request *GetIncidentInvestigationRequest) (_result *GetIncidentInvestigationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetIncidentInvestigationResponse{}
+	_body, _err := client.GetIncidentInvestigationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves log credentials.
+//
+// Description:
+//
+// The input parameter JsonConfig is a complex JSON configuration string. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetLogTicketRequest
 //
@@ -3565,11 +4320,11 @@ func (client *Client) GetLogTicketWithOptions(request *GetLogTicketRequest, runt
 
 // Summary:
 //
-// Retrieves a log ticket.
+// Retrieves log credentials.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class is provided to assist with the configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration string. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetLogTicketRequest
 //
@@ -3591,7 +4346,7 @@ func (client *Client) GetLogTicket(request *GetLogTicketRequest) (_result *GetLo
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration string. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The request parameter JsonConfig contains highly complex JSON configurations. To help you configure it, we provide a utility class with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetNormalizationRuleRequest
 //
@@ -3655,7 +4410,7 @@ func (client *Client) GetNormalizationRuleWithOptions(request *GetNormalizationR
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration string. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The request parameter JsonConfig contains highly complex JSON configurations. To help you configure it, we provide a utility class with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetNormalizationRuleRequest
 //
@@ -3673,11 +4428,11 @@ func (client *Client) GetNormalizationRule(request *GetNormalizationRuleRequest)
 
 // Summary:
 //
-// Retrieves information about a normalization rule version.
+// Retrieves normalization rule version information.
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class provides examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a highly complex JSON configuration. To help you configure it, we provide a supporting utility class with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetNormalizationRuleVersionRequest
 //
@@ -3737,11 +4492,11 @@ func (client *Client) GetNormalizationRuleVersionWithOptions(request *GetNormali
 
 // Summary:
 //
-// Retrieves information about a normalization rule version.
+// Retrieves normalization rule version information.
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class provides examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a highly complex JSON configuration. To help you configure it, we provide a supporting utility class with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetNormalizationRuleVersionRequest
 //
@@ -3759,11 +4514,11 @@ func (client *Client) GetNormalizationRuleVersion(request *GetNormalizationRuleV
 
 // Summary:
 //
-// Retrieves a normalization schema.
+// Retrieves the normalized schema.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration string. A supporting tool class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. We provide a utility class with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetNormalizationSchemaRequest
 //
@@ -3823,11 +4578,11 @@ func (client *Client) GetNormalizationSchemaWithOptions(request *GetNormalizatio
 
 // Summary:
 //
-// Retrieves a normalization schema.
+// Retrieves the normalized schema.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration string. A supporting tool class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. We provide a utility class with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetNormalizationSchemaRequest
 //
@@ -3851,7 +4606,7 @@ func (client *Client) GetNormalizationSchema(request *GetNormalizationSchemaRequ
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - GetResponseRuleStatisticRequest
 //
@@ -3913,7 +4668,7 @@ func (client *Client) GetResponseRuleStatisticWithOptions(request *GetResponseRu
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - GetResponseRuleStatisticRequest
 //
@@ -3935,7 +4690,7 @@ func (client *Client) GetResponseRuleStatistic(request *GetResponseRuleStatistic
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON object. A supporting tool class is provided to help you create the configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetUserConfigRequest
 //
@@ -3991,7 +4746,7 @@ func (client *Client) GetUserConfigWithOptions(request *GetUserConfigRequest, ru
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON object. A supporting tool class is provided to help you create the configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetUserConfigRequest
 //
@@ -4009,11 +4764,11 @@ func (client *Client) GetUserConfig(request *GetUserConfigRequest) (_result *Get
 
 // Summary:
 //
-// 获取告警分组列表
+// Retrieves the list of alert groups.
 //
 // Description:
 //
-// 入参JsonConfig是一个非常复杂的JSON配置，为此我们提供了辅助工具类帮助具体配置示例，请参考[Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java)。
+// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class and configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListAlertAggregationsRequest
 //
@@ -4105,11 +4860,11 @@ func (client *Client) ListAlertAggregationsWithOptions(request *ListAlertAggrega
 
 // Summary:
 //
-// 获取告警分组列表
+// Retrieves the list of alert groups.
 //
 // Description:
 //
-// 入参JsonConfig是一个非常复杂的JSON配置，为此我们提供了辅助工具类帮助具体配置示例，请参考[Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java)。
+// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class and configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListAlertAggregationsRequest
 //
@@ -4131,7 +4886,11 @@ func (client *Client) ListAlertAggregations(request *ListAlertAggregationsReques
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class with configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON Configurations. We provide a utility class with configuration examples to help you get started. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+//
+// ### Before you begin
+//
+// Before invoking this operation, ensure that Cloud SIEM storage resources (the alert-record Logstore in the Simple Log Service project) are activated. Invoke GetDataStorage to check the storage status. If storage is not activated, purchase SIEM storage first. Otherwise, the invocation will fail.
 //
 // @param request - ListAlertsRequest
 //
@@ -4239,7 +4998,11 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime 
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class with configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON Configurations. We provide a utility class with configuration examples to help you get started. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+//
+// ### Before you begin
+//
+// Before invoking this operation, ensure that Cloud SIEM storage resources (the alert-record Logstore in the Simple Log Service project) are activated. Invoke GetDataStorage to check the storage status. If storage is not activated, purchase SIEM storage first. Otherwise, the invocation will fail.
 //
 // @param request - ListAlertsRequest
 //
@@ -4257,11 +5020,11 @@ func (client *Client) ListAlerts(request *ListAlertsRequest) (_result *ListAlert
 
 // Summary:
 //
-// # Get AI-analyzed entity list
+// Retrieves the list of AI decision-making entities.
 //
 // Description:
 //
-// Each user can receive up to two notifications daily, but only between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param tmpReq - ListAutoDisposeEntitiesRequest
 //
@@ -4339,11 +5102,11 @@ func (client *Client) ListAutoDisposeEntitiesWithOptions(tmpReq *ListAutoDispose
 
 // Summary:
 //
-// # Get AI-analyzed entity list
+// Retrieves the list of AI decision-making entities.
 //
 // Description:
 //
-// Each user can receive up to two notifications daily, but only between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListAutoDisposeEntitiesRequest
 //
@@ -4352,6 +5115,100 @@ func (client *Client) ListAutoDisposeEntities(request *ListAutoDisposeEntitiesRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListAutoDisposeEntitiesResponse{}
 	_body, _err := client.ListAutoDisposeEntitiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries visible persisted messages in a specified security operations Agent session by paging, with configurable sorting direction.
+//
+// Description:
+//
+// Queries the message list of a specified security operations Agent conversation.
+//
+// @param request - ListCopilotMessagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCopilotMessagesResponse
+func (client *Client) ListCopilotMessagesWithOptions(request *ListCopilotMessagesRequest, runtime *dara.RuntimeOptions) (_result *ListCopilotMessagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Ascending) {
+		body["Ascending"] = request.Ascending
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		body["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCopilotMessages"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCopilotMessagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries visible persisted messages in a specified security operations Agent session by paging, with configurable sorting direction.
+//
+// Description:
+//
+// Queries the message list of a specified security operations Agent conversation.
+//
+// @param request - ListCopilotMessagesRequest
+//
+// @return ListCopilotMessagesResponse
+func (client *Client) ListCopilotMessages(request *ListCopilotMessagesRequest) (_result *ListCopilotMessagesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCopilotMessagesResponse{}
+	_body, _err := client.ListCopilotMessagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4493,7 +5350,9 @@ func (client *Client) ListDataConnectors(request *ListDataConnectorsRequest) (_r
 //
 // Description:
 //
-// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside this time frame.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListDataIngestionTemplatesRequest
 //
@@ -4569,7 +5428,9 @@ func (client *Client) ListDataIngestionTemplatesWithOptions(request *ListDataIng
 //
 // Description:
 //
-// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside this time frame.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListDataIngestionTemplatesRequest
 //
@@ -4587,11 +5448,13 @@ func (client *Client) ListDataIngestionTemplates(request *ListDataIngestionTempl
 
 // Summary:
 //
-// Retrieves a list of data access policies.
+// Retrieves a list of data ingestion policies.
 //
 // Description:
 //
-// Each user receives up to two notifications per day, sent only between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param tmpReq - ListDataIngestionsRequest
 //
@@ -4677,11 +5540,13 @@ func (client *Client) ListDataIngestionsWithOptions(tmpReq *ListDataIngestionsRe
 
 // Summary:
 //
-// Retrieves a list of data access policies.
+// Retrieves a list of data ingestion policies.
 //
 // Description:
 //
-// Each user receives up to two notifications per day, sent only between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListDataIngestionsRequest
 //
@@ -4925,7 +5790,9 @@ func (client *Client) ListDataSets(request *ListDataSetsRequest) (_result *ListD
 //
 // Description:
 //
-// Notifications are limited by frequency and time. Each user receives a maximum of two notifications per day between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent at other times.
 //
 // @param tmpReq - ListDataSourceTemplatesRequest
 //
@@ -4999,7 +5866,9 @@ func (client *Client) ListDataSourceTemplatesWithOptions(tmpReq *ListDataSourceT
 //
 // Description:
 //
-// Notifications are limited by frequency and time. Each user receives a maximum of two notifications per day between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent at other times.
 //
 // @param request - ListDataSourceTemplatesRequest
 //
@@ -5017,11 +5886,13 @@ func (client *Client) ListDataSourceTemplates(request *ListDataSourceTemplatesRe
 
 // Summary:
 //
-// Lists data sources.
+// Retrieves a list of data sources.
 //
 // Description:
 //
-// Notifications are subject to frequency and time limits. A maximum of two notifications are sent to each user per day, and only between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param tmpReq - ListDataSourcesRequest
 //
@@ -5155,11 +6026,13 @@ func (client *Client) ListDataSourcesWithOptions(tmpReq *ListDataSourcesRequest,
 
 // Summary:
 //
-// Lists data sources.
+// Retrieves a list of data sources.
 //
 // Description:
 //
-// Notifications are subject to frequency and time limits. A maximum of two notifications are sent to each user per day, and only between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param request - ListDataSourcesRequest
 //
@@ -5181,7 +6054,9 @@ func (client *Client) ListDataSources(request *ListDataSourcesRequest) (_result 
 //
 // Description:
 //
-// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day. These notifications are sent only between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param tmpReq - ListDetectionRulesRequest
 //
@@ -5319,7 +6194,9 @@ func (client *Client) ListDetectionRulesWithOptions(tmpReq *ListDetectionRulesRe
 //
 // Description:
 //
-// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day. These notifications are sent only between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListDetectionRulesRequest
 //
@@ -5343,7 +6220,7 @@ func (client *Client) ListDetectionRules(request *ListDetectionRulesRequest) (_r
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param tmpReq - ListIncidentsRequest
 //
@@ -5489,7 +6366,7 @@ func (client *Client) ListIncidentsWithOptions(tmpReq *ListIncidentsRequest, run
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param request - ListIncidentsRequest
 //
@@ -5507,11 +6384,11 @@ func (client *Client) ListIncidents(request *ListIncidentsRequest) (_result *Lis
 
 // Summary:
 //
-// Lists log projects.
+// Retrieves a list of log projects.
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class is available to simplify this configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// Retrieves a list of log projects associated with threat detection and response.
 //
 // @param request - ListLogProjectsRequest
 //
@@ -5579,11 +6456,11 @@ func (client *Client) ListLogProjectsWithOptions(request *ListLogProjectsRequest
 
 // Summary:
 //
-// Lists log projects.
+// Retrieves a list of log projects.
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class is available to simplify this configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// Retrieves a list of log projects associated with threat detection and response.
 //
 // @param request - ListLogProjectsRequest
 //
@@ -5675,11 +6552,13 @@ func (client *Client) ListLogRegions(request *ListLogRegionsRequest) (_result *L
 
 // Summary:
 //
-// Retrieves a list of Logstores.
+// Retrieves the list of log stores.
 //
 // Description:
 //
-// The notification frequency is limited. Each user can receive up to two notifications per day between 08:00 and 20:00. No notifications are sent outside this time frame.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param request - ListLogStoresRequest
 //
@@ -5751,11 +6630,13 @@ func (client *Client) ListLogStoresWithOptions(request *ListLogStoresRequest, ru
 
 // Summary:
 //
-// Retrieves a list of Logstores.
+// Retrieves the list of log stores.
 //
 // Description:
 //
-// The notification frequency is limited. Each user can receive up to two notifications per day between 08:00 and 20:00. No notifications are sent outside this time frame.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param request - ListLogStoresRequest
 //
@@ -5773,11 +6654,13 @@ func (client *Client) ListLogStores(request *ListLogStoresRequest) (_result *Lis
 
 // Summary:
 //
-// Lists normalization categories.
+// Retrieves the list of standardized categories.
 //
 // Description:
 //
-// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param request - ListNormalizationCategoriesRequest
 //
@@ -5841,11 +6724,13 @@ func (client *Client) ListNormalizationCategoriesWithOptions(request *ListNormal
 
 // Summary:
 //
-// Lists normalization categories.
+// Retrieves the list of standardized categories.
 //
 // Description:
 //
-// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param request - ListNormalizationCategoriesRequest
 //
@@ -5863,11 +6748,11 @@ func (client *Client) ListNormalizationCategories(request *ListNormalizationCate
 
 // Summary:
 //
-// Retrieves a list of normalization fields.
+// Retrieves the list of normalization fields.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided for configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationFieldsRequest
 //
@@ -5939,11 +6824,11 @@ func (client *Client) ListNormalizationFieldsWithOptions(request *ListNormalizat
 
 // Summary:
 //
-// Retrieves a list of normalization fields.
+// Retrieves the list of normalization fields.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided for configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationFieldsRequest
 //
@@ -5961,11 +6846,11 @@ func (client *Client) ListNormalizationFields(request *ListNormalizationFieldsRe
 
 // Summary:
 //
-// Lists the security capabilities of normalization rules.
+// Retrieves the list of security capabilities associated with normalization rules.
 //
 // Description:
 //
-// The \\`JsonConfig\\` request parameter is a complex JSON configuration. A helper tool class is provided with configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param tmpReq - ListNormalizationRuleCapacitiesRequest
 //
@@ -6039,11 +6924,11 @@ func (client *Client) ListNormalizationRuleCapacitiesWithOptions(tmpReq *ListNor
 
 // Summary:
 //
-// Lists the security capabilities of normalization rules.
+// Retrieves the list of security capabilities associated with normalization rules.
 //
 // Description:
 //
-// The \\`JsonConfig\\` request parameter is a complex JSON configuration. A helper tool class is provided with configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationRuleCapacitiesRequest
 //
@@ -6061,11 +6946,11 @@ func (client *Client) ListNormalizationRuleCapacities(request *ListNormalization
 
 // Summary:
 //
-// Queries a list of normalization rule versions.
+// Retrieves a list of normalization rule versions.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class is available and provides configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig input parameter is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationRuleVersionsRequest
 //
@@ -6129,11 +7014,11 @@ func (client *Client) ListNormalizationRuleVersionsWithOptions(request *ListNorm
 
 // Summary:
 //
-// Queries a list of normalization rule versions.
+// Retrieves a list of normalization rule versions.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class is available and provides configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig input parameter is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationRuleVersionsRequest
 //
@@ -6299,7 +7184,7 @@ func (client *Client) ListNormalizationRules(request *ListNormalizationRulesRequ
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class with specific configuration examples is provided. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration string. A utility class is provided with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationSchemasRequest
 //
@@ -6379,7 +7264,7 @@ func (client *Client) ListNormalizationSchemasWithOptions(request *ListNormaliza
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class with specific configuration examples is provided. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration string. A utility class is provided with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationSchemasRequest
 //
@@ -6397,11 +7282,11 @@ func (client *Client) ListNormalizationSchemas(request *ListNormalizationSchemas
 
 // Summary:
 //
-// Retrieves a list of security domains.
+// Retrieves the list of security domains.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class and configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationSecurityDomainsRequest
 //
@@ -6461,11 +7346,11 @@ func (client *Client) ListNormalizationSecurityDomainsWithOptions(request *ListN
 
 // Summary:
 //
-// Retrieves a list of security domains.
+// Retrieves the list of security domains.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class and configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationSecurityDomainsRequest
 //
@@ -6487,7 +7372,7 @@ func (client *Client) ListNormalizationSecurityDomains(request *ListNormalizatio
 //
 // Description:
 //
-// The \\`JsonConfig\\` request parameter is a complex JSON configuration. A supporting tool class is provided that contains configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a highly complex JSON configuration. A utility class with specific configuration examples is provided. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param tmpReq - ListProductsRequest
 //
@@ -6573,7 +7458,7 @@ func (client *Client) ListProductsWithOptions(tmpReq *ListProductsRequest, runti
 //
 // Description:
 //
-// The \\`JsonConfig\\` request parameter is a complex JSON configuration. A supporting tool class is provided that contains configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a highly complex JSON configuration. A utility class with specific configuration examples is provided. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListProductsRequest
 //
@@ -6595,7 +7480,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListQueryViewsRequest
 //
@@ -6673,7 +7558,7 @@ func (client *Client) ListQueryViewsWithOptions(request *ListQueryViewsRequest, 
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListQueryViewsRequest
 //
@@ -6697,7 +7582,7 @@ func (client *Client) ListQueryViews(request *ListQueryViewsRequest) (_result *L
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListResponseRuleFieldsRequest
 //
@@ -6767,7 +7652,7 @@ func (client *Client) ListResponseRuleFieldsWithOptions(request *ListResponseRul
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListResponseRuleFieldsRequest
 //
@@ -6911,7 +7796,7 @@ func (client *Client) ListResponseRules(request *ListResponseRulesRequest) (_res
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON Configurations string. We provide a utility class with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListTagsRequest
 //
@@ -6991,7 +7876,7 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *dar
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON Configurations string. We provide a utility class with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListTagsRequest
 //
@@ -7009,11 +7894,11 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 
 // Summary:
 //
-// Retrieves a list of traffic statistics.
+// Retrieves the list of traffic statistics.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class with configuration examples is provided. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param tmpReq - ListTrafficStatisticsRequest
 //
@@ -7099,11 +7984,11 @@ func (client *Client) ListTrafficStatisticsWithOptions(tmpReq *ListTrafficStatis
 
 // Summary:
 //
-// Retrieves a list of traffic statistics.
+// Retrieves the list of traffic statistics.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class with configuration examples is provided. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListTrafficStatisticsRequest
 //
@@ -7125,7 +8010,7 @@ func (client *Client) ListTrafficStatistics(request *ListTrafficStatisticsReques
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class provides examples for this configuration. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig input parameter is a complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListUpgradeItemsRequest
 //
@@ -7189,7 +8074,7 @@ func (client *Client) ListUpgradeItemsWithOptions(request *ListUpgradeItemsReque
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class provides examples for this configuration. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig input parameter is a complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListUpgradeItemsRequest
 //
@@ -7207,11 +8092,13 @@ func (client *Client) ListUpgradeItems(request *ListUpgradeItemsRequest) (_resul
 
 // Summary:
 //
-// Retrieves a list of vendors.
+// Retrieves the list of vendors.
 //
 // Description:
 //
-// The frequency and time of notifications are limited. Each user can receive a maximum of two notifications per day, which are sent only between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param tmpReq - ListVendorsRequest
 //
@@ -7289,11 +8176,13 @@ func (client *Client) ListVendorsWithOptions(tmpReq *ListVendorsRequest, runtime
 
 // Summary:
 //
-// Retrieves a list of vendors.
+// Retrieves the list of vendors.
 //
 // Description:
 //
-// The frequency and time of notifications are limited. Each user can receive a maximum of two notifications per day, which are sent only between 08:00 and 20:00.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - ListVendorsRequest
 //
@@ -7315,7 +8204,9 @@ func (client *Client) ListVendors(request *ListVendorsRequest) (_result *ListVen
 //
 // Description:
 //
-// There are limits on the frequency and time of notifications. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside of this time frame.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param request - RefreshDataSourceRequest
 //
@@ -7375,7 +8266,9 @@ func (client *Client) RefreshDataSourceWithOptions(request *RefreshDataSourceReq
 //
 // Description:
 //
-// There are limits on the frequency and time of notifications. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside of this time frame.
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param request - RefreshDataSourceRequest
 //
@@ -7463,13 +8356,128 @@ func (client *Client) ResetDataStorage(request *ResetDataStorageRequest) (_resul
 
 // Summary:
 //
+// Incrementally resumes the SSE event stream for a specified security operations Agent turn based on the run cursor.
+//
+// Description:
+//
+// Resumes the SSE event stream for a security operations Agent conversation turn from a specified cursor.
+//
+// @param tmpReq - ResumeCopilotTurnStreamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeCopilotTurnStreamResponse
+func (client *Client) ResumeCopilotTurnStreamWithSSE(tmpReq *ResumeCopilotTurnStreamRequest, runtime *dara.RuntimeOptions, _yield chan *ResumeCopilotTurnStreamResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.resumeCopilotTurnStreamWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// Incrementally resumes the SSE event stream for a specified security operations Agent turn based on the run cursor.
+//
+// Description:
+//
+// Resumes the SSE event stream for a security operations Agent conversation turn from a specified cursor.
+//
+// @param tmpReq - ResumeCopilotTurnStreamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeCopilotTurnStreamResponse
+func (client *Client) ResumeCopilotTurnStreamWithOptions(tmpReq *ResumeCopilotTurnStreamRequest, runtime *dara.RuntimeOptions) (_result *ResumeCopilotTurnStreamResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ResumeCopilotTurnStreamShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CursorByRun) {
+		request.CursorByRunShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CursorByRun, dara.String("CursorByRun"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.CursorByRunShrink) {
+		body["CursorByRun"] = request.CursorByRunShrink
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		body["TraceId"] = request.TraceId
+	}
+
+	if !dara.IsNil(request.TurnId) {
+		body["TurnId"] = request.TurnId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeCopilotTurnStream"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("string"),
+	}
+	_result = &ResumeCopilotTurnStreamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Incrementally resumes the SSE event stream for a specified security operations Agent turn based on the run cursor.
+//
+// Description:
+//
+// Resumes the SSE event stream for a security operations Agent conversation turn from a specified cursor.
+//
+// @param request - ResumeCopilotTurnStreamRequest
+//
+// @return ResumeCopilotTurnStreamResponse
+func (client *Client) ResumeCopilotTurnStream(request *ResumeCopilotTurnStreamRequest) (_result *ResumeCopilotTurnStreamResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ResumeCopilotTurnStreamResponse{}
+	_body, _err := client.ResumeCopilotTurnStreamWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Sets the default version of a normalization rule.
 //
 // Description:
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - SetDefaultNormalizationRuleVersionRequest
 //
@@ -7535,7 +8543,7 @@ func (client *Client) SetDefaultNormalizationRuleVersionWithOptions(request *Set
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
 //
 // @param request - SetDefaultNormalizationRuleVersionRequest
 //
@@ -8412,7 +9420,7 @@ func (client *Client) UpdateDataSetRecord(request *UpdateDataSetRecordRequest) (
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class provides configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -8511,7 +9519,7 @@ func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceReque
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class provides configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -8647,7 +9655,11 @@ func (client *Client) UpdateDataSourceTemplate(request *UpdateDataSourceTemplate
 
 // Summary:
 //
-// Changes the log storage region for Log Management.
+// Modifies the log storage region in log management.
+//
+// Description:
+//
+// Updates the log storage region or the global switch for multi-account centralized delivery. Submit these two types of operations separately. Before modifying the global switch, query GetDataStorage first and use the returned ConfigurationVersion and TargetProject. Do not copy the fixed version and account from the examples. The current V2 version does not support the legacy DeliveryStatus global switch. After writing, re-query GetDataStorage to obtain the latest configuration.
 //
 // @param request - UpdateDataStorageRequest
 //
@@ -8662,6 +9674,10 @@ func (client *Client) UpdateDataStorageWithOptions(request *UpdateDataStorageReq
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigurationVersion) {
+		body["ConfigurationVersion"] = request.ConfigurationVersion
+	}
+
 	if !dara.IsNil(request.DataStorageRegionId) {
 		body["DataStorageRegionId"] = request.DataStorageRegionId
 	}
@@ -8674,12 +9690,20 @@ func (client *Client) UpdateDataStorageWithOptions(request *UpdateDataStorageReq
 		body["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.MultiAccountDeliveryEnabled) {
+		body["MultiAccountDeliveryEnabled"] = request.MultiAccountDeliveryEnabled
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		body["RegionId"] = request.RegionId
 	}
 
 	if !dara.IsNil(request.RoleFor) {
 		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.TargetProject) {
+		body["TargetProject"] = request.TargetProject
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8707,7 +9731,11 @@ func (client *Client) UpdateDataStorageWithOptions(request *UpdateDataStorageReq
 
 // Summary:
 //
-// Changes the log storage region for Log Management.
+// Modifies the log storage region in log management.
+//
+// Description:
+//
+// Updates the log storage region or the global switch for multi-account centralized delivery. Submit these two types of operations separately. Before modifying the global switch, query GetDataStorage first and use the returned ConfigurationVersion and TargetProject. Do not copy the fixed version and account from the examples. The current V2 version does not support the legacy DeliveryStatus global switch. After writing, re-query GetDataStorage to obtain the latest configuration.
 //
 // @param request - UpdateDataStorageRequest
 //
@@ -8725,21 +9753,39 @@ func (client *Client) UpdateDataStorage(request *UpdateDataStorageRequest) (_res
 
 // Summary:
 //
-// Updates the status of log delivery.
+// Modifies the log delivery status.
 //
-// @param request - UpdateDataStorageDeliveryRequest
+// Description:
+//
+// Before calling this operation, make sure that the Cloud Threat Detection and Response (CTDR) data storage service is activated for your account and that the data storage order has not expired. Call the GetDataStorage operation to check the data storage order status.
+//
+// @param tmpReq - UpdateDataStorageDeliveryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDataStorageDeliveryResponse
-func (client *Client) UpdateDataStorageDeliveryWithOptions(request *UpdateDataStorageDeliveryRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataStorageDeliveryResponse, _err error) {
+func (client *Client) UpdateDataStorageDeliveryWithOptions(tmpReq *UpdateDataStorageDeliveryRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataStorageDeliveryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdateDataStorageDeliveryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SelectedAccountIds) {
+		request.SelectedAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SelectedAccountIds, dara.String("SelectedAccountIds"), dara.String("simple"))
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoIncludeNewAccounts) {
+		body["AutoIncludeNewAccounts"] = request.AutoIncludeNewAccounts
+	}
+
+	if !dara.IsNil(request.ConfigurationVersion) {
+		body["ConfigurationVersion"] = request.ConfigurationVersion
+	}
+
 	if !dara.IsNil(request.Lang) {
 		body["Lang"] = request.Lang
 	}
@@ -8758,6 +9804,18 @@ func (client *Client) UpdateDataStorageDeliveryWithOptions(request *UpdateDataSt
 
 	if !dara.IsNil(request.RoleFor) {
 		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.SelectedAccountIdsShrink) {
+		body["SelectedAccountIds"] = request.SelectedAccountIdsShrink
+	}
+
+	if !dara.IsNil(request.SubUserId) {
+		body["SubUserId"] = request.SubUserId
+	}
+
+	if !dara.IsNil(request.TargetProject) {
+		body["TargetProject"] = request.TargetProject
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8785,7 +9843,11 @@ func (client *Client) UpdateDataStorageDeliveryWithOptions(request *UpdateDataSt
 
 // Summary:
 //
-// Updates the status of log delivery.
+// Modifies the log delivery status.
+//
+// Description:
+//
+// Before calling this operation, make sure that the Cloud Threat Detection and Response (CTDR) data storage service is activated for your account and that the data storage order has not expired. Call the GetDataStorage operation to check the data storage order status.
 //
 // @param request - UpdateDataStorageDeliveryRequest
 //
@@ -8893,7 +9955,7 @@ func (client *Client) UpdateDataStorageTtl(request *UpdateDataStorageTtlRequest)
 //
 // Description:
 //
-// Because this operation uses complex request parameters, a supporting tool class is provided to assist with the JSON configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, a utility class is provided with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateDetectionRuleRequest
 //
@@ -9077,7 +10139,7 @@ func (client *Client) UpdateDetectionRuleWithOptions(request *UpdateDetectionRul
 //
 // Description:
 //
-// Because this operation uses complex request parameters, a supporting tool class is provided to assist with the JSON configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, a utility class is provided with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateDetectionRuleRequest
 //
@@ -9099,7 +10161,7 @@ func (client *Client) UpdateDetectionRule(request *UpdateDetectionRuleRequest) (
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. For configuration examples, see the supporting tool class in the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param tmpReq - UpdateNormalizationRuleRequest
 //
@@ -9225,7 +10287,7 @@ func (client *Client) UpdateNormalizationRuleWithOptions(tmpReq *UpdateNormaliza
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. For configuration examples, see the supporting tool class in the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateNormalizationRuleRequest
 //
@@ -9345,7 +10407,7 @@ func (client *Client) UpdateNormalizationSchema(request *UpdateNormalizationSche
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. For an example of a supporting tool class with configuration examples, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help with specific configuration examples, a utility class is provided. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateProductRequest
 //
@@ -9413,7 +10475,7 @@ func (client *Client) UpdateProductWithOptions(request *UpdateProductRequest, ru
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. For an example of a supporting tool class with configuration examples, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. To help with specific configuration examples, a utility class is provided. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateProductRequest
 //
@@ -9435,7 +10497,7 @@ func (client *Client) UpdateProduct(request *UpdateProductRequest) (_result *Upd
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig input parameter is a complex JSON configuration. To help you configure it, a supporting utility class with examples is provided. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateResponseRuleRequest
 //
@@ -9531,7 +10593,7 @@ func (client *Client) UpdateResponseRuleWithOptions(request *UpdateResponseRuleR
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig input parameter is a complex JSON configuration. To help you configure it, a supporting utility class with examples is provided. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateResponseRuleRequest
 //
@@ -9635,11 +10697,11 @@ func (client *Client) UpdateVendor(request *UpdateVendorRequest) (_result *Updat
 
 // Summary:
 //
-// Verify log storage.
+// Validates the log storage.
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class is provided to help you create the configuration. For a code sample, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. To simplify this, we provide a utility class to assist with specific configuration examples. For more information, refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ValidateLogStoreRequest
 //
@@ -9707,11 +10769,11 @@ func (client *Client) ValidateLogStoreWithOptions(request *ValidateLogStoreReque
 
 // Summary:
 //
-// Verify log storage.
+// Validates the log storage.
 //
 // Description:
 //
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class is provided to help you create the configuration. For a code sample, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. To simplify this, we provide a utility class to assist with specific configuration examples. For more information, refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ValidateLogStoreRequest
 //
@@ -9729,11 +10791,11 @@ func (client *Client) ValidateLogStore(request *ValidateLogStoreRequest) (_resul
 
 // Summary:
 //
-// Validates a normalization rule.
+// Validates normalization rules.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class provides configuration examples. For more information, see the [demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a highly complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ValidateNormalizationRuleRequest
 //
@@ -9821,11 +10883,11 @@ func (client *Client) ValidateNormalizationRuleWithOptions(request *ValidateNorm
 
 // Summary:
 //
-// Validates a normalization rule.
+// Validates normalization rules.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A supporting tool class provides configuration examples. For more information, see the [demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a highly complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ValidateNormalizationRuleRequest
 //
@@ -9839,4 +10901,196 @@ func (client *Client) ValidateNormalizationRule(request *ValidateNormalizationRu
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) createCopilotChatWithSSE_opYieldFunc(_yield chan *CreateCopilotChatResponse, _yieldErr chan error, tmpReq *CreateCopilotChatRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &CreateCopilotChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateConversation) {
+		request.CreateConversationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateConversation, dara.String("CreateConversation"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Messages) {
+		request.MessagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Messages, dara.String("Messages"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientConversationId) {
+		body["ClientConversationId"] = request.ClientConversationId
+	}
+
+	if !dara.IsNil(request.ClientMessageId) {
+		body["ClientMessageId"] = request.ClientMessageId
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.CreateConversationShrink) {
+		body["CreateConversation"] = request.CreateConversationShrink
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MessagesShrink) {
+		body["Messages"] = request.MessagesShrink
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.PlanMode) {
+		body["PlanMode"] = request.PlanMode
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReplaceTurnId) {
+		body["ReplaceTurnId"] = request.ReplaceTurnId
+	}
+
+	if !dara.IsNil(request.RouteTarget) {
+		body["RouteTarget"] = request.RouteTarget
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["Source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["Stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.ThinkingMode) {
+		body["ThinkingMode"] = request.ThinkingMode
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		body["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCopilotChat"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("string"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.StringValue(resp.Event.Data)
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) resumeCopilotTurnStreamWithSSE_opYieldFunc(_yield chan *ResumeCopilotTurnStreamResponse, _yieldErr chan error, tmpReq *ResumeCopilotTurnStreamRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &ResumeCopilotTurnStreamShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CursorByRun) {
+		request.CursorByRunShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CursorByRun, dara.String("CursorByRun"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.CursorByRunShrink) {
+		body["CursorByRun"] = request.CursorByRunShrink
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		body["TraceId"] = request.TraceId
+	}
+
+	if !dara.IsNil(request.TurnId) {
+		body["TurnId"] = request.TurnId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeCopilotTurnStream"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("string"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.StringValue(resp.Event.Data)
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

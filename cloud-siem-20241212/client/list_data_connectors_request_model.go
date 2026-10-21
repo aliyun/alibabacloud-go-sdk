@@ -54,9 +54,9 @@ type ListDataConnectorsRequest struct {
 	DataConnectorName *string `json:"DataConnectorName,omitempty" xml:"DataConnectorName,omitempty"`
 	// The collector status. Valid values:
 	//
-	// - "enabled": enabled.
+	// - enabled: Enabled.
 	//
-	// - "disabled" (default): disabled.
+	// - disabled (default): Disabled.
 	//
 	// example:
 	//
@@ -86,6 +86,8 @@ type ListDataConnectorsRequest struct {
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass a language code.
+	//
 	// example:
 	//
 	// zh
@@ -96,13 +98,13 @@ type ListDataConnectorsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. You do not need to set this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The sort field. Currently, only sorting by updateTime is supported. If OrderField is left empty, the default order returned by the database is used.
+	// The sort field. Currently, only sorting by updateTime is supported. If OrderField is empty, the default order returned by the database is used.
 	//
 	// example:
 	//
@@ -110,9 +112,9 @@ type ListDataConnectorsRequest struct {
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - "asc": ascending order.
+	// - asc: ascending order.
 	//
-	// - "desc" (default): descending order.
+	// - desc (default): descending order.
 	//
 	// example:
 	//
@@ -140,7 +142,7 @@ type ListDataConnectorsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID that the administrator switches to when viewing as another member.
+	// The ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//

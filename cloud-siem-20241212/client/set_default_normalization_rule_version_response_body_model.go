@@ -62,7 +62,7 @@ func (s *SetDefaultNormalizationRuleVersionResponseBody) Validate() error {
 }
 
 type SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion struct {
-	// The creation time.
+	// The time when the normalization rule version was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -132,6 +132,8 @@ type SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion stru
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// The normalization security domain ID.
+	//
 	// example:
 	//
 	// NETWORK_AND_WEB_SECURITY
@@ -142,7 +144,7 @@ type SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion stru
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The update time.
+	// The time when the normalization rule version was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

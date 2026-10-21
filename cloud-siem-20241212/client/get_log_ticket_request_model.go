@@ -20,11 +20,13 @@ type iGetLogTicketRequest interface {
 }
 
 type GetLogTicketRequest struct {
-	// The language of the response messages. Valid values:
+	// The language of the response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
+	//
+	// Note: This parameter is required in actual calls. If this parameter is not specified, the service returns a 400 error "The specified Lang can not be empty." Explicitly pass in the language code.
 	//
 	// example:
 	//
@@ -36,17 +38,17 @@ type GetLogTicketRequest struct {
 	//
 	// 173326*******
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	// The region of the Data Management hub for threat analysis. Select the region based on the location of your asset. Valid values:
+	// The region where the Cloud Threat Detection and Response (CTDR) data management center is located. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: The asset is in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: The asset is in a region outside China.
+	// - ap-southeast-1: The assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of a member. This parameter lets an administrator switch to the perspective of the member.
+	// The user ID that the administrator switches to when viewing as another member.
 	//
 	// example:
 	//

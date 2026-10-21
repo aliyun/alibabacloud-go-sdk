@@ -20,33 +20,39 @@ type iDeleteDataSourceRequest interface {
 }
 
 type DeleteDataSourceRequest struct {
-	// The ID of the data source.
+	// The data source ID.
+	//
+	// Note: This parameter identifies the target of the delete operation and is required. Only data sources with a DataSourceType of custom can be deleted. Data sources of the preset type cannot be deleted.
 	//
 	// example:
 	//
 	// ds-txejfbrh94k5cx58a4qh
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required. If it is not provided, the API returns a parameter validation error: "The specified Lang can not be empty."
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the Data Management center for threat analysis is located. Select a region based on the location of your assets. Valid values:
+	// The region where the data management center for Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are in a region outside China.
+	// - ap-southeast-1: Assets are located outside China.
+	//
+	// - cn-shanghai: The actual data storage region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member whose permissions you want to use. This parameter is available only to administrators.
+	// The user ID that the administrator uses to switch to the view of another member.
 	//
 	// example:
 	//

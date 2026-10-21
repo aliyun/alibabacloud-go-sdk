@@ -18,7 +18,7 @@ type iGetIncidentResponseBody interface {
 type GetIncidentResponseBody struct {
 	// The event information.
 	Incident *GetIncidentResponseBodyIncident `json:"Incident,omitempty" xml:"Incident,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetIncidentResponseBody) Validate() error {
 }
 
 type GetIncidentResponseBodyIncident struct {
-	// The count of attack stages associated with the event alerts.
+	// The number of attack phases in the alerts associated with the event.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetIncidentResponseBodyIncident struct {
 	//
 	// }
 	AttckTactics interface{} `json:"AttckTactics,omitempty" xml:"AttckTactics,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -96,17 +96,17 @@ type GetIncidentResponseBodyIncident struct {
 	//
 	// dr-fy2zvgiykjifbiim****
 	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
-	// The event summaries type. Valid values:
+	// The event aggregation type. Valid values:
 	//
-	// - none: no event is generated.
+	// - none: No event is generated.
 	//
-	// - graph_compute: graph computing (supported by predefined rules).
+	// - graph_compute: Graph computing (supported by predefined rules).
 	//
-	// - expert: expert rule.
+	// - expert: Expert rules.
 	//
-	// - passthrough: alerting pass-through (one-to-one).
+	// - passthrough: Alert pass-through (one-to-one).
 	//
-	// - window: same-type aggregation (window).
+	// - window: Similar event aggregation (window).
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type GetIncidentResponseBodyIncident struct {
 	//
 	// Forti
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
-	// The remarks of the event.
+	// The remarks on the event.
 	//
 	// example:
 	//
@@ -132,13 +132,13 @@ type GetIncidentResponseBodyIncident struct {
 	IncidentRemark *string `json:"IncidentRemark,omitempty" xml:"IncidentRemark,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// - 0: unhandled.
+	// - 0: Unhandled.
 	//
-	// - 1: handling.
+	// - 1: Processing.
 	//
-	// - 5: handling failed.
+	// - 5: Processing failed.
 	//
-	// - 10: handled.
+	// - 10: Handled.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type GetIncidentResponseBodyIncident struct {
 	//
 	// ["176618589410****","1130916744888****"]
 	RelateUserIds interface{} `json:"RelateUserIds,omitempty" xml:"RelateUserIds,omitempty"`
-	// The response time. Unit: milliseconds (ms).
+	// The response time in milliseconds.
 	//
 	// example:
 	//
@@ -194,15 +194,15 @@ type GetIncidentResponseBodyIncident struct {
 	ResponseTime *int64 `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
 	// The threat level. Valid values:
 	//
-	// - 5: critical.
+	// - 5: Critical.
 	//
-	// - 4: high.
+	// - 4: High.
 	//
-	// - 3: medium.
+	// - 3: Medium.
 	//
-	// - 2: low.
+	// - 2: Low.
 	//
-	// - 1: informational.
+	// - 1: Informational.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type GetIncidentResponseBodyIncident struct {
 	//
 	// 90
 	ThreatScore *string `json:"ThreatScore,omitempty" xml:"ThreatScore,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iGetDetectionStatisticResponseBody interface {
 }
 
 type GetDetectionStatisticResponseBody struct {
-	// The detection rule count result.
+	// The count results of detection rules.
 	DetectionStatistic *GetDetectionStatisticResponseBodyDetectionStatistic `json:"DetectionStatistic,omitempty" xml:"DetectionStatistic,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,6 +62,7 @@ func (s *GetDetectionStatisticResponseBody) Validate() error {
 }
 
 type GetDetectionStatisticResponseBodyDetectionStatistic struct {
+	// The number of AI-powered aggregation rules.
 	AiPoweredAggregationRuleCount *int32 `json:"AiPoweredAggregationRuleCount,omitempty" xml:"AiPoweredAggregationRuleCount,omitempty"`
 	// The number of online rules.
 	//
@@ -93,7 +94,7 @@ type GetDetectionStatisticResponseBodyDetectionStatistic struct {
 	//
 	// 2
 	PassthroughRuleCount *int32 `json:"PassthroughRuleCount,omitempty" xml:"PassthroughRuleCount,omitempty"`
-	// The number of similar aggregation rules.
+	// The number of same-type aggregation rules.
 	//
 	// example:
 	//

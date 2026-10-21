@@ -22,7 +22,9 @@ type iGetAlertRequest interface {
 }
 
 type GetAlertRequest struct {
-	// The ID of the alert that is associated with the incident.
+	// The ID of the alert associated with the event.
+	//
+	// > This parameter is required. If this parameter is not specified, the service returns a 400 error.
 	//
 	// example:
 	//
@@ -34,15 +36,17 @@ type GetAlertRequest struct {
 	//
 	// - **en**: English.
 	//
+	// > This parameter is required. If this parameter is not specified, the service returns a 400 error.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region in which the threat detection and response data management center resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the data management center of threat detection and response is located. Specify the management center region based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	// - cn-hangzhou: Your assets belong to the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets reside outside China.
+	// - ap-southeast-1: Your assets belong to regions outside China.
 	//
 	// example:
 	//
@@ -54,7 +58,7 @@ type GetAlertRequest struct {
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type.
+	// The view type. Valid values:
 	//
 	// - 0: the view of the current Alibaba Cloud account.
 	//

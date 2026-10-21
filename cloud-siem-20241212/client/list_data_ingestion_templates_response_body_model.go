@@ -106,7 +106,7 @@ type ListDataIngestionTemplatesResponseBodyDataIngestionTemplates struct {
 	//
 	// 3
 	CapacityCount *string `json:"CapacityCount,omitempty" xml:"CapacityCount,omitempty"`
-	// The time when the template was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -122,23 +122,23 @@ type ListDataIngestionTemplatesResponseBodyDataIngestionTemplates struct {
 	//
 	// realtime
 	DataIngestionMode *string `json:"DataIngestionMode,omitempty" xml:"DataIngestionMode,omitempty"`
-	// The data ingestion status. Valid values:
+	// The accessed state of data ingestion. Valid values:
 	//
-	// - enabled: enabled.
+	// - enabled: Enabled.
 	//
-	// - disabled: disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	DataIngestionStatus *string `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
-	// The ID of the data ingestion template.
+	// The data ingestion template ID.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas_account_snapshot_log
 	DataIngestionTemplateId *string `json:"DataIngestionTemplateId,omitempty" xml:"DataIngestionTemplateId,omitempty"`
-	// The name of the data ingestion template.
+	// The data source template name.
 	//
 	// example:
 	//
@@ -158,25 +158,25 @@ type ListDataIngestionTemplatesResponseBodyDataIngestionTemplates struct {
 	//
 	// running
 	DataIngestionTemplateStatus *string `json:"DataIngestionTemplateStatus,omitempty" xml:"DataIngestionTemplateStatus,omitempty"`
-	// The ID of the data source template.
+	// The data source template ID.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas_account_snapshot_log_173326*******
 	DataSourceTemplateId *string `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
-	// The ID of the normalization rule.
+	// The normalization rule ID.
 	//
 	// example:
 	//
 	// alibaba_cloud_actiontrail_event_rule
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The name of the normalization rule.
+	// The normalization rule name.
 	//
 	// example:
 	//
 	// normalization_rule_ke1RN
 	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
-	// The time when the template was last updated.
+	// The update time.
 	//
 	// example:
 	//

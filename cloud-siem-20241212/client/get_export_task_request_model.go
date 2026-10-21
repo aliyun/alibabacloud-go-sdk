@@ -32,21 +32,23 @@ type GetExportTaskRequest struct {
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required. If you do not specify this parameter, the API returns a 400 error.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the threat analysis data management center is deployed. Select a region based on your asset location. Valid values:
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are outside the Chinese mainland.
+	// - ap-southeast-1: Your assets reside outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of a member account. An administrator can use this parameter to operate as the specified member account.
+	// The ID of the user to which the administrator switches the view.
 	//
 	// example:
 	//

@@ -62,13 +62,13 @@ func (s *GetNormalizationRuleVersionResponseBody) Validate() error {
 }
 
 type GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion struct {
-	// The time when the rule version was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the normalization rule category.
+	// The category ID of the normalization rule.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion struct {
 	//
 	// normalization_rule_Z57np
 	NormalizationRuleDescription *string `json:"NormalizationRuleDescription,omitempty" xml:"NormalizationRuleDescription,omitempty"`
-	// The expression for the normalization rule.
+	// The expression of the normalization rule.
 	//
 	// example:
 	//
@@ -112,9 +112,9 @@ type GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion struct {
 	NormalizationRuleStatus *string `json:"NormalizationRuleStatus,omitempty" xml:"NormalizationRuleStatus,omitempty"`
 	// The type of the normalization rule. Valid values:
 	//
-	// - predefined: a predefined rule.
+	// - predefined: predefined normalization rule.
 	//
-	// - custom: a custom rule.
+	// - custom: custom normalization rule.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion struct {
 	//
 	// V1
 	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
-	// The name of the normalization rule version.
+	// The version name of the normalization rule.
 	//
 	// example:
 	//
@@ -138,29 +138,29 @@ type GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion struct {
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-	// The product ID.
+	// The ID of the product.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region where the Data Management center for Threat Analysis is located. Select a region for the management center based on the region where your assets are located. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are in a region outside China.
+	// - ap-southeast-1: Assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the rule version was last updated.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the vendor for the normalization rule.
+	// The ID of the vendor that corresponds to the normalization rule.
 	//
 	// example:
 	//

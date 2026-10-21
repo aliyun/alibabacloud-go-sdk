@@ -28,19 +28,19 @@ type iListNormalizationRuleCapacitiesResponseBody interface {
 }
 
 type ListNormalizationRuleCapacitiesResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. If the response is truncated, use this token in your next request to retrieve the next page of results. If this parameter is empty, all results have been returned.
+	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of security capabilities that are associated with the normalization rules.
+	// The list of security capabilities associated with normalization rules.
 	NormalizationRuleCapacities []*ListNormalizationRuleCapacitiesResponseBodyNormalizationRuleCapacities `json:"NormalizationRuleCapacities,omitempty" xml:"NormalizationRuleCapacities,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -54,13 +54,13 @@ type ListNormalizationRuleCapacitiesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type ListNormalizationRuleCapacitiesResponseBodyNormalizationRuleCapacities stru
 	//
 	// - detection_custom_rule: custom analysis rule.
 	//
-	// - incident_investigation: security event handling.
+	// - incident_investigation: security incident handling.
 	//
 	// - soar_playbooks: predefined playbook.
 	//
@@ -184,7 +184,7 @@ type ListNormalizationRuleCapacitiesResponseBodyNormalizationRuleCapacities stru
 	//
 	// detection_preset_rule
 	CapacityType *string `json:"CapacityType,omitempty" xml:"CapacityType,omitempty"`
-	// The ID of the normalization rule.
+	// The normalization rule ID.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type iCreateResponseRuleRequest interface {
 }
 
 type CreateResponseRuleRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -54,17 +54,17 @@ type CreateResponseRuleRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that marks the current reading position. Leave this parameter empty to start reading from the beginning.
+	// The token that marks the start position of the current read. Leave this parameter empty to start from the beginning.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the threat detection and response data management center resides. Specify the management center based on the region of your assets. Valid values:
+	// The region where the data management center for Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: the Chinese mainland and Hong Kong (China).
+	// - cn-hangzhou: Assets are located in the Chinese mainland or Hong Kong (China).
 	//
-	// - ap-southeast-1: regions outside China.
+	// - ap-southeast-1: Assets are located in regions outside China.
 	//
 	// example:
 	//
@@ -78,17 +78,17 @@ type CreateResponseRuleRequest struct {
 	ResponseActionConfig *string `json:"ResponseActionConfig,omitempty" xml:"ResponseActionConfig,omitempty"`
 	// The action type of the automatic response rule. Valid values:
 	//
-	// - doPlaybook: execute a playbook.
+	// - doPlaybook: runs a playbook.
 	//
-	// - changeEventStatus: update the event status.
+	// - changeEventStatus: updates the event status.
 	//
-	// - changeThreatLevel: update the event threat level.
+	// - changeThreatLevel: updates the threat level of an event.
 	//
-	// - addEventTag: add an event label.
+	// - addEventTag: adds a tag to an event.
 	//
-	// - deleteEventTag: delete an event label.
+	// - deleteEventTag: deletes a tag from an event.
 	//
-	// - alertWhitelist: add the alert to the whitelist.
+	// - alertWhitelist: adds an alert to the whitelist.
 	//
 	// example:
 	//
@@ -112,20 +112,21 @@ type CreateResponseRuleRequest struct {
 	//
 	// 1
 	ResponseRulePriority *string `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
-	ResponseRuleRemark   *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
+	// The remarks for the response rule.
+	ResponseRuleRemark *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
 	// The trigger type of the automatic response rule. Valid values:
 	//
-	// - event: event occurrence.
+	// - event: an event occurs.
 	//
-	// - event_update: event update.
+	// - event_update: an event is updated.
 	//
-	// - alert: alert occurrence.
+	// - alert: an alert occurs.
 	//
 	// example:
 	//
 	// event
 	ResponseTriggerType *string `json:"ResponseTriggerType,omitempty" xml:"ResponseTriggerType,omitempty"`
-	// The user ID that the administrator switches to for viewing from the perspective of another member.
+	// The user ID that the administrator uses to switch to the view of another member account.
 	//
 	// example:
 	//

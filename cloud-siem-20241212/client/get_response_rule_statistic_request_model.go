@@ -26,21 +26,25 @@ type GetResponseRuleStatisticRequest struct {
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required. If this parameter is not specified, the API returns a 400 error.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: the Chinese mainland and Hong Kong (China)
+	// - cn-hangzhou: the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: regions outside China
+	// - ap-southeast-1: regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud account ID of the member to which the administrator switches the view.
+	// The Alibaba Cloud account ID that the administrator switches to for viewing as another member.
+	//
+	// Note: This parameter requires administrator permissions or multi-account settings. If you do not have sufficient permissions, the API returns a Forbidden.NoPermission error.
 	//
 	// example:
 	//
@@ -48,7 +52,7 @@ type GetResponseRuleStatisticRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account view.
+	// - 0: the view of the current Alibaba Cloud account.
 	//
 	// - 1: the view of all accounts in the enterprise.
 	//

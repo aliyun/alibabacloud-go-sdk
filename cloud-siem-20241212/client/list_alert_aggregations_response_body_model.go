@@ -26,27 +26,40 @@ type iListAlertAggregationsResponseBody interface {
 }
 
 type ListAlertAggregationsResponseBody struct {
+	// The list of alert groups returned based on the specified aggregation method, sorted by alert count in descending order.
 	AlertAggregations []*ListAlertAggregationsResponseBodyAlertAggregations `json:"AlertAggregations,omitempty" xml:"AlertAggregations,omitempty" type:"Repeated"`
+	// The maximum number of entries returned in this request.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 57
@@ -138,44 +151,68 @@ func (s *ListAlertAggregationsResponseBody) Validate() error {
 }
 
 type ListAlertAggregationsResponseBodyAlertAggregations struct {
+	// The list of account display values associated with the aggregation group, in one-to-one correspondence with AccountIds. When the username is valid and differs from the account ID, the format is "username/account ID". Otherwise, only the account ID is returned.
 	AccountDisplayValues []*string `json:"AccountDisplayValues,omitempty" xml:"AccountDisplayValues,omitempty" type:"Repeated"`
-	AccountIds           []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The list of member accounts IDs for which the report is generated. You need to specify this parameter only when you generate a multi-account report and want to limit the report to specific member accounts.
+	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The unique identifier of the aggregation group, which is a concatenation of AggregationType, PrimaryValue, and SecondaryValue joined by colons (:). The last segment is empty if no secondary aggregation value exists.
+	//
 	// example:
 	//
 	// vendor_product:alibaba_cloud:sas
 	AggregationKey *string `json:"AggregationKey,omitempty" xml:"AggregationKey,omitempty"`
+	// The aggregation method.
+	//
 	// example:
 	//
 	// 5m-avg
 	AggregationType *string `json:"AggregationType,omitempty" xml:"AggregationType,omitempty"`
+	// The number of consecutive failures. This parameter is optional.
+	//
 	// example:
 	//
 	// 25
-	AlertCount          *int64                                                                   `json:"AlertCount,omitempty" xml:"AlertCount,omitempty"`
-	AttackStages        []*string                                                                `json:"AttackStages,omitempty" xml:"AttackStages,omitempty" type:"Repeated"`
+	AlertCount *int64 `json:"AlertCount,omitempty" xml:"AlertCount,omitempty"`
+	// The collection of MITRE ATT&CK attack techniques associated with alerts in the aggregation group. Each element is a JSON array string.
+	AttackStages []*string `json:"AttackStages,omitempty" xml:"AttackStages,omitempty" type:"Repeated"`
+	// The quantity distribution by defense action within the aggregation group. Name is the action field value, and Value is the corresponding alert count.
 	DefenseActionCounts []*ListAlertAggregationsResponseBodyAlertAggregationsDefenseActionCounts `json:"DefenseActionCounts,omitempty" xml:"DefenseActionCounts,omitempty" type:"Repeated"`
+	// The time of the first access, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1785290308
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// The most recent time when the attack event occurred.
+	//
 	// example:
 	//
 	// 1785293908000
 	LatestTime *int64 `json:"LatestTime,omitempty" xml:"LatestTime,omitempty"`
+	// The display text of the primary aggregation value. For account aggregation, the format is "username/account ID". If no valid username exists, only the account ID is returned. For event summaries, the event name is returned based on the Lang parameter. If the name is missing, the event UUID is returned.
+	//
 	// example:
 	//
 	// Test incident
 	PrimaryDisplayValue *string `json:"PrimaryDisplayValue,omitempty" xml:"PrimaryDisplayValue,omitempty"`
+	// The value corresponding to the primary query condition.
+	//
 	// example:
 	//
 	// alibaba_cloud
 	PrimaryValue *string `json:"PrimaryValue,omitempty" xml:"PrimaryValue,omitempty"`
+	// The value corresponding to the secondary query condition.
+	//
 	// example:
 	//
 	// sas
-	SecondaryValue *string                                                           `json:"SecondaryValue,omitempty" xml:"SecondaryValue,omitempty"`
-	SourceCodes    []*string                                                         `json:"SourceCodes,omitempty" xml:"SourceCodes,omitempty" type:"Repeated"`
-	StatusCounts   []*ListAlertAggregationsResponseBodyAlertAggregationsStatusCounts `json:"StatusCounts,omitempty" xml:"StatusCounts,omitempty" type:"Repeated"`
+	SecondaryValue *string `json:"SecondaryValue,omitempty" xml:"SecondaryValue,omitempty"`
+	// The collection of event source codes.
+	//
+	// > Example: [\\\\\\"MRM\\\\\\"]
+	SourceCodes []*string `json:"SourceCodes,omitempty" xml:"SourceCodes,omitempty" type:"Repeated"`
+	// The quantity distribution by alert status within the aggregation group. Name is the alert status value, and Value is the corresponding alert count.
+	StatusCounts []*ListAlertAggregationsResponseBodyAlertAggregationsStatusCounts `json:"StatusCounts,omitempty" xml:"StatusCounts,omitempty" type:"Repeated"`
 }
 
 func (s ListAlertAggregationsResponseBodyAlertAggregations) String() string {
@@ -335,13 +372,17 @@ func (s *ListAlertAggregationsResponseBodyAlertAggregations) Validate() error {
 }
 
 type ListAlertAggregationsResponseBodyAlertAggregationsDefenseActionCounts struct {
+	// The display name of the entity attribute field that can be added to the whitelist.
+	//
 	// example:
 	//
 	// accesstoken
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The default right-hand value displayed for the whitelist rule.
+	//
 	// example:
 	//
-	// 测试-前途系统AI
+	// Test-FutureSystemAI
 	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -376,10 +417,14 @@ func (s *ListAlertAggregationsResponseBodyAlertAggregationsDefenseActionCounts) 
 }
 
 type ListAlertAggregationsResponseBodyAlertAggregationsStatusCounts struct {
+	// The display name of the entity attribute field that can be added to the whitelist.
+	//
 	// example:
 	//
 	// http://domain.com/
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The right-hand value.
+	//
 	// example:
 	//
 	// 123.123.123.123

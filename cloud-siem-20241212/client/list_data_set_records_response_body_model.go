@@ -26,21 +26,21 @@ type iListDataSetRecordsResponseBody interface {
 }
 
 type ListDataSetRecordsResponseBody struct {
-	// A list of dataset records.
+	// The list of dataset records.
 	DataSetRecords []*ListDataSetRecordsResponseBodyDataSetRecords `json:"DataSetRecords,omitempty" xml:"DataSetRecords,omitempty" type:"Repeated"`
-	// The maximum number of results to return per page for token-based pagination. Valid values: 1 to 100. Default: 50.
+	// The maximum number of results to return per query when you use the NextToken parameter. Valid values: 1 to 100. Default value: 50.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The token used to start the next query.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ListDataSetRecordsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that match the query.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -151,33 +151,33 @@ func (s *ListDataSetRecordsResponseBody) Validate() error {
 }
 
 type ListDataSetRecordsResponseBodyDataSetRecords struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1658974643000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The dataset ID.
+	// The ID of the dataset.
 	//
 	// example:
 	//
 	// dataset-t8ha6p7k61rmniqw****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	// The dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
 	// lmftest
 	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
-	// The dataset record ID.
+	// The ID of the dataset record.
 	//
 	// example:
 	//
 	// 124566
 	DataSetRecordId *string `json:"DataSetRecordId,omitempty" xml:"DataSetRecordId,omitempty"`
-	// The dataset record value.
+	// The values of the dataset record.
 	DataSetRecordValues *string `json:"DataSetRecordValues,omitempty" xml:"DataSetRecordValues,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

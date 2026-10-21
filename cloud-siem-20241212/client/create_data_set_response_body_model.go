@@ -16,7 +16,7 @@ type iCreateDataSetResponseBody interface {
 }
 
 type CreateDataSetResponseBody struct {
-	// The result returned after the dataset is created.
+	// The result of the dataset creation.
 	DataSetRecordStatistic *CreateDataSetResponseBodyDataSetRecordStatistic `json:"DataSetRecordStatistic,omitempty" xml:"DataSetRecordStatistic,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,7 +68,7 @@ type CreateDataSetResponseBodyDataSetRecordStatistic struct {
 	//
 	// dataset-qt0n8246gs9nackg****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	// The number of new records in the dataset.
+	// The number of new dataset records.
 	//
 	// example:
 	//

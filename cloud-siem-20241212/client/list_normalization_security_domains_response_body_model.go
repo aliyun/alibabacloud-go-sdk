@@ -22,13 +22,13 @@ type iListNormalizationSecurityDomainsResponseBody interface {
 }
 
 type ListNormalizationSecurityDomainsResponseBody struct {
-	// The maximum number of entries returned in this query.
+	// The maximum number of entries returned for this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//

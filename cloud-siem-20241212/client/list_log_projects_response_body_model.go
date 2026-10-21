@@ -22,15 +22,15 @@ type iListLogProjectsResponseBody interface {
 }
 
 type ListLogProjectsResponseBody struct {
-	// The list of Simple Log Service projects.
+	// The list of log projects.
 	LogProjects []*string `json:"LogProjects,omitempty" xml:"LogProjects,omitempty" type:"Repeated"`
-	// The maximum number of entries returned on this call.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. If this parameter is not returned, no more results are available.
+	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//

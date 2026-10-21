@@ -28,7 +28,7 @@ type ListNormalizationSchemasResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListNormalizationSchemasResponseBodyNormalizationSchemas struct {
 	//
 	// 1736386610000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the normalization rule category.
+	// The normalization rule category ID.
 	//
 	// example:
 	//
@@ -131,33 +131,37 @@ type ListNormalizationSchemasResponseBodyNormalizationSchemas struct {
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
 	// The field source. Valid values:
 	//
-	// normalized: normalized field.
+	// - normalized: normalized field.
 	//
-	// native: native field.
+	// - native: native field.
 	//
 	// example:
 	//
 	// normalized
 	NormalizationFieldSource *string `json:"NormalizationFieldSource,omitempty" xml:"NormalizationFieldSource,omitempty"`
-	// The description of the normalization schema.
+	// The normalization schema description.
 	//
 	// example:
 	//
 	// Network flow log
 	NormalizationSchemaDescription *string `json:"NormalizationSchemaDescription,omitempty" xml:"NormalizationSchemaDescription,omitempty"`
-	// The source of the normalization schema. Valid values: preset (predefined) and custom (user-defined).
+	// The normalization schema source. Valid values:
+	//
+	// - preset: predefined.
+	//
+	// - custom: custom.
 	//
 	// example:
 	//
 	// preset
 	NormalizationSchemaFrom *string `json:"NormalizationSchemaFrom,omitempty" xml:"NormalizationSchemaFrom,omitempty"`
-	// The ID of the normalization schema.
+	// The normalization schema ID.
 	//
 	// example:
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-	// The name of the normalization schema.
+	// The normalization schema name.
 	//
 	// example:
 	//

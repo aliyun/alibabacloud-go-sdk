@@ -28,33 +28,35 @@ type CreateProductRequest struct {
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required in practice. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty."
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the product.
+	// The product name.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The region of the Data Management center. Select a region based on the location of your assets. Valid values:
+	// The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Assets are in the Chinese mainland.
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets are outside China.
+	// - ap-southeast-1: Your assets reside outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of a member. This parameter is used when an administrator operates as another member.
+	// The user ID that the administrator uses to switch to the view of another member.
 	//
 	// example:
 	//
 	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The name of the vendor.
+	// The vendor name.
 	//
 	// example:
 	//

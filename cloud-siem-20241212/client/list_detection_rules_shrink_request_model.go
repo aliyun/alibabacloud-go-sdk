@@ -56,7 +56,7 @@ type iListDetectionRulesShrinkRequest interface {
 }
 
 type ListDetectionRulesShrinkRequest struct {
-	// The ATT\\&CK technique of the alert.
+	// The alert ATT&CK technique.
 	//
 	// example:
 	//
@@ -64,15 +64,15 @@ type ListDetectionRulesShrinkRequest struct {
 	AlertAttCk *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
 	// The threat level of the alert. Valid values:
 	//
-	// - 5: critical.
+	// - 5: Critical.
 	//
-	// - 4: important.
+	// - 4: High.
 	//
-	// - 3: medium.
+	// - 3: Medium.
 	//
-	// - 2: low.
+	// - 2: Low.
 	//
-	// - 1: informational.
+	// - 1: Informational.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type ListDetectionRulesShrinkRequest struct {
 	//
 	// TA0042
 	AlertTacticId *string `json:"AlertTacticId,omitempty" xml:"AlertTacticId,omitempty"`
-	// The alert type.
+	// The Alarm Metric of the alerting rule.
 	//
 	// example:
 	//
 	// siem_rule_type_alert_storm
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The type of the detection rule expression.
+	// The expression content of the detection rule.
 	//
 	// example:
 	//
@@ -118,27 +118,27 @@ type ListDetectionRulesShrinkRequest struct {
 	DetectionRuleStatus *string `json:"DetectionRuleStatus,omitempty" xml:"DetectionRuleStatus,omitempty"`
 	// The type of the detection rule. Valid values:
 	//
-	// - preset: a built-in detection rule.
+	// - preset: preset detection rule.
 	//
-	// - custom: a custom detection rule.
+	// - custom: custom detection rule.
 	//
-	// - custom_template: a rule template.
+	// - custom_template: rule template.
 	//
 	// example:
 	//
 	// preset
 	DetectionRuleType *string `json:"DetectionRuleType,omitempty" xml:"DetectionRuleType,omitempty"`
-	// The event aggregation type. Valid values:
+	// The event summaries type. Valid values:
 	//
-	// - none: No events are generated.
+	// - none: No event is generated.
 	//
-	// - graph_compute: graph computing (supported by predefined rules).
+	// - graph_compute: Graph computing (supported by predefined rules).
 	//
-	// - expert: expert rule.
+	// - expert: Expert rule.
 	//
-	// - passthrough: alert passthrough (one-to-one).
+	// - passthrough: Alerting pass-through (one-to-one).
 	//
-	// - window: aggregation of similar alerts (by window).
+	// - window: Same-type aggregation (window).
 	//
 	// example:
 	//
@@ -149,6 +149,8 @@ type ListDetectionRulesShrinkRequest struct {
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
+	//
+	// Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass a language code.
 	//
 	// example:
 	//
@@ -166,13 +168,13 @@ type ListDetectionRulesShrinkRequest struct {
 	//
 	// API_RISK_ACTIVITY
 	LogSchemaId *string `json:"LogSchemaId,omitempty" xml:"LogSchemaId,omitempty"`
-	// The maximum number of data entries to read.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to start the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -180,47 +182,47 @@ type ListDetectionRulesShrinkRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - **asc**: ascending order. This is the default value.
+	// - **asc**: Ascending order. This is the default value.
 	//
-	// - **desc**: descending order.
+	// - **desc**: Descending order.
 	//
 	// example:
 	//
 	// asc
 	OrderDirection *string `json:"OrderDirection,omitempty" xml:"OrderDirection,omitempty"`
-	// The field to sort by. Valid values:
+	// The field used for sorting. Valid values:
 	//
-	// - GmtCreate: the creation time.
+	// - GmtCreate: creation time.
 	//
-	// - GmtModified: the update time.
+	// - GmtModified: update time.
 	//
 	// example:
 	//
 	// GmtModified
 	OrderFieldName *string `json:"OrderFieldName,omitempty" xml:"OrderFieldName,omitempty"`
-	// The pagination parameter. This specifies the current page number.
+	// The page number of the current page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The pagination parameter. This specifies the number of entries per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the Data Management center of threat analysis is located. Select a region based on the region where your assets are located. Valid values:
+	// The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are outside China.
+	// - ap-southeast-1: The assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID that the administrator uses to switch to the perspective of another member.
+	// The ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//

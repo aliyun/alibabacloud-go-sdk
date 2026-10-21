@@ -68,7 +68,7 @@ func (s *ListTrafficStatisticsResponseBody) Validate() error {
 type ListTrafficStatisticsResponseBodyTrafficStatistics struct {
 	// The statistics information.
 	TrafficStatisticData []*ListTrafficStatisticsResponseBodyTrafficStatisticsTrafficStatisticData `json:"TrafficStatisticData,omitempty" xml:"TrafficStatisticData,omitempty" type:"Repeated"`
-	// The statistic target.
+	// The statistical target.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ func (s *ListTrafficStatisticsResponseBodyTrafficStatistics) Validate() error {
 }
 
 type ListTrafficStatisticsResponseBodyTrafficStatisticsTrafficStatisticData struct {
-	// The statistic time.
+	// The statistical time. The value is a date number in the YYYYMMDD format. For example, 20250815 indicates August 15, 2025.
 	//
 	// example:
 	//
 	// 20250815
 	TrafficStatisticTime *int64 `json:"TrafficStatisticTime,omitempty" xml:"TrafficStatisticTime,omitempty"`
-	// The statistic value.
+	// The statistical value.
 	//
 	// example:
 	//

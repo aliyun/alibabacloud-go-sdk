@@ -38,7 +38,7 @@ type iUpdateDataSourceRequest interface {
 }
 
 type UpdateDataSourceRequest struct {
-	// The source of the data. Valid values:
+	// The data source. Valid values:
 	//
 	// - center
 	//
@@ -48,13 +48,13 @@ type UpdateDataSourceRequest struct {
 	//
 	// custom
 	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
-	// The ID of the data source.
+	// The data source ID. This parameter is required and specifies the ID of the data source to update. If it is not provided, the API returns a 400 error.
 	//
 	// example:
 	//
 	// ds-014frtpy28m5ct2eoyo1
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type UpdateDataSourceRequest struct {
 	//
 	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English.
+	// - **en**: English. This parameter is required. If it is not provided, the service returns a 400 error.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the Simple Log Service project.
+	// The Simple Log Service project name.
 	//
 	// example:
 	//
@@ -90,39 +90,39 @@ type UpdateDataSourceRequest struct {
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The name of the Simple Log Service Logstore.
+	// The Simple Log Service Logstore name.
 	//
 	// example:
 	//
 	// cn-rds-sqlaudit
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The user ID for data access.
+	// The user ID for data ingestion.
 	//
 	// example:
 	//
 	// 173326*******
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	// The field to use for sorting the rule list. Valid values:
+	// The field used to sort the rule list. Valid values:
 	//
-	// - GmtModified: Sorts the list by modification time.
+	// - GmtModified: Sort by modification time.
 	//
-	// - Id: Sorts the list by rule ID. This is the default value.
+	// - Id: Sort by rule ID (default).
 	//
 	// example:
 	//
 	// Id
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The region of the Data Management center for threat analysis. Select a region based on the location of the assets. Valid values:
+	// The region where the data management center of the threat analysis service is located. Select the management center region based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Assets are in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets are outside China.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member whose perspective the administrator switches to.
+	// The user ID of the member account that the administrator switches to.
 	//
 	// example:
 	//
@@ -269,7 +269,7 @@ func (s *UpdateDataSourceRequest) Validate() error {
 }
 
 type UpdateDataSourceRequestDataSourceStores struct {
-	// The source of the data. Valid values:
+	// The data source. Valid values:
 	//
 	// - center
 	//
@@ -279,13 +279,13 @@ type UpdateDataSourceRequestDataSourceStores struct {
 	//
 	// custom
 	DataSourceStoreFrom *string `json:"DataSourceStoreFrom,omitempty" xml:"DataSourceStoreFrom,omitempty"`
-	// The ID of the log storage.
+	// The log storage ID.
 	//
 	// example:
 	//
 	// 1
 	DataSourceStoreId *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
-	// The name of the Simple Log Service project.
+	// The Simple Log Service project name.
 	//
 	// example:
 	//
@@ -297,7 +297,7 @@ type UpdateDataSourceRequestDataSourceStores struct {
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The name of the Simple Log Service Logstore.
+	// The Simple Log Service Logstore name.
 	//
 	// example:
 	//

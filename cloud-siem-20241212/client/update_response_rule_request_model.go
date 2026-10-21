@@ -38,7 +38,7 @@ type iUpdateResponseRuleRequest interface {
 }
 
 type UpdateResponseRuleRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -54,17 +54,17 @@ type UpdateResponseRuleRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that marks the position from which to start reading. If this parameter is left empty, data is read from the beginning.
+	// The token that marks the start position of the current read. Leave this parameter empty to start from the beginning.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the data management center of the threat analysis feature is located. Specify the management center based on the region of your assets. Valid values:
+	// The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: the Chinese mainland.
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: outside China.
+	// - ap-southeast-1: Your assets reside outside China.
 	//
 	// example:
 	//
@@ -78,17 +78,17 @@ type UpdateResponseRuleRequest struct {
 	ResponseActionConfig *string `json:"ResponseActionConfig,omitempty" xml:"ResponseActionConfig,omitempty"`
 	// The action type of the automated response rule. Valid values:
 	//
-	// - doPlaybook: execute a playbook.
+	// - doPlaybook: runs a playbook.
 	//
-	// - changeEventStatus: update the event status.
+	// - changeEventStatus: updates the event status.
 	//
-	// - changeThreatLevel: update the event threat level.
+	// - changeThreatLevel: updates the threat level of an event.
 	//
-	// - addEventTag: add an event label.
+	// - addEventTag: adds a label to an event.
 	//
-	// - deleteEventTag: delete an event label.
+	// - deleteEventTag: deletes a label from an event.
 	//
-	// - alertWhitelist: add the alert to the whitelist.
+	// - alertWhitelist: adds an alert to the whitelist.
 	//
 	// example:
 	//
@@ -117,8 +117,9 @@ type UpdateResponseRuleRequest struct {
 	// example:
 	//
 	// 1
-	ResponseRulePriority *int32  `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
-	ResponseRuleRemark   *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
+	ResponseRulePriority *int32 `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
+	// The remarks for the response rule.
+	ResponseRuleRemark *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
 	// The status of the automated response rule. Valid values:
 	//
 	// - 0: disabled.
@@ -131,11 +132,11 @@ type UpdateResponseRuleRequest struct {
 	ResponseRuleStatus *int32 `json:"ResponseRuleStatus,omitempty" xml:"ResponseRuleStatus,omitempty"`
 	// The trigger type of the automated response rule. Valid values:
 	//
-	// - event: event occurred.
+	// - event: an event occurs.
 	//
-	// - event_update: event updated.
+	// - event_update: an event is updated.
 	//
-	// - alert: alert occurred.
+	// - alert: an alert occurs.
 	//
 	// example:
 	//

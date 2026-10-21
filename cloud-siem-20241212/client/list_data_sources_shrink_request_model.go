@@ -52,7 +52,7 @@ type iListDataSourcesShrinkRequest interface {
 }
 
 type ListDataSourcesShrinkRequest struct {
-	// The source of the data. Valid values:
+	// The data source origin. Valid values:
 	//
 	// - center
 	//
@@ -62,15 +62,15 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// center
 	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
-	// The IDs of the data sources.
+	// The list of data source IDs.
 	DataSourceIdsShrink *string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
 	// alibaba_cloud_waf_alert_log
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The status of the data source. Valid values:
+	// The data source status. Valid values:
 	//
 	// - unconfigured
 	//
@@ -82,7 +82,7 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// unconfigured
 	DataSourceStatus *string `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
-	// The status of the Logstore. Valid values:
+	// The Logstore status. Valid values:
 	//
 	// - normal
 	//
@@ -92,13 +92,13 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// normal
 	DataSourceStoreStatus *string `json:"DataSourceStoreStatus,omitempty" xml:"DataSourceStoreStatus,omitempty"`
-	// The IDs of the data source templates.
+	// The list of data source template IDs.
 	DataSourceTemplateIdsShrink *string `json:"DataSourceTemplateIds,omitempty" xml:"DataSourceTemplateIds,omitempty"`
-	// The type of the data source. Valid values:
+	// The data source type. Valid values:
 	//
-	// - preset
+	//  - preset
 	//
-	// - custom
+	//  - custom
 	//
 	// example:
 	//
@@ -110,31 +110,33 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass a language code.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the Simple Log Service project.
+	// The Simple Log Service project name.
 	//
 	// example:
 	//
 	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
-	// The ID of the log storage region.
+	// The log storage region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The name of the Simple Log Service Logstore.
+	// The Simple Log Service Logstore name.
 	//
 	// example:
 	//
 	// audit-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The IDs of the users who can access the data.
+	// The list of data ingestion user IDs.
 	LogUserIdsShrink *string `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty"`
-	// The maximum number of entries to return for a single request.
+	// The maximum number of entries to return in this request.
 	//
 	// if can be null:
 	// true
@@ -143,13 +145,13 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. Set this parameter to the value of NextToken that is returned in the response to the previous query. Leave this parameter empty for the first query.
+	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The sorting order. Valid values:
+	// The sort order. Valid values:
 	//
 	// - desc
 	//
@@ -159,7 +161,7 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The sorting field.
+	// The field used for sorting.
 	//
 	// example:
 	//
@@ -177,17 +179,17 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// 5
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the Data Management Center of your threat analysis feature is located. Select a region based on the location of your assets. Valid values:
+	// The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are in a region outside China.
+	// - ap-southeast-1: The assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member. You can use this parameter to switch the perspective to a member.
+	// The user ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//

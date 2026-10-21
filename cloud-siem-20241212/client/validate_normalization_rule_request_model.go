@@ -36,81 +36,83 @@ type iValidateNormalizationRuleRequest interface {
 }
 
 type ValidateNormalizationRuleRequest struct {
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
 	// 123456
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The storage mode for extended fields. Valid values: \\`flat\\`, \\`pack\\`, and \\`reject\\`.
+	// The storage mode of extended fields. Valid values: flat, pack, and reject.
 	//
 	// example:
 	//
 	// flat
 	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
-	// The language of the response messages. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required in actual API calls. If this parameter is not provided, the service returns a 400 error with the message \\"The specified Lang can not be empty.\\" Explicitly specify the language code.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The sample log. The value must be in the JSON format.
+	// The log sample in JSON format.
 	//
 	// example:
 	//
 	// {"aaa":"bbb","xxx":"yyy"}
 	LogSample *string `json:"LogSample,omitempty" xml:"LogSample,omitempty"`
-	// The normalization category of the rule.
+	// The normalization category to which the rule belongs.
 	//
 	// example:
 	//
 	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
-	// The expression for the normalization rule.
+	// The expression of the normalization rule.
 	//
 	// example:
 	//
 	// *
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
-	// The mode of the normalization rule. Valid values: \\`both\\` and \\`realtime\\`.
+	// The mode of the normalization rule. Valid values: both and realtime.
 	//
 	// example:
 	//
 	// realtime
 	NormalizationRuleMode *string `json:"NormalizationRuleMode,omitempty" xml:"NormalizationRuleMode,omitempty"`
-	// The ID of the normalization pattern for the rule.
+	// The ID of the normalization schema to which the rule belongs. This parameter is required in actual API calls. If this parameter is not provided, the service returns a 400 error.
 	//
 	// example:
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-	// The product ID.
+	// The ID of the product.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region where the Data Management center for threat analysis is deployed. Select the region based on the location of your assets. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are in regions outside the Chinese mainland.
+	// - ap-southeast-1: The assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member. An administrator uses this parameter to switch to the perspective of the member.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
 	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The vendor ID.
+	// The ID of the vendor.
 	//
 	// example:
 	//

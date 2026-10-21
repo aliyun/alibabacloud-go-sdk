@@ -26,16 +26,31 @@ type iListQueryViewsResponseBody interface {
 }
 
 type ListQueryViewsResponseBody struct {
+	// The Simple Log Service project name.
+	//
+	// example:
+	//
+	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
-	LogRegionId    *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	LogStoreName   *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The log storage region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The Simple Log Service Logstore name.
+	//
+	// example:
+	//
+	// audit-activity
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	// The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned in the previous API call.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//

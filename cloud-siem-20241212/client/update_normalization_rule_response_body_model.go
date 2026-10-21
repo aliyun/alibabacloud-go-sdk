@@ -14,7 +14,7 @@ type iUpdateNormalizationRuleResponseBody interface {
 }
 
 type UpdateNormalizationRuleResponseBody struct {
-	// The request ID.
+	// The request message ID.
 	//
 	// example:
 	//

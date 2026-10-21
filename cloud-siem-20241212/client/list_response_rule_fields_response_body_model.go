@@ -28,7 +28,7 @@ type ListResponseRuleFieldsResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Valid values: leave this parameter empty for the first query or if no more results exist. If a next query exists, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If a next query exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -118,13 +118,13 @@ type ListResponseRuleFieldsResponseBodyListResponseRuleFields struct {
 	//
 	// OriginIP,ConsoleLog,CPUTime,Duration,ErrorCode,ErrorMessage,ResponseSize,ResponseStatus,RoutineName,ClientRequestID,LogTimestamp,FetchStatus,SubRequestID
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The normalization object type to which the field belongs.
+	// The normalized object type to which the field belongs.
 	//
 	// example:
 	//
 	// alert
 	FieldNormalization *string `json:"FieldNormalization,omitempty" xml:"FieldNormalization,omitempty"`
-	// The list of optional enumeration values for the field. This parameter is not returned if no enumeration values are available.
+	// The list of optional enumeration values for the field. This parameter is not returned if no enumeration values exist.
 	RightValue []*ListResponseRuleFieldsResponseBodyListResponseRuleFieldsRightValue `json:"RightValue,omitempty" xml:"RightValue,omitempty" type:"Repeated"`
 	// The English descriptions of the operators.
 	SupportOperators []*ListResponseRuleFieldsResponseBodyListResponseRuleFieldsSupportOperators `json:"SupportOperators,omitempty" xml:"SupportOperators,omitempty" type:"Repeated"`
@@ -278,17 +278,17 @@ type ListResponseRuleFieldsResponseBodyListResponseRuleFieldsSupportOperators st
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The aggregation method for the dispatch rule condition. Valid values:
 	//
-	// - `=`: equal to
+	// - `=`: Equal to.
 	//
-	// - `<>`: not equal to
+	// - `<>`: Not equal to.
 	//
-	// - `in`: contains
+	// - `in`: Contains.
 	//
-	// - `not in`: does not contain
+	// - `not in`: Does not contain.
 	//
-	// - `REGEXP`: matches the regular expression
+	// - `REGEXP`: Matches the regular expression.
 	//
-	// - `NOT REGEXP`: does not match the regular expression
+	// - `NOT REGEXP`: Does not match the regular expression.
 	//
 	// example:
 	//

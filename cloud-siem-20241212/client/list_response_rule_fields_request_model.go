@@ -30,6 +30,8 @@ type ListResponseRuleFieldsRequest struct {
 	//
 	// - **en**: English.
 	//
+	// > This parameter is required. If you do not specify this parameter, the API returns a 400 error.
+	//
 	// example:
 	//
 	// zh
@@ -40,7 +42,7 @@ type ListResponseRuleFieldsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that marks the position from which to start reading. Leave this parameter empty to read from the beginning.
+	// The pagination token that marks the current position for reading. Leave this parameter empty to read from the beginning.
 	//
 	// example:
 	//
@@ -48,9 +50,9 @@ type ListResponseRuleFieldsRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Chinese mainland.
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: outside the Chinese mainland.
+	// - ap-southeast-1: Your assets reside outside China.
 	//
 	// example:
 	//
@@ -64,9 +66,9 @@ type ListResponseRuleFieldsRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the view of all accounts in the enterprise.
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//

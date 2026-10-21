@@ -22,19 +22,19 @@ type iListNormalizationCategoriesResponseBody interface {
 }
 
 type ListNormalizationCategoriesResponseBody struct {
-	// The maximum number of entries returned on the current page.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. If the response does not contain this parameter, no more results are available.
+	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// A list of normalization categories.
+	// The list of standardized categories.
 	NormalizationCategories []*ListNormalizationCategoriesResponseBodyNormalizationCategories `json:"NormalizationCategories,omitempty" xml:"NormalizationCategories,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type ListNormalizationCategoriesResponseBody struct {
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListNormalizationCategoriesResponseBody) Validate() error {
 }
 
 type ListNormalizationCategoriesResponseBodyNormalizationCategories struct {
-	// The ID of the normalization category.
+	// The ID of the standardized category.
 	//
 	// example:
 	//
 	// COMMON_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
-	// The name of the normalization category.
+	// The name of the standardized category.
 	//
 	// example:
 	//

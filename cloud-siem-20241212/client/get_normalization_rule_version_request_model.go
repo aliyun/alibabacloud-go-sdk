@@ -28,6 +28,8 @@ type GetNormalizationRuleVersionRequest struct {
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required in actual API calls. If you do not specify this parameter, the service returns a 400 error with the message "The specified Lang can not be empty." Explicitly specify the language code.
+	//
 	// example:
 	//
 	// zh
@@ -44,17 +46,17 @@ type GetNormalizationRuleVersionRequest struct {
 	//
 	// 1
 	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
-	// The region where the Data Management center for Threat Analysis is located. Select a region for the management center based on the region where your assets are located. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are in a region outside China.
+	// - ap-southeast-1: Assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member. An administrator can use this parameter to switch to the perspective of a specific member.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//

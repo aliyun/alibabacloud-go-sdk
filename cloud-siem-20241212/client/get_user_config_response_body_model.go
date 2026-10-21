@@ -62,7 +62,7 @@ func (s *GetUserConfigResponseBody) Validate() error {
 }
 
 type GetUserConfigResponseBodyUser struct {
-	// The current CTDR version.
+	// The current Cloud Threat Detection and Response (CTDR) version.
 	//
 	// example:
 	//
@@ -70,25 +70,25 @@ type GetUserConfigResponseBodyUser struct {
 	CtdrVersion *string `json:"CtdrVersion,omitempty" xml:"CtdrVersion,omitempty"`
 	// The upgrade status. Valid values:
 	//
-	// - pending: The upgrade is pending.
+	// - pending: Pending upgrade.
 	//
-	// - upgrading: The upgrade is in progress.
+	// - upgrading: Upgrading.
 	//
-	// - success: The upgrade is successful.
+	// - success: Upgrade succeeded.
 	//
-	// - failed: The upgrade failed.
+	// - failed: Upgrade failed.
 	//
 	// example:
 	//
 	// pending
 	DataStorageVersion *string `json:"DataStorageVersion,omitempty" xml:"DataStorageVersion,omitempty"`
-	// The version of Log Management.
+	// The log management version.
 	//
 	// example:
 	//
 	// v2
 	UpgradeCtdrVersion *string `json:"UpgradeCtdrVersion,omitempty" xml:"UpgradeCtdrVersion,omitempty"`
-	// The target CTDR version for the upgrade.
+	// The CTDR version to upgrade to.
 	//
 	// example:
 	//

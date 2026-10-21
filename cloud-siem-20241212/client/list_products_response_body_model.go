@@ -22,13 +22,13 @@ type iListProductsResponseBody interface {
 }
 
 type ListProductsResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. If the value of this parameter is not empty, more results are available. You can use this token in the next request to retrieve the next page of results.
+	// The pagination token. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListProductsResponseBody struct {
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListProductsResponseBody) Validate() error {
 }
 
 type ListProductsResponseBodyProducts struct {
-	// The number of abnormal data ingestion configurations.
+	// The number of abnormal data ingestion entries.
 	//
 	// example:
 	//
@@ -129,29 +129,29 @@ type ListProductsResponseBodyProducts struct {
 	//
 	// 1733269771123
 	ActiveTime *int64 `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
-	// Indicates whether data collection configurations can be added.
+	// Indicates whether data collection can be added.
 	//
 	// example:
 	//
 	// true
 	AllowAddDataIngestion *bool `json:"AllowAddDataIngestion,omitempty" xml:"AllowAddDataIngestion,omitempty"`
-	// The time when the product was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The data ingestion status. Valid values:
+	// The accessed state of data ingestion. Valid values:
 	//
-	// - true: enabled.
+	// - enabled: Enabled.
 	//
-	// - false: disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	DataIngestionStatus *bool `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
-	// The number of enabled data ingestion configurations.
+	// The number of enabled data ingestion entries.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type ListProductsResponseBodyProducts struct {
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
@@ -185,13 +185,13 @@ type ListProductsResponseBodyProducts struct {
 	//
 	// preset
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The total number of data ingestion configurations.
+	// The total number of data ingestion entries.
 	//
 	// example:
 	//
 	// 10
 	TotalDataIngestionCount *int32 `json:"TotalDataIngestionCount,omitempty" xml:"TotalDataIngestionCount,omitempty"`
-	// The time when the product was updated.
+	// The update time.
 	//
 	// example:
 	//

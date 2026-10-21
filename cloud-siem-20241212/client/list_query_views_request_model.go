@@ -34,6 +34,8 @@ type ListQueryViewsRequest struct {
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty." You must explicitly pass zh or en.
+	//
 	// example:
 	//
 	// zh
@@ -44,7 +46,7 @@ type ListQueryViewsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned in the previous API call.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -62,7 +64,7 @@ type ListQueryViewsRequest struct {
 	//
 	// preset
 	QueryViewType *string `json:"QueryViewType,omitempty" xml:"QueryViewType,omitempty"`
-	// The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
+	// The region where the Cloud Threat Detection and Response (CTDR) data management center resides. Specify this parameter based on the region of your assets. Valid values:
 	//
 	// - cn-hangzhou: Your assets belong to the Chinese mainland or Hong Kong (China).
 	//

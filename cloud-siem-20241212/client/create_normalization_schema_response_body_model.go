@@ -14,7 +14,7 @@ type iCreateNormalizationSchemaResponseBody interface {
 }
 
 type CreateNormalizationSchemaResponseBody struct {
-	// The request ID.
+	// The request message ID.
 	//
 	// example:
 	//

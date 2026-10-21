@@ -62,19 +62,19 @@ func (s *CheckUpgradeItemResponseBody) Validate() error {
 }
 
 type CheckUpgradeItemResponseBodyUpgradeItem struct {
-	// The name of the module.
+	// The check result of the check item. Example values: OK and FAIL.
 	//
 	// example:
 	//
 	// OK
 	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// The check status.
+	// The checkpoint status.
 	//
 	// example:
 	//
 	// success
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The ID of the upgrade item.
+	// The upgrade item ID.
 	//
 	// example:
 	//

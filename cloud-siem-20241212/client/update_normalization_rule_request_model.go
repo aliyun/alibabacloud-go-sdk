@@ -50,23 +50,23 @@ type iUpdateNormalizationRuleRequest interface {
 }
 
 type UpdateNormalizationRuleRequest struct {
-	// Specifies whether to package non-standard fields into the extend_content extension field. Valid values:
+	// Specifies whether to pack non-standard fields into the extended field extend_content. Valid values:
 	//
-	// - enabled: The feature is enabled.
+	// - enabled: Enabled.
 	//
-	// - disabled: The feature is disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
-	// The storage mode for extension fields. Valid values: flat, pack, and reject.
+	// The extended field storage mode. Valid values: flat, pack, reject.
 	//
 	// example:
 	//
 	// flat
 	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the response messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -76,31 +76,31 @@ type UpdateNormalizationRuleRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The normalization category.
+	// The normalization category to which the rule belongs.
 	//
 	// example:
 	//
 	// HOST_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
-	// The description of the normalization rule.
+	// The normalization rule description.
 	//
 	// example:
 	//
 	// normalization_rule_Z57np
 	NormalizationRuleDescription *string `json:"NormalizationRuleDescription,omitempty" xml:"NormalizationRuleDescription,omitempty"`
-	// The expression for the normalization rule.
+	// The normalization rule expression.
 	//
 	// example:
 	//
 	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
-	// The format of the normalization rule.
+	// The normalization rule format.
 	//
 	// example:
 	//
 	// SPL
 	NormalizationRuleFormat *string `json:"NormalizationRuleFormat,omitempty" xml:"NormalizationRuleFormat,omitempty"`
-	// The ID of the normalization rule.
+	// The normalization rule ID.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type UpdateNormalizationRuleRequest struct {
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
 	// The list of normalization rule IDs.
 	NormalizationRuleIds []*string `json:"NormalizationRuleIds,omitempty" xml:"NormalizationRuleIds,omitempty" type:"Repeated"`
-	// The mode of the normalization rule. Valid values:
+	// The normalization rule mode. Valid values:
 	//
 	// - both
 	//
@@ -120,13 +120,13 @@ type UpdateNormalizationRuleRequest struct {
 	//
 	// both
 	NormalizationRuleMode *string `json:"NormalizationRuleMode,omitempty" xml:"NormalizationRuleMode,omitempty"`
-	// The name of the normalization rule.
+	// The normalization rule name.
 	//
 	// example:
 	//
 	// normalization_rule_Z57np
 	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
-	// The type of the normalization rule. Valid values:
+	// The normalization rule type. Valid values:
 	//
 	// - predefined: predefined normalization rule.
 	//
@@ -136,21 +136,23 @@ type UpdateNormalizationRuleRequest struct {
 	//
 	// custom
 	NormalizationRuleType *string `json:"NormalizationRuleType,omitempty" xml:"NormalizationRuleType,omitempty"`
-	// The ID of the normalization structure.
+	// The normalization schema ID.
 	//
 	// example:
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// The normalization security domain ID.
+	//
 	// example:
 	//
 	// NETWORK_AND_WEB_SECURITY
 	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
-	// The field to use for sorting the rule list. Valid values:
+	// The field used to sort the rule list. Valid values:
 	//
-	// - GmtModified: Sorts by modification time.
+	// - GmtModified: Sort by modification time.
 	//
-	// - Id: Sorts by rule ID (default).
+	// - Id: Sort by rule ID (default).
 	//
 	// example:
 	//
@@ -162,23 +164,23 @@ type UpdateNormalizationRuleRequest struct {
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region where the Data Management center of threat analysis is located. Select a region based on the region where your assets are located. Valid values:
+	// The region where the data management center of the threat detection service is located. Select the management center region based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: an asset in the Chinese mainland.
+	// - cn-hangzhou: Your assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: an asset outside the Chinese mainland.
+	// - ap-southeast-1: Your assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of a member. This parameter is used when an administrator switches to the perspective of the member.
+	// The user ID of the member account that the administrator switches to.
 	//
 	// example:
 	//
 	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The vendor ID that corresponds to the normalization rule.
+	// The vendor ID associated with the normalization rule.
 	//
 	// example:
 	//

@@ -46,23 +46,23 @@ type iListAlertsRequest interface {
 type ListAlertsRequest struct {
 	// The threat level of the alert. Valid values:
 	//
-	// - 5: critical.
+	// - 5: Critical.
 	//
-	// - 4: high-risk.
+	// - 4: High.
 	//
-	// - 3: medium-risk.
+	// - 3: Medium.
 	//
-	// - 2: low-risk.
+	// - 2: Low.
 	//
-	// - 1: informational.
+	// - 1: Informational.
 	AlertLevel []*string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty" type:"Repeated"`
-	// The alert ID associated with the event.
+	// The ID of the alert that is associated with the event.
 	//
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The end time of the alert.
+	// The end time of the alert. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -74,11 +74,13 @@ type ListAlertsRequest struct {
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
@@ -104,7 +106,7 @@ type ListAlertsRequest struct {
 	//
 	// - GmtCreate: creation time.
 	//
-	// - GmtModified: update time.
+	// - GmtModified: last modified time.
 	//
 	// example:
 	//
@@ -128,13 +130,13 @@ type ListAlertsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query filter condition in JSON format. Valid values:
 	//
-	// - `{"Type":"maxCost", "Value":"100"}`: the top 100 queries with the longest execution duration.
+	// - `{"Type":"maxCost", "Value":"100"}`: The 100 queries with the longest execution duration.
 	//
-	// - `{"Type":"status","Value":"finished"}`: completed queries.
+	// - `{"Type":"status","Value":"finished"}`: Completed queries.
 	//
-	// - `{"Type":"status","Value":"running"}`: running queries.
+	// - `{"Type":"status","Value":"running"}`: Running queries.
 	//
-	// - `{"Type":"cost","Min":"30","Max":"50"}`: queries with a custom execution duration range. You can specify the minimum and maximum execution duration. **Min*	- specifies the minimum execution duration. **Max*	- specifies the maximum execution duration. Unit: milliseconds (ms).
+	// - `{"Type":"cost","Min":"30","Max":"50"}`: Custom execution duration queries. You can specify the minimum and maximum execution duration. **Min*	- specifies the minimum execution duration. **Max*	- specifies the maximum execution duration. Unit: milliseconds (ms).
 	//
 	//     - If only **Min*	- is specified, queries with an execution duration greater than this value are returned.
 	//
@@ -152,17 +154,17 @@ type ListAlertsRequest struct {
 	//
 	// qv-a1b2c3d4e5f6g7****
 	QueryViewId *string `json:"QueryViewId,omitempty" xml:"QueryViewId,omitempty"`
-	// The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
+	// The region where the threat detection and response data management center resides. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are located in the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: Your assets reside in the Chinese mainland or Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets are located outside China.
+	// - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member accounts in the resource folder.
+	// The ID of the member accounts in the resource directory.
 	//
 	// example:
 	//
@@ -178,11 +180,11 @@ type ListAlertsRequest struct {
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The time when the alert first occurred.
+	// The time when the alert first occurred. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
-	// 2025-09-30T02:23:00Z
+	// 1759198980000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

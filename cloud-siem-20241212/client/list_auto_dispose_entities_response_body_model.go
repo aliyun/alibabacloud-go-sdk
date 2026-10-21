@@ -26,7 +26,7 @@ type iListAutoDisposeEntitiesResponseBody interface {
 }
 
 type ListAutoDisposeEntitiesResponseBody struct {
-	// A list of AI-powered automated analysis entities.
+	// The list of AI automatic decision-making entity information.
 	AutoDecisionEntities []*ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities `json:"AutoDecisionEntities,omitempty" xml:"AutoDecisionEntities,omitempty" type:"Repeated"`
 	// The current page number. The value must be greater than or equal to 1.
 	//
@@ -34,13 +34,13 @@ type ListAutoDisposeEntitiesResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries returned in this request.
+	// The maximum number of entries returned in this call.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results. An empty value indicates that all results have been returned.
+	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If a next query exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ListAutoDisposeEntitiesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -159,9 +159,9 @@ type ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities struct {
 	AlertId *string `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 	// The disposal method. Valid values:
 	//
-	// - `ignore`: Ignore.
+	// - ignore: Ignored.
 	//
-	// - `dispose`: Playbook-based disposal.
+	// - dispose: Playbook-based disposal.
 	//
 	// example:
 	//
@@ -181,15 +181,15 @@ type ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities struct {
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	// The entity type. Valid values:
 	//
-	// - `ip`: An IP address.
+	// - ip: IP address.
 	//
-	// - `domain`: A domain.
+	// - domain: domain name.
 	//
-	// - `process`: A process.
+	// - process: process.
 	//
-	// - `file`: A file.
+	// - file: file.
 	//
-	// - `host`: A host.
+	// - host: host.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ type ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities struct {
 	//
 	// 6fd2b143-e420-4c1b-a118-e764*****
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The unique identifier (UUID) of the entry.
+	// The UUID of the playbook. This is the unique identifier of the playbook.
 	//
 	// example:
 	//

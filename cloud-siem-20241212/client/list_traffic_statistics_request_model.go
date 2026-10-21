@@ -32,17 +32,19 @@ type iListTrafficStatisticsRequest interface {
 }
 
 type ListTrafficStatisticsRequest struct {
-	// The language of the response messages. Valid values:
+	// The language of the response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required in practice. If this parameter is not specified, the API returns a 400 error: "The specified Lang can not be empty."
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// A list of user IDs for batch data ingestion.
+	// The list of user IDs for batch data ingestion.
 	LogUserIds []*int64 `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty" type:"Repeated"`
 	// The product ID.
 	//
@@ -50,11 +52,11 @@ type ListTrafficStatisticsRequest struct {
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region of the Data Management center for threat analysis. Select a region based on the location of your asset. Valid values:
+	// The region where the threat detection and response data management center resides. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your asset is in the Chinese mainland.
+	// - cn-hangzhou: The assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your asset is outside China.
+	// - ap-southeast-1: The assets reside outside China.
 	//
 	// example:
 	//
@@ -66,7 +68,7 @@ type ListTrafficStatisticsRequest struct {
 	//
 	// 1
 	RegionTag *int32 `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
-	// The user ID of a member. This parameter is used by an administrator to switch to the perspective of the member.
+	// The user ID that the administrator switches to when viewing from another member\\"s perspective.
 	//
 	// example:
 	//
@@ -78,7 +80,7 @@ type ListTrafficStatisticsRequest struct {
 	//
 	// 30
 	TrafficStatisticPeriod *string `json:"TrafficStatisticPeriod,omitempty" xml:"TrafficStatisticPeriod,omitempty"`
-	// The statistic granularity. Valid values:
+	// The statistical granularity. Valid values:
 	//
 	// - day: day. This is the default value.
 	//
@@ -88,7 +90,7 @@ type ListTrafficStatisticsRequest struct {
 	//
 	// day
 	TrafficStatisticPeriodType *string `json:"TrafficStatisticPeriodType,omitempty" xml:"TrafficStatisticPeriodType,omitempty"`
-	// The statistic dimension. Valid values:
+	// The statistical dimension. Valid values:
 	//
 	// - Region
 	//
@@ -102,7 +104,7 @@ type ListTrafficStatisticsRequest struct {
 	//
 	// Region
 	TrafficStatisticType *string `json:"TrafficStatisticType,omitempty" xml:"TrafficStatisticType,omitempty"`
-	// The type of the log traffic.
+	// The log traffic type.
 	//
 	// example:
 	//

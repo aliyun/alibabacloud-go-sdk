@@ -14,7 +14,7 @@ type iValidateLogStoreResponseBody interface {
 }
 
 type ValidateLogStoreResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

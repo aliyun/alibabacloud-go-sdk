@@ -38,13 +38,13 @@ type iExecuteLogQueryRequest interface {
 }
 
 type ExecuteLogQueryRequest struct {
-  // The end time.
+  // The end time. The value is a UNIX timestamp in milliseconds (ms).
   // 
   // example:
   // 
   // 1733269771123
   EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-  // Specifies whether to pack non-standard fields into the extension field extend_content. Valid values:
+  // Specifies whether to pack non-standard fields into the extended field extend_content. Valid values:
   // 
   // - enabled: Enabled.
   // 
@@ -54,18 +54,23 @@ type ExecuteLogQueryRequest struct {
   // 
   // enabled
   ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
-  // The language of the response. Valid values:
+  // The language of the response messages. Valid values:
   // 
   // - **zh*	- (default): Chinese.
   // 
-  // - **en**: English.
+  // - **en**: English. This parameter is required. If not specified, the service returns a 400 error. Explicitly set this parameter to zh or en.
   // 
   // example:
   // 
   // zh
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+  // The log query condition.
+  // 
+  // example:
+  // 
+  // {\\"alert_level\\":[\\"5\\",\\"4\\",\\"3\\",\\"2\\",\\"1\\"]}
   LogCondition *string `json:"LogCondition,omitempty" xml:"LogCondition,omitempty"`
-  // The Simple Log Service project name.
+  // The name of the Simple Log Service project. This parameter is required when executing a log query.
   // 
   // example:
   // 
@@ -77,13 +82,13 @@ type ExecuteLogQueryRequest struct {
   // 
   // *
   LogQuery *string `json:"LogQuery,omitempty" xml:"LogQuery,omitempty"`
-  // The log storage region ID.
+  // The ID of the log storage region. This parameter is required when executing a log query.
   // 
   // example:
   // 
   // cn-hangzhou
   LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-  // The Simple Log Service project name.
+  // The name of the Simple Log Service project. This parameter is required when executing a log query.
   // 
   // example:
   // 
@@ -95,29 +100,29 @@ type ExecuteLogQueryRequest struct {
   // 
   // 173326*******
   LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-  // If packing is enabled, you must specify NormalizationSchemaId.
+  // The NormalizationSchemaId to specify if packing is enabled.
   // 
   // example:
   // 
   // WAF_ALERT_ACTIVITY
   NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-  // The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
+  // The region where the data management center of the threat analysis feature is located. Select the management center region based on the region where your assets reside. Valid values:
   // 
-  // - cn-hangzhou: the asset is in the Chinese mainland.
+  // - cn-hangzhou: Assets are located in the Chinese mainland.
   // 
-  // - ap-southeast-1: the asset is outside the Chinese mainland.
+  // - ap-southeast-1: Assets are located outside China.
   // 
   // example:
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The user ID of the member to which the administrator switches the view.
+  // The user ID of the member account that the administrator switches to.
   // 
   // example:
   // 
   // 173326*******
   RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-  // The start time.
+  // The start time. The value is a UNIX timestamp in milliseconds (ms).
   // 
   // example:
   // 

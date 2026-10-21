@@ -38,7 +38,7 @@ type CreateDataSetRequest struct {
 	//
 	// lmftest contains ip list
 	DataSetDescription *string `json:"DataSetDescription,omitempty" xml:"DataSetDescription,omitempty"`
-	// The name of the unique key for the dataset.
+	// The unique key name of the dataset.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +64,9 @@ type CreateDataSetRequest struct {
 	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
 	// The status of the dataset. Valid values:
 	//
-	// - 0: deleted.
+	// - 0: Deleted.
 	//
-	// - 1: enabled.
+	// - 1: Enabled.
 	//
 	// example:
 	//
@@ -90,21 +90,23 @@ type CreateDataSetRequest struct {
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region of the Data Management center for threat analysis. Select a region based on where your assets are located. Valid values:
+	// The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are outside China.
+	// - ap-southeast-1: Your assets reside outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member whose permissions are used to perform the operation. This parameter is used when an administrator acts on behalf of a member.
+	// The ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//
@@ -224,45 +226,45 @@ func (s *CreateDataSetRequest) Validate() error {
 }
 
 type CreateDataSetRequestIpWhitelistRecognizers struct {
-	// The automatic detection status. Valid values:
+	// The automatic recognition status. Valid values:
 	//
-	// - enabled: enabled.
+	// - enabled: Enabled.
 	//
-	// - disabled: disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	AutoRecognizeStatus *string `json:"AutoRecognizeStatus,omitempty" xml:"AutoRecognizeStatus,omitempty"`
-	// The type of IP address that the recognizer detects. Valid values:
+	// The IP address type identified by the recognizer. Valid values:
 	//
-	// - sas_vulnerability_scanner_ip: The IP address of the Security Center web vulnerability scanner.
+	// - sas_vulnerability_scanner_ip: IP addresses of the Security Center vulnerability web scanner.
 	//
-	// - waf_back_source_ip: The back-to-origin IP address of Web Application Firewall (WAF).
+	// - waf_back_source_ip: back-to-origin IP addresses of Web Application Firewall (WAF).
 	//
-	// - ddos_back_source_ip: The back-to-origin IP address of Anti-DDoS.
+	// - ddos_back_source_ip: back-to-origin IP addresses of Anti-DDoS.
 	//
-	// - esa_back_source_ip: The back-to-origin IP address of an Edge Security Acceleration (ESA) node.
+	// - esa_back_source_ip: back-to-origin node IP addresses of Edge secure acceleration (ESA).
 	//
-	// - ecs_public_ip: The public IP address of an Elastic Compute Service (ECS) instance.
+	// - ecs_public_ip: public IP addresses of Elastic Compute Service (ECS) instances.
 	//
-	// - slb_public_ip: The public IP address of a Server Load Balancer (SLB) instance.
+	// - slb_public_ip: public IP addresses of Server Load Balancer (SLB) instances.
 	//
-	// - vpc_eip: An Elastic IP Address (EIP).
+	// - vpc_eip: elastic IP addresses (EIPs).
 	//
-	// - cdn_back_source_ip: The back-to-origin IP address of a content delivery network (CDN).
+	// - cdn_back_source_ip: back-to-origin IP addresses of content delivery network (CDN).
 	//
-	// - ga_back_source_ip: The back-to-origin IP address of Global Accelerator (GA).
+	// - ga_back_source_ip: back-to-origin IP addresses of Global Accelerator (GA).
 	//
 	// example:
 	//
 	// waf_back_source_ip
 	IpWhitelistRecognizerType *string `json:"IpWhitelistRecognizerType,omitempty" xml:"IpWhitelistRecognizerType,omitempty"`
-	// The detection scope. Valid values:
+	// The recognition scope. Valid values:
 	//
 	// - current_account: the current account only.
 	//
-	// - rd_accounts: all accounts in your resource directory.
+	// - rd_accounts: multi-account mode enabled.
 	//
 	// example:
 	//

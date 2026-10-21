@@ -24,7 +24,7 @@ type CreateExportTaskResponseBody struct {
 	//
 	// event_1193842352994186_17344888****.xlsx
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The ID of the export task.
+	// The export task ID.
 	//
 	// example:
 	//

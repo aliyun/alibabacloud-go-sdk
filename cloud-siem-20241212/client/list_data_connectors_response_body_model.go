@@ -28,7 +28,7 @@ type iListDataConnectorsResponseBody interface {
 type ListDataConnectorsResponseBody struct {
 	// The list of collectors.
 	DataConnector []*ListDataConnectorsResponseBodyDataConnector `json:"DataConnector,omitempty" xml:"DataConnector,omitempty" type:"Repeated"`
-	// The maximum number of records returned in this request.
+	// The maximum number of records returned in this query.
 	//
 	// example:
 	//
@@ -157,13 +157,13 @@ type ListDataConnectorsResponseBodyDataConnector struct {
 	//
 	// cn-smbc-prod-cloudtrail.s3.cn-north-1.amazonaws.com.cn_AKIAX4AUG6AYSJO7FAG4
 	AuthConfigId *string `json:"AuthConfigId,omitempty" xml:"AuthConfigId,omitempty"`
-	// The cloud product of the authentication configuration.
+	// The cloud product to which the authentication configuration belongs.
 	//
 	// example:
 	//
 	// salesForceRestAPI
 	AuthConfigProduct *string `json:"AuthConfigProduct,omitempty" xml:"AuthConfigProduct,omitempty"`
-	// The cloud vendor of the authentication configuration.
+	// The cloud vendor to which the authentication configuration belongs.
 	//
 	// example:
 	//
@@ -229,13 +229,13 @@ type ListDataConnectorsResponseBodyDataConnector struct {
 	//
 	// ls-wecom-crontasklog-prod
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The name of the SLS data import job associated with the collector.
+	// The name of the SLS data import job for the collector.
 	//
 	// example:
 	//
 	// 1a2b3c4d5e6f7a8b9c0d1e2f3a4b****
 	SlsIngestionJobName *string `json:"SlsIngestionJobName,omitempty" xml:"SlsIngestionJobName,omitempty"`
-	// The status of the SLS data import job associated with the collector.
+	// The status of the SLS data import job for the collector.
 	//
 	// example:
 	//

@@ -16,7 +16,11 @@ type iGetDataStorageResponseBody interface {
 }
 
 type GetDataStorageResponseBody struct {
-	// The returned details.
+	// The detailed information returned.
+	//
+	// example:
+	//
+	// {"DataStorageRegionId":"cn-shanghai","DataStorageTotalCapacity":1000,"DataStorageUsedCapacity":41.2,"LogProject":"aliyun-cloudsiem-data-1234567890123456-cn-shanghai","SasLogStores":[{"LogName":"Client events","LogStoreName":"aegis-log-client","LogDeliveryStatus":"enable","LogStoreTtl":180,"LogDeliveryUpdateTime":"2026-10-19T14:00:00","LogDeliveryPermission":"allow","LogDeliveryGroup":"host","LogSearchConditions":"[{\\"__topic__\\":\\"aegis-log-client\\"}]","LogCode":"aegis-log-client","LogStoreExisted":true,"UsedCapacity":10.3,"AccountDeliveries":[{"AccountId":1234567890123456,"AccountName":"1234567890123456","LogDeliveryStatus":"enable","LogDeliveryUpdateTime":"2026-10-19T14:00:00Z","IsDaAccount":true}]}],"NormalizationLogStores":[{"LogStoreName":"host-activity","LogStoreTtl":180,"UsedCapacity":10.3}],"UnusedLogStores":[{"LogStoreName":"cloud-siem","LogStoreTtl":180,"UsedCapacity":10.3}],"RecordLogStores":[{"LogStoreName":"alert-record","LogStoreTtl":180,"UsedCapacity":10.3}],"NormalizationLogViews":[{"CategoryName":"Endpoint security","ActivityName":"Host activity","LogViewName":"host_activity","LogStoreName":"host-activity","DetectionRuleReferenceCount":1,"DetectionRuleReferenceProductIds":["sas"],"LogSearchConditions":"[{\\"SCHEMA\\":\\"host-activity\\"}]","LogViewExisted":true}],"ColdStorageUsedCapacity":0.0,"DataStorageUsedCapacityDetail":"{\\"purchasedHotStorageCapacity\\":1000,\\"usedHotStorageCapacity\\":41.2,\\"usedColdStorageCapacity\\":0.0,\\"usedHotStorageCapacityDetail\\":{\\"cn-shanghai\\":41.2},\\"usedColdStorageCapacityDetail\\":{\\"cn-shanghai\\":0.0}}","DataStorageRegionPermission":"allow","LogServiceDisabled":false,"LogProjectStateChangeAllowed":true,"LogProjectState":"ACTIVE","DeliverySettings":{"PrerequisiteEnabled":true,"CanConfigure":true,"Enabled":true,"Initialized":true,"DaAccountId":"1234567890123456","TargetProject":"aliyun-cloudsiem-data-1234567890123456-cn-shanghai","TargetRegion":"cn-shanghai","ConfigurationVersion":1,"Accounts":[{"AccountId":"1234567890123456","AccountName":"1234567890123456","DaAccount":true,"Authorized":true}],"Types":[{"LogCode":"aegis-log-client","SelectedAccountIds":["1234567890123456"],"AutoIncludeNewAccounts":true,"Executions":[]}]}}
 	Data *GetDataStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,64 +66,111 @@ func (s *GetDataStorageResponseBody) Validate() error {
 }
 
 type GetDataStorageResponseBodyData struct {
-	// The cold storage capacity used by user logs.
+	// The amount of cold storage used for user logs.
 	//
 	// example:
 	//
 	// 100.0
 	ColdStorageUsedCapacity *float64 `json:"ColdStorageUsedCapacity,omitempty" xml:"ColdStorageUsedCapacity,omitempty"`
-	// The storage region of user-side logs.
+	// The storage region of user logs.
 	//
 	// example:
 	//
 	// cn-shanghai
 	DataStorageRegionId *string `json:"DataStorageRegionId,omitempty" xml:"DataStorageRegionId,omitempty"`
-	// Indicates whether the storage region can be modified. By default, modification is not allowed. Contact the product manager to reset the region. The region can be reset only once. Valid values:
+	// Specifies whether the storage region can be modified. By default, the region cannot be modified. You can contact the product manager to reset the region, and the region can be reset only once. Valid values:
 	//
-	// - allow: Modification is allowed.
+	// - allow: The region can be modified.
 	//
-	// - deny: Modification is not allowed.
+	// - deny: The region cannot be modified.
 	//
 	// example:
 	//
 	// deny
 	DataStorageRegionPermission *string `json:"DataStorageRegionPermission,omitempty" xml:"DataStorageRegionPermission,omitempty"`
-	// The storage capacity purchased in the prepaid scenario.
+	// The storage capacity purchased for subscription.
 	//
 	// example:
 	//
 	// 100
 	DataStorageTotalCapacity *int64 `json:"DataStorageTotalCapacity,omitempty" xml:"DataStorageTotalCapacity,omitempty"`
-	// The storage capacity used in user log management.
+	// The amount of storage used in user log management.
 	//
 	// example:
 	//
 	// 100.0
 	DataStorageUsedCapacity *float64 `json:"DataStorageUsedCapacity,omitempty" xml:"DataStorageUsedCapacity,omitempty"`
-	// The storage usage details in log management.
+	// The storage usage details of the log management user.
 	//
 	// example:
 	//
 	// {\\"purchasedHotStorageCapacity\\":1000,\\"usedHotStorageCapacity\\":4.2,\\"usedHotStorageCapacityDetail\\":{\\"ap-southeast-1\\":4.2,\\"cn-shenzhen\\":0.0,\\"cn-shanghai\\":0.0}}
 	DataStorageUsedCapacityDetail *string `json:"DataStorageUsedCapacityDetail,omitempty" xml:"DataStorageUsedCapacityDetail,omitempty"`
-	// The name of the Simple Log Service (SLS) project that stores user logs.
+	// The multi-account delivery settings for the current storage resources. Returned when the query is successful. If the read operation fails, see DeliverySettingsError.
+	//
+	// example:
+	//
+	// {"PrerequisiteEnabled":true,"CanConfigure":true,"Enabled":true,"Initialized":true,"DaAccountId":"1234567890123456","TargetProject":"aliyun-cloudsiem-data-1234567890123456-cn-shanghai","TargetRegion":"cn-shanghai","ConfigurationVersion":1,"Accounts":[{"AccountId":"1234567890123456","AccountName":"1234567890123456","DaAccount":true,"Authorized":true}],"Types":[{"LogCode":"aegis-log-client","SelectedAccountIds":["1234567890123456"],"AutoIncludeNewAccounts":true,"Executions":[]}]}
+	DeliverySettings *GetDataStorageResponseBodyDataDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
+	// The read error code for the optional multi-account delivery settings. If the read operation fails, DELIVERY_SETTINGS_UNAVAILABLE is returned. If the read operation is successful, this field is empty or not returned, and does not affect other storage fields.
+	//
+	// example:
+	//
+	// DELIVERY_SETTINGS_UNAVAILABLE
+	DeliverySettingsError *string `json:"DeliverySettingsError,omitempty" xml:"DeliverySettingsError,omitempty"`
+	// The name of the Simple Log Service project where user logs are stored.
 	//
 	// example:
 	//
 	// aliyun-cloudsiem-data-171835723111****-cn-shanghai
-	LogProject                   *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	LogProjectState              *string `json:"LogProjectState,omitempty" xml:"LogProjectState,omitempty"`
-	LogProjectStateChangeAllowed *bool   `json:"LogProjectStateChangeAllowed,omitempty" xml:"LogProjectStateChangeAllowed,omitempty"`
-	LogServiceDisabled           *bool   `json:"LogServiceDisabled,omitempty" xml:"LogServiceDisabled,omitempty"`
-	// The details of Logstores for normalized data.
+	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// The status of the log project.
+	//
+	// example:
+	//
+	// ACTIVE
+	LogProjectState *string `json:"LogProjectState,omitempty" xml:"LogProjectState,omitempty"`
+	// Specifies whether the status of the log project can be changed.
+	//
+	// example:
+	//
+	// true
+	LogProjectStateChangeAllowed *bool `json:"LogProjectStateChangeAllowed,omitempty" xml:"LogProjectStateChangeAllowed,omitempty"`
+	// Specifies whether Simple Log Service is disabled.
+	//
+	// example:
+	//
+	// false
+	LogServiceDisabled *bool `json:"LogServiceDisabled,omitempty" xml:"LogServiceDisabled,omitempty"`
+	// The details of the Logstores for normalized data.
+	//
+	// example:
+	//
+	// [{"LogStoreName":"host-activity","LogStoreTtl":180,"UsedCapacity":10.3}]
 	NormalizationLogStores []*GetDataStorageResponseBodyDataNormalizationLogStores `json:"NormalizationLogStores,omitempty" xml:"NormalizationLogStores,omitempty" type:"Repeated"`
-	// The details of normalized datasets.
+	// The details of the normalized datasets.
+	//
+	// example:
+	//
+	// [{"CategoryName":"Endpoint security","ActivityName":"Host activity","LogViewName":"host_activity","LogStoreName":"host-activity","DetectionRuleReferenceCount":1,"DetectionRuleReferenceProductIds":["sas"],"LogSearchConditions":"[{\\"SCHEMA\\":\\"host-activity\\"}]","LogViewExisted":true}]
 	NormalizationLogViews []*GetDataStorageResponseBodyDataNormalizationLogViews `json:"NormalizationLogViews,omitempty" xml:"NormalizationLogViews,omitempty" type:"Repeated"`
-	// The list of record Logstores.
+	// The list of Record Logstores.
+	//
+	// example:
+	//
+	// [{"LogStoreName":"alert-record","LogStoreTtl":180,"UsedCapacity":10.3}]
 	RecordLogStores []*GetDataStorageResponseBodyDataRecordLogStores `json:"RecordLogStores,omitempty" xml:"RecordLogStores,omitempty" type:"Repeated"`
-	// The details of raw log storage in Security Center.
+	// The storage details of raw logs in Security Center.
+	//
+	// example:
+	//
+	// [{"LogName":"Client events","LogStoreName":"aegis-log-client","LogDeliveryStatus":"enable","LogStoreTtl":180,"LogDeliveryUpdateTime":"2026-10-19T14:00:00","LogDeliveryPermission":"allow","LogDeliveryGroup":"host","LogSearchConditions":"[{\\"__topic__\\":\\"aegis-log-client\\"}]","LogCode":"aegis-log-client","LogStoreExisted":true,"UsedCapacity":10.3,"AccountDeliveries":[{"AccountId":1234567890123456,"AccountName":"1234567890123456","LogDeliveryStatus":"enable","LogDeliveryUpdateTime":"2026-10-19T14:00:00Z","IsDaAccount":true}]}]
 	SasLogStores []*GetDataStorageResponseBodyDataSasLogStores `json:"SasLogStores,omitempty" xml:"SasLogStores,omitempty" type:"Repeated"`
-	// The list of SIEM V1 legacy Logstores.
+	// The list of legacy Logstores in SIEM V1.
+	//
+	// example:
+	//
+	// [{"LogStoreName":"cloud-siem","LogStoreTtl":180,"UsedCapacity":10.3}]
 	UnusedLogStores []*GetDataStorageResponseBodyDataUnusedLogStores `json:"UnusedLogStores,omitempty" xml:"UnusedLogStores,omitempty" type:"Repeated"`
 }
 
@@ -153,6 +204,14 @@ func (s *GetDataStorageResponseBodyData) GetDataStorageUsedCapacity() *float64 {
 
 func (s *GetDataStorageResponseBodyData) GetDataStorageUsedCapacityDetail() *string {
 	return s.DataStorageUsedCapacityDetail
+}
+
+func (s *GetDataStorageResponseBodyData) GetDeliverySettings() *GetDataStorageResponseBodyDataDeliverySettings {
+	return s.DeliverySettings
+}
+
+func (s *GetDataStorageResponseBodyData) GetDeliverySettingsError() *string {
+	return s.DeliverySettingsError
 }
 
 func (s *GetDataStorageResponseBodyData) GetLogProject() *string {
@@ -221,6 +280,16 @@ func (s *GetDataStorageResponseBodyData) SetDataStorageUsedCapacityDetail(v stri
 	return s
 }
 
+func (s *GetDataStorageResponseBodyData) SetDeliverySettings(v *GetDataStorageResponseBodyDataDeliverySettings) *GetDataStorageResponseBodyData {
+	s.DeliverySettings = v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyData) SetDeliverySettingsError(v string) *GetDataStorageResponseBodyData {
+	s.DeliverySettingsError = &v
+	return s
+}
+
 func (s *GetDataStorageResponseBodyData) SetLogProject(v string) *GetDataStorageResponseBodyData {
 	s.LogProject = &v
 	return s
@@ -267,6 +336,11 @@ func (s *GetDataStorageResponseBodyData) SetUnusedLogStores(v []*GetDataStorageR
 }
 
 func (s *GetDataStorageResponseBodyData) Validate() error {
+	if s.DeliverySettings != nil {
+		if err := s.DeliverySettings.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.NormalizationLogStores != nil {
 		for _, item := range s.NormalizationLogStores {
 			if item != nil {
@@ -315,6 +389,438 @@ func (s *GetDataStorageResponseBodyData) Validate() error {
 	return nil
 }
 
+type GetDataStorageResponseBodyDataDeliverySettings struct {
+	// The account directory of the current account and managed member accounts.
+	//
+	// example:
+	//
+	// [{"AccountId":"1234567890123456","AccountName":"1234567890123456","DaAccount":true,"Authorized":true}]
+	Accounts []*GetDataStorageResponseBodyDataDeliverySettingsAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	// Specifies whether the current account meets the conditions for delivery setting operations. This is determined based on authorization, target project availability, capacity orders, and the current account identity. The PrerequisiteEnabled parameter must also be met.
+	//
+	// example:
+	//
+	// true
+	CanConfigure *bool `json:"CanConfigure,omitempty" xml:"CanConfigure,omitempty"`
+	// The current version of the delivery settings. When you modify multi-account configurations or specify member delivery, pass this value back as ConfigurationVersion. You must query this value again after each modification and cannot use a fixed example value.
+	//
+	// example:
+	//
+	// 1
+	ConfigurationVersion *int64 `json:"ConfigurationVersion,omitempty" xml:"ConfigurationVersion,omitempty"`
+	// The UID of the current management and delivery target account, which is a decimal string. This is also the current account that is permanently retained in the account selection list.
+	//
+	// example:
+	//
+	// 1234567890123456
+	DaAccountId *string `json:"DaAccountId,omitempty" xml:"DaAccountId,omitempty"`
+	// The master switch for the saved multi-account centralized delivery. A value of true indicates that the switch is turned on. A value of false indicates that the switch is turned off.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether the initialization of the account scope and automatic inclusion settings is completed when the feature is enabled for the first time.
+	//
+	// example:
+	//
+	// true
+	Initialized *bool `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
+	// Specifies whether the prerequisite of enabling multi-account security management in Security Center is met.
+	//
+	// example:
+	//
+	// true
+	PrerequisiteEnabled *bool `json:"PrerequisiteEnabled,omitempty" xml:"PrerequisiteEnabled,omitempty"`
+	// The name of the current Simple Log Service project for centralized delivery. When you modify multi-account settings or specify member delivery, pass this value back as the TargetProject request parameter.
+	//
+	// example:
+	//
+	// aliyun-cloudsiem-data-1234567890123456-cn-shanghai
+	TargetProject *string `json:"TargetProject,omitempty" xml:"TargetProject,omitempty"`
+	// The region ID of the current Simple Log Service project for centralized delivery.
+	//
+	// example:
+	//
+	// cn-shanghai
+	TargetRegion *string `json:"TargetRegion,omitempty" xml:"TargetRegion,omitempty"`
+	// The account selection, automatic inclusion settings, and existing delivery status categorized by log type.
+	//
+	// example:
+	//
+	// [{"LogCode":"aegis-log-client","SelectedAccountIds":["1234567890123456"],"AutoIncludeNewAccounts":true,"Executions":[]}]
+	Types []*GetDataStorageResponseBodyDataDeliverySettingsTypes `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	// The reason code for being unconfigurable. Valid values: DA_UNAUTHORIZED (the management account is not authorized), TARGET_PROJECT_UNAVAILABLE (the target project is unavailable), LOG_CAPACITY_UNAVAILABLE (no valid capacity order exists), and NOT_CURRENT_ACCOUNT (the operation is not performed by the current account). This field is empty or not returned if the conditions are met.
+	//
+	// example:
+	//
+	// DA_UNAUTHORIZED
+	UnavailableReason *string `json:"UnavailableReason,omitempty" xml:"UnavailableReason,omitempty"`
+}
+
+func (s GetDataStorageResponseBodyDataDeliverySettings) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataStorageResponseBodyDataDeliverySettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetAccounts() []*GetDataStorageResponseBodyDataDeliverySettingsAccounts {
+	return s.Accounts
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetCanConfigure() *bool {
+	return s.CanConfigure
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetConfigurationVersion() *int64 {
+	return s.ConfigurationVersion
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetDaAccountId() *string {
+	return s.DaAccountId
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetInitialized() *bool {
+	return s.Initialized
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetPrerequisiteEnabled() *bool {
+	return s.PrerequisiteEnabled
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetTargetProject() *string {
+	return s.TargetProject
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetTargetRegion() *string {
+	return s.TargetRegion
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetTypes() []*GetDataStorageResponseBodyDataDeliverySettingsTypes {
+	return s.Types
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) GetUnavailableReason() *string {
+	return s.UnavailableReason
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetAccounts(v []*GetDataStorageResponseBodyDataDeliverySettingsAccounts) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.Accounts = v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetCanConfigure(v bool) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.CanConfigure = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetConfigurationVersion(v int64) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.ConfigurationVersion = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetDaAccountId(v string) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.DaAccountId = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetEnabled(v bool) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetInitialized(v bool) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.Initialized = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetPrerequisiteEnabled(v bool) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.PrerequisiteEnabled = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetTargetProject(v string) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.TargetProject = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetTargetRegion(v string) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.TargetRegion = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetTypes(v []*GetDataStorageResponseBodyDataDeliverySettingsTypes) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.Types = v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) SetUnavailableReason(v string) *GetDataStorageResponseBodyDataDeliverySettings {
+	s.UnavailableReason = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettings) Validate() error {
+	if s.Accounts != nil {
+		for _, item := range s.Accounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Types != nil {
+		for _, item := range s.Types {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetDataStorageResponseBodyDataDeliverySettingsAccounts struct {
+	// The UID of the source Alibaba Cloud account, which is a decimal string.
+	//
+	// example:
+	//
+	// 1234567890123456
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The display name of the account. If the name is missing, the UID string is returned.
+	//
+	// example:
+	//
+	// 1234567890123456
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Specifies whether the account has the authorization required for log delivery. This parameter must be set to true when you add a selected member.
+	//
+	// example:
+	//
+	// true
+	Authorized *bool `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
+	// Specifies whether the account is the current management and delivery target account, which is the current account.
+	//
+	// example:
+	//
+	// true
+	DaAccount *bool `json:"DaAccount,omitempty" xml:"DaAccount,omitempty"`
+}
+
+func (s GetDataStorageResponseBodyDataDeliverySettingsAccounts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataStorageResponseBodyDataDeliverySettingsAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsAccounts) GetAccountId() *string {
+	return s.AccountId
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsAccounts) GetAccountName() *string {
+	return s.AccountName
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsAccounts) GetAuthorized() *bool {
+	return s.Authorized
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsAccounts) GetDaAccount() *bool {
+	return s.DaAccount
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsAccounts) SetAccountId(v string) *GetDataStorageResponseBodyDataDeliverySettingsAccounts {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsAccounts) SetAccountName(v string) *GetDataStorageResponseBodyDataDeliverySettingsAccounts {
+	s.AccountName = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsAccounts) SetAuthorized(v bool) *GetDataStorageResponseBodyDataDeliverySettingsAccounts {
+	s.Authorized = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsAccounts) SetDaAccount(v bool) *GetDataStorageResponseBodyDataDeliverySettingsAccounts {
+	s.DaAccount = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsAccounts) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDataStorageResponseBodyDataDeliverySettingsTypes struct {
+	// Specifies whether to automatically add subsequent new and available managed members to the selection scope of this log type.
+	//
+	// example:
+	//
+	// true
+	AutoIncludeNewAccounts *bool `json:"AutoIncludeNewAccounts,omitempty" xml:"AutoIncludeNewAccounts,omitempty"`
+	// The status list of existing source delivery records for this log type.
+	//
+	// example:
+	//
+	// []
+	Executions []*GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions `json:"Executions,omitempty" xml:"Executions,omitempty" type:"Repeated"`
+	// The unique identifier of the log type, which corresponds to UpdateDataStorageDelivery.LogCode.
+	//
+	// example:
+	//
+	// aegis-log-client
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The array of UIDs of the selected source accounts for this log type, including the current account. The response is a JSON string array. When you write an array(simple) request, you must serialize it into comma-separated values.
+	//
+	// example:
+	//
+	// ["1234567890123456"]
+	SelectedAccountIds []*string `json:"SelectedAccountIds,omitempty" xml:"SelectedAccountIds,omitempty" type:"Repeated"`
+}
+
+func (s GetDataStorageResponseBodyDataDeliverySettingsTypes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataStorageResponseBodyDataDeliverySettingsTypes) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypes) GetAutoIncludeNewAccounts() *bool {
+	return s.AutoIncludeNewAccounts
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypes) GetExecutions() []*GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions {
+	return s.Executions
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypes) GetLogCode() *string {
+	return s.LogCode
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypes) GetSelectedAccountIds() []*string {
+	return s.SelectedAccountIds
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypes) SetAutoIncludeNewAccounts(v bool) *GetDataStorageResponseBodyDataDeliverySettingsTypes {
+	s.AutoIncludeNewAccounts = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypes) SetExecutions(v []*GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) *GetDataStorageResponseBodyDataDeliverySettingsTypes {
+	s.Executions = v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypes) SetLogCode(v string) *GetDataStorageResponseBodyDataDeliverySettingsTypes {
+	s.LogCode = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypes) SetSelectedAccountIds(v []*string) *GetDataStorageResponseBodyDataDeliverySettingsTypes {
+	s.SelectedAccountIds = v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypes) Validate() error {
+	if s.Executions != nil {
+		for _, item := range s.Executions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions struct {
+	// The UID of the source account for this delivery record, which is a decimal string.
+	//
+	// example:
+	//
+	// 1234567890123457
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// A reserved compatibility field. The current implementation does not populate historical execution error codes, so this field is usually empty or not returned. If execution fails, read the error code returned by the corresponding write operation.
+	//
+	// example:
+	//
+	// null
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The recorded delivery status. RUNNING indicates that the status is recorded as enabled after the last successful operation. STOPPED indicates that the status is recorded as disabled. This field does not indicate real-time log arrival.
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The last update time of the delivery status, which is a UNIX timestamp in milliseconds. This field is empty or not returned if the record has no update time.
+	//
+	// example:
+	//
+	// 1792399200000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) GetAccountId() *string {
+	return s.AccountId
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) GetStatus() *string {
+	return s.Status
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) GetUpdateTime() *int64 {
+	return s.UpdateTime
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) SetAccountId(v string) *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) SetErrorCode(v string) *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) SetStatus(v string) *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) SetUpdateTime(v int64) *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetDataStorageResponseBodyDataNormalizationLogStores struct {
 	// The name of the Logstore that stores normalized data.
 	//
@@ -322,13 +828,13 @@ type GetDataStorageResponseBodyDataNormalizationLogStores struct {
 	//
 	// vulnerability-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The storage duration of normalized data.
+	// The storage duration of the normalized data.
 	//
 	// example:
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The hot storage used capacity.
+	// The amount of hot storage used.
 	//
 	// example:
 	//
@@ -376,43 +882,47 @@ func (s *GetDataStorageResponseBodyDataNormalizationLogStores) Validate() error 
 }
 
 type GetDataStorageResponseBodyDataNormalizationLogViews struct {
-	// The log type of the normalized log.
+	// The log type of the normalized logs.
 	//
 	// example:
 	//
 	// API security risk log
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The category of the normalized log.
+	// The category of the normalized logs.
 	//
 	// example:
 	//
 	// Security Category
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The number of times the normalized dataset is referenced in the threat analysis access center.
+	// The number of times this normalized dataset is referenced in Threat Analysis and Response.
 	//
 	// example:
 	//
 	// 3
 	DetectionRuleReferenceCount *int32 `json:"DetectionRuleReferenceCount,omitempty" xml:"DetectionRuleReferenceCount,omitempty"`
-	// The list of products that reference the normalized dataset in the threat analysis access center.
+	// The list of products that reference this normalized dataset in Threat Analysis and Response.
+	//
+	// example:
+	//
+	// ["sas"]
 	DetectionRuleReferenceProductIds []*string `json:"DetectionRuleReferenceProductIds,omitempty" xml:"DetectionRuleReferenceProductIds,omitempty" type:"Repeated"`
-	// The query statement used to query the log type in the normalized dataset.
+	// The query statement used to query log types in the normalized dataset.
 	//
 	// example:
 	//
 	// [{\\"SCHEMA\\":\\"AZURE_ACTIVE_DIRECTORY_AUDIT_ACTIVITY\\"}]
 	LogSearchConditions *string `json:"LogSearchConditions,omitempty" xml:"LogSearchConditions,omitempty"`
-	// The Logstore where threat analysis stores normalized logs.
+	// The Logstore where Threat Analysis and Response stores normalized logs.
 	//
 	// example:
 	//
 	// risk-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// Indicates whether the normalized dataset exists. Valid values:
+	// Specifies whether the normalized dataset exists. Valid values:
 	//
-	// - true: The normalized dataset exists.
+	// - true: The dataset exists.
 	//
-	// - false: The normalized dataset does not exist.
+	// - false: The dataset does not exist.
 	//
 	// example:
 	//
@@ -511,19 +1021,19 @@ func (s *GetDataStorageResponseBodyDataNormalizationLogViews) Validate() error {
 }
 
 type GetDataStorageResponseBodyDataRecordLogStores struct {
-	// The Logstore name.
+	// The name of the Logstore.
 	//
 	// example:
 	//
 	// alert-record
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The Logstore TTL.
+	// The TTL of the Logstore.
 	//
 	// example:
 	//
 	// 90
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The Logstore used capacity.
+	// The used capacity of the Logstore.
 	//
 	// example:
 	//
@@ -571,6 +1081,12 @@ func (s *GetDataStorageResponseBodyDataRecordLogStores) Validate() error {
 }
 
 type GetDataStorageResponseBodyDataSasLogStores struct {
+	// The delivery records of this log type expanded by source account, including the current account and member accounts with existing records.
+	//
+	// example:
+	//
+	// [{"AccountId":1234567890123456,"AccountName":"1234567890123456","LogDeliveryStatus":"enable","LogDeliveryUpdateTime":"2026-10-19T14:00:00Z","IsDaAccount":true}]
+	AccountDeliveries []*GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries `json:"AccountDeliveries,omitempty" xml:"AccountDeliveries,omitempty" type:"Repeated"`
 	// The log code.
 	//
 	// example:
@@ -587,7 +1103,7 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// host
 	LogDeliveryGroup *string `json:"LogDeliveryGroup,omitempty" xml:"LogDeliveryGroup,omitempty"`
-	// Indicates whether you are allowed to toggle the log delivery switch. Log delivery cannot be performed if the service is not purchased. Valid values:
+	// Specifies whether the log delivery switch can be operated. Log delivery is unavailable if the service is not purchased. Valid values:
 	//
 	// - allow: Allowed.
 	//
@@ -607,7 +1123,7 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// enable
 	LogDeliveryStatus *string `json:"LogDeliveryStatus,omitempty" xml:"LogDeliveryStatus,omitempty"`
-	// The time when the log delivery was last modified.
+	// The time of the last log delivery operation. The format is YYYY-MM-DDTHH:mm:ss.
 	//
 	// example:
 	//
@@ -619,7 +1135,7 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// Process Snapshot
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// The default log query conditions for the log. When multiple logs are stored in the same Logstore, query conditions are required to perform a log query for a specific log.
+	// The default query conditions for the log. When multiple logs are stored in a single Logstore, you must use query conditions to perform a log query for a specific log.
 	//
 	// example:
 	//
@@ -627,9 +1143,9 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	LogSearchConditions *string `json:"LogSearchConditions,omitempty" xml:"LogSearchConditions,omitempty"`
 	// Indicates whether the Logstore where the log is stored exists. Valid values:
 	//
-	// - true: The Logstore exists.
+	// - true: Exists.
 	//
-	// - false: The Logstore does not exist.
+	// - false: Does not exist.
 	//
 	// example:
 	//
@@ -641,13 +1157,13 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// sas-security-log
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The storage duration of the Logstore where the log is stored. Logs are stored for at least 30 days.
+	// The storage duration of the Logstore where the log is stored. The minimum storage duration is 30 days.
 	//
 	// example:
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The hot storage used capacity.
+	// The amount of hot storage used.
 	//
 	// example:
 	//
@@ -661,6 +1177,10 @@ func (s GetDataStorageResponseBodyDataSasLogStores) String() string {
 
 func (s GetDataStorageResponseBodyDataSasLogStores) GoString() string {
 	return s.String()
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStores) GetAccountDeliveries() []*GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries {
+	return s.AccountDeliveries
 }
 
 func (s *GetDataStorageResponseBodyDataSasLogStores) GetLogCode() *string {
@@ -705,6 +1225,11 @@ func (s *GetDataStorageResponseBodyDataSasLogStores) GetLogStoreTtl() *int32 {
 
 func (s *GetDataStorageResponseBodyDataSasLogStores) GetUsedCapacity() *float64 {
 	return s.UsedCapacity
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStores) SetAccountDeliveries(v []*GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) *GetDataStorageResponseBodyDataSasLogStores {
+	s.AccountDeliveries = v
+	return s
 }
 
 func (s *GetDataStorageResponseBodyDataSasLogStores) SetLogCode(v string) *GetDataStorageResponseBodyDataSasLogStores {
@@ -763,23 +1288,128 @@ func (s *GetDataStorageResponseBodyDataSasLogStores) SetUsedCapacity(v float64) 
 }
 
 func (s *GetDataStorageResponseBodyDataSasLogStores) Validate() error {
+	if s.AccountDeliveries != nil {
+		for _, item := range s.AccountDeliveries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries struct {
+	// The UID of the source cloud account. This field is an int64 number.
+	//
+	// example:
+	//
+	// 1234567890123456
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The display name of the source account. If the name is not obtained, the account UID string is used.
+	//
+	// example:
+	//
+	// 1234567890123456
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Indicates whether the account is the current management or target account (the current account). A value of true indicates the current account. A value of false indicates a member source account.
+	//
+	// example:
+	//
+	// true
+	IsDaAccount *bool `json:"IsDaAccount,omitempty" xml:"IsDaAccount,omitempty"`
+	// The recorded delivery status of the source account. Valid values:
+	//
+	// - enable: Enabled.
+	//
+	// - disable: Disabled.
+	//
+	// example:
+	//
+	// enable
+	LogDeliveryStatus *string `json:"LogDeliveryStatus,omitempty" xml:"LogDeliveryStatus,omitempty"`
+	// The last update time of the delivery status for the source account. If no record is generated, this field is empty or not returned.
+	//
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2026-10-19T14:00:00Z
+	LogDeliveryUpdateTime *string `json:"LogDeliveryUpdateTime,omitempty" xml:"LogDeliveryUpdateTime,omitempty"`
+}
+
+func (s GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) GetAccountId() *int64 {
+	return s.AccountId
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) GetAccountName() *string {
+	return s.AccountName
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) GetIsDaAccount() *bool {
+	return s.IsDaAccount
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) GetLogDeliveryStatus() *string {
+	return s.LogDeliveryStatus
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) GetLogDeliveryUpdateTime() *string {
+	return s.LogDeliveryUpdateTime
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) SetAccountId(v int64) *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) SetAccountName(v string) *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries {
+	s.AccountName = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) SetIsDaAccount(v bool) *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries {
+	s.IsDaAccount = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) SetLogDeliveryStatus(v string) *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries {
+	s.LogDeliveryStatus = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) SetLogDeliveryUpdateTime(v string) *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries {
+	s.LogDeliveryUpdateTime = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) Validate() error {
 	return dara.Validate(s)
 }
 
 type GetDataStorageResponseBodyDataUnusedLogStores struct {
-	// The Logstore name.
+	// The name of the Logstore.
 	//
 	// example:
 	//
 	// cloud-siem
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The data storage duration.
+	// The data retention period.
 	//
 	// example:
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The hot storage used capacity.
+	// The amount of hot storage used.
 	//
 	// example:
 	//

@@ -50,7 +50,7 @@ type iCreateNormalizationRuleShrinkRequest interface {
 }
 
 type CreateNormalizationRuleShrinkRequest struct {
-	// Specifies whether to pack non-standard fields into the extension field extend_content. Valid values:
+	// Specifies whether to pack non-standard fields into the extended field extend_content. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -60,13 +60,13 @@ type CreateNormalizationRuleShrinkRequest struct {
 	//
 	// enabled
 	ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
-	// The storage mode for extension fields. Valid values: flat, pack, and reject.
+	// The storage mode for extended fields. Valid values: flat, pack, reject.
 	//
 	// example:
 	//
 	// flat
 	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -108,7 +108,7 @@ type CreateNormalizationRuleShrinkRequest struct {
 	//
 	// - scan
 	//
-	// - realtime.
+	// - realtime
 	//
 	// example:
 	//
@@ -136,21 +136,23 @@ type CreateNormalizationRuleShrinkRequest struct {
 	//
 	// 1
 	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
-	// The normalization schema ID.
+	// The ID of the normalization schema.
 	//
 	// example:
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// The ID of the normalization security domain.
+	//
 	// example:
 	//
 	// NETWORK_AND_WEB_SECURITY
 	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
 	// The field used to sort the rule list. Valid values:
 	//
-	// - GmtModified: sorted by modification time.
+	// - GmtModified: sorts by modification time.
 	//
-	// - Id: sorted by rule ID (default).
+	// - Id: sorts by rule ID (default).
 	//
 	// example:
 	//
@@ -162,17 +164,17 @@ type CreateNormalizationRuleShrinkRequest struct {
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets reside outside China.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member accounts in the resource directory.
+	// The ID of the member accounts in the resource folder.
 	//
 	// example:
 	//

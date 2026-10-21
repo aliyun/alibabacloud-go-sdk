@@ -22,7 +22,7 @@ type CreateNormalizationRuleResponseBody struct {
 	//
 	// nr-z0b2ssjteut85uoh9nzp
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The request ID.
+	// The request message ID.
 	//
 	// example:
 	//

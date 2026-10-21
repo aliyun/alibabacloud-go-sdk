@@ -22,13 +22,13 @@ type iListUpgradeItemsResponseBody interface {
 }
 
 type ListUpgradeItemsResponseBody struct {
-	// The maximum number of entries returned on the current page.
+	// The maximum number of entries to return in a single call.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. If the value is not empty, more results are available.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if there are no more results to return. If a next page exists, set this parameter to the value of NextToken returned by the previous API call.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListUpgradeItemsResponseBody struct {
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListUpgradeItemsResponseBody) Validate() error {
 }
 
 type ListUpgradeItemsResponseBodyUpgradeItems struct {
-	// The ID of the upgrade item.
+	// The upgrade item ID.
 	//
 	// example:
 	//
