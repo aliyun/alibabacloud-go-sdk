@@ -24297,7 +24297,7 @@ func (client *Client) ModifyAIDBClusterDescriptionWithContext(ctx context.Contex
 
 // Summary:
 //
-// Changes the model or the client-facing invocation name of an AI cluster.
+// Modifies the AI cluster model or the customer-facing invocation name.
 //
 // @param request - ModifyAIDBClusterModelRequest
 //

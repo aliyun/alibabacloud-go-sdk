@@ -18,19 +18,19 @@ type iCreateBudgetPolicyResponseBody interface {
 }
 
 type CreateBudgetPolicyResponseBody struct {
-	// The budget policy ID.
+	// The ID of the budget policy.
 	//
 	// example:
 	//
 	// 05a5a8603df444a8a605af712ffexxx
 	BudgetPolicyId *string `json:"BudgetPolicyId,omitempty" xml:"BudgetPolicyId,omitempty"`
-	// The gateway cluster ID.
+	// The gateway instance ID.
 	//
 	// example:
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

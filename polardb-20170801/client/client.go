@@ -31173,7 +31173,7 @@ func (client *Client) ModifyAIDBClusterDescription(request *ModifyAIDBClusterDes
 
 // Summary:
 //
-// Changes the model or the client-facing invocation name of an AI cluster.
+// Modifies the AI cluster model or the customer-facing invocation name.
 //
 // @param request - ModifyAIDBClusterModelRequest
 //
@@ -31241,7 +31241,7 @@ func (client *Client) ModifyAIDBClusterModelWithOptions(request *ModifyAIDBClust
 
 // Summary:
 //
-// Changes the model or the client-facing invocation name of an AI cluster.
+// Modifies the AI cluster model or the customer-facing invocation name.
 //
 // @param request - ModifyAIDBClusterModelRequest
 //

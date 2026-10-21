@@ -34,19 +34,19 @@ type ModifyAIDBClusterModelRequest struct {
 	//
 	// pm-2ze4x2mwo81knj08a
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The new client-facing invocation name. If this parameter is not specified, the existing invocation name is retained.
+	// The new customer-facing invocation name. If you do not specify this parameter, the existing invocation name is retained.
 	//
 	// example:
 	//
 	// my-flagship-chat
 	DisplayModelName *string `json:"DisplayModelName,omitempty" xml:"DisplayModelName,omitempty"`
-	// Specifies whether to only preview the change without actually performing it.
+	// Specifies whether to only preview the modification.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The name of the target model. Select a value from the ModelName values returned by the DescribeAvailableModels operation.
+	// The target model name. Select a value from the ModelName values returned by DescribeAvailableModels.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +62,7 @@ type ModifyAIDBClusterModelRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The restart mode for workers. Valid values:
-	//
-	// - inPlace
-	//
-	// - recreate
+	// The worker restart mode. Valid values: inPlace and recreate.
 	//
 	// example:
 	//

@@ -26,19 +26,19 @@ type iCreateBudgetPolicyRequest interface {
 }
 
 type CreateBudgetPolicyRequest struct {
-	// The alert threshold, as a percentage. Valid values: 0 to 100.
+	// The alert threshold percentage (0 to 100).
 	//
 	// example:
 	//
 	// 10
 	AlertThresholdPct *string `json:"AlertThresholdPct,omitempty" xml:"AlertThresholdPct,omitempty"`
-	// The ID of the dimension object. This parameter is required if `BudgetType` is set to `ConsumerTotal` or `ConsumerGroupTotal`.
+	// The ID of the dimension object. This parameter is required when BudgetType is set to ConsumerGroupTotal or Consumer.
 	//
 	// example:
 	//
 	// mi-xxxxx
 	BudgetDimensionRefId *string `json:"BudgetDimensionRefId,omitempty" xml:"BudgetDimensionRefId,omitempty"`
-	// The number of budget points.
+	// The budget points.
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,21 @@ type CreateBudgetPolicyRequest struct {
 	BudgetPoints *string `json:"BudgetPoints,omitempty" xml:"BudgetPoints,omitempty"`
 	// The budget type. Valid values:
 	//
-	// - `GlobalTotal`: global total budget
+	// - **GlobalTotal**: Global total budget.
 	//
-	// - `ConsumerTotal`: consumer total budget
+	// - **ConsumerGroupTotal**: Total budget for a consumer group.
 	//
-	// - `ConsumerGroupTotal`: consumer group total budget
+	// - **ConsumerGroupMemberDefault**: Default budget for a consumer group member.
+	//
+	// - **Consumer**: Budget for a single consumer.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ConsumerTotal
+	// GlobalTotal
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
-	// The gateway cluster ID.
+	// The gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +76,7 @@ type CreateBudgetPolicyRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The day of the month on which the budget resets. Valid values: 1 to 28.
+	// The day of the month when the budget is reset (1 to 28).
 	//
 	// This parameter is required.
 	//

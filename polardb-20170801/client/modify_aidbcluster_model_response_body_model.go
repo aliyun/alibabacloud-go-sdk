@@ -30,7 +30,7 @@ type iModifyAIDBClusterModelResponseBody interface {
 }
 
 type ModifyAIDBClusterModelResponseBody struct {
-	// Indicates whether the request is a dry-run request.
+	// Indicates whether the request is a dry run.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ModifyAIDBClusterModelResponseBody struct {
 	//
 	// 3AA6E0E4-1234-5678-90AB-1234567890AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resolved target model name.
+	// The parsed target model name.
 	//
 	// example:
 	//
 	// Qwen3-32B
 	TargetModelName *string `json:"TargetModelName,omitempty" xml:"TargetModelName,omitempty"`
-	// The resolved target OSS path.
+	// The parsed target OSS path.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type ModifyAIDBClusterModelResponseBody struct {
 	//
 	// 123456
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The number of change batches.
+	// The total number of modification batches.
 	//
 	// example:
 	//
 	// 1
 	TotalBatches *int64 `json:"TotalBatches,omitempty" xml:"TotalBatches,omitempty"`
-	// The number of affected model serving instances.
+	// The number of affected model service instances.
 	//
 	// example:
 	//
 	// 2
 	TotalMsds *int64 `json:"TotalMsds,omitempty" xml:"TotalMsds,omitempty"`
-	// The change warnings returned by the upstream. The caller must display these warnings.
+	// The modification warnings returned by the upstream service. The caller must display these warnings.
 	Warnings []*string `json:"Warnings,omitempty" xml:"Warnings,omitempty" type:"Repeated"`
 }
 

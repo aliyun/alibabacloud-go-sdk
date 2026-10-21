@@ -28,7 +28,7 @@ type DeleteAgenticDBProjectRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The target project ID.
+	// The ID of the target project.
 	//
 	// This parameter is required.
 	//

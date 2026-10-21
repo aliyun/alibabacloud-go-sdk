@@ -34,13 +34,13 @@ type CreateApplicationResponseBody struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The list of subcomponents.
 	Components []*CreateApplicationResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The application remarks.
+	// The application description.
 	//
 	// example:
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the generated order.
+	// The generated order ID.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateApplicationResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the required resources are available. This parameter is returned only when DryRun is set to true.
+	// Indicates whether the resources are sufficient. This parameter is returned only when DryRun is set to true.
 	//
 	// example:
 	//

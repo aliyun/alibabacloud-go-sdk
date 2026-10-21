@@ -40,19 +40,19 @@ type ResizeAIDBClusterModelResponseBody struct {
 	//
 	// pm-2ze4x2mwo81knj08a
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Indicates whether the current request performed only a capacity dry run.
+	// Indicates whether the current request performs a capacity dry run only.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The capacity that can be directly borrowed from the global pool without reshaping. This parameter is returned only when DryRun is set to true.
+	// The capacity that can be directly borrowed from the large pool without reshaping. This parameter is returned only when DryRun is set to true.
 	//
 	// example:
 	//
 	// 3000
 	PoolHitCapacity *int64 `json:"PoolHitCapacity,omitempty" xml:"PoolHitCapacity,omitempty"`
-	// The direct hit ratio of the global pool. Valid values: 0 to 1. This parameter is returned only when DryRun is set to true.
+	// The direct hit ratio of the large pool. Valid values: 0 to 1. This parameter is returned only when DryRun is set to true.
 	//
 	// example:
 	//
