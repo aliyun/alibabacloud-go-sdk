@@ -13,6 +13,8 @@ type iImageMattingAsyncRequest interface {
 	GetBackGroundType() *string
 	SetBgColor(v string) *ImageMattingAsyncRequest
 	GetBgColor() *string
+	SetBizId(v string) *ImageMattingAsyncRequest
+	GetBizId() *string
 	SetImageUrl(v string) *ImageMattingAsyncRequest
 	GetImageUrl() *string
 	SetTargetHeight(v int32) *ImageMattingAsyncRequest
@@ -40,7 +42,13 @@ type ImageMattingAsyncRequest struct {
 	//
 	// 255,255,255
 	BgColor *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
-	// The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 100 × 100 and 3000 × 3000 pixels, and the file size cannot exceed 10 MB.
+	// The business order ID of the caller. It is recorded upon acceptance and returned as is when you query the result of the asynchronous task.
+	//
+	// example:
+	//
+	// order-20260928-001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 100 × 100 and 3000 × 3000 pixels, and the file size must not exceed 10 MB.
 	//
 	// This parameter is required.
 	//
@@ -78,6 +86,10 @@ func (s *ImageMattingAsyncRequest) GetBgColor() *string {
 	return s.BgColor
 }
 
+func (s *ImageMattingAsyncRequest) GetBizId() *string {
+	return s.BizId
+}
+
 func (s *ImageMattingAsyncRequest) GetImageUrl() *string {
 	return s.ImageUrl
 }
@@ -97,6 +109,11 @@ func (s *ImageMattingAsyncRequest) SetBackGroundType(v string) *ImageMattingAsyn
 
 func (s *ImageMattingAsyncRequest) SetBgColor(v string) *ImageMattingAsyncRequest {
 	s.BgColor = &v
+	return s
+}
+
+func (s *ImageMattingAsyncRequest) SetBizId(v string) *ImageMattingAsyncRequest {
+	s.BizId = &v
 	return s
 }
 

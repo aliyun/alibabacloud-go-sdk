@@ -22,13 +22,13 @@ type iImageTranslationPlusAsyncResponseBody interface {
 }
 
 type ImageTranslationPlusAsyncResponseBody struct {
-	// The response code of the submission call. A value of success indicates a successful call.
+	// The response code for the submission call. A successful call returns success.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submission result of the Image Translation Plus asynchronous task.
+	// The submission result of the asynchronous task for the Plus edition of image translation.
 	Data *ImageTranslationPlusAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message, such as \\"The content contains sensitive data. Try another input.\\"
 	//
@@ -36,13 +36,13 @@ type ImageTranslationPlusAsyncResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier of the request, which is used for troubleshooting and Tracing Analysis.
+	// The unique identifier of the request, which is used for troubleshooting and tracing analysis.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the submission call is successful. This does not mean that the translation is completed. A value of true indicates success, and a value of false indicates failure.
+	// Specifies whether the submission call is successful. This does not indicate that the translation is complete. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *ImageTranslationPlusAsyncResponseBody) Validate() error {
 }
 
 type ImageTranslationPlusAsyncResponseBodyData struct {
-	// The identifier of the asynchronous task, which is used for result query and notification association. Do not use the example prefix as a business validation rule.
+	// The identifier of the asynchronous task, which is used for result queries and notification association. Do not use the example prefix as a business validation rule.
 	//
 	// example:
 	//

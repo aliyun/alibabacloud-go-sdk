@@ -9,6 +9,8 @@ type iImageTranslationPlusAsyncRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizId(v string) *ImageTranslationPlusAsyncRequest
+	GetBizId() *string
 	SetGlossary(v string) *ImageTranslationPlusAsyncRequest
 	GetGlossary() *string
 	SetImageUrl(v string) *ImageTranslationPlusAsyncRequest
@@ -26,19 +28,25 @@ type iImageTranslationPlusAsyncRequest interface {
 }
 
 type ImageTranslationPlusAsyncRequest struct {
-	// The intervention glossary ID. The intervention glossary ID must be created separately and provided in the input parameters. If the provided intervention glossary ID is empty, the translation results will not be modified.
+	// The business order ID of the caller. This ID is recorded when the request is accepted and returned as is when you query the asynchronous task result.
+	//
+	// example:
+	//
+	// order-20260928-001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The intervention glossary ID. You must create the intervention glossary separately and provide its ID in the input parameters. If the provided intervention glossary ID is empty, the translation results are not modified.
 	//
 	// example:
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// • Image URL: Must be publicly accessible.
+	// 	- Image URL: The image must be accessible over the Internet.
 	//
-	// • Format: PNG, JPEG, JPG, BMP, or WEBP.
+	// 	- Format: PNG, JPEG, JPG, BMP, or WEBP.
 	//
-	// • Pixels: Both width and height must not exceed 4,000.
+	// 	- Resolution: The width and height cannot exceed 4,000 pixels.
 	//
-	// • File size: The original file must be less than or equal to 10 MB.
+	// 	- File size: The original file size cannot exceed 10 MB.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +54,7 @@ type ImageTranslationPlusAsyncRequest struct {
 	//
 	// https://example.com/image.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to translate the text on the image subject. This helps you protect information and prevent embedded information, such as product names, from being translated. In the example image, the text in the red box represents the text on the subject, and the text in the blue box represents the text not on the subject.
+	// Specifies whether to translate the text on the image subject. This helps you protect information and prevent embedded information, such as the product name, from being translated. In the example image, the text in the red box represents the text on the subject, and the text in the blue box represents the text not on the subject.
 	//
 	// example:
 	//
@@ -60,7 +68,7 @@ type ImageTranslationPlusAsyncRequest struct {
 	//
 	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The target language code. The 12 minor language pairs listed above are recommended.
+	// The target language code. We recommend that you use the 12 minor language pairs listed above.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +76,13 @@ type ImageTranslationPlusAsyncRequest struct {
 	//
 	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate brand names in the image. This prevents brand names from being translated. Default value: false, which indicates that brand names are not translated. In the example image, \\"懒角落\\" represents a brand name.
+	// Specifies whether to translate the brand name in the image. This prevents the brand name from being translated. Default value: false. In the example image, \\"懒角落\\" represents the brand name.
 	//
 	// example:
 	//
 	// false
 	TranslatingBrandInTheProduct *bool `json:"TranslatingBrandInTheProduct,omitempty" xml:"TranslatingBrandInTheProduct,omitempty"`
-	// Specifies whether to return layout information such as the position, font, and color of the text. This can be used to obtain data when integrating the image editor for secondary editing. You can call the image translation result query API to obtain the complete parameter information.
+	// Specifies whether to return layout information such as the position, font, and color of the text. This can be used to obtain data when you integrate the image editor for secondary editing. You can call the image translation result data query API operation to obtain the complete parameter information.
 	//
 	// example:
 	//
@@ -88,6 +96,10 @@ func (s ImageTranslationPlusAsyncRequest) String() string {
 
 func (s ImageTranslationPlusAsyncRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ImageTranslationPlusAsyncRequest) GetBizId() *string {
+	return s.BizId
 }
 
 func (s *ImageTranslationPlusAsyncRequest) GetGlossary() *string {
@@ -116,6 +128,11 @@ func (s *ImageTranslationPlusAsyncRequest) GetTranslatingBrandInTheProduct() *bo
 
 func (s *ImageTranslationPlusAsyncRequest) GetUseImageEditor() *bool {
 	return s.UseImageEditor
+}
+
+func (s *ImageTranslationPlusAsyncRequest) SetBizId(v string) *ImageTranslationPlusAsyncRequest {
+	s.BizId = &v
+	return s
 }
 
 func (s *ImageTranslationPlusAsyncRequest) SetGlossary(v string) *ImageTranslationPlusAsyncRequest {

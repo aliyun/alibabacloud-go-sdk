@@ -9,12 +9,22 @@ type iImageRemovalProAsyncRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizId(v string) *ImageRemovalProAsyncRequest
+	GetBizId() *string
 	SetImageUrl(v string) *ImageRemovalProAsyncRequest
 	GetImageUrl() *string
 }
 
 type ImageRemovalProAsyncRequest struct {
-	// The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256×256 and 3000×3000, and the file size must be less than or equal to 10 MB.
+	// The business order ID of the caller. This ID is recorded when the request is accepted and returned as-is when you query the asynchronous task result.
+	//
+	// example:
+	//
+	// order-20260928-001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The URL of the original image. The image must be in the JPG, JPEG, PNG, BMP, or WEBP format.
+	//
+	// · Resolution: 256×256 to 3000×3000. File size: ≤ 10 MB.
 	//
 	// This parameter is required.
 	//
@@ -32,8 +42,17 @@ func (s ImageRemovalProAsyncRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ImageRemovalProAsyncRequest) GetBizId() *string {
+	return s.BizId
+}
+
 func (s *ImageRemovalProAsyncRequest) GetImageUrl() *string {
 	return s.ImageUrl
+}
+
+func (s *ImageRemovalProAsyncRequest) SetBizId(v string) *ImageRemovalProAsyncRequest {
+	s.BizId = &v
+	return s
 }
 
 func (s *ImageRemovalProAsyncRequest) SetImageUrl(v string) *ImageRemovalProAsyncRequest {

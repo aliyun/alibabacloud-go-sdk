@@ -22,13 +22,13 @@ type iImageRecognitionAsyncResponseBody interface {
 }
 
 type ImageRecognitionAsyncResponseBody struct {
-	// The error code. This parameter is not returned when the call is successful.
+	// The error code. This parameter is not returned for normal calls.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned recognition result struct.
+	// The struct information of the returned recognition result.
 	Data *ImageRecognitionAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message, such as "The parameter contains sensitive information. Try another input."
 	//
@@ -36,7 +36,7 @@ type ImageRecognitionAsyncResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, which is used to identify a unique request.
+	// The request ID, which is used to identify a unique request.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type ImageRecognitionAsyncResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: successful
 	//
-	// - false: The call fails.
+	// - false: failed
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ImageRecognitionAsyncResponseBody) Validate() error {
 }
 
 type ImageRecognitionAsyncResponseBodyData struct {
-	// The ID of the task used to query the asynchronous task result.
+	// The task ID used to query the result of the asynchronous task.
 	//
 	// example:
 	//

@@ -22,15 +22,15 @@ type iSizeChartExtractAsyncResponseBody interface {
 }
 
 type SizeChartExtractAsyncResponseBody struct {
-	// The error code. This parameter is not returned when the call is successful.
+	// The error code. This parameter is not returned for normal calls.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submission result of the asynchronous task for size chart extraction.
+	// The commit result of the size chart fetch asynchronous task node.
 	Data *SizeChartExtractAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned when the call is successful.
+	// The error message. This parameter is not returned for normal calls.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type SizeChartExtractAsyncResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: true and false. A value of true indicates that the call is successful. A value of false indicates that the call fails.
+	// Indicates whether the call is successful. Valid values: true for success and false for failure.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *SizeChartExtractAsyncResponseBody) Validate() error {
 }
 
 type SizeChartExtractAsyncResponseBodyData struct {
-	// The ID of the asynchronous task used to query the result.
+	// The task ID used to query the asynchronous task result.
 	//
 	// example:
 	//

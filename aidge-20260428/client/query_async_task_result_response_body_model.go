@@ -22,15 +22,15 @@ type iQueryAsyncTaskResultResponseBody interface {
 }
 
 type QueryAsyncTaskResultResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The asynchronous task result.
+	// The result of the asynchronous task.
 	Data *QueryAsyncTaskResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -42,11 +42,7 @@ type QueryAsyncTaskResultResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
-	//
-	// - true: The call is successful.
-	//
-	// - false: The call failed.
+	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call fails.
 	//
 	// example:
 	//
@@ -117,6 +113,12 @@ func (s *QueryAsyncTaskResultResponseBody) Validate() error {
 }
 
 type QueryAsyncTaskResultResponseBodyData struct {
+	// The business ID.
+	//
+	// example:
+	//
+	// order-20260928-001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The task result.
 	//
 	// example:
@@ -129,7 +131,7 @@ type QueryAsyncTaskResultResponseBodyData struct {
 	//
 	// COMPLETED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The downstream task ID.
+	// The ID of the downstream task.
 	//
 	// example:
 	//
@@ -147,6 +149,10 @@ func (s QueryAsyncTaskResultResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *QueryAsyncTaskResultResponseBodyData) GetBizId() *string {
+	return s.BizId
+}
+
 func (s *QueryAsyncTaskResultResponseBodyData) GetResult() *string {
 	return s.Result
 }
@@ -161,6 +167,11 @@ func (s *QueryAsyncTaskResultResponseBodyData) GetTaskId() *string {
 
 func (s *QueryAsyncTaskResultResponseBodyData) GetUsageMap() map[string]interface{} {
 	return s.UsageMap
+}
+
+func (s *QueryAsyncTaskResultResponseBodyData) SetBizId(v string) *QueryAsyncTaskResultResponseBodyData {
+	s.BizId = &v
+	return s
 }
 
 func (s *QueryAsyncTaskResultResponseBodyData) SetResult(v string) *QueryAsyncTaskResultResponseBodyData {

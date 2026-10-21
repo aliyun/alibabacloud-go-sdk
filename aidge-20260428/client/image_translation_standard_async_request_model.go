@@ -9,6 +9,8 @@ type iImageTranslationStandardAsyncRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizId(v string) *ImageTranslationStandardAsyncRequest
+	GetBizId() *string
 	SetGlossary(v string) *ImageTranslationStandardAsyncRequest
 	GetGlossary() *string
 	SetImageUrl(v string) *ImageTranslationStandardAsyncRequest
@@ -26,6 +28,12 @@ type iImageTranslationStandardAsyncRequest interface {
 }
 
 type ImageTranslationStandardAsyncRequest struct {
+	// The business order ID of the caller. It is recorded upon acceptance and returned as-is when querying the asynchronous task result.
+	//
+	// example:
+	//
+	// order-20260928-001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The intervention glossary.
 	//
 	// example:
@@ -40,7 +48,7 @@ type ImageTranslationStandardAsyncRequest struct {
 	//
 	// https://example.com/image.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to include the product area in the translation.
+	// Specifies whether to include the translation of the product area.
 	//
 	// example:
 	//
@@ -62,7 +70,7 @@ type ImageTranslationStandardAsyncRequest struct {
 	//
 	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate brand text in the product area.
+	// Specifies whether to translate the brand text in the product area.
 	//
 	// example:
 	//
@@ -82,6 +90,10 @@ func (s ImageTranslationStandardAsyncRequest) String() string {
 
 func (s ImageTranslationStandardAsyncRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ImageTranslationStandardAsyncRequest) GetBizId() *string {
+	return s.BizId
 }
 
 func (s *ImageTranslationStandardAsyncRequest) GetGlossary() *string {
@@ -110,6 +122,11 @@ func (s *ImageTranslationStandardAsyncRequest) GetTranslatingBrandInTheProduct()
 
 func (s *ImageTranslationStandardAsyncRequest) GetUseImageEditor() *bool {
 	return s.UseImageEditor
+}
+
+func (s *ImageTranslationStandardAsyncRequest) SetBizId(v string) *ImageTranslationStandardAsyncRequest {
+	s.BizId = &v
+	return s
 }
 
 func (s *ImageTranslationStandardAsyncRequest) SetGlossary(v string) *ImageTranslationStandardAsyncRequest {

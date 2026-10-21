@@ -28,21 +28,25 @@ type ImageRemoveAsyncResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result struct.
+	// The returned result struct information.
 	Data *ImageRemoveAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message, such as "The parameters contain sensitive information. Please try another input."
+	// The error message, such as "The parameters contain sensitive information. Try another input."
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, which is used to identify a unique request.
+	// The request ID, which is used to identify a unique request.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values: true (success) and false (failure).
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call fails.
 	//
 	// example:
 	//

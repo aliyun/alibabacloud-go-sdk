@@ -9,6 +9,8 @@ type iImageTranslationProAsyncRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizId(v string) *ImageTranslationProAsyncRequest
+	GetBizId() *string
 	SetGlossary(v string) *ImageTranslationProAsyncRequest
 	GetGlossary() *string
 	SetImageUrl(v string) *ImageTranslationProAsyncRequest
@@ -26,19 +28,25 @@ type iImageTranslationProAsyncRequest interface {
 }
 
 type ImageTranslationProAsyncRequest struct {
+	// The business ID of the caller. This ID is recorded when the request is accepted and returned as-is when you query the asynchronous task result.
+	//
+	// example:
+	//
+	// order-20260928-001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The ID of the intervention glossary. You must create the glossary in the console and provide its ID. If this parameter is left empty, the translation results are not modified.
 	//
 	// example:
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// • Image URL: Must be accessible over the Internet.
+	// • Image URL: The URL must be publicly accessible over the Internet.
 	//
-	// • Format: PNG, JPEG, JPG, BMP, or WEBP.
+	// • Formats: PNG, JPEG, JPG, BMP, and WEBP.
 	//
-	// • Pixels: Both the width and height must not exceed 4,000.
+	// • Pixels: The width and height cannot exceed 4,000 pixels.
 	//
-	// • File size: The original file size must be less than or equal to 10 MB.
+	// • File size: The original file size cannot exceed 10 MB.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +54,7 @@ type ImageTranslationProAsyncRequest struct {
 	//
 	// https://example.com/image.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to translate the text on the product subject in the image. Set this parameter to false to protect the subject information, such as the product name, from being translated. Default value: false.
+	// Specifies whether to translate the text on the image subject. Set this parameter to false to protect the subject information, such as the product name, from being translated. Default value: false.
 	//
 	// example:
 	//
@@ -68,13 +76,13 @@ type ImageTranslationProAsyncRequest struct {
 	//
 	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate the brand names in the image. Default value: false, which indicates that brand names are not translated.
+	// Specifies whether to translate brand names in the image. Default value: false, which indicates that brand names are not translated.
 	//
 	// example:
 	//
 	// false
 	TranslatingBrandInTheProduct *bool `json:"TranslatingBrandInTheProduct,omitempty" xml:"TranslatingBrandInTheProduct,omitempty"`
-	// Specifies whether to return layout information such as the position, font, and color of the text. If you set this parameter to true, layer information is returned, which can be used for secondary editing in an image editor. Default value: false.
+	// Specifies whether to return layout information such as the position, font, and color of the text. If you set this parameter to true, layer information is returned, which can be used for secondary editing when you integrate an image editor. Default value: false.
 	//
 	// example:
 	//
@@ -88,6 +96,10 @@ func (s ImageTranslationProAsyncRequest) String() string {
 
 func (s ImageTranslationProAsyncRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ImageTranslationProAsyncRequest) GetBizId() *string {
+	return s.BizId
 }
 
 func (s *ImageTranslationProAsyncRequest) GetGlossary() *string {
@@ -116,6 +128,11 @@ func (s *ImageTranslationProAsyncRequest) GetTranslatingBrandInTheProduct() *boo
 
 func (s *ImageTranslationProAsyncRequest) GetUseImageEditor() *bool {
 	return s.UseImageEditor
+}
+
+func (s *ImageTranslationProAsyncRequest) SetBizId(v string) *ImageTranslationProAsyncRequest {
+	s.BizId = &v
+	return s
 }
 
 func (s *ImageTranslationProAsyncRequest) SetGlossary(v string) *ImageTranslationProAsyncRequest {

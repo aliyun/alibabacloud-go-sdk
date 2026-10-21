@@ -9,6 +9,8 @@ type iSizeChartExtractAsyncShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizId(v string) *SizeChartExtractAsyncShrinkRequest
+	GetBizId() *string
 	SetColumnNameListShrink(v string) *SizeChartExtractAsyncShrinkRequest
 	GetColumnNameListShrink() *string
 	SetImageUrl(v string) *SizeChartExtractAsyncShrinkRequest
@@ -18,9 +20,15 @@ type iSizeChartExtractAsyncShrinkRequest interface {
 }
 
 type SizeChartExtractAsyncShrinkRequest struct {
+	// The business order number of the caller. It is recorded when the request is accepted and returned as is when you query the asynchronous task result.
+	//
+	// example:
+	//
+	// order-20260928-001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The list of column names to extract, such as Size, Bust, and Length.
 	ColumnNameListShrink *string `json:"ColumnNameList,omitempty" xml:"ColumnNameList,omitempty"`
-	// The image URL. The image must be in the JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 pixels and 3000 × 3000 pixels. The file size cannot exceed 10 MB.
+	// The image URL. The image must be in the JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 pixels and 3000 × 3000 pixels, and the file size cannot exceed 10 MB.
 	//
 	// This parameter is required.
 	//
@@ -44,6 +52,10 @@ func (s SizeChartExtractAsyncShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SizeChartExtractAsyncShrinkRequest) GetBizId() *string {
+	return s.BizId
+}
+
 func (s *SizeChartExtractAsyncShrinkRequest) GetColumnNameListShrink() *string {
 	return s.ColumnNameListShrink
 }
@@ -54,6 +66,11 @@ func (s *SizeChartExtractAsyncShrinkRequest) GetImageUrl() *string {
 
 func (s *SizeChartExtractAsyncShrinkRequest) GetLanguageModel() *string {
 	return s.LanguageModel
+}
+
+func (s *SizeChartExtractAsyncShrinkRequest) SetBizId(v string) *SizeChartExtractAsyncShrinkRequest {
+	s.BizId = &v
+	return s
 }
 
 func (s *SizeChartExtractAsyncShrinkRequest) SetColumnNameListShrink(v string) *SizeChartExtractAsyncShrinkRequest {

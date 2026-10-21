@@ -2042,15 +2042,15 @@ func (client *Client) ImageMatting(request *ImageMattingRequest) (_result *Image
 
 // Summary:
 //
-// Extracts the salient subject from an image, separates it from the background, and returns the subject image without the background. It also provides multiple background options and custom size options to optimize product display.
+// Extracts the salient subject from an image by separating it from the background and returns the subject image with the background removed. It also provides multiple background options and custom size options to optimize product display.
 //
 // Description:
 //
 // # Scenarios
 //
-//   - Supports secondary editing of materials: After the image subject is separated from the background, you can further edit the image.
+//   - Supports secondary editing of materials: After separating the image subject from the background, you can further edit the image.
 //
-//   - Improves material processing efficiency: Quickly extracts the subjects from various material images for background replacement, which improves the production efficiency of advertising images and marketing posters.
+//   - Improves material processing efficiency: Quickly extracts the subjects from various material images for background replacement, thereby improving the production efficiency of advertising images and marketing posters.
 //
 // # Features.
 //
@@ -2066,9 +2066,9 @@ func (client *Client) ImageMatting(request *ImageMattingRequest) (_result *Image
 //
 // #### 3. Multi-format output and background operations
 //
-//   - **Transparent background export**: Directly generates PNG images with transparent or white backgrounds, which adapts to e-commerce and design scenarios.
+//   - **Transparent background export**: Directly generates PNG images with transparent backgrounds and white backgrounds, adapting to e-commerce and design scenarios.
 //
-//   - **Supports custom background colors**
+//   - **Custom background color support**
 //
 // # Effect comparison
 //
@@ -2101,6 +2101,10 @@ func (client *Client) ImageMattingAsyncWithOptions(request *ImageMattingAsyncReq
 
 	if !dara.IsNil(request.BgColor) {
 		query["BgColor"] = request.BgColor
+	}
+
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
 	}
 
 	if !dara.IsNil(request.ImageUrl) {
@@ -2140,15 +2144,15 @@ func (client *Client) ImageMattingAsyncWithOptions(request *ImageMattingAsyncReq
 
 // Summary:
 //
-// Extracts the salient subject from an image, separates it from the background, and returns the subject image without the background. It also provides multiple background options and custom size options to optimize product display.
+// Extracts the salient subject from an image by separating it from the background and returns the subject image with the background removed. It also provides multiple background options and custom size options to optimize product display.
 //
 // Description:
 //
 // # Scenarios
 //
-//   - Supports secondary editing of materials: After the image subject is separated from the background, you can further edit the image.
+//   - Supports secondary editing of materials: After separating the image subject from the background, you can further edit the image.
 //
-//   - Improves material processing efficiency: Quickly extracts the subjects from various material images for background replacement, which improves the production efficiency of advertising images and marketing posters.
+//   - Improves material processing efficiency: Quickly extracts the subjects from various material images for background replacement, thereby improving the production efficiency of advertising images and marketing posters.
 //
 // # Features.
 //
@@ -2164,9 +2168,9 @@ func (client *Client) ImageMattingAsyncWithOptions(request *ImageMattingAsyncReq
 //
 // #### 3. Multi-format output and background operations
 //
-//   - **Transparent background export**: Directly generates PNG images with transparent or white backgrounds, which adapts to e-commerce and design scenarios.
+//   - **Transparent background export**: Directly generates PNG images with transparent backgrounds and white backgrounds, adapting to e-commerce and design scenarios.
 //
-//   - **Supports custom background colors**
+//   - **Custom background color support**
 //
 // # Effect comparison
 //
@@ -2476,7 +2480,7 @@ func (client *Client) ImageRecognition(request *ImageRecognitionRequest) (_resul
 
 // Summary:
 //
-// Identifies specific elements in e-commerce images. It analyzes image details to help users quickly identify elements such as text, logos, watermarks, and text-containing color blocks in the main subject and background, significantly improving the efficiency and accuracy of image filtering.
+// Identifies specific elements in e-commerce images. It extracts image details to help users quickly identify text, logos, watermarks, and text-containing color blocks in the main subject and background, significantly improving the efficiency and accuracy of image filtering.
 //
 // Description:
 //
@@ -2484,7 +2488,7 @@ func (client *Client) ImageRecognition(request *ImageRecognitionRequest) (_resul
 //
 // 1. Intelligent image filtering and optimization:
 //
-// Merchants and platforms can use the intelligent element recognition API to filter images and automatically identify images containing specific elements such as watermarks and logos. After filtering, they can further call the intelligent elimination API to optimize these images, improve image quality, and shorten the product release cycle.
+// Merchants and platforms can use the intelligent element recognition API to filter images and automatically identify images containing specific elements such as watermarks and logos. After filtering, they can call the intelligent elimination API to optimize these images, improve image quality, and shorten the product release cycle.
 //
 // 2. Automated image processing and efficiency improvement:
 //
@@ -2502,15 +2506,15 @@ func (client *Client) ImageRecognition(request *ImageRecognitionRequest) (_resul
 //
 //   - Logo: A logo or trademark.
 //
-//   - Watermark: Monochrome transparent text, logos, images, URLs, or store names.
+//   - Watermark: Monochrome transparent text, logos, images, URLs, store names, etc.
 //
 //   - Text-containing color block: A color block containing text outside the subject.
 //
-// **2. The main features of the intelligent element recognition API include:**
+// **2. The intelligent element recognition API provides the following features:**
 //
 //   - Element recognition: Identifies whether elements such as text, logos, watermarks, and text-containing color blocks exist in the image subject and background.
 //
-//   - Workflow collaboration: Used in combination with the intelligent elimination API. The intelligent element recognition API first identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
+//   - Workflow collaboration: Used in combination with the intelligent elimination API. First, the intelligent element recognition API identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
 //
 // **3. Technical advantages:**
 //
@@ -2587,6 +2591,10 @@ func (client *Client) ImageRecognitionAsyncWithOptions(tmpReq *ImageRecognitionA
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
 	if !dara.IsNil(request.ImageUrl) {
 		query["ImageUrl"] = request.ImageUrl
 	}
@@ -2644,7 +2652,7 @@ func (client *Client) ImageRecognitionAsyncWithOptions(tmpReq *ImageRecognitionA
 
 // Summary:
 //
-// Identifies specific elements in e-commerce images. It analyzes image details to help users quickly identify elements such as text, logos, watermarks, and text-containing color blocks in the main subject and background, significantly improving the efficiency and accuracy of image filtering.
+// Identifies specific elements in e-commerce images. It extracts image details to help users quickly identify text, logos, watermarks, and text-containing color blocks in the main subject and background, significantly improving the efficiency and accuracy of image filtering.
 //
 // Description:
 //
@@ -2652,7 +2660,7 @@ func (client *Client) ImageRecognitionAsyncWithOptions(tmpReq *ImageRecognitionA
 //
 // 1. Intelligent image filtering and optimization:
 //
-// Merchants and platforms can use the intelligent element recognition API to filter images and automatically identify images containing specific elements such as watermarks and logos. After filtering, they can further call the intelligent elimination API to optimize these images, improve image quality, and shorten the product release cycle.
+// Merchants and platforms can use the intelligent element recognition API to filter images and automatically identify images containing specific elements such as watermarks and logos. After filtering, they can call the intelligent elimination API to optimize these images, improve image quality, and shorten the product release cycle.
 //
 // 2. Automated image processing and efficiency improvement:
 //
@@ -2670,15 +2678,15 @@ func (client *Client) ImageRecognitionAsyncWithOptions(tmpReq *ImageRecognitionA
 //
 //   - Logo: A logo or trademark.
 //
-//   - Watermark: Monochrome transparent text, logos, images, URLs, or store names.
+//   - Watermark: Monochrome transparent text, logos, images, URLs, store names, etc.
 //
 //   - Text-containing color block: A color block containing text outside the subject.
 //
-// **2. The main features of the intelligent element recognition API include:**
+// **2. The intelligent element recognition API provides the following features:**
 //
 //   - Element recognition: Identifies whether elements such as text, logos, watermarks, and text-containing color blocks exist in the image subject and background.
 //
-//   - Workflow collaboration: Used in combination with the intelligent elimination API. The intelligent element recognition API first identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
+//   - Workflow collaboration: Used in combination with the intelligent elimination API. First, the intelligent element recognition API identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
 //
 // **3. Technical advantages:**
 //
@@ -2886,39 +2894,39 @@ func (client *Client) ImageRemovalPro(request *ImageRemovalProRequest) (_result 
 
 // Summary:
 //
-// Erases text, specific names, transparent text blocks, and watermarks from e-commerce images. This feature automatically identifies these elements and allows you to specify objects to be removed, enabling efficient and accurate processing of large batches of images to simplify image editing.
+// Removes objects from e-commerce images by automatically identifying and erasing text, specific names, transparent text blocks, and watermarks. Allows you to specify objects to remove as needed, enabling efficient and accurate processing of large batches of images and simplifying image editing.
 //
 // Description:
 //
 // ## Scenarios
 //
-//   - **Efficient e-commerce image processing:**
+//   - **Efficient processing of e-commerce images:**
 //
 //     Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
 //
-//   - **Multi-platform product information synchronization:**
+//   - **Product information synchronization across multiple platforms:**
 //
-//     When merchants list products on different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
+//     Quickly removes specific text and watermarks when merchants list products on different e-commerce platforms to comply with the image specifications of each platform.
 //
 // ## Features
 //
-// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to be removed, you can choose to remove them from the image subject or the image background. Both API and editor integration methods are supported to meet different types of requirements.
+// 1.  First, understand the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can choose to remove objects from the image subject or the image background. Both API and editor integration methods are supported to meet different requirements.
 //
 //  1. Image subject: the core product area in the image.
 //
-//  2. Image background: the rest of the image other than the product subject.
+//  2. Image background: the rest of the image except the product subject.
 //
-// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and watermarks. You can refer to the following examples to clarify your usage requirements and perform targeted operations:
+// 2.  Second, the following four types of objects can be removed: text, specific names, transparent text blocks, and watermarks. You can refer to the following examples to clarify your requirements and perform targeted operations:
 //
-// ## Before and after
+// ## Effect comparison
 //
-// | **Original image*	- | **Erased image*	- |
+// | **Original image*	- | **Processed image*	- |
 //
 // | --- | --- |
 //
-// | ![Main image 1 - Leopard print large capacity crossbody canvas bag.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/AJdl65AyryVZyOke/img/4bd2c812-ed3c-45da-8a86-ebd29102f4b1.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/eff0eb1b-36df-431d-a010-3bb3b7348ff9.png) |
+// | ![Main image 1 - Leopard print large capacity millennium single shoulder crossbody canvas bag.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/AJdl65AyryVZyOke/img/4bd2c812-ed3c-45da-8a86-ebd29102f4b1.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/eff0eb1b-36df-431d-a010-3bb3b7348ff9.png) |
 //
-// | ![Main image 1 - Short half-cover round-tip French false nails with handle.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
+// | ![Main image 1 - Handled ultra-short half-cover round head French false nails.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
 //
 // @param request - ImageRemovalProAsyncRequest
 //
@@ -2933,6 +2941,10 @@ func (client *Client) ImageRemovalProAsyncWithOptions(request *ImageRemovalProAs
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
 	if !dara.IsNil(request.ImageUrl) {
 		query["ImageUrl"] = request.ImageUrl
 	}
@@ -2962,39 +2974,39 @@ func (client *Client) ImageRemovalProAsyncWithOptions(request *ImageRemovalProAs
 
 // Summary:
 //
-// Erases text, specific names, transparent text blocks, and watermarks from e-commerce images. This feature automatically identifies these elements and allows you to specify objects to be removed, enabling efficient and accurate processing of large batches of images to simplify image editing.
+// Removes objects from e-commerce images by automatically identifying and erasing text, specific names, transparent text blocks, and watermarks. Allows you to specify objects to remove as needed, enabling efficient and accurate processing of large batches of images and simplifying image editing.
 //
 // Description:
 //
 // ## Scenarios
 //
-//   - **Efficient e-commerce image processing:**
+//   - **Efficient processing of e-commerce images:**
 //
 //     Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
 //
-//   - **Multi-platform product information synchronization:**
+//   - **Product information synchronization across multiple platforms:**
 //
-//     When merchants list products on different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
+//     Quickly removes specific text and watermarks when merchants list products on different e-commerce platforms to comply with the image specifications of each platform.
 //
 // ## Features
 //
-// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to be removed, you can choose to remove them from the image subject or the image background. Both API and editor integration methods are supported to meet different types of requirements.
+// 1.  First, understand the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can choose to remove objects from the image subject or the image background. Both API and editor integration methods are supported to meet different requirements.
 //
 //  1. Image subject: the core product area in the image.
 //
-//  2. Image background: the rest of the image other than the product subject.
+//  2. Image background: the rest of the image except the product subject.
 //
-// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and watermarks. You can refer to the following examples to clarify your usage requirements and perform targeted operations:
+// 2.  Second, the following four types of objects can be removed: text, specific names, transparent text blocks, and watermarks. You can refer to the following examples to clarify your requirements and perform targeted operations:
 //
-// ## Before and after
+// ## Effect comparison
 //
-// | **Original image*	- | **Erased image*	- |
+// | **Original image*	- | **Processed image*	- |
 //
 // | --- | --- |
 //
-// | ![Main image 1 - Leopard print large capacity crossbody canvas bag.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/AJdl65AyryVZyOke/img/4bd2c812-ed3c-45da-8a86-ebd29102f4b1.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/eff0eb1b-36df-431d-a010-3bb3b7348ff9.png) |
+// | ![Main image 1 - Leopard print large capacity millennium single shoulder crossbody canvas bag.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/AJdl65AyryVZyOke/img/4bd2c812-ed3c-45da-8a86-ebd29102f4b1.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/eff0eb1b-36df-431d-a010-3bb3b7348ff9.png) |
 //
-// | ![Main image 1 - Short half-cover round-tip French false nails with handle.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
+// | ![Main image 1 - Handled ultra-short half-cover round head French false nails.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
 //
 // @param request - ImageRemovalProAsyncRequest
 //
@@ -3344,43 +3356,43 @@ func (client *Client) ImageRemove(request *ImageRemoveRequest) (_result *ImageRe
 
 // Summary:
 //
-// Provides intelligent image erasure tailored for e-commerce images by automatically identifying and removing text, specific names, transparent text blocks, and unwanted overlays, and allows you to specify objects to remove for efficient and accurate batch processing to simplify image editing.
+// Intelligently removes unwanted elements from e-commerce images by automatically identifying and erasing text, specific names, transparent text blocks, and promotional stickers. Supports specifying target objects for removal to enable efficient and accurate batch processing and simplify image editing.
 //
 // Description:
 //
 // ## Scenarios
 //
-//   - **Efficient processing of e-commerce images:*	-
+//   - **Efficient e-commerce image processing:*	-
 //
 // Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
 //
-//   - **Multi-platform product information synchronization:**
+//   - **Multi-platform product information synchronization:*	-
 //
-// When merchants synchronize product listings across different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
+// When merchants list products on different e-commerce platforms simultaneously, they can quickly remove specific text and promotional stickers to comply with the image specifications of different platforms.
 //
-//   - **Marketing material preparation:**
+//   - **Marketing material preparation:*	-
 //
 // Merchants can easily remove original promotional information and quickly update it with the latest campaign information.
 //
-// > Note: Merchants or platforms can batch remove unwanted elements in images to optimize image quality. We recommend using this feature in combination with the "Intelligent Recognition API" (coming soon) to first filter out images containing text, specific names, transparent text blocks, and watermarks, and then use the "Intelligent Erasure API" for batch removal. The Intelligent Recognition API focuses on "recognition", while the Intelligent Erasure API focuses on "erasure". By calling them in sequence, you can maximize the erasure effect and reduce "false removals" and "false recognitions".
+// > Note: Merchants or platforms can batch remove impurities in images to optimize image quality. We recommend using this feature in combination with the "Intelligent Recognition API" (coming soon) to first filter images containing text, specific names, transparent text blocks, and promotional stickers, and then use the "Intelligent Erasure API" for batch removal. The Intelligent Recognition API focuses on "recognition", while the Intelligent Erasure API focuses on "erasure". By calling them in sequence, you can maximize the erasure effect and reduce "false removals" and "false recognitions".
 //
 // ## Features
 //
-// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can choose whether the removal scope is the image subject or the image background area. Both API and editor integration methods are supported to meet different types of needs.
+// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to be removed, you can choose whether the removal scope is the image subject or the image background area. Both API and editor integration methods are supported to meet different types of requirements.
 //
 //  1. Image subject: the core product area in the image.
 //
 //  2. Image background: the rest of the image other than the product subject.
 //
-// 2.  Second, the objects to remove support the following three cases:
+// 2.  Second, the objects to be removed support the following three cases:
 //
-//  1. The user selects only the type. You can select text, specific names, transparent text blocks, and watermarks. You can clarify your usage requirements through the following examples for targeted operations.
+//  1. The user only selects the type. Supported types include text, specific names, transparent text blocks, and promotional stickers. You can clarify the usage requirements through the following examples for targeted operations.
 //
 //  2. (Upgraded) Provides specified image erasure. Users can specify multiple images at a time.
 //
-//  3. (Upgraded) Provides specified text erasure. Users can specify multiple texts at a time.
+//  3. (Upgraded) Provides specified text erasure. Users can specify multiple text strings at a time.
 //
-// Processing flow: The user provides the original image URL → OCR and VLM models detect the text or image position → The coordinates of the area to be repaired are determined → AI repairs and generates a clean image → The result image URL is returned.
+// Processing flow: The user passes in the original image URL → OCR and VLM models detect the text or image position → Determine the coordinates of the area to be repaired → AI repairs and generates a clean image → Returns the result image URL.
 //
 // ## Effect comparison
 //
@@ -3436,7 +3448,7 @@ func (client *Client) ImageRemove(request *ImageRemoveRequest) (_result *ImageRe
 //
 // ![b05173e7-2ae5-494e-99d2-7111fc966fd5.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/05759aef-1720-41cd-8800-f7d0801e4d95.jpeg) |
 //
-// | Watermarks | 	- Involves the image subject area
+// | Promotional stickers | 	- Involves the image subject area
 //
 //	    ![2.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/bf1442f8-a9fa-40d3-bcb0-7a8a41b49b5d.jpeg)
 //
@@ -3454,7 +3466,7 @@ func (client *Client) ImageRemove(request *ImageRemoveRequest) (_result *ImageRe
 //
 // | Specified image element erasure (supports multiple image links) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
 //
-// | Specified text erasure (supports multiple texts) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
+// | Specified text erasure (supports multiple text strings) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
 //
 // @param tmpReq - ImageRemoveAsyncRequest
 //
@@ -3487,6 +3499,10 @@ func (client *Client) ImageRemoveAsyncWithOptions(tmpReq *ImageRemoveAsyncReques
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
 	if !dara.IsNil(request.ImageUrl) {
 		query["ImageUrl"] = request.ImageUrl
 	}
@@ -3540,43 +3556,43 @@ func (client *Client) ImageRemoveAsyncWithOptions(tmpReq *ImageRemoveAsyncReques
 
 // Summary:
 //
-// Provides intelligent image erasure tailored for e-commerce images by automatically identifying and removing text, specific names, transparent text blocks, and unwanted overlays, and allows you to specify objects to remove for efficient and accurate batch processing to simplify image editing.
+// Intelligently removes unwanted elements from e-commerce images by automatically identifying and erasing text, specific names, transparent text blocks, and promotional stickers. Supports specifying target objects for removal to enable efficient and accurate batch processing and simplify image editing.
 //
 // Description:
 //
 // ## Scenarios
 //
-//   - **Efficient processing of e-commerce images:*	-
+//   - **Efficient e-commerce image processing:*	-
 //
 // Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
 //
-//   - **Multi-platform product information synchronization:**
+//   - **Multi-platform product information synchronization:*	-
 //
-// When merchants synchronize product listings across different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
+// When merchants list products on different e-commerce platforms simultaneously, they can quickly remove specific text and promotional stickers to comply with the image specifications of different platforms.
 //
-//   - **Marketing material preparation:**
+//   - **Marketing material preparation:*	-
 //
 // Merchants can easily remove original promotional information and quickly update it with the latest campaign information.
 //
-// > Note: Merchants or platforms can batch remove unwanted elements in images to optimize image quality. We recommend using this feature in combination with the "Intelligent Recognition API" (coming soon) to first filter out images containing text, specific names, transparent text blocks, and watermarks, and then use the "Intelligent Erasure API" for batch removal. The Intelligent Recognition API focuses on "recognition", while the Intelligent Erasure API focuses on "erasure". By calling them in sequence, you can maximize the erasure effect and reduce "false removals" and "false recognitions".
+// > Note: Merchants or platforms can batch remove impurities in images to optimize image quality. We recommend using this feature in combination with the "Intelligent Recognition API" (coming soon) to first filter images containing text, specific names, transparent text blocks, and promotional stickers, and then use the "Intelligent Erasure API" for batch removal. The Intelligent Recognition API focuses on "recognition", while the Intelligent Erasure API focuses on "erasure". By calling them in sequence, you can maximize the erasure effect and reduce "false removals" and "false recognitions".
 //
 // ## Features
 //
-// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can choose whether the removal scope is the image subject or the image background area. Both API and editor integration methods are supported to meet different types of needs.
+// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to be removed, you can choose whether the removal scope is the image subject or the image background area. Both API and editor integration methods are supported to meet different types of requirements.
 //
 //  1. Image subject: the core product area in the image.
 //
 //  2. Image background: the rest of the image other than the product subject.
 //
-// 2.  Second, the objects to remove support the following three cases:
+// 2.  Second, the objects to be removed support the following three cases:
 //
-//  1. The user selects only the type. You can select text, specific names, transparent text blocks, and watermarks. You can clarify your usage requirements through the following examples for targeted operations.
+//  1. The user only selects the type. Supported types include text, specific names, transparent text blocks, and promotional stickers. You can clarify the usage requirements through the following examples for targeted operations.
 //
 //  2. (Upgraded) Provides specified image erasure. Users can specify multiple images at a time.
 //
-//  3. (Upgraded) Provides specified text erasure. Users can specify multiple texts at a time.
+//  3. (Upgraded) Provides specified text erasure. Users can specify multiple text strings at a time.
 //
-// Processing flow: The user provides the original image URL → OCR and VLM models detect the text or image position → The coordinates of the area to be repaired are determined → AI repairs and generates a clean image → The result image URL is returned.
+// Processing flow: The user passes in the original image URL → OCR and VLM models detect the text or image position → Determine the coordinates of the area to be repaired → AI repairs and generates a clean image → Returns the result image URL.
 //
 // ## Effect comparison
 //
@@ -3632,7 +3648,7 @@ func (client *Client) ImageRemoveAsyncWithOptions(tmpReq *ImageRemoveAsyncReques
 //
 // ![b05173e7-2ae5-494e-99d2-7111fc966fd5.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/05759aef-1720-41cd-8800-f7d0801e4d95.jpeg) |
 //
-// | Watermarks | 	- Involves the image subject area
+// | Promotional stickers | 	- Involves the image subject area
 //
 //	    ![2.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/bf1442f8-a9fa-40d3-bcb0-7a8a41b49b5d.jpeg)
 //
@@ -3650,7 +3666,7 @@ func (client *Client) ImageRemoveAsyncWithOptions(tmpReq *ImageRemoveAsyncReques
 //
 // | Specified image element erasure (supports multiple image links) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
 //
-// | Specified text erasure (supports multiple texts) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
+// | Specified text erasure (supports multiple text strings) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
 //
 // @param request - ImageRemoveAsyncRequest
 //
@@ -3854,7 +3870,7 @@ func (client *Client) ImageTranslationPlus(request *ImageTranslationPlusRequest)
 
 // Summary:
 //
-// Translates e-commerce images by using the Mixture of Experts (MOE) architecture, delivering higher translation accuracy for multiple minor languages than the Lite and Pro editions.
+// Translates e-commerce images by using the Mixture of Experts (MoE) architecture. Compared with the Lite and Pro editions, the Plus edition provides higher translation accuracy for multiple minor languages.
 //
 // Description:
 //
@@ -3864,11 +3880,11 @@ func (client *Client) ImageTranslationPlus(request *ImageTranslationPlusRequest)
 //
 // ## Features
 //
-//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps you protect subject information, such as embedded product names, from being translated.
+//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps you protect the subject information, such as the embedded product name, from being translated.
 //
-//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps you protect brand name information from being translated.
+//   - **Brand name protection**: Allows you to specify whether to translate the brand name in the image. This helps you protect the brand name from being translated.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for processing.
+//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
 //
 // ## Supported language pairs
 //
@@ -3904,9 +3920,9 @@ func (client *Client) ImageTranslationPlus(request *ImageTranslationPlusRequest)
 //
 // ## Preparations and call process
 //
-// The asynchronous API for Image Translation Plus and other capabilities share the same result retrieval process, RocketMQ subscription rules, message encryption protocol, dependency configurations, and Java consumption and decryption code.
+// The asynchronous API operations for the Plus edition of image translation and other features share the same result retrieval process, RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-// For the asynchronous call process, subscription rules, message format and encryption protocol, and detailed integration solutions, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+// For the integration process of asynchronous calls, subscription rules, message formats and encryption protocols, and detailed integration solutions, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationPlusAsyncRequest
 //
@@ -3921,6 +3937,10 @@ func (client *Client) ImageTranslationPlusAsyncWithOptions(request *ImageTransla
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
 	if !dara.IsNil(request.Glossary) {
 		query["Glossary"] = request.Glossary
 	}
@@ -3974,7 +3994,7 @@ func (client *Client) ImageTranslationPlusAsyncWithOptions(request *ImageTransla
 
 // Summary:
 //
-// Translates e-commerce images by using the Mixture of Experts (MOE) architecture, delivering higher translation accuracy for multiple minor languages than the Lite and Pro editions.
+// Translates e-commerce images by using the Mixture of Experts (MoE) architecture. Compared with the Lite and Pro editions, the Plus edition provides higher translation accuracy for multiple minor languages.
 //
 // Description:
 //
@@ -3984,11 +4004,11 @@ func (client *Client) ImageTranslationPlusAsyncWithOptions(request *ImageTransla
 //
 // ## Features
 //
-//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps you protect subject information, such as embedded product names, from being translated.
+//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps you protect the subject information, such as the embedded product name, from being translated.
 //
-//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps you protect brand name information from being translated.
+//   - **Brand name protection**: Allows you to specify whether to translate the brand name in the image. This helps you protect the brand name from being translated.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for processing.
+//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
 //
 // ## Supported language pairs
 //
@@ -4024,9 +4044,9 @@ func (client *Client) ImageTranslationPlusAsyncWithOptions(request *ImageTransla
 //
 // ## Preparations and call process
 //
-// The asynchronous API for Image Translation Plus and other capabilities share the same result retrieval process, RocketMQ subscription rules, message encryption protocol, dependency configurations, and Java consumption and decryption code.
+// The asynchronous API operations for the Plus edition of image translation and other features share the same result retrieval process, RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-// For the asynchronous call process, subscription rules, message format and encryption protocol, and detailed integration solutions, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+// For the integration process of asynchronous calls, subscription rules, message formats and encryption protocols, and detailed integration solutions, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationPlusAsyncRequest
 //
@@ -4178,7 +4198,7 @@ func (client *Client) ImageTranslationPro(request *ImageTranslationProRequest) (
 
 // Summary:
 //
-// Translates images by using Image Translation Pro. This service is designed specifically for e-commerce images, integrates multimodal large language model technology for more accurate image understanding, significantly improves translation quality, and continuously expands and optimizes multilingual translation capabilities. It supports more than 400 language pairs, including pivot languages.
+// Translates images asynchronously by using Image Translation Pro. Designed for e-commerce images, this service integrates multimodal large language models to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. It supports more than 400 language pairs, including bridged language pairs.
 //
 // Description:
 //
@@ -4188,21 +4208,21 @@ func (client *Client) ImageTranslationPro(request *ImageTranslationProRequest) (
 //
 // ## Features
 //
-//   - Product subject information protection: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information, such as embedded product names, from being translated.
+//   - Product subject information protection: You can specify whether to translate the text on the product subject. This helps you protect the subject information, such as the embedded product name, from being translated.
 //
-//   - Post-translation editing: Allows you to specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when integrated with an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
+//   - Secondary editing after translation: You can specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when you integrate an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
 //
-//   - Brand name protection: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
+//   - Brand name protection: You can specify whether to translate brand names in the image. This helps you protect brand name information from being translated.
 //
-//   - Translation intervention: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+//   - Translation intervention: You can customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention entries. If you need more, contact the platform for assistance.
 //
 // ## Preparations and call process
 //
-// Image Translation Pro supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API. For synchronous calls, refer to [Image Translation Pro](https://www.alibabacloud.com/help/en/aidge/image-translation-pro).
+// Image Translation Pro supports both synchronous and asynchronous calls. This topic describes the asynchronous call API. For synchronous calls, see [Image Translation Pro](https://www.alibabacloud.com/help/en/aidge/image-translation-pro).
 //
-// The asynchronous APIs for text translation and other capabilities share the result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+// The asynchronous APIs for text translation and other capabilities share the same result retrieval process, RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-// For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+// For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, see [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationProAsyncRequest
 //
@@ -4217,6 +4237,10 @@ func (client *Client) ImageTranslationProAsyncWithOptions(request *ImageTranslat
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
 	if !dara.IsNil(request.Glossary) {
 		query["Glossary"] = request.Glossary
 	}
@@ -4270,7 +4294,7 @@ func (client *Client) ImageTranslationProAsyncWithOptions(request *ImageTranslat
 
 // Summary:
 //
-// Translates images by using Image Translation Pro. This service is designed specifically for e-commerce images, integrates multimodal large language model technology for more accurate image understanding, significantly improves translation quality, and continuously expands and optimizes multilingual translation capabilities. It supports more than 400 language pairs, including pivot languages.
+// Translates images asynchronously by using Image Translation Pro. Designed for e-commerce images, this service integrates multimodal large language models to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. It supports more than 400 language pairs, including bridged language pairs.
 //
 // Description:
 //
@@ -4280,21 +4304,21 @@ func (client *Client) ImageTranslationProAsyncWithOptions(request *ImageTranslat
 //
 // ## Features
 //
-//   - Product subject information protection: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information, such as embedded product names, from being translated.
+//   - Product subject information protection: You can specify whether to translate the text on the product subject. This helps you protect the subject information, such as the embedded product name, from being translated.
 //
-//   - Post-translation editing: Allows you to specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when integrated with an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
+//   - Secondary editing after translation: You can specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when you integrate an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
 //
-//   - Brand name protection: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
+//   - Brand name protection: You can specify whether to translate brand names in the image. This helps you protect brand name information from being translated.
 //
-//   - Translation intervention: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+//   - Translation intervention: You can customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention entries. If you need more, contact the platform for assistance.
 //
 // ## Preparations and call process
 //
-// Image Translation Pro supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API. For synchronous calls, refer to [Image Translation Pro](https://www.alibabacloud.com/help/en/aidge/image-translation-pro).
+// Image Translation Pro supports both synchronous and asynchronous calls. This topic describes the asynchronous call API. For synchronous calls, see [Image Translation Pro](https://www.alibabacloud.com/help/en/aidge/image-translation-pro).
 //
-// The asynchronous APIs for text translation and other capabilities share the result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+// The asynchronous APIs for text translation and other capabilities share the same result retrieval process, RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-// For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+// For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, see [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationProAsyncRequest
 //
@@ -4442,7 +4466,7 @@ func (client *Client) ImageTranslationStandard(request *ImageTranslationStandard
 
 // Summary:
 //
-// Translates e-commerce images by supporting over 400 language pairs, including bridged pairs. Accurately processes complex text layouts within images and ensures that translated content matches the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation of image content. The service also returns layer information such as text position, font, and color, facilitating secondary editing of translation results in image editors.
+// Translates images specifically designed for e-commerce, supporting over 400 language pairs, including bridged pairs. It accurately processes complex text layouts within images and ensures that the translated content matches the image context. This helps e-commerce platforms and developers easily achieve multilingual conversion and presentation of image content. Additionally, the service returns layer information such as the position, font, and color of text in the image, which facilitates secondary editing of translation results by using image editors.
 //
 // Description:
 //
@@ -4452,21 +4476,21 @@ func (client *Client) ImageTranslationStandard(request *ImageTranslationStandard
 //
 // ## Features
 //
-//   - **Product subject information protection**: Allows you to specify whether to translate text on the product subject, protecting the subject information and preventing the translation of embedded information such as product names.
+//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information from being translated and prevents the translation of embedded information such as product names.
 //
-//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image, protecting brand name information from being translated.
+//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
 //
-//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as text position, font, and color. This information can be used to integrate with image editors for secondary editing of translation results. Refer to platform notifications for updates on the availability of the editor SDK.
+//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as the position, font, and color of the text. This information can be used to integrate with image editors for secondary editing of translation results. For the release progress of the editor SDK package, refer to platform notifications.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. Contact the platform if you need a higher limit.
+//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention entries. If you need more, contact the platform for assistance.
 //
 // ## Preparations and call process
 //
-//   - Image Translation Standard Edition supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API. For synchronous calls, refer to [Image Translation Standard Edition](https://www.alibabacloud.com/help/en/aidge/image-translation).
+//   - The standard edition of Image Translation supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API operation. To use synchronous calls, refer to [Image Translation Standard Edition](https://www.alibabacloud.com/help/en/aidge/image-translation).
 //
-//   - The asynchronous APIs for Image Translation Standard Edition and other features share the same result retrieval process, RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+//   - The asynchronous API operations for the standard edition of Image Translation and other features share the result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-//   - For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+//   - For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationStandardAsyncRequest
 //
@@ -4481,6 +4505,10 @@ func (client *Client) ImageTranslationStandardAsyncWithOptions(request *ImageTra
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
 	if !dara.IsNil(request.Glossary) {
 		query["Glossary"] = request.Glossary
 	}
@@ -4534,7 +4562,7 @@ func (client *Client) ImageTranslationStandardAsyncWithOptions(request *ImageTra
 
 // Summary:
 //
-// Translates e-commerce images by supporting over 400 language pairs, including bridged pairs. Accurately processes complex text layouts within images and ensures that translated content matches the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation of image content. The service also returns layer information such as text position, font, and color, facilitating secondary editing of translation results in image editors.
+// Translates images specifically designed for e-commerce, supporting over 400 language pairs, including bridged pairs. It accurately processes complex text layouts within images and ensures that the translated content matches the image context. This helps e-commerce platforms and developers easily achieve multilingual conversion and presentation of image content. Additionally, the service returns layer information such as the position, font, and color of text in the image, which facilitates secondary editing of translation results by using image editors.
 //
 // Description:
 //
@@ -4544,21 +4572,21 @@ func (client *Client) ImageTranslationStandardAsyncWithOptions(request *ImageTra
 //
 // ## Features
 //
-//   - **Product subject information protection**: Allows you to specify whether to translate text on the product subject, protecting the subject information and preventing the translation of embedded information such as product names.
+//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information from being translated and prevents the translation of embedded information such as product names.
 //
-//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image, protecting brand name information from being translated.
+//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
 //
-//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as text position, font, and color. This information can be used to integrate with image editors for secondary editing of translation results. Refer to platform notifications for updates on the availability of the editor SDK.
+//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as the position, font, and color of the text. This information can be used to integrate with image editors for secondary editing of translation results. For the release progress of the editor SDK package, refer to platform notifications.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. Contact the platform if you need a higher limit.
+//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention entries. If you need more, contact the platform for assistance.
 //
 // ## Preparations and call process
 //
-//   - Image Translation Standard Edition supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API. For synchronous calls, refer to [Image Translation Standard Edition](https://www.alibabacloud.com/help/en/aidge/image-translation).
+//   - The standard edition of Image Translation supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API operation. To use synchronous calls, refer to [Image Translation Standard Edition](https://www.alibabacloud.com/help/en/aidge/image-translation).
 //
-//   - The asynchronous APIs for Image Translation Standard Edition and other features share the same result retrieval process, RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+//   - The asynchronous API operations for the standard edition of Image Translation and other features share the result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-//   - For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+//   - For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationStandardAsyncRequest
 //
@@ -6020,11 +6048,11 @@ func (client *Client) ProductHotspotDetection(request *ProductHotspotDetectionRe
 
 // Summary:
 //
-// API name on the POP gateway: QueryAsyncTaskResult.
+// Queries the result of an asynchronous task. The API name in the POP gateway is QueryAsyncTaskResult.
 //
 // Description:
 //
-// API name on the POP gateway: QueryAsyncTaskResult.
+// The API name in the POP gateway is QueryAsyncTaskResult.
 //
 // @param request - QueryAsyncTaskResultRequest
 //
@@ -6068,11 +6096,11 @@ func (client *Client) QueryAsyncTaskResultWithOptions(request *QueryAsyncTaskRes
 
 // Summary:
 //
-// API name on the POP gateway: QueryAsyncTaskResult.
+// Queries the result of an asynchronous task. The API name in the POP gateway is QueryAsyncTaskResult.
 //
 // Description:
 //
-// API name on the POP gateway: QueryAsyncTaskResult.
+// The API name in the POP gateway is QueryAsyncTaskResult.
 //
 // @param request - QueryAsyncTaskResultRequest
 //
@@ -6844,23 +6872,23 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 
 // Summary:
 //
-// Extracts structured information such as size charts and package weight and dimensions from images by using multimodal large models in asynchronous mode.
+// Extracts structured information such as size charts and package weight and dimensions from images by using multimodal large language models in asynchronous mode.
 //
 // Description:
 //
 // ## Scenarios
 //
-// Size charts: Extracts size charts for apparel categories into text.
+// Size charts: extracts size charts of apparel categories into text.
 //
-// Package weight and dimensions: Extracts package weight and dimension information from images.
+// Package weight and dimensions: extracts package weight and dimension information from images.
 //
 // ## Feature description
 //
-// The size chart extraction service is based on multimodal foundation models. It automatically recognizes size charts or package weight and dimension information in images and converts the information into structured text. Provide an image URL, and the system processes the request as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized, such as Size, Bust, and Length, by using ColumnNameList for precise targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If you do not specify this parameter, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
+// The size chart extraction service is based on multimodal large language models. It automatically recognizes size charts or package weight and dimension information in images and converts the information into structured text. You provide an image URL, and the system processes the request as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized, such as Size, Bust, and Length, by using ColumnNameList to achieve precise and targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If you do not specify this parameter, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
 //
-// Core capabilities: Input an image URL and optional column name configurations to output the structured data of the size chart or package weight and dimensions in the image. The API operation uses the asynchronous task mode (background: true). After you submit the task, a task ID is returned. You must poll the task to obtain the final result. This mode is suitable for processing complex images or handling large-scale calls.
+// Core capabilities: You can input an image URL and optional column name configurations to output the structured data of the size chart or package weight and dimensions in the image. The API operation uses the asynchronous task mode (background: true). After you submit the task, a task ID is returned. You must poll the task to obtain the final result. This mode is suitable for processing complex images or handling a large number of calls.
 //
-// ## Example results
+// ## Comparison
 //
 // | Input image | Output result |
 //
@@ -6872,13 +6900,13 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "S"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -6886,7 +6914,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -6894,7 +6922,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -6908,13 +6936,13 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "M"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -6922,7 +6950,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -6930,7 +6958,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -6944,13 +6972,13 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "L"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -6958,7 +6986,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -6966,7 +6994,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -6980,13 +7008,13 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "XL"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -6994,7 +7022,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7002,7 +7030,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7016,13 +7044,13 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "2XL"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7030,7 +7058,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7038,7 +7066,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7097,6 +7125,10 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
 	if !dara.IsNil(request.ColumnNameListShrink) {
 		query["ColumnNameList"] = request.ColumnNameListShrink
 	}
@@ -7134,23 +7166,23 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 
 // Summary:
 //
-// Extracts structured information such as size charts and package weight and dimensions from images by using multimodal large models in asynchronous mode.
+// Extracts structured information such as size charts and package weight and dimensions from images by using multimodal large language models in asynchronous mode.
 //
 // Description:
 //
 // ## Scenarios
 //
-// Size charts: Extracts size charts for apparel categories into text.
+// Size charts: extracts size charts of apparel categories into text.
 //
-// Package weight and dimensions: Extracts package weight and dimension information from images.
+// Package weight and dimensions: extracts package weight and dimension information from images.
 //
 // ## Feature description
 //
-// The size chart extraction service is based on multimodal foundation models. It automatically recognizes size charts or package weight and dimension information in images and converts the information into structured text. Provide an image URL, and the system processes the request as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized, such as Size, Bust, and Length, by using ColumnNameList for precise targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If you do not specify this parameter, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
+// The size chart extraction service is based on multimodal large language models. It automatically recognizes size charts or package weight and dimension information in images and converts the information into structured text. You provide an image URL, and the system processes the request as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized, such as Size, Bust, and Length, by using ColumnNameList to achieve precise and targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If you do not specify this parameter, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
 //
-// Core capabilities: Input an image URL and optional column name configurations to output the structured data of the size chart or package weight and dimensions in the image. The API operation uses the asynchronous task mode (background: true). After you submit the task, a task ID is returned. You must poll the task to obtain the final result. This mode is suitable for processing complex images or handling large-scale calls.
+// Core capabilities: You can input an image URL and optional column name configurations to output the structured data of the size chart or package weight and dimensions in the image. The API operation uses the asynchronous task mode (background: true). After you submit the task, a task ID is returned. You must poll the task to obtain the final result. This mode is suitable for processing complex images or handling a large number of calls.
 //
-// ## Example results
+// ## Comparison
 //
 // | Input image | Output result |
 //
@@ -7162,13 +7194,13 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "S"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7176,7 +7208,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7184,7 +7216,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7198,13 +7230,13 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "M"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7212,7 +7244,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7220,7 +7252,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7234,13 +7266,13 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "L"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7248,7 +7280,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7256,7 +7288,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7270,13 +7302,13 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "XL"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7284,7 +7316,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7292,7 +7324,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7306,13 +7338,13 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "2XL"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7320,7 +7352,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7328,7 +7360,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -8314,7 +8346,7 @@ func (client *Client) VideoGeneration(request *VideoGenerationRequest) (_result 
 
 // Summary:
 //
-// Translates the speech and on-screen text in a video into a target language. You can select speech subtitle translation, on-screen text translation, or both. This API applies to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising. The API uses an asynchronous invocation mode. After you submit a translation task, you can obtain the task ID and poll the task status by calling the query API until the task is completed and the result is returned.
+// Translates the speech and on-screen text in a video into a target language. You can select speech subtitle translation, on-screen text translation, or both. This API applies to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising. The API uses an asynchronous invocation mode. After you submit a translation task, you can obtain the TaskId and poll the task status by calling the query API until the task is completed and the result is returned.
 //
 // Description:
 //
@@ -8322,17 +8354,17 @@ func (client *Client) VideoGeneration(request *VideoGenerationRequest) (_result 
 //
 // The video translation API translates the speech and on-screen text in a video into a target language. You can select speech subtitle translation, on-screen text translation, or both. This API applies to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising.
 //
-// The API uses an asynchronous invocation mode. After you submit a translation task, you can obtain the `TaskId` and poll the task status by calling the query API until the task is completed and the result is returned.
+// The API uses an asynchronous invocation mode. After you submit a translation task, you can obtain the TaskId and poll the task status by calling the query API until the task is completed and the result is returned.
 //
 // ## Scenarios
 //
-//   - **Cross-border e-commerce video localization**: Translates the selling point text in product introduction videos into the language of the target market to facilitate promotion on overseas platforms.
+//   - **Cross-border e-commerce video localization**: Translates the speech subtitles and selling point text in product introduction videos into the language of the target market to promote products on overseas platforms.
 //
-//   - **International social media marketing**: Localizes the on-screen text in videos for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
+//   - **International social media marketing**: Localizes speech subtitles and on-screen text for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
 //
-//   - **Global brand advertising**: Automatically generates video versions in the languages of the target regions to reduce manual production costs.
+//   - **Global brand advertising**: Automatically generates video versions in the corresponding languages based on the delivery regions to reduce manual production costs.
 //
-//   - **Training and product instructions**: Translates the on-screen text in training courses or product demo videos into multiple languages for global teams.
+//   - **Training and product instructions**: Translates the speech subtitles and on-screen text in training courses or product demo videos into multiple languages for global teams.
 //
 // ## Features
 //
@@ -8340,15 +8372,15 @@ func (client *Client) VideoGeneration(request *VideoGenerationRequest) (_result 
 //
 // | --- | --- | --- |
 //
-// | Speech subtitle translation | `speech` | Translates the video speech into target language dubbing. Original subtitles are not removed, and no new subtitles are added. |
+// | Speech subtitle translation | speech | Translates the video speech into target language dubbing. You can choose to erase the original subtitles only or replace them with translated subtitles. By default, the original subtitles are not processed and no new subtitles are added. |
 //
-// | On-screen text translation | `visual` | Translates the embedded text (subtitles, selling point text, etc.) in the video frames and erases the original text. You can enable quality check for on-screen text processing by using the API. |
+// | On-screen text translation | visual | Translates the source language text in the video frames, or erases the on-screen text without translation. You can choose to erase brand logos. |
 //
-// Speech subtitle translation (`speech`) generates target language dubbing based on the spoken content in the video and synthesizes it into the video. It does not remove original subtitles or add new subtitles. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content.
+// Speech subtitle translation (speech) generates target language dubbing based on the spoken content in the video, processes the subtitles based on the original subtitle processing option, and synthesizes the final video. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content. Replacing with translated subtitles erases the original subtitles first and then adds subtitles synchronized with the translated speech.
 //
-// On-screen text translation (`visual`) targets the recognizable original language text in the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech subtitle translation first, and the text does not need to appear in the speech. Original subtitles within the processing scope may also be processed.
+// On-screen text translation (visual) targets recognizable original video language text in the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech subtitle translation first, and does not require the text to appear in the speech. Original subtitles within the processing scope may also be processed.
 //
-// When both `speech` and `visual` are selected, the speech subtitle translation is completed and the video is synthesized first. Then, on-screen text processing is performed on this video, retaining the translated dubbing and outputting a final video. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that no subtitles are removed or added during the speech subtitle phase. Subsequent on-screen text processing may still alter the original subtitles.
+// When both speech and visual are selected, the speech subtitle translation is completed and the video is synthesized first, and then the on-screen text processing is performed on this video. The translated dubbing is retained, and a final video is output. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that no subtitles are erased or added during the speech subtitle phase, and subsequent on-screen text processing may still change the original subtitles. Subtitles that have been replaced with translated subtitles are retained during subsequent on-screen text processing.
 //
 // @param tmpReq - VideoTranslationRequest
 //
@@ -8428,7 +8460,7 @@ func (client *Client) VideoTranslationWithOptions(tmpReq *VideoTranslationReques
 
 // Summary:
 //
-// Translates the speech and on-screen text in a video into a target language. You can select speech subtitle translation, on-screen text translation, or both. This API applies to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising. The API uses an asynchronous invocation mode. After you submit a translation task, you can obtain the task ID and poll the task status by calling the query API until the task is completed and the result is returned.
+// Translates the speech and on-screen text in a video into a target language. You can select speech subtitle translation, on-screen text translation, or both. This API applies to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising. The API uses an asynchronous invocation mode. After you submit a translation task, you can obtain the TaskId and poll the task status by calling the query API until the task is completed and the result is returned.
 //
 // Description:
 //
@@ -8436,17 +8468,17 @@ func (client *Client) VideoTranslationWithOptions(tmpReq *VideoTranslationReques
 //
 // The video translation API translates the speech and on-screen text in a video into a target language. You can select speech subtitle translation, on-screen text translation, or both. This API applies to scenarios such as multilingual distribution of e-commerce videos, international social media marketing, and global brand advertising.
 //
-// The API uses an asynchronous invocation mode. After you submit a translation task, you can obtain the `TaskId` and poll the task status by calling the query API until the task is completed and the result is returned.
+// The API uses an asynchronous invocation mode. After you submit a translation task, you can obtain the TaskId and poll the task status by calling the query API until the task is completed and the result is returned.
 //
 // ## Scenarios
 //
-//   - **Cross-border e-commerce video localization**: Translates the selling point text in product introduction videos into the language of the target market to facilitate promotion on overseas platforms.
+//   - **Cross-border e-commerce video localization**: Translates the speech subtitles and selling point text in product introduction videos into the language of the target market to promote products on overseas platforms.
 //
-//   - **International social media marketing**: Localizes the on-screen text in videos for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
+//   - **International social media marketing**: Localizes speech subtitles and on-screen text for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
 //
-//   - **Global brand advertising**: Automatically generates video versions in the languages of the target regions to reduce manual production costs.
+//   - **Global brand advertising**: Automatically generates video versions in the corresponding languages based on the delivery regions to reduce manual production costs.
 //
-//   - **Training and product instructions**: Translates the on-screen text in training courses or product demo videos into multiple languages for global teams.
+//   - **Training and product instructions**: Translates the speech subtitles and on-screen text in training courses or product demo videos into multiple languages for global teams.
 //
 // ## Features
 //
@@ -8454,15 +8486,15 @@ func (client *Client) VideoTranslationWithOptions(tmpReq *VideoTranslationReques
 //
 // | --- | --- | --- |
 //
-// | Speech subtitle translation | `speech` | Translates the video speech into target language dubbing. Original subtitles are not removed, and no new subtitles are added. |
+// | Speech subtitle translation | speech | Translates the video speech into target language dubbing. You can choose to erase the original subtitles only or replace them with translated subtitles. By default, the original subtitles are not processed and no new subtitles are added. |
 //
-// | On-screen text translation | `visual` | Translates the embedded text (subtitles, selling point text, etc.) in the video frames and erases the original text. You can enable quality check for on-screen text processing by using the API. |
+// | On-screen text translation | visual | Translates the source language text in the video frames, or erases the on-screen text without translation. You can choose to erase brand logos. |
 //
-// Speech subtitle translation (`speech`) generates target language dubbing based on the spoken content in the video and synthesizes it into the video. It does not remove original subtitles or add new subtitles. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content.
+// Speech subtitle translation (speech) generates target language dubbing based on the spoken content in the video, processes the subtitles based on the original subtitle processing option, and synthesizes the final video. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content. Replacing with translated subtitles erases the original subtitles first and then adds subtitles synchronized with the translated speech.
 //
-// On-screen text translation (`visual`) targets the recognizable original language text in the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech subtitle translation first, and the text does not need to appear in the speech. Original subtitles within the processing scope may also be processed.
+// On-screen text translation (visual) targets recognizable original video language text in the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech subtitle translation first, and does not require the text to appear in the speech. Original subtitles within the processing scope may also be processed.
 //
-// When both `speech` and `visual` are selected, the speech subtitle translation is completed and the video is synthesized first. Then, on-screen text processing is performed on this video, retaining the translated dubbing and outputting a final video. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that no subtitles are removed or added during the speech subtitle phase. Subsequent on-screen text processing may still alter the original subtitles.
+// When both speech and visual are selected, the speech subtitle translation is completed and the video is synthesized first, and then the on-screen text processing is performed on this video. The translated dubbing is retained, and a final video is output. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that no subtitles are erased or added during the speech subtitle phase, and subsequent on-screen text processing may still change the original subtitles. Subtitles that have been replaced with translated subtitles are retained during subsequent on-screen text processing.
 //
 // @param request - VideoTranslationRequest
 //
