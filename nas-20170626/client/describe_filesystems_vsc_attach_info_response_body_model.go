@@ -32,7 +32,7 @@ type DescribeFilesystemsVscAttachInfoResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set this parameter to the NextToken value returned in the previous API call.
+	// The query token. The value is the NextToken parameter value returned by the previous API call.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeFilesystemsVscAttachInfoResponseBody struct {
 	//
 	// BC7C825C-5F65-4B56-BEF6-98C56C7C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of association entries.
+	// The total number of association records.
 	//
 	// example:
 	//

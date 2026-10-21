@@ -32,13 +32,13 @@ type iDescribeLifecyclePoliciesRequest interface {
 type DescribeLifecyclePoliciesRequest struct {
 	// The description of the policy.
 	//
-	// >Only CPFS for Lingjun supports this parameter.
+	// >This parameter is supported only by CPFS for Lingjun.
 	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The file system ID.
+	// The ID of the file system.
 	//
 	// example:
 	//
@@ -50,26 +50,24 @@ type DescribeLifecyclePoliciesRequest struct {
 	//
 	// lc-xxx
 	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
-	// The lifecycle policy name. The naming rules are as follows:
+	// Policy Name of the lifecycle policy. Policy Name must meet the following rules:
 	//
 	//
-	// The name must be 3 to 64 characters in length, start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
+	// Policy Name must be 3 to 64 characters in length. It must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).
 	//
-	// >This parameter is optional for General-purpose NAS file systems. If specified, this parameter takes precedence. If not specified, LifecyclePolicyId is used instead.
+	// >For General-purpose NAS file systems, this parameter is optional. If you specify this parameter, the specified value is used. If you do not specify this parameter, the value of LifecyclePolicyId is used.
 	//
 	// example:
 	//
 	// lifecyclepolicy_01
 	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitempty" xml:"LifecyclePolicyName,omitempty"`
-	// The policy type.
-	//
-	// Valid values:
+	// The policy type. Valid values:
 	//
 	// - Auto: Automatic execution.
 	//
 	// - OnDemand: On-demand execution.
 	//
-	// >Only CPFS for Lingjun supports this parameter.
+	// >This parameter is supported only by CPFS for Lingjun.
 	//
 	// example:
 	//
@@ -77,13 +75,13 @@ type DescribeLifecyclePoliciesRequest struct {
 	LifecyclePolicyType *string `json:"LifecyclePolicyType,omitempty" xml:"LifecyclePolicyType,omitempty"`
 	// The page number of the list.
 	//
-	// Start value (default value): 1.
+	// Starting value (default value): 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of lifecycle management policies on each page.
+	// The number of lifecycle management policies to return on each page.
 	//
 	// Valid values: 1 to 100.
 	//
@@ -93,21 +91,21 @@ type DescribeLifecyclePoliciesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters results by path.
+	// Filters lifecycle policies by path.
 	//
-	// >Only CPFS for Lingjun supports this parameter.
+	// >This parameter is supported only by CPFS for Lingjun.
 	//
 	// example:
 	//
 	// /abc/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The storage tiering type. Valid values:
+	// The tiered storage type. Valid values:
 	//
 	// - InfrequentAccess: IA storage class.
 	//
 	// - Archive: Archive storage class.
 	//
-	// > If StorageType is not specified, all lifecycle policies are returned.
+	// >If you do not specify StorageType, all lifecycle policies are returned.
 	//
 	// if can be null:
 	// true

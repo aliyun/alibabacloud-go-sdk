@@ -34,21 +34,21 @@ type iCreateLifecyclePolicyRequest interface {
 }
 
 type CreateLifecyclePolicyRequest struct {
-	// The data expiration and deletion rules. You can configure up to one rule.
+	// The file data expiration and deletion rules. You can configure up to 1 rule.
 	DeleteRules []*CreateLifecyclePolicyRequestDeleteRules `json:"DeleteRules,omitempty" xml:"DeleteRules,omitempty" type:"Repeated"`
-	// The lifecycle policy description.
+	// The description of the lifecycle policy.
 	//
 	// Format:
 	//
-	// The description must be 3 to 64 characters in length, start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
+	// The description must be 3 to 64 characters in length, and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
 	//
-	// >Only CPFS for Lingjun is supported.
+	// > This parameter is supported only by CPFS for Lingjun.
 	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The file system ID.
+	// The ID of the file system.
 	//
 	// This parameter is required.
 	//
@@ -56,9 +56,9 @@ type CreateLifecyclePolicyRequest struct {
 	//
 	// 31a8e4****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The lifecycle management policy name. The name must be 3 to 64 characters in length, start with an uppercase letter or lowercase letter, and can contain letters, digits, underscores (_), or hyphens (-).
+	// The lifecycle management policy name. The name must be 3 to 64 characters in length, and must start with an uppercase letter or a lowercase letter. It can contain letters, digits, underscores (_), and hyphens (-).
 	//
-	// >Required for General-purpose NAS. Not required for CPFS for Lingjun.
+	// > This parameter is required for General-purpose NAS, but not required for CPFS for Lingjun.
 	//
 	// example:
 	//
@@ -74,59 +74,59 @@ type CreateLifecyclePolicyRequest struct {
 	//
 	// Auto
 	LifecyclePolicyType *string `json:"LifecyclePolicyType,omitempty" xml:"LifecyclePolicyType,omitempty"`
-	// The management rule associated with the lifecycle management policy. Only General-purpose NAS is supported.
+	// The management rule associated with the lifecycle management policy. This parameter is supported only by General-purpose NAS.
 	//
 	// Valid values:
 	//
-	// - DEFAULT_ATIME_14: files not accessed in the last 14 days.
+	// - DEFAULT_ATIME_14: files that have not been accessed for 14 days.
 	//
-	// - DEFAULT_ATIME_30: files not accessed in the last 30 days.
+	// - DEFAULT_ATIME_30: files that have not been accessed for 30 days.
 	//
-	// - DEFAULT_ATIME_60: files not accessed in the last 60 days.
+	// - DEFAULT_ATIME_60: files that have not been accessed for 60 days.
 	//
-	// - DEFAULT_ATIME_90: files not accessed in the last 90 days.
+	// - DEFAULT_ATIME_90: files that have not been accessed for 90 days.
 	//
-	// - DEFAULT_ATIME_180: files not accessed in the last 180 days. DEFAULT_ATIME_180 is supported only when StorageType is set to Archive.
+	// - DEFAULT_ATIME_180: files that have not been accessed for 180 days. DEFAULT_ATIME_180 is supported only when StorageType is set to Archive.
 	//
-	// >- If an IA storage class policy has already been configured for the directory, the archive policy duration must be longer than the IA storage class policy duration.
+	// >- If an IA storage class policy is already configured for the directory, the time threshold for the archive storage class policy must be longer than that of the IA storage class policy when you configure the archive storage class policy.
 	//
-	// > - Only General-purpose NAS supports this parameter.
+	// > - This parameter is supported only by General-purpose NAS.
 	//
 	// example:
 	//
 	// DEFAULT_ATIME_14
 	LifecycleRuleName *string `json:"LifecycleRuleName,omitempty" xml:"LifecycleRuleName,omitempty"`
-	// The absolute path of the directory associated with the lifecycle management policy. Only General-purpose NAS is supported.
+	// The absolute path of the directory associated with the lifecycle management policy. This parameter is supported only by General-purpose NAS.
 	//
 	// - General-purpose NAS supports associating only a single directory. The path must start with a forward slash (/) and must be an existing path in the mount target.
 	//
-	// > Only General-purpose NAS is supported. For General-purpose NAS, use Paths.N instead to associate multiple directories at the same time.
+	// > This parameter is supported only by General-purpose NAS. For General-purpose NAS, configure Paths.N to associate multiple directories at the same time.
 	//
-	// >- Only one of Path and Paths can be specified.
+	// >- You must specify either Path or Paths, but not both.
 	//
 	// example:
 	//
 	// /pathway/to/folder
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The absolute paths of directories associated with the lifecycle management policy.
+	// The absolute paths of the directories associated with the lifecycle management policy.
 	//
 	// example:
 	//
 	// "/path1", "/path2"
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The data retrieval rules. You can configure up to one rule.
+	// The file data retrieval rules. You can configure up to 1 rule.
 	//
-	// >Only CPFS for Lingjun file systems are supported.
+	// > This parameter is supported only by CPFS for Lingjun file systems.
 	//
-	// >When LifecyclePolicyType is set to OnDemand, at least one of TransitRules or RetrieveRules must be specified.
+	// > When LifecyclePolicyType is set to OnDemand, you must specify at least one of the active transition rules (TransitRules) and retrieval rules (RetrieveRules).
 	RetrieveRules []*CreateLifecyclePolicyRequestRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
-	// The storage tiering type.
+	// The tiered storage type.
 	//
 	// - InfrequentAccess: IA storage class.
 	//
-	// - Archive: Archive storage.
+	// - Archive: archive storage class.
 	//
-	// >General-purpose NAS supports InfrequentAccess and Archive. CPFS for Lingjun supports only InfrequentAccess.
+	// > General-purpose NAS supports both InfrequentAccess and Archive. CPFS for Lingjun supports only InfrequentAccess.
 	//
 	// This parameter is required.
 	//
@@ -134,9 +134,9 @@ type CreateLifecyclePolicyRequest struct {
 	//
 	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The data transit rules. You can configure up to one rule.
+	// The file data transit rules. You can configure up to 1 rule.
 	//
-	// >Supported only when LifecyclePolicyType is set to Auto for CPFS for Lingjun file systems.
+	// > This parameter is supported only when LifecyclePolicyType is set to Auto for CPFS for Lingjun file systems.
 	TransitRules []*CreateLifecyclePolicyRequestTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
@@ -279,7 +279,7 @@ func (s *CreateLifecyclePolicyRequest) Validate() error {
 }
 
 type CreateLifecyclePolicyRequestDeleteRules struct {
-	// The rule attribute.
+	// The attribute of the rule.
 	//
 	// Valid values:
 	//
@@ -289,11 +289,11 @@ type CreateLifecyclePolicyRequestDeleteRules struct {
 	//
 	// Atime
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The rule threshold.
+	// The threshold of the rule.
 	//
 	// Valid values:
 	//
-	// - When Attribute is set to Atime, the value specifies the number of days since the file was last accessed. Valid values: 1 to 365.
+	// - When Attribute is set to Atime, the value indicates the number of days a file has not been accessed. Valid values: 1 to 365.
 	//
 	// example:
 	//
@@ -332,7 +332,7 @@ func (s *CreateLifecyclePolicyRequestDeleteRules) Validate() error {
 }
 
 type CreateLifecyclePolicyRequestRetrieveRules struct {
-	// The rule attribute. Valid values:
+	// The attribute of the rule. Valid values:
 	//
 	// - RetrieveType: the retrieval method.
 	//
@@ -340,13 +340,13 @@ type CreateLifecyclePolicyRequestRetrieveRules struct {
 	//
 	// RetrieveType
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The rule threshold. Valid values:
+	// The threshold of the rule. Valid values:
 	//
 	// - RetrieveType
 	//
-	//     - AfterVisit: supported when LifecyclePolicyType is set to Auto. Indicates best-effort recall on visit.
+	//     - AfterVisit: supported when LifecyclePolicyType is set to Auto, which indicates best-effort recall on visit.
 	//
-	//     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieving all data.
+	//     - All: supported when LifecyclePolicyType is set to OnDemand, which indicates retrieving all files.
 	//
 	// example:
 	//
@@ -385,7 +385,7 @@ func (s *CreateLifecyclePolicyRequestRetrieveRules) Validate() error {
 }
 
 type CreateLifecyclePolicyRequestTransitRules struct {
-	// The rule attribute.
+	// The attribute of the rule.
 	//
 	// Valid values:
 	//
@@ -395,11 +395,11 @@ type CreateLifecyclePolicyRequestTransitRules struct {
 	//
 	// Atime
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The rule threshold.
+	// The threshold of the rule.
 	//
 	// Valid values:
 	//
-	// - When Attribute is set to Atime, the value specifies the number of days since the file was last accessed. Valid values: 0 to 365.
+	// - When Attribute is set to Atime, the value indicates the number of days a file has not been accessed. Valid values: 0 to 365.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDescribeLifecyclePoliciesResponseBody interface {
 }
 
 type DescribeLifecyclePoliciesResponseBody struct {
-	// The collection of lifecycle management policy information.
+	// The lifecycle management policies.
 	LifecyclePolicies []*DescribeLifecyclePoliciesResponseBodyLifecyclePolicies `json:"LifecyclePolicies,omitempty" xml:"LifecyclePolicies,omitempty" type:"Repeated"`
 	// The page number of the list.
 	//
@@ -30,13 +30,13 @@ type DescribeLifecyclePoliciesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of lifecycle management policies on each page.
+	// The number of lifecycle management policies returned on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -117,23 +117,21 @@ func (s *DescribeLifecyclePoliciesResponseBody) Validate() error {
 }
 
 type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
-	// The time when the lifecycle management policy was created.
-	//
-	// The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
+	// The time when the lifecycle management policy was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2019-10-30T10:08:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The file data expiration and deletion rules. A maximum of one rule can be configured.
+	// The expiration and deletion rules for file data. You can configure up to one rule.
 	DeleteRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules `json:"DeleteRules,omitempty" xml:"DeleteRules,omitempty" type:"Repeated"`
-	// The description of the policy.
+	// The description.
 	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The file system ID.
+	// The ID of the file system.
 	//
 	// example:
 	//
@@ -157,33 +155,31 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// Auto
 	LifecyclePolicyType *string `json:"LifecyclePolicyType,omitempty" xml:"LifecyclePolicyType,omitempty"`
-	// The management rule associated with the lifecycle management policy.
+	// The management rule associated with the lifecycle management policy. Valid values:
 	//
-	// Valid values:
+	// - DEFAULT_ATIME_14: Files that have not been accessed for 14 days.
 	//
-	// - DEFAULT_ATIME_14: Files not accessed in the last 14 days.
+	// - DEFAULT_ATIME_30: Files that have not been accessed for 30 days.
 	//
-	// - DEFAULT_ATIME_30: Files not accessed in the last 30 days.
+	// - DEFAULT_ATIME_60: Files that have not been accessed for 60 days.
 	//
-	// - DEFAULT_ATIME_60: Files not accessed in the last 60 days.
-	//
-	// - DEFAULT_ATIME_90: Files not accessed in the last 90 days.
+	// - DEFAULT_ATIME_90: Files that have not been accessed for 90 days.
 	//
 	// example:
 	//
 	// DEFAULT_ATIME_14
 	LifecycleRuleName *string `json:"LifecycleRuleName,omitempty" xml:"LifecycleRuleName,omitempty"`
-	// The absolute path of the single directory configured in the lifecycle management policy.
+	// The absolute path of the single directory configured for the lifecycle management policy.
 	//
 	// example:
 	//
 	// /pathway/to/folder
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The list of absolute paths of multiple directories configured in the lifecycle management policy.
+	// The list of absolute paths of the multiple directories configured for the lifecycle management policy.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 	// The file data retrieval rules.
 	RetrieveRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
-	// The storage tiering type. Valid values:
+	// The tiered storage type. Valid values:
 	//
 	// - InfrequentAccess: IA storage class.
 	//
@@ -193,7 +189,7 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The file data transit rules.
+	// The file data transition rules.
 	TransitRules []*DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
@@ -354,9 +350,7 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) Validate() erro
 }
 
 type DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules struct {
-	// The attribute of the rule.
-	//
-	// Valid values:
+	// The attribute of the rule. Valid values:
 	//
 	// - Atime: The access time of the file.
 	//
@@ -364,11 +358,9 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules struct {
 	//
 	// Atime
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The threshold of the rule.
+	// The threshold of the rule. Valid values:
 	//
-	// Valid values:
-	//
-	// - If Attribute is set to Atime, this value indicates the number of days since the file was last accessed. Valid values: 1 to 365.
+	// - If Attribute is set to Atime, the value indicates the number of days that a file has not been accessed. Valid values: 1 to 365.
 	//
 	// example:
 	//
@@ -452,13 +444,13 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules) Va
 }
 
 type DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules struct {
-	// The attribute of the transit rule.
+	// The attribute of the transition rule.
 	//
 	// example:
 	//
 	// Atime
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The threshold of the transit rule.
+	// The threshold of the transition rule.
 	//
 	// example:
 	//

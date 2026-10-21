@@ -18,13 +18,13 @@ type iCreateLifecyclePolicyResponseBody interface {
 }
 
 type CreateLifecyclePolicyResponseBody struct {
-	// The lifecycle policy ID.
+	// The ID of the lifecycle policy.
 	//
 	// example:
 	//
 	// lsp-bp1234567890ab****
 	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type CreateLifecyclePolicyResponseBody struct {
 	//
 	// Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//

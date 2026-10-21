@@ -27,6 +27,8 @@ type iCreateFileSystemRequest interface {
 	GetEncryptType() *int32
 	SetFileSystemType(v string) *CreateFileSystemRequest
 	GetFileSystemType() *string
+	SetHpnZone(v string) *CreateFileSystemRequest
+	GetHpnZone() *string
 	SetKmsKeyId(v string) *CreateFileSystemRequest
 	GetKmsKeyId() *string
 	SetProtocolType(v string) *CreateFileSystemRequest
@@ -52,21 +54,19 @@ type iCreateFileSystemRequest interface {
 }
 
 type CreateFileSystemRequest struct {
-	// The maximum throughput of the file system.
+	// The maximum throughput of the file system. Unit: MB/s.
 	//
-	// Unit: MB/s.
-	//
-	// For available specification values, see the actual specifications on the buy page.
+	// For valid values, refer to the specifications on the buy page.
 	//
 	// <props="china">
 	//
-	// [Parallel file system CPFS pay-as-you-go buy page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+	// [Buy page for pay-as-you-go Parallel file systems](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
 	//
 	//
 	//
 	// <props="intl">
 	//
-	// [Parallel file system CPFS pay-as-you-go buy page](https://common-buy-intl.alibabacloud.com/?spm=5176.nas_overview.0.0.7ea01dbft0dTui&commodityCode=nas_cpfspost_public_intl#/buy)
+	// [Buy page for pay-as-you-go Parallel file systems](https://common-buy-intl.alibabacloud.com/?spm=5176.nas_overview.0.0.7ea01dbft0dTui&commodityCode=nas_cpfspost_public_intl#/buy)
 	//
 	// example:
 	//
@@ -74,33 +74,31 @@ type CreateFileSystemRequest struct {
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The capacity of the file system. Unit: GiB.
 	//
-	// This parameter is required and takes effect only when FileSystemType is set to extreme, cpfs, or cpfsse.
+	// This parameter is required and valid only when FileSystemType is set to extreme, cpfs, or cpfsse.
 	//
-	// For available values, see the actual specifications on the buy page:
+	// For valid values, refer to the specifications on the buy page:
 	//
 	// <props="china">
 	//
-	// - [Extreme NAS pay-as-you-go buy page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+	// - [Buy page for pay-as-you-go Extreme NAS file systems](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
 	//
-	// - [Parallel file system CPFS pay-as-you-go buy page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+	// - [Buy page for pay-as-you-go Parallel file systems](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
 	//
 	//
 	//
 	// <props="intl">
 	//
-	// - [Extreme NAS pay-as-you-go buy page](https://common-buy-intl.alibabacloud.com/?commodityCode=nas_extpost_public_intl#/buy)
+	// - [Buy page for pay-as-you-go Extreme NAS file systems](https://common-buy-intl.alibabacloud.com/?commodityCode=nas_extpost_public_intl#/buy)
 	//
-	// - [Parallel file system CPFS pay-as-you-go buy page](https://common-buy-intl.alibabacloud.com/?spm=5176.nas_overview.0.0.7ea01dbft0dTui&commodityCode=nas_cpfspost_public_intl#/buy)
+	// - [Buy page for pay-as-you-go Parallel file systems](https://common-buy-intl.alibabacloud.com/?spm=5176.nas_overview.0.0.7ea01dbft0dTui&commodityCode=nas_cpfspost_public_intl#/buy)
 	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The billing method.
+	// The billing method. Valid values:
 	//
-	// Valid values:
-	//
-	// - PayAsYouGo (default): pay-as-you-go.
+	// - PayAsYouGo: pay-as-you-go. This is the default value.
 	//
 	// - Subscription: subscription.
 	//
@@ -108,11 +106,11 @@ type CreateFileSystemRequest struct {
 	//
 	// PayAsYouGo
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Ensures the idempotence of the request. Generate a unique parameter value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	//
 	//
-	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request may be different.
 	//
 	// example:
 	//
@@ -124,33 +122,31 @@ type CreateFileSystemRequest struct {
 	//
 	// - The description must be 2 to 128 characters in length.
 	//
-	// - The description must start with a letter and cannot start with `http://` or `https://`.
+	// - It must start with a letter and cannot start with `http://` or `https://`.
 	//
-	// - The description can contain digits, colons (:), underscores (_), and hyphens (-).
+	// - It can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// The description of this file system
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform a dry run for this request.
+	// Specifies whether to perform a dry run on the creation request.
 	//
-	// A dry run checks parameter validity and resource availability without actually creating the instance or incurring charges.
+	// A dry run checks whether the parameters are valid and whether resources are sufficient, but does not actually create the instance or incur fees.
 	//
 	// Valid values:
 	//
-	// - true: Sends a dry run request without creating the instance. The check items include required parameters, request format, service limits, and NAS inventory. If the check fails, the corresponding error is returned. If the check succeeds, HTTP status code 200 is returned, but FileSystemId is empty.
+	// - true: performs a dry run without creating the instance. The system checks whether required parameters are specified, the request format is valid, the service limits are met, and NAS resources are sufficient. If the request fails the dry run, an error message is returned. If the request passes the dry run, the 200 HTTP status code is returned, but FileSystemId is empty.
 	//
-	// - false (default): Sends a normal request. After the check succeeds, the instance is directly created.
+	// - false: performs a normal request and creates the instance directly after the request passes the check. This is the default value.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The subscription duration.
+	// The subscription duration. Unit: months. This parameter is required and valid only when ChargeType is set to Subscription.
 	//
-	// Unit: months. This parameter is required and takes effect only when ChargeType is set to Subscription.
-	//
-	// If a subscription instance is not renewed upon instance expiration, the instance expires and is automatically released.
+	// If a subscription instance is not renewed upon expiration, it is automatically released.
 	//
 	// example:
 	//
@@ -158,41 +154,45 @@ type CreateFileSystemRequest struct {
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// Specifies whether to encrypt the file system.
 	//
-	// Uses keys managed by Key Management Service (KMS) to encrypt data stored on the file system. Encrypted data does not need decryption when it is read or written.
+	// Uses KMS-managed keys to encrypt data at rest in the file system. You do not need to perform decryption when reading or writing the encrypted data.
 	//
 	// Valid values:
 	//
-	// - 0 (default): Not encrypted.
+	// - 0: Not encrypted. This is the default value.
 	//
 	// - 1: NAS-managed key. Supported when FileSystemType is set to standard or extreme.
 	//
-	// - 2: Custom Key (KMS). Supported when FileSystemType is set to standard or extreme.
+	// - 2: Custom key. Supported when FileSystemType is set to standard or extreme.
 	//
-	// > - Extreme NAS: The Custom Key (KMS) feature is supported in all regions except China East 1 Alibaba Finance Cloud.
+	// > - Extreme NAS file systems: The custom key (KMS) feature is supported in all regions except China East 1 Finance Cloud.
 	//
-	// > - General-purpose NAS: The Custom Key (KMS) feature is supported in all regions.
+	// > - General-purpose NAS file systems: The custom key (KMS) feature is supported in all regions.
 	//
 	// example:
 	//
 	// 1
 	EncryptType *int32 `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// The type of the file system.
+	// The file system type. Valid values:
 	//
-	// Valid values:
+	// - standard: General-purpose NAS file system. This is the default value.
 	//
-	// - standard (default): General-purpose NAS.
-	//
-	// - extreme: Extreme NAS.
+	// - extreme: Extreme NAS file system.
 	//
 	// - cpfs: Cloud Parallel File Storage (CPFS) with locally redundant storage (LRS).
 	//
-	// - cpfsse: CPFS SE with zone-redundant storage (ZRS).
+	// - cpfsse: Cloud Parallel File Storage SE with zone-redundant storage (ZRS).
 	//
 	// example:
 	//
 	// standard
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	// The KMS key ID.
+	// The cluster ID of the high-performance network zone. This parameter is required when FileSystemType is set to bmcpfs and cannot be modified after creation. You can call the DescribeSpecifications operation to query valid values. Example: B1.
+	//
+	// example:
+	//
+	// B1
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// The ID of the KMS key.
 	//
 	// This parameter is required only when EncryptType is set to 2.
 	//
@@ -202,13 +202,13 @@ type CreateFileSystemRequest struct {
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	// The file transfer protocol type.
 	//
-	// - If FileSystemType is set to standard, valid values: NFS and SMB.
+	// - When FileSystemType is set to standard, valid values are NFS and SMB.
 	//
-	// - If FileSystemType is set to extreme, valid values: NFS.
+	// - When FileSystemType is set to extreme, the valid value is NFS.
 	//
-	// - If FileSystemType is set to cpfs, valid values: cpfs.
+	// - When FileSystemType is set to cpfs, the valid value is cpfs.
 	//
-	// - If FileSystemType is set to cpfsse, valid values: cpfs.
+	// - When FileSystemType is set to cpfsse, the valid value is cpfs.
 	//
 	// This parameter is required.
 	//
@@ -216,9 +216,7 @@ type CreateFileSystemRequest struct {
 	//
 	// NFS
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The storage redundancy type. This parameter takes effect only for CPFS SE.
-	//
-	// Valid values: ZRS.
+	// The storage redundancy type. This parameter takes effect only for CPFS SE. Valid value: ZRS.
 	//
 	// if can be null:
 	// true
@@ -227,16 +225,16 @@ type CreateFileSystemRequest struct {
 	//
 	// ZRS
 	RedundancyType *string `json:"RedundancyType,omitempty" xml:"RedundancyType,omitempty"`
-	// The list of zone-redundant vSwitch IDs.
+	// The zone-redundant vSwitch IDs.
 	//
-	// If RedundancyType is set to ZRS, this parameter is required. You must specify three vSwitch IDs, each from a different zone.
+	// This parameter is required when RedundancyType is set to ZRS. You must specify three vSwitch IDs, and they must belong to three different zones.
 	//
 	// if can be null:
 	// true
 	RedundancyVSwitchIds []*string `json:"RedundancyVSwitchIds,omitempty" xml:"RedundancyVSwitchIds,omitempty" type:"Repeated"`
 	// The resource group ID.
 	//
-	// You can view resource group IDs in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
+	// You can view the resource group ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
 	//
 	// example:
 	//
@@ -246,7 +244,7 @@ type CreateFileSystemRequest struct {
 	//
 	// This parameter is supported only for Extreme NAS file systems with the Advanced storage type.
 	//
-	// > A file system created from a snapshot has the same version as the source file system of the snapshot. For example, if the source file system version is 1 and you want to create a version 2 file system, first create file system A from the snapshot, then create file system B that meets the version 2 configuration, copy the data from file system A to file system B, and migrate your workloads to file system B after the copy is complete.
+	// > When you create a file system from a snapshot, the created file system has the same version as the source file system of the snapshot. For example, if the source file system of the snapshot is version 1 and you want to create a version 2 file system, you can first create File System A from the snapshot, then create File System B that meets the version 2 configurations, copy the data from File System A to File System B, and migrate your business to File System B after the copy is complete.
 	//
 	// example:
 	//
@@ -254,13 +252,13 @@ type CreateFileSystemRequest struct {
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The storage type.
 	//
-	// - If FileSystemType is set to standard, valid values: Performance, Capacity, Premium, and Agentic (AgenticFS).
+	// - When FileSystemType is set to standard, valid values are Performance, Capacity, Premium, and Agentic.
 	//
-	// - If FileSystemType is set to extreme, valid values: standard and advance.
+	// - When FileSystemType is set to extreme, valid values are standard and advance.
 	//
-	// - If FileSystemType is set to cpfs, valid values: advance_100 (100 MB/s/TiB baseline), advance_200 (200 MB/s/TiB baseline), and economic.
+	// - When FileSystemType is set to cpfs, valid values are advance_100 (100 MB/s/TiB baseline), advance_200 (200 MB/s/TiB baseline), and economic (Economy).
 	//
-	// - If FileSystemType is set to cpfsse, valid values: advance_100 (100 MB/s/TiB baseline).
+	// - When FileSystemType is set to cpfsse, the valid value is advance_100 (100 MB/s/TiB baseline).
 	//
 	// This parameter is required.
 	//
@@ -270,13 +268,13 @@ type CreateFileSystemRequest struct {
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The tags.
 	//
-	// Array length: 1 to 20. If the array contains multiple tag objects, the tag key (Key) must be unique.
+	// Array length: 1 to 20. If the array contains multiple tag objects, the tag keys must be unique.
 	Tag []*CreateFileSystemRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
-	// - If FileSystemType is set to cpfs, this parameter is required.
+	// - This parameter is required when FileSystemType is set to cpfs.
 	//
-	// - If FileSystemType is not set to cpfs, this parameter is reserved and does not take effect. You do not need to configure it.
+	// - This parameter is reserved and does not take effect when FileSystemType is not set to cpfs. You do not need to configure it.
 	//
 	// example:
 	//
@@ -284,9 +282,9 @@ type CreateFileSystemRequest struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The VPC ID.
 	//
-	// - If FileSystemType is set to cpfs or cpfsse, this parameter is required.
+	// - This parameter is required when FileSystemType is set to cpfs or cpfsse.
 	//
-	// - If FileSystemType is set to standard or extreme, this parameter is reserved and does not take effect. You do not need to configure it.
+	// - This parameter is reserved and does not take effect when FileSystemType is set to standard or extreme. You do not need to configure it.
 	//
 	// example:
 	//
@@ -294,15 +292,15 @@ type CreateFileSystemRequest struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID.
 	//
-	// A zone is a physical area with independent power grids and networks within a region.
+	// A zone is a physical area with independent power grids and networks in the same region.
 	//
-	// If FileSystemType is set to standard, this parameter is optional. By default, a conditional active zone is randomly selected based on the values of ProtocolType and StorageType.
+	// When FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditional requirements is randomly selected based on the ProtocolType and StorageType settings.
 	//
-	// If FileSystemType is set to extreme or cpfs, this parameter is required.
+	// When FileSystemType is set to extreme or cpfs, this parameter is required.
 	//
-	// > - File systems and Elastic Computing Service (ECS) server instances in different zones of the same region can communicate with each other.
+	// > - File systems and Elastic Compute Service (ECS) instances in different zones of the same region can communicate with each other.
 	//
-	// > - Place the file system and the Elastic Computing Service (ECS) server in the same zone to avoid cross-zone latency.
+	// > - Deploy the file system and the ECS instance in the same zone to avoid cross-zone latency.
 	//
 	// example:
 	//
@@ -352,6 +350,10 @@ func (s *CreateFileSystemRequest) GetEncryptType() *int32 {
 
 func (s *CreateFileSystemRequest) GetFileSystemType() *string {
 	return s.FileSystemType
+}
+
+func (s *CreateFileSystemRequest) GetHpnZone() *string {
+	return s.HpnZone
 }
 
 func (s *CreateFileSystemRequest) GetKmsKeyId() *string {
@@ -443,6 +445,11 @@ func (s *CreateFileSystemRequest) SetFileSystemType(v string) *CreateFileSystemR
 	return s
 }
 
+func (s *CreateFileSystemRequest) SetHpnZone(v string) *CreateFileSystemRequest {
+	s.HpnZone = &v
+	return s
+}
+
 func (s *CreateFileSystemRequest) SetKmsKeyId(v string) *CreateFileSystemRequest {
 	s.KmsKeyId = &v
 	return s
@@ -516,13 +523,13 @@ type CreateFileSystemRequestTag struct {
 	//
 	// Limits:
 	//
-	// - The tag key cannot be empty or an empty string.
+	// - It cannot be empty or an empty string.
 	//
-	// - The tag key can be up to 128 characters in length.
+	// - It can be up to 128 characters in length.
 	//
-	// - The tag key cannot start with `aliyun` or `acs:`.
+	// - It cannot start with `aliyun` or `acs:`.
 	//
-	// - The tag key cannot contain `http://` or `https://`.
+	// - It cannot contain `http://` or `https://`.
 	//
 	// if can be null:
 	// false
@@ -535,11 +542,11 @@ type CreateFileSystemRequestTag struct {
 	//
 	// Limits:
 	//
-	// - The tag value cannot be empty or an empty string.
+	// - It cannot be empty or an empty string.
 	//
-	// - The tag value can be up to 128 characters in length.
+	// - It can be up to 128 characters in length.
 	//
-	// - The tag value cannot contain `http://` or `https://`.
+	// - It cannot contain `http://` or `https://`.
 	//
 	// if can be null:
 	// false

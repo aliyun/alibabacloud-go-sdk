@@ -18,23 +18,23 @@ type iAttachVscToFilesystemsRequest interface {
 }
 
 type AttachVscToFilesystemsRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests.
+	// The client token that is used to ensure the idempotence of the request. You can generate the value from your client and ensure that the value is unique across different requests.
 	//
-	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
-	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId may be different for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID information of file systems and Virtual Storage Channels (VSCs). A maximum of 10 entries can be specified per batch.
+	// The IDs of the file systems and virtual storage channels (VSCs). You can specify up to 10 IDs per batch. This parameter must be passed in a flattened format, such as ResourceIds.1.FileSystemId=bmcpfs-xxx&ResourceIds.1.VscId=vsc-xxx. JSON arrays are not supported.
 	//
 	// This parameter is required.
 	ResourceIds []*AttachVscToFilesystemsRequestResourceIds `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The role chain.
 	//
-	// >This parameter is required only for cross-account scenarios.
+	// > Required only for cross-account scenarios.
 	RoleChain []*AttachVscToFilesystemsRequestRoleChain `json:"RoleChain,omitempty" xml:"RoleChain,omitempty" type:"Repeated"`
 }
 
@@ -96,13 +96,13 @@ func (s *AttachVscToFilesystemsRequest) Validate() error {
 }
 
 type AttachVscToFilesystemsRequestResourceIds struct {
-	// The file system ID.
+	// The ID of the file system.
 	//
 	// example:
 	//
 	// bmcpfs-290t15yn4uo8lid****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The Virtual Storage Channel (VSC) ID. You can call the ListVscs operation of Lingjun eflo-controller/2022-12-15 to query VSC IDs. If no VSC has been created, call the CreateVsc operation to create one.
+	// The ID of the VSC. You can call the ListVscs operation of the Lingjun AI Computing Service eflo-controller/2022-12-15 API to query the ID. If no VSC is created, you can call the CreateVsc operation to create one.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ func (s *AttachVscToFilesystemsRequestResourceIds) Validate() error {
 }
 
 type AttachVscToFilesystemsRequestRoleChain struct {
-	// The UID of the Alibaba Cloud account on whose behalf the service assumes the role.
+	// The UID of the Alibaba Cloud account. This parameter specifies the Alibaba Cloud account for which the service assumes the role.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type AttachVscToFilesystemsRequestRoleChain struct {
 	//
 	// acs:ram::123472233814****:role/aliyunnasclientvsc****
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The role type. Valid values: service and user.
+	// The type of the role. Valid values: service and user.
 	//
 	// example:
 	//

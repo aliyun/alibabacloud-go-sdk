@@ -28,7 +28,7 @@ type DescribeRegionsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of regions on each page.
+	// The number of regions returned per page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeRegionsResponseBody struct {
 	//
 	// A70BEE5D-76D3-49FB-B58F-1F398211****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of regions returned.
+	// The total number of regions returned.
 	//
 	// example:
 	//

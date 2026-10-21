@@ -16,13 +16,11 @@ type iDescribeZonesRequest interface {
 }
 
 type DescribeZonesRequest struct {
-	// The file system type.
+	// The file system type. Valid values:
 	//
-	// Valid values:
+	// - standard: General-purpose NAS. This is the default value.
 	//
-	// - standard (default): General-purpose NAS.
-	//
-	// - extreme: Extreme NAS file system.
+	// - extreme: Extreme NAS.
 	//
 	// - cpfs: Cloud Parallel File Storage.
 	//
@@ -30,9 +28,7 @@ type DescribeZonesRequest struct {
 	//
 	// standard
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	// The ID of the region where the zones reside.
-	//
-	// You can call DescribeRegions to query the latest region list.
+	// The ID of the region to which the zone belongs. You can call the DescribeRegions operation to query the latest region list.
 	//
 	// This parameter is required.
 	//

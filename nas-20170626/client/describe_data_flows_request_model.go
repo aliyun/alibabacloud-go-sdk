@@ -22,9 +22,9 @@ type iDescribeDataFlowsRequest interface {
 type DescribeDataFlowsRequest struct {
 	// The file system ID.
 	//
-	// - CPFS: must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
+	// - CPFS: must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
 	//
-	// - CPFS for Lingjun: must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
+	// - CPFS for Lingjun: must start with `bmcpfs-`, for example, bmcpfs-0015\\*\\*\\*\\*.
 	//
 	// This parameter is required.
 	//
@@ -32,12 +32,12 @@ type DescribeDataFlowsRequest struct {
 	//
 	// cpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The filter keys for querying data flows.
+	// The filter keys used to query data flows.
 	//
 	// if can be null:
 	// true
 	Filters []*DescribeDataFlowsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The number of results for each query.
+	// The maximum number of entries to return for a single request.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -45,7 +45,7 @@ type DescribeDataFlowsRequest struct {
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. If the returned results are truncated, you can use NextToken to initiate another request to retrieve the results after the truncation point.
+	// When the returned results of a request are truncated, you can use NextToken to initiate another request and obtain the remaining results.
 	//
 	// example:
 	//
@@ -133,21 +133,21 @@ type DescribeDataFlowsRequestFilters struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the filter key. This parameter does not support wildcards.
 	//
-	// - If Key is set to DataFlowIds, Value is set to a data flow ID or part of a data flow ID. You can specify one or more data flow IDs. A maximum of 10 data flow IDs can be specified. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
+	// - When Key is set to DataFlowIds, Value is set to a data flow ID or a part of a data flow ID. You can specify one or more data flow IDs. A maximum of 10 data flow IDs can be specified. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
 	//
-	// - If Key is set to FsetIds, Value is set to a Fileset ID or part of a Fileset ID. You can specify one or more Fileset IDs. A maximum of 10 Fileset IDs can be specified. Example: `fset-1902718ea0ae****` or `fset-235718ea0ae****,fset-5122718ea0ae****`.
+	// - When Key is set to FsetIds, Value is set to a Fileset ID or a part of a Fileset ID. You can specify one or more Fileset IDs. A maximum of 10 Fileset IDs can be specified. Example: `fset-1902718ea0ae****` or `fset-235718ea0ae****,fset-5122718ea0ae****`.
 	//
-	// - If Key is set to FileSystemPath, Value is set to a path or part of a path in the CPFS file system. The value must be 1 to 1,024 characters in length.
+	// - When Key is set to FileSystemPath, Value is set to a path or a part of a path in the CPFS file system. The value must be 1 to 1,024 characters in length.
 	//
-	// - If Key is set to SourceStorage, Value is set to the access path of the source storage. The value can be up to 1,024 characters in length.
+	// - When Key is set to SourceStorage, Value is set to the access path of the source storage. The value can be up to 1,024 characters in length.
 	//
-	// - If Key is set to ThroughputList, Value is set to the transmission bandwidth of the data flow. Combined queries are supported.
+	// - When Key is set to ThroughputList, Value is set to the transmission bandwidth of the data flow. Combined queries are supported.
 	//
-	// - If Key is set to Description, Value is set to the description or part of the description of the data flow.
+	// - When Key is set to Description, Value is set to the description of the data flow or a part of the description.
 	//
-	// - If Key is set to Status, Value is set to the data flow status.
+	// - When Key is set to Status, Value is set to the data flow status.
 	//
-	// - If Key is set to SourceStoragePath, Value is set to the access path or part of the access path of the source storage. The value can be up to 1,024 characters in length.
+	// - When Key is set to SourceStoragePath, Value is set to the access path in the source storage or a part of the access path. The value can be up to 1,024 characters in length.
 	//
 	// example:
 	//

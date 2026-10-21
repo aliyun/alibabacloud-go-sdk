@@ -22,27 +22,27 @@ type DescribeRegionsRequest struct {
 	//
 	// Valid values:
 	//
-	// - all: all types.
+	// - all: all types
 	//
-	// - standard (default): General-purpose NAS.
+	// - standard: General-purpose NAS (default)
 	//
-	// - extreme: Extreme NAS.
+	// - extreme: Extreme NAS
 	//
-	// - cpfs: Cloud Parallel File Storage (CPFS).
+	// - cpfs: Cloud Parallel File Storage
 	//
 	// example:
 	//
 	// standard
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	// The page number of the list.
+	// The page number.
 	//
-	// Start value (default value): 1.
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of regions on each page during a paged query.
+	// The number of regions per page in a paging query.
 	//
 	// Valid values: 1 to 100.
 	//

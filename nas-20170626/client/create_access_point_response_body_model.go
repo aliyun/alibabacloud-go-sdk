@@ -62,13 +62,13 @@ func (s *CreateAccessPointResponseBody) Validate() error {
 }
 
 type CreateAccessPointResponseBodyAccessPoint struct {
-	// The access point domain name.
+	// The domain name of the access point.
 	//
 	// example:
 	//
 	// ap-ie15ydanoz.001014****-w****.cn-hangzhou.nas.aliyuncs.com
 	AccessPointDomain *string `json:"AccessPointDomain,omitempty" xml:"AccessPointDomain,omitempty"`
-	// The access point ID.
+	// The ID of the access point.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iAttachVscToFilesystemsResponseBody interface {
 }
 
 type AttachVscToFilesystemsResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

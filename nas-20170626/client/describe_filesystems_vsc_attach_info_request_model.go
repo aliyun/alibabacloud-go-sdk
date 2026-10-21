@@ -20,7 +20,7 @@ type iDescribeFilesystemsVscAttachInfoRequest interface {
 }
 
 type DescribeFilesystemsVscAttachInfoRequest struct {
-	// The number of results returned per query.
+	// The number of entries to return per query.
 	//
 	// Valid values: 10 to 100.
 	//
@@ -30,13 +30,13 @@ type DescribeFilesystemsVscAttachInfoRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set this parameter to the NextToken value returned in the previous API call.
+	// The query token. The value is the NextToken parameter value returned by the previous API call.
 	//
 	// example:
 	//
 	// TGlzdFJlc291cmNlU****mVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID information of file systems and virtual storage channels. A maximum of 10 entries can be specified per batch.
+	// The ID information of the file systems and virtual storage channels. A maximum of 10 items are supported per batch.
 	//
 	// This parameter is required.
 	ResourceIds []*DescribeFilesystemsVscAttachInfoRequestResourceIds `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
@@ -113,13 +113,13 @@ func (s *DescribeFilesystemsVscAttachInfoRequest) Validate() error {
 }
 
 type DescribeFilesystemsVscAttachInfoRequestResourceIds struct {
-	// The file system ID.
+	// The ID of the file system. This parameter is required in each ResourceIds entry and must be provided together with VscId.
 	//
 	// example:
 	//
 	// bmcpfs-290t15yn4uo8lid****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The virtual storage channel ID.
+	// The ID of the virtual storage channel. This parameter is required in each ResourceIds entry and must be provided together with FileSystemId. The ID starts with vsc-. You can call the ListVscs operation of Lingjun AI Computing Service eflo-controller/2022-12-15 to query the ID. If the virtual storage channel is not created, call CreateVsc to create one.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ func (s *DescribeFilesystemsVscAttachInfoRequestResourceIds) Validate() error {
 }
 
 type DescribeFilesystemsVscAttachInfoRequestRoleChain struct {
-	// The UID of the Alibaba Cloud account (primary account), which specifies the account on whose behalf the service assumes the role.
+	// The UID of the Alibaba Cloud account (the primary account UID). This parameter specifies the Alibaba Cloud account for which the service assumes the role.
 	//
 	// example:
 	//
