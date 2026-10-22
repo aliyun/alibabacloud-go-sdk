@@ -16,6 +16,12 @@
 - Update API GetResourceControlEvent: add response parameters Body.Data.ApplyRecordList.$.AnomalyHours.
 
 
+2026-10-22 Version: v1.1.0
+- Support API QueryForOperation.
+- Support API SubmitAutoAuditUnblock.
+- Update API GetResourceControlEvent: add response parameters Body.Data.ApplyRecordList.$.AnomalyHours.
+
+
 2026-10-13 Version: v1.0.6
 - Generated golang 2026-04-24 for RiskManagement.
 
