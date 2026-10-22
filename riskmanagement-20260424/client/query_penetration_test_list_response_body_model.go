@@ -22,19 +22,36 @@ type iQueryPenetrationTestListResponseBody interface {
 }
 
 type QueryPenetrationTestListResponseBody struct {
+	// The status code.
+	//
+	// - **200**: Successful.
+	//
+	// - **Other values (such as 400 and 500)**: Failed.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query results.
 	Data *QueryPenetrationTestListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 99D93ED4-D462-5FC5-8518-9BC1C49C7B6C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,7 +121,9 @@ func (s *QueryPenetrationTestListResponseBody) Validate() error {
 }
 
 type QueryPenetrationTestListResponseBodyData struct {
-	List     []*QueryPenetrationTestListResponseBodyDataList   `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The event data.
+	List []*QueryPenetrationTestListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The pagination information.
 	PageInfo *QueryPenetrationTestListResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 }
 
@@ -153,30 +172,62 @@ func (s *QueryPenetrationTestListResponseBodyData) Validate() error {
 }
 
 type QueryPenetrationTestListResponseBodyDataList struct {
+	// The application time.
+	//
 	// example:
 	//
 	// 1788873796000
 	ApplyTime *int64 `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
+	// The type of the asset. Valid values:
+	//
+	// - **EIP**: Public IP address of a VPC.
+	//
+	// - **SLB**: Server Load Balancer (SLB) instance for load balancing.
+	//
+	// - **ECS**: Public IP address of an ECS instance in the classic network.
+	//
 	// example:
 	//
 	// EIP
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The unique identity ID of the alerting event record.
+	//
+	// > The data type of this field is Long. Precision loss may occur during the procedure to serialize or deserialize the numeric sequence. Make sure that the value does not exceed 9007199254740991.
+	//
 	// example:
 	//
 	// 710864062
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IP address of the asset.
+	//
 	// example:
 	//
 	// 10.0.158.58
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The task status. Valid values:
+	//
+	// - **early_end**: The user applied for early termination.
+	//
+	// - **expired**: The authorization expired.
+	//
+	// - **auditing**: Under review.
+	//
+	// - **approved**: Approved.
+	//
+	// - **rejected**: Rejected.
+	//
 	// example:
 	//
 	// early_end
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The end time of the test.
+	//
 	// example:
 	//
 	// 1788873796000
 	TestEndDate *int64 `json:"TestEndDate,omitempty" xml:"TestEndDate,omitempty"`
+	// The start date of the test.
+	//
 	// example:
 	//
 	// 1788873796000
@@ -259,14 +310,22 @@ func (s *QueryPenetrationTestListResponseBodyDataList) Validate() error {
 }
 
 type QueryPenetrationTestListResponseBodyDataPageInfo struct {
+	// The page number of the returned page.
+	//
+	// > Default value: 1, which indicates the first page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 24
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of events.
+	//
 	// example:
 	//
 	// 20

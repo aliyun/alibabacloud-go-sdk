@@ -22,7 +22,7 @@ type iEndPenetrationTestResponseBody interface {
 type EndPenetrationTestResponseBody struct {
   // The status code.
   // 
-  // > 200: Success. Other values (such as 500 and 400): Error codes.
+  // > 200: Success. Other values (such as 500 and 400): error codes.
   // 
   // example:
   // 
@@ -44,7 +44,7 @@ type EndPenetrationTestResponseBody struct {
   // 
   // - **true**: The call is successful.                                
   // 
-  // - **false**: The call failed.
+  // - **false**: The call fails.
   // 
   // example:
   // 

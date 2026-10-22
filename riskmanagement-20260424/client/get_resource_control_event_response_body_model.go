@@ -28,9 +28,9 @@ type GetResourceControlEventResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data list.
+	// The list of returned data.
 	Data *GetResourceControlEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type GetResourceControlEventResponseBody struct {
 	//
 	// 6B57D35D-9DAC-5393-AE39-07697E37C2E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the call is successful.
 	//
-	// - **true**: The call was successful.
+	// - **true**: The call is successful.
 	//
-	// - **false**: The call failed.
+	// - **false**: The call fails.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *GetResourceControlEventResponseBody) Validate() error {
 }
 
 type GetResourceControlEventResponseBodyData struct {
-	// The list of application records.
+	// The list of application record information.
 	ApplyRecordList []*GetResourceControlEventResponseBodyDataApplyRecordList `json:"ApplyRecordList,omitempty" xml:"ApplyRecordList,omitempty" type:"Repeated"`
-	// The recommended action from the assistant.
+	// The handling suggestions from the assistant.
 	//
 	// example:
 	//
@@ -133,9 +133,9 @@ type GetResourceControlEventResponseBodyData struct {
 	BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
 	// The traffic direction. Valid values:
 	//
-	// - **in**: inbound to the cloud.
+	//  - **in**: Inbound to the cloud.
 	//
-	// - **out**: outbound from the cloud.
+	// - **out**: Outbound from the cloud.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type GetResourceControlEventResponseBodyData struct {
 	//
 	// https://xxx.aliyun.com/v2
 	SnapshotUrl *string `json:"SnapshotUrl,omitempty" xml:"SnapshotUrl,omitempty"`
-	// The attack source IP address.
+	// The source IP address of the attack.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type GetResourceControlEventResponseBodyData struct {
 	//
 	// 2168
 	SrcPort *string `json:"SrcPort,omitempty" xml:"SrcPort,omitempty"`
-	// The recommended action.
+	// The handling suggestions.
 	//
 	// example:
 	//
@@ -366,6 +366,8 @@ func (s *GetResourceControlEventResponseBodyData) Validate() error {
 }
 
 type GetResourceControlEventResponseBodyDataApplyRecordList struct {
+	// The details of abnormal hours for CDN traffic exceptions.
+	AnomalyHours []*GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours `json:"AnomalyHours,omitempty" xml:"AnomalyHours,omitempty" type:"Repeated"`
 	// The reason for approval.
 	//
 	// example:
@@ -380,23 +382,23 @@ type GetResourceControlEventResponseBodyDataApplyRecordList struct {
 	//
 	// does not meet the requirements
 	RejectReason *string `json:"RejectReason,omitempty" xml:"RejectReason,omitempty"`
-	// The remarks.
+	// The remark.
 	//
 	// example:
 	//
 	// Test Desc for Draft
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The task status. Valid values:
+	// The task status.
 	//
-	// - **Executing**: executing
+	// - **Executing**: In progress.
 	//
-	// - **Removed**: removed
+	// - **Removed**: Removed.
 	//
-	// - **Alerting**: alerting
+	// - **Alerting**: Alerting.
 	//
-	// - **Ended**: ended
+	// - **Ended**: Ended.
 	//
-	// - **Processed**: processed by the user and under platform review
+	// - **Processed**: Processed by the user and under platform review.
 	//
 	// example:
 	//
@@ -410,6 +412,10 @@ func (s GetResourceControlEventResponseBodyDataApplyRecordList) String() string 
 
 func (s GetResourceControlEventResponseBodyDataApplyRecordList) GoString() string {
 	return s.String()
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordList) GetAnomalyHours() []*GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours {
+	return s.AnomalyHours
 }
 
 func (s *GetResourceControlEventResponseBodyDataApplyRecordList) GetApprovalReason() *string {
@@ -430,6 +436,11 @@ func (s *GetResourceControlEventResponseBodyDataApplyRecordList) GetRemark() *st
 
 func (s *GetResourceControlEventResponseBodyDataApplyRecordList) GetStatus() *string {
 	return s.Status
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordList) SetAnomalyHours(v []*GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) *GetResourceControlEventResponseBodyDataApplyRecordList {
+	s.AnomalyHours = v
+	return s
 }
 
 func (s *GetResourceControlEventResponseBodyDataApplyRecordList) SetApprovalReason(v string) *GetResourceControlEventResponseBodyDataApplyRecordList {
@@ -458,6 +469,15 @@ func (s *GetResourceControlEventResponseBodyDataApplyRecordList) SetStatus(v str
 }
 
 func (s *GetResourceControlEventResponseBodyDataApplyRecordList) Validate() error {
+	if s.AnomalyHours != nil {
+		for _, item := range s.AnomalyHours {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.EventTimeRecord != nil {
 		if err := s.EventTimeRecord.Validate(); err != nil {
 			return err
@@ -466,8 +486,98 @@ func (s *GetResourceControlEventResponseBodyDataApplyRecordList) Validate() erro
 	return nil
 }
 
+type GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours struct {
+	// The traffic exceptions in bytes.
+	//
+	// example:
+	//
+	// 150323855
+	AbnormalBytes *int64 `json:"AbnormalBytes,omitempty" xml:"AbnormalBytes,omitempty"`
+	// The anomaly description.
+	//
+	// example:
+	//
+	// The traffic for the domain name cdn-newfile.stomics.tech increased to 54.78 GB between 03:00 and 04:00 on October 22, 2026, approximately 386 times the historical baseline of 0.14 GB. During this period, about 99.7% of the traffic was concentrated in the 14.22.49 CIDR block. Approximately 160 IP addresses accessed the domain, with no single IP accounting for a large proportion. The traffic involved 258 large files, primarily in tar.gz format, with an empty Referer header, indicating batch downloads or abnormal data pulling. Verify whether this was caused by a version release, image synchronization, or partner downloads. If the cause cannot be confirmed, temporarily throttle or block this CIDR block and implement access control for large files
+	AnomalyDesc *string `json:"AnomalyDesc,omitempty" xml:"AnomalyDesc,omitempty"`
+	// The baseline traffic in bytes.
+	//
+	// example:
+	//
+	// 58819577119
+	BaselineBytes *int64 `json:"BaselineBytes,omitempty" xml:"BaselineBytes,omitempty"`
+	// The anomaly hour.
+	//
+	// example:
+	//
+	// 2026-10-22 03:00:23
+	Hour *string `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// The traffic multiplier.
+	//
+	// example:
+	//
+	// 391.29
+	TrafRatio *float64 `json:"TrafRatio,omitempty" xml:"TrafRatio,omitempty"`
+}
+
+func (s GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) GetAbnormalBytes() *int64 {
+	return s.AbnormalBytes
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) GetAnomalyDesc() *string {
+	return s.AnomalyDesc
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) GetBaselineBytes() *int64 {
+	return s.BaselineBytes
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) GetHour() *string {
+	return s.Hour
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) GetTrafRatio() *float64 {
+	return s.TrafRatio
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) SetAbnormalBytes(v int64) *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours {
+	s.AbnormalBytes = &v
+	return s
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) SetAnomalyDesc(v string) *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours {
+	s.AnomalyDesc = &v
+	return s
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) SetBaselineBytes(v int64) *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours {
+	s.BaselineBytes = &v
+	return s
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) SetHour(v string) *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours {
+	s.Hour = &v
+	return s
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) SetTrafRatio(v float64) *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours {
+	s.TrafRatio = &v
+	return s
+}
+
+func (s *GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struct {
-	// The time when the alert ended.
+	// The end time of the alert.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -475,7 +585,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2026-03-16 15:15:00
 	AlertEndTime *string `json:"AlertEndTime,omitempty" xml:"AlertEndTime,omitempty"`
-	// The time when the first alert was triggered.
+	// The time of the first alert.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -483,7 +593,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2026-03-16 15:15:00
 	AlertStartTime *string `json:"AlertStartTime,omitempty" xml:"AlertStartTime,omitempty"`
-	// The time when the control action was lifted.
+	// The time when the restriction is lifted.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -499,7 +609,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2025-08-21T02:26:50Z
 	ApplyTime *string `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
-	// The time when the alert was ignored.
+	// The time when the alert is ignored.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -507,7 +617,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2026-03-16 15:15:00
 	IgnoreAlertTime *string `json:"IgnoreAlertTime,omitempty" xml:"IgnoreAlertTime,omitempty"`
-	// The time when the instance was shut down.
+	// The time when the instance is shut down.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -515,7 +625,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2026-03-16 15:15:00
 	InstanceCloseTime *string `json:"InstanceCloseTime,omitempty" xml:"InstanceCloseTime,omitempty"`
-	// The time when the instance was scanned.
+	// The time when the instance is scanned.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -523,7 +633,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2026-03-16 15:15:00
 	InstanceScanTime *string `json:"InstanceScanTime,omitempty" xml:"InstanceScanTime,omitempty"`
-	// The time of the latest detection.
+	// The time of the latest check.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -531,7 +641,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2026-03-16 15:15:00
 	LastCheckTime *string `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
-	// The time when the mining alert was processed.
+	// The processing time of the mining alert.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -555,7 +665,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2025-11-05 10:06:21
 	ProcessTime *string `json:"ProcessTime,omitempty" xml:"ProcessTime,omitempty"`
-	// The time when the control action ended.
+	// The end time of the restriction.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -563,7 +673,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2026-03-16 15:15:00
 	PunishEndTime *string `json:"PunishEndTime,omitempty" xml:"PunishEndTime,omitempty"`
-	// The time when the control action started.
+	// The start time of the restriction.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -579,7 +689,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2026-03-16 15:15:00
 	RejectTime *string `json:"RejectTime,omitempty" xml:"RejectTime,omitempty"`
-	// The removal time.
+	// The time when the restriction is removed.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -587,7 +697,7 @@ type GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord struc
 	//
 	// 2026-03-16 15:15:00
 	RemoveTime *string `json:"RemoveTime,omitempty" xml:"RemoveTime,omitempty"`
-	// The time when the risk check succeeded.
+	// The time when the risk check succeeds.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//

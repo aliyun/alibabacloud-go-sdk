@@ -18,17 +18,17 @@ type iGetResourceControlEventShrinkRequest interface {
 }
 
 type GetResourceControlEventShrinkRequest struct {
-	// The language. Valid values:
+	// The language environment.
 	//
-	// - **zh*	- (default): Chinese
+	// - Chinese (default): **zh**
 	//
-	// - **en**: English
+	// - English: **en**
 	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// The alert event ID.
+	// The ID of the alert event.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GetResourceControlEventShrinkRequest struct {
 	//
 	// 09C-2PpwIzkpx2zG2fuFrAH55CpJaTK
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The list of specified event IDs.
+	// The list of event IDs.
 	EventIdListShrink *string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty"`
 }
 

@@ -16,10 +16,18 @@ type iQueryPenetrationTestListRequest interface {
 }
 
 type QueryPenetrationTestListRequest struct {
+	// The current page number.
+	//
+	// > Default value: 1
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// > Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10

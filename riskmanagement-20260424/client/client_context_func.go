@@ -613,7 +613,7 @@ func (client *Client) DownloadResourceControlEventsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Immediately ends a penetration test.
+// Immediately terminates a penetration test.
 //
 // @param request - EndPenetrationTestRequest
 //
@@ -1684,6 +1684,86 @@ func (client *Client) QueryAccountSafetyIncidentWithContext(ctx context.Context,
 
 // Summary:
 //
+// 解封申请列表及分页信息
+//
+// @param request - QueryForOperationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryForOperationResponse
+func (client *Client) QueryForOperationWithContext(ctx context.Context, request *QueryForOperationRequest, runtime *dara.RuntimeOptions) (_result *QueryForOperationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyTimeEnd) {
+		query["ApplyTimeEnd"] = request.ApplyTimeEnd
+	}
+
+	if !dara.IsNil(request.ApplyTimeStart) {
+		query["ApplyTimeStart"] = request.ApplyTimeStart
+	}
+
+	if !dara.IsNil(request.AssetType) {
+		query["AssetType"] = request.AssetType
+	}
+
+	if !dara.IsNil(request.AuditTimeEnd) {
+		query["AuditTimeEnd"] = request.AuditTimeEnd
+	}
+
+	if !dara.IsNil(request.AuditTimeStart) {
+		query["AuditTimeStart"] = request.AuditTimeStart
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.CustomerUid) {
+		query["CustomerUid"] = request.CustomerUid
+	}
+
+	if !dara.IsNil(request.Ip) {
+		query["Ip"] = request.Ip
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryForOperation"),
+		Version:     dara.String("2026-04-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryForOperationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the subscription status of the cloud security guide.
 //
 // @param request - QueryGuideSubStatusRequest
@@ -1765,7 +1845,7 @@ func (client *Client) QueryPenetrationTestDetailWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询渗透测试申请列表
+// Queries the list of penetration test applications.
 //
 // @param request - QueryPenetrationTestListRequest
 //
@@ -2181,6 +2261,74 @@ func (client *Client) SubmitApplyRecordWithContext(ctx context.Context, tmpReq *
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitApplyRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交 TCP25端口免审解封申请
+//
+// @param request - SubmitAutoAuditUnblockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAutoAuditUnblockResponse
+func (client *Client) SubmitAutoAuditUnblockWithContext(ctx context.Context, request *SubmitAutoAuditUnblockRequest, runtime *dara.RuntimeOptions) (_result *SubmitAutoAuditUnblockResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetList) {
+		query["AssetList"] = request.AssetList
+	}
+
+	if !dara.IsNil(request.Auditor) {
+		query["Auditor"] = request.Auditor
+	}
+
+	if !dara.IsNil(request.CustomerUid) {
+		query["CustomerUid"] = request.CustomerUid
+	}
+
+	if !dara.IsNil(request.EmailType) {
+		query["EmailType"] = request.EmailType
+	}
+
+	if !dara.IsNil(request.HasUnsubscribe) {
+		query["HasUnsubscribe"] = request.HasUnsubscribe
+	}
+
+	if !dara.IsNil(request.SendCount) {
+		query["SendCount"] = request.SendCount
+	}
+
+	if !dara.IsNil(request.UseDesc) {
+		query["UseDesc"] = request.UseDesc
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitAutoAuditUnblock"),
+		Version:     dara.String("2026-04-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitAutoAuditUnblockResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
