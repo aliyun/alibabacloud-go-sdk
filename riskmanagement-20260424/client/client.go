@@ -2258,7 +2258,7 @@ func (client *Client) QueryAccountSafetyIncident(request *QueryAccountSafetyInci
 
 // Summary:
 //
-// 解封申请列表及分页信息
+// Queries the list of port unblocking applications and pagination information.
 //
 // @param request - QueryForOperationRequest
 //
@@ -2338,7 +2338,7 @@ func (client *Client) QueryForOperationWithOptions(request *QueryForOperationReq
 
 // Summary:
 //
-// 解封申请列表及分页信息
+// Queries the list of port unblocking applications and pagination information.
 //
 // @param request - QueryForOperationRequest
 //
@@ -3007,7 +3007,7 @@ func (client *Client) SubmitApplyRecord(request *SubmitApplyRecordRequest) (_res
 
 // Summary:
 //
-// 提交 TCP25端口免审解封申请
+// Claims privileges.
 //
 // @param request - SubmitAutoAuditUnblockRequest
 //
@@ -3075,7 +3075,7 @@ func (client *Client) SubmitAutoAuditUnblockWithOptions(request *SubmitAutoAudit
 
 // Summary:
 //
-// 提交 TCP25端口免审解封申请
+// Claims privileges.
 //
 // @param request - SubmitAutoAuditUnblockRequest
 //

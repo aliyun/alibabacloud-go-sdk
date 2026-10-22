@@ -22,19 +22,32 @@ type iQueryForOperationResponseBody interface {
 }
 
 type QueryForOperationResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query results.
 	Data *QueryForOperationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEE90F8C-EDC2-5394-953B-D07A121612B5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,7 +117,9 @@ func (s *QueryForOperationResponseBody) Validate() error {
 }
 
 type QueryForOperationResponseBodyData struct {
-	List     []*QueryForOperationResponseBodyDataList   `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The event data.
+	List []*QueryForOperationResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The pagination information.
 	PageInfo *QueryForOperationResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 }
 
@@ -153,54 +168,100 @@ func (s *QueryForOperationResponseBodyData) Validate() error {
 }
 
 type QueryForOperationResponseBodyDataList struct {
+	// The application time.
+	//
 	// example:
 	//
 	// 1788873796000
 	ApplyTime *int64 `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
+	// The asset type. Valid values:
+	//
+	// - **EIP**: VPC public IP address.
+	//
+	// - **SLB**: load balancing.
+	//
+	// - **ECS**: Public IP address in the classic network.
+	//
 	// example:
 	//
 	// EIP
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The review remarks.
+	//
 	// example:
 	//
 	// agree
 	AuditMemo *string `json:"AuditMemo,omitempty" xml:"AuditMemo,omitempty"`
+	// The review time.
+	//
 	// example:
 	//
 	// 1791937132000
 	AuditTime *int64 `json:"AuditTime,omitempty" xml:"AuditTime,omitempty"`
+	// The reviewer.
+	//
 	// example:
 	//
 	// 149754
 	Auditor *string `json:"Auditor,omitempty" xml:"Auditor,omitempty"`
+	// The customer UID.
+	//
 	// example:
 	//
 	// 1068723216148614
 	CustomerUid *string `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
+	// The type of the sent email.
+	//
 	// example:
 	//
 	// xxx
 	EmailType *string `json:"EmailType,omitempty" xml:"EmailType,omitempty"`
+	// Specifies whether the email contains an unsubscribe option. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// true
 	HasUnsubscribe *bool `json:"HasUnsubscribe,omitempty" xml:"HasUnsubscribe,omitempty"`
+	// The unique ID.
+	//
 	// example:
 	//
 	// 710864062
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IP address of the asset.
+	//
 	// example:
 	//
 	// 10.0.158.58
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The description of the number of sent emails.
+	//
 	// example:
 	//
 	// 10
 	SendCount *string `json:"SendCount,omitempty" xml:"SendCount,omitempty"`
+	// The task status. Valid values:
+	//
+	// - **auditing**: Under review.
+	//
+	// - **approved**: Approved.
+	//
+	// - **rejected**: Rejected.
+	//
+	// - **effective**: Effective.
+	//
+	// - **ineffective**: Ineffective.
+	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// xxx
@@ -337,14 +398,22 @@ func (s *QueryForOperationResponseBodyDataList) Validate() error {
 }
 
 type QueryForOperationResponseBodyDataPageInfo struct {
+	// The page number from which the query results are displayed.
+	//
+	// > Default value: 1, which indicates that the query results are displayed from the first page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of events.
+	//
 	// example:
 	//
 	// 20

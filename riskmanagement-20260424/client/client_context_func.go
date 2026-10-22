@@ -1684,7 +1684,7 @@ func (client *Client) QueryAccountSafetyIncidentWithContext(ctx context.Context,
 
 // Summary:
 //
-// 解封申请列表及分页信息
+// Queries the list of port unblocking applications and pagination information.
 //
 // @param request - QueryForOperationRequest
 //
@@ -2271,7 +2271,7 @@ func (client *Client) SubmitApplyRecordWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 提交 TCP25端口免审解封申请
+// Claims privileges.
 //
 // @param request - SubmitAutoAuditUnblockRequest
 //

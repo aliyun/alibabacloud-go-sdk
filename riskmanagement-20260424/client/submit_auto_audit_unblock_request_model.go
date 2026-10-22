@@ -26,33 +26,55 @@ type iSubmitAutoAuditUnblockRequest interface {
 }
 
 type SubmitAutoAuditUnblockRequest struct {
+	// The list of assets.
+	//
+	// > The array supports up to 50 IP addresses.
+	//
 	// example:
 	//
 	// [{"domain":"","ip":"120.26.29.16","assetType":"EIP"}]
 	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
+	// The auditor.
+	//
+	// > You do not need to specify this parameter. It does not take effect.
+	//
 	// example:
 	//
 	// none
 	Auditor *string `json:"Auditor,omitempty" xml:"Auditor,omitempty"`
+	// The customer UID.
+	//
 	// example:
 	//
 	// 1317334647812936
 	CustomerUid *string `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
+	// The type of the email to send.
+	//
 	// example:
 	//
 	// xxx
 	EmailType *string `json:"EmailType,omitempty" xml:"EmailType,omitempty"`
+	// Specifies whether the email includes an unsubscribe option.
+	//
+	// - **true**: Included.
+	//
+	// - **false**: Not included.
+	//
 	// example:
 	//
 	// true
 	HasUnsubscribe *bool `json:"HasUnsubscribe,omitempty" xml:"HasUnsubscribe,omitempty"`
+	// The description of the number of emails to send.
+	//
 	// example:
 	//
 	// 10
 	SendCount *string `json:"SendCount,omitempty" xml:"SendCount,omitempty"`
+	// The description.
+	//
 	// example:
 	//
-	// 使用说明。
+	// Usage instructions
 	UseDesc *string `json:"UseDesc,omitempty" xml:"UseDesc,omitempty"`
 }
 

@@ -22,22 +22,44 @@ type iSubmitAutoAuditUnblockResponseBody interface {
 }
 
 type SubmitAutoAuditUnblockResponseBody struct {
+	// The status code.
+	//
+	// - **200**: Success.
+	//
+	// - **Other values (such as 400 and 500)**: Failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The submission result.
+	//
+	// - **true**: The submission succeeded.
+	//
+	// - **false**: The submission failed.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message.
+	//
 	// example:
 	//
 	// successful‌
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6B57D35D-9DAC-5393-AE39-07697E37C2E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true

@@ -32,42 +32,80 @@ type iQueryForOperationRequest interface {
 }
 
 type QueryForOperationRequest struct {
+	// The end time of the application.
+	//
 	// example:
 	//
 	// 1791937232000
 	ApplyTimeEnd *int64 `json:"ApplyTimeEnd,omitempty" xml:"ApplyTimeEnd,omitempty"`
+	// The start time of the application.
+	//
 	// example:
 	//
 	// 1791937132000
 	ApplyTimeStart *int64 `json:"ApplyTimeStart,omitempty" xml:"ApplyTimeStart,omitempty"`
+	// The asset type. Valid values:
+	//
+	// - **EIP**: VPC public IP address.
+	//
+	// - **SLB**: load balancing.
+	//
+	// - **ECS**: Public IP address in the classic network.
+	//
 	// example:
 	//
 	// EIP
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The end time of the review.
+	//
 	// example:
 	//
 	// 1791937232000
 	AuditTimeEnd *int64 `json:"AuditTimeEnd,omitempty" xml:"AuditTimeEnd,omitempty"`
+	// The start time of the review.
+	//
 	// example:
 	//
 	// 1791937132000
 	AuditTimeStart *int64 `json:"AuditTimeStart,omitempty" xml:"AuditTimeStart,omitempty"`
+	// The current page number.
+	//
+	// > Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The customer UID.
+	//
 	// example:
 	//
 	// 1647796581073291
 	CustomerUid *string `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
+	// IP
+	//
 	// example:
 	//
 	// 12.3*.22.11
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The task status. Valid values:
+	//
+	// - **auditing**: Under review.
+	//
+	// - **approved**: Approved.
+	//
+	// - **rejected**: Rejected.
+	//
+	// - **effective**: Effective.
+	//
+	// - **ineffective**: Ineffective.
+	//
 	// example:
 	//
 	// approved
