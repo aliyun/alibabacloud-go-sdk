@@ -18,7 +18,7 @@ type iGetColumnResponseBody interface {
 }
 
 type GetColumnResponseBody struct {
-	// The column list.
+	// The list of columns.
 	Column *Column `json:"Column,omitempty" xml:"Column,omitempty"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type GetColumnResponseBody struct {
 	//
 	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

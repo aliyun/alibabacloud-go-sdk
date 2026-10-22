@@ -2027,7 +2027,7 @@ func (client *Client) CreateCalendar(request *CreateCalendarRequest) (_result *C
 //
 //	Notice: This operation does not support batch operations. If you specify multiple publish entities in the parameters, all entities except the first one are ignored.
 //
-// This operation is part of the new data development capabilities and applies only to workspaces that use the new data development feature. If the new data development feature is not used, use the corresponding operation of the 2020-05-18 version.
+// This operation is part of the new Data Studio capabilities and applies only to workspaces that use the new Data Studio feature. If the new Data Studio feature is not used, use the corresponding operation of the 2020-05-18 version.
 //
 // @param request - CreateComponentRequest
 //
@@ -2085,7 +2085,7 @@ func (client *Client) CreateComponentWithOptions(request *CreateComponentRequest
 //
 //	Notice: This operation does not support batch operations. If you specify multiple publish entities in the parameters, all entities except the first one are ignored.
 //
-// This operation is part of the new data development capabilities and applies only to workspaces that use the new data development feature. If the new data development feature is not used, use the corresponding operation of the 2020-05-18 version.
+// This operation is part of the new Data Studio capabilities and applies only to workspaces that use the new Data Studio feature. If the new Data Studio feature is not used, use the corresponding operation of the 2020-05-18 version.
 //
 // @param request - CreateComponentRequest
 //
@@ -7021,13 +7021,13 @@ func (client *Client) CreateUdfFile(request *CreateUdfFileRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a workflow in a specified directory in DataStudio.
+// Creates a workflow in a specified directory in Data Studio.
 //
 // Description:
 //
 //	Notice: This operation does not support batch operations. If more than one workflow is defined in the FlowSpec, all workflows except the first one are ignored. In addition, nodes defined within the workflow are also directly ignored. Call the CreateNode operation to create internal nodes one by one.</notice>
 //
-// This operation is part of the new DataStudio capabilities and applies only to workspaces that use the new DataStudio. If you do not use the new DataStudio, use the corresponding operation of the 2020-05-18 version.
+// This operation is part of the new Data Studio capabilities and applies only to workspaces that use the new Data Studio. If you do not use the new Data Studio, use the corresponding operation of the 2020-05-18 version.
 //
 // @param request - CreateWorkflowDefinitionRequest
 //
@@ -7075,13 +7075,13 @@ func (client *Client) CreateWorkflowDefinitionWithOptions(request *CreateWorkflo
 
 // Summary:
 //
-// Creates a workflow in a specified directory in DataStudio.
+// Creates a workflow in a specified directory in Data Studio.
 //
 // Description:
 //
 //	Notice: This operation does not support batch operations. If more than one workflow is defined in the FlowSpec, all workflows except the first one are ignored. In addition, nodes defined within the workflow are also directly ignored. Call the CreateNode operation to create internal nodes one by one.</notice>
 //
-// This operation is part of the new DataStudio capabilities and applies only to workspaces that use the new DataStudio. If you do not use the new DataStudio, use the corresponding operation of the 2020-05-18 version.
+// This operation is part of the new Data Studio capabilities and applies only to workspaces that use the new Data Studio. If you do not use the new Data Studio, use the corresponding operation of the 2020-05-18 version.
 //
 // @param request - CreateWorkflowDefinitionRequest
 //
@@ -7103,7 +7103,7 @@ func (client *Client) CreateWorkflowDefinition(request *CreateWorkflowDefinition
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a later edition to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param tmpReq - CreateWorkflowInstancesRequest
 //
@@ -7213,7 +7213,7 @@ func (client *Client) CreateWorkflowInstancesWithOptions(tmpReq *CreateWorkflowI
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a later edition to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - CreateWorkflowInstancesRequest
 //
@@ -7593,9 +7593,9 @@ func (client *Client) DeleteCertificate(request *DeleteCertificateRequest) (_res
 //
 // Description:
 //
-// <notice>After a UDF function is published, it cannot be deleted. You must take it offline before deleting it.</notice>
+// <notice>After a UDF function is deployed, it cannot be deleted. You must undeploy it before deleting it.</notice>
 //
-// This API operation belongs to the new data development capabilities and applies only to workspaces that use the new data development feature. If you do not use the new data development feature, use the corresponding API operation of the 2020-05-18 version.
+// This API operation belongs to the new Data Studio capabilities and applies only to workspaces that use the new Data Studio feature. If you do not use the new Data Studio feature, use the corresponding API operation of the 2020-05-18 version.
 //
 // @param request - DeleteComponentRequest
 //
@@ -7647,9 +7647,9 @@ func (client *Client) DeleteComponentWithOptions(request *DeleteComponentRequest
 //
 // Description:
 //
-// <notice>After a UDF function is published, it cannot be deleted. You must take it offline before deleting it.</notice>
+// <notice>After a UDF function is deployed, it cannot be deleted. You must undeploy it before deleting it.</notice>
 //
-// This API operation belongs to the new data development capabilities and applies only to workspaces that use the new data development feature. If you do not use the new data development feature, use the corresponding API operation of the 2020-05-18 version.
+// This API operation belongs to the new Data Studio capabilities and applies only to workspaces that use the new Data Studio feature. If you do not use the new Data Studio feature, use the corresponding API operation of the 2020-05-18 version.
 //
 // @param request - DeleteComponentRequest
 //
@@ -12638,11 +12638,11 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 
 // Summary:
 //
-// Retrieves the details of a specified column in a Data Map table.
+// Retrieves the details of a specified column in a DataWorks Data Map table.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// 1. You must purchase DataWorks Basic Edition or a later edition to use this operation.
 //
 // @param request - GetColumnRequest
 //
@@ -12682,11 +12682,11 @@ func (client *Client) GetColumnWithOptions(request *GetColumnRequest, runtime *d
 
 // Summary:
 //
-// Retrieves the details of a specified column in a Data Map table.
+// Retrieves the details of a specified column in a DataWorks Data Map table.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// 1. You must purchase DataWorks Basic Edition or a later edition to use this operation.
 //
 // @param request - GetColumnRequest
 //
@@ -18642,11 +18642,11 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 
 // Summary:
 //
-// Queries the column list of a specified table in DataWorks Data Map.
+// Queries the columns of a specified table in DataWorks Data Map.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// 1. You must purchase DataWorks Basic Edition or later to use this API.
 //
 // @param request - ListColumnsRequest
 //
@@ -18686,11 +18686,11 @@ func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtim
 
 // Summary:
 //
-// Queries the column list of a specified table in DataWorks Data Map.
+// Queries the columns of a specified table in DataWorks Data Map.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// 1. You must purchase DataWorks Basic Edition or later to use this API.
 //
 // @param request - ListColumnsRequest
 //
@@ -22562,13 +22562,13 @@ func (client *Client) ListLineageRelationships(request *ListLineageRelationships
 
 // Summary:
 //
-// Queries the list of upstream and downstream lineage entities for a given entity in DataWorks Data Map, with an option to include specific lineage relationship information.
+// Queries the upstream and downstream lineage entities of a given entity in DataWorks Data Map. You can specify whether to include detailed lineage relationship information.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Standard Edition or later to use this operation.
+// 1. You must purchase DataWorks Standard Edition or a more advanced edition to use this operation.
 //
-// 2. This operation queries the upstream and downstream entities of the current entity and the lineage relationships between entities.
+// 2. This operation queries the upstream and downstream entities of the current entity and the lineage relationships between the entities.
 //
 // @param request - ListLineagesRequest
 //
@@ -22608,13 +22608,13 @@ func (client *Client) ListLineagesWithOptions(request *ListLineagesRequest, runt
 
 // Summary:
 //
-// Queries the list of upstream and downstream lineage entities for a given entity in DataWorks Data Map, with an option to include specific lineage relationship information.
+// Queries the upstream and downstream lineage entities of a given entity in DataWorks Data Map. You can specify whether to include detailed lineage relationship information.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Standard Edition or later to use this operation.
+// 1. You must purchase DataWorks Standard Edition or a more advanced edition to use this operation.
 //
-// 2. This operation queries the upstream and downstream entities of the current entity and the lineage relationships between entities.
+// 2. This operation queries the upstream and downstream entities of the current entity and the lineage relationships between the entities.
 //
 // @param request - ListLineagesRequest
 //
@@ -24238,7 +24238,7 @@ func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_r
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or later to use this operation.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param tmpReq - ListProjectRolesRequest
 //
@@ -24316,7 +24316,7 @@ func (client *Client) ListProjectRolesWithOptions(tmpReq *ListProjectRolesReques
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or later to use this operation.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - ListProjectRolesRequest
 //
@@ -25686,7 +25686,7 @@ func (client *Client) ListSnapshots(request *ListSnapshotsRequest) (_result *Lis
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or later to use this API.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this API.
 //
 // @param tmpReq - ListTablesRequest
 //
@@ -25736,7 +25736,7 @@ func (client *Client) ListTablesWithOptions(tmpReq *ListTablesRequest, runtime *
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or later to use this API.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this API.
 //
 // @param request - ListTablesRequest
 //
@@ -26893,11 +26893,11 @@ func (client *Client) MoveNode(request *MoveNodeRequest) (_result *MoveNodeRespo
 
 // Summary:
 //
-// Moves a specified data development file resource to a specified data development folder.
+// Moves a specified Data Studio file resource to a specified Data Studio folder.
 //
 // Description:
 //
-// This operation is part of the new data development capabilities and applies only to workspaces that use the new data development feature. If you do not use the new data development feature, use the corresponding operation in the 2020-05-18 version.
+// This operation is part of the new Data Studio capabilities and applies only to workspaces that use the new Data Studio feature. If you do not use the new Data Studio feature, use the corresponding operation in the 2020-05-18 version.
 //
 // @param request - MoveResourceRequest
 //
@@ -26949,11 +26949,11 @@ func (client *Client) MoveResourceWithOptions(request *MoveResourceRequest, runt
 
 // Summary:
 //
-// Moves a specified data development file resource to a specified data development folder.
+// Moves a specified Data Studio file resource to a specified Data Studio folder.
 //
 // Description:
 //
-// This operation is part of the new data development capabilities and applies only to workspaces that use the new data development feature. If you do not use the new data development feature, use the corresponding operation in the 2020-05-18 version.
+// This operation is part of the new Data Studio capabilities and applies only to workspaces that use the new Data Studio feature. If you do not use the new Data Studio feature, use the corresponding operation in the 2020-05-18 version.
 //
 // @param request - MoveResourceRequest
 //

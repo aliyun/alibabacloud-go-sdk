@@ -92,7 +92,7 @@ type CreateWorkflowInstancesRequest struct {
 	TagCreationPolicy *string `json:"TagCreationPolicy,omitempty" xml:"TagCreationPolicy,omitempty"`
 	// The list of task tags.
 	Tags []*CreateWorkflowInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The node parameters, which are used to set parameters for specific nodes. The value is in JSON format. The key is the node ID, and the value format refers to the node script parameters (Task.Script.Parameter in the response of the GetTask operation).
+	// The task parameters, which are used to set parameters for specific tasks. The value is in JSON format. The key is the task ID, and the value format refers to the task script parameters (Task.Script.Parameter in the response of the GetTask operation).
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// - ManualWorkflow: manually triggered workflow. You must set WorkflowId to the ID of the manually triggered workflow. RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manually triggered workflow is used.
 	//
-	// - Manual: manually triggered node. You only need to specify RootTaskIds, which is the list of manually triggered nodes to be run.
+	// - Manual: manually triggered task. You only need to specify RootTaskIds, which is the list of manually triggered tasks to be run.
 	//
-	// - SmokeTest: smoke test. You only need to specify RootTaskIds, which is the list of test nodes to be run.
+	// - SmokeTest: smoke test. You only need to specify RootTaskIds, which is the list of test tasks to be run.
 	//
 	// - TriggerWorkflow: event-triggered workflow. You must set WorkflowId to the ID of the event-triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow is run.
 	//
@@ -122,7 +122,7 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// SupplementData
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the workflow to which the node belongs. The WorkflowId of a periodic node is always 1.
+	// The ID of the workflow. The WorkflowId of a scheduled task is always 1.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +130,7 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// 1
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// The workflow parameters. This parameter takes effect only when a specific workflow is specified (WorkflowId != 1). For a periodic workflow or an event-triggered workflow, the format is key=value, and the priority is lower than that of node parameters. For a manually triggered workflow, the format is JSON, and the priority is higher than that of node parameters.
+	// The workflow parameters. This parameter takes effect only when a specific workflow is specified (WorkflowId != 1). For a periodic workflow or an event-triggered workflow, the format is key=value, and the priority is lower than that of task parameters. For a manually triggered workflow, the format is JSON, and the priority is higher than that of task parameters.
 	//
 	// example:
 	//
@@ -297,15 +297,15 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	Alert *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert `json:"Alert,omitempty" xml:"Alert,omitempty" type:"Struct"`
 	// The analysis configurations. This parameter is required when Type is set to SupplementData.
 	Analysis *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	// The data source name mappings for data backfill runs. The key of the map is DataSource.Name in the node definition, and the value is DataSource.Name used during data backfill runs. This parameter takes effect only when Type is set to SupplementData. If this parameter is not configured, an empty map is passed, or the key is not matched, the node continues to use the original data source. Currently, only EMR Spark SQL, EMR Shell, and EMR Spark nodes are supported.
+	// The data source name mappings for data backfill runs. The key of the map is DataSource.Name in the task definition, and the value is DataSource.Name used during data backfill runs. This parameter takes effect only when Type is set to SupplementData. If this parameter is not configured, an empty map is passed, or the key is not matched, the task continues to use the original data source. Currently, only EMR Spark SQL, EMR Shell, and EMR Spark tasks are supported.
 	DataSourceNameMappings map[string]*string `json:"DataSourceNameMappings,omitempty" xml:"DataSourceNameMappings,omitempty"`
 	// The list of project IDs to exclude from the run.
 	ExcludeProjectIds []*int64 `json:"ExcludeProjectIds,omitempty" xml:"ExcludeProjectIds,omitempty" type:"Repeated"`
-	// The list of node IDs to exclude from the run.
+	// The list of task IDs to exclude from the run.
 	ExcludeTaskIds []*int64 `json:"ExcludeTaskIds,omitempty" xml:"ExcludeTaskIds,omitempty" type:"Repeated"`
 	// The list of project IDs to include in the run.
 	IncludeProjectIds []*int64 `json:"IncludeProjectIds,omitempty" xml:"IncludeProjectIds,omitempty" type:"Repeated"`
-	// The list of node IDs to include in the run.
+	// The list of task IDs to include in the run.
 	IncludeTaskIds []*int64 `json:"IncludeTaskIds,omitempty" xml:"IncludeTaskIds,omitempty" type:"Repeated"`
 	// The data backfill mode. Default value: ManualSelection. This parameter is required when Type is set to SupplementData. Valid values:
 	//
@@ -313,7 +313,7 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	//
 	// - ManualSelection: manual selection mode. You can specify multiple values for RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the values of RootTaskIds are included by default.
 	//
-	// - Chain: chain mode. RootTaskIds must be left empty. You must specify two IDs for IncludeTaskIds, which are the start and end nodes.
+	// - Chain: chain mode. RootTaskIds must be left empty. You must specify two IDs for IncludeTaskIds, which are the start and end tasks.
 	//
 	// - AllDownstream: all downstream mode. You can specify only one value for RootTaskIds.
 	//
@@ -331,7 +331,7 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of parallel nodes. A value of 2 to 10 indicates the parallelism, and a value of 1 indicates serial execution. This parameter is required when Type is set to SupplementData.
+	// The number of parallel tasks. A value of 2 to 10 indicates the parallelism, and a value of 1 indicates serial execution. This parameter is required when Type is set to SupplementData.
 	//
 	// example:
 	//
@@ -353,19 +353,19 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	//
 	// Upstream
 	PriorityWeightStrategy *string `json:"PriorityWeightStrategy,omitempty" xml:"PriorityWeightStrategy,omitempty"`
-	// The list of root node IDs.
+	// The list of root task IDs.
 	//
 	// - When Type is set to SupplementData, RootTaskIds is required except when Mode is set to Chain.
 	//
 	// - When Type is set to ManualWorkflow, RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manually triggered workflow is used.
 	//
-	// - When Type is set to Manual, RootTaskIds is required and specifies the list of manually triggered nodes to be run.
+	// - When Type is set to Manual, RootTaskIds is required and specifies the list of manual tasks to be run.
 	//
-	// - When Type is set to SmokeTest, RootTaskIds is required and specifies the list of test nodes to be run.
+	// - When Type is set to SmokeTest, RootTaskIds is required and specifies the list of test tasks to be run.
 	RootTaskIds []*int64 `json:"RootTaskIds,omitempty" xml:"RootTaskIds,omitempty" type:"Repeated"`
-	// The run policy. If this field is left empty, the node configuration is used.
+	// The run policy. If this field is left empty, the task configuration is used.
 	RunPolicy *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy `json:"RunPolicy,omitempty" xml:"RunPolicy,omitempty" type:"Struct"`
-	// The identifier of the custom scheduling resource group. If this field is left empty, the node configuration is used.
+	// The identifier of the custom scheduling resource group. If this field is left empty, the task configuration is used.
 	//
 	// example:
 	//

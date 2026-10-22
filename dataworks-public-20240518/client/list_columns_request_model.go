@@ -28,29 +28,29 @@ type iListColumnsRequest interface {
 }
 
 type ListColumnsRequest struct {
-	// The comment. Fuzzy match is supported.
+	// The comment on the column. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Specifies whether to return extended properties. Set this parameter to `true` to return extended properties or `false` to not return them.
+	// Specifies whether to return extended properties. If you set this parameter to `true`, extended properties are returned. If you set this parameter to `false`, extended properties are not returned.
 	//
 	// example:
 	//
 	// true
 	IncludeExtendedProperties *bool `json:"IncludeExtendedProperties,omitempty" xml:"IncludeExtendedProperties,omitempty"`
-	// The name. Fuzzy match is supported.
+	// The name of the column. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort direction. Default value: Asc. Valid values:
+	// The sort order. Default value: Asc. Valid values:
 	//
-	// - Asc: ascending order.
+	// - Asc: Ascending order.
 	//
-	// - Desc: descending order.
+	// - Desc: Descending order.
 	//
 	// example:
 	//
@@ -62,23 +62,23 @@ type ListColumnsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort field. Default value: Position. Valid values:
+	// The field used for sorting. Default value: Position. Valid values:
 	//
-	// - Name: name.
+	// - Name: Name.
 	//
-	// - Position: position.
+	// - Position: Position.
 	//
 	// example:
 	//
 	// Position
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The table ID. You can obtain the ID from the response of the ListTables operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+	// The table ID. You can obtain the ID from the response of the ListTables operation. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
 	//
 	// This parameter is required.
 	//

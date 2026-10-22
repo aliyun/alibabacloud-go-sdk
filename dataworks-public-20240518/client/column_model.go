@@ -29,6 +29,8 @@ type iColumn interface {
 	GetStatisticsInfos() map[string]*string
 	SetTableId(v string) *Column
 	GetTableId() *string
+	SetTechnicalMetadata(v *ColumnTechnicalMetadata) *Column
+	GetTechnicalMetadata() *ColumnTechnicalMetadata
 	SetType(v string) *Column
 	GetType() *string
 }
@@ -42,7 +44,7 @@ type Column struct {
 	//
 	// Column 1
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Indicates whether the column is a foreign key. Currently, only MaxCompute is supported.
+	// Specifies whether the column is a foreign key. Currently, only the MaxCompute type is supported.
 	//
 	// example:
 	//
@@ -50,87 +52,41 @@ type Column struct {
 	ForeignKey *bool `json:"ForeignKey,omitempty" xml:"ForeignKey,omitempty"`
 	// The ID. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
 	//
+	// The format is `${EntityType}:${Instance ID or URL-encoded URL}:${Catalog ID}:${Database name}:${Schema name}:${Table name}:${Column name}`. Use an empty string as a placeholder for non-existent levels.
 	//
+	// > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For the MaxCompute type, the database name is the MaxCompute project name. Projects with the three-tier model enabled require the schema name. For projects without the three-tier model enabled, use an empty string as a placeholder for the schema name.
 	//
+	// > For the StarRocks type, the catalog ID is the catalog name. For the DLF type, the catalog ID is the catalog ID. Other types do not support the catalog level, and an empty string can be used as a placeholder.
 	//
-	// The format is `${EntityType}:${instance ID or encoded URL}:${DataCatalogIdentity}:${DatabaseName}:${SchemaName}:${TableName}:${ColumnName}`. Use an empty character as a placeholder for levels that do not exist.
-	//
-	//
-	//
-	//
-	// > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For MaxCompute, the database name is the MaxCompute project name. Projects with the three-layer model enabled must include the schema name. For projects without the three-layer model enabled, use an empty string as a placeholder for the schema name.
-	//
-	//
-	//
-	//
-	// > For StarRocks, the data catalog identifier is the catalog name. For DLF, the data catalog identifier is the catalog ID. Other types do not support the catalog level, and you can use an empty string as a placeholder.
-	//
-	//
-	//
-	//
-	// The following examples show the ID formats for several common types:
-	//
-	//
-	//
+	// The following are the ID formats for several common types:
 	//
 	// `maxcompute-column:::project_name:[schema_name]:table_name:column_name`
 	//
-	//
-	//
-	//
 	// `dlf-column::catalog_id:database_name::table_name:column_name`
-	//
-	//
-	//
 	//
 	// `hms-column:instance_id::database_name::table_name:column_name`
 	//
-	//
-	//
-	//
 	// `holo-column:instance_id::database_name:schema_name:table_name:column_name`
-	//
-	//
-	//
 	//
 	// `mysql-column:(instance_id|encoded_jdbc_url)::database_name::table_name:column_name`
 	//
+	// > Where:
 	//
+	// `instance_id`: The instance ID, which is required when the data source is registered in instance mode.
 	//
+	// `encoded_jdbc_url`: The URL-encoded JDBC connection string, which is required when the data source is registered in connection string mode.
 	//
-	// > Where
+	// `catalog_id`: The DLF catalog ID.
 	//
-	// >
+	// `project_name`: The MaxCompute project name.
 	//
-	// > `instance_id`: The instance ID. This is required when the data source is registered in instance mode.
+	// `database_name`: The database name.
 	//
-	// >
+	// `schema_name`: The schema name. For the MaxCompute type, this is required only if the three-tier model is enabled for the project. If it is not enabled, use an empty string as a placeholder.
 	//
-	// > `encoded_jdbc_url`: The URL-encoded JDBC connection string. This is required when the data source is registered by using a connection string.
+	// `table_name`: The table name.
 	//
-	// >
-	//
-	// > `catalog_id`: The DLF catalog ID.
-	//
-	// >
-	//
-	// > `project_name`: The MaxCompute project name.
-	//
-	// >
-	//
-	// > `database_name`: The database name.
-	//
-	// >
-	//
-	// > `schema_name`: The schema name. For MaxCompute, this is required only when the three-layer model is enabled for the project. If the three-layer model is not enabled, use an empty string as a placeholder.
-	//
-	// >
-	//
-	// > `table_name`: The table name.
-	//
-	// >
-	//
-	// > `column_name`: The column name.
+	// `column_name`: The column name.
 	//
 	// example:
 	//
@@ -142,7 +98,7 @@ type Column struct {
 	//
 	// column_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the column is a partition key.
+	// Specifies whether the column is a partition key.
 	//
 	// example:
 	//
@@ -154,19 +110,21 @@ type Column struct {
 	//
 	// 1
 	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// Indicates whether the column is a primary key. Currently, only MaxCompute is supported.
+	// Specifies whether the column is a primary key. Currently, only the MaxCompute type is supported.
 	//
 	// example:
 	//
 	// false
 	PrimaryKey      *bool              `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
 	StatisticsInfos map[string]*string `json:"StatisticsInfos,omitempty" xml:"StatisticsInfos,omitempty"`
-	// The table ID. For more information, see the `Table` object.
+	// The ID of the table. Refer to the Table object.
 	//
 	// example:
 	//
 	// maxcompute-table:::project_name:[schema_name]:table_name
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The technical metadata.
+	TechnicalMetadata *ColumnTechnicalMetadata `json:"TechnicalMetadata,omitempty" xml:"TechnicalMetadata,omitempty" type:"Struct"`
 	// The type.
 	//
 	// example:
@@ -223,6 +181,10 @@ func (s *Column) GetTableId() *string {
 	return s.TableId
 }
 
+func (s *Column) GetTechnicalMetadata() *ColumnTechnicalMetadata {
+	return s.TechnicalMetadata
+}
+
 func (s *Column) GetType() *string {
 	return s.Type
 }
@@ -277,6 +239,11 @@ func (s *Column) SetTableId(v string) *Column {
 	return s
 }
 
+func (s *Column) SetTechnicalMetadata(v *ColumnTechnicalMetadata) *Column {
+	s.TechnicalMetadata = v
+	return s
+}
+
 func (s *Column) SetType(v string) *Column {
 	s.Type = &v
 	return s
@@ -288,17 +255,22 @@ func (s *Column) Validate() error {
 			return err
 		}
 	}
+	if s.TechnicalMetadata != nil {
+		if err := s.TechnicalMetadata.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type ColumnBusinessMetadata struct {
-	// The custom attribute values, where key is the custom attribute identifier and value is the attribute value list.
+	// The custom attribute values, where the key is the custom attribute identifier and the value is a list of attribute values.
 	CustomAttributes map[string][]*string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
-	// The business description of the field. Currently, only MaxCompute, HMS (EMR cluster), and DLF types are supported.
+	// The business description of the column. Currently, only MaxCompute, HMS (EMR cluster), and DLF types are supported.
 	//
 	// example:
 	//
-	// Business description of column 1
+	// Business description of Column 1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -329,5 +301,31 @@ func (s *ColumnBusinessMetadata) SetDescription(v string) *ColumnBusinessMetadat
 }
 
 func (s *ColumnBusinessMetadata) Validate() error {
+	return dara.Validate(s)
+}
+
+type ColumnTechnicalMetadata struct {
+	// The technical parameters of the column, where the key is the parameter name and the value is a string. Objects or arrays are represented as JSON strings.
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s ColumnTechnicalMetadata) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ColumnTechnicalMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ColumnTechnicalMetadata) GetParameters() map[string]*string {
+	return s.Parameters
+}
+
+func (s *ColumnTechnicalMetadata) SetParameters(v map[string]*string) *ColumnTechnicalMetadata {
+	s.Parameters = v
+	return s
+}
+
+func (s *ColumnTechnicalMetadata) Validate() error {
 	return dara.Validate(s)
 }

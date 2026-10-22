@@ -1,3 +1,6 @@
+2026-10-22 Version: v9.9.2
+- Generated golang 2024-05-18 for dataworks-public.
+
 2026-10-20 Version: v9.9.1
 - Generated golang 2024-05-18 for dataworks-public.
 

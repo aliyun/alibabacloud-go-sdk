@@ -32,13 +32,13 @@ type iListLineagesRequest interface {
 }
 
 type ListLineagesRequest struct {
-	// The destination entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
+	// The ID of the destination entity. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
 	//
 	// example:
 	//
 	// dlf-table::catalog_id:database_name::table_name
 	DstEntityId *string `json:"DstEntityId,omitempty" xml:"DstEntityId,omitempty"`
-	// The destination entity name. Fuzzy match is supported.
+	// The name of the destination entity. Fuzzy matching is supported.
 	//
 	// example:
 	//
@@ -73,19 +73,19 @@ type ListLineagesRequest struct {
 	// 10
 	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RecentDays *int32 `json:"RecentDays,omitempty" xml:"RecentDays,omitempty"`
-	// The sort field. Default value: Name. The entities are sorted by lineage entity name.
+	// The field used for sorting. Default value: Name. The entities are sorted by lineage entity name.
 	//
 	// example:
 	//
 	// Name
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The source entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
+	// The ID of the source entity. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
 	//
 	// example:
 	//
 	// maxcompute-table:::project_name:[schema_name]:table_name
 	SrcEntityId *string `json:"SrcEntityId,omitempty" xml:"SrcEntityId,omitempty"`
-	// The source entity name. Fuzzy match is supported.
+	// The name of the source entity. Fuzzy matching is supported.
 	//
 	// example:
 	//
