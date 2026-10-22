@@ -23,30 +23,32 @@ type iSearchContextRequest interface {
 	GetRetrievalOption() *string
 	SetScope(v *SearchContextRequestScope) *SearchContextRequest
 	GetScope() *SearchContextRequestScope
+	SetStrategyIds(v []*string) *SearchContextRequest
+	GetStrategyIds() []*string
 	SetThreshold(v float64) *SearchContextRequest
 	GetThreshold() *float64
 }
 
 type SearchContextRequest struct {
-	// The structured filter conditions. The key is the field name, and the value is the expected matching value.
+	// The structured filter conditions. The key is the field name, and the value is the expected match value.
 	//
 	// example:
 	//
 	// {"userId":"alice"}
 	Filter map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
-	// Specifies whether to structurally format the returned results.
+	// Specifies whether to apply structured formatting to the returned results.
 	//
 	// example:
 	//
 	// true
 	Formatted *bool `json:"formatted,omitempty" xml:"formatted,omitempty"`
-	// Specifies whether to include memories with sourceState=inactive. Default value: false.
+	// Specifies whether to include memories whose sourceState is inactive. Default value: false.
 	//
 	// example:
 	//
 	// false
 	IncludeInactive *bool `json:"includeInactive,omitempty" xml:"includeInactive,omitempty"`
-	// The maximum number of returned results, which corresponds to the Top-N similarity.
+	// The maximum number of returned results, which corresponds to the top N results by similarity.
 	//
 	// example:
 	//
@@ -68,7 +70,13 @@ type SearchContextRequest struct {
 	RetrievalOption *string `json:"retrievalOption,omitempty" xml:"retrievalOption,omitempty"`
 	// The recall scope. If a field with the same name conflicts with the filter, a 400 ScopeFilterConflict error is returned.
 	Scope *SearchContextRequestScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
-	// The similarity threshold. Results with a similarity score lower than this value are filtered out. Valid values: 0 to 1.
+	// Filters results by extraction strategy ID. Multiple IDs in the list are evaluated with an OR condition. If this parameter is not specified, all strategies are recalled. An empty list returns a 400 error. If the format is valid but no matching IDs are found, an empty result is returned. IDs of historically removed strategies are supported.
+	//
+	// example:
+	//
+	// ["preferences","profile"]
+	StrategyIds []*string `json:"strategyIds,omitempty" xml:"strategyIds,omitempty" type:"Repeated"`
+	// The similarity threshold. Results with a similarity score below this value are filtered out. Valid values: 0 to 1.
 	//
 	// example:
 	//
@@ -112,6 +120,10 @@ func (s *SearchContextRequest) GetScope() *SearchContextRequestScope {
 	return s.Scope
 }
 
+func (s *SearchContextRequest) GetStrategyIds() []*string {
+	return s.StrategyIds
+}
+
 func (s *SearchContextRequest) GetThreshold() *float64 {
 	return s.Threshold
 }
@@ -148,6 +160,11 @@ func (s *SearchContextRequest) SetRetrievalOption(v string) *SearchContextReques
 
 func (s *SearchContextRequest) SetScope(v *SearchContextRequestScope) *SearchContextRequest {
 	s.Scope = v
+	return s
+}
+
+func (s *SearchContextRequest) SetStrategyIds(v []*string) *SearchContextRequest {
+	s.StrategyIds = v
 	return s
 }
 

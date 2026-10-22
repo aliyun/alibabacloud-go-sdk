@@ -2266,7 +2266,7 @@ func (client *Client) ExecuteQuery(agentSpace *string, datasetName *string, requ
 
 // Summary:
 //
-// Queries an AgentSpace.
+// Queries the AgentSpace.
 //
 // @param request - GetAgentSpaceRequest
 //
@@ -2307,7 +2307,7 @@ func (client *Client) GetAgentSpaceWithOptions(agentSpace *string, request *GetA
 
 // Summary:
 //
-// Queries an AgentSpace.
+// Queries the AgentSpace.
 //
 // @param request - GetAgentSpaceRequest
 //
@@ -2326,7 +2326,7 @@ func (client *Client) GetAgentSpace(agentSpace *string, request *GetAgentSpaceRe
 
 // Summary:
 //
-// Queries the context store.
+// Queries a context store.
 //
 // @param request - GetContextStoreRequest
 //
@@ -2367,7 +2367,7 @@ func (client *Client) GetContextStoreWithOptions(agentSpace *string, contextStor
 
 // Summary:
 //
-// Queries the context store.
+// Queries a context store.
 //
 // @param request - GetContextStoreRequest
 //
@@ -4743,6 +4743,10 @@ func (client *Client) SearchContextWithOptions(agentSpace *string, contextStoreN
 
 	if !dara.IsNil(request.Scope) {
 		body["scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.StrategyIds) {
+		body["strategyIds"] = request.StrategyIds
 	}
 
 	if !dara.IsNil(request.Threshold) {

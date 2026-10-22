@@ -1657,7 +1657,7 @@ func (client *Client) ExecuteQueryWithContext(ctx context.Context, agentSpace *s
 
 // Summary:
 //
-// Queries an AgentSpace.
+// Queries the AgentSpace.
 //
 // @param request - GetAgentSpaceRequest
 //
@@ -1698,7 +1698,7 @@ func (client *Client) GetAgentSpaceWithContext(ctx context.Context, agentSpace *
 
 // Summary:
 //
-// Queries the context store.
+// Queries a context store.
 //
 // @param request - GetContextStoreRequest
 //
@@ -3473,6 +3473,10 @@ func (client *Client) SearchContextWithContext(ctx context.Context, agentSpace *
 
 	if !dara.IsNil(request.Scope) {
 		body["scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.StrategyIds) {
+		body["strategyIds"] = request.StrategyIds
 	}
 
 	if !dara.IsNil(request.Threshold) {

@@ -38,7 +38,7 @@ type GetAgentSpaceResponseBody struct {
 	//
 	// test-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	// The CloudMonitor workspace.
+	// The CMS workspace.
 	//
 	// example:
 	//
@@ -202,6 +202,11 @@ func (s *GetAgentSpaceResponseBody) Validate() error {
 }
 
 type GetAgentSpaceResponseBodyMseNamespace struct {
+	// The attach type of the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
+	//
+	// example:
+	//
+	// AutoCreated
 	BindType *string `json:"bindType,omitempty" xml:"bindType,omitempty"`
 	// The ID of the MSE namespace.
 	//

@@ -20,19 +20,19 @@ type iSearchContextResponseBody interface {
 }
 
 type SearchContextResponseBody struct {
-	// The audit write status. Valid values: ok and degraded.
+	// The audit write status. Valid values: ok, degraded.
 	//
 	// example:
 	//
 	// ok
 	AuditStatus *string `json:"auditStatus,omitempty" xml:"auditStatus,omitempty"`
-	// The recall event ID. You can use this ID to call the GetContextStoreRecall operation to view audit details.
+	// The recall event ID. You can use this ID to call GetContextStoreRecall to view audit details.
 	//
 	// example:
 	//
 	// 0190f1c2-7d3e-7a1b-9c4d-2e5f6a7b8c9d
 	RecallEventId *string `json:"recallEventId,omitempty" xml:"recallEventId,omitempty"`
-	// The request ID, which can be used to locate the request during troubleshooting.
+	// The request ID, which is used to locate the request during troubleshooting.
 	//
 	// example:
 	//
