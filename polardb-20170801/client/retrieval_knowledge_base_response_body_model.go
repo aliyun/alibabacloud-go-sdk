@@ -100,9 +100,9 @@ func (s *RetrievalKnowledgeBaseResponseBody) Validate() error {
 }
 
 type RetrievalKnowledgeBaseResponseBodyResults struct {
-	// The list of captions for figures or tables associated with the chunk.
+	// The list of captions for the figures or tables associated with the chunk.
 	Captions []*string `json:"Captions,omitempty" xml:"Captions,omitempty" type:"Repeated"`
-	// The list of references to structured elements in the Docling source document associated with the chunk. You can use these references to precisely locate the original elements.
+	// The list of structured element references in the source document associated with the chunk. You can use these references to precisely locate the original elements.
 	DocItems []*string `json:"DocItems,omitempty" xml:"DocItems,omitempty" type:"Repeated"`
 	// The unique identifier of the file.
 	//
@@ -114,9 +114,9 @@ type RetrievalKnowledgeBaseResponseBodyResults struct {
 	//
 	// example:
 	//
-	// 2024 Financial Report.pdf
+	// 2024_Financial_Report.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The heading hierarchy of the section to which the chunk belongs.
+	// The chain of section headings to which the chunk belongs.
 	Headings []*string `json:"Headings,omitempty" xml:"Headings,omitempty" type:"Repeated"`
 	// The list of image resources referenced by the chunk.
 	ImageResources []*RetrievalKnowledgeBaseResponseBodyResultsImageResources `json:"ImageResources,omitempty" xml:"ImageResources,omitempty" type:"Repeated"`
@@ -296,7 +296,7 @@ type RetrievalKnowledgeBaseResponseBodyResultsImageResources struct {
 	//
 	// document-0/pictures/1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The reference to the image element in the structure of the Docling source document.
+	// The element reference of the image in the source document structure.
 	//
 	// example:
 	//

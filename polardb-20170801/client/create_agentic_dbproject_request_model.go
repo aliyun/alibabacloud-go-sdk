@@ -15,6 +15,8 @@ type iCreateAgenticDBProjectRequest interface {
 	GetDefaultBranchName() *string
 	SetDescription(v string) *CreateAgenticDBProjectRequest
 	GetDescription() *string
+	SetHistoryRetentionSeconds(v int64) *CreateAgenticDBProjectRequest
+	GetHistoryRetentionSeconds() *int64
 	SetProjectName(v string) *CreateAgenticDBProjectRequest
 	GetProjectName() *string
 	SetRegionId(v string) *CreateAgenticDBProjectRequest
@@ -24,7 +26,7 @@ type iCreateAgenticDBProjectRequest interface {
 }
 
 type CreateAgenticDBProjectRequest struct {
-	// The AgenticDB cluster ID.
+	// The ID of the AgenticDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +34,7 @@ type CreateAgenticDBProjectRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The default branch name. Default value: main.
+	// The name of the default branch. Default value: main.
 	//
 	// example:
 	//
@@ -44,7 +46,13 @@ type CreateAgenticDBProjectRequest struct {
 	//
 	// Production analytics database
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project name. The name must be unique within the same tenant.
+	// The retention period for historical data to support creating branches at specific points in time. Default value: 604800 seconds (7 days). Valid values: 3600 to 2592000 seconds (1 hour to 30 days), inclusive. The actual range is subject to the service configuration.
+	//
+	// example:
+	//
+	// 604800
+	HistoryRetentionSeconds *int64 `json:"HistoryRetentionSeconds,omitempty" xml:"HistoryRetentionSeconds,omitempty"`
+	// The name of the project. The name must be unique within the tenant.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +68,7 @@ type CreateAgenticDBProjectRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the tenant to which the project belongs.
+	// The ID of the tenant.
 	//
 	// This parameter is required.
 	//
@@ -90,6 +98,10 @@ func (s *CreateAgenticDBProjectRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateAgenticDBProjectRequest) GetHistoryRetentionSeconds() *int64 {
+	return s.HistoryRetentionSeconds
+}
+
 func (s *CreateAgenticDBProjectRequest) GetProjectName() *string {
 	return s.ProjectName
 }
@@ -114,6 +126,11 @@ func (s *CreateAgenticDBProjectRequest) SetDefaultBranchName(v string) *CreateAg
 
 func (s *CreateAgenticDBProjectRequest) SetDescription(v string) *CreateAgenticDBProjectRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateAgenticDBProjectRequest) SetHistoryRetentionSeconds(v int64) *CreateAgenticDBProjectRequest {
+	s.HistoryRetentionSeconds = &v
 	return s
 }
 

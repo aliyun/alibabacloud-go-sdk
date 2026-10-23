@@ -33,6 +33,8 @@ type iDescribeAgenticDBBranchResponseBody interface {
 	GetParentBranchId() *string
 	SetParentBranchName(v string) *DescribeAgenticDBBranchResponseBody
 	GetParentBranchName() *string
+	SetParentTimestamp(v string) *DescribeAgenticDBBranchResponseBody
+	GetParentTimestamp() *string
 	SetProjectId(v string) *DescribeAgenticDBBranchResponseBody
 	GetProjectId() *string
 	SetProjectName(v string) *DescribeAgenticDBBranchResponseBody
@@ -46,13 +48,13 @@ type iDescribeAgenticDBBranchResponseBody interface {
 }
 
 type DescribeAgenticDBBranchResponseBody struct {
-	// The ID of the compute cluster associated with the branch.
+	// The ID of the compute cluster for the branch.
 	//
 	// example:
 	//
 	// pc-g0lsayq8c5qe
 	BranchComputeClusterId *string `json:"BranchComputeClusterId,omitempty" xml:"BranchComputeClusterId,omitempty"`
-	// The number of compute nodes. The value is fixed to 1 in the initial phase.
+	// The number of compute nodes. The value is fixed to 1 in the first phase.
 	//
 	// example:
 	//
@@ -64,21 +66,19 @@ type DescribeAgenticDBBranchResponseBody struct {
 	//
 	// br-7g8h9i0j1k2l
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
-	// The branch name.
+	// The name of the branch.
 	//
 	// example:
 	//
 	// feature-analytics
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The time when the branch was created.
-	//
-	// The time is in the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time. The time follows the ISO 8601 standard in the UTC time zone. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2026-06-10T11:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the branch.
+	// The description.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type DescribeAgenticDBBranchResponseBody struct {
 	//
 	// 2026-06-10T12:30:00Z
 	LastActivatedAt *string `json:"LastActivatedAt,omitempty" xml:"LastActivatedAt,omitempty"`
-	// The maximum compute unit.
+	// The maximum number of compute units (CUs).
 	//
 	// example:
 	//
 	// 2
 	MaxCU *string `json:"MaxCU,omitempty" xml:"MaxCU,omitempty"`
-	// The minimum compute unit.
+	// The minimum number of compute units (CUs).
 	//
 	// example:
 	//
@@ -120,7 +120,13 @@ type DescribeAgenticDBBranchResponseBody struct {
 	//
 	// main
 	ParentBranchName *string `json:"ParentBranchName,omitempty" xml:"ParentBranchName,omitempty"`
-	// The ID of the project to which the branch belongs.
+	// The historical time of the parent branch specified when the branch is created. The time follows the RFC 3339 standard in the UTC time zone. If no historical time is specified or for old records, this value may be empty.
+	//
+	// example:
+	//
+	// 2026-10-15T07:32:00.123456Z
+	ParentTimestamp *string `json:"ParentTimestamp,omitempty" xml:"ParentTimestamp,omitempty"`
+	// The project ID.
 	//
 	// example:
 	//
@@ -132,25 +138,19 @@ type DescribeAgenticDBBranchResponseBody struct {
 	//
 	// analytics-prod
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C3D4E5F6-A7B8-9012-CDEF-345678901CDE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the branch. Valid values:
-	//
-	// - Running
-	//
-	// - Pending
-	//
-	// - Paused
+	// The status of the branch. Valid values: Running, Pending, and Paused.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the tenant to which the branch belongs.
+	// The tenant ID.
 	//
 	// example:
 	//
@@ -212,6 +212,10 @@ func (s *DescribeAgenticDBBranchResponseBody) GetParentBranchId() *string {
 
 func (s *DescribeAgenticDBBranchResponseBody) GetParentBranchName() *string {
 	return s.ParentBranchName
+}
+
+func (s *DescribeAgenticDBBranchResponseBody) GetParentTimestamp() *string {
+	return s.ParentTimestamp
 }
 
 func (s *DescribeAgenticDBBranchResponseBody) GetProjectId() *string {
@@ -291,6 +295,11 @@ func (s *DescribeAgenticDBBranchResponseBody) SetParentBranchId(v string) *Descr
 
 func (s *DescribeAgenticDBBranchResponseBody) SetParentBranchName(v string) *DescribeAgenticDBBranchResponseBody {
 	s.ParentBranchName = &v
+	return s
+}
+
+func (s *DescribeAgenticDBBranchResponseBody) SetParentTimestamp(v string) *DescribeAgenticDBBranchResponseBody {
+	s.ParentTimestamp = &v
 	return s
 }
 

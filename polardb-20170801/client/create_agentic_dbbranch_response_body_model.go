@@ -21,6 +21,8 @@ type iCreateAgenticDBBranchResponseBody interface {
 	GetParentBranchId() *string
 	SetParentBranchName(v string) *CreateAgenticDBBranchResponseBody
 	GetParentBranchName() *string
+	SetParentTimestamp(v string) *CreateAgenticDBBranchResponseBody
+	GetParentTimestamp() *string
 	SetProjectId(v string) *CreateAgenticDBBranchResponseBody
 	GetProjectId() *string
 	SetProjectName(v string) *CreateAgenticDBBranchResponseBody
@@ -32,7 +34,7 @@ type iCreateAgenticDBBranchResponseBody interface {
 }
 
 type CreateAgenticDBBranchResponseBody struct {
-	// The ID of the compute cluster associated with the branch.
+	// The branch compute cluster ID.
 	//
 	// example:
 	//
@@ -56,7 +58,7 @@ type CreateAgenticDBBranchResponseBody struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the parent branch.
+	// The parent branch ID.
 	//
 	// example:
 	//
@@ -68,13 +70,19 @@ type CreateAgenticDBBranchResponseBody struct {
 	//
 	// main
 	ParentBranchName *string `json:"ParentBranchName,omitempty" xml:"ParentBranchName,omitempty"`
-	// The ID of the project to which the branch belongs.
+	// The historical timestamp of the parent branch specified when the branch was created. The value is in UTC RFC 3339 format. This field may be empty if no historical timestamp was specified or for legacy records.
+	//
+	// example:
+	//
+	// 2026-10-15T07:32:00.123456Z
+	ParentTimestamp *string `json:"ParentTimestamp,omitempty" xml:"ParentTimestamp,omitempty"`
+	// The project ID.
 	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the project to which the branch belongs.
+	// The project name.
 	//
 	// example:
 	//
@@ -86,7 +94,7 @@ type CreateAgenticDBBranchResponseBody struct {
 	//
 	// A1B2C3D4-E5F6-7890-ABCD-1234567890AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the branch.
+	// The status.
 	//
 	// example:
 	//
@@ -124,6 +132,10 @@ func (s *CreateAgenticDBBranchResponseBody) GetParentBranchId() *string {
 
 func (s *CreateAgenticDBBranchResponseBody) GetParentBranchName() *string {
 	return s.ParentBranchName
+}
+
+func (s *CreateAgenticDBBranchResponseBody) GetParentTimestamp() *string {
+	return s.ParentTimestamp
 }
 
 func (s *CreateAgenticDBBranchResponseBody) GetProjectId() *string {
@@ -169,6 +181,11 @@ func (s *CreateAgenticDBBranchResponseBody) SetParentBranchId(v string) *CreateA
 
 func (s *CreateAgenticDBBranchResponseBody) SetParentBranchName(v string) *CreateAgenticDBBranchResponseBody {
 	s.ParentBranchName = &v
+	return s
+}
+
+func (s *CreateAgenticDBBranchResponseBody) SetParentTimestamp(v string) *CreateAgenticDBBranchResponseBody {
+	s.ParentTimestamp = &v
 	return s
 }
 

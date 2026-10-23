@@ -28,7 +28,7 @@ type UpdateKnowledgeBaseRequest struct {
 	//
 	// test desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique ID of the knowledge base.
+	// The ID of the knowledge base to update. You can obtain the ID from the response of the CreateKnowledgeBase operation.
 	//
 	// This parameter is required.
 	//
@@ -52,15 +52,15 @@ type UpdateKnowledgeBaseRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The search mode. Valid values:
 	//
-	// 	- balanced (default): balanced mode.
+	// 	- balanced: Balanced mode. This is the default value.
 	//
-	// 	- precise: precise mode.
+	// 	- precise: Precise mode.
 	//
-	// 	- semantic: semantic mode.
+	// 	- semantic: Semantic mode.
 	//
 	// 	- knn: KNN mode.
 	//
-	// 	- rrf: reciprocal rank fusion (RRF) mode.
+	// 	- rrf: RRF fusion.
 	//
 	// example:
 	//

@@ -30,23 +30,23 @@ type iDescribeBudgetPoliciesRequest interface {
 }
 
 type DescribeBudgetPoliciesRequest struct {
-	// The dimension object ID. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
+	// The ID of the dimension object. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
 	//
 	// example:
 	//
 	// cg-p3gk2oh55c**
 	BudgetDimensionRefId *string `json:"BudgetDimensionRefId,omitempty" xml:"BudgetDimensionRefId,omitempty"`
-	// The policy type. Valid values:
+	// The type of the policy. Valid values:
 	//
-	// - **ConsumerGroup**: total budget for a user group
+	// - **ConsumerGroup**: Total budget for consumer groups.
 	//
-	// - **Consumer**: total budget for a user
+	// - **Consumer**: Total budget for consumers.
 	//
 	// example:
 	//
 	// ConsumerGroup
 	BudgetDimensionType *string `json:"BudgetDimensionType,omitempty" xml:"BudgetDimensionType,omitempty"`
-	// The budget policy ID.
+	// The ID of the budget policy.
 	//
 	// example:
 	//
@@ -85,13 +85,18 @@ type DescribeBudgetPoliciesRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the object associated with the scope of the budget policy.
+	//
+	// example:
+	//
+	// test-group
 	ScopeRefName *string `json:"ScopeRefName,omitempty" xml:"ScopeRefName,omitempty"`
-	// The policy status. Valid values:
+	// The status of the policy. Valid values:
 	//
-	// - **Enabled**: enabled
+	// - **Enabled**: Enabled.
 	//
-	// - **Disenabled**: disabled
+	// - **Disenabled**: Disabled.
 	//
 	// example:
 	//

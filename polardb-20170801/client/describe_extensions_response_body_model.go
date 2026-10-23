@@ -20,21 +20,21 @@ type iDescribeExtensionsResponseBody interface {
 }
 
 type DescribeExtensionsResponseBody struct {
-	// The extensions that are installed in the specified database.
+	// The information about installed plugins in the specified database.
 	InstalledExtensions []*DescribeExtensionsResponseBodyInstalledExtensions `json:"InstalledExtensions,omitempty" xml:"InstalledExtensions,omitempty" type:"Repeated"`
-	// The overview of the extension.
+	// The plugin overview information.
 	//
 	// example:
 	//
-	// 测试建单，请忽略
+	// Test ticket creation, please ignore
 	Overview *string `json:"Overview,omitempty" xml:"Overview,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 309073D4-9C99-511C-AF84-0C67A6F52E67
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The extensions that are not installed in the specified database.
+	// The information about uninstalled plugins in the specified database.
 	UninstalledExtensions []*DescribeExtensionsResponseBodyUninstalledExtensions `json:"UninstalledExtensions,omitempty" xml:"UninstalledExtensions,omitempty" type:"Repeated"`
 }
 
@@ -105,55 +105,55 @@ func (s *DescribeExtensionsResponseBody) Validate() error {
 }
 
 type DescribeExtensionsResponseBodyInstalledExtensions struct {
-	// The extension type.
+	// The plugin category.
 	//
 	// example:
 	//
 	// geography_space, self_develop
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The description of the extension.
+	// The plugin description.
 	//
 	// example:
 	//
 	// OK
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The default version of the extension.
+	// The default version of the plugin.
 	//
 	// example:
 	//
 	// 7.7
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The currently installed version of the extension.
+	// The currently installed version of the plugin.
 	//
 	// example:
 	//
 	// 7.7
 	InstalledVersion *string `json:"InstalledVersion,omitempty" xml:"InstalledVersion,omitempty"`
-	// The extension name.
+	// The plugin name.
 	//
 	// example:
 	//
 	// jueming
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The owner of the extension.
+	// The owner of the plugin.
 	//
 	// example:
 	//
 	// alton
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the extension.
+	// The priority of the plugin.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The extensions on which this extension depends.
+	// The plugins that this plugin depends on during installation.
 	//
 	// example:
 	//
 	// ganos_networking
 	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
-	// Specifies whether to restart the application. \\`true\\`: The application is restarted. \\`false\\`: The application is not restarted.
+	// Specifies whether to restart the application. Valid values: true: Restart. false: Do not restart.
 	//
 	// example:
 	//
@@ -255,55 +255,55 @@ func (s *DescribeExtensionsResponseBodyInstalledExtensions) Validate() error {
 }
 
 type DescribeExtensionsResponseBodyUninstalledExtensions struct {
-	// The extension type.
+	// The plugin category.
 	//
 	// example:
 	//
 	// geography_space, self_develop
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The purpose of the extension.
+	// The purpose of the plugin.
 	//
 	// example:
 	//
 	// OK
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The default version of the extension.
+	// The default version of the plugin.
 	//
 	// example:
 	//
 	// 7.7
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The currently installed version of the extension.
+	// The currently installed version of the plugin.
 	//
 	// example:
 	//
 	// 7.7
 	InstalledVersion *string `json:"InstalledVersion,omitempty" xml:"InstalledVersion,omitempty"`
-	// The extension name.
+	// The plugin name.
 	//
 	// example:
 	//
 	// jueming
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The owner of the extension.
+	// The owner of the plugin.
 	//
 	// example:
 	//
 	// alton
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the extension.
+	// The priority of the plugin.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The extensions on which this extension depends.
+	// The plugins that this plugin depends on during installation.
 	//
 	// example:
 	//
 	// ganos_networking
 	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
-	// Specifies whether to restart the application. \\`true\\`: The application is restarted. \\`false\\`: The application is not restarted.
+	// Specifies whether to restart the application. Valid values: true: Restart. false: Do not restart.
 	//
 	// example:
 	//

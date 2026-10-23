@@ -92,8 +92,18 @@ type AddPolarFsPathMappingRequestCustomBucketPathList struct {
 	// example:
 	//
 	// Bucket1
-	Bucket                *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	BucketAccessKeyId     *string `json:"BucketAccessKeyId,omitempty" xml:"BucketAccessKeyId,omitempty"`
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The AccessKey ID of the storage bucket.
+	//
+	// example:
+	//
+	// xxx
+	BucketAccessKeyId *string `json:"BucketAccessKeyId,omitempty" xml:"BucketAccessKeyId,omitempty"`
+	// The AccessKey secret of the storage bucket.
+	//
+	// example:
+	//
+	// xxx
 	BucketAccessKeySecret *string `json:"BucketAccessKeySecret,omitempty" xml:"BucketAccessKeySecret,omitempty"`
 	// The custom storage path.
 	//

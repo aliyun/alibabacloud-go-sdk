@@ -38,7 +38,9 @@ type DescribeApplicationSessionIdsRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The end of the time range to query.
+	// The end time of the query.
+	//
+	// The time follows the ISO 8601 standard and is in the UTC time zone (format: YYYY-MM-DDTHH:mmZ).
 	//
 	// This parameter is required.
 	//
@@ -69,7 +71,7 @@ type DescribeApplicationSessionIdsRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The beginning of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC).
+	// The start time of the query. The time is in the `YYYY-MM-DDThh:mmZ` format (UTC).
 	//
 	// This parameter is required.
 	//

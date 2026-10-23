@@ -20,10 +20,20 @@ type iDescribeAIDBClusterApiKeysResponseBody interface {
 }
 
 type DescribeAIDBClusterApiKeysResponseBody struct {
-	// API Keys。
-	ApiKeys    []*DescribeAIDBClusterApiKeysResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
-	PageNumber *string                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The API keys.
+	ApiKeys []*DescribeAIDBClusterApiKeysResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Id of the request
 	//
 	// example:
@@ -98,7 +108,7 @@ type DescribeAIDBClusterApiKeysResponseBodyApiKeys struct {
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// The creation time.
 	//
-	// The time is displayed in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

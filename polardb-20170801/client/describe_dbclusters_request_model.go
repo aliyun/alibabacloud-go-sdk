@@ -102,7 +102,7 @@ type DescribeDBClustersRequest struct {
 	//
 	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The query mode for the list. A value of Simple indicates the brief mode, in which only the basic metadata of the clusters is returned.
+	// The query mode for the list. A value of Simple indicates the simplified mode, in which only the basic metadata of the clusters is returned.
 	//
 	// > If this parameter is not specified, the detailed mode is used by default, and the detailed information of the clusters is returned.
 	//
@@ -140,9 +140,9 @@ type DescribeDBClustersRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go
+	// - **Postpaid**: pay-as-you-go.
 	//
-	// - **Prepaid**: subscription
+	// - **Prepaid**: subscription.
 	//
 	// example:
 	//

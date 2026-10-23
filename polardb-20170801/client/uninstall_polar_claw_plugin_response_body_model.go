@@ -32,7 +32,7 @@ type UninstallPolarClawPluginResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The response status code.
+	// The status code.
 	//
 	// example:
 	//
@@ -44,25 +44,25 @@ type UninstallPolarClawPluginResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// The plugin ID.
+	// The ID of the uninstalled plugin.
 	//
 	// example:
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the gateway has been restarted.
+	// Indicates whether the gateway was restarted.
 	//
 	// example:
 	//

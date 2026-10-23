@@ -68,7 +68,7 @@ func (s *DescribeApikeyAttributeResponseBody) Validate() error {
 type DescribeApikeyAttributeResponseBodyItems struct {
 	// The consumer information.
 	Consumer *DescribeApikeyAttributeResponseBodyItemsConsumer `json:"Consumer,omitempty" xml:"Consumer,omitempty" type:"Struct"`
-	// The usage statistics for the consumer.
+	// The usage statistics records for the consumer.
 	UsageStatistics []*DescribeApikeyAttributeResponseBodyItemsUsageStatistics `json:"UsageStatistics,omitempty" xml:"UsageStatistics,omitempty" type:"Repeated"`
 }
 
@@ -141,7 +141,7 @@ type DescribeApikeyAttributeResponseBodyItemsConsumer struct {
 	//
 	// test
 	ConsumerTag *string `json:"ConsumerTag,omitempty" xml:"ConsumerTag,omitempty"`
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type DescribeApikeyAttributeResponseBodyItemsConsumer struct {
 	//
 	// pg-2ze5n62ef4s165***
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The last modification time.
+	// The last modification time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
 	//
 	// example:
 	//
@@ -267,13 +267,13 @@ func (s *DescribeApikeyAttributeResponseBodyItemsConsumer) Validate() error {
 }
 
 type DescribeApikeyAttributeResponseBodyItemsUsageStatistics struct {
-	// The dimension reference ID, which is the ConsumerId.
+	// The dimension reference ID, which is the consumer ID.
 	//
 	// example:
 	//
 	// c-xxxxxx
 	DimensionRefId *string `json:"DimensionRefId,omitempty" xml:"DimensionRefId,omitempty"`
-	// The statistics dimension. The value is typically Consumer.
+	// The statistical dimension. The value is typically Consumer.
 	//
 	// example:
 	//
@@ -285,13 +285,13 @@ type DescribeApikeyAttributeResponseBodyItemsUsageStatistics struct {
 	//
 	// pg-bp1ln7w98yrhzz7i2
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The number of cache tokens for the current month.
+	// The number of cached tokens for the current month.
 	//
 	// example:
 	//
 	// 10
 	MonthlyCacheToken *string `json:"MonthlyCacheToken,omitempty" xml:"MonthlyCacheToken,omitempty"`
-	// The cost points consumed for the current month.
+	// The number of consumed points for the current month.
 	//
 	// example:
 	//
@@ -315,31 +315,31 @@ type DescribeApikeyAttributeResponseBodyItemsUsageStatistics struct {
 	//
 	// 10
 	MonthlyToken *string `json:"MonthlyToken,omitempty" xml:"MonthlyToken,omitempty"`
-	// The cumulative number of cache tokens.
+	// The total number of cached tokens.
 	//
 	// example:
 	//
 	// 10
 	TotalCacheToken *string `json:"TotalCacheToken,omitempty" xml:"TotalCacheToken,omitempty"`
-	// The cumulative cost points consumed.
+	// The total number of consumed points.
 	//
 	// example:
 	//
 	// 10
 	TotalCostPoints *string `json:"TotalCostPoints,omitempty" xml:"TotalCostPoints,omitempty"`
-	// The cumulative number of input tokens.
+	// The total number of input tokens.
 	//
 	// example:
 	//
 	// 10
 	TotalInputToken *string `json:"TotalInputToken,omitempty" xml:"TotalInputToken,omitempty"`
-	// The cumulative number of output tokens.
+	// The total number of output tokens.
 	//
 	// example:
 	//
 	// 10
 	TotalOutputToken *string `json:"TotalOutputToken,omitempty" xml:"TotalOutputToken,omitempty"`
-	// The cumulative number of tokens.
+	// The total number of tokens.
 	//
 	// example:
 	//

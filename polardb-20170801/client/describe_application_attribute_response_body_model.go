@@ -134,7 +134,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of DNAT mapping entries for NAT mapping.
+	// The NAT mapping: the list of DNAT mapping entries.
 	DnatMappings []*DescribeApplicationAttributeResponseBodyDnatMappings `json:"DnatMappings,omitempty" xml:"DnatMappings,omitempty" type:"Repeated"`
 	// The list of endpoints for the application.
 	Endpoints []*DescribeApplicationAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
@@ -168,9 +168,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - Unlock: The application is not locked.
+	// - Unlock: unlocked.
 	//
-	// - Lock: The application is locked.
+	// - Lock: locked.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// v2026.3.13-1#20260320
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The ID of the NAT gateway.
+	// The NAT gateway ID.
 	//
 	// example:
 	//
 	// pc-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This refers to customer-managed SNAT entries that are discovered and returned in real time by the control plane, and is independent of the Internet NAT gateway SNAT.
+	// The NAT mapping: the SNAT IP address bound to the vSwitch where the application resides. This refers to a customer-managed SNAT entry that is discovered and returned in real time by the control plane, and is unrelated to the SNAT of the Internet NAT gateway.
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	SecurityGroups []*DescribeApplicationAttributeResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
 	// The list of application-level whitelists.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// The serverless type. Valid values:
+	// The Serverless type. Valid values:
 	//
 	// - 2: Agile.
 	//
@@ -254,7 +254,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 2
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The SNAT status. Valid values: on and off.
+	// The SNAT status. Valid values: on, off.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// - Maintaining: The application is under maintenance.
 	//
-	// - ClassChanging: The application specifications are being changed.
+	// - ClassChanging: The application configuration is being changed.
 	//
 	// - Transing: The application is being migrated.
 	//
@@ -294,9 +294,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// Activated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage resources.
+	// The storage resource description.
 	Storages []*DescribeApplicationAttributeResponseBodyStorages `json:"Storages,omitempty" xml:"Storages,omitempty" type:"Repeated"`
-	// Specifies whether an upgrade is available.
+	// Indicates whether an upgrade is available.
 	//
 	// example:
 	//
@@ -320,7 +320,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 1.0.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The customer-managed VPC NAT gateway ID for NAT mapping.
+	// The NAT mapping: the customer-managed VPC NAT gateway ID.
 	//
 	// example:
 	//
@@ -773,13 +773,13 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The description of the specifications for the application subcomponent.
+	// The description of the application subcomponent specifications.
 	//
 	// example:
 	//
 	// 2C4GB
 	ComponentClassDescription *string `json:"ComponentClassDescription,omitempty" xml:"ComponentClassDescription,omitempty"`
-	// The ID of the subcomponent.
+	// The subcomponent ID.
 	//
 	// example:
 	//
@@ -797,7 +797,7 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// 1
 	ComponentReplica *int64 `json:"ComponentReplica,omitempty" xml:"ComponentReplica,omitempty"`
-	// The name of the replica group for the application subcomponent.
+	// The replica group name of the application subcomponent.
 	//
 	// example:
 	//
@@ -817,7 +817,7 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// If the whitelist at the subcomponent level is the same as that at the application level, this return value is omitted.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// The status of the component. The valid values are the same as those of the application status.
+	// The component status. The valid values are the same as the application status.
 	//
 	// example:
 	//
@@ -976,13 +976,13 @@ type DescribeApplicationAttributeResponseBodyComponentsSecurityGroups struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-*******************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the security group.
+	// The security group name.
 	//
 	// example:
 	//
@@ -1193,7 +1193,7 @@ type DescribeApplicationAttributeResponseBodyDnatMappings struct {
 	//
 	// 8787
 	BackendPort *int32 `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
-	// The ID of the DNAT entry.
+	// The DNAT entry ID.
 	//
 	// example:
 	//
@@ -1205,13 +1205,13 @@ type DescribeApplicationAttributeResponseBodyDnatMappings struct {
 	//
 	// 10001
 	FrontPort *int32 `json:"FrontPort,omitempty" xml:"FrontPort,omitempty"`
-	// The name of the port. Valid values: webui, hermesagent, dashboard, and ssh.
+	// The port name. Valid values: webui, hermesagent, dashboard, and ssh.
 	//
 	// example:
 	//
 	// webui
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
-	// The status of the entry.
+	// The entry status.
 	//
 	// example:
 	//
@@ -1292,8 +1292,9 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	//
 	// myendpoint
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the endpoint.
+	// The domain name of the application endpoint.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The endpoint ID.
 	//
 	// example:
 	//
@@ -1305,11 +1306,11 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	//
 	// 172.31.95.252
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The type of the endpoint. Valid values:
+	// The endpoint type. Valid values:
 	//
 	// - Private: VPC address.
 	//
-	// - Public: public network address.
+	// - Public: Internet address.
 	//
 	// example:
 	//
@@ -1321,7 +1322,7 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	//
 	// 8080
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The description of the port.
+	// The port description.
 	//
 	// example:
 	//
@@ -1405,13 +1406,13 @@ func (s *DescribeApplicationAttributeResponseBodyEndpoints) Validate() error {
 }
 
 type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// test-database-name
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The name of the embedder model.
+	// The embedder model name.
 	//
 	// example:
 	//
@@ -1423,31 +1424,31 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// qwen3-max
 	GraphLlmModelName *string `json:"GraphLlmModelName,omitempty" xml:"GraphLlmModelName,omitempty"`
-	// The name of the LLM model.
+	// The LLM model name.
 	//
 	// example:
 	//
 	// qwen3-max
 	LlmModelName *string `json:"LlmModelName,omitempty" xml:"LlmModelName,omitempty"`
-	// The active memory type.
+	// The currently active memory type.
 	//
 	// example:
 	//
 	// MULTIMODAL_TEXT
 	MemoryType *string `json:"MemoryType,omitempty" xml:"MemoryType,omitempty"`
-	// Indicates whether the multimodal feature is enabled.
+	// Indicates whether multimodal capabilities are currently enabled.
 	//
 	// example:
 	//
 	// true
 	MultimodalEnabled *bool `json:"MultimodalEnabled,omitempty" xml:"MultimodalEnabled,omitempty"`
-	// The name of the project, which corresponds to the schema in the database where project data is stored.
+	// The project name, which corresponds to the schema where project data is stored in the database.
 	//
 	// example:
 	//
 	// test-project-name
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The name of the reranker model.
+	// The name of the Reranker model.
 	//
 	// example:
 	//
@@ -1461,7 +1462,7 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// test-user
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The current dimensions of the VisualEmbedder.
+	// The current VisualEmbedder dimensions.
 	//
 	// example:
 	//
@@ -1627,7 +1628,7 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) Valida
 }
 
 type DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore struct {
-	// The account source. Valid values: reuse_vector and existing. This parameter is returned only when the status is ENABLED.
+	// The account source. Valid values: reuse_vector, existing. This parameter is returned only when the status is ENABLED.
 	//
 	// example:
 	//
@@ -1645,7 +1646,7 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore
 	//
 	// contextdb_example
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The status of the session store. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
+	// The session storage status. Valid values: DISABLED, ENABLING, ENABLED, DISABLING.
 	//
 	// example:
 	//
@@ -1733,7 +1734,7 @@ func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute) 
 }
 
 type DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding struct {
-	// The effective period of the attach. The value is a UNIX timestamp.
+	// The effective period of the attachment. The value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -1751,19 +1752,19 @@ type DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfu
 	//
 	// 387
 	BindingTaskId *int32 `json:"BindingTaskId,omitempty" xml:"BindingTaskId,omitempty"`
-	// The ID of the Langfuse application.
+	// The Langfuse application ID.
 	//
 	// example:
 	//
 	// pa-xxx
 	LangfuseApplicationId *string `json:"LangfuseApplicationId,omitempty" xml:"LangfuseApplicationId,omitempty"`
-	// The phase of the binding.
+	// The binding phase.
 	//
 	// example:
 	//
 	// ACTIVE
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The ID of the Langfuse project.
+	// The Langfuse project ID.
 	//
 	// example:
 	//
@@ -1843,9 +1844,10 @@ type DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute s
 	// example:
 	//
 	// http://8.xxx.xxx.xxx.xxx/xxx
-	AuthCallbackURL *string   `json:"AuthCallbackURL,omitempty" xml:"AuthCallbackURL,omitempty"`
-	AuthProviders   []*string `json:"AuthProviders,omitempty" xml:"AuthProviders,omitempty" type:"Repeated"`
-	// The identifier of the Supabase cluster.
+	AuthCallbackURL *string `json:"AuthCallbackURL,omitempty" xml:"AuthCallbackURL,omitempty"`
+	// The list of authentication providers for the application.
+	AuthProviders []*string `json:"AuthProviders,omitempty" xml:"AuthProviders,omitempty" type:"Repeated"`
+	// The Supabase cluster identifier.
 	//
 	// example:
 	//
@@ -1907,13 +1909,13 @@ type DescribeApplicationAttributeResponseBodySecurityGroups struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the security group.
+	// The security group name.
 	//
 	// example:
 	//

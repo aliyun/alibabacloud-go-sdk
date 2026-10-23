@@ -24,13 +24,13 @@ type iCreateConsumerRequest interface {
 }
 
 type CreateConsumerRequest struct {
-	// The consumer group name.
+	// The consumer group ID. You can obtain the ID from the ConsumerGroupId parameter returned by the CreateConsumerGroup operation.
 	//
 	// example:
 	//
 	// cg-p3gk2oh55c**
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
-	// The gateway instance ID.
+	// The gateway instance ID. You can obtain the ID from the GwClusterId parameter returned by the CreateGateway operation.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type CreateConsumerRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The key type. The only supported value is ApiKey.
+	// The key type. Default value: ApiKey. Valid values: ApiKey.
 	//
 	// example:
 	//
 	// ApiKey
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The user name.
+	// The username.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateConsumerRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user nickname.
+	// The nickname.
 	//
 	// example:
 	//

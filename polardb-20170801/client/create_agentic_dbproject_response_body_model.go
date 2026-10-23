@@ -17,6 +17,8 @@ type iCreateAgenticDBProjectResponseBody interface {
 	GetDefaultBranchId() *string
 	SetDefaultBranchName(v string) *CreateAgenticDBProjectResponseBody
 	GetDefaultBranchName() *string
+	SetHistoryRetentionSeconds(v int64) *CreateAgenticDBProjectResponseBody
+	GetHistoryRetentionSeconds() *int64
 	SetProjectId(v string) *CreateAgenticDBProjectResponseBody
 	GetProjectId() *string
 	SetProjectName(v string) *CreateAgenticDBProjectResponseBody
@@ -28,51 +30,55 @@ type iCreateAgenticDBProjectResponseBody interface {
 }
 
 type CreateAgenticDBProjectResponseBody struct {
-	// The ID of the compute instance associated with the default branch.
+	// The ID of the compute instance bound to the default branch.
 	//
 	// example:
 	//
 	// pc-g0lsayq8c5qe
 	BranchComputeClusterId *string `json:"BranchComputeClusterId,omitempty" xml:"BranchComputeClusterId,omitempty"`
-	// The time when the project was created.
-	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time when the project was created. The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2026-06-10T11:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The default branch ID.
+	// The ID of the default branch.
 	//
 	// example:
 	//
 	// br-1a2b3c4d5e6f
 	DefaultBranchId *string `json:"DefaultBranchId,omitempty" xml:"DefaultBranchId,omitempty"`
-	// The default branch name.
+	// The name of the default branch.
 	//
 	// example:
 	//
 	// main
 	DefaultBranchName *string `json:"DefaultBranchName,omitempty" xml:"DefaultBranchName,omitempty"`
+	// The retention period for recent records of the project. This parameter may be empty for older projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+	//
+	// example:
+	//
+	// 604800
+	HistoryRetentionSeconds *int64 `json:"HistoryRetentionSeconds,omitempty" xml:"HistoryRetentionSeconds,omitempty"`
 	// The ID of the new project.
 	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name.
+	// The name of the project.
 	//
 	// example:
 	//
 	// analytics-prod
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// E5F6A7B8-C9D0-1234-EFAB-345678901234
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//
@@ -102,6 +108,10 @@ func (s *CreateAgenticDBProjectResponseBody) GetDefaultBranchId() *string {
 
 func (s *CreateAgenticDBProjectResponseBody) GetDefaultBranchName() *string {
 	return s.DefaultBranchName
+}
+
+func (s *CreateAgenticDBProjectResponseBody) GetHistoryRetentionSeconds() *int64 {
+	return s.HistoryRetentionSeconds
 }
 
 func (s *CreateAgenticDBProjectResponseBody) GetProjectId() *string {
@@ -137,6 +147,11 @@ func (s *CreateAgenticDBProjectResponseBody) SetDefaultBranchId(v string) *Creat
 
 func (s *CreateAgenticDBProjectResponseBody) SetDefaultBranchName(v string) *CreateAgenticDBProjectResponseBody {
 	s.DefaultBranchName = &v
+	return s
+}
+
+func (s *CreateAgenticDBProjectResponseBody) SetHistoryRetentionSeconds(v int64) *CreateAgenticDBProjectResponseBody {
+	s.HistoryRetentionSeconds = &v
 	return s
 }
 

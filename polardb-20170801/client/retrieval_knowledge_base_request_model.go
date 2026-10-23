@@ -24,7 +24,7 @@ type iRetrievalKnowledgeBaseRequest interface {
 }
 
 type RetrievalKnowledgeBaseRequest struct {
-	// The unique identifiers of the knowledge bases. You can specify up to 50 knowledge base IDs, separated by commas.
+	// The unique identifier of the knowledge base. You can specify multiple knowledge base IDs separated by commas. A maximum of 50 knowledge bases are supported.
 	//
 	// This parameter is required.
 	//

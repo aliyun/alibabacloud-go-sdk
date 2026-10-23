@@ -809,7 +809,7 @@ func (client *Client) AddSQLRateLimitingRules(request *AddSQLRateLimitingRulesRe
 
 // Summary:
 //
-// Performs a single-turn knowledge base question answering.
+// Answers a single-turn question based on a knowledge base.
 //
 // @param request - AnswerKnowledgeBaseRequest
 //
@@ -893,7 +893,7 @@ func (client *Client) AnswerKnowledgeBaseWithOptions(request *AnswerKnowledgeBas
 
 // Summary:
 //
-// Performs a single-turn knowledge base question answering.
+// Answers a single-turn question based on a knowledge base.
 //
 // @param request - AnswerKnowledgeBaseRequest
 //
@@ -994,6 +994,76 @@ func (client *Client) ApplyApplicationPrompts(request *ApplyApplicationPromptsRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ApplyApplicationPromptsResponse{}
 	_body, _err := client.ApplyApplicationPromptsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用Lakebase挂载参数模板
+//
+// @param request - ApplyLakebaseMountParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyLakebaseMountParameterGroupResponse
+func (client *Client) ApplyLakebaseMountParameterGroupWithOptions(request *ApplyLakebaseMountParameterGroupRequest, runtime *dara.RuntimeOptions) (_result *ApplyLakebaseMountParameterGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ParameterGroupId) {
+		query["ParameterGroupId"] = request.ParameterGroupId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ApplyLakebaseMountParameterGroup"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ApplyLakebaseMountParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用Lakebase挂载参数模板
+//
+// @param request - ApplyLakebaseMountParameterGroupRequest
+//
+// @return ApplyLakebaseMountParameterGroupResponse
+func (client *Client) ApplyLakebaseMountParameterGroup(request *ApplyLakebaseMountParameterGroupRequest) (_result *ApplyLakebaseMountParameterGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ApplyLakebaseMountParameterGroupResponse{}
+	_body, _err := client.ApplyLakebaseMountParameterGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1143,13 +1213,13 @@ func (client *Client) AttachApplicationPolarFS(request *AttachApplicationPolarFS
 
 // Summary:
 //
-// Binds a PolarClaw Agent to a channel.
+// Associates a specified channel with a specific PolarClaw agent.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API associates an agent from a PolarClaw application with a communication channel. You specify the application with `ApplicationId`, the agent with `AgentId`, and the channel with `Channel`. You can optionally specify an account ID for the channel with `ChannelAccountId`.
+// This API operation associates a PolarClaw agent (specified by AgentId) of a PolarClaw application (identified by ApplicationId) with a given communication channel (Channel). If necessary, you can also specify the account ID (ChannelAccountId) within the channel.
 //
 // @param request - BindPolarClawAgentRequest
 //
@@ -1205,13 +1275,13 @@ func (client *Client) BindPolarClawAgentWithOptions(request *BindPolarClawAgentR
 
 // Summary:
 //
-// Binds a PolarClaw Agent to a channel.
+// Associates a specified channel with a specific PolarClaw agent.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API associates an agent from a PolarClaw application with a communication channel. You specify the application with `ApplicationId`, the agent with `AgentId`, and the channel with `Channel`. You can optionally specify an account ID for the channel with `ChannelAccountId`.
+// This API operation associates a PolarClaw agent (specified by AgentId) of a PolarClaw application (identified by ApplicationId) with a given communication channel (Channel). If necessary, you can also specify the account ID (ChannelAccountId) within the channel.
 //
 // @param request - BindPolarClawAgentRequest
 //
@@ -3525,7 +3595,7 @@ func (client *Client) CreateAccountZonal(request *CreateAccountZonalRequest) (_r
 
 // Summary:
 //
-// Generates activation codes for the lightweight version.
+// Generates an activation code for the lightweight edition.
 //
 // @param request - CreateActivationCodeRequest
 //
@@ -3601,7 +3671,7 @@ func (client *Client) CreateActivationCodeWithOptions(request *CreateActivationC
 
 // Summary:
 //
-// Generates activation codes for the lightweight version.
+// Generates an activation code for the lightweight edition.
 //
 // @param request - CreateActivationCodeRequest
 //
@@ -3648,6 +3718,10 @@ func (client *Client) CreateAgenticDBBranchWithOptions(request *CreateAgenticDBB
 
 	if !dara.IsNil(request.ParentBranchId) {
 		query["ParentBranchId"] = request.ParentBranchId
+	}
+
+	if !dara.IsNil(request.ParentTimestamp) {
+		query["ParentTimestamp"] = request.ParentTimestamp
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -3732,6 +3806,10 @@ func (client *Client) CreateAgenticDBProjectWithOptions(request *CreateAgenticDB
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.HistoryRetentionSeconds) {
+		query["HistoryRetentionSeconds"] = request.HistoryRetentionSeconds
+	}
+
 	if !dara.IsNil(request.ProjectName) {
 		query["ProjectName"] = request.ProjectName
 	}
@@ -3778,6 +3856,88 @@ func (client *Client) CreateAgenticDBProject(request *CreateAgenticDBProjectRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateAgenticDBProjectResponse{}
 	_body, _err := client.CreateAgenticDBProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an AgenticDB tenant.
+//
+// Description:
+//
+// Creates an independent business tenant without creating an API key.
+//
+// @param request - CreateAgenticDBTenantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgenticDBTenantResponse
+func (client *Client) CreateAgenticDBTenantWithOptions(request *CreateAgenticDBTenantRequest, runtime *dara.RuntimeOptions) (_result *CreateAgenticDBTenantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantName) {
+		query["TenantName"] = request.TenantName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgenticDBTenant"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgenticDBTenantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an AgenticDB tenant.
+//
+// Description:
+//
+// Creates an independent business tenant without creating an API key.
+//
+// @param request - CreateAgenticDBTenantRequest
+//
+// @return CreateAgenticDBTenantResponse
+func (client *Client) CreateAgenticDBTenant(request *CreateAgenticDBTenantRequest) (_result *CreateAgenticDBTenantResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAgenticDBTenantResponse{}
+	_body, _err := client.CreateAgenticDBTenantWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4355,11 +4515,11 @@ func (client *Client) CreateApplicationPrompt(request *CreateApplicationPromptRe
 //
 // Description:
 //
-// > 	- Each cluster can have up to three manually created backups at the same time.
+// > 	- Each cluster can have up to three manually created backups at a time.
 //
-// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` appears, it indicates that three manually created backups already exist in your cluster. [Delete a backup](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
 //
-// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
+// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the task may take a long time to complete.
 //
 // @param request - CreateBackupRequest
 //
@@ -4431,11 +4591,11 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 //
 // Description:
 //
-// > 	- Each cluster can have up to three manually created backups at the same time.
+// > 	- Each cluster can have up to three manually created backups at a time.
 //
-// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` appears, it indicates that three manually created backups already exist in your cluster. [Delete a backup](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
 //
-// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
+// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the task may take a long time to complete.
 //
 // @param request - CreateBackupRequest
 //
@@ -9773,6 +9933,84 @@ func (client *Client) DeleteAgenticDBProject(request *DeleteAgenticDBProjectRequ
 
 // Summary:
 //
+// Deletes an AgenticDB tenant.
+//
+// Description:
+//
+// Only tenants whose projects and branches have been completely cleaned up can be deleted. After a successful deletion, all API keys associated with the tenant become invalid. This operation does not automatically clean up projects, branches, or storage.
+//
+// @param request - DeleteAgenticDBTenantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgenticDBTenantResponse
+func (client *Client) DeleteAgenticDBTenantWithOptions(request *DeleteAgenticDBTenantRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgenticDBTenantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgenticDBTenant"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgenticDBTenantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an AgenticDB tenant.
+//
+// Description:
+//
+// Only tenants whose projects and branches have been completely cleaned up can be deleted. After a successful deletion, all API keys associated with the tenant become invalid. This operation does not automatically clean up projects, branches, or storage.
+//
+// @param request - DeleteAgenticDBTenantRequest
+//
+// @return DeleteAgenticDBTenantResponse
+func (client *Client) DeleteAgenticDBTenant(request *DeleteAgenticDBTenantRequest) (_result *DeleteAgenticDBTenantResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgenticDBTenantResponse{}
+	_body, _err := client.DeleteAgenticDBTenantWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an API key of an AgenticDB tenant.
 //
 // @param request - DeleteAgenticDBTenantApiKeyRequest
@@ -10171,7 +10409,7 @@ func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes a cost budget policy.
+// Deletes a budget policy.
 //
 // @param request - DeleteBudgetPolicyRequest
 //
@@ -10223,7 +10461,7 @@ func (client *Client) DeleteBudgetPolicyWithOptions(request *DeleteBudgetPolicyR
 
 // Summary:
 //
-// Deletes a cost budget policy.
+// Deletes a budget policy.
 //
 // @param request - DeleteBudgetPolicyRequest
 //
@@ -12431,15 +12669,15 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 
 // Summary:
 //
-// This operation removes an agent and its associated bindings from a specified PolarClaw.
+// Removes an agent and its associated bindings from a specified PolarClaw.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - A successful operation returns the ID of the deleted agent and the number of removed bindings.
+// - After this API is executed, it returns the ID of the successfully removed agent and the number of removed bindings.
 //
-// - Ensure you provide the correct target `AgentId`. An incorrect ID can cause the operation to fail or affect an unintended agent.
+// - Ensure that you know the target `AgentId` before calling this API. Otherwise, the operation may fail or affect unexpected agents.
 //
 // @param request - DeletePolarClawAgentRequest
 //
@@ -12491,15 +12729,15 @@ func (client *Client) DeletePolarClawAgentWithOptions(request *DeletePolarClawAg
 
 // Summary:
 //
-// This operation removes an agent and its associated bindings from a specified PolarClaw.
+// Removes an agent and its associated bindings from a specified PolarClaw.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - A successful operation returns the ID of the deleted agent and the number of removed bindings.
+// - After this API is executed, it returns the ID of the successfully removed agent and the number of removed bindings.
 //
-// - Ensure you provide the correct target `AgentId`. An incorrect ID can cause the operation to fail or affect an unintended agent.
+// - Ensure that you know the target `AgentId` before calling this API. Otherwise, the operation may fail or affect unexpected agents.
 //
 // @param request - DeletePolarClawAgentRequest
 //
@@ -13335,7 +13573,7 @@ func (client *Client) DeleteSQLRateLimitingRules(request *DeleteSQLRateLimitingR
 
 // Summary:
 //
-// Queries the API key of a model service.
+// Queries the API keys for the model service.
 //
 // @param request - DescribeAIDBClusterApiKeysRequest
 //
@@ -13383,7 +13621,7 @@ func (client *Client) DescribeAIDBClusterApiKeysWithOptions(request *DescribeAID
 
 // Summary:
 //
-// Queries the API key of a model service.
+// Queries the API keys for the model service.
 //
 // @param request - DescribeAIDBClusterApiKeysRequest
 //
@@ -13937,15 +14175,15 @@ func (client *Client) DescribeAIDBClusterTaskMetrics(request *DescribeAIDBCluste
 
 // Summary:
 //
-// Queries the list of model operators for a specified PolarDB database instance.
+// Retrieves the list of model operators for a specified PolarDB instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation filters and returns a list of model operators based on the RelativeDBClusterId and KubeType parameters.
+// - This operation allows you to filter and retrieve a list of model operators by using the `RelativeDBClusterId` and `KubeType` parameters.
 //
-// - Note: Make sure that the RelativeDBClusterId provided in the request matches the instance ID of an existing PolarDB database instance. Otherwise, the data cannot be retrieved.
+// - Note: Make sure that the `RelativeDBClusterId` you provide matches the instance ID of an existing PolarDB database. Otherwise, the data cannot be retrieved.
 //
 // @param request - DescribeAIDBClusterTasksRequest
 //
@@ -14021,15 +14259,15 @@ func (client *Client) DescribeAIDBClusterTasksWithOptions(request *DescribeAIDBC
 
 // Summary:
 //
-// Queries the list of model operators for a specified PolarDB database instance.
+// Retrieves the list of model operators for a specified PolarDB instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation filters and returns a list of model operators based on the RelativeDBClusterId and KubeType parameters.
+// - This operation allows you to filter and retrieve a list of model operators by using the `RelativeDBClusterId` and `KubeType` parameters.
 //
-// - Note: Make sure that the RelativeDBClusterId provided in the request matches the instance ID of an existing PolarDB database instance. Otherwise, the data cannot be retrieved.
+// - Note: Make sure that the `RelativeDBClusterId` you provide matches the instance ID of an existing PolarDB database. Otherwise, the data cannot be retrieved.
 //
 // @param request - DescribeAIDBClusterTasksRequest
 //
@@ -15033,6 +15271,84 @@ func (client *Client) DescribeAgenticDBBranchLineage(request *DescribeAgenticDBB
 
 // Summary:
 //
+// Queries the earliest restorable time for an AgenticDB branch.
+//
+// @param request - DescribeAgenticDBBranchRestoreWindowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBBranchRestoreWindowResponse
+func (client *Client) DescribeAgenticDBBranchRestoreWindowWithOptions(request *DescribeAgenticDBBranchRestoreWindowRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBBranchRestoreWindowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBBranchRestoreWindow"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBBranchRestoreWindowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the earliest restorable time for an AgenticDB branch.
+//
+// @param request - DescribeAgenticDBBranchRestoreWindowRequest
+//
+// @return DescribeAgenticDBBranchRestoreWindowResponse
+func (client *Client) DescribeAgenticDBBranchRestoreWindow(request *DescribeAgenticDBBranchRestoreWindowRequest) (_result *DescribeAgenticDBBranchRestoreWindowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBBranchRestoreWindowResponse{}
+	_body, _err := client.DescribeAgenticDBBranchRestoreWindowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of AgenticDB branches.
 //
 // @param request - DescribeAgenticDBBranchesRequest
@@ -15241,7 +15557,7 @@ func (client *Client) DescribeAgenticDBClusters(request *DescribeAgenticDBCluste
 
 // Summary:
 //
-// Queries the list of AgenticDB compute instances.
+// Queries a list of AgenticDB compute instances.
 //
 // @param request - DescribeAgenticDBComputeClustersRequest
 //
@@ -15305,7 +15621,7 @@ func (client *Client) DescribeAgenticDBComputeClustersWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the list of AgenticDB compute instances.
+// Queries a list of AgenticDB compute instances.
 //
 // @param request - DescribeAgenticDBComputeClustersRequest
 //
@@ -15397,7 +15713,81 @@ func (client *Client) DescribeAgenticDBProject(request *DescribeAgenticDBProject
 
 // Summary:
 //
-// Queries the list of AgenticDB projects.
+// Queries the actual history retention window of an AgenticDB project.
+//
+// @param request - DescribeAgenticDBProjectHistoryRetentionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBProjectHistoryRetentionResponse
+func (client *Client) DescribeAgenticDBProjectHistoryRetentionWithOptions(request *DescribeAgenticDBProjectHistoryRetentionRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBProjectHistoryRetentionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBProjectHistoryRetention"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBProjectHistoryRetentionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the actual history retention window of an AgenticDB project.
+//
+// @param request - DescribeAgenticDBProjectHistoryRetentionRequest
+//
+// @return DescribeAgenticDBProjectHistoryRetentionResponse
+func (client *Client) DescribeAgenticDBProjectHistoryRetention(request *DescribeAgenticDBProjectHistoryRetentionRequest) (_result *DescribeAgenticDBProjectHistoryRetentionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBProjectHistoryRetentionResponse{}
+	_body, _err := client.DescribeAgenticDBProjectHistoryRetentionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of AgenticDB projects.
 //
 // @param request - DescribeAgenticDBProjectsRequest
 //
@@ -15465,7 +15855,7 @@ func (client *Client) DescribeAgenticDBProjectsWithOptions(request *DescribeAgen
 
 // Summary:
 //
-// Queries the list of AgenticDB projects.
+// Queries a list of AgenticDB projects.
 //
 // @param request - DescribeAgenticDBProjectsRequest
 //
@@ -15561,7 +15951,7 @@ func (client *Client) DescribeAgenticDBTenantApiKeys(request *DescribeAgenticDBT
 
 // Summary:
 //
-// Queries the details of a specified API key.
+// Queries the details of the API key.
 //
 // @param request - DescribeApikeyAttributeRequest
 //
@@ -15617,7 +16007,7 @@ func (client *Client) DescribeApikeyAttributeWithOptions(request *DescribeApikey
 
 // Summary:
 //
-// Queries the details of a specified API key.
+// Queries the details of the API key.
 //
 // @param request - DescribeApikeyAttributeRequest
 //
@@ -15639,7 +16029,7 @@ func (client *Client) DescribeApikeyAttribute(request *DescribeApikeyAttributeRe
 //
 // Description:
 //
-// This API queries all relevant information about a specific PolarDB application, including but not limited to component details and connection endpoints.
+// This API queries all relevant information about a specific PolarDB application, including but not limited to component details and endpoints.
 //
 // @param request - DescribeApplicationAttributeRequest
 //
@@ -15687,7 +16077,7 @@ func (client *Client) DescribeApplicationAttributeWithOptions(request *DescribeA
 //
 // Description:
 //
-// This API queries all relevant information about a specific PolarDB application, including but not limited to component details and connection endpoints.
+// This API queries all relevant information about a specific PolarDB application, including but not limited to component details and endpoints.
 //
 // @param request - DescribeApplicationAttributeRequest
 //
@@ -16361,7 +16751,7 @@ func (client *Client) DescribeApplicationUsage(request *DescribeApplicationUsage
 
 // Summary:
 //
-// Queries the list of applications for all PolarDB instances in a specified region.
+// Retrieves a list of applications for all PolarDB instances in a specified region.
 //
 // @param request - DescribeApplicationsRequest
 //
@@ -16429,7 +16819,7 @@ func (client *Client) DescribeApplicationsWithOptions(request *DescribeApplicati
 
 // Summary:
 //
-// Queries the list of applications for all PolarDB instances in a specified region.
+// Retrieves a list of applications for all PolarDB instances in a specified region.
 //
 // @param request - DescribeApplicationsRequest
 //
@@ -16693,7 +17083,77 @@ func (client *Client) DescribeAvailableModels(request *DescribeAvailableModelsRe
 
 // Summary:
 //
-// Queries a list of backup logs and returns their download URLs.
+// Queries the download links for redo log backups.
+//
+// @param request - DescribeBackupLogDownloadLinksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupLogDownloadLinksResponse
+func (client *Client) DescribeBackupLogDownloadLinksWithOptions(request *DescribeBackupLogDownloadLinksRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupLogDownloadLinksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupLogIds) {
+		query["BackupLogIds"] = request.BackupLogIds
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ExpireHours) {
+		query["ExpireHours"] = request.ExpireHours
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBackupLogDownloadLinks"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBackupLogDownloadLinksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the download links for redo log backups.
+//
+// @param request - DescribeBackupLogDownloadLinksRequest
+//
+// @return DescribeBackupLogDownloadLinksResponse
+func (client *Client) DescribeBackupLogDownloadLinks(request *DescribeBackupLogDownloadLinksRequest) (_result *DescribeBackupLogDownloadLinksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBackupLogDownloadLinksResponse{}
+	_body, _err := client.DescribeBackupLogDownloadLinksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of backup logs and retrieves their download URLs.
 //
 // @param request - DescribeBackupLogsRequest
 //
@@ -16773,7 +17233,7 @@ func (client *Client) DescribeBackupLogsWithOptions(request *DescribeBackupLogsR
 
 // Summary:
 //
-// Queries a list of backup logs and returns their download URLs.
+// Queries the list of backup logs and retrieves their download URLs.
 //
 // @param request - DescribeBackupLogsRequest
 //
@@ -17143,7 +17603,7 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 
 // Summary:
 //
-// Queries the status of a batch task.
+// Queries the status details of a batch task.
 //
 // @param request - DescribeBatchTaskRequest
 //
@@ -17187,7 +17647,7 @@ func (client *Client) DescribeBatchTaskWithOptions(request *DescribeBatchTaskReq
 
 // Summary:
 //
-// Queries the status of a batch task.
+// Queries the status details of a batch task.
 //
 // @param request - DescribeBatchTaskRequest
 //
@@ -17293,7 +17753,7 @@ func (client *Client) DescribeBatchTasks(request *DescribeBatchTasksRequest) (_r
 
 // Summary:
 //
-// Queries cost budget policies.
+// Queries budget policies.
 //
 // @param request - DescribeBudgetPoliciesRequest
 //
@@ -17369,7 +17829,7 @@ func (client *Client) DescribeBudgetPoliciesWithOptions(request *DescribeBudgetP
 
 // Summary:
 //
-// Queries cost budget policies.
+// Queries budget policies.
 //
 // @param request - DescribeBudgetPoliciesRequest
 //
@@ -17563,7 +18023,7 @@ func (client *Client) DescribeClassList(request *DescribeClassListRequest) (_res
 
 // Summary:
 //
-// Queries cold storage instances.
+// Queries cold storage instance information.
 //
 // @param request - DescribeColdStorageInstanceRequest
 //
@@ -17663,7 +18123,7 @@ func (client *Client) DescribeColdStorageInstanceWithOptions(request *DescribeCo
 
 // Summary:
 //
-// Queries cold storage instances.
+// Queries cold storage instance information.
 //
 // @param request - DescribeColdStorageInstanceRequest
 //
@@ -17759,7 +18219,7 @@ func (client *Client) DescribeConsumerGroups(request *DescribeConsumerGroupsRequ
 
 // Summary:
 //
-// Queries the list of consumers.
+// Queries a list of consumers.
 //
 // @param request - DescribeConsumersRequest
 //
@@ -17831,7 +18291,7 @@ func (client *Client) DescribeConsumersWithOptions(request *DescribeConsumersReq
 
 // Summary:
 //
-// Queries the list of consumers.
+// Queries a list of consumers.
 //
 // @param request - DescribeConsumersRequest
 //
@@ -20061,7 +20521,7 @@ func (client *Client) DescribeDBClusterVersionZonal(request *DescribeDBClusterVe
 
 // Summary:
 //
-// Queries the list of PolarDB clusters or the details of clusters with RAM authorization.
+// Queries a list of PolarDB clusters or the details of clusters with RAM authorization.
 //
 // @param request - DescribeDBClustersRequest
 //
@@ -20185,7 +20645,7 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 
 // Summary:
 //
-// Queries the list of PolarDB clusters or the details of clusters with RAM authorization.
+// Queries a list of PolarDB clusters or the details of clusters with RAM authorization.
 //
 // @param request - DescribeDBClustersRequest
 //
@@ -21513,7 +21973,7 @@ func (client *Client) DescribeDatabasesZonal(request *DescribeDatabasesZonalRequ
 
 // Summary:
 //
-// Queries the attributes of an PolarDB on ENS cluster.
+// Queries the details of an edge cluster.
 //
 // @param request - DescribeDbClusterAttributeZonalRequest
 //
@@ -21577,7 +22037,7 @@ func (client *Client) DescribeDbClusterAttributeZonalWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the attributes of an PolarDB on ENS cluster.
+// Queries the details of an edge cluster.
 //
 // @param request - DescribeDbClusterAttributeZonalRequest
 //
@@ -21861,7 +22321,7 @@ func (client *Client) DescribeEncryptionDBSecret(request *DescribeEncryptionDBSe
 
 // Summary:
 //
-// Retrieves the details of extensions.
+// Queries plugin details.
 //
 // @param request - DescribeExtensionsRequest
 //
@@ -21929,7 +22389,7 @@ func (client *Client) DescribeExtensionsWithOptions(request *DescribeExtensionsR
 
 // Summary:
 //
-// Retrieves the details of extensions.
+// Queries plugin details.
 //
 // @param request - DescribeExtensionsRequest
 //
@@ -22099,7 +22559,7 @@ func (client *Client) DescribeGatewayApikeyList(request *DescribeGatewayApikeyLi
 
 // Summary:
 //
-// # Viewing gateway instance details
+// Queries the details of a gateway instance.
 //
 // @param request - DescribeGatewayAttributeRequest
 //
@@ -22147,7 +22607,7 @@ func (client *Client) DescribeGatewayAttributeWithOptions(request *DescribeGatew
 
 // Summary:
 //
-// # Viewing gateway instance details
+// Queries the details of a gateway instance.
 //
 // @param request - DescribeGatewayAttributeRequest
 //
@@ -31345,7 +31805,7 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 
 // Summary:
 //
-// Modifies the description of an account in a PolarDB on ENS cluster.
+// Modifies the description of a PolarDB on ENS account.
 //
 // @param request - ModifyAccountDescriptionZonalRequest
 //
@@ -31417,7 +31877,7 @@ func (client *Client) ModifyAccountDescriptionZonalWithOptions(request *ModifyAc
 
 // Summary:
 //
-// Modifies the description of an account in a PolarDB on ENS cluster.
+// Modifies the description of a PolarDB on ENS account.
 //
 // @param request - ModifyAccountDescriptionZonalRequest
 //
@@ -31904,6 +32364,84 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyActiveOperationTasksResponse{}
 	_body, _err := client.ModifyActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the history retention window of an AgenticDB project.
+//
+// @param request - ModifyAgenticDBProjectHistoryRetentionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAgenticDBProjectHistoryRetentionResponse
+func (client *Client) ModifyAgenticDBProjectHistoryRetentionWithOptions(request *ModifyAgenticDBProjectHistoryRetentionRequest, runtime *dara.RuntimeOptions) (_result *ModifyAgenticDBProjectHistoryRetentionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.HistoryRetentionSeconds) {
+		query["HistoryRetentionSeconds"] = request.HistoryRetentionSeconds
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAgenticDBProjectHistoryRetention"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAgenticDBProjectHistoryRetentionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the history retention window of an AgenticDB project.
+//
+// @param request - ModifyAgenticDBProjectHistoryRetentionRequest
+//
+// @return ModifyAgenticDBProjectHistoryRetentionResponse
+func (client *Client) ModifyAgenticDBProjectHistoryRetention(request *ModifyAgenticDBProjectHistoryRetentionRequest) (_result *ModifyAgenticDBProjectHistoryRetentionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyAgenticDBProjectHistoryRetentionResponse{}
+	_body, _err := client.ModifyAgenticDBProjectHistoryRetentionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37683,7 +38221,7 @@ func (client *Client) ModifyPolarFsMappingAuth(request *ModifyPolarFsMappingAuth
 
 // Summary:
 //
-// Modifies a rate limit policy.
+// Modifies a throttling policy.
 //
 // @param request - ModifyRateLimitPolicyRequest
 //
@@ -37743,7 +38281,7 @@ func (client *Client) ModifyRateLimitPolicyWithOptions(request *ModifyRateLimitP
 
 // Summary:
 //
-// Modifies a rate limit policy.
+// Modifies a throttling policy.
 //
 // @param request - ModifyRateLimitPolicyRequest
 //
@@ -38683,7 +39221,7 @@ func (client *Client) RegisterAIDBClusterCustomModel(request *RegisterAIDBCluste
 
 // Summary:
 //
-// Registers an OSS file in a knowledge base.
+// Registers an OSS file for a knowledge base.
 //
 // @param request - RegisterKnowledgeBaseFileRequest
 //
@@ -38735,7 +39273,7 @@ func (client *Client) RegisterKnowledgeBaseFileWithOptions(request *RegisterKnow
 
 // Summary:
 //
-// Registers an OSS file in a knowledge base.
+// Registers an OSS file for a knowledge base.
 //
 // @param request - RegisterKnowledgeBaseFileRequest
 //
@@ -38997,7 +39535,7 @@ func (client *Client) RemoveDBClusterFromGDN(request *RemoveDBClusterFromGDNRequ
 
 // Summary:
 //
-// Unpairs a PolarClaw device.
+// Removes a paired PolarClaw device.
 //
 // @param request - RemovePolarClawDevicePairRequest
 //
@@ -39045,7 +39583,7 @@ func (client *Client) RemovePolarClawDevicePairWithOptions(request *RemovePolarC
 
 // Summary:
 //
-// Unpairs a PolarClaw device.
+// Removes a paired PolarClaw device.
 //
 // @param request - RemovePolarClawDevicePairRequest
 //
@@ -40601,11 +41139,11 @@ func (client *Client) RunPolarClawCronJob(request *RunPolarClawCronJobRequest) (
 
 // Summary:
 //
-// Retrieves memories from a specified application.
+// Retrieves memories.
 //
 // Description:
 //
-// Retrieves memory data from a specified application.
+// Retrieves memory data in a specified application.
 //
 // @param request - SearchMemoriesRequest
 //
@@ -40681,11 +41219,11 @@ func (client *Client) SearchMemoriesWithOptions(request *SearchMemoriesRequest, 
 
 // Summary:
 //
-// Retrieves memories from a specified application.
+// Retrieves memories.
 //
 // Description:
 //
-// Retrieves memory data from a specified application.
+// Retrieves memory data in a specified application.
 //
 // @param request - SearchMemoriesRequest
 //
@@ -41359,6 +41897,12 @@ func (client *Client) TriggerKnowledgeBaseSync(request *TriggerKnowledgeBaseSync
 //
 // Unbinds a PolarClaw Agent.
 //
+// Description:
+//
+// ## 请求说明
+//
+// 调用前，先通过 BindPolarClawAgent 为指定应用、Agent 和通道建立绑定。本接口使用同一组 ApplicationId、AgentId 和 Channel 解除绑定。
+//
 // @param request - UnbindPolarClawAgentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -41414,6 +41958,12 @@ func (client *Client) UnbindPolarClawAgentWithOptions(request *UnbindPolarClawAg
 // Summary:
 //
 // Unbinds a PolarClaw Agent.
+//
+// Description:
+//
+// ## 请求说明
+//
+// 调用前，先通过 BindPolarClawAgent 为指定应用、Agent 和通道建立绑定。本接口使用同一组 ApplicationId、AgentId 和 Channel 解除绑定。
 //
 // @param request - UnbindPolarClawAgentRequest
 //
@@ -41533,7 +42083,7 @@ func (client *Client) UnbindResourceControl(request *UnbindResourceControlReques
 
 // Summary:
 //
-// Uninstalls a PolarClaw plugin.
+// Uninstalls the PolarClaw plugin.
 //
 // @param request - UninstallPolarClawPluginRequest
 //
@@ -41585,7 +42135,7 @@ func (client *Client) UninstallPolarClawPluginWithOptions(request *UninstallPola
 
 // Summary:
 //
-// Uninstalls a PolarClaw plugin.
+// Uninstalls the PolarClaw plugin.
 //
 // @param request - UninstallPolarClawPluginRequest
 //

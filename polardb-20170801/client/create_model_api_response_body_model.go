@@ -20,7 +20,7 @@ type iCreateModelApiResponseBody interface {
 }
 
 type CreateModelApiResponseBody struct {
-	// The request endpoint.
+	// The invocation endpoint.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateModelApiResponseBody struct {
 	//
 	// 6BD9CDE4-5E7B-4BF3-9BB8-83C73E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The model API status.
+	// The status of the model API.
 	//
 	// example:
 	//

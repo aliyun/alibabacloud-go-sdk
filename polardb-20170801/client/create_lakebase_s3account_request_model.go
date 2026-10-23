@@ -22,7 +22,7 @@ type iCreateLakebaseS3AccountRequest interface {
 }
 
 type CreateLakebaseS3AccountRequest struct {
-	// The PolarFS instance ID.
+	// The PolarFS instance ID. You can obtain the ID from the PolarFsInstanceId parameter returned by the CreatePolarFs operation.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type CreateLakebaseS3AccountRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Access Key of the S3 account.
+	// The access key of the S3 account.
 	//
-	// > The account name can contain only uppercase letters, lowercase letters, and digits, and cannot exceed 32 characters in length.
+	// > The account name supports only uppercase and lowercase letters and digits, and can be up to 32 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type CreateLakebaseS3AccountRequest struct {
 	//
 	// accname
 	UserAccAk *string `json:"UserAccAk,omitempty" xml:"UserAccAk,omitempty"`
-	// A policy document in JSON format that defines the permissions of the S3 account. If this parameter is not specified, the default policy is used.
+	// The policy document in JSON format that defines the permissions of the S3 account. If this parameter is not specified, the default policy is used.
 	//
 	// example:
 	//
 	// {"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["s3:*"],"Resource":["*"]}]}
 	UserAccPolicy *string `json:"UserAccPolicy,omitempty" xml:"UserAccPolicy,omitempty"`
-	// The Secret Key of the S3 account (@sensitive, encryption in transit).
+	// The secret key of the S3 account (@sensitive, encryption in transit).
 	//
-	// > The key must contain uppercase letters, lowercase letters, and digits, and must be greater than 18 and no more than 32 characters in length.
+	// > The value must contain both uppercase and lowercase letters and digits, and must be 19 to 32 characters in length.
 	//
 	// This parameter is required.
 	//

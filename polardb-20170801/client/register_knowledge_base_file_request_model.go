@@ -34,7 +34,7 @@ type RegisterKnowledgeBaseFileRequest struct {
 	//
 	// pkb-2ze123456789abcd
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
-	// The ID of the region where the knowledge base resides.
+	// The region ID of the knowledge base.
 	//
 	// This parameter is required.
 	//

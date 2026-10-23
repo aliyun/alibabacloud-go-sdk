@@ -32,7 +32,7 @@ type DescribeDbClusterAttributeZonalRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to obtain information about AI-related nodes.
+	// Specifies whether to retrieve AI-related node information.
 	//
 	// example:
 	//

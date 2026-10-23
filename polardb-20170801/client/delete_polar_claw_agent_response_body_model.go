@@ -36,7 +36,7 @@ type DeletePolarClawAgentResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//

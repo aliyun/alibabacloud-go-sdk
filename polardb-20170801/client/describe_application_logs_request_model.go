@@ -48,7 +48,7 @@ type DescribeApplicationLogsRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The subcomponent instance ID.
+	// The instance ID of the subcomponent.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeApplicationLogsRequest struct {
 	//
 	// analytics
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	// The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+	// The end time of the query. The time must be in the `yyyy-MM-ddTHH:mmZ` format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type DescribeApplicationLogsRequest struct {
 	//
 	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **30**. Valid values: 30 to 100.
+	// The number of entries per page. Valid values: 30 to 100. Default value: **30**.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type DescribeApplicationLogsRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The beginning of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC).
+	// The start time of the query. The time must be in the `YYYY-MM-DDThh:mmZ` format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -111,7 +111,7 @@ type DescribeApplicationLogsRequest struct {
 	//
 	// 2026-03-25T01:57Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The log type. This parameter is used for polarclaw instances. Currently, only gateway is supported.
+	// The log type. This parameter is used for polarclaw instances. Valid value: gateway.
 	//
 	// example:
 	//

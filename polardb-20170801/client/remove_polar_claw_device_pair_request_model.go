@@ -24,7 +24,7 @@ type RemovePolarClawDevicePairRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The device ID.
+	// The ID of the paired device to remove. You can call ListPolarClawDevicePairs and obtain the DeviceId from the returned Paired list.
 	//
 	// This parameter is required.
 	//

@@ -117,9 +117,7 @@ func (s *DescribeAgenticDBProjectsResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBProjectsResponseBodyItems struct {
-	// The time when the project was created.
-	//
-	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time. The time is in ISO 8601 format and the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -131,31 +129,37 @@ type DescribeAgenticDBProjectsResponseBodyItems struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The default branch ID.
+	// The ID of the default branch.
 	//
 	// example:
 	//
 	// br-1a2b3c4d5e6f
 	DefaultBranchId *string `json:"DefaultBranchId,omitempty" xml:"DefaultBranchId,omitempty"`
-	// The default branch name.
+	// The name of the default branch.
 	//
 	// example:
 	//
 	// main
 	DefaultBranchName *string `json:"DefaultBranchName,omitempty" xml:"DefaultBranchName,omitempty"`
-	// The description of the project.
+	// The description.
 	//
 	// example:
 	//
 	// Production analytics database
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The retention period for recent records of the project. This field may be empty for older projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+	//
+	// example:
+	//
+	// 604800
+	HistoryRetentionSeconds *int64 `json:"HistoryRetentionSeconds,omitempty" xml:"HistoryRetentionSeconds,omitempty"`
 	// Project ID
 	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name.
+	// The name of the project.
 	//
 	// example:
 	//
@@ -173,7 +177,7 @@ type DescribeAgenticDBProjectsResponseBodyItems struct {
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the tenant to which the project belongs.
+	// The tenant ID.
 	//
 	// example:
 	//
@@ -207,6 +211,10 @@ func (s *DescribeAgenticDBProjectsResponseBodyItems) GetDefaultBranchName() *str
 
 func (s *DescribeAgenticDBProjectsResponseBodyItems) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DescribeAgenticDBProjectsResponseBodyItems) GetHistoryRetentionSeconds() *int64 {
+	return s.HistoryRetentionSeconds
 }
 
 func (s *DescribeAgenticDBProjectsResponseBodyItems) GetProjectId() *string {
@@ -247,6 +255,11 @@ func (s *DescribeAgenticDBProjectsResponseBodyItems) SetDefaultBranchName(v stri
 
 func (s *DescribeAgenticDBProjectsResponseBodyItems) SetDescription(v string) *DescribeAgenticDBProjectsResponseBodyItems {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeAgenticDBProjectsResponseBodyItems) SetHistoryRetentionSeconds(v int64) *DescribeAgenticDBProjectsResponseBodyItems {
+	s.HistoryRetentionSeconds = &v
 	return s
 }
 

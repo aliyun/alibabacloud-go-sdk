@@ -34,46 +34,51 @@ type iDescribeBatchTaskResponseBody interface {
 }
 
 type DescribeBatchTaskResponseBody struct {
+	// The target application type of the batch task.
+	//
+	// example:
+	//
+	// polarclaw
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The ID of the batch task.
+	// The batch ID of the scheduled task execution.
 	//
 	// example:
 	//
 	// pcb-xxx
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 25C70FF3-D49B-594D-BECE-0DE2BA1D8BBB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task status.
+	// The status of the task.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A list of subtasks.
+	// The list of subtasks.
 	SubTasks []*DescribeBatchTaskResponseBodySubTasks `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Repeated"`
-	// The number of successful subtasks.
+	// The total number of domain names or DNS records that are successfully processed.
 	//
 	// example:
 	//
 	// 8
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The time when the task started.
+	// The start time of the task.
 	//
 	// example:
 	//
 	// 2026/05/28T16:38:20Z
 	TaskBegin *string `json:"TaskBegin,omitempty" xml:"TaskBegin,omitempty"`
-	// The time when the task ended.
+	// The end time of the task.
 	//
 	// example:
 	//
 	// 2026/05/28T15:23:47Z
 	TaskEnd *string `json:"TaskEnd,omitempty" xml:"TaskEnd,omitempty"`
-	// The name of the task.
+	// The description of the model service.
 	//
 	// example:
 	//
@@ -85,7 +90,7 @@ type DescribeBatchTaskResponseBody struct {
 	//
 	// polarclaw_install_skills
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The total number of subtasks.
+	// The number of entries in the list.
 	//
 	// example:
 	//
@@ -220,7 +225,7 @@ type DescribeBatchTaskResponseBodySubTasks struct {
 	//
 	// aliuid:1422133474238823 assumeOssRole not exist,serviceName:aliyunesarealtimelogpushossrole
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The instance ID.
+	// The ID of the application.
 	//
 	// example:
 	//
@@ -232,13 +237,13 @@ type DescribeBatchTaskResponseBodySubTasks struct {
 	//
 	// COMPLETED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the subtask started.
+	// The start time of the task.
 	//
 	// example:
 	//
 	// 2026/05/28T17:38:20Z
 	TaskBegin *string `json:"TaskBegin,omitempty" xml:"TaskBegin,omitempty"`
-	// The time when the subtask ended.
+	// The end time of the task.
 	//
 	// example:
 	//

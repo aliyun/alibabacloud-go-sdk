@@ -34,13 +34,13 @@ type iCreateActivationCodeResponseBody interface {
 }
 
 type CreateActivationCodeResponseBody struct {
-	// The time when the activation code takes effect.
+	// The effective period.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	ActivateAt *string `json:"ActivateAt,omitempty" xml:"ActivateAt,omitempty"`
-	// The content of the activation code. Decode this Base64-encoded content and save it to the \\`license.lic\\` file. PolarDB reads this file on startup.
+	// The content of the activation code. Decode the Base64-encoded content and save it to the license.lic file for PolarDB to read during startup.
 	//
 	// example:
 	//
@@ -52,19 +52,19 @@ type CreateActivationCodeResponseBody struct {
 	//
 	// testCode
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expiration time.
+	// The time when the activation code expires.
 	//
 	// example:
 	//
 	// 2054-10-09 16:46:20
 	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
-	// The creation time.
+	// The time when the activation code was created.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The update time.
+	// The time when the activation code was updated.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type CreateActivationCodeResponseBody struct {
 	//
 	// 4CE6DF97-AEA4-484F-906F-C407EE******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The unique system identifier of the database.
+	// The unique identifier of the database, also known as the system identifier.
 	//
 	// example:
 	//

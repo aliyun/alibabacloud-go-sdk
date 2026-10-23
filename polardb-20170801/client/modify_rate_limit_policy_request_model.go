@@ -22,7 +22,7 @@ type iModifyRateLimitPolicyRequest interface {
 }
 
 type ModifyRateLimitPolicyRequest struct {
-	// The gateway instance ID.
+	// The ID of the gateway instance. You can obtain the ID from the GwClusterId parameter returned by CreateGateway.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ModifyRateLimitPolicyRequest struct {
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The rate limit policy ID.
+	// The ID of the throttling policy to be modified. You can obtain the ID from the PolicyId parameter returned by CreateRateLimitPolicy.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type ModifyRateLimitPolicyRequest struct {
 	//
 	// 02eccf7c61cf4d05a543075ee907f3**
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The maximum number of requests per minute.
+	// The limit on the number of requests per minute.
 	//
 	// example:
 	//
 	// 10
 	RateLimitRpm *string `json:"RateLimitRpm,omitempty" xml:"RateLimitRpm,omitempty"`
-	// The maximum number of tokens per minute.
+	// The limit on the number of tokens per minute.
 	//
 	// example:
 	//

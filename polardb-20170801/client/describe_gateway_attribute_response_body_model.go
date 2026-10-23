@@ -50,18 +50,25 @@ type iDescribeGatewayAttributeResponseBody interface {
 }
 
 type DescribeGatewayAttributeResponseBody struct {
-	// The specification code for the gateway instance.
+	// The instance type code.
 	//
 	// example:
 	//
 	// polar.app.g2.medium
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The time when the gateway instance was created.
+	// The creation time.
+	//
+	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2020-02-24T11:57:54Z
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The current version number.
+	//
+	// example:
+	//
+	// 2.0.0
 	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
 	// The database type.
 	//
@@ -69,17 +76,19 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// MySQL
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// A list of endpoints for the gateway instance.
+	// The list of endpoints.
 	Endpoints []*DescribeGatewayAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The time when the subscription for the gateway instance expires.
+	// The expiration time.
 	//
-	// This parameter is empty for pay-as-you-go instances.
+	// This parameter is empty when the billing method is Postpaid.
+	//
+	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2027-04-22T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the subscription for the gateway instance has expired. Valid values:
+	// Indicates whether the cluster has expired. Valid values:
 	//
 	// - true
 	//
@@ -89,26 +98,33 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// False
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// example:
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The description of the gateway instance.
+	// The description of the gateway.
 	//
 	// example:
 	//
 	// xxx
 	GwDescription *string `json:"GwDescription,omitempty" xml:"GwDescription,omitempty"`
+	// The latest version number.
+	//
+	// example:
+	//
+	// 2.0.1
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// The time when the gateway instance was last modified.
+	// The last modification time.
+	//
+	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2025-10-07T02:19:55Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The billing method of the gateway instance. Valid values:
+	// The billing method. Valid values:
 	//
 	// - **Postpaid**: pay-as-you-go.
 	//
@@ -118,38 +134,43 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The running version number.
+	//
+	// example:
+	//
+	// 2.0.0
 	RunningVersion *string `json:"RunningVersion,omitempty" xml:"RunningVersion,omitempty"`
-	// A list of IP whitelists for the gateway instance.
+	// The application-level IP whitelist.
 	SecurityIPArrays []*DescribeGatewayAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// The status of the gateway instance. Valid values:
+	// The application status. Valid values:
 	//
-	// - **CREATE**: The gateway instance is being created.
+	// - CREATE: creating
 	//
-	// - **ACTIVATION**: The gateway instance is running.
+	// - ACTIVATION: running
 	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VSwitch where the gateway instance is deployed.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC where the gateway instance is deployed.
+	// The ID of the VPC to which the vSwitch belongs.
 	//
 	// example:
 	//
@@ -365,13 +386,13 @@ type DescribeGatewayAttributeResponseBodyEndpoints struct {
 	//
 	// pg-xxxxx.polardbaigateway.pre.rds.aliyuncs.com
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID.
 	//
 	// example:
 	//
 	// xxx
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// example:
 	//
@@ -379,15 +400,15 @@ type DescribeGatewayAttributeResponseBodyEndpoints struct {
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
 	// The network type of the endpoint. Valid values:
 	//
-	// - **Private**: VPC endpoint.
+	// - Private: VPC
 	//
-	// - **Public**: public endpoint.
+	// - Public: Internet
 	//
 	// example:
 	//
 	// Public
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The port number.
+	// The port.
 	//
 	// example:
 	//
@@ -399,7 +420,7 @@ type DescribeGatewayAttributeResponseBodyEndpoints struct {
 	//
 	// 1874631
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// The ID of the VPC to which the endpoint belongs.
+	// The ID of the VPC to which the vSwitch belongs.
 	//
 	// example:
 	//
@@ -483,7 +504,7 @@ func (s *DescribeGatewayAttributeResponseBodyEndpoints) Validate() error {
 }
 
 type DescribeGatewayAttributeResponseBodySecurityIPArrays struct {
-	// The name of the IP whitelist. The default value is `default`.
+	// The name of the IP whitelist. Default value: `default`.
 	//
 	// example:
 	//
@@ -495,7 +516,7 @@ type DescribeGatewayAttributeResponseBodySecurityIPArrays struct {
 	//
 	// mytag
 	SecurityIPArrayTag *string `json:"SecurityIPArrayTag,omitempty" xml:"SecurityIPArrayTag,omitempty"`
-	// A comma-separated list of IP addresses in the IP whitelist.
+	// The IP addresses in the whitelist, separated by commas.
 	//
 	// example:
 	//

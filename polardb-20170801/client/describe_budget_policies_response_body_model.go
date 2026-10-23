@@ -138,29 +138,29 @@ func (s *DescribeBudgetPoliciesResponseBody) Validate() error {
 }
 
 type DescribeBudgetPoliciesResponseBodyItems struct {
-	// The alert threshold percentage. Valid values: 0 to 100.
+	// The alert threshold percentage (0 to 100).
 	//
 	// example:
 	//
 	// 80
 	AlertThresholdPct *string `json:"AlertThresholdPct,omitempty" xml:"AlertThresholdPct,omitempty"`
-	// Indicates whether the alert threshold has been triggered.
+	// Indicates whether the alert threshold is triggered.
 	//
 	// example:
 	//
 	// false
 	AlertTriggered *bool `json:"AlertTriggered,omitempty" xml:"AlertTriggered,omitempty"`
-	// The dimension object ID. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
+	// The ID of the dimension object. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
 	//
 	// example:
 	//
 	// cg-p3gk2oh55c**
 	BudgetDimensionRefId *string `json:"BudgetDimensionRefId,omitempty" xml:"BudgetDimensionRefId,omitempty"`
-	// The policy type. Valid values:
+	// The type of the policy. Valid values:
 	//
-	// - **ConsumerGroup**: total budget for a user group
+	// - **ConsumerGroup**: Total budget for consumer groups.
 	//
-	// - **Consumer**: total budget for a user
+	// - **Consumer**: Total budget for consumers.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type DescribeBudgetPoliciesResponseBodyItems struct {
 	//
 	// 10000
 	BudgetPoints *string `json:"BudgetPoints,omitempty" xml:"BudgetPoints,omitempty"`
-	// The budget policy ID.
+	// The ID of the budget policy.
 	//
 	// example:
 	//
@@ -180,29 +180,29 @@ type DescribeBudgetPoliciesResponseBodyItems struct {
 	BudgetPolicyId *string `json:"BudgetPolicyId,omitempty" xml:"BudgetPolicyId,omitempty"`
 	// The budget type. Valid values:
 	//
-	// - **GlobalTotal**: global total budget
+	// - **GlobalTotal**: Global total budget.
 	//
-	// - **ConsumerTotal**: total budget for a user
+	// - **ConsumerTotal**: Total budget for consumers.
 	//
-	// - **ConsumerGroupTotal**: total budget for a user group
+	// - **ConsumerGroupTotal**: Total budget for consumer groups.
 	//
 	// example:
 	//
 	// GlobalTotal
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
-	// Indicates whether the quota has been exceeded.
+	// Indicates whether the quota is exceeded.
 	//
 	// example:
 	//
 	// false
 	Exceeded *string `json:"Exceeded,omitempty" xml:"Exceeded,omitempty"`
-	// The time when the policy was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-03-19T14:13:53+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the policy was last modified.
+	// The update time.
 	//
 	// example:
 	//
@@ -214,17 +214,17 @@ type DescribeBudgetPoliciesResponseBodyItems struct {
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The day of the month on which the budget resets. Valid values: 1 to 28.
+	// The day of the month when the budget is reset (1 to 28).
 	//
 	// example:
 	//
 	// 2
 	ResetDayOfMonth *string `json:"ResetDayOfMonth,omitempty" xml:"ResetDayOfMonth,omitempty"`
-	// The policy status. Valid values:
+	// The status of the policy. Valid values:
 	//
-	// - **Enabled**: enabled
+	// - **Enabled**: Enabled.
 	//
-	// - **Disenabled**: disabled
+	// - **Disenabled**: Disabled.
 	//
 	// example:
 	//

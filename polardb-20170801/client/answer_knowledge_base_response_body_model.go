@@ -18,7 +18,7 @@ type iAnswerKnowledgeBaseResponseBody interface {
 }
 
 type AnswerKnowledgeBaseResponseBody struct {
-	// The unique ID of the Q&A task.
+	// The unique identifier of the Q&A task.
 	//
 	// example:
 	//

@@ -28,13 +28,13 @@ type iDescribeAgenticDBBranchesRequest interface {
 }
 
 type DescribeAgenticDBBranchesRequest struct {
-	// The branch name for fuzzy match.
+	// The branch name for fuzzy matching.
 	//
 	// example:
 	//
 	// feature
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The AgenticDB cluster ID.
+	// The ID of the AgenticDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DescribeAgenticDBBranchesRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the project to which the branch belongs.
+	// The project ID.
 	//
 	// example:
 	//
@@ -68,19 +68,13 @@ type DescribeAgenticDBBranchesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status filter. Valid values:
-	//
-	// - Running
-	//
-	// - Pending
-	//
-	// - Paused
+	// The status used to filter branches. Valid values: Running, Pending, and Paused.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the tenant to which the branch belongs.
+	// The tenant ID.
 	//
 	// example:
 	//

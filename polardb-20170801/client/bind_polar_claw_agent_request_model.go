@@ -20,7 +20,7 @@ type iBindPolarClawAgentRequest interface {
 }
 
 type BindPolarClawAgentRequest struct {
-	// The agent ID.
+	// The ID of the agent to associate.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type BindPolarClawAgentRequest struct {
 	//
 	// work
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The application ID.
+	// The application ID. You can call the DescribeApplications operation to obtain the application ID from the returned Items list.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type BindPolarClawAgentRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The channel ID.
+	// The channel plugin ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type BindPolarClawAgentRequest struct {
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The account ID for the channel. If omitted, the default value is \\"default\\".
+	// The channel account ID. If you do not specify this parameter, the default value is default.
 	//
 	// example:
 	//

@@ -246,8 +246,16 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// 15529410560
 	CompressStorageUsed *int64 `json:"CompressStorageUsed,omitempty" xml:"CompressStorageUsed,omitempty"`
 	// The connection resource quota (AgenticDB exclusive).
+	//
+	// example:
+	//
+	// 0
 	ConnectionResourceQuota *int64 `json:"ConnectionResourceQuota,omitempty" xml:"ConnectionResourceQuota,omitempty"`
 	// The number of connection resources used (AgenticDB exclusive).
+	//
+	// example:
+	//
+	// 0
 	ConnectionResourceUsed *int64 `json:"ConnectionResourceUsed,omitempty" xml:"ConnectionResourceUsed,omitempty"`
 	// The time when the cluster was created.
 	//
@@ -590,7 +598,10 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// OFF
-	StandbyHAMode    *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
+	StandbyHAMode *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
+	// example:
+	//
+	// Enable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
 	// The maximum storage capacity for the current cluster specifications. Unit: bytes.
 	//
@@ -619,8 +630,11 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// HighPerformance
-	StorageType       *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	StorageUpperBound *int32  `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// example:
+	//
+	// 800
+	StorageUpperBound *int32 `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
 	// The storage usage. Unit: bytes.
 	//
 	// example:
@@ -1448,8 +1462,11 @@ func (s *DescribeDBClusterAttributeResponseBodyBranch) Validate() error {
 }
 
 type DescribeDBClusterAttributeResponseBodyBranchChildBranch struct {
-	BranchLsn            *string `json:"BranchLsn,omitempty" xml:"BranchLsn,omitempty"`
-	BranchTime           *string `json:"BranchTime,omitempty" xml:"BranchTime,omitempty"`
+	BranchLsn  *string `json:"BranchLsn,omitempty" xml:"BranchLsn,omitempty"`
+	BranchTime *string `json:"BranchTime,omitempty" xml:"BranchTime,omitempty"`
+	// example:
+	//
+	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	HasChild             *bool   `json:"HasChild,omitempty" xml:"HasChild,omitempty"`
 	InsName              *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
@@ -1635,10 +1652,19 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	// example:
 	//
 	// off
-	Orca                    *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
-	RemoteMemoryMax         *int32  `json:"RemoteMemoryMax,omitempty" xml:"RemoteMemoryMax,omitempty"`
-	RemoteMemoryMin         *int32  `json:"RemoteMemoryMin,omitempty" xml:"RemoteMemoryMin,omitempty"`
-	RemoteMemoryRecommended *int32  `json:"RemoteMemoryRecommended,omitempty" xml:"RemoteMemoryRecommended,omitempty"`
+	Orca *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
+	// example:
+	//
+	// 0
+	RemoteMemoryMax *int32 `json:"RemoteMemoryMax,omitempty" xml:"RemoteMemoryMax,omitempty"`
+	// example:
+	//
+	// 0
+	RemoteMemoryMin *int32 `json:"RemoteMemoryMin,omitempty" xml:"RemoteMemoryMin,omitempty"`
+	// example:
+	//
+	// 0
+	RemoteMemoryRecommended *int32 `json:"RemoteMemoryRecommended,omitempty" xml:"RemoteMemoryRecommended,omitempty"`
 	// The remote memory size. Unit: MB.
 	//
 	// example:

@@ -53,6 +53,10 @@ type ModifyDBClusterRequest struct {
 	// ON
 	CompressStorage *string `json:"CompressStorage,omitempty" xml:"CompressStorage,omitempty"`
 	// The connection resource quota of the AgenticDB cluster.
+	//
+	// example:
+	//
+	// 100
 	ConnectionResourceQuota *int64 `json:"ConnectionResourceQuota,omitempty" xml:"ConnectionResourceQuota,omitempty"`
 	// The cluster ID.
 	//

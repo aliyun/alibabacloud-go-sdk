@@ -17,6 +17,8 @@ type iCreateAgenticDBBranchRequest interface {
 	GetDescription() *string
 	SetParentBranchId(v string) *CreateAgenticDBBranchRequest
 	GetParentBranchId() *string
+	SetParentTimestamp(v string) *CreateAgenticDBBranchRequest
+	GetParentTimestamp() *string
 	SetProjectId(v string) *CreateAgenticDBBranchRequest
 	GetProjectId() *string
 	SetRegionId(v string) *CreateAgenticDBBranchRequest
@@ -42,19 +44,25 @@ type CreateAgenticDBBranchRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The description of the branch.
+	// The description.
 	//
 	// example:
 	//
 	// Feature branch for analytics
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the parent branch. If this parameter is not specified, the branch is derived from the main branch by default.
+	// The ID of the parent branch. By default, the branch is derived from the main branch.
 	//
 	// example:
 	//
 	// br-1a2b3c4d5e6f
 	ParentBranchId *string `json:"ParentBranchId,omitempty" xml:"ParentBranchId,omitempty"`
-	// The ID of the project to which the branch belongs.
+	// Creates the branch based on the data of the parent branch at the specified point in time. If you do not specify this parameter, the latest data is used. The value must be in RFC 3339 format with a time zone and support up to nine fractional digits for seconds. Empty strings and future times are not supported.
+	//
+	// example:
+	//
+	// 2026-10-15T07:32:00.123456Z
+	ParentTimestamp *string `json:"ParentTimestamp,omitempty" xml:"ParentTimestamp,omitempty"`
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +78,7 @@ type CreateAgenticDBBranchRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the tenant to which the branch belongs.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -104,6 +112,10 @@ func (s *CreateAgenticDBBranchRequest) GetParentBranchId() *string {
 	return s.ParentBranchId
 }
 
+func (s *CreateAgenticDBBranchRequest) GetParentTimestamp() *string {
+	return s.ParentTimestamp
+}
+
 func (s *CreateAgenticDBBranchRequest) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -133,6 +145,11 @@ func (s *CreateAgenticDBBranchRequest) SetDescription(v string) *CreateAgenticDB
 
 func (s *CreateAgenticDBBranchRequest) SetParentBranchId(v string) *CreateAgenticDBBranchRequest {
 	s.ParentBranchId = &v
+	return s
+}
+
+func (s *CreateAgenticDBBranchRequest) SetParentTimestamp(v string) *CreateAgenticDBBranchRequest {
+	s.ParentTimestamp = &v
 	return s
 }
 

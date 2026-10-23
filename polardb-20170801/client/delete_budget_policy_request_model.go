@@ -18,7 +18,7 @@ type iDeleteBudgetPolicyRequest interface {
 }
 
 type DeleteBudgetPolicyRequest struct {
-	// The ID of the cost budget policy.
+	// The ID of the budget policy to delete. You can obtain the ID from the BudgetPolicyId returned by CreateBudgetPolicy.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteBudgetPolicyRequest struct {
 	//
 	// 023aacc1effc4b56bb154bfbec6baxxx
 	BudgetPolicyId *string `json:"BudgetPolicyId,omitempty" xml:"BudgetPolicyId,omitempty"`
-	// The gateway instance ID.
+	// The ID of the gateway instance. You can obtain the ID from the GwClusterId returned by CreateGateway.
 	//
 	// This parameter is required.
 	//

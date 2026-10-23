@@ -34,19 +34,19 @@ type iModifyModelServiceRequest interface {
 }
 
 type ModifyModelServiceRequest struct {
-	// The API key for the model service.
+	// The API key of the model service.
 	//
 	// example:
 	//
 	// xxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The address of the upstream service.
+	// The upstream service URL.
 	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
-	// The ID of the gateway instance.
+	// The gateway cluster ID. You can obtain this ID from the GwClusterId parameter returned by the CreateGateway operation.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyModelServiceRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The cost in points per million input tokens.
+	// The number of input points.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ModifyModelServiceRequest struct {
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
-	// The ID of the model service.
+	// The model service ID. You can obtain this ID from the ModelServiceId parameter returned by the CreateModelService operation.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type ModifyModelServiceRequest struct {
 	//
 	// ms-xxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
-	// The name of the model service.
+	// The model service name.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type ModifyModelServiceRequest struct {
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The cost in points per million output tokens.
+	// The number of output points.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type ModifyModelServiceRequest struct {
 	OutputCostPointsPerMillion *string `json:"OutputCostPointsPerMillion,omitempty" xml:"OutputCostPointsPerMillion,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// - **openai**
+	// 	- **openai**
 	//
-	// - **anthropic**
+	// 	- **anthropic**
 	//
-	// - **bailian**
+	// 	- **bailian**
 	//
-	// - **vllm**
+	// 	- **vllm**
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type ModifyModelServiceRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The cost in points per request.
+	// The number of requests.
 	//
 	// example:
 	//

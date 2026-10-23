@@ -26,13 +26,17 @@ type iDescribeApplicationsRequest interface {
 }
 
 type DescribeApplicationsRequest struct {
-	// The list of application IDs. If specified, only the information of these applications is returned.
+	// The list of application IDs. If specified, only the information about these applications is returned.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationIds *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
 	// The application engine filter.
+	//
+	// example:
+	//
+	// polardb_polarclaw
 	ApplicationTypes *string `json:"ApplicationTypes,omitempty" xml:"ApplicationTypes,omitempty"`
 	// The PolarDB instance ID. If specified, only the application information related to this PolarDB instance is returned.
 	//

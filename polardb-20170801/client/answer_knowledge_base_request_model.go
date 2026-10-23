@@ -34,7 +34,7 @@ type iAnswerKnowledgeBaseRequest interface {
 }
 
 type AnswerKnowledgeBaseRequest struct {
-	// The unique ID of the knowledge base.
+	// The unique identifier of the knowledge base. To obtain the ID, first call CreateKnowledgeSpace to create a knowledge space, use the returned KnowledgeSpaceId to call CreateKnowledgeBase, and then use the KnowledgeBaseId returned by CreateKnowledgeBase. Separate multiple knowledge base IDs with commas.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type AnswerKnowledgeBaseRequest struct {
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
-	// The maximum number of context characters. Valid values: 1000 to 32000.
+	// The maximum number of characters in the context. Valid values: 1000 to 32000.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type AnswerKnowledgeBaseRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to enable reranking. Disabled by default.
+	// Specifies whether to enable reranking. Default value: false.
 	//
 	// example:
 	//
 	// false
 	RerankEnabled *bool `json:"RerankEnabled,omitempty" xml:"RerankEnabled,omitempty"`
-	// Specifies whether to return citation sources. Enabled by default.
+	// Specifies whether to return reference sources. Default value: true.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type AnswerKnowledgeBaseRequest struct {
 	//
 	// This is a minimal test prompt for security verification.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// The number of recall results to retrieve.
+	// The number of results to recall.
 	//
 	// example:
 	//
 	// 10
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// The user supplementary instructions.
+	// The additional user instructions.
 	//
 	// example:
 	//

@@ -46,13 +46,13 @@ type DescribeAgenticDBProjectsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The project ID for exact match.
+	// The project ID used for exact matching.
 	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name for fuzzy match.
+	// The project name used for fuzzy matching.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeAgenticDBProjectsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the tenant to which the project belongs.
+	// The tenant ID.
 	//
 	// example:
 	//

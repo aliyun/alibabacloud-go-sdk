@@ -36,13 +36,13 @@ type DescribeAgenticDBBranchesResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// B2C3D4E5-F6A7-8901-BCDE-2345678901BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeAgenticDBBranchesResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBBranchesResponseBodyItems struct {
-	// The ID of the compute cluster associated with the branch.
+	// The ID of the compute cluster for the branch.
 	//
 	// example:
 	//
@@ -129,21 +129,19 @@ type DescribeAgenticDBBranchesResponseBodyItems struct {
 	//
 	// 1
 	BranchComputeNodeCount *int32 `json:"BranchComputeNodeCount,omitempty" xml:"BranchComputeNodeCount,omitempty"`
-	// The branch ID.
+	// The ID of the branch.
 	//
 	// example:
 	//
 	// br-7g8h9i0j1k2l
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
-	// The branch name.
+	// The name of the branch.
 	//
 	// example:
 	//
 	// feature-analytics
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The time when the branch was created.
-	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time when the branch was created. The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -167,13 +165,13 @@ type DescribeAgenticDBBranchesResponseBodyItems struct {
 	//
 	// 2026-06-10T12:30:00Z
 	LastActivatedAt *string `json:"LastActivatedAt,omitempty" xml:"LastActivatedAt,omitempty"`
-	// The maximum compute unit.
+	// The maximum number of compute units (CUs).
 	//
 	// example:
 	//
 	// 2
 	MaxCU *string `json:"MaxCU,omitempty" xml:"MaxCU,omitempty"`
-	// The minimum compute unit.
+	// The minimum number of compute units (CUs).
 	//
 	// example:
 	//
@@ -191,7 +189,13 @@ type DescribeAgenticDBBranchesResponseBodyItems struct {
 	//
 	// main
 	ParentBranchName *string `json:"ParentBranchName,omitempty" xml:"ParentBranchName,omitempty"`
-	// The ID of the project to which the branch belongs.
+	// The historical time of the parent branch specified when the branch was created. The time is displayed in RFC 3339 format in UTC. This parameter may be empty if no historical time is specified or for legacy records.
+	//
+	// example:
+	//
+	// 2026-10-15T07:32:00.123456Z
+	ParentTimestamp *string `json:"ParentTimestamp,omitempty" xml:"ParentTimestamp,omitempty"`
+	// The project ID.
 	//
 	// example:
 	//
@@ -203,19 +207,13 @@ type DescribeAgenticDBBranchesResponseBodyItems struct {
 	//
 	// analytics-prod
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The status of the branch. Valid values:
-	//
-	// - Running
-	//
-	// - Pending
-	//
-	// - Paused
+	// The status of the branch. Valid values: Running, Pending, and Paused.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the tenant to which the branch belongs.
+	// The tenant ID.
 	//
 	// example:
 	//
@@ -277,6 +275,10 @@ func (s *DescribeAgenticDBBranchesResponseBodyItems) GetParentBranchId() *string
 
 func (s *DescribeAgenticDBBranchesResponseBodyItems) GetParentBranchName() *string {
 	return s.ParentBranchName
+}
+
+func (s *DescribeAgenticDBBranchesResponseBodyItems) GetParentTimestamp() *string {
+	return s.ParentTimestamp
 }
 
 func (s *DescribeAgenticDBBranchesResponseBodyItems) GetProjectId() *string {
@@ -352,6 +354,11 @@ func (s *DescribeAgenticDBBranchesResponseBodyItems) SetParentBranchId(v string)
 
 func (s *DescribeAgenticDBBranchesResponseBodyItems) SetParentBranchName(v string) *DescribeAgenticDBBranchesResponseBodyItems {
 	s.ParentBranchName = &v
+	return s
+}
+
+func (s *DescribeAgenticDBBranchesResponseBodyItems) SetParentTimestamp(v string) *DescribeAgenticDBBranchesResponseBodyItems {
+	s.ParentTimestamp = &v
 	return s
 }
 

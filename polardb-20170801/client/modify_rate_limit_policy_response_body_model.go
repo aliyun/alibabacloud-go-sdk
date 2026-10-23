@@ -14,7 +14,7 @@ type iModifyRateLimitPolicyResponseBody interface {
 }
 
 type ModifyRateLimitPolicyResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iBindPolarClawAgentResponseBody interface {
 }
 
 type BindPolarClawAgentResponseBody struct {
-	// The agent ID.
+	// Agent ID
 	//
 	// example:
 	//
@@ -38,15 +38,15 @@ type BindPolarClawAgentResponseBody struct {
 	//
 	// pa-********************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Details of the newly created binding.
+	// The details of the newly created association.
 	Binding *BindPolarClawAgentResponseBodyBinding `json:"Binding,omitempty" xml:"Binding,omitempty" type:"Struct"`
-	// The HTTP status code.
+	// 200
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// A message that indicates the request result.
+	// successful
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type BindPolarClawAgentResponseBody struct {
 	//
 	// 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of global bindings after the operation.
+	// The total number of global associations after the operation.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type BindPolarClawAgentResponseBodyBinding struct {
 	//
 	// default
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The agent ID.
+	// Agent ID
 	//
 	// example:
 	//

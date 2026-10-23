@@ -38,7 +38,7 @@ type DescribeAIDBClusterTasksResponseBody struct {
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The DPI engine version.
+	// The database engine version.
 	//
 	// example:
 	//
@@ -46,13 +46,25 @@ type DescribeAIDBClusterTasksResponseBody struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The cluster endpoint details.
 	Items []*DescribeAIDBClusterTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
+	//
+	// example:
+	//
+	// 0
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of records on the page.
+	// The total number of entries on the current page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the PolarDB cluster.
+	// The ID of the associated PolarDB cluster.
 	//
 	// example:
 	//
@@ -70,7 +82,11 @@ type DescribeAIDBClusterTasksResponseBody struct {
 	//
 	// train
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The total number of records.
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 2
 	TotalRecordCount *string `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -188,7 +204,7 @@ func (s *DescribeAIDBClusterTasksResponseBody) Validate() error {
 type DescribeAIDBClusterTasksResponseBodyItems struct {
 	// The task completion time.
 	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -196,7 +212,7 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	CompletedTime *string `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
 	// The creation time.
 	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -208,13 +224,13 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// test
 	DBNodeDescription *string `json:"DBNodeDescription,omitempty" xml:"DBNodeDescription,omitempty"`
-	// The model operator instance ID.
+	// The instance ID of the model operator.
 	//
 	// example:
 	//
 	// pm-2ze***
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The instance status. This parameter may not be returned.
+	// The instance status. This field may not be returned.
 	//
 	// example:
 	//
@@ -238,7 +254,7 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The DPI engine version.
+	// The database engine version.
 	//
 	// example:
 	//
@@ -270,7 +286,7 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	RunningTimes *string `json:"RunningTimes,omitempty" xml:"RunningTimes,omitempty"`
 	// The task start time.
 	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -288,7 +304,11 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// lora
 	TrainType *string `json:"TrainType,omitempty" xml:"TrainType,omitempty"`
-	// The fine-tuning framework.
+	// The tuning framework.
+	//
+	// example:
+	//
+	// lora
 	TuneArch *string `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
 }
 

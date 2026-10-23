@@ -41,7 +41,12 @@ type DescribeExtensionsRequest struct {
 	// example:
 	//
 	// song
-	DBName        *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The name of the database plugin to query.
+	//
+	// example:
+	//
+	// jueming
 	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
 	// example:
 	//

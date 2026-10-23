@@ -17,6 +17,8 @@ type iDescribeAgenticDBProjectResponseBody interface {
 	GetDefaultBranchName() *string
 	SetDescription(v string) *DescribeAgenticDBProjectResponseBody
 	GetDescription() *string
+	SetHistoryRetentionSeconds(v int64) *DescribeAgenticDBProjectResponseBody
+	GetHistoryRetentionSeconds() *int64
 	SetProjectId(v string) *DescribeAgenticDBProjectResponseBody
 	GetProjectId() *string
 	SetProjectName(v string) *DescribeAgenticDBProjectResponseBody
@@ -30,32 +32,38 @@ type iDescribeAgenticDBProjectResponseBody interface {
 }
 
 type DescribeAgenticDBProjectResponseBody struct {
-	// The time when the project was created.
+	// The creation time.
 	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is displayed in ISO 8601 format in the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2026-06-10T11:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the default branch.
+	// The default branch ID.
 	//
 	// example:
 	//
 	// br-1a2b3c4d5e6f
 	DefaultBranchId *string `json:"DefaultBranchId,omitempty" xml:"DefaultBranchId,omitempty"`
-	// The name of the default branch.
+	// The default branch name.
 	//
 	// example:
 	//
 	// main
 	DefaultBranchName *string `json:"DefaultBranchName,omitempty" xml:"DefaultBranchName,omitempty"`
-	// The description of the project.
+	// The description.
 	//
 	// example:
 	//
 	// Production analytics database
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The retention period for recent records of the project. This parameter may be empty for older projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+	//
+	// example:
+	//
+	// 604800
+	HistoryRetentionSeconds *int64 `json:"HistoryRetentionSeconds,omitempty" xml:"HistoryRetentionSeconds,omitempty"`
 	// Project ID
 	//
 	// example:
@@ -74,19 +82,13 @@ type DescribeAgenticDBProjectResponseBody struct {
 	//
 	// I9J0K1L2-M3N4-5678-IJKL-789012345678
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The project status. Valid values:
-	//
-	// - Active: Normal.
-	//
-	// - Destroying: Being destroyed.
-	//
-	// - Destroyed: Destroyed.
+	// The project status. Valid values: Active (Normal), Destroying (Destroying), and Destroyed (Destroyed).
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the tenant to which the project belongs.
+	// The tenant ID.
 	//
 	// example:
 	//
@@ -116,6 +118,10 @@ func (s *DescribeAgenticDBProjectResponseBody) GetDefaultBranchName() *string {
 
 func (s *DescribeAgenticDBProjectResponseBody) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DescribeAgenticDBProjectResponseBody) GetHistoryRetentionSeconds() *int64 {
+	return s.HistoryRetentionSeconds
 }
 
 func (s *DescribeAgenticDBProjectResponseBody) GetProjectId() *string {
@@ -155,6 +161,11 @@ func (s *DescribeAgenticDBProjectResponseBody) SetDefaultBranchName(v string) *D
 
 func (s *DescribeAgenticDBProjectResponseBody) SetDescription(v string) *DescribeAgenticDBProjectResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeAgenticDBProjectResponseBody) SetHistoryRetentionSeconds(v int64) *DescribeAgenticDBProjectResponseBody {
+	s.HistoryRetentionSeconds = &v
 	return s
 }
 

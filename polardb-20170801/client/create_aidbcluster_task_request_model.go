@@ -56,6 +56,8 @@ type iCreateAIDBClusterTaskRequest interface {
 }
 
 type CreateAIDBClusterTaskRequest struct {
+	// The name of the custom OSS bucket.
+	//
 	// example:
 	//
 	// my-bucket
@@ -74,6 +76,8 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// polar.pg.g6.4xlarge.guh
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The data service mode. A value of custom indicates that custom OSS is used, and a value of cold_storage indicates that cold storage is used.
+	//
 	// example:
 	//
 	// cold_storage
@@ -92,7 +96,7 @@ type CreateAIDBClusterTaskRequest struct {
 	EvalDatasetPath *string `json:"EvalDatasetPath,omitempty" xml:"EvalDatasetPath,omitempty"`
 	// The type of the model service. Valid values:
 	//
-	//  	- **aitrain**: Model operator tuning.
+	//  	- **aitrain**: model operator fine-tuning.
 	//
 	// This parameter is required.
 	//
@@ -102,9 +106,9 @@ type CreateAIDBClusterTaskRequest struct {
 	KubeType *string `json:"KubeType,omitempty" xml:"KubeType,omitempty"`
 	// The name of the model.
 	//
-	// 	- **For a preset model, specify the selected model name.**
+	// 	- **For a preset model, specify the name of the selected model.**
 	//
-	// 	- **For a custom model, specify the path of the model (the trained model in a cold storage instance).**
+	// 	- **For a custom model, specify the path of the model (the model trained in a cold storage instance).**
 	//
 	// This parameter is required.
 	//
@@ -114,9 +118,9 @@ type CreateAIDBClusterTaskRequest struct {
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The source of the model. Valid values:
 	//
-	// 	- **public**: Preset model.
+	// 	- **public**: preset model.
 	//
-	// 	- **custom**: Custom model.
+	// 	- **custom**: custom model.
 	//
 	// This parameter is required.
 	//
@@ -160,6 +164,11 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// xxxx
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The model fine-tuning architecture.
+	//
+	// example:
+	//
+	// lora
 	TuneArch *string `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
 	// The VPC ID.
 	//

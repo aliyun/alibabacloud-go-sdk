@@ -136,7 +136,7 @@ func (s *DescribeKnowledgeBaseFileShardsResponseBody) Validate() error {
 type DescribeKnowledgeBaseFileShardsResponseBodyShards struct {
 	// The list of figure or table captions associated with the shard.
 	Captions []*string `json:"Captions,omitempty" xml:"Captions,omitempty" type:"Repeated"`
-	// The list of structured element references in the Docling source document associated with the shard, which can be used to precisely locate the original elements.
+	// The list of structured element references of the source document associated with the shard, which can be used to precisely locate the original elements.
 	DocItems []*string `json:"DocItems,omitempty" xml:"DocItems,omitempty" type:"Repeated"`
 	// The section heading chain to which the shard belongs.
 	Headings []*string `json:"Headings,omitempty" xml:"Headings,omitempty" type:"Repeated"`
@@ -270,7 +270,7 @@ type DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources struct {
 	//
 	// document-0/pictures/1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The element reference of the image in the Docling source document structure.
+	// The element reference of the image in the source document structure.
 	//
 	// example:
 	//

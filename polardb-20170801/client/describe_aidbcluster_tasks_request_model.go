@@ -38,9 +38,17 @@ type DescribeAIDBClusterTasksRequest struct {
 	KubeType     *string `json:"KubeType,omitempty" xml:"KubeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of items per page.
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
@@ -48,7 +56,7 @@ type DescribeAIDBClusterTasksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The PolarDB instance ID.
+	// The instance ID of the associated PolarDB instance.
 	//
 	// example:
 	//

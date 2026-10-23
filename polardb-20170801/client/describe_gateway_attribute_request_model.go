@@ -16,7 +16,7 @@ type iDescribeGatewayAttributeRequest interface {
 }
 
 type DescribeGatewayAttributeRequest struct {
-	// The ID of the gateway instance.
+	// The ID of the gateway instance. Example: pg-xxxxxxx.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeGatewayAttributeRequest struct {
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

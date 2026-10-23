@@ -31,7 +31,7 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -47,15 +47,15 @@ type DescribeBackupsResponseBody struct {
 	//
 	// > - Only PSL4 and PSL5 storage types are supported.
 	//
-	// > - Only clusters with the level-2 backup feature enabled are supported.
+	// > - Only clusters that have the level-2 backup feature enabled are supported.
 	//
-	// > - If this parameter is not returned, the level-2 backup size is 0.
+	// > - If this parameter is not returned, the size of level-2 backups is 0.
 	//
 	// example:
 	//
 	// 4639948800
 	TotalLevel2BackupSize *string `json:"TotalLevel2BackupSize,omitempty" xml:"TotalLevel2BackupSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

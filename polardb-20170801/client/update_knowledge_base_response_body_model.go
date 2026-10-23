@@ -16,7 +16,7 @@ type iUpdateKnowledgeBaseResponseBody interface {
 }
 
 type UpdateKnowledgeBaseResponseBody struct {
-	// The unique ID of the knowledge base.
+	// The unique identifier of the knowledge base.
 	//
 	// example:
 	//

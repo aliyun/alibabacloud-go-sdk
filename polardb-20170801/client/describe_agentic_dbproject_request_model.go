@@ -44,7 +44,7 @@ type DescribeAgenticDBProjectRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the tenant to which the project belongs.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//

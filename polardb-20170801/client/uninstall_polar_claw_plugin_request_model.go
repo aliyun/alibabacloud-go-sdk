@@ -26,7 +26,7 @@ type UninstallPolarClawPluginRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The plugin ID.
+	// The ID of the plugin to uninstall. You can call DescribePolarClawPlugins to query the plugins installed for the application and use the Id of the corresponding plugin in the returned Plugins list.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UninstallPolarClawPluginRequest struct {
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Indicates whether to restart the gateway after the plugin is uninstalled. The default is true.
+	// Specifies whether to restart the gateway after uninstallation. Default value: true.
 	//
 	// example:
 	//

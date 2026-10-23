@@ -32,7 +32,7 @@ type DescribeCostRulesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type DescribeCostRulesResponseBodyItems struct {
 	//
 	// 0
 	CacheCostPointsPerMillion *string `json:"CacheCostPointsPerMillion,omitempty" xml:"CacheCostPointsPerMillion,omitempty"`
-	// The cache creation or write cost points per million tokens.
+	// The cache creation cost points per million tokens.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type DescribeCostRulesResponseBodyItems struct {
 	//
 	// 924d450014e64e88ac6e8486f8e990**
 	CostRuleId *string `json:"CostRuleId,omitempty" xml:"CostRuleId,omitempty"`
-	// The end time of the effective period.
+	// The end time of the effective period. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2026-10-01T00:00:00Z
 	EffectiveEndTime *string `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
-	// The start time of the effective period.
+	// The start time of the effective period. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type DescribeCostRulesResponseBodyItems struct {
 	//
 	// 0-32K
 	InputTokenTier *string `json:"InputTokenTier,omitempty" xml:"InputTokenTier,omitempty"`
-	// The non-cumulative tiered pricing for input tokens. Each element includes the tier and the input cost points per million tokens.
+	// The non-cumulative tiered pricing for input tokens. Each element contains Tier and InputCostPointsPerMillion.
 	InputTokenTiers []*DescribeCostRulesResponseBodyItemsInputTokenTiers `json:"InputTokenTiers,omitempty" xml:"InputTokenTiers,omitempty" type:"Repeated"`
 	// The name of the model.
 	//

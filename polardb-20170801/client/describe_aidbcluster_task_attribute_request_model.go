@@ -34,7 +34,7 @@ type DescribeAIDBClusterTaskAttributeRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The query mode. Valid values:
 	//
-	// 	- **RelatedAITask**: queries task details.
+	// 	- **RelatedAITask**: queries task details
 	//
 	// example:
 	//

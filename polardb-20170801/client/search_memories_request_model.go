@@ -30,7 +30,7 @@ type iSearchMemoriesRequest interface {
 }
 
 type SearchMemoriesRequest struct {
-	// The application ID. Example: pa-**************.
+	// The ID of the application. Example value: pa-**************.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type SearchMemoriesRequest struct {
 	//
 	// yyyy-MM-ddTHH:mm:ssZ
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The memory agent ID.
+	// The ID of the memory agent.
 	//
 	// example:
 	//
 	// agent1
 	MemoryAgentId *string `json:"MemoryAgentId,omitempty" xml:"MemoryAgentId,omitempty"`
-	// The memory user ID.
+	// The ID of the memory user.
 	//
 	// This parameter is required.
 	//
@@ -65,8 +65,16 @@ type SearchMemoriesRequest struct {
 	// user1
 	MemoryUserId *string `json:"MemoryUserId,omitempty" xml:"MemoryUserId,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of records per page.
+	// The number of records to display on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The search query.
 	//

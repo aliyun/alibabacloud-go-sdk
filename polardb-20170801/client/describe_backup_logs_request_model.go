@@ -46,7 +46,7 @@ type DescribeBackupLogsRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. The time is in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
+	// The end time of the query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -56,21 +56,21 @@ type DescribeBackupLogsRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. The default value is **1**.
+	// The page number. Valid values: an integer greater than 0 and up to the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30*	-
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
-	// The default value is **30**.
+	// Default value: **30**.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeBackupLogsRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. The time is in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
+	// The start time of the query. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

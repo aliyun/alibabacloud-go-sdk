@@ -24,7 +24,7 @@ type iDescribeConsumersResponseBody interface {
 }
 
 type DescribeConsumersResponseBody struct {
-	// The list of users.
+	// The list of consumers.
 	Items []*DescribeConsumersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -32,7 +32,7 @@ type DescribeConsumersResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeConsumersResponseBody struct {
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -140,25 +140,25 @@ type DescribeConsumersResponseBodyItems struct {
 	//
 	// "[]"
 	AllowedModels *string `json:"AllowedModels,omitempty" xml:"AllowedModels,omitempty"`
-	// The full API key, returned only in this response.
+	// The complete API key. This value is returned only in the current response.
 	//
 	// example:
 	//
 	// xxxxxxxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The user group ID.
+	// The ID of the consumer group.
 	//
 	// example:
 	//
 	// cg-xxxxxx
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// The user group name.
+	// The name of the consumer group.
 	//
 	// example:
 	//
 	// test
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
-	// The user ID.
+	// The ID of the consumer.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type DescribeConsumersResponseBodyItems struct {
 	//
 	// 2026-01-04T16:09:29+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The total cumulative usage.
+	// The cumulative usage.
 	//
 	// example:
 	//
@@ -194,19 +194,19 @@ type DescribeConsumersResponseBodyItems struct {
 	//
 	// 10
 	MtdCostCount *int64 `json:"MtdCostCount,omitempty" xml:"MtdCostCount,omitempty"`
-	// The total cumulative cost.
+	// The cumulative total cost.
 	//
 	// example:
 	//
 	// 10000
 	MtdTokenCount *int64 `json:"MtdTokenCount,omitempty" xml:"MtdTokenCount,omitempty"`
-	// The username.
+	// The name of the consumer.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The nickname.
+	// The nickname of the consumer.
 	//
 	// example:
 	//

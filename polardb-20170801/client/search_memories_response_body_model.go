@@ -24,7 +24,17 @@ type iSearchMemoriesResponseBody interface {
 }
 
 type SearchMemoriesResponseBody struct {
-	Page     *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
+	Page *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of records per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
 	//
@@ -33,9 +43,19 @@ type SearchMemoriesResponseBody struct {
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of results.
-	Results    []*SearchMemoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	Total      *string                              `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalPages *string                              `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Results []*SearchMemoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The total number of matching records.
+	//
+	// example:
+	//
+	// 1
+	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 1
+	TotalPages *string `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s SearchMemoriesResponseBody) String() string {
@@ -116,7 +136,7 @@ func (s *SearchMemoriesResponseBody) Validate() error {
 type SearchMemoriesResponseBodyResults struct {
 	// The creation time.
 	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -150,7 +170,7 @@ type SearchMemoriesResponseBodyResults struct {
 	//
 	// example:
 	//
-	// {\\"tags\\":\\"Issue_date_2023-11-30,VD_现行有效\\"}
+	// {"tags":"Issue_date_2023-11-30,VD_Valid"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The score.
 	//
@@ -160,7 +180,7 @@ type SearchMemoriesResponseBodyResults struct {
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The update time.
 	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

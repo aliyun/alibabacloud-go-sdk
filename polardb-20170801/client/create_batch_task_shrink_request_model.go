@@ -24,12 +24,17 @@ type iCreateBatchTaskShrinkRequest interface {
 }
 
 type CreateBatchTaskShrinkRequest struct {
+	// The target application type of the batch task.
+	//
+	// example:
+	//
+	// polarclaw
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The instance IDs.
 	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The task parameters.
+	// The archive parameters.
 	//
 	// example:
 	//
@@ -37,7 +42,7 @@ type CreateBatchTaskShrinkRequest struct {
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions of all clusters in your account.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the region information of all clusters under the target account.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +50,7 @@ type CreateBatchTaskShrinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the batch task.
+	// The description of the model service.
 	//
 	// This parameter is required.
 	//
