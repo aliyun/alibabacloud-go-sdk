@@ -62,6 +62,7 @@ func (s *DescribeLogstashResponseBody) Validate() error {
 }
 
 type DescribeLogstashResponseBodyResult struct {
+	// The extended configurations of the Logstash instance.
 	ExtendConfigs []map[string]interface{} `json:"ExtendConfigs,omitempty" xml:"ExtendConfigs,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs.
 	//
@@ -69,11 +70,11 @@ type DescribeLogstashResponseBodyResult struct {
 	//
 	// rg-aekzvowej3i****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The instance tags.
+	// The instance labels.
 	Tags []*DescribeLogstashResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The zone information.
 	ZoneInfos []*DescribeLogstashResponseBodyResultZoneInfos `json:"ZoneInfos,omitempty" xml:"ZoneInfos,omitempty" type:"Repeated"`
-	// The instance configuration information.
+	// The configuration information of the instance.
 	//
 	// example:
 	//
@@ -85,13 +86,18 @@ type DescribeLogstashResponseBodyResult struct {
 	//
 	// 2020-02-06T14:12:03.672Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// ls-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	EndTime     *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The time when the instance expires. The value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1715826092044
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// The access information of the nodes.
 	EndpointList []*DescribeLogstashResponseBodyResultEndpointList `json:"endpointList,omitempty" xml:"endpointList,omitempty" type:"Repeated"`
 	// The instance ID.
@@ -100,7 +106,7 @@ type DescribeLogstashResponseBodyResult struct {
 	//
 	// ls-cn-abc
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The network configuration.
+	// The network configurations.
 	NetworkConfig *DescribeLogstashResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 	// The number of nodes in the instance.
 	//
@@ -112,9 +118,9 @@ type DescribeLogstashResponseBodyResult struct {
 	NodeSpec *DescribeLogstashResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
-	// - prepaid: subscription
+	// - prepaid: Subscription.
 	//
-	// - postpaid: pay-as-you-go
+	// - postpaid: Pay-as-you-go.
 	//
 	// example:
 	//
@@ -124,11 +130,11 @@ type DescribeLogstashResponseBodyResult struct {
 	//
 	// - active: Normal.
 	//
-	// - activating: Taking effect.
+	// - activating: Activating.
 	//
 	// - inactive: Frozen.
 	//
-	// - invalid: Expired.
+	// - invalid: Invalid.
 	//
 	// example:
 	//
@@ -140,7 +146,7 @@ type DescribeLogstashResponseBodyResult struct {
 	//
 	// 2020-02-06T14:22:36.850Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The instance version.
+	// The version of the instance.
 	//
 	// example:
 	//
@@ -411,9 +417,9 @@ func (s *DescribeLogstashResponseBodyResultTags) Validate() error {
 }
 
 type DescribeLogstashResponseBodyResultZoneInfos struct {
-	// The zone status. Valid values:
+	// The status of the zone. Valid values:
 	//
-	// - ISOLATION: offline.
+	// - ISOLATION: Offline.
 	//
 	// - NORMAL: Normal.
 	//
@@ -520,7 +526,7 @@ func (s *DescribeLogstashResponseBodyResultEndpointList) Validate() error {
 }
 
 type DescribeLogstashResponseBodyResultNetworkConfig struct {
-	// The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+	// The network type. Only VPC is supported.
 	//
 	// example:
 	//
@@ -532,7 +538,7 @@ type DescribeLogstashResponseBodyResultNetworkConfig struct {
 	//
 	// vpc-bp16k1dvzxtmagcva****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone in which the instance resides.
+	// The zone where the instance is deployed.
 	//
 	// example:
 	//
@@ -601,11 +607,11 @@ type DescribeLogstashResponseBodyResultNodeSpec struct {
 	//
 	// 20
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// Indicates whether cloud disk encryption is enabled. Valid values:
+	// Specifies whether cloud disk encryption is used. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Yes.
 	//
-	// - false: Disabled.
+	// - false: No.
 	//
 	// example:
 	//
@@ -617,7 +623,7 @@ type DescribeLogstashResponseBodyResultNodeSpec struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The node specification.
+	// The specifications of the node.
 	//
 	// example:
 	//

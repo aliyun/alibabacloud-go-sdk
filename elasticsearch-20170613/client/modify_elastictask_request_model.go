@@ -14,7 +14,7 @@ type iModifyElastictaskRequest interface {
 }
 
 type ModifyElastictaskRequest struct {
-	// The scaling information.
+	// Specifies the scaling information.
 	//
 	// example:
 	//

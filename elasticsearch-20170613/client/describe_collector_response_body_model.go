@@ -16,7 +16,7 @@ type iDescribeCollectorResponseBody interface {
 }
 
 type DescribeCollectorResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,14 +62,15 @@ func (s *DescribeCollectorResponseBody) Validate() error {
 }
 
 type DescribeCollectorResponseBodyResult struct {
+	// The list of Filebeat collection paths.
 	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
 	// The configuration file information of the collector.
 	Configs []*DescribeCollectorResponseBodyResultConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// Indicates whether the collector is only validated without being created. Valid values:
+	// Specifies whether to only validate the collector without creating it. Valid values:
 	//
-	// - true: Only validates without creating.
+	// - true: validates the configuration without creating the collector.
 	//
-	// - false: Validates and creates.
+	// - false: validates the configuration and creates the collector.
 	//
 	// example:
 	//
@@ -83,45 +84,45 @@ type DescribeCollectorResponseBodyResult struct {
 	//
 	// 2020-06-20T07:26:47.000+0000
 	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	// The time when the collector was last updated.
+	// The time when the collector was updated.
 	//
 	// example:
 	//
 	// 2020-06-20T07:26:47.000+0000
 	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	// The collector name.
+	// The name of the collector.
 	//
 	// example:
 	//
 	// ct-cn-4135is2tj194p****
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The account ID.
+	// The ID of the account.
 	//
 	// example:
 	//
 	// 16852099488*****
 	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	// The collector instance ID.
+	// The instance ID of the collector.
 	//
 	// example:
 	//
 	// ct-cn-rg31ahn82m0qd****
 	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
-	// The collector type. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+	// The type of the collector. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
 	//
 	// example:
 	//
 	// fileBeat
 	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
-	// The collector version.
+	// The version of the collector.
 	//
 	// example:
 	//
 	// 6.8.5_with_community
 	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
-	// The collector status. Valid values:
+	// The status of the collector. Valid values:
 	//
-	// - activing: being activated.
+	// - activing: activating.
 	//
 	// - active: activated.
 	//
@@ -129,7 +130,7 @@ type DescribeCollectorResponseBodyResult struct {
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the virtual private cloud (VPC) where the collector resides.
+	// The ID of the virtual private cloud (VPC) where the collector is deployed.
 	//
 	// example:
 	//
@@ -285,13 +286,13 @@ func (s *DescribeCollectorResponseBodyResult) Validate() error {
 }
 
 type DescribeCollectorResponseBodyResultConfigs struct {
-	// The file content.
+	// The content of the file.
 	//
 	// example:
 	//
 	// fileBeat.inputs:xxx
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//
@@ -332,88 +333,89 @@ func (s *DescribeCollectorResponseBodyResultConfigs) Validate() error {
 type DescribeCollectorResponseBodyResultExtendConfigs struct {
 	// The configuration type. Valid values:
 	//
-	// - collectorTargetInstance: the collector Output.
+	// - collectorTargetInstance: the output of the collector.
 	//
-	// - collectorDeployMachine: the deployment machine of the collector.
+	// - collectorDeployMachine: the machine on which the collector is deployed.
 	//
-	// - collectorElasticsearchForKibana: the Elasticsearch instance that supports Kibana Dashboard.
+	// - collectorElasticsearchForKibana: the information about the Elasticsearch instance that supports the Kibana dashboard.
 	//
 	// example:
 	//
 	// collectorDeployMachine
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
-	// Indicates whether Monitoring is enabled. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**. Valid values:
+	// Specifies whether to enable monitoring. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enables monitoring.
 	//
-	// - false: Not enabled.
+	// - false: disables monitoring.
 	//
 	// example:
 	//
 	// true
 	EnableMonitoring *bool `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
-	// The machine group ID. This parameter is displayed when **configType*	- is set to **collectorDeployMachine**.
+	// The ID of the machine group. This parameter is displayed when **configType*	- is set to **collectorDeployMachine**.
 	//
 	// example:
 	//
 	// default_ct-cn-5i2l75bz4776****
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The private endpoint of Kibana after Kibana Dashboard is enabled. This parameter is displayed when **configType*	- is set to **collectorElasticsearchForKibana**.
+	// The private endpoint of Kibana after the Kibana dashboard is enabled. This parameter is displayed when **configType*	- is set to **collectorElasticsearchForKibana**.
 	//
 	// example:
 	//
 	// es-cn-n6w1o1x0w001c****-kibana.internal.elasticsearch.aliyuncs.com:5601
-	Host  *string   `json:"host,omitempty" xml:"host,omitempty"`
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The list of host addresses of the target instance for the collector.
 	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	// The ID of the instance associated with the collector. When **configType*	- is set to **collectorTargetInstance**, this is the instance ID of the collector Output. When **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**, this is the ACK (Container Kubernetes) cluster ID.
+	// Instance ID of the instance associated with the collector. If **configType*	- is set to **collectorTargetInstance**, this parameter indicates instance ID of the instance specified in the collector output. If **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**, this parameter indicates instance ID of the ACK cluster.
 	//
 	// example:
 	//
 	// es-cn-n6w1o1****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The type of instance specified in the collector Output. Valid values: elasticsearch and logstash. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**.
+	// The type of the instance specified in the collector output. Valid values: elasticsearch and logstash. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**.
 	//
 	// example:
 	//
 	// elasticsearch
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The public network access address of Kibana after Kibana Dashboard is enabled. This parameter is displayed when **configType*	- is set to **collectorElasticsearchForKibana**.
+	// The public network access address of Kibana after the Kibana dashboard is enabled. This parameter is displayed when **configType*	- is set to **collectorElasticsearchForKibana**.
 	//
 	// example:
 	//
 	// https://es-cn-nif1z89fz003i****.kibana.elasticsearch.aliyuncs.com:5601
 	KibanaHost *string `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
-	// The list of ECS machines on which the collector is deployed. This parameter is displayed when **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ECSInstanceId**.
+	// The list of ECS instances on which the collector is deployed. This parameter is displayed when **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ECSInstanceId**.
 	Machines []*DescribeCollectorResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	// The transport protocol, which must be the same as the access protocol of the instance specified in the collector Output. Valid values: HTTP and HTTPS. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**.
+	// The transmission protocol. This protocol must be consistent with the access protocol of the instance specified in the collector output. Valid values: HTTP and HTTPS. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The number of pods that are successfully collected in the ACK cluster.
+	// The number of pods from which data is successfully collected in the ACK cluster.
 	//
 	// example:
 	//
 	// 8
 	SuccessPodsCount *string `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
-	// The total number of pods collected in the ACK cluster.
+	// The total number of pods from which data is collected in the ACK cluster.
 	//
 	// example:
 	//
 	// 10
 	TotalPodsCount *string `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
-	// The type of machine on which the collector is deployed. This parameter is displayed when **configType*	- is set to **collectorDeployMachine**. Valid values:
+	// The type of the machine on which the collector is deployed. This parameter is displayed when **configType*	- is set to **collectorDeployMachine**. Valid values:
 	//
-	// - ECSInstanceId: ECS
+	// - ECSInstanceId: ECS instance.
 	//
-	// - ACKCluster: Container Kubernetes
+	// - ACKCluster: ACK cluster.
 	//
 	// example:
 	//
 	// ECSInstanceId
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The username used to access the instance specified in the collector Output. Default value: elastic. This parameter is displayed when **configType*	- is set to **collectorTargetInstance*	- or **collectorElasticsearchForKibana**.
+	// The username used to access the instance specified in the collector output. Default value: elastic. This parameter is displayed when **configType*	- is set to **collectorTargetInstance*	- or **collectorElasticsearchForKibana**.
 	//
 	// example:
 	//
@@ -569,15 +571,15 @@ func (s *DescribeCollectorResponseBodyResultExtendConfigs) Validate() error {
 }
 
 type DescribeCollectorResponseBodyResultExtendConfigsMachines struct {
-	// The status of the collector on the ECS instance. Valid values:
+	// The status of each collector on the ECS instance. Valid values:
 	//
 	// - heartOk: The heartbeat is normal.
 	//
 	// - heartLost: The heartbeat is abnormal.
 	//
-	// - uninstalled: Not installed.
+	// - uninstalled: The collector is not installed.
 	//
-	// - failed: Installation failed.
+	// - failed: The installation failed.
 	//
 	// example:
 	//

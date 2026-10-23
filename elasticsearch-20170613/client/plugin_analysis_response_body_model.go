@@ -66,31 +66,31 @@ func (s *PluginAnalysisResponseBody) Validate() error {
 }
 
 type PluginAnalysisResponseBodyResult struct {
-	// The plug-in description.
+	// The plugin description.
 	//
 	// example:
 	//
 	// plugin description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The plug-in version.
+	// The plugin version.
 	//
 	// example:
 	//
 	// 8.17.0
 	ElasticsearchVersion *string `json:"elasticsearchVersion,omitempty" xml:"elasticsearchVersion,omitempty"`
-	// The plug-in name.
+	// The plugin name.
 	//
 	// example:
 	//
 	// plugin_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The security policy of the plug-in.
+	// The security policy of the plugin.
 	//
 	// example:
 	//
 	// null
 	SecurityPolicy *string `json:"securityPolicy,omitempty" xml:"securityPolicy,omitempty"`
-	// The plug-in version.
+	// The plugin version.
 	//
 	// example:
 	//

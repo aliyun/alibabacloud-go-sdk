@@ -62,6 +62,7 @@ func (s *UpdatePublicWhiteIpsResponseBody) Validate() error {
 }
 
 type UpdatePublicWhiteIpsResponseBodyResult struct {
+	// The public IP address access whitelist.
 	PublicIpWhitelist []*string `json:"publicIpWhitelist,omitempty" xml:"publicIpWhitelist,omitempty" type:"Repeated"`
 }
 

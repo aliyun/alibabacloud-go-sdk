@@ -24,7 +24,7 @@ type RenewInstanceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result. Valid values:
 	//
-	// - true: The renewal was successful.
+	// - true: The renewal succeeded.
 	//
 	// - false: The renewal failed.
 	//

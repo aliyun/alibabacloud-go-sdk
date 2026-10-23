@@ -14,6 +14,11 @@ type iPostEmonTryAlarmRuleRequest interface {
 }
 
 type PostEmonTryAlarmRuleRequest struct {
+	// The information about the test alert rule, notification method, and message recipients.
+	//
+	// example:
+	//
+	// {"alarmRuleName":"test_rule","AlarmChannel":{"phone":true,"sms":true,"dingWebHook":true},"receivers":[{"id":19,"contactGroup":false}]}
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

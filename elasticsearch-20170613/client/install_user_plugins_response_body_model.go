@@ -21,8 +21,9 @@ type InstallUserPluginsResponseBody struct {
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6F*****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of custom user plugins submitted for installation.
+	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s InstallUserPluginsResponseBody) String() string {

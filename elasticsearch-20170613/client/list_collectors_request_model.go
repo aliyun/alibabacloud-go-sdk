@@ -54,11 +54,11 @@ type ListCollectorsRequest struct {
 	//
 	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The type of machine on which the collector is deployed. If this parameter is not specified, all types are returned. Valid values:
+	// Specifies the type of machine on which the collector is deployed. If you do not specify this parameter, all types are returned. Valid values:
 	//
 	// - ECS: ECS instance
 	//
-	// - ACK: Container Kubernetes cluster
+	// - ACK: ACK cluster
 	//
 	// example:
 	//

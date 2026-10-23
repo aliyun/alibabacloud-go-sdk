@@ -67,15 +67,21 @@ type DiagnoseInstanceResponseBodyResult struct {
 	// example:
 	//
 	// 1535745731000
-	CreateTime    *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The diagnostic mode. Valid values: RULE and AGENT.
+	//
+	// example:
+	//
+	// RULE
 	DiagnosisMode *string `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
 	// The instance ID of the diagnosed instance.
 	//
 	// example:
 	//
 	// es-cn-n6w1o1x0w001c****
-	InstanceId *string                                    `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Items      []*DiagnoseInstanceResponseBodyResultItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The list of diagnostic item details. This parameter may be empty if details are not required.
+	Items []*DiagnoseInstanceResponseBodyResultItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The report ID.
 	//
 	// example:
@@ -166,12 +172,38 @@ func (s *DiagnoseInstanceResponseBodyResult) Validate() error {
 }
 
 type DiagnoseInstanceResponseBodyResultItems struct {
-	Desc    *string                `json:"desc,omitempty" xml:"desc,omitempty"`
-	Detail  map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
-	Item    *string                `json:"item,omitempty" xml:"item,omitempty"`
-	Name    *string                `json:"name,omitempty" xml:"name,omitempty"`
-	State   *string                `json:"state,omitempty" xml:"state,omitempty"`
-	Suggest *string                `json:"suggest,omitempty" xml:"suggest,omitempty"`
+	// The description of the diagnostic conclusion.
+	//
+	// example:
+	//
+	// Everything is normal
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The diagnostic details. This parameter is empty if details are not required.
+	Detail map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
+	// The code of the diagnostic item.
+	//
+	// example:
+	//
+	// cluster.health
+	Item *string `json:"item,omitempty" xml:"item,omitempty"`
+	// The name of the diagnostic item.
+	//
+	// example:
+	//
+	// Cluster health
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The health status of the diagnostic item. Valid values: GREEN, YELLOW, and RED.
+	//
+	// example:
+	//
+	// GREEN
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The handling suggestion.
+	//
+	// example:
+	//
+	// Monitor GC
+	Suggest *string `json:"suggest,omitempty" xml:"suggest,omitempty"`
 }
 
 func (s DiagnoseInstanceResponseBodyResultItems) String() string {

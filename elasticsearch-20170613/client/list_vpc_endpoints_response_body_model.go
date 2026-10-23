@@ -22,7 +22,7 @@ type ListVpcEndpointsResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The endpoint details.
+	// The endpoint information.
 	Result []*ListVpcEndpointsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,9 +66,9 @@ func (s *ListVpcEndpointsResponseBody) Validate() error {
 }
 
 type ListVpcEndpointsResponseBodyResult struct {
-	// The endpoint connection status. Valid values:
+	// The connection status of the endpoint. Valid values:
 	//
-	// - Pending: Being modified.
+	// - Pending: Modifying.
 	//
 	// - Connecting: Connecting.
 	//
@@ -76,17 +76,17 @@ type ListVpcEndpointsResponseBodyResult struct {
 	//
 	// - Disconnecting: Disconnecting.
 	//
-	// - Disconnected: Not connected.
+	// - Disconnected: Disconnected.
 	//
-	// - Deleting: Being deleted.
+	// - Deleting: Deleting.
 	//
-	// - ServiceDeleted: The service associated with the endpoint has been deleted.
+	// - ServiceDeleted: The service corresponding to the endpoint is deleted.
 	//
 	// example:
 	//
 	// Disconnected
 	ConnectionStatus *string `json:"connectionStatus,omitempty" xml:"connectionStatus,omitempty"`
-	// The time when the endpoint was created.
+	// The time when the endpoint was created. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -96,39 +96,39 @@ type ListVpcEndpointsResponseBodyResult struct {
 	//
 	// - Normal: Normal.
 	//
-	// - FinancialLocked: Financial lock.
+	// - FinancialLocked: Locked due to overdue payment.
 	//
 	// example:
 	//
 	// Normal
 	EndpointBusinessStatus *string `json:"endpointBusinessStatus,omitempty" xml:"endpointBusinessStatus,omitempty"`
-	// The endpoint domain name, which is used for connection configuration.
+	// The domain name of the endpoint, which is used for connection configuration.
 	//
 	// example:
 	//
 	// ep-bp18s6wy9420wdi4****.epsrv-bp1bz3efowa4kc0****.cn-hangzhou.privatelink.aliyuncs.com
 	EndpointDomain *string `json:"endpointDomain,omitempty" xml:"endpointDomain,omitempty"`
-	// The endpoint ID.
+	// The ID of the endpoint.
 	//
 	// example:
 	//
 	// ep-bp1tah7zbrwmkjef****
 	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
-	// The endpoint name.
+	// The name of the endpoint.
 	//
 	// example:
 	//
 	// test
 	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
-	// The endpoint status. Valid values:
+	// The status of the endpoint. Valid values:
 	//
-	// - Creating: Being created.
+	// - Creating: The endpoint is being created.
 	//
-	// - Active: Active.
+	// - Active: The endpoint is available.
 	//
-	// - Pending: Being modified.
+	// - Pending: The endpoint is being modified.
 	//
-	// - Deleting: Being deleted.
+	// - Deleting: The endpoint is being deleted.
 	//
 	// example:
 	//

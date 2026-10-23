@@ -22,6 +22,11 @@ type iListStatsEventRecordsRequest interface {
 }
 
 type ListStatsEventRecordsRequest struct {
+	// The end time of the statistical window. The value is a UNIX timestamp in seconds. This parameter must be specified together with startTime and must be later than the start time.
+	//
+	// example:
+	//
+	// 4600
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// The event type.
 	//
@@ -34,8 +39,13 @@ type ListStatsEventRecordsRequest struct {
 	// example:
 	//
 	// Info
-	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
-	StartTime *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// The start time of the statistical window. The value is a UNIX timestamp in seconds. This parameter must be specified together with endTime.
+	//
+	// example:
+	//
+	// 1000
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The event status.
 	//
 	// example:

@@ -22,11 +22,11 @@ type DeactivateZonesResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// The result. Valid values:
 	//
-	// - true: The zones are taken offline.
+	// - true: The zones are taken offline successfully.
 	//
-	// - false: The zones failed to be taken offline.
+	// - false: The zones fail to be taken offline.
 	//
 	// example:
 	//

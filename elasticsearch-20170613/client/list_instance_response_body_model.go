@@ -26,7 +26,7 @@ type ListInstanceResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The response result.
 	Result []*ListInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -84,7 +84,7 @@ func (s *ListInstanceResponseBody) Validate() error {
 }
 
 type ListInstanceResponseBodyHeaders struct {
-	// The total number of instance records.
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -114,19 +114,27 @@ func (s *ListInstanceResponseBodyHeaders) Validate() error {
 }
 
 type ListInstanceResponseBodyResult struct {
-	// Indicates whether the instance contains dedicated master nodes. Valid values:
+	// Indicates whether dedicated master nodes are included. Valid values:
+	//
+	// - true: Included.
+	//
+	// - false: Not included.
 	//
 	// example:
 	//
 	// false
 	AdvancedDedicateMaster *bool `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
-	// The deployment mode. Architecture type:
+	// The deployment mode and architecture type. Valid values:
+	//
+	// - exclusive: Basic management and control.
+	//
+	// - public: Cloud-native management and control.
 	//
 	// example:
 	//
 	// public
 	ArchType *string `json:"archType,omitempty" xml:"archType,omitempty"`
-	// The configuration of client nodes.
+	// The client node configuration.
 	ClientNodeConfiguration *ListInstanceResponseBodyResultClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty" type:"Struct"`
 	// The time when the instance was created.
 	//
@@ -134,7 +142,11 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// 2018-07-13T03:58:07.253Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// **[Deprecated]*	- Indicates whether the instance contains dedicated master nodes. Valid values:
+	// **[Deprecated]*	- Indicates whether dedicated master nodes are included. Valid values:
+	//
+	// - true: Included.
+	//
+	// - false: Not included.
 	//
 	// example:
 	//
@@ -146,13 +158,13 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// es-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The internal endpoint of the instance.
+	// The internal network address of the instance.
 	//
 	// example:
 	//
 	// es-cn-nif1q8auz0005****.elasticsearch.aliyuncs.com
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The configuration of elastic data nodes.
+	// The elastic data node configuration.
 	ElasticDataNodeConfiguration *ListInstanceResponseBodyResultElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty" type:"Struct"`
 	// The time when the instance expires.
 	//
@@ -160,7 +172,7 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// 1715826092044
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The instance version.
+	// The Elasticsearch version of the instance.
 	//
 	// example:
 	//
@@ -168,27 +180,29 @@ type ListInstanceResponseBodyResult struct {
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
 	// The extension parameter settings of the cluster.
 	ExtendConfigs []map[string]interface{} `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+	// The index node information. This is supported only by AI engine instances.
+	IndexNodeConfiguration *IndexNodeConfiguration `json:"indexNodeConfiguration,omitempty" xml:"indexNodeConfiguration,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
 	// es-cn-v641a0ta3000g****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Indicates whether the instance uses the new deployment architecture.
+	// Indicates whether the new deployment architecture is used.
 	//
 	// example:
 	//
 	// true
 	IsNewDeployment *string `json:"isNewDeployment,omitempty" xml:"isNewDeployment,omitempty"`
-	// The configuration of Kibana nodes.
+	// The Kibana node configuration.
 	KibanaConfiguration *ListInstanceResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
 	// The public network access whitelist for the Kibana node of the cluster.
 	KibanaIPWhitelist []*string `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
 	// The private network access whitelist for the Kibana node of the cluster.
 	KibanaPrivateIPWhitelist []*string `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
-	// The configuration of master nodes.
+	// The master node configuration.
 	MasterConfiguration *ListInstanceResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
-	// The network configuration.
+	// The network configurations.
 	NetworkConfig *ListInstanceResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 	// The number of data nodes in the instance.
 	//
@@ -196,9 +210,13 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// 2
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// The configuration of data nodes.
+	// The data node configurations.
 	NodeSpec *ListInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
+	//
+	// - **prepaid**: Subscription.
+	//
+	// - **postpaid**: Pay-as-you-go.
 	//
 	// example:
 	//
@@ -206,17 +224,25 @@ type ListInstanceResponseBodyResult struct {
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	// The access port of the instance.
 	//
+	// 	Notice: If the instance is being created or is in an abnormal state, this value may be null or 0.
+	//
 	// example:
 	//
 	// 9200
 	Port *string `json:"port,omitempty" xml:"port,omitempty"`
-	// The status of the pay-as-you-go service that is overlaid on the subscription instance. Valid values:
+	// The status of the pay-as-you-go service attached to a subscription instance. Valid values:
+	//
+	// - **active**: Normal.
+	//
+	// - **closed**: Disabled.
+	//
+	// - **indebt**: Frozen due to overdue payments.
 	//
 	// example:
 	//
 	// active
 	PostpaidServiceStatus *string `json:"postpaidServiceStatus,omitempty" xml:"postpaidServiceStatus,omitempty"`
-	// The private network access IP whitelist for the Elasticsearch cluster.
+	// The private network access whitelist for the Elasticsearch cluster.
 	PrivateNetworkIpWhiteList []*string `json:"privateNetworkIpWhiteList,omitempty" xml:"privateNetworkIpWhiteList,omitempty" type:"Repeated"`
 	// The access protocol. Valid values: HTTP and HTTPS.
 	//
@@ -224,7 +250,7 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The public network access whitelist for the Elasticsearch cluster.
+	// The public access whitelist for the Elasticsearch cluster.
 	PublicIpWhitelist []*string `json:"publicIpWhitelist,omitempty" xml:"publicIpWhitelist,omitempty" type:"Repeated"`
 	// The resource group ID.
 	//
@@ -232,13 +258,25 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// rg-aekzvowej3i****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Indicates whether the instance is a service VPC.
+	// The search node configuration. This is supported only by AI engine instances.
+	SearchNodeConfiguration *SearchNodeConfiguration `json:"searchNodeConfiguration,omitempty" xml:"searchNodeConfiguration,omitempty"`
+	// Indicates whether the VPC is a service VPC.
 	//
 	// example:
 	//
 	// true
 	ServiceVpc *bool `json:"serviceVpc,omitempty" xml:"serviceVpc,omitempty"`
 	// The status of the instance. Valid values:
+	//
+	// - active: Normal.
+	//
+	// - activating: Activating.
+	//
+	// - inactive: Frozen.
+	//
+	// - invalid: Invalid. The cluster does not exist or is inaccessible. In this case, some fields such as domain and kibanaDomain may be missing from the response.
+	//
+	// - unknown: Unknown. The cluster does not exist or is inaccessible. In this case, some fields such as domain and kibanaDomain may be missing from the response.
 	//
 	// example:
 	//
@@ -258,10 +296,13 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// vpc-bp1uag5jj38c****
 	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
+	// The number of zones.
+	//
 	// example:
 	//
 	// 1
-	ZoneCount *int32                                     `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+	ZoneCount *int32 `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
+	// The zone information.
 	ZoneInfos []*ListInstanceResponseBodyResultZoneInfos `json:"zoneInfos,omitempty" xml:"zoneInfos,omitempty" type:"Repeated"`
 }
 
@@ -315,6 +356,10 @@ func (s *ListInstanceResponseBodyResult) GetEsVersion() *string {
 
 func (s *ListInstanceResponseBodyResult) GetExtendConfigs() []map[string]interface{} {
 	return s.ExtendConfigs
+}
+
+func (s *ListInstanceResponseBodyResult) GetIndexNodeConfiguration() *IndexNodeConfiguration {
+	return s.IndexNodeConfiguration
 }
 
 func (s *ListInstanceResponseBodyResult) GetInstanceId() *string {
@@ -379,6 +424,10 @@ func (s *ListInstanceResponseBodyResult) GetPublicIpWhitelist() []*string {
 
 func (s *ListInstanceResponseBodyResult) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *ListInstanceResponseBodyResult) GetSearchNodeConfiguration() *SearchNodeConfiguration {
+	return s.SearchNodeConfiguration
 }
 
 func (s *ListInstanceResponseBodyResult) GetServiceVpc() *bool {
@@ -464,6 +513,11 @@ func (s *ListInstanceResponseBodyResult) SetExtendConfigs(v []map[string]interfa
 	return s
 }
 
+func (s *ListInstanceResponseBodyResult) SetIndexNodeConfiguration(v *IndexNodeConfiguration) *ListInstanceResponseBodyResult {
+	s.IndexNodeConfiguration = v
+	return s
+}
+
 func (s *ListInstanceResponseBodyResult) SetInstanceId(v string) *ListInstanceResponseBodyResult {
 	s.InstanceId = &v
 	return s
@@ -544,6 +598,11 @@ func (s *ListInstanceResponseBodyResult) SetResourceGroupId(v string) *ListInsta
 	return s
 }
 
+func (s *ListInstanceResponseBodyResult) SetSearchNodeConfiguration(v *SearchNodeConfiguration) *ListInstanceResponseBodyResult {
+	s.SearchNodeConfiguration = v
+	return s
+}
+
 func (s *ListInstanceResponseBodyResult) SetServiceVpc(v bool) *ListInstanceResponseBodyResult {
 	s.ServiceVpc = &v
 	return s
@@ -590,6 +649,11 @@ func (s *ListInstanceResponseBodyResult) Validate() error {
 			return err
 		}
 	}
+	if s.IndexNodeConfiguration != nil {
+		if err := s.IndexNodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.KibanaConfiguration != nil {
 		if err := s.KibanaConfiguration.Validate(); err != nil {
 			return err
@@ -607,6 +671,11 @@ func (s *ListInstanceResponseBodyResult) Validate() error {
 	}
 	if s.NodeSpec != nil {
 		if err := s.NodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SearchNodeConfiguration != nil {
+		if err := s.SearchNodeConfiguration.Validate(); err != nil {
 			return err
 		}
 	}
@@ -638,7 +707,7 @@ type ListInstanceResponseBodyResultClientNodeConfiguration struct {
 	//
 	// 3
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node. Unit: GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -656,7 +725,7 @@ type ListInstanceResponseBodyResultClientNodeConfiguration struct {
 	//
 	// elasticsearch.sn2ne.large
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The node specifications description.
+	// The description of the node specifications.
 	//
 	// example:
 	//
@@ -728,7 +797,7 @@ type ListInstanceResponseBodyResultElasticDataNodeConfiguration struct {
 	//
 	// 3
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node. Unit: GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -736,11 +805,21 @@ type ListInstanceResponseBodyResultElasticDataNodeConfiguration struct {
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
 	// Indicates whether cloud disk encryption is enabled for the node. Valid values:
 	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
 	// example:
 	//
 	// true
 	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
 	// The storage type of the node. Valid values:
+	//
+	// - cloud_ssd: Standard SSD.
+	//
+	// - cloud_essd: ESSD.
+	//
+	// - cloud_efficiency: Ultra disk.
 	//
 	// example:
 	//
@@ -752,7 +831,7 @@ type ListInstanceResponseBodyResultElasticDataNodeConfiguration struct {
 	//
 	// elasticsearch.sn2ne.large
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The node specifications description.
+	// The description of the node specifications.
 	//
 	// example:
 	//
@@ -833,7 +912,7 @@ type ListInstanceResponseBodyResultKibanaConfiguration struct {
 	//
 	// 1
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node. Unit: GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -851,7 +930,7 @@ type ListInstanceResponseBodyResultKibanaConfiguration struct {
 	//
 	// elasticsearch.n4.small
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The node specifications description.
+	// The description of the node specifications.
 	//
 	// example:
 	//
@@ -923,13 +1002,13 @@ type ListInstanceResponseBodyResultMasterConfiguration struct {
 	//
 	// 3
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node. Unit: GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
 	// 20
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The storage type of the node. Only cloud_ssd (standard SSD) is supported.
+	// The storage type of the node. Only standard SSDs (cloud_ssd) are supported.
 	//
 	// example:
 	//
@@ -941,7 +1020,7 @@ type ListInstanceResponseBodyResultMasterConfiguration struct {
 	//
 	// elasticsearch.sn2ne.large
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The node specifications description.
+	// The description of the node specifications.
 	//
 	// example:
 	//
@@ -1007,7 +1086,7 @@ func (s *ListInstanceResponseBodyResultMasterConfiguration) Validate() error {
 }
 
 type ListInstanceResponseBodyResultNetworkConfig struct {
-	// The network type. Only Virtual Private Cloud (VPC) is supported.
+	// The network type. Only virtual private clouds (VPCs) are supported.
 	//
 	// example:
 	//
@@ -1019,7 +1098,7 @@ type ListInstanceResponseBodyResultNetworkConfig struct {
 	//
 	// vpc-abc
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone where the instance is deployed.
+	// The zone where the instance resides.
 	//
 	// example:
 	//
@@ -1031,7 +1110,7 @@ type ListInstanceResponseBodyResultNetworkConfig struct {
 	//
 	// vsw-def
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
-	// The whitelist group settings for the public and private networks of the cluster.
+	// The public and private network whitelist group settings for the cluster.
 	WhiteIpGroupList []*ListInstanceResponseBodyResultNetworkConfigWhiteIpGroupList `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
 }
 
@@ -1102,7 +1181,7 @@ func (s *ListInstanceResponseBodyResultNetworkConfig) Validate() error {
 }
 
 type ListInstanceResponseBodyResultNetworkConfigWhiteIpGroupList struct {
-	// The group name.
+	// The name of the group.
 	//
 	// example:
 	//
@@ -1110,7 +1189,15 @@ type ListInstanceResponseBodyResultNetworkConfigWhiteIpGroupList struct {
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	// The network whitelist.
 	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
-	// The network type. PRIVATE_ES: Elasticsearch private network. PUBLIC_KIBANA: Kibana public network. PUBLIC_ES: Elasticsearch public network. PRIVATE_KIBANA: Kibana private network.
+	// The network type. Valid values:
+	//
+	// - PRIVATE_ES: Elasticsearch private network.
+	//
+	// - PUBLIC_KIBANA: Kibana public network.
+	//
+	// - PUBLIC_ES: Elasticsearch public network.
+	//
+	// - PRIVATE_KIBANA: Kibana private network.
 	//
 	// example:
 	//
@@ -1158,7 +1245,7 @@ func (s *ListInstanceResponseBodyResultNetworkConfigWhiteIpGroupList) Validate()
 }
 
 type ListInstanceResponseBodyResultNodeSpec struct {
-	// The storage size of the node. Unit: GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -1166,21 +1253,35 @@ type ListInstanceResponseBodyResultNodeSpec struct {
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
 	// Indicates whether disk encryption is enabled. Valid values:
 	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
 	// example:
 	//
 	// false
 	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	// The storage preference. Default value: high_availability. Valid values:
+	//
+	// - high_availability: High availability.
+	//
+	// - high_cost_performance: High cost-effectiveness.
+	//
 	// example:
 	//
 	// high_availability
 	DiskPreference *string `json:"diskPreference,omitempty" xml:"diskPreference,omitempty"`
 	// The storage type of the node. Valid values:
 	//
+	// - cloud_ssd: Standard SSD.
+	//
+	// - cloud_efficiency: Ultra disk.
+	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The performance level (PL) of the ESSD cloud disk. This parameter is required when diskType is set to cloud_essd. Valid values: PL1, PL2, and PL3. When diskType is set to cloud_ssd (standard SSD), this parameter is not required.
+	// The performance level (PL) of the ESSD cloud disk. This parameter is required when diskType is set to cloud_essd, and does not apply to a standard SSD. Valid values: PL1, PL2, and PL3.
 	//
 	// example:
 	//
@@ -1192,7 +1293,7 @@ type ListInstanceResponseBodyResultNodeSpec struct {
 	//
 	// elasticsearch.n4.small
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The node specifications description.
+	// The description of the node specifications.
 	//
 	// example:
 	//
@@ -1321,10 +1422,18 @@ func (s *ListInstanceResponseBodyResultTags) Validate() error {
 }
 
 type ListInstanceResponseBodyResultZoneInfos struct {
+	// The status of the zone. Valid values:
+	//
+	// - NORMAL: Normal.
+	//
+	// - ISOLATION: Isolated.
+	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The zone ID, such as cn-hangzhou-i.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

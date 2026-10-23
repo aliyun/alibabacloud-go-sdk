@@ -16,13 +16,18 @@ type iInitializeOperationRoleRequest interface {
 }
 
 type InitializeOperationRoleRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. The client generates the value. The value must be unique among different requests and can be up to 64 ASCII characters long.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The name of the Elasticsearch service-linked role to be created.
+	//
+	// example:
+	//
+	// {"rolename":"AliyunServiceRoleForElasticsearchCollector"}
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InitializeOperationRoleRequest) String() string {

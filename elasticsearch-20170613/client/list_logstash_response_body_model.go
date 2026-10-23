@@ -18,9 +18,9 @@ type iListLogstashResponseBody interface {
 }
 
 type ListLogstashResponseBody struct {
-	// The request header information.
+	// The request headers.
 	Headers *ListLogstashResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -122,12 +122,14 @@ type ListLogstashResponseBodyResult struct {
 	//
 	// 2018-07-13T03:58:07.253Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// ls-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The expiration time of the subscription instance.
+	//
 	// example:
 	//
 	// 4928745600000
@@ -138,7 +140,7 @@ type ListLogstashResponseBodyResult struct {
 	//
 	// ls-cn-n6w1o5jq****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The network configuration.
+	// The network configurations.
 	NetworkConfig *ListLogstashResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 	// The number of nodes in the instance.
 	//
@@ -146,16 +148,33 @@ type ListLogstashResponseBodyResult struct {
 	//
 	// 2
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// The configuration information of data nodes.
+	// The configurations of the data node.
 	NodeSpec *ListLogstashResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
-	// The billing method of the instance. Valid values: prepaid (subscription) and postpaid (pay-as-you-go).
+	// The billing method of the instance. Valid values:
+	//
+	// - prepaid: subscription.
+	//
+	// - postpaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// postpaid
-	PaymentType     *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The ID of the resource group to which the Logstash instance belongs.
+	//
+	// example:
+	//
+	// rg-acfm2h5vbzd****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The instance status. Valid values: active (Normal), activating (taking effect), inactive (frozen), and invalid (expired).
+	// The status of the instance. Valid values:
+	//
+	// - active: normal.
+	//
+	// - activating: activating.
+	//
+	// - inactive: frozen.
+	//
+	// - invalid: invalid.
 	//
 	// example:
 	//
@@ -167,7 +186,7 @@ type ListLogstashResponseBodyResult struct {
 	//
 	// 2018-07-18T10:10:04.484Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The instance version. Currently, only 6.7.0_with_X-Pack and 7.4.0_with_X-Pack are supported.
+	// The version of the instance. Only 6.7.0_with_X-Pack and 7.4.0_with_X-Pack are supported.
 	//
 	// example:
 	//
@@ -369,25 +388,25 @@ func (s *ListLogstashResponseBodyResultTags) Validate() error {
 }
 
 type ListLogstashResponseBodyResultNetworkConfig struct {
-	// The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+	// The network type. Only VPC is supported.
 	//
 	// example:
 	//
 	// vpc
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The VPC ID.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// vpc-abc
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone where the instance resides.
+	// The zone where the instance is deployed.
 	//
 	// example:
 	//
 	// cn-hangzhou-*
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
@@ -450,11 +469,11 @@ type ListLogstashResponseBodyResultNodeSpec struct {
 	//
 	// 50
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// Indicates whether disk encryption is enabled. Valid values:
+	// Specifies whether disk encryption is enabled. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enabled.
 	//
-	// - false: Disabled.
+	// - false: disabled.
 	//
 	// example:
 	//
@@ -466,7 +485,7 @@ type ListLogstashResponseBodyResultNodeSpec struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The instance specification.
+	// The instance type.
 	//
 	// example:
 	//

@@ -80,7 +80,7 @@ type UpdateAliwsDictResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type of the dictionary file. Valid values:
 	//
-	// - OSS: uses OSS open storage.
+	// - OSS: uses OSS public storage.
 	//
 	// - ORIGIN: retains the previously uploaded dictionary.
 	//
@@ -88,7 +88,7 @@ type UpdateAliwsDictResponseBodyResult struct {
 	//
 	// OSS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The dictionary type. Valid values: ALI_WS (AliNLP tokenizer).
+	// The dictionary type. Valid value: ALI_WS (AliNLP word segmentation).
 	//
 	// example:
 	//

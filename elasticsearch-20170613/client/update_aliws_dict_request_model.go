@@ -16,8 +16,13 @@ type iUpdateAliwsDictRequest interface {
 }
 
 type UpdateAliwsDictRequest struct {
+	// The file name, source, and OSS file information of the AliNLP word segmentation dictionary.
+	//
+	// example:
+	//
+	// [{"name":"deploy_0.txt","ossObject":{"bucketName":"search-cloud-test-cn-****","key":"user_dict/dict_0.txt"},"sourceType":"OSS","type":"ALI_WS"},{"name":"aliws_ext_dict.txt","sourceType":"ORIGIN","type":"ALI_WS"}]
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// A unique token used to ensure the idempotence of the request. The client generates this value. It must be unique across different requests and cannot exceed 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//

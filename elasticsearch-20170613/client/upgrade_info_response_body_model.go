@@ -93,19 +93,19 @@ func (s *UpgradeInfoResponseBodyResult) Validate() error {
 }
 
 type UpgradeInfoResponseBodyResultUpgradeInfo struct {
-	// The current repo version.
+	// The current repository version.
 	//
 	// example:
 	//
 	// 1.7.3
 	CurRepoVersion *string `json:"CurRepoVersion,omitempty" xml:"CurRepoVersion,omitempty"`
-	// The repo version available for upgrade.
+	// The upgradable repository version.
 	//
 	// example:
 	//
 	// 1.7.3
 	UpdateRepoVersion *string `json:"UpdateRepoVersion,omitempty" xml:"UpdateRepoVersion,omitempty"`
-	// Indicates whether an upgradeable version is available.
+	// Indicates whether an upgradable version is available.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ type UpgradeInfoResponseBodyResultUpgradeInfo struct {
 	//
 	// 8.17.0
 	CurEsVersion *string `json:"curEsVersion,omitempty" xml:"curEsVersion,omitempty"`
-	// The kernel version available for upgrade.
+	// The upgradable kernel version.
 	//
 	// example:
 	//
 	// 2.2.4
 	UpgradeApackVersion *string `json:"upgradeApackVersion,omitempty" xml:"upgradeApackVersion,omitempty"`
-	// The Elasticsearch version available for upgrade.
+	// The upgradable Elasticsearch version.
 	//
 	// example:
 	//

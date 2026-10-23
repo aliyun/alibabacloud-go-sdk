@@ -24,9 +24,9 @@ type UpdateExtendConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result. Valid values:
 	//
-	// - true: The scenario-based configuration template was modified successfully.
+	// - true: The scenario-based configuration template was updated.
 	//
-	// - false: The scenario-based configuration template failed to be modified.
+	// - false: The scenario-based configuration template failed to be updated.
 	//
 	// example:
 	//

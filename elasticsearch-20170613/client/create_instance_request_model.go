@@ -19,6 +19,8 @@ type iCreateInstanceRequest interface {
 	GetEsAdminPassword() *string
 	SetEsVersion(v string) *CreateInstanceRequest
 	GetEsVersion() *string
+	SetIndexNodeConfiguration(v *IndexNodeConfiguration) *CreateInstanceRequest
+	GetIndexNodeConfiguration() *IndexNodeConfiguration
 	SetInstanceCategory(v string) *CreateInstanceRequest
 	GetInstanceCategory() *string
 	SetKibanaConfiguration(v *KibanaNodeConfiguration) *CreateInstanceRequest
@@ -37,6 +39,8 @@ type iCreateInstanceRequest interface {
 	GetPaymentType() *string
 	SetResourceGroupId(v string) *CreateInstanceRequest
 	GetResourceGroupId() *string
+	SetSearchNodeConfiguration(v *SearchNodeConfiguration) *CreateInstanceRequest
+	GetSearchNodeConfiguration() *SearchNodeConfiguration
 	SetTags(v []*CreateInstanceRequestTags) *CreateInstanceRequest
 	GetTags() []*CreateInstanceRequestTags
 	SetWarmNodeConfiguration(v *WarmNodeConfiguration) *CreateInstanceRequest
@@ -58,7 +62,7 @@ type CreateInstanceRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The elastic node configuration.
 	ElasticDataNodeConfiguration *ElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty"`
-	// The access password of the instance. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=). The password must be 8 to 32 characters in length.
+	// The access password of the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !@#$%^&*()_+-=.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +88,7 @@ type CreateInstanceRequest struct {
 	//
 	// - 5.5.3_with_X-Pack
 	//
-	// > The versions listed above may not include all versions supported by Elasticsearch instances. Call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
+	// > The preceding versions may not include all versions supported by Elasticsearch instances. To view the actual supported versions, call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -92,11 +96,13 @@ type CreateInstanceRequest struct {
 	//
 	// 5.5.3_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
+	// The index node configuration. Only instances with the AI engine type support index node configuration.
+	IndexNodeConfiguration *IndexNodeConfiguration `json:"indexNodeConfiguration,omitempty" xml:"indexNodeConfiguration,omitempty"`
 	// The edition type. Valid values:
 	//
-	// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
+	// - x-pack: Creates a Commercial Edition instance, or an Advanced Edition instance with Indexing Service and OpenStore disabled.
 	//
-	// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
+	// - IS: Creates an Advanced Edition instance with Indexing Service or OpenStore enabled.
 	//
 	// example:
 	//
@@ -104,15 +110,15 @@ type CreateInstanceRequest struct {
 	InstanceCategory *string `json:"instanceCategory,omitempty" xml:"instanceCategory,omitempty"`
 	// The Kibana node configuration.
 	//
-	// > We strongly recommend that you enable Kibana nodes.
+	// > Enable the Kibana node.
 	KibanaConfiguration *KibanaNodeConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty"`
 	// The dedicated master node configuration.
 	//
-	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call createInstance to create an instance with next-generation cloud disk-based dedicated master nodes, specify the instance family followed by the `.new` suffix. For example, elasticsearch.sn1ne.large.new.
+	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call the createInstance operation to create an instance with a new-generation cloud disk-based dedicated master node, you must specify the instance family with the `.new` suffix, such as elasticsearch.sn1ne.large.new.
 	MasterConfiguration *MasterNodeConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty"`
 	// The network configuration.
 	//
-	// > You cannot specify an IP whitelist when creating an instance.
+	// > You cannot specify an IP address whitelist when you create an instance.
 	//
 	// This parameter is required.
 	NetworkConfig *NetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
@@ -126,9 +132,9 @@ type CreateInstanceRequest struct {
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
 	// The data node configuration.
 	//
-	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call createInstance to create an instance with next-generation cloud disk-based data nodes, specify the instance family followed by the `.new` suffix. For example, elasticsearch.sn1ne.large.new.
+	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call the createInstance operation to create an instance with a new-generation cloud disk-based data node, you must specify the instance family with the `.new` suffix, such as elasticsearch.sn1ne.large.new.
 	NodeSpec *NodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
-	// The billing details of the subscription instance. This parameter is required when you create a subscription instance.
+	// The payment details of the subscription instance. This parameter is required when you create a subscription instance.
 	PaymentInfo *PaymentInfo `json:"paymentInfo,omitempty" xml:"paymentInfo,omitempty"`
 	// The billing method. Valid values:
 	//
@@ -146,9 +152,11 @@ type CreateInstanceRequest struct {
 	//
 	// rg-aekzu7tsu4n****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The instance tags.
+	// The query node configuration. Only instances with the AI engine type support query node configuration.
+	SearchNodeConfiguration *SearchNodeConfiguration `json:"searchNodeConfiguration,omitempty" xml:"searchNodeConfiguration,omitempty"`
+	// The instance label group.
 	Tags []*CreateInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The cold data node configuration.
+	// The warm data node configuration.
 	WarmNodeConfiguration *WarmNodeConfiguration `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
 	// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 	//
@@ -156,7 +164,7 @@ type CreateInstanceRequest struct {
 	//
 	// 2
 	ZoneCount *int32 `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
-	// A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -190,6 +198,10 @@ func (s *CreateInstanceRequest) GetEsAdminPassword() *string {
 
 func (s *CreateInstanceRequest) GetEsVersion() *string {
 	return s.EsVersion
+}
+
+func (s *CreateInstanceRequest) GetIndexNodeConfiguration() *IndexNodeConfiguration {
+	return s.IndexNodeConfiguration
 }
 
 func (s *CreateInstanceRequest) GetInstanceCategory() *string {
@@ -226,6 +238,10 @@ func (s *CreateInstanceRequest) GetPaymentType() *string {
 
 func (s *CreateInstanceRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *CreateInstanceRequest) GetSearchNodeConfiguration() *SearchNodeConfiguration {
+	return s.SearchNodeConfiguration
 }
 
 func (s *CreateInstanceRequest) GetTags() []*CreateInstanceRequestTags {
@@ -266,6 +282,11 @@ func (s *CreateInstanceRequest) SetEsAdminPassword(v string) *CreateInstanceRequ
 
 func (s *CreateInstanceRequest) SetEsVersion(v string) *CreateInstanceRequest {
 	s.EsVersion = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetIndexNodeConfiguration(v *IndexNodeConfiguration) *CreateInstanceRequest {
+	s.IndexNodeConfiguration = v
 	return s
 }
 
@@ -314,6 +335,11 @@ func (s *CreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequ
 	return s
 }
 
+func (s *CreateInstanceRequest) SetSearchNodeConfiguration(v *SearchNodeConfiguration) *CreateInstanceRequest {
+	s.SearchNodeConfiguration = v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetTags(v []*CreateInstanceRequestTags) *CreateInstanceRequest {
 	s.Tags = v
 	return s
@@ -345,6 +371,11 @@ func (s *CreateInstanceRequest) Validate() error {
 			return err
 		}
 	}
+	if s.IndexNodeConfiguration != nil {
+		if err := s.IndexNodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.KibanaConfiguration != nil {
 		if err := s.KibanaConfiguration.Validate(); err != nil {
 			return err
@@ -370,6 +401,11 @@ func (s *CreateInstanceRequest) Validate() error {
 			return err
 		}
 	}
+	if s.SearchNodeConfiguration != nil {
+		if err := s.SearchNodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tags != nil {
 		for _, item := range s.Tags {
 			if item != nil {
@@ -388,13 +424,13 @@ func (s *CreateInstanceRequest) Validate() error {
 }
 
 type CreateInstanceRequestTags struct {
-	// The tag key of the instance.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// KeyTest
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The tag value of the instance.
+	// The value of the tag.
 	//
 	// example:
 	//

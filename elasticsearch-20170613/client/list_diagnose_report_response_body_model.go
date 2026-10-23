@@ -26,7 +26,7 @@ type ListDiagnoseReportResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The returned result.
 	Result []*ListDiagnoseReportResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -84,7 +84,7 @@ func (s *ListDiagnoseReportResponseBody) Validate() error {
 }
 
 type ListDiagnoseReportResponseBodyHeaders struct {
-	// The total number of records returned.
+	// The total number of returned records.
 	//
 	// example:
 	//
@@ -120,22 +120,28 @@ type ListDiagnoseReportResponseBodyResult struct {
 	//
 	// 1535745731000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The list of diagnostic items in the report.
+	// The list of diagnostic item information in the report.
 	DiagnoseItems []*ListDiagnoseReportResponseBodyResultDiagnoseItems `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
-	DiagnosisMode *string                                              `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
+	// The diagnostic mode. Valid values: RULE and AGENT.
+	//
+	// example:
+	//
+	// RULE
+	DiagnosisMode *string `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
 	// The overall health status of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
 	//
 	// example:
 	//
 	// YELLOW
 	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// The instance ID of the diagnosed instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// es-cn-abc
-	InstanceId *string                                      `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Items      []*ListDiagnoseReportResponseBodyResultItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The list of diagnostic item details. This list may be empty if details are not requested.
+	Items []*ListDiagnoseReportResponseBodyResultItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The report ID.
 	//
 	// example:
@@ -148,7 +154,7 @@ type ListDiagnoseReportResponseBodyResult struct {
 	//
 	// SUCCESS
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The trigger method of the health diagnostics. Valid values:
+	// The trigger method for health diagnostics. Valid values:
 	//
 	// - SYSTEM: automatically triggered by the system
 	//
@@ -363,9 +369,9 @@ type ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail struct {
 	//
 	// - TEXT: text description
 	//
-	// - CONSOLE_API: console-triggered
+	// - CONSOLE_API: triggered by the console
 	//
-	// - ES_API: API-triggered
+	// - ES_API: triggered by the API
 	//
 	// example:
 	//
@@ -431,12 +437,38 @@ func (s *ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail) Validate() err
 }
 
 type ListDiagnoseReportResponseBodyResultItems struct {
-	Desc    *string                `json:"desc,omitempty" xml:"desc,omitempty"`
-	Detail  map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
-	Item    *string                `json:"item,omitempty" xml:"item,omitempty"`
-	Name    *string                `json:"name,omitempty" xml:"name,omitempty"`
-	State   *string                `json:"state,omitempty" xml:"state,omitempty"`
-	Suggest *string                `json:"suggest,omitempty" xml:"suggest,omitempty"`
+	// The description of the diagnostic conclusion.
+	//
+	// example:
+	//
+	// Everything is normal
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The diagnostic details. This field is empty if details are not requested.
+	Detail map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
+	// The code of the diagnostic item.
+	//
+	// example:
+	//
+	// cluster.health
+	Item *string `json:"item,omitempty" xml:"item,omitempty"`
+	// The name of the diagnostic item.
+	//
+	// example:
+	//
+	// Cluster health
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The health status of the diagnostic item. Valid values: GREEN, YELLOW, and RED.
+	//
+	// example:
+	//
+	// GREEN
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The handling suggestion.
+	//
+	// example:
+	//
+	// Monitor GC
+	Suggest *string `json:"suggest,omitempty" xml:"suggest,omitempty"`
 }
 
 func (s ListDiagnoseReportResponseBodyResultItems) String() string {

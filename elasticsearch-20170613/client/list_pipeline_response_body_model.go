@@ -20,13 +20,13 @@ type iListPipelineResponseBody interface {
 type ListPipelineResponseBody struct {
 	// The response headers.
 	Headers *ListPipelineResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The returned result.
 	Result []*ListPipelineResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -114,31 +114,31 @@ func (s *ListPipelineResponseBodyHeaders) Validate() error {
 }
 
 type ListPipelineResponseBodyResult struct {
-	// The time when the pipeline was created.
+	// The time when the pipeline was created. The format is YYYY-MM-DDTHH:mm:ss.SSSZ, where the trailing Z indicates UTC.
 	//
 	// example:
 	//
 	// 2020-08-05T03:10:38.188Z
 	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	// The time when the pipeline was last updated.
+	// The time when the pipeline was updated. The format is YYYY-MM-DDTHH:mm:ss.SSSZ, where the trailing Z indicates UTC.
 	//
 	// example:
 	//
 	// 2020-08-05T08:43:31.757Z
 	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	// The pipeline ID.
+	// The ID of the pipeline.
 	//
 	// example:
 	//
 	// pipeline_test
 	PipelineId *string `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
-	// The pipeline status. Valid values:
+	// The status of the pipeline. Valid values:
 	//
-	// - NOT_DEPLOYED: not deployed.
+	// - NOT_DEPLOYED: not deployed
 	//
-	// - RUNNING: running.
+	// - RUNNING: running
 	//
-	// - DELETED: deleted. This status is not displayed in the console.
+	// - DELETED: deleted (this status is not displayed in the console)
 	//
 	// example:
 	//

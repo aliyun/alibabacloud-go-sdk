@@ -28,14 +28,46 @@ type iListActionRecordsRequest interface {
 }
 
 type ListActionRecordsRequest struct {
+	// Filters records by the name of the change operation. Separate multiple names with commas.
+	//
+	// example:
+	//
+	// RestartInstance
 	ActionNames *string `json:"actionNames,omitempty" xml:"actionNames,omitempty"`
-	EndTime     *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	Filter      *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	Page        *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	RequestId   *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
-	StartTime   *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	UserId      *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The upper bound of the query range for the change start time. The value is a UNIX timestamp in milliseconds. If you do not specify this parameter, the current time is used.
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The display type of change records. Default value: ACTION_RECORD.
+	//
+	// example:
+	//
+	// ACTION_RECORD
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The page number of the returned results.
+	//
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Filters records by the ID of the request that triggered the change.
+	//
+	// example:
+	//
+	// request-123
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The number of records returned per page.
+	//
+	// example:
+	//
+	// 10
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The lower bound of the query range for the change start time. The value is a UNIX timestamp in milliseconds.
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// Filters records by the ID of the user that triggered the change.
+	//
+	// example:
+	//
+	// user-123
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ListActionRecordsRequest) String() string {

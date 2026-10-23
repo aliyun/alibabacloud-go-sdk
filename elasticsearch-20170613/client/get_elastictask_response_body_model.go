@@ -109,13 +109,13 @@ func (s *GetElastictaskResponseBodyResult) Validate() error {
 }
 
 type GetElastictaskResponseBodyResultElasticExpansionTask struct {
-	// The trigger cycle, specified as a Quartz Cron expression.
+	// The trigger cycle, which uses a Quartz Cron expression.
 	//
 	// example:
 	//
 	// 0 0 0 ? 	- MON
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	// The number of elastic data nodes during peak hours.
+	// The target number of elastic data nodes during peak hours.
 	//
 	// example:
 	//
@@ -126,9 +126,10 @@ type GetElastictaskResponseBodyResultElasticExpansionTask struct {
 	// example:
 	//
 	// 2
-	ReplicaCount  *int32    `json:"replicaCount,omitempty" xml:"replicaCount,omitempty"`
+	ReplicaCount *int32 `json:"replicaCount,omitempty" xml:"replicaCount,omitempty"`
+	// The list of target index names for the elastic scaling task. Wildcards are supported.
 	TargetIndices []*string `json:"targetIndices,omitempty" xml:"targetIndices,omitempty" type:"Repeated"`
-	// The cause. Currently, only **crontab*	- is supported, which indicates scheduled triggering.
+	// The Cause. Currently, only **crontab*	- is supported, which indicates scheduled triggering.
 	//
 	// example:
 	//
@@ -194,13 +195,13 @@ func (s *GetElastictaskResponseBodyResultElasticExpansionTask) Validate() error 
 }
 
 type GetElastictaskResponseBodyResultElasticShrinkTask struct {
-	// The trigger cycle, specified as a Quartz Cron expression.
+	// The trigger cycle, which uses a Quartz Cron expression.
 	//
 	// example:
 	//
 	// 4 4 4 ? 	- WED
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	// The number of elastic data nodes during off-peak hours.
+	// The target number of elastic data nodes during off-peak hours.
 	//
 	// example:
 	//
@@ -211,9 +212,10 @@ type GetElastictaskResponseBodyResultElasticShrinkTask struct {
 	// example:
 	//
 	// 2
-	ReplicaCount  *int32    `json:"replicaCount,omitempty" xml:"replicaCount,omitempty"`
+	ReplicaCount *int32 `json:"replicaCount,omitempty" xml:"replicaCount,omitempty"`
+	// The list of target index names for the elastic scaling task. Wildcards are supported.
 	TargetIndices []*string `json:"targetIndices,omitempty" xml:"targetIndices,omitempty" type:"Repeated"`
-	// The cause. Currently, only crontab is supported, which indicates scheduled triggering.
+	// The Cause. Currently, only crontab is supported, which indicates scheduled triggering.
 	//
 	// example:
 	//

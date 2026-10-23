@@ -18,17 +18,19 @@ type iPluginAnalysisRequest interface {
 type PluginAnalysisRequest struct {
 	// The request body parameters.
 	//
-	// ```[
+	// ```
+	//
+	// [
 	//
 	//   {
 	//
-	//     "name": "plugin_name.zip",// plugin name
+	//     "name": "plugin_name.zip", // plugin name
 	//
 	//     "ossObject": {
 	//
-	//       "bucketName": "bucketName",// oss bucket name
+	//       "bucketName": "bucketName", // OSS bucket name
 	//
-	//       "key": "my_plugin_dir/plugin_name.zip" // oss file name
+	//       "key": "my_plugin_dir/plugin_name.zip" // OSS file name
 	//
 	//     }
 	//
@@ -36,7 +38,7 @@ type PluginAnalysisRequest struct {
 	//
 	// ]
 	//
-	// `
+	// ```
 	//
 	// example:
 	//
@@ -54,11 +56,11 @@ type PluginAnalysisRequest struct {
 	//
 	//   }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// Specifies whether to perform a pre-upload check. Valid values:
+	// Specifies whether to perform a pre-upgrade check. Valid values:
 	//
-	// - true: Only performs the check.
+	// - true: performs only the check.
 	//
-	// - false: Directly uploads the plug-in.
+	// - false: uploads the plugin directly.
 	//
 	// example:
 	//

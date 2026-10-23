@@ -16,8 +16,13 @@ type iMigrateToOtherZoneRequest interface {
 }
 
 type MigrateToOtherZoneRequest struct {
+	// The zone migration configuration, including the source zone, destination zone, and destination vSwitch.
+	//
+	// example:
+	//
+	// {"fromZoneId":"cn-hangzhou-e","toZoneId":"cn-hangzhou-f","toVswitchId":"vsw-bp16t5hpc689dgkgc****"}
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// Specifies whether to perform a dry run of the zone node migration. A value of true indicates that only validation is performed without executing the migration task. A value of false indicates that the migration task is executed after validation passes.
+	// Specifies whether to precheck the node migration across zones. A value of true indicates that only a precheck is performed and the migration task is not executed. A value of false indicates that the migration task is executed after the precheck succeeds.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type MoveResourceGroupResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The result.
 	Result *MoveResourceGroupResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,27 +62,27 @@ func (s *MoveResourceGroupResponseBody) Validate() error {
 }
 
 type MoveResourceGroupResponseBodyResult struct {
-	// The time when the instance was created.
+	// The time when the instance was created. The time follows the YYYY-MM-DDTHH:mm:ss.SSSZ format, where Z indicates UTC.
 	//
 	// example:
 	//
 	// 2020-07-06T10:18:48.662Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// es-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The IK dictionary configuration.
+	// The IK dictionary configurations.
 	DictList []*MoveResourceGroupResponseBodyResultDictList `json:"dictList,omitempty" xml:"dictList,omitempty" type:"Repeated"`
-	// The internal network access address of the instance.
+	// The internal endpoint of the instance.
 	//
 	// example:
 	//
 	// es-cn-nif1q8auz0003****.elasticsearch.aliyuncs.com
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The instance version.
+	// The version of the instance.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type MoveResourceGroupResponseBodyResult struct {
 	//
 	// es-cn-n6w1o1x0w001c****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The Kibana node configuration.
+	// The Kibana node configurations.
 	KibanaConfiguration *MoveResourceGroupResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
 	// The Kibana public network access address.
 	//
@@ -102,15 +102,15 @@ type MoveResourceGroupResponseBodyResult struct {
 	//
 	// es-cn-nif1q8auz0003****.kibana.elasticsearch.aliyuncs.com
 	KibanaDomain *string `json:"kibanaDomain,omitempty" xml:"kibanaDomain,omitempty"`
-	// The Kibana public network port.
+	// The public port of Kibana.
 	//
 	// example:
 	//
 	// 5601
 	KibanaPort *int32 `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
-	// The master node configuration.
+	// The master node configurations.
 	MasterConfiguration *MoveResourceGroupResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
-	// The network configuration.
+	// The network configurations.
 	NetworkConfig *MoveResourceGroupResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 	// The number of data nodes in the instance.
 	//
@@ -118,13 +118,13 @@ type MoveResourceGroupResponseBodyResult struct {
 	//
 	// 2
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// The data node configuration.
+	// The data node configurations.
 	NodeSpec *MoveResourceGroupResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
-	// - prepaid: subscription.
+	// - prepaid: Subscription.
 	//
-	// - postpaid: pay-as-you-go.
+	// - postpaid: Pay-as-you-go.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type MoveResourceGroupResponseBodyResult struct {
 	//
 	// es-cn-n6w1o1x0w001c****.public.elasticsearch.aliyuncs.com
 	PublicDomain *string `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
-	// The public network port.
+	// The public port.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type MoveResourceGroupResponseBodyResult struct {
 	//
 	// - active: Normal.
 	//
-	// - activating: Taking effect.
+	// - activating: Activating.
 	//
 	// - inactive: Frozen.
 	//
@@ -156,9 +156,9 @@ type MoveResourceGroupResponseBodyResult struct {
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The synonym dictionary configuration.
+	// The synonym dictionary configurations.
 	SynonymsDicts []*MoveResourceGroupResponseBodyResultSynonymsDicts `json:"synonymsDicts,omitempty" xml:"synonymsDicts,omitempty" type:"Repeated"`
-	// The time when the instance was last updated.
+	// The time when the instance was last updated. The time follows the YYYY-MM-DDTHH:mm:ss.SSSZ format, where Z indicates UTC.
 	//
 	// example:
 	//
@@ -402,9 +402,9 @@ type MoveResourceGroupResponseBodyResultDictList struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type. Valid values:
 	//
-	// - OSS: OSS open storage (the OSS bucket must be publicly readable).
+	// - OSS: Object Storage Service (OSS). Make sure that the OSS bucket is publicly readable.
 	//
-	// - ORIGIN: retains the previously uploaded dictionary.
+	// - ORIGIN: The previously uploaded dictionary is retained.
 	//
 	// example:
 	//
@@ -412,13 +412,13 @@ type MoveResourceGroupResponseBodyResultDictList struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The dictionary type. Valid values:
 	//
-	// - STOP: stopword.
+	// - STOP: Stopword dictionary.
 	//
-	// - MAIN: main dictionary.
+	// - MAIN: Main dictionary.
 	//
-	// - SYNONYMS: synonym dictionary.
+	// - SYNONYMS: Synonym dictionary.
 	//
-	// - ALI_WS: Alibaba dictionary.
+	// - ALI_WS: Alibaba Cloud dictionary.
 	//
 	// example:
 	//
@@ -481,7 +481,7 @@ type MoveResourceGroupResponseBodyResultKibanaConfiguration struct {
 	//
 	// 1
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage space size of the node. Unit: GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -556,7 +556,7 @@ type MoveResourceGroupResponseBodyResultMasterConfiguration struct {
 	//
 	// 3
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage space size of the node. Unit: GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -700,7 +700,7 @@ func (s *MoveResourceGroupResponseBodyResultNetworkConfig) Validate() error {
 }
 
 type MoveResourceGroupResponseBodyResultNodeSpec struct {
-	// The storage space size of the node. Unit: GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -774,9 +774,9 @@ type MoveResourceGroupResponseBodyResultSynonymsDicts struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type. Valid values:
 	//
-	// - OSS: OSS open storage (the OSS bucket must be publicly readable).
+	// - OSS: Object Storage Service (OSS). Make sure that the OSS bucket is publicly readable.
 	//
-	// - ORIGIN: retains the previously uploaded dictionary.
+	// - ORIGIN: The previously uploaded dictionary is retained.
 	//
 	// example:
 	//
@@ -784,13 +784,13 @@ type MoveResourceGroupResponseBodyResultSynonymsDicts struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The dictionary type. Valid values:
 	//
-	// - STOP: stopword.
+	// - STOP: Stopword dictionary.
 	//
-	// - MAIN: main dictionary.
+	// - MAIN: Main dictionary.
 	//
-	// - SYNONYMS: synonym dictionary.
+	// - SYNONYMS: Synonym dictionary.
 	//
-	// - ALI_WS: Alibaba dictionary.
+	// - ALI_WS: Alibaba Cloud dictionary.
 	//
 	// example:
 	//

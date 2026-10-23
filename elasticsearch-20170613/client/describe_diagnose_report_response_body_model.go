@@ -62,7 +62,7 @@ func (s *DescribeDiagnoseReportResponseBody) Validate() error {
 }
 
 type DescribeDiagnoseReportResponseBodyResult struct {
-	// The timestamp when the report was created. Unit: ms.
+	// The timestamp when the report was created. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -70,33 +70,39 @@ type DescribeDiagnoseReportResponseBodyResult struct {
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The list of diagnostic items in the report.
 	DiagnoseItems []*DescribeDiagnoseReportResponseBodyResultDiagnoseItems `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
-	DiagnosisMode *string                                                  `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
-	// The overall health of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
+	// The diagnosis mode. Valid values: RULE and AGENT.
+	//
+	// example:
+	//
+	// RULE
+	DiagnosisMode *string `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
+	// The overall health status of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
 	//
 	// example:
 	//
 	// YELLOW
 	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// The instance ID of the diagnosed instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// es-cn-abc
-	InstanceId *string                                          `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Items      []*DescribeDiagnoseReportResponseBodyResultItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The list of diagnostic item details. This parameter may be empty if details are not required.
+	Items []*DescribeDiagnoseReportResponseBodyResultItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The report ID.
 	//
 	// example:
 	//
 	// trigger__2020-08-17T17:09:02
 	ReportId *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
-	// The diagnostic status. Valid values: SUCCESS, FAILED, and RUNNING.
+	// The diagnosis status. Valid values: SUCCESS, FAILED, and RUNNING.
 	//
 	// example:
 	//
 	// SUCCESS
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The method used to trigger the health diagnostics. Valid values: SYSTEM (automatically triggered by the system), INNER (internally triggered), and USER (manually triggered by the user).
+	// The trigger method of the health diagnosis. Valid values: SYSTEM (automatically triggered by the system), INNER (internally triggered), and USER (manually triggered by the user).
 	//
 	// example:
 	//
@@ -301,7 +307,7 @@ type DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail struct {
 	//
 	// You can call the following function in the Elasticsearch API....
 	Suggest *string `json:"suggest,omitempty" xml:"suggest,omitempty"`
-	// The type of the diagnostic result. Valid values: TEXT (text description), CONSOLE_API (console-triggered), and ES_API (API-triggered).
+	// The type of the diagnostic result. Valid values: TEXT (text description), CONSOLE_API (triggered by the console), and ES_API (triggered by the API).
 	//
 	// example:
 	//
@@ -367,12 +373,38 @@ func (s *DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail) Validate()
 }
 
 type DescribeDiagnoseReportResponseBodyResultItems struct {
-	Desc    *string                `json:"desc,omitempty" xml:"desc,omitempty"`
-	Detail  map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
-	Item    *string                `json:"item,omitempty" xml:"item,omitempty"`
-	Name    *string                `json:"name,omitempty" xml:"name,omitempty"`
-	State   *string                `json:"state,omitempty" xml:"state,omitempty"`
-	Suggest *string                `json:"suggest,omitempty" xml:"suggest,omitempty"`
+	// The description of the diagnostic conclusion.
+	//
+	// example:
+	//
+	// Everything is normal
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The diagnostic details. This parameter is empty if details are not required.
+	Detail map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
+	// The code of the diagnostic item.
+	//
+	// example:
+	//
+	// cluster.health
+	Item *string `json:"item,omitempty" xml:"item,omitempty"`
+	// The name of the diagnostic item.
+	//
+	// example:
+	//
+	// Cluster health
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The health status of the diagnostic item. Valid values: GREEN, YELLOW, and RED.
+	//
+	// example:
+	//
+	// GREEN
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The handling suggestion.
+	//
+	// example:
+	//
+	// Pay attention to GC
+	Suggest *string `json:"suggest,omitempty" xml:"suggest,omitempty"`
 }
 
 func (s DescribeDiagnoseReportResponseBodyResultItems) String() string {

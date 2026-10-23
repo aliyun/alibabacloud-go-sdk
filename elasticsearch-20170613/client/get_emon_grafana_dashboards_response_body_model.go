@@ -38,9 +38,9 @@ type GetEmonGrafanaDashboardsResponseBody struct {
 	//
 	// 1E9D9827-2092-4385-9DA1-FC5A8D1DB3F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the Grafana dashboard list is retrieved. Valid values:
+	// Indicates whether the list of Grafana dashboards is successfully retrieved. Valid values:
 	//
-	// - true: The list is retrieved.
+	// - true: The retrieval succeeded.
 	//
 	// - false: The retrieval failed.
 	//

@@ -62,7 +62,7 @@ func (s *CreateDataStreamResponseBody) Validate() error {
 }
 
 type CreateDataStreamResponseBodyResult struct {
-	// The data stream name.
+	// The name of the data stream.
 	//
 	// example:
 	//

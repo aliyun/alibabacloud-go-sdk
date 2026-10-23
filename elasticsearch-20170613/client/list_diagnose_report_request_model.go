@@ -32,7 +32,7 @@ type ListDiagnoseReportRequest struct {
 	//
 	// true
 	Detail *bool `json:"detail,omitempty" xml:"detail,omitempty"`
-	// The end timestamp of the query. Unit: milliseconds.
+	// The end timestamp for the query. Unit: milliseconds.
 	//
 	// - Minimum value: 1000000000000
 	//
@@ -72,7 +72,7 @@ type ListDiagnoseReportRequest struct {
 	//
 	// 20
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The start timestamp of the query. Unit: milliseconds.
+	// The start timestamp for the query. Unit: milliseconds.
 	//
 	// - Minimum value: 1000000000000
 	//
@@ -84,7 +84,7 @@ type ListDiagnoseReportRequest struct {
 	//
 	// 1594569600000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The trigger method of the health diagnostics. Valid values:
+	// The trigger method for health diagnostics. Valid values:
 	//
 	// - SYSTEM (default): automatically triggered by the system
 	//

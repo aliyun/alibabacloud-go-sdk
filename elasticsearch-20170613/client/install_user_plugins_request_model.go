@@ -16,13 +16,32 @@ type iInstallUserPluginsRequest interface {
 }
 
 type InstallUserPluginsRequest struct {
-	// The list of custom plugins to install.
+	// The list of custom plugins.
 	//
 	// example:
 	//
-	// [     {"name": "pluginName1.zip"},     {"name": "pluginName2.zip"} ]
-	Body  *string `json:"body,omitempty" xml:"body,omitempty"`
-	Force *bool   `json:"force,omitempty" xml:"force,omitempty"`
+	// [
+	//
+	//   {
+	//
+	//     "elasticsearchVersion": "8.17.0",
+	//
+	//     "pluginType": "CUSTOM_PLUGIN",
+	//
+	//     "name": "analysis-stempel",
+	//
+	//     "description": "The Stempel Analysis plugin is ***",
+	//
+	//     "version": "8.17.0",
+	//
+	//     "fileVersion": "CAEQnwIYgYDAzYfNj4oaI***"
+	//
+	//   }
+	//
+	// ]
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to forcibly install custom user plugins. Default value: false. Instances with the legacy architecture do not support forced installation.
+	Force *bool `json:"force,omitempty" xml:"force,omitempty"`
 }
 
 func (s InstallUserPluginsRequest) String() string {

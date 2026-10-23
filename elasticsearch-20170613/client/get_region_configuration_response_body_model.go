@@ -22,7 +22,7 @@ type GetRegionConfigurationResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The region configuration information returned.
+	// The region configuration information.
 	Result *GetRegionConfigurationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,12 +62,13 @@ func (s *GetRegionConfigurationResponseBody) Validate() error {
 }
 
 type GetRegionConfigurationResponseBodyResult struct {
-	// The range of client node counts.
+	// The range for the number of client nodes.
 	ClientNodeAmountRange *GetRegionConfigurationResponseBodyResultClientNodeAmountRange `json:"clientNodeAmountRange,omitempty" xml:"clientNodeAmountRange,omitempty" type:"Struct"`
 	// The allowed disk values for client nodes.
 	ClientNodeDiskList []*GetRegionConfigurationResponseBodyResultClientNodeDiskList `json:"clientNodeDiskList,omitempty" xml:"clientNodeDiskList,omitempty" type:"Repeated"`
-	ClientNodeSpec     []*string                                                     `json:"clientNodeSpec,omitempty" xml:"clientNodeSpec,omitempty" type:"Repeated"`
-	// The URL of the purchase page.
+	// The list of client node specifications supported in the current region.
+	ClientNodeSpec []*string `json:"clientNodeSpec,omitempty" xml:"clientNodeSpec,omitempty" type:"Repeated"`
+	// The URL of the buy page.
 	//
 	// example:
 	//
@@ -82,19 +83,23 @@ type GetRegionConfigurationResponseBodyResult struct {
 	// example:
 	//
 	// production
-	Env        *string   `json:"env,omitempty" xml:"env,omitempty"`
+	Env *string `json:"env,omitempty" xml:"env,omitempty"`
+	// The list of Elasticsearch versions that can be created in the current region.
 	EsVersions []*string `json:"esVersions,omitempty" xml:"esVersions,omitempty" type:"Repeated"`
 	// The list of Elasticsearch versions available for purchase.
 	EsVersionsLatestList []*GetRegionConfigurationResponseBodyResultEsVersionsLatestList `json:"esVersionsLatestList,omitempty" xml:"esVersionsLatestList,omitempty" type:"Repeated"`
-	InstanceSupportNodes []*string                                                       `json:"instanceSupportNodes,omitempty" xml:"instanceSupportNodes,omitempty" type:"Repeated"`
+	// The list of instance node types available in the current region.
+	InstanceSupportNodes []*string `json:"instanceSupportNodes,omitempty" xml:"instanceSupportNodes,omitempty" type:"Repeated"`
 	// The JVM validation configuration.
 	JvmConfine *GetRegionConfigurationResponseBodyResultJvmConfine `json:"jvmConfine,omitempty" xml:"jvmConfine,omitempty" type:"Struct"`
 	// The Kibana node configuration.
 	KibanaNodeProperties *GetRegionConfigurationResponseBodyResultKibanaNodeProperties `json:"kibanaNodeProperties,omitempty" xml:"kibanaNodeProperties,omitempty" type:"Struct"`
-	LogstashZones        []*string                                                     `json:"logstashZones,omitempty" xml:"logstashZones,omitempty" type:"Repeated"`
+	// The list of zones that support Logstash deployment in the current region.
+	LogstashZones []*string `json:"logstashZones,omitempty" xml:"logstashZones,omitempty" type:"Repeated"`
 	// The allowed disk values for dedicated master nodes.
 	MasterDiskList []*GetRegionConfigurationResponseBodyResultMasterDiskList `json:"masterDiskList,omitempty" xml:"masterDiskList,omitempty" type:"Repeated"`
-	MasterSpec     []*string                                                 `json:"masterSpec,omitempty" xml:"masterSpec,omitempty" type:"Repeated"`
+	// The list of dedicated master node specifications supported in the current region.
+	MasterSpec []*string `json:"masterSpec,omitempty" xml:"masterSpec,omitempty" type:"Repeated"`
 	// The node configuration.
 	Node *GetRegionConfigurationResponseBodyResultNode `json:"node,omitempty" xml:"node,omitempty" type:"Struct"`
 	// The list of data node specifications.
@@ -109,7 +114,8 @@ type GetRegionConfigurationResponseBodyResult struct {
 	SupportVersions []*GetRegionConfigurationResponseBodyResultSupportVersions `json:"supportVersions,omitempty" xml:"supportVersions,omitempty" type:"Repeated"`
 	// The warm node configuration.
 	WarmNodeProperties *GetRegionConfigurationResponseBodyResultWarmNodeProperties `json:"warmNodeProperties,omitempty" xml:"warmNodeProperties,omitempty" type:"Struct"`
-	Zones              []*string                                                   `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
+	// The list of zones supported in the current region.
+	Zones []*string `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
 }
 
 func (s GetRegionConfigurationResponseBodyResult) String() string {
@@ -449,19 +455,19 @@ type GetRegionConfigurationResponseBodyResultClientNodeDiskList struct {
 	//
 	// cloud_efficiency
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The maximum allowed disk size.
+	// The maximum value allowed for the disk.
 	//
 	// example:
 	//
 	// 20
 	MaxSize *int32 `json:"maxSize,omitempty" xml:"maxSize,omitempty"`
-	// The minimum allowed disk size.
+	// The minimum value allowed for the disk.
 	//
 	// example:
 	//
 	// 20
 	MinSize *int32 `json:"minSize,omitempty" xml:"minSize,omitempty"`
-	// The maximum value that can be set as a continuous value for the disk.
+	// The maximum value allowed for continuous disk sizing.
 	//
 	// example:
 	//
@@ -524,24 +530,25 @@ type GetRegionConfigurationResponseBodyResultDataDiskList struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The maximum allowed disk size.
+	// The maximum value allowed for the disk.
 	//
 	// example:
 	//
 	// 5120
 	MaxSize *int32 `json:"maxSize,omitempty" xml:"maxSize,omitempty"`
-	// The minimum allowed disk size.
+	// The minimum value allowed for the disk.
 	//
 	// example:
 	//
 	// 20
 	MinSize *int32 `json:"minSize,omitempty" xml:"minSize,omitempty"`
-	// The maximum value that can be set as a continuous value for the disk.
+	// The maximum value allowed for continuous disk sizing.
 	//
 	// example:
 	//
 	// 2048
-	ScaleLimit    *int32    `json:"scaleLimit,omitempty" xml:"scaleLimit,omitempty"`
+	ScaleLimit *int32 `json:"scaleLimit,omitempty" xml:"scaleLimit,omitempty"`
+	// The list of allowed discrete values for the data node disk capacity.
 	ValueLimitSet []*string `json:"valueLimitSet,omitempty" xml:"valueLimitSet,omitempty" type:"Repeated"`
 }
 
@@ -603,11 +610,12 @@ func (s *GetRegionConfigurationResponseBodyResultDataDiskList) Validate() error 
 }
 
 type GetRegionConfigurationResponseBodyResultElasticNodeProperties struct {
-	// The range of warm node counts.
+	// The range for the number of warm nodes.
 	AmountRange *GetRegionConfigurationResponseBodyResultElasticNodePropertiesAmountRange `json:"amountRange,omitempty" xml:"amountRange,omitempty" type:"Struct"`
-	// The disk configuration list.
+	// The list of disk configurations.
 	DiskList []*GetRegionConfigurationResponseBodyResultElasticNodePropertiesDiskList `json:"diskList,omitempty" xml:"diskList,omitempty" type:"Repeated"`
-	Spec     []*string                                                                `json:"spec,omitempty" xml:"spec,omitempty" type:"Repeated"`
+	// The list of elastic data node specifications supported in the current region.
+	Spec []*string `json:"spec,omitempty" xml:"spec,omitempty" type:"Repeated"`
 }
 
 func (s GetRegionConfigurationResponseBodyResultElasticNodeProperties) String() string {
@@ -709,7 +717,7 @@ func (s *GetRegionConfigurationResponseBodyResultElasticNodePropertiesAmountRang
 }
 
 type GetRegionConfigurationResponseBodyResultElasticNodePropertiesDiskList struct {
-	// Indicates whether disk encryption is supported. Valid values:
+	// Specifies whether disk encryption can be enabled. Valid values:
 	//
 	// - true: Supported.
 	//
@@ -725,24 +733,25 @@ type GetRegionConfigurationResponseBodyResultElasticNodePropertiesDiskList struc
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The maximum allowed disk size.
+	// The maximum value allowed for the disk.
 	//
 	// example:
 	//
 	// 5120
 	MaxSize *int32 `json:"maxSize,omitempty" xml:"maxSize,omitempty"`
-	// The minimum allowed disk size.
+	// The minimum value allowed for the disk.
 	//
 	// example:
 	//
 	// 500
 	MinSize *int32 `json:"minSize,omitempty" xml:"minSize,omitempty"`
-	// The maximum value that can be set as a continuous value for the disk.
+	// The maximum value allowed for continuous disk sizing.
 	//
 	// example:
 	//
 	// 2048
-	ScaleLimit    *int32    `json:"scaleLimit,omitempty" xml:"scaleLimit,omitempty"`
+	ScaleLimit *int32 `json:"scaleLimit,omitempty" xml:"scaleLimit,omitempty"`
+	// The list of discrete values allowed for the disk capacity of elastic data nodes.
 	ValueLimitSet []*string `json:"valueLimitSet,omitempty" xml:"valueLimitSet,omitempty" type:"Repeated"`
 }
 
@@ -858,14 +867,16 @@ func (s *GetRegionConfigurationResponseBodyResultEsVersionsLatestList) Validate(
 }
 
 type GetRegionConfigurationResponseBodyResultJvmConfine struct {
-	// The minimum memory size required to enable JVM garbage collection.
+	// The minimum memory size of the specification required to enable JVM garbage collection.
 	//
 	// example:
 	//
 	// 32
-	Memory            *int32    `json:"memory,omitempty" xml:"memory,omitempty"`
+	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The list of Elasticsearch versions that support configuring the JVM garbage collector.
 	SupportEsVersions []*string `json:"supportEsVersions,omitempty" xml:"supportEsVersions,omitempty" type:"Repeated"`
-	SupportGcs        []*string `json:"supportGcs,omitempty" xml:"supportGcs,omitempty" type:"Repeated"`
+	// The list of allowed JVM garbage collectors.
+	SupportGcs []*string `json:"supportGcs,omitempty" xml:"supportGcs,omitempty" type:"Repeated"`
 }
 
 func (s GetRegionConfigurationResponseBodyResultJvmConfine) String() string {
@@ -908,9 +919,10 @@ func (s *GetRegionConfigurationResponseBodyResultJvmConfine) Validate() error {
 }
 
 type GetRegionConfigurationResponseBodyResultKibanaNodeProperties struct {
-	// The allowed range of node counts.
+	// The allowed range for the number of nodes.
 	AmountRange *GetRegionConfigurationResponseBodyResultKibanaNodePropertiesAmountRange `json:"amountRange,omitempty" xml:"amountRange,omitempty" type:"Struct"`
-	Spec        []*string                                                                `json:"spec,omitempty" xml:"spec,omitempty" type:"Repeated"`
+	// The list of Kibana node specifications supported in the current region.
+	Spec []*string `json:"spec,omitempty" xml:"spec,omitempty" type:"Repeated"`
 }
 
 func (s GetRegionConfigurationResponseBodyResultKibanaNodeProperties) String() string {
@@ -1000,19 +1012,19 @@ type GetRegionConfigurationResponseBodyResultMasterDiskList struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The maximum allowed disk size.
+	// The maximum value allowed for the disk.
 	//
 	// example:
 	//
 	// 20
 	MaxSize *int32 `json:"maxSize,omitempty" xml:"maxSize,omitempty"`
-	// The minimum allowed disk size.
+	// The minimum value allowed for the disk.
 	//
 	// example:
 	//
 	// 20
 	MinSize *int32 `json:"minSize,omitempty" xml:"minSize,omitempty"`
-	// The maximum value that can be set as a continuous value for the disk.
+	// The maximum value allowed for continuous disk sizing.
 	//
 	// example:
 	//
@@ -1132,11 +1144,11 @@ type GetRegionConfigurationResponseBodyResultNodeSpecList struct {
 	//
 	// local_efficiency
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// Indicates whether the specification is available for purchase. Valid values:
+	// Specifies whether the specification is available for purchase. Valid values:
 	//
 	// - true: Available.
 	//
-	// - false: Not available.
+	// - false: Unavailable.
 	//
 	// example:
 	//
@@ -1156,11 +1168,11 @@ type GetRegionConfigurationResponseBodyResultNodeSpecList struct {
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The storage type. Valid values:
 	//
-	// - common: cloud disk
+	// - common: Cloud disk.
 	//
-	// - local_efficiency: local SATA disk
+	// - local_efficiency: Local SATA disk.
 	//
-	// - local_ssd: local SSD
+	// - local_ssd: Local SSD.
 	//
 	// example:
 	//
@@ -1298,7 +1310,7 @@ func (s *GetRegionConfigurationResponseBodyResultSupportVersions) Validate() err
 }
 
 type GetRegionConfigurationResponseBodyResultSupportVersionsSupportVersionList struct {
-	// The version available for selection on the purchase page.
+	// The version available for selection on the buy page.
 	//
 	// example:
 	//
@@ -1343,11 +1355,12 @@ func (s *GetRegionConfigurationResponseBodyResultSupportVersionsSupportVersionLi
 }
 
 type GetRegionConfigurationResponseBodyResultWarmNodeProperties struct {
-	// The range of node counts.
+	// The range for the number of nodes.
 	AmountRange *GetRegionConfigurationResponseBodyResultWarmNodePropertiesAmountRange `json:"amountRange,omitempty" xml:"amountRange,omitempty" type:"Struct"`
-	// The disk configuration list.
+	// The list of disk configurations.
 	DiskList []*GetRegionConfigurationResponseBodyResultWarmNodePropertiesDiskList `json:"diskList,omitempty" xml:"diskList,omitempty" type:"Repeated"`
-	Spec     []*string                                                             `json:"spec,omitempty" xml:"spec,omitempty" type:"Repeated"`
+	// The list of warm data node specifications supported in the current region.
+	Spec []*string `json:"spec,omitempty" xml:"spec,omitempty" type:"Repeated"`
 }
 
 func (s GetRegionConfigurationResponseBodyResultWarmNodeProperties) String() string {
@@ -1449,7 +1462,7 @@ func (s *GetRegionConfigurationResponseBodyResultWarmNodePropertiesAmountRange) 
 }
 
 type GetRegionConfigurationResponseBodyResultWarmNodePropertiesDiskList struct {
-	// Indicates whether disk encryption is supported. Valid values:
+	// Specifies whether disk encryption can be enabled. Valid values:
 	//
 	// - true: Supported.
 	//
@@ -1465,24 +1478,25 @@ type GetRegionConfigurationResponseBodyResultWarmNodePropertiesDiskList struct {
 	//
 	// cloud_efficiency
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The maximum allowed disk size.
+	// The maximum value allowed for the disk.
 	//
 	// example:
 	//
 	// 5120
 	MaxSize *int32 `json:"maxSize,omitempty" xml:"maxSize,omitempty"`
-	// The minimum allowed disk size.
+	// The minimum value allowed for the disk.
 	//
 	// example:
 	//
 	// 500
 	MinSize *int32 `json:"minSize,omitempty" xml:"minSize,omitempty"`
-	// The maximum value that can be set as a continuous value for the disk.
+	// The maximum value allowed for continuous disk sizing.
 	//
 	// example:
 	//
 	// 2048
-	ScaleLimit    *int32    `json:"scaleLimit,omitempty" xml:"scaleLimit,omitempty"`
+	ScaleLimit *int32 `json:"scaleLimit,omitempty" xml:"scaleLimit,omitempty"`
+	// The list of allowed discrete values for the warm data node disk capacity.
 	ValueLimitSet []*string `json:"valueLimitSet,omitempty" xml:"valueLimitSet,omitempty" type:"Repeated"`
 }
 

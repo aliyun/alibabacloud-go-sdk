@@ -62,7 +62,7 @@ func (s *RestartInstanceResponseBody) Validate() error {
 }
 
 type RestartInstanceResponseBodyResult struct {
-	// The time when the instance was created.
+	// The time when the instance was created. The time is displayed in UTC and formatted in accordance with ISO 8601.
 	//
 	// example:
 	//
@@ -74,15 +74,15 @@ type RestartInstanceResponseBodyResult struct {
 	//
 	// es-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The IK dictionary configuration.
+	// The IK dictionary configurations.
 	DictList []*RestartInstanceResponseBodyResultDictList `json:"dictList,omitempty" xml:"dictList,omitempty" type:"Repeated"`
-	// The internal network access address of the instance.
+	// The internal endpoint of the instance.
 	//
 	// example:
 	//
 	// es-cn-nif1q8auz0003****.elasticsearch.aliyuncs.com
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The instance version.
+	// The Elasticsearch version of the instance.
 	//
 	// example:
 	//
@@ -94,9 +94,9 @@ type RestartInstanceResponseBodyResult struct {
 	//
 	// es-cn-n6w1o1x0w001c****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The Kibana node configuration.
+	// The Kibana node configurations.
 	KibanaConfiguration *RestartInstanceResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
-	// The public network access address of Kibana.
+	// The Kibana public network access address.
 	//
 	// example:
 	//
@@ -108,9 +108,9 @@ type RestartInstanceResponseBodyResult struct {
 	//
 	// 5601
 	KibanaPort *int32 `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
-	// The master node configuration.
+	// The dedicated master node configurations.
 	MasterConfiguration *RestartInstanceResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
-	// The network configuration.
+	// The network configurations.
 	NetworkConfig *RestartInstanceResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 	// The number of data nodes in the instance.
 	//
@@ -118,11 +118,9 @@ type RestartInstanceResponseBodyResult struct {
 	//
 	// 2
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// The data node configuration.
+	// The data node configurations.
 	NodeSpec *RestartInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
-	// The billing method of the instance.
-	//
-	// Valid values: prepaid (subscription) and postpaid (pay-as-you-go).
+	// The billing method of the instance. Valid values: prepaid (subscription) and postpaid (pay-as-you-go).
 	//
 	// example:
 	//
@@ -134,17 +132,17 @@ type RestartInstanceResponseBodyResult struct {
 	//
 	// es-cn-n6w1o1x0w001c****.public.elasticsearch.aliyuncs.com
 	PublicDomain *string `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
-	// The public network port.
+	// The public port.
 	//
 	// example:
 	//
 	// 9200
 	PublicPort *int32 `json:"publicPort,omitempty" xml:"publicPort,omitempty"`
-	// The status of the instance. Valid values:
+	// The state of the instance. Valid values:
 	//
 	// - **active**: Normal.
 	//
-	// - **activating**: Taking effect.
+	// - **activating**: Activating.
 	//
 	// - **inactive**: Frozen.
 	//
@@ -154,9 +152,9 @@ type RestartInstanceResponseBodyResult struct {
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The synonym dictionary configuration.
+	// The synonym dictionary configurations.
 	SynonymsDicts []*RestartInstanceResponseBodyResultSynonymsDicts `json:"synonymsDicts,omitempty" xml:"synonymsDicts,omitempty" type:"Repeated"`
-	// The time when the instance was last updated.
+	// The time when the instance was last updated. The time is displayed in UTC and formatted in accordance with ISO 8601.
 	//
 	// example:
 	//
@@ -386,7 +384,7 @@ func (s *RestartInstanceResponseBodyResult) Validate() error {
 }
 
 type RestartInstanceResponseBodyResultDictList struct {
-	// The size of the dictionary file, in bytes.
+	// The size of the dictionary file. Unit: bytes.
 	//
 	// example:
 	//
@@ -400,11 +398,11 @@ type RestartInstanceResponseBodyResultDictList struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type. Valid values:
 	//
-	// - OSS: OSS open storage (the OSS bucket must be publicly readable)
+	// - OSS: Object Storage Service (OSS). Make sure that the OSS bucket is publicly readable.
 	//
-	// - ORIGIN: open-source Elasticsearch
+	// - ORIGIN: Open-source Elasticsearch.
 	//
-	// - UPLOAD: uploaded file
+	// - UPLOAD: Uploaded file.
 	//
 	// example:
 	//
@@ -412,13 +410,13 @@ type RestartInstanceResponseBodyResultDictList struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The dictionary type. Valid values:
 	//
-	// - STOP: stopword
+	// - STOP: Stopwords.
 	//
-	// - MAIN: main dictionary
+	// - MAIN: Main dictionary.
 	//
-	// - SYNONYMS: synonym dictionary
+	// - SYNONYMS: Synonym dictionary.
 	//
-	// - ALI_WS: Alibaba dictionary
+	// - ALI_WS: Alibaba Cloud dictionary.
 	//
 	// example:
 	//
@@ -481,7 +479,7 @@ type RestartInstanceResponseBodyResultKibanaConfiguration struct {
 	//
 	// 1
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node, in GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -556,7 +554,7 @@ type RestartInstanceResponseBodyResultMasterConfiguration struct {
 	//
 	// 3
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node, in GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -625,7 +623,7 @@ func (s *RestartInstanceResponseBodyResultMasterConfiguration) Validate() error 
 }
 
 type RestartInstanceResponseBodyResultNetworkConfig struct {
-	// The network type. Only Virtual Private Cloud (VPC) is supported.
+	// The network type. Only VPC is supported.
 	//
 	// example:
 	//
@@ -637,7 +635,7 @@ type RestartInstanceResponseBodyResultNetworkConfig struct {
 	//
 	// vpc-bp16k1dvzxtmagcva****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone where the instance is deployed.
+	// The zone where the instance resides.
 	//
 	// example:
 	//
@@ -700,7 +698,7 @@ func (s *RestartInstanceResponseBodyResultNetworkConfig) Validate() error {
 }
 
 type RestartInstanceResponseBodyResultNodeSpec struct {
-	// The storage size of the node, in GB.
+	// The storage space of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -760,7 +758,7 @@ func (s *RestartInstanceResponseBodyResultNodeSpec) Validate() error {
 }
 
 type RestartInstanceResponseBodyResultSynonymsDicts struct {
-	// The size of the dictionary file, in bytes.
+	// The size of the dictionary file. Unit: bytes.
 	//
 	// example:
 	//
@@ -774,11 +772,11 @@ type RestartInstanceResponseBodyResultSynonymsDicts struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type. Valid values:
 	//
-	// - OSS: OSS open storage (the OSS bucket must be publicly readable)
+	// - OSS: Object Storage Service (OSS). Make sure that the OSS bucket is publicly readable.
 	//
-	// - ORIGIN: open-source Elasticsearch
+	// - ORIGIN: Open-source Elasticsearch.
 	//
-	// - UPLOAD: uploaded file
+	// - UPLOAD: Uploaded file.
 	//
 	// example:
 	//
@@ -786,13 +784,13 @@ type RestartInstanceResponseBodyResultSynonymsDicts struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The dictionary type. Valid values:
 	//
-	// - STOP: stopword
+	// - STOP: Stopwords.
 	//
-	// - MAIN: main dictionary
+	// - MAIN: Main dictionary.
 	//
-	// - SYNONYMS: synonym dictionary
+	// - SYNONYMS: Synonym dictionary.
 	//
-	// - ALI_WS: Alibaba dictionary
+	// - ALI_WS: Alibaba Cloud dictionary.
 	//
 	// example:
 	//

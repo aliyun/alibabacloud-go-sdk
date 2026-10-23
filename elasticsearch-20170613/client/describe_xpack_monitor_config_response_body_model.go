@@ -16,7 +16,7 @@ type iDescribeXpackMonitorConfigResponseBody interface {
 }
 
 type DescribeXpackMonitorConfigResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,20 +66,22 @@ type DescribeXpackMonitorConfigResponseBodyResult struct {
 	//
 	// - true: Enabled.
 	//
-	// - false: Not enabled.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
-	Enable    *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The list of access endpoints for the Elasticsearch instance associated with X-Pack monitoring.
 	Endpoints []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
-	// The instance ID of the Elasticsearch instance associated with X-Pack monitoring.
+	// The Elasticsearch instance ID associated with X-Pack monitoring.
 	//
 	// example:
 	//
 	// es-cn-n6w1o1x0w001c****
-	EsInstanceId *string   `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
-	PipelineIds  []*string `json:"pipelineIds,omitempty" xml:"pipelineIds,omitempty" type:"Repeated"`
+	EsInstanceId *string `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
+	// The list of Kibana-managed pipelines associated with X-Pack monitoring.
+	PipelineIds []*string `json:"pipelineIds,omitempty" xml:"pipelineIds,omitempty" type:"Repeated"`
 	// The username used to access the Elasticsearch instance associated with X-Pack monitoring.
 	//
 	// example:

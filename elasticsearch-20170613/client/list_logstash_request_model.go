@@ -26,7 +26,7 @@ type iListLogstashRequest interface {
 }
 
 type ListLogstashRequest struct {
-	// The instance name. Fuzzy match is supported. For example, if you search for an instance named abc, instances named abc, abcde, xyabc, and xabcy may all be returned.
+	// The name of the instance. Fuzzy match is supported. For example, if you search for instances named abc, the system may return all instances whose names are abc, abcde, xyabc, or xabcy.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListLogstashRequest struct {
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfm2h5vbzd****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The number of entries per page in Settings for paging. Default value: 20.
+	// The number of entries per page in a paging query. Default value: 20.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListLogstashRequest struct {
 	//
 	// [{"tagKey":"key1","tagValue":"value1"}]
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The instance version.
+	// The version of the instance.
 	//
 	// example:
 	//

@@ -28,7 +28,13 @@ type iNetworkConfig interface {
 }
 
 type NetworkConfig struct {
-	LbReplica         *int32                            `json:"lbReplica,omitempty" xml:"lbReplica,omitempty"`
+	// The number of load balancing instances in a single zone. This parameter is supported only for the HP_ALILB type.
+	//
+	// example:
+	//
+	// 2
+	LbReplica *int32 `json:"lbReplica,omitempty" xml:"lbReplica,omitempty"`
+	// The list of vSwitch and load balancing configurations for each zone in the Network Load Balancer (NLB) architecture.
 	LoadBalanceConfig []*NetworkConfigLoadBalanceConfig `json:"loadBalanceConfig,omitempty" xml:"loadBalanceConfig,omitempty" type:"Repeated"`
 	// The load balancing type. Default value: DEFAULT.
 	//
@@ -36,7 +42,7 @@ type NetworkConfig struct {
 	//
 	// DEFAULT
 	LoadBalanceType *string `json:"loadBalanceType,omitempty" xml:"loadBalanceType,omitempty"`
-	// The network type. Only Virtual Private Cloud (VPC) is supported.
+	// The network type. Only VPC is supported.
 	//
 	// example:
 	//
@@ -48,7 +54,7 @@ type NetworkConfig struct {
 	//
 	// vpc-bp1xk0naij7jx4ph1****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone ID of the network.
+	// The ID of the zone to which the network belongs.
 	//
 	// example:
 	//
@@ -60,7 +66,7 @@ type NetworkConfig struct {
 	//
 	// vsw-bp1ogpdintii5qvyx****
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
-	// The IP whitelist group configuration. You do not need to set this parameter when you call the createInstance operation to create an instance because the setting does not take effect during instance creation. Use a separate API operation to configure whitelists for different roles.
+	// The IP whitelist group configuration. You do not need to specify this parameter when creating an instance, and it does not take effect during instance creation. You must use a separate API operation to configure whitelists for different roles.
 	WhiteIpGroupList []*WhiteIpGroup `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
 }
 
@@ -167,7 +173,11 @@ func (s *NetworkConfig) Validate() error {
 }
 
 type NetworkConfigLoadBalanceConfig struct {
-	// 可用区信息，如: cn-hangzhou-i
+	// The zone information, such as cn-hangzhou-i.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
 	// vswitchId
 	//

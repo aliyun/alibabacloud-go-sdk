@@ -24,7 +24,7 @@ type UpdateKibanaSettingsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result. Valid values:
 	//
-	// - true: The Kibana language is modified.
+	// - true: The Kibana language was modified.
 	//
 	// - false: The Kibana language failed to be modified.
 	//

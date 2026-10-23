@@ -18,7 +18,7 @@ type iRestartInstanceRequest interface {
 }
 
 type RestartInstanceRequest struct {
-	// The restart parameter information.
+	// The restart parameters.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type RestartInstanceRequest struct {
 	//
 	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// A unique token used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can generate the value of this parameter on the client side. Ensure that the value is unique across different requests and contains a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// Specifies whether to ignore the cluster status and forcibly restart the cluster.
+	// Specifies whether to ignore the cluster state and force a restart. Valid values:
 	//
-	// - true: ignores the cluster status
+	// - true: Ignores the cluster state.
 	//
-	// - false (default): does not ignore the cluster status
+	// - false: Does not ignore the cluster state. This is the default value.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iInitModelRequest interface {
 }
 
 type InitModelRequest struct {
-	// The API key for the AISearch open platform.
+	// The API key for the AI Search Open Platform.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type InitModelRequest struct {
 	//
 	// os-xfdddf*
 	ApiKey *string `json:"api_key,omitempty" xml:"api_key,omitempty"`
-	// The service registration address of the AISearch open platform.
+	// The service registration address for the AI Search Open Platform.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type InitModelRequest struct {
 	//
 	// https
 	HttpSchema *string `json:"http_schema,omitempty" xml:"http_schema,omitempty"`
-	// The models to initialize. If this parameter is left empty, all built-in models are initialized.
+	// Specifies the models to initialize. If this parameter is left empty, all built-in models are initialized.
 	Models []*InitModelRequestModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
 	// The workspace.
 	//
@@ -127,25 +127,25 @@ func (s *InitModelRequest) Validate() error {
 type InitModelRequestModels struct {
 	// The model type. Valid values:
 	//
-	// - text_embedding: text embedding
+	// - text_embedding: Text embedding.
 	//
-	// - rerank: reranking
+	// - rerank: Reranking.
 	//
-	// - doc_split: document splitting
+	// - doc_split: Document splitting.
 	//
-	// - completion: large language model service
+	// - completion: Large language model service.
 	//
-	// - query_analyze: query analysis
+	// - query_analyze: Query analysis.
 	//
-	// - doc_analyze: document content parsing
+	// - doc_analyze: Document content parsing.
 	//
-	// - img_analyze: image content parsing
+	// - img_analyze: Image content parsing.
 	//
 	// example:
 	//
 	// text_embedding
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	// The service ID of the AISearch open platform.
+	// The service ID for the Search Open Platform.
 	//
 	// example:
 	//

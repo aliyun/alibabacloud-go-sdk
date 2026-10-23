@@ -22,7 +22,7 @@ type ListEventRecordsResponseBody struct {
 	//
 	// 7F40EAA1-6F1D-4DD9-8DB8-C5F00C4E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The result.
 	Result *ListEventRecordsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *ListEventRecordsResponseBody) Validate() error {
 }
 
 type ListEventRecordsResponseBodyResult struct {
-	// The returned content.
+	// The response content.
 	Result []*ListEventRecordsResponseBodyResultResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -112,7 +112,7 @@ func (s *ListEventRecordsResponseBodyResult) Validate() error {
 }
 
 type ListEventRecordsResponseBodyResultResult struct {
-	// Indicates whether automatic alerting is enabled.
+	// Indicates whether automatic alerting is triggered.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type ListEventRecordsResponseBodyResultResult struct {
 	//
 	// elasticsearch
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// The scheduled execution time.
+	// The scheduled execution time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-05-08 18:41:01
 	ScheduleExecuteTime *string `json:"scheduleExecuteTime,omitempty" xml:"scheduleExecuteTime,omitempty"`
-	// The scheduled end time.
+	// The scheduled end time of the execution. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -308,7 +308,7 @@ func (s *ListEventRecordsResponseBodyResultResult) Validate() error {
 }
 
 type ListEventRecordsResponseBodyResultResultShowContent struct {
-	// The suggested action.
+	// The recommended actions.
 	ActionSuggest *ListEventRecordsResponseBodyResultResultShowContentActionSuggest `json:"actionSuggest,omitempty" xml:"actionSuggest,omitempty" type:"Struct"`
 	// The event description.
 	//
@@ -322,25 +322,25 @@ type ListEventRecordsResponseBodyResultResultShowContent struct {
 	//
 	// Executed
 	EventStatus *string `json:"eventStatus,omitempty" xml:"eventStatus,omitempty"`
-	// The time when the event occurred.
+	// The time when the event occurred. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-05-08 18:31:01
 	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	// The end time of the O&M execution for the event.
+	// The end time of the O&M execution for the event. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-05-08 18:41:01
 	ExecuteFinishTime *string `json:"executeFinishTime,omitempty" xml:"executeFinishTime,omitempty"`
-	// The start time of the O&M execution for the event.
+	// The start time of the O&M execution for the event. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-05-08 18:31:00
 	ExecuteStartTime *string `json:"executeStartTime,omitempty" xml:"executeStartTime,omitempty"`
-	// The instance ID of the instance on which the event occurred.
+	// The instance ID where the event occurred.
 	//
 	// example:
 	//
@@ -444,15 +444,15 @@ func (s *ListEventRecordsResponseBodyResultResultShowContent) Validate() error {
 }
 
 type ListEventRecordsResponseBodyResultResultShowContentActionSuggest struct {
-	// The suggested action.
+	// The recommended actions.
 	SuggestActions []*string `json:"suggestActions,omitempty" xml:"suggestActions,omitempty" type:"Repeated"`
-	// The text of the suggested action.
+	// The text of the recommended action.
 	//
 	// example:
 	//
 	// “”
 	SuggestText *string `json:"suggestText,omitempty" xml:"suggestText,omitempty"`
-	// The type of the suggested action.
+	// The type of the recommended action.
 	//
 	// example:
 	//

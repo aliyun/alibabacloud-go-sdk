@@ -16,7 +16,7 @@ type iCreateCollectorResponseBody interface {
 }
 
 type CreateCollectorResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *CreateCollectorResponseBody) Validate() error {
 }
 
 type CreateCollectorResponseBodyResult struct {
-	// The ID of the collector that is created.
+	// The ID of the created collector.
 	//
 	// example:
 	//

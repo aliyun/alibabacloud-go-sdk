@@ -62,6 +62,7 @@ func (s *UpdatePrivateNetworkWhiteIpsResponseBody) Validate() error {
 }
 
 type UpdatePrivateNetworkWhiteIpsResponseBodyResult struct {
+	// The VPC private network access whitelist.
 	PrivateNetworkIpWhiteList []*string `json:"privateNetworkIpWhiteList,omitempty" xml:"privateNetworkIpWhiteList,omitempty" type:"Repeated"`
 }
 

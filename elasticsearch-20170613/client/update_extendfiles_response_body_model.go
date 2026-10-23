@@ -78,7 +78,7 @@ type UpdateExtendfilesResponseBodyResult struct {
 	//
 	// mysql-connector-java-6.0.2.jar
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The source of the extension file. Only ORIGIN (retained original extension file) is supported.
+	// The source of the extension file. Only ORIGIN is supported, which indicates the original extension file to be retained.
 	//
 	// example:
 	//

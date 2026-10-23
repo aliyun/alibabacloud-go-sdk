@@ -14,6 +14,7 @@ type iGetEmonGrafanaDashboardsRequest interface {
 }
 
 type GetEmonGrafanaDashboardsRequest struct {
+	// This GET operation does not require a request body.
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -36,19 +36,25 @@ type iListInstanceRequest interface {
 }
 
 type ListInstanceRequest struct {
-	// The instance name. Fuzzy match is supported. For example, if you search for **abc**, all instances whose names contain **abc*	- may be returned, such as **abc**, **abcde**, **xyabc**, and **xabcy**.
+	// The instance name. Fuzzy search is supported. For example, if you search for **abc**, instances such as **abc**, **abcde**, **xyabc**, and **xabcy*	- may be returned.
 	//
 	// example:
 	//
 	// aliyunes_test1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The instance version.
+	// The Elasticsearch version of the instance.
 	//
 	// example:
 	//
 	// 6.7_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
 	// The edition of the instance. Valid values:
+	//
+	// - x-pack: Commercial Edition
+	//
+	// - advanced/IS: Advanced Edition
+	//
+	// - community: Basic Edition
 	//
 	// example:
 	//
@@ -60,13 +66,17 @@ type ListInstanceRequest struct {
 	//
 	// es-cn-v641a0ta3000g****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The page number of the instance list.
+	// The page number of the instance list. Minimum value: **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
 	// The billing method of the instance. Valid values:
+	//
+	// - postpaid: pay-as-you-go
+	//
+	// - prepaid: subscription
 	//
 	// example:
 	//
@@ -78,12 +88,17 @@ type ListInstanceRequest struct {
 	//
 	// rg-aekzvowej3i****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The number of entries per page in a paged query. Settings the number of entries per page for paging. Maximum value: **100**. Default value: **10**.
+	// The paging Settings for the number of entries per page in a paged query. Maximum value: **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
-	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The instance status used for filtering. Valid values: active, activating, inactive, invalid, and unknown.
+	//
+	// example:
+	//
+	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The instance tags.
 	//
@@ -91,13 +106,13 @@ type ListInstanceRequest struct {
 	//
 	// [{"tagKey":"key1","tagValue":"value1"}]
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the instance resides.
+	// The ID of the virtual private cloud (VPC) to which the instance belongs.
 	//
 	// example:
 	//
 	// vpc-bp16k1dvzxtmagcva****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone ID of the instance.
+	// The ID of the zone to which the instance belongs.
 	//
 	// example:
 	//

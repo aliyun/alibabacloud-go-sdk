@@ -66,11 +66,11 @@ func (s *UpgradeEngineVersionResponseBody) Validate() error {
 }
 
 type UpgradeEngineVersionResponseBodyResult struct {
-	// Indicates whether the check is passed. Valid values:
+	// Specifies whether the check is passed. Valid values:
 	//
-	// - success: passed.
+	// - success: Passed.
 	//
-	// - failed: not passed.
+	// - failed: Failed.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type UpgradeEngineVersionResponseBodyResult struct {
 	ValidateResult []*UpgradeEngineVersionResponseBodyResultValidateResult `json:"validateResult,omitempty" xml:"validateResult,omitempty" type:"Repeated"`
 	// The check type. Valid values:
 	//
-	// - checkClusterHealth: cluster health status.
+	// - checkClusterHealth: Cluster health status.
 	//
-	// - checkConfigCompatible: configuration compatibility status.
+	// - checkConfigCompatible: Configuration compatibility status.
 	//
-	// - checkClusterResource: resource space status.
+	// - checkClusterResource: Resource space status.
 	//
-	// - checkClusterSnapshot: whether a snapshot exists.
+	// - checkClusterSnapshot: Snapshot existence.
 	//
 	// example:
 	//
@@ -157,15 +157,15 @@ type UpgradeEngineVersionResponseBodyResultValidateResult struct {
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The error type. Valid values:
 	//
-	// - clusterStatus: cluster health status.
+	// - clusterStatus: Cluster health status.
 	//
-	// - clusterConfigYml: cluster YML file.
+	// - clusterConfigYml: Cluster YML file.
 	//
-	// - clusterConfigPlugins: cluster configuration file.
+	// - clusterConfigPlugins: Cluster configuration file.
 	//
-	// - clusterResource: cluster resources.
+	// - clusterResource: Cluster resources.
 	//
-	// - clusterSnapshot: cluster snapshot.
+	// - clusterSnapshot: Cluster snapshot.
 	//
 	// example:
 	//

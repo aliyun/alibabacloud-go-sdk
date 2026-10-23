@@ -108,7 +108,9 @@ func (s *GetClusterDataInformationResponseBodyResult) Validate() error {
 }
 
 type GetClusterDataInformationResponseBodyResultMetaInfo struct {
-	Fields  []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// The fields corresponding to the index mapping.
+	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// The list of indexes in the cluster.
 	Indices []*string `json:"indices,omitempty" xml:"indices,omitempty" type:"Repeated"`
 	// The mapping configuration of the cluster.
 	//
@@ -121,7 +123,8 @@ type GetClusterDataInformationResponseBodyResultMetaInfo struct {
 	// example:
 	//
 	// {\\n  \\"index\\": {\\n    \\"replication\\": {\\n}.....}}
-	Settings *string   `json:"settings,omitempty" xml:"settings,omitempty"`
+	Settings *string `json:"settings,omitempty" xml:"settings,omitempty"`
+	// The type of the specified index.
 	TypeName []*string `json:"typeName,omitempty" xml:"typeName,omitempty" type:"Repeated"`
 }
 

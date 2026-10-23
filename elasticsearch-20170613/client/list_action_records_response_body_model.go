@@ -16,8 +16,14 @@ type iListActionRecordsResponseBody interface {
 }
 
 type ListActionRecordsResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListActionRecordsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6F******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of instance change records.
+	Result []*ListActionRecordsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListActionRecordsResponseBody) String() string {
@@ -60,24 +66,67 @@ func (s *ListActionRecordsResponseBody) Validate() error {
 }
 
 type ListActionRecordsResponseBodyResult struct {
-	ActionName             *string                                          `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	ActionParams           map[string]interface{}                           `json:"actionParams,omitempty" xml:"actionParams,omitempty"`
-	ActionResultAccessList []*string                                        `json:"actionResultAccessList,omitempty" xml:"actionResultAccessList,omitempty" type:"Repeated"`
-	EndTime                *int64                                           `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	InstanceId             *string                                          `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	MetaNow                *string                                          `json:"metaNow,omitempty" xml:"metaNow,omitempty"`
-	MetaOld                *string                                          `json:"metaOld,omitempty" xml:"metaOld,omitempty"`
-	OwnerId                *string                                          `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	Process                *string                                          `json:"process,omitempty" xml:"process,omitempty"`
-	RecordDiff             map[string]interface{}                           `json:"recordDiff,omitempty" xml:"recordDiff,omitempty"`
-	RecordIds              []*string                                        `json:"recordIds,omitempty" xml:"recordIds,omitempty" type:"Repeated"`
-	RequestId              *string                                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	StartTime              *int64                                           `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	StateType              *string                                          `json:"stateType,omitempty" xml:"stateType,omitempty"`
-	StatusInfo             []*ListActionRecordsResponseBodyResultStatusInfo `json:"statusInfo,omitempty" xml:"statusInfo,omitempty" type:"Repeated"`
-	UserId                 *string                                          `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserInfo               *string                                          `json:"userInfo,omitempty" xml:"userInfo,omitempty"`
-	UserType               *string                                          `json:"userType,omitempty" xml:"userType,omitempty"`
+	// The name of the operation that triggered the change.
+	//
+	// example:
+	//
+	// RestartInstance
+	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	// The parameters used for the change.
+	ActionParams           map[string]interface{} `json:"actionParams,omitempty" xml:"actionParams,omitempty"`
+	ActionResultAccessList []*string              `json:"actionResultAccessList,omitempty" xml:"actionResultAccessList,omitempty" type:"Repeated"`
+	// The end time of the change. The value is a UNIX timestamp in milliseconds.
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The ID of the Elasticsearch instance that was changed.
+	//
+	// example:
+	//
+	// es-cn-nif24adwc0082****
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The instance information after the change, represented as a JSON string.
+	MetaNow *string `json:"metaNow,omitempty" xml:"metaNow,omitempty"`
+	// The instance information before the change, represented as a JSON string.
+	MetaOld *string `json:"metaOld,omitempty" xml:"metaOld,omitempty"`
+	// The ID of the Alibaba Cloud account to which the account that triggered the change belongs.
+	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// The progress of the change, represented as a percentage string.
+	//
+	// example:
+	//
+	// 100%
+	Process *string `json:"process,omitempty" xml:"process,omitempty"`
+	// The field differences before and after the change.
+	RecordDiff map[string]interface{} `json:"recordDiff,omitempty" xml:"recordDiff,omitempty"`
+	RecordIds  []*string              `json:"recordIds,omitempty" xml:"recordIds,omitempty" type:"Repeated"`
+	// The ID of the request that triggered the change.
+	//
+	// example:
+	//
+	// request-123
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The start time of the change. The value is a UNIX timestamp in milliseconds.
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The current state of the change.
+	//
+	// example:
+	//
+	// FINISHED
+	StateType *string `json:"stateType,omitempty" xml:"stateType,omitempty"`
+	// The list of status details for each phase of the change.
+	StatusInfo []*ListActionRecordsResponseBodyResultStatusInfo `json:"statusInfo,omitempty" xml:"statusInfo,omitempty" type:"Repeated"`
+	// The ID of the user that triggered the change.
+	//
+	// example:
+	//
+	// user-123
+	UserId   *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserInfo *string `json:"userInfo,omitempty" xml:"userInfo,omitempty"`
+	// The type of the account that triggered the change.
+	//
+	// example:
+	//
+	// customer
+	UserType *string `json:"userType,omitempty" xml:"userType,omitempty"`
 }
 
 func (s ListActionRecordsResponseBodyResult) String() string {
@@ -264,16 +313,50 @@ func (s *ListActionRecordsResponseBodyResult) Validate() error {
 }
 
 type ListActionRecordsResponseBodyResultStatusInfo struct {
-	CompleteNodeCount *int32                                                        `json:"completeNodeCount,omitempty" xml:"completeNodeCount,omitempty"`
-	EndTime           *int64                                                        `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	Exception         *string                                                       `json:"exception,omitempty" xml:"exception,omitempty"`
-	LatencyMills      *int64                                                        `json:"latencyMills,omitempty" xml:"latencyMills,omitempty"`
-	NodeCount         *int32                                                        `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
-	Process           *string                                                       `json:"process,omitempty" xml:"process,omitempty"`
-	StartTime         *int64                                                        `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	StateType         *string                                                       `json:"stateType,omitempty" xml:"stateType,omitempty"`
-	SubState          *string                                                       `json:"subState,omitempty" xml:"subState,omitempty"`
-	SubStatusInfo     []*ListActionRecordsResponseBodyResultStatusInfoSubStatusInfo `json:"subStatusInfo,omitempty" xml:"subStatusInfo,omitempty" type:"Repeated"`
+	// The number of completed nodes in the phase.
+	//
+	// example:
+	//
+	// 3
+	CompleteNodeCount *int32 `json:"completeNodeCount,omitempty" xml:"completeNodeCount,omitempty"`
+	// The end time of the phase. The value is a UNIX timestamp in milliseconds.
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The exception information for the phase.
+	Exception *string `json:"exception,omitempty" xml:"exception,omitempty"`
+	// The time elapsed for the phase, in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	LatencyMills *int64 `json:"latencyMills,omitempty" xml:"latencyMills,omitempty"`
+	// The total number of nodes involved in the phase.
+	//
+	// example:
+	//
+	// 5
+	NodeCount *int32 `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+	// The completion progress of the phase, represented as a percentage string.
+	//
+	// example:
+	//
+	// 100%
+	Process *string `json:"process,omitempty" xml:"process,omitempty"`
+	// The start time of the phase. The value is a UNIX timestamp in milliseconds.
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The current state of the phase.
+	//
+	// example:
+	//
+	// FINISHED
+	StateType *string `json:"stateType,omitempty" xml:"stateType,omitempty"`
+	// The name of the phase.
+	//
+	// example:
+	//
+	// rolling
+	SubState *string `json:"subState,omitempty" xml:"subState,omitempty"`
+	// The list of status details for the sub-phases included in the current phase.
+	SubStatusInfo []*ListActionRecordsResponseBodyResultStatusInfoSubStatusInfo `json:"subStatusInfo,omitempty" xml:"subStatusInfo,omitempty" type:"Repeated"`
 }
 
 func (s ListActionRecordsResponseBodyResultStatusInfo) String() string {
@@ -388,15 +471,48 @@ func (s *ListActionRecordsResponseBodyResultStatusInfo) Validate() error {
 }
 
 type ListActionRecordsResponseBodyResultStatusInfoSubStatusInfo struct {
-	CompleteNodeCount *int32  `json:"completeNodeCount,omitempty" xml:"completeNodeCount,omitempty"`
-	EndTime           *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	Exception         *string `json:"exception,omitempty" xml:"exception,omitempty"`
-	LatencyMills      *int64  `json:"latencyMills,omitempty" xml:"latencyMills,omitempty"`
-	NodeCount         *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
-	Process           *string `json:"process,omitempty" xml:"process,omitempty"`
-	StartTime         *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	StateType         *string `json:"stateType,omitempty" xml:"stateType,omitempty"`
-	SubState          *string `json:"subState,omitempty" xml:"subState,omitempty"`
+	// The number of completed nodes in the sub-phase.
+	//
+	// example:
+	//
+	// 3
+	CompleteNodeCount *int32 `json:"completeNodeCount,omitempty" xml:"completeNodeCount,omitempty"`
+	// The end time of the sub-phase. The value is a UNIX timestamp in milliseconds.
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The exception information for the sub-phase.
+	Exception *string `json:"exception,omitempty" xml:"exception,omitempty"`
+	// The time elapsed for the sub-phase, in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	LatencyMills *int64 `json:"latencyMills,omitempty" xml:"latencyMills,omitempty"`
+	// The total number of nodes involved in the sub-phase.
+	//
+	// example:
+	//
+	// 5
+	NodeCount *int32 `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+	// The completion progress of the sub-phase, represented as a percentage string.
+	//
+	// example:
+	//
+	// 100%
+	Process *string `json:"process,omitempty" xml:"process,omitempty"`
+	// The start time of the sub-phase. The value is a UNIX timestamp in milliseconds.
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The current state of the sub-phase.
+	//
+	// example:
+	//
+	// FINISHED
+	StateType *string `json:"stateType,omitempty" xml:"stateType,omitempty"`
+	// The name of the sub-phase.
+	//
+	// example:
+	//
+	// clusterStateWait
+	SubState *string `json:"subState,omitempty" xml:"subState,omitempty"`
 }
 
 func (s ListActionRecordsResponseBodyResultStatusInfoSubStatusInfo) String() string {

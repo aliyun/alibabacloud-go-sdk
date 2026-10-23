@@ -26,7 +26,7 @@ type ListInstanceIndicesResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The index list details.
+	// The details of the index list.
 	Result []*ListInstanceIndicesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -84,25 +84,25 @@ func (s *ListInstanceIndicesResponseBody) Validate() error {
 }
 
 type ListInstanceIndicesResponseBodyHeaders struct {
-	// The total number of managed indexes in the cloud.
+	// The total number of indices in cloud-managed storage.
 	//
 	// example:
 	//
 	// 15
 	XManagedCount *int32 `json:"X-Managed-Count,omitempty" xml:"X-Managed-Count,omitempty"`
-	// The total size of managed indexes in the cloud. Unit: bytes.
+	// The total size of indices in cloud-managed storage. Unit: bytes.
 	//
 	// example:
 	//
 	// 18093942932
 	XManagedStorageSize *int64 `json:"X-Managed-StorageSize,omitempty" xml:"X-Managed-StorageSize,omitempty"`
-	// The total number of OpenStore cold-phase indexes.
+	// The total number of OpenStore cold-phase indices.
 	//
 	// example:
 	//
 	// 5
 	XOSSCount *int32 `json:"X-OSS-Count,omitempty" xml:"X-OSS-Count,omitempty"`
-	// The total size of OpenStore cold-phase indexes for the instance. Unit: bytes.
+	// The total size of OpenStore cold-phase indices for the instance. Unit: bytes.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ func (s *ListInstanceIndicesResponseBodyHeaders) Validate() error {
 }
 
 type ListInstanceIndicesResponseBodyResult struct {
-	// The time when the index list was queried.
+	// The creation time of the index, in ISO 8601 format and UTC time.
 	//
 	// example:
 	//
@@ -167,11 +167,11 @@ type ListInstanceIndicesResponseBodyResult struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The health status of the index. Valid values:
 	//
-	// - green: Healthy.
+	// - green: healthy.
 	//
-	// - yellow: Warning.
+	// - yellow: warning.
 	//
-	// - red: Abnormal.
+	// - red: unhealthy.
 	//
 	// example:
 	//
@@ -183,19 +183,19 @@ type ListInstanceIndicesResponseBodyResult struct {
 	//
 	// {    "indices": {         ".ds-console-2021.08.18-000002": {             "index": ".ds-console-2021.08.18-000002",             "managed": true,             "policy": "console",             "lifecycle_date_millis": 1629277498775,             "age": "2.64h",             "phase": "hot",             "phase_time_millis": 1629277450334,             "action": "complete",             "action_time_millis": 1629278605586,             "step": "complete",             "step_time_millis": 1629278605586,             "phase_execution": {                 "policy": "console",                 "phase_definition": {                     "min_age": "0s",                     "actions": {                         "rollover": {                             "max_size": "1gb",                             "max_age": "1d",                             "max_docs": 10000                         },                         "set_priority": {                             "priority": 1000                         }                     }                 },                 "version": 1,                 "modified_date_in_millis": 1629277370953             }         }     } }
 	IlmExplain *string `json:"ilmExplain,omitempty" xml:"ilmExplain,omitempty"`
-	// This parameter is deprecated and can be ignored.
+	// **[Deprecated]*	- This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// false
 	IsManaged *string `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
-	// The index management status. Valid values:
+	// The management status of the index. Valid values:
 	//
-	// - following: Managed.
+	// - following: managed.
 	//
-	// - closing: Being unmanaged.
+	// - closing: unmanaging.
 	//
-	// - closed: Not managed.
+	// - closed: unmanaged.
 	//
 	// example:
 	//
@@ -209,15 +209,15 @@ type ListInstanceIndicesResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The current storage lifecycle phase. Valid values:
 	//
-	// - warm: Warm phase.
+	// - warm: the warm phase.
 	//
-	// - cold: Cold phase.
+	// - cold: the cold phase.
 	//
-	// - hot: Hot phase.
+	// - hot: the hot phase.
 	//
-	// - delete: Delete phase.
+	// - delete: the delete phase.
 	//
-	// > If this value is empty, the index is not managed by a lifecycle policy.
+	// An empty value indicates that the index is not managed by a lifecycle policy.
 	//
 	// example:
 	//

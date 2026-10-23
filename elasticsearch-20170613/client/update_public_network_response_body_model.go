@@ -62,7 +62,7 @@ func (s *UpdatePublicNetworkResponseBody) Validate() error {
 }
 
 type UpdatePublicNetworkResponseBodyResult struct {
-	// The status of the public network address switch.
+	// The status of the public endpoint switch.
 	//
 	// example:
 	//

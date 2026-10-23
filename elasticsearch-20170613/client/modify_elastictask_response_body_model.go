@@ -62,9 +62,9 @@ func (s *ModifyElastictaskResponseBody) Validate() error {
 }
 
 type ModifyElastictaskResponseBodyResult struct {
-	// The elastic node scale-out rule.
+	// The scale-out rules for elastic nodes.
 	ElasticExpansionTask *ModifyElastictaskResponseBodyResultElasticExpansionTask `json:"elasticExpansionTask,omitempty" xml:"elasticExpansionTask,omitempty" type:"Struct"`
-	// The elastic node scale-in rule.
+	// The scale-in rules for elastic nodes.
 	ElasticShrinkTask *ModifyElastictaskResponseBodyResultElasticShrinkTask `json:"elasticShrinkTask,omitempty" xml:"elasticShrinkTask,omitempty" type:"Struct"`
 }
 
@@ -109,13 +109,13 @@ func (s *ModifyElastictaskResponseBodyResult) Validate() error {
 }
 
 type ModifyElastictaskResponseBodyResultElasticExpansionTask struct {
-	// The trigger cycle, specified as a Quartz Cron expression.
+	// The trigger cycle, specified by a Quartz cron expression.
 	//
 	// example:
 	//
 	// 0 0 0 ? 	- MON
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	// The number of elastic data nodes during peak hours.
+	// The target number of elastic data nodes during peak hours.
 	//
 	// example:
 	//
@@ -126,9 +126,10 @@ type ModifyElastictaskResponseBodyResultElasticExpansionTask struct {
 	// example:
 	//
 	// 2
-	ReplicaCount  *int32    `json:"replicaCount,omitempty" xml:"replicaCount,omitempty"`
+	ReplicaCount *int32 `json:"replicaCount,omitempty" xml:"replicaCount,omitempty"`
+	// The list of target index names for the elastic scaling task. Wildcards are supported.
 	TargetIndices []*string `json:"targetIndices,omitempty" xml:"targetIndices,omitempty" type:"Repeated"`
-	// The cause. The value is fixed as crontab, which indicates scheduled triggering.
+	// The Cause. The value is fixed to crontab, which indicates scheduled triggering.
 	//
 	// example:
 	//
@@ -194,13 +195,13 @@ func (s *ModifyElastictaskResponseBodyResultElasticExpansionTask) Validate() err
 }
 
 type ModifyElastictaskResponseBodyResultElasticShrinkTask struct {
-	// The trigger cycle, specified as a Quartz Cron expression.
+	// The trigger cycle, specified by a Quartz cron expression.
 	//
 	// example:
 	//
 	// 4 4 4 ? 	- WED
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	// The number of elastic data nodes during off-peak hours.
+	// The target number of elastic data nodes during off-peak hours.
 	//
 	// example:
 	//
@@ -211,9 +212,10 @@ type ModifyElastictaskResponseBodyResultElasticShrinkTask struct {
 	// example:
 	//
 	// 2
-	ReplicaCount  *int32    `json:"replicaCount,omitempty" xml:"replicaCount,omitempty"`
+	ReplicaCount *int32 `json:"replicaCount,omitempty" xml:"replicaCount,omitempty"`
+	// The list of target index names for the elastic scaling task. Wildcards are supported.
 	TargetIndices []*string `json:"targetIndices,omitempty" xml:"targetIndices,omitempty" type:"Repeated"`
-	// The cause. Valid values: crontab, which indicates scheduled triggering.
+	// The Cause. Valid value: crontab, which indicates scheduled triggering.
 	//
 	// example:
 	//

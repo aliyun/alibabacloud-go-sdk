@@ -16,6 +16,11 @@ type iEstimatedLogstashRestartTimeRequest interface {
 }
 
 type EstimatedLogstashRestartTimeRequest struct {
+  // The restart parameters, including the restart type, target nodes, blue-green deployment options, and concurrency settings.
+  // 
+  // example:
+  // 
+  // {"restartType":"nodeIp","nodes":["172.16.xx.xx"],"blueGreenDep":true}
   Body *string `json:"body,omitempty" xml:"body,omitempty"`
   // Specifies whether to forcibly restart the instance. Default value: false.
   // 

@@ -16,8 +16,14 @@ type iUpdateBlackIpsResponseBody interface {
 }
 
 type UpdateBlackIpsResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdateBlackIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6F******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The updated access blacklist information.
+	Result *UpdateBlackIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdateBlackIpsResponseBody) String() string {
@@ -56,6 +62,7 @@ func (s *UpdateBlackIpsResponseBody) Validate() error {
 }
 
 type UpdateBlackIpsResponseBodyResult struct {
+	// The list of IP addresses in the access blacklist of the Elasticsearch instance.
 	EsIPBlacklist []*string `json:"esIPBlacklist,omitempty" xml:"esIPBlacklist,omitempty" type:"Repeated"`
 }
 

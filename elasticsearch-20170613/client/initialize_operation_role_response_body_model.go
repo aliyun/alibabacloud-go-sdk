@@ -22,11 +22,11 @@ type InitializeOperationRoleResponseBody struct {
 	//
 	// 29101430-4797-4D1D-96C3-9FCBCCA8F845
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// The result. Valid values:
 	//
-	// - true: Created.
+	// - true: The creation succeeded.
 	//
-	// - false: Failed to create.
+	// - false: The creation failed.
 	//
 	// example:
 	//

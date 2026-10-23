@@ -22,11 +22,11 @@ type UpdateReadWritePolicyResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The result of the operation. Valid values:
 	//
-	// - true: The write high availability feature is enabled or disabled.
+	// - true: The write high-availability feature was enabled or disabled.
 	//
-	// - false: Failed to enable or disable the write high availability feature.
+	// - false: The write high-availability feature failed to be enabled or disabled.
 	//
 	// example:
 	//

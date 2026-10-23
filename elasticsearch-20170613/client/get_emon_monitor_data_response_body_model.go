@@ -22,7 +22,7 @@ type iGetEmonMonitorDataResponseBody interface {
 }
 
 type GetEmonMonitorDataResponseBody struct {
-	// The request status code.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type GetEmonMonitorDataResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result.
 	Result []*GetEmonMonitorDataResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Valid values:
+	// Specifies whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Unsuccessful.
 	//
 	// example:
 	//
@@ -121,19 +121,19 @@ func (s *GetEmonMonitorDataResponseBody) Validate() error {
 }
 
 type GetEmonMonitorDataResponseBodyResult struct {
-	// The real-time metric monitoring data. Format: `{timestamp:data}`.
+	// The real-time metric monitoring data. The format is `{timestamp:data}`.
 	//
 	// example:
 	//
 	// { "1586249280": 465.1980465119913, "1586249300": 213.45243650423305 }
 	Dps map[string]interface{} `json:"dps,omitempty" xml:"dps,omitempty"`
-	// The completeness of time series data points in the metric query result. A value of 1.0 indicates 100% completeness.
+	// The completeness of the time series curve data points in the result returned by the metric query. A value of 1.0 indicates 100% completeness.
 	//
 	// example:
 	//
 	// 1.0
 	Integrity *float32 `json:"integrity,omitempty" xml:"integrity,omitempty"`
-	// The timestamp when the request reaches the server. This is used for troubleshooting.
+	// The timestamp when the request reaches the server. This parameter is used for troubleshooting.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type GetEmonMonitorDataResponseBodyResult struct {
 	//
 	// elasticbuild.elasticsearch.source.total_doc_count
 	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
-	// If the queries contain wildcards, the result includes multiple matching time series data sequences. The summary is the aggregation of the values across these time series at each time point, based on the aggregator type specified in the query. Currently, only avg is supported as the aggregation method.
+	// If the queries contain wildcards, the result includes multiple matched time series data records. The summary is the aggregation of the value sets of these time series at each time point based on the aggregator type provided in the query. Currently, only the avg aggregation method is supported.
 	//
 	// example:
 	//

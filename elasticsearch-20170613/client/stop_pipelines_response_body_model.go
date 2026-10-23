@@ -16,7 +16,7 @@ type iStopPipelinesResponseBody interface {
 }
 
 type StopPipelinesResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type StopPipelinesResponseBody struct {
 	//
 	// - true: The pipelines are stopped successfully.
 	//
-	// - false: The pipelines failed to be stopped.
+	// - false: The pipelines fail to stop.
 	//
 	// example:
 	//

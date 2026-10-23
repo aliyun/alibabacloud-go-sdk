@@ -20,7 +20,7 @@ type iListInstanceHistoryEventsResponseBody interface {
 type ListInstanceHistoryEventsResponseBody struct {
 	// The response headers.
 	Headers *ListInstanceHistoryEventsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListInstanceHistoryEventsResponseBodyResult struct {
 	//
 	// i-2ze8s9cjdf2cv969****
 	EcsId *string `json:"ecsId,omitempty" xml:"ecsId,omitempty"`
-	// The event creation time.
+	// The creation time of the event. The time is displayed in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ type ListInstanceHistoryEventsResponseBodyResult struct {
 	//
 	// EXECUTED
 	EventCycleStatus *string `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty"`
-	// The event execution time.
+	// The execution time of the event. The time is displayed in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2017-12-07T00:00:00Z
 	EventExecuteTime *string `json:"eventExecuteTime,omitempty" xml:"eventExecuteTime,omitempty"`
-	// The event completion time.
+	// The completion time of the event. The time is displayed in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -194,17 +194,17 @@ type ListInstanceHistoryEventsResponseBodyResult struct {
 	EventLevel *string `json:"eventLevel,omitempty" xml:"eventLevel,omitempty"`
 	// The event type. Valid values:
 	//
-	// - ECS:AUTO_RESTART: ECS node automatic restart.
+	// - ECS:AUTO_RESTART: The ECS node is automatically restarted.
 	//
-	// - Instance:InstanceFailure.Reboot:Executed: ECS instance restart completed (ECS instance error).
+	// - Instance:InstanceFailure.Reboot:Executed: The restart of the ECS instance is complete due to an instance error.
 	//
-	// - Instance:InstanceFailure.Reboot:Executing: ECS instance restart started (instance error).
+	// - Instance:InstanceFailure.Reboot:Executing: The restart of the ECS instance starts due to an instance error.
 	//
-	// - Instance:SystemFailure.Reboot:Executed: ECS instance restart completed (system error).
+	// - Instance:SystemFailure.Reboot:Executed: The restart of the ECS instance is complete due to a system error.
 	//
-	// - Instance:SystemFailure.Reboot:Executing: ECS instance restart started (system error).
+	// - Instance:SystemFailure.Reboot:Executing: The restart of the ECS instance starts due to a system error.
 	//
-	// - Instance:SystemFailure.Reboot:Failed: ECS instance restart failed (system error).
+	// - Instance:SystemFailure.Reboot:Failed: The restart of the ECS instance fails due to a system error.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type ListInstanceHistoryEventsResponseBodyResult struct {
 	//
 	// 10.1.xx.xx
 	NodeIP *string `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
-	// The region ID where the event occurred.
+	// The ID of the region where the event occurred.
 	//
 	// example:
 	//

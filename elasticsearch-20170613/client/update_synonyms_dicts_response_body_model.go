@@ -80,7 +80,7 @@ type UpdateSynonymsDictsResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type of the dictionary file. Valid values:
 	//
-	// - OSS: OSS open storage.
+	// - OSS: OSS.
 	//
 	// - ORIGIN: retains the previously uploaded dictionary.
 	//
@@ -88,7 +88,7 @@ type UpdateSynonymsDictsResponseBodyResult struct {
 	//
 	// OSS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The dictionary type. Valid values: SYNONYMS (synonym).
+	// The dictionary type. Valid value: SYNONYMS (synonyms).
 	//
 	// example:
 	//

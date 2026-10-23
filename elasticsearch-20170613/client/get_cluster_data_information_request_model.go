@@ -14,6 +14,11 @@ type iGetClusterDataInformationRequest interface {
 }
 
 type GetClusterDataInformationRequest struct {
+	// The cluster type, access endpoint, and index to be queried.
+	//
+	// example:
+	//
+	// {"dataSourceType":"elasticsearch","endpoint":"http://es-cn-npk1shyiq000d****.public.elasticsearch.aliyuncs.com:9200","username":"elastic","password":"xxxxxx","index":"default","type":"default"}
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -16,8 +16,13 @@ type iEstimatedRestartTimeRequest interface {
 }
 
 type EstimatedRestartTimeRequest struct {
+  // The restart parameters, such as the restart method, target nodes, and blue-green deployment, represented as a JSON string.
+  // 
+  // example:
+  // 
+  // {"restartType":"nodeIp","nodes":["172.16.xx.xx"],"blueGreenDep":true}
   Body *string `json:"body,omitempty" xml:"body,omitempty"`
-  // Specifies whether to forcibly restart the instance. Default value: false.
+  // Specifies whether to force a restart. Default value: false.
   // 
   // example:
   // 

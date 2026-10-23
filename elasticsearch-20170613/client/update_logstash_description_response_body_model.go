@@ -16,7 +16,7 @@ type iUpdateLogstashDescriptionResponseBody interface {
 }
 
 type UpdateLogstashDescriptionResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *UpdateLogstashDescriptionResponseBody) Validate() error {
 }
 
 type UpdateLogstashDescriptionResponseBodyResult struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//

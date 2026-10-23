@@ -42,13 +42,13 @@ type iListInstanceHistoryEventsRequest interface {
 type ListInstanceHistoryEventsRequest struct {
 	// The request body parameters.
 	Body []*ListInstanceHistoryEventsRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	// The end time for querying by event creation time. Specify a timestamp in milliseconds.
+	// The end time for querying events by creation time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1645596516000
 	EventCreateEndTime *string `json:"eventCreateEndTime,omitempty" xml:"eventCreateEndTime,omitempty"`
-	// The start time for querying by event creation time. Specify a timestamp in milliseconds.
+	// The start time for querying events by creation time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -56,25 +56,25 @@ type ListInstanceHistoryEventsRequest struct {
 	EventCreateStartTime *string `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
 	// The lifecycle status object of the event.
 	EventCycleStatus []*string `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty" type:"Repeated"`
-	// The end time for querying by event execution time. Specify a timestamp in milliseconds.
+	// The end time for querying events by execution time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1645596516000
 	EventExecuteEndTime *string `json:"eventExecuteEndTime,omitempty" xml:"eventExecuteEndTime,omitempty"`
-	// The start time for querying by event execution time. Specify a timestamp in milliseconds.
+	// The start time for querying events by execution time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1645596516000
 	EventExecuteStartTime *string `json:"eventExecuteStartTime,omitempty" xml:"eventExecuteStartTime,omitempty"`
-	// The end time for querying by event completion time. Specify a timestamp in milliseconds.
+	// The end time for querying events by completion time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1645596516000
 	EventFinashEndTime *string `json:"eventFinashEndTime,omitempty" xml:"eventFinashEndTime,omitempty"`
-	// The start time for querying by event completion time. Specify a timestamp in milliseconds.
+	// The start time for querying events by completion time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -258,23 +258,23 @@ func (s *ListInstanceHistoryEventsRequest) Validate() error {
 }
 
 type ListInstanceHistoryEventsRequestBody struct {
-	// Specifies whether to sort in descending order. Valid values:
+	// Specifies whether to sort the results in descending order. Valid values:
 	//
-	// - true (default): yes
+	// - true: Sorts the results in descending order. This is the default value.
 	//
-	// - false: no
+	// - false: Sorts the results in ascending order.
 	//
 	// example:
 	//
 	// true
 	Desc *bool `json:"desc,omitempty" xml:"desc,omitempty"`
-	// The field by which the results are sorted. Valid values:
+	// The field by which to sort the returned results. Valid values:
 	//
-	// - event_time: event creation time
+	// - event_time: the creation time of the event
 	//
-	// - event_execute_start_time: event execution time
+	// - event_execute_start_time: the execution time of the event
 	//
-	// - event_execute_finish_time: event completion time
+	// - event_execute_finish_time: the completion time of the event
 	//
 	// example:
 	//

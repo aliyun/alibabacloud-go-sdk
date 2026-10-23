@@ -22,9 +22,9 @@ type UpdateDiagnosisSettingsResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// Indicates whether the update was successful. Valid values:
 	//
-	// - true: The update was successful.
+	// - true: The update succeeded.
 	//
 	// - false: The update failed.
 	//

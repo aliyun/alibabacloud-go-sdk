@@ -20,7 +20,7 @@ type iListEcsInstancesResponseBody interface {
 type ListEcsInstancesResponseBody struct {
 	// The response headers.
 	Headers *ListEcsInstancesResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ func (s *ListEcsInstancesResponseBody) Validate() error {
 }
 
 type ListEcsInstancesResponseBodyHeaders struct {
-	// The total number of returned records.
+	// The number of returned records.
 	//
 	// example:
 	//
@@ -114,17 +114,17 @@ func (s *ListEcsInstancesResponseBodyHeaders) Validate() error {
 }
 
 type ListEcsInstancesResponseBodyResult struct {
-	// The Cloud Assistant installation status. Valid values:
+	// The installation status of Cloud Assistant. Valid values:
 	//
-	// - true: Installed.
+	// - true: installed
 	//
-	// - false: Not installed.
+	// - false: not installed
 	//
 	// example:
 	//
 	// true
 	CloudAssistantStatus *string `json:"cloudAssistantStatus,omitempty" xml:"cloudAssistantStatus,omitempty"`
-	// The list of collectors deployed on the ECS instance.
+	// The list of collectors on the ECS instance.
 	Collectors []*ListEcsInstancesResponseBodyResultCollectors `json:"collectors,omitempty" xml:"collectors,omitempty" type:"Repeated"`
 	// The ECS instance ID.
 	//
@@ -132,7 +132,7 @@ type ListEcsInstancesResponseBodyResult struct {
 	//
 	// i-bp14ncqge8wy3l3d****
 	EcsInstanceId *string `json:"ecsInstanceId,omitempty" xml:"ecsInstanceId,omitempty"`
-	// The ECS instance name.
+	// The name of the ECS instance.
 	//
 	// example:
 	//
@@ -142,9 +142,9 @@ type ListEcsInstancesResponseBodyResult struct {
 	IpAddress []*ListEcsInstancesResponseBodyResultIpAddress `json:"ipAddress,omitempty" xml:"ipAddress,omitempty" type:"Repeated"`
 	// The operating system type of the ECS instance. Valid values:
 	//
-	// - windows: Windows operating system.
+	// - windows: Windows operating system
 	//
-	// - linux: Linux operating system.
+	// - linux: Linux operating system
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type ListEcsInstancesResponseBodyResult struct {
 	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
 	// The status of the ECS instance. Valid values:
 	//
-	// - running: running.
+	// - running: running
 	//
-	// - starting: starting.
+	// - starting: starting
 	//
-	// - stopping: stopping.
+	// - stopping: stopping
 	//
-	// - stopped: stopped.
+	// - stopped: stopped
 	//
 	// example:
 	//
@@ -275,20 +275,21 @@ func (s *ListEcsInstancesResponseBodyResult) Validate() error {
 }
 
 type ListEcsInstancesResponseBodyResultCollectors struct {
+	// The list of Filebeat collection paths.
 	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
 	// The configuration file information of the collector.
 	Configs []*ListEcsInstancesResponseBodyResultCollectorsConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// Indicates whether to only validate without creating the collector. Valid values:
+	// Specifies whether to verify and create the collector. Valid values:
 	//
-	// - true: Only validates without creating.
+	// - true: Verifies the collector but does not create it.
 	//
-	// - false: Validates and creates.
+	// - false: Verifies and creates the collector.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// The extended configuration information.
+	// The extended parameter information.
 	ExtendConfigs []*ListEcsInstancesResponseBodyResultCollectorsExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
 	// The time when the collector was created.
 	//
@@ -296,19 +297,19 @@ type ListEcsInstancesResponseBodyResultCollectors struct {
 	//
 	// 2020-06-20T07:26:47.000+0000
 	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	// The time when the collector was last updated.
+	// The time when the collector was updated.
 	//
 	// example:
 	//
 	// 2020-06-20T07:26:47.000+0000
 	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	// The collector name.
+	// The name of the collector.
 	//
 	// example:
 	//
 	// ct-testAbc
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The account ID.
+	// The ID of the account.
 	//
 	// example:
 	//
@@ -320,29 +321,29 @@ type ListEcsInstancesResponseBodyResultCollectors struct {
 	//
 	// ct-cn-0v3xj86085dvq****
 	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
-	// The collector type. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+	// The type of the collector. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
 	//
 	// example:
 	//
 	// fileBeat
 	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
-	// The collector version. When the deployment machine type is ECS, only **6.8.5_with_community*	- is supported.
+	// The version of the collector. When the machine type is ECS, only **6.8.5_with_community*	- is supported.
 	//
 	// example:
 	//
 	// 6.8.5_with_community
 	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
-	// The collector status. Valid values:
+	// The status of the collector. Valid values:
 	//
-	// - activing: taking effect.
+	// - activing: taking effect
 	//
-	// - active: active.
+	// - active: effective
 	//
 	// example:
 	//
 	// activing
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The VPC ID of the collector.
+	// The ID of the VPC where the collector resides.
 	//
 	// example:
 	//
@@ -498,13 +499,13 @@ func (s *ListEcsInstancesResponseBodyResultCollectors) Validate() error {
 }
 
 type ListEcsInstancesResponseBodyResultCollectorsConfigs struct {
-	// The file content.
+	// The content of the file.
 	//
 	// example:
 	//
 	// - key: log\\n title: Log file content\\n description: >\\n Contains log file lines.\\n ....
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//
@@ -545,64 +546,65 @@ func (s *ListEcsInstancesResponseBodyResultCollectorsConfigs) Validate() error {
 type ListEcsInstancesResponseBodyResultCollectorsExtendConfigs struct {
 	// The configuration type. Valid values:
 	//
-	// - collectorTargetInstance: the collector Output.
+	// - collectorTargetInstance: the collector output
 	//
-	// - collectorDeployMachine: the deployment machine of the collector.
+	// - collectorDeployMachine: the machine on which the collector is deployed
 	//
-	// - collectorElasticsearchForKibana: the Elasticsearch instance information that supports Kibana dashboards.
+	// - collectorElasticsearchForKibana: the information about the Elasticsearch instance that supports Kibana dashboards
 	//
 	// example:
 	//
 	// collectorDeployMachine
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
-	// Indicates whether Monitoring is enabled. This parameter is displayed when configType is set to collectorTargetInstance and instanceType is set to elasticsearch. Valid values:
+	// Specifies whether to enable monitoring. This parameter is displayed when **configType*	- is set to **collectorTargetInstance*	- and **instanceType*	- is set to **elasticsearch**. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Enables monitoring.
 	//
-	// - false: Not enabled.
+	// - false: Disables monitoring.
 	//
 	// example:
 	//
 	// true
 	EnableMonitoring *bool `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
-	// The machine group ID. This parameter is displayed when configType is set to collectorDeployMachine.
+	// The ID of the machine group. This parameter is displayed when **configType*	- is set to **collectorDeployMachine**.
 	//
 	// example:
 	//
 	// default_ct-cn-5i2l75bz4776****
-	GroupId *string   `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	Hosts   []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	// The ID of the instance associated with the collector. When configType is set to collectorTargetInstance, this is the instance ID of the collector Output. When configType is set to collectorDeployMachines and type is set to ACKCluster, this is the ACK (Container Kubernetes) cluster ID.
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The list of host addresses of the collector target instance.
+	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
+	// Instance ID of the instance associated with the collector. When **configType*	- is set to **collectorTargetInstance**, this parameter indicates instance ID of the collector output instance. When **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**, this parameter indicates instance ID of the ACK cluster.
 	//
 	// example:
 	//
 	// es-cn-nif1z89fz003i****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The instance type specified in the collector Output. Valid values: elasticsearch and logstash. This parameter is displayed when configType is set to collectorTargetInstance.
+	// The type of the instance specified by the collector output. Valid values: elasticsearch and logstash. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**.
 	//
 	// example:
 	//
 	// elasticsearch
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The list of ECS machines on which the collector is deployed. This parameter is displayed when configType is set to collectorDeployMachines and type is set to ECSInstanceId.
+	// The list of ECS instances on which the collector is deployed. This parameter is displayed when **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ECSInstanceId**.
 	Machines []*ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	// The transport protocol, which must be consistent with the access protocol of the instance specified in the collector Output. Valid values: HTTP and HTTPS. This parameter is displayed when configType is set to collectorTargetInstance.
+	// The transmission protocol, which must be consistent with the access protocol of the instance specified by the collector output. Valid values: HTTP and HTTPS. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The type of machine on which the collector is deployed. This parameter is displayed when configType is set to collectorDeployMachine. Valid values:
+	// The type of the machine on which the collector is deployed. This parameter is displayed when **configType*	- is set to **collectorDeployMachine**. Valid values:
 	//
-	// - ECSInstanceId: ECS.
+	// - ECSInstanceId: ECS instance
 	//
-	// - ACKCluster: Container Kubernetes.
+	// - ACKCluster: ACK cluster
 	//
 	// example:
 	//
 	// ECSInstanceId
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The username used to access the instance specified in the collector Output. Default value: elastic. This parameter is displayed when configType is set to collectorTargetInstance or collectorElasticsearchForKibana.
+	// The username used to access the instance specified by the collector output. Default value: elastic. This parameter is displayed when **configType*	- is set to **collectorTargetInstance*	- or **collectorElasticsearchForKibana**.
 	//
 	// example:
 	//
@@ -724,19 +726,19 @@ func (s *ListEcsInstancesResponseBodyResultCollectorsExtendConfigs) Validate() e
 type ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines struct {
 	// The status of each collector on the ECS instance. Valid values:
 	//
-	// - heartOk: normal heartbeat.
+	// - heartOk: normal heartbeat
 	//
-	// - heartLost: abnormal heartbeat.
+	// - heartLost: abnormal heartbeat
 	//
-	// - uninstalled: not installed.
+	// - uninstalled: not installed
 	//
-	// - failed: installation failed.
+	// - failed: installation failed
 	//
 	// example:
 	//
 	// heartOk
 	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
-	// The list of ECS machine IDs.
+	// The list of ECS instance IDs.
 	//
 	// example:
 	//
@@ -781,11 +783,11 @@ type ListEcsInstancesResponseBodyResultIpAddress struct {
 	//
 	// 172.16.xx.xx
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The IP address type. Valid values:
+	// The type of the IP address. Valid values:
 	//
-	// - public: public IP address.
+	// - public: public IP address
 	//
-	// - private: private network address.
+	// - private: private network IP address
 	//
 	// example:
 	//

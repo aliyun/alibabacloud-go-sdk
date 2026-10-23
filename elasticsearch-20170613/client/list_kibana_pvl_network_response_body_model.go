@@ -66,7 +66,7 @@ func (s *ListKibanaPvlNetworkResponseBody) Validate() error {
 }
 
 type ListKibanaPvlNetworkResponseBodyResult struct {
-	// The time when the Kibana private network connection was created.
+	// The time when the Kibana private network connection was created. The time follows the ISO 8601 standard and is displayed in UTC.
 	//
 	// example:
 	//
@@ -86,22 +86,23 @@ type ListKibanaPvlNetworkResponseBodyResult struct {
 	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
 	// The endpoint status. Valid values:
 	//
-	// - Disconnected: disconnected
+	// - Disconnected: Not connected.
 	//
-	// - Connected: connected
+	// - Connected: Connected.
 	//
 	// example:
 	//
 	// Connected
-	EndpointStatus       *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
-	ManagedSecurityGroup *bool   `json:"managedSecurityGroup,omitempty" xml:"managedSecurityGroup,omitempty"`
-	// The Kibana private network connection ID.
+	EndpointStatus *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
+	// Indicates whether the security group is a managed security group.
+	ManagedSecurityGroup *bool `json:"managedSecurityGroup,omitempty" xml:"managedSecurityGroup,omitempty"`
+	// The ID of the Kibana private network connection.
 	//
 	// example:
 	//
 	// es-cn-27a3mul6l***-kibana-internal
 	PvlId *string `json:"pvlId,omitempty" xml:"pvlId,omitempty"`
-	// The list of security groups.
+	// The security groups.
 	SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
 	// The vSwitch and zone information.
 	VSwitchIdsZone []*ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone `json:"vSwitchIdsZone,omitempty" xml:"vSwitchIdsZone,omitempty" type:"Repeated"`

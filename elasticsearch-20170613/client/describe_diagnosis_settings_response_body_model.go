@@ -62,18 +62,31 @@ func (s *DescribeDiagnosisSettingsResponseBody) Validate() error {
 }
 
 type DescribeDiagnosisSettingsResponseBodyResult struct {
-	AuthorizationStatus  *bool   `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
-	DailyLimit           *int32  `json:"dailyLimit,omitempty" xml:"dailyLimit,omitempty"`
-	DailyScheduleEnabled *bool   `json:"dailyScheduleEnabled,omitempty" xml:"dailyScheduleEnabled,omitempty"`
-	DiagnosisMode        *string `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
-	// The common scenarios of intelligent diagnosis and optimization.
+	// Indicates whether intelligent diagnostics is authorized to access the Elasticsearch API.
+	AuthorizationStatus *bool `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
+	// The maximum number of diagnostic executions allowed per day.
+	//
+	// example:
+	//
+	// 0
+	DailyLimit *int32 `json:"dailyLimit,omitempty" xml:"dailyLimit,omitempty"`
+	// Indicates whether daily scheduled diagnostics are enabled.
+	DailyScheduleEnabled *bool `json:"dailyScheduleEnabled,omitempty" xml:"dailyScheduleEnabled,omitempty"`
+	// The running mode of intelligent diagnostics, such as AGENT.
+	//
+	// example:
+	//
+	// AGENT
+	DiagnosisMode *string `json:"diagnosisMode,omitempty" xml:"diagnosisMode,omitempty"`
+	// The common scenarios for intelligent O&M.
 	//
 	// example:
 	//
 	// Business Search
-	Scene         *string   `json:"scene,omitempty" xml:"scene,omitempty"`
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The list of identifiers for the selected intelligent diagnostics items.
 	SelectedItems []*string `json:"selectedItems,omitempty" xml:"selectedItems,omitempty" type:"Repeated"`
-	// The UNIX timestamp when the intelligent diagnosis and optimization common scenarios were last updated.
+	// The UNIX timestamp when the common scenarios for intelligent O&M were last updated.
 	//
 	// example:
 	//

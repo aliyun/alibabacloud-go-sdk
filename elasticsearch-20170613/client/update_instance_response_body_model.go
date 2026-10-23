@@ -96,7 +96,7 @@ func (s *UpdateInstanceResponseBody) Validate() error {
 }
 
 type UpdateInstanceResponseBodyResult struct {
-	// The time when the instance was created.
+	// The time when the instance was created. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type UpdateInstanceResponseBodyResult struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The internal-facing access domain name of the instance for private network access.
+	// The internal-facing access domain name of the instance on the private network.
 	//
 	// example:
 	//
@@ -120,6 +120,8 @@ type UpdateInstanceResponseBodyResult struct {
 	//
 	// 5.5.3_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
+	// The index node configuration. This parameter is supported only by AI engine instances.
+	IndexNodeConfiguration *UpdateInstanceResponseBodyResultIndexNodeConfiguration `json:"indexNodeConfiguration,omitempty" xml:"indexNodeConfiguration,omitempty" type:"Struct"`
 	// The instance ID.
 	//
 	// example:
@@ -140,21 +142,23 @@ type UpdateInstanceResponseBodyResult struct {
 	NodeSpec *UpdateInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
-	// - prepaid: Subscription.
+	// - prepaid: subscription.
 	//
-	// - postpaid: Pay-as-you-go.
+	// - postpaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// postpaid
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The search node configuration. This parameter is supported only by AI engine instances.
+	SearchNodeConfiguration *UpdateInstanceResponseBodyResultSearchNodeConfiguration `json:"searchNodeConfiguration,omitempty" xml:"searchNodeConfiguration,omitempty" type:"Struct"`
 	// The status of the instance. Valid values:
 	//
 	// - active: Normal.
 	//
-	// - activating: Taking effect.
+	// - activating: Activating.
 	//
-	// - inactive: Frozen.
+	// - inactive: Inactive.
 	//
 	// - invalid: Invalid.
 	//
@@ -188,6 +192,10 @@ func (s *UpdateInstanceResponseBodyResult) GetEsVersion() *string {
 	return s.EsVersion
 }
 
+func (s *UpdateInstanceResponseBodyResult) GetIndexNodeConfiguration() *UpdateInstanceResponseBodyResultIndexNodeConfiguration {
+	return s.IndexNodeConfiguration
+}
+
 func (s *UpdateInstanceResponseBodyResult) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -212,6 +220,10 @@ func (s *UpdateInstanceResponseBodyResult) GetPaymentType() *string {
 	return s.PaymentType
 }
 
+func (s *UpdateInstanceResponseBodyResult) GetSearchNodeConfiguration() *UpdateInstanceResponseBodyResultSearchNodeConfiguration {
+	return s.SearchNodeConfiguration
+}
+
 func (s *UpdateInstanceResponseBodyResult) GetStatus() *string {
 	return s.Status
 }
@@ -233,6 +245,11 @@ func (s *UpdateInstanceResponseBodyResult) SetDomain(v string) *UpdateInstanceRe
 
 func (s *UpdateInstanceResponseBodyResult) SetEsVersion(v string) *UpdateInstanceResponseBodyResult {
 	s.EsVersion = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResult) SetIndexNodeConfiguration(v *UpdateInstanceResponseBodyResultIndexNodeConfiguration) *UpdateInstanceResponseBodyResult {
+	s.IndexNodeConfiguration = v
 	return s
 }
 
@@ -266,12 +283,22 @@ func (s *UpdateInstanceResponseBodyResult) SetPaymentType(v string) *UpdateInsta
 	return s
 }
 
+func (s *UpdateInstanceResponseBodyResult) SetSearchNodeConfiguration(v *UpdateInstanceResponseBodyResultSearchNodeConfiguration) *UpdateInstanceResponseBodyResult {
+	s.SearchNodeConfiguration = v
+	return s
+}
+
 func (s *UpdateInstanceResponseBodyResult) SetStatus(v string) *UpdateInstanceResponseBodyResult {
 	s.Status = &v
 	return s
 }
 
 func (s *UpdateInstanceResponseBodyResult) Validate() error {
+	if s.IndexNodeConfiguration != nil {
+		if err := s.IndexNodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.KibanaConfiguration != nil {
 		if err := s.KibanaConfiguration.Validate(); err != nil {
 			return err
@@ -287,7 +314,102 @@ func (s *UpdateInstanceResponseBodyResult) Validate() error {
 			return err
 		}
 	}
+	if s.SearchNodeConfiguration != nil {
+		if err := s.SearchNodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
+}
+
+type UpdateInstanceResponseBodyResultIndexNodeConfiguration struct {
+	// The number of nodes.
+	//
+	// example:
+	//
+	// 3
+	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The disk size.
+	//
+	// example:
+	//
+	// 500
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The disk type, such as cloud_essd.
+	//
+	// example:
+	//
+	// cloud_essd
+	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// The disk performance level (PL), such as PL0.
+	//
+	// example:
+	//
+	// PL0
+	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	// The node specifications.
+	//
+	// example:
+	//
+	// elasticsearch.turbo1.ci.xlarge
+	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s UpdateInstanceResponseBodyResultIndexNodeConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateInstanceResponseBodyResultIndexNodeConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) GetAmount() *int32 {
+	return s.Amount
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) GetDisk() *int32 {
+	return s.Disk
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) GetDiskType() *string {
+	return s.DiskType
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) GetPerformanceLevel() *string {
+	return s.PerformanceLevel
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) GetSpec() *string {
+	return s.Spec
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) SetAmount(v int32) *UpdateInstanceResponseBodyResultIndexNodeConfiguration {
+	s.Amount = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) SetDisk(v int32) *UpdateInstanceResponseBodyResultIndexNodeConfiguration {
+	s.Disk = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) SetDiskType(v string) *UpdateInstanceResponseBodyResultIndexNodeConfiguration {
+	s.DiskType = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) SetPerformanceLevel(v string) *UpdateInstanceResponseBodyResultIndexNodeConfiguration {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) SetSpec(v string) *UpdateInstanceResponseBodyResultIndexNodeConfiguration {
+	s.Spec = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResultIndexNodeConfiguration) Validate() error {
+	return dara.Validate(s)
 }
 
 type UpdateInstanceResponseBodyResultKibanaConfiguration struct {
@@ -297,7 +419,7 @@ type UpdateInstanceResponseBodyResultKibanaConfiguration struct {
 	//
 	// 1
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node.
+	// The storage space size of the node.
 	//
 	// example:
 	//
@@ -372,7 +494,7 @@ type UpdateInstanceResponseBodyResultMasterConfiguration struct {
 	//
 	// 3
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage size of the node. Unit: GB.
+	// The storage space size of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -441,7 +563,7 @@ func (s *UpdateInstanceResponseBodyResultMasterConfiguration) Validate() error {
 }
 
 type UpdateInstanceResponseBodyResultNodeSpec struct {
-	// The storage size of the node. Unit: GB.
+	// The storage space size of the node. Unit: GB.
 	//
 	// example:
 	//
@@ -501,5 +623,95 @@ func (s *UpdateInstanceResponseBodyResultNodeSpec) SetSpec(v string) *UpdateInst
 }
 
 func (s *UpdateInstanceResponseBodyResultNodeSpec) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateInstanceResponseBodyResultSearchNodeConfiguration struct {
+	// The number of nodes.
+	//
+	// example:
+	//
+	// 3
+	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The disk size.
+	//
+	// example:
+	//
+	// 500
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The disk type, such as cloud_essd.
+	//
+	// example:
+	//
+	// cloud_essd
+	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// The disk performance level (PL), such as PL0.
+	//
+	// example:
+	//
+	// PL0
+	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	// The node specifications.
+	//
+	// example:
+	//
+	// elasticsearch.turbo1.ci.xlarge
+	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
+}
+
+func (s UpdateInstanceResponseBodyResultSearchNodeConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateInstanceResponseBodyResultSearchNodeConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) GetAmount() *int32 {
+	return s.Amount
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) GetDisk() *int32 {
+	return s.Disk
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) GetDiskType() *string {
+	return s.DiskType
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) GetPerformanceLevel() *string {
+	return s.PerformanceLevel
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) GetSpec() *string {
+	return s.Spec
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) SetAmount(v int32) *UpdateInstanceResponseBodyResultSearchNodeConfiguration {
+	s.Amount = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) SetDisk(v int32) *UpdateInstanceResponseBodyResultSearchNodeConfiguration {
+	s.Disk = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) SetDiskType(v string) *UpdateInstanceResponseBodyResultSearchNodeConfiguration {
+	s.DiskType = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) SetPerformanceLevel(v string) *UpdateInstanceResponseBodyResultSearchNodeConfiguration {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) SetSpec(v string) *UpdateInstanceResponseBodyResultSearchNodeConfiguration {
+	s.Spec = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBodyResultSearchNodeConfiguration) Validate() error {
 	return dara.Validate(s)
 }

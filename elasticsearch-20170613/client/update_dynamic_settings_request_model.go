@@ -20,11 +20,34 @@ type iUpdateDynamicSettingsRequest interface {
 }
 
 type UpdateDynamicSettingsRequest struct {
-	// The idempotence parameter.
+	// The client token that is used to ensure idempotence.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	Mode        *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The region ID of the Elasticsearch instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The dynamic configurations of the cluster to be updated. Specify a JSON object where the keys are configuration item names and the values are configuration values.
+	//
+	// example:
+	//
+	// {"indices.recovery.max_bytes_per_sec":"100mb"}
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The effective mode for dynamic configurations. Valid values:
+	//
+	// - persistent: persistent configurations.
+	//
+	// - transient: temporary configurations, which become invalid after the cluster is restarted.
+	//
+	// example:
+	//
+	// persistent
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 }
 
 func (s UpdateDynamicSettingsRequest) String() string {

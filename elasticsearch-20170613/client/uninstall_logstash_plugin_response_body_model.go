@@ -18,14 +18,16 @@ type iUninstallLogstashPluginResponseBody interface {
 }
 
 type UninstallLogstashPluginResponseBody struct {
+	// The response headers of this call.
 	Headers map[string]interface{} `json:"Headers,omitempty" xml:"Headers,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The names of the Logstash plugins uninstalled by this request.
+	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s UninstallLogstashPluginResponseBody) String() string {

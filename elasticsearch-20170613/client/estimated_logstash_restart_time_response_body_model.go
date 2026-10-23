@@ -22,7 +22,7 @@ type EstimatedLogstashRestartTimeResponseBody struct {
   // 
   // 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The returned result.
+  // The returned results.
   Result *EstimatedLogstashRestartTimeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 

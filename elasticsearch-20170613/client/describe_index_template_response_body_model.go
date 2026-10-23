@@ -22,7 +22,7 @@ type DescribeIndexTemplateResponseBody struct {
 	//
 	// 25DB38F8-82E4-4D16-82BB-FF077C7F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The index template details.
+	// The details of the index template.
 	Result *DescribeIndexTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -74,14 +74,15 @@ type DescribeIndexTemplateResponseBodyResult struct {
 	//
 	// true
 	DataStream *bool `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
-	// The lifecycle policy name.
+	// The life epoch Policy Name.
 	//
 	// example:
 	//
 	// cube_default_ilm_policy
-	IlmPolicy     *string   `json:"ilmPolicy,omitempty" xml:"ilmPolicy,omitempty"`
+	IlmPolicy *string `json:"ilmPolicy,omitempty" xml:"ilmPolicy,omitempty"`
+	// The list of index name patterns that match this index template.
 	IndexPatterns []*string `json:"indexPatterns,omitempty" xml:"indexPatterns,omitempty" type:"Repeated"`
-	// The index template name.
+	// The name of the index template.
 	//
 	// example:
 	//
@@ -169,19 +170,19 @@ func (s *DescribeIndexTemplateResponseBodyResult) Validate() error {
 }
 
 type DescribeIndexTemplateResponseBodyResultTemplate struct {
-	// The aliases configuration.
+	// The aliases.
 	//
 	// example:
 	//
 	// {\\"mydata\\":{}}
 	Aliases *string `json:"aliases,omitempty" xml:"aliases,omitempty"`
-	// The mappings configuration.
+	// The mappings.
 	//
 	// example:
 	//
 	// {\\"properties\\":{\\"created_at\\":{\\"format\\":\\"EEE MMM dd HH:mm:ss Z yyyy\\",\\"type\\":\\"date\\"},\\"host_name\\":{\\"type\\":\\"keyword\\"}}}
 	Mappings *string `json:"mappings,omitempty" xml:"mappings,omitempty"`
-	// The settings configuration.
+	// The settings.
 	//
 	// example:
 	//
