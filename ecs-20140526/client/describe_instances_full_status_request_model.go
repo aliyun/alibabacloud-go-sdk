@@ -50,7 +50,7 @@ type DescribeInstancesFullStatusRequest struct {
 	//
 	// e-bp1hygp5b04o56l0****
 	EventId []*string `json:"EventId,omitempty" xml:"EventId,omitempty" type:"Repeated"`
-	// The type of a system event. The EventType parameter takes effect only when InstanceEventType.N is not specified. Valid values:
+	// The type of the event. The EventType parameter is valid only when the InstanceEventType.N parameter is not specified. Valid values:
 	//
 	// - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
 	//
@@ -72,15 +72,15 @@ type DescribeInstancesFullStatusRequest struct {
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The health status of the instance. Valid values:
 	//
-	// - Impaired: The service is impaired.
+	// - Impaired: The service is damaged.
 	//
-	// - Warning: The instance performance may be degraded due to maintenance.
+	// - Warning: A warning is issued. Instance performance may be degraded due to maintenance.
 	//
-	// - Maintaining: The instance is under maintenance.
+	// - Maintaining: The instance is being maintained.
 	//
 	// - Initializing: The instance is being initialized.
 	//
-	// - InsufficientData: The data is insufficient.
+	// - InsufficientData: Data is insufficient.
 	//
 	// - NotApplicable: Not applicable.
 	//
@@ -90,7 +90,7 @@ type DescribeInstancesFullStatusRequest struct {
 	//
 	// Initializing
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The list of instance system event types. You can specify up to 30 instance event types.
+	// The list of instance event types. You can specify up to 30 instance event types.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type DescribeInstancesFullStatusRequest struct {
 	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the results. Valid values: positive integers.
+	// The page number of the query result. Valid values: positive integers.
 	//
 	// Default value: 1.
 	//
@@ -120,7 +120,7 @@ type DescribeInstancesFullStatusRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -302,13 +302,17 @@ func (s *DescribeInstancesFullStatusRequest) Validate() error {
 }
 
 type DescribeInstancesFullStatusRequestEventPublishTime struct {
-	// The end of the time range during which the events are published. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time of the event publication time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// [ISO 8601](https://help.aliyun.com/document_detail/25696.html)
 	//
 	// example:
 	//
 	// 2017-12-07T00:00:00Z
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The start of the time range during which the events are published. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the event publication time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// [ISO 8601](https://help.aliyun.com/document_detail/25696.html)
 	//
 	// example:
 	//
@@ -347,13 +351,17 @@ func (s *DescribeInstancesFullStatusRequestEventPublishTime) Validate() error {
 }
 
 type DescribeInstancesFullStatusRequestNotBefore struct {
-	// The end of the time range during which the events are scheduled to execute. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time of the scheduled execution time of the event. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// [ISO 8601](https://help.aliyun.com/document_detail/25696.html)
 	//
 	// example:
 	//
 	// 2017-11-30T00:00:00Z
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The start of the time range during which the events are scheduled to execute. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the scheduled execution time of the event. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// [ISO 8601](https://help.aliyun.com/document_detail/25696.html)
 	//
 	// example:
 	//

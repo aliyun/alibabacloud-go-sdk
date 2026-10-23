@@ -28,63 +28,15 @@ type iDescribeResourceByTagsRequest interface {
 }
 
 type DescribeResourceByTagsRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the results. Minimum value: 1.
-	//
-	// Default value: 1.
-	//
-	// example:
-	//
-	// 1
+	OwnerId    *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 100.
-	//
-	// Default value: 50.
-	//
-	// example:
-	//
-	// 50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
-	//
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type. Valid values:
-	//
-	// - instance: ECS instance.
-	//
-	// - disk: cloud disk.
-	//
-	// - snapshot: snapshot.
-	//
-	// - image: image.
-	//
-	// - securitygroup: security group.
-	//
-	// - volume: storage volume.
-	//
-	// - eni: Elastic Network Interface (ENI).
-	//
-	// - ddh: dedicated host.
-	//
-	// - keypair: SSH key pair.
-	//
-	// - launchtemplate: launch template.
-	//
-	// All valid values are in lowercase.
-	//
-	// example:
-	//
-	// instance
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags.
-	Tag []*DescribeResourceByTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId             *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string                             `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag                  []*DescribeResourceByTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeResourceByTagsRequest) String() string {
@@ -181,17 +133,7 @@ func (s *DescribeResourceByTagsRequest) Validate() error {
 }
 
 type DescribeResourceByTagsRequestTag struct {
-	// The tag key of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length.
-	//
-	// example:
-	//
-	// TestKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length.
-	//
-	// example:
-	//
-	// TestValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

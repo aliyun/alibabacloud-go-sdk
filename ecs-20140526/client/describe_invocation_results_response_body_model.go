@@ -63,7 +63,7 @@ func (s *DescribeInvocationResultsResponseBody) Validate() error {
 
 type DescribeInvocationResultsResponseBodyInvocation struct {
 	InvocationResults *DescribeInvocationResultsResponseBodyInvocationInvocationResults `json:"InvocationResults,omitempty" xml:"InvocationResults,omitempty" type:"Struct"`
-	// The pagination token returned in this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
@@ -75,13 +75,15 @@ type DescribeInvocationResultsResponseBodyInvocation struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page set for paging queries.
+	// The number of rows per page for paging.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of commands.
+	//
+	// > When you use the MaxResults and NextToken parameters for paging, the returned TotalCount value is meaningless.
 	//
 	// example:
 	//

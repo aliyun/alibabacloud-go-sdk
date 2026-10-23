@@ -58,7 +58,7 @@ type iAuthorizeSecurityGroupEgressRequest interface {
 }
 
 type AuthorizeSecurityGroupEgressRequest struct {
-	// A client token used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.Description` to specify the rule description.
+	// **[Deprecated]*	- Use Permissions.N.Description to specify the description of the rule.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.DestCidrIp` to specify the destination IPv4 CIDR block.
+	// **[Deprecated]*	- Use Permissions.N.DestCidrIp to specify the destination IPv4 Classless Inter-Domain Routing (CIDR) block.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.DestGroupId` to specify the destination security group ID.
+	// **[Deprecated]*	- Use Permissions.N.DestGroupId to specify the destination security group ID.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	DestGroupId *string `json:"DestGroupId,omitempty" xml:"DestGroupId,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.DestGroupOwnerAccount` to specify the Alibaba Cloud account that owns the destination security group.
+	// **[Deprecated]*	- Use Permissions.N.DestGroupOwnerAccount to specify the Alibaba Cloud account to which the destination security group belongs.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	DestGroupOwnerAccount *string `json:"DestGroupOwnerAccount,omitempty" xml:"DestGroupOwnerAccount,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.DestGroupOwnerId` to specify the ID of the Alibaba Cloud account that owns the destination security group.
+	// **[Deprecated]*	- Use Permissions.N.DestGroupOwnerId to specify the ID of the Alibaba Cloud account to which the destination security group belongs.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	DestGroupOwnerId *int64 `json:"DestGroupOwnerId,omitempty" xml:"DestGroupOwnerId,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.DestPrefixListId` to specify the destination prefix list ID.
+	// **[Deprecated]*	- Use Permissions.N.DestPrefixListId to specify the destination prefix list ID.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	DestPrefixListId *string `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.IpProtocol` to specify the protocol type.
+	// **[Deprecated]*	- Use Permissions.N.IpProtocol to specify the protocol type.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.Ipv6DestCidrIp` to specify the destination IPv6 CIDR block.
+	// **[Deprecated]*	- Use Permissions.N.Ipv6DestCidrIp to specify the destination IPv6 Classless Inter-Domain Routing (CIDR) block.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	Ipv6DestCidrIp *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.Ipv6SourceCidrIp` to specify the source IPv6 CIDR block.
+	// **[Deprecated]*	- Use Permissions.N.Ipv6SourceCidrIp to specify the source IPv6 CIDR block.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.NicType` to specify the NIC type.
+	// **[Deprecated]*	- Use Permissions.N.NicType to specify the NIC type.
 	//
 	// example:
 	//
@@ -146,11 +146,11 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	NicType      *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The security group rules. Array length: 1 to 100.
+	// The array of security group rules. Length: 1 to 100.
 	Permissions []*AuthorizeSecurityGroupEgressRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.Policy` to configure the access permissions.
+	// **[Deprecated]*	- Use Permissions.N.Policy for the access permission settings.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.PortRange` to specify the port range.
+	// **[Deprecated]*	- Use Permissions.N.PortRange to specify the port range.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.Priority` to specify the rule priority.
+	// **[Deprecated]*	- Use Permissions.N.Priority to specify the rule priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The region ID of the source security group. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the source security group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -192,7 +192,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.SourceCidrIp` to specify the source IPv4 CIDR block.
+	// **[Deprecated]*	- Use Permissions.N.SourceCidrIp to specify the source IPv4 CIDR block.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	// Deprecated
 	//
-	// Deprecated. Use `Permissions.N.SourcePortRange` to specify the source port range.
+	// **[Deprecated]*	- Use Permissions.N.SourcePortRange to specify the source port range.
 	//
 	// example:
 	//
@@ -443,7 +443,7 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination IPv4 CIDR block for which you want to configure access permissions. CIDR format and IPv4 format IP address ranges are supported.
+	// The destination IPv4 Classless Inter-Domain Routing (CIDR) block settings for access permissions. Supports Classless Inter-Domain Routing (CIDR) format and IPv4 format IP address ranges.
 	//
 	// example:
 	//
@@ -451,45 +451,45 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
 	// The ID of the destination security group for which you want to configure access permissions.
 	//
-	// - Specify at least one of the following parameters: `DestGroupId`, `DestCidrIp`, `Ipv6DestCidrIp`, or `DestPrefixListId`.
+	// - You must specify at least one of the following parameters: DestGroupId, DestCidrIp, Ipv6DestCidrIp, and DestPrefixListId.
 	//
-	// - If `DestGroupId` is specified but `DestCidrIp` is not, the `NicType` parameter can only be set to intranet.
+	// - If you specify DestGroupId but do not specify DestCidrIp, the NicType parameter can only be set to intranet.
 	//
-	// - If both `DestGroupId` and `DestCidrIp` are specified, `DestCidrIp` takes precedence.
+	// - If you specify both DestGroupId and DestCidrIp, the DestCidrIp parameter takes precedence.
 	//
 	// example:
 	//
 	// sg-bp67acfmxazb4p****
 	DestGroupId *string `json:"DestGroupId,omitempty" xml:"DestGroupId,omitempty"`
-	// The Alibaba Cloud account that owns the destination security group when you configure cross-account security group rules.
+	// The Alibaba Cloud account to which the destination security group belongs when you configure security group rules across accounts.
 	//
 	//
 	//
-	// - If neither `DestGroupOwnerAccount` nor `DestGroupOwnerId` parameter is specified, the rule is configured for access permissions to another security group within your account.
+	// - If neither DestGroupOwnerAccount nor DestGroupOwnerId is specified, the rule is considered to configure access permissions for your other security groups.
 	//
-	// - If the `DestCidrIp` parameter is specified, the `DestGroupOwnerAccount` parameter is ignored.
+	// - If the DestCidrIp parameter is specified, the DestGroupOwnerAccount parameter is invalid.
 	//
 	// example:
 	//
 	// Test@aliyun.com
 	DestGroupOwnerAccount *string `json:"DestGroupOwnerAccount,omitempty" xml:"DestGroupOwnerAccount,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the destination security group when you configure cross-account security group rules.
+	// The ID of the Alibaba Cloud account to which the destination security group belongs when you configure security group rules across accounts.
 	//
 	//
 	//
-	// - If neither `DestGroupOwnerId` nor `DestGroupOwnerAccount` parameter is specified, the rule is configured for access permissions to another security group within your account.
+	// - If neither DestGroupOwnerId nor DestGroupOwnerAccount is specified, the rule is considered to configure access permissions for your other security groups.
 	//
-	// - If the `DestCidrIp` parameter is specified, the `DestGroupOwnerId` parameter is ignored.
+	// - If the DestCidrIp parameter is specified, the DestGroupOwnerId parameter is invalid.
 	//
 	// example:
 	//
 	// 12345678910
 	DestGroupOwnerId *int64 `json:"DestGroupOwnerId,omitempty" xml:"DestGroupOwnerId,omitempty"`
-	// The ID of the destination prefix list for which you want to configure access permissions. You can call [DescribePrefixLists](https://help.aliyun.com/document_detail/205046.html) to query available prefix list IDs.
+	// The ID of the destination prefix list for which you want to configure access permissions. You can call the [DescribePrefixLists](https://help.aliyun.com/document_detail/205046.html) operation to query the IDs of available prefix lists.
 	//
-	// Notes:
+	// Precautions:
 	//
-	// If you specify one of the `DestCidrIp`, `Ipv6DestCidrIp`, or `DestGroupId` parameters, this parameter is ignored.
+	// If you specify the DestCidrIp, Ipv6DestCidrIp, or DestGroupId parameter, this parameter is ignored.
 	//
 	// For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
 	//
@@ -497,7 +497,7 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	//
 	// pl-x1j1k5ykzqlixdcy****
 	DestPrefixListId *string `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
-	// The network-layer or transport-layer protocol. Two types of values are supported:
+	// The network layer or transport layer protocol. Two types of values are supported:
 	//
 	// 1. Case-insensitive protocol names. Valid values:
 	//
@@ -509,9 +509,9 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	//
 	// - UDP
 	//
-	// - ALL: All protocols are supported.
+	// - ALL: all protocols.
 	//
-	// 2. Protocol numbers that comply with IANA specifications, which are integers from 0 to 255. The following regions currently support this feature:
+	// 2. IANA-standard protocol numbers, which are integers from 0 to 255. This is supported in the following regions:
 	//
 	// - Philippines
 	//
@@ -519,9 +519,9 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	//
 	// - Malaysia
 	//
-	// - Hohhot
+	// - China (Hohhot)
 	//
-	// - Qingdao
+	// - China (Qingdao)
 	//
 	// - US West
 	//
@@ -531,9 +531,9 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	//
 	// ALL
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The destination IPv6 CIDR block for which you want to configure access permissions. CIDR format and IPv6 format IP address ranges are supported.
+	// The destination IPv6 Classless Inter-Domain Routing (CIDR) block settings for access permissions. Supports Classless Inter-Domain Routing (CIDR) format and IPv6 format IP address ranges.
 	//
-	// > This parameter is valid only for VPC-type ECS instances that support IPv6. This parameter and `DestCidrIp` cannot be specified at the same time.
+	// > This parameter is valid only for VPC-type ECS instances that support IPv6. You cannot specify both this parameter and the DestCidrIp parameter.
 	//
 	// example:
 	//
@@ -541,15 +541,15 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	Ipv6DestCidrIp *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
 	// The source IPv6 CIDR block. CIDR blocks and IPv6 address ranges are supported.
 	//
-	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	// This parameter is used to support quintuple rules. For more information, see [Quintuple rules for security groups](https://help.aliyun.com/document_detail/97439.html).
 	//
-	// > This parameter is valid only for VPC-type ECS instances that support IPv6. This parameter and `DestCidrIp` cannot be specified at the same time.
+	// > This parameter is valid only for VPC-type ECS instances that support IPv6. You cannot specify both this parameter and the DestCidrIp parameter.
 	//
 	// example:
 	//
 	// 2001:db8:1234:1a00::***
 	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
-	// The network interface controller (NIC) type of the security group rule for classic network type security groups. Valid values:
+	// The network interface controller (NIC) type for security group rules in the classic network type. Valid values:
 	//
 	//
 	//
@@ -557,9 +557,9 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	//
 	// - intranet: internal network NIC.
 	//
-	//     - For VPC-type security group rules, the network interface controller (NIC) type does not need to be specified and the parameter can only be set to intranet.
+	//     - For security group rules in a VPC, you do not need to set the NIC type settings. The default value is intranet.
 	//
-	//     - When configuring mutual access between security groups (only the DestGroupId parameter is specified), the value can only be intranet.
+	//     - When you configure mutual access between security groups by specifying only the DestGroupId parameter, the default value is intranet.
 	//
 	// Default value: internet.
 	//
@@ -567,13 +567,13 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	//
 	// intranet
 	NicType *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
-	// The access permission. Valid values:
+	// The access permission settings. Valid values:
 	//
 	//
 	//
-	// - accept: Accepts access.
+	// - accept: allows access.
 	//
-	// - drop: Denies access without returning a deny response. The request appears to timeout or the connection cannot be established.
+	// - drop: denies access and does not return a rejection message. The request from the source experiences a timeout or fails to establish a connection.
 	//
 	// Default value: accept.
 	//
@@ -581,11 +581,11 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The range of destination ports that correspond to the protocol. Valid values:
+	// The destination port range for the protocols enabled in the security group. Valid values:
 	//
 	//
 	//
-	// - TCP/UDP: Valid values are 1 to 65535. Separate the start port and end port with a forward slash (/). Example: 1/200.
+	// - TCP or UDP: 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
 	//
 	// - ICMP: -1/-1.
 	//
@@ -597,19 +597,19 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	//
 	// 80/80
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The port list ID.
+	// The ID of the port range list.
 	//
-	// You can call `DescribePortRangeLists` to query available port list IDs.
+	// You can invoke the DescribePortRangeLists operation to query the IDs of available port range lists.
 	//
-	// - If `Permissions.N.PortRange` is specified, this parameter is ignored.
+	// - If you specify the Permissions.N.PortRange parameter, this parameter is ignored.
 	//
-	// - Port lists are not supported for security groups with the classic network type. For more information about security group and port list limits, see [Security group limits](~~25412#SecurityGroupQuota1~~).
+	// - Port range list settings are not supported when the network type of the security group is classic network. For more information about the limits on security groups and port range lists, see [Security group limits](~~25412#SecurityGroupQuota1~~).
 	//
 	// example:
 	//
 	// prl-2ze9743****
 	PortRangeListId *string `json:"PortRangeListId,omitempty" xml:"PortRangeListId,omitempty"`
-	// The priority of the security group rule. A smaller number indicates a higher priority. Valid values: 1 to 100.
+	// The priority of the security group rule. A smaller value indicates a higher priority. Valid values: 1 to 100.
 	//
 	// Default value: 1.
 	//
@@ -619,17 +619,17 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The source IPv4 CIDR block. CIDR blocks and IPv4 address ranges are supported.
 	//
-	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	// This parameter is used to support quintuple rules. For more information, see [Quintuple rules for security groups](https://help.aliyun.com/document_detail/97439.html).
 	//
 	// example:
 	//
 	// 10.0.0.0/8
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// The range of source ports that correspond to the protocol. Valid values:
+	// The source port range for the protocols enabled in the security group. Valid values:
 	//
 	//
 	//
-	// - TCP/UDP: Valid values are 1 to 65535. Separate the start port and end port with a forward slash (/). Example: 1/200.
+	// - TCP or UDP: 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
 	//
 	// - ICMP: -1/-1.
 	//
@@ -637,7 +637,7 @@ type AuthorizeSecurityGroupEgressRequestPermissions struct {
 	//
 	// - ALL: -1/-1.
 	//
-	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	// This parameter is used to support quintuple rules. For more information, see [Quintuple rules for security groups](https://help.aliyun.com/document_detail/97439.html).
 	//
 	// example:
 	//

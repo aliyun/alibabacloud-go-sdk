@@ -30,7 +30,7 @@ type iJoinResourceGroupRequest interface {
 type JoinResourceGroupRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type JoinResourceGroupRequest struct {
 	//
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource. For example, when ResourceType is set to instance, ResourceId is the instance ID.
+	// The ID of the resource. For example, if ResourceType is set to instance, ResourceId specifies the instance ID.
 	//
 	// example:
 	//
@@ -52,33 +52,33 @@ type JoinResourceGroupRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the ECS resource. Valid values:
 	//
-	// - instance: instance.
+	// - instance: instance
 	//
-	// - disk: block storage.
+	// - disk: block storage
 	//
-	// - snapshot: snapshot.
+	// - snapshot: snapshot
 	//
-	// - image: image.
+	// - image: image
 	//
-	// - securitygroup: security group.
+	// - securitygroup: security group
 	//
-	// - ddh: dedicated host.
+	// - ddh: dedicated host
 	//
-	// - ddhcluster: dedicated host cluster.
+	// - ddhcluster: dedicated host cluster
 	//
-	// - eni: network interface controller (NIC).
+	// - eni: Elastic Network Interface (ENI)
 	//
-	// - keypair: key pair.
+	// - keypair: key pair
 	//
-	// - launchtemplate: launch template.
+	// - launchtemplate: launch template
 	//
-	// - command: Cloud Assistant command.
+	// - command: Cloud Assistant command
 	//
-	// - activation: Cloud Assistant managed instance activation code.
+	// - activation: activation code for managed instances
 	//
-	// - managedinstance: Cloud Assistant managed instance.
+	// - managedinstance: managed instance
 	//
-	// The preceding parameter values are case-sensitive.
+	// The values are case-sensitive.
 	//
 	// example:
 	//

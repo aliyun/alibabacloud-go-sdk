@@ -20,32 +20,11 @@ type iReleasePublicIpAddressRequest interface {
 }
 
 type ReleasePublicIpAddressRequest struct {
-	// > This parameter is not yet available.
-	//
-	// example:
-	//
-	// hide
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// i-bp67acfmxazb4p****
+	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The public IP address of the instance.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ``121.40.**.**``
 	PublicIpAddress *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
-	// The ID of the region where the instance is located.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ReleasePublicIpAddressRequest) String() string {

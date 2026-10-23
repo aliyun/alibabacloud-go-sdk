@@ -25,7 +25,7 @@ type iDescribeCommandsResponseBody interface {
 
 type DescribeCommandsResponseBody struct {
 	Commands *DescribeCommandsResponseBodyCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Struct"`
-	// The pagination token returned in this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
@@ -50,6 +50,8 @@ type DescribeCommandsResponseBody struct {
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of commands.
+	//
+	// > When you use the MaxResults and NextToken parameters for paging, the returned TotalCount value is meaningless.
 	//
 	// example:
 	//

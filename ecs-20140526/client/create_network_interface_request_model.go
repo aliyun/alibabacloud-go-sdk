@@ -84,33 +84,31 @@ type iCreateNetworkInterfaceRequest interface {
 }
 
 type CreateNetworkInterfaceRequest struct {
-	// > This parameter is deprecated.
+	// > **[Deprecated]**
 	//
 	// example:
 	//
 	// null
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The network connectivity tracking configuration.
-	//
-	// Before you use this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
+	// The network connectivity tracking configurations. Before you use this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
 	ConnectionTrackingConfiguration *CreateNetworkInterfaceRequestConnectionTrackingConfiguration `json:"ConnectionTrackingConfiguration,omitempty" xml:"ConnectionTrackingConfiguration,omitempty" type:"Struct"`
-	// Specifies whether to retain the ENI when the associated instance is released. Valid values:
+	// Specifies whether to retain the ENI when the instance is released. Valid values:
 	//
-	// - true: does not retain the ENI.
+	// - true: The ENI is not retained.
 	//
-	// - false: retains the ENI.
+	// - false: The ENI is retained.
 	//
 	// example:
 	//
 	// true
 	DeleteOnRelease *bool `json:"DeleteOnRelease,omitempty" xml:"DeleteOnRelease,omitempty"`
-	// The description of the network interface controller (NIC). The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the Elastic Network Interface (ENI). The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// Default value: empty.
 	//
@@ -119,11 +117,11 @@ type CreateNetworkInterfaceRequest struct {
 	// testDescription
 	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnablePrimaryIPv6 *bool   `json:"EnablePrimaryIPv6,omitempty" xml:"EnablePrimaryIPv6,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	EnhancedNetwork *CreateNetworkInterfaceRequestEnhancedNetwork `json:"EnhancedNetwork,omitempty" xml:"EnhancedNetwork,omitempty" type:"Struct"`
 	// The type of the Elastic Network Interface (ENI). Valid values:
 	//
-	// - Secondary: secondary ENI.
+	// - Secondary: secondary Elastic Network Interface (ENI).
 	//
 	// - Trunk: trunk network interface controller (NIC) (in invitational preview).
 	//
@@ -133,49 +131,49 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// Secondary
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// One or more IPv4 prefixes to assign to the network interface controller (NIC). Valid values of N: 1 to 10.
+	// One or more IPv4 prefixes that are allocated to the Elastic Network Interface (ENI). Valid values of N: 1 to 10.
 	//
-	// > If you want to set IPv4 prefixes for the network interface controller (NIC), you must set either the parameter Ipv4Prefix.N or the parameter Ipv4PrefixCount but not both.
+	// > If you want to allocate IPv4 prefixes to the Elastic Network Interface (ENI), you must configure Settings for either Ipv4Prefix.N or Ipv4PrefixCount. You cannot configure Settings for both parameters.
 	Ipv4Prefix []*string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty" type:"Repeated"`
-	// The number of IPv4 prefixes to assign to the network interface controller (NIC). Valid values: 1 to 10.
+	// The number of IPv4 prefixes that are allocated to the Elastic Network Interface (ENI). Valid values: 1 to 10.
 	//
-	// > If you want to set IPv4 prefixes for the network interface controller (NIC), you must set either the parameter Ipv4Prefix.N or the parameter Ipv4PrefixCount but not both.
+	// > If you want to allocate IPv4 prefixes to the Elastic Network Interface (ENI), you must configure Settings for either Ipv4Prefix.N or Ipv4PrefixCount. You cannot configure Settings for both parameters.
 	//
 	// example:
 	//
 	// 1
 	Ipv4PrefixCount *int32 `json:"Ipv4PrefixCount,omitempty" xml:"Ipv4PrefixCount,omitempty"`
-	// One or more IPv6 addresses to assign to the network interface controller (NIC). You can specify up to 10 IPv6 addresses. Valid values of N: 1 to 10.
+	// One or more IPv6 addresses that are allocated to the Elastic Network Interface (ENI). It supports Settings for up to 10 IPv6 addresses. Valid values of N: 1 to 10.
 	//
 	// Example: Ipv6Address.1=2001:db8:1234:1a00::\\*\\*\\*\\*
 	//
-	// > If you want to set IPv6 addresses for the network interface controller (NIC), you must set either the parameter `Ipv6Addresses.N` or the parameter `Ipv6AddressCount` but not both.
+	// > If you want to allocate IPv6 addresses to the Elastic Network Interface (ENI), you must configure Settings for either Ipv6Addresses.N or Ipv6AddressCount. You cannot configure Settings for both parameters.
 	//
 	// example:
 	//
 	// 2001:db8:1234:1a00::****
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
-	// The number of IPv6 addresses to randomly generate for the network interface controller (NIC). Valid values: 1 to 10.
+	// The number of IPv6 addresses that are randomly generated for the Elastic Network Interface (ENI). Valid values: 1 to 10.
 	//
-	// > If you want to set IPv6 addresses for the network interface controller (NIC), you must set either the parameter `Ipv6Addresses.N` or the parameter `Ipv6AddressCount` but not both.
+	// > If you want to allocate IPv6 addresses to the Elastic Network Interface (ENI), you must configure Settings for either Ipv6Addresses.N or Ipv6AddressCount. You cannot configure Settings for both parameters.
 	//
 	// example:
 	//
 	// 1
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// One or more IPv6 prefixes to assign to the network interface controller (NIC). Valid values of N: 1 to 10.
+	// One or more IPv6 prefixes that are allocated to the Elastic Network Interface (ENI). Valid values of N: 1 to 10.
 	//
-	// > If you want to set IPv6 prefixes for the network interface controller (NIC), you must set either the parameter Ipv6Prefix.N or the parameter Ipv6PrefixCount but not both.
+	// > If you want to allocate IPv6 prefixes to the Elastic Network Interface (ENI), you must configure Settings for either Ipv6Prefix.N or Ipv6PrefixCount. You cannot configure Settings for both parameters.
 	Ipv6Prefix []*string `json:"Ipv6Prefix,omitempty" xml:"Ipv6Prefix,omitempty" type:"Repeated"`
-	// The number of IPv6 prefixes to assign to the network interface controller (NIC). Valid values: 1 to 10.
+	// The number of IPv6 prefixes that are allocated to the Elastic Network Interface (ENI). Valid values: 1 to 10.
 	//
-	// > If you want to set IPv6 prefixes for the network interface controller (NIC), you must set either the parameter Ipv6Prefix.N or the parameter Ipv6PrefixCount but not both.
+	// > If you want to allocate IPv6 prefixes to the Elastic Network Interface (ENI), you must configure Settings for either Ipv6Prefix.N or Ipv6PrefixCount. You cannot configure Settings for both parameters.
 	//
 	// example:
 	//
 	// 1
 	Ipv6PrefixCount *int32 `json:"Ipv6PrefixCount,omitempty" xml:"Ipv6PrefixCount,omitempty"`
-	// The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and can contain characters from the Unicode letter categorization (including English and Chinese characters) and ASCII digits (0-9). The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
+	// The name of the Elastic Network Interface (ENI). The name must be 2 to 128 characters in length. It can contain letters in the Unicode letter categorization (including English and Chinese characters) and ASCII digits (0-9). It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// Default value: empty.
 	//
@@ -183,15 +181,15 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// testNetworkInterfaceName
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The traffic configuration parameter set of the network interface controller (NIC).
+	// The communication parameters of the Elastic Network Interface (ENI).
 	NetworkInterfaceTrafficConfig *CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig `json:"NetworkInterfaceTrafficConfig,omitempty" xml:"NetworkInterfaceTrafficConfig,omitempty" type:"Struct"`
-	// The communication pattern of the network interface controller (NIC). Valid values:
+	// The communication pattern of the Elastic Network Interface (ENI). Valid values:
 	//
 	// - Standard: uses the TCP communication pattern.
 	//
 	// - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA communication pattern.
 	//
-	// > A network interface controller (NIC) in RDMA communication pattern can be attached only to an instance whose instance type supports ERI. The number of ENIs in RDMA pattern cannot exceed the limit of the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html) and [Configure eRDMA on enterprise-level instances](https://help.aliyun.com/document_detail/336853.html)<props="china"> and [Configure eRDMA on GPU-accelerated instances](https://help.aliyun.com/document_detail/2248432.html).
+	// > For an Elastic Network Interface (ENI) that uses the RDMA communication pattern, you can attach the Elastic Network Interface (ENI) only to an instance of an instance type that supports ERI. The number of Elastic Network Interfaces (ENIs) that use the RDMA pattern cannot exceed the limit for the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html) and [Configure eRDMA on enterprise-level instances](https://help.aliyun.com/document_detail/336853.html)<props="china"> and [Configure eRDMA on GPU-accelerated instances](https://help.aliyun.com/document_detail/2248432.html).
 	//
 	// Default value: Standard.
 	//
@@ -201,27 +199,27 @@ type CreateNetworkInterfaceRequest struct {
 	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
 	OwnerAccount                *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The primary private IP address of the network interface controller (NIC).
+	// The primary private IP address of the Elastic Network Interface (ENI).
 	//
-	// The specified IP address must be an idle address within the CIDR block of the vSwitch. If you do not specify this parameter, an idle private IP address in the vSwitch CIDR block is randomly allocated by default.
+	// The specified IP address must be an idle IP address in the CIDR block of the vSwitch to which the Elastic Network Interface (ENI) belongs. If you do not specify this parameter, an idle IP address in the vSwitch is randomly allocated by default.
 	//
 	// example:
 	//
 	// ``172.17.**.**``
 	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	// One or more secondary private IP addresses selected from the idle addresses within the CIDR block of the vSwitch to which the network interface controller (NIC) belongs. Valid values of N: 0 to 10.
+	// One or more secondary private IP addresses that are selected from the idle IP addresses in the CIDR block of the vSwitch to which the Elastic Network Interface (ENI) belongs. Valid values of N: 0 to 10.
 	//
-	// > When you allocate secondary private IP addresses, you cannot specify both the parameter `PrivateIpAddress.N` and the parameter `SecondaryPrivateIpAddressCount` at the same time.
+	// > When you allocate secondary private IP addresses, you cannot specify both the PrivateIpAddress.N parameter and the SecondaryPrivateIpAddressCount parameter.
 	//
 	// example:
 	//
 	// ``172.17.**.**``
 	PrivateIpAddress []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
-	// The number of queues for the network interface controller (NIC). Valid values: 1 to 2048.
+	// The number of queues for the Elastic Network Interface (ENI). Valid values: 1 to 2048.
 	//
-	// When you attach the ENI to an instance, the value must be less than the maximum number of queues per network interface controller (NIC) supported by the instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the `MaximumQueueNumberPerEni` field.
+	// When you attach the Elastic Network Interface (ENI) to an instance, the value of this parameter must be less than the maximum number of queues per single network interface controller (NIC) supported by the instance type. You can invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the MaximumQueueNumberPerEni value for the instance type.
 	//
-	// Default value: empty. When the ENI is attached, the default queue number for the instance type is used. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the `SecondaryEniQueueNumber` field.
+	// Default value: empty. When you attach the Elastic Network Interface (ENI), the default number of queues per Elastic Network Interface (ENI) for the instance type is used. You can invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the SecondaryEniQueueNumber value for the instance type.
 	//
 	// example:
 	//
@@ -229,15 +227,15 @@ type CreateNetworkInterfaceRequest struct {
 	QueueNumber *int32 `json:"QueueNumber,omitempty" xml:"QueueNumber,omitempty"`
 	// The number of queues for the RDMA ENI.
 	//
-	// If you want to attach multiple RDMA ENIs to an instance, we recommend that you manually specify QueuePairNumber for each ENI based on the upper limit of `QueuePairNumber` supported by the instance type and the number of ENIs you plan to use. Make sure that the total QueuePairNumber of all ENIs does not exceed the maximum value allowed by the instance type. Call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the upper limit for the instance type.
+	// If you want to attach multiple RDMA ENIs to an instance, we recommend that you manually specify the QueuePairNumber value for each ENI based on the maximum QueuePairNumber value supported by the instance type and the number of ENIs that you plan to use. Make sure that the total number of queue pairs for all ENIs does not exceed the maximum value allowed for the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum value for the instance type.
 	//
-	// 	Notice: If QueuePairNumber is not specified for an RDMA ENI, the upper limit of QueuePairNumber for all RDMA ENIs supported by the instance type is used by default. Therefore, after an RDMA ENI without a specified QueuePairNumber is attached, no more RDMA ENIs can be added (regular ENIs are not affected by this limit).</notice>
+	// 	Notice: If you do not specify the QueuePairNumber value for an RDMA ENI, the maximum QueuePairNumber value supported by the instance type for all RDMA ENIs is used by default. Therefore, after you attach an RDMA ENI for which QueuePairNumber is not specified, you cannot attach more RDMA ENIs. This limit does not apply to standard ENIs.</notice>
 	//
 	// example:
 	//
 	// 22
 	QueuePairNumber *int32 `json:"QueuePairNumber,omitempty" xml:"QueuePairNumber,omitempty"`
-	// The region ID of the network interface controller (NIC) to create. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of Alibaba Cloud regions.
+	// The region ID of the Elastic Network Interface (ENI) to be created. You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -245,7 +243,7 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group information.
+	// The resource group ID. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//
@@ -253,37 +251,37 @@ type CreateNetworkInterfaceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The inbound queue depth of the network interface controller (NIC).
+	// The inbound queue depth of the Elastic Network Interface (ENI).
 	//
 	// Take note of the following items:
 	//
 	// - The inbound queue depth of the network interface controller (NIC) must be equal to the outbound queue depth. Valid values: 8192 to 16384. The value must be a power of 2.
 	//
-	// - A larger inbound queue depth increases inbound throughput but consumes more memory.
+	// - A larger inbound queue depth can improve inbound throughput but consumes more memory.
 	//
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	//
 	// example:
 	//
 	// 8192
 	RxQueueSize *int32 `json:"RxQueueSize,omitempty" xml:"RxQueueSize,omitempty"`
-	// The number of private IP addresses for automatic creation by ECS. Valid values: 1 to 49.
+	// The number of private IP addresses that you want Elastic Compute Service (ECS) to allocate for automatic creation. Valid values: 1 to 49.
 	//
 	// example:
 	//
 	// 1
 	SecondaryPrivateIpAddressCount *int32 `json:"SecondaryPrivateIpAddressCount,omitempty" xml:"SecondaryPrivateIpAddressCount,omitempty"`
-	// The ID of the security group to which the network interface controller (NIC) belongs. The security group and the ENI must be in the same VPC.
+	// The ID of the security group to which you want to add the Elastic Network Interface (ENI). The security group and the Elastic Network Interface (ENI) must belong to the same VPC.
 	//
-	// > When you invoke this operation, you must set either `SecurityGroupId` or `SecurityGroupIds.N` but not both.
+	// > When you invoke this operation, you must configure Settings for either SecurityGroupId or SecurityGroupIds.N. You cannot configure Settings for both.
 	//
 	// example:
 	//
 	// sg-bp1fg655nh68xyz9i****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The IDs of one or more security groups to which the network interface controller (NIC) belongs. The security groups and the ENI must be in the same VPC. The valid values of N depend on the quota for the maximum number of security groups to which an ENI can belong. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
+	// The IDs of one or more security groups to which you want to add the Elastic Network Interface (ENI). The security groups and the Elastic Network Interface (ENI) must belong to the same VPC. The valid values of N depend on the quota of security groups to which an Elastic Network Interface (ENI) can be added. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
 	//
-	// > When you invoke this operation, you must set either `SecurityGroupId` or `SecurityGroupIds.N` but not both.
+	// > When you invoke this operation, you must configure Settings for either SecurityGroupId or SecurityGroupIds.N. You cannot configure Settings for both.
 	//
 	// example:
 	//
@@ -291,9 +289,9 @@ type CreateNetworkInterfaceRequest struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	// Specifies whether to enable source/destination checking. We recommend that you enable this feature to improve network security. Valid values:
 	//
-	// - true: enabled.
+	// - true: enables source/destination checking.
 	//
-	// - false: disabled.
+	// - false: disables source/destination checking.
 	//
 	// Default value: false.
 	//
@@ -303,25 +301,25 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// false
 	SourceDestCheck *bool `json:"SourceDestCheck,omitempty" xml:"SourceDestCheck,omitempty"`
-	// The tags of the network interface controller (NIC).
+	// The tags of the Elastic Network Interface (ENI).
 	Tag []*CreateNetworkInterfaceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The outbound queue depth of the network interface controller (NIC).
+	// The outbound queue depth of the Elastic Network Interface (ENI).
 	//
 	// Take note of the following items:
 	//
 	// - The outbound queue depth of the network interface controller (NIC) must be equal to the inbound queue depth. Valid values: 8192 to 16384. The value must be a power of 2.
 	//
-	// - A larger outbound queue depth increases outbound throughput but consumes more memory.
+	// - A larger outbound queue depth can improve outbound throughput but consumes more memory.
 	//
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	//
 	// example:
 	//
 	// 8192
 	TxQueueSize *int32 `json:"TxQueueSize,omitempty" xml:"TxQueueSize,omitempty"`
-	// The vSwitch ID of the network interface controller (NIC). The private IP address of the ENI is allocated from the idle addresses within the CIDR block of the vSwitch.
+	// The vSwitch ID of the Elastic Network Interface (ENI). The private IP address of the Elastic Network Interface (ENI) is selected from the idle IP addresses in the CIDR block of the vSwitch.
 	//
-	// 	Notice: The network interface controller (NIC) and the instance to which you want to attach the ENI must be in the same zone but can belong to different vSwitches.</notice>
+	// 	Notice: The Elastic Network Interface (ENI) and the instance to which you want to attach the Elastic Network Interface (ENI) must belong to the same zone, but they can belong to different vSwitches.</notice>
 	//
 	// This parameter is required.
 	//
@@ -329,7 +327,7 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// vsw-bp1s5fnvk4gn2tws03****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// > This parameter is deprecated.
+	// > **[Deprecated]**
 	//
 	// example:
 	//
@@ -698,17 +696,17 @@ func (s *CreateNetworkInterfaceRequest) Validate() error {
 }
 
 type CreateNetworkInterfaceRequestConnectionTrackingConfiguration struct {
-	// The timeout period for TCP connections in the TIME_WAIT and CLOSED states. Unit: seconds. Valid values: integers from 3 to 15.
+	// The timeout period for closed and TIME_WAIT TCP connections. Unit: seconds. Valid values: integers from 3 to 15.
 	//
 	// Default value: 3.
 	//
-	// > If your ECS instance is used with NLB/CLB, the default timeout period for connections in the `TIME_WAIT` state is 15 seconds.
+	// > If your ECS instance is used together with an NLB or CLB instance, the default timeout period for connections in the TIME_WAIT state is 15 seconds.
 	//
 	// example:
 	//
 	// 3
 	TcpClosedAndTimeWaitTimeout *int32 `json:"TcpClosedAndTimeWaitTimeout,omitempty" xml:"TcpClosedAndTimeWaitTimeout,omitempty"`
-	// The timeout period for established TCP connections. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
+	// The timeout period for established TCP connections. Unit: seconds. Valid values: 30, 60, 80, 100, 200, 300, 500, 700, and 910.
 	//
 	// Default value: 910.
 	//
@@ -716,11 +714,11 @@ type CreateNetworkInterfaceRequestConnectionTrackingConfiguration struct {
 	//
 	// 910
 	TcpEstablishedTimeout *int32 `json:"TcpEstablishedTimeout,omitempty" xml:"TcpEstablishedTimeout,omitempty"`
-	// The timeout period for UDP flows. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
+	// The timeout period for UDP flows. Unit: seconds. Valid values: 10, 20, 30, 60, 80, and 100.
 	//
 	// Default value: 30.
 	//
-	// > If your ECS instance is used with NLB/CLB, the default value is 100 seconds.
+	// > If your ECS instance is used together with an NLB or CLB instance, the default value is 100 seconds.
 	//
 	// example:
 	//
@@ -769,13 +767,13 @@ func (s *CreateNetworkInterfaceRequestConnectionTrackingConfiguration) Validate(
 
 type CreateNetworkInterfaceRequestEnhancedNetwork struct {
 	EnableExpress *bool `json:"EnableExpress,omitempty" xml:"EnableExpress,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	//
 	// example:
 	//
 	// true
 	EnableRss *bool `json:"EnableRss,omitempty" xml:"EnableRss,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	//
 	// example:
 	//
@@ -843,13 +841,13 @@ func (s *CreateNetworkInterfaceRequestEnhancedNetwork) Validate() error {
 }
 
 type CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig struct {
-	// The communication pattern of the network interface controller (NIC).
+	// The communication pattern of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// HighPerformance
 	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
-	// The number of queues for the network interface controller (NIC).
+	// The number of queues for the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
@@ -861,12 +859,12 @@ type CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig struct {
 	//
 	// 8
 	QueuePairNumber *int32 `json:"QueuePairNumber,omitempty" xml:"QueuePairNumber,omitempty"`
-	// The inbound queue depth of the network interface controller (NIC).
+	// The inbound queue depth of the Elastic Network Interface (ENI).
 	//
 	//
 	// <props="china">
 	//
-	// >This parameter is in invitational preview and is not publicly available. If you want to use this parameter, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+	// > This parameter is in invitational preview and is not available. If you want to use this parameter, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to apply for whitelist access.
 	//
 	//
 	//
@@ -875,28 +873,28 @@ type CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig struct {
 	//
 	// <props="intl">
 	//
-	// > This parameter is in invitational preview and is not publicly available. If you want to use this parameter, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to request access.
+	// > This parameter is in invitational preview and is not available. If you want to use this parameter, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to apply for whitelist access.
 	//
 	//
 	//
-	// Take note of the following items:
+	// When you use this parameter, take note of the following items:
 	//
-	// - This parameter applies only to seventh-generation and later ECS instance types.
+	// - This parameter applies only to seventh-generation and later ECS instance families.
 	//
-	// - This parameter currently applies only to Linux images.
+	// - This parameter applies only to Linux images.
 	//
-	// - A larger inbound queue depth of the network interface controller (NIC) increases inbound throughput and reduces packet loss probability but consumes more memory.
+	// - A larger inbound queue depth can improve inbound throughput and reduce the packet loss rate, but consumes more memory.
 	//
 	// example:
 	//
 	// 8192
 	RxQueueSize *int32 `json:"RxQueueSize,omitempty" xml:"RxQueueSize,omitempty"`
-	// The outbound queue depth of the network interface controller (NIC).
+	// The outbound queue depth of the Elastic Network Interface (ENI).
 	//
 	//
 	// <props="china">
 	//
-	// >This parameter is in invitational preview and is not publicly available. If you want to use this parameter, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to request access.
+	// > This parameter is in invitational preview and is not available. If you want to use this parameter, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to apply for whitelist access.
 	//
 	//
 	//
@@ -905,17 +903,17 @@ type CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig struct {
 	//
 	// <props="intl">
 	//
-	// > This parameter is in invitational preview and is not publicly available. If you want to use this parameter, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to request access.
+	// > This parameter is in invitational preview and is not available. If you want to use this parameter, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to apply for whitelist access.
 	//
 	//
 	//
-	// Take note of the following items:
+	// When you use this parameter, take note of the following items:
 	//
-	// - This parameter applies only to seventh-generation and later ECS instance types.
+	// - This parameter applies only to seventh-generation and later ECS instance families.
 	//
-	// - This parameter currently applies only to Linux images.
+	// - This parameter applies only to Linux images.
 	//
-	// - A larger outbound queue depth of the network interface controller (NIC) increases outbound throughput and reduces packet loss probability but consumes more memory.
+	// - A larger outbound queue depth can improve outbound throughput and reduce the packet loss rate, but consumes more memory.
 	//
 	// example:
 	//
@@ -981,13 +979,13 @@ func (s *CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig) Validate() 
 }
 
 type CreateNetworkInterfaceRequestTag struct {
-	// The tag key of the network interface controller (NIC). Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain `http://` or `https://`.
+	// The tag key of the Elastic Network Interface (ENI). Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the network interface controller (NIC). Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	// The tag value of the Elastic Network Interface (ENI). Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
 	//
 	// example:
 	//

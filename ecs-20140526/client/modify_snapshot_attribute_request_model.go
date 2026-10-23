@@ -36,15 +36,15 @@ type ModifySnapshotAttributeRequest struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to disable the snapshot instant access feature. Valid values:
+	// Specifies whether to shutdown the instant access feature for the snapshot. Valid values:
 	//
-	// - true: Disables the snapshot instant access feature.
+	// - true: shutdown the instant access feature.
 	//
-	// - false: Does not disable the snapshot instant access feature.
+	// - false: do not shutdown the instant access feature.
 	//
 	// Default value: false.
 	//
-	// >This parameter is deprecated. Standard snapshots of enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required.
+	// > **[Deprecated]*	- This parameter is deprecated. Standard snapshots of ESSD cloud disks have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to perform additional configurations, and no additional fees are incurred.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type ModifySnapshotAttributeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The number of days for which the snapshot is retained. The retention period is calculated from the snapshot **creation time*	- (represented in the ISO 8601 standard and in UTC+0 time in the yyyy-MM-ddTHH:mm:ssZ format). Valid values: 1 to 65536.
+	// The retention period of the snapshot in days. When you specify this parameter, the retention period is calculated from the **creation time*	- of the snapshot. The creation time is represented in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC. Valid values: 1 to 65536.
 	//
-	// >The snapshot retention period can only be extended. Shortening the existing retention period of a snapshot is not supported.
+	// > You can only extend the retention period of a snapshot. You cannot shorten the existing retention period.
 	//
 	// example:
 	//
@@ -70,9 +70,7 @@ type ModifySnapshotAttributeRequest struct {
 	//
 	// s-bp199lyny9bb47pa****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The display name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. The name can contain digits, colons (:), underscores (_), or hyphens (-).
-	//
-	// The name cannot start with auto to avoid conflicts with automatic snapshot names.
+	// The display name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. It can contain digits, colons (:), underscores (_), and hyphens (-). To prevent name conflicts with automatic snapshots, the name cannot start with auto.
 	//
 	// example:
 	//

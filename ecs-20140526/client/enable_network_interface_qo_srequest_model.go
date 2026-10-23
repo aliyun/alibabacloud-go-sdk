@@ -26,7 +26,7 @@ type iEnableNetworkInterfaceQoSRequest interface {
 }
 
 type EnableNetworkInterfaceQoSRequest struct {
-  // The ID of the network interface controller (NIC).
+  // The ID of the Elastic Network Interface (ENI).
   // 
   // This parameter is required.
   // 
@@ -36,9 +36,9 @@ type EnableNetworkInterfaceQoSRequest struct {
   NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
   OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // The QoS rate limiting settings.
+  // The QoS bandwidth throttling settings.
   QoS *EnableNetworkInterfaceQoSRequestQoS `json:"QoS,omitempty" xml:"QoS,omitempty" type:"Struct"`
-  // The region ID. You can call DescribeRegions to query the most recent region list.
+  // The region ID. You can call the DescribeRegions operation to query the most recent region list.
   // 
   // This parameter is required.
   // 
@@ -133,7 +133,7 @@ func (s *EnableNetworkInterfaceQoSRequest) Validate() error {
 type EnableNetworkInterfaceQoSRequestQoS struct {
   // The maximum inbound internal bandwidth limit.
   // 
-  // Unit: kbit/s. Increment: 1000 (1 Mbit/s). Value range: [50000, +∞).
+  // Unit: Kbit/s. Step size: 1000 (1 Mbit/s). Valid values: [50000, +∞).
   // 
   // example:
   // 
@@ -141,7 +141,7 @@ type EnableNetworkInterfaceQoSRequestQoS struct {
   BandwidthRx *int64 `json:"BandwidthRx,omitempty" xml:"BandwidthRx,omitempty"`
   // The maximum outbound internal bandwidth limit.
   // 
-  // Unit: kbit/s. Increment: 1000 (1 Mbit/s). Value range: [50000, +∞).
+  // Unit: Kbit/s. Step size: 1000 (1 Mbit/s). Valid values: [50000, +∞).
   // 
   // example:
   // 
@@ -149,7 +149,7 @@ type EnableNetworkInterfaceQoSRequestQoS struct {
   BandwidthTx *int64 `json:"BandwidthTx,omitempty" xml:"BandwidthTx,omitempty"`
   // The maximum number of sessions.
   // 
-  // Increment: 10000. Value range: [10000, +∞).
+  // Step size: 10000. Valid values: [10000, +∞).
   // 
   // example:
   // 
@@ -157,7 +157,7 @@ type EnableNetworkInterfaceQoSRequestQoS struct {
   ConcurrentConnections *int64 `json:"ConcurrentConnections,omitempty" xml:"ConcurrentConnections,omitempty"`
   // The inbound internal packet forwarding rate.
   // 
-  // Unit: pps. Increment: 10000. Value range: [10000, +∞).
+  // Unit: PPS. Step size: 10000. Valid values: [10000, +∞).
   // 
   // example:
   // 
@@ -165,7 +165,7 @@ type EnableNetworkInterfaceQoSRequestQoS struct {
   PpsRx *int64 `json:"PpsRx,omitempty" xml:"PpsRx,omitempty"`
   // The outbound internal packet forwarding rate.
   // 
-  // Unit: pps. Increment: 10000. Value range: [10000, +∞).
+  // Unit: PPS. Step size: 10000. Valid values: [10000, +∞).
   // 
   // example:
   // 

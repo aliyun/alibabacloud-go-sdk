@@ -60,7 +60,7 @@ type iModifySecurityGroupRuleRequest interface {
 }
 
 type ModifySecurityGroupRuleRequest struct {
-	// A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type ModifySecurityGroupRuleRequest struct {
 	//
 	// This is a new security group rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination IPv4 Classless Inter-Domain Routing (CIDR) block. CIDR format and IPv4 format IP address range are supported.
+	// The destination IPv4 CIDR block. CIDR format and IPv4 format IP address ranges are supported.
 	//
-	// Default value: null.
+	// Default value: none.
 	//
 	// example:
 	//
@@ -92,21 +92,21 @@ type ModifySecurityGroupRuleRequest struct {
 	//
 	// - UDP
 	//
-	// - ALL: All protocols are supported.
+	// - ALL: all protocols.
 	//
-	// 2. Protocol numbers that comply with IANA specifications, which are integers from 0 to 255. The following regions currently support this feature:
+	// 2. Protocol numbers that comply with the IANA standard, which are integers from 0 to 255. Supported regions:
 	//
 	// - Philippines
 	//
-	// - UK (London)
+	// - UK
 	//
 	// - Malaysia
 	//
-	// - China (Hohhot)
+	// - Hohhot
 	//
-	// - China (Qingdao)
+	// - Qingdao
 	//
-	// - US (Virginia)
+	// - US West
 	//
 	// - Singapore
 	//
@@ -114,29 +114,30 @@ type ModifySecurityGroupRuleRequest struct {
 	//
 	// ALL
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// Settings for the destination IPv6 CIDR block. Classless Inter-Domain Routing (CIDR) format and IPv6 format IP address range are supported.
+	// The destination IPv6 CIDR block. CIDR format and IPv6 format IP address ranges are supported.
 	//
-	// >Only VPC-type IP addresses are supported. This parameter and `DestCidrIp` cannot be specified at the same time.
+	// > Only VPC-type IP addresses are supported. This parameter and the DestCidrIp parameter cannot be specified at the same time.
 	//
-	// Default value: null.
+	// Default value: none.
 	//
 	// example:
 	//
 	// 2001:db8:1234:1a00::***
 	Ipv6DestCidrIp *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
-	// Settings for the source IPv6 CIDR block for the access permissions. Classless Inter-Domain Routing (CIDR) format and IPv6 format IP address range are supported.
+	// The source IPv6 CIDR block. CIDR format and IPv6 format IP address ranges are supported.
 	//
-	// > Only VPC-type IP addresses are supported. This parameter and `SourceCidrIp` cannot be specified at the same time.
+	// > Only VPC-type IP addresses are supported. This parameter and the SourceCidrIp parameter cannot be specified at the same time.
 	//
-	// Default value: null.
+	// Default value: none.
 	//
 	// example:
 	//
 	// 2001:db8:1233:1a00::***
 	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
-	// The network interface controller (NIC) type.
+	// The NIC type.
 	//
-	// > When you modify a rule by specifying the security group rule ID, this parameter cannot be modified. To make such a change, add a new rule and then delete the current rule.
+	//
+	// > You cannot modify this parameter when you modify a rule by specifying the security group rule ID. To modify this parameter, add a new rule and then delete the current rule.
 	//
 	// example:
 	//
@@ -144,13 +145,13 @@ type ModifySecurityGroupRuleRequest struct {
 	NicType      *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The access permissions. Valid values:
+	// The access permission. Valid values:
 	//
 	//
 	//
-	// - accept: Accepts access.
+	// - accept: allows access.
 	//
-	// - drop: Denies access without returning a deny response.
+	// - drop: denies access and does not return a rejection message.
 	//
 	// Default value: accept.
 	//
@@ -158,27 +159,27 @@ type ModifySecurityGroupRuleRequest struct {
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The range of destination ports for the transport layer protocol. Valid values:
+	// The range of destination ports that are open for the transport layer protocol in the destination security group. Valid values:
 	//
 	//
 	//
-	// - TCP/UDP: Valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
+	// - For TCP and UDP: 1 to 65535. Use a forward slash (/) to separate the start port and the end port. Example: 1/200.
 	//
-	// - ICMP: -1/-1.
+	// - For ICMP: -1/-1.
 	//
-	// - GRE: -1/-1.
+	// - For GRE: -1/-1.
 	//
-	// - ALL: -1/-1.
+	// - For ALL: -1/-1.
 	//
 	// example:
 	//
 	// 80/80
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The port address book ID.
+	// The ID of the port list.
 	//
-	// You can call `DescribePortRangeLists` to query available port address book IDs.
+	// You can call the DescribePortRangeLists operation to query the IDs of available port lists.
 	//
-	// This parameter is ignored if you specify the PortRange parameter.
+	// If you specify the PortRange parameter, this parameter is ignored.
 	//
 	// For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
 	//
@@ -194,7 +195,7 @@ type ModifySecurityGroupRuleRequest struct {
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The region ID of the security group. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the target security group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -204,7 +205,7 @@ type ModifySecurityGroupRuleRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// This parameter is required.
 	//
@@ -212,73 +213,73 @@ type ModifySecurityGroupRuleRequest struct {
 	//
 	// sg-bp67acfmxazb4p****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The security group rule ID. You can call [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/2679845.html) to query security group rule IDs.
+	// The ID of the security group rule. You can call the [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/2679845.html) operation to query the security group rule ID.
 	//
 	// example:
 	//
 	// sgr-bp67acfmxa123b***
 	SecurityGroupRuleId *string `json:"SecurityGroupRuleId,omitempty" xml:"SecurityGroupRuleId,omitempty"`
-	// Settings for the source IPv4 CIDR block for the access permissions. Classless Inter-Domain Routing (CIDR) format and IPv4 format IP address range are supported.
+	// The source IPv4 CIDR block. CIDR format and IPv4 format IP address ranges are supported.
 	//
-	// Default value: null.
+	// Default value: none.
 	//
 	// example:
 	//
 	// 10.0.0.0/8
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// Settings for the ID of the source security group for the access permissions. Specify at least one of `SourceGroupId` and `SourceCidrIp`.
+	// The ID of the source security group. You must specify at least one of the SourceGroupId and SourceCidrIp parameters.
 	//
-	// - If `SourceGroupId` is specified but `SourceCidrIp` is not, the `NicType` parameter can only be set to intranet.
+	// - If you specify SourceGroupId but do not specify SourceCidrIp, the NicType parameter can only be set to intranet.
 	//
-	// - If both `SourceGroupId` and `SourceCidrIp` are specified, `SourceCidrIp` takes precedence by default.
+	// - If you specify both SourceGroupId and SourceCidrIp, SourceCidrIp takes precedence by default.
 	//
 	// example:
 	//
 	// sg-bp67acfmxa123b****
 	SourceGroupId *string `json:"SourceGroupId,omitempty" xml:"SourceGroupId,omitempty"`
-	// Settings for the Alibaba Cloud account that owns the source security group when you configure access permissions for a cross-account security group rule.
+	// The Alibaba Cloud account to which the source security group belongs when you configure a security group rule across accounts.
 	//
 	//
 	//
-	// - If neither `SourceGroupOwnerAccount` nor `SourceGroupOwnerID` is specified, the rule is configured for access permissions of another security group that you own.
+	// - If neither SourceGroupOwnerAccount nor SourceGroupOwnerId is specified, the rule is considered to configure the access permissions for another security group of your own.
 	//
-	// - If the `SourceCidrIp` parameter is specified, the `SourceGroupOwnerAccount` parameter is ignored.
+	// - If the SourceCidrIp parameter is specified, the SourceGroupOwnerAccount parameter is invalid.
 	//
 	// example:
 	//
 	// EcsforCloud@Alibaba.com
 	SourceGroupOwnerAccount *string `json:"SourceGroupOwnerAccount,omitempty" xml:"SourceGroupOwnerAccount,omitempty"`
-	// Settings for the Alibaba Cloud account that owns the source security group when you configure access permissions for a cross-account security group rule.
+	// The Alibaba Cloud account to which the source security group belongs when you configure a security group rule across accounts.
 	//
 	//
 	//
-	// - If neither `SourceGroupOwnerId` nor `SourceGroupOwnerAccount` is specified, the rule is configured for access permissions of another security group that you own.
+	// - If neither SourceGroupOwnerId nor SourceGroupOwnerAccount is specified, the rule is considered to configure the access permissions for another security group of your own.
 	//
-	// - If the `SourceCidrIp` parameter is specified, the `SourceGroupOwnerId` parameter is ignored.
+	// - If the SourceCidrIp parameter is specified, the SourceGroupOwnerId parameter is invalid.
 	//
 	// example:
 	//
 	// 12345678910
 	SourceGroupOwnerId *int64 `json:"SourceGroupOwnerId,omitempty" xml:"SourceGroupOwnerId,omitempty"`
-	// The range of source ports for the transport layer protocol. Valid values:
+	// The range of source ports that are open for the transport layer protocol in the source security group. Valid values:
 	//
 	//
 	//
-	// - TCP/UDP: Valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
+	// - For TCP and UDP: 1 to 65535. Use a forward slash (/) to separate the start port and the end port. Example: 1/200.
 	//
-	// - ICMP: -1/-1.
+	// - For ICMP: -1/-1.
 	//
-	// - GRE: -1/-1.
+	// - For GRE: -1/-1.
 	//
-	// - ALL: -1/-1.
+	// - For ALL: -1/-1.
 	//
 	// example:
 	//
 	// 80/80
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// Settings for the ID of the source prefix list for the access permissions. You can invoke [DescribePrefixLists](https://help.aliyun.com/document_detail/205046.html) to query available prefix list IDs.
+	// The ID of the source prefix list. You can call the [DescribePrefixLists](https://help.aliyun.com/document_detail/205046.html) operation to query the IDs of available prefix lists.
 	//
-	// This parameter is ignored if you specify one of the `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourceGroupId` parameters.
+	// If you specify one of the SourceCidrIp, Ipv6SourceCidrIp, or SourceGroupId parameters, this parameter is ignored.
 	//
 	// example:
 	//

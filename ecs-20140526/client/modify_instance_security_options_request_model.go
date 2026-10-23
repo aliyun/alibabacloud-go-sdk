@@ -26,17 +26,17 @@ type iModifyInstanceSecurityOptionsRequest interface {
 }
 
 type ModifyInstanceSecurityOptionsRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. You can generate the value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run. Valid values:
+	// Specifies whether to perform only a dry run on the request. Valid values:
 	//
-	// - true: performs only a dry run. The secure boot setting of the instance is not modified. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits.
+	// - true: performs only a dry run. The secure boot option of the instance is not modified.
 	//
-	// - false: performs a dry run and sends the request. If the request passes the dry run, the secure boot setting of the instance is modified.
+	// - false: performs a dry run and sends the request. If the request passes the dry run, the secure boot option of the instance is modified.
 	//
 	// Default value: false.
 	//
@@ -44,11 +44,11 @@ type ModifyInstanceSecurityOptionsRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to enable UEFI secure boot. Valid values:
+	// Specifies whether to enable or disable UEFI secure boot. If this parameter is set to true, the instance type must support secure boot. You can call the DescribeInstanceTypes operation and check whether the value of SecurityOptions.SecureBootSupport is supported. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enables UEFI secure boot.
 	//
-	// - false: Disabled.
+	// - false: disables UEFI secure boot.
 	//
 	// Default value: false.
 	//
@@ -58,7 +58,7 @@ type ModifyInstanceSecurityOptionsRequest struct {
 	//
 	// false
 	EnableSecureBoot *bool `json:"EnableSecureBoot,omitempty" xml:"EnableSecureBoot,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +67,7 @@ type ModifyInstanceSecurityOptionsRequest struct {
 	// i-bp67acfmxazb4ph****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call [DescribeRegions](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-describeregions) to query the most recent list of regions.
+	// The region ID of the instance. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-describeregions) operation to query the most recent region list.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeInstanceModificationPriceResponseBody interface {
 }
 
 type DescribeInstanceModificationPriceResponseBody struct {
-	// The price information, including the price and discount rule details.
+	// The price information, including the price and discount rule information.
 	PriceInfo *DescribeInstanceModificationPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -125,6 +125,10 @@ func (s *DescribeInstanceModificationPriceResponseBodyPriceInfo) Validate() erro
 
 type DescribeInstanceModificationPriceResponseBodyPriceInfoPrice struct {
 	// The currency unit. Valid values:
+	//
+	// - China site: CNY.
+	//
+	// - International site: USD.
 	//
 	// example:
 	//
@@ -419,6 +423,10 @@ func (s *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice) Val
 
 type DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice struct {
 	// The currency unit.
+	//
+	// China site: CNY.
+	//
+	// International site: USD.
 	//
 	// example:
 	//

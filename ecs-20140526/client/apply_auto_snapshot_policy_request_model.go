@@ -43,7 +43,7 @@ type ApplyAutoSnapshotPolicyRequest struct {
 	//
 	// ["d-bp14k9cxvr5uzy54****", "d-bp1dtj8v7x6u08iw****", "d-bp1c0tyj9tfli2r8****"]
 	DiskIds *string `json:"diskIds,omitempty" xml:"diskIds,omitempty"`
-	// The region ID of the automatic snapshot policy and cloud disks. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the automatic snapshot policy and the cloud disks. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

@@ -27,7 +27,7 @@ type DescribeElasticityAssuranceAutoRenewAttributeRequest struct {
 	PrivatePoolOptions *DescribeElasticityAssuranceAutoRenewAttributeRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 	OwnerAccount       *string                                                                 `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64                                                                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the elasticity assurance service. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -111,10 +111,9 @@ func (s *DescribeElasticityAssuranceAutoRenewAttributeRequest) Validate() error 
 }
 
 type DescribeElasticityAssuranceAutoRenewAttributeRequestPrivatePoolOptions struct {
-	// The list of elasticity assurance service IDs.
+	// The list of elasticity assurance IDs. This parameter is required. If this parameter is not specified, the API returns MissingParameter.PrivatePoolOptionsId.
 	//
-	//
-	// **Limit**: You can query up to 50 elasticity assurance services at a time.
+	// **Limits**: You can query up to 50 elasticity assurances at a time.
 	Id []*string `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
 }
 

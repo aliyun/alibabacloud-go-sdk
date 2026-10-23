@@ -28,7 +28,7 @@ type iModifySnapshotCategoryRequest interface {
 type ModifySnapshotCategoryRequest struct {
 	// The snapshot type.
 	//
-	// - Archive: archived snapshot
+	// - Archive: Archive snapshot
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type ModifySnapshotCategoryRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The number of days for which the snapshot is retained. The retention period starts from the snapshot creation time (CreationTime). A standard snapshot can be archived only after it has been retained for at least 14 days since its creation.
+	// The retention period of the snapshot in days. The retention period starts from the time when the snapshot is created, which is specified by CreationTime. A standard snapshot must be retained for at least 14 days after it is created before it can be archived.
 	//
-	// Archived snapshots must be retained for at least 60 days. When calculating the retention period of an archived snapshot, the time already retained as a standard snapshot is deducted. If an archived snapshot is deleted before 60 days, you are charged for 60 days of archive storage. For more information, see [Snapshot billing](https://help.aliyun.com/document_detail/56159.html).
+	// Archive snapshots have a retention period limit and must be retained as archive snapshots for at least 60 days. When you calculate the retention period of an archive snapshot, the period during which the snapshot was retained as a standard snapshot is deducted. If you delete an archive snapshot before it is retained for 60 days, you are charged for 60 days of archive storage. For more information, see [Snapshot billing](https://help.aliyun.com/document_detail/56159.html).
 	//
-	// Valid values: [74, 65536].
+	// Valid values: 74 to 65536.
 	//
-	// >If you do not specify this parameter, the snapshot is permanently retained.
+	// > If you do not specify this parameter, the snapshot is permanently retained.
 	//
 	// example:
 	//

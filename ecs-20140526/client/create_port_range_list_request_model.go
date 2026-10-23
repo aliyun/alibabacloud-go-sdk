@@ -36,13 +36,13 @@ type iCreatePortRangeListRequest interface {
 }
 
 type CreatePortRangeListRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// Ensures the idempotence of the request. You can generate the value from your client and make sure that the value is unique across different requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the port list. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The description of the port list. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type CreatePortRangeListRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The array of port list entries.
 	Entry []*CreatePortRangeListRequestEntry `json:"Entry,omitempty" xml:"Entry,omitempty" type:"Repeated"`
-	// The maximum number of entries that the port list supports. This value cannot be changed after the port list is created. Valid values: 1 to 2000.
+	// The maximum number of entries supported by the port list. This parameter cannot be modified after the port list is created. Valid values: 1 to 2000.
 	//
-	// 	Notice: When calculating rule quotas for resources associated with the port list (such as security groups), the maximum number of entries is used instead of the actual number of entries. Set this value appropriately.
+	// 	Notice: When a port list is associated with a resource such as a security group, the rule quota is calculated based on the maximum number of entries rather than the actual number of entries. Set this parameter properly.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CreatePortRangeListRequest struct {
 	MaxEntries   *int32  `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the port list. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with http://, https://, com.aliyun, or com.alibabacloud. The name can contain letters, digits, Chinese characters, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the port list. The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It cannot start with http://, https://, com.aliyun, or com.alibabacloud. It can contain Chinese characters, English letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type CreatePortRangeListRequest struct {
 	//
 	// PortRangeListNameSample
 	PortRangeListName *string `json:"PortRangeListName,omitempty" xml:"PortRangeListName,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreatePortRangeListRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The array of tags bound to the port list. Array length: 0 to 20.
+	// The array of tags bound to the port list. The array length ranges from 0 to 20.
 	Tag []*CreatePortRangeListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -229,7 +229,7 @@ func (s *CreatePortRangeListRequest) Validate() error {
 }
 
 type CreatePortRangeListRequestEntry struct {
-	// The description of the port range. The description must be 2 to 32 characters in length and cannot start with http:// or https://. Valid values of N: 0 to 200.
+	// The description of the port range. The description must be 2 to 32 characters in length, and cannot start with http:// or https://. Valid values of N: 0 to 200.
 	//
 	// example:
 	//
@@ -239,7 +239,7 @@ type CreatePortRangeListRequestEntry struct {
 	//
 	// - The number of entries cannot exceed the maximum number of entries (MaxEntries).
 	//
-	// - The PortRange values in multiple entries cannot be duplicated.
+	// - The PortRange values in multiple entries must be unique.
 	//
 	// example:
 	//
@@ -280,7 +280,7 @@ func (s *CreatePortRangeListRequestEntry) Validate() error {
 type CreatePortRangeListRequestTag struct {
 	// The tag key of the port list.
 	//
-	// This parameter cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	// When you use this parameter, it cannot be left empty or set to an empty string. It can be up to 128 characters in length, and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -288,7 +288,7 @@ type CreatePortRangeListRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the port list.
 	//
-	// This parameter cannot be null but can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+	// When you use this parameter, it cannot be left empty, but it can be set to an empty string. It can be up to 128 characters in length, and cannot contain http:// or https://.
 	//
 	// example:
 	//

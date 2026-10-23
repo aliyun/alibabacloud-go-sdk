@@ -52,11 +52,11 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// c-hz0jdfwcsr****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The encoding type of the `CommandContent` and `Output` fields in the response. Valid values:
+	// The encoding method for the `CommandContent` and `Output` fields in the response. Valid values:
 	//
-	// - PlainText: Returns the original command content and output.
+	// - PlainText: Returns the original command content and output information.
 	//
-	// - Base64: Returns the Base64-encoded command content and output.
+	// - Base64: Returns the Base64-encoded command content and output information.
 	//
 	// Default value: Base64.
 	//
@@ -64,11 +64,11 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// Specifies whether to return the history records of scheduled command executions. Valid values:
+	// Specifies whether to return the history records of commands that execute on a schedule. Valid values:
 	//
-	//  - true: Returns the results of scheduled command executions. When this parameter is set to true, the InvokeId parameter cannot be empty and must be the execution ID of a scheduled command (RepeatMode is Period) or a command that runs on each system startup (RepeatMode is EveryReboot).
+	// - true: Returns the results of commands that execute on a schedule. If this parameter is set to true, the InvokeId parameter cannot be empty and must be the execution ID of a scheduled command (RepeatMode is Period) or a command that runs after each system startup (RepeatMode is EveryReboot).
 	//
-	//  - false: Does not return the history.
+	// - false: Does not return the history records.
 	//
 	// Default value: false.
 	//
@@ -82,7 +82,7 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// i-bp1i7gg30r52z2em****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The command execution ID. You can call [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) to query the InvokeId.
+	// The execution ID of the command. You can call the [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) operation to query the InvokeId value.
 	//
 	// example:
 	//
@@ -92,35 +92,35 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// - Running: The command is running.
 	//
-	//     - Scheduled execution: The execution status remains running until you manually stop the scheduled command.
+	//     - Scheduled execution: The execution status remains Running until the scheduled command is manually stopped.
 	//
-	//     - One-time execution: The overall execution status is running as long as any command process is running.
+	//     - One-time execution: The overall execution status is Running as long as a command process is running.
 	//
-	// - Finished: The command execution is complete.
+	// - Finished: The command is completed.
 	//
-	//     - Scheduled execution: The command process status cannot be Finished.
+	//     - Scheduled execution: The command process cannot be in the Finished state.
 	//
-	//     - One-time execution: All instances have completed execution, or you manually stopped the command process on some instances and the remaining instances have completed execution.
+	//     - One-time execution: The command is completed on all instances, or the command process is manually stopped on some instances and completed on the remaining instances.
 	//
 	// - Success:
 	//
-	//     - One-time execution: The command execution is complete and the exit code is 0.
+	//     - One-time execution: The command is completed and the exit code is 0.
 	//
-	//     - Scheduled execution: The last execution succeeded with an exit code of 0, and the specified execution time has ended.
+	//     - Scheduled execution: The last execution was successful with an exit code of 0, and the specified execution time has ended.
 	//
-	// - Failed: The command execution failed.
+	// - Failed: The execution failed.
 	//
-	//     - Scheduled execution: The command process status cannot be Failed.
+	//     - Scheduled execution: The command process cannot be in the Failed state.
 	//
-	//     - One-time execution: All instances failed to run the command.
+	//     - One-time execution: The command failed on all instances.
 	//
-	// - PartialFailed: The command execution partially failed.
+	// - PartialFailed: The execution partially failed.
 	//
-	//     - Scheduled execution: The command process status cannot be PartialFailed.
+	//     - Scheduled execution: The command process cannot be in the PartialFailed state.
 	//
-	//     - One-time execution: Some instances have failed command processes, so the overall execution status is partially failed.
+	//     - One-time execution: The command process failed on some instances, so the overall execution status is PartialFailed.
 	//
-	// - Stopped: The command execution has been stopped.
+	// - Stopped: The command execution is stopped.
 	//
 	// - Stopping: The command execution is being stopped.
 	//
@@ -128,7 +128,7 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// Running
 	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	// The maximum number of entries per page for paging queries.
+	// The maximum number of entries per page for paging.
 	//
 	// Maximum value: 50.
 	//
@@ -138,7 +138,7 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	// The pagination token. Set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -146,19 +146,19 @@ type DescribeInvocationResultsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
+	// > This parameter will soon be deprecated. We recommend that you use NextToken and MaxResults for paging.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
+	// > This parameter will soon be deprecated. We recommend that you use NextToken and MaxResults for paging.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -166,7 +166,7 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID of the command execution. After you specify this parameter, the resource group ID must also be specified when you run the command. This parameter is used to filter the corresponding command execution results.
+	// The ID of the resource group to which the command execution belongs. If you specify this parameter, you must specify ResourceGroupId when you run the command. This allows you to filter the corresponding command execution results.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type DescribeInvocationResultsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*DescribeInvocationResultsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -353,17 +353,17 @@ func (s *DescribeInvocationResultsRequest) Validate() error {
 }
 
 type DescribeInvocationResultsRequestTag struct {
-	// The tag key of the command execution. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+	// The tag key of the command that you execute. Valid values of N: 1 to 20. This parameter cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the number of resources with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources that are attached to all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html) to query the resources.
+	// If you use a single tag to filter resources, the resource count under the tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that are attached to all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
-	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the command execution. Valid values of N: 1 to 20. The tag value can be an empty string.
+	// The tag value of the command execution. Valid values of N: 1 to 20. This parameter can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//

@@ -30,9 +30,9 @@ type iModifyDiskDeploymentRequest interface {
 }
 
 type ModifyDiskDeploymentRequest struct {
-	// The type of the cloud disk to change to. This parameter takes effect only when you migrate data between dedicated block storage clusters. Currently, only cloud_essd (enterprise SSD) is supported.
+	// The new disk category. This parameter is valid only during migration between different dedicated block storage clusters. Currently, only cloud_essd (ESSD) is supported.
 	//
-	// Default value: empty, which indicates that the cloud disk type is not changed.
+	// Default value: empty, which indicates that the disk category is not changed.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type ModifyDiskDeploymentRequest struct {
 	//
 	// d-bp131n0q38u3a4zi****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// Specifies whether to perform only a dry run. Valid values:
+	// Specifies whether to only precheck the request. Valid values:
 	//
-	// - true: performs only a dry run. The system checks the required parameters, request syntax, business restrictions, and ECS inventory. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+	// - true: sends a precheck request. The check items include whether required parameters are specified, the request format, business limits, and ECS inventory. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
 	//
-	// - false: performs a dry run and sends the request. If the check succeeds, a 2XX HTTP status code is returned and the disk is migrated.
+	// - false: sends a normal request. If the check succeeds, a 2xx HTTP status code is returned and the disk is directly migrated.
 	//
 	// Default value: false.
 	//
@@ -60,13 +60,13 @@ type ModifyDiskDeploymentRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The performance level (PL) of the standard SSD. This parameter takes effect only when you migrate a disk between different dedicated block storage clusters. Valid values:
+	// The new ESSD performance level. This parameter is valid only during migration between different dedicated block storage clusters. Valid values:
 	//
-	// - PL0: A maximum of 10,000 random read/write IOPS per disk.
+	// - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
 	//
-	// - PL1: A maximum of 50,000 random read/write IOPS per disk.
+	// - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
 	//
-	// Default value: empty, which indicates that the performance level (PL) is not changed during migration.
+	// Default value: empty, which indicates that the performance level is not changed.
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type ModifyDiskDeploymentRequest struct {
 	PerformanceLevel     *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the dedicated block storage cluster.
+	// The ID of the dedicated block storage cluster. Before migrating a disk into a dedicated block storage cluster, you must purchase and create the cluster, and ensure that the disk and the destination cluster are in the same zone.
 	//
-	// - To migrate a disk to a dedicated block storage cluster, you must specify StorageClusterId.
+	// - When migrating a disk to a dedicated block storage cluster, you must specify `StorageClusterId`.
 	//
-	// - To migrate a disk to a public cloud block storage cluster, StorageClusterId must be empty.
+	// - When migrating a disk to a public cloud block storage cluster, `StorageClusterId` must be empty.
 	//
 	// Default value: empty, which indicates that the disk is migrated to a public cloud block storage cluster.
 	//

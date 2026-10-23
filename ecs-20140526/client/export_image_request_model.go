@@ -32,8 +32,13 @@ type iExportImageRequest interface {
 }
 
 type ExportImageRequest struct {
+  // Specifies whether to only precheck the request. Valid values:
+  // 
+  // - true: The request is checked, but the image is not exported.
+  // 
+  // - false: The image is exported.
   DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-  // The format in which to export the image. Valid values:
+  // The export format of the image file. Valid values:
   // 
   // - raw
   // 
@@ -59,7 +64,7 @@ type ExportImageRequest struct {
   // 
   // m-bp67acfmxazb4p****
   ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-  // The OSS bucket in which to store the exported image.
+  // The OSS bucket used to store the exported image.
   // 
   // This parameter is required.
   // 
@@ -67,14 +72,14 @@ type ExportImageRequest struct {
   // 
   // testexportImage
   OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
-  // The prefix for the OSS object. The prefix can contain digits and letters and must be 1 to 30 characters in length.
+  // The prefix of the OSS object. The prefix must be 1 to 30 characters in length and can contain digits and letters.
   // 
   // example:
   // 
   // EcsExport
   OSSPrefix *string `json:"OSSPrefix,omitempty" xml:"OSSPrefix,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+  // The region ID of the custom image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
   // 
   // This parameter is required.
   // 

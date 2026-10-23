@@ -24,7 +24,7 @@ type iDescribeSnapshotLinksResponseBody interface {
 }
 
 type DescribeSnapshotLinksResponseBody struct {
-	// The pagination token returned in this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeSnapshotLinksResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page that you specified in the request.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeSnapshotLinksResponseBody struct {
 	SnapshotLinks *DescribeSnapshotLinksResponseBodySnapshotLinks `json:"SnapshotLinks,omitempty" xml:"SnapshotLinks,omitempty" type:"Struct"`
 	// The total number of snapshot chains.
 	//
-	// > When you use the MaxResults and NextToken parameters for paged query, the returned TotalCount value is invalid.
+	// > When you use the `MaxResults` and `NextToken` parameters for paging in a paged query, the returned `TotalCount` value is invalid.
 	//
 	// example:
 	//

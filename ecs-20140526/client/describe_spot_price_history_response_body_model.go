@@ -30,7 +30,7 @@ type DescribeSpotPriceHistoryResponseBody struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The start row of the next page. Set the `Offset` parameter to this value to query the next page of data.
+	// The starting row of the next page. You can use this value to query the next page of data by setting the `Offset` parameter to this value.
 	//
 	// example:
 	//

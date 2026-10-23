@@ -16,18 +16,8 @@ type iReleasePublicIpAddressResponseBody interface {
 }
 
 type ReleasePublicIpAddressResponseBody struct {
-	// > This parameter is not yet available.
-	//
-	// example:
-	//
-	// hide
 	RemainTimes *string `json:"RemainTimes,omitempty" xml:"RemainTimes,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ReleasePublicIpAddressResponseBody) String() string {

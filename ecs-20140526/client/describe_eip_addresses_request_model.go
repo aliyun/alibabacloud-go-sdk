@@ -44,23 +44,71 @@ type iDescribeEipAddressesRequest interface {
 }
 
 type DescribeEipAddressesRequest struct {
-	Filter                 []*DescribeEipAddressesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	AllocationId           *string                              `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	AssociatedInstanceId   *string                              `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
-	AssociatedInstanceType *string                              `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	ChargeType             *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	EipAddress             *string                              `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
-	ISP                    *string                              `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	LockReason             *string                              `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	OwnerAccount           *string                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber             *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize               *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Filter []*DescribeEipAddressesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The ID of the EIP to query. You can enter up to 50 IDs. Separate multiple IDs with commas.
+	//
+	// example:
+	//
+	// eip-2zeerraiwb7ujxscd****
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// The ID of the associated cloud service instance.
+	//
+	// example:
+	//
+	// i-2zebb08phyccdvf****
+	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
+	// The type of the associated cloud service instance. Valid values: EcsInstance, SlbInstance, Nat, HaVip, NetworkInterface, and IpAddress.
+	//
+	// example:
+	//
+	// EcsInstance
+	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
+	// The billing method of the EIP. Valid values: PostPaid (pay-as-you-go) and PrePaid (subscription).
+	//
+	// example:
+	//
+	// PostPaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The EIP address to query. You can enter up to 50 addresses. Separate multiple addresses with commas.
+	//
+	// example:
+	//
+	// 47.75.XX.XX
+	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
+	// The line type. Valid values include BGP and BGP_PRO.
+	//
+	// example:
+	//
+	// BGP
+	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	// The lock type. Valid values: financial (locked due to overdue payment) and security (locked due to security reasons).
+	//
+	// example:
+	//
+	// financial
+	LockReason   *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 100. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region where the EIP resides. You can call the DescribeRegions operation to query region IDs.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the EIP. Valid values: Associating, Unassociating, InUse, Available, and Releasing.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEipAddressesRequest) String() string {
@@ -229,7 +277,17 @@ func (s *DescribeEipAddressesRequest) Validate() error {
 }
 
 type DescribeEipAddressesRequestFilter struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The first filter key. Set the value to CreationStartTime, which specifies the start time of resource creation.
+	//
+	// example:
+	//
+	// CreationStartTime
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The first filter value. Specify the time in UTC in the YYYY-MM-DDThh:mmZ format.
+	//
+	// example:
+	//
+	// 2023-01-01T01:00Z
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

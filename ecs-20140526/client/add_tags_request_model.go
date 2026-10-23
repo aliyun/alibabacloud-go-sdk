@@ -27,60 +27,14 @@ type iAddTagsRequest interface {
 
 type AddTagsRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource to which you want to add tags. For example, when ResourceType is set to instance, ResourceId is the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// i-bp1gtjxuuvwj17zr****
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Valid values:
-	//
-	// - instance: ECS instance
-	//
-	// - disk: cloud disk
-	//
-	// - snapshot: snapshot
-	//
-	// - image: image
-	//
-	// - securitygroup: security group
-	//
-	// - volume: storage volume
-	//
-	// - eni: Elastic Network Interface (ENI)
-	//
-	// - ddh: dedicated host
-	//
-	// - keypair: SSH key pair
-	//
-	// - launchtemplate: launch template
-	//
-	// - reservedinstance: reserved instance
-	//
-	// - snapshotpolicy: automatic snapshot policy
-	//
-	// All valid values are in lowercase.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
-	//
 	// This parameter is required.
 	Tag []*AddTagsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -170,17 +124,7 @@ func (s *AddTagsRequest) Validate() error {
 }
 
 type AddTagsRequestTag struct {
-	// The tag key of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
-	//
-	// example:
-	//
-	// TestKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. The tag value cannot contain http:// or https://.
-	//
-	// example:
-	//
-	// TestValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

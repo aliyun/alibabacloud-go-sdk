@@ -87,7 +87,7 @@ type iCreateAutoProvisioningGroupShrinkRequest interface {
 
 type CreateAutoProvisioningGroupShrinkRequest struct {
 	LaunchConfiguration *CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration `json:"LaunchConfiguration,omitempty" xml:"LaunchConfiguration,omitempty" type:"Struct"`
-	// The name of the auto provisioning group. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the auto provisioning group. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -95,26 +95,27 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	AutoProvisioningGroupName *string `json:"AutoProvisioningGroupName,omitempty" xml:"AutoProvisioningGroupName,omitempty"`
 	// The delivery type of the auto provisioning group. Valid values:
 	//
-	// - request: one-time asynchronous delivery. The group delivers the instance cluster asynchronously only at startup. If scheduling fails, no retry is performed.
+	// - request: one-time asynchronous delivery. The auto provisioning group asynchronously delivers the instance cluster only at startup and does not retry if the scheduling failed.
 	//
-	// - instant: one-time synchronous delivery. The group synchronously creates instances only at startup and returns the list of successfully created instances and the causes of creation failures in the response.
+	// - instant: one-time synchronization delivery. The auto provisioning group creates instances in synchronization only at startup and returns the list of created instances and the reasons why creation failed in the response.
 	//
-	// - maintain: continuous delivery. The group attempts to deliver the instance cluster at startup and monitors real-time capacity. If the target capacity is not reached, the group continues to create ECS instances.
+	// - maintain: continuous delivery. The auto provisioning group attempts to deliver the instance cluster at startup, performs monitoring on the real-time capacity, and continues to create ECS instances if the target capacity is not reached.
 	//
 	// Default value: maintain.
 	//
 	// example:
 	//
 	// maintain
-	AutoProvisioningGroupType *string                                                   `json:"AutoProvisioningGroupType,omitempty" xml:"AutoProvisioningGroupType,omitempty"`
-	CandidateOptions          *CreateAutoProvisioningGroupShrinkRequestCandidateOptions `json:"CandidateOptions,omitempty" xml:"CandidateOptions,omitempty" type:"Struct"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	AutoProvisioningGroupType *string `json:"AutoProvisioningGroupType,omitempty" xml:"AutoProvisioningGroupType,omitempty"`
+	// The configuration options when AutoProvisioningGroupType is set to candidate.
+	CandidateOptions *CreateAutoProvisioningGroupShrinkRequestCandidateOptions `json:"CandidateOptions,omitempty" xml:"CandidateOptions,omitempty" type:"Struct"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The list of data disk configurations.
+	// The list of data disk configurations for the instance.
 	DataDiskConfig []*CreateAutoProvisioningGroupShrinkRequestDataDiskConfig `json:"DataDiskConfig,omitempty" xml:"DataDiskConfig,omitempty" type:"Repeated"`
 	// The billing method for the capacity difference when the sum of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is less than `TotalTargetCapacity`. Valid values:
 	//
@@ -134,11 +135,11 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to release instances when the real-time capacity of the auto provisioning group exceeds the target capacity and a scale-in event is triggered. Valid values:
+	// Specifies whether to release the instances that are removed during a scale-down event when the real-time capacity of the auto provisioning group exceeds the target capacity and triggers a scale-down. Valid values:
 	//
-	// - termination: releases the scaled-in instances.
+	// - termination: releases the removed instances.
 	//
-	// - no-termination: only removes the scaled-in instances from the auto provisioning group.
+	// - no-termination: only removes the instances from the auto provisioning group.
 	//
 	// Default value: no-termination.
 	//
@@ -147,21 +148,21 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	// termination
 	ExcessCapacityTerminationPolicy *string `json:"ExcessCapacityTerminationPolicy,omitempty" xml:"ExcessCapacityTerminationPolicy,omitempty"`
 	ExecutionMode                   *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
-	// >This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available.
 	//
 	// example:
 	//
 	// false
 	HibernationOptionsConfigured *bool `json:"HibernationOptionsConfigured,omitempty" xml:"HibernationOptionsConfigured,omitempty"`
-	// The list of extended launch templates.
+	// The extended launch templates.
 	LaunchTemplateConfig []*CreateAutoProvisioningGroupShrinkRequestLaunchTemplateConfig `json:"LaunchTemplateConfig,omitempty" xml:"LaunchTemplateConfig,omitempty" type:"Repeated"`
-	// The ID of the instance launch template associated with the auto provisioning group. You can invoke [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html) to query active instance launch templates. If you specify both a launch template and launch configuration information (`LaunchConfiguration.*`), the launch template takes precedence.
+	// The ID of the instance launch template associated with the auto provisioning group. You can invoke the [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html) operation to query active instance launch templates. If you specify both a launch template and launch configurations (`LaunchConfiguration.*`), the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// lt-bp1fgzds4bdogu03****
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	// The version of the instance launch template associated with the auto provisioning group. You can invoke [DescribeLaunchTemplateVersions](https://help.aliyun.com/document_detail/73761.html) to query active instance launch template versions.
+	// The version of the instance launch template associated with the auto provisioning group. You can invoke the [DescribeLaunchTemplateVersions](https://help.aliyun.com/document_detail/73761.html) operation to query active instance launch template versions.
 	//
 	// Default value: the default version of the launch template.
 	//
@@ -169,23 +170,23 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	//
 	// 1
 	LaunchTemplateVersion *string `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
-	// The maximum price for spot instances in the auto provisioning group.
+	// The maximum price of spot instances in the auto provisioning group.
 	//
-	// > If both `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` are specified, the lower value is used.
+	// > If the settings include both `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice`, the lower value is used.
 	//
 	// example:
 	//
 	// 2
 	MaxSpotPrice *float32 `json:"MaxSpotPrice,omitempty" xml:"MaxSpotPrice,omitempty"`
-	// The target minimum capacity of the auto provisioning group. Valid values: positive integers.
+	// The minimum target capacity of the auto provisioning group. Valid values: positive integers.
 	//
-	// Take note of the following items:
+	// Take note of the following items when you configure this parameter:
 	//
-	// - This parameter takes effect only when you create a one-time synchronous auto provisioning group (`AutoProvisioningGroupType=instant`).
+	// - This parameter takes effect only when you create an auto provisioning group of the instant delivery type (AutoProvisioningGroupType=instant).
 	//
-	// - If the instance inventory in the current region is less than this parameter value, the invoke operation fails and no instances are created.
+	// - If the instance inventory in the current region is less than the value of this parameter, the API call fails and no instances are created.
 	//
-	// - If the instance inventory in the current region is greater than this parameter value, instances are created as expected based on other specified parameter values.
+	// - If the instance inventory in the current region is greater than the value of this parameter, instances are created based on the values of other configured parameters.
 	//
 	// example:
 	//
@@ -195,9 +196,9 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The policy for creating pay-as-you-go instances. Valid values:
 	//
-	// - lowest-price: cost optimization policy. Selects the instance type with the lowest price.
+	// - lowest-price: the cost optimization policy. The instance type with the lowest price is selected.
 	//
-	// - prioritized: priority-based policy. Creates instances based on the priority specified by `LaunchTemplateConfig.N.Priority`.
+	// - prioritized: the priority-based policy. Instances are created based on the priorities specified by `LaunchTemplateConfig.N.Priority`.
 	//
 	// Default value: lowest-price.
 	//
@@ -211,9 +212,9 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	//
 	// 30
 	PayAsYouGoTargetCapacity *string `json:"PayAsYouGoTargetCapacity,omitempty" xml:"PayAsYouGoTargetCapacity,omitempty"`
-	// The detailed capacity configuration for subscription instances.
+	// The detailed capacity configurations for subscription instances.
 	PrePaidOptions *CreateAutoProvisioningGroupShrinkRequestPrePaidOptions `json:"PrePaidOptions,omitempty" xml:"PrePaidOptions,omitempty" type:"Struct"`
-	// The ID of the region in which to create the auto provisioning group. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The ID of the region where the auto provisioning group resides. You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -229,19 +230,19 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource pool policy used to create instances. Take note of the following items when you set this parameter:
+	// The resource pool policy used when creating instances. Take note of the following items when you configure this parameter:
 	//
 	// - This parameter takes effect only when you create pay-as-you-go instances.
 	//
-	// - This parameter takes effect only when you create a one-time synchronous auto provisioning group (`AutoProvisioningGroupType=instant`).
+	// - This parameter takes effect only when you create an auto provisioning group of the instant delivery type (AutoProvisioningGroupType=instant).
 	ResourcePoolOptionsShrink *string `json:"ResourcePoolOptions,omitempty" xml:"ResourcePoolOptions,omitempty"`
 	// The policy for creating spot instances. Valid values:
 	//
-	// - lowest-price: cost optimization policy. Selects the instance type with the lowest price.
+	// - lowest-price: the cost optimization policy. The instance type with the lowest price is selected.
 	//
-	// - diversified: balanced zone distribution policy. Creates instances in the zones specified in the extended launch template and distributes them evenly across zones.
+	// - diversified: the zone distribution balancing policy. Instances are created in the zones specified by the extended launch templates and evenly distributed across the zones.
 	//
-	// - capacity-optimized: capacity optimization distribution policy. Selects the optimal instance type and zone based on inventory availability.
+	// - capacity-optimized: the capacity optimization policy. The optimal instance types and zones are selected based on the inventory.
 	//
 	// Default value: lowest-price.
 	//
@@ -249,11 +250,11 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	//
 	// diversified
 	SpotAllocationStrategy *string `json:"SpotAllocationStrategy,omitempty" xml:"SpotAllocationStrategy,omitempty"`
-	// The action to take when a spot instance is interrupted. Valid values:
+	// The behavior of spot instances when they are interrupted. Valid values:
 	//
-	// - stop: stops the instance.
+	// - stop: stops the instances.
 	//
-	// - terminate: releases the instance.
+	// - terminate: releases the instances.
 	//
 	// Default value: terminate.
 	//
@@ -261,7 +262,7 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	//
 	// terminate
 	SpotInstanceInterruptionBehavior *string `json:"SpotInstanceInterruptionBehavior,omitempty" xml:"SpotInstanceInterruptionBehavior,omitempty"`
-	// Takes effect only when `SpotAllocationStrategy` is set to `lowest-price`. Specifies the number of instance types from which the auto provisioning group selects the lowest-priced ones to create instances.
+	// The number of instance types with the lowest prices that are selected by the auto provisioning group to create instances. This parameter takes effect only when `SpotAllocationStrategy` is set to `lowest-price`.
 	//
 	// Valid values: less than the value of N in `LaunchTemplateConfig.N`.
 	//
@@ -275,15 +276,15 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	//
 	// 20
 	SpotTargetCapacity *string `json:"SpotTargetCapacity,omitempty" xml:"SpotTargetCapacity,omitempty"`
-	// The list of system disk configurations.
+	// The list of system disk configurations for the instance.
 	SystemDiskConfig []*CreateAutoProvisioningGroupShrinkRequestSystemDiskConfig `json:"SystemDiskConfig,omitempty" xml:"SystemDiskConfig,omitempty" type:"Repeated"`
-	// The tags to attach to the auto provisioning group.
+	// The list of tags bound to the auto provisioning group.
 	Tag []*CreateAutoProvisioningGroupShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Specifies whether to release instances auto provisioning group when the auto-provisioning group is deleted. Valid values:
+	// Specifies whether to release the instances in the auto-provisioning group when the group is deleted. Valid values:
 	//
-	// - true: releases instances auto provisioning group.
+	// - true: releases the instances auto provisioning group.
 	//
-	// - false: retains instances auto provisioning group.
+	// - false: retains the instances auto provisioning group.
 	//
 	// Default value: false.
 	//
@@ -291,11 +292,11 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	//
 	// true
 	TerminateInstances *bool `json:"TerminateInstances,omitempty" xml:"TerminateInstances,omitempty"`
-	// Specifies whether to release instances auto provisioning group when the auto-provisioning group expires. Valid values:
+	// Specifies whether to release the instances in the auto provisioning group when the group expires. Valid values:
 	//
-	// - true: releases instances auto provisioning group.
+	// - true: releases the instances in the group.
 	//
-	// - false: only removes instances from the auto-provisioning group.
+	// - false: only removes the instances from the group.
 	//
 	// Default value: false.
 	//
@@ -305,7 +306,7 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	TerminateInstancesWithExpiration *bool `json:"TerminateInstancesWithExpiration,omitempty" xml:"TerminateInstancesWithExpiration,omitempty"`
 	// The total target capacity of the auto provisioning group. Valid values: positive integers.
 	//
-	// The total capacity must be greater than or equal to the sum of `PayAsYouGoTargetCapacity` (the target capacity of pay-as-you-go instances) and `SpotTargetCapacity` (the target capacity of spot instances).
+	// The total target capacity must be greater than or equal to the sum of `PayAsYouGoTargetCapacity` (the target capacity of pay-as-you-go instances) and `SpotTargetCapacity` (the target capacity of spot instances).
 	//
 	// This parameter is required.
 	//
@@ -313,17 +314,17 @@ type CreateAutoProvisioningGroupShrinkRequest struct {
 	//
 	// 60
 	TotalTargetCapacity *string `json:"TotalTargetCapacity,omitempty" xml:"TotalTargetCapacity,omitempty"`
-	// The time when the auto provisioning group starts. This parameter and `ValidUntil` together determine the validity period.
+	// The time when the auto provisioning group starts. This parameter and `ValidUntil` determine the validity period.
 	//
 	// Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// Default value: the UNIX timestamp at which the request takes effect immediately.
+	// Default value: the UNIX timestamp when the API operation takes effect.
 	//
 	// example:
 	//
 	// 2019-04-01T15:10:20Z
 	ValidFrom *string `json:"ValidFrom,omitempty" xml:"ValidFrom,omitempty"`
-	// The time when the auto provisioning group expires. This parameter and `ValidFrom` together determine the validity period.
+	// The time when the auto provisioning group expires. This parameter and `ValidFrom` determine the validity period.
 	//
 	// Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
@@ -732,35 +733,35 @@ func (s *CreateAutoProvisioningGroupShrinkRequest) Validate() error {
 }
 
 type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not supported.
 	Arn []*CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
-	// The automatic release time of the pay-as-you-go instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the UTC+0 time zone. The format is `yyyy-MM-ddTHH:mm:ssZ`.
+	// The automatic release time of the pay-as-you-go instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// - If the value of seconds (`ss`) is not `00`, the start time of the current minute (`mm`) is used.
+	// - If the value of seconds (ss) is not 00, the release time is automatically set to the start of the current minute (mm).
 	//
-	// - The earliest release time is 30 minutes after the current time.
+	// - The earliest release time is half an hour after the current time.
 	//
-	// - The latest release time cannot be more than three years from the current time.
+	// - The latest release time cannot be more than three years after the current time.
 	//
 	// example:
 	//
 	// 2018-01-01T12:05:00Z
 	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	// The running mode of the burstable instance. Valid values:
+	// The performance mode of the burstable instance. Valid values:
 	//
-	// - Standard: standard mode. For more information about instance performance, see the performance constrained mode section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// - Standard: standard mode. For more information about the performance of the instance, see the "Standard mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
-	// - Unlimited: unlimited mode. For more information about instance performance, see the unlimited mode section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// - Unlimited: unlimited mode. For more information about the performance of the instance, see the "Unlimited mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
-	// Default value: none.
+	// Default value: null.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// Standard
 	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	// The list of data disk configurations in the launch configuration.
+	// The extended data disk configurations for the launch template.
 	DataDisk []*CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	// The ID of the deployment set.
 	//
@@ -768,61 +769,61 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	//
 	// ds-bp1frxuzdg87zh4p****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The hostname of the instance. Take note of the following items:
+	// The hostname of the instance. Limits:
 	//
-	// - Periods (.) and hyphens (-) cannot be used as the first or last characters and cannot be used consecutively.
+	// - The hostname cannot start or end with a period (.) or a hyphen (-). It cannot contain consecutive periods (.) or hyphens (-).
 	//
-	// - Windows instances: The hostname must be 2 to 15 characters in length and cannot contain periods (.) or consist entirely of digits. The hostname can contain letters, digits, and hyphens (-).
+	// - For Windows instances, the hostname must be 2 to 15 characters in length. It cannot contain periods (.) and cannot contain only digits. It can contain letters, digits, and hyphens (-).
 	//
-	// - Instances that run other operating systems such as Linux: The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment separated by a period can contain letters, digits, and hyphens (-).
+	// - For other instances such as Linux instances, the hostname must be 2 to 64 characters in length. It can contain multiple periods (.). The characters between two consecutive periods are considered a segment. Each segment can contain letters, digits, and hyphens (-).
 	//
 	// - You cannot specify both `LaunchConfiguration.HostName` and `LaunchConfiguration.HostNames.N`. Otherwise, an error is returned.
 	//
-	// - If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// - If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// k8s-node-[1,4]-ecshost
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The list of hostnames for one or more instances. Take note of the following items:
+	// The list of hostnames for one or more instances. Limits:
 	//
-	// - This parameter takes effect only when you create a one-time synchronous delivery auto provisioning group (`AutoProvisioningGroupType=instant`).
+	// - This parameter takes effect only when you create an auto provisioning group of the instant delivery type (AutoProvisioningGroupType=instant).
 	//
-	// - N indicates the number of instances. Valid values of N: 1 to 1000. The value must be the same as the value of TotalTargetCapacity.
+	// - N indicates the number of instances. Valid values of N: 1 to 1000. The value of N must be the same as the value of the TotalTargetCapacity parameter.
 	//
-	// - Periods (.) and hyphens (-) cannot be used as the first or last characters and cannot be used consecutively.
+	// - Periods (.) and hyphens (-) cannot be used as the first or last characters, and cannot be used consecutively.
 	//
-	// - If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// - If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
 	// ecs-host-01
 	HostNames []*string `json:"HostNames,omitempty" xml:"HostNames,omitempty" type:"Repeated"`
-	// The name of the image family. The name must be 2 to 128 characters in length. The name must start with a letter, and cannot start with `aliyun` or `acs:`. The name cannot contain `http://` or `https://`. The name can contain digits, colons (:), underscores (_), or hyphens (-).
+	// The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with aliyun or acs:. It cannot contain http:// or https://. It can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// hangzhou-daily-update
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	// The ID of the image used to create instances. You can call [DescribeImages](https://help.aliyun.com/document_detail/25534.html) to query available image resources. If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// The ID of the image. The image resource selected when the instance is started. You can call the [DescribeImages](https://help.aliyun.com/document_detail/25534.html) operation to query available image resources. If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// m-bp1g7004ksh0oeuc****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The description of the instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// The description of the instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// Instance_Description
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// Default value: the `InstanceId` of the instance.
 	//
-	// When you create multiple ECS instances, you can batch configure sequential instance names. For more information, see [Batch configure sequential names or hostnames for multiple instances](https://help.aliyun.com/document_detail/196048.html).
+	// When you create multiple ECS instances, you can batch configure sequential instance names. For more information, see [Configure sequential instance names or hostnames](https://help.aliyun.com/document_detail/196048.html).
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
@@ -834,9 +835,9 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	//
 	// - PayByTraffic: pay-by-traffic.
 	//
-	// > In pay-by-traffic mode, the peak inbound and outbound bandwidths are used as upper limits of bandwidths instead of guaranteed performance metrics. When resources are contended for, the peak bandwidths may be limited. If you want guaranteed bandwidth for your business, use pay-by-bandwidth.
+	// > In pay-by-traffic mode, the peak inbound and outbound bandwidths are upper limits and are not guaranteed service level indicators. When resource contention occurs, the peak bandwidths may be limited. If your business requires guaranteed bandwidth, use the pay-by-bandwidth mode.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
@@ -844,11 +845,11 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// - If the maximum outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
+	// - When the outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
 	//
-	// - If the maximum outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `LaunchConfiguration.InternetMaxBandwidthOut`. Default value: the value of `LaunchConfiguration.InternetMaxBandwidthOut`.
+	// - When the outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `LaunchConfiguration.InternetMaxBandwidthOut`. Default value: the value of `LaunchConfiguration.InternetMaxBandwidthOut`.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
@@ -858,21 +859,21 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	//
 	// Default value: 0.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// 10
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// Specifies whether the instance is I/O optimized. Valid values:
+	// Specifies whether the instance is an I/O optimized instance. Valid values:
 	//
-	// - none: non-I/O optimized.
+	// - none: non-I/O optimization.
 	//
-	// - optimized: I/O optimized.
+	// - optimized: I/O optimization.
 	//
-	// For retired instance types, the default value is none. For other instance types, the default value is optimized.
+	// The default value is cloud for retired instance types and non-I/O optimized instances, and optimized for other instance types.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
@@ -880,23 +881,23 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
 	// The name of the key pair.
 	//
-	// -   For Windows instances, this parameter is ignored. The default value is empty.
+	// - For Windows instances, this parameter is ignored. Default value: null.
 	//
-	// -   For Linux instances, password-based logon is disabled during initialization.
+	// - For Linux instances, password logon is disabled by default.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// KeyPair_Name
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The password of the instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+	// The password of the instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include:
 	//
 	// ``()`~!@#$%^&*-_+=|{}`[]`:;\\"<>,.?/``
 	//
 	// For Windows instances, the password cannot start with a forward slash (/).
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
@@ -908,19 +909,19 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	//
 	// - false: does not use the preset password.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// true
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	// The name of the instance RAM role. You can call the RAM API [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the instance RAM roles that you have created. If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// The name of the instance RAM role. You can use the RAM API operation [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the instance RAM roles that you have created. If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// RAM_Name
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The ID of the resource group to which the instance belongs. If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// The ID of the resource group to which the instance belongs. If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
@@ -928,11 +929,11 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to enable security hardening. Valid values:
 	//
-	// -   Active: enables security hardening. This value is applicable only to public images.
+	// - Active: enables security hardening. This value is applicable only to public images.
 	//
-	// -   Deactive: disables security hardening. This value is applicable to all image types.
+	// - Deactive: disables security hardening. This value is applicable to all image types.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
@@ -946,23 +947,21 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The list of security groups to which the instance belongs.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// The system disk information of the instance. If you specify both a launch template and launch configuration information, the launch template takes precedence.
-	//
-	// [_single.params.LaunchConfiguration~SystemD
+	// The system disk configuration of the instance. If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	SystemDisk *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	// The category of the system disk. Valid values:
 	//
-	// -   cloud_efficiency: ultra disk.
+	// - cloud_efficiency: ultra disk.
 	//
-	// -   cloud_ssd: standard SSD.
+	// - cloud_ssd: standard SSD.
 	//
-	// -   cloud_essd: enterprise SSD (ESSD).
+	// - cloud_essd: enterprise SSD.
 	//
-	// -   cloud: basic disk.
+	// - cloud: basic disk.
 	//
-	// For retired instance types that are non-I/O optimized, the default value is cloud. For other instance types, the default value is cloud_efficiency.
+	// The default value is cloud for retired instance types and non-I/O optimized instances, and cloud_efficiency for other instance types.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
@@ -970,53 +969,53 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// SystemDisk_Description
 	SystemDiskDescription *string `json:"SystemDiskDescription,omitempty" xml:"SystemDiskDescription,omitempty"`
-	// The name of the system disk. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, periods (.), colons (:), underscores (_), and hyphens (-).
+	// The name of the system disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
 	//
-	// Default value: empty.
+	// Default value: null.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// cloud_ssdSystem
 	SystemDiskName *string `json:"SystemDiskName,omitempty" xml:"SystemDiskName,omitempty"`
-	// The performance level (PL) of the enterprise SSD used as the system disk. Valid values:
+	// The settings for the performance level of the enterprise SSD used as the system disk. Valid values:
 	//
-	// - PL0 (default): up to 10,000 random read/write IOPS per disk.
+	// - PL0 (default): A single enterprise SSD can deliver up to 10,000 random read/write IOPS.
 	//
-	// - PL1: up to 50,000 random read/write IOPS per disk.
+	// - PL1: A single enterprise SSD can deliver up to 50,000 random read/write IOPS.
 	//
-	// - PL2: up to 100,000 random read/write IOPS per disk.
+	// - PL2: A single enterprise SSD can deliver up to 100,000 random read/write IOPS.
 	//
-	// - PL3: up to 1,000,000 random read/write IOPS per disk.
+	// - PL3: A single enterprise SSD can deliver up to 1,000,000 random read/write IOPS.
 	//
-	// For information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	// For more information about how to select enterprise SSD performance levels, see [enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// PL0
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The size of the system disk. Unit: GiB. Valid values: 20 to 500. The value of this parameter must be greater than or equal to max{20, size of the image specified by LaunchConfiguration.ImageId}.
+	// The size of the system disk. Unit: GiB. Valid values: 20 to 500. The value of this parameter must be greater than or equal to max{20, the size of the image specified by LaunchConfiguration.ImageId}.
 	//
-	// Default value: max{40, size of the image specified by LaunchConfiguration.ImageId}.
+	// Default value: max{40, the size of the image specified by LaunchConfiguration.ImageId}.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
 	// 40
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The list of tags in the launch configuration.
+	// The extended list of tags for the launch template.
 	Tag []*CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Instance user data of the instance. Instance user data must be Base64-encoded. The maximum size of the raw data is 32 KB. If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// Instance user data of the instance. Instance user data must be encoded in Base64. The maximum size of the raw data is 32 KB. If you specify both a launch template and launch configurations, the system preferentially uses the launch template.
 	//
 	// example:
 	//
@@ -1024,9 +1023,9 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// Specifies whether to enable auto-renewal. This parameter takes effect when you create subscription instances. Valid values:
 	//
-	// - true: enables auto-renewal.
+	// - true: Auto-renewal is enabled.
 	//
-	// - false (default): does not enable auto-renewal.
+	// - false (default): Auto-renewal is disabled.
 	//
 	// example:
 	//
@@ -1038,13 +1037,13 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	//
 	// <props="china">
 	//
-	// - If PeriodUnit is set to Week: 1, 2, and 3.
+	// - When PeriodUnit is set to Week: 1, 2, and 3.
 	//
-	// - If PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+	// - When PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
 	//
 	//
 	//
-	// <props="intl">If PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+	// <props="intl">When PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
 	//
 	// Default value: 1.
 	//
@@ -1052,33 +1051,33 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// The CPU-related configurations.
+	// The CPU configurations.
 	CpuOptions *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationCpuOptions `json:"CpuOptions,omitempty" xml:"CpuOptions,omitempty" type:"Struct"`
-	// The image-related property information.
+	// The image properties.
 	//
-	// Take note of the following items when you set this parameter:
+	// Take note of the following items when you configure this parameter:
 	//
-	// - This parameter takes effect only when you create a one-time synchronous auto provisioning group (AutoProvisioningGroupType=instant).
+	// - This parameter takes effect only when you create an auto provisioning group of the instant delivery type (AutoProvisioningGroupType=instant).
 	ImageOptions *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationImageOptions `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
-	// The subscription duration of the resource. Unit: specified by `PeriodUnit`. This parameter is required when you create subscription instances. Valid values:
+	// The subscription period of the resource. The unit is specified by PeriodUnit. This parameter is required and takes effect only when you create subscription instances. Valid values:
 	//
 	// <props="china">
 	//
-	// - If PeriodUnit is set to Week, valid values of Period are 1, 2, 3, and 4.
+	// - When PeriodUnit is set to Week, valid values of Period are 1, 2, 3, and 4.
 	//
-	// - If PeriodUnit is set to Month, valid values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	// - When PeriodUnit is set to Month, valid values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
 	//
 	//
 	//
-	// <props="intl">If PeriodUnit is set to Month, valid values of Period are 1, 2, 3, 6, and 12.
+	// <props="intl">When PeriodUnit is set to Month, valid values of Period are 1, 2, 3, 6, and 12.
 	//
-	// <props="partner">If PeriodUnit is set to Month, valid values of Period are 1, 2, 3, 6, and 12.
+	// <props="partner">When PeriodUnit is set to Month, valid values of Period are 1, 2, 3, 6, and 12.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription billable methods duration. Valid values:
+	// The unit of the subscription period. Valid values:
 	//
 	// <props="china">
 	//
@@ -1093,20 +1092,22 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	// example:
 	//
 	// Month
-	PeriodUnit       *string                                                                      `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The scheduling options.
 	SchedulerOptions *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSchedulerOptions `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty" type:"Struct"`
-	SecurityOptions  *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSecurityOptions  `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
+	// The security options of the instance.
+	SecurityOptions *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
 	//
-	// - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not subject to automatic release within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the marketplace price and checks the resource inventory to determine whether to retain or revoke the instance.
+	// - 1: The instance is protected from automatic release for 1 hour after it is created. After the 1-hour protection period ends, the system compares your bid with the marketplace price and checks resource inventory to determine whether to retain or revoke the instance.
 	//
-	// - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the marketplace price and checks the resource inventory to determine whether to retain or revoke the instance.
+	// - 0: The instance is not protected after it is created. The system compares your bid with the marketplace price and checks resource inventory to determine whether to retain or revoke the instance.
 	//
-	// Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Select an appropriate protection period based on the expected task execution duration.
+	// Alibaba Cloud sends you a notification by using an ECS system event 5 minutes before the instance is revoked. Spot instances use billing by the second. We recommend that you select an appropriate protection period based on the execution duration of your specific tasks.
 	//
 	// Take note of the following items when you set this parameter:
 	//
-	// - This parameter takes effect only when you create a one-time synchronous auto provisioning group (AutoProvisioningGroupType=instant).
+	// - This parameter takes effect only when you create an auto provisioning group of the one-time synchronization delivery type (AutoProvisioningGroupType=instant).
 	//
 	// example:
 	//
@@ -1114,17 +1115,17 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration struct {
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
 	// The break mode of the spot instance. Valid values:
 	//
-	// - Terminate: directly releases the instance.
+	// - Terminate: The instance is released.
 	//
-	// - Stop: puts the instance into economical mode.
+	// - Stop: The instance enters the economical mode.
 	//
-	// For more information about economical mode, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
+	// For more information about the economical mode, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
 	//
 	// Default value: Terminate.
 	//
 	// Take note of the following items when you set this parameter:
 	//
-	// - This parameter takes effect only when you create a one-time synchronous auto provisioning group (AutoProvisioningGroupType=instant).
+	// - This parameter takes effect only when you create an auto provisioning group of the one-time synchronization delivery type (AutoProvisioningGroupType=instant).
 	//
 	// example:
 	//
@@ -1566,19 +1567,19 @@ func (s *CreateAutoProvisioningGroupShrinkRequestLaunchConfiguration) Validate()
 }
 
 type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationArn struct {
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not supported.
 	//
 	// example:
 	//
 	// 123456789012****
 	AssumeRoleFor *int64 `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not supported.
 	//
 	// example:
 	//
 	// 34458433936495****:alice
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not supported.
 	//
 	// example:
 	//
@@ -1628,9 +1629,9 @@ func (s *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationArn) Validat
 type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationDataDisk struct {
 	// The ID of the automatic snapshot policy applied to the data disk.
 	//
-	// Take note of the following items:
+	// Take note of the following items when you configure this parameter:
 	//
-	// - This parameter takes effect only when you create a one-time synchronous delivery auto provisioning group (AutoProvisioningGroupType=instant).
+	// - This parameter takes effect only when you create an auto provisioning group of the instant delivery type (AutoProvisioningGroupType=instant).
 	//
 	// example:
 	//
@@ -1638,11 +1639,11 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationDataDisk struct 
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	// Specifies whether to enable the performance burst feature. Valid values:
 	//
-	// - true: enables the feature.
+	// - true: yes.
 	//
-	// - false: disables the feature.
+	// - false: no.
 	//
-	// > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// > This parameter is supported only when the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
@@ -1654,69 +1655,69 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationDataDisk struct 
 	//
 	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_essd: enterprise SSD (ESSD).
+	// - cloud_essd: enterprise SSD.
 	//
 	// - cloud: basic disk.
 	//
 	// For I/O optimized instances, the default value is cloud_efficiency. For non-I/O optimized instances, the default value is cloud.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If both the launch template and the launch configuration are specified, the launch template takes precedence.
 	//
 	// example:
 	//
 	// cloud_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Specifies whether the data disk is released when the instance is released. Valid values:
+	// Specifies whether to release the data disk when the instance is released. Valid values:
 	//
-	// - true: the data disk is released when the instance is released.
+	// - true: The data disk is released when the instance is released.
 	//
-	// - false: the data disk is not released when the instance is released.
+	// - false: The data disk is not released when the instance is released.
 	//
 	// Default value: true.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
 	// true
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The description of the data disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`. If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// The description of the data disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://. If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
 	// DataDisk_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The mount point of the data disk. If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// The mount point of the data disk. If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
 	// /dev/vd1
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// The name of the data disk. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, periods (.), colons (:), underscores (_), and hyphens (-).
+	// The name of the data disk. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
 	//
-	// Default value: empty.
+	// Default value: null.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
 	// cloud_ssdData
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	//
 	// example:
 	//
 	// null
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
-	// Specifies whether data disk N is encrypted. Valid values:
+	// Specifies whether to encrypt data disk N. Valid values:
 	//
-	// - true: encrypted.
+	// - true: The data disk is encrypted.
 	//
-	// - false: not encrypted.
+	// - false: The data disk is not encrypted.
 	//
 	// Default value: false.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
@@ -1728,19 +1729,19 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationDataDisk struct 
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The performance level of the enterprise SSD used as a data disk. The value of N must be the same as that in `LaunchConfiguration.DataDisk.N.Category`. Valid values:
+	// When you create an enterprise SSD as a data disk, set the performance level of the disk. The value of N must be the same as the value of N in LaunchConfiguration.DataDisk.N.Category. Valid values:
 	//
-	// - PL0: up to 10,000 random read/write IOPS per disk.
+	// - PL0: A single enterprise SSD can deliver up to 10,000 random read/write IOPS.
 	//
-	// - PL1 (default): up to 50,000 random read/write IOPS per disk.
+	// - PL1 (default): A single enterprise SSD can deliver up to 50,000 random read/write IOPS.
 	//
-	// - PL2: up to 100,000 random read/write IOPS per disk.
+	// - PL2: A single enterprise SSD can deliver up to 100,000 random read/write IOPS.
 	//
-	// - PL3: up to 1,000,000 random read/write IOPS per disk.
+	// - PL3: A single enterprise SSD can deliver up to 1,000,000 random read/write IOPS.
 	//
-	// For information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	// For more information about how to select the performance level of an enterprise SSD, see [Enterprise SSD](https://help.aliyun.com/document_detail/122389.html).
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If both the launch template and the launch configuration are specified, the launch template takes precedence.
 	//
 	// example:
 	//
@@ -1750,19 +1751,20 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationDataDisk struct 
 	//
 	// Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
 	//
-	// > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	//
+	// > This parameter is supported only when the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// 40000
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The size of data disk N. Valid values of N: 1 to 16. Unit: GiB. Valid values:
+	// The size of data disk N. Unit: GiB. Valid values of N: 1 to 16. Valid values:
 	//
 	// - cloud_efficiency: 20 to 32768.
 	//
 	// - cloud_ssd: 20 to 32768.
 	//
-	// - cloud_essd: depends on the value of `LaunchConfiguration.DataDisk.N.PerformanceLevel`.
+	// - cloud_essd: The valid values vary based on the value of LaunchConfiguration.DataDisk.N.PerformanceLevel.
 	//
 	//     - PL0: 40 to 32768.
 	//
@@ -1774,9 +1776,9 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationDataDisk struct 
 	//
 	// - cloud: 5 to 2000.
 	//
-	// > The value of this parameter must be greater than or equal to the size of the snapshot specified by `LaunchConfiguration.DataDisk.N.SnapshotId`.
+	// > The value of this parameter must be greater than or equal to the size of the snapshot specified by the LaunchConfiguration.DataDisk.N.SnapshotId parameter.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
@@ -1784,9 +1786,9 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationDataDisk struct 
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The ID of the snapshot used to create data disk N. Valid values of N: 1 to 16.
 	//
-	// After you specify this parameter, the `LaunchConfiguration.DataDisk.N.Size` parameter is ignored. The actual size of the created disk is the size of the specified snapshot. Snapshots created on or before July 15, 2013 cannot be used. Otherwise, the request is rejected.
+	// If this parameter is specified, the LaunchConfiguration.DataDisk.N.Size parameter is ignored, and the size of the created disk is the same as the size of the specified snapshot. You cannot use snapshots that were created on or before July 15, 2013. Otherwise, the request is rejected and an error is returned.
 	//
-	// If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
@@ -1933,11 +1935,11 @@ func (s *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationDataDisk) Va
 }
 
 type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSystemDisk struct {
-	// The ID of the automatic snapshot policy to apply to the system disk.
+	// The ID of the automatic snapshot policy applied to the system disk.
 	//
-	// Take note of the following items when you set this parameter:
+	// Take note of the following items when you configure this parameter:
 	//
-	// - This parameter takes effect only when you create a one-time synchronous auto provisioning group (AutoProvisioningGroupType=instant).
+	// - This parameter takes effect only when you create an auto provisioning group of the instant delivery type (AutoProvisioningGroupType=instant).
 	//
 	// example:
 	//
@@ -1945,17 +1947,17 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSystemDisk struc
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	// Specifies whether to enable the performance burst feature. Valid values:
 	//
-	// - true: enables the performance burst feature.
+	// - true: yes.
 	//
-	// - false: does not enable the performance burst feature.
+	// - false: no.
 	//
-	// >This parameter is supported only when `SystemDisk.Category` is set to `cloud_auto`. For more information, see [ESSD AutoPL disk](https://help.aliyun.com/document_detail/368372.html).
+	// > This parameter is supported only when the SystemDisk.Category parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// false
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The encryption algorithm for the system disk. Valid values:
+	// The encryption algorithm of the system disk. Valid values:
 	//
 	// - aes-256.
 	//
@@ -1963,9 +1965,9 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSystemDisk struc
 	//
 	// Default value: aes-256.
 	//
-	// If you specify both a launch template and launch configurations, the launch template takes priority.
+	// If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
-	// >This parameter is not publicly available.
+	// > This parameter is not available.
 	//
 	// example:
 	//
@@ -1973,13 +1975,13 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSystemDisk struc
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
 	// Specifies whether to encrypt system disk N. Valid values:
 	//
-	// - true: encrypts the system disk.
+	// - true: The system disk is encrypted.
 	//
-	// - false: does not encrypt the system disk.
+	// - false: The system disk is not encrypted.
 	//
 	// Default value: false.
 	//
-	// If you specify both a launch template and launch configurations, the launch template takes priority.
+	// If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
@@ -1997,7 +1999,7 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSystemDisk struc
 	//
 	// Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
 	//
-	// > This parameter is supported only when SystemDisk.Category is set to cloud_auto. For more information, see [ESSD AutoPL disk](https://help.aliyun.com/document_detail/368372.html).
+	// > This parameter is supported only when the SystemDisk.Category parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
@@ -2072,13 +2074,13 @@ func (s *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSystemDisk) 
 }
 
 type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationTag struct {
-	// The tag key of the instance. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain `http://` or `https://`. If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// The tag key of the instance. Valid values of N: 1 to 20. If this parameter is specified, it cannot be left empty. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://. If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the instance. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with acs:. The tag value cannot contain `http://` or `https://`. If you specify both a launch template and launch configuration information, the launch template takes precedence.
+	// The tag value of the instance. Valid values of N: 1 to 20. If this parameter is specified, it can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs:, and cannot contain http:// or https://. If both the launch template and the launch configurations are specified, the launch template takes precedence.
 	//
 	// example:
 	//
@@ -2119,19 +2121,19 @@ func (s *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationTag) Validat
 type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationCpuOptions struct {
 	// The number of CPU cores.
 	//
-	// Default value: see [Specify and view CPU options](https://www.alibabacloud.com/help/en/ecs/user-guide/specify-and-view-cpu-options).
+	// Default value: For more information, see [Customize CPU options](https://www.alibabacloud.com/help/en/ecs/user-guide/specify-and-view-cpu-options).
 	//
 	// example:
 	//
 	// 2
 	Core *int32 `json:"Core,omitempty" xml:"Core,omitempty"`
-	// The number of threads per CPU core. The number of vCPUs of the ECS instance = CpuOptions.Core value × CpuOptions.ThreadsPerCore value.
+	// The number of threads per core. The number of vCPUs of the ECS instance = the value of CpuOptions.Core × the value of CpuOptions.ThreadsPerCore.
 	//
-	// CpuOptions.ThreadsPerCore=1 indicates that CPU hyper-threading is disabled.
+	// A value of 1 for CpuOptions.ThreadsPerCore indicates that CPU hyper-threading is disabled.
 	//
-	// Only specific instance types support custom CPU thread counts.
+	// Only specific instance types support the configuration of the number of threads per core.
 	//
-	// For valid values and default values, see [Specify and view CPU options](https://www.alibabacloud.com/help/en/ecs/user-guide/specify-and-view-cpu-options).
+	// Valid values and default value: For more information, see [Customize CPU options](https://www.alibabacloud.com/help/en/ecs/user-guide/specify-and-view-cpu-options).
 	//
 	// example:
 	//
@@ -2170,11 +2172,11 @@ func (s *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationCpuOptions) 
 }
 
 type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationImageOptions struct {
-	// Specifies whether instances that use this image support logon with the ecs-user user. Valid values:
+	// Specifies whether the instance that uses this image supports logons by using the ecs-user username. Valid values:
 	//
-	// - true: supported.
+	// - true: yes.
 	//
-	// - false: not supported.
+	// - false: no.
 	//
 	// example:
 	//
@@ -2204,8 +2206,10 @@ func (s *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationImageOptions
 }
 
 type CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSchedulerOptions struct {
+	// The ID of the dedicated host cluster.
 	DedicatedHostClusterId *string `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
-	DedicatedHostId        *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The ID of the dedicated host.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 }
 
 func (s CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSchedulerOptions) String() string {
@@ -2264,7 +2268,10 @@ func (s *CreateAutoProvisioningGroupShrinkRequestLaunchConfigurationSecurityOpti
 }
 
 type CreateAutoProvisioningGroupShrinkRequestCandidateOptions struct {
+	// Specifies whether to only evaluate the success rate of delivering the target capacity for candidate instance types in the current request. If you set this parameter to true, no scale-out is performed. The system only evaluates the delivery success rate and returns the result in the LaunchResult.CandidateEvaluateLevel field of the response. Default value: false.
 	Evaluate *bool `json:"Evaluate,omitempty" xml:"Evaluate,omitempty"`
+	// The timeout period for the auto provisioning group to scale out to the target capacity. After the timeout period elapses, no further scale-out attempts are made. Unit: minutes.
+	//
 	// example:
 	//
 	// 60
@@ -2302,13 +2309,13 @@ func (s *CreateAutoProvisioningGroupShrinkRequestCandidateOptions) Validate() er
 }
 
 type CreateAutoProvisioningGroupShrinkRequestDataDiskConfig struct {
-	// The category of the data disk. You can specify multiple candidate disk categories. The specified order determines the priority of each disk category. When a disk category is unavailable, the system automatically switches to the next category. Valid values:
+	// The category of the data disk for the instance. You can use this parameter to specify multiple candidate disk categories. The specified order determines the priority of the disk categories. If a disk category is not active, the system automatically switches to the next disk category. Valid values:
 	//
 	// -   cloud_efficiency: ultra disk.
 	//
 	// -   cloud_ssd: standard SSD.
 	//
-	// -   cloud_essd: enterprise SSD (ESSD).
+	// -   cloud_essd: enterprise SSD.
 	//
 	// -   cloud: basic disk.
 	//
@@ -2340,11 +2347,11 @@ func (s *CreateAutoProvisioningGroupShrinkRequestDataDiskConfig) Validate() erro
 }
 
 type CreateAutoProvisioningGroupShrinkRequestLaunchTemplateConfig struct {
-	// The list of architecture types for instance types.
+	// The list of architecture types for the instance types.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
-	// Specifies whether to include burstable instance types. Valid values:
+	// Specifies whether the instance type is a burstable instance type. Valid values:
 	//
-	// - Exclude: excludes burstable instance types.
+	// - Exclude: does not include burstable instance types.
 	//
 	// - Include: includes burstable instance types.
 	//
@@ -2356,25 +2363,25 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchTemplateConfig struct {
 	//
 	// Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The list of vCPU core counts for instance types.
+	// The list of vCPU counts for the instance types.
 	Cores []*int32 `json:"Cores,omitempty" xml:"Cores,omitempty" type:"Repeated"`
-	// The list of instance types to exclude.
+	// The list of instance types to be excluded.
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
-	// The image ID. You can use this parameter to specify the image for the current resource pool. If this parameter is not specified, the image specified by `LaunchConfiguration.ImageId` or the image configured in the launch template is used by default. You can call [DescribeImages](https://help.aliyun.com/document_detail/25534.html) to query available image resources.
+	// The ID of the image. You can use this parameter to specify the image used by the current resource pool. If this parameter is not specified, the image specified by `LaunchConfiguration.ImageId` or the image configured in the launch template is used by default. You can call the [DescribeImages](https://help.aliyun.com/document_detail/25534.html) operation to query available image resources.
 	//
-	// Note: This parameter is supported only when `AutoProvisioningGroupType = instant`.
+	// Note: This parameter is supported only when `AutoProvisioningGroupType` is set to `instant`.
 	//
 	// example:
 	//
 	// aliyun_3_x64_20G_alibase_20210425.vhd
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The level of the instance family, which is used to filter instance types that meet the requirements. Valid values:
+	// The level of the instance family. This parameter is used to filter the instance types that meet the requirements. Valid values:
 	//
-	// - EntryLevel: entry level, which refers to shared instance types. These instance types are more cost-effective but cannot guarantee stable computing performance. They are suitable for scenarios where CPU utilization is typically low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// - EntryLevel: entry-level, which refers to shared instance types. These instance types are more cost-effective but cannot guarantee stable computing performance. They are suitable for business scenarios with low CPU utilization. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// - EnterpriseLevel: enterprise level. These instance types provide stable performance and dedicated resources. They are suitable for scenarios that require high stability. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// - EnterpriseLevel: enterprise-level. These instance types provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// - CreditEntryLevel: credit-based entry level, which refers to burstable instances. These instance types use CPU credits to ensure computing performance. They are suitable for scenarios where CPU utilization is typically low with occasional bursts. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// - CreditEntryLevel: credit entry-level, which refers to burstable instances. These instance types use CPU credits to guarantee computing performance and are suitable for business scenarios with low CPU utilization but occasional CPU bursts. For more information, see [Burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
 	// Valid values of N: 1 to 10.
 	//
@@ -2382,27 +2389,27 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchTemplateConfig struct {
 	//
 	// EnterpriseLevel
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
-	// The instance type in the extended launch template. Valid values of N: 1 to 20. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The instance type in the extended launch template. Valid values of N: 1 to 20. For more information about valid values, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// ecs.g5.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The maximum price for spot instances in the extended launch template.
+	// The maximum price of spot instances in the extended launch template.
 	//
-	// > After you set `LaunchTemplateConfig`, `LaunchTemplateConfig.N.MaxPrice` is required.
+	// > After `LaunchTemplateConfig` is specified, `LaunchTemplateConfig.N.MaxPrice` is required.
 	//
 	// example:
 	//
 	// 3
 	MaxPrice *float64 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not supported.
 	//
 	// example:
 	//
 	// false
 	MaxQuantity *int32 `json:"MaxQuantity,omitempty" xml:"MaxQuantity,omitempty"`
-	// The list of memory sizes for instance types.
+	// The list of memory sizes for the instance types.
 	Memories []*float32 `json:"Memories,omitempty" xml:"Memories,omitempty" type:"Repeated"`
 	// The priority of the extended launch template. A value of 0 indicates the highest priority. Valid values: 0 to +∞.
 	//
@@ -2418,13 +2425,13 @@ type CreateAutoProvisioningGroupShrinkRequestLaunchTemplateConfig struct {
 	//
 	// vsw-sn5bsitu4lfzgc5o7****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The weight of the instance type in the extended launch template. A higher value indicates that a single instance can meet more computing power requirements, which means fewer instances are required. Valid values: greater than 0.
+	// The weight of the instance type in the extended launch template. A higher weight indicates that a single instance has more computing power and fewer instances are required. Valid values: greater than 0.
 	//
-	// You can calculate the weight based on the computing power of the specified instance type and the minimum computing power of a single node in the cluster. For example, if the minimum computing power of a single node is 8 vCPUs and 60 GiB:
+	// You can calculate the weight based on the computing power of the specified instance type and the minimum computing power of a single node in the cluster. For example, if the minimum computing power of a single node is 8 vCPUs and 60 GiB of memory:
 	//
-	// - The weight of an instance type with 8 vCPUs and 60 GiB can be set to 1.
+	// - You can set the weight of the instance type with 8 vCPUs and 60 GiB of memory to 1.
 	//
-	// - The weight of an instance type with 16 vCPUs and 120 GiB can be set to 2.
+	// - You can set the weight of the instance type with 16 vCPUs and 120 GiB of memory to 2.
 	//
 	// example:
 	//
@@ -2562,7 +2569,7 @@ func (s *CreateAutoProvisioningGroupShrinkRequestLaunchTemplateConfig) Validate(
 }
 
 type CreateAutoProvisioningGroupShrinkRequestPrePaidOptions struct {
-	// The minimum capacity set for different instance types. This parameter is supported only when `AutoProvisioningGroupType = request`.
+	// The minimum capacity set for different instance types. This parameter is supported only when AutoProvisioningGroupType is set to request.
 	SpecifyCapacityDistribution []*CreateAutoProvisioningGroupShrinkRequestPrePaidOptionsSpecifyCapacityDistribution `json:"SpecifyCapacityDistribution,omitempty" xml:"SpecifyCapacityDistribution,omitempty" type:"Repeated"`
 }
 
@@ -2597,11 +2604,11 @@ func (s *CreateAutoProvisioningGroupShrinkRequestPrePaidOptions) Validate() erro
 }
 
 type CreateAutoProvisioningGroupShrinkRequestPrePaidOptionsSpecifyCapacityDistribution struct {
-	// The set of instance types. Duplicates are not allowed, and the instance types must be within the range of LaunchTemplateConfig.InstanceType.
+	// The set of instance types. Duplicate instance types are not allowed, and the instance types must be within the scope of LaunchTemplateConfig.InstanceType.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The minimum number of instances to deliver within the `InstanceTypes` range.
+	// The minimum number of instances to be delivered within the scope of InstanceTypes.
 	//
-	// > The sum of all MinTargetCapacity values (`sum(MinTargetCapacity)`) must be less than or equal to TotalTargetCapacity. If any instance type set cannot meet the MinTargetCapacity requirement due to insufficient inventory or other reasons, the entire request fails and no instances are created.
+	// > sum(MinTargetCapacity) <= TotalTargetCapacity. The sum of MinTargetCapacity for all instance type sets cannot exceed TotalTargetCapacity. If the MinTargetCapacity requirement for any instance type set cannot be met due to inventory or other reasons, the entire request fails.
 	//
 	// example:
 	//
@@ -2640,13 +2647,13 @@ func (s *CreateAutoProvisioningGroupShrinkRequestPrePaidOptionsSpecifyCapacityDi
 }
 
 type CreateAutoProvisioningGroupShrinkRequestSystemDiskConfig struct {
-	// The category of the system disk. You can specify multiple candidate disk categories. The specified order determines the priority of each disk category. When a disk category is unavailable, the system automatically switches to the next category. Valid values:
+	// The category of the system disk for the instance. You can use this parameter to specify multiple candidate disk categories. The specified order determines the priority of the disk categories. If a disk category is not active, the system automatically switches to the next disk category. Valid values:
 	//
 	// -   cloud_efficiency: ultra disk.
 	//
 	// -   cloud_ssd: standard SSD.
 	//
-	// -   cloud_essd: enterprise SSD (ESSD).
+	// -   cloud_essd: enterprise SSD.
 	//
 	// -   cloud: basic disk.
 	//
@@ -2680,7 +2687,7 @@ func (s *CreateAutoProvisioningGroupShrinkRequestSystemDiskConfig) Validate() er
 type CreateAutoProvisioningGroupShrinkRequestTag struct {
 	// The tag key of the auto provisioning group.
 	//
-	// Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+	// Valid values of N: 1 to 20. If this parameter is specified, it cannot be left empty. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -2688,7 +2695,7 @@ type CreateAutoProvisioningGroupShrinkRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the auto provisioning group.
 	//
-	// Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+	// Valid values of N: 1 to 20. If this parameter is specified, it can be an empty string. The tag value can be up to 128 characters in length. It cannot contain http:// or https://.
 	//
 	// example:
 	//

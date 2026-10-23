@@ -16,7 +16,7 @@ type iCreatePortRangeListResponseBody interface {
 }
 
 type CreatePortRangeListResponseBody struct {
-	// The ID of the port list that was created.
+	// The ID of the created port list.
 	//
 	// example:
 	//

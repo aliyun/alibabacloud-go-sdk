@@ -23,10 +23,14 @@ type iDescribeBandwidthPackagesResponseBody interface {
 
 type DescribeBandwidthPackagesResponseBody struct {
 	BandwidthPackages *DescribeBandwidthPackagesResponseBodyBandwidthPackages `json:"BandwidthPackages,omitempty" xml:"BandwidthPackages,omitempty" type:"Struct"`
-	PageNumber        *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount        *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The current page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that meet the query conditions.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBandwidthPackagesResponseBody) String() string {

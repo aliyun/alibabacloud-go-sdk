@@ -26,7 +26,7 @@ type iCancelImagePipelineExecutionRequest interface {
 }
 
 type CancelImagePipelineExecutionRequest struct {
-	// The ID of the building task.
+	// The ID of the build task.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CancelImagePipelineExecutionRequest struct {
 	ExecutionId  *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the latest Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CancelImagePipelineExecutionRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	TemplateTag []*CancelImagePipelineExecutionRequestTemplateTag `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty" type:"Repeated"`
 }
 
@@ -135,13 +135,13 @@ func (s *CancelImagePipelineExecutionRequest) Validate() error {
 }
 
 type CancelImagePipelineExecutionRequestTemplateTag struct {
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	//
 	// example:
 	//
 	// null
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	//
 	// example:
 	//

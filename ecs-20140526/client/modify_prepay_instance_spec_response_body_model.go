@@ -16,7 +16,7 @@ type iModifyPrepayInstanceSpecResponseBody interface {
 }
 
 type ModifyPrepayInstanceSpecResponseBody struct {
-	// The order ID.
+	// The ID of the generated order.
 	//
 	// example:
 	//

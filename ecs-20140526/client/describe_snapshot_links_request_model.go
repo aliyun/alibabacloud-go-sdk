@@ -36,7 +36,7 @@ type iDescribeSnapshotLinksRequest interface {
 }
 
 type DescribeSnapshotLinksRequest struct {
-	// The IDs of disks. You can specify up to 100 disk IDs at a time. The DiskIds parameter is a JSON array. Separate multiple disk IDs with commas (,).
+	// The disk IDs. You can specify up to 100 disk IDs at a time. Set the value of DiskIds to a JSON array. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -48,19 +48,19 @@ type DescribeSnapshotLinksRequest struct {
 	//
 	// i-bp1h6jmbefj2cyqs****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page for a paged query. Maximum value: 100.
+	// The paging Settings for the maximum number of entries per page in a paged query. Maximum value: 100.
 	//
 	// Default value:
 	//
-	// - If this parameter is not specified or is set to a value less than 10, the default value is 10.
+	// - If you do not specify a value or the Settings value is less than 10, the default value is 10.
 	//
-	// - If this parameter is set to a value greater than 100, the default value is 100.
+	// - If the Settings value is greater than 100, the default value is 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	// The pagination token. Set the value to the NextToken value returned from the last API call.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeSnapshotLinksRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the disk status list. Minimum value: 1.
+	// The page number of the snapshot chain list. Pages start from 1.
 	//
 	// Default value: 1.
 	//
@@ -76,7 +76,7 @@ type DescribeSnapshotLinksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Valid values: 1 to 100.
+	// The paging Settings for the number of entries per page in a paged query. Valid values: 1 to 100.
 	//
 	// Default value: 10.
 	//
@@ -84,7 +84,7 @@ type DescribeSnapshotLinksRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the disk. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type DescribeSnapshotLinksRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IDs of snapshot chains. You can specify up to 100 snapshot chain IDs at a time. The SnapshotLinkIds parameter is a JSON array. Separate multiple IDs with commas (,).
+	// The snapshot chain IDs. You can specify up to 100 snapshot chain IDs at a time. Set the value of SnapshotLinkIds to a JSON array. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//

@@ -44,9 +44,9 @@ type iCopySnapshotRequest interface {
 }
 
 type CopySnapshotRequest struct {
-	// > This parameter is in invitational preview and is not publicly available.
+	// >This parameter is in invitational preview and is not supported.
 	Arn []*CopySnapshotRequestArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
-	// Ensures the idempotence of the request. The value is generated from your client and must be unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CopySnapshotRequest struct {
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
 	// The description of the new snapshot. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	//
-	// Default value: null.
+	// Default value: empty.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type CopySnapshotRequest struct {
 	//
 	// CopySnapshotDemo
 	DestinationSnapshotDescription *string `json:"DestinationSnapshotDescription,omitempty" xml:"DestinationSnapshotDescription,omitempty"`
-	// The name of the new snapshot. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with http:// or https://. The name can contain characters that are classified as letter in Unicode, including Chinese characters, digits, and others. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+	// The name of the new snapshot. The name must be 2 to 128 characters in length, must start with a letter or a Chinese character, and cannot start with http:// or https://. It supports characters in the Letter category of Unicode, including English letters, Chinese characters, and digits. It can contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
-	// Default value: null.
+	// Default value: empty.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type CopySnapshotRequest struct {
 	//
 	// CopySnapshotDemo
 	DestinationSnapshotName *string `json:"DestinationSnapshotName,omitempty" xml:"DestinationSnapshotName,omitempty"`
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type CopySnapshotRequest struct {
 	DestinationStorageLocationArn *string `json:"DestinationStorageLocationArn,omitempty" xml:"DestinationStorageLocationArn,omitempty"`
 	// Specifies whether to encrypt the cloud disk. Valid values:
 	//
-	// - true: encrypts the cloud disk.
+	// - true: yes.
 	//
-	// - false: does not encrypt the cloud disk.
+	// - false: no.
 	//
 	// Default value: false.
 	//
@@ -98,14 +98,14 @@ type CopySnapshotRequest struct {
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The customer master key (CMK) in the destination region.
+	// The KMS customer master key (CMK) in the destination region.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the source snapshot. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region where the source snapshot resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -113,7 +113,7 @@ type CopySnapshotRequest struct {
 	//
 	// cn-chengdu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// This parameter is not publicly available.
+	// This parameter is not available.
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ type CopySnapshotRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The retention period of the new snapshot, in days. The snapshot undergoes automatic release when the retention period expires. Valid values: 1 to 65536.
+	// The retention period of the new snapshot. Unit: days. The snapshot is subject to automatic release when the retention period expires. Valid values: 1 to 65536.
 	//
-	// Default value: null, which indicates that the snapshot is not subject to automatic release.
+	// Default value: empty, which indicates that the snapshot is not subject to automatic release.
 	//
 	// example:
 	//
@@ -316,19 +316,19 @@ func (s *CopySnapshotRequest) Validate() error {
 }
 
 type CopySnapshotRequestArn struct {
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	//
 	// example:
 	//
 	// 0
 	AssumeRoleFor *int64 `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	//
 	// example:
 	//
 	// null
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	//
 	// example:
 	//
@@ -376,13 +376,13 @@ func (s *CopySnapshotRequestArn) Validate() error {
 }
 
 type CopySnapshotRequestTag struct {
-	// The tag key of the new snapshot. Once specified, the tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	// The tag key of the new snapshot. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length, cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the new snapshot. Once specified, the tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	// The tag value of the new snapshot. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length, cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//

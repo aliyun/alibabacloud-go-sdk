@@ -26,7 +26,7 @@ type iCreatePlanMaintenanceWindowShrinkRequest interface {
 }
 
 type CreatePlanMaintenanceWindowShrinkRequest struct {
-	// Specifies whether to enable or disable the O&M window.
+	// Specifies whether to enable the window. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -37,9 +37,14 @@ type CreatePlanMaintenanceWindowShrinkRequest struct {
 	// example:
 	//
 	// true
-	Enable                 *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The minimum interval between two scheduled O&M events for the same instance. Valid values: 1 to 48. Unit: hours.
+	//
+	// example:
+	//
+	// 24
 	MinMaintenanceInterval *int32 `json:"MinMaintenanceInterval,omitempty" xml:"MinMaintenanceInterval,omitempty"`
-	// The name of the O&M window. You can specify a custom name. The name can be up to 200 characters in length.
+	// The name of the O&M window. You can customize the name. The name can be up to 200 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +52,7 @@ type CreatePlanMaintenanceWindowShrinkRequest struct {
 	//
 	// WIndowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
-	// The region ID. You can call DescribeRegions to query the most recent region list.
+	// The region ID. This parameter is required for Alibaba Cloud SDK routing. However, specifying any region ID for this operation yields the same result. The O&M window applies to all ECS instances across the network that meet the resource filtering conditions.
 	//
 	// This parameter is required.
 	//
@@ -63,11 +68,11 @@ type CreatePlanMaintenanceWindowShrinkRequest struct {
 	//
 	// Reboot
 	SupportMaintenanceAction *string `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
-	// The resources on which the O&M window takes effect.
+	// The resources to which the O&M window applies.
 	//
 	// This parameter is required.
 	TargetResourceShrink *string `json:"TargetResource,omitempty" xml:"TargetResource,omitempty"`
-	// The recurring cycle of the O&M window.
+	// The recurrence cycle of the window.
 	//
 	// This parameter is required.
 	TimePeriodShrink *string `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty"`

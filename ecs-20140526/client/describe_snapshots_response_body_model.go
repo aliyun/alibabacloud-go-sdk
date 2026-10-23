@@ -24,19 +24,19 @@ type iDescribeSnapshotsResponseBody interface {
 }
 
 type DescribeSnapshotsResponseBody struct {
-	// The pagination token for the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
+	// > This parameter will soon be deprecated. Use NextToken and MaxResults for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
+	// > This parameter will soon be deprecated. Use NextToken and MaxResults for pagination.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeSnapshotsResponseBody struct {
 	Snapshots *DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
 	// The total number of snapshots.
 	//
-	// > When you use `MaxResults` and `NextToken` parameters for paging query, the returned `TotalCount` parameter value is invalid.
+	// > When you use the MaxResults and NextToken parameters for pagination, the returned value of the TotalCount parameter is invalid.
 	//
 	// example:
 	//

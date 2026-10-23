@@ -26,19 +26,19 @@ type iDescribeActivationsResponseBody interface {
 type DescribeActivationsResponseBody struct {
 	// The activation codes and their usage information.
 	ActivationList []*DescribeActivationsResponseBodyActivationList `json:"ActivationList,omitempty" xml:"ActivationList,omitempty" type:"Repeated"`
-	// The pagination token returned in this response.
+	// The query token returned in the current response.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The Settings for the number of entries returned per page during paging in a paged query.
 	//
 	// example:
 	//
@@ -50,7 +50,9 @@ type DescribeActivationsResponseBody struct {
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F74625134
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records that meet the conditional query criteria.
+	//
+	// > When you perform paging in a paged query by using the MaxResults and NextToken parameters, the returned TotalCount value is meaningless.
 	//
 	// example:
 	//
@@ -140,7 +142,7 @@ type DescribeActivationsResponseBodyActivationList struct {
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F1234****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// The creation time.
+	// The creation time. The time follows the ISO 8601 standard and is displayed in UTC.
 	//
 	// example:
 	//
@@ -164,7 +166,7 @@ type DescribeActivationsResponseBodyActivationList struct {
 	//
 	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The maximum number of times that the activation code can be used to register managed instances.
+	// The maximum number of times the activation code can be used to register managed instances.
 	//
 	// example:
 	//
@@ -176,7 +178,7 @@ type DescribeActivationsResponseBodyActivationList struct {
 	//
 	// test-InstanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The IP addresses of hosts that are allowed to use the activation code.
+	// The IP addresses of the hosts that are allowed to use the activation code.
 	//
 	// example:
 	//
@@ -194,7 +196,7 @@ type DescribeActivationsResponseBodyActivationList struct {
 	//
 	// rg-123******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the managed instance activation code.
+	// The tag information of the managed instance activation code.
 	Tags []*DescribeActivationsResponseBodyActivationListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The validity period of the activation code. Unit: hours.
 	//

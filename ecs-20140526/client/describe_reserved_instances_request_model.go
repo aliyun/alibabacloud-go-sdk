@@ -50,9 +50,9 @@ type iDescribeReservedInstancesRequest interface {
 type DescribeReservedInstancesRequest struct {
 	// The allocation type. Valid values:
 	//
-	// - Normal: queries reserved instances under the current account.
+	// - Normal: queries the reserved instances under the current account.
 	//
-	// - Shared: queries reserved instances that have been shared between the current account and linked accounts.
+	// - Shared: queries the reserved instances that are shared between the main account and linked accounts under the current account.
 	//
 	// Default value: Normal.
 	//
@@ -60,15 +60,15 @@ type DescribeReservedInstancesRequest struct {
 	//
 	// Normal
 	AllocationType *string `json:"AllocationType,omitempty" xml:"AllocationType,omitempty"`
-	// The instance type that the reserved instance can be applied to. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The instance type that matches the reserved instance. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// > This is the instance type selected when you purchased the reserved instance. During actual deduction, region-level reserved instances support size-flexible deduction within the same instance family.
+	// > This is the instance type selected when you purchase the reserved instance. When the reserved instance is applied, a regional reserved instance can be applied to different instance types within the same instance family based on the equivalence calculation.
 	//
 	// example:
 	//
 	// ecs.g5.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The instance family that the reserved instance can be applied to. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The instance family that matches the reserved instance. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type DescribeReservedInstancesRequest struct {
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
 	// The lock type. Valid values:
 	//
-	// - financial: The account has an overdue payment or the service has expired.
+	// - financial: The account has overdue payments or the service has expired.
 	//
-	// - security: Locked for security reasons.
+	// - security: The instance is locked for security reasons.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type DescribeReservedInstancesRequest struct {
 	OfferingType *string `json:"OfferingType,omitempty" xml:"OfferingType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the reserved instance list. Minimum value: 1.
+	// The page number of the reserved instance list. Pages start from 1.
 	//
 	// Default value: 1.
 	//
@@ -106,7 +106,7 @@ type DescribeReservedInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: 100.
+	// The number of entries per page for a paging query. Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -114,7 +114,7 @@ type DescribeReservedInstancesRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the reserved instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the reserved instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type DescribeReservedInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of reserved instances. Array length: 1 to 100.
+	// The reserved instance IDs. Array length: 1 to 100.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type DescribeReservedInstancesRequest struct {
 	ReservedInstanceId []*string `json:"ReservedInstanceId,omitempty" xml:"ReservedInstanceId,omitempty" type:"Repeated"`
 	// The name of the reserved instance.
 	//
-	// > Only exact match is supported. Fuzzy match is not supported.
+	// > Exact match is used. Fuzzy match is not supported.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeReservedInstancesRequest struct {
 	//
 	// Region
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The statuses of reserved instances.
+	// The statuses of the reserved instances.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type DescribeReservedInstancesRequest struct {
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	// The tags. Array length: 1 to 20.
 	Tag []*DescribeReservedInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The zone ID of the instance. This parameter is required and takes effect only when Scope is set to Zone. You can call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to query the zone list.
+	// The zone ID of the instance. This parameter is required and takes effect only when Scope is set to Zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the zone list.
 	//
 	// example:
 	//
@@ -352,13 +352,13 @@ func (s *DescribeReservedInstancesRequest) Validate() error {
 type DescribeReservedInstancesRequestTag struct {
 	// The tag key of the reserved instance. The tag key cannot be an empty string and can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
-	// > If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+	// > If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have multiple tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the reserved instance. The tag value cannot be an empty string and can be up to 128 characters in length. It cannot start with acs: and cannot contain http:// or https://.
+	// The tag value of the reserved instance. The tag value cannot be an empty string and can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

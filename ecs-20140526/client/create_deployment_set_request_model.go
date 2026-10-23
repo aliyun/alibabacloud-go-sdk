@@ -48,15 +48,15 @@ type CreateDeploymentSetRequest struct {
 	//
 	// 3
 	Affinity *int64 `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that it is unique among different requests.
 	//
-	// ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The **ClientToken*	- parameter supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the deployment set. The name must be 2 to 128 characters in length and must start with a letter. It cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the deployment set. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -68,35 +68,35 @@ type CreateDeploymentSetRequest struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// > This parameter is deprecated.
+	// > **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
 	// null
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// > This parameter is deprecated.
+	// > **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
 	// null
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The number of groups for the high availability group strategy. Valid values: 1 to 7.
+	// The number of groups for the high availability strategy of deployment set groups. Valid values: 1 to 7.
 	//
 	// Default value: 3.
 	//
-	// > This parameter takes effect only when `Strategy=AvailabilityGroup`.
+	// > This parameter takes effect only when `Strategy` is set to `AvailabilityGroup`.
 	//
 	// example:
 	//
 	// 1
 	GroupCount *int64 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
-	// The emergency solution to use when an instance in the deployment set cannot be evenly distributed to available inventory after a failover. Valid values:
+	// The emergency plan used when an instance in the deployment set is migrated due to a host failure and there is insufficient instance inventory for dispersion. Valid values:
 	//
 	//
 	//
-	// - CancelMembershipAndStart: Removes the instance from the deployment set and starts the instance immediately after the failover.
+	// - CancelMembershipAndStart: Removes the instance from the deployment set and starts the instance immediately after the migration.
 	//
-	// - KeepStopped: Keeps the deployment set attributes of the instance and leaves the instance in the Stopped state.
+	// - KeepStopped: Retains the deployment set attributes of the instance and keeps the instance in the stopped state.
 	//
 	// Default value: CancelMembershipAndStart.
 	//
@@ -106,7 +106,7 @@ type CreateDeploymentSetRequest struct {
 	OnUnableToRedeployFailedInstance *string `json:"OnUnableToRedeployFailedInstance,omitempty" xml:"OnUnableToRedeployFailedInstance,omitempty"`
 	OwnerAccount                     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the deployment set. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -118,11 +118,11 @@ type CreateDeploymentSetRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The deployment strategy. Valid values:
 	//
-	// - Availability: High availability strategy.
+	// - Availability: high availability strategy
 	//
-	// - AvailabilityGroup: High availability group strategy.
+	// - AvailabilityGroup: high availability strategy for deployment set groups
 	//
-	// - LowLatency: Low network latency strategy.
+	// - LowLatency: low network latency strategy
 	//
 	// Default value: Availability.
 	//
@@ -132,7 +132,7 @@ type CreateDeploymentSetRequest struct {
 	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 	// The deployment type. Valid values:
 	//
-	// - host: physical server
+	// - host: physical machine
 	//
 	// - sw: vSwitch
 	//

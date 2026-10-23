@@ -22,7 +22,7 @@ type CreatePlanMaintenanceWindowResponseBody struct {
 	//
 	// pw-bp1a9yavgq3dgttvowun
 	PlanWindowId *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

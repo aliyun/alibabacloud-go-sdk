@@ -22,7 +22,7 @@ type CreateVscResponseBody struct {
 	//
 	// DD38F-12VBW2-**EKX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the Virtual Storage Channel.
+	// The ID of the virtual storage channel.
 	//
 	// example:
 	//

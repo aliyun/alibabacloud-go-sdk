@@ -38,11 +38,11 @@ type iCreatePrefixListRequest interface {
 }
 
 type CreatePrefixListRequest struct {
-	// The IP address family. Valid values:
+	// The address family of the prefix list. Valid values:
 	//
-	// - IPv4
+	// - IPv4.
 	//
-	// - IPv6
+	// - IPv6.
 	//
 	// This parameter is required.
 	//
@@ -50,21 +50,21 @@ type CreatePrefixListRequest struct {
 	//
 	// IPv4
 	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the prefix list. The description must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The details of entries in the prefix list.
+	// The prefix list entry information.
 	Entry []*CreatePrefixListRequestEntry `json:"Entry,omitempty" xml:"Entry,omitempty" type:"Repeated"`
-	// The maximum number of entries that the prefix list can contain. Valid values: 1 to 200.
+	// The maximum number of entries supported by the prefix list. Valid values: 1 to 200.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type CreatePrefixListRequest struct {
 	MaxEntries   *int32  `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the prefix list. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`.
+	// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type CreatePrefixListRequest struct {
 	//
 	// PrefixListNameSample
 	PrefixListName *string `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
-	// The ID of the region in which to create the prefix list.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreatePrefixListRequest struct {
 	//
 	// cn-chengdu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which to assign the prefix list.
+	// The ID of the resource group to which the prefix list belongs.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type CreatePrefixListRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags to add to the prefix list.
+	// The tags.
 	Tag []*CreatePrefixListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -250,21 +250,21 @@ func (s *CreatePrefixListRequest) Validate() error {
 }
 
 type CreatePrefixListRequestEntry struct {
-	// The CIDR block in entry N. Valid values of N: 0 to 200. Notes:
+	// The Classless Inter-Domain Routing of the prefix list entry. Valid values of N: 0 to 200. Precautions:
 	//
-	// - The total number of entries cannot exceed the `MaxEntries` value.
+	// - The number of entries in the prefix list cannot exceed the maximum number of entries (`MaxEntries`).
 	//
-	// - CIDR block types are determined by the IP address family. You cannot combine IPv4 and IPv6 CIDR blocks in a single prefix list.
+	// - The type of the Classless Inter-Domain Routing in an entry is determined by the address family. A prefix list cannot contain both IPv4 and IPv6 Classless Inter-Domain Routing.
 	//
-	// - CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+	// - Classless Inter-Domain Routing in multiple entries cannot be duplicate. For example, you cannot specify two Settings such as 192.168.1.0/24.
 	//
-	// - You can set a single IP address. The system automatically converts the IP address to a CIDR block. For example, if you set 192.168.1.100, the system automatically converts it to 192.168.1.100/32.
+	// - You can specify a single IP address in the Settings, and the system automatically transforms it into a Classless Inter-Domain Routing. For example, if you specify 192.168.1.100 in the Settings, the system automatically transforms it into 192.168.1.100/32.
 	//
-	// - If you use an IPv6 CIDR block, the system automatically converts the CIDR block to zero and the letters to lowercase. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it to 2001:db8::/32.
+	// - If you use an IPv6 Classless Inter-Domain Routing, the system automatically transforms it into a zero-compressed format and transforms letters to lowercase. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32 in the Settings, the system automatically transforms it into 2001:db8::/32.
 	//
-	// For more information about CIDR blocks, see [What is CIDR?](~~185311#598efe6ef1v00~~)
+	// For more information about Classless Inter-Domain Routing, see [What is CIDR](~~185311#598efe6ef1v00~~).
 	//
-	// This parameter is left empty by default.
+	// Default value: empty.
 	//
 	// This parameter is required.
 	//
@@ -272,7 +272,7 @@ type CreatePrefixListRequestEntry struct {
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The description in entry N. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`. Valid values of N: 0 to 200.
+	// The description of the prefix list entry. The description must be 2 to 32 characters in length, and cannot start with `http://` or `https://`. Valid values of N: 0 to 200.
 	//
 	// example:
 	//
@@ -311,15 +311,15 @@ func (s *CreatePrefixListRequestEntry) Validate() error {
 }
 
 type CreatePrefixListRequestTag struct {
-	// The key of tag N. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key of the prefix list. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N. Valid values of N: 1 to 20. The tag value can be an empty string.
+	// The tag value of the prefix list. Valid values of N: 1 to 20. This parameter can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain` http:// or https://`.
+	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDeleteDiskRequest interface {
 }
 
 type DeleteDiskRequest struct {
-	// The ID of the disk that you want to release.
+	// The ID of the disk to be released.
 	//
 	// This parameter is required.
 	//

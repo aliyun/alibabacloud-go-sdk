@@ -16,7 +16,7 @@ type iCreateDiagnosticMetricSetResponseBody interface {
 }
 
 type CreateDiagnosticMetricSetResponseBody struct {
-	// The unique ID of the diagnostic metric set.
+	// The ID of the diagnostic metric set.
 	//
 	// example:
 	//

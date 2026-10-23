@@ -46,27 +46,27 @@ type iModifyInstanceSpecRequest interface {
 type ModifyInstanceSpecRequest struct {
 	SystemDisk *ModifyInstanceSpecRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	Temporary  *ModifyInstanceSpecRequestTemporary  `json:"Temporary,omitempty" xml:"Temporary,omitempty" type:"Struct"`
-	// Specifies whether cross-cluster instance type upgrade is supported. Valid values:
+	// Specifies whether to allow cross-cluster network type upgrades. Valid values:
 	//
-	// - true: Supported.
+	// - true: Yes.
 	//
-	// - false: Not supported.
+	// - false: No.
 	//
 	// Default value: false.
 	//
-	// If you set the parameter `AllowMigrateAcrossZone` to true and upgrade the Elastic Compute Service instance based on the response, note the following:
+	// When the `AllowMigrateAcrossZone` parameter is set to true, take note of the following precautions after you upgrade the instance based on the returned information:
 	//
-	// Classic network type instances:
-	//
-	//
-	//
-	// 	- For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the private IP address, disk device names, and software authorization codes of the instance change. For Linux instances, basic disks (`cloud`) are identified as **xvda*	- or **xvdb**, and ultra disks (`cloud_efficiency`) and standard SSDs (`cloud_ssd`) are identified as **vda*	- or **vdb**.
+	// Classic network instances:
 	//
 	//
 	//
-	// 	- For [instance families that are available for purchase](https://help.aliyun.com/document_detail/25378.html), the private IP address of the instance changes.
+	// 	- For [phased-out network types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the private IP address, disk device names, and software license codes of the instance change. For Linux instances, basic cloud disks (`cloud`) are identified as **xvda*	- or **xvdb**, and ultra cloud disks (`cloud_efficiency`) and standard SSDs (`cloud_ssd`) are identified as **vda*	- or **vdb**.
 	//
-	// VPC-type instances: For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the server disk device names and software authorization codes of the instance change. For Linux instances, basic disks (`cloud`) are identified as **xvda*	- or **xvdb**, and ultra disks (`cloud_efficiency`) and standard SSDs (`cloud_ssd`) are identified as **vda*	- or **vdb**.
+	//
+	//
+	// 	- For [available instance families](https://help.aliyun.com/document_detail/25378.html), the private IP address of the instance changes.
+	//
+	// VPC instances: For [phased-out network types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the disk device names and software license codes of the instance change. For Linux instances, basic cloud disks (`cloud`) are identified as **xvda*	- or **xvdb**, and ultra cloud disks (`cloud_efficiency`) and standard SSDs (`cloud_ssd`) are identified as **vda*	- or **vdb**.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type ModifyInstanceSpecRequest struct {
 	AllowMigrateAcrossZone *bool `json:"AllowMigrateAcrossZone,omitempty" xml:"AllowMigrateAcrossZone,omitempty"`
 	// Specifies whether to submit an asynchronous request. Valid values:
 	//
-	// - true: The request is submitted asynchronously.
+	// - true: Yes.
 	//
-	// - false: The request is not submitted asynchronously.
+	// - false: No.
 	//
 	// Default value: false.
 	//
@@ -84,19 +84,19 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// false
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	Disk []*ModifyInstanceSpecRequestDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
-	// Specifies whether to perform only a dry run. Valid values:
+	// Specifies whether to perform only a dry run on the request. Valid values:
 	//
-	// - true: performs only a dry run. The instance type and public bandwidth are not modified. The system checks whether the required parameters are specified, whether the request format is valid, whether business restrictions are met, and whether ECS resources are available. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+	// - true: performs a dry run and does not modify the instance type or Internet bandwidth of the instance. The system checks whether required parameters are specified, the request format, service limits, and ECS inventory. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - false (default): performs a dry run and sends the request. If the check succeeds, the instance type and public bandwidth are directly modified.
+	// - false (default): sends a normal request. After the check succeeds, the instance type and Internet bandwidth of the instance are directly modified.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The target instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html). You can also invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
+	// The target instance type of the instance. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html). You can also call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to obtain the latest instance type list.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// - If the purchased outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as bandwidth upper limits and are not guaranteed. When resource contention occurs, the peak bandwidths may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > The peak inbound and outbound bandwidth values in the **pay-by-traffic*	- billing mode are upper limits and are not guaranteed service level indicators. When resource contention occurs, the peak bandwidth may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- billing mode.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type ModifyInstanceSpecRequest struct {
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as bandwidth upper limits and are not guaranteed. When resource contention occurs, the peak bandwidths may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > The peak inbound and outbound bandwidth values in the **pay-by-traffic*	- billing mode are upper limits and are not guaranteed service level indicators. When resource contention occurs, the peak bandwidth may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- billing mode.
 	//
 	// example:
 	//
 	// 10
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	//
 	// example:
 	//
@@ -324,13 +324,13 @@ func (s *ModifyInstanceSpecRequest) Validate() error {
 }
 
 type ModifyInstanceSpecRequestSystemDisk struct {
-	// The new category of the system disk. Valid values:
+	// The new category of the system cloud disk. Valid values:
 	//
-	// - cloud_efficiency: ultra disk
+	// - cloud_efficiency: ultra cloud disk
 	//
 	// - cloud_ssd: standard SSD
 	//
-	// > This parameter is valid only when you upgrade from a [retired instance type](https://help.aliyun.com/document_detail/55263.html) to an [instance family that is available for purchase](https://help.aliyun.com/document_detail/25378.html) and change a non-I/O optimized instance to an I/O optimized instance.
+	// > This parameter is valid only when you upgrade a [phased-out instance type](https://help.aliyun.com/document_detail/55263.html) to an [available instance family](https://help.aliyun.com/document_detail/25378.html) and change a non-I/O optimized instance type to an I/O optimized instance type.
 	//
 	// example:
 	//
@@ -360,19 +360,19 @@ func (s *ModifyInstanceSpecRequestSystemDisk) Validate() error {
 }
 
 type ModifyInstanceSpecRequestTemporary struct {
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available.
 	//
 	// example:
 	//
 	// null
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available.
 	//
 	// example:
 	//
 	// null
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available.
 	//
 	// example:
 	//
@@ -420,19 +420,19 @@ func (s *ModifyInstanceSpecRequestTemporary) Validate() error {
 }
 
 type ModifyInstanceSpecRequestDisk struct {
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	//
 	// example:
 	//
 	// null
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	//
 	// example:
 	//
 	// null
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available.
 	//
 	// example:
 	//

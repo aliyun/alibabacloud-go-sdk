@@ -25,13 +25,13 @@ type iDescribeSendFileResultsResponseBody interface {
 
 type DescribeSendFileResultsResponseBody struct {
 	Invocations *DescribeSendFileResultsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Struct"`
-	// The pagination token returned in this call.
+	// The query token returned by the current call.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the returned results.
+	// The current page number of the query result.
 	//
 	// example:
 	//
@@ -49,7 +49,9 @@ type DescribeSendFileResultsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of scripts.
+	//
+	// > When you use the MaxResults and NextToken parameters for paging, the returned TotalCount parameter value is meaningless.
 	//
 	// example:
 	//

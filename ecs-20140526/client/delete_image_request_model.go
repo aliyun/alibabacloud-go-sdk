@@ -31,11 +31,9 @@ type DeleteImageRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to force delete the custom image. Valid values:
 	//
+	// - true: Forces the deletion of the custom image, regardless of whether the image is in use by other instances.
 	//
-	//
-	// - true: Force deletes the custom image, regardless of whether the image is being used by other instances.
-	//
-	// - false: Deletes the custom image only after checking that the image is not being used by other instances.
+	// - false: Deletes the custom image normally and checks whether the image is in use by other instances before deletion.
 	//
 	// Default value: false.
 	//
@@ -53,7 +51,7 @@ type DeleteImageRequest struct {
 	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the custom image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

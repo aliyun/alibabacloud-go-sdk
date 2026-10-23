@@ -22,31 +22,11 @@ type iDescribeTagsResponseBody interface {
 }
 
 type DescribeTagsResponseBody struct {
-	// The page number of the tag list.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page settings for the paged query. This is the paging size.
-	//
-	// example:
-	//
-	// 50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// B04B8CF3-4489-432D-83BA-6F128E4F2295
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      *DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The total number of tags.
-	//
-	// example:
-	//
-	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tags       *DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTagsResponseBody) String() string {

@@ -16,7 +16,7 @@ type iCreateNetworkInterfacePermissionResponseBody interface {
 }
 
 type CreateNetworkInterfacePermissionResponseBody struct {
-	// The information about the network interface controller (NIC) permissions.
+	// The collection of information composed of the Elastic network interface controller (NIC) permission list.
 	NetworkInterfacePermission *CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission `json:"NetworkInterfacePermission,omitempty" xml:"NetworkInterfacePermission,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,39 +62,39 @@ func (s *CreateNetworkInterfacePermissionResponseBody) Validate() error {
 }
 
 type CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission struct {
-	// The ID of the Alibaba Cloud partner (certified ISV) account.
+	// The account ID of the Alibaba Cloud partner (certified ISV).
 	//
 	// example:
 	//
 	// 1234567890
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the network interface controller (NIC).
+	// The ID of the Elastic network interface controller (NIC).
 	//
 	// example:
 	//
 	// eni-bp14v2sdd3v8htln****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The ID of the network interface controller (NIC) permission.
+	// The ID of the Elastic network interface controller (NIC) permission.
 	//
 	// example:
 	//
 	// eni-perm-bp1cs4lwn56lfb****
 	NetworkInterfacePermissionId *string `json:"NetworkInterfacePermissionId,omitempty" xml:"NetworkInterfacePermissionId,omitempty"`
-	// The network interface controller (NIC) permission.
+	// The Elastic network interface controller (NIC) permission.
 	//
 	// example:
 	//
 	// InstanceAttach
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// The status of the network interface controller (NIC) permission. Valid values:
+	// The state of the Elastic network interface controller (NIC) permission. Valid values:
 	//
-	// - Pending: Authorization in progress.
+	// - Pending: The authorization is in progress.
 	//
-	// - Granted: Authorization granted.
+	// - Granted: The authorization is granted.
 	//
-	// - Revoking: Authorization being revoked.
+	// - Revoking: The authorization is being revoked.
 	//
-	// - Revoked: Authorization revoked.
+	// - Revoked: The authorization is revoked.
 	//
 	// example:
 	//

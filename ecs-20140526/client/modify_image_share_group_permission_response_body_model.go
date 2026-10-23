@@ -14,6 +14,7 @@ type iModifyImageShareGroupPermissionResponseBody interface {
 }
 
 type ModifyImageShareGroupPermissionResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

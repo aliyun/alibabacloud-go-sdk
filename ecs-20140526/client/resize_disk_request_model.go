@@ -28,13 +28,13 @@ type iResizeDiskRequest interface {
 }
 
 type ResizeDiskRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The disk ID. You can call [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) to query disk IDs.
+	// The ID of the cloud disk. You can call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query the ID of the cloud disk.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type ResizeDiskRequest struct {
 	//
 	// d-bp67acfmxazb4p****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The new disk capacity that you want after expansion. Unit: GiB. Valid values:
+	// The new capacity of the cloud disk. Unit: GiB. Valid values:
 	//
-	// - System disk:
+	// - System cloud disk:
 	//
-	//   - Basic disk: 20 to 500.
+	//   - Basic cloud disk: 20 to 500.
 	//
-	//   - Enterprise SSD:
+	//   - ESSD:
 	//
 	//     - PL0: 1 to 2048.
 	//
@@ -60,15 +60,15 @@ type ResizeDiskRequest struct {
 	//
 	//   - ESSD AutoPL disk: 1 to 2048.
 	//
-	//   - Other disk types: 20 to 2048.
+	//   - Other cloud disk types: 20 to 2048.
 	//
-	// - Data disk:
+	// - Data cloud disk:
 	//
-	//     - Ultra disk (cloud_efficiency): 20 to 32768.
+	//     - Ultra cloud disk (cloud_efficiency): 20 to 32768.
 	//
 	//     - Standard SSD (cloud_ssd): 20 to 32768.
 	//
-	//     - Enterprise SSD (cloud_essd): The valid values depend on the value of `PerformanceLevel`. You can call [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) to query disk information and check the `PerformanceLevel` parameter in the response.
+	//     - ESSD (cloud_essd): The valid values vary based on the `PerformanceLevel` parameter. You can call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query the cloud disk information and check the valid values based on the `PerformanceLevel` parameter in the response.
 	//
 	//         - PL0: 1 to 65536.
 	//
@@ -78,7 +78,7 @@ type ResizeDiskRequest struct {
 	//
 	//         - PL3: 1261 to 65536.
 	//
-	//     - Basic disk (cloud): 5 to 2000.
+	//     - Basic cloud disk (cloud): 5 to 2000.
 	//
 	//     - ESSD AutoPL disk (cloud_auto): 1 to 65536.
 	//
@@ -86,11 +86,11 @@ type ResizeDiskRequest struct {
 	//
 	//     - ESSD Entry disk (cloud_essd_entry): 10 to 32768.
 	//
-	//   - Elastic ephemeral disk - Standard (elastic_ephemeral_disk_standard): 64 to 8,192.
+	//   - Standard elastic ephemeral disk (elastic_ephemeral_disk_standard): 64 to 8192.
 	//
-	//   - Elastic ephemeral disk - Premium (elastic_ephemeral_disk_premium): 64 to 8,192.
+	//   - Premium elastic ephemeral disk (elastic_ephemeral_disk_premium): 64 to 8192.
 	//
-	// >The new disk capacity must be greater than the original disk capacity. Otherwise, an error is returned.
+	// > The new capacity must be greater than the original capacity. Otherwise, an error is returned when you call this operation.
 	//
 	// This parameter is required.
 	//
@@ -102,13 +102,13 @@ type ResizeDiskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The method used to expand the disk. Valid values:
+	// The method used to resize the cloud disk. Valid values:
 	//
-	// - offline (default): offline expansion. After the expansion, you must restart the instance in the console by following the instructions in [Restart an instance](https://help.aliyun.com/document_detail/25440.html) or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the changes to take effect.
+	// - offline: offline resizing. This is the default value. After the cloud disk is resized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the console or call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the resize to take effect.
 	//
 	//
 	//
-	// - online: online expansion. The expansion takes effect without the need to restart the instance. Supported disk types include ultra disks, standard SSDs, enterprise SSDs, and elastic ephemeral disks.
+	// - online: online resizing. The cloud disk is resized without the need to restart the instance. This value supports ultra cloud disks, standard SSDs, ESSDs, and elastic ephemeral disks.
 	//
 	// example:
 	//

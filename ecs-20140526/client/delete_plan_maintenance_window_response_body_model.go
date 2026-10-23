@@ -14,7 +14,7 @@ type iDeletePlanMaintenanceWindowResponseBody interface {
 }
 
 type DeletePlanMaintenanceWindowResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

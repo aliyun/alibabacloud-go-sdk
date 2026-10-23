@@ -26,13 +26,13 @@ type iAcceptInquiredSystemEventRequest interface {
 }
 
 type AcceptInquiredSystemEventRequest struct {
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not supported.
 	//
 	// example:
 	//
 	// hide
 	Choice *string `json:"Choice,omitempty" xml:"Choice,omitempty"`
-	// The system event ID.
+	// The ID of the system event.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type AcceptInquiredSystemEventRequest struct {
 	EventId      *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the system event. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the system event. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest Alibaba Cloud region list.
 	//
 	// This parameter is required.
 	//

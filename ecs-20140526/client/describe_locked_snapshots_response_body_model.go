@@ -18,9 +18,9 @@ type iDescribeLockedSnapshotsResponseBody interface {
 }
 
 type DescribeLockedSnapshotsResponseBody struct {
-	// The collection of locked snapshot information.
+	// The locked snapshots information.
 	LockedSnapshotsInfo []*DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo `json:"LockedSnapshotsInfo,omitempty" xml:"LockedSnapshotsInfo,omitempty" type:"Repeated"`
-	// The pagination token returned in this call.
+	// The query token returned by the current call.
 	//
 	// example:
 	//
@@ -83,19 +83,19 @@ func (s *DescribeLockedSnapshotsResponseBody) Validate() error {
 }
 
 type DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo struct {
-	// The cooling-off period for compliance mode. Unit: hours.
+	// The cooling-off period in compliance mode. Unit: hours.
 	//
 	// example:
 	//
 	// 3
 	CoolOffPeriod *int32 `json:"CoolOffPeriod,omitempty" xml:"CoolOffPeriod,omitempty"`
-	// The time when the cooling-off period for compliance mode ends. The time follows the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the cooling-off period in compliance mode ends. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in accordance with the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard. UTC+0 is used.
 	//
 	// example:
 	//
 	// 2025-10-15T13:00:00Z
 	CoolOffPeriodExpiredTime *string `json:"CoolOffPeriodExpiredTime,omitempty" xml:"CoolOffPeriodExpiredTime,omitempty"`
-	// The time when the snapshot was locked. The time follows the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the snapshot was locked. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in accordance with the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard. UTC+0 is used.
 	//
 	// example:
 	//
@@ -107,13 +107,13 @@ type DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo struct {
 	//
 	// 1
 	LockDuration *int32 `json:"LockDuration,omitempty" xml:"LockDuration,omitempty"`
-	// The start time of the lock duration. The time follows the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. If a snapshot in the progressing state is locked, the lock duration starts only after the snapshot enters the accomplished state.
+	// The time when the lock duration starts. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in accordance with the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard. UTC+0 is used. If you lock a snapshot that is in the progressing state, the lock duration is calculated only after the snapshot enters the accomplished state.
 	//
 	// example:
 	//
 	// 2025-10-15T10:00:00Z
 	LockDurationStartTime *string `json:"LockDurationStartTime,omitempty" xml:"LockDurationStartTime,omitempty"`
-	// The time when the lock expires. The time follows the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the lock expires. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in accordance with the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard. UTC+0 is used.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo struct {
 	LockExpiredTime *string `json:"LockExpiredTime,omitempty" xml:"LockExpiredTime,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - compliance: The snapshot is locked in compliance mode. A snapshot locked in compliance mode cannot be unlocked by any user and can be deleted only after the lock duration expires. Users cannot shorten the lock duration, but users with the required RAM permissions can extend the lock duration at any time. When locking a snapshot in compliance mode, you can optionally specify a cooling-off period.
+	// - compliance: The snapshot is locked in compliance mode. A snapshot locked in compliance mode cannot be unlocked by any user and can be deleted only after the lock duration expires. Users cannot shorten the lock duration, but users with the required RAM permissions can extend the lock duration at any time. When you lock a snapshot in compliance mode, you can optionally specify a cooling-off period.
 	//
 	// example:
 	//
@@ -129,11 +129,11 @@ type DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo struct {
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The lock status. Valid values:
 	//
-	// - compliance-cooloff: The snapshot is locked in compliance mode but is still within the cooling-off period. The snapshot cannot be deleted, but users with the required RAM permissions can unlock the snapshot, extend or shorten the cooling-off period, or extend or shorten the lock duration.
+	// - compliance-cooloff: The snapshot is locked in compliance mode but is still in the cooling-off period. The snapshot cannot be deleted, but users with the required RAM permissions can unlock the snapshot, extend or shorten the cooling-off period, and extend or shorten the lock duration.
 	//
 	// - compliance: The snapshot is locked in compliance mode and the cooling-off period has ended. The snapshot cannot be unlocked or deleted, but users with the required RAM permissions can extend the lock duration.
 	//
-	// - expired: The snapshot was previously locked, but the lock duration has ended and the lock has expired. The snapshot is currently unlocked and can be deleted.
+	// - expired: The snapshot was locked, but the lock duration has ended and the lock has expired. The snapshot is currently unlocked and can be deleted.
 	//
 	// example:
 	//

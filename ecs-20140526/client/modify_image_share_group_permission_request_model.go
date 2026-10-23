@@ -30,10 +30,14 @@ type iModifyImageShareGroupPermissionRequest interface {
 type ModifyImageShareGroupPermissionRequest struct {
 	AddGroup    []*string `json:"AddGroup,omitempty" xml:"AddGroup,omitempty" type:"Repeated"`
 	RemoveGroup []*string `json:"RemoveGroup,omitempty" xml:"RemoveGroup,omitempty" type:"Repeated"`
+	// The image ID.
+	//
 	// This parameter is required.
 	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call DescribeRegions to query available regions.
+	//
 	// This parameter is required.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

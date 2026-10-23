@@ -59,6 +59,8 @@ type iDescribeDisksRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeDisksRequest
 	GetPageSize() *int32
+	SetPerformanceLevel(v string) *DescribeDisksRequest
+	GetPerformanceLevel() *string
 	SetPortable(v bool) *DescribeDisksRequest
 	GetPortable() *bool
 	SetRegionId(v string) *DescribeDisksRequest
@@ -81,25 +83,23 @@ type iDescribeDisksRequest interface {
 
 type DescribeDisksRequest struct {
 	Filter []*DescribeDisksRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The list of additional attribute values. The only valid value is `Placement`, which queries the data storage location of the disk.
+	// The list of additional attributes. Currently, only `Placement` is supported, which indicates the data storage location of the disk.
 	//
-	// > Only regional disks have a data storage location.
+	// > Currently, only regional disks have a data storage location.
 	//
 	// example:
 	//
 	// IOPS
 	AdditionalAttributes []*string `json:"AdditionalAttributes,omitempty" xml:"AdditionalAttributes,omitempty" type:"Repeated"`
-	// The ID of the automatic snapshot policy used to query disks.
+	// The ID of the automatic snapshot policy.
 	//
 	// example:
 	//
 	// sp-m5e2w2jutw8bv31****
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	// The category of the disk. Valid values:
+	// The disk category. Valid values:
 	//
-	//
-	//
-	// - all: all disks, local disks, and elastic ephemeral disks.
+	// - all: all cloud disks, local disks, and elastic ephemeral disks.
 	//
 	// - cloud: basic disk.
 	//
@@ -107,7 +107,7 @@ type DescribeDisksRequest struct {
 	//
 	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_essd: enterprise SSD (ESSD).
+	// - cloud_essd: enterprise SSD.
 	//
 	// - cloud_auto: ESSD AutoPL disk.
 	//
@@ -115,9 +115,9 @@ type DescribeDisksRequest struct {
 	//
 	// - cloud_essd_entry: ESSD Entry disk.
 	//
-	// - elastic_ephemeral_disk_standard: elastic ephemeral disk - Standard.
+	// - elastic_ephemeral_disk_standard: standard elastic ephemeral disk.
 	//
-	// - elastic_ephemeral_disk_premium: elastic ephemeral disk - Premium.
+	// - elastic_ephemeral_disk_premium: premium elastic ephemeral disk.
 	//
 	// - local_ssd_pro: I/O-intensive local disk.
 	//
@@ -133,11 +133,11 @@ type DescribeDisksRequest struct {
 	//
 	// all
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Specifies whether automatic snapshots are released when the disk is released.
+	// Specifies whether automatic snapshots are released when the cloud disk is released. Valid values:
 	//
-	// - true: Yes.
+	// - true: Automatic snapshots are released.
 	//
-	// - false: No.
+	// - false: Automatic snapshots are not released.
 	//
 	// Default value: false.
 	//
@@ -145,11 +145,11 @@ type DescribeDisksRequest struct {
 	//
 	// false
 	DeleteAutoSnapshot *bool `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
-	// Specifies whether the disk is set to be released together with the instance. Valid values:
+	// Specifies whether the disk is released together with the instance. Valid values:
 	//
 	// - true: The disk is released together with the instance.
 	//
-	// - false: The disk is retained and converted to a pay-as-you-go data disk when the instance is released.
+	// - false: The disk is retained and not released. It is converted to a pay-as-you-go data disk.
 	//
 	// Default value: false.
 	//
@@ -167,21 +167,19 @@ type DescribeDisksRequest struct {
 	//
 	// PostPaid
 	DiskChargeType *string `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
-	// The IDs of disks, local disks, or elastic ephemeral disks. The value is a JSON array that can contain up to 100 IDs. Separate the IDs with commas (,).
+	// The IDs of the cloud disks, local disks, or elastic ephemeral disks. The value is a JSON array that contains up to 100 IDs separated by commas (,).
 	//
 	// example:
 	//
 	// ["d-bp67acfmxazb4p****", "d-bp67acfmxazb4g****", … "d-bp67acfmxazb4d****"]
 	DiskIds *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
-	// The name of the disk. The name must be 2 to 128 characters in length and can contain Unicode characters under the letter category (including letters from various languages, digits, and other characters). The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
+	// The name of the disk. The name must be 2 to 128 characters in length and can contain Unicode letters, including English letters, Chinese characters, and digits. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// testDiskName
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// The type of the disk, local disk, or elastic ephemeral disk to query. Valid values:
-	//
-	//
+	// The type of the cloud disk, local disk, or elastic ephemeral disk to query. Valid values:
 	//
 	// - all: queries both system disks and data disks.
 	//
@@ -197,11 +195,11 @@ type DescribeDisksRequest struct {
 	//
 	// all
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to only perform a dry run for this request. Valid values:
 	//
-	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - true: send a check request and do not query resources. The check items include whether the AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - false: performs a dry run and sends the request. If the request passes the dry run, a 2XX HTTP status code is returned and the resources are queried.
+	// - false: send a Normal request. If the request passes the check, a 2xx HTTP status code is returned and resources are queried.
 	//
 	// Default value: false.
 	//
@@ -209,23 +207,23 @@ type DescribeDisksRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether the automatic snapshot policy feature is enabled for the disk.
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values:
 	//
-	// - true: Enabled.
+	// - true: The feature is enabled.
 	//
-	// - false: Not enabled.
+	// - false: The feature is not enabled.
 	//
-	// > This parameter is deprecated. The automatic snapshot policy feature is enabled by default for disks after creation. You only need to associate an automatic snapshot policy with the disk.
+	// > This parameter is deprecated. The automatic snapshot policy feature is enabled by default for newly created cloud disks. You only need to apply an automatic snapshot policy to the cloud disk to use the feature.
 	//
 	// example:
 	//
 	// true
 	EnableAutoSnapshot *bool `json:"EnableAutoSnapshot,omitempty" xml:"EnableAutoSnapshot,omitempty"`
-	// Specifies whether an automatic snapshot policy is configured for the disk.
+	// Specifies whether an automatic snapshot policy is applied to the cloud disk. Valid values:
 	//
-	// - true: Configured.
+	// - true: An automatic snapshot policy is applied.
 	//
-	// - false: Not configured.
+	// - false: No automatic snapshot policy is applied.
 	//
 	// Default value: false.
 	//
@@ -233,17 +231,17 @@ type DescribeDisksRequest struct {
 	//
 	// false
 	EnableAutomatedSnapshotPolicy *bool `json:"EnableAutomatedSnapshotPolicy,omitempty" xml:"EnableAutomatedSnapshotPolicy,omitempty"`
-	// Specifies whether the disk is a Shared Block Storage device.
+	// Specifies whether the block storage device is Shared Block Storage.
 	//
 	// example:
 	//
 	// false
 	EnableShared *bool `json:"EnableShared,omitempty" xml:"EnableShared,omitempty"`
-	// Specifies whether to query only encrypted disks.
+	// Specifies whether to query only encrypted cloud disks. Valid values:
 	//
-	// - true: queries only encrypted disks.
+	// - true: Yes.
 	//
-	// - false: does not filter disks by encryption status.
+	// - false: No.
 	//
 	// Default value: false.
 	//
@@ -251,13 +249,13 @@ type DescribeDisksRequest struct {
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The instance ID of the instance to which the disk, local disk, or elastic ephemeral disk is attached.
+	// The instance ID to which the disk, local disk, or elastic ephemeral disk is attached.
 	//
 	// example:
 	//
 	// i-bp67acfmxazb4q****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Key Management Service (KMS) key used by the disk.
+	// The ID of the Key Management Service (KMS) key used by the cloud disk.
 	//
 	// example:
 	//
@@ -265,7 +263,7 @@ type DescribeDisksRequest struct {
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// The reason why the disk is locked. Valid values:
 	//
-	// - financial: The disk is locked because of overdue payments.
+	// - financial: The disk is locked due to overdue payments.
 	//
 	// - security: The disk is locked for security reasons.
 	//
@@ -277,9 +275,9 @@ type DescribeDisksRequest struct {
 	//
 	// Default value:
 	//
-	// - If this parameter is not specified or is set to a value less than 10, the default value is 10.
+	// - If this parameter is not specified or the specified value is less than 10, the default value is 10.
 	//
-	// - If the value is greater than 500, the default value is 500.
+	// - If the specified value is greater than 500, the default value is 500.
 	//
 	// example:
 	//
@@ -287,19 +285,19 @@ type DescribeDisksRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// Specifies whether the multi-attach feature is enabled. Valid values:
 	//
-	// - Disabled: not enabled.
+	// - Disabled: The feature is disabled.
 	//
-	// - Enabled: enabled.
+	// - Enabled: The feature is enabled.
 	//
-	// - LegacyShared: queries Shared Block Storage devices.
+	// - LegacyShared: Used to query shared block storage devices.
 	//
 	// example:
 	//
 	// Disabled
 	MultiAttach *string `json:"MultiAttach,omitempty" xml:"MultiAttach,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	// The query token. The value is the `NextToken` value returned from the previous API call.
 	//
-	// For information about how to view the returned data, see the operation description section above.
+	// For more information about how to configure the returned data for this operation, see the operation description section above.
 	//
 	// example:
 	//
@@ -307,25 +305,31 @@ type DescribeDisksRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging operations.
+	// > This parameter is about to go offline. We recommend that you use the `NextToken` and `MaxResults` parameters to perform paging and complete the paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging operations.
+	// > This parameter is about to go offline. We recommend that you use the `NextToken` and `MaxResults` parameters to perform paging and complete the paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether the disk is removable. Valid values:
+	// The performance level (PL) of the ESSD disk. Valid values: PL0, PL1, PL2, and PL3.
 	//
-	// - true: The disk is removable. The disk can exist independently and can be attached to or detached from instances within the same zone.
+	// example:
 	//
-	// - false: The disk is not removable. The disk cannot exist independently and cannot be attached to or detached from instances within the same zone.
+	// PL0
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// Specifies whether the disk can be detached. Valid values:
 	//
-	// The Portable attribute of the following types of block storage devices is false, and their lifecycle is the same as that of the associated instance:
+	// - true: The disk can be detached. It can exist independently and can be freely attached and detached within a zone.
+	//
+	// - false: The disk cannot be detached. It cannot exist independently and cannot be freely attached or detached within a zone.
+	//
+	// The `Portable` attribute is `false` for the following types of block storage devices, and their lifecycles are the same as those of the instances:
 	//
 	// - Local disks.
 	//
@@ -337,7 +341,7 @@ type DescribeDisksRequest struct {
 	//
 	// false
 	Portable *bool `json:"Portable,omitempty" xml:"Portable,omitempty"`
-	// The region ID of the block storage device. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the block storage device. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -345,7 +349,7 @@ type DescribeDisksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the disk belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
+	// The ID of the enterprise resource group to which the disk belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
 	// > Filtering by the default resource group is not supported.
 	//
@@ -355,25 +359,25 @@ type DescribeDisksRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the snapshot used to create the disk.
+	// The ID of the snapshot used to create the cloud disk.
 	//
 	// example:
 	//
 	// s-bp67acfmxazb4p****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The status of the disk. For more information, see [Disk status](https://help.aliyun.com/document_detail/25689.html). Valid values:
+	// The disk status. For more information, see [Disk status](https://help.aliyun.com/document_detail/25689.html). Valid values:
 	//
-	// - In_use: in use.
+	// - In_use: The disk is in use.
 	//
-	// - Available: to be attached.
+	// - Available: The disk is available for attachment.
 	//
-	// - Attaching: being attached.
+	// - Attaching: The disk is being attached.
 	//
-	// - Detaching: being detached.
+	// - Detaching: The disk is being detached.
 	//
-	// - Creating: being created.
+	// - Creating: The disk is being created.
 	//
-	// - ReIniting: being initialized.
+	// - ReIniting: The disk is being initialized.
 	//
 	// - All: all statuses.
 	//
@@ -499,6 +503,10 @@ func (s *DescribeDisksRequest) GetPageNumber() *int32 {
 
 func (s *DescribeDisksRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *DescribeDisksRequest) GetPerformanceLevel() *string {
+	return s.PerformanceLevel
 }
 
 func (s *DescribeDisksRequest) GetPortable() *bool {
@@ -662,6 +670,11 @@ func (s *DescribeDisksRequest) SetPageSize(v int32) *DescribeDisksRequest {
 	return s
 }
 
+func (s *DescribeDisksRequest) SetPerformanceLevel(v string) *DescribeDisksRequest {
+	s.PerformanceLevel = &v
+	return s
+}
+
 func (s *DescribeDisksRequest) SetPortable(v bool) *DescribeDisksRequest {
 	s.Portable = &v
 	return s
@@ -730,13 +743,13 @@ func (s *DescribeDisksRequest) Validate() error {
 }
 
 type DescribeDisksRequestFilter struct {
-	// The filter key used to query resources. Set the value to `CreationStartTime`. You can specify both Filter.1.Key and Filter.1.Value to query resources that were created after the specified point in time.
+	// The filter key used to query resources. Set the value to `CreationStartTime`. If you specify both `Filter.1.Key` and `Filter.1.Value`, you can query resources created after the specified time.
 	//
 	// example:
 	//
 	// CreationStartTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value used to query resources. When you specify this parameter, you must also specify the Filter.1.Key parameter. Specify the time in the `yyyy-MM-ddTHH:mmZ` format in UTC.
+	// The filter value used to query resources. If you specify this parameter, you must also specify the `Filter.1.Key` parameter. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -777,7 +790,7 @@ func (s *DescribeDisksRequestFilter) Validate() error {
 type DescribeDisksRequestTag struct {
 	// The tag key of the disk. Valid values of N: 1 to 20.
 	//
-	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that are attached to all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+	// If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that attach multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
 	// example:
 	//

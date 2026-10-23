@@ -28,7 +28,7 @@ type ModifyDiagnosticMetricSetRequest struct {
 	//
 	// example:
 	//
-	// 远程连接诊断
+	// Remote connection diagnostics
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of diagnostic metrics.
 	MetricIds []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`

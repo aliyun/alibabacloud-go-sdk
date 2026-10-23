@@ -18,7 +18,7 @@ type iDescribeVscsResponseBody interface {
 }
 
 type DescribeVscsResponseBody struct {
-	// The query token. The value is the NextToken parameter value returned by the previous API call.
+	// The query token. The value is the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -95,9 +95,9 @@ type DescribeVscsResponseBodyVscs struct {
 	//
 	// i-uf69***21l8zuoizdq
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
-	// >Filtering by the default resource group is not supported.
+	// > Filtering by the default resource group is not supported.
 	//
 	// example:
 	//
@@ -105,23 +105,23 @@ type DescribeVscsResponseBodyVscs struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the VSC. Valid values:
 	//
-	// - In_use: in use.
+	// - In_use: In use.
 	//
-	// - Attaching: being attached.
+	// - Attaching: Attaching.
 	//
-	// - Detaching: being detached.
+	// - Detaching: Detaching.
 	//
-	// - AttachFailed: failed to attach.
+	// - AttachFailed: Attachment failed.
 	//
-	// - DetachFailed: failed to detach.
+	// - DetachFailed: Detachment failed.
 	//
 	// example:
 	//
 	// In_use
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag keys of snapshots in the snapshot-consistent group. The default values of Key and Value provide the snapshot source information.
+	// The tag keys of the snapshots in the snapshot consistency group. The default values of Key and Value provide the snapshot source information.
 	Tags []*DescribeVscsResponseBodyVscsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// VSC ID。
+	// The VSC ID.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type DescribeVscsResponseBodyVscs struct {
 	//
 	// test-vsc
 	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
-	// The type of the VSC. Valid values: Primary or Secondary.
+	// The type of the VSC. Valid values: Primary and Secondary.
 	//
 	// example:
 	//

@@ -30,11 +30,11 @@ type ResetDisksRequest struct {
 	//
 	// This parameter is required.
 	Disk []*ResetDisksRequestDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run on the request. Valid values:
 	//
-	// - true: performs a dry run without actually rolling back the cloud disks. The system checks whether required parameters are specified, whether the request format is valid, and whether resource status constraints are met. If the check fails, the corresponding error message is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+	// - true: performs a dry run. The system checks the required parameters, request format, and resource status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - false: performs a dry run and sends the request. If the check succeeds, the cloud disk rollback operation is initiated.
+	// - false: performs a standard request. If the request passes the dry run, the cloud disks are rolled back.
 	//
 	// Default value: false.
 	//
@@ -147,7 +147,7 @@ type ResetDisksRequestDisk struct {
 	//
 	// d-j6cf7l0ewidb78lq****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The snapshot ID that corresponds to the specified cloud disk in the instance snapshot. Valid values of N: 1 to 10.
+	// The ID of the snapshot that corresponds to the cloud disk in the instance snapshot. Valid values of N: 1 to 10.
 	//
 	// example:
 	//

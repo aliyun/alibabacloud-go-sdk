@@ -30,15 +30,15 @@ type iLeaveSecurityGroupRequest interface {
 type LeaveSecurityGroupRequest struct {
 	// The instance ID.
 	//
-	// > If you specify this parameter, leave NetworkInterfaceId empty.
+	// > If you specify this parameter, you must leave NetworkInterfaceId empty.
 	//
 	// example:
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The Elastic Network Interface (ENI) ID.
+	// The ID of the network interface controller (NIC).
 	//
-	// > If you specify this parameter, leave InstanceId empty.
+	// > If you specify this parameter, you must leave InstanceId empty.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type LeaveSecurityGroupRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
-	// - You do not need to specify the region ID when removing an instance from a security group.
+	// - You do not need to specify the region ID when you remove an instance from a security group.
 	//
-	// - You must specify the region ID of the Elastic Network Interface (ENI) when removing an ENI from a security group.
+	// - You must specify the region ID of the network interface controller (NIC) when you remove a network interface controller (NIC) from a security group.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type LeaveSecurityGroupRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// This parameter is required.
 	//

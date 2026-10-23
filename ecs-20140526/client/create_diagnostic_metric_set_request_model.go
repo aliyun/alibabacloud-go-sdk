@@ -26,7 +26,7 @@ type CreateDiagnosticMetricSetRequest struct {
 	//
 	// example:
 	//
-	// 远程连接问题诊断
+	// Remote connection issue diagnosis
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of diagnostic metrics. A maximum of 100 metrics are supported.
 	//
@@ -36,9 +36,9 @@ type CreateDiagnosticMetricSetRequest struct {
 	//
 	// example:
 	//
-	// 远程连接问题诊断
+	// Remote connection issue diagnosis
 	MetricSetName *string `json:"MetricSetName,omitempty" xml:"MetricSetName,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateDiagnosticMetricSetRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the resource to diagnose.
+	// The resource type.
 	//
 	// Default value: instance.
 	//

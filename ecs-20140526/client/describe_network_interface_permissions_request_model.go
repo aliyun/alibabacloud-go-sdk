@@ -30,13 +30,13 @@ type iDescribeNetworkInterfacePermissionsRequest interface {
 }
 
 type DescribeNetworkInterfacePermissionsRequest struct {
-	// The ID of the network interface controller (NIC). You must specify `NetworkInterfaceId` or `NetworkInterfacePermissionId.N` to determine the query scope.
+	// The ID of the network interface controller (NIC). You must specify NetworkInterfaceId or NetworkInterfacePermissionId.N to determine the query scope.
 	//
 	// example:
 	//
 	// eni-bp17pdijfczax****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The list of network interface controller (NIC) permission IDs. Number of elements in the list: 1 to 100.
+	// The list of network interface controller (NIC) permission IDs. Number of elements: 1 to 100.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeNetworkInterfacePermissionsRequest struct {
 	OwnerId                      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number of the network interface controller (NIC) permission list.
 	//
-	// Minimum value: 1
+	// Starting value: 1
 	//
 	// Default value: 1
 	//
@@ -54,7 +54,7 @@ type DescribeNetworkInterfacePermissionsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for the paged query.
+	// The number of entries per page in a paged query.
 	//
 	// Maximum value: 100
 	//
@@ -64,7 +64,7 @@ type DescribeNetworkInterfacePermissionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the network interface controller (NIC) permissions. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the network interface controller (NIC) permission. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

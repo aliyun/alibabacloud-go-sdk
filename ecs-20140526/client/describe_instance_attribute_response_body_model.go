@@ -86,7 +86,7 @@ type iDescribeInstanceAttributeResponseBody interface {
 type DescribeInstanceAttributeResponseBody struct {
 	// The ID of the cluster to which the instance belongs.
 	//
-	// > This parameter will be deprecated soon. To ensure future compatibility, use other parameters.
+	// > **[Deprecated]*	- This parameter is about to be deprecated. To ensure compatibility, use other parameters instead.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type DescribeInstanceAttributeResponseBody struct {
 	//
 	// 8
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+	// The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
 	//
 	// example:
 	//
@@ -106,15 +106,15 @@ type DescribeInstanceAttributeResponseBody struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The running mode of the burstable instance. Valid values:
 	//
-	// - Standard: standard mode. For more information about instance performance, see [Performance mode](~~59977#section-svb-w9d-dju~~).
+	// - Standard: standard mode. For more information about instance performance, see [Performance modes](~~59977#section-svb-w9d-dju~~).
 	//
-	// - Unlimited: unlimited mode. For more information about instance performance, see [Performance mode](~~59977#section-svb-w9d-dju~~).
+	// - Unlimited: unlimited mode. For more information about instance performance, see [Performance modes](~~59977#section-svb-w9d-dju~~).
 	//
 	// example:
 	//
 	// Standard
 	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	// The dedicated host attributes, which consist of the dedicated host cluster ID (DedicatedHostClusterId), dedicated host ID (DedicatedHostId), and dedicated host name (DedicatedHostName).
+	// The dedicated host attributes, which include the dedicated host cluster ID (DedicatedHostClusterId), dedicated host ID (DedicatedHostId), and dedicated host name (DedicatedHostName).
 	DedicatedHostAttribute *DescribeInstanceAttributeResponseBodyDedicatedHostAttribute `json:"DedicatedHostAttribute,omitempty" xml:"DedicatedHostAttribute,omitempty" type:"Struct"`
 	// The description of the instance.
 	//
@@ -122,13 +122,13 @@ type DescribeInstanceAttributeResponseBody struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The Elastic IP Address (EIP) binding information.
+	// The binding information of the elastic IP address (EIP).
 	EipAddress *DescribeInstanceAttributeResponseBodyEipAddress `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
-	// Indicates whether the Jumbo frame feature is enabled for the ECS instance. Valid values:
+	// Specifies whether the jumbo frame feature is enabled for the ECS instance. Valid values:
 	//
-	// - true: enabled.
+	// - true: The feature is enabled.
 	//
-	// - false: not enabled.
+	// - false: The feature is disabled.
 	//
 	// For more information, see [ECS instance MTU](https://help.aliyun.com/document_detail/200512.html).
 	//
@@ -136,11 +136,11 @@ type DescribeInstanceAttributeResponseBody struct {
 	//
 	// false
 	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
-	// Indicates whether VPC network traffic encryption is enabled for the instance. Valid values:
+	// Specifies whether VPC network traffic encryption is enabled for the instance. Valid values:
 	//
-	// - true: enabled.
+	// - true: Enabled.
 	//
-	// - false: not enabled.
+	// - false: Disabled.
 	//
 	// > This parameter is in invitational preview and is not publicly available.
 	//
@@ -148,7 +148,7 @@ type DescribeInstanceAttributeResponseBody struct {
 	//
 	// True
 	EnableNetworkEncryption *bool `json:"EnableNetworkEncryption,omitempty" xml:"EnableNetworkEncryption,omitempty"`
-	// The expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+	// The expiration time. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
 	//
 	// example:
 	//
@@ -193,15 +193,15 @@ type DescribeInstanceAttributeResponseBody struct {
 	//
 	//
 	//
-	// - vpc: Virtual Private Cloud (VPC).
+	// - vpc: VPC.
 	//
-	// - classic: classic network. The classic network is deprecated. For more information, see [Deprecation notice](https://help.aliyun.com/document_detail/2833134.html).
+	// - classic: classic network. The classic network is retired. For more information, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html).
 	//
 	// example:
 	//
 	// vpc
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The instance type of the instance.
+	// The instance type.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ type DescribeInstanceAttributeResponseBody struct {
 	//
 	// - PayByTraffic: pay-by-traffic.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance metrics. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In the **pay-by-traffic*	- mode, the peak inbound and outbound bandwidth values are the maximum bandwidth values and are not guaranteed. When resource contention occurs, the peak bandwidth may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
@@ -231,17 +231,17 @@ type DescribeInstanceAttributeResponseBody struct {
 	//
 	// 5
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// Indicates whether the instance is I/O optimized. Valid values:
+	// Specifies whether the instance is I/O optimized. Valid values:
 	//
-	// - optimized: I/O optimized.
+	// - optimized: The instance is I/O optimized.
 	//
-	// - none: not I/O optimized.
+	// - none: The instance is not I/O optimized.
 	//
 	// example:
 	//
 	// optimized
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	// The memory size. Unit: MiB.
+	// The memory size of the instance. Unit: MiB.
 	//
 	// example:
 	//
@@ -275,25 +275,25 @@ type DescribeInstanceAttributeResponseBody struct {
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - Pending: being created.
+	// - Pending: The instance is being created.
 	//
-	// - Running: running.
+	// - Running: The instance is running.
 	//
-	// - Starting: being started.
+	// - Starting: The instance is starting.
 	//
-	// - Stopping: being stopped.
+	// - Stopping: The instance is stopping.
 	//
-	// - Stopped: stopped.
+	// - Stopped: The instance is stopped.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the instance continues to be billed after it is stopped. Valid values:
+	// Specifies whether the instance continues to be billed after it is stopped. Valid values:
 	//
-	// - KeepCharging: The instance continues to be billed after it is stopped. Resources such as vCPUs, memory, and public IP addresses are retained.
+	// - KeepCharging: The instance continues to be billed after it is stopped, and inventory resources are reserved.
 	//
-	// - StopCharging: The instance is not billed after it is stopped. Resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be restarted depends on resource availability in the current region.
+	// - StopCharging: The instance is not billed after it is stopped. After the instance is stopped, resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be restarted depends on the resource inventory in the current region.
 	//
 	// - Not-applicable: The instance does not support the economical mode.
 	//
@@ -303,7 +303,7 @@ type DescribeInstanceAttributeResponseBody struct {
 	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
 	// The VLAN ID of the instance.
 	//
-	// > This parameter will be deprecated soon. To ensure future compatibility, use other parameters.
+	// > **[Deprecated]*	- This parameter is about to be deprecated. To ensure compatibility, use other parameters instead.
 	//
 	// example:
 	//
@@ -311,7 +311,7 @@ type DescribeInstanceAttributeResponseBody struct {
 	VlanId *string `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
 	// The VPC attributes.
 	VpcAttributes *DescribeInstanceAttributeResponseBodyVpcAttributes `json:"VpcAttributes,omitempty" xml:"VpcAttributes,omitempty" type:"Struct"`
-	// The zone ID of the instance.
+	// The zone of the instance.
 	//
 	// example:
 	//
@@ -764,13 +764,13 @@ type DescribeInstanceAttributeResponseBodyEipAddress struct {
 	//
 	// - PayByTraffic: pay-by-traffic.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance metrics. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In the **pay-by-traffic*	- mode, the peak inbound and outbound bandwidth values are the maximum bandwidth values and are not guaranteed. When resource contention occurs, the peak bandwidth may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The EIP address.
+	// The EIP.
 	//
 	// example:
 	//
@@ -854,17 +854,17 @@ func (s *DescribeInstanceAttributeResponseBodyInnerIpAddress) Validate() error {
 type DescribeInstanceAttributeResponseBodyNetworkOptions struct {
 	// The bandwidth weight.
 	//
-	// Different instance types support different values. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the bandwidth weight values supported by the current instance type.
+	// The supported values vary based on the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the bandwidth weight values supported by the current instance type.
 	//
 	// example:
 	//
 	// Vpc-L1
 	BandwidthWeighting *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
-	// Indicates whether the Jumbo frame feature is enabled for the instance. Valid values:
+	// Specifies whether the jumbo frame feature is enabled for the instance. Valid values:
 	//
-	// - true: enabled.
+	// - true: The feature is enabled.
 	//
-	// - false: not enabled.
+	// - false: The feature is disabled.
 	//
 	// For more information, see [ECS instance MTU](https://help.aliyun.com/document_detail/200512.html).
 	//
@@ -874,11 +874,11 @@ type DescribeInstanceAttributeResponseBodyNetworkOptions struct {
 	//
 	// false
 	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
-	// Indicates whether VPC network traffic encryption is enabled for the instance. Valid values:
+	// Specifies whether VPC network traffic encryption is enabled for the instance. Valid values:
 	//
-	// - true: enabled.
+	// - true: Enabled.
 	//
-	// - false: not enabled.
+	// - false: Disabled.
 	//
 	// > This parameter is in invitational preview and is not publicly available.
 	//
@@ -1037,6 +1037,7 @@ func (s *DescribeInstanceAttributeResponseBodySecurityGroupIds) Validate() error
 }
 
 type DescribeInstanceAttributeResponseBodySecurityOptions struct {
+	// Specifies whether UEFI Secure Boot is enabled.
 	EnableSecureBoot *bool `json:"EnableSecureBoot,omitempty" xml:"EnableSecureBoot,omitempty"`
 }
 
@@ -1062,7 +1063,7 @@ func (s *DescribeInstanceAttributeResponseBodySecurityOptions) Validate() error 
 }
 
 type DescribeInstanceAttributeResponseBodyVpcAttributes struct {
-	// The IP address of the cloud service, which is used for network communication between VPC-connected cloud services.
+	// The IP address of the cloud service, which is used for network connectivity between cloud services in the VPC.
 	//
 	// example:
 	//

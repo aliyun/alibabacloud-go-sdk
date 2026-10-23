@@ -28,7 +28,7 @@ type iDescribePortRangeListAssociationsRequest interface {
 }
 
 type DescribePortRangeListAssociationsRequest struct {
-	// The number of entries per page for paging queries.
+	// The number of entries to return per page in a paging query.
 	//
 	// Maximum value: 100.
 	//
@@ -38,7 +38,7 @@ type DescribePortRangeListAssociationsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the value of `NextToken` that was returned in the previous call. You do not need to set this parameter for the first request.
+	// The pagination token. Set the value to the `NextToken` value returned from the last call. You do not need to specify this parameter for the first call.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribePortRangeListAssociationsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The port range list ID.
+	// The ID of the port list.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DescribePortRangeListAssociationsRequest struct {
 	//
 	// prl-2ze9743****
 	PortRangeListId *string `json:"PortRangeListId,omitempty" xml:"PortRangeListId,omitempty"`
-	// The region ID of the port range list. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the port list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

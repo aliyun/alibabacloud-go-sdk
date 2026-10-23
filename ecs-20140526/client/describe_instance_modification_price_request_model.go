@@ -45,7 +45,7 @@ type DescribeInstanceModificationPriceRequest struct {
 	SystemDisk *DescribeInstanceModificationPriceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	// The information about data disk types.
 	DataDisk []*DescribeInstanceModificationPriceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	// The end time of the temporary bandwidth upgrade.
+	// The end time of the temporary bandwidth change in the ISO 8601 format in UTC. This parameter takes effect only when InternetMaxBandwidthOut is specified.
 	//
 	// example:
 	//
@@ -71,13 +71,19 @@ type DescribeInstanceModificationPriceRequest struct {
 	//
 	// i-bp1f2o4ldh8l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The target instance type for the upgrade. We recommend that you call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types available for upgrade in a specified zone.
+	// The target instance type for the upgrade. Call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types available for upgrade in a specified zone.
+	//
+	// > The instance type parameter (InstanceType) and data disk parameters (DataDisk.N.\\*) cannot both be empty. You must specify at least one of them.
 	//
 	// example:
 	//
 	// ecs.g6e.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The network billing method to convert to.
+	// The network billing method. Valid values:
+	//
+	// - PayByBandwidth: pay-by-bandwidth.
+	//
+	// - PayByTraffic: pay-by-traffic.
 	//
 	// example:
 	//
@@ -101,7 +107,7 @@ type DescribeInstanceModificationPriceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start time of the temporary bandwidth upgrade.
+	// The start time of the temporary bandwidth change in the ISO 8601 format in UTC. This parameter takes effect only when InternetMaxBandwidthOut is specified.
 	//
 	// example:
 	//
@@ -327,7 +333,7 @@ func (s *DescribeInstanceModificationPriceRequestSystemDisk) Validate() error {
 }
 
 type DescribeInstanceModificationPriceRequestDataDisk struct {
-	// The type of the data disk. Specify this parameter to query the price of a new subscription data disk attached to an ECS instance. Valid values of N: 1 to 16. Valid values:
+	// The category of the data disk. Specify this parameter when you want to query the price of new subscription data disks to be attached to the ECS instance. Valid values of N: 1 to 16. Valid values:
 	//
 	// - cloud_efficiency: ultra disk.
 	//
@@ -339,19 +345,19 @@ type DescribeInstanceModificationPriceRequestDataDisk struct {
 	//
 	// Default value: null.
 	//
-	// > When you call this operation, the instance type parameter (`InstanceType`) and the data disk parameters (`DataDisk.N.*`) cannot both be empty. Specify at least one of them.
+	// > The instance type parameter (InstanceType) and data disk parameters (DataDisk.N.\\*) cannot both be empty. You must specify at least one of them.
 	//
 	// example:
 	//
 	// cloud_essd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the data disk.
+	// The ID of the data disk. If DiskId is empty, a new data disk is added. If DiskId is not empty, an existing data disk is modified.
 	//
 	// example:
 	//
 	// d-bf4rupt9****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The performance level of the data disk when the disk type is enterprise SSD. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
+	// The performance level of the data disk when the data disk type is enterprise SSD (ESSD). The value of N must be the same as that in DataDisk.N.Category=cloud_essd. Valid values:
 	//
 	// - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
 	//
@@ -363,7 +369,7 @@ type DescribeInstanceModificationPriceRequestDataDisk struct {
 	//
 	// Default value: PL1.
 	//
-	// For information about how to select an ESSD performance level, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
+	// For more information about how to select an ESSD performance level, see [ESSD](https://help.aliyun.com/document_detail/122389.html). You can go to Settings to configure the standard SSD or ESSD performance level.
 	//
 	// example:
 	//
@@ -375,7 +381,7 @@ type DescribeInstanceModificationPriceRequestDataDisk struct {
 	//
 	// - cloud_ssd: 20 to 32768.
 	//
-	// - cloud_essd: The valid value range depends on the value of `DataDisk.N.PerformanceLevel`.
+	// - cloud_essd: The valid value range depends on the value of DataDisk.N.PerformanceLevel.
 	//
 	//     - PL0: 1 to 32768.
 	//

@@ -28,7 +28,7 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resources. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of resource IDs. Array length: 1 to 50.
+	// The array of resource IDs. Array length: 1 to 50.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,7 @@ type TagResourcesRequest struct {
 	// i-bp67acfmxazb4ph****
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
 	// - instance: ECS instance.
 	//
@@ -61,7 +61,7 @@ type TagResourcesRequest struct {
 	//
 	// - eni: Elastic Network Interface (ENI).
 	//
-	// - ddh: dedicated host.
+	// - ddh: ECS dedicated host.
 	//
 	// - ddhcluster: dedicated host cluster.
 	//
@@ -79,7 +79,7 @@ type TagResourcesRequest struct {
 	//
 	// - command: Cloud Assistant command.
 	//
-	// - invocation: Cloud Assistant command execution or file sending result.
+	// - invocation: Cloud Assistant command execution or file delivery result.
 	//
 	// - activation: Cloud Assistant managed instance activation code.
 	//
@@ -91,7 +91,7 @@ type TagResourcesRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags. Array length: 1 to 20. If the array contains multiple tag objects, the tag key `Key` must be unique.
+	// The array of tags. Array length: 1 to 20. If the array contains multiple tag objects, the tag key Key must be unique.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -182,7 +182,7 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag key. It cannot be empty or an empty string. It can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// This parameter is required.
 	//
@@ -190,7 +190,7 @@ type TagResourcesRequestTag struct {
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value cannot be null but can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	// The tag value. It cannot be null but can be an empty string. It can be up to 128 characters in length and cannot contain http:// or https://.
 	//
 	// This parameter is required.
 	//

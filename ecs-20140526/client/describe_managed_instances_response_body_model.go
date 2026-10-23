@@ -26,7 +26,7 @@ type iDescribeManagedInstancesResponseBody interface {
 type DescribeManagedInstancesResponseBody struct {
 	// The list of managed instances.
 	Instances []*DescribeManagedInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The pagination token returned in this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeManagedInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page as specified in the request.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -51,6 +51,8 @@ type DescribeManagedInstancesResponseBody struct {
 	// 77115469-F2C5-4ECA-94F7-FA04F2FD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of managed instances queried.
+	//
+	// > When you use the MaxResults and NextToken parameters for paging, the returned TotalCount value is meaningless.
 	//
 	// example:
 	//
@@ -134,23 +136,23 @@ func (s *DescribeManagedInstancesResponseBody) Validate() error {
 }
 
 type DescribeManagedInstancesResponseBodyInstances struct {
-	// The activation code ID.
+	// The ID of the activation code.
 	//
 	// example:
 	//
 	// 3704F543-F768-43FA-9864-897F75B3****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// The version number of Cloud Assistant Agent.
+	// The version number of the Cloud Assistant Agent.
 	//
 	// example:
 	//
 	// 2.2.0.102
 	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
-	// Indicates whether the managed instance is connected.
+	// Indicates whether the managed instance is connected. Valid values:
 	//
-	// - true: The managed instance is connected. You can manage the managed instance by using Cloud Assistant.
+	// - true: The managed instance is connected. You can use Cloud Assistant to manage the managed instance.
 	//
-	// - false: The managed instance is not connected. The server may be shut down or Cloud Assistant Agent may not be properly installed.
+	// - false: The managed instance is not connected. The server may be stopped or the Cloud Assistant Agent is not properly installed.
 	//
 	// example:
 	//
@@ -162,7 +164,7 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// demo
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The managed instance ID.
+	// The instance ID of the managed instance.
 	//
 	// example:
 	//
@@ -186,19 +188,19 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// ``10.0.**.**``
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The number of times that Cloud Assistant tasks have been executed on the managed instance.
+	// The number of Cloud Assistant tasks executed on the managed instance.
 	//
 	// example:
 	//
 	// 1
 	InvocationCount *int64 `json:"InvocationCount,omitempty" xml:"InvocationCount,omitempty"`
-	// The time when the last Cloud Assistant task was executed. The time is displayed in ISO 8601 format in UTC.
+	// The time when the last Cloud Assistant task was executed. The time follows the ISO 8601 standard in the UTC time zone.
 	//
 	// example:
 	//
 	// 2021-01-20T09:00:40Z
 	LastInvokedTime *string `json:"LastInvokedTime,omitempty" xml:"LastInvokedTime,omitempty"`
-	// The machine code of the managed instance.
+	// The machine ID of the managed instance.
 	//
 	// example:
 	//
@@ -216,7 +218,7 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// Linux_#38~18.04.1-Ubuntu SMP Wed Jan 6 18:26:30 UTC 2021_x86_64
 	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// The time when the managed instance was registered. The time is displayed in ISO 8601 format in UTC.
+	// The time when the managed instance was registered. The time follows the ISO 8601 standard in the UTC time zone.
 	//
 	// example:
 	//
@@ -228,7 +230,7 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// rg-123******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*DescribeManagedInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -400,9 +402,9 @@ func (s *DescribeManagedInstancesResponseBodyInstances) Validate() error {
 type DescribeManagedInstancesResponseBodyInstancesTags struct {
 	// The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+	// If you use a single tag to filter resources, the resource count for that tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count for resources attached to multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
-	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -87,9 +87,9 @@ type DescribeDiagnosticMetricsResponseBodyMetrics struct {
 	//
 	// example:
 	//
-	// CPU诊断
+	// CPU diagnostics
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether a script needs to be executed in the guest OS.
+	// Specifies whether a script needs to be executed in the guest OS.
 	//
 	// example:
 	//
@@ -111,21 +111,21 @@ type DescribeDiagnosticMetricsResponseBodyMetrics struct {
 	//
 	// example:
 	//
-	// CPU诊断
+	// CPU diagnostics
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The resource type supported by the diagnostic metric.
+	// The resource supported by the diagnostic metric.
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The supported operating system. Valid values:
+	// The supported operating systems. Valid values:
 	//
 	// - Windows: Windows operating systems are supported.
 	//
 	// - Linux: Linux operating systems are supported.
 	//
-	// - All: both Windows and Linux operating systems are supported.
+	// - All: Both Windows and Linux operating systems are supported.
 	//
 	// example:
 	//

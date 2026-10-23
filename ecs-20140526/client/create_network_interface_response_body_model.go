@@ -83,7 +83,7 @@ type CreateNetworkInterfaceResponseBody struct {
 	//
 	// my-eni-name
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The ID of the account that owns the network interface controller (NIC).
+	// The ID of the account to which the network interface controller (NIC) belongs.
 	//
 	// example:
 	//
@@ -102,32 +102,32 @@ type CreateNetworkInterfaceResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-2ze88m67qx5z****
 	ResourceGroupId  *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityGroupIds *CreateNetworkInterfaceResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	// The ID of the Virtual Network Operator (VNO) to which the network interface controller (NIC) corresponds.
+	// The ID of the Virtual Network Operator (VNO) associated with the network interface controller (NIC).
 	//
 	// example:
 	//
 	// 12345678910
 	ServiceID *int64 `json:"ServiceID,omitempty" xml:"ServiceID,omitempty"`
-	// Indicates whether the user of the network interface controller (NIC) is an Alibaba Cloud service or a VNO.
+	// Indicates whether the user of the network interface controller (NIC) is a cloud service or a VNO.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not yet available.
 	//
 	// example:
 	//
 	// false
 	SourceDestCheck *bool `json:"SourceDestCheck,omitempty" xml:"SourceDestCheck,omitempty"`
-	// The status of the network interface controller (NIC).
+	// The status of the elastic network interface (ENI).
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type CreateNetworkInterfaceResponseBody struct {
 	//
 	// vsw-bp16usj2p27htro3****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the ENI belongs.
+	// The ID of the virtual private cloud (VPC) to which the ENI belongs.
 	//
 	// example:
 	//

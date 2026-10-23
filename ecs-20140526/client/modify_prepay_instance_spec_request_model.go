@@ -47,33 +47,35 @@ type iModifyPrepayInstanceSpecRequest interface {
 
 type ModifyPrepayInstanceSpecRequest struct {
 	SystemDisk *ModifyPrepayInstanceSpecRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// Specifies whether to automatically complete the payment when you upgrade the instance type. Valid values:
+	// Specifies whether to enable automatic payment when you upgrade the instance type. Valid values:
 	//
-	// - true: The payment is automatically completed.
+	// - true: enables automatic payment.
 	//
-	// - false: An order is created but the payment is not completed.
+	// - false: generates the order without deducting fees.
 	//
 	// Default value: true.
 	//
-	// > - If automatic payment is enabled, make sure that the balance of your payment method is sufficient. Otherwise, an abnormal order is generated and can only be voided.
+	// > - When automatic payment is enabled, you must ensure that your payment method balance is sufficient. Otherwise, an abnormal order is generated and can only be canceled.
 	//
-	// > - If the balance of your payment method is insufficient, set `AutoPay` to `false`. An unpaid order is generated. You can log on to the ECS console to complete the payment.
+	// > - If your payment method balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the ECS console to complete the payment.
 	//
-	// > - When `OperatorType` is set to `downgrade`, the `AutoPay` parameter is ignored.
+	// > - If the `OperatorType` parameter is set to `downgrade`, the `AutoPay` parameter is ignored.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	Disk []*ModifyPrepayInstanceSpecRequestDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
-	// The end time of the temporary instance type change. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	// The end time of the temporary change. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// [ISO 8601](https://help.aliyun.com/document_detail/25696.html)
 	//
 	// example:
 	//
@@ -87,7 +89,7 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// i-bp67acfmxazb4ph****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The target instance type for the upgrade or downgrade. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html).
+	// The target instance type for the upgrade or downgrade. For valid values, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -95,37 +97,37 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// ecs.g5.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Specifies whether to support cross-cluster upgrade or downgrade of instance types. Valid values:
+	// Specifies whether to allow cross-cluster instance type upgrade. Valid values:
 	//
-	// - true: Cross-cluster instance type changes are supported.
+	// - true: yes.
 	//
-	// - false: Cross-cluster instance type changes are not supported.
+	// - false: no.
 	//
 	// Default value: false.
 	//
-	// When the `MigrateAcrossZone` parameter is set to `true`, take note of the following items after you upgrade the Elastic Compute Service instance based on the response:
+	// If the `MigrateAcrossZone` parameter is set to `true` and you upgrade the ECS instance based on the returned information, take note of the following items:
 	//
-	// VPC-type instances: For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the disk device names and software authorization codes of the server change. For Linux instances, basic disks (cloud) are identified as xvda or xvdb, and ultra disks (cloud_efficiency) and standard SSDs (cloud_ssd) are identified as vda or vdb.
+	// VPC-connected instances: For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when you upgrade a non-I/O optimized instance to an I/O optimized instance, the disk device names and software authorization codes of the ECS instance change. For Linux instances, basic disks (cloud) are identified as xvda or xvdb, and ultra disks (cloud_efficiency) and standard SSDs (cloud_ssd) are identified as vda or vdb.
 	//
 	// example:
 	//
 	// false
 	MigrateAcrossZone *bool `json:"MigrateAcrossZone,omitempty" xml:"MigrateAcrossZone,omitempty"`
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	//
 	// example:
 	//
 	// null
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
-	// The type of the operation. Valid values:
+	// The operation type. Valid values:
 	//
-	// > This parameter is optional. The system can automatically determine whether the operation is an upgrade or a downgrade. If you specify this parameter, follow the rules below.
+	// >You do not need to specify this parameter. The system automatically determines whether to upgrade or downgrade the instance type. If you specify this parameter, follow these rules:
 	//
-	// - upgrade: upgrades the instance type. Make sure that the balance of your payment method is sufficient.
+	// - upgrade: upgrades the instance type. Make sure that your payment method balance is sufficient.
 	//
-	// - downgrade: downgrades the instance type. Set `OperatorType` to `downgrade` when the instance type specified by `InstanceType` is lower than the current instance type.
+	// - downgrade: downgrades the instance type. If the instance type specified by `InstanceType` is lower than the current instance type, set `OperatorType` to `downgrade`.
 	//
-	// > For precautions about upgrading or downgrading instance types, see the operation description section above.
+	// >For precautions about upgrading or downgrading instance types, see the preceding operation description section.
 	//
 	// example:
 	//
@@ -133,7 +135,9 @@ type ModifyPrepayInstanceSpecRequest struct {
 	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The restart time of the instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	// The time to restart the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// [ISO 8601](https://help.aliyun.com/document_detail/25696.html)
 	//
 	// example:
 	//
@@ -141,13 +145,13 @@ type ModifyPrepayInstanceSpecRequest struct {
 	RebootTime *string `json:"RebootTime,omitempty" xml:"RebootTime,omitempty"`
 	// Specifies whether to immediately restart the instance after the instance type change is complete. Valid values:
 	//
-	// - true: The instance is immediately restarted.
+	// - true: yes.
 	//
-	// - false: The instance is not immediately restarted.
+	// - false: no.
 	//
 	// Default value: false.
 	//
-	// > If the instance is in the **Stopped*	- state, the instance remains stopped even if you set `RebootWhenFinished` to `true`. No operation is performed.
+	// > If the instance is in the **Stopped*	- state, it remains in the Stopped state and no action is performed even if you set `RebootWhenFinished` to `true`.
 	//
 	// example:
 	//
@@ -351,7 +355,7 @@ type ModifyPrepayInstanceSpecRequestSystemDisk struct {
 	//
 	// - cloud_ssd: standard SSD.
 	//
-	// > This parameter is valid only when you upgrade from a [retired instance type](https://help.aliyun.com/document_detail/55263.html) to an [in-stock instance family](https://help.aliyun.com/document_detail/25378.html) and change a non-I/O optimized instance to an I/O optimized instance. For more information about how to change instance types, see [Increase Quota](https://help.aliyun.com/document_detail/25378.html).
+	// >This parameter is valid only when you upgrade from a [retired instance type](https://help.aliyun.com/document_detail/55263.html) to a [normally sold instance family](https://help.aliyun.com/document_detail/25378.html) and upgrade a non-I/O optimized instance type to an I/O optimized instance type.
 	//
 	// example:
 	//
@@ -381,19 +385,19 @@ func (s *ModifyPrepayInstanceSpecRequestSystemDisk) Validate() error {
 }
 
 type ModifyPrepayInstanceSpecRequestDisk struct {
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	//
 	// example:
 	//
 	// null
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	//
 	// example:
 	//
 	// null
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// > This parameter is not publicly available.
+	// >This parameter is not available.
 	//
 	// example:
 	//

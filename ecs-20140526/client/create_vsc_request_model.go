@@ -38,19 +38,25 @@ type iCreateVscRequest interface {
 }
 
 type CreateVscRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+	// Ensures the idempotence of the request. You can generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the Virtual Storage Channel.
+	// The description of the virtual storage channel.
 	//
 	// example:
 	//
-	// Description of the device.
+	// The description of the device
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform only a dry run. Valid values: true: sends a check request without querying resource status. The check items include whether the AccessKey pair is valid, whether the Resource Access Management (RAM) user has the required authorization, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check passes, the DryRunOperation error code is returned. false: sends a Normal request. If the request passes the check, a 2XX HTTP status code is returned and the resource status is queried. Default value: false.
+	// Specifies whether to perform a dry run on the request. Valid values:
+	//
+	// - true: sends a check request and does not query the resource status. The check items include whether the AccessKey pair is valid, whether the Resource Access Management (RAM) user has the required authorization, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+	//
+	// - false: sends a normal request. If the check succeeds, the 2XX HTTP status code is returned and the resource status is queried.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
@@ -66,7 +72,7 @@ type CreateVscRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -82,15 +88,15 @@ type CreateVscRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*CreateVscRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The name of the Virtual Storage Channel.
+	// The name of the virtual storage channel.
 	//
 	// example:
 	//
-	// Device1
+	// Device 1
 	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
-	// The VSC type. Valid values: Primary and Standard. Default value: Primary.
+	// Specifies the VSC type. Valid values: Primary and Standard. Default value: Primary.
 	//
 	// example:
 	//
@@ -237,15 +243,15 @@ func (s *CreateVscRequest) Validate() error {
 }
 
 type CreateVscRequestTag struct {
-	// The tag key of instances, cloud disks, and primary ENIs that are created by using the template version. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+	// The tag key of the instance, cloud disk, and primary ENI created by using this template version. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the command. Valid values of N: 1 to 20. The tag value can be an empty string.
+	// The tag value of the command. Valid values of N: 1 to 20. The value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	// The value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

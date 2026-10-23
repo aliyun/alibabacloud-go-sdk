@@ -70,27 +70,27 @@ type iCreateImagePipelineRequest interface {
 }
 
 type CreateImagePipelineRequest struct {
-	// The Alibaba Cloud account ID to which the destination image is shared through image sharing. Valid values of N: 1 to 20.
+	// The Alibaba Cloud account ID for image sharing of the destination image. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// 1234567890
 	AddAccount []*int64 `json:"AddAccount,omitempty" xml:"AddAccount,omitempty" type:"Repeated"`
-	// The advanced configuration.
+	// The advanced settings.
 	AdvancedOptions *CreateImagePipelineRequestAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
 	// The source image.
 	//
-	// - If `BaseImageType=IMAGE`, set this parameter to an image ID.
+	// - If BaseImageType is set to IMAGE, set this parameter to the image ID.
 	//
-	// - If `BaseImageType=IMAGE_FAMILY`, set this parameter to an image family name.
+	// - If BaseImageType is set to IMAGE_FAMILY, set this parameter to the image family name.
 	//
-	// - If `BaseImageType=OSS`, you do not need to set this parameter.
+	// - If BaseImageType is set to OSS, you do not need to specify this parameter.
 	//
 	// example:
 	//
 	// m-bp67acfmxazb4p****
 	BaseImage *string `json:"BaseImage,omitempty" xml:"BaseImage,omitempty"`
-	// The type of the source image. Valid values:
+	// The source image type. Valid values:
 	//
 	// - IMAGE: image.
 	//
@@ -112,17 +112,17 @@ type CreateImagePipelineRequest struct {
 	//
 	// COMPONENT acs:ecs:cn-hangzhou:18689161186*****:imagecomponent/ComponentName/1.*.*
 	BuildContent *string `json:"BuildContent,omitempty" xml:"BuildContent,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The value of **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to release the intermediate instance if the image fails to be built. Valid values:
+	// Specifies whether to release the intermediate instance if the image build fails. Valid values:
 	//
-	// - true: The intermediate instance is released.
+	// - true: releases the instance.
 	//
-	// - false: The intermediate instance is not released.
+	// - false: does not release the instance.
 	//
 	// Default value: true.
 	//
@@ -166,13 +166,13 @@ type CreateImagePipelineRequest struct {
 	//
 	// testImageName
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The destination image properties.
+	// The properties of the destination image.
 	ImageOptions *CreateImagePipelineRequestImageOptions `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
-	// The properties and settings for importing an image. This parameter is required when `BaseImageType=OSS`.
+	// The properties and settings of the imported image. This parameter is required when BaseImageType is set to OSS.
 	ImportImageOptions *CreateImagePipelineRequestImportImageOptions `json:"ImportImageOptions,omitempty" xml:"ImportImageOptions,omitempty" type:"Struct"`
-	// The instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query different instance types.
+	// The instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query available instance types.
 	//
-	// If you do not specify this parameter, the instance type is automatically set based on the principle of minimum vCPUs and memory, subject to the inventory of the instance type. For example, the ecs.g6.large instance type is selected by default. If the inventory is insufficient, the ecs.g6.xlarge instance type is selected.
+	// If you do not specify this parameter, the system automatically selects an instance type with the minimum number of vCPUs and memory size based on resource availability. For example, the system selects the ecs.g6.large instance type by default. If ecs.g6.large is out of stock, the system selects ecs.g6.xlarge.
 	//
 	// example:
 	//
@@ -186,9 +186,9 @@ type CreateImagePipelineRequest struct {
 	//
 	// 0
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The template name. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The template name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. It can contain letters, digits, Chinese characters, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
-	// > If you do not specify `Name`, the return value of `ImagePipelineId` is used by default.
+	// > If you do not specify `Name`, the value of `ImagePipelineId` is used by default.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type CreateImagePipelineRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether the destination image supports NVMe.
+	// Specifies whether the built destination image supports NVMe.
 	//
 	// <notice>
 	//
@@ -210,7 +210,7 @@ type CreateImagePipelineRequest struct {
 	NvmeSupport  *string `json:"NvmeSupport,omitempty" xml:"NvmeSupport,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -220,57 +220,57 @@ type CreateImagePipelineRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The image repair items.
 	//
-	// - Repair items supported for Linux:
+	// - Repair items supported by Linux:
 	//
-	//    - fstab: repairs disk mount configuration issues.
+	//    - fstab: fixes disk attach configuration issues.
 	//
-	//    - grub: repairs GRUB boot configuration issues.
+	//    - grub: fixes GRUB boot configuration issues.
 	//
-	//    - dhcp: repairs network DHCP issues.
+	//    - dhcp: fixes network DHCP issues.
 	//
-	//    - selinux: repairs Security-Enhanced Linux issues.
+	//    - selinux: fixes Security-Enhanced Linux (SELinux) issues.
 	//
-	//    - growpart: repairs root partition online auto-expansion issues.
+	//    - growpart: fixes online automatic scale-out issues of the root partition.
 	//
 	//    - cloudinit: installs the cloud-init initialization service.
 	//
-	//    - aegis: installs the China Cloud Security Center Agent service.
+	//    - aegis: installs the Security Center agent.
 	//
-	//    - nvme: repairs NVMe driver issues.
+	//    - nvme: fixes NVMe driver issues.
 	//
-	//    - virtio: repairs virtio driver issues.
+	//    - virtio: fixes virtio driver issues.
 	//
-	//    - standardizedtimezone: repairs standardized time zone issues.
+	//    - standardizedtimezone: fixes standard time zone issues.
 	//
-	// - Repair items supported for Windows:
+	// - Repair items supported by Windows:
 	//
-	//    - bcd: repairs boot configuration data file issues.
+	//    - bcd: fixes boot configuration data file issues.
 	//
-	//    - hotfix: repairs Windows patch issues.
+	//    - hotfix: fixes Windows patch issues.
 	//
-	//    - disk: repairs disk setting issues.
+	//    - disk: fixes disk Settings issues.
 	//
-	//    - update: repairs Update process issues.
+	//    - update: fixes Windows Update process issues.
 	//
-	//    - server: repairs service configuration issues.
+	//    - server: fixes service configuration issues.
 	//
-	//    - bootmgr: repairs Windows Boot Manager issues.
+	//    - bootmgr: fixes Windows Boot Manager issues.
 	//
-	//    - vminit: repairs Windows initialization Agent issues.
+	//    - vminit: fixes Windows initialization agent issues.
 	//
-	//    - osloader: repairs Windows OS Loader issues.
+	//    - osloader: fixes Windows OS Loader issues.
 	//
-	//    - virtio: repairs virtio driver issues.
+	//    - virtio: fixes virtio driver issues.
 	//
-	//    - standardizedtimezone: repairs standardized time zone issues.
+	//    - standardizedtimezone: fixes standard time zone issues.
 	RepairItem []*string `json:"RepairItem,omitempty" xml:"RepairItem,omitempty" type:"Repeated"`
-	// The repair option in the image template.
+	// The repair mode in the image template.
 	//
 	// Valid values:
 	//
 	// - Standard: standard repair mode.
 	//
-	//   The standard repair package for Linux includes the following items:
+	//   The standard repair package for Linux includes:
 	//
 	//   - GUESTOS.CloudInit
 	//
@@ -286,7 +286,7 @@ type CreateImagePipelineRequest struct {
 	//
 	//   - GUESTOS.Nvme
 	//
-	//   The standard repair package for Windows includes the following items:
+	//   The standard repair package for Windows includes:
 	//
 	//   - GUESTOS.Virtio
 	//
@@ -308,26 +308,25 @@ type CreateImagePipelineRequest struct {
 	//
 	// - All: full repair mode.
 	//
-	//   The full repair package for Linux includes all items in the standard repair package, plus the following items:
+	//   The full repair package for Linux includes the following items in addition to those in the standard repair package:
 	//
 	//   - GUESTOS.Selinux
 	//
 	//   - GUESTOS.SecurityCenterAgent
 	//
-	//   The full repair package for Windows includes all items in the standard repair package, plus the following item:
+	//   The full repair package for Windows includes the following items in addition to those in the standard repair package:
 	//
 	//   - GUESTOS.Server
 	//
-	//
 	// - Customized: custom repair mode. In this mode, the repair items in the repair package are specified by the RepairItem parameter.
 	//
-	// > As detection and repair capabilities continue to improve, the included repair items may increase. For more information about the specific meaning of each repair item, see [Overview of image detection](https://help.aliyun.com/document_detail/439819.html).
+	// > As the detection and repair capabilities improve, the included repair items may increase. For more information about the specific meanings of repair items, see [Image check overview](https://help.aliyun.com/document_detail/439819.html).
 	//
 	// example:
 	//
 	// Standard
 	RepairMode *string `json:"RepairMode,omitempty" xml:"RepairMode,omitempty"`
-	// The ID of the enterprise resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -343,7 +342,7 @@ type CreateImagePipelineRequest struct {
 	//
 	// 40
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*CreateImagePipelineRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The content of the image test template. The content size cannot exceed 16 KB. For more information about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
 	//
@@ -353,17 +352,17 @@ type CreateImagePipelineRequest struct {
 	//
 	// COMPONENT acs:ecs:cn-hangzhou:18689161186*****:imagecomponent/ComponentName/1.*.*
 	TestContent *string `json:"TestContent,omitempty" xml:"TestContent,omitempty"`
-	// The regions to which to distribute the destination image. Valid values of N: 1 to 20.
+	// The list of regions to which the destination image is distributed. Valid values of N: 1 to 20.
 	//
-	// If you do not specify this parameter, the image is created only in the current region.
+	// If you do not specify this parameter, the image is created only in the current region by default.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ToRegionId []*string `json:"ToRegionId,omitempty" xml:"ToRegionId,omitempty" type:"Repeated"`
-	// The ID of the vSwitch in the VPC.
+	// The vSwitch ID of the VPC.
 	//
-	// If you do not specify this parameter, a new VPC and vSwitch are created by default. Make sure that the VPC resource quota in your account is sufficient. For more information, see [Limits](https://help.aliyun.com/document_detail/27750.html).
+	// If you do not specify this parameter, a new VPC and vSwitch are created by default. Make sure that your account has sufficient VPC resource quotas. For more information, see [Limits](https://help.aliyun.com/document_detail/27750.html).
 	//
 	// example:
 	//
@@ -669,23 +668,23 @@ func (s *CreateImagePipelineRequest) Validate() error {
 }
 
 type CreateImagePipelineRequestAdvancedOptions struct {
-	// Specifies whether to disable the automatic suffix for the destination image name. Valid values:
+	// Specifies whether to disable the automatic addition of a suffix to the destination image name. Valid values:
 	//
-	// - disable: The automatic suffix is disabled.
+	// - disable: disables the automatic addition.
 	//
 	// example:
 	//
 	// disable
 	ImageNameSuffix *string `json:"ImageNameSuffix,omitempty" xml:"ImageNameSuffix,omitempty"`
-	// Specifies whether to retain Cloud Assistant. During the build process, the system automatically installs Cloud Assistant on the intermediate instance to run commands. You can choose whether to retain Cloud Assistant in the destination image. Valid values:
+	// Specifies whether to retain Cloud Assistant. During the build process, the system automatically installs Cloud Assistant on the intermediate instance to execute commands. You can choose whether to retain it in the built destination image. Valid values:
 	//
-	// - true: Cloud Assistant is retained.
+	// - true: retains Cloud Assistant.
 	//
-	// - false: Cloud Assistant is not retained.
+	// - false: does not retain Cloud Assistant.
 	//
 	// Default value: false.
 	//
-	// > This setting does not affect Cloud Assistant that is already included in your image.
+	// > This setting does not affect the Cloud Assistant that is pre-installed in your image.
 	//
 	// example:
 	//
@@ -730,17 +729,15 @@ type CreateImagePipelineRequestImageOptions struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination image family. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with aliyun or acs:. The name cannot contain http:// or https://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+	// The target image family. The value must be 2 to 128 characters in length. It must start with a letter or a Chinese character, and cannot start with aliyun or acs:. It cannot contain http:// or https://. It can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// family
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	// The feature properties of the destination image.
+	// The properties related to destination image features.
 	ImageFeatures *CreateImagePipelineRequestImageOptionsImageFeatures `json:"ImageFeatures,omitempty" xml:"ImageFeatures,omitempty" type:"Struct"`
-	// The prefix of the destination image name. The name must be 2 to 64 characters in length and must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
-	//
-	// The final complete image name is automatically generated by the system by concatenating the name prefix with the build task ID (`ExecutionId`) in the format of `{ImageName}_{ExecutionId}`.
+	// The prefix of the target image name. The prefix must be 2 to 64 characters in length and must start with a letter or a Chinese character. It cannot start with http:// or https://. It can contain letters, Chinese characters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The system automatically generates the final image name by concatenating the prefix and the build task ID (ExecutionId) in the {ImageName}_{ExecutionId} format.
 	//
 	// example:
 	//
@@ -822,13 +819,13 @@ func (s *CreateImagePipelineRequestImageOptions) Validate() error {
 }
 
 type CreateImagePipelineRequestImageOptionsImageFeatures struct {
-	// Specifies whether the destination image supports NVMe. Valid values:
+	// Specifies whether the built destination image supports NVMe. Valid values:
 	//
-	// - supported: Instances created from this image support the NVMe protocol.
+	// - supported: supported. This indicates that instances created from this image support the NVMe protocol.
 	//
-	// - unsupported: Instances created from this image do not support the NVMe protocol.
+	// - unsupported: not supported. This indicates that instances created from this image do not support the NVMe protocol.
 	//
-	// - auto: The system automatically detects whether your image has the NVMe driver installed. This detection occurs before the build phase. If you install or uninstall the NVMe driver during the build, the result may be inaccurate. Set this parameter to supported or unsupported based on your build content.
+	// - auto: automatic detection. The system automatically detects whether the NVMe driver is installed in your image. This detection occurs before the build phase. If you install or uninstall the NVMe driver during the build, the detection result may be inaccurate. We recommend that you set this parameter to supported or unsupported based on the build content.
 	//
 	// example:
 	//
@@ -858,13 +855,13 @@ func (s *CreateImagePipelineRequestImageOptionsImageFeatures) Validate() error {
 }
 
 type CreateImagePipelineRequestImageOptionsImageTags struct {
-	// The tag key. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag key. Valid values of N: 1 to 20. If this parameter is specified, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+	// The tag value. Valid values of N: 1 to 20. If this parameter is specified, it can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -903,11 +900,11 @@ func (s *CreateImagePipelineRequestImageOptionsImageTags) Validate() error {
 }
 
 type CreateImagePipelineRequestImportImageOptions struct {
-	// The system architecture of the system disk when a data disk snapshot is used as the image for the system disk. Valid values:
+	// The system architecture of the system disk. After you specify a data disk snapshot to create a system disk, you must use Architecture to determine the system architecture of the system disk. Valid values:
 	//
-	// - x86_64.
+	// - x86_64
 	//
-	// - arm64.
+	// - arm64
 	//
 	// Default value: x86_64.
 	//
@@ -921,11 +918,11 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	//
 	// - UEFI: UEFI boot mode.
 	//
-	// Default value: BIOS. If `Architecture=arm64`, the default value is UEFI, and only UEFI can be specified.
+	// Default value: BIOS. If Architecture is set to arm64, the default value is UEFI, and you can only set this parameter to UEFI.
 	//
 	// <notice>
 	//
-	// To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot modes supported by the destination image before you set this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
+	// To prevent instances from failing to start due to unsupported boot modes, make sure that you understand the boot modes supported by the destination image before you specify this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
 	//
 	// </notice>
 	//
@@ -939,13 +936,13 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The information about the custom image.
+	// The list of custom image information to be created.
 	//
-	// - When N=1, the system disk is specified.
+	// - If N is set to 1, it indicates the system disk.
 	//
-	// - When N=2 to 17, data disks are specified.
+	// - If N is set to 2 to 17, it indicates data disks.
 	DiskDeviceMappings []*CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Repeated"`
-	// The image feature properties.
+	// The properties related to image features.
 	Features *CreateImagePipelineRequestImportImageOptionsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Struct"`
 	// The name of the imported image.
 	//
@@ -953,15 +950,15 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	//
 	// testImageName
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The tags of the image.
+	// The list of tags for the image.
 	ImportImageTags []*CreateImagePipelineRequestImportImageOptionsImportImageTags `json:"ImportImageTags,omitempty" xml:"ImportImageTags,omitempty" type:"Repeated"`
 	// The license type used to activate the operating system after the image is imported. Valid values:
 	//
-	// - Auto: Alibaba Cloud detects the source operating system and assigns a license. In Auto mode, the system first searches for a license from an official Alibaba Cloud channel based on the `Platform` you specified and assigns it to the imported image. If no such license is available, the system switches to the BYOL (Bring Your Own License) method.
+	// - Auto: Alibaba Cloud detects the source operating system and assigns a license. In auto mode, the system first checks whether the Platform you specified has a license from official Alibaba Cloud channels and assigns it to the imported image. If no such license is available, the system switches to the Bring Your Own License (BYOL) method.
 	//
-	// - Aliyun: A license from an official Alibaba Cloud channel is used based on the `Platform` you specified.
+	// - Aliyun: uses a license from official Alibaba Cloud channels based on the Platform you specified.
 	//
-	// - BYOL: The license that comes with the source operating system is used. When you use BYOL, make sure that your license key supports use on Alibaba Cloud.
+	// - BYOL: uses the license provided by the source operating system. If you use BYOL, you must ensure that your license key is supported on Alibaba Cloud.
 	//
 	// Default value: Auto.
 	//
@@ -971,9 +968,9 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	LicenseType *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
 	// The operating system type. Valid values:
 	//
-	// - windows.
+	// - windows
 	//
-	// - linux.
+	// - linux
 	//
 	// Default value: linux.
 	//
@@ -1037,13 +1034,17 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	//
 	// - Other Windows
 	//
-	// Default value: Others Linux when the operating system type is Linux. Otherwise, the default value is Other Windows.
+	// Default value: Others Linux if the operating system type is Linux, or Other Windows if the operating system type is Windows.
 	//
 	// example:
 	//
 	// Aliyun
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// <notice>
+	//
 	// **[Deprecated]*	- Use ImportImageOptions.RetentionStrategy instead.
+	//
+	// </notice>
 	//
 	// example:
 	//
@@ -1051,13 +1052,13 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	RetainImportedImage *bool `json:"RetainImportedImage,omitempty" xml:"RetainImportedImage,omitempty"`
 	// The data retention policy for the imported image. Valid values:
 	//
-	// - RetainOnlySuccessful: The image is retained only if the build succeeds.
+	// - RetainOnlySuccessful: retains the image only if the build succeeds.
 	//
-	// - RetainOnlyFailed: The image is retained only if the build fails.
+	// - RetainOnlyFailed: retains the image only if the build fails.
 	//
-	// - RetainAlways: The image is always retained regardless of the build result.
+	// - RetainAlways: always retains the image regardless of the build result.
 	//
-	// - RetainNever: The image is never retained regardless of the build result.
+	// - RetainNever: never retains the image regardless of the build result.
 	//
 	// Default value: RetainNever.
 	//
@@ -1065,7 +1066,7 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	//
 	// RetainAlways
 	RetentionStrategy *string `json:"RetentionStrategy,omitempty" xml:"RetentionStrategy,omitempty"`
-	// The name of the RAM role used to import the image.
+	// The name of the RAM role used when the image is imported.
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -1224,11 +1225,11 @@ func (s *CreateImagePipelineRequestImportImageOptions) Validate() error {
 type CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings struct {
 	// The size of the custom image after the image is imported.
 	//
-	// The size consists of the system disk and data disks. Make sure that the system disk size is greater than or equal to the size of the imported image file. Valid values:
+	// The space consists of the system disk and data disks. You must ensure that the size of the system disk is greater than or equal to the size of the imported image file. Valid values:
 	//
-	// - When N=1, the system disk is specified. Valid values: 1 GiB to 2048 GiB.
+	// - If N is set to 1, it indicates the system disk. Valid values: 1 to 2048. Unit: GiB.
 	//
-	// - When N=2 to 17, data disks are specified. Valid values: 1 GiB to 2048 GiB.
+	// - If N is set to 2 to 17, it indicates data disks. Valid values: 1 to 2048. Unit: GiB.
 	//
 	// After you upload the source image file to OSS, you can view the size of the image file in the OSS bucket.
 	//
@@ -1238,25 +1239,25 @@ type CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings struct {
 	DiskImageSize *int32 `json:"DiskImageSize,omitempty" xml:"DiskImageSize,omitempty"`
 	// The image format. Valid values:
 	//
-	// - RAW.
+	// - RAW
 	//
-	// - VHD.
+	// - VHD
 	//
-	// - QCOW2.
+	// - QCOW2
 	//
-	// Default value: empty, which indicates that Alibaba Cloud automatically detects the image format. The detected format prevails.
+	// Default value: none. This indicates that Alibaba Cloud automatically detects the image format, and the detected format prevails.
 	//
 	// example:
 	//
 	// RAW
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The OSS bucket in which the image file is stored.
+	// The OSS bucket where the image file is stored.
 	//
 	// example:
 	//
 	// ecsimageos
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
-	// The name (key) of the image file that is stored in the OSS bucket after the image is uploaded to OSS.
+	// The name (key) of the image file saved in the OSS bucket after the image is uploaded.
 	//
 	// example:
 	//
@@ -1315,9 +1316,9 @@ func (s *CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings) Validat
 type CreateImagePipelineRequestImportImageOptionsFeatures struct {
 	// The metadata access mode of the image. Valid values:
 	//
-	// - v1: When you create an ECS instance from this image, you cannot set the metadata access mode to "hardened mode only".
+	// - v1: When you create an ECS instance from this image, you cannot set the metadata access mode to "Reinforced mode only".
 	//
-	// - v2: When you create an ECS instance from this image, you can set the metadata access mode to "hardened mode only".
+	// - v2: When you create an ECS instance from this image, you can set the metadata access mode to "Reinforced mode only".
 	//
 	// Default value: v1.
 	//
@@ -1327,9 +1328,9 @@ type CreateImagePipelineRequestImportImageOptionsFeatures struct {
 	ImdsSupport *string `json:"ImdsSupport,omitempty" xml:"ImdsSupport,omitempty"`
 	// Specifies whether the imported original image supports NVMe. Valid values:
 	//
-	// - supported: Instances created from this image support the NVMe protocol.
+	// - supported: supported. This indicates that instances created from this image support the NVMe protocol.
 	//
-	// - unsupported: Instances created from this image do not support the NVMe protocol.
+	// - unsupported: not supported. This indicates that instances created from this image do not support the NVMe protocol.
 	//
 	// Default value: unsupported.
 	//
@@ -1415,13 +1416,13 @@ func (s *CreateImagePipelineRequestImportImageOptionsImportImageTags) Validate()
 }
 
 type CreateImagePipelineRequestTag struct {
-	// The tag key. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag key. Valid values of N: 1 to 20. If this parameter is specified, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+	// The tag value. Valid values of N: 1 to 20. If this parameter is specified, it can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

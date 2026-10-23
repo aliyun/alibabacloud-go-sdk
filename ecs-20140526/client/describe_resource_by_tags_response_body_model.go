@@ -22,31 +22,11 @@ type iDescribeResourceByTagsResponseBody interface {
 }
 
 type DescribeResourceByTagsResponseBody struct {
-	// The page number of the results.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 1C1E5359-71D7-44D8-8FAA-0327B549157X
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources *DescribeResourceByTagsResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// The total number of returned resources.
-	//
-	// example:
-	//
-	// 8
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources  *DescribeResourceByTagsResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeResourceByTagsResponseBody) String() string {

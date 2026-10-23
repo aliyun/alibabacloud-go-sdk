@@ -22,7 +22,7 @@ type ModifyDiskDeploymentResponseBody struct {
 	//
 	// D69846D9-F17F-51C0-8AC6-B4B71777****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID of the disk migration.
+	// The ID of the disk migration task.
 	//
 	// example:
 	//
