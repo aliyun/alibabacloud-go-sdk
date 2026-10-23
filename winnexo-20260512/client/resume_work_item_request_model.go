@@ -18,7 +18,7 @@ type iResumeWorkItemRequest interface {
 }
 
 type ResumeWorkItemRequest struct {
-	// 协作空间 ID
+	// The collaboration space ID.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type ResumeWorkItemRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the caller\\"s default tenant is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 工作项 ID
+	// The work item ID.
 	//
 	// This parameter is required.
 	//

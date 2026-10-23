@@ -22,31 +22,31 @@ type iGetAgentWorkLogRequest interface {
 }
 
 type GetAgentWorkLogRequest struct {
-	// 可选节点 key
+	// The optional node key.
 	//
 	// example:
 	//
 	// step_1
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 页码，从 1 开始
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页条数，最大 100
+	// The number of entries per page. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 租户ID，缺省使用调用方默认租户
+	// The tenant ID. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 工作项ID
+	// The work item ID.
 	//
 	// This parameter is required.
 	//

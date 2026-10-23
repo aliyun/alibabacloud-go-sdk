@@ -18,7 +18,7 @@ type iSubmitTodoRequest interface {
 }
 
 type SubmitTodoRequest struct {
-	// 作答数组（question 原文须与待办问题对齐）
+	// The array of answers. The original text of the question must match the to-do question.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type SubmitTodoRequest struct {
 	//
 	// example
 	Answers []*SubmitTodoRequestAnswers `json:"answers,omitempty" xml:"answers,omitempty" type:"Repeated"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 待办ID
+	// The ID of the to-do item.
 	//
 	// This parameter is required.
 	//
@@ -91,7 +91,7 @@ func (s *SubmitTodoRequest) Validate() error {
 }
 
 type SubmitTodoRequestAnswers struct {
-	// 作答值数组
+	// The array of answer values.
 	//
 	// This parameter is required.
 	//
@@ -99,13 +99,13 @@ type SubmitTodoRequestAnswers struct {
 	//
 	// example
 	Answer []*string `json:"answer,omitempty" xml:"answer,omitempty" type:"Repeated"`
-	// 对应 questions[].question 原文
+	// The original text that corresponds to questions[].question.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 是否通过审批
+	// Whether to approve
 	Question *string `json:"question,omitempty" xml:"question,omitempty"`
 }
 

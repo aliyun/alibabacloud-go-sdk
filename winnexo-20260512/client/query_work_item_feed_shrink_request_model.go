@@ -34,13 +34,13 @@ type iQueryWorkItemFeedShrinkRequest interface {
 }
 
 type QueryWorkItemFeedShrinkRequest struct {
-	// 业务状态筛选（七态）
+	// The business status filter (seven states).
 	//
 	// example:
 	//
 	// example
 	BusinessStatusesShrink *string `json:"businessStatuses,omitempty" xml:"businessStatuses,omitempty"`
-	// 协作空间 ID
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -48,55 +48,55 @@ type QueryWorkItemFeedShrinkRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 翻页游标，取上次响应的 nextCursor
+	// The pagination cursor. Use the nextCursor value from the previous response.
 	//
 	// example:
 	//
 	// example
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
-	// 工作项类型筛选
+	// The work item type filter.
 	//
 	// example:
 	//
 	// example
 	ItemTypesShrink *string `json:"itemTypes,omitempty" xml:"itemTypes,omitempty"`
-	// 标题/描述模糊搜索关键词
+	// The keyword for fuzzy search in the title or description.
 	//
 	// example:
 	//
 	// example
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 单页条数（1~100）
+	// The number of entries per page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 优先级筛选
+	// The priority filter.
 	//
 	// example:
 	//
 	// example
 	PrioritiesShrink *string `json:"priorities,omitempty" xml:"priorities,omitempty"`
-	// 个人范围筛选
+	// The personal scope filter.
 	//
 	// example:
 	//
 	// ASSIGNED_TO_ME
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 来源任务ID；指定时返回该任务平铺子项
+	// The ID of the source task. If specified, the flat sub-items of the task are returned.
 	//
 	// example:
 	//
 	// example
 	SourceTaskId *string `json:"sourceTaskId,omitempty" xml:"sourceTaskId,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 视图：FLAT 平铺 / TREE 任务分组
+	// The view type. Valid values: FLAT (flat view) and TREE (task grouping).
 	//
 	// example:
 	//

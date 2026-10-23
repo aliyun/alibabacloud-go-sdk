@@ -22,31 +22,31 @@ type iUpdateMemoryAutoExtractionSwitchResponseBody interface {
 }
 
 type UpdateMemoryAutoExtractionSwitchResponseBody struct {
-	// 本次同步清空的自动记忆文件数量；未清空或无可清空记忆时为 0
+	// The number of automatic memory files cleared in this synchronous operation. The value is 0 if no files are cleared or no memories are available to be cleared.
 	//
 	// example:
 	//
 	// 3
 	ClearedCount *int64 `json:"clearedCount,omitempty" xml:"clearedCount,omitempty"`
-	// 业务状态码；成功为 200，失败时为对应错误码
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 更新后的自动记忆拾取开关状态；true 为开启，false 为关闭
+	// The updated status of the automatic memory collection toggle. A value of true indicates that the feature is enabled, and a value of false indicates that the feature is disabled.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// 错误描述；成功时为空字符串，失败时返回具体原因
+	// The error description.
 	//
 	// example:
 	//
-	// 当前用户不是群组 cg_12345 的活跃成员
+	// The current user is not an active member of the group cg_12345
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID，用于定位本次调用
+	// The request tracking ID.
 	//
 	// example:
 	//

@@ -26,39 +26,39 @@ type iListAppResourcePermissionRecordsResponseBody interface {
 }
 
 type ListAppResourcePermissionRecordsResponseBody struct {
-	// 业务状态码；成功为 200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 当前页授权记录
+	// The authorization records on the current page.
 	Items []*ListAppResourcePermissionRecordsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述；成功时为空
+	// The error message. This parameter is empty if the request is successful.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 页码
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页条数
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 记录总数
+	// The total number of records.
 	//
 	// example:
 	//
@@ -151,73 +151,73 @@ func (s *ListAppResourcePermissionRecordsResponseBody) Validate() error {
 }
 
 type ListAppResourcePermissionRecordsResponseBodyItems struct {
-	// 创建时间
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-10-16T10:30:00+08:00
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 到期时间
+	// The expiration time.
 	//
 	// example:
 	//
 	// 2026-12-31T23:59:59+08:00
 	ExpireAt *string `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
-	// 授权人平台用户 ID
+	// The platform user ID of the grantor.
 	//
 	// example:
 	//
 	// 10086
 	GrantedBy *string `json:"grantedBy,omitempty" xml:"grantedBy,omitempty"`
-	// 主体 ID
+	// The grantee ID.
 	//
 	// example:
 	//
 	// 10086
 	GranteeId *string `json:"granteeId,omitempty" xml:"granteeId,omitempty"`
-	// 主体名称
+	// The grantee name.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	GranteeName *string `json:"granteeName,omitempty" xml:"granteeName,omitempty"`
-	// 跨租户 USER 所属租户
+	// The ID of the tenant to which the cross-tenant user belongs.
 	//
 	// example:
 	//
 	// 10000
 	GranteeTenantId *string `json:"granteeTenantId,omitempty" xml:"granteeTenantId,omitempty"`
-	// 主体类型
+	// The grantee type.
 	//
 	// example:
 	//
 	// USER
 	GranteeType *string `json:"granteeType,omitempty" xml:"granteeType,omitempty"`
-	// 权限点
+	// The permission.
 	//
 	// example:
 	//
 	// APP/VIEW
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// 权限记录 ID
+	// The ID of the permission record.
 	//
 	// example:
 	//
 	// 1001
 	PermissionId *int64 `json:"permissionId,omitempty" xml:"permissionId,omitempty"`
-	// 资源键
+	// The resource key.
 	//
 	// example:
 	//
 	// app.demo.resource_1
 	ResourceKey *string `json:"resourceKey,omitempty" xml:"resourceKey,omitempty"`
-	// 资源类型
+	// The resource type.
 	//
 	// example:
 	//
 	// APP_RESOURCE
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 更新时间
+	// The update time.
 	//
 	// example:
 	//

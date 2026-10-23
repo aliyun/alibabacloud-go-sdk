@@ -32,57 +32,57 @@ type iListTodosResponseBody interface {
 }
 
 type ListTodosResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 是否还有更多数据
+	// Indicates whether more data is available.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// 当前页待办列表
+	// The list of to-do items on the current page.
 	Items []*ListTodosResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 本次生效的单页最大返回数量
+	// The effective maximum number of entries to return per page for the current request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 下一页翻页令牌；无更多数据时为空字符串
+	// The pagination token for the next page. This field is an empty string if no more data is available.
 	//
 	// example:
 	//
 	// example
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 当前页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 生效单页条数
+	// The effective number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 筛选条件下可见总数
+	// The total number of visible items under the filter conditions.
 	//
 	// example:
 	//
@@ -202,105 +202,105 @@ func (s *ListTodosResponseBody) Validate() error {
 }
 
 type ListTodosResponseBodyItems struct {
-	// 处理人数量
+	// The number of assignees.
 	//
 	// example:
 	//
 	// 2
 	AssigneeCount *int64 `json:"assigneeCount,omitempty" xml:"assigneeCount,omitempty"`
-	// 完成时间（北京时间 YYYY-MM-DD HH:mm:ss）
+	// The completion time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	CompletedAt *string `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// 完成人用户ID；未完成为空
+	// The user ID of the user who completed the item. This field is empty if the item is not completed.
 	//
 	// example:
 	//
 	// 42
 	CompletedByUserId *string `json:"completedByUserId,omitempty" xml:"completedByUserId,omitempty"`
-	// 完成人姓名；未完成为空
+	// The name of the user who completed the item. This field is empty if the item is not completed.
 	//
 	// example:
 	//
-	// 张三
+	// John Doe
 	CompletedByUserName *string `json:"completedByUserName,omitempty" xml:"completedByUserName,omitempty"`
-	// 创建时间（北京时间 YYYY-MM-DD HH:mm:ss）
+	// The creation time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 最后修改时间（北京时间 YYYY-MM-DD HH:mm:ss）
+	// The last modification time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 调用者是否已读
+	// Indicates whether the caller has read the item.
 	//
 	// example:
 	//
 	// false
 	IsRead *bool `json:"isRead,omitempty" xml:"isRead,omitempty"`
-	// 发出该待办的 assistant 消息ID；无会话来源为空
+	// The message ID of the assistant that sent the to-do item. This field is empty if there is no conversation source.
 	//
 	// example:
 	//
 	// msg-1
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// 调用者的处理人行状态
+	// The action status of the caller as an assignee.
 	//
 	// example:
 	//
 	// PENDING
 	MyAssigneeStatus *string `json:"myAssigneeStatus,omitempty" xml:"myAssigneeStatus,omitempty"`
-	// 调用者的列表展示状态
+	// The list display status for the caller.
 	//
 	// example:
 	//
 	// TODO
 	MyDisplayState *string `json:"myDisplayState,omitempty" xml:"myDisplayState,omitempty"`
-	// 优先级
+	// The priority.
 	//
 	// example:
 	//
 	// HIGH
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// 问题数量
+	// The number of questions.
 	//
 	// example:
 	//
 	// 1
 	QuestionCount *int64 `json:"questionCount,omitempty" xml:"questionCount,omitempty"`
-	// 问题摘要列表
+	// The list of question summaries.
 	QuestionSummaries []*string `json:"questionSummaries,omitempty" xml:"questionSummaries,omitempty" type:"Repeated"`
-	// 来源上下文（创建时原样透传）
+	// The source context. This context is passed through as-is during creation.
 	//
 	// example:
 	//
 	// source=openapi
 	SourceContext map[string]interface{} `json:"sourceContext,omitempty" xml:"sourceContext,omitempty"`
-	// 待办来源类型
+	// The source type of the to-do item.
 	//
 	// example:
 	//
 	// WORKFLOW
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 待办主状态
+	// The primary status of the to-do item.
 	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 待办标题
+	// The to-do title.
 	//
 	// example:
 	//
-	// 治理审批
+	// Governance approval
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 待办ID
+	// The to-do ID.
 	//
 	// example:
 	//

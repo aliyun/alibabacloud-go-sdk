@@ -22,13 +22,13 @@ type iCreateGraphRequest interface {
 }
 
 type CreateGraphRequest struct {
-	// 业务说明（可选）
+	// The business description of the graph. If not configured, it is an empty string.
 	//
 	// example:
 	//
-	// 客户域语义图谱
+	// Customer domain semantic graph
 	BusinessProfile *string `json:"businessProfile,omitempty" xml:"businessProfile,omitempty"`
-	// 绑定的数据源 ID（控制台已创建的 RDB 类数据源）
+	// The data source ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type CreateGraphRequest struct {
 	//
 	// 198001
 	DataSourceId *int64 `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	// 图谱展示名（可选，租户内大小写不敏感唯一，最多200字）
+	// The cluster name.
 	//
 	// example:
 	//
-	// CRM 图谱
+	// CRM Graph
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 图谱名称，字母开头+字母/数字/下划线，长度不超过64，租户内唯一
+	// The graph name.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateGraphRequest struct {
 	//
 	// crm_graph
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iBatchCancelTodosResponseBody interface {
 }
 
 type BatchCancelTodosResponseBody struct {
-	// 实际作废条数（幂等重复调用为 0）
+	// The actual number of canceled items. The value is 0 for idempotent repeated calls.
 	//
 	// example:
 	//
 	// 2
 	CancelledCount *int64 `json:"cancelledCount,omitempty" xml:"cancelledCount,omitempty"`
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//

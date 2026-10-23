@@ -34,13 +34,13 @@ type iListWorkItemsRequest interface {
 }
 
 type ListWorkItemsRequest struct {
-	// 业务状态筛选（七态）
+	// The business statuses used for filtering.
 	//
 	// example:
 	//
 	// example
 	BusinessStatuses []*string `json:"businessStatuses,omitempty" xml:"businessStatuses,omitempty" type:"Repeated"`
-	// 协作空间 ID
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -48,55 +48,55 @@ type ListWorkItemsRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 工作项类型筛选
+	// The work item types used for filtering.
 	//
 	// example:
 	//
 	// example
 	ItemTypes []*string `json:"itemTypes,omitempty" xml:"itemTypes,omitempty" type:"Repeated"`
-	// 标题/描述模糊搜索关键词
+	// The keyword for fuzzy search in the title or description.
 	//
 	// example:
 	//
 	// example
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 单页最大返回数量（1~100）；传入时优先于 pageSize
+	// The maximum number of entries to return per page. Valid values: 1 to 100. This parameter takes precedence over pageSize if both are specified.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 翻页令牌，取上次响应返回的 nextToken；传入时优先于 page
+	// The pagination token. Obtain the token from the nextToken parameter in the previous response. This parameter takes precedence over page if both are specified.
 	//
 	// example:
 	//
 	// example
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 页码；传入 nextToken 时忽略
+	// The page number. This parameter is ignored if nextToken is specified.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页条数（1~100）
+	// The number of entries per page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 优先级筛选
+	// The priorities used for filtering.
 	//
 	// example:
 	//
 	// example
 	Priorities []*string `json:"priorities,omitempty" xml:"priorities,omitempty" type:"Repeated"`
-	// 个人范围筛选
+	// The personal scope used for filtering.
 	//
 	// example:
 	//
 	// ASSIGNED_TO_ME
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iBatchCancelTodosRequest interface {
 }
 
 type BatchCancelTodosRequest struct {
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 待办ID列表（1~100）
+	// The list of to-do IDs. You can specify 1 to 100 IDs.
 	//
 	// This parameter is required.
 	//

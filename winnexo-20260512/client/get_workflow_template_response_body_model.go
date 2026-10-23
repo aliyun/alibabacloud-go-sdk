@@ -15,6 +15,8 @@ type iGetWorkflowTemplateResponseBody interface {
 	GetCreatedByUserId() *int64
 	SetDescription(v string) *GetWorkflowTemplateResponseBody
 	GetDescription() *string
+	SetEffectiveVersion(v string) *GetWorkflowTemplateResponseBody
+	GetEffectiveVersion() *string
 	SetGmtCreate(v string) *GetWorkflowTemplateResponseBody
 	GetGmtCreate() *string
 	SetGmtModified(v string) *GetWorkflowTemplateResponseBody
@@ -29,69 +31,103 @@ type iGetWorkflowTemplateResponseBody interface {
 	GetSteps() []*GetWorkflowTemplateResponseBodySteps
 	SetTemplateId(v string) *GetWorkflowTemplateResponseBody
 	GetTemplateId() *string
+	SetVersion(v string) *GetWorkflowTemplateResponseBody
+	GetVersion() *string
+	SetVersionDescription(v string) *GetWorkflowTemplateResponseBody
+	GetVersionDescription() *string
+	SetVersionStatus(v string) *GetWorkflowTemplateResponseBody
+	GetVersionStatus() *string
 }
 
 type GetWorkflowTemplateResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 创建人用户ID
+	// The user ID of the creator.
 	//
 	// example:
 	//
 	// 1
 	CreatedByUserId *int64 `json:"createdByUserId,omitempty" xml:"createdByUserId,omitempty"`
-	// 模板描述
+	// The description of the template.
 	//
 	// example:
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 创建时间(ISO8601)
+	// The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items.
+	//
+	// example:
+	//
+	// v1
+	EffectiveVersion *string `json:"effectiveVersion,omitempty" xml:"effectiveVersion,omitempty"`
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
 	// example
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间(ISO8601)
+	// The modification time in ISO 8601 format.
 	//
 	// example:
 	//
 	// example
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 模板名称
+	// The name of the template.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 有序步骤
+	// The ordered steps.
 	//
 	// example:
 	//
 	// example
 	Steps []*GetWorkflowTemplateResponseBodySteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
-	// 模板ID
+	// The ID of the template.
 	//
 	// example:
 	//
 	// tpl_example
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// The version number to which the returned content belongs.
+	//
+	// example:
+	//
+	// v1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The change description for this version. If this field is empty for v1, the template description can be displayed.
+	//
+	// example:
+	//
+	// Added a review step
+	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
+	// The version status. Valid values:
+	//
+	// - DRAFT: Draft.
+	//
+	// - SUBMITTED: Submitted.
+	//
+	// example:
+	//
+	// SUBMITTED
+	VersionStatus *string `json:"versionStatus,omitempty" xml:"versionStatus,omitempty"`
 }
 
 func (s GetWorkflowTemplateResponseBody) String() string {
@@ -112,6 +148,10 @@ func (s *GetWorkflowTemplateResponseBody) GetCreatedByUserId() *int64 {
 
 func (s *GetWorkflowTemplateResponseBody) GetDescription() *string {
 	return s.Description
+}
+
+func (s *GetWorkflowTemplateResponseBody) GetEffectiveVersion() *string {
+	return s.EffectiveVersion
 }
 
 func (s *GetWorkflowTemplateResponseBody) GetGmtCreate() *string {
@@ -142,6 +182,18 @@ func (s *GetWorkflowTemplateResponseBody) GetTemplateId() *string {
 	return s.TemplateId
 }
 
+func (s *GetWorkflowTemplateResponseBody) GetVersion() *string {
+	return s.Version
+}
+
+func (s *GetWorkflowTemplateResponseBody) GetVersionDescription() *string {
+	return s.VersionDescription
+}
+
+func (s *GetWorkflowTemplateResponseBody) GetVersionStatus() *string {
+	return s.VersionStatus
+}
+
 func (s *GetWorkflowTemplateResponseBody) SetCode(v string) *GetWorkflowTemplateResponseBody {
 	s.Code = &v
 	return s
@@ -154,6 +206,11 @@ func (s *GetWorkflowTemplateResponseBody) SetCreatedByUserId(v int64) *GetWorkfl
 
 func (s *GetWorkflowTemplateResponseBody) SetDescription(v string) *GetWorkflowTemplateResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *GetWorkflowTemplateResponseBody) SetEffectiveVersion(v string) *GetWorkflowTemplateResponseBody {
+	s.EffectiveVersion = &v
 	return s
 }
 
@@ -192,6 +249,21 @@ func (s *GetWorkflowTemplateResponseBody) SetTemplateId(v string) *GetWorkflowTe
 	return s
 }
 
+func (s *GetWorkflowTemplateResponseBody) SetVersion(v string) *GetWorkflowTemplateResponseBody {
+	s.Version = &v
+	return s
+}
+
+func (s *GetWorkflowTemplateResponseBody) SetVersionDescription(v string) *GetWorkflowTemplateResponseBody {
+	s.VersionDescription = &v
+	return s
+}
+
+func (s *GetWorkflowTemplateResponseBody) SetVersionStatus(v string) *GetWorkflowTemplateResponseBody {
+	s.VersionStatus = &v
+	return s
+}
+
 func (s *GetWorkflowTemplateResponseBody) Validate() error {
 	if s.Steps != nil {
 		for _, item := range s.Steps {
@@ -206,55 +278,65 @@ func (s *GetWorkflowTemplateResponseBody) Validate() error {
 }
 
 type GetWorkflowTemplateResponseBodySteps struct {
-	// 模型档位
+	// The model tier.
 	//
 	// example:
 	//
 	// standard
 	ModelMode *string `json:"modelMode,omitempty" xml:"modelMode,omitempty"`
-	// 步骤名称
+	// The name of the step.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 智能体负责人名称
+	// The name of the agent owner.
 	//
 	// example:
 	//
 	// example
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
-	// 负责人类型：MEMBER 人工 / AGENT 智能体
+	// The owner type. Valid values:
+	//
+	// - MEMBER: Human.
+	//
+	// - AGENT: Agent.
 	//
 	// example:
 	//
 	// MEMBER
 	OwnerType *string `json:"ownerType,omitempty" xml:"ownerType,omitempty"`
-	// 人工负责人用户ID
+	// The user ID of the human owner.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// 审核人用户ID列表
+	// The list of user IDs of the reviewers.
 	//
 	// example:
 	//
 	// example
 	ReviewerUserIds []*int64 `json:"reviewerUserIds,omitempty" xml:"reviewerUserIds,omitempty" type:"Repeated"`
-	// 步骤顺序
+	// The order of the step.
 	//
 	// example:
 	//
 	// 1
 	SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// 步骤处理说明
+	// The processing instructions for the step.
 	//
 	// example:
 	//
 	// example
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// 步骤ID
+	// The array of structured segments for the step instructions. Supported segment types include text, mention, skill, app, files, and web_search. The fields and nested attachments of each segment are preserved exactly as returned by the backend.
+	//
+	// example:
+	//
+	// [{"type":"text","content":"Organize input materials"}]
+	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
+	// The ID of the step.
 	//
 	// example:
 	//
@@ -302,6 +384,10 @@ func (s *GetWorkflowTemplateResponseBodySteps) GetSpecification() *string {
 	return s.Specification
 }
 
+func (s *GetWorkflowTemplateResponseBodySteps) GetSpecificationJson() []map[string]interface{} {
+	return s.SpecificationJson
+}
+
 func (s *GetWorkflowTemplateResponseBodySteps) GetStepId() *string {
 	return s.StepId
 }
@@ -343,6 +429,11 @@ func (s *GetWorkflowTemplateResponseBodySteps) SetSortOrder(v int64) *GetWorkflo
 
 func (s *GetWorkflowTemplateResponseBodySteps) SetSpecification(v string) *GetWorkflowTemplateResponseBodySteps {
 	s.Specification = &v
+	return s
+}
+
+func (s *GetWorkflowTemplateResponseBodySteps) SetSpecificationJson(v []map[string]interface{}) *GetWorkflowTemplateResponseBodySteps {
+	s.SpecificationJson = v
 	return s
 }
 

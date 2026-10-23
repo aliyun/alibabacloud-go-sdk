@@ -108,289 +108,289 @@ type iResumeWorkItemResponseBody interface {
 }
 
 type ResumeWorkItemResponseBody struct {
-	// 验收标准
+	// The acceptance criteria.
 	//
 	// example:
 	//
 	// example
 	AcceptanceCriteria *string `json:"acceptanceCriteria,omitempty" xml:"acceptanceCriteria,omitempty"`
-	// 已应用的状态版本
+	// The applied status version.
 	//
 	// example:
 	//
 	// 1
 	AppliedStatusVersion *int64 `json:"appliedStatusVersion,omitempty" xml:"appliedStatusVersion,omitempty"`
-	// 输入附件列表
+	// The list of input attachments.
 	//
 	// example:
 	//
 	// example
 	Attachments []*ResumeWorkItemResponseBodyAttachments `json:"attachments,omitempty" xml:"attachments,omitempty" type:"Repeated"`
-	// 业务状态（七态）
+	// The business status (seven states).
 	//
 	// example:
 	//
 	// PROCESSING
 	BusinessStatus *string `json:"businessStatus,omitempty" xml:"businessStatus,omitempty"`
-	// 调用者是否可删除
+	// Indicates whether the caller can delete this item.
 	//
 	// example:
 	//
 	// false
 	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
-	// 调用者是否可管理
+	// Indicates whether the caller can manage this item.
 	//
 	// example:
 	//
 	// false
 	CanManage *bool `json:"canManage,omitempty" xml:"canManage,omitempty"`
-	// 是否可独立调整可见范围
+	// Indicates whether the visibility scope can be adjusted independently.
 	//
 	// example:
 	//
 	// false
 	CanManageVisibility *bool `json:"canManageVisibility,omitempty" xml:"canManageVisibility,omitempty"`
-	// 调用者是否可重命名
+	// Indicates whether the caller can rename this item.
 	//
 	// example:
 	//
 	// false
 	CanRename *bool `json:"canRename,omitempty" xml:"canRename,omitempty"`
-	// 业务状态码；成功为200
+	// The business status code. 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 协作空间ID
+	// The collaboration space ID.
 	//
 	// example:
 	//
 	// example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 协作人用户ID列表
+	// The list of collaborator user IDs.
 	//
 	// example:
 	//
 	// example
 	CollaboratorUserIds []*int64 `json:"collaboratorUserIds,omitempty" xml:"collaboratorUserIds,omitempty" type:"Repeated"`
-	// 关联会话ID
+	// The associated conversation ID.
 	//
 	// example:
 	//
 	// example
 	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
-	// 创建时间(ISO8601)
+	// The creation time, in ISO 8601 format.
 	//
 	// example:
 	//
 	// example
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 创建人用户ID
+	// The user ID of the creator.
 	//
 	// example:
 	//
 	// 1
 	CreatedByUserId *int64 `json:"createdByUserId,omitempty" xml:"createdByUserId,omitempty"`
-	// 创建来源：DEFAULT/TASK
+	// The creation source. Valid values: DEFAULT, TASK.
 	//
 	// example:
 	//
 	// DEFAULT
 	CreationType *string `json:"creationType,omitempty" xml:"creationType,omitempty"`
-	// 当前物理计划ID
+	// The current physical plan ID.
 	//
 	// example:
 	//
 	// example
 	CurrentPlanId *string `json:"currentPlanId,omitempty" xml:"currentPlanId,omitempty"`
-	// 当前修订号
+	// The current revision number.
 	//
 	// example:
 	//
 	// 1
 	CurrentRevision *int64 `json:"currentRevision,omitempty" xml:"currentRevision,omitempty"`
-	// 当前运行ID
+	// The current run ID.
 	//
 	// example:
 	//
 	// example
 	CurrentRunId *string `json:"currentRunId,omitempty" xml:"currentRunId,omitempty"`
-	// 当前运行序号
+	// The current run sequence number.
 	//
 	// example:
 	//
 	// 1
 	CurrentRunSeq *int64 `json:"currentRunSeq,omitempty" xml:"currentRunSeq,omitempty"`
-	// 当前步骤名称
+	// The current step name.
 	//
 	// example:
 	//
 	// example
 	CurrentStepName *string `json:"currentStepName,omitempty" xml:"currentStepName,omitempty"`
-	// 描述
+	// The description.
 	//
 	// example:
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 输入快照版本
+	// The input snapshot version.
 	//
 	// example:
 	//
 	// 1
 	InputVersion *int64 `json:"inputVersion,omitempty" xml:"inputVersion,omitempty"`
-	// 工作项类型
+	// The work item type.
 	//
 	// example:
 	//
 	// WORKFLOW
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// 最近进入处理中的时间(ISO8601)
+	// The most recent time the item entered processing state, in ISO 8601 format.
 	//
 	// example:
 	//
 	// example
 	LastProcessingAt *string `json:"lastProcessingAt,omitempty" xml:"lastProcessingAt,omitempty"`
-	// 是否为兼容期自由探索话题
+	// Indicates whether this is a legacy free-exploration topic.
 	//
 	// example:
 	//
 	// false
 	LegacyTopic *bool `json:"legacyTopic,omitempty" xml:"legacyTopic,omitempty"`
-	// 可见成员用户ID列表
+	// The list of visible member user IDs.
 	//
 	// example:
 	//
 	// example
 	MemberUserIds []*int64 `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty" type:"Repeated"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 修改时间(ISO8601)
+	// The modification time, in ISO 8601 format.
 	//
 	// example:
 	//
 	// example
 	ModifiedAt *string `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
-	// 负责人用户ID
+	// The owner user ID.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// 调用者个人置顶状态
+	// Indicates whether the caller has pinned this item.
 	//
 	// example:
 	//
 	// false
 	Pinned *bool `json:"pinned,omitempty" xml:"pinned,omitempty"`
-	// 优先级
+	// The priority.
 	//
 	// example:
 	//
 	// HIGH
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// 已完成进度
+	// The completed progress.
 	//
 	// example:
 	//
 	// 1
 	ProgressCompleted *int64 `json:"progressCompleted,omitempty" xml:"progressCompleted,omitempty"`
-	// 总进度
+	// The total progress.
 	//
 	// example:
 	//
 	// 1
 	ProgressTotal *int64 `json:"progressTotal,omitempty" xml:"progressTotal,omitempty"`
-	// 请求追踪ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 任务执行ID
+	// The task execution ID.
 	//
 	// example:
 	//
 	// example
 	SourceExecutionId *string `json:"sourceExecutionId,omitempty" xml:"sourceExecutionId,omitempty"`
-	// 任务来源ID
+	// The task source ID.
 	//
 	// example:
 	//
 	// example
 	SourceTaskId *string `json:"sourceTaskId,omitempty" xml:"sourceTaskId,omitempty"`
-	// 任务来源名称
+	// The task source name.
 	//
 	// example:
 	//
 	// example
 	SourceTaskName *string `json:"sourceTaskName,omitempty" xml:"sourceTaskName,omitempty"`
-	// 任务触发键
+	// The task trigger key.
 	//
 	// example:
 	//
 	// example
 	SourceTriggerKey *string `json:"sourceTriggerKey,omitempty" xml:"sourceTriggerKey,omitempty"`
-	// 任务来源类型
+	// The task source type.
 	//
 	// example:
 	//
 	// example
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 标题
+	// The title.
 	//
 	// example:
 	//
 	// example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 任务触发时区
+	// The task trigger time zone.
 	//
 	// example:
 	//
 	// example
 	TriggerTimezone *string `json:"triggerTimezone,omitempty" xml:"triggerTimezone,omitempty"`
-	// 任务触发时间(ISO8601)
+	// The task trigger time, in ISO 8601 format.
 	//
 	// example:
 	//
 	// example
 	TriggeredAt *string `json:"triggeredAt,omitempty" xml:"triggeredAt,omitempty"`
-	// 乐观版本号
+	// The optimistic version number.
 	//
 	// example:
 	//
 	// 1
 	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
-	// 可见范围
+	// The visibility scope.
 	//
 	// example:
 	//
 	// example
 	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
-	// 可见范围来源：SELF/TASK/TEMPLATE
+	// The visibility scope source. Valid values: SELF, TASK, TEMPLATE.
 	//
 	// example:
 	//
 	// SELF
 	VisibilitySource *string `json:"visibilitySource,omitempty" xml:"visibilitySource,omitempty"`
-	// 工作项ID
+	// The work item ID.
 	//
 	// example:
 	//
 	// example
 	WorkItemId *string `json:"workItemId,omitempty" xml:"workItemId,omitempty"`
-	// Workflow四态投影
+	// The workflow four-state projection.
 	//
 	// example:
 	//
 	// example
 	WorkflowStatus *string `json:"workflowStatus,omitempty" xml:"workflowStatus,omitempty"`
-	// 绑定的工作流模板ID列表
+	// The list of bound workflow template IDs.
 	//
 	// example:
 	//
@@ -852,43 +852,43 @@ func (s *ResumeWorkItemResponseBody) Validate() error {
 }
 
 type ResumeWorkItemResponseBodyAttachments struct {
-	// 附件ID
+	// The attachment ID.
 	//
 	// example:
 	//
 	// example
 	AttachmentId *string `json:"attachmentId,omitempty" xml:"attachmentId,omitempty"`
-	// 内容类型
+	// The content type.
 	//
 	// example:
 	//
 	// example
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// 附件访问入口（OpenAPI 302 前置）
+	// The attachment access entry (OpenAPI 302 pre-redirect).
 	//
 	// example:
 	//
 	// example
 	RefUrl *string `json:"refUrl,omitempty" xml:"refUrl,omitempty"`
-	// 附件资源ID
+	// The attachment resource ID.
 	//
 	// example:
 	//
 	// example
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// 附件资源类型
+	// The attachment resource type.
 	//
 	// example:
 	//
 	// example
 	ResourceKind *string `json:"resourceKind,omitempty" xml:"resourceKind,omitempty"`
-	// 附件大小(字节)
+	// The attachment size, in bytes.
 	//
 	// example:
 	//
 	// 1
 	SizeBytes *int64 `json:"sizeBytes,omitempty" xml:"sizeBytes,omitempty"`
-	// 附件标题
+	// The attachment title.
 	//
 	// example:
 	//

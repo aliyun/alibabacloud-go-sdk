@@ -36,19 +36,19 @@ type iCreateWorkItemRequest interface {
 }
 
 type CreateWorkItemRequest struct {
-	// 验收标准
+	// The acceptance criteria.
 	//
 	// example:
 	//
 	// example
 	AcceptanceCriteria *string `json:"acceptanceCriteria,omitempty" xml:"acceptanceCriteria,omitempty"`
-	// 输入附件稳定引用
+	// The stable references of the input attachments.
 	//
 	// example:
 	//
 	// example
 	Attachments []*CreateWorkItemRequestAttachments `json:"attachments,omitempty" xml:"attachments,omitempty" type:"Repeated"`
-	// 协作空间 ID
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -56,25 +56,25 @@ type CreateWorkItemRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 协作人用户ID列表
+	// The list of user IDs of the collaborators.
 	//
 	// example:
 	//
 	// example
 	CollaboratorUserIds []*int64 `json:"collaboratorUserIds,omitempty" xml:"collaboratorUserIds,omitempty" type:"Repeated"`
-	// 关联会话ID
+	// The ID of the associated conversation.
 	//
 	// example:
 	//
 	// example
 	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
-	// 工作项描述
+	// The description of the work item.
 	//
 	// example:
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 工作项类型；仅接受 WORKFLOW
+	// The type of the work item. Only WORKFLOW is supported.
 	//
 	// This parameter is required.
 	//
@@ -82,25 +82,25 @@ type CreateWorkItemRequest struct {
 	//
 	// WORKFLOW
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// 负责人用户ID；缺省为调用者本人
+	// The user ID of the owner. If this parameter is not specified, the ID of the caller is used.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// 排产优先级
+	// The scheduling priority.
 	//
 	// example:
 	//
 	// HIGH
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 工作项标题
+	// The title of the work item.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +108,7 @@ type CreateWorkItemRequest struct {
 	//
 	// example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 绑定的工作流模板ID列表
+	// The list of IDs of the bound workflow templates.
 	//
 	// example:
 	//
@@ -246,19 +246,19 @@ func (s *CreateWorkItemRequest) Validate() error {
 }
 
 type CreateWorkItemRequestAttachments struct {
-	// 内容类型
+	// The content type.
 	//
 	// example:
 	//
 	// application/pdf
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// 附件引用地址
+	// The reference URL of the attachment.
 	//
 	// example:
 	//
 	// example
 	RefUrl *string `json:"refUrl,omitempty" xml:"refUrl,omitempty"`
-	// 附件资源ID
+	// The resource ID of the attachment.
 	//
 	// This parameter is required.
 	//
@@ -266,7 +266,7 @@ type CreateWorkItemRequestAttachments struct {
 	//
 	// res_example
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// 附件资源类型
+	// The resource type of the attachment.
 	//
 	// This parameter is required.
 	//
@@ -274,13 +274,13 @@ type CreateWorkItemRequestAttachments struct {
 	//
 	// attachment
 	ResourceKind *string `json:"resourceKind,omitempty" xml:"resourceKind,omitempty"`
-	// 附件大小(字节)，上限 20MB
+	// The size of the attachment in bytes. The maximum size is 20 MB.
 	//
 	// example:
 	//
 	// 1024
 	SizeBytes *int64 `json:"sizeBytes,omitempty" xml:"sizeBytes,omitempty"`
-	// 附件标题
+	// The title of the attachment.
 	//
 	// example:
 	//

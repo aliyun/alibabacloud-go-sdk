@@ -32,39 +32,39 @@ type iListAppResourcePermissionRecordsShrinkRequest interface {
 }
 
 type ListAppResourcePermissionRecordsShrinkRequest struct {
-	// 主体 ID 筛选
+	// The grantee ID filter.
 	//
 	// example:
 	//
 	// 10086
 	GranteeId *string `json:"granteeId,omitempty" xml:"granteeId,omitempty"`
-	// 跨租户 USER 所属租户筛选
+	// The tenant ID filter for cross-tenant users.
 	//
 	// example:
 	//
 	// 10000
 	GranteeTenantId *string `json:"granteeTenantId,omitempty" xml:"granteeTenantId,omitempty"`
-	// 主体类型筛选
+	// The grantee type filter.
 	//
 	// example:
 	//
 	// USER
 	GranteeType *string `json:"granteeType,omitempty" xml:"granteeType,omitempty"`
-	// 页码
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页条数
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 权限点筛选
+	// The permission filter.
 	PermissionsShrink *string `json:"permissions,omitempty" xml:"permissions,omitempty"`
-	// 应用键或其子路径
+	// The application key or its subpath.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type ListAppResourcePermissionRecordsShrinkRequest struct {
 	//
 	// app.demo
 	ResourceKeyPrefix *string `json:"resourceKeyPrefix,omitempty" xml:"resourceKeyPrefix,omitempty"`
-	// 资源所属租户 ID；省略为调用人当前租户
+	// The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	ResourceTenantId *string `json:"resourceTenantId,omitempty" xml:"resourceTenantId,omitempty"`
-	// 固定为 APP_RESOURCE
+	// The resource type. Set this parameter to APP_RESOURCE.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type ListAppResourcePermissionRecordsShrinkRequest struct {
 	//
 	// APP_RESOURCE
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

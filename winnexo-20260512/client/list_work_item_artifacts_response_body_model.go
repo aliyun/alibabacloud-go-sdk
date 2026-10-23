@@ -22,31 +22,31 @@ type iListWorkItemArtifactsResponseBody interface {
 }
 
 type ListWorkItemArtifactsResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 历史产物列表
+	// The list of historical artifacts.
 	//
 	// example:
 	//
 	// example
 	Items []*ListWorkItemArtifactsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述
+	// The error message.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 返回产物数量
+	// The total number of returned artifacts.
 	//
 	// example:
 	//
@@ -121,97 +121,97 @@ func (s *ListWorkItemArtifactsResponseBody) Validate() error {
 }
 
 type ListWorkItemArtifactsResponseBodyItems struct {
-	// 产物ID
+	// The artifact ID.
 	//
 	// example:
 	//
 	// example
 	ArtifactId *string `json:"artifactId,omitempty" xml:"artifactId,omitempty"`
-	// 产物键
+	// The artifact key.
 	//
 	// example:
 	//
 	// example
 	ArtifactKey *string `json:"artifactKey,omitempty" xml:"artifactKey,omitempty"`
-	// 节点尝试序号
+	// The node attempt sequence number.
 	//
 	// example:
 	//
 	// 1
 	AttemptSeq *int64 `json:"attemptSeq,omitempty" xml:"attemptSeq,omitempty"`
-	// 内容类型
+	// The content type.
 	//
 	// example:
 	//
 	// example
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// 创建时间(ISO8601)
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
 	// example
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 节点键
+	// The node key.
 	//
 	// example:
 	//
 	// example
 	NodeKey *string `json:"nodeKey,omitempty" xml:"nodeKey,omitempty"`
-	// 计划ID
+	// The plan ID.
 	//
 	// example:
 	//
 	// example
 	PlanId *string `json:"planId,omitempty" xml:"planId,omitempty"`
-	// 引用信息
+	// The reference information.
 	//
 	// example:
 	//
 	// example
 	Ref *ListWorkItemArtifactsResponseBodyItemsRef `json:"ref,omitempty" xml:"ref,omitempty" type:"Struct"`
-	// 运行ID
+	// The run ID.
 	//
 	// example:
 	//
 	// example
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// 内容SHA-256
+	// The SHA-256 hash of the content.
 	//
 	// example:
 	//
 	// example
 	Sha256 *string `json:"sha256,omitempty" xml:"sha256,omitempty"`
-	// 产物大小(字节)
+	// The artifact size in bytes.
 	//
 	// example:
 	//
 	// 1
 	SizeBytes *int64 `json:"sizeBytes,omitempty" xml:"sizeBytes,omitempty"`
-	// 产物摘要
+	// The artifact summary.
 	//
 	// example:
 	//
 	// example
 	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	// 产物标题
+	// The artifact title.
 	//
 	// example:
 	//
 	// example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 会话轮次序号
+	// The session turn sequence number.
 	//
 	// example:
 	//
 	// 1
 	TurnSeq *int64 `json:"turnSeq,omitempty" xml:"turnSeq,omitempty"`
-	// 产物类型
+	// The artifact type.
 	//
 	// example:
 	//
 	// example
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// 工作项ID
+	// The work item ID.
 	//
 	// example:
 	//
@@ -381,19 +381,19 @@ func (s *ListWorkItemArtifactsResponseBodyItems) Validate() error {
 }
 
 type ListWorkItemArtifactsResponseBodyItemsRef struct {
-	// 产物ID
+	// The artifact ID.
 	//
 	// example:
 	//
 	// example
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 引用类型
+	// The reference data type.
 	//
 	// example:
 	//
 	// WORK_ITEM_ARTIFACT
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// OpenAPI 产物访问入口
+	// The OpenAPI artifact access endpoint.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iCheckAppResourcePermissionRequest interface {
 }
 
 type CheckAppResourcePermissionRequest struct {
-	// 需要检查的权限点
+	// The permission to check.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CheckAppResourcePermissionRequest struct {
 	//
 	// APP/VIEW
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// 首段为 APP 应用键的点分资源键
+	// The dot-separated resource key. The first segment is the APP application key.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type CheckAppResourcePermissionRequest struct {
 	//
 	// app.demo.resource_1
 	ResourceKey *string `json:"resourceKey,omitempty" xml:"resourceKey,omitempty"`
-	// 资源所属租户 ID；省略为调用人当前租户
+	// The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	ResourceTenantId *string `json:"resourceTenantId,omitempty" xml:"resourceTenantId,omitempty"`
-	// 固定为 APP_RESOURCE
+	// The resource type. Set the value to APP_RESOURCE.
 	//
 	// This parameter is required.
 	//
@@ -56,19 +56,19 @@ type CheckAppResourcePermissionRequest struct {
 	//
 	// APP_RESOURCE
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 目标平台用户 ID
+	// The ID of the target platform user.
 	//
 	// example:
 	//
 	// 10086
 	TargetUserId *int64 `json:"targetUserId,omitempty" xml:"targetUserId,omitempty"`
-	// 目标用户所属租户；跨租户目标必填
+	// The ID of the tenant to which the target user belongs. This parameter is required for cross-tenant targets.
 	//
 	// example:
 	//
 	// 10000
 	TargetUserTenantId *string `json:"targetUserTenantId,omitempty" xml:"targetUserTenantId,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

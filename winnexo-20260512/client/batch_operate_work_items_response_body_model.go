@@ -24,37 +24,37 @@ type iBatchOperateWorkItemsResponseBody interface {
 }
 
 type BatchOperateWorkItemsResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 逐项结果，顺序与请求一致
+	// The results for each item. The order of the results matches the order of the items in the request.
 	//
 	// example:
 	//
 	// example
 	Items []*BatchOperateWorkItemsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述
+	// The error message.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 跳过或失败数量
+	// The number of skipped or failed operations.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"skipped,omitempty" xml:"skipped,omitempty"`
-	// 成功数量
+	// The number of successful operations.
 	//
 	// example:
 	//
@@ -138,19 +138,19 @@ func (s *BatchOperateWorkItemsResponseBody) Validate() error {
 }
 
 type BatchOperateWorkItemsResponseBodyItems struct {
-	// 跳过或失败原因
+	// The reason for skipping or failure.
 	//
 	// example:
 	//
 	// example
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// 是否执行成功
+	// Indicates whether the execution was successful.
 	//
 	// example:
 	//
 	// false
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 工作项ID
+	// The ID of the work item.
 	//
 	// example:
 	//

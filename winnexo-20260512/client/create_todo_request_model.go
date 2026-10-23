@@ -28,7 +28,7 @@ type iCreateTodoRequest interface {
 }
 
 type CreateTodoRequest struct {
-	// 处理人平台用户ID列表（1~100，去重后生效）
+	// The list of platform user IDs of the assignees. You can specify 1 to 100 IDs. Duplicate IDs are automatically removed.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type CreateTodoRequest struct {
 	//
 	// 43
 	AssigneeUserIds []*string `json:"assigneeUserIds,omitempty" xml:"assigneeUserIds,omitempty" type:"Repeated"`
-	// 协作空间 ID（可选）
+	// The ID of the collaboration workspace. This parameter is optional.
 	//
 	// example:
 	//
 	// cg_123
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 优先级
+	// The priority.
 	//
 	// example:
 	//
 	// MEDIUM
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// 问题清单（1~N）
+	// The list of questions.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateTodoRequest struct {
 	//
 	// example
 	Questions []*CreateTodoRequestQuestions `json:"questions,omitempty" xml:"questions,omitempty" type:"Repeated"`
-	// 来源上下文（原样透传落库，不校验）
+	// The source context. The value is passed through and stored in the database as-is without validation.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type CreateTodoRequest struct {
 	//
 	// example
 	SourceContext map[string]interface{} `json:"sourceContext,omitempty" xml:"sourceContext,omitempty"`
-	// 待办来源（仅 OPEN_API）
+	// The source of the to-do item. Only OPEN_API is supported.
 	//
 	// This parameter is required.
 	//
@@ -72,19 +72,19 @@ type CreateTodoRequest struct {
 	//
 	// OPEN_API
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 待办标题（≤200 字）
+	// The title of the to-do item. The maximum length is 200 characters.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 治理审批
+	// Governance approval
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
@@ -182,37 +182,37 @@ func (s *CreateTodoRequest) Validate() error {
 }
 
 type CreateTodoRequestQuestions struct {
-	// 是否允许自定义输入
+	// Specifies whether custom input is allowed.
 	//
 	// example:
 	//
 	// false
 	AllowCustom *bool `json:"allowCustom,omitempty" xml:"allowCustom,omitempty"`
-	// 自定义输入项文案
+	// The text for the custom input item.
 	//
 	// example:
 	//
-	// 其他
+	// Other
 	CustomLabel *string `json:"customLabel,omitempty" xml:"customLabel,omitempty"`
-	// 自定义输入长度上限
+	// The maximum length of the custom input.
 	//
 	// example:
 	//
 	// 200
 	CustomMaxLength *int64 `json:"customMaxLength,omitempty" xml:"customMaxLength,omitempty"`
-	// 自定义输入占位符
+	// The placeholder for the custom input.
 	//
 	// example:
 	//
-	// 请说明
+	// Please specify
 	CustomPlaceholder *string `json:"customPlaceholder,omitempty" xml:"customPlaceholder,omitempty"`
-	// TEXT 题长度上限
+	// The maximum length for text questions.
 	//
 	// example:
 	//
 	// 500
 	MaxLength *int64 `json:"maxLength,omitempty" xml:"maxLength,omitempty"`
-	// 作答形态：SINGLE_CHOICE/MULTI_CHOICE/TEXT
+	// The response mode. Valid values: SINGLE_CHOICE, MULTI_CHOICE, and TEXT.
 	//
 	// This parameter is required.
 	//
@@ -220,23 +220,23 @@ type CreateTodoRequestQuestions struct {
 	//
 	// SINGLE_CHOICE
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// 问题的选项列表；选择题必填，每项含选项文案（label）、补充说明（description）与是否推荐（recommended）
+	// The list of options for the question. This parameter is required for choice questions. Each option includes the option text (label), supplementary description (description), and whether it is recommended (recommended).
 	Options []*CreateTodoRequestQuestionsOptions `json:"options,omitempty" xml:"options,omitempty" type:"Repeated"`
-	// TEXT 题占位符
+	// The placeholder for text questions.
 	//
 	// example:
 	//
-	// 请输入
+	// Please enter
 	Placeholder *string `json:"placeholder,omitempty" xml:"placeholder,omitempty"`
-	// 问题正文（引用键，清单内唯一）
+	// The question text. This is a reference key and must be unique within the list.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 是否通过审批
+	// Whether to approve the request
 	Question *string `json:"question,omitempty" xml:"question,omitempty"`
-	// 是否必答
+	// Specifies whether the question is required.
 	//
 	// example:
 	//
@@ -356,21 +356,21 @@ func (s *CreateTodoRequestQuestions) Validate() error {
 }
 
 type CreateTodoRequestQuestionsOptions struct {
-	// 选项补充说明
+	// The supplementary description of the option.
 	//
 	// example:
 	//
-	// 选项补充说明
+	// Supplementary description of the option
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 选项文案（引用键）
+	// The option text. This is a reference key.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 通过
+	// Approve
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// 是否推荐
+	// Specifies whether the option is recommended.
 	//
 	// example:
 	//

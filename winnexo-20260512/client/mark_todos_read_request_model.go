@@ -18,19 +18,19 @@ type iMarkTodosReadRequest interface {
 }
 
 type MarkTodosReadRequest struct {
-	// 全部标记已读（优先于 todoIds）
+	// Specifies whether to mark all to-do items as read. This parameter takes precedence over the todoIds parameter.
 	//
 	// example:
 	//
 	// false
 	MarkAllRead *bool `json:"markAllRead,omitempty" xml:"markAllRead,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 待办ID列表（≤100；markAllRead=true 时忽略）
+	// The list of to-do item IDs. You can specify up to 100 IDs. This parameter is ignored if markAllRead is set to true.
 	//
 	// example:
 	//

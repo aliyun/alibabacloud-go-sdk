@@ -30,55 +30,55 @@ type iScheduleWorkItemResponseBody interface {
 }
 
 type ScheduleWorkItemResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 本次是否新创建 Plan
+	// Indicates whether a new plan is created in this request.
 	//
 	// example:
 	//
 	// false
 	Created *bool `json:"created,omitempty" xml:"created,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 物理计划ID
+	// The ID of the physical plan.
 	//
 	// example:
 	//
 	// example
 	PlanId *string `json:"planId,omitempty" xml:"planId,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 修订号
+	// The revision number.
 	//
 	// example:
 	//
 	// 1
 	Revision *int64 `json:"revision,omitempty" xml:"revision,omitempty"`
-	// 运行ID
+	// The run ID.
 	//
 	// example:
 	//
 	// example
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// 运行序号
+	// The run sequence number.
 	//
 	// example:
 	//
 	// 1
 	RunSeq *int64 `json:"runSeq,omitempty" xml:"runSeq,omitempty"`
-	// 工作项ID
+	// The ID of the work item.
 	//
 	// example:
 	//

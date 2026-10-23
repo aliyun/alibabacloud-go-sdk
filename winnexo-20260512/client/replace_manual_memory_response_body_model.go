@@ -20,25 +20,25 @@ type iReplaceManualMemoryResponseBody interface {
 }
 
 type ReplaceManualMemoryResponseBody struct {
-	// 业务状态码；成功为 200，失败时为对应错误码
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 保存后的手动记忆完整内容；清空成功时为空字符串
+	// The complete content of the manual memory after it is saved. If the memory is successfully cleared, an empty string is returned.
 	//
 	// example:
 	//
-	// 喜欢简洁的回答。
+	// Prefers concise answers
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 错误描述；成功时为空字符串，失败时返回具体原因
+	// The error description.
 	//
 	// example:
 	//
-	// 当前用户不是群组 cg_12345 的活跃成员
+	// The current user is not an active member of the group cg_12345
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID，用于定位本次调用
+	// The request tracking ID.
 	//
 	// example:
 	//

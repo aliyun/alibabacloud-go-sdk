@@ -64,149 +64,149 @@ type iGetTodoDetailResponseBody interface {
 }
 
 type GetTodoDetailResponseBody struct {
-	// 处理人数量
+	// The number of assignees.
 	//
 	// example:
 	//
 	// 2
 	AssigneeCount *int64 `json:"assigneeCount,omitempty" xml:"assigneeCount,omitempty"`
-	// 全部处理人
+	// All assignees.
 	Assignees []*GetTodoDetailResponseBodyAssignees `json:"assignees,omitempty" xml:"assignees,omitempty" type:"Repeated"`
-	// 附件策略（当前版本附件不落库）
+	// The attachment policy. Attachments are not stored in the database in the current version.
 	//
 	// example:
 	//
 	// allowUpload=true
 	AttachmentPolicy map[string]interface{} `json:"attachmentPolicy,omitempty" xml:"attachmentPolicy,omitempty"`
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 完成时间（北京时间 YYYY-MM-DD HH:mm:ss）
+	// The completion time in UTC+8 (YYYY-MM-DD HH:mm:ss).
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	CompletedAt *string `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// 完成人用户ID；未完成为空
+	// The user ID of the user who completed the item. This field is empty if the item is not completed.
 	//
 	// example:
 	//
 	// 42
 	CompletedByUserId *string `json:"completedByUserId,omitempty" xml:"completedByUserId,omitempty"`
-	// 完成人姓名；未完成为空
+	// The name of the user who completed the item. This field is empty if the item is not completed.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	CompletedByUserName *string `json:"completedByUserName,omitempty" xml:"completedByUserName,omitempty"`
-	// 创建时间（北京时间 YYYY-MM-DD HH:mm:ss）
+	// The creation time in UTC+8 (YYYY-MM-DD HH:mm:ss).
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 最后修改时间（北京时间 YYYY-MM-DD HH:mm:ss）
+	// The last modification time in UTC+8 (YYYY-MM-DD HH:mm:ss).
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 调用者是否已读
+	// Indicates whether the caller has read the item.
 	//
 	// example:
 	//
 	// false
 	IsRead *bool `json:"isRead,omitempty" xml:"isRead,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 发出该待办的 assistant 消息ID；无会话来源为空
+	// The ID of the assistant message that generated the to-do item. This field is empty if there is no conversation source.
 	//
 	// example:
 	//
 	// msg-1
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// 调用者的处理人行状态
+	// The action status of the caller as the assignee.
 	//
 	// example:
 	//
 	// PENDING
 	MyAssigneeStatus *string `json:"myAssigneeStatus,omitempty" xml:"myAssigneeStatus,omitempty"`
-	// 调用者的列表展示状态
+	// The list display status for the caller.
 	//
 	// example:
 	//
 	// TODO
 	MyDisplayState *string `json:"myDisplayState,omitempty" xml:"myDisplayState,omitempty"`
-	// 调用者权限（canSubmit/canTransfer）
+	// The permissions of the caller, such as canSubmit and canTransfer.
 	//
 	// example:
 	//
 	// APP/VIEW=true
 	MyPermissions map[string]interface{} `json:"myPermissions,omitempty" xml:"myPermissions,omitempty"`
-	// 优先级
+	// The priority.
 	//
 	// example:
 	//
 	// HIGH
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// 问题清单（结构化投影）
+	// The list of questions (structured projection).
 	Questions []*GetTodoDetailResponseBodyQuestions `json:"questions,omitempty" xml:"questions,omitempty" type:"Repeated"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 作答内容（JSONB 原样；未提交为空对象缺省）
+	// The response content in JSONB format as-is. Defaults to an empty object if not submitted.
 	//
 	// example:
 	//
-	// result=同意
+	// result=Approved
 	ResultPayload map[string]interface{} `json:"resultPayload,omitempty" xml:"resultPayload,omitempty"`
-	// 来源上下文（创建时原样透传）
+	// The source context. This context is passed through as-is during creation.
 	//
 	// example:
 	//
 	// source=openapi
 	SourceContext map[string]interface{} `json:"sourceContext,omitempty" xml:"sourceContext,omitempty"`
-	// 待办来源类型
+	// The source type of the to-do item.
 	//
 	// example:
 	//
 	// WORKFLOW
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 工作流ID（sourceType=WORKFLOW 时必有）
+	// The workflow ID. This field is required when sourceType is set to WORKFLOW.
 	//
 	// example:
 	//
 	// wf-1
 	SourceWorkflowId *string `json:"sourceWorkflowId,omitempty" xml:"sourceWorkflowId,omitempty"`
-	// 待办主状态
+	// The primary status of the to-do item.
 	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 待办摘要
+	// The summary of the to-do item.
 	//
 	// example:
 	//
-	// 请审批以下事项
+	// Please approve the following items
 	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	// 待办标题
+	// The title of the to-do item.
 	//
 	// example:
 	//
-	// 治理审批
+	// Governance approval
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 待办ID
+	// The ID of the to-do item.
 	//
 	// example:
 	//
@@ -479,37 +479,37 @@ func (s *GetTodoDetailResponseBody) Validate() error {
 }
 
 type GetTodoDetailResponseBodyAssignees struct {
-	// 处理时间（北京时间）；未处理为空
+	// The action time in UTC+8. This field is empty if the item is not processed.
 	//
 	// example:
 	//
 	// 2026-10-16T10:30:00+08:00
 	ActedAt *string `json:"actedAt,omitempty" xml:"actedAt,omitempty"`
-	// 处理人来源：ORIGINAL/TRANSFERRED
+	// The source of the assignee. Valid values: ORIGINAL and TRANSFERRED.
 	//
 	// example:
 	//
 	// ORIGINAL
 	AssigneeSource *string `json:"assigneeSource,omitempty" xml:"assigneeSource,omitempty"`
-	// 处理人用户ID
+	// The user ID of the assignee.
 	//
 	// example:
 	//
 	// 42
 	AssigneeUserId *string `json:"assigneeUserId,omitempty" xml:"assigneeUserId,omitempty"`
-	// 已读时间（北京时间）；未读为空
+	// The read time in UTC+8. This field is empty if the item is unread.
 	//
 	// example:
 	//
 	// 2026-10-12 10:01:00
 	ReadAt *string `json:"readAt,omitempty" xml:"readAt,omitempty"`
-	// 处理人行状态
+	// The action status of the assignee.
 	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 转出人用户ID；仅转办产生
+	// The user ID of the user who transferred the task. This field is populated only when the task is transferred.
 	//
 	// example:
 	//
@@ -584,57 +584,57 @@ func (s *GetTodoDetailResponseBodyAssignees) Validate() error {
 }
 
 type GetTodoDetailResponseBodyQuestions struct {
-	// 是否允许自定义输入
+	// Indicates whether custom input is allowed.
 	//
 	// example:
 	//
 	// false
 	AllowCustom *bool `json:"allowCustom,omitempty" xml:"allowCustom,omitempty"`
-	// 自定义输入项文案
+	// The text for the custom input field.
 	//
 	// example:
 	//
-	// 其他
+	// Other
 	CustomLabel *string `json:"customLabel,omitempty" xml:"customLabel,omitempty"`
-	// 自定义输入长度上限
+	// The maximum length for custom input.
 	//
 	// example:
 	//
 	// 200
 	CustomMaxLength *int64 `json:"customMaxLength,omitempty" xml:"customMaxLength,omitempty"`
-	// 自定义输入占位符
+	// The placeholder for custom input.
 	//
 	// example:
 	//
-	// 请说明
+	// Please specify
 	CustomPlaceholder *string `json:"customPlaceholder,omitempty" xml:"customPlaceholder,omitempty"`
-	// TEXT 题长度上限
+	// The maximum length for text questions.
 	//
 	// example:
 	//
 	// 500
 	MaxLength *int64 `json:"maxLength,omitempty" xml:"maxLength,omitempty"`
-	// 作答形态：SINGLE_CHOICE/MULTI_CHOICE/TEXT
+	// The response mode. Valid values: SINGLE_CHOICE, MULTI_CHOICE, and TEXT.
 	//
 	// example:
 	//
 	// SINGLE_CHOICE
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// 选项（选择类必有）
+	// The options. This field is required for choice questions.
 	Options []*GetTodoDetailResponseBodyQuestionsOptions `json:"options,omitempty" xml:"options,omitempty" type:"Repeated"`
-	// TEXT 题占位符
+	// The placeholder for text questions.
 	//
 	// example:
 	//
-	// 请输入
+	// Please enter
 	Placeholder *string `json:"placeholder,omitempty" xml:"placeholder,omitempty"`
-	// 问题正文（引用键）
+	// The question text (reference key).
 	//
 	// example:
 	//
-	// 是否通过审批
+	// Whether to approve
 	Question *string `json:"question,omitempty" xml:"question,omitempty"`
-	// 是否必答
+	// Indicates whether the question is required.
 	//
 	// example:
 	//
@@ -754,19 +754,19 @@ func (s *GetTodoDetailResponseBodyQuestions) Validate() error {
 }
 
 type GetTodoDetailResponseBodyQuestionsOptions struct {
-	// 选项补充说明
+	// The supplementary description of the option.
 	//
 	// example:
 	//
-	// 选项补充说明
+	// Supplementary description of the option
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 选项文案（引用键）
+	// The option text (reference key).
 	//
 	// example:
 	//
-	// 通过
+	// Approve
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// 是否推荐
+	// Indicates whether the option is recommended.
 	//
 	// example:
 	//

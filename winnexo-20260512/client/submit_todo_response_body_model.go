@@ -26,43 +26,43 @@ type iSubmitTodoResponseBody interface {
 }
 
 type SubmitTodoResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 完成时间（ISO8601 UTC；与其他北京时间格式化字段格式不同）
+	// The completion time in ISO 8601 UTC format. Note that this format differs from other time fields formatted in UTC+8.
 	//
 	// example:
 	//
 	// 2026-10-12T02:00:00+00:00
 	CompletedAt *string `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// 完成人用户ID
+	// The user ID of the user who completed the item.
 	//
 	// example:
 	//
 	// 42
 	CompletedByUserId *string `json:"completedByUserId,omitempty" xml:"completedByUserId,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 提交后状态（恒为 COMPLETED）
+	// The status after submission. This value is always COMPLETED.
 	//
 	// example:
 	//
 	// COMPLETED
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 待办ID
+	// The ID of the to-do item.
 	//
 	// example:
 	//

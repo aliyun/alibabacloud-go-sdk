@@ -20,25 +20,25 @@ type iGetTodoRequest interface {
 }
 
 type GetTodoRequest struct {
-	// assistant 消息ID（按消息反查多条）
+	// The ID of the assistant message. This parameter is used to query multiple to-do items by message.
 	//
 	// example:
 	//
 	// msg-1
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 待办ID（单条查询）
+	// The ID of the to-do item (get).
 	//
 	// example:
 	//
 	// todo_abc123
 	TodoId *string `json:"todoId,omitempty" xml:"todoId,omitempty"`
-	// 工作项ID（按来源反查多条）
+	// The ID of the work item. This parameter is used to query multiple to-do items by source.
 	//
 	// example:
 	//

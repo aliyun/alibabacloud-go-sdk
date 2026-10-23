@@ -22,31 +22,31 @@ type iGetTodoResponseBody interface {
 }
 
 type GetTodoResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// todoId 查询时的单条结果（其余查询为空）；字段集同 getTodoDetail 平铺结构
+	// The single result returned when you query by todoId. This field is empty for other query types. The field set is the same as the flattened structure of getTodoDetail.
 	//
 	// example:
 	//
-	// 示例待办键值对
+	// Sample to-do key-value pair
 	Todo map[string]interface{} `json:"todo,omitempty" xml:"todo,omitempty"`
-	// workItemId/messageId 查询时的多条结果（todoId 查询为空）
+	// The multiple results returned when you query by workItemId or messageId. This field is empty for todoId queries.
 	Todos []*GetTodoResponseBodyTodos `json:"todos,omitempty" xml:"todos,omitempty" type:"Repeated"`
 }
 
@@ -117,81 +117,81 @@ func (s *GetTodoResponseBody) Validate() error {
 }
 
 type GetTodoResponseBodyTodos struct {
-	// 全部处理人
+	// The assignees.
 	Assignees []*GetTodoResponseBodyTodosAssignees `json:"assignees,omitempty" xml:"assignees,omitempty" type:"Repeated"`
-	// 完成时间（北京时间）
+	// The completion time in UTC+8.
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	CompletedAt *string `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// 完成人用户ID
+	// The user ID of the person who completed the to-do item.
 	//
 	// example:
 	//
 	// 42
 	CompletedByUserId *string `json:"completedByUserId,omitempty" xml:"completedByUserId,omitempty"`
-	// 创建时间（北京时间）
+	// The creation time in UTC+8.
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 最后修改时间（北京时间）
+	// The last modification time in UTC+8.
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// assistant 消息ID；无会话来源为空
+	// The ID of the assistant message. This field is empty if there is no conversation source.
 	//
 	// example:
 	//
 	// msg-1
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// 优先级
+	// The priority.
 	//
 	// example:
 	//
 	// MEDIUM
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// 问题清单（JSONB 原样）
+	// The list of questions in the original JSONB format.
 	//
 	// example:
 	//
-	// q1=示例问题
+	// q1=Sample question
 	Questions map[string]interface{} `json:"questions,omitempty" xml:"questions,omitempty"`
-	// 作答内容（JSONB 原样）
+	// The response content in the original JSONB format.
 	//
 	// example:
 	//
-	// result=同意
+	// result=Approved
 	ResultPayload map[string]interface{} `json:"resultPayload,omitempty" xml:"resultPayload,omitempty"`
-	// 来源上下文（原样透传）
+	// The source context passed through in its original format.
 	//
 	// example:
 	//
 	// source=openapi
 	SourceContext map[string]interface{} `json:"sourceContext,omitempty" xml:"sourceContext,omitempty"`
-	// 待办主状态
+	// The primary status of the to-do item.
 	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 待办摘要
+	// The summary of the to-do item.
 	//
 	// example:
 	//
-	// 待办事项摘要
+	// To-do item summary
 	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	// 待办标题
+	// The title of the to-do item.
 	//
 	// example:
 	//
-	// 治理审批
+	// Governance approval
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 待办ID
+	// The ID of the to-do item.
 	//
 	// example:
 	//
@@ -347,37 +347,37 @@ func (s *GetTodoResponseBodyTodos) Validate() error {
 }
 
 type GetTodoResponseBodyTodosAssignees struct {
-	// 处理时间（北京时间）；未处理为空
+	// The processing time in UTC+8. This field is empty if the item is unprocessed.
 	//
 	// example:
 	//
 	// 2026-10-16T10:30:00+08:00
 	ActedAt *string `json:"actedAt,omitempty" xml:"actedAt,omitempty"`
-	// 处理人来源：ORIGINAL/TRANSFERRED
+	// The source of the assignee. Valid values: ORIGINAL and TRANSFERRED.
 	//
 	// example:
 	//
 	// ORIGINAL
 	AssigneeSource *string `json:"assigneeSource,omitempty" xml:"assigneeSource,omitempty"`
-	// 处理人用户ID
+	// The user ID of the assignee.
 	//
 	// example:
 	//
 	// 42
 	AssigneeUserId *string `json:"assigneeUserId,omitempty" xml:"assigneeUserId,omitempty"`
-	// 已读时间（北京时间）；未读为空
+	// The read time in UTC+8. This field is empty if the item is unread.
 	//
 	// example:
 	//
 	// 2026-10-12 10:01:00
 	ReadAt *string `json:"readAt,omitempty" xml:"readAt,omitempty"`
-	// 处理人行状态
+	// The action status of the assignee.
 	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 转出人用户ID；仅转办产生
+	// The user ID of the person who transferred the task. This field is populated only when the task is transferred.
 	//
 	// example:
 	//

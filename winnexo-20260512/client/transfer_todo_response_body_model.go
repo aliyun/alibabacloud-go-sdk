@@ -22,27 +22,27 @@ type iTransferTodoResponseBody interface {
 }
 
 type TransferTodoResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 逐目标处理结果
+	// The processing results for each target.
 	Targets []*TransferTodoResponseBodyTargets `json:"targets,omitempty" xml:"targets,omitempty" type:"Repeated"`
-	// 待办ID
+	// The ID of the to-do task.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *TransferTodoResponseBody) Validate() error {
 }
 
 type TransferTodoResponseBodyTargets struct {
-	// 处理结果：CREATED/REVIVED/ALREADY_PENDING
+	// The processing result. Valid values: CREATED, REVIVED, and ALREADY_PENDING.
 	//
 	// example:
 	//
 	// CREATED
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
-	// 目标用户ID
+	// The ID of the target user.
 	//
 	// example:
 	//

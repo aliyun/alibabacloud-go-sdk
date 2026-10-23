@@ -22,31 +22,31 @@ type iMarkTodosReadResponseBody interface {
 }
 
 type MarkTodosReadResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述
+	// The error message.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 标记后剩余未读数
+	// The number of unread to-do items remaining after the operation.
 	//
 	// example:
 	//
 	// 0
 	UnreadCount *int64 `json:"unreadCount,omitempty" xml:"unreadCount,omitempty"`
-	// 本次标记条数
+	// The number of to-do items marked as read in this request.
 	//
 	// example:
 	//

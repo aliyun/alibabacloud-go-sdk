@@ -18,7 +18,7 @@ type iDeleteWorkflowTemplateRequest interface {
 }
 
 type DeleteWorkflowTemplateRequest struct {
-	// 协作空间 ID
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteWorkflowTemplateRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 模板 ID
+	// The ID of the template.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteWorkflowTemplateRequest struct {
 	//
 	// tpl_example
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

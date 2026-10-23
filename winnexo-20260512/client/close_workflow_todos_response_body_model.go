@@ -22,31 +22,31 @@ type iCloseWorkflowTodosResponseBody interface {
 }
 
 type CloseWorkflowTodosResponseBody struct {
-	// 关闭条数（幂等重复调用为 0）
+	// The number of closed to-do items. The value is 0 for idempotent repeated calls.
 	//
 	// example:
 	//
 	// 3
 	CancelledCount *int64 `json:"cancelledCount,omitempty" xml:"cancelledCount,omitempty"`
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 工作流 ID（原样回显）
+	// The workflow ID, returned as provided.
 	//
 	// example:
 	//

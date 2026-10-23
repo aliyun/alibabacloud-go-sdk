@@ -20,25 +20,25 @@ type iDeleteAppResourcePermissionsResponseBody interface {
 }
 
 type DeleteAppResourcePermissionsResponseBody struct {
-	// 业务状态码；成功为 200
+	// The business status code. The value 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 删除的权限记录数
+	// The number of deleted permission records.
 	//
 	// example:
 	//
 	// 2
 	DeletedCount *int64 `json:"deletedCount,omitempty" xml:"deletedCount,omitempty"`
-	// 错误描述；成功时为空
+	// The error message. This field is empty if the request is successful.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//

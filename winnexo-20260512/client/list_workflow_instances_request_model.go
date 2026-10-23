@@ -32,13 +32,13 @@ type iListWorkflowInstancesRequest interface {
 }
 
 type ListWorkflowInstancesRequest struct {
-	// 精确需求编号
+	// The exact requirement ID.
 	//
 	// example:
 	//
 	// REQ-1001
 	BusinessId *string `json:"businessId,omitempty" xml:"businessId,omitempty"`
-	// 协作空间 ID
+	// The collaboration space ID.
 	//
 	// This parameter is required.
 	//
@@ -46,49 +46,49 @@ type ListWorkflowInstancesRequest struct {
 	//
 	// cg_20261016_abc123
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 精确外部发起人标签
+	// The exact external initiator tag.
 	//
 	// example:
 	//
-	// 外部发起人张三
+	// External initiator Zhang San
 	Initiator *string `json:"initiator,omitempty" xml:"initiator,omitempty"`
-	// 标题或需求编号关键词
+	// The keyword for the title or requirement ID.
 	//
 	// example:
 	//
-	// 季度报告
+	// Quarterly report
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 页码，从 1 开始
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量 1-100
+	// The number of entries per page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 排序字段
+	// The sort field.
 	//
 	// example:
 	//
 	// GMT_CREATE
 	SortBy *string `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
-	// 排序方向
+	// The sort order.
 	//
 	// example:
 	//
 	// DESC
 	SortOrder *string `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// Running/Completed/Failed/Terminated 筛选
+	// Filters the instances by status. Valid values: Running, Completed, Failed, and Terminated.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID. This is a common parameter. If you use winnexo-cli, pass this parameter explicitly by using --tenant-id.
 	//
 	// example:
 	//

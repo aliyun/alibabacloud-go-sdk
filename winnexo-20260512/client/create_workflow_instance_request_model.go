@@ -30,15 +30,15 @@ type iCreateWorkflowInstanceRequest interface {
 }
 
 type CreateWorkflowInstanceRequest struct {
-	// Workflow 必填验收标准
+	// The required acceptance criteria for the workflow.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 完成全部审批节点并产出报告
+	// Complete all approval nodes and generate the report
 	AcceptanceCriteria *string `json:"acceptanceCriteria,omitempty" xml:"acceptanceCriteria,omitempty"`
-	// 空间内唯一需求编号，重复请求幂等
+	// The unique requirement ID in the workspace. Repeated requests are idempotent.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateWorkflowInstanceRequest struct {
 	//
 	// REQ-1001
 	BusinessId *string `json:"businessId,omitempty" xml:"businessId,omitempty"`
-	// 协作空间 ID
+	// The collaboration workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,19 @@ type CreateWorkflowInstanceRequest struct {
 	//
 	// cg_20261016_abc123
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 外部发起人展示标签
+	// The display label of the external initiator.
 	//
 	// example:
 	//
-	// 外部发起人张三
+	// External Initiator Zhang San
 	Initiator *string `json:"initiator,omitempty" xml:"initiator,omitempty"`
-	// 工作项优先级
+	// The work item priority.
 	//
 	// example:
 	//
 	// HIGH
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// 工作流模板 ID，最多 64 字符
+	// The workflow template ID. Maximum length: 64 characters.
 	//
 	// This parameter is required.
 	//
@@ -74,25 +74,25 @@ type CreateWorkflowInstanceRequest struct {
 	//
 	// wft_20261016_abc123
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID. This is a common parameter explicitly passed by using --tenant-id in winnexo-cli.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 需求标题
+	// The requirement title.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 季度经营分析报告
+	// Quarterly Business Analysis Report
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 业务变量对象，tags 可为字符串标签列表
+	// The business variable object. The tags field can be a list of string tags.
 	//
 	// example:
 	//
-	// tags=季度报告
+	// tags=Quarterly Report
 	Variables map[string]interface{} `json:"variables,omitempty" xml:"variables,omitempty"`
 }
 

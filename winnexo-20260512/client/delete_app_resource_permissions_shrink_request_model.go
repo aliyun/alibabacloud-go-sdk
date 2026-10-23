@@ -18,17 +18,17 @@ type iDeleteAppResourcePermissionsShrinkRequest interface {
 }
 
 type DeleteAppResourcePermissionsShrinkRequest struct {
-	// 撤权范围
+	// The scope of the permissions to be revoked.
 	//
 	// This parameter is required.
 	ItemsShrink *string `json:"items,omitempty" xml:"items,omitempty"`
-	// 资源所属租户 ID；省略为调用人当前租户
+	// The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	ResourceTenantId *string `json:"resourceTenantId,omitempty" xml:"resourceTenantId,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

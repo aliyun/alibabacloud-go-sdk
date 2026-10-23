@@ -245,11 +245,11 @@ func (client *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (
 
 // Summary:
 //
-// # BatchCancelTodos
+// Cancels to-do items in batches.
 //
 // Description:
 //
-// 按待办ID集合批量作废；已完结/不存在不报错（幂等）
+// Cancels to-do items in batches based on a set of to-do IDs. No error is reported for completed or non-existent items, ensuring idempotence.
 //
 // @param tmpReq - BatchCancelTodosRequest
 //
@@ -308,11 +308,11 @@ func (client *Client) BatchCancelTodosWithOptions(tmpReq *BatchCancelTodosReques
 
 // Summary:
 //
-// # BatchCancelTodos
+// Cancels to-do items in batches.
 //
 // Description:
 //
-// 按待办ID集合批量作废；已完结/不存在不报错（幂等）
+// Cancels to-do items in batches based on a set of to-do IDs. No error is reported for completed or non-existent items, ensuring idempotence.
 //
 // @param request - BatchCancelTodosRequest
 //
@@ -331,11 +331,11 @@ func (client *Client) BatchCancelTodos(request *BatchCancelTodosRequest) (_resul
 
 // Summary:
 //
-// # BatchOperateWorkItems
+// Performs batch operations to schedule, pause, resume, or delete work items for valid members. A failure in a single item does not roll back other items.
 //
 // Description:
 //
-// 有效成员批量排产、暂停、恢复或删除工作项；单项失败不回滚其他项
+// Performs batch operations to schedule, pause, resume, or delete work items for valid members. A failure in a single item does not roll back other items.
 //
 // @param tmpReq - BatchOperateWorkItemsRequest
 //
@@ -406,11 +406,11 @@ func (client *Client) BatchOperateWorkItemsWithOptions(tmpReq *BatchOperateWorkI
 
 // Summary:
 //
-// # BatchOperateWorkItems
+// Performs batch operations to schedule, pause, resume, or delete work items for valid members. A failure in a single item does not roll back other items.
 //
 // Description:
 //
-// 有效成员批量排产、暂停、恢复或删除工作项；单项失败不回滚其他项
+// Performs batch operations to schedule, pause, resume, or delete work items for valid members. A failure in a single item does not roll back other items.
 //
 // @param request - BatchOperateWorkItemsRequest
 //
@@ -527,11 +527,11 @@ func (client *Client) BatchRemoveOperatingObjectFavorites(request *BatchRemoveOp
 
 // Summary:
 //
-// # CancelTodo
+// Cancels a to-do item.
 //
 // Description:
 //
-// 作废待办；todoId 定位不存在返回 404，按 workItemId 批量尽力而为
+// Cancels a to-do item. If the to-do item specified by todoId is not found, a 404 error is returned. If workItemId is used, the system makes a best-effort attempt to cancel to-do items in batches.
 //
 // @param request - CancelTodoRequest
 //
@@ -588,11 +588,11 @@ func (client *Client) CancelTodoWithOptions(request *CancelTodoRequest, headers 
 
 // Summary:
 //
-// # CancelTodo
+// Cancels a to-do item.
 //
 // Description:
 //
-// 作废待办；todoId 定位不存在返回 404，按 workItemId 批量尽力而为
+// Cancels a to-do item. If the to-do item specified by todoId is not found, a 404 error is returned. If workItemId is used, the system makes a best-effort attempt to cancel to-do items in batches.
 //
 // @param request - CancelTodoRequest
 //
@@ -611,11 +611,11 @@ func (client *Client) CancelTodo(request *CancelTodoRequest) (_result *CancelTod
 
 // Summary:
 //
-// 检查应用内资源权限
+// Checks resource permissions within an application.
 //
 // Description:
 //
-// 本人需 APP/VIEW，代查他人需 APP/MANAGE。
+// Requires the APP/VIEW permission to check your own permissions and the APP/MANAGE permission to check permissions on behalf of others.
 //
 // @param request - CheckAppResourcePermissionRequest
 //
@@ -688,11 +688,11 @@ func (client *Client) CheckAppResourcePermissionWithOptions(request *CheckAppRes
 
 // Summary:
 //
-// 检查应用内资源权限
+// Checks resource permissions within an application.
 //
 // Description:
 //
-// 本人需 APP/VIEW，代查他人需 APP/MANAGE。
+// Requires the APP/VIEW permission to check your own permissions and the APP/MANAGE permission to check permissions on behalf of others.
 //
 // @param request - CheckAppResourcePermissionRequest
 //
@@ -711,11 +711,11 @@ func (client *Client) CheckAppResourcePermission(request *CheckAppResourcePermis
 
 // Summary:
 //
-// 批量检查应用内资源权限
+// Checks resource permissions within applications in batches.
 //
 // Description:
 //
-// 整批逐应用鉴权后，复用 service 的常数级查询。
+// After authenticating each application in the batch, reuses the constant-time query of the service.
 //
 // @param tmpReq - CheckAppResourcePermissionsBatchRequest
 //
@@ -786,11 +786,11 @@ func (client *Client) CheckAppResourcePermissionsBatchWithOptions(tmpReq *CheckA
 
 // Summary:
 //
-// 批量检查应用内资源权限
+// Checks resource permissions within applications in batches.
 //
 // Description:
 //
-// 整批逐应用鉴权后，复用 service 的常数级查询。
+// After authenticating each application in the batch, reuses the constant-time query of the service.
 //
 // @param request - CheckAppResourcePermissionsBatchRequest
 //
@@ -875,11 +875,11 @@ func (client *Client) CheckHealth(request *CheckHealthRequest) (_result *CheckHe
 
 // Summary:
 //
-// 按类型或全部清空自动记忆
+// Clears automatic memory.
 //
 // Description:
 //
-// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+// Manages personal or specified writing workspace memory based on the authenticated user. The workspace mode inherits the permissions of active members.
 //
 // @param request - ClearAutoMemoryRequest
 //
@@ -940,11 +940,11 @@ func (client *Client) ClearAutoMemoryWithOptions(request *ClearAutoMemoryRequest
 
 // Summary:
 //
-// 按类型或全部清空自动记忆
+// Clears automatic memory.
 //
 // Description:
 //
-// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+// Manages personal or specified writing workspace memory based on the authenticated user. The workspace mode inherits the permissions of active members.
 //
 // @param request - ClearAutoMemoryRequest
 //
@@ -1051,11 +1051,11 @@ func (client *Client) ClearOperatingObjectFavorites(request *ClearOperatingObjec
 
 // Summary:
 //
-// # CloseWorkflowTodos
+// Closes workflow to-do items in batches.
 //
 // Description:
 //
-// 按工作流批量关闭待办；命中该空间该工作流 run 的全部 PENDING 待办（幂等）
+// Closes to-do items in batches by workflow. This operation matches all PENDING to-do items for the specified workflow run in the workspace and is idempotent.
 //
 // @param request - CloseWorkflowTodosRequest
 //
@@ -1112,11 +1112,11 @@ func (client *Client) CloseWorkflowTodosWithOptions(request *CloseWorkflowTodosR
 
 // Summary:
 //
-// # CloseWorkflowTodos
+// Closes workflow to-do items in batches.
 //
 // Description:
 //
-// 按工作流批量关闭待办；命中该空间该工作流 run 的全部 PENDING 待办（幂等）
+// Closes to-do items in batches by workflow. This operation matches all PENDING to-do items for the specified workflow run in the workspace and is idempotent.
 //
 // @param request - CloseWorkflowTodosRequest
 //
@@ -1135,11 +1135,11 @@ func (client *Client) CloseWorkflowTodos(request *CloseWorkflowTodosRequest) (_r
 
 // Summary:
 //
-// # CountTodos
+// Retrieves the to-do badge statistics.
 //
 // Description:
 //
-// 统计当前用户的待办角标（待处理数与未读数）
+// Retrieves the to-do badge statistics for the current user, including the number of pending and unread items.
 //
 // @param request - CountTodosRequest
 //
@@ -1192,11 +1192,11 @@ func (client *Client) CountTodosWithOptions(request *CountTodosRequest, headers 
 
 // Summary:
 //
-// # CountTodos
+// Retrieves the to-do badge statistics.
 //
 // Description:
 //
-// 统计当前用户的待办角标（待处理数与未读数）
+// Retrieves the to-do badge statistics for the current user, including the number of pending and unread items.
 //
 // @param request - CountTodosRequest
 //
@@ -1559,33 +1559,31 @@ func (client *Client) CreateCustomOrg(request *CreateCustomOrgRequest) (_result 
 
 // Summary:
 //
-// 创建语义图谱并绑定数据源
+// Creates a semantic graph and associates a data source.
 //
 // Description:
 //
-// OpenAPI 创建语义图谱（同步快建占位记录 0.0.0）并在创建时绑定数据源。
+// Creates a semantic graph through OpenAPI by synchronously creating a placeholder record with version 0.0.0 and associates a data source during creation.
 //
-//	内容编辑走个人草稿接口，正式发布走产品控制台。
+// You can edit content through the personal draft API and officially publish it through the product console.
 //
-//	业务编排：
+// Workflow:
 //
-//	1. 权限校验（个人 Token 校验语义管理权限；部署/系统级 Token 放行）
+// 1. Verifies permissions. Personal tokens verify semantic management permissions. Deployment or system-level tokens are also allowed.
 //
-//	2. 同步落库 active 占位记录（schemaVersion 固定 0.0.0）并绑定数据源；
+// 2. Synchronously writes an active placeholder record to the database with schemaVersion fixed to 0.0.0 and associates the data source. History is not recorded, and runtime reconstruction is not triggered.
 //
-//	   不写 history、不触发 runtime 重建
+// 3. You can subsequently edit the graph content through personal drafts and officially publish it in the console.
 //
-//	3. 图谱内容后续经个人草稿编辑，在控制台正式发布
+// Error codes:
 //
-//	错误码：
+// - ERR.GraphSchema.GraphNameInvalid: The graph name is invalid.
 //
-//	- ERR.GraphSchema.GraphNameInvalid: 图谱名称不合法
+// - ERR.GraphSchema.GraphNameDuplicated: The graph name already exists.
 //
-//	- ERR.GraphSchema.GraphNameDuplicated: 图谱名称已存在
+// - ERR.GraphSchema.DisplayNameInvalid: The display name is invalid or duplicated.
 //
-//	- ERR.GraphSchema.DisplayNameInvalid: 展示名不合法或重复
-//
-//	- ERR.GraphDataSource.*: 数据源不存在 / 非 RDB 类不可绑定
+// - ERR.GraphDataSource.*: The data source does not exist or is not an RDB type and cannot be associated.
 //
 // @param request - CreateGraphRequest
 //
@@ -1650,33 +1648,31 @@ func (client *Client) CreateGraphWithOptions(request *CreateGraphRequest, header
 
 // Summary:
 //
-// 创建语义图谱并绑定数据源
+// Creates a semantic graph and associates a data source.
 //
 // Description:
 //
-// OpenAPI 创建语义图谱（同步快建占位记录 0.0.0）并在创建时绑定数据源。
+// Creates a semantic graph through OpenAPI by synchronously creating a placeholder record with version 0.0.0 and associates a data source during creation.
 //
-//	内容编辑走个人草稿接口，正式发布走产品控制台。
+// You can edit content through the personal draft API and officially publish it through the product console.
 //
-//	业务编排：
+// Workflow:
 //
-//	1. 权限校验（个人 Token 校验语义管理权限；部署/系统级 Token 放行）
+// 1. Verifies permissions. Personal tokens verify semantic management permissions. Deployment or system-level tokens are also allowed.
 //
-//	2. 同步落库 active 占位记录（schemaVersion 固定 0.0.0）并绑定数据源；
+// 2. Synchronously writes an active placeholder record to the database with schemaVersion fixed to 0.0.0 and associates the data source. History is not recorded, and runtime reconstruction is not triggered.
 //
-//	   不写 history、不触发 runtime 重建
+// 3. You can subsequently edit the graph content through personal drafts and officially publish it in the console.
 //
-//	3. 图谱内容后续经个人草稿编辑，在控制台正式发布
+// Error codes:
 //
-//	错误码：
+// - ERR.GraphSchema.GraphNameInvalid: The graph name is invalid.
 //
-//	- ERR.GraphSchema.GraphNameInvalid: 图谱名称不合法
+// - ERR.GraphSchema.GraphNameDuplicated: The graph name already exists.
 //
-//	- ERR.GraphSchema.GraphNameDuplicated: 图谱名称已存在
+// - ERR.GraphSchema.DisplayNameInvalid: The display name is invalid or duplicated.
 //
-//	- ERR.GraphSchema.DisplayNameInvalid: 展示名不合法或重复
-//
-//	- ERR.GraphDataSource.*: 数据源不存在 / 非 RDB 类不可绑定
+// - ERR.GraphDataSource.*: The data source does not exist or is not an RDB type and cannot be associated.
 //
 // @param request - CreateGraphRequest
 //
@@ -5707,11 +5703,11 @@ func (client *Client) CreateTenantDirectory(request *CreateTenantDirectoryReques
 
 // Summary:
 //
-// # CreateTodo
+// Creates a to-do item.
 //
 // Description:
 //
-// 创建待办（sourceType 仅接受 OPEN_API）；处理人不校验存在性，由调用方保证映射正确
+// Creates a to-do item. The sourceType parameter only accepts OPEN_API. The existence of assignees is not verified, and the caller must ensure the correct mapping.
 //
 // @param tmpReq - CreateTodoRequest
 //
@@ -5802,11 +5798,11 @@ func (client *Client) CreateTodoWithOptions(tmpReq *CreateTodoRequest, headers m
 
 // Summary:
 //
-// # CreateTodo
+// Creates a to-do item.
 //
 // Description:
 //
-// 创建待办（sourceType 仅接受 OPEN_API）；处理人不校验存在性，由调用方保证映射正确
+// Creates a to-do item. The sourceType parameter only accepts OPEN_API. The existence of assignees is not verified, and the caller must ensure the correct mapping.
 //
 // @param request - CreateTodoRequest
 //
@@ -6189,11 +6185,11 @@ func (client *Client) CreateUserWithGroups(request *CreateUserWithGroupsRequest)
 
 // Summary:
 //
-// # CreateWorkItem
+// Creates a workflow work item for a valid member and copies the template execution snapshot. Only the WORKFLOW type is supported.
 //
 // Description:
 //
-// 有效成员创建 Workflow 工作项并复制模板执行快照；仅接受 WORKFLOW 类型
+// Creates a workflow work item for a valid member and copies the template execution snapshot. Only the WORKFLOW type is supported.
 //
 // @param tmpReq - CreateWorkItemRequest
 //
@@ -6300,11 +6296,11 @@ func (client *Client) CreateWorkItemWithOptions(tmpReq *CreateWorkItemRequest, h
 
 // Summary:
 //
-// # CreateWorkItem
+// Creates a workflow work item for a valid member and copies the template execution snapshot. Only the WORKFLOW type is supported.
 //
 // Description:
 //
-// 有效成员创建 Workflow 工作项并复制模板执行快照；仅接受 WORKFLOW 类型
+// Creates a workflow work item for a valid member and copies the template execution snapshot. Only the WORKFLOW type is supported.
 //
 // @param request - CreateWorkItemRequest
 //
@@ -6323,11 +6319,11 @@ func (client *Client) CreateWorkItem(request *CreateWorkItemRequest) (_result *C
 
 // Summary:
 //
-// 幂等创建工作流实例
+// Creates a work item idempotently by business ID in a specified collaboration workspace, starts an actual run based on a workflow template, and returns the logical instance and the current execution view.
 //
 // Description:
 //
-// 组合既有创建与排产，不旁路工作项权限或运行准入。
+// Combines creation and scheduling without bypassing work item permissions or run admission.
 //
 // @param tmpReq - CreateWorkflowInstanceRequest
 //
@@ -6414,11 +6410,11 @@ func (client *Client) CreateWorkflowInstanceWithOptions(tmpReq *CreateWorkflowIn
 
 // Summary:
 //
-// 幂等创建工作流实例
+// Creates a work item idempotently by business ID in a specified collaboration workspace, starts an actual run based on a workflow template, and returns the logical instance and the current execution view.
 //
 // Description:
 //
-// 组合既有创建与排产，不旁路工作项权限或运行准入。
+// Combines creation and scheduling without bypassing work item permissions or run admission.
 //
 // @param request - CreateWorkflowInstanceRequest
 //
@@ -6437,11 +6433,11 @@ func (client *Client) CreateWorkflowInstance(request *CreateWorkflowInstanceRequ
 
 // Summary:
 //
-// # CreateWorkflowTemplate
+// Creates a new workflow template. Templates with the same name are not overwritten.
 //
 // Description:
 //
-// 有效成员保存全新工作流模板；同名模板不会覆盖
+// Creates a new workflow template. Templates with the same name are not overwritten.
 //
 // @param tmpReq - CreateWorkflowTemplateRequest
 //
@@ -6469,6 +6465,10 @@ func (client *Client) CreateWorkflowTemplateWithOptions(tmpReq *CreateWorkflowTe
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Action) {
+		body["action"] = request.Action
+	}
+
 	if !dara.IsNil(request.CollaborationGroupId) {
 		body["collaborationGroupId"] = request.CollaborationGroupId
 	}
@@ -6504,11 +6504,11 @@ func (client *Client) CreateWorkflowTemplateWithOptions(tmpReq *CreateWorkflowTe
 
 // Summary:
 //
-// # CreateWorkflowTemplate
+// Creates a new workflow template. Templates with the same name are not overwritten.
 //
 // Description:
 //
-// 有效成员保存全新工作流模板；同名模板不会覆盖
+// Creates a new workflow template. Templates with the same name are not overwritten.
 //
 // @param request - CreateWorkflowTemplateRequest
 //
@@ -6527,11 +6527,99 @@ func (client *Client) CreateWorkflowTemplate(request *CreateWorkflowTemplateRequ
 
 // Summary:
 //
-// 批量删除应用内资源权限
+// Creates a draft of a workflow template.
 //
 // Description:
 //
-// 逐应用通过 MANAGE 校验后，调用原有原子删除能力。
+// Generates a draft version of a workflow template for editing by a storage management administrator. If the selected version is a draft, it is returned as-is (idempotent, no new version is created). If the selected version is committed, replication of its content is performed for content generation of a v(maximum version number + 1) draft. The effective version remains unchanged. You can subsequently use UpdateWorkflowTemplate and pass the returned version to save or commit the draft.
+//
+// @param request - CreateWorkflowTemplateDraftVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkflowTemplateDraftVersionResponse
+func (client *Client) CreateWorkflowTemplateDraftVersionWithOptions(request *CreateWorkflowTemplateDraftVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkflowTemplateDraftVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkflowTemplateDraftVersion"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createWorkflowTemplateDraftVersion"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkflowTemplateDraftVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a draft of a workflow template.
+//
+// Description:
+//
+// Generates a draft version of a workflow template for editing by a storage management administrator. If the selected version is a draft, it is returned as-is (idempotent, no new version is created). If the selected version is committed, replication of its content is performed for content generation of a v(maximum version number + 1) draft. The effective version remains unchanged. You can subsequently use UpdateWorkflowTemplate and pass the returned version to save or commit the draft.
+//
+// @param request - CreateWorkflowTemplateDraftVersionRequest
+//
+// @return CreateWorkflowTemplateDraftVersionResponse
+func (client *Client) CreateWorkflowTemplateDraftVersion(request *CreateWorkflowTemplateDraftVersionRequest) (_result *CreateWorkflowTemplateDraftVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWorkflowTemplateDraftVersionResponse{}
+	_body, _err := client.CreateWorkflowTemplateDraftVersionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes multiple resource permissions within an application.
+//
+// Description:
+//
+// Verifies MANAGE permissions for each application and then calls the original atomic deletion capability.
 //
 // @param tmpReq - DeleteAppResourcePermissionsRequest
 //
@@ -6594,11 +6682,11 @@ func (client *Client) DeleteAppResourcePermissionsWithOptions(tmpReq *DeleteAppR
 
 // Summary:
 //
-// 批量删除应用内资源权限
+// Deletes multiple resource permissions within an application.
 //
 // Description:
 //
-// 逐应用通过 MANAGE 校验后，调用原有原子删除能力。
+// Verifies MANAGE permissions for each application and then calls the original atomic deletion capability.
 //
 // @param request - DeleteAppResourcePermissionsRequest
 //
@@ -6911,11 +6999,11 @@ func (client *Client) DeleteTenantDirectory(request *DeleteTenantDirectoryReques
 
 // Summary:
 //
-// # DeleteWorkItem
+// Deletes a non-processing work item by a valid member and cascades the cleanup of to-do items, node topics, and runtimes.
 //
 // Description:
 //
-// 有效成员删除非处理中工作项；级联清理待办、节点话题与运行时
+// Deletes a non-processing work item by a valid member and cascades the cleanup of to-do items, node topics, and runtimes.
 //
 // @param request - DeleteWorkItemRequest
 //
@@ -6972,11 +7060,11 @@ func (client *Client) DeleteWorkItemWithOptions(request *DeleteWorkItemRequest, 
 
 // Summary:
 //
-// # DeleteWorkItem
+// Deletes a non-processing work item by a valid member and cascades the cleanup of to-do items, node topics, and runtimes.
 //
 // Description:
 //
-// 有效成员删除非处理中工作项；级联清理待办、节点话题与运行时
+// Deletes a non-processing work item by a valid member and cascades the cleanup of to-do items, node topics, and runtimes.
 //
 // @param request - DeleteWorkItemRequest
 //
@@ -6995,11 +7083,11 @@ func (client *Client) DeleteWorkItem(request *DeleteWorkItemRequest) (_result *D
 
 // Summary:
 //
-// # DeleteWorkflowTemplate
+// Physically deletes a workflow template and its steps for valid members without performing work item dependency checks.
 //
 // Description:
 //
-// 有效成员物理删除工作流模板及其步骤；不执行工作项依赖校验
+// Physically deletes a workflow template and its steps for valid members without performing work item dependency checks.
 //
 // @param request - DeleteWorkflowTemplateRequest
 //
@@ -7056,11 +7144,11 @@ func (client *Client) DeleteWorkflowTemplateWithOptions(request *DeleteWorkflowT
 
 // Summary:
 //
-// # DeleteWorkflowTemplate
+// Physically deletes a workflow template and its steps for valid members without performing work item dependency checks.
 //
 // Description:
 //
-// 有效成员物理删除工作流模板及其步骤；不执行工作项依赖校验
+// Physically deletes a workflow template and its steps for valid members without performing work item dependency checks.
 //
 // @param request - DeleteWorkflowTemplateRequest
 //
@@ -7070,6 +7158,94 @@ func (client *Client) DeleteWorkflowTemplate(request *DeleteWorkflowTemplateRequ
 	headers := make(map[string]*string)
 	_result = &DeleteWorkflowTemplateResponse{}
 	_body, _err := client.DeleteWorkflowTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified version of a workflow template.
+//
+// Description:
+//
+// Deletes a specified version of a workflow template as a workspace administrator. Only inactive versions can be deleted. The system denies requests to delete the active version or the last version of the template with a 409 error. After deletion, the list of remaining versions is returned.
+//
+// @param request - DeleteWorkflowTemplateVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkflowTemplateVersionResponse
+func (client *Client) DeleteWorkflowTemplateVersionWithOptions(request *DeleteWorkflowTemplateVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkflowTemplateVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWorkflowTemplateVersion"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/deleteWorkflowTemplateVersion"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWorkflowTemplateVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified version of a workflow template.
+//
+// Description:
+//
+// Deletes a specified version of a workflow template as a workspace administrator. Only inactive versions can be deleted. The system denies requests to delete the active version or the last version of the template with a 409 error. After deletion, the list of remaining versions is returned.
+//
+// @param request - DeleteWorkflowTemplateVersionRequest
+//
+// @return DeleteWorkflowTemplateVersionResponse
+func (client *Client) DeleteWorkflowTemplateVersion(request *DeleteWorkflowTemplateVersionRequest) (_result *DeleteWorkflowTemplateVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWorkflowTemplateVersionResponse{}
+	_body, _err := client.DeleteWorkflowTemplateVersionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7295,11 +7471,11 @@ func (client *Client) EnableToken(request *EnableTokenRequest) (_result *EnableT
 
 // Summary:
 //
-// # ExportWorkflowTemplate
+// Exports a simplified template definition that can be re-imported by valid members.
 //
 // Description:
 //
-// 有效成员导出可回流导入的精简模板定义
+// Exports a simplified template definition that can be re-imported by valid members.
 //
 // @param request - ExportWorkflowTemplateRequest
 //
@@ -7329,6 +7505,10 @@ func (client *Client) ExportWorkflowTemplateWithOptions(request *ExportWorkflowT
 		body["templateId"] = request.TemplateId
 	}
 
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -7356,11 +7536,11 @@ func (client *Client) ExportWorkflowTemplateWithOptions(request *ExportWorkflowT
 
 // Summary:
 //
-// # ExportWorkflowTemplate
+// Exports a simplified template definition that can be re-imported by valid members.
 //
 // Description:
 //
-// 有效成员导出可回流导入的精简模板定义
+// Exports a simplified template definition that can be re-imported by valid members.
 //
 // @param request - ExportWorkflowTemplateRequest
 //
@@ -7379,11 +7559,11 @@ func (client *Client) ExportWorkflowTemplate(request *ExportWorkflowTemplateRequ
 
 // Summary:
 //
-// # GenerateWorkflowTemplateDraft
+// Generates a non-persistent template draft by calling a large language model (LLM) and consumes the LLM quota of the tenant.
 //
 // Description:
 //
-// 有效成员调用 LLM 生成非持久化模板草稿；消耗租户 LLM 配额
+// Generates a non-persistent template draft by calling a large language model (LLM) and consumes the LLM quota of the tenant.
 //
 // @param tmpReq - GenerateWorkflowTemplateDraftRequest
 //
@@ -7450,11 +7630,11 @@ func (client *Client) GenerateWorkflowTemplateDraftWithOptions(tmpReq *GenerateW
 
 // Summary:
 //
-// # GenerateWorkflowTemplateDraft
+// Generates a non-persistent template draft by calling a large language model (LLM) and consumes the LLM quota of the tenant.
 //
 // Description:
 //
-// 有效成员调用 LLM 生成非持久化模板草稿；消耗租户 LLM 配额
+// Generates a non-persistent template draft by calling a large language model (LLM) and consumes the LLM quota of the tenant.
 //
 // @param request - GenerateWorkflowTemplateDraftRequest
 //
@@ -7473,11 +7653,11 @@ func (client *Client) GenerateWorkflowTemplateDraft(request *GenerateWorkflowTem
 
 // Summary:
 //
-// # GetAgentWorkLog
+// Queries the operation logs of a workflow agent.
 //
 // Description:
 //
-// 查询工作流 Agent 工作日志
+// Queries the operation logs of a workflow agent.
 //
 // @param request - GetAgentWorkLogRequest
 //
@@ -7542,11 +7722,11 @@ func (client *Client) GetAgentWorkLogWithOptions(request *GetAgentWorkLogRequest
 
 // Summary:
 //
-// # GetAgentWorkLog
+// Queries the operation logs of a workflow agent.
 //
 // Description:
 //
-// 查询工作流 Agent 工作日志
+// Queries the operation logs of a workflow agent.
 //
 // @param request - GetAgentWorkLogRequest
 //
@@ -8333,11 +8513,11 @@ func (client *Client) GetKnowledgeBaseSource(request *GetKnowledgeBaseSourceRequ
 
 // Summary:
 //
-// 查询自动记忆拾取开关
+// Queries the automatic memory collection switch.
 //
 // Description:
 //
-// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+// Manages personal or specified collaborative writing workspace memories based on the authenticated user. The workspace mode follows the permissions of active members.
 //
 // @param request - GetMemoryAutoExtractionSwitchRequest
 //
@@ -8394,11 +8574,11 @@ func (client *Client) GetMemoryAutoExtractionSwitchWithOptions(request *GetMemor
 
 // Summary:
 //
-// 查询自动记忆拾取开关
+// Queries the automatic memory collection switch.
 //
 // Description:
 //
-// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+// Manages personal or specified collaborative writing workspace memories based on the authenticated user. The workspace mode follows the permissions of active members.
 //
 // @param request - GetMemoryAutoExtractionSwitchRequest
 //
@@ -8417,11 +8597,11 @@ func (client *Client) GetMemoryAutoExtractionSwitch(request *GetMemoryAutoExtrac
 
 // Summary:
 //
-// 查询个人或协作空间记忆详情
+// Queries the details of a memory.
 //
 // Description:
 //
-// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+// Manages personal memories or memories of a specified writing workspace based on the authenticated user. The workspace mode inherits the permissions of active members.
 //
 // @param request - GetMemoryDetailRequest
 //
@@ -8478,11 +8658,11 @@ func (client *Client) GetMemoryDetailWithOptions(request *GetMemoryDetailRequest
 
 // Summary:
 //
-// 查询个人或协作空间记忆详情
+// Queries the details of a memory.
 //
 // Description:
 //
-// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+// Manages personal memories or memories of a specified writing workspace based on the authenticated user. The workspace mode inherits the permissions of active members.
 //
 // @param request - GetMemoryDetailRequest
 //
@@ -8501,11 +8681,11 @@ func (client *Client) GetMemoryDetail(request *GetMemoryDetailRequest) (_result 
 
 // Summary:
 //
-// # GetNodeDetail
+// Queries the details of an instance node.
 //
 // Description:
 //
-// 查询实例节点完整详情
+// Queries the complete details of an instance node.
 //
 // @param request - GetNodeDetailRequest
 //
@@ -8566,11 +8746,11 @@ func (client *Client) GetNodeDetailWithOptions(request *GetNodeDetailRequest, he
 
 // Summary:
 //
-// # GetNodeDetail
+// Queries the details of an instance node.
 //
 // Description:
 //
-// 查询实例节点完整详情
+// Queries the complete details of an instance node.
 //
 // @param request - GetNodeDetailRequest
 //
@@ -9474,11 +9654,11 @@ func (client *Client) GetSourceUploadSignature(request *GetSourceUploadSignature
 
 // Summary:
 //
-// # GetTodo
+// Queries to-do items.
 //
 // Description:
 //
-// 查询待办（无已读副作用）；todoId/workItemId/messageId 三选一，优先级 todoId > workItemId > messageId
+// Queries to-do items without triggering the read status side effect. You must specify one of the following parameters: todoId, workItemId, or messageId. The priority order is todoId > workItemId > messageId.
 //
 // @param request - GetTodoRequest
 //
@@ -9539,11 +9719,11 @@ func (client *Client) GetTodoWithOptions(request *GetTodoRequest, headers map[st
 
 // Summary:
 //
-// # GetTodo
+// Queries to-do items.
 //
 // Description:
 //
-// 查询待办（无已读副作用）；todoId/workItemId/messageId 三选一，优先级 todoId > workItemId > messageId
+// Queries to-do items without triggering the read status side effect. You must specify one of the following parameters: todoId, workItemId, or messageId. The priority order is todoId > workItemId > messageId.
 //
 // @param request - GetTodoRequest
 //
@@ -9562,11 +9742,11 @@ func (client *Client) GetTodo(request *GetTodoRequest) (_result *GetTodoResponse
 
 // Summary:
 //
-// # GetTodoDetail
+// Queries the processing details of a to-do item.
 //
 // Description:
 //
-// 查询待办详情；当前调用者为 PENDING 处理人时自动填充 readAt（已读副作用）
+// Queries the details of a to-do item. If the current caller is a PENDING assignee, the readAt field is automatically populated to mark the item as read.
 //
 // @param request - GetTodoDetailRequest
 //
@@ -9619,11 +9799,11 @@ func (client *Client) GetTodoDetailWithOptions(request *GetTodoDetailRequest, he
 
 // Summary:
 //
-// # GetTodoDetail
+// Queries the processing details of a to-do item.
 //
 // Description:
 //
-// 查询待办详情；当前调用者为 PENDING 处理人时自动填充 readAt（已读副作用）
+// Queries the details of a to-do item. If the current caller is a PENDING assignee, the readAt field is automatically populated to mark the item as read.
 //
 // @param request - GetTodoDetailRequest
 //
@@ -10268,11 +10448,11 @@ func (client *Client) GetUserInfo(request *GetUserInfoRequest) (_result *GetUser
 
 // Summary:
 //
-// # GetWorkItem
+// Retrieves the details of a work item visible to valid members in the current collaboration space.
 //
 // Description:
 //
-// 有效成员读取当前空间可见工作项详情
+// Retrieves the details of a work item visible to valid members in the current collaboration space.
 //
 // @param request - GetWorkItemRequest
 //
@@ -10329,11 +10509,11 @@ func (client *Client) GetWorkItemWithOptions(request *GetWorkItemRequest, header
 
 // Summary:
 //
-// # GetWorkItem
+// Retrieves the details of a work item visible to valid members in the current collaboration space.
 //
 // Description:
 //
-// 有效成员读取当前空间可见工作项详情
+// Retrieves the details of a work item visible to valid members in the current collaboration space.
 //
 // @param request - GetWorkItemRequest
 //
@@ -10352,11 +10532,11 @@ func (client *Client) GetWorkItem(request *GetWorkItemRequest) (_result *GetWork
 
 // Summary:
 //
-// # GetWorkItemArtifactAccess
+// Redirects to the short-term signed download URL of the artifact with an HTTP 302 status code after validating the caller\\"s permissions for the work item.
 //
 // Description:
 //
-// 校验调用者工作项权限后 302 跳转到产物短期签名下载地址
+// Redirects to the short-term signed download URL of the artifact with an HTTP 302 status code after validating the caller\\"s permissions for the work item.
 //
 // @param request - GetWorkItemArtifactAccessRequest
 //
@@ -10415,11 +10595,11 @@ func (client *Client) GetWorkItemArtifactAccessWithOptions(request *GetWorkItemA
 
 // Summary:
 //
-// # GetWorkItemArtifactAccess
+// Redirects to the short-term signed download URL of the artifact with an HTTP 302 status code after validating the caller\\"s permissions for the work item.
 //
 // Description:
 //
-// 校验调用者工作项权限后 302 跳转到产物短期签名下载地址
+// Redirects to the short-term signed download URL of the artifact with an HTTP 302 status code after validating the caller\\"s permissions for the work item.
 //
 // @param request - GetWorkItemArtifactAccessRequest
 //
@@ -10438,11 +10618,11 @@ func (client *Client) GetWorkItemArtifactAccess(request *GetWorkItemArtifactAcce
 
 // Summary:
 //
-// # GetWorkItemAttachmentAccess
+// Redirects to the short-term preview URL of the specified attachment with a 302 status code after validating the caller\\"s work item permissions.
 //
 // Description:
 //
-// 校验调用者工作项权限后 302 跳转到输入附件短期预览地址
+// Redirects to the short-term preview URL of the specified attachment with a 302 status code after validating the caller\\"s work item permissions.
 //
 // @param request - GetWorkItemAttachmentAccessRequest
 //
@@ -10501,11 +10681,11 @@ func (client *Client) GetWorkItemAttachmentAccessWithOptions(request *GetWorkIte
 
 // Summary:
 //
-// # GetWorkItemAttachmentAccess
+// Redirects to the short-term preview URL of the specified attachment with a 302 status code after validating the caller\\"s work item permissions.
 //
 // Description:
 //
-// 校验调用者工作项权限后 302 跳转到输入附件短期预览地址
+// Redirects to the short-term preview URL of the specified attachment with a 302 status code after validating the caller\\"s work item permissions.
 //
 // @param request - GetWorkItemAttachmentAccessRequest
 //
@@ -10524,11 +10704,11 @@ func (client *Client) GetWorkItemAttachmentAccess(request *GetWorkItemAttachment
 
 // Summary:
 //
-// 查询工作流实例详情
+// Queries the current running, review, and pause statuses of a work item, along with the actual active nodes and execution progress, by using a stable logical instance ID.
 //
 // Description:
 //
-// 以当前成员和工作项可见性读取实例。
+// Retrieves the instance based on the current member and work item visibility.
 //
 // @param request - GetWorkflowInstanceRequest
 //
@@ -10581,11 +10761,11 @@ func (client *Client) GetWorkflowInstanceWithOptions(request *GetWorkflowInstanc
 
 // Summary:
 //
-// 查询工作流实例详情
+// Queries the current running, review, and pause statuses of a work item, along with the actual active nodes and execution progress, by using a stable logical instance ID.
 //
 // Description:
 //
-// 以当前成员和工作项可见性读取实例。
+// Retrieves the instance based on the current member and work item visibility.
 //
 // @param request - GetWorkflowInstanceRequest
 //
@@ -10604,11 +10784,11 @@ func (client *Client) GetWorkflowInstance(request *GetWorkflowInstanceRequest) (
 
 // Summary:
 //
-// # GetWorkflowTemplate
+// Retrieves the current configuration of a workflow template in a collaboration workspace.
 //
 // Description:
 //
-// 有效成员读取协作空间工作流模板当前配置
+// Retrieves the current configuration of a workflow template in a collaboration workspace.
 //
 // @param request - GetWorkflowTemplateRequest
 //
@@ -10638,6 +10818,10 @@ func (client *Client) GetWorkflowTemplateWithOptions(request *GetWorkflowTemplat
 		body["templateId"] = request.TemplateId
 	}
 
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -10665,11 +10849,11 @@ func (client *Client) GetWorkflowTemplateWithOptions(request *GetWorkflowTemplat
 
 // Summary:
 //
-// # GetWorkflowTemplate
+// Retrieves the current configuration of a workflow template in a collaboration workspace.
 //
 // Description:
 //
-// 有效成员读取协作空间工作流模板当前配置
+// Retrieves the current configuration of a workflow template in a collaboration workspace.
 //
 // @param request - GetWorkflowTemplateRequest
 //
@@ -10822,11 +11006,11 @@ func (client *Client) GrantAgentUsers(request *GrantAgentUsersRequest) (_result 
 
 // Summary:
 //
-// # ImportWorkflowTemplate
+// Imports a portable template JSON and creates a new template. A new template is created regardless of whether the name is identical.
 //
 // Description:
 //
-// 有效成员导入可移植模板 JSON 并创建新模板；无论名称是否相同都新建
+// Imports a portable template JSON and creates a new template. A new template is created regardless of whether the name is identical.
 //
 // @param tmpReq - ImportWorkflowTemplateRequest
 //
@@ -10889,11 +11073,11 @@ func (client *Client) ImportWorkflowTemplateWithOptions(tmpReq *ImportWorkflowTe
 
 // Summary:
 //
-// # ImportWorkflowTemplate
+// Imports a portable template JSON and creates a new template. A new template is created regardless of whether the name is identical.
 //
 // Description:
 //
-// 有效成员导入可移植模板 JSON 并创建新模板；无论名称是否相同都新建
+// Imports a portable template JSON and creates a new template. A new template is created regardless of whether the name is identical.
 //
 // @param request - ImportWorkflowTemplateRequest
 //
@@ -11440,11 +11624,11 @@ func (client *Client) ListAliDingMinutes(request *ListAliDingMinutesRequest) (_r
 
 // Summary:
 //
-// 查询应用内全部原始资源授权
+// Queries the resource authorization records within an application.
 //
 // Description:
 //
-// APP/MANAGE 授权后按安全应用前缀分页。
+// Pages results by secure application prefix after APP/MANAGE authorization.
 //
 // @param tmpReq - ListAppResourcePermissionRecordsRequest
 //
@@ -11535,11 +11719,11 @@ func (client *Client) ListAppResourcePermissionRecordsWithOptions(tmpReq *ListAp
 
 // Summary:
 //
-// 查询应用内全部原始资源授权
+// Queries the resource authorization records within an application.
 //
 // Description:
 //
-// APP/MANAGE 授权后按安全应用前缀分页。
+// Pages results by secure application prefix after APP/MANAGE authorization.
 //
 // @param request - ListAppResourcePermissionRecordsRequest
 //
@@ -11558,11 +11742,11 @@ func (client *Client) ListAppResourcePermissionRecords(request *ListAppResourceP
 
 // Summary:
 //
-// 查询用户应用内有效资源权限
+// Queries the valid resource permissions of a user within an application.
 //
 // Description:
 //
-// 强制应用前缀，本人需 VIEW，代查他人需 MANAGE。
+// An application prefix is required. The VIEW permission is required to query your own permissions, and the MANAGE permission is required to query permissions on behalf of others.
 //
 // @param tmpReq - ListAppResourceUserPermissionsRequest
 //
@@ -11649,11 +11833,11 @@ func (client *Client) ListAppResourceUserPermissionsWithOptions(tmpReq *ListAppR
 
 // Summary:
 //
-// 查询用户应用内有效资源权限
+// Queries the valid resource permissions of a user within an application.
 //
 // Description:
 //
-// 强制应用前缀，本人需 VIEW，代查他人需 MANAGE。
+// An application prefix is required. The VIEW permission is required to query your own permissions, and the MANAGE permission is required to query permissions on behalf of others.
 //
 // @param request - ListAppResourceUserPermissionsRequest
 //
@@ -12738,11 +12922,11 @@ func (client *Client) ListGroupDirectory(request *ListGroupDirectoryRequest) (_r
 
 // Summary:
 //
-// # ListInstanceNodes
+// Queries the node list of an instance.
 //
 // Description:
 //
-// 查询实例节点列表
+// Queries the node list of an instance.
 //
 // @param request - ListInstanceNodesRequest
 //
@@ -12799,11 +12983,11 @@ func (client *Client) ListInstanceNodesWithOptions(request *ListInstanceNodesReq
 
 // Summary:
 //
-// # ListInstanceNodes
+// Queries the node list of an instance.
 //
 // Description:
 //
-// 查询实例节点列表
+// Queries the node list of an instance.
 //
 // @param request - ListInstanceNodesRequest
 //
@@ -13022,25 +13206,15 @@ func (client *Client) ListOperatingObjectFavorites(request *ListOperatingObjectF
 
 // Summary:
 //
-// Queries the output list of the current user. Filtering by conditions and pagination are supported.
+// Performs a paged query to retrieve the visible outputs of the current user or a specified collaboration workspace. Supports paging and filtering by session, labels, business ID, and existing output filter conditions.
 //
 // Description:
 //
-// ## Operation description
+// If collaborationGroupId is not provided, queries the personal outputs of the current invoker. If provided, queries the outputs of the specified collaboration workspace and verifies the real-time access permissions of the current workspace members and source resources. The invoker identity and tenant permissions are determined by the authentication context.
 //
-// - This API operation queries the output list of the current logged-in user.
+// sessionId requires an exact match for a regular session, skill session, or node execution session. tags requires all labels to match simultaneously. bizId requires an exact match for the business ID of the file registration or associated workflow instance. The new conditions are combined with the existing operatingObjectName, itemType, keyword, and sharedOnly conditions using AND, and are executed before counting and paging.
 //
-// - `tenantId` is a common parameter. If not specified, the default tenant of the caller is used.
-//
-// - Filtering is supported through parameters such as `operatingObjectName`, `itemType`, and `keyword`.
-//
-// - Set `sharedOnly` to `true` to display only outputs with sharing enabled.
-//
-// - Pagination is controlled by `page` (page number) and `pageSize` (number of items per page). By default, the first page is returned with 20 records per page.
-//
-// - Results are sorted by update time in descending order by default.
-//
-// - The `tenant_id` or `user_id` values passed in the request body by the caller are ignored. This information is derived only from the authenticated identity.
+// Labels and business IDs are derived from file registrations or workflow instance associations. Unregistered labels or business IDs are not inferred from titles. Paging defaults to page 1 with 20 items per page, up to a maximum of 100 items, sorted in descending order by update time. The response structure remains compatible with the original API.
 //
 // @param tmpReq - ListOutputFilesRequest
 //
@@ -13135,25 +13309,15 @@ func (client *Client) ListOutputFilesWithOptions(tmpReq *ListOutputFilesRequest,
 
 // Summary:
 //
-// Queries the output list of the current user. Filtering by conditions and pagination are supported.
+// Performs a paged query to retrieve the visible outputs of the current user or a specified collaboration workspace. Supports paging and filtering by session, labels, business ID, and existing output filter conditions.
 //
 // Description:
 //
-// ## Operation description
+// If collaborationGroupId is not provided, queries the personal outputs of the current invoker. If provided, queries the outputs of the specified collaboration workspace and verifies the real-time access permissions of the current workspace members and source resources. The invoker identity and tenant permissions are determined by the authentication context.
 //
-// - This API operation queries the output list of the current logged-in user.
+// sessionId requires an exact match for a regular session, skill session, or node execution session. tags requires all labels to match simultaneously. bizId requires an exact match for the business ID of the file registration or associated workflow instance. The new conditions are combined with the existing operatingObjectName, itemType, keyword, and sharedOnly conditions using AND, and are executed before counting and paging.
 //
-// - `tenantId` is a common parameter. If not specified, the default tenant of the caller is used.
-//
-// - Filtering is supported through parameters such as `operatingObjectName`, `itemType`, and `keyword`.
-//
-// - Set `sharedOnly` to `true` to display only outputs with sharing enabled.
-//
-// - Pagination is controlled by `page` (page number) and `pageSize` (number of items per page). By default, the first page is returned with 20 records per page.
-//
-// - Results are sorted by update time in descending order by default.
-//
-// - The `tenant_id` or `user_id` values passed in the request body by the caller are ignored. This information is derived only from the authenticated identity.
+// Labels and business IDs are derived from file registrations or workflow instance associations. Unregistered labels or business IDs are not inferred from titles. Paging defaults to page 1 with 20 items per page, up to a maximum of 100 items, sorted in descending order by update time. The response structure remains compatible with the original API.
 //
 // @param request - ListOutputFilesRequest
 //
@@ -13822,11 +13986,11 @@ func (client *Client) ListTenantDirectory(request *ListTenantDirectoryRequest) (
 
 // Summary:
 //
-// # ListTodos
+// Performs a paging query on the to-do list.
 //
 // Description:
 //
-// 分页查询当前用户的待办列表；筛选组内并集、组间交集，全不传 = 全部
+// Performs a paging query on the to-do list for the current user. For paging, filters within a group use a union, and filters across groups use an intersection. If no filters are specified, all items are returned.
 //
 // @param tmpReq - ListTodosRequest
 //
@@ -13937,11 +14101,11 @@ func (client *Client) ListTodosWithOptions(tmpReq *ListTodosRequest, headers map
 
 // Summary:
 //
-// # ListTodos
+// Performs a paging query on the to-do list.
 //
 // Description:
 //
-// 分页查询当前用户的待办列表；筛选组内并集、组间交集，全不传 = 全部
+// Performs a paging query on the to-do list for the current user. For paging, filters within a group use a union, and filters across groups use an intersection. If no filters are specified, all items are returned.
 //
 // @param request - ListTodosRequest
 //
@@ -14619,11 +14783,11 @@ func (client *Client) ListVisibleKnowledgeBases(request *ListVisibleKnowledgeBas
 
 // Summary:
 //
-// # ListWorkItemArtifacts
+// Lists all historical artifacts of a work item accessible to authorized members.
 //
 // Description:
 //
-// 有效成员列出有权访问工作项的全部历史产物
+// Lists all historical artifacts of a work item accessible to authorized members.
 //
 // @param request - ListWorkItemArtifactsRequest
 //
@@ -14680,11 +14844,11 @@ func (client *Client) ListWorkItemArtifactsWithOptions(request *ListWorkItemArti
 
 // Summary:
 //
-// # ListWorkItemArtifacts
+// Lists all historical artifacts of a work item accessible to authorized members.
 //
 // Description:
 //
-// 有效成员列出有权访问工作项的全部历史产物
+// Lists all historical artifacts of a work item accessible to authorized members.
 //
 // @param request - ListWorkItemArtifactsRequest
 //
@@ -14703,11 +14867,11 @@ func (client *Client) ListWorkItemArtifacts(request *ListWorkItemArtifactsReques
 
 // Summary:
 //
-// # ListWorkItems
+// Lists visible work items in the current workspace for valid members with pagination. The nextToken and maxResults parameters take precedence over the page and pageSize parameters.
 //
 // Description:
 //
-// 有效成员分页筛选当前空间可见工作项；page/pageSize 与 nextToken/maxResults 并存，令牌优先
+// Lists visible work items in the current workspace for valid members with pagination. The nextToken and maxResults parameters take precedence over the page and pageSize parameters.
 //
 // @param tmpReq - ListWorkItemsRequest
 //
@@ -14810,11 +14974,11 @@ func (client *Client) ListWorkItemsWithOptions(tmpReq *ListWorkItemsRequest, hea
 
 // Summary:
 //
-// # ListWorkItems
+// Lists visible work items in the current workspace for valid members with pagination. The nextToken and maxResults parameters take precedence over the page and pageSize parameters.
 //
 // Description:
 //
-// 有效成员分页筛选当前空间可见工作项；page/pageSize 与 nextToken/maxResults 并存，令牌优先
+// Lists visible work items in the current workspace for valid members with pagination. The nextToken and maxResults parameters take precedence over the page and pageSize parameters.
 //
 // @param request - ListWorkItemsRequest
 //
@@ -14833,11 +14997,11 @@ func (client *Client) ListWorkItems(request *ListWorkItemsRequest) (_result *Lis
 
 // Summary:
 //
-// 分页筛选工作流实例
+// Queries workflow instances visible to the current invoker in a specified collaboration space through a paged query, and supports paging and filtering by status, external requirement ID, initiator, keyword, and sorting conditions.
 //
 // Description:
 //
-// 复用详情投影，避免工作项列表与实例状态混用。
+// Reuses detail projections to avoid mixing work item lists with instance statuses.
 //
 // @param request - ListWorkflowInstancesRequest
 //
@@ -14922,11 +15086,11 @@ func (client *Client) ListWorkflowInstancesWithOptions(request *ListWorkflowInst
 
 // Summary:
 //
-// 分页筛选工作流实例
+// Queries workflow instances visible to the current invoker in a specified collaboration space through a paged query, and supports paging and filtering by status, external requirement ID, initiator, keyword, and sorting conditions.
 //
 // Description:
 //
-// 复用详情投影，避免工作项列表与实例状态混用。
+// Reuses detail projections to avoid mixing work item lists with instance statuses.
 //
 // @param request - ListWorkflowInstancesRequest
 //
@@ -14945,11 +15109,95 @@ func (client *Client) ListWorkflowInstances(request *ListWorkflowInstancesReques
 
 // Summary:
 //
-// # ListWorkflowTemplates
+// Queries the versions of a workflow template.
 //
 // Description:
 //
-// 有效成员分页搜索当前协作空间的有效模板；page/pageSize 与 nextToken/maxResults 并存，令牌优先
+// Queries all versions of a workflow template for active members. Returns draft and submitted versions in descending order by version number, and marks the unique effective version.
+//
+// @param request - ListWorkflowTemplateVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkflowTemplateVersionsResponse
+func (client *Client) ListWorkflowTemplateVersionsWithOptions(request *ListWorkflowTemplateVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkflowTemplateVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkflowTemplateVersions"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listWorkflowTemplateVersions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkflowTemplateVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the versions of a workflow template.
+//
+// Description:
+//
+// Queries all versions of a workflow template for active members. Returns draft and submitted versions in descending order by version number, and marks the unique effective version.
+//
+// @param request - ListWorkflowTemplateVersionsRequest
+//
+// @return ListWorkflowTemplateVersionsResponse
+func (client *Client) ListWorkflowTemplateVersions(request *ListWorkflowTemplateVersionsRequest) (_result *ListWorkflowTemplateVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkflowTemplateVersionsResponse{}
+	_body, _err := client.ListWorkflowTemplateVersionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries valid templates in the current collaboration space with pagination. Supports both page/pageSize and nextToken/maxResults parameters, with token-based pagination taking precedence.
+//
+// Description:
+//
+// Searches for valid templates in the current collaboration space with pagination. Supports both page/pageSize and nextToken/maxResults parameters, with token-based pagination taking precedence.
 //
 // @param request - ListWorkflowTemplatesRequest
 //
@@ -15022,11 +15270,11 @@ func (client *Client) ListWorkflowTemplatesWithOptions(request *ListWorkflowTemp
 
 // Summary:
 //
-// # ListWorkflowTemplates
+// Queries valid templates in the current collaboration space with pagination. Supports both page/pageSize and nextToken/maxResults parameters, with token-based pagination taking precedence.
 //
 // Description:
 //
-// 有效成员分页搜索当前协作空间的有效模板；page/pageSize 与 nextToken/maxResults 并存，令牌优先
+// Searches for valid templates in the current collaboration space with pagination. Supports both page/pageSize and nextToken/maxResults parameters, with token-based pagination taking precedence.
 //
 // @param request - ListWorkflowTemplatesRequest
 //
@@ -15045,11 +15293,11 @@ func (client *Client) ListWorkflowTemplates(request *ListWorkflowTemplatesReques
 
 // Summary:
 //
-// # MarkTodosRead
+// Marks to-do items as read.
 //
 // Description:
 //
-// 标记当前用户的待办已读；markAllRead 优先于 todoIds，两者皆空不报错
+// Marks the to-do items of the current user as read. The markAllRead parameter takes precedence over the todoIds parameter. If both parameters are empty, no error is returned.
 //
 // @param tmpReq - MarkTodosReadRequest
 //
@@ -15112,11 +15360,11 @@ func (client *Client) MarkTodosReadWithOptions(tmpReq *MarkTodosReadRequest, hea
 
 // Summary:
 //
-// # MarkTodosRead
+// Marks to-do items as read.
 //
 // Description:
 //
-// 标记当前用户的待办已读；markAllRead 优先于 todoIds，两者皆空不报错
+// Marks the to-do items of the current user as read. The markAllRead parameter takes precedence over the todoIds parameter. If both parameters are empty, no error is returned.
 //
 // @param request - MarkTodosReadRequest
 //
@@ -15567,11 +15815,11 @@ func (client *Client) OfflineAnnouncement(request *OfflineAnnouncementRequest) (
 
 // Summary:
 //
-// # PauseWorkItem
+// Pauses the entire workflow bound to a work item for active members.
 //
 // Description:
 //
-// 有效成员暂停工作项绑定的整个 Workflow
+// Pauses the entire workflow bound to a work item for active members.
 //
 // @param request - PauseWorkItemRequest
 //
@@ -15628,11 +15876,11 @@ func (client *Client) PauseWorkItemWithOptions(request *PauseWorkItemRequest, he
 
 // Summary:
 //
-// # PauseWorkItem
+// Pauses the entire workflow bound to a work item for active members.
 //
 // Description:
 //
-// 有效成员暂停工作项绑定的整个 Workflow
+// Pauses the entire workflow bound to a work item for active members.
 //
 // @param request - PauseWorkItemRequest
 //
@@ -16252,11 +16500,11 @@ func (client *Client) QuerySyncResult(request *QuerySyncResultRequest) (_result 
 
 // Summary:
 //
-// # QueryWorkItemFeed
+// Queries the grouped view of the work item feed for active members with server-side cursor pagination.
 //
 // Description:
 //
-// 有效成员查询工作项 feed 分组视图；服务端游标分页（cursor/pageSize）
+// Queries the grouped view of the work item feed for active members with server-side cursor pagination.
 //
 // @param tmpReq - QueryWorkItemFeedRequest
 //
@@ -16359,11 +16607,11 @@ func (client *Client) QueryWorkItemFeedWithOptions(tmpReq *QueryWorkItemFeedRequ
 
 // Summary:
 //
-// # QueryWorkItemFeed
+// Queries the grouped view of the work item feed for active members with server-side cursor pagination.
 //
 // Description:
 //
-// 有效成员查询工作项 feed 分组视图；服务端游标分页（cursor/pageSize）
+// Queries the grouped view of the work item feed for active members with server-side cursor pagination.
 //
 // @param request - QueryWorkItemFeedRequest
 //
@@ -16498,11 +16746,11 @@ func (client *Client) RecommendNextActions(request *RecommendNextActionsRequest)
 
 // Summary:
 //
-// 批量注册应用内资源权限
+// Registers in-app resource permissions in bulk.
 //
 // Description:
 //
-// 先检查全部应用的 MANAGE 权限，再执行一次原子批量注册。
+// Checks the MANAGE permission for all applications first, and then performs an atomic batch registration.
 //
 // @param tmpReq - RegisterAppResourcePermissionsRequest
 //
@@ -16565,11 +16813,11 @@ func (client *Client) RegisterAppResourcePermissionsWithOptions(tmpReq *Register
 
 // Summary:
 //
-// 批量注册应用内资源权限
+// Registers in-app resource permissions in bulk.
 //
 // Description:
 //
-// 先检查全部应用的 MANAGE 权限，再执行一次原子批量注册。
+// Checks the MANAGE permission for all applications first, and then performs an atomic batch registration.
 //
 // @param request - RegisterAppResourcePermissionsRequest
 //
@@ -17432,11 +17680,11 @@ func (client *Client) ReplaceKnowledgeBaseSourceFile(request *ReplaceKnowledgeBa
 
 // Summary:
 //
-// 覆盖或清空手动记忆
+// Overwrites or clears manual memory.
 //
 // Description:
 //
-// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+// Manages personal memory or the memory of a specified writing workspace based on the authenticated user. Workspace mode inherits the permissions of active members.
 //
 // @param request - ReplaceManualMemoryRequest
 //
@@ -17497,11 +17745,11 @@ func (client *Client) ReplaceManualMemoryWithOptions(request *ReplaceManualMemor
 
 // Summary:
 //
-// 覆盖或清空手动记忆
+// Overwrites or clears manual memory.
 //
 // Description:
 //
-// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+// Manages personal memory or the memory of a specified writing workspace based on the authenticated user. Workspace mode inherits the permissions of active members.
 //
 // @param request - ReplaceManualMemoryRequest
 //
@@ -17742,11 +17990,11 @@ func (client *Client) ReplaceSourceFile(request *ReplaceSourceFileRequest) (_res
 
 // Summary:
 //
-// # RerunNodeAI
+// Reruns a workflow node.
 //
 // Description:
 //
-// 重跑失败的工作流节点
+// Reruns a failed workflow node.
 //
 // @param request - RerunNodeAIRequest
 //
@@ -17807,11 +18055,11 @@ func (client *Client) RerunNodeAIWithOptions(request *RerunNodeAIRequest, header
 
 // Summary:
 //
-// # RerunNodeAI
+// Reruns a workflow node.
 //
 // Description:
 //
-// 重跑失败的工作流节点
+// Reruns a failed workflow node.
 //
 // @param request - RerunNodeAIRequest
 //
@@ -18058,11 +18306,11 @@ func (client *Client) ResetToken(request *ResetTokenRequest) (_result *ResetToke
 
 // Summary:
 //
-// # ResolveWorkItemArtifactAccess
+// Retrieves the short-term signed download URL for a work item artifact.
 //
 // Description:
 //
-// 有效成员解析工作项产物短期签名下载地址
+// Retrieves the short-term signed download URL for a work item artifact.
 //
 // @param request - ResolveWorkItemArtifactAccessRequest
 //
@@ -18123,11 +18371,11 @@ func (client *Client) ResolveWorkItemArtifactAccessWithOptions(request *ResolveW
 
 // Summary:
 //
-// # ResolveWorkItemArtifactAccess
+// Retrieves the short-term signed download URL for a work item artifact.
 //
 // Description:
 //
-// 有效成员解析工作项产物短期签名下载地址
+// Retrieves the short-term signed download URL for a work item artifact.
 //
 // @param request - ResolveWorkItemArtifactAccessRequest
 //
@@ -18146,11 +18394,11 @@ func (client *Client) ResolveWorkItemArtifactAccess(request *ResolveWorkItemArti
 
 // Summary:
 //
-// # ResolveWorkItemAttachmentAccess
+// Retrieves the short-term preview URL for an input attachment of a valid member parsing work item.
 //
 // Description:
 //
-// 有效成员解析工作项输入附件短期预览地址
+// Retrieves the short-term preview URL for an input attachment of a valid member parsing work item.
 //
 // @param request - ResolveWorkItemAttachmentAccessRequest
 //
@@ -18211,11 +18459,11 @@ func (client *Client) ResolveWorkItemAttachmentAccessWithOptions(request *Resolv
 
 // Summary:
 //
-// # ResolveWorkItemAttachmentAccess
+// Retrieves the short-term preview URL for an input attachment of a valid member parsing work item.
 //
 // Description:
 //
-// 有效成员解析工作项输入附件短期预览地址
+// Retrieves the short-term preview URL for an input attachment of a valid member parsing work item.
 //
 // @param request - ResolveWorkItemAttachmentAccessRequest
 //
@@ -18234,11 +18482,11 @@ func (client *Client) ResolveWorkItemAttachmentAccess(request *ResolveWorkItemAt
 
 // Summary:
 //
-// # ResumeWorkItem
+// Resumes work items from the current plan pause point as an effective member.
 //
 // Description:
 //
-// 有效成员从当前 Plan 暂停点恢复工作项
+// Resumes work items from the current plan pause point as an effective member.
 //
 // @param request - ResumeWorkItemRequest
 //
@@ -18295,11 +18543,11 @@ func (client *Client) ResumeWorkItemWithOptions(request *ResumeWorkItemRequest, 
 
 // Summary:
 //
-// # ResumeWorkItem
+// Resumes work items from the current plan pause point as an effective member.
 //
 // Description:
 //
-// 有效成员从当前 Plan 暂停点恢复工作项
+// Resumes work items from the current plan pause point as an effective member.
 //
 // @param request - ResumeWorkItemRequest
 //
@@ -19562,11 +19810,11 @@ func (client *Client) SaveOutputFileToResource(request *SaveOutputFileToResource
 
 // Summary:
 //
-// # ScheduleWorkItem
+// Idempotently schedules work items for valid members and materializes a fixed plan.
 //
 // Description:
 //
-// 有效成员幂等排产工作项并物化固定 Plan
+// Idempotently schedules work items for valid members and materializes a fixed plan.
 //
 // @param request - ScheduleWorkItemRequest
 //
@@ -19627,11 +19875,11 @@ func (client *Client) ScheduleWorkItemWithOptions(request *ScheduleWorkItemReque
 
 // Summary:
 //
-// # ScheduleWorkItem
+// Idempotently schedules work items for valid members and materializes a fixed plan.
 //
 // Description:
 //
-// 有效成员幂等排产工作项并物化固定 Plan
+// Idempotently schedules work items for valid members and materializes a fixed plan.
 //
 // @param request - ScheduleWorkItemRequest
 //
@@ -19650,17 +19898,17 @@ func (client *Client) ScheduleWorkItem(request *ScheduleWorkItemRequest) (_resul
 
 // Summary:
 //
-// Winnexo 轻量工作台搜索阿里钉群聊。
+// Searches for DingTalk group chats in the Winnexo lightweight workspace.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 仅供 Winnexo 轻量工作台使用。
+// - Available only for the Winnexo lightweight workspace.
 //
-// - 按关键词分页搜索当前平台用户可见的阿里钉群聊。
+// - Searches for DingTalk group chats visible to the current platform user by keyword in a paginated manner.
 //
-// - 响应不包含 DWS 原始对象。
+// - The response does not include DWS raw objects.
 //
 // @param request - SearchAliDingGroupChatsRequest
 //
@@ -19725,17 +19973,17 @@ func (client *Client) SearchAliDingGroupChatsWithOptions(request *SearchAliDingG
 
 // Summary:
 //
-// Winnexo 轻量工作台搜索阿里钉群聊。
+// Searches for DingTalk group chats in the Winnexo lightweight workspace.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 仅供 Winnexo 轻量工作台使用。
+// - Available only for the Winnexo lightweight workspace.
 //
-// - 按关键词分页搜索当前平台用户可见的阿里钉群聊。
+// - Searches for DingTalk group chats visible to the current platform user by keyword in a paginated manner.
 //
-// - 响应不包含 DWS 原始对象。
+// - The response does not include DWS raw objects.
 //
 // @param request - SearchAliDingGroupChatsRequest
 //
@@ -20087,11 +20335,11 @@ func (client *Client) SendChatMessage(request *SendChatMessageRequest) (_result 
 
 // Summary:
 //
-// # SetWorkItemPinned
+// Sets the personal pin status of a work item for a valid member.
 //
 // Description:
 //
-// 有效成员设置工作项个人置顶
+// Sets the personal pin status of a work item for a valid member.
 //
 // @param request - SetWorkItemPinnedRequest
 //
@@ -20152,11 +20400,11 @@ func (client *Client) SetWorkItemPinnedWithOptions(request *SetWorkItemPinnedReq
 
 // Summary:
 //
-// # SetWorkItemPinned
+// Sets the personal pin status of a work item for a valid member.
 //
 // Description:
 //
-// 有效成员设置工作项个人置顶
+// Sets the personal pin status of a work item for a valid member.
 //
 // @param request - SetWorkItemPinnedRequest
 //
@@ -20166,6 +20414,94 @@ func (client *Client) SetWorkItemPinned(request *SetWorkItemPinnedRequest) (_res
 	headers := make(map[string]*string)
 	_result = &SetWorkItemPinnedResponse{}
 	_body, _err := client.SetWorkItemPinnedWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the effective version of a workflow.
+//
+// Description:
+//
+// The workspace administrator configures the Settings for the effective version of a workflow template. Only versions with a commit are allowed, and each template can have only one effective version. Before taking effect, the version is re-verified based on the current workspace members, digital workers, capabilities, and storage management. Existing work items use their own execute snapshots and are not affected.
+//
+// @param request - SetWorkflowTemplateEffectiveVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetWorkflowTemplateEffectiveVersionResponse
+func (client *Client) SetWorkflowTemplateEffectiveVersionWithOptions(request *SetWorkflowTemplateEffectiveVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SetWorkflowTemplateEffectiveVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetWorkflowTemplateEffectiveVersion"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/setWorkflowTemplateEffectiveVersion"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetWorkflowTemplateEffectiveVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the effective version of a workflow.
+//
+// Description:
+//
+// The workspace administrator configures the Settings for the effective version of a workflow template. Only versions with a commit are allowed, and each template can have only one effective version. Before taking effect, the version is re-verified based on the current workspace members, digital workers, capabilities, and storage management. Existing work items use their own execute snapshots and are not affected.
+//
+// @param request - SetWorkflowTemplateEffectiveVersionRequest
+//
+// @return SetWorkflowTemplateEffectiveVersionResponse
+func (client *Client) SetWorkflowTemplateEffectiveVersion(request *SetWorkflowTemplateEffectiveVersionRequest) (_result *SetWorkflowTemplateEffectiveVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SetWorkflowTemplateEffectiveVersionResponse{}
+	_body, _err := client.SetWorkflowTemplateEffectiveVersionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20344,11 +20680,11 @@ func (client *Client) StreamChatMessage(messageId *string, request *StreamChatMe
 
 // Summary:
 //
-// # SubmitTodo
+// Submits answers for a to-do item.
 //
 // Description:
 //
-// 提交待办作答结果；本人重复提交幂等返回首次结果，他人抢先返回 409 AlreadyCompleted
+// Submits the answers for a to-do item. Repeated submissions by the same user are idempotent and return the initial result. If another user completes the item first, a 409 AlreadyCompleted error is returned.
 //
 // @param tmpReq - SubmitTodoRequest
 //
@@ -20411,11 +20747,11 @@ func (client *Client) SubmitTodoWithOptions(tmpReq *SubmitTodoRequest, headers m
 
 // Summary:
 //
-// # SubmitTodo
+// Submits answers for a to-do item.
 //
 // Description:
 //
-// 提交待办作答结果；本人重复提交幂等返回首次结果，他人抢先返回 409 AlreadyCompleted
+// Submits the answers for a to-do item. Repeated submissions by the same user are idempotent and return the initial result. If another user completes the item first, a 409 AlreadyCompleted error is returned.
 //
 // @param request - SubmitTodoRequest
 //
@@ -20576,11 +20912,11 @@ func (client *Client) SyncOrgStructure(request *SyncOrgStructureRequest) (_resul
 
 // Summary:
 //
-// # TerminateInstance
+// Terminates a workflow instance.
 //
 // Description:
 //
-// 终止当前工作流实例
+// Terminates the current workflow instance.
 //
 // @param request - TerminateInstanceRequest
 //
@@ -20641,11 +20977,11 @@ func (client *Client) TerminateInstanceWithOptions(request *TerminateInstanceReq
 
 // Summary:
 //
-// # TerminateInstance
+// Terminates a workflow instance.
 //
 // Description:
 //
-// 终止当前工作流实例
+// Terminates the current workflow instance.
 //
 // @param request - TerminateInstanceRequest
 //
@@ -21045,11 +21381,11 @@ func (client *Client) TranscribeChatVoiceAdvance(request *TranscribeChatVoiceAdv
 
 // Summary:
 //
-// # TransferTodo
+// Reassigns a to-do task.
 //
 // Description:
 //
-// 转办待办给指定用户；目标剔除操作人本人，整单原子校验
+// Reassigns a to-do task to specified users. The operator is excluded from the target list, and atomic validation is performed for the entire task.
 //
 // @param tmpReq - TransferTodoRequest
 //
@@ -21116,11 +21452,11 @@ func (client *Client) TransferTodoWithOptions(tmpReq *TransferTodoRequest, heade
 
 // Summary:
 //
-// # TransferTodo
+// Reassigns a to-do task.
 //
 // Description:
 //
-// 转办待办给指定用户；目标剔除操作人本人，整单原子校验
+// Reassigns a to-do task to specified users. The operator is excluded from the target list, and atomic validation is performed for the entire task.
 //
 // @param request - TransferTodoRequest
 //
@@ -22091,11 +22427,11 @@ func (client *Client) UpdateKnowledgeBaseSourceTags(request *UpdateKnowledgeBase
 
 // Summary:
 //
-// 更新自动记忆拾取开关
+// Updates the automatic memory collection toggle.
 //
 // Description:
 //
-// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+// Manages personal memories or memories of a specified collaborative writing workspace based on the authenticated user. In workspace mode, the permissions of active members are applied.
 //
 // @param request - UpdateMemoryAutoExtractionSwitchRequest
 //
@@ -22160,11 +22496,11 @@ func (client *Client) UpdateMemoryAutoExtractionSwitchWithOptions(request *Updat
 
 // Summary:
 //
-// 更新自动记忆拾取开关
+// Updates the automatic memory collection toggle.
 //
 // Description:
 //
-// 基于鉴权用户管理个人或指定写作协作空间记忆；空间模式沿用活跃成员权限。
+// Manages personal memories or memories of a specified collaborative writing workspace based on the authenticated user. In workspace mode, the permissions of active members are applied.
 //
 // @param request - UpdateMemoryAutoExtractionSwitchRequest
 //
@@ -22895,11 +23231,11 @@ func (client *Client) UpdateUserInfo(request *UpdateUserInfoRequest) (_result *U
 
 // Summary:
 //
-// # UpdateWorkItem
+// Updates a work item using optimistic locking. If workflowTemplateIds is not specified, the existing bindings are retained.
 //
 // Description:
 //
-// 有效成员按乐观版本编辑工作项；workflowTemplateIds 未传保持绑定
+// Updates a work item using optimistic locking. If workflowTemplateIds is not specified, the existing bindings are retained.
 //
 // @param tmpReq - UpdateWorkItemRequest
 //
@@ -23010,11 +23346,11 @@ func (client *Client) UpdateWorkItemWithOptions(tmpReq *UpdateWorkItemRequest, h
 
 // Summary:
 //
-// # UpdateWorkItem
+// Updates a work item using optimistic locking. If workflowTemplateIds is not specified, the existing bindings are retained.
 //
 // Description:
 //
-// 有效成员按乐观版本编辑工作项；workflowTemplateIds 未传保持绑定
+// Updates a work item using optimistic locking. If workflowTemplateIds is not specified, the existing bindings are retained.
 //
 // @param request - UpdateWorkItemRequest
 //
@@ -23033,11 +23369,11 @@ func (client *Client) UpdateWorkItem(request *UpdateWorkItemRequest) (_result *U
 
 // Summary:
 //
-// # UpdateWorkflowTemplate
+// Overwrites and updates a workflow template. The last save takes effect.
 //
 // Description:
 //
-// 有效成员整体覆盖更新工作流模板；最后一次保存生效
+// Overwrites and updates a workflow template. The last save takes effect.
 //
 // @param tmpReq - UpdateWorkflowTemplateRequest
 //
@@ -23065,6 +23401,10 @@ func (client *Client) UpdateWorkflowTemplateWithOptions(tmpReq *UpdateWorkflowTe
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Action) {
+		body["action"] = request.Action
+	}
+
 	if !dara.IsNil(request.CollaborationGroupId) {
 		body["collaborationGroupId"] = request.CollaborationGroupId
 	}
@@ -23073,8 +23413,20 @@ func (client *Client) UpdateWorkflowTemplateWithOptions(tmpReq *UpdateWorkflowTe
 		body["definition"] = request.DefinitionShrink
 	}
 
+	if !dara.IsNil(request.SourceVersion) {
+		body["sourceVersion"] = request.SourceVersion
+	}
+
 	if !dara.IsNil(request.TemplateId) {
 		body["templateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	if !dara.IsNil(request.VersionDescription) {
+		body["versionDescription"] = request.VersionDescription
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -23104,11 +23456,11 @@ func (client *Client) UpdateWorkflowTemplateWithOptions(tmpReq *UpdateWorkflowTe
 
 // Summary:
 //
-// # UpdateWorkflowTemplate
+// Overwrites and updates a workflow template. The last save takes effect.
 //
 // Description:
 //
-// 有效成员整体覆盖更新工作流模板；最后一次保存生效
+// Overwrites and updates a workflow template. The last save takes effect.
 //
 // @param request - UpdateWorkflowTemplateRequest
 //

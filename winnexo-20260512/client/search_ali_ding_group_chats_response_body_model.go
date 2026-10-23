@@ -24,32 +24,33 @@ type iSearchAliDingGroupChatsResponseBody interface {
 }
 
 type SearchAliDingGroupChatsResponseBody struct {
-	// 业务状态码
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 是否还有下一页
+	// Indicates whether more pages are available.
 	//
 	// example:
 	//
 	// false
-	HasMore *bool                                       `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	Items   []*SearchAliDingGroupChatsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
+	// The user group tree node information.
+	Items []*SearchAliDingGroupChatsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The description of the status code.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 下一页分页游标，末页为空
+	// The starting cursor for the next page.
 	//
 	// example:
 	//
 	// 1
 	NextCursor *string `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -133,29 +134,35 @@ func (s *SearchAliDingGroupChatsResponseBody) Validate() error {
 }
 
 type SearchAliDingGroupChatsResponseBodyItems struct {
-	// 阿里钉群聊 ID
+	// The conversation ID. This ID is typically used for JSSDK.
 	//
 	// example:
 	//
 	// cid-example
 	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
-	// 会话类型
+	// The conversation type. Valid values:
+	//
+	// - **0**: one-on-one chat.
+	//
+	// - **1**: group chat.
+	//
+	// > For a one-on-one chat, you do not need to specify **openConversationId**. Specify the employee ID in **receiverUserIdList**. For a one-on-one chat between two users, specify the employee ID of either user. For a one-on-one chat between a user and a bot, specify the employee ID of the user.
 	//
 	// example:
 	//
 	// INTERNAL_GROUP
 	ConversationType *string `json:"conversationType,omitempty" xml:"conversationType,omitempty"`
-	// 当前用户是否开启免打扰
+	// Indicates whether the current user has enabled the Do Not Disturb mode.
 	//
 	// example:
 	//
 	// false
 	Muted *bool `json:"muted,omitempty" xml:"muted,omitempty"`
-	// 群聊标题
+	// The title of the scheduled meeting.
 	//
 	// example:
 	//
-	// 客户项目群
+	// Customer project group
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

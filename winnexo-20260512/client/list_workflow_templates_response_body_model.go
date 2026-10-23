@@ -32,61 +32,61 @@ type iListWorkflowTemplatesResponseBody interface {
 }
 
 type ListWorkflowTemplatesResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 是否还有更多数据
+	// Indicates whether more data is available.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// 当前页模板摘要列表
+	// The list of template summaries on the current page.
 	//
 	// example:
 	//
 	// example
 	Items []*ListWorkflowTemplatesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 本次生效的单页最大返回数量
+	// The maximum number of entries returned per page in the current request.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 错误描述
+	// The error message.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 下一页翻页令牌；无更多数据时为空字符串
+	// The pagination token for the next page. An empty string indicates that no more data is available.
 	//
 	// example:
 	//
 	// example
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 当前页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 生效单页条数
+	// The number of entries per page in the current request.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 筛选条件下可见总数
+	// The total number of visible entries that match the filter conditions.
 	//
 	// example:
 	//
@@ -206,43 +206,65 @@ func (s *ListWorkflowTemplatesResponseBody) Validate() error {
 }
 
 type ListWorkflowTemplatesResponseBodyItems struct {
-	// 模板描述
+	// The description of the template.
 	//
 	// example:
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 最近修改时间(ISO8601)
+	// The current effective version number. An empty value indicates that only a draft exists and the template cannot be used for work items.
+	//
+	// example:
+	//
+	// v1
+	EffectiveVersion *string `json:"effectiveVersion,omitempty" xml:"effectiveVersion,omitempty"`
+	// The time when the template was last modified. The time is in the ISO 8601 standard.
 	//
 	// example:
 	//
 	// example
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 模板名称
+	// The latest version number.
+	//
+	// example:
+	//
+	// v2
+	LatestVersion *string `json:"latestVersion,omitempty" xml:"latestVersion,omitempty"`
+	// The status of the latest version. Valid values:
+	//
+	// - DRAFT: Draft. The version contains uncommitted edits.
+	//
+	// - SUBMITTED: Submitted.
+	//
+	// example:
+	//
+	// DRAFT
+	LatestVersionStatus *string `json:"latestVersionStatus,omitempty" xml:"latestVersionStatus,omitempty"`
+	// The name of the template.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 去重后的负责人数量
+	// The number of unique owners.
 	//
 	// example:
 	//
 	// 1
 	OwnerCount *int64 `json:"ownerCount,omitempty" xml:"ownerCount,omitempty"`
-	// 配置了审核人的步骤数
+	// The number of steps configured with reviewers.
 	//
 	// example:
 	//
 	// 1
 	ReviewStepCount *int64 `json:"reviewStepCount,omitempty" xml:"reviewStepCount,omitempty"`
-	// 步骤数
+	// The number of steps.
 	//
 	// example:
 	//
 	// 1
 	StepCount *int64 `json:"stepCount,omitempty" xml:"stepCount,omitempty"`
-	// 模板ID
+	// The ID of the template.
 	//
 	// example:
 	//
@@ -262,8 +284,20 @@ func (s *ListWorkflowTemplatesResponseBodyItems) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ListWorkflowTemplatesResponseBodyItems) GetEffectiveVersion() *string {
+	return s.EffectiveVersion
+}
+
 func (s *ListWorkflowTemplatesResponseBodyItems) GetGmtModified() *string {
 	return s.GmtModified
+}
+
+func (s *ListWorkflowTemplatesResponseBodyItems) GetLatestVersion() *string {
+	return s.LatestVersion
+}
+
+func (s *ListWorkflowTemplatesResponseBodyItems) GetLatestVersionStatus() *string {
+	return s.LatestVersionStatus
 }
 
 func (s *ListWorkflowTemplatesResponseBodyItems) GetName() *string {
@@ -291,8 +325,23 @@ func (s *ListWorkflowTemplatesResponseBodyItems) SetDescription(v string) *ListW
 	return s
 }
 
+func (s *ListWorkflowTemplatesResponseBodyItems) SetEffectiveVersion(v string) *ListWorkflowTemplatesResponseBodyItems {
+	s.EffectiveVersion = &v
+	return s
+}
+
 func (s *ListWorkflowTemplatesResponseBodyItems) SetGmtModified(v string) *ListWorkflowTemplatesResponseBodyItems {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *ListWorkflowTemplatesResponseBodyItems) SetLatestVersion(v string) *ListWorkflowTemplatesResponseBodyItems {
+	s.LatestVersion = &v
+	return s
+}
+
+func (s *ListWorkflowTemplatesResponseBodyItems) SetLatestVersionStatus(v string) *ListWorkflowTemplatesResponseBodyItems {
+	s.LatestVersionStatus = &v
 	return s
 }
 

@@ -38,19 +38,19 @@ type iUpdateWorkItemShrinkRequest interface {
 }
 
 type UpdateWorkItemShrinkRequest struct {
-	// 验收标准
+	// The acceptance criteria.
 	//
 	// example:
 	//
 	// example
 	AcceptanceCriteria *string `json:"acceptanceCriteria,omitempty" xml:"acceptanceCriteria,omitempty"`
-	// 输入附件稳定引用
+	// The stable references for the attachments.
 	//
 	// example:
 	//
 	// example
 	AttachmentsShrink *string `json:"attachments,omitempty" xml:"attachments,omitempty"`
-	// 协作空间 ID
+	// The ID of the collaboration space.
 	//
 	// This parameter is required.
 	//
@@ -58,25 +58,25 @@ type UpdateWorkItemShrinkRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 协作人用户ID列表
+	// The list of user IDs of the collaborators.
 	//
 	// example:
 	//
 	// example
 	CollaboratorUserIdsShrink *string `json:"collaboratorUserIds,omitempty" xml:"collaboratorUserIds,omitempty"`
-	// 关联会话ID
+	// The ID of the associated conversation.
 	//
 	// example:
 	//
 	// example
 	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
-	// 工作项描述
+	// The description of the work item.
 	//
 	// example:
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 乐观版本号，取上次响应的 version
+	// The optimistic version number. Obtain this value from the version field in the previous response.
 	//
 	// This parameter is required.
 	//
@@ -84,25 +84,25 @@ type UpdateWorkItemShrinkRequest struct {
 	//
 	// 3
 	ExpectedVersion *int64 `json:"expectedVersion,omitempty" xml:"expectedVersion,omitempty"`
-	// 负责人用户ID；缺省为调用者本人
+	// The user ID of the owner. If not specified, the user ID of the caller is used.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// 排产优先级
+	// The scheduling priority.
 	//
 	// example:
 	//
 	// HIGH
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 工作项标题
+	// The title of the work item.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type UpdateWorkItemShrinkRequest struct {
 	//
 	// example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 工作项 ID
+	// The ID of the work item.
 	//
 	// This parameter is required.
 	//
@@ -118,7 +118,7 @@ type UpdateWorkItemShrinkRequest struct {
 	//
 	// wi_example
 	WorkItemId *string `json:"workItemId,omitempty" xml:"workItemId,omitempty"`
-	// 绑定的工作流模板ID列表；未传保持既有绑定，空数组清空
+	// The list of bound workflow template IDs. If not specified, the existing bindings are retained. If an empty array is provided, the bindings are cleared.
 	//
 	// example:
 	//

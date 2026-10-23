@@ -20,7 +20,7 @@ type iTerminateInstanceRequest interface {
 }
 
 type TerminateInstanceRequest struct {
-	// 协作空间ID
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type TerminateInstanceRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 物理工作流实例ID（planId）
+	// The physical workflow instance ID (planId).
 	//
 	// This parameter is required.
 	//
@@ -36,15 +36,15 @@ type TerminateInstanceRequest struct {
 	//
 	// plan_example
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 终止原因
+	// The reason for termination.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 用户终止
+	// Terminated by user
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// 租户ID，缺省使用调用方默认租户
+	// The tenant ID. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

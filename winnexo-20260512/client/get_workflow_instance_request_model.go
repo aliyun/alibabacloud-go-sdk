@@ -16,7 +16,7 @@ type iGetWorkflowInstanceRequest interface {
 }
 
 type GetWorkflowInstanceRequest struct {
-	// 稳定逻辑实例 ID
+	// The stable logical instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetWorkflowInstanceRequest struct {
 	//
 	// wfi_20261016_abc123
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID. This is a common parameter. If you use winnexo-cli, pass this parameter explicitly by using --tenant-id.
 	//
 	// example:
 	//

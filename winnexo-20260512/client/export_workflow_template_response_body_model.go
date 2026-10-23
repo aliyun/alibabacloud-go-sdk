@@ -20,25 +20,25 @@ type iExportWorkflowTemplateResponseBody interface {
 }
 
 type ExportWorkflowTemplateResponseBody struct {
-  // 业务状态码；成功为200
+  // The business status code. A value of 200 indicates success.
   // 
   // example:
   // 
   // 200
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
-  // 错误描述
+  // The error description.
   // 
   // example:
   // 
-  // 请求的资源不存在
+  // The requested resource does not exist
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
-  // 请求追踪ID
+  // The request tracking ID.
   // 
   // example:
   // 
   // 019FF406-1B10-0065-A97D-2D1920C2A03D
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // 可回流导入的精简模板定义
+  // The simplified template definition that can be re-imported.
   // 
   // example:
   // 
@@ -100,19 +100,19 @@ func (s *ExportWorkflowTemplateResponseBody) Validate() error {
 }
 
 type ExportWorkflowTemplateResponseBodyTemplate struct {
-  // 模板描述
+  // The template description.
   // 
   // example:
   // 
   // example
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
-  // 模板名称
+  // The template name.
   // 
   // example:
   // 
   // example
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
-  // 规范化步骤
+  // The normalization steps.
   // 
   // example:
   // 
@@ -169,55 +169,65 @@ func (s *ExportWorkflowTemplateResponseBodyTemplate) Validate() error {
 }
 
 type ExportWorkflowTemplateResponseBodyTemplateSteps struct {
-  // 模型档位
+  // The model tier.
   // 
   // example:
   // 
   // standard
   ModelMode *string `json:"modelMode,omitempty" xml:"modelMode,omitempty"`
-  // 步骤名称
+  // The step name.
   // 
   // example:
   // 
   // example
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
-  // 智能体负责人名称
+  // The name of the responsible agent.
   // 
   // example:
   // 
   // example
   OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
-  // 负责人类型：MEMBER 人工 / AGENT 智能体
+  // The owner type. Valid values:
+  // 
+  // - MEMBER: Human.
+  // 
+  // - AGENT: Agent.
   // 
   // example:
   // 
   // MEMBER
   OwnerType *string `json:"ownerType,omitempty" xml:"ownerType,omitempty"`
-  // 人工负责人用户ID
+  // The user ID of the human owner.
   // 
   // example:
   // 
   // 1
   OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-  // 审核人用户ID列表
+  // The list of user IDs of the reviewers.
   // 
   // example:
   // 
   // example
   ReviewerUserIds []*int64 `json:"reviewerUserIds,omitempty" xml:"reviewerUserIds,omitempty" type:"Repeated"`
-  // 步骤顺序
+  // The step order.
   // 
   // example:
   // 
   // 1
   SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-  // 步骤处理说明
+  // The step processing instructions.
   // 
   // example:
   // 
   // example
   Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-  // 步骤ID
+  // The array of structured segments for the step instructions. Supported types include text, mention, skill, app, files, and web_search. All segment fields and nested attachments are preserved exactly as returned by the backend.
+  // 
+  // example:
+  // 
+  // [{"type":"text","content":"Organize input materials"}]
+  SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
+  // The step ID.
   // 
   // example:
   // 
@@ -265,6 +275,10 @@ func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) GetSpecification() *st
   return s.Specification
 }
 
+func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) GetSpecificationJson() []map[string]interface{}  {
+  return s.SpecificationJson
+}
+
 func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) GetStepId() *string  {
   return s.StepId
 }
@@ -306,6 +320,11 @@ func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) SetSortOrder(v int64) 
 
 func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) SetSpecification(v string) *ExportWorkflowTemplateResponseBodyTemplateSteps {
   s.Specification = &v
+  return s
+}
+
+func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) SetSpecificationJson(v []map[string]interface{}) *ExportWorkflowTemplateResponseBodyTemplateSteps {
+  s.SpecificationJson = v
   return s
 }
 

@@ -15,10 +15,12 @@ type iExportWorkflowTemplateRequest interface {
   GetTemplateId() *string 
   SetTenantId(v string) *ExportWorkflowTemplateRequest
   GetTenantId() *string 
+  SetVersion(v string) *ExportWorkflowTemplateRequest
+  GetVersion() *string 
 }
 
 type ExportWorkflowTemplateRequest struct {
-  // 协作空间 ID
+  // The collaboration workspace ID.
   // 
   // This parameter is required.
   // 
@@ -26,7 +28,7 @@ type ExportWorkflowTemplateRequest struct {
   // 
   // group_example
   CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-  // 模板 ID
+  // The template ID.
   // 
   // This parameter is required.
   // 
@@ -34,12 +36,18 @@ type ExportWorkflowTemplateRequest struct {
   // 
   // tpl_example
   TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-  // 租户ID，公共参数；缺省时使用调用方默认租户
+  // The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
   // 
   // example:
   // 
   // 10000
   TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+  // The version number of the template to export. The format is a lowercase v followed by a positive integer, such as v1. If not specified, the effective version is used. If no effective version exists, the latest version is used.
+  // 
+  // example:
+  // 
+  // v1
+  Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ExportWorkflowTemplateRequest) String() string {
@@ -62,6 +70,10 @@ func (s *ExportWorkflowTemplateRequest) GetTenantId() *string  {
   return s.TenantId
 }
 
+func (s *ExportWorkflowTemplateRequest) GetVersion() *string  {
+  return s.Version
+}
+
 func (s *ExportWorkflowTemplateRequest) SetCollaborationGroupId(v string) *ExportWorkflowTemplateRequest {
   s.CollaborationGroupId = &v
   return s
@@ -74,6 +86,11 @@ func (s *ExportWorkflowTemplateRequest) SetTemplateId(v string) *ExportWorkflowT
 
 func (s *ExportWorkflowTemplateRequest) SetTenantId(v string) *ExportWorkflowTemplateRequest {
   s.TenantId = &v
+  return s
+}
+
+func (s *ExportWorkflowTemplateRequest) SetVersion(v string) *ExportWorkflowTemplateRequest {
+  s.Version = &v
   return s
 }
 

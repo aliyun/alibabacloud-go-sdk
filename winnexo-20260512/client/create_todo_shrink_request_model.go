@@ -28,7 +28,7 @@ type iCreateTodoShrinkRequest interface {
 }
 
 type CreateTodoShrinkRequest struct {
-	// 处理人平台用户ID列表（1~100，去重后生效）
+	// The list of platform user IDs of the assignees. You can specify 1 to 100 IDs. Duplicate IDs are automatically removed.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type CreateTodoShrinkRequest struct {
 	//
 	// 43
 	AssigneeUserIdsShrink *string `json:"assigneeUserIds,omitempty" xml:"assigneeUserIds,omitempty"`
-	// 协作空间 ID（可选）
+	// The ID of the collaboration workspace. This parameter is optional.
 	//
 	// example:
 	//
 	// cg_123
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 优先级
+	// The priority.
 	//
 	// example:
 	//
 	// MEDIUM
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// 问题清单（1~N）
+	// The list of questions.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateTodoShrinkRequest struct {
 	//
 	// example
 	QuestionsShrink *string `json:"questions,omitempty" xml:"questions,omitempty"`
-	// 来源上下文（原样透传落库，不校验）
+	// The source context. The value is passed through and stored in the database as-is without validation.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type CreateTodoShrinkRequest struct {
 	//
 	// example
 	SourceContextShrink *string `json:"sourceContext,omitempty" xml:"sourceContext,omitempty"`
-	// 待办来源（仅 OPEN_API）
+	// The source of the to-do item. Only OPEN_API is supported.
 	//
 	// This parameter is required.
 	//
@@ -72,19 +72,19 @@ type CreateTodoShrinkRequest struct {
 	//
 	// OPEN_API
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 待办标题（≤200 字）
+	// The title of the to-do item. The maximum length is 200 characters.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 治理审批
+	// Governance approval
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

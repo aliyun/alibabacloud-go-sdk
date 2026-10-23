@@ -26,43 +26,43 @@ type iRerunNodeAIResponseBody interface {
 }
 
 type RerunNodeAIResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 物理实例ID
+	// The physical instance ID.
 	//
 	// example:
 	//
 	// plan_example
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 错误描述
+	// The error message.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 已安排重跑的节点 key
+	// The key of the node scheduled for rerun.
 	//
 	// example:
 	//
 	// query.amount
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 请求追踪ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 重跑事实接受为 true，不表示 AI 已完成；失败通过 Code 和 Message 返回
+	// Indicates whether the rerun request is accepted. A value of true indicates that the rerun is accepted, but does not mean that the AI has completed the task. Failures are returned through the Code and Message fields.
 	//
 	// example:
 	//
 	// true
 	RerunAccepted *bool `json:"rerunAccepted,omitempty" xml:"rerunAccepted,omitempty"`
-	// 状态版本
+	// The state version.
 	//
 	// example:
 	//

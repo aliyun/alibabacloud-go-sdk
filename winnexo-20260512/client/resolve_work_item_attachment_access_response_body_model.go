@@ -22,31 +22,31 @@ type iResolveWorkItemAttachmentAccessResponseBody interface {
 }
 
 type ResolveWorkItemAttachmentAccessResponseBody struct {
-	// 附件短期预览地址，过期前可直接 GET
+	// The short-term preview URL of the attachment. You can send a GET request to this URL before it expires.
 	//
 	// example:
 	//
 	// example
 	AccessUrl *string `json:"accessUrl,omitempty" xml:"accessUrl,omitempty"`
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 地址过期时间(ISO8601)
+	// The expiration time of the URL in ISO 8601 format.
 	//
 	// example:
 	//
 	// example
 	ExpiresAt *string `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
-	// 错误描述
+	// The error message.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request ID.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iGenerateWorkflowTemplateDraftResponseBody interface {
 }
 
 type GenerateWorkflowTemplateDraftResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 生成的非持久化模板草稿
+	// The generated non-persistent template draft.
 	//
 	// example:
 	//
 	// example
 	Draft *GenerateWorkflowTemplateDraftResponseBodyDraft `json:"draft,omitempty" xml:"draft,omitempty" type:"Struct"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ func (s *GenerateWorkflowTemplateDraftResponseBody) Validate() error {
 }
 
 type GenerateWorkflowTemplateDraftResponseBodyDraft struct {
-	// 模板描述
+	// The description of the template.
 	//
 	// example:
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 模板名称
+	// The name of the template.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 有序步骤
+	// The ordered steps.
 	//
 	// example:
 	//
@@ -169,55 +169,61 @@ func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) Validate() error {
 }
 
 type GenerateWorkflowTemplateDraftResponseBodyDraftSteps struct {
-	// 模型档位
+	// The model tier.
 	//
 	// example:
 	//
 	// standard
 	ModelMode *string `json:"modelMode,omitempty" xml:"modelMode,omitempty"`
-	// 步骤名称
+	// The name of the step.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 智能体负责人名称
+	// The name of the responsible agent.
 	//
 	// example:
 	//
 	// example
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
-	// 负责人类型：MEMBER 人工 / AGENT 智能体
+	// The type of the owner. Valid values: MEMBER: Human. AGENT: Agent.
 	//
 	// example:
 	//
 	// MEMBER
 	OwnerType *string `json:"ownerType,omitempty" xml:"ownerType,omitempty"`
-	// 人工负责人用户ID
+	// The user ID of the human owner.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// 审核人用户ID列表
+	// The list of user IDs of the reviewers.
 	//
 	// example:
 	//
 	// example
 	ReviewerUserIds []*int64 `json:"reviewerUserIds,omitempty" xml:"reviewerUserIds,omitempty" type:"Repeated"`
-	// 步骤顺序
+	// The order of the step.
 	//
 	// example:
 	//
 	// 1
 	SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// 步骤处理说明
+	// The processing instructions for the step.
 	//
 	// example:
 	//
 	// example
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// 步骤ID
+	// The array of structured segments for the step instructions. Supported types include text, mention, skill, app, files, and web_search. The fields and nested attachments of each segment are retained as returned by the backend.
+	//
+	// example:
+	//
+	// [{"type":"text","content":"Organize input materials"}]
+	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
+	// The ID of the step.
 	//
 	// example:
 	//
@@ -265,6 +271,10 @@ func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) GetSpecification()
 	return s.Specification
 }
 
+func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) GetSpecificationJson() []map[string]interface{} {
+	return s.SpecificationJson
+}
+
 func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) GetStepId() *string {
 	return s.StepId
 }
@@ -306,6 +316,11 @@ func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) SetSortOrder(v int
 
 func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) SetSpecification(v string) *GenerateWorkflowTemplateDraftResponseBodyDraftSteps {
 	s.Specification = &v
+	return s
+}
+
+func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) SetSpecificationJson(v []map[string]interface{}) *GenerateWorkflowTemplateDraftResponseBodyDraftSteps {
+	s.SpecificationJson = v
 	return s
 }
 

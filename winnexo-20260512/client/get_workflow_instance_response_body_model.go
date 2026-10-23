@@ -60,109 +60,109 @@ type iGetWorkflowInstanceResponseBody interface {
 }
 
 type GetWorkflowInstanceResponseBody struct {
-	// 空间内唯一外部需求编号
+	// The unique external requirement number within the workspace.
 	//
 	// example:
 	//
 	// REQ-1001
 	BusinessId *string `json:"businessId,omitempty" xml:"businessId,omitempty"`
-	// 业务状态码，来自统一 POP 响应包装
+	// The business status code from the unified POP response wrapper.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 协作空间 ID
+	// The ID of the collaboration workspace.
 	//
 	// example:
 	//
 	// cg_20261016_abc123
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 逻辑实例创建时间，ISO8601
+	// The creation time of the logical instance in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-10-16T10:30:00+08:00
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 首个活动节点，终态为 null
+	// The first active node. This value is null when the instance reaches a terminal state.
 	CurrentNode *GetWorkflowInstanceResponseBodyCurrentNode `json:"currentNode,omitempty" xml:"currentNode,omitempty" type:"Struct"`
-	// 全部活动节点，支持并行 DAG
+	// All active nodes. Parallel DAGs are supported.
 	CurrentNodes []*GetWorkflowInstanceResponseBodyCurrentNodes `json:"currentNodes,omitempty" xml:"currentNodes,omitempty" type:"Repeated"`
-	// 当前计划终态时间，未结束为 null
+	// The time when the current plan reached a terminal state. This value is null if the plan has not ended.
 	//
 	// example:
 	//
 	// 2026-10-16T10:30:00+08:00
 	EndedAt *string `json:"endedAt,omitempty" xml:"endedAt,omitempty"`
-	// 外部发起人标签，不参与鉴权
+	// The external initiator label. This label is not used for authentication.
 	//
 	// example:
 	//
-	// 外部发起人张三
+	// External Initiator Zhang San
 	Initiator *string `json:"initiator,omitempty" xml:"initiator,omitempty"`
-	// 稳定逻辑实例 ID，工作项重启不改变
+	// The stable logical instance ID. This ID does not change when the work item is restarted.
 	//
 	// example:
 	//
 	// wfi_20261016_abc123
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 用户可见错误描述，来自统一 POP 响应包装
+	// The user-visible error description from the unified POP response wrapper.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 原始计划暂停范围
+	// The raw plan pause scope.
 	//
 	// example:
 	//
 	// ALL
 	PauseScope *string `json:"pauseScope,omitempty" xml:"pauseScope,omitempty"`
-	// 当前物理计划修订 ID
+	// The revision ID of the current physical plan.
 	//
 	// example:
 	//
 	// plan_20261016_abc123
 	PlanId *string `json:"planId,omitempty" xml:"planId,omitempty"`
-	// 可见图进度
+	// The visible graph progress.
 	Progress *GetWorkflowInstanceResponseBodyProgress `json:"progress,omitempty" xml:"progress,omitempty" type:"Struct"`
-	// 请求追踪 ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 原始计划审核状态
+	// The raw plan review status.
 	//
 	// example:
 	//
 	// APPROVED
 	ReviewStatus *string `json:"reviewStatus,omitempty" xml:"reviewStatus,omitempty"`
-	// 当前物理计划修订号
+	// The revision number of the current physical plan.
 	//
 	// example:
 	//
 	// 3
 	Revision *int64 `json:"revision,omitempty" xml:"revision,omitempty"`
-	// 当前运行 ID，重启后会改变
+	// The current run ID. This ID changes after a restart.
 	//
 	// example:
 	//
 	// run_20261016_abc123
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// 原始 BUILDING/RUNNING/SUCCEEDED/FAILED/CANCELLED
+	// The raw runtime status. Valid values: BUILDING, RUNNING, SUCCEEDED, FAILED, and CANCELLED.
 	//
 	// example:
 	//
 	// RUNNING
 	RuntimeStatus *string `json:"runtimeStatus,omitempty" xml:"runtimeStatus,omitempty"`
-	// 当前计划节点首次开始时间，未执行为 null
+	// The time when the current plan node started for the first time. This value is null if the node has not been executed.
 	//
 	// example:
 	//
 	// 2026-10-16T10:30:00+08:00
 	StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
-	// 运行状态版本
+	// The runtime status version.
 	//
 	// example:
 	//
@@ -174,19 +174,19 @@ type GetWorkflowInstanceResponseBody struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 创建时绑定的工作流模板 ID
+	// The ID of the workflow template bound at creation.
 	//
 	// example:
 	//
 	// wft_20261016_abc123
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// 当前需求标题
+	// The current requirement title.
 	//
 	// example:
 	//
-	// 季度经营分析报告
+	// Quarterly Business Analysis Report
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 关联工作项 ID
+	// The ID of the associated work item.
 	//
 	// example:
 	//
@@ -442,37 +442,37 @@ func (s *GetWorkflowInstanceResponseBody) Validate() error {
 }
 
 type GetWorkflowInstanceResponseBodyCurrentNode struct {
-	// 当前处理人展示名
+	// The display name of the current handler.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// 处理人或数字员工标识
+	// The identifier of the handler or digital worker.
 	//
 	// example:
 	//
 	// user_10086
 	HandlerId *string `json:"handlerId,omitempty" xml:"handlerId,omitempty"`
-	// 真实运行节点 nodeKey
+	// The nodeKey of the actual running node.
 	//
 	// example:
 	//
 	// node_key_confirm
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 节点展示名
+	// The display name of the node.
 	//
 	// example:
 	//
-	// 需求确认
+	// Requirement Confirmation
 	NodeName *string `json:"nodeName,omitempty" xml:"nodeName,omitempty"`
-	// 真实节点类型 AGENT/HUMAN/CONDITION
+	// The actual node type. Valid values: AGENT, HUMAN, and CONDITION.
 	//
 	// example:
 	//
 	// AGENT
 	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
-	// 节点运行状态
+	// The running status of the node.
 	//
 	// example:
 	//
@@ -547,37 +547,37 @@ func (s *GetWorkflowInstanceResponseBodyCurrentNode) Validate() error {
 }
 
 type GetWorkflowInstanceResponseBodyCurrentNodes struct {
-	// 当前处理人展示名
+	// The display name of the current handler.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// 处理人或数字员工标识
+	// The identifier of the handler or digital worker.
 	//
 	// example:
 	//
 	// user_10086
 	HandlerId *string `json:"handlerId,omitempty" xml:"handlerId,omitempty"`
-	// 真实运行节点 nodeKey
+	// The nodeKey of the actual running node.
 	//
 	// example:
 	//
 	// node_key_confirm
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 节点展示名
+	// The display name of the node.
 	//
 	// example:
 	//
-	// 需求确认
+	// Requirement Confirmation
 	NodeName *string `json:"nodeName,omitempty" xml:"nodeName,omitempty"`
-	// 真实节点类型 AGENT/HUMAN/CONDITION
+	// The actual node type. Valid values: AGENT, HUMAN, and CONDITION.
 	//
 	// example:
 	//
 	// AGENT
 	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
-	// 节点运行状态
+	// The running status of the node.
 	//
 	// example:
 	//
@@ -652,13 +652,13 @@ func (s *GetWorkflowInstanceResponseBodyCurrentNodes) Validate() error {
 }
 
 type GetWorkflowInstanceResponseBodyProgress struct {
-	// 已成功或跳过的可见节点数
+	// The number of visible nodes that have succeeded or been skipped.
 	//
 	// example:
 	//
 	// 3
 	CompletedCount *int64 `json:"completedCount,omitempty" xml:"completedCount,omitempty"`
-	// 当前图可见节点总数，非固定六节点
+	// The total number of visible nodes in the current graph. This number is not fixed to six.
 	//
 	// example:
 	//

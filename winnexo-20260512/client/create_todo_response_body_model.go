@@ -26,39 +26,39 @@ type iCreateTodoResponseBody interface {
 }
 
 type CreateTodoResponseBody struct {
-	// 处理人列表
+	// The list of assignees.
 	Assignees []*CreateTodoResponseBodyAssignees `json:"assignees,omitempty" xml:"assignees,omitempty" type:"Repeated"`
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 创建时间（ISO8601 带时区；与列表/详情的北京时间格式串不同）
+	// The creation time in ISO 8601 format with a time zone. This format differs from the UTC+8 format string used in the list and details.
 	//
 	// example:
 	//
 	// 2026-10-12T15:00:00+08:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 待办状态
+	// The status of the to-do item.
 	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 新建待办ID
+	// The ID of the created to-do item.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ func (s *CreateTodoResponseBody) Validate() error {
 }
 
 type CreateTodoResponseBodyAssignees struct {
-	// 处理人用户ID
+	// The user ID of the assignee.
 	//
 	// example:
 	//
 	// 43
 	AssigneeUserId *string `json:"assigneeUserId,omitempty" xml:"assigneeUserId,omitempty"`
-	// 处理人行状态
+	// The processing status of the assignee.
 	//
 	// example:
 	//

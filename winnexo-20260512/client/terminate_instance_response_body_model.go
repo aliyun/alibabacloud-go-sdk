@@ -26,43 +26,43 @@ type iTerminateInstanceResponseBody interface {
 }
 
 type TerminateInstanceResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 物理实例ID
+	// The physical instance ID.
 	//
 	// example:
 	//
 	// plan_example
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 终止后状态
+	// The status after termination.
 	//
 	// example:
 	//
 	// Terminated
 	InstanceStatus *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
-	// 错误描述
+	// The error message.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 状态版本
+	// The state version.
 	//
 	// example:
 	//
 	// 2
 	StateVersion *int64 `json:"stateVersion,omitempty" xml:"stateVersion,omitempty"`
-	// 终止成功为 true；失败通过 Code 和 Message 返回
+	// Indicates whether the termination was successful. A value of true indicates success. If the termination fails, the error code and message are returned.
 	//
 	// example:
 	//

@@ -15,10 +15,12 @@ type iGetWorkflowTemplateRequest interface {
 	GetTemplateId() *string
 	SetTenantId(v string) *GetWorkflowTemplateRequest
 	GetTenantId() *string
+	SetVersion(v string) *GetWorkflowTemplateRequest
+	GetVersion() *string
 }
 
 type GetWorkflowTemplateRequest struct {
-	// 协作空间 ID
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +28,7 @@ type GetWorkflowTemplateRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 模板 ID
+	// The ID of the template.
 	//
 	// This parameter is required.
 	//
@@ -34,12 +36,18 @@ type GetWorkflowTemplateRequest struct {
 	//
 	// tpl_example
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The version number of the template to read. The format is a lowercase v followed by a positive integer, such as v1. If not specified, the effective version is used. If no effective version exists, the latest version is used.
+	//
+	// example:
+	//
+	// v1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetWorkflowTemplateRequest) String() string {
@@ -62,6 +70,10 @@ func (s *GetWorkflowTemplateRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *GetWorkflowTemplateRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *GetWorkflowTemplateRequest) SetCollaborationGroupId(v string) *GetWorkflowTemplateRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -74,6 +86,11 @@ func (s *GetWorkflowTemplateRequest) SetTemplateId(v string) *GetWorkflowTemplat
 
 func (s *GetWorkflowTemplateRequest) SetTenantId(v string) *GetWorkflowTemplateRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *GetWorkflowTemplateRequest) SetVersion(v string) *GetWorkflowTemplateRequest {
+	s.Version = &v
 	return s
 }
 

@@ -22,31 +22,31 @@ type iCountTodosResponseBody interface {
 }
 
 type CountTodosResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 待处理数量（PENDING 主状态）
+	// The number of pending items with the primary status of PENDING.
 	//
 	// example:
 	//
 	// 3
 	PendingCount *int64 `json:"pendingCount,omitempty" xml:"pendingCount,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 未读数量（处理人 readAt 为空）
+	// The number of unread items where the readAt field of the handler is empty.
 	//
 	// example:
 	//

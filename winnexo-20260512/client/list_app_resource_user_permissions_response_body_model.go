@@ -26,39 +26,39 @@ type iListAppResourceUserPermissionsResponseBody interface {
 }
 
 type ListAppResourceUserPermissionsResponseBody struct {
-	// 业务状态码；成功为 200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 当前页资源与权限
+	// The resources and permissions on the current page.
 	Items []*ListAppResourceUserPermissionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述；成功时为空
+	// The error description. This parameter is empty if the request is successful.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 页码
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页条数
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总资源数
+	// The total number of resources.
 	//
 	// example:
 	//
@@ -151,15 +151,15 @@ func (s *ListAppResourceUserPermissionsResponseBody) Validate() error {
 }
 
 type ListAppResourceUserPermissionsResponseBodyItems struct {
-	// 实际存储且有效的权限点
+	// The stored and valid permission points.
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
-	// 资源键
+	// The resource key.
 	//
 	// example:
 	//
 	// app.demo.resource_1
 	ResourceKey *string `json:"resourceKey,omitempty" xml:"resourceKey,omitempty"`
-	// 资源类型
+	// The resource type.
 	//
 	// example:
 	//

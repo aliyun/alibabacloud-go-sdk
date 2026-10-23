@@ -22,7 +22,7 @@ type iBatchOperateWorkItemsRequest interface {
 }
 
 type BatchOperateWorkItemsRequest struct {
-	// 批量动作
+	// The batch action.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type BatchOperateWorkItemsRequest struct {
 	//
 	// SCHEDULE
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 协作空间 ID
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type BatchOperateWorkItemsRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 幂等键
+	// The idempotency key.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type BatchOperateWorkItemsRequest struct {
 	//
 	// example
 	IdempotencyKey *string `json:"idempotencyKey,omitempty" xml:"idempotencyKey,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 目标工作项 ID 列表（1~100 个）
+	// The IDs of the target work items. You can specify 1 to 100 IDs.
 	//
 	// This parameter is required.
 	//

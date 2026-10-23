@@ -22,31 +22,31 @@ type iGetMemoryDetailResponseBody interface {
 }
 
 type GetMemoryDetailResponseBody struct {
-	// 业务状态码；成功为 200，失败时为对应错误码
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 自动拾取记忆的分组列表；无自动记忆时为空数组
+	// The list of groups for automatically collected memories. If no automatic memories exist, an empty array is returned.
 	//
 	// example:
 	//
-	// [{"type":"user","items":[{"id":"user/example.md","title":"示例偏好","content":"喜欢简洁的回答","description":"来自近期会话的偏好总结"}],"gmtModified":1720000000}]
+	// [{"type":"user","items":[{"id":"user/example.md","title":"Sample preference","content":"Prefers concise answers","description":"Preference summary from recent conversations"}],"gmtModified":1720000000}]
 	Groups []*GetMemoryDetailResponseBodyGroups `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
-	// 错误描述；成功时为空字符串，失败时返回具体原因
+	// The error description.
 	//
 	// example:
 	//
-	// 当前用户不是群组 cg_12345 的活跃成员
+	// The current user is not an active member of the group cg_12345
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 手动添加的记忆，来自 profile.md；包含完整内容、存在状态和修改时间
+	// The manually added memory from profile.md. It includes the full content, existence status, and modification time.
 	//
 	// example:
 	//
-	// {"content":"示例手动记忆","exists":true,"gmtModified":1720000000}
+	// {"content":"Sample manual memory","exists":true,"gmtModified":1720000000}
 	Profile *GetMemoryDetailResponseBodyProfile `json:"profile,omitempty" xml:"profile,omitempty" type:"Struct"`
-	// 请求追踪 ID，用于定位本次调用
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -126,19 +126,19 @@ func (s *GetMemoryDetailResponseBody) Validate() error {
 }
 
 type GetMemoryDetailResponseBodyGroups struct {
-	// 该分组最近修改时间，Unix 秒级时间戳；无文件时为 null
+	// The last modification time of the group. The value is a UNIX timestamp in seconds. If no files exist, null is returned.
 	//
 	// example:
 	//
 	// 1720000000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 该类型下的自动记忆条目列表；没有条目时为空数组
+	// The list of automatic memory entries under this type. If no entries exist, an empty array is returned.
 	//
 	// example:
 	//
-	// [{"id":"user/example.md","title":"示例偏好","content":"喜欢简洁的回答","description":"来自近期会话的偏好总结"}]
+	// [{"id":"user/example.md","title":"Sample preference","content":"Prefers concise answers","description":"Preference summary from recent conversations"}]
 	Items []*GetMemoryDetailResponseBodyGroupsItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 自动记忆类型：user、feedback、reference 或 project
+	// The type of the automatic memory. Valid values: user, feedback, reference, and project.
 	//
 	// example:
 	//
@@ -195,29 +195,29 @@ func (s *GetMemoryDetailResponseBodyGroups) Validate() error {
 }
 
 type GetMemoryDetailResponseBodyGroupsItems struct {
-	// 自动记忆正文，不包含 YAML frontmatter
+	// The body of the automatic memory, excluding the YAML frontmatter.
 	//
 	// example:
 	//
-	// 喜欢简洁的回答
+	// Prefers concise answers
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 自动记忆的附加描述；没有时为空字符串
+	// The additional description of the automatic memory. If no description is available, an empty string is returned.
 	//
 	// example:
 	//
-	// 来自近期会话的偏好总结
+	// Preference summary from recent conversations
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 自动记忆条目的唯一标识，为相对 OSS 路径
+	// The unique identifier of the automatic memory entry, which is a relative OSS path.
 	//
 	// example:
 	//
 	// user/example.md
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 自动记忆标题，来自文件元数据或文件名
+	// The title of the automatic memory, which is derived from the file metadata or file name.
 	//
 	// example:
 	//
-	// 示例偏好
+	// Sample preference
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
@@ -270,19 +270,19 @@ func (s *GetMemoryDetailResponseBodyGroupsItems) Validate() error {
 }
 
 type GetMemoryDetailResponseBodyProfile struct {
-	// 手动记忆的完整正文；未保存过时为空字符串
+	// The full body of the manual memory. If the memory has never been saved, an empty string is returned.
 	//
 	// example:
 	//
-	// 示例手动记忆
+	// Sample manual memory
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// profile.md 是否存在；未保存过时为 false
+	// Indicates whether profile.md exists. If the memory has never been saved, false is returned.
 	//
 	// example:
 	//
 	// true
 	Exists *bool `json:"exists,omitempty" xml:"exists,omitempty"`
-	// profile.md 最近修改时间，Unix 秒级时间戳；文件不存在或无法取得元数据时为 null
+	// The last modification time of profile.md. The value is a UNIX timestamp in seconds. If the file does not exist or its metadata cannot be obtained, null is returned.
 	//
 	// example:
 	//

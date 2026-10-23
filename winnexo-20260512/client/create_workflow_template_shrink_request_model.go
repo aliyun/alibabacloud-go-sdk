@@ -9,6 +9,8 @@ type iCreateWorkflowTemplateShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAction(v string) *CreateWorkflowTemplateShrinkRequest
+	GetAction() *string
 	SetCollaborationGroupId(v string) *CreateWorkflowTemplateShrinkRequest
 	GetCollaborationGroupId() *string
 	SetDefinitionShrink(v string) *CreateWorkflowTemplateShrinkRequest
@@ -18,7 +20,13 @@ type iCreateWorkflowTemplateShrinkRequest interface {
 }
 
 type CreateWorkflowTemplateShrinkRequest struct {
-	// 协作空间 ID
+	// The write action. Valid values: SAVE: Saves the template as a draft without taking effect. SUBMIT: Saves and submits the template and sets it as the only effective version. Default value: SUBMIT.
+	//
+	// example:
+	//
+	// SUBMIT
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +34,7 @@ type CreateWorkflowTemplateShrinkRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 完整模板定义 JSON（name/description/steps）
+	// The complete JSON definition of the template, including name, description, and steps.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +42,7 @@ type CreateWorkflowTemplateShrinkRequest struct {
 	//
 	// example
 	DefinitionShrink *string `json:"definition,omitempty" xml:"definition,omitempty"`
-	// 租户ID，公共参数；缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
@@ -50,6 +58,10 @@ func (s CreateWorkflowTemplateShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateWorkflowTemplateShrinkRequest) GetAction() *string {
+	return s.Action
+}
+
 func (s *CreateWorkflowTemplateShrinkRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
@@ -60,6 +72,11 @@ func (s *CreateWorkflowTemplateShrinkRequest) GetDefinitionShrink() *string {
 
 func (s *CreateWorkflowTemplateShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreateWorkflowTemplateShrinkRequest) SetAction(v string) *CreateWorkflowTemplateShrinkRequest {
+	s.Action = &v
+	return s
 }
 
 func (s *CreateWorkflowTemplateShrinkRequest) SetCollaborationGroupId(v string) *CreateWorkflowTemplateShrinkRequest {

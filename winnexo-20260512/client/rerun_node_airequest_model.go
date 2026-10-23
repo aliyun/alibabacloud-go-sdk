@@ -20,7 +20,7 @@ type iRerunNodeAIRequest interface {
 }
 
 type RerunNodeAIRequest struct {
-	// 协作空间ID
+	// The collaboration workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type RerunNodeAIRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 物理工作流实例ID（planId）
+	// The physical workflow instance ID (planId).
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type RerunNodeAIRequest struct {
 	//
 	// plan_example
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// FAILED 节点 key（nodeKey）
+	// The key of the failed node (nodeKey).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type RerunNodeAIRequest struct {
 	//
 	// query.amount
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 租户ID，缺省使用调用方默认租户
+	// The tenant ID. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

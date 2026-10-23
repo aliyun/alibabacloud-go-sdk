@@ -52,91 +52,91 @@ type iGetNodeDetailResponseBody interface {
 }
 
 type GetNodeDetailResponseBody struct {
-	// 按思考、技能、工具、回复和产物分组的实际工作过程
+	// The actual work process grouped by thoughts, skills, tools, replies, and artifacts.
 	//
 	// example:
 	//
 	// {"thoughts":[],"skillCalls":[],"toolCalls":[],"replies":[],"artifacts":[]}
 	AgentWorkProcess *GetNodeDetailResponseBodyAgentWorkProcess `json:"agentWorkProcess,omitempty" xml:"agentWorkProcess,omitempty" type:"Struct"`
-	// 已保存的节点产物摘要与稳定引用，不包含inline正文；无产物时为空列表
+	// The artifacts: saved node work records and artifacts.
 	//
 	// example:
 	//
 	// []
 	Artifacts []*GetNodeDetailResponseBodyArtifacts `json:"artifacts,omitempty" xml:"artifacts,omitempty" type:"Repeated"`
-	// 节点执行尝试序号
+	// The sequence number of the node execution attempt.
 	//
 	// example:
 	//
 	// 1
 	AttemptSeq *int64 `json:"attemptSeq,omitempty" xml:"attemptSeq,omitempty"`
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 节点会话ID，未创建时为空
+	// The node conversation ID. This parameter is empty if no conversation is created.
 	//
 	// example:
 	//
 	// conversation_example
 	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
-	// 当前节点会话是否可以继续输入
+	// Indicates whether the current node conversation can continue to receive input.
 	//
 	// example:
 	//
 	// true
 	ConversationWritable *bool `json:"conversationWritable,omitempty" xml:"conversationWritable,omitempty"`
-	// 节点负责人展示名称，未知时为空
+	// The display name of the node owner. This parameter is empty if the owner is unknown.
 	//
 	// example:
 	//
-	// 数字员工
+	// Digital worker
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 节点 key（nodeKey）
+	// The node key.
 	//
 	// example:
 	//
 	// query.amount
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 节点展示名称，与节点列表同源
+	// The display name of the node, which shares the same source as the node list.
 	//
 	// example:
 	//
-	// 查询签单金额
+	// Query signed amount
 	NodeName *string `json:"nodeName,omitempty" xml:"nodeName,omitempty"`
-	// 节点类型，返回实际枚举
+	// The node type. The actual enum value is returned.
 	//
 	// example:
 	//
 	// AGENT
 	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 节点结果摘要，不含inline正文
+	// The node result summary, excluding inline content.
 	//
 	// example:
 	//
 	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
-	// 是否有待派发续轮
+	// Indicates whether there are pending follow-up turns to be dispatched.
 	//
 	// example:
 	//
 	// false
 	ResumePending *bool `json:"resumePending,omitempty" xml:"resumePending,omitempty"`
-	// 节点AI工作记录时间线，与GetAgentWorkLog同源，duration单位毫秒；无记录时为空列表
+	// The run log: saved node work records and artifacts.
 	//
 	// example:
 	//
@@ -148,25 +148,25 @@ type GetNodeDetailResponseBody struct {
 	//
 	// 2
 	StateVersion *int64 `json:"stateVersion,omitempty" xml:"stateVersion,omitempty"`
-	// 节点运行状态，返回实际枚举
+	// The node running status. The actual enum value is returned.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 当前节点关联的待办ID列表，元素为待办ID字符串
+	// The list of to-do IDs associated with the current node.
 	//
 	// example:
 	//
 	// []
 	TodoIds []*string `json:"todoIds,omitempty" xml:"todoIds,omitempty" type:"Repeated"`
-	// 当前尝试的对话轮序号
+	// The sequence number of the conversation turn in the current attempt.
 	//
 	// example:
 	//
 	// 2
 	TurnSeq *int64 `json:"turnSeq,omitempty" xml:"turnSeq,omitempty"`
-	// 节点等待原因，未等待时为空
+	// The reason why the node is waiting. This parameter is empty if the node is not waiting.
 	//
 	// example:
 	//
@@ -390,31 +390,31 @@ func (s *GetNodeDetailResponseBody) Validate() error {
 }
 
 type GetNodeDetailResponseBodyAgentWorkProcess struct {
-	// 节点产物摘要与稳定引用，与顶层artifacts一致；无产物时为空列表
+	// The artifacts: saved node work records and artifacts.
 	//
 	// example:
 	//
 	// []
 	Artifacts []*GetNodeDetailResponseBodyAgentWorkProcessArtifacts `json:"artifacts,omitempty" xml:"artifacts,omitempty" type:"Repeated"`
-	// 已保存的回复记录，action为REPLY；无记录时为空列表
+	// The replies: saved node work records and artifacts.
 	//
 	// example:
 	//
 	// []
 	Replies []*GetNodeDetailResponseBodyAgentWorkProcessReplies `json:"replies,omitempty" xml:"replies,omitempty" type:"Repeated"`
-	// 已保存的技能调用记录，action为SKILL_CALL；无记录时为空列表
+	// The skill calls: saved node work records and artifacts.
 	//
 	// example:
 	//
 	// []
 	SkillCalls []*GetNodeDetailResponseBodyAgentWorkProcessSkillCalls `json:"skillCalls,omitempty" xml:"skillCalls,omitempty" type:"Repeated"`
-	// 已保存的思考记录，action为THINK；无记录时为空列表
+	// The thoughts: saved node work records and artifacts.
 	//
 	// example:
 	//
 	// []
 	Thoughts []*GetNodeDetailResponseBodyAgentWorkProcessThoughts `json:"thoughts,omitempty" xml:"thoughts,omitempty" type:"Repeated"`
-	// 已保存的工具调用记录，action为TOOL_CALL；无记录时为空列表
+	// The tool calls: saved node work records and artifacts.
 	//
 	// example:
 	//
@@ -525,37 +525,37 @@ func (s *GetNodeDetailResponseBodyAgentWorkProcess) Validate() error {
 }
 
 type GetNodeDetailResponseBodyAgentWorkProcessArtifacts struct {
-	// 登记产物ID；仅来自结果摘要的产物可能为空
+	// The registered artifact ID. This parameter may be empty for artifacts derived only from the result summary.
 	//
 	// example:
 	//
 	// artifact_example
 	ArtifactId *string `json:"artifactId,omitempty" xml:"artifactId,omitempty"`
-	// 产物在节点结果中的唯一key
+	// The unique key of the artifact in the node result.
 	//
 	// example:
 	//
 	// amount_report
 	ArtifactKey *string `json:"artifactKey,omitempty" xml:"artifactKey,omitempty"`
-	// 产物稳定引用，包含kind、id、url；登记产物URL为重新鉴权入口，可为空
+	// The stable reference of the artifact, including kind, id, and url. The URL of a registered artifact is a re-authentication entry point and can be empty.
 	//
 	// example:
 	//
 	// {"kind":"INLINE","id":"amount_report","url":"inline://amount_report"}
 	Ref map[string]*string `json:"ref,omitempty" xml:"ref,omitempty"`
-	// 产物摘要，不含inline正文
+	// The artifact summary, excluding inline content.
 	//
 	// example:
 	//
-	// 已完成签单金额统计
+	// Signed amount statistics completed
 	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	// 产物展示标题
+	// The display title of the artifact.
 	//
 	// example:
 	//
-	// 签单金额统计报告
+	// Signed amount statistics report
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 产物类型
+	// The artifact type.
 	//
 	// example:
 	//
@@ -630,31 +630,31 @@ func (s *GetNodeDetailResponseBodyAgentWorkProcessArtifacts) Validate() error {
 }
 
 type GetNodeDetailResponseBodyAgentWorkProcessReplies struct {
-	// 记录类型：THINK、REPLY、TOOL_CALL、SKILL_CALL或ARTIFACT
+	// The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, or ARTIFACT.
 	//
 	// example:
 	//
 	// REPLY
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 已保存的原始记录内容；工具调用与产物元数据为JSON字符串
+	// The saved original record content. Tool invocation and artifact metadata are JSON strings.
 	//
 	// example:
 	//
-	// 已完成本轮数据查询
+	// Data query for this turn completed
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	// 该条工作记录耗时，单位毫秒；产物记录为0
+	// The time taken for this work record, in milliseconds. The value is 0 for artifact records.
 	//
 	// example:
 	//
 	// 1200
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// 所属节点key（nodeKey），不是会话ID
+	// The key of the parent node, not the conversation ID.
 	//
 	// example:
 	//
 	// query.amount
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 记录事件时间，ISO-8601格式；源记录无时间时为空字符串
+	// The time when the event is recorded, in ISO-8601 format. This is an empty string if the source record has no time.
 	//
 	// example:
 	//
@@ -720,31 +720,31 @@ func (s *GetNodeDetailResponseBodyAgentWorkProcessReplies) Validate() error {
 }
 
 type GetNodeDetailResponseBodyAgentWorkProcessSkillCalls struct {
-	// 记录类型：THINK、REPLY、TOOL_CALL、SKILL_CALL或ARTIFACT
+	// The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, or ARTIFACT.
 	//
 	// example:
 	//
 	// SKILL_CALL
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 已保存的原始记录内容；工具调用与产物元数据为JSON字符串
+	// The saved original record content. Tool invocation and artifact metadata are JSON strings.
 	//
 	// example:
 	//
-	// 已完成本轮数据查询
+	// Data query for this turn completed
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	// 该条工作记录耗时，单位毫秒；产物记录为0
+	// The time taken for this work record, in milliseconds. The value is 0 for artifact records.
 	//
 	// example:
 	//
 	// 1200
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// 所属节点key（nodeKey），不是会话ID
+	// The key of the parent node, not the conversation ID.
 	//
 	// example:
 	//
 	// query.amount
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 记录事件时间，ISO-8601格式；源记录无时间时为空字符串
+	// The time when the event is recorded, in ISO-8601 format. This is an empty string if the source record has no time.
 	//
 	// example:
 	//
@@ -810,31 +810,31 @@ func (s *GetNodeDetailResponseBodyAgentWorkProcessSkillCalls) Validate() error {
 }
 
 type GetNodeDetailResponseBodyAgentWorkProcessThoughts struct {
-	// 记录类型：THINK、REPLY、TOOL_CALL、SKILL_CALL或ARTIFACT
+	// The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, or ARTIFACT.
 	//
 	// example:
 	//
 	// THINK
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 已保存的原始记录内容；工具调用与产物元数据为JSON字符串
+	// The saved original record content. Tool invocation and artifact metadata are JSON strings.
 	//
 	// example:
 	//
-	// 已完成本轮数据查询
+	// Data query for this turn completed
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	// 该条工作记录耗时，单位毫秒；产物记录为0
+	// The time taken for this work record, in milliseconds. The value is 0 for artifact records.
 	//
 	// example:
 	//
 	// 1200
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// 所属节点key（nodeKey），不是会话ID
+	// The key of the parent node, not the conversation ID.
 	//
 	// example:
 	//
 	// query.amount
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 记录事件时间，ISO-8601格式；源记录无时间时为空字符串
+	// The time when the event is recorded, in ISO-8601 format. This is an empty string if the source record has no time.
 	//
 	// example:
 	//
@@ -900,31 +900,31 @@ func (s *GetNodeDetailResponseBodyAgentWorkProcessThoughts) Validate() error {
 }
 
 type GetNodeDetailResponseBodyAgentWorkProcessToolCalls struct {
-	// 记录类型：THINK、REPLY、TOOL_CALL、SKILL_CALL或ARTIFACT
+	// The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, or ARTIFACT.
 	//
 	// example:
 	//
 	// TOOL_CALL
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 已保存的原始记录内容；工具调用与产物元数据为JSON字符串
+	// The saved original record content. Tool invocation and artifact metadata are JSON strings.
 	//
 	// example:
 	//
-	// 已完成本轮数据查询
+	// Data query for this turn completed
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	// 该条工作记录耗时，单位毫秒；产物记录为0
+	// The time taken for this work record, in milliseconds. The value is 0 for artifact records.
 	//
 	// example:
 	//
 	// 1200
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// 所属节点key（nodeKey），不是会话ID
+	// The key of the parent node, not the conversation ID.
 	//
 	// example:
 	//
 	// query.amount
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 记录事件时间，ISO-8601格式；源记录无时间时为空字符串
+	// The time when the event is recorded, in ISO-8601 format. This is an empty string if the source record has no time.
 	//
 	// example:
 	//
@@ -990,37 +990,37 @@ func (s *GetNodeDetailResponseBodyAgentWorkProcessToolCalls) Validate() error {
 }
 
 type GetNodeDetailResponseBodyArtifacts struct {
-	// 登记产物ID；仅来自结果摘要的产物可能为空
+	// The registered artifact ID. This parameter may be empty for artifacts derived only from the result summary.
 	//
 	// example:
 	//
 	// artifact_example
 	ArtifactId *string `json:"artifactId,omitempty" xml:"artifactId,omitempty"`
-	// 产物在节点结果中的唯一key
+	// The unique key of the artifact in the node result.
 	//
 	// example:
 	//
 	// amount_report
 	ArtifactKey *string `json:"artifactKey,omitempty" xml:"artifactKey,omitempty"`
-	// 产物稳定引用，包含kind、id、url；登记产物URL为重新鉴权入口，可为空
+	// The stable reference of the artifact, including kind, id, and url. The URL of a registered artifact is a re-authentication entry point and can be empty.
 	//
 	// example:
 	//
 	// {"kind":"INLINE","id":"amount_report","url":"inline://amount_report"}
 	Ref map[string]*string `json:"ref,omitempty" xml:"ref,omitempty"`
-	// 产物摘要，不含inline正文
+	// The artifact summary, excluding inline content.
 	//
 	// example:
 	//
-	// 已完成签单金额统计
+	// Signed amount statistics completed
 	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	// 产物展示标题
+	// The display title of the artifact.
 	//
 	// example:
 	//
-	// 签单金额统计报告
+	// Signed amount statistics report
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 产物类型
+	// The artifact type.
 	//
 	// example:
 	//
@@ -1095,31 +1095,31 @@ func (s *GetNodeDetailResponseBodyArtifacts) Validate() error {
 }
 
 type GetNodeDetailResponseBodyRunLog struct {
-	// 记录类型：THINK、REPLY、TOOL_CALL、SKILL_CALL或ARTIFACT
+	// The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, or ARTIFACT.
 	//
 	// example:
 	//
 	// REPLY
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 已保存的原始记录内容；工具调用与产物元数据为JSON字符串
+	// The saved original record content. Tool invocation and artifact metadata are JSON strings.
 	//
 	// example:
 	//
-	// 已完成本轮数据查询
+	// Data query for this turn completed
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	// 该条工作记录耗时，单位毫秒；产物记录为0
+	// The time taken for this work record, in milliseconds. The value is 0 for artifact records.
 	//
 	// example:
 	//
 	// 1200
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// 所属节点key（nodeKey），不是会话ID
+	// The key of the parent node, not the conversation ID.
 	//
 	// example:
 	//
 	// query.amount
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 记录事件时间，ISO-8601格式；源记录无时间时为空字符串
+	// The time when the event is recorded, in ISO-8601 format. This is an empty string if the source record has no time.
 	//
 	// example:
 	//

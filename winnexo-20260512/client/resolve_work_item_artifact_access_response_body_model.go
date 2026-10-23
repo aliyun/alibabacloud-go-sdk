@@ -22,31 +22,31 @@ type iResolveWorkItemArtifactAccessResponseBody interface {
 }
 
 type ResolveWorkItemArtifactAccessResponseBody struct {
-	// 业务状态码；成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 产物短期签名下载地址，过期前可直接 GET
+	// The short-term signed download URL of the artifact. You can send a GET request directly to this URL before it expires.
 	//
 	// example:
 	//
 	// example
 	DownloadUrl *string `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
-	// 地址过期时间(ISO8601)
+	// The expiration time of the URL in ISO 8601 format.
 	//
 	// example:
 	//
 	// example
 	ExpiresAt *string `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
-	// 错误描述
+	// The error message.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request trace ID.
 	//
 	// example:
 	//
