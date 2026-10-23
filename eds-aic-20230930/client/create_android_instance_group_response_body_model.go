@@ -25,7 +25,8 @@ type CreateAndroidInstanceGroupResponseBody struct {
 	// The list of instance group IDs.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
 	// The instance group information.
-	InstanceGroupInfos       []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos     `json:"InstanceGroupInfos,omitempty" xml:"InstanceGroupInfos,omitempty" type:"Repeated"`
+	InstanceGroupInfos []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos `json:"InstanceGroupInfos,omitempty" xml:"InstanceGroupInfos,omitempty" type:"Repeated"`
+	// The bandwidth plan order information.
 	NetworkPackageOrderModel *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel `json:"NetworkPackageOrderModel,omitempty" xml:"NetworkPackageOrderModel,omitempty" type:"Struct"`
 	// The order ID.
 	//
@@ -154,7 +155,17 @@ func (s *CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) Validate() er
 }
 
 type CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel struct {
-	BandwidthPackageId      *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// The ID of the Internet Shared Bandwidth.
+	//
+	// example:
+	//
+	// cbwp-uf63gsv8j0ir53*****
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// The bandwidth plan order ID.
+	//
+	// example:
+	//
+	// 25954415983*****
 	BandwidthPackageOrderId *string `json:"BandwidthPackageOrderId,omitempty" xml:"BandwidthPackageOrderId,omitempty"`
 }
 

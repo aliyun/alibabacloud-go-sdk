@@ -38,9 +38,13 @@ type ExpandDataVolumeRequest struct {
   // 
   // cn-hangzhou
   BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-  // The list of cloud phone matrix IDs.
+  // The IDs of the cloud phone matrices.
   NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
   // The redirect URL for the payment success page.
+  // 
+  // example:
+  // 
+  // wya.wuying.aliyun.com/instanceGroup
   PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
   // The size of the device storage for the instance. Unit: GiB.
   // 
@@ -48,7 +52,7 @@ type ExpandDataVolumeRequest struct {
   // 
   // 100
   PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
-  // The promotion ID.
+  // The ID of the promotion.
   // 
   // example:
   // 

@@ -18,11 +18,11 @@ type iInstallAppRequest interface {
 }
 
 type InstallAppRequest struct {
-	// The application IDs.
+	// The list of application IDs.
 	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
-	// The instance group IDs.
+	// The list of instance groups.
 	InstanceGroupIdList []*string `json:"InstanceGroupIdList,omitempty" xml:"InstanceGroupIdList,omitempty" type:"Repeated"`
-	// The instance IDs.
+	// The list of instances.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 }
 

@@ -28,38 +28,45 @@ type iCreateCreditPackageRequest interface {
 type CreateCreditPackageRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: Enables automatic payment. Make sure that your account balance is sufficient.
+	// - **true**: enables automatic payment. Make sure that your account balance is sufficient.
 	//
-	// - **false*	- (default): Generates an order without deducting payment.
+	// - **false*	- (default): generates an unpaid order without deducting fees.
 	//
-	//
-	//
-	//
-	// > If the balance of your payment method is insufficient, set this parameter to false. An unpaid order is generated. You can log on to the WUYING Cloud Phone console to complete the payment.
+	// > If the balance of your payment method is insufficient, you can change the Settings of this parameter to false to generate an unpaid order. Then, you can log on to the WUYING Cloud Phone console to complete the payment.
 	//
 	// example:
 	//
 	// false
-	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The channel cookie. This parameter is passed through to the sales system when you place an order.
+	//
+	// example:
+	//
+	// channel-cookie-credit
 	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
 	// The number of credits.
 	//
 	// example:
 	//
 	// 1000
-	CreditAmount  *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	// The number of credit packages to purchase.
+	//
+	// example:
+	//
+	// 1
 	PackageAmount *string `json:"PackageAmount,omitempty" xml:"PackageAmount,omitempty"`
-	// The subscription duration of the purchased resource. The unit is specified by PeriodUnit.
+	// The subscription period of the resource. The unit is specified by PeriodUnit.
 	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration for the purchased resource. Valid values:
+	// The unit of the subscription period. Valid values:
 	//
-	// - **Month**: Month.
+	// - **Month**: months.
 	//
-	// - **Year**: Year.
+	// - **Year**: years.
 	//
 	// example:
 	//

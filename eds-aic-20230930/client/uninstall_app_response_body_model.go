@@ -18,7 +18,7 @@ type iUninstallAppResponseBody interface {
 }
 
 type UninstallAppResponseBody struct {
-	// A list of subtasks.
+	// The child task information.
 	ChildTaskInfo []*UninstallAppResponseBodyChildTaskInfo `json:"ChildTaskInfo,omitempty" xml:"ChildTaskInfo,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -84,8 +84,12 @@ func (s *UninstallAppResponseBody) Validate() error {
 
 type UninstallAppResponseBodyChildTaskInfo struct {
 	// The application ID.
+	//
+	// example:
+	//
+	// 1234
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The subtask ID.
+	// The child task ID.
 	//
 	// example:
 	//

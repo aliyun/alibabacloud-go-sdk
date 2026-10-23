@@ -20,13 +20,13 @@ type iBackupFileResponseBody interface {
 }
 
 type BackupFileResponseBody struct {
-	// The number of instances that are backed up.
+	// The number of backed-up instances.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The result object.
+	// The returned result object.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type BackupFileResponseBody struct {
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The batch task ID.
+	// The ID of the batch task.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *BackupFileResponseBody) Validate() error {
 }
 
 type BackupFileResponseBodyData struct {
-	// The ID of the cloud phone instance.
+	// The instance ID of the cloud phone.
 	//
 	// example:
 	//

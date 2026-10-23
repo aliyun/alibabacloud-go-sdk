@@ -22,7 +22,7 @@ type iDescribeImageListResponseBody interface {
 type DescribeImageListResponseBody struct {
 	// The returned data.
 	Data []*DescribeImageListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The position from which the current call returns the read data. An empty value indicates that all data has been read.
+	// The token that indicates the position to which the current call has read. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DescribeImageListResponseBodyData struct {
 	//
 	// IMAGE
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The image distribution region information. The key is the region and the value is the distribution information.
+	// The image distribution information by region. The key is the region, and the value is the distribution information.
 	ImageRegionDistributeMap map[string]*DataImageRegionDistributeMapValue `json:"ImageRegionDistributeMap,omitempty" xml:"ImageRegionDistributeMap,omitempty"`
 	// The list of available regions.
 	ImageRegionList []*string `json:"ImageRegionList,omitempty" xml:"ImageRegionList,omitempty" type:"Repeated"`

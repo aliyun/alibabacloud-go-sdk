@@ -28,7 +28,7 @@ type ModifyScheduledTaskResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModifyScheduledTaskResponseBody struct {
 	//
 	// 9A51B1DF-96FF-3BCC-B08C-783161D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of modification results.
+	// The list of update results.
 	Tasks []*ModifyScheduledTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -117,7 +117,7 @@ func (s *ModifyScheduledTaskResponseBody) Validate() error {
 }
 
 type ModifyScheduledTaskResponseBodyTasks struct {
-	// The list of batch delivery results for instance scheduled tasks.
+	// The list of results for batch delivery of scheduled tasks to instances.
 	InstanceResults []*ModifyScheduledTaskResponseBodyTasksInstanceResults `json:"InstanceResults,omitempty" xml:"InstanceResults,omitempty" type:"Repeated"`
 	// The updated CAS version number.
 	//
@@ -125,7 +125,7 @@ type ModifyScheduledTaskResponseBodyTasks struct {
 	//
 	// 2
 	NewVersion *int32 `json:"NewVersion,omitempty" xml:"NewVersion,omitempty"`
-	// The scheduled task ID.
+	// The ID of the scheduled task.
 	//
 	// example:
 	//

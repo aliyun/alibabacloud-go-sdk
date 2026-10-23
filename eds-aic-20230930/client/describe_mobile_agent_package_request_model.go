@@ -24,11 +24,11 @@ type iDescribeMobileAgentPackageRequest interface {
 }
 
 type DescribeMobileAgentPackageRequest struct {
-	// The list of node instance IDs.
+	// The node instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The list of packages.
+	// The package IDs.
 	PackageIds []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
-	// The package specifications.
+	// The package specification.
 	//
 	// example:
 	//

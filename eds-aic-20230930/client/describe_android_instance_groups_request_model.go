@@ -48,21 +48,23 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The billing method.
 	//
-	// [_single.params.ChargeType.enum. PrePaid]Subscription.
-	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The IDs of the instance groups.
+	// The list of instance group IDs.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	// The name of the instance group. Fuzzy match is supported.
+	// The instance group name. Fuzzy match is supported.
 	//
 	// example:
 	//
-	// Cloud Phone
+	// CloudPhone
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
 	// The instance version. A value of basic indicates a Wuying Cloud Phone instance, and a value of EnterpriseAi indicates a JVS Mobile instance.
+	//
+	// example:
+	//
+	// EnterpriseAi
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	// The ID of the key pair.
 	//
@@ -70,19 +72,19 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	//
 	// kp-5htf0ymsrnb7q****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The maximum number of entries to return on each page in a paging query. Valid values: 1 to 100. Default value: 100.
+	// The maximum number of entries to return per page in a paging query. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that indicates the starting position for the query. If this parameter is left empty, the query starts from the beginning.
+	// The pagination token that specifies the starting position of the query. If you leave this parameter empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// example:
 	//
@@ -95,8 +97,16 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	// standard
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	// The sort field. A value of CreationTime indicates the creation time, and a value of ExpiredTime indicates the expiration time.
+	//
+	// example:
+	//
+	// CreationTime
 	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
 	// The sort order. A value of ASC indicates ascending order, and a value of DESC indicates descending order.
+	//
+	// example:
+	//
+	// ASC
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 	// The status of the instance group.
 	//
@@ -258,7 +268,7 @@ func (s *DescribeAndroidInstanceGroupsRequest) Validate() error {
 type DescribeAndroidInstanceGroupsRequestTags struct {
 	// The tag key. You can specify 1 to 20 tag keys.
 	//
-	// 	Notice: A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	// 	Notice: The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -266,7 +276,7 @@ type DescribeAndroidInstanceGroupsRequestTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// 	Notice: A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// 	Notice: The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

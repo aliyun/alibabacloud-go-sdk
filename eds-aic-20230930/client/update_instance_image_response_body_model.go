@@ -29,8 +29,9 @@ type UpdateInstanceImageResponseBody struct {
 	// example:
 	//
 	// t-1ljew7on6ay0j****
-	TaskId *string                               `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Tasks  *UpdateInstanceImageResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task information.
+	Tasks *UpdateInstanceImageResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
 func (s UpdateInstanceImageResponseBody) String() string {
@@ -78,7 +79,10 @@ func (s *UpdateInstanceImageResponseBody) Validate() error {
 }
 
 type UpdateInstanceImageResponseBodyTasks struct {
+	// The child tasks.
 	ChildTasks []*UpdateInstanceImageResponseBodyTasksChildTasks `json:"ChildTasks,omitempty" xml:"ChildTasks,omitempty" type:"Repeated"`
+	// The parent task ID.
+	//
 	// example:
 	//
 	// t-xxxx
@@ -125,10 +129,14 @@ func (s *UpdateInstanceImageResponseBodyTasks) Validate() error {
 }
 
 type UpdateInstanceImageResponseBodyTasksChildTasks struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// acp-xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The child task ID.
+	//
 	// example:
 	//
 	// t-xxxx

@@ -20,18 +20,24 @@ type iResumeAgentTaskRequest interface {
 }
 
 type ResumeAgentTaskRequest struct {
-	// The additional prompt to append. This parameter takes effect only when the task is passively paused, such as when the task is paused and waiting for user confirmation.
+	// The additional prompt. This parameter takes effect only when the task is passively paused, such as pausing to wait for user confirmation.
 	//
 	// example:
 	//
-	// 验证码为***。
-	AdditionalPrompt     *string                                       `json:"AdditionalPrompt,omitempty" xml:"AdditionalPrompt,omitempty"`
+	// The verification code is ***
+	AdditionalPrompt *string `json:"AdditionalPrompt,omitempty" xml:"AdditionalPrompt,omitempty"`
+	// The list of clarification answers submitted when resuming the task.
 	ClarificationAnswers []*ResumeAgentTaskRequestClarificationAnswers `json:"ClarificationAnswers,omitempty" xml:"ClarificationAnswers,omitempty" type:"Repeated"`
 	// The list of task IDs.
 	//
 	// This parameter is required.
-	TaskIds    []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	ToolCallId *string   `json:"ToolCallId,omitempty" xml:"ToolCallId,omitempty"`
+	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The ID of the tool invoke to resume.
+	//
+	// example:
+	//
+	// ca*****01
+	ToolCallId *string `json:"ToolCallId,omitempty" xml:"ToolCallId,omitempty"`
 }
 
 func (s ResumeAgentTaskRequest) String() string {
@@ -92,8 +98,19 @@ func (s *ResumeAgentTaskRequest) Validate() error {
 }
 
 type ResumeAgentTaskRequestClarificationAnswers struct {
-	CustomValue *string   `json:"CustomValue,omitempty" xml:"CustomValue,omitempty"`
-	Id          *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The custom input content in the clarification answer.
+	//
+	// example:
+	//
+	// Simply ****
+	CustomValue *string `json:"CustomValue,omitempty" xml:"CustomValue,omitempty"`
+	// The ID of the clarification item.
+	//
+	// example:
+	//
+	// cl*****-1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The list of selected option IDs in the clarification answer.
 	SelectedIds []*string `json:"SelectedIds,omitempty" xml:"SelectedIds,omitempty" type:"Repeated"`
 }
 

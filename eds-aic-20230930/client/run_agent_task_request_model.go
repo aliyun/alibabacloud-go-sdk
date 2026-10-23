@@ -32,7 +32,7 @@ type iRunAgentTaskRequest interface {
 }
 
 type RunAgentTaskRequest struct {
-	// The ID of the region where the Mobile node resides.
+	// The region ID of the Mobile node.
 	//
 	// example:
 	//
@@ -46,39 +46,39 @@ type RunAgentTaskRequest struct {
 	//
 	// 50
 	MaxSteps *int32 `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
-	// The runtime configuration that contains the runtime parameters such as skills for the current task.
+	// The runtime configuration that carries the runtime parameters such as skills for the current task.
 	//
 	// example:
 	//
 	// {"Skills":["sk-abc","sk-def"]}
 	RunConfig *RunAgentTaskRequestRunConfig `json:"RunConfig,omitempty" xml:"RunConfig,omitempty" type:"Struct"`
-	// Specifies whether to save the task artifacts to your OSS.
+	// Specifies whether to write the task artifacts to the user\\"s OSS.
 	//
 	// example:
 	//
 	// true
 	SaveArtifacts *bool `json:"SaveArtifacts,omitempty" xml:"SaveArtifacts,omitempty"`
-	// The ID of the scheduling plan. When specified, the execute record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling aggregation dimension.
+	// The scheduling plan ID. If specified, the execute record is associated with the corresponding scheduled node to facilitate aggregate query by scheduling dimension aggregation.
 	//
 	// example:
 	//
 	// sch-260625-pbj2****
 	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	// The list of targets. Each element is an object that contains an InstanceId and a SessionId.
+	// The Targets array. Each element is an object that contains InstanceId and SessionId.
 	Targets []*RunAgentTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	// The ID of the task configuration. This parameter is used to trigger a task with the specified configuration.
+	// The task configuration ID used to trigger a task with the specified configuration.
 	//
 	// example:
 	//
 	// tsk-260625-49be****
 	TaskConfigId *string `json:"TaskConfigId,omitempty" xml:"TaskConfigId,omitempty"`
-	// The timeout period of the task in seconds. Valid values: 300 to 3600. Default value: 3600.
+	// The timeout period for the task in seconds. Valid values: 300 to 3600. Default value: 3600.
 	//
 	// example:
 	//
 	// 3600
 	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
-	// The user prompt in natural language. The agent performs operations based on this prompt.
+	// The user prompt in natural language based on which the agent performs operations.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ func (s *RunAgentTaskRequest) Validate() error {
 }
 
 type RunAgentTaskRequestRunConfig struct {
-	// The list of skill IDs. You can specify up to 10 skill IDs. Only the first skill ID is passed through when the command is delivered. All skill IDs are stored in the task_skill_relation table for reverse lookup.
+	// The list of skill IDs. A maximum of 10 skills are supported. Only the first skill ID is passed through when the command is delivered. All skill IDs are stored in the task_skill_relation table for reverse lookup.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ func (s *RunAgentTaskRequestRunConfig) Validate() error {
 }
 
 type RunAgentTaskRequestTargets struct {
-	// The ID of the Mobile node, such as acp-xxx.
+	// The Mobile node ID, such as acp-xxx.
 	//
 	// example:
 	//

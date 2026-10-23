@@ -22,21 +22,21 @@ type iDescribeBackupFilesResponseBody interface {
 }
 
 type DescribeBackupFilesResponseBody struct {
-	// The list of returned result objects.
+	// The list of returned results.
 	Data []*DescribeBackupFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The maximum number of entries returned in this query.
+	// The maximum number of entries returned in the current call.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the position from which the next query starts. An empty value indicates that all data has been read.
+	// The token that indicates the position to which the current call has read. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The unique ID of the request. If you encounter any issues, provide this request ID to the technical support team for troubleshooting.
+	// The unique ID of the request. If you encounter any issues, provide this request ID for troubleshooting.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DescribeBackupFilesResponseBodyData struct {
 	//
 	// Test cloud phone
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	// Specifies whether the backup is a full-device backup.
+	// Specifies whether the backup is a full device backup.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type DescribeBackupFilesResponseBodyData struct {
 	//
 	// a-58ftsoo90p0qa****.ab
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	// The directory where the backup file is saved.
+	// The directory where the backup file is stored.
 	//
 	// example:
 	//
 	// oss://cloudphone-saved-bucket-cn-shanghai/backup/aic-58ftsoo90p0qa****.ab
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
-	// The order source. A value of CLOUDPHONE indicates AI cloud phone.
+	// The order source. CLOUDPHONE indicates AI cloud phone.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type DescribeBackupFilesResponseBodyData struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of package names of the backed-up applications.
 	SourceAppInfoList []*string `json:"SourceAppInfoList,omitempty" xml:"SourceAppInfoList,omitempty" type:"Repeated"`
-	// The list of directories of the source backup files.
+	// The list of directories for the source backup files.
 	SourceFilePathList []*string `json:"SourceFilePathList,omitempty" xml:"SourceFilePathList,omitempty" type:"Repeated"`
 	// The status of the backup file.
 	//

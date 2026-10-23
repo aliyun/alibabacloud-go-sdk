@@ -26,7 +26,7 @@ type iDescribeScheduledTasksResponseBody interface {
 }
 
 type DescribeScheduledTasksResponseBody struct {
-	// The status code of the operation.
+	// The API status code.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type DescribeScheduledTasksResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The pagination token that indicates the position from which to start reading. Leave this parameter empty to read from the beginning.
+	// The token that specifies the starting position for the current read operation. An empty value indicates that the read operation starts from the beginning.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type DescribeScheduledTasksResponseBodyTasks struct {
 	//
 	// 2026-01-01T00:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ type DescribeScheduledTasksResponseBodyTasks struct {
 	//
 	// example:
 	//
-	// DailyDataSyncTask
+	// Daily data synchronization task
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The total number of executions.
 	//
@@ -225,7 +225,7 @@ type DescribeScheduledTasksResponseBodyTasks struct {
 	//
 	// example:
 	//
-	// Execute daily data sync task
+	// Execute the daily data synchronization task
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 	// The CAS version number.
 	//
@@ -388,7 +388,7 @@ func (s *DescribeScheduledTasksResponseBodyTasks) Validate() error {
 }
 
 type DescribeScheduledTasksResponseBodyTasksRunConfig struct {
-	// The extra parameters.
+	// The extended parameters.
 	//
 	// example:
 	//

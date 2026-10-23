@@ -30,21 +30,31 @@ type RenewAndroidInstanceGroupsRequest struct {
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The instance group IDs.
+	// The list of instance group IDs.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	PaidCallBackUrl  *string   `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The renewal duration.
+	// The redirect URL to the payment success page.
+	//
+	// example:
+	//
+	// wya.wuying.aliyun.com/instanceGroup
+	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
+	// Specifies the renewal duration. The unit is specified by the PeriodUnit parameter.
 	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the renewal duration specified by `Period`. Default value: Month.
+	// The unit of the renewal duration, which is the unit of the Period parameter. Default value: Month.
 	//
 	// example:
 	//
 	// Month
-	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The promotion ID.
+	//
+	// example:
+	//
+	// 50003308011****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 

@@ -36,7 +36,7 @@ type DescribeScheduledTasksRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that indicates the position from which to start reading. Leave this parameter empty to read from the beginning.
+	// The token that specifies the starting position for the current read operation. An empty value indicates that the read operation starts from the beginning.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type DescribeScheduledTasksRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters by scheduled task IDs.
+	// The filter for scheduled task IDs.
 	//
 	// example:
 	//
 	// ["scheduled-abcd1234"]
 	ScheduledIds []*string `json:"ScheduledIds,omitempty" xml:"ScheduledIds,omitempty" type:"Repeated"`
-	// Filters by status: ACTIVE/DISABLED.
+	// The status filter. Valid values: ACTIVE, DISABLED.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeScheduledTasksRequest struct {
 	//
 	// example:
 	//
-	// DataSync
+	// Data synchronization
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

@@ -20,7 +20,7 @@ type iDescribeSpecResponseBody interface {
 }
 
 type DescribeSpecResponseBody struct {
-	// The token that indicates the position up to which the data is retrieved. An empty value indicates that all data has been retrieved.
+	// The token that specifies the position to which the current call has read. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DescribeSpecResponseBodySpecInfoModel struct {
 	//
 	// ARM
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// The system cloud disk size. Unit: GB.
+	// The size of the system cloud disk. Unit: GB.
 	//
 	// example:
 	//

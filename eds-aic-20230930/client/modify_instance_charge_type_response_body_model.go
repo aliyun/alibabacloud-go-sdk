@@ -18,9 +18,9 @@ type iModifyInstanceChargeTypeResponseBody interface {
 }
 
 type ModifyInstanceChargeTypeResponseBody struct {
-	// The instance group IDs.
+	// The list of instance group IDs.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	// The order ID.
+	// The ID of the generated order.
 	//
 	// example:
 	//

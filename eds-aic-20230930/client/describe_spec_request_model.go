@@ -37,6 +37,10 @@ type DescribeSpecRequest struct {
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The billing method. A value of PrePaid indicates subscription. A value of PostPaid indicates pay-as-you-go.
+	//
+	// example:
+	//
+	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The cloud phone matrix specification.
 	//
@@ -50,13 +54,13 @@ type DescribeSpecRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the position from which the query starts. If you leave this parameter empty, the query starts from the beginning.
+	// The token that specifies the position from which to start reading. An empty value indicates that the reading starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The purchase mode for cloud phones.
+	// The purchasing mode of the cloud phone.
 	//
 	// example:
 	//

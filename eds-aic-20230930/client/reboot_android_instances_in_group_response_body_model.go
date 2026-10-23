@@ -21,8 +21,9 @@ type RebootAndroidInstancesInGroupResponseBody struct {
 	// example:
 	//
 	// 227CBB4C-F5DC-589D-A667-C5CA3D52****
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     *RebootAndroidInstancesInGroupResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task information.
+	Tasks *RebootAndroidInstancesInGroupResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
 func (s RebootAndroidInstancesInGroupResponseBody) String() string {
@@ -61,7 +62,10 @@ func (s *RebootAndroidInstancesInGroupResponseBody) Validate() error {
 }
 
 type RebootAndroidInstancesInGroupResponseBodyTasks struct {
+	// The child tasks.
 	ChildTasks []*RebootAndroidInstancesInGroupResponseBodyTasksChildTasks `json:"ChildTasks,omitempty" xml:"ChildTasks,omitempty" type:"Repeated"`
+	// The parent task ID.
+	//
 	// example:
 	//
 	// t-xxxx
@@ -108,10 +112,14 @@ func (s *RebootAndroidInstancesInGroupResponseBodyTasks) Validate() error {
 }
 
 type RebootAndroidInstancesInGroupResponseBodyTasksChildTasks struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// acp-xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The child task ID.
+	//
 	// example:
 	//
 	// t-xxxx

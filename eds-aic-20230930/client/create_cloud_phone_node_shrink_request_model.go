@@ -109,9 +109,14 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	BizRegionId   *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The channel cookie that is passed through to the sales system when an order is placed.
+	//
+	// example:
+	//
+	// channel-cookie-node
 	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
-	// The billing method. Only subscription is supported.
+	// The billing method. Only the subscription billing method is supported.
 	//
 	// example:
 	//
@@ -137,20 +142,23 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// imgc-075cllfeuazh0****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance type. > To purchase more instance types, you can [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
+	// The instance type.
+	//
+	// > To purchase additional specifications, [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
 	//
 	// example:
 	//
 	// ac.max
-	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IsSingleImgDisk *bool   `json:"IsSingleImgDisk,omitempty" xml:"IsSingleImgDisk,omitempty"`
-	// The office network ID.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Specifies whether to use a single image disk. Default value: false. A value of false indicates that the system disk and the shared internal storage image disk are used.
+	IsSingleImgDisk *bool `json:"IsSingleImgDisk,omitempty" xml:"IsSingleImgDisk,omitempty"`
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-5mwr9azebliva****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The network mapping information of the instance.
+	// The network mapping information for the instance.
 	NetworkInfoShrink *string `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty"`
 	// The network type of the instance.
 	//
@@ -164,13 +172,17 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// node_name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The redirect URL for the payment success page.
+	// The redirect URL of the payment success page.
+	//
+	// example:
+	//
+	// wya.wuying.aliyun.com/instanceGroup
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The subscription period of the resource. The unit is specified by `PeriodUnit`.
+	// The subscription period. The unit is specified by PeriodUnit.
 	//
-	// - If `PeriodUnit` is set to **year**, the only valid value is 1.
+	// - If PeriodUnit is set to **year**, the only valid value is 1.
 	//
-	// - If `PeriodUnit` is set to **month**, valid values are 1, 2, 3, and 6.
+	// - If PeriodUnit is set to **month**, valid values are 1, 2, 3, and 6.
 	//
 	// example:
 	//
@@ -188,29 +200,33 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// 25
 	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
-	// The size of the independent device storage. Unit: GiB.
+	// The size of the independent internal storage. Unit: GiB.
 	//
 	// example:
 	//
 	// 10
 	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
-	// The ID of the promotion.
+	// The promotion ID.
+	//
+	// example:
+	//
+	// 50003308011****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The height of the resolution. Unit: pixels.
+	// The resolution height. Unit: pixels.
 	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
-	// The width of the resolution. Unit: pixels.
+	// The resolution width. Unit: pixels.
 	//
 	// example:
 	//
 	// 720
 	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
-	// The size of the shared device storage. Unit: GiB.
+	// The size of the shared internal storage. Unit: GiB.
 	//
-	// > The minimum size of the shared device storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
+	// > The minimum size of the shared internal storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
 	//
 	// example:
 	//
@@ -224,14 +240,19 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// cpm.gx7.10xlarge
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The streaming mode for instances in the cloud phone matrix. If this parameter is not specified, the default value is preemptive mode.
+	// The streaming mode for instances in the cloud phone matrix. If this parameter is not specified, the preemptive mode is used by default.
 	//
 	// example:
 	//
 	// 1
 	StreamMode *int32 `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
-	SwapSize   *int32 `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
-	// The tags of the resource.
+	// The size of the swap space.
+	//
+	// example:
+	//
+	// 0
+	SwapSize *int32 `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
+	// The resource tags.
 	Tag []*CreateCloudPhoneNodeShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The upstream bandwidth throttling. Unit: Mbit/s.
 	//
@@ -239,13 +260,13 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// 50
 	UpBandwidthLimit *int32 `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
-	// Specifies whether to use a template during creation. If you want to use a random template from the template list, set the value to `Random`. If you specify a template ID, the specified template is used.
+	// Specifies whether to use a template during creation. To use a random template from the template list, set the value to Random. To use a specific template, specify the template ID.
 	//
 	// example:
 	//
 	// Random
 	UseTemplate *string `json:"UseTemplate,omitempty" xml:"UseTemplate,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//

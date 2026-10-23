@@ -20,7 +20,7 @@ type iRunCommandResponseBody interface {
 }
 
 type RunCommandResponseBody struct {
-	// The command execution ID. Use this ID to query the execution result.
+	// The command execution ID. You can use this ID to query the command execution result.
 	//
 	// example:
 	//
@@ -31,9 +31,15 @@ type RunCommandResponseBody struct {
 	// example:
 	//
 	// 440D7342-5E7C-B2DB-D0B4EAC2BDF1****
-	RequestId       *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of command execution information for each cloud phone instance.
 	RunCommandInfos []*RunCommandResponseBodyRunCommandInfos `json:"RunCommandInfos,omitempty" xml:"RunCommandInfos,omitempty" type:"Repeated"`
-	TaskId          *string                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The batch task ID.
+	//
+	// example:
+	//
+	// t-bp67acfmxazb4p****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RunCommandResponseBody) String() string {
@@ -94,9 +100,24 @@ func (s *RunCommandResponseBody) Validate() error {
 }
 
 type RunCommandResponseBodyRunCommandInfos struct {
+	// The instance-level child task ID.
+	//
+	// example:
+	//
+	// t-bp67acfmxazb4p****
 	ChildTaskId *string `json:"ChildTaskId,omitempty" xml:"ChildTaskId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InvokeId    *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The cloud phone instance ID.
+	//
+	// example:
+	//
+	// acp-uto81vfd8t8z****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The command execution ID.
+	//
+	// example:
+	//
+	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
 }
 
 func (s RunCommandResponseBodyRunCommandInfos) String() string {

@@ -89,31 +89,46 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	// example:
 	//
 	// false
-	AutoRenew            *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BandwidthPackageId   *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The bandwidth plan ID.
+	//
+	// example:
+	//
+	// np-791ncq8qcuoop9hta
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	// The bandwidth type.
+	//
+	// example:
+	//
+	// cbwp_ecd
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions where cloud phone instances can be purchased.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where cloud phones are available.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	BizRegionId   *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The channel cookie, which is passed through to the sales system when an order is placed.
+	//
+	// example:
+	//
+	// channel-cookie-ig
 	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
-	// The billing type.
+	// The billing method.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request and prevent repeated submissions. The value cannot exceed 100 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate requests. The token can be up to 100 characters in length.
 	//
 	// example:
 	//
 	// asadbuvwiabdbvchj****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available to the public.
 	//
 	// example:
 	//
@@ -125,7 +140,7 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// false
 	GpuAcceleration *bool `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
-	// The image ID. You can call [DescribeImageList](~~DescribeImageList~~) to query the list of cloud phone images.
+	// The image ID. You can call the [DescribeImageList](~~DescribeImageList~~) operation to query the image list for cloud phones.
 	//
 	// This parameter is required.
 	//
@@ -133,15 +148,15 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// imgc-06zyt9m93zwax****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance group name.
+	// The name of the instance group.
 	//
-	// > The instance group name cannot exceed 30 characters in length. It must start with an uppercase letter, lowercase letter, or Chinese character. It cannot start with `http://` or `https://`. It can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// > The name can be up to 30 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. It can contain only Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
-	// Cloud phoneA
+	// Cloud Phone A
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
-	// The instance group specification. You can call [DescribeSpec](~~DescribeSpec~~) to query the specifications available for cloud phone instances.
+	// The specifications of the instance group. You can call the [DescribeSpec](~~DescribeSpec~~) operation to query the available specifications for cloud phones.
 	//
 	// This parameter is required.
 	//
@@ -149,23 +164,34 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// acp.basic.small
 	InstanceGroupSpec *string `json:"InstanceGroupSpec,omitempty" xml:"InstanceGroupSpec,omitempty"`
-	InstanceVersion   *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
-	// > This parameter is not publicly available.
+	// The instance version. A value of basic indicates a Wuying cloud phone instance, and a value of EnterpriseAi indicates a JVS Mobile instance.
+	//
+	// example:
+	//
+	// EnterpriseAi
+	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
+	// > This parameter is not available to the public.
 	//
 	// example:
 	//
 	// null
 	Ipv6Bandwidth *int32 `json:"Ipv6Bandwidth,omitempty" xml:"Ipv6Bandwidth,omitempty"`
-	// The key pair ID. If you specify a valid key pair ID when creating an instance group, the key pair is bound to all instances that are successfully created, without the need to call the bindng operation again.
+	// The key pair ID. When creating an instance group, if you specify a valid key pair ID, the key pair is bound to all successfully created instances, and you do not need to call the binding API operation again.
 	//
-	// > Binding a key pair during scale-out is not supported.
+	// > Binding key pairs during scale-out is not supported.
 	//
 	// example:
 	//
 	// kp-7o9xywwfutc1l****
-	KeyPairId         *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The network and bandwidth plan configurations of the instance group.
 	NetworkInfoShrink *string `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty"`
-	NetworkType       *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The network type of the instance.
+	//
+	// example:
+	//
+	// network_pro_ecd
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The number of instances in the instance group. Maximum value: 100.
 	//
 	// example:
@@ -174,14 +200,16 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	NumberOfInstances *int32 `json:"NumberOfInstances,omitempty" xml:"NumberOfInstances,omitempty"`
 	// The network ID.
 	//
-	// - To create a shared network instance: the network ID is optional. Specify the network ID of the **Shared Network*	- type on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no shared network exists in the console, you can leave this parameter empty. A shared network is automatically created when the instance group is created.
+	// - To create a shared network instance: The network ID is optional. Enter the network ID of the **Shared Network*	- type on the [Cloud Phone Console > Network](https://wya.wuying.aliyun.com/network) page. If no shared network is available in the console, you can leave this parameter empty, and automatic creation of a shared network is triggered when the instance group is created.
 	//
-	// - To create a VPC network instance: the network ID is required. Specify the network ID of the **VPC Network*	- type on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no VPC network exists in the console, create a network first.
+	// - To create a VPC network instance: The network ID is required. Enter the network ID of the **VPC Network*	- type on the [Cloud Phone Console > Network](https://wya.wuying.aliyun.com/network) page. If no VPC network is available in the console, you must create a network first.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-745976****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The redirect URL for the payment success page.
+	//
 	// example:
 	//
 	// wya.wuying.aliyun.com/instanceGroup
@@ -198,22 +226,37 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The policy ID. You can call [ListPolicyGroups](~~ListPolicyGroups~~) to query the list of policies.
+	// The policy ID. You can call the [ListPolicyGroups](~~ListPolicyGroups~~) operation to query the policy list.
 	//
 	// example:
 	//
 	// pg-b7bxrrwxkijjh****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	SaleMode      *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
-	StreamMode    *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
+	// The promotion activity ID.
+	//
+	// example:
+	//
+	// 50003308011****
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The sales mode.
+	//
+	// example:
+	//
+	// Instance
+	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	// The streaming mode of the instances in the instance group. If this parameter is not specified, the default mode is preemptive mode.
+	//
+	// example:
+	//
+	// 1
+	StreamMode *int32 `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 	// The tags of the resource.
 	Tag []*CreateAndroidInstanceGroupShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The vSwitch ID. You can call [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) to query the list of vSwitches.
+	// The vSwitch ID. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query the vSwitch list.
 	//
-	// - To create a shared network instance: leave this parameter empty.
+	// - To create a shared network instance: Leave this parameter empty.
 	//
-	// - To create a VPC network instance: the vSwitch ID is required. The specified vSwitch is used to create the instance.
+	// - To create a VPC network instance: The vSwitch ID is required. This vSwitch is used to create the instance.
 	//
 	// example:
 	//

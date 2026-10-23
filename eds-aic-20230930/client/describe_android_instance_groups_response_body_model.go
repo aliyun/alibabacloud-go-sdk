@@ -22,7 +22,7 @@ type iDescribeAndroidInstanceGroupsResponseBody interface {
 type DescribeAndroidInstanceGroupsResponseBody struct {
 	// The details of the instance group.
 	InstanceGroupModel []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel `json:"InstanceGroupModel,omitempty" xml:"InstanceGroupModel,omitempty" type:"Repeated"`
-	// The token that indicates the read position returned by the current call. An empty value indicates that all data has been read.
+	// The token that indicates the position of the current read. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeAndroidInstanceGroupsResponseBody) Validate() error {
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
-	// The delivery group ID.
+	// The ID of the delivery group.
 	//
 	// example:
 	//
@@ -130,17 +130,17 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// Valid values:
 	//
-	// - Creating: creating
+	// - Creating: The bandwidth plan is being created.
 	//
-	// - Releasing: releasing
+	// - Releasing: The bandwidth plan is being released.
 	//
-	// - InUse: in use
+	// - InUse: The bandwidth plan is in use.
 	//
-	// - Failed: failed
+	// - Failed: The operation failed.
 	//
-	// - Expired: expired
+	// - Expired: The bandwidth plan has expired.
 	//
-	// - Available: available and unbound, billing in progress
+	// - Available: The bandwidth plan is unbound and being billed.
 	//
 	// example:
 	//
@@ -152,9 +152,9 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// cbwp_ecd
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	// The Internet bandwidth throttling rules for the instance group.
+	// The information about the Internet bandwidth throttling rules bound to the instance group.
 	BindQosRules *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules `json:"BindQosRules,omitempty" xml:"BindQosRules,omitempty" type:"Struct"`
-	// The order source. CLOUDPHONE indicates AI Cloud Phone.
+	// The order source. A value of CLOUDPHONE indicates AI Cloud Phone.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The disk information.
 	Disks []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	// > This parameter is not available for public use.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// 2024-02-01 10:56:36
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The image ID.
+	// The ID of the image.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// "Douyin","Taobao"
 	InstalledAppList *string `json:"InstalledAppList,omitempty" xml:"InstalledAppList,omitempty"`
-	// The ID of the instance group.
+	// The instance group ID.
 	//
 	// example:
 	//
@@ -234,7 +234,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// Cloud Phone A
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
-	// The instance group specifications.
+	// The specifications of the instance group.
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// RUNNING
 	InstanceGroupStatus *string `json:"InstanceGroupStatus,omitempty" xml:"InstanceGroupStatus,omitempty"`
-	// > This parameter is not available for public use.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
@@ -266,7 +266,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The network type of the instance.
 	//
-	// > Currently, this field is returned only for instance groups in the standard network.
+	// > This field is returned only for instance groups in the standard network.
 	//
 	// example:
 	//
@@ -284,13 +284,13 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// cn-shanghai+dir-030598****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The ID of the plan package for the AI Cloud Phone.
+	// The ID of the plan for the AI Cloud Phone.
 	//
 	// example:
 	//
 	// cmag-bp1bpyt7sfeleukh****
 	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// example:
 	//
@@ -326,6 +326,12 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// standard
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	// Indicates whether the single-instance mode is enabled.
+	//
+	// example:
+	//
+	// true
+	SingleInstanceMode *bool `json:"SingleInstanceMode,omitempty" xml:"SingleInstanceMode,omitempty"`
 	// The system version.
 	//
 	// example:
@@ -334,7 +340,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	SystemVersion *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
 	// The tag information.
 	Tags []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The vSwitch ID in the VPC.
+	// The ID of the vSwitch in the VPC.
 	//
 	// example:
 	//
@@ -498,6 +504,10 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetResolut
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetSaleMode() *string {
 	return s.SaleMode
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetSingleInstanceMode() *bool {
+	return s.SingleInstanceMode
 }
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetSystemVersion() *string {
@@ -696,6 +706,11 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetSaleMod
 	return s
 }
 
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetSingleInstanceMode(v bool) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.SingleInstanceMode = &v
+	return s
+}
+
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetSystemVersion(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.SystemVersion = &v
 	return s
@@ -744,9 +759,9 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) Validate()
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules struct {
-	// The Internet bandwidth throttling rules bound to the instances.
+	// The information about the Internet bandwidth throttling rules bound to the instance.
 	InstanceQosRule []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule `json:"InstanceQosRule,omitempty" xml:"InstanceQosRule,omitempty" type:"Repeated"`
-	// The total number of Internet bandwidth throttling rules for the instance group.
+	// The total number of Internet bandwidth throttling rules bound to the instance group.
 	//
 	// example:
 	//
@@ -800,7 +815,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInst
 	//
 	// acp-h3m8b5dusopp5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Internet bandwidth throttling rule (applies only to premium bandwidth).
+	// The ID of the Internet bandwidth throttling rule. This rule applies only to premium bandwidth.
 	//
 	// example:
 	//

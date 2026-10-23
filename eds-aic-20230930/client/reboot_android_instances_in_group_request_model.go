@@ -20,16 +20,17 @@ type iRebootAndroidInstancesInGroupRequest interface {
 }
 
 type RebootAndroidInstancesInGroupRequest struct {
-	// A list of instance IDs.
+	// The list of instance IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to forcefully reboot the instances. If a Cloud Phone instance cannot be shut down because of system or network errors, you can force a reboot. This operation may cause data loss.
+	// Specifies whether to force a restart. You can force a restart if a cloud phone cannot be shut down due to system or network exceptions. Unsaved data may be lost.
 	//
 	// example:
 	//
 	// false
-	ForceStop             *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// Specifies whether to skip parameter validation. A value of true indicates that validation is skipped. If the value is false or not specified, validation is performed.
 	IgnoreParamValidation *bool `json:"IgnoreParamValidation,omitempty" xml:"IgnoreParamValidation,omitempty"`
-	// The sales mode. This parameter is deprecated.
+	// **[Deprecated]*	- The sales mode.
 	//
 	// example:
 	//

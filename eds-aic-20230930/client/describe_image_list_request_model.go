@@ -46,7 +46,7 @@ type DescribeImageListRequest struct {
 	//
 	// Android 12 system image
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// > This parameter is not yet available for public use.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeImageListRequest struct {
 	//
 	// cpm.gx7.10xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 20.
+	// The maximum number of entries to return per page during paging in a paged query. Valid values: 1 to 100. Default value: 20.
 	//
 	// if can be null:
 	// true
@@ -75,7 +75,7 @@ type DescribeImageListRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position from which the read operation starts. An empty value indicates that the read operation starts from the beginning.
+	// The token that specifies the starting position for the query. If this parameter is empty, the query starts from the beginning.
 	//
 	// example:
 	//
@@ -88,6 +88,10 @@ type DescribeImageListRequest struct {
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The operating system type.
+	//
+	// example:
+	//
+	// Android 12
 	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
 }
 

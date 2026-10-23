@@ -16,7 +16,7 @@ type iDescribeCreditDetailResponseBody interface {
 }
 
 type DescribeCreditDetailResponseBody struct {
-	// The returned data object.
+	// The response object.
 	Data *DescribeCreditDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -82,13 +82,13 @@ type DescribeCreditDetailResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total number of detail records.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total credit change.
+	// The total amount of credit change.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type DescribeCreditDetailResponseBodyDataDetails struct {
 	//
 	// cloudphone_enterprise
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// The API key name.
+	// The name of the API key.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type DescribeCreditDetailResponseBodyDataDetails struct {
 	//
 	// 2026-06-30T08:14:02Z
 	ChangeTime *string `json:"ChangeTime,omitempty" xml:"ChangeTime,omitempty"`
-	// The credit change amount.
+	// The amount of credit change.
 	//
 	// example:
 	//

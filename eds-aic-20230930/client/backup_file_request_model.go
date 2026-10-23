@@ -32,7 +32,7 @@ type iBackupFileRequest interface {
 }
 
 type BackupFileRequest struct {
-	// A list of instance IDs.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
@@ -48,9 +48,9 @@ type BackupFileRequest struct {
 	//
 	// MyBackup
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	// The upload URL for the backup file.
+	// The upload path of the backup file.
 	//
-	// > If you upload the file to an OSS bucket, call the DescribeBuckets operation to get the bucketName. Then, select a key from ossObjectList. The key represents the folder path in the OSS bucket. Combine these values into the format `oss://${bucketName}/${key}`.
+	// > If you upload the backup file to an OSS bucket, call the describeBuckets operation to obtain the bucketName, and select ossObjectList to obtain the key. The key is the folder path in the OSS bucket. Concatenate them into `oss://${bucketName}/${key}`.
 	//
 	// This parameter is required.
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
@@ -58,16 +58,17 @@ type BackupFileRequest struct {
 	//
 	// example:
 	//
-	// This is a backup/data request.
-	Description               *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This is a request to back up /data
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of file paths in the Android container to exclude from the backup.
 	ExcludeSourceFilePathList []*string `json:"ExcludeSourceFilePathList,omitempty" xml:"ExcludeSourceFilePathList,omitempty" type:"Repeated"`
-	// A list of application package names to back up.
+	// The list of application package names to back up.
 	SourceAppList []*string `json:"SourceAppList,omitempty" xml:"SourceAppList,omitempty" type:"Repeated"`
-	// A list of file paths to back up.
+	// The list of file paths to back up.
 	SourceFilePathList []*string `json:"SourceFilePathList,omitempty" xml:"SourceFilePathList,omitempty" type:"Repeated"`
-	// The domain name of the upload URL.
+	// The domain name of the backup endpoint.
 	//
-	// > If you upload the file to an OSS bucket, call the DescribeBuckets operation to obtain the bucket information. If the cloud phone and the bucket are in the same region, use the value of the intranetEndpoint field. If they are in different regions, use the value of the extranetEndpoint field.
+	// > If you upload the backup file to an OSS bucket, call the describeBuckets operation to obtain the bucket. If the cloud phone and the bucket are in the same region, obtain the intranetEndpoint field. If they are in different regions, obtain the extranetEndpoint field.
 	//
 	// example:
 	//

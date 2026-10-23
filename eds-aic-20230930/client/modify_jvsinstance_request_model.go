@@ -36,9 +36,13 @@ type ModifyJVSInstanceRequest struct {
 	//
 	// true
 	ApplyToAll *bool `json:"ApplyToAll,omitempty" xml:"ApplyToAll,omitempty"`
-	// The credit limit configuration. Subsequent quota configurations overwrite previous ones.
+	// The credit limit configuration. Subsequent configurations overwrite previous ones.
 	CreditConfig []*ModifyJVSInstanceRequestCreditConfig `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty" type:"Repeated"`
 	// The image ID.
+	//
+	// example:
+	//
+	// imgc-075cllfeuazh0****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -126,13 +130,13 @@ func (s *ModifyJVSInstanceRequest) Validate() error {
 }
 
 type ModifyJVSInstanceRequestCreditConfig struct {
-	// The quota limit.
+	// The credit limit.
 	//
 	// example:
 	//
 	// 10
 	CreditLimit *int64 `json:"CreditLimit,omitempty" xml:"CreditLimit,omitempty"`
-	// The period of the current credit.
+	// The time dimension for the current credit.
 	//
 	// example:
 	//

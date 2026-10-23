@@ -22,29 +22,29 @@ type iRunCommandRequest interface {
 }
 
 type RunCommandRequest struct {
-	// The channel type for running the command.
+	// The channel type used to execute the command.
 	//
 	// example:
 	//
 	// EdsAgent
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// The content of the command.
+	// The command content.
 	//
 	// example:
 	//
 	// ls
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	// The encoding method for the command content (`CommandContent`). This value is not case-sensitive.
+	// The encoding method of the command content (`CommandContent`). This parameter is case-insensitive.
 	//
-	// > An invalid value defaults to `PlainText`.
+	// > If the specified value is not within the valid values, it is processed as `PlainText`.
 	//
 	// example:
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// A list of instance IDs. You can specify up to 50 instances per request.
+	// The list of instance IDs. A single request supports up to 50 instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The execution timeout in seconds. The command times out if it does not complete within this period. Defaults to 60 seconds.
+	// The timeout period. Unit: seconds. If the command is not completed within this period, the command execution status is set to timeout. If this parameter is not specified, the default value is 60 seconds.
 	//
 	// example:
 	//

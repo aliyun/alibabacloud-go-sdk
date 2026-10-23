@@ -22,13 +22,13 @@ type iCreateScheduledTaskResponseBody interface {
 }
 
 type CreateScheduledTaskResponseBody struct {
-	// The API status code.
+	// The status code of the API operation.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The message returned by the API operation.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *CreateScheduledTaskResponseBody) Validate() error {
 }
 
 type CreateScheduledTaskResponseBodyTasks struct {
-	// The list of batch delivery results for instance scheduled tasks.
+	// The list of batch delivery results for the scheduled tasks of instances.
 	InstanceResults []*CreateScheduledTaskResponseBodyTasksInstanceResults `json:"InstanceResults,omitempty" xml:"InstanceResults,omitempty" type:"Repeated"`
-	// The scheduled task ID.
+	// The ID of the scheduled task.
 	//
 	// example:
 	//
 	// sch-260705-agb*****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The task configuration ID.
+	// The ID of the task configuration.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// {"maxSteps":10,"timeoutSeconds":3600}
 	RunConfig *ModifyScheduledTaskRequestRunConfig `json:"RunConfig,omitempty" xml:"RunConfig,omitempty" type:"Struct"`
-	// The scheduled task ID.
+	// The ID of the scheduled task.
 	//
 	// This parameter is required.
 	//
@@ -54,17 +54,17 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// sch-260705-agb*****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// Switches the status. Valid values: ACTIVE and DISABLED.
+	// The status toggle. Valid values: ACTIVE and DISABLED.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
-	// NewTaskName
+	// New task name
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The CAS version number.
 	//
@@ -172,7 +172,7 @@ func (s *ModifyScheduledTaskRequest) Validate() error {
 }
 
 type ModifyScheduledTaskRequestRunConfig struct {
-	// The extended parameter JSON string.
+	// The JSON string of extended parameters.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type ModifyScheduledTaskRequestRunConfig struct {
 	//
 	// 10
 	MaxSteps *int32 `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
-	// The list of skill IDs. A maximum of 1 skill ID is supported. The value overwrites aim_task_config.run_config after modification.
+	// The list of skill IDs. You can specify up to one skill ID. The value overwrites aim_task_config.run_config after the modification.
 	//
 	// if can be null:
 	// false
@@ -193,7 +193,7 @@ type ModifyScheduledTaskRequestRunConfig struct {
 	//
 	// ["sk-abc"]
 	Skills []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
-	// The timeout period, in seconds.
+	// The timeout period in seconds.
 	//
 	// example:
 	//

@@ -141,13 +141,7 @@ type DescribeAgentTaskResponseBodyTasks struct {
 	//
 	// COMPLETED
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
-	// The source of the digest. Valid values:
-	//
-	// - PROMPT_AUTO: Automatically generated.
-	//
-	// - RESULT_AUTO: Refined from the result.
-	//
-	// - USER: Edited by the user.
+	// The source of the digest. Valid values: PROMPT_AUTO (automatically generated), RESULT_AUTO (refined from the result), and USER (edited by the user).
 	//
 	// example:
 	//
@@ -159,7 +153,8 @@ type DescribeAgentTaskResponseBodyTasks struct {
 	//
 	// acp-anzzuho371azi44xr
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason for the task status.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The time when the task was created, in ISO 8601 format.
 	//
 	// example:
@@ -172,9 +167,13 @@ type DescribeAgentTaskResponseBodyTasks struct {
 	//
 	// 30
 	Steps *string `json:"Steps,omitempty" xml:"Steps,omitempty"`
-	// The task digest text, with a maximum of 25 characters.
+	// The task digest text, up to 25 characters in length.
+	//
+	// example:
+	//
+	// Download DingTalk
 	TaskDigest *string `json:"TaskDigest,omitempty" xml:"TaskDigest,omitempty"`
-	// The time consumed by the task. This field is returned only when CurrentStatus is FAILED or COMPLETED.
+	// The duration of the task. This field is returned only when CurrentStatus is FAILED or COMPLETED.
 	//
 	// example:
 	//
@@ -186,13 +185,13 @@ type DescribeAgentTaskResponseBodyTasks struct {
 	//
 	// t-imr0fufqd7cle****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The node task result (desired state). This field is returned only when CurrentStatus is COMPLETED or FAILED.
+	// The task result (desired state) of the node. This field is returned only when CurrentStatus is COMPLETED or FAILED.
 	//
 	// example:
 	//
 	// DingTalk downloaded successfully
 	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
-	// The user instruction in natural language based on which the agent performs operations.
+	// The user prompt in natural language that instructs the agent to perform operations.
 	//
 	// example:
 	//

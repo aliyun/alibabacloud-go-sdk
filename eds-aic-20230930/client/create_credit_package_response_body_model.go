@@ -24,20 +24,21 @@ type iCreateCreditPackageResponseBody interface {
 }
 
 type CreateCreditPackageResponseBody struct {
-	// The ID of the credit top-up package.
+	// The ID of the credit package.
 	//
 	// example:
 	//
 	// crp-bt7e2t4anbq50****
-	CreditPackageId  *string   `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
+	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
+	// The IDs of the credit packages created in this request.
 	CreditPackageIds []*string `json:"CreditPackageIds,omitempty" xml:"CreditPackageIds,omitempty" type:"Repeated"`
-	// The effective period of the credit top-up package. The time format is YYYY-MM-DD HH:mm:ss.
+	// The effective time of the credit package. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-04-30 00:00:00
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The expiration time of the credit top-up package. The time format is YYYY-MM-DD HH:mm:ss.
+	// The expiration time of the credit package. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

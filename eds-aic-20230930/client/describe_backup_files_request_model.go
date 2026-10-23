@@ -52,7 +52,7 @@ type DescribeBackupFilesRequest struct {
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
-	// Specifies whether the backup is a full-device backup.
+	// Specifies whether the backup is a full device backup.
 	//
 	// example:
 	//
@@ -94,19 +94,23 @@ type DescribeBackupFilesRequest struct {
 	//
 	// ag-fxdx91jsfyiy3****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	// The maximum number of entries per page for a paging query. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries to return per page in a paging query. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the position from which the query starts. If this parameter is left empty, the query starts from the beginning.
+	// The token that specifies the starting position of the query. An empty value indicates that the query starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The sales mode. Valid values: Instance (cloud phone instance mode) and Node (cloud phone matrix mode).
+	// The sales mode. Instance indicates the cloud phone instance mode, and Node indicates the cloud phone matrix mode.
+	//
+	// example:
+	//
+	// Instance
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	// The start time to query backup files. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//

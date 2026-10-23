@@ -18,15 +18,15 @@ type iChangeCloudPhoneNodeResponseBody interface {
 }
 
 type ChangeCloudPhoneNodeResponseBody struct {
-	// The cloud phone matrix information.
+	// The information about the cloud phone matrix.
 	NodeInfos []*ChangeCloudPhoneNodeResponseBodyNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
-	// The generated order ID.
+	// The ID of the generated order.
 	//
 	// example:
 	//
 	// 223684716098****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,15 +83,15 @@ func (s *ChangeCloudPhoneNodeResponseBody) Validate() error {
 }
 
 type ChangeCloudPhoneNodeResponseBodyNodeInfos struct {
-	// The cloud phone instance information.
+	// The information about the cloud phone instances.
 	InstanceInfos []*ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty" type:"Repeated"`
-	// The cloud phone matrix ID.
+	// The ID of the cloud phone matrix.
 	//
 	// example:
 	//
 	// cpn-e5kxgjyt8s1mb****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// When the matrix uses independent device storage, 64 GiB of shared storage space is allocated by default (not modifiable) for storing images and other matrix-wide files. When the matrix uses shared device storage (with the size set at purchase), this storage space is shared among all instances.
+	// When the matrix uses dedicated local storage, 64 GiB of shared storage space is allocated by default and cannot be modified. This space is used to store global files for the matrix, such as images. When the matrix uses shared local storage, the size is specified during purchase and the storage space is shared among all instances.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos struct {
 	//
 	// cpn-jewjt8xryuitu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The independent device storage capacity.
+	// The dedicated local storage capacity.
 	//
 	// example:
 	//

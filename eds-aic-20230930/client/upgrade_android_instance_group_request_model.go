@@ -41,8 +41,16 @@ type UpgradeAndroidInstanceGroupRequest struct {
 	// ag-asguicdjh****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
 	// The redirect URL for the payment success page.
+	//
+	// example:
+	//
+	// wya.wuying.aliyun.com/instanceGroup
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
 	// The ID of the promotion.
+	//
+	// example:
+	//
+	// 50003308011****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 

@@ -50,32 +50,33 @@ type DescribeCloudPhoneNodesRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing method. Only subscription is supported.
+	// The billing method. Only the subscription billing method is supported.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The maximum number of entries per page for a paged query. Maximum value: 100. Default value: 20.
+	// The maximum number of entries to return per page in a paging query. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. If the results of a query are not completely returned, the returned NextToken is not empty. You can include the returned NextToken in the next request to continue the query.
+	// The pagination token for the next query. If a query does not return all results, the returned NextToken is not empty. You can use the returned NextToken in a subsequent query to obtain more results.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of cloud phone matrix IDs.
+	// The IDs of the cloud phone matrices.
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
 	// The name of the cloud phone matrix.
 	//
 	// example:
 	//
 	// node_name
-	NodeName     *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The list of names used to filter cloud phone matrices.
 	NodeNameList []*string `json:"NodeNameList,omitempty" xml:"NodeNameList,omitempty" type:"Repeated"`
 	// The specifications of the cloud phone matrix.
 	//
@@ -83,15 +84,26 @@ type DescribeCloudPhoneNodesRequest struct {
 	//
 	// cpm.gx7.10xlarge
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	SortKey    *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
-	SortType   *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// The field used for sorting. A value of CreationTime indicates the creation time, and a value of ExpiredTime indicates the expiration time.
+	//
+	// example:
+	//
+	// CreationTime
+	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// The sort order. A value of ASC indicates ascending order, and a value of DESC indicates descending order.
+	//
+	// example:
+	//
+	// ASC
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 	// The status of the cloud phone matrix.
 	//
 	// example:
 	//
 	// CREATING
-	Status *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*DescribeCloudPhoneNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the node.
+	Tags []*DescribeCloudPhoneNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCloudPhoneNodesRequest) String() string {
@@ -233,7 +245,17 @@ func (s *DescribeCloudPhoneNodesRequest) Validate() error {
 }
 
 type DescribeCloudPhoneNodesRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// phone
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// 2025
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

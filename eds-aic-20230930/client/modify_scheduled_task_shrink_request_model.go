@@ -46,7 +46,7 @@ type ModifyScheduledTaskShrinkRequest struct {
 	//
 	// {"maxSteps":10,"timeoutSeconds":3600}
 	RunConfigShrink *string `json:"RunConfig,omitempty" xml:"RunConfig,omitempty"`
-	// The scheduled task ID.
+	// The ID of the scheduled task.
 	//
 	// This parameter is required.
 	//
@@ -54,17 +54,17 @@ type ModifyScheduledTaskShrinkRequest struct {
 	//
 	// sch-260705-agb*****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// Switches the status. Valid values: ACTIVE and DISABLED.
+	// The status toggle. Valid values: ACTIVE and DISABLED.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
-	// NewTaskName
+	// New task name
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The CAS version number.
 	//

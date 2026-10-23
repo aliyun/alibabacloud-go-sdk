@@ -20,8 +20,9 @@ type iUpdateInstanceImageRequest interface {
 }
 
 type UpdateInstanceImageRequest struct {
+	// Specifies whether to skip parameter validation. A value of true indicates that validation is skipped. A value of false or an empty value indicates that validation is performed.
 	IgnoreParamValidation *bool `json:"IgnoreParamValidation,omitempty" xml:"IgnoreParamValidation,omitempty"`
-	// The ID of the image. Call [](t2730769.xdita#)to query the list of images for cloud phones.
+	// The image ID. You can call the [DescribeImageList](https://help.aliyun.com/document_detail/2807324.html) operation to query the image list of cloud phones.
 	//
 	// example:
 	//
@@ -29,7 +30,7 @@ type UpdateInstanceImageRequest struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The list of instances.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	// Specifies whether to reset the instance. If you reset the instance, all user data on the instance is cleared.
+	// Specifies whether to reset the instance. A reset clears all user data on the instance.
 	//
 	// example:
 	//

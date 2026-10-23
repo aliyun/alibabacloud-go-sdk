@@ -52,13 +52,13 @@ type CreateScheduledTaskRequest struct {
 	//
 	// {"maxSteps":10,"timeoutSeconds":3600}
 	RunConfig *CreateScheduledTaskRequestRunConfig `json:"RunConfig,omitempty" xml:"RunConfig,omitempty" type:"Struct"`
-	// The task name.
+	// The name of the task.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Auto-reply to DingTalk messages
+	// Automatically reply to DingTalk messages
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The user prompt.
 	//
@@ -142,7 +142,7 @@ func (s *CreateScheduledTaskRequest) Validate() error {
 }
 
 type CreateScheduledTaskRequestRunConfig struct {
-	// The extended parameters as a JSON string.
+	// The JSON string of extended parameters.
 	//
 	// example:
 	//
@@ -154,13 +154,13 @@ type CreateScheduledTaskRequestRunConfig struct {
 	//
 	// 10
 	MaxSteps *int32 `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
-	// The list of skill IDs, up to 1. Written to aim_task_config.run_config when the scheduled task is created and read when the callback is delivered.
+	// The list of skill IDs. You can specify up to 1 skill ID. The value is written to aim_task_config.run_config when the scheduled task is created and read when the callback is delivered.
 	//
 	// example:
 	//
 	// ["sk-abc"]
 	Skills []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
-	// The timeout in seconds.
+	// The timeout period in seconds.
 	//
 	// example:
 	//

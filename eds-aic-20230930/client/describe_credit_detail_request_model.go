@@ -27,20 +27,22 @@ type iDescribeCreditDetailRequest interface {
 	GetPageSize() *string
 	SetStartTime(v int64) *DescribeCreditDetailRequest
 	GetStartTime() *int64
+	SetTaskIds(v []*string) *DescribeCreditDetailRequest
+	GetTaskIds() []*string
 }
 
 type DescribeCreditDetailRequest struct {
-	// The agent types. This parameter is used to filter credit change details by agent type.
+	// The list of agent types. This parameter is used to filter credit change details by agent type.
 	AgentTypes []*string `json:"AgentTypes,omitempty" xml:"AgentTypes,omitempty" type:"Repeated"`
-	// The end time. The value is a UNIX timestamp in milliseconds.
+	// The end time. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1782906240000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The instance IDs.
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The maximum number of entries to return for this query.
+	// The maximum number of entries to return for this request.
 	//
 	// example:
 	//
@@ -52,7 +54,7 @@ type DescribeCreditDetailRequest struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The package IDs.
+	// The list of package IDs.
 	PackageIds []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -66,12 +68,14 @@ type DescribeCreditDetailRequest struct {
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time. The value is a UNIX timestamp in milliseconds.
+	// The start time. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1782819840000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The list of task IDs. This parameter is used to filter credit details by task.
+	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCreditDetailRequest) String() string {
@@ -118,6 +122,10 @@ func (s *DescribeCreditDetailRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *DescribeCreditDetailRequest) GetTaskIds() []*string {
+	return s.TaskIds
+}
+
 func (s *DescribeCreditDetailRequest) SetAgentTypes(v []*string) *DescribeCreditDetailRequest {
 	s.AgentTypes = v
 	return s
@@ -160,6 +168,11 @@ func (s *DescribeCreditDetailRequest) SetPageSize(v string) *DescribeCreditDetai
 
 func (s *DescribeCreditDetailRequest) SetStartTime(v int64) *DescribeCreditDetailRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeCreditDetailRequest) SetTaskIds(v []*string) *DescribeCreditDetailRequest {
+	s.TaskIds = v
 	return s
 }
 

@@ -39,7 +39,12 @@ type ChangeCloudPhoneNodeRequest struct {
 	// example:
 	//
 	// false
-	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The display settings.
+	//
+	// example:
+	//
+	// {"dpi":320}
 	DisplayConfig *string `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty"`
 	// The downstream bandwidth throttling. Unit: Mbit/s.
 	//
@@ -53,33 +58,42 @@ type ChangeCloudPhoneNodeRequest struct {
 	//
 	// ac.max
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The cloud phone matrix ID.
+	// The ID of the cloud phone matrix.
 	//
 	// example:
 	//
 	// cpn-0ugbptfu473fy****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The number of cloud phone instances. You can call [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) to query the maximum and minimum instance count limits.
+	// The number of cloud phone instances. You can call the [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) operation to query the maximum and minimum limits on the number of instances.
 	//
 	// example:
 	//
 	// 20
 	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
-	// The device storage size. Valid range: 10 GiB to 4000 GiB. If this parameter is left empty, the original size is retained.
+	// The local storage size. Valid values: 10 to 4000. Unit: GiB. If this parameter is left empty, the original size is retained.
 	//
 	// example:
 	//
 	// 10
 	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
-	// The promotional activity ID.
+	// The ID of the promotion.
 	//
 	// example:
 	//
 	// 50003308011****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The shared storage size. Unit: GiB.
+	// The size of the shared storage. Unit: GiB.
+	//
+	// example:
+	//
+	// 100
 	ShareDataVolume *int32 `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
-	SwapSize        *int32 `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
+	// The size of the swap space.
+	//
+	// example:
+	//
+	// 0
+	SwapSize *int32 `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
 	// The upstream bandwidth throttling. Unit: Mbit/s.
 	//
 	// example:

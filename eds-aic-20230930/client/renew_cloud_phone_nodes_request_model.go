@@ -40,9 +40,13 @@ type RenewCloudPhoneNodesRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The list of cloud phone matrix IDs.
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-	// The redirect URL for the payment success page.
+	// The redirect URL after a successful payment.
+	//
+	// example:
+	//
+	// wya.wuying.aliyun.com/instanceGroup
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The subscription period. The unit is specified by PeriodUnit.
+	// The subscription period of the resource. The unit is specified by PeriodUnit.
 	//
 	// - If PeriodUnit is set to **year**, the only valid value is 1.
 	//
@@ -58,7 +62,11 @@ type RenewCloudPhoneNodesRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The ID of the promotion.
+	// The promotion ID.
+	//
+	// example:
+	//
+	// 50003308011****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 

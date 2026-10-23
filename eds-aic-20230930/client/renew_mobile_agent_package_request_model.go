@@ -32,12 +32,12 @@ type RenewMobileAgentPackageRequest struct {
 	//
 	// - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
 	//
-	// - **false*	- (default): Only an order is generated. No payment is made.
+	// - **false*	- (default): Only an order is generated and no payment is deducted.
 	//
 	//
 	//
 	//
-	// > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated, and you can log on to the Elastic Cloud Phone console to complete the payment.
+	// > If the balance of your payment method is insufficient, set this parameter to false to generate an unpaid order. You can log on to the Wuying Cloud Phone console to complete the payment.
 	//
 	// >
 	//
@@ -51,35 +51,37 @@ type RenewMobileAgentPackageRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The idempotence key.
+	// The idempotency key.
+	//
+	// example:
+	//
+	// 425F351C-3F8E-5218-A520-B6311D0D****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The list of resource plan IDs.
 	MobileAgentPackageIds []*string `json:"MobileAgentPackageIds,omitempty" xml:"MobileAgentPackageIds,omitempty" type:"Repeated"`
-	// The redirect URL after a successful payment.
+	// The redirect URL for the payment success page.
 	//
 	// example:
 	//
 	// https://aim.wuying.aliyun.com/nodes
 	PaidCallbackUrl *string `json:"PaidCallbackUrl,omitempty" xml:"PaidCallbackUrl,omitempty"`
-	// The duration for which you want to purchase the resource. The unit is specified by `PeriodUnit`.
+	// The subscription duration of the resource. The unit is specified by PeriodUnit.
 	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the duration for which you want to purchase the resource.
+	// The unit of the subscription duration of the resource. Valid values:
 	//
-	// Valid values:
+	// - **Month**: Month.
 	//
-	// - **Month**: month.
-	//
-	// - **Year**: year.
+	// - **Year**: Year.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The ID of the promotional campaign.
+	// The ID of the promotion.
 	//
 	// example:
 	//

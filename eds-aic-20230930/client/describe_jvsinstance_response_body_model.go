@@ -32,13 +32,18 @@ type DescribeJVSInstanceResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the starting position for the next query. An empty value indicates that the query starts from the beginning.
+	// The token that indicates the starting position of the current query. If this parameter is empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
-	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PendingUpgradeCount *int32  `json:"PendingUpgradeCount,omitempty" xml:"PendingUpgradeCount,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of pending upgrades.
+	//
+	// example:
+	//
+	// 0
+	PendingUpgradeCount *int32 `json:"PendingUpgradeCount,omitempty" xml:"PendingUpgradeCount,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -129,6 +134,7 @@ func (s *DescribeJVSInstanceResponseBody) Validate() error {
 }
 
 type DescribeJVSInstanceResponseBodyData struct {
+	// The AI Engine version and upgrade status.
 	AgentVersion *DescribeJVSInstanceResponseBodyDataAgentVersion `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty" type:"Struct"`
 	// The creation time. The time is in UTC and follows the ISO 8601 standard.
 	//
@@ -136,14 +142,15 @@ type DescribeJVSInstanceResponseBodyData struct {
 	//
 	// 2026-04-10T01:31:32Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The credit limit configuration. Subsequent quota configurations overwrite previous configurations.
+	// The credit limit configuration. If multiple configurations are delivered, the subsequent configurations overwrite the previous ones.
 	CreditConfig []*DescribeJVSInstanceResponseBodyDataCreditConfig `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty" type:"Repeated"`
 	// The expiration time. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2026-04-10T01:31:32Z
-	ExpireTime      *string                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The list of skills installed on the instance.
 	InstalledSkills []*DescribeJVSInstanceResponseBodyDataInstalledSkills `json:"InstalledSkills,omitempty" xml:"InstalledSkills,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -169,7 +176,7 @@ type DescribeJVSInstanceResponseBodyData struct {
 	//
 	// RUNNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The used credit.
+	// The used credits.
 	UsedCredit []*DescribeJVSInstanceResponseBodyDataUsedCredit `json:"UsedCredit,omitempty" xml:"UsedCredit,omitempty" type:"Repeated"`
 }
 
@@ -308,8 +315,14 @@ func (s *DescribeJVSInstanceResponseBodyData) Validate() error {
 }
 
 type DescribeJVSInstanceResponseBodyDataAgentVersion struct {
+	// The AI Engine version upgrade status.
 	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The AI Engine version number.
+	//
+	// example:
+	//
+	// 2607W1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeJVSInstanceResponseBodyDataAgentVersion) String() string {
@@ -343,7 +356,7 @@ func (s *DescribeJVSInstanceResponseBodyDataAgentVersion) Validate() error {
 }
 
 type DescribeJVSInstanceResponseBodyDataCreditConfig struct {
-	// The limit value.
+	// The credit limit.
 	//
 	// example:
 	//
@@ -388,12 +401,38 @@ func (s *DescribeJVSInstanceResponseBodyDataCreditConfig) Validate() error {
 }
 
 type DescribeJVSInstanceResponseBodyDataInstalledSkills struct {
+	// The skill description.
+	//
+	// example:
+	//
+	// Current weather and forecasts with wttr.in via curl for locations, rain, temperature, travel planning.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IconUrl     *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// The skill icon URL.
+	//
+	// example:
+	//
+	// https://www.example.com/icon.png
+	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// The skill installation time.
 	InstalledAt *string `json:"InstalledAt,omitempty" xml:"InstalledAt,omitempty"`
-	SkillId     *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	SkillName   *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
-	SkillType   *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+	// The skill ID.
+	//
+	// example:
+	//
+	// s-04zzrgosj6xd1****
+	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// The skill name.
+	//
+	// example:
+	//
+	// weather
+	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
+	// The skill type.
+	//
+	// example:
+	//
+	// System
+	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
 }
 
 func (s DescribeJVSInstanceResponseBodyDataInstalledSkills) String() string {

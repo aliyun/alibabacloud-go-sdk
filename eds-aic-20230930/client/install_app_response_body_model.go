@@ -18,7 +18,7 @@ type iInstallAppResponseBody interface {
 }
 
 type InstallAppResponseBody struct {
-	// The child task objects.
+	// The child task information.
 	ChildTaskInfo []*InstallAppResponseBodyChildTaskInfo `json:"ChildTaskInfo,omitempty" xml:"ChildTaskInfo,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -84,6 +84,10 @@ func (s *InstallAppResponseBody) Validate() error {
 
 type InstallAppResponseBodyChildTaskInfo struct {
 	// The application ID.
+	//
+	// example:
+	//
+	// 1234
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The child task ID.
 	//

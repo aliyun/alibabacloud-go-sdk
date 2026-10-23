@@ -15,6 +15,8 @@ type iCreateMobileAgentPackageRequest interface {
 	GetAutoPay() *bool
 	SetAutoRenew(v bool) *CreateMobileAgentPackageRequest
 	GetAutoRenew() *bool
+	SetBandwidthPackageId(v string) *CreateMobileAgentPackageRequest
+	GetBandwidthPackageId() *string
 	SetBizRegionId(v string) *CreateMobileAgentPackageRequest
 	GetBizRegionId() *string
 	SetChannelCookie(v string) *CreateMobileAgentPackageRequest
@@ -52,14 +54,14 @@ type CreateMobileAgentPackageRequest struct {
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
+	// - **true**: Automatic payment. You must ensure that your account balance is sufficient.
 	//
-	// - **false*	- (default): Only an order is generated and no payment is deducted.
-	//
-	//
+	// - **false*	- (default): Generates an order without deducting fees.
 	//
 	//
-	// > If the balance of your payment method is insufficient, you can set this parameter to false. In this case, an unpaid order is generated, and you can log on to the WUYING Cloud Phone console to complete the payment.
+	//
+	//
+	// > If your payment method has an insufficient balance, you can set this parameter to false. An unpaid order will be generated, and you can log on to the WUYING Cloud Phone console to pay the order.
 	//
 	// >
 	//
@@ -77,6 +79,12 @@ type CreateMobileAgentPackageRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The bandwidth package ID, which is used to associate an existing bandwidth package when creating an instance. The value must be prefixed with np- and followed by lowercase letters and digits. The bandwidth package must be an AI premium bandwidth package (CBWP_ECD) that belongs to the current account. If this parameter is left empty, the default bandwidth package allocation logic applies.
+	//
+	// example:
+	//
+	// np-791ncq8qcuoop9hta
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The region where the instance resides. Only cn-hangzhou is supported.
 	//
 	// example:
@@ -97,6 +105,10 @@ type CreateMobileAgentPackageRequest struct {
 	// 1
 	CreditConfig *string `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty"`
 	// The image ID.
+	//
+	// example:
+	//
+	// imgc-075cllfeuazh0****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The name of the node instance.
 	//
@@ -123,11 +135,11 @@ type CreateMobileAgentPackageRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration of the resource. Valid values:
+	// The unit of the subscription duration. Valid values:
 	//
-	// - **Month**: Month.
+	// - **Month**: Months.
 	//
-	// - **Year**: Year.
+	// - **Year**: Years.
 	//
 	// example:
 	//
@@ -161,6 +173,10 @@ func (s *CreateMobileAgentPackageRequest) GetAutoPay() *bool {
 
 func (s *CreateMobileAgentPackageRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
+}
+
+func (s *CreateMobileAgentPackageRequest) GetBandwidthPackageId() *string {
+	return s.BandwidthPackageId
 }
 
 func (s *CreateMobileAgentPackageRequest) GetBizRegionId() *string {
@@ -227,6 +243,11 @@ func (s *CreateMobileAgentPackageRequest) SetAutoPay(v bool) *CreateMobileAgentP
 
 func (s *CreateMobileAgentPackageRequest) SetAutoRenew(v bool) *CreateMobileAgentPackageRequest {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateMobileAgentPackageRequest) SetBandwidthPackageId(v string) *CreateMobileAgentPackageRequest {
+	s.BandwidthPackageId = &v
 	return s
 }
 

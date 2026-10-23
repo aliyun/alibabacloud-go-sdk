@@ -18,7 +18,7 @@ type iUpgradeAndroidInstanceGroupResponseBody interface {
 }
 
 type UpgradeAndroidInstanceGroupResponseBody struct {
-	// The instance IDs created by the scale-out.
+	// The instance IDs created during the scale-out.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iExpandPhoneDataVolumeRequest interface {
 }
 
 type ExpandPhoneDataVolumeRequest struct {
-  // Whether to enable automatic payment. The default value is false.
+  // Specifies whether to enable automatic payment. Default value: false.
   // 
   // example:
   // 
@@ -36,10 +36,15 @@ type ExpandPhoneDataVolumeRequest struct {
   // 
   // cn-hangzhou
   BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-  // A list of cloud phone matrix instance IDs. You can specify 1 to 100 IDs.
+  // The IDs of the cloud phone matrix instances. You can specify 1 to 100 instance IDs.
   InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+  // The redirect URL to the payment success page.
+  // 
+  // example:
+  // 
+  // wya.wuying.aliyun.com/instanceGroup
   PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-  // The target size of the phone storage, in GiB.	Notice: The new value must be greater than the current size of the phone storage.
+  // The expected size of the independent device storage after the expansion. Unit: GiB.	Notice: The new value must be greater than the original independent device storage size of the instance.
   // 
   // example:
   // 

@@ -20,7 +20,7 @@ type iListPolicyGroupsResponseBody interface {
 }
 
 type ListPolicyGroupsResponseBody struct {
-	// The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
+	// The token that indicates the read position returned by the current call. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
@@ -100,6 +100,7 @@ func (s *ListPolicyGroupsResponseBody) Validate() error {
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
+	// The list of access policy rules.
 	AccessPolicies []*ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies `json:"AccessPolicies,omitempty" xml:"AccessPolicies,omitempty" type:"Repeated"`
 	// Indicates whether local camera redirection is enabled.
 	//
@@ -107,7 +108,7 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	//
 	// on
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
-	// The clipboard permission.
+	// The clipboard permissions.
 	//
 	// example:
 	//
@@ -119,13 +120,13 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	//
 	// 2024-06-04 10:28:54
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The file transfer policy for the HTML5 client.
+	// The HTML5 client file transfer policy.
 	//
 	// example:
 	//
 	// download
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// The local disk mapping permission.
+	// The local disk mapping permissions.
 	//
 	// example:
 	//
@@ -137,7 +138,7 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	//
 	// off
 	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
-	// The network redirection settings.
+	// The network redirection.
 	NetRedirectPolicy *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
 	// The policy ID.
 	//
@@ -149,23 +150,23 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	//
 	// example:
 	//
-	// Default policy.
+	// Default policy
 	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
 	// The resources associated with the policy.
 	PolicyRelatedResources *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources `json:"PolicyRelatedResources,omitempty" xml:"PolicyRelatedResources,omitempty" type:"Struct"`
-	// The height of the resolution.
+	// The resolution height.
 	//
 	// example:
 	//
 	// 1080
 	SessionResolutionHeight *int32 `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
-	// The width of the resolution.
+	// The resolution width.
 	//
 	// example:
 	//
 	// 1920
 	SessionResolutionWidth *int32 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
-	// The screen watermark settings.
+	// The screen watermark.
 	Watermark *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
 }
 
@@ -332,11 +333,36 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) Validate() error {
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies struct {
-	AccessPolicyRuleId *int64  `json:"AccessPolicyRuleId,omitempty" xml:"AccessPolicyRuleId,omitempty"`
-	CidrIp             *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Policy             *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	Priority           *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The access policy rule ID.
+	//
+	// example:
+	//
+	// 7
+	AccessPolicyRuleId *int64 `json:"AccessPolicyRuleId,omitempty" xml:"AccessPolicyRuleId,omitempty"`
+	// The CIDR IP address block to which the rule applies.
+	//
+	// example:
+	//
+	// 10.0.0.0/8
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	// The description of the access policy rule.
+	//
+	// example:
+	//
+	// desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The access policy action. ALLOW indicates that access is allowed, and DENY indicates that access is denied.
+	//
+	// example:
+	//
+	// ALLOW
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The priority of the access policy rule.
+	//
+	// example:
+	//
+	// 5
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) String() string {
@@ -403,25 +429,25 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
 	//
 	// off
 	CustomProxy *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
-	// The proxy IP address of the transparent proxy. The value must be in IPv4 format.
+	// The transparent proxy IP address. The format is an IPv4 address.
 	//
 	// example:
 	//
 	// 47.100.XX.XX
 	HostAddr *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
-	// Indicates whether network redirection is enabled. After this feature is enabled, traffic is redirected to the client-side network by default.
+	// Indicates whether network redirection is enabled. If enabled, traffic is redirected to the client-side network by default.
 	//
 	// example:
 	//
 	// off
 	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	// The port of the transparent proxy. Valid values: 1 to 65535.
+	// The transparent proxy port. Valid values: 1 to 65535.
 	//
 	// example:
 	//
 	// 1145
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The proxy password. The value must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
+	// The proxy password. The length ranges from 1 to 256 characters. Chinese characters and whitespace characters are not allowed.
 	//
 	// example:
 	//
@@ -433,13 +459,13 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
 	//
 	// socks5
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	// The proxy username. The value must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
+	// The proxy username. The length ranges from 1 to 256 characters. Chinese characters and whitespace characters are not allowed.
 	//
 	// example:
 	//
 	// username
 	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
-	// The list of proxy rules.
+	// The proxy rule list.
 	Rules []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -625,7 +651,7 @@ type ListPolicyGroupsResponseBodyPolicyGroupModelWatermark struct {
 	//
 	// 0
 	WatermarkColor *int32 `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
-	// The custom watermark content. The value can be up to 10 characters in length and does not support emoji characters.
+	// The custom watermark content. The length cannot exceed 10 characters, and emoji characters are not supported.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type DescribeMobileAgentPackageResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned by the API operation.
+	// The returned message.
 	//
 	// example:
 	//
@@ -123,9 +123,9 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	//
 	// 2026-10-30 00:00:00
 	ExpiredAt *string `json:"ExpiredAt,omitempty" xml:"ExpiredAt,omitempty"`
-	// The list of node instance IDs.
+	// The node instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The credit quota of the package.
+	// The package credit quota.
 	//
 	// example:
 	//
@@ -137,24 +137,27 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	//
 	// cmag-bp19i1yxu60r7twy****
 	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	// The package specifications.
+	// The package specification.
 	//
 	// example:
 	//
 	// advanced
-	PackageSpec     *string `json:"PackageSpec,omitempty" xml:"PackageSpec,omitempty"`
+	PackageSpec *string `json:"PackageSpec,omitempty" xml:"PackageSpec,omitempty"`
+	// The name of the package specification.
 	PackageSpecName *string `json:"PackageSpecName,omitempty" xml:"PackageSpecName,omitempty"`
 	// The package status.
 	//
 	// example:
 	//
 	// ACTIVE
-	PackageStatus   *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
-	PeriodEndTime   *string `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
+	PackageStatus *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
+	// The end time of the package period.
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
+	// The start time of the package period.
 	PeriodStartTime *string `json:"PeriodStartTime,omitempty" xml:"PeriodStartTime,omitempty"`
 	// The tags.
 	Tags []*DescribeMobileAgentPackageResponseBodyPackageListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The number of used credits.
+	// The number of credits used.
 	//
 	// example:
 	//

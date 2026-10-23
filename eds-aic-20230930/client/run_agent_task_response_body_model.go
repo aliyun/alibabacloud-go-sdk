@@ -22,11 +22,11 @@ type iRunAgentTaskResponseBody interface {
 }
 
 type RunAgentTaskResponseBody struct {
-	// The status code of the API operation.
+	// The status code.
 	//
 	// example:
 	//
-	// "200" indicates success
+	// For example, "200" indicates success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The number of tasks.
 	//
@@ -129,7 +129,7 @@ type RunAgentTaskResponseBodyTasks struct {
 	//
 	// - TIMEOUT: The task execution timed out.
 	//
-	// - CALL_FOR_USER: The task is waiting for user operations.
+	// - CALL_FOR_USER: The task is waiting for user action.
 	//
 	// - PAUSING: The task is being paused.
 	//
@@ -147,13 +147,13 @@ type RunAgentTaskResponseBodyTasks struct {
 	//
 	// COMPLETED
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
-	// The ID of the Mobile node.
+	// The Mobile node ID.
 	//
 	// example:
 	//
 	// acp-ek65k51zoxia3x8xz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the task was created. The time is in the ISO 8601 format.
+	// The time when the task was created, in ISO 8601 format.
 	//
 	// example:
 	//
@@ -165,13 +165,13 @@ type RunAgentTaskResponseBodyTasks struct {
 	//
 	// ses-260702-21bh****。
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The globally unique ID of the task.
+	// The globally unique task ID.
 	//
 	// example:
 	//
 	// t-imr0fufqd7cle****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The user prompt in natural language. The agent performs operations based on this prompt.
+	// The user prompt in natural language based on which the agent performs operations.
 	//
 	// example:
 	//

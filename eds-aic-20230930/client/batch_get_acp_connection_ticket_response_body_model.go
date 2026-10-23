@@ -16,9 +16,9 @@ type iBatchGetAcpConnectionTicketResponseBody interface {
 }
 
 type BatchGetAcpConnectionTicketResponseBody struct {
-	// The results of the instance connection tasks.
+	// The instance connection task results.
 	InstanceConnectionModels []*BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels `json:"InstanceConnectionModels,omitempty" xml:"InstanceConnectionModels,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,49 +66,55 @@ func (s *BatchGetAcpConnectionTicketResponseBody) Validate() error {
 }
 
 type BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels struct {
-	// The ID of the delivery group.
+	// The delivery group ID.
 	//
 	// example:
 	//
 	// aig-1uzb6heg797z3****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The physical instance ID.
+	//
 	// example:
 	//
 	// ai-0caoetkqi8kj****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The error cause.
+	//
 	// example:
 	//
 	// InvalidResourceId.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the cloud phone instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// acp-ajxvwo1u0hqvd****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The persistent session ID.
+	//
 	// example:
 	//
 	// p-abdywvcksdb****
 	PersistentAppInstanceId *string `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
-	// The port used for establishing a connection.
+	// The connection port.
 	//
 	// example:
 	//
 	// 10000
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// cn-hangzhou@c9f5c2e8-f5c4-4b01-8602-000cae94****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The state of the task. If FINISHED is returned, it indicates that a value can be retrieved from the Ticket field. If the returned value is not FINISHED, you still need to use this operation to query the Ticket generation result by using TaskId.
+	// The task status. A value of FINISHED indicates that you can obtain the ticket from the Ticket field. Otherwise, you must use the TaskId to call this operation and query the ticket generation result.
 	//
 	// example:
 	//
 	// FINISHED
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The ticket used to connect to the cloud phone instance.
+	// The ticket used to connect to the user instance.
 	//
 	// example:
 	//
