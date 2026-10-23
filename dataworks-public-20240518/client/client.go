@@ -12642,7 +12642,7 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a later edition to use this operation.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - GetColumnRequest
 //
@@ -12686,7 +12686,7 @@ func (client *Client) GetColumnWithOptions(request *GetColumnRequest, runtime *d
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a later edition to use this operation.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - GetColumnRequest
 //
@@ -18646,7 +18646,7 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or later to use this API.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - ListColumnsRequest
 //
@@ -18690,7 +18690,7 @@ func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtim
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or later to use this API.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - ListColumnsRequest
 //
@@ -22562,7 +22562,7 @@ func (client *Client) ListLineageRelationships(request *ListLineageRelationships
 
 // Summary:
 //
-// Queries the upstream and downstream lineage entities of a given entity in DataWorks Data Map. You can specify whether to include detailed lineage relationship information.
+// Queries the upstream and downstream lineage entities for a specified entity in Data Map, with an option to include detailed lineage relationship information.
 //
 // Description:
 //
@@ -22608,7 +22608,7 @@ func (client *Client) ListLineagesWithOptions(request *ListLineagesRequest, runt
 
 // Summary:
 //
-// Queries the upstream and downstream lineage entities of a given entity in DataWorks Data Map. You can specify whether to include detailed lineage relationship information.
+// Queries the upstream and downstream lineage entities for a specified entity in Data Map, with an option to include detailed lineage relationship information.
 //
 // Description:
 //

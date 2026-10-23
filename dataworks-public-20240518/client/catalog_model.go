@@ -30,47 +30,67 @@ type Catalog struct {
 	//
 	// example:
 	//
-	// this is a comment
+	// Default catalog
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The creation time.
+	// The creation time. The value is a millisecond-level timestamp.
 	//
 	// example:
 	//
-	// 1722073854000
+	// 1725330777000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// ID
+	// The ID of the data catalog entity. Currently, the DLF and StarRocks types are supported. For more information, see [Concepts of metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
+	// - For the DLF type, the format is `dlf-catalog::catalog_id`.
+	//
+	// - For the StarRocks type, the format is `starrocks-catalog:(instance_id|encoded_jdbc_url):catalog_name`.
+	//
+	// > Where:
+	//
+	// `catalog_id`: The DLF catalog ID.
+	//
+	// `instance_id`: The instance ID, which is required when the data source is registered in instance mode.
+	//
+	// `encoded_jdbc_url`: the URL-encoded JDBC connection string, which is required when the data source is registered by using a connection string.
+	//
+	// `catalog_name`: the name of the StarRocks catalog.
 	//
 	// example:
 	//
-	// dlf-catalog:123456XXX:test_catalog
-	//
-	// starrocks-catalog:c-abc123xxx:default_catalog
+	// dlf-catalog::catalog1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The modification time.
+	// The modification time. The value is a millisecond-level timestamp.
 	//
 	// example:
 	//
-	// 1722073854000
+	// 1725330777000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The name.
 	//
 	// example:
 	//
-	// default_catalog
+	// catalog1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the parent entity.
+	//
+	// - For the DLF type, the format of `ParentMetaEntityId` is `dlf`.
+	//
+	// - For the StarRocks type, the format of `ParentMetaEntityId` is `starrocks:(instance_id|encoded_jdbc_url)`.
+	//
+	// > Where:
+	//
+	// `instance_id`: The instance ID, which is required when the data source is registered in instance mode.
+	//
+	// `encoded_jdbc_url`: the URL-encoded JDBC connection string, which is required when the data source is registered by using a connection string.
 	//
 	// example:
 	//
 	// dlf
-	//
-	// starrocks:c-abc123xxx
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
-	// The type.
+	// The catalog type. The valid values depend on the metadata collector type.
 	//
 	// example:
 	//
-	// Internal
+	// HIVE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

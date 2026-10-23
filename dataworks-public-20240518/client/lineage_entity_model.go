@@ -28,7 +28,7 @@ type LineageEntity struct {
 	//
 	// example:
 	//
-	// maxcompute-table:123456::test_project::test_tbl
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name.
 	//

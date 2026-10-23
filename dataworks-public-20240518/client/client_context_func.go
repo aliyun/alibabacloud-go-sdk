@@ -8944,7 +8944,7 @@ func (client *Client) GetCertificateWithContext(ctx context.Context, request *Ge
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a later edition to use this operation.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - GetColumnRequest
 //
@@ -12993,7 +12993,7 @@ func (client *Client) ListCertificatesWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or later to use this API.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - ListColumnsRequest
 //
@@ -15821,7 +15821,7 @@ func (client *Client) ListLineageRelationshipsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the upstream and downstream lineage entities of a given entity in DataWorks Data Map. You can specify whether to include detailed lineage relationship information.
+// Queries the upstream and downstream lineage entities for a specified entity in Data Map, with an option to include detailed lineage relationship information.
 //
 // Description:
 //
