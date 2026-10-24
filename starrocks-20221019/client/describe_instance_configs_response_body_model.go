@@ -220,7 +220,7 @@ type DescribeInstanceConfigsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Whether to enable UDF.
+	// 是否开启 UDF。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The English description of the configuration item.
 	//

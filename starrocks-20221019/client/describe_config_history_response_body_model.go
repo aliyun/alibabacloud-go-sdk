@@ -28,7 +28,7 @@ type iDescribeConfigHistoryResponseBody interface {
 }
 
 type DescribeConfigHistoryResponseBody struct {
-	// The access denied details.
+	// The details of the permission check failure.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeConfigHistoryResponseBody struct {
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ func (s *DescribeConfigHistoryResponseBody) Validate() error {
 }
 
 type DescribeConfigHistoryResponseBodyData struct {
-	// Details about the effect of the configuration change.
+	// The details of the configuration history.
 	ConfigHistoryEffectDetails []*DescribeConfigHistoryResponseBodyDataConfigHistoryEffectDetails `json:"ConfigHistoryEffectDetails,omitempty" xml:"ConfigHistoryEffectDetails,omitempty" type:"Repeated"`
 	// The configuration history ID.
 	//
@@ -176,7 +176,7 @@ type DescribeConfigHistoryResponseBodyData struct {
 	//
 	// 6838
 	ConfigHistoryId *string `json:"ConfigHistoryId,omitempty" xml:"ConfigHistoryId,omitempty"`
-	// A list of configuration mementos.
+	// The records of configuration values before and after the modification.
 	ConfigMementos []*DescribeConfigHistoryResponseBodyDataConfigMementos `json:"ConfigMementos,omitempty" xml:"ConfigMementos,omitempty" type:"Repeated"`
 	// The effective status.
 	//
@@ -190,7 +190,7 @@ type DescribeConfigHistoryResponseBodyData struct {
 	//
 	// true
 	Effected *bool `json:"Effected,omitempty" xml:"Effected,omitempty"`
-	// The modification time.
+	// The time when the configuration was modified.
 	//
 	// example:
 	//
@@ -202,13 +202,13 @@ type DescribeConfigHistoryResponseBodyData struct {
 	//
 	// 149920818483****
 	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// The reason for the configuration modification.
+	// The reason for modifying the configuration.
 	//
 	// example:
 	//
 	// Test.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// Indicates whether the change was a rollback.
+	// Indicates whether the operation is a configuration rollback.
 	//
 	// example:
 	//
@@ -328,7 +328,7 @@ func (s *DescribeConfigHistoryResponseBodyData) Validate() error {
 }
 
 type DescribeConfigHistoryResponseBodyDataConfigHistoryEffectDetails struct {
-	// The effective status on the node.
+	// The effective status.
 	//
 	// example:
 	//
@@ -388,25 +388,25 @@ func (s *DescribeConfigHistoryResponseBodyDataConfigHistoryEffectDetails) Valida
 }
 
 type DescribeConfigHistoryResponseBodyDataConfigMementos struct {
-	// The action performed. Valid values:
+	// The modification type. Valid values:
 	//
-	// - `MODIFY`
+	// - MODIFY
 	//
-	// - `ADD`
+	// - ADD
 	//
-	// - `DELETE`
+	// - DELETE
 	//
 	// example:
 	//
 	// MODIFY
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The new value.
+	// The value after the modification.
 	//
 	// example:
 	//
 	// 4
 	After *string `json:"After,omitempty" xml:"After,omitempty"`
-	// The previous value.
+	// The value before the modification.
 	//
 	// example:
 	//
@@ -420,23 +420,23 @@ type DescribeConfigHistoryResponseBodyDataConfigMementos struct {
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
 	// The configuration type. Valid values:
 	//
-	// - `FE`
+	// - FE
 	//
-	// - `BE`
+	// - BE
 	//
-	// - `core-site.xml`
+	// - core-site.xml
 	//
-	// - `hdfs-site.xml`
+	// - hdfs-site.xml
 	//
-	// - `kerberos.keytab`
+	// - kerberos.keytab
 	//
-	// - `krb5.conf`
+	// - krb5.conf
 	//
-	// - `jindosdk.cfg`
+	// - jindosdk.cfg
 	//
-	// - `hadoop-env.sh`
+	// - hadoop-env.sh
 	//
-	// - `hive-site.xml`
+	// - hive-site.xml
 	//
 	// example:
 	//

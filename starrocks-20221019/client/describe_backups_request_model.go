@@ -40,13 +40,13 @@ type DescribeBackupsRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The query page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paged query.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type DescribeBackupsRequest struct {
 	//
 	// COMPLETED
 	Statuses *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
-	// The end time for querying backup jobs.
+	// The end time of the backup task query. The time is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1747728000
 	TimePeriodEndTime *int64 `json:"TimePeriodEndTime,omitempty" xml:"TimePeriodEndTime,omitempty"`
-	// The start time for querying backup jobs.
+	// The start time of the backup task query. The time is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

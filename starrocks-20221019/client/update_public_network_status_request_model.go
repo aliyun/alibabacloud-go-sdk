@@ -20,13 +20,13 @@ type iUpdatePublicNetworkStatusRequest interface {
 }
 
 type UpdatePublicNetworkStatusRequest struct {
-	// Data returned by the operation.
+	// The returned data.
 	//
 	// example:
 	//
 	// BE
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// Data returned by the operation.
+	// The returned data.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type UpdatePublicNetworkStatusRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The compute group ID.
+	// The ID of the compute group.
 	//
 	// example:
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// Enable or disable the public network.
+	// Specifies whether to enable or disable Internet access.
 	//
 	// example:
 	//

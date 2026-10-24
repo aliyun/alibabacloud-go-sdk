@@ -34,7 +34,7 @@ type UpdateNodeGroupDescriptionRequest struct {
 	//
 	// example:
 	//
-	// Optional
+	// 可以不填
 	XAcsRamAuthContext *string `json:"X-Acs-Ram-Auth-Context,omitempty" xml:"X-Acs-Ram-Auth-Context,omitempty"`
 }
 

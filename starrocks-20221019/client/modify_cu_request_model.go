@@ -24,11 +24,11 @@ type iModifyCuRequest interface {
 }
 
 type ModifyCuRequest struct {
-	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter.
+	// Specifies whether to automatically pay for all products specified in the Products parameter. Valid values:
 	//
-	// - true: Automatic payment.
+	// - true: Enables automatic payment.
 	//
-	// - false: No automatic payment.
+	// - false: Disables automatic payment.
 	//
 	// if can be null:
 	// true
@@ -37,11 +37,13 @@ type ModifyCuRequest struct {
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to use the fast restart mode. Default value: false.
+	// Specifies whether to restart in fast restart mode. Default value: false.
 	//
-	// - true: Restarts compute nodes in the fast restart mode. Compute nodes are restarted in multiple batches. Nodes within a batch are restarted in parallel, and batches execute sequentially.
+	// Valid values:
 	//
-	// - false: Restarts compute nodes in the rolling restart mode.
+	// - true: Restarts the compute nodes in fast restart mode. The compute nodes are restarted in multiple batches. Nodes within the same batch are restarted in parallel, and batches execute sequentially.
+	//
+	// - false: Restarts the compute nodes in rolling restart mode.
 	//
 	// example:
 	//

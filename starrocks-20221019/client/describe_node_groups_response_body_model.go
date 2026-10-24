@@ -28,7 +28,7 @@ type iDescribeNodeGroupsResponseBody interface {
 }
 
 type DescribeNodeGroupsResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the permission check failure.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type DescribeNodeGroupsResponseBody struct {
 	//
 	// F285E0EC-E928-5E0B-B2C3-7F3FE42F2BE5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of query results.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// onEci
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The creation time of the compute group.
+	// The creation time of the compute group. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1742179008000
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The instance ID associated with the bill. For default compute groups (FE compute group and the default BE compute group), this value is the instance ID. Otherwise, it is the compute group ID.
+	// The instance ID corresponding to the bill. For the default compute groups (the FE compute group and the default BE compute group), the value of this field is the instance ID. Otherwise, the value is the compute group ID.
 	//
 	// example:
 	//
@@ -224,13 +224,13 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// FE
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory. When SpecType is memory-enhanced instance family, 1 CU = 1 CPU core + 8 GiB memory.
+	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU equals 1 vCPU and 4 GiB of memory. If SpecType is set to the memory-enhanced instance family, 1 CU equals 1 vCPU and 8 GiB of memory.
 	//
 	// example:
 	//
 	// 1
 	Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// Indicates whether this is the default compute group.
+	// Indicates whether the compute group is the default compute group.
 	//
 	// example:
 	//
@@ -266,7 +266,7 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// be-c-79b0bb9f58ef****-internal.starrocks.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The expiration time of the compute group.
+	// The expiration time of the compute group. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -284,13 +284,13 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// c-96f3bc7f04b2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The local SSD instance type of the node group. This value is meaningful only when the deployment is based on ECS instances and SpecType is local SSD or large-scale storage.
+	// The local SSD instance specification of the node group. This value is valid only when the instance is based on ECS and SpecType is localSSD or bigData.
 	//
 	// example:
 	//
 	// local_ssd_4_4xlarge
 	LocalStorageInstanceType *string `json:"LocalStorageInstanceType,omitempty" xml:"LocalStorageInstanceType,omitempty"`
-	// The ratio of memory size to the number of CUs. The value is 8 when SpecType is memory-enhanced instance family, and 4 for other specification types.
+	// The ratio of memory size to the number of CUs. The value is 8 when SpecType is the memory-enhanced instance family, and 4 for other specification types.
 	//
 	// example:
 	//
@@ -308,9 +308,9 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// ng_1
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// The information about nodes in the compute group.
+	// The information about the nodes contained in the compute group.
 	NodeInfo []*DescribeNodeGroupsResponseBodyDataNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Repeated"`
-	// The billing type:
+	// The billing method. Valid values:
 	//
 	// <ol>
 	//
@@ -324,7 +324,7 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// prePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The public network address. This field has a value only when EnablePublicNetwork is set to true.
+	// The public IP address. This parameter has a value only when EnablePublicNetwork is set to true.
 	//
 	// example:
 	//
@@ -350,11 +350,11 @@ type DescribeNodeGroupsResponseBodyData struct {
 	RunningTime *int64 `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
 	// The compute group specification type. Valid values:
 	//
-	// - standard: Standard.
+	// - standard: Standard Edition.
 	//
 	// - localSSD: Local SSD.
 	//
-	// - bigData: Large-scale storage.
+	// - bigData: Large-capacity storage.
 	//
 	// - ramEnhanced: Memory-enhanced instance family.
 	//
@@ -372,23 +372,23 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// - CREATING_FAILED: Creation failed.
 	//
-	// - CREATING: Being created.
+	// - CREATING: Creating.
 	//
 	// - RUNNING: Running.
 	//
-	// - MODIFYING_CONFIG: Configuration being modified.
+	// - MODIFYING_CONFIG: Modifying configurations.
 	//
-	// - MODIFYING_TIMEZONE: Time zone being modified.
+	// - MODIFYING_TIMEZONE: Modifying the time zone.
 	//
-	// - ELASTIC_SCALING_OUT: Elastic scale-out in progress.
+	// - ELASTIC_SCALING_OUT: Elastically scaling out.
 	//
-	// - ELASTIC_SCALING_IN: Elastic scale-in in progress.
+	// - ELASTIC_SCALING_IN: Elastically scaling in.
 	//
-	// - SCALING_OUT: Scale-out in progress.
+	// - SCALING_OUT: Scaling out.
 	//
 	// - RESTARTING: Restarting.
 	//
-	// - SCALING_IN: Scale-in in progress.
+	// - SCALING_IN: Scaling in.
 	//
 	// - SCALING_UP: Scaling up.
 	//
@@ -400,11 +400,11 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// - DISABLE_PUBLIC_NETWORK: Disabling public network access.
 	//
-	// - SWITCH_AZ: Switching zone.
+	// - SWITCH_AZ: Switching the zone.
 	//
 	// - DISABLE: Disabled.
 	//
-	// - DELETING: Being deleted.
+	// - DELETING: Deleting.
 	//
 	// - DELETED: Deleted.
 	//
@@ -414,13 +414,13 @@ type DescribeNodeGroupsResponseBodyData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The performance level (PL) of the cloud disk. Valid values:
 	//
-	// - pl0: Maximum random read/write IOPS of 10,000 per disk.
+	// - pl0: Up to 10,000 random read/write IOPS per disk.
 	//
-	// - pl1: Maximum random read/write IOPS of 50,000 per disk.
+	// - pl1: Up to 50,000 random read/write IOPS per disk.
 	//
-	// - pl2: Maximum random read/write IOPS of 100,000 per disk.
+	// - pl2: Up to 100,000 random read/write IOPS per disk.
 	//
-	// - pl3: Maximum random read/write IOPS of 1,000,000 per disk.
+	// - pl3: Up to 1,000,000 random read/write IOPS per disk.
 	//
 	// example:
 	//

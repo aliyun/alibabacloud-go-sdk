@@ -14,7 +14,7 @@ type iGetInstanceFeatureGateRequest interface {
 }
 
 type GetInstanceFeatureGateRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

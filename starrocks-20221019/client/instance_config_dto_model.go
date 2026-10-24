@@ -20,18 +20,26 @@ type iInstanceConfigDto interface {
 }
 
 type InstanceConfigDto struct {
+	// The configuration item name.
+	//
 	// example:
 	//
 	// storage_root_path
 	ConfigKey *string `json:"configKey,omitempty" xml:"configKey,omitempty"`
+	// The configuration type.
+	//
 	// example:
 	//
 	// BE
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// The configuration item value.
+	//
 	// example:
 	//
 	// value1
 	ConfigValue *string `json:"configValue,omitempty" xml:"configValue,omitempty"`
+	// The compute group ID, which is required only when the parameter is exclusive to the compute group. In other scenarios, leave it empty or set it to the cluster ID.
+	//
 	// example:
 	//
 	// ng-e24924dxxxxx

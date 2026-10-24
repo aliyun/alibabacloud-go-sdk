@@ -52,7 +52,7 @@ type DescribeInstancesResponseBody struct {
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE74XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -157,27 +157,31 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// acl-bp1xc6b9vs013jjtp****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The AI dedicated cluster ID, prefixed with af-. This value is returned if an unreleased dedicated cluster exists (including clusters being created). This value is empty if no dedicated cluster has been created.
+	// The AI dedicated cluster ID. The ID is prefixed with af-. This parameter is returned if an unreleased dedicated cluster exists, including those being created. If no dedicated cluster is created, this parameter is empty.
 	//
 	// example:
 	//
 	// af-498ae4af
 	AiFunctionClusterId *string `json:"AiFunctionClusterId,omitempty" xml:"AiFunctionClusterId,omitempty"`
-	// The internal network connection endpoint of the AI dedicated cluster, in the format fe-{AiFunctionClusterId}-internal.starrocks.aliyuncs.com. This value is returned only after the dedicated cluster is created. This value is empty if no dedicated cluster has been created.
+	// The internal network connection endpoint of the AI dedicated cluster. The format is fe-{AiFunctionClusterId}-internal.starrocks.aliyuncs.com. This parameter is returned only after the dedicated cluster is created. If no dedicated cluster is created, this parameter is empty.
 	//
 	// example:
 	//
 	// fe-af-498ae4af-internal.starrocks.aliyuncs.com
 	AiFunctionEndpoint *string `json:"AiFunctionEndpoint,omitempty" xml:"AiFunctionEndpoint,omitempty"`
-	// The billing instance ID for the AI function.
+	// The AI function billing instance ID.
+	//
+	// example:
+	//
+	// aif-xxxxxxxx
 	AiFunctionInstanceId *string `json:"AiFunctionInstanceId,omitempty" xml:"AiFunctionInstanceId,omitempty"`
 	// The instance architecture. Valid values:
 	//
-	// - onEci: deployed on Elastic Container Instance (ECI).
+	// - onEci: Deployed based on Elastic Container Instance (ECI).
 	//
-	// - onECS: deployed on Elastic Compute Service (ECS).
+	// - onECS: Deployed based on Elastic Compute Service (ECS).
 	//
-	// - onBareMetal: deployed on a bare metal resource pool.
+	// - onBareMetal: Deployed based on bare metal resource pools.
 	//
 	// example:
 	//
@@ -189,34 +193,35 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// 1733292921000
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// Indicates whether the AI center is enabled. Default value: false.
+	// Specifies whether the AI center is enabled. Default value: false.
 	EnableAiFunction *bool `json:"EnableAiFunction,omitempty" xml:"EnableAiFunction,omitempty"`
-	// Indicates whether automatic minor version upgrades are enabled.
+	// Specifies whether automatic minor version upgrades are allowed.
 	//
 	// example:
 	//
 	// true
 	EnableAutoMinorVersionUpgrade *bool `json:"EnableAutoMinorVersionUpgrade,omitempty" xml:"EnableAutoMinorVersionUpgrade,omitempty"`
-	EnableMultiAz                 *bool `json:"EnableMultiAz,omitempty" xml:"EnableMultiAz,omitempty"`
-	// Indicates whether SSL is enabled.
+	// Specifies whether disaster recovery is enabled.
+	EnableMultiAz *bool `json:"EnableMultiAz,omitempty" xml:"EnableMultiAz,omitempty"`
+	// Specifies whether SSL is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
-	// Indicates whether the audit plug-in is enabled.
+	// Specifies whether the audit plug-in is enabled.
 	//
 	// example:
 	//
 	// true
 	EnabledAuditLoader *bool `json:"EnabledAuditLoader,omitempty" xml:"EnabledAuditLoader,omitempty"`
-	// Indicates whether encryption is enabled.
+	// Specifies whether encryption is enabled.
 	//
 	// example:
 	//
 	// true
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The time when the cluster expires.
+	// The expiration time of the cluster.
 	//
 	// example:
 	//
@@ -242,7 +247,7 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// - paid: Paid.
 	//
-	// - creating: Being created.
+	// - creating: Creating.
 	//
 	// - creating_failed: Creation failed.
 	//
@@ -250,13 +255,13 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// - running: Running.
 	//
-	// - updating: Being upgraded.
+	// - updating: Updating.
 	//
-	// - agent_creating: Agent is being created.
+	// - agent_creating: Creating the agent.
 	//
-	// - agent_scaling_up: Agent specifications are being upgraded.
+	// - agent_scaling_up: Scaling up the agent.
 	//
-	// - modifying_config: Configuration is being updated.
+	// - modifying_config: Updating configurations.
 	//
 	// - scaling_out: Scaling out.
 	//
@@ -264,35 +269,35 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// - scaling_in: Scaling in.
 	//
-	// - scaling_up: Specifications are being upgraded.
+	// - scaling_up: Scaling up.
 	//
-	// - scaling_down: Specifications are being downgraded.
+	// - scaling_down: Scaling down.
 	//
-	// - upgrading: Version is being upgraded.
+	// - upgrading: Upgrading.
 	//
-	// - enable_public_network: Public network access is being enabled.
+	// - enable_public_network: Enabling public network access.
 	//
-	// - disable_public_network: Public network access is being disabled.
+	// - disable_public_network: Disabling public network access.
 	//
-	// - convert_from_trial_to_official: Edition is being converted.
+	// - convert_from_trial_to_official: Converting the edition.
 	//
-	// - migration_cluster_to_serverless: Cluster is being migrated.
+	// - migration_cluster_to_serverless: Migrating the cluster.
 	//
-	// - modifying_timezone: Time zone is being modified.
+	// - modifying_timezone: Modifying the time zone.
 	//
-	// - switch_az: Primary/secondary zone switchover is in progress.
+	// - switch_az: Switching the primary and secondary zones.
 	//
-	// - enabling: Being resumed.
+	// - enabling: Resuming.
 	//
 	// - disable: Unavailable.
 	//
 	// - actively_disabled: Unavailable.
 	//
-	// - deleting: Being deleted.
+	// - deleting: Deleting.
 	//
 	// - deleting_failed: Deletion failed.
 	//
-	// - deleted_with_error: Creation failed and terminated.
+	// - deleted_with_error: Ended due to creation failure.
 	//
 	// - deleted: Deleted.
 	//
@@ -300,7 +305,7 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// Indicates whether read/write splitting is enabled. When enabled, the Leader FE node handles write requests and other nodes handle read requests.
+	// Specifies whether read/write splitting is enabled. If enabled, the leader FE node processes write requests and other nodes process read requests.
 	//
 	// example:
 	//
@@ -368,7 +373,7 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// cms
 	MonitorType *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
-	// The OSS path.
+	// The OSS address.
 	//
 	// example:
 	//
@@ -386,9 +391,9 @@ type DescribeInstancesResponseBodyData struct {
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - prePaid: subscription.
+	// - prePaid: Subscription.
 	//
-	// - postPaid: pay-as-you-go.
+	// - postPaid: Pay-as-you-go.
 	//
 	// example:
 	//
@@ -410,21 +415,21 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// - shared_nothing: Shared-nothing architecture.
 	//
-	// - shared_data: Storage-compute disaggregation.
+	// - shared_data: Shared-data architecture.
 	//
-	// - lakehouse: Data lakehouse analytics.
+	// - lakehouse: Lakehouse.
 	//
 	// example:
 	//
 	// shared_nothing
 	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
-	// The duration that the cluster has been running. Unit: seconds.
+	// The running time of the cluster. Unit: seconds.
 	//
 	// example:
 	//
 	// 3645445
 	RunningTime *int64 `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
-	// Indicates whether the security group is a managed security group.
+	// Specifies whether the security group is a managed security group.
 	//
 	// example:
 	//
@@ -436,9 +441,9 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// sg-8vbaz2etr66a62b9****
 	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
-	// The tags that are bound to the instance.
+	// The tags bound to the instance.
 	Tags []*DescribeInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The vSwitches.
+	// The list of vSwitches.
 	VSwitches []*DescribeInstancesResponseBodyDataVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The cluster version.
 	//
@@ -446,7 +451,7 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// 3.2
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -836,7 +841,7 @@ func (s *DescribeInstancesResponseBodyDataTags) Validate() error {
 }
 
 type DescribeInstancesResponseBodyDataVSwitches struct {
-	// Indicates whether this is the primary vSwitch.
+	// Specifies whether the vSwitch is the primary vSwitch.
 	//
 	// example:
 	//

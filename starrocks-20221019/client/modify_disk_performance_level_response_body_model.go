@@ -26,7 +26,7 @@ type iModifyDiskPerformanceLevelResponseBody interface {
 }
 
 type ModifyDiskPerformanceLevelResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ModifyDiskPerformanceLevelResponseBody struct {
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

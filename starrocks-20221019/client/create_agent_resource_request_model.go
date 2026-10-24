@@ -28,13 +28,13 @@ type iCreateAgentResourceRequest interface {
 }
 
 type CreateAgentResourceRequest struct {
-	// Enable auto-renewal. This parameter is valid only when payType is set to PrePaid. Auto-renewal is disabled by default.
+	// Specifies whether to enable auto-renewal. This parameter is valid only when PayType is set to prePaid. Default value: false.
 	//
 	// example:
 	//
 	// True
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Number of CUs. A CU (Compute Unit) is the basic unit of service measurement. 1 CU = 1 CPU core + 4 GiB memory. For memory-enhanced instance family, 1 CU = 1 CPU core + 8 GiB memory.
+	// The number of compute units (CUs). A CU is the basic metering unit of the service. One CU equals one vCPU and 4 GiB of memory. If SpecType is set to the memory-enhanced instance family, one CU equals one vCPU and 8 GiB of memory.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type CreateAgentResourceRequest struct {
 	//
 	// 2
 	Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// Duration. This parameter is valid only when payType is set to PrePaid.
+	// The subscription duration. This parameter is valid only when PayType is set to prePaid.
 	//
 	// example:
 	//
 	// 2
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +56,7 @@ type CreateAgentResourceRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Payment type:
-	//
-	// 1. Subscription (prePaid).
-	//
-	// 2. Pay-as-you-go (postPaid).
+	// The billing method. Valid values:<ol><li>prePaid: subscription.</li><li>postPaid: pay-as-you-go.</li></ol>
 	//
 	// This parameter is required.
 	//
@@ -68,25 +64,19 @@ type CreateAgentResourceRequest struct {
 	//
 	// prePay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// Unit of subscription duration:
-	//
-	// - Month
-	//
-	// - Year
-	//
-	// This parameter is valid only when payType is set to PrePaid.
+	// The unit of the subscription duration. Valid values:<ul><li>Month</li><li>Year</li></ul>This parameter is valid only when PayType is set to prePaid.
 	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// Coupon ID.
+	// The coupon ID.
 	//
 	// example:
 	//
 	// 2345
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// Compute group specification type.
+	// The specification type of the compute group.
 	//
 	// example:
 	//

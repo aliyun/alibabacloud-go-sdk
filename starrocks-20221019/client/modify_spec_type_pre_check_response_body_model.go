@@ -46,7 +46,7 @@ type ModifySpecTypePreCheckResponseBody struct {
 	//
 	// Invalid params: [Region id should be select from set [cn-beijing, cn-hangzhou]]
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The HTTP status code of the request.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ModifySpecTypePreCheckResponseBody struct {
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iListOperationActivityResponseBody interface {
 }
 
 type ListOperationActivityResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the permission check failure.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListOperationActivityResponseBody struct {
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -183,14 +183,20 @@ type ListOperationActivityResponseBodyData struct {
 	// example:
 	//
 	// COMPLETED
-	ActivityStatus    *string `json:"ActivityStatus,omitempty" xml:"ActivityStatus,omitempty"`
-	ConsoleRetryCount *int32  `json:"ConsoleRetryCount,omitempty" xml:"ConsoleRetryCount,omitempty"`
+	ActivityStatus *string `json:"ActivityStatus,omitempty" xml:"ActivityStatus,omitempty"`
+	// example:
+	//
+	// 0
+	ConsoleRetryCount *int32 `json:"ConsoleRetryCount,omitempty" xml:"ConsoleRetryCount,omitempty"`
 	// The end time of the activity.
 	//
 	// example:
 	//
 	// 1742178604000
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Operation *****	- retry
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	// The activity name.
 	//

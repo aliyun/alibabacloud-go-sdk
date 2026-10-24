@@ -26,7 +26,7 @@ type iCreateInstanceV1ResponseBody interface {
 }
 
 type CreateInstanceV1ResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateInstanceV1ResponseBody struct {
 	//
 	// B67D142D-D54E-184F-A306-22BDC01B2XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -156,7 +156,7 @@ type ListGatewayResponseBodyData struct {
 	//
 	// example:
 	//
-	// Gateway 1
+	// 网关1
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
 	// The gateway type. Valid values are \\`Slb\\` and \\`Privatezone\\`.
 	//

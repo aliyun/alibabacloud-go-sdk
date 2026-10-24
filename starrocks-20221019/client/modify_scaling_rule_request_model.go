@@ -9,6 +9,8 @@ type iModifyScalingRuleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetInstanceId(v string) *ModifyScalingRuleRequest
+	GetInstanceId() *string
 	SetNewTriggerType(v string) *ModifyScalingRuleRequest
 	GetNewTriggerType() *string
 	SetNodeGroupId(v string) *ModifyScalingRuleRequest
@@ -22,7 +24,13 @@ type iModifyScalingRuleRequest interface {
 }
 
 type ModifyScalingRuleRequest struct {
-	// New trigger type.
+	// The instance ID.
+	//
+	// example:
+	//
+	// c-b25e21e24388****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The new trigger type.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +38,7 @@ type ModifyScalingRuleRequest struct {
 	//
 	// TIME_TRIGGER
 	NewTriggerType *string `json:"NewTriggerType,omitempty" xml:"NewTriggerType,omitempty"`
-	// Compute group ID.
+	// The ID of the compute group.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +46,7 @@ type ModifyScalingRuleRequest struct {
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// Old trigger type.
+	// The original trigger type.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +54,7 @@ type ModifyScalingRuleRequest struct {
 	//
 	// TIME_TRIGGER
 	OldTriggerType *string `json:"OldTriggerType,omitempty" xml:"OldTriggerType,omitempty"`
-	// Rule content.
+	// The content of the rule.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +112,7 @@ type ModifyScalingRuleRequest struct {
 	//
 	// }
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// ID of the scaling rule to modify.
+	// The ID of the scaling rule to be modified.
 	//
 	// This parameter is required.
 	//
@@ -120,6 +128,10 @@ func (s ModifyScalingRuleRequest) String() string {
 
 func (s ModifyScalingRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyScalingRuleRequest) GetInstanceId() *string {
+	return s.InstanceId
 }
 
 func (s *ModifyScalingRuleRequest) GetNewTriggerType() *string {
@@ -140,6 +152,11 @@ func (s *ModifyScalingRuleRequest) GetRule() *string {
 
 func (s *ModifyScalingRuleRequest) GetScalingRuleId() *string {
 	return s.ScalingRuleId
+}
+
+func (s *ModifyScalingRuleRequest) SetInstanceId(v string) *ModifyScalingRuleRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *ModifyScalingRuleRequest) SetNewTriggerType(v string) *ModifyScalingRuleRequest {

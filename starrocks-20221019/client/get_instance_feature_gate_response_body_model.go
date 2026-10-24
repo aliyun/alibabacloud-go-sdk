@@ -28,7 +28,7 @@ type iGetInstanceFeatureGateResponseBody interface {
 }
 
 type GetInstanceFeatureGateResponseBody struct {
-	// The details of the access denial.
+	// AccessDeniedDetail
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type GetInstanceFeatureGateResponseBody struct {
 	//
 	// B67D142D-D54E-184F-A306-22BDC01B2XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -164,127 +164,130 @@ func (s *GetInstanceFeatureGateResponseBody) Validate() error {
 }
 
 type GetInstanceFeatureGateResponseBodyData struct {
-	// Whether the restart process can be controlled from the console.
+	// Indicates whether the restart process can be controlled from the console.
 	//
 	// example:
 	//
 	// true
 	ConsoleControlRestart *bool `json:"ConsoleControlRestart,omitempty" xml:"ConsoleControlRestart,omitempty"`
-	// Whether materialized views can be managed.
+	// Indicates whether materialized view management is supported.
 	//
 	// example:
 	//
 	// true
 	EnableManageMv *bool `json:"EnableManageMv,omitempty" xml:"EnableManageMv,omitempty"`
-	// Whether managed security groups are supported.
+	// Indicates whether fully managed security groups are supported.
 	//
 	// example:
 	//
 	// true
 	FullManagedSecurityGroup *bool `json:"FullManagedSecurityGroup,omitempty" xml:"FullManagedSecurityGroup,omitempty"`
-	// Whether DLF meta tokens can be mounted.
+	// Indicates whether mounting DLF meta tokens is supported.
 	//
 	// example:
 	//
 	// true
 	MountDlfMetaToken *bool `json:"MountDlfMetaToken,omitempty" xml:"MountDlfMetaToken,omitempty"`
-	// A list of new configuration types.
+	// The list of added configuration types.
 	SupportAddConfigTypes []*string `json:"SupportAddConfigTypes,omitempty" xml:"SupportAddConfigTypes,omitempty" type:"Repeated"`
-	// Whether data backup is supported.
+	// Specifies whether data backup is supported. Valid values:
 	//
-	// - **1**: Supports data backup.
+	// - **1**: Data backup is supported.
 	//
-	// - **2**: Does not support data backup.
+	// - **2**: Data backup is not supported.
 	//
 	// example:
 	//
 	// true
 	SupportBackup *bool `json:"SupportBackup,omitempty" xml:"SupportBackup,omitempty"`
-	// Whether agents can be created.
+	// Indicates whether agent creation is supported.
 	//
 	// example:
 	//
 	// true
 	SupportCreateAgent *bool `json:"SupportCreateAgent,omitempty" xml:"SupportCreateAgent,omitempty"`
-	// Whether compute groups with specifications other than `standard` can be created.
+	// Indicates whether compute groups of non-standard specifications can be created.
 	//
 	// example:
 	//
 	// true
 	SupportCreateNonStandardNodeGroup *bool `json:"SupportCreateNonStandardNodeGroup,omitempty" xml:"SupportCreateNonStandardNodeGroup,omitempty"`
-	// Whether elastic ephemeral disks are supported.
+	// Indicates whether elastic ephemeral disks are supported.
 	//
 	// example:
 	//
 	// true
 	SupportEed *bool `json:"SupportEed,omitempty" xml:"SupportEed,omitempty"`
-	// Whether the AI function is supported.
+	// Indicates whether AI functions are supported.
 	//
 	// example:
 	//
 	// true
 	SupportEnableAi *bool `json:"SupportEnableAi,omitempty" xml:"SupportEnableAi,omitempty"`
-	// Whether SSL can be enabled.
+	// Indicates whether SSL can be enabled.
 	//
 	// example:
 	//
 	// true
 	SupportEnableSSL *bool `json:"SupportEnableSSL,omitempty" xml:"SupportEnableSSL,omitempty"`
-	// Whether fast restart is supported for configuration changes.
+	// Indicates whether fast restart is supported during configuration changes.
 	//
 	// example:
 	//
 	// true
 	SupportFastModeModifyConfig *bool `json:"SupportFastModeModifyConfig,omitempty" xml:"SupportFastModeModifyConfig,omitempty"`
-	// Whether resources can be modified by using fast restart.
+	// Indicates whether resources can be modified by using fast restart.
 	//
 	// example:
 	//
 	// true
 	SupportFastModeModifyResource *bool `json:"SupportFastModeModifyResource,omitempty" xml:"SupportFastModeModifyResource,omitempty"`
-	// Whether fast restart is supported.
+	// Indicates whether fast restart is supported.
 	//
 	// example:
 	//
 	// true
 	SupportFastRestart *bool `json:"SupportFastRestart,omitempty" xml:"SupportFastRestart,omitempty"`
-	// Whether the FE gateway is supported.
+	// Indicates whether FE gateways are supported.
 	//
 	// example:
 	//
 	// true
 	SupportFeGateway *bool `json:"SupportFeGateway,omitempty" xml:"SupportFeGateway,omitempty"`
-	// Whether custom domain names are supported.
+	// Indicates whether custom domain names are supported.
 	//
 	// example:
 	//
 	// true
 	SupportHostAlias *bool `json:"SupportHostAlias,omitempty" xml:"SupportHostAlias,omitempty"`
-	// Whether the time zone can be modified.
+	// Indicates whether the time zone can be modified.
 	//
 	// example:
 	//
 	// true
 	SupportModifyTimezone *bool `json:"SupportModifyTimezone,omitempty" xml:"SupportModifyTimezone,omitempty"`
-	// Whether observers can be deployed across multiple availability zones (AZs).
+	// Indicates whether multi-zone deployment of Observers is supported.
 	//
 	// example:
 	//
 	// true
 	SupportMultiAZ *bool `json:"SupportMultiAZ,omitempty" xml:"SupportMultiAZ,omitempty"`
-	// Whether the instance uses compute nodes (CNs).
+	// Indicates whether compute nodes are used.
 	//
 	// example:
 	//
 	// true
-	UseComputeNode           *bool `json:"UseComputeNode,omitempty" xml:"UseComputeNode,omitempty"`
+	UseComputeNode *bool `json:"UseComputeNode,omitempty" xml:"UseComputeNode,omitempty"`
+	// Specifies whether the compaction service is supported.
 	SupportCompactionService *bool `json:"supportCompactionService,omitempty" xml:"supportCompactionService,omitempty"`
-	// Whether the Compaction Service allowlist feature is supported.
+	// Specifies whether the compaction service whitelist feature is supported.
 	//
 	// example:
 	//
 	// true
 	SupportCompactionServiceWhiteList *bool `json:"supportCompactionServiceWhiteList,omitempty" xml:"supportCompactionServiceWhiteList,omitempty"`
+	// Specifies whether load-based auto scaling rules can be created. This is determined based on the featureEnabled field, the canary release status of the resource owner UID, and the mode, version, architecture, and plan. It does not indicate whether existing rules continue to be executed.
+	SupportLoadBasedAutoScaling *bool `json:"supportLoadBasedAutoScaling,omitempty" xml:"supportLoadBasedAutoScaling,omitempty"`
 }
 
 func (s GetInstanceFeatureGateResponseBodyData) String() string {
@@ -377,6 +380,10 @@ func (s *GetInstanceFeatureGateResponseBodyData) GetSupportCompactionService() *
 
 func (s *GetInstanceFeatureGateResponseBodyData) GetSupportCompactionServiceWhiteList() *bool {
 	return s.SupportCompactionServiceWhiteList
+}
+
+func (s *GetInstanceFeatureGateResponseBodyData) GetSupportLoadBasedAutoScaling() *bool {
+	return s.SupportLoadBasedAutoScaling
 }
 
 func (s *GetInstanceFeatureGateResponseBodyData) SetConsoleControlRestart(v bool) *GetInstanceFeatureGateResponseBodyData {
@@ -481,6 +488,11 @@ func (s *GetInstanceFeatureGateResponseBodyData) SetSupportCompactionService(v b
 
 func (s *GetInstanceFeatureGateResponseBodyData) SetSupportCompactionServiceWhiteList(v bool) *GetInstanceFeatureGateResponseBodyData {
 	s.SupportCompactionServiceWhiteList = &v
+	return s
+}
+
+func (s *GetInstanceFeatureGateResponseBodyData) SetSupportLoadBasedAutoScaling(v bool) *GetInstanceFeatureGateResponseBodyData {
+	s.SupportLoadBasedAutoScaling = &v
 	return s
 }
 

@@ -40,7 +40,7 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// starrocks_1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Retrieves instances by instance status. Separate multiple instance statuses with commas. Valid values:
+	// The instance status. You can specify multiple statuses separated by commas. Valid values:
 	//
 	// <ul>
 	//
@@ -48,45 +48,45 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// <li>paid: Paid.</li>
 	//
-	// <li>creating: Being created.</li>
+	// <li>creating: Starting.</li>
 	//
 	// <li>running: Running.</li>
 	//
-	// <li>updating: Being upgraded.</li>
+	// <li>updating: Updating.</li>
 	//
 	// <li>disable: Unavailable.</li>
 	//
-	// <li>deleting: Being deleted.</li>
+	// <li>deleting: Releasing.</li>
 	//
 	// <li>scaling_out: Scaling out.</li>
 	//
 	// <li>scaling_in: Scaling in.</li>
 	//
-	// <li>scaling_up: Specifications are being upgraded.</li>
+	// <li>scaling_up: Scaling up.</li>
 	//
-	// <li>scaling_down: Specifications are being used to decrease the quota.</li>
+	// <li>scaling_down: Scaling down.</li>
 	//
-	// <li>upgrading: Version is being upgraded.</li>
+	// <li>upgrading: Upgrading.</li>
 	//
-	// <li>modifying_config: Configuration is being updated.</li>
+	// <li>modifying_config: Updating configurations.</li>
 	//
-	// <li>enable_public_network: Public network access is being enabled.</li>
+	// <li>enable_public_network: Enabling public network access.</li>
 	//
-	// <li>disable_public_network: Public network access is being shutdown.</li>
+	// <li>disable_public_network: Disabling public network access.</li>
 	//
-	// <li>convert_from_trial_to_official: The instance edition is being upgraded.</li>
+	// <li>convert_from_trial_to_official: Upgrading the instance edition.</li>
 	//
-	// <li>restarting: The cluster is restarting.</li>
+	// <li>restarting: Restarting the cluster.</li>
 	//
-	// <li>migration_cluster_to_serverless: The cluster is being migrated.</li>
+	// <li>migration_cluster_to_serverless: Migrating the cluster.</li>
 	//
-	// <li>actively_disabled: The instance is stopped.</li>
+	// <li>actively_disabled: Stopped.</li>
 	//
-	// <li>enabling: The instance is being recovered.</li>
+	// <li>enabling: Resuming.</li>
 	//
-	// <li>agent_creating: The agent is being created.</li>
+	// <li>agent_creating: Creating the agent.</li>
 	//
-	// <li>agent_scaling_up: The agent specifications are being upgraded.</li>
+	// <li>agent_scaling_up: Scaling up the agent.</li>
 	//
 	// </ul>
 	//
@@ -100,7 +100,7 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// rg-acfmygmtrcenXXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The list of tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

@@ -26,13 +26,13 @@ type iAddBackupPolicyResponseBody interface {
 }
 
 type AddBackupPolicyResponseBody struct {
-	// Details about the access denial.
+	// AccessDeniedDetail
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The data returned.
+	// The returned result.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type AddBackupPolicyResponseBody struct {
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

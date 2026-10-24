@@ -58,7 +58,7 @@ type QueryModifyCuPriceResponseBody struct {
 	//
 	// B67D142D-D54E-184F-A306-22BDC01B2XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -155,13 +155,13 @@ type QueryModifyCuPriceResponseBodyData struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The price reduction information.
+	// The price reduction ratio.
 	//
 	// example:
 	//
 	// 0
 	DepreciateInfo *QueryModifyCuPriceResponseBodyDataDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
-	// The discount amount, which is the original amount minus the payable amount (including coupon deductions).
+	// The discount amount, which is calculated by subtracting the payable amount on the bill (including the coupon deduction amount) from the original amount.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type QueryModifyCuPriceResponseBodyData struct {
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
 	// The coupon information.
 	OptionalPromotions []*QueryModifyCuPriceResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
-	// The original amount, which is the catalog price multiplied by the billable usage.
+	// The original price, which is calculated by multiplying the list price by the billable usage.
 	//
 	// example:
 	//
@@ -177,13 +177,13 @@ type QueryModifyCuPriceResponseBodyData struct {
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	// The returned data structure.
 	Rules []*QueryModifyCuPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The discounted price based on the list price discount.
+	// The discount price based on the official website discount.
 	//
 	// example:
 	//
 	// 7986
 	StandDiscountPrice *float32 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The list discount price.
+	// The official website discount price.
 	//
 	// example:
 	//
@@ -407,25 +407,25 @@ func (s *QueryModifyCuPriceResponseBodyDataComponentPrices) Validate() error {
 }
 
 type QueryModifyCuPriceResponseBodyDataDepreciateInfo struct {
-	// The price reduction information.
+	// The price reduction ratio.
 	//
 	// example:
 	//
 	// 0
 	CheapRate *float32 `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	// The total list price after the price reduction.
+	// The total official website price after the price reduction.
 	//
 	// example:
 	//
 	// 7986
 	CheapStandAmount *float32 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	// Indicates whether to display the price reduction.
+	// Indicates whether the price reduction margin is displayed.
 	//
 	// example:
 	//
 	// true
 	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
-	// The original total list price.
+	// The original total official website price.
 	//
 	// example:
 	//
@@ -542,7 +542,7 @@ func (s *QueryModifyCuPriceResponseBodyDataOptionalPromotions) Validate() error 
 }
 
 type QueryModifyCuPriceResponseBodyDataRules struct {
-	// The price for purchasing Elastic Computing Service (ECS) servers of a specific configuration in bulk. Valid values: 1 to 1000.
+	// Queries the price for bulk purchasing Elastic Computing Service servers with a specific configuration. Valid values: 1 to 1000.
 	//
 	// Default value: 1.
 	//

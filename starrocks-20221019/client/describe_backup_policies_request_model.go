@@ -30,7 +30,7 @@ type DescribeBackupPoliciesRequest struct {
 	//
 	// bk-policy-26ec5bc0ea67b5ef
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID of the instance.
 	//
 	// example:
 	//

@@ -34,39 +34,39 @@ type DescribeInstanceDiagnosisResultResponseBody struct {
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*DescribeInstanceDiagnosisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// InvalidParams
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// HTTP request status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE74XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of query results.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -168,73 +168,73 @@ func (s *DescribeInstanceDiagnosisResultResponseBody) Validate() error {
 }
 
 type DescribeInstanceDiagnosisResultResponseBodyData struct {
-	// Best Practices.
+	// The best practices.
 	//
 	// example:
 	//
-	// 无
+	// None
 	BestPractice *string `json:"BestPractice,omitempty" xml:"BestPractice,omitempty"`
-	// Diagnosis item description.
+	// The diagnosis item description.
 	//
 	// example:
 	//
-	// Evaluate unreasonable partition and bucket configuration
+	// Unreasonable partitioning and bucketing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Evaluation dimension.
+	// The evaluation dimension.
 	//
 	// example:
 	//
 	// table_analysis
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Evaluation time.
+	// The evaluation time.
 	//
 	// example:
 	//
 	// 2026-03-08T02:12:32Z
 	EvaluationTime *int64 `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
-	// Full score for the evaluation item.
+	// The full score of the evaluation item.
 	//
 	// example:
 	//
 	// 10.0
 	FullScore *float64 `json:"FullScore,omitempty" xml:"FullScore,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// c-b25e21e243889XXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Evaluation item introduction.
+	// The evaluation item introduction.
 	//
 	// example:
 	//
 	// for autotest
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// Evaluation item ID.
+	// The evaluation item ID.
 	//
 	// example:
 	//
 	// 02cf887a
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// Evaluation item name.
+	// The evaluation item name.
 	//
 	// example:
 	//
-	// Evaluate unreasonable partition and bucket configuration
+	// Unreasonable partitioning and bucketing
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// Report date.
+	// The report date in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2026-03-08
 	ReportDate *string `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
-	// Diagnosis score.
+	// The diagnosis score.
 	//
 	// example:
 	//
 	// 10.0
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// Status list.
+	// The status list. Valid values:
 	//
 	// - healthy
 	//
@@ -248,11 +248,11 @@ type DescribeInstanceDiagnosisResultResponseBodyData struct {
 	//
 	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Diagnosis suggestion.
+	// The diagnosis suggestion.
 	//
 	// example:
 	//
-	// 未出现分桶大小超过5GB的情况，评估结果为健康。
+	// No bucket exceeds 5 GB in size. The evaluation result is healthy
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 

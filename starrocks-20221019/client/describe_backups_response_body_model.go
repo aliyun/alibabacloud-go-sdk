@@ -40,7 +40,7 @@ type DescribeBackupsResponseBody struct {
 	//
 	// Invalid params: [instance not exists].
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The HTTP request status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ func (s *DescribeBackupsResponseBody) Validate() error {
 }
 
 type DescribeBackupsResponseBodyData struct {
-	// The end time of this backup.
+	// The end time of the current backup. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1742179028000
 	BackupFinishedTime *int64 `json:"BackupFinishedTime,omitempty" xml:"BackupFinishedTime,omitempty"`
-	// The start time of this backup.
+	// The start time of the current backup. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -169,11 +169,11 @@ type DescribeBackupsResponseBodyData struct {
 	//
 	// bt-12sui21312dd
 	BackupTaskId *string `json:"BackupTaskId,omitempty" xml:"BackupTaskId,omitempty"`
-	// The backup type:
+	// The backup type. Valid values:
 	//
-	// - **0**: Fast backup.
+	// - **0**: quick backup
 	//
-	// - **1**: Consistent backup.
+	// - **1**: consistent backup
 	//
 	// example:
 	//
@@ -183,9 +183,9 @@ type DescribeBackupsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 任务描述
+	// Task description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expiration time of the backup data.
+	// The expiration time of the backup data. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -205,13 +205,13 @@ type DescribeBackupsResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The cloud disk size in GiB.
+	// The cloud disk size. Unit: GiB.
 	//
 	// example:
 	//
 	// 100
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The backup job status.
+	// The backup task status.
 	//
 	// example:
 	//
@@ -382,27 +382,27 @@ type DescribeBackupsResponseBodyDataInstanceSnapshot struct {
 	//
 	// rg-aekzd7frphchx3a
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The cluster\\"s running mode:
+	// The running mode of the cluster. Valid values:
 	//
-	// - Shared-nothing.
+	// - shared_nothing: integrated storage and computing
 	//
-	// - Shared-data.
+	// - shared_data: disaggregated storage and computing
 	//
 	// example:
 	//
 	// shared_data
 	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
-	// The compute group specification type. Includes the following types:
+	// The specification type of the compute group. Valid values:
 	//
-	// - standard: Standard Edition.
+	// - standard: standard edition
 	//
-	// - localSSD: Local SSD.
+	// - localSSD: local SSD
 	//
-	// - bigData: Large-capacity storage.
+	// - bigData: large-capacity storage
 	//
-	// - ramEnhanced: Memory-enhanced instance family.
+	// - ramEnhanced: memory-enhanced instance family
 	//
-	// - networkEnhanced: Network-enhanced.
+	// - networkEnhanced: network-enhanced
 	//
 	// example:
 	//
@@ -545,7 +545,7 @@ func (s *DescribeBackupsResponseBodyDataInstanceSnapshot) Validate() error {
 }
 
 type DescribeBackupsResponseBodyDataInstanceSnapshotNodeGroups struct {
-	// The compute group type. Includes the following values:
+	// The compute group type. Valid values:
 	//
 	// - FE
 	//
@@ -561,7 +561,7 @@ type DescribeBackupsResponseBodyDataInstanceSnapshotNodeGroups struct {
 	//
 	// FE
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The number of CUs. A CU (Compute Unit) is the basic unit of measurement for the service. 1 CU equals 1 CPU core + 4 GiB memory. If SpecType is memory-enhanced instance family, 1 CU equals 1 CPU core + 8 GiB memory.
+	// The number of CUs. A CU (compute unit) is the basic billing unit of the service. 1 CU = 1 vCPU + 4 GiB of memory. Only when SpecType is set to the memory-enhanced instance family, 1 CU = 1 vCPU + 8 GiB of memory.
 	//
 	// example:
 	//
@@ -573,7 +573,7 @@ type DescribeBackupsResponseBodyDataInstanceSnapshotNodeGroups struct {
 	//
 	// 2
 	DiskNumber *string `json:"DiskNumber,omitempty" xml:"DiskNumber,omitempty"`
-	// The node group\\"s local SSD instance type. This value is only meaningful for ECS instances where SpecType is local SSD or large-capacity storage.
+	// The local SSD instance specification of the node group. This value is valid only when the instance is based on ECS and SpecType is set to local SSD or large-capacity storage.
 	//
 	// example:
 	//
@@ -585,37 +585,37 @@ type DescribeBackupsResponseBodyDataInstanceSnapshotNodeGroups struct {
 	//
 	// 3
 	ResidentNodeNumber *string `json:"ResidentNodeNumber,omitempty" xml:"ResidentNodeNumber,omitempty"`
-	// The compute group specification type. Includes the following types:
+	// The specification type of the compute group. Valid values:
 	//
-	// - standard: Standard Edition.
+	// - standard: standard edition
 	//
-	// - localSSD: Local SSD.
+	// - localSSD: local SSD
 	//
-	// - bigData: Large-capacity storage.
+	// - bigData: large-capacity storage
 	//
-	// - ramEnhanced: Memory-enhanced instance family.
+	// - ramEnhanced: memory-enhanced instance family
 	//
-	// - networkEnhanced: Network-enhanced.
+	// - networkEnhanced: network-enhanced
 	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// The performance level (PL) of the cloud disk. Includes the following values:
+	// The performance level (PL) of the cloud disk. Valid values:
 	//
-	// - pl0: Maximum random read/write IOPS of 10,000 per disk.
+	// - pl0: A single disk delivers up to 10,000 random read/write IOPS.
 	//
-	// - pl1: Maximum random read/write IOPS of 50,000 per disk.
+	// - pl1: A single disk delivers up to 50,000 random read/write IOPS.
 	//
-	// - pl2: Maximum random read/write IOPS of 100,000 per disk.
+	// - pl2: A single disk delivers up to 100,000 random read/write IOPS.
 	//
-	// - pl3: Maximum random read/write IOPS of 1,000,000 per disk.
+	// - pl3: A single disk delivers up to 1,000,000 random read/write IOPS.
 	//
 	// example:
 	//
 	// pl1
 	StoragePerformanceLevel *string `json:"StoragePerformanceLevel,omitempty" xml:"StoragePerformanceLevel,omitempty"`
-	// The storage size in GiB.
+	// The storage size. Unit: GiB.
 	//
 	// example:
 	//
@@ -765,13 +765,13 @@ type DescribeBackupsResponseBodyDataSubTasks struct {
 	//
 	// []
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The task end time.
+	// The task end time. The time is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1747718190
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	// The data size in GiB.
+	// The data size. Unit: GiB.
 	//
 	// example:
 	//
@@ -783,19 +783,19 @@ type DescribeBackupsResponseBodyDataSubTasks struct {
 	//
 	// 2025-02-10_backup
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	// The task start date.
+	// The task start time. The time is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1747708190
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The backup job status.
+	// The backup task status.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The data table name.
+	// The table name.
 	//
 	// example:
 	//

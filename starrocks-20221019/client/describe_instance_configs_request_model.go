@@ -58,7 +58,7 @@ type DescribeInstanceConfigsRequest struct {
 	//
 	// example:
 	//
-	// Whether to enable UDF.
+	// 是否开启 UDF。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The instance ID.
 	//

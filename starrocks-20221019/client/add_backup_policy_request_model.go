@@ -26,7 +26,7 @@ type iAddBackupPolicyRequest interface {
 }
 
 type AddBackupPolicyRequest struct {
-	// The number of days to retain the backup data.
+	// The number of days that the backup data remains valid.
 	//
 	// example:
 	//
@@ -50,21 +50,21 @@ type AddBackupPolicyRequest struct {
 	//
 	// 30
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
-	// The recurrence type for the policy. Valid values:
+	// Specifies the execution type of the time rule. Valid values:
 	//
-	// - DAILY: Daily.
+	// - DAILY: Repeats daily.
 	//
-	// - WEEKLY: Weekly.
+	// - WEEKLY: Repeats weekly.
 	//
-	// - MONTHLY: Monthly.
+	// - MONTHLY: Repeats monthly.
 	//
 	// example:
 	//
 	// MONTHLY
 	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	// The values for the recurrence.
+	// The values for the policy execution cycle.
 	RecurrenceValues []*int32 `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
-	// The timeout period for the backup job in seconds.
+	// The timeout period for the backup task, in seconds.
 	//
 	// example:
 	//

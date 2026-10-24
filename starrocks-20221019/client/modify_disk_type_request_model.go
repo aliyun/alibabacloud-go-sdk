@@ -24,11 +24,11 @@ type iModifyDiskTypeRequest interface {
 }
 
 type ModifyDiskTypeRequest struct {
-	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter. Valid values:
+	// Specifies whether to automatically pay for all products specified in the Products parameter. Valid values:
 	//
-	// - true: Automatic payment is enabled.
+	// - true: Automatic payment.
 	//
-	// - false: Automatic payment is disabled.
+	// - false: Manual payment.
 	//
 	// if can be null:
 	// true
@@ -67,7 +67,7 @@ type ModifyDiskTypeRequest struct {
 	//
 	// essd
 	TargetDiskType *string `json:"TargetDiskType,omitempty" xml:"TargetDiskType,omitempty"`
-	// The target disk performance level.
+	// The target disk performance.
 	//
 	// This parameter is required.
 	//

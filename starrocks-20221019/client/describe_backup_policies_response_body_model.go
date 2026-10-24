@@ -28,13 +28,13 @@ type iDescribeBackupPoliciesResponseBody interface {
 }
 
 type DescribeBackupPoliciesResponseBody struct {
-	// Details about the access denial.
+	// AccessDeniedDetail
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Information about the instance.
+	// The instance information.
 	Data []*DescribeBackupPoliciesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -60,7 +60,7 @@ type DescribeBackupPoliciesResponseBody struct {
 	//
 	// 32A44F0D-BFF6-5664-999A-218BBDE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -192,15 +192,15 @@ type DescribeBackupPoliciesResponseBodyData struct {
 	//
 	// 30
 	Minute *string `json:"Minute,omitempty" xml:"Minute,omitempty"`
-	// The backup policy ID.
+	// The tag policy ID.
 	//
 	// example:
 	//
 	// 1
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The numeric values for the policy execution cycle.
+	// The values for the policy execution cycle.
 	RecurrenceValues []*int32 `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
-	// The timeout period for the backup job.
+	// The timeout period of the backup task, in seconds.
 	//
 	// example:
 	//

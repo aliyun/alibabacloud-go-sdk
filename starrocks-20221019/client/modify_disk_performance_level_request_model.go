@@ -22,11 +22,11 @@ type iModifyDiskPerformanceLevelRequest interface {
 }
 
 type ModifyDiskPerformanceLevelRequest struct {
-	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter. Valid values:
+	// Specifies whether automatic payment is enabled for all products specified in the Products parameter. Valid values:
 	//
-	// - true: Automatic payment.
+	// - true: automatic payment.
 	//
-	// - false: No automatic payment.
+	// - false: no automatic payment.
 	//
 	// if can be null:
 	// true

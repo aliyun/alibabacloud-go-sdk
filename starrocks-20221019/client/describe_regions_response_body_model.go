@@ -155,7 +155,7 @@ type DescribeRegionsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Hangzhou
+	// 杭州
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The English description.
 	//

@@ -9,6 +9,8 @@ type iDeleteScalingRuleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetInstanceId(v string) *DeleteScalingRuleRequest
+	GetInstanceId() *string
 	SetNodeGroupId(v string) *DeleteScalingRuleRequest
 	GetNodeGroupId() *string
 	SetScalingRuleId(v string) *DeleteScalingRuleRequest
@@ -18,7 +20,13 @@ type iDeleteScalingRuleRequest interface {
 }
 
 type DeleteScalingRuleRequest struct {
-	// Compute group ID.
+	// The instance ID.
+	//
+	// example:
+	//
+	// c-b25e21e24388****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The node group ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +34,7 @@ type DeleteScalingRuleRequest struct {
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// ID of the scaling rule to delete.
+	// The ID of the scaling rule to be deleted.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +42,7 @@ type DeleteScalingRuleRequest struct {
 	//
 	// r-d01a1cac4081s****
 	ScalingRuleId *string `json:"ScalingRuleId,omitempty" xml:"ScalingRuleId,omitempty"`
-	// Trigger type.
+	// The trigger type.
 	//
 	// This parameter is required.
 	//
@@ -52,6 +60,10 @@ func (s DeleteScalingRuleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteScalingRuleRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *DeleteScalingRuleRequest) GetNodeGroupId() *string {
 	return s.NodeGroupId
 }
@@ -62,6 +74,11 @@ func (s *DeleteScalingRuleRequest) GetScalingRuleId() *string {
 
 func (s *DeleteScalingRuleRequest) GetTriggerType() *string {
 	return s.TriggerType
+}
+
+func (s *DeleteScalingRuleRequest) SetInstanceId(v string) *DeleteScalingRuleRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *DeleteScalingRuleRequest) SetNodeGroupId(v string) *DeleteScalingRuleRequest {

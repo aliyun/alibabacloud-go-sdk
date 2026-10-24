@@ -78,7 +78,7 @@ type iCreateInstanceV1Request interface {
 }
 
 type CreateInstanceV1Request struct {
-	// The administrator password of the instance.
+	// The password of the instance administrator.
 	//
 	// This parameter is required.
 	//
@@ -88,51 +88,49 @@ type CreateInstanceV1Request struct {
 	AdminPassword *string `json:"AdminPassword,omitempty" xml:"AdminPassword,omitempty"`
 	// The agent compute group.
 	AgentNodeGroup *CreateInstanceV1RequestAgentNodeGroup `json:"AgentNodeGroup,omitempty" xml:"AgentNodeGroup,omitempty" type:"Struct"`
-	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter.
+	// Specifies whether automatic payment is enabled for all products specified in the Products parameter. Valid values:
 	//
-	// Valid values:
+	// - true: Enables automatic payment.
 	//
-	// - true: Automatic payment.
-	//
-	// - false: No automatic payment.
+	// - false: Disables automatic payment.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal. This parameter takes effect only when payType is set to PrePaid. Auto-renewal is disabled by default.
+	// Specifies whether to enable auto-renewal. This parameter takes effect only when PayType is set to PrePaid. Default value: false.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The BE or CN node group information.
+	// The information about the BE or CN compute groups.
 	BackendNodeGroups []*CreateInstanceV1RequestBackendNodeGroups `json:"BackendNodeGroups,omitempty" xml:"BackendNodeGroups,omitempty" type:"Repeated"`
-	// Ensures the idempotence of the request. Generate a unique parameter value from your client. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the DLF Catalog.
+	// The name of the DLF catalog.
 	//
 	// example:
 	//
 	// paimon_test
 	DlfCatalogName *string `json:"DlfCatalogName,omitempty" xml:"DlfCatalogName,omitempty"`
-	// The type of the DLF Catalog. Valid values: paimon and iceberg.
+	// The type of the DLF catalog, such as paimon or iceberg.
 	//
 	// example:
 	//
 	// paimon
 	DlfCatalogType *string `json:"DlfCatalogType,omitempty" xml:"DlfCatalogType,omitempty"`
-	// The subscription duration. This parameter takes effect only when payType is set to PrePaid.
+	// The subscription duration. This parameter takes effect only when PayType is set to PrePaid.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Specifies whether to enable the AI Center. Default value: false.
+	// Specifies whether to enable the AI center. Default value: false.
 	EnableAiFunction *bool `json:"EnableAiFunction,omitempty" xml:"EnableAiFunction,omitempty"`
 	// Specifies whether to enable disaster recovery.
 	EnableMultiAz *bool `json:"EnableMultiAz,omitempty" xml:"EnableMultiAz,omitempty"`
@@ -142,9 +140,9 @@ type CreateInstanceV1Request struct {
 	//
 	// true
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The FE node group information.
+	// The information about the FE node groups.
 	FrontendNodeGroups []*CreateInstanceV1RequestFrontendNodeGroups `json:"FrontendNodeGroups,omitempty" xml:"FrontendNodeGroups,omitempty" type:"Repeated"`
-	// The gateway type. Valid values: Slb and Privatezone.
+	// The gateway type. Generally, the value is Slb or Privatezone.
 	//
 	// example:
 	//
@@ -164,13 +162,13 @@ type CreateInstanceV1Request struct {
 	//
 	// fdsdf****
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The username of the associated Resource Access Management (RAM) user or the name of the associated RAM role.
+	// The username of the associated Resource Access Management (RAM) user or the name of the RAM role.
 	//
 	// example:
 	//
 	// aliyun.test1
 	LinkedRamUserName *string `json:"LinkedRamUserName,omitempty" xml:"LinkedRamUserName,omitempty"`
-	// The Observer node group information. Specify this parameter only when you need to enable multi-zone disaster recovery. The Observer node group specifications must be the same as those of the FE node group.
+	// The information about the Observer compute group. Specify this parameter only when you need to enable multi-zone disaster recovery. The configuration of the Observer compute group must be consistent with the specifications of the FE node group.
 	ObserverNodeGroups []*CreateInstanceV1RequestObserverNodeGroups `json:"ObserverNodeGroups,omitempty" xml:"ObserverNodeGroups,omitempty" type:"Repeated"`
 	// The name of the role used for password-free access to OSS.
 	//
@@ -178,13 +176,13 @@ type CreateInstanceV1Request struct {
 	//
 	// AliyunEMRStarRocksAccessingOSSRole
 	OssAccessingRoleName *string `json:"OssAccessingRoleName,omitempty" xml:"OssAccessingRoleName,omitempty"`
-	// The instance edition:
+	// The instance edition. Valid values:
 	//
 	// <ul>
 	//
-	// <li>  Entry edition (trial).</li>
+	// <li>trial: Trial Edition.</li>
 	//
-	// <li> Standard edition (official).</li>
+	// <li>official: Standard Edition.</li>
 	//
 	// </ul>
 	//
@@ -194,7 +192,7 @@ type CreateInstanceV1Request struct {
 	//
 	// official
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The billing method. Valid values:
+	// The billing method of the instance. Valid values:
 	//
 	// <ol>
 	//
@@ -210,7 +208,7 @@ type CreateInstanceV1Request struct {
 	//
 	// prePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit of the subscription duration. Valid values:
+	// The unit of the billing cycle. Valid values:
 	//
 	// <ul>
 	//
@@ -220,17 +218,13 @@ type CreateInstanceV1Request struct {
 	//
 	// </ul>
 	//
-	// This parameter takes effect only when payType is set to PrePaid.
+	// This parameter takes effect only when PayType is set to PrePaid.
 	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The RAM authentication type. Valid values:
-	//
-	// - RS: Resource Access Management (RAM) user.
-	//
-	// - RR: RAM role.
+	// The RAM authentication type. A value of RS indicates a Resource Access Management (RAM) user, and a value of RR indicates a RAM role.
 	//
 	// example:
 	//
@@ -262,11 +256,15 @@ type CreateInstanceV1Request struct {
 	//
 	// rg-aekzllkih7jqxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The running mode of the cluster. Valid values:
+	// The run mode of the cluster. Valid values:
 	//
-	// - shared_nothing: compute-storage coupled.
+	// <ul>
 	//
-	// - shared_data: compute-storage decoupled.
+	// <li>shared_nothing: shared-nothing architecture.</li>
+	//
+	// <li>shared_data: shared-data architecture.</li>
+	//
+	// </ul>
 	//
 	// This parameter is required.
 	//
@@ -274,7 +272,7 @@ type CreateInstanceV1Request struct {
 	//
 	// shared_data
 	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
-	// The instance tags.
+	// The tags of the instance.
 	Tags []*CreateInstanceV1RequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The vSwitch and zone information.
 	VSwitches []*CreateInstanceV1RequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
@@ -286,7 +284,7 @@ type CreateInstanceV1Request struct {
 	//
 	// 3
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//
@@ -664,7 +662,7 @@ func (s *CreateInstanceV1Request) Validate() error {
 }
 
 type CreateInstanceV1RequestAgentNodeGroup struct {
-	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory.
+	// The number of compute units (CUs). A CU is the basic metering unit of the service. 1 CU equals 1 vCPU and 4 GiB of memory.
 	//
 	// example:
 	//
@@ -694,7 +692,7 @@ func (s *CreateInstanceV1RequestAgentNodeGroup) Validate() error {
 }
 
 type CreateInstanceV1RequestBackendNodeGroups struct {
-	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory. When SpecType is set to memory-enhanced instance family, 1 CU = 1 CPU core + 8 GiB memory.
+	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU equals 1 vCPU and 4 GiB of memory. If SpecType is set to the memory-enhanced instance family, 1 CU equals 1 vCPU and 8 GiB of memory.
 	//
 	// example:
 	//
@@ -709,7 +707,7 @@ type CreateInstanceV1RequestBackendNodeGroups struct {
 	//
 	// 1
 	DiskNumber *int32 `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
-	// The local SSD instance type of the node group. This parameter takes effect only when the instance is ECS-based and SpecType is set to local SSD or large-scale storage.
+	// The local SSD instance type of the node group. This parameter is valid only when the instance is based on ECS and SpecType is set to localSSD or bigData.
 	//
 	// example:
 	//
@@ -721,13 +719,31 @@ type CreateInstanceV1RequestBackendNodeGroups struct {
 	//
 	// 3
 	ResidentNodeNumber *int32 `json:"residentNodeNumber,omitempty" xml:"residentNodeNumber,omitempty"`
-	// The specification type of the node group. Valid values:
+	// The instance family category of the compute group. Valid values:
+	//
+	// - standard: Standard.
+	//
+	// - localSSD: Local SSD.
+	//
+	// - bigData: Large storage.
+	//
+	// - ramEnhanced: Memory-enhanced instance family.
+	//
+	// - networkEnhanced: Network-enhanced.
 	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
 	// The performance level (PL) of the cloud disk. Valid values:
+	//
+	// - pl0: A single disk delivers up to 10,000 random read/write IOPS.
+	//
+	// - pl1: A single disk delivers up to 50,000 random read/write IOPS.
+	//
+	// - pl2: A single disk delivers up to 100,000 random read/write IOPS.
+	//
+	// - pl3: A single disk delivers up to 1,000,000 random read/write IOPS.
 	//
 	// example:
 	//
@@ -832,7 +848,7 @@ func (s *CreateInstanceV1RequestBackendNodeGroups) Validate() error {
 }
 
 type CreateInstanceV1RequestFrontendNodeGroups struct {
-	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory.
+	// The number of compute units (CUs). A CU is the basic metering unit of the service. 1 CU equals 1 vCPU and 4 GiB of memory.
 	//
 	// example:
 	//
@@ -844,7 +860,7 @@ type CreateInstanceV1RequestFrontendNodeGroups struct {
 	//
 	// 1
 	DiskNumber *int32 `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
-	// The local SSD instance type. This parameter does not need to be set for the FE node group.
+	// The local SSD instance type. You do not need to set this parameter for FE compute groups.
 	//
 	// example:
 	//
@@ -856,13 +872,13 @@ type CreateInstanceV1RequestFrontendNodeGroups struct {
 	//
 	// 3
 	ResidentNodeNumber *int32 `json:"residentNodeNumber,omitempty" xml:"residentNodeNumber,omitempty"`
-	// The specification type of the node group. Only standard is supported.
+	// The specification type of the compute group. Only standard is supported.
 	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
-	// The performance level (PL) of the cloud disk. Only pl1 is supported, which provides up to 50,000 random read/write IOPS per disk.
+	// The performance level (PL) of the cloud disk. Only pl1 is supported, where a single disk delivers up to 50,000 random read/write IOPS.
 	//
 	// example:
 	//
@@ -967,7 +983,7 @@ func (s *CreateInstanceV1RequestFrontendNodeGroups) Validate() error {
 }
 
 type CreateInstanceV1RequestObserverNodeGroups struct {
-	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory.
+	// The number of compute units (CUs). A CU is the basic metering unit of the service. 1 CU equals 1 vCPU and 4 GiB of memory.
 	//
 	// example:
 	//
@@ -979,7 +995,7 @@ type CreateInstanceV1RequestObserverNodeGroups struct {
 	//
 	// 1
 	DiskNumber *int32 `json:"diskNumber,omitempty" xml:"diskNumber,omitempty"`
-	// The local SSD instance type. This parameter does not need to be set for the Observer node group.
+	// The instance specification for local SSDs. You do not need to specify this parameter for the Observer compute group.
 	//
 	// example:
 	//
@@ -991,13 +1007,13 @@ type CreateInstanceV1RequestObserverNodeGroups struct {
 	//
 	// 3
 	ResidentNodeNumber *int32 `json:"residentNodeNumber,omitempty" xml:"residentNodeNumber,omitempty"`
-	// The specification type of the node group. Only standard is supported.
+	// The specification type of the compute group. Only standard is supported.
 	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
-	// The performance level (PL) of the cloud disk. Only pl1 is supported, which provides up to 50,000 random read/write IOPS per disk.
+	// The performance level (PL) of the cloud disk. Only PL1 is supported, which delivers up to 50,000 random read/write IOPS per disk.
 	//
 	// example:
 	//

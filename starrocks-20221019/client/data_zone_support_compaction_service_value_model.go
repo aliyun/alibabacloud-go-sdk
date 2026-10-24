@@ -18,11 +18,19 @@ type iDataZoneSupportCompactionServiceValue interface {
 }
 
 type DataZoneSupportCompactionServiceValue struct {
-	// The availability zone ID.
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-*******n-f
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 	// The resource level.
+	//
+	// example:
+	//
+	// MEDIUM
 	ResourceLevel *string `json:"resourceLevel,omitempty" xml:"resourceLevel,omitempty"`
-	// Indicates whether this is the recommended option.
+	// Indicates whether the configuration is recommended.
 	Recommended *bool `json:"recommended,omitempty" xml:"recommended,omitempty"`
 }
 

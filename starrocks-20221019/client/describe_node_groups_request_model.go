@@ -36,13 +36,13 @@ type DescribeNodeGroupsRequest struct {
 	//
 	// c-718fb04c7112****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The page number for paging. Default value: 1.
+	// The page number for a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging. Default value: 10.
+	// The number of entries per page for a paged query. Default value: 10.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeNodeGroupsRequest struct {
 	//
 	// FE
 	ComponentType *string `json:"componentType,omitempty" xml:"componentType,omitempty"`
-	// **[Deprecated]*	- The instance ID. This parameter is deprecated.
+	// **[Deprecated]*	- The instance ID.
 	//
 	// example:
 	//
@@ -86,23 +86,23 @@ type DescribeNodeGroupsRequest struct {
 	//
 	// - CREATING_FAILED: Creation failed.
 	//
-	// - CREATING: Being created.
+	// - CREATING: Creating.
 	//
 	// - RUNNING: Running.
 	//
-	// - MODIFYING_CONFIG: Configuration being modified.
+	// - MODIFYING_CONFIG: Modifying configurations.
 	//
-	// - MODIFYING_TIMEZONE: Time zone being modified.
+	// - MODIFYING_TIMEZONE: Modifying the time zone.
 	//
-	// - ELASTIC_SCALING_OUT: Elastic scale-out in progress.
+	// - ELASTIC_SCALING_OUT: Elastically scaling out.
 	//
-	// - ELASTIC_SCALING_IN: Elastic scale-in in progress.
+	// - ELASTIC_SCALING_IN: Elastically scaling in.
 	//
-	// - SCALING_OUT: Scale-out in progress.
+	// - SCALING_OUT: Scaling out.
 	//
 	// - RESTARTING: Restarting.
 	//
-	// - SCALING_IN: Scale-in in progress.
+	// - SCALING_IN: Scaling in.
 	//
 	// - SCALING_UP: Scaling up.
 	//
@@ -114,11 +114,11 @@ type DescribeNodeGroupsRequest struct {
 	//
 	// - DISABLE_PUBLIC_NETWORK: Disabling public network access.
 	//
-	// - SWITCH_AZ: Switching zone.
+	// - SWITCH_AZ: Switching the zone.
 	//
 	// - DISABLE: Disabled.
 	//
-	// - DELETING: Being deleted.
+	// - DELETING: Deleting.
 	//
 	// - DELETED: Deleted.
 	//

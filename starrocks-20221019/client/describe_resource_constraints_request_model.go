@@ -18,35 +18,35 @@ type iDescribeResourceConstraintsRequest interface {
 }
 
 type DescribeResourceConstraintsRequest struct {
-	// Specifies the instance architecture. Valid values:
+	// The instance architecture. Valid values:
 	//
-	// - onEci: The instance is deployed on ECI.
+	// - onEci: Deployed on ECI.
 	//
-	// - onEcs: The instance is deployed on ECS.
+	// - onEcs: Deployed on ECS.
 	//
-	// - onBareMetal: The instance is deployed on a bare metal resource pool.
+	// - onBareMetal: Deployed on a bare metal resource pool.
 	//
 	// example:
 	//
 	// onEcs
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Specifies the instance edition. Valid values:
+	// The instance edition. Valid values:
 	//
-	// - trial: The entry-level edition.
+	// - trial: Trial edition.
 	//
-	// - official: The Standard Edition.
+	// - official: Standard edition.
 	//
 	// example:
 	//
 	// trial
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// Specifies the run mode of the cluster. Valid values:
+	// The running mode of the cluster. Valid values:
 	//
-	// - shared_nothing: The shared-nothing mode.
+	// - shared_nothing: Integrated storage and compute.
 	//
-	// - shared_data: The shared-data mode.
+	// - shared_data: Separated storage and compute.
 	//
-	// - lakehouse: The data lake analytics mode.
+	// - lakehouse: Data lakehouse analysis.
 	//
 	// example:
 	//

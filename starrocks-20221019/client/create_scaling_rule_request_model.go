@@ -9,6 +9,8 @@ type iCreateScalingRuleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetInstanceId(v string) *CreateScalingRuleRequest
+	GetInstanceId() *string
 	SetNodeGroupId(v string) *CreateScalingRuleRequest
 	GetNodeGroupId() *string
 	SetRule(v string) *CreateScalingRuleRequest
@@ -18,6 +20,12 @@ type iCreateScalingRuleRequest interface {
 }
 
 type CreateScalingRuleRequest struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// c-b25e21e24388****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The compute group ID.
 	//
 	// This parameter is required.
@@ -102,6 +110,10 @@ func (s CreateScalingRuleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateScalingRuleRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *CreateScalingRuleRequest) GetNodeGroupId() *string {
 	return s.NodeGroupId
 }
@@ -112,6 +124,11 @@ func (s *CreateScalingRuleRequest) GetRule() *string {
 
 func (s *CreateScalingRuleRequest) GetTriggerType() *string {
 	return s.TriggerType
+}
+
+func (s *CreateScalingRuleRequest) SetInstanceId(v string) *CreateScalingRuleRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *CreateScalingRuleRequest) SetNodeGroupId(v string) *CreateScalingRuleRequest {
