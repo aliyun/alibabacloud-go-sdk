@@ -20,9 +20,9 @@ type iReportABMetricGroupResponseBody interface {
 type ReportABMetricGroupResponseBody struct {
 	// The experiment report.
 	ExperimentReport map[string]*ExperimentReportValue `json:"ExperimentReport,omitempty" xml:"ExperimentReport,omitempty"`
-	// The dimensions used for grouping the report data.
+	// The dimension fields.
 	GroupDimension []*string `json:"GroupDimension,omitempty" xml:"GroupDimension,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

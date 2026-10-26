@@ -30,13 +30,13 @@ type iGetRecallManagementServiceResponseBody interface {
 }
 
 type GetRecallManagementServiceResponseBody struct {
-	// The ID of the active version of the recall management service.
+	// The ID of the active recall management service version.
 	//
 	// example:
 	//
 	// 1
 	CurrentRecallManagementServiceVersionId *string `json:"CurrentRecallManagementServiceVersionId,omitempty" xml:"CurrentRecallManagementServiceVersionId,omitempty"`
-	// The name of the active version of the recall management service.
+	// The name of the active recall management service version.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type GetRecallManagementServiceResponseBody struct {
 	//
 	// this is a test recall
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time.
+	// The creation time. The time is in ISO 8601 format and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time.
+	// The update time. The time is in ISO 8601 format and includes a time zone offset.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type GetRecallManagementServiceResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the recall management service. Valid values:
+	// The status. Valid values:
 	//
-	// - Online: The service is running and available.
+	// - Online: Online.
 	//
-	// - Offline: The service is stopped or unavailable.
+	// - Offline: Offline.
 	//
 	// example:
 	//

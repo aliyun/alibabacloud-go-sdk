@@ -48,31 +48,31 @@ type iGetTrafficControlTargetResponseBody interface {
 }
 
 type GetTrafficControlTargetResponseBody struct {
-	// The end time.
+	// The end time. Format: YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2024-04-25
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The event of the control target.
+	// The traffic control target event.
 	//
 	// example:
 	//
 	// click
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The time when the traffic control target was created.
+	// The creation time. Format: ISO 8601, where Z indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-01-03T02:28:00.000Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The item condition, specified in an array format.
+	// The item conditions in array format.
 	//
 	// example:
 	//
 	// [{"field":"status","option":"=","value":"1"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	// The item condition, specified in an expression format.
+	// The item conditions in expression format.
 	//
 	// example:
 	//
@@ -84,51 +84,55 @@ type GetTrafficControlTargetResponseBody struct {
 	//
 	// Array
 	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	// The name of the traffic control target.
+	// The traffic control target.
 	//
 	// example:
 	//
 	// target-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether new product regulation is enabled.
+	// Indicates whether the regulation applies to new products.
 	//
 	// example:
 	//
 	// false
 	NewProductRegulation *bool `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
-	// The name of the recall strategy.
+	// The recall policy name.
 	//
 	// example:
 	//
 	// recall-1
 	RecallName *string `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The piecewise control settings.
+	// The target setting values.
 	SplitParts *GetTrafficControlTargetResponseBodySplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
-	// The start time.
+	// The start time. Format: YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2024-03-25
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The statistics period.
+	// The statistical period.
 	//
 	// example:
 	//
 	// Daily
 	StatisPeriod *string `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
-	// The status of the traffic control target.
+	// The status.
 	//
 	// example:
 	//
-	// 枚举值：开启：Opened关闭：Closed
+	// Valid values:
+	//
+	// - Opened: Enabled.
+	//
+	// - Closed: Disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tolerance value.
+	// The tolerance range of the traffic control target.
 	//
 	// example:
 	//
@@ -146,7 +150,7 @@ type GetTrafficControlTargetResponseBody struct {
 	//
 	// 1
 	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
-	// The value of the control target.
+	// The traffic control target value.
 	//
 	// example:
 	//
@@ -334,11 +338,11 @@ func (s *GetTrafficControlTargetResponseBody) Validate() error {
 }
 
 type GetTrafficControlTargetResponseBodySplitParts struct {
-	// The set points.
+	// The target value split points.
 	SetPoints []*int64 `json:"SetPoints,omitempty" xml:"SetPoints,omitempty" type:"Repeated"`
-	// The set values.
+	// The target setting values.
 	SetValues []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
-	// The time points.
+	// The time split points.
 	TimePoints []*int64 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
 

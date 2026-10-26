@@ -14,13 +14,13 @@ type iGetTableMetaRequest interface {
 }
 
 type GetTableMetaRequest struct {
-	// The ID of the instance. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) API to obtain it.
+	// The ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 实例ID	pairec-cn-test1
+	// Instance ID	pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

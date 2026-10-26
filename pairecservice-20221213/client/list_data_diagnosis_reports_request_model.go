@@ -24,7 +24,7 @@ type iListDataDiagnosisReportsRequest interface {
 }
 
 type ListDataDiagnosisReportsRequest struct {
-	// The end date.
+	// The end date. The format is YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type ListDataDiagnosisReportsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The retention rate report type.
 	//
-	// - Period: A report for the specified time period.
+	// - Period: periodic report.
 	//
 	// example:
 	//
 	// Period
 	RemainRateType *string `json:"RemainRateType,omitempty" xml:"RemainRateType,omitempty"`
-	// The start date.
+	// The start date. The format is YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type ListDataDiagnosisReportsRequest struct {
 	//
 	// 2022-01-01
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The number of top results to return.
+	// The maximum number of results to return.
 	//
 	// example:
 	//

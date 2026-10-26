@@ -18,7 +18,7 @@ type iListABMetricsResponseBody interface {
 }
 
 type ListABMetricsResponseBody struct {
-	// The list of AB metrics.
+	// The list of AB test metrics.
 	ABMetrics []*ListABMetricsResponseBodyABMetrics `json:"ABMetrics,omitempty" xml:"ABMetrics,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListABMetricsResponseBody struct {
 	//
 	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of AB metrics returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,13 +83,17 @@ func (s *ListABMetricsResponseBody) Validate() error {
 }
 
 type ListABMetricsResponseBodyABMetrics struct {
-	// The AB metric ID.
+	// The ID of the AB test metric.
 	//
 	// example:
 	//
 	// 1
 	ABMetricId *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
-	// Indicates whether to aggregate data by user.
+	// Specifies whether to calculate significance based on the user dimension. The calculation can be based on users or samples.
+	//
+	// example:
+	//
+	// true
 	AggregationByUser *bool `json:"AggregationByUser,omitempty" xml:"AggregationByUser,omitempty"`
 	// The metric definition.
 	//
@@ -97,7 +101,7 @@ type ListABMetricsResponseBodyABMetrics struct {
 	//
 	// sum(click_cnt)
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The denominator of the derived metric.
+	// The denominator used for significance calculation.
 	//
 	// example:
 	//
@@ -107,11 +111,15 @@ type ListABMetricsResponseBodyABMetrics struct {
 	//
 	// example:
 	//
-	// pv指标
+	// PV metric
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the metric follows a binomial distribution.
+	// Specifies whether the current metric conforms to a binomial distribution when the metric type is a derived metric. If yes, the mean and variance of the metric are calculated based on the binomial distribution.
+	//
+	// example:
+	//
+	// true
 	IsBinomialDistribution *bool `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
-	// The ID of the left-hand metric in the formula for the derived metric.
+	// The ID of the left metric for the derived metric.
 	//
 	// example:
 	//
@@ -123,9 +131,13 @@ type ListABMetricsResponseBodyABMetrics struct {
 	//
 	// pv
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether significance calculation is required.
+	// Specifies whether to calculate significance.
+	//
+	// example:
+	//
+	// true
 	NeedSignificance *bool `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
-	// The numerator of the derived metric.
+	// The numerator used for significance calculation.
 	//
 	// example:
 	//
@@ -133,41 +145,41 @@ type ListABMetricsResponseBodyABMetrics struct {
 	Numerator *string `json:"Numerator,omitempty" xml:"Numerator,omitempty"`
 	// The operator used to calculate the derived metric. Valid values:
 	//
-	// - `Plus`: addition
+	// - Plus: Addition.
 	//
-	// - `Minus`: subtraction
+	// - Minus: Subtraction.
 	//
-	// - `Multiplication`: multiplication
+	// - Multiplication: Multiplication.
 	//
-	// - `Division`: division
+	// - Division: Division.
 	//
 	// example:
 	//
 	// Division
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Indicates whether the metric is a real-time metric.
+	// Specifies whether the metric is a real-time metric. Valid values:
 	//
-	// - `true`: The metric is calculated in real time.
+	// - true: Yes.
 	//
-	// - `false`: The metric is not calculated in real time.
+	// - false: No.
 	//
 	// example:
 	//
 	// false
 	Realtime *string `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	// The ID of the data source for the data table to which the results are written.
+	// The ID of the data source for the write-back data table.
 	//
 	// example:
 	//
 	// 3
 	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
-	// The ID of the data table to which the results are written.
+	// The ID of the data table to which data is written back.
 	//
 	// example:
 	//
 	// 2
 	ResultTableMetaId *string `json:"ResultTableMetaId,omitempty" xml:"ResultTableMetaId,omitempty"`
-	// The ID of the right-hand metric in the formula for the derived metric.
+	// The ID of the right metric for the derived metric.
 	//
 	// example:
 	//
@@ -191,7 +203,7 @@ type ListABMetricsResponseBodyABMetrics struct {
 	//
 	// 1
 	StatisticsCycle *int32 `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
-	// The data table ID.
+	// The ID of the data table.
 	//
 	// example:
 	//
@@ -199,9 +211,9 @@ type ListABMetricsResponseBodyABMetrics struct {
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
 	// The metric type. Valid values:
 	//
-	// - `Single`: a single metric.
+	// - Single: Single metric.
 	//
-	// - `Derived`: a derived metric.
+	// - Derived: Derived metric.
 	//
 	// example:
 	//

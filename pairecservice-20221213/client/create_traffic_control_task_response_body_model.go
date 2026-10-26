@@ -16,13 +16,13 @@ type iCreateTrafficControlTaskResponseBody interface {
 }
 
 type CreateTrafficControlTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 42391E6D-822C-58F8-9F7E-D991BB86D6AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the new traffic control task.
+	// The ID of the traffic control task.
 	//
 	// example:
 	//

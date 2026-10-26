@@ -28,27 +28,27 @@ type iGetRecallManagementJobResponseBody interface {
 }
 
 type GetRecallManagementJobResponseBody struct {
-	// The time when the job ended.
+	// The synchronization end time. The format is YYYY-MM-DDTHH:mm:ss.SSS.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The log of the job.
+	// The log.
 	//
 	// example:
 	//
 	// "success"
 	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
-	// The recall management job ID.
+	// The recall management task ID.
 	//
 	// example:
 	//
 	// 1
 	RecallManagementJobId *string `json:"RecallManagementJobId,omitempty" xml:"RecallManagementJobId,omitempty"`
-	// Details of the recall management table.
+	// The recall management table details.
 	RecallManagementTableInfo *GetRecallManagementJobResponseBodyRecallManagementTableInfo `json:"RecallManagementTableInfo,omitempty" xml:"RecallManagementTableInfo,omitempty" type:"Struct"`
-	// Details of the recall management table.
+	// The recall management table information.
 	RecallManagerTableInfo *GetRecallManagementJobResponseBodyRecallManagerTableInfo `json:"RecallManagerTableInfo,omitempty" xml:"RecallManagerTableInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -56,21 +56,21 @@ type GetRecallManagementJobResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the job started.
+	// The synchronization start time. The format is YYYY-MM-DDTHH:mm:ss.SSS.
 	//
 	// example:
 	//
 	// 2021-12-15T22:24:33.132
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the job. Valid values are:
+	// The task status. Valid values:
 	//
-	// - `Init`: Initializing.
+	// 	- `Init`: init.
 	//
-	// - `Running`: Running.
+	// 	- `Running`: running.
 	//
-	// - `Success`: Successful.
+	// 	- `Success`: succeeded.
 	//
-	// - `Failed`: Failed.
+	// 	- `Failed`: failed.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type GetRecallManagementJobResponseBodyRecallManagementTableInfo struct {
 	//
 	// ds=20250701
 	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
-	// The recall management table version ID.
+	// The table version ID.
 	//
 	// example:
 	//
@@ -248,13 +248,13 @@ func (s *GetRecallManagementJobResponseBodyRecallManagementTableInfo) Validate()
 }
 
 type GetRecallManagementJobResponseBodyRecallManagerTableInfo struct {
-	// The data version.
+	// The data version number.
 	//
 	// example:
 	//
 	// ds=20250701
 	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
-	// The recall management table version ID.
+	// The recall table version ID.
 	//
 	// example:
 	//

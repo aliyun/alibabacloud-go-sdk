@@ -18,15 +18,15 @@ type iListInstanceResourceTablesResponseBody interface {
 }
 
 type ListInstanceResourceTablesResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 01D22D08-BA20-5F35-8302-99115F288220
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of data tables.
+	// The list of tables.
 	Tables []*ListInstanceResourceTablesResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The total count of data tables.
+	// The total count.
 	//
 	// example:
 	//

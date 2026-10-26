@@ -16,7 +16,7 @@ type iCreateDataDiagnosisJobsResponseBody interface {
 }
 
 type CreateDataDiagnosisJobsResponseBody struct {
-	// A list of data diagnosis job IDs.
+	// The list of data modeling diagnostics node IDs.
 	DataDiagnosisJobIds []*string `json:"DataDiagnosisJobIds,omitempty" xml:"DataDiagnosisJobIds,omitempty" type:"Repeated"`
 	// The request ID.
 	//

@@ -22,7 +22,7 @@ type iListCalculationJobsRequest interface {
 }
 
 type ListCalculationJobsRequest struct {
-	// The instance ID. To obtain this ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	// The instance ID. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListCalculationJobsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The scene ID. To obtain this ID, call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
+	// The scene ID. You can call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to query the scene ID.
 	//
 	// This parameter is required.
 	//
@@ -50,15 +50,15 @@ type ListCalculationJobsRequest struct {
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The status of the calculation job. Valid values:
+	// The status. Valid values:
 	//
-	// - Success
+	// - Success: Succeeded.
 	//
-	// - Failure
+	// - Failure: Failed.
 	//
-	// - Initializing
+	// - Initializing: Initializing.
 	//
-	// - Running
+	// - Running: Running.
 	//
 	// example:
 	//

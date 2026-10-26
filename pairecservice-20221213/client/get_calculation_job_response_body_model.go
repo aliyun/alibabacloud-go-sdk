@@ -30,43 +30,43 @@ type iGetCalculationJobResponseBody interface {
 }
 
 type GetCalculationJobResponseBody struct {
-	// The ID of the AB metric.
+	// The AB metric ID.
 	//
 	// example:
 	//
 	// 1
 	ABMetricId *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
-	// The name of the AB metric.
+	// The AB metric name.
 	//
 	// example:
 	//
 	// pv
 	ABMetricName *string `json:"ABMetricName,omitempty" xml:"ABMetricName,omitempty"`
-	// The business date.
+	// The business date. The value is in YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2021-12-15
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The job configuration.
+	// The task configuration.
 	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The runtime of the job.
+	// The time when the task ran. The value is in ISO 8601 format and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtRanTime *string `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
-	// The job messages.
+	// The task information.
 	JobMessage []*string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty" type:"Repeated"`
-	// The job source. Valid values:
+	// The task source. Valid values:
 	//
-	// - CronOffline: An offline cron job.
+	// - CronOffline: a scheduled offline task.
 	//
-	// - DataRerun: A data rerun task.
+	// - DataRerun: a data rerun task.
 	//
 	// example:
 	//
@@ -78,15 +78,15 @@ type GetCalculationJobResponseBody struct {
 	//
 	// 7D59453C-48AA-5FC5-8848-2D373BD1A17F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the calculation job. Valid values:
+	// The status of the compute task. Valid values:
 	//
-	// - Success: The job completed successfully.
+	// - Success: The task succeeded.
 	//
-	// - Failure: The job failed.
+	// - Failure: The task failed.
 	//
-	// - Initializing: The job is initializing.
+	// - Initializing: The task is being initialized.
 	//
-	// - Running: The job is running.
+	// - Running: The task is running.
 	//
 	// example:
 	//

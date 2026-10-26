@@ -29,17 +29,17 @@ type ListParamsRequest struct {
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	// The environment to which the parameter belongs. Valid values:
 	//
-	// - Daily: A test environment for daily use.
+	// - Daily: daily environment
 	//
-	// - Prepub: A staging environment that mirrors the production environment.
+	// - Pre: pre-release environment
 	//
-	// - Product: The production environment.
+	// - Prod: production environment
 	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The instance ID. You can call the ListInstances operation to obtain it.
+	// The instance ID. You can call the ListInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -59,13 +59,13 @@ type ListParamsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The scene ID. You can call the ListScenes operation to obtain it.
+	// The scene ID. You can call the ListScenes operation to obtain the scene ID.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iCreateCalculationJobsResponseBody interface {
 }
 
 type CreateCalculationJobsResponseBody struct {
-	// A list of calculation job IDs.
+	// The list of compute task IDs.
 	CalculationJobIds []*string `json:"CalculationJobIds,omitempty" xml:"CalculationJobIds,omitempty" type:"Repeated"`
 	// The request ID.
 	//

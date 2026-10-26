@@ -16,7 +16,7 @@ type iListLayersRequest interface {
 }
 
 type ListLayersRequest struct {
-	// The instance ID. You can obtain this ID by calling the ListInstances API.
+	// The instance ID. You can obtain this ID by calling the ListInstances operation.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListLayersRequest struct {
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The laboratory ID. You can obtain this ID by calling the ListLaboratories API.
+	// The laboratory ID. You can obtain this ID by calling the ListLaboratories operation.
 	//
 	// This parameter is required.
 	//

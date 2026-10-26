@@ -40,7 +40,7 @@ type iGetInstanceResponseBody interface {
 }
 
 type GetInstanceResponseBody struct {
-	// The billing type of the instance. Currently, only Subscription (prepayment) is supported.
+	// The billing method of the instance. Only subscription is supported.
 	//
 	// example:
 	//
@@ -52,51 +52,53 @@ type GetInstanceResponseBody struct {
 	//
 	// airec_developers_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The instance configuration.
+	// The configuration of the instance.
 	Config *GetInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The time when the instance expires.
+	// The time when the instance expires. The time is displayed in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
-	// 2022-12-14 00:00:00.0
-	ExpiredTime      *string                                  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// 2022-12-14T00:00:00Z
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The Feature Store information.
 	FeatureStoreInfo *GetInstanceResponseBodyFeatureStoreInfo `json:"FeatureStoreInfo,omitempty" xml:"FeatureStoreInfo,omitempty" type:"Struct"`
-	// The time when the instance was created.
+	// The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
-	// 2022-10-13 17:34:52.0
+	// 2022-10-13T04:55:12Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the instance was last updated.
+	// The time when the instance was updated. The time is displayed in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
-	// 2022-11-05 09:02:30.0
+	// 2022-11-05T09:02:30Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The configuration of the operations tool.
-	OperatingTool          *GetInstanceResponseBodyOperatingTool          `json:"OperatingTool,omitempty" xml:"OperatingTool,omitempty" type:"Struct"`
+	// The configurations of the operations tool.
+	OperatingTool *GetInstanceResponseBodyOperatingTool `json:"OperatingTool,omitempty" xml:"OperatingTool,omitempty" type:"Struct"`
+	// The recommendation customization configurations.
 	RecommendCustomization *GetInstanceResponseBodyRecommendCustomization `json:"RecommendCustomization,omitempty" xml:"RecommendCustomization,omitempty" type:"Struct"`
 	// The region ID. Valid values:
 	//
-	// - cn-shenzhen: China (Shenzhen).
+	// - cn-shenzhen: Shenzhen.
 	//
-	// - cn-hangzhou: China (Hangzhou).
+	// - cn-hangzhou: Hangzhou.
 	//
-	// - cn-beijing: China (Beijing).
+	// - cn-beijing: Beijing.
 	//
-	// - cn-shanghai: China (Shanghai).
+	// - cn-shanghai: Shanghai.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -104,11 +106,11 @@ type GetInstanceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - Initializing: The instance is being initialized.
+	// - Initializing: Initializing.
 	//
-	// - Stopped: The instance is stopped.
+	// - Stopped: Stopped.
 	//
-	// - Running: The instance is running.
+	// - Running: Running.
 	//
 	// example:
 	//
@@ -289,11 +291,11 @@ func (s *GetInstanceResponseBody) Validate() error {
 }
 
 type GetInstanceResponseBodyConfig struct {
-	// The list of modeling environments.
+	// The modeling environments.
 	DataManagements []*GetInstanceResponseBodyConfigDataManagements `json:"DataManagements,omitempty" xml:"DataManagements,omitempty" type:"Repeated"`
-	// The list of service engines.
+	// The service engines.
 	Engines []*GetInstanceResponseBodyConfigEngines `json:"Engines,omitempty" xml:"Engines,omitempty" type:"Repeated"`
-	// The list of supporting features.
+	// The supporting features.
 	Monitors []*GetInstanceResponseBodyConfigMonitors `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
 }
 
@@ -364,7 +366,7 @@ func (s *GetInstanceResponseBodyConfig) Validate() error {
 }
 
 type GetInstanceResponseBodyConfigDataManagements struct {
-	// The component code.
+	// The code of the component.
 	//
 	// example:
 	//
@@ -372,7 +374,7 @@ type GetInstanceResponseBodyConfigDataManagements struct {
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
 	// The metadata.
 	Meta map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	// The component type.
+	// The type of the component.
 	//
 	// example:
 	//
@@ -420,7 +422,7 @@ func (s *GetInstanceResponseBodyConfigDataManagements) Validate() error {
 }
 
 type GetInstanceResponseBodyConfigEngines struct {
-	// The component code.
+	// The code of the component.
 	//
 	// example:
 	//
@@ -428,7 +430,7 @@ type GetInstanceResponseBodyConfigEngines struct {
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
 	// The metadata.
 	Meta map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	// The component type.
+	// The type of the component.
 	//
 	// example:
 	//
@@ -476,7 +478,7 @@ func (s *GetInstanceResponseBodyConfigEngines) Validate() error {
 }
 
 type GetInstanceResponseBodyConfigMonitors struct {
-	// The component code.
+	// The code of the component.
 	//
 	// example:
 	//
@@ -484,7 +486,7 @@ type GetInstanceResponseBodyConfigMonitors struct {
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
 	// The metadata.
 	Meta map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	// The component type.
+	// The type of the component.
 	//
 	// example:
 	//
@@ -532,8 +534,10 @@ func (s *GetInstanceResponseBodyConfigMonitors) Validate() error {
 }
 
 type GetInstanceResponseBodyFeatureStoreInfo struct {
+	// The status of FeatureDB.
 	FeatureDBStatus *string `json:"FeatureDBStatus,omitempty" xml:"FeatureDBStatus,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Feature Store instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetInstanceResponseBodyFeatureStoreInfo) String() string {
@@ -567,11 +571,11 @@ func (s *GetInstanceResponseBodyFeatureStoreInfo) Validate() error {
 }
 
 type GetInstanceResponseBodyOperatingTool struct {
-	// Indicates whether the operations tool is enabled for the instance. Valid values:
+	// Specifies whether the operations tool is enabled for the instance. Valid values:
 	//
 	// - True: Enabled.
 	//
-	// - False: Not enabled.
+	// - False: Disabled.
 	//
 	// example:
 	//
@@ -601,6 +605,7 @@ func (s *GetInstanceResponseBodyOperatingTool) Validate() error {
 }
 
 type GetInstanceResponseBodyRecommendCustomization struct {
+	// Specifies whether recommendation customization is enabled.
 	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
 }
 

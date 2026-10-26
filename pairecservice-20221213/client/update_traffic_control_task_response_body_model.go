@@ -14,7 +14,7 @@ type iUpdateTrafficControlTaskResponseBody interface {
 }
 
 type UpdateTrafficControlTaskResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

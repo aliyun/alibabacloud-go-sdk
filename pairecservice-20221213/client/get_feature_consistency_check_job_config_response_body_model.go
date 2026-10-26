@@ -124,18 +124,48 @@ type iGetFeatureConsistencyCheckJobConfigResponseBody interface {
 }
 
 type GetFeatureConsistencyCheckJobConfigResponseBody struct {
-	// Whether to enable feature comparison.
+	// Indicates whether feature comparison is enabled.
 	//
 	// example:
 	//
 	// true
-	CompareFeature   *bool   `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
-	DatasetId        *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	CompareFeature *bool `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	// The dataset ID.
+	//
+	// example:
+	//
+	// s-xxx
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The mount path of the dataset.
+	//
+	// example:
+	//
+	// mnt/xxx
 	DatasetMountPath *string `json:"DatasetMountPath,omitempty" xml:"DatasetMountPath,omitempty"`
-	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	DatasetType      *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
-	DatasetUri       *string `json:"DatasetUri,omitempty" xml:"DatasetUri,omitempty"`
-	DefaultRoute     *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The name of the dataset.
+	//
+	// example:
+	//
+	// test
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The dataset type.
+	//
+	// example:
+	//
+	// OSS
+	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// The URI of the dataset.
+	//
+	// example:
+	//
+	// oss-xxx
+	DatasetUri *string `json:"DatasetUri,omitempty" xml:"DatasetUri,omitempty"`
+	// The default gateway. Eth0 indicates the public gateway. Eth1 indicates the dedicated gateway.
+	//
+	// example:
+	//
+	// Eth0
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	// The EAS service name.
 	//
 	// example:
@@ -154,103 +184,103 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	//
 	// 1.3.60
 	EasyRecVersion *string `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
-	// A comma-separated list of features to exclude from the display.
+	// The feature display filter. Separate multiple features with commas (,).
 	//
 	// example:
 	//
 	// feature1,feature2
 	FeatureDisplayExclude *string `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
-	// The ID of the data source for feature fallback.
+	// The ID of the data source for data backflow.
 	//
 	// example:
 	//
 	// reso-********
 	FeatureLandingResourceId *string `json:"FeatureLandingResourceId,omitempty" xml:"FeatureLandingResourceId,omitempty"`
-	// The URI of the data source for feature fallback.
+	// The URI of the data source for data backflow.
 	//
 	// example:
 	//
 	// mc_project_1
 	FeatureLandingResourceUri *string `json:"FeatureLandingResourceUri,omitempty" xml:"FeatureLandingResourceUri,omitempty"`
-	// A comma-separated list of features, ordered by priority.
+	// The feature priority. Separate multiple features with commas (,).
 	//
 	// example:
 	//
 	// feature1,feature2,feature3
 	FeaturePriority *string `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
-	// The primary key for items in the Feature Store.
+	// The primary key on the item side in Feature Store.
 	//
 	// example:
 	//
 	// item
 	FeatureStoreItemId *string `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
-	// The Feature Store model ID.
+	// The feature store model ID.
 	//
 	// example:
 	//
 	// 2
 	FeatureStoreModelId *string `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
-	// The Feature Store project ID.
+	// The ID of the Feature Store project.
 	//
 	// example:
 	//
 	// prj-01
 	FeatureStoreProjectId *string `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
-	// The Feature Store project name.
+	// The name of the Feature Store project.
 	//
 	// example:
 	//
 	// project-1
 	FeatureStoreProjectName *string `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
-	// The name of the feature view that contains item features within sequence features.
+	// The name of the feature view to which the item feature belongs in the sequence feature.
 	//
 	// example:
 	//
 	// item-1
 	FeatureStoreSeqFeatureView *string `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
-	// The primary key for users in the Feature Store.
+	// The primary key on the user side in Feature Store.
 	//
 	// example:
 	//
 	// user
 	FeatureStoreUserId *string `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
-	// The version of the `fg_jar` file.
+	// The fg_jar version.
 	//
 	// example:
 	//
 	// 1.0.0
 	FgJarVersion *string `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
-	// The name of the `fg_json` file.
+	// The name of the fg_json file.
 	//
 	// example:
 	//
 	// file.json
 	FgJsonFileName *string `json:"FgJsonFileName,omitempty" xml:"FgJsonFileName,omitempty"`
-	// Whether to generate a ZIP package.
+	// Indicates whether a ZIP package needs to be generated.
 	//
 	// example:
 	//
 	// true
 	GenerateZip *bool `json:"GenerateZip,omitempty" xml:"GenerateZip,omitempty"`
-	// The time the configuration was created.
+	// The creation time. The time is in ISO 8601 format and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time the configuration was last updated.
+	// The update time. The time is in ISO 8601 format and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The name of the `item_id` field.
+	// The name of the item_id field.
 	//
 	// example:
 	//
 	// item_id
 	ItemIdField *string `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
-	// The item table name.
+	// The name of the item table.
 	//
 	// example:
 	//
@@ -264,27 +294,27 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	ItemTablePartitionField *string `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
 	// The format of the partition field in the item table. Valid values:
 	//
-	// - `yyyymmdd`
+	// - yyyymmdd
 	//
-	// - `yyyy-mm-dd`
+	// - yyyy-mm-dd
 	//
 	// example:
 	//
 	// yyyymmdd
 	ItemTablePartitionFieldFormat *string `json:"ItemTablePartitionFieldFormat,omitempty" xml:"ItemTablePartitionFieldFormat,omitempty"`
-	// The end time of the most recent job.
+	// The end time of the latest job. The time is in ISO 8601 format and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	LatestJobGmtSamplingEndTime *string `json:"LatestJobGmtSamplingEndTime,omitempty" xml:"LatestJobGmtSamplingEndTime,omitempty"`
-	// The start time of the most recent job.
+	// The start time of the latest job. The time is in ISO 8601 format and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	LatestJobGmtSamplingStartTime *string `json:"LatestJobGmtSamplingStartTime,omitempty" xml:"LatestJobGmtSamplingStartTime,omitempty"`
-	// The ID of the most recent job created from this configuration.
+	// The ID of the latest job created based on this configuration.
 	//
 	// example:
 	//
@@ -296,7 +326,7 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	//
 	// feature_consistency_check1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The OSS bucket name.
+	// The name of the OSS bucket.
 	//
 	// example:
 	//
@@ -307,18 +337,38 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	// example:
 	//
 	// reso-********
-	OssResourceId       *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
-	PredictWorkerCount  *int32  `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
-	PredictWorkerCpu    *int32  `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
-	PredictWorkerMemory *int32  `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
+	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	// The number of workers used to execute the prediction script.
+	//
+	// example:
+	//
+	// 1
+	PredictWorkerCount *int32 `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
+	// The CPU resources allocated to workers when executing the prediction script.
+	//
+	// example:
+	//
+	// 4
+	PredictWorkerCpu *int32 `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
+	// The memory resources allocated to workers when executing the prediction script.
+	//
+	// example:
+	//
+	// 32000
+	PredictWorkerMemory *int32 `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource configuration.
+	//
+	// example:
+	//
+	// {}
 	ResourceConfig *string `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
-	// The sample rate. The value must be between 0 and 1.
+	// The sampling rate. Valid values: 0 to 1.
 	//
 	// example:
 	//
@@ -335,7 +385,12 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	// example:
 	//
 	// scene1
-	SceneName       *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-xxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The service ID.
 	//
@@ -349,34 +404,39 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	//
 	// service1
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The status of the configuration. Valid values:
+	// The status. Valid values:
 	//
-	// - `Editable`: The configuration can be edited.
+	// - Editable: The configuration is editable.
 	//
-	// - `Uneditable`: The configuration cannot be edited.
+	// - Uneditable: The configuration is not editable.
 	//
 	// example:
 	//
 	// Editable
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vswitch-xxx
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	// Whether to use a Feature Store. Valid values:
+	// Indicates whether to use Feature Store. Valid values:
 	//
-	// - `true`: A Feature Store is used. In this case, the response also returns `FeatureStoreProjectId`, `FeatureStoreProjectName`, `FeatureStoreModelId`, `FeatureStoreUserId`, and `FeatureStoreItemId`.
+	// - true: Feature Store is used. In this case, FeatureStoreProjectId, FeatureStoreProjectName, FeatureStoreModelId, FeatureStoreUserId, and FeatureStoreItemId are returned.
 	//
-	// - `false`: A Feature Store is not used. In this case, the `UserTable`, `UserIdField`, `UserTablePartitionField`, `UserTablePartitionFieldFormat`, `ItemTable`, `ItemIdField`, `ItemTablePartitionField`, and `ItemTablePartitionFieldFormat` parameters are returned.
+	// - false: Feature Store is not used. In this case, UserTable, UserIdField, UserTablePartitionField, UserTablePartitionFieldFormat, ItemTable, ItemIdField, ItemTablePartitionField, and ItemTablePartitionFieldFormat are required.
 	//
 	// example:
 	//
 	// true
 	UseFeatureStore *bool `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
-	// The name of the `user_id` field.
+	// The name of the user_id field.
 	//
 	// example:
 	//
 	// user_id
 	UserIdField *string `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
-	// The user table name.
+	// The name of the user table.
 	//
 	// example:
 	//
@@ -390,22 +450,32 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	UserTablePartitionField *string `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
 	// The format of the partition field in the user table. Valid values:
 	//
-	// - `yyyymmdd`
+	// - yyyymmdd
 	//
-	// - `yyyy-mm-dd`
+	// - yyyy-mm-dd
 	//
 	// example:
 	//
 	// yyyymmdd
 	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
-	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-xxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The workflow name.
 	//
 	// example:
 	//
 	// work_flow_1
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
-	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The ID of the PAI workspace.
+	//
+	// example:
+	//
+	// test
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetFeatureConsistencyCheckJobConfigResponseBody) String() string {

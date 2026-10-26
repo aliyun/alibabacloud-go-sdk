@@ -14,7 +14,7 @@ type iGetCalculationJobRequest interface {
 }
 
 type GetCalculationJobRequest struct {
-	// The ID of the instance. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain this ID.
+	// The instance ID. You can call [ListInstances](https://help.aliyun.com/document_detail/2411819.html) to obtain the instance ID.
 	//
 	// This parameter is required.
 	//

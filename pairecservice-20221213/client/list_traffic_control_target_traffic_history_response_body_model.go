@@ -24,13 +24,13 @@ type ListTrafficControlTargetTrafficHistoryResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of historical records.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 10
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of the traffic control history records.
+	// The traffic control history records.
 	TrafficControlTaskTrafficHistories []*ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories `json:"TrafficControlTaskTrafficHistories,omitempty" xml:"TrafficControlTaskTrafficHistories,omitempty" type:"Repeated"`
 }
 
@@ -95,13 +95,13 @@ type ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTraffic
 	//
 	// 1001
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The timestamp of the record.
+	// The time in the behavior table, up to the current time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-10-10 10:10:58
 	RecordTime *string `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
-	// The intended traffic for the traffic control target.
+	// The target traffic of the traffic control target.
 	//
 	// example:
 	//

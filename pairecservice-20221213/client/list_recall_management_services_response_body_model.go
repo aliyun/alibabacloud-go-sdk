@@ -22,19 +22,19 @@ type iListRecallManagementServicesResponseBody interface {
 }
 
 type ListRecallManagementServicesResponseBody struct {
-	// This parameter is not currently in effect.
+	// This parameter does not take effect.
 	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// This parameter is not currently in effect.
+	// This parameter does not take effect.
 	//
 	// example:
 	//
 	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of recall management services.
+	// The recall management services.
 	RecallManagementServices []*ListRecallManagementServicesResponseBodyRecallManagementServices `json:"RecallManagementServices,omitempty" xml:"RecallManagementServices,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -117,13 +117,13 @@ func (s *ListRecallManagementServicesResponseBody) Validate() error {
 }
 
 type ListRecallManagementServicesResponseBodyRecallManagementServices struct {
-	// The ID of the currently active recall management service version.
+	// The ID of the active recall management service version.
 	//
 	// example:
 	//
 	// 1
 	CurrentRecallManagementServiceVersionId *string `json:"CurrentRecallManagementServiceVersionId,omitempty" xml:"CurrentRecallManagementServiceVersionId,omitempty"`
-	// The name of the currently active recall management service version.
+	// The name of the active recall management service version.
 	//
 	// example:
 	//
@@ -135,19 +135,19 @@ type ListRecallManagementServicesResponseBodyRecallManagementServices struct {
 	//
 	// this is a test recall
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time.
+	// The creation time in ISO 8601 format, including the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The update time.
+	// The update time in ISO 8601 format, including the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The service name of the recall management service.
+	// The name of the recall management service.
 	//
 	// example:
 	//

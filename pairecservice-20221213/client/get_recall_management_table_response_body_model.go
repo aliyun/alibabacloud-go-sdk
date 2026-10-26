@@ -60,13 +60,13 @@ type iGetRecallManagementTableResponseBody interface {
 }
 
 type GetRecallManagementTableResponseBody struct {
-	// Specifies whether the table can be deleted.
+	// Indicates whether the table can be deleted.
 	//
 	// example:
 	//
 	// true
 	CanDelete *bool `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
-	// Additional configurations for the table.
+	// The additional configurations of the table.
 	//
 	// example:
 	//
@@ -78,39 +78,39 @@ type GetRecallManagementTableResponseBody struct {
 	//
 	// Api
 	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	// The data table description.
+	// The table description.
 	//
 	// example:
 	//
 	// this is a test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the fluctuation threshold for the data size.
+	// Indicates whether the fluctuation threshold for the size of the table is enabled.
 	//
 	// example:
 	//
 	// false
 	EnableDataSizeFluctuationThreshold *bool `json:"EnableDataSizeFluctuationThreshold,omitempty" xml:"EnableDataSizeFluctuationThreshold,omitempty"`
-	// Specifies whether to enable the fluctuation threshold for the row count.
+	// Indicates whether the fluctuation threshold for the row count of the table is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableRowCountFluctuationThreshold *bool `json:"EnableRowCountFluctuationThreshold,omitempty" xml:"EnableRowCountFluctuationThreshold,omitempty"`
-	// A list of fields.
+	// The list of fields.
 	Fields []*GetRecallManagementTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The creation time.
+	// The creation time. The time is displayed in ISO 8601 format and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time.
+	// The update time. The time is displayed in ISO 8601 format and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The index effective time.
+	// The effective period of the index. The time is displayed in ISO 8601 format and includes the time zone offset.
 	//
 	// example:
 	//
@@ -122,19 +122,19 @@ type GetRecallManagementTableResponseBody struct {
 	//
 	// 20250701
 	IndexVersionId *string `json:"IndexVersionId,omitempty" xml:"IndexVersionId,omitempty"`
-	// The maximum data size fluctuation threshold.
+	// The maximum fluctuation threshold for the size of the table.
 	//
 	// example:
 	//
 	// 100
 	MaxDataSizeFluctuationThreshold *int32 `json:"MaxDataSizeFluctuationThreshold,omitempty" xml:"MaxDataSizeFluctuationThreshold,omitempty"`
-	// The maximum row count fluctuation threshold.
+	// The maximum fluctuation threshold for the row count of the table.
 	//
 	// example:
 	//
 	// 100
 	MaxRowCountFluctuationThreshold *int32 `json:"MaxRowCountFluctuationThreshold,omitempty" xml:"MaxRowCountFluctuationThreshold,omitempty"`
-	// The MaxCompute project name.
+	// The name of the MaxCompute project.
 	//
 	// example:
 	//
@@ -146,43 +146,43 @@ type GetRecallManagementTableResponseBody struct {
 	//
 	// default
 	MaxcomputeSchema *string `json:"MaxcomputeSchema,omitempty" xml:"MaxcomputeSchema,omitempty"`
-	// The MaxCompute table name.
+	// The name of the table in MaxCompute.
 	//
 	// example:
 	//
 	// table-1
 	MaxcomputeTableName *string `json:"MaxcomputeTableName,omitempty" xml:"MaxcomputeTableName,omitempty"`
-	// The minimum data size fluctuation threshold.
+	// The minimum fluctuation threshold for the size of the table.
 	//
 	// example:
 	//
 	// 10
 	MinDataSizeFluctuationThreshold *int32 `json:"MinDataSizeFluctuationThreshold,omitempty" xml:"MinDataSizeFluctuationThreshold,omitempty"`
-	// The minimum row count fluctuation threshold.
+	// The minimum fluctuation threshold for the row count of the table.
 	//
 	// example:
 	//
 	// 10
 	MinRowCountFluctuationThreshold *int32 `json:"MinRowCountFluctuationThreshold,omitempty" xml:"MinRowCountFluctuationThreshold,omitempty"`
-	// The data table name.
+	// The table name.
 	//
 	// example:
 	//
 	// table-123
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The partition fields.
+	// The partition fields of the table.
 	//
 	// example:
 	//
 	// dt
 	PartitionFields *string `json:"PartitionFields,omitempty" xml:"PartitionFields,omitempty"`
-	// The data table ID.
+	// The table ID.
 	//
 	// example:
 	//
 	// 3
 	RecallManagementTableId *string `json:"RecallManagementTableId,omitempty" xml:"RecallManagementTableId,omitempty"`
-	// The recall type.
+	// The recall type of the table.
 	//
 	// example:
 	//
@@ -440,7 +440,7 @@ func (s *GetRecallManagementTableResponseBody) Validate() error {
 }
 
 type GetRecallManagementTableResponseBodyFields struct {
-	// A list of field attributes.
+	// The list of attributes for the field.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	// The field name.
 	//
@@ -454,7 +454,7 @@ type GetRecallManagementTableResponseBodyFields struct {
 	//
 	// STRING
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The vector dimension.
+	// The vector dimensions.
 	//
 	// example:
 	//

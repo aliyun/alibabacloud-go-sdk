@@ -42,25 +42,25 @@ type iGetDataDiagnosisResponseBody interface {
 }
 
 type GetDataDiagnosisResponseBody struct {
-	// The configuration of the data diagnosis task.
+	// The configuration content of the diagnostic node.
 	//
 	// example:
 	//
 	// {"AnalysisField":"userid","PartitionFieldFormat":"yyyymmdd"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The time for periodic execution. If this field is empty, the task does not execute periodically.
+	// The scheduled run time. If this field is empty, no scheduled runs are performed. The format is HH:mm.
 	//
 	// example:
 	//
 	// 08:00
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
-	// The creation time.
+	// The creation time. The format follows ISO 8601 and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time.
+	// The last modified time. The format follows ISO 8601 and includes the time zone offset.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type GetDataDiagnosisResponseBody struct {
 	//
 	// 4
 	LeftTableMetaId *string `json:"LeftTableMetaId,omitempty" xml:"LeftTableMetaId,omitempty"`
-	// The partition field of the left data table.
+	// The partition field of the left table.
 	//
 	// example:
 	//
 	// dt
 	LeftTablePartitionField *string `json:"LeftTablePartitionField,omitempty" xml:"LeftTablePartitionField,omitempty"`
-	// The name of the data diagnosis task.
+	// The name of the data modeling diagnostics task.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type GetDataDiagnosisResponseBody struct {
 	//
 	// 5
 	RightTableMetaId *string `json:"RightTableMetaId,omitempty" xml:"RightTableMetaId,omitempty"`
-	// The partition field of the right data table.
+	// The partition field of the right table.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type GetDataDiagnosisResponseBody struct {
 	//
 	// table_meta_1
 	TableMetaName *string `json:"TableMetaName,omitempty" xml:"TableMetaName,omitempty"`
-	// The Top-N quantity.
+	// The top-N quantity.
 	//
 	// example:
 	//
 	// 10
 	TopNQuantity *int64 `json:"TopNQuantity,omitempty" xml:"TopNQuantity,omitempty"`
-	// The type of the data diagnosis task.
+	// The type of the data modeling diagnostics task.
 	//
 	// example:
 	//

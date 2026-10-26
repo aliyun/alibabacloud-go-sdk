@@ -22,31 +22,35 @@ type iGetSubCrowdResponseBody interface {
 }
 
 type GetSubCrowdResponseBody struct {
-	// The time when the sub-crowd was created.
+	// The time when the crowd was created. The time is in ISO 8601 format and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The number of users in the sub-crowd.
+	// The number of users in the crowd.
 	//
 	// example:
 	//
 	// 3
 	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 01D22D08-BA20-5F35-8302-99115F288220
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The source of the sub-crowd. Valid values:
+	// The source of the crowd. Valid values:
+	//
+	// - ManualInput: manual input
+	//
+	// - UploadFile: file upload
 	//
 	// example:
 	//
 	// ManualInput
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The users in the sub-crowd.
+	// The users in the crowd.
 	//
 	// example:
 	//

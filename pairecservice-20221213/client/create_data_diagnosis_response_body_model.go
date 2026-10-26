@@ -16,7 +16,7 @@ type iCreateDataDiagnosisResponseBody interface {
 }
 
 type CreateDataDiagnosisResponseBody struct {
-	// The ID of the data diagnosis task.
+	// The ID of the data modeling diagnostic configuration.
 	//
 	// example:
 	//

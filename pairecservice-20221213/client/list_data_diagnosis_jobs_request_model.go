@@ -44,19 +44,19 @@ type ListDataDiagnosisJobsRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The task status. Valid values:
 	//
-	// - Initializing: The job is being initialized.
+	// - Initializing: The task is being initialized.
 	//
-	// - Running: The job is in progress.
+	// - Running: The task is running.
 	//
-	// - Success: The job succeeded.
+	// - Success: The task succeeded.
 	//
-	// - Failure: The job failed to complete.
+	// - Failure: The task failed.
 	//
 	// example:
 	//
 	// Initializing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A list of data diagnosis types.
+	// The list of data diagnostic types.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 

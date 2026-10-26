@@ -18,15 +18,15 @@ type iListLayersResponseBody interface {
 }
 
 type ListLayersResponseBody struct {
-	// An array of layers.
+	// The list of layers.
 	Layers []*ListLayersResponseBodyLayers `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 518C64F6-DFF7-11ED-85B0-00163E14B3D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of layers.
+	// The total number of elements in the list.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type ListLayersResponseBodyLayers struct {
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the layer was created.
+	// The creation time in ISO 8601 format, using Z to indicate the UTC time zone.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type ListLayersResponseBodyLayers struct {
 	//
 	// layer1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The remaining traffic for the layer.
+	// The remaining traffic for the current experimental layer.
 	//
 	// example:
 	//

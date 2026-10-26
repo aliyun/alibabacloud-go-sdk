@@ -38,7 +38,7 @@ type ChatConversationResponseBody struct {
 	//
 	// example:
 	//
-	// FeatureDB近7天读写量为xxx
+	// The read and write volume of FeatureDB in the last 7 days is xxx
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
 	// The call ID.
 	//
@@ -76,7 +76,7 @@ type ChatConversationResponseBody struct {
 	//
 	// ""
 	Func *string `json:"Func,omitempty" xml:"Func,omitempty"`
-	// The creation time.
+	// The creation time. The format is ISO 8601, including the time zone offset.
 	//
 	// example:
 	//

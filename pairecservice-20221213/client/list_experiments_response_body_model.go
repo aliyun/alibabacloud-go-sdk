@@ -18,15 +18,15 @@ type iListExperimentsResponseBody interface {
 }
 
 type ListExperimentsResponseBody struct {
-	// The list of experiments.
+	// The experiment list.
 	Experiments []*ListExperimentsResponseBodyExperiments `json:"Experiments,omitempty" xml:"Experiments,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 68075085-1A7D-55C2-B51D-7AD9B02A6DD6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of experiments returned.
+	// The total number of elements in the list.
 	//
 	// example:
 	//
@@ -83,111 +83,111 @@ func (s *ListExperimentsResponseBody) Validate() error {
 }
 
 type ListExperimentsResponseBodyExperiments struct {
-	// The alias for the experiment ID.
+	// The alias of the experiment ID.
 	//
 	// example:
 	//
 	// L1#EG1#E1
 	AliasExperimentId *string `json:"AliasExperimentId,omitempty" xml:"AliasExperimentId,omitempty"`
-	// The allocated bucket numbers.
+	// The allocated bucket number.
 	//
 	// example:
 	//
 	// 1,2,3
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	// The configuration of the experiment.
+	// The experiment configuration.
 	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the debug crowd.
+	// The debug crowd ID.
 	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	// A comma-separated list of user IDs for debugging.
+	// The debug users.
 	//
 	// example:
 	//
 	// uid1,uid2,uid3
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	// The description of the experiment.
+	// The experiment description.
 	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the experiment group.
+	// The experiment group ID.
 	//
 	// example:
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	// The ID of the experiment.
+	// The experiment ID.
 	//
 	// example:
 	//
 	// 3
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	// The percentage of flow allocated to the experiment.
+	// The traffic allocation percentage.
 	//
 	// example:
 	//
 	// 100
 	FlowPercent *int32 `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
-	// The timestamp indicating when the experiment was created.
+	// The creation time. The value is in ISO 8601 format and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The timestamp indicating when the experiment was last modified.
+	// The update time. The value is in ISO 8601 format and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The ID of the laboratory.
+	// The laboratory ID.
 	//
 	// example:
 	//
 	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	// The ID of the layer.
+	// The layer ID.
 	//
 	// example:
 	//
 	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	// The name of the experiment.
+	// The experiment name.
 	//
 	// example:
 	//
 	// experiment_test1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the scene.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 3
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The status of the experiment. Valid values:
+	// The status filter. Valid values:
 	//
-	// - `Offline`: The experiment is inactive and does not receive flow.
+	// - Offline: Not online.
 	//
-	// - `Online`: The experiment is active and can receive flow.
+	// - Online: Online.
 	//
 	// example:
 	//
 	// Offline
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the experiment. Valid values:
+	// The experiment type. Valid values:
 	//
-	// - `Baseline`: The control experiment.
+	// - Baseline: Baseline experiment.
 	//
-	// - `Normal`: A variant experiment.
+	// - Normal: Common experiment.
 	//
 	// example:
 	//

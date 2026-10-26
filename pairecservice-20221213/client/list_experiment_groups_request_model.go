@@ -22,7 +22,7 @@ type iListExperimentGroupsRequest interface {
 }
 
 type ListExperimentGroupsRequest struct {
-	// The instance ID. You can get this ID by calling the ListInstances operation.
+	// The instance ID. You can retrieve this value by calling ListInstances.
 	//
 	// This parameter is required.
 	//
@@ -30,25 +30,31 @@ type ListExperimentGroupsRequest struct {
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The layer ID. You can get this ID by calling the ListLayers operation.
+	// The layer ID. You can retrieve this value by calling ListLayers.
 	//
 	// example:
 	//
 	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	// The status of the experiment group. Valid values: Offline, Online, and Pushed.
+	// The status filter. Valid values:
+	//
+	// ● Offline: Not online.
+	//
+	// ● Online: Online.
+	//
+	// ● Pushed: Fully pushed.
 	//
 	// example:
 	//
 	// Online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The end time for filtering experiment groups.
+	// Filters experiment groups by end time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-08-31 12:00:00
 	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" xml:"TimeRangeEnd,omitempty"`
-	// The start time for filtering experiment groups.
+	// Filters experiment groups by start time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

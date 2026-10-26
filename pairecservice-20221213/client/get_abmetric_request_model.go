@@ -14,7 +14,7 @@ type iGetABMetricRequest interface {
 }
 
 type GetABMetricRequest struct {
-	// The instance ID. To get this ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	// The instance ID. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//

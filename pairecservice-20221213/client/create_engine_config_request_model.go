@@ -50,7 +50,7 @@ type CreateEngineConfigRequest struct {
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The instance ID. You can obtain the ID from the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	// The instance ID. You can obtain the instance ID from the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
 	//
 	// example:
 	//
@@ -62,11 +62,13 @@ type CreateEngineConfigRequest struct {
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scene ID.
+	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The type of the engine configuration.
+	// The engine configuration type.
 	//
 	// example:
 	//

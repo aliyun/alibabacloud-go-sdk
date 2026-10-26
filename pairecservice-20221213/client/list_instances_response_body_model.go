@@ -18,7 +18,7 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// A list of instances.
+	// The instance list.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListInstancesResponseBody struct {
 	//
 	// BDB621CB-A81E-5D39-8793-39A365CBCC74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned instances.
+	// The total number of items in the list.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
-	// The billing method of the instance. Only `Subscription` (prepaid) is supported.
+	// The billing method of the instance. Only subscription is supported.
 	//
 	// example:
 	//
@@ -97,23 +97,23 @@ type ListInstancesResponseBodyInstances struct {
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The instance configuration.
 	Config *ListInstancesResponseBodyInstancesConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The time when the instance expires.
+	// The instance expiration time. The time follows the ISO 8601 standard and is displayed in the UTC time zone.
 	//
 	// example:
 	//
-	// 2022-12-14 00:00:00.0
+	// 2022-12-14T00:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The time when the instance was created.
+	// The instance creation time. The time follows the ISO 8601 standard and is displayed in the UTC time zone.
 	//
 	// example:
 	//
-	// 2022-10-13 17:34:52.0
+	// 2022-10-13T17:34:52Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the instance was last modified.
+	// The instance update time. The time follows the ISO 8601 standard and is displayed in the UTC time zone.
 	//
 	// example:
 	//
-	// 2022-11-05 09:02:30.0
+	// 2022-11-05T09:02:30Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// The instance ID.
 	//
@@ -121,17 +121,17 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The configuration of the operating tool.
+	// The configuration related to the operations tool.
 	OperatingTool *ListInstancesResponseBodyInstancesOperatingTool `json:"OperatingTool,omitempty" xml:"OperatingTool,omitempty" type:"Struct"`
 	// The region ID. Valid values:
 	//
-	// - `cn-shenzhen`: China (Shenzhen)
+	// - cn-shenzhen: Shenzhen.
 	//
-	// - `cn-hangzhou`: China (Hangzhou)
+	// - cn-hangzhou: Hangzhou.
 	//
-	// - `cn-beijing`: China (Beijing)
+	// - cn-beijing: Beijing.
 	//
-	// - `cn-shanghai`: China (Shanghai)
+	// - cn-shanghai: Shanghai.
 	//
 	// example:
 	//
@@ -139,11 +139,11 @@ type ListInstancesResponseBodyInstances struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - `Initializing`: The instance is initializing.
+	// - Initializing: Initializing.
 	//
-	// - `Stopped`: The instance is stopped.
+	// - Stopped: Stopped.
 	//
-	// - `Running`: The instance is running.
+	// - Running: Running.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ type ListInstancesResponseBodyInstances struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - `basic`: Basic Edition
+	// - basic: Basic Edition.
 	//
-	// - `high-level`: High-level Edition
+	// - highleve: Upgraded Edition.
 	//
-	// - `advanced`: Advanced Edition
+	// - advance: Advanced Edition.
 	//
-	// - `standard`: Standard Edition
+	// - standard: Standard Edition.
 	//
 	// example:
 	//
@@ -287,11 +287,11 @@ func (s *ListInstancesResponseBodyInstances) Validate() error {
 }
 
 type ListInstancesResponseBodyInstancesConfig struct {
-	// A list of data management configurations.
+	// The list of modeling environments.
 	DataManagements []*ListInstancesResponseBodyInstancesConfigDataManagements `json:"DataManagements,omitempty" xml:"DataManagements,omitempty" type:"Repeated"`
-	// A list of service engines.
+	// The list of service engines.
 	Engines []*ListInstancesResponseBodyInstancesConfigEngines `json:"Engines,omitempty" xml:"Engines,omitempty" type:"Repeated"`
-	// A list of monitoring components.
+	// The list of supporting features.
 	Monitors []*ListInstancesResponseBodyInstancesConfigMonitors `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
 }
 
@@ -368,7 +368,7 @@ type ListInstancesResponseBodyInstancesConfigDataManagements struct {
 	//
 	// storage
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
-	// The metadata of the component.
+	// The metadata.
 	Meta map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
 	// The component type.
 	//
@@ -424,7 +424,7 @@ type ListInstancesResponseBodyInstancesConfigEngines struct {
 	//
 	// feature
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
-	// The metadata of the component.
+	// The metadata.
 	Meta map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
 	// The component type.
 	//
@@ -480,7 +480,7 @@ type ListInstancesResponseBodyInstancesConfigMonitors struct {
 	//
 	// featuresets
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
-	// The metadata of the component.
+	// The metadata.
 	Meta map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
 	// The component type.
 	//
@@ -530,11 +530,11 @@ func (s *ListInstancesResponseBodyInstancesConfigMonitors) Validate() error {
 }
 
 type ListInstancesResponseBodyInstancesOperatingTool struct {
-	// Specifies whether the operating tool is enabled for the instance. Valid values:
+	// Specifies whether the operations tool is enabled for the instance. Valid values:
 	//
-	// - `true`: The tool is enabled.
+	// - true: Enabled.
 	//
-	// - `false`: The tool is disabled.
+	// - false: Disabled.
 	//
 	// example:
 	//

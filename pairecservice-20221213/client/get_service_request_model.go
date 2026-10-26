@@ -14,7 +14,7 @@ type iGetServiceRequest interface {
 }
 
 type GetServiceRequest struct {
-	// The instance ID. You can call [ListInstances](https://help.aliyun.com/document_detail/2411819.html) to obtain the instance ID.
+	// The instance ID. You can obtain it by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
 	//
 	// example:
 	//

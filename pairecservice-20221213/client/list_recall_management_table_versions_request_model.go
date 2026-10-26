@@ -22,7 +22,7 @@ type iListRecallManagementTableVersionsRequest interface {
 }
 
 type ListRecallManagementTableVersionsRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,11 @@ type ListRecallManagementTableVersionsRequest struct {
 	//
 	// pairec-1324***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The sort order. Valid values: `ASC` (ascending order) and `DESC` (descending order).
+	// The sort order. Valid values:
+	//
+	// - `ASC`: ascending order
+	//
+	// - `DESC`: descending order
 	//
 	// example:
 	//
@@ -48,7 +52,11 @@ type ListRecallManagementTableVersionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field to sort by. Valid values: `GmtCreateTime` (creation time) and `GmtModifiedTime` (update time).
+	// The sort criterion. Valid values:
+	//
+	// - `GmtCreateTime`: creation time
+	//
+	// - `GmtModifiedTime`: update time
 	//
 	// example:
 	//

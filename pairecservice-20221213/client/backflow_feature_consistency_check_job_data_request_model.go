@@ -34,7 +34,7 @@ type iBackflowFeatureConsistencyCheckJobDataRequest interface {
 }
 
 type BackflowFeatureConsistencyCheckJobDataRequest struct {
-	// The feature consistency check job configuration ID. To obtain the configuration ID, call the [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html) operation.
+	// The ID of the feature consistency check job configuration. For more information about how to obtain the configuration ID, see [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html).
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type BackflowFeatureConsistencyCheckJobDataRequest struct {
 	//
 	// 4
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
-	// The instance ID. To obtain the instance ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	// The instance ID. For more information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type BackflowFeatureConsistencyCheckJobDataRequest struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
-	// The log request time (UNIX epoch timestamp).
+	// The log request time (UNIX timestamp).
 	//
 	// This parameter is required.
 	//
@@ -105,7 +105,12 @@ type BackflowFeatureConsistencyCheckJobDataRequest struct {
 	// example:
 	//
 	// [\\"{\\\\\\"dbmtl_probs_is_valid_play\\\\\\":0.00032182207107543945,\\\\\\"dbmtl_y_play_time\\\\\\":0.0043269748210906982}\\"]
-	Scores      *string `json:"Scores,omitempty" xml:"Scores,omitempty"`
+	Scores *string `json:"Scores,omitempty" xml:"Scores,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// se_demorec
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The user features.
 	//

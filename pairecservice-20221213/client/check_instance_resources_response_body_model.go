@@ -22,7 +22,7 @@ type CheckInstanceResourcesResponseBody struct {
 	//
 	// 9763624B-5FBB-5E3A-9193-B1ADB554CEAE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of resources.
+	// The list of resources.
 	Resources []*CheckInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 

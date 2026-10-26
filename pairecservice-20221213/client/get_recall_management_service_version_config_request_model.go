@@ -14,7 +14,7 @@ type iGetRecallManagementServiceVersionConfigRequest interface {
 }
 
 type GetRecallManagementServiceVersionConfigRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

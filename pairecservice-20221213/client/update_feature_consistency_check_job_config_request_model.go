@@ -126,7 +126,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// /mnt/data/
 	DatasetMountPath *string `json:"DatasetMountPath,omitempty" xml:"DatasetMountPath,omitempty"`
-	// The dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
@@ -144,11 +144,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// oss://xxxx
 	DatasetUri *string `json:"DatasetUri,omitempty" xml:"DatasetUri,omitempty"`
-	// The default gateway. Valid values:
-	//
-	// - Eth0: public gateway.
-	//
-	// - Eth1: dedicated gateway.
+	// The default gateway. Valid values: Eth0: public gateway. Eth1: dedicated gateway.
 	//
 	// example:
 	//
@@ -162,7 +158,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// service_123
 	EasServiceName *string `json:"EasServiceName,omitempty" xml:"EasServiceName,omitempty"`
-	// The EasyRec package path.
+	// The path of the EasyRec package.
 	//
 	// example:
 	//
@@ -174,13 +170,13 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// 1.3.60
 	EasyRecVersion *string `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
-	// The features to exclude from display. Separate multiple features with commas (,).
+	// The feature display filter. Separate multiple features with commas (,).
 	//
 	// example:
 	//
 	// feature1,feature2
 	FeatureDisplayExclude *string `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
-	// The data fallback data source ID.
+	// The data landing data source ID.
 	//
 	// This parameter is required.
 	//
@@ -194,7 +190,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// feature1,feature2,feature3
 	FeaturePriority *string `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
-	// The Feature Store item-side primary key.
+	// The item-side primary key in Feature Store.
 	//
 	// example:
 	//
@@ -206,25 +202,25 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// 2
 	FeatureStoreModelId *string `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
-	// The Feature Store project ID.
+	// The ID of the Feature Store project.
 	//
 	// example:
 	//
 	// 1
 	FeatureStoreProjectId *string `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
-	// The Feature Store project name.
+	// The name of the Feature Store project.
 	//
 	// example:
 	//
 	// project-1
 	FeatureStoreProjectName *string `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
-	// The name of the feature view that contains the item features in the sequence feature.
+	// The name of the feature view where the item features in the sequence features are located.
 	//
 	// example:
 	//
 	// seq_item_view
 	FeatureStoreSeqFeatureView *string `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
-	// The Feature Store user-side primary key.
+	// The user-side primary key in Feature Store.
 	//
 	// example:
 	//
@@ -236,7 +232,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// 1.0.0
 	FgJarVersion *string `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
-	// The fg_json file name.
+	// The name of the fg_json file.
 	//
 	// This parameter is required.
 	//
@@ -262,7 +258,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to use Feature Store.
 	IsUseFeatureStore *bool `json:"IsUseFeatureStore,omitempty" xml:"IsUseFeatureStore,omitempty"`
-	// The item_id field name.
+	// The name of the item_id field.
 	//
 	// This parameter is required.
 	//
@@ -270,7 +266,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// item_id
 	ItemIdField *string `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
-	// The item table name.
+	// The name of the item table.
 	//
 	// This parameter is required.
 	//
@@ -278,7 +274,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// item_table
 	ItemTable *string `json:"ItemTable,omitempty" xml:"ItemTable,omitempty"`
-	// The item table partition field.
+	// The partition field of the item table.
 	//
 	// This parameter is required.
 	//
@@ -286,7 +282,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// ds
 	ItemTablePartitionField *string `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
-	// The item table partition field format. Valid values:
+	// The partition field format of the item table. Valid values:
 	//
 	// - yyyymmdd
 	//
@@ -304,7 +300,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// default
 	MaxcomputeSchema *string `json:"MaxcomputeSchema,omitempty" xml:"MaxcomputeSchema,omitempty"`
-	// The feature consistency check name.
+	// The name of the feature consistency check job.
 	//
 	// This parameter is required.
 	//
@@ -318,23 +314,23 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// reso-********
 	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
-	// The number of workers for running the prediction script.
+	// The number of workers used to execute the prediction script.
 	//
 	// example:
 	//
 	// 1
 	PredictWorkerCount *int32 `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
-	// The CPU specification of workers for running the prediction script.
+	// The CPU resources allocated to each worker for executing the prediction script.
 	//
 	// example:
 	//
 	// 4
 	PredictWorkerCpu *int32 `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
-	// The memory specification of workers for running the prediction script.
+	// The memory allocated to each worker for executing the prediction script.
 	//
 	// example:
 	//
-	// 32000(32G)
+	// 32000
 	PredictWorkerMemory *int32 `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
 	// The resource configuration.
 	//
@@ -342,7 +338,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// {}
 	ResourceConfig *string `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
-	// The sampling ratio (0-1).
+	// The sampling ratio, which ranges from 0 to 1.
 	//
 	// This parameter is required.
 	//
@@ -376,7 +372,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// vsw-xxx
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	// The user_id field name.
+	// The name of the user_id field.
 	//
 	// This parameter is required.
 	//
@@ -384,7 +380,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// user_id
 	UserIdField *string `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
-	// The user table name.
+	// The name of the user table.
 	//
 	// This parameter is required.
 	//
@@ -392,7 +388,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// user_table
 	UserTable *string `json:"UserTable,omitempty" xml:"UserTable,omitempty"`
-	// The user table partition field.
+	// The partition field of the user table.
 	//
 	// This parameter is required.
 	//
@@ -400,7 +396,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// ds
 	UserTablePartitionField *string `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
-	// The user table partition field format. Valid values:
+	// The partition field format of the user table. Valid values:
 	//
 	// - yyyymmdd
 	//
@@ -412,19 +408,19 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// yyyymmdd
 	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
-	// VpcID。
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-xxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The workflow name.
+	// The name of the workflow.
 	//
 	// example:
 	//
 	// work_flow_1
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
-	// The PAI workspace ID.
+	// The ID of the PAI workspace.
 	//
 	// example:
 	//

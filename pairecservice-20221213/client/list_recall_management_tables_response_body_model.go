@@ -22,19 +22,19 @@ type iListRecallManagementTablesResponseBody interface {
 }
 
 type ListRecallManagementTablesResponseBody struct {
-	// This parameter is reserved for future use.
+	// This parameter is not in effect.
 	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// This parameter is reserved for future use.
+	// This parameter is not in effect.
 	//
 	// example:
 	//
 	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// A list of recall management tables.
+	// The list of recall management tables.
 	RecallManagementTables []*ListRecallManagementTablesResponseBodyRecallManagementTables `json:"RecallManagementTables,omitempty" xml:"RecallManagementTables,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type ListRecallManagementTablesResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of recall management tables.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -129,55 +129,55 @@ type ListRecallManagementTablesResponseBodyRecallManagementTables struct {
 	//
 	// Api
 	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	// The description of the recall management table.
+	// The table description.
 	//
 	// example:
 	//
 	// this is a test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the table was created. The time is in the ISO 8601 format.
+	// The creation time. The value is in ISO 8601 format and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the table was last modified. The time is in the ISO 8601 format.
+	// The update time. The value is in ISO 8601 format and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The time when the index takes effect. The time is in the ISO 8601 format.
+	// The effective period of the index. The value is in ISO 8601 format and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	IndexEffectiveTime *string `json:"IndexEffectiveTime,omitempty" xml:"IndexEffectiveTime,omitempty"`
-	// The ID of the index version.
+	// The index version ID.
 	//
 	// example:
 	//
 	// 20250701
 	IndexVersionId *string `json:"IndexVersionId,omitempty" xml:"IndexVersionId,omitempty"`
-	// The name of the MaxCompute project.
+	// The MaxCompute project name.
 	//
 	// example:
 	//
 	// test
 	MaxcomputeProjectName *string `json:"MaxcomputeProjectName,omitempty" xml:"MaxcomputeProjectName,omitempty"`
-	// The schema of the MaxCompute table.
+	// maxcompute schema。
 	//
 	// example:
 	//
 	// default
 	MaxcomputeSchema *string `json:"MaxcomputeSchema,omitempty" xml:"MaxcomputeSchema,omitempty"`
-	// The name of the table in MaxCompute.
+	// The table name in MaxCompute.
 	//
 	// example:
 	//
 	// table-1
 	MaxcomputeTableName *string `json:"MaxcomputeTableName,omitempty" xml:"MaxcomputeTableName,omitempty"`
-	// The name of the recall management table.
+	// The table name.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type ListRecallManagementTablesResponseBodyRecallManagementTables struct {
 	//
 	// dt
 	PartitionFields *string `json:"PartitionFields,omitempty" xml:"PartitionFields,omitempty"`
-	// The ID of the recall management table.
+	// The table ID.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type ListRecallManagementTablesResponseBodyRecallManagementTables struct {
 	//
 	// X2I
 	RecallType *string `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
-	// The type of the table.
+	// The table type.
 	//
 	// example:
 	//

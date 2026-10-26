@@ -28,7 +28,11 @@ type ListRecallManagementServiceVersionsRequest struct {
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The sort order. Valid values: `ASC` for ascending order and `DESC` for descending order.
+	// The sort order. Valid values:
+	//
+	// - ASC: ascending order
+	//
+	// - DESC: descending order
 	//
 	// example:
 	//
@@ -40,13 +44,17 @@ type ListRecallManagementServiceVersionsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The page size.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field to sort the results by. Valid values: `GmtCreateTime` for creation time and `GmtModifiedTime` for modification time.
+	// The sort criterion. Valid values:
+	//
+	// - GmtCreateTime: creation time
+	//
+	// - GmtModifiedTime: update time
 	//
 	// example:
 	//

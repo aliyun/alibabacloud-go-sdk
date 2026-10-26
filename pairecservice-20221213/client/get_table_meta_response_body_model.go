@@ -46,25 +46,25 @@ type iGetTableMetaResponseBody interface {
 }
 
 type GetTableMetaResponseBody struct {
-	// Indicates whether the table can be deleted. The value is `false` if other resources reference the table.
+	// Indicates whether the data table can be deleted. If the table is referenced elsewhere, false is returned.
 	//
 	// example:
 	//
 	// false
 	CanDelete *bool `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
-	// Additional configurations for the table, provided as a JSON string.
+	// The additional configurations of the data table.
 	//
 	// example:
 	//
 	// {"table_type":"item"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The table description.
+	// The description of the data table.
 	//
 	// example:
 	//
 	// this is a test table
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The fields in the table.
+	// The list of fields in the table.
 	Fields []*GetTableMetaResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -72,57 +72,61 @@ type GetTableMetaResponseBody struct {
 	//
 	// 2021-12-15:24:33
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The import time.
+	// The time when the field was imported. The time is in ISO 8601 format and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtImportedTime *string `json:"GmtImportedTime,omitempty" xml:"GmtImportedTime,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2021-12-15:24:33
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The table module. Valid values:
+	// The module of the data table. Valid values:
 	//
-	// - `ABTest`: An A/B testing data table.
+	// - ABTest: experiment data table.
 	//
-	// - `ExperimentTool`: An experiment tool table.
+	// - ExperimentTool: experiment tool table.
 	//
-	// - `DataDiagnosis`: A table for data diagnosis.
+	// - DataDiagnosis: data diagnostics.
 	//
 	// example:
 	//
 	// ABTest
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// The table name.
+	// The name of the data table.
 	//
 	// example:
 	//
 	// test_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 28C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
 	// reso-wkgo***
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
 	// example:
 	//
 	// Maxcompute
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The URI of the resource.
+	//
 	// example:
 	//
 	// test
 	ResourceUri *string `json:"ResourceUri,omitempty" xml:"ResourceUri,omitempty"`
-	// The table ID.
+	// The ID of the data table.
 	//
 	// example:
 	//
@@ -134,17 +138,17 @@ type GetTableMetaResponseBody struct {
 	//
 	// table_mysql
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The table type. Valid values:
+	// The type of the data table. Valid values:
 	//
-	// - `MaxCompute`
+	// - MaxCompute
 	//
-	// - `Hologres`
+	// - Hologres
 	//
 	// example:
 	//
 	// MaxCompute
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL of the table in Data Map. This parameter is returned only for MaxCompute tables.
+	// The URL of the table in Data Map if the table is a MaxCompute table. Otherwise, this field is empty.
 	//
 	// example:
 	//
@@ -327,25 +331,25 @@ func (s *GetTableMetaResponseBody) Validate() error {
 }
 
 type GetTableMetaResponseBodyFields struct {
-	// Whether the field is a dimension field.
+	// Indicates whether the field is a dimension field.
 	//
 	// example:
 	//
 	// false
 	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
-	// The field meaning.
+	// The meaning of the field.
 	//
 	// example:
 	//
 	// the gender of people
 	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
-	// The field name.
+	// The name of the field.
 	//
 	// example:
 	//
 	// gender
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The field type.
+	// The type of the field.
 	//
 	// example:
 	//

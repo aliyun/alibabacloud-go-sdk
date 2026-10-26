@@ -22,19 +22,19 @@ type iListRecallManagementJobsResponseBody interface {
 }
 
 type ListRecallManagementJobsResponseBody struct {
-	// Reserved.
+	// This parameter does not take effect.
 	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Reserved.
+	// This parameter does not take effect.
 	//
 	// example:
 	//
 	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// A list of synchronization jobs.
+	// The list of synchronization tasks.
 	RecallManagementJobs []*ListRecallManagementJobsResponseBodyRecallManagementJobs `json:"RecallManagementJobs,omitempty" xml:"RecallManagementJobs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type ListRecallManagementJobsResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of synchronization jobs.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,29 +117,29 @@ func (s *ListRecallManagementJobsResponseBody) Validate() error {
 }
 
 type ListRecallManagementJobsResponseBodyRecallManagementJobs struct {
-	// The end time of the synchronization job.
+	// The end time of the task. The time follows the ISO 8601 standard and is displayed in UTC.
 	//
 	// example:
 	//
 	// 2025-03-28T10:24Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The synchronization job ID.
+	// The ID of the synchronization task.
 	//
 	// example:
 	//
 	// 1
 	RecallManagementJobId *string `json:"RecallManagementJobId,omitempty" xml:"RecallManagementJobId,omitempty"`
-	// Information about the recall management table.
+	// The task information of the recall management table.
 	RecallManagementTableInfo *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo `json:"RecallManagementTableInfo,omitempty" xml:"RecallManagementTableInfo,omitempty" type:"Struct"`
-	// This parameter is deprecated.
+	// **[Deprecated]**
 	RecallManagerTableInfo *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagerTableInfo `json:"RecallManagerTableInfo,omitempty" xml:"RecallManagerTableInfo,omitempty" type:"Struct"`
-	// The start time of the synchronization job.
+	// The start time of the task. The time follows the ISO 8601 standard and is displayed in UTC.
 	//
 	// example:
 	//
 	// 2025-01-28T10:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the synchronization job. Valid values: `Init` (initializing), `Running` (running), `Success` (succeeded), and `Failed` (failed).
+	// The status. Valid values: `Init` (initializing), `Running` (running), `Success` (successful), and `Failed` (failed).
 	//
 	// example:
 	//
@@ -224,25 +224,25 @@ func (s *ListRecallManagementJobsResponseBodyRecallManagementJobs) Validate() er
 }
 
 type ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTableInfo struct {
-	// The data version.
+	// The data version number.
 	//
 	// example:
 	//
 	// ds=20250701
 	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
-	// The table version ID.
+	// The ID of the table version.
 	//
 	// example:
 	//
 	// 2
 	RecallManagementTableVersionId *string `json:"RecallManagementTableVersionId,omitempty" xml:"RecallManagementTableVersionId,omitempty"`
-	// The source table data size.
+	// The data size of the source table.
 	//
 	// example:
 	//
 	// 100
 	SourceTableDataSize *string `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
-	// The source table row count.
+	// The number of data rows in the source table.
 	//
 	// example:
 	//
@@ -299,25 +299,25 @@ func (s *ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagemen
 }
 
 type ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagerTableInfo struct {
-	// This parameter is deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// ds=20250701
 	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// 2
 	RecallManagementTableVersionId *string `json:"RecallManagementTableVersionId,omitempty" xml:"RecallManagementTableVersionId,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// 1000
 	SourceTableDataSize *string `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//

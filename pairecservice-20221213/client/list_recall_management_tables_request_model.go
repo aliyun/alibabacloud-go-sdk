@@ -30,7 +30,7 @@ type iListRecallManagementTablesRequest interface {
 }
 
 type ListRecallManagementTablesRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListRecallManagementTablesRequest struct {
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is reserved for future use.
+	// This parameter is not in effect.
 	//
 	// example:
 	//
@@ -50,13 +50,17 @@ type ListRecallManagementTablesRequest struct {
 	//
 	// table-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// This parameter is reserved for future use.
+	// This parameter is not in effect.
 	//
 	// example:
 	//
 	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The sort order for the results. Valid values: `ASC` (ascending) and `DESC` (descending).
+	// The sort order. Valid values:
+	//
+	// - `ASC`: ascending order.
+	//
+	// - `DESC`: descending order.
 	//
 	// example:
 	//
@@ -74,13 +78,23 @@ type ListRecallManagementTablesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field to sort the results by. Valid values: `GmtCreateTime` (creation time) and `GmtModifiedTime` (update time).
+	// The sorting field. Valid values:
+	//
+	// - `GmtCreateTime`: creation time.
+	//
+	// - `GmtModifiedTime`: update time.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The table type. Valid values: `X2I` (U2I recall or I2I recall), `Vector` (vector recall), and `Random` (random recall).
+	// The table type. Valid values:
+	//
+	// - `X2I`: U2I recall or I2I recall.
+	//
+	// - `Vector`: vector recall.
+	//
+	// - `Ramdom`: random recall.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iGetSubCrowdRequest interface {
 }
 
 type GetSubCrowdRequest struct {
-	// The ID of the instance. You can call the `ListInstances` operation to obtain this ID.
+	// The instance ID. You can call the ListInstances operation to obtain this ID.
 	//
 	// This parameter is required.
 	//

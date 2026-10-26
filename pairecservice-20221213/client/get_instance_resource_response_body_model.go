@@ -42,19 +42,19 @@ type GetInstanceResourceResponseBody struct {
 	//
 	// DataManagement
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The resource configuration.
+	// The configuration information of the resource.
 	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The creation time.
+	// The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2020-10-13 17:34:52
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time.
+	// The update time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type GetInstanceResourceResponseBody struct {
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// The resource group.
 	//
-	// If `Category` is `DataManagement`, the valid values are:
+	// If the resource category is DataManagement, valid values are:
 	//
 	// - storage
 	//
@@ -72,7 +72,7 @@ type GetInstanceResourceResponseBody struct {
 	//
 	// - modeltrain
 	//
-	// If `Category` is `Engine`, the valid values are:
+	// If the resource category is Engine, valid values are:
 	//
 	// - feature
 	//
@@ -82,7 +82,7 @@ type GetInstanceResourceResponseBody struct {
 	//
 	// - recengine
 	//
-	// If `Category` is `Monitor`, the valid values are:
+	// If the resource category is Monitor, valid values are:
 	//
 	// - logs
 	//
@@ -96,13 +96,13 @@ type GetInstanceResourceResponseBody struct {
 	//
 	// storage
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D75C43DC-3D3A-5CC8-9AAC-8C77306C433B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
@@ -124,9 +124,9 @@ type GetInstanceResourceResponseBody struct {
 	//
 	// - DataHub
 	//
-	// - ApsaraMQ for Kafka
+	// - Kafka
 	//
-	// - Realtime Compute for Apache Flink
+	// - Flinkvvp
 	//
 	// - ACR
 	//
@@ -138,9 +138,9 @@ type GetInstanceResourceResponseBody struct {
 	//
 	// - MaxCompute
 	//
-	// - Graph Compute Service
+	// - GraphCompute
 	//
-	// - ApsaraDB for Redis
+	// - Redis
 	//
 	// example:
 	//

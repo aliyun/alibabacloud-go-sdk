@@ -18,13 +18,19 @@ type iQueryTrafficControlTargetItemReportDetailRequest interface {
 }
 
 type QueryTrafficControlTargetItemReportDetailRequest struct {
-	// The report date.
+	// The date of the report. Format: YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2024-01-01
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The deployment environment. Valid values are Daily (daily environment), Pre (staging environment), and Prod (production environment).
+	// The environment. Valid values:
+	//
+	// - Daily: daily environment
+	//
+	// - Pre: staging environment
+	//
+	// - Prod: production environment
 	//
 	// This parameter is required.
 	//

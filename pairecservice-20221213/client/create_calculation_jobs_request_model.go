@@ -20,7 +20,7 @@ type iCreateCalculationJobsRequest interface {
 }
 
 type CreateCalculationJobsRequest struct {
-	// A comma-separated list of A/B metric IDs.
+	// The list of ABTest metric IDs, separated by commas.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateCalculationJobsRequest struct {
 	//
 	// 2,3,4
 	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
-	// The end date.
+	// The end date. The format is YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateCalculationJobsRequest struct {
 	//
 	// 2023-01-03
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The instance ID. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to get this ID.
+	// The instance ID. You can obtain the instance ID by calling [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateCalculationJobsRequest struct {
 	//
 	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start date.
+	// The start date. The format is YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//

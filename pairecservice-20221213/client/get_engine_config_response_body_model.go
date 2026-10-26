@@ -48,35 +48,35 @@ type GetEngineConfigResponseBody struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The runtime environment. Valid values:
 	//
-	// - Daily: daily environment.
+	// - Daily: daily environment
 	//
-	// - Pre: staging environment.
+	// - Pre: staging environment
 	//
-	// - Prod: production environment.
+	// - Prod: production environment
 	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The creation time.
+	// The creation time. The time is in ISO 8601 format, where Z indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-01-03T02:28:00.000Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The update time.
+	// The update time. The time is in ISO 8601 format, where Z indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-08-27T12:00:00Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The publish time.
+	// The release time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-01-03 02:28:00
 	GmtReleasedTime *string `json:"GmtReleasedTime,omitempty" xml:"GmtReleasedTime,omitempty"`
-	// The engine configuration name.
+	// The name of the engine configuration.
 	//
 	// example:
 	//
@@ -88,21 +88,23 @@ type GetEngineConfigResponseBody struct {
 	//
 	// 59CE7EC6-F268-5D71-9215-32922CC50D72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scenario.
+	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	// The status. Valid values:
 	//
-	// - Released: published.
+	// - Released: released
 	//
-	// - UnReleased: not published.
+	// - UnReleased: unreleased
 	//
 	// example:
 	//
 	// Released
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The engine configuration type.
+	// The type of the engine configuration.
 	//
 	// example:
 	//

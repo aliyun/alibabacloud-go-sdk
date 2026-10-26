@@ -18,7 +18,7 @@ type iListCalculationJobsResponseBody interface {
 }
 
 type ListCalculationJobsResponseBody struct {
-	// A list of calculation jobs.
+	// The calculation tasks.
 	CalculationJobs []*ListCalculationJobsResponseBodyCalculationJobs `json:"CalculationJobs,omitempty" xml:"CalculationJobs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListCalculationJobsResponseBody struct {
 	//
 	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -89,51 +89,51 @@ type ListCalculationJobsResponseBodyCalculationJobs struct {
 	//
 	// pv
 	ABMetricName *string `json:"ABMetricName,omitempty" xml:"ABMetricName,omitempty"`
-	// The business date.
+	// The business date. The date is in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2021-12-15
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The calculation job ID.
+	// The ID of the calculation task.
 	//
 	// example:
 	//
 	// 2
 	CalculationJobId *string `json:"CalculationJobId,omitempty" xml:"CalculationJobId,omitempty"`
-	// The job configuration.
+	// The task configuration.
 	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The time when the job was run.
+	// The execution time. The time is in the ISO 8601 format and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtRanTime *string `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
-	// The job messages.
+	// The task message.
 	JobMessage []*string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty" type:"Repeated"`
-	// The source of the job. Valid values:
+	// The task source. Valid values:
 	//
-	// - CronOffline: The job is an offline scheduled task.
+	// - CronOffline: Offline scheduled task.
 	//
-	// - DataRerun: The job is a data rerun task.
+	// - DataRerun: Data rerun task.
 	//
 	// example:
 	//
 	// CronOffline
 	JobSource *string `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
-	// The status of the job. Valid values:
+	// The task status. Valid values:
 	//
-	// - Success
+	// - Success: Succeeded.
 	//
-	// - Failure
+	// - Failure: Failed.
 	//
-	// - Initializing
+	// - Initializing: Initializing.
 	//
-	// - Running
+	// - Running: Running.
 	//
 	// example:
 	//

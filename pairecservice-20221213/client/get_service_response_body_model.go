@@ -40,7 +40,7 @@ type iGetServiceResponseBody interface {
 }
 
 type GetServiceResponseBody struct {
-	// The instance ID of the Container Registry Enterprise instance selected when a non-official image is used.
+	// The instance ID of the Container Registry Enterprise instance selected by the user when a non-official image is used.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type GetServiceResponseBody struct {
 	//
 	// 3
 	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
-	// The time of the most recent production publish.
+	// The time of the most recent production release. The time follows the ISO 8601 standard and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtReleasedTime *string `json:"GmtReleasedTime,omitempty" xml:"GmtReleasedTime,omitempty"`
-	// The image secret.
+	// The image key.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type GetServiceResponseBody struct {
 	ImageAuth *string `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
 	// The image name.
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The most recent production publish record.
+	// The most recent production release record.
 	LatestProdReleaseOrder *GetServiceResponseBodyLatestProdReleaseOrder `json:"LatestProdReleaseOrder,omitempty" xml:"LatestProdReleaseOrder,omitempty" type:"Struct"`
 	// The service name.
 	//
@@ -86,7 +86,7 @@ type GetServiceResponseBody struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the Container Registry Enterprise Edition repository selected when a non-official image is used.
+	// The ID of the Container Registry Enterprise Edition repository selected by the user when a non-official image is used.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type GetServiceResponseBody struct {
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The configuration used to publish the service, such as the Elastic Algorithm Service (EAS) service configuration.
+	// The configuration used to deploy the service, such as the service configuration in Elastic Algorithm Service (EAS).
 	//
 	// example:
 	//
 	// {"Port":8080}
 	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	// The resource address used to publish the service, such as the EAS resource group name.
+	// The resource URI used to deploy the service, such as the resource group name in Elastic Algorithm Service (EAS).
 	//
 	// example:
 	//
@@ -262,7 +262,7 @@ func (s *GetServiceResponseBody) Validate() error {
 }
 
 type GetServiceResponseBodyLatestProdReleaseOrder struct {
-	// The publish content.
+	// The release content.
 	//
 	// example:
 	//
@@ -274,7 +274,7 @@ type GetServiceResponseBodyLatestProdReleaseOrder struct {
 	//
 	// 2.0.0
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The publish information.
+	// The release information.
 	//
 	// example:
 	//
@@ -298,7 +298,7 @@ type GetServiceResponseBodyLatestProdReleaseOrder struct {
 	//
 	// }
 	ReleaseInfo *string `json:"ReleaseInfo,omitempty" xml:"ReleaseInfo,omitempty"`
-	// The publish order ID.
+	// The release order ID.
 	//
 	// example:
 	//
@@ -310,7 +310,7 @@ type GetServiceResponseBodyLatestProdReleaseOrder struct {
 	//
 	// E-xxx.xxx-@xxx.onaliyun.com
 	Releaser *string `json:"Releaser,omitempty" xml:"Releaser,omitempty"`
-	// The publish title.
+	// The release title.
 	//
 	// example:
 	//

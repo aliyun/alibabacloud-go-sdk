@@ -24,7 +24,7 @@ type ListTrafficControlTasksResponseBody struct {
 	//
 	// 3AAA45F6-0798-5461-9360-81D133823CE7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of traffic control tasks.
+	// The total number of elements in the list.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListTrafficControlTasksResponseBody) Validate() error {
 }
 
 type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
-	// The behavior table ID.
+	// The ID of the behavior table.
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	//
 	// Percent
 	ControlType *string `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
-	// The description of the traffic control task.
+	// The description of the traffic control.
 	//
 	// example:
 	//
@@ -115,27 +115,27 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of effective scene IDs.
 	EffectiveSceneIds []*int32 `json:"EffectiveSceneIds,omitempty" xml:"EffectiveSceneIds,omitempty" type:"Repeated"`
-	// The list of effective scene names.
+	// The list of effective scenes.
 	EffectiveSceneNameList []*string `json:"EffectiveSceneNameList,omitempty" xml:"EffectiveSceneNameList,omitempty" type:"Repeated"`
 	// The list of effective scene names.
 	EffectiveSceneNames []*int32 `json:"EffectiveSceneNames,omitempty" xml:"EffectiveSceneNames,omitempty" type:"Repeated"`
-	// The end time.
+	// The end time. The time is in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2024-04-25
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the task has ever been published.
+	// Specifies whether the task has been published.
 	//
 	// example:
 	//
 	// false
 	EverPublished *bool `json:"EverPublished,omitempty" xml:"EverPublished,omitempty"`
-	// The execution schedule for the task. Valid values:
+	// The execution time. Valid values:
 	//
-	// - `Permanent`: The task runs indefinitely.
+	// - Permanent: Executes permanently.
 	//
-	// - `TimeRange`: The task runs within a specified time range. If you set this parameter to this value, you must also specify the `StartTime` and `EndTime` parameters.
+	// - TimeRange: Executes within a specified time range. If you select this value, you must specify the StartTime and EndTime parameters.
 	//
 	// example:
 	//
@@ -147,85 +147,85 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	//
 	// resource-xxx
 	FlinkResourceId *string `json:"FlinkResourceId,omitempty" xml:"FlinkResourceId,omitempty"`
-	// The name of the Flink resource.
+	// The Flink resource name.
 	//
 	// example:
 	//
 	// flink_test
 	FlinkResourceName *string `json:"FlinkResourceName,omitempty" xml:"FlinkResourceName,omitempty"`
-	// The creation time of the task.
+	// The creation time. The time is in the ISO 8601 format and uses Z to indicate the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-03-25T06:04:28.441Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last update time of the task.
+	// The update time. The time is in the ISO 8601 format and uses Z to indicate the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-03-25T06:04:28.441Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The item condition, in an array format.
+	// The array-formatted conditions for items.
 	//
 	// example:
 	//
 	// [{"field":"status","option":"=","value":"1"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	// The item condition, in an expression format.
+	// The expression-formatted conditions for items.
 	//
 	// example:
 	//
 	// status=1
 	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
-	// The item condition type.
+	// The condition type for items.
 	//
 	// example:
 	//
 	// Array
 	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	// The item table ID.
+	// The ID of the item table.
 	//
 	// example:
 	//
 	// 3
 	ItemTableMetaId *string `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
-	// The name of the traffic control task.
+	// The name of the traffic control.
 	//
 	// example:
 	//
 	// task_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A comma-separated list of staging experiment IDs.
+	// The list of pre-release experiment IDs.
 	//
 	// example:
 	//
 	// 1,2
 	PreExperimentIds *string `json:"PreExperimentIds,omitempty" xml:"PreExperimentIds,omitempty"`
-	// The staging environment status.
+	// The status in the pre-release environment.
 	//
 	// example:
 	//
 	// Runnning
 	PrepubStatus *string `json:"PrepubStatus,omitempty" xml:"PrepubStatus,omitempty"`
-	// A comma-separated list of production experiment IDs.
+	// The list of production experiments.
 	//
 	// example:
 	//
 	// 6,7
 	ProdExperimentIds *string `json:"ProdExperimentIds,omitempty" xml:"ProdExperimentIds,omitempty"`
-	// The production environment status.
+	// The status in the production environment.
 	//
 	// example:
 	//
 	// Runnning
 	ProductStatus *string `json:"ProductStatus,omitempty" xml:"ProductStatus,omitempty"`
-	// The scene ID. You can obtain this ID by calling the `ListScenes` operation.
+	// The scene ID. You can obtain this ID by calling the ListScenes operation.
 	//
 	// example:
 	//
 	// 4
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The name of the scene.
+	// The scene name.
 	//
 	// example:
 	//
@@ -241,25 +241,25 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	ServiceIdList []*int32 `json:"ServiceIdList,omitempty" xml:"ServiceIdList,omitempty" type:"Repeated"`
 	// The list of bound engine service IDs.
 	ServiceIds []*string `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
-	// The start time.
+	// The start time. The time is in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2024-03-25
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The behavior statistics expression.
+	// The expression-formatted conditions for behavior statistics.
 	//
 	// example:
 	//
 	// event=click
 	StatisBahaviorConditionExpress *string `json:"StatisBahaviorConditionExpress,omitempty" xml:"StatisBahaviorConditionExpress,omitempty"`
-	// The behavior statistics condition, in an array format.
+	// The array-formatted conditions for behavior statistics.
 	//
 	// example:
 	//
 	// [{"field":"click","option":"<=","value":"30"}]
 	StatisBehaviorConditionArray *string `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
-	// The behavior statistics expression.
+	// The behavior expression.
 	//
 	// example:
 	//
@@ -273,19 +273,19 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	StatisBehaviorConditionType *string `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
 	// The list of traffic control targets.
 	TrafficControlTargets []*ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
-	// The traffic control task ID.
+	// The ID of the traffic control task.
 	//
 	// example:
 	//
 	// 1
 	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
-	// The condition for the target user group, in an array format.
+	// The array-formatted conditions for the target user group.
 	//
 	// example:
 	//
 	// [{"field":"gender","option":"=","value":"male"}]
 	UserConditionArray *string `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
-	// The condition for the target user group, in an expression format.
+	// The expression-formatted conditions for the target user group.
 	//
 	// example:
 	//
@@ -297,7 +297,7 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	//
 	// Array
 	UserConditionType *string `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
-	// The user table ID.
+	// The ID of the user table.
 	//
 	// example:
 	//
@@ -687,7 +687,7 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) Validate() erro
 }
 
 type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets struct {
-	// The end time.
+	// The end time. The time is in the YYYY-MM-DD format.
 	//
 	// example:
 	//
@@ -699,49 +699,49 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets
 	//
 	// click
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The creation time of the target.
+	// The creation time. The time is in the ISO 8601 format and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2025-06-03T15:08:10.58+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last update time of the target.
+	// The update time. The time is in the ISO 8601 format and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2025-11-21T16:26:58.57+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The item condition, in an array format.
+	// The array-formatted conditions for items.
 	//
 	// example:
 	//
 	// [{"field":"status","option":"=","value":"1"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	// The item condition, in an expression format.
+	// The expression-formatted conditions for items.
 	//
 	// example:
 	//
 	// status=1
 	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
-	// The item condition type.
+	// The condition type for items.
 	//
 	// example:
 	//
 	// Array
 	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	// The name of the traffic control target.
+	// The traffic control target.
 	//
 	// example:
 	//
 	// target-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the traffic control target is for a new product recall.
+	// Specifies whether the recall applies to new items.
 	//
 	// example:
 	//
 	// false
 	NewProductRegulation *bool `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
-	// The name of the recall strategy.
+	// The recall policy name.
 	//
 	// example:
 	//
@@ -749,43 +749,43 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets
 	RecallName *string `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
 	// The details of the split points.
 	SplitParts *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
-	// The start time.
+	// The start time. The time is in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2024-03-25
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The statistics period.
+	// The statistical period.
 	//
 	// example:
 	//
 	// Daily
 	StatisPeriod *string `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
-	// The status of the traffic control target.
+	// The status.
 	//
 	// example:
 	//
 	// Opened
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tolerance value for the traffic control target.
+	// The tolerance range of the traffic control target.
 	//
 	// example:
 	//
 	// 10
 	ToleranceValue *int64 `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
-	// The traffic control target ID.
+	// The ID of the traffic control target.
 	//
 	// example:
 	//
 	// 1
 	TrafficControlTargetId *string `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
-	// The traffic control task ID.
+	// The ID of the traffic control task.
 	//
 	// example:
 	//
 	// 1
 	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
-	// The value of the traffic control target.
+	// The target value for traffic control.
 	//
 	// example:
 	//
@@ -973,9 +973,9 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTar
 }
 
 type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts struct {
-	// The list of value-based split points for the target.
+	// The list of target value split points.
 	SetValues []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
-	// The list of time-based split points.
+	// The list of time split points.
 	TimePoints []*int64 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
 

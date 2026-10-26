@@ -16,13 +16,13 @@ type iQueryTrafficControlTargetItemReportDetailResponseBody interface {
 }
 
 type QueryTrafficControlTargetItemReportDetailResponseBody struct {
-	// The unique identifier for the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Traffic control details for an item.
+	// The item traffic control details.
 	TrafficControlTargetItemReportDetail *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail `json:"TrafficControlTargetItemReportDetail,omitempty" xml:"TrafficControlTargetItemReportDetail,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *QueryTrafficControlTargetItemReportDetailResponseBody) Validate() error
 }
 
 type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail struct {
-	// Report details for the tail 100 controlled items.
+	// The list of details for the bottom 100 items after traffic control.
 	ItemControlTailReportDetails []*QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails `json:"ItemControlTailReportDetails,omitempty" xml:"ItemControlTailReportDetails,omitempty" type:"Repeated"`
-	// Report details for the top 100 controlled items.
+	// The list of details for the top 100 items before traffic control.
 	ItemControlTopReportDetails []*QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails `json:"ItemControlTopReportDetails,omitempty" xml:"ItemControlTopReportDetails,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +117,7 @@ func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTarg
 }
 
 type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails struct {
-	// Key-value pairs for the traffic control target.
+	// The key-value pairs restricted in the traffic control target.
 	Features map[string]interface{} `json:"Features,omitempty" xml:"Features,omitempty"`
 	// The item ID.
 	//
@@ -125,13 +125,13 @@ type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetIt
 	//
 	// 794872809896
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The progress toward the target.
+	// The completion progress.
 	//
 	// example:
 	//
 	// 49%
 	TargetProgress *string `json:"TargetProgress,omitempty" xml:"TargetProgress,omitempty"`
-	// The target traffic.
+	// The actual traffic.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTarg
 }
 
 type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails struct {
-	// Key-value pairs for the traffic control target.
+	// The key-value pairs restricted in the traffic control target.
 	Features map[string]interface{} `json:"Features,omitempty" xml:"Features,omitempty"`
 	// The item ID.
 	//
@@ -196,13 +196,13 @@ type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetIt
 	//
 	// 398734
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The progress toward the target.
+	// The completion progress.
 	//
 	// example:
 	//
 	// 49%
 	TargetProgress *string `json:"TargetProgress,omitempty" xml:"TargetProgress,omitempty"`
-	// The target traffic.
+	// The actual traffic.
 	//
 	// example:
 	//

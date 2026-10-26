@@ -38,7 +38,7 @@ type iListTrafficControlTasksRequest interface {
 }
 
 type ListTrafficControlTasksRequest struct {
-	// Specifies whether to return all results without pagination.
+	// Specifies whether to return all data without pagination.
 	//
 	// example:
 	//
@@ -46,29 +46,29 @@ type ListTrafficControlTasksRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The filter for traffic control targets. Valid values:
 	//
-	// - `All`: Returns all traffic control targets.
+	// - All: all targets.
 	//
-	// - `Valid`: Returns only active traffic control targets. A traffic control target is active if the current time is within the specified start and end time.
+	// - Valid: valid targets (in the enabling status within the start and end time period).
 	//
-	// - `None`: Does not return any traffic control targets.
+	// - None: no targets.
 	//
 	// example:
 	//
 	// All
 	ControlTargetFilter *string `json:"ControlTargetFilter,omitempty" xml:"ControlTargetFilter,omitempty"`
-	// The environment. Valid values:
+	// The runtime environment. Valid values:
 	//
-	// - `Daily`: the daily environment
+	// - Daily: daily environment.
 	//
-	// - `Pre`: the pre-production environment
+	// - Pre: pre-release environment.
 	//
-	// - `Prod`: the production environment
+	// - Prod: production environment.
 	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The instance ID. You can obtain this ID by calling the [ListInstances](https://icms.alibaba-inc.com/content/learn/pai?l=1\\&m=16768\\&n=4300782) operation.
+	// The instance ID. You can obtain the ID by calling the [ListInstances](https://icms.alibaba-inc.com/content/learn/pai?l=1&m=16768&n=4300782) operation.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type ListTrafficControlTasksRequest struct {
 	//
 	// task_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort order. Valid values:
+	// The sorting order. Valid values:
 	//
-	// - `ASC`: ascending order
+	// - ASC: ascending order.
 	//
-	// - `DESC`: descending order
+	// - DESC: descending order.
 	//
 	// example:
 	//
@@ -102,31 +102,31 @@ type ListTrafficControlTasksRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the scene. You can obtain this ID by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
+	// The ID of the scene. You can obtain the ID by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
 	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The field by which to sort the results. Valid values:
+	// The sorting criterion. Valid values:
 	//
-	// - `GmtCreateTime`: Sorts the results by creation time.
+	// - GmtCreateTime: creation time.
 	//
-	// - `GmtModifiedTime`: Sorts the results by modification time.
+	// - GmtModifiedTime: update time.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The status of the task. Valid values:
+	// The status. Valid values:
 	//
-	// - `NotRunning`: The task is not running.
+	// - NotRunning: not running.
 	//
-	// - `Ready`: The task is ready to run.
+	// - Ready: pending.
 	//
-	// - `Running`: The task is running.
+	// - Running: running.
 	//
-	// - `Finished`: The task is finished.
+	// - Finished: finished.
 	//
 	// example:
 	//
@@ -140,9 +140,9 @@ type ListTrafficControlTasksRequest struct {
 	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
 	// The version. Valid values:
 	//
-	// - `Latest`: The latest version. This is the default value.
+	// - Latest: latest version. Default value.
 	//
-	// - `Released`: the released version
+	// - Released: released version.
 	//
 	// example:
 	//

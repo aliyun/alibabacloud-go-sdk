@@ -28,7 +28,7 @@ type iListABMetricsRequest interface {
 }
 
 type ListABMetricsRequest struct {
-	// The instance ID. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain the ID.
+	// The instance ID. You can obtain the ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListABMetricsRequest struct {
 	//
 	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name to use for filtering metrics.
+	// The name filter.
 	//
 	// example:
 	//
@@ -48,35 +48,35 @@ type ListABMetricsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to filter for real-time metrics.
+	// Specifies whether to filter metrics by real-time type.
 	//
 	// example:
 	//
 	// false
 	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	// The scene ID. Call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain the ID.
+	// The scene ID. You can obtain the ID by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
 	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The data table ID. Call the ListTableMetas operation to obtain the ID.
+	// The ID of the data table. You can obtain the ID by calling ListTableMetas.
 	//
 	// example:
 	//
 	// 1
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
-	// The metric type. You can use this parameter to filter the results. Valid values:
+	// The metric type filter. Valid values:
 	//
-	// - `Single`: A single metric.
+	// - Single: Single metric.
 	//
-	// - `Derived`: A derived metric.
+	// - Derived: Derived metric.
 	//
 	// example:
 	//

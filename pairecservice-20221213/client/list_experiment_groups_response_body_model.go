@@ -20,13 +20,13 @@ type iListExperimentGroupsResponseBody interface {
 type ListExperimentGroupsResponseBody struct {
 	// The list of experiment groups.
 	ExperimentGroups []*ListExperimentGroupsResponseBodyExperimentGroups `json:"ExperimentGroups,omitempty" xml:"ExperimentGroups,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 59CE7EC6-F268-5D71-9215-32922CC50D72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of elements in the list.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListExperimentGroupsResponseBody) Validate() error {
 }
 
 type ListExperimentGroupsResponseBodyExperimentGroups struct {
-	// The configuration for the experiment group, in JSON format.
+	// The experiment group configuration.
 	//
 	// example:
 	//
@@ -95,15 +95,15 @@ type ListExperimentGroupsResponseBodyExperimentGroups struct {
 	//
 	// 3
 	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
-	// The traffic targeting method for the experiment group. Valid values:
+	// The traffic targeting type of the experiment group. Valid values:
 	//
-	// - `All`: All traffic.
+	// 	- All: All traffic.
 	//
-	// - `Filter`: Traffic that matches the filter.
+	// 	- Filter: Traffic that matches the filter condition.
 	//
-	// - `CrowdId`: Traffic from a specified crowd.
+	// 	- CrowdId: Traffic targeted by a specified crowd ID.
 	//
-	// - `Random`: A random percentage of traffic.
+	// 	- Random: Traffic randomly selected by percentage.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type ListExperimentGroupsResponseBodyExperimentGroups struct {
 	//
 	// 4
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	// The IDs of debug users, separated by commas.
+	// The debug users.
 	//
 	// example:
 	//
@@ -127,13 +127,17 @@ type ListExperimentGroupsResponseBodyExperimentGroups struct {
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The distribution duration. This parameter is required only when `DistributionType` is `TimeDuration`.
+	// The distribution time period.
 	//
 	// example:
 	//
 	// 5
 	DistributionTimeDuration *int32 `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
-	// The traffic distribution method.<br>● `UserId`: by user ID<br>● `TimeDuration`: by time duration<br><br>
+	// The traffic distribution method. Valid values:
+	//
+	// ● UserId: User ID.
+	//
+	// ● TimeDuration: Time period.
 	//
 	// example:
 	//
@@ -151,7 +155,7 @@ type ListExperimentGroupsResponseBodyExperimentGroups struct {
 	//
 	// gender=female
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// If `CrowdTargetType` is set to `Random`, this parameter returns the comma-separated IDs of buckets allocated based on the `RandomFlow` value.
+	// When the traffic targeting type of the experiment group is Random, this field returns the specific bucket numbers assigned based on the RandomFlow value.
 	//
 	// example:
 	//
@@ -175,7 +179,7 @@ type ListExperimentGroupsResponseBodyExperimentGroups struct {
 	//
 	// experiment_group1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to enable A/B testing for the experiment group.
+	// Specifies whether an AB experiment group is required.
 	//
 	// example:
 	//
@@ -187,13 +191,13 @@ type ListExperimentGroupsResponseBodyExperimentGroups struct {
 	//
 	// 1124512470******
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// If `CrowdTargetType` is set to `Random`, this parameter specifies the percentage of traffic (an integer from 0 to 100) randomly allocated to the experiment group.
+	// When the traffic targeting type of the experiment group is Random, this field specifies the percentage of random traffic matched to the experiment group. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 20
 	RandomFlow *int64 `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
-	// The IDs of reserved buckets, separated by commas.
+	// The reserved bucket numbers.
 	//
 	// example:
 	//
@@ -205,7 +209,13 @@ type ListExperimentGroupsResponseBodyExperimentGroups struct {
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The status of the experiment group. Valid values:<br>● `Offline`: The experiment group is inactive.<br>● `Online`: The experiment group is active.<br>● `Pushed`: The experiment group is fully rolled out.<br><br><br>
+	// The experiment group status. Valid values:
+	//
+	// ● Offline: Not online.
+	//
+	// ● Online: Online.
+	//
+	// ● Pushed: Fully pushed.
 	//
 	// example:
 	//

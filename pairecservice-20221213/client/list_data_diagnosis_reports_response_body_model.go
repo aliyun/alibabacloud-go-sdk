@@ -28,17 +28,17 @@ type iListDataDiagnosisReportsResponseBody interface {
 }
 
 type ListDataDiagnosisReportsResponseBody struct {
-	// The exception report list.
+	// The list of exception reports.
 	ExceptionRate []*ListDataDiagnosisReportsResponseBodyExceptionRate `json:"ExceptionRate,omitempty" xml:"ExceptionRate,omitempty" type:"Repeated"`
-	// Reports for the abnormal behavior analysis task.
+	// The list of diagnostic reports for abnormal behavior analysis diagnosis nodes.
 	ReportsOfAbnormalBehavior [][]*ListDataDiagnosisReportsResponseBodyReportsOfAbnormalBehavior `json:"ReportsOfAbnormalBehavior,omitempty" xml:"ReportsOfAbnormalBehavior,omitempty" type:"Repeated"`
-	// Reports for the basic statistical analysis task.
+	// The list of diagnostic reports for basic statistics analysis diagnosis nodes.
 	ReportsOfBaseStatistics [][]*ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics `json:"ReportsOfBaseStatistics,omitempty" xml:"ReportsOfBaseStatistics,omitempty" type:"Repeated"`
-	// Reports for the item/user change rate analysis task.
+	// The list of diagnostic reports for item/user change rate analysis diagnosis nodes.
 	ReportsOfChangeRateData [][]*ListDataDiagnosisReportsResponseBodyReportsOfChangeRateData `json:"ReportsOfChangeRateData,omitempty" xml:"ReportsOfChangeRateData,omitempty" type:"Repeated"`
-	// Reports for the table join analysis task.
+	// The list of diagnostic reports for join table associate analysis diagnosis nodes.
 	ReportsOfJoinTables [][]*ListDataDiagnosisReportsResponseBodyReportsOfJoinTables `json:"ReportsOfJoinTables,omitempty" xml:"ReportsOfJoinTables,omitempty" type:"Repeated"`
-	// Reports for the user preference statistics cycle analysis task.
+	// The list of diagnostic reports for user preference statistical period analysis diagnosis nodes.
 	ReportsOfPreferenceStatisticsCycle [][]*ListDataDiagnosisReportsResponseBodyReportsOfPreferenceStatisticsCycle `json:"ReportsOfPreferenceStatisticsCycle,omitempty" xml:"ReportsOfPreferenceStatisticsCycle,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -46,17 +46,17 @@ type ListDataDiagnosisReportsResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The data diagnosis task type. Valid values:
+	// The data diagnosis node type.
 	//
-	// - `ChangeRate`: item/user change rate analysis.
+	// - ChangeRate: item/user change rate analysis.
 	//
-	// - `PreferenceStatisticsCycle`: user preference statistics cycle analysis.
+	// - PreferenceStatisticsCycle: user preference statistical period analysis.
 	//
-	// - `JoinTables`: table join analysis.
+	// - JoinTables: join table associate analysis.
 	//
-	// - `BaseStatistics`: basic statistical analysis.
+	// - BaseStatistics: basic statistics analysis.
 	//
-	// - `AbnormalBehavior`: abnormal behavior analysis.
+	// - AbnormalBehavior: abnormal behavior analysis.
 	//
 	// example:
 	//
@@ -168,9 +168,9 @@ type ListDataDiagnosisReportsResponseBodyExceptionRate struct {
 	//
 	// example:
 	//
-	// change_rate 大于 0.2，请确认是否正常
+	// change_rate is greater than 0.2. Verify that this is expected
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The type or level of the exception.
+	// The exception type or severity level.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type ListDataDiagnosisReportsResponseBodyReportsOfAbnormalBehavior struct {
 	//
 	// 20250114
 	Ds *string `json:"Ds,omitempty" xml:"Ds,omitempty"`
-	// The rank.
+	// The rank of the statistical metric.
 	//
 	// example:
 	//
@@ -236,19 +236,19 @@ type ListDataDiagnosisReportsResponseBodyReportsOfAbnormalBehavior struct {
 	//
 	// 1.0
 	ConversionRate *string `json:"ConversionRate,omitempty" xml:"ConversionRate,omitempty"`
-	// The ID corresponding to the statistical granularity.
+	// The ID corresponding to the statistical granularity of the conversion rate.
 	//
 	// example:
 	//
 	// 100010050+259203779
 	ConversionRateIds *string `json:"ConversionRateIds,omitempty" xml:"ConversionRateIds,omitempty"`
-	// The count of downstream behaviors.
+	// The downstream behavior count.
 	//
 	// example:
 	//
 	// 2.0
 	DownStreamCount *string `json:"DownStreamCount,omitempty" xml:"DownStreamCount,omitempty"`
-	// The ID corresponding to the granularity of the downstream behavior.
+	// The ID corresponding to the statistical granularity of the downstream behavior.
 	//
 	// example:
 	//
@@ -260,13 +260,13 @@ type ListDataDiagnosisReportsResponseBodyReportsOfAbnormalBehavior struct {
 	//
 	// pair
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The count of upstream behaviors.
+	// The upstream behavior count.
 	//
 	// example:
 	//
 	// 2.0
 	UpStreamCount *string `json:"UpStreamCount,omitempty" xml:"UpStreamCount,omitempty"`
-	// The ID corresponding to the granularity of the upstream behavior.
+	// The ID corresponding to the statistical granularity of the upstream behavior.
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ type ListDataDiagnosisReportsResponseBodyReportsOfAbnormalBehavior struct {
 	//
 	// {678.8225: 91, 5270.4675: 95}
 	Distribution *string `json:"Distribution,omitempty" xml:"Distribution,omitempty"`
-	// The indicator name.
+	// The name of the statistical metric.
 	//
 	// example:
 	//
@@ -413,13 +413,13 @@ func (s *ListDataDiagnosisReportsResponseBodyReportsOfAbnormalBehavior) Validate
 }
 
 type ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics struct {
-	// The equivalent null count. This refers to the count of specific characters, such as `\\N`, that are treated as null values.
+	// The equivalent null value count.
 	//
 	// example:
 	//
 	// \\\\N
 	DefaultNullCount *string `json:"DefaultNullCount,omitempty" xml:"DefaultNullCount,omitempty"`
-	// The equivalent null rate.
+	// The equivalent null value rate.
 	//
 	// example:
 	//
@@ -443,19 +443,19 @@ type ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics struct {
 	//
 	// string
 	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The null count.
+	// The null value count.
 	//
 	// example:
 	//
 	// 55095
 	NullCount *string `json:"NullCount,omitempty" xml:"NullCount,omitempty"`
-	// The null rate.
+	// The null value rate.
 	//
 	// example:
 	//
 	// 0.5580879448141732
 	NullRate *string `json:"NullRate,omitempty" xml:"NullRate,omitempty"`
-	// The total number of entries.
+	// The total number of data records.
 	//
 	// example:
 	//
@@ -467,115 +467,115 @@ type ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics struct {
 	//
 	// 29
 	UniqueCount *string `json:"UniqueCount,omitempty" xml:"UniqueCount,omitempty"`
-	// The maximum value.
+	// The maximum value of the field.
 	//
 	// example:
 	//
 	// 52.0
 	ValueMax *string `json:"ValueMax,omitempty" xml:"ValueMax,omitempty"`
-	// The median value.
+	// The median value of the field.
 	//
 	// example:
 	//
 	// 35.0
 	ValueMedian *string `json:"ValueMedian,omitempty" xml:"ValueMedian,omitempty"`
-	// The minimum value.
+	// The minimum value of the field.
 	//
 	// example:
 	//
 	// 18.0
 	ValueMin *string `json:"ValueMin,omitempty" xml:"ValueMin,omitempty"`
-	// The 1st percentile value.
+	// The 1st percentile of the field values.
 	//
 	// example:
 	//
 	// 18.0
 	ValueQuantile1 *string `json:"ValueQuantile1,omitempty" xml:"ValueQuantile1,omitempty"`
-	// The 5th percentile value.
+	// The 5th percentile of the field values.
 	//
 	// example:
 	//
 	// 18.0
 	ValueQuantile5 *string `json:"ValueQuantile5,omitempty" xml:"ValueQuantile5,omitempty"`
-	// The 25th percentile value.
+	// The 25th percentile of the field values.
 	//
 	// example:
 	//
 	// 18.0
 	ValueQuantile25 *string `json:"ValueQuantile25,omitempty" xml:"ValueQuantile25,omitempty"`
-	// The 75th percentile value.
+	// The 75th percentile of the field values.
 	//
 	// example:
 	//
 	// 18.0
 	ValueQuantile75 *string `json:"ValueQuantile75,omitempty" xml:"ValueQuantile75,omitempty"`
-	// The 95th percentile value.
+	// The 95th percentile of the field values.
 	//
 	// example:
 	//
 	// 18.0
 	ValueQuantile95 *string `json:"ValueQuantile95,omitempty" xml:"ValueQuantile95,omitempty"`
-	// The 99th percentile value.
+	// The 99th percentile of the field values.
 	//
 	// example:
 	//
 	// 18.0
 	ValueQuantile99 *string `json:"ValueQuantile99,omitempty" xml:"ValueQuantile99,omitempty"`
-	// The rank.
+	// The rank position.
 	//
 	// example:
 	//
 	// 3
 	Rn *string `json:"Rn,omitempty" xml:"Rn,omitempty"`
-	// The maximum frequency.
+	// The maximum frequency of the field values.
 	//
 	// example:
 	//
 	// 91149.0
 	FrequencyMax *string `json:"FrequencyMax,omitempty" xml:"FrequencyMax,omitempty"`
-	// The median frequency.
+	// The median frequency of the field values.
 	//
 	// example:
 	//
 	// 1349.0
 	FrequencyMedian *string `json:"FrequencyMedian,omitempty" xml:"FrequencyMedian,omitempty"`
-	// The minimum frequency.
+	// The minimum frequency of the field values.
 	//
 	// example:
 	//
 	// 289.0
 	FrequencyMin *string `json:"FrequencyMin,omitempty" xml:"FrequencyMin,omitempty"`
-	// The 1st frequency percentile.
+	// The 1st percentile of the field value frequencies.
 	//
 	// example:
 	//
 	// 289.0
 	FrequencyQuantile1 *string `json:"FrequencyQuantile1,omitempty" xml:"FrequencyQuantile1,omitempty"`
-	// The 5th frequency percentile.
+	// The 5th percentile of the field value frequencies.
 	//
 	// example:
 	//
 	// 289.0
 	FrequencyQuantile5 *string `json:"FrequencyQuantile5,omitempty" xml:"FrequencyQuantile5,omitempty"`
-	// The 25th frequency percentile.
+	// The 25th percentile of the field value frequencies.
 	//
 	// example:
 	//
 	// 289.0
 	FrequencyQuantile25 *string `json:"FrequencyQuantile25,omitempty" xml:"FrequencyQuantile25,omitempty"`
-	// The 75th frequency percentile.
+	// The 75th percentile of the field value frequencies.
 	//
 	// example:
 	//
 	// 289.0
 	FrequencyQuantile75 *string `json:"FrequencyQuantile75,omitempty" xml:"FrequencyQuantile75,omitempty"`
-	// The 95th frequency percentile.
+	// The 95th percentile of the field value frequencies.
 	//
 	// example:
 	//
 	// 289.0
 	FrequencyQuantile95 *string `json:"FrequencyQuantile95,omitempty" xml:"FrequencyQuantile95,omitempty"`
-	// The 99th frequency percentile.
+	// The 99th percentile of the field value frequencies.
 	//
 	// example:
 	//
@@ -587,7 +587,7 @@ type ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics struct {
 	//
 	// {678.8225: 91, 5270.4675: 95}
 	Distribution *string `json:"Distribution,omitempty" xml:"Distribution,omitempty"`
-	// The rank of the statistical indicator.
+	// The rank of the statistical metric.
 	//
 	// example:
 	//
@@ -617,25 +617,25 @@ type ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics struct {
 	//
 	// 0.7261657444926671
 	ValueQuantile *string `json:"ValueQuantile,omitempty" xml:"ValueQuantile,omitempty"`
-	// The frequency of the feature value.
+	// The frequency of feature values.
 	//
 	// example:
 	//
 	// 427
 	FeatureFrequency *string `json:"FeatureFrequency,omitempty" xml:"FeatureFrequency,omitempty"`
-	// The number of feature values with this frequency.
+	// The count of feature value frequencies.
 	//
 	// example:
 	//
 	// 1
 	FrequencyCount *string `json:"FrequencyCount,omitempty" xml:"FrequencyCount,omitempty"`
-	// The percentage of feature values with this frequency.
+	// The percentage of feature value frequencies.
 	//
 	// example:
 	//
 	// 0.5
 	FrequencyPercent *string `json:"FrequencyPercent,omitempty" xml:"FrequencyPercent,omitempty"`
-	// The percentile of the frequency of field values.
+	// The quantile of the field value frequencies.
 	//
 	// example:
 	//
@@ -1004,19 +1004,19 @@ type ListDataDiagnosisReportsResponseBodyReportsOfChangeRateData struct {
 	//
 	// 20230509
 	Ds *string `json:"Ds,omitempty" xml:"Ds,omitempty"`
-	// A flag that indicates the type of change.
+	// The report flag.
 	//
 	// example:
 	//
 	// add
 	Flag *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The item/user change count.
+	// The number of changed items or users.
 	//
 	// example:
 	//
 	// 1231
 	ChangeCount *string `json:"ChangeCount,omitempty" xml:"ChangeCount,omitempty"`
-	// The item/user change rate.
+	// The change rate of items or users.
 	//
 	// example:
 	//
@@ -1085,19 +1085,19 @@ type ListDataDiagnosisReportsResponseBodyReportsOfJoinTables struct {
 	//
 	// user_id
 	JoinField *string `json:"JoinField,omitempty" xml:"JoinField,omitempty"`
-	// The left table join exception rate.
+	// The join exception rate of the left table.
 	//
 	// example:
 	//
 	// 0.53
 	LeftExceptRate *string `json:"LeftExceptRate,omitempty" xml:"LeftExceptRate,omitempty"`
-	// The right table join exception rate.
+	// The join exception rate of the right table.
 	//
 	// example:
 	//
 	// 0.0
 	RightExceptRate *string `json:"RightExceptRate,omitempty" xml:"RightExceptRate,omitempty"`
-	// A flag that indicates the type of change.
+	// The report flag.
 	//
 	// example:
 	//
@@ -1115,7 +1115,7 @@ type ListDataDiagnosisReportsResponseBodyReportsOfJoinTables struct {
 	//
 	// 1683562246
 	FeatureValue *string `json:"FeatureValue,omitempty" xml:"FeatureValue,omitempty"`
-	// The feature percentage.
+	// The percentage of the feature.
 	//
 	// example:
 	//
@@ -1268,13 +1268,13 @@ func (s *ListDataDiagnosisReportsResponseBodyReportsOfJoinTables) Validate() err
 }
 
 type ListDataDiagnosisReportsResponseBodyReportsOfPreferenceStatisticsCycle struct {
-	// The periodic user retention rate.
+	// The cycle retention rate of users.
 	//
 	// example:
 	//
 	// 0.73
 	CycleRemainRate *string `json:"CycleRemainRate,omitempty" xml:"CycleRemainRate,omitempty"`
-	// The daily user retention rate.
+	// The single-day retention rate of users.
 	//
 	// example:
 	//
@@ -1298,25 +1298,25 @@ type ListDataDiagnosisReportsResponseBodyReportsOfPreferenceStatisticsCycle stru
 	//
 	// 0.67
 	EverAppearedRate *string `json:"EverAppearedRate,omitempty" xml:"EverAppearedRate,omitempty"`
-	// The statistical period.
+	// The statistical period for the cycle retention rate.
 	//
 	// example:
 	//
 	// week
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The periodic retention rate.
+	// The cycle retention rate.
 	//
 	// example:
 	//
 	// 0.33
 	PeriodRemainRate *string `json:"PeriodRemainRate,omitempty" xml:"PeriodRemainRate,omitempty"`
-	// The periodic retention count.
+	// The number of users retained within the cycle.
 	//
 	// example:
 	//
 	// 1
 	PeriodRemainCount *int64 `json:"PeriodRemainCount,omitempty" xml:"PeriodRemainCount,omitempty"`
-	// The number of period intervals.
+	// The number of cycle intervals.
 	//
 	// example:
 	//

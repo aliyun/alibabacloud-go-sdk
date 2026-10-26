@@ -26,7 +26,7 @@ type ListFeatureConsistencyCheckJobsResponseBody struct {
 	//
 	// A04CB8C0-E74A-5E83-BC61-64D153574EC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of jobs.
+	// The total count.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListFeatureConsistencyCheckJobsResponseBody) Validate() error {
 }
 
 type ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs struct {
-	// The configuration of the job.
+	// The configuration information.
 	//
 	// example:
 	//
@@ -107,31 +107,31 @@ type ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs stru
 	//
 	// 4
 	FeatureConsistencyCheckJobId *string `json:"FeatureConsistencyCheckJobId,omitempty" xml:"FeatureConsistencyCheckJobId,omitempty"`
-	// The end time of the job.
+	// The end time. The time follows the ISO 8601 standard and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtEndTime *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
-	// The start time of the job.
+	// The start time. The time follows the ISO 8601 standard and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	// A list of log entries.
+	// The log information.
 	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// The status of the job. Valid values:
+	// The job status. Valid values:
 	//
-	// - `ToRun`: Waiting to run.
+	// - ToRun: pending
 	//
-	// - `Running`: In progress.
+	// - Running: running
 	//
-	// - `Success`: Successful.
+	// - Success: successful
 	//
-	// - `Failure`: Failed.
+	// - Failure: failed
 	//
-	// - `Stopped`: Stopped or canceled.
+	// - Stopped: stopped or canceled
 	//
 	// example:
 	//

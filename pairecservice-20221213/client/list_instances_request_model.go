@@ -24,19 +24,19 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
-	// The ID of the instance. You can use this parameter to perform a fuzzy search for instances.
+	// The instance ID for fuzzy matching.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The sort order. Valid values: `Asc` (ascending) and `Desc` (descending).
+	// The sort order.
 	//
 	// example:
 	//
 	// Desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListInstancesRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field by which to sort the results.
+	// The sort criterion.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ListInstancesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - `basic`: Basic edition
+	// - basic: Basic Edition.
 	//
-	// - `high-level`: High-level edition
+	// - highleve: Upgraded Edition.
 	//
-	// - `advanced`: Advanced edition
+	// - advance: Advanced Edition.
 	//
-	// - `standard`: Standard edition
+	// - standard: Standard Edition.
 	//
 	// example:
 	//

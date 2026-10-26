@@ -26,7 +26,7 @@ type ListTableMetasResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of data tables.
 	TableMetas []*ListTableMetasResponseBodyTableMetas `json:"TableMetas,omitempty" xml:"TableMetas,omitempty" type:"Repeated"`
-	// The total number of data tables.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *ListTableMetasResponseBody) Validate() error {
 }
 
 type ListTableMetasResponseBodyTableMetas struct {
-	// Indicates whether the data table can be deleted. A value of `false` indicates that the table is in use by other resources.
+	// Indicates whether the data table can be deleted. The value is false if the table is referenced elsewhere.
 	//
 	// example:
 	//
 	// true
 	CanDelete *bool `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
-	// The additional configurations for the data table.
+	// The additional configurations of the data table.
 	//
 	// example:
 	//
@@ -101,9 +101,9 @@ type ListTableMetasResponseBodyTableMetas struct {
 	//
 	// this is a test table
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The fields in the data table.
+	// The list of fields in the table.
 	Fields []*ListTableMetasResponseBodyTableMetasFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The time when the data table was created.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -115,19 +115,19 @@ type ListTableMetasResponseBodyTableMetas struct {
 	//
 	// imprecation
 	GmtImportedTime *string `json:"GmtImportedTime,omitempty" xml:"GmtImportedTime,omitempty"`
-	// The time when the data table was last modified.
+	// The update time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-12-12 12:24:33
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The module of the data table. Valid values:
+	// The module of the data table.
 	//
-	// - ABTest: A/B testing
+	// - ABTest: Experiment data tables
 	//
-	// - ExperimentTool: Experiment tool
+	// - ExperimentTool: Experiment tool tables
 	//
-	// - DataDiagnosis: data diagnosis
+	// - DataDiagnosis: Data diagnosis
 	//
 	// example:
 	//
@@ -145,10 +145,14 @@ type ListTableMetasResponseBodyTableMetas struct {
 	//
 	// reso-2s416t***
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// Maxcompute
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource URI.
+	//
 	// example:
 	//
 	// test
@@ -165,7 +169,7 @@ type ListTableMetasResponseBodyTableMetas struct {
 	//
 	// table_mysql
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The type of the data table. Valid values:
+	// The type of the data table.
 	//
 	// - MaxCompute
 	//
@@ -175,7 +179,7 @@ type ListTableMetasResponseBodyTableMetas struct {
 	//
 	// MaxCompute
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL of the table in Data Map. This parameter is returned only for MaxCompute data tables.
+	// The URL of the table in DataWorks Data Map. This parameter is returned only if the table is a MaxCompute table.
 	//
 	// example:
 	//
@@ -355,7 +359,7 @@ type ListTableMetasResponseBodyTableMetasFields struct {
 	//
 	// false
 	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
-	// The business meaning of the field.
+	// The meaning of the field.
 	//
 	// example:
 	//
@@ -367,7 +371,7 @@ type ListTableMetasResponseBodyTableMetasFields struct {
 	//
 	// gender
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The data type of the field.
+	// The field type.
 	//
 	// example:
 	//

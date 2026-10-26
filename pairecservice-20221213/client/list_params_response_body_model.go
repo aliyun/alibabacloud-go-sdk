@@ -18,15 +18,15 @@ type iListParamsResponseBody interface {
 }
 
 type ListParamsResponseBody struct {
-	// A list of parameters.
+	// The list of parameters.
 	Params []*ListParamsResponseBodyParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// A2D07551-38DA-531E-9B22-877D1D86A579
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of parameters.
+	// The total number of elements in the list.
 	//
 	// example:
 	//
@@ -85,17 +85,17 @@ func (s *ListParamsResponseBody) Validate() error {
 type ListParamsResponseBodyParams struct {
 	// The environment to which the parameter belongs. Valid values:
 	//
-	// - Daily: A test environment for daily use.
+	// - Daily: daily environment
 	//
-	// - Prepub: A staging environment that mirrors the production environment.
+	// - Prepub: pre-release environment
 	//
-	// - Product: The production environment.
+	// - Product: production environment
 	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The time when the parameter was last modified.
+	// The update time. The time is formatted in ISO 8601 and includes the time zone offset.
 	//
 	// example:
 	//

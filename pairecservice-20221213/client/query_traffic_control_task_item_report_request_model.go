@@ -20,7 +20,7 @@ type iQueryTrafficControlTaskItemReportRequest interface {
 }
 
 type QueryTrafficControlTaskItemReportRequest struct {
-	// The end time.
+	// The end time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,13 @@ type QueryTrafficControlTaskItemReportRequest struct {
 	//
 	// 2024-01-02 10:30:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The execution environment for the task. Valid values: Daily (development environment), Pre (staging environment), Prod (production environment).
+	// The environment to which the task belongs. Valid values:
+	//
+	// - Daily: daily environment
+	//
+	// - Pre: pre-release environment
+	//
+	// - Prod: production environment
 	//
 	// This parameter is required.
 	//
@@ -44,7 +50,7 @@ type QueryTrafficControlTaskItemReportRequest struct {
 	//
 	// pairec_123****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start time.
+	// The start time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// This parameter is required.
 	//

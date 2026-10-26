@@ -18,7 +18,7 @@ type iListRecallManagementServiceVersionsResponseBody interface {
 }
 
 type ListRecallManagementServiceVersionsResponseBody struct {
-	// A list of Recall Management Service versions.
+	// The list of recall management service versions.
 	RecallManagementServiceVersions []*ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions `json:"RecallManagementServiceVersions,omitempty" xml:"RecallManagementServiceVersions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListRecallManagementServiceVersionsResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *ListRecallManagementServiceVersionsResponseBody) Validate() error {
 }
 
 type ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions struct {
-	// The creation time.
+	// The creation time. The time follows the ISO 8601 standard and includes a time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time.
+	// The update time. The time follows the ISO 8601 standard and includes a time zone offset.
 	//
 	// example:
 	//
@@ -97,13 +97,13 @@ type ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersi
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// Indicates whether the version is effective.
 	IsEffective *bool `json:"IsEffective,omitempty" xml:"IsEffective,omitempty"`
-	// The version name.
+	// The name of the recall management service version.
 	//
 	// example:
 	//
 	// version-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The version ID of the Recall Management Service.
+	// The ID of the recall management service version.
 	//
 	// example:
 	//

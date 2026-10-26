@@ -18,7 +18,7 @@ type iListRecallManagementTableVersionsResponseBody interface {
 }
 
 type ListRecallManagementTableVersionsResponseBody struct {
-	// The list of RecallManagementTable versions.
+	// The list of recall management table versions.
 	RecallManagementTableVersions []*ListRecallManagementTableVersionsResponseBodyRecallManagementTableVersions `json:"RecallManagementTableVersions,omitempty" xml:"RecallManagementTableVersions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListRecallManagementTableVersionsResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -89,47 +89,47 @@ type ListRecallManagementTableVersionsResponseBodyRecallManagementTableVersions 
 	//
 	// ds=20250701
 	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
-	// The effective time.
+	// The effective period. Format: YYYY-MM-DDTHH:mm:ss.SSS.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The sync end time.
+	// The synchronization end time. Format: YYYY-MM-DDTHH:mm:ss.SSS.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132
 	PublishEndTime *string `json:"PublishEndTime,omitempty" xml:"PublishEndTime,omitempty"`
-	// The sync start time.
+	// The synchronization start time. Format: YYYY-MM-DDTHH:mm:ss.SSS.
 	//
 	// example:
 	//
 	// 2021-12-15T22:24:33.132
 	PublishStartTime *string `json:"PublishStartTime,omitempty" xml:"PublishStartTime,omitempty"`
-	// The ID of the RecallManagementTable version.
+	// The version ID.
 	//
 	// example:
 	//
 	// 202507010000
 	RecallManagementTableVersionId *string `json:"RecallManagementTableVersionId,omitempty" xml:"RecallManagementTableVersionId,omitempty"`
-	// The source table data size.
+	// The data size of the source data table.
 	//
 	// example:
 	//
 	// 1000
 	SourceTableDataSize *int64 `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
-	// The source table row count.
+	// The number of rows in the source data table.
 	//
 	// example:
 	//
 	// 100
 	SourceTableRowCount *int64 `json:"SourceTableRowCount,omitempty" xml:"SourceTableRowCount,omitempty"`
-	// The status of the version. Valid values:
+	// The status. Valid values:
 	//
-	// - Online: The version is online.
+	// - Online: online
 	//
-	// - Offline: The version is offline.
+	// - Offline: offline
 	//
 	// example:
 	//

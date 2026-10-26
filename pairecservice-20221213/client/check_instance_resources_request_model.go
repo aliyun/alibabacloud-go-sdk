@@ -18,6 +18,11 @@ type iCheckInstanceResourcesRequest interface {
 }
 
 type CheckInstanceResourcesRequest struct {
+	// The data source ID.
+	//
+	// example:
+	//
+	// reso-*********
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type. Valid values:
 	//

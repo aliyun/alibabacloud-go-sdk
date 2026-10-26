@@ -22,7 +22,7 @@ type QueryDataDiagnosisStatisticsResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics for the data diagnosis task.
+	// The list of data diagnostic nodes.
 	Statistics *QueryDataDiagnosisStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *QueryDataDiagnosisStatisticsResponseBody) Validate() error {
 }
 
 type QueryDataDiagnosisStatisticsResponseBodyStatistics struct {
-	// The dates of task failures.
+	// The list of dates when tasks failed.
 	FailedDates []*string `json:"FailedDates,omitempty" xml:"FailedDates,omitempty" type:"Repeated"`
-	// The dates with missing task data.
+	// The list of dates with missing tasks.
 	NoDataDates []*string `json:"NoDataDates,omitempty" xml:"NoDataDates,omitempty" type:"Repeated"`
 }
 

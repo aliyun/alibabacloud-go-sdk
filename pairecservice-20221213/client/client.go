@@ -124,7 +124,7 @@ func (client *Client) ApplyEngineConfig(EngineConfigId *string, request *ApplyEn
 
 // Summary:
 //
-// Performs data backflow for the latest job of a specified feature consistency check job configuration.
+// Performs data backflow for the most recently created task under the specified feature consistency check job configuration.
 //
 // @param request - BackflowFeatureConsistencyCheckJobDataRequest
 //
@@ -211,7 +211,7 @@ func (client *Client) BackflowFeatureConsistencyCheckJobDataWithOptions(request 
 
 // Summary:
 //
-// Performs data backflow for the latest job of a specified feature consistency check job configuration.
+// Performs data backflow for the most recently created task under the specified feature consistency check job configuration.
 //
 // @param request - BackflowFeatureConsistencyCheckJobDataRequest
 //
@@ -328,19 +328,19 @@ func (client *Client) ChangeRecallManagementServiceVersion(RecallManagementServi
 
 // Summary:
 //
-// Sends a conversation message to an agent. Supports Server-Sent Events (SSE). Creates a new session or continues a conversation in an existing session.
+// Sends a conversation message to an agent. Supports Server-Sent Events (SSE). Creates a new session or continues an existing session.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - Call this API operation to send a conversation message to an agent. Server-Sent Events (SSE) is supported.
+// - This API sends a conversation message to an agent and supports Server-Sent Events (SSE).
 //
-// - If the `ConversationId` parameter is specified, the conversation continues in the context of the specified existing session. If this parameter is not specified, automatic creation of a new session is performed.
+// - If the ConversationId parameter is provided, the conversation continues in the context of the specified existing session. If this parameter is not provided, automatic creation of a new session is triggered.
 //
-// - The `Config` field allows you to pass additional information input. The value must be in JSON format.
+// - The Config field allows you to pass additional information input, which must be in JSON format.
 //
-// - If the request succeeds, the response includes the message ID, reply content, and other information for this conversation. If a fault occurs, the corresponding error code and error message are returned.
+// - If the request is successful, the response includes the message ID and reply content of the current conversation. If a fault occurs, the corresponding error code and error message are returned.
 //
 // @param request - ChatConversationRequest
 //
@@ -357,19 +357,19 @@ func (client *Client) ChatConversationWithSSE(request *ChatConversationRequest, 
 
 // Summary:
 //
-// Sends a conversation message to an agent. Supports Server-Sent Events (SSE). Creates a new session or continues a conversation in an existing session.
+// Sends a conversation message to an agent. Supports Server-Sent Events (SSE). Creates a new session or continues an existing session.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - Call this API operation to send a conversation message to an agent. Server-Sent Events (SSE) is supported.
+// - This API sends a conversation message to an agent and supports Server-Sent Events (SSE).
 //
-// - If the `ConversationId` parameter is specified, the conversation continues in the context of the specified existing session. If this parameter is not specified, automatic creation of a new session is performed.
+// - If the ConversationId parameter is provided, the conversation continues in the context of the specified existing session. If this parameter is not provided, automatic creation of a new session is triggered.
 //
-// - The `Config` field allows you to pass additional information input. The value must be in JSON format.
+// - The Config field allows you to pass additional information input, which must be in JSON format.
 //
-// - If the request succeeds, the response includes the message ID, reply content, and other information for this conversation. If a fault occurs, the corresponding error code and error message are returned.
+// - If the request is successful, the response includes the message ID and reply content of the current conversation. If a fault occurs, the corresponding error code and error message are returned.
 //
 // @param request - ChatConversationRequest
 //
@@ -428,19 +428,19 @@ func (client *Client) ChatConversationWithOptions(request *ChatConversationReque
 
 // Summary:
 //
-// Sends a conversation message to an agent. Supports Server-Sent Events (SSE). Creates a new session or continues a conversation in an existing session.
+// Sends a conversation message to an agent. Supports Server-Sent Events (SSE). Creates a new session or continues an existing session.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - Call this API operation to send a conversation message to an agent. Server-Sent Events (SSE) is supported.
+// - This API sends a conversation message to an agent and supports Server-Sent Events (SSE).
 //
-// - If the `ConversationId` parameter is specified, the conversation continues in the context of the specified existing session. If this parameter is not specified, automatic creation of a new session is performed.
+// - If the ConversationId parameter is provided, the conversation continues in the context of the specified existing session. If this parameter is not provided, automatic creation of a new session is triggered.
 //
-// - The `Config` field allows you to pass additional information input. The value must be in JSON format.
+// - The Config field allows you to pass additional information input, which must be in JSON format.
 //
-// - If the request succeeds, the response includes the message ID, reply content, and other information for this conversation. If a fault occurs, the corresponding error code and error message are returned.
+// - If the request is successful, the response includes the message ID and reply content of the current conversation. If a fault occurs, the corresponding error code and error message are returned.
 //
 // @param request - ChatConversationRequest
 //
@@ -459,7 +459,7 @@ func (client *Client) ChatConversation(request *ChatConversationRequest) (_resul
 
 // Summary:
 //
-// Verifies access to resources configured for an instance.
+// Checks the connection status of the resources configured for an instance.
 //
 // @param request - CheckInstanceResourcesRequest
 //
@@ -514,7 +514,7 @@ func (client *Client) CheckInstanceResourcesWithOptions(InstanceId *string, requ
 
 // Summary:
 //
-// Verifies access to resources configured for an instance.
+// Checks the connection status of the resources configured for an instance.
 //
 // @param request - CheckInstanceResourcesRequest
 //
@@ -1349,7 +1349,7 @@ func (client *Client) CreateABMetricGroup(request *CreateABMetricGroupRequest) (
 
 // Summary:
 //
-// Creates multiple calculation jobs.
+// Creates compute tasks in batches.
 //
 // @param request - CreateCalculationJobsRequest
 //
@@ -1408,7 +1408,7 @@ func (client *Client) CreateCalculationJobsWithOptions(request *CreateCalculatio
 
 // Summary:
 //
-// Creates multiple calculation jobs.
+// Creates compute tasks in batches.
 //
 // @param request - CreateCalculationJobsRequest
 //
@@ -1513,19 +1513,19 @@ func (client *Client) CreateCrowd(request *CreateCrowdRequest) (_result *CreateC
 
 // Summary:
 //
-// Creates a data diagnosis task. This API supports various analysis types.
+// Creates data modeling diagnostic tasks of different types and supports multiple analysis types.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API creates a data diagnosis task. It supports various analysis types, including item or user change rate analysis, user preference statistics cycle analysis, two-table join analysis, basic statistical analysis, and abnormal behavior analysis.
+// - This API creates data diagnostic tasks and supports multiple analysis types, including item/user change rate analysis, user preference statistical period analysis, join table analysis, basic statistics analysis, and abnormal behavior analysis.
 //
-// - The content of the `Config` parameter depends on the value of the `Type` parameter. For more information, see the example configurations in this topic.
+// - The content of the Config field varies depending on the Type value. Set this field correctly by referring to the sample configurations in the References.
 //
-// - To run the task on a schedule, specify the `CycleTime` parameter. If this parameter is omitted, the task runs only once.
+// - To execute the diagnostic task periodically, set the CycleTime field. If this field is not set, the diagnostic task does not execute periodically.
 //
-// - The optional `TopNQuantity` parameter specifies the number of top results to return.
+// - The TopNQuantity field specifies the number of top N results to display. This field is default optional.
 //
 // @param request - CreateDataDiagnosisRequest
 //
@@ -1616,19 +1616,19 @@ func (client *Client) CreateDataDiagnosisWithOptions(request *CreateDataDiagnosi
 
 // Summary:
 //
-// Creates a data diagnosis task. This API supports various analysis types.
+// Creates data modeling diagnostic tasks of different types and supports multiple analysis types.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API creates a data diagnosis task. It supports various analysis types, including item or user change rate analysis, user preference statistics cycle analysis, two-table join analysis, basic statistical analysis, and abnormal behavior analysis.
+// - This API creates data diagnostic tasks and supports multiple analysis types, including item/user change rate analysis, user preference statistical period analysis, join table analysis, basic statistics analysis, and abnormal behavior analysis.
 //
-// - The content of the `Config` parameter depends on the value of the `Type` parameter. For more information, see the example configurations in this topic.
+// - The content of the Config field varies depending on the Type value. Set this field correctly by referring to the sample configurations in the References.
 //
-// - To run the task on a schedule, specify the `CycleTime` parameter. If this parameter is omitted, the task runs only once.
+// - To execute the diagnostic task periodically, set the CycleTime field. If this field is not set, the diagnostic task does not execute periodically.
 //
-// - The optional `TopNQuantity` parameter specifies the number of top results to return.
+// - The TopNQuantity field specifies the number of top N results to display. This field is default optional.
 //
 // @param request - CreateDataDiagnosisRequest
 //
@@ -1647,13 +1647,13 @@ func (client *Client) CreateDataDiagnosis(request *CreateDataDiagnosisRequest) (
 
 // Summary:
 //
-// Creates a data diagnosis (rerun) job for a specified time period.
+// Creates a data modeling diagnostics (rerun) task for a specified time range.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This operation creates a data diagnosis (rerun) job for a specific instance within a specified time frame. To ensure the job runs correctly, provide accurate values for the `DataDiagnosisId`, `InstanceId`, `StartDate`, and `EndDate` parameters.
+// By invoking this API, you can start a new data modeling diagnostics node for a specific instance within a given time range. Make sure the values of the `DataDiagnosisId`, `InstanceId`, `StartDate`, and `EndDate` parameters are accurate to ensure the node executes correctly.
 //
 // @param request - CreateDataDiagnosisJobsRequest
 //
@@ -1712,13 +1712,13 @@ func (client *Client) CreateDataDiagnosisJobsWithOptions(request *CreateDataDiag
 
 // Summary:
 //
-// Creates a data diagnosis (rerun) job for a specified time period.
+// Creates a data modeling diagnostics (rerun) task for a specified time range.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This operation creates a data diagnosis (rerun) job for a specific instance within a specified time frame. To ensure the job runs correctly, provide accurate values for the `DataDiagnosisId`, `InstanceId`, `StartDate`, and `EndDate` parameters.
+// By invoking this API, you can start a new data modeling diagnostics node for a specific instance within a given time range. Make sure the values of the `DataDiagnosisId`, `InstanceId`, `StartDate`, and `EndDate` parameters are accurate to ensure the node executes correctly.
 //
 // @param request - CreateDataDiagnosisJobsRequest
 //
@@ -3821,19 +3821,19 @@ func (client *Client) CreateTableMeta(request *CreateTableMetaRequest) (_result 
 
 // Summary:
 //
-// Creates a new traffic control target and sets its parameters, such as the item condition, event, and value.
+// Creates a traffic control target and configures parameters such as control conditions, events, and target values.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request notes
 //
-// - The `ItemConditionType` parameter supports two formats: array format (Array) and expression format (Expression). Based on the format you select, you must provide either `ItemConditionArray` or `ItemConditionExpress`.
+// - `ItemConditionType` supports two formats: array format (Array) and expression format (Expression). Depending on your selection, you must provide the corresponding `ItemConditionArray` or `ItemConditionExpress`.
 //
-// - The `StatisPeriod` parameter defaults to daily. For hourly statistics, you must set this parameter explicitly.
+// - The default value of `StatisPeriod` is daily. If you require hourly statistics, explicitly specify this parameter.
 //
-// - The `ToleranceValue` and `NewProductRegulation` parameters are optional.
+// - `ToleranceValue` and `NewProductRegulation` are optional parameters. Specify them only when you have specific requirements.
 //
-// - The `Status` parameter controls whether a new traffic control target takes effect immediately. By default, new targets are inactive.
+// - The `Status` field allows you to control whether the newly created traffic control target takes effect immediately. By default, it may be in the disabled state.
 //
 // @param request - CreateTrafficControlTargetRequest
 //
@@ -3932,19 +3932,19 @@ func (client *Client) CreateTrafficControlTargetWithOptions(request *CreateTraff
 
 // Summary:
 //
-// Creates a new traffic control target and sets its parameters, such as the item condition, event, and value.
+// Creates a traffic control target and configures parameters such as control conditions, events, and target values.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request notes
 //
-// - The `ItemConditionType` parameter supports two formats: array format (Array) and expression format (Expression). Based on the format you select, you must provide either `ItemConditionArray` or `ItemConditionExpress`.
+// - `ItemConditionType` supports two formats: array format (Array) and expression format (Expression). Depending on your selection, you must provide the corresponding `ItemConditionArray` or `ItemConditionExpress`.
 //
-// - The `StatisPeriod` parameter defaults to daily. For hourly statistics, you must set this parameter explicitly.
+// - The default value of `StatisPeriod` is daily. If you require hourly statistics, explicitly specify this parameter.
 //
-// - The `ToleranceValue` and `NewProductRegulation` parameters are optional.
+// - `ToleranceValue` and `NewProductRegulation` are optional parameters. Specify them only when you have specific requirements.
 //
-// - The `Status` parameter controls whether a new traffic control target takes effect immediately. By default, new targets are inactive.
+// - The `Status` field allows you to control whether the newly created traffic control target takes effect immediately. By default, it may be in the disabled state.
 //
 // @param request - CreateTrafficControlTargetRequest
 //
@@ -3963,23 +3963,23 @@ func (client *Client) CreateTrafficControlTarget(request *CreateTrafficControlTa
 
 // Summary:
 //
-// Creates a new traffic control task with multiple conditions and target configurations.
+// Creates a traffic control task with various condition settings and target configurations.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - Use this API to create a new traffic control task. You can define a traffic control policy for different scenarios, time ranges, and conditions for users or items.
+// - This API operation creates a traffic control task. You can define traffic control policies based on different scenarios, time ranges, and specific user or item conditions.
 //
-// - The `ExecutionTime` parameter specifies the execution time mode for the task. If you select the `TimeRange` mode, you must provide both the `StartTime` and `EndTime` parameters.
+// - The `ExecutionTime` parameter specifies the time mode for task execution. If you select the `TimeRange` mode, you must specify both `StartTime` and `EndTime`.
 //
-// - The `TrafficControlTargets` parameter is required. For each traffic control target, you must specify its name, time range, event type, and expected value.
+// - The traffic control target list (`TrafficControlTargets`) is required. For each target, you must specify its name, time range, event type, and expected value.
 //
-// - You can use the `UserConditionType` and `ItemConditionType` parameters to define conditions for the target user group and items.
+// - You can use `UserConditionType` and `ItemConditionType` to flexibly set specific conditions for the target users and items. Both array and expression formats are supported.
 //
-// - Set the `ControlLogic` parameter to `Guaranteed` for guaranteed control or to `Approach` for approach control.
+// - The `ControlLogic` parameter can be set to `Guaranteed` or `Approach`, which indicates guaranteed traffic control or approximate traffic control, respectively.
 //
-// - To configure new product regulation, use the `NewProductRegulation` field.
+// - When you configure new product regulation, make sure that the `NewProductRegulation` field is correctly specified.
 //
 // @param request - CreateTrafficControlTaskRequest
 //
@@ -4138,23 +4138,23 @@ func (client *Client) CreateTrafficControlTaskWithOptions(request *CreateTraffic
 
 // Summary:
 //
-// Creates a new traffic control task with multiple conditions and target configurations.
+// Creates a traffic control task with various condition settings and target configurations.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - Use this API to create a new traffic control task. You can define a traffic control policy for different scenarios, time ranges, and conditions for users or items.
+// - This API operation creates a traffic control task. You can define traffic control policies based on different scenarios, time ranges, and specific user or item conditions.
 //
-// - The `ExecutionTime` parameter specifies the execution time mode for the task. If you select the `TimeRange` mode, you must provide both the `StartTime` and `EndTime` parameters.
+// - The `ExecutionTime` parameter specifies the time mode for task execution. If you select the `TimeRange` mode, you must specify both `StartTime` and `EndTime`.
 //
-// - The `TrafficControlTargets` parameter is required. For each traffic control target, you must specify its name, time range, event type, and expected value.
+// - The traffic control target list (`TrafficControlTargets`) is required. For each target, you must specify its name, time range, event type, and expected value.
 //
-// - You can use the `UserConditionType` and `ItemConditionType` parameters to define conditions for the target user group and items.
+// - You can use `UserConditionType` and `ItemConditionType` to flexibly set specific conditions for the target users and items. Both array and expression formats are supported.
 //
-// - Set the `ControlLogic` parameter to `Guaranteed` for guaranteed control or to `Approach` for approach control.
+// - The `ControlLogic` parameter can be set to `Guaranteed` or `Approach`, which indicates guaranteed traffic control or approximate traffic control, respectively.
 //
-// - To configure new product regulation, use the `NewProductRegulation` field.
+// - When you configure new product regulation, make sure that the `NewProductRegulation` field is correctly specified.
 //
 // @param request - CreateTrafficControlTaskRequest
 //
@@ -6339,7 +6339,7 @@ func (client *Client) GenerateTrafficControlTaskConfig(TrafficControlTaskId *str
 
 // Summary:
 //
-// Gets the details of an A/B metric.
+// Retrieves the details of an ABTest metric.
 //
 // @param request - GetABMetricRequest
 //
@@ -6386,7 +6386,7 @@ func (client *Client) GetABMetricWithOptions(ABMetricId *string, request *GetABM
 
 // Summary:
 //
-// Gets the details of an A/B metric.
+// Retrieves the details of an ABTest metric.
 //
 // @param request - GetABMetricRequest
 //
@@ -6471,7 +6471,7 @@ func (client *Client) GetABMetricGroup(ABMetricGroupId *string, request *GetABMe
 
 // Summary:
 //
-// Gets the details of a specified calculation job.
+// Retrieves the details of a specified compute task.
 //
 // @param request - GetCalculationJobRequest
 //
@@ -6518,7 +6518,7 @@ func (client *Client) GetCalculationJobWithOptions(CalculationJobId *string, req
 
 // Summary:
 //
-// Gets the details of a specified calculation job.
+// Retrieves the details of a specified compute task.
 //
 // @param request - GetCalculationJobRequest
 //
@@ -6537,19 +6537,19 @@ func (client *Client) GetCalculationJob(CalculationJobId *string, request *GetCa
 
 // Summary:
 //
-// Retrieves details of a data diagnosis task using its data diagnosis task ID and instance ID.
+// Retrieves detailed data modeling diagnostics information by diagnostic node ID and instance ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves the details of a specific data diagnosis task using the provided `DataDiagnosisId` (data diagnosis task configuration ID) and `InstanceId` (instance ID).
+// - This API retrieves detailed information about a specific diagnostic node based on the provided `DataDiagnosisId` (diagnostic node configuration ID) and `InstanceId` (instance ID).
 //
-// - The `CycleTime` field specifies the time for periodic execution. If this field is empty, the task does not execute periodically.
+// - The `CycleTime` field indicates the epoch runtime. If this field is empty, no scheduled runs are performed.
 //
-// - The value of `Type` determines the content of the `Config` field. For details about the required configuration for each type, see the relevant documentation.
+// - The content of the `Config` field varies depending on the `Type` value. Refer to the References for the specific configuration items required for each type.
 //
-// - `GmtCreateTime` and `GmtModifiedTime` are timestamps for the record\\"s creation and modification times, respectively.
+// - `GmtCreateTime` and `GmtModifiedTime` represent the UNIX timestamps for when the record was created and last modified, respectively.
 //
 // @param request - GetDataDiagnosisRequest
 //
@@ -6596,19 +6596,19 @@ func (client *Client) GetDataDiagnosisWithOptions(DataDiagnosisId *string, reque
 
 // Summary:
 //
-// Retrieves details of a data diagnosis task using its data diagnosis task ID and instance ID.
+// Retrieves detailed data modeling diagnostics information by diagnostic node ID and instance ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves the details of a specific data diagnosis task using the provided `DataDiagnosisId` (data diagnosis task configuration ID) and `InstanceId` (instance ID).
+// - This API retrieves detailed information about a specific diagnostic node based on the provided `DataDiagnosisId` (diagnostic node configuration ID) and `InstanceId` (instance ID).
 //
-// - The `CycleTime` field specifies the time for periodic execution. If this field is empty, the task does not execute periodically.
+// - The `CycleTime` field indicates the epoch runtime. If this field is empty, no scheduled runs are performed.
 //
-// - The value of `Type` determines the content of the `Config` field. For details about the required configuration for each type, see the relevant documentation.
+// - The content of the `Config` field varies depending on the `Type` value. Refer to the References for the specific configuration items required for each type.
 //
-// - `GmtCreateTime` and `GmtModifiedTime` are timestamps for the record\\"s creation and modification times, respectively.
+// - `GmtCreateTime` and `GmtModifiedTime` represent the UNIX timestamps for when the record was created and last modified, respectively.
 //
 // @param request - GetDataDiagnosisRequest
 //
@@ -6825,7 +6825,7 @@ func (client *Client) GetExperimentGroup(ExperimentGroupId *string, request *Get
 
 // Summary:
 //
-// Gets the details of a feature consistency check job.
+// Retrieves the details of a feature consistency check task.
 //
 // @param request - GetFeatureConsistencyCheckJobRequest
 //
@@ -6872,7 +6872,7 @@ func (client *Client) GetFeatureConsistencyCheckJobWithOptions(FeatureConsistenc
 
 // Summary:
 //
-// Gets the details of a feature consistency check job.
+// Retrieves the details of a feature consistency check task.
 //
 // @param request - GetFeatureConsistencyCheckJobRequest
 //
@@ -6891,7 +6891,7 @@ func (client *Client) GetFeatureConsistencyCheckJob(FeatureConsistencyCheckJobId
 
 // Summary:
 //
-// Retrieves the configuration details of a feature consistency check task.
+// Retrieves the configuration details of a feature consistency check job.
 //
 // @param request - GetFeatureConsistencyCheckJobConfigRequest
 //
@@ -6938,7 +6938,7 @@ func (client *Client) GetFeatureConsistencyCheckJobConfigWithOptions(FeatureCons
 
 // Summary:
 //
-// Retrieves the configuration details of a feature consistency check task.
+// Retrieves the configuration details of a feature consistency check job.
 //
 // @param request - GetFeatureConsistencyCheckJobConfigRequest
 //
@@ -6957,7 +6957,7 @@ func (client *Client) GetFeatureConsistencyCheckJobConfig(FeatureConsistencyChec
 
 // Summary:
 //
-// Retrieves the details of a specified PAIRec instance.
+// Queries the details of a specified PAIRec instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -6998,7 +6998,7 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, request *GetIns
 
 // Summary:
 //
-// Retrieves the details of a specified PAIRec instance.
+// Queries the details of a specified PAIRec instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -7017,7 +7017,7 @@ func (client *Client) GetInstance(InstanceId *string, request *GetInstanceReques
 
 // Summary:
 //
-// Retrieves the details of a specific resource in a specified instance.
+// Retrieves the details of a specified resource in a specified instance.
 //
 // @param request - GetInstanceResourceRequest
 //
@@ -7058,7 +7058,7 @@ func (client *Client) GetInstanceResourceWithOptions(InstanceId *string, Resourc
 
 // Summary:
 //
-// Retrieves the details of a specific resource in a specified instance.
+// Retrieves the details of a specified resource in a specified instance.
 //
 // @param request - GetInstanceResourceRequest
 //
@@ -7335,13 +7335,13 @@ func (client *Client) GetRecallManagementConfig(request *GetRecallManagementConf
 
 // Summary:
 //
-// Retrieves the details of a specific recall management job, including its status and log.
+// Queries the details of a specific recall management task, including the status and logs.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// Retrieves the details of a specific recall management job using its `RecallManagementJobId` and `InstanceId`. The response includes the job\\"s status (such as Init, Running, Success, or Failed), start and end times, related table information, and operation log. To make a request, specify the `RecallManagementJobId` as a path parameter and the `InstanceId` as a query parameter.
+// Provides the details of a specified recall management task by using RecallManagementJobId and InstanceId. This API returns the task status (such as init, running, success, or failed), start and end times, related table information, and operation logs. Make sure to specify the path parameter RecallManagementJobId and the query parameter InstanceId in the request.
 //
 // @param request - GetRecallManagementJobRequest
 //
@@ -7388,13 +7388,13 @@ func (client *Client) GetRecallManagementJobWithOptions(RecallManagementJobId *s
 
 // Summary:
 //
-// Retrieves the details of a specific recall management job, including its status and log.
+// Queries the details of a specific recall management task, including the status and logs.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// Retrieves the details of a specific recall management job using its `RecallManagementJobId` and `InstanceId`. The response includes the job\\"s status (such as Init, Running, Success, or Failed), start and end times, related table information, and operation log. To make a request, specify the `RecallManagementJobId` as a path parameter and the `InstanceId` as a query parameter.
+// Provides the details of a specified recall management task by using RecallManagementJobId and InstanceId. This API returns the task status (such as init, running, success, or failed), start and end times, related table information, and operation logs. Make sure to specify the path parameter RecallManagementJobId and the query parameter InstanceId in the request.
 //
 // @param request - GetRecallManagementJobRequest
 //
@@ -7413,11 +7413,11 @@ func (client *Client) GetRecallManagementJob(RecallManagementJobId *string, requ
 
 // Summary:
 //
-// Retrieves the details of a specified recall management service, including its status and version.
+// Queries the details of a specified recall management service, including the status and version.
 //
 // Description:
 //
-// ## Request
+// ## Request description.
 //
 // @param request - GetRecallManagementServiceRequest
 //
@@ -7464,11 +7464,11 @@ func (client *Client) GetRecallManagementServiceWithOptions(RecallManagementServ
 
 // Summary:
 //
-// Retrieves the details of a specified recall management service, including its status and version.
+// Queries the details of a specified recall management service, including the status and version.
 //
 // Description:
 //
-// ## Request
+// ## Request description.
 //
 // @param request - GetRecallManagementServiceRequest
 //
@@ -7487,7 +7487,7 @@ func (client *Client) GetRecallManagementService(RecallManagementServiceId *stri
 
 // Summary:
 //
-// Retrieves the version details of the recall management service.
+// Retrieves the details of a recall management service version.
 //
 // @param request - GetRecallManagementServiceVersionRequest
 //
@@ -7534,7 +7534,7 @@ func (client *Client) GetRecallManagementServiceVersionWithOptions(RecallManagem
 
 // Summary:
 //
-// Retrieves the version details of the recall management service.
+// Retrieves the details of a recall management service version.
 //
 // @param request - GetRecallManagementServiceVersionRequest
 //
@@ -7553,17 +7553,17 @@ func (client *Client) GetRecallManagementServiceVersion(RecallManagementServiceI
 
 // Summary:
 //
-// This API retrieves the configuration details of a specific recall management service version.
+// Queries the configuration details of a specific recall management service version.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Retrieves the configuration details for a specific version of a Recall Management Service by specifying its service, version, and configuration IDs. Ensure the parameter values are correct. The `InstanceId` is crucial for locating the correct instance.
+// Specify the recall management service ID, version ID, and configuration ID to retrieve the configuration details of the recall service version. Ensure that the parameter values are accurate, especially `InstanceId`, which is crucial for locating the correct instance.
 //
-// - **Note**: All path parameters (`RecallManagementServiceId`, `RecallManagementServiceVersionId`, and `RecallManagementServiceVersionConfigId`) are required and must reference an existing resource.
+// - **Note**: All path parameters (`RecallManagementServiceId`, `RecallManagementServiceVersionId`, and `RecallManagementServiceVersionConfigId`) are required and must match existing resources.
 //
-// - **Extended configuration**: The response includes the `ExtendedConfig` field, which is used for future extensions and custom settings. Parse this field as needed.
+// - **Extended configuration**: The returned data includes the `ExtendedConfig` field for future feature extensions or custom settings. Parse and use it as needed.
 //
 // @param request - GetRecallManagementServiceVersionConfigRequest
 //
@@ -7610,17 +7610,17 @@ func (client *Client) GetRecallManagementServiceVersionConfigWithOptions(RecallM
 
 // Summary:
 //
-// This API retrieves the configuration details of a specific recall management service version.
+// Queries the configuration details of a specific recall management service version.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Retrieves the configuration details for a specific version of a Recall Management Service by specifying its service, version, and configuration IDs. Ensure the parameter values are correct. The `InstanceId` is crucial for locating the correct instance.
+// Specify the recall management service ID, version ID, and configuration ID to retrieve the configuration details of the recall service version. Ensure that the parameter values are accurate, especially `InstanceId`, which is crucial for locating the correct instance.
 //
-// - **Note**: All path parameters (`RecallManagementServiceId`, `RecallManagementServiceVersionId`, and `RecallManagementServiceVersionConfigId`) are required and must reference an existing resource.
+// - **Note**: All path parameters (`RecallManagementServiceId`, `RecallManagementServiceVersionId`, and `RecallManagementServiceVersionConfigId`) are required and must match existing resources.
 //
-// - **Extended configuration**: The response includes the `ExtendedConfig` field, which is used for future extensions and custom settings. Parse this field as needed.
+// - **Extended configuration**: The returned data includes the `ExtendedConfig` field for future feature extensions or custom settings. Parse and use it as needed.
 //
 // @param request - GetRecallManagementServiceVersionConfigRequest
 //
@@ -7639,19 +7639,19 @@ func (client *Client) GetRecallManagementServiceVersionConfig(RecallManagementSe
 
 // Summary:
 //
-// Retrieves the details of a specified recall management table, including its table structure and configuration.
+// Queries the details of a specified recall management table, including the table schema and configurations.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API retrieves details of a specific recall management table using the provided `RecallManagementTableId` and `InstanceId`. Ensure you provide the correct values for these parameters.
+// This operation retrieves the details of a recall management table based on the specified table ID (`RecallManagementTableId`) and instance ID (`InstanceId`). Make sure to provide valid values for these two parameters in the request.
 //
-// - **Note**: The `CanDelete` field indicates whether the data table supports delete operations. Use this value to control delete functionality in your application.
+// - **Note**: The `CanDelete` field indicates whether the table supports deletion. Handle the related logic with caution.
 //
-// - The `Fields` list contains the definitions for each field in the data table, including their name, type, and properties.
+// - The `Fields` list contains the specific definitions of the fields in the table, such as the name, type, and attributes.
 //
-// - To monitor data changes, you can configure or query the fluctuation thresholds for row count and size using the corresponding fields.
+// - The fluctuation threshold settings for the table (row count and size) can be configured or queried through the corresponding fields to monitor data changes.
 //
 // @param request - GetRecallManagementTableRequest
 //
@@ -7698,19 +7698,19 @@ func (client *Client) GetRecallManagementTableWithOptions(RecallManagementTableI
 
 // Summary:
 //
-// Retrieves the details of a specified recall management table, including its table structure and configuration.
+// Queries the details of a specified recall management table, including the table schema and configurations.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API retrieves details of a specific recall management table using the provided `RecallManagementTableId` and `InstanceId`. Ensure you provide the correct values for these parameters.
+// This operation retrieves the details of a recall management table based on the specified table ID (`RecallManagementTableId`) and instance ID (`InstanceId`). Make sure to provide valid values for these two parameters in the request.
 //
-// - **Note**: The `CanDelete` field indicates whether the data table supports delete operations. Use this value to control delete functionality in your application.
+// - **Note**: The `CanDelete` field indicates whether the table supports deletion. Handle the related logic with caution.
 //
-// - The `Fields` list contains the definitions for each field in the data table, including their name, type, and properties.
+// - The `Fields` list contains the specific definitions of the fields in the table, such as the name, type, and attributes.
 //
-// - To monitor data changes, you can configure or query the fluctuation thresholds for row count and size using the corresponding fields.
+// - The fluctuation threshold settings for the table (row count and size) can be configured or queried through the corresponding fields to monitor data changes.
 //
 // @param request - GetRecallManagementTableRequest
 //
@@ -7993,7 +7993,7 @@ func (client *Client) GetService(ServiceId *string, request *GetServiceRequest) 
 
 // Summary:
 //
-// Retrieves the details of a sub-crowd.
+// Retrieves the details of a specified sub-crowd.
 //
 // @param request - GetSubCrowdRequest
 //
@@ -8040,7 +8040,7 @@ func (client *Client) GetSubCrowdWithOptions(CrowdId *string, SubCrowdId *string
 
 // Summary:
 //
-// Retrieves the details of a sub-crowd.
+// Retrieves the details of a specified sub-crowd.
 //
 // @param request - GetSubCrowdRequest
 //
@@ -8059,7 +8059,7 @@ func (client *Client) GetSubCrowd(CrowdId *string, SubCrowdId *string, request *
 
 // Summary:
 //
-// Returns the details of a table.
+// Retrieves the details of a data table.
 //
 // @param request - GetTableMetaRequest
 //
@@ -8106,7 +8106,7 @@ func (client *Client) GetTableMetaWithOptions(TableMetaId *string, request *GetT
 
 // Summary:
 //
-// Returns the details of a table.
+// Retrieves the details of a data table.
 //
 // @param request - GetTableMetaRequest
 //
@@ -8125,13 +8125,13 @@ func (client *Client) GetTableMeta(TableMetaId *string, request *GetTableMetaReq
 
 // Summary:
 //
-// Gets the details of a traffic throttling objective by its ID.
+// Queries the details of a traffic control target with a specified ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Retrieves the detailed configuration of a traffic control target. The configuration includes the target name, time range, and condition settings. This operation requires the `TrafficControlTargetId` and `InstanceId` parameters.
+// Provide the traffic control target ID and instance ID to retrieve the detailed configuration of the traffic control target, including the target name, time range, and condition settings. Note that TrafficControlTargetId and InstanceId are required parameters.
 //
 // @param request - GetTrafficControlTargetRequest
 //
@@ -8178,13 +8178,13 @@ func (client *Client) GetTrafficControlTargetWithOptions(TrafficControlTargetId 
 
 // Summary:
 //
-// Gets the details of a traffic throttling objective by its ID.
+// Queries the details of a traffic control target with a specified ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Retrieves the detailed configuration of a traffic control target. The configuration includes the target name, time range, and condition settings. This operation requires the `TrafficControlTargetId` and `InstanceId` parameters.
+// Provide the traffic control target ID and instance ID to retrieve the detailed configuration of the traffic control target, including the target name, time range, and condition settings. Note that TrafficControlTargetId and InstanceId are required parameters.
 //
 // @param request - GetTrafficControlTargetRequest
 //
@@ -8497,7 +8497,7 @@ func (client *Client) ListABMetricGroups(request *ListABMetricGroupsRequest) (_r
 
 // Summary:
 //
-// Lists A/B testing metrics.
+// Retrieves a list of AB test metrics.
 //
 // @param request - ListABMetricsRequest
 //
@@ -8572,7 +8572,7 @@ func (client *Client) ListABMetricsWithOptions(request *ListABMetricsRequest, he
 
 // Summary:
 //
-// Lists A/B testing metrics.
+// Retrieves a list of AB test metrics.
 //
 // @param request - ListABMetricsRequest
 //
@@ -8591,7 +8591,7 @@ func (client *Client) ListABMetrics(request *ListABMetricsRequest) (_result *Lis
 
 // Summary:
 //
-// Lists calculation jobs.
+// Queries a list of calculation tasks.
 //
 // @param request - ListCalculationJobsRequest
 //
@@ -8654,7 +8654,7 @@ func (client *Client) ListCalculationJobsWithOptions(request *ListCalculationJob
 
 // Summary:
 //
-// Lists calculation jobs.
+// Queries a list of calculation tasks.
 //
 // @param request - ListCalculationJobsRequest
 //
@@ -8739,7 +8739,7 @@ func (client *Client) ListCrowdUsers(CrowdId *string, request *ListCrowdUsersReq
 
 // Summary:
 //
-// Lists the Crowds in a specified instance.
+// Retrieves a list of crowds.
 //
 // @param request - ListCrowdsRequest
 //
@@ -8786,7 +8786,7 @@ func (client *Client) ListCrowdsWithOptions(request *ListCrowdsRequest, headers 
 
 // Summary:
 //
-// Lists the Crowds in a specified instance.
+// Retrieves a list of crowds.
 //
 // @param request - ListCrowdsRequest
 //
@@ -8909,19 +8909,19 @@ func (client *Client) ListDataDiagnoses(request *ListDataDiagnosesRequest) (_res
 
 // Summary:
 //
-// Queries data diagnosis jobs for a specified instance.
+// Queries the data diagnostic tasks and their statuses for a specified instance.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This API retrieves data diagnosis jobs for a specific instance. You can filter the jobs by parameters such as `InstanceId` and `Status`, and use the `PageNumber` and `PageSize` parameters to control pagination.
+// This API allows you to retrieve a list of data diagnostic tasks for a specific instance based on provided parameters such as InstanceId and Status. You can filter tasks by status and type, and control the amount of returned data by using pagination parameters such as PageNumber and PageSize.
 //
-// - The **InstanceId*	- parameter is required and specifies the instance to query.
+// - **InstanceId*	- is required and specifies the instance to which the tasks to be queried belong.
 //
-// - Optional parameters include **Status**, **Types**, **PageNumber**, and **PageSize**.
+// - Optional parameters include **Status**, **Types**, **PageNumber**, and **PageSize**, which allow you to filter the required information more precisely.
 //
-// - Note: If you omit filter conditions, the operation returns all matching data diagnosis jobs.
+// - Note: If no filter conditions are provided, all eligible data diagnostic tasks are returned by default.
 //
 // @param tmpReq - ListDataDiagnosisJobsRequest
 //
@@ -8990,19 +8990,19 @@ func (client *Client) ListDataDiagnosisJobsWithOptions(tmpReq *ListDataDiagnosis
 
 // Summary:
 //
-// Queries data diagnosis jobs for a specified instance.
+// Queries the data diagnostic tasks and their statuses for a specified instance.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This API retrieves data diagnosis jobs for a specific instance. You can filter the jobs by parameters such as `InstanceId` and `Status`, and use the `PageNumber` and `PageSize` parameters to control pagination.
+// This API allows you to retrieve a list of data diagnostic tasks for a specific instance based on provided parameters such as InstanceId and Status. You can filter tasks by status and type, and control the amount of returned data by using pagination parameters such as PageNumber and PageSize.
 //
-// - The **InstanceId*	- parameter is required and specifies the instance to query.
+// - **InstanceId*	- is required and specifies the instance to which the tasks to be queried belong.
 //
-// - Optional parameters include **Status**, **Types**, **PageNumber**, and **PageSize**.
+// - Optional parameters include **Status**, **Types**, **PageNumber**, and **PageSize**, which allow you to filter the required information more precisely.
 //
-// - Note: If you omit filter conditions, the operation returns all matching data diagnosis jobs.
+// - Note: If no filter conditions are provided, all eligible data diagnostic tasks are returned by default.
 //
 // @param request - ListDataDiagnosisJobsRequest
 //
@@ -9021,21 +9021,21 @@ func (client *Client) ListDataDiagnosisJobs(request *ListDataDiagnosisJobsReques
 
 // Summary:
 //
-// Specify parameters to retrieve data diagnosis reports for a specific time range.
+// Retrieves a diagnostic report for a specified time period based on the given parameters.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves data diagnosis reports based on parameters such as the data diagnosis ID, instance ID, and a date range.
+// - This API retrieves a diagnostic report based on the provided data diagnosis ID, instance ID, and date range.
 //
-// - The `FeatureName` parameter filters reports by a specific feature, and the `TopN` parameter limits the number of results.
+// - Use Settings for FeatureName to filter reports for a specific feature. Use the TopN parameter to limit the number of returned results.
 //
-// - The `RemainRateType` parameter specifies the type of retention rate report, such as a periodic report.
+// - RemainRateType allows you to select the type of retention rate report, such as a periodic report.
 //
-// - Report content includes item and user change rate analysis, periodic user preference analysis, correlation analysis, basic statistical analysis, and anomaly detection.
+// - Report content includes, but is not limited to, item/user change rate analysis, user preference statistical period analysis, join table associate analysis, basic statistics analysis, and abnormal behavior analysis.
 //
-// - Important: All date values must use the `YYYY-MM-DD` format.
+// - Note: All dates must follow the YYYY-MM-DD format.
 //
 // @param request - ListDataDiagnosisReportsRequest
 //
@@ -9102,21 +9102,21 @@ func (client *Client) ListDataDiagnosisReportsWithOptions(DataDiagnosisId *strin
 
 // Summary:
 //
-// Specify parameters to retrieve data diagnosis reports for a specific time range.
+// Retrieves a diagnostic report for a specified time period based on the given parameters.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves data diagnosis reports based on parameters such as the data diagnosis ID, instance ID, and a date range.
+// - This API retrieves a diagnostic report based on the provided data diagnosis ID, instance ID, and date range.
 //
-// - The `FeatureName` parameter filters reports by a specific feature, and the `TopN` parameter limits the number of results.
+// - Use Settings for FeatureName to filter reports for a specific feature. Use the TopN parameter to limit the number of returned results.
 //
-// - The `RemainRateType` parameter specifies the type of retention rate report, such as a periodic report.
+// - RemainRateType allows you to select the type of retention rate report, such as a periodic report.
 //
-// - Report content includes item and user change rate analysis, periodic user preference analysis, correlation analysis, basic statistical analysis, and anomaly detection.
+// - Report content includes, but is not limited to, item/user change rate analysis, user preference statistical period analysis, join table associate analysis, basic statistics analysis, and abnormal behavior analysis.
 //
-// - Important: All date values must use the `YYYY-MM-DD` format.
+// - Note: All dates must follow the YYYY-MM-DD format.
 //
 // @param request - ListDataDiagnosisReportsRequest
 //
@@ -9229,7 +9229,7 @@ func (client *Client) ListEngineConfigs(request *ListEngineConfigsRequest) (_res
 
 // Summary:
 //
-// Returns a list of experiment groups.
+// Retrieves a list of experiment groups.
 //
 // @param request - ListExperimentGroupsRequest
 //
@@ -9292,7 +9292,7 @@ func (client *Client) ListExperimentGroupsWithOptions(request *ListExperimentGro
 
 // Summary:
 //
-// Returns a list of experiment groups.
+// Retrieves a list of experiment groups.
 //
 // @param request - ListExperimentGroupsRequest
 //
@@ -9311,7 +9311,7 @@ func (client *Client) ListExperimentGroups(request *ListExperimentGroupsRequest)
 
 // Summary:
 //
-// Lists the experiments in the specified experiment group.
+// Retrieves the list of experiments in a specified experiment group.
 //
 // @param request - ListExperimentsRequest
 //
@@ -9370,7 +9370,7 @@ func (client *Client) ListExperimentsWithOptions(request *ListExperimentsRequest
 
 // Summary:
 //
-// Lists the experiments in the specified experiment group.
+// Retrieves the list of experiments in a specified experiment group.
 //
 // @param request - ListExperimentsRequest
 //
@@ -9389,7 +9389,7 @@ func (client *Client) ListExperiments(request *ListExperimentsRequest) (_result 
 
 // Summary:
 //
-// Retrieves the list of feature consistency check task configurations.
+// Retrieves a list of feature consistency check task configurations.
 //
 // @param request - ListFeatureConsistencyCheckJobConfigsRequest
 //
@@ -9456,7 +9456,7 @@ func (client *Client) ListFeatureConsistencyCheckJobConfigsWithOptions(request *
 
 // Summary:
 //
-// Retrieves the list of feature consistency check task configurations.
+// Retrieves a list of feature consistency check task configurations.
 //
 // @param request - ListFeatureConsistencyCheckJobConfigsRequest
 //
@@ -9793,13 +9793,13 @@ func (client *Client) ListInstanceResourceSchemas(InstanceId *string, ResourceId
 
 // Summary:
 //
-// Retrieves a list of data tables for a specified instance and data source.
+// Queries all tables in a specified instance and data source.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// Provide the instance ID (InstanceId) and data source ID (ResourceId) to retrieve a list of data tables from the specified data source. Use the optional `MaxcomputeSchema` parameter to filter the results by a MaxCompute schema.
+// Provide the instance ID (InstanceId) and data source ID (ResourceId) to retrieve a list of all tables in the data source. You can use the optional `MaxcomputeSchema` parameter to specify a MaxCompute schema to further filter the results.
 //
 // @param request - ListInstanceResourceTablesRequest
 //
@@ -9846,13 +9846,13 @@ func (client *Client) ListInstanceResourceTablesWithOptions(InstanceId *string, 
 
 // Summary:
 //
-// Retrieves a list of data tables for a specified instance and data source.
+// Queries all tables in a specified instance and data source.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// Provide the instance ID (InstanceId) and data source ID (ResourceId) to retrieve a list of data tables from the specified data source. Use the optional `MaxcomputeSchema` parameter to filter the results by a MaxCompute schema.
+// Provide the instance ID (InstanceId) and data source ID (ResourceId) to retrieve a list of all tables in the data source. You can use the optional `MaxcomputeSchema` parameter to specify a MaxCompute schema to further filter the results.
 //
 // @param request - ListInstanceResourceTablesRequest
 //
@@ -9945,7 +9945,7 @@ func (client *Client) ListInstanceResources(InstanceId *string, request *ListIns
 
 // Summary:
 //
-// Gets a list of PAIRec instances.
+// Retrieves a list of PAIRec instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -10012,7 +10012,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 // Summary:
 //
-// Gets a list of PAIRec instances.
+// Retrieves a list of PAIRec instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -10109,7 +10109,7 @@ func (client *Client) ListLaboratories(request *ListLaboratoriesRequest) (_resul
 
 // Summary:
 //
-// Retrieves a list of layers in a specified laboratory.
+// Retrieves the list of layers in a laboratory.
 //
 // @param request - ListLayersRequest
 //
@@ -10160,7 +10160,7 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 
 // Summary:
 //
-// Retrieves a list of layers in a specified laboratory.
+// Retrieves the list of layers in a laboratory.
 //
 // @param request - ListLayersRequest
 //
@@ -10179,7 +10179,7 @@ func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayer
 
 // Summary:
 //
-// Lists parameters.
+// Retrieves a list of parameters.
 //
 // @param request - ListParamsRequest
 //
@@ -10250,7 +10250,7 @@ func (client *Client) ListParamsWithOptions(request *ListParamsRequest, headers 
 
 // Summary:
 //
-// Lists parameters.
+// Retrieves a list of parameters.
 //
 // @param request - ListParamsRequest
 //
@@ -10269,23 +10269,23 @@ func (client *Client) ListParams(request *ListParamsRequest) (_result *ListParam
 
 // Summary:
 //
-// Retrieves a list of recall management tasks that match specified conditions.
+// Queries a list of recall management tasks based on specified conditions.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - Use this API operation to retrieve a list of recall management tasks.
+// - This operation retrieves a list of recall management tasks.
 //
-// - The `InstanceId` and `Type` parameters are required. All other parameters are optional.
+// - `InstanceId` and `Type` are required parameters. Other parameters are optional.
 //
-// - Use the `Condition` parameter to set filter conditions on specific table types, such as filtering by `RecallManagementTableId`.
+// - The `Condition` parameter supports filtering by specific table types, such as filtering by `RecallManagementTableId`.
 //
-// - Use the `SortBy` and `Order` parameters to control the sort order of the results. The default sort order is ascending by creation time.
+// - You can use the `SortBy` and `Order` parameters to control the sorting of the returned results. By default, the results are sorted in ascending order of creation time.
 //
-// - Use the `PageNumber` and `PageSize` parameters for pagination. The `PageNumber` parameter defaults to 1, and the `PageSize` parameter defaults to 10.
+// - Pagination is implemented through the `PageNumber` and `PageSize` parameters. The default value of `PageNumber` is 1, and the default value of `PageSize` is 10.
 //
-// - The response includes details about each recall management task, such as its basic information and status.
+// - The returned data includes the basic information and status details of each recall management task.
 //
 // @param request - ListRecallManagementJobsRequest
 //
@@ -10364,23 +10364,23 @@ func (client *Client) ListRecallManagementJobsWithOptions(request *ListRecallMan
 
 // Summary:
 //
-// Retrieves a list of recall management tasks that match specified conditions.
+// Queries a list of recall management tasks based on specified conditions.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - Use this API operation to retrieve a list of recall management tasks.
+// - This operation retrieves a list of recall management tasks.
 //
-// - The `InstanceId` and `Type` parameters are required. All other parameters are optional.
+// - `InstanceId` and `Type` are required parameters. Other parameters are optional.
 //
-// - Use the `Condition` parameter to set filter conditions on specific table types, such as filtering by `RecallManagementTableId`.
+// - The `Condition` parameter supports filtering by specific table types, such as filtering by `RecallManagementTableId`.
 //
-// - Use the `SortBy` and `Order` parameters to control the sort order of the results. The default sort order is ascending by creation time.
+// - You can use the `SortBy` and `Order` parameters to control the sorting of the returned results. By default, the results are sorted in ascending order of creation time.
 //
-// - Use the `PageNumber` and `PageSize` parameters for pagination. The `PageNumber` parameter defaults to 1, and the `PageSize` parameter defaults to 10.
+// - Pagination is implemented through the `PageNumber` and `PageSize` parameters. The default value of `PageNumber` is 1, and the default value of `PageSize` is 10.
 //
-// - The response includes details about each recall management task, such as its basic information and status.
+// - The returned data includes the basic information and status details of each recall management task.
 //
 // @param request - ListRecallManagementJobsRequest
 //
@@ -10399,19 +10399,19 @@ func (client *Client) ListRecallManagementJobs(request *ListRecallManagementJobs
 
 // Summary:
 //
-// Retrieves a list of all versions for a specified Recall Management Service.
+// Retrieves all version information for a specified recall management service.
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// This operation queries the details of all versions for a specific Recall Management Service, including the version ID, name, effective status, creation time, and modification time. For accurate results, provide the correct `RecallManagementServiceId` and `InstanceId`.
+// You can call this API operation to query the details of all versions for a specific recall management service, including the version ID, name, effective status, and creation and update times. Make sure to provide the correct RecallManagementServiceId and InstanceId to obtain accurate data.
 //
-// - Use the `PageNumber` and `PageSize` parameters for pagination. By default, the query starts from the first page and returns 50 entries per page.
+// - The PageNumber and PageSize parameters are used for pagination. By default, the first page is returned, and each page contains 50 entries.
 //
-// - Use the `SortBy` parameter to sort the results by creation time or modification time. By default, the results are sorted by creation time in ascending order.
+// - You can use the SortBy parameter to sort the results by creation time or update time. By default, the results are sorted in ascending order of creation time.
 //
-// - The `Order` parameter specifies the sort order. Valid values are `ASC` for ascending order and `DESC` for descending order.
+// - The Order parameter specifies the sort order. Valid values: ASC (ascending order) and DESC (descending order).
 //
 // @param request - ListRecallManagementServiceVersionsRequest
 //
@@ -10474,19 +10474,19 @@ func (client *Client) ListRecallManagementServiceVersionsWithOptions(RecallManag
 
 // Summary:
 //
-// Retrieves a list of all versions for a specified Recall Management Service.
+// Retrieves all version information for a specified recall management service.
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// This operation queries the details of all versions for a specific Recall Management Service, including the version ID, name, effective status, creation time, and modification time. For accurate results, provide the correct `RecallManagementServiceId` and `InstanceId`.
+// You can call this API operation to query the details of all versions for a specific recall management service, including the version ID, name, effective status, and creation and update times. Make sure to provide the correct RecallManagementServiceId and InstanceId to obtain accurate data.
 //
-// - Use the `PageNumber` and `PageSize` parameters for pagination. By default, the query starts from the first page and returns 50 entries per page.
+// - The PageNumber and PageSize parameters are used for pagination. By default, the first page is returned, and each page contains 50 entries.
 //
-// - Use the `SortBy` parameter to sort the results by creation time or modification time. By default, the results are sorted by creation time in ascending order.
+// - You can use the SortBy parameter to sort the results by creation time or update time. By default, the results are sorted in ascending order of creation time.
 //
-// - The `Order` parameter specifies the sort order. Valid values are `ASC` for ascending order and `DESC` for descending order.
+// - The Order parameter specifies the sort order. Valid values: ASC (ascending order) and DESC (descending order).
 //
 // @param request - ListRecallManagementServiceVersionsRequest
 //
@@ -10505,19 +10505,19 @@ func (client *Client) ListRecallManagementServiceVersions(RecallManagementServic
 
 // Summary:
 //
-// Queries the list of recall management services under a specified instance.
+// Queries the recall management services of a specified instance.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// By calling the `ListRecallManagementServices` operation, you can retrieve the list of recall management services under a specific instance based on given parameters such as InstanceId, PageNumber, and PageSize. You can sort results by creation time or update time in ascending or descending order.
+// By calling the ListRecallManagementServices operation, you can retrieve a list of recall management services for a specific instance based on given parameters such as InstanceId, PageNumber, and PageSize. You can sort the results by creation time or update time in ascending or descending order.
 //
 // - **InstanceId*	- is required and specifies the instance to which the services belong.
 //
-// - The pagination parameters **PageNumber*	- and **PageSize*	- allow you to control the amount of returned data and the page from which to start displaying results. By default, data from the first page is returned.
+// - The pagination parameters **PageNumber*	- and **PageSize*	- allow you to control the number of returned entries and the starting page. By default, the first page is returned.
 //
-// - Use the **SortBy*	- and **Order*	- parameters to customize the sorting of the list.
+// - You can use the **SortBy*	- and **Order*	- parameters to customize the sorting method of the list.
 //
 // @param request - ListRecallManagementServicesRequest
 //
@@ -10592,19 +10592,19 @@ func (client *Client) ListRecallManagementServicesWithOptions(request *ListRecal
 
 // Summary:
 //
-// Queries the list of recall management services under a specified instance.
+// Queries the recall management services of a specified instance.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// By calling the `ListRecallManagementServices` operation, you can retrieve the list of recall management services under a specific instance based on given parameters such as InstanceId, PageNumber, and PageSize. You can sort results by creation time or update time in ascending or descending order.
+// By calling the ListRecallManagementServices operation, you can retrieve a list of recall management services for a specific instance based on given parameters such as InstanceId, PageNumber, and PageSize. You can sort the results by creation time or update time in ascending or descending order.
 //
 // - **InstanceId*	- is required and specifies the instance to which the services belong.
 //
-// - The pagination parameters **PageNumber*	- and **PageSize*	- allow you to control the amount of returned data and the page from which to start displaying results. By default, data from the first page is returned.
+// - The pagination parameters **PageNumber*	- and **PageSize*	- allow you to control the number of returned entries and the starting page. By default, the first page is returned.
 //
-// - Use the **SortBy*	- and **Order*	- parameters to customize the sorting of the list.
+// - You can use the **SortBy*	- and **Order*	- parameters to customize the sorting method of the list.
 //
 // @param request - ListRecallManagementServicesRequest
 //
@@ -10623,19 +10623,19 @@ func (client *Client) ListRecallManagementServices(request *ListRecallManagement
 
 // Summary:
 //
-// Lists all versions of a specified RecallManagementTable.
+// Queries all versions of a specified recall management table.
 //
 // Description:
 //
-// ## Usage
+// ## Request description
 //
-// - To retrieve the version history of a specific RecallManagementTable, provide the `RecallManagementTableId` and `InstanceId`.
+// - Provide `RecallManagementTableId` and `InstanceId` to retrieve the version history of a specific recall management table.
 //
-// - Use the `SortBy` parameter to sort the results by creation time or update time. By default, the results are sorted by creation time in ascending order.
+// - Use the `SortBy` parameter for sorting the results by creation time or update time. By default, the results are sorted in ascending order by creation time.
 //
-// - The `PageNumber` and `PageSize` parameters enable pagination, which allows you to control the number of items to return and the page to display.
+// - The `PageNumber` and `PageSize` parameters support the paged query feature, allowing you to control the number of returned entries and the specific page to view during paging.
 //
-// - If the `Order` parameter is not specified, the results are sorted in ascending order by default.
+// - If you do not specify the `Order` parameter, the results are sorted in ascending order by default.
 //
 // @param request - ListRecallManagementTableVersionsRequest
 //
@@ -10698,19 +10698,19 @@ func (client *Client) ListRecallManagementTableVersionsWithOptions(RecallManagem
 
 // Summary:
 //
-// Lists all versions of a specified RecallManagementTable.
+// Queries all versions of a specified recall management table.
 //
 // Description:
 //
-// ## Usage
+// ## Request description
 //
-// - To retrieve the version history of a specific RecallManagementTable, provide the `RecallManagementTableId` and `InstanceId`.
+// - Provide `RecallManagementTableId` and `InstanceId` to retrieve the version history of a specific recall management table.
 //
-// - Use the `SortBy` parameter to sort the results by creation time or update time. By default, the results are sorted by creation time in ascending order.
+// - Use the `SortBy` parameter for sorting the results by creation time or update time. By default, the results are sorted in ascending order by creation time.
 //
-// - The `PageNumber` and `PageSize` parameters enable pagination, which allows you to control the number of items to return and the page to display.
+// - The `PageNumber` and `PageSize` parameters support the paged query feature, allowing you to control the number of returned entries and the specific page to view during paging.
 //
-// - If the `Order` parameter is not specified, the results are sorted in ascending order by default.
+// - If you do not specify the `Order` parameter, the results are sorted in ascending order by default.
 //
 // @param request - ListRecallManagementTableVersionsRequest
 //
@@ -10729,19 +10729,19 @@ func (client *Client) ListRecallManagementTableVersions(RecallManagementTableId 
 
 // Summary:
 //
-// Retrieves the recall management tables for a specified instance. Pagination and sorting are supported.
+// Queries the recall management table information for a specified instance, with support for pagination and sorting.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - **InstanceId*	- is a required parameter specifying the instance to query.
+// - **InstanceId*	- is a required parameter that specifies the instance to query.
 //
-// - The **Name*	- and **Type*	- parameters filter recall management tables by name or type.
+// - Use the **Name*	- and **Type*	- parameters to filter recall management tables by name or type.
 //
-// - The **PageNumber*	- and **PageSize*	- parameters control pagination. By default, the query returns the first 50 records.
+// - Pagination is controlled by **PageNumber*	- and **PageSize**. By default, the query starts from page 1 and returns 50 records per page.
 //
-// - You can sort results by creation time (GmtCreateTime) or modification time (GmtModifiedTime) in ascending (ASC) or descending (DESC) order.
+// - Supports sorting by creation time (GmtCreateTime) or update time (GmtModifiedTime) in ascending (ASC) or descending (DESC) order.
 //
 // @param request - ListRecallManagementTablesRequest
 //
@@ -10820,19 +10820,19 @@ func (client *Client) ListRecallManagementTablesWithOptions(request *ListRecallM
 
 // Summary:
 //
-// Retrieves the recall management tables for a specified instance. Pagination and sorting are supported.
+// Queries the recall management table information for a specified instance, with support for pagination and sorting.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - **InstanceId*	- is a required parameter specifying the instance to query.
+// - **InstanceId*	- is a required parameter that specifies the instance to query.
 //
-// - The **Name*	- and **Type*	- parameters filter recall management tables by name or type.
+// - Use the **Name*	- and **Type*	- parameters to filter recall management tables by name or type.
 //
-// - The **PageNumber*	- and **PageSize*	- parameters control pagination. By default, the query returns the first 50 records.
+// - Pagination is controlled by **PageNumber*	- and **PageSize**. By default, the query starts from page 1 and returns 50 records per page.
 //
-// - You can sort results by creation time (GmtCreateTime) or modification time (GmtModifiedTime) in ascending (ASC) or descending (DESC) order.
+// - Supports sorting by creation time (GmtCreateTime) or update time (GmtModifiedTime) in ascending (ASC) or descending (DESC) order.
 //
 // @param request - ListRecallManagementTablesRequest
 //
@@ -11101,7 +11101,7 @@ func (client *Client) ListScenes(request *ListScenesRequest) (_result *ListScene
 
 // Summary:
 //
-// Lists the subcrowds for a specified crowd.
+// Retrieves the list of sub-crowds under a specified crowd.
 //
 // @param request - ListSubCrowdsRequest
 //
@@ -11148,7 +11148,7 @@ func (client *Client) ListSubCrowdsWithOptions(CrowdId *string, request *ListSub
 
 // Summary:
 //
-// Lists the subcrowds for a specified crowd.
+// Retrieves the list of sub-crowds under a specified crowd.
 //
 // @param request - ListSubCrowdsRequest
 //
@@ -11253,23 +11253,23 @@ func (client *Client) ListTableMetas(request *ListTableMetasRequest) (_result *L
 
 // Summary:
 //
-// Retrieves the historical traffic records for a specific traffic control target.
+// Queries the historical traffic change records of a specified traffic control target.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - The `TrafficControlTargetId`, `InstanceId`, and `Environment` parameters are required.
+// - `TrafficControlTargetId`, `InstanceId`, and `Environment` are required parameters.
 //
-// - You can use `StartTime` and `EndTime` to specify the time range.
+// - You can use `StartTime` and `EndTime` to specify the time range for the query. The format is `YYYY-MM-DD HH:MM:SS`.
 //
-// - The `Threshold` parameter is optional.
+// - The `Threshold` parameter is optional and used to set the threshold.
 //
-// - Use `ExperimentId` and `ExperimentGroupId` to filter data for a specific experiment or experiment group.
+// - `ExperimentId` and `ExperimentGroupId` are used to filter data for specific experiments or experiment groups.
 //
-// - Use `ItemId` to filter traffic data for a specific item.
+// - `ItemId` is used to filter traffic data for specific items.
 //
-// - The supported environments are the Daily environment, pre-production environment (Pre), and production environment (Prod).
+// - Supported environments include Daily (daily environment), Pre (staging environment), and Prod (production environment).
 //
 // @param request - ListTrafficControlTargetTrafficHistoryRequest
 //
@@ -11344,23 +11344,23 @@ func (client *Client) ListTrafficControlTargetTrafficHistoryWithOptions(TrafficC
 
 // Summary:
 //
-// Retrieves the historical traffic records for a specific traffic control target.
+// Queries the historical traffic change records of a specified traffic control target.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - The `TrafficControlTargetId`, `InstanceId`, and `Environment` parameters are required.
+// - `TrafficControlTargetId`, `InstanceId`, and `Environment` are required parameters.
 //
-// - You can use `StartTime` and `EndTime` to specify the time range.
+// - You can use `StartTime` and `EndTime` to specify the time range for the query. The format is `YYYY-MM-DD HH:MM:SS`.
 //
-// - The `Threshold` parameter is optional.
+// - The `Threshold` parameter is optional and used to set the threshold.
 //
-// - Use `ExperimentId` and `ExperimentGroupId` to filter data for a specific experiment or experiment group.
+// - `ExperimentId` and `ExperimentGroupId` are used to filter data for specific experiments or experiment groups.
 //
-// - Use `ItemId` to filter traffic data for a specific item.
+// - `ItemId` is used to filter traffic data for specific items.
 //
-// - The supported environments are the Daily environment, pre-production environment (Pre), and production environment (Prod).
+// - Supported environments include Daily (daily environment), Pre (staging environment), and Prod (production environment).
 //
 // @param request - ListTrafficControlTargetTrafficHistoryRequest
 //
@@ -11379,19 +11379,19 @@ func (client *Client) ListTrafficControlTargetTrafficHistory(TrafficControlTarge
 
 // Summary:
 //
-// Lists traffic control tasks that meet specified conditions.
+// Queries traffic control tasks that meet specified conditions.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves a list of traffic control tasks.
+// - This operation retrieves a list of traffic control nodes that meet specific conditional requirements.
 //
-// - Use query parameters to filter and sort the results.
+// - You can filter the returned nodes and apply sorting by specifying different query parameters.
 //
-// - This operation supports pagination. You can also retrieve all results in a single response.
+// - Paged query is supported. You can also choose to return all data at once without paging.
 //
-// - Note: The `InstanceId` is a required parameter. All other parameters are optional.
+// - Note: InstanceId is required, and other parameters are options. Specify other parameters as needed to obtain more precise results.
 //
 // @param request - ListTrafficControlTasksRequest
 //
@@ -11486,19 +11486,19 @@ func (client *Client) ListTrafficControlTasksWithOptions(request *ListTrafficCon
 
 // Summary:
 //
-// Lists traffic control tasks that meet specified conditions.
+// Queries traffic control tasks that meet specified conditions.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves a list of traffic control tasks.
+// - This operation retrieves a list of traffic control nodes that meet specific conditional requirements.
 //
-// - Use query parameters to filter and sort the results.
+// - You can filter the returned nodes and apply sorting by specifying different query parameters.
 //
-// - This operation supports pagination. You can also retrieve all results in a single response.
+// - Paged query is supported. You can also choose to return all data at once without paging.
 //
-// - Note: The `InstanceId` is a required parameter. All other parameters are optional.
+// - Note: InstanceId is required, and other parameters are options. Specify other parameters as needed to obtain more precise results.
 //
 // @param request - ListTrafficControlTasksRequest
 //
@@ -12077,13 +12077,13 @@ func (client *Client) OnlineRecallManagementService(RecallManagementServiceId *s
 
 // Summary:
 //
-// Synchronizes a MaxCompute table with the recall engine. This operation allows you to publish specific partitions and select a synchronization mode.
+// Synchronizes a MaxCompute table to the recall engine, supporting partition publishing and mode selection.
 //
 // Description:
 //
-// ## Request details
+// ## Request description
 //
-// This API synchronizes a specified MaxCompute table with the recall engine. You must provide the correct `RecallManagementTableId` in the path parameter and the instance ID in the request body. You can also specify the table partitions to publish, whether to skip the threshold check, and the synchronization mode. To publish specific partitions, provide them as key-value pairs in the `Partitions` field.
+// This operation synchronizes a specified MaxCompute table to the recall engine. It allows you to specify the table partition to publish, whether to skip the threshold check, and the synchronous mode (merge or overwrite). Ensure that you correctly specify the instance ID and table ID in the request body, and provide the correct `RecallManagementTableId` in the path parameters. To specify a particular table partition for publishing, provide it as key-value pairs in the `Partitions` field. You can also choose whether to skip the data volume threshold check and configure the synchronous mode.
 //
 // @param request - PublishRecallManagementTableRequest
 //
@@ -12120,6 +12120,10 @@ func (client *Client) PublishRecallManagementTableWithOptions(RecallManagementTa
 		body["SkipThresholdCheck"] = request.SkipThresholdCheck
 	}
 
+	if !dara.IsNil(request.StartTimestampMs) {
+		body["StartTimestampMs"] = request.StartTimestampMs
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -12146,13 +12150,13 @@ func (client *Client) PublishRecallManagementTableWithOptions(RecallManagementTa
 
 // Summary:
 //
-// Synchronizes a MaxCompute table with the recall engine. This operation allows you to publish specific partitions and select a synchronization mode.
+// Synchronizes a MaxCompute table to the recall engine, supporting partition publishing and mode selection.
 //
 // Description:
 //
-// ## Request details
+// ## Request description
 //
-// This API synchronizes a specified MaxCompute table with the recall engine. You must provide the correct `RecallManagementTableId` in the path parameter and the instance ID in the request body. You can also specify the table partitions to publish, whether to skip the threshold check, and the synchronization mode. To publish specific partitions, provide them as key-value pairs in the `Partitions` field.
+// This operation synchronizes a specified MaxCompute table to the recall engine. It allows you to specify the table partition to publish, whether to skip the threshold check, and the synchronous mode (merge or overwrite). Ensure that you correctly specify the instance ID and table ID in the request body, and provide the correct `RecallManagementTableId` in the path parameters. To specify a particular table partition for publishing, provide it as key-value pairs in the `Partitions` field. You can also choose whether to skip the data volume threshold check and configure the synchronous mode.
 //
 // @param request - PublishRecallManagementTableRequest
 //
@@ -12313,21 +12317,21 @@ func (client *Client) PushResourceRule(ResourceRuleId *string, request *PushReso
 
 // Summary:
 //
-// Retrieves statistics for a specified data diagnosis task within a time range.
+// Retrieves the statistics of a specified data diagnostics within a specific time range.
 //
 // Description:
 //
 // ## Request description
 //
-// - The `DataDiagnosisId` parameter is required and specifies the data diagnosis task.
+// - `DataDiagnosisId` is required and specifies the data diagnostic node to query.
 //
-// - The `InstanceId` parameter is also required and specifies the instance.
+// - `InstanceId` is also required and identifies the specific instance.
 //
-// - The `StartDate` and `EndDate` parameters specify the start and end dates of the time range. The format is YYYY-MM-DD.
+// - `StartDate` and `EndDate` specify the start and end dates for the statistics, respectively. The format is YYYY-MM-DD.
 //
-// - The `RemainRateType` parameter is optional. It specifies the retention rate report type. The default value is \\"Period\\", which indicates a periodic report.
+// - The `RemainRateType` parameter is optional. If provided, it specifies the retention rate report type. The default value is Period, which indicates a periodic report.
 //
-// - The response includes the request ID (`RequestId`) and a `Statistics` object. This object contains the dates of task failures (`FailedDates`) and dates with missing task data (`NoDataDates`).
+// - The response includes the request ID (`RequestId`) and the statistics object (`Statistics`), which lists the dates when nodes failed (`FailedDates`) and the dates with missing nodes (`NoDataDates`).
 //
 // @param request - QueryDataDiagnosisStatisticsRequest
 //
@@ -12386,21 +12390,21 @@ func (client *Client) QueryDataDiagnosisStatisticsWithOptions(DataDiagnosisId *s
 
 // Summary:
 //
-// Retrieves statistics for a specified data diagnosis task within a time range.
+// Retrieves the statistics of a specified data diagnostics within a specific time range.
 //
 // Description:
 //
 // ## Request description
 //
-// - The `DataDiagnosisId` parameter is required and specifies the data diagnosis task.
+// - `DataDiagnosisId` is required and specifies the data diagnostic node to query.
 //
-// - The `InstanceId` parameter is also required and specifies the instance.
+// - `InstanceId` is also required and identifies the specific instance.
 //
-// - The `StartDate` and `EndDate` parameters specify the start and end dates of the time range. The format is YYYY-MM-DD.
+// - `StartDate` and `EndDate` specify the start and end dates for the statistics, respectively. The format is YYYY-MM-DD.
 //
-// - The `RemainRateType` parameter is optional. It specifies the retention rate report type. The default value is \\"Period\\", which indicates a periodic report.
+// - The `RemainRateType` parameter is optional. If provided, it specifies the retention rate report type. The default value is Period, which indicates a periodic report.
 //
-// - The response includes the request ID (`RequestId`) and a `Statistics` object. This object contains the dates of task failures (`FailedDates`) and dates with missing task data (`NoDataDates`).
+// - The response includes the request ID (`RequestId`) and the statistics object (`Statistics`), which lists the dates when nodes failed (`FailedDates`) and the dates with missing nodes (`NoDataDates`).
 //
 // @param request - QueryDataDiagnosisStatisticsRequest
 //
@@ -12579,13 +12583,13 @@ func (client *Client) QuerySampleConsistencyJobDifference(SampleConsistencyJobId
 
 // Summary:
 //
-// Retrieves the traffic control details of a target item for a given environment and date range.
+// Retrieves the traffic control details for individual items of a specific traffic control target in a specified environment on a specified date.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Use this API to query the details of single-item control for a given traffic control target on a specified date and for a specific instance ID and environment. The details include traffic data and feature information for the top 100 items before and after the control is applied. Ensure that the `TrafficControlTargetId`, `InstanceId`, and `Environment` parameters are accurate, and that the `Date` is in YYYY-MM-DD format. Although the `Date` parameter is optional, we recommend specifying a date for meaningful results.
+// This API operation queries the traffic control details for individual items of a specified traffic control target on a specified date, for a specified instance ID, and in a specified environment. The details include the traffic conditions and feature information of the top 100 items before traffic control and the bottom 100 items after traffic control. Ensure that the `TrafficControlTargetId`, `InstanceId`, and `Environment` parameters are accurate, and the `Date` format is correct (YYYY-MM-DD). Note: Although the `Date` parameter is optional, always specify a date to obtain meaningful results.
 //
 // @param request - QueryTrafficControlTargetItemReportDetailRequest
 //
@@ -12640,13 +12644,13 @@ func (client *Client) QueryTrafficControlTargetItemReportDetailWithOptions(Traff
 
 // Summary:
 //
-// Retrieves the traffic control details of a target item for a given environment and date range.
+// Retrieves the traffic control details for individual items of a specific traffic control target in a specified environment on a specified date.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Use this API to query the details of single-item control for a given traffic control target on a specified date and for a specific instance ID and environment. The details include traffic data and feature information for the top 100 items before and after the control is applied. Ensure that the `TrafficControlTargetId`, `InstanceId`, and `Environment` parameters are accurate, and that the `Date` is in YYYY-MM-DD format. Although the `Date` parameter is optional, we recommend specifying a date for meaningful results.
+// This API operation queries the traffic control details for individual items of a specified traffic control target on a specified date, for a specified instance ID, and in a specified environment. The details include the traffic conditions and feature information of the top 100 items before traffic control and the bottom 100 items after traffic control. Ensure that the `TrafficControlTargetId`, `InstanceId`, and `Environment` parameters are accurate, and the `Date` format is correct (YYYY-MM-DD). Note: Although the `Date` parameter is optional, always specify a date to obtain meaningful results.
 //
 // @param request - QueryTrafficControlTargetItemReportDetailRequest
 //
@@ -12747,23 +12751,23 @@ func (client *Client) QueryTrafficControlTaskDeployResult(TrafficControlTaskId *
 
 // Summary:
 //
-// Retrieves a detailed report on item control for a specified traffic control task.
+// Retrieves the item-level traffic control details report for a specified traffic control task.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API retrieves the item control results for a specific traffic control task within a given time range.
+// - This API queries the item-level traffic control effect of a specific traffic control task within a given time range.
 //
-// - `TrafficControlTaskId` is the unique identifier for a traffic control task.
+// - TrafficControlTaskId is the ID that uniquely identifies a traffic control task.
 //
-// - `InstanceId` specifies the instance that runs the task.
+// - InstanceId specifies the instance that runs the task.
 //
-// - The `Environment` parameter specifies the task\\"s execution environment. Valid values are Daily (development environment), Pre (staging environment), and Prod (production environment).
+// - The Environment parameter defines the environment in which the task runs. Valid values: Daily (daily environment), Pre (pre-release environment), and Prod (production environment).
 //
-// - `StartTime` and `EndTime` specify the start and end of the time range for the report, respectively. The format is "YYYY-MM-DD HH:MM:SS".
+// - StartTime and EndTime represent the start and end points of the query time range, respectively. The format is YYYY-MM-DD HH:MM:SS.
 //
-// - The specified start and end times must be valid and span no more than two consecutive calendar days.
+// - Make sure that the start time and end time are valid and fall within the same calendar day or consecutive calendar days.
 //
 // @param request - QueryTrafficControlTaskItemReportRequest
 //
@@ -12822,23 +12826,23 @@ func (client *Client) QueryTrafficControlTaskItemReportWithOptions(TrafficContro
 
 // Summary:
 //
-// Retrieves a detailed report on item control for a specified traffic control task.
+// Retrieves the item-level traffic control details report for a specified traffic control task.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API retrieves the item control results for a specific traffic control task within a given time range.
+// - This API queries the item-level traffic control effect of a specific traffic control task within a given time range.
 //
-// - `TrafficControlTaskId` is the unique identifier for a traffic control task.
+// - TrafficControlTaskId is the ID that uniquely identifies a traffic control task.
 //
-// - `InstanceId` specifies the instance that runs the task.
+// - InstanceId specifies the instance that runs the task.
 //
-// - The `Environment` parameter specifies the task\\"s execution environment. Valid values are Daily (development environment), Pre (staging environment), and Prod (production environment).
+// - The Environment parameter defines the environment in which the task runs. Valid values: Daily (daily environment), Pre (pre-release environment), and Prod (production environment).
 //
-// - `StartTime` and `EndTime` specify the start and end of the time range for the report, respectively. The format is "YYYY-MM-DD HH:MM:SS".
+// - StartTime and EndTime represent the start and end points of the query time range, respectively. The format is YYYY-MM-DD HH:MM:SS.
 //
-// - The specified start and end times must be valid and span no more than two consecutive calendar days.
+// - Make sure that the start time and end time are valid and fall within the same calendar day or consecutive calendar days.
 //
 // @param request - QueryTrafficControlTaskItemReportRequest
 //
@@ -12955,7 +12959,7 @@ func (client *Client) ReleaseTrafficControlTask(TrafficControlTaskId *string, re
 
 // Summary:
 //
-// Retrieve a metric group\\"s report.
+// Queries the reports of a metric group.
 //
 // @param request - ReportABMetricGroupRequest
 //
@@ -13038,7 +13042,7 @@ func (client *Client) ReportABMetricGroupWithOptions(ABMetricGroupId *string, re
 
 // Summary:
 //
-// Retrieve a metric group\\"s report.
+// Queries the reports of a metric group.
 //
 // @param request - ReportABMetricGroupRequest
 //
@@ -14366,25 +14370,25 @@ func (client *Client) UpdateCrowd(CrowdId *string, request *UpdateCrowdRequest) 
 
 // Summary:
 //
-// Updates the configuration of a specified data diagnosis task.
+// Updates the configuration of a specified data diagnostic task.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API updates the configuration of an existing data diagnosis task, including the instance ID, task name, task type, and specific configuration content. Provide the `DataDiagnosisId` in the request path to identify the task to update. You must also specify the `Config` parameter based on the task `Type`. For periodic runs, set the execution time in the `CycleTime` field. If a periodic run is not required, omit this field.
+// This operation allows you to update the configuration of an existing data diagnostic task, including the instance ID, task name, task type, and specific configuration details. Ensure that you provide the correct `DataDiagnosisId` in the request body to locate the specific task to be updated, and specify the corresponding configuration parameters (`Config`) based on the selected task type (`Type`). For periodic tasks, set the desired execution time by using the `CycleTime` field. If periodic execution is not required, omit this field.
 //
-// ## Usage notes
+// ## Precautions
 //
-// - `DataDiagnosisId` is a required path parameter that uniquely identifies a data diagnosis task.
+// - `DataDiagnosisId` is a path parameter and must be provided to uniquely identify a data diagnostic task.
 //
-// - The structure of the `Config` field varies depending on the value of `Type`. Refer to the examples in this document for configuration details.
+// - The content structure of the `Config` field varies depending on the `Type` value. Refer to the documentation examples for configuration details.
 //
-// - To disable periodic runs, omit the `CycleTime` field.
+// - If periodic execution is not required, you can omit the `CycleTime` field.
 //
-// - When updating a task for two-table join analysis (`JoinTables`), provide the information for the left and right tables, including `LeftTableMetaId` and `RightTableMetaId`.
+// - When the update involves join table analysis (`JoinTables`), ensure that you correctly specify the information for the left and right tables, including `LeftTableMetaId` and `RightTableMetaId`.
 //
-// - The `InstanceId`, `Name`, and `Type` parameters are required for all types of data diagnosis tasks.
+// - For all types of data diagnostic tasks, `InstanceId`, `Name`, and `Type` are required.
 //
 // @param request - UpdateDataDiagnosisRequest
 //
@@ -14475,25 +14479,25 @@ func (client *Client) UpdateDataDiagnosisWithOptions(DataDiagnosisId *string, re
 
 // Summary:
 //
-// Updates the configuration of a specified data diagnosis task.
+// Updates the configuration of a specified data diagnostic task.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API updates the configuration of an existing data diagnosis task, including the instance ID, task name, task type, and specific configuration content. Provide the `DataDiagnosisId` in the request path to identify the task to update. You must also specify the `Config` parameter based on the task `Type`. For periodic runs, set the execution time in the `CycleTime` field. If a periodic run is not required, omit this field.
+// This operation allows you to update the configuration of an existing data diagnostic task, including the instance ID, task name, task type, and specific configuration details. Ensure that you provide the correct `DataDiagnosisId` in the request body to locate the specific task to be updated, and specify the corresponding configuration parameters (`Config`) based on the selected task type (`Type`). For periodic tasks, set the desired execution time by using the `CycleTime` field. If periodic execution is not required, omit this field.
 //
-// ## Usage notes
+// ## Precautions
 //
-// - `DataDiagnosisId` is a required path parameter that uniquely identifies a data diagnosis task.
+// - `DataDiagnosisId` is a path parameter and must be provided to uniquely identify a data diagnostic task.
 //
-// - The structure of the `Config` field varies depending on the value of `Type`. Refer to the examples in this document for configuration details.
+// - The content structure of the `Config` field varies depending on the `Type` value. Refer to the documentation examples for configuration details.
 //
-// - To disable periodic runs, omit the `CycleTime` field.
+// - If periodic execution is not required, you can omit the `CycleTime` field.
 //
-// - When updating a task for two-table join analysis (`JoinTables`), provide the information for the left and right tables, including `LeftTableMetaId` and `RightTableMetaId`.
+// - When the update involves join table analysis (`JoinTables`), ensure that you correctly specify the information for the left and right tables, including `LeftTableMetaId` and `RightTableMetaId`.
 //
-// - The `InstanceId`, `Name`, and `Type` parameters are required for all types of data diagnosis tasks.
+// - For all types of data diagnostic tasks, `InstanceId`, `Name`, and `Type` are required.
 //
 // @param request - UpdateDataDiagnosisRequest
 //
@@ -14818,23 +14822,23 @@ func (client *Client) UpdateExperimentGroup(ExperimentGroupId *string, request *
 
 // Summary:
 //
-// Updates the configuration details of a feature consistency check task, such as the name.
+// Updates the detailed configuration of a feature consistency check job, such as the name.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation allows you to update the configuration of an existing feature consistency check task. By providing new configuration parameters, you can modify multiple properties including the instance ID, name, and scene ID. Ensure that all required parameters are included in the request, and provide optional parameters as needed.
+// This API operation allows you to update the configuration of an existing feature consistency check job. By providing new configuration parameters, you can modify multiple properties, including the instance ID, name, and scene ID. Make sure that all required parameters are included in the request, and provide optional parameters as needed.
 //
-// - **FeatureConsistencyCheckJobConfigId*	- is a path parameter that specifies the feature consistency check task to update.
+// - **FeatureConsistencyCheckJobConfigId*	- is a path parameter used to specify the feature consistency check job to be updated.
 //
-// - All other parameters are in the request body. Some are required (such as InstanceId and Name), and the rest are optional.
+// - All other parameters are located in the request body. Some of them are required (such as InstanceId and Name), while others are optional.
 //
-// - The SampleRate value must be a floating-point number between 0 and 1, which indicates the sampling ratio.
+// - Note that `SampleRate` must be a floating-point number between 0 and 1, which represents the sampling ratio.
 //
-// - If you use FeatureStore-related features, make sure that you correctly set the IsUseFeatureStore flag and the related FeatureStore	- fields.
+// - If you use `FeatureStore`-related features, make sure to correctly set the `IsUseFeatureStore` flag and the related `FeatureStore*` fields.
 //
-// - For network configuration parameters (such as VpcId and SwitchId), make sure that the values match your Alibaba Cloud environment.
+// - For network configuration parameters (such as VpcId and SwitchId), make sure that the provided values match your Alibaba Cloud environment.
 //
 // @param request - UpdateFeatureConsistencyCheckJobConfigRequest
 //
@@ -15065,23 +15069,23 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithOptions(FeatureC
 
 // Summary:
 //
-// Updates the configuration details of a feature consistency check task, such as the name.
+// Updates the detailed configuration of a feature consistency check job, such as the name.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation allows you to update the configuration of an existing feature consistency check task. By providing new configuration parameters, you can modify multiple properties including the instance ID, name, and scene ID. Ensure that all required parameters are included in the request, and provide optional parameters as needed.
+// This API operation allows you to update the configuration of an existing feature consistency check job. By providing new configuration parameters, you can modify multiple properties, including the instance ID, name, and scene ID. Make sure that all required parameters are included in the request, and provide optional parameters as needed.
 //
-// - **FeatureConsistencyCheckJobConfigId*	- is a path parameter that specifies the feature consistency check task to update.
+// - **FeatureConsistencyCheckJobConfigId*	- is a path parameter used to specify the feature consistency check job to be updated.
 //
-// - All other parameters are in the request body. Some are required (such as InstanceId and Name), and the rest are optional.
+// - All other parameters are located in the request body. Some of them are required (such as InstanceId and Name), while others are optional.
 //
-// - The SampleRate value must be a floating-point number between 0 and 1, which indicates the sampling ratio.
+// - Note that `SampleRate` must be a floating-point number between 0 and 1, which represents the sampling ratio.
 //
-// - If you use FeatureStore-related features, make sure that you correctly set the IsUseFeatureStore flag and the related FeatureStore	- fields.
+// - If you use `FeatureStore`-related features, make sure to correctly set the `IsUseFeatureStore` flag and the related `FeatureStore*` fields.
 //
-// - For network configuration parameters (such as VpcId and SwitchId), make sure that the values match your Alibaba Cloud environment.
+// - For network configuration parameters (such as VpcId and SwitchId), make sure that the provided values match your Alibaba Cloud environment.
 //
 // @param request - UpdateFeatureConsistencyCheckJobConfigRequest
 //
@@ -16180,23 +16184,23 @@ func (client *Client) UpdateTableMeta(TableMetaId *string, request *UpdateTableM
 
 // Summary:
 //
-// Updates the configuration of a traffic control target, including its control period, conditions, and value.
+// Updates the configuration of an existing traffic control target, including the control time, conditions, and target values.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - Updates a traffic control target specified by its ID.
+// - This operation allows you to update a traffic control target by its ID.
 //
-// - `TrafficControlTargetId` is a path parameter that specifies the ID of the traffic control target to update.
+// - `TrafficControlTargetId` is a path parameter. You must provide a specific traffic control target ID.
 //
-// - The `ItemConditionType` parameter specifies the format of the item condition, which can be either `Array` or `Expression`. Based on your selection, you must provide a value for either the `ItemConditionArray` or `ItemConditionExpress` parameter.
+// - `ItemConditionType` defines the format of the item control condition. Valid values: `Array` and `Expression`. Based on the selected type, fill in the `ItemConditionArray` or `ItemConditionExpress` field accordingly.
 //
-// - If `NewProductRegulation` is set to `true`, the control rule applies to a new product.
+// - If `NewProductRegulation` is set to `true`, the control rule applies specifically to new products.
 //
-// - The `StatisPeriod` parameter specifies the statistics period. Valid values are `Daily` and `hourly`.
+// - `StatisPeriod` supports `Daily` and `Hour` options. The default value is determined by the system.
 //
-// - Ensure that the time interval between `StartTime` and `EndTime` is reasonable and meets your business requirements.
+// - Ensure that the interval between `StartTime` and `EndTime` is reasonable and meets your business requirements.
 //
 // @param request - UpdateTrafficControlTargetRequest
 //
@@ -16297,23 +16301,23 @@ func (client *Client) UpdateTrafficControlTargetWithOptions(TrafficControlTarget
 
 // Summary:
 //
-// Updates the configuration of a traffic control target, including its control period, conditions, and value.
+// Updates the configuration of an existing traffic control target, including the control time, conditions, and target values.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - Updates a traffic control target specified by its ID.
+// - This operation allows you to update a traffic control target by its ID.
 //
-// - `TrafficControlTargetId` is a path parameter that specifies the ID of the traffic control target to update.
+// - `TrafficControlTargetId` is a path parameter. You must provide a specific traffic control target ID.
 //
-// - The `ItemConditionType` parameter specifies the format of the item condition, which can be either `Array` or `Expression`. Based on your selection, you must provide a value for either the `ItemConditionArray` or `ItemConditionExpress` parameter.
+// - `ItemConditionType` defines the format of the item control condition. Valid values: `Array` and `Expression`. Based on the selected type, fill in the `ItemConditionArray` or `ItemConditionExpress` field accordingly.
 //
-// - If `NewProductRegulation` is set to `true`, the control rule applies to a new product.
+// - If `NewProductRegulation` is set to `true`, the control rule applies specifically to new products.
 //
-// - The `StatisPeriod` parameter specifies the statistics period. Valid values are `Daily` and `hourly`.
+// - `StatisPeriod` supports `Daily` and `Hour` options. The default value is determined by the system.
 //
-// - Ensure that the time interval between `StartTime` and `EndTime` is reasonable and meets your business requirements.
+// - Ensure that the interval between `StartTime` and `EndTime` is reasonable and meets your business requirements.
 //
 // @param request - UpdateTrafficControlTargetRequest
 //
@@ -16332,23 +16336,23 @@ func (client *Client) UpdateTrafficControlTarget(TrafficControlTargetId *string,
 
 // Summary:
 //
-// Updates the configuration and target of a specified traffic control task.
+// Updates a specified traffic control task, including its configuration and targets.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - Use this API to update an existing traffic control task.
+// - This API updates an existing traffic control task.
 //
-// - When `ExecutionTime` is set to `TimeRange`, you must also provide `StartTime` and `EndTime`.
+// - When `ExecutionTime` is set to `TimeRange`, you must provide both `StartTime` and `EndTime`.
 //
-// - Each element in the `TrafficControlTargets` array is a traffic control target. Ensure each target\\"s time range, condition type, and other information are complete and valid.
+// - Each element in the `TrafficControlTargets` array represents a specific traffic control target. Make sure that the time range, condition type, and other information for each target are complete and valid.
 //
-// - If you set `UserConditionType` or `ItemConditionType` to `Expression`, you must specify the corresponding expression field (for example, `UserConditionExpress`).
+// - If `UserConditionType` or `ItemConditionType` is set to `Expression`, the corresponding expression field (such as `UserConditionExpress`) cannot be empty.
 //
-// - `ServiceIds` and `EffectiveSceneIds` are optional parameters. If you include them, ensure the ID lists are correctly formatted.
+// - `ServiceIds` and `EffectiveSceneIds` are optional parameters. If you use them, make sure that the provided ID lists are in the correct format.
 //
-// - Ensure you complete all required fields to avoid a failed request.
+// - During the update, make sure that all required fields are correctly filled in. Otherwise, the request may fail.
 //
 // @param request - UpdateTrafficControlTaskRequest
 //
@@ -16511,23 +16515,23 @@ func (client *Client) UpdateTrafficControlTaskWithOptions(TrafficControlTaskId *
 
 // Summary:
 //
-// Updates the configuration and target of a specified traffic control task.
+// Updates a specified traffic control task, including its configuration and targets.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - Use this API to update an existing traffic control task.
+// - This API updates an existing traffic control task.
 //
-// - When `ExecutionTime` is set to `TimeRange`, you must also provide `StartTime` and `EndTime`.
+// - When `ExecutionTime` is set to `TimeRange`, you must provide both `StartTime` and `EndTime`.
 //
-// - Each element in the `TrafficControlTargets` array is a traffic control target. Ensure each target\\"s time range, condition type, and other information are complete and valid.
+// - Each element in the `TrafficControlTargets` array represents a specific traffic control target. Make sure that the time range, condition type, and other information for each target are complete and valid.
 //
-// - If you set `UserConditionType` or `ItemConditionType` to `Expression`, you must specify the corresponding expression field (for example, `UserConditionExpress`).
+// - If `UserConditionType` or `ItemConditionType` is set to `Expression`, the corresponding expression field (such as `UserConditionExpress`) cannot be empty.
 //
-// - `ServiceIds` and `EffectiveSceneIds` are optional parameters. If you include them, ensure the ID lists are correctly formatted.
+// - `ServiceIds` and `EffectiveSceneIds` are optional parameters. If you use them, make sure that the provided ID lists are in the correct format.
 //
-// - Ensure you complete all required fields to avoid a failed request.
+// - During the update, make sure that all required fields are correctly filled in. Otherwise, the request may fail.
 //
 // @param request - UpdateTrafficControlTaskRequest
 //
@@ -16546,13 +16550,13 @@ func (client *Client) UpdateTrafficControlTask(TrafficControlTaskId *string, req
 
 // Summary:
 //
-// Updates the traffic parameters for a specified traffic control task, including target traffic and actual traffic.
+// Updates the traffic parameters of a specified traffic control task, including the target traffic and actual traffic.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API updates the traffic configuration for a specific traffic control task. The configuration includes the traffic control target ID, record time, target traffic, and overall traffic. Ensure that the provided`TrafficControlTaskId` is valid and within your permission scope. Additionally, each object in the`Traffics` array must contain the required fields.
+// This API allows you to update the traffic configuration of a specific traffic control task, including but not limited to the traffic control target ID, record time, target traffic, and overall traffic. Make sure that the provided `TrafficControlTaskId` is valid and within the permission scope of the current user. In addition, each object in the `Traffics` array must contain the required fields to ensure successful request processing.
 //
 // @param request - UpdateTrafficControlTaskTrafficRequest
 //
@@ -16613,13 +16617,13 @@ func (client *Client) UpdateTrafficControlTaskTrafficWithOptions(TrafficControlT
 
 // Summary:
 //
-// Updates the traffic parameters for a specified traffic control task, including target traffic and actual traffic.
+// Updates the traffic parameters of a specified traffic control task, including the target traffic and actual traffic.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API updates the traffic configuration for a specific traffic control task. The configuration includes the traffic control target ID, record time, target traffic, and overall traffic. Ensure that the provided`TrafficControlTaskId` is valid and within your permission scope. Additionally, each object in the`Traffics` array must contain the required fields.
+// This API allows you to update the traffic configuration of a specific traffic control task, including but not limited to the traffic control target ID, record time, target traffic, and overall traffic. Make sure that the provided `TrafficControlTaskId` is valid and within the permission scope of the current user. In addition, each object in the `Traffics` array must contain the required fields to ensure successful request processing.
 //
 // @param request - UpdateTrafficControlTaskTrafficRequest
 //

@@ -20,7 +20,7 @@ type iCreateDataDiagnosisJobsRequest interface {
 }
 
 type CreateDataDiagnosisJobsRequest struct {
-	// The data diagnosis ID.
+	// The data modeling diagnostics ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateDataDiagnosisJobsRequest struct {
 	//
 	// 3
 	DataDiagnosisId *string `json:"DataDiagnosisId,omitempty" xml:"DataDiagnosisId,omitempty"`
-	// The end date for the job.
+	// The end date. The format is YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateDataDiagnosisJobsRequest struct {
 	//
 	// learn-pairec-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start date for the job.
+	// The start date. The format is YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//

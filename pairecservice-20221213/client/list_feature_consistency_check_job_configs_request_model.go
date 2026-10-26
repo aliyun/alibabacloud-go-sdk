@@ -24,7 +24,7 @@ type iListFeatureConsistencyCheckJobConfigsRequest interface {
 }
 
 type ListFeatureConsistencyCheckJobConfigsRequest struct {
-	// The instance ID. For information about how to obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	// The ID of the instance. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type ListFeatureConsistencyCheckJobConfigsRequest struct {
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Minimum value: 1. Default value: 1.
+	// The page number. Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListFeatureConsistencyCheckJobConfigsRequest struct {
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The field used to sort the results. Valid values:
+	// The sort field. Valid values:
 	//
 	// - GmtCreateTime: sorts by creation time.
 	//

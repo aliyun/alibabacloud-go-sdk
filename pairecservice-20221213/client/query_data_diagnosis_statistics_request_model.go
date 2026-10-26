@@ -20,7 +20,7 @@ type iQueryDataDiagnosisStatisticsRequest interface {
 }
 
 type QueryDataDiagnosisStatisticsRequest struct {
-	// The end date.
+	// The end date. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
@@ -32,15 +32,15 @@ type QueryDataDiagnosisStatisticsRequest struct {
 	//
 	// learn-pairec-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The retention rate report type.
+	// The retention rate report type. Valid values:
 	//
-	// - Period: A periodic report.
+	// - Period: periodic report.
 	//
 	// example:
 	//
 	// Period
 	RemainRateType *string `json:"RemainRateType,omitempty" xml:"RemainRateType,omitempty"`
-	// The start date.
+	// The start date. The format is YYYY-MM-DD.
 	//
 	// example:
 	//

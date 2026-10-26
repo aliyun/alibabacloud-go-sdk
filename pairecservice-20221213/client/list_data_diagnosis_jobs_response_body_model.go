@@ -18,7 +18,7 @@ type iListDataDiagnosisJobsResponseBody interface {
 }
 
 type ListDataDiagnosisJobsResponseBody struct {
-	// The returned data diagnosis jobs.
+	// The list of data diagnostic tasks.
 	DataDiagnosisJobs []*ListDataDiagnosisJobsResponseBodyDataDiagnosisJobs `json:"DataDiagnosisJobs,omitempty" xml:"DataDiagnosisJobs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListDataDiagnosisJobsResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -83,61 +83,61 @@ func (s *ListDataDiagnosisJobsResponseBody) Validate() error {
 }
 
 type ListDataDiagnosisJobsResponseBodyDataDiagnosisJobs struct {
-	// The business date.
+	// The business date. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2023-05-28
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The job configuration.
+	// The task configuration.
 	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The data diagnosis configuration ID.
+	// The ID of the data diagnostic configuration.
 	//
 	// example:
 	//
 	// 3
 	DataDiagnosisConfigId *string `json:"DataDiagnosisConfigId,omitempty" xml:"DataDiagnosisConfigId,omitempty"`
-	// The data diagnosis configuration name.
+	// The name of the data diagnostic configuration.
 	//
 	// example:
 	//
-	// 异常行为分析-xxx
+	// Abnormal behavior analysis-xxx
 	DataDiagnosisConfigName *string `json:"DataDiagnosisConfigName,omitempty" xml:"DataDiagnosisConfigName,omitempty"`
-	// The data diagnosis job ID.
+	// The ID of the data diagnostic task.
 	//
 	// example:
 	//
 	// 3
 	DataDiagnosisJobId *string `json:"DataDiagnosisJobId,omitempty" xml:"DataDiagnosisJobId,omitempty"`
-	// The time when the job was created.
+	// The creation time. The format is ISO 8601 and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the job started.
+	// The execution time. The format is ISO 8601 and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	// The job source. Valid values:
+	// The task source. Valid values:
 	//
-	// - Rerun: A manual rerun.
+	// - Rerun: Manual rerun.
 	//
-	// - Cycle: A periodic run.
+	// - Cycle: Periodic generation.
 	//
-	// - ByInitializing: Generated during initialization.
+	// - ByInitializing: Initialization generation.
 	//
 	// example:
 	//
 	// Cycle
 	JobSource *string `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
-	// The log messages.
+	// The list of log information.
 	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// The task status.
 	//
@@ -145,7 +145,7 @@ type ListDataDiagnosisJobsResponseBodyDataDiagnosisJobs struct {
 	//
 	// Initializing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The data diagnosis type.
+	// The data diagnostic type.
 	//
 	// example:
 	//
