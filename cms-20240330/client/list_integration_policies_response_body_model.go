@@ -127,6 +127,10 @@ func (s *ListIntegrationPoliciesResponseBody) Validate() error {
 type ListIntegrationPoliciesResponseBodyPolicies struct {
 	// The names of all add-ons installed in this policy.
 	AddonNames []*string `json:"addonNames,omitempty" xml:"addonNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// v2
+	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	// The information about the bound resources.
 	BindResource *ListIntegrationPoliciesResponseBodyPoliciesBindResource `json:"bindResource,omitempty" xml:"bindResource,omitempty" type:"Struct"`
 	// The installation status of umodel in the container environment.
@@ -203,6 +207,10 @@ func (s *ListIntegrationPoliciesResponseBodyPolicies) GetAddonNames() []*string 
 	return s.AddonNames
 }
 
+func (s *ListIntegrationPoliciesResponseBodyPolicies) GetApiVersion() *string {
+	return s.ApiVersion
+}
+
 func (s *ListIntegrationPoliciesResponseBodyPolicies) GetBindResource() *ListIntegrationPoliciesResponseBodyPoliciesBindResource {
 	return s.BindResource
 }
@@ -257,6 +265,11 @@ func (s *ListIntegrationPoliciesResponseBodyPolicies) GetWorkspace() *string {
 
 func (s *ListIntegrationPoliciesResponseBodyPolicies) SetAddonNames(v []*string) *ListIntegrationPoliciesResponseBodyPolicies {
 	s.AddonNames = v
+	return s
+}
+
+func (s *ListIntegrationPoliciesResponseBodyPolicies) SetApiVersion(v string) *ListIntegrationPoliciesResponseBodyPolicies {
+	s.ApiVersion = &v
 	return s
 }
 

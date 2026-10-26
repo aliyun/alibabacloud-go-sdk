@@ -24,7 +24,7 @@ type iUpdateAggTaskGroupResponseBody interface {
 }
 
 type UpdateAggTaskGroupResponseBody struct {
-	// The summary of the aggregation task group configuration.
+	// The hash of the aggregation task group configuration.
 	//
 	// example:
 	//

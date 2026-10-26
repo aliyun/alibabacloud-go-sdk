@@ -16,13 +16,13 @@ type iQueryAlertRulesEntityTypeFilter interface {
 }
 
 type QueryAlertRulesEntityTypeFilter struct {
-	// Matches any value in the set (OR semantics).
+	// The match for any item in the set (OR semantics).
 	//
 	// example:
 	//
 	// ["UMODEL_ENTITY","CLOUD_INSTANCE"]
 	In []*string `json:"in,omitempty" xml:"in,omitempty" type:"Repeated"`
-	// Excludes any value in the set (NOT IN semantics).
+	// The exclusion of any item in the set (NOT IN semantics).
 	//
 	// example:
 	//

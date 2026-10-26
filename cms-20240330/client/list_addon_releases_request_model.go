@@ -20,15 +20,21 @@ type iListAddonReleasesRequest interface {
 }
 
 type ListAddonReleasesRequest struct {
-	// The name of the add-on.
+	// The add-on name.
 	//
 	// example:
 	//
 	// cs-gpu
-	AddonName  *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	// The maximum number of results to return.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The parent AddonRelease ID.
+	// The next token for pagination.
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The parent add-on release ID.
 	//
 	// example:
 	//

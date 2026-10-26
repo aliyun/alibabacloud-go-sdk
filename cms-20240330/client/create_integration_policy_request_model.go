@@ -9,6 +9,8 @@ type iCreateIntegrationPolicyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApiVersion(v string) *CreateIntegrationPolicyRequest
+	GetApiVersion() *string
 	SetEntityGroup(v *CreateIntegrationPolicyRequestEntityGroup) *CreateIntegrationPolicyRequest
 	GetEntityGroup() *CreateIntegrationPolicyRequestEntityGroup
 	SetPolicyName(v string) *CreateIntegrationPolicyRequest
@@ -24,7 +26,11 @@ type iCreateIntegrationPolicyRequest interface {
 }
 
 type CreateIntegrationPolicyRequest struct {
-	// The entity group used to create the policy. You can quickly create a policy using an entity group. The clusterId and vpcId parameters are independent of each other.
+	// example:
+	//
+	// v2
+	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	// The entity group used to create the policy. You can quickly create the policy by using the entity group. The clusterId and vpcId parameters are independent of each other.
 	EntityGroup *CreateIntegrationPolicyRequestEntityGroup `json:"entityGroup,omitempty" xml:"entityGroup,omitempty" type:"Struct"`
 	// The policy name.
 	//
@@ -64,6 +70,10 @@ func (s CreateIntegrationPolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateIntegrationPolicyRequest) GetApiVersion() *string {
+	return s.ApiVersion
+}
+
 func (s *CreateIntegrationPolicyRequest) GetEntityGroup() *CreateIntegrationPolicyRequestEntityGroup {
 	return s.EntityGroup
 }
@@ -86,6 +96,11 @@ func (s *CreateIntegrationPolicyRequest) GetTags() []*CreateIntegrationPolicyReq
 
 func (s *CreateIntegrationPolicyRequest) GetWorkspace() *string {
 	return s.Workspace
+}
+
+func (s *CreateIntegrationPolicyRequest) SetApiVersion(v string) *CreateIntegrationPolicyRequest {
+	s.ApiVersion = &v
+	return s
 }
 
 func (s *CreateIntegrationPolicyRequest) SetEntityGroup(v *CreateIntegrationPolicyRequestEntityGroup) *CreateIntegrationPolicyRequest {
@@ -137,7 +152,7 @@ func (s *CreateIntegrationPolicyRequest) Validate() error {
 }
 
 type CreateIntegrationPolicyRequestEntityGroup struct {
-	// The cluster entity type. Examples: acs.ack.cluster, acs.one.cluster, and acs.asi.cluster.
+	// The cluster entity type, such as acs.ack.cluster, acs.one.cluster, acs.asi.cluster, or others.
 	//
 	// example:
 	//
@@ -148,9 +163,12 @@ type CreateIntegrationPolicyRequestEntityGroup struct {
 	// example:
 	//
 	// na61prod3-na61cloudhdfsssd
-	ClusterId        *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// example:
+	//
+	// arms-prom
 	ClusterNamespace *string `json:"clusterNamespace,omitempty" xml:"clusterNamespace,omitempty"`
-	// Specifies whether to disable unique policy binding. If this parameter is set to true, you can create multiple policies for a container cluster.
+	// Specifies whether to disable the unique binding of the policy. If this parameter is set to true, you can create multiple policies for a container cluster.
 	//
 	// example:
 	//
@@ -162,13 +180,13 @@ type CreateIntegrationPolicyRequestEntityGroup struct {
 	//
 	// eg-b79f65d11fb94e779867cf937c3a3002
 	EntityGroupId *string `json:"entityGroupId,omitempty" xml:"entityGroupId,omitempty"`
-	// The ID of the user who owns the cluster.
+	// The ID of the user to which the cluster belongs.
 	//
 	// example:
 	//
 	// 12xxxx
 	EntityUserId *string `json:"entityUserId,omitempty" xml:"entityUserId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -252,13 +270,13 @@ func (s *CreateIntegrationPolicyRequestEntityGroup) Validate() error {
 }
 
 type CreateIntegrationPolicyRequestTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// use
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

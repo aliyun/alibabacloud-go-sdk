@@ -22,7 +22,7 @@ type iListMemoryStoresResponseBody interface {
 }
 
 type ListMemoryStoresResponseBody struct {
-	// The maximum number of returned entries.
+	// The maximum number of returned results.
 	//
 	// example:
 	//
@@ -30,19 +30,24 @@ type ListMemoryStoresResponseBody struct {
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The list of memory stores.
 	MemoryStores []*ListMemoryStoresResponseBodyMemoryStores `json:"memoryStores,omitempty" xml:"memoryStores,omitempty" type:"Repeated"`
-	// The token for the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 16C0A6D6-C3E7-511D-A60B-A87FD85F5BA7
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Total     *int32  `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of memory stores.
+	//
+	// example:
+	//
+	// 0
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListMemoryStoresResponseBody) String() string {
@@ -112,7 +117,7 @@ func (s *ListMemoryStoresResponseBody) Validate() error {
 }
 
 type ListMemoryStoresResponseBodyMemoryStores struct {
-	// The time when the memory store was created.
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -120,7 +125,7 @@ type ListMemoryStoresResponseBodyMemoryStores struct {
 	//
 	// 1764556182850
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the memory store.
+	// The description.
 	//
 	// example:
 	//
@@ -132,13 +137,13 @@ type ListMemoryStoresResponseBodyMemoryStores struct {
 	//
 	// qianyi_test_1
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The time when the memory store was last updated.
+	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -146,7 +151,7 @@ type ListMemoryStoresResponseBodyMemoryStores struct {
 	//
 	// 1764556182850
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// Workspace
+	// The workspace.
 	//
 	// example:
 	//

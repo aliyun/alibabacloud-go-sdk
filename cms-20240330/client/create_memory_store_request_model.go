@@ -26,17 +26,17 @@ type iCreateMemoryStoreRequest interface {
 }
 
 type CreateMemoryStoreRequest struct {
-	// A list of custom extraction strategies.
+	// The custom extraction strategies.
 	CustomExtractionStrategies []*CustomExtractionStrategy `json:"customExtractionStrategies,omitempty" xml:"customExtractionStrategies,omitempty" type:"Repeated"`
-	// The description of the MemoryStore.
+	// The description.
 	//
 	// example:
 	//
 	// Test memory store for demonstration.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The extraction strategies to use. Valid values include `Episodic`, `Summary`, and `Fact`.
+	// The extraction strategies. Valid values: Episodic, Summary, and Fact.
 	ExtractionStrategies []*string `json:"extractionStrategies,omitempty" xml:"extractionStrategies,omitempty" type:"Repeated"`
-	// The name of the MemoryStore. The name must be unique within the workspace.
+	// The name of the memory store.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateMemoryStoreRequest struct {
 	//
 	// test-memory-store
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
-	// The short-term TTL, which is the number of conversation rounds to retain.
+	// The retention period for short-term memory.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type CreateMemoryStoreRequest struct {
 	//
 	// 10
 	ShortTermTtl *int32 `json:"shortTermTtl,omitempty" xml:"shortTermTtl,omitempty"`
-	// The source type of the memory. Valid values are `None` and `Trace`.
+	// The source of the memory.
 	//
 	// example:
 	//
 	// None/Trace
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// Configuration for the trace source. Required if `sourceType` is `Trace`.
+	// The configuration when the sourceType is Trace.
 	TraceSourceConfig *CreateMemoryStoreRequestTraceSourceConfig `json:"traceSourceConfig,omitempty" xml:"traceSourceConfig,omitempty" type:"Struct"`
 }
 
@@ -152,15 +152,15 @@ func (s *CreateMemoryStoreRequest) Validate() error {
 }
 
 type CreateMemoryStoreRequestTraceSourceConfig struct {
-	// Specifies whether to include the output in the trace.
+	// Specifies whether to include the large language model (LLM) output in memory extraction.
 	IncludeOutput *bool `json:"includeOutput,omitempty" xml:"includeOutput,omitempty"`
-	// The query to filter traces.
+	// The Simple Log Service (SLS) query statement used to filter traces.
 	//
 	// example:
 	//
 	// (serviceName : "langchain-rag" or serviceName : "agentscope-code-correction") and hostname = frontend-proxy-999c48c8d-hvk6c
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The name of the workspace that contains the trace source.
+	// The workspace where the trace is located.
 	//
 	// example:
 	//

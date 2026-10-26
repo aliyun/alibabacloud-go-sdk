@@ -18,25 +18,19 @@ type iMetricSetTriggerCompositeExpression interface {
 }
 
 type MetricSetTriggerCompositeExpression struct {
-	// The list of sub-conditions. Each item is a simple comparison expression.
+	// The list of sub-conditions, where each item is a simple comparison expression.
 	//
 	// example:
 	//
-	// [{"metric":"cpu_usage","operator":"GreaterThanThreshold","threshold":"90"},{"metric":"mem_usage","operator":"GreaterThanThreshold","threshold":"85"}]
+	// [{"expressionType":"SIMPLE","queryName":"cpuQuery","operator":"GT","threshold":80}]
 	Conditions []*MetricSetTriggerSimpleExpression `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The expression type, fixed as COMPOSITE.
+	// The expression type, which is fixed to COMPOSITE.
 	//
 	// example:
 	//
 	// COMPOSITE
 	ExpressionType *string `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
-	// The logical operator. Valid values:
-	//
-	// - AND: All conditions are met.
-	//
-	// - OR: Any condition is met.
-	//
-	// - UNLESS: The first condition is met and none of the remaining conditions are met.
+	// The logical operator. Valid values: AND (all conditions are met), OR (any condition is met), and UNLESS (the first condition is met and none of the others are met).
 	//
 	// example:
 	//

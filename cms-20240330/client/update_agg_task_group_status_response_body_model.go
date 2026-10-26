@@ -42,13 +42,13 @@ type UpdateAggTaskGroupStatusResponseBody struct {
 	//
 	// pipeline-aggtask-group
 	AggTaskGroupName *string `json:"aggTaskGroupName,omitempty" xml:"aggTaskGroupName,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-***
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The ID of the source Prometheus instance for the aggregation task group.
+	// The source Prometheus instance ID of the aggregation node group.
 	//
 	// example:
 	//

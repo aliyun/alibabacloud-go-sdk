@@ -42,7 +42,7 @@ type GetPipelineResponseBody struct {
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the pipeline.
+	// The description.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetPipelineResponseBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The execution policy.
 	ExecutePolicy *GetPipelineResponseBodyExecutePolicy `json:"executePolicy,omitempty" xml:"executePolicy,omitempty" type:"Struct"`
-	// The pipeline configuration.
+	// The pipeline information.
 	Pipeline *GetPipelineResponseBodyPipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
 	// The pipeline name.
 	//
@@ -70,9 +70,9 @@ type GetPipelineResponseBody struct {
 	//
 	// 3430AE20-AFFF-597C-B553-2DF04B2933AA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The pipeline\\"s data sink.
+	// The output destination.
 	Sink *GetPipelineResponseBodySink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	// The pipeline\\"s data source.
+	// The data source.
 	Source *GetPipelineResponseBodySource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 	// The update time.
 	//
@@ -228,9 +228,9 @@ type GetPipelineResponseBodyExecutePolicy struct {
 	//
 	// runOnce
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The configuration for a one-time execution.
+	// The configuration for one-time execution.
 	RunOnce *GetPipelineResponseBodyExecutePolicyRunOnce `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
-	// The configuration for a scheduled execution.
+	// The configuration for scheduled execution.
 	Scheduled *GetPipelineResponseBodyExecutePolicyScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
 }
 
@@ -284,13 +284,13 @@ func (s *GetPipelineResponseBodyExecutePolicy) Validate() error {
 }
 
 type GetPipelineResponseBodyExecutePolicyRunOnce struct {
-	// The start time of the execution, as a Unix timestamp.
+	// The start timestamp.
 	//
 	// example:
 	//
 	// 1772519013
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The end time of the execution, as a Unix timestamp.
+	// The end timestamp.
 	//
 	// example:
 	//
@@ -329,13 +329,13 @@ func (s *GetPipelineResponseBodyExecutePolicyRunOnce) Validate() error {
 }
 
 type GetPipelineResponseBodyExecutePolicyScheduled struct {
-	// The start time of the execution, as a Unix timestamp.
+	// The start timestamp.
 	//
 	// example:
 	//
 	// 1772519013
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The execution interval in seconds.
+	// The time interval.
 	//
 	// example:
 	//
@@ -374,7 +374,7 @@ func (s *GetPipelineResponseBodyExecutePolicyScheduled) Validate() error {
 }
 
 type GetPipelineResponseBodyPipeline struct {
-	// The nodes in the pipeline.
+	// The nodes.
 	Nodes []*GetPipelineResponseBodyPipelineNodes `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 }
 
@@ -415,7 +415,7 @@ type GetPipelineResponseBodyPipelineNodes struct {
 	//
 	// node_1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The parameters for the node.
+	// The parameters.
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The node type.
 	//
@@ -465,9 +465,9 @@ func (s *GetPipelineResponseBodyPipelineNodes) Validate() error {
 }
 
 type GetPipelineResponseBodySink struct {
-	// The dataset configuration.
+	// The dataset information.
 	Dataset *GetPipelineResponseBodySinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The sink type.
+	// The output destination type.
 	//
 	// example:
 	//
@@ -511,7 +511,7 @@ func (s *GetPipelineResponseBodySink) Validate() error {
 }
 
 type GetPipelineResponseBodySinkDataset struct {
-	// The dataset name.
+	// The dataset.
 	//
 	// example:
 	//
@@ -556,9 +556,9 @@ func (s *GetPipelineResponseBodySinkDataset) Validate() error {
 }
 
 type GetPipelineResponseBodySource struct {
-	// The configuration of the Log Service Logstore.
+	// The Simple Log Service Logstore information.
 	Logstore *GetPipelineResponseBodySourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
-	// The type of the data source.
+	// The data source type.
 	//
 	// example:
 	//
@@ -602,19 +602,24 @@ func (s *GetPipelineResponseBodySource) Validate() error {
 }
 
 type GetPipelineResponseBodySourceLogstore struct {
-	// The name of the Log Service Logstore.
+	// The Simple Log Service Logstore name.
 	//
 	// example:
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Log Service project.
+	// The Simple Log Service project name.
 	//
 	// example:
 	//
 	// test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	Query   *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The filter statement for the Simple Log Service Logstore.
+	//
+	// example:
+	//
+	// status:500 and method:GET
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 
 func (s GetPipelineResponseBodySourceLogstore) String() string {

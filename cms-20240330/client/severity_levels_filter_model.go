@@ -14,7 +14,7 @@ type iSeverityLevelsFilter interface {
 }
 
 type SeverityLevelsFilter struct {
-	// The hit condition: the set of severity levels covered by the rule contains at least one level in the array (OR semantics).
+	// The match condition where the set of severity levels covered by the rule contains at least one severity level in the array (OR semantics).
 	//
 	// example:
 	//

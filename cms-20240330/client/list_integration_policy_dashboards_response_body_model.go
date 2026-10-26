@@ -85,9 +85,9 @@ func (s *ListIntegrationPolicyDashboardsResponseBody) Validate() error {
 type ListIntegrationPolicyDashboardsResponseBodyDashboards struct {
 	// The dashboard engine. Valid values:
 	//
-	// grafana: shared Grafana.
+	// - grafana: shared Grafana.
 	//
-	// cms: the self-developed dashboard engine of CloudMonitor.
+	// - cms: the proprietary dashboard engine of CloudMonitor.
 	//
 	// example:
 	//
@@ -113,19 +113,19 @@ type ListIntegrationPolicyDashboardsResponseBodyDashboards struct {
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The list of tags.
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The title of the UI module. This is different from the name parameter.
+	// The title of the UI module, not the name.
 	//
 	// example:
 	//
 	// test
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// The ID of the current Alibaba Cloud account. This parameter is read-only.
+	// The ID of the current Alibaba Cloud account. This field is read-only.
 	//
 	// example:
 	//
 	// 1258199346721590
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// The webhook URL for PagerDuty integration. V1 and V2 are supported.
+	// The integration webhook for PagerDuty. Both V1 and V2 are supported.
 	//
 	// example:
 	//

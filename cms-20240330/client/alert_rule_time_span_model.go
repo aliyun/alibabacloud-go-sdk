@@ -20,21 +20,21 @@ type iAlertRuleTimeSpan interface {
 }
 
 type AlertRuleTimeSpan struct {
-	// The days of the week.
+	// The day of the week.
 	DayOfWeek []*int32 `json:"dayOfWeek,omitempty" xml:"dayOfWeek,omitempty" type:"Repeated"`
-	// The end time. The format is HH:mm.
+	// The end time in HH:mm format.
 	//
 	// example:
 	//
 	// 23:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The default value is +0800 (UTC+8).
+	// The default UTC+8 offset: +0800.
 	//
 	// example:
 	//
 	// +0800
 	GmtOffset *string `json:"gmtOffset,omitempty" xml:"gmtOffset,omitempty"`
-	// The start time. The format is HH:mm.
+	// The start time in HH:mm format.
 	//
 	// example:
 	//

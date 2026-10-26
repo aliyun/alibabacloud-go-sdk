@@ -24,7 +24,7 @@ type iQueryAlertRulesRequest interface {
 type QueryAlertRulesRequest struct {
 	// The request body for querying alert rules.
 	Body *QueryAlertRulesInput `json:"body,omitempty" xml:"body,omitempty"`
-	// The client token that is used to ensure idempotence.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//

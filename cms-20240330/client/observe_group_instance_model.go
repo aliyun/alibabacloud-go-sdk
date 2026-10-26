@@ -34,27 +34,27 @@ type iObserveGroupInstance interface {
 }
 
 type ObserveGroupInstance struct {
-	// The entity category (adapted by entityType).
+	// 实体分类（由 entityType 适配）。
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The key-value pairs of monitoring dimensions.
+	// 监控维度键值对。
 	Dimension map[string]*string `json:"dimension,omitempty" xml:"dimension,omitempty"`
-	// The entity domain (such as acs).
+	// 实体域（如 acs）。
 	EntityDomain *string `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
-	// The entity type (such as acs.ecs.instance).
+	// 实体类型（如 acs.ecs.instance）。
 	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
-	// The ID of the observation group to which the entity belongs.
+	// 所属观测分组 ID。
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The instance ID.
+	// 实例 ID。
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The instance name.
+	// 实例名称。
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// The region ID of the instance.
+	// 实例所属地域 ID。
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The resource group ID of the instance.
+	// 实例所属资源组 ID。
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The key-value pairs of instance tags.
+	// 实例标签键值对。
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The UID of the user to which the instance belongs.
+	// 实例归属的用户 UID。
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 

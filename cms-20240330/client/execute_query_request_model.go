@@ -16,7 +16,7 @@ type iExecuteQueryRequest interface {
 }
 
 type ExecuteQueryRequest struct {
-  // The query statement to execute.
+  // The query content.
   // 
   // This parameter is required.
   // 
@@ -24,7 +24,7 @@ type ExecuteQueryRequest struct {
   // 
   // SELECT count(1) from "datasetname"
   Query *string `json:"query,omitempty" xml:"query,omitempty"`
-  // The query type. Valid values: SQL and SPL.
+  // The type.
   // 
   // This parameter is required.
   // 

@@ -22,7 +22,7 @@ type iCreateContextStoreRequest interface {
 }
 
 type CreateContextStoreRequest struct {
-	// The configuration.
+	// The configuration information.
 	Config *CreateContextStoreRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// The name of the context store.
 	//
@@ -32,7 +32,7 @@ type CreateContextStoreRequest struct {
 	//
 	// test-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
-	// The type of the context store.
+	// The context type.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type CreateContextStoreRequest struct {
 	//
 	// memory
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
-	// The properties of the dataset.
+	// The dataset.
 	Dataset *CreateContextStoreRequestDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The description of the context store.
+	// The description.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ func (s *CreateContextStoreRequest) Validate() error {
 }
 
 type CreateContextStoreRequestConfig struct {
-	// The metadata fields.
+	// The metadata field.
 	MetadataField map[string]*string `json:"metadataField,omitempty" xml:"metadataField,omitempty"`
 	// The configuration source.
 	Source *CreateContextStoreRequestConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
@@ -160,13 +160,13 @@ func (s *CreateContextStoreRequestConfig) Validate() error {
 }
 
 type CreateContextStoreRequestConfigSource struct {
-	// The name of the Log Service Logstore.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// sls-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Log Service project.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//

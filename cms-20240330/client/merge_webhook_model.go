@@ -42,7 +42,7 @@ type MergeWebhook struct {
 	//
 	// application/json
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// An extension field used to store additional configurations.
+	// The extension field used to store additional configurations.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type MergeWebhook struct {
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtModified map[string]interface{} `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The request header.
+	// The request header information.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type MergeWebhook struct {
 	//
 	// example:
 	//
-	// 运维告警通知
+	// O&M alert notification
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source system of the webhook.
 	//
@@ -96,13 +96,13 @@ type MergeWebhook struct {
 	//
 	// dingtalk
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The type of the webhook. It indicates the destination platform.
+	// The webhook type, which indicates its target platform.
 	//
 	// example:
 	//
 	// dingtalk
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The webhook URL used to send requests.
+	// The webhook address used to send requests.
 	//
 	// example:
 	//

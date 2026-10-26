@@ -16,7 +16,7 @@ type iCreateAddonReleaseResponseBody interface {
 }
 
 type CreateAddonReleaseResponseBody struct {
-	// The component integration information.
+	// The integrated component information.
 	Release *CreateAddonReleaseResponseBodyRelease `json:"release,omitempty" xml:"release,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,27 +62,27 @@ func (s *CreateAddonReleaseResponseBody) Validate() error {
 }
 
 type CreateAddonReleaseResponseBodyRelease struct {
-	// The addon name of the component integrated with monitoring.
+	// The name of the add-on integrated for monitoring.
 	//
 	// example:
 	//
 	// cs-gpu
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The number of alert rule groups.
+	// The number of alert groups.
 	//
 	// example:
 	//
 	// 6
 	AlertRuleCount *int64 `json:"alertRuleCount,omitempty" xml:"alertRuleCount,omitempty"`
-	// The component installation phase information.
+	// The installation phase information of the component.
 	Conditions []*CreateAddonReleaseResponseBodyReleaseConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The component configuration.
+	// The configuration of the component.
 	//
 	// example:
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The time when the component was integrated.
+	// The integration time.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// policy-xxxxxxxxxxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The number of exporters.
+	// The number of plugins.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// true
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// The parent AddonReleaseId.
+	// The parent add-on release ID.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// test-gpu-integration-name
 	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	// The component scenario.
+	// The scenario of the component.
 	//
 	// example:
 	//
 	// 1
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The component status.
+	// The status of the component.
 	//
 	// example:
 	//
@@ -186,13 +186,13 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// 2024-09-13T02:21:02Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the user to whom the component belongs.
+	// The ID of the user who owns the component.
 	//
 	// example:
 	//
 	// 165421896xxxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The component version.
+	// The version of the component.
 	//
 	// example:
 	//
@@ -458,13 +458,13 @@ func (s *CreateAddonReleaseResponseBodyRelease) Validate() error {
 }
 
 type CreateAddonReleaseResponseBodyReleaseConditions struct {
-	// The first transition time.
+	// The time of the first transition.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	FirstTransitionTime *string `json:"firstTransitionTime,omitempty" xml:"firstTransitionTime,omitempty"`
-	// The last transition time.
+	// The time of the last transition.
 	//
 	// example:
 	//
@@ -476,13 +476,13 @@ type CreateAddonReleaseResponseBodyReleaseConditions struct {
 	//
 	// The addon loaded successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The phase status.
+	// The status of the phase.
 	//
 	// example:
 	//
 	// {\\"phase\\": \\"Created\\", \\"executionDetails\\": [], \\"invocations\\": [], \\"latestExecError\\": {\\"message\\": \\"\\", \\"code\\": \\"\\", \\"requestId\\": \\"\\", \\"extraInfo\\": \\"\\", \\"title\\": \\"\\"}}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The phase type.
+	// The type of the phase.
 	//
 	// example:
 	//

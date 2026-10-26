@@ -26,19 +26,19 @@ type iAlertRuleNotificationFilter interface {
 }
 
 type AlertRuleNotificationFilter struct {
-	// A list of contact IDs for filtering.
+	// The contact ID filter.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	// A list of custom webhook IDs for filtering.
+	// The custom webhook ID filter.
 	CustomWebhooks []*string `json:"customWebhooks,omitempty" xml:"customWebhooks,omitempty" type:"Repeated"`
-	// A list of DingTalk webhook IDs for filtering.
+	// The DingTalk webhook ID filter.
 	DingWebhooks []*string `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
-	// A list of Lark webhook IDs for filtering.
+	// The Lark webhook ID filter.
 	FsWebhooks []*string `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
-	// A list of contact group IDs for filtering.
+	// The contact group filter configuration.
 	Groups []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
-	// A list of Slack webhook IDs for filtering.
+	// The Slack webhook ID filter list.
 	SlackWebhooks []*string `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
-	// A list of WeChat webhook IDs for filtering.
+	// The WeChat webhook ID filter.
 	WxWebhooks []*string `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
 }
 

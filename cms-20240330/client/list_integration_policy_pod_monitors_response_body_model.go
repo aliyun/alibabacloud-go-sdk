@@ -26,7 +26,7 @@ type ListIntegrationPolicyPodMonitorsResponseBody struct {
 	//
 	// et15prod-et15storage
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The list of PodMonitors.
+	// The PodMonitor list.
 	PodMonitors []*ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors `json:"podMonitors,omitempty" xml:"podMonitors,omitempty" type:"Repeated"`
 	// The policy ID.
 	//
@@ -118,7 +118,7 @@ type ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors struct {
 	//
 	// 0.0.1
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
-	// The configuration YAML.
+	// The YAML configuration.
 	//
 	// example:
 	//

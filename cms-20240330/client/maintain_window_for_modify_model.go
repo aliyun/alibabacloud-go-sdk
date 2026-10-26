@@ -32,7 +32,7 @@ type MaintainWindowForModify struct {
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The effective time range.
+	// The effective period range.
 	EffectTimeRange *MaintainWindowForModifyEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
 	// The Crontab expression.
 	//
@@ -40,7 +40,7 @@ type MaintainWindowForModify struct {
 	//
 	// 	- 	- 14-18 ? 	- *
 	Effective *string `json:"effective,omitempty" xml:"effective,omitempty"`
-	// The time when the policy stops taking effect.
+	// The effective end time.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type MaintainWindowForModify struct {
 	//
 	// test strategy
 	MaintainWindowName *string `json:"maintainWindowName,omitempty" xml:"maintainWindowName,omitempty"`
-	// The time when the policy starts to take effect.
+	// The effective start time.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ func (s *MaintainWindowForModify) Validate() error {
 }
 
 type MaintainWindowForModifyEffectTimeRange struct {
-	// The days of the week when the policy is effective (Monday to Sunday).
+	// The effective days (Monday to Sunday).
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
 	// The end time in minutes.
 	//

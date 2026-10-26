@@ -30,55 +30,55 @@ type iQueries interface {
 }
 
 type Queries struct {
-	// The end offset of the time range for SLS_MULTI_QUERY. This parameter is mutually exclusive with window.
+	// The end offset of the time range for SLS_MULTI_QUERY (mutually exclusive with window).
 	//
 	// example:
 	//
 	// 100
 	End *int64 `json:"end,omitempty" xml:"end,omitempty"`
-	// The query expression. For PROMETHEUS_MULTI_QUERY, this is a PromQL expression. For SLS_MULTI_QUERY, this is an SPL expression.
+	// The query expression (PromQL for PROMETHEUS_MULTI_QUERY and SPL for SLS_MULTI_QUERY).
 	//
 	// example:
 	//
-	// SampleValue
+	// 示例值
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// The label filter conditions for UMODEL_METRICSET_MULTI_QUERY. This parameter is optional and independent for each query.
+	// The label filter conditions for UMODEL_METRICSET_MULTI_QUERY (optional and independent per query).
 	//
 	// example:
 	//
-	// [{"key":"host.name","value":"web-server-01","type":"eq"}]
+	// [{"name":"env","operator":"=","value":"prod"}]
 	LabelFilters []*LabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
 	// The metric name for UMODEL_METRICSET_MULTI_QUERY.
 	//
 	// example:
 	//
-	// SampleName
+	// 示例名称
 	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
 	// The metric set name for UMODEL_METRICSET_MULTI_QUERY.
 	//
 	// example:
 	//
-	// SampleName
+	// 示例名称
 	MetricSet *string `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
-	// The query name used by PROMETHEUS_MULTI_QUERY and UMODEL_METRICSET_MULTI_QUERY, such as $A or $B, which can be referenced by condition triggers.
+	// The query name for PROMETHEUS_MULTI_QUERY or UMODEL_METRICSET_MULTI_QUERY (such as $A or $B, referenced by condition triggers).
 	//
 	// example:
 	//
-	// SampleName
+	// 示例名称
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The start offset of the time range for SLS_MULTI_QUERY. This parameter is mutually exclusive with window.
+	// The start offset of the time range for SLS_MULTI_QUERY (mutually exclusive with window).
 	//
 	// example:
 	//
 	// 100
 	Start *int64 `json:"start,omitempty" xml:"start,omitempty"`
-	// The time unit for SLS_MULTI_QUERY. Valid values: day, hour, minute, and second.
+	// The time unit for SLS_MULTI_QUERY (day, hour, minute, or second).
 	//
 	// example:
 	//
 	// second
 	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
-	// The snap window size for SLS_MULTI_QUERY. This parameter is mutually exclusive with start and end.
+	// The alignment window size for SLS_MULTI_QUERY (mutually exclusive with start and end).
 	//
 	// example:
 	//

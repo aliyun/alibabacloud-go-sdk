@@ -102,7 +102,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// # Write to the context
+// Writes context.
 //
 // @param request - AddContextsRequest
 //
@@ -157,7 +157,7 @@ func (client *Client) AddContextsWithOptions(workspace *string, contextStoreName
 
 // Summary:
 //
-// # Write to the context
+// Writes context.
 //
 // @param request - AddContextsRequest
 //
@@ -176,7 +176,7 @@ func (client *Client) AddContexts(workspace *string, contextStoreName *string, r
 
 // Summary:
 //
-// Add new facts, messages, or metadata to a user’s memory store. The AddMemories endpoint accepts raw text or conversation turns and commits them asynchronously, preparing the memories for subsequent search, retrieval, and graph queries.
+// Adds new facts, messages, or metadata to the memory store of a user. The Add Memory endpoint accepts raw text or conversation turns and uses an asynchronous commit to commit them so that the memory is ready to search, retrieve, and run graph queries.
 //
 // @param request - AddMemoriesRequest
 //
@@ -259,7 +259,7 @@ func (client *Client) AddMemoriesWithOptions(workspace *string, memoryStoreName 
 
 // Summary:
 //
-// Add new facts, messages, or metadata to a user’s memory store. The AddMemories endpoint accepts raw text or conversation turns and commits them asynchronously, preparing the memories for subsequent search, retrieval, and graph queries.
+// Adds new facts, messages, or metadata to the memory store of a user. The Add Memory endpoint accepts raw text or conversation turns and uses an asynchronous commit to commit them so that the memory is ready to search, retrieve, and run graph queries.
 //
 // @param request - AddMemoriesRequest
 //
@@ -352,7 +352,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Installs an access component, which represents a single access operation.
+// Installs an add-on component, which represents an integration operation.
 //
 // Description:
 //
@@ -379,6 +379,10 @@ func (client *Client) CreateAddonReleaseWithOptions(policyId *string, request *C
 
 	if !dara.IsNil(request.AliyunLang) {
 		body["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.ApiVersion) {
+		body["apiVersion"] = request.ApiVersion
 	}
 
 	if !dara.IsNil(request.DryRun) {
@@ -439,7 +443,7 @@ func (client *Client) CreateAddonReleaseWithOptions(policyId *string, request *C
 
 // Summary:
 //
-// Installs an access component, which represents a single access operation.
+// Installs an add-on component, which represents an integration operation.
 //
 // Description:
 //
@@ -462,7 +466,7 @@ func (client *Client) CreateAddonRelease(policyId *string, request *CreateAddonR
 
 // Summary:
 //
-// Create an aggregation task group.
+// Creates an aggregation task group.
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -575,7 +579,7 @@ func (client *Client) CreateAggTaskGroupWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// Create an aggregation task group.
+// Creates an aggregation task group.
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -1004,7 +1008,7 @@ func (client *Client) CreateContextStore(workspace *string, request *CreateConte
 
 // Summary:
 //
-// Creates an API key for a context store.
+// Creates an API key.
 //
 // @param request - CreateContextStoreAPIKeyRequest
 //
@@ -1051,7 +1055,7 @@ func (client *Client) CreateContextStoreAPIKeyWithOptions(workspace *string, con
 
 // Summary:
 //
-// Creates an API key for a context store.
+// Creates an API key.
 //
 // @param request - CreateContextStoreAPIKeyRequest
 //
@@ -1070,7 +1074,7 @@ func (client *Client) CreateContextStoreAPIKey(workspace *string, contextStoreNa
 
 // Summary:
 //
-// Creates a DataPipeline.
+// Creates a data pipeline.
 //
 // Description:
 //
@@ -1145,7 +1149,7 @@ func (client *Client) CreateDataPipelineWithOptions(workspace *string, request *
 
 // Summary:
 //
-// Creates a DataPipeline.
+// Creates a data pipeline.
 //
 // Description:
 //
@@ -1242,7 +1246,7 @@ func (client *Client) CreateDataset(workspace *string, request *CreateDatasetReq
 
 // Summary:
 //
-// Create a data delivery task to deliver metric data from a data source to a storage destination or message queue. This task supports three delivery types: Prometheus Remote Write, Kafka, and MaxCompute. You can also use tags to filter which metrics are delivered and attach custom tags to them.
+// Creates a data delivery node that delivers metric data from a specified data source to a destination storage service or MSMQ. This operation supports three delivery types: Prometheus Remote Write, Kafka, and MaxCompute. You can use labels to filter the metrics to be delivered and attach custom labels to the delivered metrics.
 //
 // @param request - CreateDeliveryTaskRequest
 //
@@ -1321,7 +1325,7 @@ func (client *Client) CreateDeliveryTaskWithOptions(request *CreateDeliveryTaskR
 
 // Summary:
 //
-// Create a data delivery task to deliver metric data from a data source to a storage destination or message queue. This task supports three delivery types: Prometheus Remote Write, Kafka, and MaxCompute. You can also use tags to filter which metrics are delivered and attach custom tags to them.
+// Creates a data delivery node that delivers metric data from a specified data source to a destination storage service or MSMQ. This operation supports three delivery types: Prometheus Remote Write, Kafka, and MaxCompute. You can use labels to filter the metrics to be delivered and attach custom labels to the delivered metrics.
 //
 // @param request - CreateDeliveryTaskRequest
 //
@@ -1340,7 +1344,7 @@ func (client *Client) CreateDeliveryTask(request *CreateDeliveryTaskRequest) (_r
 
 // Summary:
 //
-// Creates storage for an EntityStore.
+// Creates EntityStore-related storage.
 //
 // @param request - CreateEntityStoreRequest
 //
@@ -1381,7 +1385,7 @@ func (client *Client) CreateEntityStoreWithOptions(workspaceName *string, reques
 
 // Summary:
 //
-// Creates storage for an EntityStore.
+// Creates EntityStore-related storage.
 //
 // @param request - CreateEntityStoreRequest
 //
@@ -1400,7 +1404,7 @@ func (client *Client) CreateEntityStore(workspaceName *string, request *CreateEn
 
 // Summary:
 //
-// Creates an Integration Center policy.
+// Creates an access center policy.
 //
 // Description:
 //
@@ -1421,6 +1425,10 @@ func (client *Client) CreateIntegrationPolicyWithOptions(request *CreateIntegrat
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiVersion) {
+		body["apiVersion"] = request.ApiVersion
+	}
+
 	if !dara.IsNil(request.EntityGroup) {
 		body["entityGroup"] = request.EntityGroup
 	}
@@ -1471,7 +1479,7 @@ func (client *Client) CreateIntegrationPolicyWithOptions(request *CreateIntegrat
 
 // Summary:
 //
-// Creates an Integration Center policy.
+// Creates an access center policy.
 //
 // Description:
 //
@@ -1498,9 +1506,7 @@ func (client *Client) CreateIntegrationPolicy(request *CreateIntegrationPolicyRe
 //
 // Description:
 //
-// Creates a silence policy in a specified workspace. A silence policy uses filterSetting to filter events. When the policy is enabled and the current time hits the configured effective rules, hit events do not trigger subscribe notifications, direct notifications, or global subscribe notifications. The events are still Normal and stored in the database.
-//
-// When you create a silence policy, maintainWindowName and filterSetting are required. filterSetting must contain at least one condition. You do not have to configure any effective period. In this case, the policy does not hit any events. If you configure effective, you must also configure at least one of startTime, endTime, or effectTimeRange. Otherwise, the validation is failed. If a policy name already exists in the same workspace, the InvalidParameterValue error is returned. After the policy is created, the silence policy ID is returned.
+// Creates a silence policy in a specified workspace. A silence policy filters events by using filterSetting. When the policy is enabled and the current time hits the configured effective period, the hit events do not trigger subscribe notifications, direct notifications, or global subscribe notifications, but the events are still stored normally. When you create a policy, maintainWindowName and filterSetting are required, and filterSetting must contain at least one condition. You can leave the effective period unconfigured, in which case the policy does not hit any events. If you configure effective, you must also configure at least one of startTime, endTime, or effectTimeRange. Otherwise, the validation failed. If the policy name already exists in the same workspace, InvalidParameterValue is returned. After the policy is created, the silence policy ID is returned.
 //
 // @param request - CreateMaintainWindowRequest
 //
@@ -1552,9 +1558,7 @@ func (client *Client) CreateMaintainWindowWithOptions(request *CreateMaintainWin
 //
 // Description:
 //
-// Creates a silence policy in a specified workspace. A silence policy uses filterSetting to filter events. When the policy is enabled and the current time hits the configured effective rules, hit events do not trigger subscribe notifications, direct notifications, or global subscribe notifications. The events are still Normal and stored in the database.
-//
-// When you create a silence policy, maintainWindowName and filterSetting are required. filterSetting must contain at least one condition. You do not have to configure any effective period. In this case, the policy does not hit any events. If you configure effective, you must also configure at least one of startTime, endTime, or effectTimeRange. Otherwise, the validation is failed. If a policy name already exists in the same workspace, the InvalidParameterValue error is returned. After the policy is created, the silence policy ID is returned.
+// Creates a silence policy in a specified workspace. A silence policy filters events by using filterSetting. When the policy is enabled and the current time hits the configured effective period, the hit events do not trigger subscribe notifications, direct notifications, or global subscribe notifications, but the events are still stored normally. When you create a policy, maintainWindowName and filterSetting are required, and filterSetting must contain at least one condition. You can leave the effective period unconfigured, in which case the policy does not hit any events. If you configure effective, you must also configure at least one of startTime, endTime, or effectTimeRange. Otherwise, the validation failed. If the policy name already exists in the same workspace, InvalidParameterValue is returned. After the policy is created, the silence policy ID is returned.
 //
 // @param request - CreateMaintainWindowRequest
 //
@@ -1573,7 +1577,7 @@ func (client *Client) CreateMaintainWindow(request *CreateMaintainWindowRequest)
 
 // Summary:
 //
-// Creates a MemoryStore.
+// Creates a memory store.
 //
 // @param request - CreateMemoryStoreRequest
 //
@@ -1644,7 +1648,7 @@ func (client *Client) CreateMemoryStoreWithOptions(workspace *string, request *C
 
 // Summary:
 //
-// Creates a MemoryStore.
+// Creates a memory store.
 //
 // @param request - CreateMemoryStoreRequest
 //
@@ -1667,7 +1671,7 @@ func (client *Client) CreateMemoryStore(workspace *string, request *CreateMemory
 //
 // Description:
 //
-// Creates a notification policy in a specified workspace. The notifyStrategy field in the request body NotifyPolicyConfig is required, while subscription and responsePlan are optional. After the policy is created, the generated policy UUID and complete policy details are returned. If a policy with the same Policy Name already exists in the workspace, a ConflictName error is returned.
+// Creates a notification policy in a specified workspace. In the request body NotifyPolicyConfig, notifyStrategy is required, while subscription and responsePlan are optional. Upon successful creation, the generated policy UUID and complete policy details are returned. If a duplicate policy name exists in the same workspace, ConflictName is returned.
 //
 // @param request - CreateNotifyPolicyRequest
 //
@@ -1719,7 +1723,7 @@ func (client *Client) CreateNotifyPolicyWithOptions(request *CreateNotifyPolicyR
 //
 // Description:
 //
-// Creates a notification policy in a specified workspace. The notifyStrategy field in the request body NotifyPolicyConfig is required, while subscription and responsePlan are optional. After the policy is created, the generated policy UUID and complete policy details are returned. If a policy with the same Policy Name already exists in the workspace, a ConflictName error is returned.
+// Creates a notification policy in a specified workspace. In the request body NotifyPolicyConfig, notifyStrategy is required, while subscription and responsePlan are optional. Upon successful creation, the generated policy UUID and complete policy details are returned. If a duplicate policy name exists in the same workspace, ConflictName is returned.
 //
 // @param request - CreateNotifyPolicyRequest
 //
@@ -2738,7 +2742,7 @@ func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string, re
 
 // Summary:
 //
-// Deletes an alert chatbot.
+// Deletes a chatbot.
 //
 // @param tmpReq - DeleteAlertRobotsRequest
 //
@@ -2795,7 +2799,7 @@ func (client *Client) DeleteAlertRobotsWithOptions(tmpReq *DeleteAlertRobotsRequ
 
 // Summary:
 //
-// Deletes an alert chatbot.
+// Deletes a chatbot.
 //
 // @param request - DeleteAlertRobotsRequest
 //
@@ -5132,7 +5136,7 @@ func (client *Client) EnableNotifyPolicy(uuid *string, request *EnableNotifyPoli
 
 // Summary:
 //
-// Executes SQL and SPL queries.
+// Executes SQL, SPL, and other queries.
 //
 // @param request - ExecuteQueryRequest
 //
@@ -5183,7 +5187,7 @@ func (client *Client) ExecuteQueryWithOptions(workspace *string, datasetName *st
 
 // Summary:
 //
-// Executes SQL and SPL queries.
+// Executes SQL, SPL, and other queries.
 //
 // @param request - ExecuteQueryRequest
 //
@@ -5447,6 +5451,10 @@ func (client *Client) GetAddonSchemaWithOptions(addonName *string, request *GetA
 		query["aliyunLang"] = request.AliyunLang
 	}
 
+	if !dara.IsNil(request.ApiVersion) {
+		query["apiVersion"] = request.ApiVersion
+	}
+
 	if !dara.IsNil(request.EnvironmentType) {
 		query["environmentType"] = request.EnvironmentType
 	}
@@ -5678,15 +5686,15 @@ func (client *Client) GetCloudResource() (_result *GetCloudResourceResponse, _er
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation queries all entities of a specific cloud service within a specified time range.
+// - This operation queries all entities under a specific cloud service within a specified time range.
 //
-// - The `from` and `to` parameters specify the time range of the query in seconds-level timestamps.
+// - The `from` and `to` parameters specify the time range for the query, represented by timestamps in seconds.
 //
-// - The `spl` parameter supports entityStore query statements to filter or select the required entities and their properties.
+// - The `spl` parameter supports filtering or selecting required entities and their properties by using entityStore query statements.
 //
-// - If you need only specific fields, use the `project` clause in `spl` to filter them.
+// - If only specific fields are required, you can use the `project` clause in `spl` to filter them.
 //
 // - The response contains the specific property values of each entity and the corresponding list of property names for easy parsing and processing.
 //
@@ -5747,15 +5755,15 @@ func (client *Client) GetCloudResourceDataWithOptions(request *GetCloudResourceD
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation queries all entities of a specific cloud service within a specified time range.
+// - This operation queries all entities under a specific cloud service within a specified time range.
 //
-// - The `from` and `to` parameters specify the time range of the query in seconds-level timestamps.
+// - The `from` and `to` parameters specify the time range for the query, represented by timestamps in seconds.
 //
-// - The `spl` parameter supports entityStore query statements to filter or select the required entities and their properties.
+// - The `spl` parameter supports filtering or selecting required entities and their properties by using entityStore query statements.
 //
-// - If you need only specific fields, use the `project` clause in `spl` to filter them.
+// - If only specific fields are required, you can use the `project` clause in `spl` to filter them.
 //
 // - The response contains the specific property values of each entity and the corresponding list of property names for easy parsing and processing.
 //
@@ -5854,7 +5862,7 @@ func (client *Client) GetCmsService(request *GetCmsServiceRequest) (_result *Get
 
 // Summary:
 //
-// Retrieves a single context.
+// Queries a single context.
 //
 // @param request - GetContextRequest
 //
@@ -5901,7 +5909,7 @@ func (client *Client) GetContextWithOptions(workspace *string, contextStoreName 
 
 // Summary:
 //
-// Retrieves a single context.
+// Queries a single context.
 //
 // @param request - GetContextRequest
 //
@@ -5980,7 +5988,7 @@ func (client *Client) GetContextStore(workspace *string, contextStoreName *strin
 
 // Summary:
 //
-// Queries a DataPipeline.
+// Queries a data pipeline.
 //
 // Description:
 //
@@ -6025,7 +6033,7 @@ func (client *Client) GetDataPipelineWithOptions(workspace *string, pipelineName
 
 // Summary:
 //
-// Queries a DataPipeline.
+// Queries a data pipeline.
 //
 // Description:
 //
@@ -6236,7 +6244,7 @@ func (client *Client) GetEntityStore(workspaceName *string, request *GetEntitySt
 
 // Summary:
 //
-// Queries the entity and relational data in a specified workspace to retrieve entity data for a specific time range.
+// Queries the entity and relationship data in a specified workspace, and returns the entity data within a specific time range.
 //
 // @param request - GetEntityStoreDataRequest
 //
@@ -6300,7 +6308,7 @@ func (client *Client) GetEntityStoreDataWithOptions(workspace *string, request *
 
 // Summary:
 //
-// Queries the entity and relational data in a specified workspace to retrieve entity data for a specific time range.
+// Queries the entity and relationship data in a specified workspace, and returns the entity data within a specific time range.
 //
 // @param request - GetEntityStoreDataRequest
 //
@@ -6895,7 +6903,7 @@ func (client *Client) GetNotifyPolicy(request *GetNotifyPolicyRequest) (_result 
 
 // Summary:
 //
-// # Query pipeline
+// Queries a pipeline.
 //
 // @param request - GetPipelineRequest
 //
@@ -6936,7 +6944,7 @@ func (client *Client) GetPipelineWithOptions(workspace *string, pipelineName *st
 
 // Summary:
 //
-// # Query pipeline
+// Queries a pipeline.
 //
 // @param request - GetPipelineRequest
 //
@@ -7237,7 +7245,7 @@ func (client *Client) GetService(workspace *string, serviceId *string, request *
 
 // Summary:
 //
-// Retrieves an application observability instance.
+// Retrieves the application observability instance.
 //
 // @param request - GetServiceObservabilityRequest
 //
@@ -7278,7 +7286,7 @@ func (client *Client) GetServiceObservabilityWithOptions(workspace *string, _typ
 
 // Summary:
 //
-// Retrieves an application observability instance.
+// Retrieves the application observability instance.
 //
 // @param request - GetServiceObservabilityRequest
 //
@@ -7449,11 +7457,11 @@ func (client *Client) GetServiceTask(workspace *string, serviceId *string, taskI
 
 // Summary:
 //
-// Retrieves the configuration of a Umodel.
+// Retrieves Umodel configuration information.
 //
 // Description:
 //
-// Retrieves the configuration of a Umodel.
+// Retrieves Umodel configuration information.
 //
 // @param request - GetUmodelRequest
 //
@@ -7494,11 +7502,11 @@ func (client *Client) GetUmodelWithOptions(workspace *string, request *GetUmodel
 
 // Summary:
 //
-// Retrieves the configuration of a Umodel.
+// Retrieves Umodel configuration information.
 //
 // Description:
 //
-// Retrieves the configuration of a Umodel.
+// Retrieves Umodel configuration information.
 //
 // @param request - GetUmodelRequest
 //
@@ -7517,7 +7525,7 @@ func (client *Client) GetUmodel(workspace *string, request *GetUmodelRequest) (_
 
 // Summary:
 //
-// Retrieves the referenced common Umodel schema.
+// Retrieves the referenced public Umodel schema.
 //
 // @param request - GetUmodelCommonSchemaRefRequest
 //
@@ -7558,7 +7566,7 @@ func (client *Client) GetUmodelCommonSchemaRefWithOptions(workspace *string, req
 
 // Summary:
 //
-// Retrieves the referenced common Umodel schema.
+// Retrieves the referenced public Umodel schema.
 //
 // @param request - GetUmodelCommonSchemaRefRequest
 //
@@ -7717,11 +7725,11 @@ func (client *Client) GetWorkspace(workspaceName *string, request *GetWorkspaceR
 
 // Summary:
 //
-// Lists the releases for an add-on.
+// Lists the releases of an add-on.
 //
 // Description:
 //
-// This operation retrieves a list of integration configurations.
+// Queries the list of integration configurations.
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -7780,11 +7788,11 @@ func (client *Client) ListAddonReleasesWithOptions(policyId *string, request *Li
 
 // Summary:
 //
-// Lists the releases for an add-on.
+// Lists the releases of an add-on.
 //
 // Description:
 //
-// This operation retrieves a list of integration configurations.
+// Queries the list of integration configurations.
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -7803,11 +7811,11 @@ func (client *Client) ListAddonReleases(policyId *string, request *ListAddonRele
 
 // Summary:
 //
-// Lists the products in the new Integration Center by group.
+// Queries the grouped product list of the new integration center.
 //
 // Description:
 //
-// Creates a site monitoring job.
+// Creates a site monitoring task.
 //
 // @param request - ListAddonsRequest
 //
@@ -7826,6 +7834,10 @@ func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, headers 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunLang) {
 		query["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.ApiVersion) {
+		query["apiVersion"] = request.ApiVersion
 	}
 
 	if !dara.IsNil(request.Category) {
@@ -7866,11 +7878,11 @@ func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, headers 
 
 // Summary:
 //
-// Lists the products in the new Integration Center by group.
+// Queries the grouped product list of the new integration center.
 //
 // Description:
 //
-// Creates a site monitoring job.
+// Creates a site monitoring task.
 //
 // @param request - ListAddonsRequest
 //
@@ -8269,7 +8281,7 @@ func (client *Client) ListAlertWebhooks(request *ListAlertWebhooksRequest) (_res
 
 // Summary:
 //
-// Lists business traces.
+// Queries the list of business links.
 //
 // @param request - ListBizTracesRequest
 //
@@ -8324,7 +8336,7 @@ func (client *Client) ListBizTracesWithOptions(request *ListBizTracesRequest, he
 
 // Summary:
 //
-// Lists business traces.
+// Queries the list of business links.
 //
 // @param request - ListBizTracesRequest
 //
@@ -8551,7 +8563,7 @@ func (client *Client) ListContacts(request *ListContactsRequest) (_result *ListC
 
 // Summary:
 //
-// Lists API keys.
+// Retrieves a list of API keys.
 //
 // @param request - ListContextStoreAPIKeysRequest
 //
@@ -8602,7 +8614,7 @@ func (client *Client) ListContextStoreAPIKeysWithOptions(workspace *string, cont
 
 // Summary:
 //
-// Lists API keys.
+// Retrieves a list of API keys.
 //
 // @param request - ListContextStoreAPIKeysRequest
 //
@@ -8621,7 +8633,7 @@ func (client *Client) ListContextStoreAPIKeys(workspace *string, contextStoreNam
 
 // Summary:
 //
-// Retrieves a list of context stores.
+// Queries the list of context stores.
 //
 // @param request - ListContextStoresRequest
 //
@@ -8680,7 +8692,7 @@ func (client *Client) ListContextStoresWithOptions(workspace *string, request *L
 
 // Summary:
 //
-// Retrieves a list of context stores.
+// Queries the list of context stores.
 //
 // @param request - ListContextStoresRequest
 //
@@ -8699,7 +8711,7 @@ func (client *Client) ListContextStores(workspace *string, request *ListContextS
 
 // Summary:
 //
-// Queries a list of DataPipelines.
+// Queries data pipelines.
 //
 // Description:
 //
@@ -8754,7 +8766,7 @@ func (client *Client) ListDataPipelinesWithOptions(workspace *string, request *L
 
 // Summary:
 //
-// Queries a list of DataPipelines.
+// Queries data pipelines.
 //
 // Description:
 //
@@ -8777,7 +8789,7 @@ func (client *Client) ListDataPipelines(workspace *string, request *ListDataPipe
 
 // Summary:
 //
-// Retrieves a list of datasets in a specified workspace.
+// Lists datasets.
 //
 // @param request - ListDatasetsRequest
 //
@@ -8832,7 +8844,7 @@ func (client *Client) ListDatasetsWithOptions(workspace *string, request *ListDa
 
 // Summary:
 //
-// Retrieves a list of datasets in a specified workspace.
+// Lists datasets.
 //
 // @param request - ListDatasetsRequest
 //
@@ -8851,7 +8863,7 @@ func (client *Client) ListDatasets(workspace *string, request *ListDatasetsReque
 
 // Summary:
 //
-// Retrieves the list of data delivery tasks.
+// Retrieves a list of data delivery tasks.
 //
 // @param tmpReq - ListDeliveryTasksRequest
 //
@@ -8920,7 +8932,7 @@ func (client *Client) ListDeliveryTasksWithOptions(tmpReq *ListDeliveryTasksRequ
 
 // Summary:
 //
-// Retrieves the list of data delivery tasks.
+// Retrieves a list of data delivery tasks.
 //
 // @param request - ListDeliveryTasksRequest
 //
@@ -9071,11 +9083,11 @@ func (client *Client) ListIntegrationPolicies(request *ListIntegrationPoliciesRe
 
 // Summary:
 //
-// Lists the add-ons that are installed for a specified policy.
+// Retrieves the list of add-ons installed for the current policy.
 //
 // Description:
 //
-// Lists the add-ons that are installed for a specified policy.
+// Retrieves the list of add-ons installed for the current policy.
 //
 // @param request - ListIntegrationPolicyAddonsRequest
 //
@@ -9116,11 +9128,11 @@ func (client *Client) ListIntegrationPolicyAddonsWithOptions(policyId *string, r
 
 // Summary:
 //
-// Lists the add-ons that are installed for a specified policy.
+// Retrieves the list of add-ons installed for the current policy.
 //
 // Description:
 //
-// Lists the add-ons that are installed for a specified policy.
+// Retrieves the list of add-ons installed for the current policy.
 //
 // @param request - ListIntegrationPolicyAddonsRequest
 //
@@ -9291,11 +9303,11 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRules(policyId *string
 
 // Summary:
 //
-// Queries a list of integration policy dashboards.
+// Queries the list of dashboards.
 //
 // Description:
 //
-// This topic provides an example of how to query a list of integration policy dashboards.
+// This topic provides an example of querying the alert template list. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyDashboardsRequest
 //
@@ -9350,11 +9362,11 @@ func (client *Client) ListIntegrationPolicyDashboardsWithOptions(policyId *strin
 
 // Summary:
 //
-// Queries a list of integration policy dashboards.
+// Queries the list of dashboards.
 //
 // Description:
 //
-// This topic provides an example of how to query a list of integration policy dashboards.
+// This topic provides an example of querying the alert template list. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyDashboardsRequest
 //
@@ -9373,11 +9385,11 @@ func (client *Client) ListIntegrationPolicyDashboards(policyId *string, request 
 
 // Summary:
 //
-// Retrieves the PodMonitor resources of an access center policy.
+// Retrieves the PodMonitor resources of an Integration Center policy.
 //
 // Description:
 //
-// This topic provides an example on how to query the list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example of querying alert templates. The response indicates that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -9436,11 +9448,11 @@ func (client *Client) ListIntegrationPolicyPodMonitorsWithOptions(policyId *stri
 
 // Summary:
 //
-// Retrieves the PodMonitor resources of an access center policy.
+// Retrieves the PodMonitor resources of an Integration Center policy.
 //
 // Description:
 //
-// This topic provides an example on how to query the list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example of querying alert templates. The response indicates that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -9729,7 +9741,7 @@ func (client *Client) ListMaintainWindows(request *ListMaintainWindowsRequest) (
 
 // Summary:
 //
-// Retrieves a list of memory stores.
+// Queries the list of memory stores.
 //
 // @param request - ListMemoryStoresRequest
 //
@@ -9784,7 +9796,7 @@ func (client *Client) ListMemoryStoresWithOptions(workspace *string, request *Li
 
 // Summary:
 //
-// Retrieves a list of memory stores.
+// Queries the list of memory stores.
 //
 // @param request - ListMemoryStoresRequest
 //
@@ -10973,7 +10985,7 @@ func (client *Client) OpenCmsService(request *OpenCmsServiceRequest) (_result *O
 //
 // Description:
 //
-// Compiles a candidate configuration and queries read-only samples grouped by dataset within a specified time window.
+// Compiles candidate configurations and queries read-only samples grouped by dataset within a specified time window.
 //
 // @param request - PreviewDataPipelineRequest
 //
@@ -11056,7 +11068,7 @@ func (client *Client) PreviewDataPipelineWithOptions(workspace *string, request 
 //
 // Description:
 //
-// Compiles a candidate configuration and queries read-only samples grouped by dataset within a specified time window.
+// Compiles candidate configurations and queries read-only samples grouped by dataset within a specified time window.
 //
 // @param request - PreviewDataPipelineRequest
 //
@@ -11161,7 +11173,7 @@ func (client *Client) PutWorkspace(workspaceName *string, request *PutWorkspaceR
 //
 // Description:
 //
-// This topic provides an example of querying an alert template list. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example of querying the list of alert templates. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param tmpReq - QueryAlertRulesRequest
 //
@@ -11236,7 +11248,7 @@ func (client *Client) QueryAlertRulesWithOptions(tmpReq *QueryAlertRulesRequest,
 //
 // Description:
 //
-// This topic provides an example of querying an alert template list. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example of querying the list of alert templates. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - QueryAlertRulesRequest
 //
@@ -11699,7 +11711,7 @@ func (client *Client) UpdateAddonRelease(releaseName *string, policyId *string, 
 
 // Summary:
 //
-// Updates an aggregation task group.
+// Applies an aggregation task group.
 //
 // @param request - UpdateAggTaskGroupRequest
 //
@@ -11806,7 +11818,7 @@ func (client *Client) UpdateAggTaskGroupWithOptions(instanceId *string, groupId 
 
 // Summary:
 //
-// Updates an aggregation task group.
+// Applies an aggregation task group.
 //
 // @param request - UpdateAggTaskGroupRequest
 //
@@ -12313,11 +12325,11 @@ func (client *Client) UpdateContextStore(workspace *string, contextStoreName *st
 
 // Summary:
 //
-// Updates a DataPipeline.
+// Updates a data pipeline.
 //
 // Description:
 //
-// Modifies a specified data pipeline by using a complete candidate configuration.
+// Updates the specified data pipeline with a full candidate configuration.
 //
 // @param request - UpdateDataPipelineRequest
 //
@@ -12388,11 +12400,11 @@ func (client *Client) UpdateDataPipelineWithOptions(workspace *string, pipelineN
 
 // Summary:
 //
-// Updates a DataPipeline.
+// Updates a data pipeline.
 //
 // Description:
 //
-// Modifies a specified data pipeline by using a complete candidate configuration.
+// Updates the specified data pipeline with a full candidate configuration.
 //
 // @param request - UpdateDataPipelineRequest
 //
@@ -12802,7 +12814,7 @@ func (client *Client) UpdateMemory(workspace *string, memoryStoreName *string, m
 
 // Summary:
 //
-// Modify a memory store.
+// Modifies a memory store.
 //
 // @param request - UpdateMemoryStoreRequest
 //
@@ -12861,7 +12873,7 @@ func (client *Client) UpdateMemoryStoreWithOptions(workspace *string, memoryStor
 
 // Summary:
 //
-// Modify a memory store.
+// Modifies a memory store.
 //
 // @param request - UpdateMemoryStoreRequest
 //

@@ -52,55 +52,45 @@ type iObserveGroup interface {
 }
 
 type ObserveGroup struct {
-	// The UID of the Alibaba Cloud account to which the group belongs.
+	// 分组归属的阿里云主账号 UID。
 	AliUid *string `json:"aliUid,omitempty" xml:"aliUid,omitempty"`
-	// The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
+	// 创建时间，UTC 格式 yyyy-MM-ddTHH:mm:ssZ。
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the observability group, which explains its business purpose.
+	// 观测分组描述（业务用途说明）。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of entity discovery rules that define which entities the group automatically matches.
+	// 实体发现规则列表，定义分组自动匹配哪些实体。
 	DiscoverRules []*ObserveGroupDiscoverRule `json:"discoverRules,omitempty" xml:"discoverRules,omitempty" type:"Repeated"`
-	// The number of entities in each category. The key is the category domain (acs for cloud services, apm, or rum, which is extensible). The value is the number of entities in that category that belong to this group. Returned only when withEntityCount is set to true.
+	// 各分类实体数量。key=分类 domain（acs=云产品 / apm / rum，可扩展），value=该分类下属于本分组的实体数。仅 withEntityCount=true 时返回。
 	EntityCounts map[string]*int32 `json:"entityCounts,omitempty" xml:"entityCounts,omitempty"`
-	// The extended information as a JSON string, which carries alert templates, alert contact groups, and suspension policies.
+	// 扩展信息（JSON 字符串，承载告警模板/联系人组/暂停策略等）。
 	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
-	// Indicates whether the current user has followed this group. This value is used as the filter criterion for the My Favorites feature.
+	// 当前用户是否已关注该分组（「我的关注」筛选依据）。
 	Favorited *bool `json:"favorited,omitempty" xml:"favorited,omitempty"`
-	// The globally unique ID of the observability group. Format: og-<16-character hash>. Used uniformly across metrics, alerts, and consoles.
+	// 观测分组全局唯一 ID，格式 og-<16位hash>，指标/告警/控制台统一使用。
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The name of the observability group. Must be unique within the same workspace.
+	// 观测分组名称（同 workspace 下唯一）。
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The type of the observability group.
+	// 观测分组类型。
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	// The health status of the group. Valid values:
-	//
-	// - -1: unknown (placeholder).
-	//
-	// - 1: healthy.
-	//
-	// - 0: unhealthy.
+	// 分组健康状态：-1 未知（占位）/ 1 健康 / 0 不健康。
 	Health *int32 `json:"health,omitempty" xml:"health,omitempty"`
-	// The last modification time in UTC format: yyyy-MM-ddTHH:mm:ssZ. Automatically updated when any resource attribute changes.
+	// 最后修改时间，UTC 格式 yyyy-MM-ddTHH:mm:ssZ。资源任意属性变更时自动更新。
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
-	// Specifies whether og_entity_info metric output is enabled. When enabled, the data plane writes the group membership information to the target Prometheus instance.
+	// 是否开启 og_entity_info 指标输出。开启后数据面会把本分组归属写入目标 Prometheus 实例。
 	OgEntityInfoEnabled *bool `json:"ogEntityInfoEnabled,omitempty" xml:"ogEntityInfoEnabled,omitempty"`
-	// The set of Prometheus instances to which og_entity_info is written. Includes two source types: system (automatically identified by the system) and custom (user-defined).
+	// 写入 og_entity_info 的 Prometheus 实例集合，包含系统自动识别(system)和用户自定义(custom)两类来源。
 	OgEntityInfoPromInstances []*ObserveGroupPromInstance `json:"ogEntityInfoPromInstances,omitempty" xml:"ogEntityInfoPromInstances,omitempty" type:"Repeated"`
-	// The product_group.id of the version 1.0 application group. This parameter is valid only when sourceOrigin is set to synced_from_1_0.
+	// 仅 synced_from_1_0 时填值，存 1.0 应用分组的 product_group.id。
 	OriginGroupId *string `json:"originGroupId,omitempty" xml:"originGroupId,omitempty"`
-	// The region ID to which the group belongs.
+	// 分组所属地域 ID。
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// 阿里云资源组 ID。
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The data source. Valid values:
-	//
-	// - native_2_0: created natively in version 2.0.
-	//
-	// - synced_from_1_0: synchronized from a version 1.0 application group.
+	// 数据来源：native_2_0（2.0 原生）/ synced_from_1_0（从 1.0 应用分组同步）。
 	SourceOrigin *string `json:"sourceOrigin,omitempty" xml:"sourceOrigin,omitempty"`
-	// The resource tags (Alibaba Cloud standard tags) as an array of key-value pairs.
+	// 资源标签（阿里云标准标签），键值对数组。
 	Tags []*ObserveGroupTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The workspace ID to which the group belongs. This value is set at the workspace level and cannot be changed after creation.
+	// 分组归属的 workspace ID（workspace 级归属，创建后不可变）。
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -324,9 +314,9 @@ func (s *ObserveGroup) Validate() error {
 }
 
 type ObserveGroupTags struct {
-	// The tag key.
+	// 标签键。
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The tag value.
+	// 标签值。
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 

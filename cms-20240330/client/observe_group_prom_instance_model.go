@@ -20,7 +20,7 @@ type iObserveGroupPromInstance interface {
 }
 
 type ObserveGroupPromInstance struct {
-	// The ID of the Managed Service for Prometheus instance, such as rw-xxxxxxxxxx.
+	// The ID of the Prometheus instance, such as rw-xxxxxxxxxx.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type ObserveGroupPromInstance struct {
 	//
 	// Prometheus
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The region where the Managed Service for Prometheus instance resides. If this parameter is left empty, the backend automatically populates the region based on the workspace to which the observation group belongs.
+	// The region where the Prometheus instance resides. If left empty, the backend automatically populates it with the region of the workspace to which the observation group belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The time when the record was written or selected. Format: yyyy-MM-dd HH:mm:ss.
+	// The time when the record is written or selected, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//

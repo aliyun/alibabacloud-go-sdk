@@ -15,6 +15,8 @@ type iManageAlertRulesResult interface {
 	GetDeletedCount() *int32
 	SetDeletedUuidList(v []*string) *ManageAlertRulesResult
 	GetDeletedUuidList() []*string
+	SetDrillUuid(v string) *ManageAlertRulesResult
+	GetDrillUuid() *string
 	SetUpdatedCount(v int32) *ManageAlertRulesResult
 	GetUpdatedCount() *int32
 	SetUpdatedUuidList(v []*string) *ManageAlertRulesResult
@@ -22,23 +24,35 @@ type iManageAlertRulesResult interface {
 }
 
 type ManageAlertRulesResult struct {
-	// The alert rule V2.
+	// The V2 alert rule.
+	//
+	// example:
+	//
+	// {"uuid":"cms_v2_81d01768-fee9-459f-af49-ab2704f1db2b","displayName":"drill-e2e-验证规则","enabled":true}
 	AlertRule *AlertRuleV2 `json:"alertRule,omitempty" xml:"alertRule,omitempty"`
-	// The number of rules that were successfully deleted.
+	// The number of successfully deleted rules.
 	//
 	// example:
 	//
 	// 1
 	DeletedCount *int32 `json:"deletedCount,omitempty" xml:"deletedCount,omitempty"`
-	// The list of UUIDs of rules that were successfully deleted.
+	// The list of UUIDs of successfully deleted rules.
+	//
+	// example:
+	//
+	// ["cms_v2_81d01768-fee9-459f-af49-ab2704f1db2b"]
 	DeletedUuidList []*string `json:"deletedUuidList,omitempty" xml:"deletedUuidList,omitempty" type:"Repeated"`
-	// The number of rules that were successfully enabled or disabled.
+	// example:
+	//
+	// 7c27ee14-5f94-469f-912d-476f79c8a861
+	DrillUuid *string `json:"drillUuid,omitempty" xml:"drillUuid,omitempty"`
+	// The number of successfully enabled or disabled rules.
 	//
 	// example:
 	//
 	// 1
 	UpdatedCount *int32 `json:"updatedCount,omitempty" xml:"updatedCount,omitempty"`
-	// The list of UUIDs of rules that were successfully enabled or disabled.
+	// The list of UUIDs of successfully enabled or disabled rules.
 	//
 	// example:
 	//
@@ -66,6 +80,10 @@ func (s *ManageAlertRulesResult) GetDeletedUuidList() []*string {
 	return s.DeletedUuidList
 }
 
+func (s *ManageAlertRulesResult) GetDrillUuid() *string {
+	return s.DrillUuid
+}
+
 func (s *ManageAlertRulesResult) GetUpdatedCount() *int32 {
 	return s.UpdatedCount
 }
@@ -86,6 +104,11 @@ func (s *ManageAlertRulesResult) SetDeletedCount(v int32) *ManageAlertRulesResul
 
 func (s *ManageAlertRulesResult) SetDeletedUuidList(v []*string) *ManageAlertRulesResult {
 	s.DeletedUuidList = v
+	return s
+}
+
+func (s *ManageAlertRulesResult) SetDrillUuid(v string) *ManageAlertRulesResult {
+	s.DrillUuid = &v
 	return s
 }
 

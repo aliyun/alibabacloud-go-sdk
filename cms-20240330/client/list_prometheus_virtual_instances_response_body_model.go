@@ -22,19 +22,23 @@ type iListPrometheusVirtualInstancesResponseBody interface {
 }
 
 type ListPrometheusVirtualInstancesResponseBody struct {
-	// A list of instances.
+	// The instance information.
 	Instances []*ListPrometheusVirtualInstancesResponseBodyInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// The maximum number of entries returned on each page.
+	// The maximum number of instances to return per page.
+	//
+	// example:
+	//
+	// 100
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If all results are returned, this parameter is left empty.
+	// The next token for the next page. It is empty when all results are returned.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of instances returned.
 	TotalCount *string `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -117,7 +121,7 @@ type ListPrometheusVirtualInstancesResponseBodyInstances struct {
 	//
 	// http://xxxxxxxx
 	HttpApiUrl *string `json:"httpApiUrl,omitempty" xml:"httpApiUrl,omitempty"`
-	// Returned for the `PROMETHEUS_DS` data source type.
+	// The applicable data source type: PROMETHEUS_DS.
 	//
 	// The Prometheus instance ID.
 	//
@@ -125,7 +129,7 @@ type ListPrometheusVirtualInstancesResponseBodyInstances struct {
 	//
 	// rw-b8cfbbe94194ac37fe83f3d2d16a
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Returned for the `CMS_BASIC_QUERY` query type.
+	// The applicable query type: CMS_BASIC_QUERY.
 	//
 	// The namespace of the metric.
 	//

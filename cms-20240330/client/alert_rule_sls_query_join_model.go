@@ -18,27 +18,27 @@ type iAlertRuleSlsQueryJoin interface {
 type AlertRuleSlsQueryJoin struct {
 	// The list of join conditions.
 	Conditions []*AlertRuleSlsQueryJoinConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The type of the collection operation.
+	// The set operation type. Valid values:
 	//
-	// - CrossJoin: The Cartesian product.
+	// - CrossJoin: Cartesian product
 	//
-	// - FullJoin: The full join.
+	// - FullJoin: full join
 	//
-	// - InnerJoin: The inner join.
+	// - InnerJoin: inner join
 	//
-	// - LeftExclude: The left exclusion.
+	// - LeftExclude: left exclude
 	//
-	// - RightExclude: The right exclusion.
+	// - RightExclude: right exclude
 	//
-	// - LeftJoin: The left join.
+	// - LeftJoin: left join
 	//
-	// - RightJoin: The right join.
+	// - RightJoin: right join
 	//
-	// - NoJoin: No merge operation is performed.
+	// - NoJoin: no join
 	//
-	// - Concat: Concatenation.
+	// - Concat: concatenation
 	//
-	// For more information, see https\\://www\\.alibabacloud.com/help/en/sls/user-guide/set-operations.
+	// For more information, see https://www.alibabacloud.com/help/en/sls/user-guide/set-query-statistics-statement.
 	//
 	// This parameter is required.
 	//
@@ -88,19 +88,19 @@ func (s *AlertRuleSlsQueryJoin) Validate() error {
 }
 
 type AlertRuleSlsQueryJoinConditions struct {
-	// The left operand of the condition. The format is $\\<query_idx>.\\<field_name_in_result_set>.
+	// The left operand of the condition, in the format of $<query_idx>.<result set field name>.
 	//
 	// example:
 	//
 	// $0.__topic__
 	FirstField *string `json:"firstField,omitempty" xml:"firstField,omitempty"`
-	// The comparison operator. Valid values are <, >, ==, !=, <=, and >=.
+	// The comparison operator. Valid values: <, >, ==, !=, <=, and >=.
 	//
 	// example:
 	//
 	// ==
 	Oper *string `json:"oper,omitempty" xml:"oper,omitempty"`
-	// The right operand of the condition. The format is $\\<query_idx>.\\<field_name_in_result_set>.
+	// The right operand of the condition, in the format of $<query_idx>.<result set field name>.
 	//
 	// example:
 	//

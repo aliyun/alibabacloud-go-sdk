@@ -30,19 +30,19 @@ type iEntityDiscoverRule interface {
 }
 
 type EntityDiscoverRule struct {
-  // The collection of annotation matching rules.
+  // The annotation matches.
   Annotations []*EntityDiscoverRuleAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
-  // The collection of entity types.
+  // The entity types.
   EntityTypes []*string `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
-  // The property matching rules.
+  // The field matching rules.
   FieldRules []*EntityDiscoverRuleFieldRules `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
-  // The collection of instance IDs.
+  // The instance IDs.
   InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
-  // The collection of IP matching rules.
+  // The IP matching rules.
   IpMatchRule *EntityDiscoverRuleIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Struct"`
-  // The collection of label matching rules.
+  // The label matches.
   Labels []*EntityDiscoverRuleLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-  // The collection of region IDs.
+  // The region IDs.
   RegionIds []*string `json:"regionIds,omitempty" xml:"regionIds,omitempty" type:"Repeated"`
   // The resource group ID.
   // 
@@ -50,7 +50,7 @@ type EntityDiscoverRule struct {
   // 
   // rg-acfm2m7atreujs1
   ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-  // The tag-based service discovery settings.
+  // The tags used for service discovery.
   Tags []*EntityDiscoverRuleTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -195,13 +195,13 @@ type EntityDiscoverRuleAnnotations struct {
   // 
   // in
   Op *string `json:"op,omitempty" xml:"op,omitempty"`
-  // The key of the annotation.
+  // The annotation key.
   // 
   // example:
   // 
   // instanceId
   TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-  // The collection of annotation values.
+  // The annotation values.
   TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -245,13 +245,13 @@ func (s *EntityDiscoverRuleAnnotations) Validate() error {
 }
 
 type EntityDiscoverRuleFieldRules struct {
-  // The key of the property.
+  // The field key.
   // 
   // example:
   // 
   // instanceId
   FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-  // The collection of property values.
+  // The field values.
   FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
   // The operation.
   // 
@@ -301,13 +301,13 @@ func (s *EntityDiscoverRuleFieldRules) Validate() error {
 }
 
 type EntityDiscoverRuleIpMatchRule struct {
-  // The CIDR block of the IP address.
+  // The IP CIDR block.
   // 
   // example:
   // 
   // 192.168.0.0/16
   IpCIDR *string `json:"ipCIDR,omitempty" xml:"ipCIDR,omitempty"`
-  // The property key of the IP address.
+  // The IP attribute key.
   // 
   // example:
   // 
@@ -352,13 +352,13 @@ type EntityDiscoverRuleLabels struct {
   // 
   // in
   Op *string `json:"op,omitempty" xml:"op,omitempty"`
-  // The key of the label.
+  // The label key.
   // 
   // example:
   // 
   // project
   TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-  // The collection of label values.
+  // The label values.
   TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -408,13 +408,13 @@ type EntityDiscoverRuleTags struct {
   // 
   // in
   Op *string `json:"op,omitempty" xml:"op,omitempty"`
-  // The key of the tag.
+  // The tag key.
   // 
   // example:
   // 
   // project
   TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-  // The collection of tag values.
+  // The tag values.
   TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 

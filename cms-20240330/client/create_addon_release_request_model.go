@@ -13,6 +13,8 @@ type iCreateAddonReleaseRequest interface {
 	GetAddonName() *string
 	SetAliyunLang(v string) *CreateAddonReleaseRequest
 	GetAliyunLang() *string
+	SetApiVersion(v string) *CreateAddonReleaseRequest
+	GetApiVersion() *string
 	SetDryRun(v bool) *CreateAddonReleaseRequest
 	GetDryRun() *bool
 	SetEntityRules(v *EntityDiscoverRule) *CreateAddonReleaseRequest
@@ -32,7 +34,7 @@ type iCreateAddonReleaseRequest interface {
 }
 
 type CreateAddonReleaseRequest struct {
-	// The name of the addon component to be connected to monitoring.
+	// The name of the add-on component to be integrated for monitoring.
 	//
 	// This parameter is required.
 	//
@@ -46,6 +48,10 @@ type CreateAddonReleaseRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
+	// example:
+	//
+	// v2
+	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	// Deprecated
 	//
 	// Specifies whether to perform a dry run. Default value: false.
@@ -56,19 +62,19 @@ type CreateAddonReleaseRequest struct {
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 	// The field rules.
 	EntityRules *EntityDiscoverRule `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
-	// The environment type. If the policy type is CS or ECS, the corresponding value is used. For other types, the value is Cloud.
+	// The environment type. If the policy type is CS or ECS, the corresponding environment type is used. For other policy types, the value is uniformly set to Cloud.
 	//
 	// example:
 	//
 	// CS
 	EnvType *string `json:"envType,omitempty" xml:"envType,omitempty"`
-	// The parent AddonReleaseId.
+	// The parent add-on release ID.
 	//
 	// example:
 	//
 	// policy-xxxxxxxxxxx
 	ParentAddonReleaseId *string `json:"parentAddonReleaseId,omitempty" xml:"parentAddonReleaseId,omitempty"`
-	// The name of the plugin after access. If this parameter is not specified, a default rule name is generated.
+	// The name of the plug-in after integration. If you do not specify this parameter, a default rule name is generated.
 	//
 	// example:
 	//
@@ -80,7 +86,7 @@ type CreateAddonReleaseRequest struct {
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Values *string `json:"values,omitempty" xml:"values,omitempty"`
-	// The version of the addon component to be connected to monitoring.
+	// The version of the add-on component to be integrated for monitoring.
 	//
 	// This parameter is required.
 	//
@@ -110,6 +116,10 @@ func (s *CreateAddonReleaseRequest) GetAddonName() *string {
 
 func (s *CreateAddonReleaseRequest) GetAliyunLang() *string {
 	return s.AliyunLang
+}
+
+func (s *CreateAddonReleaseRequest) GetApiVersion() *string {
+	return s.ApiVersion
 }
 
 func (s *CreateAddonReleaseRequest) GetDryRun() *bool {
@@ -151,6 +161,11 @@ func (s *CreateAddonReleaseRequest) SetAddonName(v string) *CreateAddonReleaseRe
 
 func (s *CreateAddonReleaseRequest) SetAliyunLang(v string) *CreateAddonReleaseRequest {
 	s.AliyunLang = &v
+	return s
+}
+
+func (s *CreateAddonReleaseRequest) SetApiVersion(v string) *CreateAddonReleaseRequest {
+	s.ApiVersion = &v
 	return s
 }
 

@@ -38,7 +38,7 @@ type iAlertEventIntegrationPolicyForView interface {
 }
 
 type AlertEventIntegrationPolicyForView struct {
-	// The universally unique identifier (UUID).
+	// UUID
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type AlertEventIntegrationPolicyForView struct {
 	//
 	// 集成名
 	AlertEventIntegrationPolicyName *string `json:"alertEventIntegrationPolicyName,omitempty" xml:"alertEventIntegrationPolicyName,omitempty"`
-	// The time when the policy was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type AlertEventIntegrationPolicyForView struct {
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the policy is enabled.
+	// Specifies whether it is enabled.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type AlertEventIntegrationPolicyForView struct {
 	//
 	// {"region":"cn-hangzhou"}
 	IntegrationSetting *string `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
-	// The key for the integration\\"s reporting endpoint.
+	// The reporting entry key for the integration.
 	//
 	// example:
 	//
 	// 10-16818f1445e10a1d012922b285bfb334
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// The transformation settings.
+	// The transform settings.
 	TransformerSetting []*TransformAction `json:"transformerSetting,omitempty" xml:"transformerSetting,omitempty" type:"Repeated"`
 	// The type.
 	//
@@ -92,7 +92,7 @@ type AlertEventIntegrationPolicyForView struct {
 	//
 	// ALERT_CUSTOM
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the policy was last updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type AlertEventIntegrationPolicyForView struct {
 	//
 	// 123123
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The workspace.
+	// workspace
 	//
 	// example:
 	//

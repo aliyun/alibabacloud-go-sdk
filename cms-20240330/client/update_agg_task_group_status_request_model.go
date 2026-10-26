@@ -14,7 +14,7 @@ type iUpdateAggTaskGroupStatusRequest interface {
 }
 
 type UpdateAggTaskGroupStatusRequest struct {
-	// The status of the aggregation task group. Valid values are "Running" and "Stopped". The default value is Running.
+	// The status of the aggregation task group. Valid values: Running and Stopped. Default value: Running.
 	//
 	// This parameter is required.
 	//

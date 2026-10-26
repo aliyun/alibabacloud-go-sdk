@@ -32,15 +32,15 @@ type TransformerForModify struct {
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The filter criteria.
+	// The filter conditions.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Specifies whether to exit after a match is processed.
+	// Specifies whether to exit after match processing.
 	//
 	// example:
 	//
 	// true
 	QuitAfterMatch *bool `json:"quitAfterMatch,omitempty" xml:"quitAfterMatch,omitempty"`
-	// The sort number.
+	// The sort order.
 	//
 	// example:
 	//

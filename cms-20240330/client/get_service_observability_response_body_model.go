@@ -38,7 +38,7 @@ type GetServiceObservabilityResponseBody struct {
 	//
 	// arms=serverless;xtrace=serverless
 	FeeType *string `json:"feeType,omitempty" xml:"feeType,omitempty"`
-	// The quota configuration.
+	// The quota configurations.
 	Quotas map[string]*string `json:"quotas,omitempty" xml:"quotas,omitempty"`
 	// The region.
 	//
@@ -52,7 +52,7 @@ type GetServiceObservabilityResponseBody struct {
 	//
 	// 4852B9B5-345C-5CBC-A15F-786D83ECCBBA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The system configuration.
+	// The system configurations.
 	Settings map[string]*string `json:"settings,omitempty" xml:"settings,omitempty"`
 	// The resource initialization status.
 	//
@@ -60,7 +60,7 @@ type GetServiceObservabilityResponseBody struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The type of application observability.
+	// The application observability type.
 	//
 	// example:
 	//
@@ -173,25 +173,25 @@ func (s *GetServiceObservabilityResponseBody) Validate() error {
 }
 
 type GetServiceObservabilityResponseBodyEntryPointInfo struct {
-	// The authentication token for reporting data.
+	// The authentication token for data reporting.
 	//
 	// example:
 	//
 	// gaddp****@de20f2***1ce***
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
-	// The internal endpoint.
+	// The internal-facing access address.
 	//
 	// example:
 	//
 	// project-xtrace-xxxx-cn-hangzhou.cn-hangzhou-intranet.log.aliyuncs.com
 	PrivateDomain *string `json:"privateDomain,omitempty" xml:"privateDomain,omitempty"`
-	// The Simple Log Service project.
+	// SLS Project
 	//
 	// example:
 	//
 	// proj-xtrace-xxxxx
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The public endpoint.
+	// The public network access address.
 	//
 	// example:
 	//

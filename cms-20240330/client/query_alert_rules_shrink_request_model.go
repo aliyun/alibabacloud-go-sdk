@@ -24,7 +24,7 @@ type iQueryAlertRulesShrinkRequest interface {
 type QueryAlertRulesShrinkRequest struct {
 	// The request body for querying alert rules.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client token that is used to ensure idempotence.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//

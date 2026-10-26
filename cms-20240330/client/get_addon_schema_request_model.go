@@ -11,6 +11,8 @@ type iGetAddonSchemaRequest interface {
 	GoString() string
 	SetAliyunLang(v string) *GetAddonSchemaRequest
 	GetAliyunLang() *string
+	SetApiVersion(v string) *GetAddonSchemaRequest
+	GetApiVersion() *string
 	SetEnvironmentType(v string) *GetAddonSchemaRequest
 	GetEnvironmentType() *string
 	SetVersion(v string) *GetAddonSchemaRequest
@@ -24,6 +26,7 @@ type GetAddonSchemaRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
+	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	// The environment type. Valid values: \\`CS\\` (container) and \\`ECS\\`.
 	//
 	// example:
@@ -50,6 +53,10 @@ func (s *GetAddonSchemaRequest) GetAliyunLang() *string {
 	return s.AliyunLang
 }
 
+func (s *GetAddonSchemaRequest) GetApiVersion() *string {
+	return s.ApiVersion
+}
+
 func (s *GetAddonSchemaRequest) GetEnvironmentType() *string {
 	return s.EnvironmentType
 }
@@ -60,6 +67,11 @@ func (s *GetAddonSchemaRequest) GetVersion() *string {
 
 func (s *GetAddonSchemaRequest) SetAliyunLang(v string) *GetAddonSchemaRequest {
 	s.AliyunLang = &v
+	return s
+}
+
+func (s *GetAddonSchemaRequest) SetApiVersion(v string) *GetAddonSchemaRequest {
+	s.ApiVersion = &v
 	return s
 }
 

@@ -20,9 +20,9 @@ type iGetCloudResourceDataResponseBody interface {
 }
 
 type GetCloudResourceDataResponseBody struct {
-	// The total list of returned data.
+	// The total number of returned data records.
 	Data [][]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The list of headers.
+	// The list of request headers.
 	Header []*string `json:"header,omitempty" xml:"header,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -88,7 +88,7 @@ func (s *GetCloudResourceDataResponseBody) Validate() error {
 }
 
 type GetCloudResourceDataResponseBodyResponseStatus struct {
-	// The information during execution.
+	// The information during the execution process.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type GetCloudResourceDataResponseBodyResponseStatusStatusItem struct {
 	//
 	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The suggestion when an execution error occurs.
+	// The suggestions provided when an execution error occurs.
 	//
 	// example:
 	//

@@ -62,7 +62,7 @@ func (s *GetDataPipelineResponseBody) Validate() error {
 }
 
 type GetDataPipelineResponseBodyPipeline struct {
-	// The creation time.
+	// The creation time in ISO 8601 format in UTC, such as 2026-08-10T05:00:00Z.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type GetDataPipelineResponseBodyPipeline struct {
 	//
 	// This parameter is required.
 	Outputs []*GetDataPipelineResponseBodyPipelineOutputs `json:"outputs,omitempty" xml:"outputs,omitempty" type:"Repeated"`
-	// The pipeline name.
+	// The name of the pipeline.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type GetDataPipelineResponseBodyPipeline struct {
 	//
 	// traces
 	SignalType *string `json:"signalType,omitempty" xml:"signalType,omitempty"`
-	// The output destinations.
+	// The data sinks.
 	//
 	// This parameter is required.
 	Sinks []*GetDataPipelineResponseBodyPipelineSinks `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
@@ -132,7 +132,7 @@ type GetDataPipelineResponseBodyPipeline struct {
 	//
 	// Pipeline is running.
 	StatusMessage *string `json:"statusMessage,omitempty" xml:"statusMessage,omitempty"`
-	// The update time.
+	// The update time in ISO 8601 format in UTC, such as 2026-08-10T05:10:00Z.
 	//
 	// This parameter is required.
 	//
@@ -441,9 +441,9 @@ type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig struct {
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The field projection list.
 	Projections []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
-	// The masking rule list.
+	// The data masking rule list.
 	Rules []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	// The scope in which the pipeline processing processor takes effect.
+	// The pipeline processing scope.
 	Scope *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
@@ -701,13 +701,13 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections) 
 }
 
 type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules struct {
-	// The retained prefix length.
+	// The prefix retention length.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The retained suffix length.
+	// The suffix retention length.
 	//
 	// example:
 	//
@@ -721,7 +721,7 @@ type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules struct {
 	//
 	// *
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The masking mode.
+	// The data masking mode.
 	//
 	// example:
 	//
@@ -999,7 +999,7 @@ type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName s
 	//
 	// EXACT
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The metric name.
+	// The metric names.
 	//
 	// example:
 	//
@@ -1079,7 +1079,7 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceN
 }
 
 type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector struct {
-	// The list of service names.
+	// The service name list.
 	//
 	// example:
 	//
@@ -1216,9 +1216,9 @@ type GetDataPipelineResponseBodyPipelineProcessorsConfig struct {
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The field projection list.
 	Projections []*GetDataPipelineResponseBodyPipelineProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
-	// The masking rule list.
+	// The data masking rule list.
 	Rules []*GetDataPipelineResponseBodyPipelineProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	// The scope in which the pipeline processing processor takes effect.
+	// The effective scope of pipeline processing.
 	Scope *GetDataPipelineResponseBodyPipelineProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
@@ -1476,13 +1476,13 @@ func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigProjections) Validat
 }
 
 type GetDataPipelineResponseBodyPipelineProcessorsConfigRules struct {
-	// The retained prefix length.
+	// The prefix retention length.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The retained suffix length.
+	// The suffix retention length.
 	//
 	// example:
 	//
@@ -1496,7 +1496,7 @@ type GetDataPipelineResponseBodyPipelineProcessorsConfigRules struct {
 	//
 	// *
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The masking mode.
+	// The data masking mode.
 	//
 	// example:
 	//
@@ -1774,7 +1774,7 @@ type GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName struct {
 	//
 	// EXACT
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The metric name.
+	// The metric names.
 	//
 	// example:
 	//
@@ -1854,7 +1854,7 @@ func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName) Va
 }
 
 type GetDataPipelineResponseBodyPipelineProcessorsConfigSelector struct {
-	// The list of service names.
+	// The service name list.
 	//
 	// example:
 	//
@@ -1922,7 +1922,7 @@ type GetDataPipelineResponseBodyPipelineSinks struct {
 	//
 	// error-spans
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the output destination.
+	// The name of the data sink.
 	//
 	// example:
 	//
@@ -1934,7 +1934,7 @@ type GetDataPipelineResponseBodyPipelineSinks struct {
 	//
 	// customer-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The type of the output destination.
+	// The type of the data sink.
 	//
 	// example:
 	//
@@ -2052,7 +2052,7 @@ type GetDataPipelineResponseBodyPipelineSourceConfig struct {
 	//
 	// continuous
 	RunMode *string `json:"runMode,omitempty" xml:"runMode,omitempty"`
-	// The read start point.
+	// The starting point for reading.
 	//
 	// example:
 	//

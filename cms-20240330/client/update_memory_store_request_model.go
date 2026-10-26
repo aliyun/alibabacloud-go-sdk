@@ -20,17 +20,17 @@ type iUpdateMemoryStoreRequest interface {
 }
 
 type UpdateMemoryStoreRequest struct {
-	// Custom extraction strategies.
+	// The custom extraction strategies.
 	CustomExtractionStrategies []*CustomExtractionStrategy `json:"customExtractionStrategies,omitempty" xml:"customExtractionStrategies,omitempty" type:"Repeated"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// memoryStore test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Extraction strategies. Supports "Episodic", "Summary", and "Fact".
+	// The extraction strategies. Valid values: Episodic, Summary, and Fact.
 	ExtractionStrategies []*string `json:"extractionStrategies,omitempty" xml:"extractionStrategies,omitempty" type:"Repeated"`
-	// Short-term memory retention time.
+	// The retention period for short-term memory.
 	//
 	// example:
 	//

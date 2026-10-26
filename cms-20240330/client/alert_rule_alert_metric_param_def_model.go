@@ -28,13 +28,13 @@ type iAlertRuleAlertMetricParamDef interface {
 }
 
 type AlertRuleAlertMetricParamDef struct {
-	// The maximum width of the input control. This parameter is valid only for SELECT_PARAM and INPUT_PARAM.
+	// The maximum width of the input box, which applies only to SELECT_PARAM and INPUT_PARAM.
 	//
 	// example:
 	//
 	// 200
 	MaxWidth *int32 `json:"maxWidth,omitempty" xml:"maxWidth,omitempty"`
-	// The minimum width of the input control. This parameter is valid only for SELECT_PARAM and INPUT_PARAM.
+	// The minimum width of the input box, which applies only to SELECT_PARAM and INPUT_PARAM.
 	//
 	// example:
 	//
@@ -46,19 +46,25 @@ type AlertRuleAlertMetricParamDef struct {
 	//
 	// env
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The Chinese placeholder text displayed on the frontend. This parameter is valid only for INPUT_PARAM.
+	// The Chinese placeholder for frontend display, which applies only to INPUT_PARAM.
 	//
 	// example:
 	//
 	// 请输入值
 	PlaceholderCn *string `json:"placeholderCn,omitempty" xml:"placeholderCn,omitempty"`
-	// The English placeholder text displayed on the frontend. This parameter is valid only for INPUT_PARAM.
+	// The English placeholder for frontend display, which applies only to INPUT_PARAM.
 	//
 	// example:
 	//
 	// Enter value
 	PlaceholderEn *string `json:"placeholderEn,omitempty" xml:"placeholderEn,omitempty"`
-	// ● TEXT_PARAM: A read-only text parameter defined by the backend. No user input control is displayed on the frontend.● INPUT_PARAM: An input box parameter.● SELECT_PARAM: A selection box parameter.
+	// The parameter type. Valid values:
+	//
+	// - TEXT_PARAM: Read-only text parameter defined by the backend. No user input control is displayed on the frontend.
+	//
+	// - INPUT_PARAM: Input box parameter.
+	//
+	// - SELECT_PARAM: Selection box parameter.
 	//
 	// example:
 	//
@@ -70,7 +76,7 @@ type AlertRuleAlertMetricParamDef struct {
 	//
 	// staging
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// The list of available options in the drop-down list. This parameter is valid only for SELECT_PARAM.
+	// The list of selectable values for the drop-down list, which applies only to SELECT_PARAM.
 	Values []*AlertRuleAlertMetricParamDefValues `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

@@ -189,13 +189,13 @@ func (s *CreateServiceRequest) Validate() error {
 }
 
 type CreateServiceRequestTags struct {
-	// The tag `key`.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag `value`.
+	// The tag value.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iCreateDeliveryTaskRequest interface {
 }
 
 type CreateDeliveryTaskRequest struct {
-	// The ID of the Prometheus instance that serves as the data source.
+	// The ID of the data source, which is the ID of the Prometheus instance.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type CreateDeliveryTaskRequest struct {
 	//
 	// rw-xxxxxx
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	// A map of key-value pairs to attach as additional labels to all delivered metrics.
+	// The additional labels attached to all delivered metrics. The key is the label name, and the value is the label value.
 	ExternalLabels map[string]*string `json:"externalLabels,omitempty" xml:"externalLabels,omitempty"`
-	// The label conditions for filtering metrics. The key is the label name and the value is the value to match. The filtering behavior is controlled by `labelFiltersType`.
+	// The metric filtering conditions. This parameter is used together with labelFiltersType. The key is the metric label name, and the value is the match value.
 	LabelFilters map[string]*string `json:"labelFilters,omitempty" xml:"labelFilters,omitempty"`
-	// The mode for applying the label filters.
+	// The metric filtering mode.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type CreateDeliveryTaskRequest struct {
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// An array of delivery destination objects.
+	// The list of delivery destinations.
 	//
 	// This parameter is required.
 	SinkList []*CreateDeliveryTaskRequestSinkList `json:"sinkList,omitempty" xml:"sinkList,omitempty" type:"Repeated"`
-	// An array of resource tags.
+	// The tags of the resource.
 	Tags []*CreateDeliveryTaskRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The task description.
+	// The description of the task.
 	//
 	// example:
 	//
@@ -188,9 +188,9 @@ func (s *CreateDeliveryTaskRequest) Validate() error {
 }
 
 type CreateDeliveryTaskRequestSinkList struct {
-	// The configuration for the sink, specified as key-value pairs. The valid keys and values depend on the value of `sinkType`.
+	// The detailed configuration of the delivery destination. The meanings of the key and value vary based on the sinkType. For more information, see the following descriptions.
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
-	// The type of the delivery destination (sink).
+	// The type of the delivery destination.
 	//
 	// This parameter is required.
 	//

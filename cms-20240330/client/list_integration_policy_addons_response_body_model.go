@@ -18,9 +18,9 @@ type iListIntegrationPolicyAddonsResponseBody interface {
 }
 
 type ListIntegrationPolicyAddonsResponseBody struct {
-	// A list of add-ons.
+	// The list of add-ons.
 	Addons []*ListIntegrationPolicyAddonsResponseBodyAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -91,7 +91,7 @@ type ListIntegrationPolicyAddonsResponseBodyAddons struct {
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The categories.
 	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	// A list of dashboards.
+	// The list of dashboards.
 	Dashboards []*ListIntegrationPolicyAddonsResponseBodyAddonsDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -99,9 +99,9 @@ type ListIntegrationPolicyAddonsResponseBodyAddons struct {
 	//
 	// Observability integration.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// A list of supported environments.
+	// The list of supported environments.
 	Environments []*ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	// The icon of the add-on.
+	// The component icon.
 	//
 	// example:
 	//
@@ -115,31 +115,31 @@ type ListIntegrationPolicyAddonsResponseBodyAddons struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The time when the latest version was created.
+	// The latest release creation time.
 	//
 	// example:
 	//
 	// 2025-09-03T03:15:56Z
 	LatestReleaseCreateTime *string `json:"latestReleaseCreateTime,omitempty" xml:"latestReleaseCreateTime,omitempty"`
-	// The name of the add-on.
+	// The add-on name.
 	//
 	// example:
 	//
 	// mysql
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether the add-on can be installed only once.
+	// Specifies whether the add-on can be installed only once.
 	//
 	// example:
 	//
 	// true
 	Once *bool `json:"once,omitempty" xml:"once,omitempty"`
-	// The scenario of the add-on.
+	// The component scenario.
 	//
 	// example:
 	//
 	// container
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The version of the add-on.
+	// The component version.
 	//
 	// example:
 	//
@@ -314,7 +314,7 @@ type ListIntegrationPolicyAddonsResponseBodyAddonsDashboards struct {
 	//
 	// example:
 	//
-	// 用于mysql的监控大盘
+	// Monitoring dashboard for MySQL
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name.
 	//
@@ -322,7 +322,7 @@ type ListIntegrationPolicyAddonsResponseBodyAddonsDashboards struct {
 	//
 	// MySQL Overview
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The URL of the dashboard.
+	// The dashboard URL.
 	//
 	// example:
 	//
@@ -378,7 +378,7 @@ type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments struct {
 	//
 	// o11y-demo-cn-heyuan
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the feature is enabled.
+	// Indicates whether the environment is enabled.
 	//
 	// example:
 	//
@@ -390,13 +390,13 @@ type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments struct {
 	//
 	// Cloud
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The name of the environment.
+	// The environment name.
 	//
 	// example:
 	//
 	// Cloud
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The policy.
+	// The policies.
 	Policies *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
 }
 
@@ -525,19 +525,19 @@ func (s *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies) 
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies struct {
-	// The default status of the alert rule policy.
+	// The enabled status of the default alert rule policy.
 	//
 	// example:
 	//
 	// RUNNING
 	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
-	// Indicates whether the add-on is installed by default.
+	// Specifies whether the add-on is installed by default.
 	//
 	// example:
 	//
 	// true
 	DefaultInstall *bool `json:"defaultInstall,omitempty" xml:"defaultInstall,omitempty"`
-	// Indicates whether to assign a Service Account for communication with the console API.
+	// Specifies whether a service account is assigned for communication with the console API.
 	//
 	// example:
 	//
@@ -545,7 +545,7 @@ type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies struct {
 	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
 	// The metric check rule.
 	MetricCheckRule *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	// Indicates whether a pod restart is required after the add-on is installed.
+	// Specifies whether the pod restart guide is triggered immediately after the plug-in is installed during integration.
 	//
 	// example:
 	//
@@ -651,7 +651,7 @@ func (s *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies) Vali
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule struct {
-	// The PromQL search statements.
+	// The PromQL query statement.
 	PromQl []*string `json:"promQl,omitempty" xml:"promQl,omitempty" type:"Repeated"`
 }
 

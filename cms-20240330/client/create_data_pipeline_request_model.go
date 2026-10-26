@@ -26,13 +26,13 @@ type iCreateDataPipelineRequest interface {
 }
 
 type CreateDataPipelineRequest struct {
-	// The pipeline description.
+	// The description of the pipeline.
 	//
 	// example:
 	//
 	// Export selected trace services to the target workspace.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The pipeline type.
+	// The type of the pipeline.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type CreateDataPipelineRequest struct {
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
 	// The common processors.
 	Processors []*CreateDataPipelineRequestProcessors `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	// The output destinations.
+	// The sinks.
 	Sinks []*CreateDataPipelineRequestSinks `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
 	// The data source.
 	Source *CreateDataPipelineRequestSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
@@ -162,7 +162,7 @@ func (s *CreateDataPipelineRequest) Validate() error {
 }
 
 type CreateDataPipelineRequestOutputs struct {
-	// The output name.
+	// The name of the output.
 	//
 	// example:
 	//
@@ -285,13 +285,13 @@ type CreateDataPipelineRequestOutputsProcessorsConfig struct {
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// The extended parameters.
+	// The additional parameters.
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*CreateDataPipelineRequestOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
-	// The list of masking rules.
+	// The list of data masking rules.
 	Rules []*CreateDataPipelineRequestOutputsProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	// The pipeline processing scope.
+	// The effective scope of pipeline processing.
 	Scope *CreateDataPipelineRequestOutputsProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
@@ -549,13 +549,13 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfigProjections) Validate()
 }
 
 type CreateDataPipelineRequestOutputsProcessorsConfigRules struct {
-	// The length of the prefix to retain.
+	// The length of the retained prefix.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the suffix to retain.
+	// The length of the retained suffix.
 	//
 	// example:
 	//
@@ -569,7 +569,7 @@ type CreateDataPipelineRequestOutputsProcessorsConfigRules struct {
 	//
 	// *
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The masking mode.
+	// The data masking mode.
 	//
 	// example:
 	//
@@ -715,7 +715,7 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfigScope) Validate() error
 type CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions struct {
 	// The field reference.
 	Field *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField `json:"field,omitempty" xml:"field,omitempty" type:"Struct"`
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -782,7 +782,7 @@ type CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField struct
 	//
 	// label
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The field or dimension name.
+	// The name of the field or dimension.
 	//
 	// example:
 	//
@@ -841,7 +841,7 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) V
 }
 
 type CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName struct {
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -886,7 +886,7 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName) Valida
 }
 
 type CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName struct {
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -927,7 +927,7 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName) Valid
 }
 
 type CreateDataPipelineRequestOutputsProcessorsConfigSelector struct {
-	// The list of service names.
+	// The service name list.
 	//
 	// example:
 	//
@@ -1060,13 +1060,13 @@ type CreateDataPipelineRequestProcessorsConfig struct {
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// The extended parameters.
+	// The additional parameters.
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*CreateDataPipelineRequestProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
-	// The list of masking rules.
+	// The list of data masking rules.
 	Rules []*CreateDataPipelineRequestProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	// The pipeline processing scope in which the processor takes effect.
+	// The effective scope of pipeline processing.
 	Scope *CreateDataPipelineRequestProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
@@ -1324,13 +1324,13 @@ func (s *CreateDataPipelineRequestProcessorsConfigProjections) Validate() error 
 }
 
 type CreateDataPipelineRequestProcessorsConfigRules struct {
-	// The length of the prefix to retain.
+	// The length of the retained prefix.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the suffix to retain.
+	// The length of the retained suffix.
 	//
 	// example:
 	//
@@ -1344,7 +1344,7 @@ type CreateDataPipelineRequestProcessorsConfigRules struct {
 	//
 	// *
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The masking mode.
+	// The data masking mode.
 	//
 	// example:
 	//
@@ -1490,7 +1490,7 @@ func (s *CreateDataPipelineRequestProcessorsConfigScope) Validate() error {
 type CreateDataPipelineRequestProcessorsConfigScopeConditions struct {
 	// The field reference.
 	Field *CreateDataPipelineRequestProcessorsConfigScopeConditionsField `json:"field,omitempty" xml:"field,omitempty" type:"Struct"`
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -1557,7 +1557,7 @@ type CreateDataPipelineRequestProcessorsConfigScopeConditionsField struct {
 	//
 	// field
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The field or dimension name.
+	// The name of the field or dimension.
 	//
 	// example:
 	//
@@ -1616,7 +1616,7 @@ func (s *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) Validate
 }
 
 type CreateDataPipelineRequestProcessorsConfigScopeMetricName struct {
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -1661,7 +1661,7 @@ func (s *CreateDataPipelineRequestProcessorsConfigScopeMetricName) Validate() er
 }
 
 type CreateDataPipelineRequestProcessorsConfigScopeServiceName struct {
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -1702,7 +1702,7 @@ func (s *CreateDataPipelineRequestProcessorsConfigScopeServiceName) Validate() e
 }
 
 type CreateDataPipelineRequestProcessorsConfigSelector struct {
-	// The list of service names.
+	// The service name list.
 	//
 	// example:
 	//
@@ -1762,7 +1762,7 @@ func (s *CreateDataPipelineRequestProcessorsConfigTarget) Validate() error {
 }
 
 type CreateDataPipelineRequestSinks struct {
-	// The list of datasets.
+	// The dataset list.
 	Datasets []*string `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
 	// SLS Logstore
 	//
@@ -1770,7 +1770,7 @@ type CreateDataPipelineRequestSinks struct {
 	//
 	// error-spans
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the output destination.
+	// The sink name.
 	//
 	// example:
 	//
@@ -1782,7 +1782,7 @@ type CreateDataPipelineRequestSinks struct {
 	//
 	// customer-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The type of the output destination.
+	// The sink type.
 	//
 	// example:
 	//
@@ -1850,7 +1850,7 @@ func (s *CreateDataPipelineRequestSinks) Validate() error {
 type CreateDataPipelineRequestSource struct {
 	// The datasource config.
 	Config *CreateDataPipelineRequestSourceConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The type of the data source.
+	// The data source type.
 	//
 	// example:
 	//
@@ -1900,7 +1900,7 @@ type CreateDataPipelineRequestSourceConfig struct {
 	//
 	// continuous
 	RunMode *string `json:"runMode,omitempty" xml:"runMode,omitempty"`
-	// The read start point.
+	// The start position.
 	//
 	// example:
 	//

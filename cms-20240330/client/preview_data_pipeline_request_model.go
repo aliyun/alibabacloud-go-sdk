@@ -30,19 +30,19 @@ type iPreviewDataPipelineRequest interface {
 }
 
 type PreviewDataPipelineRequest struct {
-	// The pipeline description.
+	// The description of the pipeline.
 	//
 	// example:
 	//
 	// Preview error span routing.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The start time of the preview.
+	// The start time of the preview. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1784563200
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The pipeline type.
+	// The type of the pipeline.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type PreviewDataPipelineRequest struct {
 	Sinks []*PreviewDataPipelineRequestSinks `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
 	// The data source.
 	Source *PreviewDataPipelineRequestSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
-	// The end time for the preview.
+	// The end time for the preview. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ func (s *PreviewDataPipelineRequest) Validate() error {
 }
 
 type PreviewDataPipelineRequestOutputs struct {
-	// The output name.
+	// The name of the output.
 	//
 	// example:
 	//
@@ -323,9 +323,9 @@ type PreviewDataPipelineRequestOutputsProcessorsConfig struct {
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*PreviewDataPipelineRequestOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
-	// The list of masking rules.
+	// The list of data masking rules.
 	Rules []*PreviewDataPipelineRequestOutputsProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	// The pipeline processing scope.
+	// The effective scope of pipeline processing.
 	Scope *PreviewDataPipelineRequestOutputsProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
@@ -583,13 +583,13 @@ func (s *PreviewDataPipelineRequestOutputsProcessorsConfigProjections) Validate(
 }
 
 type PreviewDataPipelineRequestOutputsProcessorsConfigRules struct {
-	// The length of the prefix to retain.
+	// The length of the retained prefix.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the suffix to retain.
+	// The length of the retained suffix.
 	//
 	// example:
 	//
@@ -603,13 +603,13 @@ type PreviewDataPipelineRequestOutputsProcessorsConfigRules struct {
 	//
 	// *
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The masking mode.
+	// The data masking mode.
 	//
 	// example:
 	//
 	// keyword
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The built-in sensitive types.
+	// The built-in sensitive data types.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
@@ -749,7 +749,7 @@ func (s *PreviewDataPipelineRequestOutputsProcessorsConfigScope) Validate() erro
 type PreviewDataPipelineRequestOutputsProcessorsConfigScopeConditions struct {
 	// The field reference.
 	Field *PreviewDataPipelineRequestOutputsProcessorsConfigScopeConditionsField `json:"field,omitempty" xml:"field,omitempty" type:"Struct"`
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -816,7 +816,7 @@ type PreviewDataPipelineRequestOutputsProcessorsConfigScopeConditionsField struc
 	//
 	// field
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The field or dimension name.
+	// The name of the field or dimension.
 	//
 	// example:
 	//
@@ -875,7 +875,7 @@ func (s *PreviewDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) 
 }
 
 type PreviewDataPipelineRequestOutputsProcessorsConfigScopeMetricName struct {
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -920,7 +920,7 @@ func (s *PreviewDataPipelineRequestOutputsProcessorsConfigScopeMetricName) Valid
 }
 
 type PreviewDataPipelineRequestOutputsProcessorsConfigScopeServiceName struct {
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -961,7 +961,7 @@ func (s *PreviewDataPipelineRequestOutputsProcessorsConfigScopeServiceName) Vali
 }
 
 type PreviewDataPipelineRequestOutputsProcessorsConfigSelector struct {
-	// The list of service names.
+	// The service name list.
 	//
 	// example:
 	//
@@ -1098,9 +1098,9 @@ type PreviewDataPipelineRequestProcessorsConfig struct {
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*PreviewDataPipelineRequestProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
-	// The list of masking rules.
+	// The list of data masking rules.
 	Rules []*PreviewDataPipelineRequestProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	// The scope in which pipeline processing takes effect.
+	// The effective scope of pipeline processing.
 	Scope *PreviewDataPipelineRequestProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
@@ -1358,13 +1358,13 @@ func (s *PreviewDataPipelineRequestProcessorsConfigProjections) Validate() error
 }
 
 type PreviewDataPipelineRequestProcessorsConfigRules struct {
-	// The length of the prefix to retain.
+	// The length of the retained prefix.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the suffix to retain.
+	// The length of the retained suffix.
 	//
 	// example:
 	//
@@ -1378,13 +1378,13 @@ type PreviewDataPipelineRequestProcessorsConfigRules struct {
 	//
 	// *
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The masking mode.
+	// The data masking mode.
 	//
 	// example:
 	//
 	// keyword
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The built-in sensitive types.
+	// The built-in sensitive data types.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
@@ -1524,7 +1524,7 @@ func (s *PreviewDataPipelineRequestProcessorsConfigScope) Validate() error {
 type PreviewDataPipelineRequestProcessorsConfigScopeConditions struct {
 	// The field reference.
 	Field *PreviewDataPipelineRequestProcessorsConfigScopeConditionsField `json:"field,omitempty" xml:"field,omitempty" type:"Struct"`
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -1591,7 +1591,7 @@ type PreviewDataPipelineRequestProcessorsConfigScopeConditionsField struct {
 	//
 	// field
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The field or dimension name.
+	// The name of the field or dimension.
 	//
 	// example:
 	//
@@ -1650,7 +1650,7 @@ func (s *PreviewDataPipelineRequestProcessorsConfigScopeConditionsField) Validat
 }
 
 type PreviewDataPipelineRequestProcessorsConfigScopeMetricName struct {
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -1695,7 +1695,7 @@ func (s *PreviewDataPipelineRequestProcessorsConfigScopeMetricName) Validate() e
 }
 
 type PreviewDataPipelineRequestProcessorsConfigScopeServiceName struct {
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
@@ -1736,7 +1736,7 @@ func (s *PreviewDataPipelineRequestProcessorsConfigScopeServiceName) Validate() 
 }
 
 type PreviewDataPipelineRequestProcessorsConfigSelector struct {
-	// The list of service names.
+	// The service name list.
 	//
 	// example:
 	//
@@ -1934,7 +1934,7 @@ type PreviewDataPipelineRequestSourceConfig struct {
 	//
 	// continuous
 	RunMode *string `json:"runMode,omitempty" xml:"runMode,omitempty"`
-	// The read start point.
+	// The read start position.
 	//
 	// example:
 	//

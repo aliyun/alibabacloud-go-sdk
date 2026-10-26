@@ -14,7 +14,7 @@ type iUpdateMemoryStoreResponseBody interface {
 }
 
 type UpdateMemoryStoreResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iGetUmodelResponseBody interface {
 }
 
 type GetUmodelResponseBody struct {
-	// This parameter is reserved.
+	// This field does not need to be populated.
 	CommonSchemaRef []*GetUmodelResponseBodyCommonSchemaRef `json:"commonSchemaRef,omitempty" xml:"commonSchemaRef,omitempty" type:"Repeated"`
 	// The Umodel description.
 	//
@@ -30,7 +30,7 @@ type GetUmodelResponseBody struct {
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The region of the resource.
+	// The region ID.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *GetUmodelResponseBody) Validate() error {
 }
 
 type GetUmodelResponseBodyCommonSchemaRef struct {
-	// The public Umodel schema group.
+	// The common Umodel schema group.
 	//
 	// example:
 	//

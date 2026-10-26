@@ -22,7 +22,7 @@ type CreateBizTraceResponseBody struct {
 	//
 	// e339260ed64c95d
 	BizTraceId *string `json:"bizTraceId,omitempty" xml:"bizTraceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

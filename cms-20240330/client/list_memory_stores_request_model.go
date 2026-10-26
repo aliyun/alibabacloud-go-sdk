@@ -18,7 +18,7 @@ type iListMemoryStoresRequest interface {
 }
 
 type ListMemoryStoresRequest struct {
-	// The maximum number of results to return. The maximum value is 200.
+	// The maximum number of results to return. Maximum value: 200.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListMemoryStoresRequest struct {
 	//
 	// qianyi_test_1
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
-	// The token for the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//

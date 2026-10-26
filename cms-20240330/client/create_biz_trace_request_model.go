@@ -22,13 +22,13 @@ type iCreateBizTraceRequest interface {
 }
 
 type CreateBizTraceRequest struct {
-	// The advanced configuration.
+	// The advanced configurations.
 	//
 	// example:
 	//
 	// {"sample":{"strategy":"BY_APP"}}
 	AdvancedConfig *string `json:"advancedConfig,omitempty" xml:"advancedConfig,omitempty"`
-	// The identifier for the business trace. It can contain only letters, digits, and underscores (_). The first character must be a lowercase letter.
+	// The business trace code. The code can contain only letters, digits, and underscores (_), and must start with a lowercase letter.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CreateBizTraceRequest struct {
 	//
 	// just test
 	BizTraceName *string `json:"bizTraceName,omitempty" xml:"bizTraceName,omitempty"`
-	// The configuration rules.
+	// The list of configuration rules.
 	//
 	// example:
 	//

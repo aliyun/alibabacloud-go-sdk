@@ -16,7 +16,7 @@ type iCreatePrometheusVirtualInstanceRequest interface {
 }
 
 type CreatePrometheusVirtualInstanceRequest struct {
-	// Each cloud product supports only one virtual instance per region.
+	// Each cloud service can create only one virtual instance in each region.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,12 @@ type CreatePrometheusVirtualInstanceRequest struct {
 	//
 	// cms_prometheus
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	TenantId  *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 1111111111111111
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
 func (s CreatePrometheusVirtualInstanceRequest) String() string {

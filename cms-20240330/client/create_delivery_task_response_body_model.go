@@ -16,7 +16,7 @@ type iCreateDeliveryTaskResponseBody interface {
 }
 
 type CreateDeliveryTaskResponseBody struct {
-	// The unique ID for the request.
+	// Id of the request
 	//
 	// example:
 	//

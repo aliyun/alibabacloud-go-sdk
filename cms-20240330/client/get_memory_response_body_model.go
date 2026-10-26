@@ -40,15 +40,19 @@ type iGetMemoryResponseBody interface {
 }
 
 type GetMemoryResponseBody struct {
+	// The agent ID of the application.
+	//
 	// example:
 	//
 	// test_user_001
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// test_user_001
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// The time when the memory was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -66,13 +70,13 @@ type GetMemoryResponseBody struct {
 	//
 	// 019ca1e5-7307-7d50-b943-5e628326a8ed
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// This property is mutable.
+	// The immutable properties.
 	//
 	// example:
 	//
 	// test
 	Immutable *string `json:"immutable,omitempty" xml:"immutable,omitempty"`
-	// The memory content.
+	// The memory.
 	//
 	// example:
 	//
@@ -90,7 +94,7 @@ type GetMemoryResponseBody struct {
 	//
 	// test
 	Organization *string `json:"organization,omitempty" xml:"organization,omitempty"`
-	// The owner of the memory.
+	// The memory owner.
 	//
 	// example:
 	//
@@ -102,16 +106,20 @@ type GetMemoryResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The run ID.
+	//
 	// example:
 	//
 	// test_user_001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// The time when the memory was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 1744428159434
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// test_user_001

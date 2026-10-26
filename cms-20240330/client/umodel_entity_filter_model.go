@@ -18,12 +18,9 @@ type iUmodelEntityFilter interface {
 }
 
 type UmodelEntityFilter struct {
-	// The field name to filter on.
-	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// The comparison operator to use. Supported operators include `=`, `>`, `<`, `!=`, `IN`, and `NOT IN`.
+	Field    *string `json:"field,omitempty" xml:"field,omitempty"`
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The value to compare the field against.
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s UmodelEntityFilter) String() string {

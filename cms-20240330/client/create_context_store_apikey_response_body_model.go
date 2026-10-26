@@ -18,13 +18,13 @@ type iCreateContextStoreAPIKeyResponseBody interface {
 }
 
 type CreateContextStoreAPIKeyResponseBody struct {
-	// The value of the API key. This value is returned only upon creation. Store it in a secure location.
+	// The full API key value.
 	//
 	// example:
 	//
 	// sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// The display name of the API key.
+	// The name of the API key.
 	//
 	// example:
 	//

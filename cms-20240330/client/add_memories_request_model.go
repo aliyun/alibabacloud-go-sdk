@@ -32,55 +32,57 @@ type iAddMemoriesRequest interface {
 }
 
 type AddMemoriesRequest struct {
-	// Application agent ID.
+	// The agent ID of the application.
 	//
 	// example:
 	//
 	// 952730733889060865
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// Application ID.
+	// The application ID.
 	//
 	// example:
 	//
 	// mm_480d961a1b5e4efe84603f4cbc0f
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// Asynchronous mode.
+	// The asynchronous mode.
 	//
 	// example:
 	//
 	// true
 	AsyncMode *bool `json:"asyncMode,omitempty" xml:"asyncMode,omitempty"`
-	// Custom instructions.
+	// The custom instructions.
 	//
 	// example:
 	//
 	// Your custom instructions here
 	CustomInstructions *string `json:"customInstructions,omitempty" xml:"customInstructions,omitempty"`
-	// Infer.
+	// The inference setting.
 	//
 	// example:
 	//
 	// true
 	Infer *bool `json:"infer,omitempty" xml:"infer,omitempty"`
-	// Messages.
+	// The messages.
 	Messages []*AddMemoriesRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
-	// Metadata.
+	// The metadata.
 	//
 	// example:
 	//
 	// {"sessionId":"test_session_001"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// Run ID.
+	// The run ID.
 	//
 	// example:
 	//
 	// jr-80ded1d6953c64ea
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 12312314214
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//
@@ -200,13 +202,13 @@ func (s *AddMemoriesRequest) Validate() error {
 }
 
 type AddMemoriesRequestMessages struct {
-	// Content.
+	// The content.
 	//
 	// example:
 	//
 	// My name is Zhang San and I live in Hangzhou.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Role.
+	// The role.
 	//
 	// example:
 	//

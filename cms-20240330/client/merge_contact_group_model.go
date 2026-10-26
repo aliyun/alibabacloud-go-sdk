@@ -26,21 +26,21 @@ type iMergeContactGroup interface {
 }
 
 type MergeContactGroup struct {
-	// A list of unique identifiers for the members in the group.
+	// The list of unique identifiers for members in the group.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	// An extension field that stores additional information.
+	// The extension field used to store additional information.
 	//
 	// example:
 	//
-	// { "department": "运维部", "role": "工程师" }
+	// { "department": "O&M Department", "role": "Engineer" }
 	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
-	// The time when the contact group was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The time when the contact group was last modified.
+	// The last modification time.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type MergeContactGroup struct {
 	//
 	// example:
 	//
-	// 运维团队
+	// O&M Team
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source system of the contact group.
 	//

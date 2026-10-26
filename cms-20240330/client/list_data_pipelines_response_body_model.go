@@ -28,13 +28,13 @@ type ListDataPipelinesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page.
+	// The next page token.
 	//
 	// example:
 	//
 	// eyJvZmZzZXQiOjIwfQ==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The list of data pipelines.
+	// The data pipeline list.
 	Pipelines []*ListDataPipelinesResponseBodyPipelines `json:"pipelines,omitempty" xml:"pipelines,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -117,7 +117,7 @@ func (s *ListDataPipelinesResponseBody) Validate() error {
 }
 
 type ListDataPipelinesResponseBodyPipelines struct {
-	// The creation time.
+	// The creation time in UTC format that follows the ISO 8601 standard, such as 2026-08-10T05:00:00Z.
 	//
 	// This parameter is required.
 	//
@@ -165,7 +165,7 @@ type ListDataPipelinesResponseBodyPipelines struct {
 	//
 	// traces
 	SignalType *string `json:"signalType,omitempty" xml:"signalType,omitempty"`
-	// The output destinations.
+	// The sinks.
 	//
 	// This parameter is required.
 	Sinks []*ListDataPipelinesResponseBodyPipelinesSinks `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
@@ -187,7 +187,7 @@ type ListDataPipelinesResponseBodyPipelines struct {
 	//
 	// Pipeline is running.
 	StatusMessage *string `json:"statusMessage,omitempty" xml:"statusMessage,omitempty"`
-	// The update time.
+	// The update time in UTC and ISO 8601 format, such as 2026-08-10T05:10:00Z.
 	//
 	// This parameter is required.
 	//
@@ -480,9 +480,9 @@ func (s *ListDataPipelinesResponseBodyPipelinesOutputsProcessors) Validate() err
 }
 
 type ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfig struct {
-	// The list of applications.
+	// The application list.
 	Applications []*string `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
-	// The list of field assignments.
+	// The field assignment list.
 	Assignments []*ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigAssignments `json:"assignments,omitempty" xml:"assignments,omitempty" type:"Repeated"`
 	// The filter expression.
 	//
@@ -490,15 +490,15 @@ type ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfig struct {
 	//
 	// attributes["http.route"] != "/health"
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// The list of fields.
+	// The field list.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extended parameters.
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	// The list of field projections.
+	// The field projection list.
 	Projections []*ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
-	// The list of masking rules.
+	// The data masking rule list.
 	Rules []*ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	// The scope in which the pipeline processing processor takes effect.
+	// The effective scope of pipeline processing.
 	Scope *ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
@@ -756,13 +756,13 @@ func (s *ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigProjection
 }
 
 type ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigRules struct {
-	// The length of the prefix to retain.
+	// The retained prefix length.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the suffix to retain.
+	// The retained suffix length.
 	//
 	// example:
 	//
@@ -776,7 +776,7 @@ type ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigRules struct {
 	//
 	// *
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The masking mode.
+	// The data masking mode.
 	//
 	// example:
 	//
@@ -1134,7 +1134,7 @@ func (s *ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigScopeServi
 }
 
 type ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigSelector struct {
-	// The list of service names.
+	// The service name list.
 	//
 	// example:
 	//
@@ -1255,9 +1255,9 @@ func (s *ListDataPipelinesResponseBodyPipelinesProcessors) Validate() error {
 }
 
 type ListDataPipelinesResponseBodyPipelinesProcessorsConfig struct {
-	// The list of applications.
+	// The application list.
 	Applications []*string `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
-	// The list of field assignments.
+	// The field assignment list.
 	Assignments []*ListDataPipelinesResponseBodyPipelinesProcessorsConfigAssignments `json:"assignments,omitempty" xml:"assignments,omitempty" type:"Repeated"`
 	// The filter expression.
 	//
@@ -1265,15 +1265,15 @@ type ListDataPipelinesResponseBodyPipelinesProcessorsConfig struct {
 	//
 	// attributes["http.route"] != "/health"
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// The list of fields.
+	// The field list.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extended parameters.
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	// The list of field projections.
+	// The field projection list.
 	Projections []*ListDataPipelinesResponseBodyPipelinesProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
-	// The list of masking rules.
+	// The data masking rule list.
 	Rules []*ListDataPipelinesResponseBodyPipelinesProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	// The scope in which the pipeline processing takes effect.
+	// The effective scope of pipeline processing.
 	Scope *ListDataPipelinesResponseBodyPipelinesProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
@@ -1531,13 +1531,13 @@ func (s *ListDataPipelinesResponseBodyPipelinesProcessorsConfigProjections) Vali
 }
 
 type ListDataPipelinesResponseBodyPipelinesProcessorsConfigRules struct {
-	// The length of the prefix to retain.
+	// The retained prefix length.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the suffix to retain.
+	// The retained suffix length.
 	//
 	// example:
 	//
@@ -1551,7 +1551,7 @@ type ListDataPipelinesResponseBodyPipelinesProcessorsConfigRules struct {
 	//
 	// *
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The masking mode.
+	// The data masking mode.
 	//
 	// example:
 	//
@@ -1909,7 +1909,7 @@ func (s *ListDataPipelinesResponseBodyPipelinesProcessorsConfigScopeServiceName)
 }
 
 type ListDataPipelinesResponseBodyPipelinesProcessorsConfigSelector struct {
-	// The list of service names.
+	// The service name list.
 	//
 	// example:
 	//
@@ -1977,7 +1977,7 @@ type ListDataPipelinesResponseBodyPipelinesSinks struct {
 	//
 	// error-spans
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the output destination.
+	// The name of the sink.
 	//
 	// example:
 	//
@@ -1989,7 +1989,7 @@ type ListDataPipelinesResponseBodyPipelinesSinks struct {
 	//
 	// customer-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The type of the output destination.
+	// The type of the sink.
 	//
 	// example:
 	//
@@ -2057,7 +2057,7 @@ func (s *ListDataPipelinesResponseBodyPipelinesSinks) Validate() error {
 type ListDataPipelinesResponseBodyPipelinesSource struct {
 	// The datasource config.
 	Config *ListDataPipelinesResponseBodyPipelinesSourceConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The data source type.
+	// The type of the source.
 	//
 	// example:
 	//
@@ -2107,7 +2107,7 @@ type ListDataPipelinesResponseBodyPipelinesSourceConfig struct {
 	//
 	// continuous
 	RunMode *string `json:"runMode,omitempty" xml:"runMode,omitempty"`
-	// The read start point.
+	// The start position.
 	//
 	// example:
 	//

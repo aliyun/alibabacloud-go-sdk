@@ -27,6 +27,12 @@ type iManageAlertRulesUnifiedActionInput interface {
 	GetDatasourceConfig() *DatasourceConfigUnified
 	SetDisplayName(v string) *ManageAlertRulesUnifiedActionInput
 	GetDisplayName() *string
+	SetDrillEvalTime(v int64) *ManageAlertRulesUnifiedActionInput
+	GetDrillEvalTime() *int64
+	SetDrillMode(v string) *ManageAlertRulesUnifiedActionInput
+	GetDrillMode() *string
+	SetDrillTimeRange(v *ManageAlertRulesUnifiedActionInputDrillTimeRange) *ManageAlertRulesUnifiedActionInput
+	GetDrillTimeRange() *ManageAlertRulesUnifiedActionInputDrillTimeRange
 	SetEnabled(v bool) *ManageAlertRulesUnifiedActionInput
 	GetEnabled() *bool
 	SetLabels(v map[string]*string) *ManageAlertRulesUnifiedActionInput
@@ -65,10 +71,22 @@ type ManageAlertRulesUnifiedActionInput struct {
 	// CREATE
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
 	// The action integration configuration.
+	//
+	// example:
+	//
+	// {"enabled":true,"actions":[]}
 	ActionIntegrationConfig *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
 	// The annotations.
+	//
+	// example:
+	//
+	// {"summary":"CPU usage exceeds 90%"}
 	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
 	// The ARMS integration configuration.
+	//
+	// example:
+	//
+	// {"enabled":false}
 	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
 	// The business source (optional). Examples: managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, sls. Provide as needed for CREATE/UPDATE/PATCH.
 	//
@@ -77,6 +95,10 @@ type ManageAlertRulesUnifiedActionInput struct {
 	// Sample value
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
 	// The aggregated condition configuration.
+	//
+	// example:
+	//
+	// {"type":"PROMETHEUS_SIMPLE_CONDITION","durationSecs":0,"severity":"CRITICAL"}
 	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
 	// The content template.
 	//
@@ -85,6 +107,10 @@ type ManageAlertRulesUnifiedActionInput struct {
 	// Instance {{instance}} CPU usage exceeds {{threshold}}%
 	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
 	// The aggregated data source configuration.
+	//
+	// example:
+	//
+	// {"type":"PROMETHEUS","instanceId":"prom-cn-hangzhou-xxxxx"}
 	DatasourceConfig *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
 	// The display name.
 	//
@@ -92,6 +118,18 @@ type ManageAlertRulesUnifiedActionInput struct {
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// 1783728000000
+	DrillEvalTime *int64 `json:"drillEvalTime,omitempty" xml:"drillEvalTime,omitempty"`
+	// example:
+	//
+	// ONE_SHOT
+	DrillMode *string `json:"drillMode,omitempty" xml:"drillMode,omitempty"`
+	// example:
+	//
+	// {"startTime":1783728000000,"endTime":1783814400000}
+	DrillTimeRange *ManageAlertRulesUnifiedActionInputDrillTimeRange `json:"drillTimeRange,omitempty" xml:"drillTimeRange,omitempty" type:"Struct"`
 	// Specifies whether the rule is enabled.
 	//
 	// example:
@@ -99,10 +137,22 @@ type ManageAlertRulesUnifiedActionInput struct {
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The labels.
+	//
+	// example:
+	//
+	// {"env":"production"}
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
 	// The aggregated notification configuration.
+	//
+	// example:
+	//
+	// {"type":"DIRECT_NOTIFY","channels":[{"type":"GROUP","identifiers":["<contact-group-id>"]}]}
 	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
 	// The observable resource configuration.
+	//
+	// example:
+	//
+	// {"relationType":"CLOUD_INSTANCE","resources":[]}
 	ObserveResourceConfig *ObserveResourceConfig `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	// Deprecated
 	//
@@ -121,8 +171,16 @@ type ManageAlertRulesUnifiedActionInput struct {
 	// default
 	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
 	// The aggregated query configuration.
+	//
+	// example:
+	//
+	// {"type":"PROMETHEUS_SINGLE_QUERY","expr":"up > 0"}
 	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
 	// The root cause analysis (RCA) configuration (optional). Provide as needed for CREATE/UPDATE/PATCH.
+	//
+	// example:
+	//
+	// {"enabled":false}
 	RcaConfig *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
 	// The region ID. Aligned with V1 AlertRule.regionId. If not provided, the gateway callerRegionId is used.
 	//
@@ -131,6 +189,10 @@ type ManageAlertRulesUnifiedActionInput struct {
 	// example-id-001
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The aggregated schedule configuration.
+	//
+	// example:
+	//
+	// {"type":"FIXED","intervalSecs":60}
 	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
 	// The UUID of the rule. Required for UPDATE/PATCH.
 	//
@@ -139,6 +201,10 @@ type ManageAlertRulesUnifiedActionInput struct {
 	// xxx-xxx-xxx
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 	// The list of rule UUIDs to delete (BATCH_DELETE).
+	//
+	// example:
+	//
+	// ["cms_v2_81d01768-fee9-459f-af49-ab2704f1db2b"]
 	UuidList []*string `json:"uuidList,omitempty" xml:"uuidList,omitempty" type:"Repeated"`
 	// The workspace. Required for CREATE/UPDATE and other actions.
 	//
@@ -190,6 +256,18 @@ func (s *ManageAlertRulesUnifiedActionInput) GetDatasourceConfig() *DatasourceCo
 
 func (s *ManageAlertRulesUnifiedActionInput) GetDisplayName() *string {
 	return s.DisplayName
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) GetDrillEvalTime() *int64 {
+	return s.DrillEvalTime
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) GetDrillMode() *string {
+	return s.DrillMode
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) GetDrillTimeRange() *ManageAlertRulesUnifiedActionInputDrillTimeRange {
+	return s.DrillTimeRange
 }
 
 func (s *ManageAlertRulesUnifiedActionInput) GetEnabled() *bool {
@@ -289,6 +367,21 @@ func (s *ManageAlertRulesUnifiedActionInput) SetDisplayName(v string) *ManageAle
 	return s
 }
 
+func (s *ManageAlertRulesUnifiedActionInput) SetDrillEvalTime(v int64) *ManageAlertRulesUnifiedActionInput {
+	s.DrillEvalTime = &v
+	return s
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) SetDrillMode(v string) *ManageAlertRulesUnifiedActionInput {
+	s.DrillMode = &v
+	return s
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) SetDrillTimeRange(v *ManageAlertRulesUnifiedActionInputDrillTimeRange) *ManageAlertRulesUnifiedActionInput {
+	s.DrillTimeRange = v
+	return s
+}
+
 func (s *ManageAlertRulesUnifiedActionInput) SetEnabled(v bool) *ManageAlertRulesUnifiedActionInput {
 	s.Enabled = &v
 	return s
@@ -375,6 +468,11 @@ func (s *ManageAlertRulesUnifiedActionInput) Validate() error {
 			return err
 		}
 	}
+	if s.DrillTimeRange != nil {
+		if err := s.DrillTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.NotifyConfig != nil {
 		if err := s.NotifyConfig.Validate(); err != nil {
 			return err
@@ -401,4 +499,45 @@ func (s *ManageAlertRulesUnifiedActionInput) Validate() error {
 		}
 	}
 	return nil
+}
+
+type ManageAlertRulesUnifiedActionInputDrillTimeRange struct {
+	// example:
+	//
+	// 1783814400000
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 1783728000000
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s ManageAlertRulesUnifiedActionInputDrillTimeRange) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ManageAlertRulesUnifiedActionInputDrillTimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *ManageAlertRulesUnifiedActionInputDrillTimeRange) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *ManageAlertRulesUnifiedActionInputDrillTimeRange) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *ManageAlertRulesUnifiedActionInputDrillTimeRange) SetEndTime(v int64) *ManageAlertRulesUnifiedActionInputDrillTimeRange {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ManageAlertRulesUnifiedActionInputDrillTimeRange) SetStartTime(v int64) *ManageAlertRulesUnifiedActionInputDrillTimeRange {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ManageAlertRulesUnifiedActionInputDrillTimeRange) Validate() error {
+	return dara.Validate(s)
 }

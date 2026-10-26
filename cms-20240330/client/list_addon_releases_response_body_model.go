@@ -20,9 +20,9 @@ type iListAddonReleasesResponseBody interface {
 }
 
 type ListAddonReleasesResponseBody struct {
-	// A pagination token to retrieve the next page of results. If this field is empty, no more results are available.
+	// The next page token.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The list of add-on releases.
+	// The collection of onboarded component information.
 	Releases []*ListAddonReleasesResponseBodyReleases `json:"releases,omitempty" xml:"releases,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -30,7 +30,7 @@ type ListAddonReleasesResponseBody struct {
 	//
 	// CD8BA7D6-995D-578D-9941-78B0FECD14B5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of add-on releases that match the query.
+	// The number of components.
 	//
 	// example:
 	//
@@ -108,21 +108,21 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 6
 	AlertRuleCount *int64 `json:"alertRuleCount,omitempty" xml:"alertRuleCount,omitempty"`
-	// The API version.
+	// The version number.
 	//
 	// example:
 	//
 	// 2023-03-30
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The conditions of the release.
+	// The summary of installation phase conditions.
 	Conditions []*ListAddonReleasesResponseBodyReleasesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The configuration of the add-on.
+	// The configuration information of the component.
 	//
 	// example:
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The installation time of the add-on.
+	// The onboarding time.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 3
 	DashboardCount *int64 `json:"dashboardCount,omitempty" xml:"dashboardCount,omitempty"`
-	// Details of the entity rules.
+	// The entity details.
 	EntityRules *EntityGroupBase `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
-	// The environment type.
+	// The type of the environment.
 	//
 	// example:
 	//
@@ -154,13 +154,13 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 2
 	ExporterCount *int64 `json:"exporterCount,omitempty" xml:"exporterCount,omitempty"`
-	// Indicates whether a configuration exists.
+	// Indicates whether a configuration is available.
 	//
 	// example:
 	//
 	// true
 	HaveConfig *bool `json:"haveConfig,omitempty" xml:"haveConfig,omitempty"`
-	// The ID of the user who installed the add-on.
+	// The ID of the onboarding user.
 	//
 	// example:
 	//
@@ -172,19 +172,19 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// Indicates whether the add-on is managed.
+	// Indicates whether the component is managed.
 	//
 	// example:
 	//
 	// true
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// The next available version of the add-on.
+	// The starting version number for the remaining list.
 	//
 	// example:
 	//
 	// None
 	NextVersion *string `json:"nextVersion,omitempty" xml:"nextVersion,omitempty"`
-	// The ID of the parent release.
+	// The parent add-on release ID.
 	//
 	// example:
 	//
@@ -208,45 +208,45 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 7339d808-66f9-4d40-83fa-xxxxxxxxxxx
 	ReleaseId *string `json:"releaseId,omitempty" xml:"releaseId,omitempty"`
-	// The release name.
+	// The name of the release.
 	//
 	// example:
 	//
 	// test-gpu-integration-name
 	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	// The usage scenario of the add-on.
+	// The scenario of the component.
 	//
 	// example:
 	//
 	// container
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The status of the release.
+	// The status.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Statistics about sub-releases.
+	// The statistics information of sub-add-on releases.
 	SubAddonRelease *ListAddonReleasesResponseBodyReleasesSubAddonRelease `json:"subAddonRelease,omitempty" xml:"subAddonRelease,omitempty" type:"Struct"`
-	// The last update time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:23+08:00
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the owner.
+	// The ID of the owning user.
 	//
 	// example:
 	//
 	// 175xxxxxxxxxxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The version of the add-on.
+	// The version of the component.
 	//
 	// example:
 	//
 	// 0.0.2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The name of the workspace.
+	// The workspace.
 	//
 	// example:
 	//
@@ -538,31 +538,31 @@ func (s *ListAddonReleasesResponseBodyReleases) Validate() error {
 }
 
 type ListAddonReleasesResponseBodyReleasesConditions struct {
-	// The timestamp of the first status transition.
+	// The time of the first transition.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	FirstTransitionTime *string `json:"firstTransitionTime,omitempty" xml:"firstTransitionTime,omitempty"`
-	// The timestamp of the last status transition.
+	// The time of the last transition.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	LastTransitionTime *string `json:"lastTransitionTime,omitempty" xml:"lastTransitionTime,omitempty"`
-	// A detailed message about the status.
+	// The detailed information.
 	//
 	// example:
 	//
 	// The addon loaded successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The status of the condition.
+	// The status of the phase.
 	//
 	// example:
 	//
 	// True
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The type of the condition.
+	// The type of the phase.
 	//
 	// example:
 	//
@@ -634,7 +634,7 @@ type ListAddonReleasesResponseBodyReleasesSubAddonRelease struct {
 	//
 	// 2
 	Ready *int32 `json:"ready,omitempty" xml:"ready,omitempty"`
-	// The total number of sub-releases.
+	// The number of sub-releases.
 	//
 	// example:
 	//

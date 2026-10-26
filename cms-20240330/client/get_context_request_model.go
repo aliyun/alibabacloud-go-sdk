@@ -14,7 +14,7 @@ type iGetContextRequest interface {
 }
 
 type GetContextRequest struct {
-	// Whether to return the context in a formatted structure. Valid values: `true` and `false`. Default value: `false`.
+	// Specifies whether to format the context.
 	//
 	// example:
 	//

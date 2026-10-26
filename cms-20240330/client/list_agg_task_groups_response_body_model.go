@@ -141,7 +141,7 @@ type ListAggTaskGroupsResponseBodyAggTaskGroups struct {
 	//
 	// 0 10 8 1 	- ? *
 	CronExpr *string `json:"cronExpr,omitempty" xml:"cronExpr,omitempty"`
-	// The fixed scheduling delay, in seconds.
+	// The fixed delay time for scheduling, in seconds.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type ListAggTaskGroupsResponseBodyAggTaskGroups struct {
 	//
 	// workspace api monitor update test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The UNIX timestamp that indicates the scheduling start time, in seconds.
+	// The UNIX timestamp of the start time for scheduling, in seconds.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type ListAggTaskGroupsResponseBodyAggTaskGroups struct {
 	//
 	// 2
 	MaxRetries *int32 `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
-	// The maximum retry time for executing the aggregation task, in seconds.
+	// The maximum retry time to execute the aggregation node, in seconds.
 	//
 	// example:
 	//
@@ -189,13 +189,13 @@ type ListAggTaskGroupsResponseBodyAggTaskGroups struct {
 	//
 	// FixedRate
 	ScheduleMode *string `json:"scheduleMode,omitempty" xml:"scheduleMode,omitempty"`
-	// The schedule time expression.
+	// The scheduling time expression.
 	//
 	// example:
 	//
 	// @m
 	ScheduleTimeExpr *string `json:"scheduleTimeExpr,omitempty" xml:"scheduleTimeExpr,omitempty"`
-	// The instance ID of the source Managed Service for Prometheus instance for the aggregation node group.
+	// The instance ID of the source Prometheus instance for the aggregation node group.
 	//
 	// example:
 	//
@@ -207,19 +207,19 @@ type ListAggTaskGroupsResponseBodyAggTaskGroups struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The instance ID of the target Managed Service for Prometheus instance for the aggregation node group.
+	// The instance ID of the target Prometheus instance for the aggregation node group.
 	//
 	// example:
 	//
 	// rw-xxx
 	TargetPrometheusId *string `json:"targetPrometheusId,omitempty" xml:"targetPrometheusId,omitempty"`
-	// The UNIX timestamp that indicates the scheduling end time, in seconds.
+	// The UNIX timestamp of the end time for scheduling, in seconds.
 	//
 	// example:
 	//
 	// 0
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
-	// The time when the aggregation task group was last updated, in UNIX timestamp format.
+	// The update time of the aggregation task group. The value is a UNIX timestamp.
 	//
 	// example:
 	//

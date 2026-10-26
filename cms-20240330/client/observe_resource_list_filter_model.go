@@ -14,7 +14,7 @@ type iObserveResourceListFilter interface {
 }
 
 type ObserveResourceListFilter struct {
-	// The match condition that requires the observeResourceList of a rule to contain at least one instance ID from the array (OR semantics).
+	// The match condition: the observeResourceList of a rule contains at least one instance ID in the array (OR semantics).
 	//
 	// example:
 	//

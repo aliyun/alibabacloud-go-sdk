@@ -22,7 +22,7 @@ type CreateMaintainWindowResponseBody struct {
 	//
 	// 3ff3fbd0-8a0b-4b31-9b1c-8e3f0a2c5d71
 	MaintainWindowId *string `json:"maintainWindowId,omitempty" xml:"maintainWindowId,omitempty"`
-	// The unique ID of the request. You can use this ID for troubleshooting and ticket tracking.
+	// The unique ID of the request, which is used for troubleshooting and ticket tracking.
 	//
 	// example:
 	//

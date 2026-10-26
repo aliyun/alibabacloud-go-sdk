@@ -24,11 +24,29 @@ type iEvaluator interface {
 }
 
 type Evaluator struct {
+  // The evaluator configuration parameters.
   Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
+  // The evaluation filter conditions.
   Filters map[string]*string `json:"filters,omitempty" xml:"filters,omitempty"`
+  // The evaluator name.
+  // 
+  // example:
+  // 
+  // agent_task_completion
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
+  // The evaluation result name.
+  // 
+  // example:
+  // 
+  // agent_task_completion
   ResultName *string `json:"resultName,omitempty" xml:"resultName,omitempty"`
+  // The evaluation result type.
+  // 
+  // example:
+  // 
+  // score
   ResultType *string `json:"resultType,omitempty" xml:"resultType,omitempty"`
+  // The evaluation variable mapping.
   VariableMapping map[string]*string `json:"variableMapping,omitempty" xml:"variableMapping,omitempty"`
 }
 

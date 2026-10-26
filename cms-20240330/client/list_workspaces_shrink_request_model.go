@@ -26,7 +26,7 @@ type iListWorkspacesShrinkRequest interface {
 }
 
 type ListWorkspacesShrinkRequest struct {
-	// The number of entries per page.
+	// The maximum number of entries per page.
 	//
 	// Default value:
 	//
@@ -55,7 +55,7 @@ type ListWorkspacesShrinkRequest struct {
 	//
 	// cn-heyuan
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -63,13 +63,13 @@ type ListWorkspacesShrinkRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The workspace name. Fuzzy match is used.
+	// The workspace name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// workspace-test-001
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
-	// The workspace name. Exact match is used.
+	// The names of the workspaces. Exact match is supported.
 	//
 	// if can be null:
 	// true

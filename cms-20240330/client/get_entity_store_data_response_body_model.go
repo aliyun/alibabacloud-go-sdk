@@ -20,7 +20,7 @@ type iGetEntityStoreDataResponseBody interface {
 }
 
 type GetEntityStoreDataResponseBody struct {
-	// The list of returned data.
+	// The total count of the returned data list.
 	Data [][]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The list of request headers.
 	Header []*string `json:"header,omitempty" xml:"header,omitempty" type:"Repeated"`
@@ -88,7 +88,7 @@ func (s *GetEntityStoreDataResponseBody) Validate() error {
 }
 
 type GetEntityStoreDataResponseBodyResponseStatus struct {
-	// Information about the execution procedure.
+	// The information during the execution process.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type GetEntityStoreDataResponseBodyResponseStatus struct {
 	//
 	// None,Once,Continuous
 	RetryPolicy *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
-	// A list of detailed status information.
+	// The list of detailed status information.
 	StatusItem []*GetEntityStoreDataResponseBodyResponseStatusStatusItem `json:"statusItem,omitempty" xml:"statusItem,omitempty" type:"Repeated"`
 }
 
@@ -195,13 +195,13 @@ type GetEntityStoreDataResponseBodyResponseStatusStatusItem struct {
 	//
 	// Info,Warn,Error
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The execution information.
+	// The computation execution information.
 	//
 	// example:
 	//
 	// Query execution timeout after 30 seconds
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The suggestion provided when an execution fault occurs.
+	// The suggestions provided when an execution error occurs.
 	//
 	// example:
 	//

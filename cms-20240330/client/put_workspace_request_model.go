@@ -22,7 +22,7 @@ type iPutWorkspaceRequest interface {
 }
 
 type PutWorkspaceRequest struct {
-	// The description of the workspace.
+	// The workspace description.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type PutWorkspaceRequest struct {
 	//
 	// workspace-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The ID of the resource group specified when the workspace is created.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The name of the Simple Log Service project.
+	// The Simple Log Service project name.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type PutWorkspaceRequest struct {
 	//
 	// sls-project-test-001
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
-	// The tags bound to the workspace when it is created.
+	// The tags.
 	Tags []*PutWorkspaceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -119,9 +119,17 @@ func (s *PutWorkspaceRequest) Validate() error {
 }
 
 type PutWorkspaceRequestTags struct {
-	// The key of the tag.
+	// The tag key.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the tag.
+	// The tag value.
+	//
+	// example:
+	//
+	// prod
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

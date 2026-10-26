@@ -16,13 +16,13 @@ type iGetAddonRequest interface {
 }
 
 type GetAddonRequest struct {
-	// The language of the response. Valid values: zh and en. Default value: zh.
+	// The locale. Default value: zh. Valid values: zh, en.
 	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// The version number of the add-on.
+	// The version of the add-on.
 	//
 	// example:
 	//

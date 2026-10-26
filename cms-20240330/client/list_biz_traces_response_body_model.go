@@ -22,15 +22,15 @@ type iListBizTracesResponseBody interface {
 }
 
 type ListBizTracesResponseBody struct {
-	// The list of business traces.
+	// The list of business links.
 	Items []*BizTraceConfig `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of results returned. The maximum value is 100.
+	// The maximum number of results to return. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to use to retrieve the next page of results.
+	// The token for the next query.
 	//
 	// example:
 	//

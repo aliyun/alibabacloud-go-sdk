@@ -38,7 +38,7 @@ type iMaintainWindowForView interface {
 }
 
 type MaintainWindowForView struct {
-	// The time when the policy was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type MaintainWindowForView struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The effective time range.
+	// The effective period range.
 	EffectTimeRange *MaintainWindowForViewEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
 	// The crontab expression.
 	//
@@ -58,13 +58,13 @@ type MaintainWindowForView struct {
 	//
 	// 	- 	- 14-18 ? 	- *
 	Effective *string `json:"effective,omitempty" xml:"effective,omitempty"`
-	// Indicates whether the policy is enabled.
+	// Indicates whether the mute policy is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The end time of the effective period.
+	// The effective end time.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type MaintainWindowForView struct {
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// The filter conditions.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// The UUID.
+	// UUID
 	//
 	// example:
 	//
@@ -84,15 +84,15 @@ type MaintainWindowForView struct {
 	//
 	// example:
 	//
-	// Test policy.
+	// 测试策略
 	MaintainWindowName *string `json:"maintainWindowName,omitempty" xml:"maintainWindowName,omitempty"`
-	// The start time of the effective period.
+	// The effective start time.
 	//
 	// example:
 	//
 	// 2024-11-26 10:02:01
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The last time the resource was updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type MaintainWindowForView struct {
 	//
 	// 12312312***
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The workspace.
+	// workspace
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ func (s *MaintainWindowForView) Validate() error {
 }
 
 type MaintainWindowForViewEffectTimeRange struct {
-	// The days of the week when the policy is effective.
+	// The effective days of the week (Monday to Sunday).
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
 	// The end time in minutes.
 	//

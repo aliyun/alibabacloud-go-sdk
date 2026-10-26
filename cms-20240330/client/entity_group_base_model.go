@@ -32,7 +32,7 @@ type EntityGroupBase struct {
   // 
   // example:
   // 
-  // ECS 实例
+  // ECS instance
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // The entity ID.
   // 
@@ -44,11 +44,11 @@ type EntityGroupBase struct {
   // 
   // example:
   // 
-  // ECS 全部实体
+  // All ECS entities
   EntityGroupName *string `json:"entityGroupName,omitempty" xml:"entityGroupName,omitempty"`
-  // A collection of entity query rules.
+  // The entity query rule set.
   EntityQueries []*EntityGroupBaseEntityQueries `json:"entityQueries,omitempty" xml:"entityQueries,omitempty" type:"Repeated"`
-  // The rule for entity discovery.
+  // The rules used for entity discovery.
   EntityRules *EntityDiscoverRule `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
   // The region ID.
   // 
@@ -175,7 +175,7 @@ type EntityGroupBaseEntityQueries struct {
   // 
   // acs.ecs.instance
   EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
-  // The Structured Process Language (SPL) search statement.
+  // The SPL query statement.
   // 
   // example:
   // 

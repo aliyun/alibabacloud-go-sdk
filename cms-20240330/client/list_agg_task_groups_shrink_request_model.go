@@ -28,13 +28,13 @@ type iListAggTaskGroupsShrinkRequest interface {
 }
 
 type ListAggTaskGroupsShrinkRequest struct {
-	// The list of aggregation task group IDs. The value must be a JSON-parsable string.
+	// The list of IDs of the aggregation task groups. The value must be in JSON format.
 	//
 	// example:
 	//
 	// ["aggTaskGroup-xxx"]
 	FilterAggTaskGroupIds *string `json:"filterAggTaskGroupIds,omitempty" xml:"filterAggTaskGroupIds,omitempty"`
-	// The list of aggregation task group names. The value must be a JSON-parsable string.
+	// The list of names of the aggregation task groups. The value must be in JSON format.
 	//
 	// example:
 	//
@@ -52,27 +52,21 @@ type ListAggTaskGroupsShrinkRequest struct {
 	//
 	// 28036394xxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The name to search for. Fuzzy match is supported.
+	// The search keyword for names. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The status of the aggregation task group. Valid values:
-	//
-	// - Running
-	//
-	// - Stopped
-	//
-	// Default value: Running.
+	// The status of the aggregation task group. Valid values: Running and Stopped. Default value: Running.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The resource group tags.
+	// The tags of the resource group.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The instance ID of the target Managed Service for Prometheus instance for the aggregation node group.
+	// The instance ID of the target Prometheus instance for the aggregation node group.
 	//
 	// example:
 	//

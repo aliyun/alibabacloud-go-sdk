@@ -26,7 +26,7 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
-	// The number of entries per page.
+	// The maximum number of entries per page.
 	//
 	// Default value:
 	//
@@ -55,7 +55,7 @@ type ListWorkspacesRequest struct {
 	//
 	// cn-heyuan
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -63,13 +63,13 @@ type ListWorkspacesRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The tags.
 	Tags []*ListWorkspacesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The workspace name. Fuzzy match is used.
+	// The workspace name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// workspace-test-001
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
-	// The workspace name. Exact match is used.
+	// The names of the workspaces. Exact match is supported.
 	//
 	// if can be null:
 	// true
@@ -166,8 +166,16 @@ func (s *ListWorkspacesRequest) Validate() error {
 
 type ListWorkspacesRequestTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

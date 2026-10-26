@@ -20,19 +20,19 @@ type iListIntegrationPolicyPodMonitorsRequest interface {
 }
 
 type ListIntegrationPolicyPodMonitorsRequest struct {
-	// The name of the addon release.
+	// The addon release name.
 	//
 	// example:
 	//
 	// release-123456789
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// The identifier of the collector. If a release exists, pass the release name. If no release exists, pass the component name.
+	// The collector identifier. If a release is available, specify the release name. Otherwise, specify the component name.
 	//
 	// example:
 	//
 	// collector:metric-agent:policy:policy-bfd3d455fd6f4bc8
 	CollectorReleaseName *string `json:"collectorReleaseName,omitempty" xml:"collectorReleaseName,omitempty"`
-	// Specifies whether to encrypt the YAML.
+	// Specifies whether to encrypt the YAML content.
 	//
 	// example:
 	//

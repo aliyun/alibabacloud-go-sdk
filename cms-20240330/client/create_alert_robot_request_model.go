@@ -72,7 +72,7 @@ type CreateAlertRobotRequest struct {
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=**************
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

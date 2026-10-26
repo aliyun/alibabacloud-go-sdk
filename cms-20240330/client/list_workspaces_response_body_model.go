@@ -22,7 +22,7 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
-	// The number of entries per page.
+	// The maximum number of entries per page.
 	//
 	// Default value:
 	//
@@ -48,7 +48,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
-	// The time when the workspace was created.
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -145,7 +145,7 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// workspace-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The time when the workspace was last modified.
+	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -159,13 +159,13 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The Simple Log Service project name.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
 	// The tags.
 	Tags []*ListWorkspacesResponseBodyWorkspacesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// This parameter is required.
 	//
@@ -287,8 +287,16 @@ func (s *ListWorkspacesResponseBodyWorkspaces) Validate() error {
 
 type ListWorkspacesResponseBodyWorkspacesTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

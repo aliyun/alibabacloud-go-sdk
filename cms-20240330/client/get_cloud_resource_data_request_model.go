@@ -18,9 +18,9 @@ type iGetCloudResourceDataRequest interface {
 }
 
 type GetCloudResourceDataRequest struct {
-	// The start of the query time range.
+	// The start time of the query.
 	//
-	// The value is a UNIX timestamp in seconds, which represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp format, which represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type GetCloudResourceDataRequest struct {
 	//
 	// .entity with(domain=\\"acs\\", type=\\"acs.k8s.node\\") | limit 0, 10
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The end of the query time range.
+	// The end time of the query.
 	//
-	// The value is a UNIX timestamp in seconds, which represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp format, which represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
 	//
 	// This parameter is required.
 	//

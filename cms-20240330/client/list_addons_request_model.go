@@ -11,6 +11,8 @@ type iListAddonsRequest interface {
 	GoString() string
 	SetAliyunLang(v string) *ListAddonsRequest
 	GetAliyunLang() *string
+	SetApiVersion(v string) *ListAddonsRequest
+	GetApiVersion() *string
 	SetCategory(v string) *ListAddonsRequest
 	GetCategory() *string
 	SetRegexp(v bool) *ListAddonsRequest
@@ -20,21 +22,26 @@ type iListAddonsRequest interface {
 }
 
 type ListAddonsRequest struct {
-	// The language. Valid values: zh and en. The default value is zh.
+	// The locale. Valid values: zh and en. Default value: zh.
 	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// Tag filtering.
+	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	// The tag filter.
 	//
 	// example:
 	//
 	// database
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// Specifies whether to use regular expressions for the search. The default value is false.
+	// Specifies whether to use regular expression matching for the query field. Default value: false.
+	//
+	// example:
+	//
+	// false
 	Regexp *bool `json:"regexp,omitempty" xml:"regexp,omitempty"`
-	// The search keyword. You can search for add-ons by name, description, or keyword.
+	// The search query. Supports searching by add-on name, description, or keyword.
 	//
 	// example:
 	//
@@ -54,6 +61,10 @@ func (s *ListAddonsRequest) GetAliyunLang() *string {
 	return s.AliyunLang
 }
 
+func (s *ListAddonsRequest) GetApiVersion() *string {
+	return s.ApiVersion
+}
+
 func (s *ListAddonsRequest) GetCategory() *string {
 	return s.Category
 }
@@ -68,6 +79,11 @@ func (s *ListAddonsRequest) GetSearch() *string {
 
 func (s *ListAddonsRequest) SetAliyunLang(v string) *ListAddonsRequest {
 	s.AliyunLang = &v
+	return s
+}
+
+func (s *ListAddonsRequest) SetApiVersion(v string) *ListAddonsRequest {
+	s.ApiVersion = &v
 	return s
 }
 

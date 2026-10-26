@@ -18,13 +18,13 @@ type iCreateIntegrationPolicyResponseBody interface {
 }
 
 type CreateIntegrationPolicyResponseBody struct {
-	// Indicates whether the policy was created.
+	// Indicates whether the policy is created.
 	//
 	// example:
 	//
 	// true
 	Created *bool `json:"created,omitempty" xml:"created,omitempty"`
-	// The upload policy.
+	// The policy.
 	Policy *CreateIntegrationPolicyResponseBodyPolicy `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -103,7 +103,7 @@ type CreateIntegrationPolicyResponseBodyPolicy struct {
 	//
 	// CS
 	PolicyType *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type CreateIntegrationPolicyResponseBodyPolicy struct {
 	//
 	// u1234567
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The workspace where the policy resides.
+	// The workspace to which the policy belongs.
 	//
 	// example:
 	//
