@@ -33,7 +33,7 @@ type DescribeDTCSecurityIpHostsForSQLServerResponseBody struct {
 	// 1
 	IpHostPairNum *string                                                  `json:"IpHostPairNum,omitempty" xml:"IpHostPairNum,omitempty"`
 	Items         *DescribeDTCSecurityIpHostsForSQLServerResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

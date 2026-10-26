@@ -30,7 +30,7 @@ type iListClassesRequest interface {
 }
 
 type ListClassesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
 	//
 	// example:
 	//
@@ -65,9 +65,9 @@ type ListClassesRequest struct {
 	//
 	// bards
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to obtain the instance ID.
 	//
-	// >This parameter is required when you query the instance type list for read-only instances, which means you set the **CommodityCode*	- parameter to a commodity code for read-only instances.
+	// > When you query the list of instance types for read-only instances, which means you specify the commodity code of a read-only instance for the **CommodityCode*	- parameter, this parameter is required.
 	//
 	// example:
 	//
@@ -87,15 +87,15 @@ type ListClassesRequest struct {
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The type of order to query. Valid values:
+	// The order type to query. Valid values:
 	//
-	// 	- **BUY**: New purchase.
+	// 	- **BUY**: Purchase.
 	//
-	// 	- **UPGRADE**: Configuration change.
+	// 	- **UPGRADE**: Upgrade.
 	//
 	// 	- **RENEW**: Renewal.
 	//
-	// 	- **CONVERT**: Billing method change.
+	// 	- **CONVERT**: Billing method conversion.
 	//
 	// This parameter is required.
 	//
@@ -104,9 +104,9 @@ type ListClassesRequest struct {
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The region ID. You can call the DescribeRegions operation to obtain the region ID.
 	//
-	// >This parameter is required if you use an Alibaba Cloud International Website account.
+	// > If you use an Alibaba Cloud international site account, this parameter is required.
 	//
 	// example:
 	//

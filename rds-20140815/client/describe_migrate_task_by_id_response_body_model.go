@@ -32,17 +32,17 @@ type iDescribeMigrateTaskByIdResponseBody interface {
 }
 
 type DescribeMigrateTaskByIdResponseBody struct {
-	// The type of the backup migration task. Valid values:
+	// The type of the OSS backup migration task. Valid values:
 	//
-	// - **FULL**: The restore operation is performed by using a full backup file.
+	// - **FULL**: restores data by using a full log file.
 	//
-	// - **UPDF**: The incremental data is restored by using an incremental backup file or log file.
+	// - **UPDF**: restores incremental data by using differential or log log files.
 	//
 	// example:
 	//
 	// FULL
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The time when the backup migration task was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
+	// The time when the OSS backup migration task was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -54,29 +54,29 @@ type DescribeMigrateTaskByIdResponseBody struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// mytestdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The description of the backup migration task.
+	// The description of the OSS backup migration task.
 	//
 	// example:
 	//
 	// Success to DBCC checkdb asynchronously
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the backup migration task ended. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
+	// The time when the OSS backup migration task ended. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-05-30T15:15:05Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the import is an overwrite import. Valid values:
+	// Specifies whether the import overwrites the existing database. Valid values:
 	//
-	// - **False**: No.
+	// - **False**: no
 	//
-	// - **True**: Yes.
+	// - **True**: yes
 	//
 	// example:
 	//
@@ -88,23 +88,23 @@ type DescribeMigrateTaskByIdResponseBody struct {
 	//
 	// 235943
 	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 6ED3635A-01F9-47BD-B9C8-CB3FD70A336E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the backup migration task. Valid values:
+	// The status of the OSS backup migration task. Valid values:
 	//
-	// - **NoStart**: Not started.
+	// - **NoStart**: The task is not started.
 	//
-	// - **Running**: Running.
+	// - **Running**: The task is running.
 	//
-	// - **Success**: Succeeded.
+	// - **Success**: The task is successful.
 	//
-	// - **Failed**: Failed.
+	// - **Failed**: The task failed.
 	//
-	// - **Waiting**: Waiting for incremental backup file import.
+	// - **Waiting**: The task is waiting for the import of incremental backup files.
 	//
 	// example:
 	//

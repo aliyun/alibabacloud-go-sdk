@@ -34,7 +34,7 @@ type CheckBackupEncryptionAuthorizedResponseBody struct {
 	//
 	// CB07C463-7428-50AA-9E39-********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Alibaba Resource Name (ARN) of the service-linked role associated with Cloud Hardware Security Module (CloudHSM) for backup encryption.
+	// The ARN of the backup encryption service-linked role.
 	//
 	// example:
 	//

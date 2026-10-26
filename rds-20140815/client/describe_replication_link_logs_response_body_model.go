@@ -106,13 +106,13 @@ type DescribeReplicationLinkLogsResponseBodyItems struct {
 	//
 	// [Check rds empty]\\nCheck rds databases: success\\n[Check source connectivity]\\nCheck ip connectable: success\\nCheck port connectable: success\\nCheck database connectable: success\\nCheck account replication privilege: success\\nCheck account createrole privilege: success\\nCheck account monitor privilege: success\\n[Check source version]\\nCheck major version consistent: success\\n[Check source glibc version]\\nCheck source glibc version compatible: warning(warning:source glibc version is not compatible with rds pg)\\n[Check disk size]\\nCheck disk size enough: success\\n[Check wal keep size]\\nCheck wal keep size large enough: success\\n[Check spec params]\\nCheck if spec params too large: success\\n [Check triggers]\\nCheck triggers compatible: success\\n[Check user functions]\\nCheck user functions compatible: success\\n*Migrate check success*
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The creation time in UTC.
+	// The creation time (UTC).
 	//
 	// example:
 	//
 	// 2022-02-25T06:57:41Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The modification time in UTC.
+	// The modification time (UTC).
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type DescribeReplicationLinkLogsResponseBodyItems struct {
 	//
 	// None
 	ReplicationInfo *string `json:"ReplicationInfo,omitempty" xml:"ReplicationInfo,omitempty"`
-	// The synchronization status. Valid values:
+	// The synchronization state. Valid values:
 	//
-	// - **steaming**: Synchronizing.
+	// - **steaming**: Synchronization is in progress.
 	//
-	// - **finish**: Completed.
+	// - **finish**: Synchronization is completed.
 	//
-	// - **disconnect**: Disconnected.
+	// - **disconnect**: Synchronization is disconnected.
 	//
 	// example:
 	//
@@ -156,9 +156,9 @@ type DescribeReplicationLinkLogsResponseBodyItems struct {
 	SourceAddress *string `json:"SourceAddress,omitempty" xml:"SourceAddress,omitempty"`
 	// The category of the source instance. Valid values:
 	//
-	// - other: Other.
+	// - other: The source instance is of another type.
 	//
-	// - aliyunRDS: ApsaraDB RDS instance.
+	// - aliyunRDS: The source instance is an ApsaraDB RDS instance.
 	//
 	// example:
 	//
@@ -188,15 +188,15 @@ type DescribeReplicationLinkLogsResponseBodyItems struct {
 	//
 	// test01
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The task stage. Valid values:
+	// The node stage. Valid values:
 	//
-	// - **precheck**: Dry run.
+	// - **precheck**: The node is in the dry run stage.
 	//
-	// - **basebackup**: Basic backup.
+	// - **basebackup**: The node is in the basic backup stage.
 	//
-	// - **startup**: Startup.
+	// - **startup**: The node is in the startup stage.
 	//
-	// - **increment**: Incremental synchronization.
+	// - **increment**: The node is in the incremental synchronization stage.
 	//
 	// example:
 	//
@@ -204,11 +204,11 @@ type DescribeReplicationLinkLogsResponseBodyItems struct {
 	TaskStage *string `json:"TaskStage,omitempty" xml:"TaskStage,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **success**: Succeeded.
+	// - **success**: The task is successful.
 	//
-	// - **failure**: Failed.
+	// - **failure**: The task failed.
 	//
-	// - **running**: Running.
+	// - **running**: The task is running.
 	//
 	// example:
 	//
@@ -216,9 +216,9 @@ type DescribeReplicationLinkLogsResponseBodyItems struct {
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **create**: Create a replication link.
+	// - **create**: Creates a synchronization link.
 	//
-	// - **create-dryrun**: Dry run for creating a replication link.
+	// - **create-dryrun**: Performs a precheck for creating a synchronization link.
 	//
 	// example:
 	//

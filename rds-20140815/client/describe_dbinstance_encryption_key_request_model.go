@@ -36,7 +36,7 @@ type DescribeDBInstanceEncryptionKeyRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The custom key ID.
+	// The ID of the custom key.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeDBInstanceEncryptionKeyRequest struct {
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the DescribeRegions operation to query the available regions.
+	// The region ID of the instance. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
@@ -53,7 +53,7 @@ type DescribeDBInstanceEncryptionKeyRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The destination region ID. You can call the DescribeRegions operation to query the available regions.
+	// The ID of the destination region. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//

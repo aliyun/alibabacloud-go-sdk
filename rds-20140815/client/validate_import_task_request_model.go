@@ -36,7 +36,7 @@ type iValidateImportTaskRequest interface {
 }
 
 type ValidateImportTaskRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to obtain this parameter.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type ValidateImportTaskRequest struct {
 	//
 	// rm-sdfljk123****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The estimated instance size. Unit: GB.
+	// The estimated size of the instance. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	EstimatedSize *int32 `json:"EstimatedSize,omitempty" xml:"EstimatedSize,omitempty"`
-	// The address of the source MySQL instance.
+	// The address of the source MySQL database.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +59,7 @@ type ValidateImportTaskRequest struct {
 	// 192.168.10.1
 	Host    *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The password of the source MySQL user, encoded in Base64.
+	// The Base64-encoded password of the source MySQL database user.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +67,7 @@ type ValidateImportTaskRequest struct {
 	//
 	// UGFzc3dvcmQxMjMK
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The port number of the source MySQL instance.
+	// The port number of the source MySQL database.
 	//
 	// This parameter is required.
 	//
@@ -75,7 +75,7 @@ type ValidateImportTaskRequest struct {
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain this parameter.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -89,7 +89,7 @@ type ValidateImportTaskRequest struct {
 	//
 	// i-wz9ff3acy500io5wdf5s
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The type of the source instance. Valid values:
+	// The type of the source platform. Valid values:
 	//
 	// - ECS
 	//
@@ -105,7 +105,7 @@ type ValidateImportTaskRequest struct {
 	//
 	// 9999
 	StreamPort *int32 `json:"StreamPort,omitempty" xml:"StreamPort,omitempty"`
-	// The username of the source MySQL instance.
+	// The username of the source MySQL database.
 	//
 	// This parameter is required.
 	//
@@ -113,7 +113,7 @@ type ValidateImportTaskRequest struct {
 	//
 	// myadmin
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
-	// The path of the Xtrabackup tool on the source instance.
+	// The path to the XtraBackup tool on the source instance.
 	//
 	// example:
 	//

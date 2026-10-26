@@ -16,13 +16,13 @@ type iPrecheckDuckDBDependencyResponseBody interface {
 }
 
 type PrecheckDuckDBDependencyResponseBody struct {
-	// The items that do not meet the prerequisites for creating a DuckDB-based analytical instance.
+	// The check items that do not meet the prerequisites for creating a DuckDB-based analytical instance.
 	FailedCheckItems []*PrecheckDuckDBDependencyResponseBodyFailedCheckItems `json:"FailedCheckItems,omitempty" xml:"FailedCheckItems,omitempty" type:"Repeated"`
-	// Indicates whether the prerequisite check for creating a DuckDB-based analytical instance is passed. Valid values:
+	// Indicates whether the precheck for creating a DuckDB-based analytical instance is passed. Valid values:
 	//
-	// - **true**: The check is passed.
+	// - **true**: Yes.
 	//
-	// - **false**: The check is not passed.
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -70,14 +70,14 @@ func (s *PrecheckDuckDBDependencyResponseBody) Validate() error {
 }
 
 type PrecheckDuckDBDependencyResponseBodyFailedCheckItems struct {
-	// Indicates whether the item can be fixed with one click.
+	// Indicates whether the issue can be fixed with one click.
 	//
-	// - **true**: The item can be fixed with one click by calling the [ModifyDBInstanceConfig](https://help.aliyun.com/document_detail/2623684.html) operation.
+	// - **true**: Yes. You can call the [ModifyDBInstanceConfig](https://help.aliyun.com/document_detail/2623684.html) operation to fix the issue with one click.
 	//
-	// - **false**: The item cannot be fixed with one click.
+	// - **false**: No.
 	//
 	//
-	// 	Notice: If the major engine version of the database instance does not meet the requirements, you must perform a [manual upgrade](https://help.aliyun.com/document_detail/2623684.html).
+	// 	Notice: If the major version of the database instance does not meet the requirements, you must [manually upgrade](https://help.aliyun.com/document_detail/2623684.html) the major version.
 	//
 	// example:
 	//
@@ -101,13 +101,13 @@ type PrecheckDuckDBDependencyResponseBodyFailedCheckItems struct {
 	//
 	// 17.0
 	RequiredValue *string `json:"RequiredValue,omitempty" xml:"RequiredValue,omitempty"`
-	// The check item type. Valid values:
+	// The check item. Valid values:
 	//
 	// - **Parameter**: parameter.
 	//
 	// - **MinorVersion**: minor engine version.
 	//
-	// - **MajorVersion**: major engine version.
+	// - **MajorVersion**: major database version.
 	//
 	// example:
 	//

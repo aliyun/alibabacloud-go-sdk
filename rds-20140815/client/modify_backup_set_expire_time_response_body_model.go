@@ -34,13 +34,13 @@ type ModifyBackupSetExpireTimeResponseBody struct {
 	//
 	// {expectExpireTime=1752581423000, dbClusterId=rm-7xv8f2zcia0e4****, backupId=262186****}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response code message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -44,53 +44,53 @@ type iDescribeResourceUsageResponseBody interface {
 }
 
 type DescribeResourceUsageResponseBody struct {
-	// The storage consumed by archived backups. Unit: bytes.
+	// The storage space occupied by archive backups. Unit: bytes.
 	//
 	// example:
 	//
 	// 0
 	ArchiveBackupSize *int64 `json:"ArchiveBackupSize,omitempty" xml:"ArchiveBackupSize,omitempty"`
-	// The total storage consumed by data backups, excluding archived backups. Unit: bytes.
+	// The total storage space occupied by data backups, excluding archive backups. Unit: bytes.
 	//
-	// > For **SQL Server*	- instances, this value indicates the total size of physical backups and snapshot backups.
+	// > For **SQL Server*	- instances, this parameter indicates the total size of physical backups and snapshot backups.
 	//
 	// example:
 	//
 	// 94324736
 	BackupDataSize *int64 `json:"BackupDataSize,omitempty" xml:"BackupDataSize,omitempty"`
-	// The storage consumed by snapshot backups for **SQL Server instances**. Unit: bytes. A value of 0 indicates no data.
+	// The storage space occupied by snapshot backups of **SQL Server*	- instances. Unit: bytes. A value of 0 indicates that no data is available.
 	//
 	// example:
 	//
 	// 0
 	BackupEcsSnapshotSize *string `json:"BackupEcsSnapshotSize,omitempty" xml:"BackupEcsSnapshotSize,omitempty"`
-	// The total storage consumed by log backups, excluding archived backups. Unit: bytes.
+	// The total storage space occupied by log backups, excluding archive backups. Unit: bytes.
 	//
 	// example:
 	//
 	// 45145563
 	BackupLogSize *int64 `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
-	// The size of data files in backup sets stored in OSS. Unit: bytes. A value of 0 indicates no data.
+	// The size of data files in backup sets stored in OSS. Unit: bytes. A value of 0 indicates that no data is available.
 	//
-	// > For **SQL Server*	- instances, this value indicates the storage consumed by physical backups.
+	// > For **SQL Server*	- instances, this parameter indicates the storage space occupied by physical backups.
 	//
 	// example:
 	//
 	// 8821760
 	BackupOssDataSize *int64 `json:"BackupOssDataSize,omitempty" xml:"BackupOssDataSize,omitempty"`
-	// The size of log files in backup sets stored in OSS. Unit: bytes. A value of 0 indicates no data.
+	// The size of log files in backup sets stored in OSS. Unit: bytes. A value of 0 indicates that no data is available.
 	//
 	// example:
 	//
 	// 44180999
 	BackupOssLogSize *int64 `json:"BackupOssLogSize,omitempty" xml:"BackupOssLogSize,omitempty"`
-	// The storage consumed by backups (data backups + log backups). Unit: bytes. A value of -1 indicates no data.
+	// The storage space occupied by backups, including data backups and log backups. Unit: bytes. A value of -1 indicates that no data is available.
 	//
 	// example:
 	//
 	// 53002759
 	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The storage consumed by cold backups. Unit: bytes. A value of -1 indicates no data.
+	// The storage space occupied by cold backups. Unit: bytes. A value of -1 indicates that no data is available.
 	//
 	// example:
 	//
@@ -102,43 +102,43 @@ type DescribeResourceUsageResponseBody struct {
 	//
 	// rm-uf6wjk5******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The storage consumed by data files. Unit: bytes. A value of -1 indicates no data.
+	// The storage space occupied by data files. Unit: bytes. A value of -1 indicates that no data is available.
 	//
 	// example:
 	//
 	// 1292094741
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The used storage (DataSize + LogSize). Unit: bytes. A value of -1 indicates no data.
+	// The used storage space, which is the sum of DataSize and LogSize. Unit: bytes. A value of -1 indicates that no data is available.
 	//
 	// example:
 	//
 	// 2337275904
 	DiskUsed *int64 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
-	// The database engine type.
+	// The database engine.
 	//
 	// example:
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The storage consumed by log files. Unit: bytes. A value of -1 indicates no data.
+	// The storage space occupied by logs. Unit: bytes. A value of -1 indicates that no data is available.
 	//
 	// example:
 	//
 	// 1045181163
 	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The billable storage consumed by backups after the free quota is deducted. Unit: bytes.
+	// The storage space occupied by backups that you are billed for after the free quota is deducted. Unit: bytes.
 	//
 	// example:
 	//
 	// 0
 	PaidBackupSize *int64 `json:"PaidBackupSize,omitempty" xml:"PaidBackupSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F937E173-559C-4498-8D90-38D32342B9E4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The storage consumed by SQL data. Unit: bytes. A value of -1 indicates no data.
+	// The storage space occupied by SQL data. Unit: bytes. A value of -1 indicates that no data is available.
 	//
 	// example:
 	//

@@ -32,67 +32,67 @@ type iDescribeAvailableZonesRequest interface {
 type DescribeAvailableZonesRequest struct {
 	// The instance edition. Valid values:
 	//
-	// 	- Regular instances
+	// - Regular instances
 	//
-	//     	- **Basic**: Basic Edition
+	//     - **Basic**: Basic Edition
 	//
-	//     	- **HighAvailability**: High-availability Edition
+	//     - **HighAvailability**: high-availability (active) series
 	//
-	//     	- **cluster**: MySQL Cluster Edition
+	//     - **cluster**: Cluster Edition for MySQL
 	//
-	//     	- **AlwaysOn**: SQL Server Cluster Edition
+	//     - **AlwaysOn**: Cluster Edition for SQL Server
 	//
-	//     	- **Finance**: RDS Enterprise Edition
+	//     - **Finance**: RDS Enterprise Edition
 	//
-	// 	- Serverless instances
+	// - Serverless instances
 	//
-	//     	- **serverless_basic**: Serverless Basic Edition (applicable only to MySQL and PostgreSQL)
+	//     - **serverless_basic**: Serverless Basic Edition (only applicable to MySQL and PostgreSQL)
 	//
-	//     	- **serverless_standard**: MySQL Serverless High-availability Edition
+	//     - **serverless_standard**: MySQL Serverless high-availability (active) series
 	//
-	//     	- **serverless_ha**: SQL Server Serverless High-availability Edition
+	//     - **serverless_ha**: SQL Server Serverless high-availability (active) series
 	//
 	// example:
 	//
 	// HighAvailability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The commodity code of the instance. The operation queries available resources for sale based on the specified commodity code. Valid values:
+	// The commodity code of the instance. The available resources are queried based on the specified commodity code. Valid values:
 	//
-	// 	- **bards**: pay-as-you-go primary instance (China site)
+	// - **bards**: pay-as-you-go primary instances on the China site
 	//
-	// 	- **rds**: subscription primary instance (China site)
+	// - **rds**: subscription primary instances on the China site
 	//
-	// 	- **rords**: pay-as-you-go read-only instance (China site)
+	// - **rords**: pay-as-you-go read-only instances on the China site
 	//
-	// 	- **rds_rordspre_public_cn**: subscription read-only instance (China site)
+	// - **rds_rordspre_public_cn**: subscription read-only instances on the China site
 	//
-	// 	- **bards_intl**: pay-as-you-go primary instance (international site)
+	// - **bards_intl**: pay-as-you-go primary instances on the international site
 	//
-	// 	- **rds_intl**: subscription primary instance (international site)
+	// - **rds_intl**: subscription primary instances on the international site
 	//
-	// 	- **rords_intl**: pay-as-you-go read-only instance (international site)
+	// - **rords_intl**: pay-as-you-go read-only instances on the international site
 	//
-	// 	- **rds_rordspre_public_intl**: subscription read-only instance (international site)
+	// - **rds_rordspre_public_intl**: subscription read-only instances on the international site
 	//
-	// 	- **rds_serverless_public_cn**: serverless (China site)
+	// - **rds_serverless_public_cn**: Serverless instances on the China site
 	//
-	// 	- **rds_serverless_public_intl**: serverless (international site)
+	// - **rds_serverless_public_intl**: Serverless instances on the international site
 	//
 	// example:
 	//
 	// bards
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The instance ID of the primary instance. This parameter is used to query available read-only instance resources for the specified primary instance.
+	// The instance ID of the primary instance. This parameter is used to query the available read-only instance resources under the primary instance.
 	//
-	// This parameter is required when **CommodityCode*	- is set to one of the following values:
+	// This parameter is required when the **CommodityCode*	- parameter is set to one of the following values:
 	//
-	// 	- **rords_intl**
+	// - **rords_intl**
 	//
-	// 	- **rds_rordspre_public_intl**
+	// - **rds_rordspre_public_intl**
 	//
-	// 	- **rords**
+	// - **rords**
 	//
-	// 	- **rds_rordspre_public_cn**
+	// - **rds_rordspre_public_cn**
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type DescribeAvailableZonesRequest struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// Specifies whether to return the list of zones that support single-zone deployment. Valid values:
 	//
-	// 	- **1*	- (default): Returns the list.
+	// - **1*	- (default): Returns the list.
 	//
-	// 	- **0**: Does not return the list.
+	// - **0**: Does not return the list.
 	//
 	// > The single-zone deployment feature allows you to deploy RDS Enterprise Edition instances in a single zone.
 	//
@@ -112,13 +112,13 @@ type DescribeAvailableZonesRequest struct {
 	DispenseMode *string `json:"DispenseMode,omitempty" xml:"DispenseMode,omitempty"`
 	// The database engine. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **SQLServer**
+	// - **SQLServer**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **MariaDB**
+	// - **MariaDB**
 	//
 	// This parameter is required.
 	//
@@ -130,29 +130,29 @@ type DescribeAvailableZonesRequest struct {
 	//
 	// - Regular instances
 	//
-	//     - MySQL: **5.5**, **5.6**, **5.7**, **8.0**
+	//     - MySQL: **5.5**, **5.6**, **5.7**, and **8.0**
 	//
-	//     - SQL Server: **2008r2**, **08r2_ent_ha**, **2012**, **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_std_ha**, **2017_ent**, **2019_std_ha**, **2019_ent**
+	//     - SQL Server: **2008r2**, **08r2_ent_ha**, **2012**, **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_std_ha**, **2017_ent**, **2019_std_ha**, and **2019_ent**
 	//
-	//     - PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**
+	//     - PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**
 	//
 	//     - MariaDB: **10.3**
 	//
 	// - Serverless instances
 	//
-	//     - MySQL: **5.7**, **8.0**
+	//     - MySQL: **5.7*	- and **8.0**
 	//
-	//     - SQL Server: **2016_std_sl**, **2017_std_sl**, **2019_std_sl**
+	//     - SQL Server: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**
 	//
 	//     - PostgreSQL: **14.0**
 	//
-	//     > MariaDB does not support serverless instances.
+	//     > ApsaraDB RDS for MariaDB does not support Serverless instances.
 	//
 	// example:
 	//
 	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The region ID. You can call DescribeRegions to query the region ID.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -161,7 +161,7 @@ type DescribeAvailableZonesRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The zone ID. The format of multi-zone IDs differs from that of single-zone IDs and contains `MAZ`, such as `cn-hangzhou-MAZ6(b,f)` and `cn-hangzhou-MAZ5(b,e,f)`. You can call DescribeRegions to query zone IDs.
+	// The zone ID. The format of a multi-zone ID is different from that of a single-zone ID and contains `MAZ`, such as `cn-hangzhou-MAZ6(b,f)` and `cn-hangzhou-MAZ5(b,e,f)`. You can call the DescribeRegions operation to query the zone ID.
 	//
 	// example:
 	//

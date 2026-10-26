@@ -48,21 +48,21 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// - **-1**: all tasks.
 	//
-	// - **0**: Only tasks that cannot be canceled are returned.
+	// - **0**: tasks that cannot be canceled.
 	//
-	// - **1**: Only tasks that can be canceled are returned.
+	// - **1**: tasks that can be canceled.
 	//
 	// example:
 	//
 	// -1
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Specifies whether the task time can be modified. Default value: -1. Valid values:
+	// Specifies whether the execution time can be modified. Default value: -1. Valid values:
 	//
 	// - **-1**: all tasks.
 	//
-	// - **0**: Only tasks whose time cannot be modified are returned.
+	// - **0**: tasks whose execution time cannot be modified.
 	//
-	// - **1**: Only tasks whose time can be modified are returned.
+	// - **1**: tasks whose execution time can be modified.
 	//
 	// example:
 	//
@@ -70,23 +70,23 @@ type DescribeActiveOperationTasksRequest struct {
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
 	// The task level. Default value: all. Valid values:
 	//
-	// - **all**: all levels.
+	// - **all**: all tasks.
 	//
-	// - **S0**: Only tasks at the exception recovery level are returned.
+	// - **S0**: exception recovery tasks.
 	//
-	// - **S1**: Only tasks at the system O&M level are returned.
+	// - **S1**: system O&M tasks.
 	//
 	// example:
 	//
 	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	// The database type. Default value: all. Valid values: mysql, pgsql, and mssql.
+	// The database engine. Default value: all. Valid values: mysql, pgsql, mssql, and others.
 	//
 	// example:
 	//
 	// all
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The instance name. This parameter is optional. You can specify at most one instance name.
+	// The instance name. This parameter is optional. If you specify this parameter, you can specify only one instance name.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type DescribeActiveOperationTasksRequest struct {
 	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be greater than 0. Default value: 1.
+	// The page number, which must be greater than 0. Default value: 1.
 	//
 	// example:
 	//
@@ -106,15 +106,15 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The product name. Valid values: RDS, POLARDB, MongoDB, and Redis. For ApsaraDB RDS instances, set this parameter to RDS.
+	// The product name. Valid values: RDS, POLARDB, MongoDB, and Redis. For an ApsaraDB RDS instance, set the value to RDS.
 	//
 	// example:
 	//
 	// RDS
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region ID of the pending event. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID of the pending event. You can call the DescribeRegions operation to query the region ID.
 	//
-	// > Set this parameter to **all*	- to specify all region IDs.
+	// > A value of **all*	- specifies all region IDs.
 	//
 	// example:
 	//
@@ -123,15 +123,15 @@ type DescribeActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The task status. This parameter is used to filter the returned tasks. Valid values:
+	// The task status, which is used to filter the returned tasks. Valid values:
 	//
 	// 	- **-1**: all tasks.
 	//
 	// 	- **3**: pending tasks.
 	//
-	// 	- **4**: in-progress tasks.
+	// 	- **4**: tasks in progress.
 	//
-	// 	- **5**: succeeded tasks.
+	// 	- **5**: successfully completed tasks.
 	//
 	// 	- **6**: failed tasks.
 	//
@@ -143,7 +143,7 @@ type DescribeActiveOperationTasksRequest struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- **rds_apsaradb_ha**: primary/secondary node switch.
+	// 	- **rds_apsaradb_ha**: primary and secondary node switch.
 	//
 	// 	- **rds_apsaradb_transfer**: instance migration.
 	//

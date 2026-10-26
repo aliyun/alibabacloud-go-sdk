@@ -16,13 +16,13 @@ type iRemoveRCInstancesFromDeploymentSetResponseBody interface {
 }
 
 type RemoveRCInstancesFromDeploymentSetResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C816A4BF-A6EC-4722-95F9-2055859CCFD2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The call results of the operation.
+	// The results of the API call.
 	Results []*RemoveRCInstancesFromDeploymentSetResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -74,9 +74,9 @@ type RemoveRCInstancesFromDeploymentSetResponseBodyResults struct {
 	RCInstanceId *string `json:"RCInstanceId,omitempty" xml:"RCInstanceId,omitempty"`
 	// The node status. Valid values:
 	//
-	// 	- **Success**: Succeeded.
+	// 	- **Success**: successful
 	//
-	// 	- **Failed**: Failed.
+	// 	- **Failed**: failed
 	//
 	// example:
 	//

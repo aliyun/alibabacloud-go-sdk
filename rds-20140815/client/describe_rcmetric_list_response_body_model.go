@@ -26,7 +26,7 @@ type iDescribeRCMetricListResponseBody interface {
 }
 
 type DescribeRCMetricListResponseBody struct {
-	// The status code.
+	// The returned status code.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeRCMetricListResponseBody struct {
 	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
 	// The returned message.
 	//
-	// > This parameter returns **Successful*	- if the request is successful. If the request fails, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -64,11 +64,11 @@ type DescribeRCMetricListResponseBody struct {
 	//
 	// EA2D4F34-01A7-46EB-A339-D80882135206
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//

@@ -26,27 +26,27 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
-	// The backup type. Valid values:
+	// The backup method. Valid values:
 	//
-	// 	- **Logical**: logical backup. Only MySQL instances with local disks support this type.
+	// 	- **Logical**: logical backup (supported only for ApsaraDB RDS for MySQL instances with local SSDs)
 	//
-	// 	- **Physical**: physical backup. MySQL instances with local disks, SQL Server instances, and PostgreSQL instances support this type.
+	// 	- **Physical**: physical backup (supported for ApsaraDB RDS for MySQL instances with local SSDs, ApsaraDB RDS for SQL Server, and ApsaraDB RDS for PostgreSQL)
 	//
-	// 	- **Snapshot**: snapshot backup. MySQL instances with cloud disks, SQL Server instances, PostgreSQL instances, and MariaDB instances support this type.
+	// 	- **Snapshot**: snapshot backup (supported for ApsaraDB RDS for MySQL instances with cloud disks, ApsaraDB RDS for SQL Server, ApsaraDB RDS for PostgreSQL, and ApsaraDB RDS for MariaDB)
 	//
 	// Default value: **Physical**.
 	//
-	// > 	- When you use logical backup, the database must contain data (the data cannot be empty).
+	// > 	- When you use logical backup, the database must contain data.
 	//
-	// > 	- MariaDB instances support only snapshot backup. However, set this parameter to **Physical**.
+	// > 	- ApsaraDB RDS for MariaDB instances support only snapshot backup, but you must set this parameter to **Physical**.
 	//
 	// example:
 	//
 	// Physical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// - **SQL Server**: When the BackupStrategy parameter is set to db, the BackupMethod parameter is set to Physical, and the BackupType parameter is set to FullBackup, you can specify the retention period of the backup set. Valid values: 7 to 730 days, or -1 (long-term retention (LTR)).
+	// - **SQL Server**: When the BackupStrategy parameter is set to db, the BackupMethod parameter is set to Physical, and the BackupType parameter is set to FullBackup, you can specify the retention period of the backup set. Valid values: 7 to 730 days, and -1 (long-term retention (LTR)).
 	//
-	// - **MySQL**: You can specify the retention period of the backup set. Valid values: 7 to 730 days, or -1 (long-term retention (LTR)).
+	// - **MySQL**: You can specify the retention period of the backup set. Valid values: 7 to 730 days, and -1 (long-term retention (LTR)).
 	//
 	// example:
 	//
@@ -54,25 +54,25 @@ type CreateBackupRequest struct {
 	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// The backup strategy. Valid values:
 	//
-	// 	- **db**: single-database backup
+	// 	- **db**: database-level backup
 	//
-	// 	- **instance**: instance backup
+	// 	- **instance**: instance-level backup
 	//
 	// > This parameter takes effect only when the following conditions are met:
 	//
-	// > - MySQL: The **BackupMethod*	- parameter is set to **Logical**.
+	// > - For ApsaraDB RDS for MySQL: The **BackupMethod*	- parameter is set to **Logical**.
 	//
-	// > - SQL Server: The **BackupType*	- parameter is set to **FullBackup**.
+	// > - For ApsaraDB RDS for SQL Server: The **BackupType*	- parameter is set to **FullBackup**.
 	//
 	// example:
 	//
 	// db
 	BackupStrategy *string `json:"BackupStrategy,omitempty" xml:"BackupStrategy,omitempty"`
-	// The backup method for SQL Server instances. Valid values:
+	// The backup type for ApsaraDB RDS for SQL Server instances. Valid values:
 	//
-	// 	- **Auto*	- (default): automatically selects full backup or incremental backup.
+	// 	- **Auto*	- (default): automatically selects full backup or incremental backup
 	//
-	// 	- **FullBackup**: full backup.
+	// 	- **FullBackup**: full backup
 	//
 	// > This parameter takes effect only when the **BackupMethod*	- parameter is set to **Physical**.
 	//
@@ -80,7 +80,7 @@ type CreateBackupRequest struct {
 	//
 	// Auto
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//

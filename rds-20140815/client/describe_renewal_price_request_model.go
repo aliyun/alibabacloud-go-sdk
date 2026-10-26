@@ -42,25 +42,25 @@ type iDescribeRenewalPriceRequest interface {
 }
 
 type DescribeRenewalPriceRequest struct {
-	// The business extension parameter.
+	// The business extension parameters.
 	//
 	// example:
 	//
 	// 121436975448952
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// Ensures the idempotence of the request.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance type. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). Default value: the current instance type.
+	// The instance type. For more information about instance types, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). Default value: the current instance type.
 	//
 	// example:
 	//
 	// mysql.n2.medium.2c
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to obtain instance ID.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type DescribeRenewalPriceRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The order type. The only valid value is **BUY**.
+	// The order type. Valid value: **BUY**.
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type DescribeRenewalPriceRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- **Postpaid**: pay-as-you-go
+	// 	- **Postpaid**: pay-as-you-go.
 	//
-	// 	- **Prepaid**: subscription
+	// 	- **Prepaid**: subscription.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type DescribeRenewalPriceRequest struct {
 	//
 	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The ID of the region. You can call the DescribeRegions operation to obtain the ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call DescribeDBInstanceAttribute to obtain the resource group ID.
+	// The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to obtain the ID.
 	//
 	// example:
 	//
@@ -106,11 +106,11 @@ type DescribeRenewalPriceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The subscription type of the instance. Valid values:
+	// The unit of the subscription duration. Valid values:
 	//
-	// 	- **Year**: yearly subscription
+	// 	- **Year**: year.
 	//
-	// 	- **Month**: monthly subscription
+	// 	- **Month**: month.
 	//
 	// This parameter is required.
 	//
@@ -120,9 +120,9 @@ type DescribeRenewalPriceRequest struct {
 	TimeType *string `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
 	// The subscription duration of the instance. Valid values:
 	//
-	// 	- If **TimeType*	- is set to **Year**, the value ranges from **1 to 3**.
+	// 	- If the **TimeType*	- parameter is set to **Year**, valid values are **1 to 3**.
 	//
-	// 	- If **TimeType*	- is set to **Month**, the value ranges from **1 to 9**.
+	// 	- If the **TimeType*	- parameter is set to **Month**, valid values are **1 to 9**.
 	//
 	// This parameter is required.
 	//

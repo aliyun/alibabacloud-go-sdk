@@ -16,13 +16,13 @@ type iDeleteSlotResponseBody interface {
 }
 
 type DeleteSlotResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 2875D608-A228-53D7-B8C9-35F13EDCF36D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The replication slot name.
+	// The name of the replication slot.
 	//
 	// example:
 	//

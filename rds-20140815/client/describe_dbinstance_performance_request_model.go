@@ -24,7 +24,7 @@ type iDescribeDBInstancePerformanceRequest interface {
 }
 
 type DescribeDBInstancePerformanceRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type DescribeDBInstancePerformanceRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+	// The end time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
-	// > The interval between the start time and end time must be greater than the monitoring frequency of your instance. Otherwise, an empty list may be returned.
+	// >The interval between the start time and the end time must be greater than the monitoring frequency of the instance. Otherwise, an empty list may be returned.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type DescribeDBInstancePerformanceRequest struct {
 	//
 	// 2012-06-18T15:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The performance metrics that you want to query. Separate multiple values with commas (,). You can specify up to 30 metrics. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/26316.html).
+	// The performance metrics that you want to query. Separate multiple values with commas (,). You can specify up to 30 metrics. For more information, see [Performance metrics](https://help.aliyun.com/document_detail/26316.html).
 	//
-	// > If **Key*	- is set to **MySQL_SpaceUsage*	- or **SQLServer_SpaceUsage**, only monitoring data within the last day can be queried.
+	// >If **Key*	- is set to **MySQL_SpaceUsage*	- or **SQLServer_SpaceUsage**, you can query only the monitoring data collected within the last 24 hours.
 	//
 	// This parameter is required.
 	//
@@ -59,9 +59,9 @@ type DescribeDBInstancePerformanceRequest struct {
 	// 339****
 	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+	// The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
-	// > The interval between the start time and end time must be greater than the monitoring frequency of your instance. Otherwise, an empty list may be returned.
+	// >The interval between the start time and the end time must be greater than the monitoring frequency of the instance. Otherwise, an empty list may be returned.
 	//
 	// This parameter is required.
 	//

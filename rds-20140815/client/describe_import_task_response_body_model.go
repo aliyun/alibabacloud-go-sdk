@@ -42,13 +42,13 @@ type DescribeImportTaskResponseBody struct {
 	//
 	// myadmin
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The Milvus version number.
+	// The kernel version number.
 	//
 	// example:
 	//
 	// 5.7
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The detailed information about the task.
+	// The task details.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeImportTaskResponseBody struct {
 	//
 	// A103039D-B1B2-4C57-B989-7D7C0DA95426
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The category of the source instance.
+	// The category of the source instance. Valid values:
 	//
 	// - **ECS**: Alibaba Cloud ECS.
 	//
@@ -106,7 +106,7 @@ type DescribeImportTaskResponseBody struct {
 	//
 	// test01
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The task type. This parameter is used to query tasks of specific types. Separate multiple task types with commas (,). A maximum of 30 task types are supported. If this parameter is left empty, tasks of all types are queried.
+	// The task type, which is used to query tasks of specific types. Separate multiple values with commas (,). A maximum of 30 values are supported. By default, this parameter is left empty, which indicates that no limit is applied.
 	//
 	// example:
 	//

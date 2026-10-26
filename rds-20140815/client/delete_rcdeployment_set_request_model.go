@@ -16,7 +16,7 @@ type iDeleteRCDeploymentSetRequest interface {
 }
 
 type DeleteRCDeploymentSetRequest struct {
-	// The deployment set ID.
+	// The ID of the deployment set.
 	//
 	// This parameter is required.
 	//

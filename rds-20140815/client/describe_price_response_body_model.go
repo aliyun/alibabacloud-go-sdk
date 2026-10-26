@@ -36,7 +36,7 @@ type DescribePriceResponseBody struct {
 	//
 	// {\\"autoPay\\":false}"
 	OrderParams *string `json:"OrderParams,omitempty" xml:"OrderParams,omitempty"`
-	// The price information.
+	// The pricing information.
 	PriceInfo *DescribePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -45,7 +45,7 @@ type DescribePriceResponseBody struct {
 	// CA0ADDDC-0BEB-4381-A3ED-73B4C79B8CC6
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Rules     *DescribePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	// The serverless price information.
+	// The pricing information of the serverless instance.
 	ServerlessPrice *DescribePriceResponseBodyServerlessPrice `json:"ServerlessPrice,omitempty" xml:"ServerlessPrice,omitempty" type:"Struct"`
 	// Indicates whether discounts are allowed.
 	//
@@ -53,13 +53,13 @@ type DescribePriceResponseBody struct {
 	//
 	// true
 	ShowDiscount *bool `json:"ShowDiscount,omitempty" xml:"ShowDiscount,omitempty"`
-	// The estimated hourly fee calculated based on the maximum RCU selected by the user.
+	// The estimated hourly fee calculated based on the maximum number of RCUs selected by the user.
 	//
 	// example:
 	//
 	// 2**
 	TradeMaxRCUAmount *float32 `json:"TradeMaxRCUAmount,omitempty" xml:"TradeMaxRCUAmount,omitempty"`
-	// The estimated hourly fee calculated based on the minimum RCU selected by the user.
+	// The estimated hourly fee calculated based on the minimum number of RCUs selected by the user.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ func (s *DescribePriceResponseBody) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfo struct {
-	// The price information.
+	// The pricing information.
 	ActivityInfo *DescribePriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
 	Coupons      *DescribePriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
 	// The currency unit.
@@ -176,7 +176,7 @@ type DescribePriceResponseBodyPriceInfo struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount.
+	// The discount amount.
 	//
 	// example:
 	//
@@ -195,19 +195,19 @@ type DescribePriceResponseBodyPriceInfo struct {
 	// 10508
 	OriginalPrice *float32                                   `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	RuleIds       *DescribePriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// The estimated hourly fee calculated based on the maximum RCU selected by the user.
+	// The estimated hourly fee calculated based on the maximum number of RCUs selected by the user.
 	//
 	// example:
 	//
 	// 1**
 	TradeMaxRCUAmount *float32 `json:"TradeMaxRCUAmount,omitempty" xml:"TradeMaxRCUAmount,omitempty"`
-	// The estimated hourly fee calculated based on the minimum RCU selected by the user.
+	// The estimated hourly fee calculated based on the minimum number of RCUs selected by the user.
 	//
 	// example:
 	//
 	// 2**
 	TradeMinRCUAmount *float32 `json:"TradeMinRCUAmount,omitempty" xml:"TradeMinRCUAmount,omitempty"`
-	// The final price, which is the original price minus the discount.
+	// The final price, which is the original price minus the discount amount.
 	//
 	// example:
 	//
@@ -333,7 +333,7 @@ func (s *DescribePriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfoActivityInfo struct {
-	// The error description.
+	// The error message.
 	//
 	// example:
 	//
@@ -345,7 +345,7 @@ type DescribePriceResponseBodyPriceInfoActivityInfo struct {
 	//
 	// 123456
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -586,61 +586,61 @@ func (s *DescribePriceResponseBodyRulesRule) Validate() error {
 }
 
 type DescribePriceResponseBodyServerlessPrice struct {
-	// The discount amount for the maximum RCU.
+	// The discount amount for the maximum number of RCUs.
 	//
 	// example:
 	//
 	// 1**.*
 	RCUDiscountMaxAmount *float32 `json:"RCUDiscountMaxAmount,omitempty" xml:"RCUDiscountMaxAmount,omitempty"`
-	// The discount amount for the minimum RCU.
+	// The discount amount for the minimum number of RCUs.
 	//
 	// example:
 	//
 	// 1*.*
 	RCUDiscountMinAmount *float32 `json:"RCUDiscountMinAmount,omitempty" xml:"RCUDiscountMinAmount,omitempty"`
-	// The original price for the maximum RCU.
+	// The original price for the maximum number of RCUs.
 	//
 	// example:
 	//
 	// 2**.*
 	RCUOriginalMaxAmount *float32 `json:"RCUOriginalMaxAmount,omitempty" xml:"RCUOriginalMaxAmount,omitempty"`
-	// The original price for the minimum RCU.
+	// The original price for the minimum number of RCUs.
 	//
 	// example:
 	//
 	// 3*.*
 	RCUOriginalMinAmount *float32 `json:"RCUOriginalMinAmount,omitempty" xml:"RCUOriginalMinAmount,omitempty"`
-	// The original price of the disk.
+	// The original price of the cloud disk.
 	//
 	// example:
 	//
 	// 1*
 	StorageOriginalAmount *float32 `json:"StorageOriginalAmount,omitempty" xml:"StorageOriginalAmount,omitempty"`
-	// The maximum total price before discount.
+	// The maximum total original price before discount.
 	//
 	// example:
 	//
 	// 2**.*
 	TotalOriginalMaxAmount *float32 `json:"TotalOriginalMaxAmount,omitempty" xml:"TotalOriginalMaxAmount,omitempty"`
-	// The minimum total price before discount.
+	// The minimum total original price before discount.
 	//
 	// example:
 	//
 	// 2*.*
 	TotalOriginalMinAmount *float32 `json:"TotalOriginalMinAmount,omitempty" xml:"TotalOriginalMinAmount,omitempty"`
-	// The trade price for the maximum RCU.
+	// The final price for the maximum number of RCUs.
 	//
 	// example:
 	//
 	// 1**.*
 	TradeMaxRCUAmount *float32 `json:"TradeMaxRCUAmount,omitempty" xml:"TradeMaxRCUAmount,omitempty"`
-	// The trade price for the minimum RCU.
+	// The final price for the minimum number of RCUs.
 	//
 	// example:
 	//
 	// 2*.*
 	TradeMinRCUAmount *float32 `json:"TradeMinRCUAmount,omitempty" xml:"TradeMinRCUAmount,omitempty"`
-	// The discount price of the disk.
+	// The discount amount for the cloud disk.
 	//
 	// example:
 	//

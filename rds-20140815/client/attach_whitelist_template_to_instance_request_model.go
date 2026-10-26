@@ -24,7 +24,7 @@ type iAttachWhitelistTemplateToInstanceRequest interface {
 }
 
 type AttachWhitelistTemplateToInstanceRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type AttachWhitelistTemplateToInstanceRequest struct {
 	//
 	// rm-bp191w771kd3****
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type AttachWhitelistTemplateToInstanceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The whitelist template ID. You can call DescribeAllWhitelistTemplate to obtain the ID.
+	// The ID of the whitelist template. You can call the DescribeAllWhitelistTemplate operation to query the ID.
 	//
 	// This parameter is required.
 	//

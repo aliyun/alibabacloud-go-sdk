@@ -24,7 +24,7 @@ type MigrateToOtherZoneResponseBody struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The order ID. This parameter is applicable only to ApsaraDB RDS for MySQL instances.
+	// The order ID. This parameter is only applicable to ApsaraDB RDS for MySQL instances.
 	//
 	// example:
 	//

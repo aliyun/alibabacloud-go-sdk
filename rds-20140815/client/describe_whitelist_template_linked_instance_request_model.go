@@ -22,13 +22,13 @@ type iDescribeWhitelistTemplateLinkedInstanceRequest interface {
 }
 
 type DescribeWhitelistTemplateLinkedInstanceRequest struct {
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. This parameter can be left empty.
+	// The ID of the resource group. This parameter can be left empty.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeWhitelistTemplateLinkedInstanceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The whitelist template ID. You can call DescribeAllWhitelistTemplate to obtain the ID.
+	// The ID of the whitelist template. You can call the DescribeAllWhitelistTemplate operation to query the ID.
 	//
 	// This parameter is required.
 	//

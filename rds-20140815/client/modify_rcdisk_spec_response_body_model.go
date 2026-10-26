@@ -16,13 +16,13 @@ type iModifyRCDiskSpecResponseBody interface {
 }
 
 type ModifyRCDiskSpecResponseBody struct {
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 24505392472****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

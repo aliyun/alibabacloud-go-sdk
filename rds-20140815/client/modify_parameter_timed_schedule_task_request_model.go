@@ -18,19 +18,19 @@ type iModifyParameterTimedScheduleTaskRequest interface {
 }
 
 type ModifyParameterTimedScheduleTaskRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// pgm-bp102g323jd4****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The scheduled switchover time to set. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The scheduled switchover time to set. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2022-05-06T09:24:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

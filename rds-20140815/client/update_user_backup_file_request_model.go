@@ -28,7 +28,7 @@ type iUpdateUserBackupFileRequest interface {
 }
 
 type UpdateUserBackupFileRequest struct {
-	// The user backup ID. You can call ListUserBackupFiles to obtain the ID.
+	// The ID of the user backup. You can call the ListUserBackupFiles operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -36,14 +36,14 @@ type UpdateUserBackupFileRequest struct {
 	//
 	// b-g14d0m772f7b****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The new description to set for the user backup.
+	// The new description of the user backup.
 	//
 	// example:
 	//
 	// CommentTest
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the ID.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -51,7 +51,7 @@ type UpdateUserBackupFileRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID.
+	// The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to query the ID.
 	//
 	// example:
 	//

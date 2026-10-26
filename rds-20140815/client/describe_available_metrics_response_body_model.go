@@ -28,7 +28,7 @@ type DescribeAvailableMetricsResponseBody struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The list of enhanced monitoring metrics.
 	Items []*DescribeAvailableMetricsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type DescribeAvailableMetricsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// sys cpu usage, sys cpu usage / total cpu
+	// sys CPU usage, sys CPU used / total CPU
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The category of the enhanced monitoring metric. Valid values:
 	//
-	// - **os**: operating system metric.
+	// - **os**: operating system metrics
 	//
-	// - **db**: database metric.
+	// - **db**: database metrics
 	//
 	// example:
 	//
@@ -126,15 +126,15 @@ type DescribeAvailableMetricsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// CPU Usage
+	// CPU usage
 	GroupKeyType *string `json:"GroupKeyType,omitempty" xml:"GroupKeyType,omitempty"`
 	// The statistical method of the enhanced monitoring metric. Valid values:
 	//
-	// - **avg**: average value.
+	// - **avg**: average value
 	//
-	// - **min**: minimum value.
+	// - **min**: minimum value
 	//
-	// - **max**: maximum value.
+	// - **max**: maximum value
 	//
 	// example:
 	//

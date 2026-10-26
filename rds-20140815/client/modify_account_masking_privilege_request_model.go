@@ -38,20 +38,20 @@ type ModifyAccountMaskingPrivilegeRequest struct {
 	//
 	// rm-t4n8t18o******6d5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// myDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The permission expiration time in UTC format. This parameter is required only for the fullAccess privilege.
+	// The expiration time of the permission in UTC format. This parameter is required only for the fullAccess permission.
 	//
 	// example:
 	//
 	// 2026-01-22T02:01:20Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The privilege type. Valid values: noneAccess, restrictedAccess, and fullAccess.
+	// The permission type. Valid values: noneAccess, restrictedAccess, and fullAccess.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +67,7 @@ type ModifyAccountMaskingPrivilegeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The account name. You can specify multiple accounts separated by commas.
+	// The name of the account. You can specify multiple account names separated by commas.
 	//
 	// This parameter is required.
 	//

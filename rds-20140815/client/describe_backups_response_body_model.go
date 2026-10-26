@@ -37,19 +37,19 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 30
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1A6D328C-84B8-40DC-BF49-6C73984D7494
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The size of the snapshot chain of the instance. Unit: bytes.
+	// The size of the snapshot chain for the instance. Unit: bytes.
 	//
 	// example:
 	//
 	// 0
 	TotalEcsSnapshotSize *int64 `json:"TotalEcsSnapshotSize,omitempty" xml:"TotalEcsSnapshotSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

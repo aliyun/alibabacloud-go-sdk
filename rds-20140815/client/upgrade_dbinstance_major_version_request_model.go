@@ -59,48 +59,55 @@ type iUpgradeDBInstanceMajorVersionRequest interface {
 
 type UpgradeDBInstanceMajorVersionRequest struct {
 	AllowDDL *bool `json:"AllowDDL,omitempty" xml:"AllowDDL,omitempty"`
-	// Specifies when to execute statistics information collection on the database.
+	// Specifies when to execute statistics collection for the database.
 	//
-	// - **Before**: Execute collection before the switchover. This ensures business stability. If the instance has a large data volume, the upgrade may take a long time.
+	// Valid values:
 	//
-	// - **After**: Execute collection after the switchover. The upgrade is faster. Accessing tables without generated statistics information after the upgrade may cause inaccurate execution plans. During peak hours, this may cause the database to break down.
+	// - **Before**: collects statistics before the cutover. This ensures business stability. If the data volume of the instance is too large, the upgrade may take a long time.
 	//
-	// > For non-switchover scenarios, "before switchover" means statistics information is collected before the new instance is opened for read/write, and "after switchover" means statistics information is collected after the new instance is opened for read/write.
+	// - **After**: collects statistics after the cutover. This accelerates the instance upgrade. Accessing tables for which no statistics are generated after the upgrade may lead to inaccurate execution plans and even database breakdown during peak hours.
+	//
+	// > For scenarios where no cutover is performed, collecting statistics before the cutover means collecting statistics before the new instance enables read and write operations, and collecting statistics after the cutover means collecting statistics after the new instance enables read and write operations.
 	//
 	// example:
 	//
 	// After
 	CollectStatMode *string `json:"CollectStatMode,omitempty" xml:"CollectStatMode,omitempty"`
+	// An internal reserved field. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// An internal reserved field. You do not need to specify this parameter
 	CustomExtraInfo *string `json:"CustomExtraInfo,omitempty" xml:"CustomExtraInfo,omitempty"`
-	// The instance type after the upgrade. The CPU and memory configurations must be greater than or equal to those of the original instance type. If **UpgradeMode*	- is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, **you do not need to configure*	- this parameter.
+	// The instance type after the upgrade. The CPU and memory configurations must be greater than or equal to those of the original instance. When **UpgradeMode*	- is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, you **do not need to configure*	- this parameter.
 	//
-	// For example, if the original instance type is `pg.n2.small.2c` with 1 CPU core and 2 GB of memory, you can upgrade it to `pg.n2.medium.2c` with 2 CPU cores and 4 GB of memory.
+	// For example, if the original instance type is `pg.n2.small.2c` with 1 core and 2 GB of memory, you can upgrade it to `pg.n2.medium.2c` with 2 cores and 4 GB of memory.
 	//
-	// > For the instance type codes of ApsaraDB RDS for PostgreSQL, refer to [Primary ApsaraDB RDS for PostgreSQL instance types](https://help.aliyun.com/document_detail/276990.html).
+	// > For more information about ApsaraDB RDS for PostgreSQL instance types, see [Primary ApsaraDB RDS for PostgreSQL instance types](https://help.aliyun.com/document_detail/276990.html).
 	//
 	// example:
 	//
 	// pg.n2.medium.2c
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance ID of the original instance.
+	// The ID of the original instance.
 	//
 	// example:
 	//
 	// pgm-bp1gm3yh0ht1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The instance storage capacity after the upgrade. Unit: GB. If **UpgradeMode*	- (upgrade pattern) is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, **you do not need to configure*	- this parameter.
+	// The instance storage after the upgrade. Unit: GB. When **UpgradeMode*	- (upgrade mode) is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, you **do not need to configure*	- this parameter.
 	//
 	// Valid values:
 	//
-	// - **PL1 ESSD cloud disk**: 20 GB to 3200 GB
+	// - **ESSD PL1 cloud disk**: 20 GB to 3,200 GB
 	//
-	// - **PL2 ESSD cloud disk**: 500 GB to 3200 GB
+	// - **ESSD PL2 cloud disk**: 500 GB to 3,200 GB
 	//
-	// - **PL3 ESSD cloud disk**: 1500 GB to 3200 GB
+	// - **ESSD PL3 cloud disk**: 1,500 GB to 3,200 GB
 	//
-	// - **Premium performance disk**: 40 GB to 2000 GB
+	// - **premium cloud disk**: 40 GB to 2,000 GB
 	//
-	// > When upgrading the major engine version of an instance with Premium Local SSDs, storage capacity reduction is supported. For the minimum storage capacity, refer to [Upgrade the major engine version of a database](https://help.aliyun.com/document_detail/203309.html).
+	// > When you upgrade the major database version of an instance with premium local SSDs, storage capacity reduction is supported. For more information about the minimum storage capacity, see [Upgrade the major engine version](https://help.aliyun.com/document_detail/203309.html).
 	//
 	// example:
 	//
@@ -110,40 +117,39 @@ type UpgradeDBInstanceMajorVersionRequest struct {
 	//
 	// Valid values:
 	//
-	// - **cloud_ssd**: standard SSD
+	// - **cloud_ssd**: standard SSD cloud disk
 	//
-	// - **cloud_essd**: PL1 ESSD
+	// - **cloud_essd**: ESSD PL1 cloud disk
 	//
-	// - **cloud_essd2**: PL2 ESSD
+	// - **cloud_essd2**: ESSD PL2 cloud disk
 	//
-	// - **cloud_essd3**: PL3 ESSD
+	// - **cloud_essd3**: ESSD PL3 cloud disk
 	//
-	// - **general_essd**: premium performance disk
+	// - **general_essd**: premium cloud disk
 	//
+	// The major engine version upgrade feature is based on cloud disk snapshots. The following storage types are supported after the upgrade:
 	//
-	// The major engine version upgrade feature is based on cloud disk snapshots. The supported storage types after the upgrade are as follows:
+	// - When the original instance uses standard SSD cloud disks, you can select standard SSD cloud disks.
 	//
-	// - If the original instance uses a standard SSD, you can select standard SSD.
+	// - When the original instance uses ESSD cloud disks, you can select ESSD PL1 cloud disks, ESSD PL2 cloud disks, ESSD PL3 cloud disks, or premium cloud disks.
 	//
-	// - If the original instance uses an ESSD cloud disk, you can select PL1 ESSD, PL2 ESSD, PL3 ESSD, or premium performance disk.
-	//
-	// - If the original instance uses Premium Local SSDs, you can select PL1 ESSD, PL2 ESSD, PL3 ESSD, or premium performance disk.
+	// - When the original instance uses premium local SSDs, you can select ESSD PL1 cloud disks, ESSD PL2 cloud disks, ESSD PL3 cloud disks, or premium cloud disks.
 	//
 	// example:
 	//
 	// cloud_essd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The network type of the instance after the upgrade. Set this parameter to VPC. Only VPC-connected instances support major engine version upgrades.
+	// The network type of the instance after the upgrade. Set the value to VPC. Only VPC-connected instances support major engine version upgrades.
 	//
-	// If the network type is classic network, switch to VPC first. For information about how to view or switch the network type, refer to [Switch the network type](https://help.aliyun.com/document_detail/96761.html).
+	// If the instance is connected to the classic network, switch the network type to VPC first. For more information about how to view or switch the network type, see [Switch the network type](https://help.aliyun.com/document_detail/96761.html).
 	//
 	// example:
 	//
 	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The billing method of the instance. Set this parameter to Postpaid for pay-as-you-go billing.
+	// The billing method. Set the value to Postpaid, which indicates the pay-as-you-go billing method.
 	//
-	// > If you want to change the billing method after the upgrade, refer to [Switch from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/96743.html).
+	// > If you want to change the billing method of the instance after the upgrade, see [Switch the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/96743.html).
 	//
 	// This parameter is required.
 	//
@@ -151,130 +157,130 @@ type UpgradeDBInstanceMajorVersionRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// Reserved parameter. You do not need to configure this parameter.
+	// A reserved parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// You do not need to configure this parameter. It specifies the internal IP address of the target instance. The system automatically assigns an IP address based on VPCId and vSwitchId by default.
+	// You do not need to configure this parameter. It specifies the internal IP address of the target instance. By default, the system automatically allocates an IP address based on the VPCId and vSwitchId parameters.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The switchover configuration. Specifies whether to switch traffic to the new version instance based on your business requirements.
+	// The cutover configuration. Specifies whether to switch traffic to the new-version instance based on your business requirements.
 	//
 	// Valid values:
 	//
-	// - **true**: Switchover is performed and automatic switchover is enabled. This option is typically used to execute the formal upgrade after confirming that your business can run stably on the new version.
+	// - **true**: performs the cutover and automatic switchover. This option is generally used to execute a formal upgrade after you confirm that your business can run stably on the new version.
 	//
-	// - **false**: Switchover is not performed and automatic switchover is not enabled. This option is typically used to test the compatibility of your application with the new version before the formal upgrade.
+	// - **false**: does not perform the cutover and does not perform automatic switchover. This option is generally used to test the compatibility of your current business with the new version before a formal upgrade.
 	//
-	// > - If you select switchover:
+	// > - If you choose to perform the cutover:
 	//
-	// >     - Switchover cannot be rolled back after execution. Proceed with caution.
+	// >     - Backoff is not supported after the cutover. Proceed with caution.
 	//
-	// >     - During the switchover procedure, the original instance becomes read-only and writes are not allowed. Execute the switchover during off-peak hours.
+	// >     - During the switchover procedure, the original instance becomes read-only and your business cannot write data to the instance. Make sure that you execute the cutover during off-peak hours.
 	//
-	// >     - If read-only instances are created for the original instance, you cannot select switchover. You can only upgrade the instance without switchover, and the original read-only instances are not cloned. After the upgrade, create new PostgreSQL read-only instances for the new version instance.
+	// >     - If read-only instances are attached to the original instance, you cannot perform the cutover. You can only upgrade the instance without performing the cutover, and the original read-only instances are not cloned. After the upgrade is complete, you must create PostgreSQL read-only instances for the new-version instance.
 	//
-	// > - If you do not select switchover:
+	// > - If you choose not to perform the cutover:
 	//
-	// >     - The business on the original instance is not affected during migration.
+	// >     - Your business on the original instance is not affected during the migration.
 	//
-	// >     - To upgrade the instance without switchover, change the database connection address in your application to the database connection address of the new instance after migration is complete. For information about how to view the connection address, refer to [View or modify the internal and public endpoints and port numbers](https://help.aliyun.com/document_detail/96788.html).
+	// >     - If you upgrade the instance without performing the cutover, you must change the database endpoint in your application to the endpoint of the new instance after the migration is complete. For more information about how to view the endpoint, see [View or change the internal and public endpoints and port numbers](https://help.aliyun.com/document_detail/96788.html).
 	//
 	// example:
 	//
 	// false
 	SwitchOver *string `json:"SwitchOver,omitempty" xml:"SwitchOver,omitempty"`
-	// Reserved parameter. You do not need to configure this parameter.
+	// A reserved parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//
 	// 2021-07-10T13:15:12Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// This parameter is used together with SwitchOver and takes effect only when **SwitchOver*	- is set to **true**. Specifies the switchover time.
+	// The cutover time. This parameter is used together with SwitchOver and takes effect only when **SwitchOver*	- is set to **true**.
 	//
 	// Valid values:
 	//
-	// - **Immediate**: The switchover takes effect immediately.
+	// - **Immediate**: The cutover takes effect immediately.
 	//
-	// - **MaintainTime**: The switchover takes effect during the maintenance window. You can call the ModifyDBInstanceMaintainTime operation to modify the maintenance window.
+	// - **MaintainTime**: The cutover takes effect within the maintenance window. You can call the ModifyDBInstanceMaintainTime operation to modify the maintenance window.
 	//
 	// example:
 	//
 	// Immediate
 	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
-	// The target major engine version of the instance after the upgrade. This value must be the same as the target version specified during the pre-upgrade check.
+	// The target major engine version after the upgrade. The value must be the same as the target version specified when you perform the pre-upgrade check.
 	//
-	// > You can call the UpgradeDBInstanceMajorVersionPrecheck operation to perform a pre-upgrade check for the major engine version upgrade.
+	// > You can call the UpgradeDBInstanceMajorVersionPrecheck operation to perform a pre-upgrade check for a major engine version upgrade.
 	//
 	// example:
 	//
 	// 13.0
 	TargetMajorVersion *string `json:"TargetMajorVersion,omitempty" xml:"TargetMajorVersion,omitempty"`
-	// The upgrade pattern. Configure this parameter when **SwitchOver*	- is set to **true**. Valid values:
+	// The upgrade mode. When **SwitchOver*	- is set to **true**, you must configure this parameter. Valid values:
 	//
-	// - **inPlaceUpgrade**: In-place upgrade. The major engine version upgrade task is executed on the original instance without creating a new version instance. After the upgrade, the original instance inherits the existing order, instance name, tags, CloudMonitor alert rules, and backup rules.
+	// - **inPlaceUpgrade**: in-place upgrade. The major engine version upgrade task is executed on the original instance, and no new-version instance is created. The major engine version of the original instance is upgraded, and the original instance inherits the existing orders, instance name, tags, CloudMonitor alert rules, and backup rules.
 	//
-	// - **blueGreenDeployment**: Blue-green deployment. The major engine version upgrade retains the original instance and creates a new version instance. The new instance is free of charge during creation. After the new instance is created, fees are incurred and the billing method may change. After the upgrade, both the original and new instances incur fees, and the new instance does not inherit the discounts of the original instance.
+	// - **blueGreenDeployment**: blue-green deployment. The major engine version upgrade retains the original instance and creates a new-version instance. You are not charged for the new instance while it is being created, but you are charged after it is created, and the billing method may change. After the upgrade is complete, both the original instance and the new instance incur fees, and the new instance does not enjoy the discounts of the original instance.
 	//
-	// - **zeroDownTimeUpgrade**: Zero-downtime upgrade. The system uses pg_upgrade to upgrade the original instance to the target version and uses native logical replication for incremental updates. Active switchover is supported during the upgrade procedure, and you can validate the higher version instance before the switchover. From the start of the upgrade until the active switchover, the instance maintains normal read/write operations. During the switchover, the read-only duration is at the second level.
+	// - **zeroDownTimeUpgrade**: zero-downtime upgrade. The system uses pg_upgrade to upgrade the original instance to the target version and implements incremental updates through native logical replication. Manual switchover is supported during the upgrade procedure, and you can verify the higher-version instance before the switchover. From the start of the upgrade to the manual switchover, the instance can maintain normal read and write operations. During the switchover, the read-only duration of the instance is measured in seconds.
 	//
 	// example:
 	//
 	// inPlaceUpgrade
 	UpgradeMode *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
-	// Reserved parameter. You do not need to configure this parameter.
+	// A reserved parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The VPC ID. If **UpgradeMode*	- is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, **you do not need to configure*	- this parameter.
+	// The VPC ID. When **UpgradeMode*	- is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, you **do not need to configure*	- this parameter.
 	//
-	// You can call the DescribeDBInstanceAttribute operation to query the VPC ID of the original instance.
+	// You can call the DescribeDBInstanceAttribute operation to view the VPC ID of the original instance.
 	//
 	// example:
 	//
 	// vpc-bp1opxu1zkhn00gzv****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the target instance. If **UpgradeMode*	- (upgrade pattern) is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, **you do not need to configure*	- this parameter.
+	// The vSwitch ID of the target instance. When **UpgradeMode*	- (upgrade mode) is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, you **do not need to configure*	- this parameter.
 	//
-	// - If the original instance is a Basic Edition instance, specify the vSwitch ID of the target instance.
+	// - When the original instance is a Basic Edition instance, configure the vSwitch ID of the target instance.
 	//
-	// - If the original instance is a high-availability series instance, you can specify the vSwitch IDs of the target primary and secondary instances, separated by commas (,).
+	// - When the original instance is a high availability instance, you can configure the vSwitch IDs of the target primary and secondary instances, separated by commas (,).
 	//
-	// > The target vSwitch must be in the same zone as the original instance. You can call the DescribeVSwitches operation to query vSwitches.
+	// > The configured vSwitch of the target instance must be in the same zone as the original instance. You can call the DescribeVSwitches operation to query the vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp10aqj6o4lclxdrm****,vsw-bp10aqj6o4lclxdrm****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The primary zone ID of the target instance. If **UpgradeMode*	- is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, **you do not need to configure*	- this parameter.
+	// The ID of the destination primary zone. When **UpgradeMode*	- is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, you **do not need to configure*	- this parameter.
 	//
-	// You can call the DescribeRegions operation to query zone IDs.
+	// You can call the DescribeRegions operation to view the zone ID.
 	//
-	// ApsaraDB RDS for PostgreSQL allows you to deploy the new instance in a different zone within the same region as the original instance after the upgrade.
+	// ApsaraDB RDS for PostgreSQL allows you to configure the new instance in a different zone within the same region as the original instance after the upgrade.
 	//
 	// example:
 	//
 	// cn-hangzhou-j
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// This parameter can be configured only when the original instance is a high-availability series instance. Specifies the secondary zone ID of the target instance. If **UpgradeMode*	- (upgrade pattern) is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, **you do not need to configure*	- this parameter.
+	// The ID of the secondary zone of the target instance. This parameter is available only when the original instance is a high availability instance. When **UpgradeMode*	- (upgrade mode) is set to **inPlaceUpgrade*	- or **zeroDownTimeUpgrade**, you **do not need to configure*	- this parameter.
 	//
-	// ApsaraDB RDS for PostgreSQL allows you to deploy the new secondary instance in a different zone within the same region as the original instance after the upgrade.
+	// ApsaraDB RDS for PostgreSQL allows you to configure the new secondary instance in a different zone within the same region as the original instance after the upgrade.
 	//
-	// You can call the DescribeRegions operation to query zone IDs.
+	// You can call the DescribeRegions operation to view the zone ID.
 	//
 	// example:
 	//
 	// cn-hangzhou-j
 	ZoneIdSlave1 *string `json:"ZoneIdSlave1,omitempty" xml:"ZoneIdSlave1,omitempty"`
-	// Reserved parameter. You do not need to configure this parameter.
+	// A reserved parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//

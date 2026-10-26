@@ -36,21 +36,21 @@ type iDescribeDedicatedHostsRequest interface {
 type DescribeDedicatedHostsRequest struct {
 	// Specifies whether the host allows instance allocation. Valid values:
 	//
-	// 	- **0**: Instance allocation is not allowed.
+	// 	- **0**: Not allowed.
 	//
-	// 	- **1**: Instance allocation is allowed.
+	// 	- **1**: Allowed.
 	//
 	// example:
 	//
 	// 1
 	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
-	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
+	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to obtain the dedicated cluster ID.
 	//
 	// example:
 	//
 	// dhg-7a9xxxxxxxx
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The host ID in the dedicated cluster.
+	// The host ID of the dedicated cluster.
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type DescribeDedicatedHostsRequest struct {
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 	// The host status. Valid values:
 	//
-	//  	- **0**: being created
+	//  	- **0**: Creating.
 	//
-	//  	- **1**: running
+	//  	- **1**: Running.
 	//
-	//  	- **2**: down
+	//  	- **2**: Down.
 	//
-	//  	- **3**: offline (host being replaced)
+	//  	- **3**: Down and offline (host replacement in progress).
 	//
-	//  	- **4**: offline
+	//  	- **4**: Offline.
 	//
-	//  	- **5**: deleted
+	//  	- **5**: Deleted.
 	//
-	//  	- **6**: restarting
+	//  	- **6**: Restarting.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// 	- **dhg_cloud_ssd**: ESSD cloud disk.
 	//
-	// 	- **dhg_local_ssd**: local standard SSD.
+	// 	- **dhg_local_ssd**: local SSD.
 	//
 	// example:
 	//

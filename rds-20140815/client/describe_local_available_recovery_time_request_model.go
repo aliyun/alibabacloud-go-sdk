@@ -33,7 +33,7 @@ type DescribeLocalAvailableRecoveryTimeRequest struct {
 	// rm-bp1f****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//

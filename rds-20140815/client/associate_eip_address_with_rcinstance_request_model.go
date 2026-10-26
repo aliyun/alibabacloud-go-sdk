@@ -18,7 +18,7 @@ type iAssociateEipAddressWithRCInstanceRequest interface {
 }
 
 type AssociateEipAddressWithRCInstanceRequest struct {
-	// The ID of the EIP.
+	// The ID of the elastic IP address (EIP).
 	//
 	// > If you do not have an EIP, [create an EIP](https://help.aliyun.com/document_detail/292841.html) first.
 	//
@@ -26,13 +26,13 @@ type AssociateEipAddressWithRCInstanceRequest struct {
 	//
 	// eip-bp166out2x4bpcf******
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The instance ID of the RDS Custom instance.
+	// The RDS Custom instance ID.
 	//
 	// example:
 	//
 	// rc-i322y2t562oh7o******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID. You can call DescribeRegions to query the available regions.
+	// The region ID. You can call the DescribeRegions operation to query available regions.
 	//
 	// example:
 	//

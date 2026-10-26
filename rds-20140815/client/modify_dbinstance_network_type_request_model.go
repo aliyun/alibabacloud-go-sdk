@@ -38,15 +38,15 @@ type iModifyDBInstanceNetworkTypeRequest interface {
 }
 
 type ModifyDBInstanceNetworkTypeRequest struct {
-	// The number of days for which the classic network address reservation is retained. Valid values: **1 to 120**. Unit: days. Default value: **7**.
+	// The number of days for the classic network address reservation. Valid values: **1*	- to **120**. Unit: days. Default value: **7**.
 	//
-	// >This parameter is required if **RetainClassic*	- is set to **True**.
+	// >This parameter is required when the **RetainClassic*	- parameter is set to **True**.
 	//
 	// example:
 	//
 	// 7
 	ClassicExpiredDays *string `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyDBInstanceNetworkTypeRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The target network type. Set the value to **VPC**.
+	// The target network type. Set the value to **VPC**, which indicates a virtual private cloud (VPC).
 	//
 	// This parameter is required.
 	//
@@ -64,23 +64,23 @@ type ModifyDBInstanceNetworkTypeRequest struct {
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Settings for the internal network IP address of the instance. The IP address must be within the address range of the specified vSwitch. By default, the system automatically allocates an IP address based on the values of **VPCId*	- and **VSwitchId**.
+	// Settings for the internal network IP address of the instance. The IP address must be within the address range of the specified vSwitch. By default, the system automatically allocates an IP address based on the **VPCId*	- and **VSwitchId*	- parameters.
 	//
 	// example:
 	//
 	// 172.10.XX.XX
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The number of days for which the read/write splitting endpoint of the classic network type is retained for address reservation. Valid values: **1 to 120**. Unit: days. Default value: **7**.
+	// The number of days for the classic network address reservation for read/write splitting. Valid values: **1*	- to **120**. Unit: days. Default value: **7**.
 	//
-	// >This parameter takes effect only when the instance has a classic network type read/write splitting endpoint and **RetainClassic*	- is set to **True**.
+	// >This parameter takes effect only when the instance has a read/write splitting address of the classic network type and the **RetainClassic*	- parameter is set to **True**.
 	//
 	// example:
 	//
 	// 7
 	ReadWriteSplittingClassicExpiredDays *int32 `json:"ReadWriteSplittingClassicExpiredDays,omitempty" xml:"ReadWriteSplittingClassicExpiredDays,omitempty"`
-	// Settings for the internal network read/write splitting IP address of the instance. The IP address must be within the address range of the specified vSwitch. By default, the system automatically allocates an IP address based on the values of **VPCId*	- and **VSwitchId**.
+	// Settings for the internal network IP address of the read/write splitting endpoint for the instance. The IP address must be within the address range of the specified vSwitch. By default, the system automatically allocates an IP address based on the **VPCId*	- and **VSwitchId*	- parameters.
 	//
-	// >This parameter takes effect only when the instance has a classic network type read/write splitting endpoint.
+	// >This parameter takes effect only when the instance has a read/write splitting address of the classic network type.
 	//
 	// example:
 	//
@@ -90,21 +90,21 @@ type ModifyDBInstanceNetworkTypeRequest struct {
 	ResourceOwnerId                    *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to retain the classic network endpoint. Valid values:
 	//
-	// 	- **True**: The classic network endpoint is retained.
+	// 	- **True**: Retains the classic network endpoint.
 	//
-	// 	- **False*	- (default): The classic network endpoint is not retained.
+	// 	- **False**: Does not retain the classic network endpoint. This is the default value.
 	//
 	// example:
 	//
 	// True
 	RetainClassic *string `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-uf6f7l4fg90****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID. This parameter is required if **VPCId*	- is specified.
+	// The ID of the vSwitch. This parameter is required when the **VPCId*	- parameter is specified.
 	//
 	// example:
 	//

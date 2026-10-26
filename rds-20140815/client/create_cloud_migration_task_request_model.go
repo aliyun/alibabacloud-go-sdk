@@ -28,7 +28,7 @@ type iCreateCloudMigrationTaskRequest interface {
 }
 
 type CreateCloudMigrationTaskRequest struct {
-	// The ID of the target instance. You can invoke the DescribeDBInstances operation to query the instance ID.
+	// The instance ID of the destination instance. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -45,11 +45,11 @@ type CreateCloudMigrationTaskRequest struct {
 	//
 	// migratetest
 	SourceAccount *string `json:"SourceAccount,omitempty" xml:"SourceAccount,omitempty"`
-	// The category of the source instance.
+	// The category of the source instance. Valid values:
 	//
-	// - **aliyunRDS**: ApsaraDB RDS instance.
+	// - **aliyunRDS**: Alibaba Cloud RDS instance.
 	//
-	// - **other**: other.
+	// - **other**: Other.
 	//
 	// This parameter is required.
 	//
@@ -59,9 +59,9 @@ type CreateCloudMigrationTaskRequest struct {
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
 	// The internal or public IP address of the self-managed PostgreSQL database.
 	//
-	// - To migrate a self-managed PostgreSQL database on an ECS instance to the cloud, set this parameter to the private IP address of the ECS instance. For more information about how to obtain the IP address, see [View IP addresses](https://help.aliyun.com/document_detail/98677.html).
+	// - For the one-click cloud migration scenario of a self-managed PostgreSQL database on an ECS instance, set this parameter to the private IP address of the ECS instance. For more information, see [View IP addresses](https://help.aliyun.com/document_detail/98677.html).
 	//
-	// - To migrate a self-managed PostgreSQL database in an Internet Data Center (IDC) to the cloud, set this parameter to the internal IP address of the IDC.
+	// - For the one-click cloud migration scenario of a self-managed PostgreSQL database in an IDC, set this parameter to the internal IP address of the IDC.
 	//
 	// This parameter is required.
 	//
@@ -85,7 +85,7 @@ type CreateCloudMigrationTaskRequest struct {
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The task name. You can specify a custom name. If you do not specify this parameter, the system automatically generates a name.
+	// The name of the task. You can specify a custom name. If you do not specify a name, the system automatically generates one.
 	//
 	// example:
 	//

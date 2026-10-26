@@ -26,15 +26,15 @@ type iCopyDatabaseBetweenInstancesRequest interface {
 }
 
 type CopyDatabaseBetweenInstancesRequest struct {
-	// The backup set ID of the source instance. To copy a database from a backup set, call DescribeBackups to query the backup set ID.
+	// The ID of the backup set of the source instance. When you copy a database based on a backup set, you can call the DescribeBackups operation to query the backup set ID.
 	//
-	// >You must specify either **BackupId*	- or **RestoreTime**.
+	// >When you call this operation, you must specify either **BackupId*	- or **RestoreTime**.
 	//
 	// example:
 	//
 	// 259321****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The source instance ID. You can call DescribeDBInstances to query the instance ID.
+	// The ID of the source instance. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type CopyDatabaseBetweenInstancesRequest struct {
 	//
 	// rm-bp172446ys9cf****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The list of database names to be copied. Format: `{"Source database name":"Destination database name"}`. Separate multiple databases with commas (,). Examples:
+	// The names of the databases to be copied. Specify the names in the following format: `{"Source database name":"Target database name"}`. Separate multiple databases with commas (,). Examples:
 	//
 	// - Copy a single database: `{"zhttest":"zhttest"}`
 	//
 	// - Copy multiple databases: `{"zhttest01":"zhttest01","zhttest02":"zhttest02"}`
 	//
-	// > The database name on the target instance can be different from that on the source instance. However, make sure that the target instance does not contain a database with the same name before copying.
+	// > The name of the database in the target instance can be different from that in the source instance. However, before copying, make sure that the target instance does not contain a database with the same name.
 	//
 	// This parameter is required.
 	//
@@ -57,25 +57,25 @@ type CopyDatabaseBetweenInstancesRequest struct {
 	// {"zhttest":"zhttest"}
 	DbNames         *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time to which you want to copy the database. You can specify any point in time within the backup retention period. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The point in time to which you want to restore the database. You can select any point in time within the backup retention period. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
-	// >You must specify either **BackupId*	- or **RestoreTime**.
+	// >When you call this operation, you must specify either **BackupId*	- or **RestoreTime**.
 	//
 	// example:
 	//
 	// 2025-06-08T17:41:14Z
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// Specifies whether to copy users and permissions. Valid values:
+	// Specifies whether to enable the replication of users and permissions. Valid values:
 	//
-	// 	- **YES**: Users and permissions are copied. If the target instance contains a user with the same name, the permissions of the user on the source instance are merged with those of the user on the target instance.
+	// 	- **YES**: Enables the replication of users and permissions. If the target instance contains a user with the same name as a user in the source instance, the permissions of the source user are added to the target user.
 	//
-	// 	- **NO*	- (default): Users and permissions are not copied.
+	// 	- **NO**: Disables the replication of users and permissions. This is the default value.
 	//
 	// example:
 	//
 	// NO
 	SyncUserPrivilege *string `json:"SyncUserPrivilege,omitempty" xml:"SyncUserPrivilege,omitempty"`
-	// The target instance ID. You can invoke DescribeDBInstances to query the instance ID.
+	// The ID of the target instance. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//

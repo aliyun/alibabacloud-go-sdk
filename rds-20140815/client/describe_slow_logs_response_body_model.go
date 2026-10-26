@@ -42,7 +42,7 @@ type DescribeSlowLogsResponseBody struct {
 	//
 	// 2011-05-30Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The database engine type.
+	// The database engine.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iEvaluateLocalExtendDiskRequest interface {
 }
 
 type EvaluateLocalExtendDiskRequest struct {
-  // The instance name.
+  // The name of the instance.
   // 
   // This parameter is required.
   // 
@@ -35,7 +35,7 @@ type EvaluateLocalExtendDiskRequest struct {
   // rm-wz9s06u4drm******
   DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query available regions.
+  // The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to obtain the region ID.
   // 
   // This parameter is required.
   // 
@@ -43,7 +43,7 @@ type EvaluateLocalExtendDiskRequest struct {
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The resource group ID.
+  // The ID of the resource group.
   // 
   // example:
   // 
@@ -51,7 +51,7 @@ type EvaluateLocalExtendDiskRequest struct {
   ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-  // The storage capacity after the expansion. Unit: GB.
+  // The storage capacity after scaling. Unit: GB.
   // 
   // example:
   // 

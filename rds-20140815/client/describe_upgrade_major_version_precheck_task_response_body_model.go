@@ -22,7 +22,7 @@ type iDescribeUpgradeMajorVersionPrecheckTaskResponseBody interface {
 }
 
 type DescribeUpgradeMajorVersionPrecheckTaskResponseBody struct {
-	// The property list of the major engine version upgrade check report. Each attribute column contains the details of a check report entry.
+	// The list of attributes in the check reports for major engine version upgrades.
 	Items []*DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,7 +30,7 @@ type DescribeUpgradeMajorVersionPrecheckTaskResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -117,23 +117,19 @@ func (s *DescribeUpgradeMajorVersionPrecheckTaskResponseBody) Validate() error {
 }
 
 type DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems struct {
-	// The check time.
-	//
-	// The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the check is performed. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1635143903000
 	CheckTime *string `json:"CheckTime,omitempty" xml:"CheckTime,omitempty"`
-	// The content of the major engine version upgrade check report.
+	// The content of the check report for the major engine version upgrade.
 	//
 	// example:
 	//
 	// [user_check_report]User check success\\n[pg_upgrade_internal.log]Performing...
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The expiration time of the check report.
-	//
-	// The value is a UNIX timestamp. Unit: milliseconds.
+	// The expiration time of the check report. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -147,7 +143,7 @@ type DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems struct {
 	//
 	// 100
 	RecommendDiskSize *int32 `json:"RecommendDiskSize,omitempty" xml:"RecommendDiskSize,omitempty"`
-	// The recommended minimum memory for the upgrade. Unit: GB.
+	// The recommended minimum memory size for the upgrade. Unit: GB.
 	//
 	// > This parameter is returned only for ApsaraDB RDS for PostgreSQL instances.
 	//
@@ -155,9 +151,9 @@ type DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems struct {
 	//
 	// 8
 	RecommendLeastMemSize *int32 `json:"RecommendLeastMemSize,omitempty" xml:"RecommendLeastMemSize,omitempty"`
-	// The recommended memory for the upgrade. Unit: GB.
+	// The recommended memory size for the upgrade. Unit: GB.
 	//
-	// If the memory of the instance is greater than or equal to the recommended memory, the upgrade is performed at the fastest speed to minimize the read-only duration of the instance.
+	// If the memory size of the instance is greater than or equal to the recommended memory size, the upgrade is performed at the maximum speed to minimize the read-only duration of the instance.
 	//
 	// > This parameter is returned only for ApsaraDB RDS for PostgreSQL instances.
 	//
@@ -165,17 +161,15 @@ type DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems struct {
 	//
 	// 32
 	RecommendMemSize *int32 `json:"RecommendMemSize,omitempty" xml:"RecommendMemSize,omitempty"`
-	// The result of major engine version upgrade check.
+	// The result of the check for the major engine version upgrade. Valid values:
 	//
-	// Valid values:
+	// - Success: The check is successful.
 	//
-	// - Success: The check is passed.
+	// - Fail: The check fails.
 	//
-	// - Fail: The check failed.
+	// - warning: A warning is returned. You must check the report to determine whether to continue the upgrade.
 	//
-	// - warning: The check returned warnings. Review the report to determine whether to proceed with the upgrade.
-	//
-	// > If the check result is **Fail**, check the value of the **Detail*	- parameter, resolve the errors, and try again. For common errors and solutions, see [Understand major engine version upgrade check report for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/218391.html).
+	// > If the check result is **Fail**, check the value of the **Detail*	- parameter, troubleshoot the error, and try again. For more information about common errors and solutions, see [Interpret check reports for major engine version upgrades of ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/218391.html).
 	//
 	// example:
 	//
@@ -187,18 +181,23 @@ type DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems struct {
 	//
 	// 11.0
 	SourceMajorVersion *string `json:"SourceMajorVersion,omitempty" xml:"SourceMajorVersion,omitempty"`
-	// The target instance version.
+	// The major engine version of the target instance.
 	//
 	// example:
 	//
 	// 12.0
 	TargetMajorVersion *string `json:"TargetMajorVersion,omitempty" xml:"TargetMajorVersion,omitempty"`
-	// The node ID of the major engine version upgrade pre-check task.
+	// The ID of the check task before the major engine version upgrade.
 	//
 	// example:
 	//
 	// 416980000
-	TaskId      *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The mode of the major engine version upgrade.
+	//
+	// example:
+	//
+	// zeroDownTimeUpgrade
 	UpgradeMode *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
 }
 

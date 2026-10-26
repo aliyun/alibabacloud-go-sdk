@@ -16,7 +16,7 @@ type iQueryNotifyResponseBody interface {
 }
 
 type QueryNotifyResponseBody struct {
-	// The returned data.
+	// The returned fields.
 	Data *QueryNotifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -76,7 +76,7 @@ type QueryNotifyResponseBodyData struct {
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -148,19 +148,19 @@ type QueryNotifyResponseBodyDataNotifyItemList struct {
 	//
 	// 22973492****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// Indicates whether the notification has been confirmed, that is, whether the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation has been called to mark the notification as confirmed. Valid values:
+	// Indicates whether the notification has been received. This indicates whether the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation was called to mark the notification as confirmed. Valid values:
 	//
-	// 	- **true**: The notification has been confirmed.
+	// 	- **true**: Yes.
 	//
-	// 	- **false**: The notification has not been confirmed.
+	// 	- **false**: No.
 	//
 	// example:
 	//
 	// true
 	ConfirmFlag *bool `json:"ConfirmFlag,omitempty" xml:"ConfirmFlag,omitempty"`
-	// The UID of the notification recipient under the current Alibaba Cloud account who called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed.
+	// The UID of the user who received the notification under the current Alibaba Cloud account. This user called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed.
 	//
-	// A return value of **0*	- indicates that the notification was automatically confirmed by the system.
+	// A value of **0*	- indicates that the notification was automatically received by the system.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type QueryNotifyResponseBodyDataNotifyItemList struct {
 	//
 	// 0
 	IdempotentCount *string `json:"IdempotentCount,omitempty" xml:"IdempotentCount,omitempty"`
-	// The idempotency identifier used to prevent duplicate notifications from being sent.
+	// The ID used to ensure the idempotence of the notification and prevent duplicate notifications.
 	//
 	// example:
 	//
@@ -198,33 +198,33 @@ type QueryNotifyResponseBodyDataNotifyItemList struct {
 	IdempotentId *string `json:"IdempotentId,omitempty" xml:"IdempotentId,omitempty"`
 	// The level of the notification. Valid values:
 	//
-	// 	- **help**: help
+	// 	- **help**: Help level.
 	//
-	// 	- **success**: execution succeeded
+	// 	- **success**: Success level.
 	//
-	// 	- **warning**: warning
+	// 	- **warning**: Warning level.
 	//
-	// 	- **error**: execution failed
+	// 	- **error**: Error level.
 	//
-	// 	- **loading**: task in progress
+	// 	- **loading**: In progress.
 	//
-	// 	- **notice**: general
+	// 	- **notice**: Notice level.
 	//
 	// example:
 	//
 	// error
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The elements in the notification template, which are represented as a JSON string. The parameters in the JSON string vary based on the value of **TemplateName**.
+	// The elements in the notification template, which consist of a JSON string. The parameters contained in the JSON string vary based on the **TemplateName**.
 	//
-	// 	- If **TemplateName*	- is set to **RenewalRecommend**:
+	// 	- If **TemplateName*	- is **RenewalRecommend**:
 	//
 	//     	- **instanceName**: the ID of the instance that is about to expire.
 	//
 	//     	- **reservedTime**: the number of remaining days.
 	//
-	// 	- If **TemplateName*	- is set to **InstanceCreateFailed**:
+	// 	- If **TemplateName*	- is **InstanceCreateFailed**:
 	//
-	//     	- **orderId**: the order ID for the instance purchase.
+	//     	- **orderId**: the order ID for purchasing the instance.
 	//
 	//     	- **reason**: the reason why the instance failed to be created.
 	//
@@ -234,9 +234,9 @@ type QueryNotifyResponseBodyDataNotifyItemList struct {
 	NotifyElement *string `json:"NotifyElement,omitempty" xml:"NotifyElement,omitempty"`
 	// The notification template. Valid values:
 	//
-	// 	- **RenewalRecommend**: renewal recommendation
+	// 	- **RenewalRecommend**: Renewal recommendation.
 	//
-	// 	- **InstanceCreateFailed**: instance creation failed with refund
+	// 	- **InstanceCreateFailed**: Instance creation failure and refund.
 	//
 	// example:
 	//
@@ -244,11 +244,11 @@ type QueryNotifyResponseBodyDataNotifyItemList struct {
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The notification type. Valid values:
 	//
-	// 	- **Sell**: sale-related notification
+	// 	- **Sell**: Sales notification.
 	//
-	// 	- **Operation**: O&M notification
+	// 	- **Operation**: O&M notification.
 	//
-	// 	- **Promotion**: promotional notification
+	// 	- **Promotion**: Promotional notification.
 	//
 	// example:
 	//

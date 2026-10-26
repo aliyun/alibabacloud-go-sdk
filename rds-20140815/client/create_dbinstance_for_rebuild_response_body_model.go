@@ -28,7 +28,7 @@ type CreateDBInstanceForRebuildResponseBody struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//

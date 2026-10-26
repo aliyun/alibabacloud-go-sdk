@@ -22,7 +22,7 @@ type iDescribeHistoryEventsResponseBody interface {
 }
 
 type DescribeHistoryEventsResponseBody struct {
-	// The event list.
+	// The list of events.
 	Items []*DescribeHistoryEventsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -36,7 +36,7 @@ type DescribeHistoryEventsResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *DescribeHistoryEventsResponseBody) Validate() error {
 type DescribeHistoryEventsResponseBodyItems struct {
 	// The data overview.
 	Data *DescribeHistoryEventsResponseBodyItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type DescribeHistoryEventsResponseBodyItems struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The event source.
+	// The source of the event.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type DescribeHistoryEventsResponseBodyItems struct {
 	//
 	// QiTian
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// The elapsed time of the query task. Unit: seconds.
+	// The running duration of the query task. Unit: seconds.
 	//
 	// example:
 	//
@@ -253,17 +253,17 @@ func (s *DescribeHistoryEventsResponseBodyItems) Validate() error {
 }
 
 type DescribeHistoryEventsResponseBodyItemsData struct {
-	// The cloud service type of the application group. Valid values:
+	// The type of the cloud service for the application group. Valid values:
 	//
-	// - **web**: web application.
+	// - **web**: web application
 	//
-	// - **native**: on-premises application.
+	// - **native**: native application
 	//
 	// example:
 	//
 	// web
 	CmsProduct *string `json:"CmsProduct,omitempty" xml:"CmsProduct,omitempty"`
-	// The database type.
+	// The type of the database.
 	//
 	// example:
 	//
@@ -275,13 +275,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// 1
 	DetailImpact *string `json:"DetailImpact,omitempty" xml:"DetailImpact,omitempty"`
-	// The instance operation details.
+	// The details of the instance operation.
 	//
 	// example:
 	//
 	// xxxx
 	DetailReason *string `json:"DetailReason,omitempty" xml:"DetailReason,omitempty"`
-	// The alert end time.
+	// The end time of the alert.
 	//
 	// example:
 	//
@@ -289,13 +289,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The system event categorization. Valid values:
 	//
-	// - **Exception**: abnormal event.
+	// - **Exception**: abnormal event
 	//
-	// - **Optimize**: optimization events.
+	// - **Optimize**: optimization events
 	//
-	// - **Notification**: notification event.
+	// - **Notification**: notification event
 	//
-	// - **Maintenance**: scheduled maintenance event.
+	// - **Maintenance**: scheduled maintenance event
 	//
 	// example:
 	//
@@ -313,13 +313,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// xxxxx
 	EventDetail *string `json:"EventDetail,omitempty" xml:"EventDetail,omitempty"`
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
 	// 669036
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The event impact overview.
+	// The impact overview of the event.
 	//
 	// example:
 	//
@@ -327,11 +327,11 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	EventImpact *string `json:"EventImpact,omitempty" xml:"EventImpact,omitempty"`
 	// The event level. Valid values:
 	//
-	// - **INFO**: notification.
+	// - **INFO**: information
 	//
-	// - **WARN**: warning.
+	// - **WARN**: warning
 	//
-	// - **CRITICAL**: critical.
+	// - **CRITICAL**: critical
 	//
 	// example:
 	//
@@ -343,19 +343,19 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// xxxxx
 	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
-	// The event status. Valid values:
+	// The status of the event. Valid values:
 	//
-	// - **Inquiring**: inquiring.
+	// - **Inquiring**: inquiring
 	//
-	// - **Scheduled**: scheduled.
+	// - **Scheduled**: scheduled
 	//
-	// - **Running**: running.
+	// - **Running**: running
 	//
-	// - **Succeed**: completed.
+	// - **Succeed**: succeeded
 	//
-	// - **Failed**: failed.
+	// - **Failed**: failed
 	//
-	// - **Canceled**: canceled.
+	// - **Canceled**: canceled
 	//
 	// example:
 	//
@@ -365,19 +365,19 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
 	//
-	// - **SystemMaintenance.Redeploy**: The instance is redeployed due to system maintenance.
+	// - **SystemMaintenance.Redeploy**: The instance undergoes redeployment due to system maintenance.
 	//
-	// - **SystemFailure.Reboot**: The instance is restarted due to a system error.
+	// - **SystemFailure.Reboot**: The instance is restarted due to a system fault.
 	//
-	// - **SystemFailure.Redeploy**: The instance is redeployed due to a system error.
+	// - **SystemFailure.Redeploy**: The instance undergoes redeployment due to a system fault.
 	//
-	// - **SystemFailure.Delete**: The instance is released due to an instance creation failure.
+	// - **SystemFailure.Delete**: The instance is released because instance creation failed.
 	//
-	// - **InstanceFailure.Reboot**: The instance is restarted due to an instance error.
+	// - **InstanceFailure.Reboot**: The instance is restarted due to an instance fault.
 	//
-	// - **InstanceExpiration.Stop**: The instance is stopped due to subscription expiration.
+	// - **InstanceExpiration.Stop**: The subscription instance is stopped due to expiration.
 	//
-	// - **InstanceExpiration.Delete**: The instance is released due to subscription expiration.
+	// - **InstanceExpiration.Delete**: The subscription instance is released due to expiration.
 	//
 	// - **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
 	//
@@ -387,13 +387,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// StatusNotification
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The time when the event was created.
+	// The creation time of the event.
 	//
 	// example:
 	//
 	// 2023-03-17T16:05:40Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the event was last updated.
+	// The update time of the event.
 	//
 	// example:
 	//
@@ -417,23 +417,23 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// rg-acfmy****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// dhimgsearch
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether the event is closed. Valid values:
+	// Indicates whether the event is successfully closed. Valid values:
 	//
-	// - **0**: closed.
+	// - **0**: closed
 	//
-	// - **1**: open.
+	// - **1**: open
 	//
 	// example:
 	//
 	// 0
 	IsClosed *int32 `json:"IsClosed,omitempty" xml:"IsClosed,omitempty"`
-	// The product name.
+	// The name of the product.
 	//
 	// example:
 	//
@@ -445,13 +445,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// cn-guangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type. Valid values:
+	// The type of the resource. Valid values:
 	//
-	// - **Instance**: instance resource.
+	// - **Instance**: instance
 	//
-	// - **Host**: host resource.
+	// - **Host**: host
 	//
-	// - **User**: user resource.
+	// - **User**: user
 	//
 	// example:
 	//
@@ -469,7 +469,7 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// 2022-11-29T07:23Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the user who owns the resource.
+	// The ID of the user to which the resource belongs.
 	//
 	// example:
 	//

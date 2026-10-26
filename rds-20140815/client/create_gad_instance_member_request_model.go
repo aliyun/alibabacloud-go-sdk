@@ -26,7 +26,7 @@ type iCreateGadInstanceMemberRequest interface {
 }
 
 type CreateGadInstanceMemberRequest struct {
-	// The ID of the central node. You can call DescribeGadInstances to query the central node ID.
+	// The ID of the central node. You can call the DescribeGadInstances operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateGadInstanceMemberRequest struct {
 	//
 	// rm-bp190h8y69tad****
 	CentralDBInstanceId *string `json:"CentralDBInstanceId,omitempty" xml:"CentralDBInstanceId,omitempty"`
-	// The privileged account of the central node. You can call DescribeAccounts to query the account.
+	// The privileged account of the central node. You can call the DescribeAccounts operation to query the account.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CreateGadInstanceMemberRequest struct {
 	//
 	// test
 	CentralRdsDtsAdminAccount *string `json:"CentralRdsDtsAdminAccount,omitempty" xml:"CentralRdsDtsAdminAccount,omitempty"`
-	// The password of the privileged account for the central node.
+	// The password of the privileged account of the central node.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateGadInstanceMemberRequest struct {
 	//
 	// Test12345
 	CentralRdsDtsAdminPassword *string `json:"CentralRdsDtsAdminPassword,omitempty" xml:"CentralRdsDtsAdminPassword,omitempty"`
-	// The region ID of the central node (primary node). You can call DescribeRegions to query the region ID.
+	// The region ID of the central node (primary node). You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type CreateGadInstanceMemberRequest struct {
 	//
 	// cn-hangzhou
 	CentralRegionId *string `json:"CentralRegionId,omitempty" xml:"CentralRegionId,omitempty"`
-	// A JSON array of database information from the central node. All databases in the array are synchronized to the current unit node. Metric description:
+	// The JSON array of database information in the central node. All database information in the array is synchronized to the current unit node. Parameter description:
 	//
-	// 	- **name**: the database name.
+	// 	- **name**: the name of the database.
 	//
-	// 	- **all**: specifies whether to synchronize all data in the current database or table. Valid values: **true*	- | **false**.
+	// 	- **all**: specifies whether to synchronize all data in the current database or table. Valid values: **true*	- and **false**.
 	//
-	// 	- **Table**: the table name. If the **all*	- parameter is set to **false**, you must also specify the table names to be synchronized in the JSON array.
+	// 	- **Table**: the name of the table. If the **all*	- parameter is set to **false**, you must also include the names of the tables to be synchronized in the JSON array.
 	//
 	// Example: `{
 	//
@@ -98,7 +98,7 @@ type CreateGadInstanceMemberRequest struct {
 	//
 	// }`
 	//
-	// > For more information, see [Objects for migration, synchronization, or subscribe](https://help.aliyun.com/document_detail/209545.html).
+	// > For more information, see [Objects for migration, synchronization, or subscription](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// This parameter is required.
 	//
@@ -106,7 +106,7 @@ type CreateGadInstanceMemberRequest struct {
 	//
 	// {    "testdb": {     "name": "testdb",     "all": false,     "Table": {       "order": {         "name": "order",         "all": true       },       "ordernew": {         "name": "ordernew",         "all": true       }     }   } }
 	DBList *string `json:"DBList,omitempty" xml:"DBList,omitempty"`
-	// The ID of the ApsaraDB RDS global active database cluster. You can call DescribeGadInstances to query the cluster ID.
+	// The ID of the ApsaraDB RDS global active database cluster. You can call the DescribeGadInstances operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -205,11 +205,11 @@ func (s *CreateGadInstanceMemberRequest) Validate() error {
 }
 
 type CreateGadInstanceMemberRequestUnitNode struct {
-	// The name of the new unit node. The name must meet the following requirements:
+	// The name of the new unit node. The naming rules are as follows:
 	//
-	// - The name must be **2 to 255*	- characters in length.
+	// - The name must be **2*	- to **255*	- characters in length.
 	//
-	// - The name must start with a Chinese character or a letter. It can contain digits, Chinese characters, letters, underscores (_), and hyphens (-).
+	// - The name must start with a letter or a Chinese character and can contain letters, digits, Chinese characters, underscores (_), and hyphens (-).
 	//
 	// - The name cannot start with `http://` or `https://`.
 	//
@@ -217,7 +217,7 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The storage capacity of the new unit node. Unit: GB. The value is incremented in steps of 5 GB. For the value range, see [Instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available storage capacity range for the target instance type.
+	// The storage capacity of the new unit node. Unit: GB. The storage capacity increases in increments of 5 GB. For more information about the valid values, see [Instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available storage capacity range for the target instance type.
 	//
 	// example:
 	//
@@ -227,31 +227,31 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// 	- **local_ssd**: local SSD
 	//
-	// 	- **cloud_ssd**: standard SSD cloud disk
+	// 	- **cloud_ssd**: standard SSD
 	//
-	// 	- **cloud_essd**: PL1 ESSD cloud disk
+	// 	- **cloud_essd**: PL1 ESSD
 	//
-	// 	- **cloud_essd2**: PL2 ESSD cloud disk
+	// 	- **cloud_essd2**: PL2 ESSD
 	//
-	// 	- **cloud_essd3**: PL3 ESSD cloud disk
+	// 	- **cloud_essd3**: PL3 ESSD
 	//
 	// example:
 	//
 	// cloud_essd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The instance type of the new unit node. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available instance types in the target region.
+	// The instance type of the new unit node. For more information about the valid values, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available instance types in the target region.
 	//
 	// example:
 	//
 	// rds.mysql.t1.small
 	DbInstanceClass *string `json:"DbInstanceClass,omitempty" xml:"DbInstanceClass,omitempty"`
-	// The conflict resolution policy used when a primary key conflict occurs during data synchronization for the new unit node. Valid values:
+	// The resolution policy for primary key conflicts that occur during synchronization on the new unit node. Valid values:
 	//
-	// 	- **overwrite**: Overwrites the conflicting primary key on the destination node.
+	// 	- **overwrite**: Overwrites the conflicting primary keys in the destination node.
 	//
-	// 	- **interrupt**: Stops the synchronization task and reports an error.
+	// 	- **interrupt**: Interrupts the synchronization task, reports an error, and exits.
 	//
-	// 	- **ignore**: Overwrites the conflicting primary key on the current node.
+	// 	- **ignore**: Overwrites the conflicting primary keys in the current node.
 	//
 	// This parameter is required.
 	//
@@ -297,7 +297,7 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The region ID of the new unit node (secondary node). You can call DescribeRegions to query the region ID.
+	// The region ID of the new unit node (secondary node). You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -305,11 +305,11 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// cn-hangzhou
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	// The [IP whitelist](https://help.aliyun.com/document_detail/43185.html) of the new unit node. Separate multiple entries with commas (,). Entries cannot be duplicated. A maximum of 1,000 entries are allowed. The following two formats are supported:
+	// The [IP address whitelist](https://help.aliyun.com/document_detail/43185.html) of the new unit node. Separate multiple entries with commas (,). Duplicate entries are not allowed. A maximum of 1,000 entries can be added. The following two formats are supported:
 	//
 	// 	- IP address format, such as `10.10.XX.XX`.
 	//
-	// 	- CIDR format, such as `10.10.XX.XX/24` (Classless Inter-Domain Routing, where **24*	- indicates the prefix length, ranging from **1 to 32**).
+	// 	- CIDR format, such as `10.10.XX.XX/24`. **24*	- indicates the length of the prefix in the IP address, and the valid values are **1*	- to **32**.
 	//
 	// example:
 	//
@@ -323,7 +323,7 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// vsw-bp1tg609m5j85****
 	VSwitchID *string `json:"VSwitchID,omitempty" xml:"VSwitchID,omitempty"`
-	// The virtual private cloud (VPC) ID of the new unit node.
+	// The VPC ID of the new unit node.
 	//
 	// This parameter is required.
 	//
@@ -331,27 +331,27 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// vpc-bp19ame5m1r3o****
 	VpcID *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
-	// The zone ID of the new unit node. You can call DescribeRegions to query the zone ID.
+	// The zone ID of the new unit node. You can call the DescribeRegions operation to query the zone ID.
 	//
 	// example:
 	//
 	// cn-hangzhou-j
 	ZoneID *string `json:"ZoneID,omitempty" xml:"ZoneID,omitempty"`
-	// The zone ID of the secondary node for the new unit node. You can call DescribeRegions to query the zone ID.
+	// The zone ID of the secondary node for the new unit node. You can call the DescribeRegions operation to query the zone ID where the node is active.
 	//
-	// 	- If this value is the same as the **ZoneId*	- of the current unit node, the single-zone deployment is used.
+	// 	- If the value is the same as the **ZoneId*	- of the current unit node, it is a single-zone deployment.
 	//
-	// 	- If this value is different from the **ZoneId*	- of the current unit node, the multi-zone deployment is used.
+	// 	- If the value is different from the **ZoneId*	- of the current unit node, it is a multi-zone deployment.
 	//
 	// example:
 	//
 	// cn-hangzhou-j
 	ZoneIDSlave1 *string `json:"ZoneIDSlave1,omitempty" xml:"ZoneIDSlave1,omitempty"`
-	// The zone ID of the logger node for the new unit node. You can call DescribeRegions to query the zone ID.
+	// The zone ID of the logger node for the new unit node. You can call the DescribeRegions operation to query the zone ID where the node is active.
 	//
-	// 	- If this value is the same as the **ZoneId*	- of the current unit node, the single-zone deployment is used.
+	// 	- If the value is the same as the **ZoneId*	- of the current unit node, it is a single-zone deployment.
 	//
-	// 	- If this value is different from the **ZoneId*	- of the current unit node, the multi-zone deployment is used.
+	// 	- If the value is different from the **ZoneId*	- of the current unit node, it is a multi-zone deployment.
 	//
 	// example:
 	//

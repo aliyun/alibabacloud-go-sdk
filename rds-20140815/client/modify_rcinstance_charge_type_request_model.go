@@ -42,7 +42,7 @@ type iModifyRCInstanceChargeTypeRequest interface {
 }
 
 type ModifyRCInstanceChargeTypeRequest struct {
-	// Reserved parameter. Not supported.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
@@ -50,35 +50,35 @@ type ModifyRCInstanceChargeTypeRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**: Enabled (default).
+	// 	- **true**: enables auto-renewal (default)
 	//
-	// 	- **false**: Disabled.
+	// 	- **false**: disables auto-renewal
 	//
-	// > 	- This parameter takes effect only when you switch from pay-as-you-go to subscription.
+	// > 	- This parameter takes effect only when you change the billing method from pay-as-you-go to subscription.
 	//
-	// > 	- All non-**true*	- strings are treated as **false**.
+	// > 	- Any string other than **true*	- is processed as **false**.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Specifies whether to use coupons. Valid values:
+	// Specifies whether to use vouchers. Valid values:
 	//
-	// 	- **true*	- (default): Coupons are used.
+	// 	- **true*	- (default): uses vouchers.
 	//
-	// 	- **false**: Coupons are not used.
+	// 	- **false**: does not use vouchers.
 	//
 	// example:
 	//
 	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The business extension parameter.
+	// The business extension parameters.
 	//
 	// example:
 	//
 	// None
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The custom token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// > The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -86,19 +86,19 @@ type ModifyRCInstanceChargeTypeRequest struct {
 	//
 	// ETnLKlblzczshOTUbOC****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Reserved parameter. Not supported.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Reserved parameter. Not supported.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	IncludeDataDisks *bool `json:"IncludeDataDisks,omitempty" xml:"IncludeDataDisks,omitempty"`
-	// Reserved parameter. Not supported.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type ModifyRCInstanceChargeTypeRequest struct {
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Reserved parameter. Not supported.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
@@ -120,19 +120,19 @@ type ModifyRCInstanceChargeTypeRequest struct {
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The billing method of the instance after the change. Valid values:
 	//
-	// 	- **Prepaid**: subscription.
+	// 	- **Prepaid**: subscription
 	//
-	// 	- **Postpaid**: pay-as-you-go.
+	// 	- **Postpaid**: pay-as-you-go
 	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit of the subscription duration. Valid values:
+	// Specifies the subscription period unit. Valid values:
 	//
-	// 	- **Year**: yearly subscription.
+	// 	- **Year**: year
 	//
-	// 	- **Month**: monthly subscription.
+	// 	- **Month**: month
 	//
 	// > This parameter is required if **PayType*	- is set to **Prepaid**.
 	//
@@ -157,13 +157,13 @@ type ModifyRCInstanceChargeTypeRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The subscription duration. Valid values:
+	// Specifies the subscription duration. Valid values:
 	//
-	// 	- If **Period*	- is set to **Year**, the valid values of UsedTime are **1 to 5**.
+	// 	- If the **Period*	- parameter is set to **Year**, the value of UsedTime ranges from **1*	- to **5**.
 	//
-	// 	- If **Period*	- is set to **Month**, the valid values of UsedTime are **1 to 11**.
+	// 	- If the **Period*	- parameter is set to **Month**, the value of UsedTime ranges from **1*	- to **11**.
 	//
-	// > This parameter is required if PayType is set to **Prepaid**.
+	// > This parameter is required if the billing method is set to **Prepaid**.
 	//
 	// example:
 	//

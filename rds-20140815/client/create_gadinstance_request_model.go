@@ -30,11 +30,11 @@ type iCreateGADInstanceRequest interface {
 }
 
 type CreateGADInstanceRequest struct {
-	// The ID of the primary instance. You can call the DescribeDBInstances operation to query the instance ID. This instance serves as the central node (primary node) of the GAD cluster.
+	// The ID of the primary instance. You can call the DescribeDBInstances operation to query the ID. This instance serves as the central node (primary node) of the ApsaraDB RDS global active database cluster.
 	//
-	// > 	- A primary instance ID can serve as the central node of only one GAD cluster.
+	// > 	- A primary instance ID can serve as the central node of only one ApsaraDB RDS global active database cluster.
 	//
-	// > 	- Only ApsaraDB RDS for MySQL primary instances in the China (Hangzhou), China (Shanghai), China (Qingdao), China (Beijing), China (Zhangjiakou), China (Shenzhen), and China (Chengdu) regions can serve as the central node of a GAD cluster.
+	// > 	- Only primary ApsaraDB RDS for MySQL instances in the China (Hangzhou), China (Shanghai), China (Qingdao), China (Beijing), China (Zhangjiakou), China (Shenzhen), and China (Chengdu) regions can serve as the central node of an ApsaraDB RDS global active database cluster.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type CreateGADInstanceRequest struct {
 	//
 	// cn-hangzhou
 	CentralRegionId *string `json:"CentralRegionId,omitempty" xml:"CentralRegionId,omitempty"`
-	// A JSON array that contains the database information of the central node. All database information in this array is synchronized to the current unit node (secondary node). Parameter description:
+	// The JSON array of database information in the central node. All database information in the array is used for synchronization to the current unit node (secondary node). Parameter description:
 	//
-	// 	- **name**: the database name.
+	// 	- **name**: the name of the database.
 	//
-	// 	- **all**: specifies whether to synchronize all data in the current database or table. Valid values: **true*	- | **false**.
+	// 	- **all**: specifies whether to synchronize all data in the current database or table. Valid values: **true*	- and **false**.
 	//
-	// 	- **Table**: the table name. If the **all*	- parameter is set to **false**, you must also specify the names of the tables to be synchronized in the JSON array.
+	// 	- **Table**: the name of the table. If the **all*	- parameter is set to **false**, you must also include the names of the tables to be synchronized in the JSON array.
 	//
 	// Example: `{
 	//
@@ -112,7 +112,7 @@ type CreateGADInstanceRequest struct {
 	//
 	// {    "testdb": {     "name": "testdb",     "all": false,     "Table": {       "order": {         "name": "order",         "all": true       },       "ordernew": {         "name": "ordernew",         "all": true       }     }   } }
 	DBList *string `json:"DBList,omitempty" xml:"DBList,omitempty"`
-	// The name of the GAD cluster.
+	// The name of the ApsaraDB RDS global active database cluster.
 	//
 	// example:
 	//
@@ -124,9 +124,9 @@ type CreateGADInstanceRequest struct {
 	//
 	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*CreateGADInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The unit node information.
+	// The information about the unit node.
 	//
 	// This parameter is required.
 	UnitNode []*CreateGADInstanceRequestUnitNode `json:"UnitNode,omitempty" xml:"UnitNode,omitempty" type:"Repeated"`
@@ -244,13 +244,13 @@ func (s *CreateGADInstanceRequest) Validate() error {
 }
 
 type CreateGADInstanceRequestTag struct {
-	// The tag key. You can create up to N tag keys at a time. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
+	// The tag key. You can create up to N tag keys at a time. Valid values of N: **1*	- to **20**. Empty strings are not allowed.
 	//
 	// example:
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value that corresponds to the tag key. You can create up to N tag values at a time. Valid values of N: **1 to 20**. The tag value can be an empty string.
+	// The tag value that corresponds to the tag key. You can create up to N tag values at a time. Valid values of N: **1*	- to **20**. Empty strings are allowed.
 	//
 	// example:
 	//
@@ -289,11 +289,11 @@ func (s *CreateGADInstanceRequestTag) Validate() error {
 }
 
 type CreateGADInstanceRequestUnitNode struct {
-	// The name of the new unit node. The name must meet the following requirements:
+	// The name of the new unit node. The name must meet the following rules:
 	//
-	// - The name must be **2 to 255*	- characters in length.
+	// - The name must be **2*	- to **255*	- characters in length.
 	//
-	// - The name must start with a letter or a Chinese character. It can contain digits, Chinese characters, letters, underscores (_), and hyphens (-).
+	// - The name must start with a letter or a Chinese character and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-).
 	//
 	// - The name cannot start with `http://` or `https://`.
 	//
@@ -301,7 +301,7 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The storage capacity of the new unit node. Unit: GB. The value is incremented in 5 GB increments. For the value range, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available storage capacity range for the target instance type.
+	// The storage capacity of the new unit node. Unit: GB. The storage capacity increases in increments of 5 GB. For more information about the valid values, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available storage capacity range for the target instance type.
 	//
 	// example:
 	//
@@ -311,7 +311,7 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// 	- **local_ssd**: Premium Local SSD (recommended).
 	//
-	// 	- **cloud_ssd**: standard SSD (not recommended because standard SSDs are no longer available for purchase in some regions).
+	// 	- **cloud_ssd**: standard SSD (not recommended, and no longer available in some regions).
 	//
 	// 	- **cloud_essd**: PL1 ESSD.
 	//
@@ -319,29 +319,29 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// 	- **cloud_essd3**: PL3 ESSD.
 	//
-	// The default value of this parameter is determined by the instance type specified in the **DBInstanceClass*	- parameter:
+	// The default value of this parameter is automatically determined based on the instance type code specified in the **DBInstanceClass*	- parameter:
 	//
-	// - If the instance type is a Premium Local SSD instance type, the default value is **local_ssd**.
+	// - If the instance type code is for a Premium Local SSD, the default value is **local_ssd**.
 	//
-	// - If the instance type is a cloud disk instance type, the default value is **cloud_essd**.
+	// - If the instance type code is for a cloud disk, the default value is **cloud_essd**.
 	//
 	// example:
 	//
 	// cloud_essd2
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The instance type of the new unit node. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available instance types in the target region.
+	// The instance type of the new unit node. For more information about the valid values, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available instance types in the target region.
 	//
 	// example:
 	//
 	// rds.mysql.t1.small
 	DbInstanceClass *string `json:"DbInstanceClass,omitempty" xml:"DbInstanceClass,omitempty"`
-	// The conflict resolution policy used when a primary key conflict occurs during data synchronization for the new unit node. Valid values:
+	// The resolution policy for primary key conflicts that occur during synchronization on the new unit node. Valid values:
 	//
-	// 	- **overwrite**: overwrites the conflicting primary key on the destination node.
+	// 	- **overwrite**: overwrites the conflicting primary keys in the destination node.
 	//
-	// 	- **interrupt**: stops the synchronization task and reports an error.
+	// 	- **interrupt**: interrupts the synchronization task, reports an error, and exits.
 	//
-	// 	- **ignore**: ignores the conflicting primary key on the current node.
+	// 	- **ignore**: ignores the conflicting primary keys in the current node.
 	//
 	// This parameter is required.
 	//
@@ -349,7 +349,7 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// overwrite
 	DtsConflict *string `json:"DtsConflict,omitempty" xml:"DtsConflict,omitempty"`
-	// The specification of the data synchronization link for the new unit node. Valid values:
+	// The data synchronization link specification for the new unit node. Valid values:
 	//
 	// 	- **small**
 	//
@@ -359,7 +359,7 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// 	- **micro**
 	//
-	// >For more information about the differences between specifications, see [Data synchronization link specifications](https://help.aliyun.com/document_detail/26605.html).
+	// > For more information about the differences between specifications, see [Data synchronization link specifications](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// This parameter is required.
 	//
@@ -393,7 +393,7 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// 	- **Prepaid**: subscription.
 	//
-	// >The system automatically generates and completes the payment for the order. You do not need to manually confirm the payment.
+	// > The system automatically generates an order and completes the payment. Manual payment confirmation is not required.
 	//
 	// example:
 	//
@@ -407,11 +407,11 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// cn-hangzhou
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	// The [IP address whitelist](https://help.aliyun.com/document_detail/43185.html) of the new unit node. Separate multiple entries with commas (,). Entries cannot be duplicated. A maximum of 1,000 entries are allowed. The following two formats are supported:
+	// The [IP whitelist](https://help.aliyun.com/document_detail/43185.html) of the new unit node. Separate multiple entries with commas (,). Duplicate entries are not allowed. A maximum of 1,000 entries are supported. The following two formats are supported:
 	//
 	// 	- IP address format, such as `10.10.10.10`.
 	//
-	// 	- CIDR format, such as `10.10.10.10/24` (Classless Inter-Domain Routing, where **24*	- indicates the length of the prefix, ranging from **1 to 32**).
+	// 	- CIDR block format, such as `10.10.10.10/24` (Classless Inter-Domain Routing, where **24*	- indicates the length of the prefix in the address, ranging from **1*	- to **32**).
 	//
 	// example:
 	//
@@ -423,7 +423,7 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// vsw-bp1tg609m5j85****
 	VSwitchID *string `json:"VSwitchID,omitempty" xml:"VSwitchID,omitempty"`
-	// The virtual private cloud (VPC) ID of the new unit node.
+	// The VPC ID of the new unit node.
 	//
 	// example:
 	//
@@ -435,21 +435,21 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// cn-hangzhou-j
 	ZoneID *string `json:"ZoneID,omitempty" xml:"ZoneID,omitempty"`
-	// The zone ID of the secondary node for the new unit node. You can call the DescribeRegions operation to query the zone ID.
+	// The active zone ID of the secondary node for the new unit node. You can call the DescribeRegions operation to query the active zone ID.
 	//
-	// 	- If this value is the same as the **ZoneId*	- of the current unit node, the single-zone deployment is used.
+	// 	- If this value is the same as the **ZoneId*	- of the current unit node, it is a single-zone deployment.
 	//
-	// 	- If this value is different from the **ZoneId*	- of the current unit node, the multi-zone deployment is used.
+	// 	- If this value is different from the **ZoneId*	- of the current unit node, it is a multi-zone deployment.
 	//
 	// example:
 	//
 	// cn-hangzhou-j
 	ZoneIDSlave1 *string `json:"ZoneIDSlave1,omitempty" xml:"ZoneIDSlave1,omitempty"`
-	// The zone ID of the logger node for the new unit node. You can call the DescribeRegions operation to query the zone ID.
+	// The active zone ID of the logger node for the new unit node. You can call the DescribeRegions operation to query the active zone ID.
 	//
-	// 	- If this value is the same as the **ZoneId*	- of the current unit node, the single-zone deployment is used.
+	// 	- If this value is the same as the **ZoneId*	- of the current unit node, it is a single-zone deployment.
 	//
-	// 	- If this value is different from the **ZoneId*	- of the current unit node, the multi-zone deployment is used.
+	// 	- If this value is different from the **ZoneId*	- of the current unit node, it is a multi-zone deployment.
 	//
 	// example:
 	//

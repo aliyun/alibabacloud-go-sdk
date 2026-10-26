@@ -24,7 +24,7 @@ type iDetachWhitelistTemplateToInstanceRequest interface {
 }
 
 type DetachWhitelistTemplateToInstanceRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type DetachWhitelistTemplateToInstanceRequest struct {
 	//
 	// rm-bp191w771k******
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to obtain the region ID.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. For more information about resource groups, see What is a resource group.
+	// The ID of the resource group. For more information about resource groups, see What is a resource group.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DetachWhitelistTemplateToInstanceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The whitelist template ID. You can call DescribeAllWhitelistTemplate to obtain the ID.
+	// The ID of the whitelist template. You can call the DescribeAllWhitelistTemplate operation to query the ID.
 	//
 	// This parameter is required.
 	//

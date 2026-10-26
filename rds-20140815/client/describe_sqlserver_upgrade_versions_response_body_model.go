@@ -17,7 +17,7 @@ type iDescribeSQLServerUpgradeVersionsResponseBody interface {
 
 type DescribeSQLServerUpgradeVersionsResponseBody struct {
 	Items *DescribeSQLServerUpgradeVersionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

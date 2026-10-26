@@ -18,7 +18,7 @@ type iCreateYouhuiForOrderResponseBody interface {
 }
 
 type CreateYouhuiForOrderResponseBody struct {
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//

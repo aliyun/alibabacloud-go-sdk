@@ -24,9 +24,9 @@ type iTransformDBInstancePayTypeResponseBody interface {
 type TransformDBInstancePayTypeResponseBody struct {
 	// The billing method. Valid values:
 	//
-	// - POSTPAY: pay-as-you-go
+	// - POSTPAY: Pay-as-you-go.
 	//
-	// - PREPAY: subscription
+	// - PREPAY: Subscription.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type TransformDBInstancePayTypeResponseBody struct {
 	//
 	// 2020-04-20T10:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 20515760028****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

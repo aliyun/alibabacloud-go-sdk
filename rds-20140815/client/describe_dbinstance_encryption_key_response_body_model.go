@@ -38,7 +38,7 @@ type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	//
 	// 1443****9604
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The scheduled time when the key is to be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The estimated time when the key is deleted. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -60,21 +60,21 @@ type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	EncryptionKeyList []*DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList `json:"EncryptionKeyList,omitempty" xml:"EncryptionKeyList,omitempty" type:"Repeated"`
 	// The status of the key. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**: The key is enabled.
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: The key is disabled.
 	//
 	// example:
 	//
 	// Enabled
 	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
-	// The purpose of the key.
+	// The usage of the key.
 	//
 	// example:
 	//
 	// ENCRYPT/DECRYPT
 	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The expiration time of the key material. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The expiration time of the key material. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList struct {
 	//
 	// 1443****9604
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The scheduled time when the key is to be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The estimated time when the key is deleted. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -238,9 +238,9 @@ type DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList struct {
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The status of the key. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**: The key is enabled.
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: The key is disabled.
 	//
 	// example:
 	//
@@ -248,21 +248,21 @@ type DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList struct {
 	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
 	// The type of the key. Valid values:
 	//
-	// - CMK: customer master key (CMK).
+	// - CMK: customer master key
 	//
-	// - ServiceKey: service key.
+	// - ServiceKey: service key
 	//
 	// example:
 	//
 	// ServiceKey
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The purpose of the key.
+	// The usage of the key.
 	//
 	// example:
 	//
 	// ENCRYPT/DECRYPT
 	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The expiration time of the key material. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The expiration time of the key material. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -274,7 +274,7 @@ type DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList struct {
 	//
 	// Aliyun_KMS
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The usage of the key. Valid values:
+	// The usage of the key:
 	//
 	// - **TDE**: transparent data encryption.
 	//

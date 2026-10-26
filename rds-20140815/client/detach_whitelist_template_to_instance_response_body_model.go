@@ -30,9 +30,9 @@ type DetachWhitelistTemplateToInstanceResponseBody struct {
 	//
 	// - **400**: Client fault.
 	//
-	// - **401**: Authentication failed.
+	// - **401**: Failed to authenticate.
 	//
-	// - **404**: Request page not found.
+	// - **404**: The requested page is not found.
 	//
 	// - **500**: Server fault.
 	//
@@ -40,11 +40,11 @@ type DetachWhitelistTemplateToInstanceResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The list of returned data.
 	Data *DetachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
-	// - **200**: Success.
+	// - **200**: Successful.
 	//
 	// - **400**: Client error.
 	//
@@ -54,13 +54,13 @@ type DetachWhitelistTemplateToInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type DetachWhitelistTemplateToInstanceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: Success.
+	// - **true**: The request was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -150,11 +150,11 @@ func (s *DetachWhitelistTemplateToInstanceResponseBody) Validate() error {
 }
 
 type DetachWhitelistTemplateToInstanceResponseBodyData struct {
-	// The return status. Valid values:
+	// The returned status. Valid values:
 	//
-	// - **ok**: Success.
+	// - **ok**: Successful.
 	//
-	// - **error**: Error.
+	// - **error**: Failed.
 	//
 	// example:
 	//

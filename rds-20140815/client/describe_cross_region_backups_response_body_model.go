@@ -35,7 +35,7 @@ type DescribeCrossRegionBackupsResponseBody struct {
 	// 2019-06-15T12:10:00Z
 	EndTime *string                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Items   *DescribeCrossRegionBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+	// The page number. Valid values: any integer greater than 0 and less than or equal to the maximum value of the Integer type.
 	//
 	// Default value: **1**.
 	//
@@ -67,7 +67,7 @@ type DescribeCrossRegionBackupsResponseBody struct {
 	//
 	// 2019-05-30T12:10:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

@@ -28,23 +28,23 @@ type DescribeInstanceLinkedWhitelistTemplateResponseBody struct {
 	//
 	// - **200**: Normal.
 	//
-	// - **400**: Client fault.
+	// - **400**: Client error.
 	//
 	// - **401**: Authentication failed.
 	//
-	// - **404**: Request page not found.
+	// - **404**: The requested page is not found.
 	//
-	// - **500**: Server fault.
+	// - **500**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data list.
+	// The list of returned data.
 	Data *DescribeInstanceLinkedWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
-	// - **200**: Success.
+	// - **200**: Normal.
 	//
 	// - **400**: Client error.
 	//
@@ -60,15 +60,15 @@ type DescribeInstanceLinkedWhitelistTemplateResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
 	// - **false**: The request failed.
 	//
@@ -150,13 +150,13 @@ func (s *DescribeInstanceLinkedWhitelistTemplateResponseBody) Validate() error {
 }
 
 type DescribeInstanceLinkedWhitelistTemplateResponseBodyData struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// rm-bp191w771k******
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The whitelist template information returned in a paged manner.
+	// The paginated whitelist template information.
 	Templates []*DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -206,25 +206,25 @@ type DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates struct {
 	//
 	// 1884
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP address list.
+	// The list of IP addresses.
 	//
 	// example:
 	//
 	// 12.0.X.X,10.2.X.X
 	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	// The whitelist template ID.
+	// The ID of the whitelist template.
 	//
 	// example:
 	//
 	// 412
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The whitelist template name.
+	// The name of the whitelist template.
 	//
 	// example:
 	//
 	// template_123
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

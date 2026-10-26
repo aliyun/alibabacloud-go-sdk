@@ -18,7 +18,7 @@ type iRemoveRCInstancesFromDeploymentSetRequest interface {
 }
 
 type RemoveRCInstancesFromDeploymentSetRequest struct {
-	// The deployment set ID.
+	// The ID of the deployment set.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type RemoveRCInstancesFromDeploymentSetRequest struct {
 	//
 	// ds-uf6c8qerk019bj1l****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The instance ID.
+	// The instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type RemoveRCInstancesFromDeploymentSetRequest struct {
 	//
 	// rc-sff,rc-err
 	RCInstanceIds *string `json:"RCInstanceIds,omitempty" xml:"RCInstanceIds,omitempty"`
-	// The region ID. You can call DescribeRegions to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//

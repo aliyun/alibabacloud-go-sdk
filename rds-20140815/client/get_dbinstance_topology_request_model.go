@@ -18,7 +18,7 @@ type iGetDBInstanceTopologyRequest interface {
 }
 
 type GetDBInstanceTopologyRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to obtain instance ID.
 	//
 	// This parameter is required.
 	//

@@ -42,7 +42,7 @@ type DescribeCloudMigrationPrecheckResultResponseBody struct {
 	//
 	// 7E4A6E1B-789B-5F16-9736-39AA57FC7374
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of queried entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

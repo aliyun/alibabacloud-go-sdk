@@ -22,21 +22,21 @@ type iModifyEventInfoRequest interface {
 }
 
 type ModifyEventInfoRequest struct {
-	// The action-related parameters, which can be an extension based on business requirements. When taskAction is set to modifySwitchTime, set ActionParams to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
+	// The parameters related to the action. You can add extensions based on your business requirements. When the taskAction parameter is set to modifySwitchTime, set the ActionParams parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
 	//
-	// recoverMode specifies the task recovery pattern. Valid values:
+	// The recoverMode parameter specifies the task recovery pattern. Valid values:
 	//
-	// - **timePoint**: Executes at a specified point in time.
+	// - **timePoint**: Executes the task at a specified point in time.
 	//
-	// - **immediate**: Executes immediately.
+	// - **immediate**: Executes the task immediately.
 	//
-	// recoverTime specifies the recovery time in UTC+0. Format: yyyy-MM-ddTHH:mm:ssZ. This parameter is required when recoverMode is set to timePoint.
+	// The recoverTime parameter specifies the recovery time. The time must be in UTC+0 and in the yyyy-MM-ddTHH:mm:ssZ format. When the recoverMode parameter is set to timePoint, the recoverTime parameter is required.
 	//
 	// example:
 	//
 	// {"recoverTime":"2023-04-17T14:02:35Z","recoverMode":"timePoint"}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	// The event action. Valid values:
+	// The action to process the event. Valid values:
 	//
 	// - **archive**: Archives the event.
 	//
@@ -48,7 +48,7 @@ type ModifyEventInfoRequest struct {
 	//
 	// archive
 	EventAction *string `json:"EventAction,omitempty" xml:"EventAction,omitempty"`
-	// The event ID. You can call the DescribeEvents operation to query event IDs. To query multiple events, separate the event IDs with commas (,). A maximum of 20 event IDs are supported.
+	// The event IDs. You can call the DescribeEvents operation to query the event IDs. Separate multiple event IDs with commas (,). You can specify up to 20 event IDs.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ModifyEventInfoRequest struct {
 	//
 	// 5422964
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//

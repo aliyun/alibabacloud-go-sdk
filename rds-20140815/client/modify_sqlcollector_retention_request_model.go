@@ -30,15 +30,15 @@ type iModifySQLCollectorRetentionRequest interface {
 type ModifySQLCollectorRetentionRequest struct {
 	// The log retention period of SQL Explorer. Valid values:
 	//
-	// - 30: 30 days
+	// - 30: 30 days.
 	//
-	// - 180: 180 days
+	// - 180: 180 days.
 	//
-	// - 365: 1 year
+	// - 365: 1 year.
 	//
-	// - 1095: 3 years
+	// - 1095: 3 years.
 	//
-	// - 1825: 5 years
+	// - 1825: 5 years.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ModifySQLCollectorRetentionRequest struct {
 	//
 	// 365
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ModifySQLCollectorRetentionRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. You can call DescribeDBInstanceAttribute to obtain the resource group ID.
+	// The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to query the ID.
 	//
 	// example:
 	//

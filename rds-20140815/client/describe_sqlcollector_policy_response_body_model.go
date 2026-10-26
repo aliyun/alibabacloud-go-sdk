@@ -18,7 +18,7 @@ type iDescribeSQLCollectorPolicyResponseBody interface {
 }
 
 type DescribeSQLCollectorPolicyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -26,9 +26,9 @@ type DescribeSQLCollectorPolicyResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the SQL Explorer (SQL Audit) feature. Valid values:
 	//
-	// 	- **Enable**: enabled.
+	// 	- **Enable**: Enabled.
 	//
-	// 	- **Disabled**: disabled.
+	// 	- **Disabled**: Disabled.
 	//
 	// example:
 	//

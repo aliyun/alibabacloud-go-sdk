@@ -30,13 +30,13 @@ type iUpdatePostgresExtensionsRequest interface {
 }
 
 type UpdatePostgresExtensionsRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate requests. You can generate the value of this parameter on the client side. The value must be unique across different requests and can contain a maximum of 64 ASCII characters. The value cannot contain non-ASCII characters.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UpdatePostgresExtensionsRequest struct {
 	//
 	// pgm-gc7f1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database name of the instance. You can call DescribeDatabases to query the database name.
+	// The name of the database in the instance. You can call the DescribeDatabases operation to query the name.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type UpdatePostgresExtensionsRequest struct {
 	//
 	// test_db
 	DBNames *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
-	// The extension name. Separate multiple extensions with commas (,).
+	// The names of the plug-ins. Separate multiple plug-in names with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UpdatePostgresExtensionsRequest struct {
 	Extensions   *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

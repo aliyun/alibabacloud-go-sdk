@@ -26,7 +26,7 @@ type iDescribeDBProxyRequest interface {
 }
 
 type DescribeDBProxyRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,20 +34,20 @@ type DescribeDBProxyRequest struct {
 	//
 	// rm-bp1ja4f56s7us****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// A deprecated parameter. You do not need to configure this parameter.
+	// This parameter is deprecated. You do not need to configure it.
 	//
 	// example:
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The region ID. You can call the DescribeRegions operation to query the ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

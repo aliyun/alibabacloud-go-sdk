@@ -32,7 +32,7 @@ type iCreateRCSnapshotRequest interface {
 type CreateRCSnapshotRequest struct {
 	// The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// Default value: null.
+	// Default value: empty.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type CreateRCSnapshotRequest struct {
 	//
 	// rcd-wz9f3peueu5npsl****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// This parameter is deprecated and does not need to be specified.
+	// This parameter is deprecated. You do not need to specify it.
 	//
 	// example:
 	//
 	// None
 	InstantAccess *bool `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
-	// This parameter is deprecated and does not need to be specified.
+	// This parameter is deprecated. You do not need to specify it.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type CreateRCSnapshotRequest struct {
 	//
 	// rc-t8q22a87745hf8****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Settings for the retention period of the snapshot. Unit: days. The snapshot is subject to automatic release after the retention period expires. Valid values: 1 to 65536.
+	// Settings for the retention period of the snapshot. Unit: days. After the retention period expires, the snapshot is subject to automatic release. Valid values: 1 to 65536.
 	//
-	// Default value: null, which indicates that the snapshot is not subject to automatic release.
+	// Default value: empty, which indicates that the snapshot is not subject to automatic release.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type CreateRCSnapshotRequest struct {
 	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
 	// The tag details.
 	Tag []*CreateRCSnapshotRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// This parameter is deprecated and does not need to be specified.
+	// This parameter is deprecated. You do not need to specify it.
 	//
 	// example:
 	//

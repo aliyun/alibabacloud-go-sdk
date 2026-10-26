@@ -16,7 +16,7 @@ type iDescribeSupportOnlineResizeDiskRequest interface {
 }
 
 type DescribeSupportOnlineResizeDiskRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//

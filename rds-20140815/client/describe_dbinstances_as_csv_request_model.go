@@ -28,26 +28,26 @@ type iDescribeDBInstancesAsCsvRequest interface {
 }
 
 type DescribeDBInstancesAsCsvRequest struct {
-	// A deprecated parameter. You do not need to configure this parameter.
+	// **[Deprecated]*	- This parameter is deprecated. You do not need to configure it.
 	//
 	// example:
 	//
 	// API
 	CachedAsync *bool `json:"CachedAsync,omitempty" xml:"CachedAsync,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query instance IDs.
+	// The instance ID. You can call the DescribeDBInstances operation to obtain the instance ID.
 	//
 	// example:
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// A deprecated parameter. You do not need to configure this parameter.
+	// **[Deprecated]*	- This parameter is deprecated. You do not need to configure it.
 	//
 	// example:
 	//
 	// API
 	ExportKey *string `json:"ExportKey,omitempty" xml:"ExportKey,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to query available region IDs.
+	// The region ID. You can call the DescribeRegions operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

@@ -98,7 +98,7 @@ type DescribeParameterTimedScheduleTaskResponseBodyTaskList struct {
 	//
 	// 2022-05-06T09:24:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The ID of the scheduled task for parameter modification.
+	// The ID of the scheduled parameter modification task.
 	//
 	// example:
 	//

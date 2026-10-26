@@ -35,7 +35,7 @@ type DescribeErrorLogsResponseBody struct {
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

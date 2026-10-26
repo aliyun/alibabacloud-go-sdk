@@ -42,19 +42,19 @@ type ModifyDBInstanceTDERequest struct {
 	//
 	// Format:
 	//
-	// - Public endpoint: `oss-<RegionId>.aliyuncs.com:<BucketName>:<CertificateFileName (with file extension)>`
+	// - Public endpoint: `oss-<region ID>.aliyuncs.com:<bucket name>:<certificate file name with extension>`
 	//
-	// - Internal network endpoint: `oss-<RegionId>-internal.aliyuncs.com:<BucketName>:<CertificateFileName (with file extension)>`
+	// - Internal network address: `oss-<region ID>-internal.aliyuncs.com:<bucket name>:<certificate file name with extension>`
 	//
-	// > - This parameter is active only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
+	// > - This parameter is active only for SQL Server 2019 Standard Edition, SQL Server 2022 Standard Edition, SQL Server 2025 Standard Edition, and SQL Server Enterprise instance.
 	//
-	// > - You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query active region IDs.
+	// > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query active region IDs.
 	//
 	// example:
 	//
 	// oss-ap-southeast-1.aliyuncs.com:****:key.cer
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -62,17 +62,17 @@ type ModifyDBInstanceTDERequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database for which you want to enable TDE. You can specify multiple database names separated by commas (,). You can specify up to 50 database names.
+	// The names of the databases for which you want to enable TDE. You can specify multiple database names separated by commas (,). A maximum of 50 database names can be specified.
 	//
-	// > This parameter is active and required only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
+	// > This parameter is required and active only for SQL Server 2019 Standard Edition, SQL Server 2022 Standard Edition, SQL Server 2025 Standard Edition, and SQL Server Enterprise instance.
 	//
 	// example:
 	//
 	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The custom key ID.
+	// The ID of the custom key.
 	//
-	// > This parameter is available only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
+	// > This parameter is available only for RDS MySQL or RDS PostgreSQL instances.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type ModifyDBInstanceTDERequest struct {
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// Specifies whether to rotate the key. Valid values:
 	//
-	// - **true**: Rotate the key.
+	// - **true**: Rotates the key.
 	//
-	// - **false*	- (default): Do not rotate the key.
+	// - **false**: Does not rotate the key. This is the default value.
 	//
-	// > This parameter is available only for ApsaraDB RDS for PostgreSQL instances.
+	// > This parameter is applicable only to RDS PostgreSQL instances.
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type ModifyDBInstanceTDERequest struct {
 	IsRotate     *bool   `json:"IsRotate,omitempty" xml:"IsRotate,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The certificate password.
+	// The password of the certificate.
 	//
-	// > This parameter is active only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
+	// > This parameter is active only for SQL Server 2019 Standard Edition, SQL Server 2022 Standard Edition, SQL Server 2025 Standard Edition, and SQL Server Enterprise instance.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type ModifyDBInstanceTDERequest struct {
 	//
 	// Format:
 	//
-	// - Public endpoint: `oss-<RegionId>.aliyuncs.com:<BucketName>:<PrivateKeyFileName (with file extension)>`
+	// - Public endpoint: `oss-<region ID>.aliyuncs.com:<bucket name>:<private key file name with extension>`
 	//
-	// - Internal network endpoint: `oss-<RegionId>-internal.aliyuncs.com:<BucketName>:<PrivateKeyFileName (with file extension)>`
+	// - Internal network address: `oss-<region ID>-internal.aliyuncs.com:<bucket name>:<private key file name with extension>`
 	//
-	// > - This parameter is active only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
+	// > - This parameter is active only for SQL Server 2019 Standard Edition, SQL Server 2022 Standard Edition, SQL Server 2025 Standard Edition, and SQL Server Enterprise instance.
 	//
-	// > - You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query active region IDs.
+	// > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query active region IDs.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type ModifyDBInstanceTDERequest struct {
 	PrivateKey           *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The global resource descriptor of the RAM role. The resource descriptor is used to specify a RAM role. For details, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
+	// The global resource descriptor of the role, which is used to specify the role. For details, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
 	//
-	// > This parameter is available only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
+	// > This parameter is active only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
 	//
 	// example:
 	//

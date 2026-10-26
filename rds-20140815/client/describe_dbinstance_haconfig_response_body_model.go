@@ -30,11 +30,11 @@ type DescribeDBInstanceHAConfigResponseBody struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The High-availability Mode. Valid values:
 	//
-	// 	- **RPO**: Data consistency is preferred. The instance prioritizes data reliability to minimize data loss. Use RPO mode if you have high requirements for data consistency.
+	// 	- **RPO**: Data consistency is prioritized. The instance ensures data reliability to minimize data loss. This mode is suitable for users who have high requirements for data consistency.
 	//
-	// 	- **RTO**: Instance availability is preferred. The instance recovers services as soon as possible to maximize available time. Use RTO mode if you have high requirements for database uptime.
+	// 	- **RTO**: Instance availability is prioritized. The instance recovers services as quickly as possible to maximize uptime. This mode is suitable for users who have high requirements for database uptime.
 	//
-	// >This parameter is returned only for ApsaraDB RDS for MySQL instances.
+	// > This parameter is returned only for MySQL instances.
 	//
 	// example:
 	//
@@ -49,13 +49,13 @@ type DescribeDBInstanceHAConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The data replication mode. Valid values:
 	//
-	// 	- **Sync**: synchronous replication
+	// 	- **Sync**: Synchronous.
 	//
-	// 	- **Semi-sync**: semi-synchronous replication
+	// 	- **Semi-sync**: Semi-synchronous.
 	//
-	// 	- **Async**: asynchronous replication
+	// 	- **Async**: Asynchronous.
 	//
-	// >This parameter is returned only for ApsaraDB RDS for MySQL instances.
+	// > This parameter is returned only for MySQL instances.
 	//
 	// example:
 	//

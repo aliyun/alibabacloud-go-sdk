@@ -16,7 +16,7 @@ type iDescribeAvailableClassesResponseBody interface {
 }
 
 type DescribeAvailableClassesResponseBody struct {
-	// The available instance types for the instance.
+	// The list of available instance specifications.
 	DBInstanceClasses []*DescribeAvailableClassesResponseBodyDBInstanceClasses `json:"DBInstanceClasses,omitempty" xml:"DBInstanceClasses,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,13 +66,13 @@ func (s *DescribeAvailableClassesResponseBody) Validate() error {
 }
 
 type DescribeAvailableClassesResponseBodyDBInstanceClasses struct {
-	// The instance type.
+	// The instance specification.
 	//
 	// example:
 	//
 	// rds.mysql.c1.large
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance storage capacity range.
+	// The instance storage range.
 	DBInstanceStorageRange *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
 }
 
@@ -112,19 +112,19 @@ func (s *DescribeAvailableClassesResponseBodyDBInstanceClasses) Validate() error
 }
 
 type DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange struct {
-	// The maximum storage capacity. Unit: GB.
+	// The maximum storage space. Unit: GB.
 	//
 	// example:
 	//
 	// 2000
 	MaxValue *int32 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum storage capacity. Unit: GB.
+	// The minimum storage space. Unit: GB.
 	//
 	// example:
 	//
 	// 5
 	MinValue *int32 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The minimum granularity for storage capacity adjustment. The value is fixed at 5 GB increments.
+	// The minimum step size for adjusting the storage space. The storage space increases in fixed increments of 5 GB.
 	//
 	// example:
 	//

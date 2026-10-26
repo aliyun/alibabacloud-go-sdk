@@ -74,7 +74,7 @@ type ModifyDBInstanceCLSRequest struct {
 	//
 	// AES_256_GCM
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" xml:"EncryptionAlgorithm,omitempty"`
-	// The encryption key ID. This parameter is required when you use a KMS key.
+	// The ID of the encryption key. This parameter is required when you use a KMS key.
 	//
 	// example:
 	//
@@ -82,11 +82,13 @@ type ModifyDBInstanceCLSRequest struct {
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The column encryption key mode. Valid values:
 	//
-	// - client_key: configures a user-generated random key on the client side.
+	// - client_key: A user-generated random key configured on the client side.
 	//
-	// - kms_key: configures a custom key by using Alibaba Cloud Key Management Service (KMS).
+	// - kms_key: A custom key configured by using Alibaba Cloud KMS.
 	//
-	// >  After an instance is configured to use KMS for key management, you can no longer switch to the client-side random key mode.
+	// Note
+	//
+	// After an instance is configured to use a KMS key, you can no longer use a random key configured on the client side.
 	//
 	// example:
 	//
@@ -94,9 +96,9 @@ type ModifyDBInstanceCLSRequest struct {
 	EncryptionKeyMode *string `json:"EncryptionKeyMode,omitempty" xml:"EncryptionKeyMode,omitempty"`
 	// The column encryption status. Valid values:
 	//
-	// -  1: Encryption is enabled.
+	// - 1: Encryption is enabled.
 	//
-	// -  0: Encryption is disabled.
+	// - 0: Encryption is disabled.
 	//
 	// This parameter is required.
 	//
@@ -114,9 +116,11 @@ type ModifyDBInstanceCLSRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The global resource descriptor of the RAM role, used to specify the role to assume. For details, see RAM role overview.
+	// The global resource descriptor of the role, used to specify the specific role. For details, see RAM role overview.
 	//
-	// >  This parameter takes effect only when the column encryption key pattern is set to kms_key. If you do not specify this parameter, the internal default value is used.
+	// Note
+	//
+	// This parameter takes effect only when the column encryption key pattern is set to kms_key. If you do not specify this parameter, the internal default value is used.
 	//
 	// example:
 	//

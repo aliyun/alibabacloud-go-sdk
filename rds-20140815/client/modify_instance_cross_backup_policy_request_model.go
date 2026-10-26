@@ -34,13 +34,13 @@ type iModifyInstanceCrossBackupPolicyRequest interface {
 }
 
 type ModifyInstanceCrossBackupPolicyRequest struct {
-	// Specifies whether to enable the cross-region backup feature, which includes data backup and log backup. Valid values:
+	// Specifies whether to enable the overall cross-region backup feature, which includes data backup and log backup. Valid values:
 	//
-	// 	- **0**: Disabled.
+	// 	- **0**: disabled
 	//
-	// 	- **1**: Enabled.
+	// 	- **1**: enabled
 	//
-	// >When you enable the cross-region backup feature, you must specify the destination region ID.
+	// > When you enable cross-region backup, you must specify the destination region ID.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ModifyInstanceCrossBackupPolicyRequest struct {
 	//
 	// cn-shanghai
 	CrossBackupRegion *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
-	// The type of cross-region backup retention. The only valid value is **1**, which indicates that all backups are retained.
+	// The retention type of cross-region backups. Only **1*	- is supported, which indicates that all backups are retained.
 	//
 	// example:
 	//
@@ -68,18 +68,18 @@ type ModifyInstanceCrossBackupPolicyRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Specifies whether to enable cross-region log backup. Valid values:
 	//
-	// 	- **0**: Disabled.
+	// 	- **0**: disabled
 	//
-	// 	- **1**: Enabled.
+	// 	- **1**: enabled
 	//
-	// >You can enable cross-region log backup only when the cross-region backup feature is enabled.
+	// > You can configure this parameter only when the overall cross-region backup feature is enabled.
 	//
 	// example:
 	//
 	// 1
 	LogBackupEnabled *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the source instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	// The region ID of the source instance. You can call the DescribeRegions operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -89,13 +89,13 @@ type ModifyInstanceCrossBackupPolicyRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The cross-region backup retention method. The only valid value is **1**, which indicates retention by duration.
+	// The retention method for cross-region backups. Only **1*	- is supported, which indicates that backups are retained based on a specified retention period.
 	//
 	// example:
 	//
 	// 1
 	RetentType *int32 `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
-	// The number of days for which cross-region backups are retained. Valid values: **7 to 1825**.
+	// The retention period of cross-region backups. Valid values: **7 to 1825**. Unit: days.
 	//
 	// example:
 	//

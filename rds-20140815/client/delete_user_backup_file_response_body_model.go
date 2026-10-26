@@ -22,7 +22,7 @@ type DeleteUserBackupFileResponseBody struct {
 	//
 	// b-w1haya7e4i25****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

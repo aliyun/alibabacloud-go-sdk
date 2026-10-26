@@ -24,7 +24,7 @@ type iDescribeActiveOperationTasksResponseBody interface {
 type DescribeActiveOperationTasksResponseBody struct {
 	// The list of O&M tasks.
 	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number. The value must be greater than 0. Default value: 1.
+	// The page number, which must be greater than 0. Default value: 1.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeActiveOperationTasksResponseBody struct {
 	//
 	// D4D4BE8A-DD46-440A-BFCD-EE31DA81****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of task records returned.
+	// The total number of returned task records.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// 1
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Indicates whether the task time can be modified. A value of 1 indicates that the time can be modified. A value of 0 indicates that the time cannot be modified.
+	// Indicates whether the execution time can be modified. A value of 1 indicates that the execution time can be modified. A value of 0 indicates that the execution time cannot be modified.
 	//
 	// example:
 	//
 	// 1
 	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The event level code. S1 indicates system O&M. S0 indicates risk recovery.
+	// The event level code. Valid values: S1 (system O&M) and S0 (exception recovery).
 	//
 	// example:
 	//
@@ -145,9 +145,9 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 系统运维
+	// System O&M
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
-	// The creation time. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
+	// The time when the task was created. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// cn-beijing-h
 	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
-	// The database type, such as mysql, pgsql, or mssql.
+	// The database engine, such as mysql, pgsql, or mssql.
 	//
 	// example:
 	//
 	// mysql
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The Milvus version number.
+	// The kernel version.
 	//
 	// example:
 	//
 	// 5.7
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The latest deadline by which the task execution time can be adjusted. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
+	// The latest time to which the task execution time can be adjusted. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -183,25 +183,25 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// 11111
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The event impact.
+	// The impact of the event.
 	//
 	// example:
 	//
 	// TransientDisconnection
 	Impact *string `json:"Impact,omitempty" xml:"Impact,omitempty"`
-	// The event impact in English.
+	// The impact of the event in English.
 	//
 	// example:
 	//
 	// Transient instance disconnection
 	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
-	// The event impact in Chinese.
+	// The impact of the event in Chinese.
 	//
 	// example:
 	//
 	// Instance interruption
 	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
-	// The instance alias or instance description.
+	// The instance alias or description.
 	//
 	// example:
 	//
@@ -213,13 +213,13 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// rm-wz96h8jujh512****
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The modification time. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
+	// The time when the task was modified. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The preparation time required between the start time and the switchover time. The format is HH:mm:ss.
+	// The preparation time required between the start time and the switchover time. The time is in the HH:mm:ss format.
 	//
 	// example:
 	//
@@ -237,7 +237,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// userCancel
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The time when the backend executes the task. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
+	// The time when the backend executes the task. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -245,15 +245,15 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- **3**: pending.
+	// 	- **3**: pending tasks.
 	//
-	// 	- **4**: in progress.
+	// 	- **4**: tasks in progress.
 	//
-	// 	- **5**: succeeded.
+	// 	- **5**: successfully completed tasks.
 	//
-	// 	- **6**: failed.
+	// 	- **6**: failed tasks.
 	//
-	// 	- **7**: canceled.
+	// 	- **7**: canceled tasks.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The instance shards.
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	// The time when the backend initiates the switchover. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
+	// The time when the backend initiates the switchover. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -279,7 +279,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- **rds_apsaradb_ha**: primary/secondary node switch.
+	// 	- **rds_apsaradb_ha**: primary and secondary node switch.
 	//
 	// 	- **rds_apsaradb_transfer**: instance migration.
 	//
@@ -291,17 +291,17 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// rds_apsaradb_upgrade
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The task reason in English.
+	// The task cause in English.
 	//
 	// example:
 	//
 	// Minor version update
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
-	// The task reason in Chinese.
+	// The task cause in Chinese.
 	//
 	// example:
 	//
-	// 小版本升级
+	// Minor engine version update
 	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
 }
 

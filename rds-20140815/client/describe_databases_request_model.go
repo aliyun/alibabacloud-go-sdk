@@ -30,7 +30,7 @@ type iDescribeDatabasesRequest interface {
 }
 
 type DescribeDatabasesRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to obtain instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,17 +38,17 @@ type DescribeDatabasesRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// testDB01
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The database status. Valid values:
+	// The status of the database. Valid values:
 	//
 	// 	- **Creating**: The database is being created.
 	//
-	// 	- **Running**: The database is running.
+	// 	- **Running**: The database is in use.
 	//
 	// 	- **Deleting**: The database is being deleted.
 	//
@@ -58,7 +58,7 @@ type DescribeDatabasesRequest struct {
 	DBStatus     *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+	// The page number. Valid values: any integer greater than 0 and less than or equal to the maximum integer value.
 	//
 	// Default value: **1**.
 	//

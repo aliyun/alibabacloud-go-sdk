@@ -18,7 +18,7 @@ type iDescribeDBInstanceMetricsRequest interface {
 }
 
 type DescribeDBInstanceMetricsRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeDBInstanceMetricsRequest struct {
 	//
 	// pgm-bp1s1j103lo6****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

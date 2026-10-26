@@ -20,11 +20,11 @@ type iAuthorizeRCSecurityGroupPermissionShrinkRequest interface {
 }
 
 type AuthorizeRCSecurityGroupPermissionShrinkRequest struct {
-	// The direction of the rule. Valid values:
+	// The rule direction. Valid values:
 	//
-	// - **ingress**: inbound.
+	// - **ingress**: inbound traffic to the security group.
 	//
-	// - **egress**: outbound.
+	// - **egress**: outbound traffic from the security group.
 	//
 	// example:
 	//

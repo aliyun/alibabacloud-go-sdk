@@ -28,7 +28,7 @@ type DescribeHostGroupElasticStrategyParametersRequest struct {
 	//
 	// dhg-d0dwi82293b2w9t5
 	DedicatedHostGroupName *string `json:"DedicatedHostGroupName,omitempty" xml:"DedicatedHostGroupName,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the region ID.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeHostGroupElasticStrategyParametersRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

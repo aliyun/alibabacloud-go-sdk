@@ -83,21 +83,21 @@ func (s *AttachRCInstancesResponseBody) Validate() error {
 }
 
 type AttachRCInstancesResponseBodyResponses struct {
-	// The status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The RDS Custom instance ID.
+	// The instance ID of the RDS Custom instance.
 	//
 	// example:
 	//
 	// rc-e2g521l55k038cr8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The message returned for the request.
+	// The returned message of the request.
 	//
-	// > If the request is successful, **Successful*	- is returned. If the request fails, exception information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//

@@ -35,13 +35,13 @@ type DescribeDetachedBackupsResponseBody struct {
 	//
 	// 30
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1A6D328C-84B8-40DC-BF49-6C73984D7494
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

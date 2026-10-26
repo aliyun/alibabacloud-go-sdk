@@ -30,11 +30,11 @@ type iModifyInstanceCrossBackupPolicyResponseBody interface {
 }
 
 type ModifyInstanceCrossBackupPolicyResponseBody struct {
-	// The status of the cross-region backup feature. Valid values:
+	// Indicates whether the overall cross-region backup feature is enabled. Valid values:
 	//
-	// 	- **Disable**: Disabled.
+	// 	- **Disable**: The feature is disabled.
 	//
-	// 	- **Enable**: Enabled.
+	// 	- **Enable**: The feature is enabled.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ModifyInstanceCrossBackupPolicyResponseBody struct {
 	//
 	// cn-shanghai
 	CrossBackupRegion *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
-	// The type of cross-region backup retention. Default value: **1**, which indicates that all backups are retained.
+	// The retention type of cross-region backups. Default value: **1**, which indicates that all backups are retained.
 	//
 	// example:
 	//
@@ -58,17 +58,17 @@ type ModifyInstanceCrossBackupPolicyResponseBody struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The status of cross-region log backup. Valid values:
+	// Indicates whether cross-region log backup is enabled. Valid values:
 	//
-	// 	- **Disable**: Disabled.
+	// 	- **Disable**: Cross-region log backup is disabled.
 	//
-	// 	- **Enable**: Enabled.
+	// 	- **Enable**: Cross-region log backup is enabled.
 	//
 	// example:
 	//
 	// Enable
 	LogBackupEnabled *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
-	// The region ID of the source instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	// The region ID of the source instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type ModifyInstanceCrossBackupPolicyResponseBody struct {
 	//
 	// 50A6059D-6DBB-46C6-A851-1EE93C9013CF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The cross-region backup retention method. Default value: **1**, which indicates retention by duration.
+	// The retention method for cross-region backups. Default value: **1**, which indicates that backups are retained based on a specified retention period.
 	//
 	// example:
 	//
 	// 1
 	RetentType *int32 `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
-	// The number of days for which cross-region backups are retained. Valid values: **7 to 1825**.
+	// The retention period of cross-region backups. Valid values: **7 to 1825**. Unit: days.
 	//
 	// example:
 	//

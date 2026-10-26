@@ -20,7 +20,7 @@ type iDescribeSecretsResponseBody interface {
 }
 
 type DescribeSecretsResponseBody struct {
-	// The page number.
+	// The page number of the query result.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeSecretsResponseBodySecrets struct {
 	//
 	// 1266348003****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The description of the credential.
+	// The description of the credential provided by the user.
 	//
 	// example:
 	//
@@ -118,13 +118,13 @@ type DescribeSecretsResponseBodySecrets struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user credential of the Data API account.
+	// The user credential of the created Data API account.
 	//
 	// example:
 	//
 	// acs:rds:cn-hangzhou:1335786****:dbInstance/rm-bp1m7l3j63****
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The credential name.
+	// The name of the user credential.
 	//
 	// example:
 	//

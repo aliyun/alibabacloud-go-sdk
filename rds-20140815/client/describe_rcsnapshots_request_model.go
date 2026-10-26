@@ -31,7 +31,12 @@ type DescribeRCSnapshotsRequest struct {
 	// example:
 	//
 	// rcd-wz9c8isqly8637zw****
-	DiskId     *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the RDS Custom instance.
+	//
+	// example:
+	//
+	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number.
 	//
@@ -45,15 +50,13 @@ type DescribeRCSnapshotsRequest struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call DescribeRegions to query available regions.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of snapshots.
-	//
-	// You can specify multiple snapshot IDs separated by commas (,). A maximum of 100 IDs can be specified.
+	// The snapshot IDs. You can specify up to 100 IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -148,13 +151,13 @@ func (s *DescribeRCSnapshotsRequest) Validate() error {
 }
 
 type DescribeRCSnapshotsRequestTag struct {
-	// The tag value.
+	// The tag key.
 	//
 	// example:
 	//
 	// testRC
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag key.
+	// The tag value.
 	//
 	// example:
 	//

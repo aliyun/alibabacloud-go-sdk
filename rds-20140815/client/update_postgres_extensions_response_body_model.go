@@ -14,7 +14,7 @@ type iUpdatePostgresExtensionsResponseBody interface {
 }
 
 type UpdatePostgresExtensionsResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

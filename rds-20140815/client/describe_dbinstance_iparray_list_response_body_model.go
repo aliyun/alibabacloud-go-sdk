@@ -17,7 +17,7 @@ type iDescribeDBInstanceIPArrayListResponseBody interface {
 
 type DescribeDBInstanceIPArrayListResponseBody struct {
 	Items *DescribeDBInstanceIPArrayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

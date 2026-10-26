@@ -44,7 +44,7 @@ type UpdateDBInstanceReplicationRequest struct {
 	//
 	// rm-bp1234567890abcdef
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The host address of the primary database. IP addresses and domain names are supported.
+	// The host address of the primary database, which supports an IP address or a domain name.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type UpdateDBInstanceReplicationRequest struct {
 	//
 	// U2VjdXJlUGFzczEyMyE=
 	MasterPassword *string `json:"MasterPassword,omitempty" xml:"MasterPassword,omitempty"`
-	// The port number of the primary database. The default port is 3306 for MySQL.
+	// The port number of the primary database, which is typically 3306 for MySQL.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type UpdateDBInstanceReplicationRequest struct {
 	//
 	// repl_user
 	MasterUser *string `json:"MasterUser,omitempty" xml:"MasterUser,omitempty"`
-	// The operation type. Specifies the operation to perform on the replication channel.
+	// The operation type, which specifies the operation to be performed on the replication channel.
 	//
 	// This parameter is required.
 	//

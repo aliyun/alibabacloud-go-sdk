@@ -18,13 +18,13 @@ type iModifyDatabaseConfigResponseBody interface {
 }
 
 type ModifyDatabaseConfigResponseBody struct {
-	// The response code.
+	// The code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//

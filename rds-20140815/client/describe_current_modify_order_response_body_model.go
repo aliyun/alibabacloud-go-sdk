@@ -84,11 +84,11 @@ type DescribeCurrentModifyOrderResponseBodyModifyOrder struct {
 	//
 	// rm-cn-nwy39qeys0003r
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The effective period. Valid values:
+	// The effective time. Valid values:
 	//
-	// 	- **Immediate*	- (default): The changes take effect immediately.
+	// 	- **Immediate*	- (default): takes effect immediately.
 	//
-	// 	- **MaintainTime**: The changes take effect within the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
+	// 	- **MaintainTime**: takes effect within the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeCurrentModifyOrderResponseBodyModifyOrder struct {
 	//
 	// Succeed,Scheduled,Running,Cancelling,Canceled,Waiting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage information.
+	// The storage description.
 	//
 	// example:
 	//

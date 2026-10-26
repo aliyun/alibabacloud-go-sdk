@@ -58,17 +58,17 @@ type iModifyDBInstanceShrinkRequest interface {
 type ModifyDBInstanceShrinkRequest struct {
 	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// 	- **true*	- (default): Automatically uses coupons.
+	// 	- **true*	- (default): Yes.
 	//
-	// 	- **false**: Does not automatically use coupons.
+	// 	- **false**: No.
 	//
-	// > After a coupon is used, the amount deducted by the coupon is not refunded if you downgrade the instance specifications.
+	// > After a coupon is used, if a downgrade is required, the amount deducted by the coupon will not be refunded.
 	//
 	// example:
 	//
 	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// Specifies whether to enable the [I/O burst feature for premium performance disks](https://help.aliyun.com/document_detail/2340501.html). Valid values:
+	// Specifies whether to enable the [I/O performance burst feature for Premium ESSD cloud disks](https://help.aliyun.com/document_detail/2340501.html). Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -90,7 +90,7 @@ type ModifyDBInstanceShrinkRequest struct {
 	//
 	// Standard
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// <props="china">Specifies whether to enable the [cold data archiving feature](https://help.aliyun.com/document_detail/2701832.html) for general-purpose cloud disks. Valid values:
+	// <props="china">Specifies whether to enable the [data archiving feature for general cloud disks](https://help.aliyun.com/document_detail/2701832.html). Valid values:
 	//
 	// - <props="china">**true**: Enabled.
 	//
@@ -108,7 +108,7 @@ type ModifyDBInstanceShrinkRequest struct {
 	//
 	// pg.n4.2c.1m
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -116,11 +116,11 @@ type ModifyDBInstanceShrinkRequest struct {
 	//
 	// pgm-bp15i4hn07r******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The [target storage capacity](https://help.aliyun.com/document_detail/26312.html), in GB. You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the available storage capacity range for the target instance type.
+	// The [target storage capacity](https://help.aliyun.com/document_detail/26312.html). Unit: GB. You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the available storage capacity range for the target instance type.
 	//
 	// > 	- You must specify at least one of this parameter and the **DBInstanceClass*	- parameter.
 	//
-	// > 	- You can call [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) to query the current storage capacity of the instance.
+	// > 	- You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to view the current storage capacity of the instance.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type ModifyDBInstanceShrinkRequest struct {
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	// The instance storage type. Valid values:
 	//
-	// 	- **general_essd**: premium performance disk (recommended)
+	// 	- **general_essd**: Premium ESSD (recommended)
 	//
 	// 	- **cloud_essd**: PL1 ESSD
 	//
@@ -142,9 +142,9 @@ type ModifyDBInstanceShrinkRequest struct {
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	// The node information.
 	DBNodesShrink *string `json:"DBNodes,omitempty" xml:"DBNodes,omitempty"`
-	// The type of specification change. Valid values:
+	// The type of specification change for the instance. Valid values:
 	//
-	// - **Up*	- (default): Upgrades a subscription instance or upgrades/downgrades a pay-as-you-go instance.
+	// - **Up*	- (default): Upgrades a subscription instance, or upgrades or downgrades a pay-as-you-go instance.
 	//
 	// - **Down**: Downgrades a subscription instance.
 	//
@@ -152,25 +152,25 @@ type ModifyDBInstanceShrinkRequest struct {
 	//
 	// Up
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The time when the new configurations take effect. Valid values:
+	// The effective period for the new configurations. Valid values:
 	//
-	// > **Changing some configurations may affect the instance**. Read the impact section in the [feature documentation](https://help.aliyun.com/document_detail/96061.html) before you configure this parameter. Perform the operation during off-peak hours.
+	// > **Changing some configurations may affect the instance**. Read the [Impact section in the feature documentation](https://help.aliyun.com/document_detail/96061.html) carefully before you configure this parameter, and perform the operation during off-peak hours.
 	//
-	// 	- **Immediate*	- (default): The new configurations take effect immediately.
+	// 	- **Immediate*	- (default): Takes effect immediately.
 	//
-	// 	- **MaintainTime**: The new configurations take effect during the [maintenance window](https://help.aliyun.com/document_detail/610402.html).
+	// 	- **MaintainTime**: Takes effect within the [maintenance window](https://help.aliyun.com/document_detail/610402.html).
 	//
-	// 	- **ScheduleTime**: The new configurations take effect at a specified time. The specified time must be at least 12 hours later than the current time. The actual switchover time follows the formula: EffectiveTime = ScheduleTime + SwitchTime.
+	// 	- **ScheduleTime**: Specifies a time for the switchover. The time must be at least 12 hours later than the current time, and the actual switch time follows the formula: EffectiveTime = ScheduleTime + SwitchTime.
 	//
 	// example:
 	//
 	// Immediate
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// Specifies whether to enable the [Buffer Pool Extension (BPE) feature](https://help.aliyun.com/document_detail/2527067.html) for premium performance disks. Valid values:
+	// Specifies whether to enable the [Buffer Pool Extension (BPE) feature for Premium ESSD cloud disks](https://help.aliyun.com/document_detail/2527067.html). Valid values:
 	//
-	// - **1**: Enabled.
+	// -  **1**: Enabled.
 	//
-	// - **0**: Disabled.
+	// -  **0**: Disabled.
 	//
 	// example:
 	//
@@ -184,9 +184,9 @@ type ModifyDBInstanceShrinkRequest struct {
 	//
 	// rpg-dp****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The parameters and their values. All parameter values are of the STRING type. You can call DescribeParameterTemplates to query parameter names and values.
+	// The parameters and their values. All parameter values are of the string type. You can call the DescribeParameterTemplates operation to query parameter names and values.
 	//
-	// > If you specify the **ParameterGroupId*	- parameter and both the ParameterGroupId and Parameters parameters modify the same parameter, the modification specified by the Parameters parameter takes precedence.
+	// > If you specify the **ParameterGroupId*	- parameter and a parameter is modified by both the ParameterGroupId and Parameters parameters, the modification in the Parameters parameter takes precedence.
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The coupon code.
 	//
@@ -202,17 +202,17 @@ type ModifyDBInstanceShrinkRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The scheduled time for executing the parameter modification. The EffectiveTime parameter must be set to ScheduleTime. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// Specifies the execution time for modifying the parameter. This parameter is required when EffectiveTime is set to ScheduleTime. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
 	//
-	// > The specified time must be later than the current time (the time when the call is made).
+	// > The time must be later than the current time (the time when the API call is executed).
 	//
 	// example:
 	//
 	// 2019-10-17T18:50:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The [minor engine version](https://help.aliyun.com/document_detail/126002.html) of the PostgreSQL instance. If the specification change fails because the current minor engine version is not supported, specify the minor engine version to **upgrade the minor engine version during the specification change**.
+	// The [minor engine version](https://help.aliyun.com/document_detail/126002.html) of the PostgreSQL instance. When you change the instance type and an error indicates that the minor engine version is not supported, you must specify this parameter **to upgrade the minor engine version during the instance type change**.
 	//
-	// Format: `rds_postgres_<major version>00_<minor version>`. Example for version 12 with minor version 20200830: `rds_postgres_1200_20200830`.
+	// Format: `rds_postgres_<Major version number>00_<Minor version number>`. Example for version 12 on 20200830: `rds_postgres_1200_20200830`.
 	//
 	// example:
 	//

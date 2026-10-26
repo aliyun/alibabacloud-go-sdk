@@ -36,7 +36,7 @@ type iCreatePostgresExtensionsRequest interface {
 }
 
 type CreatePostgresExtensionsRequest struct {
-	// The user to which the extension belongs. Only privileged accounts are supported.
+	// The user to which the plug-in belongs. Only privileged accounts are supported.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type CreatePostgresExtensionsRequest struct {
 	//
 	// test_user
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate requests. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to obtain instance ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreatePostgresExtensionsRequest struct {
 	//
 	// pgm-gc7f1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database name of the instance. You can call DescribeDatabases to query the database name.
+	// The name of the database on the instance. You can call the DescribeDatabases operation to obtain the name.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,9 @@ type CreatePostgresExtensionsRequest struct {
 	//
 	// test_db
 	DBNames *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
-	// The plugins to install. Separate multiple plugins with commas (,).
+	// The plug-ins to be installed. Separate multiple plug-ins with commas (,).
 	//
-	// If you do not specify the request parameter **SourceDatabase**, this parameter is required.
+	// If you do not specify the **SourceDatabase*	- request parameter, you must specify this parameter.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type CreatePostgresExtensionsRequest struct {
 	Extensions   *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type CreatePostgresExtensionsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to confirm the security risk of installing specific extensions on instances that run minor engine versions that are too early. After you confirm the risk, the extensions can be installed.
+	// Specifies whether security risk of installing specific plug-ins on instances with outdated minor engine versions is confirmed. You can install the plug-ins only after you confirm security risk.
 	//
 	// Valid values:
 	//
@@ -92,13 +92,13 @@ type CreatePostgresExtensionsRequest struct {
 	//
 	// - false
 	//
-	// > For information about related risks, see [Restrictions on creating extensions in ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/2587815.html).
+	// > For information about the related risks, see [Limits on creating plug-ins in ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/2587815.html).
 	//
 	// example:
 	//
 	// true
 	RiskConfirmed *bool `json:"RiskConfirmed,omitempty" xml:"RiskConfirmed,omitempty"`
-	// The source database from which plugins are synchronized to the target database. If you do not specify the request parameter **Extensions**, this parameter is required.
+	// The source database from which plug-ins are synchronized to the destination database. If you do not specify the **Extensions*	- request parameter, you must specify this parameter.
 	//
 	// example:
 	//

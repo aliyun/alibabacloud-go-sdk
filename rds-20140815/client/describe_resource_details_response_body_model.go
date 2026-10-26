@@ -58,19 +58,19 @@ type DescribeResourceDetailsResponseBody struct {
 	//
 	// 53002759
 	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The disk capacity.
+	// The storage capacity.
 	//
 	// example:
 	//
 	// 200
 	DbInstanceStorage *int64 `json:"DbInstanceStorage,omitempty" xml:"DbInstanceStorage,omitempty"`
-	// The name of the database proxy instance.
+	// The name of the proxy instance.
 	//
 	// example:
 	//
 	// mr-n1m1wjrylfolvrt67s
 	DbProxyInstanceName *string `json:"DbProxyInstanceName,omitempty" xml:"DbProxyInstanceName,omitempty"`
-	// The used storage space, which consists of the space occupied by data files and log files. Unit: bytes. A value of -1 indicates that no data is available.
+	// The used storage space, which consists of the space occupied by data files and logs. Unit: bytes. A value of -1 indicates that no data is available.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribeResourceDetailsResponseBody struct {
 	//
 	// cloud_essd
 	InstanceStorageType *string `json:"InstanceStorageType,omitempty" xml:"InstanceStorageType,omitempty"`
-	// The RDS whitelist group specifications.
+	// The whitelist group specifications.
 	RdsEcsSecurityGroupRel []*DescribeResourceDetailsResponseBodyRdsEcsSecurityGroupRel `json:"RdsEcsSecurityGroupRel,omitempty" xml:"RdsEcsSecurityGroupRel,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -102,13 +102,13 @@ type DescribeResourceDetailsResponseBody struct {
 	//
 	// rg-acfmv3h25bj7yhq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The [IP whitelist](https://help.aliyun.com/document_detail/43185.html) of the instance. Separate multiple entries with commas (,). Each entry must be unique. A maximum of 1,000 entries are supported. The following two formats are supported:
+	// The [IP address whitelist](https://help.aliyun.com/document_detail/43185.html) of the instance. Separate multiple entries with commas (,). Duplicate entries are not allowed. You can add up to 1,000 entries. The following two formats are supported:
 	//
 	// 	- IP address format, such as 10.10.XX.XX.
 	//
-	// 	- CIDR format, such as 10.10.XX.XX/24, where 24 indicates the length of the prefix in the IP address. The prefix length ranges from 1 to 32.
+	// 	- CIDR format, such as 10.10.XX.XX/24. In this format, 24 indicates the length of the prefix in the IP address, and the value ranges from 1 to 32.
 	//
-	// If this parameter is not specified, the whitelist information of the default group of the original instance is used.
+	// If this parameter is not specified, the default whitelist of the original instance is used.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type DescribeResourceDetailsResponseBody struct {
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The vSwitch ID.
 	//
-	// > The vSwitch must belong to the same zone as the ApsaraDB RDS instance.
+	// > The vSwitch must reside in the same zone as the ApsaraDB RDS instance.
 	//
 	// example:
 	//
 	// vsw-2zelwi1jd271p670lzl8h
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//

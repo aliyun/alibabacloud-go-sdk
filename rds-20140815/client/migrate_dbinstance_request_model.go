@@ -52,13 +52,13 @@ type MigrateDBInstanceRequest struct {
 	//
 	// dhg-4nxxxxxxx
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The migration time. Valid values:
+	// The time when the migration takes effect. Valid values:
 	//
-	// 	- **Immediately**: migrates the instance immediately. This is the default value.
+	// 	- **Immediately**: The migration takes effect immediately. This is the default value.
 	//
-	// 	- **MaintainTime**: migrates the instance during the maintenance window.
+	// 	- **MaintainTime**: The migration takes effect within the maintenance window.
 	//
-	// 	- **Specified**: migrates the instance at a specified time.
+	// 	- **Specified**: The migration takes effect at a specified time.
 	//
 	// example:
 	//
@@ -73,21 +73,21 @@ type MigrateDBInstanceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The specified switchover time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The specified time for the migration. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// >This parameter is required when **EffectiveTime*	- is set to **Specified**.
+	// > This parameter is required when **EffectiveTime*	- is set to **Specified**.
 	//
 	// example:
 	//
 	// 2019-10-21T10:00:00Z
 	SpecifiedTime *string `json:"SpecifiedTime,omitempty" xml:"SpecifiedTime,omitempty"`
-	// The ID of the destination host to which the primary instance is migrated. You can call the DescribeDedicatedHosts operation to query the host ID.
+	// The ID of the destination host to which the primary instance is to be migrated. You can call the DescribeDedicatedHosts operation to query the host ID.
 	//
 	// example:
 	//
 	// i-bpxxxxxxx1
 	TargetDedicatedHostIdForMaster *string `json:"TargetDedicatedHostIdForMaster,omitempty" xml:"TargetDedicatedHostIdForMaster,omitempty"`
-	// The ID of the destination host to which the secondary instance is migrated. You can call the DescribeDedicatedHosts operation to query the host ID.
+	// The ID of the destination host to which the secondary instance is to be migrated. You can call the DescribeDedicatedHosts operation to query the host ID.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type MigrateDBInstanceRequest struct {
 	//
 	// cn-hangzhou-j
 	ZoneIdForFollower *string `json:"ZoneIdForFollower,omitempty" xml:"ZoneIdForFollower,omitempty"`
-	// The zone ID of the log node.
+	// The zone ID of the logger node.
 	//
 	// example:
 	//

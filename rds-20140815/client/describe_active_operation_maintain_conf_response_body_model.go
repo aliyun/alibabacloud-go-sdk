@@ -20,11 +20,11 @@ type iDescribeActiveOperationMaintainConfResponseBody interface {
 type DescribeActiveOperationMaintainConfResponseBody struct {
 	// The configuration information.
 	Config *DescribeActiveOperationMaintainConfResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// Indicates whether the configuration has been set. The value is 0 for the first access. Valid values:
+	// Specifies whether the configuration has been set. The value is 0 when you access the configuration for the first time. Valid values:
 	//
-	// 	- 1: Yes.
+	// - 1: Yes.
 	//
-	// 	- 0: No.
+	// - 0: No.
 	//
 	// example:
 	//
@@ -83,17 +83,13 @@ func (s *DescribeActiveOperationMaintainConfResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationMaintainConfResponseBodyConfig struct {
-	// The creation time in the format of YYYY-MM-DDTHH:mm:ssZ.
+	// The creation time. The format is YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The cycle time. Multiple values are separated by commas (,).
-	//
-	// 	- If cycleType is set to Week, valid values are 1 to 7, which represent Monday to Sunday.
-	//
-	// 	- If cycleType is set to Month, valid values are 1 to 28.
+	// The cycle time. Multiple values are separated by commas. If cycleType is Week, valid values are 1 to 7, which represent Monday to Sunday. If cycleType is Month, valid values are 1 to 28.
 	//
 	// example:
 	//
@@ -105,33 +101,29 @@ type DescribeActiveOperationMaintainConfResponseBodyConfig struct {
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The end time of the O&M time window in UTC.
-	//
-	// Default value: 20:00:00Z.
+	// The end time of the O&M time window in UTC. Default value: 20:00:00Z.
 	//
 	// example:
 	//
 	// 20:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the O&M time window in UTC.
-	//
-	// Default value: 18:00:00Z.
+	// The start time of the O&M time window in UTC. Default value: 18:00:00Z.
 	//
 	// example:
 	//
 	// 18:00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The modification time in the format of YYYY-MM-DDTHH:mm:ssZ, such as 2018-05-30T14:30:00Z.
+	// The modification time. The format is YYYY-MM-DDTHH:mm:ssZ, such as 2018-05-30T14:30:00Z.
 	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// Indicates whether the configuration is effective. Valid values:
+	// Specifies whether the configuration takes effect. Valid values:
 	//
-	// 	- 1: Valid.
+	// - 1: Valid.
 	//
-	// 	- 2: Invalid.
+	// - 2: Invalid.
 	//
 	// example:
 	//

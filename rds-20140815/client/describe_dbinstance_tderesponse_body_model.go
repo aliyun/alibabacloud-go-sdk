@@ -23,19 +23,19 @@ type iDescribeDBInstanceTDEResponseBody interface {
 
 type DescribeDBInstanceTDEResponseBody struct {
 	Databases *DescribeDBInstanceTDEResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
-	// The ID of the key used for TDE encryption.
+	// The ID of the key used for TDE.
 	//
 	// example:
 	//
 	// key-szz644a355asjcuilll4u
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C816A4BF-A6EC-4722-95F9-2055859CCFD2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The key mode of instance-level TDE encryption. Valid values:
+	// The key management method for instance-level TDE. Valid values:
 	//
 	// - **Aliyun_Generate_Key**
 	//

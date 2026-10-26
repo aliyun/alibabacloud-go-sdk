@@ -50,7 +50,7 @@ type iDescribeDBProxyResponseBody interface {
 type DescribeDBProxyResponseBody struct {
 	DBProxyAVZones            *DescribeDBProxyResponseBodyDBProxyAVZones            `json:"DBProxyAVZones,omitempty" xml:"DBProxyAVZones,omitempty" type:"Struct"`
 	DBProxyConnectStringItems *DescribeDBProxyResponseBodyDBProxyConnectStringItems `json:"DBProxyConnectStringItems,omitempty" xml:"DBProxyConnectStringItems,omitempty" type:"Struct"`
-	// An internal parameter. You can ignore this parameter.
+	// This is an internal parameter and can be ignored.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeDBProxyResponseBody struct {
 	//
 	// 1
 	DBProxyInstanceNum *int32 `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
-	// This parameter is supported only for ApsaraDB RDS for PostgreSQL. The actual specification size of the proxy instance.
+	// This parameter is supported only by ApsaraDB RDS for PostgreSQL. It indicates the actual specifications of the proxy instance.
 	//
 	// Format: `CPU/Memory`.
 	//
@@ -96,7 +96,7 @@ type DescribeDBProxyResponseBody struct {
 	DBProxyInstanceSize *string `json:"DBProxyInstanceSize,omitempty" xml:"DBProxyInstanceSize,omitempty"`
 	// The running status of the proxy instance. Valid values:
 	//
-	// - DBInstanceClassChanging: The specification is being changed.
+	// - DBInstanceClassChanging: The specifications are being changed.
 	//
 	// - Creating: The instance is being created.
 	//
@@ -110,32 +110,32 @@ type DescribeDBProxyResponseBody struct {
 	DBProxyInstanceStatus *string `json:"DBProxyInstanceStatus,omitempty" xml:"DBProxyInstanceStatus,omitempty"`
 	// The type of the proxy service. Valid values:
 	//
-	// - 1: shared database proxy
+	// - 1: shared proxy
 	//
-	// - 2: dedicated database proxy
+	// - 2: dedicated proxy
 	//
 	// - 3: general-purpose database proxy
 	//
-	// > ApsaraDB RDS for PostgreSQL does not support shared database proxies.
+	// > ApsaraDB RDS for PostgreSQL does not support shared proxies.
 	//
 	// example:
 	//
 	// 2
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
-	// An internal parameter. You can ignore this parameter.
+	// This is an internal parameter and can be ignored.
 	//
 	// example:
 	//
 	// 18
 	DBProxyKindCode *string                                  `json:"DBProxyKindCode,omitempty" xml:"DBProxyKindCode,omitempty"`
 	DBProxyNodes    *DescribeDBProxyResponseBodyDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Struct"`
-	// The persistent connection status. Valid values:
+	// The status of connection persistence. Valid values:
 	//
-	// - **Enabled**: Persistent connections are enabled.
+	// - **Enabled**: enabled
 	//
-	// - **Disabled**: Persistent connections are disabled.
+	// - **Disabled**: disabled
 	//
-	// - **Unsupported**: The instance does not support persistent connections.
+	// - **Unsupported**: The instance does not support connection persistence.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type DescribeDBProxyResponseBody struct {
 	// Startup
 	DBProxyServiceStatus *string                                          `json:"DBProxyServiceStatus,omitempty" xml:"DBProxyServiceStatus,omitempty"`
 	DbProxyEndpointItems *DescribeDBProxyResponseBodyDbProxyEndpointItems `json:"DbProxyEndpointItems,omitempty" xml:"DbProxyEndpointItems,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 909A69EE-71C8-4417-A0B9-FF085407E1E3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

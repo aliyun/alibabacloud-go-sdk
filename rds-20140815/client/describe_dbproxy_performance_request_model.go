@@ -34,7 +34,7 @@ type iDescribeDBProxyPerformanceRequest interface {
 }
 
 type DescribeDBProxyPerformanceRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// rm-t4n3a****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// A reserved parameter. You do not need to configure this parameter.
+	// A reserved parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// exclusive
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
-	// The aggregation dimension. Valid values. The service and server values cannot be specified at the same time.
+	// The aggregation dimension. You cannot specify both service and server at the same time. Valid values:
 	//
 	// - service: aggregates monitoring metrics by proxy endpoint.
 	//
@@ -74,7 +74,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// service
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -82,15 +82,15 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// 2019-09-21T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The performance metrics.
+	// The performance metric.
 	//
-	// RDS MySQL supports only **Maxscale_CpuUsage**: CPU utilization.
+	// ApsaraDB RDS for MySQL supports only **Maxscale_CpuUsage**: CPU utilization.
 	//
-	// RDS PostgreSQL supports the following performance metrics:
+	// ApsaraDB RDS for PostgreSQL supports the following performance metrics:
 	//
 	// - **Maxscale_TotalConns**: connection rate
 	//
-	// - **Maxscale_CurrentConns**: current connections
+	// - **Maxscale_CurrentConns**: current number of connections
 	//
 	// - **Maxscale_DownFlows**: outbound traffic
 	//
@@ -102,7 +102,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// - **Maxscale_CpuUsage**: CPU utilization
 	//
-	// To query multiple performance metrics, separate them with commas (,). You can query up to six performance metrics at a time.
+	// To query multiple performance metrics, separate the metrics with commas (,). You can query up to six performance metrics at a time.
 	//
 	// This parameter is required.
 	//
@@ -111,7 +111,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	// Maxscale_CpuUsage
 	MetricsName *string `json:"MetricsName,omitempty" xml:"MetricsName,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -121,7 +121,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

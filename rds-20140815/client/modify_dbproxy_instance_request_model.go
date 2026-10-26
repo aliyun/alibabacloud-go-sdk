@@ -38,7 +38,7 @@ type iModifyDBProxyInstanceRequest interface {
 }
 
 type ModifyDBProxyInstanceRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,15 +46,15 @@ type ModifyDBProxyInstanceRequest struct {
 	//
 	// rm-t4n3a****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// A deprecated parameter. You do not need to configure this parameter.
+	// **[Deprecated]*	- This parameter is deprecated and does not need to be configured.
 	//
 	// example:
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The number of proxy instances. If this parameter is set to 0, the proxy service of this type is disabled for the instance. Valid values: **1*	- to **16**.
+	// The number of proxy instances. A value of 0 indicates that the proxy service of this type is disabled for the instance. Valid values: **1*	- to **16**.
 	//
-	// > More proxy instances can handle more requests. You can check the load of proxy instances based on monitoring data and then specify an appropriate number of proxy instances.
+	// > More proxy instances can process more requests. You can check the load of the proxy instances based on monitoring data and specify an appropriate number of proxy instances.
 	//
 	// This parameter is required.
 	//
@@ -76,9 +76,9 @@ type ModifyDBProxyInstanceRequest struct {
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
 	// The list of proxy nodes.
 	//
-	// > This parameter is required when the current proxy instance uses multi-active zone deployment.
+	// > This parameter is required when the current proxy instance is active in a multi-zone deployment.
 	DBProxyNodes []*ModifyDBProxyInstanceRequestDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Repeated"`
-	// The specified time for the modification to take effect. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The specified time when the modifications take effect. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// > This parameter is required when **EffectiveTime*	- is set to **SpecificTime**.
 	//
@@ -86,13 +86,13 @@ type ModifyDBProxyInstanceRequest struct {
 	//
 	// 2019-07-10T13:15:12Z
 	EffectiveSpecificTime *string `json:"EffectiveSpecificTime,omitempty" xml:"EffectiveSpecificTime,omitempty"`
-	// The effective period. Valid values:
+	// The time when the modifications take effect. Valid values:
 	//
-	// 	- **Immediate**: The modification takes effect immediately.
+	// 	- **Immediate**: The modifications take effect immediately.
 	//
-	// 	- **MaintainTime**: The modification takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	// 	- **MaintainTime**: The modifications take effect within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// 	- **SpecificTime**: The modification takes effect at a specified time.
+	// 	- **SpecificTime**: The modifications take effect at a specified time.
 	//
 	// Default value: **MaintainTime**.
 	//
@@ -100,12 +100,12 @@ type ModifyDBProxyInstanceRequest struct {
 	//
 	// MaintainTime
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The list of active zones for proxy migration.
+	// The list of zones to which the proxy is migrated.
 	//
-	// > Currently, only ApsaraDB RDS for MySQL proxy instances with cloud disks support active zone migration.
+	// > Currently, only ApsaraDB RDS for MySQL instances with cloud disks support proxy instance migration across zones.
 	MigrateAZ []*ModifyDBProxyInstanceRequestMigrateAZ `json:"MigrateAZ,omitempty" xml:"MigrateAZ,omitempty" type:"Repeated"`
 	OwnerId   *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type ModifyDBProxyInstanceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// A deprecated parameter. You do not need to configure this parameter.
+	// **[Deprecated]*	- This parameter is deprecated and does not need to be configured.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type ModifyDBProxyInstanceRequestDBProxyNodes struct {
 	//
 	// 1
 	CpuCores *string `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
-	// The number of proxy nodes in the zone. Valid values: **1*	- to **2**.
+	// The number of proxy nodes in the zone. Valid values: **1*	- and **2**.
 	//
 	// > This parameter is required when **DBProxyNodes*	- is specified.
 	//
@@ -335,7 +335,7 @@ func (s *ModifyDBProxyInstanceRequestDBProxyNodes) Validate() error {
 }
 
 type ModifyDBProxyInstanceRequestMigrateAZ struct {
-	// The proxy endpoint ID. You can call DescribeDBProxyEndpoint to obtain the proxy endpoint ID.
+	// The ID of the proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID.
 	//
 	// > This parameter is required when **MigrateAZ*	- is specified.
 	//

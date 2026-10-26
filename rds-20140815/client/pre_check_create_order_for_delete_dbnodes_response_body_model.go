@@ -19,7 +19,7 @@ type iPreCheckCreateOrderForDeleteDBNodesResponseBody interface {
 
 type PreCheckCreateOrderForDeleteDBNodesResponseBody struct {
 	Failures *PreCheckCreateOrderForDeleteDBNodesResponseBodyFailures `json:"Failures,omitempty" xml:"Failures,omitempty" type:"Struct"`
-	// The precheck result.
+	// The pre-check result.
 	//
 	// example:
 	//

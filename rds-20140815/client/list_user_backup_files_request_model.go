@@ -32,28 +32,28 @@ type iListUserBackupFilesRequest interface {
 }
 
 type ListUserBackupFilesRequest struct {
-	// The user backup ID.
+	// Queries target user backups by user backup ID.
 	//
 	// example:
 	//
 	// b-kwwvr7v8t7of****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The comment of the user backup to query.
+	// Queries target user backups by comment.
 	//
-	// >You can enter part of the comment for fuzzy matching.
+	// > You can enter a partial comment of the target user backup for fuzzy match.
 	//
 	// example:
 	//
 	// BackupTest
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The OSS download URL of the user backup file. For information about how to obtain the OSS download URL of a user backup file, see [How do I obtain the URL of an uploaded object?](https://help.aliyun.com/document_detail/39607.html).
+	// Queries target user backups by the OSS download URL of the user backup file. For more information about how to obtain the OSS download URL of a user backup file, see [Obtain the URL of an uploaded object](https://help.aliyun.com/document_detail/39607.html).
 	//
 	// example:
 	//
 	// https://****.oss-ap-****.aliyuncs.com/backup_qp.xb
 	OssUrl  *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to query the available regions.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +61,7 @@ type ListUserBackupFilesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call DescribeDBInstanceAttribute to query the resource group ID.
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
 	//
 	// example:
 	//
@@ -69,7 +69,7 @@ type ListUserBackupFilesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the user backup file. Valid values:
+	// Queries target user backups by the status of the user backup file. Valid values:
 	//
 	// 	- **Importing**: The backup is being imported.
 	//
@@ -85,7 +85,7 @@ type ListUserBackupFilesRequest struct {
 	//
 	// CheckSuccess
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag information used to query the user backup.
+	// Queries target user backups by tag.
 	//
 	// example:
 	//

@@ -42,19 +42,39 @@ type iDescribeRCInstancesRequest interface {
 }
 
 type DescribeRCInstancesRequest struct {
-	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The RDS Custom container cluster ID used to filter instances.
+	//
+	// example:
+	//
+	// c463aaa89e2b84cacacfbf23c4867****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The description used to filter instances.
+	//
+	// example:
+	//
+	// Instance_Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The keyword used to perform a fuzzy match on the instance description.
+	//
+	// example:
+	//
+	// Instance
 	DescriptionForFuzzy *string `json:"DescriptionForFuzzy,omitempty" xml:"DescriptionForFuzzy,omitempty"`
-	// Queries instances by host IP address.
+	// The host IP address used to filter instances.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
-	HostIp  *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
+	HostIp *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
+	// The image ID used to filter instances.
+	//
+	// example:
+	//
+	// image-dsvjzw2ii8n4******
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The instance ID. This parameter is used to query a single instance.
 	//
-	// > If no instance ID is specified (neither **InstanceId*	- nor **InstanceIds*	- is passed), the operation returns detailed information about all RDS Custom instances in the specified region.
+	// > If no instance ID is specified (neither **InstanceId*	- nor **InstanceIds*	- is specified), the details of all RDS Custom instances in the specified region are returned.
 	//
 	// example:
 	//
@@ -62,9 +82,9 @@ type DescribeRCInstancesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance IDs.
 	//
-	// This parameter is used to query multiple instances at a time. Separate multiple instance IDs with commas (,). A maximum of 100 IDs are supported. Input format: `["InstanceID1","InstanceID2"]`.
+	// This parameter is used to query multiple instances at a time. Separate multiple instance IDs with commas (,). You can specify up to 100 instance IDs. Input format: `["InstanceId1","InstanceId2"]`.
 	//
-	// > If both **InstanceIds*	- and **InstanceId*	- are specified, the value of **InstanceIds*	- takes precedence.
+	// > If both **InstanceIds*	- and **InstanceId*	- are specified, the value of **InstanceIds*	- prevails.
 	//
 	// example:
 	//
@@ -78,13 +98,13 @@ type DescribeRCInstancesRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The page number of the instance status list.
 	//
-	// Minimum value: 1. Default value: 1.
+	// Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page in a paging query.
 	//
 	// Maximum value: 100. Default value: 10.
 	//
@@ -92,7 +112,7 @@ type DescribeRCInstancesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Queries instances by public IP address.
+	// The public IP address used to filter instances.
 	//
 	// example:
 	//
@@ -106,27 +126,27 @@ type DescribeRCInstancesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **Pending**: Being created.
+	// - **Pending**: The instance is being created.
 	//
-	// - **Running**: Running.
+	// - **Running**: The instance is running.
 	//
-	// - **Starting**: Being started.
+	// - **Starting**: The instance is starting.
 	//
-	// - **Stopping**: Being stopped.
+	// - **Stopping**: The instance is being stopped.
 	//
-	// - **Stopped**: Stopped.
+	// - **Stopped**: The instance is stopped.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Queries instances by the specified tag. Input format: `{"TagKey":"TagValue"}`.
+	// The tags used to filter instances. Input format: `{"TagKey":"TagValue"}`.
 	//
 	// example:
 	//
 	// {"testRC":"test01"}
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The ID of the VPC.
 	//
 	// example:
 	//

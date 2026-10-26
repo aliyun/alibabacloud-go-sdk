@@ -30,9 +30,9 @@ type DescribeWhitelistTemplateResponseBody struct {
 	//
 	// - **400**: Client fault.
 	//
-	// - **401**: Authentication failed.
+	// - **401**: Failed to authenticate during identity verification.
 	//
-	// - **404**: Request page not found.
+	// - **404**: The requested page is not found.
 	//
 	// - **500**: Server fault.
 	//
@@ -40,11 +40,11 @@ type DescribeWhitelistTemplateResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The list of returned data.
 	Data *DescribeWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
-	// - **200**: Success.
+	// - **200**: Normal.
 	//
 	// - **400**: Client error.
 	//
@@ -187,25 +187,25 @@ type DescribeWhitelistTemplateResponseBodyDataTemplate struct {
 	//
 	// 1013
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP address list.
+	// The list of IP addresses.
 	//
 	// example:
 	//
 	// 10.1.X.X,2.3.X.X
 	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	// The whitelist template ID.
+	// The ID of the whitelist template.
 	//
 	// example:
 	//
 	// 424
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The whitelist template name.
+	// The name of the whitelist template.
 	//
 	// example:
 	//
 	// template_123
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

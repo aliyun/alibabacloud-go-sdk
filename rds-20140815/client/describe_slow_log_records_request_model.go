@@ -36,7 +36,7 @@ type iDescribeSlowLogRecordsRequest interface {
 }
 
 type DescribeSlowLogRecordsRequest struct {
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
+	// The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type DescribeSlowLogRecordsRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: any integer greater than 0 that does not exceed the maximum value of Integer.
+	// The page number. Valid values: any positive integer up to the maximum value of the Integer data type.
 	//
 	// > Default value: **1**.
 	//
@@ -86,13 +86,13 @@ type DescribeSlowLogRecordsRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The unique identifier of the SQL statement in the slow query log statistics. You can use this parameter to obtain the slow query log details of the SQL statement.
+	// The unique identifier of the SQL statement in the slow query log statistics. You can use this identifier to query the slow query log details of the SQL statement.
 	//
 	// example:
 	//
 	// U2FsdGVk****
 	SQLHASH *string `json:"SQLHASH,omitempty" xml:"SQLHASH,omitempty"`
-	// The start time of the query. The start time must be within the last 30 days. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
+	// The start time of the query. The start time cannot be more than 30 days earlier than the current time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

@@ -32,7 +32,7 @@ type iCreateDBProxyEndpointAddressRequest interface {
 }
 
 type CreateDBProxyEndpointAddressRequest struct {
-	// The prefix of the new database proxy endpoint. Specify a custom value.
+	// The prefix of the new database proxy endpoint. You can customize the prefix.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateDBProxyEndpointAddressRequest struct {
 	//
 	// test1234
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateDBProxyEndpointAddressRequest struct {
 	//
 	// 	- **Public**: Internet
 	//
-	// 	- **VPC*	- (default): virtual private cloud (VPC)
+	// 	- **VPC*	- (default): VPC
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateDBProxyEndpointAddressRequest struct {
 	//
 	// Public
 	DBProxyConnectStringNetType *string `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
-	// The ID of the database proxy endpoint. You can call DescribeDBProxyEndpoint to query the ID.
+	// The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the database proxy endpoint ID.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type CreateDBProxyEndpointAddressRequest struct {
 	//
 	// ta9um4****
 	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// The reserved parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The port of the new database proxy endpoint. Default value:
+	// The port of the new database proxy endpoint. Default values:
 	//
 	// - MySQL: **3306**
 	//
@@ -84,7 +84,7 @@ type CreateDBProxyEndpointAddressRequest struct {
 	//
 	// 3306
 	DBProxyNewConnectStringPort *string `json:"DBProxyNewConnectStringPort,omitempty" xml:"DBProxyNewConnectStringPort,omitempty"`
-	// The region ID. You can call DescribeRegions to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
@@ -96,17 +96,17 @@ type CreateDBProxyEndpointAddressRequest struct {
 	//
 	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The VPC ID of the new database proxy endpoint. You can call DescribeDBInstanceAttribute to query the VPC ID.
+	// The VPC ID of the new database proxy endpoint. You can call the DescribeDBInstanceAttribute operation to query the VPC ID.
 	//
-	// >This parameter is required when **DBProxyConnectStringNetType*	- is set to **VPC**.
+	// > This parameter is required when **DBProxyConnectStringNetType*	- is set to **VPC**.
 	//
 	// example:
 	//
 	// vpc-bp****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the new database proxy endpoint. You can call DescribeDBInstanceAttribute to query the vSwitch ID.
+	// The vSwitch ID of the new database proxy endpoint. You can call the DescribeDBInstanceAttribute operation to query the vSwitch ID.
 	//
-	// >This parameter is required when **DBProxyConnectStringNetType*	- is set to **VPC**.
+	// > This parameter is required when **DBProxyConnectStringNetType*	- is set to **VPC**.
 	//
 	// example:
 	//

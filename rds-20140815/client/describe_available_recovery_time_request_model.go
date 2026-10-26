@@ -26,7 +26,7 @@ type iDescribeAvailableRecoveryTimeRequest interface {
 }
 
 type DescribeAvailableRecoveryTimeRequest struct {
-	// The ID of the cross-region backup file. You can call the DescribeCrossRegionBackups operation to query the backup set ID.
+	// The ID of the cross-region backup file. You can call the DescribeCrossRegionBackups operation to query the ID of the backup set.
 	//
 	// This parameter is required.
 	//

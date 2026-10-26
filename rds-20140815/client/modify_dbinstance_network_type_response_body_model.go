@@ -24,13 +24,13 @@ type ModifyDBInstanceNetworkTypeResponseBody struct {
 	//
 	// rm-bp1****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iModifyAccountCheckPolicyRequest interface {
 }
 
 type ModifyAccountCheckPolicyRequest struct {
-	// The account name.
+	// The name of the account.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type ModifyAccountCheckPolicyRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// Specifies whether to apply the password policy. Valid values:
 	//
-	// - **true**: Applies the password policy to the account.
+	// - **true**: applies the password policy to the account.
 	//
-	// - **false**: Removes the password policy from the account.
+	// - **false**: cancels the password policy applied to the account.
 	//
 	// This parameter is required.
 	//
@@ -50,15 +50,15 @@ type ModifyAccountCheckPolicyRequest struct {
 	//
 	// true
 	CheckPolicy *bool `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of RequestId as the value of ClientToken. The value of RequestId for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request may be different.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOC****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) to query the instance ID.
+	// Instance ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type ModifyAccountCheckPolicyRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

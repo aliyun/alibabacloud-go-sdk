@@ -96,7 +96,7 @@ func (s *GetDBInstanceTopologyResponseBody) Validate() error {
 }
 
 type GetDBInstanceTopologyResponseBodyData struct {
-	// The network connectivity information of the instance.
+	// The list of network connection information for the instance.
 	Connections []*GetDBInstanceTopologyResponseBodyDataConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -104,7 +104,7 @@ type GetDBInstanceTopologyResponseBodyData struct {
 	//
 	// rm-m5ezban****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The node list.
+	// The nodes.
 	Nodes []*GetDBInstanceTopologyResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -251,17 +251,17 @@ type GetDBInstanceTopologyResponseBodyDataNodes struct {
 	//
 	// rm-m5ezban****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The dedicated cluster ID.
+	// The ID of the dedicated cluster.
 	//
-	// >This parameter is empty for non-dedicated cluster instances.
+	// > An empty value is returned for instances that are not deployed in a dedicated cluster.
 	//
 	// example:
 	//
 	// dhg-4n****
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The host ID in the dedicated cluster.
+	// The ID of the host in the dedicated cluster.
 	//
-	// >This parameter is empty for non-dedicated cluster instances.
+	// > An empty value is returned for instances that are not deployed in a dedicated cluster.
 	//
 	// example:
 	//
@@ -269,13 +269,13 @@ type GetDBInstanceTopologyResponseBodyDataNodes struct {
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 	// The unique identifier of the instance.
 	//
-	// >This parameter returns **-1*	- for non-dedicated cluster instances.
+	// > **-1*	- is returned for instances that are not deployed in a dedicated cluster.
 	//
 	// example:
 	//
 	// 349054
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The node type. Valid values:
+	// The role of the node. Valid values:
 	//
 	// 	- **Master**: primary node.
 	//

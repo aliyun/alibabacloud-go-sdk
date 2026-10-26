@@ -36,7 +36,7 @@ type iDescribeDBInstancesByExpireTimeRequest interface {
 }
 
 type DescribeDBInstancesByExpireTimeRequest struct {
-	// The remaining available days of the instance. Valid values: **0*	- to **180**.
+	// The number of remaining available days of the instance. Valid values: **0*	- to **180**.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeDBInstancesByExpireTimeRequest struct {
 	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be greater than **0*	- and must not exceed the maximum value of the Integer data type.
+	// The page number. Valid values: an integer greater than **0*	- and less than or equal to the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -70,13 +70,13 @@ type DescribeDBInstancesByExpireTimeRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call DescribeDBInstanceAttribute to obtain the resource group ID.
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type DescribeDBInstancesByExpireTimeRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags that are bound to the instance, including TagKey and TagValue. You can specify up to 5 tag pairs at a time. Format: `{"key1":"value1","key2":"value2"...}`.
+	// The tags added to the instances to be queried, including TagKey and TagValue. You can specify up to 5 tags in a single request. Format: `{"key1":"value1","key2":"value2"...}`.
 	//
 	// example:
 	//
 	// {"key1":"value1"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// A deprecated parameter. You do not need to configure this parameter.
+	// **[Deprecated]*	- This parameter is deprecated and does not need to be configured.
 	//
 	// example:
 	//

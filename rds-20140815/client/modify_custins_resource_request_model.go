@@ -32,7 +32,7 @@ type ModifyCustinsResourceRequest struct {
 	//
 	// 2022-12-31 23:59:06
 	AdjustDeadline *string `json:"AdjustDeadline,omitempty" xml:"AdjustDeadline,omitempty"`
-	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to obtain the instance ID.
+	// Instance ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -53,13 +53,13 @@ type ModifyCustinsResourceRequest struct {
 	//
 	// Memory
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The original value. This parameter is required when **ResourceType*	- is set to **instance**.
+	// The original value. This parameter is required when **resourcetype*	- is set to **instance**.
 	//
 	// example:
 	//
 	// 200
 	RestoreOriginalSpecification *string `json:"RestoreOriginalSpecification,omitempty" xml:"RestoreOriginalSpecification,omitempty"`
-	// The target value. This parameter is applicable to target tracking rules and predictive rules. The value of TargetValue can contain up to three decimal places and must be greater than 0.
+	// The target value, which applies to target tracking rules and predictive rules. The TargetValue parameter supports up to three decimal places and must be greater than 0.
 	//
 	// example:
 	//

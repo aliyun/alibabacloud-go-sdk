@@ -36,7 +36,7 @@ type DescribeCloudMigrationPrecheckResultRequest struct {
 	//
 	// pgm-bp102g323jd4****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The page number. Valid values: integers greater than 0 and up to the maximum value of the Integer type. Default value: **1**.
+	// The page number. Valid values: any positive integer up to the maximum value of the Integer type. Default value: **1**.
 	//
 	// This parameter is required.
 	//
@@ -59,25 +59,25 @@ type DescribeCloudMigrationPrecheckResultRequest struct {
 	//
 	// - In the one-click cloud migration scenario for a self-managed PostgreSQL database on an ECS instance, set this parameter to the private IP address of the ECS instance. For more information about how to obtain the IP address, see [View IP addresses](https://help.aliyun.com/document_detail/273914.html).
 	//
-	// - In the one-click cloud migration scenario for a self-managed PostgreSQL database in an on-premises data center, set this parameter to the internal IP address of the on-premises data center.
+	// - In the one-click cloud migration scenario for a self-managed PostgreSQL database in a data center, set this parameter to the internal IP address of the data center.
 	//
 	// example:
 	//
 	// 172.2.XX.XX
 	SourceIpAddress *string `json:"SourceIpAddress,omitempty" xml:"SourceIpAddress,omitempty"`
-	// The port of the self-managed PostgreSQL database. You can run the netstat -a | grep PGSQL command to view the port.
+	// The port of the self-managed PostgreSQL database. You can run the `netstat -a | grep PGSQL` command to view the port.
 	//
 	// example:
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The ID of the task. You can obtain the task ID from the response message after you call the CreateCloudMigrationPrecheckTask operation to create a pre-check task for one-click cloud migration.
+	// The ID of the task. You can obtain the task ID from the response message when you call the CreateCloudMigrationPrecheckTask operation to create a pre-check task for one-click cloud migration.
 	//
 	// example:
 	//
 	// 439946016
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task. You can obtain the task name from the response message after you call the CreateCloudMigrationPrecheckTask operation to create a pre-check task for one-click cloud migration.
+	// The name of the task. You can obtain the task name from the response message when you call the CreateCloudMigrationPrecheckTask operation to create a pre-check task for one-click cloud migration.
 	//
 	// example:
 	//

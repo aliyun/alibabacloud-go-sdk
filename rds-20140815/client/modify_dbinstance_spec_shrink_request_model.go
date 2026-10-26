@@ -78,6 +78,11 @@ type iModifyDBInstanceSpecShrinkRequest interface {
 }
 
 type ModifyDBInstanceSpecShrinkRequest struct {
+	// The resource allocation strategy. Valid values: ForceLocal and Optional. You cannot set this parameter to ForceLocal when you downgrade the instance.
+	//
+	// example:
+	//
+	// Optional
 	AllocateStrategy *string `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
 	// Specifies whether to perform a [major engine version upgrade](https://help.aliyun.com/document_detail/127458.html) for the ApsaraDB RDS for SQL Server instance. Valid values:
 	//
@@ -85,9 +90,9 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// - **false*	- (default): does not perform the upgrade.
 	//
-	// > - When you perform a major engine version upgrade, you must also specify other required parameters, including DBInstanceId, EngineVersion, DBInstanceClass, Category, ZoneId, and VSwitchId.
+	// > - When you perform a major engine version upgrade, you must also pass the other required parameters, including DBInstanceId, EngineVersion, DBInstanceClass, Category, ZoneId, and VSwitchId.
 	//
-	// > - If you want to upgrade the instance to the High-availability Edition or Cluster Edition, you must also specify the ZoneIdSlave1 parameter.
+	// > - If you want to upgrade the instance to the high availability series or Cluster Edition, you must also specify the ZoneIdSlave1 parameter.
 	//
 	// example:
 	//
@@ -103,7 +108,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// Specifies whether to enable the [I/O performance burst feature for Premium ESSDs](https://help.aliyun.com/document_detail/2340501.html). Valid values:
+	// Specifies whether to enable the [I/O performance burst feature for premium performance disks](https://help.aliyun.com/document_detail/2340501.html). Valid values:
 	//
 	// - **true**: enables the feature.
 	//
@@ -123,13 +128,13 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// - **Basic**: Basic Edition
 	//
-	// - **HighAvailability**: High-availability Edition
+	// - **HighAvailability**: high availability series
 	//
-	// - **AlwaysOn**: SQL Server Cluster Edition
+	// - **AlwaysOn**: Cluster Edition (for SQL Server)
 	//
-	// - **Cluster**: MySQL Cluster Edition
+	// - **Cluster**: Cluster Edition (for MySQL)
 	//
-	// - <props="china">**Finance**: Enterprise Edition
+	// - <props="china">**Finance**: Finance Edition
 	//
 	// </details>
 	//
@@ -137,11 +142,11 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// <summary>Serverless ApsaraDB RDS instances (not supported for MariaDB)</summary>
 	//
-	// - **serverless_basic**: Serverless Basic Edition (MySQL and PostgreSQL only)
+	// - **serverless_basic**: Serverless Basic Edition (only for MySQL and PostgreSQL)
 	//
-	// - **serverless_standard**: Serverless High-availability Edition (MySQL and PostgreSQL only)
+	// - **serverless_standard**: Serverless high availability series (only for MySQL and PostgreSQL)
 	//
-	// - **serverless_ha**: Serverless High-availability Edition (SQL Server only)
+	// - **serverless_ha**: Serverless high availability series (only for SQL Server)
 	//
 	// </details>
 	//
@@ -149,7 +154,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// HighAvailability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Specifies whether to enable the [data archiving feature for Premium ESSDs](https://help.aliyun.com/document_detail/2701832.html). Valid values:
+	// Specifies whether to enable the [data archiving feature](https://help.aliyun.com/document_detail/2701832.html) for premium performance disks. Valid values:
 	//
 	// - **true**: enables the feature.
 	//
@@ -169,9 +174,9 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// on
 	CompressionMode *string `json:"CompressionMode,omitempty" xml:"CompressionMode,omitempty"`
-	// The [target instance type](https://help.aliyun.com/document_detail/26312.html). You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the available instance types for specification changes.
+	// The [target instance type](https://help.aliyun.com/document_detail/26312.html). You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the available instance types.
 	//
-	// > 	- You must specify at least one of this parameter and **DBInstanceStorage**.
+	// > 	- You must specify at least one of the **DBInstanceClass*	- and **DBInstanceStorage*	- parameters.
 	//
 	// > 	- You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to view the current instance type.
 	//
@@ -179,7 +184,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// mysql.n8.large.2c
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the instance ID.
+	// Instance ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -189,7 +194,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The [target storage capacity](https://help.aliyun.com/document_detail/26312.html). Unit: GB. You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the available storage capacity range for the target instance type.
 	//
-	// > 	- You must specify at least one of this parameter and **DBInstanceClass**.
+	// > 	- You must specify at least one of the **DBInstanceStorage*	- and **DBInstanceClass*	- parameters.
 	//
 	// > 	- You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to view the current storage capacity of the instance.
 	//
@@ -197,11 +202,11 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// 100
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The instance storage type. Valid values:
+	// The storage type of the instance. Valid values:
 	//
 	// 	- **local_ssd**: premium local SSD
 	//
-	// 	- **cloud_ssd**: standard SSD (not recommended. Sales have stopped in some regions)
+	// 	- **cloud_ssd**: standard SSD (not recommended; no longer available in some regions)
 	//
 	// 	- **cloud_essd**: PL1 ESSD
 	//
@@ -209,13 +214,13 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// 	- **cloud_essd3**: PL3 ESSD
 	//
-	// 	- **general_essd**: Premium ESSD
+	// 	- **general_essd**: premium performance disk
 	//
-	// If you want to change the instance storage type, take note of the following items:
+	// When you change the storage type of the instance, note the following items:
 	//
-	// <props="china">	- If you change the instance storage type from ESSD to Premium ESSD, other parameters such as the instance type and storage capacity must remain the same as the original values and cannot be modified.
+	// <props="china">	- If you change the storage type from ESSD to premium performance disk, other parameters such as the instance type and storage capacity must remain unchanged and cannot be modified.
 	//
-	// <props="china">	- For ApsaraDB RDS for MySQL or MariaDB instances whose instance storage type is standard SSD, you can set this parameter to `cloud_essd` to [upgrade the instance storage type to ESSD](https://help.aliyun.com/document_detail/314678.html). To perform the upgrade, you must specify both **DBInstanceClass*	- and **DBInstanceStorage**, and their values must be the same as the current values of the instance.
+	// <props="china">	- For ApsaraDB RDS for MySQL or ApsaraDB RDS for MariaDB instances whose storage type is standard SSD, you can set this parameter to `cloud_essd` to [upgrade the storage type to ESSD](https://help.aliyun.com/document_detail/314678.html). To perform the upgrade, you must specify both **DBInstanceClass*	- and **DBInstanceStorage**, and their values must be the same as the current values of the instance.
 	//
 	// <props="china">	- For ApsaraDB RDS for PostgreSQL instances, you can upgrade standard SSDs to [ESSDs of any PL](https://help.aliyun.com/document_detail/96750.html), but **you cannot downgrade ESSDs to standard SSDs**.
 	//
@@ -225,13 +230,13 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// local_ssd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The dedicated cluster ID.
+	// The ID of the dedicated cluster.
 	//
 	// example:
 	//
 	// dhg-7a9****
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The type of the specification change. Valid values:
+	// The type of specification change. Valid values:
 	//
 	// - **Up*	- (default): upgrade for subscription instances, and upgrade or downgrade for pay-as-you-go instances.
 	//
@@ -239,7 +244,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// - **TempUpgrade**: elastic specification change for subscription ApsaraDB RDS for SQL Server instances. This value is required for elastic specification changes.
 	//
-	// - **Serverless**: configuration for adjusting the elastic settings of serverless instances.
+	// - **Serverless**: elastic setting adjustment for Serverless instances.
 	//
 	// > If you only change the **DBInstanceStorageType*	- parameter, such as changing standard SSDs to ESSDs, leave this parameter empty.
 	//
@@ -247,15 +252,15 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// Up
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The effective time of the new configurations. Valid values:
+	// The effective period of the new configurations. Valid values:
 	//
-	// > **Changing some configurations may affect the instance**. Read the [Impact section in the feature documentation](https://help.aliyun.com/document_detail/96061.html) carefully before you configure this parameter. We recommend that you do this during off-peak hours.
+	// > **Changing some configurations may affect the instance**. Read the [Impact section in the feature documentation](https://help.aliyun.com/document_detail/96061.html) before you configure this parameter. We recommend that you perform the operation during off-peak hours.
 	//
-	// 	- **Immediate*	- (default): takes effect immediately.
+	// 	- **Immediate*	- (default): The new configurations immediately take effect.
 	//
-	// 	- **MaintainTime**: takes effect within the [maintenance window](https://help.aliyun.com/document_detail/610402.html).
+	// 	- **MaintainTime**: The new configurations take effect within the [maintenance window](https://help.aliyun.com/document_detail/610402.html).
 	//
-	// 	- **ScheduleTime**: takes effect at a specified time. The specified time must be at least 12 hours later than the current time, and the actual switchover time follows the formula: EffectiveTime = ScheduleTime + SwitchTime.
+	// 	- **ScheduleTime**: The new configurations take effect at a specified time. The specified time must be at least 12 hours later than the current time. The actual switchover time follows the formula: EffectiveTime = ScheduleTime + SwitchTime.
 	//
 	// example:
 	//
@@ -293,7 +298,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Specifies whether to enable the [Buffer Pool Extension (BPE) feature for Premium ESSDs](https://help.aliyun.com/document_detail/2527067.html). Valid values:
+	// Specifies whether to enable the [Buffer Pool Extension (BPE) feature](https://help.aliyun.com/document_detail/2527067.html) for premium performance disks. Valid values:
 	//
 	// -  **1**: enables the feature.
 	//
@@ -321,9 +326,9 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// - **Prepaid**: subscription.
 	//
-	// - **Serverless*	- (not supported for ApsaraDB RDS for MariaDB instances): serverless.
+	// - **Serverless*	- (not supported for ApsaraDB RDS for MariaDB instances): Serverless.
 	//
-	// > To change the billing method to serverless, **you must configure*	- the auto-start and auto-stop (AutoPause), scaling range (MaxCapacity and MinCapacity), and elastic policy (SwitchForce) in subsequent parameters. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
+	// > To change the billing method to Serverless, **you must configure*	- the auto-start and auto-stop (AutoPause), scaling range (MaxCapacity and MinCapacity), and elastic policy (SwitchForce) parameters. For more information, see [Overview of Serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of Serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of Serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
 	//
 	// example:
 	//
@@ -335,7 +340,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// 72329885****
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	// The [target instance type of the read-only instance](https://help.aliyun.com/document_detail/276980.html) when you change an ApsaraDB RDS for MySQL High-availability Edition instance with premium local SSDs to a cloud disk instance.
+	// The [target instance type of the read-only instance](https://help.aliyun.com/document_detail/276980.html) when you change the specifications of an ApsaraDB RDS for MySQL High-availability Edition instance with Premium Local SSDs to a cloud disk instance.
 	//
 	// example:
 	//
@@ -349,7 +354,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The configurations for changing the serverless instance.
+	// The configurations for changing the Serverless instance.
 	ServerlessConfigurationShrink *string `json:"ServerlessConfiguration,omitempty" xml:"ServerlessConfiguration,omitempty"`
 	// **[Deprecated]*	- This parameter is deprecated and does not need to be configured.
 	//
@@ -361,7 +366,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
 	//
-	// > - The specified time **must be later than the current time*	- (the time when the call is initiated). Otherwise, the specification change task will fail. After the task fails, you must wait for the order to be automatically canceled before you can initiate the call again.
+	// > - The specified time **must be later than the current time*	- (the time when the API call is initiated). Otherwise, the specification change task fails. After the task fails, you must wait for the order to be automatically canceled before you can initiate the call again.
 	//
 	// > - If you only increase the storage capacity or change the ESSD storage type, the specification change is performed immediately after submission because it does not affect your business. You do not need to configure this parameter.
 	//
@@ -369,9 +374,9 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// 2019-07-10T13:15:12Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The [minor engine version](https://help.aliyun.com/document_detail/126002.html) of the ApsaraDB RDS for PostgreSQL instance. When you change the instance type and an error indicates that the minor engine version is not supported, you must specify the minor engine version **to upgrade the minor engine version during the instance type change**.
+	// The [minor engine version](https://help.aliyun.com/document_detail/126002.html) of the ApsaraDB RDS for PostgreSQL instance. When you change the instance type and an error indicating that the minor engine version is not supported is returned, you must specify the minor engine version **to upgrade the minor engine version during the instance type change**.
 	//
-	// Format: `rds_postgres_<Major version>00_<Minor version>`. For example, for version 12 and minor version 20200830: `rds_postgres_1200_20200830`.
+	// Format: `rds_postgres_<Major version number>00_<Minor version number>`. Example for version 12 released on August 30, 2020: `rds_postgres_1200_20200830`.
 	//
 	// example:
 	//
@@ -385,11 +390,11 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// The vSwitch ID. The zone where the vSwitch resides must correspond to the zone ID specified in **ZoneId**.
 	//
-	// - The network type (**InstanceNetworkType**) must be **VPC**.
+	// - The network type **InstanceNetworkType*	- must be set to **VPC**.
 	//
 	// - If you specify ZoneSlaveId1 (the secondary zone ID), you must specify two vSwitch IDs and separate them with a comma (,).
 	//
-	// > You only need to specify the vSwitch when you upgrade the major engine version of an ApsaraDB RDS for SQL Server instance (AllowMajorVersionUpgrade) or when you switch the vSwitch.
+	// > You only need to specify the vSwitch when you upgrade the major engine version of an ApsaraDB RDS for SQL Server instance (AllowMajorVersionUpgrade), or when you need to set this parameter to switch the vSwitch.
 	//
 	// example:
 	//
@@ -403,7 +408,7 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The zone ID of the secondary node. If this value is the same as the value of **ZoneId**, it is a single-zone deployment. If this value is different from the value of **ZoneId**, it is a multi-zone deployment.
 	//
-	// > You only need to specify the secondary zone when you upgrade the major engine version of an ApsaraDB RDS for SQL Server instance (AllowMajorVersionUpgrade), or you need to configure this parameter when switching the secondary zone.
+	// > You only need to specify the secondary zone when you upgrade the major engine version of an ApsaraDB RDS for SQL Server instance (AllowMajorVersionUpgrade), or when you need to set this parameter to switch the secondary zone.
 	//
 	// example:
 	//

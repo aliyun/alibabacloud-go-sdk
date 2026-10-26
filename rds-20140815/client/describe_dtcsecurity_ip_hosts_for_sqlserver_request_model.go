@@ -28,7 +28,7 @@ type iDescribeDTCSecurityIpHostsForSQLServerRequest interface {
 }
 
 type DescribeDTCSecurityIpHostsForSQLServerRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// The ID of the instance. You can call the DescribeDBInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeDTCSecurityIpHostsForSQLServerRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeDBInstanceAttribute to obtain the region ID.
+	// The region ID. You can call the DescribeDBInstanceAttribute operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeDTCSecurityIpHostsForSQLServerRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call DescribeDBInstanceAttribute to obtain the resource group ID.
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the resource group ID.
 	//
 	// example:
 	//

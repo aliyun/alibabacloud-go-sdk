@@ -109,7 +109,7 @@ type DescribeMaskingRulesResponseBodyDataRules struct {
 	//
 	// true
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The rule algorithms. You can specify multiple algorithms. Masking algorithms can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {masking position, masking length}}.
+	// The algorithms for the rule. Multiple algorithms are supported. Additional parameters can be added for masking algorithms. Format: {name: Algorithm 1}, {name: Algorithm 2, params: {encryption position, number of encrypted digits}}.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type DescribeMaskingRulesResponseBodyDataRules struct {
 	MaskingAlgo *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
 	// The rule configuration.
 	RuleConfig *DescribeMaskingRulesResponseBodyDataRulesRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
-	// The rule name.
+	// The name of the rule.
 	//
 	// example:
 	//

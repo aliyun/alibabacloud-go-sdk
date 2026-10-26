@@ -44,13 +44,13 @@ type CreateImportTaskRequest struct {
 	//
 	// rm-bp1u*****ggm7j9j
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The estimated data space. Unit: GB.
+	// The estimated data size. Unit: GB.
 	//
 	// example:
 	//
 	// 1000
 	EstimatedSize *int32 `json:"EstimatedSize,omitempty" xml:"EstimatedSize,omitempty"`
-	// The host IP address of the source MySQL instance. ApsaraDB RDS accesses this IP address to obtain the backup.
+	// The IP address of the source MySQL host. ApsaraDB RDS accesses this IP address to retrieve backups.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +67,7 @@ type CreateImportTaskRequest struct {
 	//
 	// OEF5JjVOM2pzZXFKRw==
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The port of the source MySQL instance.
+	// The port of the source MySQL database.
 	//
 	// This parameter is required.
 	//
@@ -75,7 +75,7 @@ type CreateImportTaskRequest struct {
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to query available regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -95,7 +95,7 @@ type CreateImportTaskRequest struct {
 	//
 	// ECS
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// The streaming port used to transfer the backup.
+	// The streaming port used to transfer backups.
 	//
 	// This parameter is required.
 	//
@@ -103,7 +103,7 @@ type CreateImportTaskRequest struct {
 	//
 	// 9999
 	StreamPort *int32 `json:"StreamPort,omitempty" xml:"StreamPort,omitempty"`
-	// The account of the source MySQL instance. The account must have permissions to create backups and set up replication. Refer to the following SQL statements for granting permissions:
+	// The source MySQL account. The account must have the permissions to create backups and configure replication. Refer to the following SQL statements for granting permissions:
 	//
 	// ```
 	//
@@ -131,13 +131,15 @@ type CreateImportTaskRequest struct {
 	//
 	// mysql> FLUSH PRIVILEGES;
 	//
+	// ```
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// myadmin
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
-	// The installation path of xtrabackup on the source instance.
+	// The installation path of XtraBackup on the source instance.
 	//
 	// example:
 	//

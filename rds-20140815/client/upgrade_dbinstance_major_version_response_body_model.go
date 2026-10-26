@@ -38,7 +38,7 @@ type UpgradeDBInstanceMajorVersionResponseBody struct {
 	//
 	// 006729E5-2A33-5955-89E3-651D3F44EBE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//

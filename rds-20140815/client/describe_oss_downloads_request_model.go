@@ -24,7 +24,7 @@ type iDescribeOssDownloadsRequest interface {
 }
 
 type DescribeOssDownloadsRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribeOssDownloadsRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the migration task. You can call the DescribeMigrateTasks operation to query the migration task ID.
+	// The ID of the migration task. You can call the DescribeMigrateTasks operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -41,7 +41,7 @@ type DescribeOssDownloadsRequest struct {
 	// 5625458541
 	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

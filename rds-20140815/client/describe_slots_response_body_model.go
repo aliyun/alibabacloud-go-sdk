@@ -22,7 +22,7 @@ type DescribeSlotsResponseBody struct {
 	//
 	// 76AF0609-4195-5DFC-BC78-3AD76FF872BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of replication slots of the instance.
+	// The list of replication slots for the instance.
 	Slots []*DescribeSlotsResponseBodySlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *DescribeSlotsResponseBody) Validate() error {
 }
 
 type DescribeSlotsResponseBodySlots struct {
-	// The name of the database in which the replication slot resides.
+	// The name of the database where the replication slot resides.
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type DescribeSlotsResponseBodySlots struct {
 	SlotName *string `json:"SlotName,omitempty" xml:"SlotName,omitempty"`
 	// The status of the replication slot. Valid values:
 	//
-	// - ACTIVE: Active.
+	// - ACTIVE: active
 	//
-	// - INACTIVE: Inactive.
+	// - INACTIVE: inactive
 	//
 	// example:
 	//
@@ -96,15 +96,15 @@ type DescribeSlotsResponseBodySlots struct {
 	SlotStatus *string `json:"SlotStatus,omitempty" xml:"SlotStatus,omitempty"`
 	// The type of the replication slot. Valid values:
 	//
-	// - physical: Physical.
+	// - physical: physical
 	//
-	// - logical: Logical.
+	// - logical: logical
 	//
 	// example:
 	//
 	// logical
 	SlotType *string `json:"SlotType,omitempty" xml:"SlotType,omitempty"`
-	// The specific latency of the logical subscription on the subscriber corresponding to the current replication slot. Unit: seconds.
+	// The latency of the logical subscription for the subscriber that corresponds to the current replication slot, in seconds.
 	//
 	// example:
 	//
@@ -112,15 +112,15 @@ type DescribeSlotsResponseBodySlots struct {
 	SubReplayLag *string `json:"SubReplayLag,omitempty" xml:"SubReplayLag,omitempty"`
 	// Indicates whether the replication slot is temporary. Valid values:
 	//
-	// - true: The replication slot is temporary.
+	// - true: Yes.
 	//
-	// - false: The replication slot is not temporary.
+	// - false: No.
 	//
 	// example:
 	//
 	// false
 	Temporary *string `json:"Temporary,omitempty" xml:"Temporary,omitempty"`
-	// The amount of logs accumulated by the replication slot.
+	// The volume of accumulated logs in the replication slot.
 	//
 	// example:
 	//

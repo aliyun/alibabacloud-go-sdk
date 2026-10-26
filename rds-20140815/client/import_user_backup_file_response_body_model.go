@@ -18,7 +18,7 @@ type iImportUserBackupFileResponseBody interface {
 }
 
 type ImportUserBackupFileResponseBody struct {
-	// The user backup ID.
+	// The ID of the user backup.
 	//
 	// if can be null:
 	// true
@@ -33,7 +33,7 @@ type ImportUserBackupFileResponseBody struct {
 	//
 	// A140DD14-DCC9-4548-9C72-52A49A58A310
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the user backup is imported. The value **true*	- is returned if the import is successful. Otherwise, an error message is returned.
+	// Indicates whether the user backup is imported. If the import is successful, **true*	- is returned. Otherwise, an error message is returned.
 	//
 	// example:
 	//

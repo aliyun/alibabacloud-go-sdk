@@ -26,13 +26,13 @@ type DescribeLocalAvailableRecoveryTimeResponseBody struct {
 	//
 	// rm-bp1f****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The start time of the restorable time range for backups.
+	// The start time of the restorable time range.
 	//
 	// example:
 	//
 	// 2023-09-11T09:48:52Z
 	RecoveryBeginTime *string `json:"RecoveryBeginTime,omitempty" xml:"RecoveryBeginTime,omitempty"`
-	// The end time of the restorable time range for backups.
+	// The end time of the restorable time range.
 	//
 	// example:
 	//

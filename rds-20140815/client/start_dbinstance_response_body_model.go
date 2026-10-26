@@ -18,7 +18,7 @@ type iStartDBInstanceResponseBody interface {
 }
 
 type StartDBInstanceResponseBody struct {
-	// This parameter is supported only for dedicated cluster instances. The migration task ID.
+	// The ID of the migration task. This parameter is only supported for instances in a dedicated cluster.
 	//
 	// example:
 	//

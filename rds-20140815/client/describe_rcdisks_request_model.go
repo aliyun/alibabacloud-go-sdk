@@ -28,19 +28,19 @@ type iDescribeRCDisksRequest interface {
 }
 
 type DescribeRCDisksRequest struct {
-	// The disk IDs. The value is a JSON array that contains up to 100 IDs separated by commas (,). Format: `["Disk ID1","Disk ID2"]`.
+	// The disk IDs. The value is a JSON array that supports up to 100 IDs separated by commas (,). Example: ["DiskId1", "DiskId2"].
 	//
 	// example:
 	//
 	// ["rcd-bp67acfmxazb4p****", "rcd-bp67acfmxazb4g****", … "rcd-bp67acfmxazb4d****"]
 	DiskIds *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
-	// The type of cloud disk or elastic ephemeral disk to query. Valid values:
+	// The type of the cloud disk or elastic ephemeral disk to query. Valid values:
 	//
-	// ● all: queries both system cloud disks and data cloud disks.
+	// - all: Queries both system cloud disks and data cloud disks.
 	//
-	// ● system: queries only system cloud disks.
+	// - system: Queries only system cloud disks.
 	//
-	// ● data: queries only data cloud disks.
+	// - data: Queries only data cloud disks.
 	//
 	// Default value: all.
 	//
@@ -76,19 +76,19 @@ type DescribeRCDisksRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The disk status. Valid values:
 	//
-	// ● In_use: in use.
+	// - In_use: In use.
 	//
-	// ● Available: to be attached.
+	// - Available: Available.
 	//
-	// ● Attaching: being attached.
+	// - Attaching: Attaching.
 	//
-	// ● Detaching: being detached.
+	// - Detaching: Detaching.
 	//
-	// ● Creating: being created.
+	// - Creating: Creating.
 	//
-	// ● ReIniting: being initialized.
+	// - ReIniting: Initializing.
 	//
-	// ● All: all statuses.
+	// - All: All statuses.
 	//
 	// Default value: All.
 	//
@@ -194,13 +194,13 @@ func (s *DescribeRCDisksRequest) Validate() error {
 }
 
 type DescribeRCDisksRequestTag struct {
-	// The tag key. Empty values and duplicate values are **not allowed**.
+	// The tag key. Empty values and duplicates are not allowed.
 	//
 	// example:
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. Empty values are **allowed**.
+	// The tag value. Empty values are allowed.
 	//
 	// example:
 	//

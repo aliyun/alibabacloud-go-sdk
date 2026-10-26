@@ -26,7 +26,7 @@ type CreateSecretResponseBody struct {
 	//
 	// DF4961DD-16F5-5B24-BD4C-0C7788F7ADAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The user credential of the created Data API account.
+	// The ARN of the created Data API user credential.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type CreateSecretResponseBody struct {
 	//
 	// Foo
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type DescribeRCNodePoolRequest struct {
 	//
 	// c463aaa89e2b84cacacfbf23c4867****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The node pool ID.
+	// The ID of the node pool.
 	//
 	// example:
 	//

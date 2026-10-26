@@ -26,7 +26,7 @@ type DeleteReplicationLinkRequest struct {
 	//
 	// m-2zecuz9tolf******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether to delete the data synchronization link between the primary instance and the disaster recovery instance and promote the disaster recovery instance to a primary instance. Valid values:
+	// Specifies whether to delete the data synchronization link between the primary instance and the disaster recovery instance, and promote the disaster recovery instance to a primary instance. Valid values:
 	//
 	// - **true**: Yes.
 	//

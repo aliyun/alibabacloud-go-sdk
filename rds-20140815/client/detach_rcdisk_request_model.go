@@ -26,7 +26,7 @@ type DetachRCDiskRequest struct {
 	//
 	// none
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The ID of the cloud disk to be detached.
+	// The ID of the cloud disk to detach.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DetachRCDiskRequest struct {
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query available region IDs.
+	// The region ID. You can call the DescribeRegions operation to view available region IDs.
 	//
 	// example:
 	//

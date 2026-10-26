@@ -27,7 +27,7 @@ type iTagResourcesRequest interface {
 
 type TagResourcesRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -47,15 +47,15 @@ type TagResourcesRequest struct {
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// - **INSTANCE**: regular ApsaraDB RDS instance.
+	// - **INSTANCE**: regular ApsaraDB RDS instances.
 	//
-	// - **CUSTOM**: RDS Custom instance.
+	// - **CUSTOM**: ApsaraDB RDS Custom instances.
 	//
-	// - **CUSTOMDEPLOYMENTSET**: RDS Custom deployment set.
+	// - **CUSTOMDEPLOYMENTSET**: ApsaraDB RDS Custom deployment sets.
 	//
-	// - **CUSTOMDISK**: RDS Custom cloud disk.
+	// - **CUSTOMDISK**: ApsaraDB RDS Custom cloud disks.
 	//
-	// - **CUSTOMSNAPSHOT**: RDS Custom snapshot.
+	// - **CUSTOMSNAPSHOT**: ApsaraDB RDS Custom snapshots.
 	//
 	// This parameter is required.
 	//
@@ -152,9 +152,9 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key. Empty values and duplicate values are **not allowed**.
+	// The tag key. The tag key **cannot*	- be empty or duplicate.
 	//
-	// > An existing tag key is overwritten by a new tag key with the same name.
+	// > Duplicate tag keys are overwritten.
 	//
 	// This parameter is required.
 	//
@@ -162,7 +162,7 @@ type TagResourcesRequestTag struct {
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. Empty values are **allowed**.
+	// The tag value. The tag value **can*	- be empty.
 	//
 	// example:
 	//

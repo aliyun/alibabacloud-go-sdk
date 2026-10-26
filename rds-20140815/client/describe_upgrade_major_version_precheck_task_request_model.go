@@ -30,7 +30,7 @@ type iDescribeUpgradeMajorVersionPrecheckTaskRequest interface {
 }
 
 type DescribeUpgradeMajorVersionPrecheckTaskRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,17 +40,15 @@ type DescribeUpgradeMajorVersionPrecheckTaskRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the pre-upgrade check report.
+	// The page number of the check report for the major version upgrade.
 	//
-	// Valid values: a value greater than 0 that does not exceed the maximum value of the Integer data type. Default value: 1.
+	// Valid values: an integer greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page in the major engine version upgrade check report.
-	//
-	// Valid values:
+	// The number of entries to return on each page for the check report before a major engine version upgrade. Valid values:
 	//
 	// - 30 (default)
 	//
@@ -64,13 +62,13 @@ type DescribeUpgradeMajorVersionPrecheckTaskRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The target instance version. The value must be greater than the current major engine version of the instance.
+	// The target major engine version of target instance. The value must be later than the current major engine version of target instance.
 	//
 	// example:
 	//
 	// 12.0
 	TargetMajorVersion *string `json:"TargetMajorVersion,omitempty" xml:"TargetMajorVersion,omitempty"`
-	// The ID of the pre-upgrade check task. You can obtain this value from the **TaskId*	- response parameter after you call the UpgradeDBInstanceMajorVersionPrecheck operation to perform a pre-upgrade check.
+	// The ID of the pre-upgrade check task. You can obtain the task ID from the **TaskId*	- response parameter after you call the UpgradeDBInstanceMajorVersionPrecheck operation to perform a pre-upgrade check.
 	//
 	// example:
 	//

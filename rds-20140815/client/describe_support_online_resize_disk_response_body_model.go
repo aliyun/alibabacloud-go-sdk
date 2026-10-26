@@ -28,7 +28,7 @@ type DescribeSupportOnlineResizeDiskResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The response dataset.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeSupportOnlineResizeDiskResponseBody struct {
 	//
 	// }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned for the response code.
+	// The response message.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeSupportOnlineResizeDiskResponseBody struct {
 	//
 	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

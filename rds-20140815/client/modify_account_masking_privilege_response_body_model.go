@@ -34,7 +34,7 @@ type ModifyAccountMaskingPrivilegeResponseBody struct {
 	//
 	// 2144F5CC-10C5-3B72-8C74-E52C********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

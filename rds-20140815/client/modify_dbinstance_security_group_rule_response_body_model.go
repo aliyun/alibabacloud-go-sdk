@@ -24,7 +24,7 @@ type ModifyDBInstanceSecurityGroupRuleResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response code message.
+	// The response message.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type DescribeDedicatedHostGroupsRequest struct {
 	//
 	// dhg-7a9xxxxxxxx
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The host image based on which you want to query dedicated clusters. Valid values:
+	// The host image category used to query dedicated clusters. Valid values:
 	//
 	// 	- **WindowsWithMssqlStdLicense**: Windows (with SQL Server Standard Edition license).
 	//

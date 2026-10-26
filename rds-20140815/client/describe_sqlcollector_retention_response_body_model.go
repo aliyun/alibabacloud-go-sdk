@@ -34,7 +34,7 @@ type DescribeSQLCollectorRetentionResponseBody struct {
 	//
 	// 365
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

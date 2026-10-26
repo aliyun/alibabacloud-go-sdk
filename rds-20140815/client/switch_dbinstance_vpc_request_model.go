@@ -22,7 +22,7 @@ type iSwitchDBInstanceVpcRequest interface {
 }
 
 type SwitchDBInstanceVpcRequest struct {
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type SwitchDBInstanceVpcRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The private IP address of the instance. The IP address must be within the CIDR block of the vSwitch specified by the **VSwitchId*	- parameter.
 	//
-	// > You can call DescribeVSwitches to query the CIDR block of the target vSwitch.
+	// > You can call the DescribeVSwitches operation to query the CIDR block of the vSwitch.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type SwitchDBInstanceVpcRequest struct {
 	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The VPC ID.
 	//
-	// > The VPC must be in the same region as the ApsaraDB RDS instance.
+	// > The VPC and the ApsaraDB RDS instance must be in the same region.
 	//
 	// This parameter is required.
 	//
@@ -51,7 +51,7 @@ type SwitchDBInstanceVpcRequest struct {
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID.
 	//
-	// > The vSwitch must be in the same zone as the ApsaraDB RDS instance.
+	// > The vSwitch and the ApsaraDB RDS instance must be in the same zone.
 	//
 	// This parameter is required.
 	//

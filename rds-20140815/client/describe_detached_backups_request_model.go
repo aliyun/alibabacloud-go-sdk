@@ -34,7 +34,7 @@ type iDescribeDetachedBackupsRequest interface {
 }
 
 type DescribeDetachedBackupsRequest struct {
-	// The backup set ID.
+	// The ID of the backup set.
 	//
 	// example:
 	//
@@ -42,17 +42,17 @@ type DescribeDetachedBackupsRequest struct {
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// - **Automated**: automatic backup.
+	// - **Automated**: automatic backup
 	//
-	// - **Manual**: manual backup.
+	// - **Manual**: manual backup
 	//
 	// example:
 	//
 	// Automated
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The backup set status. Valid values:
+	// The status of the backup set. Valid values:
 	//
-	// - **Success**: The backup is complete.
+	// - **Success**: The backup is completed.
 	//
 	// - **Failed**: The backup failed.
 	//
@@ -60,7 +60,7 @@ type DescribeDetachedBackupsRequest struct {
 	//
 	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type DescribeDetachedBackupsRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end time of the query. The end time must be later than the start time.
 	//
-	// Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+	// Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC time).
 	//
 	// example:
 	//
 	// 2021-03-15T16:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+	// The page number. Valid values: any integer greater than 0 and less than or equal to the maximum integer value.
 	//
 	// > Default value: 1.
 	//
@@ -96,7 +96,7 @@ type DescribeDetachedBackupsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +104,7 @@ type DescribeDetachedBackupsRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type DescribeDetachedBackupsRequest struct {
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The start time of the query.
 	//
-	// Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+	// Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC time).
 	//
 	// example:
 	//

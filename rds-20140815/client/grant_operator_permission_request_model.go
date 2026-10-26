@@ -26,7 +26,7 @@ type iGrantOperatorPermissionRequest interface {
 }
 
 type GrantOperatorPermissionRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to obtain instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GrantOperatorPermissionRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The expiration time of the permissions. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The expiration time of the permissions. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +44,9 @@ type GrantOperatorPermissionRequest struct {
 	ExpiredTime  *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The authorization type. Valid values:
+	// The type of the permissions to be granted. Valid values:
 	//
-	// - **Control**: configuration permissions. You can view and modify instance configurations.
+	// - **Control**: configuration permissions. You can view and modify the instance configurations.
 	//
 	// - **Data**: database permissions. You can view table schemas, indexes, and SQL statements.
 	//

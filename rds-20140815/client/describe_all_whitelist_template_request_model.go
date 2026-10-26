@@ -28,7 +28,7 @@ type iDescribeAllWhitelistTemplateRequest interface {
 }
 
 type DescribeAllWhitelistTemplateRequest struct {
-	// Specifies whether to enable fuzzy search. Valid values:
+	// Specifies whether to enable fuzzy match. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -38,7 +38,7 @@ type DescribeAllWhitelistTemplateRequest struct {
 	//
 	// true
 	FuzzySearch *bool `json:"FuzzySearch,omitempty" xml:"FuzzySearch,omitempty"`
-	// The number of records per page. Valid values: 10, 30, and 50.
+	// The number of entries per page. Valid values: 10, 30, and 50.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeAllWhitelistTemplateRequest struct {
 	//
 	// 10
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +54,13 @@ type DescribeAllWhitelistTemplateRequest struct {
 	//
 	// 1
 	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the available regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. For more information about resource groups, see What is a resource group.
+	// The ID of the resource group. For more information, see What is a resource group?
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeAllWhitelistTemplateRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the whitelist template. Specify this parameter for fuzzy search. Fuzzy match is supported for template names. You can call the DescribeWhitelistTemplate operation to obtain the template name.
+	// The name of the whitelist template. Specify this parameter for fuzzy match. You can call the DescribeWhitelistTemplate operation to obtain the template name.
 	//
 	// example:
 	//

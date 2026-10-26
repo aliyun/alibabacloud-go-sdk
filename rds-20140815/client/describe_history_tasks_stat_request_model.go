@@ -40,13 +40,13 @@ type iDescribeHistoryTasksStatRequest interface {
 }
 
 type DescribeHistoryTasksStatRequest struct {
-	// The minimum execution duration. Tasks whose execution duration is greater than this value are returned. Unit: seconds. Default value: 0, which indicates no limit.
+	// The minimum execution duration of the task. This parameter is used to filter tasks whose execution duration is greater than the specified value. Unit: seconds. Default value: 0, which indicates that no limit is applied.
 	//
 	// example:
 	//
 	// 0
 	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
-	// The start time of the query. Format: <i>yyyy-mm-dd</i>t<i>hh:mm</i>z (UTC).
+	// The start time of the query. Specify the time in the <i>yyyy-mm-dd</i>T<i>hh:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +61,7 @@ type DescribeHistoryTasksStatRequest struct {
 	// rm-2ze704f*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to query the available regions.
+	// The region ID. You can call the DescribeRegions operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -80,21 +80,21 @@ type DescribeHistoryTasksStatRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **Scheduled**: Waiting to be executed.
+	// - **Scheduled**: pending execution
 	//
-	// - **Running**: Running.
+	// - **Running**: running
 	//
-	// - **Succeed**: Succeeded.
+	// - **Succeed**: succeeded
 	//
-	// - **Failed**: Failed.
+	// - **Failed**: failed
 	//
-	// - **Cancelling**: Being stopped.
+	// - **Cancelling**: being canceled
 	//
-	// - **Canceled**: Stopped.
+	// - **Canceled**: canceled
 	//
-	// - **Waiting**: Waiting for the scheduled time.
+	// - **Waiting**: waiting for the scheduled time
 	//
-	// Separate multiple statuses with commas (,). Default value: empty, which indicates all statuses.
+	// Separate multiple values with commas (,). If this parameter is left empty, all statuses are queried.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type DescribeHistoryTasksStatRequest struct {
 	//
 	// all
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The maximum execution duration. Tasks whose execution duration is not less than this value are returned. Unit: seconds. Default value: 0, which indicates no limit.
+	// The maximum execution duration of the task. This parameter is used to filter tasks whose execution duration is not less than the specified value. Unit: seconds. Default value: 0, which indicates that no limit is applied.
 	//
 	// example:
 	//
 	// 0
 	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
-	// The end of the time range for the task start time. Tasks whose start time is earlier than this time are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+	// The end time of the task start time range. This parameter specifies that only tasks started before this time are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

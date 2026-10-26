@@ -29,7 +29,7 @@ type DescribeSQLLogRecordsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of SQL Audit log entries on the current page.
+	// The number of SQL audit logs on the current page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeSQLLogRecordsResponseBody struct {
 	//
 	// 08A3B71B-FE08-4B03-974F-CC7EA6DB1828
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//

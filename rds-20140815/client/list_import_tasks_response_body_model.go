@@ -26,7 +26,7 @@ type ListImportTasksResponseBody struct {
 	//
 	// Default value: **30**.
 	//
-	// >If you specify this parameter, the **PageSize*	- and **PageNumber*	- parameters are not available.
+	// > If you specify this parameter, the **PageSize*	- and **PageNumber*	- parameters are unavailable.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *ListImportTasksResponseBody) Validate() error {
 }
 
 type ListImportTasksResponseBodyItems struct {
-	// The creation time in UTC. The time follows the format of YYYY-MM-DDTHH:mm:ssZ.
+	// The creation time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ListImportTasksResponseBodyItems struct {
 	//
 	// Importing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The instance ID of the target instance.
+	// The ID of the target instance.
 	//
 	// example:
 	//

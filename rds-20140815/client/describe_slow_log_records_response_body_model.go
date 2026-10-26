@@ -32,7 +32,7 @@ type DescribeSlowLogRecordsResponseBody struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine type.
+	// The database engine.
 	//
 	// example:
 	//

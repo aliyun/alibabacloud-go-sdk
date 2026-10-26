@@ -40,7 +40,7 @@ type CreateMaskingRulesRequest struct {
 	//
 	// rm-t4n8t18o3*****d5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateMaskingRulesRequest struct {
 	//
 	// aes-128-gcm
 	DefaultAlgo *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
-	// The rule algorithms. You can specify multiple algorithms. Masking algorithms can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {encryption position, encryption length}}.
+	// The rule algorithm. You can specify multiple algorithms. Additional parameters can be added for masking algorithms. Format: {name: Algorithm 1}, {name: Algorithm 2, params: {encryption position, number of encrypted digits}}.
 	//
 	// example:
 	//
@@ -69,9 +69,9 @@ type CreateMaskingRulesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The rule configuration in JSON string format, which contains matching rules for databases, tables, and columns.
+	// The rule configuration. The value is a JSON string that contains the matching rules for databases, tables, and columns.
 	RuleConfig *CreateMaskingRulesRequestRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
-	// The rule name. Only one rule name can be specified at a time.
+	// The name of the rule. Only one rule name can be specified at a time.
 	//
 	// This parameter is required.
 	//

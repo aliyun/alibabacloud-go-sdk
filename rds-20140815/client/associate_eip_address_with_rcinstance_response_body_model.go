@@ -14,7 +14,7 @@ type iAssociateEipAddressWithRCInstanceResponseBody interface {
 }
 
 type AssociateEipAddressWithRCInstanceResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

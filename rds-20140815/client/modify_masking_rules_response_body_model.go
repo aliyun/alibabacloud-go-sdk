@@ -34,7 +34,7 @@ type ModifyMaskingRulesResponseBody struct {
 	//
 	// 8B1434A1-08A7-3E8C-A237-076A********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

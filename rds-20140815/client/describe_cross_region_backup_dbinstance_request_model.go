@@ -33,7 +33,7 @@ type DescribeCrossRegionBackupDBInstanceRequest struct {
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: any integer greater than 0 that does not exceed the maximum value of the Integer data type.
+	// The page number. Valid values: any integer greater than 0 and less than or equal to the maximum value of the Integer type.
 	//
 	// Default value: **1**.
 	//

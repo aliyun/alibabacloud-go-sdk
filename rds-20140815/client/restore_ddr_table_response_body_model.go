@@ -22,7 +22,7 @@ type RestoreDdrTableResponseBody struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

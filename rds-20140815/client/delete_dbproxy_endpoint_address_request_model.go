@@ -22,7 +22,7 @@ type iDeleteDBProxyEndpointAddressRequest interface {
 }
 
 type DeleteDBProxyEndpointAddressRequest struct {
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type DeleteDBProxyEndpointAddressRequest struct {
 	//
 	// rm-t4n3a****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The network type of the database proxy endpoint to delete. Valid values:
+	// The network type of the database proxy endpoint that you want to delete. Valid values:
 	//
-	// 	- **Public**: Internet
+	// 	- **Public**: public network
 	//
 	// 	- **VPC**: internal network (VPC)
 	//
@@ -40,7 +40,7 @@ type DeleteDBProxyEndpointAddressRequest struct {
 	//
 	// Default value: **Classic**.
 	//
-	// > - You cannot delete the internal endpoint that is created by default.
+	// > - You cannot delete the default internal network endpoint.
 	//
 	// > - ApsaraDB RDS for PostgreSQL supports only **Public*	- and **VPC**.
 	//
@@ -50,7 +50,7 @@ type DeleteDBProxyEndpointAddressRequest struct {
 	//
 	// Public
 	DBProxyConnectStringNetType *string `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
-	// The ID of the database proxy endpoint. You can call DescribeDBProxyEndpoint to query the ID.
+	// The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type DeleteDBProxyEndpointAddressRequest struct {
 	//
 	// ta9um4****
 	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	// A deprecated parameter. You do not need to configure this parameter.
+	// **[Deprecated]*	- This parameter is deprecated. You do not need to configure it.
 	//
 	// example:
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The region ID. You can call DescribeRegions to query the available regions.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//

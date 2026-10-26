@@ -34,7 +34,7 @@ type DeleteMaskingRulesRequest struct {
 	//
 	// rm-t4n8t18o******6d5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//

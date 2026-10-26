@@ -28,13 +28,13 @@ type DescribeAllWhitelistTemplateResponseBody struct {
 	//
 	// - **200**: Normal.
 	//
-	// - **400**: Client fault.
+	// - **400**: Client error.
 	//
-	// - **401**: Authentication failed.
+	// - **401**: Failed to authenticate.
 	//
-	// - **404**: Request page not found.
+	// - **404**: Requested page not found.
 	//
-	// - **500**: Server fault.
+	// - **500**: Server error.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeAllWhitelistTemplateResponseBody struct {
 	Data *DescribeAllWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
-	// - **200**: Success.
+	// - **200**: Normal.
 	//
 	// - **400**: Client error.
 	//
@@ -60,7 +60,7 @@ type DescribeAllWhitelistTemplateResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -150,13 +150,13 @@ func (s *DescribeAllWhitelistTemplateResponseBody) Validate() error {
 }
 
 type DescribeAllWhitelistTemplateResponseBodyData struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrPageNumbers *int32 `json:"CurrPageNumbers,omitempty" xml:"CurrPageNumbers,omitempty"`
-	// Indicates whether there is a next page of data that meets the conditions. Valid values:
+	// Indicates whether the queried data has a next page. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -166,7 +166,7 @@ type DescribeAllWhitelistTemplateResponseBodyData struct {
 	//
 	// true
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// Indicates whether there is a previous page of data that meets the conditions. Valid values:
+	// Indicates whether the queried data has a previous page. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -176,13 +176,13 @@ type DescribeAllWhitelistTemplateResponseBodyData struct {
 	//
 	// false
 	HasPrev *bool `json:"HasPrev,omitempty" xml:"HasPrev,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	// The whitelist template information returned by page.
+	// The whitelist templates returned on the current page.
 	Templates []*DescribeAllWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 	// The total number of pages.
 	//
@@ -190,7 +190,7 @@ type DescribeAllWhitelistTemplateResponseBodyData struct {
 	//
 	// 3
 	TotalPageNumbers *int32 `json:"TotalPageNumbers,omitempty" xml:"TotalPageNumbers,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -289,25 +289,25 @@ type DescribeAllWhitelistTemplateResponseBodyDataTemplates struct {
 	//
 	// 123
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP address list.
+	// The list of IP addresses.
 	//
 	// example:
 	//
 	// 12.2.X.X,10.0.X.X
 	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	// The whitelist template ID.
+	// The ID of the whitelist template.
 	//
 	// example:
 	//
 	// 412
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The whitelist template name.
+	// The name of the whitelist template.
 	//
 	// example:
 	//
 	// template_123
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

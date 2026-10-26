@@ -22,7 +22,7 @@ type iQueryNotifyRequest interface {
 }
 
 type QueryNotifyRequest struct {
-	// The beginning of the time range to query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type QueryNotifyRequest struct {
 	//
 	// 2022-05-02T08:38:37Z
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+	// The page number. Valid values: integers greater than **0*	- and less than or equal to the maximum value of the Integer type.
 	//
 	// Default value: **1**.
 	//
@@ -52,7 +52,7 @@ type QueryNotifyRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +60,13 @@ type QueryNotifyRequest struct {
 	//
 	// 2022-05-09T08:38:37Z
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
-	// Specifies whether to include confirmed notifications in the query results. Valid values:
+	// Specifies whether the query results include confirmed notifications. Valid values:
 	//
-	// - **true**: Include confirmed notifications.
+	// - **true**: Includes confirmed notifications.
 	//
-	// - **false**: Do not include confirmed notifications.
+	// - **false**: Does not include confirmed notifications.
 	//
-	// >Confirmed notifications are notifications that have been marked as confirmed by calling the ConfirmNotify operation.
+	// > Confirmed notifications are those that have been marked as confirmed by calling the ConfirmNotify operation.
 	//
 	// This parameter is required.
 	//

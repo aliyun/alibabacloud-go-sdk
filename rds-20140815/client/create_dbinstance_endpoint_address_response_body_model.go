@@ -16,9 +16,9 @@ type iCreateDBInstanceEndpointAddressResponseBody interface {
 }
 
 type CreateDBInstanceEndpointAddressResponseBody struct {
-	// The returned fields.
+	// The list of returned fields.
 	Data *CreateDBInstanceEndpointAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateDBInstanceEndpointAddressResponseBodyData struct {
 	//
 	// rm-****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The endpoint ID of the instance.
+	// The ID of the endpoint.
 	//
 	// example:
 	//

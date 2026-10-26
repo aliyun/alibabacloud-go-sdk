@@ -68,7 +68,7 @@ type CreateGADInstanceResponseBodyResult struct {
 	//
 	// 2
 	CreateMemberCount *string `json:"CreateMemberCount,omitempty" xml:"CreateMemberCount,omitempty"`
-	// The GAD cluster ID.
+	// The ID of the global active database cluster.
 	//
 	// example:
 	//

@@ -26,19 +26,19 @@ type UpgradeDBInstanceKernelVersionResponseBody struct {
 	//
 	// rm-bp****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// DA2ECBA0-4745-4491-9166-799FF8984AC9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The target minor engine version to which the instance is upgraded.
+	// The target minor engine version.
 	//
 	// example:
 	//
 	// xcluster80_20210305
 	TargetMinorVersion *string `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

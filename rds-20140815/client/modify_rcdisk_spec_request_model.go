@@ -28,9 +28,9 @@ type ModifyRCDiskSpecRequest struct {
 	//
 	// - **true*	- (default): Automatic payment is enabled. Make sure that your account balance is sufficient.
 	//
-	// - **false**: Only an order is generated. No payment is made.
+	// - **false**: Only an order is generated, and no payment is made.
 	//
-	// > If your payment method has an insufficient balance, set AutoPay to false. An unpaid order is generated. You can log on to the ApsaraDB RDS console to complete the payment.
+	// > If the balance of your payment method is insufficient, you can change the Settings of the parameter AutoPay to false. An unpaid order is generated. You can logon to the ApsaraDB RDS console to complete the payment.
 	//
 	// >
 	//
@@ -38,7 +38,7 @@ type ModifyRCDiskSpecRequest struct {
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The type of the cloud disk. Valid values:
+	// The new category of the cloud disk. Valid values:
 	//
 	// - **cloud_essd*	- (default): ESSD cloud disk.
 	//
@@ -50,7 +50,7 @@ type ModifyRCDiskSpecRequest struct {
 	//
 	// cloud_essd
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// The cloud disk ID.
+	// The ID of the cloud disk.
 	//
 	// example:
 	//
@@ -58,21 +58,21 @@ type ModifyRCDiskSpecRequest struct {
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// Specifies whether to perform a dry run for this operation. Valid values:
 	//
-	// 	- **true**: A dry run is performed without executing the change. The check items include request parameters, request format, business limits, and inventory.
+	// 	- **true**: A dry run is performed, and the modification is not executed. The check items include request parameters, request format, business limits, and inventory.
 	//
-	// 	- **false*	- (default): A normal request is sent. After the check is passed, the change is directly executed.
+	// 	- **false*	- (default): A normal request is sent, and the modification is executed after the check is passed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The performance level (PL) of the ESSD cloud disk. Valid values:
+	// The new performance level (PL) of the ESSD cloud disk. Valid values:
 	//
-	// - **PL1*	- (default): A maximum of 50,000 random read/write IOPS per disk.
+	// - **PL1*	- (default): A single disk delivers up to 50,000 random read/write IOPS.
 	//
-	// - **PL2**: A maximum of 100,000 random read/write IOPS per disk.
+	// - **PL2**: A single disk delivers up to 100,000 random read/write IOPS.
 	//
-	// - **PL3**: A maximum of 1,000,000 random read/write IOPS per disk.
+	// - **PL3**: A single disk delivers up to 1,000,000 random read/write IOPS.
 	//
 	// example:
 	//

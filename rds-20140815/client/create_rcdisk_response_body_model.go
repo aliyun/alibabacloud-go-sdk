@@ -18,19 +18,19 @@ type iCreateRCDiskResponseBody interface {
 }
 
 type CreateRCDiskResponseBody struct {
-	// The cloud disk ID.
+	// The ID of the cloud disk.
 	//
 	// example:
 	//
 	// rcd-2zegrjtnkp6dqbe1****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 100789370230206
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type DescribeUpgradeMajorVersionTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeUpgradeMajorVersionTasksResponseBody) Validate() error {
 }
 
 type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
-	// The statistics information collection pattern.
+	// The statistics collection mode.
 	//
 	// Valid values:
 	//
@@ -129,7 +129,7 @@ type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
 	//
 	// After
 	CollectStatMode *string `json:"CollectStatMode,omitempty" xml:"CollectStatMode,omitempty"`
-	// The detailed information about the task.
+	// The detailed information of the task.
 	//
 	// example:
 	//
@@ -143,13 +143,13 @@ type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
 	//
 	// 1614237779000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The final result of the task. Valid values:
+	// The final result of the task.
 	//
-	// 	- **Success**: The task is successful.
+	// 	- **Success**: Successful.
 	//
-	// 	- **Failed**: The task failed.
+	// 	- **Failed**: Failed.
 	//
-	// 	- **Running**: The migration is in progress.
+	// 	- **Running**: In progress.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
 	//
 	// pgm-bp1i3kkq7321****
 	SourceInsName *string `json:"SourceInsName,omitempty" xml:"SourceInsName,omitempty"`
-	// The version of the original instance before the upgrade.
+	// The major engine version of the original instance before the upgrade.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
 	//
 	// 1614236007000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The end time of the instance switchover from the original instance to the new instance.
+	// The end time of the switchover from the original instance to the new instance.
 	//
 	// The value is a UNIX timestamp. Unit: milliseconds.
 	//
@@ -183,7 +183,7 @@ type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
 	//
 	// 1714237539000
 	SwitchEndTime *string `json:"SwitchEndTime,omitempty" xml:"SwitchEndTime,omitempty"`
-	// The time of the instance switchover from the original instance to the new instance.
+	// The time when the service is switched over from the original instance to the new instance.
 	//
 	// The value is a UNIX timestamp. Unit: milliseconds.
 	//
@@ -225,9 +225,9 @@ type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
 	//
 	// Valid values:
 	//
-	// - **clone**: no cutover
+	// - **clone**: No cutover.
 	//
-	// - **switch**: cutover
+	// - **switch**: Cutover.
 	//
 	// example:
 	//
@@ -235,33 +235,33 @@ type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
 	UpgradeMode *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
 	// Indicates whether a cutover is performed.
 	//
-	// - **true**: A cutover is performed.
+	// - **true**: Yes.
 	//
-	// - **false**: No cutover is performed.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	CutOver *bool `json:"cutOver,omitempty" xml:"cutOver,omitempty"`
-	// The estimated synchronization time for the logical replication lag. Unit: seconds.
+	// The estimated synchronization time for the logical replication latency. Unit: seconds.
 	//
-	// > This parameter is used only for **zero-downtime*	- major engine version upgrades.
+	// > This parameter is only applicable to **zero-downtime*	- major engine version upgrades.
 	//
 	// example:
 	//
 	// 10
 	TotalLogicRepDelayTime *int32 `json:"totalLogicRepDelayTime,omitempty" xml:"totalLogicRepDelayTime,omitempty"`
-	// The size of the logical replication lag. Unit: MB.
+	// The logical replication latency. Unit: MB.
 	//
-	// > This parameter is used only for **zero-downtime*	- major engine version upgrades.
+	// > This parameter is only applicable to **zero-downtime*	- major engine version upgrades.
 	//
 	// example:
 	//
 	// 1
 	TotalLogicRepLatencyMB *int32 `json:"totalLogicRepLatencyMB,omitempty" xml:"totalLogicRepLatencyMB,omitempty"`
-	// The temporary internal endpoint of the higher-version instance for the zero-downtime major engine version upgrade. The format is `****.pg.rds.aliyuncs.com`.
+	// The temporary **internal endpoint*	- of the higher-version instance for zero-downtime major engine version upgrades. The format is `****.pg.rds.aliyuncs.com`.
 	//
-	// > This parameter is used only for **zero-downtime*	- major engine version upgrades.
+	// > This parameter is only applicable to **zero-downtime*	- major engine version upgrades.
 	//
 	// example:
 	//
@@ -269,7 +269,7 @@ type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
 	ZeroDownTimeConnectionString *string `json:"zeroDownTimeConnectionString,omitempty" xml:"zeroDownTimeConnectionString,omitempty"`
 	// The port of the higher-version instance, which is the same as the port of the source instance.
 	//
-	// > This parameter is used only for **zero-downtime*	- major engine version upgrades.
+	// > This parameter is only applicable to **zero-downtime*	- major engine version upgrades.
 	//
 	// example:
 	//

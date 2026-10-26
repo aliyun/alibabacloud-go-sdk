@@ -16,7 +16,7 @@ type iCheckCreateDdrDBInstanceResponseBody interface {
 }
 
 type CheckCreateDdrDBInstanceResponseBody struct {
-	// Indicates whether the disaster recovery instance can be created. Valid values:
+	// Indicates whether a disaster recovery instance can be created. Valid values:
 	//
 	// - **true**
 	//

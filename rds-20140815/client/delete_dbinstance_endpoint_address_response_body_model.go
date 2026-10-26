@@ -16,9 +16,9 @@ type iDeleteDBInstanceEndpointAddressResponseBody interface {
 }
 
 type DeleteDBInstanceEndpointAddressResponseBody struct {
-	// The returned data.
+	// The list of returned data.
 	Data *DeleteDBInstanceEndpointAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DeleteDBInstanceEndpointAddressResponseBody) Validate() error {
 }
 
 type DeleteDBInstanceEndpointAddressResponseBodyData struct {
-	// The endpoint ID of the instance.
+	// The ID of the endpoint.
 	//
 	// example:
 	//

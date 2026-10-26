@@ -22,7 +22,7 @@ type iDescribeCustinsResourceInfoRequest interface {
 }
 
 type DescribeCustinsResourceInfoRequest struct {
-	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) to query the instance ID.
+	// The instance IDs. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type DescribeCustinsResourceInfoRequest struct {
 	// rm-wz9s06u4drm******
 	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

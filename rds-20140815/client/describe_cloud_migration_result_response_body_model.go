@@ -42,7 +42,7 @@ type DescribeCloudMigrationResultResponseBody struct {
 	//
 	// 1B983C48-9793-5EAA-8F7F-00EAEC517675
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of queried entries.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DescribeCloudMigrationResultResponseBodyItems struct {
 	//
 	// 2022-02-25T08:53:13Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the task was last modified.
+	// The time when the task was modified.
 	//
 	// example:
 	//
@@ -137,17 +137,17 @@ type DescribeCloudMigrationResultResponseBodyItems struct {
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The migration stage. Valid values:
 	//
-	// - **precheck**: Precheck.
+	// - **precheck**: precheck
 	//
-	// - **basebackup**: Full backup.
+	// - **basebackup**: full backup
 	//
-	// - **startup**: Link setup.
+	// - **startup**: link setup
 	//
-	// - **increment**: Incremental synchronization.
+	// - **increment**: incremental synchronization
 	//
-	// - **switch**: Cloud switchover.
+	// - **switch**: cloud cutover
 	//
-	// - **success**: Migration completed.
+	// - **success**: cloud migration completed
 	//
 	// example:
 	//
@@ -159,17 +159,17 @@ type DescribeCloudMigrationResultResponseBodyItems struct {
 	//
 	// {\\"Status\\":\\"streaming\\",\\"ReceiveStartLsn\\":\\"0/3000000\\",\\"ReceivedTli\\":\\"1\\",\\"LatestEndTime\\":\\"2022-02-25 17:03:59.3344+08\\",\\"Synced\\":\\"true\\",\\"IsSlave\\":\\"true\\",\\"ReplayTimestamp\\":\\"null\\",\\"LastMsgSendTime\\":\\"2022-03-01 14:42:57.967537+08\\",\\"Conninfo\\":\\"user=migratetest password=*******	- channel_binding=prefer dbname=replication host=172.16.254.203 port=5432 application_name=rds_db_instance fallback_application_name=walreceiver sslmode=prefer sslcompression=1 sslsni=1 ssl_min_protocol_version=TLSv1.2 gssencmode=prefer krbsrvname=postgres target_session_attrs=any\\",\\"LastMsgReceiptTime\\":\\"2022-03-01 14:42:57.96727+08\\",\\"LatestEndLsn\\":\\"0/3000148\\",\\"ReceivedLsn\\":\\"0/3000148\\",\\"ReplayLsn\\":\\"0/3000148\\",\\"ReceiveStartTli\\":\\"1\\",\\"ReplayLag\\":\\"0\\"}
 	ReplicationInfo *string `json:"ReplicationInfo,omitempty" xml:"ReplicationInfo,omitempty"`
-	// The replication status. Valid values:
+	// The replication state. Valid values:
 	//
-	// - **unstarted**: Not started.
+	// - **unstarted**: not started
 	//
-	// - **catchup**: Catching up.
+	// - **catchup**: catching up
 	//
-	// - **streaming**: Streaming.
+	// - **streaming**: streaming
 	//
-	// - **disconnect**: Disconnected.
+	// - **disconnect**: disconnected
 	//
-	// - **finish**: Completed.
+	// - **finish**: completed
 	//
 	// example:
 	//
@@ -183,9 +183,9 @@ type DescribeCloudMigrationResultResponseBodyItems struct {
 	SourceAccount *string `json:"SourceAccount,omitempty" xml:"SourceAccount,omitempty"`
 	// The type of the self-managed PostgreSQL database. Valid values:
 	//
-	// - **idcOnVpc**: A self-managed PostgreSQL database in an IDC that is connected to a VPC.
+	// - **idcOnVpc**: self-managed PostgreSQL database in an on-premises data center that is connected to a VPC
 	//
-	// - **ecsOnVpc**: A self-managed PostgreSQL database on an Alibaba Cloud ECS instance.
+	// - **ecsOnVpc**: self-managed PostgreSQL database on an Alibaba Cloud ECS instance
 	//
 	// example:
 	//
@@ -209,13 +209,13 @@ type DescribeCloudMigrationResultResponseBodyItems struct {
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The switchover time.
+	// The cutover time.
 	//
 	// example:
 	//
 	// 2022-03-01T06:40:51Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// A reserved parameter. The query result is empty.
+	// A reserved parameter. The value is empty.
 	//
 	// example:
 	//
@@ -227,13 +227,13 @@ type DescribeCloudMigrationResultResponseBodyItems struct {
 	//
 	// pgm-bp102g323jd4****
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 440437220
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//

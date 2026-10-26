@@ -33,7 +33,7 @@ type DescribeOssDownloadsResponseBody struct {
 	//
 	// 562154852
 	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

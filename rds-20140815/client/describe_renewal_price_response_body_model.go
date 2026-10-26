@@ -20,7 +20,7 @@ type iDescribeRenewalPriceResponseBody interface {
 type DescribeRenewalPriceResponseBody struct {
 	// The pricing information.
 	PriceInfo *DescribeRenewalPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -79,16 +79,16 @@ func (s *DescribeRenewalPriceResponseBody) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfo struct {
-	// The promotion information.
+	// The pricing information.
 	ActivityInfo *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
 	Coupons      *DescribeRenewalPriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
-	// The currency unit.
+	// The currency.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount amount.
+	// The discount.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeRenewalPriceResponseBodyPriceInfo struct {
 	// 138
 	OriginalPrice *float32                                          `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	RuleIds       *DescribeRenewalPriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// The final price, which is the original price minus the discount amount.
+	// The final price, which is the original price minus the discount.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoActivityInfo struct {
-	// The error description.
+	// The error message.
 	//
 	// example:
 	//

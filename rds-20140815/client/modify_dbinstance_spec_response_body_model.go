@@ -24,13 +24,13 @@ type ModifyDBInstanceSpecResponseBody struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 20793850608****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

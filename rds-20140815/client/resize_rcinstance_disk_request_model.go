@@ -30,9 +30,9 @@ type ResizeRCInstanceDiskRequest struct {
 	//
 	// - **true*	- (default): Automatic payment is enabled. Make sure that your account balance is sufficient.
 	//
-	// - **false**: Only an order is generated. No payment is made.
+	// - **false**: Only an order is generated and no payment is deducted.
 	//
-	// > If your payment method has an insufficient balance, set AutoPay to false. An unpaid order is generated. You can log on to the ApsaraDB RDS console to complete the payment.
+	// > If your payment method has an insufficient balance, you can set AutoPay to false. An unpaid order is generated, and you can log on to the ApsaraDB RDS console to complete the payment.
 	//
 	// >
 	//
@@ -46,11 +46,11 @@ type ResizeRCInstanceDiskRequest struct {
 	//
 	// rcd-x4462840nwinu6rr61m5o
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a precheck on the operation. Valid values:
 	//
-	// 	- **true**: performs a dry run without creating the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
+	// 	- **true**: A precheck is performed, and the operation is not executed. Check items include request parameters, request format, business limits, and inventory.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the check, the instance is created.
+	// 	- **false*	- (default): A normal request is sent, and the operation is executed immediately after the precheck is passed.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ResizeRCInstanceDiskRequest struct {
 	//
 	// rm-uf62br2491p5l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The size of the disk after expansion. Unit: GiB.
+	// The new size of the disk after expansion. Unit: GiB.
 	//
 	// example:
 	//

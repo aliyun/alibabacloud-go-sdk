@@ -32,7 +32,7 @@ type ModifyWhitelistTemplateResponseBody struct {
 	//
 	// - **401**: Authentication failed.
 	//
-	// - **404**: Request page not found.
+	// - **404**: The requested page is not found.
 	//
 	// - **500**: Server error.
 	//
@@ -40,7 +40,7 @@ type ModifyWhitelistTemplateResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data list.
+	// The list of returned data.
 	Data *ModifyWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
@@ -60,17 +60,17 @@ type ModifyWhitelistTemplateResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. Each request has a unique ID, which facilitates troubleshooting.
+	// The request ID. The ID is unique for each request and can be used for troubleshooting.
 	//
 	// example:
 	//
 	// 08A3B71B-FE08-4B03-974F-CC7EA6DB1828
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: The request was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -150,11 +150,11 @@ func (s *ModifyWhitelistTemplateResponseBody) Validate() error {
 }
 
 type ModifyWhitelistTemplateResponseBodyData struct {
-	// The return status. Valid values:
+	// The returned status. Valid values:
 	//
-	// - **ok**: Normal return.
+	// - **ok**: Normal response.
 	//
-	// - **error**: Error return.
+	// - **error**: Error response.
 	//
 	// example:
 	//

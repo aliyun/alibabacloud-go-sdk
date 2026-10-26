@@ -22,7 +22,7 @@ type iListImportTasksRequest interface {
 }
 
 type ListImportTasksRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListImportTasksRequest struct {
 	//
 	// Default value: **30**.
 	//
-	// >If you specify this parameter, the **PageSize*	- and **PageNumber*	- parameters are not available.
+	// > If you specify this parameter, the **PageSize*	- and **PageNumber*	- parameters are unavailable.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iDeleteUserBackupFileRequest interface {
 }
 
 type DeleteUserBackupFileRequest struct {
-	// The user backup ID. You can call ListUserBackupFiles to obtain the ID.
+	// The ID of the user backup. You can call the ListUserBackupFiles operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -33,7 +33,7 @@ type DeleteUserBackupFileRequest struct {
 	// b-w1haya7e4i25****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -41,7 +41,7 @@ type DeleteUserBackupFileRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call DescribeDBInstanceAttribute to obtain the ID.
+	// The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
 	//
 	// example:
 	//

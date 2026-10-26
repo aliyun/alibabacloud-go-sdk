@@ -20,7 +20,7 @@ type iModifyDBInstanceMetricsRequest interface {
 }
 
 type ModifyDBInstanceMetricsRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type ModifyDBInstanceMetricsRequest struct {
 	//
 	// pgm-bp1s1j103lo6****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The monitoring metrics to configure for the instance. You can specify multiple metric keys separated by commas (,). A maximum of 30 metric keys can be specified.
+	// The monitoring metrics of the instance. You can specify multiple metric keys and separate them with commas (,). A maximum of 30 metric keys can be specified.
 	//
-	// You can call the DescribeAvailableMetrics operation to obtain the enhanced monitoring metric keys.
+	// You can call the DescribeAvailableMetrics operation to query the keys of enhanced monitoring metrics.
 	//
 	// This parameter is required.
 	//
@@ -41,9 +41,9 @@ type ModifyDBInstanceMetricsRequest struct {
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The scope of the modification. Valid values:
 	//
-	// 	- **instance**: instance level. The modification is applied only to cloud disk instance.
+	// 	- **instance**: instance level. The modification applies only to cloud disk instance.
 	//
-	// 	- **region**: region level. The modification is applied to all ApsaraDB RDS for PostgreSQL instances that use the same storage type as cloud disk instance in the current region. For example, if cloud disk instance uses cloud disks, the modification is applied to all ApsaraDB RDS for PostgreSQL instances with cloud disks in the current region.
+	// 	- **region**: region level. The modification applies to all ApsaraDB RDS for PostgreSQL instances that use the same storage type as cloud disk instance in the current region. For example, if cloud disk instance uses cloud disks, the modification applies to all ApsaraDB RDS for PostgreSQL instances that use cloud disks in the current region.
 	//
 	// This parameter is required.
 	//

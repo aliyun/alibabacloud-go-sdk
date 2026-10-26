@@ -24,7 +24,7 @@ type ModifyDBInstanceMetricsResponseBody struct {
 	//
 	// pgm-bp1s1j103lo6****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

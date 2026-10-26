@@ -22,7 +22,7 @@ type iPrecheckDuckDBDependencyRequest interface {
 }
 
 type PrecheckDuckDBDependencyRequest struct {
-	// The instance ID of the primary instance.
+	// The primary instance ID.
 	//
 	// This parameter is required.
 	//
@@ -33,6 +33,8 @@ type PrecheckDuckDBDependencyRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The target node mode for the precheck. primary indicates the primary node. readOnly indicates a read-only node. If you do not specify this parameter, the default value is readOnly.
+	//
 	// example:
 	//
 	// readOnly

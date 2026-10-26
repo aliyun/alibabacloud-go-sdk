@@ -32,13 +32,13 @@ type iMigrateDBNodesRequest interface {
 }
 
 type MigrateDBNodesRequest struct {
-	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) to query the instance ID.
+	// Instance ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,15 +46,15 @@ type MigrateDBNodesRequest struct {
 	//
 	// rm-t4n3a****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The list of cluster nodes.
+	// The list of nodes in the cluster.
 	DBNode []*MigrateDBNodesRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
-	// The migration time. Valid values:
+	// The time when the migration takes effect. Valid values:
 	//
-	// 	- **Immediately**: The migration is performed immediately. This is the default value.
+	// 	- **Immediately**: The migration takes effect immediately. This is the default value.
 	//
-	// 	- **MaintainTime**: The migration is performed during the maintenance window.
+	// 	- **MaintainTime**: The migration takes effect during the maintenance window.
 	//
-	// 	- **ScheduleTime**: The migration is performed at the specified time.
+	// 	- **ScheduleTime**: The migration takes effect at a specified time.
 	//
 	// > If you set this parameter to **ScheduleTime**, you must also specify the SwitchTime parameter.
 	//
@@ -66,13 +66,13 @@ type MigrateDBNodesRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The scheduled time for the migration. Perform the migration during off-peak hours. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The time when the modification is performed. Perform the modification during off-peak hours. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2022-05-06T09:24:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
@@ -192,13 +192,13 @@ func (s *MigrateDBNodesRequest) Validate() error {
 }
 
 type MigrateDBNodesRequestDBNode struct {
-	// The node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
 	// rn-6256r4a87xvv7****
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// The zone ID of the node.
+	// The ID of the zone where the node resides.
 	//
 	// example:
 	//

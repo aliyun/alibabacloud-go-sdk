@@ -34,11 +34,11 @@ type CreateMaskingRulesResponseBody struct {
 	//
 	// 792233B1-76B8-5A01-92B4-**********864
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//

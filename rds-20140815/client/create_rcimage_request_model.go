@@ -26,19 +26,19 @@ type CreateRCImageRequest struct {
 	//
 	// Created_from_rc-vma9w5z699x9********
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The instance ID of the RDS Custom instance.
+	// The RDS Custom instance ID.
 	//
 	// example:
 	//
 	// rc-vma9w5z699x93204****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID. You can call DescribeRegions to query the available regions.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The snapshot ID used to create the custom image. You can call DescribeRCSnapshots to query snapshot IDs.
+	// The ID of the snapshot used to create the custom image. You can call the DescribeRCSnapshots operation to query the snapshot ID.
 	//
 	// example:
 	//

@@ -52,7 +52,7 @@ type iDescribeDBProxyEndpointResponseBody interface {
 }
 
 type DescribeDBProxyEndpointResponseBody struct {
-	// The timeout period for consistency reads. Unit: milliseconds. Default value: **10**. Valid values: **0 to 60000**.
+	// The timeout period for consistent reads. Unit: milliseconds. Default value: **10**. Valid values: **0*	- to **60000**.
 	//
 	// example:
 	//
@@ -79,7 +79,12 @@ type DescribeDBProxyEndpointResponseBody struct {
 	// example:
 	//
 	// 3306
-	DBProxyConnectStringPort              *string `json:"DBProxyConnectStringPort,omitempty" xml:"DBProxyConnectStringPort,omitempty"`
+	DBProxyConnectStringPort *string `json:"DBProxyConnectStringPort,omitempty" xml:"DBProxyConnectStringPort,omitempty"`
+	// The execution cost threshold for SQL statements in automatic request distribution among row store and column store nodes for HTAP.
+	//
+	// example:
+	//
+	// 30000
 	DBProxyEndpointCostThresholdForDuckdb *string `json:"DBProxyEndpointCostThresholdForDuckdb,omitempty" xml:"DBProxyEndpointCostThresholdForDuckdb,omitempty"`
 	// The ID of the proxy endpoint.
 	//
@@ -99,23 +104,23 @@ type DescribeDBProxyEndpointResponseBody struct {
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The settings of the proxy endpoint in JSON format. The following parameters are included:
+	// The settings of the proxy endpoint. The value is in JSON format and includes the following parameters:
 	//
-	// 	- **TransactionReadSqlRouteOptimizeStatus**: the transaction splitting setting. The value is **0*	- (disabled) or **1*	- (enabled).
+	// 	- **TransactionReadSqlRouteOptimizeStatus**: the transaction splitting setting. Valid values: **0*	- (disabled) and **1*	- (enabled).
 	//
-	// 	- **ConnectionPersist**: the connection pool setting. The value is **0*	- (disabled), **1*	- (session-level connection pool), or **2*	- (transaction-level connection pooling).
+	// 	- **ConnectionPersist**: the connection pool setting. Valid values: **0*	- (disabled), **1*	- (session-level connection pool), and **2*	- (transaction-level connection pooling).
 	//
-	// 	- **ReadWriteSpliting**: the read/write splitting setting. The value is **0*	- (disabled) or **1*	- (enabled).
+	// 	- **ReadWriteSpliting**: the read/write splitting setting. Valid values: **0*	- (disabled) and **1*	- (enabled).
 	//
-	// 	- **AZProximityAccess**: the nearest access feature. The value is **0*	- (disabled) or **1*	- (enabled).
+	// 	- **AZProximityAccess**: the nearest access setting. Valid values: **0*	- (disabled) and **1*	- (enabled).
 	//
-	// 	- **CausalConsistRead**: the read consistency setting. The value is **0*	- (eventual consistency), **1*	- (session consistency), or **2*	- (global consistency).
+	// 	- **CausalConsistRead**: the read consistency setting. Valid values: **0*	- (eventual consistency), **1*	- (session consistency), and **2*	- (global consistency).
 	//
-	// 	- **HtapFilter**: the automatic request distribution among row store and column store nodes setting. The value is **0*	- (disabled) or **1*	- (enabled).
+	// 	- **HtapFilter**: the automatic request distribution among row store and column store nodes for HTAP setting. Valid values: **0*	- (disabled) and **1*	- (enabled).
 	//
-	// 	- **PinPreparedStmt**: visible only for ApsaraDB RDS for PostgreSQL. This is an internal parameter.
+	// 	- **PinPreparedStmt**: an internal parameter visible only in ApsaraDB RDS for PostgreSQL.
 	//
-	// > ApsaraDB RDS for PostgreSQL supports modification of only **ReadWriteSpliting**. **TransactionReadSqlRouteOptimizeStatus*	- and **PinPreparedStmt*	- are set to 1 by default.
+	// > For ApsaraDB RDS for PostgreSQL, only **ReadWriteSpliting*	- can be modified. **TransactionReadSqlRouteOptimizeStatus*	- and **PinPreparedStmt*	- are set to 1 by default.
 	//
 	// example:
 	//
@@ -128,9 +133,9 @@ type DescribeDBProxyEndpointResponseBody struct {
 	//
 	// proxyterminal-test
 	DbProxyEndpointAliases *string `json:"DbProxyEndpointAliases,omitempty" xml:"DbProxyEndpointAliases,omitempty"`
-	// The read/write type of the proxy endpoint. Valid values:
+	// The read/write mode of the proxy endpoint. Valid values:
 	//
-	// 	- **ReadWrite**: read/write splitting mode.
+	// 	- **ReadWrite**: read/write mode.
 	//
 	// 	- **ReadOnly**: read-only mode.
 	//
@@ -159,37 +164,37 @@ type DescribeDBProxyEndpointResponseBody struct {
 	EndpointConnectItems  *DescribeDBProxyEndpointResponseBodyEndpointConnectItems `json:"EndpointConnectItems,omitempty" xml:"EndpointConnectItems,omitempty" type:"Struct"`
 	// The read weight distribution mode. For more information, see [Read weight distribution](https://help.aliyun.com/document_detail/96076.html). Valid values:
 	//
-	// 	- **Standard**: automatically distributes weights based on instance specifications.
+	// 	- **Standard**: automatic allocation based on instance specifications
 	//
-	// 	- **Custom**: uses custom weight distribution.
+	// 	- **Custom**: custom weight allocation
 	//
 	// example:
 	//
 	// Standard
 	ReadOnlyInstanceDistributionType *string `json:"ReadOnlyInstanceDistributionType,omitempty" xml:"ReadOnlyInstanceDistributionType,omitempty"`
-	// The latency threshold for read/write splitting. When the latency of a read-only instance exceeds this threshold, read traffic is not routed to the instance. Unit: seconds.
+	// The latency threshold for read/write splitting. If the latency of a read-only instance exceeds this threshold, read traffic is not routed to the instance. Unit: seconds.
 	//
 	// example:
 	//
 	// 30
 	ReadOnlyInstanceMaxDelayTime *string `json:"ReadOnlyInstanceMaxDelayTime,omitempty" xml:"ReadOnlyInstanceMaxDelayTime,omitempty"`
-	// The read weight distribution information, which specifies the read request weights of the primary instance and read-only instances. The value is in JSON format and includes the following parameters:
+	// The read weight distribution information, which specifies the read request weights of the primary and read-only instances. The value is in JSON format and includes the following parameters:
 	//
-	// 	- **DBInstanceId**: the instance ID.
+	// 	- **DBInstanceId**: instance ID of the instance.
 	//
-	// 	- **DBInstanceType**: the instance type. The value is **Master*	- (primary instance) or **ReadOnly*	- (read-only instance).
+	// 	- **DBInstanceType**: the type of the instance. Valid values: **Master*	- (primary instance) and **ReadOnly*	- (read-only instance).
 	//
-	// 	- **NodeID**: the node ID of the primary node or secondary node of the primary instance in the Cluster Edition.
+	// 	- **NodeID**: instance IDs of the primary and secondary nodes of the primary instance in the Cluster Edition.
 	//
-	// 	- **NodeType**: the node type in the Cluster Edition. The value is **Primary*	- (primary node of the primary instance) or **Secondary*	- (secondary node of the primary instance).
+	// 	- **NodeType**: the type of the node in the Cluster Edition. Valid values: **Primary*	- (primary node of the primary instance) and **Secondary*	- (secondary node of the primary instance).
 	//
-	// 	- **Weight**: the read request weight. The value increases in increments of **100**. Maximum value: **10000**.
+	// 	- **Weight**: the read request weight. The weight increases in increments of **100**, and the maximum value is **10000**.
 	//
 	// example:
 	//
 	// [{\\"Availability\\":\\"Available\\",\\"DBInstanceId\\":\\"rm-2z****\\"，\\"DBInstanceType\\":\\"Master\\",\\"NodeId\\":\\"rn-t2****\\",\\"NodeType\\":\\"Primary\\",\\"Weight\\":0}, {\\"Availability\\":\\"Available\\",\\"DBInstanceId\\":\\"rm-2z****\\"，\\"DBInstanceType\\":\\"Master\\",\\"NodeId\\":\\"rn-z9****\\",\\"NodeType\\":\\"Secondary\\",\\"Weight\\":400}, {\\"Availability\\":\\"Available\\",,\\"DBInstanceId\\":\\"rm-2z****\\"，\\"DBInstanceType\\":\\"Master\\",\\"NodeId\\":\\"rn-1c****\\",\\"NodeType\\":\\"Secondary\\",\\"Weight\\":400}]]
 	ReadOnlyInstanceWeight *string `json:"ReadOnlyInstanceWeight,omitempty" xml:"ReadOnlyInstanceWeight,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

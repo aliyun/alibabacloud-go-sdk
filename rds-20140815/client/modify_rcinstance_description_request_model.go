@@ -18,9 +18,7 @@ type iModifyRCInstanceDescriptionRequest interface {
 }
 
 type ModifyRCInstanceDescriptionRequest struct {
-	// The name of the RDS Custom instance.
-	//
-	// > The name must be 2 to 255 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), or hyphens (-).
+	// The name of the RDS Custom instance. The name must be 2 to 255 characters in length and start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//

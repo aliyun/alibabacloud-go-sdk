@@ -36,11 +36,11 @@ type iDescribeClassDetailsResponseBody interface {
 }
 
 type DescribeClassDetailsResponseBody struct {
-	// The edition. Valid values:
+	// The instance edition. Valid values:
 	//
 	// 	- **Basic**: Basic Edition
 	//
-	// 	- **HighAvailability**: High-availability Edition
+	// 	- **HighAvailability**: high availability series
 	//
 	// 	- **AlwaysOn**: Cluster Edition
 	//
@@ -62,7 +62,7 @@ type DescribeClassDetailsResponseBody struct {
 	//
 	// x
 	ClassGroup *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
-	// The number of CPU cores for the instance type. Unit: cores.
+	// The number of CPU cores of the instance type. Unit: cores.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeClassDetailsResponseBody struct {
 	//
 	// local_ssd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The architecture.
+	// The instruction set architecture.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type DescribeClassDetailsResponseBody struct {
 	//
 	// 4000
 	MaxConnections *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum I/O bandwidth for the instance type. Unit: Mbit/s.
+	// The maximum I/O bandwidth of the instance type. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 1024
 	MaxIOMBPS *string `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
-	// The maximum IOPS for the instance type. Unit: operations per second.
+	// The maximum IOPS of the instance type. Unit: operations per second.
 	//
 	// example:
 	//
@@ -114,15 +114,15 @@ type DescribeClassDetailsResponseBody struct {
 	//
 	// 2GB
 	MemoryClass *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
-	// The price.
+	// The reference price.
 	//
 	// <props="china">Unit: cents (CNY).
 	//
 	// <props="intl">Unit: cents (USD).
 	//
-	// > 	- If you set the CommodityCode parameter to a pay-as-you-go commodity code, the hourly price is returned.
+	// >	- If you specify a pay-as-you-go commodity code in the CommodityCode parameter, the hourly price is displayed.
 	//
-	// > 	- If you set the CommodityCode parameter to a subscription commodity code, the monthly price is returned.
+	// >	- If you specify a subscription commodity code in the CommodityCode parameter, the monthly price is displayed.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iGrantOperatorPermissionResponseBody interface {
 }
 
 type GrantOperatorPermissionResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

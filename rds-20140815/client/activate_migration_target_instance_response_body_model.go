@@ -28,7 +28,7 @@ type ActivateMigrationTargetInstanceResponseBody struct {
 	//
 	// pgm-bp102g323jd4****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ActivateMigrationTargetInstanceResponseBody struct {
 	//
 	// 172.16.XX.XX
 	SourceIpAddress *string `json:"SourceIpAddress,omitempty" xml:"SourceIpAddress,omitempty"`
-	// The port of the self-managed PostgreSQL database.
+	// The port number of the self-managed PostgreSQL database.
 	//
 	// example:
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

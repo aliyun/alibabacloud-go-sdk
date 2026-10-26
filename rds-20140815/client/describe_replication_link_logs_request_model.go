@@ -38,19 +38,19 @@ type DescribeReplicationLinkLogsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of records per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The task ID. The task ID returned when you call the **CreateReplicationLink*	- operation to create a disaster recovery instance.
+	// The task ID. This ID is returned when you call the **CreateReplicationLink*	- operation to create a disaster recovery instance.
 	//
 	// example:
 	//
 	// 8413252
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name. The task name returned when you call the **CreateReplicationLink*	- operation to create a disaster recovery instance.
+	// The task name. This is the name of the task when you call the **CreateReplicationLink*	- operation to create a disaster recovery instance.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type DescribeReplicationLinkLogsRequest struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **create**: Create a replication link.
+	// - **create**: Creates a synchronization link.
 	//
-	// - **create-dryrun**: Dry run for creating a replication link.
+	// - **create-dryrun**: Performs a precheck for creating a synchronization link.
 	//
 	// This parameter is required.
 	//

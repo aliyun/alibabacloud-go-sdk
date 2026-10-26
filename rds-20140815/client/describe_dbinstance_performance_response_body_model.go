@@ -30,7 +30,7 @@ type DescribeDBInstancePerformanceResponseBody struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+	// The end time of the query. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -43,13 +43,13 @@ type DescribeDBInstancePerformanceResponseBody struct {
 	// MySQL
 	Engine          *string                                                   `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	PerformanceKeys *DescribeDBInstancePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// A5409D02-D661-4BF3-8F3D-0A814D0574E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+	// The start time of the query. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
 	//
 	// example:
 	//

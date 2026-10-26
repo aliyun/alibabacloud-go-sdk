@@ -16,9 +16,9 @@ type iModifyDBInstanceEndpointResponseBody interface {
 }
 
 type ModifyDBInstanceEndpointResponseBody struct {
-	// The returned fields.
+	// The list of returned fields.
 	Data *ModifyDBInstanceEndpointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ModifyDBInstanceEndpointResponseBody) Validate() error {
 }
 
 type ModifyDBInstanceEndpointResponseBodyData struct {
-	// The endpoint ID of the instance.
+	// The ID of the endpoint.
 	//
 	// example:
 	//

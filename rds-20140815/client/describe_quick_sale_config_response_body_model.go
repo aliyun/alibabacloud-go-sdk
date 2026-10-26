@@ -28,7 +28,7 @@ type DescribeQuickSaleConfigResponseBody struct {
 	//
 	// rds
 	Commodity *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
-	// The commodity configuration details.
+	// The product configuration details.
 	Items map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty"`
 	// Id of the request
 	//

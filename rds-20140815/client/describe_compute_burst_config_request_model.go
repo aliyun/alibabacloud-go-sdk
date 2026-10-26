@@ -26,13 +26,13 @@ type iDescribeComputeBurstConfigRequest interface {
 }
 
 type DescribeComputeBurstConfigRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeComputeBurstConfigRequest struct {
 	//
 	// cn-hangzhou
 	RegionId []byte `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

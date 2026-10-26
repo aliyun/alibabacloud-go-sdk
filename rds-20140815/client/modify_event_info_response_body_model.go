@@ -46,7 +46,7 @@ type ModifyEventInfoResponseBody struct {
 	//
 	// 1
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The successful event ID.
+	// The success event ID.
 	//
 	// example:
 	//

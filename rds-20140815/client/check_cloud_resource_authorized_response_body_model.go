@@ -22,7 +22,7 @@ type CheckCloudResourceAuthorizedResponseBody struct {
 	//
 	// - **1**: Authorized.
 	//
-	// - **0**: Not authorized.
+	// - **0**: Unauthorized.
 	//
 	// example:
 	//

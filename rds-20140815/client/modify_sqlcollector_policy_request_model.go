@@ -26,7 +26,7 @@ type iModifySQLCollectorPolicyRequest interface {
 }
 
 type ModifySQLCollectorPolicyRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to obtain instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ModifySQLCollectorPolicyRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. You can call DescribeDBInstanceAttribute to obtain the resource group ID.
+	// The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to obtain the ID.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ModifySQLCollectorPolicyRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable or disable SQL Explorer (SQL Audit). Valid values:
+	// Specifies whether to enable or disable the SQL Explorer (SQL Audit) feature. Valid values:
 	//
 	// - **Enable**
 	//

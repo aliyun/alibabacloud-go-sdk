@@ -24,13 +24,13 @@ type RecoveryDBInstanceResponseBody struct {
 	//
 	// rm-bp1v****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 2270972****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

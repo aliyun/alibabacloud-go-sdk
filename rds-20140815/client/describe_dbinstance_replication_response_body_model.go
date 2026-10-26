@@ -80,13 +80,13 @@ type DescribeDBInstanceReplicationResponseBody struct {
 	//
 	// 3306
 	ReplicationPort *string `json:"ReplicationPort,omitempty" xml:"ReplicationPort,omitempty"`
-	// The replication source of native replication.
+	// The replication source for native replication.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	ReplicationSource *string `json:"ReplicationSource,omitempty" xml:"ReplicationSource,omitempty"`
-	// The current replication status. Valid values:
+	// The current replication state. Valid values:
 	//
 	// - **Running**: Running.
 	//
@@ -106,6 +106,8 @@ type DescribeDBInstanceReplicationResponseBody struct {
 	//
 	// 847BA085-B377-4BFA-8267-F82345ECE1D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The replication status information returned by the SHOW SLAVE STATUS statement for the instance.
+	//
 	// example:
 	//
 	// [{"SlaveIoRunning": "Yes", "SlaveSqlRunning": "Yes", "SecondsBehindMaster": 0, "SlaveIoState": "Waiting for master to send event", "SlaveSqlRunningState": "Slave has read all relay log; waiting for more updates", "ExecutedGtidSet": "bd2a34b9-8b8d-11ef-8917-00163e1298b9:1-20567", "MasterHost": "192.168.10.100", "MasterUser": "repl_user", "MasterUuid": "bd2a34b9-8b8d-11ef-8917-00163e1298b9", "LastErrno": 0, "LastSqlErrno": 0, "LastIoErrno": 0, "LastSqlError": "", "LastIoError": "", "ChannelName": "my_test_channel", "ReplicateDoDb": "test_db,test_db_1", "ReplicateIgnoreDb": "information_schema,performance_schema", "ReplicateDoTable": "test_table,test_table_1", "ReplicateIgnoreTable": "temp_table,temp_table_1", "ReplicateWildDoTable": "test_table.%", "ReplicateWildIgnoreTable": "temp_table.%"}]
@@ -233,92 +235,128 @@ func (s *DescribeDBInstanceReplicationResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceReplicationResponseBodySlaveStatusList struct {
+	// The name of the replication channel.
+	//
 	// example:
 	//
 	// my_test_channel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The executed GTID set.
+	//
 	// example:
 	//
 	// bd2a34b9-8b8d-11ef-8917-00163e1298b9:1-20567
 	ExecutedGtidSet *string `json:"ExecutedGtidSet,omitempty" xml:"ExecutedGtidSet,omitempty"`
-	// A value of 0 indicates no error. Other values indicate specific error codes.
+	// The last error code.
 	//
 	// example:
 	//
 	// 0
 	LastErrno *int32 `json:"LastErrno,omitempty" xml:"LastErrno,omitempty"`
-	// A value of 0 indicates no error. Other values indicate error codes of the I/O thread.
+	// The last error code of the I/O thread.
 	//
 	// example:
 	//
 	// 0
 	LastIoErrno *int32 `json:"LastIoErrno,omitempty" xml:"LastIoErrno,omitempty"`
-	// The error message description of the I/O thread.
+	// The last error message of the I/O thread.
+	//
+	// example:
+	//
+	// error connecting to master \\"user@192.0.2.1:3306\\" - retry-time: 60  retries: 5
 	LastIoError *string `json:"LastIoError,omitempty" xml:"LastIoError,omitempty"`
-	// A value of 0 indicates no error. Other values indicate error codes of the SQL thread.
+	// The last error code of the SQL thread.
 	//
 	// example:
 	//
 	// 0
 	LastSqlErrno *int32 `json:"LastSqlErrno,omitempty" xml:"LastSqlErrno,omitempty"`
-	// The error message description of the SQL thread.
+	// The last error message of the SQL thread.
+	//
+	// example:
+	//
+	// Coordinator stopped because there were error(s) in the worker(s). The most recent failure being: Worker 1 failed executing transaction \\"00000000-0000-0000-0000-000000000000:1\\" at source log mysql-bin.000001, end_log_pos 12345. See error log and/or performance_schema.replication_applier_status_by_worker table for more details about this failure or others, if any.
 	LastSqlError *string `json:"LastSqlError,omitempty" xml:"LastSqlError,omitempty"`
+	// The address of the primary database.
+	//
 	// example:
 	//
 	// 192.168.10.100
 	MasterHost *string `json:"MasterHost,omitempty" xml:"MasterHost,omitempty"`
+	// The account of the primary database.
+	//
 	// example:
 	//
 	// repl_user
 	MasterUser *string `json:"MasterUser,omitempty" xml:"MasterUser,omitempty"`
+	// The UUID of the primary database.
+	//
 	// example:
 	//
 	// bd2a34b9-8b8d-11ef-8917-00163e1298b9
 	MasterUuid *string `json:"MasterUuid,omitempty" xml:"MasterUuid,omitempty"`
+	// The databases included in replication.
+	//
 	// example:
 	//
 	// test_db,test_db_1
 	ReplicateDoDb *string `json:"ReplicateDoDb,omitempty" xml:"ReplicateDoDb,omitempty"`
+	// The tables included in replication.
+	//
 	// example:
 	//
 	// test_table,test_table_1
 	ReplicateDoTable *string `json:"ReplicateDoTable,omitempty" xml:"ReplicateDoTable,omitempty"`
+	// The databases ignored in replication.
+	//
 	// example:
 	//
 	// information_schema,performance_schema
 	ReplicateIgnoreDb *string `json:"ReplicateIgnoreDb,omitempty" xml:"ReplicateIgnoreDb,omitempty"`
+	// The tables ignored in replication.
+	//
 	// example:
 	//
 	// temp_table,temp_table_1
 	ReplicateIgnoreTable *string `json:"ReplicateIgnoreTable,omitempty" xml:"ReplicateIgnoreTable,omitempty"`
+	// The tables included in replication. Wildcards are supported.
+	//
 	// example:
 	//
 	// test_table.%
 	ReplicateWildDoTable *string `json:"ReplicateWildDoTable,omitempty" xml:"ReplicateWildDoTable,omitempty"`
+	// The tables ignored in replication. Wildcards are supported.
+	//
 	// example:
 	//
 	// temp_table.%
 	ReplicateWildIgnoreTable *string `json:"ReplicateWildIgnoreTable,omitempty" xml:"ReplicateWildIgnoreTable,omitempty"`
+	// The data delay, in seconds.
+	//
 	// example:
 	//
 	// 0
 	SecondsBehindMaster *int32 `json:"SecondsBehindMaster,omitempty" xml:"SecondsBehindMaster,omitempty"`
-	// Valid values: Yes (running) and No (stopped).
+	// The running status of the replication I/O thread.
 	//
 	// example:
 	//
 	// Yes
 	SlaveIoRunning *string `json:"SlaveIoRunning,omitempty" xml:"SlaveIoRunning,omitempty"`
+	// The state of the replication I/O thread.
+	//
 	// example:
 	//
 	// Waiting for master to send event
 	SlaveIoState *string `json:"SlaveIoState,omitempty" xml:"SlaveIoState,omitempty"`
-	// Valid values: Yes (running) and No (stopped).
+	// The running status of the replication SQL thread.
 	//
 	// example:
 	//
 	// Yes
 	SlaveSqlRunning *string `json:"SlaveSqlRunning,omitempty" xml:"SlaveSqlRunning,omitempty"`
+	// The running status of the replication SQL thread.
+	//
 	// example:
 	//
 	// Slave has read all relay log; waiting for more updates

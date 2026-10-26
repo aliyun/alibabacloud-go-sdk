@@ -18,7 +18,7 @@ type iDescribeCustinsResourceInfoResponseBody interface {
 type DescribeCustinsResourceInfoResponseBody struct {
 	// The returned data.
 	Data []*DescribeCustinsResourceInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// 2023-10-25
 	CpuAdjustDeadline *string `json:"CpuAdjustDeadline,omitempty" xml:"CpuAdjustDeadline,omitempty"`
-	// The maximum adjustable CPU ratio.
+	// The maximum adjustable ratio for the CPU.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// 60
 	CpuAdjustableMaxValue *string `json:"CpuAdjustableMaxValue,omitempty" xml:"CpuAdjustableMaxValue,omitempty"`
-	// The CPU usage.
+	// The CPU increase ratio.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// 20
 	MaxIopsIncreaseRatioValue *string `json:"MaxIopsIncreaseRatioValue,omitempty" xml:"MaxIopsIncreaseRatioValue,omitempty"`
-	// The maximum adjustable memory ratio.
+	// The maximum adjustable ratio for the memory.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// 200
 	MemoryIncreaseRatioValue *string `json:"MemoryIncreaseRatioValue,omitempty" xml:"MemoryIncreaseRatioValue,omitempty"`
-	// The number of CPU cores of the instance.
+	// The number of CPUs of the instance.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// 20
 	OriginMaxIops *string `json:"OriginMaxIops,omitempty" xml:"OriginMaxIops,omitempty"`
-	// The actual memory usage. Unit: MB.
+	// The actual memory used. Unit: MB.
 	//
 	// example:
 	//

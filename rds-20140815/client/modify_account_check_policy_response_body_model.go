@@ -14,7 +14,7 @@ type iModifyAccountCheckPolicyResponseBody interface {
 }
 
 type ModifyAccountCheckPolicyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

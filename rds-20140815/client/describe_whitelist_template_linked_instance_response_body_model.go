@@ -30,9 +30,9 @@ type DescribeWhitelistTemplateLinkedInstanceResponseBody struct {
 	//
 	// - **400**: Client fault.
 	//
-	// - **401**: Failed to authenticate.
+	// - **401**: Authentication failed.
 	//
-	// - **404**: Request page not found.
+	// - **404**: The requested page is not found.
 	//
 	// - **500**: Server fault.
 	//
@@ -40,11 +40,11 @@ type DescribeWhitelistTemplateLinkedInstanceResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The list of returned data.
 	Data *DescribeWhitelistTemplateLinkedInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
-	// - **200**: Success.
+	// - **200**: Normal.
 	//
 	// - **400**: Client error.
 	//
@@ -60,17 +60,17 @@ type DescribeWhitelistTemplateLinkedInstanceResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9F8C06AD-3F37-57A0-ABBF-ABD7824F55CE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ func (s *DescribeWhitelistTemplateLinkedInstanceResponseBody) Validate() error {
 type DescribeWhitelistTemplateLinkedInstanceResponseBodyData struct {
 	// The instance information.
 	InsName []*string `json:"InsName,omitempty" xml:"InsName,omitempty" type:"Repeated"`
-	// The whitelist template ID.
+	// The ID of the whitelist template.
 	//
 	// example:
 	//

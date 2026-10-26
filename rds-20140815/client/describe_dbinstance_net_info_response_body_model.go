@@ -25,7 +25,7 @@ type DescribeDBInstanceNetInfoResponseBody struct {
 	//
 	// 	- **Classic**: classic network.
 	//
-	// 	- **VPC**: virtual private cloud (VPC).
+	// 	- **VPC**: VPC.
 	//
 	// example:
 	//
@@ -39,9 +39,9 @@ type DescribeDBInstanceNetInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The whitelist mode. Valid values:
 	//
-	// 	- **normal**: standard whitelist mode.
+	// 	- **normal**: general mode.
 	//
-	// 	- **safety**: enhanced whitelist.
+	// 	- **safety**: enhanced whitelist mode.
 	//
 	// example:
 	//

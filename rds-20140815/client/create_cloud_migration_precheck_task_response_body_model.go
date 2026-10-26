@@ -32,13 +32,13 @@ type CreateCloudMigrationPrecheckTaskResponseBody struct {
 	//
 	// 60F9A12A-16B8-4728-B099-4CA38D32C31C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 439946016
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//

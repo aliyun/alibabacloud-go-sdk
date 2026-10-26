@@ -41,7 +41,7 @@ type DescribeDBInstancesForCloneResponseBody struct {
 	//
 	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

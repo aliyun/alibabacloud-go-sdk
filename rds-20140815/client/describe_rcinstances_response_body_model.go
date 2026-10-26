@@ -117,9 +117,15 @@ func (s *DescribeRCInstancesResponseBody) Validate() error {
 }
 
 type DescribeRCInstancesResponseBodyRCInstances struct {
-	AutoRenew *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Specifies whether auto-renewal is enabled for the instance.
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The ID of the RDS Custom container cluster to which the instance belongs.
+	//
+	// example:
+	//
+	// c463aaa89e2b84cacacfbf23c4867****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The cluster name.
+	// The name of the cluster.
 	//
 	// example:
 	//
@@ -131,11 +137,11 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// 8
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Indicates whether the instance can be added to an ACK cluster. If the parameter settings for this field is **1**, the created instance can be added to an ACK cluster by calling the **AttachRCInstances*	- API operation, which enables efficient management of container applications.
+	// Specifies whether the instance is allowed to join an ACK cluster. If the parameter settings are **1**, the created instance can be added to an ACK cluster by calling the **AttachRCInstances*	- API operation to efficiently manage containerized applications. Valid values:
 	//
-	// - **1**: Yes.
+	// - **1**: yes
 	//
-	// - **0*	- (default): No.
+	// - **0*	- (default): no
 	//
 	// example:
 	//
@@ -159,31 +165,33 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The hostname of the instance.
+	//
 	// example:
 	//
 	// testHostName
 	EcsHostName *string `json:"EcsHostName,omitempty" xml:"EcsHostName,omitempty"`
-	// The time when the instance expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC+0.
+	// The time when the instance expires. The time follows the ISO 8601 standard and uses the UTC+0 time zone in the `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
-	// > The expiration time displayed on the console is UTC+8.
+	// > The expiration time displayed in the console is 8 hours ahead of this time.
 	//
 	// example:
 	//
 	// 2025-05-02T16:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The task creation time (GMT).
+	// The time when the task was created in GMT.
 	//
 	// example:
 	//
 	// 2023-03-22 07:56:53.0
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The host IP address.
+	// The IP address of the host.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	HostIp *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
-	// The host name.
+	// The hostname of the host.
 	//
 	// example:
 	//
@@ -197,9 +205,9 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- **PrePaid**: subscription.
+	// 	- **PrePaid**: subscription
 	//
-	// 	- **PostPaid**: pay-as-you-go.
+	// 	- **PostPaid**: pay-as-you-go
 	//
 	// example:
 	//
@@ -219,7 +227,7 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The instance type.
 	//
-	// For more information, see [RDS Custom instance type list](https://help.aliyun.com/document_detail/2844823.html).
+	// For more information, see [RDS Custom instance types](https://help.aliyun.com/document_detail/2844823.html).
 	//
 	// example:
 	//
@@ -227,7 +235,7 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The instance family.
 	//
-	// For more information, see [RDS Custom instance type list](https://help.aliyun.com/document_detail/2844823.html).
+	// For more information, see [RDS Custom instance types](https://help.aliyun.com/document_detail/2844823.html).
 	//
 	// example:
 	//
@@ -239,16 +247,24 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// 16384
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The node type. If the value **rds_vnode*	- is returned, the node is a container node.
+	// The node type. A value of **rds_vnode*	- indicates that the node is a container node.
 	//
 	// example:
 	//
 	// rds_vnode
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The name of the operating system.
+	//
 	// example:
 	//
-	// CentOS  7.4 64 位
+	// CentOS 7.4 64-bit
 	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	// The type of the operating system. The operating system can be Windows Server or Linux. Valid values:
+	//
+	// - windows
+	//
+	// - linux
+	//
 	// example:
 	//
 	// linux
@@ -271,40 +287,47 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// sg-2vcbcivwfxiozhtp****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The bidding strategy for pay-as-you-go instances. Valid values:
+	// The bidding strategy for the pay-as-you-go instance. Valid values:
 	//
-	// - **NoSpot**: A regular pay-as-you-go instance.
+	// - **NoSpot**: The instance is a regular pay-as-you-go instance.
 	//
-	// - **SpotAsPriceGo**: The system automatically bids, following the current market price.
+	// - **SpotAsPriceGo**: The system automatically places bids based on the current market price.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// The last start time of the instance. The time is displayed in UTC and follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format.
+	//
 	// example:
 	//
 	// 2017-12-10T04:04Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **Pending**: Being created.
+	// - **Pending**: The instance is being created.
 	//
-	// - **Running**: Running.
+	// - **Running**: The instance is running.
 	//
-	// - **Starting**: Being started.
+	// - **Starting**: The instance is starting.
 	//
-	// - **Stopping**: Being stopped.
+	// - **Stopping**: The instance is being stopped.
 	//
-	// - **Stopped**: Stopped.
+	// - **Stopped**: The instance is stopped.
 	//
-	// > The instance status returned by this operation may be delayed. If the value differs from the value returned by the **DescribeRCInstanceAttribute*	- operation, the value returned by **DescribeRCInstanceAttribute*	- prevails.
+	// > The instance status returned by this operation may be delayed. If the status differs from the value returned by the **DescribeRCInstanceAttribute*	- operation, the value returned by the **DescribeRCInstanceAttribute*	- operation prevails.
 	//
 	// example:
 	//
 	// Running
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The stop mode of the instance. KeepCharging indicates the standard mode. StopCharging indicates the economical mode. Not-applicable indicates that the instance does not support the economical mode.
+	//
+	// example:
+	//
+	// KeepCharging
 	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
-	// The details of the instances and tags.
+	// The queried instance and tag details.
 	TagResources []*DescribeRCInstancesResponseBodyRCInstancesTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 	// The tag details.
 	Tags []*DescribeRCInstancesResponseBodyRCInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -313,7 +336,7 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	// if can be null:
 	// true
 	VpcAttributes *DescribeRCInstancesResponseBodyRCInstancesVpcAttributes `json:"VpcAttributes,omitempty" xml:"VpcAttributes,omitempty" type:"Struct"`
-	// The ID of the virtual private cloud (VPC).
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -684,11 +707,11 @@ type DescribeRCInstancesResponseBodyRCInstancesTagResources struct {
 	//
 	// rc-t8q22a87745hf8******
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
+	// The resource type. Valid values:
 	//
-	// - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance.
+	// - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance
 	//
-	// - `ALIYUN::RDS::CUSTOM`: RDS Custom instance.
+	// - `ALIYUN::RDS::CUSTOM`: RDS Custom instance
 	//
 	// example:
 	//
@@ -763,11 +786,11 @@ type DescribeRCInstancesResponseBodyRCInstancesTags struct {
 	//
 	// rc-t8q22a87745hf8******
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
+	// The resource type. Valid values:
 	//
-	// - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance.
+	// - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance
 	//
-	// - `ALIYUN::RDS::CUSTOM`: RDS Custom instance.
+	// - `ALIYUN::RDS::CUSTOM`: RDS Custom instance
 	//
 	// example:
 	//

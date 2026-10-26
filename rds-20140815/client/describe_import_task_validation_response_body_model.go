@@ -40,9 +40,9 @@ type DescribeImportTaskValidationResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

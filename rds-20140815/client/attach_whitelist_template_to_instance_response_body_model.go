@@ -28,23 +28,23 @@ type AttachWhitelistTemplateToInstanceResponseBody struct {
 	//
 	// - **200**: Normal.
 	//
-	// - **400**: Client fault.
+	// - **400**: Client error.
 	//
 	// - **401**: Authentication failed.
 	//
-	// - **404**: Request page not found.
+	// - **404**: Requested page not found.
 	//
-	// - **500**: Server fault.
+	// - **500**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The list of returned data.
 	Data *AttachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
-	// - **200**: Success.
+	// - **200**: Normal.
 	//
 	// - **400**: Client error.
 	//
@@ -54,7 +54,7 @@ type AttachWhitelistTemplateToInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -150,9 +150,9 @@ func (s *AttachWhitelistTemplateToInstanceResponseBody) Validate() error {
 }
 
 type AttachWhitelistTemplateToInstanceResponseBodyData struct {
-	// The return status. Valid values:
+	// The returned status. Valid values:
 	//
-	// - **ok**: Success.
+	// - **ok**: Normal.
 	//
 	// - **error**: Error.
 	//

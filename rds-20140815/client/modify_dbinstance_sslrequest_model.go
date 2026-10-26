@@ -52,7 +52,7 @@ type iModifyDBInstanceSSLRequest interface {
 }
 
 type ModifyDBInstanceSSLRequest struct {
-	// The authentication method for an ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
+	// The authentication method for ApsaraDB RDS for PostgreSQL instances that use cloud disks. Valid values:
 	//
 	// - **cert**
 	//
@@ -60,7 +60,7 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// - **verify-ca**
 	//
-	// - **verify-full*	- (supported for ApsaraDB RDS for PostgreSQL 12 and later)
+	// - **verify-full**: supported by ApsaraDB RDS for PostgreSQL 12 and later
 	//
 	// > This parameter can be configured only when ClientCAEnabled is set to **1**.
 	//
@@ -68,11 +68,11 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// cert
 	ACL *string `json:"ACL,omitempty" xml:"ACL,omitempty"`
-	// The type of certificate for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances with cloud disks. Valid values:
+	// The type of the certificate for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances that use cloud disks. Valid values:
 	//
-	// - **aliyun*	- (default): Alibaba Cloud certificate.
+	// - **aliyun**: Alibaba Cloud certificate. This is the default value.
 	//
-	// - **custom**: Custom certificate.
+	// - **custom**: custom certificate
 	//
 	// > This parameter is required when SSLEnabled is set to **1**.
 	//
@@ -80,17 +80,17 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// aliyun
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
-	// The custom certificate content for an ApsaraDB RDS for SQL Server instance. Only the `pfx` certificate format is supported.
+	// The content of the custom certificate for ApsaraDB RDS for SQL Server instances. Only the pfx format is supported.
 	//
-	// - Public endpoint: `oss-<RegionId>.aliyuncs.com:<BucketName>:<CertificateFileName (certificate file extension)>`
+	// - Public endpoint: `oss-<Region ID>.aliyuncs.com:<Bucket name>:<Certificate file name (with extension)>`
 	//
-	// - Internal endpoint: `oss-<RegionId>-internal.aliyuncs.com:<BucketName>:<CertificateFileName (certificate file extension)>`
+	// - Internal endpoint: `oss-<Region ID>-internal.aliyuncs.com:<Bucket name>:<Certificate file name (with extension)>`
 	//
 	// example:
 	//
 	// oss-cn-beijing-internal.aliyuncs.com:zhttest:test.pfx
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The client certificate authorization authority public key for an ApsaraDB RDS for PostgreSQL instance with cloud disks.
+	// The client certificate authority (CA) public key for ApsaraDB RDS for PostgreSQL instances that use cloud disks.
 	//
 	// > This parameter is required when ClientCAEnabled is set to **1**.
 	//
@@ -98,17 +98,17 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// -----BEGIN CERTIFICATE-----MIID*****viXk=-----END CERTIFICATE-----
 	ClientCACert *string `json:"ClientCACert,omitempty" xml:"ClientCACert,omitempty"`
-	// Specifies whether to enable the client certification authority (CA) public key for an ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
+	// Specifies whether to enable the client certificate authority (CA) public key for ApsaraDB RDS for PostgreSQL instances that use cloud disks. Valid values:
 	//
-	// - **1**: Enable.
+	// - **1**: enabled
 	//
-	// - **0**: Disable.
+	// - **0**: disabled
 	//
 	// example:
 	//
 	// 1
 	ClientCAEnabled *int32 `json:"ClientCAEnabled,omitempty" xml:"ClientCAEnabled,omitempty"`
-	// The client certificate revocation certificate file for an ApsaraDB RDS for PostgreSQL instance with cloud disks.
+	// The client revocation certificate file for ApsaraDB RDS for PostgreSQL instances that use cloud disks.
 	//
 	// > This parameter is required when ClientCrlEnabled is set to **1**.
 	//
@@ -116,11 +116,11 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// -----BEGIN X509 CRL-----MIIB****19mg==-----END X509 CRL-----
 	ClientCertRevocationList *string `json:"ClientCertRevocationList,omitempty" xml:"ClientCertRevocationList,omitempty"`
-	// Specifies whether to enable the client certificate revocation list (CRL) for an ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
+	// Specifies whether to enable the client certificate revocation list (CRL) for ApsaraDB RDS for PostgreSQL instances that use cloud disks. Valid values:
 	//
-	// - **1**: Enable.
+	// - **1**: enabled
 	//
-	// - **0**: Disable.
+	// - **0**: disabled
 	//
 	// > This parameter can be configured only when ClientCAEnabled is set to **1**.
 	//
@@ -136,7 +136,7 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// rm-uf6wjk5****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -144,11 +144,11 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The [SSL forced encryption switch](https://help.aliyun.com/document_detail/95715.html) for ApsaraDB RDS for MySQL and ApsaraDB RDS for SQL Server instances. Valid values:
+	// The [SSL forced encryption switch](https://help.aliyun.com/document_detail/95715.html) for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and ApsaraDB RDS for SQL Server instances. Valid values:
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled
 	//
 	// example:
 	//
@@ -156,13 +156,13 @@ type ModifyDBInstanceSSLRequest struct {
 	ForceEncryption *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The password of the custom certificate for an ApsaraDB RDS for SQL Server instance.
+	// The password of the custom certificate for ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// zht123456
 	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
-	// The authentication method for replication permissions on an ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
+	// The authentication method for the replication permission of ApsaraDB RDS for PostgreSQL instances that use cloud disks. Valid values:
 	//
 	// - **cert**
 	//
@@ -170,7 +170,7 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// - **verify-ca**
 	//
-	// - **verify-full*	- (supported for ApsaraDB RDS for PostgreSQL 12 and later)
+	// - **verify-full**: supported by ApsaraDB RDS for PostgreSQL 12 and later
 	//
 	// > This parameter can be configured only when ClientCAEnabled is set to **1**.
 	//
@@ -180,17 +180,17 @@ type ModifyDBInstanceSSLRequest struct {
 	ReplicationACL       *string `json:"ReplicationACL,omitempty" xml:"ReplicationACL,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable or disable SSL. Valid values:
+	// Specifies whether to enable SSL encryption. Valid values:
 	//
-	// 	- **1**: Enable.
+	// 	- **1**: enabled
 	//
-	// 	- **0**: Disable.
+	// 	- **0**: disabled
 	//
 	// example:
 	//
 	// 1
 	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The custom certificate content of the server for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances with cloud disks.
+	// The content of the custom server certificate for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances that use cloud disks.
 	//
 	// > This parameter is required when CAType is set to **custom**.
 	//
@@ -198,7 +198,7 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// -----BEGIN CERTIFICATE-----MIID*****QqEP-----END CERTIFICATE-----
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
-	// The private key of the server certificate for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances with cloud disks.
+	// The private key of the server certificate for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances that use cloud disks.
 	//
 	// > This parameter is required when CAType is set to **custom**.
 	//
@@ -206,9 +206,9 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// -----BEGIN PRIVATE KEY-----MIIE****ihfg==-----END PRIVATE KEY-----
 	ServerKey *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
-	// The [minimum TLS version](https://help.aliyun.com/document_detail/95715.html) for an ApsaraDB RDS for SQL Server instance. Connection requests from clients with a TLS version lower than the specified version are rejected. Valid values: 1.0, 1.1, and 1.2.
+	// The [minimum TLS version](https://help.aliyun.com/document_detail/95715.html) for ApsaraDB RDS for SQL Server instances. Client connections that use a TLS version lower than the specified version are rejected. Valid values: 1.0, 1.1, and 1.2.
 	//
-	// For example, if you set this parameter to 1.1, the server accepts only connection requests from clients that use TLS 1.1 or TLS 1.2. Connection requests from clients that use TLS 1.0 are rejected.
+	// For example, if you set this parameter to 1.1, the server accepts only client connection requests that use TLS 1.1 or TLS 1.2. Clients that attempt to establish connections by using TLS 1.0 are rejected.
 	//
 	// example:
 	//

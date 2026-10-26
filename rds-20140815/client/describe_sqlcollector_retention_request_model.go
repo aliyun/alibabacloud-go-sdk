@@ -26,7 +26,7 @@ type iDescribeSQLCollectorRetentionRequest interface {
 }
 
 type DescribeSQLCollectorRetentionRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to obtain instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeSQLCollectorRetentionRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. You can call DescribeDBInstanceAttribute to obtain the resource group ID.
+	// The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to obtain the ID.
 	//
 	// example:
 	//

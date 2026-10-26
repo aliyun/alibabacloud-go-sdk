@@ -22,11 +22,11 @@ type iEvaluateLocalExtendDiskResponseBody interface {
 }
 
 type EvaluateLocalExtendDiskResponseBody struct {
-  // Indicates whether the expansion is available. Valid values:
+  // Indicates whether the resource is available. Valid values:
   // 
   // - **true**: Available.
   // 
-  // - **false**: Not available.
+  // - **false**: Unavailable.
   // 
   // example:
   // 
@@ -38,7 +38,7 @@ type EvaluateLocalExtendDiskResponseBody struct {
   // 
   // rm-wz9s06u4drm******
   DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-  // The transfer type of the database instance.
+  // The transmission type of the database instance.
   // 
   // example:
   // 
@@ -50,7 +50,7 @@ type EvaluateLocalExtendDiskResponseBody struct {
   // 
   // 100
   LocalUpgradeDiskLimit *int64 `json:"LocalUpgradeDiskLimit,omitempty" xml:"LocalUpgradeDiskLimit,omitempty"`
-  // The request ID.
+  // The ID of the request.
   // 
   // example:
   // 

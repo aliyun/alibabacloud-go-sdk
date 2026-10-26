@@ -44,13 +44,13 @@ type iDescribeHistoryEventsRequest interface {
 }
 
 type DescribeHistoryEventsRequest struct {
-	// The event status. Valid values:
+	// The archive status of the event. Valid values:
 	//
-	// - **Archived**: archived.
+	// - **Archived**: archived
 	//
-	// - **UnArchived**: not archived.
+	// - **UnArchived**: unarchived
 	//
-	// - **All**: all.
+	// - **All**: all
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type DescribeHistoryEventsRequest struct {
 	ArchiveStatus *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
 	// The system event categorization. Valid values:
 	//
-	// - **Exception**: abnormal event.
+	// - **Exception**: abnormal event
 	//
-	// - **Optimize**: optimization events.
+	// - **Optimize**: optimization events
 	//
-	// - **Notification**: notification event.
+	// - **Notification**: notification event
 	//
-	// - **Maintenance**: scheduled maintenance event.
+	// - **Maintenance**: scheduled maintenance event
 	//
 	// example:
 	//
 	// Exception
 	EventCategory *string `json:"EventCategory,omitempty" xml:"EventCategory,omitempty"`
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
@@ -78,65 +78,65 @@ type DescribeHistoryEventsRequest struct {
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The event level. Valid values:
 	//
-	// - **INFO**: notification.
+	// - **INFO**: information
 	//
-	// - **WARN**: warning.
+	// - **WARN**: warning
 	//
-	// - **CRITICAL**: critical.
+	// - **CRITICAL**: critical
 	//
 	// example:
 	//
 	// INFO
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The event status. Valid values:
+	// The status of the event. Valid values:
 	//
-	// - **Inquiring**: inquiring.
+	// - **Inquiring**: inquiring
 	//
-	// - **Scheduled**: scheduled.
+	// - **Scheduled**: scheduled
 	//
-	// - **Running**: running.
+	// - **Running**: running
 	//
-	// - **Succeed**: completed.
+	// - **Succeed**: succeeded
 	//
-	// - **Failed**: failed.
+	// - **Failed**: failed
 	//
-	// - **Canceled**: canceled.
+	// - **Canceled**: canceled
 	//
-	// > To query multiple statuses, separate them with commas (,).
+	// > To query events in multiple statuses, separate the statuses with commas (,).
 	//
 	// example:
 	//
 	// Scheduled
 	EventStatus *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The system event type. This parameter takes effect only when InstanceEventType.N is not specified. Valid values:
+	// The system event type. This parameter is valid only when InstanceEventType.N is not specified. Valid values:
 	//
 	// - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
 	//
-	// - **SystemMaintenance.Redeploy**: The instance is redeployed due to system maintenance.
+	// - **SystemMaintenance.Redeploy**: The instance undergoes redeployment due to system maintenance.
 	//
-	// - **SystemFailure.Reboot**: The instance is restarted due to a system error.
+	// - **SystemFailure.Reboot**: The instance is restarted due to a system fault.
 	//
-	// - **SystemFailure.Redeploy**: The instance is redeployed due to a system error.
+	// - **SystemFailure.Redeploy**: The instance undergoes redeployment due to a system fault.
 	//
-	// - **SystemFailure.Delete**: The instance is released due to an instance creation failure.
+	// - **SystemFailure.Delete**: The instance is released because instance creation failed.
 	//
-	// - **InstanceFailure.Reboot**: The instance is restarted due to an instance error.
+	// - **InstanceFailure.Reboot**: The instance is restarted due to an instance fault.
 	//
-	// - **InstanceExpiration.Stop**: The instance is stopped due to subscription expiration.
+	// - **InstanceExpiration.Stop**: The subscription instance is stopped due to expiration.
 	//
-	// - **InstanceExpiration.Delete**: The instance is released due to subscription expiration.
+	// - **InstanceExpiration.Delete**: The subscription instance is released due to expiration.
 	//
 	// - **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
 	//
 	// - **AccountUnbalanced.Delete**: The pay-as-you-go instance is released due to an overdue payment.
 	//
-	// > The value of this parameter can only be an instance system event, not a cloud disk system event.
+	// > You can specify only instance system events for this parameter. Disk system events are not supported.
 	//
 	// example:
 	//
 	// SystemFailure.Reboot
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The beginning of the time range for the task start time. Tasks whose start time is later than this time are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in `UTC +0`. The earliest supported time is 30 days before the current time. If the specified time is more than 30 days before the current time, it is automatically converted to 30 days before the current time.
+	// The start time of the time range to query the task start time. This parameter specifies that the start time of the task must be later than the specified time. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in `UTC +0`. The earliest supported time is 30 days ago. If the specified time is more than 30 days before the current time, it is automatically converted to 30 days ago.
 	//
 	// This parameter is required.
 	//
@@ -144,13 +144,13 @@ type DescribeHistoryEventsRequest struct {
 	//
 	// 2022-01-02T11:31:03Z
 	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
-	// The ApsaraDB RDS instance ID.
+	// The RDS instance ID.
 	//
 	// example:
 	//
 	// rm-uf62br2491p5l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. The value must be greater than 0 and cannot exceed the maximum value of the integer type. Default value: **1**.
+	// The page number. The value must be greater than 0 and cannot exceed the maximum value of an integer. Default value: **1**.
 	//
 	// example:
 	//
@@ -162,40 +162,40 @@ type DescribeHistoryEventsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource type. Valid values:
+	// The type of the resource. Valid values:
 	//
-	// - **Instance**: instance resource.
+	// - **Instance**: instance
 	//
-	// - **Host**: host resource.
+	// - **Host**: host
 	//
-	// - **User**: user resource.
+	// - **User**: user
 	//
-	// > If this parameter is not specified, all resource types are queried.
+	// > If you do not specify this parameter, all resource types are queried.
 	//
 	// example:
 	//
 	// Instance
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The task ID. Specify this parameter to retrieve data for a specific task.
+	// The ID of the task. Specify this parameter to obtain the data of a specific task.
 	//
 	// example:
 	//
 	// 241535739
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The end of the time range for the task start time. Tasks whose start time is earlier than this time are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in `UTC +0`.
+	// The end time of the time range to query the task start time. This parameter specifies that the start time of the task must be earlier than the specified time. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in `UTC +0`.
 	//
 	// This parameter is required.
 	//

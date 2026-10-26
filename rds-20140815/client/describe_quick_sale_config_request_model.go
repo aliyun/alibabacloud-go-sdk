@@ -28,7 +28,7 @@ type DescribeQuickSaleConfigRequest struct {
 	//
 	// rds
 	Commodity *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
-	// The database engine. Valid values:
+	// The database engine type. Valid values:
 	//
 	// 	- **MySQL**
 	//
@@ -42,7 +42,7 @@ type DescribeQuickSaleConfigRequest struct {
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the available regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the region ID.
 	//
 	// example:
 	//

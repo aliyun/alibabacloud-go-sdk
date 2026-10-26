@@ -17,7 +17,7 @@ type iCalculateDBInstanceWeightResponseBody interface {
 
 type CalculateDBInstanceWeightResponseBody struct {
 	Items *CalculateDBInstanceWeightResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

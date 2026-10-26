@@ -22,15 +22,15 @@ type DescribeKmsAssociateResourcesResponseBody struct {
 	AssociateDBInstances []*DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances `json:"AssociateDBInstances,omitempty" xml:"AssociateDBInstances,omitempty" type:"Repeated"`
 	// Indicates whether associated ApsaraDB RDS instances exist.
 	//
-	// - **true**: Associated instances exist.
+	// - **true**: Yes.
 	//
-	// - **false**: No associated instances exist.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	AssociateStatus *bool `json:"AssociateStatus,omitempty" xml:"AssociateStatus,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -105,9 +105,9 @@ type DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances struct {
 	//
 	// PostgreSQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The purpose of the key. Valid values:
+	// The usage of the key. Valid values:
 	//
-	// - **DiskEncryption**: cloud disk data encryption.
+	// - **DiskEncryption**: cloud disk encryption.
 	//
 	// - **TDE**: transparent data encryption.
 	//
@@ -125,13 +125,13 @@ type DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances struct {
 	//
 	// - **RESTARTING**: The instance is being restarted.
 	//
-	// - **CLASS_CHANGING**: The instance specifications are being changed.
+	// - **CLASS_CHANGING**: The instance is undergoing a specification change.
 	//
-	// - **INS_MAINTAINING**: The instance is being maintained.
+	// - **INS_MAINTAINING**: The instance is undergoing maintenance.
 	//
-	// - **BACKUP_RECOVERING**: A backup is being restored.
+	// - **BACKUP_RECOVERING**: The instance is being restored from a backup.
 	//
-	// - **NET_MODIFYING**: The network is being changed.
+	// - **NET_MODIFYING**: The network configuration of the instance is being changed.
 	//
 	// example:
 	//

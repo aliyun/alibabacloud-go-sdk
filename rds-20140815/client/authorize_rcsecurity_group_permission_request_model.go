@@ -20,11 +20,11 @@ type iAuthorizeRCSecurityGroupPermissionRequest interface {
 }
 
 type AuthorizeRCSecurityGroupPermissionRequest struct {
-	// The direction of the rule. Valid values:
+	// The rule direction. Valid values:
 	//
-	// - **ingress**: inbound.
+	// - **ingress**: inbound traffic to the security group.
 	//
-	// - **egress**: outbound.
+	// - **egress**: outbound traffic from the security group.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ func (s *AuthorizeRCSecurityGroupPermissionRequest) Validate() error {
 }
 
 type AuthorizeRCSecurityGroupPermissionRequestSecurityGroupPermissions struct {
-	// The destination IP address range for outbound authorization. CIDR format and IPv4 IP address ranges are supported.
+	// The destination IP address range for outbound authorization. Both CIDR format and IPv4 format IP address ranges are supported.
 	//
 	// example:
 	//
 	// 192.168.0.1/12
 	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	// The protocol type. This parameter is case-insensitive. Valid values:
+	// The protocol type. This parameter is not case-sensitive. Valid values:
 	//
 	//
 	//
@@ -122,7 +122,7 @@ type AuthorizeRCSecurityGroupPermissionRequestSecurityGroupPermissions struct {
 	//
 	// - **UDP**
 	//
-	// - **ALL**: all protocols.
+	// - **ALL**: All protocols are supported.
 	//
 	// example:
 	//
@@ -134,41 +134,41 @@ type AuthorizeRCSecurityGroupPermissionRequestSecurityGroupPermissions struct {
 	//
 	// Accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The range of destination ports for the transport layer protocol. Valid values:
+	// The destination port range for the transport layer protocol. Valid values:
 	//
-	// - TCP/UDP: valid values are **1*	- to **65535**. Separate the start port and the end port with a forward slash (/). Example of a valid value: **1/200**. Example of an invalid value: **200/1**.
+	// - TCP or UDP: **1*	- to **65535**. Separate the start port and the end port with a forward slash (/). Example: **1/200**. Invalid example: **200/1**.
 	//
 	// - ICMP: **-1/-1**.
 	//
 	// - GRE: **-1/-1**.
 	//
-	// - If IpProtocol is set to all: **-1/-1**.
+	// - ALL: **-1/-1**.
 	//
 	// example:
 	//
 	// 80/80
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the rule. Valid values: 1 to 100. A smaller value indicates a higher priority. If two security group rules have the same priority, the deny rule takes precedence.
+	// The rule priority. Valid values: 1 to 100. A smaller value indicates a higher priority. If multiple security group rules have the same priority, the drop rule takes precedence.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The source IP address range for inbound authorization. CIDR format and IPv4 IP address ranges are supported.
+	// The source IP address range for inbound authorization. Both CIDR format and IPv4 format IP address ranges are supported.
 	//
 	// example:
 	//
 	// 192.168.0.1/12
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// The range of source ports for the transport layer protocol. Valid values:
+	// The source port range for the transport layer protocol. Valid values:
 	//
-	// - TCP/UDP: valid values are **1*	- to **65535**. Separate the start port and the end port with a forward slash (/). Example of a valid value: **1/200**. Example of an invalid value: **200/1**.
+	// - TCP or UDP: **1*	- to **65535**. Separate the start port and the end port with a forward slash (/). Example: **1/200**. Invalid example: **200/1**.
 	//
 	// - ICMP: **-1/-1**.
 	//
 	// - GRE: **-1/-1**.
 	//
-	// - If IpProtocol is set to all: **-1/-1**.
+	// - ALL: **-1/-1**.
 	//
 	// example:
 	//

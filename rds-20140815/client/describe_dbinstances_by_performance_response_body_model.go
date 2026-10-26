@@ -35,13 +35,13 @@ type DescribeDBInstancesByPerformanceResponseBody struct {
 	//
 	// 28
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 23907437-79B9-411A-9EE6-75A8F0F1C619
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instances returned by the query.
+	// The total number of queried instances.
 	//
 	// example:
 	//

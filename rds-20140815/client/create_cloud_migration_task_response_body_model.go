@@ -20,7 +20,7 @@ type iCreateCloudMigrationTaskResponseBody interface {
 }
 
 type CreateCloudMigrationTaskResponseBody struct {
-	// The name of the target instance.
+	// The name of the destination instance.
 	//
 	// example:
 	//

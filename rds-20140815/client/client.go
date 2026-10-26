@@ -171,17 +171,17 @@ func (client *Client) AcceptRCInquiredSystemEvent(request *AcceptRCInquiredSyste
 
 // Summary:
 //
-// Performs a cloud migration switchover for an ApsaraDB RDS for PostgreSQL instance to promote it to the primary instance and start providing services.
+// Performs a cloud migration switchover for an ApsaraDB RDS for PostgreSQL instance and promotes it to the primary database to provide services.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported database engines
 //
 // - ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to ensure that you fully understand the prerequisites and the impacts of the operation.</notice>
 //
 // [One-click cloud migration](https://help.aliyun.com/document_detail/365562.html)
 //
@@ -243,17 +243,17 @@ func (client *Client) ActivateMigrationTargetInstanceWithOptions(request *Activa
 
 // Summary:
 //
-// Performs a cloud migration switchover for an ApsaraDB RDS for PostgreSQL instance to promote it to the primary instance and start providing services.
+// Performs a cloud migration switchover for an ApsaraDB RDS for PostgreSQL instance and promotes it to the primary database to provide services.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported database engines
 //
 // - ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to ensure that you fully understand the prerequisites and the impacts of the operation.</notice>
 //
 // [One-click cloud migration](https://help.aliyun.com/document_detail/365562.html)
 //
@@ -277,9 +277,7 @@ func (client *Client) ActivateMigrationTargetInstance(request *ActivateMigration
 //
 // Description:
 //
-// Instances with local disks are not allowed to join a deployment set by default, and the error UNSUPPORTED_DBINSTANCE_OPERATEION is returned. To add such instances, contact technical support. Ask the administrator to add the UID to the whitelist. Cloud disk instances do not have this restriction.
-//
-// Forcibly adding instances to a deployment set may cause instance restarts. Use this feature with caution.
+// By default, instances with local disks are not allowed to be added to a deployment set, and the UNSUPPORTED_DBINSTANCE_OPERATEION error is returned. To add such an instance, contact the administrator to add your UID to the whitelist. This restriction does not apply to cloud disk instances. Forcibly adding an instance to a deployment set may cause the instance to restart. Proceed with caution.
 //
 // @param request - AddRCInstancesToDeploymentSetRequest
 //
@@ -343,9 +341,7 @@ func (client *Client) AddRCInstancesToDeploymentSetWithOptions(request *AddRCIns
 //
 // Description:
 //
-// Instances with local disks are not allowed to join a deployment set by default, and the error UNSUPPORTED_DBINSTANCE_OPERATEION is returned. To add such instances, contact technical support. Ask the administrator to add the UID to the whitelist. Cloud disk instances do not have this restriction.
-//
-// Forcibly adding instances to a deployment set may cause instance restarts. Use this feature with caution.
+// By default, instances with local disks are not allowed to be added to a deployment set, and the UNSUPPORTED_DBINSTANCE_OPERATEION error is returned. To add such an instance, contact the administrator to add your UID to the whitelist. This restriction does not apply to cloud disk instances. Forcibly adding an instance to a deployment set may cause the instance to restart. Proceed with caution.
 //
 // @param request - AddRCInstancesToDeploymentSetRequest
 //
@@ -363,11 +359,11 @@ func (client *Client) AddRCInstancesToDeploymentSet(request *AddRCInstancesToDep
 
 // Summary:
 //
-// Binds tags to an instance.
+// Binds tags to one or more instances.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -377,7 +373,7 @@ func (client *Client) AddRCInstancesToDeploymentSet(request *AddRCInstancesToDep
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Precautions
+// ### Usage notes
 //
 //   - Each tag consists of a tag key (TagKey) and a tag value (TagValue). TagKey cannot be empty, but TagValue can be empty.
 //
@@ -385,9 +381,9 @@ func (client *Client) AddRCInstancesToDeploymentSet(request *AddRCInstancesToDep
 //
 //   - TagKey and TagValue are case-insensitive.
 //
-//   - TagKey can be up to 64 characters in length. TagValue can be up to 128 characters in length.
+//   - TagKey can be up to 64 characters in length, and TagValue can be up to 128 characters in length.
 //
-//   - Each instance can have up to 10 tags. The TagKey of each tag bound to an instance must be unique. If you bind a tag that has the same TagKey as an existing tag, the new tag overwrites the existing tag.
+//   - You can bind up to 10 tags to each instance, and the TagKeys bound to an instance must be unique. If you bind a tag with a duplicate TagKey, the newly bound tag overwrites the previously bound tag.
 //
 // @param request - AddTagsToResourceRequest
 //
@@ -471,11 +467,11 @@ func (client *Client) AddTagsToResourceWithOptions(request *AddTagsToResourceReq
 
 // Summary:
 //
-// Binds tags to an instance.
+// Binds tags to one or more instances.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -485,7 +481,7 @@ func (client *Client) AddTagsToResourceWithOptions(request *AddTagsToResourceReq
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Precautions
+// ### Usage notes
 //
 //   - Each tag consists of a tag key (TagKey) and a tag value (TagValue). TagKey cannot be empty, but TagValue can be empty.
 //
@@ -493,9 +489,9 @@ func (client *Client) AddTagsToResourceWithOptions(request *AddTagsToResourceReq
 //
 //   - TagKey and TagValue are case-insensitive.
 //
-//   - TagKey can be up to 64 characters in length. TagValue can be up to 128 characters in length.
+//   - TagKey can be up to 64 characters in length, and TagValue can be up to 128 characters in length.
 //
-//   - Each instance can have up to 10 tags. The TagKey of each tag bound to an instance must be unique. If you bind a tag that has the same TagKey as an existing tag, the new tag overwrites the existing tag.
+//   - You can bind up to 10 tags to each instance, and the TagKeys bound to an instance must be unique. If you bind a tag with a duplicate TagKey, the newly bound tag overwrites the previously bound tag.
 //
 // @param request - AddTagsToResourceRequest
 //
@@ -829,11 +825,11 @@ func (client *Client) AllocateReadWriteSplittingConnection(request *AllocateRead
 
 // Summary:
 //
-// Associates an elastic IP address (EIP) with an RDS Custom instance.
+// Attaches an EIP to an RDS Custom instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -847,7 +843,7 @@ func (client *Client) AllocateReadWriteSplittingConnection(request *AllocateRead
 //
 // ### Precautions
 //
-// If the RDS Custom instance has a public IP address enabled, the existing public IP address undergoes automatic release after you associate an EIP with the instance.
+// If an RDS Custom instance has a public IP address enabled, the public IP address is automatically released after you attach an EIP.
 //
 // @param request - AssociateEipAddressWithRCInstanceRequest
 //
@@ -899,11 +895,11 @@ func (client *Client) AssociateEipAddressWithRCInstanceWithOptions(request *Asso
 
 // Summary:
 //
-// Associates an elastic IP address (EIP) with an RDS Custom instance.
+// Attaches an EIP to an RDS Custom instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -917,7 +913,7 @@ func (client *Client) AssociateEipAddressWithRCInstanceWithOptions(request *Asso
 //
 // ### Precautions
 //
-// If the RDS Custom instance has a public IP address enabled, the existing public IP address undergoes automatic release after you associate an EIP with the instance.
+// If an RDS Custom instance has a public IP address enabled, the public IP address is automatically released after you attach an EIP.
 //
 // @param request - AssociateEipAddressWithRCInstanceRequest
 //
@@ -939,29 +935,29 @@ func (client *Client) AssociateEipAddressWithRCInstance(request *AssociateEipAdd
 //
 // Description:
 //
-// When you invoke this operation, take note of the following items:
+// When you call this operation, take note of the following items:
 //
 // - The cloud disk must be in the Available state.
 //
-// - When you mount a data cloud disk:
+// - When you attach a data cloud disk:
 //
 //   - The destination RDS Custom instance must be in the Running or Stopped state.
 //
-//   - If the cloud disk is purchased separately, the billable methods must be pay-as-you-go.
+//   - If the cloud disk was purchased separately, its billing method must be pay-as-you-go.
 //
-//   - If a system cloud disk detached from an RDS Custom instance is mounted as a data cloud disk, no billing method restriction applies.
+//   - If a system cloud disk detached from an RDS Custom instance is attached as a data cloud disk, its billing method is not limited.
 //
-//   - An elastic ephemeral disk can be remounted only to its original instance after it is uninstalled.
+//   - Once an elastic ephemeral disk is detached, it can only be reattached to its original instance.
 //
-// - When you mount a system cloud disk:
+// - When you attach a system cloud disk:
 //
 //   - The destination RDS Custom instance must be the source instance from which the system cloud disk was detached.
 //
 //   - The destination RDS Custom instance must be in the Stopped state.
 //
-//   - You must configure the logon credentials for the instance under Settings.
+//   - You must configure the instance logon credentials.
 //
-//   - Elastic ephemeral disks cannot be mounted as system cloud disks.
+//   - Elastic ephemeral disks cannot be attached as system cloud disks.
 //
 // @param request - AttachRCDiskRequest
 //
@@ -1021,29 +1017,29 @@ func (client *Client) AttachRCDiskWithOptions(request *AttachRCDiskRequest, runt
 //
 // Description:
 //
-// When you invoke this operation, take note of the following items:
+// When you call this operation, take note of the following items:
 //
 // - The cloud disk must be in the Available state.
 //
-// - When you mount a data cloud disk:
+// - When you attach a data cloud disk:
 //
 //   - The destination RDS Custom instance must be in the Running or Stopped state.
 //
-//   - If the cloud disk is purchased separately, the billable methods must be pay-as-you-go.
+//   - If the cloud disk was purchased separately, its billing method must be pay-as-you-go.
 //
-//   - If a system cloud disk detached from an RDS Custom instance is mounted as a data cloud disk, no billing method restriction applies.
+//   - If a system cloud disk detached from an RDS Custom instance is attached as a data cloud disk, its billing method is not limited.
 //
-//   - An elastic ephemeral disk can be remounted only to its original instance after it is uninstalled.
+//   - Once an elastic ephemeral disk is detached, it can only be reattached to its original instance.
 //
-// - When you mount a system cloud disk:
+// - When you attach a system cloud disk:
 //
 //   - The destination RDS Custom instance must be the source instance from which the system cloud disk was detached.
 //
 //   - The destination RDS Custom instance must be in the Stopped state.
 //
-//   - You must configure the logon credentials for the instance under Settings.
+//   - You must configure the instance logon credentials.
 //
-//   - Elastic ephemeral disks cannot be mounted as system cloud disks.
+//   - Elastic ephemeral disks cannot be attached as system cloud disks.
 //
 // @param request - AttachRCDiskRequest
 //
@@ -1061,7 +1057,7 @@ func (client *Client) AttachRCDisk(request *AttachRCDiskRequest) (_result *Attac
 
 // Summary:
 //
-// Adds RDS Custom instances to an ACK cluster.
+// Adds an RDS Custom instance to an ACK cluster.
 //
 // @param tmpReq - AttachRCInstancesRequest
 //
@@ -1127,7 +1123,7 @@ func (client *Client) AttachRCInstancesWithOptions(tmpReq *AttachRCInstancesRequ
 
 // Summary:
 //
-// Adds RDS Custom instances to an ACK cluster.
+// Adds an RDS Custom instance to an ACK cluster.
 //
 // @param request - AttachRCInstancesRequest
 //
@@ -1149,13 +1145,13 @@ func (client *Client) AttachRCInstances(request *AttachRCInstancesRequest) (_res
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - AttachWhitelistTemplateToInstanceRequest
 //
@@ -1223,13 +1219,13 @@ func (client *Client) AttachWhitelistTemplateToInstanceWithOptions(request *Atta
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - AttachWhitelistTemplateToInstanceRequest
 //
@@ -1247,7 +1243,7 @@ func (client *Client) AttachWhitelistTemplateToInstance(request *AttachWhitelist
 
 // Summary:
 //
-// Creates the service-linked role AliyunServiceRoleForRdsBackupEncryption for backup encryption.
+// Creates the AliyunServiceRoleForRdsBackupEncryption service-linked role for backup encryption.
 //
 // @param request - AuthorizeBackupEncryptionRequest
 //
@@ -1295,7 +1291,7 @@ func (client *Client) AuthorizeBackupEncryptionWithOptions(request *AuthorizeBac
 
 // Summary:
 //
-// Creates the service-linked role AliyunServiceRoleForRdsBackupEncryption for backup encryption.
+// Creates the AliyunServiceRoleForRdsBackupEncryption service-linked role for backup encryption.
 //
 // @param request - AuthorizeBackupEncryptionRequest
 //
@@ -1393,27 +1389,27 @@ func (client *Client) AuthorizeRCSecurityGroupPermission(request *AuthorizeRCSec
 
 // Summary:
 //
-// Queries the system-assigned weight values.
+// Queries the system weight allocation values.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Feature description
+// ### Description
 //
-// When [read/write splitting](https://help.aliyun.com/document_detail/51073.html) is enabled, this operation calculates the system-assigned weights. To query custom read weights, see [DescribeDBInstanceNetInfo](https://help.aliyun.com/document_detail/610423.html).
+// When [read/write splitting](https://help.aliyun.com/document_detail/51073.html) is enabled, this operation calculates the system-assigned weights. For custom read weights, refer to [DescribeDBInstanceNetInfo](https://help.aliyun.com/document_detail/610423.html).
 //
-// ### Before you begin
+// ### Prerequisites
 //
-// When you invoke this operation, the instance must meet the following conditions. Otherwise, the operation fails:
+// When you call this operation, the instance must meet the following requirements. Otherwise, the operation fails:
 //
-//   - The MySQL instance uses a shared database proxy.
+//   - The MySQL instance uses the shared database proxy.
 //
-//   - The instance runs one of the following editions:
+//   - The instance runs one of the following engine versions:
 //
 //   - MySQL 5.7 High-availability Edition (local SSDs)
 //
@@ -1467,27 +1463,27 @@ func (client *Client) CalculateDBInstanceWeightWithOptions(request *CalculateDBI
 
 // Summary:
 //
-// Queries the system-assigned weight values.
+// Queries the system weight allocation values.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Feature description
+// ### Description
 //
-// When [read/write splitting](https://help.aliyun.com/document_detail/51073.html) is enabled, this operation calculates the system-assigned weights. To query custom read weights, see [DescribeDBInstanceNetInfo](https://help.aliyun.com/document_detail/610423.html).
+// When [read/write splitting](https://help.aliyun.com/document_detail/51073.html) is enabled, this operation calculates the system-assigned weights. For custom read weights, refer to [DescribeDBInstanceNetInfo](https://help.aliyun.com/document_detail/610423.html).
 //
-// ### Before you begin
+// ### Prerequisites
 //
-// When you invoke this operation, the instance must meet the following conditions. Otherwise, the operation fails:
+// When you call this operation, the instance must meet the following requirements. Otherwise, the operation fails:
 //
-//   - The MySQL instance uses a shared database proxy.
+//   - The MySQL instance uses the shared database proxy.
 //
-//   - The instance runs one of the following editions:
+//   - The instance runs one of the following engine versions:
 //
 //   - MySQL 5.7 High-availability Edition (local SSDs)
 //
@@ -1511,11 +1507,11 @@ func (client *Client) CalculateDBInstanceWeight(request *CalculateDBInstanceWeig
 
 // Summary:
 //
-// Cancels O&M tasks that have not yet started.
+// Cancels proactive O&M tasks that have not yet started.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -1527,25 +1523,25 @@ func (client *Client) CalculateDBInstanceWeight(request *CalculateDBInstanceWeig
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
-// - [Scheduled events of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/104183.html)
+// - [Scheduled events for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/104183.html)
 //
-// - [Scheduled events of ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/104452.html)
+// - [Scheduled events for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/104452.html)
 //
-// - [Scheduled events of ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/104451.html)
+// - [Scheduled events for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/104451.html)
 //
-// - [Scheduled events of ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/104454.html)
+// - [Scheduled events for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/104454.html)
 //
 // ### Limits
 //
-// A task cannot be canceled in the following cases:
+// You cannot cancel a task in the following scenarios:
 //
-// - The value of allowCancel is 0.
+// - The allowCancel parameter is set to 0.
 //
 // - The current time is later than the task start time.
 //
-// - The task status is not 3 (waiting for execution).
+// - The task status is not 3 (Pending Execution).
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -1609,11 +1605,11 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 
 // Summary:
 //
-// Cancels O&M tasks that have not yet started.
+// Cancels proactive O&M tasks that have not yet started.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -1625,25 +1621,25 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
-// - [Scheduled events of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/104183.html)
+// - [Scheduled events for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/104183.html)
 //
-// - [Scheduled events of ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/104452.html)
+// - [Scheduled events for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/104452.html)
 //
-// - [Scheduled events of ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/104451.html)
+// - [Scheduled events for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/104451.html)
 //
-// - [Scheduled events of ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/104454.html)
+// - [Scheduled events for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/104454.html)
 //
 // ### Limits
 //
-// A task cannot be canceled in the following cases:
+// You cannot cancel a task in the following scenarios:
 //
-// - The value of allowCancel is 0.
+// - The allowCancel parameter is set to 0.
 //
 // - The current time is later than the task start time.
 //
-// - The task status is not 3 (waiting for execution).
+// - The task status is not 3 (Pending Execution).
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -1767,7 +1763,7 @@ func (client *Client) CheckAccountNameAvailable(request *CheckAccountNameAvailab
 
 // Summary:
 //
-// Checks whether the service-linked role AliyunServiceRoleForRdsBackupEncryption is associated with Cloud Hardware Security Module (CloudHSM) for backup encryption under the current account.
+// Checks whether the backup encryption service-linked role AliyunServiceRoleForRdsBackupEncryption is created for the user account.
 //
 // @param request - CheckBackupEncryptionAuthorizedRequest
 //
@@ -1815,7 +1811,7 @@ func (client *Client) CheckBackupEncryptionAuthorizedWithOptions(request *CheckB
 
 // Summary:
 //
-// Checks whether the service-linked role AliyunServiceRoleForRdsBackupEncryption is associated with Cloud Hardware Security Module (CloudHSM) for backup encryption under the current account.
+// Checks whether the backup encryption service-linked role AliyunServiceRoleForRdsBackupEncryption is created for the user account.
 //
 // @param request - CheckBackupEncryptionAuthorizedRequest
 //
@@ -1951,7 +1947,7 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 
 // Summary:
 //
-// Prechecks whether an ApsaraDB RDS instance can be restored across regions by using a cross-region backup set.
+// Checks whether an ApsaraDB RDS instance can be restored across regions by using a cross-region backup set.
 //
 // Description:
 //
@@ -1963,15 +1959,15 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to ensure that you fully understand the prerequisites and the impacts of this operation.</notice>
 //
-// - [MySQL cross-region backup](https://help.aliyun.com/document_detail/120824.html) and [MySQL cross-region restoration](https://help.aliyun.com/document_detail/120875.html)
+// - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html), [Cross-region restoration for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120875.html)
 //
-// - [PostgreSQL cross-region backup](https://help.aliyun.com/document_detail/206671.html) and [PostgreSQL cross-region restoration](https://help.aliyun.com/document_detail/206662.html)
+// - [Cross-region backup for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/206671.html), [Cross-region restoration for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/206662.html)
 //
-// - [SQL Server cross-region backup](https://help.aliyun.com/document_detail/187923.html) and [SQL Server cross-region restoration](https://help.aliyun.com/document_detail/187924.html)
+// - [Cross-region backup for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/187923.html), [Cross-region restoration for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/187924.html)
 //
 // @param request - CheckCreateDdrDBInstanceRequest
 //
@@ -2067,7 +2063,7 @@ func (client *Client) CheckCreateDdrDBInstanceWithOptions(request *CheckCreateDd
 
 // Summary:
 //
-// Prechecks whether an ApsaraDB RDS instance can be restored across regions by using a cross-region backup set.
+// Checks whether an ApsaraDB RDS instance can be restored across regions by using a cross-region backup set.
 //
 // Description:
 //
@@ -2079,15 +2075,15 @@ func (client *Client) CheckCreateDdrDBInstanceWithOptions(request *CheckCreateDd
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to ensure that you fully understand the prerequisites and the impacts of this operation.</notice>
 //
-// - [MySQL cross-region backup](https://help.aliyun.com/document_detail/120824.html) and [MySQL cross-region restoration](https://help.aliyun.com/document_detail/120875.html)
+// - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html), [Cross-region restoration for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120875.html)
 //
-// - [PostgreSQL cross-region backup](https://help.aliyun.com/document_detail/206671.html) and [PostgreSQL cross-region restoration](https://help.aliyun.com/document_detail/206662.html)
+// - [Cross-region backup for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/206671.html), [Cross-region restoration for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/206662.html)
 //
-// - [SQL Server cross-region backup](https://help.aliyun.com/document_detail/187923.html) and [SQL Server cross-region restoration](https://help.aliyun.com/document_detail/187924.html)
+// - [Cross-region backup for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/187923.html), [Cross-region restoration for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/187924.html)
 //
 // @param request - CheckCreateDdrDBInstanceRequest
 //
@@ -2383,7 +2379,7 @@ func (client *Client) CheckRdsCustomInit(request *CheckRdsCustomInitRequest) (_r
 
 // Summary:
 //
-// Checks whether backup encryption is supported in the current region.
+// Checks whether the current region supports backup encryption.
 //
 // @param request - CheckRegionSupportBackupEncryptionRequest
 //
@@ -2435,7 +2431,7 @@ func (client *Client) CheckRegionSupportBackupEncryptionWithOptions(request *Che
 
 // Summary:
 //
-// Checks whether backup encryption is supported in the current region.
+// Checks whether the current region supports backup encryption.
 //
 // @param request - CheckRegionSupportBackupEncryptionRequest
 //
@@ -2551,7 +2547,7 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 //
 // Description:
 //
-// ### Supported database engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -2561,17 +2557,17 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// - [Restore data for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96147.html)
+// - [Restore data for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96147.html)
 //
-// - [Restore data for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/96776.html)
+// - [Restore data for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96776.html)
 //
-// - [Restore data for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95722.html)
+// - [Restore data for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95722.html)
 //
-// - [Restore data for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/97151.html)
+// - [Restore data for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/97151.html)
 //
 // @param tmpReq - CloneDBInstanceRequest
 //
@@ -2757,7 +2753,7 @@ func (client *Client) CloneDBInstanceWithOptions(tmpReq *CloneDBInstanceRequest,
 //
 // Description:
 //
-// ### Supported database engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -2767,17 +2763,17 @@ func (client *Client) CloneDBInstanceWithOptions(tmpReq *CloneDBInstanceRequest,
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// - [Restore data for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96147.html)
+// - [Restore data for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96147.html)
 //
-// - [Restore data for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/96776.html)
+// - [Restore data for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96776.html)
 //
-// - [Restore data for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95722.html)
+// - [Restore data for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95722.html)
 //
-// - [Restore data for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/97151.html)
+// - [Restore data for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/97151.html)
 //
 // @param request - CloneDBInstanceRequest
 //
@@ -2921,7 +2917,7 @@ func (client *Client) CloneParameterGroup(request *CloneParameterGroupRequest) (
 
 // Summary:
 //
-// Confirms a carousel notification in the ApsaraDB RDS console for the China site (aliyun.com) under the China site account.
+// Confirms the carousel messages in the ApsaraDB RDS console for the Alibaba Cloud account.
 //
 // Description:
 //
@@ -2937,7 +2933,7 @@ func (client *Client) CloneParameterGroup(request *CloneParameterGroupRequest) (
 //
 // ### Description
 //
-// Call [QueryNotify](https://help.aliyun.com/document_detail/610443.html) to query notifications, and then call this operation to mark a notification as confirmed, which indicates that you have acknowledged the notification content.
+// You can call [QueryNotify](https://help.aliyun.com/document_detail/610443.html) to query notifications, and then call this operation to mark a notification as confirmed, which indicates that you have acknowledged the content of the notification.
 //
 // @param tmpReq - ConfirmNotifyRequest
 //
@@ -2991,7 +2987,7 @@ func (client *Client) ConfirmNotifyWithOptions(tmpReq *ConfirmNotifyRequest, run
 
 // Summary:
 //
-// Confirms a carousel notification in the ApsaraDB RDS console for the China site (aliyun.com) under the China site account.
+// Confirms the carousel messages in the ApsaraDB RDS console for the Alibaba Cloud account.
 //
 // Description:
 //
@@ -3007,7 +3003,7 @@ func (client *Client) ConfirmNotifyWithOptions(tmpReq *ConfirmNotifyRequest, run
 //
 // ### Description
 //
-// Call [QueryNotify](https://help.aliyun.com/document_detail/610443.html) to query notifications, and then call this operation to mark a notification as confirmed, which indicates that you have acknowledged the notification content.
+// You can call [QueryNotify](https://help.aliyun.com/document_detail/610443.html) to query notifications, and then call this operation to mark a notification as confirmed, which indicates that you have acknowledged the content of the notification.
 //
 // @param request - ConfirmNotifyRequest
 //
@@ -3119,29 +3115,29 @@ func (client *Client) CopyDatabase(request *CopyDatabaseRequest) (_result *CopyD
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
-// RDS SQL Server.
+// ApsaraDB RDS for SQL Server.
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the related documentation to understand the prerequisites and impacts.
 //
-// [Copy a database between ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/95702.html)
+// [Copy databases between ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/95702.html)
 //
 // ### Limits
 //
 // - The source and target instances must belong to the same Alibaba Cloud account.
 //
-// - The target instance **must not contain*	- a database that has the same name as the database to be copied from the source instance.
+// - The target instance **must not contain*	- a database that has the same name as the source database to be copied.
 //
-// - The available storage of the target instance **must be greater than*	- the storage used by the database to be copied from the source instance. If the storage is insufficient, [expand the storage](https://help.aliyun.com/document_detail/95665.html) in a timely manner.
+// - The available storage space of the target instance **must be greater than*	- the space occupied by the source database to be copied. If the storage space is insufficient, [scale up the storage capacity](https://help.aliyun.com/document_detail/95665.html).
 //
-// - The source and target instances must be in the same region (zones can be different) and must use the same network type.
+// - The source and target instances must be deployed in the same region. They can be deployed in different zones but must have the same network type.
 //
-// - The source and target instances do not support [serverless instances](https://help.aliyun.com/document_detail/603466.html). To migrate a serverless instance, [use DTS](https://help.aliyun.com/document_detail/210947.html).
+// - The source and target instances do not support the [serverless instance](https://help.aliyun.com/document_detail/603466.html) type. To migrate a serverless instance, [use DTS](https://help.aliyun.com/document_detail/210947.html).
 //
-// - You **must specify*	- either BackupId or RestoreTime. An error is returned if neither parameter is specified.
+// - When you call this operation, you **must specify*	- either the BackupId or RestoreTime parameter. If neither is specified, an error is returned.
 //
 // @param request - CopyDatabaseBetweenInstancesRequest
 //
@@ -3213,29 +3209,29 @@ func (client *Client) CopyDatabaseBetweenInstancesWithOptions(request *CopyDatab
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
-// RDS SQL Server.
+// ApsaraDB RDS for SQL Server.
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the related documentation to understand the prerequisites and impacts.
 //
-// [Copy a database between ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/95702.html)
+// [Copy databases between ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/95702.html)
 //
 // ### Limits
 //
 // - The source and target instances must belong to the same Alibaba Cloud account.
 //
-// - The target instance **must not contain*	- a database that has the same name as the database to be copied from the source instance.
+// - The target instance **must not contain*	- a database that has the same name as the source database to be copied.
 //
-// - The available storage of the target instance **must be greater than*	- the storage used by the database to be copied from the source instance. If the storage is insufficient, [expand the storage](https://help.aliyun.com/document_detail/95665.html) in a timely manner.
+// - The available storage space of the target instance **must be greater than*	- the space occupied by the source database to be copied. If the storage space is insufficient, [scale up the storage capacity](https://help.aliyun.com/document_detail/95665.html).
 //
-// - The source and target instances must be in the same region (zones can be different) and must use the same network type.
+// - The source and target instances must be deployed in the same region. They can be deployed in different zones but must have the same network type.
 //
-// - The source and target instances do not support [serverless instances](https://help.aliyun.com/document_detail/603466.html). To migrate a serverless instance, [use DTS](https://help.aliyun.com/document_detail/210947.html).
+// - The source and target instances do not support the [serverless instance](https://help.aliyun.com/document_detail/603466.html) type. To migrate a serverless instance, [use DTS](https://help.aliyun.com/document_detail/210947.html).
 //
-// - You **must specify*	- either BackupId or RestoreTime. An error is returned if neither parameter is specified.
+// - When you call this operation, you **must specify*	- either the BackupId or RestoreTime parameter. If neither is specified, an error is returned.
 //
 // @param request - CopyDatabaseBetweenInstancesRequest
 //
@@ -3405,37 +3401,37 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
-// ### Description
+// ### Feature description
 //
-// This operation calls the built-in backup feature of ApsaraDB RDS. You can also use Database Backup Service (DBS). For more information, <props="china">refer to [DBS API overview](https://help.aliyun.com/document_detail/2841997.html)<props="intl">refer to [DBS API overview](https://help.aliyun.com/document_detail/2402073.html).
+// This operation calls the built-in backup feature of ApsaraDB RDS. You can also use Database Backup (DBS). For more information, <props="china">see [DBS API overview](https://help.aliyun.com/document_detail/2841997.html)<props="intl">see [DBS API overview](https://help.aliyun.com/document_detail/2402073.html).
 //
 // ### Precautions
 //
-// When you invoke this operation, the instance must meet the following conditions. Otherwise, the operation is failed:
+// When you invoke this operation, the instance must meet the following conditions. Otherwise, the operation will be failed:
 //
 // - The instance status is Running.
 //
-// - No backup node is being executed.
+// - No backup nodes are being executed.
 //
-// - A maximum of 20 backup sets can be created for a single instance per day.
+// - The number of backup sets that can be created for a single instance within a day does not exceed 20. For MySQL DPI engine instances, there is no limit on the number of backup sets that can be created within a day.
 //
 // ### Related documentation
 //
-// - [Back up an RDS MySQL instance](https://help.aliyun.com/document_detail/378074.html)
+// - [Back up data for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/378074.html)
 //
-// - [Back up an RDS PostgreSQL instance](https://help.aliyun.com/document_detail/96772.html)
+// - [Back up data for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/96772.html)
 //
-// - [Back up an RDS SQL Server instance](https://help.aliyun.com/document_detail/95717.html)
+// - [Back up data for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95717.html)
 //
-// - [Back up an RDS MariaDB instance](https://help.aliyun.com/document_detail/97147.html)
+// - [Back up data for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/97147.html)
 //
 // @param request - CreateBackupRequest
 //
@@ -3509,37 +3505,37 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
-// ### Description
+// ### Feature description
 //
-// This operation calls the built-in backup feature of ApsaraDB RDS. You can also use Database Backup Service (DBS). For more information, <props="china">refer to [DBS API overview](https://help.aliyun.com/document_detail/2841997.html)<props="intl">refer to [DBS API overview](https://help.aliyun.com/document_detail/2402073.html).
+// This operation calls the built-in backup feature of ApsaraDB RDS. You can also use Database Backup (DBS). For more information, <props="china">see [DBS API overview](https://help.aliyun.com/document_detail/2841997.html)<props="intl">see [DBS API overview](https://help.aliyun.com/document_detail/2402073.html).
 //
 // ### Precautions
 //
-// When you invoke this operation, the instance must meet the following conditions. Otherwise, the operation is failed:
+// When you invoke this operation, the instance must meet the following conditions. Otherwise, the operation will be failed:
 //
 // - The instance status is Running.
 //
-// - No backup node is being executed.
+// - No backup nodes are being executed.
 //
-// - A maximum of 20 backup sets can be created for a single instance per day.
+// - The number of backup sets that can be created for a single instance within a day does not exceed 20. For MySQL DPI engine instances, there is no limit on the number of backup sets that can be created within a day.
 //
 // ### Related documentation
 //
-// - [Back up an RDS MySQL instance](https://help.aliyun.com/document_detail/378074.html)
+// - [Back up data for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/378074.html)
 //
-// - [Back up an RDS PostgreSQL instance](https://help.aliyun.com/document_detail/96772.html)
+// - [Back up data for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/96772.html)
 //
-// - [Back up an RDS SQL Server instance](https://help.aliyun.com/document_detail/95717.html)
+// - [Back up data for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95717.html)
 //
-// - [Back up an RDS MariaDB instance](https://help.aliyun.com/document_detail/97147.html)
+// - [Back up data for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/97147.html)
 //
 // @param request - CreateBackupRequest
 //
@@ -3557,19 +3553,19 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a pre-check task for one-click migration to ApsaraDB RDS for PostgreSQL.
+// Creates a pre-check task for one-click cloud migration of an ApsaraDB RDS for PostgreSQL instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and impacts of this operation.
 //
-// [One-click migration to RDS](https://help.aliyun.com/document_detail/365562.html)
+// [One-click cloud migration](https://help.aliyun.com/document_detail/365562.html)
 //
 // @param request - CreateCloudMigrationPrecheckTaskRequest
 //
@@ -3641,19 +3637,19 @@ func (client *Client) CreateCloudMigrationPrecheckTaskWithOptions(request *Creat
 
 // Summary:
 //
-// Creates a pre-check task for one-click migration to ApsaraDB RDS for PostgreSQL.
+// Creates a pre-check task for one-click cloud migration of an ApsaraDB RDS for PostgreSQL instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and impacts of this operation.
 //
-// [One-click migration to RDS](https://help.aliyun.com/document_detail/365562.html)
+// [One-click cloud migration](https://help.aliyun.com/document_detail/365562.html)
 //
 // @param request - CreateCloudMigrationPrecheckTaskRequest
 //
@@ -3671,19 +3667,19 @@ func (client *Client) CreateCloudMigrationPrecheckTask(request *CreateCloudMigra
 
 // Summary:
 //
-// Creates a migration-to-cloud task for an ApsaraDB RDS for PostgreSQL instance.
+// Creates a cloud migration task for ApsaraDB RDS for PostgreSQL.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to understand the prerequisites and impacts.
 //
-// [Migrate to the cloud](https://help.aliyun.com/document_detail/365562.html)
+// [One-click cloud migration](https://help.aliyun.com/document_detail/365562.html)
 //
 // @param request - CreateCloudMigrationTaskRequest
 //
@@ -3755,19 +3751,19 @@ func (client *Client) CreateCloudMigrationTaskWithOptions(request *CreateCloudMi
 
 // Summary:
 //
-// Creates a migration-to-cloud task for an ApsaraDB RDS for PostgreSQL instance.
+// Creates a cloud migration task for ApsaraDB RDS for PostgreSQL.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to understand the prerequisites and impacts.
 //
-// [Migrate to the cloud](https://help.aliyun.com/document_detail/365562.html)
+// [One-click cloud migration](https://help.aliyun.com/document_detail/365562.html)
 //
 // @param request - CreateCloudMigrationTaskRequest
 //
@@ -3803,7 +3799,7 @@ func (client *Client) CreateCloudMigrationTask(request *CreateCloudMigrationTask
 //
 //	Warning: This API operation incurs fees. Read the related documentation carefully before you proceed.
 //
-// If an error occurs when you call the API operation, you can search for the error message to identify the cause.
+// If an error occurs when you call the API operation, you can search for the error message to view the cause.
 //
 // - [Create an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/148036.html)
 //
@@ -3854,6 +3850,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 	if !dara.IsNil(request.AutoRenew) {
 		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.AutoUpgradeMinorVersion) {
+		query["AutoUpgradeMinorVersion"] = request.AutoUpgradeMinorVersion
 	}
 
 	if !dara.IsNil(request.AutoUseCoupon) {
@@ -4131,7 +4131,7 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 //
 //	Warning: This API operation incurs fees. Read the related documentation carefully before you proceed.
 //
-// If an error occurs when you call the API operation, you can search for the error message to identify the cause.
+// If an error occurs when you call the API operation, you can search for the error message to view the cause.
 //
 // - [Create an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/148036.html)
 //
@@ -4165,7 +4165,7 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Creates an endpoint for an ApsaraDB RDS instance that runs the Cluster Edition.
+// Creates an endpoint for an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -4173,21 +4173,21 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the documentation to fully understand the prerequisites and the impacts of the operation.</notice>
 //
 // <props="china">
 //
-// - RDS MySQL: [Add a cluster read-only endpoint](https://help.aliyun.com/document_detail/464132.html)
+// - ApsaraDB RDS for MySQL: [Add a cluster read-only endpoint](https://help.aliyun.com/document_detail/464132.html)
 //
-// - RDS PostgreSQL: [Add a cluster read-only endpoint](https://help.aliyun.com/document_detail/96788.html)
+// - ApsaraDB RDS for PostgreSQL: [Add a cluster read-only endpoint](https://help.aliyun.com/document_detail/96788.html)
 //
 // <props="intl">
 //
@@ -4285,7 +4285,7 @@ func (client *Client) CreateDBInstanceEndpointWithOptions(tmpReq *CreateDBInstan
 
 // Summary:
 //
-// Creates an endpoint for an ApsaraDB RDS instance that runs the Cluster Edition.
+// Creates an endpoint for an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -4293,21 +4293,21 @@ func (client *Client) CreateDBInstanceEndpointWithOptions(tmpReq *CreateDBInstan
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the documentation to fully understand the prerequisites and the impacts of the operation.</notice>
 //
 // <props="china">
 //
-// - RDS MySQL: [Add a cluster read-only endpoint](https://help.aliyun.com/document_detail/464132.html)
+// - ApsaraDB RDS for MySQL: [Add a cluster read-only endpoint](https://help.aliyun.com/document_detail/464132.html)
 //
-// - RDS PostgreSQL: [Add a cluster read-only endpoint](https://help.aliyun.com/document_detail/96788.html)
+// - ApsaraDB RDS for PostgreSQL: [Add a cluster read-only endpoint](https://help.aliyun.com/document_detail/96788.html)
 //
 // <props="intl">
 //
@@ -4329,7 +4329,7 @@ func (client *Client) CreateDBInstanceEndpoint(request *CreateDBInstanceEndpoint
 
 // Summary:
 //
-// Creates a public endpoint for an endpoint of an ApsaraDB RDS instance that uses the Cluster Edition.
+// Creates a public endpoint for an endpoint of an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -4343,11 +4343,11 @@ func (client *Client) CreateDBInstanceEndpoint(request *CreateDBInstanceEndpoint
 //
 // <props="intl">RDS MySQL
 //
-// ### Before you begin
+// ### Precautions
 //
-// - You can create a public endpoint for an endpoint only when the endpoint does not have a public endpoint.
+// - You can create a public endpoint for an endpoint only if the endpoint does not already have a public endpoint.
 //
-// - The configurations such as traffic distribution weights are the same as those of the internal endpoint of the endpoint. Each endpoint can have only one public endpoint and one internal endpoint.
+// - Configurations such as the traffic distribution weight are the same as those of the internal endpoint. Each endpoint can have only one public endpoint and one internal endpoint.
 //
 // @param request - CreateDBInstanceEndpointAddressRequest
 //
@@ -4419,7 +4419,7 @@ func (client *Client) CreateDBInstanceEndpointAddressWithOptions(request *Create
 
 // Summary:
 //
-// Creates a public endpoint for an endpoint of an ApsaraDB RDS instance that uses the Cluster Edition.
+// Creates a public endpoint for an endpoint of an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -4433,11 +4433,11 @@ func (client *Client) CreateDBInstanceEndpointAddressWithOptions(request *Create
 //
 // <props="intl">RDS MySQL
 //
-// ### Before you begin
+// ### Precautions
 //
-// - You can create a public endpoint for an endpoint only when the endpoint does not have a public endpoint.
+// - You can create a public endpoint for an endpoint only if the endpoint does not already have a public endpoint.
 //
-// - The configurations such as traffic distribution weights are the same as those of the internal endpoint of the endpoint. Each endpoint can have only one public endpoint and one internal endpoint.
+// - Configurations such as the traffic distribution weight are the same as those of the internal endpoint. Each endpoint can have only one public endpoint and one internal endpoint.
 //
 // @param request - CreateDBInstanceEndpointAddressRequest
 //
@@ -4459,27 +4459,27 @@ func (client *Client) CreateDBInstanceEndpointAddress(request *CreateDBInstanceE
 //
 // Description:
 //
-// ### Supported database engines
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // ### Related feature documentation
 //
-//	Warning: This API operation involves fees. Read the related feature documentation carefully before you perform this operation.
+//	Warning: This API operation incurs fees. Read the related feature documentation carefully before you call this operation.
 //
-// - [Rebuild an RDS MySQL instance from the recycle bin](https://help.aliyun.com/document_detail/96065.html)
+// - [Rebuild an ApsaraDB RDS for MySQL instance from the recycle bin](https://help.aliyun.com/document_detail/96065.html)
 //
-// - [Rebuild an RDS PostgreSQL instance from the recycle bin](https://help.aliyun.com/document_detail/96752.html)
+// - [Rebuild an ApsaraDB RDS for PostgreSQL instance from the recycle bin](https://help.aliyun.com/document_detail/96752.html)
 //
-// - [Rebuild an RDS SQL Server instance from the recycle bin](https://help.aliyun.com/document_detail/95669.html)
+// - [Rebuild an ApsaraDB RDS for SQL Server instance from the recycle bin](https://help.aliyun.com/document_detail/95669.html)
 //
-// - [Rebuild an RDS MariaDB instance from the recycle bin](https://help.aliyun.com/document_detail/97131.html)
+// - [Rebuild an ApsaraDB RDS for MariaDB instance from the recycle bin](https://help.aliyun.com/document_detail/97131.html)
 //
 // @param request - CreateDBInstanceForRebuildRequest
 //
@@ -4607,27 +4607,27 @@ func (client *Client) CreateDBInstanceForRebuildWithOptions(request *CreateDBIns
 //
 // Description:
 //
-// ### Supported database engines
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // ### Related feature documentation
 //
-//	Warning: This API operation involves fees. Read the related feature documentation carefully before you perform this operation.
+//	Warning: This API operation incurs fees. Read the related feature documentation carefully before you call this operation.
 //
-// - [Rebuild an RDS MySQL instance from the recycle bin](https://help.aliyun.com/document_detail/96065.html)
+// - [Rebuild an ApsaraDB RDS for MySQL instance from the recycle bin](https://help.aliyun.com/document_detail/96065.html)
 //
-// - [Rebuild an RDS PostgreSQL instance from the recycle bin](https://help.aliyun.com/document_detail/96752.html)
+// - [Rebuild an ApsaraDB RDS for PostgreSQL instance from the recycle bin](https://help.aliyun.com/document_detail/96752.html)
 //
-// - [Rebuild an RDS SQL Server instance from the recycle bin](https://help.aliyun.com/document_detail/95669.html)
+// - [Rebuild an ApsaraDB RDS for SQL Server instance from the recycle bin](https://help.aliyun.com/document_detail/95669.html)
 //
-// - [Rebuild an RDS MariaDB instance from the recycle bin](https://help.aliyun.com/document_detail/97131.html)
+// - [Rebuild an ApsaraDB RDS for MariaDB instance from the recycle bin](https://help.aliyun.com/document_detail/97131.html)
 //
 // @param request - CreateDBInstanceForRebuildRequest
 //
@@ -4735,17 +4735,17 @@ func (client *Client) CreateDBInstanceReplication(request *CreateDBInstanceRepli
 
 // Summary:
 //
-// Adds security group rules to an ApsaraDB RDS for SQL Server instance.
+// Adds a security group rule to an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-// [Configure security group rules for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
+// [Configure security group rules for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - CreateDBInstanceSecurityGroupRuleRequest
 //
@@ -4821,17 +4821,17 @@ func (client *Client) CreateDBInstanceSecurityGroupRuleWithOptions(request *Crea
 
 // Summary:
 //
-// Adds security group rules to an ApsaraDB RDS for SQL Server instance.
+// Adds a security group rule to an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-// [Configure security group rules for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
+// [Configure security group rules for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - CreateDBInstanceSecurityGroupRuleRequest
 //
@@ -4849,7 +4849,7 @@ func (client *Client) CreateDBInstanceSecurityGroupRule(request *CreateDBInstanc
 
 // Summary:
 //
-// Adds nodes to an ApsaraDB RDS instance that runs the Cluster Edition.
+// Adds a node to an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -4857,25 +4857,25 @@ func (client *Client) CreateDBInstanceSecurityGroupRule(request *CreateDBInstanc
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before you call this operation, read the following feature documentation carefully to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and impacts.
 //
 // <props="china">
 //
-// - RDS MySQL: [Add nodes to an ApsaraDB RDS for MySQL instance that runs the Cluster Edition](https://help.aliyun.com/document_detail/464129.html)
+// - ApsaraDB RDS for MySQL: [Add nodes to an ApsaraDB RDS for MySQL Cluster Edition instance](https://help.aliyun.com/document_detail/464129.html)
 //
-// - RDS PostgreSQL: [Add nodes to an ApsaraDB RDS for PostgreSQL instance that runs the Cluster Edition](https://help.aliyun.com/document_detail/2778876.html)
+// - ApsaraDB RDS for PostgreSQL: [Add nodes to an ApsaraDB RDS for PostgreSQL Cluster Edition instance](https://help.aliyun.com/document_detail/2778876.html)
 //
 // <props="intl">
 //
-// [Add nodes to an ApsaraDB RDS for MySQL instance that runs the Cluster Edition](https://help.aliyun.com/document_detail/464129.html)
+// [Add nodes to an ApsaraDB RDS for MySQL Cluster Edition instance](https://help.aliyun.com/document_detail/464129.html)
 //
 // @param tmpReq - CreateDBNodesRequest
 //
@@ -4953,7 +4953,7 @@ func (client *Client) CreateDBNodesWithOptions(tmpReq *CreateDBNodesRequest, run
 
 // Summary:
 //
-// Adds nodes to an ApsaraDB RDS instance that runs the Cluster Edition.
+// Adds a node to an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -4961,25 +4961,25 @@ func (client *Client) CreateDBNodesWithOptions(tmpReq *CreateDBNodesRequest, run
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before you call this operation, read the following feature documentation carefully to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and impacts.
 //
 // <props="china">
 //
-// - RDS MySQL: [Add nodes to an ApsaraDB RDS for MySQL instance that runs the Cluster Edition](https://help.aliyun.com/document_detail/464129.html)
+// - ApsaraDB RDS for MySQL: [Add nodes to an ApsaraDB RDS for MySQL Cluster Edition instance](https://help.aliyun.com/document_detail/464129.html)
 //
-// - RDS PostgreSQL: [Add nodes to an ApsaraDB RDS for PostgreSQL instance that runs the Cluster Edition](https://help.aliyun.com/document_detail/2778876.html)
+// - ApsaraDB RDS for PostgreSQL: [Add nodes to an ApsaraDB RDS for PostgreSQL Cluster Edition instance](https://help.aliyun.com/document_detail/2778876.html)
 //
 // <props="intl">
 //
-// [Add nodes to an ApsaraDB RDS for MySQL instance that runs the Cluster Edition](https://help.aliyun.com/document_detail/464129.html)
+// [Add nodes to an ApsaraDB RDS for MySQL Cluster Edition instance](https://help.aliyun.com/document_detail/464129.html)
 //
 // @param request - CreateDBNodesRequest
 //
@@ -5003,17 +5003,17 @@ func (client *Client) CreateDBNodes(request *CreateDBNodesRequest) (_result *Cre
 //
 // ### Supported database engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // ### Related feature documentation
 //
-//	Notice: Before you invoke this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.</notice>
 //
-// - [Create an internal or public database proxy endpoint for an RDS MySQL instance](https://help.aliyun.com/document_detail/184921.html)
+// - [Create internal and public database proxy endpoints for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/184921.html)
 //
-// - [Create an internal or public database proxy endpoint for an RDS PostgreSQL instance](https://help.aliyun.com/document_detail/418274.html)
+// - [Create internal and public database proxy endpoints for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418274.html)
 //
 // @param request - CreateDBProxyEndpointAddressRequest
 //
@@ -5103,17 +5103,17 @@ func (client *Client) CreateDBProxyEndpointAddressWithOptions(request *CreateDBP
 //
 // ### Supported database engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // ### Related feature documentation
 //
-//	Notice: Before you invoke this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.</notice>
 //
-// - [Create an internal or public database proxy endpoint for an RDS MySQL instance](https://help.aliyun.com/document_detail/184921.html)
+// - [Create internal and public database proxy endpoints for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/184921.html)
 //
-// - [Create an internal or public database proxy endpoint for an RDS PostgreSQL instance](https://help.aliyun.com/document_detail/418274.html)
+// - [Create internal and public database proxy endpoints for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418274.html)
 //
 // @param request - CreateDBProxyEndpointAddressRequest
 //
@@ -5281,13 +5281,13 @@ func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *C
 
 // Summary:
 //
-// Restores data to a new instance across regions.
+// Restores data across regions to a new instance.
 //
 // Description:
 //
-// ### Suggestions
+// ### Recommendations
 //
-// Before you perform a restoration, call the CheckCreateDdrDBInstance operation to check whether the cross-region backup set of the destination ApsaraDB RDS instance can be used for cross-region restoration.
+// Before restoration, call the CheckCreateDdrDBInstance operation to check whether the cross-region backup set of the destination ApsaraDB RDS instance can be used for cross-region restoration.
 //
 // ### Supported engines
 //
@@ -5299,7 +5299,7 @@ func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *C
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you use this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of using this operation.
 //
 // - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -5477,13 +5477,13 @@ func (client *Client) CreateDdrInstanceWithOptions(request *CreateDdrInstanceReq
 
 // Summary:
 //
-// Restores data to a new instance across regions.
+// Restores data across regions to a new instance.
 //
 // Description:
 //
-// ### Suggestions
+// ### Recommendations
 //
-// Before you perform a restoration, call the CheckCreateDdrDBInstance operation to check whether the cross-region backup set of the destination ApsaraDB RDS instance can be used for cross-region restoration.
+// Before restoration, call the CheckCreateDdrDBInstance operation to check whether the cross-region backup set of the destination ApsaraDB RDS instance can be used for cross-region restoration.
 //
 // ### Supported engines
 //
@@ -5495,7 +5495,7 @@ func (client *Client) CreateDdrInstanceWithOptions(request *CreateDdrInstanceReq
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you use this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of using this operation.
 //
 // - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -5519,21 +5519,21 @@ func (client *Client) CreateDdrInstance(request *CreateDdrInstanceRequest) (_res
 
 // Summary:
 //
-// Creates a Global Active Database (GAD) cluster for ApsaraDB RDS.
+// Creates an ApsaraDB RDS global active database cluster.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
 // <props="china">
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to fully understand the prerequisites and impacts.
 //
-// [Create and release a GAD cluster](https://help.aliyun.com/document_detail/328592.html)
+// [Create and release a global active database cluster](https://help.aliyun.com/document_detail/328592.html)
 //
 // @param request - CreateGADInstanceRequest
 //
@@ -5609,21 +5609,21 @@ func (client *Client) CreateGADInstanceWithOptions(request *CreateGADInstanceReq
 
 // Summary:
 //
-// Creates a Global Active Database (GAD) cluster for ApsaraDB RDS.
+// Creates an ApsaraDB RDS global active database cluster.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
 // <props="china">
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to fully understand the prerequisites and impacts.
 //
-// [Create and release a GAD cluster](https://help.aliyun.com/document_detail/328592.html)
+// [Create and release a global active database cluster](https://help.aliyun.com/document_detail/328592.html)
 //
 // @param request - CreateGADInstanceRequest
 //
@@ -5645,13 +5645,13 @@ func (client *Client) CreateGADInstance(request *CreateGADInstanceRequest) (_res
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
-//	Notice: Before calling this operation, carefully read the documentation to fully understand the prerequisites and potential impacts, and then proceed.
+//	Notice: Before you call this operation, read the documentation to fully understand the prerequisites and impacts.</notice>
 //
 // <props="china">[Add or remove unit nodes](https://help.aliyun.com/document_detail/331851.html)
 //
@@ -5725,13 +5725,13 @@ func (client *Client) CreateGadInstanceMemberWithOptions(request *CreateGadInsta
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
-//	Notice: Before calling this operation, carefully read the documentation to fully understand the prerequisites and potential impacts, and then proceed.
+//	Notice: Before you call this operation, read the documentation to fully understand the prerequisites and impacts.</notice>
 //
 // <props="china">[Add or remove unit nodes](https://help.aliyun.com/document_detail/331851.html)
 //
@@ -5755,7 +5755,7 @@ func (client *Client) CreateGadInstanceMember(request *CreateGadInstanceMemberRe
 //
 // Description:
 //
-// Creates a data import task for importing data to an ApsaraDB RDS for MySQL instance with native replication.
+// Creates a data import task to import data into an ApsaraDB RDS for MySQL instance that uses native replication.
 //
 // @param request - CreateImportTaskRequest
 //
@@ -5847,7 +5847,7 @@ func (client *Client) CreateImportTaskWithOptions(request *CreateImportTaskReque
 //
 // Description:
 //
-// Creates a data import task for importing data to an ApsaraDB RDS for MySQL instance with native replication.
+// Creates a data import task to import data into an ApsaraDB RDS for MySQL instance that uses native replication.
 //
 // @param request - CreateImportTaskRequest
 //
@@ -5865,15 +5865,15 @@ func (client *Client) CreateImportTask(request *CreateImportTaskRequest) (_resul
 
 // Summary:
 //
-// Creates an encryption or masking rule for a specified instance.
+// Creates a new encryption or masking rule for a specified instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - Before invoking this operation, make sure that the column encryption service is activated in DAS Security Center.
+// - Before you invoke this operation, make sure that column encryption is activated in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when you invoke this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption service through Cloud Hardware Security Module (CloudHSM) before trying again.
+// - If you receive the ColumnEncryptionErrorCode.NOT_PURCHASED error message when invoking this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and activate column encryption.
 //
 // @param tmpReq - CreateMaskingRulesRequest
 //
@@ -5959,15 +5959,15 @@ func (client *Client) CreateMaskingRulesWithOptions(tmpReq *CreateMaskingRulesRe
 
 // Summary:
 //
-// Creates an encryption or masking rule for a specified instance.
+// Creates a new encryption or masking rule for a specified instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - Before invoking this operation, make sure that the column encryption service is activated in DAS Security Center.
+// - Before you invoke this operation, make sure that column encryption is activated in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when you invoke this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption service through Cloud Hardware Security Module (CloudHSM) before trying again.
+// - If you receive the ColumnEncryptionErrorCode.NOT_PURCHASED error message when invoking this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and activate column encryption.
 //
 // @param request - CreateMaskingRulesRequest
 //
@@ -6273,13 +6273,13 @@ func (client *Client) CreateOnlineDatabaseTask(request *CreateOnlineDatabaseTask
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
 // [Delete nodes from an ApsaraDB RDS for MySQL Cluster Edition instance](https://help.aliyun.com/document_detail/464130.html)
 //
@@ -6395,13 +6395,13 @@ func (client *Client) CreateOrderForDeleteDBNodesWithOptions(tmpReq *CreateOrder
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
 // [Delete nodes from an ApsaraDB RDS for MySQL Cluster Edition instance](https://help.aliyun.com/document_detail/464130.html)
 //
@@ -6551,29 +6551,29 @@ func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest)
 
 // Summary:
 //
-// Installs a specified extension in a target database.
+// Installs a specified plug-in in a destination database.
 //
 // Description:
 //
-// <props="china">You can join the RDS PostgreSQL extension exchange DingTalk group (103525002795) to consult, communicate, provide feedback, and obtain more information about extensions.
+// <props="china">You can join the RDS PostgreSQL plug-in communication DingTalk group (103525002795) for consultation, communication, and feedback to obtain more information about plug-ins.
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and potential impacts. Proceed only after you understand the information.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impact of this operation.
 //
-// [Manage extensions](https://help.aliyun.com/document_detail/2402409.html)
+// [Manage plug-ins](https://help.aliyun.com/document_detail/2402409.html)
 //
 // ### Precautions
 //
-// You can install only extensions that are supported by the major engine version of the instance. Otherwise, the installation fails.
+// You can only install plug-ins that are supported by the major engine version of the instance. Otherwise, the installation fails.
 //
-// - For information about supported extensions, see [Supported extensions](https://help.aliyun.com/document_detail/142340.html).
+// - For information about supported plug-ins, see [Supported plug-ins](https://help.aliyun.com/document_detail/142340.html).
 //
-// - You can call [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) to query the major engine version of the instance.
+// - You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to query the major engine version of the instance.
 //
 // @param request - CreatePostgresExtensionsRequest
 //
@@ -6661,29 +6661,29 @@ func (client *Client) CreatePostgresExtensionsWithOptions(request *CreatePostgre
 
 // Summary:
 //
-// Installs a specified extension in a target database.
+// Installs a specified plug-in in a destination database.
 //
 // Description:
 //
-// <props="china">You can join the RDS PostgreSQL extension exchange DingTalk group (103525002795) to consult, communicate, provide feedback, and obtain more information about extensions.
+// <props="china">You can join the RDS PostgreSQL plug-in communication DingTalk group (103525002795) for consultation, communication, and feedback to obtain more information about plug-ins.
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and potential impacts. Proceed only after you understand the information.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impact of this operation.
 //
-// [Manage extensions](https://help.aliyun.com/document_detail/2402409.html)
+// [Manage plug-ins](https://help.aliyun.com/document_detail/2402409.html)
 //
 // ### Precautions
 //
-// You can install only extensions that are supported by the major engine version of the instance. Otherwise, the installation fails.
+// You can only install plug-ins that are supported by the major engine version of the instance. Otherwise, the installation fails.
 //
-// - For information about supported extensions, see [Supported extensions](https://help.aliyun.com/document_detail/142340.html).
+// - For information about supported plug-ins, see [Supported plug-ins](https://help.aliyun.com/document_detail/142340.html).
 //
-// - You can call [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) to query the major engine version of the instance.
+// - You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to query the major engine version of the instance.
 //
 // @param request - CreatePostgresExtensionsRequest
 //
@@ -6791,17 +6791,17 @@ func (client *Client) CreateRCDeploymentSet(request *CreateRCDeploymentSetReques
 
 // Summary:
 //
-// Calls the CreateDisk operation to create an RDS Custom data cloud disk.
+// Creates an RDS Custom data cloud disk.
 //
 // Description:
 //
-// -  Supported cloud disk types: ultra cloud disk, standard SSD, ESSD, and premium performance disk (default).
+// - Supported cloud disk types: ultra disk, standard SSD, ESSD, and premium performance disk (default).
 //
-// -  If the billing method of the cloud disk is subscription (**Prepaid**), you must specify the instance ID of a subscription instance (**InstanceId**) to which the cloud disk is mounted. The expiration time of the cloud disk is the same as that of the instance.
+// - When the billing method of the cloud disk is subscription (**Prepaid**), you must specify the instance ID of a subscription instance (**InstanceId**) to which the cloud disk is mounted. The expiration time of the cloud disk is the same as that of the mounted instance.
 //
-// - You can create a pay-as-you-go (**Postpaid**) cloud disk separately without mounting it to an instance. You can also mount it to an instance of any billing method during creation as needed.
+// - You can create a pay-as-you-go (**Postpaid**) cloud disk separately without mounting it to an instance. You can also mount it to an instance of any billing method when you create it as needed.
 //
-// - The cloud disk types and the number of cloud disks that can be mounted vary based on instance specifications.
+// - The types and number of cloud disks that can be mounted vary based on the instance type.
 //
 // @param request - CreateRCDiskRequest
 //
@@ -6905,17 +6905,17 @@ func (client *Client) CreateRCDiskWithOptions(request *CreateRCDiskRequest, runt
 
 // Summary:
 //
-// Calls the CreateDisk operation to create an RDS Custom data cloud disk.
+// Creates an RDS Custom data cloud disk.
 //
 // Description:
 //
-// -  Supported cloud disk types: ultra cloud disk, standard SSD, ESSD, and premium performance disk (default).
+// - Supported cloud disk types: ultra disk, standard SSD, ESSD, and premium performance disk (default).
 //
-// -  If the billing method of the cloud disk is subscription (**Prepaid**), you must specify the instance ID of a subscription instance (**InstanceId**) to which the cloud disk is mounted. The expiration time of the cloud disk is the same as that of the instance.
+// - When the billing method of the cloud disk is subscription (**Prepaid**), you must specify the instance ID of a subscription instance (**InstanceId**) to which the cloud disk is mounted. The expiration time of the cloud disk is the same as that of the mounted instance.
 //
-// - You can create a pay-as-you-go (**Postpaid**) cloud disk separately without mounting it to an instance. You can also mount it to an instance of any billing method during creation as needed.
+// - You can create a pay-as-you-go (**Postpaid**) cloud disk separately without mounting it to an instance. You can also mount it to an instance of any billing method when you create it as needed.
 //
-// - The cloud disk types and the number of cloud disks that can be mounted vary based on instance specifications.
+// - The types and number of cloud disks that can be mounted vary based on the instance type.
 //
 // @param request - CreateRCDiskRequest
 //
@@ -6939,9 +6939,9 @@ func (client *Client) CreateRCDisk(request *CreateRCDiskRequest) (_result *Creat
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // ### Related documentation
 //
@@ -6949,11 +6949,11 @@ func (client *Client) CreateRCDisk(request *CreateRCDiskRequest) (_result *Creat
 //
 // - [Introduction to RDS Custom for SQL Server](https://help.aliyun.com/document_detail/2864363.html)
 //
-// ### Usage notes
+// ### Usage
 //
-// - Method 1: Create a custom image from a snapshot of the **system cloud disk**. Specify SnapshotId and ImageName together.
+// - Method 1: Create a custom image from a snapshot generated from a **system cloud disk**. When passing values, use SnapshotId and ImageName together.
 //
-// - Method 2: Create a custom image from an RDS Custom instance. Specify InstanceId and ImageName together.
+// - Method 2: Create a custom image from an RDS Custom instance. When passing values, use InstanceId and ImageName together.
 //
 // @param request - CreateRCImageRequest
 //
@@ -7015,9 +7015,9 @@ func (client *Client) CreateRCImageWithOptions(request *CreateRCImageRequest, ru
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // ### Related documentation
 //
@@ -7025,11 +7025,11 @@ func (client *Client) CreateRCImageWithOptions(request *CreateRCImageRequest, ru
 //
 // - [Introduction to RDS Custom for SQL Server](https://help.aliyun.com/document_detail/2864363.html)
 //
-// ### Usage notes
+// ### Usage
 //
-// - Method 1: Create a custom image from a snapshot of the **system cloud disk**. Specify SnapshotId and ImageName together.
+// - Method 1: Create a custom image from a snapshot generated from a **system cloud disk**. When passing values, use SnapshotId and ImageName together.
 //
-// - Method 2: Create a custom image from an RDS Custom instance. Specify InstanceId and ImageName together.
+// - Method 2: Create a custom image from an RDS Custom instance. When passing values, use InstanceId and ImageName together.
 //
 // @param request - CreateRCImageRequest
 //
@@ -7255,23 +7255,23 @@ func (client *Client) CreateRCNodePool(request *CreateRCNodePoolRequest) (_resul
 //
 // Description:
 //
-// You cannot create a snapshot for a cloud disk in the following scenarios:
+// You cannot create a snapshot for a specified cloud disk in the following scenarios:
 //
-// - The number of manual snapshots retained for the cloud disk has reached 256.
+// - The cloud disk has reached the limit of 256 manual snapshots.
 //
-// - The previous snapshot has not been created yet.
+// - The previous snapshot is still being created.
 //
-// - The instance to which the cloud disk is mounted has never been started.
+// - The instance on which the cloud disk is mounted has never been started.
 //
-// - The instance to which the cloud disk is mounted is not in the **Stopped*	- or **Running*	- instance status.
+// - The instance on which the cloud disk is mounted is not in the **Stopped*	- or **Running*	- state.
 //
-// When you create a snapshot, take note of the following items:
+// Note the following when you create a snapshot:
 //
-// - If the snapshot has not been created, the snapshot cannot be used to create a custom image (CreateImage).
+// - If the snapshot is still being created, you cannot use it to create a custom image by calling the CreateImage operation.
 //
-// - If the cloud disk is mounted to an RDS Custom instance, do not change the instance status while the snapshot is being created.
+// - If the cloud disk is mounted on an RDS Custom instance, do not change the instance status during snapshot creation.
 //
-// - You can create snapshots for cloud disks in the **Expired*	- state. If the cloud disk reaches its expiration release time while the snapshot is being created, the cloud disk is released and the snapshot in the Creating state is also deleted.
+// - You can create snapshots for cloud disks in the **Expired*	- state. If a cloud disk reaches its expiration and release time exactly when a snapshot is being created, the snapshot in the **Creating*	- state is deleted along with the cloud disk.
 //
 // @param request - CreateRCSnapshotRequest
 //
@@ -7351,23 +7351,23 @@ func (client *Client) CreateRCSnapshotWithOptions(request *CreateRCSnapshotReque
 //
 // Description:
 //
-// You cannot create a snapshot for a cloud disk in the following scenarios:
+// You cannot create a snapshot for a specified cloud disk in the following scenarios:
 //
-// - The number of manual snapshots retained for the cloud disk has reached 256.
+// - The cloud disk has reached the limit of 256 manual snapshots.
 //
-// - The previous snapshot has not been created yet.
+// - The previous snapshot is still being created.
 //
-// - The instance to which the cloud disk is mounted has never been started.
+// - The instance on which the cloud disk is mounted has never been started.
 //
-// - The instance to which the cloud disk is mounted is not in the **Stopped*	- or **Running*	- instance status.
+// - The instance on which the cloud disk is mounted is not in the **Stopped*	- or **Running*	- state.
 //
-// When you create a snapshot, take note of the following items:
+// Note the following when you create a snapshot:
 //
-// - If the snapshot has not been created, the snapshot cannot be used to create a custom image (CreateImage).
+// - If the snapshot is still being created, you cannot use it to create a custom image by calling the CreateImage operation.
 //
-// - If the cloud disk is mounted to an RDS Custom instance, do not change the instance status while the snapshot is being created.
+// - If the cloud disk is mounted on an RDS Custom instance, do not change the instance status during snapshot creation.
 //
-// - You can create snapshots for cloud disks in the **Expired*	- state. If the cloud disk reaches its expiration release time while the snapshot is being created, the cloud disk is released and the snapshot in the Creating state is also deleted.
+// - You can create snapshots for cloud disks in the **Expired*	- state. If a cloud disk reaches its expiration and release time exactly when a snapshot is being created, the snapshot in the **Creating*	- state is deleted along with the cloud disk.
 //
 // @param request - CreateRCSnapshotRequest
 //
@@ -7781,9 +7781,9 @@ func (client *Client) CreateReplicationLink(request *CreateReplicationLinkReques
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
 // @param request - CreateSecretRequest
 //
@@ -7879,9 +7879,9 @@ func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, runt
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
 // @param request - CreateSecretRequest
 //
@@ -8119,7 +8119,7 @@ func (client *Client) CreateTempDBInstance(request *CreateTempDBInstanceRequest)
 
 // Summary:
 //
-// Claims a coupon.
+// Redeems a coupon.
 //
 // @param request - CreateYouhuiForOrderRequest
 //
@@ -8183,7 +8183,7 @@ func (client *Client) CreateYouhuiForOrderWithOptions(request *CreateYouhuiForOr
 
 // Summary:
 //
-// Claims a coupon.
+// Redeems a coupon.
 //
 // @param request - CreateYouhuiForOrderRequest
 //
@@ -8201,13 +8201,13 @@ func (client *Client) CreateYouhuiForOrder(request *CreateYouhuiForOrderRequest)
 
 // Summary:
 //
-// Removes the current ApsaraDB RDS for SQL Server instance from its Active Directory (AD) domain.
+// Removes the current ApsaraDB RDS for SQL Server instance from its domain.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // @param request - DeleteADSettingRequest
 //
@@ -8271,13 +8271,13 @@ func (client *Client) DeleteADSettingWithOptions(request *DeleteADSettingRequest
 
 // Summary:
 //
-// Removes the current ApsaraDB RDS for SQL Server instance from its Active Directory (AD) domain.
+// Removes the current ApsaraDB RDS for SQL Server instance from its domain.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // @param request - DeleteADSettingRequest
 //
@@ -8791,7 +8791,7 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Deletes an endpoint of an ApsaraDB RDS instance that runs the Cluster Edition.
+// Deletes the endpoint of an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -8807,17 +8807,17 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.</notice>
 //
 // <props="china">
 //
-// - ApsaraDB RDS for MySQL: [Delete a cluster read-only endpoint](https://help.aliyun.com/document_detail/464133.html)
+// - ApsaraDB RDS for MySQL: [Delete the read-only routing endpoint of a cluster](https://help.aliyun.com/document_detail/464133.html)
 //
-// - ApsaraDB RDS for PostgreSQL: [Delete a cluster read-only endpoint](https://help.aliyun.com/document_detail/96788.html)
+// - ApsaraDB RDS for PostgreSQL: [Delete the read-only routing endpoint of a cluster](https://help.aliyun.com/document_detail/96788.html)
 //
 // <props="intl">
 //
-// ApsaraDB RDS for MySQL: [Delete a cluster read-only endpoint](https://help.aliyun.com/document_detail/464133.html)
+// ApsaraDB RDS for MySQL: [Delete the read-only routing endpoint of a cluster](https://help.aliyun.com/document_detail/464133.html)
 //
 // @param request - DeleteDBInstanceEndpointRequest
 //
@@ -8873,7 +8873,7 @@ func (client *Client) DeleteDBInstanceEndpointWithOptions(request *DeleteDBInsta
 
 // Summary:
 //
-// Deletes an endpoint of an ApsaraDB RDS instance that runs the Cluster Edition.
+// Deletes the endpoint of an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -8889,17 +8889,17 @@ func (client *Client) DeleteDBInstanceEndpointWithOptions(request *DeleteDBInsta
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.</notice>
 //
 // <props="china">
 //
-// - ApsaraDB RDS for MySQL: [Delete a cluster read-only endpoint](https://help.aliyun.com/document_detail/464133.html)
+// - ApsaraDB RDS for MySQL: [Delete the read-only routing endpoint of a cluster](https://help.aliyun.com/document_detail/464133.html)
 //
-// - ApsaraDB RDS for PostgreSQL: [Delete a cluster read-only endpoint](https://help.aliyun.com/document_detail/96788.html)
+// - ApsaraDB RDS for PostgreSQL: [Delete the read-only routing endpoint of a cluster](https://help.aliyun.com/document_detail/96788.html)
 //
 // <props="intl">
 //
-// ApsaraDB RDS for MySQL: [Delete a cluster read-only endpoint](https://help.aliyun.com/document_detail/464133.html)
+// ApsaraDB RDS for MySQL: [Delete the read-only routing endpoint of a cluster](https://help.aliyun.com/document_detail/464133.html)
 //
 // @param request - DeleteDBInstanceEndpointRequest
 //
@@ -8917,23 +8917,23 @@ func (client *Client) DeleteDBInstanceEndpoint(request *DeleteDBInstanceEndpoint
 
 // Summary:
 //
-// Releases the public endpoint of an endpoint for an ApsaraDB RDS instance in the Cluster Edition.
+// Releases the public endpoint of an endpoint for an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
 // ### Precautions
 //
-// You can delete only the public endpoint from an endpoint. To delete the internal endpoint, delete the endpoint directly.
+// Currently, you can only release the public address of an endpoint. To release the internal address, delete the endpoint directly.
 //
 // @param request - DeleteDBInstanceEndpointAddressRequest
 //
@@ -8995,23 +8995,23 @@ func (client *Client) DeleteDBInstanceEndpointAddressWithOptions(request *Delete
 
 // Summary:
 //
-// Releases the public endpoint of an endpoint for an ApsaraDB RDS instance in the Cluster Edition.
+// Releases the public endpoint of an endpoint for an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
 // ### Precautions
 //
-// You can delete only the public endpoint from an endpoint. To delete the internal endpoint, delete the endpoint directly.
+// Currently, you can only release the public address of an endpoint. To release the internal address, delete the endpoint directly.
 //
 // @param request - DeleteDBInstanceEndpointAddressRequest
 //
@@ -9029,7 +9029,7 @@ func (client *Client) DeleteDBInstanceEndpointAddress(request *DeleteDBInstanceE
 
 // Summary:
 //
-// Deletes a replication task from a native replication instance.
+// Deletes the native replication task of an instance.
 //
 // @param request - DeleteDBInstanceReplicationRequest
 //
@@ -9085,7 +9085,7 @@ func (client *Client) DeleteDBInstanceReplicationWithOptions(request *DeleteDBIn
 
 // Summary:
 //
-// Deletes a replication task from a native replication instance.
+// Deletes the native replication task of an instance.
 //
 // @param request - DeleteDBInstanceReplicationRequest
 //
@@ -9213,7 +9213,7 @@ func (client *Client) DeleteDBInstanceSecurityGroupRule(request *DeleteDBInstanc
 
 // Summary:
 //
-// Deletes nodes from an ApsaraDB RDS instance that runs Cluster Edition.
+// Deletes nodes from an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -9221,25 +9221,25 @@ func (client *Client) DeleteDBInstanceSecurityGroupRule(request *DeleteDBInstanc
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
 // <props="china">
 //
-// - RDS MySQL: [Delete nodes from an ApsaraDB RDS for MySQL instance that runs Cluster Edition](https://help.aliyun.com/document_detail/464130.html)
+// - ApsaraDB RDS for MySQL: [Delete nodes from an ApsaraDB RDS for MySQL Cluster Edition instance](https://help.aliyun.com/document_detail/464130.html)
 //
-// - RDS PostgreSQL: [Delete nodes from an ApsaraDB RDS for PostgreSQL instance that runs Cluster Edition](https://help.aliyun.com/document_detail/2778876.html)
+// - ApsaraDB RDS for PostgreSQL: [Delete nodes from an ApsaraDB RDS for PostgreSQL Cluster Edition instance](https://help.aliyun.com/document_detail/2778876.html)
 //
 // <props="intl">
 //
-// [Delete nodes from an ApsaraDB RDS for MySQL instance that runs Cluster Edition](https://help.aliyun.com/document_detail/464130.html)
+// [Delete nodes from an ApsaraDB RDS for MySQL Cluster Edition instance](https://help.aliyun.com/document_detail/464130.html)
 //
 // @param tmpReq - DeleteDBNodesRequest
 //
@@ -9317,7 +9317,7 @@ func (client *Client) DeleteDBNodesWithOptions(tmpReq *DeleteDBNodesRequest, run
 
 // Summary:
 //
-// Deletes nodes from an ApsaraDB RDS instance that runs Cluster Edition.
+// Deletes nodes from an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -9325,25 +9325,25 @@ func (client *Client) DeleteDBNodesWithOptions(tmpReq *DeleteDBNodesRequest, run
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
 // <props="china">
 //
-// - RDS MySQL: [Delete nodes from an ApsaraDB RDS for MySQL instance that runs Cluster Edition](https://help.aliyun.com/document_detail/464130.html)
+// - ApsaraDB RDS for MySQL: [Delete nodes from an ApsaraDB RDS for MySQL Cluster Edition instance](https://help.aliyun.com/document_detail/464130.html)
 //
-// - RDS PostgreSQL: [Delete nodes from an ApsaraDB RDS for PostgreSQL instance that runs Cluster Edition](https://help.aliyun.com/document_detail/2778876.html)
+// - ApsaraDB RDS for PostgreSQL: [Delete nodes from an ApsaraDB RDS for PostgreSQL Cluster Edition instance](https://help.aliyun.com/document_detail/2778876.html)
 //
 // <props="intl">
 //
-// [Delete nodes from an ApsaraDB RDS for MySQL instance that runs Cluster Edition](https://help.aliyun.com/document_detail/464130.html)
+// [Delete nodes from an ApsaraDB RDS for MySQL Cluster Edition instance](https://help.aliyun.com/document_detail/464130.html)
 //
 // @param request - DeleteDBNodesRequest
 //
@@ -9361,7 +9361,7 @@ func (client *Client) DeleteDBNodes(request *DeleteDBNodesRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a database proxy endpoint of an ApsaraDB RDS instance.
+// Deletes the database proxy endpoint of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -9373,11 +9373,11 @@ func (client *Client) DeleteDBNodes(request *DeleteDBNodesRequest) (_result *Del
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and impacts.</notice>
 //
-// - [Settings for database proxy endpoints for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/184921.html)
+// - [Configure the database proxy endpoint for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/184921.html)
 //
-// - [Settings for database proxy endpoints for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/418274.html)
+// - [Configure the database proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418274.html)
 //
 // @param request - DeleteDBProxyEndpointAddressRequest
 //
@@ -9441,7 +9441,7 @@ func (client *Client) DeleteDBProxyEndpointAddressWithOptions(request *DeleteDBP
 
 // Summary:
 //
-// Deletes a database proxy endpoint of an ApsaraDB RDS instance.
+// Deletes the database proxy endpoint of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -9453,11 +9453,11 @@ func (client *Client) DeleteDBProxyEndpointAddressWithOptions(request *DeleteDBP
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and impacts.</notice>
 //
-// - [Settings for database proxy endpoints for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/184921.html)
+// - [Configure the database proxy endpoint for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/184921.html)
 //
-// - [Settings for database proxy endpoints for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/418274.html)
+// - [Configure the database proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418274.html)
 //
 // @param request - DeleteDBProxyEndpointAddressRequest
 //
@@ -9687,15 +9687,15 @@ func (client *Client) DeleteGadInstance(request *DeleteGadInstanceRequest) (_res
 
 // Summary:
 //
-// Deletes an encryption or masking rule for a specified instance.
+// Deletes the encryption or data masking rule for a specified instance.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - Before invoking this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you invoke this operation, make sure that the column encryption service is enabled in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when invoking this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption feature in Cloud Hardware Security Module (CloudHSM).
+// - If you receive the ColumnEncryptionErrorCode.NOT_PURCHASED error message when you invoke this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and enable the column encryption service.
 //
 // @param request - DeleteMaskingRulesRequest
 //
@@ -9763,15 +9763,15 @@ func (client *Client) DeleteMaskingRulesWithOptions(request *DeleteMaskingRulesR
 
 // Summary:
 //
-// Deletes an encryption or masking rule for a specified instance.
+// Deletes the encryption or data masking rule for a specified instance.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - Before invoking this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you invoke this operation, make sure that the column encryption service is enabled in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when invoking this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption feature in Cloud Hardware Security Module (CloudHSM).
+// - If you receive the ColumnEncryptionErrorCode.NOT_PURCHASED error message when you invoke this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and enable the column encryption service.
 //
 // @param request - DeleteMaskingRulesRequest
 //
@@ -9903,7 +9903,7 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 
 // Summary:
 //
-// Deletes a scheduled task for modifying instance parameters.
+// Deletes the scheduled task for modifying instance parameters.
 //
 // Description:
 //
@@ -9913,13 +9913,13 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 //
 // - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+// <notice>Before you use this operation, read the feature documentation to fully understand the prerequisites and the impacts of using this operation.</notice>
 //
-// - [Set instance parameters for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96063.html)
+// - [Set the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html)
 //
-// - [Set instance parameters for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/96751.html)
+// - [Set the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html)
 //
 // @param request - DeleteParameterTimedScheduleTaskRequest
 //
@@ -9967,7 +9967,7 @@ func (client *Client) DeleteParameterTimedScheduleTaskWithOptions(request *Delet
 
 // Summary:
 //
-// Deletes a scheduled task for modifying instance parameters.
+// Deletes the scheduled task for modifying instance parameters.
 //
 // Description:
 //
@@ -9977,13 +9977,13 @@ func (client *Client) DeleteParameterTimedScheduleTaskWithOptions(request *Delet
 //
 // - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+// <notice>Before you use this operation, read the feature documentation to fully understand the prerequisites and the impacts of using this operation.</notice>
 //
-// - [Set instance parameters for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96063.html)
+// - [Set the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html)
 //
-// - [Set instance parameters for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/96751.html)
+// - [Set the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html)
 //
 // @param request - DeleteParameterTimedScheduleTaskRequest
 //
@@ -10001,19 +10001,19 @@ func (client *Client) DeleteParameterTimedScheduleTask(request *DeleteParameterT
 
 // Summary:
 //
-// Deletes a specified extension from a target database of an instance.
+// Deletes a specified extension from the target database of an instance.
 //
 // Description:
 //
-// <props="china">You can join the RDS PostgreSQL extension exchange DingTalk group (103525002795) to consult, communicate, provide feedback, and obtain more information about extensions.
+// <props="china">You can join the RDS PostgreSQL extension communication DingTalk group (103525002795) for consultation, communication, and feedback to obtain more information about extensions.
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
 // [Manage extensions](https://help.aliyun.com/document_detail/2402409.html)
 //
@@ -10091,19 +10091,19 @@ func (client *Client) DeletePostgresExtensionsWithOptions(request *DeletePostgre
 
 // Summary:
 //
-// Deletes a specified extension from a target database of an instance.
+// Deletes a specified extension from the target database of an instance.
 //
 // Description:
 //
-// <props="china">You can join the RDS PostgreSQL extension exchange DingTalk group (103525002795) to consult, communicate, provide feedback, and obtain more information about extensions.
+// <props="china">You can join the RDS PostgreSQL extension communication DingTalk group (103525002795) for consultation, communication, and feedback to obtain more information about extensions.
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
 // [Manage extensions](https://help.aliyun.com/document_detail/2402409.html)
 //
@@ -10207,7 +10207,7 @@ func (client *Client) DeleteRCClusterNodes(request *DeleteRCClusterNodesRequest)
 
 // Summary:
 //
-// Deletes an RDS Custom deployment set by specifying parameters such as RegionId and DeploymentSetId.
+// Deletes an RDS Custom deployment set.
 //
 // @param request - DeleteRCDeploymentSetRequest
 //
@@ -10255,7 +10255,7 @@ func (client *Client) DeleteRCDeploymentSetWithOptions(request *DeleteRCDeployme
 
 // Summary:
 //
-// Deletes an RDS Custom deployment set by specifying parameters such as RegionId and DeploymentSetId.
+// Deletes an RDS Custom deployment set.
 //
 // @param request - DeleteRCDeploymentSetRequest
 //
@@ -10273,17 +10273,17 @@ func (client *Client) DeleteRCDeploymentSet(request *DeleteRCDeploymentSetReques
 
 // Summary:
 //
-// Releases a pay-as-you-go data cloud disk. Cloud disk types include basic cloud disks, ultra cloud disks, standard SSDs, and ESSDs.
+// Releases a pay-as-you-go data cloud disk. Supported disk types include basic cloud disks, ultra cloud disks, standard SSDs, and ESSDs.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you call this operation, note the following items:
 //
-// - Manual snapshots of the cloud disk are retained.
+// - Manual snapshots of the disk are retained.
 //
-// - When you release a cloud disk, the cloud disk must be in the **Unattached*	- (Available) state.
+// - The disk must be in the Available state when it is released.
 //
-// - If the cloud disk with the specified ID does not exist, the request is ignored.
+// - If the disk with the specified ID does not exist, the request is ignored.
 //
 // @param request - DeleteRCDiskRequest
 //
@@ -10331,17 +10331,17 @@ func (client *Client) DeleteRCDiskWithOptions(request *DeleteRCDiskRequest, runt
 
 // Summary:
 //
-// Releases a pay-as-you-go data cloud disk. Cloud disk types include basic cloud disks, ultra cloud disks, standard SSDs, and ESSDs.
+// Releases a pay-as-you-go data cloud disk. Supported disk types include basic cloud disks, ultra cloud disks, standard SSDs, and ESSDs.
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you call this operation, note the following items:
 //
-// - Manual snapshots of the cloud disk are retained.
+// - Manual snapshots of the disk are retained.
 //
-// - When you release a cloud disk, the cloud disk must be in the **Unattached*	- (Available) state.
+// - The disk must be in the Available state when it is released.
 //
-// - If the cloud disk with the specified ID does not exist, the request is ignored.
+// - If the disk with the specified ID does not exist, the request is ignored.
 //
 // @param request - DeleteRCDiskRequest
 //
@@ -10429,11 +10429,11 @@ func (client *Client) DeleteRCInstance(request *DeleteRCInstanceRequest) (_resul
 
 // Summary:
 //
-// Releases one or more subscription RDS Custom instances by calling the DeleteRCInstance operation.
+// Releases one or more subscription RDS Custom instances.
 //
 // Description:
 //
-// After an instance is released, all physical resources used by the instance are reclaimed, and all related data is permanently lost and cannot be recovered.
+// After the instances are released, the physical resources used by the instances are reclaimed, and all related data is lost and cannot be recovered.
 //
 // @param tmpReq - DeleteRCInstancesRequest
 //
@@ -10499,11 +10499,11 @@ func (client *Client) DeleteRCInstancesWithOptions(tmpReq *DeleteRCInstancesRequ
 
 // Summary:
 //
-// Releases one or more subscription RDS Custom instances by calling the DeleteRCInstance operation.
+// Releases one or more subscription RDS Custom instances.
 //
 // Description:
 //
-// After an instance is released, all physical resources used by the instance are reclaimed, and all related data is permanently lost and cannot be recovered.
+// After the instances are released, the physical resources used by the instances are reclaimed, and all related data is lost and cannot be recovered.
 //
 // @param request - DeleteRCInstancesRequest
 //
@@ -10747,11 +10747,11 @@ func (client *Client) DeleteRCVCluster(request *DeleteRCVClusterRequest) (_resul
 
 // Summary:
 //
-// Deletes the data synchronization link of a disaster recovery RDS instance and promotes the disaster recovery instance to a primary instance.
+// Deletes the data synchronization link of a disaster recovery instance and promotes the disaster recovery instance to a primary instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for PostgreSQL
 //
@@ -10807,11 +10807,11 @@ func (client *Client) DeleteReplicationLinkWithOptions(request *DeleteReplicatio
 
 // Summary:
 //
-// Deletes the data synchronization link of a disaster recovery RDS instance and promotes the disaster recovery instance to a primary instance.
+// Deletes the data synchronization link of a disaster recovery instance and promotes the disaster recovery instance to a primary instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for PostgreSQL
 //
@@ -10931,17 +10931,17 @@ func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes a specified replication slot from an instance.
+// Deletes a specified replication slot of an instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // ### Precautions
 //
-// A replication slot can be deleted only when its status (SlotStatus) is **INACTIVE**. You can call the DescribeSlots operation to query the replication slot status.
+// A replication slot can be deleted only when its status (SlotStatus) is **INACTIVE**. You can call the DescribeSlots operation to query the status of the replication slot.
 //
 // @param request - DeleteSlotRequest
 //
@@ -11017,17 +11017,17 @@ func (client *Client) DeleteSlotWithOptions(request *DeleteSlotRequest, runtime 
 
 // Summary:
 //
-// Deletes a specified replication slot from an instance.
+// Deletes a specified replication slot of an instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // ### Precautions
 //
-// A replication slot can be deleted only when its status (SlotStatus) is **INACTIVE**. You can call the DescribeSlots operation to query the replication slot status.
+// A replication slot can be deleted only when its status (SlotStatus) is **INACTIVE**. You can call the DescribeSlots operation to query the status of the replication slot.
 //
 // @param request - DeleteSlotRequest
 //
@@ -11045,19 +11045,19 @@ func (client *Client) DeleteSlot(request *DeleteSlotRequest) (_result *DeleteSlo
 
 // Summary:
 //
-// Deletes a user backup of an ApsaraDB RDS for MySQL instance.
+// Deletes a specified user backup of an ApsaraDB RDS for MySQL instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported database engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// ### Description
+// ### Features
 //
-//   - A user backup is a full backup of a self-managed MySQL database. You can restore a user backup to the cloud. For more information, see [Migrate the full data of a self-managed MySQL 5.7 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
+//   - A user backup is a full backup of a self-managed MySQL database. You can restore the user backup to the cloud. For more information, see [Migrate full data from a self-managed MySQL 5.7 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
 //
-//   - This operation only deletes the specified user backup from the ApsaraDB RDS console and does not affect the original backup file in Object Storage Service (OSS). After the deletion, you can call the ImportUserBackupFile operation to re-import the user backup.
+//   - This operation only deletes the specified user backup from the ApsaraDB RDS console and does not affect the original backup file in OSS. After the deletion, you can call the ImportUserBackupFile operation to re-import the user backup.
 //
 // @param request - DeleteUserBackupFileRequest
 //
@@ -11121,19 +11121,19 @@ func (client *Client) DeleteUserBackupFileWithOptions(request *DeleteUserBackupF
 
 // Summary:
 //
-// Deletes a user backup of an ApsaraDB RDS for MySQL instance.
+// Deletes a specified user backup of an ApsaraDB RDS for MySQL instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported database engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// ### Description
+// ### Features
 //
-//   - A user backup is a full backup of a self-managed MySQL database. You can restore a user backup to the cloud. For more information, see [Migrate the full data of a self-managed MySQL 5.7 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
+//   - A user backup is a full backup of a self-managed MySQL database. You can restore the user backup to the cloud. For more information, see [Migrate full data from a self-managed MySQL 5.7 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
 //
-//   - This operation only deletes the specified user backup from the ApsaraDB RDS console and does not affect the original backup file in Object Storage Service (OSS). After the deletion, you can call the ImportUserBackupFile operation to re-import the user backup.
+//   - This operation only deletes the specified user backup from the ApsaraDB RDS console and does not affect the original backup file in OSS. After the deletion, you can call the ImportUserBackupFile operation to re-import the user backup.
 //
 // @param request - DeleteUserBackupFileRequest
 //
@@ -11273,13 +11273,13 @@ func (client *Client) DescibeImportsFromDatabase(request *DescibeImportsFromData
 
 // Summary:
 //
-// Queries the Active Directory (AD) domain information of the current instance, including whether the instance has joined a domain, the domain name, and the account used.
+// Queries the Active Directory (AD) domain information of the current instance, including the domain join status, domain name, and associated account.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // @param request - DescribeADInfoRequest
 //
@@ -11343,13 +11343,13 @@ func (client *Client) DescribeADInfoWithOptions(request *DescribeADInfoRequest, 
 
 // Summary:
 //
-// Queries the Active Directory (AD) domain information of the current instance, including whether the instance has joined a domain, the domain name, and the account used.
+// Queries the Active Directory (AD) domain information of the current instance, including the domain join status, domain name, and associated account.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // @param request - DescribeADInfoRequest
 //
@@ -11367,15 +11367,15 @@ func (client *Client) DescribeADInfo(request *DescribeADInfoRequest) (_result *D
 
 // Summary:
 //
-// Queries the encryption or data masking permission configurations of accounts in a specified instance.
+// Queries the encryption or masking permission configurations for accounts in a specified instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - Before you invoke this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you call this operation, make sure that you have activated the column encryption service in the DAS Security Center.
 //
-// - If you receive the error message ColumnEncryptionErrorCode.NOT_PURCHASED when you invoke this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption feature before using it.
+// - If you receive the error message ColumnEncryptionErrorCode.NOT_PURCHASED when calling this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption service before you proceed.
 //
 // @param request - DescribeAccountMaskingPrivilegeRequest
 //
@@ -11443,15 +11443,15 @@ func (client *Client) DescribeAccountMaskingPrivilegeWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the encryption or data masking permission configurations of accounts in a specified instance.
+// Queries the encryption or masking permission configurations for accounts in a specified instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - Before you invoke this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you call this operation, make sure that you have activated the column encryption service in the DAS Security Center.
 //
-// - If you receive the error message ColumnEncryptionErrorCode.NOT_PURCHASED when you invoke this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption feature before using it.
+// - If you receive the error message ColumnEncryptionErrorCode.NOT_PURCHASED when calling this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption service before you proceed.
 //
 // @param request - DescribeAccountMaskingPrivilegeRequest
 //
@@ -11677,7 +11677,7 @@ func (client *Client) DescribeActionEventPolicy(request *DescribeActionEventPoli
 
 // Summary:
 //
-// Retrieves the proactive O&M configuration of a user, which currently includes the scheduled event cycle window information.
+// Retrieves the O&M configuration information of a user, which currently includes the cycle window information for scheduled events.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -11737,7 +11737,7 @@ func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *De
 
 // Summary:
 //
-// Retrieves the proactive O&M configuration of a user, which currently includes the scheduled event cycle window information.
+// Retrieves the O&M configuration information of a user, which currently includes the cycle window information for scheduled events.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -11769,9 +11769,9 @@ func (client *Client) DescribeActiveOperationMaintainConf(request *DescribeActiv
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to fully understand the prerequisites and impacts.
 //
 // - [Scheduled events for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/104183.html)
 //
@@ -11897,9 +11897,9 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to fully understand the prerequisites and impacts.
 //
 // - [Scheduled events for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/104183.html)
 //
@@ -11925,17 +11925,17 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 
 // Summary:
 //
-// Retrieves whitelist templates in batches with support for fuzzy search.
+// Queries whitelist templates in batches and supports fuzzy match.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - DescribeAllWhitelistTemplateRequest
 //
@@ -12007,17 +12007,17 @@ func (client *Client) DescribeAllWhitelistTemplateWithOptions(request *DescribeA
 
 // Summary:
 //
-// Retrieves whitelist templates in batches with support for fuzzy search.
+// Queries whitelist templates in batches and supports fuzzy match.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - DescribeAllWhitelistTemplateRequest
 //
@@ -12133,11 +12133,11 @@ func (client *Client) DescribeAnalyticdbByPrimaryDBInstance(request *DescribeAna
 
 // Summary:
 //
-// Queries the instance types and storage capacity to which an ApsaraDB RDS instance can be changed.
+// Queries the available specifications and storage space of an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -12229,11 +12229,11 @@ func (client *Client) DescribeAvailableClassesWithOptions(request *DescribeAvail
 
 // Summary:
 //
-// Queries the instance types and storage capacity to which an ApsaraDB RDS instance can be changed.
+// Queries the available specifications and storage space of an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -12377,13 +12377,13 @@ func (client *Client) DescribeAvailableCrossRegion(request *DescribeAvailableCro
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation to fully understand the prerequisites and potential impacts.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and impacts of this operation.</notice>
 //
 // [View enhanced monitoring](https://help.aliyun.com/document_detail/299200.html).
 //
@@ -12441,13 +12441,13 @@ func (client *Client) DescribeAvailableMetricsWithOptions(request *DescribeAvail
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation to fully understand the prerequisites and potential impacts.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and impacts of this operation.</notice>
 //
 // [View enhanced monitoring](https://help.aliyun.com/document_detail/299200.html).
 //
@@ -12467,19 +12467,19 @@ func (client *Client) DescribeAvailableMetrics(request *DescribeAvailableMetrics
 
 // Summary:
 //
-// Queries the restorable time range of a cross-region backup file.
+// Queries the time range to which data can be restored from a specified cross-region backup file.
 //
 // Description:
 //
-// > To query the restorable time range of a regular backup file, see DescribeBackups.
+// > To view the time range to which data can be restored from a regular backup file, see DescribeBackups.
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// ApsaraDB RDS for MySQL (with Premium Local SSDs)
+// ApsaraDB RDS for MySQL (instances with Premium Local SSDs)
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
 // [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -12549,19 +12549,19 @@ func (client *Client) DescribeAvailableRecoveryTimeWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the restorable time range of a cross-region backup file.
+// Queries the time range to which data can be restored from a specified cross-region backup file.
 //
 // Description:
 //
-// > To query the restorable time range of a regular backup file, see DescribeBackups.
+// > To view the time range to which data can be restored from a regular backup file, see DescribeBackups.
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// ApsaraDB RDS for MySQL (with Premium Local SSDs)
+// ApsaraDB RDS for MySQL (instances with Premium Local SSDs)
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
 // [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -12587,15 +12587,15 @@ func (client *Client) DescribeAvailableRecoveryTime(request *DescribeAvailableRe
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-//	> This operation is used only to query available zone resources and is not used for the sales of ApsaraDB RDS for PostgreSQL on the console. Due to differences in actual sales policies, some parameter values on the buy page may slightly differ. When making a purchase, refer to the [buy page](https://rdsbuy.console.aliyun.com/create/rds/PostgreSQL).
+//	> This operation is only used to query available zone resources and is not used for the sales of ApsaraDB RDS for PostgreSQL in the console. The purchase page may have slightly different parameter values based on actual sales strategies. When you make a purchase, refer to the [purchase page](https://rdsbuy.console.aliyun.com/create/rds/PostgreSQL).
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // @param request - DescribeAvailableZonesRequest
 //
@@ -12677,15 +12677,15 @@ func (client *Client) DescribeAvailableZonesWithOptions(request *DescribeAvailab
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-//	> This operation is used only to query available zone resources and is not used for the sales of ApsaraDB RDS for PostgreSQL on the console. Due to differences in actual sales policies, some parameter values on the buy page may slightly differ. When making a purchase, refer to the [buy page](https://rdsbuy.console.aliyun.com/create/rds/PostgreSQL).
+//	> This operation is only used to query available zone resources and is not used for the sales of ApsaraDB RDS for PostgreSQL in the console. The purchase page may have slightly different parameter values based on actual sales strategies. When you make a purchase, refer to the [purchase page](https://rdsbuy.console.aliyun.com/create/rds/PostgreSQL).
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // @param request - DescribeAvailableZonesRequest
 //
@@ -13021,15 +13021,15 @@ func (client *Client) DescribeBackupTasks(request *DescribeBackupTasksRequest) (
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // @param request - DescribeBackupsRequest
 //
@@ -13113,15 +13113,15 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // @param request - DescribeBackupsRequest
 //
@@ -13383,11 +13383,11 @@ func (client *Client) DescribeCharacterSetName(request *DescribeCharacterSetName
 
 // Summary:
 //
-// Queries the details of an instance type by instance type code.
+// Queries the details of an instance type by using the instance type code.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - RDS MySQL
 //
@@ -13475,11 +13475,11 @@ func (client *Client) DescribeClassDetailsWithOptions(request *DescribeClassDeta
 
 // Summary:
 //
-// Queries the details of an instance type by instance type code.
+// Queries the details of an instance type by using the instance type code.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - RDS MySQL
 //
@@ -13509,7 +13509,7 @@ func (client *Client) DescribeClassDetails(request *DescribeClassDetailsRequest)
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for PostgreSQL
 //
@@ -13587,7 +13587,7 @@ func (client *Client) DescribeCloudMigrationPrecheckResultWithOptions(request *D
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for PostgreSQL
 //
@@ -13607,13 +13607,13 @@ func (client *Client) DescribeCloudMigrationPrecheckResult(request *DescribeClou
 
 // Summary:
 //
-// Queries the details of a cloud migration task for an ApsaraDB RDS for PostgreSQL instance.
+// Queries the details of an ApsaraDB RDS for PostgreSQL cloud migration task.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // @param request - DescribeCloudMigrationResultRequest
 //
@@ -13685,13 +13685,13 @@ func (client *Client) DescribeCloudMigrationResultWithOptions(request *DescribeC
 
 // Summary:
 //
-// Queries the details of a cloud migration task for an ApsaraDB RDS for PostgreSQL instance.
+// Queries the details of an ApsaraDB RDS for PostgreSQL cloud migration task.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // @param request - DescribeCloudMigrationResultRequest
 //
@@ -13791,17 +13791,17 @@ func (client *Client) DescribeCollationTimeZones(request *DescribeCollationTimeZ
 
 // Summary:
 //
-// Queries the configuration of the committed serverless feature.
+// Queries the configuration of the committed Serverless feature.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-// [Committed serverless](https://help.aliyun.com/document_detail/2928780.html)
+// [Committed Serverless](https://help.aliyun.com/document_detail/2928780.html)
 //
 // @param request - DescribeComputeBurstConfigRequest
 //
@@ -13869,17 +13869,17 @@ func (client *Client) DescribeComputeBurstConfigWithOptions(request *DescribeCom
 
 // Summary:
 //
-// Queries the configuration of the committed serverless feature.
+// Queries the configuration of the committed Serverless feature.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-// [Committed serverless](https://help.aliyun.com/document_detail/2928780.html)
+// [Committed Serverless](https://help.aliyun.com/document_detail/2928780.html)
 //
 // @param request - DescribeComputeBurstConfigRequest
 //
@@ -13897,11 +13897,11 @@ func (client *Client) DescribeComputeBurstConfig(request *DescribeComputeBurstCo
 
 // Summary:
 //
-// Queries the database and table information of a cross-region backup for an ApsaraDB RDS instance.
+// Queries the database and table information of cross-region backups for an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -13911,13 +13911,13 @@ func (client *Client) DescribeComputeBurstConfig(request *DescribeComputeBurstCo
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to fully understand the prerequisites and impacts of the operation.
 //
-// - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
+// - [Cross-region backups for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
-// - [Cross-region backup for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/206671.html)
+// - [Cross-region backups for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/206671.html)
 //
-// - [Cross-region backup for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/187923.html)
+// - [Cross-region backups for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/187923.html)
 //
 // @param request - DescribeCrossBackupMetaListRequest
 //
@@ -13997,11 +13997,11 @@ func (client *Client) DescribeCrossBackupMetaListWithOptions(request *DescribeCr
 
 // Summary:
 //
-// Queries the database and table information of a cross-region backup for an ApsaraDB RDS instance.
+// Queries the database and table information of cross-region backups for an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -14011,13 +14011,13 @@ func (client *Client) DescribeCrossBackupMetaListWithOptions(request *DescribeCr
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to fully understand the prerequisites and impacts of the operation.
 //
-// - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
+// - [Cross-region backups for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
-// - [Cross-region backup for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/206671.html)
+// - [Cross-region backups for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/206671.html)
 //
-// - [Cross-region backup for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/187923.html)
+// - [Cross-region backups for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/187923.html)
 //
 // @param request - DescribeCrossBackupMetaListRequest
 //
@@ -14049,7 +14049,7 @@ func (client *Client) DescribeCrossBackupMetaList(request *DescribeCrossBackupMe
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.</notice>
 //
 // - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -14137,7 +14137,7 @@ func (client *Client) DescribeCrossRegionBackupDBInstanceWithOptions(request *De
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.</notice>
 //
 // - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -14167,15 +14167,15 @@ func (client *Client) DescribeCrossRegionBackupDBInstance(request *DescribeCross
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL ([storage type](https://help.aliyun.com/document_detail/69795.html) must be **Premium Local SSDs**. Cloud disks are not supported.)
+// - ApsaraDB RDS for MySQL (The [storage type](https://help.aliyun.com/document_detail/69795.html) must be **Premium Local SSDs**. Cloud disks are not supported.)
 //
 // - ApsaraDB RDS for PostgreSQL
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
 // - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -14183,7 +14183,7 @@ func (client *Client) DescribeCrossRegionBackupDBInstance(request *DescribeCross
 //
 // - [Cross-region backup for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/206671.html)
 //
-// > To query cross-region log backup files, refer to DescribeCrossRegionLogBackupFiles.
+// > To query cross-region log backup files, see DescribeCrossRegionLogBackupFiles.
 //
 // @param request - DescribeCrossRegionBackupsRequest
 //
@@ -14281,15 +14281,15 @@ func (client *Client) DescribeCrossRegionBackupsWithOptions(request *DescribeCro
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL ([storage type](https://help.aliyun.com/document_detail/69795.html) must be **Premium Local SSDs**. Cloud disks are not supported.)
+// - ApsaraDB RDS for MySQL (The [storage type](https://help.aliyun.com/document_detail/69795.html) must be **Premium Local SSDs**. Cloud disks are not supported.)
 //
 // - ApsaraDB RDS for PostgreSQL
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
 // - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -14297,7 +14297,7 @@ func (client *Client) DescribeCrossRegionBackupsWithOptions(request *DescribeCro
 //
 // - [Cross-region backup for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/206671.html)
 //
-// > To query cross-region log backup files, refer to DescribeCrossRegionLogBackupFiles.
+// > To query cross-region log backup files, see DescribeCrossRegionLogBackupFiles.
 //
 // @param request - DescribeCrossRegionBackupsRequest
 //
@@ -14543,7 +14543,7 @@ func (client *Client) DescribeCurrentModifyOrder(request *DescribeCurrentModifyO
 
 // Summary:
 //
-// Queries the resource usage of an instance.
+// Queries the resource usage of instances.
 //
 // @param request - DescribeCustinsResourceInfoRequest
 //
@@ -14603,7 +14603,7 @@ func (client *Client) DescribeCustinsResourceInfoWithOptions(request *DescribeCu
 
 // Summary:
 //
-// Queries the resource usage of an instance.
+// Queries the resource usage of instances.
 //
 // @param request - DescribeCustinsResourceInfoRequest
 //
@@ -14715,19 +14715,19 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 
 // Summary:
 //
-// Queries the tags that are bound to an instance.
+// Retrieves the tags bound to an instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
-// - ApsaraDB RDS for MariaDB
+// - RDS MariaDB
 //
 // @param request - DescribeDBInstanceByTagsRequest
 //
@@ -14807,19 +14807,19 @@ func (client *Client) DescribeDBInstanceByTagsWithOptions(request *DescribeDBIns
 
 // Summary:
 //
-// Queries the tags that are bound to an instance.
+// Retrieves the tags bound to an instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
-// - ApsaraDB RDS for MariaDB
+// - RDS MariaDB
 //
 // @param request - DescribeDBInstanceByTagsRequest
 //
@@ -14843,9 +14843,9 @@ func (client *Client) DescribeDBInstanceByTags(request *DescribeDBInstanceByTags
 //
 // ## Request description
 //
-// - Before you invoke this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you use this operation, make sure that the column encryption service is enabled in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when invoking this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption feature.
+// - If you receive the error message ColumnEncryptionErrorCode.NOT_PURCHASED when you call this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and enable the column encryption service.
 //
 // @param request - DescribeDBInstanceCLSRequest
 //
@@ -14911,9 +14911,9 @@ func (client *Client) DescribeDBInstanceCLSWithOptions(request *DescribeDBInstan
 //
 // ## Request description
 //
-// - Before you invoke this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you use this operation, make sure that the column encryption service is enabled in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when invoking this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption feature.
+// - If you receive the error message ColumnEncryptionErrorCode.NOT_PURCHASED when you call this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and enable the column encryption service.
 //
 // @param request - DescribeDBInstanceCLSRequest
 //
@@ -14931,7 +14931,7 @@ func (client *Client) DescribeDBInstanceCLS(request *DescribeDBInstanceCLSReques
 
 // Summary:
 //
-// Retrieves link diagnostics information for an instance.
+// Retrieves the connectivity diagnostics information for an instance.
 //
 // @param request - DescribeDBInstanceConnectivityRequest
 //
@@ -14971,7 +14971,7 @@ func (client *Client) DescribeDBInstanceConnectivityWithOptions(request *Describ
 
 // Summary:
 //
-// Retrieves link diagnostics information for an instance.
+// Retrieves the connectivity diagnostics information for an instance.
 //
 // @param request - DescribeDBInstanceConnectivityRequest
 //
@@ -14993,9 +14993,9 @@ func (client *Client) DescribeDBInstanceConnectivity(request *DescribeDBInstance
 //
 // Description:
 //
-// ### Supported engine
+// ### Applicable engine
 //
-// RDS SQL Server.
+// ApsaraDB RDS for SQL Server.
 //
 // @param request - DescribeDBInstanceDetailRequest
 //
@@ -15067,9 +15067,9 @@ func (client *Client) DescribeDBInstanceDetailWithOptions(request *DescribeDBIns
 //
 // Description:
 //
-// ### Supported engine
+// ### Applicable engine
 //
-// RDS SQL Server.
+// ApsaraDB RDS for SQL Server.
 //
 // @param request - DescribeDBInstanceDetailRequest
 //
@@ -15087,11 +15087,11 @@ func (client *Client) DescribeDBInstanceDetail(request *DescribeDBInstanceDetail
 
 // Summary:
 //
-// Queries whether cloud disk encryption is enabled for an ApsaraDB RDS instance and the encryption key details.
+// Queries whether cloud disk encryption is enabled for an ApsaraDB RDS instance and retrieves the key details.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -15173,11 +15173,11 @@ func (client *Client) DescribeDBInstanceEncryptionKeyWithOptions(request *Descri
 
 // Summary:
 //
-// Queries whether cloud disk encryption is enabled for an ApsaraDB RDS instance and the encryption key details.
+// Queries whether cloud disk encryption is enabled for an ApsaraDB RDS instance and retrieves the key details.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -15305,15 +15305,15 @@ func (client *Client) DescribeDBInstanceEndpoints(request *DescribeDBInstanceEnd
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation before you proceed.
+//	Notice: Before you call this operation, read the feature documentation to understand the prerequisites and impacts.</notice>
 //
 // - [Query the data replication mode of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96055.html)
 //
@@ -15385,15 +15385,15 @@ func (client *Client) DescribeDBInstanceHAConfigWithOptions(request *DescribeDBI
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation before you proceed.
+//	Notice: Before you call this operation, read the feature documentation to understand the prerequisites and impacts.</notice>
 //
 // - [Query the data replication mode of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96055.html)
 //
@@ -15417,7 +15417,7 @@ func (client *Client) DescribeDBInstanceHAConfig(request *DescribeDBInstanceHACo
 
 // Summary:
 //
-// Queries the IP whitelist of an ApsaraDB RDS instance.
+// Queries the IP address whitelists of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -15485,7 +15485,7 @@ func (client *Client) DescribeDBInstanceIPArrayListWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the IP whitelist of an ApsaraDB RDS instance.
+// Queries the IP address whitelists of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -15645,17 +15645,17 @@ func (client *Client) DescribeDBInstanceIpHostname(request *DescribeDBInstanceIp
 
 // Summary:
 //
-// Queries the enhanced monitoring metrics that are enabled for an ApsaraDB RDS for PostgreSQL instance.
+// Queries the enhanced metrics that are enabled and displayed for an ApsaraDB RDS for PostgreSQL instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation to fully understand the prerequisites and potential impacts.
+//	Notice: Before you use this operation, read the feature documentation carefully to ensure that you fully understand the prerequisites and the impacts of using this operation.</notice>
 //
 // [View enhanced monitoring](https://help.aliyun.com/document_detail/299200.html).
 //
@@ -15709,17 +15709,17 @@ func (client *Client) DescribeDBInstanceMetricsWithOptions(request *DescribeDBIn
 
 // Summary:
 //
-// Queries the enhanced monitoring metrics that are enabled for an ApsaraDB RDS for PostgreSQL instance.
+// Queries the enhanced metrics that are enabled and displayed for an ApsaraDB RDS for PostgreSQL instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation to fully understand the prerequisites and potential impacts.
+//	Notice: Before you use this operation, read the feature documentation carefully to ensure that you fully understand the prerequisites and the impacts of using this operation.</notice>
 //
 // [View enhanced monitoring](https://help.aliyun.com/document_detail/299200.html).
 //
@@ -16077,15 +16077,15 @@ func (client *Client) DescribeDBInstanceNetInfoForChannel(request *DescribeDBIns
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
-// - ApsaraDB RDS for MariaDB
+// - RDS MariaDB
 //
 // @param request - DescribeDBInstancePerformanceRequest
 //
@@ -16153,15 +16153,15 @@ func (client *Client) DescribeDBInstancePerformanceWithOptions(request *Describe
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
-// - ApsaraDB RDS for MariaDB
+// - RDS MariaDB
 //
 // @param request - DescribeDBInstancePerformanceRequest
 //
@@ -16181,11 +16181,11 @@ func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstanceP
 //
 // Summary:
 //
-// This operation is no longer maintained. You can still call this operation, but it is no longer maintained.
+// Queries the promotional activities applied to an instance. This operation is deprecated and no longer maintained, but remains callable.
 //
 // Description:
 //
-// This operation is no longer maintained. **You can still call this operation, but Alibaba Cloud no longer maintains it**.
+// This operation is deprecated: **you can still call this operation, but Alibaba Cloud no longer maintains it**.
 //
 // @param request - DescribeDBInstancePromoteActivityRequest
 //
@@ -16251,11 +16251,11 @@ func (client *Client) DescribeDBInstancePromoteActivityWithOptions(request *Desc
 //
 // Summary:
 //
-// This operation is no longer maintained. You can still call this operation, but it is no longer maintained.
+// Queries the promotional activities applied to an instance. This operation is deprecated and no longer maintained, but remains callable.
 //
 // Description:
 //
-// This operation is no longer maintained. **You can still call this operation, but Alibaba Cloud no longer maintains it**.
+// This operation is deprecated: **you can still call this operation, but Alibaba Cloud no longer maintains it**.
 //
 // @param request - DescribeDBInstancePromoteActivityRequest
 //
@@ -16376,19 +16376,19 @@ func (client *Client) DescribeDBInstanceProxyConfiguration(request *DescribeDBIn
 
 // Summary:
 //
-// Queries the instance status and configuration of a native replication instance.
+// Queries the status and configuration of a native replication instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for MySQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation before you proceed.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// [RDS MySQL native replication instance](https://help.aliyun.com/document_detail/2856487.html)
+// [Native replication instances of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/2856487.html)
 //
 // @param request - DescribeDBInstanceReplicationRequest
 //
@@ -16440,19 +16440,19 @@ func (client *Client) DescribeDBInstanceReplicationWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the instance status and configuration of a native replication instance.
+// Queries the status and configuration of a native replication instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for MySQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation before you proceed.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// [RDS MySQL native replication instance](https://help.aliyun.com/document_detail/2856487.html)
+// [Native replication instances of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/2856487.html)
 //
 // @param request - DescribeDBInstanceReplicationRequest
 //
@@ -16590,11 +16590,11 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 //
 // ### Applicable engine
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-// [Configure security group rules for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/2392322.html)
+// [Configure security group rules for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - DescribeDBInstanceSecurityGroupRuleRequest
 //
@@ -16660,11 +16660,11 @@ func (client *Client) DescribeDBInstanceSecurityGroupRuleWithOptions(request *De
 //
 // ### Applicable engine
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-// [Configure security group rules for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/2392322.html)
+// [Configure security group rules for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - DescribeDBInstanceSecurityGroupRuleRequest
 //
@@ -16792,7 +16792,7 @@ func (client *Client) DescribeDBInstanceSwitchLog(request *DescribeDBInstanceSwi
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -16862,7 +16862,7 @@ func (client *Client) DescribeDBInstanceTDEWithOptions(request *DescribeDBInstan
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -16886,7 +16886,7 @@ func (client *Client) DescribeDBInstanceTDE(request *DescribeDBInstanceTDEReques
 
 // Summary:
 //
-// Queries a list of ApsaraDB RDS instances.
+// Queries ApsaraDB RDS instances.
 //
 // Description:
 //
@@ -17074,7 +17074,7 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 
 // Summary:
 //
-// Queries a list of ApsaraDB RDS instances.
+// Queries ApsaraDB RDS instances.
 //
 // Description:
 //
@@ -17106,11 +17106,11 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 //
 // Summary:
 //
-// Queries a list of instances. This operation is no longer maintained but can still be called.
+// Queries a list of instances. This operation is deprecated and no longer maintained, but can still be called.
 //
 // Description:
 //
-// This operation is no longer maintained: **the operation can still be called, but Alibaba Cloud no longer maintains it**. Use the **DescribeDBInstances*	- operation instead.
+// This operation is deprecated: **You can still call this operation, but Alibaba Cloud no longer maintains it**. Use the **DescribeDBInstances*	- operation instead.
 //
 // @param request - DescribeDBInstancesAsCsvRequest
 //
@@ -17184,11 +17184,11 @@ func (client *Client) DescribeDBInstancesAsCsvWithOptions(request *DescribeDBIns
 //
 // Summary:
 //
-// Queries a list of instances. This operation is no longer maintained but can still be called.
+// Queries a list of instances. This operation is deprecated and no longer maintained, but can still be called.
 //
 // Description:
 //
-// This operation is no longer maintained: **the operation can still be called, but Alibaba Cloud no longer maintains it**. Use the **DescribeDBInstances*	- operation instead.
+// This operation is deprecated: **You can still call this operation, but Alibaba Cloud no longer maintains it**. Use the **DescribeDBInstances*	- operation instead.
 //
 // @param request - DescribeDBInstancesAsCsvRequest
 //
@@ -17207,11 +17207,11 @@ func (client *Client) DescribeDBInstancesAsCsv(request *DescribeDBInstancesAsCsv
 
 // Summary:
 //
-// Queries information about ApsaraDB RDS instances based on the remaining available time of subscription instances.
+// Queries the details of ApsaraDB RDS instances based on the remaining available time of subscription instances.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -17307,11 +17307,11 @@ func (client *Client) DescribeDBInstancesByExpireTimeWithOptions(request *Descri
 
 // Summary:
 //
-// Queries information about ApsaraDB RDS instances based on the remaining available time of subscription instances.
+// Queries the details of ApsaraDB RDS instances based on the remaining available time of subscription instances.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -17457,7 +17457,7 @@ func (client *Client) DescribeDBInstancesByPerformance(request *DescribeDBInstan
 //
 // Summary:
 //
-// Queries clone database instances. This operation is no longer maintained but can still be called.
+// Queries cloned database instances. **[Deprecated]*	- This operation can still be called, but it is no longer maintained.
 //
 // Description:
 //
@@ -17607,7 +17607,7 @@ func (client *Client) DescribeDBInstancesForCloneWithOptions(request *DescribeDB
 //
 // Summary:
 //
-// Queries clone database instances. This operation is no longer maintained but can still be called.
+// Queries cloned database instances. **[Deprecated]*	- This operation can still be called, but it is no longer maintained.
 //
 // Description:
 //
@@ -17748,15 +17748,15 @@ func (client *Client) DescribeDBMiniEngineVersions(request *DescribeDBMiniEngine
 
 // Summary:
 //
-// Queries the details of the database proxy settings of an ApsaraDB RDS instance.
+// Queries the details of the database proxy settings for an ApsaraDB RDS instance.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
 // @param request - DescribeDBProxyRequest
 //
@@ -17828,15 +17828,15 @@ func (client *Client) DescribeDBProxyWithOptions(request *DescribeDBProxyRequest
 
 // Summary:
 //
-// Queries the details of the database proxy settings of an ApsaraDB RDS instance.
+// Queries the details of the database proxy settings for an ApsaraDB RDS instance.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
 // @param request - DescribeDBProxyRequest
 //
@@ -17970,19 +17970,19 @@ func (client *Client) DescribeDBProxyEndpoint(request *DescribeDBProxyEndpointRe
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition instances are progressively provided with a complimentary dedicated proxy service with one proxy node across regions. For more information, see [ApsaraDB RDS for MySQL Cluster Edition complimentary dedicated proxy service with one proxy node](https://help.aliyun.com/document_detail/2555466.html).
+// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition gradually provides a free dedicated dedicated proxy with one proxy node in each unit. For more information, see [Free dedicated dedicated proxy with one proxy node for ApsaraDB RDS for MySQL Cluster Edition](https://help.aliyun.com/document_detail/2555466.html).
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before you call this operation, read the following feature documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and the impacts of this operation.
 //
-// - [View monitoring data for RDS MySQL](https://help.aliyun.com/document_detail/194241.html)
+// - [View monitoring data for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/194241.html)
 //
-// - [View monitoring data for RDS PostgreSQL](https://help.aliyun.com/document_detail/418275.html)
+// - [View monitoring data for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/418275.html)
 //
 // @param request - DescribeDBProxyPerformanceRequest
 //
@@ -18076,19 +18076,19 @@ func (client *Client) DescribeDBProxyPerformanceWithOptions(request *DescribeDBP
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition instances are progressively provided with a complimentary dedicated proxy service with one proxy node across regions. For more information, see [ApsaraDB RDS for MySQL Cluster Edition complimentary dedicated proxy service with one proxy node](https://help.aliyun.com/document_detail/2555466.html).
+// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition gradually provides a free dedicated dedicated proxy with one proxy node in each unit. For more information, see [Free dedicated dedicated proxy with one proxy node for ApsaraDB RDS for MySQL Cluster Edition](https://help.aliyun.com/document_detail/2555466.html).
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before you call this operation, read the following feature documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and the impacts of this operation.
 //
-// - [View monitoring data for RDS MySQL](https://help.aliyun.com/document_detail/194241.html)
+// - [View monitoring data for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/194241.html)
 //
-// - [View monitoring data for RDS PostgreSQL](https://help.aliyun.com/document_detail/418275.html)
+// - [View monitoring data for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/418275.html)
 //
 // @param request - DescribeDBProxyPerformanceRequest
 //
@@ -18106,17 +18106,17 @@ func (client *Client) DescribeDBProxyPerformance(request *DescribeDBProxyPerform
 
 // Summary:
 //
-// Queries the distributed transaction whitelist of an ApsaraDB RDS for SQL Server instance.
+// Queries the distributed transaction whitelist information of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
 // [Configure a distributed transaction whitelist for SQL Server](https://help.aliyun.com/document_detail/124321.html)
 //
@@ -18190,17 +18190,17 @@ func (client *Client) DescribeDTCSecurityIpHostsForSQLServerWithOptions(request 
 
 // Summary:
 //
-// Queries the distributed transaction whitelist of an ApsaraDB RDS for SQL Server instance.
+// Queries the distributed transaction whitelist information of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
 // [Configure a distributed transaction whitelist for SQL Server](https://help.aliyun.com/document_detail/124321.html)
 //
@@ -18338,11 +18338,11 @@ func (client *Client) DescribeDatabases(request *DescribeDatabasesRequest) (_res
 
 // Summary:
 //
-// Queries information about an ApsaraDB RDS dedicated cluster.
+// Queries the details of ApsaraDB RDS dedicated clusters.
 //
 // Description:
 //
-// The dedicated cluster feature allows you to manage instances in batches by cluster. You can create multiple dedicated clusters in a region. A dedicated cluster contains multiple hosts, and a host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
+// The dedicated cluster feature allows you to manage instances in batches as clusters. You can create multiple dedicated clusters in a region. Each dedicated cluster contains multiple hosts, and each host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
 //
 // @param request - DescribeDedicatedHostGroupsRequest
 //
@@ -18406,11 +18406,11 @@ func (client *Client) DescribeDedicatedHostGroupsWithOptions(request *DescribeDe
 
 // Summary:
 //
-// Queries information about an ApsaraDB RDS dedicated cluster.
+// Queries the details of ApsaraDB RDS dedicated clusters.
 //
 // Description:
 //
-// The dedicated cluster feature allows you to manage instances in batches by cluster. You can create multiple dedicated clusters in a region. A dedicated cluster contains multiple hosts, and a host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
+// The dedicated cluster feature allows you to manage instances in batches as clusters. You can create multiple dedicated clusters in a region. Each dedicated cluster contains multiple hosts, and each host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
 //
 // @param request - DescribeDedicatedHostGroupsRequest
 //
@@ -18432,7 +18432,7 @@ func (client *Client) DescribeDedicatedHostGroups(request *DescribeDedicatedHost
 //
 // Description:
 //
-// The dedicated cluster feature allows you to manage instances in batches by cluster. You can create multiple dedicated clusters in a region. A dedicated cluster contains multiple hosts, and a host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
+// The dedicated cluster feature manages instances in batches in the form of clusters. You can create multiple dedicated clusters in a region. A dedicated cluster contains multiple hosts, and a host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
 //
 // @param request - DescribeDedicatedHostsRequest
 //
@@ -18520,7 +18520,7 @@ func (client *Client) DescribeDedicatedHostsWithOptions(request *DescribeDedicat
 //
 // Description:
 //
-// The dedicated cluster feature allows you to manage instances in batches by cluster. You can create multiple dedicated clusters in a region. A dedicated cluster contains multiple hosts, and a host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
+// The dedicated cluster feature manages instances in batches in the form of clusters. You can create multiple dedicated clusters in a region. A dedicated cluster contains multiple hosts, and a host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
 //
 // @param request - DescribeDedicatedHostsRequest
 //
@@ -18538,19 +18538,19 @@ func (client *Client) DescribeDedicatedHosts(request *DescribeDedicatedHostsRequ
 
 // Summary:
 //
-// Queries the backup sets of released ApsaraDB RDS for MySQL instances.
+// Queries the backup sets of a released ApsaraDB RDS for MySQL instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported database engine
 //
-// # RDS MySQL
+// # ApsaraDB RDS for MySQL
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and impacts of this operation.
 //
-// [Set the backup retention policy after an instance is released](https://help.aliyun.com/document_detail/2836955.html)
+// [Configure the backup retention policy for a released instance](https://help.aliyun.com/document_detail/2836955.html)
 //
 // @param request - DescribeDetachedBackupsRequest
 //
@@ -18634,19 +18634,19 @@ func (client *Client) DescribeDetachedBackupsWithOptions(request *DescribeDetach
 
 // Summary:
 //
-// Queries the backup sets of released ApsaraDB RDS for MySQL instances.
+// Queries the backup sets of a released ApsaraDB RDS for MySQL instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported database engine
 //
-// # RDS MySQL
+// # ApsaraDB RDS for MySQL
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and impacts of this operation.
 //
-// [Set the backup retention policy after an instance is released](https://help.aliyun.com/document_detail/2836955.html)
+// [Configure the backup retention policy for a released instance](https://help.aliyun.com/document_detail/2836955.html)
 //
 // @param request - DescribeDetachedBackupsRequest
 //
@@ -18664,19 +18664,19 @@ func (client *Client) DescribeDetachedBackups(request *DescribeDetachedBackupsRe
 
 // Summary:
 //
-// Queries the error logs of an instance within a specified time range.
+// Queries the error logs of an instance within a specified time period.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
-// - ApsaraDB RDS for MariaDB
+// - RDS MariaDB
 //
 // @param request - DescribeErrorLogsRequest
 //
@@ -18752,19 +18752,19 @@ func (client *Client) DescribeErrorLogsWithOptions(request *DescribeErrorLogsReq
 
 // Summary:
 //
-// Queries the error logs of an instance within a specified time range.
+// Queries the error logs of an instance within a specified time period.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
-// - ApsaraDB RDS for MariaDB
+// - RDS MariaDB
 //
 // @param request - DescribeErrorLogsRequest
 //
@@ -18782,31 +18782,31 @@ func (client *Client) DescribeErrorLogs(request *DescribeErrorLogsRequest) (_res
 
 // Summary:
 //
-// Queries the list of historical event records for an ApsaraDB RDS instance.
+// Queries a list of historical event records for ApsaraDB RDS.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // ### Related documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation before proceeding.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and the impact of this operation.
 //
-// - [RDS MySQL historical events](https://help.aliyun.com/document_detail/468953.html)
+// - [Historical events for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/468953.html)
 //
-// - [RDS PostgreSQL historical events](https://help.aliyun.com/document_detail/2569306.html)
+// - [Historical events for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/2569306.html)
 //
-// - [RDS SQL Server historical events](https://help.aliyun.com/document_detail/2571444.html)
+// - [Historical events for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/2571444.html)
 //
-// - [RDS MariaDB historical events](https://help.aliyun.com/document_detail/2571339.html)
+// - [Historical events for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/2571339.html)
 //
 // @param request - DescribeEventsRequest
 //
@@ -18878,31 +18878,31 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 
 // Summary:
 //
-// Queries the list of historical event records for an ApsaraDB RDS instance.
+// Queries a list of historical event records for ApsaraDB RDS.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // ### Related documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation before proceeding.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and the impact of this operation.
 //
-// - [RDS MySQL historical events](https://help.aliyun.com/document_detail/468953.html)
+// - [Historical events for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/468953.html)
 //
-// - [RDS PostgreSQL historical events](https://help.aliyun.com/document_detail/2569306.html)
+// - [Historical events for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/2569306.html)
 //
-// - [RDS SQL Server historical events](https://help.aliyun.com/document_detail/2571444.html)
+// - [Historical events for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/2571444.html)
 //
-// - [RDS MariaDB historical events](https://help.aliyun.com/document_detail/2571339.html)
+// - [Historical events for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/2571339.html)
 //
 // @param request - DescribeEventsRequest
 //
@@ -18920,13 +18920,13 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 
 // Summary:
 //
-// Queries the list of active geo-redundancy database clusters for ApsaraDB RDS for MySQL or the details of a specified cluster.
+// Queries a list of ApsaraDB RDS for MySQL global active database (GAD) clusters or the details of a specified cluster.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
 // @param request - DescribeGadInstancesRequest
 //
@@ -18978,13 +18978,13 @@ func (client *Client) DescribeGadInstancesWithOptions(request *DescribeGadInstan
 
 // Summary:
 //
-// Queries the list of active geo-redundancy database clusters for ApsaraDB RDS for MySQL or the details of a specified cluster.
+// Queries a list of ApsaraDB RDS for MySQL global active database (GAD) clusters or the details of a specified cluster.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
 // @param request - DescribeGadInstancesRequest
 //
@@ -19002,11 +19002,11 @@ func (client *Client) DescribeGadInstances(request *DescribeGadInstancesRequest)
 
 // Summary:
 //
-// Queries the availability check method of an ApsaraDB RDS instance.
+// Queries the availability detection method of an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -19018,7 +19018,7 @@ func (client *Client) DescribeGadInstances(request *DescribeGadInstancesRequest)
 //
 // ### Related documentation
 //
-// [What is an availability check method](https://help.aliyun.com/document_detail/207467.html)
+// [What is the availability detection method?](https://help.aliyun.com/document_detail/207467.html)
 //
 // @param request - DescribeHADiagnoseConfigRequest
 //
@@ -19078,11 +19078,11 @@ func (client *Client) DescribeHADiagnoseConfigWithOptions(request *DescribeHADia
 
 // Summary:
 //
-// Queries the availability check method of an ApsaraDB RDS instance.
+// Queries the availability detection method of an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -19094,7 +19094,7 @@ func (client *Client) DescribeHADiagnoseConfigWithOptions(request *DescribeHADia
 //
 // ### Related documentation
 //
-// [What is an availability check method](https://help.aliyun.com/document_detail/207467.html)
+// [What is the availability detection method?](https://help.aliyun.com/document_detail/207467.html)
 //
 // @param request - DescribeHADiagnoseConfigRequest
 //
@@ -19214,7 +19214,7 @@ func (client *Client) DescribeHASwitchConfig(request *DescribeHASwitchConfigRequ
 
 // Summary:
 //
-// Queries the event list in Event Center.
+// Queries the events in the Event Center.
 //
 // @param request - DescribeHistoryEventsRequest
 //
@@ -19318,7 +19318,7 @@ func (client *Client) DescribeHistoryEventsWithOptions(request *DescribeHistoryE
 
 // Summary:
 //
-// Queries the event list in Event Center.
+// Queries the events in the Event Center.
 //
 // @param request - DescribeHistoryEventsRequest
 //
@@ -19336,7 +19336,7 @@ func (client *Client) DescribeHistoryEvents(request *DescribeHistoryEventsReques
 
 // Summary:
 //
-// Queries historical event statistics from the Event Center.
+// Counts historical events in the event center.
 //
 // @param request - DescribeHistoryEventsStatRequest
 //
@@ -19396,7 +19396,7 @@ func (client *Client) DescribeHistoryEventsStatWithOptions(request *DescribeHist
 
 // Summary:
 //
-// Queries historical event statistics from the Event Center.
+// Counts historical events in the event center.
 //
 // @param request - DescribeHistoryEventsStatRequest
 //
@@ -19414,7 +19414,7 @@ func (client *Client) DescribeHistoryEventsStat(request *DescribeHistoryEventsSt
 
 // Summary:
 //
-// Retrieves historical task records, supporting tasks created within the last 30 days.
+// Queries historical task records created within the last 30 days.
 //
 // Description:
 //
@@ -19426,15 +19426,15 @@ func (client *Client) DescribeHistoryEventsStat(request *DescribeHistoryEventsSt
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation to fully understand the prerequisites and potential impacts.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and impacts.
 //
-// - [Task list of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/474275.html)
+// - [ApsaraDB RDS for MySQL task list](https://help.aliyun.com/document_detail/474275.html)
 //
-// - [Task list of ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/474537.html)
+// - [ApsaraDB RDS for PostgreSQL task list](https://help.aliyun.com/document_detail/474537.html)
 //
-// - [Task list of ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/614826.html)
+// - [ApsaraDB RDS for SQL Server task list](https://help.aliyun.com/document_detail/614826.html)
 //
 // @param request - DescribeHistoryTasksRequest
 //
@@ -19542,7 +19542,7 @@ func (client *Client) DescribeHistoryTasksWithOptions(request *DescribeHistoryTa
 
 // Summary:
 //
-// Retrieves historical task records, supporting tasks created within the last 30 days.
+// Queries historical task records created within the last 30 days.
 //
 // Description:
 //
@@ -19554,15 +19554,15 @@ func (client *Client) DescribeHistoryTasksWithOptions(request *DescribeHistoryTa
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation to fully understand the prerequisites and potential impacts.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and impacts.
 //
-// - [Task list of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/474275.html)
+// - [ApsaraDB RDS for MySQL task list](https://help.aliyun.com/document_detail/474275.html)
 //
-// - [Task list of ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/474537.html)
+// - [ApsaraDB RDS for PostgreSQL task list](https://help.aliyun.com/document_detail/474537.html)
 //
-// - [Task list of ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/614826.html)
+// - [ApsaraDB RDS for SQL Server task list](https://help.aliyun.com/document_detail/614826.html)
 //
 // @param request - DescribeHistoryTasksRequest
 //
@@ -19768,33 +19768,33 @@ func (client *Client) DescribeHostGroupElasticStrategyParameters(request *Descri
 
 // Summary:
 //
-// Queries the WebShell logon information for the host of an ApsaraDB RDS for SQL Server instance.
+// Queries the host WebShell logon information of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // ### Before you begin
 //
-// - The RDS instance must meet the following conditions:
+// - The ApsaraDB RDS instance must meet the following requirements:
 //
-//   - Region: All regions except China (Zhangjiakou) support this feature.
+//   - Region: This feature is supported in all regions except China (Zhangjiakou).
 //
-//   - Instance edition: Basic Edition, high-availability series (SQL Server 2012 or later), or Cluster Edition.
+//   - Instance edition: Basic Edition, High Availability Edition (SQL Server 2012 or later), and Cluster Edition.
 //
-//   - Instance type: general-purpose or dedicated. Shared instance types are not supported.
+//   - Instance type: General-purpose and dedicated instance types. Shared instance types are not supported.
 //
 //   - Network type: VPC. To change the network type, see [Change the network type](https://help.aliyun.com/document_detail/95707.html).
 //
-//   - Instance creation time: High-availability series and Cluster Edition instances must be created on or after January 1, 2021. Basic Edition instances must be created on or after September 2, 2022. You can view the **creation time*	- in the **Running Status*	- section on the **Basic Information*	- page.
+//   - Creation time: High Availability Edition and Cluster Edition instances must be created on or after January 1, 2021. Basic Edition instances must be created on or after September 2, 2022. You can view the **creation time*	- of an instance in the **Running Status*	- section of the **Basic Information*	- page.
 //
-// - You must log on with an **Alibaba Cloud account**.
+// - The logon account must be an **Alibaba Cloud account**.
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to fully understand the prerequisites and impacts.
 //
 // [Create a host account and log on](https://help.aliyun.com/document_detail/354862.html)
 //
@@ -19868,33 +19868,33 @@ func (client *Client) DescribeHostWebShellWithOptions(request *DescribeHostWebSh
 
 // Summary:
 //
-// Queries the WebShell logon information for the host of an ApsaraDB RDS for SQL Server instance.
+// Queries the host WebShell logon information of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // ### Before you begin
 //
-// - The RDS instance must meet the following conditions:
+// - The ApsaraDB RDS instance must meet the following requirements:
 //
-//   - Region: All regions except China (Zhangjiakou) support this feature.
+//   - Region: This feature is supported in all regions except China (Zhangjiakou).
 //
-//   - Instance edition: Basic Edition, high-availability series (SQL Server 2012 or later), or Cluster Edition.
+//   - Instance edition: Basic Edition, High Availability Edition (SQL Server 2012 or later), and Cluster Edition.
 //
-//   - Instance type: general-purpose or dedicated. Shared instance types are not supported.
+//   - Instance type: General-purpose and dedicated instance types. Shared instance types are not supported.
 //
 //   - Network type: VPC. To change the network type, see [Change the network type](https://help.aliyun.com/document_detail/95707.html).
 //
-//   - Instance creation time: High-availability series and Cluster Edition instances must be created on or after January 1, 2021. Basic Edition instances must be created on or after September 2, 2022. You can view the **creation time*	- in the **Running Status*	- section on the **Basic Information*	- page.
+//   - Creation time: High Availability Edition and Cluster Edition instances must be created on or after January 1, 2021. Basic Edition instances must be created on or after September 2, 2022. You can view the **creation time*	- of an instance in the **Running Status*	- section of the **Basic Information*	- page.
 //
-// - You must log on with an **Alibaba Cloud account**.
+// - The logon account must be an **Alibaba Cloud account**.
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to fully understand the prerequisites and impacts.
 //
 // [Create a host account and log on](https://help.aliyun.com/document_detail/354862.html)
 //
@@ -19914,11 +19914,11 @@ func (client *Client) DescribeHostWebShell(request *DescribeHostWebShellRequest)
 
 // Summary:
 //
-// Queries the details of a data import task for a native replication ApsaraDB RDS instance.
+// Queries the details of a data import task for an ApsaraDB RDS instance that uses native replication.
 //
 // Description:
 //
-// Queries the details of a data import task.
+// Queries the details of an import task.
 //
 // @param request - DescribeImportTaskRequest
 //
@@ -19974,11 +19974,11 @@ func (client *Client) DescribeImportTaskWithOptions(request *DescribeImportTaskR
 
 // Summary:
 //
-// Queries the details of a data import task for a native replication ApsaraDB RDS instance.
+// Queries the details of a data import task for an ApsaraDB RDS instance that uses native replication.
 //
 // Description:
 //
-// Queries the details of a data import task.
+// Queries the details of an import task.
 //
 // @param request - DescribeImportTaskRequest
 //
@@ -19996,11 +19996,11 @@ func (client *Client) DescribeImportTask(request *DescribeImportTaskRequest) (_r
 
 // Summary:
 //
-// Queries the details of an import task dry run, including the specific check items and check results.
+// Queries the precheck details of an import task, including specific precheck items and check results.
 //
 // Description:
 //
-// Queries the details of an import task dry run.
+// Queries the precheck details of an import task.
 //
 // @param request - DescribeImportTaskValidationRequest
 //
@@ -20052,11 +20052,11 @@ func (client *Client) DescribeImportTaskValidationWithOptions(request *DescribeI
 
 // Summary:
 //
-// Queries the details of an import task dry run, including the specific check items and check results.
+// Queries the precheck details of an import task, including specific precheck items and check results.
 //
 // Description:
 //
-// Queries the details of an import task dry run.
+// Queries the precheck details of an import task.
 //
 // @param request - DescribeImportTaskValidationRequest
 //
@@ -20314,7 +20314,7 @@ func (client *Client) DescribeInstanceCrossBackupPolicy(request *DescribeInstanc
 
 // Summary:
 //
-// Queries the reserved keywords of an ApsaraDB RDS instance, which are keywords that cannot be used when you create databases or accounts.
+// Queries the reserved keywords of an ApsaraDB RDS instance, which are prohibited from being used as database or account names.
 //
 // Description:
 //
@@ -20386,7 +20386,7 @@ func (client *Client) DescribeInstanceKeywordsWithOptions(request *DescribeInsta
 
 // Summary:
 //
-// Queries the reserved keywords of an ApsaraDB RDS instance, which are keywords that cannot be used when you create databases or accounts.
+// Queries the reserved keywords of an ApsaraDB RDS instance, which are prohibited from being used as database or account names.
 //
 // Description:
 //
@@ -20416,17 +20416,17 @@ func (client *Client) DescribeInstanceKeywords(request *DescribeInstanceKeywords
 
 // Summary:
 //
-// Queries the whitelist templates associated with an instance by instance name.
+// Queries the whitelist templates associated with an instance based on the instance name.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - DescribeInstanceLinkedWhitelistTemplateRequest
 //
@@ -20486,17 +20486,17 @@ func (client *Client) DescribeInstanceLinkedWhitelistTemplateWithOptions(request
 
 // Summary:
 //
-// Queries the whitelist templates associated with an instance by instance name.
+// Queries the whitelist templates associated with an instance based on the instance name.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - DescribeInstanceLinkedWhitelistTemplateRequest
 //
@@ -20514,11 +20514,11 @@ func (client *Client) DescribeInstanceLinkedWhitelistTemplate(request *DescribeI
 
 // Summary:
 //
-// Queries whether a specified Key Management Service (KMS) resource is associated with ApsaraDB RDS instances.
+// Queries whether a specified Key Management Service (KMS) resource is associated with an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -20608,11 +20608,11 @@ func (client *Client) DescribeKmsAssociateResourcesWithOptions(request *Describe
 
 // Summary:
 //
-// Queries whether a specified Key Management Service (KMS) resource is associated with ApsaraDB RDS instances.
+// Queries whether a specified Key Management Service (KMS) resource is associated with an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -20636,7 +20636,7 @@ func (client *Client) DescribeKmsAssociateResources(request *DescribeKmsAssociat
 
 // Summary:
 //
-// Queries the restorable time range of backups for an ApsaraDB RDS instance.
+// Queries the restorable time range for backups of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -20710,7 +20710,7 @@ func (client *Client) DescribeLocalAvailableRecoveryTimeWithOptions(request *Des
 
 // Summary:
 //
-// Queries the restorable time range of backups for an ApsaraDB RDS instance.
+// Queries the restorable time range for backups of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -20848,7 +20848,7 @@ func (client *Client) DescribeLogBackupFiles(request *DescribeLogBackupFilesRequ
 
 // Summary:
 //
-// Retrieves information about instances that are pending upgrade in an RDS marketing campaign.
+// Retrieves information about instances pending upgrade in RDS marketing campaigns.
 //
 // @param request - DescribeMarketingActivityRequest
 //
@@ -20924,7 +20924,7 @@ func (client *Client) DescribeMarketingActivityWithOptions(request *DescribeMark
 
 // Summary:
 //
-// Retrieves information about instances that are pending upgrade in an RDS marketing campaign.
+// Retrieves information about instances pending upgrade in RDS marketing campaigns.
 //
 // @param request - DescribeMarketingActivityRequest
 //
@@ -20942,15 +20942,15 @@ func (client *Client) DescribeMarketingActivity(request *DescribeMarketingActivi
 
 // Summary:
 //
-// Queries the encryption or masking rules of a specified instance.
+// Queries a list of encryption or masking rules for a specified instance.
 //
 // Description:
 //
-// ## Request description
+// ## Request notes
 //
-// - Before invoking this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you invoke this operation, make sure that column encryption is enabled in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when you invoke this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column Cloud Hardware Security Module (CloudHSM) feature.
+// - If you receive the ColumnEncryptionErrorCode.NOT_PURCHASED error message when invoking this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and enable column encryption.
 //
 // @param request - DescribeMaskingRulesRequest
 //
@@ -21018,15 +21018,15 @@ func (client *Client) DescribeMaskingRulesWithOptions(request *DescribeMaskingRu
 
 // Summary:
 //
-// Queries the encryption or masking rules of a specified instance.
+// Queries a list of encryption or masking rules for a specified instance.
 //
 // Description:
 //
-// ## Request description
+// ## Request notes
 //
-// - Before invoking this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you invoke this operation, make sure that column encryption is enabled in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when you invoke this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column Cloud Hardware Security Module (CloudHSM) feature.
+// - If you receive the ColumnEncryptionErrorCode.NOT_PURCHASED error message when invoking this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and enable column encryption.
 //
 // @param request - DescribeMaskingRulesRequest
 //
@@ -21044,11 +21044,11 @@ func (client *Client) DescribeMaskingRules(request *DescribeMaskingRulesRequest)
 
 // Summary:
 //
-// Queries the information about the databases and tables that can be restored from a specified backup set.
+// Queries the information about databases and tables that can be restored from a specified backup set.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // # ApsaraDB RDS for MySQL
 //
@@ -21056,7 +21056,7 @@ func (client *Client) DescribeMaskingRules(request *DescribeMaskingRulesRequest)
 //
 // ### Feature description
 //
-// Before you call the [RestoreTable](https://help.aliyun.com/document_detail/131510.html) operation to [restore individual databases and tables in ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/103175.html), you can call this operation to query the information about the databases and tables that can be restored.
+// Before you call the [RestoreTable](https://help.aliyun.com/document_detail/131510.html) operation to [restore an individual database and table of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/103175.html), you can call this operation to query the information about databases and tables that can be restored.
 //
 // @param request - DescribeMetaListRequest
 //
@@ -21148,11 +21148,11 @@ func (client *Client) DescribeMetaListWithOptions(request *DescribeMetaListReque
 
 // Summary:
 //
-// Queries the information about the databases and tables that can be restored from a specified backup set.
+// Queries the information about databases and tables that can be restored from a specified backup set.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // # ApsaraDB RDS for MySQL
 //
@@ -21160,7 +21160,7 @@ func (client *Client) DescribeMetaListWithOptions(request *DescribeMetaListReque
 //
 // ### Feature description
 //
-// Before you call the [RestoreTable](https://help.aliyun.com/document_detail/131510.html) operation to [restore individual databases and tables in ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/103175.html), you can call this operation to query the information about the databases and tables that can be restored.
+// Before you call the [RestoreTable](https://help.aliyun.com/document_detail/131510.html) operation to [restore an individual database and table of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/103175.html), you can call this operation to query the information about databases and tables that can be restored.
 //
 // @param request - DescribeMetaListRequest
 //
@@ -21178,13 +21178,13 @@ func (client *Client) DescribeMetaList(request *DescribeMetaListRequest) (_resul
 
 // Summary:
 //
-// Queries information about an Object Storage Service (OSS) backup migration task for an ApsaraDB RDS for SQL Server instance.
+// Queries the details of an OSS backup migration task for an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // @param request - DescribeMigrateTaskByIdRequest
 //
@@ -21248,13 +21248,13 @@ func (client *Client) DescribeMigrateTaskByIdWithOptions(request *DescribeMigrat
 
 // Summary:
 //
-// Queries information about an Object Storage Service (OSS) backup migration task for an ApsaraDB RDS for SQL Server instance.
+// Queries the details of an OSS backup migration task for an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // @param request - DescribeMigrateTaskByIdRequest
 //
@@ -21272,21 +21272,21 @@ func (client *Client) DescribeMigrateTaskById(request *DescribeMigrateTaskByIdRe
 
 // Summary:
 //
-// Queries the list of backup data migration tasks for an ApsaraDB RDS for SQL Server instance.
+// Queries the backup data migration tasks of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // ### Description
 //
-// This operation queries backup data migration task records for an instance within the last week.
+// This operation queries the backup data migration tasks of an instance within the last week.
 //
 // ### Precautions
 //
-//   - The source backup file for backup data migration must be a full backup (FULL) file.
+//   - The source backup file for a backup data migration task must be a full backup file.
 //
 //   - ApsaraDB RDS for SQL Server 2017 Cluster Edition instances are not supported.
 //
@@ -21364,21 +21364,21 @@ func (client *Client) DescribeMigrateTasksWithOptions(request *DescribeMigrateTa
 
 // Summary:
 //
-// Queries the list of backup data migration tasks for an ApsaraDB RDS for SQL Server instance.
+// Queries the backup data migration tasks of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // ### Description
 //
-// This operation queries backup data migration task records for an instance within the last week.
+// This operation queries the backup data migration tasks of an instance within the last week.
 //
 // ### Precautions
 //
-//   - The source backup file for backup data migration must be a full backup (FULL) file.
+//   - The source backup file for a backup data migration task must be a full backup file.
 //
 //   - ApsaraDB RDS for SQL Server 2017 Cluster Edition instances are not supported.
 //
@@ -21610,17 +21610,17 @@ func (client *Client) DescribeModifyParameterLog(request *DescribeModifyParamete
 
 // Summary:
 //
-// Queries the file details of a backup data upload task for an ApsaraDB RDS for SQL Server instance.
+// Queries the file details of a backup data migration task for an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// ### Before you begin
+// ### Precautions
 //
-// This operation does not support SQL Server 2017 Enterprise Edition or SQL Server 2019 Enterprise Edition Enterprise instances.
+// This operation does not support ApsaraDB RDS for SQL Server 2017 Enterprise Edition and 2019 Enterprise Edition instances.
 //
 // @param request - DescribeOssDownloadsRequest
 //
@@ -21684,17 +21684,17 @@ func (client *Client) DescribeOssDownloadsWithOptions(request *DescribeOssDownlo
 
 // Summary:
 //
-// Queries the file details of a backup data upload task for an ApsaraDB RDS for SQL Server instance.
+// Queries the file details of a backup data migration task for an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// ### Before you begin
+// ### Precautions
 //
-// This operation does not support SQL Server 2017 Enterprise Edition or SQL Server 2019 Enterprise Edition Enterprise instances.
+// This operation does not support ApsaraDB RDS for SQL Server 2017 Enterprise Edition and 2019 Enterprise Edition instances.
 //
 // @param request - DescribeOssDownloadsRequest
 //
@@ -22028,13 +22028,13 @@ func (client *Client) DescribeParameterGroups(request *DescribeParameterGroupsRe
 //
 // ### Applicable engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -22120,13 +22120,13 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 //
 // ### Applicable engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -22150,17 +22150,17 @@ func (client *Client) DescribeParameterTemplates(request *DescribeParameterTempl
 //
 // ### Applicable engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to ensure that you fully understand the prerequisites and impacts.
 //
-// - [Set instance parameters for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html)
+// - [Set the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html)
 //
-// - [Set instance parameters for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html)
+// - [Set the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html)
 //
 // @param request - DescribeParameterTimedScheduleTaskRequest
 //
@@ -22206,17 +22206,17 @@ func (client *Client) DescribeParameterTimedScheduleTaskWithOptions(request *Des
 //
 // ### Applicable engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to ensure that you fully understand the prerequisites and impacts.
 //
-// - [Set instance parameters for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html)
+// - [Set the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html)
 //
-// - [Set instance parameters for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html)
+// - [Set the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html)
 //
 // @param request - DescribeParameterTimedScheduleTaskRequest
 //
@@ -22238,7 +22238,7 @@ func (client *Client) DescribeParameterTimedScheduleTask(request *DescribeParame
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported database engines
 //
 // - RDS MySQL
 //
@@ -22314,7 +22314,7 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported database engines
 //
 // - RDS MySQL
 //
@@ -22340,19 +22340,19 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 
 // Summary:
 //
-// Retrieves information about all extensions in a specified database of an instance.
+// Retrieves information about all extensions in the specified database of an instance.
 //
 // Description:
 //
-// <props="china">You can join the RDS PostgreSQL extension exchange DingTalk group (103525002795) to consult, communicate, provide feedback, and obtain more information about extensions.
+// <props="china">You can join the RDS PostgreSQL extension communication DingTalk group (103525002795) for consultation, communication, and feedback to obtain more information about extensions.
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
 // [Manage extensions](https://help.aliyun.com/document_detail/2402409.html)
 //
@@ -22426,19 +22426,19 @@ func (client *Client) DescribePostgresExtensionsWithOptions(request *DescribePos
 
 // Summary:
 //
-// Retrieves information about all extensions in a specified database of an instance.
+// Retrieves information about all extensions in the specified database of an instance.
 //
 // Description:
 //
-// <props="china">You can join the RDS PostgreSQL extension exchange DingTalk group (103525002795) to consult, communicate, provide feedback, and obtain more information about extensions.
+// <props="china">You can join the RDS PostgreSQL extension communication DingTalk group (103525002795) for consultation, communication, and feedback to obtain more information about extensions.
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
 // [Manage extensions](https://help.aliyun.com/document_detail/2402409.html)
 //
@@ -22458,19 +22458,19 @@ func (client *Client) DescribePostgresExtensions(request *DescribePostgresExtens
 
 // Summary:
 //
-// Queries the price information of an ApsaraDB RDS instance.
+// Queries the pricing information of an ApsaraDB RDS instance.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // @param tmpReq - DescribePriceRequest
 //
@@ -22608,19 +22608,19 @@ func (client *Client) DescribePriceWithOptions(tmpReq *DescribePriceRequest, run
 
 // Summary:
 //
-// Queries the price information of an ApsaraDB RDS instance.
+// Queries the pricing information of an ApsaraDB RDS instance.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // @param request - DescribePriceRequest
 //
@@ -22930,7 +22930,7 @@ func (client *Client) DescribeRCCloudAssistantStatus(request *DescribeRCCloudAss
 //
 // Description:
 //
-// KubeConfig is used to configure access credentials for an ACK cluster on the client. It contains identity and authentication data for accessing the target cluster. When you use kubectl for cluster management, you need to connect through KubeConfig. Properly manage the KubeConfig credentials of the cluster and revoke them promptly when they are no longer needed to avoid security risks such as data leaks caused by KubeConfig exposure.
+// KubeConfig is used to configure access credentials for an ACK cluster on the client side. It contains information such as the identity and authentication data for accessing the target cluster. When you use kubectl for cluster management, you must connect to the cluster by using KubeConfig. Properly manage the KubeConfig credentials of the cluster and revoke them promptly when they are no longer needed to prevent security risks such as data leaks caused by KubeConfig leaks.
 //
 // @param request - DescribeRCClusterConfigRequest
 //
@@ -22986,7 +22986,7 @@ func (client *Client) DescribeRCClusterConfigWithOptions(request *DescribeRCClus
 //
 // Description:
 //
-// KubeConfig is used to configure access credentials for an ACK cluster on the client. It contains identity and authentication data for accessing the target cluster. When you use kubectl for cluster management, you need to connect through KubeConfig. Properly manage the KubeConfig credentials of the cluster and revoke them promptly when they are no longer needed to avoid security risks such as data leaks caused by KubeConfig exposure.
+// KubeConfig is used to configure access credentials for an ACK cluster on the client side. It contains information such as the identity and authentication data for accessing the target cluster. When you use kubectl for cluster management, you must connect to the cluster by using KubeConfig. Properly manage the KubeConfig credentials of the cluster and revoke them promptly when they are no longer needed to prevent security risks such as data leaks caused by KubeConfig leaks.
 //
 // @param request - DescribeRCClusterConfigRequest
 //
@@ -23214,7 +23214,7 @@ func (client *Client) DescribeRCDeploymentSets(request *DescribeRCDeploymentSets
 
 // Summary:
 //
-// Queries the disk information of an RDS Custom instance by calling the DescribeRCDisks operation.
+// Queries the disk information of an RDS Custom instance.
 //
 // @param request - DescribeRCDisksRequest
 //
@@ -23254,7 +23254,7 @@ func (client *Client) DescribeRCDisksWithOptions(request *DescribeRCDisksRequest
 
 // Summary:
 //
-// Queries the disk information of an RDS Custom instance by calling the DescribeRCDisks operation.
+// Queries the disk information of an RDS Custom instance.
 //
 // @param request - DescribeRCDisksRequest
 //
@@ -23350,7 +23350,7 @@ func (client *Client) DescribeRCElasticScaling(request *DescribeRCElasticScaling
 
 // Summary:
 //
-// Queries the list of custom images available for creating RDS Custom instances by calling the DescribeRCImageList operation. You can specify parameters such as RegionId.
+// Queries the custom images available for creating RDS Custom instances.
 //
 // @param request - DescribeRCImageListRequest
 //
@@ -23390,7 +23390,7 @@ func (client *Client) DescribeRCImageListWithOptions(request *DescribeRCImageLis
 
 // Summary:
 //
-// Queries the list of custom images available for creating RDS Custom instances by calling the DescribeRCImageList operation. You can specify parameters such as RegionId.
+// Queries the custom images available for creating RDS Custom instances.
 //
 // @param request - DescribeRCImageListRequest
 //
@@ -23486,21 +23486,21 @@ func (client *Client) DescribeRCInstanceAttribute(request *DescribeRCInstanceAtt
 
 // Summary:
 //
-// Queries the number of DDoS attacks on an RDS Custom for SQL Server instance to monitor the security status of database instances in real time and assess potential security risks.
+// Queries the number of DDoS attacks on RDS Custom for SQL Server instances and monitors the security status of database instances in real time to evaluate potential security risks.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related feature documentation
 //
-// [Introduction to RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
+// [RDS Custom overview](https://help.aliyun.com/document_detail/2864363.html)
 //
 // <props="china">
 //
-// > A DDoS attack, short for Distributed Denial of Service attack, is a common Network Security attack method. This type of attack primarily consumes the resources of networks or network devices through malicious traffic, causing websites to malfunction or online services to become unavailable. For information about the causes of DDoS attacks, common Attack Type, and methods to identify and mitigate DDoS attacks, see [DDoS attacks](https://www.aliyun.com/getting-started/what-is/what-is-ddos).
+// > A distributed denial-of-service (DDoS) attack is a common network security attack method. This type of attack primarily consumes network or network device resources with malicious traffic, causing websites or online services to become unavailable. For more information about the causes, common DDoS attack types, and methods to identify and mitigate DDoS attacks, see [DDoS attacks](https://www.aliyun.com/getting-started/what-is/what-is-ddos).
 //
 // @param request - DescribeRCInstanceDdosCountRequest
 //
@@ -23552,21 +23552,21 @@ func (client *Client) DescribeRCInstanceDdosCountWithOptions(request *DescribeRC
 
 // Summary:
 //
-// Queries the number of DDoS attacks on an RDS Custom for SQL Server instance to monitor the security status of database instances in real time and assess potential security risks.
+// Queries the number of DDoS attacks on RDS Custom for SQL Server instances and monitors the security status of database instances in real time to evaluate potential security risks.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related feature documentation
 //
-// [Introduction to RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
+// [RDS Custom overview](https://help.aliyun.com/document_detail/2864363.html)
 //
 // <props="china">
 //
-// > A DDoS attack, short for Distributed Denial of Service attack, is a common Network Security attack method. This type of attack primarily consumes the resources of networks or network devices through malicious traffic, causing websites to malfunction or online services to become unavailable. For information about the causes of DDoS attacks, common Attack Type, and methods to identify and mitigate DDoS attacks, see [DDoS attacks](https://www.aliyun.com/getting-started/what-is/what-is-ddos).
+// > A distributed denial-of-service (DDoS) attack is a common network security attack method. This type of attack primarily consumes network or network device resources with malicious traffic, causing websites or online services to become unavailable. For more information about the causes, common DDoS attack types, and methods to identify and mitigate DDoS attacks, see [DDoS attacks](https://www.aliyun.com/getting-started/what-is/what-is-ddos).
 //
 // @param request - DescribeRCInstanceDdosCountRequest
 //
@@ -23706,19 +23706,19 @@ func (client *Client) DescribeRCInstanceHistoryEvents(request *DescribeRCInstanc
 
 // Summary:
 //
-// Queries the DDoS mitigation information of an RDS Custom for SQL Server instance and the details of the associated Anti-DDoS Origin instance.
+// Queries the DDoS mitigation information of an ApsaraDB RDS Custom for SQL Server instance and the details of the associated Anti-DDoS Origin instance.
 //
 // Description:
 //
-// ### Applicable DPI engine
+// ### Supported engine
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related feature documentation
 //
 // [Introduction to RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
 //
-// > When an [Anti-DDoS Origin](https://help.aliyun.com/document_detail/63643.html) instance contains one or more assets that are assigned public IP addresses, you can invoke this operation to query the DDoS mitigation information of RDS Custom for SQL Server instances under the current Alibaba Cloud account and the details of the associated Anti-DDoS Origin instance, such as the basic DDoS Mitigation Threshold, traffic scrubbing threshold, DDoS mitigation status of assets that are assigned public IP addresses, instance ID, and instance mitigation status.
+// > If an [Anti-DDoS Origin](https://help.aliyun.com/document_detail/63643.html) instance protects one or more assets that are assigned public IP addresses, you can call this operation to query the DDoS mitigation information of ApsaraDB RDS Custom for SQL Server instances and the details of the associated Anti-DDoS Origin instances within the current Alibaba Cloud account. The information includes the basic Mitigation Threshold, traffic scrubbing threshold, DDoS mitigation status of the assets that are assigned public IP addresses, instance IDs, and instance mitigation status.
 //
 // @param request - DescribeRCInstanceIpAddressRequest
 //
@@ -23798,19 +23798,19 @@ func (client *Client) DescribeRCInstanceIpAddressWithOptions(request *DescribeRC
 
 // Summary:
 //
-// Queries the DDoS mitigation information of an RDS Custom for SQL Server instance and the details of the associated Anti-DDoS Origin instance.
+// Queries the DDoS mitigation information of an ApsaraDB RDS Custom for SQL Server instance and the details of the associated Anti-DDoS Origin instance.
 //
 // Description:
 //
-// ### Applicable DPI engine
+// ### Supported engine
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related feature documentation
 //
 // [Introduction to RDS Custom](https://help.aliyun.com/document_detail/2864363.html)
 //
-// > When an [Anti-DDoS Origin](https://help.aliyun.com/document_detail/63643.html) instance contains one or more assets that are assigned public IP addresses, you can invoke this operation to query the DDoS mitigation information of RDS Custom for SQL Server instances under the current Alibaba Cloud account and the details of the associated Anti-DDoS Origin instance, such as the basic DDoS Mitigation Threshold, traffic scrubbing threshold, DDoS mitigation status of assets that are assigned public IP addresses, instance ID, and instance mitigation status.
+// > If an [Anti-DDoS Origin](https://help.aliyun.com/document_detail/63643.html) instance protects one or more assets that are assigned public IP addresses, you can call this operation to query the DDoS mitigation information of ApsaraDB RDS Custom for SQL Server instances and the details of the associated Anti-DDoS Origin instances within the current Alibaba Cloud account. The information includes the basic Mitigation Threshold, traffic scrubbing threshold, DDoS mitigation status of the assets that are assigned public IP addresses, instance IDs, and instance mitigation status.
 //
 // @param request - DescribeRCInstanceIpAddressRequest
 //
@@ -23974,7 +23974,7 @@ func (client *Client) DescribeRCInstanceTypes(request *DescribeRCInstanceTypesRe
 //
 // Description:
 //
-// The VNC logon URL is time-sensitive and valid for 15 seconds. If you do not use the URL within 15 seconds after the call succeeds, the URL automatically expires. In this case, call the operation again to obtain a new URL.
+// The VNC logon URL is time-sensitive and valid for 15 seconds. If the URL is not used within 15 seconds after a successful API call, it automatically expires. You must call the API operation again to obtain a new URL.
 //
 // @param request - DescribeRCInstanceVncUrlRequest
 //
@@ -24030,7 +24030,7 @@ func (client *Client) DescribeRCInstanceVncUrlWithOptions(request *DescribeRCIns
 //
 // Description:
 //
-// The VNC logon URL is time-sensitive and valid for 15 seconds. If you do not use the URL within 15 seconds after the call succeeds, the URL automatically expires. In this case, call the operation again to obtain a new URL.
+// The VNC logon URL is time-sensitive and valid for 15 seconds. If the URL is not used within 15 seconds after a successful API call, it automatically expires. You must call the API operation again to obtain a new URL.
 //
 // @param request - DescribeRCInstanceVncUrlRequest
 //
@@ -24048,7 +24048,7 @@ func (client *Client) DescribeRCInstanceVncUrl(request *DescribeRCInstanceVncUrl
 
 // Summary:
 //
-// Calls the DescribeRCInstances operation to query the list of specified RDS Custom instances. If no instance ID (InstanceId) is specified, the operation returns information about all RDS Custom instances in the specified region.
+// Queries a list of RDS Custom instances. If no instance ID is specified, this operation returns a list of all RDS Custom instances in the specified region.
 //
 // @param request - DescribeRCInstancesRequest
 //
@@ -24148,7 +24148,7 @@ func (client *Client) DescribeRCInstancesWithOptions(request *DescribeRCInstance
 
 // Summary:
 //
-// Calls the DescribeRCInstances operation to query the list of specified RDS Custom instances. If no instance ID (InstanceId) is specified, the operation returns information about all RDS Custom instances in the specified region.
+// Queries a list of RDS Custom instances. If no instance ID is specified, this operation returns a list of all RDS Custom instances in the specified region.
 //
 // @param request - DescribeRCInstancesRequest
 //
@@ -24282,7 +24282,7 @@ func (client *Client) DescribeRCInvocationResults(request *DescribeRCInvocationR
 
 // Summary:
 //
-// Queries the monitoring data of a specified monitoring metrics for a target RDS Custom instance.
+// Queries the monitoring data of specified monitoring metrics for an RDS Custom instance.
 //
 // @param request - DescribeRCMetricListRequest
 //
@@ -24322,7 +24322,7 @@ func (client *Client) DescribeRCMetricListWithOptions(request *DescribeRCMetricL
 
 // Summary:
 //
-// Queries the monitoring data of a specified monitoring metrics for a target RDS Custom instance.
+// Queries the monitoring data of specified monitoring metrics for an RDS Custom instance.
 //
 // @param request - DescribeRCMetricListRequest
 //
@@ -24402,7 +24402,7 @@ func (client *Client) DescribeRCNetworkInterfaces(request *DescribeRCNetworkInte
 
 // Summary:
 //
-// Queries the configuration of an RDS Custom edge node pool.
+// Queries the configuration information of an RDS Custom edge node pool.
 //
 // @param request - DescribeRCNodePoolRequest
 //
@@ -24442,7 +24442,7 @@ func (client *Client) DescribeRCNodePoolWithOptions(request *DescribeRCNodePoolR
 
 // Summary:
 //
-// Queries the configuration of an RDS Custom edge node pool.
+// Queries the configuration information of an RDS Custom edge node pool.
 //
 // @param request - DescribeRCNodePoolRequest
 //
@@ -24696,7 +24696,7 @@ func (client *Client) DescribeRCSecurityGroupPermission(request *DescribeRCSecur
 
 // Summary:
 //
-// Queries information about snapshots, such as snapshot status, remaining time for a snapshot that is being created, and the retention period of automatic snapshots.
+// Queries the details of a list of snapshots, such as the snapshot status, the remaining time for snapshot creation, and the retention period of automatic snapshots.
 //
 // @param request - DescribeRCSnapshotsRequest
 //
@@ -24764,7 +24764,7 @@ func (client *Client) DescribeRCSnapshotsWithOptions(request *DescribeRCSnapshot
 
 // Summary:
 //
-// Queries information about snapshots, such as snapshot status, remaining time for a snapshot that is being created, and the retention period of automatic snapshots.
+// Queries the details of a list of snapshots, such as the snapshot status, the remaining time for snapshot creation, and the retention period of automatic snapshots.
 //
 // @param request - DescribeRCSnapshotsRequest
 //
@@ -24850,11 +24850,11 @@ func (client *Client) DescribeRCVCluster(request *DescribeRCVClusterRequest) (_r
 //
 // Summary:
 //
-// Retrieves the notification settings of instance resources. This operation is no longer maintained but can still be called.
+// Retrieves the notification settings for instance resources. This API operation is deprecated: it can still be called, but is no longer maintained.
 //
 // Description:
 //
-// This operation is no longer maintained. You can still call this operation, but Alibaba Cloud no longer maintains it.
+// This API operation is deprecated: it can still be called normally, but Alibaba Cloud no longer maintains it.
 //
 // @param request - DescribeRdsResourceSettingsRequest
 //
@@ -24912,11 +24912,11 @@ func (client *Client) DescribeRdsResourceSettingsWithOptions(request *DescribeRd
 //
 // Summary:
 //
-// Retrieves the notification settings of instance resources. This operation is no longer maintained but can still be called.
+// Retrieves the notification settings for instance resources. This API operation is deprecated: it can still be called, but is no longer maintained.
 //
 // Description:
 //
-// This operation is no longer maintained. You can still call this operation, but Alibaba Cloud no longer maintains it.
+// This API operation is deprecated: it can still be called normally, but Alibaba Cloud no longer maintains it.
 //
 // @param request - DescribeRdsResourceSettingsRequest
 //
@@ -25233,11 +25233,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries the renewal fees for a subscription ApsaraDB RDS instance.
+// Queries the renewal fee for a subscription ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -25345,11 +25345,11 @@ func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPr
 
 // Summary:
 //
-// Queries the renewal fees for a subscription ApsaraDB RDS instance.
+// Queries the renewal fee for a subscription ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -25375,11 +25375,11 @@ func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest)
 
 // Summary:
 //
-// Queries the operation logs of a data synchronization link for a specified ApsaraDB RDS instance.
+// Queries the operation logs of the data synchronization link for a specified ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // - RDS PostgreSQL
 //
@@ -25445,11 +25445,11 @@ func (client *Client) DescribeReplicationLinkLogsWithOptions(request *DescribeRe
 
 // Summary:
 //
-// Queries the operation logs of a data synchronization link for a specified ApsaraDB RDS instance.
+// Queries the operation logs of the data synchronization link for a specified ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // - RDS PostgreSQL
 //
@@ -25469,7 +25469,7 @@ func (client *Client) DescribeReplicationLinkLogs(request *DescribeReplicationLi
 
 // Summary:
 //
-// Resource details on the overview page.
+// Retrieves the resource details on the overview page.
 //
 // @param request - DescribeResourceDetailsRequest
 //
@@ -25537,7 +25537,7 @@ func (client *Client) DescribeResourceDetailsWithOptions(request *DescribeResour
 
 // Summary:
 //
-// Resource details on the overview page.
+// Retrieves the resource details on the overview page.
 //
 // @param request - DescribeResourceDetailsRequest
 //
@@ -25555,11 +25555,11 @@ func (client *Client) DescribeResourceDetails(request *DescribeResourceDetailsRe
 
 // Summary:
 //
-// Queries the storage usage of an ApsaraDB RDS instance.
+// Queries the storage usage information of an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -25631,11 +25631,11 @@ func (client *Client) DescribeResourceUsageWithOptions(request *DescribeResource
 
 // Summary:
 //
-// Queries the storage usage of an ApsaraDB RDS instance.
+// Queries the storage usage information of an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -25661,11 +25661,11 @@ func (client *Client) DescribeResourceUsage(request *DescribeResourceUsageReques
 
 // Summary:
 //
-// End of maintenance: This operation can be called as expected but is no longer maintained. Queries whether the SQL Explorer (SQL Audit) feature is enabled for an ApsaraDB RDS instance.
+// *[Deprecated]*	- This operation can still be called but is no longer maintained. Queries whether the SQL Explorer (SQL Audit) feature is enabled for an ApsaraDB RDS instance.
 //
 // Description:
 //
-// This operation is no longer maintained. You can still call this operation, but Alibaba Cloud no longer maintains it. Use the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation instead.
+// This operation is deprecated. You can still call this operation, but Alibaba Cloud no longer maintains it. Use the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation instead.
 //
 // @param request - DescribeSQLCollectorPolicyRequest
 //
@@ -25733,11 +25733,11 @@ func (client *Client) DescribeSQLCollectorPolicyWithOptions(request *DescribeSQL
 
 // Summary:
 //
-// End of maintenance: This operation can be called as expected but is no longer maintained. Queries whether the SQL Explorer (SQL Audit) feature is enabled for an ApsaraDB RDS instance.
+// *[Deprecated]*	- This operation can still be called but is no longer maintained. Queries whether the SQL Explorer (SQL Audit) feature is enabled for an ApsaraDB RDS instance.
 //
 // Description:
 //
-// This operation is no longer maintained. You can still call this operation, but Alibaba Cloud no longer maintains it. Use the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation instead.
+// This operation is deprecated. You can still call this operation, but Alibaba Cloud no longer maintains it. Use the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation instead.
 //
 // @param request - DescribeSQLCollectorPolicyRequest
 //
@@ -25755,11 +25755,11 @@ func (client *Client) DescribeSQLCollectorPolicy(request *DescribeSQLCollectorPo
 
 // Summary:
 //
-// End of maintenance: This operation can be invoked as Normal but is no longer maintained. Queries the log retention period of SQL Explorer logs for an ApsaraDB RDS instance.
+// Queries the SQL Explorer log retention period for an ApsaraDB RDS instance. This operation is deprecated and no longer maintained, but can still be called.
 //
 // Description:
 //
-// This operation is no longer maintained. You can still call this operation, but Alibaba Cloud no longer maintains it. Use the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation instead.
+// This operation is deprecated. It can still be called normally, but Alibaba Cloud no longer maintains it. Use the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation instead.
 //
 // @param request - DescribeSQLCollectorRetentionRequest
 //
@@ -25827,11 +25827,11 @@ func (client *Client) DescribeSQLCollectorRetentionWithOptions(request *Describe
 
 // Summary:
 //
-// End of maintenance: This operation can be invoked as Normal but is no longer maintained. Queries the log retention period of SQL Explorer logs for an ApsaraDB RDS instance.
+// Queries the SQL Explorer log retention period for an ApsaraDB RDS instance. This operation is deprecated and no longer maintained, but can still be called.
 //
 // Description:
 //
-// This operation is no longer maintained. You can still call this operation, but Alibaba Cloud no longer maintains it. Use the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation instead.
+// This operation is deprecated. It can still be called normally, but Alibaba Cloud no longer maintains it. Use the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation instead.
 //
 // @param request - DescribeSQLCollectorRetentionRequest
 //
@@ -25849,11 +25849,11 @@ func (client *Client) DescribeSQLCollectorRetention(request *DescribeSQLCollecto
 
 // Summary:
 //
-// Queries the list of exported SQL Explorer (SQL Audit) files. This operation does not support querying SQL Explorer log files that are manually exported from the console. This operation supports querying only the list of SQL Explorer files that are generated by calling the DescribeSQLLogRecords operation with the Form request parameter set to File.
+// Queries the list of exported files for SQL Explorer (SQL Audit). This operation does not support querying SQL Explorer log files that are manually exported from the console. It only supports querying SQL Explorer files generated by calling the DescribeSQLLogRecords operation with the Form request parameter set to File.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -25865,13 +25865,13 @@ func (client *Client) DescribeSQLCollectorRetention(request *DescribeSQLCollecto
 //
 // ### Precautions
 //
-// - This operation does not support querying the SQL Explorer list for the trial edition of SQL Explorer on ApsaraDB RDS for MySQL instances.
+// - This operation does not support querying the SQL Explorer list for the SQL Explorer Trial Edition of MySQL instances.
 //
-// - This operation does not support querying SQL Explorer log files that are manually exported from the console. This operation supports querying only the list of SQL Explorer files that are generated by calling the [DescribeSQLLogRecords](https://help.aliyun.com/document_detail/610533.html) operation with the **Form*	- request parameter set to **File**.
+// - This operation does not support querying SQL Explorer log files that are manually exported from the console. It only supports querying SQL Explorer files generated by calling the [DescribeSQLLogRecords](https://help.aliyun.com/document_detail/610533.html) operation with the **Form*	- request parameter set to **File**.
 //
-// - The exported files are retained for only 2 days.
+// - Files exported by using this operation are retained for only 2 days.
 //
-//	> If DAS Enterprise Edition V2 or Enterprise Edition V3 is enabled and you use the SQL Explorer and Audit feature provided by DAS Enterprise Edition, the exported files are retained for 7 days. You can call [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) to query the enabled DAS Enterprise Edition information.
+//	> If DAS Enterprise Edition V2 or V3 is activated and its SQL Explorer and Audit feature is used, the exported files are retained for 7 days. You can call the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation to query the activated Enterprise Edition information.
 //
 // @param request - DescribeSQLLogFilesRequest
 //
@@ -25943,11 +25943,11 @@ func (client *Client) DescribeSQLLogFilesWithOptions(request *DescribeSQLLogFile
 
 // Summary:
 //
-// Queries the list of exported SQL Explorer (SQL Audit) files. This operation does not support querying SQL Explorer log files that are manually exported from the console. This operation supports querying only the list of SQL Explorer files that are generated by calling the DescribeSQLLogRecords operation with the Form request parameter set to File.
+// Queries the list of exported files for SQL Explorer (SQL Audit). This operation does not support querying SQL Explorer log files that are manually exported from the console. It only supports querying SQL Explorer files generated by calling the DescribeSQLLogRecords operation with the Form request parameter set to File.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -25959,13 +25959,13 @@ func (client *Client) DescribeSQLLogFilesWithOptions(request *DescribeSQLLogFile
 //
 // ### Precautions
 //
-// - This operation does not support querying the SQL Explorer list for the trial edition of SQL Explorer on ApsaraDB RDS for MySQL instances.
+// - This operation does not support querying the SQL Explorer list for the SQL Explorer Trial Edition of MySQL instances.
 //
-// - This operation does not support querying SQL Explorer log files that are manually exported from the console. This operation supports querying only the list of SQL Explorer files that are generated by calling the [DescribeSQLLogRecords](https://help.aliyun.com/document_detail/610533.html) operation with the **Form*	- request parameter set to **File**.
+// - This operation does not support querying SQL Explorer log files that are manually exported from the console. It only supports querying SQL Explorer files generated by calling the [DescribeSQLLogRecords](https://help.aliyun.com/document_detail/610533.html) operation with the **Form*	- request parameter set to **File**.
 //
-// - The exported files are retained for only 2 days.
+// - Files exported by using this operation are retained for only 2 days.
 //
-//	> If DAS Enterprise Edition V2 or Enterprise Edition V3 is enabled and you use the SQL Explorer and Audit feature provided by DAS Enterprise Edition, the exported files are retained for 7 days. You can call [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) to query the enabled DAS Enterprise Edition information.
+//	> If DAS Enterprise Edition V2 or V3 is activated and its SQL Explorer and Audit feature is used, the exported files are retained for 7 days. You can call the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation to query the activated Enterprise Edition information.
 //
 // @param request - DescribeSQLLogFilesRequest
 //
@@ -25983,19 +25983,19 @@ func (client *Client) DescribeSQLLogFiles(request *DescribeSQLLogFilesRequest) (
 
 // Summary:
 //
-// Discontinued: This operation can still be called but is no longer maintained. Queries the SQL Explorer (SQL Audit) logs of an ApsaraDB RDS instance.
+// *[Deprecated]*	- Queries the SQL Explorer (SQL Audit) logs of an ApsaraDB RDS instance. This API operation is no longer maintained but remains callable.
 //
 // Description:
 //
-// This operation has been discontinued: The operation can still be invoked normally, but Alibaba Cloud no longer maintains it. Use the [GetDasSQLLogHotData](https://help.aliyun.com/document_detail/2360999.html) operation instead.
+// This API operation is deprecated. It can still be invoked normally, but Alibaba Cloud no longer provides maintenance for it. Use the [GetDasSQLLogHotData](https://help.aliyun.com/document_detail/2360999.html) operation instead.
 //
 // ### Precautions
 //
-// - Regardless of whether this operation is invoked successfully or failed, a single user (including the Alibaba Cloud account and Resource Access Management (RAM) users) can invoke this operation up to 1,000 times per minute.
+// - Each user (including the Alibaba Cloud account and Resource Access Management (RAM) users) can invoke this API operation up to 1,000 times per minute, regardless of whether the invocation succeeded or failed.
 //
-// - This operation does not support querying SQL Explorer logs for the trial edition of SQL Explorer for MySQL instances.
+// - This API operation does not support querying SQL Explorer logs for the SQL Explorer trial edition of ApsaraDB RDS for MySQL instances.
 //
-// - When this operation generates an audit file (the **Form*	- request parameter is set to **File**), a maximum of 1,000,000 log entries are recorded, and keyword-based log filtering is not supported.
+// - When this API operation generates an audit file (the **Form*	- request parameter is set to **File**), it records up to 1 million log entries and does not support filtering logs by keyword.
 //
 // @param request - DescribeSQLLogRecordsRequest
 //
@@ -26095,19 +26095,19 @@ func (client *Client) DescribeSQLLogRecordsWithOptions(request *DescribeSQLLogRe
 
 // Summary:
 //
-// Discontinued: This operation can still be called but is no longer maintained. Queries the SQL Explorer (SQL Audit) logs of an ApsaraDB RDS instance.
+// *[Deprecated]*	- Queries the SQL Explorer (SQL Audit) logs of an ApsaraDB RDS instance. This API operation is no longer maintained but remains callable.
 //
 // Description:
 //
-// This operation has been discontinued: The operation can still be invoked normally, but Alibaba Cloud no longer maintains it. Use the [GetDasSQLLogHotData](https://help.aliyun.com/document_detail/2360999.html) operation instead.
+// This API operation is deprecated. It can still be invoked normally, but Alibaba Cloud no longer provides maintenance for it. Use the [GetDasSQLLogHotData](https://help.aliyun.com/document_detail/2360999.html) operation instead.
 //
 // ### Precautions
 //
-// - Regardless of whether this operation is invoked successfully or failed, a single user (including the Alibaba Cloud account and Resource Access Management (RAM) users) can invoke this operation up to 1,000 times per minute.
+// - Each user (including the Alibaba Cloud account and Resource Access Management (RAM) users) can invoke this API operation up to 1,000 times per minute, regardless of whether the invocation succeeded or failed.
 //
-// - This operation does not support querying SQL Explorer logs for the trial edition of SQL Explorer for MySQL instances.
+// - This API operation does not support querying SQL Explorer logs for the SQL Explorer trial edition of ApsaraDB RDS for MySQL instances.
 //
-// - When this operation generates an audit file (the **Form*	- request parameter is set to **File**), a maximum of 1,000,000 log entries are recorded, and keyword-based log filtering is not supported.
+// - When this API operation generates an audit file (the **Form*	- request parameter is set to **File**), it records up to 1 million log entries and does not support filtering logs by keyword.
 //
 // @param request - DescribeSQLLogRecordsRequest
 //
@@ -26243,13 +26243,13 @@ func (client *Client) DescribeSQLLogReportList(request *DescribeSQLLogReportList
 
 // Summary:
 //
-// Describes the versions to which a SQL Server instance or a specified SQL Server version can be upgraded.
+// Queries the target versions to which an ApsaraDB RDS for SQL Server instance or a specified SQL Server version can be upgraded.
 //
 // Description:
 //
-// Applicable engine:
+// Supported engine:
 //
-//   - SQL Server (only versions 2016 and earlier are supported)
+//   - SQL Server (only SQL Server 2016 and earlier versions are supported)
 //
 // @param request - DescribeSQLServerUpgradeVersionsRequest
 //
@@ -26313,13 +26313,13 @@ func (client *Client) DescribeSQLServerUpgradeVersionsWithOptions(request *Descr
 
 // Summary:
 //
-// Describes the versions to which a SQL Server instance or a specified SQL Server version can be upgraded.
+// Queries the target versions to which an ApsaraDB RDS for SQL Server instance or a specified SQL Server version can be upgraded.
 //
 // Description:
 //
-// Applicable engine:
+// Supported engine:
 //
-//   - SQL Server (only versions 2016 and earlier are supported)
+//   - SQL Server (only SQL Server 2016 and earlier versions are supported)
 //
 // @param request - DescribeSQLServerUpgradeVersionsRequest
 //
@@ -26341,7 +26341,7 @@ func (client *Client) DescribeSQLServerUpgradeVersions(request *DescribeSQLServe
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - RDS MySQL
 //
@@ -26435,7 +26435,7 @@ func (client *Client) DescribeSecretsWithOptions(request *DescribeSecretsRequest
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - RDS MySQL
 //
@@ -26573,9 +26573,9 @@ func (client *Client) DescribeSecurityGroupConfiguration(request *DescribeSecuri
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // @param request - DescribeSlotsRequest
 //
@@ -26647,9 +26647,9 @@ func (client *Client) DescribeSlotsWithOptions(request *DescribeSlotsRequest, ru
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // @param request - DescribeSlotsRequest
 //
@@ -26673,21 +26673,21 @@ func (client *Client) DescribeSlots(request *DescribeSlotsRequest) (_result *Des
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // ### Precautions
 //
-// - The response parameters of this operation are updated every minute.
+// - The response parameters of this API operation are updated every minute.
 //
-// - A certain delay may occur when you call this operation to retrieve data. Wait for the response to be returned.
+// - There may be a delay when you call this API operation to retrieve data. Wait for the response.
 //
-// - Starting from September 1, 2024, due to the optimization of the SQL template algorithm, the value of the SQLHash field will change when you call this operation. For more information, see [Notice: Optimization of the SQL template algorithm for slow SQL statements](https://help.aliyun.com/document_detail/2845725.html).
+// - Starting September 1, 2024, due to the optimization of the SQL template algorithm, the value of the SQLHash field will change when you call this operation. For more information, see [Notice: Optimization of the SQL template algorithm for slow SQL queries](https://help.aliyun.com/document_detail/2845725.html).
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -26781,21 +26781,21 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // ### Precautions
 //
-// - The response parameters of this operation are updated every minute.
+// - The response parameters of this API operation are updated every minute.
 //
-// - A certain delay may occur when you call this operation to retrieve data. Wait for the response to be returned.
+// - There may be a delay when you call this API operation to retrieve data. Wait for the response.
 //
-// - Starting from September 1, 2024, due to the optimization of the SQL template algorithm, the value of the SQLHash field will change when you call this operation. For more information, see [Notice: Optimization of the SQL template algorithm for slow SQL statements](https://help.aliyun.com/document_detail/2845725.html).
+// - Starting September 1, 2024, due to the optimization of the SQL template algorithm, the value of the SQLHash field will change when you call this operation. For more information, see [Notice: Optimization of the SQL template algorithm for slow SQL queries](https://help.aliyun.com/document_detail/2845725.html).
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -26817,7 +26817,7 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -26829,13 +26829,13 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Before you begin
+// ### Precautions
 //
-// - Slow query log statistics are not collected in real time. A latency of 6 to 8 hours may occur.
+// - Slow query log statistics are not collected in real time. A delay of 6 to 8 hours may occur.
 //
-// - If the response is empty, check whether the values of StartTime and EndTime are in the required UTC format. If the values are valid, no slow query logs exist within the specified time range.
+// - If the response is empty, check whether the StartTime and EndTime parameters meet the UTC format requirements. If they do, no slow query logs exist within the specified time range.
 //
-// - Starting from September 1, 2024, the value of the **SQLHash*	- field will change when you call this operation due to the optimization of the SQL template algorithm. For more information, see [Notice: SQL template algorithm optimization](https://help.aliyun.com/document_detail/2845725.html).
+// - Starting September 1, 2024, the value of the **SQLHash*	- field will change when you call this operation due to the optimization of the SQL template algorithm. For more information, see [Notice: Optimization of the SQL template algorithm](https://help.aliyun.com/document_detail/2845725.html).
 //
 // @param request - DescribeSlowLogsRequest
 //
@@ -26923,7 +26923,7 @@ func (client *Client) DescribeSlowLogsWithOptions(request *DescribeSlowLogsReque
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -26935,13 +26935,13 @@ func (client *Client) DescribeSlowLogsWithOptions(request *DescribeSlowLogsReque
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Before you begin
+// ### Precautions
 //
-// - Slow query log statistics are not collected in real time. A latency of 6 to 8 hours may occur.
+// - Slow query log statistics are not collected in real time. A delay of 6 to 8 hours may occur.
 //
-// - If the response is empty, check whether the values of StartTime and EndTime are in the required UTC format. If the values are valid, no slow query logs exist within the specified time range.
+// - If the response is empty, check whether the StartTime and EndTime parameters meet the UTC format requirements. If they do, no slow query logs exist within the specified time range.
 //
-// - Starting from September 1, 2024, the value of the **SQLHash*	- field will change when you call this operation due to the optimization of the SQL template algorithm. For more information, see [Notice: SQL template algorithm optimization](https://help.aliyun.com/document_detail/2845725.html).
+// - Starting September 1, 2024, the value of the **SQLHash*	- field will change when you call this operation due to the optimization of the SQL template algorithm. For more information, see [Notice: Optimization of the SQL template algorithm](https://help.aliyun.com/document_detail/2845725.html).
 //
 // @param request - DescribeSlowLogsRequest
 //
@@ -26963,9 +26963,9 @@ func (client *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (_resul
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// RDS SQL Server.
+// ApsaraDB RDS for SQL Server.
 //
 // @param request - DescribeSupportOnlineResizeDiskRequest
 //
@@ -27017,9 +27017,9 @@ func (client *Client) DescribeSupportOnlineResizeDiskWithOptions(request *Descri
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// RDS SQL Server.
+// ApsaraDB RDS for SQL Server.
 //
 // @param request - DescribeSupportOnlineResizeDiskRequest
 //
@@ -27037,7 +27037,7 @@ func (client *Client) DescribeSupportOnlineResizeDisk(request *DescribeSupportOn
 
 // Summary:
 //
-// Queries the tag information of an ApsaraDB RDS instance.
+// Queries the tag information of ApsaraDB RDS instances.
 //
 // Description:
 //
@@ -27053,9 +27053,9 @@ func (client *Client) DescribeSupportOnlineResizeDisk(request *DescribeSupportOn
 //
 // ### Precautions
 //
-//   - If you specify an instance ID, all tags of the instance are returned and other filter conditions are ignored.
+//   - If a specific instance ID is specified, all tags of the instance are queried, and other filter conditions become invalid.
 //
-//   - If you specify only a tag key (TagKey) without a tag value (TagValue), all results that match the tag key are returned. If you specify both a tag key and a tag value, only results that match both conditions are returned.
+//   - If only a tag key (TagKey) is specified without a tag value (TagValue) when querying tags, all results that match the tag key are returned. If both a tag key and a tag value are specified, only results that match both conditions are returned.
 //
 // @param request - DescribeTagsRequest
 //
@@ -27135,7 +27135,7 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 
 // Summary:
 //
-// Queries the tag information of an ApsaraDB RDS instance.
+// Queries the tag information of ApsaraDB RDS instances.
 //
 // Description:
 //
@@ -27151,9 +27151,9 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 //
 // ### Precautions
 //
-//   - If you specify an instance ID, all tags of the instance are returned and other filter conditions are ignored.
+//   - If a specific instance ID is specified, all tags of the instance are queried, and other filter conditions become invalid.
 //
-//   - If you specify only a tag key (TagKey) without a tag value (TagValue), all results that match the tag key are returned. If you specify both a tag key and a tag value, only results that match both conditions are returned.
+//   - If only a tag key (TagKey) is specified without a tag value (TagValue) when querying tags, all results that match the tag key are returned. If both a tag key and a tag value are specified, only results that match both conditions are returned.
 //
 // @param request - DescribeTagsRequest
 //
@@ -27171,15 +27171,15 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 
 // Summary:
 //
-// Queries the tasks that are in the pending or running state for an ApsaraDB RDS for SQL Server instance.
+// Queries the pending and running tasks of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported database engines
 //
 // # ApsaraDB RDS for SQL Server
 //
-// > For ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances, use [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2627863.html) to query tasks.
+// > For ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances, use [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2627863.html).
 //
 // @param request - DescribeTasksRequest
 //
@@ -27263,15 +27263,15 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 
 // Summary:
 //
-// Queries the tasks that are in the pending or running state for an ApsaraDB RDS for SQL Server instance.
+// Queries the pending and running tasks of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported database engines
 //
 // # ApsaraDB RDS for SQL Server
 //
-// > For ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances, use [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2627863.html) to query tasks.
+// > For ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances, use [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2627863.html).
 //
 // @param request - DescribeTasksRequest
 //
@@ -27289,25 +27289,25 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 
 // Summary:
 //
-// Queries the pre-upgrade check report for a major engine version upgrade of an ApsaraDB RDS for MySQL or ApsaraDB RDS for PostgreSQL instance.
+// Queries the check reports for major engine version upgrades of ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL.
 //
 // Description:
 //
-// ### Applicable DPI engines
+// ### Applicable engines
 //
 // # ApsaraDB RDS for MySQL
 //
 // # ApsaraDB RDS for PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation before you proceed.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.</notice>
 //
-// - [Major engine version upgrade check report for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/2794383.html)
+// - [Check reports major engine version upgrades of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/2794383.html)
 //
-// - [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL database](https://help.aliyun.com/document_detail/203309.html)
+// - [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html)
 //
-// - [Understand the major engine version upgrade check report for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/218391.html)
+// - [Interpret check reports major engine version upgrades of ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/218391.html)
 //
 // @param request - DescribeUpgradeMajorVersionPrecheckTaskRequest
 //
@@ -27383,25 +27383,25 @@ func (client *Client) DescribeUpgradeMajorVersionPrecheckTaskWithOptions(request
 
 // Summary:
 //
-// Queries the pre-upgrade check report for a major engine version upgrade of an ApsaraDB RDS for MySQL or ApsaraDB RDS for PostgreSQL instance.
+// Queries the check reports for major engine version upgrades of ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL.
 //
 // Description:
 //
-// ### Applicable DPI engines
+// ### Applicable engines
 //
 // # ApsaraDB RDS for MySQL
 //
 // # ApsaraDB RDS for PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation before you proceed.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.</notice>
 //
-// - [Major engine version upgrade check report for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/2794383.html)
+// - [Check reports major engine version upgrades of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/2794383.html)
 //
-// - [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL database](https://help.aliyun.com/document_detail/203309.html)
+// - [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html)
 //
-// - [Understand the major engine version upgrade check report for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/218391.html)
+// - [Interpret check reports major engine version upgrades of ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/218391.html)
 //
 // @param request - DescribeUpgradeMajorVersionPrecheckTaskRequest
 //
@@ -27419,11 +27419,11 @@ func (client *Client) DescribeUpgradeMajorVersionPrecheckTask(request *DescribeU
 
 // Summary:
 //
-// Queries the historical tasks of major engine version upgrades for an ApsaraDB RDS for PostgreSQL instance.
+// Queries the historical major engine version upgrade tasks for an ApsaraDB RDS for PostgreSQL instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Applicable engine
 //
 // ApsaraDB RDS for PostgreSQL.
 //
@@ -27501,11 +27501,11 @@ func (client *Client) DescribeUpgradeMajorVersionTasksWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the historical tasks of major engine version upgrades for an ApsaraDB RDS for PostgreSQL instance.
+// Queries the historical major engine version upgrade tasks for an ApsaraDB RDS for PostgreSQL instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Applicable engine
 //
 // ApsaraDB RDS for PostgreSQL.
 //
@@ -27733,7 +27733,7 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 
 // Summary:
 //
-// Queries the list of virtual private clouds (VPCs) under your Alibaba Cloud account.
+// Queries a list of virtual private clouds (VPCs) in an Alibaba Cloud account.
 //
 // @param request - DescribeVpcsRequest
 //
@@ -27821,7 +27821,7 @@ func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runt
 
 // Summary:
 //
-// Queries the list of virtual private clouds (VPCs) under your Alibaba Cloud account.
+// Queries a list of virtual private clouds (VPCs) in an Alibaba Cloud account.
 //
 // @param request - DescribeVpcsRequest
 //
@@ -27839,17 +27839,17 @@ func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *Descr
 
 // Summary:
 //
-// Retrieves information about a specified whitelist template.
+// Retrieves the information about a specified whitelist template.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // @param request - DescribeWhitelistTemplateRequest
 //
@@ -27909,17 +27909,17 @@ func (client *Client) DescribeWhitelistTemplateWithOptions(request *DescribeWhit
 
 // Summary:
 //
-// Retrieves information about a specified whitelist template.
+// Retrieves the information about a specified whitelist template.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // @param request - DescribeWhitelistTemplateRequest
 //
@@ -27937,17 +27937,17 @@ func (client *Client) DescribeWhitelistTemplate(request *DescribeWhitelistTempla
 
 // Summary:
 //
-// Queries instances associated with a whitelist template.
+// Queries the instances associated with a whitelist template.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - DescribeWhitelistTemplateLinkedInstanceRequest
 //
@@ -28009,17 +28009,17 @@ func (client *Client) DescribeWhitelistTemplateLinkedInstanceWithOptions(request
 
 // Summary:
 //
-// Queries instances associated with a whitelist template.
+// Queries the instances associated with a whitelist template.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - DescribeWhitelistTemplateLinkedInstanceRequest
 //
@@ -28293,11 +28293,11 @@ func (client *Client) DetachRCDisk(request *DetachRCDiskRequest) (_result *Detac
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - DetachWhitelistTemplateToInstanceRequest
 //
@@ -28367,11 +28367,11 @@ func (client *Client) DetachWhitelistTemplateToInstanceWithOptions(request *Deta
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - DetachWhitelistTemplateToInstanceRequest
 //
@@ -28389,7 +28389,7 @@ func (client *Client) DetachWhitelistTemplateToInstance(request *DetachWhitelist
 
 // Summary:
 //
-// Enables backup encryption for an instance.
+// Enables backup encryption.
 //
 // @param request - EnableBackupEncryptionRequest
 //
@@ -28441,7 +28441,7 @@ func (client *Client) EnableBackupEncryptionWithOptions(request *EnableBackupEnc
 
 // Summary:
 //
-// Enables backup encryption for an instance.
+// Enables backup encryption.
 //
 // @param request - EnableBackupEncryptionRequest
 //
@@ -28459,7 +28459,7 @@ func (client *Client) EnableBackupEncryption(request *EnableBackupEncryptionRequ
 
 // Summary:
 //
-// Evaluates the available disk space that can be unlocked by performing an emergency local disk expansion.
+// Evaluates the available disk space that can be unlocked by emergency local disk scaling.
 //
 // @param request - EvaluateLocalExtendDiskRequest
 //
@@ -28527,7 +28527,7 @@ func (client *Client) EvaluateLocalExtendDiskWithOptions(request *EvaluateLocalE
 
 // Summary:
 //
-// Evaluates the available disk space that can be unlocked by performing an emergency local disk expansion.
+// Evaluates the available disk space that can be unlocked by emergency local disk scaling.
 //
 // @param request - EvaluateLocalExtendDiskRequest
 //
@@ -28549,9 +28549,9 @@ func (client *Client) EvaluateLocalExtendDisk(request *EvaluateLocalExtendDiskRe
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// RDS MySQL.
+// ApsaraDB RDS for MySQL.
 //
 // @param request - GetDBInstanceTopologyRequest
 //
@@ -28607,9 +28607,9 @@ func (client *Client) GetDBInstanceTopologyWithOptions(request *GetDBInstanceTop
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// RDS MySQL.
+// ApsaraDB RDS for MySQL.
 //
 // @param request - GetDBInstanceTopologyRequest
 //
@@ -28627,7 +28627,7 @@ func (client *Client) GetDBInstanceTopology(request *GetDBInstanceTopologyReques
 
 // Summary:
 //
-// Queries the Secure Sockets Layer (SSL) encryption information of database proxy endpoints for an ApsaraDB RDS for MySQL database instance.
+// Queries the Secure Sockets Layer (SSL) encryption information of the database proxy endpoint for an ApsaraDB RDS for MySQL instance.
 //
 // Description:
 //
@@ -28689,7 +28689,7 @@ func (client *Client) GetDbProxyInstanceSslWithOptions(request *GetDbProxyInstan
 
 // Summary:
 //
-// Queries the Secure Sockets Layer (SSL) encryption information of database proxy endpoints for an ApsaraDB RDS for MySQL database instance.
+// Queries the Secure Sockets Layer (SSL) encryption information of the database proxy endpoint for an ApsaraDB RDS for MySQL instance.
 //
 // Description:
 //
@@ -28845,17 +28845,17 @@ func (client *Client) GrantAccountPrivilege(request *GrantAccountPrivilegeReques
 //
 // ### Applicable engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.
 //
-// - [Grant permissions to a service account for MySQL](https://help.aliyun.com/document_detail/96102.html)
+// - [Grant permissions to a service account for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96102.html)
 //
-// - [Grant permissions to a service account for SQL Server](https://help.aliyun.com/document_detail/95693.html)
+// - [Grant permissions to a service account for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95693.html)
 //
 // @param request - GrantOperatorPermissionRequest
 //
@@ -28929,17 +28929,17 @@ func (client *Client) GrantOperatorPermissionWithOptions(request *GrantOperatorP
 //
 // ### Applicable engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.
 //
-// - [Grant permissions to a service account for MySQL](https://help.aliyun.com/document_detail/96102.html)
+// - [Grant permissions to a service account for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96102.html)
 //
-// - [Grant permissions to a service account for SQL Server](https://help.aliyun.com/document_detail/95693.html)
+// - [Grant permissions to a service account for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95693.html)
 //
 // @param request - GrantOperatorPermissionRequest
 //
@@ -28957,25 +28957,25 @@ func (client *Client) GrantOperatorPermission(request *GrantOperatorPermissionRe
 
 // Summary:
 //
-// Imports backup data from a self-managed MySQL 5.7 database into ApsaraDB RDS by using the data import feature.
+// Performs a data import of backup data from a self-managed MySQL 5.7 database to ApsaraDB RDS.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
-// ### Description
+// ### Feature description
 //
-// A user backup is a full backup of a self-managed MySQL database. You can restore a user backup to the cloud.
+// A user backup is a full backup of a self-managed MySQL database. You can restore user backups to the cloud.
 //
-// ### Before you begin
+// ### Precautions
 //
-// **To call this operation, the following conditions must be met:**
+// **Before you call this operation, make sure that the following conditions are met:**
 //
-//   - You have backed up a self-managed MySQL 5.7 or 8.0 database by using XtraBackup, and the backup file name ends with `_qp.xb`. For more information, see [Full migration of self-managed MySQL 5.7 or 8.0 databases to the cloud](https://help.aliyun.com/document_detail/251779.html).
+//   - You have used XtraBackup to back up the self-managed MySQL 5.7 or 8.0 database, and the backup file name ends with `_qp.xb`. For more information, see [Migrate full data from a self-managed MySQL 5.7 or 8.0 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
 //
-//   - You have uploaded the backup file of the self-managed MySQL 5.7 or 8.0 database to an OSS bucket in the corresponding region. For more information, see [Full migration of self-managed MySQL 5.7 or 8.0 databases to the cloud](https://help.aliyun.com/document_detail/251779.html).
+//   - You have uploaded the backup file of the self-managed MySQL 5.7 or 8.0 database to an OSS bucket in the corresponding region. For more information, see [Migrate full data from a self-managed MySQL 5.7 or 8.0 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
 //
 // @param request - ImportUserBackupFileRequest
 //
@@ -29083,25 +29083,25 @@ func (client *Client) ImportUserBackupFileWithOptions(request *ImportUserBackupF
 
 // Summary:
 //
-// Imports backup data from a self-managed MySQL 5.7 database into ApsaraDB RDS by using the data import feature.
+// Performs a data import of backup data from a self-managed MySQL 5.7 database to ApsaraDB RDS.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
-// ### Description
+// ### Feature description
 //
-// A user backup is a full backup of a self-managed MySQL database. You can restore a user backup to the cloud.
+// A user backup is a full backup of a self-managed MySQL database. You can restore user backups to the cloud.
 //
-// ### Before you begin
+// ### Precautions
 //
-// **To call this operation, the following conditions must be met:**
+// **Before you call this operation, make sure that the following conditions are met:**
 //
-//   - You have backed up a self-managed MySQL 5.7 or 8.0 database by using XtraBackup, and the backup file name ends with `_qp.xb`. For more information, see [Full migration of self-managed MySQL 5.7 or 8.0 databases to the cloud](https://help.aliyun.com/document_detail/251779.html).
+//   - You have used XtraBackup to back up the self-managed MySQL 5.7 or 8.0 database, and the backup file name ends with `_qp.xb`. For more information, see [Migrate full data from a self-managed MySQL 5.7 or 8.0 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
 //
-//   - You have uploaded the backup file of the self-managed MySQL 5.7 or 8.0 database to an OSS bucket in the corresponding region. For more information, see [Full migration of self-managed MySQL 5.7 or 8.0 databases to the cloud](https://help.aliyun.com/document_detail/251779.html).
+//   - You have uploaded the backup file of the self-managed MySQL 5.7 or 8.0 database to an OSS bucket in the corresponding region. For more information, see [Migrate full data from a self-managed MySQL 5.7 or 8.0 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
 //
 // @param request - ImportUserBackupFileRequest
 //
@@ -29191,19 +29191,19 @@ func (client *Client) InstallRCCloudAssistant(request *InstallRCCloudAssistantRe
 
 // Summary:
 //
-// Queries the details of all instance types for an ApsaraDB RDS instance.
+// Queries the details of all instance types for ApsaraDB RDS instances.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // @param request - ListClassesRequest
 //
@@ -29279,19 +29279,19 @@ func (client *Client) ListClassesWithOptions(request *ListClassesRequest, runtim
 
 // Summary:
 //
-// Queries the details of all instance types for an ApsaraDB RDS instance.
+// Queries the details of all instance types for ApsaraDB RDS instances.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // @param request - ListClassesRequest
 //
@@ -29309,11 +29309,11 @@ func (client *Client) ListClasses(request *ListClassesRequest) (_result *ListCla
 
 // Summary:
 //
-// Queries a list of native replication data import tasks.
+// Lists native replication data import tasks.
 //
 // Description:
 //
-// Queries a list of data import tasks for native replication instances.
+// Lists data import tasks for native replication instances.
 //
 // @param request - ListImportTasksRequest
 //
@@ -29373,11 +29373,11 @@ func (client *Client) ListImportTasksWithOptions(request *ListImportTasksRequest
 
 // Summary:
 //
-// Queries a list of native replication data import tasks.
+// Lists native replication data import tasks.
 //
 // Description:
 //
-// Queries a list of data import tasks for native replication instances.
+// Lists data import tasks for native replication instances.
 //
 // @param request - ListImportTasksRequest
 //
@@ -29571,21 +29571,21 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Queries the details of all user backups that have been imported to ApsaraDB RDS.
+// Queries the details of all user backups imported to ApsaraDB RDS.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
-// ### Description
+// ### Features
 //
-//   - A user backup is a full backup of a self-managed MySQL database. You can restore a user backup to the cloud. For more information, see [Migrate the full data of a self-managed MySQL 5.7 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
+//   - A user backup is a full backup of a self-managed MySQL database. You can restore user backups to the cloud. For more information, see [Migrate full data from a self-managed MySQL 5.7 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
 //
-//   - When you call the [CreateDBInstance](https://help.aliyun.com/document_detail/26228.html) operation to create an ApsaraDB RDS for MySQL instance from a backup, you can call this operation to query the user backup ID.
+//   - When you call the [CreateDBInstance](https://help.aliyun.com/document_detail/26228.html) operation to create an ApsaraDB RDS for MySQL instance for backup migration to the cloud, you can call this operation to query the user backup ID.
 //
-//   - You can call the [ImportUserBackupFile](https://help.aliyun.com/document_detail/260266.html) operation to import a user backup to ApsaraDB RDS.
+//   - You can call the [ImportUserBackupFile](https://help.aliyun.com/document_detail/260266.html) operation to import user backups to ApsaraDB RDS.
 //
 // @param request - ListUserBackupFilesRequest
 //
@@ -29665,21 +29665,21 @@ func (client *Client) ListUserBackupFilesWithOptions(request *ListUserBackupFile
 
 // Summary:
 //
-// Queries the details of all user backups that have been imported to ApsaraDB RDS.
+// Queries the details of all user backups imported to ApsaraDB RDS.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
-// ### Description
+// ### Features
 //
-//   - A user backup is a full backup of a self-managed MySQL database. You can restore a user backup to the cloud. For more information, see [Migrate the full data of a self-managed MySQL 5.7 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
+//   - A user backup is a full backup of a self-managed MySQL database. You can restore user backups to the cloud. For more information, see [Migrate full data from a self-managed MySQL 5.7 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
 //
-//   - When you call the [CreateDBInstance](https://help.aliyun.com/document_detail/26228.html) operation to create an ApsaraDB RDS for MySQL instance from a backup, you can call this operation to query the user backup ID.
+//   - When you call the [CreateDBInstance](https://help.aliyun.com/document_detail/26228.html) operation to create an ApsaraDB RDS for MySQL instance for backup migration to the cloud, you can call this operation to query the user backup ID.
 //
-//   - You can call the [ImportUserBackupFile](https://help.aliyun.com/document_detail/260266.html) operation to import a user backup to ApsaraDB RDS.
+//   - You can call the [ImportUserBackupFile](https://help.aliyun.com/document_detail/260266.html) operation to import user backups to ApsaraDB RDS.
 //
 // @param request - ListUserBackupFilesRequest
 //
@@ -29803,7 +29803,7 @@ func (client *Client) LockAccount(request *LockAccountRequest) (_result *LockAcc
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -29811,9 +29811,9 @@ func (client *Client) LockAccount(request *LockAccountRequest) (_result *LockAcc
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
 // - [Migrate an ApsaraDB RDS for MySQL instance across zones](https://help.aliyun.com/document_detail/96746.html)
 //
@@ -29883,7 +29883,7 @@ func (client *Client) MigrateConnectionToOtherZoneWithOptions(request *MigrateCo
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -29891,9 +29891,9 @@ func (client *Client) MigrateConnectionToOtherZoneWithOptions(request *MigrateCo
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
 // - [Migrate an ApsaraDB RDS for MySQL instance across zones](https://help.aliyun.com/document_detail/96746.html)
 //
@@ -29917,11 +29917,11 @@ func (client *Client) MigrateConnectionToOtherZone(request *MigrateConnectionToO
 
 // Summary:
 //
-// Migrates an ApsaraDB RDS instance within a dedicated cluster by calling the MigrateDBInstance operation.
+// Migrates an ApsaraDB RDS instance within a dedicated cluster.
 //
 // Description:
 //
-// The dedicated cluster feature allows you to manage instances in batches in the form of clusters. You can create multiple dedicated clusters in a region. A dedicated cluster contains multiple hosts, and a host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
+// The dedicated cluster feature allows you to manage instances in batches as clusters. You can create multiple dedicated clusters in a region. A dedicated cluster contains multiple hosts, and a host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
 //
 // @param request - MigrateDBInstanceRequest
 //
@@ -30009,11 +30009,11 @@ func (client *Client) MigrateDBInstanceWithOptions(request *MigrateDBInstanceReq
 
 // Summary:
 //
-// Migrates an ApsaraDB RDS instance within a dedicated cluster by calling the MigrateDBInstance operation.
+// Migrates an ApsaraDB RDS instance within a dedicated cluster.
 //
 // Description:
 //
-// The dedicated cluster feature allows you to manage instances in batches in the form of clusters. You can create multiple dedicated clusters in a region. A dedicated cluster contains multiple hosts, and a host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
+// The dedicated cluster feature allows you to manage instances in batches as clusters. You can create multiple dedicated clusters in a region. A dedicated cluster contains multiple hosts, and a host contains multiple instances. For more information, see [Overview of dedicated clusters](https://help.aliyun.com/document_detail/141455.html).
 //
 // @param request - MigrateDBInstanceRequest
 //
@@ -30031,7 +30031,7 @@ func (client *Client) MigrateDBInstance(request *MigrateDBInstanceRequest) (_res
 
 // Summary:
 //
-// Changes the zones of nodes in an ApsaraDB RDS for MySQL Cluster Edition instance.
+// Changes the zone of a node in an ApsaraDB RDS for MySQL Cluster Edition instance.
 //
 // @param tmpReq - MigrateDBNodesRequest
 //
@@ -30117,7 +30117,7 @@ func (client *Client) MigrateDBNodesWithOptions(tmpReq *MigrateDBNodesRequest, r
 
 // Summary:
 //
-// Changes the zones of nodes in an ApsaraDB RDS for MySQL Cluster Edition instance.
+// Changes the zone of a node in an ApsaraDB RDS for MySQL Cluster Edition instance.
 //
 // @param request - MigrateDBNodesRequest
 //
@@ -30255,7 +30255,7 @@ func (client *Client) MigrateSecurityIPMode(request *MigrateSecurityIPModeReques
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.</notice>
 //
 // - [Migrate an ApsaraDB RDS for MySQL instance across zones](https://help.aliyun.com/document_detail/96053.html)
 //
@@ -30391,7 +30391,7 @@ func (client *Client) MigrateToOtherZoneWithOptions(request *MigrateToOtherZoneR
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.</notice>
 //
 // - [Migrate an ApsaraDB RDS for MySQL instance across zones](https://help.aliyun.com/document_detail/96053.html)
 //
@@ -30419,13 +30419,13 @@ func (client *Client) MigrateToOtherZone(request *MigrateToOtherZoneRequest) (_r
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before calling this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
 // - [Connect an ApsaraDB RDS for SQL Server instance to a self-managed domain](https://help.aliyun.com/document_detail/170734.html)
 //
@@ -30511,13 +30511,13 @@ func (client *Client) ModifyADInfoWithOptions(request *ModifyADInfoRequest, runt
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before calling this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
 // - [Connect an ApsaraDB RDS for SQL Server instance to a self-managed domain](https://help.aliyun.com/document_detail/170734.html)
 //
@@ -30537,15 +30537,15 @@ func (client *Client) ModifyADInfo(request *ModifyADInfoRequest) (_result *Modif
 
 // Summary:
 //
-// Modifies the password policy of an account for an ApsaraDB RDS for SQL Server instance.
+// Modifies the account password policy of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// ApsaraDB RDS for SQL Server (shared instance types and 2008 R2 instances are not supported)
+// ApsaraDB RDS for SQL Server (Shared instances and instances running SQL Server 2008 R2 are not supported)
 //
-// > Before calling this operation, set the SQL Server account password policy. For more information, see [ModifyAccountSecurityPolicy](https://help.aliyun.com/document_detail/2848321.html).
+// > Before calling this operation, you must configure the account password policy for SQL Server. For more information, see [ModifyAccountSecurityPolicy](https://help.aliyun.com/document_detail/2848321.html).
 //
 // ### Related documentation
 //
@@ -30625,15 +30625,15 @@ func (client *Client) ModifyAccountCheckPolicyWithOptions(request *ModifyAccount
 
 // Summary:
 //
-// Modifies the password policy of an account for an ApsaraDB RDS for SQL Server instance.
+// Modifies the account password policy of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// ApsaraDB RDS for SQL Server (shared instance types and 2008 R2 instances are not supported)
+// ApsaraDB RDS for SQL Server (Shared instances and instances running SQL Server 2008 R2 are not supported)
 //
-// > Before calling this operation, set the SQL Server account password policy. For more information, see [ModifyAccountSecurityPolicy](https://help.aliyun.com/document_detail/2848321.html).
+// > Before calling this operation, you must configure the account password policy for SQL Server. For more information, see [ModifyAccountSecurityPolicy](https://help.aliyun.com/document_detail/2848321.html).
 //
 // ### Related documentation
 //
@@ -30771,9 +30771,9 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 //
 // ## Request description
 //
-// - Before you invoke this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you invoke this API operation, make sure that the column encryption service is enabled in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when you invoke this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption feature before trying again.
+// - If you receive the ColumnEncryptionErrorCode.NOT_PURCHASED error message when you invoke this API operation, go to the Database Autonomy Service (DAS) Security Center to purchase and enable the column encryption service.
 //
 // @param request - ModifyAccountMaskingPrivilegeRequest
 //
@@ -30855,9 +30855,9 @@ func (client *Client) ModifyAccountMaskingPrivilegeWithOptions(request *ModifyAc
 //
 // ## Request description
 //
-// - Before you invoke this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you invoke this API operation, make sure that the column encryption service is enabled in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when you invoke this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption feature before trying again.
+// - If you receive the ColumnEncryptionErrorCode.NOT_PURCHASED error message when you invoke this API operation, go to the Database Autonomy Service (DAS) Security Center to purchase and enable the column encryption service.
 //
 // @param request - ModifyAccountMaskingPrivilegeRequest
 //
@@ -30875,19 +30875,19 @@ func (client *Client) ModifyAccountMaskingPrivilege(request *ModifyAccountMaskin
 
 // Summary:
 //
-// Modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
+// Modifies the account password policy of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// ApsaraDB RDS for SQL Server (shared instance types and the 2008 R2 edition are not supported)
+// ApsaraDB RDS for SQL Server (Shared instances and SQL Server 2008 R2 are not supported)
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following feature documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to understand the prerequisites and impacts.
 //
-// [Custom password policies for ApsaraDB RDS for SQL Server accounts](https://help.aliyun.com/document_detail/95640.html)
+// [Custom password policy for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95640.html)
 //
 // @param request - ModifyAccountSecurityPolicyRequest
 //
@@ -30959,19 +30959,19 @@ func (client *Client) ModifyAccountSecurityPolicyWithOptions(request *ModifyAcco
 
 // Summary:
 //
-// Modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
+// Modifies the account password policy of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// ApsaraDB RDS for SQL Server (shared instance types and the 2008 R2 edition are not supported)
+// ApsaraDB RDS for SQL Server (Shared instances and SQL Server 2008 R2 are not supported)
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following feature documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to understand the prerequisites and impacts.
 //
-// [Custom password policies for ApsaraDB RDS for SQL Server accounts](https://help.aliyun.com/document_detail/95640.html)
+// [Custom password policy for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95640.html)
 //
 // @param request - ModifyAccountSecurityPolicyRequest
 //
@@ -31259,17 +31259,17 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.</notice>
 //
 // - [Configure an automatic backup policy for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html)
 //
@@ -31451,17 +31451,17 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.</notice>
 //
 // - [Configure an automatic backup policy for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html)
 //
@@ -31491,15 +31491,15 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related feature documentation
 //
-//	Notice: Before you invoke this operation, carefully read the feature documentation to fully understand the prerequisites and impacts. Then proceed with the operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and impacts.
 //
-// [Manual backup of SQL Server data](https://help.aliyun.com/document_detail/95717.html)
+// [Manually back up ApsaraDB RDS for SQL Server data](https://help.aliyun.com/document_detail/95717.html)
 //
 // @param request - ModifyBackupSetExpireTimeRequest
 //
@@ -31559,15 +31559,15 @@ func (client *Client) ModifyBackupSetExpireTimeWithOptions(request *ModifyBackup
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related feature documentation
 //
-//	Notice: Before you invoke this operation, carefully read the feature documentation to fully understand the prerequisites and impacts. Then proceed with the operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and impacts.
 //
-// [Manual backup of SQL Server data](https://help.aliyun.com/document_detail/95717.html)
+// [Manually back up ApsaraDB RDS for SQL Server data](https://help.aliyun.com/document_detail/95717.html)
 //
 // @param request - ModifyBackupSetExpireTimeRequest
 //
@@ -31691,17 +31691,17 @@ func (client *Client) ModifyCollationTimeZone(request *ModifyCollationTimeZoneRe
 
 // Summary:
 //
-// Modifies or disables the committed serverless feature.
+// Modifies or disables the provisioned Serverless feature.
 //
 // Description:
 //
 // ### Applicable engine
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-// [Committed Serverless](https://help.aliyun.com/document_detail/2928780.html)
+// [Provisioned Serverless](https://help.aliyun.com/document_detail/2928780.html)
 //
 // @param request - ModifyComputeBurstConfigRequest
 //
@@ -31817,17 +31817,17 @@ func (client *Client) ModifyComputeBurstConfigWithOptions(request *ModifyCompute
 
 // Summary:
 //
-// Modifies or disables the committed serverless feature.
+// Modifies or disables the provisioned Serverless feature.
 //
 // Description:
 //
 // ### Applicable engine
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-// [Committed Serverless](https://help.aliyun.com/document_detail/2928780.html)
+// [Provisioned Serverless](https://help.aliyun.com/document_detail/2928780.html)
 //
 // @param request - ModifyComputeBurstConfigRequest
 //
@@ -31935,15 +31935,15 @@ func (client *Client) ModifyCustinsResource(request *ModifyCustinsResourceReques
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
-// - ApsaraDB RDS for MariaDB
+// - RDS MariaDB
 //
 // @param request - ModifyDBDescriptionRequest
 //
@@ -32015,15 +32015,15 @@ func (client *Client) ModifyDBDescriptionWithOptions(request *ModifyDBDescriptio
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
-// - ApsaraDB RDS for MariaDB
+// - RDS MariaDB
 //
 // @param request - ModifyDBDescriptionRequest
 //
@@ -32311,15 +32311,15 @@ func (client *Client) ModifyDBInstanceAutoUpgradeMinorVersion(request *ModifyDBI
 
 // Summary:
 //
-// Modifies the column encryption algorithm configuration of a specified instance.
+// Modifies the column encryption algorithm configuration for a specified instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - Before invoking this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you use this operation, make sure that you have activated the Cloud Hardware Security Module (CloudHSM) for column encryption in the DAS Security Center.
 //
-// - If you receive a fault message when invoking this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption feature before trying again.
+// - If you receive an error message when you invoke this operation, go to the DAS (Database Autonomy Service) Security Center to purchase and activate the Cloud Hardware Security Module (CloudHSM) for column encryption before use.
 //
 // @param request - ModifyDBInstanceCLSRequest
 //
@@ -32407,15 +32407,15 @@ func (client *Client) ModifyDBInstanceCLSWithOptions(request *ModifyDBInstanceCL
 
 // Summary:
 //
-// Modifies the column encryption algorithm configuration of a specified instance.
+// Modifies the column encryption algorithm configuration for a specified instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - Before invoking this operation, make sure that you have activated the column encryption feature in DAS Security Center.
+// - Before you use this operation, make sure that you have activated the Cloud Hardware Security Module (CloudHSM) for column encryption in the DAS Security Center.
 //
-// - If you receive a fault message when invoking this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption feature before trying again.
+// - If you receive an error message when you invoke this operation, go to the DAS (Database Autonomy Service) Security Center to purchase and activate the Cloud Hardware Security Module (CloudHSM) for column encryption before use.
 //
 // @param request - ModifyDBInstanceCLSRequest
 //
@@ -32831,15 +32831,15 @@ func (client *Client) ModifyDBInstanceDelayedReplicationTime(request *ModifyDBIn
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.
 //
-// - [Enable and disable instance release protection for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/414512.html)
+// - [Enable and disable release protection for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/414512.html)
 //
-// - [Enable and disable instance release protection for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/471512.html)
+// - [Enable and disable release protection for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/471512.html)
 //
-// - [Enable and disable instance release protection for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/416209.html)
+// - [Enable and disable release protection for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/416209.html)
 //
-// - [Enable and disable instance release protection for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/414512.html)
+// - [Enable and disable release protection for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/414512.html)
 //
 // @param request - ModifyDBInstanceDeletionProtectionRequest
 //
@@ -32923,15 +32923,15 @@ func (client *Client) ModifyDBInstanceDeletionProtectionWithOptions(request *Mod
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.
 //
-// - [Enable and disable instance release protection for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/414512.html)
+// - [Enable and disable release protection for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/414512.html)
 //
-// - [Enable and disable instance release protection for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/471512.html)
+// - [Enable and disable release protection for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/471512.html)
 //
-// - [Enable and disable instance release protection for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/416209.html)
+// - [Enable and disable release protection for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/416209.html)
 //
-// - [Enable and disable instance release protection for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/414512.html)
+// - [Enable and disable release protection for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/414512.html)
 //
 // @param request - ModifyDBInstanceDeletionProtectionRequest
 //
@@ -33055,19 +33055,19 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 
 // Summary:
 //
-// Modifies the endpoint weight information of an ApsaraDB RDS instance in the Cluster Edition.
+// Modifies the endpoint weight information of an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
 // @param tmpReq - ModifyDBInstanceEndpointRequest
 //
@@ -33137,19 +33137,19 @@ func (client *Client) ModifyDBInstanceEndpointWithOptions(tmpReq *ModifyDBInstan
 
 // Summary:
 //
-// Modifies the endpoint weight information of an ApsaraDB RDS instance in the Cluster Edition.
+// Modifies the endpoint weight information of an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
 // @param request - ModifyDBInstanceEndpointRequest
 //
@@ -33167,7 +33167,7 @@ func (client *Client) ModifyDBInstanceEndpoint(request *ModifyDBInstanceEndpoint
 
 // Summary:
 //
-// Modifies the endpoint connection information of an ApsaraDB RDS instance in Cluster Edition.
+// Modifies the endpoint connection address of an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -33175,17 +33175,17 @@ func (client *Client) ModifyDBInstanceEndpoint(request *ModifyDBInstanceEndpoint
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
 // ### Precautions
 //
-// - You can modify endpoint connection information, including the connection string and port for public and internal network endpoints, and the VPC, vSwitch, and IP address for internal network connections.
+// - You can modify the endpoint connection address, including the connection strings and ports for both public and internal networks, as well as the VPC, vSwitch, and IP address for the internal network connection.
 //
-// - When modifying, VpcId and VSwitchId are treated as a group. The internal network connection parameters (VpcId, VSwitchId, and PrivateIpAddress) and the connection parameters (ConnectionStringPrefix and Port) cannot be specified at the same time. However, you must specify at least one of them.
+// - When you modify the endpoint, VpcId and VSwitchId are treated as a group. For an internal endpoint, you cannot specify VpcId, VSwitchId, or PrivateIpAddress together with ConnectionStringPrefix or Port. However, you must specify at least one of these parameters.
 //
 // @param request - ModifyDBInstanceEndpointAddressRequest
 //
@@ -33265,7 +33265,7 @@ func (client *Client) ModifyDBInstanceEndpointAddressWithOptions(request *Modify
 
 // Summary:
 //
-// Modifies the endpoint connection information of an ApsaraDB RDS instance in Cluster Edition.
+// Modifies the endpoint connection address of an ApsaraDB RDS Cluster Edition instance.
 //
 // Description:
 //
@@ -33273,17 +33273,17 @@ func (client *Client) ModifyDBInstanceEndpointAddressWithOptions(request *Modify
 //
 // <props="china">
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// <props="intl">RDS MySQL
+// <props="intl">ApsaraDB RDS for MySQL
 //
 // ### Precautions
 //
-// - You can modify endpoint connection information, including the connection string and port for public and internal network endpoints, and the VPC, vSwitch, and IP address for internal network connections.
+// - You can modify the endpoint connection address, including the connection strings and ports for both public and internal networks, as well as the VPC, vSwitch, and IP address for the internal network connection.
 //
-// - When modifying, VpcId and VSwitchId are treated as a group. The internal network connection parameters (VpcId, VSwitchId, and PrivateIpAddress) and the connection parameters (ConnectionStringPrefix and Port) cannot be specified at the same time. However, you must specify at least one of them.
+// - When you modify the endpoint, VpcId and VSwitchId are treated as a group. For an internal endpoint, you cannot specify VpcId, VSwitchId, or PrivateIpAddress together with ConnectionStringPrefix or Port. However, you must specify at least one of these parameters.
 //
 // @param request - ModifyDBInstanceEndpointAddressRequest
 //
@@ -33557,15 +33557,15 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.
 //
-// [View enhanced monitoring](https://help.aliyun.com/document_detail/299200.html).
+// [Enhanced monitoring](https://help.aliyun.com/document_detail/299200.html).
 //
 // @param request - ModifyDBInstanceMetricsRequest
 //
@@ -33625,15 +33625,15 @@ func (client *Client) ModifyDBInstanceMetricsWithOptions(request *ModifyDBInstan
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.
 //
-// [View enhanced monitoring](https://help.aliyun.com/document_detail/299200.html).
+// [Enhanced monitoring](https://help.aliyun.com/document_detail/299200.html).
 //
 // @param request - ModifyDBInstanceMetricsRequest
 //
@@ -33651,11 +33651,11 @@ func (client *Client) ModifyDBInstanceMetrics(request *ModifyDBInstanceMetricsRe
 
 // Summary:
 //
-// Modifies the monitoring frequency of an instance.
+// Modifies the monitoring frequency.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -33663,15 +33663,15 @@ func (client *Client) ModifyDBInstanceMetrics(request *ModifyDBInstanceMetricsRe
 //
 // ### Precautions
 //
-// Second-level monitoring for ApsaraDB RDS for MySQL incurs additional fees. Before using this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/45020.html) of ApsaraDB RDS.
+// Second-level monitoring for ApsaraDB RDS for MySQL incurs additional fees. Make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/45020.html) of ApsaraDB RDS before you call this operation.
 //
 // ### Related documentation
 //
-//	Notice: Before using this operation, carefully read the following documentation to fully understand the prerequisites and potential impacts, and then proceed.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// - [Set the monitoring frequency for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96112.html)
+// - [Set the monitoring frequency for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96112.html)
 //
-// - [Set the monitoring frequency for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95710.html)
+// - [Set the monitoring frequency for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95710.html)
 //
 // @param request - ModifyDBInstanceMonitorRequest
 //
@@ -33739,11 +33739,11 @@ func (client *Client) ModifyDBInstanceMonitorWithOptions(request *ModifyDBInstan
 
 // Summary:
 //
-// Modifies the monitoring frequency of an instance.
+// Modifies the monitoring frequency.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -33751,15 +33751,15 @@ func (client *Client) ModifyDBInstanceMonitorWithOptions(request *ModifyDBInstan
 //
 // ### Precautions
 //
-// Second-level monitoring for ApsaraDB RDS for MySQL incurs additional fees. Before using this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/45020.html) of ApsaraDB RDS.
+// Second-level monitoring for ApsaraDB RDS for MySQL incurs additional fees. Make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/45020.html) of ApsaraDB RDS before you call this operation.
 //
 // ### Related documentation
 //
-//	Notice: Before using this operation, carefully read the following documentation to fully understand the prerequisites and potential impacts, and then proceed.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// - [Set the monitoring frequency for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96112.html)
+// - [Set the monitoring frequency for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96112.html)
 //
-// - [Set the monitoring frequency for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95710.html)
+// - [Set the monitoring frequency for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95710.html)
 //
 // @param request - ModifyDBInstanceMonitorRequest
 //
@@ -33891,11 +33891,11 @@ func (client *Client) ModifyDBInstanceNetworkExpireTime(request *ModifyDBInstanc
 
 // Summary:
 //
-// Switches an ApsaraDB RDS instance from the classic network to a VPC. This operation is used for instance switchover from the classic network to a VPC.
+// Switches the network type of an ApsaraDB RDS instance from the classic network to a VPC through an instance switchover.
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -33905,7 +33905,7 @@ func (client *Client) ModifyDBInstanceNetworkExpireTime(request *ModifyDBInstanc
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.
 //
 // - [Change the network type of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96109.html)
 //
@@ -34003,11 +34003,11 @@ func (client *Client) ModifyDBInstanceNetworkTypeWithOptions(request *ModifyDBIn
 
 // Summary:
 //
-// Switches an ApsaraDB RDS instance from the classic network to a VPC. This operation is used for instance switchover from the classic network to a VPC.
+// Switches the network type of an ApsaraDB RDS instance from the classic network to a VPC through an instance switchover.
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -34017,7 +34017,7 @@ func (client *Client) ModifyDBInstanceNetworkTypeWithOptions(request *ModifyDBIn
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.
 //
 // - [Change the network type of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96109.html)
 //
@@ -34273,7 +34273,7 @@ func (client *Client) ModifyDBInstanceReplicationSwitch(request *ModifyDBInstanc
 
 // Summary:
 //
-// Modifies the SSL link configuration of an ApsaraDB RDS instance.
+// Modifies the SSL configuration of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -34287,13 +34287,13 @@ func (client *Client) ModifyDBInstanceReplicationSwitch(request *ModifyDBInstanc
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.</notice>
 //
-// - [Settings for Secure Sockets Layer (SSL) encryption for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96120.html)
+// - [Secure Sockets Layer (SSL) encryption settings for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96120.html)
 //
-// - [Settings for Secure Sockets Layer (SSL) encryption for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/229517.html)
+// - [Secure Sockets Layer (SSL) encryption settings for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/229517.html)
 //
-// - [Settings for Secure Sockets Layer (SSL) encryption for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95715.html)
+// - [Secure Sockets Layer (SSL) encryption settings for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95715.html)
 //
 // @param request - ModifyDBInstanceSSLRequest
 //
@@ -34413,7 +34413,7 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 
 // Summary:
 //
-// Modifies the SSL link configuration of an ApsaraDB RDS instance.
+// Modifies the SSL configuration of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -34427,13 +34427,13 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.</notice>
 //
-// - [Settings for Secure Sockets Layer (SSL) encryption for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96120.html)
+// - [Secure Sockets Layer (SSL) encryption settings for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96120.html)
 //
-// - [Settings for Secure Sockets Layer (SSL) encryption for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/229517.html)
+// - [Secure Sockets Layer (SSL) encryption settings for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/229517.html)
 //
-// - [Settings for Secure Sockets Layer (SSL) encryption for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95715.html)
+// - [Secure Sockets Layer (SSL) encryption settings for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95715.html)
 //
 // @param request - ModifyDBInstanceSSLRequest
 //
@@ -34455,13 +34455,13 @@ func (client *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-// [Configure security group rules for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/2392322.html)
+// [Configure security group rules for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - ModifyDBInstanceSecurityGroupRuleRequest
 //
@@ -34545,13 +34545,13 @@ func (client *Client) ModifyDBInstanceSecurityGroupRuleWithOptions(request *Modi
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-// [Configure security group rules for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/2392322.html)
+// [Configure security group rules for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - ModifyDBInstanceSecurityGroupRuleRequest
 //
@@ -34585,7 +34585,7 @@ func (client *Client) ModifyDBInstanceSecurityGroupRule(request *ModifyDBInstanc
 //
 // ### Billing
 //
-// This API operation incurs [specification change fees](https://help.aliyun.com/document_detail/57178.html). Read the relevant feature documentation before you proceed.
+// This API operation involves [specification change fees](https://help.aliyun.com/document_detail/57178.html). Read the relevant feature documentation before you proceed.
 //
 // ### Relevant feature documentation
 //
@@ -34789,7 +34789,7 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(tmpReq *ModifyDBInstanceSp
 //
 // ### Billing
 //
-// This API operation incurs [specification change fees](https://help.aliyun.com/document_detail/57178.html). Read the relevant feature documentation before you proceed.
+// This API operation involves [specification change fees](https://help.aliyun.com/document_detail/57178.html). Read the relevant feature documentation before you proceed.
 //
 // ### Relevant feature documentation
 //
@@ -34817,27 +34817,27 @@ func (client *Client) ModifyDBInstanceSpec(request *ModifyDBInstanceSpecRequest)
 
 // Summary:
 //
-// Enables or modifies the Transparent Data Encryption (TDE) feature for an ApsaraDB RDS instance.
+// Enables the transparent data encryption (TDE) feature for an ApsaraDB RDS instance and allows you to modify the encrypt status.
 //
 // Description:
 //
-// ### Applicable DPI engine
+// ### Applicable DPI engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the feature documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts of the encrypt operation.
 //
-// - [Settings for transparent data encryption TDE on ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96121.html)
+// - [Settings for transparent data encryption (TDE) for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96121.html)
 //
-// - [Settings for transparent data encryption TDE on ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/465652.html)
+// - [Settings for transparent data encryption (TDE) for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/465652.html)
 //
-// - [Settings for transparent data encryption TDE on ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95716.html)
+// - [Settings for transparent data encryption (TDE) for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95716.html)
 //
 // @param request - ModifyDBInstanceTDERequest
 //
@@ -34929,27 +34929,27 @@ func (client *Client) ModifyDBInstanceTDEWithOptions(request *ModifyDBInstanceTD
 
 // Summary:
 //
-// Enables or modifies the Transparent Data Encryption (TDE) feature for an ApsaraDB RDS instance.
+// Enables the transparent data encryption (TDE) feature for an ApsaraDB RDS instance and allows you to modify the encrypt status.
 //
 // Description:
 //
-// ### Applicable DPI engine
+// ### Applicable DPI engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the feature documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts of the encrypt operation.
 //
-// - [Settings for transparent data encryption TDE on ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96121.html)
+// - [Settings for transparent data encryption (TDE) for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96121.html)
 //
-// - [Settings for transparent data encryption TDE on ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/465652.html)
+// - [Settings for transparent data encryption (TDE) for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/465652.html)
 //
-// - [Settings for transparent data encryption TDE on ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95716.html)
+// - [Settings for transparent data encryption (TDE) for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95716.html)
 //
 // @param request - ModifyDBInstanceTDERequest
 //
@@ -35061,15 +35061,15 @@ func (client *Client) ModifyDBInstanceVectorSupportStatus(request *ModifyDBInsta
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
 //	 [Modify node configurations](https://help.aliyun.com/document_detail/2627998.html)
 //
-//		Warning: This API operation involves fees. Read the related documentation carefully before you perform this operation.
+//		Warning: This API operation incurs fees. Read the related documentation carefully before you call this operation.</warning>
 //
 // @param tmpReq - ModifyDBNodeRequest
 //
@@ -35171,15 +35171,15 @@ func (client *Client) ModifyDBNodeWithOptions(tmpReq *ModifyDBNodeRequest, runti
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
 //	 [Modify node configurations](https://help.aliyun.com/document_detail/2627998.html)
 //
-//		Warning: This API operation involves fees. Read the related documentation carefully before you perform this operation.
+//		Warning: This API operation incurs fees. Read the related documentation carefully before you call this operation.</warning>
 //
 // @param request - ModifyDBNodeRequest
 //
@@ -35201,21 +35201,21 @@ func (client *Client) ModifyDBNode(request *ModifyDBNodeRequest) (_result *Modif
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition instances are progressively granted a complimentary dedicated proxy service with one proxy node across regions. For details, see [ApsaraDB RDS for MySQL Cluster Edition complimentary dedicated proxy service with one proxy node](https://help.aliyun.com/document_detail/2555466.html).
+// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition gradually provides a free dedicated proxy service with one proxy instance across all units. For details, see [Promotion: ApsaraDB RDS for MySQL Cluster Edition provides a free dedicated proxy service with one proxy instance](https://help.aliyun.com/document_detail/2555466.html).
 //
 // ### Related feature documentation
 //
-//	Notice: Before you invoke this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you use this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// - [Enable database proxy for RDS MySQL](https://help.aliyun.com/document_detail/197456.html)
+// - [Enable the database proxy for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/197456.html)
 //
-// - [Enable database proxy for RDS PostgreSQL](https://help.aliyun.com/document_detail/418272.html)
+// - [Enable the database proxy for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/418272.html)
 //
 // @param tmpReq - ModifyDBProxyRequest
 //
@@ -35329,21 +35329,21 @@ func (client *Client) ModifyDBProxyWithOptions(tmpReq *ModifyDBProxyRequest, run
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition instances are progressively granted a complimentary dedicated proxy service with one proxy node across regions. For details, see [ApsaraDB RDS for MySQL Cluster Edition complimentary dedicated proxy service with one proxy node](https://help.aliyun.com/document_detail/2555466.html).
+// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition gradually provides a free dedicated proxy service with one proxy instance across all units. For details, see [Promotion: ApsaraDB RDS for MySQL Cluster Edition provides a free dedicated proxy service with one proxy instance](https://help.aliyun.com/document_detail/2555466.html).
 //
 // ### Related feature documentation
 //
-//	Notice: Before you invoke this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you use this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// - [Enable database proxy for RDS MySQL](https://help.aliyun.com/document_detail/197456.html)
+// - [Enable the database proxy for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/197456.html)
 //
-// - [Enable database proxy for RDS PostgreSQL](https://help.aliyun.com/document_detail/418272.html)
+// - [Enable the database proxy for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/418272.html)
 //
 // @param request - ModifyDBProxyRequest
 //
@@ -35361,7 +35361,7 @@ func (client *Client) ModifyDBProxy(request *ModifyDBProxyRequest) (_result *Mod
 
 // Summary:
 //
-// Configures the access policy for a database proxy endpoint of an ApsaraDB RDS instance.
+// Configures the access policy for the database proxy endpoint of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -35373,7 +35373,7 @@ func (client *Client) ModifyDBProxy(request *ModifyDBProxyRequest) (_result *Mod
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and the impacts of this operation.
 //
 // - [Configure the access policy for a database proxy endpoint of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/2621331.html)
 //
@@ -35509,7 +35509,7 @@ func (client *Client) ModifyDBProxyEndpointWithOptions(request *ModifyDBProxyEnd
 
 // Summary:
 //
-// Configures the access policy for a database proxy endpoint of an ApsaraDB RDS instance.
+// Configures the access policy for the database proxy endpoint of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -35521,7 +35521,7 @@ func (client *Client) ModifyDBProxyEndpointWithOptions(request *ModifyDBProxyEnd
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and the impacts of this operation.
 //
 // - [Configure the access policy for a database proxy endpoint of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/2621331.html)
 //
@@ -35553,9 +35553,9 @@ func (client *Client) ModifyDBProxyEndpoint(request *ModifyDBProxyEndpointReques
 //
 // - RDS PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation, make sure that you fully understand the prerequisites and impacts of this operation, and then proceed.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.</notice>
 //
 // - [Configure the database proxy endpoint for RDS MySQL](https://help.aliyun.com/document_detail/184921.html)
 //
@@ -35649,9 +35649,9 @@ func (client *Client) ModifyDBProxyEndpointAddressWithOptions(request *ModifyDBP
 //
 // - RDS PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before calling this operation, carefully read the following documentation, make sure that you fully understand the prerequisites and impacts of this operation, and then proceed.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.</notice>
 //
 // - [Configure the database proxy endpoint for RDS MySQL](https://help.aliyun.com/document_detail/184921.html)
 //
@@ -35679,11 +35679,11 @@ func (client *Client) ModifyDBProxyEndpointAddress(request *ModifyDBProxyEndpoin
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition progressively provides a complimentary dedicated proxy service with one proxy node across regions. For more information, see [ApsaraDB RDS for MySQL Cluster Edition complimentary dedicated proxy service with one proxy node](https://help.aliyun.com/document_detail/2555466.html).
+// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition gradually provides a free dedicated dedicated proxy with one proxy instance across units. For more information, see [Promotion: Free dedicated dedicated proxy with one proxy instance for ApsaraDB RDS for MySQL Cluster Edition](https://help.aliyun.com/document_detail/2555466.html).
 //
 // @param tmpReq - ModifyDBProxyInstanceRequest
 //
@@ -35795,11 +35795,11 @@ func (client *Client) ModifyDBProxyInstanceWithOptions(tmpReq *ModifyDBProxyInst
 //
 // ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition progressively provides a complimentary dedicated proxy service with one proxy node across regions. For more information, see [ApsaraDB RDS for MySQL Cluster Edition complimentary dedicated proxy service with one proxy node](https://help.aliyun.com/document_detail/2555466.html).
+// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition gradually provides a free dedicated dedicated proxy with one proxy instance across units. For more information, see [Promotion: Free dedicated dedicated proxy with one proxy instance for ApsaraDB RDS for MySQL Cluster Edition](https://help.aliyun.com/document_detail/2555466.html).
 //
 // @param request - ModifyDBProxyInstanceRequest
 //
@@ -36101,15 +36101,15 @@ func (client *Client) ModifyDasInstanceConfig(request *ModifyDasInstanceConfigRe
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // ### Related feature documentation
 //
-// This operation supports the following features: [Modify SQL Server database attributes](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to OSS](https://help.aliyun.com/document_detail/2767189.html). Before using the data archiving to OSS feature through the API, enable the data archiving feature in the console first.
+// The features supported by this operation include [Modifying the attributes of an SQL Server database](https://help.aliyun.com/document_detail/2401398.html) and [Archiving cloud disk data to OSS](https://help.aliyun.com/document_detail/2767189.html). Before you use the data archiving to OSS feature by calling this API operation, you must enable the data archiving feature in the console.
 //
-//	Notice: Before calling this operation, carefully read the feature documentation to fully understand the prerequisites and potential impacts, and then proceed.
+//	Notice: Before you call this API operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
 // @param request - ModifyDatabaseConfigRequest
 //
@@ -36185,15 +36185,15 @@ func (client *Client) ModifyDatabaseConfigWithOptions(request *ModifyDatabaseCon
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // ### Related feature documentation
 //
-// This operation supports the following features: [Modify SQL Server database attributes](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to OSS](https://help.aliyun.com/document_detail/2767189.html). Before using the data archiving to OSS feature through the API, enable the data archiving feature in the console first.
+// The features supported by this operation include [Modifying the attributes of an SQL Server database](https://help.aliyun.com/document_detail/2401398.html) and [Archiving cloud disk data to OSS](https://help.aliyun.com/document_detail/2767189.html). Before you use the data archiving to OSS feature by calling this API operation, you must enable the data archiving feature in the console.
 //
-//	Notice: Before calling this operation, carefully read the feature documentation to fully understand the prerequisites and potential impacts, and then proceed.
+//	Notice: Before you call this API operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
 // @param request - ModifyDatabaseConfigRequest
 //
@@ -36211,19 +36211,19 @@ func (client *Client) ModifyDatabaseConfig(request *ModifyDatabaseConfigRequest)
 
 // Summary:
 //
-// Sets SSL encryption for a database proxy endpoint of an ApsaraDB RDS for MySQL database.
+// Configures Secure Sockets Layer (SSL) encryption for the database proxy endpoint of an ApsaraDB RDS for MySQL instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for MySQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to ensure that you fully understand the prerequisites and impacts.</notice>
 //
-// [Settings for database proxy SSL encryption of an ApsaraDB RDS for MySQL database](https://help.aliyun.com/document_detail/188164.html)
+// [Configure Secure Sockets Layer (SSL) encryption for the database proxy of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/188164.html)
 //
 // @param request - ModifyDbProxyInstanceSslRequest
 //
@@ -36291,19 +36291,19 @@ func (client *Client) ModifyDbProxyInstanceSslWithOptions(request *ModifyDbProxy
 
 // Summary:
 //
-// Sets SSL encryption for a database proxy endpoint of an ApsaraDB RDS for MySQL database.
+// Configures Secure Sockets Layer (SSL) encryption for the database proxy endpoint of an ApsaraDB RDS for MySQL instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for MySQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to ensure that you fully understand the prerequisites and impacts.</notice>
 //
-// [Settings for database proxy SSL encryption of an ApsaraDB RDS for MySQL database](https://help.aliyun.com/document_detail/188164.html)
+// [Configure Secure Sockets Layer (SSL) encryption for the database proxy of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/188164.html)
 //
 // @param request - ModifyDbProxyInstanceSslRequest
 //
@@ -36321,7 +36321,7 @@ func (client *Client) ModifyDbProxyInstanceSsl(request *ModifyDbProxyInstanceSsl
 
 // Summary:
 //
-// Modifies event information in Event Center.
+// Modifies the event information in the event center.
 //
 // @param request - ModifyEventInfoRequest
 //
@@ -36381,7 +36381,7 @@ func (client *Client) ModifyEventInfoWithOptions(request *ModifyEventInfoRequest
 
 // Summary:
 //
-// Modifies event information in Event Center.
+// Modifies the event information in the event center.
 //
 // @param request - ModifyEventInfoRequest
 //
@@ -36399,11 +36399,11 @@ func (client *Client) ModifyEventInfo(request *ModifyEventInfoRequest) (_result 
 
 // Summary:
 //
-// Modifies the availability detection method of an ApsaraDB RDS instance.
+// Modifies the availability check method of an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -36415,9 +36415,9 @@ func (client *Client) ModifyEventInfo(request *ModifyEventInfoRequest) (_result 
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and impacts.
 //
-// [What is the availability detection method](https://help.aliyun.com/document_detail/207467.html).
+// [What is the availability check method?](https://help.aliyun.com/document_detail/207467.html).
 //
 // @param request - ModifyHADiagnoseConfigRequest
 //
@@ -36481,11 +36481,11 @@ func (client *Client) ModifyHADiagnoseConfigWithOptions(request *ModifyHADiagnos
 
 // Summary:
 //
-// Modifies the availability detection method of an ApsaraDB RDS instance.
+// Modifies the availability check method of an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -36497,9 +36497,9 @@ func (client *Client) ModifyHADiagnoseConfigWithOptions(request *ModifyHADiagnos
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and impacts.
 //
-// [What is the availability detection method](https://help.aliyun.com/document_detail/207467.html).
+// [What is the availability check method?](https://help.aliyun.com/document_detail/207467.html).
 //
 // @param request - ModifyHADiagnoseConfigRequest
 //
@@ -36741,7 +36741,7 @@ func (client *Client) ModifyImportTask(request *ModifyImportTaskRequest) (_resul
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -36751,17 +36751,17 @@ func (client *Client) ModifyImportTask(request *ModifyImportTaskRequest) (_resul
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Warning: This API operation involves fees. Read the related documentation carefully before you perform this operation.
+//	Warning: This API operation involves fees. Read the related feature documentation carefully before you perform this operation.
 //
-// - [Auto-renewal of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96049.html)
+// - [Auto-renewal for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96049.html)
 //
-// - [Auto-renewal of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96740.html)
+// - [Auto-renewal for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/96740.html)
 //
-// - [Auto-renewal of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95635.html)
+// - [Auto-renewal for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95635.html)
 //
-// - [Auto-renewal of an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/97121.html)
+// - [Auto-renewal for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/97121.html)
 //
 // @param request - ModifyInstanceAutoRenewalAttributeRequest
 //
@@ -36841,7 +36841,7 @@ func (client *Client) ModifyInstanceAutoRenewalAttributeWithOptions(request *Mod
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -36851,17 +36851,17 @@ func (client *Client) ModifyInstanceAutoRenewalAttributeWithOptions(request *Mod
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Warning: This API operation involves fees. Read the related documentation carefully before you perform this operation.
+//	Warning: This API operation involves fees. Read the related feature documentation carefully before you perform this operation.
 //
-// - [Auto-renewal of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96049.html)
+// - [Auto-renewal for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96049.html)
 //
-// - [Auto-renewal of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96740.html)
+// - [Auto-renewal for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/96740.html)
 //
-// - [Auto-renewal of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95635.html)
+// - [Auto-renewal for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95635.html)
 //
-// - [Auto-renewal of an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/97121.html)
+// - [Auto-renewal for ApsaraDB RDS for MariaDB](https://help.aliyun.com/document_detail/97121.html)
 //
 // @param request - ModifyInstanceAutoRenewalAttributeRequest
 //
@@ -36883,7 +36883,7 @@ func (client *Client) ModifyInstanceAutoRenewalAttribute(request *ModifyInstance
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -36893,7 +36893,7 @@ func (client *Client) ModifyInstanceAutoRenewalAttribute(request *ModifyInstance
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and impacts of this operation.</notice>
 //
 // - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -36987,7 +36987,7 @@ func (client *Client) ModifyInstanceCrossBackupPolicyWithOptions(request *Modify
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -36997,7 +36997,7 @@ func (client *Client) ModifyInstanceCrossBackupPolicyWithOptions(request *Modify
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and impacts of this operation.</notice>
 //
 // - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -37021,15 +37021,15 @@ func (client *Client) ModifyInstanceCrossBackupPolicy(request *ModifyInstanceCro
 
 // Summary:
 //
-// Modifies the encryption or masking rule of a specified instance.
+// Modifies the encryption or masking rules for a specified instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - Before invoking this operation, make sure that the column encryption service is activated in DAS Security Center.
+// - Before you invoke this operation, make sure that the Cloud Hardware Security Module (CloudHSM) column encryption feature is enabled in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when you invoke this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption service before trying again.
+// - If you receive the error message ColumnEncryptionErrorCode.NOT_PURCHASED when invoking this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and enable the Cloud Hardware Security Module (CloudHSM) column encryption feature.
 //
 // @param tmpReq - ModifyMaskingRulesRequest
 //
@@ -37119,15 +37119,15 @@ func (client *Client) ModifyMaskingRulesWithOptions(tmpReq *ModifyMaskingRulesRe
 
 // Summary:
 //
-// Modifies the encryption or masking rule of a specified instance.
+// Modifies the encryption or masking rules for a specified instance.
 //
 // Description:
 //
 // ## Request description
 //
-// - Before invoking this operation, make sure that the column encryption service is activated in DAS Security Center.
+// - Before you invoke this operation, make sure that the Cloud Hardware Security Module (CloudHSM) column encryption feature is enabled in the DAS Security Center.
 //
-// - If you receive the fault message ColumnEncryptionErrorCode.NOT_PURCHASED when you invoke this operation, go to Database Autonomy Service (DAS) Security Center to purchase and activate the column encryption service before trying again.
+// - If you receive the error message ColumnEncryptionErrorCode.NOT_PURCHASED when invoking this operation, go to the Database Autonomy Service (DAS) Security Center to purchase and enable the Cloud Hardware Security Module (CloudHSM) column encryption feature.
 //
 // @param request - ModifyMaskingRulesRequest
 //
@@ -37515,23 +37515,23 @@ func (client *Client) ModifyParameterGroup(request *ModifyParameterGroupRequest)
 
 // Summary:
 //
-// Modifies the effective period in a scheduled node for parameter modification.
+// Modifies the effective time of a scheduled parameter modification task.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
 // - ApsaraDB RDS for PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the feature documentation to fully understand the prerequisites and impacts of calling this operation.
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.
 //
-// - [Set instance parameters for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96063.html)
+// - [Set the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html)
 //
-// - [Set instance parameters for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/96751.html)
+// - [Set the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html)
 //
 // @param request - ModifyParameterTimedScheduleTaskRequest
 //
@@ -37583,23 +37583,23 @@ func (client *Client) ModifyParameterTimedScheduleTaskWithOptions(request *Modif
 
 // Summary:
 //
-// Modifies the effective period in a scheduled node for parameter modification.
+// Modifies the effective time of a scheduled parameter modification task.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
 // - ApsaraDB RDS for PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the feature documentation to fully understand the prerequisites and impacts of calling this operation.
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.
 //
-// - [Set instance parameters for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96063.html)
+// - [Set the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html)
 //
-// - [Set instance parameters for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/96751.html)
+// - [Set the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html)
 //
 // @param request - ModifyParameterTimedScheduleTaskRequest
 //
@@ -37691,11 +37691,11 @@ func (client *Client) ModifyRCDeploymentSetAttribute(request *ModifyRCDeployment
 
 // Summary:
 //
-// Modifies the name, description, release behavior, automatic snapshot deletion behavior, automatic snapshot policy, performance burst settings, and other attributes of a block storage device.
+// Modifies the attributes of a block storage device, such as the name, description, release behavior with the instance, automatic snapshot deletion behavior with the disk, automatic snapshot policy, and performance burst feature.
 //
 // Description:
 //
-// You can call this operation with the DiskId parameter to modify the name, description, release behavior, and other attributes of a block storage device.
+// You can specify the DiskId parameter to modify the attributes of a block storage device, such as the name, description, and release behavior with the instance.
 //
 // @param request - ModifyRCDiskAttributeRequest
 //
@@ -37759,11 +37759,11 @@ func (client *Client) ModifyRCDiskAttributeWithOptions(request *ModifyRCDiskAttr
 
 // Summary:
 //
-// Modifies the name, description, release behavior, automatic snapshot deletion behavior, automatic snapshot policy, performance burst settings, and other attributes of a block storage device.
+// Modifies the attributes of a block storage device, such as the name, description, release behavior with the instance, automatic snapshot deletion behavior with the disk, automatic snapshot policy, and performance burst feature.
 //
 // Description:
 //
-// You can call this operation with the DiskId parameter to modify the name, description, release behavior, and other attributes of a block storage device.
+// You can specify the DiskId parameter to modify the attributes of a block storage device, such as the name, description, and release behavior with the instance.
 //
 // @param request - ModifyRCDiskAttributeRequest
 //
@@ -37883,21 +37883,21 @@ func (client *Client) ModifyRCDiskChargeType(request *ModifyRCDiskChargeTypeRequ
 
 // Summary:
 //
-// Changes the cloud disk type or performance level (PL) of an RDS Custom instance.
+// Modifies the cloud disk category or performance level (PL) of an ApsaraDB RDS Custom instance.
 //
 // Description:
 //
-//	Notice: To minimize the impact of Upgrade/Downgrade operations on your business, perform this operation during off-peak hours.
+//	Notice: To minimize the impact on your business, perform Upgrade/Downgrade operations during off-peak hours.
 //
 // When you invoke this operation, take note of the following items:
 //
-// - ESSD cloud disks support upgrading and lowering performance levels (PLs), but you cannot decrease the quota to PL0.
+// - ESSD cloud disks support upgrading and downgrading performance levels, but do not support downgrading to PL0.
 //
 // - The ESSD cloud disk must be in the In_Use or Available state.
 //
-// - If the ESSD cloud disk is mounted to an instance, the instance must be in the Running or Stopped state and cannot have an overdue payment or be expired.
+// - If the ESSD cloud disk is mounted to an instance, the instance must be in the Running or Stopped state. The instance cannot be expired or have an overdue payment.
 //
-// - Because the performance level (PL) of an ESSD cloud disk is limited by its capacity, if you cannot upgrade the performance level (PL), expand the disk capacity and try again.
+// - The performance level of an ESSD cloud disk is limited by its capacity. If you cannot upgrade the performance level, expand the capacity and try again.
 //
 // @param request - ModifyRCDiskSpecRequest
 //
@@ -37961,21 +37961,21 @@ func (client *Client) ModifyRCDiskSpecWithOptions(request *ModifyRCDiskSpecReque
 
 // Summary:
 //
-// Changes the cloud disk type or performance level (PL) of an RDS Custom instance.
+// Modifies the cloud disk category or performance level (PL) of an ApsaraDB RDS Custom instance.
 //
 // Description:
 //
-//	Notice: To minimize the impact of Upgrade/Downgrade operations on your business, perform this operation during off-peak hours.
+//	Notice: To minimize the impact on your business, perform Upgrade/Downgrade operations during off-peak hours.
 //
 // When you invoke this operation, take note of the following items:
 //
-// - ESSD cloud disks support upgrading and lowering performance levels (PLs), but you cannot decrease the quota to PL0.
+// - ESSD cloud disks support upgrading and downgrading performance levels, but do not support downgrading to PL0.
 //
 // - The ESSD cloud disk must be in the In_Use or Available state.
 //
-// - If the ESSD cloud disk is mounted to an instance, the instance must be in the Running or Stopped state and cannot have an overdue payment or be expired.
+// - If the ESSD cloud disk is mounted to an instance, the instance must be in the Running or Stopped state. The instance cannot be expired or have an overdue payment.
 //
-// - Because the performance level (PL) of an ESSD cloud disk is limited by its capacity, if you cannot upgrade the performance level (PL), expand the disk capacity and try again.
+// - The performance level of an ESSD cloud disk is limited by its capacity. If you cannot upgrade the performance level, expand the capacity and try again.
 //
 // @param request - ModifyRCDiskSpecRequest
 //
@@ -38325,19 +38325,19 @@ func (client *Client) ModifyRCInstanceAttribute(request *ModifyRCInstanceAttribu
 
 // Summary:
 //
-// Modifies the billing method of an RDS Custom instance or a cloud disk. You can use this operation to switch between pay-as-you-go instances and subscription instances.
+// Modifies the billing method of an RDS Custom instance or a cloud disk. You can use this operation to convert a pay-as-you-go instance to a subscription instance and vice versa.
 //
 // Description:
 //
 // ### Precautions
 //
-// - Before you call this operation, make sure that you fully understand the subscription and pay-as-you-go billing methods and pricing of RDS Custom.
+// - Before you call this operation, make sure that you fully understand the billing methods and pricing of RDS Custom, including subscription and pay-as-you-go.
 //
-// - Make sure that the target instance is in the **Running*	- or **Stopped*	- state and that your account does not have an overdue payment.
+// - Make sure that the target instance is in the **Running*	- or **Stopped*	- state and your account has no overdue payments.
 //
-// - Make sure that the cloud disk is in the **In_use*	- state and that the billing method of the cloud disk has not been successfully changed within the last 15 minutes.
+// - Make sure that the cloud disk is in the **In_use*	- state and its billing method has not been modified in the last 15 minutes.
 //
-// - After the billing method is changed, fees are automatically deducted by default. Make sure that your account balance is sufficient. Otherwise, an abnormal order is generated, and you can only void the order.
+// - After you change the billing method, fees are automatically deducted by default. Make sure that your account balance is sufficient. Otherwise, an abnormal order is generated and can only be canceled.
 //
 // ### Before you begin
 //
@@ -38445,19 +38445,19 @@ func (client *Client) ModifyRCInstanceChargeTypeWithOptions(request *ModifyRCIns
 
 // Summary:
 //
-// Modifies the billing method of an RDS Custom instance or a cloud disk. You can use this operation to switch between pay-as-you-go instances and subscription instances.
+// Modifies the billing method of an RDS Custom instance or a cloud disk. You can use this operation to convert a pay-as-you-go instance to a subscription instance and vice versa.
 //
 // Description:
 //
 // ### Precautions
 //
-// - Before you call this operation, make sure that you fully understand the subscription and pay-as-you-go billing methods and pricing of RDS Custom.
+// - Before you call this operation, make sure that you fully understand the billing methods and pricing of RDS Custom, including subscription and pay-as-you-go.
 //
-// - Make sure that the target instance is in the **Running*	- or **Stopped*	- state and that your account does not have an overdue payment.
+// - Make sure that the target instance is in the **Running*	- or **Stopped*	- state and your account has no overdue payments.
 //
-// - Make sure that the cloud disk is in the **In_use*	- state and that the billing method of the cloud disk has not been successfully changed within the last 15 minutes.
+// - Make sure that the cloud disk is in the **In_use*	- state and its billing method has not been modified in the last 15 minutes.
 //
-// - After the billing method is changed, fees are automatically deducted by default. Make sure that your account balance is sufficient. Otherwise, an abnormal order is generated, and you can only void the order.
+// - After you change the billing method, fees are automatically deducted by default. Make sure that your account balance is sufficient. Otherwise, an abnormal order is generated and can only be canceled.
 //
 // ### Before you begin
 //
@@ -38949,31 +38949,31 @@ func (client *Client) ModifyRCVCluster(request *ModifyRCVClusterRequest) (_resul
 
 // Summary:
 //
-// Modifies the latency threshold and read weights of instances on a read/write splitting link.
+// Modifies the latency threshold of a read/write splitting link and the read weights of instances.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // ### Before you begin
 //
-// The instance must meet the following conditions when you invoke this operation. Otherwise, the operation fails:
+// When you call this operation, the instance must meet the following conditions. Otherwise, the operation fails:
 //
 //   - The MySQL instance uses a shared database proxy.
 //
 //   - Read/write splitting is enabled for the MySQL instance.
 //
-//   - The instance runs one of the following versions:
+//   - The instance runs one of the following editions:
 //
-//   - MySQL 5.7 high-availability series (local SSDs)
+//   - MySQL 5.7 high availability series (with local SSDs)
 //
 //   - MySQL 5.6
 //
-//   - SQL Server on RDS Cluster Edition
+//   - SQL Server Cluster Edition
 //
 // @param request - ModifyReadWriteSplittingConnectionRequest
 //
@@ -39053,31 +39053,31 @@ func (client *Client) ModifyReadWriteSplittingConnectionWithOptions(request *Mod
 
 // Summary:
 //
-// Modifies the latency threshold and read weights of instances on a read/write splitting link.
+// Modifies the latency threshold of a read/write splitting link and the read weights of instances.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // ### Before you begin
 //
-// The instance must meet the following conditions when you invoke this operation. Otherwise, the operation fails:
+// When you call this operation, the instance must meet the following conditions. Otherwise, the operation fails:
 //
 //   - The MySQL instance uses a shared database proxy.
 //
 //   - Read/write splitting is enabled for the MySQL instance.
 //
-//   - The instance runs one of the following versions:
+//   - The instance runs one of the following editions:
 //
-//   - MySQL 5.7 high-availability series (local SSDs)
+//   - MySQL 5.7 high availability series (with local SSDs)
 //
 //   - MySQL 5.6
 //
-//   - SQL Server on RDS Cluster Edition
+//   - SQL Server Cluster Edition
 //
 // @param request - ModifyReadWriteSplittingConnectionRequest
 //
@@ -39327,11 +39327,11 @@ func (client *Client) ModifyResourceGroup(request *ModifyResourceGroupRequest) (
 
 // Summary:
 //
-// Enables or disables the SQL Explorer (SQL Audit) feature for an instance. This operation is no longer maintained but can still be called.
+// Enables or disables the SQL Explorer (SQL Audit) feature for an instance. This operation is deprecated. You can still call this operation, but it is no longer maintained.
 //
 // Description:
 //
-// This operation is no longer maintained. You can still call this operation, but Alibaba Cloud no longer maintains it. Use the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead.
+// This operation is deprecated. You can still call this operation, but Alibaba Cloud no longer maintains it. Use the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead.
 //
 // @param request - ModifySQLCollectorPolicyRequest
 //
@@ -39399,11 +39399,11 @@ func (client *Client) ModifySQLCollectorPolicyWithOptions(request *ModifySQLColl
 
 // Summary:
 //
-// Enables or disables the SQL Explorer (SQL Audit) feature for an instance. This operation is no longer maintained but can still be called.
+// Enables or disables the SQL Explorer (SQL Audit) feature for an instance. This operation is deprecated. You can still call this operation, but it is no longer maintained.
 //
 // Description:
 //
-// This operation is no longer maintained. You can still call this operation, but Alibaba Cloud no longer maintains it. Use the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead.
+// This operation is deprecated. You can still call this operation, but Alibaba Cloud no longer maintains it. Use the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead.
 //
 // @param request - ModifySQLCollectorPolicyRequest
 //
@@ -39421,11 +39421,11 @@ func (client *Client) ModifySQLCollectorPolicy(request *ModifySQLCollectorPolicy
 
 // Summary:
 //
-// No longer maintained: can be invoked normally but is no longer maintained. Modifies the log retention period of SQL Explorer for an ApsaraDB RDS instance.
+// Modifies the log retention period of SQL Explorer for an ApsaraDB RDS instance. This operation is deprecated and no longer maintained, but can still be invoked normally.
 //
 // Description:
 //
-// This operation is no longer maintained: the operation can still be called normally, but Alibaba Cloud no longer maintains it. Use the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead.
+// This operation is deprecated and no longer maintained by Alibaba Cloud, but remains available for use. Use the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead.
 //
 // @param request - ModifySQLCollectorRetentionRequest
 //
@@ -39497,11 +39497,11 @@ func (client *Client) ModifySQLCollectorRetentionWithOptions(request *ModifySQLC
 
 // Summary:
 //
-// No longer maintained: can be invoked normally but is no longer maintained. Modifies the log retention period of SQL Explorer for an ApsaraDB RDS instance.
+// Modifies the log retention period of SQL Explorer for an ApsaraDB RDS instance. This operation is deprecated and no longer maintained, but can still be invoked normally.
 //
 // Description:
 //
-// This operation is no longer maintained: the operation can still be called normally, but Alibaba Cloud no longer maintains it. Use the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead.
+// This operation is deprecated and no longer maintained by Alibaba Cloud, but remains available for use. Use the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation instead.
 //
 // @param request - ModifySQLCollectorRetentionRequest
 //
@@ -39637,7 +39637,7 @@ func (client *Client) ModifySecurityGroupConfiguration(request *ModifySecurityGr
 
 // Summary:
 //
-// Modifies the IP whitelist configuration of a specified ApsaraDB RDS instance. Three modification modes are supported: overwrite, append, and delete.
+// Modifies the IP address whitelist configuration of a specified ApsaraDB RDS instance. This operation supports three modification modes: overwrite, append, and delete.
 //
 // Description:
 //
@@ -39651,17 +39651,17 @@ func (client *Client) ModifySecurityGroupConfiguration(request *ModifySecurityGr
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
-// - [Configure an IP whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96118.html)
+// - [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96118.html)
 //
-// - [Configure an IP whitelist for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/43187.html)
+// - [Configure an IP address whitelist for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/43187.html)
 //
-// - [Configure an IP whitelist for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/43186.html)
+// - [Configure an IP address whitelist for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/43186.html)
 //
-// - [Configure an IP whitelist for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/90336.html)
+// - [Configure an IP address whitelist for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/90336.html)
 //
 // @param request - ModifySecurityIpsRequest
 //
@@ -39737,7 +39737,7 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 
 // Summary:
 //
-// Modifies the IP whitelist configuration of a specified ApsaraDB RDS instance. Three modification modes are supported: overwrite, append, and delete.
+// Modifies the IP address whitelist configuration of a specified ApsaraDB RDS instance. This operation supports three modification modes: overwrite, append, and delete.
 //
 // Description:
 //
@@ -39751,17 +39751,17 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
 //
-// - [Configure an IP whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96118.html)
+// - [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96118.html)
 //
-// - [Configure an IP whitelist for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/43187.html)
+// - [Configure an IP address whitelist for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/43187.html)
 //
-// - [Configure an IP whitelist for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/43186.html)
+// - [Configure an IP address whitelist for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/43186.html)
 //
-// - [Configure an IP whitelist for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/90336.html)
+// - [Configure an IP address whitelist for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/90336.html)
 //
 // @param request - ModifySecurityIpsRequest
 //
@@ -39779,7 +39779,7 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 
 // Summary:
 //
-// Modifies the information of a historical task in the task center.
+// Modifies the historical task information in the task center.
 //
 // @param request - ModifyTaskInfoRequest
 //
@@ -39851,7 +39851,7 @@ func (client *Client) ModifyTaskInfoWithOptions(request *ModifyTaskInfoRequest, 
 
 // Summary:
 //
-// Modifies the information of a historical task in the task center.
+// Modifies the historical task information in the task center.
 //
 // @param request - ModifyTaskInfoRequest
 //
@@ -39869,17 +39869,17 @@ func (client *Client) ModifyTaskInfo(request *ModifyTaskInfoRequest) (_result *M
 
 // Summary:
 //
-// Edits a whitelist template, including creating, modifying, or deleting a whitelist template.
+// Edits a whitelist template, including creating, modifying, and deleting whitelist templates.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - ModifyWhitelistTemplateRequest
 //
@@ -39947,17 +39947,17 @@ func (client *Client) ModifyWhitelistTemplateWithOptions(request *ModifyWhitelis
 
 // Summary:
 //
-// Edits a whitelist template, including creating, modifying, or deleting a whitelist template.
+// Edits a whitelist template, including creating, modifying, and deleting whitelist templates.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
-// - ApsaraDB RDS for MySQL
+// - RDS MySQL
 //
-// - ApsaraDB RDS for PostgreSQL
+// - RDS PostgreSQL
 //
-// - ApsaraDB RDS for SQL Server
+// - RDS SQL Server
 //
 // @param request - ModifyWhitelistTemplateRequest
 //
@@ -39975,7 +39975,7 @@ func (client *Client) ModifyWhitelistTemplate(request *ModifyWhitelistTemplateRe
 
 // Summary:
 //
-// Performs a precheck for a delete node order.
+// Performs a pre-check for creating an order to delete a node.
 //
 // @param tmpReq - PreCheckCreateOrderForDeleteDBNodesRequest
 //
@@ -40081,7 +40081,7 @@ func (client *Client) PreCheckCreateOrderForDeleteDBNodesWithOptions(tmpReq *Pre
 
 // Summary:
 //
-// Performs a precheck for a delete node order.
+// Performs a pre-check for creating an order to delete a node.
 //
 // @param request - PreCheckCreateOrderForDeleteDBNodesRequest
 //
@@ -40099,7 +40099,7 @@ func (client *Client) PreCheckCreateOrderForDeleteDBNodes(request *PreCheckCreat
 
 // Summary:
 //
-// Checks whether an ApsaraDB RDS for PostgreSQL primary instance meets the prerequisites for creating a DuckDB-based analytical instance. For conditions that are not met, the operation returns the failure reasons and provides solutions or recommended target values.
+// Checks whether an ApsaraDB RDS for PostgreSQL primary instance meets the prerequisites for creating a DuckDB-based analytical instance. For conditions that are not met, it returns the failure reasons and provides solutions or recommended target values.
 //
 // Description:
 //
@@ -40107,7 +40107,7 @@ func (client *Client) PreCheckCreateOrderForDeleteDBNodes(request *PreCheckCreat
 //
 // # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [DuckDB-based analytical instance](https://help.aliyun.com/document_detail/2977241.html)
 //
@@ -40169,7 +40169,7 @@ func (client *Client) PrecheckDuckDBDependencyWithOptions(request *PrecheckDuckD
 
 // Summary:
 //
-// Checks whether an ApsaraDB RDS for PostgreSQL primary instance meets the prerequisites for creating a DuckDB-based analytical instance. For conditions that are not met, the operation returns the failure reasons and provides solutions or recommended target values.
+// Checks whether an ApsaraDB RDS for PostgreSQL primary instance meets the prerequisites for creating a DuckDB-based analytical instance. For conditions that are not met, it returns the failure reasons and provides solutions or recommended target values.
 //
 // Description:
 //
@@ -40177,7 +40177,7 @@ func (client *Client) PrecheckDuckDBDependencyWithOptions(request *PrecheckDuckD
 //
 // # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [DuckDB-based analytical instance](https://help.aliyun.com/document_detail/2977241.html)
 //
@@ -40323,25 +40323,25 @@ func (client *Client) PurgeDBInstanceLog(request *PurgeDBInstanceLogRequest) (_r
 
 // Summary:
 //
-// Queries notifications for ApsaraDB RDS.
+// Queries ApsaraDB RDS notifications.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
-// ### Description
+// ### Feature description
 //
-// ApsaraDB RDS notifications are displayed in a highlighted banner at the top of the ApsaraDB RDS console. Notifications include renewal reminders and instance creation failure alerts.
+// ApsaraDB RDS notifications are highlighted at the top of the ApsaraDB RDS console. These notifications include renewal reminders and instance creation failure reminders.
 //
-// After you query notifications by calling this operation, you can call [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) to mark a notification as confirmed, which indicates that you have acknowledged the notification.
+// After you query notifications by calling this operation, you can call the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark a notification as confirmed. This indicates that you have acknowledged the content of the notification.
 //
 // @param request - QueryNotifyRequest
 //
@@ -40401,25 +40401,25 @@ func (client *Client) QueryNotifyWithOptions(request *QueryNotifyRequest, runtim
 
 // Summary:
 //
-// Queries notifications for ApsaraDB RDS.
+// Queries ApsaraDB RDS notifications.
 //
 // Description:
 //
 // ### Supported engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
-// - RDS MariaDB
+// - ApsaraDB RDS for MariaDB
 //
-// ### Description
+// ### Feature description
 //
-// ApsaraDB RDS notifications are displayed in a highlighted banner at the top of the ApsaraDB RDS console. Notifications include renewal reminders and instance creation failure alerts.
+// ApsaraDB RDS notifications are highlighted at the top of the ApsaraDB RDS console. These notifications include renewal reminders and instance creation failure reminders.
 //
-// After you query notifications by calling this operation, you can call [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) to mark a notification as confirmed, which indicates that you have acknowledged the notification.
+// After you query notifications by calling this operation, you can call the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark a notification as confirmed. This indicates that you have acknowledged the content of the notification.
 //
 // @param request - QueryNotifyRequest
 //
@@ -40437,7 +40437,7 @@ func (client *Client) QueryNotify(request *QueryNotifyRequest) (_result *QueryNo
 
 // Summary:
 //
-// Queries the hot topics of the ApsaraDB RDS chatbot.
+// Queries the hot issues of the RDS bot.
 //
 // @param request - QueryRecommendByCodeRequest
 //
@@ -40497,7 +40497,7 @@ func (client *Client) QueryRecommendByCodeWithOptions(request *QueryRecommendByC
 
 // Summary:
 //
-// Queries the hot topics of the ApsaraDB RDS chatbot.
+// Queries the hot issues of the RDS bot.
 //
 // @param request - QueryRecommendByCodeRequest
 //
@@ -40841,13 +40841,13 @@ func (client *Client) RebuildDBInstance(request *RebuildDBInstanceRequest) (_res
 
 // Summary:
 //
-// Rebuilds the data synchronization link for a disaster recovery instance.
+// Rebuilds the data synchronization link for an RDS disaster recovery instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // @param request - RebuildReplicationLinkRequest
 //
@@ -40891,13 +40891,13 @@ func (client *Client) RebuildReplicationLinkWithOptions(request *RebuildReplicat
 
 // Summary:
 //
-// Rebuilds the data synchronization link for a disaster recovery instance.
+// Rebuilds the data synchronization link for an RDS disaster recovery instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
 // @param request - RebuildReplicationLinkRequest
 //
@@ -41009,17 +41009,17 @@ func (client *Client) ReceiveDBInstance(request *ReceiveDBInstanceRequest) (_res
 
 // Summary:
 //
-// Restores RDS SQL Server backup data to an existing instance or a new instance.
+// Restores the backup data of an ApsaraDB RDS for SQL Server instance to an existing instance or a new instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// RDS SQL Server (instances running SQL Server 2012 or later)
+// ApsaraDB RDS for SQL Server (instances of SQL Server 2012 and later)
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the documentation to ensure that you fully understand the prerequisites and impacts.
 //
 // [Restore SQL Server data](https://help.aliyun.com/document_detail/95722.html)
 //
@@ -41125,17 +41125,17 @@ func (client *Client) RecoveryDBInstanceWithOptions(request *RecoveryDBInstanceR
 
 // Summary:
 //
-// Restores RDS SQL Server backup data to an existing instance or a new instance.
+// Restores the backup data of an ApsaraDB RDS for SQL Server instance to an existing instance or a new instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// RDS SQL Server (instances running SQL Server 2012 or later)
+// ApsaraDB RDS for SQL Server (instances of SQL Server 2012 and later)
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the documentation to ensure that you fully understand the prerequisites and impacts.
 //
 // [Restore SQL Server data](https://help.aliyun.com/document_detail/95722.html)
 //
@@ -41481,27 +41481,27 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 
 // Summary:
 //
-// Releases a read/write splitting endpoint.
+// Releases the read/write splitting endpoint.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Before you begin
+// ### Prerequisites
 //
-// Before you call this operation, make sure that the instance meets the following requirements. Otherwise, the operation fails:
+// When you call this operation, the instance must meet the following requirements. Otherwise, the operation fails:
 //
-//   - The MySQL instance uses a shared database proxy.
+//   - The MySQL instance uses the shared database proxy.
 //
 //   - Read/write splitting is enabled for the instance.
 //
-//   - The instance runs one of the following versions:
+//   - The instance runs one of the following editions:
 //
-//   - MySQL 5.7 on RDS High-availability Edition with local SSDs
+//   - MySQL 5.7 High-availability Edition (with local SSDs)
 //
 //   - MySQL 5.6
 //
@@ -41569,27 +41569,27 @@ func (client *Client) ReleaseReadWriteSplittingConnectionWithOptions(request *Re
 
 // Summary:
 //
-// Releases a read/write splitting endpoint.
+// Releases the read/write splitting endpoint.
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
 // - ApsaraDB RDS for SQL Server
 //
-// ### Before you begin
+// ### Prerequisites
 //
-// Before you call this operation, make sure that the instance meets the following requirements. Otherwise, the operation fails:
+// When you call this operation, the instance must meet the following requirements. Otherwise, the operation fails:
 //
-//   - The MySQL instance uses a shared database proxy.
+//   - The MySQL instance uses the shared database proxy.
 //
 //   - Read/write splitting is enabled for the instance.
 //
-//   - The instance runs one of the following versions:
+//   - The instance runs one of the following editions:
 //
-//   - MySQL 5.7 on RDS High-availability Edition with local SSDs
+//   - MySQL 5.7 High-availability Edition (with local SSDs)
 //
 //   - MySQL 5.6
 //
@@ -41611,11 +41611,11 @@ func (client *Client) ReleaseReadWriteSplittingConnection(request *ReleaseReadWr
 
 // Summary:
 //
-// Removes instances from a deployment set.
+// Removes an RDS custom instance from a deployment set.
 //
 // Description:
 //
-// Removing instances from a deployment set is a non-disruptive operation and does not cause instance restarts.
+// Removing an RDS custom instance from a deployment set is a non-disruptive operation and does not cause the instance to restart.
 //
 // @param request - RemoveRCInstancesFromDeploymentSetRequest
 //
@@ -41667,11 +41667,11 @@ func (client *Client) RemoveRCInstancesFromDeploymentSetWithOptions(request *Rem
 
 // Summary:
 //
-// Removes instances from a deployment set.
+// Removes an RDS custom instance from a deployment set.
 //
 // Description:
 //
-// Removing instances from a deployment set is a non-disruptive operation and does not cause instance restarts.
+// Removing an RDS custom instance from a deployment set is a non-disruptive operation and does not cause the instance to restart.
 //
 // @param request - RemoveRCInstancesFromDeploymentSetRequest
 //
@@ -42113,7 +42113,7 @@ func (client *Client) RenewRCInstance(request *RenewRCInstanceRequest) (_result 
 //
 // - The instance must be in the Stopped state.
 //
-// - Reinstalling the operating system deletes all data on the original system cloud disk. Proceed with caution.
+// - Reinstalling the operating system causes data loss on the original system cloud disk. Proceed with caution.
 //
 // @param request - ReplaceRCInstanceSystemDiskRequest
 //
@@ -42183,7 +42183,7 @@ func (client *Client) ReplaceRCInstanceSystemDiskWithOptions(request *ReplaceRCI
 //
 // - The instance must be in the Stopped state.
 //
-// - Reinstalling the operating system deletes all data on the original system cloud disk. Proceed with caution.
+// - Reinstalling the operating system causes data loss on the original system cloud disk. Proceed with caution.
 //
 // @param request - ReplaceRCInstanceSystemDiskRequest
 //
@@ -42453,11 +42453,11 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 
 // Summary:
 //
-// Expands the instance storage of an RDS Custom instance.
+// Expands the instance storage of an ApsaraDB RDS Custom instance.
 //
 // Description:
 //
-// Instances with local disks do not support storage space changes.
+// Storage space changes are not supported for instances with local disks.
 //
 // @param request - ResizeRCInstanceDiskRequest
 //
@@ -42525,11 +42525,11 @@ func (client *Client) ResizeRCInstanceDiskWithOptions(request *ResizeRCInstanceD
 
 // Summary:
 //
-// Expands the instance storage of an RDS Custom instance.
+// Expands the instance storage of an ApsaraDB RDS Custom instance.
 //
 // Description:
 //
-// Instances with local disks do not support storage space changes.
+// Storage space changes are not supported for instances with local disks.
 //
 // @param request - ResizeRCInstanceDiskRequest
 //
@@ -42681,19 +42681,19 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 
 // Summary:
 //
-// Restores data to an existing instance across regions.
+// Restores data across regions to an existing instance.
 //
 // Description:
 //
 // > Before the restoration, you can call the CheckCreateDdrDBInstance operation to check whether an ApsaraDB RDS instance can be restored across regions by using a cross-region backup set.
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.</notice>
 //
 // - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -42789,19 +42789,19 @@ func (client *Client) RestoreDdrTableWithOptions(request *RestoreDdrTableRequest
 
 // Summary:
 //
-// Restores data to an existing instance across regions.
+// Restores data across regions to an existing instance.
 //
 // Description:
 //
 // > Before the restoration, you can call the CheckCreateDdrDBInstance operation to check whether an ApsaraDB RDS instance can be restored across regions by using a cross-region backup set.
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for MySQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.</notice>
 //
 // - [Cross-region backup for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/120824.html)
 //
@@ -43809,7 +43809,7 @@ func (client *Client) ShareRCDeploymentSet(request *ShareRCDeploymentSetRequest)
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.
 //
 // <props="china">
 //
@@ -43943,7 +43943,7 @@ func (client *Client) StartDBInstanceWithOptions(request *StartDBInstanceRequest
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.
 //
 // <props="china">
 //
@@ -43973,7 +43973,7 @@ func (client *Client) StartDBInstance(request *StartDBInstanceRequest) (_result 
 
 // Summary:
 //
-// Starts an RDS Custom instance that is in the Stopped state. After the operation is called, the instance enters the Starting state and then transitions to the Running state.
+// Starts an RDS Custom instance that is in the Stopped state. After the API call succeeds, the instance transitions from the Starting state to the Running state.
 //
 // @param request - StartRCInstanceRequest
 //
@@ -44021,7 +44021,7 @@ func (client *Client) StartRCInstanceWithOptions(request *StartRCInstanceRequest
 
 // Summary:
 //
-// Starts an RDS Custom instance that is in the Stopped state. After the operation is called, the instance enters the Starting state and then transitions to the Running state.
+// Starts an RDS Custom instance that is in the Stopped state. After the API call succeeds, the instance transitions from the Starting state to the Running state.
 //
 // @param request - StartRCInstanceRequest
 //
@@ -44245,7 +44245,7 @@ func (client *Client) StopDBInstance(request *StopDBInstanceRequest) (_result *S
 
 // Summary:
 //
-// Stops a running RDS Custom instance. After the API is called, the instance transitions from the Stopping state to the Stopped state.
+// Stops a running RDS Custom instance. After a successful call, the instance transitions from the Stopping state to the Stopped state.
 //
 // @param request - StopRCInstanceRequest
 //
@@ -44301,7 +44301,7 @@ func (client *Client) StopRCInstanceWithOptions(request *StopRCInstanceRequest, 
 
 // Summary:
 //
-// Stops a running RDS Custom instance. After the API is called, the instance transitions from the Stopping state to the Stopped state.
+// Stops a running RDS Custom instance. After a successful call, the instance transitions from the Stopping state to the Stopped state.
 //
 // @param request - StopRCInstanceRequest
 //
@@ -44679,11 +44679,11 @@ func (client *Client) SwitchDBInstanceNetType(request *SwitchDBInstanceNetTypeRe
 
 // Summary:
 //
-// Switches the virtual private cloud (VPC) and vSwitch of an ApsaraDB RDS instance.
+// Switches the VPC and vSwitch of an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -44693,13 +44693,13 @@ func (client *Client) SwitchDBInstanceNetType(request *SwitchDBInstanceNetTypeRe
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to ensure that you fully understand the prerequisites and impacts.
 //
-// - [Switch the VPC and vSwitch of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/137567.html)
+// - [Change the VPC and vSwitch of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/137567.html)
 //
-// - [Switch the vSwitch of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146885.html)
+// - [Change the vSwitch of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146885.html)
 //
-// - [Switch the VPC and vSwitch of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/347675.html)
+// - [Change the VPC and vSwitch of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/347675.html)
 //
 // @param request - SwitchDBInstanceVpcRequest
 //
@@ -44759,11 +44759,11 @@ func (client *Client) SwitchDBInstanceVpcWithOptions(request *SwitchDBInstanceVp
 
 // Summary:
 //
-// Switches the virtual private cloud (VPC) and vSwitch of an ApsaraDB RDS instance.
+// Switches the VPC and vSwitch of an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -44773,13 +44773,13 @@ func (client *Client) SwitchDBInstanceVpcWithOptions(request *SwitchDBInstanceVp
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to ensure that you fully understand the prerequisites and impacts.
 //
-// - [Switch the VPC and vSwitch of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/137567.html)
+// - [Change the VPC and vSwitch of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/137567.html)
 //
-// - [Switch the vSwitch of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146885.html)
+// - [Change the vSwitch of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146885.html)
 //
-// - [Switch the VPC and vSwitch of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/347675.html)
+// - [Change the VPC and vSwitch of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/347675.html)
 //
 // @param request - SwitchDBInstanceVpcRequest
 //
@@ -44797,13 +44797,13 @@ func (client *Client) SwitchDBInstanceVpc(request *SwitchDBInstanceVpcRequest) (
 
 // Summary:
 //
-// Switches traffic for zero-downtime major engine version upgrades of ApsaraDB RDS for PostgreSQL instances.
+// Switches traffic for zero-downtime major engine version upgrades of ApsaraDB RDS for PostgreSQL.
 //
 // Description:
 //
-// Applicable engine:
+// Applicable engines:
 //
-//   - RDS PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - SwitchOverMajorVersionUpgradeRequest
 //
@@ -44883,13 +44883,13 @@ func (client *Client) SwitchOverMajorVersionUpgradeWithOptions(request *SwitchOv
 
 // Summary:
 //
-// Switches traffic for zero-downtime major engine version upgrades of ApsaraDB RDS for PostgreSQL instances.
+// Switches traffic for zero-downtime major engine version upgrades of ApsaraDB RDS for PostgreSQL.
 //
 // Description:
 //
-// Applicable engine:
+// Applicable engines:
 //
-//   - RDS PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - SwitchOverMajorVersionUpgradeRequest
 //
@@ -44911,9 +44911,9 @@ func (client *Client) SwitchOverMajorVersionUpgrade(request *SwitchOverMajorVers
 //
 // Description:
 //
-// ### Supported engine
+// ### Applicable engine
 //
-// RDS SQL Server.
+// ApsaraDB RDS for SQL Server.
 //
 // @param request - SwitchReplicationLinkRequest
 //
@@ -44973,9 +44973,9 @@ func (client *Client) SwitchReplicationLinkWithOptions(request *SwitchReplicatio
 //
 // Description:
 //
-// ### Supported engine
+// ### Applicable engine
 //
-// RDS SQL Server.
+// ApsaraDB RDS for SQL Server.
 //
 // @param request - SwitchReplicationLinkRequest
 //
@@ -45133,11 +45133,11 @@ func (client *Client) SyncRCSecurityGroup(request *SyncRCSecurityGroupRequest) (
 
 // Summary:
 //
-// Creates and binds tags to a specified ApsaraDB RDS instance.
+// Creates and binds tags to specified ApsaraDB RDS instances.
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -45149,7 +45149,7 @@ func (client *Client) SyncRCSecurityGroup(request *SyncRCSecurityGroupRequest) (
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation before you proceed.
+//	Notice: Before you call this operation, read the related documentation to fully understand the prerequisites and impacts.
 //
 // - [Create tags for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96149.html)
 //
@@ -45225,11 +45225,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Creates and binds tags to a specified ApsaraDB RDS instance.
+// Creates and binds tags to specified ApsaraDB RDS instances.
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -45241,7 +45241,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation before you proceed.
+//	Notice: Before you call this operation, read the related documentation to fully understand the prerequisites and impacts.
 //
 // - [Create tags for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96149.html)
 //
@@ -45271,9 +45271,9 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // @param request - TerminateMigrateTaskRequest
 //
@@ -45337,9 +45337,9 @@ func (client *Client) TerminateMigrateTaskWithOptions(request *TerminateMigrateT
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // @param request - TerminateMigrateTaskRequest
 //
@@ -45357,7 +45357,7 @@ func (client *Client) TerminateMigrateTask(request *TerminateMigrateTaskRequest)
 
 // Summary:
 //
-// Changes the billing method of an ApsaraDB RDS instance.
+// Modifies the billing method of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -45373,7 +45373,7 @@ func (client *Client) TerminateMigrateTask(request *TerminateMigrateTaskRequest)
 //
 // ### Related documentation
 //
-//	Warning: This API operation involves fees. Read the related documentation carefully before you perform this operation.
+//	Warning: This API operation involves fees. Read the related documentation carefully before you call this operation.</warning>
 //
 // - [Change the billing method of an ApsaraDB RDS for MySQL instance from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/96048.html) and [Change the billing method of an ApsaraDB RDS for MySQL instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/161875.html)
 //
@@ -45473,7 +45473,7 @@ func (client *Client) TransformDBInstancePayTypeWithOptions(request *TransformDB
 
 // Summary:
 //
-// Changes the billing method of an ApsaraDB RDS instance.
+// Modifies the billing method of an ApsaraDB RDS instance.
 //
 // Description:
 //
@@ -45489,7 +45489,7 @@ func (client *Client) TransformDBInstancePayTypeWithOptions(request *TransformDB
 //
 // ### Related documentation
 //
-//	Warning: This API operation involves fees. Read the related documentation carefully before you perform this operation.
+//	Warning: This API operation involves fees. Read the related documentation carefully before you call this operation.</warning>
 //
 // - [Change the billing method of an ApsaraDB RDS for MySQL instance from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/96048.html) and [Change the billing method of an ApsaraDB RDS for MySQL instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/161875.html)
 //
@@ -45687,11 +45687,11 @@ func (client *Client) UnlockAccount(request *UnlockAccountRequest) (_result *Unl
 
 // Summary:
 //
-// Unbinds tags from a specified ApsaraDB RDS instance.
+// Removes tags from a specified ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -45703,9 +45703,9 @@ func (client *Client) UnlockAccount(request *UnlockAccountRequest) (_result *Unl
 //
 // ### Precautions
 //
-//   - You can unbind up to 20 tags at a time.
+//   - You can remove up to 20 tags at a time.
 //
-//   - If a tag is unbound from an instance and is not bound to any other instances, the tag is automatically deleted.
+//   - If a tag is removed from an instance and is not attached to any other instances, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -45777,11 +45777,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Unbinds tags from a specified ApsaraDB RDS instance.
+// Removes tags from a specified ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -45793,9 +45793,9 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 //
 // ### Precautions
 //
-//   - You can unbind up to 20 tags at a time.
+//   - You can remove up to 20 tags at a time.
 //
-//   - If a tag is unbound from an instance and is not bound to any other instances, the tag is automatically deleted.
+//   - If a tag is removed from an instance and is not attached to any other instances, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -45813,19 +45813,19 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Updates a replication channel for a native replication instance.
+// Updates the replication channel of a native replication instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// # ApsaraDB RDS for MySQL
+// # RDS MySQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you use this API operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.</notice>
 //
-// [RDS MySQL native replication instance](https://help.aliyun.com/document_detail/2856487.html)
+// [Native replication instances of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/2856487.html)
 //
 // @param request - UpdateDBInstanceReplicationRequest
 //
@@ -45901,19 +45901,19 @@ func (client *Client) UpdateDBInstanceReplicationWithOptions(request *UpdateDBIn
 
 // Summary:
 //
-// Updates a replication channel for a native replication instance.
+// Updates the replication channel of a native replication instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
-// # ApsaraDB RDS for MySQL
+// # RDS MySQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you use this API operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.</notice>
 //
-// [RDS MySQL native replication instance](https://help.aliyun.com/document_detail/2856487.html)
+// [Native replication instances of ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/2856487.html)
 //
 // @param request - UpdateDBInstanceReplicationRequest
 //
@@ -45931,21 +45931,21 @@ func (client *Client) UpdateDBInstanceReplication(request *UpdateDBInstanceRepli
 
 // Summary:
 //
-// Upgrades a specified extension in a destination database.
+// Upgrades specified plug-ins in a specified database.
 //
 // Description:
 //
-// <props="china">You can join the RDS PostgreSQL extension exchange DingTalk group (103525002795) to consult, communicate, provide feedback, and obtain more information about extensions.
+// <props="china">You can join the RDS PostgreSQL plug-in DingTalk group (103525002795) for consultation, discussion, and feedback to get more information about plug-ins.
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # RDS PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// [Manage extensions](https://help.aliyun.com/document_detail/2402409.html)
+// [Manage plug-ins](https://help.aliyun.com/document_detail/2402409.html)
 //
 // @param request - UpdatePostgresExtensionsRequest
 //
@@ -46021,21 +46021,21 @@ func (client *Client) UpdatePostgresExtensionsWithOptions(request *UpdatePostgre
 
 // Summary:
 //
-// Upgrades a specified extension in a destination database.
+// Upgrades specified plug-ins in a specified database.
 //
 // Description:
 //
-// <props="china">You can join the RDS PostgreSQL extension exchange DingTalk group (103525002795) to consult, communicate, provide feedback, and obtain more information about extensions.
+// <props="china">You can join the RDS PostgreSQL plug-in DingTalk group (103525002795) for consultation, discussion, and feedback to get more information about plug-ins.
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # RDS PostgreSQL
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// [Manage extensions](https://help.aliyun.com/document_detail/2402409.html)
+// [Manage plug-ins](https://help.aliyun.com/document_detail/2402409.html)
 //
 // @param request - UpdatePostgresExtensionsRequest
 //
@@ -46057,15 +46057,15 @@ func (client *Client) UpdatePostgresExtensions(request *UpdatePostgresExtensions
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for MySQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-// A user backup is a full backup of a self-managed MySQL database. You can restore a user backup to the cloud. For more information, see [Migrate the full data of a self-managed MySQL 5.7 or 8.0 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
+// A user backup is a full backup of a self-managed MySQL database. You can restore the user backup to Alibaba Cloud. For more information, see [Migrate full data from self-managed MySQL 5.7 and 8.0 databases to the cloud](https://help.aliyun.com/document_detail/251779.html).
 //
-//	Notice: Before you call this operation, carefully read the feature documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the related documentation to ensure that you fully understand the prerequisites and impacts of this operation.</notice>
 //
 // @param request - UpdateUserBackupFileRequest
 //
@@ -46141,15 +46141,15 @@ func (client *Client) UpdateUserBackupFileWithOptions(request *UpdateUserBackupF
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # ApsaraDB RDS for MySQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
-// A user backup is a full backup of a self-managed MySQL database. You can restore a user backup to the cloud. For more information, see [Migrate the full data of a self-managed MySQL 5.7 or 8.0 database to the cloud](https://help.aliyun.com/document_detail/251779.html).
+// A user backup is a full backup of a self-managed MySQL database. You can restore the user backup to Alibaba Cloud. For more information, see [Migrate full data from self-managed MySQL 5.7 and 8.0 databases to the cloud](https://help.aliyun.com/document_detail/251779.html).
 //
-//	Notice: Before you call this operation, carefully read the feature documentation to fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the related documentation to ensure that you fully understand the prerequisites and impacts of this operation.</notice>
 //
 // @param request - UpdateUserBackupFileRequest
 //
@@ -46285,17 +46285,17 @@ func (client *Client) UpgradeDBInstanceEngineVersion(request *UpgradeDBInstanceE
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the documentation to ensure that you fully understand the prerequisites and impacts.
 //
 // - [Upgrade the minor engine version of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96059.html)
 //
@@ -46373,17 +46373,17 @@ func (client *Client) UpgradeDBInstanceKernelVersionWithOptions(request *Upgrade
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// - RDS SQL Server
+// - ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the documentation to ensure that you fully understand the prerequisites and impacts.
 //
 // - [Upgrade the minor engine version of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96059.html)
 //
@@ -46411,13 +46411,13 @@ func (client *Client) UpgradeDBInstanceKernelVersion(request *UpgradeDBInstanceK
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-// This API operation involves fees. Carefully read the related documentation to fully understand the fees, prerequisites, and impacts before you proceed.
+// This API operation incurs fees. Carefully read the related documentation to fully understand the fees, prerequisites, and impacts before you proceed.
 //
 // [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html)
 //
@@ -46555,13 +46555,13 @@ func (client *Client) UpgradeDBInstanceMajorVersionWithOptions(request *UpgradeD
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-// This API operation involves fees. Carefully read the related documentation to fully understand the fees, prerequisites, and impacts before you proceed.
+// This API operation incurs fees. Carefully read the related documentation to fully understand the fees, prerequisites, and impacts before you proceed.
 //
 // [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html)
 //
@@ -46699,7 +46699,7 @@ func (client *Client) UpgradeDBInstanceMajorVersionPrecheck(request *UpgradeDBIn
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to understand the prerequisites and impacts.
 //
 // - [Upgrade the minor engine version of the database proxy for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/197465.html)
 //
@@ -46787,7 +46787,7 @@ func (client *Client) UpgradeDBProxyInstanceKernelVersionWithOptions(request *Up
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to understand the prerequisites and impacts.
 //
 // - [Upgrade the minor engine version of the database proxy for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/197465.html)
 //
@@ -46809,11 +46809,11 @@ func (client *Client) UpgradeDBProxyInstanceKernelVersion(request *UpgradeDBProx
 
 // Summary:
 //
-// Performs a precheck for a data import task of an ApsaraDB RDS for MySQL native replication instance.
+// Pre-checks the data import task for an ApsaraDB RDS for MySQL native replication instance.
 //
 // Description:
 //
-// Performs a precheck for a data import task of an ApsaraDB RDS for MySQL native replication instance.
+// Pre-checks the data import task for an ApsaraDB RDS for MySQL native replication instance.
 //
 // @param request - ValidateImportTaskRequest
 //
@@ -46901,11 +46901,11 @@ func (client *Client) ValidateImportTaskWithOptions(request *ValidateImportTaskR
 
 // Summary:
 //
-// Performs a precheck for a data import task of an ApsaraDB RDS for MySQL native replication instance.
+// Pre-checks the data import task for an ApsaraDB RDS for MySQL native replication instance.
 //
 // Description:
 //
-// Performs a precheck for a data import task of an ApsaraDB RDS for MySQL native replication instance.
+// Pre-checks the data import task for an ApsaraDB RDS for MySQL native replication instance.
 //
 // @param request - ValidateImportTaskRequest
 //

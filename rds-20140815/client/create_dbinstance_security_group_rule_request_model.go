@@ -30,7 +30,7 @@ type iCreateDBInstanceSecurityGroupRuleRequest interface {
 }
 
 type CreateDBInstanceSecurityGroupRuleRequest struct {
-	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) to obtain the instance ID.
+	// Instance ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateDBInstanceSecurityGroupRuleRequest struct {
 	//
 	// zht_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The transport layer protocol type. Valid values:
+	// The transport-layer protocol type. Valid values:
 	//
 	// - TCP
 	//
@@ -56,9 +56,7 @@ type CreateDBInstanceSecurityGroupRuleRequest struct {
 	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The range of destination ports for the transport layer protocol (TCP/UDP) that the security group opens.
-	//
-	// Valid values: 1 to 65535. Separate the start port and end port with a forward slash (/). Example: 1/200.
+	// The range of destination ports for the transport layer protocol (TCP or UDP) specified in the security group rule. Valid values: 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +66,7 @@ type CreateDBInstanceSecurityGroupRuleRequest struct {
 	PortRange            *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address range. CIDR format and IPv4 format are supported.
+	// The source IP address range. IP address ranges in CIDR format and IPv4 format are supported.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDescribeHADiagnoseConfigRequest interface {
 }
 
 type DescribeHADiagnoseConfigRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// The ID of the instance. You can call the DescribeDBInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type DescribeHADiagnoseConfigRequest struct {
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call DescribeRegions to obtain the region ID.
+	// The region ID. You can call the DescribeRegions operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

@@ -32,7 +32,7 @@ type iDescribeRCInstanceIpAddressRequest interface {
 }
 
 type DescribeRCInstanceIpAddressRequest struct {
-	// The page number of the page to return. Default value: 1, which indicates that the first page is returned.
+	// The number of the page to return. Default value: 1.
 	//
 	// example:
 	//
@@ -46,15 +46,15 @@ type DescribeRCInstanceIpAddressRequest struct {
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The DDoS mitigation status of the assets that are assigned public IP addresses to query. Valid values:
 	//
-	// - **defense**: Cleaning. Assets that are assigned public IP addresses for which Anti-DDoS Origin scrubs traffic are queried.
+	// - **defense**: Cleaning. Queries assets that are assigned public IP addresses and for which the system scrubs traffic.
 	//
-	// - **blackhole**: Black Hole Activated. Assets that are assigned public IP addresses that are in the blackhole filtering status are queried.
+	// - **blackhole**: Black Hole Activated. Queries assets that are assigned public IP addresses and are under the blackhole filtering status.
 	//
 	// example:
 	//
 	// defense
 	DdosStatus *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
-	// The instance ID of the Custom instance to which the assets that are assigned public IP addresses belong.
+	// The instance ID of the RDS Custom instance to which the assets that are assigned public IP addresses belong.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeRCInstanceIpAddressRequest struct {
 	//
 	// 39.105.XXX.XXX
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	// The name of the Custom instance to which the assets that are assigned public IP addresses belong.
+	// The name of the RDS Custom instance to which the assets that are assigned public IP addresses belong.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type DescribeRCInstanceIpAddressRequest struct {
 	//
 	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Settings for paged query. The number of instances to return on each page for paging.
+	// The number of instances per page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Custom instance.
+	// The region ID of the RDS Custom instance.
 	//
 	// example:
 	//

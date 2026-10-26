@@ -37,9 +37,9 @@ type DescribeParametersResponseBody struct {
 	//
 	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The parameter template information.
+	// The information about the parameter template.
 	ParamGroupInfo *DescribeParametersResponseBodyParamGroupInfo `json:"ParamGroupInfo,omitempty" xml:"ParamGroupInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -209,25 +209,25 @@ func (s *DescribeParametersResponseBodyConfigParametersDBInstanceParameter) Vali
 }
 
 type DescribeParametersResponseBodyParamGroupInfo struct {
-	// The parameter template ID.
+	// The ID of the parameter template.
 	//
 	// example:
 	//
 	// rpg-sys-01040401010200
 	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
-	// The parameter template description.
+	// The description of the parameter template.
 	//
 	// example:
 	//
 	// sync_binlog=1000, innodb_flush_log_at_trx_commit=2, async
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
-	// The parameter template name.
+	// The name of the parameter template.
 	//
 	// example:
 	//
 	// mysql_innodb_8.0_basic_normal_high
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
-	// The parameter templatetype.
+	// The templatetype of the parameter template.
 	//
 	// example:
 	//

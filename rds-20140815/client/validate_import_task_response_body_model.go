@@ -22,7 +22,7 @@ type ValidateImportTaskResponseBody struct {
 	//
 	// 08A3B71B-FE08-4B03-974F-CC7EA6DB1828
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the precheck task.
+	// The ID of the pre-check task.
 	//
 	// example:
 	//

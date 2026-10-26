@@ -123,39 +123,39 @@ type DescribeRCDisksResponseBodyDisks struct {
 	//
 	// 2017-12-05T2340:00Z
 	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	// Indicates whether burst (performance bursting) is enabled. Valid values:
+	// Indicates whether burstable performance is enabled. Valid values:
 	//
-	// true: Enabled.
+	// - true: Yes.
 	//
-	// false: Disabled.
+	// - false: No.
 	//
 	// This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see ESSD AutoPL cloud disks.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The disk category. Valid values:
 	//
-	// - **cloud_efficiency**: ultra cloud disk.
+	// - **cloud_efficiency**: Ultra cloud disk.
 	//
-	// - **cloud_ssd**: standard SSD.
+	// - **cloud_ssd**: Standard SSD cloud disk.
 	//
 	// - **cloud_essd**: ESSD cloud disk.
 	//
-	// - **cloud_auto**: premium performance disk.
+	// - **cloud_auto**: Premium performance disk.
 	//
 	// example:
 	//
 	// cloud_auto
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The creation time.
+	// The time when the cloud disk was created. The time follows the ISO 8601 standard and is displayed in UTC.
 	//
 	// example:
 	//
 	// 2024-10-22T02:41:37Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether automatic snapshots are deleted when the cloud disk is deleted. Valid values:
+	// Indicates whether automatic snapshots are deleted along with the cloud disk. Valid values:
 	//
-	// - true: Automatic snapshots are deleted when the cloud disk is deleted.
+	// - true: Deletes the snapshots on the cloud disk.
 	//
-	// - false: Automatic snapshots are retained when the cloud disk is deleted.
+	// - false: Retains the snapshots on the cloud disk.
 	//
 	// example:
 	//
@@ -183,9 +183,9 @@ type DescribeRCDisksResponseBodyDisks struct {
 	//
 	// /dev/xvda
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// Billable methods of the disk.
+	// The billing method of the disk.
 	//
-	// Only **PostPaid*	- is supported, which indicates the pay-as-you-go billing method.
+	// Only **PostPaid*	- (pay-as-you-go) is supported.
 	//
 	// example:
 	//
@@ -203,31 +203,31 @@ type DescribeRCDisksResponseBodyDisks struct {
 	//
 	// fvt-ecs-bcfb3627
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// Indicates whether only encrypted cloud disks are filtered. Valid values:
+	// Indicates whether the cloud disk is encrypted. Valid values:
 	//
-	// - true: Only encrypted cloud disks are returned.
+	// - true: Yes.
 	//
-	// - false (default): All cloud disks are returned.
+	// - false: No.
 	//
 	// example:
 	//
 	// true
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// none
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline performance}. Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
+	// The provisioned read and write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50,000, 1,000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50,000}.
 	//
-	// This parameter is supported only when `Category` is set to `cloud_auto`.
+	// This parameter is supported only when Category is set to cloud_auto.
 	//
 	// example:
 	//
 	// 4000
 	IOPS *int64 `json:"IOPS,omitempty" xml:"IOPS,omitempty"`
-	// The image ID used to create the RDS Custom instance. This parameter has a value only for cloud disks created from an image. Otherwise, the value is empty. This value remains unchanged throughout the lifecycle of the cloud disk.
+	// The ID of the image used to create the RDS Custom instance. This parameter has a value only if the cloud disk was created from an image. Otherwise, the value is empty. The value remains unchanged throughout the lifecycle of the cloud disk.
 	//
 	// example:
 	//
@@ -239,21 +239,21 @@ type DescribeRCDisksResponseBodyDisks struct {
 	//
 	// rc-e8w1cn7634kiam****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The performance level (PL) of the ESSD cloud disk. Valid values:
+	// The performance level of the ESSD cloud disk (not standard SSD). Valid values:
 	//
-	// - PL0: A single standard SSD can deliver up to 10,000 random read/write IOPS.
+	// - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
 	//
-	// - PL1: A single standard SSD can deliver up to 50,000 random read/write IOPS.
+	// - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
 	//
-	// - PL2: A single standard SSD can deliver up to 100,000 random read/write IOPS.
+	// - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
 	//
-	// - PL3: A single standard SSD can deliver up to 1,000,000 random read/write IOPS.
+	// - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
 	//
 	// example:
 	//
 	// PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// Indicates whether the disk is detachable.
+	// Indicates whether the disk is removable.
 	Portable *bool `json:"Portable,omitempty" xml:"Portable,omitempty"`
 	// The region ID.
 	//
@@ -279,9 +279,9 @@ type DescribeRCDisksResponseBodyDisks struct {
 	//
 	// 60
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The snapshot ID used to create the cloud disk.
+	// The ID of the snapshot used to create the cloud disk.
 	//
-	// If no snapshot was specified when the cloud disk was created, this parameter is empty. This value remains unchanged throughout the lifecycle of the cloud disk.
+	// If no snapshot was specified when the cloud disk was created, the value is empty. The value remains unchanged throughout the lifecycle of the cloud disk.
 	//
 	// example:
 	//
@@ -289,23 +289,23 @@ type DescribeRCDisksResponseBodyDisks struct {
 	SourceSnapshotId *string `json:"SourceSnapshotId,omitempty" xml:"SourceSnapshotId,omitempty"`
 	// The disk status. Valid values:
 	//
-	// - In_use: in use.
+	// - In_use: In use.
 	//
-	// - Available: to be attached.
+	// - Available: Available.
 	//
-	// - Attaching: being attached.
+	// - Attaching: Attaching.
 	//
-	// - Detaching: being detached.
+	// - Detaching: Detaching.
 	//
-	// - Creating: being created.
+	// - Creating: Creating.
 	//
-	// - ReIniting: being initialized.
+	// - ReIniting: Initializing.
 	//
 	// example:
 	//
 	// In_use
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the dedicated block storage cluster to which the cloud disk belongs. If the cloud disk is in a public cloud block storage cluster, this parameter is empty.
+	// The ID of the dedicated block storage cluster to which the cloud disk belongs. If the cloud disk is in a public cloud block storage cluster, the value is empty.
 	//
 	// example:
 	//
@@ -321,9 +321,9 @@ type DescribeRCDisksResponseBodyDisks struct {
 	Tag []*DescribeRCDisksResponseBodyDisksTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The disk type. Valid values:
 	//
-	// - system: system cloud disk.
+	// - system: System cloud disk.
 	//
-	// - data: data cloud disk.
+	// - data: Data cloud disk.
 	//
 	// example:
 	//

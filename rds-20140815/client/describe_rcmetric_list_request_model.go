@@ -32,21 +32,19 @@ type iDescribeRCMetricListRequest interface {
 }
 
 type DescribeRCMetricListRequest struct {
-	// Queries the monitoring data of specified resources in batches for Custom for SQL Server.
-	//
-	// Format: a collection of `key:value` pairs.
+	// The dimensions used to query the monitoring data of specified resources in batches for Custom for SQL Server. Format: a collection of `key:value` pairs.
 	//
 	// example:
 	//
 	// [{"instanceId":"rc-l9hv3rv74ql7oa******"},{"instanceId":"rc-b532l1uj8n6sex******"}]
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The end of the time range to query. Specify the time in the `2024-08-06 10:15:00` format. The end time must be later than the start time.
+	// The end time of the query. Format: `2024-08-06 10:15:00`. The end time must be later than the start time.
 	//
 	// example:
 	//
 	// 2024-08-06 10:15:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -58,7 +56,7 @@ type DescribeRCMetricListRequest struct {
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of records per page for paging query.
+	// The number of records to return on each page for paging in a paged query.
 	//
 	// Default value: 1000.
 	//
@@ -66,7 +64,7 @@ type DescribeRCMetricListRequest struct {
 	//
 	// 1000
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The [monitoring metric](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+	// The [monitored metrics](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	//
 	// This parameter is required.
 	//
@@ -84,7 +82,7 @@ type DescribeRCMetricListRequest struct {
 	//
 	// - 60 (default)
 	//
-	// - An integer multiple of 60
+	// - Any integer multiple of 60
 	//
 	// example:
 	//
@@ -96,7 +94,7 @@ type DescribeRCMetricListRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the `2024-08-06 10:05:00` format.
+	// The start time of the query. Format: `2024-08-06 10:05:00`.
 	//
 	// example:
 	//

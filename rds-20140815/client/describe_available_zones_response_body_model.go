@@ -72,7 +72,7 @@ type DescribeAvailableZonesResponseBodyAvailableZones struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of supported database engines available for sale.
+	// The list of available database engines.
 	SupportedEngines []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Repeated"`
 	// The zone ID.
 	//
@@ -137,7 +137,7 @@ type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines struct {
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The list of supported database engine versions available for sale.
+	// The list of available database engine versions.
 	SupportedEngineVersions []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Repeated"`
 }
 
@@ -181,7 +181,7 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) Valid
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions struct {
-	// The list of supported instance editions available for sale.
+	// The list of available instance editions.
 	SupportedCategorys []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys `json:"SupportedCategorys,omitempty" xml:"SupportedCategorys,omitempty" type:"Repeated"`
 	// The database engine version.
 	//
@@ -237,7 +237,7 @@ type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEn
 	//
 	// HighAvailability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The list of supported storage types available for sale.
+	// The list of available storage types.
 	SupportedStorageTypes []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorysSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Repeated"`
 }
 

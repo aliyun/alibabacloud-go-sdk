@@ -28,7 +28,7 @@ type DescribeMarketingActivityResponseBody struct {
 	//
 	// 1979008652307170
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// - Chinese site: 26842
+	// - China site: 26842
 	//
 	// - International site: 26888
 	//
@@ -123,13 +123,13 @@ func (s *DescribeMarketingActivityResponseBody) Validate() error {
 type DescribeMarketingActivityResponseBodyItems struct {
 	// The instance edition. Valid values:
 	//
-	// 	- **Basic**: Basic Edition.
+	// 	- **Basic**: Basic Edition
 	//
-	// 	- **HighAvailability**: High-availability Edition.
+	// 	- **HighAvailability**: High-availability Edition
 	//
-	// 	- **AlwaysOn**: Cluster Edition.
+	// 	- **AlwaysOn**: Cluster Edition
 	//
-	// 	- **Finance**: RDS Enterprise Edition.
+	// 	- **Finance**: Enterprise Edition
 	//
 	// example:
 	//
@@ -137,15 +137,15 @@ type DescribeMarketingActivityResponseBodyItems struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - POSTPAY: pay-as-you-go.
+	// - POSTPAY: pay-as-you-go
 	//
-	// - PREPAY: subscription.
+	// - PREPAY: subscription
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The instance type. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only instance types](https://help.aliyun.com/document_detail/145759.html).
+	// The instance type code. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only instance types](https://help.aliyun.com/document_detail/145759.html).
 	//
 	// example:
 	//
@@ -157,13 +157,13 @@ type DescribeMarketingActivityResponseBodyItems struct {
 	//
 	// x
 	ClassGroup *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
-	// The number of CPU cores for the instance type. Unit: cores.
+	// The number of CPU cores for the instance type.
 	//
 	// example:
 	//
 	// 2
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The disk storage size per node. Unit: GB.
+	// The storage capacity per node. Unit: GB.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type DescribeMarketingActivityResponseBodyItems struct {
 	//
 	// 60
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum I/O bandwidth. Unit: Mbit/s.
+	// The maximum I/O throughput.
 	//
 	// example:
 	//
@@ -229,33 +229,33 @@ type DescribeMarketingActivityResponseBodyItems struct {
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The instance storage type. Valid values:
 	//
-	// 	- **local_ssd**: local SSD.
+	// 	- **local_ssd**: local SSD
 	//
-	// 	- **cloud_ssd**: standard SSD cloud disk.
+	// 	- **cloud_ssd**: standard SSD cloud disk
 	//
-	// 	- **cloud_essd**: PL1 ESSD cloud disk.
+	// 	- **cloud_essd**: PL1 ESSD cloud disk
 	//
-	// 	- **cloud_essd2**: PL2 ESSD cloud disk.
+	// 	- **cloud_essd2**: PL2 ESSD cloud disk
 	//
-	// 	- **cloud_essd3**: PL3 ESSD cloud disk.
+	// 	- **cloud_essd3**: PL3 ESSD cloud disk
 	//
 	// example:
 	//
 	// cloud_essd
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The upgrade instance edition.
+	// The instance edition after the upgrade.
 	//
 	// example:
 	//
 	// HighAvailability
 	UpgradeCategory *string `json:"UpgradeCategory,omitempty" xml:"UpgradeCategory,omitempty"`
-	// The upgrade instance type.
+	// The instance type code after the upgrade.
 	//
 	// example:
 	//
 	// rds.mysql.s3.large
 	UpgradeClassCode *string `json:"UpgradeClassCode,omitempty" xml:"UpgradeClassCode,omitempty"`
-	// The upgrade instance family.
+	// The instance family after the upgrade.
 	//
 	// example:
 	//
@@ -273,7 +273,7 @@ type DescribeMarketingActivityResponseBodyItems struct {
 	//
 	// test
 	UpgradeDescContent *string `json:"UpgradeDescContent,omitempty" xml:"UpgradeDescContent,omitempty"`
-	// The disk size after the upgrade.
+	// The storage capacity after the upgrade.
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ type DescribeMarketingActivityResponseBodyItems struct {
 	//
 	// 70
 	UpgradeMaxConnections *int32 `json:"UpgradeMaxConnections,omitempty" xml:"UpgradeMaxConnections,omitempty"`
-	// The maximum I/O bandwidth after the upgrade. Unit: Mbit/s.
+	// The maximum I/O throughput after the upgrade.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type DescribeClassDetailsRequest struct {
 	//
 	// rds.mysql.s3.large
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type DescribeClassDetailsRequest struct {
 	// 5.6
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query available region IDs.
+	// The region ID. You can call the DescribeRegions operation to query the available region IDs.
 	//
 	// This parameter is required.
 	//
@@ -95,7 +95,7 @@ type DescribeClassDetailsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain this value.
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID.
 	//
 	// example:
 	//

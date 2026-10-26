@@ -46,15 +46,15 @@ type DescribeBackupPolicyRequest struct {
 	//
 	// 	- **2**: parallel zlib compression
 	//
-	// 	- **4**: QuickLZ compression with fast restoration for individual databases and tables enabled
+	// 	- **4**: quicklz compression with database and table restoration enabled
 	//
-	// 	- **8**: QuickLZ compression without fast restoration for individual databases and tables supported
+	// 	- **8**: quicklz compression without database and table restoration supported
 	//
 	// example:
 	//
 	// 1
 	CompressType *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to retrieve the ID.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type DescribeBackupPolicyRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The archived backup data retention policy for deleted **MySQL*	- instances. Valid values:
+	// The data retention policy for archived backups of deleted **MySQL*	- instances. Valid values:
 	//
-	// 	- **None**: No archived backups are retained.
+	// 	- **None**: no retention
 	//
-	// 	- **Lastest**: Only the last archived backup is retained.
+	// 	- **Lastest**: retains the last backup
 	//
-	// 	- **All**: All archived backups are retained.
+	// 	- **All**: retains all backups
 	//
 	// example:
 	//

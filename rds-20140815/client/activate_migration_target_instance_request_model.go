@@ -30,14 +30,14 @@ type ActivateMigrationTargetInstanceRequest struct {
 	//
 	// pgm-bp102g323jd4****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// Set this parameter to 1, which specifies a forced switchover.
+	// Set the value to 1, which specifies a forced switchover.
 	//
 	// example:
 	//
 	// 1
 	ForceSwitch     *string `json:"ForceSwitch,omitempty" xml:"ForceSwitch,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// A reserved parameter. This parameter does not take effect.
+	// The reserved parameter. This parameter does not take effect.
 	//
 	// example:
 	//
@@ -45,7 +45,7 @@ type ActivateMigrationTargetInstanceRequest struct {
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The switchover time mode for cloud migration.
 	//
-	// Set this parameter to 0, which specifies an immediate switchover.
+	// Set the value to 0, which specifies an immediate switchover.
 	//
 	// example:
 	//

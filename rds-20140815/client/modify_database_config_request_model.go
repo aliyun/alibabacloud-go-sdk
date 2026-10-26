@@ -38,7 +38,7 @@ type ModifyDatabaseConfigRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The database name.
 	//
-	// > Specifying multiple database names is not supported.
+	// > You cannot specify multiple database names.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,11 @@ type ModifyDatabaseConfigRequest struct {
 	//
 	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The database attribute that you want to modify.
+	// The database attribute to be modified.
 	//
-	// - **Modify database attributes feature**: Enter the attribute name of the target database.
+	// - **Modify database attributes feature**: Specify the name of the attribute for the destination database.
 	//
-	// - **Data archiving to OSS feature**: Enter the status of the target database. Set this parameter to `covert_online_db_to_cold_storage` to convert an online database to a cold storage database, or set this parameter to `convert_cold_storage_db_to_online` to convert a cold storage database to an online database.
+	// - **Data archiving to OSS feature**: Specify the status of the destination database. Set the value to `covert_online_db_to_cold_storage` to convert an online database to a cold storage database, or set the value to `convert_cold_storage_db_to_online` to convert a cold storage database to an online database.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,11 @@ type ModifyDatabaseConfigRequest struct {
 	//
 	// compatibility_level
 	DatabasePropertyName *string `json:"DatabasePropertyName,omitempty" xml:"DatabasePropertyName,omitempty"`
-	// The value of the database attribute that you want to modify.
+	// The expected value of the database attribute.
 	//
-	// - **Modify database attributes feature**: Enter the attribute value of the target database.
+	// - **Modify database attributes feature**: Specify the value of the attribute for the destination database.
 	//
-	// - **Data archiving to OSS feature**: Set this parameter to **1*	- to convert the target database to cold storage or online status.
+	// - **Data archiving to OSS feature**: Set the value to **1*	- to convert the destination database to a cold storage or online state.
 	//
 	// This parameter is required.
 	//

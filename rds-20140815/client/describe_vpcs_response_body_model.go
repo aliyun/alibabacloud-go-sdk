@@ -159,7 +159,7 @@ type DescribeVpcsResponseBodyVpcs struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The VPC status.
+	// The status of the VPC.
 	//
 	// example:
 	//
@@ -332,7 +332,7 @@ type DescribeVpcsResponseBodyVpcsVSwitchs struct {
 	//
 	// cn-hangzhou-a
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	// The vSwitch status.
+	// The status of the vSwitch.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCalculateDBInstanceWeightRequest interface {
 }
 
 type CalculateDBInstanceWeightRequest struct {
-	// The ID of the primary instance. You can call DescribeDBInstances to query the instance ID.
+	// Instance ID of the primary instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//

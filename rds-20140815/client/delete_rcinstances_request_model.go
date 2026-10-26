@@ -22,21 +22,21 @@ type iDeleteRCInstancesRequest interface {
 }
 
 type DeleteRCInstancesRequest struct {
-	// Specifies whether to perform a dry run for this release operation. Valid values:
+	// Specifies whether to perform a precheck before releasing the instances. Valid values:
 	//
-	// 	- **true**: Performs a dry run without releasing the instance.
+	// 	- **true**: Performs a precheck and does not release the instances.
 	//
-	// 	- **false*	- (default): Sends a normal request and directly releases the instance after the request passes the check.
+	// 	- **false*	- (default): Sends a normal request and directly releases the instances after the check passes.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to forcefully release running instances. Valid values:
+	// Specifies whether to forcibly release running instances. Valid values:
 	//
-	// 	- **Yes**: Forcefully releases the instances.
+	// 	- **Yes**: Forcibly releases the instances.
 	//
-	// 	- **No*	- (default): Does not forcefully release the instances.
+	// 	- **No*	- (default): Does not forcibly release the instances.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DeleteRCInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//

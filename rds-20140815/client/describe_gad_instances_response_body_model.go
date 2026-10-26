@@ -16,7 +16,7 @@ type iDescribeGadInstancesResponseBody interface {
 }
 
 type DescribeGadInstancesResponseBody struct {
-	// The list of active geo-redundancy database clusters.
+	// The list of GAD clusters.
 	GadInstances []*DescribeGadInstancesResponseBodyGadInstances `json:"GadInstances,omitempty" xml:"GadInstances,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,7 +72,7 @@ type DescribeGadInstancesResponseBodyGadInstances struct {
 	//
 	// 2021-10-21T02:57:08Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The cluster name.
+	// The name of the cluster.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeGadInstancesResponseBodyGadInstances struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of nodes in the cluster.
 	GadInstanceMembers []*DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers `json:"GadInstanceMembers,omitempty" xml:"GadInstanceMembers,omitempty" type:"Repeated"`
-	// The ID of the active geo-redundancy database cluster.
+	// The ID of the GAD cluster.
 	//
 	// example:
 	//
@@ -92,21 +92,21 @@ type DescribeGadInstancesResponseBodyGadInstances struct {
 	//
 	// 2021-10-21T03:01:20Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The engine of the active geo-redundancy database cluster.
+	// The database engine of the GAD cluster.
 	//
-	// >Only **mysql*	- is supported.
+	// > Only **mysql*	- is supported.
 	//
 	// example:
 	//
 	// mysql
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The cluster status. Valid values:
+	// The status of the cluster. Valid values:
 	//
-	// 	- **activation**: running.
+	// 	- **activation**: running
 	//
-	// 	- **creating**: being created.
+	// 	- **creating**: being created
 	//
-	// 	- **replica_adding**: a node is being added.
+	// 	- **replica_adding**: adding nodes
 	//
 	// example:
 	//
@@ -205,9 +205,9 @@ type DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers struct {
 	//
 	// rm-bp1npi2j8****
 	DBInstanceID *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	// A JSON array that contains DTS synchronization information.
+	// The JSON array that contains the Data Transmission Service (DTS) synchronization information.
 	//
-	// >Each unit node (secondary node) synchronizes data with the central node (primary node) through DTS. This parameter contains the synchronization task ID and request ID of DTS.
+	// > Each unit node (secondary node) synchronizes data with the central node (primary node) through DTS. This parameter contains the DTS synchronization link ID and request ID.
 	//
 	// example:
 	//
@@ -215,7 +215,7 @@ type DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers struct {
 	DtsInstance *string `json:"DtsInstance,omitempty" xml:"DtsInstance,omitempty"`
 	// The database engine of the node in the cluster.
 	//
-	// >Only **mysql*	- is supported.
+	// > Only **mysql*	- is supported.
 	//
 	// example:
 	//
@@ -239,21 +239,21 @@ type DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers struct {
 	//
 	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The node type in the active geo-redundancy database cluster. Valid values:
+	// The role of the node in the GAD cluster. Valid values:
 	//
-	// 	- **CENTRAL**: central node. The only primary node in the cluster. All unit nodes synchronize data from this node.
+	// 	- **CENTRAL**: the central node, which is the only primary node in the cluster. All unit nodes synchronize data from this node.
 	//
-	// 	- **UNIT**: unit node. A cluster can contain up to 10 unit nodes. All unit nodes synchronize data from the central node.
+	// 	- **UNIT**: the unit node. A cluster can have up to 10 unit nodes, and all unit nodes synchronize data from the central node.
 	//
 	// example:
 	//
 	// CENTRAL
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The node status. Valid values:
+	// The status of the node. Valid values:
 	//
-	// 	- **activation**: running.
+	// 	- **activation**: running
 	//
-	// 	- **creating**: being created.
+	// 	- **creating**: being created
 	//
 	// example:
 	//

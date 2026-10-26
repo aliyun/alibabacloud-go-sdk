@@ -38,7 +38,7 @@ type DescribeMarketingActivityRequest struct {
 	//
 	// 20725049
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// - Chinese site: 26842
+	// - China site: 26842
 	//
 	// - International site: 26888
 	//
@@ -46,14 +46,14 @@ type DescribeMarketingActivityRequest struct {
 	//
 	// 26842
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query the available regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

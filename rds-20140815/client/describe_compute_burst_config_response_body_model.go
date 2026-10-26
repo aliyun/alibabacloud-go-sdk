@@ -18,7 +18,7 @@ type iDescribeComputeBurstConfigResponseBody interface {
 }
 
 type DescribeComputeBurstConfigResponseBody struct {
-	// The configuration details of the committed serverless feature.
+	// The configuration details of the committed Serverless feature.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeComputeBurstConfigResponseBody struct {
 	//
 	//   }
 	ComputeBurstConfig map[string]interface{} `json:"ComputeBurstConfig,omitempty" xml:"ComputeBurstConfig,omitempty"`
-	// Indicates whether the committed serverless feature is enabled.
+	// Indicates whether the committed Serverless feature is enabled. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -48,7 +48,7 @@ type DescribeComputeBurstConfigResponseBody struct {
 	//
 	// true
 	ComputeBurstEnabled *bool `json:"ComputeBurstEnabled,omitempty" xml:"ComputeBurstEnabled,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

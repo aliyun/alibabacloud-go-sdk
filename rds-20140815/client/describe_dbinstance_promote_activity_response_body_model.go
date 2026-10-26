@@ -32,7 +32,7 @@ type DescribeDBInstancePromoteActivityResponseBody struct {
 	//
 	// 22973492**********
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// - Chinese site: 26842
+	// - China site: 26842
 	//
 	// - International site: 26888
 	//
@@ -40,7 +40,7 @@ type DescribeDBInstancePromoteActivityResponseBody struct {
 	//
 	// 26888
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
+	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID.
 	//
 	// example:
 	//
@@ -64,11 +64,11 @@ type DescribeDBInstancePromoteActivityResponseBody struct {
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The dynamic property of the instance. For more information, see [Instance dynamics](https://help.aliyun.com/document_detail/2391834.html).
+	// The dynamic attributes of the instance. For more information, see [Instance dynamics](https://help.aliyun.com/document_detail/2391834.html).
 	//
 	// example:
 	//
-	// 1 (indicates that the target instance is not participating in any promotions)
+	// 1 (indicating that the target instance does not participate in any promotional activities)
 	IsActivity *string `json:"IsActivity,omitempty" xml:"IsActivity,omitempty"`
 	// The request ID.
 	//

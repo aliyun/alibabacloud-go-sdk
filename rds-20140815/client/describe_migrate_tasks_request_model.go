@@ -30,7 +30,7 @@ type iDescribeMigrateTasksRequest interface {
 }
 
 type DescribeMigrateTasksRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// The ID of the instance. You can call the DescribeDBInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeMigrateTasksRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+	// The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC time).
 	//
 	// This parameter is required.
 	//
@@ -47,7 +47,7 @@ type DescribeMigrateTasksRequest struct {
 	// 2017-10-25T01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: any integer greater than 0 that does not exceed the maximum value of Integer.
+	// The page number. Valid values: any positive integer up to the maximum value of the Integer type.
 	//
 	// Default value: **1**.
 	//
@@ -61,7 +61,7 @@ type DescribeMigrateTasksRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -69,7 +69,7 @@ type DescribeMigrateTasksRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+	// The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC time).
 	//
 	// This parameter is required.
 	//

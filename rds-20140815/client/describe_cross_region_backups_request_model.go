@@ -38,15 +38,15 @@ type iDescribeCrossRegionBackupsRequest interface {
 }
 
 type DescribeCrossRegionBackupsRequest struct {
-	// The user backup ID.
+	// The ID of the user backup.
 	//
 	// example:
 	//
 	// 603524****
 	BackupId *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The cross-region backup file ID.
+	// The ID of the cross-region backup file.
 	//
-	// >You must specify either **CrossBackupId*	- or the time range parameters (**StartTime*	- and **EndTime**).
+	// >You must specify either **CrossBackupId*	- or the start and end time parameters (**StartTime*	- and **EndTime**).
 	//
 	// example:
 	//
@@ -66,16 +66,16 @@ type DescribeCrossRegionBackupsRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end time of the query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format (UTC).
+	// The end time of the query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
-	// > For non-UTC+0 time zones, subtract 8 hours from the actual time before passing the value.
+	// > If the time zone is not UTC+0, you must subtract 8 hours from the actual time.
 	//
 	// example:
 	//
 	// 2024-03-05T02:24:37Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+	// The page number. Valid values: any integer greater than 0 and less than or equal to the maximum value of the Integer type.
 	//
 	// Default value: **1**.
 	//
@@ -105,7 +105,7 @@ type DescribeCrossRegionBackupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ type DescribeCrossRegionBackupsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start time of the query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format (UTC).
+	// The start time of the query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
-	// > For non-UTC+0 time zones, subtract 8 hours from the actual time before passing the value.
+	// > If the time zone is not UTC+0, you must subtract 8 hours from the actual time.
 	//
 	// example:
 	//

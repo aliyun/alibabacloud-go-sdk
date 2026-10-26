@@ -22,7 +22,7 @@ type iMigrateConnectionToOtherZoneRequest interface {
 }
 
 type MigrateConnectionToOtherZoneRequest struct {
-	// The endpoint of the instance. This parameter is specified when the instance is created and is used to generate the connection string.
+	// The endpoint of the instance. This endpoint is specified during creation and is used to generate a connection string.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type MigrateConnectionToOtherZoneRequest struct {
 	//
 	// rm-bp1oypo6ky19y****
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//

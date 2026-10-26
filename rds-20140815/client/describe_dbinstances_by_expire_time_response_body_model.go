@@ -23,7 +23,7 @@ type iDescribeDBInstancesByExpireTimeResponseBody interface {
 
 type DescribeDBInstancesByExpireTimeResponseBody struct {
 	Items *DescribeDBInstancesByExpireTimeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number. The value must be greater than **0*	- and must not exceed the maximum value of the Integer data type.
+	// The page number. Valid values: an integer greater than **0*	- and less than or equal to the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -43,7 +43,7 @@ type DescribeDBInstancesByExpireTimeResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

@@ -66,13 +66,13 @@ func (s *ListUserBackupFilesResponseBody) Validate() error {
 }
 
 type ListUserBackupFilesResponseBodyRecords struct {
-	// The user backup ID.
+	// The ID of the user backup.
 	//
 	// example:
 	//
 	// b-kwwvr7v8t7of****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The binary log file information in the backup file. This parameter is returned if incremental data exists during the backup process.
+	// The information about the binlog files in the backup file. This parameter is returned if incremental data is generated during the backup process.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ListUserBackupFilesResponseBodyRecords struct {
 	//
 	// BackupTest
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the user backup import started. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the import of the user backup started. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -102,19 +102,19 @@ type ListUserBackupFilesResponseBodyRecords struct {
 	//
 	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time when the user backup was successfully imported. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the user backup was successfully imported. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1623231750000
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The time when the user backup import was completed. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the import of the user backup was completed. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1623231750000
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The name of the OSS bucket in which the user backup file is stored.
+	// The name of the OSS bucket where the user backup file is stored.
 	//
 	// example:
 	//

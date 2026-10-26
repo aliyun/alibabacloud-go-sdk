@@ -30,9 +30,9 @@ type iDescribeRCImageListRequest interface {
 type DescribeRCImageListRequest struct {
 	// The system architecture of the image. Valid values:
 	//
-	// - x86_64.
+	// - x86_64
 	//
-	// - arm64.
+	// - arm64
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeRCImageListRequest struct {
 	//
 	// test_image_name
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// Queries available images for the specified instance type.
+	// The instance type for which to query available images.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iModifyDBInstanceDeletionProtectionResponseBody interface {
 }
 
 type ModifyDBInstanceDeletionProtectionResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

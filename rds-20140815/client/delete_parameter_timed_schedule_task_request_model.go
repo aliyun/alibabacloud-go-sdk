@@ -16,7 +16,7 @@ type iDeleteParameterTimedScheduleTaskRequest interface {
 }
 
 type DeleteParameterTimedScheduleTaskRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//

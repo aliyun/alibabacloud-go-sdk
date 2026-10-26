@@ -28,19 +28,19 @@ type DeleteReplicationLinkResponseBody struct {
 	//
 	// SQL Server：135****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1EFCFB59-7152-19C4-8C53-F887D107AFD3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 159****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
