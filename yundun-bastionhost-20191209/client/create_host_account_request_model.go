@@ -25,6 +25,8 @@ type iCreateHostAccountRequest interface {
 	GetPrivateKey() *string
 	SetPrivilegeType(v string) *CreateHostAccountRequest
 	GetPrivilegeType() *string
+	SetProjectId(v int64) *CreateHostAccountRequest
+	GetProjectId() *int64
 	SetProtocolName(v string) *CreateHostAccountRequest
 	GetProtocolName() *string
 	SetRegionId(v string) *CreateHostAccountRequest
@@ -34,7 +36,7 @@ type iCreateHostAccountRequest interface {
 }
 
 type CreateHostAccountRequest struct {
-	// The name of the new host account. The name can be up to 128 characters long.
+	// The name of the host account to create. The name can be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +46,7 @@ type CreateHostAccountRequest struct {
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
 	// The ID of the host for which you want to create a host account.
 	//
-	// > Call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain the host ID.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +60,9 @@ type CreateHostAccountRequest struct {
 	//
 	// 1
 	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The ID of the Bastionhost instance where you want to create the host account.
+	// The ID of the Bastionhost instance where the host for which you want to create a host account resides.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the Bastionhost instance ID.
 	//
 	// This parameter is required.
 	//
@@ -68,41 +70,49 @@ type CreateHostAccountRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The passphrase for the private key of the new host account.
+	// The passphrase of the private key for the host account to create.
 	//
-	// > You can set this parameter only when ProtocolName is set to SSH. You do not need to set this parameter if ProtocolName is set to RDP.
+	// > You can configure this parameter when ProtocolName is set to SSH. You do not need to configure this parameter when ProtocolName is set to RDP.
 	//
 	// example:
 	//
 	// 123456
 	PassPhrase *string `json:"PassPhrase,omitempty" xml:"PassPhrase,omitempty"`
-	// The password of the new host account.
+	// The password of the host account to create.
 	//
 	// example:
 	//
 	// 123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The private key of the new host account. The value is a Base64-encoded string.
+	// The private key of the host account to create. The value is a Base64-encoded string.
 	//
-	// > This parameter is used only when ProtocolName is set to SSH. You do not need to set this parameter if ProtocolName is set to RDP. You can set both a password and a private key for the host account. When connecting to the asset, Bastionhost prioritizes the private key for the connection.
+	// > This parameter takes effect only when ProtocolName is set to SSH. You do not need to configure this parameter when ProtocolName is set to RDP. You can configure both a password and a private key for the host account. When connecting to an asset, Bastionhost preferentially uses the private key.
 	//
 	// example:
 	//
 	// LS0tLS1******RCBSU0tLQ==
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The permission type of the account. If you do not set this parameter, the default value is Normal.
+	// The privilege type of the account. Default value: Normal.
 	//
-	// - **Privileged**: privileged account
+	// - **Privileged**: privileged account.
 	//
-	// - **Normal**: normal account
+	// - **Normal**: standard account.
 	//
-	// > This parameter is supported only in Bastionhost V3.2.47 and later.
+	// >Only supported in V3.2.47 and later.
 	//
 	// example:
 	//
 	// Normal
 	PrivilegeType *string `json:"PrivilegeType,omitempty" xml:"PrivilegeType,omitempty"`
-	// The protocol of the new host account. <br>Valid values:<br>
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The protocol name of the host account to create.
+	//
+	// <br>Valid values:
 	//
 	// - SSH
 	//
@@ -114,7 +124,7 @@ type CreateHostAccountRequest struct {
 	//
 	// SSH
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
-	// The region ID of the Bastionhost instance where you want to create the host account.
+	// The region ID of the Bastionhost instance where the host for which you want to create a host account resides.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -122,13 +132,13 @@ type CreateHostAccountRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The password change mode for the account. If you do not set this parameter, the default value is Self.
+	// The password change mode of the account. Default value: Self.
 	//
-	// - **Privileged**: Use a privileged account to change the password.
+	// - **Privileged**: uses a privileged account to change the password.
 	//
-	// - **Self**: Do not use a privileged account to change the password.
+	// - **Self**: does not use a privileged account to change the password.
 	//
-	// > This parameter is supported only in Bastionhost V3.2.47 and later.
+	// >Only supported in V3.2.47 and later.
 	//
 	// example:
 	//
@@ -174,6 +184,10 @@ func (s *CreateHostAccountRequest) GetPrivateKey() *string {
 
 func (s *CreateHostAccountRequest) GetPrivilegeType() *string {
 	return s.PrivilegeType
+}
+
+func (s *CreateHostAccountRequest) GetProjectId() *int64 {
+	return s.ProjectId
 }
 
 func (s *CreateHostAccountRequest) GetProtocolName() *string {
@@ -225,6 +239,11 @@ func (s *CreateHostAccountRequest) SetPrivateKey(v string) *CreateHostAccountReq
 
 func (s *CreateHostAccountRequest) SetPrivilegeType(v string) *CreateHostAccountRequest {
 	s.PrivilegeType = &v
+	return s
+}
+
+func (s *CreateHostAccountRequest) SetProjectId(v int64) *CreateHostAccountRequest {
+	s.ProjectId = &v
 	return s
 }
 

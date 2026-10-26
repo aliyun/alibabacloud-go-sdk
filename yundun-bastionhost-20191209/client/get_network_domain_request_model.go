@@ -15,24 +15,26 @@ type iGetNetworkDomainRequest interface {
 	GetInstanceId() *string
 	SetNetworkDomainId(v string) *GetNetworkDomainRequest
 	GetNetworkDomainId() *string
+	SetProjectId(v int64) *GetNetworkDomainRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *GetNetworkDomainRequest
 	GetRegionId() *string
 }
 
 type GetNetworkDomainRequest struct {
-	// Indicates whether to immediately recheck the status of the proxy server. Valid values:
+	// Specifies whether to immediately re-check the proxy server status. Valid values:
 	//
-	// - **true**: Immediately rechecks the status of the proxy server and returns the latest ProxyState and ProxyStateErrorCode.
+	// - **true**: Immediately re-checks the proxy server status and returns the latest ProxyState/ProxyStateErrorCode.
 	//
-	// - **false**: (Default) Returns the currently recorded status without rechecking the proxy server.
+	// - **false**: Default value. Does not re-check the proxy server status and directly returns the currently recorded status.
 	//
 	// example:
 	//
 	// false
 	CheckProxyState *string `json:"CheckProxyState,omitempty" xml:"CheckProxyState,omitempty"`
-	// The ID of the Bastionhost instance.
+	// The instance ID of the bastion host.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to get this parameter.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +44,7 @@ type GetNetworkDomainRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the network domain to query.
 	//
-	// > Call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to get this parameter.
+	// > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +52,15 @@ type GetNetworkDomainRequest struct {
 	//
 	// 3
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The region ID of the Bastionhost instance.
+	// The project ID.
 	//
-	// > For more information about region IDs, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -80,6 +88,10 @@ func (s *GetNetworkDomainRequest) GetNetworkDomainId() *string {
 	return s.NetworkDomainId
 }
 
+func (s *GetNetworkDomainRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *GetNetworkDomainRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -96,6 +108,11 @@ func (s *GetNetworkDomainRequest) SetInstanceId(v string) *GetNetworkDomainReque
 
 func (s *GetNetworkDomainRequest) SetNetworkDomainId(v string) *GetNetworkDomainRequest {
 	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *GetNetworkDomainRequest) SetProjectId(v int64) *GetNetworkDomainRequest {
+	s.ProjectId = &v
 	return s
 }
 

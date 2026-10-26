@@ -16,13 +16,13 @@ type iAttachHostAccountsToUserGroupResponseBody interface {
 }
 
 type AttachHostAccountsToUserGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
+	// The call results of the operation.
 	Results []*AttachHostAccountsToUserGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -66,37 +66,37 @@ func (s *AttachHostAccountsToUserGroupResponseBody) Validate() error {
 }
 
 type AttachHostAccountsToUserGroupResponseBodyResults struct {
-	// The return code that indicates whether the call was successful. Valid values:
+	// The result code of the operation. Valid values:
 	//
-	// - **OK**: The call was successful.
+	// - **OK**: The operation was successful.
 	//
 	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// - **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: The request parameters are invalid.
 	//
-	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object does not exist.
 	//
-	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object already exists.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of authorizing the specified user group to manage the specified host accounts.
+	// The results of authorizing host accounts for the user group.
 	HostAccounts []*AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
-	// The ID of the host.
+	// The host ID.
 	//
 	// example:
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the user group.
+	// The user group ID.
 	//
 	// example:
 	//
@@ -171,29 +171,29 @@ func (s *AttachHostAccountsToUserGroupResponseBodyResults) Validate() error {
 }
 
 type AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts struct {
-	// The return code that indicates whether the user group was authorized to manage the specified host account. Valid values:
+	// The result code of the host account authorization operation. Valid values:
 	//
-	// - **OK**: The call was successful.
+	// - **OK**: The operation was successful.
 	//
 	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// - **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: The request parameters are invalid.
 	//
-	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object does not exist.
 	//
-	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object already exists.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the host account.
+	// The host account ID.
 	//
 	// example:
 	//
 	// 1
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//

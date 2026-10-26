@@ -21,12 +21,14 @@ type iCreateDatabaseAccountRequest interface {
 	GetLoginAttribute() *string
 	SetPassword(v string) *CreateDatabaseAccountRequest
 	GetPassword() *string
+	SetProjectId(v int64) *CreateDatabaseAccountRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *CreateDatabaseAccountRequest
 	GetRegionId() *string
 }
 
 type CreateDatabaseAccountRequest struct {
-	// The username of the database account to be created. The username can be up to 128 characters in length.
+	// The name of the database account to create. The name can be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +36,9 @@ type CreateDatabaseAccountRequest struct {
 	//
 	// root
 	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
-	// The ID of the database for which you want to create a database account.
+	// The instance ID of the database for which you want to create an account.
 	//
-	// > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+	// > You can invoke the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,15 +46,15 @@ type CreateDatabaseAccountRequest struct {
 	//
 	// 3
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The name of the database. This parameter is required for PostgreSQL and Oracle databases.
+	// The database name. This parameter is required when the database that corresponds to DatabaseId is PostgreSQL or Oracle.
 	//
 	// example:
 	//
 	// orcl
 	DatabaseSchema *string `json:"DatabaseSchema,omitempty" xml:"DatabaseSchema,omitempty"`
-	// The ID of the bastion host for which you want to create a database account.
+	// The ID of the bastion host instance for which you want to create a database account.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +62,7 @@ type CreateDatabaseAccountRequest struct {
 	//
 	// bastionhost-cn-5yd34ol020a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The logon attribute. This parameter is required for Oracle databases. Valid values:
+	// The logon property. This parameter is required for Oracle databases. Valid values:
 	//
 	// - SERVICENAME
 	//
@@ -70,15 +72,21 @@ type CreateDatabaseAccountRequest struct {
 	//
 	// SID
 	LoginAttribute *string `json:"LoginAttribute,omitempty" xml:"LoginAttribute,omitempty"`
-	// The password of the database account to be created.
+	// The password of the database account to create.
 	//
 	// example:
 	//
 	// MCQ******
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host for which you want to create a database account.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -118,6 +126,10 @@ func (s *CreateDatabaseAccountRequest) GetPassword() *string {
 	return s.Password
 }
 
+func (s *CreateDatabaseAccountRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *CreateDatabaseAccountRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -149,6 +161,11 @@ func (s *CreateDatabaseAccountRequest) SetLoginAttribute(v string) *CreateDataba
 
 func (s *CreateDatabaseAccountRequest) SetPassword(v string) *CreateDatabaseAccountRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *CreateDatabaseAccountRequest) SetProjectId(v int64) *CreateDatabaseAccountRequest {
+	s.ProjectId = &v
 	return s
 }
 

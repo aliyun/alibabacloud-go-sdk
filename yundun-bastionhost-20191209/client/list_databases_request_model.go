@@ -21,6 +21,8 @@ type iListDatabasesRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListDatabasesRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListDatabasesRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListDatabasesRequest
 	GetRegionId() *string
 	SetSource(v string) *ListDatabasesRequest
@@ -28,7 +30,7 @@ type iListDatabasesRequest interface {
 }
 
 type ListDatabasesRequest struct {
-	// The engine of the database to query. Valid values:
+	// The type of the database. Valid values:
 	//
 	// - **MySQL**
 	//
@@ -42,17 +44,17 @@ type ListDatabasesRequest struct {
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The ID of the asset group to query. This operation returns the databases in the asset group.
+	// The ID of the host group.
 	//
-	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the asset group.
+	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the value of this parameter.
 	//
 	// example:
 	//
 	// 20
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The ID of the bastion host to query.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -60,29 +62,35 @@ type ListDatabasesRequest struct {
 	//
 	// bastionhost-cn-7mz28f5tk0o
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the network domain where the database to query resides.
+	// The ID of the network domain to which the database belongs.
 	//
 	// example:
 	//
 	// 2
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number of the current page for paging in a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries to return on each page for paging in a paged query.
 	//
-	// Valid values: 1 to100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum value of the PageSize parameter is 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave the PageSize parameter empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host to query.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -90,13 +98,13 @@ type ListDatabasesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the database to query. Valid values:
+	// The source of the database. Valid values:
 	//
-	// - **Local**: on-premises database.
+	// - **Local**: local database instance
 	//
-	// - **Rds**: ApsaraDB for RDS instance.
+	// - **Rds**: ApsaraDB RDS instance
 	//
-	// - **PolarDB**: PolarDB cluster
+	// - **PolarDB**: PolarDB instance
 	//
 	// example:
 	//
@@ -136,6 +144,10 @@ func (s *ListDatabasesRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListDatabasesRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListDatabasesRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -171,6 +183,11 @@ func (s *ListDatabasesRequest) SetPageNumber(v string) *ListDatabasesRequest {
 
 func (s *ListDatabasesRequest) SetPageSize(v string) *ListDatabasesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetProjectId(v int64) *ListDatabasesRequest {
+	s.ProjectId = &v
 	return s
 }
 

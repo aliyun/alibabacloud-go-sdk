@@ -83,13 +83,13 @@ func (s *ListHostGroupsResponseBody) Validate() error {
 }
 
 type ListHostGroupsResponseBodyHostGroups struct {
-	// The remarks of the asset group.
+	// The description of the asset group.
 	//
 	// example:
 	//
 	// Comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The asset group ID.
+	// The ID of the asset group.
 	//
 	// example:
 	//

@@ -13,14 +13,16 @@ type iDeleteNetworkDomainRequest interface {
 	GetInstanceId() *string
 	SetNetworkDomainId(v string) *DeleteNetworkDomainRequest
 	GetNetworkDomainId() *string
+	SetProjectId(v int64) *DeleteNetworkDomainRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *DeleteNetworkDomainRequest
 	GetRegionId() *string
 }
 
 type DeleteNetworkDomainRequest struct {
-	// The ID of the bastion host whose network domain you want to delete.
+	// The instance ID of the bastion host where the network domain that you want to delete resides.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +30,7 @@ type DeleteNetworkDomainRequest struct {
 	//
 	// bastionhost_std_intl-sg-uq833e2dz02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the network domain to be deleted.
+	// The ID of the network domain that you want to delete.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +38,15 @@ type DeleteNetworkDomainRequest struct {
 	//
 	// 2
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The region ID of the bastion host whose network domain you want to delete.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host instance where the network domain that you want to delete resides.
+	//
+	// > For information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -62,6 +70,10 @@ func (s *DeleteNetworkDomainRequest) GetNetworkDomainId() *string {
 	return s.NetworkDomainId
 }
 
+func (s *DeleteNetworkDomainRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *DeleteNetworkDomainRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -73,6 +85,11 @@ func (s *DeleteNetworkDomainRequest) SetInstanceId(v string) *DeleteNetworkDomai
 
 func (s *DeleteNetworkDomainRequest) SetNetworkDomainId(v string) *DeleteNetworkDomainRequest {
 	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *DeleteNetworkDomainRequest) SetProjectId(v int64) *DeleteNetworkDomainRequest {
+	s.ProjectId = &v
 	return s
 }
 

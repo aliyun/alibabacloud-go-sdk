@@ -17,6 +17,8 @@ type iListTodoOpsTaskApprovalsRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListTodoOpsTaskApprovalsRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListTodoOpsTaskApprovalsRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListTodoOpsTaskApprovalsRequest
 	GetRegionId() *string
 	SetScheduleType(v string) *ListTodoOpsTaskApprovalsRequest
@@ -24,9 +26,9 @@ type iListTodoOpsTaskApprovalsRequest interface {
 }
 
 type ListTodoOpsTaskApprovalsRequest struct {
-	// The instance ID of the bastion host.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +36,7 @@ type ListTodoOpsTaskApprovalsRequest struct {
 	//
 	// bastionhost-cn-m413tuhlo03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The task name or task remarks to query. Fuzzy match is supported.
+	// The name or comment of the task to query. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -46,31 +48,37 @@ type ListTodoOpsTaskApprovalsRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of entries to return on each page in a paging query.
 	//
-	// The maximum value of the PageSize parameter is 100. The default number of entries per page is 20. If PageSize is left empty, 20 entries are returned by default.
+	// The maximum value of the PageSize parameter is 100. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// > Do not leave PageSize empty.
+	// > Specify a value for the PageSize parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
 	//
-	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The task scheduling type used to filter results. Valid values:
+	// The scheduling type of the task. Valid values:
 	//
-	// - **FixTime**: scheduled execution.
+	// - **FixTime**: Scheduled execution.
 	//
-	// - **CycleInterval**: periodic execution.
+	// - **CycleInterval**: Periodic execution.
 	//
-	// - **Manual**: manually triggered by the user.
+	// - **Manual**: Manually triggered execution.
 	//
 	// example:
 	//
@@ -102,6 +110,10 @@ func (s *ListTodoOpsTaskApprovalsRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListTodoOpsTaskApprovalsRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListTodoOpsTaskApprovalsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -127,6 +139,11 @@ func (s *ListTodoOpsTaskApprovalsRequest) SetPageNumber(v string) *ListTodoOpsTa
 
 func (s *ListTodoOpsTaskApprovalsRequest) SetPageSize(v string) *ListTodoOpsTaskApprovalsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTodoOpsTaskApprovalsRequest) SetProjectId(v int64) *ListTodoOpsTaskApprovalsRequest {
+	s.ProjectId = &v
 	return s
 }
 

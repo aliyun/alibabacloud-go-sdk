@@ -18,7 +18,7 @@ type iListHostsForUserGroupResponseBody interface {
 }
 
 type ListHostsForUserGroupResponseBody struct {
-	// A list of hosts.
+	// The list of hosts returned.
 	Hosts []*ListHostsForUserGroupResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -26,7 +26,7 @@ type ListHostsForUserGroupResponseBody struct {
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of hosts.
+	// The total number of hosts returned.
 	//
 	// example:
 	//
@@ -85,15 +85,15 @@ func (s *ListHostsForUserGroupResponseBody) Validate() error {
 type ListHostsForUserGroupResponseBodyHosts struct {
 	// The address type of the host. Valid values:
 	//
-	// - **Public**: a public IP address
+	// - **Public**: public address
 	//
-	// - **Private**: a private IP address
+	// - **Private**: private network address
 	//
 	// example:
 	//
 	// Public
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The remarks of the host.
+	// The description of the host.
 	//
 	// example:
 	//
@@ -111,19 +111,19 @@ type ListHostsForUserGroupResponseBodyHosts struct {
 	//
 	// host1
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The private IP address of the host. This can be a domain name or an IP address.
+	// The private network address of the host, which can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The public IP address of the host. This can be a domain name or an IP address.
+	// The public address of the host, which can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// 10.158.XX.XX
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// The OS type of the host. Valid values:
+	// The operating system type of the host. Valid values:
 	//
 	// - **Linux**
 	//

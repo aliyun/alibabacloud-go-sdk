@@ -16,9 +16,9 @@ type iGetHostShareKeyResponseBody interface {
 }
 
 type GetHostShareKeyResponseBody struct {
-	// The returned information about the shared key.
+	// The details of the shared key.
 	HostShareKey *GetHostShareKeyResponseBodyHostShareKey `json:"HostShareKey,omitempty" xml:"HostShareKey,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *GetHostShareKeyResponseBody) Validate() error {
 }
 
 type GetHostShareKeyResponseBodyHostShareKey struct {
-	// The ID of the shared key.
+	// The ID of the host shared key.
 	//
 	// example:
 	//
 	// 10427
 	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The name of the shared key.
+	// The name of the host shared key.
 	//
 	// example:
 	//
 	// name
 	HostShareKeyName *string `json:"HostShareKeyName,omitempty" xml:"HostShareKeyName,omitempty"`
-	// The time when the information about the shared key was last modified. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the host shared key was last modified, in seconds (UNIX timestamp format).
 	//
 	// example:
 	//

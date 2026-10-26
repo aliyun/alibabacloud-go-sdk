@@ -20,7 +20,7 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The ID of the region where the Bastionhost instance resides.
+	// The region ID of the Bastionhost instance for which you want to create and bind tags.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -30,11 +30,11 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the Bastionhost instances. You can specify up to 20 instance IDs.
+	// The list of Bastionhost instance IDs.
 	//
-	// N can be from 1 to 20.
+	// Valid values of N: 1 to 20.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the IDs of Bastionhost instances.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the Bastionhost instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type TagResourcesRequest struct {
 	//
 	// bastionhost-cn-78v1gc****
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource.
+	// The resource type.
 	//
-	// Set the value to `INSTANCE`. This value indicates a Bastionhost instance.
+	// The only valid value is **INSTANCE**, which indicates a Bastionhost instance.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type TagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags to add to the instances. You can add up to 20 tags.
+	// The list of tags.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -114,25 +114,25 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag.
+	// The tag key of the instance.
 	//
-	// > - The tag key cannot be an empty string. It can be up to 128 characters in length.
+	// Valid values of N: 1 to 20.
 	//
-	// >
+	// > - This parameter cannot be an empty string and can be up to 128 characters in length.
 	//
-	// > - The tag key cannot start with **aliyun*	- or **acs:**. It cannot contain **http\\://*	- or **https\\://**.
+	// > - This parameter cannot start with **aliyun*	- or **acs:*	- and cannot contain **http://*	- or **https://**.
 	//
 	// example:
 	//
 	// operation
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value of the instance.
 	//
-	// > - The tag value can be an empty string. It can be up to 128 characters in length.
+	// Valid values of N: 1 to 20.
 	//
-	// >
+	// > - This parameter can be an empty string and can be up to 128 characters in length.
 	//
-	// > - The tag value cannot start with **aliyun*	- or **acs:**. It cannot contain **http\\://*	- or **https\\://**.
+	// > - This parameter cannot start with **aliyun*	- or **acs:*	- and cannot contain **http://*	- or **https://**.
 	//
 	// example:
 	//

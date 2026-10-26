@@ -16,9 +16,9 @@ type iDescribeInstanceAttributeRequest interface {
 }
 
 type DescribeInstanceAttributeRequest struct {
-	// The ID of the bastion host instance to query.
+	// The ID of the Bastionhost instance to query.
 	//
-	//  > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the bastion host instance ID.
+	//  > You can obtain the Bastionhost instance ID by calling the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeInstanceAttributeRequest struct {
 	//
 	// bastionhost-cn-78v1ghxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host instance to query.
+	// The region ID of the Bastionhost instance to query.
 	//
 	// example:
 	//

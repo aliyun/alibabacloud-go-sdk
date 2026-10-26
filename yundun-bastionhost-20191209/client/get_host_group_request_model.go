@@ -13,14 +13,16 @@ type iGetHostGroupRequest interface {
 	GetHostGroupId() *string
 	SetInstanceId(v string) *GetHostGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *GetHostGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *GetHostGroupRequest
 	GetRegionId() *string
 }
 
 type GetHostGroupRequest struct {
-	// The ID of the asset group to query.
+	// The ID of the asset group that you want to query.
 	//
-	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the asset group ID.
+	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,9 @@ type GetHostGroupRequest struct {
 	//
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The ID of the bastion host whose asset group you want to query.
+	// The instance ID of the bastion host to which the asset group belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +40,15 @@ type GetHostGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host whose asset group you want to query.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, [see Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host to which the asset group belongs.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -64,6 +72,10 @@ func (s *GetHostGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetHostGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *GetHostGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -75,6 +87,11 @@ func (s *GetHostGroupRequest) SetHostGroupId(v string) *GetHostGroupRequest {
 
 func (s *GetHostGroupRequest) SetInstanceId(v string) *GetHostGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetHostGroupRequest) SetProjectId(v int64) *GetHostGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

@@ -16,13 +16,13 @@ type iAttachHostAccountsToUserResponseBody interface {
 }
 
 type AttachHostAccountsToUserResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
+	// The results of the API call.
 	Results []*AttachHostAccountsToUserResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -66,27 +66,27 @@ func (s *AttachHostAccountsToUserResponseBody) Validate() error {
 }
 
 type AttachHostAccountsToUserResponseBodyResults struct {
-	// The return code that indicates whether the call was successful. Valid values:
+	// The result of the API call. Valid values:
 	//
-	// - **OK**: The call was successful.
+	// - **OK**: The operation is successful.
 	//
 	// - **UNEXPECTED**: An unknown error occurred.
 	//
 	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// > Make sure that the request parameters are valid and call the operation again.
+	//     > Check the request parameters, ensure that they are correct, and then call the operation again.
 	//
-	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The object on which the operation is performed does not exist.
 	//
-	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	//     > Check whether the ID of the Bastionhost instance exists, whether the host exists, and whether the host ID is correct, and then call the operation again.
 	//
-	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The object on which the operation is performed already exists.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of authorizing the user to manage the host accounts.
+	// The results returned for the operation of authorizing host accounts for the user.
 	HostAccounts []*AttachHostAccountsToUserResponseBodyResultsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 	// The ID of the host.
 	//
@@ -94,7 +94,7 @@ type AttachHostAccountsToUserResponseBodyResults struct {
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This parameter is deprecated. You can ignore it.
 	//
 	// example:
 	//
@@ -175,17 +175,17 @@ func (s *AttachHostAccountsToUserResponseBodyResults) Validate() error {
 }
 
 type AttachHostAccountsToUserResponseBodyResultsHostAccounts struct {
-	// The return code that indicates whether the user was authorized to manage the host accounts. Valid values:
+	// The result returned for the operation of authorizing host accounts for the user. Valid values:
 	//
-	// - **OK**: The call was successful.
+	// - **OK**: The operation is successful.
 	//
 	// - **UNEXPECTED**: An unknown error occurred.
 	//
 	// - **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The object on which the operation is performed does not exist.
 	//
-	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The object on which the operation is performed already exists.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type AttachHostAccountsToUserResponseBodyResultsHostAccounts struct {
 	//
 	// 1
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This parameter is deprecated. You can ignore it.
 	//
 	// example:
 	//

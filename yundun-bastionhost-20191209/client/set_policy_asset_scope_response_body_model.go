@@ -14,7 +14,7 @@ type iSetPolicyAssetScopeResponseBody interface {
 }
 
 type SetPolicyAssetScopeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

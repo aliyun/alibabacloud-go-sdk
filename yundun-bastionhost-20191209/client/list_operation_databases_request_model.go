@@ -21,6 +21,8 @@ type iListOperationDatabasesRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListOperationDatabasesRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListOperationDatabasesRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListOperationDatabasesRequest
 	GetRegionId() *string
 	SetSource(v string) *ListOperationDatabasesRequest
@@ -32,13 +34,13 @@ type iListOperationDatabasesRequest interface {
 }
 
 type ListOperationDatabasesRequest struct {
-	// The address of the database.
+	// The address of the database instance.
 	//
 	// example:
 	//
 	// 10.167.XX.XX
 	DatabaseAddress *string `json:"DatabaseAddress,omitempty" xml:"DatabaseAddress,omitempty"`
-	// The name of the database. This parameter supports only exact matches.
+	// The name of the database instance. Exact match is used.
 	//
 	// example:
 	//
@@ -58,9 +60,9 @@ type ListOperationDatabasesRequest struct {
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The ID of the Bastionhost instance.
+	// The instance ID of the bastion host.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -68,51 +70,59 @@ type ListOperationDatabasesRequest struct {
 	//
 	// bastionhost-cn-tl32wdd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. The default value is **1**.
+	// The page number of the current page for a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.<br>The maximum value is 100. The default value is 20. If you do not specify this parameter, 20 entries are returned.<br>
+	// The maximum number of entries to return on each page for a paged query.
 	//
-	// > Specify a value for this parameter.
+	// The maximum value of the PageSize parameter is 100. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+	//
+	// > Do not leave the PageSize parameter empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance.
+	// The project ID.
 	//
-	// > For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host.
+	//
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source of the database. Valid values:
+	// The source of the database instance. Valid values:
 	//
-	// - **Local**: a local database
+	// - **Local**: on-premises database
 	//
-	// - **Rds**: an ApsaraDB RDS database
+	// - **Rds**: ApsaraDB RDS database
 	//
-	// - **PolarDB**: a PolarDB database
+	// - **PolarDB**: PolarDB database
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the source instance. This parameter supports only exact matches.
+	// The instance ID of the ApsaraDB RDS instance. Exact match.
 	//
 	// example:
 	//
 	// i-bp19ienyt0yax748****
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The status of the source instance. You can use this parameter to filter the results.
+	// Filters database instances by instance status. Valid values:
 	//
-	// - **Normal**: The instance is running.
+	// - **Normal**: normal
 	//
-	// - **RemoteRelease**: The instance is released.
+	// - **RemoteRelease**: released
 	//
 	// example:
 	//
@@ -150,6 +160,10 @@ func (s *ListOperationDatabasesRequest) GetPageNumber() *string {
 
 func (s *ListOperationDatabasesRequest) GetPageSize() *string {
 	return s.PageSize
+}
+
+func (s *ListOperationDatabasesRequest) GetProjectId() *int64 {
+	return s.ProjectId
 }
 
 func (s *ListOperationDatabasesRequest) GetRegionId() *string {
@@ -195,6 +209,11 @@ func (s *ListOperationDatabasesRequest) SetPageNumber(v string) *ListOperationDa
 
 func (s *ListOperationDatabasesRequest) SetPageSize(v string) *ListOperationDatabasesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListOperationDatabasesRequest) SetProjectId(v int64) *ListOperationDatabasesRequest {
+	s.ProjectId = &v
 	return s
 }
 

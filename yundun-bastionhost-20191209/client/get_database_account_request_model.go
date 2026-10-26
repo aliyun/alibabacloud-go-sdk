@@ -13,6 +13,8 @@ type iGetDatabaseAccountRequest interface {
 	GetDatabaseAccountId() *string
 	SetInstanceId(v string) *GetDatabaseAccountRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *GetDatabaseAccountRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *GetDatabaseAccountRequest
 	GetRegionId() *string
 }
@@ -20,7 +22,7 @@ type iGetDatabaseAccountRequest interface {
 type GetDatabaseAccountRequest struct {
 	// The ID of the database account to query.
 	//
-	// > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+	// > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,9 @@ type GetDatabaseAccountRequest struct {
 	//
 	// 9
 	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
-	// The bastion host ID.
+	// The instance ID of the bastion host.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +40,15 @@ type GetDatabaseAccountRequest struct {
 	//
 	// bastionhost-cn-i7m2d7zrw11
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -64,6 +72,10 @@ func (s *GetDatabaseAccountRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetDatabaseAccountRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *GetDatabaseAccountRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -75,6 +87,11 @@ func (s *GetDatabaseAccountRequest) SetDatabaseAccountId(v string) *GetDatabaseA
 
 func (s *GetDatabaseAccountRequest) SetInstanceId(v string) *GetDatabaseAccountRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDatabaseAccountRequest) SetProjectId(v int64) *GetDatabaseAccountRequest {
+	s.ProjectId = &v
 	return s
 }
 

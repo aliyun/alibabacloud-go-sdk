@@ -13,6 +13,8 @@ type iAttachHostAccountsToUserGroupRequest interface {
 	GetHosts() *string
 	SetInstanceId(v string) *AttachHostAccountsToUserGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *AttachHostAccountsToUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *AttachHostAccountsToUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *AttachHostAccountsToUserGroupRequest
@@ -20,9 +22,9 @@ type iAttachHostAccountsToUserGroupRequest interface {
 }
 
 type AttachHostAccountsToUserGroupRequest struct {
-	// The IDs of the host and host account that you want to authorize the user group to manage. You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the user group is authorized to manage only the specified hosts. For more information about this parameter, see the "Description of the Hosts parameter" section of this topic.
+	// The host IDs and host account IDs that you want to authorize the user group to manage. You can specify up to 10 host IDs, and each host supports up to 10 host account IDs. You do not need to specify host account IDs. If you do not specify host account IDs, only the hosts are authorized for the user group. For the specific structure of this parameter, see the Hosts parameter structure description under the request parameters list.
 	//
-	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host and the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query host IDs and call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query host account IDs.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +32,9 @@ type AttachHostAccountsToUserGroupRequest struct {
 	//
 	// [ {"HostId":"1"}, {"HostId":"2","HostAccountIds":["1","2","3",...]}, {"HostId":"3","HostAccountIds":["4","5","6",...]}, {"HostId":"4","HostAccountIds":["9","8","7",...]} ... ]
 	Hosts *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
-	// The ID of the bastion host in which you want to authorize the user group to manage the specified hosts and host accounts.
+	// The instance ID of the bastion host where the user group that you want to grant authorization resides.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -40,17 +42,23 @@ type AttachHostAccountsToUserGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host in which you want to authorize the user group to manage the specified hosts and host accounts.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host where the user group that you want to authorize resides.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
+	// The ID of the user group that you want to authorize to manage hosts and host accounts.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -76,6 +84,10 @@ func (s *AttachHostAccountsToUserGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *AttachHostAccountsToUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *AttachHostAccountsToUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -91,6 +103,11 @@ func (s *AttachHostAccountsToUserGroupRequest) SetHosts(v string) *AttachHostAcc
 
 func (s *AttachHostAccountsToUserGroupRequest) SetInstanceId(v string) *AttachHostAccountsToUserGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *AttachHostAccountsToUserGroupRequest) SetProjectId(v int64) *AttachHostAccountsToUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

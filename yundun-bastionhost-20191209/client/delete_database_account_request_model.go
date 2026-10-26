@@ -13,14 +13,16 @@ type iDeleteDatabaseAccountRequest interface {
 	GetDatabaseAccountId() *string
 	SetInstanceId(v string) *DeleteDatabaseAccountRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *DeleteDatabaseAccountRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *DeleteDatabaseAccountRequest
 	GetRegionId() *string
 }
 
 type DeleteDatabaseAccountRequest struct {
-	// The ID of the database account that you want to delete.
+	// The ID of the database account to delete.
 	//
-	// > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+	// > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,9 @@ type DeleteDatabaseAccountRequest struct {
 	//
 	// 9
 	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
-	// The ID of the bastion host from which you want to delete the database account.
+	// The ID of the bastion host instance to which the database account to be deleted belongs.
 	//
-	// > You can call the DescribeInstances operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +40,15 @@ type DeleteDatabaseAccountRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host from which you want to delete the database account.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, [see Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host to which the database account to be deleted belongs.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -64,6 +72,10 @@ func (s *DeleteDatabaseAccountRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DeleteDatabaseAccountRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *DeleteDatabaseAccountRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -75,6 +87,11 @@ func (s *DeleteDatabaseAccountRequest) SetDatabaseAccountId(v string) *DeleteDat
 
 func (s *DeleteDatabaseAccountRequest) SetInstanceId(v string) *DeleteDatabaseAccountRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteDatabaseAccountRequest) SetProjectId(v int64) *DeleteDatabaseAccountRequest {
+	s.ProjectId = &v
 	return s
 }
 

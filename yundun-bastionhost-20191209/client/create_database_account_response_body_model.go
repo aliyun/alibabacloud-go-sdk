@@ -16,7 +16,7 @@ type iCreateDatabaseAccountResponseBody interface {
 }
 
 type CreateDatabaseAccountResponseBody struct {
-	// The ID of the database account.
+	// The database account ID.
 	//
 	// example:
 	//

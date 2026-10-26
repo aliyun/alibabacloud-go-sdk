@@ -13,6 +13,8 @@ type iListHostGroupAccountNamesForUserRequest interface {
 	GetHostGroupId() *string
 	SetInstanceId(v string) *ListHostGroupAccountNamesForUserRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *ListHostGroupAccountNamesForUserRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListHostGroupAccountNamesForUserRequest
 	GetRegionId() *string
 	SetUserId(v string) *ListHostGroupAccountNamesForUserRequest
@@ -20,9 +22,9 @@ type iListHostGroupAccountNamesForUserRequest interface {
 }
 
 type ListHostGroupAccountNamesForUserRequest struct {
-	// The ID of the host group.
+	// The ID of the host group to query.
 	//
-	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
+	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +32,9 @@ type ListHostGroupAccountNamesForUserRequest struct {
 	//
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The ID of the bastion host to which the user belongs.
+	// The instance ID of the Bastionhost instance to which the user belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +42,13 @@ type ListHostGroupAccountNamesForUserRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host to which the user belongs.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the user belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -48,9 +56,9 @@ type ListHostGroupAccountNamesForUserRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user.
+	// The ID of the user to query.
 	//
-	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -76,6 +84,10 @@ func (s *ListHostGroupAccountNamesForUserRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListHostGroupAccountNamesForUserRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListHostGroupAccountNamesForUserRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -91,6 +103,11 @@ func (s *ListHostGroupAccountNamesForUserRequest) SetHostGroupId(v string) *List
 
 func (s *ListHostGroupAccountNamesForUserRequest) SetInstanceId(v string) *ListHostGroupAccountNamesForUserRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListHostGroupAccountNamesForUserRequest) SetProjectId(v int64) *ListHostGroupAccountNamesForUserRequest {
+	s.ProjectId = &v
 	return s
 }
 

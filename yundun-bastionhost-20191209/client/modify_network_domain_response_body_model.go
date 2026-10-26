@@ -14,7 +14,7 @@ type iModifyNetworkDomainResponseBody interface {
 }
 
 type ModifyNetworkDomainResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

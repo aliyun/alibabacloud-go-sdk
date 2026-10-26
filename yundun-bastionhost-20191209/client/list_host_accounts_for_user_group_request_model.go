@@ -19,6 +19,8 @@ type iListHostAccountsForUserGroupRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListHostAccountsForUserGroupRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListHostAccountsForUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListHostAccountsForUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *ListHostAccountsForUserGroupRequest
@@ -26,15 +28,15 @@ type iListHostAccountsForUserGroupRequest interface {
 }
 
 type ListHostAccountsForUserGroupRequest struct {
-	// The name of the host account that you want to query. Exact match is supported.
+	// The name of the host account to query. Exact match is supported.
 	//
 	// example:
 	//
 	// root
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the host to query.
+	// The ID of the host for which you want to query the host accounts.
 	//
-	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain the parameter value.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +44,9 @@ type ListHostAccountsForUserGroupRequest struct {
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the bastion host on which you want to query the host accounts to be managed by the specified user group on the specified host.
+	// The instance ID of the Bastionhost instance to which the user group belongs. You can query the list of host accounts with authorization for this user group.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the parameter value.
 	//
 	// This parameter is required.
 	//
@@ -52,21 +54,29 @@ type ListHostAccountsForUserGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number for paging in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.<br> Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to return on each page for paging in a paged query.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned.
+	//
+	// > Do not leave this parameter empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host on which you want to query the host accounts to be managed by the specified user group on the specified host.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance that contains the user group for which you want to query the list of authorized host accounts.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -74,9 +84,9 @@ type ListHostAccountsForUserGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group for which you want to query authorized host accounts.
+	// The ID of the user group whose authorized host accounts you want to query.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain the parameter value.
 	//
 	// This parameter is required.
 	//
@@ -114,6 +124,10 @@ func (s *ListHostAccountsForUserGroupRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListHostAccountsForUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListHostAccountsForUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -144,6 +158,11 @@ func (s *ListHostAccountsForUserGroupRequest) SetPageNumber(v string) *ListHostA
 
 func (s *ListHostAccountsForUserGroupRequest) SetPageSize(v string) *ListHostAccountsForUserGroupRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListHostAccountsForUserGroupRequest) SetProjectId(v int64) *ListHostAccountsForUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

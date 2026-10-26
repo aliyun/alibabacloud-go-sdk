@@ -16,13 +16,13 @@ type iCreateUserGroupResponseBody interface {
 }
 
 type CreateUserGroupResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the user group.
+	// The ID of the created user group.
 	//
 	// example:
 	//

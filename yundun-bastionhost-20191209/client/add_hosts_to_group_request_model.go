@@ -15,6 +15,8 @@ type iAddHostsToGroupRequest interface {
 	GetHostIds() *string
 	SetInstanceId(v string) *AddHostsToGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *AddHostsToGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *AddHostsToGroupRequest
 	GetRegionId() *string
 }
@@ -22,7 +24,7 @@ type iAddHostsToGroupRequest interface {
 type AddHostsToGroupRequest struct {
 	// The ID of the asset group to which you want to add hosts.
 	//
-	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the asset group ID.
+	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +32,9 @@ type AddHostsToGroupRequest struct {
 	//
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The IDs of the hosts that you want to add to the asset group. Specify a JSON string. You can specify up to 100 host IDs.
+	// The IDs of the hosts that you want to add to the asset group. This parameter is a JSON-formatted string. You can add up to 100 host IDs.
 	//
-	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host IDs.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query host IDs.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +42,9 @@ type AddHostsToGroupRequest struct {
 	//
 	// ["1","2","3"]
 	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
-	// The ID of the bastion host whose asset group you want to add hosts to.
+	// The instance ID of the bastion host where the asset group to which you want to add hosts resides.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +52,15 @@ type AddHostsToGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host whose asset group you want to add hosts to.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host instance where the asset group to which you want to add hosts resides.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -80,6 +88,10 @@ func (s *AddHostsToGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *AddHostsToGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *AddHostsToGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -96,6 +108,11 @@ func (s *AddHostsToGroupRequest) SetHostIds(v string) *AddHostsToGroupRequest {
 
 func (s *AddHostsToGroupRequest) SetInstanceId(v string) *AddHostsToGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *AddHostsToGroupRequest) SetProjectId(v int64) *AddHostsToGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

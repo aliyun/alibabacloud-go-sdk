@@ -18,9 +18,9 @@ type iAddInstanceRdMemberRequest interface {
 }
 
 type AddInstanceRdMemberRequest struct {
-	// The ID of the Bastionhost instance.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the Bastionhost instance.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type AddInstanceRdMemberRequest struct {
 	//
 	// bastionhost-cn-7mz2ve7h00a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The UID of the RD member account to add.
+	// The UID of the member accounts in a resource directory to be added.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type AddInstanceRdMemberRequest struct {
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	// The region ID of the Bastionhost instance.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

@@ -21,8 +21,18 @@ type iModifyInstanceADAuthServerRequest interface {
 	GetFilter() *string
 	SetInstanceId(v string) *ModifyInstanceADAuthServerRequest
 	GetInstanceId() *string
+	SetIsDefault(v string) *ModifyInstanceADAuthServerRequest
+	GetIsDefault() *string
 	SetIsSSL(v string) *ModifyInstanceADAuthServerRequest
 	GetIsSSL() *string
+	SetIsSyncEmailAttr(v string) *ModifyInstanceADAuthServerRequest
+	GetIsSyncEmailAttr() *string
+	SetIsSyncMobileAttr(v string) *ModifyInstanceADAuthServerRequest
+	GetIsSyncMobileAttr() *string
+	SetIsSyncNameAttr(v string) *ModifyInstanceADAuthServerRequest
+	GetIsSyncNameAttr() *string
+	SetIsSyncOuAsUserGroup(v string) *ModifyInstanceADAuthServerRequest
+	GetIsSyncOuAsUserGroup() *string
 	SetMobileMapping(v string) *ModifyInstanceADAuthServerRequest
 	GetMobileMapping() *string
 	SetNameMapping(v string) *ModifyInstanceADAuthServerRequest
@@ -35,12 +45,18 @@ type iModifyInstanceADAuthServerRequest interface {
 	GetRegionId() *string
 	SetServer(v string) *ModifyInstanceADAuthServerRequest
 	GetServer() *string
+	SetServerName(v string) *ModifyInstanceADAuthServerRequest
+	GetServerName() *string
 	SetStandbyServer(v string) *ModifyInstanceADAuthServerRequest
 	GetStandbyServer() *string
+	SetSyncInterval(v string) *ModifyInstanceADAuthServerRequest
+	GetSyncInterval() *string
+	SetUserSourceId(v string) *ModifyInstanceADAuthServerRequest
+	GetUserSourceId() *string
 }
 
 type ModifyInstanceADAuthServerRequest struct {
-	// The username of the account that is used for the AD server.
+	// The server account.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +64,7 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// cn=Manager,dc=test,dc=com
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The Base distinguished name (DN).
+	// The base distinguished name (Base DN).
 	//
 	// This parameter is required.
 	//
@@ -64,21 +80,21 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// domain
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The field that is used to indicate the email address of a user on the AD server.
+	// The server attribute name that maps to the user email address.
 	//
 	// example:
 	//
 	// emailAttr
 	EmailMapping *string `json:"EmailMapping,omitempty" xml:"EmailMapping,omitempty"`
-	// The condition that is used to filter users.
+	// The filter condition for users.
 	//
 	// example:
 	//
 	// (objectClass=top)
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The bastion host ID.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -86,37 +102,65 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the AD authentication server is the default server. A value of true indicates that the server is the default AD authentication server. A value of false indicates that the server is not the default AD authentication server.
+	//
+	// example:
+	//
+	// true
+	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// Specifies whether SSL is supported. Valid values:
 	//
-	// - **true**
+	// - **true**: Supported.
 	//
-	// - **false**
-	//
-	// This parameter is required.
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	IsSSL *string `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
-	// The field that is used to indicate the mobile phone number of a user on the AD server.
+	// Specifies whether to synchronize the email address. A value of true indicates that the email address is synchronized. A value of false indicates that the email address is not synchronized.
+	//
+	// example:
+	//
+	// true
+	IsSyncEmailAttr *string `json:"IsSyncEmailAttr,omitempty" xml:"IsSyncEmailAttr,omitempty"`
+	// Specifies whether to synchronize the mobile phone number. A value of true indicates that the mobile phone number is synchronized. A value of false indicates that the mobile phone number is not synchronized.
+	//
+	// example:
+	//
+	// true
+	IsSyncMobileAttr *string `json:"IsSyncMobileAttr,omitempty" xml:"IsSyncMobileAttr,omitempty"`
+	// Specifies whether to synchronize the display name. A value of true indicates that the display name is synchronized. A value of false indicates that the display name is not synchronized.
+	//
+	// example:
+	//
+	// true
+	IsSyncNameAttr *string `json:"IsSyncNameAttr,omitempty" xml:"IsSyncNameAttr,omitempty"`
+	// Specifies whether to synchronize the organization to which the user belongs as a user group. A value of true indicates that the organization is synchronized as a user group. A value of false indicates that the organization is not synchronized as a user group.
+	//
+	// example:
+	//
+	// true
+	IsSyncOuAsUserGroup *string `json:"IsSyncOuAsUserGroup,omitempty" xml:"IsSyncOuAsUserGroup,omitempty"`
+	// The server attribute name that maps to the user mobile phone number.
 	//
 	// example:
 	//
 	// mobileAttr
 	MobileMapping *string `json:"MobileMapping,omitempty" xml:"MobileMapping,omitempty"`
-	// The field that is used to indicate the name of a user on the AD server.
+	// The server attribute name that maps to the username.
 	//
 	// example:
 	//
 	// nameAttr
 	NameMapping *string `json:"NameMapping,omitempty" xml:"NameMapping,omitempty"`
-	// The password of the account that is used for the AD server.
+	// The password of the server account.
 	//
 	// example:
 	//
 	// ******
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The port that is used to access the server.
+	// The port used to access the server.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +168,7 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// 389
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -132,7 +176,7 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The address of the AD server.
+	// The address of the server.
 	//
 	// This parameter is required.
 	//
@@ -140,12 +184,25 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// 192.168.XX.XX
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// The address of the secondary AD server.
+	// The name of the AD authentication server.
+	//
+	// example:
+	//
+	// AD Server
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+	// The address of the standby server.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	StandbyServer *string `json:"StandbyServer,omitempty" xml:"StandbyServer,omitempty"`
+	// The interval at which user snapshots are automatically synchronized, in hours. Valid values: 0, and 4 to 168. A value of 0 indicates that automatic synchronization is disabled.
+	//
+	// example:
+	//
+	// 12
+	SyncInterval *string `json:"SyncInterval,omitempty" xml:"SyncInterval,omitempty"`
+	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 }
 
 func (s ModifyInstanceADAuthServerRequest) String() string {
@@ -180,8 +237,28 @@ func (s *ModifyInstanceADAuthServerRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ModifyInstanceADAuthServerRequest) GetIsDefault() *string {
+	return s.IsDefault
+}
+
 func (s *ModifyInstanceADAuthServerRequest) GetIsSSL() *string {
 	return s.IsSSL
+}
+
+func (s *ModifyInstanceADAuthServerRequest) GetIsSyncEmailAttr() *string {
+	return s.IsSyncEmailAttr
+}
+
+func (s *ModifyInstanceADAuthServerRequest) GetIsSyncMobileAttr() *string {
+	return s.IsSyncMobileAttr
+}
+
+func (s *ModifyInstanceADAuthServerRequest) GetIsSyncNameAttr() *string {
+	return s.IsSyncNameAttr
+}
+
+func (s *ModifyInstanceADAuthServerRequest) GetIsSyncOuAsUserGroup() *string {
+	return s.IsSyncOuAsUserGroup
 }
 
 func (s *ModifyInstanceADAuthServerRequest) GetMobileMapping() *string {
@@ -208,8 +285,20 @@ func (s *ModifyInstanceADAuthServerRequest) GetServer() *string {
 	return s.Server
 }
 
+func (s *ModifyInstanceADAuthServerRequest) GetServerName() *string {
+	return s.ServerName
+}
+
 func (s *ModifyInstanceADAuthServerRequest) GetStandbyServer() *string {
 	return s.StandbyServer
+}
+
+func (s *ModifyInstanceADAuthServerRequest) GetSyncInterval() *string {
+	return s.SyncInterval
+}
+
+func (s *ModifyInstanceADAuthServerRequest) GetUserSourceId() *string {
+	return s.UserSourceId
 }
 
 func (s *ModifyInstanceADAuthServerRequest) SetAccount(v string) *ModifyInstanceADAuthServerRequest {
@@ -242,8 +331,33 @@ func (s *ModifyInstanceADAuthServerRequest) SetInstanceId(v string) *ModifyInsta
 	return s
 }
 
+func (s *ModifyInstanceADAuthServerRequest) SetIsDefault(v string) *ModifyInstanceADAuthServerRequest {
+	s.IsDefault = &v
+	return s
+}
+
 func (s *ModifyInstanceADAuthServerRequest) SetIsSSL(v string) *ModifyInstanceADAuthServerRequest {
 	s.IsSSL = &v
+	return s
+}
+
+func (s *ModifyInstanceADAuthServerRequest) SetIsSyncEmailAttr(v string) *ModifyInstanceADAuthServerRequest {
+	s.IsSyncEmailAttr = &v
+	return s
+}
+
+func (s *ModifyInstanceADAuthServerRequest) SetIsSyncMobileAttr(v string) *ModifyInstanceADAuthServerRequest {
+	s.IsSyncMobileAttr = &v
+	return s
+}
+
+func (s *ModifyInstanceADAuthServerRequest) SetIsSyncNameAttr(v string) *ModifyInstanceADAuthServerRequest {
+	s.IsSyncNameAttr = &v
+	return s
+}
+
+func (s *ModifyInstanceADAuthServerRequest) SetIsSyncOuAsUserGroup(v string) *ModifyInstanceADAuthServerRequest {
+	s.IsSyncOuAsUserGroup = &v
 	return s
 }
 
@@ -277,8 +391,23 @@ func (s *ModifyInstanceADAuthServerRequest) SetServer(v string) *ModifyInstanceA
 	return s
 }
 
+func (s *ModifyInstanceADAuthServerRequest) SetServerName(v string) *ModifyInstanceADAuthServerRequest {
+	s.ServerName = &v
+	return s
+}
+
 func (s *ModifyInstanceADAuthServerRequest) SetStandbyServer(v string) *ModifyInstanceADAuthServerRequest {
 	s.StandbyServer = &v
+	return s
+}
+
+func (s *ModifyInstanceADAuthServerRequest) SetSyncInterval(v string) *ModifyInstanceADAuthServerRequest {
+	s.SyncInterval = &v
+	return s
+}
+
+func (s *ModifyInstanceADAuthServerRequest) SetUserSourceId(v string) *ModifyInstanceADAuthServerRequest {
+	s.UserSourceId = &v
 	return s
 }
 

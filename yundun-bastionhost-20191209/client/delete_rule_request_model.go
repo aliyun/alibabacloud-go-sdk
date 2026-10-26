@@ -11,6 +11,8 @@ type iDeleteRuleRequest interface {
 	GoString() string
 	SetInstanceId(v string) *DeleteRuleRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *DeleteRuleRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *DeleteRuleRequest
 	GetRegionId() *string
 	SetRuleId(v string) *DeleteRuleRequest
@@ -18,9 +20,9 @@ type iDeleteRuleRequest interface {
 }
 
 type DeleteRuleRequest struct {
-	// The ID of the bastion host from which you want to delete the authorization rule.
+	// The instance ID of the bastion host to which the authorization rule to be deleted belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,17 +30,23 @@ type DeleteRuleRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host from which you want to delete the authorization rule.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host instance from which you want to delete the authorization rule.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the authorization rule that you want to delete.
+	// The ID of the authorization rule to be deleted.
 	//
-	// > You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID.
+	// > You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -60,6 +68,10 @@ func (s *DeleteRuleRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DeleteRuleRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *DeleteRuleRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -70,6 +82,11 @@ func (s *DeleteRuleRequest) GetRuleId() *string {
 
 func (s *DeleteRuleRequest) SetInstanceId(v string) *DeleteRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteRuleRequest) SetProjectId(v int64) *DeleteRuleRequest {
+	s.ProjectId = &v
 	return s
 }
 

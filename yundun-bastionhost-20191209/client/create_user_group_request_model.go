@@ -13,6 +13,8 @@ type iCreateUserGroupRequest interface {
 	GetComment() *string
 	SetInstanceId(v string) *CreateUserGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *CreateUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *CreateUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupName(v string) *CreateUserGroupRequest
@@ -20,15 +22,15 @@ type iCreateUserGroupRequest interface {
 }
 
 type CreateUserGroupRequest struct {
-	// The description of the user group. The description can be up to 500 characters in length.
+	// The description of the user group to create. The description can be up to 500 characters in length.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the bastion host for which you want to create a user group.
+	// The ID of the bastion host instance for which you want to create a user group.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -36,6 +38,12 @@ type CreateUserGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host for which you want to create a user group.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
@@ -44,7 +52,7 @@ type CreateUserGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the user group that you want to create. This name can be a up to 128 characters in length.
+	// The name of the user group to create. The name can be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -70,6 +78,10 @@ func (s *CreateUserGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreateUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *CreateUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -85,6 +97,11 @@ func (s *CreateUserGroupRequest) SetComment(v string) *CreateUserGroupRequest {
 
 func (s *CreateUserGroupRequest) SetInstanceId(v string) *CreateUserGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateUserGroupRequest) SetProjectId(v int64) *CreateUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

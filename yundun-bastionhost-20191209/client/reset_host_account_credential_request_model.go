@@ -15,16 +15,18 @@ type iResetHostAccountCredentialRequest interface {
 	GetHostAccountId() *string
 	SetInstanceId(v string) *ResetHostAccountCredentialRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *ResetHostAccountCredentialRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ResetHostAccountCredentialRequest
 	GetRegionId() *string
 }
 
 type ResetHostAccountCredentialRequest struct {
-	// The type of logon credential to clear. Valid values:
+	// The type of the logon credential to purge. Valid values:
 	//
-	// - **Password**: The password.
+	// - **Password**: password
 	//
-	// - **PrivateKey**: The SSH private key.
+	// - **PrivateKey**: SSH private key
 	//
 	// This parameter is required.
 	//
@@ -32,9 +34,9 @@ type ResetHostAccountCredentialRequest struct {
 	//
 	// Password
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// The ID of the host account. The logon credential of this account will be cleared.
+	// The ID of the host account whose logon credentials you want to purge.
 	//
-	// > Call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to obtain this parameter.
+	// > You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +44,9 @@ type ResetHostAccountCredentialRequest struct {
 	//
 	// 1
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// The ID of the Bastionhost instance. The instance contains the host account.
+	// The instance ID of the Bastionhost instance to which the host account whose logon credentials you want to purge belongs.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +54,15 @@ type ResetHostAccountCredentialRequest struct {
 	//
 	// bastionhost-cn-rp640dg****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance.
+	// The project ID.
 	//
-	// > For information about region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the host account whose logon credentials you want to purge belongs.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -82,6 +90,10 @@ func (s *ResetHostAccountCredentialRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ResetHostAccountCredentialRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ResetHostAccountCredentialRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -98,6 +110,11 @@ func (s *ResetHostAccountCredentialRequest) SetHostAccountId(v string) *ResetHos
 
 func (s *ResetHostAccountCredentialRequest) SetInstanceId(v string) *ResetHostAccountCredentialRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ResetHostAccountCredentialRequest) SetProjectId(v int64) *ResetHostAccountCredentialRequest {
+	s.ProjectId = &v
 	return s
 }
 

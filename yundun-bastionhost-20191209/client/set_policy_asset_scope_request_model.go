@@ -19,6 +19,8 @@ type iSetPolicyAssetScopeRequest interface {
 	GetInstanceId() *string
 	SetPolicyId(v string) *SetPolicyAssetScopeRequest
 	GetPolicyId() *string
+	SetProjectId(v int64) *SetPolicyAssetScopeRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *SetPolicyAssetScopeRequest
 	GetRegionId() *string
 	SetScopeType(v string) *SetPolicyAssetScopeRequest
@@ -26,21 +28,21 @@ type iSetPolicyAssetScopeRequest interface {
 }
 
 type SetPolicyAssetScopeRequest struct {
-	// The databases to which the control policy applies.
+	// The scope of database assets to which the control policy applies.
 	//
-	// > This parameter is required if ScopeType is set to Database. You can specify up to 500 databases.
+	// > Required when ScopeType is set to Database. You can specify up to 500 databases.
 	Databases []*SetPolicyAssetScopeRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	// The asset groups to which the control policy applies.
+	// The scope of asset groups to which the control policy applies.
 	//
-	// > This parameter is required if ScopeType is set to HostGroup. You can specify up to 100 asset groups.
+	// > Required when ScopeType is set to HostGroup. You can specify up to 100 asset groups.
 	HostGroups []*SetPolicyAssetScopeRequestHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
-	// The hosts to which the control policy applies.
+	// The scope of hosts to which the control policy applies.
 	//
-	// > This parameter is required if ScopeType is set to Host. You can specify up to 500 hosts.
+	// > Required when ScopeType is set to Host. You can specify up to 500 hosts.
 	Hosts []*SetPolicyAssetScopeRequestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
-	// The bastion host ID.
+	// The Bastionhost instance ID.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +50,9 @@ type SetPolicyAssetScopeRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the control policy that you want to modify.
+	// The ID of the control policy to modify.
 	//
-	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +60,15 @@ type SetPolicyAssetScopeRequest struct {
 	//
 	// 7
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -68,13 +76,13 @@ type SetPolicyAssetScopeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The scope of assets to which the control policy applies. Valid values:
 	//
-	// - **All**: The control policy applies to all assets.
+	// - **All**: all assets
 	//
-	// - **Host**: The control policy applies to specified hosts.
+	// - **Host**: selected hosts
 	//
-	// - **Database**: The control policy applies to specified databases.
+	// - **Database**: selected databases
 	//
-	// - **HostGroup**: The control policy applies to specified asset groups.
+	// - **HostGroup**: selected asset groups
 	//
 	// This parameter is required.
 	//
@@ -112,6 +120,10 @@ func (s *SetPolicyAssetScopeRequest) GetPolicyId() *string {
 	return s.PolicyId
 }
 
+func (s *SetPolicyAssetScopeRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *SetPolicyAssetScopeRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -142,6 +154,11 @@ func (s *SetPolicyAssetScopeRequest) SetInstanceId(v string) *SetPolicyAssetScop
 
 func (s *SetPolicyAssetScopeRequest) SetPolicyId(v string) *SetPolicyAssetScopeRequest {
 	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequest) SetProjectId(v int64) *SetPolicyAssetScopeRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -189,19 +206,19 @@ func (s *SetPolicyAssetScopeRequest) Validate() error {
 type SetPolicyAssetScopeRequestDatabases struct {
 	// The scope of database accounts to which the control policy applies. Valid values:
 	//
-	// - **All**: The control policy applies to all database accounts of the database.
+	// - **All**: all accounts in the database
 	//
-	// - **AccountId**: The control policy applies to specified database accounts of the database.
+	// - **AccountId**: specified accounts in the database
 	//
 	// example:
 	//
 	// AccountId
 	AccountScopeType *string `json:"AccountScopeType,omitempty" xml:"AccountScopeType,omitempty"`
-	// The database accounts to which the control policy applies.
+	// The scope of database accounts to which the control policy applies.
 	//
-	// > This parameter is required if AccountScopeType is set to AccountId.
+	// > Required when AccountScopeType is set to AccountId.
 	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
-	// The database ID.
+	// The database instance ID.
 	//
 	// example:
 	//
@@ -249,21 +266,21 @@ func (s *SetPolicyAssetScopeRequestDatabases) Validate() error {
 }
 
 type SetPolicyAssetScopeRequestHostGroups struct {
-	// The asset accounts to which the control policy applies.
+	// The scope of asset accounts to which the control policy applies.
 	//
-	// > This parameter is required if AccountScopeType is set to AccountName.
+	// > Required when AccountScopeType is set to AccountNames.
 	AccountNames []*string `json:"AccountNames,omitempty" xml:"AccountNames,omitempty" type:"Repeated"`
 	// The scope of asset accounts to which the control policy applies. Valid values:
 	//
-	// - **All**: The control policy applies to all accounts in the asset group.
+	// - **All**: all accounts in the asset group
 	//
-	// - **AccountName**: The control policy applies to specified accounts in the asset group.
+	// - **AccountName**: specified accounts in the asset group
 	//
 	// example:
 	//
 	// All
 	AccountScopeType *string `json:"AccountScopeType,omitempty" xml:"AccountScopeType,omitempty"`
-	// The asset group ID.
+	// The ID of the asset group.
 	//
 	// example:
 	//
@@ -313,19 +330,19 @@ func (s *SetPolicyAssetScopeRequestHostGroups) Validate() error {
 type SetPolicyAssetScopeRequestHosts struct {
 	// The scope of host accounts to which the control policy applies. Valid values:
 	//
-	// - **All**: The control policy applies to all accounts of the host.
+	// - **All**: all accounts on the host
 	//
-	// - **AccountId**: The control policy applies specified accounts of the host.
+	// - **AccountId**: specified accounts on the host
 	//
 	// example:
 	//
 	// All
 	AccountScopeType *string `json:"AccountScopeType,omitempty" xml:"AccountScopeType,omitempty"`
-	// The host accounts to which the control policy applies.
+	// The scope of host accounts to which the control policy applies.
 	//
-	// > This parameter is required if AccountScopeType is set to AccountId.
+	// > Required when AccountScopeType is set to AccountId.
 	HostAccountIds []*string `json:"HostAccountIds,omitempty" xml:"HostAccountIds,omitempty" type:"Repeated"`
-	// The host ID.
+	// The ID of the host.
 	//
 	// example:
 	//

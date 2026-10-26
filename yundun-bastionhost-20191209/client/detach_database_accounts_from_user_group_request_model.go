@@ -13,6 +13,8 @@ type iDetachDatabaseAccountsFromUserGroupRequest interface {
 	GetDatabases() []*DetachDatabaseAccountsFromUserGroupRequestDatabases
 	SetInstanceId(v string) *DetachDatabaseAccountsFromUserGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *DetachDatabaseAccountsFromUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *DetachDatabaseAccountsFromUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *DetachDatabaseAccountsFromUserGroupRequest
@@ -20,11 +22,11 @@ type iDetachDatabaseAccountsFromUserGroupRequest interface {
 }
 
 type DetachDatabaseAccountsFromUserGroupRequest struct {
-	// The information about the database.
+	// The information about the databases from which you want to remove authorization.
 	Databases []*DetachDatabaseAccountsFromUserGroupRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	// The bastion host ID.
+	// The ID of the bastion host instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -32,17 +34,23 @@ type DetachDatabaseAccountsFromUserGroupRequest struct {
 	//
 	// bastionhost-cn-7mz2v120f0y
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group from which you want to revoke permissions on databases and database accounts.
+	// The ID of the user group from which you want to remove authorized databases and database accounts.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+	// > You can call [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -68,6 +76,10 @@ func (s *DetachDatabaseAccountsFromUserGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DetachDatabaseAccountsFromUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *DetachDatabaseAccountsFromUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -83,6 +95,11 @@ func (s *DetachDatabaseAccountsFromUserGroupRequest) SetDatabases(v []*DetachDat
 
 func (s *DetachDatabaseAccountsFromUserGroupRequest) SetInstanceId(v string) *DetachDatabaseAccountsFromUserGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupRequest) SetProjectId(v int64) *DetachDatabaseAccountsFromUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -110,9 +127,9 @@ func (s *DetachDatabaseAccountsFromUserGroupRequest) Validate() error {
 }
 
 type DetachDatabaseAccountsFromUserGroupRequestDatabases struct {
-	// An array that consists of database account IDs.
+	// The IDs of the database accounts from which you want to remove authorization.
 	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
-	// The ID of the database on which the permissions are to be revoked.
+	// The instance ID of the database from which you want to remove authorization.
 	//
 	// example:
 	//

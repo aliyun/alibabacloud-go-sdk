@@ -18,15 +18,15 @@ type iListDatabasesForUserGroupResponseBody interface {
 }
 
 type ListDatabasesForUserGroupResponseBody struct {
-	// The list of databases that are queried.
+	// The queried databases.
 	Databases []*ListDatabasesForUserGroupResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	// The unique ID that Alibaba Cloud generates for the request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of databases that are queried.
+	// The total number of queried databases.
 	//
 	// example:
 	//
@@ -83,11 +83,11 @@ func (s *ListDatabasesForUserGroupResponseBody) Validate() error {
 }
 
 type ListDatabasesForUserGroupResponseBodyDatabases struct {
-	// The type of the database address. Valid values:
+	// The address type of the database. Valid values:
 	//
-	// - **Public**: public address
+	// - **Public**: public network address
 	//
-	// - **Private**: private address
+	// - **Private**: private network address
 	//
 	// example:
 	//
@@ -99,13 +99,13 @@ type ListDatabasesForUserGroupResponseBodyDatabases struct {
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The total number of database accounts that are queried.
+	// The total number of queried database accounts.
 	//
 	// example:
 	//
 	// 2
 	DatabaseAccountCount *int64 `json:"DatabaseAccountCount,omitempty" xml:"DatabaseAccountCount,omitempty"`
-	// The ID of the database instance to which the database account belongs.
+	// The instance ID of the database to which the database account belongs.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListDatabasesForUserGroupResponseBodyDatabases struct {
 	//
 	// 3306
 	DatabasePort *int64 `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
-	// The private endpoint of the database, which can be a domain name or an IP address.
+	// The private network address of the database, which can be a domain name or an IP address.
 	//
 	// example:
 	//
@@ -155,19 +155,31 @@ type ListDatabasesForUserGroupResponseBodyDatabases struct {
 	//
 	// 5
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
+	// example:
+	//
+	// test
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The source of the database. Valid values:
 	//
-	// - **Local**: local database instance
+	// - **Local**: self-managed database instance
 	//
-	// - **Rds**: RDS database instance
+	// - **Rds**: ApsaraDB RDS instance
 	//
-	// - **PolarDB**: PolarDB database instance
+	// - **PolarDB**: PolarDB instance
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the RDS instance or PolarDB instance that corresponds to the database.
+	// The instance ID of the ApsaraDB RDS or PolarDB instance that corresponds to the database.
 	//
 	// > If **Source*	- is set to **Local**, this parameter is empty.
 	//
@@ -225,6 +237,14 @@ func (s *ListDatabasesForUserGroupResponseBodyDatabases) GetNetworkDomainId() *s
 	return s.NetworkDomainId
 }
 
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) GetProjectId() *string {
+	return s.ProjectId
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) GetProjectName() *string {
+	return s.ProjectName
+}
+
 func (s *ListDatabasesForUserGroupResponseBodyDatabases) GetSource() *string {
 	return s.Source
 }
@@ -280,6 +300,16 @@ func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetDatabaseType(v strin
 
 func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetNetworkDomainId(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
 	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetProjectId(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetProjectName(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.ProjectName = &v
 	return s
 }
 

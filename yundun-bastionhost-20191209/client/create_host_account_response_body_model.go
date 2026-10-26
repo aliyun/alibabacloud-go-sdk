@@ -22,7 +22,7 @@ type CreateHostAccountResponseBody struct {
 	//
 	// 1
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

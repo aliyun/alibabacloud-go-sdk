@@ -19,6 +19,8 @@ type iModifyNetworkDomainRequest interface {
 	GetNetworkDomainName() *string
 	SetNetworkDomainType(v string) *ModifyNetworkDomainRequest
 	GetNetworkDomainType() *string
+	SetProjectId(v int64) *ModifyNetworkDomainRequest
+	GetProjectId() *int64
 	SetProxies(v []*ModifyNetworkDomainRequestProxies) *ModifyNetworkDomainRequest
 	GetProxies() []*ModifyNetworkDomainRequestProxies
 	SetRegionId(v string) *ModifyNetworkDomainRequest
@@ -26,15 +28,15 @@ type iModifyNetworkDomainRequest interface {
 }
 
 type ModifyNetworkDomainRequest struct {
-	// The new remarks of the network domain.
+	// The new description of the network domain.
 	//
 	// example:
 	//
 	// xxx
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the bastion host to which the network domain to modify belongs.
+	// The instance ID of the Bastionhost instance to which the network domain to be modified belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the parameter value.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +44,7 @@ type ModifyNetworkDomainRequest struct {
 	//
 	// bastionhost-cn-x0r3hyr3f09
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the network domain to modify.
+	// The ID of the network domain to be modified.
 	//
 	// This parameter is required.
 	//
@@ -56,19 +58,25 @@ type ModifyNetworkDomainRequest struct {
 	//
 	// test
 	NetworkDomainName *string `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
-	// The new connection mode of the network domain. Valid values:
+	// The new type of the network domain. Valid values:
 	//
-	// - **Direct**
+	// - **Direct**: Direct connection.
 	//
-	// - **Proxy**
+	// - **Proxy**: Proxy.
 	//
 	// example:
 	//
 	// Proxy
 	NetworkDomainType *string `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The information about the proxy servers in the network domain.
 	Proxies []*ModifyNetworkDomainRequestProxies `json:"Proxies,omitempty" xml:"Proxies,omitempty" type:"Repeated"`
-	// The region ID of the bastion host to which the network domain to modify belongs.
+	// The region ID of the Bastionhost instance to which the network domain to be modified belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -106,6 +114,10 @@ func (s *ModifyNetworkDomainRequest) GetNetworkDomainType() *string {
 	return s.NetworkDomainType
 }
 
+func (s *ModifyNetworkDomainRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ModifyNetworkDomainRequest) GetProxies() []*ModifyNetworkDomainRequestProxies {
 	return s.Proxies
 }
@@ -139,6 +151,11 @@ func (s *ModifyNetworkDomainRequest) SetNetworkDomainType(v string) *ModifyNetwo
 	return s
 }
 
+func (s *ModifyNetworkDomainRequest) SetProjectId(v int64) *ModifyNetworkDomainRequest {
+	s.ProjectId = &v
+	return s
+}
+
 func (s *ModifyNetworkDomainRequest) SetProxies(v []*ModifyNetworkDomainRequestProxies) *ModifyNetworkDomainRequest {
 	s.Proxies = v
 	return s
@@ -163,17 +180,17 @@ func (s *ModifyNetworkDomainRequest) Validate() error {
 }
 
 type ModifyNetworkDomainRequestProxies struct {
-	// The new IP address of the proxy server.
+	// The new address of the proxy server.
 	//
 	// example:
 	//
 	// 114.21**.**
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The node type of the proxy server to modify. Valid values:
+	// The type of the proxy server node to be modified. Valid values:
 	//
-	// - **Master**: primary proxy server.
+	// - **Master**: Primary proxy server.
 	//
-	// - **Slave**: secondary proxy server.
+	// - **Slave**: Secondary proxy server.
 	//
 	// example:
 	//
@@ -185,25 +202,25 @@ type ModifyNetworkDomainRequestProxies struct {
 	//
 	// ***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The new port of the proxy server.
+	// The new Server Port of the proxy server.
 	//
 	// example:
 	//
 	// 22
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The new proxy mode. Valid values:
+	// The new proxy type. Valid values:
 	//
-	// - **SSHProxy**
+	// - **SSHProxy**: SSH proxy.
 	//
-	// - **HTTPProxy**
+	// - **HTTPProxy**: HTTP proxy.
 	//
-	// - **Socks5Proxy**
+	// - **Socks5Proxy**: SOCKS5 proxy.
 	//
 	// example:
 	//
 	// HTTPProxy
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	// The new username of the proxy server account.
+	// The new username of the proxy server.
 	//
 	// example:
 	//

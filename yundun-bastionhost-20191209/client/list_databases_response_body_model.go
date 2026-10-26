@@ -18,9 +18,9 @@ type iListDatabasesResponseBody interface {
 }
 
 type ListDatabasesResponseBody struct {
-	// The databases returned.
+	// The list of databases.
 	Databases []*ListDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -85,21 +85,21 @@ func (s *ListDatabasesResponseBody) Validate() error {
 type ListDatabasesResponseBodyDatabases struct {
 	// The address type of the database. Valid values:
 	//
-	// - **Public**
+	// - **Public**: public address
 	//
-	// - **Private**
+	// - **Private**: private endpoint on the private network
 	//
 	// example:
 	//
 	// Public
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The remarks of the database.
+	// The description of the database.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The database ID.
+	// The instance ID of the database.
 	//
 	// example:
 	//
@@ -111,25 +111,25 @@ type ListDatabasesResponseBodyDatabases struct {
 	//
 	// MySQL0
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The port of the database.
+	// The port number of the database.
 	//
 	// example:
 	//
 	// 3306
 	DatabasePort *int32 `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
-	// The internal address of the database. The value is a domain name or an IP address.
+	// The private endpoint of the database on the private network, which can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// rm-wz973w7******
 	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
-	// The public address of the database. The value is a domain name or an IP address.
+	// The public address of the database, which can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// rm-uf65n2******
 	DatabasePublicAddress *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
-	// The database engine. Valid values:
+	// The type of the database. Valid values:
 	//
 	// - **MySQL**
 	//
@@ -143,43 +143,43 @@ type ListDatabasesResponseBodyDatabases struct {
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The ID of the network domain where the database resides.
+	// The ID of the network domain to which the database belongs.
 	//
 	// example:
 	//
 	// 8
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The type of the database. Valid values:
+	// The source of the database. Valid values:
 	//
-	// - **Local**: on-premises database.
+	// - **Local**: local database instance
 	//
-	// - **Rds**: ApsaraDB for RDS instance.
+	// - **Rds**: ApsaraDB RDS instance
 	//
-	// - **PolarDB**: PolarDB cluster
+	// - **PolarDB**: PolarDB instance
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ApsaraDB for RDS instance or PolarDB cluster.
+	// The instance ID of the ApsaraDB RDS instance or PolarDB instance that corresponds to the database.
 	//
-	// > No value is returned for this parameter if **Source*	- is set to **Local**.
+	// > If **Source*	- is set to **Local**, this parameter is empty.
 	//
 	// example:
 	//
 	// i-wz9ejupczf41******
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The region ID of the ApsaraDB for RDS instance or PolarDB cluster.
+	// The region ID of the ApsaraDB RDS instance or PolarDB instance that corresponds to the database.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
-	// The status of the database. Valid values:
+	// The instance status of the database. Valid values:
 	//
-	// - **Normal**
+	// - **Normal**: Normal
 	//
-	// - **Release**
+	// - **Release**: released
 	//
 	// example:
 	//

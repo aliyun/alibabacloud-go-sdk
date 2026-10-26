@@ -16,13 +16,13 @@ type iCreateHostShareKeyResponseBody interface {
 }
 
 type CreateHostShareKeyResponseBody struct {
-	// The ID of the shared key.
+	// The ID of the host shared key.
 	//
 	// example:
 	//
 	// 10235
 	HostShareKeyId *int64 `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

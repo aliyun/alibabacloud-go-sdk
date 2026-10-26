@@ -31,6 +31,8 @@ type iCreateDatabaseRequest interface {
 	GetNetworkDomainId() *string
 	SetPolarDBEndpointType(v string) *CreateDatabaseRequest
 	GetPolarDBEndpointType() *string
+	SetProjectId(v int64) *CreateDatabaseRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *CreateDatabaseRequest
 	GetRegionId() *string
 	SetSource(v string) *CreateDatabaseRequest
@@ -44,9 +46,9 @@ type iCreateDatabaseRequest interface {
 type CreateDatabaseRequest struct {
 	// The address type of the new database. Valid values:
 	//
-	// - Public: a public endpoint
+	// - Public: public endpoint.
 	//
-	// - Private: a private endpoint
+	// - Private: private endpoint.
 	//
 	// This parameter is required.
 	//
@@ -54,35 +56,35 @@ type CreateDatabaseRequest struct {
 	//
 	// Public
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The comments on the new database. The comments can be up to 500 characters in length.
+	// The description of the new database. The value can be up to 500 characters in length.
 	//
 	// example:
 	//
 	// cpp
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the new database instance. This parameter is required if you set Source to **Local**.
+	// The name of the new database instance. This parameter is required if Source is set to **Local**.
 	//
 	// example:
 	//
 	// Test01
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The port used to connect to the database. This parameter is required if you set Source to **Local**.
+	// The port of the database. This parameter is required if Source is set to **Local**.
 	//
 	// example:
 	//
 	// 5433
 	DatabasePort *int32 `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
-	// The private endpoint of the database. You can use an IPv4 address or a domain name.
+	// The private endpoint. IPv4 addresses and domain names are supported.
 	//
-	// > This parameter is required if you set ActiveAddressType to Private.
+	// > This parameter is required if ActiveAddressType is set to Private.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
-	// The public endpoint of the database. You can use an IPv4 address or a domain name.
+	// The public endpoint. IPv4 addresses and domain names are supported.
 	//
-	// > This parameter is required if you set ActiveAddressType to Public.
+	// > This parameter is required if ActiveAddressType is set to Public.
 	//
 	// example:
 	//
@@ -104,9 +106,9 @@ type CreateDatabaseRequest struct {
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The ID of the Bastionhost instance.
+	// The ID of the bastion host instance.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -114,33 +116,39 @@ type CreateDatabaseRequest struct {
 	//
 	// bastionhost-cn-7mz2g5hu20e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the new RDS or PolarDB database instance belongs.
+	// The ID of the Alibaba Cloud account to which the new ApsaraDB RDS or PolarDB database instance belongs.
 	//
 	// example:
 	//
 	// 1605494xxxx
 	InstanceMemberId *int64 `json:"InstanceMemberId,omitempty" xml:"InstanceMemberId,omitempty"`
-	// The ID of the network domain for the new database.
+	// The ID of the network domain to which the new database belongs.
 	//
-	// > Call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to obtain this parameter.
+	// > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// This parameter is required if you set Source to PolarDB. This parameter specifies the endpoint type of the PolarDB database. Valid values:
+	// The endpoint type of the PolarDB cluster. This parameter is required if Source is set to PolarDB. Valid values:
 	//
-	// - Cluster: a cluster endpoint
+	// - Cluster: cluster endpoint.
 	//
-	// - Primary: a primary endpoint
+	// - Primary: primary endpoint.
 	//
 	// example:
 	//
 	// Cluster
 	PolarDBEndpointType *string `json:"PolarDBEndpointType,omitempty" xml:"PolarDBEndpointType,omitempty"`
-	// The region ID of the Bastionhost instance.
+	// The project ID.
 	//
-	// > For a list of region IDs and their corresponding region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -148,11 +156,11 @@ type CreateDatabaseRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source of the new database. Valid values:
 	//
-	// - Local: a local database instance
+	// - Local: self-managed database instance.
 	//
-	// - Rds: an RDS database instance
+	// - Rds: ApsaraDB RDS instance.
 	//
-	// - PolarDB: a PolarDB database instance
+	// - PolarDB: PolarDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -160,15 +168,15 @@ type CreateDatabaseRequest struct {
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the database instance.
+	// The instance ID of the new database.
 	//
-	// > This parameter is required if you set **Source*	- to **Rds*	- or **PolarDB**.
+	// > This parameter is required if **Source*	- is set to **Rds*	- or **PolarDB**.
 	//
 	// example:
 	//
 	// i-bp19ienyt0yax748****
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The region ID of the database instance.
+	// The region ID of the new database instance.
 	//
 	// > This parameter is required if **Source*	- is set to **Rds*	- or **PolarDB**.
 	//
@@ -228,6 +236,10 @@ func (s *CreateDatabaseRequest) GetNetworkDomainId() *string {
 
 func (s *CreateDatabaseRequest) GetPolarDBEndpointType() *string {
 	return s.PolarDBEndpointType
+}
+
+func (s *CreateDatabaseRequest) GetProjectId() *int64 {
+	return s.ProjectId
 }
 
 func (s *CreateDatabaseRequest) GetRegionId() *string {
@@ -298,6 +310,11 @@ func (s *CreateDatabaseRequest) SetNetworkDomainId(v string) *CreateDatabaseRequ
 
 func (s *CreateDatabaseRequest) SetPolarDBEndpointType(v string) *CreateDatabaseRequest {
 	s.PolarDBEndpointType = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetProjectId(v int64) *CreateDatabaseRequest {
+	s.ProjectId = &v
 	return s
 }
 

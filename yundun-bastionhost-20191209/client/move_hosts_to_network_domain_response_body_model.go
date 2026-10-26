@@ -16,13 +16,13 @@ type iMoveHostsToNetworkDomainResponseBody interface {
 }
 
 type MoveHostsToNetworkDomainResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F9B9E190-9C8E-5FEE-B963-7E9F1FD7FB4E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
+	// The results of the operation.
 	Results []*MoveHostsToNetworkDomainResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -66,21 +66,21 @@ func (s *MoveHostsToNetworkDomainResponseBody) Validate() error {
 }
 
 type MoveHostsToNetworkDomainResponseBodyResults struct {
-	// The return code that indicates whether the host is added to the network domain.
+	// The result of the operation.
 	//
-	// > The code LICENSE_OUT_OF_LIMIT indicates that the network domain feature is not supported by the current Bastionhost edition.
+	// > LICENSE_OUT_OF_LIMIT indicates that the network domain feature is not enabled for the current edition.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The host ID.
+	// The ID of the host.
 	//
 	// example:
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The error message that is returned.
+	// The error message.
 	//
 	// example:
 	//

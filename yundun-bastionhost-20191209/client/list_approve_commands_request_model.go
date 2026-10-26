@@ -15,14 +15,16 @@ type iListApproveCommandsRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListApproveCommandsRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListApproveCommandsRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListApproveCommandsRequest
 	GetRegionId() *string
 }
 
 type ListApproveCommandsRequest struct {
-	// The ID of the bastion host.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +32,7 @@ type ListApproveCommandsRequest struct {
 	//
 	// bastionhost-cn-zvp2xvysf08
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page. Default value: **1**.
+	// The page number of the page to return in a paged query. Default value: **1**.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +40,11 @@ type ListApproveCommandsRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.<br> Maximum value: 1000. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to return on each page in a paged query.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// The maximum value of the PageSize parameter is 1000. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+	//
+	// > Specify the PageSize parameter.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +52,15 @@ type ListApproveCommandsRequest struct {
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For more information about the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -78,6 +88,10 @@ func (s *ListApproveCommandsRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListApproveCommandsRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListApproveCommandsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -94,6 +108,11 @@ func (s *ListApproveCommandsRequest) SetPageNumber(v string) *ListApproveCommand
 
 func (s *ListApproveCommandsRequest) SetPageSize(v string) *ListApproveCommandsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListApproveCommandsRequest) SetProjectId(v int64) *ListApproveCommandsRequest {
+	s.ProjectId = &v
 	return s
 }
 

@@ -18,15 +18,15 @@ type iListHostShareKeysResponseBody interface {
 }
 
 type ListHostShareKeysResponseBody struct {
-	// An array that consists of the shared keys.
+	// The host shared keys.
 	HostShareKeys []*ListHostShareKeysResponseBodyHostShareKeys `json:"HostShareKeys,omitempty" xml:"HostShareKeys,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the shared keys.
+	// The total number of host shared keys returned.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *ListHostShareKeysResponseBody) Validate() error {
 }
 
 type ListHostShareKeysResponseBodyHostShareKeys struct {
-	// The number of the associated host accounts.
+	// The number of associated host accounts.
 	//
 	// example:
 	//
 	// 1
 	HostAccountCount *int64 `json:"HostAccountCount,omitempty" xml:"HostAccountCount,omitempty"`
-	// The shared key ID.
+	// The ID of the host shared key.
 	//
 	// example:
 	//
 	// 10247
 	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The name of the shared key.
+	// The name of the host shared key.
 	//
 	// example:
 	//
 	// name
 	HostShareKeyName *string `json:"HostShareKeyName,omitempty" xml:"HostShareKeyName,omitempty"`
-	// The time when the shared key was last modified. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the key was last modified. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

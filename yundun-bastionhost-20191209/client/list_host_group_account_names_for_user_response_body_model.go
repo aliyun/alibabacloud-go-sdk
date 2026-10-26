@@ -16,7 +16,7 @@ type iListHostGroupAccountNamesForUserResponseBody interface {
 }
 
 type ListHostGroupAccountNamesForUserResponseBody struct {
-	// An array that consists of the names of host accounts.
+	// The list of host account names.
 	HostAccountNames []*string `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//

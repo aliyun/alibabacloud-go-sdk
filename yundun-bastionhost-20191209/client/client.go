@@ -85,11 +85,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("yundun-bastionhost.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("yundun-bastionhost.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("yundun-bastionhost.aliyuncs.com"),
-		"na-south-1":                  dara.String("bastionhost.na-south-1.aliyuncs.com"),
 		"cn-zhengzhou-jva":            dara.String("yundun-bastionhost.aliyuncs.com"),
-		"ap-southeast-7":              dara.String("bastionhost.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-6":              dara.String("bastionhost.ap-southeast-6.aliyuncs.com"),
 		"ap-northeast-2":              dara.String("bastionhost.ap-northeast-2.aliyuncs.com"),
+		"ap-southeast-6":              dara.String("bastionhost.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("bastionhost.ap-southeast-7.aliyuncs.com"),
+		"na-south-1":                  dara.String("bastionhost.na-south-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -124,13 +124,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// If an O\\\\\\\\\\\\&M engineer attempts to run a command specified in the Command Approval field on the Create Control Policy page, the administrator is notified to review the command in the Bastionhost console. The command can be run only after it is approved by the administrator.
+// If an O&M engineer runs a command that is configured in a command approval control policy, the administrator receives an approval request for the command in the Bastionhost console. The command can be run only after the administrator approves the request. If the administrator rejects the request, the command cannot be run.
 //
 // Description:
 //
-// Approves an O\\&M engineer\\"s command execution request as a Bastionhost administrator.
+// Approves a command execution request from an O&M engineer.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - AcceptApproveCommandRequest
 //
@@ -151,6 +151,10 @@ func (client *Client) AcceptApproveCommandWithOptions(request *AcceptApproveComm
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -182,13 +186,13 @@ func (client *Client) AcceptApproveCommandWithOptions(request *AcceptApproveComm
 
 // Summary:
 //
-// If an O\\\\\\\\\\\\&M engineer attempts to run a command specified in the Command Approval field on the Create Control Policy page, the administrator is notified to review the command in the Bastionhost console. The command can be run only after it is approved by the administrator.
+// If an O&M engineer runs a command that is configured in a command approval control policy, the administrator receives an approval request for the command in the Bastionhost console. The command can be run only after the administrator approves the request. If the administrator rejects the request, the command cannot be run.
 //
 // Description:
 //
-// Approves an O\\&M engineer\\"s command execution request as a Bastionhost administrator.
+// Approves a command execution request from an O&M engineer.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - AcceptApproveCommandRequest
 //
@@ -206,13 +210,13 @@ func (client *Client) AcceptApproveCommand(request *AcceptApproveCommandRequest)
 
 // Summary:
 //
-// Approves an O\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&M application.
+// If an administrator enables O&M approval in a control policy, O&M engineers must submit an O&M request and obtain administrator approval before they can log on to assets.
 //
 // Description:
 //
-// Approves an O\\&M engineer\\"s O\\&M application as a Bastionhost administrator.
+// Approves an O&M request submitted by an O&M engineer.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The China site Chinese version of this China Chinese China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China.
 //
 // @param request - AcceptOperationTicketRequest
 //
@@ -251,6 +255,10 @@ func (client *Client) AcceptOperationTicketWithOptions(request *AcceptOperationT
 		query["OperationTicketId"] = request.OperationTicketId
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -280,13 +288,13 @@ func (client *Client) AcceptOperationTicketWithOptions(request *AcceptOperationT
 
 // Summary:
 //
-// Approves an O\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&M application.
+// If an administrator enables O&M approval in a control policy, O&M engineers must submit an O&M request and obtain administrator approval before they can log on to assets.
 //
 // Description:
 //
-// Approves an O\\&M engineer\\"s O\\&M application as a Bastionhost administrator.
+// Approves an O&M request submitted by an O&M engineer.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The China site Chinese version of this China Chinese China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China China.
 //
 // @param request - AcceptOperationTicketRequest
 //
@@ -304,7 +312,7 @@ func (client *Client) AcceptOperationTicket(request *AcceptOperationTicketReques
 
 // Summary:
 //
-// Adds multiple databases to a specified asset group.
+// Adds multiple database instances to a specified asset group.
 //
 // @param request - AddDatabasesToGroupRequest
 //
@@ -360,7 +368,7 @@ func (client *Client) AddDatabasesToGroupWithOptions(request *AddDatabasesToGrou
 
 // Summary:
 //
-// Adds multiple databases to a specified asset group.
+// Adds multiple database instances to a specified asset group.
 //
 // @param request - AddDatabasesToGroupRequest
 //
@@ -378,15 +386,15 @@ func (client *Client) AddDatabasesToGroup(request *AddDatabasesToGroupRequest) (
 
 // Summary:
 //
-// Adds one or more hosts to the specified host group.
+// Adds multiple hosts to a specified asset group in a batch.
 //
 // Description:
 //
-// Adds multiple hosts to a host group. By adding multiple hosts to a host group, you can centrally manage these hosts and grant permissions in batch.
+// Adds multiple hosts to a specified host group in a batch. By adding multiple hosts to a host group, you can centrally manage these hosts and grant permissions in a batch.
 //
-// # Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - AddHostsToGroupRequest
 //
@@ -411,6 +419,10 @@ func (client *Client) AddHostsToGroupWithOptions(request *AddHostsToGroupRequest
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -442,15 +454,15 @@ func (client *Client) AddHostsToGroupWithOptions(request *AddHostsToGroupRequest
 
 // Summary:
 //
-// Adds one or more hosts to the specified host group.
+// Adds multiple hosts to a specified asset group in a batch.
 //
 // Description:
 //
-// Adds multiple hosts to a host group. By adding multiple hosts to a host group, you can centrally manage these hosts and grant permissions in batch.
+// Adds multiple hosts to a specified host group in a batch. By adding multiple hosts to a host group, you can centrally manage these hosts and grant permissions in a batch.
 //
-// # Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - AddHostsToGroupRequest
 //
@@ -468,7 +480,7 @@ func (client *Client) AddHostsToGroup(request *AddHostsToGroupRequest) (_result 
 
 // Summary:
 //
-// Adds a Resource Directory (RD) member account to a Bastionhost instance so that you can import and manage the cloud assets of the member account through Bastionhost.
+// Adds member accounts in a resource directory.
 //
 // @param request - AddInstanceRdMemberRequest
 //
@@ -520,7 +532,7 @@ func (client *Client) AddInstanceRdMemberWithOptions(request *AddInstanceRdMembe
 
 // Summary:
 //
-// Adds a Resource Directory (RD) member account to a Bastionhost instance so that you can import and manage the cloud assets of the member account through Bastionhost.
+// Adds member accounts in a resource directory.
 //
 // @param request - AddInstanceRdMemberRequest
 //
@@ -538,17 +550,17 @@ func (client *Client) AddInstanceRdMember(request *AddInstanceRdMemberRequest) (
 
 // Summary:
 //
-// Add one or more users to a user group.
+// Adds users to a user group in a batch.
 //
 // Description:
 //
-// #
+// ### Operation description
 //
-// Adds one or more users to a user group. After creating a user group with the [CreateUserGroup](https://help.aliyun.com/document_detail/204596.html) operation, use this operation to add multiple users at once for centralized permission management.
+// This operation adds users to a user group in a batch. After you create a user group by calling the [CreateUserGroup](https://help.aliyun.com/document_detail/204596.html) operation, you can call this operation to add multiple users to the user group for batch authorization and management.
 //
-// # Limit
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - AddUsersToGroupRequest
 //
@@ -565,6 +577,10 @@ func (client *Client) AddUsersToGroupWithOptions(request *AddUsersToGroupRequest
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -604,17 +620,17 @@ func (client *Client) AddUsersToGroupWithOptions(request *AddUsersToGroupRequest
 
 // Summary:
 //
-// Add one or more users to a user group.
+// Adds users to a user group in a batch.
 //
 // Description:
 //
-// #
+// ### Operation description
 //
-// Adds one or more users to a user group. After creating a user group with the [CreateUserGroup](https://help.aliyun.com/document_detail/204596.html) operation, use this operation to add multiple users at once for centralized permission management.
+// This operation adds users to a user group in a batch. After you create a user group by calling the [CreateUserGroup](https://help.aliyun.com/document_detail/204596.html) operation, you can call this operation to add multiple users to the user group for batch authorization and management.
 //
-// # Limit
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - AddUsersToGroupRequest
 //
@@ -653,6 +669,10 @@ func (client *Client) AllowOperationTaskApprovalWithOptions(request *AllowOperat
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -776,7 +796,7 @@ func (client *Client) AttachDatabaseAccountsToUser(request *AttachDatabaseAccoun
 
 // Summary:
 //
-// Grants permissions on databases and database accounts to a user group.
+// Grants a user group permissions on databases and database accounts.
 //
 // @param request - AttachDatabaseAccountsToUserGroupRequest
 //
@@ -797,6 +817,10 @@ func (client *Client) AttachDatabaseAccountsToUserGroupWithOptions(request *Atta
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -832,7 +856,7 @@ func (client *Client) AttachDatabaseAccountsToUserGroupWithOptions(request *Atta
 
 // Summary:
 //
-// Grants permissions on databases and database accounts to a user group.
+// Grants a user group permissions on databases and database accounts.
 //
 // @param request - AttachDatabaseAccountsToUserGroupRequest
 //
@@ -850,7 +874,7 @@ func (client *Client) AttachDatabaseAccountsToUserGroup(request *AttachDatabaseA
 
 // Summary:
 //
-// Associates host accounts with a shared key.
+// Associates host accounts with a host shared key.
 //
 // @param request - AttachHostAccountsToHostShareKeyRequest
 //
@@ -875,6 +899,10 @@ func (client *Client) AttachHostAccountsToHostShareKeyWithOptions(request *Attac
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -906,7 +934,7 @@ func (client *Client) AttachHostAccountsToHostShareKeyWithOptions(request *Attac
 
 // Summary:
 //
-// Associates host accounts with a shared key.
+// Associates host accounts with a host shared key.
 //
 // @param request - AttachHostAccountsToHostShareKeyRequest
 //
@@ -924,7 +952,7 @@ func (client *Client) AttachHostAccountsToHostShareKey(request *AttachHostAccoun
 
 // Summary:
 //
-// After you add a user to your bastion host, you must authorize the user to manage assets. Only authorized users can log on to the bastion host to perform O\\\\\\\\\\\\\\\\\\\\\\\\&M operations on the assets.
+// Authorizes assets for a user. After the authorization, the user can use Bastionhost to perform O&M operations on the authorized assets.
 //
 // @param request - AttachHostAccountsToUserRequest
 //
@@ -980,7 +1008,7 @@ func (client *Client) AttachHostAccountsToUserWithOptions(request *AttachHostAcc
 
 // Summary:
 //
-// After you add a user to your bastion host, you must authorize the user to manage assets. Only authorized users can log on to the bastion host to perform O\\\\\\\\\\\\\\\\\\\\\\\\&M operations on the assets.
+// Authorizes assets for a user. After the authorization, the user can use Bastionhost to perform O&M operations on the authorized assets.
 //
 // @param request - AttachHostAccountsToUserRequest
 //
@@ -998,11 +1026,11 @@ func (client *Client) AttachHostAccountsToUser(request *AttachHostAccountsToUser
 
 // Summary:
 //
-// Authorizes a user group to manage one or more hosts and host accounts.
+// Grants a user group permissions on hosts and host accounts.
 //
 // Description:
 //
-// After you authorize a user group to manage specific hosts and host accounts, all the users in the user group have access to the authorized hosts and host accounts.
+// After you grant a user group permissions on hosts and host accounts, all users in the user group can access the authorized hosts.
 //
 // @param request - AttachHostAccountsToUserGroupRequest
 //
@@ -1023,6 +1051,10 @@ func (client *Client) AttachHostAccountsToUserGroupWithOptions(request *AttachHo
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -1058,11 +1090,11 @@ func (client *Client) AttachHostAccountsToUserGroupWithOptions(request *AttachHo
 
 // Summary:
 //
-// Authorizes a user group to manage one or more hosts and host accounts.
+// Grants a user group permissions on hosts and host accounts.
 //
 // Description:
 //
-// After you authorize a user group to manage specific hosts and host accounts, all the users in the user group have access to the authorized hosts and host accounts.
+// After you grant a user group permissions on hosts and host accounts, all users in the user group can access the authorized hosts.
 //
 // @param request - AttachHostAccountsToUserGroupRequest
 //
@@ -1080,7 +1112,7 @@ func (client *Client) AttachHostAccountsToUserGroup(request *AttachHostAccountsT
 
 // Summary:
 //
-// Authorizes a user to manage one or more host groups and host accounts.
+// Grants permissions on host groups and host accounts to a user.
 //
 // @param request - AttachHostGroupAccountsToUserRequest
 //
@@ -1136,7 +1168,7 @@ func (client *Client) AttachHostGroupAccountsToUserWithOptions(request *AttachHo
 
 // Summary:
 //
-// Authorizes a user to manage one or more host groups and host accounts.
+// Grants permissions on host groups and host accounts to a user.
 //
 // @param request - AttachHostGroupAccountsToUserRequest
 //
@@ -1154,7 +1186,7 @@ func (client *Client) AttachHostGroupAccountsToUser(request *AttachHostGroupAcco
 
 // Summary:
 //
-// Authorizes a user to manage one or more host groups and host accounts.
+// Grants permissions on host groups and host accounts to a user group.
 //
 // @param request - AttachHostGroupAccountsToUserGroupRequest
 //
@@ -1210,7 +1242,7 @@ func (client *Client) AttachHostGroupAccountsToUserGroupWithOptions(request *Att
 
 // Summary:
 //
-// Authorizes a user to manage one or more host groups and host accounts.
+// Grants permissions on host groups and host accounts to a user group.
 //
 // @param request - AttachHostGroupAccountsToUserGroupRequest
 //
@@ -1219,6 +1251,376 @@ func (client *Client) AttachHostGroupAccountsToUserGroup(request *AttachHostGrou
 	runtime := &dara.RuntimeOptions{}
 	_result = &AttachHostGroupAccountsToUserGroupResponse{}
 	_body, _err := client.AttachHostGroupAccountsToUserGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Associates members with a project.
+//
+// @param request - AttachMembersToProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachMembersToProjectResponse
+func (client *Client) AttachMembersToProjectWithOptions(request *AttachMembersToProjectRequest, runtime *dara.RuntimeOptions) (_result *AttachMembersToProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MemberIds) {
+		query["MemberIds"] = request.MemberIds
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachMembersToProject"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachMembersToProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Associates members with a project.
+//
+// @param request - AttachMembersToProjectRequest
+//
+// @return AttachMembersToProjectResponse
+func (client *Client) AttachMembersToProject(request *AttachMembersToProjectRequest) (_result *AttachMembersToProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AttachMembersToProjectResponse{}
+	_body, _err := client.AttachMembersToProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Associates project authorization administrators.
+//
+// @param request - AttachProjectManagersToProjectAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachProjectManagersToProjectAuthorizationResponse
+func (client *Client) AttachProjectManagersToProjectAuthorizationWithOptions(request *AttachProjectManagersToProjectAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *AttachProjectManagersToProjectAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationId) {
+		query["AuthorizationId"] = request.AuthorizationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Principals) {
+		query["Principals"] = request.Principals
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachProjectManagersToProjectAuthorization"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachProjectManagersToProjectAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Associates project authorization administrators.
+//
+// @param request - AttachProjectManagersToProjectAuthorizationRequest
+//
+// @return AttachProjectManagersToProjectAuthorizationResponse
+func (client *Client) AttachProjectManagersToProjectAuthorization(request *AttachProjectManagersToProjectAuthorizationRequest) (_result *AttachProjectManagersToProjectAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AttachProjectManagersToProjectAuthorizationResponse{}
+	_body, _err := client.AttachProjectManagersToProjectAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Specifies the projects that can be managed in a project authorization. You can call this operation only when the ScopeType parameter returned by the GetProjectAuthorization operation for the corresponding project authorization is 2.
+//
+// @param request - AttachProjectsToProjectAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachProjectsToProjectAuthorizationResponse
+func (client *Client) AttachProjectsToProjectAuthorizationWithOptions(request *AttachProjectsToProjectAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *AttachProjectsToProjectAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationId) {
+		query["AuthorizationId"] = request.AuthorizationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectIds) {
+		query["ProjectIds"] = request.ProjectIds
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachProjectsToProjectAuthorization"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachProjectsToProjectAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Specifies the projects that can be managed in a project authorization. You can call this operation only when the ScopeType parameter returned by the GetProjectAuthorization operation for the corresponding project authorization is 2.
+//
+// @param request - AttachProjectsToProjectAuthorizationRequest
+//
+// @return AttachProjectsToProjectAuthorizationResponse
+func (client *Client) AttachProjectsToProjectAuthorization(request *AttachProjectsToProjectAuthorizationRequest) (_result *AttachProjectsToProjectAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AttachProjectsToProjectAuthorizationResponse{}
+	_body, _err := client.AttachProjectsToProjectAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Associates projects with the scope of an audit policy. You can invoke this operation only when the ScopeType parameter returned by the GetReviewRule operation for the corresponding audit policy is 2.
+//
+// @param request - AttachProjectsToReviewRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachProjectsToReviewRuleResponse
+func (client *Client) AttachProjectsToReviewRuleWithOptions(request *AttachProjectsToReviewRuleRequest, runtime *dara.RuntimeOptions) (_result *AttachProjectsToReviewRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectIds) {
+		query["ProjectIds"] = request.ProjectIds
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReviewRuleId) {
+		query["ReviewRuleId"] = request.ReviewRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachProjectsToReviewRule"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachProjectsToReviewRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Associates projects with the scope of an audit policy. You can invoke this operation only when the ScopeType parameter returned by the GetReviewRule operation for the corresponding audit policy is 2.
+//
+// @param request - AttachProjectsToReviewRuleRequest
+//
+// @return AttachProjectsToReviewRuleResponse
+func (client *Client) AttachProjectsToReviewRule(request *AttachProjectsToReviewRuleRequest) (_result *AttachProjectsToReviewRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AttachProjectsToReviewRuleResponse{}
+	_body, _err := client.AttachProjectsToReviewRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Attaches auditors to an audit policy.
+//
+// @param request - AttachReviewersToReviewRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachReviewersToReviewRuleResponse
+func (client *Client) AttachReviewersToReviewRuleWithOptions(request *AttachReviewersToReviewRuleRequest, runtime *dara.RuntimeOptions) (_result *AttachReviewersToReviewRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Principals) {
+		query["Principals"] = request.Principals
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReviewRuleId) {
+		query["ReviewRuleId"] = request.ReviewRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachReviewersToReviewRule"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachReviewersToReviewRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Attaches auditors to an audit policy.
+//
+// @param request - AttachReviewersToReviewRuleRequest
+//
+// @return AttachReviewersToReviewRuleResponse
+func (client *Client) AttachReviewersToReviewRule(request *AttachReviewersToReviewRuleRequest) (_result *AttachReviewersToReviewRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AttachReviewersToReviewRuleResponse{}
+	_body, _err := client.AttachReviewersToReviewRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1302,13 +1704,13 @@ func (client *Client) ConfigInstanceSecurityGroups(request *ConfigInstanceSecuri
 
 // Summary:
 //
-// After enabling public network access for a Bastionhost instance, you can add IP addresses to a whitelist to control access.
+// Adds specified public IP addresses to the whitelist of a Bastionhost instance after public network access is enabled to allow public network traffic to access the instance.
 //
 // Description:
 //
-// This operation configures a public IP address whitelist for a Bastionhost instance. By default, instances accept traffic from all public IP addresses. To restrict access, add IP addresses to the whitelist. This ensures only traffic from whitelisted IP addresses can reach the instance.
+// Configures the public IP address whitelist for a Bastionhost instance. By default, all public IP addresses are allowed to access the Bastionhost instance. To restrict public network access, call this operation to add specified public IP addresses to the whitelist and restrict public network traffic to the Bastionhost instance.
 //
-// Each user is limited to 30 queries per second (QPS) for this operation. The system throttles API calls that exceed this limit. This may affect your services, so plan your calls accordingly.
+// The queries per second (QPS) limit for a single user is 30 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - ConfigInstanceWhiteListRequest
 //
@@ -1364,13 +1766,13 @@ func (client *Client) ConfigInstanceWhiteListWithOptions(request *ConfigInstance
 
 // Summary:
 //
-// After enabling public network access for a Bastionhost instance, you can add IP addresses to a whitelist to control access.
+// Adds specified public IP addresses to the whitelist of a Bastionhost instance after public network access is enabled to allow public network traffic to access the instance.
 //
 // Description:
 //
-// This operation configures a public IP address whitelist for a Bastionhost instance. By default, instances accept traffic from all public IP addresses. To restrict access, add IP addresses to the whitelist. This ensures only traffic from whitelisted IP addresses can reach the instance.
+// Configures the public IP address whitelist for a Bastionhost instance. By default, all public IP addresses are allowed to access the Bastionhost instance. To restrict public network access, call this operation to add specified public IP addresses to the whitelist and restrict public network traffic to the Bastionhost instance.
 //
-// Each user is limited to 30 queries per second (QPS) for this operation. The system throttles API calls that exceed this limit. This may affect your services, so plan your calls accordingly.
+// The queries per second (QPS) limit for a single user is 30 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - ConfigInstanceWhiteListRequest
 //
@@ -1388,7 +1790,7 @@ func (client *Client) ConfigInstanceWhiteList(request *ConfigInstanceWhiteListRe
 
 // Summary:
 //
-// Imports a database into a Bastionhost instance for centralized O&M management. Supported databases include ApsaraDB RDS, PolarDB, and self-managed MySQL, SQL Server, PostgreSQL, and Oracle databases.
+// Imports database assets into a bastion host. Supported database types include MySQL, SQL Server, PostgreSQL, and Oracle for ApsaraDB RDS instances, MySQL, PostgreSQL, and PolarDB for PostgreSQL (Compatible with Oracle) for PolarDB clusters, and MySQL, SQL Server, PostgreSQL, and Oracle for self-managed databases.
 //
 // @param request - CreateDatabaseRequest
 //
@@ -1447,6 +1849,10 @@ func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, 
 		query["PolarDBEndpointType"] = request.PolarDBEndpointType
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -1488,7 +1894,7 @@ func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, 
 
 // Summary:
 //
-// Imports a database into a Bastionhost instance for centralized O&M management. Supported databases include ApsaraDB RDS, PolarDB, and self-managed MySQL, SQL Server, PostgreSQL, and Oracle databases.
+// Imports database assets into a bastion host. Supported database types include MySQL, SQL Server, PostgreSQL, and Oracle for ApsaraDB RDS instances, MySQL, PostgreSQL, and PolarDB for PostgreSQL (Compatible with Oracle) for PolarDB clusters, and MySQL, SQL Server, PostgreSQL, and Oracle for self-managed databases.
 //
 // @param request - CreateDatabaseRequest
 //
@@ -1506,7 +1912,7 @@ func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *C
 
 // Summary:
 //
-// After a database is created, you can create a database account for the database. After the account is created, O\\\\\\\\\\\\&M engineers can use the account to log on to and perform O\\\\\\\\\\\\&M operations on the database.
+// After a database is created, you can create a database account for it. After the account is created, O&M engineers can use the account to log on to and manage the database.
 //
 // @param request - CreateDatabaseAccountRequest
 //
@@ -1545,6 +1951,10 @@ func (client *Client) CreateDatabaseAccountWithOptions(request *CreateDatabaseAc
 		query["Password"] = request.Password
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -1574,7 +1984,7 @@ func (client *Client) CreateDatabaseAccountWithOptions(request *CreateDatabaseAc
 
 // Summary:
 //
-// After a database is created, you can create a database account for the database. After the account is created, O\\\\\\\\\\\\&M engineers can use the account to log on to and perform O\\\\\\\\\\\\&M operations on the database.
+// After a database is created, you can create a database account for it. After the account is created, O&M engineers can use the account to log on to and manage the database.
 //
 // @param request - CreateDatabaseAccountRequest
 //
@@ -1658,7 +2068,7 @@ func (client *Client) CreateExportConfigJob(request *CreateExportConfigJobReques
 
 // Summary:
 //
-// Creates a host in a Bastionhost instance. You can import Elastic Compute Service (ECS) instances, on-premises servers, and third-party cloud servers as hosts for centralized O&M management.
+// Creates a host in a Bastionhost instance. Bastionhost supports O&M for hosts from different sources, including Alibaba Cloud ECS instances, on-premises IDC servers, and servers on other clouds. Before you perform O&M on a host through Bastionhost, you must first import the host into Bastionhost. You can call this operation to create a host that you want to manage in Bastionhost.
 //
 // @param request - CreateHostRequest
 //
@@ -1713,6 +2123,10 @@ func (client *Client) CreateHostWithOptions(request *CreateHostRequest, runtime 
 		query["OSType"] = request.OSType
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -1750,7 +2164,7 @@ func (client *Client) CreateHostWithOptions(request *CreateHostRequest, runtime 
 
 // Summary:
 //
-// Creates a host in a Bastionhost instance. You can import Elastic Compute Service (ECS) instances, on-premises servers, and third-party cloud servers as hosts for centralized O&M management.
+// Creates a host in a Bastionhost instance. Bastionhost supports O&M for hosts from different sources, including Alibaba Cloud ECS instances, on-premises IDC servers, and servers on other clouds. Before you perform O&M on a host through Bastionhost, you must first import the host into Bastionhost. You can call this operation to create a host that you want to manage in Bastionhost.
 //
 // @param request - CreateHostRequest
 //
@@ -1768,7 +2182,7 @@ func (client *Client) CreateHost(request *CreateHostRequest) (_result *CreateHos
 
 // Summary:
 //
-// Creates a host account for a host managed by a Bastionhost instance. After you create the host account, Operations and Maintenance (O&M) engineers can use it to log on to the host through Bastionhost.
+// After you add a host to Bastionhost, you can create a host account for the host to manage the existing account of the host in Bastionhost. After a host account is created, O&M engineers can use the account to log on to the host through Bastionhost for O&M operations.
 //
 // @param request - CreateHostAccountRequest
 //
@@ -1815,6 +2229,10 @@ func (client *Client) CreateHostAccountWithOptions(request *CreateHostAccountReq
 		query["PrivilegeType"] = request.PrivilegeType
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.ProtocolName) {
 		query["ProtocolName"] = request.ProtocolName
 	}
@@ -1852,7 +2270,7 @@ func (client *Client) CreateHostAccountWithOptions(request *CreateHostAccountReq
 
 // Summary:
 //
-// Creates a host account for a host managed by a Bastionhost instance. After you create the host account, Operations and Maintenance (O&M) engineers can use it to log on to the host through Bastionhost.
+// After you add a host to Bastionhost, you can create a host account for the host to manage the existing account of the host in Bastionhost. After a host account is created, O&M engineers can use the account to log on to the host through Bastionhost for O&M operations.
 //
 // @param request - CreateHostAccountRequest
 //
@@ -1870,7 +2288,7 @@ func (client *Client) CreateHostAccount(request *CreateHostAccountRequest) (_res
 
 // Summary:
 //
-// You can create asset groups based on your business requirements and add assets of the same type to an asset group. This allows you to classify assets and manage multiple assets at a time.
+// You can create different asset groups based on your business requirements, add assets of the same type to an asset group, and manage assets by category and perform batch operations.
 //
 // @param request - CreateHostGroupRequest
 //
@@ -1895,6 +2313,10 @@ func (client *Client) CreateHostGroupWithOptions(request *CreateHostGroupRequest
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -1926,7 +2348,7 @@ func (client *Client) CreateHostGroupWithOptions(request *CreateHostGroupRequest
 
 // Summary:
 //
-// You can create asset groups based on your business requirements and add assets of the same type to an asset group. This allows you to classify assets and manage multiple assets at a time.
+// You can create different asset groups based on your business requirements, add assets of the same type to an asset group, and manage assets by category and perform batch operations.
 //
 // @param request - CreateHostGroupRequest
 //
@@ -1944,7 +2366,7 @@ func (client *Client) CreateHostGroup(request *CreateHostGroupRequest) (_result 
 
 // Summary:
 //
-// Bastionhost provides the shared key feature. This feature allows you to manage the private key that is used to log on to a host in a bastion host. This way, you can associate the private key with multiple accounts of the host to make host account management more efficient.
+// The shared key feature of Bastionhost allows you to store private keys used for host logon in Bastionhost. After a private key is stored, it can be shared across multiple host accounts to improve host account management efficiency.
 //
 // @param request - CreateHostShareKeyRequest
 //
@@ -1973,6 +2395,10 @@ func (client *Client) CreateHostShareKeyWithOptions(request *CreateHostShareKeyR
 
 	if !dara.IsNil(request.PrivateKey) {
 		query["PrivateKey"] = request.PrivateKey
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2004,7 +2430,7 @@ func (client *Client) CreateHostShareKeyWithOptions(request *CreateHostShareKeyR
 
 // Summary:
 //
-// Bastionhost provides the shared key feature. This feature allows you to manage the private key that is used to log on to a host in a bastion host. This way, you can associate the private key with multiple accounts of the host to make host account management more efficient.
+// The shared key feature of Bastionhost allows you to store private keys used for host logon in Bastionhost. After a private key is stored, it can be shared across multiple host accounts to improve host account management efficiency.
 //
 // @param request - CreateHostShareKeyRequest
 //
@@ -2022,7 +2448,7 @@ func (client *Client) CreateHostShareKey(request *CreateHostShareKeyRequest) (_r
 
 // Summary:
 //
-// If you want to perform O\\\\\\\\\\\\\\\\\\\\\\\\&M operations on assets that reside in different networks or assets that cannot communicate with the virtual private cloud (VPC) of your bastion host in a centralized manner, we recommend that you use the network domain feature of Bastionhost. You can configure a proxy server for these assets, create a network domain for a bastion host, and then connect the network domain to the proxy server. This way, you can perform O\\\\\\\\\\\\\\\\\\\\\\\\&M operations on the assets by using the bastion host.
+// To centrally manage assets that are distributed across different network environments or that cannot communicate with the virtual private cloud (VPC) where Bastionhost is deployed, use the network domain feature of Bastionhost. You can configure a proxy server for these assets, create a network domain in Bastionhost, add the proxy server to the network domain, and then add the assets to the network domain. This way, you can manage the assets through Bastionhost.
 //
 // @param request - CreateNetworkDomainRequest
 //
@@ -2051,6 +2477,10 @@ func (client *Client) CreateNetworkDomainWithOptions(request *CreateNetworkDomai
 
 	if !dara.IsNil(request.NetworkDomainType) {
 		query["NetworkDomainType"] = request.NetworkDomainType
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.Proxies) {
@@ -2086,7 +2516,7 @@ func (client *Client) CreateNetworkDomainWithOptions(request *CreateNetworkDomai
 
 // Summary:
 //
-// If you want to perform O\\\\\\\\\\\\\\\\\\\\\\\\&M operations on assets that reside in different networks or assets that cannot communicate with the virtual private cloud (VPC) of your bastion host in a centralized manner, we recommend that you use the network domain feature of Bastionhost. You can configure a proxy server for these assets, create a network domain for a bastion host, and then connect the network domain to the proxy server. This way, you can perform O\\\\\\\\\\\\\\\\\\\\\\\\&M operations on the assets by using the bastion host.
+// To centrally manage assets that are distributed across different network environments or that cannot communicate with the virtual private cloud (VPC) where Bastionhost is deployed, use the network domain feature of Bastionhost. You can configure a proxy server for these assets, create a network domain in Bastionhost, add the proxy server to the network domain, and then add the assets to the network domain. This way, you can manage the assets through Bastionhost.
 //
 // @param request - CreateNetworkDomainRequest
 //
@@ -2104,7 +2534,7 @@ func (client *Client) CreateNetworkDomain(request *CreateNetworkDomainRequest) (
 
 // Summary:
 //
-// Creates an O&M ticket for a host or database that requires approval before access. If a control policy requires O&M approval, you must create and get a ticket approved before you can perform O&M operations.
+// Creates an O&M request. When an administrator enables O&M approval in a control policy, O&M engineers must create an O&M request and obtain administrator approval before performing O&M operations.
 //
 // @param request - CreateOperationTicketRequest
 //
@@ -2147,6 +2577,10 @@ func (client *Client) CreateOperationTicketWithOptions(request *CreateOperationT
 		query["IsOneTimeEffect"] = request.IsOneTimeEffect
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.ProtocolName) {
 		query["ProtocolName"] = request.ProtocolName
 	}
@@ -2180,7 +2614,7 @@ func (client *Client) CreateOperationTicketWithOptions(request *CreateOperationT
 
 // Summary:
 //
-// Creates an O&M ticket for a host or database that requires approval before access. If a control policy requires O&M approval, you must create and get a ticket approved before you can perform O&M operations.
+// Creates an O&M request. When an administrator enables O&M approval in a control policy, O&M engineers must create an O&M request and obtain administrator approval before performing O&M operations.
 //
 // @param request - CreateOperationTicketRequest
 //
@@ -2198,7 +2632,7 @@ func (client *Client) CreateOperationTicket(request *CreateOperationTicketReques
 
 // Summary:
 //
-// Configures a command control, command approval, protocol control, or access control policy to manage O\\\\\\\\\\\\\\\\\\\\\\\\&M operations. This effectively prevents users from performing high-risk operations or accidental operations to ensure O\\\\\\\\\\\\\\\\\\\\\\\\&M security.
+// Manages O&M behaviors by configuring command control, command approval, protocol control, and access control policies to effectively prevent users from executing high-risk commands or performing misoperations, ensuring O&M security.
 //
 // @param request - CreatePolicyRequest
 //
@@ -2227,6 +2661,10 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 
 	if !dara.IsNil(request.Priority) {
 		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2258,7 +2696,7 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 
 // Summary:
 //
-// Configures a command control, command approval, protocol control, or access control policy to manage O\\\\\\\\\\\\\\\\\\\\\\\\&M operations. This effectively prevents users from performing high-risk operations or accidental operations to ensure O\\\\\\\\\\\\\\\\\\\\\\\\&M security.
+// Manages O&M behaviors by configuring command control, command approval, protocol control, and access control policies to effectively prevent users from executing high-risk commands or performing misoperations, ensuring O&M security.
 //
 // @param request - CreatePolicyRequest
 //
@@ -2276,7 +2714,323 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 
 // Summary:
 //
-// You can create authorization rules to authorize multiple users to manage assets. You can also specify a validity period for an authorization rule. This way, you can manage users and assets in a more efficient manner and limit the time periods during which users can access assets.
+// Creates a project.
+//
+// @param request - CreateProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectResponse
+func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MemberIds) {
+		query["MemberIds"] = request.MemberIds
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProject"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a project.
+//
+// @param request - CreateProjectRequest
+//
+// @return CreateProjectResponse
+func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a project authorization.
+//
+// @param request - CreateProjectAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectAuthorizationResponse
+func (client *Client) CreateProjectAuthorizationWithOptions(request *CreateProjectAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *CreateProjectAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProjectAuthorization"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProjectAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a project authorization.
+//
+// @param request - CreateProjectAuthorizationRequest
+//
+// @return CreateProjectAuthorizationResponse
+func (client *Client) CreateProjectAuthorization(request *CreateProjectAuthorizationRequest) (_result *CreateProjectAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateProjectAuthorizationResponse{}
+	_body, _err := client.CreateProjectAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a project notification recipient.
+//
+// @param request - CreateProjectNotifyReceiverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectNotifyReceiverResponse
+func (client *Client) CreateProjectNotifyReceiverWithOptions(request *CreateProjectNotifyReceiverRequest, runtime *dara.RuntimeOptions) (_result *CreateProjectNotifyReceiverResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phone) {
+		query["Phone"] = request.Phone
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProjectNotifyReceiver"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProjectNotifyReceiverResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a project notification recipient.
+//
+// @param request - CreateProjectNotifyReceiverRequest
+//
+// @return CreateProjectNotifyReceiverResponse
+func (client *Client) CreateProjectNotifyReceiver(request *CreateProjectNotifyReceiverRequest) (_result *CreateProjectNotifyReceiverResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateProjectNotifyReceiverResponse{}
+	_body, _err := client.CreateProjectNotifyReceiverWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an audit policy.
+//
+// @param request - CreateReviewRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReviewRuleResponse
+func (client *Client) CreateReviewRuleWithOptions(request *CreateReviewRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateReviewRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateReviewRule"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateReviewRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an audit policy.
+//
+// @param request - CreateReviewRuleRequest
+//
+// @return CreateReviewRuleResponse
+func (client *Client) CreateReviewRule(request *CreateReviewRuleRequest) (_result *CreateReviewRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateReviewRuleResponse{}
+	_body, _err := client.CreateReviewRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an authorization rule to grant multiple users batch access to assets and set the validity period for their access. The authorization rule feature improves the efficiency of managing users and assets, and controls the time period during which users can access assets.
 //
 // @param request - CreateRuleRequest
 //
@@ -2317,6 +3071,10 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2360,7 +3118,7 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 
 // Summary:
 //
-// You can create authorization rules to authorize multiple users to manage assets. You can also specify a validity period for an authorization rule. This way, you can manage users and assets in a more efficient manner and limit the time periods during which users can access assets.
+// Creates an authorization rule to grant multiple users batch access to assets and set the validity period for their access. The authorization rule feature improves the efficiency of managing users and assets, and controls the time period during which users can access assets.
 //
 // @param request - CreateRuleRequest
 //
@@ -2524,9 +3282,9 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 //
 // Description:
 //
-// Creates a user group for a bastion host as an administrator. After creating the group, use the [AddUsersToGroup](https://help.aliyun.com/document_detail/204600.html) operation to add multiple users at once, enabling centralized user authorization and management.
+// Creates a user group for a bastion host. Bastion host administrators can use this operation to create a user group and then call the [AddUsersToGroup](https://help.aliyun.com/document_detail/204600.html) operation to add users to the user group in batches. Adding users to the same user group enables unified authorization and management of bastion host users.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The China site Chinese edition single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - CreateUserGroupRequest
 //
@@ -2547,6 +3305,10 @@ func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2586,9 +3348,9 @@ func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest
 //
 // Description:
 //
-// Creates a user group for a bastion host as an administrator. After creating the group, use the [AddUsersToGroup](https://help.aliyun.com/document_detail/204600.html) operation to add multiple users at once, enabling centralized user authorization and management.
+// Creates a user group for a bastion host. Bastion host administrators can use this operation to create a user group and then call the [AddUsersToGroup](https://help.aliyun.com/document_detail/204600.html) operation to add users to the user group in batches. Adding users to the same user group enables unified authorization and management of bastion host users.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The China site Chinese edition single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - CreateUserGroupRequest
 //
@@ -2696,7 +3458,7 @@ func (client *Client) CreateUserPublicKey(request *CreateUserPublicKeyRequest) (
 
 // Summary:
 //
-// Deletes a database.
+// Deletes a single database instance.
 //
 // @param request - DeleteDatabaseRequest
 //
@@ -2717,6 +3479,10 @@ func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, 
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2748,7 +3514,7 @@ func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, 
 
 // Summary:
 //
-// Deletes a database.
+// Deletes a single database instance.
 //
 // @param request - DeleteDatabaseRequest
 //
@@ -2766,7 +3532,7 @@ func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *D
 
 // Summary:
 //
-// Deletes a database account.
+// Deletes a single database account.
 //
 // @param request - DeleteDatabaseAccountRequest
 //
@@ -2787,6 +3553,10 @@ func (client *Client) DeleteDatabaseAccountWithOptions(request *DeleteDatabaseAc
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2818,7 +3588,7 @@ func (client *Client) DeleteDatabaseAccountWithOptions(request *DeleteDatabaseAc
 
 // Summary:
 //
-// Deletes a database account.
+// Deletes a single database account.
 //
 // @param request - DeleteDatabaseAccountRequest
 //
@@ -2836,7 +3606,7 @@ func (client *Client) DeleteDatabaseAccount(request *DeleteDatabaseAccountReques
 
 // Summary:
 //
-// Deletes a host.
+// Deletes a single host.
 //
 // @param request - DeleteHostRequest
 //
@@ -2857,6 +3627,10 @@ func (client *Client) DeleteHostWithOptions(request *DeleteHostRequest, runtime 
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2888,7 +3662,7 @@ func (client *Client) DeleteHostWithOptions(request *DeleteHostRequest, runtime 
 
 // Summary:
 //
-// Deletes a host.
+// Deletes a single host.
 //
 // @param request - DeleteHostRequest
 //
@@ -2906,19 +3680,19 @@ func (client *Client) DeleteHost(request *DeleteHostRequest) (_result *DeleteHos
 
 // Summary:
 //
-// Removes a host account.
+// Deletes a single host account.
 //
 // Description:
 //
-// ## Usage notes
+// ### Operation description
 //
-// This interface is used to delete individual host accounts. If a host account is no longer in use, you can invoke this interface to delete the host account for that host that has been configured on the bastion.
+// This operation deletes a single host account. If a host account is no longer in use, call this operation to delete the host account that is configured in Bastionhost.
 //
-// > After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
+// > After you delete a host account, you must manually enter the host account and password when you log on to the host through Bastionhost.
 //
-// ## QPS Limit
+// ### Rate limit
 //
-// The single-user QPS limit of this interface is 10 times/second. If the limit is exceeded, the API call will be stream-limited, which may affect your business, please call reasonably.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Use this operation appropriately.
 //
 // @param request - DeleteHostAccountRequest
 //
@@ -2939,6 +3713,10 @@ func (client *Client) DeleteHostAccountWithOptions(request *DeleteHostAccountReq
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2970,19 +3748,19 @@ func (client *Client) DeleteHostAccountWithOptions(request *DeleteHostAccountReq
 
 // Summary:
 //
-// Removes a host account.
+// Deletes a single host account.
 //
 // Description:
 //
-// ## Usage notes
+// ### Operation description
 //
-// This interface is used to delete individual host accounts. If a host account is no longer in use, you can invoke this interface to delete the host account for that host that has been configured on the bastion.
+// This operation deletes a single host account. If a host account is no longer in use, call this operation to delete the host account that is configured in Bastionhost.
 //
-// > After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
+// > After you delete a host account, you must manually enter the host account and password when you log on to the host through Bastionhost.
 //
-// ## QPS Limit
+// ### Rate limit
 //
-// The single-user QPS limit of this interface is 10 times/second. If the limit is exceeded, the API call will be stream-limited, which may affect your business, please call reasonably.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Use this operation appropriately.
 //
 // @param request - DeleteHostAccountRequest
 //
@@ -3000,15 +3778,15 @@ func (client *Client) DeleteHostAccount(request *DeleteHostAccountRequest) (_res
 
 // Summary:
 //
-// Deletes a host group.
+// Deletes a single asset group.
 //
 // Description:
 //
-// Deletes a single host group. If all hosts in a host group no longer need to be managed through Bastionhost, you can delete the host group using this operation.
+// This operation deletes a single host group. If all hosts in a host group on a bastion host no longer need to be managed through the bastion host, you can call this operation to delete the host group.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DeleteHostGroupRequest
 //
@@ -3029,6 +3807,10 @@ func (client *Client) DeleteHostGroupWithOptions(request *DeleteHostGroupRequest
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -3060,15 +3842,15 @@ func (client *Client) DeleteHostGroupWithOptions(request *DeleteHostGroupRequest
 
 // Summary:
 //
-// Deletes a host group.
+// Deletes a single asset group.
 //
 // Description:
 //
-// Deletes a single host group. If all hosts in a host group no longer need to be managed through Bastionhost, you can delete the host group using this operation.
+// This operation deletes a single host group. If all hosts in a host group on a bastion host no longer need to be managed through the bastion host, you can call this operation to delete the host group.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DeleteHostGroupRequest
 //
@@ -3086,7 +3868,7 @@ func (client *Client) DeleteHostGroup(request *DeleteHostGroupRequest) (_result 
 
 // Summary:
 //
-// Deletes a shared key.
+// Deletes a host shared key.
 //
 // @param request - DeleteHostShareKeyRequest
 //
@@ -3138,7 +3920,7 @@ func (client *Client) DeleteHostShareKeyWithOptions(request *DeleteHostShareKeyR
 
 // Summary:
 //
-// Deletes a shared key.
+// Deletes a host shared key.
 //
 // @param request - DeleteHostShareKeyRequest
 //
@@ -3156,7 +3938,7 @@ func (client *Client) DeleteHostShareKey(request *DeleteHostShareKeyRequest) (_r
 
 // Summary:
 //
-// Deletes a network domain.
+// Deletes a single network domain.
 //
 // @param request - DeleteNetworkDomainRequest
 //
@@ -3177,6 +3959,10 @@ func (client *Client) DeleteNetworkDomainWithOptions(request *DeleteNetworkDomai
 
 	if !dara.IsNil(request.NetworkDomainId) {
 		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -3208,7 +3994,7 @@ func (client *Client) DeleteNetworkDomainWithOptions(request *DeleteNetworkDomai
 
 // Summary:
 //
-// Deletes a network domain.
+// Deletes a single network domain.
 //
 // @param request - DeleteNetworkDomainRequest
 //
@@ -3226,7 +4012,7 @@ func (client *Client) DeleteNetworkDomain(request *DeleteNetworkDomainRequest) (
 
 // Summary:
 //
-// Deletes a control policy.
+// Deletes a single control policy.
 //
 // @param request - DeletePolicyRequest
 //
@@ -3247,6 +4033,10 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 
 	if !dara.IsNil(request.PolicyId) {
 		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -3278,7 +4068,7 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 
 // Summary:
 //
-// Deletes a control policy.
+// Deletes a single control policy.
 //
 // @param request - DeletePolicyRequest
 //
@@ -3296,7 +4086,287 @@ func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes an authorization rule.
+// Deletes a project authorization.
+//
+// @param request - DeleteProjectAuthorizationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectAuthorizationsResponse
+func (client *Client) DeleteProjectAuthorizationsWithOptions(request *DeleteProjectAuthorizationsRequest, runtime *dara.RuntimeOptions) (_result *DeleteProjectAuthorizationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationIds) {
+		query["AuthorizationIds"] = request.AuthorizationIds
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProjectAuthorizations"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProjectAuthorizationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a project authorization.
+//
+// @param request - DeleteProjectAuthorizationsRequest
+//
+// @return DeleteProjectAuthorizationsResponse
+func (client *Client) DeleteProjectAuthorizations(request *DeleteProjectAuthorizationsRequest) (_result *DeleteProjectAuthorizationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteProjectAuthorizationsResponse{}
+	_body, _err := client.DeleteProjectAuthorizationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes notification recipients from a project.
+//
+// @param request - DeleteProjectNotifyReceiversRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectNotifyReceiversResponse
+func (client *Client) DeleteProjectNotifyReceiversWithOptions(request *DeleteProjectNotifyReceiversRequest, runtime *dara.RuntimeOptions) (_result *DeleteProjectNotifyReceiversResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ReceiverIds) {
+		query["ReceiverIds"] = request.ReceiverIds
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProjectNotifyReceivers"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProjectNotifyReceiversResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes notification recipients from a project.
+//
+// @param request - DeleteProjectNotifyReceiversRequest
+//
+// @return DeleteProjectNotifyReceiversResponse
+func (client *Client) DeleteProjectNotifyReceivers(request *DeleteProjectNotifyReceiversRequest) (_result *DeleteProjectNotifyReceiversResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteProjectNotifyReceiversResponse{}
+	_body, _err := client.DeleteProjectNotifyReceiversWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes projects in batches.
+//
+// @param request - DeleteProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectsResponse
+func (client *Client) DeleteProjectsWithOptions(request *DeleteProjectsRequest, runtime *dara.RuntimeOptions) (_result *DeleteProjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectIds) {
+		query["ProjectIds"] = request.ProjectIds
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProjects"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes projects in batches.
+//
+// @param request - DeleteProjectsRequest
+//
+// @return DeleteProjectsResponse
+func (client *Client) DeleteProjects(request *DeleteProjectsRequest) (_result *DeleteProjectsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteProjectsResponse{}
+	_body, _err := client.DeleteProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an audit policy.
+//
+// @param request - DeleteReviewRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteReviewRulesResponse
+func (client *Client) DeleteReviewRulesWithOptions(request *DeleteReviewRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteReviewRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReviewRuleIds) {
+		query["ReviewRuleIds"] = request.ReviewRuleIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteReviewRules"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteReviewRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an audit policy.
+//
+// @param request - DeleteReviewRulesRequest
+//
+// @return DeleteReviewRulesResponse
+func (client *Client) DeleteReviewRules(request *DeleteReviewRulesRequest) (_result *DeleteReviewRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteReviewRulesResponse{}
+	_body, _err := client.DeleteReviewRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a single authorization rule.
 //
 // @param request - DeleteRuleRequest
 //
@@ -3313,6 +4383,10 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -3348,7 +4422,7 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 
 // Summary:
 //
-// Deletes an authorization rule.
+// Deletes a single authorization rule.
 //
 // @param request - DeleteRuleRequest
 //
@@ -3436,7 +4510,7 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 
 // Summary:
 //
-// Deletes a user group from a bastion host.
+// Deletes a single user group from a bastion host.
 //
 // @param request - DeleteUserGroupRequest
 //
@@ -3453,6 +4527,10 @@ func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -3488,7 +4566,7 @@ func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest
 
 // Summary:
 //
-// Deletes a user group from a bastion host.
+// Deletes a single user group from a bastion host.
 //
 // @param request - DeleteUserGroupRequest
 //
@@ -3584,7 +4662,11 @@ func (client *Client) DeleteUserPublicKey(request *DeleteUserPublicKeyRequest) (
 
 // Summary:
 //
-// Queries all attribute information of an instance, such as the instance ID and instance description.
+// Queries all the attributes of an instance, such as the instance ID and description.
+//
+// Description:
+//
+// You can directly call this operation to purchase an HSM instance. For prepaid products, the payment is deducted synchronously.
 //
 // @param request - DescribeInstanceAttributeRequest
 //
@@ -3632,7 +4714,11 @@ func (client *Client) DescribeInstanceAttributeWithOptions(request *DescribeInst
 
 // Summary:
 //
-// Queries all attribute information of an instance, such as the instance ID and instance description.
+// Queries all the attributes of an instance, such as the instance ID and description.
+//
+// Description:
+//
+// You can directly call this operation to purchase an HSM instance. For prepaid products, the payment is deducted synchronously.
 //
 // @param request - DescribeInstanceAttributeRequest
 //
@@ -3650,7 +4736,7 @@ func (client *Client) DescribeInstanceAttribute(request *DescribeInstanceAttribu
 
 // Summary:
 //
-// Retrieves a list of Bastionhost instances.
+// Queries the list of instances.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -3722,7 +4808,7 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 
 // Summary:
 //
-// Retrieves a list of Bastionhost instances.
+// Queries the list of instances.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -3880,7 +4966,7 @@ func (client *Client) DetachDatabaseAccountsFromUser(request *DetachDatabaseAcco
 
 // Summary:
 //
-// Revokes permissions on databases and database accounts from a user group.
+// Removes databases and database accounts that are authorized to a user group.
 //
 // @param request - DetachDatabaseAccountsFromUserGroupRequest
 //
@@ -3901,6 +4987,10 @@ func (client *Client) DetachDatabaseAccountsFromUserGroupWithOptions(request *De
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -3936,7 +5026,7 @@ func (client *Client) DetachDatabaseAccountsFromUserGroupWithOptions(request *De
 
 // Summary:
 //
-// Revokes permissions on databases and database accounts from a user group.
+// Removes databases and database accounts that are authorized to a user group.
 //
 // @param request - DetachDatabaseAccountsFromUserGroupRequest
 //
@@ -3954,7 +5044,7 @@ func (client *Client) DetachDatabaseAccountsFromUserGroup(request *DetachDatabas
 
 // Summary:
 //
-// Disassociate host accounts from a shared key.
+// Removes the association between host accounts and a host shared key.
 //
 // @param request - DetachHostAccountsFromHostShareKeyRequest
 //
@@ -3979,6 +5069,10 @@ func (client *Client) DetachHostAccountsFromHostShareKeyWithOptions(request *Det
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -4010,7 +5104,7 @@ func (client *Client) DetachHostAccountsFromHostShareKeyWithOptions(request *Det
 
 // Summary:
 //
-// Disassociate host accounts from a shared key.
+// Removes the association between host accounts and a host shared key.
 //
 // @param request - DetachHostAccountsFromHostShareKeyRequest
 //
@@ -4102,7 +5196,7 @@ func (client *Client) DetachHostAccountsFromUser(request *DetachHostAccountsFrom
 
 // Summary:
 //
-// Revokes the permissions on one or more hosts and host accounts from a user group.
+// Removes authorized hosts and host accounts from a user group.
 //
 // @param request - DetachHostAccountsFromUserGroupRequest
 //
@@ -4123,6 +5217,10 @@ func (client *Client) DetachHostAccountsFromUserGroupWithOptions(request *Detach
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -4158,7 +5256,7 @@ func (client *Client) DetachHostAccountsFromUserGroupWithOptions(request *Detach
 
 // Summary:
 //
-// Revokes the permissions on one or more hosts and host accounts from a user group.
+// Removes authorized hosts and host accounts from a user group.
 //
 // @param request - DetachHostAccountsFromUserGroupRequest
 //
@@ -4324,6 +5422,376 @@ func (client *Client) DetachHostGroupAccountsFromUserGroup(request *DetachHostGr
 
 // Summary:
 //
+// Removes members from a project.
+//
+// @param request - DetachMembersFromProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachMembersFromProjectResponse
+func (client *Client) DetachMembersFromProjectWithOptions(request *DetachMembersFromProjectRequest, runtime *dara.RuntimeOptions) (_result *DetachMembersFromProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MemberIds) {
+		query["MemberIds"] = request.MemberIds
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachMembersFromProject"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachMembersFromProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes members from a project.
+//
+// @param request - DetachMembersFromProjectRequest
+//
+// @return DetachMembersFromProjectResponse
+func (client *Client) DetachMembersFromProject(request *DetachMembersFromProjectRequest) (_result *DetachMembersFromProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DetachMembersFromProjectResponse{}
+	_body, _err := client.DetachMembersFromProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes a project administrator from project authorization management.
+//
+// @param request - DetachProjectManagersFromProjectAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachProjectManagersFromProjectAuthorizationResponse
+func (client *Client) DetachProjectManagersFromProjectAuthorizationWithOptions(request *DetachProjectManagersFromProjectAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *DetachProjectManagersFromProjectAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationId) {
+		query["AuthorizationId"] = request.AuthorizationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PrincipalIds) {
+		query["PrincipalIds"] = request.PrincipalIds
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachProjectManagersFromProjectAuthorization"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachProjectManagersFromProjectAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes a project administrator from project authorization management.
+//
+// @param request - DetachProjectManagersFromProjectAuthorizationRequest
+//
+// @return DetachProjectManagersFromProjectAuthorizationResponse
+func (client *Client) DetachProjectManagersFromProjectAuthorization(request *DetachProjectManagersFromProjectAuthorizationRequest) (_result *DetachProjectManagersFromProjectAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DetachProjectManagersFromProjectAuthorizationResponse{}
+	_body, _err := client.DetachProjectManagersFromProjectAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes projects from the scope of a project authorization. This operation can be called only when the ScopeType parameter returned by the GetProjectAuthorization operation is 2.
+//
+// @param request - DetachProjectsFromProjectAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachProjectsFromProjectAuthorizationResponse
+func (client *Client) DetachProjectsFromProjectAuthorizationWithOptions(request *DetachProjectsFromProjectAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *DetachProjectsFromProjectAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationId) {
+		query["AuthorizationId"] = request.AuthorizationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectIds) {
+		query["ProjectIds"] = request.ProjectIds
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachProjectsFromProjectAuthorization"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachProjectsFromProjectAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes projects from the scope of a project authorization. This operation can be called only when the ScopeType parameter returned by the GetProjectAuthorization operation is 2.
+//
+// @param request - DetachProjectsFromProjectAuthorizationRequest
+//
+// @return DetachProjectsFromProjectAuthorizationResponse
+func (client *Client) DetachProjectsFromProjectAuthorization(request *DetachProjectsFromProjectAuthorizationRequest) (_result *DetachProjectsFromProjectAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DetachProjectsFromProjectAuthorizationResponse{}
+	_body, _err := client.DetachProjectsFromProjectAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes projects from the scope of an audit policy. This operation can be called only when the ScopeType parameter in the corresponding audit policy returned by the GetReviewRule operation has a value of 2.
+//
+// @param request - DetachProjectsFromReviewRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachProjectsFromReviewRuleResponse
+func (client *Client) DetachProjectsFromReviewRuleWithOptions(request *DetachProjectsFromReviewRuleRequest, runtime *dara.RuntimeOptions) (_result *DetachProjectsFromReviewRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectIds) {
+		query["ProjectIds"] = request.ProjectIds
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReviewRuleId) {
+		query["ReviewRuleId"] = request.ReviewRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachProjectsFromReviewRule"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachProjectsFromReviewRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes projects from the scope of an audit policy. This operation can be called only when the ScopeType parameter in the corresponding audit policy returned by the GetReviewRule operation has a value of 2.
+//
+// @param request - DetachProjectsFromReviewRuleRequest
+//
+// @return DetachProjectsFromReviewRuleResponse
+func (client *Client) DetachProjectsFromReviewRule(request *DetachProjectsFromReviewRuleRequest) (_result *DetachProjectsFromReviewRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DetachProjectsFromReviewRuleResponse{}
+	_body, _err := client.DetachProjectsFromReviewRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds an auditor from an audit rule.
+//
+// @param request - DetachReviewersFromReviewRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachReviewersFromReviewRuleResponse
+func (client *Client) DetachReviewersFromReviewRuleWithOptions(request *DetachReviewersFromReviewRuleRequest, runtime *dara.RuntimeOptions) (_result *DetachReviewersFromReviewRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PrincipalIds) {
+		query["PrincipalIds"] = request.PrincipalIds
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReviewRuleId) {
+		query["ReviewRuleId"] = request.ReviewRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachReviewersFromReviewRule"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachReviewersFromReviewRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds an auditor from an audit rule.
+//
+// @param request - DetachReviewersFromReviewRuleRequest
+//
+// @return DetachReviewersFromReviewRuleResponse
+func (client *Client) DetachReviewersFromReviewRule(request *DetachReviewersFromReviewRuleRequest) (_result *DetachReviewersFromReviewRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DetachReviewersFromReviewRuleResponse{}
+	_body, _err := client.DetachReviewersFromReviewRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables public network access for a Bastionhost instance.
 //
 // @param request - DisableInstancePublicAccessRequest
@@ -4409,6 +5877,10 @@ func (client *Client) DisableRuleWithOptions(request *DisableRuleRequest, runtim
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -4460,7 +5932,7 @@ func (client *Client) DisableRule(request *DisableRuleRequest) (_result *Disable
 
 // Summary:
 //
-// Enables the public access switch for a specified Bastionhost instance.
+// Enables public network access for a specified Bastionhost instance.
 //
 // @param request - EnableInstancePublicAccessRequest
 //
@@ -4508,7 +5980,7 @@ func (client *Client) EnableInstancePublicAccessWithOptions(request *EnableInsta
 
 // Summary:
 //
-// Enables the public access switch for a specified Bastionhost instance.
+// Enables public network access for a specified Bastionhost instance.
 //
 // @param request - EnableInstancePublicAccessRequest
 //
@@ -4543,6 +6015,10 @@ func (client *Client) EnableRuleWithOptions(request *EnableRuleRequest, runtime 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -4596,7 +6072,7 @@ func (client *Client) EnableRule(request *EnableRuleRequest) (_result *EnableRul
 
 // Summary:
 //
-// Call this operation to request O&M tokens for bastions or databases, which allows you to manage assets.
+// Applies for a host or database O&M token to perform O&M operations on assets.
 //
 // @param request - GenerateAssetOperationTokenRequest
 //
@@ -4688,7 +6164,7 @@ func (client *Client) GenerateAssetOperationTokenWithOptions(request *GenerateAs
 
 // Summary:
 //
-// Call this operation to request O&M tokens for bastions or databases, which allows you to manage assets.
+// Applies for a host or database O&M token to perform O&M operations on assets.
 //
 // @param request - GenerateAssetOperationTokenRequest
 //
@@ -4723,6 +6199,10 @@ func (client *Client) GetAutoOpsTaskWithOptions(request *GetAutoOpsTaskRequest, 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -4778,7 +6258,7 @@ func (client *Client) GetAutoOpsTask(request *GetAutoOpsTaskRequest) (_result *G
 
 // Summary:
 //
-// Queries the detailed information about a database.
+// Retrieves the details of a specified database.
 //
 // @param request - GetDatabaseRequest
 //
@@ -4799,6 +6279,10 @@ func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, runtim
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -4830,7 +6314,7 @@ func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, runtim
 
 // Summary:
 //
-// Queries the detailed information about a database.
+// Retrieves the details of a specified database.
 //
 // @param request - GetDatabaseRequest
 //
@@ -4848,7 +6332,7 @@ func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetData
 
 // Summary:
 //
-// Queries the detailed information about a database account.
+// Retrieves the details of a specified database account.
 //
 // @param request - GetDatabaseAccountRequest
 //
@@ -4869,6 +6353,10 @@ func (client *Client) GetDatabaseAccountWithOptions(request *GetDatabaseAccountR
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -4900,7 +6388,7 @@ func (client *Client) GetDatabaseAccountWithOptions(request *GetDatabaseAccountR
 
 // Summary:
 //
-// Queries the detailed information about a database account.
+// Retrieves the details of a specified database account.
 //
 // @param request - GetDatabaseAccountRequest
 //
@@ -4918,7 +6406,7 @@ func (client *Client) GetDatabaseAccount(request *GetDatabaseAccountRequest) (_r
 
 // Summary:
 //
-// Retrieves the details of a configuration export task for a Bastionhost instance.
+// Retrieves the details of a configuration backup export task. This operation is supported only for Bastionhost V3.2.44 and later.
 //
 // @param request - GetExportConfigJobRequest
 //
@@ -4970,7 +6458,7 @@ func (client *Client) GetExportConfigJobWithOptions(request *GetExportConfigJobR
 
 // Summary:
 //
-// Retrieves the details of a configuration export task for a Bastionhost instance.
+// Retrieves the details of a configuration backup export task. This operation is supported only for Bastionhost V3.2.44 and later.
 //
 // @param request - GetExportConfigJobRequest
 //
@@ -4988,7 +6476,7 @@ func (client *Client) GetExportConfigJob(request *GetExportConfigJobRequest) (_r
 
 // Summary:
 //
-// Retrieves the details of a host, such as the name, source, address, protocol, and service port.
+// Includes information such as the hostname, source, host address, and protocol port.
 //
 // @param request - GetHostRequest
 //
@@ -5009,6 +6497,10 @@ func (client *Client) GetHostWithOptions(request *GetHostRequest, runtime *dara.
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -5040,7 +6532,7 @@ func (client *Client) GetHostWithOptions(request *GetHostRequest, runtime *dara.
 
 // Summary:
 //
-// Retrieves the details of a host, such as the name, source, address, protocol, and service port.
+// Includes information such as the hostname, source, host address, and protocol port.
 //
 // @param request - GetHostRequest
 //
@@ -5058,7 +6550,7 @@ func (client *Client) GetHost(request *GetHostRequest) (_result *GetHostResponse
 
 // Summary:
 //
-// Retrieves the details of a host account on a host managed by a Bastionhost instance, such as the protocol type and account name.
+// Retrieves the details of a specified host account.
 //
 // @param request - GetHostAccountRequest
 //
@@ -5079,6 +6571,10 @@ func (client *Client) GetHostAccountWithOptions(request *GetHostAccountRequest, 
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -5110,7 +6606,7 @@ func (client *Client) GetHostAccountWithOptions(request *GetHostAccountRequest, 
 
 // Summary:
 //
-// Retrieves the details of a host account on a host managed by a Bastionhost instance, such as the protocol type and account name.
+// Retrieves the details of a specified host account.
 //
 // @param request - GetHostAccountRequest
 //
@@ -5128,7 +6624,7 @@ func (client *Client) GetHostAccount(request *GetHostAccountRequest) (_result *G
 
 // Summary:
 //
-// Retrieves the details of a host group.
+// Retrieves the details of a specified asset group.
 //
 // @param request - GetHostGroupRequest
 //
@@ -5149,6 +6645,10 @@ func (client *Client) GetHostGroupWithOptions(request *GetHostGroupRequest, runt
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -5180,7 +6680,7 @@ func (client *Client) GetHostGroupWithOptions(request *GetHostGroupRequest, runt
 
 // Summary:
 //
-// Retrieves the details of a host group.
+// Retrieves the details of a specified asset group.
 //
 // @param request - GetHostGroupRequest
 //
@@ -5198,7 +6698,7 @@ func (client *Client) GetHostGroup(request *GetHostGroupRequest) (_result *GetHo
 
 // Summary:
 //
-// Queries the information about a shared key.
+// Queries the details of a host shared key.
 //
 // @param request - GetHostShareKeyRequest
 //
@@ -5219,6 +6719,10 @@ func (client *Client) GetHostShareKeyWithOptions(request *GetHostShareKeyRequest
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -5250,7 +6754,7 @@ func (client *Client) GetHostShareKeyWithOptions(request *GetHostShareKeyRequest
 
 // Summary:
 //
-// Queries the information about a shared key.
+// Queries the details of a host shared key.
 //
 // @param request - GetHostShareKeyRequest
 //
@@ -5268,17 +6772,17 @@ func (client *Client) GetHostShareKey(request *GetHostShareKeyRequest) (_result 
 
 // Summary:
 //
-// Queries the settings of Active Directory (AD) authentication on a bastion host.
+// Queries the Active Directory (AD) authentication configurations of a Bastionhost instance.
 //
 // Description:
 //
-// ###
+// ### Usage notes
 //
-// Queries the Active Directory (AD) authentication settings of a bastion host. After you configure AD authentication, you can import AD-authenticated users into the bastion host. The imported users can then log on to the bastion host to perform O\\&M operations on servers.
+// This operation queries the Active Directory (AD) authentication configurations of a Bastionhost instance. You can use the AD authentication feature of Bastionhost to synchronize users from an AD server to Bastionhost. After the synchronization is complete, users can perform O&M operations on servers by using Bastionhost. For enterprise-level managed operations, you can also refer to Alibaba Cloud Managed Services.
 //
-// ### Limit
+// ### QPS limits
 //
-// This operation can be called up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered and your business may be affected. Take note of this limit when you call this operation.
+// The queries per second (QPS) limit on this operation is 10 per user. If the number of API invocations exceeds the limit, throttling is triggered, which may affect your business. Invoke this operation at a reasonable frequency.
 //
 // @param request - GetInstanceADAuthServerRequest
 //
@@ -5299,6 +6803,10 @@ func (client *Client) GetInstanceADAuthServerWithOptions(request *GetInstanceADA
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserSourceId) {
+		query["UserSourceId"] = request.UserSourceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5326,17 +6834,17 @@ func (client *Client) GetInstanceADAuthServerWithOptions(request *GetInstanceADA
 
 // Summary:
 //
-// Queries the settings of Active Directory (AD) authentication on a bastion host.
+// Queries the Active Directory (AD) authentication configurations of a Bastionhost instance.
 //
 // Description:
 //
-// ###
+// ### Usage notes
 //
-// Queries the Active Directory (AD) authentication settings of a bastion host. After you configure AD authentication, you can import AD-authenticated users into the bastion host. The imported users can then log on to the bastion host to perform O\\&M operations on servers.
+// This operation queries the Active Directory (AD) authentication configurations of a Bastionhost instance. You can use the AD authentication feature of Bastionhost to synchronize users from an AD server to Bastionhost. After the synchronization is complete, users can perform O&M operations on servers by using Bastionhost. For enterprise-level managed operations, you can also refer to Alibaba Cloud Managed Services.
 //
-// ### Limit
+// ### QPS limits
 //
-// This operation can be called up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered and your business may be affected. Take note of this limit when you call this operation.
+// The queries per second (QPS) limit on this operation is 10 per user. If the number of API invocations exceeds the limit, throttling is triggered, which may affect your business. Invoke this operation at a reasonable frequency.
 //
 // @param request - GetInstanceADAuthServerRequest
 //
@@ -5595,6 +7103,10 @@ func (client *Client) GetNetworkDomainWithOptions(request *GetNetworkDomainReque
 		query["NetworkDomainId"] = request.NetworkDomainId
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -5642,7 +7154,7 @@ func (client *Client) GetNetworkDomain(request *GetNetworkDomainRequest) (_resul
 
 // Summary:
 //
-// Gets the details of a specified control policy.
+// Retrieves the details of a specified control policy.
 //
 // @param request - GetPolicyRequest
 //
@@ -5663,6 +7175,10 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *d
 
 	if !dara.IsNil(request.PolicyId) {
 		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -5694,7 +7210,7 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *d
 
 // Summary:
 //
-// Gets the details of a specified control policy.
+// Retrieves the details of a specified control policy.
 //
 // @param request - GetPolicyRequest
 //
@@ -5712,7 +7228,7 @@ func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyRe
 
 // Summary:
 //
-// Queries the assets to which a control policy applies.
+// Retrieves the asset scope of a specified control policy.
 //
 // @param request - GetPolicyAssetScopeRequest
 //
@@ -5733,6 +7249,10 @@ func (client *Client) GetPolicyAssetScopeWithOptions(request *GetPolicyAssetScop
 
 	if !dara.IsNil(request.PolicyId) {
 		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -5764,7 +7284,7 @@ func (client *Client) GetPolicyAssetScopeWithOptions(request *GetPolicyAssetScop
 
 // Summary:
 //
-// Queries the assets to which a control policy applies.
+// Retrieves the asset scope of a specified control policy.
 //
 // @param request - GetPolicyAssetScopeRequest
 //
@@ -5782,7 +7302,7 @@ func (client *Client) GetPolicyAssetScope(request *GetPolicyAssetScopeRequest) (
 
 // Summary:
 //
-// Queries the scope of users to whom a control policy applies.
+// Retrieves the effective user scope of a specified control policy.
 //
 // @param request - GetPolicyUserScopeRequest
 //
@@ -5803,6 +7323,10 @@ func (client *Client) GetPolicyUserScopeWithOptions(request *GetPolicyUserScopeR
 
 	if !dara.IsNil(request.PolicyId) {
 		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -5834,7 +7358,7 @@ func (client *Client) GetPolicyUserScopeWithOptions(request *GetPolicyUserScopeR
 
 // Summary:
 //
-// Queries the scope of users to whom a control policy applies.
+// Retrieves the effective user scope of a specified control policy.
 //
 // @param request - GetPolicyUserScopeRequest
 //
@@ -5852,7 +7376,217 @@ func (client *Client) GetPolicyUserScope(request *GetPolicyUserScopeRequest) (_r
 
 // Summary:
 //
-// Queries the detailed information about an authorization rule.
+// Queries the details of a specified project.
+//
+// @param request - GetProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectResponse
+func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime *dara.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetProject"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified project.
+//
+// @param request - GetProjectRequest
+//
+// @return GetProjectResponse
+func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetProjectResponse{}
+	_body, _err := client.GetProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a project authorization.
+//
+// @param request - GetProjectAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectAuthorizationResponse
+func (client *Client) GetProjectAuthorizationWithOptions(request *GetProjectAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *GetProjectAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationId) {
+		query["AuthorizationId"] = request.AuthorizationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetProjectAuthorization"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetProjectAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a project authorization.
+//
+// @param request - GetProjectAuthorizationRequest
+//
+// @return GetProjectAuthorizationResponse
+func (client *Client) GetProjectAuthorization(request *GetProjectAuthorizationRequest) (_result *GetProjectAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetProjectAuthorizationResponse{}
+	_body, _err := client.GetProjectAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an audit policy.
+//
+// @param request - GetReviewRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReviewRuleResponse
+func (client *Client) GetReviewRuleWithOptions(request *GetReviewRuleRequest, runtime *dara.RuntimeOptions) (_result *GetReviewRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReviewRuleId) {
+		query["ReviewRuleId"] = request.ReviewRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetReviewRule"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetReviewRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an audit policy.
+//
+// @param request - GetReviewRuleRequest
+//
+// @return GetReviewRuleResponse
+func (client *Client) GetReviewRule(request *GetReviewRuleRequest) (_result *GetReviewRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetReviewRuleResponse{}
+	_body, _err := client.GetReviewRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified authorization rule.
 //
 // @param request - GetRuleRequest
 //
@@ -5869,6 +7603,10 @@ func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *dara.
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -5904,7 +7642,7 @@ func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *dara.
 
 // Summary:
 //
-// Queries the detailed information about an authorization rule.
+// Retrieves the details of a specified authorization rule.
 //
 // @param request - GetRuleRequest
 //
@@ -5992,7 +7730,7 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 
 // Summary:
 //
-// Retrieves the details of a user group in a bastion host.
+// Retrieves the details of a specified Bastionhost user group.
 //
 // @param request - GetUserGroupRequest
 //
@@ -6009,6 +7747,10 @@ func (client *Client) GetUserGroupWithOptions(request *GetUserGroupRequest, runt
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -6044,7 +7786,7 @@ func (client *Client) GetUserGroupWithOptions(request *GetUserGroupRequest, runt
 
 // Summary:
 //
-// Retrieves the details of a user group in a bastion host.
+// Retrieves the details of a specified Bastionhost user group.
 //
 // @param request - GetUserGroupRequest
 //
@@ -6142,13 +7884,13 @@ func (client *Client) ImportKMSSecretsForHost(request *ImportKMSSecretsForHostRe
 
 // Summary:
 //
-// Queries commands to be reviewed.
+// Retrieves the list of commands that require approval.
 //
 // Description:
 //
-// Queries commands pending review as a Bastionhost administrator.
+// This API operation allows administrators to retrieve the list of commands that require approval.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param request - ListApproveCommandsRequest
 //
@@ -6173,6 +7915,10 @@ func (client *Client) ListApproveCommandsWithOptions(request *ListApproveCommand
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -6204,13 +7950,13 @@ func (client *Client) ListApproveCommandsWithOptions(request *ListApproveCommand
 
 // Summary:
 //
-// Queries commands to be reviewed.
+// Retrieves the list of commands that require approval.
 //
 // Description:
 //
-// Queries commands pending review as a Bastionhost administrator.
+// This API operation allows administrators to retrieve the list of commands that require approval.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param request - ListApproveCommandsRequest
 //
@@ -6228,7 +7974,7 @@ func (client *Client) ListApproveCommands(request *ListApproveCommandsRequest) (
 
 // Summary:
 //
-// Queries the database accounts of a database.
+// Retrieves a list of database accounts.
 //
 // @param request - ListDatabaseAccountsRequest
 //
@@ -6263,6 +8009,10 @@ func (client *Client) ListDatabaseAccountsWithOptions(request *ListDatabaseAccou
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -6292,7 +8042,7 @@ func (client *Client) ListDatabaseAccountsWithOptions(request *ListDatabaseAccou
 
 // Summary:
 //
-// Queries the database accounts of a database.
+// Retrieves a list of database accounts.
 //
 // @param request - ListDatabaseAccountsRequest
 //
@@ -6396,7 +8146,7 @@ func (client *Client) ListDatabaseAccountsForUser(request *ListDatabaseAccountsF
 
 // Summary:
 //
-// Queries the database accounts of a database and whether a user group is authorized to manage each database account.
+// Queries the list of authorized and unauthorized database accounts for a user group.
 //
 // @param request - ListDatabaseAccountsForUserGroupRequest
 //
@@ -6429,6 +8179,10 @@ func (client *Client) ListDatabaseAccountsForUserGroupWithOptions(request *ListD
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -6464,7 +8218,7 @@ func (client *Client) ListDatabaseAccountsForUserGroupWithOptions(request *ListD
 
 // Summary:
 //
-// Queries the database accounts of a database and whether a user group is authorized to manage each database account.
+// Queries the list of authorized and unauthorized database accounts for a user group.
 //
 // @param request - ListDatabaseAccountsForUserGroupRequest
 //
@@ -6482,7 +8236,7 @@ func (client *Client) ListDatabaseAccountsForUserGroup(request *ListDatabaseAcco
 
 // Summary:
 //
-// Queries the databases that are managed by a bastion host.
+// Queries the databases of a specified Bastionhost instance.
 //
 // @param request - ListDatabasesRequest
 //
@@ -6521,6 +8275,10 @@ func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, ru
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -6554,7 +8312,7 @@ func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, ru
 
 // Summary:
 //
-// Queries the databases that are managed by a bastion host.
+// Queries the databases of a specified Bastionhost instance.
 //
 // @param request - ListDatabasesRequest
 //
@@ -6572,7 +8330,7 @@ func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the databases that a user is authorized to manage.
+// Queries the list of databases authorized for a user.
 //
 // @param request - ListDatabasesForUserRequest
 //
@@ -6615,6 +8373,10 @@ func (client *Client) ListDatabasesForUserWithOptions(request *ListDatabasesForU
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -6648,7 +8410,7 @@ func (client *Client) ListDatabasesForUserWithOptions(request *ListDatabasesForU
 
 // Summary:
 //
-// Queries the databases that a user is authorized to manage.
+// Queries the list of databases authorized for a user.
 //
 // @param request - ListDatabasesForUserRequest
 //
@@ -6666,7 +8428,7 @@ func (client *Client) ListDatabasesForUser(request *ListDatabasesForUserRequest)
 
 // Summary:
 //
-// Lists the databases that a user group is authorized to manage through a Bastionhost instance.
+// Queries the databases authorized for a user group.
 //
 // @param request - ListDatabasesForUserGroupRequest
 //
@@ -6709,6 +8471,10 @@ func (client *Client) ListDatabasesForUserGroupWithOptions(request *ListDatabase
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -6742,7 +8508,7 @@ func (client *Client) ListDatabasesForUserGroupWithOptions(request *ListDatabase
 
 // Summary:
 //
-// Lists the databases that a user group is authorized to manage through a Bastionhost instance.
+// Queries the databases authorized for a user group.
 //
 // @param request - ListDatabasesForUserGroupRequest
 //
@@ -6760,7 +8526,7 @@ func (client *Client) ListDatabasesForUserGroup(request *ListDatabasesForUserGro
 
 // Summary:
 //
-// Lists the host accounts that are configured for a host in a Bastionhost instance. Host accounts are the credentials used by O&M engineers to log on to the host.
+// Retrieves a list of host accounts.
 //
 // @param request - ListHostAccountsRequest
 //
@@ -6799,6 +8565,10 @@ func (client *Client) ListHostAccountsWithOptions(request *ListHostAccountsReque
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.ProtocolName) {
 		query["ProtocolName"] = request.ProtocolName
 	}
@@ -6832,7 +8602,7 @@ func (client *Client) ListHostAccountsWithOptions(request *ListHostAccountsReque
 
 // Summary:
 //
-// Lists the host accounts that are configured for a host in a Bastionhost instance. Host accounts are the credentials used by O&M engineers to log on to the host.
+// Retrieves a list of host accounts.
 //
 // @param request - ListHostAccountsRequest
 //
@@ -6850,7 +8620,7 @@ func (client *Client) ListHostAccounts(request *ListHostAccountsRequest) (_resul
 
 // Summary:
 //
-// Queries the host accounts that are associated with a shared key.
+// Retrieves the host accounts associated with a host shared key.
 //
 // @param request - ListHostAccountsForHostShareKeyRequest
 //
@@ -6879,6 +8649,10 @@ func (client *Client) ListHostAccountsForHostShareKeyWithOptions(request *ListHo
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -6910,7 +8684,7 @@ func (client *Client) ListHostAccountsForHostShareKeyWithOptions(request *ListHo
 
 // Summary:
 //
-// Queries the host accounts that are associated with a shared key.
+// Retrieves the host accounts associated with a host shared key.
 //
 // @param request - ListHostAccountsForHostShareKeyRequest
 //
@@ -6928,7 +8702,7 @@ func (client *Client) ListHostAccountsForHostShareKey(request *ListHostAccountsF
 
 // Summary:
 //
-// Queries the host accounts of a host and whether a user is authorized to manage each host account.
+// Queries the list of authorized and unauthorized host accounts for a specified user on a specified host.
 //
 // @param request - ListHostAccountsForUserRequest
 //
@@ -6961,6 +8735,10 @@ func (client *Client) ListHostAccountsForUserWithOptions(request *ListHostAccoun
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -6996,7 +8774,7 @@ func (client *Client) ListHostAccountsForUserWithOptions(request *ListHostAccoun
 
 // Summary:
 //
-// Queries the host accounts of a host and whether a user is authorized to manage each host account.
+// Queries the list of authorized and unauthorized host accounts for a specified user on a specified host.
 //
 // @param request - ListHostAccountsForUserRequest
 //
@@ -7014,7 +8792,7 @@ func (client *Client) ListHostAccountsForUser(request *ListHostAccountsForUserRe
 
 // Summary:
 //
-// Queries the host accounts of a host and whether a user group is authorized to manage each host account.
+// Queries the authorized and unauthorized host accounts of a specified user group on a specified host.
 //
 // @param request - ListHostAccountsForUserGroupRequest
 //
@@ -7047,6 +8825,10 @@ func (client *Client) ListHostAccountsForUserGroupWithOptions(request *ListHostA
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -7082,7 +8864,7 @@ func (client *Client) ListHostAccountsForUserGroupWithOptions(request *ListHostA
 
 // Summary:
 //
-// Queries the host accounts of a host and whether a user group is authorized to manage each host account.
+// Queries the authorized and unauthorized host accounts of a specified user group on a specified host.
 //
 // @param request - ListHostAccountsForUserGroupRequest
 //
@@ -7100,7 +8882,7 @@ func (client *Client) ListHostAccountsForUserGroup(request *ListHostAccountsForU
 
 // Summary:
 //
-// Queries the names of the host accounts that a specified user is authorized to manage in a specified host group.
+// Queries the names of host accounts authorized for a specified user in a specified host group.
 //
 // @param request - ListHostGroupAccountNamesForUserRequest
 //
@@ -7121,6 +8903,10 @@ func (client *Client) ListHostGroupAccountNamesForUserWithOptions(request *ListH
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -7156,7 +8942,7 @@ func (client *Client) ListHostGroupAccountNamesForUserWithOptions(request *ListH
 
 // Summary:
 //
-// Queries the names of the host accounts that a specified user is authorized to manage in a specified host group.
+// Queries the names of host accounts authorized for a specified user in a specified host group.
 //
 // @param request - ListHostGroupAccountNamesForUserRequest
 //
@@ -7174,7 +8960,7 @@ func (client *Client) ListHostGroupAccountNamesForUser(request *ListHostGroupAcc
 
 // Summary:
 //
-// Queries the names of the host accounts that a user group is authorized to manage in a host group.
+// Queries the names of host accounts authorized for a specified user group in a specified host group.
 //
 // @param request - ListHostGroupAccountNamesForUserGroupRequest
 //
@@ -7195,6 +8981,10 @@ func (client *Client) ListHostGroupAccountNamesForUserGroupWithOptions(request *
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -7230,7 +9020,7 @@ func (client *Client) ListHostGroupAccountNamesForUserGroupWithOptions(request *
 
 // Summary:
 //
-// Queries the names of the host accounts that a user group is authorized to manage in a host group.
+// Queries the names of host accounts authorized for a specified user group in a specified host group.
 //
 // @param request - ListHostGroupAccountNamesForUserGroupRequest
 //
@@ -7248,7 +9038,7 @@ func (client *Client) ListHostGroupAccountNamesForUserGroup(request *ListHostGro
 
 // Summary:
 //
-// Queries a list of asset groups that are managed by a bastion host.
+// Queries the asset groups under a specified bastion host.
 //
 // @param request - ListHostGroupsRequest
 //
@@ -7277,6 +9067,10 @@ func (client *Client) ListHostGroupsWithOptions(request *ListHostGroupsRequest, 
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -7308,7 +9102,7 @@ func (client *Client) ListHostGroupsWithOptions(request *ListHostGroupsRequest, 
 
 // Summary:
 //
-// Queries a list of asset groups that are managed by a bastion host.
+// Queries the asset groups under a specified bastion host.
 //
 // @param request - ListHostGroupsRequest
 //
@@ -7326,7 +9120,7 @@ func (client *Client) ListHostGroups(request *ListHostGroupsRequest) (_result *L
 
 // Summary:
 //
-// Queries a list of host groups that a bastion host user is authorized or is not authorized to manage.
+// Queries the authorized or unauthorized host groups for a specified Bastionhost user.
 //
 // @param request - ListHostGroupsForUserRequest
 //
@@ -7359,6 +9153,10 @@ func (client *Client) ListHostGroupsForUserWithOptions(request *ListHostGroupsFo
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -7394,7 +9192,7 @@ func (client *Client) ListHostGroupsForUserWithOptions(request *ListHostGroupsFo
 
 // Summary:
 //
-// Queries a list of host groups that a bastion host user is authorized or is not authorized to manage.
+// Queries the authorized or unauthorized host groups for a specified Bastionhost user.
 //
 // @param request - ListHostGroupsForUserRequest
 //
@@ -7412,7 +9210,7 @@ func (client *Client) ListHostGroupsForUser(request *ListHostGroupsForUserReques
 
 // Summary:
 //
-// Queries the hosts that a specified user group is authorized or not authorized to manage.
+// Queries the authorized or unauthorized host groups for a specified Bastionhost user group.
 //
 // @param request - ListHostGroupsForUserGroupRequest
 //
@@ -7445,6 +9243,10 @@ func (client *Client) ListHostGroupsForUserGroupWithOptions(request *ListHostGro
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -7480,7 +9282,7 @@ func (client *Client) ListHostGroupsForUserGroupWithOptions(request *ListHostGro
 
 // Summary:
 //
-// Queries the hosts that a specified user group is authorized or not authorized to manage.
+// Queries the authorized or unauthorized host groups for a specified Bastionhost user group.
 //
 // @param request - ListHostGroupsForUserGroupRequest
 //
@@ -7498,7 +9300,7 @@ func (client *Client) ListHostGroupsForUserGroup(request *ListHostGroupsForUserG
 
 // Summary:
 //
-// Queries the shared keys that are associated with a host.
+// Queries the list of host shared keys.
 //
 // @param request - ListHostShareKeysRequest
 //
@@ -7523,6 +9325,10 @@ func (client *Client) ListHostShareKeysWithOptions(request *ListHostShareKeysReq
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -7554,7 +9360,7 @@ func (client *Client) ListHostShareKeysWithOptions(request *ListHostShareKeysReq
 
 // Summary:
 //
-// Queries the shared keys that are associated with a host.
+// Queries the list of host shared keys.
 //
 // @param request - ListHostShareKeysRequest
 //
@@ -7572,7 +9378,7 @@ func (client *Client) ListHostShareKeys(request *ListHostShareKeysRequest) (_res
 
 // Summary:
 //
-// Queries the hosts in a bastion host.
+// Queries the hosts in a specified Bastionhost instance.
 //
 // @param request - ListHostsRequest
 //
@@ -7613,6 +9419,10 @@ func (client *Client) ListHostsWithOptions(request *ListHostsRequest, runtime *d
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -7656,7 +9466,7 @@ func (client *Client) ListHostsWithOptions(request *ListHostsRequest, runtime *d
 
 // Summary:
 //
-// Queries the hosts in a bastion host.
+// Queries the hosts in a specified Bastionhost instance.
 //
 // @param request - ListHostsRequest
 //
@@ -7674,7 +9484,7 @@ func (client *Client) ListHosts(request *ListHostsRequest) (_result *ListHostsRe
 
 // Summary:
 //
-// Queries the hosts that a user group is authorized or not authorized to manage.
+// Queries the list of authorized or unauthorized hosts for a specified Bastionhost user.
 //
 // @param request - ListHostsForUserRequest
 //
@@ -7717,6 +9527,10 @@ func (client *Client) ListHostsForUserWithOptions(request *ListHostsForUserReque
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -7750,7 +9564,7 @@ func (client *Client) ListHostsForUserWithOptions(request *ListHostsForUserReque
 
 // Summary:
 //
-// Queries the hosts that a user group is authorized or not authorized to manage.
+// Queries the list of authorized or unauthorized hosts for a specified Bastionhost user.
 //
 // @param request - ListHostsForUserRequest
 //
@@ -7768,7 +9582,7 @@ func (client *Client) ListHostsForUser(request *ListHostsForUserRequest) (_resul
 
 // Summary:
 //
-// Lists the authorized or unauthorized hosts for a bastion host user group.
+// Queries the list of authorized or unauthorized hosts for a specified Bastionhost user group.
 //
 // @param request - ListHostsForUserGroupRequest
 //
@@ -7811,6 +9625,10 @@ func (client *Client) ListHostsForUserGroupWithOptions(request *ListHostsForUser
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -7844,7 +9662,7 @@ func (client *Client) ListHostsForUserGroupWithOptions(request *ListHostsForUser
 
 // Summary:
 //
-// Lists the authorized or unauthorized hosts for a bastion host user group.
+// Queries the list of authorized or unauthorized hosts for a specified Bastionhost user group.
 //
 // @param request - ListHostsForUserGroupRequest
 //
@@ -7862,7 +9680,7 @@ func (client *Client) ListHostsForUserGroup(request *ListHostsForUserGroupReques
 
 // Summary:
 //
-// Lists all importable KMS secrets for a specified host.
+// Lists all importable KMS credentials for a specified host.
 //
 // @param request - ListImportableKMSSecretsForHostRequest
 //
@@ -7926,7 +9744,7 @@ func (client *Client) ListImportableKMSSecretsForHostWithOptions(request *ListIm
 
 // Summary:
 //
-// Lists all importable KMS secrets for a specified host.
+// Lists all importable KMS credentials for a specified host.
 //
 // @param request - ListImportableKMSSecretsForHostRequest
 //
@@ -7944,7 +9762,7 @@ func (client *Client) ListImportableKMSSecretsForHost(request *ListImportableKMS
 
 // Summary:
 //
-// Lists the member accounts in a Resource Directory (RD).
+// Retrieves a list of member accounts in a resource directory.
 //
 // @param request - ListInstanceRdMembersRequest
 //
@@ -8000,7 +9818,7 @@ func (client *Client) ListInstanceRdMembersWithOptions(request *ListInstanceRdMe
 
 // Summary:
 //
-// Lists the member accounts in a Resource Directory (RD).
+// Retrieves a list of member accounts in a resource directory.
 //
 // @param request - ListInstanceRdMembersRequest
 //
@@ -8018,7 +9836,93 @@ func (client *Client) ListInstanceRdMembers(request *ListInstanceRdMembersReques
 
 // Summary:
 //
-// Lists the network domains configured in a Bastionhost instance. Network domains define the connectivity between Bastionhost and the hosts or databases that it manages.
+// Queries the list of member accounts that are not assigned to other projects.
+//
+// @param request - ListMembersNotForProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMembersNotForProjectResponse
+func (client *Client) ListMembersNotForProjectWithOptions(request *ListMembersNotForProjectRequest, runtime *dara.RuntimeOptions) (_result *ListMembersNotForProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Skip) {
+		query["Skip"] = request.Skip
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMembersNotForProject"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMembersNotForProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of member accounts that are not assigned to other projects.
+//
+// @param request - ListMembersNotForProjectRequest
+//
+// @return ListMembersNotForProjectResponse
+func (client *Client) ListMembersNotForProject(request *ListMembersNotForProjectRequest) (_result *ListMembersNotForProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMembersNotForProjectResponse{}
+	_body, _err := client.ListMembersNotForProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the network domains of a specified Bastionhost instance.
 //
 // @param request - ListNetworkDomainsRequest
 //
@@ -8053,6 +9957,10 @@ func (client *Client) ListNetworkDomainsWithOptions(request *ListNetworkDomainsR
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -8082,7 +9990,7 @@ func (client *Client) ListNetworkDomainsWithOptions(request *ListNetworkDomainsR
 
 // Summary:
 //
-// Lists the network domains configured in a Bastionhost instance. Network domains define the connectivity between Bastionhost and the hosts or databases that it manages.
+// Queries the network domains of a specified Bastionhost instance.
 //
 // @param request - ListNetworkDomainsRequest
 //
@@ -8100,7 +10008,7 @@ func (client *Client) ListNetworkDomains(request *ListNetworkDomainsRequest) (_r
 
 // Summary:
 //
-// Queries a list of database accounts that the current Resource Access Management (RAM) user is authorized to manage.
+// Retrieves a list of authorized database accounts.
 //
 // @param request - ListOperationDatabaseAccountsRequest
 //
@@ -8125,6 +10033,10 @@ func (client *Client) ListOperationDatabaseAccountsWithOptions(request *ListOper
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OperationProjectId) {
+		query["OperationProjectId"] = request.OperationProjectId
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -8164,7 +10076,7 @@ func (client *Client) ListOperationDatabaseAccountsWithOptions(request *ListOper
 
 // Summary:
 //
-// Queries a list of database accounts that the current Resource Access Management (RAM) user is authorized to manage.
+// Retrieves a list of authorized database accounts.
 //
 // @param request - ListOperationDatabaseAccountsRequest
 //
@@ -8182,7 +10094,7 @@ func (client *Client) ListOperationDatabaseAccounts(request *ListOperationDataba
 
 // Summary:
 //
-// Lists the databases that the current Resource Access Management (RAM) user is authorized to access.
+// Retrieves the list of databases authorized for the current Resource Access Management (RAM) user.
 //
 // @param request - ListOperationDatabasesRequest
 //
@@ -8219,6 +10131,10 @@ func (client *Client) ListOperationDatabasesWithOptions(request *ListOperationDa
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -8262,7 +10178,7 @@ func (client *Client) ListOperationDatabasesWithOptions(request *ListOperationDa
 
 // Summary:
 //
-// Lists the databases that the current Resource Access Management (RAM) user is authorized to access.
+// Retrieves the list of databases authorized for the current Resource Access Management (RAM) user.
 //
 // @param request - ListOperationDatabasesRequest
 //
@@ -8280,7 +10196,7 @@ func (client *Client) ListOperationDatabases(request *ListOperationDatabasesRequ
 
 // Summary:
 //
-// Queries a list of host accounts that the current Resource Access Management (RAM) user is authorized to manage.
+// Lists the host accounts for which the current Resource Access Management (RAM) user has authorization.
 //
 // @param request - ListOperationHostAccountsRequest
 //
@@ -8344,7 +10260,7 @@ func (client *Client) ListOperationHostAccountsWithOptions(request *ListOperatio
 
 // Summary:
 //
-// Queries a list of host accounts that the current Resource Access Management (RAM) user is authorized to manage.
+// Lists the host accounts for which the current Resource Access Management (RAM) user has authorization.
 //
 // @param request - ListOperationHostAccountsRequest
 //
@@ -8362,7 +10278,7 @@ func (client *Client) ListOperationHostAccounts(request *ListOperationHostAccoun
 
 // Summary:
 //
-// Lists the hosts that the current Resource Access Management (RAM) user is authorized to perform O&M operations on through a Bastionhost instance.
+// Retrieves the list of hosts with authorization for the current Resource Access Management (RAM) user.
 //
 // @param request - ListOperationHostsRequest
 //
@@ -8391,6 +10307,10 @@ func (client *Client) ListOperationHostsWithOptions(request *ListOperationHostsR
 
 	if !dara.IsNil(request.OSType) {
 		query["OSType"] = request.OSType
+	}
+
+	if !dara.IsNil(request.OperationProjectId) {
+		query["OperationProjectId"] = request.OperationProjectId
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -8442,7 +10362,7 @@ func (client *Client) ListOperationHostsWithOptions(request *ListOperationHostsR
 
 // Summary:
 //
-// Lists the hosts that the current Resource Access Management (RAM) user is authorized to perform O&M operations on through a Bastionhost instance.
+// Retrieves the list of hosts with authorization for the current Resource Access Management (RAM) user.
 //
 // @param request - ListOperationHostsRequest
 //
@@ -8460,13 +10380,13 @@ func (client *Client) ListOperationHosts(request *ListOperationHostsRequest) (_r
 
 // Summary:
 //
-// Retrieves the list of O&M applications that require approval.
+// Retrieves a list of O&M tickets pending approval.
 //
 // Description:
 //
-// Retrieves the list of O&M applications that require approval for an administrator.
+// This API operation allows administrators to retrieve a list of O&M tickets pending approval.
 //
-// The China site Chinese QPS limit for this API is 10 requests per second. If this limit is exceeded, throttling is triggered, which may affect your business. Call this API appropriately.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - ListOperationTicketsRequest
 //
@@ -8495,6 +10415,10 @@ func (client *Client) ListOperationTicketsWithOptions(request *ListOperationTick
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -8526,13 +10450,13 @@ func (client *Client) ListOperationTicketsWithOptions(request *ListOperationTick
 
 // Summary:
 //
-// Retrieves the list of O&M applications that require approval.
+// Retrieves a list of O&M tickets pending approval.
 //
 // Description:
 //
-// Retrieves the list of O&M applications that require approval for an administrator.
+// This API operation allows administrators to retrieve a list of O&M tickets pending approval.
 //
-// The China site Chinese QPS limit for this API is 10 requests per second. If this limit is exceeded, throttling is triggered, which may affect your business. Call this API appropriately.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - ListOperationTicketsRequest
 //
@@ -8550,7 +10474,7 @@ func (client *Client) ListOperationTickets(request *ListOperationTicketsRequest)
 
 // Summary:
 //
-// Queries a list of control policies.
+// Queries the control policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -8579,6 +10503,10 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 
 	if !dara.IsNil(request.PolicyName) {
 		query["PolicyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -8610,7 +10538,7 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 
 // Summary:
 //
-// Queries a list of control policies.
+// Queries the control policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -8628,7 +10556,593 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 
 // Summary:
 //
-// Queries a list of authorization rules of a bastion host.
+// Queries the list of project authorizations.
+//
+// @param request - ListProjectAuthorizationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectAuthorizationsResponse
+func (client *Client) ListProjectAuthorizationsWithOptions(request *ListProjectAuthorizationsRequest, runtime *dara.RuntimeOptions) (_result *ListProjectAuthorizationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Skip) {
+		query["Skip"] = request.Skip
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProjectAuthorizations"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProjectAuthorizationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of project authorizations.
+//
+// @param request - ListProjectAuthorizationsRequest
+//
+// @return ListProjectAuthorizationsResponse
+func (client *Client) ListProjectAuthorizations(request *ListProjectAuthorizationsRequest) (_result *ListProjectAuthorizationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListProjectAuthorizationsResponse{}
+	_body, _err := client.ListProjectAuthorizationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of notification recipients for a project.
+//
+// @param request - ListProjectNotifyReceiversRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectNotifyReceiversResponse
+func (client *Client) ListProjectNotifyReceiversWithOptions(request *ListProjectNotifyReceiversRequest, runtime *dara.RuntimeOptions) (_result *ListProjectNotifyReceiversResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Skip) {
+		query["Skip"] = request.Skip
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProjectNotifyReceivers"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProjectNotifyReceiversResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of notification recipients for a project.
+//
+// @param request - ListProjectNotifyReceiversRequest
+//
+// @return ListProjectNotifyReceiversResponse
+func (client *Client) ListProjectNotifyReceivers(request *ListProjectNotifyReceiversRequest) (_result *ListProjectNotifyReceiversResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListProjectNotifyReceiversResponse{}
+	_body, _err := client.ListProjectNotifyReceiversWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of projects.
+//
+// @param request - ListProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsResponse
+func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *dara.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Skip) {
+		query["Skip"] = request.Skip
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProjects"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of projects.
+//
+// @param request - ListProjectsRequest
+//
+// @return ListProjectsResponse
+func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.ListProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the projects that the current user can manage.
+//
+// @param request - ListProjectsForProjectAuthorizationPrincipalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsForProjectAuthorizationPrincipalResponse
+func (client *Client) ListProjectsForProjectAuthorizationPrincipalWithOptions(request *ListProjectsForProjectAuthorizationPrincipalRequest, runtime *dara.RuntimeOptions) (_result *ListProjectsForProjectAuthorizationPrincipalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Skip) {
+		query["Skip"] = request.Skip
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProjectsForProjectAuthorizationPrincipal"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProjectsForProjectAuthorizationPrincipalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the projects that the current user can manage.
+//
+// @param request - ListProjectsForProjectAuthorizationPrincipalRequest
+//
+// @return ListProjectsForProjectAuthorizationPrincipalResponse
+func (client *Client) ListProjectsForProjectAuthorizationPrincipal(request *ListProjectsForProjectAuthorizationPrincipalRequest) (_result *ListProjectsForProjectAuthorizationPrincipalResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListProjectsForProjectAuthorizationPrincipalResponse{}
+	_body, _err := client.ListProjectsForProjectAuthorizationPrincipalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of projects that are not associated with a project authorization.
+//
+// @param request - ListProjectsNotForProjectAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsNotForProjectAuthorizationResponse
+func (client *Client) ListProjectsNotForProjectAuthorizationWithOptions(request *ListProjectsNotForProjectAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *ListProjectsNotForProjectAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationId) {
+		query["AuthorizationId"] = request.AuthorizationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Skip) {
+		query["Skip"] = request.Skip
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProjectsNotForProjectAuthorization"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProjectsNotForProjectAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of projects that are not associated with a project authorization.
+//
+// @param request - ListProjectsNotForProjectAuthorizationRequest
+//
+// @return ListProjectsNotForProjectAuthorizationResponse
+func (client *Client) ListProjectsNotForProjectAuthorization(request *ListProjectsNotForProjectAuthorizationRequest) (_result *ListProjectsNotForProjectAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListProjectsNotForProjectAuthorizationResponse{}
+	_body, _err := client.ListProjectsNotForProjectAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of projects that are not associated with an audit policy.
+//
+// @param request - ListProjectsNotForReviewRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsNotForReviewRuleResponse
+func (client *Client) ListProjectsNotForReviewRuleWithOptions(request *ListProjectsNotForReviewRuleRequest, runtime *dara.RuntimeOptions) (_result *ListProjectsNotForReviewRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReviewRuleId) {
+		query["ReviewRuleId"] = request.ReviewRuleId
+	}
+
+	if !dara.IsNil(request.Skip) {
+		query["Skip"] = request.Skip
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProjectsNotForReviewRule"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProjectsNotForReviewRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of projects that are not associated with an audit policy.
+//
+// @param request - ListProjectsNotForReviewRuleRequest
+//
+// @return ListProjectsNotForReviewRuleResponse
+func (client *Client) ListProjectsNotForReviewRule(request *ListProjectsNotForReviewRuleRequest) (_result *ListProjectsNotForReviewRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListProjectsNotForReviewRuleResponse{}
+	_body, _err := client.ListProjectsNotForReviewRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the audit policy list.
+//
+// @param request - ListReviewRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListReviewRulesResponse
+func (client *Client) ListReviewRulesWithOptions(request *ListReviewRulesRequest, runtime *dara.RuntimeOptions) (_result *ListReviewRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Skip) {
+		query["Skip"] = request.Skip
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListReviewRules"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListReviewRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the audit policy list.
+//
+// @param request - ListReviewRulesRequest
+//
+// @return ListReviewRulesResponse
+func (client *Client) ListReviewRules(request *ListReviewRulesRequest) (_result *ListReviewRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListReviewRulesResponse{}
+	_body, _err := client.ListReviewRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the authorization rules of a specified Bastionhost instance.
 //
 // @param request - ListRulesRequest
 //
@@ -8653,6 +11167,10 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *d
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -8692,7 +11210,7 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *d
 
 // Summary:
 //
-// Queries a list of authorization rules of a bastion host.
+// Queries the authorization rules of a specified Bastionhost instance.
 //
 // @param request - ListRulesRequest
 //
@@ -8710,7 +11228,7 @@ func (client *Client) ListRules(request *ListRulesRequest) (_result *ListRulesRe
 
 // Summary:
 //
-// Queries the tag keys on resources.
+// Queries the tags bound to a resource.
 //
 // @param request - ListTagKeysRequest
 //
@@ -8770,7 +11288,7 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 
 // Summary:
 //
-// Queries the tag keys on resources.
+// Queries the tags bound to a resource.
 //
 // @param request - ListTagKeysRequest
 //
@@ -8788,7 +11306,7 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 
 // Summary:
 //
-// Lists the tags that are attached to one or more Bastionhost instances.
+// Queries the tags that are bound to one or more Bastionhost instances.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -8852,7 +11370,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Lists the tags that are attached to one or more Bastionhost instances.
+// Queries the tags that are bound to one or more Bastionhost instances.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -8870,7 +11388,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Retrieves the list of pending automated O&M approval requests.
+// Retrieves the list of pending automated O&M approvals.
 //
 // @param request - ListTodoOpsTaskApprovalsRequest
 //
@@ -8899,6 +11417,10 @@ func (client *Client) ListTodoOpsTaskApprovalsWithOptions(request *ListTodoOpsTa
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -8934,7 +11456,7 @@ func (client *Client) ListTodoOpsTaskApprovalsWithOptions(request *ListTodoOpsTa
 
 // Summary:
 //
-// Retrieves the list of pending automated O&M approval requests.
+// Retrieves the list of pending automated O&M approvals.
 //
 // @param request - ListTodoOpsTaskApprovalsRequest
 //
@@ -8952,7 +11474,7 @@ func (client *Client) ListTodoOpsTaskApprovals(request *ListTodoOpsTaskApprovals
 
 // Summary:
 //
-// Queries a list of user groups on a bastion host.
+// Queries the user groups of a specified Bastionhost instance.
 //
 // @param request - ListUserGroupsRequest
 //
@@ -8977,6 +11499,10 @@ func (client *Client) ListUserGroupsWithOptions(request *ListUserGroupsRequest, 
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -9012,7 +11538,7 @@ func (client *Client) ListUserGroupsWithOptions(request *ListUserGroupsRequest, 
 
 // Summary:
 //
-// Queries a list of user groups on a bastion host.
+// Queries the user groups of a specified Bastionhost instance.
 //
 // @param request - ListUserGroupsRequest
 //
@@ -9021,6 +11547,96 @@ func (client *Client) ListUserGroups(request *ListUserGroupsRequest) (_result *L
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListUserGroupsResponse{}
 	_body, _err := client.ListUserGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of user groups that a user has joined.
+//
+// @param request - ListUserGroupsForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserGroupsForUserResponse
+func (client *Client) ListUserGroupsForUserWithOptions(request *ListUserGroupsForUserRequest, runtime *dara.RuntimeOptions) (_result *ListUserGroupsForUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PagingOff) {
+		query["PagingOff"] = request.PagingOff
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserGroupsForUser"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserGroupsForUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of user groups that a user has joined.
+//
+// @param request - ListUserGroupsForUserRequest
+//
+// @return ListUserGroupsForUserResponse
+func (client *Client) ListUserGroupsForUser(request *ListUserGroupsForUserRequest) (_result *ListUserGroupsForUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUserGroupsForUserResponse{}
+	_body, _err := client.ListUserGroupsForUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9300,7 +11916,7 @@ func (client *Client) LockUsers(request *LockUsersRequest) (_result *LockUsersRe
 
 // Summary:
 //
-// Modifies the basic information about a database.
+// Modifies the basic information of a database.
 //
 // @param request - ModifyDatabaseRequest
 //
@@ -9351,6 +11967,10 @@ func (client *Client) ModifyDatabaseWithOptions(request *ModifyDatabaseRequest, 
 		query["NetworkDomainId"] = request.NetworkDomainId
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -9384,7 +12004,7 @@ func (client *Client) ModifyDatabaseWithOptions(request *ModifyDatabaseRequest, 
 
 // Summary:
 //
-// Modifies the basic information about a database.
+// Modifies the basic information of a database.
 //
 // @param request - ModifyDatabaseRequest
 //
@@ -9402,7 +12022,7 @@ func (client *Client) ModifyDatabase(request *ModifyDatabaseRequest) (_result *M
 
 // Summary:
 //
-// Modifies the basic information about a database account.
+// Modifies the basic information of a database account.
 //
 // @param request - ModifyDatabaseAccountRequest
 //
@@ -9437,6 +12057,10 @@ func (client *Client) ModifyDatabaseAccountWithOptions(request *ModifyDatabaseAc
 		query["Password"] = request.Password
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -9466,7 +12090,7 @@ func (client *Client) ModifyDatabaseAccountWithOptions(request *ModifyDatabaseAc
 
 // Summary:
 //
-// Modifies the basic information about a database account.
+// Modifies the basic information of a database account.
 //
 // @param request - ModifyDatabaseAccountRequest
 //
@@ -9484,13 +12108,91 @@ func (client *Client) ModifyDatabaseAccount(request *ModifyDatabaseAccountReques
 
 // Summary:
 //
-// Modifies information about a host. The information includes the address, name, and description of the host and the operating system that the host runs.
+// Moves multiple database instances to a specified project.
+//
+// @param request - ModifyDatabasesProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDatabasesProjectResponse
+func (client *Client) ModifyDatabasesProjectWithOptions(request *ModifyDatabasesProjectRequest, runtime *dara.RuntimeOptions) (_result *ModifyDatabasesProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseIds) {
+		query["DatabaseIds"] = request.DatabaseIds
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TargetProjectId) {
+		query["TargetProjectId"] = request.TargetProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDatabasesProject"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDatabasesProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Moves multiple database instances to a specified project.
+//
+// @param request - ModifyDatabasesProjectRequest
+//
+// @return ModifyDatabasesProjectResponse
+func (client *Client) ModifyDatabasesProject(request *ModifyDatabasesProjectRequest) (_result *ModifyDatabasesProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyDatabasesProjectResponse{}
+	_body, _err := client.ModifyDatabasesProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the address, name, operating system type, and description of a host.
 //
 // Description:
 //
-// You can call the ModifyHost operation to modify the basic information about a host in a data center, an Elastic Compute Service (ECS) instance, or a host in an ApsaraDB MyBase dedicated cluster.
+// This operation updates the basic information of on-premises hosts, ECS hosts, and hosts in dedicated ApsaraDB RDS clusters.
 //
-// > The basic information about ECS instances and hosts in ApsaraDB MyBase dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information about an ECS instance or a host in an ApsaraDB MyBase dedicated cluster, the modification result may be overwritten by the synchronized information.
+// > If you update the basic information of an ECS host or a host in a dedicated ApsaraDB RDS cluster, the changes may be overwritten. This is because Bastionhost periodically synchronizes the basic information of ECS hosts and hosts in dedicated ApsaraDB RDS clusters.
 //
 // @param request - ModifyHostRequest
 //
@@ -9541,6 +12243,10 @@ func (client *Client) ModifyHostWithOptions(request *ModifyHostRequest, runtime 
 		query["PrefKex"] = request.PrefKex
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -9570,13 +12276,13 @@ func (client *Client) ModifyHostWithOptions(request *ModifyHostRequest, runtime 
 
 // Summary:
 //
-// Modifies information about a host. The information includes the address, name, and description of the host and the operating system that the host runs.
+// Updates the address, name, operating system type, and description of a host.
 //
 // Description:
 //
-// You can call the ModifyHost operation to modify the basic information about a host in a data center, an Elastic Compute Service (ECS) instance, or a host in an ApsaraDB MyBase dedicated cluster.
+// This operation updates the basic information of on-premises hosts, ECS hosts, and hosts in dedicated ApsaraDB RDS clusters.
 //
-// > The basic information about ECS instances and hosts in ApsaraDB MyBase dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information about an ECS instance or a host in an ApsaraDB MyBase dedicated cluster, the modification result may be overwritten by the synchronized information.
+// > If you update the basic information of an ECS host or a host in a dedicated ApsaraDB RDS cluster, the changes may be overwritten. This is because Bastionhost periodically synchronizes the basic information of ECS hosts and hosts in dedicated ApsaraDB RDS clusters.
 //
 // @param request - ModifyHostRequest
 //
@@ -9594,7 +12300,7 @@ func (client *Client) ModifyHost(request *ModifyHostRequest) (_result *ModifyHos
 
 // Summary:
 //
-// Modifies a host account on a host managed by a Bastionhost instance. You can update the account name, password, or SSH private key used for host logon.
+// Modifies host account information, including the name, password, and private key of a host account.
 //
 // @param request - ModifyHostAccountRequest
 //
@@ -9641,6 +12347,10 @@ func (client *Client) ModifyHostAccountWithOptions(request *ModifyHostAccountReq
 		query["PrivilegeType"] = request.PrivilegeType
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -9674,7 +12384,7 @@ func (client *Client) ModifyHostAccountWithOptions(request *ModifyHostAccountReq
 
 // Summary:
 //
-// Modifies a host account on a host managed by a Bastionhost instance. You can update the account name, password, or SSH private key used for host logon.
+// Modifies host account information, including the name, password, and private key of a host account.
 //
 // @param request - ModifyHostAccountRequest
 //
@@ -9692,7 +12402,7 @@ func (client *Client) ModifyHostAccount(request *ModifyHostAccountRequest) (_res
 
 // Summary:
 //
-// Modifies the name or description of the specified host group.
+// Modifies the name or description of an asset group.
 //
 // @param request - ModifyHostGroupRequest
 //
@@ -9721,6 +12431,10 @@ func (client *Client) ModifyHostGroupWithOptions(request *ModifyHostGroupRequest
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -9752,7 +12466,7 @@ func (client *Client) ModifyHostGroupWithOptions(request *ModifyHostGroupRequest
 
 // Summary:
 //
-// Modifies the name or description of the specified host group.
+// Modifies the name or description of an asset group.
 //
 // @param request - ModifyHostGroupRequest
 //
@@ -9770,7 +12484,7 @@ func (client *Client) ModifyHostGroup(request *ModifyHostGroupRequest) (_result 
 
 // Summary:
 //
-// Modifies a shared key.
+// Updates a host shared key.
 //
 // @param request - ModifyHostShareKeyRequest
 //
@@ -9805,6 +12519,10 @@ func (client *Client) ModifyHostShareKeyWithOptions(request *ModifyHostShareKeyR
 		query["PrivateKey"] = request.PrivateKey
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -9834,7 +12552,7 @@ func (client *Client) ModifyHostShareKeyWithOptions(request *ModifyHostShareKeyR
 
 // Summary:
 //
-// Modifies a shared key.
+// Updates a host shared key.
 //
 // @param request - ModifyHostShareKeyRequest
 //
@@ -9852,7 +12570,7 @@ func (client *Client) ModifyHostShareKey(request *ModifyHostShareKeyRequest) (_r
 
 // Summary:
 //
-// Changes the endpoint type of one or more hosts for O\\\\\\\\\\\\\\\\\\\\\\\\&M. Public and private IP addresses are supported.
+// Modifies the endpoint type used for host O&M. Bastionhost supports O&M over the Internet and private networks.
 //
 // @param request - ModifyHostsActiveAddressTypeRequest
 //
@@ -9877,6 +12595,10 @@ func (client *Client) ModifyHostsActiveAddressTypeWithOptions(request *ModifyHos
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -9908,7 +12630,7 @@ func (client *Client) ModifyHostsActiveAddressTypeWithOptions(request *ModifyHos
 
 // Summary:
 //
-// Changes the endpoint type of one or more hosts for O\\\\\\\\\\\\\\\\\\\\\\\\&M. Public and private IP addresses are supported.
+// Modifies the endpoint type used for host O&M. Bastionhost supports O&M over the Internet and private networks.
 //
 // @param request - ModifyHostsActiveAddressTypeRequest
 //
@@ -9926,19 +12648,19 @@ func (client *Client) ModifyHostsActiveAddressType(request *ModifyHostsActiveAdd
 
 // Summary:
 //
-// Changes the port for the O\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&M protocol on one or more hosts.
+// Modifies the ports used by Bastionhost for the RDP and SSH protocols on hosts. By default, Bastionhost uses port 3389 for RDP and port 22 for SSH. If you have configured custom ports on your hosts, you can call this operation to update the port settings.
 //
 // Description:
 //
-// ## Usage notes
+// ### Usage notes
 //
-// Changes the port for the O\\&M protocol on one or more hosts. If the standard port for your O\\&M protocol is vulnerable to attacks, specify a custom port instead. For example, the standard SSH port is port 22.
+// This operation modifies the ports of O&M protocols for multiple hosts. If you consider the standard ports of O&M protocols insecure and vulnerable to attacks, such as port 22 for SSH, you can call this operation to specify custom ports.
 //
-// > Ports 0 to 1024 are reserved for Bastionhost. Do not change the port for the O\\&M protocol to a reserved port.
+// > Ports 0 to 1024 are reserved for Bastionhost. Do not specify a reserved port as a custom port.
 //
-// ## QPS limit
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second. Requests that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyHostsPortRequest
 //
@@ -9963,6 +12685,10 @@ func (client *Client) ModifyHostsPortWithOptions(request *ModifyHostsPortRequest
 
 	if !dara.IsNil(request.Port) {
 		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.ProtocolName) {
@@ -9998,19 +12724,19 @@ func (client *Client) ModifyHostsPortWithOptions(request *ModifyHostsPortRequest
 
 // Summary:
 //
-// Changes the port for the O\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&M protocol on one or more hosts.
+// Modifies the ports used by Bastionhost for the RDP and SSH protocols on hosts. By default, Bastionhost uses port 3389 for RDP and port 22 for SSH. If you have configured custom ports on your hosts, you can call this operation to update the port settings.
 //
 // Description:
 //
-// ## Usage notes
+// ### Usage notes
 //
-// Changes the port for the O\\&M protocol on one or more hosts. If the standard port for your O\\&M protocol is vulnerable to attacks, specify a custom port instead. For example, the standard SSH port is port 22.
+// This operation modifies the ports of O&M protocols for multiple hosts. If you consider the standard ports of O&M protocols insecure and vulnerable to attacks, such as port 22 for SSH, you can call this operation to specify custom ports.
 //
-// > Ports 0 to 1024 are reserved for Bastionhost. Do not change the port for the O\\&M protocol to a reserved port.
+// > Ports 0 to 1024 are reserved for Bastionhost. Do not specify a reserved port as a custom port.
 //
-// ## QPS limit
+// ### QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second. Requests that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyHostsPortRequest
 //
@@ -10028,7 +12754,85 @@ func (client *Client) ModifyHostsPort(request *ModifyHostsPortRequest) (_result 
 
 // Summary:
 //
-// Updates the settings of the Active Directory (AD) authentication server of a bastion host.
+// Moves hosts to a different project in a batch.
+//
+// @param request - ModifyHostsProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHostsProjectResponse
+func (client *Client) ModifyHostsProjectWithOptions(request *ModifyHostsProjectRequest, runtime *dara.RuntimeOptions) (_result *ModifyHostsProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HostIds) {
+		query["HostIds"] = request.HostIds
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TargetProjectId) {
+		query["TargetProjectId"] = request.TargetProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyHostsProject"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyHostsProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Moves hosts to a different project in a batch.
+//
+// @param request - ModifyHostsProjectRequest
+//
+// @return ModifyHostsProjectResponse
+func (client *Client) ModifyHostsProject(request *ModifyHostsProjectRequest) (_result *ModifyHostsProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyHostsProjectResponse{}
+	_body, _err := client.ModifyHostsProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the configuration of the Active Directory (AD) authentication server for a Bastionhost instance.
 //
 // @param request - ModifyInstanceADAuthServerRequest
 //
@@ -10067,8 +12871,28 @@ func (client *Client) ModifyInstanceADAuthServerWithOptions(request *ModifyInsta
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.IsDefault) {
+		query["IsDefault"] = request.IsDefault
+	}
+
 	if !dara.IsNil(request.IsSSL) {
 		query["IsSSL"] = request.IsSSL
+	}
+
+	if !dara.IsNil(request.IsSyncEmailAttr) {
+		query["IsSyncEmailAttr"] = request.IsSyncEmailAttr
+	}
+
+	if !dara.IsNil(request.IsSyncMobileAttr) {
+		query["IsSyncMobileAttr"] = request.IsSyncMobileAttr
+	}
+
+	if !dara.IsNil(request.IsSyncNameAttr) {
+		query["IsSyncNameAttr"] = request.IsSyncNameAttr
+	}
+
+	if !dara.IsNil(request.IsSyncOuAsUserGroup) {
+		query["IsSyncOuAsUserGroup"] = request.IsSyncOuAsUserGroup
 	}
 
 	if !dara.IsNil(request.MobileMapping) {
@@ -10095,8 +12919,20 @@ func (client *Client) ModifyInstanceADAuthServerWithOptions(request *ModifyInsta
 		query["Server"] = request.Server
 	}
 
+	if !dara.IsNil(request.ServerName) {
+		query["ServerName"] = request.ServerName
+	}
+
 	if !dara.IsNil(request.StandbyServer) {
 		query["StandbyServer"] = request.StandbyServer
+	}
+
+	if !dara.IsNil(request.SyncInterval) {
+		query["SyncInterval"] = request.SyncInterval
+	}
+
+	if !dara.IsNil(request.UserSourceId) {
+		query["UserSourceId"] = request.UserSourceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -10124,7 +12960,7 @@ func (client *Client) ModifyInstanceADAuthServerWithOptions(request *ModifyInsta
 
 // Summary:
 //
-// Updates the settings of the Active Directory (AD) authentication server of a bastion host.
+// Modifies the configuration of the Active Directory (AD) authentication server for a Bastionhost instance.
 //
 // @param request - ModifyInstanceADAuthServerRequest
 //
@@ -10143,6 +12979,10 @@ func (client *Client) ModifyInstanceADAuthServer(request *ModifyInstanceADAuthSe
 // Summary:
 //
 // Modifies the information of a specified bastion host instance.
+//
+// Description:
+//
+// You can call this operation to purchase an Encryption Service instance. This is a prepaid product, and the operation deducts the fee synchronously.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -10196,6 +13036,10 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 //
 // Modifies the information of a specified bastion host instance.
 //
+// Description:
+//
+// You can call this operation to purchase an Encryption Service instance. This is a prepaid product, and the operation deducts the fee synchronously.
+//
 // @param request - ModifyInstanceAttributeRequest
 //
 // @return ModifyInstanceAttributeResponse
@@ -10212,7 +13056,7 @@ func (client *Client) ModifyInstanceAttribute(request *ModifyInstanceAttributeRe
 
 // Summary:
 //
-// Updates the settings of the Lightweight Directory Access Protocol (LDAP) authentication server of a bastion host.
+// Modifies the configuration of the LDAP authentication server for a Bastionhost instance.
 //
 // @param request - ModifyInstanceLDAPAuthServerRequest
 //
@@ -10308,7 +13152,7 @@ func (client *Client) ModifyInstanceLDAPAuthServerWithOptions(request *ModifyIns
 
 // Summary:
 //
-// Updates the settings of the Lightweight Directory Access Protocol (LDAP) authentication server of a bastion host.
+// Modifies the configuration of the LDAP authentication server for a Bastionhost instance.
 //
 // @param request - ModifyInstanceLDAPAuthServerRequest
 //
@@ -10404,7 +13248,7 @@ func (client *Client) ModifyInstanceTwoFactor(request *ModifyInstanceTwoFactorRe
 
 // Summary:
 //
-// Modifies the basic information about a network domain.
+// Modifies the basic information of a network domain.
 //
 // @param request - ModifyNetworkDomainRequest
 //
@@ -10437,6 +13281,10 @@ func (client *Client) ModifyNetworkDomainWithOptions(request *ModifyNetworkDomai
 
 	if !dara.IsNil(request.NetworkDomainType) {
 		query["NetworkDomainType"] = request.NetworkDomainType
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.Proxies) {
@@ -10472,7 +13320,7 @@ func (client *Client) ModifyNetworkDomainWithOptions(request *ModifyNetworkDomai
 
 // Summary:
 //
-// Modifies the basic information about a network domain.
+// Modifies the basic information of a network domain.
 //
 // @param request - ModifyNetworkDomainRequest
 //
@@ -10490,7 +13338,7 @@ func (client *Client) ModifyNetworkDomain(request *ModifyNetworkDomainRequest) (
 
 // Summary:
 //
-// Modifies the basic information about a control policy.
+// Modifies the basic information of a control policy.
 //
 // @param request - ModifyPolicyRequest
 //
@@ -10525,6 +13373,10 @@ func (client *Client) ModifyPolicyWithOptions(request *ModifyPolicyRequest, runt
 		query["Priority"] = request.Priority
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -10554,7 +13406,7 @@ func (client *Client) ModifyPolicyWithOptions(request *ModifyPolicyRequest, runt
 
 // Summary:
 //
-// Modifies the basic information about a control policy.
+// Modifies the basic information of a control policy.
 //
 // @param request - ModifyPolicyRequest
 //
@@ -10572,7 +13424,335 @@ func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *Modif
 
 // Summary:
 //
-// Modifies the basic information of an authorization rule.
+// Modifies a project.
+//
+// @param request - ModifyProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyProjectResponse
+func (client *Client) ModifyProjectWithOptions(request *ModifyProjectRequest, runtime *dara.RuntimeOptions) (_result *ModifyProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MemberIds) {
+		query["MemberIds"] = request.MemberIds
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyProject"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a project.
+//
+// @param request - ModifyProjectRequest
+//
+// @return ModifyProjectResponse
+func (client *Client) ModifyProject(request *ModifyProjectRequest) (_result *ModifyProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyProjectResponse{}
+	_body, _err := client.ModifyProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies project authorization.
+//
+// @param request - ModifyProjectAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyProjectAuthorizationResponse
+func (client *Client) ModifyProjectAuthorizationWithOptions(request *ModifyProjectAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *ModifyProjectAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationId) {
+		query["AuthorizationId"] = request.AuthorizationId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyProjectAuthorization"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyProjectAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies project authorization.
+//
+// @param request - ModifyProjectAuthorizationRequest
+//
+// @return ModifyProjectAuthorizationResponse
+func (client *Client) ModifyProjectAuthorization(request *ModifyProjectAuthorizationRequest) (_result *ModifyProjectAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyProjectAuthorizationResponse{}
+	_body, _err := client.ModifyProjectAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the notification recipient of a project.
+//
+// @param request - ModifyProjectNotifyReceiverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyProjectNotifyReceiverResponse
+func (client *Client) ModifyProjectNotifyReceiverWithOptions(request *ModifyProjectNotifyReceiverRequest, runtime *dara.RuntimeOptions) (_result *ModifyProjectNotifyReceiverResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phone) {
+		query["Phone"] = request.Phone
+	}
+
+	if !dara.IsNil(request.ReceiverId) {
+		query["ReceiverId"] = request.ReceiverId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyProjectNotifyReceiver"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyProjectNotifyReceiverResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the notification recipient of a project.
+//
+// @param request - ModifyProjectNotifyReceiverRequest
+//
+// @return ModifyProjectNotifyReceiverResponse
+func (client *Client) ModifyProjectNotifyReceiver(request *ModifyProjectNotifyReceiverRequest) (_result *ModifyProjectNotifyReceiverResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyProjectNotifyReceiverResponse{}
+	_body, _err := client.ModifyProjectNotifyReceiverWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies an audit policy.
+//
+// @param request - ModifyReviewRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyReviewRuleResponse
+func (client *Client) ModifyReviewRuleWithOptions(request *ModifyReviewRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyReviewRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReviewRuleId) {
+		query["ReviewRuleId"] = request.ReviewRuleId
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyReviewRule"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyReviewRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies an audit policy.
+//
+// @param request - ModifyReviewRuleRequest
+//
+// @return ModifyReviewRuleResponse
+func (client *Client) ModifyReviewRule(request *ModifyReviewRuleRequest) (_result *ModifyReviewRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyReviewRuleResponse{}
+	_body, _err := client.ModifyReviewRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the basic information of an authorization rule.
 //
 // @param request - ModifyRuleRequest
 //
@@ -10613,6 +13793,10 @@ func (client *Client) ModifyRuleWithOptions(request *ModifyRuleRequest, runtime 
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -10660,7 +13844,7 @@ func (client *Client) ModifyRuleWithOptions(request *ModifyRuleRequest, runtime 
 
 // Summary:
 //
-// Modifies the basic information of an authorization rule.
+// Updates the basic information of an authorization rule.
 //
 // @param request - ModifyRuleRequest
 //
@@ -10800,7 +13984,7 @@ func (client *Client) ModifyUser(request *ModifyUserRequest) (_result *ModifyUse
 
 // Summary:
 //
-// Modifies the information about a user group.
+// Modifies the information of a user group.
 //
 // @param request - ModifyUserGroupRequest
 //
@@ -10821,6 +14005,10 @@ func (client *Client) ModifyUserGroupWithOptions(request *ModifyUserGroupRequest
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -10860,7 +14048,7 @@ func (client *Client) ModifyUserGroupWithOptions(request *ModifyUserGroupRequest
 
 // Summary:
 //
-// Modifies the information about a user group.
+// Modifies the information of a user group.
 //
 // @param request - ModifyUserGroupRequest
 //
@@ -10960,7 +14148,7 @@ func (client *Client) ModifyUserPublicKey(request *ModifyUserPublicKeyRequest) (
 
 // Summary:
 //
-// Adds multiple databases to a network domain at a time.
+// Moves multiple databases to a specified network domain.
 //
 // @param request - MoveDatabasesToNetworkDomainRequest
 //
@@ -10985,6 +14173,10 @@ func (client *Client) MoveDatabasesToNetworkDomainWithOptions(request *MoveDatab
 
 	if !dara.IsNil(request.NetworkDomainId) {
 		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -11016,7 +14208,7 @@ func (client *Client) MoveDatabasesToNetworkDomainWithOptions(request *MoveDatab
 
 // Summary:
 //
-// Adds multiple databases to a network domain at a time.
+// Moves multiple databases to a specified network domain.
 //
 // @param request - MoveDatabasesToNetworkDomainRequest
 //
@@ -11034,7 +14226,7 @@ func (client *Client) MoveDatabasesToNetworkDomain(request *MoveDatabasesToNetwo
 
 // Summary:
 //
-// Adds multiple hosts to a network domain at a time.
+// Moves multiple hosts to a specified network domain.
 //
 // @param request - MoveHostsToNetworkDomainRequest
 //
@@ -11059,6 +14251,10 @@ func (client *Client) MoveHostsToNetworkDomainWithOptions(request *MoveHostsToNe
 
 	if !dara.IsNil(request.NetworkDomainId) {
 		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -11090,7 +14286,7 @@ func (client *Client) MoveHostsToNetworkDomainWithOptions(request *MoveHostsToNe
 
 // Summary:
 //
-// Adds multiple hosts to a network domain at a time.
+// Moves multiple hosts to a specified network domain.
 //
 // @param request - MoveHostsToNetworkDomainRequest
 //
@@ -11182,13 +14378,13 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 
 // Summary:
 //
-// If an O\\\\\\\\\\\\&M engineer attempts to run a command specified in the Command Approval section of the Create Control Policy page, the administrator is notified to review the command in the Bastionhost console. The command can be run only after it is approved by the administrator.
+// Rejects a command execution request. If an O&M engineer executes a command configured in a command approval policy, the administrator receives an approval request in the Bastionhost console. The command can be executed only after the administrator approves it. If the request is rejected, the command cannot be executed.
 //
 // Description:
 //
-// Rejects an O\\&M engineer\\"s command execution request as a Bastionhost administrator.
+// This API operation allows administrators to reject command execution requests from O&M engineers.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable frequency.
 //
 // @param request - RejectApproveCommandRequest
 //
@@ -11209,6 +14405,10 @@ func (client *Client) RejectApproveCommandWithOptions(request *RejectApproveComm
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -11240,13 +14440,13 @@ func (client *Client) RejectApproveCommandWithOptions(request *RejectApproveComm
 
 // Summary:
 //
-// If an O\\\\\\\\\\\\&M engineer attempts to run a command specified in the Command Approval section of the Create Control Policy page, the administrator is notified to review the command in the Bastionhost console. The command can be run only after it is approved by the administrator.
+// Rejects a command execution request. If an O&M engineer executes a command configured in a command approval policy, the administrator receives an approval request in the Bastionhost console. The command can be executed only after the administrator approves it. If the request is rejected, the command cannot be executed.
 //
 // Description:
 //
-// Rejects an O\\&M engineer\\"s command execution request as a Bastionhost administrator.
+// This API operation allows administrators to reject command execution requests from O&M engineers.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable frequency.
 //
 // @param request - RejectApproveCommandRequest
 //
@@ -11285,6 +14485,10 @@ func (client *Client) RejectOperationTaskApprovalWithOptions(request *RejectOper
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -11334,13 +14538,13 @@ func (client *Client) RejectOperationTaskApproval(request *RejectOperationTaskAp
 
 // Summary:
 //
-// If a Bastionhost administrator enables O\\\\\\\\\\\\\\\\\\\\\\\\&M Approval on the Create Control Policy page, O\\\\\\\\\\\\\\\\\\\\\\\\&M engineers can log on to assets to perform O\\\\\\\\\\\\\\\\\\\\\\\\&M operations only after the administrator approves their O\\\\\\\\\\\\\\\\\\\\\\\\&M applications.
+// Rejects an O&M application. If O&M approval is enabled in the control policy configured by the administrator, O&M engineers must apply for O&M and obtain administrator approval before logging on to assets.
 //
 // Description:
 //
-// Rejects an O\\&M engineer\\"s O\\&M application as a Bastionhost administrator.
+// Rejects an O&M application submitted by an O&M engineer.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - RejectOperationTicketRequest
 //
@@ -11365,6 +14569,10 @@ func (client *Client) RejectOperationTicketWithOptions(request *RejectOperationT
 
 	if !dara.IsNil(request.OperationTicketId) {
 		query["OperationTicketId"] = request.OperationTicketId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -11396,13 +14604,13 @@ func (client *Client) RejectOperationTicketWithOptions(request *RejectOperationT
 
 // Summary:
 //
-// If a Bastionhost administrator enables O\\\\\\\\\\\\\\\\\\\\\\\\&M Approval on the Create Control Policy page, O\\\\\\\\\\\\\\\\\\\\\\\\&M engineers can log on to assets to perform O\\\\\\\\\\\\\\\\\\\\\\\\&M operations only after the administrator approves their O\\\\\\\\\\\\\\\\\\\\\\\\&M applications.
+// Rejects an O&M application. If O&M approval is enabled in the control policy configured by the administrator, O&M engineers must apply for O&M and obtain administrator approval before logging on to assets.
 //
 // Description:
 //
-// Rejects an O\\&M engineer\\"s O\\&M application as a Bastionhost administrator.
+// Rejects an O&M application submitted by an O&M engineer.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - RejectOperationTicketRequest
 //
@@ -11494,15 +14702,15 @@ func (client *Client) RemoveDatabasesFromGroup(request *RemoveDatabasesFromGroup
 
 // Summary:
 //
-// Removes multiple hosts from an asset group at a time.
+// Removes multiple hosts from a specified host group.
 //
 // Description:
 //
-// Removes multiple hosts from an asset group. If certain hosts no longer need to be managed through an asset group, you can use this operation to remove them.
+// This operation removes multiple hosts from a host group. If some hosts no longer require unified management through a host group, you can use this operation to remove them.
 //
-// # [](#qps-)QPS limit
+// ### QPS limits
 //
-// You can call this API operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit per user is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - RemoveHostsFromGroupRequest
 //
@@ -11527,6 +14735,10 @@ func (client *Client) RemoveHostsFromGroupWithOptions(request *RemoveHostsFromGr
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -11558,15 +14770,15 @@ func (client *Client) RemoveHostsFromGroupWithOptions(request *RemoveHostsFromGr
 
 // Summary:
 //
-// Removes multiple hosts from an asset group at a time.
+// Removes multiple hosts from a specified host group.
 //
 // Description:
 //
-// Removes multiple hosts from an asset group. If certain hosts no longer need to be managed through an asset group, you can use this operation to remove them.
+// This operation removes multiple hosts from a host group. If some hosts no longer require unified management through a host group, you can use this operation to remove them.
 //
-// # [](#qps-)QPS limit
+// ### QPS limits
 //
-// You can call this API operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit per user is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - RemoveHostsFromGroupRequest
 //
@@ -11662,15 +14874,17 @@ func (client *Client) RemoveInstanceRdMember(request *RemoveInstanceRdMemberRequ
 
 // Summary:
 //
-// Removes one or more users from a user group.
+// Removes multiple users from a user group.
 //
 // Description:
 //
-// Removes one or more users from a user group at once. Use this operation when users transfer to new positions, resign, or switch to another user group.
+// ### Usage notes
 //
-// ## QPS limit
+// This operation removes multiple users from a user group. You can call this operation to remove users from a user group in batches when users resign or transfer to other departments and their permissions need to be revoked, or when users switch to another user group.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// ### QPS limits
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - RemoveUsersFromGroupRequest
 //
@@ -11687,6 +14901,10 @@ func (client *Client) RemoveUsersFromGroupWithOptions(request *RemoveUsersFromGr
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -11726,15 +14944,17 @@ func (client *Client) RemoveUsersFromGroupWithOptions(request *RemoveUsersFromGr
 
 // Summary:
 //
-// Removes one or more users from a user group.
+// Removes multiple users from a user group.
 //
 // Description:
 //
-// Removes one or more users from a user group at once. Use this operation when users transfer to new positions, resign, or switch to another user group.
+// ### Usage notes
 //
-// ## QPS limit
+// This operation removes multiple users from a user group. You can call this operation to remove users from a user group in batches when users resign or transfer to other departments and their permissions need to be revoked, or when users switch to another user group.
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// ### QPS limits
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - RemoveUsersFromGroupRequest
 //
@@ -11752,7 +14972,7 @@ func (client *Client) RemoveUsersFromGroup(request *RemoveUsersFromGroupRequest)
 
 // Summary:
 //
-// Renews an O\\\\\\\\\\\\&M token for one hour.
+// Renews an O&M token. Each call extends the validity of the O&M token by 1 hour.
 //
 // @param request - RenewAssetOperationTokenRequest
 //
@@ -11773,6 +14993,10 @@ func (client *Client) RenewAssetOperationTokenWithOptions(request *RenewAssetOpe
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
 	}
 
 	if !dara.IsNil(request.TokenId) {
@@ -11804,7 +15028,7 @@ func (client *Client) RenewAssetOperationTokenWithOptions(request *RenewAssetOpe
 
 // Summary:
 //
-// Renews an O\\\\\\\\\\\\&M token for one hour.
+// Renews an O&M token. Each call extends the validity of the O&M token by 1 hour.
 //
 // @param request - RenewAssetOperationTokenRequest
 //
@@ -11822,7 +15046,7 @@ func (client *Client) RenewAssetOperationToken(request *RenewAssetOperationToken
 
 // Summary:
 //
-// Clears the credential (password or SSH private key) for a specified host account.
+// Purges the logon credentials (password or SSH private key) of a specified host account.
 //
 // @param request - ResetHostAccountCredentialRequest
 //
@@ -11847,6 +15071,10 @@ func (client *Client) ResetHostAccountCredentialWithOptions(request *ResetHostAc
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -11878,7 +15106,7 @@ func (client *Client) ResetHostAccountCredentialWithOptions(request *ResetHostAc
 
 // Summary:
 //
-// Clears the credential (password or SSH private key) for a specified host account.
+// Purges the logon credentials (password or SSH private key) of a specified host account.
 //
 // @param request - ResetHostAccountCredentialRequest
 //
@@ -11896,7 +15124,7 @@ func (client *Client) ResetHostAccountCredential(request *ResetHostAccountCreden
 
 // Summary:
 //
-// Configures the logon period limits in a control policy.
+// Configures the logon time limit settings for a specified control policy.
 //
 // @param tmpReq - SetPolicyAccessTimeRangeConfigRequest
 //
@@ -11929,6 +15157,10 @@ func (client *Client) SetPolicyAccessTimeRangeConfigWithOptions(tmpReq *SetPolic
 		query["PolicyId"] = request.PolicyId
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -11958,7 +15190,7 @@ func (client *Client) SetPolicyAccessTimeRangeConfigWithOptions(tmpReq *SetPolic
 
 // Summary:
 //
-// Configures the logon period limits in a control policy.
+// Configures the logon time limit settings for a specified control policy.
 //
 // @param request - SetPolicyAccessTimeRangeConfigRequest
 //
@@ -11976,7 +15208,7 @@ func (client *Client) SetPolicyAccessTimeRangeConfig(request *SetPolicyAccessTim
 
 // Summary:
 //
-// Configures the O\\\\&M approval setting in a control policy.
+// Configures the O&M approval configuration for a specified control policy.
 //
 // @param tmpReq - SetPolicyApprovalConfigRequest
 //
@@ -12009,6 +15241,10 @@ func (client *Client) SetPolicyApprovalConfigWithOptions(tmpReq *SetPolicyApprov
 		query["PolicyId"] = request.PolicyId
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -12038,7 +15274,7 @@ func (client *Client) SetPolicyApprovalConfigWithOptions(tmpReq *SetPolicyApprov
 
 // Summary:
 //
-// Configures the O\\\\&M approval setting in a control policy.
+// Configures the O&M approval configuration for a specified control policy.
 //
 // @param request - SetPolicyApprovalConfigRequest
 //
@@ -12056,7 +15292,7 @@ func (client *Client) SetPolicyApprovalConfig(request *SetPolicyApprovalConfigRe
 
 // Summary:
 //
-// Specifies the assets to which a control policy applies.
+// Sets the effective asset scope for a specified control policy.
 //
 // @param request - SetPolicyAssetScopeRequest
 //
@@ -12089,6 +15325,10 @@ func (client *Client) SetPolicyAssetScopeWithOptions(request *SetPolicyAssetScop
 
 	if !dara.IsNil(request.PolicyId) {
 		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -12124,7 +15364,7 @@ func (client *Client) SetPolicyAssetScopeWithOptions(request *SetPolicyAssetScop
 
 // Summary:
 //
-// Specifies the assets to which a control policy applies.
+// Sets the effective asset scope for a specified control policy.
 //
 // @param request - SetPolicyAssetScopeRequest
 //
@@ -12142,7 +15382,7 @@ func (client *Client) SetPolicyAssetScope(request *SetPolicyAssetScopeRequest) (
 
 // Summary:
 //
-// Specifies the commands that can or cannot be run by the users or on the assets associated with the policy and the commands that must be reviewed.
+// Configures the commands that are allowed or denied, and the commands that require approval for the users and hosts to which a specified policy applies.
 //
 // @param tmpReq - SetPolicyCommandConfigRequest
 //
@@ -12175,6 +15415,10 @@ func (client *Client) SetPolicyCommandConfigWithOptions(tmpReq *SetPolicyCommand
 		query["PolicyId"] = request.PolicyId
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -12204,7 +15448,7 @@ func (client *Client) SetPolicyCommandConfigWithOptions(tmpReq *SetPolicyCommand
 
 // Summary:
 //
-// Specifies the commands that can or cannot be run by the users or on the assets associated with the policy and the commands that must be reviewed.
+// Configures the commands that are allowed or denied, and the commands that require approval for the users and hosts to which a specified policy applies.
 //
 // @param request - SetPolicyCommandConfigRequest
 //
@@ -12222,7 +15466,7 @@ func (client *Client) SetPolicyCommandConfig(request *SetPolicyCommandConfigRequ
 
 // Summary:
 //
-// Specifies whether a source IP address can access the assets to which a control policy applies.
+// Configures whether source IP addresses can access hosts to which the current policy applies.
 //
 // @param tmpReq - SetPolicyIPAclConfigRequest
 //
@@ -12255,6 +15499,10 @@ func (client *Client) SetPolicyIPAclConfigWithOptions(tmpReq *SetPolicyIPAclConf
 		query["PolicyId"] = request.PolicyId
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -12284,7 +15532,7 @@ func (client *Client) SetPolicyIPAclConfigWithOptions(tmpReq *SetPolicyIPAclConf
 
 // Summary:
 //
-// Specifies whether a source IP address can access the assets to which a control policy applies.
+// Configures whether source IP addresses can access hosts to which the current policy applies.
 //
 // @param request - SetPolicyIPAclConfigRequest
 //
@@ -12302,7 +15550,7 @@ func (client *Client) SetPolicyIPAclConfig(request *SetPolicyIPAclConfigRequest)
 
 // Summary:
 //
-// Sets the Remote Desktop Protocol (RDP), Secure Shell (SSH), and SSH File Transfer Protocol (SFTP) options for a control policy.
+// Configures the RDP, SSH, and SFTP options of a control policy.
 //
 // @param tmpReq - SetPolicyProtocolConfigRequest
 //
@@ -12329,6 +15577,10 @@ func (client *Client) SetPolicyProtocolConfigWithOptions(tmpReq *SetPolicyProtoc
 
 	if !dara.IsNil(request.PolicyId) {
 		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.ProtocolConfigShrink) {
@@ -12364,7 +15616,7 @@ func (client *Client) SetPolicyProtocolConfigWithOptions(tmpReq *SetPolicyProtoc
 
 // Summary:
 //
-// Sets the Remote Desktop Protocol (RDP), Secure Shell (SSH), and SSH File Transfer Protocol (SFTP) options for a control policy.
+// Configures the RDP, SSH, and SFTP options of a control policy.
 //
 // @param request - SetPolicyProtocolConfigRequest
 //
@@ -12382,7 +15634,7 @@ func (client *Client) SetPolicyProtocolConfig(request *SetPolicyProtocolConfigRe
 
 // Summary:
 //
-// Specifies the users to whom a control policy applies.
+// Sets the user scope for a specified control policy.
 //
 // @param request - SetPolicyUserScopeRequest
 //
@@ -12403,6 +15655,10 @@ func (client *Client) SetPolicyUserScopeWithOptions(request *SetPolicyUserScopeR
 
 	if !dara.IsNil(request.PolicyId) {
 		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -12446,7 +15702,7 @@ func (client *Client) SetPolicyUserScopeWithOptions(request *SetPolicyUserScopeR
 
 // Summary:
 //
-// Specifies the users to whom a control policy applies.
+// Sets the user scope for a specified control policy.
 //
 // @param request - SetPolicyUserScopeRequest
 //
@@ -12550,7 +15806,7 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 
 // Summary:
 //
-// Creates and attaches tags to one or more Bastionhost instances.
+// Creates and binds tags for specified Bastionhost instances.
 //
 // @param request - TagResourcesRequest
 //
@@ -12606,7 +15862,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Creates and attaches tags to one or more Bastionhost instances.
+// Creates and binds tags for specified Bastionhost instances.
 //
 // @param request - TagResourcesRequest
 //
@@ -12710,7 +15966,7 @@ func (client *Client) UnlockUsers(request *UnlockUsersRequest) (_result *UnlockU
 
 // Summary:
 //
-// Removes tags from one or more Bastionhost instances. You can remove specific tag key-value pairs or all tags at once.
+// Unbinds and deletes tags from a specified Bastionhost instance in batches.
 //
 // @param request - UntagResourcesRequest
 //
@@ -12770,7 +16026,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from one or more Bastionhost instances. You can remove specific tag key-value pairs or all tags at once.
+// Unbinds and deletes tags from a specified Bastionhost instance in batches.
 //
 // @param request - UntagResourcesRequest
 //

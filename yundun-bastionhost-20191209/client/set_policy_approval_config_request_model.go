@@ -15,18 +15,20 @@ type iSetPolicyApprovalConfigRequest interface {
 	GetInstanceId() *string
 	SetPolicyId(v string) *SetPolicyApprovalConfigRequest
 	GetPolicyId() *string
+	SetProjectId(v int64) *SetPolicyApprovalConfigRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *SetPolicyApprovalConfigRequest
 	GetRegionId() *string
 }
 
 type SetPolicyApprovalConfigRequest struct {
-	// The O\\&M approval setting in the control policy.
+	// The O&M approval configuration in the control policy.
 	//
 	// This parameter is required.
 	ApprovalConfig *SetPolicyApprovalConfigRequestApprovalConfig `json:"ApprovalConfig,omitempty" xml:"ApprovalConfig,omitempty" type:"Struct"`
-	// The bastion host ID.
+	// The Bastionhost instance ID.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the DescribeInstances operation to obtain the Bastionhost instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +38,7 @@ type SetPolicyApprovalConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the control policy that you want to modify.
 	//
-	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +46,15 @@ type SetPolicyApprovalConfigRequest struct {
 	//
 	// 7
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -74,6 +82,10 @@ func (s *SetPolicyApprovalConfigRequest) GetPolicyId() *string {
 	return s.PolicyId
 }
 
+func (s *SetPolicyApprovalConfigRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *SetPolicyApprovalConfigRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -93,6 +105,11 @@ func (s *SetPolicyApprovalConfigRequest) SetPolicyId(v string) *SetPolicyApprova
 	return s
 }
 
+func (s *SetPolicyApprovalConfigRequest) SetProjectId(v int64) *SetPolicyApprovalConfigRequest {
+	s.ProjectId = &v
+	return s
+}
+
 func (s *SetPolicyApprovalConfigRequest) SetRegionId(v string) *SetPolicyApprovalConfigRequest {
 	s.RegionId = &v
 	return s
@@ -108,11 +125,11 @@ func (s *SetPolicyApprovalConfigRequest) Validate() error {
 }
 
 type SetPolicyApprovalConfigRequestApprovalConfig struct {
-	// Specifies whether to enable O\\&M approval in the control policy. Valid values:
+	// The O&M approval configuration in the control policy. Valid values:
 	//
-	// - **On**: enables O\\&M approval.
+	// - **On**: Enables O&M approval.
 	//
-	// - **Off**: disables O\\&M approval.
+	// - **Off**: Disables O&M approval.
 	//
 	// This parameter is required.
 	//

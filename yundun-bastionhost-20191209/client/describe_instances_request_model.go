@@ -26,57 +26,57 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
-	// The IDs of the bastion host instances.
+	// The ID of the Bastionhost instance.
 	//
 	// example:
 	//
 	// bastionhost-cn-78v1ghxxxxx
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	// The status of the bastion host instance. Valid values:
+	// The status of the Bastionhost instance. Valid values:
 	//
-	// - **PENDING**: The instance is not initialized.
+	// - **PENDING**: Uninitialized
 	//
-	// - **CREATING**: The instance is being created.
+	// - **CREATING**: Creating
 	//
-	// - **RUNNING**: The instance is running.
+	// - **RUNNING**: Running
 	//
-	// - **EXPIRED**: The instance is expired.
+	// - **EXPIRED**: Expired
 	//
-	// - **CREATE_FAILED**: The instance creation failed.
+	// - **CREATE_FAILED**: Creation failed
 	//
-	// - **UPGRADING**: The instance is being upgraded.
+	// - **UPGRADING**: Upgrading
 	//
-	// - **UPGRADE_FAILED**: The instance upgrade failed.
+	// - **UPGRADE_FAILED**: Upgrade failed
 	//
 	// example:
 	//
 	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The page number to return. Default value: **1**.
+	// Specifies the page number of the returned results. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of bastion host instances to return on each page. Default value: **10**.
+	// Settings for a paged query. Specifies the number of Bastionhost instances to display on each page during paging. Default value: **10**, which indicates that 10 Bastionhost instances are displayed on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the bastion host instances reside.
+	// The region ID of the instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the bastion host instance belongs.
+	// The ID of the resource group to which the Bastionhost instance belongs.
 	//
 	// example:
 	//
 	// rg-acfm26ougi****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags attached to the bastion host instances.
+	// The tags of the Bastionhost instance.
 	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -165,13 +165,13 @@ func (s *DescribeInstancesRequest) Validate() error {
 }
 
 type DescribeInstancesRequestTag struct {
-	// The key of the tag.
+	// The tag key of the instance.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value of the instance.
 	//
 	// example:
 	//

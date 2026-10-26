@@ -16,7 +16,7 @@ type iGenerateAssetOperationTokenResponseBody interface {
 }
 
 type GenerateAssetOperationTokenResponseBody struct {
-	// The asset operation token.
+	// The response data.
 	AssetOperationToken *GenerateAssetOperationTokenResponseBodyAssetOperationToken `json:"AssetOperationToken,omitempty" xml:"AssetOperationToken,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,19 +62,19 @@ func (s *GenerateAssetOperationTokenResponseBody) Validate() error {
 }
 
 type GenerateAssetOperationTokenResponseBodyAssetOperationToken struct {
-	// The number of remaining uses for the token.
+	// The remaining number of times the O&M token can be used.
 	//
 	// example:
 	//
 	// 1
 	CountLeft *int64 `json:"CountLeft,omitempty" xml:"CountLeft,omitempty"`
-	// The expiration time of the token. This value is a UNIX timestamp.
+	// The expiration time of the O&M token. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1709110797
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the token has a use limit.
+	// Indicates whether the number of uses is limited.
 	//
 	// example:
 	//
@@ -92,19 +92,19 @@ type GenerateAssetOperationTokenResponseBodyAssetOperationToken struct {
 	//
 	// 1
 	RenewCount *int64 `json:"RenewCount,omitempty" xml:"RenewCount,omitempty"`
-	// The single sign-on (SSO) URL.
+	// The single sign-on URL.
 	//
 	// example:
 	//
 	// sso://eyJOT0RFX0NPTU1PTiI6eyJNb2R******
 	SsoUrl *string `json:"SsoUrl,omitempty" xml:"SsoUrl,omitempty"`
-	// The O\\&M token that is requested.
+	// The requested O&M token.
 	//
 	// example:
 	//
 	// NmYyMmEzNmMwYzljNGY******
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The ID of the O\\&M token.
+	// The ID of the O&M token.
 	//
 	// example:
 	//

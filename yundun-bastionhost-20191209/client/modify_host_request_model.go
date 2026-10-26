@@ -27,6 +27,8 @@ type iModifyHostRequest interface {
 	GetOSType() *string
 	SetPrefKex(v string) *ModifyHostRequest
 	GetPrefKex() *string
+	SetProjectId(v int64) *ModifyHostRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ModifyHostRequest
 	GetRegionId() *string
 }
@@ -38,9 +40,9 @@ type ModifyHostRequest struct {
 	//
 	// Host for test.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the host.
+	// The ID of the host to be updated.
 	//
-	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host ID.
 	//
 	// This parameter is required.
 	//
@@ -48,27 +50,27 @@ type ModifyHostRequest struct {
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The new name of the host. The name can be up to 128 characters.
+	// The new name of the host. The name can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// TestHost
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The new internal endpoint of the host. You can set this parameter to a domain name or an IP address.
+	// The new private network address of the host. You can specify a domain name or an IP address.
 	//
 	// example:
 	//
 	// 193.168.XX.XX
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The new public endpoint of the host. You can set this parameter to a domain name or an IP address.
+	// The new public address of the host. You can specify a domain name or an IP address.
 	//
 	// example:
 	//
 	// 200.1.XX.XX
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// The ID of the bastion host on which you want to modify the information about the host.
+	// The ID of the Bastionhost instance to which the host belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +78,7 @@ type ModifyHostRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the new network domain to which the host belongs.
+	// The ID of the network domain to which the host belongs.
 	//
 	// > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
 	//
@@ -84,7 +86,7 @@ type ModifyHostRequest struct {
 	//
 	// 1
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The new operating system of the host. Valid values:
+	// The new operating system type of the host. Valid values:
 	//
 	// - **Linux**
 	//
@@ -94,21 +96,27 @@ type ModifyHostRequest struct {
 	//
 	// Linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The preferred key exchange algorithm of the host. If you set OSType to Linux, you can modify this parameter. Valid values:
+	// The preferred key exchange algorithm for the host. You can modify this parameter only when the OSType parameter is set to Linux. Valid values:
 	//
-	// - **default**
+	// - **default**: Default mode.
 	//
-	// - **diffie-hellman-group1-sha1**
+	// - **diffie-hellman-group1-sha1**: Compatibility mode for the diffie-hellman-group1-sha1 algorithm.
 	//
-	// - **diffie-hellman-group14-sha1**
+	// - **diffie-hellman-group14-sha1**: Compatibility mode for the diffie-hellman-group14-sha1 algorithm.
 	//
-	// - **diffie-hellman-group-exchange-sha1**
+	// - **diffie-hellman-group-exchange-sha1**: Compatibility mode for the diffie-hellman-group-exchange-sha1 algorithm.
 	//
 	// example:
 	//
 	// default
 	PrefKex *string `json:"PrefKex,omitempty" xml:"PrefKex,omitempty"`
-	// The region ID of the bastion host on which you want to modify the information about the host.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the host belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -162,6 +170,10 @@ func (s *ModifyHostRequest) GetPrefKex() *string {
 	return s.PrefKex
 }
 
+func (s *ModifyHostRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ModifyHostRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -208,6 +220,11 @@ func (s *ModifyHostRequest) SetOSType(v string) *ModifyHostRequest {
 
 func (s *ModifyHostRequest) SetPrefKex(v string) *ModifyHostRequest {
 	s.PrefKex = &v
+	return s
+}
+
+func (s *ModifyHostRequest) SetProjectId(v int64) *ModifyHostRequest {
+	s.ProjectId = &v
 	return s
 }
 

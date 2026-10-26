@@ -19,14 +19,16 @@ type iListNetworkDomainsRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListNetworkDomainsRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListNetworkDomainsRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListNetworkDomainsRequest
 	GetRegionId() *string
 }
 
 type ListNetworkDomainsRequest struct {
-	// The ID of the Bastionhost instance.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,29 +46,37 @@ type ListNetworkDomainsRequest struct {
 	//
 	// - **Direct**: direct connection
 	//
-	// - **Proxy**: proxy connection
+	// - **Proxy**: proxy
 	//
 	// example:
 	//
 	// Proxy
 	NetworkDomainType *string `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the current page for paging in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.<br> The maximum value is 100. The default value is 20. If you do not specify this parameter, 20 entries are returned on each page.<br>
+	// The maximum number of entries to return on each page for paging in a paged query.
 	//
-	// > Do not leave the PageSize value empty.
+	// Maximum value: 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
+	//
+	// > Do not leave this parameter empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the Bastionhost instance.
 	//
-	// > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -102,6 +112,10 @@ func (s *ListNetworkDomainsRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListNetworkDomainsRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListNetworkDomainsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -128,6 +142,11 @@ func (s *ListNetworkDomainsRequest) SetPageNumber(v string) *ListNetworkDomainsR
 
 func (s *ListNetworkDomainsRequest) SetPageSize(v string) *ListNetworkDomainsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListNetworkDomainsRequest) SetProjectId(v int64) *ListNetworkDomainsRequest {
+	s.ProjectId = &v
 	return s
 }
 

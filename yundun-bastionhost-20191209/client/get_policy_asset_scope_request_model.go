@@ -13,14 +13,16 @@ type iGetPolicyAssetScopeRequest interface {
 	GetInstanceId() *string
 	SetPolicyId(v string) *GetPolicyAssetScopeRequest
 	GetPolicyId() *string
+	SetProjectId(v int64) *GetPolicyAssetScopeRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *GetPolicyAssetScopeRequest
 	GetRegionId() *string
 }
 
 type GetPolicyAssetScopeRequest struct {
-	// The bastion host ID.
+	// The instance ID of the bastion host.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,9 @@ type GetPolicyAssetScopeRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The control policy ID.
+	// The ID of the control policy.
 	//
-	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +40,15 @@ type GetPolicyAssetScopeRequest struct {
 	//
 	// 7
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -64,6 +72,10 @@ func (s *GetPolicyAssetScopeRequest) GetPolicyId() *string {
 	return s.PolicyId
 }
 
+func (s *GetPolicyAssetScopeRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *GetPolicyAssetScopeRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -75,6 +87,11 @@ func (s *GetPolicyAssetScopeRequest) SetInstanceId(v string) *GetPolicyAssetScop
 
 func (s *GetPolicyAssetScopeRequest) SetPolicyId(v string) *GetPolicyAssetScopeRequest {
 	s.PolicyId = &v
+	return s
+}
+
+func (s *GetPolicyAssetScopeRequest) SetProjectId(v int64) *GetPolicyAssetScopeRequest {
+	s.ProjectId = &v
 	return s
 }
 

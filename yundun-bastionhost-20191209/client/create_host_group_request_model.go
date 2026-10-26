@@ -15,12 +15,14 @@ type iCreateHostGroupRequest interface {
 	GetHostGroupName() *string
 	SetInstanceId(v string) *CreateHostGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *CreateHostGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *CreateHostGroupRequest
 	GetRegionId() *string
 }
 
 type CreateHostGroupRequest struct {
-	// The remarks of the asset group. The remarks can be up to 500 characters in length.
+	// The description of the asset group. The description can be up to 500 characters in length.
 	//
 	// example:
 	//
@@ -34,9 +36,9 @@ type CreateHostGroupRequest struct {
 	//
 	// HostGroup01
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the bastion host on which you want to create an asset group.
+	// The instance ID of the bastion host where you want to create the asset group.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +46,13 @@ type CreateHostGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host on which you want to create an asset group.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host instance where you want to create the asset group.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -74,6 +82,10 @@ func (s *CreateHostGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreateHostGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *CreateHostGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -90,6 +102,11 @@ func (s *CreateHostGroupRequest) SetHostGroupName(v string) *CreateHostGroupRequ
 
 func (s *CreateHostGroupRequest) SetInstanceId(v string) *CreateHostGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateHostGroupRequest) SetProjectId(v int64) *CreateHostGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

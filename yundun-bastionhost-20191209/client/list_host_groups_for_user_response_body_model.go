@@ -18,9 +18,9 @@ type iListHostGroupsForUserResponseBody interface {
 }
 
 type ListHostGroupsForUserResponseBody struct {
-	// The host groups returned.
+	// The list of host groups returned.
 	HostGroups []*ListHostGroupsForUserResponseBodyHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *ListHostGroupsForUserResponseBody) Validate() error {
 }
 
 type ListHostGroupsForUserResponseBodyHostGroups struct {
-	// The remarks of the host group.
+	// The description of the host group.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The host group ID.
+	// The ID of the host group.
 	//
 	// example:
 	//

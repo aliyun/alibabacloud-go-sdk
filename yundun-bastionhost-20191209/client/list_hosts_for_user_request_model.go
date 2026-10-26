@@ -23,6 +23,8 @@ type iListHostsForUserRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListHostsForUserRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListHostsForUserRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListHostsForUserRequest
 	GetRegionId() *string
 	SetUserId(v string) *ListHostsForUserRequest
@@ -30,21 +32,21 @@ type iListHostsForUserRequest interface {
 }
 
 type ListHostsForUserRequest struct {
-	// The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+	// The address of the host to query. You can use a domain name or an IP address. Only exact match is supported.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The name of the host that you want to query. Only exact match is supported.
+	// The name of the host to query. Only exact match is supported.
 	//
 	// example:
 	//
 	// abc
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the bastion host on which you want to query the hosts that the user is authorized or not authorized to manage.
+	// The ID of the Bastionhost instance to which the user belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -52,17 +54,17 @@ type ListHostsForUserRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies the category of the hosts that you want to query. Valid values:
+	// The mode of the host list to query. Valid values:
 	//
-	// - **Authorized**: queries the hosts that the user is authorized to manage. This is the default value.
+	// - **Authorized**: Authorized hosts. This is the default value.
 	//
-	// - **Unauthorized**: queries the hosts that the user is not authorized to manage.
+	// - **Unauthorized**: Unauthorized hosts.
 	//
 	// example:
 	//
 	// Authorized
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The operating system of the host that you want to query. Valid values:
+	// The operating system type of the host to query. Valid values:
 	//
 	// - **Linux**
 	//
@@ -72,23 +74,29 @@ type ListHostsForUserRequest struct {
 	//
 	// Linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The number of the page. Default value: 1.
+	// The page number of the current page in a paging query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.<br>
+	// The maximum number of entries to return on each page for a paging query.
 	//
-	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+	// The maximum value of the PageSize parameter is 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Specify a value for the PageSize parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host on which you want to query the hosts that the user is authorized or not authorized to manage.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the user belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -96,9 +104,9 @@ type ListHostsForUserRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user.
+	// The ID of the user to query.
 	//
-	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -144,6 +152,10 @@ func (s *ListHostsForUserRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListHostsForUserRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListHostsForUserRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -184,6 +196,11 @@ func (s *ListHostsForUserRequest) SetPageNumber(v string) *ListHostsForUserReque
 
 func (s *ListHostsForUserRequest) SetPageSize(v string) *ListHostsForUserRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListHostsForUserRequest) SetProjectId(v int64) *ListHostsForUserRequest {
+	s.ProjectId = &v
 	return s
 }
 

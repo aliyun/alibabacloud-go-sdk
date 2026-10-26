@@ -19,6 +19,8 @@ type iListHostGroupsForUserRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListHostGroupsForUserRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListHostGroupsForUserRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListHostGroupsForUserRequest
 	GetRegionId() *string
 	SetUserId(v string) *ListHostGroupsForUserRequest
@@ -32,9 +34,9 @@ type ListHostGroupsForUserRequest struct {
 	//
 	// group
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the bastion host whose user you want to query.
+	// The instance ID of the Bastionhost instance to which the user belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the parameter value.
 	//
 	// This parameter is required.
 	//
@@ -42,31 +44,39 @@ type ListHostGroupsForUserRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The category of the host groups to query. Valid values:
+	// The mode of the host group list to query. Valid values:
 	//
-	// - **Authorized*	- (default): queries the host groups that the user is authorized to manage.
+	// - **Authorized**: Authorized host groups. This is the default value.
 	//
-	// - **Unauthorized**: queries the host groups that the user is not authorized to manage.
+	// - **Unauthorized**: Unauthorized host groups.
 	//
 	// example:
 	//
 	// Authorized
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number for paging. Default value: **1**.
 	//
 	// example:
 	//
 	// １
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.<br> Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to return per page for paging.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// The maximum value of the PageSize parameter is 100. Default value: 20. If you leave this parameter empty, 20 entries are returned by default.
+	//
+	// > Specify a value for the PageSize parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host whose user you want to query.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the user belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -74,9 +84,9 @@ type ListHostGroupsForUserRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID.
+	// The ID of the user to query.
 	//
-	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to obtain the parameter value.
 	//
 	// This parameter is required.
 	//
@@ -114,6 +124,10 @@ func (s *ListHostGroupsForUserRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListHostGroupsForUserRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListHostGroupsForUserRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -144,6 +158,11 @@ func (s *ListHostGroupsForUserRequest) SetPageNumber(v string) *ListHostGroupsFo
 
 func (s *ListHostGroupsForUserRequest) SetPageSize(v string) *ListHostGroupsForUserRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListHostGroupsForUserRequest) SetProjectId(v int64) *ListHostGroupsForUserRequest {
+	s.ProjectId = &v
 	return s
 }
 

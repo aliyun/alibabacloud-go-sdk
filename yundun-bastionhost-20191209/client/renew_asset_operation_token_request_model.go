@@ -13,14 +13,16 @@ type iRenewAssetOperationTokenRequest interface {
 	GetInstanceId() *string
 	SetRegionId(v string) *RenewAssetOperationTokenRequest
 	GetRegionId() *string
+	SetToken(v string) *RenewAssetOperationTokenRequest
+	GetToken() *string
 	SetTokenId(v string) *RenewAssetOperationTokenRequest
 	GetTokenId() *string
 }
 
 type RenewAssetOperationTokenRequest struct {
-	// The bastion host ID.
+	// The ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the Bastionhost instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,17 +30,23 @@ type RenewAssetOperationTokenRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the O\\&M token that you want to renew.
+	// The O&M token to be renewed.
 	//
-	// > You can call the [GenerateAssetOperationToken](https://help.aliyun.com/document_detail/2758861.html) operation to query the O\\&M token ID.
+	// example:
+	//
+	// NmYyMmEzNmMwYzljNGY******
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The ID of the O&M token to be renewed.
+	//
+	// > You can call the [GenerateAssetOperationToken](https://help.aliyun.com/document_detail/2758861.html) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -62,6 +70,10 @@ func (s *RenewAssetOperationTokenRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *RenewAssetOperationTokenRequest) GetToken() *string {
+	return s.Token
+}
+
 func (s *RenewAssetOperationTokenRequest) GetTokenId() *string {
 	return s.TokenId
 }
@@ -73,6 +85,11 @@ func (s *RenewAssetOperationTokenRequest) SetInstanceId(v string) *RenewAssetOpe
 
 func (s *RenewAssetOperationTokenRequest) SetRegionId(v string) *RenewAssetOperationTokenRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *RenewAssetOperationTokenRequest) SetToken(v string) *RenewAssetOperationTokenRequest {
+	s.Token = &v
 	return s
 }
 

@@ -16,13 +16,13 @@ type iCreateHostResponseBody interface {
 }
 
 type CreateHostResponseBody struct {
-	// The ID of the new host.
+	// The ID of the created host.
 	//
 	// example:
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

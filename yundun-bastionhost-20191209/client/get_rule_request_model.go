@@ -11,6 +11,8 @@ type iGetRuleRequest interface {
 	GoString() string
 	SetInstanceId(v string) *GetRuleRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *GetRuleRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *GetRuleRequest
 	GetRegionId() *string
 	SetRuleId(v string) *GetRuleRequest
@@ -18,9 +20,9 @@ type iGetRuleRequest interface {
 }
 
 type GetRuleRequest struct {
-	// The bastion host ID.
+	// The ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to retrieve this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,15 @@ type GetRuleRequest struct {
 	//
 	// bastionhost-cn-wwo35essw07
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -38,7 +46,7 @@ type GetRuleRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the authorization rule to query.
 	//
-	// > You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID.
+	// > You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to retrieve this parameter.
 	//
 	// This parameter is required.
 	//
@@ -60,6 +68,10 @@ func (s *GetRuleRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetRuleRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *GetRuleRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -70,6 +82,11 @@ func (s *GetRuleRequest) GetRuleId() *string {
 
 func (s *GetRuleRequest) SetInstanceId(v string) *GetRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRuleRequest) SetProjectId(v int64) *GetRuleRequest {
+	s.ProjectId = &v
 	return s
 }
 

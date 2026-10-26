@@ -18,15 +18,15 @@ type iListOperationDatabaseAccountsResponseBody interface {
 }
 
 type ListOperationDatabaseAccountsResponseBody struct {
-	// The database accounts returned.
+	// The list of database accounts.
 	DatabaseAccounts []*ListOperationDatabaseAccountsResponseBodyDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of queried manageable database accounts.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type ListOperationDatabaseAccountsResponseBodyDatabaseAccounts struct {
 	//
 	// xe
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The database account ID.
+	// The ID of the database account.
 	//
 	// example:
 	//
@@ -101,19 +101,19 @@ type ListOperationDatabaseAccountsResponseBodyDatabaseAccounts struct {
 	//
 	// system
 	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
-	// The database ID.
+	// The database instance ID.
 	//
 	// example:
 	//
 	// 2
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// Indicates whether a password is configured for the database host account.
+	// Indicates whether a password is set for the database host account.
 	//
 	// example:
 	//
 	// true
 	HasPassword *string `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
-	// The logon attribute. One of the following values is returned if the database engine is Oracle:
+	// The logon attribute. This parameter has a return value only for Oracle databases. Valid values:
 	//
 	// - **SERVICENAME**
 	//
@@ -123,7 +123,7 @@ type ListOperationDatabaseAccountsResponseBodyDatabaseAccounts struct {
 	//
 	// SID
 	LoginAttribute *string `json:"LoginAttribute,omitempty" xml:"LoginAttribute,omitempty"`
-	// The protocol that is used by the database account.
+	// The protocol name of the database account.
 	//
 	// example:
 	//

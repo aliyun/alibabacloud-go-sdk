@@ -27,6 +27,8 @@ type iModifyDatabaseRequest interface {
 	GetInstanceId() *string
 	SetNetworkDomainId(v string) *ModifyDatabaseRequest
 	GetNetworkDomainId() *string
+	SetProjectId(v int64) *ModifyDatabaseRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ModifyDatabaseRequest
 	GetRegionId() *string
 	SetSourceInstanceId(v string) *ModifyDatabaseRequest
@@ -34,23 +36,23 @@ type iModifyDatabaseRequest interface {
 }
 
 type ModifyDatabaseRequest struct {
-	// The new address type of the database. Valid values:
+	// The address type of the database after the modification. Valid values:
 	//
-	// - **Public**
+	// - **Public**: public network address
 	//
-	// - **Private**
+	// - **Private**: private network address
 	//
 	// example:
 	//
 	// Public
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The new remarks of the database.
+	// The description of the database after the modification.
 	//
 	// example:
 	//
 	// tttttttt
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the database to modify.
+	// The ID of the database to be modified.
 	//
 	// This parameter is required.
 	//
@@ -58,33 +60,33 @@ type ModifyDatabaseRequest struct {
 	//
 	// 11
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The new name of the database.
+	// The name of the database instance after the modification.
 	//
 	// example:
 	//
 	// pgsql
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The new port of the database.
+	// The port of the database after the modification.
 	//
 	// example:
 	//
 	// 5433
 	DatabasePort *string `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
-	// The new internal address of the database. Specify an IPv4 address or a domain name.
+	// The private network address of the database after the modification. IPv4 addresses and domain name formats are supported.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
-	// The new public address of the database. Specify an IPv4 address or a domain name.
+	// The public address of the database after the modification. Both IPv4 addresses and domain names are supported.
 	//
 	// example:
 	//
 	// www.example.com
 	DatabasePublicAddress *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
-	// The ID of the bastion host that manages the database to modify.
+	// The ID of the Bastionhost instance to which the database to be modified belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -92,15 +94,21 @@ type ModifyDatabaseRequest struct {
 	//
 	// bastionhost-cn-72137xe5n01
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the new network domain for the database.
+	// The ID of the network domain to which the database belongs after the modification.
 	//
-	// > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
+	// > You can call the [ListNetworkDomains ](https://help.aliyun.com/document_detail/2758827.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 2
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The region ID of the bastion host that manages the database to modify.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the database to be modified belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -108,7 +116,7 @@ type ModifyDatabaseRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the ApsaraDB for RDS instance or PolarDB cluster to modify.
+	// The instance ID of the database to be modified.
 	//
 	// > This parameter is required if **Source*	- is set to **Rds*	- or **PolarDB**.
 	//
@@ -162,6 +170,10 @@ func (s *ModifyDatabaseRequest) GetNetworkDomainId() *string {
 	return s.NetworkDomainId
 }
 
+func (s *ModifyDatabaseRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ModifyDatabaseRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -212,6 +224,11 @@ func (s *ModifyDatabaseRequest) SetInstanceId(v string) *ModifyDatabaseRequest {
 
 func (s *ModifyDatabaseRequest) SetNetworkDomainId(v string) *ModifyDatabaseRequest {
 	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetProjectId(v int64) *ModifyDatabaseRequest {
+	s.ProjectId = &v
 	return s
 }
 

@@ -13,12 +13,14 @@ type iGetInstanceADAuthServerRequest interface {
 	GetInstanceId() *string
 	SetRegionId(v string) *GetInstanceADAuthServerRequest
 	GetRegionId() *string
+	SetUserSourceId(v string) *GetInstanceADAuthServerRequest
+	GetUserSourceId() *string
 }
 
 type GetInstanceADAuthServerRequest struct {
-	// The bastion host ID.
+	// The ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,14 +28,15 @@ type GetInstanceADAuthServerRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 }
 
 func (s GetInstanceADAuthServerRequest) String() string {
@@ -52,6 +55,10 @@ func (s *GetInstanceADAuthServerRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *GetInstanceADAuthServerRequest) GetUserSourceId() *string {
+	return s.UserSourceId
+}
+
 func (s *GetInstanceADAuthServerRequest) SetInstanceId(v string) *GetInstanceADAuthServerRequest {
 	s.InstanceId = &v
 	return s
@@ -59,6 +66,11 @@ func (s *GetInstanceADAuthServerRequest) SetInstanceId(v string) *GetInstanceADA
 
 func (s *GetInstanceADAuthServerRequest) SetRegionId(v string) *GetInstanceADAuthServerRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetInstanceADAuthServerRequest) SetUserSourceId(v string) *GetInstanceADAuthServerRequest {
+	s.UserSourceId = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iSetPolicyCommandConfigRequest interface {
 	GetInstanceId() *string
 	SetPolicyId(v string) *SetPolicyCommandConfigRequest
 	GetPolicyId() *string
+	SetProjectId(v int64) *SetPolicyCommandConfigRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *SetPolicyCommandConfigRequest
 	GetRegionId() *string
 }
@@ -26,9 +28,9 @@ type SetPolicyCommandConfigRequest struct {
 	//
 	// This parameter is required.
 	CommandConfig *SetPolicyCommandConfigRequestCommandConfig `json:"CommandConfig,omitempty" xml:"CommandConfig,omitempty" type:"Struct"`
-	// The bastion host ID.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +40,7 @@ type SetPolicyCommandConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the control policy that you want to modify.
 	//
-	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +48,13 @@ type SetPolicyCommandConfigRequest struct {
 	//
 	// 45
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -76,6 +84,10 @@ func (s *SetPolicyCommandConfigRequest) GetPolicyId() *string {
 	return s.PolicyId
 }
 
+func (s *SetPolicyCommandConfigRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *SetPolicyCommandConfigRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -92,6 +104,11 @@ func (s *SetPolicyCommandConfigRequest) SetInstanceId(v string) *SetPolicyComman
 
 func (s *SetPolicyCommandConfigRequest) SetPolicyId(v string) *SetPolicyCommandConfigRequest {
 	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyCommandConfigRequest) SetProjectId(v int64) *SetPolicyCommandConfigRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -112,7 +129,7 @@ func (s *SetPolicyCommandConfigRequest) Validate() error {
 type SetPolicyCommandConfigRequestCommandConfig struct {
 	// The command approval settings.
 	//
-	// > A command approval policy is used to approve the commands that are excluded from a whitelist or blacklist specified in a command control policy. The command control policy takes precedence over the command approval policy in validation.
+	// > Command approval applies to commands that are not subject to command control (whitelist or blacklist). Command control policies take precedence over command approval.
 	Approval *SetPolicyCommandConfigRequestCommandConfigApproval `json:"Approval,omitempty" xml:"Approval,omitempty" type:"Struct"`
 	// The command control settings.
 	//
@@ -161,7 +178,7 @@ func (s *SetPolicyCommandConfigRequestCommandConfig) Validate() error {
 }
 
 type SetPolicyCommandConfigRequestCommandConfigApproval struct {
-	// The commands that can be run only after approval.
+	// The list of commands that require approval.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
 }
 
@@ -187,11 +204,11 @@ func (s *SetPolicyCommandConfigRequestCommandConfigApproval) Validate() error {
 }
 
 type SetPolicyCommandConfigRequestCommandConfigDeny struct {
-	// The type of command control. Valid values:
+	// The command control type. Valid values:
 	//
-	// - **black**: blacklist mode.
+	// - **black**: blacklist mode
 	//
-	// - **white**: whitelist mode.
+	// - **white**: whitelist mode
 	//
 	// This parameter is required.
 	//
@@ -199,9 +216,9 @@ type SetPolicyCommandConfigRequestCommandConfigDeny struct {
 	//
 	// white
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The commands to be controlled.
+	// The list of commands.
 	//
-	// > This parameter is required if AclType is set to white.
+	// > If AclType is set to white, Commands is required.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
 }
 

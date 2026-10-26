@@ -13,6 +13,8 @@ type iSetPolicyUserScopeRequest interface {
 	GetInstanceId() *string
 	SetPolicyId(v string) *SetPolicyUserScopeRequest
 	GetPolicyId() *string
+	SetProjectId(v int64) *SetPolicyUserScopeRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *SetPolicyUserScopeRequest
 	GetRegionId() *string
 	SetScopeType(v string) *SetPolicyUserScopeRequest
@@ -24,9 +26,9 @@ type iSetPolicyUserScopeRequest interface {
 }
 
 type SetPolicyUserScopeRequest struct {
-	// The bastion host ID.
+	// The ID of the bastion host instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +36,9 @@ type SetPolicyUserScopeRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the control policy that you want to modify.
+	// The ID of the control policy to modify.
 	//
-	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,21 +46,27 @@ type SetPolicyUserScopeRequest struct {
 	//
 	// 1
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The scope of users to whom the control policy applies. Valid values:
+	// The user scope for the control policy. Valid values:
 	//
-	// - **All**: The control policy applies to all users.
+	// - **All**: The policy applies to all users.
 	//
-	// - **User**: The control policy applies to specified users.
+	// - **User**: The policy applies to selected users.
 	//
-	// - **UserGroup**: The control policy applies to specified user groups.
+	// - **UserGroup**: The policy applies to selected user groups.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +74,13 @@ type SetPolicyUserScopeRequest struct {
 	//
 	// All
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	// The user groups to which the control policy applies.
+	// The user group scope for the control policy.
 	//
-	// > This parameter is required if ScopeType is set to UserGroup. You can specify up to 100 user group IDs.
+	// > This parameter is required when ScopeType is set to UserGroup. A maximum of 100 user groups can be specified.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The users to whom the control policy applies.
+	// The user scope for the control policy.
 	//
-	// > This parameter is required if ScopeType is set to User. You can specify up to 500 user IDs.
+	// > This parameter is required when ScopeType is set to User. A maximum of 500 users can be specified.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -90,6 +98,10 @@ func (s *SetPolicyUserScopeRequest) GetInstanceId() *string {
 
 func (s *SetPolicyUserScopeRequest) GetPolicyId() *string {
 	return s.PolicyId
+}
+
+func (s *SetPolicyUserScopeRequest) GetProjectId() *int64 {
+	return s.ProjectId
 }
 
 func (s *SetPolicyUserScopeRequest) GetRegionId() *string {
@@ -115,6 +127,11 @@ func (s *SetPolicyUserScopeRequest) SetInstanceId(v string) *SetPolicyUserScopeR
 
 func (s *SetPolicyUserScopeRequest) SetPolicyId(v string) *SetPolicyUserScopeRequest {
 	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyUserScopeRequest) SetProjectId(v int64) *SetPolicyUserScopeRequest {
+	s.ProjectId = &v
 	return s
 }
 

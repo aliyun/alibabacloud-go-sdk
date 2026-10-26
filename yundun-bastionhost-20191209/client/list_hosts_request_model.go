@@ -23,6 +23,8 @@ type iListHostsRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListHostsRequest
 	GetPageSize() *string
+	SetProjectId(v string) *ListHostsRequest
+	GetProjectId() *string
 	SetRegionId(v string) *ListHostsRequest
 	GetRegionId() *string
 	SetSource(v string) *ListHostsRequest
@@ -34,29 +36,29 @@ type iListHostsRequest interface {
 }
 
 type ListHostsRequest struct {
-	// The address of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+	// The address of the host. You can use a domain name or an IP address. Fuzzy match is not supported. Only exact match is supported.
 	//
 	// example:
 	//
 	// 1.1.XX.XX
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The ID of the host group to which the host to be queried belongs.
+	// The ID of the host group to which the host belongs.
 	//
-	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
+	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to obtain the host group ID.
 	//
 	// example:
 	//
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The name of the host that you want to query. Only exact match is supported.
+	// The name of the host. Fuzzy match is not supported. Only exact match is supported.
 	//
 	// example:
 	//
 	// host
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the bastion host on which you want to query hosts.
+	// The instance ID of the Bastionhost instance whose hosts you want to query.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +66,7 @@ type ListHostsRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operating system of the host that you want to query. Valid values:
+	// The operating system of the host. Valid values:
 	//
 	// - **Linux**
 	//
@@ -80,15 +82,21 @@ type ListHostsRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// Specifies the number of hosts to return per page in a paged query. Default value: **10**, which indicates that 10 hosts are returned per page.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host on which you want to query hosts.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -96,25 +104,25 @@ type ListHostsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source of the host that you want to query. Valid values:
+	// The source of the host. Valid values:
 	//
-	// - **Local**: a host in a data center
+	// - **Local**: local host
 	//
-	// - **Ecs**: an Elastic Compute Service (ECS) instance
+	// - **Ecs**: ECS instance
 	//
-	// - **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+	// - **Rds**: RDS dedicated cluster host
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster that you want to query. Only exact match is supported.
+	// The ECS instance ID or the dedicated cluster host ID to which the host corresponds. Fuzzy match is not supported. Only exact match is supported.
 	//
 	// example:
 	//
 	// i-bp19ienyt0yax748****
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The status of the host that you want to query. Valid values:
+	// The status of the host. Valid values:
 	//
 	// - **Normal**: normal
 	//
@@ -160,6 +168,10 @@ func (s *ListHostsRequest) GetPageNumber() *string {
 
 func (s *ListHostsRequest) GetPageSize() *string {
 	return s.PageSize
+}
+
+func (s *ListHostsRequest) GetProjectId() *string {
+	return s.ProjectId
 }
 
 func (s *ListHostsRequest) GetRegionId() *string {
@@ -210,6 +222,11 @@ func (s *ListHostsRequest) SetPageNumber(v string) *ListHostsRequest {
 
 func (s *ListHostsRequest) SetPageSize(v string) *ListHostsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListHostsRequest) SetProjectId(v string) *ListHostsRequest {
+	s.ProjectId = &v
 	return s
 }
 

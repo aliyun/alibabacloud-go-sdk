@@ -15,18 +15,20 @@ type iSetPolicyIPAclConfigRequest interface {
 	GetInstanceId() *string
 	SetPolicyId(v string) *SetPolicyIPAclConfigRequest
 	GetPolicyId() *string
+	SetProjectId(v int64) *SetPolicyIPAclConfigRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *SetPolicyIPAclConfigRequest
 	GetRegionId() *string
 }
 
 type SetPolicyIPAclConfigRequest struct {
-	// The access control settings for source IP addresses.
+	// The source IP address restriction configuration.
 	//
 	// This parameter is required.
 	IPAclConfig *SetPolicyIPAclConfigRequestIPAclConfig `json:"IPAclConfig,omitempty" xml:"IPAclConfig,omitempty" type:"Struct"`
-	// The bastion host ID.
+	// The ID of the bastion host instance.
 	//
-	// > You can call the DescribeInstances operation to query the bastion host ID.[](~~153281~~)
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the bastion host instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +38,7 @@ type SetPolicyIPAclConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the control policy that you want to modify.
 	//
-	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +46,15 @@ type SetPolicyIPAclConfigRequest struct {
 	//
 	// 3
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -74,6 +82,10 @@ func (s *SetPolicyIPAclConfigRequest) GetPolicyId() *string {
 	return s.PolicyId
 }
 
+func (s *SetPolicyIPAclConfigRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *SetPolicyIPAclConfigRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -93,6 +105,11 @@ func (s *SetPolicyIPAclConfigRequest) SetPolicyId(v string) *SetPolicyIPAclConfi
 	return s
 }
 
+func (s *SetPolicyIPAclConfigRequest) SetProjectId(v int64) *SetPolicyIPAclConfigRequest {
+	s.ProjectId = &v
+	return s
+}
+
 func (s *SetPolicyIPAclConfigRequest) SetRegionId(v string) *SetPolicyIPAclConfigRequest {
 	s.RegionId = &v
 	return s
@@ -108,11 +125,11 @@ func (s *SetPolicyIPAclConfigRequest) Validate() error {
 }
 
 type SetPolicyIPAclConfigRequestIPAclConfig struct {
-	// The mode of access control on source IP addresses. Valid values:
+	// The source IP address restriction mode. Valid values:
 	//
-	// - **black**: blacklist mode.
+	// - **black**: blacklist mode
 	//
-	// - **white**: whitelist mode.
+	// - **white**: whitelist mode
 	//
 	// This parameter is required.
 	//
@@ -120,13 +137,11 @@ type SetPolicyIPAclConfigRequestIPAclConfig struct {
 	//
 	// white
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The source IP addresses in the blacklist or whitelist.
+	// The list of restricted source IP addresses.
 	//
-	// >
+	// > - When AclType is set to white, the IPs list is required.
 	//
-	// - This parameter is required if AclType is set to white.
-	//
-	// - If AclType is set to black but you do not want to add IP addresses to the blacklist, you can leave IPs empty.
+	// > - When AclType is set to black but you do not need to set a source IP blacklist, pass an empty list for IPs.
 	//
 	// This parameter is required.
 	IPs []*string `json:"IPs,omitempty" xml:"IPs,omitempty" type:"Repeated"`

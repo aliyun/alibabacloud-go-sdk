@@ -15,18 +15,20 @@ type iSetPolicyAccessTimeRangeConfigRequest interface {
 	GetInstanceId() *string
 	SetPolicyId(v string) *SetPolicyAccessTimeRangeConfigRequest
 	GetPolicyId() *string
+	SetProjectId(v int64) *SetPolicyAccessTimeRangeConfigRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *SetPolicyAccessTimeRangeConfigRequest
 	GetRegionId() *string
 }
 
 type SetPolicyAccessTimeRangeConfigRequest struct {
-	// The logon period limits.
+	// The logon time limit configuration.
 	//
 	// This parameter is required.
 	AccessTimeRangeConfig *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig `json:"AccessTimeRangeConfig,omitempty" xml:"AccessTimeRangeConfig,omitempty" type:"Struct"`
-	// The bastion host ID.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to retrieve this parameter.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +36,9 @@ type SetPolicyAccessTimeRangeConfigRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The control policy ID.
+	// The ID of the control policy.
 	//
-	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to retrieve this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +46,15 @@ type SetPolicyAccessTimeRangeConfigRequest struct {
 	//
 	// 13
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -74,6 +82,10 @@ func (s *SetPolicyAccessTimeRangeConfigRequest) GetPolicyId() *string {
 	return s.PolicyId
 }
 
+func (s *SetPolicyAccessTimeRangeConfigRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *SetPolicyAccessTimeRangeConfigRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -93,6 +105,11 @@ func (s *SetPolicyAccessTimeRangeConfigRequest) SetPolicyId(v string) *SetPolicy
 	return s
 }
 
+func (s *SetPolicyAccessTimeRangeConfigRequest) SetProjectId(v int64) *SetPolicyAccessTimeRangeConfigRequest {
+	s.ProjectId = &v
+	return s
+}
+
 func (s *SetPolicyAccessTimeRangeConfigRequest) SetRegionId(v string) *SetPolicyAccessTimeRangeConfigRequest {
 	s.RegionId = &v
 	return s
@@ -108,7 +125,7 @@ func (s *SetPolicyAccessTimeRangeConfigRequest) Validate() error {
 }
 
 type SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig struct {
-	// The details about the periods during which users can log on to the assets.
+	// The details of the allowed logon periods.
 	EffectiveTime []*SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty" type:"Repeated"`
 }
 
@@ -143,9 +160,9 @@ func (s *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig) Validate() 
 }
 
 type SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime struct {
-	// The days of the week during which users can log on to the assets.
+	// The days of the week when logon is allowed.
 	Days []*int32 `json:"Days,omitempty" xml:"Days,omitempty" type:"Repeated"`
-	// The time periods of the day during which users can log on to the assets.
+	// The hours of the day when logon is allowed.
 	Hours []*int32 `json:"Hours,omitempty" xml:"Hours,omitempty" type:"Repeated"`
 }
 

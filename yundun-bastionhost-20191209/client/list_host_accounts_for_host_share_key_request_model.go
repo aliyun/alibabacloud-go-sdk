@@ -17,24 +17,24 @@ type iListHostAccountsForHostShareKeyRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListHostAccountsForHostShareKeyRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListHostAccountsForHostShareKeyRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListHostAccountsForHostShareKeyRequest
 	GetRegionId() *string
 }
 
 type ListHostAccountsForHostShareKeyRequest struct {
-	// The shared key ID.
+	// The ID of the host shared key.
 	//
-	// > You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
-	//
-	// This parameter is required.
+	// > You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to retrieve this parameter.
 	//
 	// example:
 	//
 	// 1124
 	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The bastion host ID.
+	// The instance ID of the Bastionhost.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to retrieve this parameter.
 	//
 	// This parameter is required.
 	//
@@ -42,21 +42,27 @@ type ListHostAccountsForHostShareKeyRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// Specifies the page number of the returned results. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The Settings for the paged query determine the number of host accounts associated with the host shared key to return on each page during paging. Default value: **10**, which indicates that 10 host accounts associated with the host shared key are displayed on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -88,6 +94,10 @@ func (s *ListHostAccountsForHostShareKeyRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListHostAccountsForHostShareKeyRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListHostAccountsForHostShareKeyRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -109,6 +119,11 @@ func (s *ListHostAccountsForHostShareKeyRequest) SetPageNumber(v string) *ListHo
 
 func (s *ListHostAccountsForHostShareKeyRequest) SetPageSize(v string) *ListHostAccountsForHostShareKeyRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListHostAccountsForHostShareKeyRequest) SetProjectId(v int64) *ListHostAccountsForHostShareKeyRequest {
+	s.ProjectId = &v
 	return s
 }
 

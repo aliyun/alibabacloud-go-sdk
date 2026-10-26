@@ -13,14 +13,16 @@ type iDeleteHostRequest interface {
 	GetHostId() *string
 	SetInstanceId(v string) *DeleteHostRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *DeleteHostRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *DeleteHostRequest
 	GetRegionId() *string
 }
 
 type DeleteHostRequest struct {
-	// The ID of the host that you want to delete.
+	// The ID of the host to be deleted.
 	//
-	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,9 @@ type DeleteHostRequest struct {
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the bastion host on which you want to delete the host.
+	// The instance ID of the bastion host to which the host to be deleted belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +40,15 @@ type DeleteHostRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host on which you want to delete the host.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host instance to which the host to be deleted belongs.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -64,6 +72,10 @@ func (s *DeleteHostRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DeleteHostRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *DeleteHostRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -75,6 +87,11 @@ func (s *DeleteHostRequest) SetHostId(v string) *DeleteHostRequest {
 
 func (s *DeleteHostRequest) SetInstanceId(v string) *DeleteHostRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteHostRequest) SetProjectId(v int64) *DeleteHostRequest {
+	s.ProjectId = &v
 	return s
 }
 

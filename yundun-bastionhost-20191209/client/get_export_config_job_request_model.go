@@ -18,9 +18,9 @@ type iGetExportConfigJobRequest interface {
 }
 
 type GetExportConfigJobRequest struct {
-	// The ID of the Bastionhost instance.
+	// The instance ID of the bastion host.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type GetExportConfigJobRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the configuration backup export job.
+	// The ID of the configuration backup export task.
 	//
-	// > This parameter is the JobId returned after you successfully call the CreateExportConfigJob operation to create a configuration backup export job.
+	// > This parameter is the JobId returned after you successfully call the CreateExportConfigJob operation to create a configuration backup export task.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type GetExportConfigJobRequest struct {
 	//
 	// 2
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The region ID of the Bastionhost instance.
+	// The region ID of the bastion host.
 	//
 	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//

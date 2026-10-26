@@ -19,6 +19,8 @@ type iListDatabaseAccountsForUserGroupRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListDatabaseAccountsForUserGroupRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListDatabaseAccountsForUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListDatabaseAccountsForUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *ListDatabaseAccountsForUserGroupRequest
@@ -32,9 +34,9 @@ type ListDatabaseAccountsForUserGroupRequest struct {
 	//
 	// test
 	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
-	// The ID of the database whose database accounts you want to query.
+	// The instance ID of the database for which you want to query database accounts.
 	//
-	// > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+	// > You can invoke the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +44,9 @@ type ListDatabaseAccountsForUserGroupRequest struct {
 	//
 	// 36
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The bastion host ID.
+	// The ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -52,23 +54,29 @@ type ListDatabaseAccountsForUserGroupRequest struct {
 	//
 	// bastionhost-cn-pe334a03o0h
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the current page for paging in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.<br>
+	// The maximum number of entries to return on each page for paging in a paged query.
 	//
-	// Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum value of the PageSize parameter is 100. The default number of entries returned on each page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave the PageSize parameter empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -76,9 +84,9 @@ type ListDatabaseAccountsForUserGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group to query. This operation returns whether the user group is authorized to manage each database account.
+	// The ID of the user group for which you want to query the authorized database accounts.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the user group ID.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -116,6 +124,10 @@ func (s *ListDatabaseAccountsForUserGroupRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListDatabaseAccountsForUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListDatabaseAccountsForUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -146,6 +158,11 @@ func (s *ListDatabaseAccountsForUserGroupRequest) SetPageNumber(v string) *ListD
 
 func (s *ListDatabaseAccountsForUserGroupRequest) SetPageSize(v string) *ListDatabaseAccountsForUserGroupRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupRequest) SetProjectId(v int64) *ListDatabaseAccountsForUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

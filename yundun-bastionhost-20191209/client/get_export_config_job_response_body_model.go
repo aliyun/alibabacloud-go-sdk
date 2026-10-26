@@ -24,19 +24,19 @@ type iGetExportConfigJobResponseBody interface {
 }
 
 type GetExportConfigJobResponseBody struct {
-	// The download link of the configuration backup file.
+	// The download URL of the configuration backup file.
 	//
 	// example:
 	//
 	// https://bastionhost-cn-hangzhou-164***.oss-cn-hangzhou.aliyuncs.com/bastionhost-cn-2******
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The expiration time of the configuration backup download link. (In seconds, UNIX timestamp format)
+	// The expiration time of the configuration backup download URL. Unit: seconds. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1679393152
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the configuration backup export job.
+	// The ID of the configuration backup export task.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type GetExportConfigJobResponseBody struct {
 	//
 	// message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier that Alibaba Cloud generates for this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 98DBE5C2-7D7A-5393-9E5A-71074336D33B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the configuration backup export job.
+	// The status of the configuration backup export task.
 	//
 	// example:
 	//

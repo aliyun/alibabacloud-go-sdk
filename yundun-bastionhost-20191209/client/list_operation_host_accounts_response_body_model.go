@@ -18,15 +18,15 @@ type iListOperationHostAccountsResponseBody interface {
 }
 
 type ListOperationHostAccountsResponseBody struct {
-	// The host accounts returned.
+	// The host accounts.
 	HostAccounts []*ListOperationHostAccountsResponseBodyHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of host accounts returned.
+	// The total number of host accounts.
 	//
 	// example:
 	//
@@ -83,35 +83,35 @@ func (s *ListOperationHostAccountsResponseBody) Validate() error {
 }
 
 type ListOperationHostAccountsResponseBodyHostAccounts struct {
-	// Indicates whether a password is configured for the host account.
+	// Indicates whether a password is set for the host account.
 	//
-	// - **true**
+	// - **true**: A password is set.
 	//
-	// - **false**
+	// - **false**: No password is set.
 	//
 	// example:
 	//
 	// true
 	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
-	// The host account ID.
+	// The ID of the host account.
 	//
 	// example:
 	//
 	// 1
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// The host account name.
+	// The name of the host account.
 	//
 	// example:
 	//
 	// root
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The host ID.
+	// The ID of the host.
 	//
 	// example:
 	//
 	// １
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the shared key that is associated with the host.
+	// The ID of the host shared key.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListOperationHostAccountsResponseBodyHostAccounts struct {
 	//
 	// fe:ca:37:42:30:00:9d:95:e6:73:e5:b0:32:0a:**:**
 	PrivateKeyFingerprint *string `json:"PrivateKeyFingerprint,omitempty" xml:"PrivateKeyFingerprint,omitempty"`
-	// The protocol that is used by the host account.
+	// The protocol name of the host account.
 	//
 	// - **SSH**
 	//
@@ -133,7 +133,7 @@ type ListOperationHostAccountsResponseBodyHostAccounts struct {
 	//
 	// SSH
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
-	// Indicates whether the Secure File Transfer Protocol (SFTP) channels or the SSH channels are enabled for the host account that uses the SSH protocol.
+	// The O&M permissions of the SSH account.
 	SSHConfig *ListOperationHostAccountsResponseBodyHostAccountsSSHConfig `json:"SSHConfig,omitempty" xml:"SSHConfig,omitempty" type:"Struct"`
 }
 
@@ -227,9 +227,9 @@ func (s *ListOperationHostAccountsResponseBodyHostAccounts) Validate() error {
 }
 
 type ListOperationHostAccountsResponseBodyHostAccountsSSHConfig struct {
-	// Indicates whether SFTP channels are enabled for the account.
+	// Indicates whether the SFTP channel is enabled for the account.
 	EnableSFTPChannel *bool `json:"EnableSFTPChannel,omitempty" xml:"EnableSFTPChannel,omitempty"`
-	// Indicates whether SSH channels are enabled for the account.
+	// Indicates whether the SSH channel is enabled for the account.
 	EnableSSHChannel *bool `json:"EnableSSHChannel,omitempty" xml:"EnableSSHChannel,omitempty"`
 }
 

@@ -19,6 +19,8 @@ type iListDatabaseAccountsRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListDatabaseAccountsRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListDatabaseAccountsRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListDatabaseAccountsRequest
 	GetRegionId() *string
 }
@@ -30,17 +32,17 @@ type ListDatabaseAccountsRequest struct {
 	//
 	// test
 	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
-	// The ID of the database whose database accounts you want to query.
+	// The ID of the database instance for which you want to query database accounts.
 	//
-	// > You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
+	// > You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database instance ID.
 	//
 	// example:
 	//
 	// 3
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The bastion host ID.
+	// The ID of the Bastionhost instance.
 	//
-	// > You can call the DescribeInstances operation to query the bastion host ID.[](~~153281~~)
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the Bastionhost instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,23 +50,29 @@ type ListDatabaseAccountsRequest struct {
 	//
 	// bastionhost-cn-7mz2za0ro06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: 1.
+	// The page number of the current page in a paging query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.<br>
+	// The maximum number of entries to return on each page in a paging query.
 	//
-	// Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum value of the PageSize parameter is 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Specify a value for the PageSize parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -102,6 +110,10 @@ func (s *ListDatabaseAccountsRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListDatabaseAccountsRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListDatabaseAccountsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -128,6 +140,11 @@ func (s *ListDatabaseAccountsRequest) SetPageNumber(v string) *ListDatabaseAccou
 
 func (s *ListDatabaseAccountsRequest) SetPageSize(v string) *ListDatabaseAccountsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsRequest) SetProjectId(v int64) *ListDatabaseAccountsRequest {
+	s.ProjectId = &v
 	return s
 }
 

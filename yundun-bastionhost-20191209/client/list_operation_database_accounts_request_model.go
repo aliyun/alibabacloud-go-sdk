@@ -15,6 +15,8 @@ type iListOperationDatabaseAccountsRequest interface {
 	GetDatabaseId() *string
 	SetInstanceId(v string) *ListOperationDatabaseAccountsRequest
 	GetInstanceId() *string
+	SetOperationProjectId(v string) *ListOperationDatabaseAccountsRequest
+	GetOperationProjectId() *string
 	SetPageNumber(v string) *ListOperationDatabaseAccountsRequest
 	GetPageNumber() *string
 	SetPageSize(v string) *ListOperationDatabaseAccountsRequest
@@ -24,23 +26,23 @@ type iListOperationDatabaseAccountsRequest interface {
 }
 
 type ListOperationDatabaseAccountsRequest struct {
-	// The name of the database account. Exact match is supported.
+	// The name of the database account. Exact match.
 	//
 	// example:
 	//
 	// test
 	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
-	// The database ID.
+	// The database instance ID.
 	//
-	// > You can call the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) operation to query the database ID.
+	// > You can invoke the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 56
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The ID of the bastion host.
+	// The ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -48,25 +50,31 @@ type ListOperationDatabaseAccountsRequest struct {
 	//
 	// bastionhost-cn-2r42t9cvf0i
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	OperationProjectId *string `json:"OperationProjectId,omitempty" xml:"OperationProjectId,omitempty"`
+	// The page number of the current page for a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.<br>
+	// The maximum number of entries to return on each page for a paged query.
 	//
-	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// <br>The maximum value of the PageSize parameter is 100. The default number of entries returned per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave the PageSize parameter empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -94,6 +102,10 @@ func (s *ListOperationDatabaseAccountsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListOperationDatabaseAccountsRequest) GetOperationProjectId() *string {
+	return s.OperationProjectId
+}
+
 func (s *ListOperationDatabaseAccountsRequest) GetPageNumber() *string {
 	return s.PageNumber
 }
@@ -118,6 +130,11 @@ func (s *ListOperationDatabaseAccountsRequest) SetDatabaseId(v string) *ListOper
 
 func (s *ListOperationDatabaseAccountsRequest) SetInstanceId(v string) *ListOperationDatabaseAccountsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsRequest) SetOperationProjectId(v string) *ListOperationDatabaseAccountsRequest {
+	s.OperationProjectId = &v
 	return s
 }
 

@@ -16,13 +16,13 @@ type iAddHostsToGroupResponseBody interface {
 }
 
 type AddHostsToGroupResponseBody struct {
-	// The ID of the request.
+	// The unique identifier that Alibaba Cloud generated for the request.
 	//
 	// example:
 	//
 	// 81500666-d7f5-4143-8329-0223cc738105
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
+	// The call results of the operation.
 	Results []*AddHostsToGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -66,21 +66,21 @@ func (s *AddHostsToGroupResponseBody) Validate() error {
 }
 
 type AddHostsToGroupResponseBodyResults struct {
-	// The return code that indicates whether the call was successful. Valid values:
+	// The result of the operation call. Valid values:
 	//
-	// - **OK**: The call was successful.
+	// - **OK**: The operation was successful.
 	//
 	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// - **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: The request parameters are invalid.
 	//
-	//   > Make sure that the request parameters are valid and call the operation again.
+	//     > Check the request parameters and call the operation again after you confirm that the parameters are correct.
 	//
-	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object does not exist.
 	//
-	//   > Make sure that the specified bastion host ID and host IDs are valid. Then, call the operation again.
+	//     > Check whether the bastion host instance ID exists, whether the host exists, and whether the host ID is correct. Then call the operation again.
 	//
-	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object already exists.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type AddHostsToGroupResponseBodyResults struct {
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//

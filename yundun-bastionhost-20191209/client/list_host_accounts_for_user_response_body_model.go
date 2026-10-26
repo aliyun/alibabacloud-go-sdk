@@ -18,7 +18,7 @@ type iListHostAccountsForUserResponseBody interface {
 }
 
 type ListHostAccountsForUserResponseBody struct {
-	// An array that consists of the queried host accounts.
+	// The host accounts returned.
 	HostAccounts []*ListHostAccountsForUserResponseBodyHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -26,7 +26,7 @@ type ListHostAccountsForUserResponseBody struct {
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of host accounts that were queried.
+	// The total number of host accounts returned.
 	//
 	// example:
 	//
@@ -95,23 +95,29 @@ type ListHostAccountsForUserResponseBodyHostAccounts struct {
 	//
 	// root
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the host for which the host accounts were queried.
+	// The type of the host account.
+	//
+	// example:
+	//
+	// "Normal"
+	HostAccountType *string `json:"HostAccountType,omitempty" xml:"HostAccountType,omitempty"`
+	// The ID of the host to which the host account belongs.
 	//
 	// example:
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// Indicates whether the user is authorized to manage the host account. Valid values:
+	// Indicates whether the host account is authorized for the current user. Valid values:
 	//
-	// - **true**: yes
+	// - **true**: authorized
 	//
-	// - **false**: no
+	// - **false**: unauthorized
 	//
 	// example:
 	//
 	// true
 	IsAuthorized *bool `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
-	// The protocol that is used by the host. Valid values:
+	// The protocol of the host account. Valid values:
 	//
 	// - **SSH**
 	//
@@ -139,6 +145,10 @@ func (s *ListHostAccountsForUserResponseBodyHostAccounts) GetHostAccountName() *
 	return s.HostAccountName
 }
 
+func (s *ListHostAccountsForUserResponseBodyHostAccounts) GetHostAccountType() *string {
+	return s.HostAccountType
+}
+
 func (s *ListHostAccountsForUserResponseBodyHostAccounts) GetHostId() *string {
 	return s.HostId
 }
@@ -158,6 +168,11 @@ func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetHostAccountId(v str
 
 func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetHostAccountName(v string) *ListHostAccountsForUserResponseBodyHostAccounts {
 	s.HostAccountName = &v
+	return s
+}
+
+func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetHostAccountType(v string) *ListHostAccountsForUserResponseBodyHostAccounts {
+	s.HostAccountType = &v
 	return s
 }
 

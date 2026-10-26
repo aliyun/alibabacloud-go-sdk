@@ -24,9 +24,9 @@ type ListRulesResponseBody struct {
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The authorization rules that are returned.
+	// The authorization rules returned.
 	Rules []*ListRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The total number of authorization rules that are returned.
+	// The total number of authorization rules returned.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *ListRulesResponseBody) Validate() error {
 }
 
 type ListRulesResponseBodyRules struct {
-	// The remarks of the authorization rule.
+	// The description of the authorization rule.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The end time of the validity period of the authorization rule. The value is a timestamp. Unit: seconds.
+	// The end time of the validity period for the authorization rule. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1709258400
 	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
-	// The start time of the validity period of the authorization rule. The value is a timestamp. Unit: seconds.
+	// The start time of the validity period for the authorization rule. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1685499134
 	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
-	// The authorization rule ID.
+	// The ID of the authorization rule.
 	//
 	// example:
 	//
@@ -113,11 +113,11 @@ type ListRulesResponseBodyRules struct {
 	//
 	// rule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The state of the authorization rule.
+	// The state of the authorization rule. Valid values:
 	//
-	// - **Enabled**
+	// - **Enabled**: Normal.
 	//
-	// - **Disabled**
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//

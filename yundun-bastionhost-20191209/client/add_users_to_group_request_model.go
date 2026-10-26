@@ -11,6 +11,8 @@ type iAddUsersToGroupRequest interface {
 	GoString() string
 	SetInstanceId(v string) *AddUsersToGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *AddUsersToGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *AddUsersToGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *AddUsersToGroupRequest
@@ -20,9 +22,9 @@ type iAddUsersToGroupRequest interface {
 }
 
 type AddUsersToGroupRequest struct {
-	// The ID of the bastion host for which you want to add users to the user group.
+	// The ID of the bastion host instance to which the user group belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +32,15 @@ type AddUsersToGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host for which you want to add users to the user group.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host instance to which the user group belongs.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -40,7 +48,7 @@ type AddUsersToGroupRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user group to which you want to add users.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +56,9 @@ type AddUsersToGroupRequest struct {
 	//
 	// １
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The ID of the user that you want to add to the user group. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
+	// The IDs of the users to add to the user group. This parameter is a JSON-formatted string that supports up to 100 user IDs. Separate multiple IDs with commas (,).
 	//
-	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query user IDs.
 	//
 	// This parameter is required.
 	//
@@ -72,6 +80,10 @@ func (s *AddUsersToGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *AddUsersToGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *AddUsersToGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -86,6 +98,11 @@ func (s *AddUsersToGroupRequest) GetUserIds() *string {
 
 func (s *AddUsersToGroupRequest) SetInstanceId(v string) *AddUsersToGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *AddUsersToGroupRequest) SetProjectId(v int64) *AddUsersToGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

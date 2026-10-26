@@ -17,6 +17,8 @@ type iListOperationHostsRequest interface {
 	GetInstanceId() *string
 	SetOSType(v string) *ListOperationHostsRequest
 	GetOSType() *string
+	SetOperationProjectId(v string) *ListOperationHostsRequest
+	GetOperationProjectId() *string
 	SetPageNumber(v string) *ListOperationHostsRequest
 	GetPageNumber() *string
 	SetPageSize(v string) *ListOperationHostsRequest
@@ -32,21 +34,21 @@ type iListOperationHostsRequest interface {
 }
 
 type ListOperationHostsRequest struct {
-	// The address of the host. You can specify a domain name or an IP address. Only exact matches are supported.
+	// The address of the host to query. You can use a domain name or an IP address. Fuzzy match is not supported. Only exact match is supported.
 	//
 	// example:
 	//
 	// 10.162.XX.XX
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The name of the host. Only exact matches are supported.
+	// The name of the host to query. Fuzzy match is not supported. Only exact match is supported.
 	//
 	// example:
 	//
 	// abc
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the Bastionhost instance.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +56,7 @@ type ListOperationHostsRequest struct {
 	//
 	// bastionhost-cn-09k22avmw0q
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operating system of the host. Valid values:
+	// The operating system of the host to query. Valid values:
 	//
 	// - **Linux**
 	//
@@ -64,49 +66,57 @@ type ListOperationHostsRequest struct {
 	//
 	// Linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The number of the page to return. The default value is 1.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	OperationProjectId *string `json:"OperationProjectId,omitempty" xml:"OperationProjectId,omitempty"`
+	// The page number of the current page for a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.<br> The maximum value is 100. The default value is 20. If you do not specify this parameter, the default value is used.<br>
+	// The maximum number of entries to return on each page for a paged query.
 	//
-	// > Specify a value for this parameter.
+	// Maximum value of PageSize: 100. Default value: 20. If you leave PageSize empty, 20 entries are returned by default.
+	//
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the Bastionhost instance resides.
+	// The region ID of the Bastionhost instance.
 	//
-	// > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source of the host. Valid values:
+	// The source of the host to query. Valid values:
 	//
-	// - **Local**: a local host
+	// - **Local**: local host
 	//
-	// - **Ecs**: an ECS instance
+	// - **Ecs**: ECS instance
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ECS instance. Only exact matches are supported.
+	// The ECS instance ID. Exact search.
 	//
 	// example:
 	//
 	// i-bp19ienyt0yax748****
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The state of the host. Valid values:
+	// The status of the host to query. Valid values:
 	//
-	// - **Normal**: The host is running.
+	// - **Normal**: Normal
 	//
-	// - **Release**: The host is released.
+	// - **Release**: Released
 	//
 	// example:
 	//
@@ -136,6 +146,10 @@ func (s *ListOperationHostsRequest) GetInstanceId() *string {
 
 func (s *ListOperationHostsRequest) GetOSType() *string {
 	return s.OSType
+}
+
+func (s *ListOperationHostsRequest) GetOperationProjectId() *string {
+	return s.OperationProjectId
 }
 
 func (s *ListOperationHostsRequest) GetPageNumber() *string {
@@ -179,6 +193,11 @@ func (s *ListOperationHostsRequest) SetInstanceId(v string) *ListOperationHostsR
 
 func (s *ListOperationHostsRequest) SetOSType(v string) *ListOperationHostsRequest {
 	s.OSType = &v
+	return s
+}
+
+func (s *ListOperationHostsRequest) SetOperationProjectId(v string) *ListOperationHostsRequest {
+	s.OperationProjectId = &v
 	return s
 }
 

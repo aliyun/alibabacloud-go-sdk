@@ -19,20 +19,20 @@ type iModifyPolicyRequest interface {
 	GetPolicyName() *string
 	SetPriority(v string) *ModifyPolicyRequest
 	GetPriority() *string
+	SetProjectId(v int64) *ModifyPolicyRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ModifyPolicyRequest
 	GetRegionId() *string
 }
 
 type ModifyPolicyRequest struct {
-	// The new remarks of the control policy.
+	// The new description of the control policy.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the bastion host to which the control policy to modify belongs.
-	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// The ID of the Bastionhost instance to which the control policy belongs. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ModifyPolicyRequest struct {
 	//
 	// bastionhost-cn-09k1u8mv501
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the control policy that you want to modify.
+	// The ID of the control policy.
 	//
 	// This parameter is required.
 	//
@@ -48,21 +48,25 @@ type ModifyPolicyRequest struct {
 	//
 	// 7
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The new name of the control policy.
+	// The new Policy Name of the control policy.
 	//
 	// example:
 	//
 	// test
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The priority of the modified control policy. Valid values: 1 to 100. The smaller the value, the higher the priority. Default value: 1.
+	// The new priority of the control policy. Valid values: 1 to 100. A smaller value indicates a higher priority. Default value: 1.
 	//
 	// example:
 	//
 	// 3
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The region ID of the bastion host to which the control policy to modify belongs.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the control policy belongs. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -98,6 +102,10 @@ func (s *ModifyPolicyRequest) GetPriority() *string {
 	return s.Priority
 }
 
+func (s *ModifyPolicyRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ModifyPolicyRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -124,6 +132,11 @@ func (s *ModifyPolicyRequest) SetPolicyName(v string) *ModifyPolicyRequest {
 
 func (s *ModifyPolicyRequest) SetPriority(v string) *ModifyPolicyRequest {
 	s.Priority = &v
+	return s
+}
+
+func (s *ModifyPolicyRequest) SetProjectId(v int64) *ModifyPolicyRequest {
+	s.ProjectId = &v
 	return s
 }
 

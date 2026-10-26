@@ -20,9 +20,9 @@ type iAttachHostAccountsToUserRequest interface {
 }
 
 type AttachHostAccountsToUserRequest struct {
-	// The IDs of the hosts and host accounts that you want to authorize the user to manage. You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the user is authorized to manage only the specified hosts. For more information about this parameter, see the "Description of the Hosts parameter" section of this topic.
+	// The IDs of the hosts and host accounts to be authorized for the user. You can specify up to 10 host IDs, and up to 9 host account IDs for each host. If you do not specify host account IDs, only the hosts are authorized for the user. For more information about the structure of this parameter, see the Hosts parameter structure description in the request parameters section.
 	//
-	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host and the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query host IDs and call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query host account IDs.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type AttachHostAccountsToUserRequest struct {
 	//
 	// [ {"HostId":"1"}, {"HostId":"2","HostAccountIds":["1","2","3"]}, {"HostId":"3","HostAccountIds":["4","5","6"]}, {"HostId":"4","HostAccountIds":["9","8","7"]}  ]
 	Hosts *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
-	// The ID of the bastion host for which you want to authorize the user to manage the hosts and host accounts.
+	// The instance ID of the Bastionhost instance to which the user to be granted authorization for hosts and host accounts belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -40,17 +40,17 @@ type AttachHostAccountsToUserRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host for which you want to authorize the user to manage the hosts and host accounts.
+	// The region ID of the Bastionhost instance where the user to be authorized for hosts and host accounts resides.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user that you want to authorize to manage the hosts and host accounts.
+	// The ID of the user to whom you want to authorize hosts and host accounts.
 	//
-	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the value of this parameter.
 	//
 	// This parameter is required.
 	//

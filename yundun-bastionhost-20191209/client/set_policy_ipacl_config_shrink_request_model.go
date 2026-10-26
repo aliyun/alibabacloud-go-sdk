@@ -15,18 +15,20 @@ type iSetPolicyIPAclConfigShrinkRequest interface {
 	GetInstanceId() *string
 	SetPolicyId(v string) *SetPolicyIPAclConfigShrinkRequest
 	GetPolicyId() *string
+	SetProjectId(v int64) *SetPolicyIPAclConfigShrinkRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *SetPolicyIPAclConfigShrinkRequest
 	GetRegionId() *string
 }
 
 type SetPolicyIPAclConfigShrinkRequest struct {
-	// The access control settings for source IP addresses.
+	// The source IP address restriction configuration.
 	//
 	// This parameter is required.
 	IPAclConfigShrink *string `json:"IPAclConfig,omitempty" xml:"IPAclConfig,omitempty"`
-	// The bastion host ID.
+	// The ID of the bastion host instance.
 	//
-	// > You can call the DescribeInstances operation to query the bastion host ID.[](~~153281~~)
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the bastion host instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +38,7 @@ type SetPolicyIPAclConfigShrinkRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the control policy that you want to modify.
 	//
-	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +46,15 @@ type SetPolicyIPAclConfigShrinkRequest struct {
 	//
 	// 3
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -74,6 +82,10 @@ func (s *SetPolicyIPAclConfigShrinkRequest) GetPolicyId() *string {
 	return s.PolicyId
 }
 
+func (s *SetPolicyIPAclConfigShrinkRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *SetPolicyIPAclConfigShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -90,6 +102,11 @@ func (s *SetPolicyIPAclConfigShrinkRequest) SetInstanceId(v string) *SetPolicyIP
 
 func (s *SetPolicyIPAclConfigShrinkRequest) SetPolicyId(v string) *SetPolicyIPAclConfigShrinkRequest {
 	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyIPAclConfigShrinkRequest) SetProjectId(v int64) *SetPolicyIPAclConfigShrinkRequest {
+	s.ProjectId = &v
 	return s
 }
 

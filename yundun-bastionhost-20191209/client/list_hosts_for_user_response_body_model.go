@@ -18,9 +18,9 @@ type iListHostsForUserResponseBody interface {
 }
 
 type ListHostsForUserResponseBody struct {
-	// The hosts returned.
+	// The list of hosts returned.
 	Hosts []*ListHostsForUserResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,11 +83,11 @@ func (s *ListHostsForUserResponseBody) Validate() error {
 }
 
 type ListHostsForUserResponseBodyHosts struct {
-	// The endpoint type of the host. Valid values:
+	// The address type of the host. Valid values:
 	//
-	// - **Public**: public endpoint
+	// - **Public**: Public network address.
 	//
-	// - **Private**: internal endpoint
+	// - **Private**: Private network address.
 	//
 	// example:
 	//
@@ -111,19 +111,19 @@ type ListHostsForUserResponseBodyHosts struct {
 	//
 	// host01
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The internal endpoint of the host. The value is a domain name or an IP address.
+	// The private network address of the host, which can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The public endpoint of the host. The value is a domain name or an IP address.
+	// The public network address of the host, which can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// 10.158.XX.XX
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// The operating system of the host. Valid values:
+	// The operating system type of the host. Valid values:
 	//
 	// - **Linux**
 	//
@@ -133,6 +133,18 @@ type ListHostsForUserResponseBodyHosts struct {
 	//
 	// Linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the project.
+	//
+	// example:
+	//
+	// test
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s ListHostsForUserResponseBodyHosts) String() string {
@@ -171,6 +183,14 @@ func (s *ListHostsForUserResponseBodyHosts) GetOSType() *string {
 	return s.OSType
 }
 
+func (s *ListHostsForUserResponseBodyHosts) GetProjectId() *string {
+	return s.ProjectId
+}
+
+func (s *ListHostsForUserResponseBodyHosts) GetProjectName() *string {
+	return s.ProjectName
+}
+
 func (s *ListHostsForUserResponseBodyHosts) SetActiveAddressType(v string) *ListHostsForUserResponseBodyHosts {
 	s.ActiveAddressType = &v
 	return s
@@ -203,6 +223,16 @@ func (s *ListHostsForUserResponseBodyHosts) SetHostPublicAddress(v string) *List
 
 func (s *ListHostsForUserResponseBodyHosts) SetOSType(v string) *ListHostsForUserResponseBodyHosts {
 	s.OSType = &v
+	return s
+}
+
+func (s *ListHostsForUserResponseBodyHosts) SetProjectId(v string) *ListHostsForUserResponseBodyHosts {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListHostsForUserResponseBodyHosts) SetProjectName(v string) *ListHostsForUserResponseBodyHosts {
+	s.ProjectName = &v
 	return s
 }
 

@@ -17,12 +17,14 @@ type iModifyHostGroupRequest interface {
 	GetHostGroupName() *string
 	SetInstanceId(v string) *ModifyHostGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *ModifyHostGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ModifyHostGroupRequest
 	GetRegionId() *string
 }
 
 type ModifyHostGroupRequest struct {
-	// The new remarks of the asset group. The remarks can be up to 500 characters in length.
+	// The new description of the asset group. The description can be up to 500 characters in length.
 	//
 	// example:
 	//
@@ -30,7 +32,7 @@ type ModifyHostGroupRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The ID of the asset group that you want to modify.
 	//
-	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
+	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the asset group ID.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +46,9 @@ type ModifyHostGroupRequest struct {
 	//
 	// Group01
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the bastion host whose asset group you want to modify.
+	// The ID of the Bastionhost instance to which the asset group belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +56,13 @@ type ModifyHostGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host whose asset group you want to modify.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the asset group belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -88,6 +96,10 @@ func (s *ModifyHostGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ModifyHostGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ModifyHostGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -109,6 +121,11 @@ func (s *ModifyHostGroupRequest) SetHostGroupName(v string) *ModifyHostGroupRequ
 
 func (s *ModifyHostGroupRequest) SetInstanceId(v string) *ModifyHostGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyHostGroupRequest) SetProjectId(v int64) *ModifyHostGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

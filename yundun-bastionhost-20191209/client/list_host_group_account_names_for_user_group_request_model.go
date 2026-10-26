@@ -13,6 +13,8 @@ type iListHostGroupAccountNamesForUserGroupRequest interface {
 	GetHostGroupId() *string
 	SetInstanceId(v string) *ListHostGroupAccountNamesForUserGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *ListHostGroupAccountNamesForUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListHostGroupAccountNamesForUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *ListHostGroupAccountNamesForUserGroupRequest
@@ -22,7 +24,7 @@ type iListHostGroupAccountNamesForUserGroupRequest interface {
 type ListHostGroupAccountNamesForUserGroupRequest struct {
 	// The ID of the host group.
 	//
-	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
+	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +32,9 @@ type ListHostGroupAccountNamesForUserGroupRequest struct {
 	//
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The ID of the bastion host on which you want to query the host account names the user group is authorized to manage in a host group.
+	// The instance ID of the Bastionhost instance to which the specified user group belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +42,13 @@ type ListHostGroupAccountNamesForUserGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host on which you want to query the host account names the user group is authorized to manage in a host group.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the specified user group belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -50,7 +58,7 @@ type ListHostGroupAccountNamesForUserGroupRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user group.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -76,6 +84,10 @@ func (s *ListHostGroupAccountNamesForUserGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListHostGroupAccountNamesForUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListHostGroupAccountNamesForUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -91,6 +103,11 @@ func (s *ListHostGroupAccountNamesForUserGroupRequest) SetHostGroupId(v string) 
 
 func (s *ListHostGroupAccountNamesForUserGroupRequest) SetInstanceId(v string) *ListHostGroupAccountNamesForUserGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListHostGroupAccountNamesForUserGroupRequest) SetProjectId(v int64) *ListHostGroupAccountNamesForUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

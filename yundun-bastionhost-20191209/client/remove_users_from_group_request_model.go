@@ -11,6 +11,8 @@ type iRemoveUsersFromGroupRequest interface {
 	GoString() string
 	SetInstanceId(v string) *RemoveUsersFromGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *RemoveUsersFromGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *RemoveUsersFromGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *RemoveUsersFromGroupRequest
@@ -20,9 +22,9 @@ type iRemoveUsersFromGroupRequest interface {
 }
 
 type RemoveUsersFromGroupRequest struct {
-	// The ID of the bastion host for which you want to remove users from the user group.
+	// The ID of the Bastionhost instance to which the user group from which you want to remove users belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +32,13 @@ type RemoveUsersFromGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host for which you want to remove users from the user group.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the user group from which you want to remove users belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -40,7 +48,7 @@ type RemoveUsersFromGroupRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user group from which you want to remove users.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +56,9 @@ type RemoveUsersFromGroupRequest struct {
 	//
 	// １
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The ID of the user who you want to remove. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
+	// The IDs of the users that you want to remove. The value of this parameter is a JSON string. You can specify up to 100 user IDs. Separate multiple IDs with commas (,).
 	//
-	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the IDs of users.
+	// > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query user IDs.
 	//
 	// This parameter is required.
 	//
@@ -72,6 +80,10 @@ func (s *RemoveUsersFromGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *RemoveUsersFromGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *RemoveUsersFromGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -86,6 +98,11 @@ func (s *RemoveUsersFromGroupRequest) GetUserIds() *string {
 
 func (s *RemoveUsersFromGroupRequest) SetInstanceId(v string) *RemoveUsersFromGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *RemoveUsersFromGroupRequest) SetProjectId(v int64) *RemoveUsersFromGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

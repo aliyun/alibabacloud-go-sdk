@@ -16,13 +16,13 @@ type iGetUserGroupResponseBody interface {
 }
 
 type GetUserGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the user group returned.
+	// The details of the user group.
 	UserGroup *GetUserGroupResponseBodyUserGroup `json:"UserGroup,omitempty" xml:"UserGroup,omitempty" type:"Struct"`
 }
 
@@ -68,7 +68,7 @@ type GetUserGroupResponseBodyUserGroup struct {
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the group.
+	// The ID of the user group.
 	//
 	// example:
 	//

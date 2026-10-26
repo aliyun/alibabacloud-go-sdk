@@ -17,20 +17,22 @@ type iListOperationTicketsRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListOperationTicketsRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListOperationTicketsRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListOperationTicketsRequest
 	GetRegionId() *string
 }
 
 type ListOperationTicketsRequest struct {
-	// The exact asset address to search for in the pending approval list.
+	// The address of the O&M asset for exact search.
 	//
 	// example:
 	//
 	// 10.167.XX.XX
 	AssetAddress *string `json:"AssetAddress,omitempty" xml:"AssetAddress,omitempty"`
-	// The instance ID of the bastion host.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can invoke [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to obtain this parameter.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,25 +40,31 @@ type ListOperationTicketsRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number for a paged query. Default value: **1**.
+	// The page number of the page to return in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page for a paged query.
+	// The maximum number of entries to return on each page in a paged query.
 	//
-	// The maximum value of PageSize is 1000. The default number of entries per page is 20. If PageSize is left empty, 20 entries are returned by default.
+	// The maximum value of the PageSize parameter is 1000. The default value is 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > Do not leave PageSize empty.
+	// > We recommend that you specify a value for the PageSize parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
 	//
-	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -88,6 +96,10 @@ func (s *ListOperationTicketsRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListOperationTicketsRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListOperationTicketsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -109,6 +121,11 @@ func (s *ListOperationTicketsRequest) SetPageNumber(v string) *ListOperationTick
 
 func (s *ListOperationTicketsRequest) SetPageSize(v string) *ListOperationTicketsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListOperationTicketsRequest) SetProjectId(v int64) *ListOperationTicketsRequest {
+	s.ProjectId = &v
 	return s
 }
 

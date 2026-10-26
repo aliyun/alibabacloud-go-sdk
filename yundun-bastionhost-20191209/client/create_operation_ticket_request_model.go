@@ -23,6 +23,8 @@ type iCreateOperationTicketRequest interface {
 	GetInstanceId() *string
 	SetIsOneTimeEffect(v bool) *CreateOperationTicketRequest
 	GetIsOneTimeEffect() *bool
+	SetProjectId(v int64) *CreateOperationTicketRequest
+	GetProjectId() *int64
 	SetProtocolName(v string) *CreateOperationTicketRequest
 	GetProtocolName() *string
 	SetRegionId(v string) *CreateOperationTicketRequest
@@ -30,7 +32,7 @@ type iCreateOperationTicketRequest interface {
 }
 
 type CreateOperationTicketRequest struct {
-	// The comments on the ticket.
+	// The remarks of the request.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +40,7 @@ type CreateOperationTicketRequest struct {
 	//
 	// Comment
 	ApproveComment *string `json:"ApproveComment,omitempty" xml:"ApproveComment,omitempty"`
-	// The logon name of the asset account for the O\\&M request.
+	// The logon name of the asset account for which you want to request O&M access.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +48,9 @@ type CreateOperationTicketRequest struct {
 	//
 	// root
 	AssetAccountName *string `json:"AssetAccountName,omitempty" xml:"AssetAccountName,omitempty"`
-	// The ID of the asset for which to request O\\&M.
+	// The ID of the asset for which you want to request O&M access.
 	//
-	// > Call the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) and [ListOperationHosts](https://help.aliyun.com/document_detail/2758857.html) operations to obtain this parameter.
+	// > You can call the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) or [ListOperationHosts](https://help.aliyun.com/document_detail/2758857.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -56,23 +58,23 @@ type CreateOperationTicketRequest struct {
 	//
 	// 2
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	// The end time of the validity period for the logon request. This value is a UNIX timestamp. Unit: seconds.
+	// The end time of the validity period for the logon request. Unit: seconds. The value is a UNIX timestamp.
 	//
-	// > The end time must be later than the start time.
+	// > The end time of the validity period must be later than the start time.
 	//
 	// example:
 	//
 	// 1679393152
 	EffectEndTime *int64 `json:"EffectEndTime,omitempty" xml:"EffectEndTime,omitempty"`
-	// The start time of the validity period for the logon request. This value is a UNIX timestamp. Unit: seconds.
+	// The start time of the validity period for the logon request. Unit: seconds. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1685600242
 	EffectStartTime *int64 `json:"EffectStartTime,omitempty" xml:"EffectStartTime,omitempty"`
-	// The ID of the Bastionhost instance.
+	// The instance ID of the bastion host.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -80,17 +82,23 @@ type CreateOperationTicketRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the ticket is valid for a single logon. Valid values:
+	// The number of logon times allowed. Valid values:
 	//
-	// - **true**: The ticket is valid for a single logon.
+	// - **true**: Only one logon is allowed within the validity period.
 	//
-	// - **false**: The ticket is valid for multiple logons within the validity period.
+	// - **false**: Unlimited logons are allowed within the validity period.
 	//
 	// example:
 	//
 	// false
 	IsOneTimeEffect *bool `json:"IsOneTimeEffect,omitempty" xml:"IsOneTimeEffect,omitempty"`
-	// The name of the protocol for the O\\&M request. Valid values:
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the protocol for which you want to request O&M access. Valid values:
 	//
 	// - SSH
 	//
@@ -110,9 +118,9 @@ type CreateOperationTicketRequest struct {
 	//
 	// SSH
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
-	// The region ID of the Bastionhost instance.
+	// The region ID of the bastion host.
 	//
-	// > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -156,6 +164,10 @@ func (s *CreateOperationTicketRequest) GetIsOneTimeEffect() *bool {
 	return s.IsOneTimeEffect
 }
 
+func (s *CreateOperationTicketRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *CreateOperationTicketRequest) GetProtocolName() *string {
 	return s.ProtocolName
 }
@@ -196,6 +208,11 @@ func (s *CreateOperationTicketRequest) SetInstanceId(v string) *CreateOperationT
 
 func (s *CreateOperationTicketRequest) SetIsOneTimeEffect(v bool) *CreateOperationTicketRequest {
 	s.IsOneTimeEffect = &v
+	return s
+}
+
+func (s *CreateOperationTicketRequest) SetProjectId(v int64) *CreateOperationTicketRequest {
+	s.ProjectId = &v
 	return s
 }
 

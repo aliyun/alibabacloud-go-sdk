@@ -16,7 +16,7 @@ type iGetDatabaseResponseBody interface {
 }
 
 type GetDatabaseResponseBody struct {
-	// The returned detailed information about the database.
+	// The details of the database instance.
 	Database *GetDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,29 +62,29 @@ func (s *GetDatabaseResponseBody) Validate() error {
 }
 
 type GetDatabaseResponseBodyDatabase struct {
-	// The address type of the database. Valid values:
+	// The address type of the database instance. Valid values:
 	//
-	// - Public
+	// - Public: public address.
 	//
-	// - Private
+	// - Private: private endpoint. The database is accessed over a private network.
 	//
 	// example:
 	//
 	// Public
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The remarks of the database.
+	// The description of the database instance.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The database ID.
+	// The instance ID of the database.
 	//
 	// example:
 	//
 	// 22
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The name of the database.
+	// The name of the database instance.
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ type GetDatabaseResponseBodyDatabase struct {
 	//
 	// 3306
 	DatabasePort *int64 `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
-	// The internal endpoint of the database.
+	// The private endpoint of the database instance. The database is accessed over a private network.
 	//
 	// example:
 	//
 	// rm-bp1zq******
 	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
-	// The public endpoint of the database.
+	// The public address of the database instance.
 	//
 	// example:
 	//
 	// rm-uf65******
 	DatabasePublicAddress *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
-	// The database engine. Valid values:
+	// The type of the database. Valid values:
 	//
 	// - **mysql**
 	//
@@ -128,37 +128,37 @@ type GetDatabaseResponseBodyDatabase struct {
 	//
 	// 45
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The database type. Valid values:
+	// The source of the database instance. Valid values:
 	//
-	// - **Local**: on-premises database.
+	// - **Local**: a local database instance.
 	//
-	// - **Rds**: ApsaraDB RDS instance.
+	// - **Rds**: an ApsaraDB RDS database instance.
 	//
-	// - **PolarDB**: PolarDB cluster.
+	// - **PolarDB**: a PolarDB database instance.
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ApsaraDB RDS instance or PolarDB cluster.
+	// The instance ID of the ApsaraDB RDS or PolarDB instance that corresponds to the database.
 	//
-	// > If **Source*	- is set to **Local**, this parameter is empty.
+	// > If **Source*	- is set to **Local**, this parameter returns an empty value.
 	//
 	// example:
 	//
 	// i-wz9527ob0e0nftcsffke
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The region ID of the ApsaraDB RDS instance or PolarDB cluster.
+	// The region ID of the ApsaraDB RDS instance or PolarDB instance that corresponds to the database.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
-	// The status of the database. Valid values:
+	// The instance status of the database. Valid values:
 	//
-	// - **Normal**
+	// - **Normal**: normal.
 	//
-	// - **Release**
+	// - **Release**: released.
 	//
 	// example:
 	//

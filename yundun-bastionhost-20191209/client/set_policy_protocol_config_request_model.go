@@ -13,6 +13,8 @@ type iSetPolicyProtocolConfigRequest interface {
 	GetInstanceId() *string
 	SetPolicyId(v string) *SetPolicyProtocolConfigRequest
 	GetPolicyId() *string
+	SetProjectId(v int64) *SetPolicyProtocolConfigRequest
+	GetProjectId() *int64
 	SetProtocolConfig(v *SetPolicyProtocolConfigRequestProtocolConfig) *SetPolicyProtocolConfigRequest
 	GetProtocolConfig() *SetPolicyProtocolConfigRequestProtocolConfig
 	SetRegionId(v string) *SetPolicyProtocolConfigRequest
@@ -20,9 +22,9 @@ type iSetPolicyProtocolConfigRequest interface {
 }
 
 type SetPolicyProtocolConfigRequest struct {
-	// The ID of the Bastionhost instance.
+	// The instance ID of the bastion host.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+	// > You can invoke [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +32,9 @@ type SetPolicyProtocolConfigRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the control policy that you want to modify.
+	// The ID of the control policy to modify.
 	//
-	// > Call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to obtain the policy ID.
+	// > You can call [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +42,19 @@ type SetPolicyProtocolConfigRequest struct {
 	//
 	// 61
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The protocol control configuration.
 	//
 	// This parameter is required.
 	ProtocolConfig *SetPolicyProtocolConfigRequestProtocolConfig `json:"ProtocolConfig,omitempty" xml:"ProtocolConfig,omitempty" type:"Struct"`
-	// The ID of the region where the Bastionhost instance resides.
+	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -70,6 +78,10 @@ func (s *SetPolicyProtocolConfigRequest) GetPolicyId() *string {
 	return s.PolicyId
 }
 
+func (s *SetPolicyProtocolConfigRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *SetPolicyProtocolConfigRequest) GetProtocolConfig() *SetPolicyProtocolConfigRequestProtocolConfig {
 	return s.ProtocolConfig
 }
@@ -85,6 +97,11 @@ func (s *SetPolicyProtocolConfigRequest) SetInstanceId(v string) *SetPolicyProto
 
 func (s *SetPolicyProtocolConfigRequest) SetPolicyId(v string) *SetPolicyProtocolConfigRequest {
 	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequest) SetProjectId(v int64) *SetPolicyProtocolConfigRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -108,9 +125,9 @@ func (s *SetPolicyProtocolConfigRequest) Validate() error {
 }
 
 type SetPolicyProtocolConfigRequestProtocolConfig struct {
-	// The RDP options.
+	// The RDP option configuration details.
 	RDP *SetPolicyProtocolConfigRequestProtocolConfigRDP `json:"RDP,omitempty" xml:"RDP,omitempty" type:"Struct"`
-	// The SSH and SFTP options.
+	// The SSH and SFTP option configuration details.
 	SSH *SetPolicyProtocolConfigRequestProtocolConfigSSH `json:"SSH,omitempty" xml:"SSH,omitempty" type:"Struct"`
 }
 
@@ -155,57 +172,61 @@ func (s *SetPolicyProtocolConfigRequestProtocolConfig) Validate() error {
 }
 
 type SetPolicyProtocolConfigRequestProtocolConfigRDP struct {
-	// Specifies whether to allow clipboard content to be downloaded. Valid values:
+	// The clipboard download configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
 	// Enable
 	ClipboardDownload *string `json:"ClipboardDownload,omitempty" xml:"ClipboardDownload,omitempty"`
-	// Specifies whether to allow clipboard content to be uploaded. Valid values:
+	// The clipboard upload configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
 	// Enable
 	ClipboardUpload *string `json:"ClipboardUpload,omitempty" xml:"ClipboardUpload,omitempty"`
-	// Specifies whether to enable drive and printer mapping. Valid values:
+	// The drive/printer mapping configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
 	// Enable
 	DiskRedirection *string `json:"DiskRedirection,omitempty" xml:"DiskRedirection,omitempty"`
+	// Specifies whether to allow disk download.
+	//
 	// example:
 	//
 	// Enable
 	DiskRedirectionDownload *string `json:"DiskRedirectionDownload,omitempty" xml:"DiskRedirectionDownload,omitempty"`
+	// Specifies whether to allow disk upload.
+	//
 	// example:
 	//
 	// Enable
 	DiskRedirectionUpload *string `json:"DiskRedirectionUpload,omitempty" xml:"DiskRedirectionUpload,omitempty"`
-	// Specifies whether to record keyboard input. Valid values:
+	// The keyboard recording configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
@@ -280,149 +301,147 @@ func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) Validate() error {
 }
 
 type SetPolicyProtocolConfigRequestProtocolConfigSSH struct {
+	// Specifies whether to allow direct TCP connection.
+	//
 	// example:
 	//
 	// Enable
 	AllowDirectTcp *string `json:"AllowDirectTcp,omitempty" xml:"AllowDirectTcp,omitempty"`
+	// Specifies whether to allow TCP forwarding.
+	//
 	// example:
 	//
 	// Enable
 	AllowTcpForwarding *string `json:"AllowTcpForwarding,omitempty" xml:"AllowTcpForwarding,omitempty"`
-	// Specifies whether to allow remote command execution. Valid values:
+	// The remote command execution configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
 	// Enable
 	ExecCommand *string `json:"ExecCommand,omitempty" xml:"ExecCommand,omitempty"`
-	// Specifies whether to enable the SFTP channel. Valid values:
+	// The SFTP channel configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > 	- The default value is Disable.
+	// > - If this parameter is not specified, the default value is Disable.
 	//
-	// >
+	// > - At least one of the SSH channel and SFTP channel must be set to Enable.
 	//
-	// > 	- At least one of the SSH channel and the SFTP channel must be enabled.
-	//
-	// >
-	//
-	// > 	- If you grant only SFTP permissions to a host account, do not disable the SSH and SFTP channels for that account in the control policy. Otherwise, you cannot use the host account to access the target server through Bastionhost.
+	// > - If you enable the SFTP-only permission for a host account, do not disable both the SSH channel and SFTP channel for that account in the control policy. Otherwise, you cannot use the host account to access the target server through the bastion host.
 	//
 	// example:
 	//
 	// Enable
 	SFTPChannel *string `json:"SFTPChannel,omitempty" xml:"SFTPChannel,omitempty"`
-	// Specifies whether to allow file downloads over SFTP. Valid values:
+	// The SFTP file download configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
 	// Enable
 	SFTPDownloadFile *string `json:"SFTPDownloadFile,omitempty" xml:"SFTPDownloadFile,omitempty"`
-	// Specifies whether to allow folder creation over SFTP. Valid values:
+	// The SFTP folder creation configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
 	// Enable
 	SFTPMkdir *string `json:"SFTPMkdir,omitempty" xml:"SFTPMkdir,omitempty"`
-	// Specifies whether to allow file deletions over SFTP. Valid values:
+	// The SFTP file deletion configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
 	// Enable
 	SFTPRemoveFile *string `json:"SFTPRemoveFile,omitempty" xml:"SFTPRemoveFile,omitempty"`
-	// Specifies whether to allow file renames over SFTP. Valid values:
+	// The SFTP file rename configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
 	// Enable
 	SFTPRenameFile *string `json:"SFTPRenameFile,omitempty" xml:"SFTPRenameFile,omitempty"`
-	// Specifies whether to allow folder deletion over SFTP. Valid values:
+	// The SFTP folder deletion configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
 	// Enable
 	SFTPRmdir *string `json:"SFTPRmdir,omitempty" xml:"SFTPRmdir,omitempty"`
-	// Specifies whether to allow file uploads over SFTP. Valid values:
+	// The SFTP file upload configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//
 	// Enable
 	SFTPUploadFile *string `json:"SFTPUploadFile,omitempty" xml:"SFTPUploadFile,omitempty"`
-	// Specifies whether to enable the SSH channel. Valid values:
+	// The SSH channel configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > 	- The default value is Disable.
+	// > - If this parameter is not specified, the default value is Disable.
 	//
-	// >
+	// > - At least one of the SSH channel and SFTP channel must be set to Enable. If the SSH channel is set to Disable, you cannot log on to asset accounts by using SSH permissions. Proceed with caution.
 	//
-	// > 	- At least one of the SSH channel and the SFTP channel must be enabled. If you disable the SSH channel, you cannot use SSH permissions to log on to the asset account. Configure this parameter with caution.
-	//
-	// >
-	//
-	// > 	- If you grant only SFTP permissions to a host account, do not disable the SSH and SFTP channels for that account in the control policy. Otherwise, you cannot use the host account to access the target server through Bastionhost.
+	// > - If you enable the SFTP-only permission for a host account, do not disable both the SSH channel and SFTP channel for that account in the control policy. Otherwise, you cannot use the host account to access the target server through the bastion host.
 	//
 	// example:
 	//
 	// Enable
 	SSHChannel *string `json:"SSHChannel,omitempty" xml:"SSHChannel,omitempty"`
+	// Specifies whether to allow TCP forwarding.
+	//
 	// example:
 	//
 	// Enable
 	TcpForwarding *string `json:"TcpForwarding,omitempty" xml:"TcpForwarding,omitempty"`
-	// Specifies whether to enable X11 forwarding. Valid values:
+	// The X11 forwarding configuration. Valid values:
 	//
-	// - Enable
+	// - Enable: Enabled.
 	//
-	// - Disable
+	// - Disable: Disabled.
 	//
-	// > The default value is Disable.
+	// > If this parameter is not specified, the default value is Disable.
 	//
 	// example:
 	//

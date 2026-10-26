@@ -40,7 +40,7 @@ type iModifyInstanceLDAPAuthServerRequest interface {
 }
 
 type ModifyInstanceLDAPAuthServerRequest struct {
-	// The username of the account that is used for the LDAP server.
+	// The account of the server.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	//
 	// cn=Manager,dc=test,dc=com
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The Base distinguished name (DN).
+	// The base distinguished name (Base DN).
 	//
 	// This parameter is required.
 	//
@@ -56,21 +56,21 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	//
 	// dc=test,dc=com
 	BaseDN *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
-	// The field that is used to indicate the email address of a user on the LDAP server.
+	// The server attribute name that corresponds to the user email address.
 	//
 	// example:
 	//
 	// emailAttr
 	EmailMapping *string `json:"EmailMapping,omitempty" xml:"EmailMapping,omitempty"`
-	// The condition that is used to filter users.
+	// The filter condition for users.
 	//
 	// example:
 	//
 	// (objectClass=top)
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The bastion host ID.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the parameter value.
 	//
 	// This parameter is required.
 	//
@@ -78,41 +78,41 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to support SSL. Valid values:
+	// Specifies whether SSL is supported. Valid values:
 	//
-	// - **true**
+	// - **true**: Supported.
 	//
-	// - **false**
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	IsSSL *string `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
-	// The field that is used to indicate the logon name of a user on the LDAP server.
+	// The server attribute name that corresponds to the user logon name.
 	//
 	// example:
 	//
 	// userNameAttr
 	LoginNameMapping *string `json:"LoginNameMapping,omitempty" xml:"LoginNameMapping,omitempty"`
-	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	// The server attribute name that corresponds to the user mobile phone number.
 	//
 	// example:
 	//
 	// mobileAttr
 	MobileMapping *string `json:"MobileMapping,omitempty" xml:"MobileMapping,omitempty"`
-	// The field that is used to indicate the name of a user on the LDAP server.
+	// The server attribute name that corresponds to the username.
 	//
 	// example:
 	//
 	// nameAttr
 	NameMapping *string `json:"NameMapping,omitempty" xml:"NameMapping,omitempty"`
-	// The password of the account that is used for the LDAP server. You must configure a password when you configure LDAP authentication. If you leave this parameter empty when you modify the settings of LDAP authentication, the current password is used.
+	// The password of the server account. This parameter is required when you add an LDAP authentication server. When you modify the information of an LDAP authentication server, if you do not specify this parameter, the current password is retained.
 	//
 	// example:
 	//
 	// ******
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The port that is used to access the LDAP server.
+	// The port used to access the server.
 	//
 	// This parameter is required.
 	//
@@ -120,7 +120,7 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	//
 	// 389
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -128,7 +128,7 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The address of the LDAP server.
+	// The address of the server.
 	//
 	// This parameter is required.
 	//
@@ -136,7 +136,7 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	//
 	// 192.168.XX.XX
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// The address of the secondary LDAP server.
+	// The address of the standby server.
 	//
 	// example:
 	//

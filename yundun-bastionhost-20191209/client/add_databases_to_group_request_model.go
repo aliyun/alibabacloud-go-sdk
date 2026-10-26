@@ -20,13 +20,11 @@ type iAddDatabasesToGroupRequest interface {
 }
 
 type AddDatabasesToGroupRequest struct {
-	// An array that consists of the database IDs.
+	// The array of database IDs.
 	//
 	// This parameter is required.
 	DatabaseIds []*string `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
-	// The ID of the asset group to which you want to add the databases.
-	//
-	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the asset group.
+	// The ID of the asset group to which you want to add the databases. You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the asset group ID.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +32,7 @@ type AddDatabasesToGroupRequest struct {
 	//
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The bastion host ID.
-	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// The ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +40,7 @@ type AddDatabasesToGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host.
-	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// The region ID of the Bastionhost instance. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

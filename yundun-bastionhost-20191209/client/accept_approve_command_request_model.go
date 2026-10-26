@@ -13,14 +13,16 @@ type iAcceptApproveCommandRequest interface {
 	GetCommandId() *string
 	SetInstanceId(v string) *AcceptApproveCommandRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *AcceptApproveCommandRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *AcceptApproveCommandRequest
 	GetRegionId() *string
 }
 
 type AcceptApproveCommandRequest struct {
-	// The ID of the command that you want to approve.
+	// The ID of the command to be approved for execution.
 	//
-	// > You can call the [ListApproveCommands](https://help.aliyun.com/document_detail/2584310.html) operation to query the IDs of all commands that need to be reviewed.
+	// > You can call the [ListApproveCommands](https://help.aliyun.com/document_detail/2584310.html) operation to query the IDs of all commands that require approval.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,9 @@ type AcceptApproveCommandRequest struct {
 	//
 	// 7
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The ID of the bastion host.
+	// The instance ID of the bastion host.
 	//
-	// > You can call the DescribeInstances operation to query the ID of the bastion host.
+	// > You can call the DescribeInstances operation to query the bastion host instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +40,15 @@ type AcceptApproveCommandRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -64,6 +72,10 @@ func (s *AcceptApproveCommandRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *AcceptApproveCommandRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *AcceptApproveCommandRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -75,6 +87,11 @@ func (s *AcceptApproveCommandRequest) SetCommandId(v string) *AcceptApproveComma
 
 func (s *AcceptApproveCommandRequest) SetInstanceId(v string) *AcceptApproveCommandRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *AcceptApproveCommandRequest) SetProjectId(v int64) *AcceptApproveCommandRequest {
+	s.ProjectId = &v
 	return s
 }
 

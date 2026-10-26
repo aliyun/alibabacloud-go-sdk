@@ -20,13 +20,13 @@ type iListPoliciesResponseBody interface {
 type ListPoliciesResponseBody struct {
 	// The control policies.
 	Policies []*ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of control policies that are returned.
+	// The total number of control policies returned.
 	//
 	// example:
 	//
@@ -83,19 +83,19 @@ func (s *ListPoliciesResponseBody) Validate() error {
 }
 
 type ListPoliciesResponseBodyPolicies struct {
-	// The remarks of the control policy.
+	// The comment of the control policy.
 	//
 	// example:
 	//
 	// Comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The control policy ID.
+	// The ID of the control policy.
 	//
 	// example:
 	//
 	// 2
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The name of the control policy.
+	// The Policy Name of the control policy.
 	//
 	// example:
 	//

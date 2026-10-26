@@ -15,18 +15,20 @@ type iSetPolicyAccessTimeRangeConfigShrinkRequest interface {
 	GetInstanceId() *string
 	SetPolicyId(v string) *SetPolicyAccessTimeRangeConfigShrinkRequest
 	GetPolicyId() *string
+	SetProjectId(v int64) *SetPolicyAccessTimeRangeConfigShrinkRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *SetPolicyAccessTimeRangeConfigShrinkRequest
 	GetRegionId() *string
 }
 
 type SetPolicyAccessTimeRangeConfigShrinkRequest struct {
-	// The logon period limits.
+	// The logon time limit configuration.
 	//
 	// This parameter is required.
 	AccessTimeRangeConfigShrink *string `json:"AccessTimeRangeConfig,omitempty" xml:"AccessTimeRangeConfig,omitempty"`
-	// The bastion host ID.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to retrieve this parameter.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +36,9 @@ type SetPolicyAccessTimeRangeConfigShrinkRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The control policy ID.
+	// The ID of the control policy.
 	//
-	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+	// > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to retrieve this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +46,15 @@ type SetPolicyAccessTimeRangeConfigShrinkRequest struct {
 	//
 	// 13
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
+	//
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -74,6 +82,10 @@ func (s *SetPolicyAccessTimeRangeConfigShrinkRequest) GetPolicyId() *string {
 	return s.PolicyId
 }
 
+func (s *SetPolicyAccessTimeRangeConfigShrinkRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *SetPolicyAccessTimeRangeConfigShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -90,6 +102,11 @@ func (s *SetPolicyAccessTimeRangeConfigShrinkRequest) SetInstanceId(v string) *S
 
 func (s *SetPolicyAccessTimeRangeConfigShrinkRequest) SetPolicyId(v string) *SetPolicyAccessTimeRangeConfigShrinkRequest {
 	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyAccessTimeRangeConfigShrinkRequest) SetProjectId(v int64) *SetPolicyAccessTimeRangeConfigShrinkRequest {
+	s.ProjectId = &v
 	return s
 }
 

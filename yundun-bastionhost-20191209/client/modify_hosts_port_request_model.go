@@ -15,6 +15,8 @@ type iModifyHostsPortRequest interface {
 	GetInstanceId() *string
 	SetPort(v string) *ModifyHostsPortRequest
 	GetPort() *string
+	SetProjectId(v int64) *ModifyHostsPortRequest
+	GetProjectId() *int64
 	SetProtocolName(v string) *ModifyHostsPortRequest
 	GetProtocolName() *string
 	SetRegionId(v string) *ModifyHostsPortRequest
@@ -22,9 +24,9 @@ type iModifyHostsPortRequest interface {
 }
 
 type ModifyHostsPortRequest struct {
-	// The ID of the host for which you want to change the port. The value is a JSON string. You can add up to 100 host IDs. If you specify multiple IDs, separate the IDs with commas (,).
+	// The IDs of the hosts whose O&M protocols and ports you want to modify. The value is a JSON string. You can enter up to 100 host IDs. Separate multiple host IDs with commas (,).
 	//
-	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the IDs of hosts.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host IDs.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +34,9 @@ type ModifyHostsPortRequest struct {
 	//
 	// ["1","2","3"]
 	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
-	// The ID of the bastion host for which you want to change the port of the host.
+	// The ID of the Bastionhost instance where the hosts whose protocol ports you want to modify reside.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +44,7 @@ type ModifyHostsPortRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The new port of the host. The port number must be an integer. Valid values: 22 to 65535.
+	// The new port number. The port number must be an integer. Valid values: 22 to 65535.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +52,13 @@ type ModifyHostsPortRequest struct {
 	//
 	// 22
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol that is used to connect to the host. Valid values:
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the protocol whose port you want to modify. Valid values:
 	//
 	// - **SSH**
 	//
@@ -62,7 +70,7 @@ type ModifyHostsPortRequest struct {
 	//
 	// SSH
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
-	// The region ID of the bastion host for which you want to change the port of the host.
+	// The region ID of the Bastionhost instance where the hosts whose ports you want to modify reside.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -92,6 +100,10 @@ func (s *ModifyHostsPortRequest) GetPort() *string {
 	return s.Port
 }
 
+func (s *ModifyHostsPortRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ModifyHostsPortRequest) GetProtocolName() *string {
 	return s.ProtocolName
 }
@@ -112,6 +124,11 @@ func (s *ModifyHostsPortRequest) SetInstanceId(v string) *ModifyHostsPortRequest
 
 func (s *ModifyHostsPortRequest) SetPort(v string) *ModifyHostsPortRequest {
 	s.Port = &v
+	return s
+}
+
+func (s *ModifyHostsPortRequest) SetProjectId(v int64) *ModifyHostsPortRequest {
+	s.ProjectId = &v
 	return s
 }
 

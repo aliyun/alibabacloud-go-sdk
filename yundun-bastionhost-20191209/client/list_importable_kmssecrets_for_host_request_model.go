@@ -24,9 +24,9 @@ type iListImportableKMSSecretsForHostRequest interface {
 }
 
 type ListImportableKMSSecretsForHostRequest struct {
-	// The ID of the host.
+	// The ID of the host to query.
 	//
-	// > Call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to get this ID.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -34,37 +34,37 @@ type ListImportableKMSSecretsForHostRequest struct {
 	//
 	// 1
 	HostId *int32 `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the bastion host instance.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to get this ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the secret to search for. Fuzzy matching is supported.
+	// The name of the credential to query. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of entries to return. If you do not specify this parameter, the default value is 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The token required for the next cursor-based query.
 	//
-	// > You do not need to specify this parameter for the first request. For subsequent requests, use the `NextToken` value from the previous response.
+	// > Leave this parameter empty for the initial query. For subsequent requests, specify the value of the NextToken field returned in the previous response.
 	//
 	// example:
 	//
 	// 42bc833a0a0002dae0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
-	// > For details about the mapping between region IDs and region names, see [Regions and availability zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

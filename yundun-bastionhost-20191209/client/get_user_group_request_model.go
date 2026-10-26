@@ -11,6 +11,8 @@ type iGetUserGroupRequest interface {
 	GoString() string
 	SetInstanceId(v string) *GetUserGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *GetUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *GetUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *GetUserGroupRequest
@@ -18,9 +20,9 @@ type iGetUserGroupRequest interface {
 }
 
 type GetUserGroupRequest struct {
-	// The ID of the bastion host in which you want to query the details of the user group.
+	// The instance ID of the Bastionhost instance for which you want to query user group details.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +30,13 @@ type GetUserGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host in which you want to query the details of the user group.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance for which you want to query user group details.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -36,9 +44,9 @@ type GetUserGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group.
+	// The ID of the user group that you want to query.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain the user group ID.
 	//
 	// This parameter is required.
 	//
@@ -60,6 +68,10 @@ func (s *GetUserGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *GetUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -70,6 +82,11 @@ func (s *GetUserGroupRequest) GetUserGroupId() *string {
 
 func (s *GetUserGroupRequest) SetInstanceId(v string) *GetUserGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetUserGroupRequest) SetProjectId(v int64) *GetUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

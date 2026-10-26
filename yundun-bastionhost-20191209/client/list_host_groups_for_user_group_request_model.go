@@ -19,6 +19,8 @@ type iListHostGroupsForUserGroupRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListHostGroupsForUserGroupRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListHostGroupsForUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListHostGroupsForUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *ListHostGroupsForUserGroupRequest
@@ -26,15 +28,15 @@ type iListHostGroupsForUserGroupRequest interface {
 }
 
 type ListHostGroupsForUserGroupRequest struct {
-	// The name of the host group that you want to query. Only exact match is supported.
+	// The name of the host group to query. Only exact match is supported.
 	//
 	// example:
 	//
 	// group
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the bastion host to which the user group belongs.
+	// The instance ID of the Bastionhost instance to which the user group belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -42,33 +44,39 @@ type ListHostGroupsForUserGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies the category of the host group that you want to query. Valid values:
+	// The mode of the host group list to query. Valid values:
 	//
-	// - **Authorized**: queries the host groups that the user group is authorized to manage. This is the default value.
+	// - **Authorized**: Authorized host groups. This is the default value.
 	//
-	// - **Unauthorized**: queries the host groups that the user group is not authorized to manage.
+	// - **Unauthorized**: Unauthorized host groups.
 	//
 	// example:
 	//
 	// Authorized
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the current page when paging in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.<br>
+	// The maximum number of entries to return on each page when paging in a paged query.
 	//
-	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum value of the PageSize parameter is 100. The default value is 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Specify a value for the PageSize parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host to which the user group belongs.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the user group belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -76,9 +84,9 @@ type ListHostGroupsForUserGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group.
+	// The ID of the user group to query.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -116,6 +124,10 @@ func (s *ListHostGroupsForUserGroupRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListHostGroupsForUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListHostGroupsForUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -146,6 +158,11 @@ func (s *ListHostGroupsForUserGroupRequest) SetPageNumber(v string) *ListHostGro
 
 func (s *ListHostGroupsForUserGroupRequest) SetPageSize(v string) *ListHostGroupsForUserGroupRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListHostGroupsForUserGroupRequest) SetProjectId(v int64) *ListHostGroupsForUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

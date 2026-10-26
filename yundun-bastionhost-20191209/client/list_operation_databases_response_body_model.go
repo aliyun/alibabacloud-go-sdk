@@ -18,7 +18,7 @@ type iListOperationDatabasesResponseBody interface {
 }
 
 type ListOperationDatabasesResponseBody struct {
-	// The databases.
+	// The list of database instances.
 	Databases []*ListOperationDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -83,47 +83,47 @@ func (s *ListOperationDatabasesResponseBody) Validate() error {
 }
 
 type ListOperationDatabasesResponseBodyDatabases struct {
-	// The endpoint type of the database. Valid values:
+	// The address type of the database. Valid values:
 	//
-	// - **Public**: a public endpoint
+	// - **Public**: The public network address is valid.
 	//
-	// - **Private**: a private endpoint
+	// - **Private**: The private network address is valid.
 	//
 	// example:
 	//
 	// Private
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The comment on the database.
+	// The description of the database instance.
 	//
 	// example:
 	//
 	// cpp
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the database.
+	// The instance ID of the database.
 	//
 	// example:
 	//
 	// 26
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The name of the database.
+	// The name of the database instance.
 	//
 	// example:
 	//
 	// zDatabase
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The database port.
+	// The port of the database.
 	//
 	// example:
 	//
 	// 3306
 	DatabasePort *int64 `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
-	// The private endpoint of the database.
+	// The private network address of the database.
 	//
 	// example:
 	//
 	// rm-b******9b.mysql.rds.aliyuncs.com
 	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
-	// The public endpoint of the database.
+	// The public IP address of the database.
 	//
 	// example:
 	//
@@ -143,35 +143,35 @@ type ListOperationDatabasesResponseBodyDatabases struct {
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The source of the database.
+	// The source of the database instance. Valid values:
 	//
-	// - **Local**: a local database
+	// - **Local**: on-premises host
 	//
-	// - **Rds**: an ApsaraDB RDS database
+	// - **Rds**: ApsaraDB RDS database
 	//
-	// - **PolarDB**: a PolarDB database
+	// - **PolarDB**: PolarDB database
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the source instance.
+	// The instance ID of the ApsaraDB RDS instance.
 	//
 	// example:
 	//
 	// i-wz9225bhipya******
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The region ID of the source instance.
+	// The region ID of the source ApsaraDB RDS instance.
 	//
 	// example:
 	//
 	// cn-shanghai
 	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
-	// The status of the source instance:
+	// The status of the database instance. Valid values:
 	//
-	// - **Normal**: The instance is running.
+	//  - **Normal**: normal
 	//
-	// - **Release**: The instance is released.
+	// - **Release**: released
 	//
 	// example:
 	//

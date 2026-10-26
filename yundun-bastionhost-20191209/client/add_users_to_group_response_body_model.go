@@ -16,13 +16,13 @@ type iAddUsersToGroupResponseBody interface {
 }
 
 type AddUsersToGroupResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
+	// The result information of the operation.
 	Results []*AddUsersToGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -66,39 +66,39 @@ func (s *AddUsersToGroupResponseBody) Validate() error {
 }
 
 type AddUsersToGroupResponseBodyResults struct {
-	// The return code that indicates whether the call was successful. Valid values:
+	// The result of the operation. Valid values:
 	//
-	// - **OK**: The call was successful.
+	// - **OK**: The operation was successful.
 	//
 	// - **UNEXPECTED**: An unknown error occurred.
 	//
-	// - **INVALID_ARGUMENT**: A request parameter is invalid.
+	// - **INVALID_ARGUMENT**: The request parameters are invalid.
 	//
-	// > Make sure that the request parameters are valid and call the operation again.
+	//     > Check the request parameters and call the operation again.
 	//
-	// - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// - **OBJECT_NOT_FOUND**: The specified object does not exist.
 	//
-	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	//     > Check whether the bastion host instance ID exists, whether the host exists, and whether the host ID is correct, and then call the operation again.
 	//
-	// - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// - **OBJECT_AlREADY_EXISTS**: The specified object already exists.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the group.
+	// The user group ID.
 	//
 	// example:
 	//
 	// 1
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//

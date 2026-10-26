@@ -11,6 +11,8 @@ type iDeleteUserGroupRequest interface {
 	GoString() string
 	SetInstanceId(v string) *DeleteUserGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *DeleteUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *DeleteUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *DeleteUserGroupRequest
@@ -18,9 +20,9 @@ type iDeleteUserGroupRequest interface {
 }
 
 type DeleteUserGroupRequest struct {
-	// The ID of the bastion host on which you want to delete the user group.
+	// The instance ID of the bastion host from which you want to delete the user group.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,15 @@ type DeleteUserGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host on which you want to delete the user group.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host from which you want to delete the user group.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -38,7 +46,7 @@ type DeleteUserGroupRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user group that you want to delete.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -60,6 +68,10 @@ func (s *DeleteUserGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DeleteUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *DeleteUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -70,6 +82,11 @@ func (s *DeleteUserGroupRequest) GetUserGroupId() *string {
 
 func (s *DeleteUserGroupRequest) SetInstanceId(v string) *DeleteUserGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteUserGroupRequest) SetProjectId(v int64) *DeleteUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

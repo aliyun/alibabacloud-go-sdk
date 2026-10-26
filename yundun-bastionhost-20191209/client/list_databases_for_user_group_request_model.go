@@ -23,6 +23,8 @@ type iListDatabasesForUserGroupRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListDatabasesForUserGroupRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListDatabasesForUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListDatabasesForUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *ListDatabasesForUserGroupRequest
@@ -30,19 +32,19 @@ type iListDatabasesForUserGroupRequest interface {
 }
 
 type ListDatabasesForUserGroupRequest struct {
-	// The address of the database that you want to query. Only term query is supported.
+	// The address of the database to query. Only exact match is supported.
 	//
 	// example:
 	//
 	// ``47.101.**.**``
 	DatabaseAddress *string `json:"DatabaseAddress,omitempty" xml:"DatabaseAddress,omitempty"`
-	// The name of the database instance that you want to query.
+	// The name of the database instance to query.
 	//
 	// example:
 	//
 	// test
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The type of the database that you want to query. Valid values:
+	// The type of the database to query. Valid values:
 	//
 	// - **MySQL**
 	//
@@ -56,9 +58,9 @@ type ListDatabasesForUserGroupRequest struct {
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The ID of the Bastionhost instance.
+	// The instance ID of the Bastionhost.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -72,23 +74,29 @@ type ListDatabasesForUserGroupRequest struct {
 	//
 	// 2
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The page number of the paged query. Default value: 1.
+	// The page number of the page to return in a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries to return on each page for a paged query.<br> The maximum value of the PageSize parameter is 100. By default, 20 entries are returned on each page. If you leave the PageSize parameter empty, 20 entries are returned.
+	// The maximum number of entries to return on each page in a paged query. Maximum value: 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave the PageSize parameter empty.
+	// > Do not leave this parameter empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the Bastionhost instance.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -140,6 +148,10 @@ func (s *ListDatabasesForUserGroupRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListDatabasesForUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListDatabasesForUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -180,6 +192,11 @@ func (s *ListDatabasesForUserGroupRequest) SetPageNumber(v string) *ListDatabase
 
 func (s *ListDatabasesForUserGroupRequest) SetPageSize(v string) *ListDatabasesForUserGroupRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupRequest) SetProjectId(v int64) *ListDatabasesForUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

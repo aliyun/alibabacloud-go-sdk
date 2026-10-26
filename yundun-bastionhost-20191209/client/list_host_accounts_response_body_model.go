@@ -18,7 +18,7 @@ type iListHostAccountsResponseBody interface {
 }
 
 type ListHostAccountsResponseBody struct {
-	// The list of the returned host accounts.
+	// The host accounts returned.
 	HostAccounts []*ListHostAccountsResponseBodyHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -26,7 +26,7 @@ type ListHostAccountsResponseBody struct {
 	//
 	// EC9BF0F4-8983-491A-BC8C-1B4DD94976DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned host accounts.
+	// The total number of host accounts returned.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListHostAccountsResponseBody) Validate() error {
 }
 
 type ListHostAccountsResponseBodyHostAccounts struct {
-	// Indicates whether a password is set for the host account.<br> Valid values:
+	// Indicates whether a password is set for the host account. <br>Valid values:
 	//
 	// - **true**: A password is set.
 	//
@@ -111,37 +111,37 @@ type ListHostAccountsResponseBodyHostAccounts struct {
 	//
 	// 1
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the shared key of the host.
+	// The ID of the shared key for the host.
 	//
 	// example:
 	//
 	// 1
 	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The name of the shared key of the host.
+	// The name of the shared key for the host.
 	//
 	// example:
 	//
 	// name
 	HostShareKeyName *string `json:"HostShareKeyName,omitempty" xml:"HostShareKeyName,omitempty"`
-	// The fingerprint of the private key of the host account.
+	// The fingerprint of the private key for the host account.
 	//
 	// example:
 	//
 	// fe:ca:37:42:30:00:9d:95:e6:73:e5:b0:32:0a:**:**
 	PrivateKeyFingerprint *string `json:"PrivateKeyFingerprint,omitempty" xml:"PrivateKeyFingerprint,omitempty"`
-	// The permission type of the account.
+	// The permission type of the account. Valid values:
 	//
-	// - **Privileged**: privileged account
+	// - **Privileged**: Privileged account.
 	//
-	// - **Normal**: regular account
+	// - **Normal**: Regular account.
 	//
-	// > This parameter is available only for Bastionhost instances of V3.2.47 or later.
+	// > This parameter is supported only in V3.2.47 and later.
 	//
 	// example:
 	//
 	// Normal
 	PrivilegeType *string `json:"PrivilegeType,omitempty" xml:"PrivilegeType,omitempty"`
-	// The protocol of the host account.<br> Valid values:
+	// The protocol name of the host account. <br>Valid values:
 	//
 	// - SSH
 	//
@@ -151,13 +151,13 @@ type ListHostAccountsResponseBodyHostAccounts struct {
 	//
 	// SSH
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
-	// The password change mode of the account.
+	// The password rotation mode of the account. Valid values:
 	//
-	// - **Privileged**: The password is changed using a privileged account.
+	// - **Privileged**: Uses a privileged account to rotate the password.
 	//
-	// - **Self**: The password is changed without using a privileged account.
+	// - **Self**: Does not use a privileged account to rotate the password.
 	//
-	// > This parameter is available only for Bastionhost instances of V3.2.47 or later.
+	// > This parameter is supported only in V3.2.47 and later.
 	//
 	// example:
 	//

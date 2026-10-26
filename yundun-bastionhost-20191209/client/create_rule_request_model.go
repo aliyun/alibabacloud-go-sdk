@@ -23,6 +23,8 @@ type iCreateRuleRequest interface {
 	GetHosts() []*CreateRuleRequestHosts
 	SetInstanceId(v string) *CreateRuleRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *CreateRuleRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *CreateRuleRequest
 	GetRegionId() *string
 	SetRuleName(v string) *CreateRuleRequest
@@ -34,33 +36,33 @@ type iCreateRuleRequest interface {
 }
 
 type CreateRuleRequest struct {
-	// The remarks of the authorization rule. The remarks can be up to 500 characters in length.
+	// The description of the authorization rule. Maximum length: 500 characters.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The information about the database that runs on your server.
+	// The database information.
 	Databases []*CreateRuleRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	// The end time of the validity period of the authorization rule. Specify a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time of the validity period for the authorization rule, in seconds (timestamp format).
 	//
 	// example:
 	//
 	// 1672502400
 	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
-	// The start time of the validity period of the authorization rule. Specify a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the validity period for the authorization rule, in seconds (timestamp format).
 	//
 	// example:
 	//
 	// 1669630029
 	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
-	// The information about the asset group that you want to authorize to manage.
+	// The asset group information to authorize.
 	HostGroups []*CreateRuleRequestHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
 	// The host information.
 	Hosts []*CreateRuleRequestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
-	// The bastion host ID.
+	// The instance ID of the bastion host.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -68,15 +70,21 @@ type CreateRuleRequest struct {
 	//
 	// bastionhost-cn-5yd2ymfsa0e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the authorization rule. The name can be up to 128 characters in length.
+	// The name of the authorization rule. Maximum length: 128 characters.
 	//
 	// This parameter is required.
 	//
@@ -84,9 +92,9 @@ type CreateRuleRequest struct {
 	//
 	// rule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// An array that consists of user group IDs.
+	// The array of user group IDs.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// An array that consists of user IDs.
+	// The array of user IDs.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -124,6 +132,10 @@ func (s *CreateRuleRequest) GetHosts() []*CreateRuleRequestHosts {
 
 func (s *CreateRuleRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *CreateRuleRequest) GetProjectId() *int64 {
+	return s.ProjectId
 }
 
 func (s *CreateRuleRequest) GetRegionId() *string {
@@ -174,6 +186,11 @@ func (s *CreateRuleRequest) SetHosts(v []*CreateRuleRequestHosts) *CreateRuleReq
 
 func (s *CreateRuleRequest) SetInstanceId(v string) *CreateRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRuleRequest) SetProjectId(v int64) *CreateRuleRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -229,9 +246,9 @@ func (s *CreateRuleRequest) Validate() error {
 }
 
 type CreateRuleRequestDatabases struct {
-	// An array that consists of database account IDs.
+	// The array of database account IDs.
 	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
-	// The database ID.
+	// The database instance ID.
 	//
 	// example:
 	//
@@ -270,7 +287,7 @@ func (s *CreateRuleRequestDatabases) Validate() error {
 }
 
 type CreateRuleRequestHostGroups struct {
-	// An array that consists of asset account names.
+	// The array of asset account names.
 	HostAccountNames []*string `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
 	// The asset group ID.
 	//
@@ -311,7 +328,7 @@ func (s *CreateRuleRequestHostGroups) Validate() error {
 }
 
 type CreateRuleRequestHosts struct {
-	// An array that consists of host account IDs.
+	// The array of host account IDs.
 	HostAccountIds []*string `json:"HostAccountIds,omitempty" xml:"HostAccountIds,omitempty" type:"Repeated"`
 	// The host ID.
 	//

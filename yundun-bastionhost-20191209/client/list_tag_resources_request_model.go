@@ -24,7 +24,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token to start the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -37,7 +37,12 @@ type ListTagResourcesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aek2jpqvnr6yd3a
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource ID.
 	//
@@ -45,7 +50,7 @@ type ListTagResourcesRequest struct {
 	//
 	// bastionhost-cn-78v1gcxxxxx
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of resource.
+	// The resource type definition.
 	//
 	// The only valid value is INSTANCE, which indicates a Bastionhost instance.
 	//
@@ -55,7 +60,7 @@ type ListTagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

@@ -29,6 +29,8 @@ type iCreateHostRequest interface {
 	GetNetworkDomainId() *string
 	SetOSType(v string) *CreateHostRequest
 	GetOSType() *string
+	SetProjectId(v int64) *CreateHostRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *CreateHostRequest
 	GetRegionId() *string
 	SetSource(v string) *CreateHostRequest
@@ -38,11 +40,11 @@ type iCreateHostRequest interface {
 }
 
 type CreateHostRequest struct {
-	// The address type of the host. Valid values:
+	// The address type of the host to create. Valid values:
 	//
-	// - **Public**: a public address
+	// - **Public**: public address.
 	//
-	// - **Private**: a private address
+	// - **Private**: private network address.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +52,13 @@ type CreateHostRequest struct {
 	//
 	// Public
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The comment for the host. The comment can be up to 500 characters in length.
+	// The description of the host. The description can be up to 500 characters in length.
 	//
 	// example:
 	//
 	// Local Host
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the host. The name can be up to 128 characters in length.
+	// The name of the host to create. The name can be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -64,17 +66,17 @@ type CreateHostRequest struct {
 	//
 	// host01
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The private address of the host. You can use a domain name or an IP address.
+	// The private network address of the host to create. You can set this parameter to a domain name or an IP address.
 	//
-	// > This parameter is required when **ActiveAddressType*	- is set to **Private**.
+	// > This parameter is required if **ActiveAddressType*	- is set to **Private**.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The public address of the host. You can use a domain name or an IP address.
+	// The public address of the host to create. You can set this parameter to a domain name or an IP address.
 	//
-	// > This parameter is required when **ActiveAddressType*	- is set to **Public**.
+	// > This parameter is required if **ActiveAddressType*	- is set to **Public**.
 	//
 	// example:
 	//
@@ -82,7 +84,7 @@ type CreateHostRequest struct {
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
 	// The ID of the Bastionhost instance where you want to create the host.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can call [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -98,21 +100,21 @@ type CreateHostRequest struct {
 	InstanceMemberId *int64 `json:"InstanceMemberId,omitempty" xml:"InstanceMemberId,omitempty"`
 	// The region ID of the ECS instance or the host in the dedicated cluster.
 	//
-	// > This parameter is required when **Source*	- is set to **Ecs*	- or **Rds**.
+	// > This parameter is required if **Source*	- is set to **Ecs*	- or **Rds**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
-	// The ID of the network domain to which the host belongs.
+	// The ID of the network domain to which the host to create belongs.
 	//
-	// > Call the [ListNetworkDomains ](https://help.aliyun.com/document_detail/2758827.html)operation to obtain this parameter.
+	// > You can call [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) to query the network domain ID.
 	//
 	// example:
 	//
 	// 1
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The operating system of the host. Valid values:
+	// The operating system of the host to create. Valid values:
 	//
 	// - **Linux**
 	//
@@ -124,21 +126,27 @@ type CreateHostRequest struct {
 	//
 	// Linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the Bastionhost instance where you want to create the host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source of the host. Valid values:
+	// The source of the host to create. Valid values:
 	//
-	// - **Local**: a local host
+	// - **Local**: on-premises host.
 	//
-	// - **Ecs**: an ECS instance
+	// - **Ecs**: ECS instance.
 	//
-	// - **Rds**: a host in an ApsaraDB RDS dedicated cluster
+	// - **Rds**: host in an ApsaraDB RDS dedicated cluster.
 	//
 	// This parameter is required.
 	//
@@ -146,9 +154,9 @@ type CreateHostRequest struct {
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ECS instance or the host in the dedicated cluster.
+	// The instance ID of the ECS instance or the host in the dedicated cluster.
 	//
-	// > This parameter is required when **Source*	- is set to **Ecs*	- or **Rds**.
+	// > This parameter is required if **Source*	- is set to **Ecs*	- or **Rds**.
 	//
 	// example:
 	//
@@ -202,6 +210,10 @@ func (s *CreateHostRequest) GetNetworkDomainId() *string {
 
 func (s *CreateHostRequest) GetOSType() *string {
 	return s.OSType
+}
+
+func (s *CreateHostRequest) GetProjectId() *int64 {
+	return s.ProjectId
 }
 
 func (s *CreateHostRequest) GetRegionId() *string {
@@ -263,6 +275,11 @@ func (s *CreateHostRequest) SetNetworkDomainId(v string) *CreateHostRequest {
 
 func (s *CreateHostRequest) SetOSType(v string) *CreateHostRequest {
 	s.OSType = &v
+	return s
+}
+
+func (s *CreateHostRequest) SetProjectId(v int64) *CreateHostRequest {
+	s.ProjectId = &v
 	return s
 }
 

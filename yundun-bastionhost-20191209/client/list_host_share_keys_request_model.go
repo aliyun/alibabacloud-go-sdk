@@ -15,14 +15,16 @@ type iListHostShareKeysRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListHostShareKeysRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListHostShareKeysRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListHostShareKeysRequest
 	GetRegionId() *string
 }
 
 type ListHostShareKeysRequest struct {
-	// The bastion host ID.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +38,19 @@ type ListHostShareKeysRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// Specifies the Settings for the number of host shared keys to return on each page during a paged query. Default value: **20**, which indicates that 20 host shared keys are returned per page during paging.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -72,6 +80,10 @@ func (s *ListHostShareKeysRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListHostShareKeysRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListHostShareKeysRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -88,6 +100,11 @@ func (s *ListHostShareKeysRequest) SetPageNumber(v string) *ListHostShareKeysReq
 
 func (s *ListHostShareKeysRequest) SetPageSize(v string) *ListHostShareKeysRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListHostShareKeysRequest) SetProjectId(v int64) *ListHostShareKeysRequest {
+	s.ProjectId = &v
 	return s
 }
 

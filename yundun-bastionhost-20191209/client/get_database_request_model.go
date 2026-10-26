@@ -13,6 +13,8 @@ type iGetDatabaseRequest interface {
 	GetDatabaseId() *string
 	SetInstanceId(v string) *GetDatabaseRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *GetDatabaseRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *GetDatabaseRequest
 	GetRegionId() *string
 }
@@ -20,7 +22,7 @@ type iGetDatabaseRequest interface {
 type GetDatabaseRequest struct {
 	// The ID of the database to query.
 	//
-	// > You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
+	// > You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,9 @@ type GetDatabaseRequest struct {
 	//
 	// 21
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The ID of the bastion host that manages the database to query.
+	// The instance ID of the bastion host where the database resides.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +40,15 @@ type GetDatabaseRequest struct {
 	//
 	// bastionhost-cn-wwo36qbv601
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host that manages the database to query.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host where the database resides.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -64,6 +72,10 @@ func (s *GetDatabaseRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetDatabaseRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *GetDatabaseRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -75,6 +87,11 @@ func (s *GetDatabaseRequest) SetDatabaseId(v string) *GetDatabaseRequest {
 
 func (s *GetDatabaseRequest) SetInstanceId(v string) *GetDatabaseRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDatabaseRequest) SetProjectId(v int64) *GetDatabaseRequest {
+	s.ProjectId = &v
 	return s
 }
 

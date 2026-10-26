@@ -16,13 +16,13 @@ type iCreateHostGroupResponseBody interface {
 }
 
 type CreateHostGroupResponseBody struct {
-	// The asset group ID.
+	// The ID of the asset group.
 	//
 	// example:
 	//
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -15,14 +15,16 @@ type iRemoveHostsFromGroupRequest interface {
 	GetHostIds() *string
 	SetInstanceId(v string) *RemoveHostsFromGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *RemoveHostsFromGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *RemoveHostsFromGroupRequest
 	GetRegionId() *string
 }
 
 type RemoveHostsFromGroupRequest struct {
-	// The ID of the asset group from which you want to remove hosts.
+	// The ID of the host group from which you want to remove hosts.
 	//
-	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the asset group ID.
+	// > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the host group ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +32,7 @@ type RemoveHostsFromGroupRequest struct {
 	//
 	// 1
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The IDs of the hosts that you want to remove from the host group. Specify a JSON string. You can specify up to 100 host IDs.
+	// The IDs of the hosts that you want to remove. The value is a JSON string. You can specify up to 100 host IDs.
 	//
 	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host IDs.
 	//
@@ -40,9 +42,9 @@ type RemoveHostsFromGroupRequest struct {
 	//
 	// ["1","2","3"]
 	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
-	// The ID of the bastion host whose asset group you want to manage.
+	// The ID of the Bastionhost instance to which the host group from which you want to remove hosts belongs.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +52,13 @@ type RemoveHostsFromGroupRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host whose asset group you want to manage.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance to which the host group from which you want to remove hosts belongs.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -80,6 +88,10 @@ func (s *RemoveHostsFromGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *RemoveHostsFromGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *RemoveHostsFromGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -96,6 +108,11 @@ func (s *RemoveHostsFromGroupRequest) SetHostIds(v string) *RemoveHostsFromGroup
 
 func (s *RemoveHostsFromGroupRequest) SetInstanceId(v string) *RemoveHostsFromGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *RemoveHostsFromGroupRequest) SetProjectId(v int64) *RemoveHostsFromGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 

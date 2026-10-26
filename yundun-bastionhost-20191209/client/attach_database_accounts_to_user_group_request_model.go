@@ -13,6 +13,8 @@ type iAttachDatabaseAccountsToUserGroupRequest interface {
 	GetDatabases() []*AttachDatabaseAccountsToUserGroupRequestDatabases
 	SetInstanceId(v string) *AttachDatabaseAccountsToUserGroupRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *AttachDatabaseAccountsToUserGroupRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *AttachDatabaseAccountsToUserGroupRequest
 	GetRegionId() *string
 	SetUserGroupId(v string) *AttachDatabaseAccountsToUserGroupRequest
@@ -20,13 +22,13 @@ type iAttachDatabaseAccountsToUserGroupRequest interface {
 }
 
 type AttachDatabaseAccountsToUserGroupRequest struct {
-	// An array of database objects.
+	// The array of database objects.
 	//
-	// > You can specify up to 10 databases and 10 database accounts. If you do not specify any database accounts, permissions are granted on the entire database.
+	// > A maximum of 10 databases and 10 database accounts are supported. You can leave the database accounts unspecified. If no database accounts are specified, permissions are granted at the database level.
 	Databases []*AttachDatabaseAccountsToUserGroupRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	// The ID of the Bastionhost instance.
+	// The instance ID of the bastion host.
 	//
-	// > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -34,15 +36,21 @@ type AttachDatabaseAccountsToUserGroupRequest struct {
 	//
 	// bastionhost-cn-zvp282aly06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance.
+	// The project ID.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host.
+	//
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group to which to grant the permissions.
+	// The ID of the user group to which you want to grant permissions.
 	//
 	// This parameter is required.
 	//
@@ -68,6 +76,10 @@ func (s *AttachDatabaseAccountsToUserGroupRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *AttachDatabaseAccountsToUserGroupRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *AttachDatabaseAccountsToUserGroupRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -83,6 +95,11 @@ func (s *AttachDatabaseAccountsToUserGroupRequest) SetDatabases(v []*AttachDatab
 
 func (s *AttachDatabaseAccountsToUserGroupRequest) SetInstanceId(v string) *AttachDatabaseAccountsToUserGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupRequest) SetProjectId(v int64) *AttachDatabaseAccountsToUserGroupRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -110,9 +127,9 @@ func (s *AttachDatabaseAccountsToUserGroupRequest) Validate() error {
 }
 
 type AttachDatabaseAccountsToUserGroupRequestDatabases struct {
-	// An array of database account IDs.
+	// The array of database account IDs.
 	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
-	// The ID of the database instance on which you want to grant permissions.
+	// The ID of the database instance to which you want to grant permissions.
 	//
 	// example:
 	//

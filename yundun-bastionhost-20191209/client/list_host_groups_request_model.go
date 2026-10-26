@@ -17,20 +17,22 @@ type iListHostGroupsRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListHostGroupsRequest
 	GetPageSize() *string
+	SetProjectId(v int64) *ListHostGroupsRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *ListHostGroupsRequest
 	GetRegionId() *string
 }
 
 type ListHostGroupsRequest struct {
-	// The name of the host group that you want to query. Only exact match is supported.
+	// The name of the asset group. Only exact match is supported.
 	//
 	// example:
 	//
 	// HostGroup1
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the bastion host to query.
+	// The instance ID of the bastion host.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/462953.html) operation to query the bastion host ID.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/462953.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,21 +40,27 @@ type ListHostGroupsRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the current page for paging in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to return on each page for paging in a paged query. Maximum value: 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Specify a value for this parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host in which you want to query the host group.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the bastion host.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -86,6 +94,10 @@ func (s *ListHostGroupsRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListHostGroupsRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *ListHostGroupsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -107,6 +119,11 @@ func (s *ListHostGroupsRequest) SetPageNumber(v string) *ListHostGroupsRequest {
 
 func (s *ListHostGroupsRequest) SetPageSize(v string) *ListHostGroupsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListHostGroupsRequest) SetProjectId(v int64) *ListHostGroupsRequest {
+	s.ProjectId = &v
 	return s
 }
 

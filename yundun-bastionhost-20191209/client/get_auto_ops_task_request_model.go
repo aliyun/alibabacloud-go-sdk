@@ -11,6 +11,8 @@ type iGetAutoOpsTaskRequest interface {
 	GoString() string
 	SetInstanceId(v string) *GetAutoOpsTaskRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *GetAutoOpsTaskRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *GetAutoOpsTaskRequest
 	GetRegionId() *string
 	SetTaskId(v string) *GetAutoOpsTaskRequest
@@ -20,12 +22,18 @@ type iGetAutoOpsTaskRequest interface {
 type GetAutoOpsTaskRequest struct {
 	// The instance ID of the bastion host.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host.
 	//
 	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
@@ -34,7 +42,7 @@ type GetAutoOpsTaskRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the O&M task that you want to query.
+	// The ID of the O&M task to query.
 	//
 	// This parameter is required.
 	//
@@ -56,6 +64,10 @@ func (s *GetAutoOpsTaskRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetAutoOpsTaskRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *GetAutoOpsTaskRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -66,6 +78,11 @@ func (s *GetAutoOpsTaskRequest) GetTaskId() *string {
 
 func (s *GetAutoOpsTaskRequest) SetInstanceId(v string) *GetAutoOpsTaskRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoOpsTaskRequest) SetProjectId(v int64) *GetAutoOpsTaskRequest {
+	s.ProjectId = &v
 	return s
 }
 

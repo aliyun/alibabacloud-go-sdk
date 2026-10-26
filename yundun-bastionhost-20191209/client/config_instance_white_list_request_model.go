@@ -20,9 +20,9 @@ type iConfigInstanceWhiteListRequest interface {
 }
 
 type ConfigInstanceWhiteListRequest struct {
-	// The ID of the Bastionhost instance to configure.
+	// Instance ID of the Bastionhost instance for which you want to configure the public IP address whitelist.
 	//
-	// > To obtain the instance ID, call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query instance ID of the Bastionhost instance.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ConfigInstanceWhiteListRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of IP addresses to add to the whitelist.
+	// The IP address whitelist to be configured.
 	//
 	// example:
 	//
 	// 10.162.XX.XX
 	WhiteList []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
-	// The policies for the public IP address whitelist.
+	// The IP address whitelist to be configured.
 	WhiteListPolicies []*ConfigInstanceWhiteListRequestWhiteListPolicies `json:"WhiteListPolicies,omitempty" xml:"WhiteListPolicies,omitempty" type:"Repeated"`
 }
 
@@ -104,9 +104,13 @@ func (s *ConfigInstanceWhiteListRequest) Validate() error {
 }
 
 type ConfigInstanceWhiteListRequestWhiteListPolicies struct {
-	// The description of this whitelist rule.
+	// The remark or description for the whitelist rule.
+	//
+	// example:
+	//
+	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IP addresses to add to the whitelist. You can specify up to 50 IP addresses, separated by a comma.
+	// The IP address whitelist to be configured. You can configure up to 50 IP addresses. To add multiple IP addresses to the whitelist, separate them with commas (,). The whitelist cannot contain 0.0.0.0/0.
 	//
 	// example:
 	//

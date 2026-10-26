@@ -13,14 +13,16 @@ type iDeleteDatabaseRequest interface {
 	GetDatabaseId() *string
 	SetInstanceId(v string) *DeleteDatabaseRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *DeleteDatabaseRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *DeleteDatabaseRequest
 	GetRegionId() *string
 }
 
 type DeleteDatabaseRequest struct {
-	// The ID of the database that you want to delete.
+	// The instance ID of the database that you want to delete.
 	//
-	// > You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
+	// > You can invoke the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,9 @@ type DeleteDatabaseRequest struct {
 	//
 	// 11
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The ID of the bastion host from which you want to delete the database.
+	// The instance ID of the bastion host where the database instance that you want to delete resides.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +40,15 @@ type DeleteDatabaseRequest struct {
 	//
 	// bastionhost-cn-78v1ghxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the bastion host.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -64,6 +72,10 @@ func (s *DeleteDatabaseRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DeleteDatabaseRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *DeleteDatabaseRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -75,6 +87,11 @@ func (s *DeleteDatabaseRequest) SetDatabaseId(v string) *DeleteDatabaseRequest {
 
 func (s *DeleteDatabaseRequest) SetInstanceId(v string) *DeleteDatabaseRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteDatabaseRequest) SetProjectId(v int64) *DeleteDatabaseRequest {
+	s.ProjectId = &v
 	return s
 }
 

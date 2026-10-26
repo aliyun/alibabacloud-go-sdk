@@ -18,15 +18,15 @@ type iListDatabasesForUserResponseBody interface {
 }
 
 type ListDatabasesForUserResponseBody struct {
-	// The databases returned.
+	// The list of databases.
 	Databases []*ListDatabasesForUserResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// A8A665B9-8550-4942-9DEE-73198051856B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of databases returned.
+	// The total number of databases.
 	//
 	// example:
 	//
@@ -85,51 +85,51 @@ func (s *ListDatabasesForUserResponseBody) Validate() error {
 type ListDatabasesForUserResponseBodyDatabases struct {
 	// The address type of the database. Valid values:
 	//
-	// - **Public**
+	// - **Public**: public endpoint
 	//
-	// - **Private**
+	// - **Private**: private endpoint in the private network
 	//
 	// example:
 	//
 	// Private
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The remarks of the database.
+	// The description of the database instance.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The database ID.
+	// The instance ID of the database.
 	//
 	// example:
 	//
 	// 36
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The database name.
+	// The name of the database instance.
 	//
 	// example:
 	//
 	// MySQL56
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The database port.
+	// The port of the database.
 	//
 	// example:
 	//
 	// 3306
 	DatabasePort *int64 `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
-	// The internal endpoint of the database. The value is a domain name or an IP address.
+	// The private endpoint of the database in the private network, which can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
-	// The public endpoint of the database. The value is a domain name or an IP address.
+	// The public address of the database, which can be a domain name or an IP address.
 	//
 	// example:
 	//
 	// www.example.com
 	DatabasePublicAddress *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
-	// The database engine. Valid values:
+	// The type of the database. Valid values:
 	//
 	// - **MySQL**
 	//
@@ -143,27 +143,39 @@ type ListDatabasesForUserResponseBodyDatabases struct {
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The ID of the network domain where the database resides.
+	// The ID of the network domain to which the database belongs.
 	//
 	// example:
 	//
 	// 2
 	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
-	// The database type. Valid values:
+	// The ID of the project to which the database belongs.
 	//
-	// - **Local**: on-premises database.
+	// example:
 	//
-	// - **Rds**: ApsaraDB RDS instance.
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the project.
 	//
-	// - **PolarDB**: PolarDB cluster.
+	// example:
+	//
+	// test
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The source of the database. Valid values:
+	//
+	// - **Local**: local database instance
+	//
+	// - **Rds**: ApsaraDB RDS instance
+	//
+	// - **PolarDB**: PolarDB instance
 	//
 	// example:
 	//
 	// Local
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ApsaraDB RDS instance or PolarDB cluster.
+	// The instance ID of the ApsaraDB RDS or PolarDB instance that corresponds to the database.
 	//
-	// > No value is returned for this parameter if **Source*	- is set to **Local**.
+	// > If **Source*	- is set to **Local**, this parameter is empty.
 	//
 	// example:
 	//
@@ -213,6 +225,14 @@ func (s *ListDatabasesForUserResponseBodyDatabases) GetDatabaseType() *string {
 
 func (s *ListDatabasesForUserResponseBodyDatabases) GetNetworkDomainId() *string {
 	return s.NetworkDomainId
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) GetProjectId() *string {
+	return s.ProjectId
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) GetProjectName() *string {
+	return s.ProjectName
 }
 
 func (s *ListDatabasesForUserResponseBodyDatabases) GetSource() *string {
@@ -265,6 +285,16 @@ func (s *ListDatabasesForUserResponseBodyDatabases) SetDatabaseType(v string) *L
 
 func (s *ListDatabasesForUserResponseBodyDatabases) SetNetworkDomainId(v string) *ListDatabasesForUserResponseBodyDatabases {
 	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetProjectId(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetProjectName(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.ProjectName = &v
 	return s
 }
 

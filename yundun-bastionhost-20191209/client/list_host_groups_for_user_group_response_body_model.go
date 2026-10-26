@@ -18,7 +18,7 @@ type iListHostGroupsForUserGroupResponseBody interface {
 }
 
 type ListHostGroupsForUserGroupResponseBody struct {
-	// The host groups returned.
+	// The list of host groups returned.
 	HostGroups []*ListHostGroupsForUserGroupResponseBodyHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//

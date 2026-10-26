@@ -13,14 +13,16 @@ type iDeleteHostAccountRequest interface {
 	GetHostAccountId() *string
 	SetInstanceId(v string) *DeleteHostAccountRequest
 	GetInstanceId() *string
+	SetProjectId(v int64) *DeleteHostAccountRequest
+	GetProjectId() *int64
 	SetRegionId(v string) *DeleteHostAccountRequest
 	GetRegionId() *string
 }
 
 type DeleteHostAccountRequest struct {
-	// The ID of the host account that you want to remove.
+	// The ID of the host account that you want to delete.
 	//
-	// > You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+	// > You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,9 @@ type DeleteHostAccountRequest struct {
 	//
 	// 1
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// The ID of the bastion host from which you want to remove the host account.
+	// The ID of the Bastionhost instance where the host account that you want to delete resides.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +40,13 @@ type DeleteHostAccountRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host from which you want to remove the host account.
+	// The project ID.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID of the Bastionhost instance where the host account resides.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
@@ -64,6 +72,10 @@ func (s *DeleteHostAccountRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DeleteHostAccountRequest) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
 func (s *DeleteHostAccountRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -75,6 +87,11 @@ func (s *DeleteHostAccountRequest) SetHostAccountId(v string) *DeleteHostAccount
 
 func (s *DeleteHostAccountRequest) SetInstanceId(v string) *DeleteHostAccountRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteHostAccountRequest) SetProjectId(v int64) *DeleteHostAccountRequest {
+	s.ProjectId = &v
 	return s
 }
 

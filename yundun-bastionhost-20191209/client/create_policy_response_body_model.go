@@ -16,7 +16,7 @@ type iCreatePolicyResponseBody interface {
 }
 
 type CreatePolicyResponseBody struct {
-	// The control policy ID.
+	// The ID of the control policy.
 	//
 	// example:
 	//
