@@ -233,13 +233,28 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults struct {
-	CreateTime     *int64                                                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Details        []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	Id             *int64                                                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	Rule           *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule      `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
-	Sample         *string                                                                                            `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	Status         *string                                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskInstanceId *int64                                                                                             `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+	// example:
+	//
+	// 1708284916414
+	CreateTime *int64                                                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Details    []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10001
+	Id   *int64                                                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Rule *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
+	// example:
+	//
+	// [   {     "gender": "male",     "_count": 100   }, {     "gender": "female",     "_count": 100   } ]
+	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// example:
+	//
+	// Passed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 20001
+	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
 }
 
 func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) String() string {
@@ -332,9 +347,18 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails struct {
-	CheckedValue    *string `json:"CheckedValue,omitempty" xml:"CheckedValue,omitempty"`
+	// example:
+	//
+	// 100.0
+	CheckedValue *string `json:"CheckedValue,omitempty" xml:"CheckedValue,omitempty"`
+	// example:
+	//
+	// 0.0
 	ReferencedValue *string `json:"ReferencedValue,omitempty" xml:"ReferencedValue,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Passed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails) String() string {
@@ -377,17 +401,35 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule struct {
-	CheckingConfig *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig  `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	Description    *string                                                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enabled        *bool                                                                                                        `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	ErrorHandlers  []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
-	Id             *int64                                                                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name           *string                                                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProjectId      *int64                                                                                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SamplingConfig *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig  `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	Severity       *string                                                                                                      `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Target         *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget          `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	TemplateCode   *string                                                                                                      `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	CheckingConfig *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// this is a odps _sql task
+	Description   *string                                                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	Enabled       *bool                                                                                                        `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ErrorHandlers []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 表不能为空
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId      *int64                                                                                                      `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SamplingConfig *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// High
+	Severity *string                                                                                             `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Target   *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// SYSTEM:user_defined_sql
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
 func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) String() string {
@@ -526,9 +568,15 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig struct {
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
 	ReferencedSamplesFilter *string                                                                                                               `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
 	Thresholds              *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
-	Type                    *string                                                                                                               `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig) String() string {
@@ -636,9 +684,18 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical struct {
+	// example:
+	//
+	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical) String() string {
@@ -681,9 +738,18 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected struct {
+	// example:
+	//
+	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected) String() string {
@@ -726,9 +792,18 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned struct {
+	// example:
+	//
+	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned) String() string {
@@ -771,8 +846,14 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers struct {
+	// example:
+	//
+	// SELECT 	- FROM tb_api_log WHERE id IS NULL
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// SaveErrorData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers) String() string {
@@ -806,10 +887,22 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig struct {
-	Metric           *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// Min
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// { "Columns": [ "id", "name" ] }
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	SamplingFilter   *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
-	SettingConfig    *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+	// example:
+	//
+	// id IS NULL
+	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
 }
 
 func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig) String() string {
@@ -861,9 +954,18 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget struct {
+	// example:
+	//
+	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	TableGuid    *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget) String() string {

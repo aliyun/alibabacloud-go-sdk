@@ -85,6 +85,8 @@ type ListAgentSessionsRequestParams struct {
 	//
 	// chat_cli_chatbi
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// true仅返回归档会话；false或省略仅返回未归档会话。
+	Archived *bool `json:"Archived,omitempty" xml:"Archived,omitempty"`
 	// The number of entries per page. Default value: 50.
 	//
 	// example:
@@ -127,6 +129,10 @@ func (s *ListAgentSessionsRequestParams) GetAgentName() *string {
 	return s.AgentName
 }
 
+func (s *ListAgentSessionsRequestParams) GetArchived() *bool {
+	return s.Archived
+}
+
 func (s *ListAgentSessionsRequestParams) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -153,6 +159,11 @@ func (s *ListAgentSessionsRequestParams) GetTagList() []*string {
 
 func (s *ListAgentSessionsRequestParams) SetAgentName(v string) *ListAgentSessionsRequestParams {
 	s.AgentName = &v
+	return s
+}
+
+func (s *ListAgentSessionsRequestParams) SetArchived(v bool) *ListAgentSessionsRequestParams {
+	s.Archived = &v
 	return s
 }
 

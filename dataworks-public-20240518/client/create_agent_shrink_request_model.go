@@ -15,12 +15,16 @@ type iCreateAgentShrinkRequest interface {
 	GetDescription() *string
 	SetDisplayName(v string) *CreateAgentShrinkRequest
 	GetDisplayName() *string
+	SetExpertSuitesShrink(v string) *CreateAgentShrinkRequest
+	GetExpertSuitesShrink() *string
 	SetMetadataShrink(v string) *CreateAgentShrinkRequest
 	GetMetadataShrink() *string
 	SetModelShrink(v string) *CreateAgentShrinkRequest
 	GetModelShrink() *string
 	SetName(v string) *CreateAgentShrinkRequest
 	GetName() *string
+	SetPublishImmediately(v bool) *CreateAgentShrinkRequest
+	GetPublishImmediately() *bool
 	SetSkillsShrink(v string) *CreateAgentShrinkRequest
 	GetSkillsShrink() *string
 	SetSystemPrompt(v string) *CreateAgentShrinkRequest
@@ -52,6 +56,12 @@ type CreateAgentShrinkRequest struct {
 	//
 	// My Assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Agent 绑定的已发布专家套件。个人或企业套件使用 SuiteId，可选 Version；官方套件必须显式指定 Source=OFFICIAL 和官方目录中的 SuiteId，不传 Version。未传时创建为空，不会默认加载所有官方套件。
+	//
+	// example:
+	//
+	// [{"Source":"OFFICIAL","SuiteId":"dataworks-data-analysis-extension"},{"SuiteId":"suite_example","Version":1}]
+	ExpertSuitesShrink *string `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty"`
 	// The extended metadata in key-value pairs.
 	//
 	// example:
@@ -76,6 +86,12 @@ type CreateAgentShrinkRequest struct {
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 是否在创建 Agent 后立即发布。true 发布创建的版本；false 或省略保持原有仅创建草稿行为。保存与发布不是原子操作，发布失败时草稿可能已存在；重试前应先查询 Agent，避免重复创建。
+	//
+	// example:
+	//
+	// false
+	PublishImmediately *bool `json:"PublishImmediately,omitempty" xml:"PublishImmediately,omitempty"`
 	// The list of skills.
 	//
 	// example:
@@ -130,6 +146,10 @@ func (s *CreateAgentShrinkRequest) GetDisplayName() *string {
 	return s.DisplayName
 }
 
+func (s *CreateAgentShrinkRequest) GetExpertSuitesShrink() *string {
+	return s.ExpertSuitesShrink
+}
+
 func (s *CreateAgentShrinkRequest) GetMetadataShrink() *string {
 	return s.MetadataShrink
 }
@@ -140,6 +160,10 @@ func (s *CreateAgentShrinkRequest) GetModelShrink() *string {
 
 func (s *CreateAgentShrinkRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateAgentShrinkRequest) GetPublishImmediately() *bool {
+	return s.PublishImmediately
 }
 
 func (s *CreateAgentShrinkRequest) GetSkillsShrink() *string {
@@ -177,6 +201,11 @@ func (s *CreateAgentShrinkRequest) SetDisplayName(v string) *CreateAgentShrinkRe
 	return s
 }
 
+func (s *CreateAgentShrinkRequest) SetExpertSuitesShrink(v string) *CreateAgentShrinkRequest {
+	s.ExpertSuitesShrink = &v
+	return s
+}
+
 func (s *CreateAgentShrinkRequest) SetMetadataShrink(v string) *CreateAgentShrinkRequest {
 	s.MetadataShrink = &v
 	return s
@@ -189,6 +218,11 @@ func (s *CreateAgentShrinkRequest) SetModelShrink(v string) *CreateAgentShrinkRe
 
 func (s *CreateAgentShrinkRequest) SetName(v string) *CreateAgentShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateAgentShrinkRequest) SetPublishImmediately(v bool) *CreateAgentShrinkRequest {
+	s.PublishImmediately = &v
 	return s
 }
 

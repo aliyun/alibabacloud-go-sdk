@@ -310,12 +310,20 @@ type CreateAgentSessionRequestParamsMetaInitialConfigOptions struct {
 	//
 	// yolo
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// qwen3.7-max(openai)
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	// The DataWorks workspace ID. Used to initialize the session project context. If omitted, the session is treated as having no project context. You can later correct or switch the project context by using PromptAgentSession.
 	//
 	// example:
 	//
 	// 12345
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// none
+	ReasoningEffort *string `json:"ReasoningEffort,omitempty" xml:"ReasoningEffort,omitempty"`
 	// The ID of the resource group used for initialization.
 	//
 	// example:
@@ -346,8 +354,16 @@ func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetMode() *str
 	return s.Mode
 }
 
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetModel() *string {
+	return s.Model
+}
+
 func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetProjectId() *string {
 	return s.ProjectId
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetReasoningEffort() *string {
+	return s.ReasoningEffort
 }
 
 func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetResourceGroupId() *string {
@@ -368,8 +384,18 @@ func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetMode(v stri
 	return s
 }
 
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetModel(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
+	s.Model = &v
+	return s
+}
+
 func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetProjectId(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetReasoningEffort(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
+	s.ReasoningEffort = &v
 	return s
 }
 

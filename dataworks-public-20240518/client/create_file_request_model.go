@@ -334,7 +334,10 @@ type CreateFileRequest struct {
 	//
 	// [{"ValueSource": "project_001.first_node:bizdate_param","ParameterName": "bizdate_input"}]
 	InputParameters *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	OutputList      *string `json:"OutputList,omitempty" xml:"OutputList,omitempty"`
+	// example:
+	//
+	// dw_project.ods_user_info_d
+	OutputList *string `json:"OutputList,omitempty" xml:"OutputList,omitempty"`
 	// The context output parameters of the node. The parameter value is in JSON format. For the fields included, see the OutputContextParameterList parameter structure in the response of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
 	//
 	//

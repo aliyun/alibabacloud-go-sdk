@@ -62,6 +62,7 @@ func (s *ListAgentSessionsResponseBody) Validate() error {
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponse struct {
+	Error *ListAgentSessionsResponseBodyJsonRpcResponseError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
 	// The ID passed in by the requester. The value is returned as-is.
 	//
 	// example:
@@ -86,6 +87,10 @@ func (s ListAgentSessionsResponseBodyJsonRpcResponse) GoString() string {
 	return s.String()
 }
 
+func (s *ListAgentSessionsResponseBodyJsonRpcResponse) GetError() *ListAgentSessionsResponseBodyJsonRpcResponseError {
+	return s.Error
+}
+
 func (s *ListAgentSessionsResponseBodyJsonRpcResponse) GetId() *string {
 	return s.Id
 }
@@ -96,6 +101,11 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponse) GetJsonrpc() *string {
 
 func (s *ListAgentSessionsResponseBodyJsonRpcResponse) GetResult() *ListAgentSessionsResponseBodyJsonRpcResponseResult {
 	return s.Result
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponse) SetError(v *ListAgentSessionsResponseBodyJsonRpcResponseError) *ListAgentSessionsResponseBodyJsonRpcResponse {
+	s.Error = v
+	return s
 }
 
 func (s *ListAgentSessionsResponseBodyJsonRpcResponse) SetId(v string) *ListAgentSessionsResponseBodyJsonRpcResponse {
@@ -114,12 +124,84 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponse) SetResult(v *ListAgentSes
 }
 
 func (s *ListAgentSessionsResponseBodyJsonRpcResponse) Validate() error {
+	if s.Error != nil {
+		if err := s.Error.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Result != nil {
 		if err := s.Result.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type ListAgentSessionsResponseBodyJsonRpcResponseError struct {
+	// example:
+	//
+	// 400
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {}
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// SESSION_FILTER_REQUIRED
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// SESSION_FILTER_REQUIRED
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s ListAgentSessionsResponseBodyJsonRpcResponseError) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAgentSessionsResponseBodyJsonRpcResponseError) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseError) GetCode() *int32 {
+	return s.Code
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseError) GetData() interface{} {
+	return s.Data
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseError) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseError) GetMessage() *string {
+	return s.Message
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseError) SetCode(v int32) *ListAgentSessionsResponseBodyJsonRpcResponseError {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseError) SetData(v interface{}) *ListAgentSessionsResponseBodyJsonRpcResponseError {
+	s.Data = v
+	return s
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseError) SetErrorCode(v string) *ListAgentSessionsResponseBodyJsonRpcResponseError {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseError) SetMessage(v string) *ListAgentSessionsResponseBodyJsonRpcResponseError {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseError) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResult struct {
@@ -309,6 +391,7 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions) Valida
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta struct {
+	Archived *bool `json:"Archived,omitempty" xml:"Archived,omitempty"`
 	// The session source.
 	//
 	// example:
@@ -339,6 +422,10 @@ func (s ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta) GoS
 	return s.String()
 }
 
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta) GetArchived() *bool {
+	return s.Archived
+}
+
 func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta) GetSessionSource() *string {
 	return s.SessionSource
 }
@@ -349,6 +436,11 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta) Ge
 
 func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta) GetSessionTagList() []*ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList {
 	return s.SessionTagList
+}
+
+func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta) SetArchived(v bool) *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta {
+	s.Archived = &v
+	return s
 }
 
 func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta) SetSessionSource(v string) *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta {

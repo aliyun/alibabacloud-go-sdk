@@ -57,6 +57,10 @@ type DataQualityRuleTemplate struct {
 	// The sample collection settings.
 	SamplingConfig *DataQualityRuleTemplateSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
 	// The DataWorks tenant ID.
+	//
+	// example:
+	//
+	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The visibility scope of the template.
 	//

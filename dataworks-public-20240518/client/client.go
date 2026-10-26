@@ -1493,6 +1493,10 @@ func (client *Client) CreateAgentWithOptions(tmpReq *CreateAgentRequest, runtime
 		request.CallableAgentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallableAgents, dara.String("CallableAgents"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.ExpertSuites) {
+		request.ExpertSuitesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExpertSuites, dara.String("ExpertSuites"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Metadata) {
 		request.MetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metadata, dara.String("Metadata"), dara.String("json"))
 	}
@@ -1526,6 +1530,10 @@ func (client *Client) CreateAgentWithOptions(tmpReq *CreateAgentRequest, runtime
 		body["DisplayName"] = request.DisplayName
 	}
 
+	if !dara.IsNil(request.ExpertSuitesShrink) {
+		body["ExpertSuites"] = request.ExpertSuitesShrink
+	}
+
 	if !dara.IsNil(request.MetadataShrink) {
 		body["Metadata"] = request.MetadataShrink
 	}
@@ -1536,6 +1544,10 @@ func (client *Client) CreateAgentWithOptions(tmpReq *CreateAgentRequest, runtime
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PublishImmediately) {
+		body["PublishImmediately"] = request.PublishImmediately
 	}
 
 	if !dara.IsNil(request.SkillsShrink) {
@@ -11923,6 +11935,10 @@ func (client *Client) GetAgentWithOptions(request *GetAgentRequest, runtime *dar
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentVersion) {
+		body["AgentVersion"] = request.AgentVersion
+	}
+
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
 	}
@@ -30067,6 +30083,90 @@ func (client *Client) UnTagDataAssets(request *UnTagDataAssetsRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &UnTagDataAssetsResponse{}
 	_body, _err := client.UnTagDataAssetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Agent会话标题
+//
+// Description:
+//
+// 修改当前身份可访问的 Agent 会话标题，不改变任务执行状态。
+//
+// @param tmpReq - UpdateAgentSessionTitleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentSessionTitleResponse
+func (client *Client) UpdateAgentSessionTitleWithOptions(tmpReq *UpdateAgentSessionTitleRequest, runtime *dara.RuntimeOptions) (_result *UpdateAgentSessionTitleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateAgentSessionTitleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAgentSessionTitle"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAgentSessionTitleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Agent会话标题
+//
+// Description:
+//
+// 修改当前身份可访问的 Agent 会话标题，不改变任务执行状态。
+//
+// @param request - UpdateAgentSessionTitleRequest
+//
+// @return UpdateAgentSessionTitleResponse
+func (client *Client) UpdateAgentSessionTitle(request *UpdateAgentSessionTitleRequest) (_result *UpdateAgentSessionTitleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAgentSessionTitleResponse{}
+	_body, _err := client.UpdateAgentSessionTitleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

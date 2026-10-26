@@ -142,6 +142,9 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfo) Validate() error 
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks struct {
+	// example:
+	//
+	// 45238
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// The description of the data quality evaluation task. The description can be up to 65,535 characters in length.
 	//

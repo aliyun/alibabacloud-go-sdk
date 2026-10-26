@@ -147,7 +147,10 @@ type GetDIJobResponseBodyPagingInfo struct {
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
-	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 3726346
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The ID of the DataWorks workspace for the API call. You can obtain the workspace ID from the Workspace Configuration page in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:

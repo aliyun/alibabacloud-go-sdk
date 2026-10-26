@@ -15,12 +15,16 @@ type iCreateAgentRequest interface {
 	GetDescription() *string
 	SetDisplayName(v string) *CreateAgentRequest
 	GetDisplayName() *string
+	SetExpertSuites(v []*CreateAgentRequestExpertSuites) *CreateAgentRequest
+	GetExpertSuites() []*CreateAgentRequestExpertSuites
 	SetMetadata(v map[string]interface{}) *CreateAgentRequest
 	GetMetadata() map[string]interface{}
 	SetModel(v map[string]interface{}) *CreateAgentRequest
 	GetModel() map[string]interface{}
 	SetName(v string) *CreateAgentRequest
 	GetName() *string
+	SetPublishImmediately(v bool) *CreateAgentRequest
+	GetPublishImmediately() *bool
 	SetSkills(v []*CreateAgentRequestSkills) *CreateAgentRequest
 	GetSkills() []*CreateAgentRequestSkills
 	SetSystemPrompt(v string) *CreateAgentRequest
@@ -52,6 +56,12 @@ type CreateAgentRequest struct {
 	//
 	// My Assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Agent 绑定的已发布专家套件。个人或企业套件使用 SuiteId，可选 Version；官方套件必须显式指定 Source=OFFICIAL 和官方目录中的 SuiteId，不传 Version。未传时创建为空，不会默认加载所有官方套件。
+	//
+	// example:
+	//
+	// [{"Source":"OFFICIAL","SuiteId":"dataworks-data-analysis-extension"},{"SuiteId":"suite_example","Version":1}]
+	ExpertSuites []*CreateAgentRequestExpertSuites `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty" type:"Repeated"`
 	// The extended metadata in key-value pairs.
 	//
 	// example:
@@ -76,6 +86,12 @@ type CreateAgentRequest struct {
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 是否在创建 Agent 后立即发布。true 发布创建的版本；false 或省略保持原有仅创建草稿行为。保存与发布不是原子操作，发布失败时草稿可能已存在；重试前应先查询 Agent，避免重复创建。
+	//
+	// example:
+	//
+	// false
+	PublishImmediately *bool `json:"PublishImmediately,omitempty" xml:"PublishImmediately,omitempty"`
 	// The list of skills.
 	//
 	// example:
@@ -130,6 +146,10 @@ func (s *CreateAgentRequest) GetDisplayName() *string {
 	return s.DisplayName
 }
 
+func (s *CreateAgentRequest) GetExpertSuites() []*CreateAgentRequestExpertSuites {
+	return s.ExpertSuites
+}
+
 func (s *CreateAgentRequest) GetMetadata() map[string]interface{} {
 	return s.Metadata
 }
@@ -140,6 +160,10 @@ func (s *CreateAgentRequest) GetModel() map[string]interface{} {
 
 func (s *CreateAgentRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateAgentRequest) GetPublishImmediately() *bool {
+	return s.PublishImmediately
 }
 
 func (s *CreateAgentRequest) GetSkills() []*CreateAgentRequestSkills {
@@ -177,6 +201,11 @@ func (s *CreateAgentRequest) SetDisplayName(v string) *CreateAgentRequest {
 	return s
 }
 
+func (s *CreateAgentRequest) SetExpertSuites(v []*CreateAgentRequestExpertSuites) *CreateAgentRequest {
+	s.ExpertSuites = v
+	return s
+}
+
 func (s *CreateAgentRequest) SetMetadata(v map[string]interface{}) *CreateAgentRequest {
 	s.Metadata = v
 	return s
@@ -189,6 +218,11 @@ func (s *CreateAgentRequest) SetModel(v map[string]interface{}) *CreateAgentRequ
 
 func (s *CreateAgentRequest) SetName(v string) *CreateAgentRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateAgentRequest) SetPublishImmediately(v bool) *CreateAgentRequest {
+	s.PublishImmediately = &v
 	return s
 }
 
@@ -220,6 +254,15 @@ func (s *CreateAgentRequest) SetVisibilityScope(v *CreateAgentRequestVisibilityS
 func (s *CreateAgentRequest) Validate() error {
 	if s.CallableAgents != nil {
 		for _, item := range s.CallableAgents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExpertSuites != nil {
+		for _, item := range s.ExpertSuites {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -283,6 +326,66 @@ func (s *CreateAgentRequestCallableAgents) Validate() error {
 	return dara.Validate(s)
 }
 
+type CreateAgentRequestExpertSuites struct {
+	// OFFICIAL 表示官方目录资源；DB 表示个人或企业资源。省略时保持原有数据库资源查询语义。官方资源在 Agent 发布时固定制品版本。
+	//
+	// example:
+	//
+	// OFFICIAL
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 传入专家套件引用时，每项需提供 SuiteId，由服务端校验。Source=OFFICIAL 时为官方目录 ID；其他情况为专家套件管理返回的 ID。引用资源必须对调用者可见。
+	//
+	// example:
+	//
+	// dataworks-data-analysis-extension
+	SuiteId *string `json:"SuiteId,omitempty" xml:"SuiteId,omitempty"`
+	// 仅用于个人或企业套件，必须为已发布快照的整数版本号。省略时在 Agent 发布时固定当前已发布版本。Source=OFFICIAL 时不传此字段。
+	//
+	// example:
+	//
+	// 1
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s CreateAgentRequestExpertSuites) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAgentRequestExpertSuites) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAgentRequestExpertSuites) GetSource() *string {
+	return s.Source
+}
+
+func (s *CreateAgentRequestExpertSuites) GetSuiteId() *string {
+	return s.SuiteId
+}
+
+func (s *CreateAgentRequestExpertSuites) GetVersion() *int32 {
+	return s.Version
+}
+
+func (s *CreateAgentRequestExpertSuites) SetSource(v string) *CreateAgentRequestExpertSuites {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateAgentRequestExpertSuites) SetSuiteId(v string) *CreateAgentRequestExpertSuites {
+	s.SuiteId = &v
+	return s
+}
+
+func (s *CreateAgentRequestExpertSuites) SetVersion(v int32) *CreateAgentRequestExpertSuites {
+	s.Version = &v
+	return s
+}
+
+func (s *CreateAgentRequestExpertSuites) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateAgentRequestSkills struct {
 	// The name of the skill.
 	//
@@ -290,6 +393,24 @@ type CreateAgentRequestSkills struct {
 	//
 	// skill-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Source=OFFICIAL 时传官方目录 ID，不传 Name 或 Version。个人或企业 Skill 不传此字段。
+	//
+	// example:
+	//
+	// dataworks-semantic
+	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// OFFICIAL 表示官方目录资源；DB 表示个人或企业资源，省略时保持原有按名称查询语义。
+	//
+	// example:
+	//
+	// OFFICIAL
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 仅用于个人或企业 Skill，必须为已发布快照的整数版本。省略时在 Agent 发布时固定当前已发布版本；Source=OFFICIAL 时不传。
+	//
+	// example:
+	//
+	// 1
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateAgentRequestSkills) String() string {
@@ -304,8 +425,35 @@ func (s *CreateAgentRequestSkills) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateAgentRequestSkills) GetSkillId() *string {
+	return s.SkillId
+}
+
+func (s *CreateAgentRequestSkills) GetSource() *string {
+	return s.Source
+}
+
+func (s *CreateAgentRequestSkills) GetVersion() *int32 {
+	return s.Version
+}
+
 func (s *CreateAgentRequestSkills) SetName(v string) *CreateAgentRequestSkills {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateAgentRequestSkills) SetSkillId(v string) *CreateAgentRequestSkills {
+	s.SkillId = &v
+	return s
+}
+
+func (s *CreateAgentRequestSkills) SetSource(v string) *CreateAgentRequestSkills {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateAgentRequestSkills) SetVersion(v int32) *CreateAgentRequestSkills {
+	s.Version = &v
 	return s
 }
 

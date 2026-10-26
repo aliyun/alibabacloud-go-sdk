@@ -62,6 +62,12 @@ func (s *GetAgentResponseBody) Validate() error {
 }
 
 type GetAgentResponseBodyAgent struct {
+	// 本次读取的定义版本。更新当前定义时，将该值作为 UpdateAgent 的 ExpectedVersion，可拒绝覆盖其他调用者已提交的新版本。读取历史快照的版本不代表当前版本。
+	//
+	// example:
+	//
+	// 2
+	AgentVersion *int32 `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
 	// A list of callable sub-agents.
 	CallableAgents []*GetAgentResponseBodyAgentCallableAgents `json:"CallableAgents,omitempty" xml:"CallableAgents,omitempty" type:"Repeated"`
 	// The creator ID.
@@ -82,6 +88,8 @@ type GetAgentResponseBodyAgent struct {
 	//
 	// My assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Agent 定义绑定的专家套件及固定发布版本。
+	ExpertSuites []*GetAgentResponseBodyAgentExpertSuites `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty" type:"Repeated"`
 	// The creation time, as a Unix timestamp in milliseconds.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
@@ -148,6 +156,10 @@ func (s GetAgentResponseBodyAgent) GoString() string {
 	return s.String()
 }
 
+func (s *GetAgentResponseBodyAgent) GetAgentVersion() *int32 {
+	return s.AgentVersion
+}
+
 func (s *GetAgentResponseBodyAgent) GetCallableAgents() []*GetAgentResponseBodyAgentCallableAgents {
 	return s.CallableAgents
 }
@@ -162,6 +174,10 @@ func (s *GetAgentResponseBodyAgent) GetDescription() *string {
 
 func (s *GetAgentResponseBodyAgent) GetDisplayName() *string {
 	return s.DisplayName
+}
+
+func (s *GetAgentResponseBodyAgent) GetExpertSuites() []*GetAgentResponseBodyAgentExpertSuites {
+	return s.ExpertSuites
 }
 
 func (s *GetAgentResponseBodyAgent) GetGmtCreateTime() *string {
@@ -212,6 +228,11 @@ func (s *GetAgentResponseBodyAgent) GetVisibilityScope() *GetAgentResponseBodyAg
 	return s.VisibilityScope
 }
 
+func (s *GetAgentResponseBodyAgent) SetAgentVersion(v int32) *GetAgentResponseBodyAgent {
+	s.AgentVersion = &v
+	return s
+}
+
 func (s *GetAgentResponseBodyAgent) SetCallableAgents(v []*GetAgentResponseBodyAgentCallableAgents) *GetAgentResponseBodyAgent {
 	s.CallableAgents = v
 	return s
@@ -229,6 +250,11 @@ func (s *GetAgentResponseBodyAgent) SetDescription(v string) *GetAgentResponseBo
 
 func (s *GetAgentResponseBodyAgent) SetDisplayName(v string) *GetAgentResponseBodyAgent {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgent) SetExpertSuites(v []*GetAgentResponseBodyAgentExpertSuites) *GetAgentResponseBodyAgent {
+	s.ExpertSuites = v
 	return s
 }
 
@@ -295,6 +321,15 @@ func (s *GetAgentResponseBodyAgent) SetVisibilityScope(v *GetAgentResponseBodyAg
 func (s *GetAgentResponseBodyAgent) Validate() error {
 	if s.CallableAgents != nil {
 		for _, item := range s.CallableAgents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ExpertSuites != nil {
+		for _, item := range s.ExpertSuites {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -405,6 +440,135 @@ func (s *GetAgentResponseBodyAgentCallableAgents) SetVersion(v int32) *GetAgentR
 }
 
 func (s *GetAgentResponseBodyAgentCallableAgents) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAgentResponseBodyAgentExpertSuites struct {
+	// 套件已删除、发布快照缺失或调用者无权查看时，不返回套件摘要，仅保留 ID 和版本号。
+	//
+	// example:
+	//
+	// 数据分析专家能力集合
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 数据分析专家套件
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// analysis-suite
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 显式查询 Agent 已发布版本时返回固定的官方制品版本；查询草稿或自定义套件时不返回。
+	//
+	// example:
+	//
+	// 0.1.0.202610211408
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// 可选套件摘要字段，当前新 DataAgent 应用不返回；缺省不表示版本 0。不可作为 UpdateAgent 的 Version，回写引用时必须省略。官方制品的固定版本请读取 PackageVersion。
+	//
+	// example:
+	//
+	// 1.2.0
+	SemanticVersion *string `json:"SemanticVersion,omitempty" xml:"SemanticVersion,omitempty"`
+	// OFFICIAL 表示官方目录资源；省略或 DB 表示个人或企业资源。
+	//
+	// example:
+	//
+	// OFFICIAL
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// suite_example
+	SuiteId *string `json:"SuiteId,omitempty" xml:"SuiteId,omitempty"`
+	// 仅个人或企业套件在引用明确指定版本或读取发布快照时返回；官方套件不返回。未返回不是 0；SDK 若将缺省整数初始化为 0，回写时必须省略。官方项只回写 Source 和 SuiteId，不传 Version、SemanticVersion 或 PackageVersion。
+	//
+	// example:
+	//
+	// 3
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetAgentResponseBodyAgentExpertSuites) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentResponseBodyAgentExpertSuites) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) GetDescription() *string {
+	return s.Description
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) GetDisplayName() *string {
+	return s.DisplayName
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) GetName() *string {
+	return s.Name
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) GetPackageVersion() *string {
+	return s.PackageVersion
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) GetSemanticVersion() *string {
+	return s.SemanticVersion
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) GetSource() *string {
+	return s.Source
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) GetSuiteId() *string {
+	return s.SuiteId
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) GetVersion() *int32 {
+	return s.Version
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) SetDescription(v string) *GetAgentResponseBodyAgentExpertSuites {
+	s.Description = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) SetDisplayName(v string) *GetAgentResponseBodyAgentExpertSuites {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) SetName(v string) *GetAgentResponseBodyAgentExpertSuites {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) SetPackageVersion(v string) *GetAgentResponseBodyAgentExpertSuites {
+	s.PackageVersion = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) SetSemanticVersion(v string) *GetAgentResponseBodyAgentExpertSuites {
+	s.SemanticVersion = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) SetSource(v string) *GetAgentResponseBodyAgentExpertSuites {
+	s.Source = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) SetSuiteId(v string) *GetAgentResponseBodyAgentExpertSuites {
+	s.SuiteId = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) SetVersion(v int32) *GetAgentResponseBodyAgentExpertSuites {
+	s.Version = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentExpertSuites) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -520,6 +684,22 @@ type GetAgentResponseBodyAgentSkills struct {
 	//
 	// my-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 指定 AgentVersion 查询已发布快照时返回固定的官方制品版本；查询草稿或自定义 Skill 时不返回。
+	//
+	// example:
+	//
+	// 0.6.0.202608201110
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// example:
+	//
+	// dataworks-semantic
+	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// OFFICIAL 表示官方目录资源；省略或 DB 表示原有个人或企业资源。
+	//
+	// example:
+	//
+	// OFFICIAL
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The skill version.
 	//
 	// example:
@@ -540,12 +720,39 @@ func (s *GetAgentResponseBodyAgentSkills) GetName() *string {
 	return s.Name
 }
 
+func (s *GetAgentResponseBodyAgentSkills) GetPackageVersion() *string {
+	return s.PackageVersion
+}
+
+func (s *GetAgentResponseBodyAgentSkills) GetSkillId() *string {
+	return s.SkillId
+}
+
+func (s *GetAgentResponseBodyAgentSkills) GetSource() *string {
+	return s.Source
+}
+
 func (s *GetAgentResponseBodyAgentSkills) GetVersion() *int32 {
 	return s.Version
 }
 
 func (s *GetAgentResponseBodyAgentSkills) SetName(v string) *GetAgentResponseBodyAgentSkills {
 	s.Name = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentSkills) SetPackageVersion(v string) *GetAgentResponseBodyAgentSkills {
+	s.PackageVersion = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentSkills) SetSkillId(v string) *GetAgentResponseBodyAgentSkills {
+	s.SkillId = &v
+	return s
+}
+
+func (s *GetAgentResponseBodyAgentSkills) SetSource(v string) *GetAgentResponseBodyAgentSkills {
+	s.Source = &v
 	return s
 }
 
