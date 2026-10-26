@@ -1812,6 +1812,54 @@ func (client *Client) CreateServiceTaskWithContext(ctx context.Context, workspac
 
 // Summary:
 //
+// 创建订阅
+//
+// @param request - CreateSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSubscriptionResponse
+func (client *Client) CreateSubscriptionWithContext(ctx context.Context, request *CreateSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSubscription"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/subscriptions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates a ticket for passwordless access if you need to share console pages with others without requiring logon or embed them in third-party systems. After generating the ticket by calling CreateTicket, you can construct a passwordless access link.
 //
 // @param request - CreateTicketRequest
@@ -3149,6 +3197,53 @@ func (client *Client) DeleteServiceTaskWithContext(ctx context.Context, workspac
 
 // Summary:
 //
+// 删除订阅
+//
+// @param request - DeleteSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSubscriptionResponse
+func (client *Client) DeleteSubscriptionWithContext(ctx context.Context, subscriptionId *string, request *DeleteSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSubscription"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/subscriptions/" + dara.PercentEncode(dara.StringValue(subscriptionId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a Umodel configuration.
 //
 // Description:
@@ -3579,6 +3674,53 @@ func (client *Client) DisableNotifyPolicyWithContext(ctx context.Context, uuid *
 
 // Summary:
 //
+// 暂停订阅
+//
+// @param request - DisableSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableSubscriptionResponse
+func (client *Client) DisableSubscriptionWithContext(ctx context.Context, subscriptionId *string, request *DisableSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableSubscription"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/subscriptions/" + dara.PercentEncode(dara.StringValue(subscriptionId)) + "/disable"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables a silence policy.
 //
 // Description:
@@ -3671,6 +3813,53 @@ func (client *Client) EnableNotifyPolicyWithContext(ctx context.Context, uuid *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableNotifyPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动订阅
+//
+// @param request - EnableSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableSubscriptionResponse
+func (client *Client) EnableSubscriptionWithContext(ctx context.Context, subscriptionId *string, request *EnableSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableSubscription"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/subscriptions/" + dara.PercentEncode(dara.StringValue(subscriptionId)) + "/enable"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableSubscriptionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5301,6 +5490,53 @@ func (client *Client) GetServiceTaskWithContext(ctx context.Context, workspace *
 
 // Summary:
 //
+// 获取订阅
+//
+// @param request - GetSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubscriptionResponse
+func (client *Client) GetSubscriptionWithContext(ctx context.Context, subscriptionId *string, request *GetSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSubscription"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/subscriptions/" + dara.PercentEncode(dara.StringValue(subscriptionId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves Umodel configuration information.
 //
 // Description:
@@ -5485,11 +5721,11 @@ func (client *Client) GetWorkspaceWithContext(ctx context.Context, workspaceName
 
 // Summary:
 //
-// Lists the releases of an add-on.
+// Lists add-on releases.
 //
 // Description:
 //
-// Queries the list of integration configurations.
+// Queries the list of add-on configurations.
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -7700,6 +7936,97 @@ func (client *Client) ListServicesWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
+// 查询订阅规则列表
+//
+// @param request - ListSubscriptionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSubscriptionsResponse
+func (client *Client) ListSubscriptionsWithContext(ctx context.Context, request *ListSubscriptionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSubscriptionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentUuid) {
+		query["agentUuid"] = request.AgentUuid
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.Enable) {
+		query["enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.NotifyStrategyUuid) {
+		query["notifyStrategyUuid"] = request.NotifyStrategyUuid
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["orderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.SubscriptionId) {
+		query["subscriptionId"] = request.SubscriptionId
+	}
+
+	if !dara.IsNil(request.SubscriptionName) {
+		query["subscriptionName"] = request.SubscriptionName
+	}
+
+	if !dara.IsNil(request.SubscriptionType) {
+		query["subscriptionType"] = request.SubscriptionType
+	}
+
+	if !dara.IsNil(request.Unbound) {
+		query["unbound"] = request.Unbound
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSubscriptions"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/subscriptions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSubscriptionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries labels associated with resources.
 //
 // @param tmpReq - ListTagResourcesRequest
@@ -7763,6 +8090,145 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, tmpReq *L
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # List History name
+//
+// @param request - ListUserNotifyHistoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserNotifyHistoriesResponse
+func (client *Client) ListUserNotifyHistoriesWithContext(ctx context.Context, request *ListUserNotifyHistoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUserNotifyHistoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchId) {
+		query["batchId"] = request.BatchId
+	}
+
+	if !dara.IsNil(request.BizSource) {
+		query["bizSource"] = request.BizSource
+	}
+
+	if !dara.IsNil(request.Channel) {
+		query["channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.ChannelCategory) {
+		query["channelCategory"] = request.ChannelCategory
+	}
+
+	if !dara.IsNil(request.From) {
+		query["from"] = request.From
+	}
+
+	if !dara.IsNil(request.Group) {
+		query["group"] = request.Group
+	}
+
+	if !dara.IsNil(request.IncidentId) {
+		query["incidentId"] = request.IncidentId
+	}
+
+	if !dara.IsNil(request.IncludeNoChannel) {
+		query["includeNoChannel"] = request.IncludeNoChannel
+	}
+
+	if !dara.IsNil(request.IsDesc) {
+		query["isDesc"] = request.IsDesc
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.NotifyStrategyId) {
+		query["notifyStrategyId"] = request.NotifyStrategyId
+	}
+
+	if !dara.IsNil(request.NotifyStrategyName) {
+		query["notifyStrategyName"] = request.NotifyStrategyName
+	}
+
+	if !dara.IsNil(request.PartitionKey) {
+		query["partitionKey"] = request.PartitionKey
+	}
+
+	if !dara.IsNil(request.Receiver) {
+		query["receiver"] = request.Receiver
+	}
+
+	if !dara.IsNil(request.RuleId) {
+		query["ruleId"] = request.RuleId
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["ruleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SendType) {
+		query["sendType"] = request.SendType
+	}
+
+	if !dara.IsNil(request.Severity) {
+		query["severity"] = request.Severity
+	}
+
+	if !dara.IsNil(request.SubscriptionId) {
+		query["subscriptionId"] = request.SubscriptionId
+	}
+
+	if !dara.IsNil(request.SubscriptionName) {
+		query["subscriptionName"] = request.SubscriptionName
+	}
+
+	if !dara.IsNil(request.Success) {
+		query["success"] = request.Success
+	}
+
+	if !dara.IsNil(request.To) {
+		query["to"] = request.To
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserNotifyHistories"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/userHistories"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserNotifyHistoriesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

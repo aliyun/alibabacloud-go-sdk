@@ -26,6 +26,9 @@ type GetAddonSchemaRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
+	// example:
+	//
+	// v2
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	// The environment type. Valid values: \\`CS\\` (container) and \\`ECS\\`.
 	//

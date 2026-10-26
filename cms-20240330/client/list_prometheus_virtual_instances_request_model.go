@@ -28,7 +28,7 @@ type ListPrometheusVirtualInstancesRequest struct {
 	//
 	// ack-csi-fuse
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The next paging token for the paged query.
+	// The next token for the paging query.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The tenant ID.
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`

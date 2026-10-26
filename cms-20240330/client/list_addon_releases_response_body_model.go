@@ -96,7 +96,7 @@ func (s *ListAddonReleasesResponseBody) Validate() error {
 }
 
 type ListAddonReleasesResponseBodyReleases struct {
-	// The name of the add-on.
+	// The addon name.
 	//
 	// example:
 	//
@@ -115,8 +115,24 @@ type ListAddonReleasesResponseBodyReleases struct {
 	// 2023-03-30
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	// The summary of installation phase conditions.
+	//
+	// Type includes four values: Loaded (loads configurations), Installed (executes installation), Ready (performs a readiness check after installation), and UnInstalled (executes uninstallation). These four conditions theoretically occur in sequence.
+	//
+	// Status. Valid values:
+	//
+	// - Unknown: The current phase is being executed.
+	//
+	// - True: The execution is ready.
+	//
+	// - False: The execution failed.
+	//
+	// Complete status determination rules:
+	//
+	// If the Status of Loaded, Installed, or Ready is False, the installation fails. If the Status of Ready is True, the installation succeeds. In other cases, the installation is in progress.
+	//
+	// If UnInstalled exists, an uninstallation is in progress. If Status is True, the uninstallation succeeds. If Status is Unknown, the uninstallation is in progress. If Status is False, the uninstallation fails.
 	Conditions []*ListAddonReleasesResponseBodyReleasesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The configuration information of the component.
+	// The component configuration information.
 	//
 	// example:
 	//
@@ -136,7 +152,7 @@ type ListAddonReleasesResponseBodyReleases struct {
 	DashboardCount *int64 `json:"dashboardCount,omitempty" xml:"dashboardCount,omitempty"`
 	// The entity details.
 	EntityRules *EntityGroupBase `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
-	// The type of the environment.
+	// The environment type.
 	//
 	// example:
 	//
@@ -208,13 +224,13 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 7339d808-66f9-4d40-83fa-xxxxxxxxxxx
 	ReleaseId *string `json:"releaseId,omitempty" xml:"releaseId,omitempty"`
-	// The name of the release.
+	// The release name.
 	//
 	// example:
 	//
 	// test-gpu-integration-name
 	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	// The scenario of the component.
+	// The component scenario.
 	//
 	// example:
 	//
@@ -226,7 +242,7 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The statistics information of sub-add-on releases.
+	// The statistics information of sub-addon releases.
 	SubAddonRelease *ListAddonReleasesResponseBodyReleasesSubAddonRelease `json:"subAddonRelease,omitempty" xml:"subAddonRelease,omitempty" type:"Struct"`
 	// The update time.
 	//
@@ -234,13 +250,13 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 2024-11-04T16:10:23+08:00
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the owning user.
+	// The ID of the owner user.
 	//
 	// example:
 	//
 	// 175xxxxxxxxxxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The version of the component.
+	// The component version.
 	//
 	// example:
 	//
@@ -538,31 +554,31 @@ func (s *ListAddonReleasesResponseBodyReleases) Validate() error {
 }
 
 type ListAddonReleasesResponseBodyReleasesConditions struct {
-	// The time of the first transition.
+	// The first transition time.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	FirstTransitionTime *string `json:"firstTransitionTime,omitempty" xml:"firstTransitionTime,omitempty"`
-	// The time of the last transition.
+	// The last transition time.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	LastTransitionTime *string `json:"lastTransitionTime,omitempty" xml:"lastTransitionTime,omitempty"`
-	// The detailed information.
+	// The details.
 	//
 	// example:
 	//
 	// The addon loaded successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The status of the phase.
+	// The phase status.
 	//
 	// example:
 	//
 	// True
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The type of the phase.
+	// The phase type.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type ListPrometheusVirtualInstancesResponseBody struct {
 	//
 	// 100
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The next token for the next page. It is empty when all results are returned.
+	// The next token for the next page. This parameter is empty when all results are returned.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// Id of the request
 	//
@@ -38,7 +38,7 @@ type ListPrometheusVirtualInstancesResponseBody struct {
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of instances returned.
+	// The total number of returned instances.
 	TotalCount *string `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -115,7 +115,7 @@ type ListPrometheusVirtualInstancesResponseBodyInstances struct {
 	//
 	// 1750315319946
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The HTTP API URL.
+	// The HTTP API endpoint.
 	//
 	// example:
 	//

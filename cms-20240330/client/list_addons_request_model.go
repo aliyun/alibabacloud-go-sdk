@@ -28,6 +28,9 @@ type ListAddonsRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
+	// example:
+	//
+	// v2
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	// The tag filter.
 	//
