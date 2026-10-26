@@ -20,13 +20,13 @@ type iListDisasterRecoveryCheckpointsRequest interface {
 }
 
 type ListDisasterRecoveryCheckpointsRequest struct {
-	// Filter Condition
+	// The filter condition.
 	//
 	// example:
 	//
 	// topic_test
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// Source Instance ID
+	// The instance ID of the source instance.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type ListDisasterRecoveryCheckpointsRequest struct {
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Current page number, starting from 1.
+	// The current page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size, the maximum number of results returned per page.
+	// The page size. The maximum number of results to return per page.
 	//
 	// example:
 	//

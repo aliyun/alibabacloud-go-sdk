@@ -30,19 +30,19 @@ type iCreateInstanceAccountResponseBody interface {
 }
 
 type CreateInstanceAccountResponseBody struct {
-	// No permission details
+	// The access denial details. This field is returned only when access is denied due to insufficient RAM permissions.
 	//
 	// example:
 	//
 	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// The error code returned if the call failed.
+	// The error code.
 	//
 	// example:
 	//
 	// MissingInstanceId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned result.
+	// The response data.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type CreateInstanceAccountResponseBody struct {
 	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3AE0999C-8DBA-5CEE-8D9A-BE8D4A90DF8D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

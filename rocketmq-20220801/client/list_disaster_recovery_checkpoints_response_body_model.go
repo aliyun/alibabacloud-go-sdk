@@ -28,15 +28,15 @@ type iListDisasterRecoveryCheckpointsResponseBody interface {
 }
 
 type ListDisasterRecoveryCheckpointsResponseBody struct {
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response Data
+	// The returned data.
 	Data *ListDisasterRecoveryCheckpointsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Dynamic error code
+	// The dynamic error code.
 	//
 	// example:
 	//
@@ -48,25 +48,25 @@ type ListDisasterRecoveryCheckpointsResponseBody struct {
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Whether the operation was successful
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -164,21 +164,21 @@ func (s *ListDisasterRecoveryCheckpointsResponseBody) Validate() error {
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyData struct {
-	// Paged data
+	// The paginated data.
 	List []*ListDisasterRecoveryCheckpointsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Total number of records
+	// The total number of records.
 	//
 	// example:
 	//
@@ -244,33 +244,33 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyData) Validate() error {
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataList struct {
-	// Consumption Progress ID
+	// The consumer offset checkpoint ID.
 	//
 	// example:
 	//
 	// 10000000xx
 	CheckpointId *int64 `json:"checkpointId,omitempty" xml:"checkpointId,omitempty"`
-	// Backup Mapping ID
+	// The ID of the backup mapping.
 	//
 	// example:
 	//
 	// 10000000xx
 	ItemId *int64 `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// Last synchronization time
+	// The most recent synchronization time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1740724080343
 	LastSyncTime *int64 `json:"lastSyncTime,omitempty" xml:"lastSyncTime,omitempty"`
-	// Backup Plan ID
+	// The ID of the backup plan.
 	//
 	// example:
 	//
 	// 13000000xx
 	PlanId *int64 `json:"planId,omitempty" xml:"planId,omitempty"`
-	// Source consumption progress
+	// The source consumer offset.
 	SourceProgress *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress `json:"sourceProgress,omitempty" xml:"sourceProgress,omitempty" type:"Struct"`
-	// Target consumption progress
+	// The target consumer offset.
 	TargetProgress *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress `json:"targetProgress,omitempty" xml:"targetProgress,omitempty" type:"Struct"`
 }
 
@@ -351,37 +351,37 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataList) Validate() error {
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress struct {
-	// Consumer Group ID
+	// The consumer group ID.
 	//
 	// example:
 	//
 	// GID_TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// rmq-cn-3mp3vblzxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Instance type
+	// The instance type. Valid values:
 	//
-	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+	// - ALIYUN_ROCKETMQ: Alibaba Cloud instance.
 	//
-	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	// - EXTERNAL_ROCKETMQ: external instance, open source instance, or open source cluster.
 	//
 	// example:
 	//
 	// ALIYUN_ROCKETMQ
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// Last fetch time
+	// The most recent fetch time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1740724080343
 	LastFetchTime *int64 `json:"lastFetchTime,omitempty" xml:"lastFetchTime,omitempty"`
-	// Consumption progress data
+	// The consumer offset data.
 	ProgressData *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData `json:"progressData,omitempty" xml:"progressData,omitempty" type:"Struct"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
@@ -476,7 +476,7 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) Vali
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData struct {
-	// Latest consumption time
+	// The latest consumption time.
 	//
 	// example:
 	//
@@ -506,43 +506,43 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgre
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress struct {
-	// Consumer group ID
+	// The consumer group ID.
 	//
 	// example:
 	//
 	// GID_TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// rmq-cn-nwy3i065xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Instance type
+	// The instance type. Valid values:
 	//
-	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+	// - ALIYUN_ROCKETMQ: Alibaba Cloud instance.
 	//
-	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	// - EXTERNAL_ROCKETMQ: external instance, open source instance, or open source cluster.
 	//
 	// example:
 	//
 	// ALIYUN_ROCKETMQ
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// Latest fetch time
+	// The latest fetch time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1740724080343
 	LastFetchTime *int64 `json:"lastFetchTime,omitempty" xml:"lastFetchTime,omitempty"`
-	// Consumption progress data
+	// The consumer offset data.
 	ProgressData *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData `json:"progressData,omitempty" xml:"progressData,omitempty" type:"Struct"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Topic name
+	// The topic name.
 	//
 	// example:
 	//
@@ -631,7 +631,7 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) Vali
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData struct {
-	// Latest consumption time
+	// The latest consumption time.
 	//
 	// example:
 	//

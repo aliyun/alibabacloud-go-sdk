@@ -28,49 +28,49 @@ type iCreateTopicResponseBody interface {
 }
 
 type CreateTopicResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// Topic.Existed
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return result.
+	// The returned data.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// TopicName
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// Dynamic error message.
+	// The dynamic error message.
 	//
 	// example:
 	//
 	// topicName
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The topic already exists.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, each request\\"s ID is unique and can be used for troubleshooting and problem localization.
+	// The request ID. Each request has a unique ID, which can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the execution was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

@@ -28,31 +28,46 @@ type iListMigrationOperationsResponseBody interface {
 }
 
 type ListMigrationOperationsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Instance.NotFound
-	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListMigrationOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
 	// consumerGroupId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The topic already exists.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C7E8AE3A-219B-52EE-BE32-4036F5F88833
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -149,15 +164,22 @@ func (s *ListMigrationOperationsResponseBody) Validate() error {
 }
 
 type ListMigrationOperationsResponseBodyData struct {
+	// The paginated data.
 	List []*ListMigrationOperationsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -222,40 +244,65 @@ func (s *ListMigrationOperationsResponseBodyData) Validate() error {
 }
 
 type ListMigrationOperationsResponseBodyDataList struct {
+	// The operation business status.
+	//
 	// example:
 	//
-	// CONNECT_PENDING
+	// DOUBLE_READ
 	BusinessStatus *string `json:"businessStatus,omitempty" xml:"businessStatus,omitempty"`
+	// The creation time, in the format of YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2022-08-01 00:00:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The migration ID.
+	//
 	// example:
 	//
 	// 1
 	MigrationId *int64 `json:"migrationId,omitempty" xml:"migrationId,omitempty"`
+	// The migration operation ID.
+	//
 	// example:
 	//
 	// 183
 	OperationId *int64 `json:"operationId,omitempty" xml:"operationId,omitempty"`
+	// The primary key of the operation object.
+	//
+	//
+	// >
+	//
+	// > - During the message migration stage, the operation object is the topic name.
+	//
 	// example:
 	//
-	// xx
-	OperationKey    *string                                                     `json:"operationKey,omitempty" xml:"operationKey,omitempty"`
-	OperationParam  *ListMigrationOperationsResponseBodyDataListOperationParam  `json:"operationParam,omitempty" xml:"operationParam,omitempty" type:"Struct"`
+	// normal-topic-1
+	OperationKey *string `json:"operationKey,omitempty" xml:"operationKey,omitempty"`
+	// The operation parameter.
+	OperationParam *ListMigrationOperationsResponseBodyDataListOperationParam `json:"operationParam,omitempty" xml:"operationParam,omitempty" type:"Struct"`
+	// The operation result.
 	OperationResult *ListMigrationOperationsResponseBodyDataListOperationResult `json:"operationResult,omitempty" xml:"operationResult,omitempty" type:"Struct"`
+	// The operation status.
+	//
 	// example:
 	//
 	// DOING
 	OperationStatus *string `json:"operationStatus,omitempty" xml:"operationStatus,omitempty"`
+	// The operation type.
+	//
 	// example:
 	//
-	// IMPORT_CONSUMER_GROUP
+	// MIGRATE_MESSAGE
 	OperationType *string `json:"operationType,omitempty" xml:"operationType,omitempty"`
+	// The migration stage type.
+	//
 	// example:
 	//
-	// CONNECT_NETWORK
+	// MIGRATE_MESSAGE
 	StageType *string `json:"stageType,omitempty" xml:"stageType,omitempty"`
+	// The update time, in the format of YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
@@ -384,9 +431,17 @@ func (s *ListMigrationOperationsResponseBodyDataList) Validate() error {
 }
 
 type ListMigrationOperationsResponseBodyDataListOperationParam struct {
+	// The parameter information.
+	//
 	// example:
 	//
-	// []
+	// {
+	//
+	//       "action": "MIGRATE_FORWARD",
+	//
+	//       "targetStage": "MIGRATE_FINISH"
+	//
+	// }
 	ParamData interface{} `json:"paramData,omitempty" xml:"paramData,omitempty"`
 }
 
@@ -412,9 +467,23 @@ func (s *ListMigrationOperationsResponseBodyDataListOperationParam) Validate() e
 }
 
 type ListMigrationOperationsResponseBodyDataListOperationResult struct {
+	// The operation result.
+	//
 	// example:
 	//
-	// []
+	// {
+	//
+	//       "checkStatus": "WAIT_CHECK",
+	//
+	//       "sourceTopicStatus": "PERM_6",
+	//
+	//       "targetTopicStatus": "PERM_4",
+	//
+	//       "checkResult": {},
+	//
+	//       "migrateStage": "DOUBLE_READ"
+	//
+	// }
 	ResultData interface{} `json:"resultData,omitempty" xml:"resultData,omitempty"`
 }
 

@@ -30,7 +30,7 @@ type iDeleteInstanceAclResponseBody interface {
 }
 
 type DeleteInstanceAclResponseBody struct {
-	// The details about the access denial. This parameter is returned only if the access is denied due to the reason that the Resource Access Management (RAM) user does not have the required permissions.
+	// The access denial details. This field is returned only when user access is denied due to insufficient RAM permissions.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteInstanceAclResponseBody struct {
 	//
 	// MissingInstanceId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The returned result.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type DeleteInstanceAclResponseBody struct {
 	//
 	// example:
 	//
-	// 7358418D-83BD-507A-8079-*****
+	// 7358418D-83BD-507A-8079-611C63E05674
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

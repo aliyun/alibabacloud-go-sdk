@@ -34,7 +34,7 @@ type GetTraceResponseBody struct {
 	//
 	// InvalidConsumerGroupId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *GetTraceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The dynamic error code.
 	//
@@ -60,13 +60,13 @@ type GetTraceResponseBody struct {
 	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// The request ID. Each request has a unique ID that you can use to troubleshoot issues.
 	//
 	// example:
 	//
 	// 7779A8FC-1BCD-5A1D-A603-C4A9BD8ADC49
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -164,9 +164,9 @@ func (s *GetTraceResponseBody) Validate() error {
 }
 
 type GetTraceResponseBodyData struct {
-	// The broker trace.
+	// The broker message trace information.
 	BrokerInfo *GetTraceResponseBodyDataBrokerInfo `json:"brokerInfo,omitempty" xml:"brokerInfo,omitempty" type:"Struct"`
-	// Consumer trace info.
+	// The consumer message trace information.
 	ConsumerInfos []*GetTraceResponseBodyDataConsumerInfos `json:"consumerInfos,omitempty" xml:"consumerInfos,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -176,7 +176,7 @@ type GetTraceResponseBodyData struct {
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The message information.
 	MessageInfo *GetTraceResponseBodyDataMessageInfo `json:"messageInfo,omitempty" xml:"messageInfo,omitempty" type:"Struct"`
-	// The producer trace.
+	// The producer message trace information.
 	ProducerInfo *GetTraceResponseBodyDataProducerInfo `json:"producerInfo,omitempty" xml:"producerInfo,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -292,25 +292,25 @@ func (s *GetTraceResponseBodyData) Validate() error {
 }
 
 type GetTraceResponseBodyDataBrokerInfo struct {
-	// Delay status.
+	// The scheduled message status.
 	//
 	// example:
 	//
 	// SUCCESS
 	DelayStatus *string `json:"delayStatus,omitempty" xml:"delayStatus,omitempty"`
-	// Operation list.
+	// The list of operations.
 	Operations []*GetTraceResponseBodyDataBrokerInfoOperations `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
-	// Preset delivery time.
+	// The preset delivery time, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-03-22 12:17:08
 	PresetDelayTime *string `json:"presetDelayTime,omitempty" xml:"presetDelayTime,omitempty"`
-	// Withdraw scheduled message request result
+	// The recall result. This field is non-empty when a recall record exists.
 	//
 	// example:
 	//
-	// RECALL_OK
+	// RECALL_OK | RECALL_FAIL
 	RecallResult *string `json:"recallResult,omitempty" xml:"recallResult,omitempty"`
 }
 
@@ -372,13 +372,13 @@ func (s *GetTraceResponseBodyDataBrokerInfo) Validate() error {
 }
 
 type GetTraceResponseBodyDataBrokerInfoOperations struct {
-	// Operation time.
+	// The operation time, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-03-22 12:17:08
 	OperateTime *string `json:"operateTime,omitempty" xml:"operateTime,omitempty"`
-	// Operation type.
+	// The operation type.
 	//
 	// example:
 	//
@@ -417,7 +417,7 @@ func (s *GetTraceResponseBodyDataBrokerInfoOperations) Validate() error {
 }
 
 type GetTraceResponseBodyDataConsumerInfos struct {
-	// Consume status.
+	// The consumption status.
 	//
 	// example:
 	//
@@ -429,15 +429,15 @@ type GetTraceResponseBodyDataConsumerInfos struct {
 	//
 	// GID_inspector_group
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// Dead letter info.
+	// The dead-letter message information.
 	DeadLetterInfo *GetTraceResponseBodyDataConsumerInfosDeadLetterInfo `json:"deadLetterInfo,omitempty" xml:"deadLetterInfo,omitempty" type:"Struct"`
-	// Whether it is a dead letter message.
+	// Indicates whether the message is a dead-letter message.
 	//
 	// example:
 	//
 	// true
 	DeadMessage *bool `json:"deadMessage,omitempty" xml:"deadMessage,omitempty"`
-	// Consumer record list.
+	// The list of consumption records.
 	Records []*GetTraceResponseBodyDataConsumerInfosRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
 }
 
@@ -513,13 +513,13 @@ func (s *GetTraceResponseBodyDataConsumerInfos) Validate() error {
 }
 
 type GetTraceResponseBodyDataConsumerInfosDeadLetterInfo struct {
-	// MessageId.
+	// The message ID.
 	//
 	// example:
 	//
 	// 7F000001001F7A4F0F29463F0376047D
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// Arrival time in the dead letter queue.
+	// The time when the message arrived in the dead-letter queue, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -573,25 +573,25 @@ func (s *GetTraceResponseBodyDataConsumerInfosDeadLetterInfo) Validate() error {
 }
 
 type GetTraceResponseBodyDataConsumerInfosRecords struct {
-	// Client host.
+	// The hostname.
 	//
 	// example:
 	//
 	// xx.xx.xx.xx
 	ClientHost *string `json:"clientHost,omitempty" xml:"clientHost,omitempty"`
-	// Consume status.
+	// The consumption status.
 	//
 	// example:
 	//
 	// SUCCESS
 	ConsumeStatus *string `json:"consumeStatus,omitempty" xml:"consumeStatus,omitempty"`
-	// Whether to consume fifo.
+	// Indicates whether ordered consumption is enabled.
 	//
 	// example:
 	//
 	// true
 	FifoEnable *bool `json:"fifoEnable,omitempty" xml:"fifoEnable,omitempty"`
-	// Operation list.
+	// The list of operations.
 	Operations []*GetTraceResponseBodyDataConsumerInfosRecordsOperations `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
 	// POP_CK
 	//
@@ -599,7 +599,7 @@ type GetTraceResponseBodyDataConsumerInfosRecords struct {
 	//
 	// 123
 	PopCk *string `json:"popCk,omitempty" xml:"popCk,omitempty"`
-	// Consumer name.
+	// The consumer name.
 	//
 	// example:
 	//
@@ -683,25 +683,25 @@ func (s *GetTraceResponseBodyDataConsumerInfosRecords) Validate() error {
 }
 
 type GetTraceResponseBodyDataConsumerInfosRecordsOperations struct {
-	// Whether it is a dead letter message.
+	// Indicates whether the message is a dead-letter message.
 	//
 	// example:
 	//
 	// true
 	DeadMessage *bool `json:"deadMessage,omitempty" xml:"deadMessage,omitempty"`
-	// Invisible time, milliseconds.
+	// The invisible time, in milliseconds.
 	//
 	// example:
 	//
 	// 100
 	InvisibleTime *int64 `json:"invisibleTime,omitempty" xml:"invisibleTime,omitempty"`
-	// Operation time.
+	// The operation time, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-03-22 12:17:08
 	OperateTime *string `json:"operateTime,omitempty" xml:"operateTime,omitempty"`
-	// Operation type.
+	// The operation type.
 	//
 	// example:
 	//
@@ -758,19 +758,19 @@ func (s *GetTraceResponseBodyDataConsumerInfosRecordsOperations) Validate() erro
 }
 
 type GetTraceResponseBodyDataMessageInfo struct {
-	// Message body.
+	// The message body.
 	//
 	// example:
 	//
 	// {}
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// Message born host.
+	// The origin of the message.
 	//
 	// example:
 	//
 	// x.x.x.x
 	BornHost *string `json:"bornHost,omitempty" xml:"bornHost,omitempty"`
-	// Message born time.
+	// The time when the message was generated, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -782,11 +782,13 @@ type GetTraceResponseBodyDataMessageInfo struct {
 	//
 	// rmq-cn-u0t2ygjq505
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The lite topic name.
+	//
 	// example:
 	//
 	// abc
 	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
-	// Message grpup.
+	// The previous sharding key. This field is exclusive to ordered messages.
 	//
 	// example:
 	//
@@ -798,15 +800,15 @@ type GetTraceResponseBodyDataMessageInfo struct {
 	//
 	// 0A79275A00207A4F0F2916C92F9A0B94
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// Message keys.
+	// The message key.
 	MessageKeys []*string `json:"messageKeys,omitempty" xml:"messageKeys,omitempty" type:"Repeated"`
-	// Message tag.
+	// The list of tags.
 	//
 	// example:
 	//
 	// xx
 	MessageTag *string `json:"messageTag,omitempty" xml:"messageTag,omitempty"`
-	// Message type.
+	// The message type.
 	//
 	// example:
 	//
@@ -818,13 +820,13 @@ type GetTraceResponseBodyDataMessageInfo struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Message store host.
+	// The log broker address where the message is stored.
 	//
 	// example:
 	//
 	// x.x.x.x
 	StoreHost *string `json:"storeHost,omitempty" xml:"storeHost,omitempty"`
-	// Message store time.
+	// The time when the message was stored in the log broker, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -836,13 +838,13 @@ type GetTraceResponseBodyDataMessageInfo struct {
 	//
 	// Topic_normal_inspector
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// Message transaction id.
+	// The transaction ID.
 	//
 	// example:
 	//
 	// xx
 	TransactionId *string `json:"transactionId,omitempty" xml:"transactionId,omitempty"`
-	// Message user properties.
+	// The user properties.
 	UserProperties map[string]*string `json:"userProperties,omitempty" xml:"userProperties,omitempty"`
 }
 
@@ -1003,7 +1005,7 @@ func (s *GetTraceResponseBodyDataMessageInfo) Validate() error {
 }
 
 type GetTraceResponseBodyDataProducerInfo struct {
-	// The production records.
+	// The list of producer records.
 	Records []*GetTraceResponseBodyDataProducerInfoRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
 }
 
@@ -1038,61 +1040,61 @@ func (s *GetTraceResponseBodyDataProducerInfo) Validate() error {
 }
 
 type GetTraceResponseBodyDataProducerInfoRecords struct {
-	// Arrive time.
+	// The time when the message arrived, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-03-22 12:17:08
 	ArriveTime *string `json:"arriveTime,omitempty" xml:"arriveTime,omitempty"`
-	// Client host.
+	// The hostname.
 	//
 	// example:
 	//
 	// xx.xx.xx.xx
 	ClientHost *string `json:"clientHost,omitempty" xml:"clientHost,omitempty"`
-	// Dead-letter queue message ID.
+	// The dead-letter queue message ID.
 	//
 	// example:
 	//
 	// 0A79275A00207A4F0F2916C92F9A0B94
 	DlqOriginMessageId *string `json:"dlqOriginMessageId,omitempty" xml:"dlqOriginMessageId,omitempty"`
-	// Dead-letter queue topic.
+	// The dead-letter queue topic.
 	//
 	// example:
 	//
 	// test_topic
 	DlqOriginTopic *string `json:"dlqOriginTopic,omitempty" xml:"dlqOriginTopic,omitempty"`
-	// Message source.
+	// The message source.
 	//
 	// example:
 	//
 	// CONSOLE
 	MessageSource *string `json:"messageSource,omitempty" xml:"messageSource,omitempty"`
-	// Producer duration.
+	// The time taken to send the message.
 	//
 	// example:
 	//
 	// 100
 	ProduceDuration *int64 `json:"produceDuration,omitempty" xml:"produceDuration,omitempty"`
-	// Producer status.
+	// The send status.
 	//
 	// example:
 	//
 	// SUCCESS
 	ProduceStatus *string `json:"produceStatus,omitempty" xml:"produceStatus,omitempty"`
-	// Producer time.
+	// The time when the message was sent, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-03-22 12:17:08
 	ProduceTime *string `json:"produceTime,omitempty" xml:"produceTime,omitempty"`
-	// The time when the scheduled message withdrawal request was initiated
+	// The time when the recall request was initiated. This field is non-empty when messageSource is "recall".
 	//
 	// example:
 	//
 	// 2023-03-22 12:17:08
 	RecallTime *string `json:"recallTime,omitempty" xml:"recallTime,omitempty"`
-	// Producer name.
+	// The producer name.
 	//
 	// example:
 	//

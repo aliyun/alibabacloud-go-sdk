@@ -20,25 +20,25 @@ type iDataTopicLagMapValue interface {
 }
 
 type DataTopicLagMapValue struct {
-	// Ready message count
+	// The number of ready messages.
 	//
 	// example:
 	//
 	// 1
 	ReadyCount *int64 `json:"readyCount,omitempty" xml:"readyCount,omitempty"`
-	// The number of messages being consumed.
+	// The number of inflight messages.
 	//
 	// example:
 	//
 	// 1
 	InflightCount *int64 `json:"inflightCount,omitempty" xml:"inflightCount,omitempty"`
-	// Delivery delay time, in seconds
+	// The delivery latency. Unit: seconds.
 	//
 	// example:
 	//
 	// 12
 	DeliveryDuration *int64 `json:"deliveryDuration,omitempty" xml:"deliveryDuration,omitempty"`
-	// lastConsumeTimestamp
+	// The timestamp of the last consumption.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDeleteInstanceAclRequest interface {
 }
 
 type DeleteInstanceAclRequest struct {
-	// The name of the resource on which the permissions are granted.
+	// The name of the authorized resource.
 	//
 	// This parameter is required.
 	//
@@ -24,13 +24,7 @@ type DeleteInstanceAclRequest struct {
 	//
 	// test
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// The type of the resource on which the permissions are granted.
-	//
-	// Valid values:
-	//
-	// 	- Group
-	//
-	// 	- Topic
+	// The type of the authorized resource.
 	//
 	// This parameter is required.
 	//

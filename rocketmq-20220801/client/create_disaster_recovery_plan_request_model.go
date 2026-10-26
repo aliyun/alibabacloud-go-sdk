@@ -24,51 +24,39 @@ type iCreateDisasterRecoveryPlanRequest interface {
 }
 
 type CreateDisasterRecoveryPlanRequest struct {
-	// Specifies whether to enable automatic consumer progress synchronization.
+	// Specifies whether to enable automatic consumer automatic synchronization.
 	//
-	// >  This parameter takes effect only when you set `syncCheckpointEnabled` to true.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// > This parameter takes effect only when consumer automatic synchronization is enabled. That is, the `syncCheckpointEnabled` field is set to true.
 	//
 	// example:
 	//
 	// true
 	AutoSyncCheckpoint *bool `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
-	// The instances involved in the Global Replicator task. You must specify this parameter.
+	// The instances involved in the backup plan. This parameter is required.
 	Instances []*CreateDisasterRecoveryPlanRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// The description of the Global Replicator task.
+	// The description of the plan.
 	//
 	// example:
 	//
 	// xxx
 	PlanDesc *string `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
-	// The name of the Global Replicator task. You must specify this parameter.
+	// The name of the plan. This parameter is required.
 	//
 	// example:
 	//
 	// xxx
 	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
-	// The type of the Global Replicator task. You must specify this parameter. For more information, see [Global Replicator](https://help.aliyun.com/document_detail/2843187.html). Valid values:
+	// The type of the backup plan. This parameter is required. For more information, see [Global Replicator](https://help.aliyun.com/document_detail/2843187.html). Valid values:
 	//
-	// 	- ACTIVE_PASSIVE: one-way backup
+	//   - ACTIVE_PASSIVE: one-way backup
 	//
-	// 	- ACTIVE_ACTIVE: two-way backup
+	//   - ACTIVE_ACTIVE: two-way backup
 	//
 	// example:
 	//
 	// ACTIVE_ACTIVE
 	PlanType *string `json:"planType,omitempty" xml:"planType,omitempty"`
-	// Specifies whether to enable consumer progress synchronization.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether to enable consumer offset synchronization.
 	//
 	// example:
 	//
@@ -152,109 +140,99 @@ func (s *CreateDisasterRecoveryPlanRequest) Validate() error {
 }
 
 type CreateDisasterRecoveryPlanRequestInstances struct {
-	// The authentication method. If you set instanceType to ALIYUN_ROCKETMQ and the instance is an ApsaraMQ for RocketMQ 4.0 instance, you do not need to specify this parameter.
+	// The authentication method. This parameter is not required if instanceType is set to ALIYUN_ROCKETMQ and the instance version is 4.0. Valid values:
 	//
-	// 	- NO_AUTH: no authentication
+	//   - NO_AUTH: no authentication
 	//
-	// 	- ACL_AUTH: access control list (ACL)-based authentication
-	//
-	// Valid values:
-	//
-	// 	- NO_AUTH: no authentication
-	//
-	// 	- ACL_AUTH: access control list (ACL)-based authentication
+	//   - ACL_AUTH: ACL authentication
 	//
 	// example:
 	//
 	// ACL_AUTH
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
-	// The ID of the consumer group.
+	// The ID of the consumer group, which is used to pull messages from the source instance.
+	//
+	// <notice>This parameter is required for self-managed instances. For Alibaba Cloud instances, this parameter is automatically generated.</notice>
 	//
 	// example:
 	//
 	// GID_DS_XXX_YYY
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The instance endpoint. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
+	// The endpoint URL. This parameter is not required if instanceType is set to ALIYUN_ROCKETMQ. This parameter is required if instanceType is set to EXTERNAL_ROCKETMQ.
 	//
 	// example:
 	//
 	// xxx
 	EndpointUrl *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
-	// The instance ID. This parameter is required only if you set instanceType to ALIYUN_ROCKETMQ.
+	// The instance ID. This parameter is not required if instanceType is set to EXTERNAL_ROCKETMQ. This parameter is required if instanceType is set to ALIYUN_ROCKETMQ.
 	//
 	// example:
 	//
 	// rmq-cn-******
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The instance role. Valid values:
+	// The role of the instance. Valid values:
 	//
-	// 	- ACTIVE: primary instance
+	//   - ACTIVE: primary
 	//
-	// 	- Passive: secondary instance
+	//   - PASSIVE: secondary
 	//
 	// example:
 	//
 	// PASSIVE
 	InstanceRole *string `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
-	// The instance type. Valid values:
+	// The type of the instance. Valid values:
 	//
-	// 	- ALIYUN_ROCKETMQ: ApsaraMQ for RocketMQ instance
+	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
 	//
-	// 	- EXTERNAL_ROCKETMQ: external RocketMQ instance
-	//
-	// Valid values:
-	//
-	// 	- ALIYUN_ROCKETMQ: ApsaraMQ for RocketMQ instance
-	//
-	// 	- EXTERNAL_ROCKETMQ: external RocketMQ instance
+	//   - EXTERNAL_ROCKETMQ: external instance, open-source instance, or open-source cluster
 	//
 	// example:
 	//
 	// ALIYUN_ROCKETMQ
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The message attribute. When you synchronize a message to the destination cluster, the system automatically adds the attribute to the message for SQL-based filtering.
+	// The message filtering property. When a message is synchronized to the destination cluster, this property is automatically added to the message for SQL-based filtering during message consumption.
 	MessageProperty *CreateDisasterRecoveryPlanRequestInstancesMessageProperty `json:"messageProperty,omitempty" xml:"messageProperty,omitempty" type:"Struct"`
-	// The network type. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ. Valid values:
+	// The network type. This parameter is not required if instanceType is set to ALIYUN_ROCKETMQ. This parameter is required if instanceType is set to EXTERNAL_ROCKETMQ. Valid values:
 	//
-	// 	- TCP_INTERNET: Internet over TCP
+	//   - TCP_INTERNET: TCP over the Internet
 	//
-	// 	- TCP_VPC: virtual private cloud (VPC) over TCP.
+	//   - TCP_VPC: TCP over a VPC
 	//
 	// example:
 	//
 	// TCP_INTERNET
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The password used for authentication. This parameter is required only if you set authType to ACL_AUTH. If you set instanceType to ALIYUN_ROCKETMQ, you do not need to specify this parameter.
+	// The password for authentication. This parameter is required if authType is set to ACL_AUTH. This parameter is not required if instanceType is set to ALIYUN_ROCKETMQ.
 	//
 	// example:
 	//
 	// xxx
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The region where the instance resides.
+	// The region where the instance is deployed.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The ID of the security group to which the instance belongs. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
+	// The ID of the security group. This parameter is required only if instanceType is set to EXTERNAL_ROCKETMQ and networkType is set to TCP_VPC.
 	//
 	// example:
 	//
 	// sg-bp17hpmgz9******
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	// The username used for authentication. This parameter is required only if you set authType to ACL_AUTH.
+	// The username for authentication. This parameter is required if authType is set to ACL_AUTH.
 	//
 	// example:
 	//
 	// xxx
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
-	// The ID of the vSwitch with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
+	// The ID of the vSwitch with which the instance is associated. This parameter is required only if instanceType is set to EXTERNAL_ROCKETMQ and networkType is set to TCP_VPC.
 	//
 	// example:
 	//
 	// vsw-uf6gwtbn6etadpv******
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The ID of the VPC with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
+	// The ID of the VPC with which the instance is associated. This parameter is required only if instanceType is set to EXTERNAL_ROCKETMQ and networkType is set to TCP_VPC.
 	//
 	// example:
 	//
@@ -406,13 +384,13 @@ func (s *CreateDisasterRecoveryPlanRequestInstances) Validate() error {
 }
 
 type CreateDisasterRecoveryPlanRequestInstancesMessageProperty struct {
-	// The attribute key.
+	// The key of the property.
 	//
 	// example:
 	//
 	// aaa
 	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
-	// The attribute value.
+	// The value of the property.
 	//
 	// example:
 	//

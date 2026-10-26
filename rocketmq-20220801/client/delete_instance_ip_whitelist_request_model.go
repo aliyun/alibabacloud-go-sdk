@@ -18,13 +18,13 @@ type iDeleteInstanceIpWhitelistRequest interface {
 type DeleteInstanceIpWhitelistRequest struct {
 	// Deprecated
 	//
-	// The IP address whitelist.
+	// The IP whitelist.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	IpWhitelist *string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty"`
-	// The IP address whitelist.
+	// The list of IP whitelists.
 	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`
 }
 

@@ -34,7 +34,7 @@ type GetInstanceAccountResponseBody struct {
 	//
 	// MissingInstanceId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *GetInstanceAccountResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The dynamic error code.
 	//
@@ -60,7 +60,7 @@ type GetInstanceAccountResponseBody struct {
 	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, each request\\"s ID is unique and can be used for troubleshooting and problem localization.
+	// The unique ID of the request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -164,29 +164,25 @@ func (s *GetInstanceAccountResponseBody) Validate() error {
 }
 
 type GetInstanceAccountResponseBodyData struct {
-	// The status of the account.
-	//
-	// Valid values:
-	//
-	// 	- DISABLE
-	//
-	// 	- ENABLE
+	// The account status.
 	//
 	// example:
 	//
 	// ENABLE
 	AccountStatus *string `json:"accountStatus,omitempty" xml:"accountStatus,omitempty"`
-	// The password of the account.
+	// The account password.
 	//
 	// example:
 	//
 	// *************
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The remark.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The username of the account.
+	// The username.
 	//
 	// example:
 	//

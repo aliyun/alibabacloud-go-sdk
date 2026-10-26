@@ -20,7 +20,7 @@ type iListTopicsShrinkRequest interface {
 }
 
 type ListTopicsShrinkRequest struct {
-	// The filter condition for the query. If not provided, all topics under the instance will be queried.
+	// The filter condition for the query. If not specified, all topics in the instance are returned.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type ListTopicsShrinkRequest struct {
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
 	// The message type of the topic.
 	MessageTypesShrink *string `json:"messageTypes,omitempty" xml:"messageTypes,omitempty"`
-	// Page number, indicating which page of results to return.
+	// The page number of the results to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size, the maximum number of results to display per page.
+	// The maximum number of results to display per page.
 	//
 	// example:
 	//

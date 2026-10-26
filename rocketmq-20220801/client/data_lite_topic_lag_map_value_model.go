@@ -16,10 +16,14 @@ type iDataLiteTopicLagMapValue interface {
 }
 
 type DataLiteTopicLagMapValue struct {
+	// The number of accumulated messages.
+	//
 	// example:
 	//
 	// 300
 	ReadyCount *int64 `json:"readyCount,omitempty" xml:"readyCount,omitempty"`
+	// The delivery latency. Unit: seconds.
+	//
 	// example:
 	//
 	// 30

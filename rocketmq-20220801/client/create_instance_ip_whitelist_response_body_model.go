@@ -30,7 +30,7 @@ type iCreateInstanceIpWhitelistResponseBody interface {
 }
 
 type CreateInstanceIpWhitelistResponseBody struct {
-	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	// The details about the access denial. This field is returned only when access is denied due to insufficient RAM permissions.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type CreateInstanceIpWhitelistResponseBody struct {
 	//
 	// A07B41BD-6DD3-5349-9E76-00303DF04BBE
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

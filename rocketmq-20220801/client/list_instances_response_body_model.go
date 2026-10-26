@@ -28,13 +28,13 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code.
 	//
 	// example:
 	//
 	// MissingPageNumber
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The response result.
 	Data *ListInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The dynamic error code.
 	//
@@ -48,7 +48,7 @@ type ListInstancesResponseBody struct {
 	//
 	// pageNumber
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type ListInstancesResponseBody struct {
 	//
 	// Parameter pageNumber is mandatory for this action .
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	// The request ID. Each request has a unique ID that you can use to troubleshoot and locate issues.
 	//
 	// example:
 	//
 	// 84445A20-2B50-5306-A3C0-AF99FC1833C6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
@@ -164,21 +164,21 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyData struct {
-	// The pagination information.
+	// The paged data.
 	List []*ListInstancesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -244,25 +244,25 @@ func (s *ListInstancesResponseBodyData) Validate() error {
 }
 
 type ListInstancesResponseBodyDataList struct {
-	// The commodity code of the instance. The commodity code of ApsaraMQ for RocketMQ 5.0 instances has a similar format to ons_rmqsub_public_cn.
+	// The commodity code of the ApsaraMQ for RocketMQ 5.x series instance, such as ons_rmqsub_public_cn.
 	//
 	// example:
 	//
 	// ons_rmqsub_public_cn
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	// The time when the version of the instance was updated.
+	// The time when the instance version was last updated, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-08-01 00:00:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The time when the instance expires.
+	// The time when the instance expires, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-09-01 00:00:00
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The number of consumer groups that are created on the instance.
+	// The number of consumer groups created in the instance.
 	//
 	// example:
 	//
@@ -280,13 +280,11 @@ type ListInstancesResponseBodyDataList struct {
 	//
 	// test instance
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// The billing method of the instance.
+	// The billing method of the instance. Valid values:
 	//
-	// Valid values:
+	// - PayAsYouGo: pay-as-you-go (postpaid).
 	//
-	// 	- PayAsYouGo
-	//
-	// 	- Subscription
+	// - Subscription: subscription (prepaid).
 	//
 	// example:
 	//
@@ -294,19 +292,19 @@ type ListInstancesResponseBodyDataList struct {
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	// The product information.
 	ProductInfo *ListInstancesResponseBodyDataListProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
-	// The ID of the region in which the instance resides.
+	// The ID of the region to which the instance belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The time when the instance was released.
+	// The time when the instance was released, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-09-07 00:00:00
 	ReleaseTime *string `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
-	// The instance description.
+	// The remarks for the instance.
 	//
 	// example:
 	//
@@ -318,77 +316,77 @@ type ListInstancesResponseBodyDataList struct {
 	//
 	// rg-acfmx7caj******
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The primary edition of the instance.
+	// The primary series code of the instance. Valid values:
 	//
-	// Valid values:
+	// - standard: Standard Edition.
 	//
-	// 	- standard: Standard Edition
+	// - ultimate: Platinum Edition.
 	//
-	// 	- ultimate: Enterprise Platinum Edition
+	// - professional: Professional Edition.
 	//
-	// 	- professional: Professional Edition
+	// - shared: Shared Edition.
+	//
+	// - dedicated: Dedicated Edition.
 	//
 	// example:
 	//
 	// standard
 	SeriesCode *string `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
-	// The code of the service to which the instance belongs. The service code of ApsaraMQ for RocketMQ is rmq.
+	// The service code of the instance. The service code for ApsaraMQ for RocketMQ is rmq.
 	//
 	// example:
 	//
 	// rmq
 	ServiceCode *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
-	// The time when the instance was created.
+	// The time when the instance was created, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-08-01 00:00:00
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The status of the instance.
+	// The instance status. Valid values:
 	//
-	// Valid values:
+	// - RELEASED: Released.
 	//
-	// 	- RELEASED
+	// - RUNNING: Running.
 	//
-	// 	- RUNNING
+	// - STOPPED: Stopped.
 	//
-	// 	- STOPPED
+	// - CHANGING: Changing.
 	//
-	// 	- CHANGING
-	//
-	// 	- CREATING
+	// - CREATING: Creating.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The sub-category edition of the instance.
+	// The sub-series code of the instance. Valid values:
 	//
-	// Valid values:
+	// - cluster_ha: cluster high-availability edition.
 	//
-	// 	- cluster_ha: Cluster High-availability Edition
+	// - single_node: single-node edition.
 	//
-	// 	- single_node: Standalone Edition
+	// - serverless: serverless edition.
 	//
 	// example:
 	//
 	// cluster_ha
 	SubSeriesCode *string `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
-	// The resource tags.
+	// The resource tag list.
 	Tags []*ListInstancesResponseBodyDataListTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The number of topics that are created on the instance.
+	// The number of topics created in the instance.
 	//
 	// example:
 	//
 	// 20
 	TopicCount *int64 `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
-	// The time when the instance was last modified.
+	// The time when the instance was last modified, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-08-02 00:00:00
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the user who owns the instance.
+	// The ID of the user to whom the instance belongs.
 	//
 	// example:
 	//
@@ -612,14 +610,27 @@ func (s *ListInstancesResponseBodyDataList) Validate() error {
 }
 
 type ListInstancesResponseBodyDataListProductInfo struct {
+	// The capacity mode. Valid values:
+	//
+	// - provisioned: reserved capacity with elastic scaling.
+	//
+	// - ondemand: pay-as-you-go.
+	//
+	// example:
+	//
+	// provisioned
 	CapacityType *string `json:"capacityType,omitempty" xml:"capacityType,omitempty"`
-	// Indicates whether the message trace feature is enabled. Valid values:
+	// Specifies whether the message trace feature is enabled.
 	//
-	// 	- true
+	// - true: The message trace feature is enabled.
 	//
-	// 	- false
+	// - false: The message trace feature is disabled.
 	//
-	// This parameter is not in use. By default, the message trace feature is enabled for ApsaraMQ for RocketMQ instances, regardless of whether this parameter is configured.
+	// <props="intl">This parameter does not take effect. Regardless of whether this parameter is enabled, the instance supports the message trace feature by default.
+	//
+	// <props="china">This parameter takes effect only for Serverless instances. If the message trace feature is enabled, message trace fees are incurred. For more information about billing, see [Serverless billing description](https://help.aliyun.com/document_detail/2586280.html).
+	//
+	// <props="china">For pay-as-you-go and subscription instances, this parameter does not take effect. Regardless of whether this parameter is enabled, the message trace feature is supported by default.
 	//
 	// example:
 	//
@@ -658,13 +669,13 @@ func (s *ListInstancesResponseBodyDataListProductInfo) Validate() error {
 }
 
 type ListInstancesResponseBodyDataListTags struct {
-	// The tag key of the resource.
+	// The key of the resource tag.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag value of the resource.
+	// The value of the resource tag.
 	//
 	// example:
 	//

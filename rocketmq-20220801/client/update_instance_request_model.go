@@ -22,19 +22,19 @@ type iUpdateInstanceRequest interface {
 }
 
 type UpdateInstanceRequest struct {
-	// The access control list for the instance.
+	// The access control information.
 	AclInfo *UpdateInstanceRequestAclInfo `json:"aclInfo,omitempty" xml:"aclInfo,omitempty" type:"Struct"`
-	// The updated name of the instance.
+	// The updated instance name.
 	//
 	// example:
 	//
 	// test_instance
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// The updated network information about the instance.
+	// The updated network information of the instance.
 	NetworkInfo *UpdateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
-	// Additional configurations of the instance.
+	// The extension configurations of the instance.
 	ProductInfo *UpdateInstanceRequestProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
-	// The updated description of the instance.
+	// The updated remarks for the instance.
 	//
 	// example:
 	//
@@ -117,15 +117,7 @@ func (s *UpdateInstanceRequest) Validate() error {
 type UpdateInstanceRequestAclInfo struct {
 	// The authentication type of the instance.
 	AclTypes []*string `json:"aclTypes,omitempty" xml:"aclTypes,omitempty" type:"Repeated"`
-	// Indicates whether the authentication-free in VPCs feature is enabled.
-	//
-	// Indicates whether the authentication-free in VPCs feature is enabled.
-	//
-	// Valid values:
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether password-free access is enabled for VPC connections under the intelligent identity recognition type.
 	//
 	// example:
 	//
@@ -164,7 +156,7 @@ func (s *UpdateInstanceRequestAclInfo) Validate() error {
 }
 
 type UpdateInstanceRequestNetworkInfo struct {
-	// The information about the Internet over which the instance is accessed. This parameter takes effect only if the Internet access feature is enabled for the instance.
+	// The public network information. This parameter is valid only when the public network access feature is enabled for the instance.
 	InternetInfo *UpdateInstanceRequestNetworkInfoInternetInfo `json:"internetInfo,omitempty" xml:"internetInfo,omitempty" type:"Struct"`
 }
 
@@ -195,11 +187,11 @@ func (s *UpdateInstanceRequestNetworkInfo) Validate() error {
 }
 
 type UpdateInstanceRequestNetworkInfoInternetInfo struct {
-	// The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// The public network access IP whitelist.
 	//
-	// 	- If you do not configure an IP address whitelist, all CIDR blocks are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// - If no IP whitelist is configured, all IP address ranges are allowed to access the ApsaraMQ for RocketMQ server over the public network by default.
 	//
-	// 	- If you configure an IP address whitelist, only the IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// - If an IP whitelist is configured, only the IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ server over the public network.
 	IpWhitelist []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 }
 
@@ -225,35 +217,32 @@ func (s *UpdateInstanceRequestNetworkInfoInternetInfo) Validate() error {
 }
 
 type UpdateInstanceRequestProductInfo struct {
-	// Specifies whether to enable the elastic transactions per second (TPS) feature for the instance.
+	// Specifies whether to enable the adaptive elasticity capability. A value of true indicates enabled, and a value of false indicates shutdown.
+	AdaptiveElasticity *bool `json:"adaptiveElasticity,omitempty" xml:"adaptiveElasticity,omitempty"`
+	// Specifies whether to enable the burstable elastic capacity beyond the specification.
 	//
-	// Valid values:
+	// After the burstable elastic capacity is enabled, ApsaraMQ for RocketMQ allows the instance to exceed the TPS limit of the base specification within a certain range. The portion that exceeds the base specification incurs additional elastic specification fees. For more information about billing, see [Computing fee](https://help.aliyun.com/document_detail/427237.html).
 	//
-	// 	- true
 	//
-	// 	- false
-	//
-	// After you enable the elastic TPS feature for an ApsaraMQ for RocketMQ instance, you can use a specific number of TPS that exceeds the specification limit. You are charged for using the elastic TPS feature. For more information, see [Computing fees](https://help.aliyun.com/document_detail/427237.html).
-	//
-	// >  The elastic TPS feature is supported only by specific instance editions. For more information, see [Instance editions](https://help.aliyun.com/document_detail/444715.html).
+	// > Only instances of specific specifications support the burstable elastic specification capability. For more information about supported instances, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
 	//
 	// example:
 	//
 	// true
 	AutoScaling *bool `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
-	// The retention period of messages. Unit: hours.
+	// The message retention period. Unit: hours.
 	//
-	// For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](https://help.aliyun.com/document_detail/440347.html) topic.
+	// For the valid values, see [Limits](https://help.aliyun.com/document_detail/440347.html) > Resource Quotas > Message retention period limit.
 	//
-	// ApsaraMQ for RocketMQ supports serverless scaling of message storage. You are charged storage fees based on your actual storage usage. You can change the retention period of messages to manage storage capacity. For more information, see [Storage fees](https://help.aliyun.com/document_detail/427238.html).
+	// The log broker in ApsaraMQ for RocketMQ is fully serverless and elastic. Fees are charged based on the actual storage space used. You can control the storage capacity of messages by adjusting the message retention period. For more information, see [Storage fee](https://help.aliyun.com/document_detail/427238.html).
 	//
 	// example:
 	//
 	// 72
 	MessageRetentionTime *int32 `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
-	// The ratio of the number of messages that you can send to the number of messages that you can receive on the instance.
+	// The ratio of messages sent to messages accepted.
 	//
-	// Value values: 0.25 to 1.
+	// Valid values: [0.25, 1]
 	//
 	// example:
 	//
@@ -261,11 +250,11 @@ type UpdateInstanceRequestProductInfo struct {
 	SendReceiveRatio *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
 	// Specifies whether to enable the message trace feature.
 	//
-	// 	- true
+	// <props="intl">This parameter does not take effect. Regardless of whether this parameter is enabled, the instance supports the message trace feature by default.
 	//
-	// 	- false
+	// <props="china">This parameter takes effect only for Serverless instances. If the message trace feature is enabled, message trace fees are incurred. For more information about billing, see [Serverless billing](https://help.aliyun.com/document_detail/2586280.html).
 	//
-	// This parameter is not in use. By default, the message trace feature is enabled for ApsaraMQ for RocketMQ instances, regardless of whether this parameter is configured.
+	// <props="china">For pay-as-you-go and subscription instances, this parameter does not take effect. The message trace feature is supported by default regardless of whether this parameter is enabled.
 	//
 	// example:
 	//
@@ -279,6 +268,10 @@ func (s UpdateInstanceRequestProductInfo) String() string {
 
 func (s UpdateInstanceRequestProductInfo) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateInstanceRequestProductInfo) GetAdaptiveElasticity() *bool {
+	return s.AdaptiveElasticity
 }
 
 func (s *UpdateInstanceRequestProductInfo) GetAutoScaling() *bool {
@@ -295,6 +288,11 @@ func (s *UpdateInstanceRequestProductInfo) GetSendReceiveRatio() *float32 {
 
 func (s *UpdateInstanceRequestProductInfo) GetTraceOn() *bool {
 	return s.TraceOn
+}
+
+func (s *UpdateInstanceRequestProductInfo) SetAdaptiveElasticity(v bool) *UpdateInstanceRequestProductInfo {
+	s.AdaptiveElasticity = &v
+	return s
 }
 
 func (s *UpdateInstanceRequestProductInfo) SetAutoScaling(v bool) *UpdateInstanceRequestProductInfo {

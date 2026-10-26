@@ -14,7 +14,7 @@ type iAddDisasterRecoveryItemRequest interface {
 }
 
 type AddDisasterRecoveryItemRequest struct {
-	// Topics included in the backup mapping. Required.
+	// The topics included in the backup mapping. Required.
 	Topics []*AddDisasterRecoveryItemRequestTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
 }
 
@@ -51,45 +51,45 @@ func (s *AddDisasterRecoveryItemRequest) Validate() error {
 type AddDisasterRecoveryItemRequestTopics struct {
 	// Deprecated
 	//
-	// Consumer group ID, required for ACTIVE_ACTIVE bidirectional backup
+	// The ID of the consumer group. Required for ACTIVE_ACTIVE bidirectional backup.
 	//
 	// example:
 	//
 	// GID_xxx
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The order in which messages are delivered to the target instance. The parameter values ​​are as follows:
+	// The delivery order of messages to the target instance. Valid values for the parameter:
 	//
-	//   - Concurrently: concurrent delivery
+	// - Concurrently: concurrent delivery
 	//
-	//   - Orderly: sequential delivery
+	// - Orderly: ordered delivery
 	//
 	// example:
 	//
 	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	// Instance ID, an instance ID will be automatically generated when `instanceType` is `EXTERNAL_ROCKETMQ`, and it can be obtained by querying the backup plan.
+	// The instance ID. If instanceType is set to EXTERNAL_ROCKETMQ, an instance ID is automatically generated. You can obtain this ID by querying the backup plan.
 	//
 	// example:
 	//
 	// rmq-cn-em93y94xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Instance type
+	// The instance type. Valid values:
 	//
 	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
 	//
-	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	//   - EXTERNAL_ROCKETMQ: external instance, open-source instance, or open-source cluster
 	//
 	// example:
 	//
 	// ALIYUN_ROCKETMQ
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Disaster recovery topic name, required
+	// The name of the disaster recovery topic. Required.
 	//
 	// example:
 	//

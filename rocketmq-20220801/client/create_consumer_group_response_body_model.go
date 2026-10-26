@@ -28,25 +28,25 @@ type iCreateConsumerGroupResponseBody interface {
 }
 
 type CreateConsumerGroupResponseBody struct {
-	// The error code.
+	// The fault code.
 	//
 	// example:
 	//
 	// InvalidConsumerGroupId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result data that is returned.
+	// The returned result.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// The dynamic error code.
+	// The dynamic fault code.
 	//
 	// example:
 	//
 	// ConsumerGroupId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// The dynamic error message.
+	// The dynamic fault message.
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type CreateConsumerGroupResponseBody struct {
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The error message.
+	// The fault message.
 	//
 	// example:
 	//
 	// Parameter consumerGroupId is invalid.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The request ID. Each request has a unique ID that is active and can be used to troubleshoot and locate issues.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the execute operation was successful.
 	//
 	// example:
 	//

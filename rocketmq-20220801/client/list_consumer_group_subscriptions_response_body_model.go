@@ -34,7 +34,7 @@ type ListConsumerGroupSubscriptionsResponseBody struct {
 	//
 	// MissingInstanceId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data []*ListConsumerGroupSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The dynamic error code.
 	//
@@ -168,11 +168,11 @@ func (s *ListConsumerGroupSubscriptionsResponseBody) Validate() error {
 }
 
 type ListConsumerGroupSubscriptionsResponseBodyData struct {
-	// Indicates whether message consumption is consistent. Valid values:
+	// The consistency of the subscription relationship.
 	//
-	// 	- false: Unconsumed messages exist in the consumer group.
+	// - false: The subscription relationship is inconsistent.
 	//
-	// 	- true: No unconsumed message exists in the consumer group.
+	// - true: The subscription relationship is consistent.
 	//
 	// example:
 	//
@@ -190,31 +190,31 @@ type ListConsumerGroupSubscriptionsResponseBodyData struct {
 	//
 	// *
 	FilterExpression *string `json:"filterExpression,omitempty" xml:"filterExpression,omitempty"`
-	// The type of the filter expression. Valid values:
+	// The type of the filter expression.
 	//
-	// 	- SQL: filters messages by using SQL expressions.
+	// - SQL: SQL filtering.
 	//
-	// 	- TAG: filters messages by using tags.
+	// - TAG: Tag filtering.
 	//
 	// example:
 	//
 	// SQL
 	FilterExpressionType *string `json:"filterExpressionType,omitempty" xml:"filterExpressionType,omitempty"`
-	// The consumption mode of the consumer group. Valid values:
+	// The consumption mode of the consumer group.
 	//
-	// 	- BROADCASTING: broadcasting consumption
+	// - BROADCASTING: The broadcast consumption mode.
 	//
-	// 	- CLUSTERING: clustering consumption
+	// - CLUSTERING: The cluster consumption mode.
 	//
 	// example:
 	//
-	// BROADCASTING
+	// CLUSTERING
 	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
-	// The subscription status. Valid values:
+	// The subscription status.
 	//
-	// 	- ONLINE: The consumer group is online. If the consumer group contains multiple consumers, this value is returned as long as one of the consumers is online.
+	// - ONLINE: The consumer group is online. If a consumer group contains multiple consumers, the group is considered online as long as at least one consumer is online.
 	//
-	// 	- OFFLINE: The consumer group is offline. If the consumer group contains multiple consumers, this value is returned only if all consumers are offline.
+	// - OFFLINE: The consumer group is offline. If a consumer group contains multiple consumers, the group is considered offline only when all consumers are offline.
 	//
 	// example:
 	//

@@ -66,7 +66,7 @@ type ListRegionsResponseBody struct {
 	//
 	// 0B962390-D84B-5D44-8C11-79DF40299D41
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -168,31 +168,31 @@ func (s *ListRegionsResponseBody) Validate() error {
 }
 
 type ListRegionsResponseBodyData struct {
-	// The time when the ApsaraMQ for RocketMQ instance was created.
+	// The creation time, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The region ID.
+	// The region ID, such as cn-hangzhou.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The region name.
+	// The Chinese name of the region, such as Hangzhou.
 	//
 	// example:
 	//
-	// hangzhou
+	// 杭州
 	RegionName *string `json:"regionName,omitempty" xml:"regionName,omitempty"`
-	// Indicates whether ApsaraMQ for RocketMQ V4 is activated.
+	// Indicates whether RocketMQ V4 is activated.
 	//
 	// example:
 	//
 	// true
 	SupportRocketmqV4 *bool `json:"supportRocketmqV4,omitempty" xml:"supportRocketmqV4,omitempty"`
-	// Indicates whether ApsaraMQ for RocketMQ V5 is activated.
+	// Indicates whether RocketMQ V5 is activated.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type ListRegionsResponseBodyData struct {
 	SupportRocketmqV5 *bool `json:"supportRocketmqV5,omitempty" xml:"supportRocketmqV5,omitempty"`
 	// The region tags.
 	Tags []*ListRegionsResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The time when the ApsaraMQ for RocketMQ instance was last modified.
+	// The update time, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

@@ -26,25 +26,31 @@ type iVerifySendMessageRequest interface {
 }
 
 type VerifySendMessageRequest struct {
+	// The delivery time for a delayed message, specified as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1773718320000
 	DeliveryTimeStamp *int64 `json:"deliveryTimeStamp,omitempty" xml:"deliveryTimeStamp,omitempty"`
+	// The name of the Lite Message Queue topic.
+	//
 	// example:
 	//
 	// abc
 	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
-	// The message body.
+	// The message content.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the message group. This parameter applies only to ordered messages. Messages with the same group ID are consumed in the order they are sent.
+	//
 	// example:
 	//
 	// testMessageGroup
 	MessageGroup *string `json:"messageGroup,omitempty" xml:"messageGroup,omitempty"`
-	// The message key.
+	// The business key.
 	//
 	// example:
 	//
@@ -55,7 +61,12 @@ type VerifySendMessageRequest struct {
 	// example:
 	//
 	// xx
-	MessageTag     *string                `json:"messageTag,omitempty" xml:"messageTag,omitempty"`
+	MessageTag *string `json:"messageTag,omitempty" xml:"messageTag,omitempty"`
+	// The user-defined properties of the message.
+	//
+	// example:
+	//
+	// {"test":"test"}
 	UserProperties map[string]interface{} `json:"userProperties,omitempty" xml:"userProperties,omitempty"`
 }
 

@@ -30,55 +30,55 @@ type iAddDisasterRecoveryItemResponseBody interface {
 }
 
 type AddDisasterRecoveryItemResponseBody struct {
-	// Access denied details, only in the scenario where the user is denied access due to RAM not having permission
+	// The access denial details. This parameter is returned only when user access is denied due to lack of RAM permissions.
 	//
 	// example:
 	//
 	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return result, mapping task ID
+	// The returned result, which is the ID of the mapping task.
 	//
 	// example:
 	//
 	// 1300000016
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
-	// Dynamic error code
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// Dynamic error message
+	// The dynamic error message.
 	//
 	// example:
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// xxx
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID. Each request ID is unique and can be used for troubleshooting.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Whether the operation was successful
+	// Indicates whether the execution was successful.
 	//
 	// example:
 	//

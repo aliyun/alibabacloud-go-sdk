@@ -18,21 +18,21 @@ type iListConsumerGroupsRequest interface {
 }
 
 type ListConsumerGroupsRequest struct {
-	// The filter condition for the query. If not provided, all consumer groups under the specified instance will be queried.
+	// The filter condition for the query. If you do not specify this parameter, all consumer groups under the specified instance are queried.
 	//
 	// example:
 	//
 	// CID-TEST
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// Page number, indicating which page of results to return.
+	// The paging page number. Specifies which page of results to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size, the maximum number of results to display per page.
+	// The paging size. The maximum number of results to return per page.
 	//
-	// Value range: [10, 100].
+	// Valid values: [10,100].
 	//
 	// example:
 	//

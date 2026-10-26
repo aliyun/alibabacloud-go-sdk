@@ -22,28 +22,43 @@ type iListMigrationsRequest interface {
 }
 
 type ListMigrationsRequest struct {
+	// The filter conditions for the query.
+	//
 	// example:
 	//
 	// xx
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The migration type. Valid values:
+	//
+	//  - INSTANCE_MIGRATION: instance migration
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// RESOURCE_IMPORT
+	// INSTANCE_MIGRATION
 	MigrationType *string `json:"migrationType,omitempty" xml:"migrationType,omitempty"`
+	// The page number of the page to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfm4goe2ckfiva
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 

@@ -20,29 +20,25 @@ type iCreateTopicRequest interface {
 }
 
 type CreateTopicRequest struct {
+	// The expiration time of the lite topic, in minutes.
+	//
+	// Valid values: 30 to 720.
+	//
+	// Default value: -1, which indicates the topic never expires.
+	//
 	// example:
 	//
-	// 20
+	// 60
 	LiteTopicExpiration *int64 `json:"liteTopicExpiration,omitempty" xml:"liteTopicExpiration,omitempty"`
-	// The maximum TPS for message sending.
+	// The maximum transactions per second (TPS) for sending messages.
 	//
 	// example:
 	//
 	// 1500
 	MaxSendTps *int64 `json:"maxSendTps,omitempty" xml:"maxSendTps,omitempty"`
-	// The type of messages in the topic that you want to create.
+	// The message type of the topic to be created.
 	//
-	// Valid values:
-	//
-	// 	- TRANSACTION: transactional messages
-	//
-	// 	- FIFO: ordered messages
-	//
-	// 	- DELAY: scheduled or delayed messages
-	//
-	// 	- NORMAL: normal messages
-	//
-	// >  The type of messages in the topic must be the same as the type of messages that you want to send. For example, if you create a topic whose message type is ordered messages, you can use the topic to send and receive only ordered messages.
+	// 	Notice: The type of the topic must be the same as the type of messages sent to the topic. For example, if you create a topic of the ordered message type, the topic can be used only to send and receive ordered messages, not other types of messages.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +46,7 @@ type CreateTopicRequest struct {
 	//
 	// NORMAL
 	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	// The description of the topic that you want to create.
+	// The remarks of the topic to be created.
 	//
 	// example:
 	//

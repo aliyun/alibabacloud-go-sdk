@@ -28,9 +28,9 @@ type DeleteConsumerGroupSubscriptionRequest struct {
 	FilterExpression *string `json:"filterExpression,omitempty" xml:"filterExpression,omitempty"`
 	// The type of the filter expression. Valid values:
 	//
-	// 	- SQL: filters messages by using SQL expressions.
+	// - SQL: SQL filtering
 	//
-	// 	- TAG: filters messages by using tags.
+	// - TAG: tag filtering
 	//
 	// This parameter is required.
 	//

@@ -22,21 +22,13 @@ type iCreateInstanceAclRequest interface {
 }
 
 type CreateInstanceAclRequest struct {
-	// The type of operations that can be performed on the resource.
+	// The type of the authorized operation.
 	//
-	// The following types of operations are supported based on the resource type:
+	// Valid operations vary by resource type:
 	//
-	// 	- Topic: Pub, Sub, and Pub|Sub
+	// - Topic: Pub, Sub, and Pub|Sub
 	//
-	// 	- Group: Sub
-	//
-	// Valid values:
-	//
-	// 	- Sub: subscribe
-	//
-	// 	- Pub|Sub: publish and subscribe
-	//
-	// 	- Pub: publish
+	// - Consumer group: Sub
 	//
 	// This parameter is required.
 	//
@@ -44,13 +36,7 @@ type CreateInstanceAclRequest struct {
 	//
 	// Pub
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The decision result of the authorization.
-	//
-	// Valid values:
-	//
-	// 	- Deny
-	//
-	// 	- Allow
+	// The authorization decision.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +44,9 @@ type CreateInstanceAclRequest struct {
 	//
 	// Allow
 	Decision *string `json:"decision,omitempty" xml:"decision,omitempty"`
-	// The IP addresses in the whitelist.
+	// The IP address whitelist.
 	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`
-	// The name of the resource on which you want to grant permissions.
+	// The name of the authorized resource.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +54,7 @@ type CreateInstanceAclRequest struct {
 	//
 	// test
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// The type of the resource on which you want to grant permissions.
-	//
-	// Valid values:
-	//
-	// 	- Group
-	//
-	// 	- Topic
+	// The type of the authorized resource.
 	//
 	// This parameter is required.
 	//

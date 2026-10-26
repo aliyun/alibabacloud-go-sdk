@@ -28,7 +28,7 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type CreateInstanceResponseBody struct {
 	//
 	// Success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	// The request ID. Each request ID is unique and can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

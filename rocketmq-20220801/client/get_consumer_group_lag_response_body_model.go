@@ -28,7 +28,7 @@ type iGetConsumerGroupLagResponseBody interface {
 }
 
 type GetConsumerGroupLagResponseBody struct {
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetConsumerGroupLagResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The returned data.
 	Data *GetConsumerGroupLagResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Dynamic error code
+	// The dynamic error code.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type GetConsumerGroupLagResponseBody struct {
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
@@ -164,32 +164,35 @@ func (s *GetConsumerGroupLagResponseBody) Validate() error {
 }
 
 type GetConsumerGroupLagResponseBodyData struct {
-	// Consumer Group ID
+	// The consumer group ID.
 	//
 	// example:
 	//
 	// CID-TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
-	InstanceId      *string                              `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The message accumulation for lite topics.
 	LiteTopicLagMap map[string]*DataLiteTopicLagMapValue `json:"liteTopicLagMap,omitempty" xml:"liteTopicLagMap,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Backlog for each topic
+	// The message accumulation for each topic.
 	TopicLagMap map[string]*DataTopicLagMapValue `json:"topicLagMap,omitempty" xml:"topicLagMap,omitempty"`
+	// The name of the subscribed topic.
+	//
 	// example:
 	//
 	// test1
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// Total lag count
+	// The total message accumulation.
 	TotalLag *GetConsumerGroupLagResponseBodyDataTotalLag `json:"totalLag,omitempty" xml:"totalLag,omitempty" type:"Struct"`
 }
 
@@ -274,25 +277,25 @@ func (s *GetConsumerGroupLagResponseBodyData) Validate() error {
 }
 
 type GetConsumerGroupLagResponseBodyDataTotalLag struct {
-	// Delivery delay time, in seconds
+	// The delivery latency. Unit: seconds.
 	//
 	// example:
 	//
 	// 12
 	DeliveryDuration *int64 `json:"deliveryDuration,omitempty" xml:"deliveryDuration,omitempty"`
-	// The number of messages being consumed.
+	// The number of inflight messages.
 	//
 	// example:
 	//
 	// 1
 	InflightCount *int64 `json:"inflightCount,omitempty" xml:"inflightCount,omitempty"`
-	// Last consumption time
+	// The timestamp of the last consumption.
 	//
 	// example:
 	//
 	// 1735629607846
 	LastConsumeTimestamp *int64 `json:"lastConsumeTimestamp,omitempty" xml:"lastConsumeTimestamp,omitempty"`
-	// Ready message count
+	// The number of ready messages.
 	//
 	// example:
 	//

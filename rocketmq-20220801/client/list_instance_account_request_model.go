@@ -24,33 +24,23 @@ type iListInstanceAccountRequest interface {
 type ListInstanceAccountRequest struct {
 	// The status of the account.
 	//
-	// Valid values:
-	//
-	// 	- DISABLE
-	//
-	// 	- ENABLE
-	//
 	// example:
 	//
 	// ENABLE
 	AccountStatus *string `json:"accountStatus,omitempty" xml:"accountStatus,omitempty"`
-	// The account type.
-	//
-	//   - CUSTOMER
-	//
-	//   - DEFAULT
+	// The type of the account.
 	//
 	// example:
 	//
 	// CUSTOMER
 	AccountType *string `json:"accountType,omitempty" xml:"accountType,omitempty"`
-	// The page number. Default value: 1.
+	// The page number. The first page is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//

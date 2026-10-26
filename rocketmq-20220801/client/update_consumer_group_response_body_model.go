@@ -28,49 +28,49 @@ type iUpdateConsumerGroupResponseBody interface {
 }
 
 type UpdateConsumerGroupResponseBody struct {
-	// Error code.
+	// The fault code.
 	//
 	// example:
 	//
 	// InvalidDeliveryOrderType
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result returned.
+	// The returned result.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// Dynamic error code.
+	// The dynamic fault code.
 	//
 	// example:
 	//
-	// xxx
+	// DeliveryOrderType
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// Dynamic error message.
+	// The dynamic fault message.
 	//
 	// example:
 	//
-	// xxx
+	// deliveryOrderType
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The fault message.
 	//
 	// example:
 	//
 	// Parameter deliveryOrderType is invalid.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is unique for each request and can be used for troubleshooting and problem localization.
+	// The request ID. Each request has a unique ID that you can use to troubleshoot and locate issues.
 	//
 	// example:
 	//
 	// C7F94090-3358-506A-97DC-34BC803C****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the execution was successful.
+	// Indicates whether the execution succeeded.
 	//
 	// example:
 	//

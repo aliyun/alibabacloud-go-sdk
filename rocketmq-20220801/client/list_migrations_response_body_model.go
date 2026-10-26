@@ -28,31 +28,46 @@ type iListMigrationsResponseBody interface {
 }
 
 type ListMigrationsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// MissingInstanceId
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListMigrationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E5897B2E-C3AC-56DC-A482-F0E9E53F48D5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -149,15 +164,22 @@ func (s *ListMigrationsResponseBody) Validate() error {
 }
 
 type ListMigrationsResponseBodyData struct {
+	// The paged data.
 	List []*ListMigrationsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 3
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -222,33 +244,60 @@ func (s *ListMigrationsResponseBodyData) Validate() error {
 }
 
 type ListMigrationsResponseBodyDataList struct {
+	// The creation time, in YYYY-MM-DD HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2022-08-01 00:00:00
-	CreateTime   *string                                         `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The current migration stage.
 	CurrentStage *ListMigrationsResponseBodyDataListCurrentStage `json:"currentStage,omitempty" xml:"currentStage,omitempty" type:"Struct"`
+	// The migration ID.
+	//
 	// example:
 	//
 	// 21
 	MigrationId *int64 `json:"migrationId,omitempty" xml:"migrationId,omitempty"`
+	// The migration name.
+	//
 	// example:
 	//
 	// xxx
-	MigrationName   *string                                            `json:"migrationName,omitempty" xml:"migrationName,omitempty"`
+	MigrationName *string `json:"migrationName,omitempty" xml:"migrationName,omitempty"`
+	// The migration source.
 	MigrationSource *ListMigrationsResponseBodyDataListMigrationSource `json:"migrationSource,omitempty" xml:"migrationSource,omitempty" type:"Struct"`
+	// The migration status. Valid values:
+	//
+	//  - CREATED: Created.
+	//
+	//  - MIGRATING: Migrating.
+	//
+	//  - COMPLETED: Completed.
+	//
+	//  - CANCELLED: Cancelled.
+	//
 	// example:
 	//
 	// MIGRATING
-	MigrationStatus *string                                            `json:"migrationStatus,omitempty" xml:"migrationStatus,omitempty"`
+	MigrationStatus *string `json:"migrationStatus,omitempty" xml:"migrationStatus,omitempty"`
+	// The migration target.
 	MigrationTarget *ListMigrationsResponseBodyDataListMigrationTarget `json:"migrationTarget,omitempty" xml:"migrationTarget,omitempty" type:"Struct"`
+	// The migration type. Valid values:
+	//
+	//  - INSTANCE_MIGRATION: instance migration
+	//
 	// example:
 	//
 	// INSTANCE_MIGRATION
 	MigrationType *string `json:"migrationType,omitempty" xml:"migrationType,omitempty"`
+	// The modification time, in YYYY-MM-DD HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 111
@@ -373,14 +422,34 @@ func (s *ListMigrationsResponseBodyDataList) Validate() error {
 }
 
 type ListMigrationsResponseBodyDataListCurrentStage struct {
+	// The stage data.
+	//
 	// example:
 	//
 	// []
 	StageData interface{} `json:"stageData,omitempty" xml:"stageData,omitempty"`
+	// The stage status. Valid values:
+	//
+	//  - INIT: Not started.
+	//
+	//  - DOING: In progress.
+	//
+	//  - DONE: Completed.
+	//
 	// example:
 	//
 	// DOING
 	StageStatus *string `json:"stageStatus,omitempty" xml:"stageStatus,omitempty"`
+	// The stage type. Valid values:
+	//
+	//  - CONNECT_NETWORK: Network connection.
+	//
+	//  - MIGRATE_METADATA: Metadata migration.
+	//
+	//  - REPLACE_ENDPOINT: Endpoint replacement.
+	//
+	//  - MIGRATE_MESSAGE: Message migration.
+	//
 	// example:
 	//
 	// MIGRATE_METADATA
@@ -427,10 +496,30 @@ func (s *ListMigrationsResponseBodyDataListCurrentStage) Validate() error {
 }
 
 type ListMigrationsResponseBodyDataListMigrationSource struct {
+	// The migration source data.
+	//
 	// example:
 	//
-	// []
+	// {
+	//
+	// "clusterType":"INTERNET_NETWORK",
+	//
+	// "aclType":"NONE",
+	//
+	// "clusterName":"test",
+	//
+	// "namesrvAddrList":"47.110.248.xxx:9876"],
+	//
+	// "brokerObtainMethod":"AUTO_OBTAIN"
+	//
+	// }
 	SourceData interface{} `json:"sourceData,omitempty" xml:"sourceData,omitempty"`
+	// The migration source type. Valid values:
+	//
+	//  - EXTERNAL_INSTANCE: External instance.
+	//
+	//  - INTERNAL_INSTANCE: Alibaba Cloud 5.0 instance.
+	//
 	// example:
 	//
 	// EXTERNAL_INSTANCE
@@ -468,10 +557,24 @@ func (s *ListMigrationsResponseBodyDataListMigrationSource) Validate() error {
 }
 
 type ListMigrationsResponseBodyDataListMigrationTarget struct {
+	// The migration target data.
+	//
 	// example:
 	//
-	// []
+	// {
+	//
+	// "clusterType":"ROCKETMQ_V5",
+	//
+	// "instanceId":"rmq-cn-778429mp301",
+	//
+	// "regionId":"cn-hangzhou"
+	//
+	// }
 	TargetData interface{} `json:"targetData,omitempty" xml:"targetData,omitempty"`
+	// The migration target type. Valid values:
+	//
+	//  - INTERNAL_INSTANCE: Alibaba Cloud 5.0 instance.
+	//
 	// example:
 	//
 	// INTERNAL_INSTANCE

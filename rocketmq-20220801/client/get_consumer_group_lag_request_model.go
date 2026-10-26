@@ -16,11 +16,13 @@ type iGetConsumerGroupLagRequest interface {
 }
 
 type GetConsumerGroupLagRequest struct {
+	// The name of the lite topic.
+	//
 	// example:
 	//
 	// abc
 	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
-	// The topic name.
+	// The name of the topic to which the consumer group subscribes.
 	//
 	// example:
 	//

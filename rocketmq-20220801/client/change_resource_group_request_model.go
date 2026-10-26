@@ -20,7 +20,7 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the region in which the instance resides.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type ChangeResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The ID of the resource group to which the instance is changed.
+	// The ID of the resource group to which you want to transfer the specified instance.
 	//
-	// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/resource-management/latest/listresourcegroups) operation to query existing resource groups.
+	// You can call the <props="china">[ListResourceGroups](https://help.aliyun.com/document_detail/158855.html)<props="intl">[ListResourceGroups](https://www.alibabacloud.com/help/resource-management/latest/listresourcegroups) operation to query existing resource groups.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// rg-9gLOoK****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The ID of the resource. Set this parameter to the ID of the ApsaraMQ for RocketMQ instance whose resource group you want to change.
+	// The resource ID, which is the ID of the ApsaraMQ for RocketMQ instance. This parameter specifies the MSMQ queue instance whose resource group you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +46,9 @@ type ChangeResourceGroupRequest struct {
 	//
 	// c2c5d1274a8d4317a13bc5b0d4******
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The type of resource.
+	// The resource type.
 	//
-	// Set this parameter to **instance**. The value of this parameter cannot be changed.
+	// Set the value to **instance**, which indicates that the resource is an instance.
 	//
 	// This parameter is required.
 	//

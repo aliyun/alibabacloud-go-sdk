@@ -3,13 +3,14 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
 
 // Summary:
 //
-// Adds a topic mapping to a Global Replicator task.
+// Adds a backup mapping task.
 //
 // @param request - AddDisasterRecoveryItemRequest
 //
@@ -56,7 +57,7 @@ func (client *Client) AddDisasterRecoveryItemWithContext(ctx context.Context, pl
 
 // Summary:
 //
-// Changes the resource group to which a ApsaraMQ for RocketMQ instance belongs.
+// Modifies the resource group of an instance.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -115,19 +116,66 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a consumer group.
+// 创建 Agent 诊断会话
+//
+// @param request - CreateAgentConversationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentConversationResponse
+func (client *Client) CreateAgentConversationWithContext(ctx context.Context, request *CreateAgentConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAgentConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InitialMessage) {
+		body["initialMessage"] = request.InitialMessage
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgentConversation"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentConversationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a consumer group (ConsumerGroup) for ApsaraMQ for RocketMQ. A consumer group is a load balancing group in ApsaraMQ for RocketMQ that contains multiple consumers with consistent consumption behavior. Consumers must subscribe to related topics by specifying a consumer group to implement message subscription.
 //
 // Description:
 //
-// The ID of the consumer group. The ID is globally unique and is used to identify a consumer group.
-//
-// The following limits are imposed on the ID:
-//
-//   - Character limit: The ID can contain letters, digits, underscores (_), hyphens (-), and percent signs (%).
-//
-//   - Length limit: The ID must be 1 to 60 characters in length.
-//
-// For more information about strings that are reserved for the system, see [Limits on parameters](https://help.aliyun.com/document_detail/440347.html).
+//	Notice: The OpenAPI operations provided by Alibaba Cloud are management APIs used to manage and query Alibaba Cloud service resources. Use these operations only in the management link. Do not use them in the core data link for sending and receiving messages, as this may introduce risks to the link.
 //
 // @param request - CreateConsumerGroupRequest
 //
@@ -198,7 +246,7 @@ func (client *Client) CreateConsumerGroupWithContext(ctx context.Context, instan
 
 // Summary:
 //
-// # Create Disaster Recovery Plan
+// Creates a backup plan.
 //
 // @param request - CreateDisasterRecoveryPlanRequest
 //
@@ -265,11 +313,11 @@ func (client *Client) CreateDisasterRecoveryPlanWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates an ApsaraMQ for RocketMQ 5.x instance.
+// Creates an ApsaraMQ for RocketMQ 5.x series instance.
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+//	Notice: The OpenAPI provided by Alibaba Cloud is a management and control API used to manage and query resources of Alibaba Cloud services. Integrate it only into the management and control link. Do not rely on OpenAPI in the core data link for message sending and receiving. Otherwise, risks may occur on the link.
 //
 // @param request - CreateInstanceRequest
 //
@@ -382,7 +430,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates an account that is used to access an instance.
+// Creates an access account for an instance.
 //
 // @param request - CreateInstanceAccountRequest
 //
@@ -437,7 +485,7 @@ func (client *Client) CreateInstanceAccountWithContext(ctx context.Context, inst
 
 // Summary:
 //
-// Creates an access control list (ACL) in a specific instance.
+// Creates access permissions for a specified instance.
 //
 // @param request - CreateInstanceAclRequest
 //
@@ -500,7 +548,72 @@ func (client *Client) CreateInstanceAclWithContext(ctx context.Context, instance
 
 // Summary:
 //
-// Creates an IP address whitelist.
+// 创建实例巡检配置
+//
+// @param request - CreateInstanceInspectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceInspectionResponse
+func (client *Client) CreateInstanceInspectionWithContext(ctx context.Context, instanceId *string, request *CreateInstanceInspectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceInspectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Items) {
+		body["items"] = request.Items
+	}
+
+	if !dara.IsNil(request.ResourceScope) {
+		body["resourceScope"] = request.ResourceScope
+	}
+
+	if !dara.IsNil(request.Schedule) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstanceInspection"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/instance-inspections/" + dara.PercentEncode(dara.StringValue(instanceId))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInstanceInspectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an IP address whitelist for access control.
 //
 // @param request - CreateInstanceIpWhitelistRequest
 //
@@ -547,7 +660,7 @@ func (client *Client) CreateInstanceIpWhitelistWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Create Topic
+// Creates a topic for ApsaraMQ for RocketMQ. A topic is the top-level container for message transmission and storage in ApsaraMQ for RocketMQ and is used to identify messages of the same business logic. In the messaging model, producers send messages to topics, and consumers consume messages by subscribing to specified topics.
 //
 // @param request - CreateTopicRequest
 //
@@ -606,13 +719,54 @@ func (client *Client) CreateTopicWithContext(ctx context.Context, instanceId *st
 
 // Summary:
 //
+// 删除 Agent 诊断会话
+//
+// @param request - DeleteAgentConversationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentConversationResponse
+func (client *Client) DeleteAgentConversationWithContext(ctx context.Context, conversationId *string, request *DeleteAgentConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgentConversation"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentConversationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a specified consumer group.
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+//	Notice: OpenAPI operations provided by Alibaba Cloud are management API operations used to manage and query resources of Alibaba Cloud services. Integrate these operations only into management workflows. Do not rely on OpenAPI operations in the core data link for message sending and receiving. Otherwise, risks may occur in the workflows.
 //
-// After you delete a consumer group, the consumer client associated with the consumer group cannot consume messages. Exercise caution when you call this operation.
+// After you delete a specified consumer group, consumer clients with the identity of the consumer group cannot consume messages. Invoke this operation with caution.
 //
 // @param headers - map
 //
@@ -645,7 +799,7 @@ func (client *Client) DeleteConsumerGroupWithContext(ctx context.Context, instan
 
 // Summary:
 //
-// Deletes the subscriptions of a consumer group.
+// Deletes the subscription of a consumer group.
 //
 // @param request - DeleteConsumerGroupSubscriptionRequest
 //
@@ -700,7 +854,7 @@ func (client *Client) DeleteConsumerGroupSubscriptionWithContext(ctx context.Con
 
 // Summary:
 //
-// Deletes a topic mapping of a Global Replicator task.
+// Deletes a backup mapping task.
 //
 // @param headers - map
 //
@@ -733,7 +887,7 @@ func (client *Client) DeleteDisasterRecoveryItemWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes a global message backup plan.
+// Deletes a backup plan.
 //
 // @param headers - map
 //
@@ -807,7 +961,7 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, instanceId 
 
 // Summary:
 //
-// # Delete access control ACL user
+// Deletes the access account information for a specified instance.
 //
 // @param headers - map
 //
@@ -840,7 +994,7 @@ func (client *Client) DeleteInstanceAccountWithContext(ctx context.Context, inst
 
 // Summary:
 //
-// Deletes the permissions of a specific account of an instance.
+// Deletes the permissions of a specified account for a specified resource in a specified instance.
 //
 // @param request - DeleteInstanceAclRequest
 //
@@ -891,7 +1045,54 @@ func (client *Client) DeleteInstanceAclWithContext(ctx context.Context, instance
 
 // Summary:
 //
-// Deletes a specific IP address whitelist from an instance.
+// 关闭实例巡检配置
+//
+// @param request - DeleteInstanceInspectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceInspectionResponse
+func (client *Client) DeleteInstanceInspectionWithContext(ctx context.Context, instanceId *string, request *DeleteInstanceInspectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceInspectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInstanceInspection"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/instance-inspections/" + dara.PercentEncode(dara.StringValue(instanceId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInstanceInspectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified global IP whitelist under a specified instance.
 //
 // @param tmpReq - DeleteInstanceIpWhitelistRequest
 //
@@ -952,7 +1153,7 @@ func (client *Client) DeleteInstanceIpWhitelistWithContext(ctx context.Context, 
 //
 // Description:
 //
-// If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
+// Deleting a topic clears all publish-subscribe relationships under the topic. Call this operation with caution.
 //
 // @param headers - map
 //
@@ -985,7 +1186,7 @@ func (client *Client) DeleteTopicWithContext(ctx context.Context, instanceId *st
 
 // Summary:
 //
-// Executes a specific operation on a specific migration task.
+// Performs a specified operation on a specified migration task.
 //
 // @param request - ExecuteMigrationOperationRequest
 //
@@ -1038,7 +1239,7 @@ func (client *Client) ExecuteMigrationOperationWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 完成当前迁移阶段
+// Completes the current migration stage for a specified migration task.
 //
 // @param request - FinishMigrationStageRequest
 //
@@ -1085,7 +1286,163 @@ func (client *Client) FinishMigrationStageWithContext(ctx context.Context, migra
 
 // Summary:
 //
-// Queries the time range within which the consumer offset in a topic can be reset.
+// 查询 Agent 诊断会话详情
+//
+// @param request - GetAgentConversationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentConversationResponse
+func (client *Client) GetAgentConversationWithContext(ctx context.Context, conversationId *string, request *GetAgentConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAgentConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentConversation"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentConversationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 订阅 Agent 诊断会话事件
+//
+// @param request - GetAgentConversationEventsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentConversationEventsResponse
+func (client *Client) GetAgentConversationEventsWithSSECtx(ctx context.Context, conversationId *string, request *GetAgentConversationEventsRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *GetAgentConversationEventsResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.getAgentConversationEventsWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, conversationId, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 订阅 Agent 诊断会话事件
+//
+// @param request - GetAgentConversationEventsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentConversationEventsResponse
+func (client *Client) GetAgentConversationEventsWithContext(ctx context.Context, conversationId *string, request *GetAgentConversationEventsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAgentConversationEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.After) {
+		query["after"] = request.After
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentConversationEvents"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId)) + "/events"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("string"),
+	}
+	_result = &GetAgentConversationEventsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 Agent 诊断会话时间线
+//
+// @param request - GetAgentConversationTimelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentConversationTimelineResponse
+func (client *Client) GetAgentConversationTimelineWithContext(ctx context.Context, conversationId *string, request *GetAgentConversationTimelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAgentConversationTimelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.After) {
+		query["after"] = request.After
+	}
+
+	if !dara.IsNil(request.IncludeImageData) {
+		query["includeImageData"] = request.IncludeImageData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentConversationTimeline"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId)) + "/timeline"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentConversationTimelineResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the time range in which a consumer offset can be reset for a topic.
 //
 // @param headers - map
 //
@@ -1118,11 +1475,11 @@ func (client *Client) GetConsumeTimespanWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// Queries the details of a specified consumer group.
+// Retrieves the details of a specified consumer group.
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+//	Notice: The OpenAPI provided by Alibaba Cloud is a management and control API used to manage and query related resources of Alibaba Cloud services. It is recommended only for integration in management and control data links. Using OpenAPI in the core data link for message sending and receiving is strictly prohibited. Otherwise, risks may occur in the data link.
 //
 // @param headers - map
 //
@@ -1155,7 +1512,7 @@ func (client *Client) GetConsumerGroupWithContext(ctx context.Context, instanceI
 
 // Summary:
 //
-// # Query Consumer Group Backlog Information
+// Queries the message accumulation of a consumer group.
 //
 // @param request - GetConsumerGroupLagRequest
 //
@@ -1286,7 +1643,7 @@ func (client *Client) GetConsumerStackWithContext(ctx context.Context, instanceI
 
 // Summary:
 //
-// Queries the details of a topic mapping in a Global Replicator task.
+// Queries the details of a backup plan mapping.
 //
 // @param headers - map
 //
@@ -1319,7 +1676,11 @@ func (client *Client) GetDisasterRecoveryItemWithContext(ctx context.Context, pl
 
 // Summary:
 //
-// Queries the details of a Global Replicator task.
+// Queries the details of a backup plan.
+//
+// Description:
+//
+// Before querying, make sure you have created a Global Replicator backup plan. Before using Global Replicator, your account must have the AliyunServiceRoleForRMQDisasterRecovery service-linked role. This role is used to grant authorization for ApsaraMQ for RocketMQ to access the EventBridge event bus. The system typically creates this role automatically the first time you use the associated feature. If automatic creation failed, create the role manually.
 //
 // @param headers - map
 //
@@ -1352,11 +1713,11 @@ func (client *Client) GetDisasterRecoveryPlanWithContext(ctx context.Context, pl
 
 // Summary:
 //
-// Queries the detailed information about an instance.
+// Retrieves the details of a specified instance.
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+//	Notice: The OpenAPI operations provided by Alibaba Cloud are management APIs used to manage and query Alibaba Cloud service resources. Use them only in management and control workflows. Do not rely on OpenAPI in core data link workflows for message sending and receiving, as this may introduce risks to the data link.</notice>
 //
 // @param headers - map
 //
@@ -1389,7 +1750,7 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, instanceId *st
 
 // Summary:
 //
-// Obtains the account used to access a specific instance.
+// Retrieves the account details for a specified instance.
 //
 // @param request - GetInstanceAccountRequest
 //
@@ -1487,6 +1848,141 @@ func (client *Client) GetInstanceAclWithContext(ctx context.Context, instanceId 
 
 // Summary:
 //
+// 查询实例巡检配置
+//
+// @param request - GetInstanceInspectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceInspectionResponse
+func (client *Client) GetInstanceInspectionWithContext(ctx context.Context, instanceId *string, request *GetInstanceInspectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceInspectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceInspection"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/instance-inspections/" + dara.PercentEncode(dara.StringValue(instanceId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceInspectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例风险诊断报告
+//
+// @param request - GetInstanceInspectionReportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceInspectionReportResponse
+func (client *Client) GetInstanceInspectionReportWithContext(ctx context.Context, reportId *string, request *GetInstanceInspectionReportRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceInspectionReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceInspectionReport"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/instance-inspections/reports/" + dara.PercentEncode(dara.StringValue(reportId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceInspectionReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例巡检结果
+//
+// @param request - GetInstanceInspectionRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceInspectionRunResponse
+func (client *Client) GetInstanceInspectionRunWithContext(ctx context.Context, instanceId *string, runId *string, request *GetInstanceInspectionRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceInspectionRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceInspectionRun"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/instance-inspections/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/runs/" + dara.PercentEncode(dara.StringValue(runId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceInspectionRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about the IP address whitelist of an instance.
 //
 // @param tmpReq - GetInstanceIpWhitelistRequest
@@ -1540,7 +2036,7 @@ func (client *Client) GetInstanceIpWhitelistWithContext(ctx context.Context, ins
 
 // Summary:
 //
-// Obtains the details of a specific message.
+// Retrieves the details of a specified message.
 //
 // @param headers - map
 //
@@ -1573,7 +2069,7 @@ func (client *Client) GetMessageDetailWithContext(ctx context.Context, instanceI
 
 // Summary:
 //
-// # Query Topic Details
+// Retrieves the details of a specified topic.
 //
 // @param headers - map
 //
@@ -1606,7 +2102,7 @@ func (client *Client) GetTopicWithContext(ctx context.Context, instanceId *strin
 
 // Summary:
 //
-// Queries the trace of a specific message in a specific topic.
+// Retrieves the message trace for a specified message in a specified topic.
 //
 // @param request - GetTraceRequest
 //
@@ -1657,7 +2153,66 @@ func (client *Client) GetTraceWithContext(ctx context.Context, instanceId *strin
 
 // Summary:
 //
-// Queries the supported zones.
+// 查询 Agent 诊断会话列表
+//
+// @param request - ListAgentConversationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentConversationsResponse
+func (client *Client) ListAgentConversationsWithContext(ctx context.Context, request *ListAgentConversationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAgentConversationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Purpose) {
+		query["purpose"] = request.Purpose
+	}
+
+	if !dara.IsNil(request.Q) {
+		query["q"] = request.Q
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgentConversations"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentConversationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries supported zones.
 //
 // @param headers - map
 //
@@ -1690,7 +2245,7 @@ func (client *Client) ListAvailableZonesWithContext(ctx context.Context, headers
 
 // Summary:
 //
-// Queries the connections of a specific consumer client.
+// Retrieves the connection information for clients in a specified consumer group.
 //
 // @param request - ListConsumerConnectionsRequest
 //
@@ -1741,7 +2296,7 @@ func (client *Client) ListConsumerConnectionsWithContext(ctx context.Context, in
 
 // Summary:
 //
-// Queries the subscriptions of a specific consumer group.
+// Lists the subscription relationships for a consumer group.
 //
 // @param request - ListConsumerGroupSubscriptionsRequest
 //
@@ -1788,11 +2343,11 @@ func (client *Client) ListConsumerGroupSubscriptionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// # List Consumer Groups
+// Queries the list of consumer groups under a specified instance.
 //
 // Description:
 //
-//	Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. Do not rely on OpenAPI implementation in the core data chain for message sending and receiving, as this may lead to risks in the chain.
+//	Notice: The OpenAPI provided by Alibaba Cloud is a management and control API used to manage and query related resources of Alibaba Cloud services. It is recommended only for integration in management and control links. Using OpenAPI in the core data link for message sending and receiving is strictly prohibited. Otherwise, risks may occur in the link.
 //
 // @param request - ListConsumerGroupsRequest
 //
@@ -1847,7 +2402,11 @@ func (client *Client) ListConsumerGroupsWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// Queries consumer progress synchronization tasks.
+// Queries the list of consumer offset synchronization checkpoints.
+//
+// Description:
+//
+// Before you call this operation, create a Global Replicator backup plan and add topic mapping items to the plan. Then use the corresponding planId, itemId, and source instance ID to query consumer offset synchronization checkpoints. To use Global Replicator, make sure that your account has the AliyunServiceRoleForRMQDisasterRecovery service-linked role. The system typically performs automatic creation of this role when you first use the associated feature.
 //
 // @param request - ListDisasterRecoveryCheckpointsRequest
 //
@@ -1906,7 +2465,7 @@ func (client *Client) ListDisasterRecoveryCheckpointsWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the Global Replicator tasks of an instance.
+// Queries the list of backup mapping tasks.
 //
 // @param request - ListDisasterRecoveryItemsRequest
 //
@@ -1965,7 +2524,7 @@ func (client *Client) ListDisasterRecoveryItemsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries Global Replicator tasks.
+// Queries a list of backup plans.
 //
 // @param request - ListDisasterRecoveryPlansRequest
 //
@@ -2024,7 +2583,62 @@ func (client *Client) ListDisasterRecoveryPlansWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the accounts that are used to access a specific instance.
+// 查询巡检模板列表
+//
+// @param request - ListInspectionTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInspectionTemplatesResponse
+func (client *Client) ListInspectionTemplatesWithContext(ctx context.Context, request *ListInspectionTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInspectionTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInspectionTemplates"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/templates"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInspectionTemplatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the access accounts for a specified instance.
 //
 // @param request - ListInstanceAccountRequest
 //
@@ -2142,6 +2756,207 @@ func (client *Client) ListInstanceAclWithContext(ctx context.Context, instanceId
 
 // Summary:
 //
+// 查询巡检项关联资源
+//
+// @param request - ListInstanceInspectionResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceInspectionResourcesResponse
+func (client *Client) ListInstanceInspectionResourcesWithContext(ctx context.Context, instanceId *string, request *ListInstanceInspectionResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceInspectionResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RunId) {
+		query["runId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.TemplateCode) {
+		query["templateCode"] = request.TemplateCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceInspectionResources"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/instance-inspections/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/resources"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceInspectionResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例巡检历史
+//
+// @param request - ListInstanceInspectionRunsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceInspectionRunsResponse
+func (client *Client) ListInstanceInspectionRunsWithContext(ctx context.Context, instanceId *string, request *ListInstanceInspectionRunsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceInspectionRunsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReportStatus) {
+		query["reportStatus"] = request.ReportStatus
+	}
+
+	if !dara.IsNil(request.Result) {
+		query["result"] = request.Result
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["sortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TemplateCode) {
+		query["templateCode"] = request.TemplateCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceInspectionRuns"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/instance-inspections/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/runs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceInspectionRunsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询已配置的实例诊断；仅返回配置摘要
+//
+// @param request - ListInstanceInspectionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceInspectionsResponse
+func (client *Client) ListInstanceInspectionsWithContext(ctx context.Context, request *ListInstanceInspectionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceInspectionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceInspections"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/instance-inspections"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceInspectionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the IP address whitelists of an instance.
 //
 // @param request - ListInstanceIpWhitelistRequest
@@ -2197,11 +3012,11 @@ func (client *Client) ListInstanceIpWhitelistWithContext(ctx context.Context, in
 
 // Summary:
 //
-// Queries all ApsaraMQ for RocketMQ instances in a specific region.
+// Queries the list of all ApsaraMQ for RocketMQ instances in a specified region.
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+//	Notice: The OpenAPI operations provided by Alibaba Cloud are management API operations that are used to manage and query resources of Alibaba Cloud services. Integrate OpenAPI operations only into the management data link. Do not use OpenAPI operations in the core data link for sending and receiving messages. Otherwise, risks may occur on the data link.
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -2278,7 +3093,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// Queries messages.
+// Queries a list of messages.
 //
 // @param request - ListMessagesRequest
 //
@@ -2404,7 +3219,7 @@ func (client *Client) ListMetricMetaWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries a list of migration operations.
+// Queries the list of migration operations.
 //
 // @param tmpReq - ListMigrationOperationsRequest
 //
@@ -2485,7 +3300,7 @@ func (client *Client) ListMigrationOperationsWithContext(ctx context.Context, mi
 
 // Summary:
 //
-// Queries migration tasks.
+// Queries the list of migration tasks.
 //
 // @param request - ListMigrationsRequest
 //
@@ -2548,7 +3363,7 @@ func (client *Client) ListMigrationsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries regions in which ApsaraMQ for RocketMQ is available.
+// Queries the list of regions.
 //
 // @param headers - map
 //
@@ -2681,7 +3496,7 @@ func (client *Client) ListTopicSubscriptionsWithContext(ctx context.Context, ins
 
 // Summary:
 //
-// # Query Topic List
+// Queries the list of topics in a specified instance.
 //
 // @param tmpReq - ListTopicsRequest
 //
@@ -2746,7 +3561,7 @@ func (client *Client) ListTopicsWithContext(ctx context.Context, instanceId *str
 
 // Summary:
 //
-// Queries the message traces of a specific topic.
+// Queries the list of message traces under a specified topic.
 //
 // @param request - ListTracesRequest
 //
@@ -2872,6 +3687,202 @@ func (client *Client) ResetConsumeOffsetWithContext(ctx context.Context, instanc
 
 // Summary:
 //
+// 响应 Agent 诊断交互
+//
+// @param request - RespondAgentConversationActionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RespondAgentConversationActionResponse
+func (client *Client) RespondAgentConversationActionWithContext(ctx context.Context, conversationId *string, actionId *string, request *RespondAgentConversationActionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RespondAgentConversationActionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Answers) {
+		body["answers"] = request.Answers
+	}
+
+	if !dara.IsNil(request.Decision) {
+		body["decision"] = request.Decision
+	}
+
+	if !dara.IsNil(request.Note) {
+		body["note"] = request.Note
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RespondAgentConversationAction"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId)) + "/actions/" + dara.PercentEncode(dara.StringValue(actionId)) + "/respond"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RespondAgentConversationActionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 立即执行实例巡检
+//
+// @param request - RunInstanceInspectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunInstanceInspectionResponse
+func (client *Client) RunInstanceInspectionWithContext(ctx context.Context, instanceId *string, request *RunInstanceInspectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunInstanceInspectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ItemOverrides) {
+		body["itemOverrides"] = request.ItemOverrides
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunInstanceInspection"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/instance-inspections/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/runs"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunInstanceInspectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送 Agent 诊断消息
+//
+// @param request - SendAgentConversationMessageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendAgentConversationMessageResponse
+func (client *Client) SendAgentConversationMessageWithSSECtx(ctx context.Context, conversationId *string, request *SendAgentConversationMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *SendAgentConversationMessageResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.sendAgentConversationMessageWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, conversationId, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 发送 Agent 诊断消息
+//
+// @param request - SendAgentConversationMessageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendAgentConversationMessageResponse
+func (client *Client) SendAgentConversationMessageWithContext(ctx context.Context, conversationId *string, request *SendAgentConversationMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SendAgentConversationMessageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attachments) {
+		body["attachments"] = request.Attachments
+	}
+
+	if !dara.IsNil(request.ClientContext) {
+		body["clientContext"] = request.ClientContext
+	}
+
+	if !dara.IsNil(request.Images) {
+		body["images"] = request.Images
+	}
+
+	if !dara.IsNil(request.Message) {
+		body["message"] = request.Message
+	}
+
+	if !dara.IsNil(request.MessageType) {
+		body["messageType"] = request.MessageType
+	}
+
+	if !dara.IsNil(request.TicketRequestId) {
+		body["ticketRequestId"] = request.TicketRequestId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendAgentConversationMessage"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId)) + "/messages"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("string"),
+	}
+	_result = &SendAgentConversationMessageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a topic mapping of a Global Replicator task.
 //
 // @param headers - map
@@ -2895,6 +3906,98 @@ func (client *Client) StartDisasterRecoveryItemWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartDisasterRecoveryItemResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 引导 Agent 诊断会话执行
+//
+// @param request - SteerAgentConversationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SteerAgentConversationResponse
+func (client *Client) SteerAgentConversationWithContext(ctx context.Context, conversationId *string, request *SteerAgentConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SteerAgentConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CommandId) {
+		body["commandId"] = request.CommandId
+	}
+
+	if !dara.IsNil(request.Message) {
+		body["message"] = request.Message
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SteerAgentConversation"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId)) + "/actions/steer"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SteerAgentConversationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止 Agent 诊断会话执行
+//
+// @param request - StopAgentConversationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAgentConversationResponse
+func (client *Client) StopAgentConversationWithContext(ctx context.Context, conversationId *string, request *StopAgentConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopAgentConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopAgentConversation"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId)) + "/actions/stop"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopAgentConversationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3093,11 +4196,109 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// # Update ConsumerGroup
+// 重命名 Agent 诊断会话
+//
+// @param request - UpdateAgentConversationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentConversationResponse
+func (client *Client) UpdateAgentConversationWithContext(ctx context.Context, conversationId *string, request *UpdateAgentConversationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAgentConversationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAgentConversation"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAgentConversationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 Agent 诊断会话分享范围
+//
+// @param request - UpdateAgentConversationShareScopeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentConversationShareScopeResponse
+func (client *Client) UpdateAgentConversationShareScopeWithContext(ctx context.Context, conversationId *string, request *UpdateAgentConversationShareScopeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAgentConversationShareScopeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ShareScope) {
+		body["shareScope"] = request.ShareScope
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAgentConversationShareScope"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId)) + "/share-scope"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAgentConversationShareScopeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the basic information and consumption retry policy of a consumer group.
 //
 // Description:
 //
-//	Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. It is strictly prohibited to rely on OpenAPI implementation in the core data chain of message sending and receiving, otherwise it may lead to risks in the chain.
+//	Notice: The OpenAPI provided by Alibaba Cloud is a management and control API used to manage and query resources of Alibaba Cloud services. It is recommended only for integration in management and control links. Do not use OpenAPI in the core data link for sending and receiving messages. Otherwise, risks may occur on the data link.
 //
 // @param request - UpdateConsumerGroupRequest
 //
@@ -3270,11 +4471,11 @@ func (client *Client) UpdateDisasterRecoveryPlanWithContext(ctx context.Context,
 
 // Summary:
 //
-// Updates the basic information and specifications of an ApsaraMQ for RocketMQ instance.
+// Updates the basic information and specification configurations of an ApsaraMQ for RocketMQ instance.
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+//	Notice: The OpenAPI provided by Alibaba Cloud is a management and control API used to manage and query resources of Alibaba Cloud services. It is recommended only for integration in management and control paths. Do not use OpenAPI in the core data link for sending and receiving messages. Otherwise, risks may occur on the link.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -3337,7 +4538,7 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, instanceId 
 
 // Summary:
 //
-// Updates the information about a specific account in a specific instance.
+// Updates the information of a specified account under a specified instance.
 //
 // @param request - UpdateInstanceAccountRequest
 //
@@ -3455,7 +4656,76 @@ func (client *Client) UpdateInstanceAclWithContext(ctx context.Context, instance
 
 // Summary:
 //
-// # Update Topic
+// 修改实例巡检配置
+//
+// @param request - UpdateInstanceInspectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceInspectionResponse
+func (client *Client) UpdateInstanceInspectionWithContext(ctx context.Context, instanceId *string, request *UpdateInstanceInspectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceInspectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Items) {
+		body["items"] = request.Items
+	}
+
+	if !dara.IsNil(request.ResourceScope) {
+		body["resourceScope"] = request.ResourceScope
+	}
+
+	if !dara.IsNil(request.Revision) {
+		body["revision"] = request.Revision
+	}
+
+	if !dara.IsNil(request.Schedule) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInstanceInspection"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/monitoring/instance-inspections/" + dara.PercentEncode(dara.StringValue(instanceId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInstanceInspectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the remarks for a topic.
 //
 // @param request - UpdateTopicRequest
 //
@@ -3500,6 +4770,65 @@ func (client *Client) UpdateTopicWithContext(ctx context.Context, instanceId *st
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTopicResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传 Agent 会话客户端日志
+//
+// @param request - UploadAgentConversationLogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadAgentConversationLogResponse
+func (client *Client) UploadAgentConversationLogWithContext(ctx context.Context, conversationId *string, request *UploadAgentConversationLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UploadAgentConversationLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContentGzipB64) {
+		body["contentGzipB64"] = request.ContentGzipB64
+	}
+
+	if !dara.IsNil(request.FileName) {
+		body["fileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.TimeRangeEnd) {
+		body["timeRangeEnd"] = request.TimeRangeEnd
+	}
+
+	if !dara.IsNil(request.TimeRangeStart) {
+		body["timeRangeStart"] = request.TimeRangeStart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadAgentConversationLog"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId)) + "/logs"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadAgentConversationLogResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3561,7 +4890,7 @@ func (client *Client) VerifyConsumeMessageWithContext(ctx context.Context, insta
 
 // Summary:
 //
-// Verifies the message sending feature of a specific topic on a specific instance.
+// Tests whether messages can be sent to a specified topic in an instance.
 //
 // @param request - VerifySendMessageRequest
 //
@@ -3628,4 +4957,122 @@ func (client *Client) VerifySendMessageWithContext(ctx context.Context, instance
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) getAgentConversationEventsWithSSECtx_opYieldFunc(_yield chan *GetAgentConversationEventsResponse, _yieldErr chan error, ctx context.Context, conversationId *string, request *GetAgentConversationEventsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.After) {
+		query["after"] = request.After
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentConversationEvents"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId)) + "/events"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("string"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.StringValue(resp.Event.Data)
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) sendAgentConversationMessageWithSSECtx_opYieldFunc(_yield chan *SendAgentConversationMessageResponse, _yieldErr chan error, ctx context.Context, conversationId *string, request *SendAgentConversationMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attachments) {
+		body["attachments"] = request.Attachments
+	}
+
+	if !dara.IsNil(request.ClientContext) {
+		body["clientContext"] = request.ClientContext
+	}
+
+	if !dara.IsNil(request.Images) {
+		body["images"] = request.Images
+	}
+
+	if !dara.IsNil(request.Message) {
+		body["message"] = request.Message
+	}
+
+	if !dara.IsNil(request.MessageType) {
+		body["messageType"] = request.MessageType
+	}
+
+	if !dara.IsNil(request.TicketRequestId) {
+		body["ticketRequestId"] = request.TicketRequestId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendAgentConversationMessage"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/" + dara.PercentEncode(dara.StringValue(conversationId)) + "/messages"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("string"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.StringValue(resp.Event.Data)
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

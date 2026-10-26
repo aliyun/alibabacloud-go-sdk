@@ -34,7 +34,7 @@ type DeleteConsumerGroupResponseBody struct {
 	//
 	// InvalidConsumerGroupId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result data that is returned.
+	// The returned result.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type DeleteConsumerGroupResponseBody struct {
 	//
 	// Parameter consumerGroupId is invalid.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// The request ID. Each request ID is unique and can be used to troubleshoot and locate issues.
 	//
 	// example:
 	//
 	// C7F94090-3358-506A-97DC-34BC803C****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the execution is successful.
 	//
 	// example:
 	//

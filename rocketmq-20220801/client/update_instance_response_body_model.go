@@ -28,25 +28,25 @@ type iUpdateInstanceResponseBody interface {
 }
 
 type UpdateInstanceResponseBody struct {
-	// The error code.
+	// The fault code.
 	//
 	// example:
 	//
 	// MissingInstanceId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result data that is returned.
+	// The returned result.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// The dynamic error code.
+	// The dynamic fault code.
 	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// The dynamic error message.
+	// The dynamic fault message.
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type UpdateInstanceResponseBody struct {
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The error message.
+	// The fault message.
 	//
 	// example:
 	//
 	// Parameter instanceId is mandatory for this action .
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// The request ID. Each request ID is unique and active for troubleshooting and locating issues.
 	//
 	// example:
 	//
 	// AA87DE09-DA44-52F4-9515-78B1B607****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the operation is executed successfully.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iListTopicsRequest interface {
 }
 
 type ListTopicsRequest struct {
-	// The filter condition for the query. If not provided, all topics under the instance will be queried.
+	// The filter condition for the query. If not specified, all topics in the instance are returned.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type ListTopicsRequest struct {
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
 	// The message type of the topic.
 	MessageTypes []*string `json:"messageTypes,omitempty" xml:"messageTypes,omitempty" type:"Repeated"`
-	// Page number, indicating which page of results to return.
+	// The page number of the results to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size, the maximum number of results to display per page.
+	// The maximum number of results to display per page.
 	//
 	// example:
 	//

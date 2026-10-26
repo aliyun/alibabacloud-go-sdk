@@ -30,7 +30,7 @@ type iCreateInstanceAclResponseBody interface {
 }
 
 type CreateInstanceAclResponseBody struct {
-	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	// The access denial details. This field is returned only when access is denied because the user lacks RAM permissions.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateInstanceAclResponseBody struct {
 	//
 	// MissingInstanceId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The returned result.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type CreateInstanceAclResponseBody struct {
 	//
 	// C7E8AE3A-219B-52EE-BE32-4036F5F88833
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iListConsumerGroupsResponseBody interface {
 }
 
 type ListConsumerGroupsResponseBody struct {
-	// Error code.
+	// The fault code.
 	//
 	// example:
 	//
@@ -36,37 +36,37 @@ type ListConsumerGroupsResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The returned data.
 	Data *ListConsumerGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Dynamic error code.
+	// The dynamic fault code.
 	//
 	// example:
 	//
-	// xxx
+	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// The dynamic error message.
+	// The dynamic fault message.
 	//
 	// example:
 	//
-	// xxx
+	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The fault message.
 	//
 	// example:
 	//
 	// Parameter InstanceId is mandatory for this action .
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
+	// The request ID. Each request has a unique ID, which is active for troubleshooting and locating issues.
 	//
 	// example:
 	//
 	// 5503A460-98ED-5543-92CF-4853DE28****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the execution was successful.
+	// Indicates whether the operation is execute successfully.
 	//
 	// example:
 	//
@@ -164,21 +164,21 @@ func (s *ListConsumerGroupsResponseBody) Validate() error {
 }
 
 type ListConsumerGroupsResponseBodyData struct {
-	// The consumer groups.
+	// The paging data.
 	List []*ListConsumerGroupsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size.
+	// The paging size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Total number of returned results.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -244,57 +244,61 @@ func (s *ListConsumerGroupsResponseBodyData) Validate() error {
 }
 
 type ListConsumerGroupsResponseBodyDataList struct {
-	// Consumer group ID.
+	// The consumer group ID.
 	//
 	// example:
 	//
 	// GID-TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// Creation time of the consumer group.
+	// The creation time of the consumer group, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The maximum TPS for message sending.
+	// The maximum TPS for consuming messages.
 	//
 	// example:
 	//
 	// 1000
 	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
+	// The consumption pattern.
+	//
 	// example:
 	//
 	// LITE_SELECTIVE
 	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
-	// The region ID to which the instance belongs.
+	// The region ID of the instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Remark information of the consumer group.
+	// The remarks of the consumer group.
 	//
 	// example:
 	//
 	// This is the remark for test.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// Status of the consumer group.
+	// The status of the consumer group.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The topic name for the lite type.
+	//
 	// example:
 	//
 	// test1
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// Last update time of the consumer group.
+	// The last update time of the consumer group, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

@@ -28,49 +28,51 @@ type iListMessagesRequest interface {
 }
 
 type ListMessagesRequest struct {
-	// The end of the time range to query.
+	// The end time of the query time range. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-09-09 09:00:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The lite topic name.
+	//
 	// example:
 	//
 	// abc
 	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
-	// Message Id.
+	// The message ID.
 	//
 	// example:
 	//
 	// 7F00000100207A4F0F294A938F7807AE
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// Message key.
+	// The message key.
 	//
 	// example:
 	//
 	// XSCBillResult
 	MessageKey *string `json:"messageKey,omitempty" xml:"messageKey,omitempty"`
-	// The page number. Pages start from page 1.
+	// The current page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size. The maximum number of results to return per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The scroll ID of the request.
+	// The scroll ID for the request.
 	//
-	// You do not need to configure this parameter for the first page. This parameter is included in the pagination request based on the result returned for the first page.
+	// You do not need to specify this parameter for the first page request. For subsequent page requests, specify this parameter based on the value returned from the first page.
 	//
 	// example:
 	//
 	// B13D0B07-F24B-4790-88D8-D47A38063D00
 	ScrollId *string `json:"scrollId,omitempty" xml:"scrollId,omitempty"`
-	// The beginning of the time range to query.
+	// The start time of the query time range. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

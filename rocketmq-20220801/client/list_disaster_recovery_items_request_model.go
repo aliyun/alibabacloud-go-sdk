@@ -20,19 +20,19 @@ type iListDisasterRecoveryItemsRequest interface {
 }
 
 type ListDisasterRecoveryItemsRequest struct {
-	// The filter condition. Topics are filtered by topic name.
+	// The filter condition. Filters by topicName.
 	//
 	// example:
 	//
 	// topic_test
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// The page number.
+	// The page number of the results to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The maximum number of results to return per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListDisasterRecoveryItemsRequest struct {
 	//
 	// example:
 	//
-	// topic-test920
+	// topic-test284
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 }
 

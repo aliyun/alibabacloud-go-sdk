@@ -30,7 +30,7 @@ type iDeleteConsumerGroupSubscriptionResponseBody interface {
 }
 
 type DeleteConsumerGroupSubscriptionResponseBody struct {
-	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	// The access denial details. This parameter is returned only when the request is denied because the RAM user does not have the required permissions.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteConsumerGroupSubscriptionResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The returned result.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type DeleteConsumerGroupSubscriptionResponseBody struct {
 	//
 	// example:
 	//
-	// 723CDA5C-E25C-5EAF-9601-******
+	// 723CDA5C-E25C-5EAF-9601-08C286DF8A4D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

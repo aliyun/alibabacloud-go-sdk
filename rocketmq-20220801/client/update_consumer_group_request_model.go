@@ -20,31 +20,25 @@ type iUpdateConsumerGroupRequest interface {
 }
 
 type UpdateConsumerGroupRequest struct {
-	// The new consumption retry policy of the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
+	// The updated consumption retry policy of the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
 	//
 	// This parameter is required.
 	ConsumeRetryPolicy *UpdateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// The new message delivery method of the consumer group.
-	//
-	// Valid values:
-	//
-	// 	- Concurrently: concurrent delivery
-	//
-	// 	- Orderly: ordered delivery
+	// Modification is not supported.
 	//
 	// example:
 	//
 	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	// The maximum number of messages that can be processed by consumers per second.
+	// The upper limit of TPS for consuming messages.
 	//
 	// example:
 	//
-	// 100
+	// 1000
 	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
-	// The new description of the consumer group.
+	// The updated remarks of the consumer group.
 	//
 	// example:
 	//
@@ -108,17 +102,19 @@ func (s *UpdateConsumerGroupRequest) Validate() error {
 type UpdateConsumerGroupRequestConsumeRetryPolicy struct {
 	// The dead-letter topic.
 	//
-	// If a message still fails to be consumed after the maximum number of retries specified in the consumption retry policy is reached, the message is delivered to the dead-letter topic for subsequent business recovery or backtracking. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
+	// If a consumer fails to consume a message and the message still fails after retries, the message is delivered to the dead-letter topic for subsequent business recovery or review. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
 	//
 	// example:
 	//
 	// DLQ_mqtest
 	DeadLetterTargetTopic *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
-	// Fixed retry interval, unit: seconds.This option is effective when retryPolicy is FixedRetryPolicy.Value range：
+	// The fixed retry interval. Unit: seconds. This parameter takes effect only when the retry policy is set to FixedRetryPolicy (fixed-interval retry).
 	//
-	//   - Concurrently:10-1800
+	// Valid values:
 	//
-	//   - Orderly:1-600
+	//   - Concurrent delivery: 10-1800
+	//
+	//   - Ordered delivery: 1-600
 	//
 	// example:
 	//
@@ -130,13 +126,13 @@ type UpdateConsumerGroupRequestConsumeRetryPolicy struct {
 	//
 	// 16
 	MaxRetryTimes *int32 `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
-	// The retry policy. For more information, see [Message retry](https://help.aliyun.com/document_detail/440356.html).
+	// The retry policy type. For more information, see [Message retry](https://help.aliyun.com/document_detail/440356.html).
 	//
 	// Valid values:
 	//
-	// 	- FixedRetryPolicy: fixed-interval retry. This value is valid only if you set deliveryOrderType to Orderly.
+	// - FixedRetryPolicy: fixed-interval retry. Only ordered delivery is supported.
 	//
-	// 	- DefaultRetryPolicy: exponential backoff retry. This value is valid only if you set deliveryOrderType to Concurrently.
+	// - DefaultRetryPolicy: incremental backoff retry. Only concurrent delivery is supported.
 	//
 	// This parameter is required.
 	//

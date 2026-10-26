@@ -30,55 +30,55 @@ type iDeleteDisasterRecoveryItemResponseBody interface {
 }
 
 type DeleteDisasterRecoveryItemResponseBody struct {
-	// Access denied details, only in the scenario where the user is denied access due to RAM not having permission
+	// The details of the access denial. This field is returned only when the request is denied due to insufficient RAM permissions.
 	//
 	// example:
 	//
 	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// DisasterRecoveryItemStatus.Error
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The return data
+	// The returned data.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// Dynamic error code
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// Dynamic error message
+	// The dynamic error message.
 	//
 	// example:
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// The current status of the disaster recovery item does not support this operation.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 0B962390-D84B-5D44-8C11-79DFxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Whether the operation was successful
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

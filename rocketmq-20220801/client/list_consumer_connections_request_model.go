@@ -16,10 +16,14 @@ type iListConsumerConnectionsRequest interface {
 }
 
 type ListConsumerConnectionsRequest struct {
+	// The name of the Lite MSMQ topic.
+	//
 	// example:
 	//
 	// abc
 	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
+	// The name of the lite topic.
+	//
 	// example:
 	//
 	// test1

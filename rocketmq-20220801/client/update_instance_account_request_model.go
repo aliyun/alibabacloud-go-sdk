@@ -18,24 +18,20 @@ type iUpdateInstanceAccountRequest interface {
 }
 
 type UpdateInstanceAccountRequest struct {
-	// The status of the account.
-	//
-	// Valid values:
-	//
-	// 	- DISABLE
-	//
-	// 	- ENABLE
+	// The account status.
 	//
 	// example:
 	//
 	// ENABLE
 	AccountStatus *string `json:"accountStatus,omitempty" xml:"accountStatus,omitempty"`
-	// The password of the account.
+	// The account password.
 	//
 	// example:
 	//
 	// test
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The remark.
+	//
 	// example:
 	//
 	// test

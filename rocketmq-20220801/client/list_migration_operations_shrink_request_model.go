@@ -26,28 +26,44 @@ type iListMigrationOperationsShrinkRequest interface {
 }
 
 type ListMigrationOperationsShrinkRequest struct {
+	// The operation business status.
 	BusinessStatusShrink *string `json:"businessStatus,omitempty" xml:"businessStatus,omitempty"`
+	// The filter condition for the query.
+	//
+	// >
+	//
+	// > - Supports filtering by operationKey, which is the topic name.
+	//
 	// example:
 	//
 	// xx
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rmq-cn-zxu37eiqq0x
-	InstanceId            *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The operation status.
 	OperationStatusShrink *string `json:"operationStatus,omitempty" xml:"operationStatus,omitempty"`
+	// The operation type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// IMPORT_CONSUMER_GROUP
+	// MIGRATE_MESSAGE
 	OperationType *string `json:"operationType,omitempty" xml:"operationType,omitempty"`
+	// The page number of the results to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The page size, which specifies the maximum number of results to return per page.
+	//
 	// This parameter is required.
 	//
 	// example:

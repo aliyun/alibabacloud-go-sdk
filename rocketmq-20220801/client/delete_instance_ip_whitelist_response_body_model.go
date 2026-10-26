@@ -30,7 +30,7 @@ type iDeleteInstanceIpWhitelistResponseBody interface {
 }
 
 type DeleteInstanceIpWhitelistResponseBody struct {
-	// The details about the access denial. This parameter is returned only if the access is denied due to the reason that the Resource Access Management (RAM) user does not have the required permissions.
+	// The details of the access denial. This parameter is returned only when the user is denied access due to lack of RAM permissions.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteInstanceIpWhitelistResponseBody struct {
 	//
 	// MissingInstanceId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The returned result.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DeleteInstanceIpWhitelistResponseBody struct {
 	//
 	// 16425867-C948-5A0C-9A24-5259727BE727
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

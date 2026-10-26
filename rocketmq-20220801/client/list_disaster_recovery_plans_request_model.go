@@ -20,7 +20,7 @@ type iListDisasterRecoveryPlansRequest interface {
 }
 
 type ListDisasterRecoveryPlansRequest struct {
-	// The filter condition. Global Replicator tasks are filtered by task name or description.
+	// The filter condition. Filters backup plans by backup name or backup description.
 	//
 	// example:
 	//
@@ -30,15 +30,15 @@ type ListDisasterRecoveryPlansRequest struct {
 	//
 	// example:
 	//
-	// rmq-cn-778xxx
+	// rmq-cn-c97xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The page number.
+	// The page number of the page to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries to return on each page.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iDeleteDisasterRecoveryPlanResponseBody interface {
 }
 
 type DeleteDisasterRecoveryPlanResponseBody struct {
-	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	// The details of the access denial. This field is returned only when access is denied due to insufficient RAM permissions.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteDisasterRecoveryPlanResponseBody struct {
 	//
 	// DisasterRecoveryPlanStatus.Error
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The response data.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DeleteDisasterRecoveryPlanResponseBody struct {
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DeleteDisasterRecoveryPlanResponseBody struct {
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

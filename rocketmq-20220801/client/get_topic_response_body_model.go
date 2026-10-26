@@ -28,45 +28,45 @@ type iGetTopicResponseBody interface {
 }
 
 type GetTopicResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *GetTopicResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// TopicName
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// Dynamic error message.
+	// The dynamic error message.
 	//
 	// example:
 	//
 	// topicName
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The topic cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, each request\\"s ID is unique and can be used for troubleshooting and problem localization.
+	// The request ID. Each request has a unique ID that you can use to troubleshoot and locate issues.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the execution was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ func (s *GetTopicResponseBody) Validate() error {
 }
 
 type GetTopicResponseBodyData struct {
-	// Creation time of the topic.
+	// The time when the topic was created, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -176,73 +176,69 @@ type GetTopicResponseBodyData struct {
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The expiration time of the lite topic, in minutes.
+	//
 	// example:
 	//
-	// 20
+	// 60
 	LiteTopicExpiration *int64 `json:"liteTopicExpiration,omitempty" xml:"liteTopicExpiration,omitempty"`
-	// The maximum TPS for message sending.
+	// The maximum TPS for sending messages.
 	//
 	// example:
 	//
 	// 1000
 	MaxSendTps *int64 `json:"maxSendTps,omitempty" xml:"maxSendTps,omitempty"`
-	// The type of messages in the topic.
+	// The message type of the topic. Valid values:
 	//
-	// Valid values:
+	// - TRANSACTION: transactional message
 	//
-	// 	- TRANSACTION: transactional messages
+	// - FIFO: ordered message
 	//
-	// 	- FIFO: ordered messages
+	// - DELAY: scheduled message or delayed message
 	//
-	// 	- DELAY: scheduled or delayed messages
+	// - LITE: lightweight topic message
 	//
-	// 	- NORMAL: normal messages
-	//
-	// Valid values:
-	//
-	// 	- TRANSACTION: transactional messages
-	//
-	// 	- FIFO: ordered messages
-	//
-	// 	- DELAY: scheduled or delayed messages
-	//
-	// 	- NORMAL: normal messages
+	// - NORMAL: normal message
 	//
 	// example:
 	//
 	// NORMAL
 	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	// The region ID to which the instance belongs.
+	// The maximum message priority allowed for the topic. Valid values: 0 to 9. A higher value indicates a higher priority.
+	//
+	// example:
+	//
+	// 9
+	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
+	// The ID of the region to which the instance belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Remark information of the topic.
+	// The remarks for the topic.
 	//
 	// example:
 	//
 	// This is the remark for test.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The topic status.
+	// The status of the topic. Valid values:
 	//
-	// Valid values:
+	// - RUNNING: running
 	//
-	// 	- RUNNING
-	//
-	// 	- CREATING
+	// - CREATING: creating
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Topic name.
+	// The topic name.
 	//
 	// example:
 	//
 	// topic_test
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// Last modification time of the topic.
+	// The last time the topic was modified, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -276,6 +272,10 @@ func (s *GetTopicResponseBodyData) GetMaxSendTps() *int64 {
 
 func (s *GetTopicResponseBodyData) GetMessageType() *string {
 	return s.MessageType
+}
+
+func (s *GetTopicResponseBodyData) GetPriority() *int32 {
+	return s.Priority
 }
 
 func (s *GetTopicResponseBodyData) GetRegionId() *string {
@@ -320,6 +320,11 @@ func (s *GetTopicResponseBodyData) SetMaxSendTps(v int64) *GetTopicResponseBodyD
 
 func (s *GetTopicResponseBodyData) SetMessageType(v string) *GetTopicResponseBodyData {
 	s.MessageType = &v
+	return s
+}
+
+func (s *GetTopicResponseBodyData) SetPriority(v int32) *GetTopicResponseBodyData {
+	s.Priority = &v
 	return s
 }
 

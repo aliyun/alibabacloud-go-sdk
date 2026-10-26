@@ -28,31 +28,46 @@ type iGetConsumeTimespanResponseBody interface {
 }
 
 type GetConsumeTimespanResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// MissingInstanceId
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The data returned.
 	Data *GetConsumeTimespanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// xxx
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
 	// xxx
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter instanceId is mandatory for this action .
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The unique ID of the request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// C115601B-8736-5BBF-AC99-7FEAE1245A80
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -149,26 +164,38 @@ func (s *GetConsumeTimespanResponseBody) Validate() error {
 }
 
 type GetConsumeTimespanResponseBodyData struct {
+	// The last time the consumer group consumed a message from this topic.
+	//
 	// example:
 	//
 	// 1570761026400
 	ConsumeTimestamp *int64 `json:"consumeTimestamp,omitempty" xml:"consumeTimestamp,omitempty"`
+	// The ID of the consumer group.
+	//
 	// example:
 	//
 	// CID-TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The production time of the latest message in the topic.
+	//
 	// example:
 	//
 	// 1570761026833
 	MaxTimestamp *int64 `json:"maxTimestamp,omitempty" xml:"maxTimestamp,omitempty"`
+	// The production time of the earliest message in the topic.
+	//
 	// example:
 	//
 	// 1570761026222
 	MinTimestamp *int64 `json:"minTimestamp,omitempty" xml:"minTimestamp,omitempty"`
+	// The topic to which the consumer group subscribes.
+	//
 	// example:
 	//
 	// topic_test

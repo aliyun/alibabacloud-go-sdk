@@ -30,7 +30,7 @@ type iListInstanceAccountResponseBody interface {
 }
 
 type ListInstanceAccountResponseBody struct {
-	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	// The details of the access denial. This parameter is returned only if the request is denied due to insufficient RAM permissions.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ListInstanceAccountResponseBody struct {
 	//
 	// Parameter instanceId is mandatory for this action .
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
 	// C115601B-8736-5BBF-AC99-7FEAE1245A80
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -181,21 +181,21 @@ func (s *ListInstanceAccountResponseBody) Validate() error {
 }
 
 type ListInstanceAccountResponseBodyData struct {
-	// The pagination information.
+	// A list of entries on the current page.
 	List []*ListInstanceAccountResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Number of items per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of returned entries.
+	// The total count of entries.
 	//
 	// example:
 	//
@@ -261,23 +261,13 @@ func (s *ListInstanceAccountResponseBodyData) Validate() error {
 }
 
 type ListInstanceAccountResponseBodyDataList struct {
-	// The status of the account.
-	//
-	// Valid values:
-	//
-	//   - DISABLE
-	//
-	//   - ENABLE
+	// The account status.
 	//
 	// example:
 	//
 	// ENABLE
 	AccountStatus *string `json:"accountStatus,omitempty" xml:"accountStatus,omitempty"`
 	// The account type.
-	//
-	//   - CUSTOMER
-	//
-	//   - DEFAULT
 	//
 	// example:
 	//
@@ -295,11 +285,13 @@ type ListInstanceAccountResponseBodyDataList struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The remark.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The username of the account.
+	// The username.
 	//
 	// example:
 	//

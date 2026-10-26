@@ -28,7 +28,7 @@ type iListConsumerConnectionsResponseBody interface {
 }
 
 type ListConsumerConnectionsResponseBody struct {
-	// The returned error code.
+	// The error code.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type ListConsumerConnectionsResponseBody struct {
 	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
 	// A3620115-6F1F-5CFB-AA3F-BBD4853B2EC4
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ func (s *ListConsumerConnectionsResponseBody) Validate() error {
 }
 
 type ListConsumerConnectionsResponseBodyData struct {
-	// The client connection list
+	// The list of client connections.
 	Connections []*ListConsumerConnectionsResponseBodyDataConnections `json:"connections,omitempty" xml:"connections,omitempty" type:"Repeated"`
 	// The consumer group ID.
 	//
@@ -178,7 +178,7 @@ type ListConsumerConnectionsResponseBodyData struct {
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID.
 	//
 	// example:
 	//
@@ -244,41 +244,43 @@ func (s *ListConsumerConnectionsResponseBodyData) Validate() error {
 }
 
 type ListConsumerConnectionsResponseBodyDataConnections struct {
-	// The ID of the client.
+	// The client ID.
 	//
 	// example:
 	//
 	// 172.17.135.197@17392#1936705963#551717232#9873695589062458
 	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// Host IP/Public IP
+	// The host IP address or Internet egress IP address.
 	//
 	// example:
 	//
 	// xx.xx.xx.xx
 	EgressIp *string `json:"egressIp,omitempty" xml:"egressIp,omitempty"`
-	// The `hostname` of the cloud-native box.
+	// The client hostname.
 	//
 	// example:
 	//
 	// vos
 	Hostname *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
-	// The language of the client.
+	// The client language.
 	//
 	// example:
 	//
 	// java
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// Consumption Mode
-	//
-	// - BROADCASTING
+	// The consumption mode of the consumer:
 	//
 	// - CLUSTERING
+	//
+	// - LITE_SELECTIVE
+	//
+	// - BROADCASTING
 	//
 	// example:
 	//
 	// BROADCASTING
 	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
-	// The version of the client.
+	// The client version.
 	//
 	// example:
 	//

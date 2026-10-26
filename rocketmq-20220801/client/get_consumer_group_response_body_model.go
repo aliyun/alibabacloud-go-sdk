@@ -28,21 +28,21 @@ type iGetConsumerGroupResponseBody interface {
 }
 
 type GetConsumerGroupResponseBody struct {
-	// The error code.
+	// The fault code.
 	//
 	// example:
 	//
 	// InvalidConsumerGroupId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *GetConsumerGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The dynamic error code.
+	// The dynamic fault code.
 	//
 	// example:
 	//
 	// ConsumerGroupId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// The dynamic error message.
+	// The dynamic fault message.
 	//
 	// example:
 	//
@@ -54,19 +54,19 @@ type GetConsumerGroupResponseBody struct {
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The error message.
+	// The fault message.
 	//
 	// example:
 	//
 	// Parameter consumerGroupId is invalid.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// The request ID. Each request has a unique ID, which can be used to troubleshoot and locate faults.
 	//
 	// example:
 	//
 	// C7F94090-3358-506A-97DC-34BC803C****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the execute operation was successful.
 	//
 	// example:
 	//
@@ -172,48 +172,53 @@ type GetConsumerGroupResponseBodyData struct {
 	//
 	// CID-TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The time when the consumer group was created.
+	// The time when the consumer group was created, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The message delivery method of the consumer group.
-	//
-	// Valid values:
-	//
-	// 	- Concurrently: concurrent delivery
-	//
-	// 	- Orderly: ordered delivery
+	// The delivery order of the consumer group.
 	//
 	// example:
 	//
 	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	Exclusive         *bool   `json:"exclusive,omitempty" xml:"exclusive,omitempty"`
-	// The ID of the instance.
+	// Indicates whether exclusive consumption is enabled.
+	//
+	// example:
+	//
+	// false
+	Exclusive *bool `json:"exclusive,omitempty" xml:"exclusive,omitempty"`
+	// The ID of the instance to which the consumer group belongs.
 	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Maximum received message tps
+	// The maximum TPS for consuming messages.
 	//
 	// example:
 	//
-	// 1000
+	// 2000
 	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
+	// The consumption pattern. Valid values:
+	//
+	//  - CLUSTERING: clustering consumption.
+	//
+	//  - LITE_SELECTIVE: LITE_SELECTIVE.
+	//
 	// example:
 	//
 	// LITE_SELECTIVE
 	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID of the instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The remarks on the consumer group.
+	// The remarks of the consumer group.
 	//
 	// example:
 	//
@@ -221,21 +226,17 @@ type GetConsumerGroupResponseBodyData struct {
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// The status of the consumer group.
 	//
-	// Valid values:
-	//
-	// 	- RUNNING
-	//
-	// 	- CREATING
-	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The topic name for the lite type.
+	//
 	// example:
 	//
 	// test1
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// The time when the consumer group was last updated.
+	// The time when the consumer group was last updated, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -380,35 +381,29 @@ func (s *GetConsumerGroupResponseBodyData) Validate() error {
 type GetConsumerGroupResponseBodyDataConsumeRetryPolicy struct {
 	// The dead-letter topic.
 	//
-	// If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
+	// If a consumer fails to consume a message due to an exception and the message still cannot be consumed after retries, the message is delivered to the dead-letter topic for subsequent business recovery or review. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
 	//
 	// example:
 	//
 	// DLQ_mqtest
 	DeadLetterTargetTopic *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
-	// Fixed interval retry time,Value range, unit: seconds
+	// The fixed retry interval. Unit: seconds.
 	//
-	//  - Concurrently:10-1800
+	//  - Concurrently (concurrent delivery): 10-1800
 	//
-	//  - Orderly:1-600
+	//  - Orderly (ordered delivery): 1-600
 	//
 	// example:
 	//
 	// 20
 	FixedIntervalRetryTime *int32 `json:"fixedIntervalRetryTime,omitempty" xml:"fixedIntervalRetryTime,omitempty"`
-	// The maximum number of retries.
+	// The maximum number of retry attempts.
 	//
 	// example:
 	//
 	// 16
 	MaxRetryTimes *int32 `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
-	// The retry policy.
-	//
-	// Valid values:
-	//
-	// 	- FixedRetryPolicy: fixed-interval retry
-	//
-	// 	- DefaultRetryPolicy: exponential backoff retry
+	// The retry policy type.
 	//
 	// example:
 	//

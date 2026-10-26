@@ -34,7 +34,7 @@ type ListTracesResponseBody struct {
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned result.
+	// The returned results.
 	Data *ListTracesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The dynamic error code.
 	//
@@ -164,21 +164,21 @@ func (s *ListTracesResponseBody) Validate() error {
 }
 
 type ListTracesResponseBodyData struct {
-	// Trace list.
+	// The paginated data.
 	List []*ListTracesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ func (s *ListTracesResponseBodyData) Validate() error {
 }
 
 type ListTracesResponseBodyDataList struct {
-	// Message born time.
+	// The time when the message was generated, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -256,15 +256,15 @@ type ListTracesResponseBodyDataList struct {
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Message id.
+	// The message ID.
 	//
 	// example:
 	//
 	// 7F00000100207A4F0F294A938F7807AE
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// Message keys.
+	// The message key.
 	MessageKeys []*string `json:"messageKeys,omitempty" xml:"messageKeys,omitempty" type:"Repeated"`
-	// Message tag.
+	// The list of tags.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ type ListTracesResponseBodyDataList struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The name of the topic.
+	// The topic name.
 	//
 	// example:
 	//

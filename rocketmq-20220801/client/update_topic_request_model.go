@@ -18,17 +18,19 @@ type iUpdateTopicRequest interface {
 }
 
 type UpdateTopicRequest struct {
+	// The expiration time of a lite topic, in minutes. Valid values: 15 to 720. The default value is -1, which indicates that the topic never expires.
+	//
 	// example:
 	//
 	// 20
 	LiteTopicExpiration *int64 `json:"liteTopicExpiration,omitempty" xml:"liteTopicExpiration,omitempty"`
-	// Maximum send message tps
+	// The maximum number of transactions per second (TPS) for sending messages.
 	//
 	// example:
 	//
-	// 500
+	// 1000
 	MaxSendTps *int64 `json:"maxSendTps,omitempty" xml:"maxSendTps,omitempty"`
-	// Updated remarks for the topic.
+	// The updated remarks for the topic.
 	//
 	// example:
 	//

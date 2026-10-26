@@ -14,6 +14,8 @@ type iFinishMigrationStageRequest interface {
 }
 
 type FinishMigrationStageRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// rmq-cn-pe334f1nx04

@@ -16,7 +16,17 @@ type iGetTraceRequest interface {
 }
 
 type GetTraceRequest struct {
-	EndTime   *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The end time, in YYYY-MM-DD HH:mm:ss format.
+	//
+	// example:
+	//
+	// 2024-09-09 09:00:00
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The start time, in YYYY-MM-DD HH:mm:ss format.
+	//
+	// example:
+	//
+	// 2023-05-10 10:42:11
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 

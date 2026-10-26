@@ -28,34 +28,50 @@ type iFinishMigrationStageResponseBody interface {
 }
 
 type FinishMigrationStageResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidConsumerGroupId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned result.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter instanceId is mandatory for this action .
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 16425867-C948-5A0C-9A24-5259727BE727
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

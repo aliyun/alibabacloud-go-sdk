@@ -28,49 +28,49 @@ type iUpdateTopicResponseBody interface {
 }
 
 type UpdateTopicResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return result.
+	// The returned result.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// Dynamic error code
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// TopicName
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// 动态错误信息
+	// The dynamic error message.
 	//
 	// example:
 	//
 	// topicName
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The topic cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
+	// The ID of the request. This ID is unique to each request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Whether the execution result is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

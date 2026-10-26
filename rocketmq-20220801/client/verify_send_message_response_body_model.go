@@ -34,7 +34,7 @@ type VerifySendMessageResponseBody struct {
 	//
 	// InvalidConsumerGroupId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The data returned by the operation. If the verification succeeds, this field contains the message ID.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type VerifySendMessageResponseBody struct {
 	//
 	// 3BD2C19B-66DE-59C7-B2F6-FD1BE21DC8C1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates if the request was successful.
 	//
 	// example:
 	//

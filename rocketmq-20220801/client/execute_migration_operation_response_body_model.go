@@ -28,31 +28,46 @@ type iExecuteMigrationOperationResponseBody interface {
 }
 
 type ExecuteMigrationOperationResponseBody struct {
+  // The error code.
+  // 
   // example:
   // 
   // Topic.NotFound
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
+  // The return result.
   Data *ExecuteMigrationOperationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The dynamic error code.
+  // 
   // example:
   // 
   // InstanceId
   DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+  // The dynamic error message.
+  // 
   // example:
   // 
   // instanceId
   DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // The topic already exists.
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // 814BCD66-2D76-5080-AAD2-E50E5BDB0995
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
@@ -149,40 +164,60 @@ func (s *ExecuteMigrationOperationResponseBody) Validate() error {
 }
 
 type ExecuteMigrationOperationResponseBodyData struct {
+  // The operation business status.
+  // 
   // example:
   // 
   // MIGRATE_WAIT
   BusinessStatus *string `json:"businessStatus,omitempty" xml:"businessStatus,omitempty"`
+  // The creation time, in YYYY-MM-DD HH:mm:ss format.
+  // 
   // example:
   // 
   // 2022-08-01 20:05:50
   CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+  // The migration ID.
+  // 
   // example:
   // 
   // 6
   MigrationId *int64 `json:"migrationId,omitempty" xml:"migrationId,omitempty"`
+  // The migration operation ID.
+  // 
   // example:
   // 
   // 110
   OperationId *int64 `json:"operationId,omitempty" xml:"operationId,omitempty"`
+  // The primary key of the operation object.
+  // 
   // example:
   // 
-  // group01
+  // normal-topic-1
   OperationKey *string `json:"operationKey,omitempty" xml:"operationKey,omitempty"`
+  // The operation parameter.
   OperationParam *ExecuteMigrationOperationResponseBodyDataOperationParam `json:"operationParam,omitempty" xml:"operationParam,omitempty" type:"Struct"`
+  // The operation result.
   OperationResult *ExecuteMigrationOperationResponseBodyDataOperationResult `json:"operationResult,omitempty" xml:"operationResult,omitempty" type:"Struct"`
+  // The operation status.
+  // 
   // example:
   // 
-  // DONE
+  // DOING
   OperationStatus *string `json:"operationStatus,omitempty" xml:"operationStatus,omitempty"`
+  // The operation type.
+  // 
   // example:
   // 
-  // CONNECT_NETWORK
+  // MIGRATE_MESSAGE
   OperationType *string `json:"operationType,omitempty" xml:"operationType,omitempty"`
+  // The migration stage type.
+  // 
   // example:
   // 
-  // MIGRATE_METADATA
+  // MIGRATE_MESSAGE
   StageType *string `json:"stageType,omitempty" xml:"stageType,omitempty"`
+  // The modification time, in YYYY-MM-DD HH:mm:ss format.
+  // 
   // example:
   // 
   // 2022-08-01 20:05:50
@@ -311,9 +346,11 @@ func (s *ExecuteMigrationOperationResponseBodyData) Validate() error {
 }
 
 type ExecuteMigrationOperationResponseBodyDataOperationParam struct {
+  // The parameter information.
+  // 
   // example:
   // 
-  // {}
+  // {"action":"MIGRATE_FORWARD","targetStage":"MIGRATE_FINISH"}
   ParamData interface{} `json:"paramData,omitempty" xml:"paramData,omitempty"`
 }
 
@@ -339,9 +376,23 @@ func (s *ExecuteMigrationOperationResponseBodyDataOperationParam) Validate() err
 }
 
 type ExecuteMigrationOperationResponseBodyDataOperationResult struct {
+  // The operation result.
+  // 
   // example:
   // 
-  // {}
+  // {
+  // 
+  //     "checkStatus": "WAIT_CHECK",
+  // 
+  //     "sourceTopicStatus": "PERM_6",
+  // 
+  //     "targetTopicStatus": "PERM_4",
+  // 
+  //     "checkResult": {},
+  // 
+  //     "migrateStage": "DOUBLE_READ"
+  // 
+  // }
   ResultData interface{} `json:"resultData,omitempty" xml:"resultData,omitempty"`
 }
 

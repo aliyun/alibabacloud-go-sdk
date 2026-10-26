@@ -30,7 +30,7 @@ type iGetDisasterRecoveryPlanResponseBody interface {
 }
 
 type GetDisasterRecoveryPlanResponseBody struct {
-	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	// The access denied details. This field is returned only when the request is denied because the RAM user does not have the required permissions.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetDisasterRecoveryPlanResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *GetDisasterRecoveryPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The dynamic error code.
 	//
@@ -56,7 +56,7 @@ type GetDisasterRecoveryPlanResponseBody struct {
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -181,21 +181,15 @@ func (s *GetDisasterRecoveryPlanResponseBody) Validate() error {
 }
 
 type GetDisasterRecoveryPlanResponseBodyData struct {
-	// Indicates whether automatic consumer progress synchronization is enabled.
+	// Specifies whether automatic consumer automatic synchronization is enabled.
 	//
-	// >  This parameter takes effect only when `syncCheckpointEnabled` is set to true.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// > This field is valid only when consumer automatic synchronization is enabled, that is, when the `syncCheckpointEnabled` field is set to true.
 	//
 	// example:
 	//
 	// true
 	AutoSyncCheckpoint *bool `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
-	// The time when the query task was created.
+	// The creation time, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -203,61 +197,55 @@ type GetDisasterRecoveryPlanResponseBodyData struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The extended information.
 	ExtInfo map[string]*string `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	// The instances involved in the Global Replicator task.
+	// The instances participating in the backup plan.
 	Instances []*GetDisasterRecoveryPlanResponseBodyDataInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// The description of the Global Replicator task.
+	// The plan description.
 	//
 	// example:
 	//
 	// xxxx
 	PlanDesc *string `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
-	// The ID of the Global Replicator task.
+	// The plan ID.
 	//
 	// example:
 	//
 	// 1300000016
 	PlanId *int64 `json:"planId,omitempty" xml:"planId,omitempty"`
-	// The name of the Global Replicator task.
+	// The plan name.
 	//
 	// example:
 	//
 	// xxx
 	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
-	// The status of the Global Replicator task. Valid values:
+	// The plan status. Valid values:
 	//
-	// 	- CREATED
+	//   - CREATED: created.
 	//
-	// 	- RUNNING
+	//   - RUNNING: running.
 	//
-	// 	- DELETED
+	//   - DELETED: deleted.
 	//
 	// example:
 	//
 	// RUNNING
 	PlanStatus *string `json:"planStatus,omitempty" xml:"planStatus,omitempty"`
-	// The type of the Global Replicator task. Valid values:
+	// The plan type. Valid values:
 	//
-	// 	- ACTIVE_PASSIVE: one-way backup
+	//   - ACTIVE_PASSIVE: one-way backup.
 	//
-	// 	- ACTIVE_ACTIVE: two-way backup
+	//   - ACTIVE_ACTIVE: two-way backup.
 	//
 	// example:
 	//
 	// ACTIVE_PASSIVE
 	PlanType *string `json:"planType,omitempty" xml:"planType,omitempty"`
-	// Indicates whether consumer progress synchronization is enabled.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Specifies whether consumer offset synchronization is enabled.
 	//
 	// example:
 	//
 	// true
 	SyncCheckpointEnabled *bool `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
-	// The time when the query task was last modified.
+	// The modification time, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -386,19 +374,19 @@ func (s *GetDisasterRecoveryPlanResponseBodyData) Validate() error {
 }
 
 type GetDisasterRecoveryPlanResponseBodyDataInstances struct {
-	// The authentication type.
+	// The authentication method.
 	//
 	// example:
 	//
 	// ACL_AUTH
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
-	// The consumer Group ID.
+	// The consumer group ID used to pull messages from the source instance.
 	//
 	// example:
 	//
 	// GID_DS_XXX_YYY
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The endpoint.
+	// The endpoint address.
 	//
 	// example:
 	//
@@ -422,7 +410,7 @@ type GetDisasterRecoveryPlanResponseBodyDataInstances struct {
 	//
 	// ALIYUN_ROCKETMQ
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The message attribute.
+	// The message filtering property.
 	MessageProperty *GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty `json:"messageProperty,omitempty" xml:"messageProperty,omitempty" type:"Struct"`
 	// The network type.
 	//
@@ -430,13 +418,13 @@ type GetDisasterRecoveryPlanResponseBodyDataInstances struct {
 	//
 	// TCP_INTERNET
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The password used for authentication.
+	// The authentication password.
 	//
 	// example:
 	//
 	// xxx
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region where the instance resides.
 	//
 	// example:
 	//
@@ -448,7 +436,7 @@ type GetDisasterRecoveryPlanResponseBodyDataInstances struct {
 	//
 	// sg-bp17hpmgz9******
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	// The username used for authentication.
+	// The authentication username.
 	//
 	// example:
 	//
@@ -460,7 +448,7 @@ type GetDisasterRecoveryPlanResponseBodyDataInstances struct {
 	//
 	// vsw-uf6gwtbn6etadpv******
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// VPC ID
 	//
 	// example:
 	//
@@ -612,13 +600,13 @@ func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) Validate() error {
 }
 
 type GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty struct {
-	// The attribute key.
+	// The property key.
 	//
 	// example:
 	//
 	// xxx
 	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
-	// The attribute value.
+	// The property value.
 	//
 	// example:
 	//

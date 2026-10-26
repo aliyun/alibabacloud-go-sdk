@@ -18,7 +18,7 @@ type iCreateInstanceAccountRequest interface {
 }
 
 type CreateInstanceAccountRequest struct {
-	// The password of the account.
+	// The account password.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type CreateInstanceAccountRequest struct {
 	//
 	// xxx
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The remark.
+	//
 	// example:
 	//
-	// test
+	// This is the remark for test.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The username of the account.
+	// The account name.
 	//
 	// This parameter is required.
 	//

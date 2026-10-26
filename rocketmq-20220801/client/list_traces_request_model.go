@@ -28,7 +28,7 @@ type iListTracesRequest interface {
 }
 
 type ListTracesRequest struct {
-	// The end of the time range to query.
+	// The end time in YYYY-MM-DD HH:mm:ss format.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,15 @@ type ListTracesRequest struct {
 	//
 	// 2023-05-19 10:10:09
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The lightweight topic name.
+	//
 	// example:
 	//
 	// abc
 	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
 	// The message ID.
 	//
-	// This parameter is required if you set queryType to MESSAGE_ID.
+	// Required if queryType is set to MESSAGE_ID.
 	//
 	// example:
 	//
@@ -50,13 +52,13 @@ type ListTracesRequest struct {
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
 	// The message key.
 	//
-	// This parameter is required if you set queryType to MESSAGE_ID.
+	// Required if queryType is set to MESSAGE_KEY.
 	//
 	// example:
 	//
 	// order_ceating
 	MessageKey *string `json:"messageKey,omitempty" xml:"messageKey,omitempty"`
-	// The page number.
+	// The page number of the returned results.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +66,7 @@ type ListTracesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of results to display per page.
 	//
 	// This parameter is required.
 	//
@@ -74,21 +76,13 @@ type ListTracesRequest struct {
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The query type.
 	//
-	// Valid values:
-	//
-	// 	- MESSAGE_ID
-	//
-	// 	- MESSAGE_KEY
-	//
-	// 	- TOPIC
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MESSAGE_ID
 	QueryType *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
-	// The beginning of the time range to query.
+	// The start time in YYYY-MM-DD HH:mm:ss format.
 	//
 	// This parameter is required.
 	//

@@ -28,45 +28,45 @@ type iListTopicsResponseBody interface {
 }
 
 type ListTopicsResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The return result.
 	Data *ListTopicsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// TopicName
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// Dynamic error message.
+	// The dynamic error message.
 	//
 	// example:
 	//
 	// topicName
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The topic cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
+	// The request ID. Each request has a unique ID that can be used to troubleshoot and locate issues.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the execution was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
@@ -164,21 +164,21 @@ func (s *ListTopicsResponseBody) Validate() error {
 }
 
 type ListTopicsResponseBodyData struct {
-	// The topics.
+	// The paged data.
 	List []*ListTopicsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 3
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Total number of results returned.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -244,75 +244,61 @@ func (s *ListTopicsResponseBodyData) Validate() error {
 }
 
 type ListTopicsResponseBodyDataList struct {
-	// Creation time.
+	// The creation time in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The expiration time of a lite topic, in minutes.
+	//
 	// example:
 	//
 	// 20
 	LiteTopicExpiration *int64 `json:"liteTopicExpiration,omitempty" xml:"liteTopicExpiration,omitempty"`
-	// The maximum TPS for message sending.
+	// The maximum TPS for sending messages.
 	//
 	// example:
 	//
 	// 1000
 	MaxSendTps *int64 `json:"maxSendTps,omitempty" xml:"maxSendTps,omitempty"`
-	// The type of messages in the topic.
-	//
-	// Valid values:
-	//
-	// 	- TRANSACTION: transactional messages
-	//
-	// 	- FIFO: ordered messages
-	//
-	// 	- DELAY: scheduled or delayed messages
-	//
-	// 	- NORMAL: normal messages
+	// The message type of the topic.
 	//
 	// example:
 	//
 	// NORMAL
 	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	// The region ID to which the instance belongs.
+	// The ID of the region to which the instance belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Remark information of the topic.
+	// The remarks for the topic.
 	//
 	// example:
 	//
 	// This is the remark for test.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The topic status.
-	//
-	// Valid values:
-	//
-	// 	- RUNNING
-	//
-	// 	- CREATING
+	// The status of the topic.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Topic name.
+	// The topic name.
 	//
 	// example:
 	//
 	// topic_test
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// Last update time of the topic.
+	// The last modification time of the topic in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

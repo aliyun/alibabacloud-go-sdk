@@ -14,7 +14,7 @@ type iCreateInstanceIpWhitelistRequest interface {
 }
 
 type CreateInstanceIpWhitelistRequest struct {
-	// The IP address whitelists.
+	// The list of IP address whitelists.
 	//
 	// This parameter is required.
 	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`

@@ -14,7 +14,7 @@ type iListConsumerGroupSubscriptionsRequest interface {
 }
 
 type ListConsumerGroupSubscriptionsRequest struct {
-	// The topic name. If you do not specify this parameter, all subscriptions of the consumer group are queried.
+	// The name of the topic. If you do not specify this parameter, all subscription relationships are queried.
 	//
 	// example:
 	//

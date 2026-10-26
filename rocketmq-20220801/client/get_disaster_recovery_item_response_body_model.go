@@ -30,7 +30,7 @@ type iGetDisasterRecoveryItemResponseBody interface {
 }
 
 type GetDisasterRecoveryItemResponseBody struct {
-	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	// The details of the access denial. This parameter is returned only when the request is denied because the RAM user does not have the required permissions.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetDisasterRecoveryItemResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *GetDisasterRecoveryItemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The dynamic error code.
 	//
@@ -68,7 +68,7 @@ type GetDisasterRecoveryItemResponseBody struct {
 	//
 	// xxx
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -181,35 +181,45 @@ func (s *GetDisasterRecoveryItemResponseBody) Validate() error {
 }
 
 type GetDisasterRecoveryItemResponseBodyData struct {
-	// The time when the topic mapping task was created.
+	// The creation time, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-06-24 02:57:31
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Additional Information
+	// The extended information.
 	ExtInfo map[string]*string `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	// The ID of the topic mapping
+	// The ID of the backup plan.
 	//
 	// example:
 	//
 	// 100070284
 	ItemId *int64 `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// The topic mapping task status.
+	// The status of the backup mapping. Valid values:
+	//
+	// - CREATING: Being created.
+	//
+	// - CHANGING: Being modified.
+	//
+	// - RUNNING: Running.
+	//
+	// - MANUAL_STOPPED: Manually stopped.
+	//
+	// - OVERDUE_STOPPED: Stopped due to overdue payment.
 	//
 	// example:
 	//
 	// RUNNING
 	ItemStatus *string `json:"itemStatus,omitempty" xml:"itemStatus,omitempty"`
-	// The ID of the global message backup plan.
+	// The mapping ID.
 	//
 	// example:
 	//
 	// 1300000016
 	PlanId *int64 `json:"planId,omitempty" xml:"planId,omitempty"`
-	// Topics included in the backup mapping
+	// The topics included in the backup mapping.
 	Topics []*GetDisasterRecoveryItemResponseBodyDataTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
-	// The time when the topic mapping task was last updated.
+	// The update time, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -310,11 +320,13 @@ type GetDisasterRecoveryItemResponseBodyDataTopics struct {
 	//
 	// xxx_reserve_group
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The order in which messages are delivered to the target instance. The parameter values ​​are as follows:
+	// The ordering of message delivery to the target instance.
 	//
-	//   - Concurrently: concurrent delivery
+	// The parameter has the following valid values:
 	//
-	//   - Orderly: sequential delivery
+	// - Concurrently: Concurrent delivery.
+	//
+	// - Orderly: Ordered delivery.
 	//
 	// example:
 	//
@@ -326,11 +338,7 @@ type GetDisasterRecoveryItemResponseBodyDataTopics struct {
 	//
 	// rmq-cn-wwo3xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Instance type
-	//
-	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
-	//
-	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	// The instance type.
 	//
 	// example:
 	//

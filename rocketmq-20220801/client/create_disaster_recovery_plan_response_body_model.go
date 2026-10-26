@@ -30,55 +30,55 @@ type iCreateDisasterRecoveryPlanResponseBody interface {
 }
 
 type CreateDisasterRecoveryPlanResponseBody struct {
-	// Access denied details, provided only in scenarios where access is denied due to lack of RAM permissions
+	// The details of the access denial. This parameter is returned only when the user is denied access due to lack of RAM permissions.
 	//
 	// example:
 	//
 	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result, which is the backup plan ID
+	// The returned result, which is the ID of the backup plan.
 	//
 	// example:
 	//
 	// 1234
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
-	// Dynamic error code
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// Dynamic error message
+	// The dynamic error message.
 	//
 	// example:
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// xxx
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C7E8AE3A-219B-52EE-BE32-4036F5xxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the operation was successful
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

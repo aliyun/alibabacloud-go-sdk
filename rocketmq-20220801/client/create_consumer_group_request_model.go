@@ -26,17 +26,17 @@ type iCreateConsumerGroupRequest interface {
 }
 
 type CreateConsumerGroupRequest struct {
-	// The consumption retry policy of the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
+	// The consumption retry policy of the consumer group to be created. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
 	//
 	// This parameter is required.
 	ConsumeRetryPolicy *CreateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
-	// The message delivery method of the consumer group.
+	// The delivery order type of the consumer group to be created.
 	//
-	// Valid values:
+	// Valid parameter values:
 	//
-	// 	- Concurrently: concurrent delivery
+	// - Concurrently: concurrent delivery
 	//
-	// 	- Orderly: ordered delivery
+	// - Orderly: ordered delivery
 	//
 	// This parameter is required.
 	//
@@ -44,26 +44,35 @@ type CreateConsumerGroupRequest struct {
 	//
 	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	Exclusive         *bool   `json:"exclusive,omitempty" xml:"exclusive,omitempty"`
-	// The maximum number of messages that can be processed by consumers per second.
+	// Specifies whether to enable exclusive subscription, which means a LiteTopic can only be subscribed to by one consumer. Set to true to enable or false to shutdown.
+	Exclusive *bool `json:"exclusive,omitempty" xml:"exclusive,omitempty"`
+	// The maximum TPS for consuming messages.
 	//
 	// example:
 	//
-	// 300
+	// 1000
 	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
+	// The subscribe pattern for consumers:
+	//
+	// - CLUSTERING: clustering consumption pattern. All consumers in the ConsumerGroup share the same subscription.
+	//
+	// - LITE_SELECTIVE: lightweight consumption pattern. Consumers in the ConsumerGroup can have different subscriptions.
+	//
 	// example:
 	//
-	// CLUSTERING
+	// LITE_SELECTIVE
 	MessageModel *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
-	// The description of the consumer group.
+	// The remarks for the consumer group to be created.
 	//
 	// example:
 	//
 	// This is the remark for test.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The name of the lite-type topic to subscribe to when using the LITE_SELECTIVE consumption pattern.
+	//
 	// example:
 	//
-	// test1
+	// liteTopicTest
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 }
 
@@ -150,35 +159,37 @@ func (s *CreateConsumerGroupRequest) Validate() error {
 type CreateConsumerGroupRequestConsumeRetryPolicy struct {
 	// The dead-letter topic.
 	//
-	// If a message still fails to be consumed after the maximum number of retries specified in the consumption retry policy is reached, the message is delivered to the dead-letter topic for subsequent business recovery or backtracking. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
+	// If a consumer fails to consume a message and the message still failed after retries, the message is delivered to the dead-letter topic for subsequent business recovery or backtracking. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
 	//
 	// example:
 	//
 	// DLQ_mqtest
 	DeadLetterTargetTopic *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
-	// The fixed interval. Unit: seconds. This parameter takes effect only if you set retryPolicy to FixedRetryPolicy. Valid values:
+	// The fixed retry interval, in seconds. This parameter takes effect when the retry policy is set to FixedRetryPolicy.
 	//
-	// 	- Concurrent delivery: 10 to 1800
+	// Valid values:
 	//
-	// 	- Ordered delivery: 1 to 600
+	// - Concurrent delivery: 10 to 1800
+	//
+	// - Ordered delivery: 1 to 600
 	//
 	// example:
 	//
 	// 10
 	FixedIntervalRetryTime *int32 `json:"fixedIntervalRetryTime,omitempty" xml:"fixedIntervalRetryTime,omitempty"`
-	// The maximum number of retries.
+	// The maximum number of retry attempts.
 	//
 	// example:
 	//
 	// 16
 	MaxRetryTimes *int32 `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
-	// The retry policy. For more information, see [Message retry](https://help.aliyun.com/document_detail/440356.html).
+	// The retry policy type. For more information, see [Message retry](https://help.aliyun.com/document_detail/440356.html).
 	//
-	// Valid values:
+	// Valid parameter values:
 	//
-	// 	- FixedRetryPolicy: fixed-interval retry. This value is valid only if you set deliveryOrderType to Orderly.
+	// - FixedRetryPolicy: fixed-interval retry, supported only for ordered delivery
 	//
-	// 	- DefaultRetryPolicy: exponential backoff retry. This value is valid only if you set deliveryOrderType to Concurrently.
+	// - DefaultRetryPolicy: progressive backoff retry, supported only for concurrent delivery
 	//
 	// This parameter is required.
 	//

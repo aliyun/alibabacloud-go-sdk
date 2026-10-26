@@ -28,13 +28,13 @@ type iListAvailableZonesResponseBody interface {
 }
 
 type ListAvailableZonesResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code.
 	//
 	// example:
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result data that is returned.
+	// The response data.
 	Data []*ListAvailableZonesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The dynamic error code.
 	//
@@ -60,13 +60,13 @@ type ListAvailableZonesResponseBody struct {
 	//
 	// Parameter instanceId is mandatory for this action .
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -168,25 +168,25 @@ func (s *ListAvailableZonesResponseBody) Validate() error {
 }
 
 type ListAvailableZonesResponseBodyData struct {
-	// The time when the zone was created.
+	// The creation time, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The time when the zone was last updated.
+	// The update time, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the current zone.
+	// The zone ID.
 	//
 	// example:
 	//
 	// cn-qingdao-b
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
-	// The name of the current zone.
+	// The zone name.
 	//
 	// example:
 	//

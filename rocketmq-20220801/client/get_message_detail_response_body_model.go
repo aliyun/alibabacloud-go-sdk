@@ -34,7 +34,7 @@ type GetMessageDetailResponseBody struct {
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *GetMessageDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The dynamic error code.
 	//
@@ -176,13 +176,13 @@ type GetMessageDetailResponseBodyData struct {
 	//
 	// 123
 	BodySize *int32 `json:"bodySize,omitempty" xml:"bodySize,omitempty"`
-	// The client on which the message was produced.
+	// The host from which the message originated.
 	//
 	// example:
 	//
 	// xxx.xx.xxx.xx
 	BornHost *string `json:"bornHost,omitempty" xml:"bornHost,omitempty"`
-	// The time when the message was generated.
+	// The time when the message was generated, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -194,11 +194,13 @@ type GetMessageDetailResponseBodyData struct {
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The lite topic name.
+	//
 	// example:
 	//
 	// abc
 	LiteTopicName *string `json:"liteTopicName,omitempty" xml:"liteTopicName,omitempty"`
-	// The sharding key. This parameter is returned only for ordered messages.
+	// The former sharding key. This field applies only to ordered messages.
 	//
 	// example:
 	//
@@ -210,9 +212,9 @@ type GetMessageDetailResponseBodyData struct {
 	//
 	// 01BE87E485F0C7808C04543CAF00000001
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// The message keys.
+	// The message key.
 	MessageKeys []*string `json:"messageKeys,omitempty" xml:"messageKeys,omitempty" type:"Repeated"`
-	// The tags.
+	// The tag list.
 	//
 	// example:
 	//
@@ -224,25 +226,31 @@ type GetMessageDetailResponseBodyData struct {
 	//
 	// NORMAL
 	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
+	// The priority.
+	//
+	// example:
+	//
+	// 7
+	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
 	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The broker on which the message was stored.
+	// The log broker host where the message is stored.
 	//
 	// example:
 	//
 	// xxx.xx.xxx.xx
 	StoreHost *string `json:"storeHost,omitempty" xml:"storeHost,omitempty"`
-	// The time when the message was stored.
+	// The time when the message was stored in the log broker, in YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-03-22 12:17:08
 	StoreTime *string `json:"storeTime,omitempty" xml:"storeTime,omitempty"`
-	// The default system attributes.
+	// The default system properties.
 	SystemProperties map[string]*string `json:"systemProperties,omitempty" xml:"systemProperties,omitempty"`
 	// The topic name.
 	//
@@ -250,7 +258,7 @@ type GetMessageDetailResponseBodyData struct {
 	//
 	// topic_test
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// The user attributes.
+	// The user properties.
 	UserProperties map[string]*string `json:"userProperties,omitempty" xml:"userProperties,omitempty"`
 }
 
@@ -304,6 +312,10 @@ func (s *GetMessageDetailResponseBodyData) GetMessageTag() *string {
 
 func (s *GetMessageDetailResponseBodyData) GetMessageType() *string {
 	return s.MessageType
+}
+
+func (s *GetMessageDetailResponseBodyData) GetPriority() *int32 {
+	return s.Priority
 }
 
 func (s *GetMessageDetailResponseBodyData) GetRegionId() *string {
@@ -382,6 +394,11 @@ func (s *GetMessageDetailResponseBodyData) SetMessageTag(v string) *GetMessageDe
 
 func (s *GetMessageDetailResponseBodyData) SetMessageType(v string) *GetMessageDetailResponseBodyData {
 	s.MessageType = &v
+	return s
+}
+
+func (s *GetMessageDetailResponseBodyData) SetPriority(v int32) *GetMessageDetailResponseBodyData {
+	s.Priority = &v
 	return s
 }
 
