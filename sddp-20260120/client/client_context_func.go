@@ -553,11 +553,11 @@ func (client *Client) ListColumnsWithContext(ctx context.Context, request *ListC
 //
 // Description:
 //
-// Queries database accounts and their column encryption access permissions with paging. Use this operation to select plaintext accounts when creating rules, and to verify AuthRole, EncryptionKeyMode, and ExpireTime before and after modifying account permissions. AccountName filters by exact account name. The account identity is obtained from Items[].Id.
+// Uses paging to query database accounts and their column encryption access permissions. This operation is used to select plaintext accounts when creating rules, and to verify AuthRole, EncryptionKeyMode, and ExpireTime before and after modifying account permissions. AccountName filters accounts by exact account name, and the account ID is obtained from Items[].Id.
 //
-// The parameter examples are provided only to illustrate the format. Replace them with the region, resource identities, and configuration values obtained from your current account query.
+// The parameter examples are for format illustration only. Replace them with the region, resource IDs, and configuration values obtained from the current account when you call the operation.
 //
-// Use the endpoint of the region where the target asset resides, and set the common parameter RegionId, such as cn-zhangjiakou. The product encoding and instance identity must match the target asset.
+// Use the endpoint of the region where the target asset is located, and set the common parameter RegionId, such as cn-zhangjiakou. The product code and instance ID must match the target asset.
 //
 // @param request - ListDataAssetAccountsRequest
 //
@@ -574,6 +574,10 @@ func (client *Client) ListDataAssetAccountsWithContext(ctx context.Context, requ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
 		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.AuthDb) {
+		query["AuthDb"] = request.AuthDb
 	}
 
 	if !dara.IsNil(request.AuthRole) {

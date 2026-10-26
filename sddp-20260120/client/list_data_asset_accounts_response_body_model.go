@@ -28,21 +28,21 @@ type ListDataAssetAccountsResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of records returned by the current query.
+	// The list of records returned in the current query.
 	Items []*ListDataAssetAccountsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of records per page for the current query.
+	// The number of entries returned per page in the current query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID. You can use this ID to locate the API call.
+	// The request ID, which can be used to trace the current API call.
 	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the current query or statistical scope.
+	// The total number of entries that meet the current statistics or query conditions.
 	//
 	// example:
 	//
@@ -123,19 +123,25 @@ type ListDataAssetAccountsResponseBodyItems struct {
 	//
 	// app_reader
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The Alibaba Cloud account ID to which the asset belongs.
+	// The ID of the Alibaba Cloud account to which the asset belongs.
 	//
 	// example:
 	//
 	// 123456789012****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The authentication database of the MongoDB account. This parameter must be passed together with AccountName when modifying permissions.
+	//
+	// example:
+	//
+	// admin
+	AuthDb *string `json:"AuthDb,omitempty" xml:"AuthDb,omitempty"`
 	// The column encryption access permissions. Valid values:
 	//
-	// - fullAccess: plaintext access.
+	// - fullAccess: plaintext access
 	//
-	// - restrictedAccess: restricted access.
+	// - restrictedAccess: restricted access
 	//
-	// - noneAccess: decryption prohibited. noneAccess applies only to ApsaraDB RDS for MySQL instances whose current effective key pattern is client_key.
+	// - noneAccess: decryption prohibited. This value applies only to ApsaraDB RDS for MySQL instances whose current effective key mode is client_key.
 	//
 	// example:
 	//
@@ -143,11 +149,11 @@ type ListDataAssetAccountsResponseBodyItems struct {
 	AuthRole *string `json:"AuthRole,omitempty" xml:"AuthRole,omitempty"`
 	// The current effective column encryption key mode. Valid values:
 	//
-	// - client_key: local master key.
+	// - client_key: local key
 	//
-	// - kms_key: KMS key.
+	// - kms_key: KMS key
 	//
-	// This field is not returned if no column encryption configuration is in effect.
+	// This parameter is not returned if no effective configuration exists.
 	//
 	// example:
 	//
@@ -159,37 +165,31 @@ type ListDataAssetAccountsResponseBodyItems struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The expiration time of the plaintext access permissions. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. This field is not returned if no expiration time is set.
+	// The expiration time of the plaintext access permissions. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. This parameter is not returned if no validity period is set.
 	//
 	// example:
 	//
 	// 2145953410000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The database account identifier. This value is used as AccountId when configuring permissions.
+	// The database account ID. This ID is used as AccountId when configuring permissions.
 	//
 	// example:
 	//
 	// 1001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The database instance identity.
+	// The database instance ID.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The cloud product code.
+	// The cloud service code.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The cloud product type identifier. Valid values:
-	//
-	// - 5: RDS.
-	//
-	// - 8: POLARDB.
-	//
-	// - 27: PolarDBX2.
+	// The cloud service type ID. Valid values: 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
 	//
 	// example:
 	//
@@ -205,7 +205,7 @@ type ListDataAssetAccountsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// China North 3 (Zhangjiakou)
+	// China (Zhangjiakou)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 
@@ -223,6 +223,10 @@ func (s *ListDataAssetAccountsResponseBodyItems) GetAccountName() *string {
 
 func (s *ListDataAssetAccountsResponseBodyItems) GetAliUid() *int64 {
 	return s.AliUid
+}
+
+func (s *ListDataAssetAccountsResponseBodyItems) GetAuthDb() *string {
+	return s.AuthDb
 }
 
 func (s *ListDataAssetAccountsResponseBodyItems) GetAuthRole() *string {
@@ -272,6 +276,11 @@ func (s *ListDataAssetAccountsResponseBodyItems) SetAccountName(v string) *ListD
 
 func (s *ListDataAssetAccountsResponseBodyItems) SetAliUid(v int64) *ListDataAssetAccountsResponseBodyItems {
 	s.AliUid = &v
+	return s
+}
+
+func (s *ListDataAssetAccountsResponseBodyItems) SetAuthDb(v string) *ListDataAssetAccountsResponseBodyItems {
+	s.AuthDb = &v
 	return s
 }
 
