@@ -18,14 +18,20 @@ type iDeleteQuotaResponseBody interface {
 }
 
 type DeleteQuotaResponseBody struct {
+	// The response code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message. A value of success indicates a successful request.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6

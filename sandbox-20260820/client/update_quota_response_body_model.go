@@ -20,15 +20,22 @@ type iUpdateQuotaResponseBody interface {
 }
 
 type UpdateQuotaResponseBody struct {
+	// The response code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message. The value is success if the request is successful.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	Quota   *Quota  `json:"quota,omitempty" xml:"quota,omitempty"`
+	// The quota configuration information.
+	Quota *Quota `json:"quota,omitempty" xml:"quota,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2BCFAE0A-9FA9-5F72-8E8B-724632BC19A9

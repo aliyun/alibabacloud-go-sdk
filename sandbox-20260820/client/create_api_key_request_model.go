@@ -14,6 +14,7 @@ type iCreateApiKeyRequest interface {
 }
 
 type CreateApiKeyRequest struct {
+	// The request parameters for creating an API key.
 	Body *CreateApiKeyInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

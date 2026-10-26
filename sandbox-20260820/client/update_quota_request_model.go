@@ -14,6 +14,7 @@ type iUpdateQuotaRequest interface {
 }
 
 type UpdateQuotaRequest struct {
+	// The request parameters for updating the quota configuration.
 	Body *Quota `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -16,7 +16,10 @@ type iUpdateVolumeRequest interface {
 }
 
 type UpdateVolumeRequest struct {
+	// The request parameters for updating the storage volume.
 	Body *UpdateVolumeInput `json:"body,omitempty" xml:"body,omitempty"`
+	// The ID of the team to which the storage volume belongs.
+	//
 	// example:
 	//
 	// 9f5a1fe9-****

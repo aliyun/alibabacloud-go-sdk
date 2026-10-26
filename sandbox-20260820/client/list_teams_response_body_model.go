@@ -26,27 +26,40 @@ type iListTeamsResponseBody interface {
 }
 
 type ListTeamsResponseBody struct {
+	// The response code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message. The value is success if the request is successful.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The page number of the current query.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page for the current query.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
-	RequestId *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Teams     []*E2BTeam `json:"teams" xml:"teams" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of teams.
+	Teams []*E2BTeam `json:"teams" xml:"teams" type:"Repeated"`
+	// The total number of teams that meet the query conditions.
+	//
 	// example:
 	//
 	// 65

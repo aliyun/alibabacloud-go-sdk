@@ -28,7 +28,7 @@ type PublicUpdateTemplateCopyAction struct {
 	//
 	// cri-abc123
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// Indicates whether image replication is enabled.
+	// Specifies whether image replication is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The destination image address for replication.
 	//
@@ -38,7 +38,7 @@ type PublicUpdateTemplateCopyAction struct {
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
 	// The image repository configuration.
 	RegistryConfig *PublicUpdateTemplateRegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
-	// The type of the destination repository.
+	// The destination repository type.
 	//
 	// example:
 	//

@@ -18,14 +18,20 @@ type iDeleteTeamResponseBody interface {
 }
 
 type DeleteTeamResponseBody struct {
+	// The response code. The value is 200 if the request is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message. The value is success if the request is successful.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C

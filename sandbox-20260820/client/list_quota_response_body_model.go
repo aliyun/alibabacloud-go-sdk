@@ -24,23 +24,34 @@ type iListQuotaResponseBody interface {
 }
 
 type ListQuotaResponseBody struct {
+	// The response code. The value is 200 for a successful request.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The value of maxResults specified in the request. This field is returned only if a positive integer is specified for maxResults in the request.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message. The value is success for a successful request.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token for the next page, which can be used for subsequent queries.
+	//
 	// example:
 	//
 	// qxGrXje86XMrYQ51aJMy
-	NextToken *string  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Quotas    []*Quota `json:"quotas" xml:"quotas" type:"Repeated"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The list of quota configurations.
+	Quotas []*Quota `json:"quotas" xml:"quotas" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C

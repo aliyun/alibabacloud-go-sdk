@@ -24,26 +24,37 @@ type iListTemplatesResponseBody interface {
 }
 
 type ListTemplatesResponseBody struct {
+	// The error code. The value 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The maximum number of entries per page returned in the current response.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token for the next page. This parameter is empty if no more results are available.
+	//
 	// example:
 	//
 	// cae5f900-8b1d-4c0e-9c2a-1a2b3c4d5e6f
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6
-	RequestId *string           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of template objects.
 	Templates []*PublicTemplate `json:"templates" xml:"templates" type:"Repeated"`
 }
 

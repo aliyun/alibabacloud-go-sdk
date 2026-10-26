@@ -25,16 +25,18 @@ type iPublicUpdateTemplateSandboxConfig interface {
 	GetRegistryType() *string
 	SetStartCommand(v string) *PublicUpdateTemplateSandboxConfig
 	GetStartCommand() *string
+	SetSteps(v []*PublicUpdateTemplateStep) *PublicUpdateTemplateSandboxConfig
+	GetSteps() []*PublicUpdateTemplateStep
 }
 
 type PublicUpdateTemplateSandboxConfig struct {
-	// The ID of the Container Registry Enterprise instance.
+	// The ID of the ACR Enterprise instance.
 	//
 	// example:
 	//
 	// cri-abc123
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The sandbox generation. A value of 1 indicates rund, and a value of 2 indicates micro.
+	// The sandbox generation. Valid values: 1: rund. 2: micro.
 	//
 	// example:
 	//
@@ -52,7 +54,7 @@ type PublicUpdateTemplateSandboxConfig struct {
 	//
 	// linux
 	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
-	// The readiness probe command for the micro sandbox. Only the second generation supports this parameter.
+	// The readiness probe command for the micro sandbox. This command is supported only by the second generation.
 	//
 	// example:
 	//
@@ -66,12 +68,14 @@ type PublicUpdateTemplateSandboxConfig struct {
 	//
 	// acr
 	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
-	// The startup command for the micro sandbox. Only the second generation supports this parameter.
+	// The startup command for the micro sandbox. This command is supported only by the second generation.
 	//
 	// example:
 	//
 	// /start-coroutines.sh
 	StartCommand *string `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
+	// The list of custom build steps. If you do not specify this parameter, the original steps are retained. If you pass an empty array, the steps are cleared.
+	Steps []*PublicUpdateTemplateStep `json:"steps" xml:"steps" type:"Repeated"`
 }
 
 func (s PublicUpdateTemplateSandboxConfig) String() string {
@@ -114,6 +118,10 @@ func (s *PublicUpdateTemplateSandboxConfig) GetStartCommand() *string {
 	return s.StartCommand
 }
 
+func (s *PublicUpdateTemplateSandboxConfig) GetSteps() []*PublicUpdateTemplateStep {
+	return s.Steps
+}
+
 func (s *PublicUpdateTemplateSandboxConfig) SetAcrInstanceId(v string) *PublicUpdateTemplateSandboxConfig {
 	s.AcrInstanceId = &v
 	return s
@@ -154,10 +162,24 @@ func (s *PublicUpdateTemplateSandboxConfig) SetStartCommand(v string) *PublicUpd
 	return s
 }
 
+func (s *PublicUpdateTemplateSandboxConfig) SetSteps(v []*PublicUpdateTemplateStep) *PublicUpdateTemplateSandboxConfig {
+	s.Steps = v
+	return s
+}
+
 func (s *PublicUpdateTemplateSandboxConfig) Validate() error {
 	if s.RegistryConfig != nil {
 		if err := s.RegistryConfig.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Steps != nil {
+		for _, item := range s.Steps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

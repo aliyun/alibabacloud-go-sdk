@@ -28,34 +28,50 @@ type iListVolumesRequest interface {
 }
 
 type ListVolumesRequest struct {
+	// The maximum number of entries to return per page.
+	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. Leave this parameter empty for the first request. To query the next page, set this parameter to the nextToken value returned in the previous response.
+	//
 	// example:
 	//
 	// qxGrXje86XMrYQ51aJMy
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+	// Filters by storage volume status. Valid values: CREATING (creating), AVAILABLE (available), ERROR (error), and DELETING (deleting).
+	//
 	// example:
 	//
 	// CREATING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Filters by storage class. Valid values: OSS, AGENTIC_BUCKET, AGENTIC_FS, and JUICE_FS.
+	//
 	// example:
 	//
 	// OSS
 	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	// The ID of the team to which the storage volume belongs.
+	//
 	// example:
 	//
 	// 70d1c834-0383-58d8-97ac-5336eb91abcd
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The user ID of the creator.
+	//
 	// example:
 	//
 	// 210000000
 	UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
+	// The name of the storage volume, which is unique within the team.
+	//
 	// example:
 	//
 	// workspace

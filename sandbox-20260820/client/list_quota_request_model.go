@@ -16,10 +16,14 @@ type iListQuotaRequest interface {
 }
 
 type ListQuotaRequest struct {
+	// The maximum number of records to return per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. Leave this parameter empty for the first request. To query the next page, specify the nextToken value returned in the previous response.
+	//
 	// example:
 	//
 	// Trigger_fasdatalake_deductionfee

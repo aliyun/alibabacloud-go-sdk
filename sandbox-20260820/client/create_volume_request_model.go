@@ -14,6 +14,7 @@ type iCreateVolumeRequest interface {
 }
 
 type CreateVolumeRequest struct {
+	// The request parameters for creating a storage volume.
 	Body *CreateVolumeInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

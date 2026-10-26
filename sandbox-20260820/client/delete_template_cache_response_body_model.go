@@ -18,14 +18,20 @@ type iDeleteTemplateCacheResponseBody interface {
 }
 
 type DeleteTemplateCacheResponseBody struct {
+	// The error code. 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6

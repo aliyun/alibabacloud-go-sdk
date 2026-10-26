@@ -15,6 +15,8 @@ type iPublicTemplate interface {
 	GetName() *string
 	SetResourceGroupID(v string) *PublicTemplate
 	GetResourceGroupID() *string
+	SetResourceTags(v []*PublicTemplateResourceTags) *PublicTemplate
+	GetResourceTags() []*PublicTemplateResourceTags
 	SetRuntimeConfig(v *PublicTemplateRuntimeConfig) *PublicTemplate
 	GetRuntimeConfig() *PublicTemplateRuntimeConfig
 	SetStatus(v *PublicTemplateStatus) *PublicTemplate
@@ -28,13 +30,13 @@ type iPublicTemplate interface {
 }
 
 type PublicTemplate struct {
-	// The creation time of the template, in UTC and formatted as RFC 3339.
+	// The time when the template was created, in UTC and RFC 3339 format.
 	//
 	// example:
 	//
 	// 2026-08-20T08:30:00Z
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The template name, which is unique within the same team.
+	// The name of the template, which is unique within a team.
 	//
 	// example:
 	//
@@ -46,7 +48,9 @@ type PublicTemplate struct {
 	//
 	// rg-****
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	// The runtime configuration of the template, which determines the specifications and environment of sandbox instances created from this template.
+	// The resource tags.
+	ResourceTags []*PublicTemplateResourceTags `json:"resourceTags" xml:"resourceTags" type:"Repeated"`
+	// The runtime configuration of the template, which determines the specifications and environment of the sandbox instances created from the template.
 	RuntimeConfig *PublicTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
 	// The current status of the template.
 	Status *PublicTemplateStatus `json:"status,omitempty" xml:"status,omitempty"`
@@ -56,13 +60,13 @@ type PublicTemplate struct {
 	//
 	// 5f4a2c18-****
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	// The team name.
+	// The name of the team.
 	//
 	// example:
 	//
 	// sandbox-dev
 	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
-	// The sandbox template ID.
+	// The ID of the sandbox template.
 	//
 	// example:
 	//
@@ -88,6 +92,10 @@ func (s *PublicTemplate) GetName() *string {
 
 func (s *PublicTemplate) GetResourceGroupID() *string {
 	return s.ResourceGroupID
+}
+
+func (s *PublicTemplate) GetResourceTags() []*PublicTemplateResourceTags {
+	return s.ResourceTags
 }
 
 func (s *PublicTemplate) GetRuntimeConfig() *PublicTemplateRuntimeConfig {
@@ -125,6 +133,11 @@ func (s *PublicTemplate) SetResourceGroupID(v string) *PublicTemplate {
 	return s
 }
 
+func (s *PublicTemplate) SetResourceTags(v []*PublicTemplateResourceTags) *PublicTemplate {
+	s.ResourceTags = v
+	return s
+}
+
 func (s *PublicTemplate) SetRuntimeConfig(v *PublicTemplateRuntimeConfig) *PublicTemplate {
 	s.RuntimeConfig = v
 	return s
@@ -151,6 +164,15 @@ func (s *PublicTemplate) SetTemplateID(v string) *PublicTemplate {
 }
 
 func (s *PublicTemplate) Validate() error {
+	if s.ResourceTags != nil {
+		for _, item := range s.ResourceTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.RuntimeConfig != nil {
 		if err := s.RuntimeConfig.Validate(); err != nil {
 			return err
@@ -162,4 +184,49 @@ func (s *PublicTemplate) Validate() error {
 		}
 	}
 	return nil
+}
+
+type PublicTemplateResourceTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// project
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// demo
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s PublicTemplateResourceTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PublicTemplateResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *PublicTemplateResourceTags) GetTagKey() *string {
+	return s.TagKey
+}
+
+func (s *PublicTemplateResourceTags) GetTagValue() *string {
+	return s.TagValue
+}
+
+func (s *PublicTemplateResourceTags) SetTagKey(v string) *PublicTemplateResourceTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *PublicTemplateResourceTags) SetTagValue(v string) *PublicTemplateResourceTags {
+	s.TagValue = &v
+	return s
+}
+
+func (s *PublicTemplateResourceTags) Validate() error {
+	return dara.Validate(s)
 }

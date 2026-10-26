@@ -20,19 +20,26 @@ type iCreateVolumeResponseBody interface {
 }
 
 type CreateVolumeResponseBody struct {
+	// The response code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message. The value is success if the request is successful.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6
-	RequestId *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Volume    *E2BVolume `json:"volume,omitempty" xml:"volume,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The storage volume information.
+	Volume *E2BVolume `json:"volume,omitempty" xml:"volume,omitempty"`
 }
 
 func (s CreateVolumeResponseBody) String() string {

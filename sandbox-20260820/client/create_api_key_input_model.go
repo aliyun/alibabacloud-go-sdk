@@ -22,23 +22,23 @@ type iCreateApiKeyInput interface {
 }
 
 type CreateApiKeyInput struct {
-	// The name of the API key. The name can be up to 128 characters in length and can contain letters, digits, spaces, hyphens (-), underscores (_), and periods (.).
+	// The name of the API key. The name can be up to 128 characters in length and can contain only letters, digits, spaces, hyphens (-), underscores (_), and periods (.).
 	//
 	// example:
 	//
 	// ci-pipeline-key
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
-	// The expiration time of the API key. The time is in UTC and in the RFC 3339 format. If you leave this parameter empty, the API key never expires.
+	// The expiration time of the API key. The time is in UTC and follows the RFC 3339 format. If this parameter is left empty, the API key never expires.
 	//
 	// example:
 	//
 	// 2099-12-31T23:59:59Z
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The IP blacklist. After you configure this parameter, IP addresses in the list cannot use the API key. This parameter is mutually exclusive with ipWhitelist.
+	// The IP address blacklist. If this parameter is configured, the IP addresses in the list cannot use the API key. This parameter is mutually exclusive with ipWhitelist.
 	IpBlacklist []*IPConfig `json:"ipBlacklist" xml:"ipBlacklist" type:"Repeated"`
-	// The IP address whitelist. After you configure this parameter, only IP addresses in the list can use the API key. This parameter is mutually exclusive with ipBlacklist.
+	// The IP address whitelist. If this parameter is configured, only the IP addresses in the list can use the API key. This parameter is mutually exclusive with ipBlacklist.
 	IpWhitelist []*IPConfig `json:"ipWhitelist" xml:"ipWhitelist" type:"Repeated"`
-	// The ID of the team to which the API key belongs. The value is in UUID format. If you do not specify this parameter, the default team of the current account is used.
+	// The ID of the team to which the API key belongs. The ID is in UUID format. If this parameter is not specified, the default team of the current account is used.
 	//
 	// example:
 	//

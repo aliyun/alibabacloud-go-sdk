@@ -20,18 +20,26 @@ type iUpdateTemplateResponseBody interface {
 }
 
 type UpdateTemplateResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// tpl-9f3a2b7c8d1e4f5a6b0c7d8e9f1a2b3c

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 创建 ApiKey
+// Creates an API key.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -51,7 +51,7 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 创建 Team
+// Creates a team.
 //
 // @param request - CreateTeamRequest
 //
@@ -93,7 +93,7 @@ func (client *Client) CreateTeamWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 创建 Template
+// Creates a template.
 //
 // @param request - CreateTemplateRequest
 //
@@ -135,7 +135,7 @@ func (client *Client) CreateTemplateWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建模板缓存
+// Creates a template cache.
 //
 // @param request - CreateTemplateCacheRequest
 //
@@ -177,7 +177,7 @@ func (client *Client) CreateTemplateCacheWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建 Volume
+// Creates a storage volume.
 //
 // @param request - CreateVolumeRequest
 //
@@ -219,7 +219,7 @@ func (client *Client) CreateVolumeWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 删除 ApiKey
+// Deletes a specified API key.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -260,7 +260,7 @@ func (client *Client) DeleteApiKeyWithContext(ctx context.Context, apiKeyID *str
 
 // Summary:
 //
-// 删除 quota 配置
+// Deletes the quota configuration for a specified team.
 //
 // @param request - DeleteQuotaRequest
 //
@@ -307,7 +307,7 @@ func (client *Client) DeleteQuotaWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 删除 Team
+// Deletes a specified team.
 //
 // @param request - DeleteTeamRequest
 //
@@ -348,7 +348,7 @@ func (client *Client) DeleteTeamWithContext(ctx context.Context, teamID *string,
 
 // Summary:
 //
-// 删除 Template
+// Deletes a template.
 //
 // @param request - DeleteTemplateRequest
 //
@@ -395,7 +395,7 @@ func (client *Client) DeleteTemplateWithContext(ctx context.Context, templateID 
 
 // Summary:
 //
-// 删除模板缓存
+// Deletes the template cache.
 //
 // @param request - DeleteTemplateCacheRequest
 //
@@ -442,7 +442,7 @@ func (client *Client) DeleteTemplateCacheWithContext(ctx context.Context, templa
 
 // Summary:
 //
-// 删除 Volume
+// Deletes a specified storage volume.
 //
 // @param request - DeleteVolumeRequest
 //
@@ -489,7 +489,7 @@ func (client *Client) DeleteVolumeWithContext(ctx context.Context, volumeID *str
 
 // Summary:
 //
-// 查看 ApiKey
+// Queries the details of a specified API key.
 //
 // @param request - DescribeApiKeyRequest
 //
@@ -530,7 +530,7 @@ func (client *Client) DescribeApiKeyWithContext(ctx context.Context, apiKeyID *s
 
 // Summary:
 //
-// 获取 quota 配置
+// Queries the quota configuration of a specified team.
 //
 // @param request - DescribeQuotaRequest
 //
@@ -577,7 +577,7 @@ func (client *Client) DescribeQuotaWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// 查询模板缓存
+// Queries the template cache.
 //
 // @param request - DescribeTemplateCacheRequest
 //
@@ -624,7 +624,7 @@ func (client *Client) DescribeTemplateCacheWithContext(ctx context.Context, temp
 
 // Summary:
 //
-// 获取Team详情
+// Queries the details of a specified team.
 //
 // @param request - GetTeamRequest
 //
@@ -665,7 +665,7 @@ func (client *Client) GetTeamWithContext(ctx context.Context, teamID *string, re
 
 // Summary:
 //
-// 查询 Template
+// Queries a template.
 //
 // @param request - GetTemplateRequest
 //
@@ -712,7 +712,7 @@ func (client *Client) GetTemplateWithContext(ctx context.Context, templateID *st
 
 // Summary:
 //
-// 查看 Volume
+// Queries the details of a specified storage volume.
 //
 // @param request - GetVolumeRequest
 //
@@ -759,7 +759,7 @@ func (client *Client) GetVolumeWithContext(ctx context.Context, volumeID *string
 
 // Summary:
 //
-// 分页查询 ApiKey
+// Queries the list of API keys by using paging.
 //
 // @param request - ListApiKeysRequest
 //
@@ -830,7 +830,7 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 
 // Summary:
 //
-// 查询 quota 配置
+// Performs a paging query on the quota configurations for the current account.
 //
 // @param request - ListQuotaRequest
 //
@@ -881,7 +881,7 @@ func (client *Client) ListQuotaWithContext(ctx context.Context, request *ListQuo
 
 // Summary:
 //
-// 查询 Team 列表
+// Queries the list of teams by using paging.
 //
 // @param request - ListTeamsRequest
 //
@@ -944,7 +944,7 @@ func (client *Client) ListTeamsWithContext(ctx context.Context, request *ListTea
 
 // Summary:
 //
-// 分页查询模板缓存
+// Performs a paging query of template caches.
 //
 // @param request - ListTemplateCacheRequest
 //
@@ -1007,7 +1007,7 @@ func (client *Client) ListTemplateCacheWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 分页查询 Template
+// Performs a paged query on the template list by using paging.
 //
 // @param request - ListTemplatesRequest
 //
@@ -1062,7 +1062,7 @@ func (client *Client) ListTemplatesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 分页查询 Volumes
+// Queries a list of storage volumes by using paging.
 //
 // @param request - ListVolumesRequest
 //
@@ -1137,7 +1137,7 @@ func (client *Client) ListVolumesWithContext(ctx context.Context, request *ListV
 
 // Summary:
 //
-// 重置 ApiKey
+// Resets a specified API key.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -1178,7 +1178,7 @@ func (client *Client) ResetApiKeyWithContext(ctx context.Context, apiKeyID *stri
 
 // Summary:
 //
-// 更新 ApiKey
+// Updates the configuration of a specified API key.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -1220,7 +1220,7 @@ func (client *Client) UpdateApiKeyWithContext(ctx context.Context, apiKeyID *str
 
 // Summary:
 //
-// 更新 quota 配置
+// Updates the quota configuration.
 //
 // @param request - UpdateQuotaRequest
 //
@@ -1262,7 +1262,7 @@ func (client *Client) UpdateQuotaWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// 更新 Team
+// Updates the information of a specified team.
 //
 // @param request - UpdateTeamRequest
 //
@@ -1304,7 +1304,7 @@ func (client *Client) UpdateTeamWithContext(ctx context.Context, teamID *string,
 
 // Summary:
 //
-// 更新 Template
+// Updates a template.
 //
 // @param request - UpdateTemplateRequest
 //
@@ -1352,7 +1352,7 @@ func (client *Client) UpdateTemplateWithContext(ctx context.Context, templateID 
 
 // Summary:
 //
-// 更新 Volume
+// Updates the configuration of a specified storage volume.
 //
 // @param request - UpdateVolumeRequest
 //

@@ -40,13 +40,13 @@ type AgenticBucketVolumeConfig struct {
 	//
 	// /
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	// The OSS endpoint address.
+	// The OSS endpoint.
 	//
 	// example:
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// Specifies whether the mount directory has read-only access permissions after the OSS bucket is mounted. Valid values:
+	// Specifies whether the access permissions of the mounted directory are read-only after the OSS bucket is mounted. Valid values:
 	//
 	// - true: Read-only.
 	//

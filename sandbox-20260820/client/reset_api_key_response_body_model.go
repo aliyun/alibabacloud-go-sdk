@@ -24,20 +24,30 @@ type iResetApiKeyResponseBody interface {
 }
 
 type ResetApiKeyResponseBody struct {
+	// The API key information.
+	//
 	// example:
 	//
 	// asdfjoY87-9IUHH
 	ApiKey *ApiKey `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The response code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	Code        *string     `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The list of IP blacklist rules.
 	IpBlacklist []*IPConfig `json:"ipBlacklist" xml:"ipBlacklist" type:"Repeated"`
+	// The list of IP address whitelist rules.
 	IpWhitelist []*IPConfig `json:"ipWhitelist" xml:"ipWhitelist" type:"Repeated"`
+	// The response message. The value is success if the request is successful.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C

@@ -22,25 +22,35 @@ type iListTeamsRequest interface {
 }
 
 type ListTeamsRequest struct {
+	// The page number. Default value: 1. Valid values: 1 to 10000.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of teams to return on each page. Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Filters teams by plan specifications. Valid values: eco (Economy), std (Standard), pro (Professional), and ent (Enterprise).
+	//
 	// example:
 	//
 	// pro
 	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+	// The team name.
+	//
 	// example:
 	//
-	// 开发团队
+	// Development team
 	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
 }
 

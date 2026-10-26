@@ -14,6 +14,8 @@ type iGetTemplateRequest interface {
 }
 
 type GetTemplateRequest struct {
+	// The team ID.
+	//
 	// example:
 	//
 	// 13b721e6-8cc8-5df2-af13-80316f7508af

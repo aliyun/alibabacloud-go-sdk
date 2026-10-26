@@ -22,22 +22,32 @@ type iListTemplateCacheRequest interface {
 }
 
 type ListTemplateCacheRequest struct {
+	// The maximum number of entries to return per page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token returned from the previous response.
+	//
 	// example:
 	//
 	// cae5f900-8b1d-4c0e-9c2a-1a2b3c4d5e6f
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Filters by cache status. Valid values: InProgress, Success, Failed, Deleting, and Evicted.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The team ID.
+	//
 	// example:
 	//
 	// 13b721e6-8cc8-5df2-af13-80316f7508af
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The unique identifier of the template.
+	//
 	// example:
 	//
 	// us7dxqaezw5uu7aa2cm5

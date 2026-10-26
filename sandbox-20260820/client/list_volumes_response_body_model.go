@@ -24,27 +24,38 @@ type iListVolumesResponseBody interface {
 }
 
 type ListVolumesResponseBody struct {
+	// The response code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The maximum number of entries per page used in this query.
+	//
 	// example:
 	//
 	// 4
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message. A value of success indicates a successful request.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token for the next page, which is used for subsequent queries.
+	//
 	// example:
 	//
 	// qxGrXje86XMrYQ51aJMy
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
-	RequestId *string      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Volumes   []*E2BVolume `json:"volumes" xml:"volumes" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of storage volumes.
+	Volumes []*E2BVolume `json:"volumes" xml:"volumes" type:"Repeated"`
 }
 
 func (s ListVolumesResponseBody) String() string {

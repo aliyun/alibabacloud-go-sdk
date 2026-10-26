@@ -54,27 +54,27 @@ type CreateTemplateSandboxConfig struct {
 	//
 	// linux-amd64
 	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
-	// The sandbox readiness probe command. A successful execution indicates that the sandbox is ready to accept requests. This parameter is supported only for first-generation sandboxes.
+	// The readiness probe command for the sandbox. A successful execution indicates that the sandbox is ready to receive requests. This parameter is supported only by first-generation sandboxes.
 	//
 	// example:
 	//
 	// curl -sf http://127.0.0.1:49983/health
 	ReadyCommand *string `json:"readyCommand,omitempty" xml:"readyCommand,omitempty"`
-	// The credential, TLS, and network configuration required to access the source image repository.
+	// The credentials, TLS, and network configurations required to access the source image repository.
 	RegistryConfig *CreateTemplateRegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
-	// The image repository type. Valid values: oci (standard OCI repository), acr (Container Registry Personal Edition), and acree (Container Registry Enterprise Edition). If not specified, the type is inferred from the image address.
+	// The type of the image repository. Valid values: oci (standard OCI repository), acr (Container Registry Personal Edition), and acree (Container Registry Enterprise Edition). The default value is inferred from the image address.
 	//
 	// example:
 	//
 	// acree
 	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
-	// The startup command for the sandbox container. This parameter is supported only for first-generation sandboxes.
+	// The startup command for the sandbox container. This parameter is supported only by first-generation sandboxes.
 	//
 	// example:
 	//
 	// /usr/local/bin/start.sh
 	StartCommand *string `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
-	// The list of custom build instructions. This is not supported in the current version. Passing a non-empty list returns an error.
+	// The list of custom build steps.
 	Steps []*CreateTemplateStep `json:"steps" xml:"steps" type:"Repeated"`
 }
 

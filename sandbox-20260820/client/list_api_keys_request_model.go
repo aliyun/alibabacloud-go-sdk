@@ -26,30 +26,48 @@ type iListApiKeysRequest interface {
 }
 
 type ListApiKeysRequest struct {
+	// The name of the API key.
+	//
 	// example:
 	//
 	// dev
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// The page number. Default value: 1. Valid values: 1 to 10000.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of API keys to return on each page. Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+	// Filters API keys by status. Valid values:
+	//
+	// - active: Enabled.
+	//
+	// - inactive: Disabled.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the team.
+	//
 	// example:
 	//
 	// 70d1c834-0383-58d8-97ac-5336eb91abcd
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The user ID of the creator.
+	//
 	// example:
 	//
 	// 123456789

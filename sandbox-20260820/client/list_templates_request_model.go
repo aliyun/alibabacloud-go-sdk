@@ -18,14 +18,20 @@ type iListTemplatesRequest interface {
 }
 
 type ListTemplatesRequest struct {
+	// The maximum number of entries to return per page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. Set this parameter to the nextToken value returned in the previous response.
+	//
 	// example:
 	//
 	// cae5f900-8b1d-4c0e-9c2a-1a2b3c4d5e6f
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The team ID.
+	//
 	// example:
 	//
 	// 13b721e6-8cc8-5df2-af13-80316f7508af

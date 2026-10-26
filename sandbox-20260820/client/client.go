@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建 ApiKey
+// Creates an API key.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -100,7 +100,7 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, head
 
 // Summary:
 //
-// 创建 ApiKey
+// Creates an API key.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -119,7 +119,7 @@ func (client *Client) CreateApiKey(request *CreateApiKeyRequest) (_result *Creat
 
 // Summary:
 //
-// 创建 Team
+// Creates a team.
 //
 // @param request - CreateTeamRequest
 //
@@ -161,7 +161,7 @@ func (client *Client) CreateTeamWithOptions(request *CreateTeamRequest, headers 
 
 // Summary:
 //
-// 创建 Team
+// Creates a team.
 //
 // @param request - CreateTeamRequest
 //
@@ -180,7 +180,7 @@ func (client *Client) CreateTeam(request *CreateTeamRequest) (_result *CreateTea
 
 // Summary:
 //
-// 创建 Template
+// Creates a template.
 //
 // @param request - CreateTemplateRequest
 //
@@ -222,7 +222,7 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 // Summary:
 //
-// 创建 Template
+// Creates a template.
 //
 // @param request - CreateTemplateRequest
 //
@@ -241,7 +241,7 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 
 // Summary:
 //
-// 创建模板缓存
+// Creates a template cache.
 //
 // @param request - CreateTemplateCacheRequest
 //
@@ -283,7 +283,7 @@ func (client *Client) CreateTemplateCacheWithOptions(request *CreateTemplateCach
 
 // Summary:
 //
-// 创建模板缓存
+// Creates a template cache.
 //
 // @param request - CreateTemplateCacheRequest
 //
@@ -302,7 +302,7 @@ func (client *Client) CreateTemplateCache(request *CreateTemplateCacheRequest) (
 
 // Summary:
 //
-// 创建 Volume
+// Creates a storage volume.
 //
 // @param request - CreateVolumeRequest
 //
@@ -344,7 +344,7 @@ func (client *Client) CreateVolumeWithOptions(request *CreateVolumeRequest, head
 
 // Summary:
 //
-// 创建 Volume
+// Creates a storage volume.
 //
 // @param request - CreateVolumeRequest
 //
@@ -363,7 +363,7 @@ func (client *Client) CreateVolume(request *CreateVolumeRequest) (_result *Creat
 
 // Summary:
 //
-// 删除 ApiKey
+// Deletes a specified API key.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -404,7 +404,7 @@ func (client *Client) DeleteApiKeyWithOptions(apiKeyID *string, request *DeleteA
 
 // Summary:
 //
-// 删除 ApiKey
+// Deletes a specified API key.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -423,7 +423,7 @@ func (client *Client) DeleteApiKey(apiKeyID *string, request *DeleteApiKeyReques
 
 // Summary:
 //
-// 删除 quota 配置
+// Deletes the quota configuration for a specified team.
 //
 // @param request - DeleteQuotaRequest
 //
@@ -470,7 +470,7 @@ func (client *Client) DeleteQuotaWithOptions(request *DeleteQuotaRequest, header
 
 // Summary:
 //
-// 删除 quota 配置
+// Deletes the quota configuration for a specified team.
 //
 // @param request - DeleteQuotaRequest
 //
@@ -489,7 +489,7 @@ func (client *Client) DeleteQuota(request *DeleteQuotaRequest) (_result *DeleteQ
 
 // Summary:
 //
-// 删除 Team
+// Deletes a specified team.
 //
 // @param request - DeleteTeamRequest
 //
@@ -530,7 +530,7 @@ func (client *Client) DeleteTeamWithOptions(teamID *string, request *DeleteTeamR
 
 // Summary:
 //
-// 删除 Team
+// Deletes a specified team.
 //
 // @param request - DeleteTeamRequest
 //
@@ -549,7 +549,7 @@ func (client *Client) DeleteTeam(teamID *string, request *DeleteTeamRequest) (_r
 
 // Summary:
 //
-// 删除 Template
+// Deletes a template.
 //
 // @param request - DeleteTemplateRequest
 //
@@ -596,7 +596,7 @@ func (client *Client) DeleteTemplateWithOptions(templateID *string, request *Del
 
 // Summary:
 //
-// 删除 Template
+// Deletes a template.
 //
 // @param request - DeleteTemplateRequest
 //
@@ -615,7 +615,7 @@ func (client *Client) DeleteTemplate(templateID *string, request *DeleteTemplate
 
 // Summary:
 //
-// 删除模板缓存
+// Deletes the template cache.
 //
 // @param request - DeleteTemplateCacheRequest
 //
@@ -662,7 +662,7 @@ func (client *Client) DeleteTemplateCacheWithOptions(templateID *string, request
 
 // Summary:
 //
-// 删除模板缓存
+// Deletes the template cache.
 //
 // @param request - DeleteTemplateCacheRequest
 //
@@ -681,7 +681,7 @@ func (client *Client) DeleteTemplateCache(templateID *string, request *DeleteTem
 
 // Summary:
 //
-// 删除 Volume
+// Deletes a specified storage volume.
 //
 // @param request - DeleteVolumeRequest
 //
@@ -728,7 +728,7 @@ func (client *Client) DeleteVolumeWithOptions(volumeID *string, request *DeleteV
 
 // Summary:
 //
-// 删除 Volume
+// Deletes a specified storage volume.
 //
 // @param request - DeleteVolumeRequest
 //
@@ -747,7 +747,7 @@ func (client *Client) DeleteVolume(volumeID *string, request *DeleteVolumeReques
 
 // Summary:
 //
-// 查看 ApiKey
+// Queries the details of a specified API key.
 //
 // @param request - DescribeApiKeyRequest
 //
@@ -788,7 +788,7 @@ func (client *Client) DescribeApiKeyWithOptions(apiKeyID *string, request *Descr
 
 // Summary:
 //
-// 查看 ApiKey
+// Queries the details of a specified API key.
 //
 // @param request - DescribeApiKeyRequest
 //
@@ -807,7 +807,7 @@ func (client *Client) DescribeApiKey(apiKeyID *string, request *DescribeApiKeyRe
 
 // Summary:
 //
-// 获取 quota 配置
+// Queries the quota configuration of a specified team.
 //
 // @param request - DescribeQuotaRequest
 //
@@ -854,7 +854,7 @@ func (client *Client) DescribeQuotaWithOptions(request *DescribeQuotaRequest, he
 
 // Summary:
 //
-// 获取 quota 配置
+// Queries the quota configuration of a specified team.
 //
 // @param request - DescribeQuotaRequest
 //
@@ -873,7 +873,7 @@ func (client *Client) DescribeQuota(request *DescribeQuotaRequest) (_result *Des
 
 // Summary:
 //
-// 查询模板缓存
+// Queries the template cache.
 //
 // @param request - DescribeTemplateCacheRequest
 //
@@ -920,7 +920,7 @@ func (client *Client) DescribeTemplateCacheWithOptions(templateID *string, reque
 
 // Summary:
 //
-// 查询模板缓存
+// Queries the template cache.
 //
 // @param request - DescribeTemplateCacheRequest
 //
@@ -939,7 +939,7 @@ func (client *Client) DescribeTemplateCache(templateID *string, request *Describ
 
 // Summary:
 //
-// 获取Team详情
+// Queries the details of a specified team.
 //
 // @param request - GetTeamRequest
 //
@@ -980,7 +980,7 @@ func (client *Client) GetTeamWithOptions(teamID *string, request *GetTeamRequest
 
 // Summary:
 //
-// 获取Team详情
+// Queries the details of a specified team.
 //
 // @param request - GetTeamRequest
 //
@@ -999,7 +999,7 @@ func (client *Client) GetTeam(teamID *string, request *GetTeamRequest) (_result 
 
 // Summary:
 //
-// 查询 Template
+// Queries a template.
 //
 // @param request - GetTemplateRequest
 //
@@ -1046,7 +1046,7 @@ func (client *Client) GetTemplateWithOptions(templateID *string, request *GetTem
 
 // Summary:
 //
-// 查询 Template
+// Queries a template.
 //
 // @param request - GetTemplateRequest
 //
@@ -1065,7 +1065,7 @@ func (client *Client) GetTemplate(templateID *string, request *GetTemplateReques
 
 // Summary:
 //
-// 查看 Volume
+// Queries the details of a specified storage volume.
 //
 // @param request - GetVolumeRequest
 //
@@ -1112,7 +1112,7 @@ func (client *Client) GetVolumeWithOptions(volumeID *string, request *GetVolumeR
 
 // Summary:
 //
-// 查看 Volume
+// Queries the details of a specified storage volume.
 //
 // @param request - GetVolumeRequest
 //
@@ -1131,7 +1131,7 @@ func (client *Client) GetVolume(volumeID *string, request *GetVolumeRequest) (_r
 
 // Summary:
 //
-// 分页查询 ApiKey
+// Queries the list of API keys by using paging.
 //
 // @param request - ListApiKeysRequest
 //
@@ -1202,7 +1202,7 @@ func (client *Client) ListApiKeysWithOptions(request *ListApiKeysRequest, header
 
 // Summary:
 //
-// 分页查询 ApiKey
+// Queries the list of API keys by using paging.
 //
 // @param request - ListApiKeysRequest
 //
@@ -1221,7 +1221,7 @@ func (client *Client) ListApiKeys(request *ListApiKeysRequest) (_result *ListApi
 
 // Summary:
 //
-// 查询 quota 配置
+// Performs a paging query on the quota configurations for the current account.
 //
 // @param request - ListQuotaRequest
 //
@@ -1272,7 +1272,7 @@ func (client *Client) ListQuotaWithOptions(request *ListQuotaRequest, headers ma
 
 // Summary:
 //
-// 查询 quota 配置
+// Performs a paging query on the quota configurations for the current account.
 //
 // @param request - ListQuotaRequest
 //
@@ -1291,7 +1291,7 @@ func (client *Client) ListQuota(request *ListQuotaRequest) (_result *ListQuotaRe
 
 // Summary:
 //
-// 查询 Team 列表
+// Queries the list of teams by using paging.
 //
 // @param request - ListTeamsRequest
 //
@@ -1354,7 +1354,7 @@ func (client *Client) ListTeamsWithOptions(request *ListTeamsRequest, headers ma
 
 // Summary:
 //
-// 查询 Team 列表
+// Queries the list of teams by using paging.
 //
 // @param request - ListTeamsRequest
 //
@@ -1373,7 +1373,7 @@ func (client *Client) ListTeams(request *ListTeamsRequest) (_result *ListTeamsRe
 
 // Summary:
 //
-// 分页查询模板缓存
+// Performs a paging query of template caches.
 //
 // @param request - ListTemplateCacheRequest
 //
@@ -1436,7 +1436,7 @@ func (client *Client) ListTemplateCacheWithOptions(request *ListTemplateCacheReq
 
 // Summary:
 //
-// 分页查询模板缓存
+// Performs a paging query of template caches.
 //
 // @param request - ListTemplateCacheRequest
 //
@@ -1455,7 +1455,7 @@ func (client *Client) ListTemplateCache(request *ListTemplateCacheRequest) (_res
 
 // Summary:
 //
-// 分页查询 Template
+// Performs a paged query on the template list by using paging.
 //
 // @param request - ListTemplatesRequest
 //
@@ -1510,7 +1510,7 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 
 // Summary:
 //
-// 分页查询 Template
+// Performs a paged query on the template list by using paging.
 //
 // @param request - ListTemplatesRequest
 //
@@ -1529,7 +1529,7 @@ func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *Lis
 
 // Summary:
 //
-// 分页查询 Volumes
+// Queries a list of storage volumes by using paging.
 //
 // @param request - ListVolumesRequest
 //
@@ -1604,7 +1604,7 @@ func (client *Client) ListVolumesWithOptions(request *ListVolumesRequest, header
 
 // Summary:
 //
-// 分页查询 Volumes
+// Queries a list of storage volumes by using paging.
 //
 // @param request - ListVolumesRequest
 //
@@ -1623,7 +1623,7 @@ func (client *Client) ListVolumes(request *ListVolumesRequest) (_result *ListVol
 
 // Summary:
 //
-// 重置 ApiKey
+// Resets a specified API key.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -1664,7 +1664,7 @@ func (client *Client) ResetApiKeyWithOptions(apiKeyID *string, request *ResetApi
 
 // Summary:
 //
-// 重置 ApiKey
+// Resets a specified API key.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -1683,7 +1683,7 @@ func (client *Client) ResetApiKey(apiKeyID *string, request *ResetApiKeyRequest)
 
 // Summary:
 //
-// 更新 ApiKey
+// Updates the configuration of a specified API key.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -1725,7 +1725,7 @@ func (client *Client) UpdateApiKeyWithOptions(apiKeyID *string, request *UpdateA
 
 // Summary:
 //
-// 更新 ApiKey
+// Updates the configuration of a specified API key.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -1744,7 +1744,7 @@ func (client *Client) UpdateApiKey(apiKeyID *string, request *UpdateApiKeyReques
 
 // Summary:
 //
-// 更新 quota 配置
+// Updates the quota configuration.
 //
 // @param request - UpdateQuotaRequest
 //
@@ -1786,7 +1786,7 @@ func (client *Client) UpdateQuotaWithOptions(request *UpdateQuotaRequest, header
 
 // Summary:
 //
-// 更新 quota 配置
+// Updates the quota configuration.
 //
 // @param request - UpdateQuotaRequest
 //
@@ -1805,7 +1805,7 @@ func (client *Client) UpdateQuota(request *UpdateQuotaRequest) (_result *UpdateQ
 
 // Summary:
 //
-// 更新 Team
+// Updates the information of a specified team.
 //
 // @param request - UpdateTeamRequest
 //
@@ -1847,7 +1847,7 @@ func (client *Client) UpdateTeamWithOptions(teamID *string, request *UpdateTeamR
 
 // Summary:
 //
-// 更新 Team
+// Updates the information of a specified team.
 //
 // @param request - UpdateTeamRequest
 //
@@ -1866,7 +1866,7 @@ func (client *Client) UpdateTeam(teamID *string, request *UpdateTeamRequest) (_r
 
 // Summary:
 //
-// 更新 Template
+// Updates a template.
 //
 // @param request - UpdateTemplateRequest
 //
@@ -1914,7 +1914,7 @@ func (client *Client) UpdateTemplateWithOptions(templateID *string, request *Upd
 
 // Summary:
 //
-// 更新 Template
+// Updates a template.
 //
 // @param request - UpdateTemplateRequest
 //
@@ -1933,7 +1933,7 @@ func (client *Client) UpdateTemplate(templateID *string, request *UpdateTemplate
 
 // Summary:
 //
-// 更新 Volume
+// Updates the configuration of a specified storage volume.
 //
 // @param request - UpdateVolumeRequest
 //
@@ -1981,7 +1981,7 @@ func (client *Client) UpdateVolumeWithOptions(volumeID *string, request *UpdateV
 
 // Summary:
 //
-// 更新 Volume
+// Updates the configuration of a specified storage volume.
 //
 // @param request - UpdateVolumeRequest
 //

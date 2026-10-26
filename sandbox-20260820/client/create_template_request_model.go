@@ -14,6 +14,7 @@ type iCreateTemplateRequest interface {
 }
 
 type CreateTemplateRequest struct {
+	// The request struct for creating a template.
 	Body *CreateTemplateInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
