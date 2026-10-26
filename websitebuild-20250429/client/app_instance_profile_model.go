@@ -59,6 +59,8 @@ type iAppInstanceProfile interface {
 	GetTemplateEtag() *string
 	SetTemplateId(v string) *AppInstanceProfile
 	GetTemplateId() *string
+	SetUpgradeStatus(v string) *AppInstanceProfile
+	GetUpgradeStatus() *string
 }
 
 type AppInstanceProfile struct {
@@ -204,6 +206,10 @@ type AppInstanceProfile struct {
 	//
 	// tpl-1
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// SUCC
+	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
 }
 
 func (s AppInstanceProfile) String() string {
@@ -312,6 +318,10 @@ func (s *AppInstanceProfile) GetTemplateEtag() *string {
 
 func (s *AppInstanceProfile) GetTemplateId() *string {
 	return s.TemplateId
+}
+
+func (s *AppInstanceProfile) GetUpgradeStatus() *string {
+	return s.UpgradeStatus
 }
 
 func (s *AppInstanceProfile) SetApplicationType(v string) *AppInstanceProfile {
@@ -436,6 +446,11 @@ func (s *AppInstanceProfile) SetTemplateEtag(v string) *AppInstanceProfile {
 
 func (s *AppInstanceProfile) SetTemplateId(v string) *AppInstanceProfile {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *AppInstanceProfile) SetUpgradeStatus(v string) *AppInstanceProfile {
+	s.UpgradeStatus = &v
 	return s
 }
 

@@ -34,7 +34,7 @@ type iGetAppWorkspaceDirectoryResponseBody interface {
 }
 
 type GetAppWorkspaceDirectoryResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type GetAppWorkspaceDirectoryResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	// The dynamic message. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The response object.
+	// The returned object.
 	Module *GetAppWorkspaceDirectoryResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -84,7 +84,7 @@ type GetAppWorkspaceDirectoryResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//

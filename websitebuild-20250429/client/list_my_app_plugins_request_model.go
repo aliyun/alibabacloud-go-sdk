@@ -22,13 +22,13 @@ type iListMyAppPluginsRequest interface {
 }
 
 type ListMyAppPluginsRequest struct {
-	// Filters by category.
+	// The category used to filter results.
 	//
 	// example:
 	//
 	// {\\"Status\\": 0, \\"Name\\": \\"JGHDDLT\\", \\"BizCode\\": \\"\\", \\"CategoryId\\": 30000952447, \\"ParentCategoryId\\": 30000952446}
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The search keyword that matches name/description.
+	// The search keyword. The keyword matches the name or description.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListMyAppPluginsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters by status.
+	// The status used to filter results.
 	//
 	// example:
 	//

@@ -98,7 +98,7 @@ type GetMiniAppBindingResponseBodyData struct {
 	//
 	// http://xxxx
 	ProductionQrCodeUrl *string `json:"ProductionQrCodeUrl,omitempty" xml:"ProductionQrCodeUrl,omitempty"`
-	// The extension information.
+	// The extended information.
 	SettingValues map[string]*string `json:"SettingValues,omitempty" xml:"SettingValues,omitempty"`
 }
 

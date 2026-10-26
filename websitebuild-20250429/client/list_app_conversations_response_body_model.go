@@ -38,19 +38,19 @@ type iListAppConversationsResponseBody interface {
 }
 
 type ListAppConversationsResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -68,11 +68,9 @@ type ListAppConversationsResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The error arguments.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of entries per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results to return for a single query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -80,7 +78,7 @@ type ListAppConversationsResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module *ListAppConversationsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token that is used to start the next query. If no next query is available, this parameter is empty.
 	//
 	// example:
 	//
@@ -247,7 +245,7 @@ func (s *ListAppConversationsResponseBody) Validate() error {
 }
 
 type ListAppConversationsResponseBodyModule struct {
-	// The request result.
+	// The request results.
 	Data []*ListAppConversationsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -261,7 +259,7 @@ type ListAppConversationsResponseBodyModule struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource count that matches the conditional filter criteria.
+	// The resource count that meets the conditional filters.
 	//
 	// example:
 	//
@@ -351,7 +349,7 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// 799EAC1246C855CAC75B77955E43D841
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The creation time in ISO 8601 format with a time zone offset.
+	// The creation time in ISO 8601 format, including the time zone offset.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -359,7 +357,7 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// 2026-01-27T17:51:25.415+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time in ISO 8601 format with the UTC (Z) time zone.
+	// The update time in ISO 8601 format. The time zone is UTC (Z).
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -385,7 +383,7 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// 1068725896006128
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The current viewpoint, equivalent to the news title.
+	// The current viewpoint, which is equivalent to the news title.
 	//
 	// example:
 	//

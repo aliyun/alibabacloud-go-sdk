@@ -34,25 +34,25 @@ type iGrantPromotionOfferForPartnerResponseBody interface {
 }
 
 type GrantPromotionOfferForPartnerResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the permission check failure.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name cannot exceed 36 characters in length.
+	// The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use. Ignore it.
+	// The dynamic code. This field is currently unused and can be ignored.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type GrantPromotionOfferForPartnerResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *GrantPromotionOfferForPartnerResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -229,7 +229,7 @@ type GrantPromotionOfferForPartnerResponseBodyModule struct {
 	//
 	// 5094
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -42,9 +42,13 @@ type QuerySupabaseInstanceInfoForAdminRequest struct {
 	//
 	// staging
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The field by which to sort the results.
+	// The sort field.
+	//
+	// example:
+	//
+	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC and DESC.
+	// The sort order. Valid values: ASC, DESC.
 	//
 	// example:
 	//

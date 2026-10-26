@@ -48,7 +48,7 @@ type BatchCheckResourceMeasureRequest struct {
 	//
 	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	// The order module information. This parameter is automatically populated when it is empty.
+	// The order component information. This parameter is automatically populated if left empty.
 	//
 	// example:
 	//

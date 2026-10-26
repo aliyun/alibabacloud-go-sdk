@@ -34,13 +34,13 @@ type iCreateAppAssistantAgentSsoLoginResponseBody interface {
 }
 
 type CreateAppAssistantAgentSsoLoginResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type CreateAppAssistantAgentSsoLoginResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- that you specify is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type CreateAppAssistantAgentSsoLoginResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ type CreateAppAssistantAgentSsoLoginResponseBodyModule struct {
 	//
 	// 2025-07-30T16:00Z
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The platform-specific extension field.
+	// The platform-specific extension fields.
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The platform type identifier.
 	//

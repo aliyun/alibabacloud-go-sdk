@@ -44,7 +44,7 @@ type ListAppPublishHistoryResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ListAppPublishHistoryResponseBody struct {
 	//
 	// - DataDiagnosis: data diagnostics
 	Module *ListAppPublishHistoryResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token used to start the next query. This parameter is empty if no next query is available.
+	// The token that is used to start the next query. If no next query exists, this parameter is empty.
 	//
 	// example:
 	//
@@ -259,9 +259,9 @@ type ListAppPublishHistoryResponseBodyModule struct {
 	CurrentPublishOrderId *int64 `json:"CurrentPublishOrderId,omitempty" xml:"CurrentPublishOrderId,omitempty"`
 	// Specifies whether to display the history of applying alert templates to application groups. Valid values:
 	//
-	// - true: displayed.
+	// - true: Displayed.
 	//
-	// - false: not displayed. Default value.
+	// - false: Not displayed. Default value: false.
 	History []*ListAppPublishHistoryResponseBodyModuleHistory `json:"History,omitempty" xml:"History,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -350,13 +350,17 @@ func (s *ListAppPublishHistoryResponseBodyModule) Validate() error {
 }
 
 type ListAppPublishHistoryResponseBodyModuleHistory struct {
-	// Indicates whether quick rollback is supported.
+	// Specifies whether quick rollback is supported.
 	//
 	// example:
 	//
 	// true
 	CanQuickRevert *string `json:"CanQuickRevert,omitempty" xml:"CanQuickRevert,omitempty"`
 	// The commit hash of the code.
+	//
+	// example:
+	//
+	// 890243d5977e74d80eebd4734f7b05f626f84cb1
 	CommitHash *string `json:"CommitHash,omitempty" xml:"CommitHash,omitempty"`
 	// The current step number.
 	//
@@ -365,6 +369,10 @@ type ListAppPublishHistoryResponseBodyModuleHistory struct {
 	// PRE_CHECK
 	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
 	// The code of the current release step.
+	//
+	// example:
+	//
+	// INIT
 	CurrentStepCode *string `json:"CurrentStepCode,omitempty" xml:"CurrentStepCode,omitempty"`
 	// The deployment channel.
 	//
@@ -385,14 +393,18 @@ type ListAppPublishHistoryResponseBodyModuleHistory struct {
 	// error
 	ErrorStep *string `json:"ErrorStep,omitempty" xml:"ErrorStep,omitempty"`
 	// The code of the release step where the error occurred.
+	//
+	// example:
+	//
+	// BUILDING
 	ErrorStepCode *string `json:"ErrorStepCode,omitempty" xml:"ErrorStepCode,omitempty"`
 	// Indicates whether the operation is completed.
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
 	// Indicates whether the resource allocation for the financial unit is successful. Valid values:
 	//
-	// - true: successful
+	// - true: The allocation is successful.
 	//
-	// - false: failed
+	// - false: The allocation fails.
 	//
 	// example:
 	//
@@ -411,6 +423,10 @@ type ListAppPublishHistoryResponseBodyModuleHistory struct {
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The code of the release order type.
+	//
+	// example:
+	//
+	// DEPLOY
 	OrderTypeCode *string `json:"OrderTypeCode,omitempty" xml:"OrderTypeCode,omitempty"`
 	// The transcoding progress.
 	//
@@ -430,7 +446,7 @@ type ListAppPublishHistoryResponseBodyModuleHistory struct {
 	//
 	// 123
 	PublishOrderId *int64 `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
-	// The release time, in the UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
+	// The release time in the UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -442,7 +458,11 @@ type ListAppPublishHistoryResponseBodyModuleHistory struct {
 	StepCodes []*string `json:"StepCodes,omitempty" xml:"StepCodes,omitempty" type:"Repeated"`
 	// The specific configurations of the component.
 	Steps []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
-	// The release subchannel.
+	// The release sub-channel.
+	//
+	// example:
+	//
+	// wx0123456789abcdef
 	Subchannel *string `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
 }
 

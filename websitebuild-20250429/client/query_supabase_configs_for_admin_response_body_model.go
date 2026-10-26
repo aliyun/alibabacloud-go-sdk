@@ -34,13 +34,13 @@ type iQuerySupabaseConfigsForAdminResponseBody interface {
 }
 
 type QuerySupabaseConfigsForAdminResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed. Valid values:
+	// Specifies whether retries are allowed. Valid values:
 	//
 	// - false: Retries are not allowed.
 	//
@@ -68,7 +68,7 @@ type QuerySupabaseConfigsForAdminResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The task object.
 	Module *QuerySupabaseConfigsForAdminResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -90,7 +90,7 @@ type QuerySupabaseConfigsForAdminResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//

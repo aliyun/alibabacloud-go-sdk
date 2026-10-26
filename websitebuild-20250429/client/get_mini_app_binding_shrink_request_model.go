@@ -30,7 +30,7 @@ type GetMiniAppBindingShrinkRequest struct {
 	//
 	// WECHAT
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The list of extension information keys.
+	// The list of extended information keys.
 	//
 	// example:
 	//

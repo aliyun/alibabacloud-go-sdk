@@ -27,10 +27,18 @@ type AppOperateAction struct {
 	// BeginDialogue
 	ActionKey *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
 	// The text used to display the action name in the user interface.
+	//
+	// example:
+	//
+	// Renew
 	ActionText *string `json:"ActionText,omitempty" xml:"ActionText,omitempty"`
 	// Indicates whether the action is available.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The URL to navigate to when the action is clicked.
+	// The URL to redirect to when the action is clicked.
+	//
+	// example:
+	//
+	// https://common-buy.aliyun.com/?orderType=RENEW&commodityCode=domain_website_public_cn&instanceId=12313213
 	Href *string `json:"Href,omitempty" xml:"Href,omitempty"`
 }
 

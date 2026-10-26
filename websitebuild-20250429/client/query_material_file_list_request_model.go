@@ -48,7 +48,7 @@ type QueryMaterialFileListRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type QueryMaterialFileListRequest struct {
 	//
 	// 1024
 	MaxFileSize *int64 `json:"MaxFileSize,omitempty" xml:"MaxFileSize,omitempty"`
-	// The maximum number of entries to return per query.
+	// The maximum number of entries to return for a single request.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -80,15 +80,15 @@ type QueryMaterialFileListRequest struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token that is used to start the next query. If no next query is available, this parameter is left empty.
 	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The field by which to sort the results.
+	// The sort field.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type QueryMaterialFileListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of statuses.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The list of file suffixes.
+	// The list of file extensions.
 	SuffixList []*string `json:"SuffixList,omitempty" xml:"SuffixList,omitempty" type:"Repeated"`
 	// The list of file types.
 	TypeList []*string `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`

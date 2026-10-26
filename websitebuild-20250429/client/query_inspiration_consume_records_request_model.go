@@ -26,19 +26,19 @@ type iQueryInspirationConsumeRecordsRequest interface {
 }
 
 type QueryInspirationConsumeRecordsRequest struct {
-	// The end time of the query. The value is a UNIX timestamp in seconds.
+	// The end time of the query. The time is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1762999521
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The field by which to sort the results.
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC, DESC.
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type QueryInspirationConsumeRecordsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the scenario.
+	// The scenario name.
 	//
 	// example:
 	//
-	// Skylark-Personnel Authentication
+	// Bailingniao-Personnel Authentication
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// The start time of the query. The time is in ISO 8601 format and the time zone is UTC (Z).
+	// The start time of the query. The time is in ISO 8601 format and uses the UTC time zone (Z).
 	//
 	// example:
 	//

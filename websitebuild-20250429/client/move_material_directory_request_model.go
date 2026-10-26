@@ -36,7 +36,7 @@ type MoveMaterialDirectoryRequest struct {
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The parent folder ID after the move.
+	// The ID of the target parent folder.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type MoveMaterialDirectoryRequest struct {
 	//
 	// 58157a0a-769a-4364-bbdc-a0e2cf3d5a2
 	ParentDirectoryId *string `json:"ParentDirectoryId,omitempty" xml:"ParentDirectoryId,omitempty"`
-	// The sort number.
+	// The sort order.
 	//
 	// This parameter is required.
 	//

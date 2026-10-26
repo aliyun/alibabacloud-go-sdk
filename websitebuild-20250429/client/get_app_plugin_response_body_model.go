@@ -34,7 +34,7 @@ type iGetAppPluginResponseBody interface {
 }
 
 type GetAppPluginResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetAppPluginResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetAppPluginResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the error message returned by the **ErrMessage*	- parameter.
 	//
 	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
@@ -66,7 +66,7 @@ type GetAppPluginResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The application module.
 	Module *GetAppPluginResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -88,7 +88,7 @@ type GetAppPluginResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -239,17 +239,15 @@ type GetAppPluginResponseBodyModule struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The image display mode. Valid values:
 	//
-	// - **0*	- (None): Not displayed.
+	// - **0*	- (None): The image is not displayed.
 	//
-	// - **1*	- (Always): Always displayed.
+	// - **1*	- (Always): The image is always displayed.
 	//
 	// example:
 	//
 	// always
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
-	// Specifies whether scheduled delivery of resource snapshots is enabled.
-	//
-	// Valid values:
+	// Indicates whether scheduled delivery of resource snapshots is enabled. Valid values:
 	//
 	// - true: Enabled.
 	//
@@ -263,7 +261,7 @@ type GetAppPluginResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"deliveryNodeName\\":\\"bindDomainAndPublish\\",\\"deliveryNodeStatus\\":\\"Finish\\",\\"deliveryOperatorRole\\":\\"Provider\\"}
+	// {"deliveryNodeName":"Bind domain name and publish","deliveryNodeStatus":"Finish","deliveryOperatorRole":"Provider"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The version number.
 	//
@@ -289,31 +287,31 @@ type GetAppPluginResponseBodyModule struct {
 	//
 	// []
 	Hooks *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
-	// The popularity count.
+	// The popularity.
 	//
 	// example:
 	//
 	// 1
 	HotCount *int32 `json:"HotCount,omitempty" xml:"HotCount,omitempty"`
-	// The plug-in description.
+	// The plugin description.
 	//
 	// example:
 	//
 	// @lALPM2AwTOg9IUHNAUDNAUA
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The bound API Gateway plug-in ID.
+	// The ID of the associated API gateway plugin.
 	//
 	// example:
 	//
 	// 1bae9ceaceea432d91c7069fab0dfc02
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The plug-in name. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
+	// The name of the plugin. The name must be 4 to 50 characters in length and can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). It cannot start with an underscore.
 	//
 	// example:
 	//
 	// tf_testaccapigatewayplugin29311
 	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// The image repository URL.
+	// The URL of the image repository.
 	//
 	// example:
 	//
@@ -337,7 +335,7 @@ type GetAppPluginResponseBodyModule struct {
 	//
 	// [{\\"Key\\": \\"kubernetes.io/cluster-id\\", \\"Value\\": \\"cc67198b13db948c9848599654da5586e\\"}, {\\"Key\\": \\"created-by\\", \\"Value\\": \\"alibabacloud-imagecache-controller\\"}]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The application instance version.
+	// The version of the application instance.
 	//
 	// example:
 	//

@@ -48,13 +48,13 @@ type UpdateAppPluginRequest struct {
 	//
 	// ***
 	ConfigItems *string `json:"ConfigItems,omitempty" xml:"ConfigItems,omitempty"`
-	// The application description.
+	// The description of the application.
 	//
 	// example:
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Other extension information in JSON format for future parameter expansion.
+	// The additional extension information in JSON format for subsequent parameter extensions.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ type UpdateAppPluginRequest struct {
 	//
 	// []
 	Hooks *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
-	// The plug-in description.
+	// The description of the plugin.
 	//
 	// example:
 	//
 	// https://img.alicdn.com/imgextra/i4/O1CN01ANcLnQ1bCX7tZPVMJ_!!6000000003429-2-tps-100-100.png
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The gateway plug-in ID.
+	// The ID of the gateway plugin.
 	//
 	// example:
 	//
 	// 1bae9ceaceea432d91c7069fab0dfc02
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The plug-in name.
+	// The name of the plugin.
 	//
 	// example:
 	//
 	// alisecguard
 	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// The plug-in version.
+	// The plugin version.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type UpdateAppPluginRequest struct {
 	//
 	// {}
 	SkillHeader *string `json:"SkillHeader,omitempty" xml:"SkillHeader,omitempty"`
-	// The labels.
+	// The tags.
 	//
 	// example:
 	//

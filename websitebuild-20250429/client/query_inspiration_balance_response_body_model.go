@@ -46,7 +46,7 @@ type QueryInspirationBalanceResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application to query.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -58,7 +58,9 @@ type QueryInspirationBalanceResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message used to replace `%s` in the error message of the **ErrMessage*	- response parameter. If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
@@ -86,7 +88,7 @@ type QueryInspirationBalanceResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Specifies whether the request is processed synchronously.
+	// Specifies whether the processing is synchronous.
 	//
 	// example:
 	//
@@ -211,37 +213,37 @@ func (s *QueryInspirationBalanceResponseBody) Validate() error {
 }
 
 type QueryInspirationBalanceResponseBodyModule struct {
-	// The remaining quota, which is calculated by subtracting totalUsed from totalQuota.
+	// The remaining quota (totalQuota - totalUsed).
 	//
 	// example:
 	//
 	// 8
 	Remaining *int64 `json:"Remaining,omitempty" xml:"Remaining,omitempty"`
-	// The string representation of the remaining quota.
+	// The string format of the remaining quota.
 	//
 	// example:
 	//
 	// 8
 	RemainingStr *string `json:"RemainingStr,omitempty" xml:"RemainingStr,omitempty"`
-	// The total quota, which is the sum of the initQuota values of all valid accounts.
+	// The total quota (the sum of initQuota of all valid accounts).
 	//
 	// example:
 	//
 	// 10
 	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	// The string representation of the total quota.
+	// The string format of the total quota.
 	//
 	// example:
 	//
 	// 10
 	TotalQuotaStr *string `json:"TotalQuotaStr,omitempty" xml:"TotalQuotaStr,omitempty"`
-	// The used quota, which is the sum of the used values of all valid accounts.
+	// The consumed quota (the sum of used of all valid accounts).
 	//
 	// example:
 	//
 	// 1
 	TotalUsed *int64 `json:"TotalUsed,omitempty" xml:"TotalUsed,omitempty"`
-	// The string representation of the used quota.
+	// The string format of the consumed quota.
 	//
 	// example:
 	//

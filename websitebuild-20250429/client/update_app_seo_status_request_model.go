@@ -34,13 +34,19 @@ type UpdateAppSeoStatusRequest struct {
 	//
 	// yjdw.bpu.edu.cn-waf
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The security authentication information.
+	// The authentication information.
+	//
+	// Security authentication information.
 	//
 	// example:
 	//
 	// 123123
 	SeAuthInfo *string `json:"SeAuthInfo,omitempty" xml:"SeAuthInfo,omitempty"`
 	// The index status.
+	//
+	// example:
+	//
+	// 0
 	SeIndexStatus *int32 `json:"SeIndexStatus,omitempty" xml:"SeIndexStatus,omitempty"`
 	// The search engine type.
 	//

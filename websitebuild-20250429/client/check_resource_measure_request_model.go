@@ -28,13 +28,13 @@ type iCheckResourceMeasureRequest interface {
 }
 
 type CheckResourceMeasureRequest struct {
-	// The owner ID, which can be a website ID or an Alibaba Cloud user ID.
+	// The ID of the owner, such as the website ID or Alibaba Cloud user ID.
 	//
 	// example:
 	//
 	// 123456
 	BelongId *string `json:"BelongId,omitempty" xml:"BelongId,omitempty"`
-	// The owner ID type. Valid values: siteId and uid.
+	// The type of the owner ID. Valid values: siteId and uid.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CheckResourceMeasureRequest struct {
 	//
 	// 1
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// This parameter is used only for APP_WORKSPACE. It specifies the final total amount of issues or competitors after editing. For legacy APP or USER, it retains the incremental semantics of ResourceValue.
+	// The desired total for APP_WORKSPACE. Valid values: 0 to 100000. If this parameter is specified, it takes precedence over ResourceValue and is not added to the existing usage. For new calls, you only need to specify ResourceValue. This parameter is not used for APP or USER.
 	//
 	// example:
 	//
@@ -70,11 +70,7 @@ type CheckResourceMeasureRequest struct {
 	//
 	// InspirationTokens
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	// The resource value. This parameter is required only for feature resources and is empty by default. Valid values:
-	//
-	// - 0: Not supported.
-	//
-	// - 1: Supported.
+	// The resource value. This parameter is empty by default and is required only for feature resources. Valid values: 0: Not supported. 1: Supported.
 	//
 	// example:
 	//

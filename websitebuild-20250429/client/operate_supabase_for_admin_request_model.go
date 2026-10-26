@@ -45,6 +45,10 @@ type OperateSupabaseForAdminRequest struct {
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The environment identifier.
+	//
+	// example:
+	//
+	// staging
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The SQL statement.
 	//
@@ -64,7 +68,7 @@ type OperateSupabaseForAdminRequest struct {
 	//
 	// null
 	OrderByClause *string `json:"OrderByClause,omitempty" xml:"OrderByClause,omitempty"`
-	// The column used for sorting.
+	// The sort field.
 	//
 	// example:
 	//
@@ -82,7 +86,7 @@ type OperateSupabaseForAdminRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//

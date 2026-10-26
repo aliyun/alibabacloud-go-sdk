@@ -24,7 +24,7 @@ type ListAppDomainRedirectRecordsRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The number of entries per query.
+	// The maximum number of results to return per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -32,7 +32,7 @@ type ListAppDomainRedirectRecordsRequest struct {
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token used to start the next query. This parameter is empty if no next query is available.
 	//
 	// example:
 	//

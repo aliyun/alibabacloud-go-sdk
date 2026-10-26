@@ -40,7 +40,7 @@ type iModifyMaterialDirectoryResponseBody interface {
 }
 
 type ModifyMaterialDirectoryResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ModifyMaterialDirectoryResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ModifyMaterialDirectoryResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
+	// The error code. If the request succeeds, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes in this topic.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ModifyMaterialDirectoryResponseBody struct {
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Indicates whether the folder was modified successfully.
+	// Indicates whether the update was successful.
 	//
 	// example:
 	//
@@ -102,11 +102,11 @@ type ModifyMaterialDirectoryResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request was successful.
 	//
@@ -114,7 +114,7 @@ type ModifyMaterialDirectoryResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Indicates whether the request was processed synchronously.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//

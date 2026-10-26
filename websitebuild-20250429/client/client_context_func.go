@@ -10,11 +10,11 @@ import (
 
 // Summary:
 //
-// Allocates a Supabase instance for resource allocation.
+// Performs resource allocation for a Supabase instance.
 //
 // Description:
 //
-// Queries the Supabase instance information associated with a resource.
+// Queries the information about the Supabase instance associated with a resource.
 //
 // @param request - AllocateSupabaseForAdminRequest
 //
@@ -374,7 +374,7 @@ func (client *Client) CheckAppVerifyCodeWithContext(ctx context.Context, request
 //
 // Description:
 //
-// Queries the Supabase instance information corresponding to a resource.
+// Queries the Supabase instance information corresponding to the resource.
 //
 // @param request - CheckResourceMeasureRequest
 //
@@ -446,11 +446,11 @@ func (client *Client) CheckResourceMeasureWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Checks user resource metering.
+// Validates user resource metering.
 //
 // Description:
 //
-// Queries the Supabase instance information corresponding to a resource.
+// Queries the Supabase instance information corresponding to the resource.
 //
 // @param request - CheckUserResourceMeasureRequest
 //
@@ -475,6 +475,10 @@ func (client *Client) CheckUserResourceMeasureWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.BizType) {
 		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.DesiredTotal) {
+		query["DesiredTotal"] = request.DesiredTotal
 	}
 
 	if !dara.IsNil(request.EspBizId) {
@@ -833,11 +837,11 @@ func (client *Client) CreateAppAssistantAgentWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Generates an SSO logon-free URL for an application assistant agent.
+// Generates an SSO logon-free URL for the application assistant.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - CreateAppAssistantAgentSsoLoginRequest
 //
@@ -1076,7 +1080,7 @@ func (client *Client) CreateAppInstanceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates a passwordless login ticket.
+// Creates a logon-free ticket.
 //
 // @param request - CreateAppInstanceTicketRequest
 //
@@ -1292,7 +1296,7 @@ func (client *Client) CreateAppNotificationSceneWithContext(ctx context.Context,
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plug-in.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - CreateAppPluginRequest
 //
@@ -1550,7 +1554,7 @@ func (client *Client) CreateInspirationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Submits a task to create a logo.
+// Submits a logo generation task.
 //
 // @param request - CreateLogoTaskRequest
 //
@@ -1606,7 +1610,7 @@ func (client *Client) CreateLogoTaskWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates a subfolder under a parent folder.
+// Creates a subfolder in a parent folder.
 //
 // @param request - CreateMaterialDirectoryRequest
 //
@@ -1814,7 +1818,7 @@ func (client *Client) CreateRbacRoleWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Deletes and unbinds the SSL certificate that is bound to a website.
+// Deletes and unbinds the SSL certificate associated with a website.
 //
 // @param request - DeleteAppDomainCertificateRequest
 //
@@ -2070,7 +2074,7 @@ func (client *Client) DeleteAppNotificationSceneWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes an application plug-in.
+// Deletes an application plugin.
 //
 // @param request - DeleteAppPluginRequest
 //
@@ -2528,7 +2532,7 @@ func (client *Client) DescribeAppDomainDnsRecordWithContext(ctx context.Context,
 
 // Summary:
 //
-// Calls a general-purpose API operation.
+// Calls a general API operation.
 //
 // @param request - DispatchConsoleAPIForPartnerRequest
 //
@@ -2648,7 +2652,7 @@ func (client *Client) EditPluginConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Exports a material file.
+// Exports material files.
 //
 // @param tmpReq - ExportMaterialFileRequest
 //
@@ -2806,7 +2810,7 @@ func (client *Client) GetAIStaffPreviewUrlWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// Queries the information of an application instance.
+// Queries application instance information.
 //
 // @param request - GetAppCodeWorkspaceDetailRequest
 //
@@ -2854,7 +2858,7 @@ func (client *Client) GetAppCodeWorkspaceDetailWithContext(ctx context.Context, 
 //
 // Description:
 //
-// The API operation for creating an AI conversation in Wanxiaozhi 2.0.
+// The Wanxiaozhi 2.0 API operation for creating AI conversations.
 //
 // @param request - GetAppConversationRequest
 //
@@ -2902,11 +2906,11 @@ func (client *Client) GetAppConversationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the session lock status.
+// Retrieves the lock status of a session.
 //
 // Description:
 //
-// Creates an AI session through the WanXiaoZhi 2.0 interface.
+// The API operation for creating an AI session in Wanxiaozhi 2.0.
 //
 // @param request - GetAppConversationLockStatusRequest
 //
@@ -3002,11 +3006,11 @@ func (client *Client) GetAppDatabaseTableSchemasWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves file content and modification time.
+// Retrieves a file and its modification time.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppFileContentRequest
 //
@@ -3298,11 +3302,11 @@ func (client *Client) GetAppInstanceTempShortUrlWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the details of an application plug-in.
+// Queries the details of an application plugin.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plug-in.
+// Retrieves the configuration information of a code generation plugin.
 //
 // @param request - GetAppPluginRequest
 //
@@ -3402,7 +3406,7 @@ func (client *Client) GetAppPluginConfigWithContext(ctx context.Context, request
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppPublishStatusRequest
 //
@@ -3986,7 +3990,7 @@ func (client *Client) GetAppTemplateWithContext(ctx context.Context, request *Ge
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the information of an application instance.
 //
 // @param request - GetAppWorkspaceDirectoryRequest
 //
@@ -4286,11 +4290,11 @@ func (client *Client) GetMiniAppAuthUrlWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the mini programs associated with a site.
+// Queries the mini programs bound to a site.
 //
 // Description:
 //
-// Retrieves the configuration information of the QR code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param tmpReq - GetMiniAppBindingRequest
 //
@@ -4348,7 +4352,7 @@ func (client *Client) GetMiniAppBindingWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Performs a conditional query for mini programs attached to an application instance.
+// Queries the mini programs attached to an application instance by using a conditional query.
 //
 // @param request - GetMiniAppBindingForAdminRequest
 //
@@ -4404,7 +4408,7 @@ func (client *Client) GetMiniAppBindingForAdminWithContext(ctx context.Context, 
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetOssUploadPolicyRequest
 //
@@ -4496,7 +4500,7 @@ func (client *Client) GetTempDownloadUrlWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Exchanges a temporary AccessKey pair for an access token.
+// Exchanges a temporary AccessKey for an access token.
 //
 // @param request - GetUserAccessTokenForPartnerRequest
 //
@@ -4604,11 +4608,11 @@ func (client *Client) GetUserTmpIdentityForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
-// Distributes promotional benefits from a partner.
+// Grants promotional benefits to partners.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information for the code generation plugin.
 //
 // @param request - GrantPromotionOfferForPartnerRequest
 //
@@ -4672,11 +4676,11 @@ func (client *Client) GrantPromotionOfferForPartnerWithContext(ctx context.Conte
 
 // Summary:
 //
-// Installs an application plug-in to the current user account.
+// Installs an application plugin to the current user account.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - InstallAppPluginRequest
 //
@@ -4834,11 +4838,11 @@ func (client *Client) ListAIStaffChatEventsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the conversation message list of an AI employee by paging.
+// Performs a paging query on the list of conversation messages for an AI agent.
 //
 // Description:
 //
-// Queries the AI session history for WanXiaoZhi 2.0.
+// Queries the AI conversation history for Wanxiaozhi 2.0.
 //
 // @param request - ListAIStaffChatMessagesRequest
 //
@@ -5132,11 +5136,11 @@ func (client *Client) ListAppConversationMessagesWithContext(ctx context.Context
 
 // Summary:
 //
-// Searches the conversation list.
+// Queries the conversation list.
 //
 // Description:
 //
-// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
+// Creates an AI conversation in Wanxiaozhi 2.0.
 //
 // @param request - ListAppConversationsRequest
 //
@@ -5208,7 +5212,7 @@ func (client *Client) ListAppConversationsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the list of HTTP 301 status code redirects for a website.
+// Queries the list of HTTP 301 status codes for a website.
 //
 // @param request - ListAppDomainRedirectRecordsRequest
 //
@@ -5340,7 +5344,7 @@ func (client *Client) ListAppInstanceDomainsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries application instances.
+// Queries a list of application instances.
 //
 // @param tmpReq - ListAppInstancesRequest
 //
@@ -5502,11 +5506,11 @@ func (client *Client) ListAppPluginConfigsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the list of application plug-in files.
+// Queries the list of application plugin files.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - ListAppPluginFilesRequest
 //
@@ -5554,11 +5558,11 @@ func (client *Client) ListAppPluginFilesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the list of application plug-in versions.
+// Queries the application plug-in versions.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plug-in.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListAppPluginVersionsRequest
 //
@@ -6034,11 +6038,11 @@ func (client *Client) ListMarketplaceAppPluginsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the list of my application plug-ins.
+// Queries the list of application plugins.
 //
 // Description:
 //
-// Retrieves the configuration information of code generation plug-ins.
+// Retrieves the configuration information of code generation plugins.
 //
 // @param request - ListMyAppPluginsRequest
 //
@@ -6654,7 +6658,7 @@ func (client *Client) ModifyAppInstanceSpecWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies a material folder.
+// Updates a material folder.
 //
 // @param request - ModifyMaterialDirectoryRequest
 //
@@ -6706,7 +6710,7 @@ func (client *Client) ModifyMaterialDirectoryWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies a material file.
+// Updates a material file.
 //
 // @param request - ModifyMaterialFileRequest
 //
@@ -6758,7 +6762,7 @@ func (client *Client) ModifyMaterialFileWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the status of a material file.
+// Updates the status of material files.
 //
 // @param tmpReq - ModifyMaterialFileStatusRequest
 //
@@ -6816,7 +6820,7 @@ func (client *Client) ModifyMaterialFileStatusWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Moves a material file folder.
+// Moves an asset folder.
 //
 // @param request - MoveMaterialDirectoryRequest
 //
@@ -6872,7 +6876,7 @@ func (client *Client) MoveMaterialDirectoryWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Moves media asset files.
+// Moves asset files.
 //
 // @param tmpReq - MoveMaterialFileRequest
 //
@@ -6930,11 +6934,11 @@ func (client *Client) MoveMaterialFileWithContext(ctx context.Context, tmpReq *M
 
 // Summary:
 //
-// Triggers a data change notification (for admin).
+// Triggers a data change notification for administrators.
 //
 // Description:
 //
-// Queries the application instance information.
+// Queries application instance information.
 //
 // @param request - NotifyAppNotificationForAdminRequest
 //
@@ -6990,7 +6994,7 @@ func (client *Client) NotifyAppNotificationForAdminWithContext(ctx context.Conte
 
 // Summary:
 //
-// Delists a website: switches the CDN back-to-origin configuration for all domain names under the site to an offline page.
+// Takes a website offline by switching the CDN back-to-origin requests for all domain names under the site to an offline page.
 //
 // @param request - OfflineAppInstanceRequest
 //
@@ -7034,7 +7038,7 @@ func (client *Client) OfflineAppInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Resumes a website by restoring the CDN back-to-origin rewrite rules to the normal path for all domain names under the site.
+// Restores a website to online status by reverting the CDN back-to-origin configuration for all domain names under the site to the normal path rewrite rules.
 //
 // @param request - OnlineAppInstanceRequest
 //
@@ -7234,11 +7238,11 @@ func (client *Client) OperateAppTemplateLikeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Operates on the Supabase instance information corresponding to a resource.
+// Retrieves the Supabase instance information for the operated resource.
 //
 // Description:
 //
-// Operates on the Supabase instance information corresponding to a resource.
+// The Supabase instance information for the operated resource.
 //
 // @param request - OperateSupabaseForAdminRequest
 //
@@ -7330,7 +7334,7 @@ func (client *Client) OperateSupabaseForAdminWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - PublishAppInstanceRequest
 //
@@ -7474,7 +7478,7 @@ func (client *Client) PushResourceMeasureWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the acquisition details of inspiration credits (the quota account list, including expiration marks).
+// Queries the acquisition details of inspiration points, including the list of quota accounts and their expiration status.
 //
 // Description:
 //
@@ -7666,7 +7670,7 @@ func (client *Client) QueryInspirationConsumeRecordsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the material folder tree.
+// Queries the asset folder tree.
 //
 // @param request - QueryMaterialDirectoryTreeRequest
 //
@@ -7718,7 +7722,7 @@ func (client *Client) QueryMaterialDirectoryTreeWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the details of a material file.
+// Queries the details of an asset file.
 //
 // @param request - QueryMaterialFileDetailRequest
 //
@@ -7766,7 +7770,7 @@ func (client *Client) QueryMaterialFileDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the list of material files.
+// Queries a list of asset files.
 //
 // @param tmpReq - QueryMaterialFileListRequest
 //
@@ -8284,11 +8288,11 @@ func (client *Client) QueryRbacUserRolesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the auth configuration of a Supabase instance associated with a resource.
+// Queries the authentication configuration of the Supabase instance associated with the resource.
 //
 // Description:
 //
-// Queries the auth configuration of a Supabase instance associated with a resource.
+// Queries the authentication configuration of the Supabase instance associated with the resource.
 //
 // @param request - QuerySupabaseAuthConfigsForAdminRequest
 //
@@ -8360,11 +8364,11 @@ func (client *Client) QuerySupabaseAuthConfigsForAdminWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the Supabase instance configuration information corresponding to a resource.
+// Queries the configuration information of the Supabase instance associated with a resource.
 //
 // Description:
 //
-// Queries the Supabase instance configuration information corresponding to a resource.
+// Queries the configuration information of the Supabase instance associated with a resource.
 //
 // @param request - QuerySupabaseConfigsForAdminRequest
 //
@@ -8432,11 +8436,11 @@ func (client *Client) QuerySupabaseConfigsForAdminWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the Supabase instance information corresponding to a resource.
+// Queries the information of the Supabase instance associated with a resource.
 //
 // Description:
 //
-// Queries the Supabase instance information corresponding to a resource.
+// Queries the information of the Supabase instance associated with a resource.
 //
 // @param request - QuerySupabaseInstanceInfoForAdminRequest
 //
@@ -9083,7 +9087,7 @@ func (client *Client) RewriteChannelTitleWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - RollbackAppCodeSnapshotRequest
 //
@@ -9135,7 +9139,7 @@ func (client *Client) RollbackAppCodeSnapshotWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the details of an application instance.
 //
 // @param request - RollbackAppInstancePublishRequest
 //
@@ -9191,11 +9195,11 @@ func (client *Client) RollbackAppInstancePublishWithContext(ctx context.Context,
 
 // Summary:
 //
-// Rolls back the version of an application plug-in.
+// Rolls back the version of an application plugin.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - RollbackAppPluginVersionRequest
 //
@@ -9935,7 +9939,7 @@ func (client *Client) TranslateChannelDraftWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Unbinds a domain name from a website and deletes the related DNS records.
+// Unbinds a domain name from a website and deletes the associated DNS records.
 //
 // @param request - UnbindAppDomainRequest
 //
@@ -9983,11 +9987,11 @@ func (client *Client) UnbindAppDomainWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Uninstalls an application plugin from the current user account.
+// Uninstalls an application plug-in from the current user account.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UninstallAppPluginRequest
 //
@@ -10303,11 +10307,11 @@ func (client *Client) UpdateAppInstanceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Updates an application plug-in.
+// Updates an application plugin.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateAppPluginRequest
 //
@@ -10575,7 +10579,7 @@ func (client *Client) UpdateAppSupabaseSecretWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Updates the binding information of a mini program.
+// Updates the binding information for a mini program.
 //
 // @param request - UpdateMiniAppBindingRequest
 //
@@ -10743,11 +10747,11 @@ func (client *Client) UpdateRbacRoleWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Uploads a new version of an application plug-in.
+// Uploads an application plugin version.
 //
 // Description:
 //
-// Retrieves the code generation plug-in configuration information.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UploadAppPluginVersionRequest
 //
@@ -10883,11 +10887,11 @@ func (client *Client) UploadAppSiteValidationFileWithContext(ctx context.Context
 
 // Summary:
 //
-// Uploads a material file.
+// Uploads an asset file.
 //
 // Description:
 //
-// The Supabase instance information corresponding to the operation resource.
+// The Supabase instance information corresponding to the resource.
 //
 // @param request - UploadMaterialFileRequest
 //

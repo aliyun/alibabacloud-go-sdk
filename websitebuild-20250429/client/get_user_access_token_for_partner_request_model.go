@@ -16,10 +16,15 @@ type iGetUserAccessTokenForPartnerRequest interface {
 }
 
 type GetUserAccessTokenForPartnerRequest struct {
-	SiteHost *string `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
-	// The credential for connecting to the cloud application.
+	// The website domain name.
 	//
-	// > This parameter is displayed for non-initial calls.
+	// example:
+	//
+	// abcd.scd.wanwang.xin
+	SiteHost *string `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
+	// The credential used to connect to the cloud application.
+	//
+	// > This parameter is displayed for subsequent calls.
 	//
 	// This parameter is required.
 	//

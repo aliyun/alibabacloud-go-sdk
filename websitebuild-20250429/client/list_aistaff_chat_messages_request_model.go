@@ -32,13 +32,13 @@ type ListAIStaffChatMessagesRequest struct {
 	//
 	// 81bc5a34-1d8d-4ef7-a208-7401c51b054b
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The number of records per page. Valid values: 10 to 100.
+	// The number of entries per page. Valid values: 10 to 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The gmtCreate value of the last record on the previous page. Leave this parameter empty for the first page.
+	// The creation time of the last entry on the previous page. Do not specify this parameter when you query the first page.
 	//
 	// example:
 	//

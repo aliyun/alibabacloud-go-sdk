@@ -32,25 +32,49 @@ type iAppOperationAddress interface {
 }
 
 type AppOperationAddress struct {
-	// The operation button list.
+	// The action button list.
 	Actions []*AppOperateAction `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
 	// The customer service design URL.
 	AiCustomerConfigUrl *string `json:"AiCustomerConfigUrl,omitempty" xml:"AiCustomerConfigUrl,omitempty"`
 	// The AI design URL.
 	AiDesignUrl *string `json:"AiDesignUrl,omitempty" xml:"AiDesignUrl,omitempty"`
 	// The application publishing URL.
+	//
+	// example:
+	//
+	// https://abcd.scd.wanwang.xin
 	AppPublishUrl *string `json:"AppPublishUrl,omitempty" xml:"AppPublishUrl,omitempty"`
-	// The overview page operation button list.
+	// The overview page action button list.
 	DashboardActions []*AppOperateAction `json:"DashboardActions,omitempty" xml:"DashboardActions,omitempty" type:"Repeated"`
 	// The professional design URL.
+	//
+	// example:
+	//
+	// https://zero.msea.aliyun.com/forward/v1/website/websiteLogin?bizId=WS20250915163734000001&callBackUrl=/Designer/index
 	DesignUrl *string `json:"DesignUrl,omitempty" xml:"DesignUrl,omitempty"`
 	// The application instance logon URL.
+	//
+	// example:
+	//
+	// https://zero.msea.aliyun.com/forward/v1/website/websiteLogin?bizId=WS20250915163734000001&callBackUrl=/Admin/SiteAdmin/Index
 	InstanceLoginUrl *string `json:"InstanceLoginUrl,omitempty" xml:"InstanceLoginUrl,omitempty"`
 	// The renewal purchase URL.
+	//
+	// example:
+	//
+	// https://common-buy.aliyun.com/?orderType=RENEW&commodityCode=domain_website_public_cn&instanceId=12313213
 	RenewBuyUrl *string `json:"RenewBuyUrl,omitempty" xml:"RenewBuyUrl,omitempty"`
 	// The service delivery URL.
+	//
+	// example:
+	//
+	// https://zero.msea.aliyun.com/forward/v1/website/websiteLogin?bizId=WS20250915163734000001&callBackUrl=/Admin/SiteAdmin/Index
 	ServerDeliveryUrl *string `json:"ServerDeliveryUrl,omitempty" xml:"ServerDeliveryUrl,omitempty"`
 	// The upgrade purchase URL.
+	//
+	// example:
+	//
+	// https://common-buy.aliyun.com/?orderType=UPGRADE&commodityCode=domain_website_public_cn&instanceId=12313213
 	UpgradeBuyUrl *string `json:"UpgradeBuyUrl,omitempty" xml:"UpgradeBuyUrl,omitempty"`
 }
 

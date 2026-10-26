@@ -28,13 +28,15 @@ type ListAppPluginsRequest struct {
 	//
 	// WD20250820143531000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The maximum number of results to return per query. Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results to return per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query. If there is no next query, this value is empty.
+	// The token used to start the next query. This parameter is empty if no more results are available.
 	//
 	// example:
 	//

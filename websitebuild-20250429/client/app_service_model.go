@@ -50,23 +50,31 @@ type AppService struct {
 	//
 	// WS20251211153330000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The creation time in ISO 8601 format in the UTC time zone (Z).
+	// The creation time in ISO 8601 format, in the UTC time zone (Z).
 	//
 	// example:
 	//
 	// 2025-07-30T02:08:40Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The deletion flag.
+	//
+	// example:
+	//
+	// 0
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The end time in ISO 8601 format in the UTC time zone (Z).
+	// The end time in ISO 8601 format, in the UTC time zone (Z).
 	//
 	// example:
 	//
 	// 2025-07-18T02:23:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// esp bizId
+	//
+	// example:
+	//
+	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -79,6 +87,10 @@ type AppService struct {
 	// WS20250915163734000001
 	InstanceBizId *string `json:"InstanceBizId,omitempty" xml:"InstanceBizId,omitempty"`
 	// The service name.
+	//
+	// example:
+	//
+	// Website design service
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of flow nodes.
 	NodeList []*TreeNode `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
@@ -93,8 +105,12 @@ type AppService struct {
 	// The service type description.
 	ServiceTypeText *string `json:"ServiceTypeText,omitempty" xml:"ServiceTypeText,omitempty"`
 	// The application identifier.
+	//
+	// example:
+	//
+	// inst-001
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The start time as a UNIX timestamp in milliseconds.
+	// The start time, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -107,6 +123,10 @@ type AppService struct {
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 123241414
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

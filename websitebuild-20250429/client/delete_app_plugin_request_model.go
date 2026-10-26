@@ -14,7 +14,7 @@ type iDeleteAppPluginRequest interface {
 }
 
 type DeleteAppPluginRequest struct {
-	// The gateway plug-in ID.
+	// The ID of the gateway plugin.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iUninstallAppPluginRequest interface {
 }
 
 type UninstallAppPluginRequest struct {
-	// The gateway plugin ID.
+	// The ID of the gateway plug-in.
 	//
 	// example:
 	//

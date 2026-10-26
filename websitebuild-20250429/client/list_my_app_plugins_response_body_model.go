@@ -34,19 +34,19 @@ type iListMyAppPluginsResponseBody interface {
 }
 
 type ListMyAppPluginsResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The name must start with a letter and can contain digits, letters, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
+	// The application name. The name must start with a letter and can contain digits, letters, underscores (_), and hyphens (-). It can be up to 36 characters in length.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type ListMyAppPluginsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- return parameter.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The task object.
 	Module *ListMyAppPluginsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -86,9 +86,9 @@ type ListMyAppPluginsResponseBody struct {
 	//
 	// example:
 	//
-	// System exception.
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -241,7 +241,7 @@ type ListMyAppPluginsResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to pagination limits, the server processes a maximum of 1000 recent records for the current query. If the results exceed 1000 entries, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// The result limit. In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
@@ -369,7 +369,7 @@ func (s *ListMyAppPluginsResponseBodyModule) Validate() error {
 }
 
 type ListMyAppPluginsResponseBodyModuleData struct {
-	// The plug-in category.
+	// The disk specifications.
 	//
 	// example:
 	//
@@ -393,25 +393,25 @@ type ListMyAppPluginsResponseBodyModuleData struct {
 	//
 	// 1556529068000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The popularity count.
+	// The popularity.
 	//
 	// example:
 	//
 	// 1
 	HotCount *int32 `json:"HotCount,omitempty" xml:"HotCount,omitempty"`
-	// The plug-in icon.
+	// The plugin description.
 	//
 	// example:
 	//
 	// -1
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The plug-in ID.
+	// The plugin ID.
 	//
 	// example:
 	//
 	// alipay-isv
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The plug-in name.
+	// The plugin name.
 	//
 	// example:
 	//
@@ -431,9 +431,9 @@ type ListMyAppPluginsResponseBodyModuleData struct {
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The visibility. Valid values:
 	//
-	// - **PUBLIC**: public.
+	// - **PUBLIC**: Public.
 	//
-	// - **PRIVATE**: private.
+	// - **PRIVATE**: Private.
 	//
 	// example:
 	//
@@ -553,7 +553,7 @@ func (s *ListMyAppPluginsResponseBodyModuleData) Validate() error {
 }
 
 type ListMyAppPluginsResponseBodyModuleNext struct {
-	// Converts controlType based on the associated public category.
+	// The controlType converted based on the associated public category.
 	//
 	// example:
 	//
@@ -577,25 +577,25 @@ type ListMyAppPluginsResponseBodyModuleNext struct {
 	//
 	// 2026-03-18T10:03:56+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The plug-in icon.
+	// The plugin description.
 	//
 	// example:
 	//
 	// @lADPDetfgMsFFUvNAkjNAkg
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The plug-in ID.
+	// The plugin ID.
 	//
 	// example:
 	//
 	// alipay-isv
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The plug-in name.
+	// The plugin name.
 	//
 	// example:
 	//
 	// trafficControl
 	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// The status. Valid values: unknown, init, testing, online.
+	// The status. Valid values: unknown, init, testing, and online.
 	//
 	// example:
 	//
@@ -609,9 +609,9 @@ type ListMyAppPluginsResponseBodyModuleNext struct {
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The visibility. Valid values:
 	//
-	// - **PUBLIC**: public.
+	// - **PUBLIC**: Public.
 	//
-	// - **PRIVATE**: private.
+	// - **PRIVATE**: Private.
 	//
 	// example:
 	//

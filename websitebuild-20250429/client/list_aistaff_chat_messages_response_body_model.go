@@ -34,19 +34,19 @@ type iListAIStaffChatMessagesResponseBody interface {
 }
 
 type ListAIStaffChatMessagesResponseBody struct {
-	// The access denied details.
+	// The access denial details.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The name of the app.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type ListAIStaffChatMessagesResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore it.
+	// The dynamic message. This parameter is not in use and can be ignored.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *ListAIStaffChatMessagesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -84,7 +84,7 @@ type ListAIStaffChatMessagesResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System error
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -211,9 +211,7 @@ func (s *ListAIStaffChatMessagesResponseBody) Validate() error {
 }
 
 type ListAIStaffChatMessagesResponseBodyModule struct {
-	// The sender type.
-	//
-	// Valid values:
+	// The sender type. Valid values:
 	//
 	// - **ADMIN**: System.
 	//
@@ -272,7 +270,7 @@ type ListAIStaffChatMessagesResponseBodyModuleMessages struct {
 	//
 	// success
 	ChatStatus *string `json:"ChatStatus,omitempty" xml:"ChatStatus,omitempty"`
-	// The ID of the data API operation that is called.
+	// The ID of the invoked data API.
 	//
 	// example:
 	//
@@ -296,7 +294,7 @@ type ListAIStaffChatMessagesResponseBodyModuleMessages struct {
 	//
 	// 1723532098
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -308,7 +306,7 @@ type ListAIStaffChatMessagesResponseBodyModuleMessages struct {
 	//
 	// 1dafa033-e72b-44c2-99b7-bc202c5b6198
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The business extension metadata in Map format. The value must be a JSON string.
+	// The business extension metadata. The value must be a JSON string in map format.
 	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	// The role of the conversation participant. Valid values:
 	//
@@ -320,7 +318,7 @@ type ListAIStaffChatMessagesResponseBodyModuleMessages struct {
 	//
 	// - function: Function.
 	//
-	// - plugin: Plugin.
+	// - plugin: Plug-in.
 	//
 	// - tool: Tool.
 	//

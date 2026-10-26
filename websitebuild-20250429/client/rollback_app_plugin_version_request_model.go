@@ -16,13 +16,13 @@ type iRollbackAppPluginVersionRequest interface {
 }
 
 type RollbackAppPluginVersionRequest struct {
-	// The gateway plug-in ID.
+	// The ID of the gateway plugin.
 	//
 	// example:
 	//
 	// 1bae9ceaceea432d91c7069fab0dfc02
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The target version number.
+	// The target version.
 	//
 	// example:
 	//

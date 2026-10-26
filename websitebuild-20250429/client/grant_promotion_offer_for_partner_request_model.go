@@ -25,6 +25,10 @@ type iGrantPromotionOfferForPartnerRequest interface {
 
 type GrantPromotionOfferForPartnerRequest struct {
 	// The activity code.
+	//
+	// example:
+	//
+	// ACT202606001
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
 	// The activity ID.
 	//
@@ -44,7 +48,7 @@ type GrantPromotionOfferForPartnerRequest struct {
 	//
 	// WECHAT
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The employee code.
+	// The employee ID.
 	//
 	// example:
 	//

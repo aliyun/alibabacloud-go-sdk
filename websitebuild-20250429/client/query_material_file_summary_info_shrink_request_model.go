@@ -46,19 +46,19 @@ type QueryMaterialFileSummaryInfoShrinkRequest struct {
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//
-	// 文件名
+	// File name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The field by which to sort the results.
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC and DESC.
+	// The sort order. Valid values: ASC, DESC.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type QueryMaterialFileSummaryInfoShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The file status.
+	// The file statuses.
 	StatusListShrink *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	// The file type.
+	// The file types.
 	TypeListShrink *string `json:"TypeList,omitempty" xml:"TypeList,omitempty"`
 }
 

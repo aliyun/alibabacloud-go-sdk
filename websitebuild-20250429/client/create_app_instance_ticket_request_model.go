@@ -24,13 +24,14 @@ type CreateAppInstanceTicketRequest struct {
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The Client ID of the device for which you want to revoke the access credential.
+	// The client ID of the device whose access credentials need to be revoked.
 	//
 	// example:
 	//
 	// d566aaf2-7c88-40a4-982f-6abef0be13c9
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The user role that the ticket will assume.
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s CreateAppInstanceTicketRequest) String() string {

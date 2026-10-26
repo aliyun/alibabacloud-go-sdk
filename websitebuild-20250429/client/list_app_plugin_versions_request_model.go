@@ -18,7 +18,7 @@ type iListAppPluginVersionsRequest interface {
 }
 
 type ListAppPluginVersionsRequest struct {
-	// The current page number. The value must be an integer greater than 0. Default value: 1.
+	// The page number. Valid values: integers greater than 0. Default value: 1.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListAppPluginVersionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The gateway plug-in ID.
+	// The ID of the gateway plug-in.
 	//
 	// example:
 	//

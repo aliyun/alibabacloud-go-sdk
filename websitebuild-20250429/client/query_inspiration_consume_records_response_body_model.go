@@ -34,13 +34,13 @@ type iQueryInspirationConsumeRecordsResponseBody interface {
 }
 
 type QueryInspirationConsumeRecordsResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed cause of the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retries are allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type QueryInspirationConsumeRecordsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not used. Ignore this parameter.
+	// The dynamic message. This field is not in use and can be ignored.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type QueryInspirationConsumeRecordsResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Specifies whether the deletion is successful.
+	// Indicates whether the deletion is successful.
 	Module *QueryInspirationConsumeRecordsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -217,11 +217,11 @@ type QueryInspirationConsumeRecordsResponseBodyModule struct {
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request results.
+	// The request result.
 	Data []*QueryInspirationConsumeRecordsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The ID of the next feature.
 	Next *QueryInspirationConsumeRecordsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	// Specifies whether a next page exists.
+	// Indicates whether a next page exists.
 	//
 	// example:
 	//
@@ -233,13 +233,13 @@ type QueryInspirationConsumeRecordsResponseBodyModule struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether a previous page exists.
+	// Indicates whether a previous page exists.
 	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//
@@ -382,6 +382,10 @@ type QueryInspirationConsumeRecordsResponseBodyModuleData struct {
 	// 2026-06-01 12:00:00
 	ConsumeTime *string `json:"ConsumeTime,omitempty" xml:"ConsumeTime,omitempty"`
 	// The consumption type.
+	//
+	// example:
+	//
+	// 1 round of conversation
 	ConsumeType *string `json:"ConsumeType,omitempty" xml:"ConsumeType,omitempty"`
 	// The extended information in JSON string format.
 	//
@@ -390,8 +394,12 @@ type QueryInspirationConsumeRecordsResponseBodyModuleData struct {
 	// {\\"MD5\\":\\"296f6c01e7fea2697ffe1cf41082b774\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	// The unique identifier of the consumption record.
+	//
+	// example:
+	//
+	// RECORD_1
 	RecordKey *string `json:"RecordKey,omitempty" xml:"RecordKey,omitempty"`
-	// The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, or AI content creation.
+	// The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, and AI content creation.
 	//
 	// example:
 	//
@@ -494,6 +502,10 @@ type QueryInspirationConsumeRecordsResponseBodyModuleNext struct {
 	// 2026-06-01 12:00:00
 	ConsumeTime *string `json:"ConsumeTime,omitempty" xml:"ConsumeTime,omitempty"`
 	// The consumption type.
+	//
+	// example:
+	//
+	// 1 round of conversation
 	ConsumeType *string `json:"ConsumeType,omitempty" xml:"ConsumeType,omitempty"`
 	// The extended information in JSON string format.
 	//
@@ -501,7 +513,7 @@ type QueryInspirationConsumeRecordsResponseBodyModuleNext struct {
 	//
 	// {\\"MD5\\":\\"1042e65a2b7cdd3059b6a873ee1a3260\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, or AI content creation.
+	// The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, and AI content creation.
 	//
 	// example:
 	//

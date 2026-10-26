@@ -40,7 +40,7 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,9 +58,7 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the error message returned by **ErrMessage**.
-	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter. If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -68,13 +66,13 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The data table module.
+	// The data table module. Valid values:
 	//
-	// - ABTest: experiment data table
+	// - ABTest: Experiment data table.
 	//
-	// - ExperimentTool: experiment tool table
+	// - ExperimentTool: Experiment tool table.
 	//
-	// - DataDiagnosis: data diagnosis
+	// - DataDiagnosis: Data diagnosis.
 	Module *GetAppRecommendedCommoditiesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -254,7 +252,7 @@ func (s *GetAppRecommendedCommoditiesResponseBodyModule) Validate() error {
 }
 
 type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
-	// The click action type. Valid values: CONSULT (add WeCom), BUY (purchase), and AUTO (automatic issuance).
+	// The click action type. Valid values: CONSULT, BUY, and AUTO.
 	//
 	// example:
 	//
@@ -267,10 +265,14 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The display description of the recommendation.
+	//
+	// example:
+	//
+	// Add a WeCom consultant to receive inspiration points for free
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extended fields, such as unsupportedReason.
 	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The order type. Valid values: BUY (purchase) and UPGRADE (upgrade).
+	// The order type. Valid values: BUY and UPGRADE.
 	//
 	// example:
 	//
@@ -288,7 +290,7 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	//
 	// 12345
 	PromotionCommodityId *string `json:"PromotionCommodityId,omitempty" xml:"PromotionCommodityId,omitempty"`
-	// The recommendation type. Valid values: COMMODITY (commodity recommendation) and ACTIVITY (promotion activity recommendation).
+	// The recommendation type. Valid values: COMMODITY and ACTIVITY.
 	//
 	// example:
 	//
@@ -307,6 +309,10 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The display title of the recommendation.
+	//
+	// example:
+	//
+	// Add a consultant as a friend to receive an extra 1,000 inspiration points
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

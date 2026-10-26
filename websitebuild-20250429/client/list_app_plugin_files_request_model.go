@@ -16,13 +16,13 @@ type iListAppPluginFilesRequest interface {
 }
 
 type ListAppPluginFilesRequest struct {
-	// The gateway plug-in ID.
+	// The ID of the gateway plugin.
 	//
 	// example:
 	//
 	// aliplayer-react
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The version number. If not specified, the currently active version is used.
+	// The version number. If you do not specify this parameter, the currently active version is used.
 	//
 	// example:
 	//

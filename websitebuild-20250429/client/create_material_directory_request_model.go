@@ -32,7 +32,7 @@ type CreateMaterialDirectoryRequest struct {
 	//
 	// example:
 	//
-	// 图片管理
+	// Image management
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The parent folder ID.
 	//

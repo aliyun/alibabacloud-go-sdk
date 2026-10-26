@@ -30,13 +30,13 @@ type SetAppDomainCertificateRequest struct {
 	//
 	// WD20250821161210000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The SSL certificate name.
+	// The name of the SSL certificate.
 	//
 	// example:
 	//
 	// 2024
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The certificate type: default free certificate or customer-owned certificate.
+	// The certificate type. Valid values: default free certificate and customer-owned certificate.
 	//
 	// example:
 	//

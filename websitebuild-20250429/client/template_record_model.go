@@ -32,7 +32,11 @@ type TemplateRecord struct {
 	//
 	// WS20250915163734000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The replication status.
+	// The copy status.
+	//
+	// example:
+	//
+	// copying
 	CopyStatus *string `json:"CopyStatus,omitempty" xml:"CopyStatus,omitempty"`
 	// The creation time.
 	//
@@ -42,7 +46,7 @@ type TemplateRecord struct {
 	//
 	// 2022-12-21T08:27:03Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -63,6 +67,10 @@ type TemplateRecord struct {
 	// de10bf7d782392a70f293a3b1f7bb8fc
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 12343131221311
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

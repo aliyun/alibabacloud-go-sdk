@@ -34,19 +34,19 @@ type iNotifyAppNotificationForAdminResponseBody interface {
 }
 
 type NotifyAppNotificationForAdminResponseBody struct {
-	// The detailed reason why access was denied.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
+	// The application name. It must start with a letter and can contain digits, letters, underscores (_), and hyphens (-). It can be up to 36 characters in length.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type NotifyAppNotificationForAdminResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message. This parameter is used to replace the %s placeholder in the ErrMessage error message.
+	// The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The error arguments.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	//

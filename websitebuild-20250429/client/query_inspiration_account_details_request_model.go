@@ -26,7 +26,7 @@ type iQueryInspirationAccountDetailsRequest interface {
 }
 
 type QueryInspirationAccountDetailsRequest struct {
-	// The end time of the query. The time is in ISO 8601 format and in the UTC (Z) time zone.
+	// The end time of the query. The time is in the ISO 8601 standard and the UTC (Z) time zone.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type QueryInspirationAccountDetailsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The filter for the source type. Examples: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
+	// The source type filter, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
 	//
 	// example:
 	//
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time of the query. The time is in ISO 8601 format and in the UTC (Z) time zone.
+	// The start time of the query. The time is in the ISO 8601 standard and the UTC (Z) time zone.
 	//
 	// example:
 	//

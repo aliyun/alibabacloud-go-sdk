@@ -34,23 +34,23 @@ type iCheckUserResourceMeasureResponseBody interface {
 }
 
 type CheckUserResourceMeasureResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed. Valid values:
+	// Specifies whether retries are allowed. Valid values:
 	//
-	// - false: A retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: A retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -62,17 +62,17 @@ type CheckUserResourceMeasureResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response element.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error arguments.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The response object.
+	// The returned object.
 	Module *CheckUserResourceMeasureResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -80,19 +80,19 @@ type CheckUserResourceMeasureResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error code.
+	// The root error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The exception message.
+	// The root error message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The backup parameter.
 	//
 	// example:
 	//
@@ -217,30 +217,48 @@ func (s *CheckUserResourceMeasureResponseBody) Validate() error {
 }
 
 type CheckUserResourceMeasureResponseBodyModule struct {
-	// The error code when the check fails. This value is null when the check passes.
+	// Returned only for APP_WORKSPACE: the target total for this check, which is the used quota in the saved configuration plus ResourceValue. If the compatible DesiredTotal is provided, this total is used directly. The used quota for questions is the sum of common and word-of-mouth questions in the saved configuration. The used quota for competitors is the number of competitors. This field is empty for APP and USER checks.
+	//
+	// example:
+	//
+	// 21
+	DesiredTotal *int64 `json:"DesiredTotal,omitempty" xml:"DesiredTotal,omitempty"`
+	// The error code when the check fails. This field is null when the check passes.
 	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message when the check fails. This value is null when the check passes.
+	// The error message when the check fails. This field is null when the check passes.
 	//
 	// example:
 	//
 	// stream push failed
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Returned only for APP_WORKSPACE quantity dry runs: the maximum number of questions or competitors allowed by the current commodity edition, not the remaining quota. This field is empty for APP and USER checks or when the edition benefits cannot be determined.
+	//
+	// example:
+	//
+	// 20
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// Indicates whether the check is passed.
 	//
 	// example:
 	//
 	// False
 	Passed *bool `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The resource identifier.
+	// The resource code.
 	//
 	// example:
 	//
 	// TransitRouterVpcAttachment
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
+	// Indicates whether a purchasable higher edition exists that can accommodate the DesiredTotal. This field is true only when the current edition capacity is insufficient and a higher edition meets the requirements. Otherwise, it is false. This field may be empty for APP and USER checks. This field does not indicate that an upgrade has been performed or an upgrade order has been created.
+	//
+	// example:
+	//
+	// true
+	UpgradeAvailable *bool `json:"UpgradeAvailable,omitempty" xml:"UpgradeAvailable,omitempty"`
 }
 
 func (s CheckUserResourceMeasureResponseBodyModule) String() string {
@@ -251,6 +269,10 @@ func (s CheckUserResourceMeasureResponseBodyModule) GoString() string {
 	return s.String()
 }
 
+func (s *CheckUserResourceMeasureResponseBodyModule) GetDesiredTotal() *int64 {
+	return s.DesiredTotal
+}
+
 func (s *CheckUserResourceMeasureResponseBodyModule) GetErrorCode() *string {
 	return s.ErrorCode
 }
@@ -259,12 +281,25 @@ func (s *CheckUserResourceMeasureResponseBodyModule) GetErrorMessage() *string {
 	return s.ErrorMessage
 }
 
+func (s *CheckUserResourceMeasureResponseBodyModule) GetLimit() *int64 {
+	return s.Limit
+}
+
 func (s *CheckUserResourceMeasureResponseBodyModule) GetPassed() *bool {
 	return s.Passed
 }
 
 func (s *CheckUserResourceMeasureResponseBodyModule) GetResourceCode() *string {
 	return s.ResourceCode
+}
+
+func (s *CheckUserResourceMeasureResponseBodyModule) GetUpgradeAvailable() *bool {
+	return s.UpgradeAvailable
+}
+
+func (s *CheckUserResourceMeasureResponseBodyModule) SetDesiredTotal(v int64) *CheckUserResourceMeasureResponseBodyModule {
+	s.DesiredTotal = &v
+	return s
 }
 
 func (s *CheckUserResourceMeasureResponseBodyModule) SetErrorCode(v string) *CheckUserResourceMeasureResponseBodyModule {
@@ -277,6 +312,11 @@ func (s *CheckUserResourceMeasureResponseBodyModule) SetErrorMessage(v string) *
 	return s
 }
 
+func (s *CheckUserResourceMeasureResponseBodyModule) SetLimit(v int64) *CheckUserResourceMeasureResponseBodyModule {
+	s.Limit = &v
+	return s
+}
+
 func (s *CheckUserResourceMeasureResponseBodyModule) SetPassed(v bool) *CheckUserResourceMeasureResponseBodyModule {
 	s.Passed = &v
 	return s
@@ -284,6 +324,11 @@ func (s *CheckUserResourceMeasureResponseBodyModule) SetPassed(v bool) *CheckUse
 
 func (s *CheckUserResourceMeasureResponseBodyModule) SetResourceCode(v string) *CheckUserResourceMeasureResponseBodyModule {
 	s.ResourceCode = &v
+	return s
+}
+
+func (s *CheckUserResourceMeasureResponseBodyModule) SetUpgradeAvailable(v bool) *CheckUserResourceMeasureResponseBodyModule {
+	s.UpgradeAvailable = &v
 	return s
 }
 

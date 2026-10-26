@@ -34,19 +34,19 @@ type iAllocateSupabaseForAdminResponseBody interface {
 }
 
 type AllocateSupabaseForAdminResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The name of the app.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type AllocateSupabaseForAdminResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *AllocateSupabaseForAdminResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -80,13 +80,13 @@ type AllocateSupabaseForAdminResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Specifies whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -241,13 +241,13 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// 111
 	DbPublicUrl *string `json:"DbPublicUrl,omitempty" xml:"DbPublicUrl,omitempty"`
-	// The database type.
+	// The type of the database.
 	//
 	// example:
 	//
 	// ORACLE
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The extra information.
+	// The additional information.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// 111
 	InstanceCreateFinishedTime *string `json:"InstanceCreateFinishedTime,omitempty" xml:"InstanceCreateFinishedTime,omitempty"`
-	// The instance creation status.
+	// The creation status of the instance.
 	//
 	// example:
 	//
@@ -271,7 +271,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// false
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The password used to access the ApsaraDB RDS database.
+	// The access password of the RDS database.
 	//
 	// example:
 	//
@@ -283,7 +283,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// e80f5a7a08514709a2fb
 	ServiceKey *string `json:"ServiceKey,omitempty" xml:"ServiceKey,omitempty"`
-	// The instance status. Valid values:
+	// The status of the instance. Valid values:
 	//
 	// - 0: Paused.
 	//
@@ -341,7 +341,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// 111
 	SupabasePublicUrl *string `json:"SupabasePublicUrl,omitempty" xml:"SupabasePublicUrl,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//

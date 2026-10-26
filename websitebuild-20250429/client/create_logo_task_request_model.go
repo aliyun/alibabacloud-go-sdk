@@ -20,12 +20,17 @@ type iCreateLogoTaskRequest interface {
 }
 
 type CreateLogoTaskRequest struct {
+	// The logo generation version number. Different versions use different parameter parsing methods.
+	//
+	// example:
+	//
+	// v1
 	LogoVersion *string `json:"LogoVersion,omitempty" xml:"LogoVersion,omitempty"`
 	// The negative prompt.
 	//
 	// example:
 	//
-	// 不生成政治相关图片内容
+	// Do not generate politically related image content
 	NegativePrompt *string `json:"NegativePrompt,omitempty" xml:"NegativePrompt,omitempty"`
 	// The task parameters.
 	//
@@ -37,7 +42,7 @@ type CreateLogoTaskRequest struct {
 	//
 	// example:
 	//
-	// 请严格遵照原文提取稿件的摘要，不要随意捏造和修改文中出现的新闻数据，不要改变原文的意思和新闻事实，不要在摘要中添加自己的观点。生成的摘要不要出现语法和标点的错误。在生成摘要时请去掉里面的记者、通讯员、稿件来源等信息。
+	// Strictly extract the summary of the article based on the original text. Do not fabricate or modify the news data in the text, change the original meaning or news facts, or add your own opinions to the summary. Ensure that the generated summary is free of grammatical and punctuation errors. Remove information such as the reporter, correspondent, and source when generating the summary
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 }
 

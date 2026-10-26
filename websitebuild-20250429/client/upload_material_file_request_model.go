@@ -48,9 +48,9 @@ type UploadMaterialFileRequest struct {
 	//
 	// example:
 	//
-	// TestFile
+	// Test file
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The OSS object key.
+	// The key of the OSS object.
 	//
 	// example:
 	//

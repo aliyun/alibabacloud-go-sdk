@@ -34,13 +34,13 @@ type ModifyMaterialFileRequest struct {
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The new name of the file after modification.
+	// The updated file name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试文件
+	// Test file
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

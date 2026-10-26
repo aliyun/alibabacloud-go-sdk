@@ -55,14 +55,22 @@ type AppServiceAggregate struct {
 	// WS20251211153330000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The deletion flag.
+	//
+	// example:
+	//
+	// 0
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The end time. It is in ISO 8601 format and uses the UTC (Z) time zone.
+	// The end time. It is in ISO 8601 format and uses the UTC time zone (Z).
 	//
 	// example:
 	//
 	// 2025-07-18T02:23:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// esp bizId
+	//
+	// example:
+	//
+	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
 	// The creation time.
 	//
@@ -85,10 +93,14 @@ type AppServiceAggregate struct {
 	// WS20250915163734000001
 	InstanceBizId *string `json:"InstanceBizId,omitempty" xml:"InstanceBizId,omitempty"`
 	// The service name.
+	//
+	// example:
+	//
+	// Website design service
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of flow nodes.
 	NodeList []*TreeNode `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
-	// The unique identifier for an operation.
+	// Uniquely identifies an operation.
 	OperationAddress *AppOperationAddress `json:"OperationAddress,omitempty" xml:"OperationAddress,omitempty"`
 	// The configuration information of the application service.
 	Profile *AppServiceProfile `json:"Profile,omitempty" xml:"Profile,omitempty"`
@@ -101,6 +113,10 @@ type AppServiceAggregate struct {
 	// The description of the service type.
 	ServiceTypeText *string `json:"ServiceTypeText,omitempty" xml:"ServiceTypeText,omitempty"`
 	// The application identifier.
+	//
+	// example:
+	//
+	// inst-001
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
 	// The start time. It is a UNIX timestamp in milliseconds.
 	//
@@ -115,6 +131,10 @@ type AppServiceAggregate struct {
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 123241414
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

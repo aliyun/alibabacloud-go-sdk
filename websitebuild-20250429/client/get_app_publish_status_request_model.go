@@ -24,7 +24,7 @@ type GetAppPublishStatusRequest struct {
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The deployment order ID.
+	// The deployment ticket ID.
 	//
 	// example:
 	//

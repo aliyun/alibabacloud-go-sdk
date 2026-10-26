@@ -32,7 +32,7 @@ type RollbackAppInstancePublishRequest struct {
 	//
 	// PC
 	DeployChannel *string `json:"DeployChannel,omitempty" xml:"DeployChannel,omitempty"`
-	// The publish number.
+	// The release number.
 	//
 	// example:
 	//

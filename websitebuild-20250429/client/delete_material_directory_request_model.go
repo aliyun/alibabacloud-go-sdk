@@ -22,7 +22,7 @@ type DeleteMaterialDirectoryRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The folder ID.
+	// The ID of the folder.
 	//
 	// example:
 	//

@@ -33,8 +33,12 @@ type NotifyAppNotificationForAdminRequest struct {
 	// staging
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The notification content.
+	//
+	// example:
+	//
+	// {"type":"UPDATE","record":{"name":"new","contact":null},"old_record":{"name":"old"}}
 	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	// The scene ID.
+	// The scenario ID.
 	//
 	// example:
 	//

@@ -33,10 +33,22 @@ type AppServiceProfile struct {
 	// WS20250801003834000003
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The design type.
+	//
+	// example:
+	//
+	// Language_Pack
 	DesignType *string `json:"DesignType,omitempty" xml:"DesignType,omitempty"`
 	// The design type description.
+	//
+	// example:
+	//
+	// Language pack
 	DesignTypeText *string `json:"DesignTypeText,omitempty" xml:"DesignTypeText,omitempty"`
 	// The Lingxiao instance ID.
+	//
+	// example:
+	//
+	// lx-1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The order ID.
 	//
@@ -51,6 +63,10 @@ type AppServiceProfile struct {
 	// 8
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
 	// The service specification description.
+	//
+	// example:
+	//
+	// Basic edition
 	ServiceSpecText *string `json:"ServiceSpecText,omitempty" xml:"ServiceSpecText,omitempty"`
 }
 

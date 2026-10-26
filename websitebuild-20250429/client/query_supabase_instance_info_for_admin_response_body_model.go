@@ -40,7 +40,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type QuerySupabaseInstanceInfoForAdminResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which replaces the `%s` placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *QuerySupabaseInstanceInfoForAdminResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -243,25 +243,25 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// 111
 	DbPublicUrl *string `json:"DbPublicUrl,omitempty" xml:"DbPublicUrl,omitempty"`
-	// The database type (rds/polardb).
+	// The database type. Valid values: rds, polardb.
 	//
 	// example:
 	//
 	// ORACLE
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The extra information.
+	// The additional information.
 	//
 	// example:
 	//
 	// {\\"appId\\":\\"APP_NTJAK8P11SNZDJ3M6BWC\\"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// The time when the instance creation was completed.
+	// The completion time of the instance creation.
 	//
 	// example:
 	//
 	// 111
 	InstanceCreateFinishedTime *string `json:"InstanceCreateFinishedTime,omitempty" xml:"InstanceCreateFinishedTime,omitempty"`
-	// The instance creation status.
+	// The creation status of the instance.
 	//
 	// example:
 	//
@@ -273,7 +273,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// false
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The access password of the RDS database.
+	// The access password for the RDS database.
 	//
 	// example:
 	//
@@ -285,11 +285,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// e80f5a7a08514709a2fb
 	ServiceKey *string `json:"ServiceKey,omitempty" xml:"ServiceKey,omitempty"`
-	// The status. Valid values:
-	//
-	// - 0: Paused.
-	//
-	// - 1: Running.
+	// The status. Valid values: 0: Paused. 1: Running.
 	//
 	// example:
 	//
@@ -331,7 +327,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// 1111
 	SupabasePrivateIp *string `json:"SupabasePrivateIp,omitempty" xml:"SupabasePrivateIp,omitempty"`
-	// The public endpoint of the Supabase instance.
+	// The public network connection endpoint of the Supabase instance.
 	//
 	// example:
 	//

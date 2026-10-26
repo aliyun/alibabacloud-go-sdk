@@ -32,9 +32,17 @@ type ReconnectAppChatRequest struct {
 	//
 	// 5b7105a2-2999-430b-ba23-ba09149d5434
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The last event ID.
+	// The ID of the last event.
+	//
+	// example:
+	//
+	// 1
 	LastEventId *int32 `json:"LastEventId,omitempty" xml:"LastEventId,omitempty"`
 	// The creation time of the latest message.
+	//
+	// example:
+	//
+	// 2025-08-28 10:25:41
 	LatestMessageCreateTime *string `json:"LatestMessageCreateTime,omitempty" xml:"LatestMessageCreateTime,omitempty"`
 }
 

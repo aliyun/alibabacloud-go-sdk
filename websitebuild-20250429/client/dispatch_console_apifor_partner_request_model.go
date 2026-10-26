@@ -22,19 +22,25 @@ type iDispatchConsoleAPIForPartnerRequest interface {
 }
 
 type DispatchConsoleAPIForPartnerRequest struct {
+	// The access token obtained by calling GetUserAccessTokenForPartner.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 00a00aaa-a000-00a0-a0a0-a0a0a000a00a
 	LiveToken *string `json:"LiveToken,omitempty" xml:"LiveToken,omitempty"`
-	// The operation to perform on the alert. Valid values:
+	// Specifies the operation to perform on the alert. Valid values:
 	//
-	// - **deal**: handles the alert (quarantine).
+	// - **deal**: Handles the alert (quarantine).
 	//
-	// - **ignore**: ignores the alert.
+	// - **ignore**: Ignores the alert.
 	//
-	// - **mark_mis_info**: marks the alert as a false positive (adds it to the whitelist).
+	// - **mark_mis_info**: Marks the alert as a false positive (adds it to the whitelist).
 	//
-	// - **rm_mark_mis_info**: unmarks the alert as a false positive (removes it from the whitelist).
+	// - **rm_mark_mis_info**: Unmarks the alert as a false positive (removes it from the whitelist).
 	//
-	// - **offline_handled**: marks the alert as handled.
+	// - **offline_handled**: Marks the alert as handled.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +61,12 @@ type DispatchConsoleAPIForPartnerRequest struct {
 	// example:
 	//
 	// hbaseue
-	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The website domain name.
+	//
+	// example:
+	//
+	// abcd.scd.wanwang.xin
 	SiteHost *string `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
 }
 

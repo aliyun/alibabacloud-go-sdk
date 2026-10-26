@@ -34,7 +34,7 @@ type iGetAppPublishStatusResponseBody interface {
 }
 
 type GetAppPublishStatusResponseBody struct {
-	// The details of the access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
@@ -224,6 +224,10 @@ type GetAppPublishStatusResponseBodyModule struct {
 	// PRE_CHECK
 	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
 	// The code of the current publish step.
+	//
+	// example:
+	//
+	// INIT
 	CurrentStepCode *string `json:"CurrentStepCode,omitempty" xml:"CurrentStepCode,omitempty"`
 	// The deployment channel.
 	//
@@ -244,6 +248,10 @@ type GetAppPublishStatusResponseBodyModule struct {
 	// abc
 	ErrorStep *string `json:"ErrorStep,omitempty" xml:"ErrorStep,omitempty"`
 	// The code of the publish step where the error occurred.
+	//
+	// example:
+	//
+	// BUILDING
 	ErrorStepCode *string `json:"ErrorStepCode,omitempty" xml:"ErrorStepCode,omitempty"`
 	// Indicates whether the task is completed.
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
@@ -251,27 +259,31 @@ type GetAppPublishStatusResponseBodyModule struct {
 	//
 	// - `true`: The call is successful.
 	//
-	// - `false`: The call fails.
+	// - `false`: The call failed.
 	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The additional information.
+	// The additional description.
 	//
 	// example:
 	//
 	// common notify successfully.
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The sort order.
+	// The sorting type, such as ASC or DESC.
 	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The code of the publish order type.
+	//
+	// example:
+	//
+	// DEPLOY
 	OrderTypeCode *string `json:"OrderTypeCode,omitempty" xml:"OrderTypeCode,omitempty"`
-	// The task completion percentage.
+	// The completion percentage of the task.
 	//
 	// example:
 	//
@@ -308,6 +320,10 @@ type GetAppPublishStatusResponseBodyModule struct {
 	// The error level. Valid values: FATAL, ERROR, WARNING, and CRITICAL.
 	Steps []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
 	// The publish subchannel.
+	//
+	// example:
+	//
+	// wx0123456789abcdef
 	Subchannel *string `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
 }
 

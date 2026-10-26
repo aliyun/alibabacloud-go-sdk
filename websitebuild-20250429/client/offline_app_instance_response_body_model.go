@@ -34,13 +34,13 @@ type iOfflineAppInstanceResponseBody interface {
 }
 
 type OfflineAppInstanceResponseBody struct {
-	// The deprecated parameter. You can ignore this parameter.
+	// **[Deprecated]*	- This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type OfflineAppInstanceResponseBody struct {
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the shift was successful.
+	// Indicates whether the move succeeded.
 	//
 	// example:
 	//
@@ -84,11 +84,11 @@ type OfflineAppInstanceResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//

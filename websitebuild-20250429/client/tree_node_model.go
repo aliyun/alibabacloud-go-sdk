@@ -54,7 +54,7 @@ type TreeNode struct {
 	//
 	// example:
 	//
-	// Single-channel output
+	// Single output
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The node status.
 	//
@@ -63,6 +63,10 @@ type TreeNode struct {
 	// UP
 	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
 	// The operator role.
+	//
+	// example:
+	//
+	// System
 	OperatorRole *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
 	// The parent node ID.
 	//

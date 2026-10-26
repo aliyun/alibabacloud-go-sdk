@@ -22,7 +22,7 @@ type iCreateLogoTaskResponseBody interface {
 }
 
 type CreateLogoTaskResponseBody struct {
-	// The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
+	// The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error code list in this topic.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type CreateLogoTaskResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The task ID returned when the call is successful. Keep this ID safe. This ID is required when you query the creation status.
+	// The task ID returned when the call is successful. Note: Keep this ID secure. You must use this ID to query the device creation status.
 	//
 	// example:
 	//

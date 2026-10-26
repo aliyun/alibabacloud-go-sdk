@@ -43,6 +43,10 @@ type ListAppPublishHistoryRequest struct {
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The deployment channel.
+	//
+	// example:
+	//
+	// PC
 	DeployChannel *string `json:"DeployChannel,omitempty" xml:"DeployChannel,omitempty"`
 	// The search keyword.
 	//
@@ -56,7 +60,7 @@ type ListAppPublishHistoryRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query. This parameter is empty if no next query is available.
+	// The token that is used to start the next query. If no next query exists, this parameter is empty.
 	//
 	// example:
 	//
@@ -75,6 +79,10 @@ type ListAppPublishHistoryRequest struct {
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The release environment.
+	//
+	// example:
+	//
+	// PROD
 	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
 	// The sort order.
 	//
@@ -88,7 +96,11 @@ type ListAppPublishHistoryRequest struct {
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The release subchannel.
+	// The release sub-channel.
+	//
+	// example:
+	//
+	// current
 	Subchannel *string `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
 	// The website domain name.
 	//

@@ -40,15 +40,13 @@ type ListAppConversationsRequest struct {
 	//
 	// 20201212
 	EndModifyTime *string `json:"EndModifyTime,omitempty" xml:"EndModifyTime,omitempty"`
-	// The number of entries per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results to return for a single query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token that is used to start the next query. If no next query is available, this parameter is empty.
 	//
 	// example:
 	//

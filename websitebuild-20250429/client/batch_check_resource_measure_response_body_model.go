@@ -40,7 +40,7 @@ type BatchCheckResourceMeasureResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type BatchCheckResourceMeasureResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error code.
+	// The root error code.
 	//
 	// example:
 	//
@@ -211,9 +211,9 @@ func (s *BatchCheckResourceMeasureResponseBody) Validate() error {
 }
 
 type BatchCheckResourceMeasureResponseBodyModule struct {
-	// Indicates whether all checks are passed.
+	// Indicates whether all checks passed.
 	AllPassed *bool `json:"AllPassed,omitempty" xml:"AllPassed,omitempty"`
-	// The check results for each resource. The key is the resourceCode.
+	// The check results for each resource, where the key is the resourceCode.
 	Results map[string]*ModuleResultsValue `json:"Results,omitempty" xml:"Results,omitempty"`
 }
 

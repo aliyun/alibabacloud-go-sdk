@@ -34,13 +34,13 @@ type iListAppPluginFilesResponseBody interface {
 }
 
 type ListAppPluginFilesResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListAppPluginFilesResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *ListAppPluginFilesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -84,7 +84,7 @@ type ListAppPluginFilesResponseBody struct {
 	//
 	// example:
 	//
-	// System exception.
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -261,7 +261,7 @@ func (s *ListAppPluginFilesResponseBodyModule) Validate() error {
 }
 
 type ListAppPluginFilesResponseBodyModuleFiles struct {
-	// The file content, returned when POP displays SKILL.md.
+	// The file content returned when POP displays SKILL.md.
 	//
 	// example:
 	//

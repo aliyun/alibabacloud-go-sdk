@@ -23,6 +23,8 @@ type iAppInstanceAggregate interface {
 	GetBizId() *string
 	SetBuildType(v string) *AppInstanceAggregate
 	GetBuildType() *string
+	SetConversationInfo(v *AppInstanceAggregateConversationInfo) *AppInstanceAggregate
+	GetConversationInfo() *AppInstanceAggregateConversationInfo
 	SetCreateTime(v string) *AppInstanceAggregate
 	GetCreateTime() *string
 	SetDeleted(v int32) *AppInstanceAggregate
@@ -80,51 +82,133 @@ type iAppInstanceAggregate interface {
 }
 
 type AppInstanceAggregate struct {
+	// The list of AI agents associated with the application.
 	AiStaffList []*AppAiStaff `json:"AiStaffList,omitempty" xml:"AiStaffList,omitempty" type:"Repeated"`
-	// The application operation address.
-	AppOperationAddress *AppOperationAddress   `json:"AppOperationAddress,omitempty" xml:"AppOperationAddress,omitempty"`
-	AppServiceList      []*AppServiceAggregate `json:"AppServiceList,omitempty" xml:"AppServiceList,omitempty" type:"Repeated"`
+	// The operation address of the application.
+	AppOperationAddress *AppOperationAddress `json:"AppOperationAddress,omitempty" xml:"AppOperationAddress,omitempty"`
+	// The list of service instances associated with the application.
+	AppServiceList []*AppServiceAggregate `json:"AppServiceList,omitempty" xml:"AppServiceList,omitempty" type:"Repeated"`
 	// The application subtype.
+	//
+	// example:
+	//
+	// SEO_CONTENT
 	AppSubType *string `json:"AppSubType,omitempty" xml:"AppSubType,omitempty"`
 	// The application type.
+	//
+	// example:
+	//
+	// WEBSITE
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The business ID of the application instance.
+	//
+	// example:
+	//
+	// WS20250915163734000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The build type.
+	//
+	// example:
+	//
+	// CLOUD_DREAM_SAAS
 	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	// 没有关联会话时为 null。
+	ConversationInfo *AppInstanceAggregateConversationInfo `json:"ConversationInfo,omitempty" xml:"ConversationInfo,omitempty" type:"Struct"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 2025-01-01 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether the instance is deleted.
+	//
+	// example:
+	//
+	// 0
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
 	// The application description.
+	//
+	// example:
+	//
+	// base
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The business ID of the design specification.
+	//
+	// example:
+	//
+	// WS20250801151731000007
 	DesignSpecBizId *string `json:"DesignSpecBizId,omitempty" xml:"DesignSpecBizId,omitempty"`
 	// The design specification ID.
 	DesignSpecId *string `json:"DesignSpecId,omitempty" xml:"DesignSpecId,omitempty"`
 	// The primary domain name.
+	//
+	// example:
+	//
+	// stxycw.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end time.
+	//
+	// example:
+	//
+	// 2026-01-05T15:59:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the associated delivery order.
+	//
+	// example:
+	//
+	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
 	// The deletion time.
+	//
+	// example:
+	//
+	// 2025-01-01 00:00:00
 	GmtDelete *string `json:"GmtDelete,omitempty" xml:"GmtDelete,omitempty"`
-	// The modification time.
+	// The update time.
+	//
+	// example:
+	//
+	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The publish time.
+	// The publication time.
+	//
+	// example:
+	//
+	// 2025-01-01 00:00:00
 	GmtPublish *string `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
-	// The application icon.
+	// The URL of the application icon.
+	//
+	// example:
+	//
+	// icon/WS20250626112715000001/thumbnail.jpg
 	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// docs
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The details.
-	PartnerDetail   *AppInstanceAggregatePartnerDetail `json:"PartnerDetail,omitempty" xml:"PartnerDetail,omitempty" type:"Struct"`
-	Profile         *AppInstanceProfile                `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The partner details.
+	PartnerDetail *AppInstanceAggregatePartnerDetail `json:"PartnerDetail,omitempty" xml:"PartnerDetail,omitempty" type:"Struct"`
+	// The configuration and runtime information of the application instance.
+	Profile *AppInstanceProfile `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The ID of the enterprise resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-aek2smovqqpvuly
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The website domain name.
+	//
+	// example:
+	//
+	// abcd.scd.wanwang.xin
 	SiteHost *string `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
 	// The application identifier.
+	//
+	// example:
+	//
+	// 31104757
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
 	// The source type.
 	//
@@ -133,18 +217,44 @@ type AppInstanceAggregate struct {
 	// MARKET_CLOUD_DREAM
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The start time.
+	//
+	// example:
+	//
+	// 2023-03-24T10:10Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// trial,draft,live,refunded,expired,released
+	//
+	// example:
+	//
+	// live
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The status text.
-	StatusText     *string                     `json:"StatusText,omitempty" xml:"StatusText,omitempty"`
-	Tags           []*AppInstanceAggregateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateRecord *TemplateRecord             `json:"TemplateRecord,omitempty" xml:"TemplateRecord,omitempty"`
-	// The application thumbnail.
+	//
+	// example:
+	//
+	// Published
+	StatusText *string `json:"StatusText,omitempty" xml:"StatusText,omitempty"`
+	// The tags.
+	Tags []*AppInstanceAggregateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The application template record information.
+	TemplateRecord *TemplateRecord `json:"TemplateRecord,omitempty" xml:"TemplateRecord,omitempty"`
+	// The URL of the application thumbnail.
+	//
+	// example:
+	//
+	// thumbnails/WS20250626112715000001/thumbnail.jpg
 	ThumbnailUrl *string `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 123241414
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The version.
+	//
+	// example:
+	//
+	// 2019-04-02
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -182,6 +292,10 @@ func (s *AppInstanceAggregate) GetBizId() *string {
 
 func (s *AppInstanceAggregate) GetBuildType() *string {
 	return s.BuildType
+}
+
+func (s *AppInstanceAggregate) GetConversationInfo() *AppInstanceAggregateConversationInfo {
+	return s.ConversationInfo
 }
 
 func (s *AppInstanceAggregate) GetCreateTime() *string {
@@ -324,6 +438,11 @@ func (s *AppInstanceAggregate) SetBizId(v string) *AppInstanceAggregate {
 
 func (s *AppInstanceAggregate) SetBuildType(v string) *AppInstanceAggregate {
 	s.BuildType = &v
+	return s
+}
+
+func (s *AppInstanceAggregate) SetConversationInfo(v *AppInstanceAggregateConversationInfo) *AppInstanceAggregate {
+	s.ConversationInfo = v
 	return s
 }
 
@@ -486,6 +605,11 @@ func (s *AppInstanceAggregate) Validate() error {
 			}
 		}
 	}
+	if s.ConversationInfo != nil {
+		if err := s.ConversationInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.PartnerDetail != nil {
 		if err := s.PartnerDetail.Validate(); err != nil {
 			return err
@@ -513,12 +637,51 @@ func (s *AppInstanceAggregate) Validate() error {
 	return nil
 }
 
+type AppInstanceAggregateConversationInfo struct {
+	// 0 表示存在空会话。
+	//
+	// example:
+	//
+	// 1
+	ChatNum *int64 `json:"ChatNum,omitempty" xml:"ChatNum,omitempty"`
+}
+
+func (s AppInstanceAggregateConversationInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AppInstanceAggregateConversationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AppInstanceAggregateConversationInfo) GetChatNum() *int64 {
+	return s.ChatNum
+}
+
+func (s *AppInstanceAggregateConversationInfo) SetChatNum(v int64) *AppInstanceAggregateConversationInfo {
+	s.ChatNum = &v
+	return s
+}
+
+func (s *AppInstanceAggregateConversationInfo) Validate() error {
+	return dara.Validate(s)
+}
+
 type AppInstanceAggregatePartnerDetail struct {
 	// data
 	BindData *AppInstanceAggregatePartnerDetailBindData `json:"BindData,omitempty" xml:"BindData,omitempty" type:"Struct"`
 	// The partner ID.
+	//
+	// example:
+	//
+	// 10001
 	PartnerId *string `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The partner binding status. Valid values: BOUND (bound) and UNBOUND (unbound).
+	//
+	// example:
+	//
+	// BOUND
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AppInstanceAggregatePartnerDetail) String() string {
@@ -566,10 +729,23 @@ func (s *AppInstanceAggregatePartnerDetail) Validate() error {
 }
 
 type AppInstanceAggregatePartnerDetailBindData struct {
+	// The external business ID.
+	//
+	// example:
+	//
+	// WS20250801153127000002
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 1672123722000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
+	//
+	// example:
+	//
+	// Wed Nov 26 10:15:28 CST 2025
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The record ID.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -580,10 +756,23 @@ type AppInstanceAggregatePartnerDetailBindData struct {
 	// ***********
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The primary key of the parent record.
+	//
+	// example:
+	//
+	// 1123213
 	ParentPk *string `json:"ParentPk,omitempty" xml:"ParentPk,omitempty"`
 	// The partner ID.
+	//
+	// example:
+	//
+	// 10001
 	PartnerId *string `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The Alibaba Cloud account ID of the bound user.
+	//
+	// example:
+	//
+	// 123456789
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AppInstanceAggregatePartnerDetailBindData) String() string {
@@ -671,7 +860,7 @@ func (s *AppInstanceAggregatePartnerDetailBindData) Validate() error {
 }
 
 type AppInstanceAggregateTags struct {
-	// The tag key of the instance. Valid values of N: **1*	- to **20**. If this parameter is specified, it cannot be an empty string.
+	// The tag key of the instance. Valid values of N: **1*	- to **20**. If you specify this parameter, it cannot be an empty string.
 	//
 	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
@@ -679,9 +868,13 @@ type AppInstanceAggregateTags struct {
 	//
 	// Group
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the instance. Valid values of N: **1*	- to **20**. If this parameter is specified, it can be an empty string.
+	// The tag value of the instance. Valid values of N: **1*	- to **20**. If you specify this parameter, it can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// ufo
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

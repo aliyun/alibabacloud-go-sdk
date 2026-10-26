@@ -27,8 +27,16 @@ type GetAppRecommendedCommoditiesRequest struct {
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The extended information.
+	//
+	// example:
+	//
+	// {}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The resource filtering conditions.
+	//
+	// example:
+	//
+	// []
 	ResourceConditions *string `json:"ResourceConditions,omitempty" xml:"ResourceConditions,omitempty"`
 	// The scenarios. Valid values: ai_chat and inspiration.
 	//

@@ -62,7 +62,7 @@ func (s *UpdateMiniAppBindingResponseBody) Validate() error {
 }
 
 type UpdateMiniAppBindingResponseBodyData struct {
-	// Indicates whether the operation is successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

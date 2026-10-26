@@ -34,17 +34,17 @@ type iGetAppCodeWorkspaceDetailResponseBody interface {
 }
 
 type GetAppCodeWorkspaceDetailResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reasons for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retry is allowed. Valid values:
+	// Specifies whether retries are allowed. Valid values:
 	//
-	// - false: Retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: Retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type GetAppCodeWorkspaceDetailResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message. This value is used to replace the `%s` placeholder in the error message returned in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace the `%s` in the error message of the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -223,7 +223,11 @@ type GetAppCodeWorkspaceDetailResponseBodyModule struct {
 	//
 	// 111
 	ActiveLogicalNumber *int32 `json:"ActiveLogicalNumber,omitempty" xml:"ActiveLogicalNumber,omitempty"`
-	// The code commit hash value.
+	// The code commit hash.
+	//
+	// example:
+	//
+	// 890243d5977e74d80eebd4734f7b05f626f84cb1
 	CommitHash *string `json:"CommitHash,omitempty" xml:"CommitHash,omitempty"`
 	// true
 	//
@@ -237,13 +241,13 @@ type GetAppCodeWorkspaceDetailResponseBodyModule struct {
 	//
 	// 111
 	MaxLogicalNumber *int32 `json:"MaxLogicalNumber,omitempty" xml:"MaxLogicalNumber,omitempty"`
-	// The site ID. You can call [ListSites](~~ListSites~~) to retrieve the site ID.
+	// The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The operation description information.
+	// The operation description.
 	Snapshots []*GetAppCodeWorkspaceDetailResponseBodyModuleSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 }
 
@@ -329,7 +333,7 @@ type GetAppCodeWorkspaceDetailResponseBodyModuleSnapshots struct {
 	//
 	// - Add Params.
 	ChangeLog *string `json:"ChangeLog,omitempty" xml:"ChangeLog,omitempty"`
-	// The creation time in UTC. The time follows the ISO 8601 standard.
+	// The creation time in UTC. The time is in the ISO 8601 format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//

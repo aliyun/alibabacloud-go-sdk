@@ -15,6 +15,8 @@ type iCheckUserResourceMeasureRequest interface {
 	GetBelongIdType() *string
 	SetBizType(v string) *CheckUserResourceMeasureRequest
 	GetBizType() *string
+	SetDesiredTotal(v int64) *CheckUserResourceMeasureRequest
+	GetDesiredTotal() *int64
 	SetEspBizId(v string) *CheckUserResourceMeasureRequest
 	GetEspBizId() *string
 	SetOrderComponentParams(v string) *CheckUserResourceMeasureRequest
@@ -26,17 +28,13 @@ type iCheckUserResourceMeasureRequest interface {
 }
 
 type CheckUserResourceMeasureRequest struct {
-	// The owner ID, which can be a website ID or an Alibaba Cloud account ID.
+	// The belong ID, such as the website ID or Alibaba Cloud user ID.
 	//
 	// example:
 	//
 	// 123456
 	BelongId *string `json:"BelongId,omitempty" xml:"BelongId,omitempty"`
-	// The type of the owner ID. Valid values:
-	//
-	// - siteId
-	//
-	// - uid.
+	// The belong ID type, such as siteId or uid.
 	//
 	// example:
 	//
@@ -48,29 +46,31 @@ type CheckUserResourceMeasureRequest struct {
 	//
 	// 1
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The optional compatible total for APP_WORKSPACE. Valid values: 0 to 100000. If provided, it takes precedence over ResourceValue and does not repeatedly add the used quota. For new calls, only ResourceValue is required. This field is not used for APP/USER.
+	//
+	// example:
+	//
+	// 21
+	DesiredTotal *int64 `json:"DesiredTotal,omitempty" xml:"DesiredTotal,omitempty"`
 	// The ESP business ID.
 	//
 	// example:
 	//
 	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	// The order module information. If this parameter is empty, espBizId and bizType cannot be empty.
+	// The order component information. If this field is empty, EspBizId and BizType cannot be empty.
 	//
 	// example:
 	//
 	// {"siteversion":"test"}
 	OrderComponentParams *string `json:"OrderComponentParams,omitempty" xml:"OrderComponentParams,omitempty"`
-	// The resource identifier.
+	// The resource code.
 	//
 	// example:
 	//
 	// InspirationTokens
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	// The resource value. This parameter is empty by default and is required only for feature-type resources. Valid values:
-	//
-	// - 0: Not supported.
-	//
-	// - 1: Supported.
+	// The resource value. Default is empty. Required only for feature resources. A value of 0 indicates not supported, and 1 indicates supported.
 	//
 	// example:
 	//
@@ -96,6 +96,10 @@ func (s *CheckUserResourceMeasureRequest) GetBelongIdType() *string {
 
 func (s *CheckUserResourceMeasureRequest) GetBizType() *string {
 	return s.BizType
+}
+
+func (s *CheckUserResourceMeasureRequest) GetDesiredTotal() *int64 {
+	return s.DesiredTotal
 }
 
 func (s *CheckUserResourceMeasureRequest) GetEspBizId() *string {
@@ -126,6 +130,11 @@ func (s *CheckUserResourceMeasureRequest) SetBelongIdType(v string) *CheckUserRe
 
 func (s *CheckUserResourceMeasureRequest) SetBizType(v string) *CheckUserResourceMeasureRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *CheckUserResourceMeasureRequest) SetDesiredTotal(v int64) *CheckUserResourceMeasureRequest {
+	s.DesiredTotal = &v
 	return s
 }
 

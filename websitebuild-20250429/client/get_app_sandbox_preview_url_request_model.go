@@ -22,7 +22,7 @@ type GetAppSandboxPreviewUrlRequest struct {
 	//
 	// 593fe1a2-d0b4-4fde-a2b0-78ad6a438d41
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// Specifies whether to restart the application process. This parameter is optional. Default value: false.
+	// Specifies whether to restart the application process. Default value: false.
 	//
 	// example:
 	//
