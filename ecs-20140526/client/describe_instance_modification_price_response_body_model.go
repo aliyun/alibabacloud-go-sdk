@@ -16,7 +16,7 @@ type iDescribeInstanceModificationPriceResponseBody interface {
 }
 
 type DescribeInstanceModificationPriceResponseBody struct {
-	// The price information, including the price and discount rule information.
+	// The PriceInfo data type, which includes pricing and discount rule information.
 	PriceInfo *DescribeInstanceModificationPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -64,7 +64,7 @@ func (s *DescribeInstanceModificationPriceResponseBody) Validate() error {
 type DescribeInstanceModificationPriceResponseBodyPriceInfo struct {
 	// The price.
 	Price *DescribeInstanceModificationPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	// The related price.
+	// The associated price.
 	RelatedPrice *DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice `json:"RelatedPrice,omitempty" xml:"RelatedPrice,omitempty" type:"Struct"`
 	Rules        *DescribeInstanceModificationPriceResponseBodyPriceInfoRules        `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
@@ -147,7 +147,7 @@ type DescribeInstanceModificationPriceResponseBodyPriceInfoPrice struct {
 	//
 	// 175.200
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The transaction price, which is equal to the original price minus the discount.
+	// The final price, which is the original price minus the discount.
 	//
 	// example:
 	//
@@ -444,7 +444,7 @@ type DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketpla
 	//
 	// 100
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The transaction price, which is equal to the original price minus the discount.
+	// The final price, which is the original price minus the discount.
 	//
 	// example:
 	//

@@ -33,12 +33,20 @@ type ModifyImageShareGroupPermissionRequest struct {
 	// The image ID.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// m-bp1a2b3c4d5e6f7g
 	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. You can call DescribeRegions to query available regions.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

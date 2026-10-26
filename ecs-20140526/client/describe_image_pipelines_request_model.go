@@ -40,7 +40,7 @@ type DescribeImagePipelinesRequest struct {
 	//
 	// ip-2ze5tsl5bp6nf2b3****
 	ImagePipelineId []*string `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty" type:"Repeated"`
-	// The number of entries per page in a paging query. Valid values: 1 to 500.
+	// The maximum number of entries to return per page in a paging query. Valid values: 1 to 500.
 	//
 	// Default value: 50.
 	//
@@ -62,7 +62,7 @@ type DescribeImagePipelinesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the latest list of Alibaba Cloud regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type DescribeImagePipelinesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the enterprise resource group. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
+	// The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
 	// > Filtering by the default resource group is not supported.
 	//
@@ -80,7 +80,7 @@ type DescribeImagePipelinesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tag []*DescribeImagePipelinesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

@@ -4221,11 +4221,11 @@ func (client *Client) CreateActivation(request *CreateActivationRequest) (_resul
 //
 // Description:
 //
-// - Auto provisioning is a solution that uses spot instances and pay-as-you-go instances to quickly deploy an instance cluster. It supports one-click deployment of instance clusters across billing methods, zones, and instance families. For more information, see [Use the auto provisioning group API to batch create ECS instances](https://help.aliyun.com/document_detail/200772.html).
+// - Auto provisioning is a solution that uses spot instances and pay-as-you-go instances to quickly deploy instance clusters. It supports one-click deployment of instance clusters across Billable methods, zones, and instance family. For more information, see [Use the auto provisioning group API to create ECS instances in batches](https://help.aliyun.com/document_detail/200772.html).
 //
-// - Auto provisioning uses auto provisioning groups for scheduling and maintenance of compute resources. You can use auto provisioning groups to stably provide computing power and mitigate the instability caused by the revoke mechanism of spot instances.
+// - Auto provisioning relies on auto provisioning groups for scheduling and maintenance of compute resources. You can use auto provisioning groups to stably provide computing power and mitigate the instability caused by the revoke mechanism of spot instances.
 //
-// - The auto provisioning feature is free of charge. However, you are billed for the instance resources created by using auto provisioning groups. For more information, see [Billing of spot instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
+// - The auto provisioning feature is free of charge, but you are billed for the instance resources created by using auto provisioning groups. For more information, see [Billing of spot instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
 //
 // - If you specify both a launch template (`LaunchTemplateId`) and launch configurations (`LaunchConfiguration.*`), the system preferentially uses the launch template.
 //
@@ -4425,11 +4425,11 @@ func (client *Client) CreateAutoProvisioningGroupWithOptions(tmpReq *CreateAutoP
 //
 // Description:
 //
-// - Auto provisioning is a solution that uses spot instances and pay-as-you-go instances to quickly deploy an instance cluster. It supports one-click deployment of instance clusters across billing methods, zones, and instance families. For more information, see [Use the auto provisioning group API to batch create ECS instances](https://help.aliyun.com/document_detail/200772.html).
+// - Auto provisioning is a solution that uses spot instances and pay-as-you-go instances to quickly deploy instance clusters. It supports one-click deployment of instance clusters across Billable methods, zones, and instance family. For more information, see [Use the auto provisioning group API to create ECS instances in batches](https://help.aliyun.com/document_detail/200772.html).
 //
-// - Auto provisioning uses auto provisioning groups for scheduling and maintenance of compute resources. You can use auto provisioning groups to stably provide computing power and mitigate the instability caused by the revoke mechanism of spot instances.
+// - Auto provisioning relies on auto provisioning groups for scheduling and maintenance of compute resources. You can use auto provisioning groups to stably provide computing power and mitigate the instability caused by the revoke mechanism of spot instances.
 //
-// - The auto provisioning feature is free of charge. However, you are billed for the instance resources created by using auto provisioning groups. For more information, see [Billing of spot instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
+// - The auto provisioning feature is free of charge, but you are billed for the instance resources created by using auto provisioning groups. For more information, see [Billing of spot instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
 //
 // - If you specify both a launch template (`LaunchTemplateId`) and launch configurations (`LaunchConfiguration.*`), the system preferentially uses the launch template.
 //
@@ -6365,13 +6365,13 @@ func (client *Client) CreateImageComponent(request *CreateImageComponentRequest)
 
 // Summary:
 //
-// Creates an image template. Image templates can be used to build images.
+// Creates an image template. An image template can be used to build images.
 //
 // Description:
 //
 // ## Operation description
 //
-// You can use image templates to customize image content and support cross-region and cross-account image building. Before you create an image template, take note of the following items:
+// You can use an image template to customize image content and support cross-region and cross-account image building. Before you create an image template, take note of the following items:
 //
 // - You can only create custom image templates.
 //
@@ -6383,9 +6383,9 @@ func (client *Client) CreateImageComponent(request *CreateImageComponentRequest)
 //
 // - The FROM command is deprecated. Regardless of the FROM command Settings in the BuildContent parameter, the system selects the source image based on the BaseImageType and BaseImage parameters.
 //
-// - The content size of an image template cannot exceed 16 KB. For more details about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
+// - The content size of an image template cannot exceed 16 KB. For details about supported commands, see [Commands supported by the image building service](https://help.aliyun.com/document_detail/200206.html).
 //
-// For more information, see [Image Builder overview](https://help.aliyun.com/document_detail/197410.html).
+// For more information, see [Image building overview](https://help.aliyun.com/document_detail/197410.html).
 //
 // @param request - CreateImagePipelineRequest
 //
@@ -6442,6 +6442,10 @@ func (client *Client) CreateImagePipelineWithOptions(request *CreateImagePipelin
 
 	if !dara.IsNil(request.ImageOptions) {
 		query["ImageOptions"] = request.ImageOptions
+	}
+
+	if !dara.IsNil(request.ImageSecurityOptions) {
+		query["ImageSecurityOptions"] = request.ImageSecurityOptions
 	}
 
 	if !dara.IsNil(request.ImportImageOptions) {
@@ -6549,13 +6553,13 @@ func (client *Client) CreateImagePipelineWithOptions(request *CreateImagePipelin
 
 // Summary:
 //
-// Creates an image template. Image templates can be used to build images.
+// Creates an image template. An image template can be used to build images.
 //
 // Description:
 //
 // ## Operation description
 //
-// You can use image templates to customize image content and support cross-region and cross-account image building. Before you create an image template, take note of the following items:
+// You can use an image template to customize image content and support cross-region and cross-account image building. Before you create an image template, take note of the following items:
 //
 // - You can only create custom image templates.
 //
@@ -6567,9 +6571,9 @@ func (client *Client) CreateImagePipelineWithOptions(request *CreateImagePipelin
 //
 // - The FROM command is deprecated. Regardless of the FROM command Settings in the BuildContent parameter, the system selects the source image based on the BaseImageType and BaseImage parameters.
 //
-// - The content size of an image template cannot exceed 16 KB. For more details about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
+// - The content size of an image template cannot exceed 16 KB. For details about supported commands, see [Commands supported by the image building service](https://help.aliyun.com/document_detail/200206.html).
 //
-// For more information, see [Image Builder overview](https://help.aliyun.com/document_detail/197410.html).
+// For more information, see [Image building overview](https://help.aliyun.com/document_detail/197410.html).
 //
 // @param request - CreateImagePipelineRequest
 //
@@ -15474,7 +15478,7 @@ func (client *Client) DescribeCapacityReservationInstances(request *DescribeCapa
 
 // Summary:
 //
-// Queries the details of one or more capacity reservations, such as the status, effective and expiration time, private pool mode, and number of consumed instances.
+// Queries the details of one or more capacity reservations, such as the status, effective and expiration time, private pool mode, and number of used instances.
 //
 // @param request - DescribeCapacityReservationsRequest
 //
@@ -15574,7 +15578,7 @@ func (client *Client) DescribeCapacityReservationsWithOptions(request *DescribeC
 
 // Summary:
 //
-// Queries the details of one or more capacity reservations, such as the status, effective and expiration time, private pool mode, and number of consumed instances.
+// Queries the details of one or more capacity reservations, such as the status, effective and expiration time, private pool mode, and number of used instances.
 //
 // @param request - DescribeCapacityReservationsRequest
 //
@@ -16433,7 +16437,7 @@ func (client *Client) DescribeDedicatedHostTypes(request *DescribeDedicatedHostT
 
 // Summary:
 //
-// Queries the details of one or more dedicated hosts. This operation allows you to obtain information such as the physical performance metrics, machine code, usage status, and the list of created ECS instances of dedicated hosts. You can specify parameters such as the dedicated host IDs, dedicated host cluster ID, hostname, and status to accurately query the required dedicated host details, which provides strong support for the efficient management and optimization of cloud computing resources.
+// Queries the details of one or more dedicated hosts. This operation retrieves information including physical performance metrics, machine codes, usage status, and the list of created ECS instances. You can specify parameters such as dedicated host IDs, dedicated host cluster ID, hostname, and status to accurately query the required details, which provides strong support for the efficient management and optimization of cloud computing resources.
 //
 // Description:
 //
@@ -16567,7 +16571,7 @@ func (client *Client) DescribeDedicatedHostsWithOptions(request *DescribeDedicat
 
 // Summary:
 //
-// Queries the details of one or more dedicated hosts. This operation allows you to obtain information such as the physical performance metrics, machine code, usage status, and the list of created ECS instances of dedicated hosts. You can specify parameters such as the dedicated host IDs, dedicated host cluster ID, hostname, and status to accurately query the required dedicated host details, which provides strong support for the efficient management and optimization of cloud computing resources.
+// Queries the details of one or more dedicated hosts. This operation retrieves information including physical performance metrics, machine codes, usage status, and the list of created ECS instances. You can specify parameters such as dedicated host IDs, dedicated host cluster ID, hostname, and status to accurately query the required details, which provides strong support for the efficient management and optimization of cloud computing resources.
 //
 // Description:
 //
@@ -19057,7 +19061,7 @@ func (client *Client) DescribeImagePipelineExecutions(request *DescribeImagePipe
 //
 // Description:
 //
-// You can set the NextToken query token to the NextToken value returned from the previous DescribeImagePipelines call, and use MaxResults to specify the maximum number of entries per page for the query.
+// You can use the NextToken parameter to paginate queries. Set this parameter to the NextToken value returned from the previous call to the DescribeImagePipelines operation. You can also use the MaxResults parameter to specify the maximum number of entries to return per page.
 //
 // @param request - DescribeImagePipelinesRequest
 //
@@ -19153,7 +19157,7 @@ func (client *Client) DescribeImagePipelinesWithOptions(request *DescribeImagePi
 //
 // Description:
 //
-// You can set the NextToken query token to the NextToken value returned from the previous DescribeImagePipelines call, and use MaxResults to specify the maximum number of entries per page for the query.
+// You can use the NextToken parameter to paginate queries. Set this parameter to the NextToken value returned from the previous call to the DescribeImagePipelines operation. You can also use the MaxResults parameter to specify the maximum number of entries to return per page.
 //
 // @param request - DescribeImagePipelinesRequest
 //
@@ -20103,11 +20107,11 @@ func (client *Client) DescribeInstanceMaintenanceAttributes(request *DescribeIns
 //
 // Description:
 //
-// - Only pricing information for upgrading unexpired subscription ECS instances is supported. Pricing information for downgrading instances is not supported.
+// - Only querying the pricing information for upgrading unexpired subscription ECS instances is supported. Querying the pricing information for downgrading instances is not supported.
 //
-// - Pricing information for specification changes of pay-as-you-go ECS instances is not supported. Because the price of a pay-as-you-go ECS instance after a specification change is the same as the price of a new instance, you can call [DescribePrice](https://help.aliyun.com/document_detail/107829.html) to query the latest price of an ECS instance.
+// - Querying the pricing information for changing the configurations of pay-as-you-go ECS instances is not supported. Because the price of a pay-as-you-go ECS instance after a configuration change is the same as that of a newly created instance, you can directly call [DescribePrice](https://help.aliyun.com/document_detail/107829.html) to query the latest price of the ECS instance.
 //
-// - Before you upgrade an instance, call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types available for upgrade in a specified zone.
+// - Before upgrading an instance, call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types available for upgrade in the specified zone.
 //
 // @param request - DescribeInstanceModificationPriceRequest
 //
@@ -20211,11 +20215,11 @@ func (client *Client) DescribeInstanceModificationPriceWithOptions(request *Desc
 //
 // Description:
 //
-// - Only pricing information for upgrading unexpired subscription ECS instances is supported. Pricing information for downgrading instances is not supported.
+// - Only querying the pricing information for upgrading unexpired subscription ECS instances is supported. Querying the pricing information for downgrading instances is not supported.
 //
-// - Pricing information for specification changes of pay-as-you-go ECS instances is not supported. Because the price of a pay-as-you-go ECS instance after a specification change is the same as the price of a new instance, you can call [DescribePrice](https://help.aliyun.com/document_detail/107829.html) to query the latest price of an ECS instance.
+// - Querying the pricing information for changing the configurations of pay-as-you-go ECS instances is not supported. Because the price of a pay-as-you-go ECS instance after a configuration change is the same as that of a newly created instance, you can directly call [DescribePrice](https://help.aliyun.com/document_detail/107829.html) to query the latest price of the ECS instance.
 //
-// - Before you upgrade an instance, call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types available for upgrade in a specified zone.
+// - Before upgrading an instance, call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types available for upgrade in the specified zone.
 //
 // @param request - DescribeInstanceModificationPriceRequest
 //

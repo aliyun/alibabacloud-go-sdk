@@ -45,9 +45,9 @@ type DescribeCapacityReservationsRequest struct {
 	PrivatePoolOptions *DescribeCapacityReservationsRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
-	// - PostPaid: pay-as-you-go.
+	// - PostPaid: Pay-as-you-go.
 	//
-	// - PrePaid: subscription.
+	// - PrePaid: Subscription.
 	//
 	// Default value: PostPaid.
 	//
@@ -55,13 +55,13 @@ type DescribeCapacityReservationsRequest struct {
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The instance type. You can use the instance type to query only active capacity reservations. Released capacity reservations can be queried only by using PrivatePoolOptions.Ids.
+	// The instance type. You can use this parameter to query only active capacity reservations. To query released capacity reservations, you can only use the PrivatePoolOptions.Ids parameter.
 	//
 	// example:
 	//
 	// ecs.c6.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The maximum number of entries per page for a paged query.
+	// The number of entries per page in a paging query.
 	//
 	// Maximum value: 100.
 	//
@@ -71,7 +71,7 @@ type DescribeCapacityReservationsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the capacity reservation query. Obtain the value from the result of the previous request.
+	// The pagination token for the capacity reservation query. Obtain the token from the response of the previous request.
 	//
 	// example:
 	//
@@ -81,11 +81,11 @@ type DescribeCapacityReservationsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The operating system of the instance. Valid values:
 	//
-	// - windows: queries only capacity reservations for Windows instances.
+	// - windows: Queries only capacity reservations for Windows instances.
 	//
-	// - linux: queries only capacity reservations for Linux instances.
+	// - linux: Queries only capacity reservations for Linux instances.
 	//
-	// - all: queries all capacity reservations.
+	// - all: Queries all capacity reservations.
 	//
 	// Default value: all.
 	//
@@ -93,7 +93,7 @@ type DescribeCapacityReservationsRequest struct {
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The region ID of the capacity reservation. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the capacity reservation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -101,9 +101,9 @@ type DescribeCapacityReservationsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
-	// >Filtering by the default resource group is not supported.
+	// > Default resource group filtering is not supported.
 	//
 	// example:
 	//
@@ -113,19 +113,19 @@ type DescribeCapacityReservationsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the capacity reservation. Valid values:
 	//
-	// - All: all states.
+	// - All: All statuses.
 	//
-	// - Pending: initializing. A capacity reservation that takes effect at a specified time enters the initializing state first.
+	// - Pending: Initialization. Capacity reservations that take effect at a specified time enter the initialization status first.
 	//
-	// - Preparing: being prepared. A capacity reservation that takes effect at a specified time is in the being prepared state during the resource delivery phase.
+	// - Preparing: Preparing. Capacity reservations that take effect at a specified time are in the preparing status during resource delivery.
 	//
-	// - Prepared: to take effect. A capacity reservation that takes effect at a specified time is in the to take effect state after resource delivery is complete but before the service officially takes effect.
+	// - Prepared: Pending. Capacity reservations that take effect at a specified time are in the pending status after resource delivery is complete and before the service officially takes effect.
 	//
-	// - Active: active.
+	// - Active: Active.
 	//
-	// - Released: released, including manual release and automatic release upon expiration.
+	// - Released: Released, including manual release and automatic release upon expiration.
 	//
-	// If you do not specify this parameter, capacity reservations in all states except Pending and Released are queried.
+	// If you do not specify this parameter, capacity reservations in all statuses except Pending and Released are queried.
 	//
 	// example:
 	//
@@ -303,7 +303,7 @@ func (s *DescribeCapacityReservationsRequest) Validate() error {
 }
 
 type DescribeCapacityReservationsRequestPrivatePoolOptions struct {
-	// The list of capacity reservation IDs. The value can be a JSON array that consists of up to 100 IDs, separated by commas (,).
+	// The IDs of the capacity reservations. The value can be a JSON array that consists of up to 100 IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -333,15 +333,15 @@ func (s *DescribeCapacityReservationsRequestPrivatePoolOptions) Validate() error
 }
 
 type DescribeCapacityReservationsRequestTag struct {
-	// The tag key. N specifies that you can set multiple tag keys for filtering. Valid values of N: 1 to 20.
+	// The tag key. N specifies that you can configure multiple tag keys for filtering. Valid values of N: 1 to 20.
 	//
-	// If you use a single tag to filter resources, the resource count with the tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+	// If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that are attached to all the specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. N specifies that you can set multiple tag values for filtering. Valid values of N: 1 to 20.
+	// The tag value. N specifies that you can configure multiple tag values for filtering. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

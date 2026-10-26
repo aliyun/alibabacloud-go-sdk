@@ -23,13 +23,13 @@ type iDescribeCapacityReservationsResponseBody interface {
 
 type DescribeCapacityReservationsResponseBody struct {
 	CapacityReservationSet *DescribeCapacityReservationsResponseBodyCapacityReservationSet `json:"CapacityReservationSet,omitempty" xml:"CapacityReservationSet,omitempty" type:"Struct"`
-	// The maximum number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query.
+	// The pagination token for the next capacity reservation query.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeCapacityReservationsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that match the query conditions.
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//

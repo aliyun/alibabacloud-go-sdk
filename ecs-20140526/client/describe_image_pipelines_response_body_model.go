@@ -23,13 +23,13 @@ type iDescribeImagePipelinesResponseBody interface {
 
 type DescribeImagePipelinesResponseBody struct {
 	ImagePipeline *DescribeImagePipelinesResponseBodyImagePipeline `json:"ImagePipeline,omitempty" xml:"ImagePipeline,omitempty" type:"Struct"`
-	// The number of entries per page in a paging query.
+	// The number of entries returned per page in a paging query.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token returned by the current call. For more information about how to use the token, see the operation description.
+	// The pagination token returned by this call. For more information, see the operation description.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeImagePipelinesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of image templates returned.
+	// The total number of image templates returned.
 	//
 	// example:
 	//
@@ -157,13 +157,14 @@ type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet struct {
 	// Deprecated
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
 	// Deprecated
-	ImageName               *string                                                                            `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageOptions            *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOptions       `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
-	ImagePipelineId         *string                                                                            `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty"`
-	ImportImageOptions      *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions `json:"ImportImageOptions,omitempty" xml:"ImportImageOptions,omitempty" type:"Struct"`
-	InstanceType            *string                                                                            `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetMaxBandwidthOut *int32                                                                             `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	Name                    *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	ImageName               *string                                                                              `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageOptions            *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOptions         `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
+	ImagePipelineId         *string                                                                              `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty"`
+	ImageSecurityOptions    *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions `json:"ImageSecurityOptions,omitempty" xml:"ImageSecurityOptions,omitempty" type:"Struct"`
+	ImportImageOptions      *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions   `json:"ImportImageOptions,omitempty" xml:"ImportImageOptions,omitempty" type:"Struct"`
+	InstanceType            *string                                                                              `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetMaxBandwidthOut *int32                                                                               `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	Name                    *string                                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Deprecated
 	NvmeSupport     *string                                                                     `json:"NvmeSupport,omitempty" xml:"NvmeSupport,omitempty"`
 	RepairItems     *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetRepairItems `json:"RepairItems,omitempty" xml:"RepairItems,omitempty" type:"Struct"`
@@ -230,6 +231,10 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) GetIma
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) GetImagePipelineId() *string {
 	return s.ImagePipelineId
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) GetImageSecurityOptions() *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions {
+	return s.ImageSecurityOptions
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) GetImportImageOptions() *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions {
@@ -344,6 +349,11 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) SetIma
 	return s
 }
 
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) SetImageSecurityOptions(v *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet {
+	s.ImageSecurityOptions = v
+	return s
+}
+
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) SetImportImageOptions(v *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet {
 	s.ImportImageOptions = v
 	return s
@@ -422,6 +432,11 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet) Valida
 	}
 	if s.ImageOptions != nil {
 		if err := s.ImageOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageSecurityOptions != nil {
+		if err := s.ImageSecurityOptions.Validate(); err != nil {
 			return err
 		}
 	}
@@ -674,6 +689,31 @@ func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOpt
 }
 
 func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOptionsImageTagsImageTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions struct {
+	SecurityScanMode *string `json:"SecurityScanMode,omitempty" xml:"SecurityScanMode,omitempty"`
+}
+
+func (s DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions) GetSecurityScanMode() *string {
+	return s.SecurityScanMode
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions) SetSecurityScanMode(v string) *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions {
+	s.SecurityScanMode = &v
+	return s
+}
+
+func (s *DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions) Validate() error {
 	return dara.Validate(s)
 }
 
