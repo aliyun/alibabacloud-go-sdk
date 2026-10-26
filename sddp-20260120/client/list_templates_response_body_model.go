@@ -28,7 +28,7 @@ type ListTemplatesResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of records returned by the current query.
+	// The list of records returned for the current query.
 	Items []*ListTemplatesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of records per page for the current query.
 	//
@@ -36,13 +36,13 @@ type ListTemplatesResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID, which can be used to locate this API call.
+	// The request ID, which can be used to trace the current API call.
 	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the current query scope.
+	// The total number of records that match the current query conditions.
 	//
 	// example:
 	//
@@ -129,31 +129,31 @@ type ListTemplatesResponseBodyItems struct {
 	//
 	// Used to detect common sensitive data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the template was created. This value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+	// The creation time of the template. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1788566400000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the template was last modified. This value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+	// The last modification time of the template. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1788566400000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the classification and grading template.
+	// The identifier of the classification and grading template.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The maximum category level supported by the template.
+	// The maximum classification level supported by the template.
 	//
 	// example:
 	//
 	// 3
 	MaxCategoryLevel *int32 `json:"MaxCategoryLevel,omitempty" xml:"MaxCategoryLevel,omitempty"`
-	// The maximum sensitivity level supported by the template.
+	// The highest sensitivity level supported by the template.
 	//
 	// example:
 	//
@@ -165,47 +165,19 @@ type ListTemplatesResponseBodyItems struct {
 	//
 	// General classification and grading template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the template. Valid values:
-	//
-	// - 0: disabled.
-	//
-	// - 1: enabled as the primary template.
-	//
-	// - 2: active template.
-	//
-	// - 3: general-purpose detection model.
+	// The status of the template. Valid values: 0: Disabled. 1: Enabled primary template. 2: Active template. 3: General detection model.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the template can be edited. Valid values:
-	//
-	// - 0: not supported.
-	//
-	// - 1: supported.
+	// Specifies whether the template can be edited. Valid values: 0: Not supported. 1: Supported.
 	//
 	// example:
 	//
 	// 1
 	SupportEdit *int32 `json:"SupportEdit,omitempty" xml:"SupportEdit,omitempty"`
-	// The category of the template. Valid values:
-	//
-	// - 1: Alibaba template.
-	//
-	// - 2: finance template.
-	//
-	// - 3: energy template.
-	//
-	// - 4: personal information security template.
-	//
-	// - 5: travel template.
-	//
-	// - 65: general-purpose template.
-	//
-	// - 66: custom template.
-	//
-	// - 67: template from another cloud service.
+	// The category of the template. Valid values: 1: Alibaba Cloud template. 2: Finance template. 3: Energy template. 4: Personal information security template. 5: Travel template. 65: General template. 66: Custom template. 67: Template from other cloud services.
 	//
 	// example:
 	//

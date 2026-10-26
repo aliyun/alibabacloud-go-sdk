@@ -16,9 +16,9 @@ type iListKmsKeysResponseBody interface {
 }
 
 type ListKmsKeysResponseBody struct {
-	// The list of records returned by this query.
+	// The list of records returned by the query.
 	Items []*ListKmsKeysResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The request ID, which can be used to locate this API call.
+	// The request identity, which is active when you invoke the operation to locate this API call.
 	//
 	// example:
 	//

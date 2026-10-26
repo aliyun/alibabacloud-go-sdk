@@ -26,13 +26,13 @@ type iUpgradeKernelVersionRequest interface {
 }
 
 type UpgradeKernelVersionRequest struct {
-	// The database instance identity. You can obtain this value from Items[].InstanceId returned by ListDataMaskingInstances.
+	// The database instance identity. You can obtain the value from Items[].InstanceId in the response of the ListDataMaskingInstances operation.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The target kernel version. You can obtain this value from KernelVersions[].KernelVersion returned by ListMiniEngineVersions.
+	// The target Milvus version. You can obtain the value from KernelVersions[].KernelVersion in the response of the ListMiniEngineVersions operation.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type UpgradeKernelVersionRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If you also specify ProductId, the two values must correspond to each other.
+	// The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two values must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The cloud product type identifier. Valid values:
+	// The identifier of the cloud service type. Valid values:
 	//
 	// - 5: RDS.
 	//
@@ -62,25 +62,25 @@ type UpgradeKernelVersionRequest struct {
 	//
 	// - 27: PolarDBX2.
 	//
-	// If you specify both ProductId and ProductCode, the values must correspond to each other.
+	// If this parameter is specified together with ProductCode, the values must match.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The specified upgrade time. This value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. Specify this parameter only when UpgradeTime is set to SpecifyTime. The value must be later than the current time.
+	// The specified upgrade time. The value is a UNIX timestamp in milliseconds that have elapsed since 1970-01-01 00:00:00 UTC. Specify this parameter only when UpgradeTime is set to SpecifyTime, and the time must be later than the current time.
 	//
 	// example:
 	//
 	// 1893456000000
 	SwitchTime *int64 `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The time at which the kernel upgrade is performed. Valid values:
+	// The execution time of the kernel upgrade. Valid values:
 	//
-	// - Immediate: The upgrade is performed immediately.
+	// - Immediate: Executes the upgrade immediately.
 	//
-	// - MaintainTime: The upgrade is performed during the maintenance window.
+	// - MaintainTime: Executes the upgrade during the maintenance window.
 	//
-	// - SpecifyTime: The upgrade is performed at a specified time.
+	// - SpecifyTime: Executes the upgrade at a specified time.
 	//
 	// PolarDB-X 2.0 does not support SpecifyTime.
 	//

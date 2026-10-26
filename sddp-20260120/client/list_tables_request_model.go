@@ -36,85 +36,73 @@ type iListTablesRequest interface {
 }
 
 type ListTablesRequest struct {
-	// The current page number, starting from 1.
+	// The page number of the current page. Pages start from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The cloud database instance identity. Set this to the InstanceId value from the instance list.
+	// The instance identity of the cloud database instance. Set the value to the InstanceId value in the instance list.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	DataAssetSourceId *string `json:"DataAssetSourceId,omitempty" xml:"DataAssetSourceId,omitempty"`
-	// The database name. Set this to the DbName value returned by ListDataSources.
+	// The name of the database. Set the value to the DbName value returned by the ListDataSources operation.
 	//
 	// example:
 	//
 	// business_db
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The language of the response description. Valid values:
-	//
-	// - zh: Chinese.
-	//
-	// - en: English.
+	// The language of the response. Valid values: zh: Chinese. en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The start position for cursor-based pagination. Use the NextMarker value returned from the previous request. Keep the original filter conditions consistent.
+	// The start position of the cursor-based pagination. Use the NextMarker value returned in the previous request for subsequent requests. Keep the value consistent with the original filter conditions.
 	//
 	// example:
 	//
 	// 0
 	Marker *int64 `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The name filter condition.
+	// The name filter.
 	//
 	// example:
 	//
 	// customer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of records per page. Keep other filter conditions consistent when querying the next page.
+	// The number of entries to return on each page. Keep other filter conditions consistent when you query the next page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If you also specify ProductId, the two values must correspond to each other.
+	// The code of the cloud service. Column encryption supports ApsaraDB RDS, PolarDB, and PolarDB-X 2.0. If you specify this parameter and ProductId at the same time, the values must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The cloud product type ID. Valid values:
-	//
-	// - 5: ApsaraDB RDS.
-	//
-	// - 8: PolarDB.
-	//
-	// - 27: PolarDB-X 2.0.
-	//
-	// If you specify both ProductId and ProductCode, the values must correspond to each other.
+	// The ID of the cloud service type. Valid values: 5: ApsaraDB RDS. 8: PolarDB. 27: PolarDB-X 2.0. If you specify this parameter and ProductCode at the same time, the values must match.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The sensitivity level ID. You can obtain this value from the list returned by ListRiskLevels.
+	// The ID of the sensitivity level. You can obtain the ID from the response of the ListRiskLevels operation.
 	//
 	// example:
 	//
 	// 1
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The detection rule or model ID. Set this to the Id of the corresponding detection rule within the target template.
+	// The ID of the detection rule or model. Set the value to the ID of the corresponding detection rule in the target template.
 	//
 	// example:
 	//
 	// 1001
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The classification and grading template ID. You can obtain this value from Items[].Id returned by ListTemplates. Keep this value consistent with the selected sensitivity level and detection model.
+	// The ID of the data classification template. You can obtain the ID from the Items[].Id parameter in the response of the ListTemplates operation. The value must be consistent with the selected sensitivity level and detection model.
 	//
 	// example:
 	//

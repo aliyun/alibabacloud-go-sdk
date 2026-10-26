@@ -50,7 +50,7 @@ type GetInstanceAttributeResponseBody struct {
 	//
 	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The business error code for the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
+	// The business error code for the record or operation. This parameter can be empty when no error occurs. You should evaluate this parameter together with ErrorMessage.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ type GetInstanceAttributeResponseBody struct {
 	//
 	// The instance is not in the running state
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Indicates whether the instance supports column encryption by using KMS keys.
+	// Indicates whether the instance supports using KMS keys for column encryption.
 	KmsEncryptionSupported *bool `json:"KmsEncryptionSupported,omitempty" xml:"KmsEncryptionSupported,omitempty"`
-	// The end time of the O&M window. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. The UTC time of the O&M window is combined with the date of the query day and returned.
+	// The end time of the maintenance window. The value is a UNIX timestamp in milliseconds that have elapsed since 1970-01-01 00:00:00 UTC. The returned value combines the UTC time of the maintenance window with the date of the query day.
 	//
 	// example:
 	//
 	// 1788570000000
 	MaintainEndTime *int64 `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the O&M window. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. The UTC time of the O&M window is combined with the date of the query day and returned.
+	// The start time of the maintenance window. The value is a UNIX timestamp in milliseconds that have elapsed since 1970-01-01 00:00:00 UTC. The returned value combines the UTC time of the maintenance window with the date of the query day.
 	//
 	// example:
 	//
 	// 1788566400000
 	MaintainStartTime *int64 `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The request ID. You can use this ID to locate the API call.
+	// The request ID, which can be used to locate this API call.
 	//
 	// example:
 	//

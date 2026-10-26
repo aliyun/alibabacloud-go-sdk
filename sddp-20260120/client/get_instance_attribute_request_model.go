@@ -20,7 +20,7 @@ type iGetInstanceAttributeRequest interface {
 }
 
 type GetInstanceAttributeRequest struct {
-	// The database instance identity. You can obtain this value from Items[].InstanceId in the response of the ListDataMaskingInstances operation.
+	// The database instance ID. You can obtain this value from Items[].InstanceId in the response of the ListDataMaskingInstances operation.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type GetInstanceAttributeRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If you also specify ProductId, the two values must correspond to each other.
+	// The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The cloud product type identifier. Valid values:
+	// The cloud service type identifier. Valid values:
 	//
 	// - 5: RDS.
 	//
@@ -50,7 +50,7 @@ type GetInstanceAttributeRequest struct {
 	//
 	// - 27: PolarDBX2.
 	//
-	// If you specify both ProductId and ProductCode, the values must correspond to each other.
+	// If this parameter is specified together with ProductCode, the values must match.
 	//
 	// example:
 	//

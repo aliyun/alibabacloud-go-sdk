@@ -36,13 +36,13 @@ type ListDataMaskingColumnsResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID, which can be used to locate this API call.
+	// The ID of the request. It can be used to locate the current API call.
 	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the current query scope.
+	// The total number of records that meet the current statistics or query scope.
 	//
 	// example:
 	//
@@ -123,25 +123,25 @@ type ListDataMaskingColumnsResponseBodyItems struct {
 	//
 	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// business_db
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The database engine type.
+	// The type of the database engine.
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The business error code of the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
+	// The business error code of the record or operation. It can be empty if no error occurs. Evaluate it together with ErrorMessage.
 	//
 	// example:
 	//
 	// data_masking_not_running
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The business error description of the record or operation.
+	// The business error message of the record or operation.
 	//
 	// example:
 	//
@@ -153,25 +153,13 @@ type ListDataMaskingColumnsResponseBodyItems struct {
 	//
 	// column-example-001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance identity of the database.
+	// The database instance identity.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The column encryption status. Valid values:
-	//
-	// - NotEncrypted: Not encrypted.
-	//
-	// - Processing: Being processed.
-	//
-	// - Success: Encryption succeeded.
-	//
-	// - Failed: Encryption failed.
-	//
-	// - Deleting: Being disabled.
-	//
-	// - DeleteFailed: Disabling failed.
+	// The column encryption status. Valid values: NotEncrypted: not encrypted; Processing: processing; Success: encrypted successfully; Failed: encryption failed; Deleting: disabling; DeleteFailed: disabling failed.
 	//
 	// example:
 	//
@@ -185,25 +173,19 @@ type ListDataMaskingColumnsResponseBodyItems struct {
 	//
 	// phone
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The cloud product code.
+	// The code of the cloud service.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The cloud product type ID. Valid values:
-	//
-	// - 5: RDS.
-	//
-	// - 8: POLARDB.
-	//
-	// - 27: PolarDBX2.
+	// The ID of the cloud service type. Valid values: 5: RDS; 8: POLARDB; 27: PolarDBX2.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region ID of the asset.
+	// The ID of the region where the asset is located.
 	//
 	// example:
 	//
@@ -231,9 +213,9 @@ type ListDataMaskingColumnsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Phone number
+	// Mobile phone number
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The table name.
+	// The name of the table.
 	//
 	// example:
 	//

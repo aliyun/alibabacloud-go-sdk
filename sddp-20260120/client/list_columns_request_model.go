@@ -38,25 +38,25 @@ type iListColumnsRequest interface {
 }
 
 type ListColumnsRequest struct {
-	// The current page number, starting from 1.
+	// The page number of the current query. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The cloud database instance identity. Set this parameter to the InstanceId from the instance list.
+	// The cloud database instance identity. Set this parameter to the InstanceId in the instance list.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	DataAssetSourceId *string `json:"DataAssetSourceId,omitempty" xml:"DataAssetSourceId,omitempty"`
-	// The database name. Set this parameter to the DbName returned by ListDataSources.
+	// The name of the database. Set this parameter to the DbName returned by ListDataSources.
 	//
 	// example:
 	//
 	// business_db
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The database engine type. This value must match the EngineType of the target instance, such as MySQL or PostgreSQL.
+	// The type of the database engine. This parameter must be consistent with the EngineType of the target instance, such as MySQL or PostgreSQL.
 	//
 	// example:
 	//
@@ -68,53 +68,49 @@ type ListColumnsRequest struct {
 	//
 	// rm-2ze1abcdefgh****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The language of the response description. Valid values:
-	//
-	// - zh: Chinese.
-	//
-	// - en: English.
+	// The language of the response description. Valid values: zh: Chinese; en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The column name filter condition.
+	// The filter condition for the column name.
 	//
 	// example:
 	//
 	// phone
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of records per page. Keep other filter conditions consistent when querying the next page.
+	// The number of entries to return on each page. Keep other filter conditions consistent when querying the next page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two values must correspond to each other.
+	// The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The sensitivity level ID. You can obtain this value from the list returned by ListRiskLevels.
+	// The identifier of the sensitivity level. You can obtain this value from the return list of ListRiskLevels.
 	//
 	// example:
 	//
 	// 1
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The ID of the detection rule or model. Set this parameter to the ID of the corresponding detection rule in the target template.
+	// The identifier of the detection rule or model. Set this parameter to the ID of the corresponding detection rule in the target template.
 	//
 	// example:
 	//
 	// 1001
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the data table. For PostgreSQL or Oracle scenarios, retain the schema.table format obtained from the table list.
+	// The name of the data table. In PostgreSQL or Oracle scenarios, retain the schema.table format obtained from the table list.
 	//
 	// example:
 	//
 	// customer
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the classification and grading template. You can obtain this value from Items[].Id returned by ListTemplates. Ensure consistency with the selected sensitivity level and detection model.
+	// The identifier of the data classification and grading template. You can obtain this value from Items[].Id returned by ListTemplates. Keep this parameter consistent with the selected sensitivity level and detection model.
 	//
 	// example:
 	//

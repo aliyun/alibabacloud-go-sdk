@@ -16,9 +16,9 @@ type iGetDataMaskingColumnCountResponseBody interface {
 }
 
 type GetDataMaskingColumnCountResponseBody struct {
-	// The column encryption statistics.
+	// The statistics on the number of encrypted columns.
 	ColumnCount *GetDataMaskingColumnCountResponseBodyColumnCount `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty" type:"Struct"`
-	// The request ID, which can be used to locate this API call.
+	// The request ID, which can be used to locate the API call.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ func (s *GetDataMaskingColumnCountResponseBody) Validate() error {
 }
 
 type GetDataMaskingColumnCountResponseBodyColumnCount struct {
-	// The number of encrypted columns within the current scope.
+	// The number of encrypted columns in the current scope.
 	//
 	// example:
 	//
 	// 10
 	MaskedCount *int64 `json:"MaskedCount,omitempty" xml:"MaskedCount,omitempty"`
-	// The number of columns that failed to be encrypted within the current scope.
+	// The number of columns that failed to be encrypted in the current scope.
 	//
 	// example:
 	//
 	// 1
 	MaskingFailedCount *int64 `json:"MaskingFailedCount,omitempty" xml:"MaskingFailedCount,omitempty"`
-	// The number of sensitive columns within the current scope.
+	// The number of sensitive columns in the current scope.
 	//
 	// example:
 	//
 	// 20
 	SensitiveCount *int64 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	// The total number of columns within the current scope.
+	// The total number of columns in the current scope.
 	//
 	// example:
 	//

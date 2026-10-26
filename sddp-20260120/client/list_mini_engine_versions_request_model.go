@@ -20,37 +20,25 @@ type iListMiniEngineVersionsRequest interface {
 }
 
 type ListMiniEngineVersionsRequest struct {
-	// The instance identity of the database. You can obtain this value from Items[].InstanceId returned by the ListDataMaskingInstances operation.
+	// The database instance ID. You can obtain this value from Items[].InstanceId returned by ListDataMaskingInstances.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response description. Valid values:
-	//
-	// - zh: Chinese.
-	//
-	// - en: English.
+	// The language of the response message. Valid values: zh: Chinese; en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The code of the cloud product. Column encryption supports RDS, POLARDB, and PolarDBX2. If you also specify ProductId, the two values must correspond to each other.
+	// The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also provided, the two parameters must correspond to each other.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The identifier of the cloud product type. Valid values:
-	//
-	// - 5: ApsaraDB RDS.
-	//
-	// - 8: PolarDB.
-	//
-	// - 27: PolarDBX2.
-	//
-	// If you specify both ProductId and ProductCode, the values must correspond to each other.
+	// The cloud service type identifier. Valid values: 5: RDS; 8: POLARDB; 27: PolarDBX2. If specified together with ProductCode, the values must match.
 	//
 	// example:
 	//

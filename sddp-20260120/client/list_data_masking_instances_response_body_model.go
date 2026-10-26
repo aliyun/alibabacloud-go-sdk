@@ -30,19 +30,19 @@ type ListDataMaskingInstancesResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The list of records returned by the current query.
 	Items []*ListDataMaskingInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of records per page for the current query.
+	// The number of entries returned per page in the current query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID. You can use this ID to locate the API call.
+	// The request ID, which can be used to locate the current API call.
 	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the current statistics or query scope.
+	// The total number of entries that meet the current statistics or query scope.
 	//
 	// example:
 	//
@@ -117,55 +117,55 @@ func (s *ListDataMaskingInstancesResponseBody) Validate() error {
 }
 
 type ListDataMaskingInstancesResponseBodyItems struct {
-	// The column encryption algorithm used by the instance.
+	// The current column encryption algorithm of the instance.
 	//
 	// example:
 	//
 	// AES_256_GCM
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" xml:"EncryptionAlgorithm,omitempty"`
-	// The ID of the KMS key used by the instance. This field may not be returned for local key scenarios.
+	// The ID of the KMS key used by the instance. This parameter may not be returned in local key scenarios.
 	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-12345678****
 	EncryptionKeyId *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
-	// The database engine type.
+	// The type of the database engine.
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The number of database accounts that have fullAccess plaintext access permissions.
+	// The number of database accounts that have the fullAccess plaintext access permissions.
 	//
 	// example:
 	//
 	// 2
 	FullAccessAccountCount *int32 `json:"FullAccessAccountCount,omitempty" xml:"FullAccessAccountCount,omitempty"`
-	// The instance identity of the database instance.
+	// The database instance identity.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The code of the cloud product.
+	// The code of the cloud service.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the cloud product type. Valid values: 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
+	// The ID of the cloud service type. Valid values: 5: RDS. 8: POLARDB. 27: PolarDBX2.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region ID of the asset.
+	// The ID of the region where the asset is located.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The region name of the asset.
+	// The name of the region where the asset is located.
 	//
 	// example:
 	//

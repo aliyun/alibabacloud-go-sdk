@@ -28,29 +28,25 @@ type ListTemplatesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// A reserved feature type parameter. This parameter is not used to filter results in the current query and is not required for column encryption calls.
+	// The reserved feature type parameter. This parameter is not used to filter results in the current query and is not required for column encryption calls.
 	//
 	// example:
 	//
 	// 1
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// The language of the response description. Valid values:
-	//
-	// - zh: Chinese.
-	//
-	// - en: English.
+	// The language of the response description. Valid values: zh: Chinese. en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of records per page. Keep other filter conditions consistent when querying the next page.
+	// The number of records returned per page. Keep other filter conditions consistent when querying the next page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The scenario identifier for compatible template queries. This parameter is not required for column encryption queries. The available templates are determined by the returned list. Do not rely on this parameter to determine whether general-purpose templates are included.
+	// The identifier of the compatible template query scenario. This parameter is not required for column encryption queries. The available templates are subject to the returned list. Do not rely on this parameter to determine whether general templates are included.
 	//
 	// example:
 	//

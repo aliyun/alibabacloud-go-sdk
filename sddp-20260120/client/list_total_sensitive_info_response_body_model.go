@@ -60,7 +60,7 @@ type iListTotalSensitiveInfoResponseBody interface {
 }
 
 type ListTotalSensitiveInfoResponseBody struct {
-	// The list of statistics grouped by region, template, data type, or date.
+	// The list of statistics categorized by region, template, data type, or date.
 	DataCountDOList []*ListTotalSensitiveInfoResponseBodyDataCountDOList `json:"DataCountDOList,omitempty" xml:"DataCountDOList,omitempty" type:"Repeated"`
 	// The total number of databases.
 	//
@@ -74,13 +74,13 @@ type ListTotalSensitiveInfoResponseBody struct {
 	//
 	// 5
 	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The request ID, which can be used to locate this API call.
+	// The request identity, which is active for locating the current API call when you invoke the API.
 	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of counts aggregated by detection rule.
+	// The list of quantities aggregated by detection rule.
 	RuleInfoList []*ListTotalSensitiveInfoResponseBodyRuleInfoList `json:"RuleInfoList,omitempty" xml:"RuleInfoList,omitempty" type:"Repeated"`
 	// The number of data objects at the S0 sensitivity level.
 	//
@@ -172,19 +172,19 @@ type ListTotalSensitiveInfoResponseBody struct {
 	//
 	// 512
 	SensitiveUnStructSize *int64 `json:"SensitiveUnStructSize,omitempty" xml:"SensitiveUnStructSize,omitempty"`
-	// The number of child-level sensitive data objects. In structured data scenarios, this value is used for sensitive column statistics.
+	// The number of child sensitive data objects, which is used for sensitive column statistics in structured data scenarios.
 	//
 	// example:
 	//
 	// 20
 	SubSensitiveCount *int64 `json:"SubSensitiveCount,omitempty" xml:"SubSensitiveCount,omitempty"`
-	// The total number of child-level data objects. In structured data scenarios, this value is used for column-level statistics.
+	// The total number of child data objects, which is used for column-level statistics in structured data scenarios.
 	//
 	// example:
 	//
 	// 100
 	SubTotalCount *int64 `json:"SubTotalCount,omitempty" xml:"SubTotalCount,omitempty"`
-	// The total number of data objects that match the current statistics or query scope.
+	// The total number of data objects that meet the current statistics or query scope.
 	//
 	// example:
 	//
@@ -445,21 +445,21 @@ func (s *ListTotalSensitiveInfoResponseBody) Validate() error {
 }
 
 type ListTotalSensitiveInfoResponseBodyDataCountDOList struct {
-	// The list of statistics grouped by region, template, data type, or date.
+	// The list of statistics categorized by region, template, data type, or date.
 	DataCountDOList []*ListTotalSensitiveInfoResponseBodyDataCountDOListDataCountDOList `json:"DataCountDOList,omitempty" xml:"DataCountDOList,omitempty" type:"Repeated"`
-	// The statistics date, represented as a UNIX timestamp in nanoseconds. The time corresponds to midnight of the day in the server time zone.
+	// The statistics date, represented by a UNIX timestamp in nanoseconds. The time corresponds to 00:00:00 of the day in the server time zone.
 	//
 	// example:
 	//
 	// 1788537600000000000
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The region ID of the asset.
+	// The ID of the region where the asset resides.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of counts aggregated by detection rule.
+	// The list of quantities aggregated by detection rule.
 	RuleInfoList []*ListTotalSensitiveInfoResponseBodyDataCountDOListRuleInfoList `json:"RuleInfoList,omitempty" xml:"RuleInfoList,omitempty" type:"Repeated"`
 	// The number of data objects at the S0 sensitivity level.
 	//
@@ -533,11 +533,11 @@ type ListTotalSensitiveInfoResponseBodyDataCountDOList struct {
 	//
 	// 20
 	SensitiveCount *int64 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	// The data type of the statistics. Valid values:
+	// The type of the statistics data. Valid values:
 	//
-	// - 1: structured data.
+	// - 1: Structured data.
 	//
-	// - 0: unstructured data.
+	// - 0: Unstructured data.
 	//
 	// example:
 	//
@@ -553,9 +553,9 @@ type ListTotalSensitiveInfoResponseBodyDataCountDOList struct {
 	//
 	// example:
 	//
-	// General classification template
+	// General data classification template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The total number of data objects that match the current statistics or query scope.
+	// The total number of data objects that meet the current statistics or query scope.
 	//
 	// example:
 	//
@@ -774,7 +774,7 @@ func (s *ListTotalSensitiveInfoResponseBodyDataCountDOList) Validate() error {
 }
 
 type ListTotalSensitiveInfoResponseBodyDataCountDOListDataCountDOList struct {
-	// The statistics date, represented as a UNIX timestamp in nanoseconds. The time corresponds to midnight of the day in the server time zone.
+	// The statistics date, represented by a UNIX timestamp in nanoseconds. The time corresponds to 00:00:00 of the day in the server time zone.
 	//
 	// example:
 	//
@@ -786,7 +786,7 @@ type ListTotalSensitiveInfoResponseBodyDataCountDOListDataCountDOList struct {
 	//
 	// 20
 	SensitiveCount *int64 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	// The total number of data objects that match the current statistics or query scope.
+	// The total number of data objects that meet the current statistics or query scope.
 	//
 	// example:
 	//
@@ -834,19 +834,19 @@ func (s *ListTotalSensitiveInfoResponseBodyDataCountDOListDataCountDOList) Valid
 }
 
 type ListTotalSensitiveInfoResponseBodyDataCountDOListRuleInfoList struct {
-	// The number of data objects that match the detection rule.
+	// The number of data objects that hit the detection rule.
 	//
 	// example:
 	//
 	// 10
 	RuleCount *int64 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	// The ID of the matched detection rule.
+	// The ID of the hit detection rule.
 	//
 	// example:
 	//
 	// 1001
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the matched detection rule.
+	// The name of the hit detection rule.
 	//
 	// example:
 	//
@@ -894,19 +894,19 @@ func (s *ListTotalSensitiveInfoResponseBodyDataCountDOListRuleInfoList) Validate
 }
 
 type ListTotalSensitiveInfoResponseBodyRuleInfoList struct {
-	// The number of data objects that match the detection rule.
+	// The number of data objects that hit the detection rule.
 	//
 	// example:
 	//
 	// 10
 	RuleCount *int64 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	// The ID of the matched detection rule.
+	// The ID of the hit detection rule.
 	//
 	// example:
 	//
 	// 1001
 	RuleId *int32 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the matched detection rule.
+	// The name of the hit detection rule.
 	//
 	// example:
 	//

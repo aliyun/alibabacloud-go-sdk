@@ -46,7 +46,7 @@ type iListDataMaskingInstancesRequest interface {
 }
 
 type ListDataMaskingInstancesRequest struct {
-	// The column name filter condition.
+	// The filter condition for the column name.
 	//
 	// example:
 	//
@@ -64,95 +64,85 @@ type ListDataMaskingInstancesRequest struct {
 	//
 	// business_db
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The database engine type. The value must match the EngineType of the target instance, such as MySQL or PostgreSQL.
+	// The type of the database engine. The value must be consistent with the EngineType of the target instance, such as MySQL or PostgreSQL.
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The instance identity of the database instance. You can obtain the value from Items[].InstanceId in the response of ListDataMaskingInstances.
+	// The database instance identity. You can obtain the identity from the Items[].InstanceId parameter in the response of the ListDataMaskingInstances operation.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response description. Valid values:
-	//
-	// - zh: Chinese.
-	//
-	// - en: English.
+	// The language of the response description. Valid values: zh: Chinese. en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The column encryption status used for filtering. Valid values:
-	//
-	// - NotEncrypted: Not encrypted.
-	//
-	// - Success: Encryption succeeded.
-	//
-	// - Failed: Encryption failed.
+	// The column encryption status filter. Valid values: NotEncrypted: not encrypted. Success: encrypted. Failed: encryption failed.
 	//
 	// example:
 	//
 	// NotEncrypted
 	MaskingStatus *string `json:"MaskingStatus,omitempty" xml:"MaskingStatus,omitempty"`
-	// The ID of the model tag. This parameter is used to limit the data to those that match the specified model tag.
+	// The ID of the model tag. This parameter is used to filter data that matches the specified model tag.
 	//
 	// example:
 	//
 	// 101
 	ModelTagId *string `json:"ModelTagId,omitempty" xml:"ModelTagId,omitempty"`
-	// The number of records per page. Keep other filter conditions consistent when querying the next page.
+	// The number of entries to return on each page. Keep other filter conditions consistent when querying the next page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the cloud product. Column encryption supports RDS, POLARDB, and PolarDBX2. If you also specify ProductId, the two values must correspond to each other.
+	// The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If you specify this parameter and ProductId at the same time, the values must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the cloud product type. Valid values: 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2). If you specify both ProductId and ProductCode, the values must correspond to each other.
+	// The ID of the cloud service type. Valid values: 5: RDS. 8: POLARDB. 27: PolarDBX2. If you specify this parameter and ProductCode at the same time, the values must match.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The list of cloud product type IDs. Separate multiple values with commas (,). Valid values for column encryption: 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
+	// The list of cloud service type IDs. Separate multiple values with commas (,). In column encryption scenarios, the valid values are 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
 	//
 	// example:
 	//
 	// 5
 	ProductIds *string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty"`
-	// The ID of the sensitivity level. You can obtain the value from the response of ListRiskLevels.
+	// The ID of the sensitivity level. You can obtain the ID from the response of the ListRiskLevels operation.
 	//
 	// example:
 	//
 	// 1
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The list of sensitivity level IDs. Separate multiple values with commas (,). Select values from the response of ListRiskLevels that corresponds to the same TemplateId.
+	// The list of sensitivity level IDs. Separate multiple values with commas (,). Select the values from the response of the ListRiskLevels operation that corresponds to the same TemplateId.
 	//
 	// example:
 	//
 	// 1,2
 	RiskLevelIds *string `json:"RiskLevelIds,omitempty" xml:"RiskLevelIds,omitempty"`
-	// The name of the table. For PostgreSQL or Oracle scenarios, retain the schema.table format obtained from the table list.
+	// The name of the table. In PostgreSQL or Oracle scenarios, retain the schema.table format obtained from the table list.
 	//
 	// example:
 	//
 	// customer
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the classification and grading template. You can obtain the value from Items[].Id in the response of ListTemplates. The value must be consistent with the selected sensitivity level and detection model.
+	// The ID of the data classification template. You can obtain the ID from the Items[].Id parameter in the response of the ListTemplates operation. The ID must be consistent with the selected sensitivity level and identification model.
 	//
 	// example:
 	//
 	// 1
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The list of detection model IDs. Separate multiple values with commas (,). Select values from the response of ListIdentifyModels that corresponds to the same TemplateId.
+	// The list of identification model IDs. Separate multiple values with commas (,). Select the values from the response of the ListIdentifyModels operation that corresponds to the same TemplateId.
 	//
 	// example:
 	//

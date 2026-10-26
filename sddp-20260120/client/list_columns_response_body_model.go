@@ -28,21 +28,21 @@ type ListColumnsResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of records returned by this query.
+	// The list of records returned by the current query.
 	Items []*ListColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of records per page for this query.
+	// The number of entries returned per page in the current query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID, which can be used to locate this API call.
+	// The request ID, which can be used to locate the current API call.
 	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the current query scope.
+	// The total number of entries that meet the current statistics or query scope.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListColumnsResponseBody) Validate() error {
 }
 
 type ListColumnsResponseBodyItems struct {
-	// The creation time of the data object. This value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+	// The creation time of the data object. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListColumnsResponseBodyItems struct {
 	//
 	// rm-2ze1abcdefgh****
 	DataAssetSourceId *string `json:"DataAssetSourceId,omitempty" xml:"DataAssetSourceId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
@@ -141,19 +141,19 @@ type ListColumnsResponseBodyItems struct {
 	//
 	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The database engine type.
+	// The type of the database engine.
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The cloud instance identity to which the column belongs. This is a compatible field.
+	// The instance identity of the cloud instance to which the column belongs. This is a compatible field.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The compatible field for column encryption status. To query column encryption results, call ListDataMaskingColumns.
+	// The compatibility field for the column encryption status. To query column encryption results, call ListDataMaskingColumns.
 	//
 	// example:
 	//
@@ -165,47 +165,43 @@ type ListColumnsResponseBodyItems struct {
 	//
 	// phone
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The cloud product code.
+	// The code of the cloud service.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The region ID of the asset.
+	// The ID of the region where the asset is located.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the detection result revision record.
+	// The identifier of the detection result correction record.
 	//
 	// example:
 	//
 	// 1001
 	RevisionId *int64 `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
-	// The revision status of the detection result. Valid values:
-	//
-	// - 0: not revised.
-	//
-	// - 1: revised.
+	// The correction status of the detection result. Valid values: 0: Not corrected. 1: Corrected.
 	//
 	// example:
 	//
 	// 0
 	RevisionStatus *int64 `json:"RevisionStatus,omitempty" xml:"RevisionStatus,omitempty"`
-	// The sensitivity level ID.
+	// The identifier of the sensitivity level.
 	//
 	// example:
 	//
 	// 1
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The sensitivity level name.
+	// The name of the sensitivity level.
 	//
 	// example:
 	//
 	// S2
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	// The ID of the matched detection rule.
+	// The identifier of the matched detection rule.
 	//
 	// example:
 	//
@@ -217,7 +213,7 @@ type ListColumnsResponseBodyItems struct {
 	//
 	// Phone number
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The database schema name.
+	// The name of the database schema.
 	//
 	// example:
 	//
@@ -225,7 +221,7 @@ type ListColumnsResponseBodyItems struct {
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// Indicates whether the data is detected as sensitive data.
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	// The data table name.
+	// The name of the data table.
 	//
 	// example:
 	//

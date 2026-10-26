@@ -66,19 +66,19 @@ func (s *ListDataMaskingEncryptionAlgorithmsResponseBody) Validate() error {
 }
 
 type ListDataMaskingEncryptionAlgorithmsResponseBodyAlgorithms struct {
-	// The business error code for the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
+	// The business error code for the record or operation. This parameter can be empty when no error occurs. Evaluate this parameter together with ErrorMessage.
 	//
 	// example:
 	//
 	// data_masking_not_running
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The business error description for the record or operation.
+	// The business error message for the record or operation.
 	//
 	// example:
 	//
 	// The instance is not in the running state
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The algorithm name.
+	// The name of the algorithm.
 	//
 	// example:
 	//

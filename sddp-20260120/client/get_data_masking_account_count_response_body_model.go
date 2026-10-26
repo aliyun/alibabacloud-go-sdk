@@ -16,9 +16,9 @@ type iGetDataMaskingAccountCountResponseBody interface {
 }
 
 type GetDataMaskingAccountCountResponseBody struct {
-	// The permission statistics of column encryption accounts.
+	// The statistics on the number of account permissions for column encryption.
 	AccountCount *GetDataMaskingAccountCountResponseBodyAccountCount `json:"AccountCount,omitempty" xml:"AccountCount,omitempty" type:"Struct"`
-	// The request ID, which can be used to locate this API call.
+	// The request ID, which can be used to locate the API call.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *GetDataMaskingAccountCountResponseBody) Validate() error {
 }
 
 type GetDataMaskingAccountCountResponseBodyAccountCount struct {
-	// The number of fullAccess accounts that have plaintext access.
+	// The number of accounts with plaintext access (fullAccess).
 	//
 	// example:
 	//
 	// 2
 	FullAccessCount *int64 `json:"FullAccessCount,omitempty" xml:"FullAccessCount,omitempty"`
-	// The number of noneAccess accounts that are prohibited from decryption.
+	// The number of accounts prohibited from decryption (noneAccess).
 	//
 	// example:
 	//
 	// 1
 	NoneAccessCount *int64 `json:"NoneAccessCount,omitempty" xml:"NoneAccessCount,omitempty"`
-	// The number of restrictedAccess accounts that have restricted access.
+	// The number of accounts with restricted access (restrictedAccess).
 	//
 	// example:
 	//

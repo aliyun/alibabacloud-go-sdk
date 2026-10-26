@@ -18,7 +18,7 @@ type iListMiniEngineVersionsResponseBody interface {
 type ListMiniEngineVersionsResponseBody struct {
 	// The list of available kernel versions.
 	KernelVersions []*ListMiniEngineVersionsResponseBodyKernelVersions `json:"KernelVersions,omitempty" xml:"KernelVersions,omitempty" type:"Repeated"`
-	// The request ID. You can use this ID to locate the API call.
+	// The request ID, which can be used to locate this API call.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *ListMiniEngineVersionsResponseBody) Validate() error {
 }
 
 type ListMiniEngineVersionsResponseBodyKernelVersions struct {
-	// The release type of the kernel version. This value is the same as the value returned by the corresponding database product. For example, for ApsaraDB RDS, LTS indicates a long-term support version and BETA indicates a preview version. For PolarDB, the value can be Stable, Old, HighRisk, or Beta.
+	// The release type of the kernel version, which follows the return values of the corresponding database service. For example, for RDS, LTS indicates the long-term support version and BETA indicates the preview version. For PolarDB, the value may be Stable, Old, HighRisk, or Beta.
 	//
 	// example:
 	//

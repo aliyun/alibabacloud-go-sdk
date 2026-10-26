@@ -24,11 +24,11 @@ type iListTotalSensitiveInfoRequest interface {
 type ListTotalSensitiveInfoRequest struct {
 	// The statistics scenario. Valid values:
 	//
-	// - 41: overview.
+	// - 41: Overview.
 	//
-	// - 42: data catalog statistics by product.
+	// - 42: Query data catalog statistics by product.
 	//
-	// - 43: region and template summary by product.
+	// - 43: Query region and template summaries by product.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type ListTotalSensitiveInfoRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If you also specify ProductId, the two values must correspond to each other.
+	// The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Multiple product codes separated by commas (,). This parameter is used when CountType is set to 43 and ProductCode is not specified. The results are merged by region and template.
+	// The codes of multiple cloud services, separated by commas (,). This parameter is used when CountType is set to 43 and ProductCode is not specified. The results are aggregated by region and template.
 	//
 	// example:
 	//
 	// RDS,POLARDB,PolarDBX2
 	ProductCodeList *string `json:"ProductCodeList,omitempty" xml:"ProductCodeList,omitempty"`
-	// The ID of the data classification template. You can obtain this value from Items[].Id in the response of the ListTemplates operation. The value must be consistent with the selected sensitivity level and detection model.
+	// The ID of the data classification template. You can obtain the ID from the Items[].Id parameter in the response of the ListTemplates operation. The template must be consistent with the selected sensitivity level and detection model.
 	//
 	// example:
 	//
