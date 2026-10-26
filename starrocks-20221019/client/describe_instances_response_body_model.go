@@ -221,6 +221,10 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// true
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// example:
+	//
+	// 2026-07
+	EosDate *string `json:"EosDate,omitempty" xml:"EosDate,omitempty"`
 	// The expiration time of the cluster.
 	//
 	// example:
@@ -451,6 +455,10 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// 3.2
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 长期支持
+	VersionLifecycleStatus *string `json:"VersionLifecycleStatus,omitempty" xml:"VersionLifecycleStatus,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -513,6 +521,10 @@ func (s *DescribeInstancesResponseBodyData) GetEnabledAuditLoader() *bool {
 
 func (s *DescribeInstancesResponseBodyData) GetEncrypted() *bool {
 	return s.Encrypted
+}
+
+func (s *DescribeInstancesResponseBodyData) GetEosDate() *string {
+	return s.EosDate
 }
 
 func (s *DescribeInstancesResponseBodyData) GetExpireTime() *int64 {
@@ -599,6 +611,10 @@ func (s *DescribeInstancesResponseBodyData) GetVersion() *string {
 	return s.Version
 }
 
+func (s *DescribeInstancesResponseBodyData) GetVersionLifecycleStatus() *string {
+	return s.VersionLifecycleStatus
+}
+
 func (s *DescribeInstancesResponseBodyData) GetVpcId() *string {
 	return s.VpcId
 }
@@ -660,6 +676,11 @@ func (s *DescribeInstancesResponseBodyData) SetEnabledAuditLoader(v bool) *Descr
 
 func (s *DescribeInstancesResponseBodyData) SetEncrypted(v bool) *DescribeInstancesResponseBodyData {
 	s.Encrypted = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyData) SetEosDate(v string) *DescribeInstancesResponseBodyData {
+	s.EosDate = &v
 	return s
 }
 
@@ -765,6 +786,11 @@ func (s *DescribeInstancesResponseBodyData) SetVSwitches(v []*DescribeInstancesR
 
 func (s *DescribeInstancesResponseBodyData) SetVersion(v string) *DescribeInstancesResponseBodyData {
 	s.Version = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyData) SetVersionLifecycleStatus(v string) *DescribeInstancesResponseBodyData {
+	s.VersionLifecycleStatus = &v
 	return s
 }
 
