@@ -56,7 +56,7 @@ type QueryDataServiceRequest struct {
 	//
 	// example:
 	//
-	// { "area": ["华东", "华北"],  "shopping_date": "2019Q1",  }
+	// { "area": ["asdf", "west"],  "shopping_date": "2019Q1",  }
 	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
 	// A list of parameter names to be returned, as a List-type string.
 	//

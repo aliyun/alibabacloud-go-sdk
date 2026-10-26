@@ -24,7 +24,7 @@ type ListSharedReportsRequest struct {
 	//
 	// example:
 	//
-	// 测试报表
+	// Test report
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// Query the number of rows in the work list:
 	//

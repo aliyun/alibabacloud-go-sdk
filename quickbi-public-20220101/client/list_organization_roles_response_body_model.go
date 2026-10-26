@@ -109,7 +109,7 @@ type ListOrganizationRolesResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 组织管理员
+	// Organization Admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 

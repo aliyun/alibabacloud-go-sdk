@@ -24,13 +24,13 @@ type QueryReportPerformanceResponseBody struct {
 	//
 	// 1FC71085-D5FD-08E0-813A-4D4BD1031BC5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The list of report performance logs, which includes report information and performance statistics such as query count, query duration, and cache hits.
 	Result []*QueryReportPerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request is successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ func (s *QueryReportPerformanceResponseBody) Validate() error {
 }
 
 type QueryReportPerformanceResponseBodyResult struct {
-	// The average duration of cache hits.
+	// The average time consumed for cache hits.
 	//
 	// example:
 	//
@@ -99,19 +99,19 @@ type QueryReportPerformanceResponseBodyResult struct {
 	//
 	// 1
 	CacheQueryCount *int32 `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
-	// The number of times the chart is queried.
+	// The number of chart queries.
 	//
 	// example:
 	//
 	// 1
 	ComponentQueryCount *int32 `json:"ComponentQueryCount,omitempty" xml:"ComponentQueryCount,omitempty"`
-	// The average number of times the chart is queried.
+	// The average number of chart queries.
 	//
 	// example:
 	//
 	// 2.0
 	ComponentQueryCountAvg *float64 `json:"ComponentQueryCountAvg,omitempty" xml:"ComponentQueryCountAvg,omitempty"`
-	// The average query duration associated with the SQL pattern.
+	// The average query time.
 	//
 	// example:
 	//
@@ -129,107 +129,107 @@ type QueryReportPerformanceResponseBodyResult struct {
 	//
 	// 3.3
 	QueryCountAvg *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
-	// The percentage of the number of queries that exceed the 5S.
+	// The proportion of queries that take more than 5 seconds.
 	//
 	// example:
 	//
 	// 0.5
 	QueryOverFivePercentNum *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
-	// Query the proportion of more than 5S.
+	// The percentage of queries that take more than 5 seconds.
 	//
 	// example:
 	//
 	// 0.5
 	QueryOverFiveSecPercent *string `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
-	// The percentage of queries that exceed 10s.
+	// The percentage of queries that take more than 10 seconds.
 	//
 	// example:
 	//
 	// 0.5
 	QueryOverTenSecPercent *string `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
-	// The number of queries that exceed 10 seconds.
+	// The number of queries that take more than 10 seconds.
 	//
 	// example:
 	//
 	// 0.5
 	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
-	// The number of times that the chart query times out.
+	// The number of chart query timeouts.
 	//
 	// example:
 	//
 	// 8
 	QueryTimeoutCount *int32 `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
-	// The percentage of timeout times for chart queries.
+	// The proportion of chart query timeouts.
 	//
 	// example:
 	//
 	// 0.5
 	QueryTimeoutCountPercent *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
-	// The average time consumed by the Quick engine query.
+	// The average query time for Quick engine hits.
 	//
 	// example:
 	//
 	// 10
 	QuickIndexCostTimeAvg *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
-	// The number of times that the Quick engine is hit.
+	// The number of Quick engine hits.
 	//
 	// example:
 	//
 	// 5
 	QuickIndexQueryCount *int32 `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
-	// The proportion of duplicate queries.
+	// The proportion of repeated queries.
 	//
 	// example:
 	//
 	// 0.8
 	RepeatQueryPercent *string `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
-	// The number of duplicate queries.
+	// The number of repeated queries.
 	//
 	// example:
 	//
 	// 3
 	RepeatQueryPercentNum *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
-	// The number of times the query is repeated.
+	// The number of repeated SQL queries.
 	//
 	// example:
 	//
 	// 1
 	RepeatSqlQueryCount *int32 `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
-	// The proportion of duplicate queries.
+	// The proportion of repeated queries.
 	//
 	// example:
 	//
 	// 0.7
 	RepeatSqlQueryPercent *string `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
-	// The ID of the work.
+	// The report ID.
 	//
 	// example:
 	//
 	// 6b407e50-e774-406b-9956-da2425c2****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The name of the report.
+	// The report name.
 	//
 	// example:
 	//
 	// ClusterAddonUpgradeReport
 	ReportName *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
-	// The format of the report.
+	// The report type.
 	//
 	// example:
 	//
 	// report
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The ID of the workspace to which the work belongs.
+	// The ID of the workspace to which the report belongs.
 	//
 	// example:
 	//
 	// ab46ed33-6278-4ef7-8013-8c1335f266ee
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The name of the group.
+	// The workspace name.
 	//
 	// example:
 	//
-	// 自定义模板
+	// Custom template
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

@@ -24,7 +24,7 @@ type QueryDataServiceListRequest struct {
 	//
 	// example:
 	//
-	// 测试sql
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Page number. Default value: **1**.
 	//

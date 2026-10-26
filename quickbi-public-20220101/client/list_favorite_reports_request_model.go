@@ -24,7 +24,7 @@ type ListFavoriteReportsRequest struct {
 	//
 	// example:
 	//
-	// 财务报表
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// Number of rows in the work list to be queried:
 	//

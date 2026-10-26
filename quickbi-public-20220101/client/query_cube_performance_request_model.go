@@ -24,7 +24,7 @@ type iQueryCubePerformanceRequest interface {
 }
 
 type QueryCubePerformanceRequest struct {
-	// The average duration (minutes).
+	// The average duration, in minutes.
 	//
 	// example:
 	//
@@ -36,21 +36,21 @@ type QueryCubePerformanceRequest struct {
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	// The current page number of the workspace member list:
+	// The current page number of the workspace member list.
 	//
-	// 	- Pages start from page 1.
+	// - Starting value: 1
 	//
-	// 	- Default value: 1.
+	// - Default value: 1
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of rows per page in a paged query.
+	// The number of entries per page in a paged query.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10
 	//
-	// 	- Maximum value: 1,000.
+	// - Maximum value: 1000
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type QueryCubePerformanceRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query type. Valid values:
 	//
-	// 	- **lastDay**: Yesterday
+	// - **lastDay**: yesterday
 	//
-	// 	- **sevenDays**: Within seven days
+	// - **sevenDays**: within the last seven days
 	//
-	// 	- **thirtyDays**: Within 30 days
+	// - **thirtyDays**: within the last thirty days
 	//
 	// This parameter is required.
 	//

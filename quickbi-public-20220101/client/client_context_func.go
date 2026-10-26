@@ -1377,6 +1377,78 @@ func (client *Client) CreateTicketWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
+// 生成AIPro超级框嵌入ticket
+//
+// @param request - CreateTicket4AiProRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTicket4AiProResponse
+func (client *Client) CreateTicket4AiProWithContext(ctx context.Context, request *CreateTicket4AiProRequest, runtime *dara.RuntimeOptions) (_result *CreateTicket4AiProResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountName) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.AccountType) {
+		query["AccountType"] = request.AccountType
+	}
+
+	if !dara.IsNil(request.AiProId) {
+		query["AiProId"] = request.AiProId
+	}
+
+	if !dara.IsNil(request.CustomParam) {
+		query["CustomParam"] = request.CustomParam
+	}
+
+	if !dara.IsNil(request.ExpireTime) {
+		query["ExpireTime"] = request.ExpireTime
+	}
+
+	if !dara.IsNil(request.QuickBIUserId) {
+		query["QuickBIUserId"] = request.QuickBIUserId
+	}
+
+	if !dara.IsNil(request.SystemUid) {
+		query["SystemUid"] = request.SystemUid
+	}
+
+	if !dara.IsNil(request.TicketNum) {
+		query["TicketNum"] = request.TicketNum
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTicket4AiPro"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTicket4AiProResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates a ticket to embed Copilot.
 //
 // @param request - CreateTicket4CopilotRequest
@@ -2441,7 +2513,7 @@ func (client *Client) GetUserGroupInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the list of embedded reports.
+// Queries a list of embedded reports.
 //
 // @param request - GetWorksEmbedListRequest
 //
@@ -3610,6 +3682,74 @@ func (client *Client) ManualRunMailTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 修改AI Pro嵌入配置
+//
+// @param request - ModifyAiproEmbedConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAiproEmbedConfigResponse
+func (client *Client) ModifyAiproEmbedConfigWithContext(ctx context.Context, request *ModifyAiproEmbedConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAiproEmbedConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.AiProId) {
+		query["AiProId"] = request.AiProId
+	}
+
+	if !dara.IsNil(request.ChatHistoryStatus) {
+		query["ChatHistoryStatus"] = request.ChatHistoryStatus
+	}
+
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.MemoryEnabled) {
+		query["MemoryEnabled"] = request.MemoryEnabled
+	}
+
+	if !dara.IsNil(request.ShowName) {
+		query["ShowName"] = request.ShowName
+	}
+
+	if !dara.IsNil(request.UploadEnabled) {
+		query["UploadEnabled"] = request.UploadEnabled
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAiproEmbedConfig"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAiproEmbedConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of a specified API data source.
 //
 // Description:
@@ -3820,6 +3960,50 @@ func (client *Client) QueryAccelerationLogByCubeIdWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAccelerationLogByCubeIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 概述
+//
+// @param request - QueryAiproEmbedConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAiproEmbedConfigResponse
+func (client *Client) QueryAiproEmbedConfigWithContext(ctx context.Context, request *QueryAiproEmbedConfigRequest, runtime *dara.RuntimeOptions) (_result *QueryAiproEmbedConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryAiproEmbedConfig"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryAiproEmbedConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4074,7 +4258,7 @@ func (client *Client) QueryCopilotEmbedConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries dataset optimization suggestions.
+// Queries optimization suggestions for datasets.
 //
 // @param request - QueryCubeOptimizationRequest
 //
@@ -4900,7 +5084,7 @@ func (client *Client) QueryOrganizationRoleConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// Retrieves the list of workspaces in the current organization.
+// Queries the list of workspaces in the current organization.
 //
 // @param request - QueryOrganizationWorkspaceListRequest
 //
@@ -5662,7 +5846,7 @@ func (client *Client) QueryUserTagValueListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information of a specified data work.
+// Queries the details of a specified data work.
 //
 // @param request - QueryWorksRequest
 //
@@ -6670,6 +6854,62 @@ func (client *Client) UpdateDataSourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 更新数据源基础属性
+//
+// @param request - UpdateDataSourcePropertiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataSourcePropertiesResponse
+func (client *Client) UpdateDataSourcePropertiesWithContext(ctx context.Context, request *UpdateDataSourcePropertiesRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataSourcePropertiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DsId) {
+		query["DsId"] = request.DsId
+	}
+
+	if !dara.IsNil(request.QuickBIOwnerId) {
+		query["QuickBIOwnerId"] = request.QuickBIOwnerId
+	}
+
+	if !dara.IsNil(request.ShowName) {
+		query["ShowName"] = request.ShowName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataSourceProperties"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataSourcePropertiesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Change the embedding status of a report, turn on embedding, or turn off embedding.
 //
 // @param request - UpdateEmbeddedStatusRequest
@@ -6994,7 +7234,7 @@ func (client *Client) UpdateUserTagValueWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the role of a specified member in a workspace. The existing role is overwritten.
+// Modifies the role of a specified member in a workspace. Existing roles are overwritten.
 //
 // @param request - UpdateWorkspaceUserRoleRequest
 //

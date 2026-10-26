@@ -182,7 +182,7 @@ type ListWorkspaceRoleUsersResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试用户
+	// Test user
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// UserID of the organization member in Quick BI.
 	//
@@ -200,7 +200,7 @@ type ListWorkspaceRoleUsersResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试空间
+	// Test space
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

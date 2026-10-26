@@ -212,13 +212,13 @@ type ListSharedReportsResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试报表
+	// Test report
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The Alibaba Cloud account name of the work owner.
 	//
 	// example:
 	//
-	// test账号
+	// test account
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The UserID of the work owner.
 	//
@@ -268,7 +268,7 @@ type ListSharedReportsResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试工作空间
+	// Test Workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

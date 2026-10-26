@@ -24,13 +24,13 @@ type QueryOrganizationWorkspaceListResponseBody struct {
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The paginated result of the workspace list. The detailed information of workspaces is stored in the Data response parameter.
+	// The paginated result of the workspace list. The detailed information of the workspaces is stored in the Data response parameter.
 	Result *QueryOrganizationWorkspaceListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -91,13 +91,13 @@ type QueryOrganizationWorkspaceListResponseBodyResult struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of rows per page specified in the request.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of rows.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResult) Validate() error {
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResultData struct {
-	// Indicates whether works can be made public. Valid values:
+	// Indicates whether the content can be made public. Valid values:
 	//
 	// - true: Public.
 	//
@@ -188,7 +188,7 @@ type QueryOrganizationWorkspaceListResponseBodyResultData struct {
 	//
 	// true
 	AllowPublishOperation *bool `json:"AllowPublishOperation,omitempty" xml:"AllowPublishOperation,omitempty"`
-	// Indicates whether works can be shared with authorization. Valid values:
+	// Indicates whether the content can be shared with authorization. Valid values:
 	//
 	// - true: Authorized.
 	//
@@ -198,7 +198,7 @@ type QueryOrganizationWorkspaceListResponseBodyResultData struct {
 	//
 	// true
 	AllowShareOperation *bool `json:"AllowShareOperation,omitempty" xml:"AllowShareOperation,omitempty"`
-	// The time when the workspace was created.
+	// The time when the workspace was created. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -216,7 +216,7 @@ type QueryOrganizationWorkspaceListResponseBodyResultData struct {
 	//
 	// pop****@aliyun.com
 	CreateUserAccountName *string `json:"CreateUserAccountName,omitempty" xml:"CreateUserAccountName,omitempty"`
-	// The time when the workspace was last modified.
+	// The time when the workspace was last modified. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -442,61 +442,59 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResultData) Validate() error 
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig struct {
-	// Specifies how images are handled when exporting Excel files with formatting. This field takes effect only when configured at the organization level.
+	// The image processing method when exporting to Excel with formatting. This parameter takes effect only when configured at the organization level. Valid values:
 	//
-	// Valid values:
+	// - false: Image fields are not converted to images.
 	//
-	//  	- false: Image fields are not converted to images.
-	//
-	//  	- true: Image fields can be converted to images. The option appears on the report export page, and users must manually select it to convert images.
+	// - true: Image fields are converted to images. The option is displayed on the report export page, and users must manually select it to convert to images.
 	//
 	// example:
 	//
 	// true
 	AllowExcelImageFile *bool `json:"AllowExcelImageFile,omitempty" xml:"AllowExcelImageFile,omitempty"`
-	// Specifies whether to allow exporting data as an Excel file.
+	// Specifies whether to export data to Excel.
 	//
 	// example:
 	//
 	// true
 	DataExport *bool `json:"DataExport,omitempty" xml:"DataExport,omitempty"`
-	// The default export type (with formatting: true. Without formatting: false).
+	// The default export type. Valid values: true (with formatting) and false (without formatting).
 	//
 	// example:
 	//
 	// true
 	DefaultExportType *bool `json:"DefaultExportType,omitempty" xml:"DefaultExportType,omitempty"`
-	// The master switch for export. If set to false, all export settings below do not take effect.
+	// The master switch for export. If this parameter is set to false, the following configurations do not take effect.
 	//
 	// example:
 	//
 	// true
 	ExportMainSwitch *bool `json:"ExportMainSwitch,omitempty" xml:"ExportMainSwitch,omitempty"`
-	// Specifies whether to allow exporting to a local device.
+	// Specifies whether to export to the local device.
 	//
 	// example:
 	//
 	// true
 	ExportToLocal *bool `json:"ExportToLocal,omitempty" xml:"ExportToLocal,omitempty"`
-	// Specifies whether public links of works support export.
+	// Specifies whether to support exporting public links of the content.
 	//
 	// example:
 	//
 	// true
 	ExportToPublicWork *bool `json:"ExportToPublicWork,omitempty" xml:"ExportToPublicWork,omitempty"`
-	// Specifies whether to allow exporting to a server.
+	// Specifies whether to export to the server.
 	//
 	// example:
 	//
 	// true
 	ExportToServer *bool `json:"ExportToServer,omitempty" xml:"ExportToServer,omitempty"`
-	// Specifies whether to allow exporting as an image.
+	// Specifies whether to export images.
 	//
 	// example:
 	//
 	// true
 	ImageExport *bool `json:"ImageExport,omitempty" xml:"ImageExport,omitempty"`
-	// Specifies whether to allow exporting as a PDF.
+	// Specifies whether to export to PDF.
 	//
 	// example:
 	//

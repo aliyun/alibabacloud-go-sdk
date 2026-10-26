@@ -127,7 +127,7 @@ type QueryShareListResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 小张
+	// test
 	ShareToName *string `json:"ShareToName,omitempty" xml:"ShareToName,omitempty"`
 	// The type of sharing. Possible values:
 	//

@@ -20,7 +20,7 @@ type QueryDataRangeRequest struct {
 	//
 	// example:
 	//
-	// 测试
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// Data range type:
 	//

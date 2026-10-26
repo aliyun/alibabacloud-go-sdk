@@ -24,13 +24,13 @@ type QueryCubeOptimizationResponseBody struct {
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The query results are returned.
+	// The list of dataset optimization suggestions, which includes dataset performance diagnostics information and corresponding optimization suggestion types.
 	Result []*QueryCubeOptimizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request is successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -89,17 +89,17 @@ func (s *QueryCubeOptimizationResponseBody) Validate() error {
 type QueryCubeOptimizationResponseBodyResult struct {
 	// The type of the suggestion. Valid values:
 	//
-	// 	- **OPEN_CACHE**: Open cache.
+	// - **OPEN_CACHE**: Enable caching.
 	//
-	// 	- **OPEN_QUICK_ENGINE**: Open FAST Cache.
+	// - **OPEN_QUICK_ENGINE**: Enable the Quick engine.
 	//
-	// 	- **INCREASE_CACHE_TIME**: Increase the cache time.
+	// - **INCREASE_CACHE_TIME**: Increase the cache duration.
 	//
 	// example:
 	//
 	// OPENQUICKENGINE
 	AdviceType *string `json:"AdviceType,omitempty" xml:"AdviceType,omitempty"`
-	// The diagnostic information about the dataset.
+	// The dataset diagnostics information.
 	CubePerformanceDiagnoseModel *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel `json:"CubePerformanceDiagnoseModel,omitempty" xml:"CubePerformanceDiagnoseModel,omitempty" type:"Struct"`
 }
 
@@ -139,7 +139,7 @@ func (s *QueryCubeOptimizationResponseBodyResult) Validate() error {
 }
 
 type QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel struct {
-	// The average duration of cache hits.
+	// The average duration for cache hits.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel struct 
 	//
 	// 2
 	CacheQueryCount *int32 `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
-	// The average query duration associated with the SQL pattern.
+	// The average query duration.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel struct 
 	//
 	// 3e45b61a-9ba8-4c7c-8248-8dbe69945636
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	// The name of the dataset.
+	// The dataset name.
 	//
 	// example:
 	//
@@ -181,73 +181,73 @@ type QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel struct 
 	//
 	// 2
 	QueryCountAvg *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
-	// The percentage of the number of queries that exceed the 5S.
+	// The proportion of queries that exceed 5 seconds.
 	//
 	// example:
 	//
 	// 0.1
 	QueryOverFivePercentNum *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
-	// Query the proportion of more than 5S.
+	// The percentage of queries that exceed 5 seconds.
 	//
 	// example:
 	//
 	// 0.5
 	QueryOverFiveSecPercent *string `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
-	// The percentage of queries that exceed 10s.
+	// The percentage of queries that exceed 10 seconds.
 	//
 	// example:
 	//
 	// 0.1
 	QueryOverTenSecPercent *string `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
-	// The percentage of queries that exceed 10s.
+	// The proportion of queries that exceed 10 seconds.
 	//
 	// example:
 	//
 	// 0.3
 	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
-	// The number of times that the chart query times out.
+	// The number of chart query timeouts.
 	//
 	// example:
 	//
 	// 1
 	QueryTimeoutCount *int32 `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
-	// The percentage of timeout times for chart queries.
+	// The percentage of chart query timeouts.
 	//
 	// example:
 	//
 	// 0.3
 	QueryTimeoutCountPercent *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
-	// The average time consumed by the Quick engine query.
+	// The average query duration for Quick engine hits.
 	//
 	// example:
 	//
 	// 1
 	QuickIndexCostTimeAvg *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
-	// The number of times that the Quick engine is hit.
+	// The number of Quick engine hits.
 	//
 	// example:
 	//
 	// 2
 	QuickIndexQueryCount *int32 `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
-	// The proportion of duplicate queries.
+	// The percentage of repeated queries.
 	//
 	// example:
 	//
 	// 0.1
 	RepeatQueryPercent *string `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
-	// The number of duplicate queries.
+	// The number of repeated queries.
 	//
 	// example:
 	//
 	// 2
 	RepeatQueryPercentNum *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
-	// The number of times the query is repeated.
+	// The number of repeated SQL queries.
 	//
 	// example:
 	//
 	// 2
 	RepeatSqlQueryCount *int32 `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
-	// The proportion of duplicate queries.
+	// The percentage of repeated queries.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel struct 
 	//
 	// 6ea74bff-c818-4188-b462-dbb45a24dbac
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//

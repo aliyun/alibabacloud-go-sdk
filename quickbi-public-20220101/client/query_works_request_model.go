@@ -14,7 +14,7 @@ type iQueryWorksRequest interface {
 }
 
 type QueryWorksRequest struct {
-	// The report ID.
+	// The work ID.
 	//
 	// This parameter is required.
 	//

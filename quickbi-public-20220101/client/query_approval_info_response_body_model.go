@@ -203,7 +203,7 @@ type QueryApprovalInfoResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 李飞
+	// Li Fei
 	ApplicantName *string `json:"ApplicantName,omitempty" xml:"ApplicantName,omitempty"`
 	// Application ID.
 	//
@@ -215,7 +215,7 @@ type QueryApprovalInfoResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 开发需要
+	// Development needs
 	ApplyReason *string `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
 	// Approver\\"s user ID, qbi user ID.
 	//
@@ -273,7 +273,7 @@ type QueryApprovalInfoResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 开发需要
+	// Development needs
 	HandleReason *string `json:"HandleReason,omitempty" xml:"HandleReason,omitempty"`
 	// The ID of the resource for which permission is requested.
 	//
@@ -285,7 +285,7 @@ type QueryApprovalInfoResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试资源
+	// Test Resources
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the resource.
 	//
@@ -297,7 +297,7 @@ type QueryApprovalInfoResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试工作空间
+	// Test Workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

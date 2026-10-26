@@ -97,7 +97,7 @@ type QuerySharesToUserListResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 测试报表的描述
+	// Description of the test report
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Information about the directory where the work is located.
 	Directory *QuerySharesToUserListResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
@@ -171,7 +171,7 @@ type QuerySharesToUserListResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 测试报表
+	// Test report
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// The type of the work. Valid values:
 	//
@@ -205,7 +205,7 @@ type QuerySharesToUserListResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 专业版回归
+	// Return to Professional Edition
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -372,7 +372,7 @@ type QuerySharesToUserListResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// 图表报表
+	// Chart Report
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The path ID of the directory where the resource is located.
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
@@ -380,7 +380,7 @@ type QuerySharesToUserListResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// 一级目录/二级目录
+	// Level -1 Directory /Level -2 Directory
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 

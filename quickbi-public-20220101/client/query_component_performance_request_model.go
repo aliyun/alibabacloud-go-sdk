@@ -26,27 +26,19 @@ type iQueryComponentPerformanceRequest interface {
 }
 
 type QueryComponentPerformanceRequest struct {
-	// The average duration (minutes).
+	// The average duration, in minutes.
 	//
 	// example:
 	//
 	// 1
 	CostTimeAvgMin *int32 `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
-	// The current page number of the workspace member list:
-	//
-	// 	- Pages start from page 1.
-	//
-	// 	- Default value: 1.
+	// The current page number of the workspace member list. Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of rows per page in a paged query.
-	//
-	// 	- Default value: 10.
-	//
-	// 	- Maximum value: 1,000.
+	// The number of entries per page for a paged query. Default value: 10. Maximum value: 1000.
 	//
 	// example:
 	//
@@ -54,11 +46,11 @@ type QueryComponentPerformanceRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query type. Valid values:
 	//
-	// 	- **lastDay**: Yesterday
+	// - **lastDay**: yesterday
 	//
-	// 	- **sevenDays**: Within seven days
+	// - **sevenDays**: within the last seven days
 	//
-	// 	- **thirtyDays**: Within 30 days
+	// - **thirtyDays**: within the last thirty days
 	//
 	// This parameter is required.
 	//
@@ -66,13 +58,13 @@ type QueryComponentPerformanceRequest struct {
 	//
 	// sevenDays
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	// The ID of the work. The works here include BI portal, dashboards, spreadsheets, and self-service access.
+	// The ID of the report. Reports include data portals, dashboards, workbooks, and ad hoc queries.
 	//
 	// example:
 	//
 	// 6b407e50-e774-406b-9956-da2425c2****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The resource types.
+	// The resource type.
 	//
 	// example:
 	//

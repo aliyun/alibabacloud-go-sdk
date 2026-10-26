@@ -119,7 +119,7 @@ type ListWorkspaceRolesResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 空间管理员
+	// Space administrator
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 

@@ -105,7 +105,7 @@ type ListCollectionsResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 奇异博士
+	// test
 	WorksName *string `json:"WorksName,omitempty" xml:"WorksName,omitempty"`
 	// The type of the work. Possible values:
 	//
@@ -133,7 +133,7 @@ type ListCollectionsResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 测试工作空间
+	// test
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

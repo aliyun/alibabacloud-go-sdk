@@ -91,7 +91,7 @@ type QueryUserTagMetaListResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 用于区分部分职位
+	// Used to distinguish some positions
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
 	// The ID of the label.
 	//
@@ -103,7 +103,7 @@ type QueryUserTagMetaListResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 职位
+	// Position
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 

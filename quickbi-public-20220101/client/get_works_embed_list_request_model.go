@@ -22,7 +22,7 @@ type iGetWorksEmbedListRequest interface {
 }
 
 type GetWorksEmbedListRequest struct {
-	// The report name for fuzzy match.
+	// The report name. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -42,17 +42,17 @@ type GetWorksEmbedListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The report type. Valid values:
 	//
-	// - page: dashboard.
+	// - page: Dashboard.
 	//
-	// - screen: data screen.
+	// - screen: Data screen.
 	//
-	// - report: workbook.
+	// - report: Workbook.
 	//
-	// - ANALYSIS: ad hoc analysis.
+	// - ANALYSIS: Ad hoc analysis.
 	//
-	// - dashboardOfflineQuery: self-service data retrieval.
+	// - dashboardOfflineQuery: Self-service data retrieval.
 	//
-	// - dataForm: data entry form.
+	// - dataForm: Data entry.
 	//
 	// example:
 	//

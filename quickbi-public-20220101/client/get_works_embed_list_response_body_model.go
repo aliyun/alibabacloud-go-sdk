@@ -174,7 +174,7 @@ func (s *GetWorksEmbedListResponseBodyResult) Validate() error {
 }
 
 type GetWorksEmbedListResponseBodyResultData struct {
-	// The time when the report was embedded, in the format of YYYY-mm-DD hh:MM:ss.
+	// The time when the report was embedded. Format: YYYY-MM-DD hh:mm:ss.
 	//
 	// example:
 	//

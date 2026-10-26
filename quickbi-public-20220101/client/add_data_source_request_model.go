@@ -28,6 +28,8 @@ type AddDataSourceRequest struct {
 	//
 	//   "userId": "235345xxxxx24336",
 	//
+	//   "userAsOwner":true,
+	//
 	//   "workspaceId": "235345xxxxx24336",
 	//
 	//   "dsType": "postgresql",

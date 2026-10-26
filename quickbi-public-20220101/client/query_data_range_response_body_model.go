@@ -22,7 +22,7 @@ type QueryDataRangeResponseBody struct {
 	//
 	// example:
 	//
-	// D787E1A3-A93C-424A-B626-C2B05DF8D885
+	// D787E1A3-A93C-****-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Data range object.
 	Result *QueryDataRangeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
@@ -142,13 +142,13 @@ type QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels struct {
 	//
 	// example:
 	//
-	// 测试
+	// test
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// Nickname of the creator.
 	//
 	// example:
 	//
-	// 诸葛
+	// zhuge
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// LlmCube resource ID.
 	//
@@ -204,7 +204,7 @@ type QueryDataRangeResponseBodyResultApiCopilotThemeModels struct {
 	//
 	// example:
 	//
-	// 诸葛
+	// zhuge
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// Analysis theme ID.
 	//
@@ -216,7 +216,7 @@ type QueryDataRangeResponseBodyResultApiCopilotThemeModels struct {
 	//
 	// example:
 	//
-	// 测试主题
+	// test theme
 	ThemeName *string `json:"ThemeName,omitempty" xml:"ThemeName,omitempty"`
 }
 
@@ -282,13 +282,13 @@ type QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModel
 	//
 	// example:
 	//
-	// 测哈
+	// test
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// Nickname of the creator.
 	//
 	// example:
 	//
-	// 诸葛
+	// zhuge
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// LlmCube resource ID.
 	//

@@ -26,11 +26,11 @@ type QueryWorksResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the data work.
 	Result *QueryWorksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -93,35 +93,35 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// 0
 	Auth3rdFlag *int32 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
-	// The remarks of the data work.
+	// The description of the data work.
 	//
 	// example:
 	//
-	// Remarks
+	// Remark
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory to which the data work belongs.
+	// The folder to which the data work belongs.
 	Directory *QueryWorksResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	// The array of global parameters.
+	// The global parameter array.
 	GlobalParamVoList []*QueryWorksResponseBodyResultGlobalParamVoList `json:"GlobalParamVoList,omitempty" xml:"GlobalParamVoList,omitempty" type:"Repeated"`
-	// The timestamp when the data work was created, in milliseconds.
+	// The millisecond-level timestamp when the data work was created.
 	//
 	// example:
 	//
 	// 1496651577000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The timestamp when the data work was last modified, in milliseconds.
+	// The millisecond-level timestamp when the data work was updated.
 	//
 	// example:
 	//
 	// 1496651577000
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// The Alibaba Cloud account name of the user who last modified the data work.
+	// The Alibaba Cloud account name of the user who updated the data work.
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	// The Quick BI UserID of the data work owner.
+	// The Quick BI user ID of the data work owner.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Indicates whether the data work is public.
 	//
@@ -139,7 +139,7 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// true
 	PublicFlag *bool `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
-	// The expiration date for the public access of the report. This value is a UNIX timestamp in milliseconds.
+	// The expiration date for public access to the report, represented as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -153,21 +153,21 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// - 1 or 11: Authorized to all workspace members.
 	//
-	// >- If you use the legacy permission model, the return value is 1.
+	// >- If you use the legacy permissions, the value 1 is returned.
 	//
-	// >- If you use the new permission model, the return value is 11.
+	// >- If you use the new permissions, the value 11 is returned.
 	//
 	// example:
 	//
 	// 0
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// The report status. Valid values:
+	// The status of the report. Valid values:
 	//
 	// - 0: Unpublished.
 	//
 	// - 1: Published.
 	//
-	// - 2: Modified but not published.
+	// - 2: Modified but unpublished.
 	//
 	// - 3: Offline.
 	//
@@ -179,19 +179,19 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// example:
 	//
-	// TestReport
+	// Test report
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
-	// The type of the data work. Leave this parameter empty to query all types. Valid values:
+	// The type of the data work to query. Leave this parameter empty to query all types. Valid values:
 	//
-	// - DATAPRODUCT: data portal
+	// - DATAPRODUCT: Data portal.
 	//
-	// - PAGE: dashboard
+	// - PAGE: Dashboard.
 	//
-	// - FULLPAGE: full-screen dashboard
+	// - FULLPAGE: Full-screen dashboard.
 	//
-	// - REPORT: workbook
+	// - REPORT: Workbook.
 	//
-	// - dashboardOfflineQuery: custom query
+	// - dashboardOfflineQuery: Self-service data retrieval.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// example:
 	//
-	// TestWorkspace
+	// Test workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -406,29 +406,29 @@ func (s *QueryWorksResponseBodyResult) Validate() error {
 }
 
 type QueryWorksResponseBodyResultDirectory struct {
-	// The ID of the directory to which the data work belongs.
+	// The ID of the folder.
 	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The directory name.
+	// The name of the folder.
 	//
 	// example:
 	//
-	// TestDirectory
+	// Test folder
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The hierarchical path of the directory IDs, separated by a forward slash (/).
+	// The hierarchical structure of the folder IDs, separated by forward slashes (/).
 	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
-	// The hierarchical path of the directory names, separated by a forward slash (/).
+	// The hierarchical structure of the folder names, separated by forward slashes (/).
 	//
 	// example:
 	//
-	// TestDirectory
+	// Test folder
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -483,25 +483,25 @@ func (s *QueryWorksResponseBodyResultDirectory) Validate() error {
 type QueryWorksResponseBodyResultGlobalParamVoList struct {
 	// The field type. Valid values:
 	//
-	// - enum: enumeration
+	// - enum: Enumeration.
 	//
-	// - string: text
+	// - string: Text.
 	//
-	// - number: numeric
+	// - number: Numeric value.
 	//
-	// - datetime: date
+	// - datetime: Date and time.
 	//
 	// example:
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The parameter alias.
+	// The alias of the parameter.
 	//
 	// example:
 	//
 	// lastQueryAt
 	ParamAlias *string `json:"ParamAlias,omitempty" xml:"ParamAlias,omitempty"`
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// example:
 	//

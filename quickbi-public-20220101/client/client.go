@@ -1891,6 +1891,96 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
+// 生成AIPro超级框嵌入ticket
+//
+// @param request - CreateTicket4AiProRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTicket4AiProResponse
+func (client *Client) CreateTicket4AiProWithOptions(request *CreateTicket4AiProRequest, runtime *dara.RuntimeOptions) (_result *CreateTicket4AiProResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountName) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.AccountType) {
+		query["AccountType"] = request.AccountType
+	}
+
+	if !dara.IsNil(request.AiProId) {
+		query["AiProId"] = request.AiProId
+	}
+
+	if !dara.IsNil(request.CustomParam) {
+		query["CustomParam"] = request.CustomParam
+	}
+
+	if !dara.IsNil(request.ExpireTime) {
+		query["ExpireTime"] = request.ExpireTime
+	}
+
+	if !dara.IsNil(request.QuickBIUserId) {
+		query["QuickBIUserId"] = request.QuickBIUserId
+	}
+
+	if !dara.IsNil(request.SystemUid) {
+		query["SystemUid"] = request.SystemUid
+	}
+
+	if !dara.IsNil(request.TicketNum) {
+		query["TicketNum"] = request.TicketNum
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTicket4AiPro"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTicket4AiProResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成AIPro超级框嵌入ticket
+//
+// @param request - CreateTicket4AiProRequest
+//
+// @return CreateTicket4AiProResponse
+func (client *Client) CreateTicket4AiPro(request *CreateTicket4AiProRequest) (_result *CreateTicket4AiProResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateTicket4AiProResponse{}
+	_body, _err := client.CreateTicket4AiProWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates a ticket to embed Copilot.
 //
 // @param request - CreateTicket4CopilotRequest
@@ -3341,7 +3431,7 @@ func (client *Client) GetUserGroupInfo(request *GetUserGroupInfoRequest) (_resul
 
 // Summary:
 //
-// Queries the list of embedded reports.
+// Queries a list of embedded reports.
 //
 // @param request - GetWorksEmbedListRequest
 //
@@ -3401,7 +3491,7 @@ func (client *Client) GetWorksEmbedListWithOptions(request *GetWorksEmbedListReq
 
 // Summary:
 //
-// Queries the list of embedded reports.
+// Queries a list of embedded reports.
 //
 // @param request - GetWorksEmbedListRequest
 //
@@ -4981,6 +5071,92 @@ func (client *Client) ManualRunMailTask(request *ManualRunMailTaskRequest) (_res
 
 // Summary:
 //
+// 修改AI Pro嵌入配置
+//
+// @param request - ModifyAiproEmbedConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAiproEmbedConfigResponse
+func (client *Client) ModifyAiproEmbedConfigWithOptions(request *ModifyAiproEmbedConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAiproEmbedConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.AiProId) {
+		query["AiProId"] = request.AiProId
+	}
+
+	if !dara.IsNil(request.ChatHistoryStatus) {
+		query["ChatHistoryStatus"] = request.ChatHistoryStatus
+	}
+
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.MemoryEnabled) {
+		query["MemoryEnabled"] = request.MemoryEnabled
+	}
+
+	if !dara.IsNil(request.ShowName) {
+		query["ShowName"] = request.ShowName
+	}
+
+	if !dara.IsNil(request.UploadEnabled) {
+		query["UploadEnabled"] = request.UploadEnabled
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAiproEmbedConfig"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAiproEmbedConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改AI Pro嵌入配置
+//
+// @param request - ModifyAiproEmbedConfigRequest
+//
+// @return ModifyAiproEmbedConfigResponse
+func (client *Client) ModifyAiproEmbedConfig(request *ModifyAiproEmbedConfigRequest) (_result *ModifyAiproEmbedConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyAiproEmbedConfigResponse{}
+	_body, _err := client.ModifyAiproEmbedConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of a specified API data source.
 //
 // Description:
@@ -5268,6 +5444,68 @@ func (client *Client) QueryAccelerationLogByCubeId(request *QueryAccelerationLog
 	runtime := &dara.RuntimeOptions{}
 	_result = &QueryAccelerationLogByCubeIdResponse{}
 	_body, _err := client.QueryAccelerationLogByCubeIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 概述
+//
+// @param request - QueryAiproEmbedConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAiproEmbedConfigResponse
+func (client *Client) QueryAiproEmbedConfigWithOptions(request *QueryAiproEmbedConfigRequest, runtime *dara.RuntimeOptions) (_result *QueryAiproEmbedConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryAiproEmbedConfig"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryAiproEmbedConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 概述
+//
+// @param request - QueryAiproEmbedConfigRequest
+//
+// @return QueryAiproEmbedConfigResponse
+func (client *Client) QueryAiproEmbedConfig(request *QueryAiproEmbedConfigRequest) (_result *QueryAiproEmbedConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryAiproEmbedConfigResponse{}
+	_body, _err := client.QueryAiproEmbedConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5593,7 +5831,7 @@ func (client *Client) QueryCopilotEmbedConfig(request *QueryCopilotEmbedConfigRe
 
 // Summary:
 //
-// Queries dataset optimization suggestions.
+// Queries optimization suggestions for datasets.
 //
 // @param request - QueryCubeOptimizationRequest
 //
@@ -5637,7 +5875,7 @@ func (client *Client) QueryCubeOptimizationWithOptions(request *QueryCubeOptimiz
 
 // Summary:
 //
-// Queries dataset optimization suggestions.
+// Queries optimization suggestions for datasets.
 //
 // @param request - QueryCubeOptimizationRequest
 //
@@ -6795,7 +7033,7 @@ func (client *Client) QueryOrganizationRoleConfig(request *QueryOrganizationRole
 
 // Summary:
 //
-// Retrieves the list of workspaces in the current organization.
+// Queries the list of workspaces in the current organization.
 //
 // @param request - QueryOrganizationWorkspaceListRequest
 //
@@ -6851,7 +7089,7 @@ func (client *Client) QueryOrganizationWorkspaceListWithOptions(request *QueryOr
 
 // Summary:
 //
-// Retrieves the list of workspaces in the current organization.
+// Queries the list of workspaces in the current organization.
 //
 // @param request - QueryOrganizationWorkspaceListRequest
 //
@@ -7893,7 +8131,7 @@ func (client *Client) QueryUserTagValueList(request *QueryUserTagValueListReques
 
 // Summary:
 //
-// Queries the information of a specified data work.
+// Queries the details of a specified data work.
 //
 // @param request - QueryWorksRequest
 //
@@ -7937,7 +8175,7 @@ func (client *Client) QueryWorksWithOptions(request *QueryWorksRequest, runtime 
 
 // Summary:
 //
-// Queries the information of a specified data work.
+// Queries the details of a specified data work.
 //
 // @param request - QueryWorksRequest
 //
@@ -9267,6 +9505,80 @@ func (client *Client) UpdateDataSource(request *UpdateDataSourceRequest) (_resul
 
 // Summary:
 //
+// 更新数据源基础属性
+//
+// @param request - UpdateDataSourcePropertiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataSourcePropertiesResponse
+func (client *Client) UpdateDataSourcePropertiesWithOptions(request *UpdateDataSourcePropertiesRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataSourcePropertiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DsId) {
+		query["DsId"] = request.DsId
+	}
+
+	if !dara.IsNil(request.QuickBIOwnerId) {
+		query["QuickBIOwnerId"] = request.QuickBIOwnerId
+	}
+
+	if !dara.IsNil(request.ShowName) {
+		query["ShowName"] = request.ShowName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataSourceProperties"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataSourcePropertiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据源基础属性
+//
+// @param request - UpdateDataSourcePropertiesRequest
+//
+// @return UpdateDataSourcePropertiesResponse
+func (client *Client) UpdateDataSourceProperties(request *UpdateDataSourcePropertiesRequest) (_result *UpdateDataSourcePropertiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDataSourcePropertiesResponse{}
+	_body, _err := client.UpdateDataSourcePropertiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Change the embedding status of a report, turn on embedding, or turn off embedding.
 //
 // @param request - UpdateEmbeddedStatusRequest
@@ -9699,7 +10011,7 @@ func (client *Client) UpdateUserTagValue(request *UpdateUserTagValueRequest) (_r
 
 // Summary:
 //
-// Modifies the role of a specified member in a workspace. The existing role is overwritten.
+// Modifies the role of a specified member in a workspace. Existing roles are overwritten.
 //
 // @param request - UpdateWorkspaceUserRoleRequest
 //
@@ -9755,7 +10067,7 @@ func (client *Client) UpdateWorkspaceUserRoleWithOptions(request *UpdateWorkspac
 
 // Summary:
 //
-// Modifies the role of a specified member in a workspace. The existing role is overwritten.
+// Modifies the role of a specified member in a workspace. Existing roles are overwritten.
 //
 // @param request - UpdateWorkspaceUserRoleRequest
 //

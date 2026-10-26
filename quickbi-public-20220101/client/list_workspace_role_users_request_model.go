@@ -26,7 +26,7 @@ type ListWorkspaceRoleUsersRequest struct {
 	//
 	// example:
 	//
-	// 测试pop用户
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// Current page number for pagination:
 	//

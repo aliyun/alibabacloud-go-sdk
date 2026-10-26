@@ -192,7 +192,7 @@ type QueryWorksByWorkspaceResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 备注
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The directory to which the work belongs.
 	Directory *QueryWorksByWorkspaceResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
@@ -212,19 +212,19 @@ type QueryWorksByWorkspaceResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 张三
+	// Tom
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
 	// The user ID of the work owner in the Quick BI.
 	//
 	// example:
 	//
-	// 作品所属工作空间名称。
+	// The name of the workspace to which the work belongs.
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The nickname of the work owner.
 	//
 	// example:
 	//
-	// 李四
+	// Li Si
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Is it public
 	//
@@ -274,7 +274,7 @@ type QueryWorksByWorkspaceResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试报表
+	// Test report
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// The type of the work. Valid values:
 	//
@@ -312,7 +312,7 @@ type QueryWorksByWorkspaceResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 测试工作空间
+	// Test Workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -497,7 +497,7 @@ type QueryWorksByWorkspaceResponseBodyResultDataDirectory struct {
 	//
 	// example:
 	//
-	// 所属目录名称。
+	// The name of the directory.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
 	//
@@ -509,7 +509,7 @@ type QueryWorksByWorkspaceResponseBodyResultDataDirectory struct {
 	//
 	// example:
 	//
-	// 测试目录
+	// Test directory
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 

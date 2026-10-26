@@ -107,7 +107,7 @@ type QueryUserRoleInfoInWorkspaceResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 空间管理员
+	// test
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 

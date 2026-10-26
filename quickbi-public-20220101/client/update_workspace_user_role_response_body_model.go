@@ -24,17 +24,17 @@ type UpdateWorkspaceUserRoleResponseBody struct {
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// The execution result of the API operation. Valid values:
 	//
-	// - true: The operation succeeded.
+	// - true: The execution succeeded.
 	//
-	// - false: The operation failed.
+	// - false: The execution failed.
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
 	// - true: The request succeeded.
 	//

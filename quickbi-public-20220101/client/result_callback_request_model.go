@@ -32,7 +32,7 @@ type ResultCallbackRequest struct {
 	//
 	// example:
 	//
-	// 你不是A部门分析师。
+	// You are not a Division A analyst.
 	HandleReason *string `json:"HandleReason,omitempty" xml:"HandleReason,omitempty"`
 	// Approval result:
 	//

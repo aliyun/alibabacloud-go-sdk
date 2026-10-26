@@ -171,7 +171,7 @@ type QueryDatasetInfoResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 大娃
+	// The name of the dataset owner.
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The name of the training dataset.
 	//
@@ -193,7 +193,7 @@ type QueryDatasetInfoResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 测试空间
+	// The name of the workspace in which the dataset resides.
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -413,7 +413,8 @@ type QueryDatasetInfoResponseBodyResultCubeTableList struct {
 	// example:
 	//
 	// odps_40
-	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	Caption     *string                                                       `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	ChildTables []*QueryDatasetInfoResponseBodyResultCubeTableListChildTables `json:"ChildTables,omitempty" xml:"ChildTables,omitempty" type:"Repeated"`
 	// The display name of the table.
 	//
 	// example:
@@ -482,6 +483,10 @@ func (s *QueryDatasetInfoResponseBodyResultCubeTableList) GetCaption() *string {
 	return s.Caption
 }
 
+func (s *QueryDatasetInfoResponseBodyResultCubeTableList) GetChildTables() []*QueryDatasetInfoResponseBodyResultCubeTableListChildTables {
+	return s.ChildTables
+}
+
 func (s *QueryDatasetInfoResponseBodyResultCubeTableList) GetCustomsql() *bool {
 	return s.Customsql
 }
@@ -512,6 +517,11 @@ func (s *QueryDatasetInfoResponseBodyResultCubeTableList) GetUniqueId() *string 
 
 func (s *QueryDatasetInfoResponseBodyResultCubeTableList) SetCaption(v string) *QueryDatasetInfoResponseBodyResultCubeTableList {
 	s.Caption = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableList) SetChildTables(v []*QueryDatasetInfoResponseBodyResultCubeTableListChildTables) *QueryDatasetInfoResponseBodyResultCubeTableList {
+	s.ChildTables = v
 	return s
 }
 
@@ -551,6 +561,131 @@ func (s *QueryDatasetInfoResponseBodyResultCubeTableList) SetUniqueId(v string) 
 }
 
 func (s *QueryDatasetInfoResponseBodyResultCubeTableList) Validate() error {
+	if s.ChildTables != nil {
+		for _, item := range s.ChildTables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type QueryDatasetInfoResponseBodyResultCubeTableListChildTables struct {
+	// example:
+	//
+	// 1
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// example:
+	//
+	// test
+	Customsql *bool `json:"Customsql,omitempty" xml:"Customsql,omitempty"`
+	// example:
+	//
+	// test
+	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// example:
+	//
+	// test
+	DsType    *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	FactTable *bool   `json:"FactTable,omitempty" xml:"FactTable,omitempty"`
+	// example:
+	//
+	// test
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test
+	UniqueId *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
+}
+
+func (s QueryDatasetInfoResponseBodyResultCubeTableListChildTables) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryDatasetInfoResponseBodyResultCubeTableListChildTables) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) GetCaption() *string {
+	return s.Caption
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) GetCustomsql() *bool {
+	return s.Customsql
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) GetDatasourceId() *string {
+	return s.DatasourceId
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) GetDsType() *string {
+	return s.DsType
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) GetFactTable() *bool {
+	return s.FactTable
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) GetSql() *string {
+	return s.Sql
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) GetTableName() *string {
+	return s.TableName
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) GetUniqueId() *string {
+	return s.UniqueId
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) SetCaption(v string) *QueryDatasetInfoResponseBodyResultCubeTableListChildTables {
+	s.Caption = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) SetCustomsql(v bool) *QueryDatasetInfoResponseBodyResultCubeTableListChildTables {
+	s.Customsql = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) SetDatasourceId(v string) *QueryDatasetInfoResponseBodyResultCubeTableListChildTables {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) SetDsType(v string) *QueryDatasetInfoResponseBodyResultCubeTableListChildTables {
+	s.DsType = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) SetFactTable(v bool) *QueryDatasetInfoResponseBodyResultCubeTableListChildTables {
+	s.FactTable = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) SetSql(v string) *QueryDatasetInfoResponseBodyResultCubeTableListChildTables {
+	s.Sql = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) SetTableName(v string) *QueryDatasetInfoResponseBodyResultCubeTableListChildTables {
+	s.TableName = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) SetUniqueId(v string) *QueryDatasetInfoResponseBodyResultCubeTableListChildTables {
+	s.UniqueId = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -760,7 +895,7 @@ type QueryDatasetInfoResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// 测试目录
+	// The name of the directory.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The information about the directory to which the dataset belongs.
 	//
@@ -772,7 +907,7 @@ type QueryDatasetInfoResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// 测试目录
+	// The path name of the directory ID, for example, one-level directory /two-level directory.
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 

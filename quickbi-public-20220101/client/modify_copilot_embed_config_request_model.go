@@ -24,7 +24,7 @@ type ModifyCopilotEmbedConfigRequest struct {
 	//
 	// example:
 	//
-	// 小Q
+	// smartq
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// Embedding ID.
 	//
@@ -40,19 +40,23 @@ type ModifyCopilotEmbedConfigRequest struct {
 	//
 	// example:
 	//
-	// 如果客户要授权所有分析主题，则 {allTheme: true}
+	// Map<String,Object> data=new HashMap<>();
 	//
-	// 如果客户要授权所有问数资源，则 {allCube: true}
+	//         data.put("allTheme",true);
 	//
-	// 如果客户要授权部分问数资源，则 {llmCubes: [12314,12345]}
+	//         //data.put("allCube",true);
 	//
-	// 如果客户要授权部分分析主题，则 {themes: [12314,12345]}
+	//         //data.put("themes",Lists.newArrayList("1111","22222"));
+	//
+	//         //data.put("llmCubes",Lists.newArrayList("33333","44444"));
+	//
+	//         request.setDataRange(JSON.toJSONString(data));
 	DataRange *string `json:"DataRange,omitempty" xml:"DataRange,omitempty"`
 	// Module name.
 	//
 	// example:
 	//
-	// 小Q
+	// smartq
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 

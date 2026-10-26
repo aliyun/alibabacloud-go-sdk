@@ -26,27 +26,27 @@ type iQueryReportPerformanceRequest interface {
 }
 
 type QueryReportPerformanceRequest struct {
-	// The average duration (minutes).
+	// The average time consumed in minutes.
 	//
 	// example:
 	//
 	// 1
 	CostTimeAvgMin *int32 `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
-	// Current page number for organization member list:
+	// The current page number of the organization member list.
 	//
-	// 	- Pages start from page 1.
+	// - Starting value: 1.
 	//
-	// 	- Default value: 1.
+	// - Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of rows per page in a paged query.
+	// The number of entries per page.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
-	// 	- Maximum value: 1,000.
+	// - Maximum value: 1000.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type QueryReportPerformanceRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query type. Valid values:
 	//
-	// 	- **lastDay**: Yesterday
+	// - **lastDay**: Yesterday.
 	//
-	// 	- **sevenDays**: Within seven days
+	// - **sevenDays**: Within the last 7 days.
 	//
-	// 	- **thirtyDays**: Within 30 days
+	// - **thirtyDays**: Within the last 30 days.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type QueryReportPerformanceRequest struct {
 	//
 	// sevenDays
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	// The ID of the security report.
+	// The report ID.
 	//
 	// example:
 	//
 	// 6b407e50-e774-406b-9956-da2425c2****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The resource types.
+	// The resource type.
 	//
 	// example:
 	//

@@ -115,7 +115,7 @@ type QueryWorkspaceRoleConfigResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 空间管理员
+	// pace administrator
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 

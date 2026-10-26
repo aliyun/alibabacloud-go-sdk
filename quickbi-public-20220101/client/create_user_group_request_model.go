@@ -40,7 +40,7 @@ type CreateUserGroupRequest struct {
 	//
 	// example:
 	//
-	// 用户分组描述
+	// User group description
 	UserGroupDescription *string `json:"UserGroupDescription,omitempty" xml:"UserGroupDescription,omitempty"`
 	// The unique ID of the user group.
 	//
@@ -62,7 +62,7 @@ type CreateUserGroupRequest struct {
 	//
 	// example:
 	//
-	// 杭州财报
+	// Hangzhou Financial Report
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 

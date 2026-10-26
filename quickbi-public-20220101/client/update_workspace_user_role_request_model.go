@@ -22,7 +22,7 @@ type iUpdateWorkspaceUserRoleRequest interface {
 type UpdateWorkspaceUserRoleRequest struct {
 	// Deprecated
 	//
-	// The preset workspace role ID. The existing role is overwritten. Valid values:
+	// The ID of the preset workspace role. This operation overwrites existing roles. Valid values:
 	//
 	// - 25: workspace administrator
 	//
@@ -36,9 +36,7 @@ type UpdateWorkspaceUserRoleRequest struct {
 	//
 	// 25
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// Multiple workspace role IDs, separated by commas. If this parameter is specified, it takes precedence.
-	//
-	// 	Notice: roleId and roleIds cannot both be empty
+	// The IDs of multiple workspace roles, separated by commas. If this parameter is specified, it takes precedence. <notice>roleId and roleIds cannot be both empty.</notice>
 	//
 	// example:
 	//

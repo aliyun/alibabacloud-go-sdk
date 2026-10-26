@@ -194,7 +194,7 @@ type QueryWorkspaceUserListResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 我就是那个分析师大神
+	// test
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// Preset role information for the workspace member.
 	Role *QueryWorkspaceUserListResponseBodyResultDataRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
@@ -293,7 +293,7 @@ type QueryWorkspaceUserListResponseBodyResultDataRole struct {
 	//
 	// example:
 	//
-	// 管理员
+	// test
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 

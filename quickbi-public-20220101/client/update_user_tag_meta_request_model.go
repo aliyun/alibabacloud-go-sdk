@@ -24,7 +24,7 @@ type UpdateUserTagMetaRequest struct {
 	//
 	// example:
 	//
-	// 部门内的工作职位
+	// Job Positions within the Department
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
 	// The specified TagID.
 	//
@@ -46,7 +46,7 @@ type UpdateUserTagMetaRequest struct {
 	//
 	// example:
 	//
-	// 职位
+	// Department
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
