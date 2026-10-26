@@ -42,7 +42,7 @@ type iCreatePolarClawCronJobShrinkRequest interface {
 }
 
 type CreatePolarClawCronJobShrinkRequest struct {
-	// The ID of the agent that executes the task.
+	// The ID of the specified execution agent.
 	//
 	// example:
 	//
@@ -56,25 +56,25 @@ type CreatePolarClawCronJobShrinkRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Specifies whether to automatically delete the job after its first execution. This is useful for one-time tasks. Default: `false`.
+	// Specifies whether to automatically delete the task after the first execution. Default value: false.
 	//
 	// example:
 	//
 	// false
 	DeleteAfterRun *bool `json:"DeleteAfterRun,omitempty" xml:"DeleteAfterRun,omitempty"`
-	// The configuration for delivering task execution results.
+	// The result delivery configuration.
 	//
 	// example:
 	//
 	// {"Mode":"announce","Channel":"telegram"}
 	DeliveryShrink *string `json:"Delivery,omitempty" xml:"Delivery,omitempty"`
-	// A description of the task.
+	// The task description.
 	//
 	// example:
 	//
 	// Daily report generation
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether the cron job is enabled. Default: `true`.
+	// Specifies whether the task is enabled. Default value: true.
 	//
 	// example:
 	//
@@ -102,13 +102,13 @@ type CreatePolarClawCronJobShrinkRequest struct {
 	//
 	// {"Kind":"agentTurn","Message":"Generate the daily report."}
 	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	// Specifies whether to restart the gateway upon job creation. Default: `true`.
+	// Specifies whether to restart the gateway after creation. Default value: true.
 	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
-	// Specifies whether to run the job once immediately upon creation. Default: `false`.
+	// Specifies whether to run it once immediately after creation. Default value: false.
 	//
 	// example:
 	//
@@ -122,13 +122,13 @@ type CreatePolarClawCronJobShrinkRequest struct {
 	//
 	// {"Kind":"cron","Expr":"0 9 	- 	- *","Tz":"Asia/Shanghai"}
 	ScheduleShrink *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The session routing key, which determines the conversation session for the task.
+	// The session routing key.
 	//
 	// example:
 	//
 	// agent:main:feishu:direct:***
 	SessionKey *string `json:"SessionKey,omitempty" xml:"SessionKey,omitempty"`
-	// The session target. Valid values are `main`, `isolated`, and `current`.
+	// The session target. Valid values: main, isolated, current.
 	//
 	// This parameter is required.
 	//
@@ -136,7 +136,7 @@ type CreatePolarClawCronJobShrinkRequest struct {
 	//
 	// main
 	SessionTarget *string `json:"SessionTarget,omitempty" xml:"SessionTarget,omitempty"`
-	// The wake mode for the agent. Valid values are `now` and `next-heartbeat`.
+	// The wake mode. Valid values: now, next-heartbeat.
 	//
 	// This parameter is required.
 	//

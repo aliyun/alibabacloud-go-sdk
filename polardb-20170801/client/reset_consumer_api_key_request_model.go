@@ -26,7 +26,7 @@ type ResetConsumerApiKeyRequest struct {
 	//
 	// c-mqveroemc***
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// This parameter is required.
 	//

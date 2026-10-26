@@ -26,7 +26,7 @@ type iUnbindPolarClawAgentResponseBody interface {
 }
 
 type UnbindPolarClawAgentResponseBody struct {
-	// The agent ID.
+	// Agent ID
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type UnbindPolarClawAgentResponseBody struct {
 	//
 	// pa-********************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The status code of the response.
+	// The response status code.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type UnbindPolarClawAgentResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of removed bindings.
+	// The actual number of bindings removed.
 	//
 	// example:
 	//
 	// 1
 	RemovedCount *int32 `json:"RemovedCount,omitempty" xml:"RemovedCount,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of bindings after the operation.
+	// The total number of global bindings after the operation.
 	//
 	// example:
 	//

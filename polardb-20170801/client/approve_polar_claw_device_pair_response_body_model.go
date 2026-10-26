@@ -50,7 +50,7 @@ type ApprovePolarClawDevicePairResponseBody struct {
 	//
 	// req-abc-123
 	PairRequestId *string `json:"PairRequestId,omitempty" xml:"PairRequestId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ApprovePolarClawDevicePairResponseBody) Validate() error {
 }
 
 type ApprovePolarClawDevicePairResponseBodyDevice struct {
-	// The creation time of the device pairing, in Unix milliseconds.
+	// The creation time of the device pairing in Unix milliseconds.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type ApprovePolarClawDevicePairResponseBodyDevice struct {
 	//
 	// server
 	DeviceFamily *string `json:"DeviceFamily,omitempty" xml:"DeviceFamily,omitempty"`
-	// The unique ID of the device.
+	// The unique identifier of the device.
 	//
 	// example:
 	//
@@ -154,19 +154,19 @@ type ApprovePolarClawDevicePairResponseBodyDevice struct {
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The operating system of the device.
+	// The operating system platform.
 	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The role of the device.
+	// The device role.
 	//
 	// example:
 	//
 	// operator
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// A list of permission scopes.
+	// The list of permission scopes.
 	Scopes []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
 }
 

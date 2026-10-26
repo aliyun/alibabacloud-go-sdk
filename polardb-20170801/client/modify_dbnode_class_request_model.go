@@ -44,17 +44,17 @@ type iModifyDBNodeClassRequest interface {
 }
 
 type ModifyDBNodeClassRequest struct {
-	// Specifies whether to automatically use coupons. Valid values:
+	// Specifies whether to automatically use a coupon. Valid values:
 	//
-	// 	- true (default): Uses coupons.
+	// 	- true (default): Uses the coupon.
 	//
-	// 	- false: Does not use coupons.
+	// 	- false: Does not use the coupon.
 	//
 	// example:
 	//
 	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and can contain a maximum of 64 ASCII characters.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and is case-sensitive. The value can be up to 64 ASCII characters in length.
 	//
 	// example:
 	//
@@ -82,17 +82,17 @@ type ModifyDBNodeClassRequest struct {
 	//
 	// polar.mysql.x4.large
 	DBNodeTargetClass *string `json:"DBNodeTargetClass,omitempty" xml:"DBNodeTargetClass,omitempty"`
-	// The node type. Set this parameter to DLNode only when you change the node specifications of an AI node.
+	// The node type. Set the value to DLNode only when you modify the node specifications of an AI node.
 	//
 	// example:
 	//
 	// DLNode
 	DBNodeType *string `json:"DBNodeType,omitempty" xml:"DBNodeType,omitempty"`
-	// The type of the specification change. Valid values:
+	// The modification type. Valid values:
 	//
-	// 	- **Upgrade**: upgrades the specifications.
+	// 	- **Upgrade**: Upgrades the specifications.
 	//
-	// 	- **Downgrade**: downgrades the specifications.
+	// 	- **Downgrade**: Downgrades the specifications.
 	//
 	// This parameter is required.
 	//
@@ -102,11 +102,11 @@ type ModifyDBNodeClassRequest struct {
 	ModifyType   *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The latest start time of the scheduled specification change task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+	// The latest time to start the scheduled task. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
 	//
 	// > 	- The latest time must be at least 30 minutes later than the start time.
 	//
-	// > 	- If `PlannedStartTime` is set but this parameter is not specified, the latest time defaults to `start time + 30 minutes`. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task starts no later than `2021-01-14T09:30:00Z`.
+	// > 	- If `PlannedStartTime` is specified but this parameter is left empty, the latest time to start the task defaults to 30 minutes after the start time. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task starts at `2021-01-14T09:30:00Z` at the latest.
 	//
 	// example:
 	//
@@ -114,23 +114,25 @@ type ModifyDBNodeClassRequest struct {
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The planned transient disconnection time.
 	//
+	// The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-01-14T09:30:00Z
 	PlannedFlashingOffTime *string `json:"PlannedFlashingOffTime,omitempty" xml:"PlannedFlashingOffTime,omitempty"`
-	// The earliest start time of the scheduled specification change task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+	// The earliest time to start the scheduled upgrade or downgrade task within the specified time window. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
 	//
-	// > 	- This parameter takes effect when `ModifyType` is set to `Upgrade` or `Downgrade`.
+	// > 	- This parameter takes effect only when `ModifyType` is set to `Upgrade` or `Downgrade`.
 	//
-	// > 	- The start time must be within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the valid range for the start time is from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	// >	- The start time must be within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the allowed start time ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
 	//
-	// > 	- If this parameter is left empty, the specification change task is immediately executed.
+	// >	- If this parameter is left empty, the upgrade task is executed immediately by default.
 	//
 	// example:
 	//
 	// 2021-01-14T09:00:00Z
 	PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
-	// The coupon code. If this parameter is not specified, the default coupon is used.
+	// The coupon code. If this parameter is left empty, the default coupon is used.
 	//
 	// example:
 	//
@@ -138,13 +140,13 @@ type ModifyDBNodeClassRequest struct {
 	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The cluster sub-series. Valid values:
+	// The sub-edition of the cluster. Valid values:
 	//
-	// - **normal_exclusive**: Dedicated
+	// - **normal_exclusive**: Dedicated.
 	//
-	// - **normal_general**: General-purpose
+	// - **normal_general**: General-purpose.
 	//
-	// This parameter is required when you change specifications between Dedicated and General-purpose.
+	// This parameter is required when you change the specifications between Dedicated and General-purpose.
 	//
 	// example:
 	//

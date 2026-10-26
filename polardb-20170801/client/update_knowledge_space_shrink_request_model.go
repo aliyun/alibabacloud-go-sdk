@@ -66,7 +66,7 @@ type UpdateKnowledgeSpaceShrinkRequest struct {
 	//
 	// qwen3-rerank
 	RerankModel *string `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
-	// The default chunking strategy configuration for the knowledge space. Both simple strategies and composite strategies that match by content type are supported.
+	// The default chunking strategy configuration for the knowledge space. Simple strategies and composite strategies matched by content type are supported.
 	ShardingStrategyConfigShrink *string `json:"ShardingStrategyConfig,omitempty" xml:"ShardingStrategyConfig,omitempty"`
 }
 

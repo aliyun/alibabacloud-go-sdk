@@ -22,7 +22,7 @@ type iRetryKnowledgeBaseFilesResponseBody interface {
 }
 
 type RetryKnowledgeBaseFilesResponseBody struct {
-	// The number of failed retries.
+	// The number of failed records.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type RetryKnowledgeBaseFilesResponseBody struct {
 	//
 	// CED079B7-A408-41A1-BFF1-EC608E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of successful retries.
+	// The number of successful records.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type RetryKnowledgeBaseFilesResponseBodyItems struct {
 	//
 	// AclProjectionNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The failure reason.
+	// The cause of the failure.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type RetryKnowledgeBaseFilesResponseBodyItems struct {
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The request result. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
 	// - **false**: The request failed.
 	//

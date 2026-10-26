@@ -108,13 +108,13 @@ type ModifyModelApiRequest struct {
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of input points.
+	// The number of input tokens.
 	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
-	// The number of output points.
+	// The number of output tokens.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type ModifyModelApiRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of routing rules (JSON array string).
+	// The list of routing rules. The value is a JSON array string.
 	//
 	// This parameter is required.
 	//

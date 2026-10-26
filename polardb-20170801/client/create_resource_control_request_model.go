@@ -22,13 +22,13 @@ type iCreateResourceControlRequest interface {
 }
 
 type CreateResourceControlRequest struct {
-	// The maximum number of CPU cores that the resource control rule can use. The minimum value is 1. The maximum value is determined by the cluster kernel parameter resource_control_cpu_count_limit. You must specify one and only one of this parameter and MaxCpu.
+	// The maximum number of CPU cores that the resource control rule can use. The minimum value is 1, and the maximum value is determined by the resource_control_cpu_count_limit kernel parameter of the cluster. You must specify exactly one of the MaxCpu and CpuCount parameters.
 	//
 	// example:
 	//
 	// 4
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	// The PolarDB cluster ID.
+	// The ID of the PolarDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateResourceControlRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The maximum CPU quota percentage that the resource control rule can use. Valid values: 1 to 100. You must specify one and only one of this parameter and CpuCount.
+	// The maximum CPU quota percentage that the resource control rule can use. Valid values: 1 to 100. You must specify exactly one of the MaxCpu and CpuCount parameters.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateResourceControlRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the resource control rule. The name must be 1 to 63 ASCII bytes in length, start with a letter, and can contain only letters, digits, and underscores.
+	// The name of the resource control rule. The name must be 1 to 63 ASCII characters in length, start with a letter, and contain only letters, digits, and underscores.
 	//
 	// This parameter is required.
 	//

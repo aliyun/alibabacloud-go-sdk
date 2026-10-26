@@ -26,21 +26,21 @@ type iResetAgenticDBTenantApiKeyResponseBody interface {
 }
 
 type ResetAgenticDBTenantApiKeyResponseBody struct {
-	// The new API key in plaintext. This value is returned only in this response.
+	// The plaintext of the new API key, which is returned only in this response.
 	//
 	// example:
 	//
 	// pagc_key_cGFnYy1icDFh...newSignature22ch
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The resource ID of the API key. This value remains unchanged after the reset.
+	// The API key resource ID, which remains unchanged after the reset.
 	//
 	// example:
 	//
 	// ak-71304e39c7e841a1
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
-	// The reset time, which is the effective period of the new key.
+	// The reset time, which indicates the effective period of the new key.
 	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the UTC time zone. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ResetAgenticDBTenantApiKeyResponseBody struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The expiration time.
 	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the UTC time zone. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type ListPolarClawDevicePairsResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The status code of the response.
+	// The response status code.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type ListPolarClawDevicePairsResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A list of paired devices.
+	// The list of paired devices.
 	Paired []*ListPolarClawDevicePairsResponseBodyPaired `json:"Paired,omitempty" xml:"Paired,omitempty" type:"Repeated"`
-	// A list of pending pairing requests.
+	// The list of pending pairing requests.
 	Pending []*ListPolarClawDevicePairsResponseBodyPending `json:"Pending,omitempty" xml:"Pending,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ func (s *ListPolarClawDevicePairsResponseBody) Validate() error {
 }
 
 type ListPolarClawDevicePairsResponseBodyPaired struct {
-	// The client ID.
+	// The client identifier.
 	//
 	// example:
 	//
@@ -151,19 +151,19 @@ type ListPolarClawDevicePairsResponseBodyPaired struct {
 	//
 	// cli
 	ClientMode *string `json:"ClientMode,omitempty" xml:"ClientMode,omitempty"`
-	// The time when the device pairing was created, in Unix milliseconds.
+	// The creation time of the device pairing in Unix milliseconds.
 	//
 	// example:
 	//
 	// 1778659807727
 	CreatedAtMs *int64 `json:"CreatedAtMs,omitempty" xml:"CreatedAtMs,omitempty"`
-	// The device family.
+	// The hardware category.
 	//
 	// example:
 	//
 	// empty
 	DeviceFamily *string `json:"DeviceFamily,omitempty" xml:"DeviceFamily,omitempty"`
-	// The unique device ID.
+	// The unique identifier of the device.
 	//
 	// example:
 	//
@@ -175,13 +175,13 @@ type ListPolarClawDevicePairsResponseBodyPaired struct {
 	//
 	// empty
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The time when the device was last active, in Unix milliseconds.
+	// The last active time of the device in Unix milliseconds.
 	//
 	// example:
 	//
 	// 1778659807727
 	LastSeenAtMs *int64 `json:"LastSeenAtMs,omitempty" xml:"LastSeenAtMs,omitempty"`
-	// The operating system.
+	// The operating system platform.
 	//
 	// example:
 	//
@@ -300,7 +300,7 @@ func (s *ListPolarClawDevicePairsResponseBodyPaired) Validate() error {
 }
 
 type ListPolarClawDevicePairsResponseBodyPending struct {
-	// The client ID.
+	// The client identifier.
 	//
 	// example:
 	//
@@ -312,13 +312,13 @@ type ListPolarClawDevicePairsResponseBodyPending struct {
 	//
 	// cli
 	ClientMode *string `json:"ClientMode,omitempty" xml:"ClientMode,omitempty"`
-	// The device family.
+	// The hardware category.
 	//
 	// example:
 	//
 	// server
 	DeviceFamily *string `json:"DeviceFamily,omitempty" xml:"DeviceFamily,omitempty"`
-	// The unique device ID.
+	// The unique identifier of the device.
 	//
 	// example:
 	//
@@ -330,7 +330,7 @@ type ListPolarClawDevicePairsResponseBodyPending struct {
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Whether the request is to repair an existing pairing.
+	// Specifies whether the request is for re-pairing.
 	//
 	// example:
 	//
@@ -342,7 +342,7 @@ type ListPolarClawDevicePairsResponseBodyPending struct {
 	//
 	// test-1778647932986
 	PairRequestId *string `json:"PairRequestId,omitempty" xml:"PairRequestId,omitempty"`
-	// The operating system.
+	// The operating system platform.
 	//
 	// example:
 	//
@@ -354,7 +354,7 @@ type ListPolarClawDevicePairsResponseBodyPending struct {
 	//
 	// test-pubkey-base64url
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
-	// The requester\\"s remote IP address.
+	// The IP address of the requester.
 	//
 	// example:
 	//
@@ -370,13 +370,13 @@ type ListPolarClawDevicePairsResponseBodyPending struct {
 	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
 	// The list of permission scopes.
 	Scopes []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
-	// Whether this is a silent pairing.
+	// Specifies whether silent pairing is enabled.
 	//
 	// example:
 	//
 	// false
 	Silent *bool `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	// The timestamp of the pairing request, in Unix milliseconds.
+	// The timestamp of the pairing request in Unix milliseconds.
 	//
 	// example:
 	//

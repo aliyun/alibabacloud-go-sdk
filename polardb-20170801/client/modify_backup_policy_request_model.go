@@ -636,6 +636,10 @@ type ModifyBackupPolicyRequestAdvancedDataPolicies struct {
 	// level1
 	SrcType *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
 	// The storage class used by the advanced backup policy.
+	//
+	// example:
+	//
+	// STANDARD
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 }
 

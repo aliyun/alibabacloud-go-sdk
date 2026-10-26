@@ -28,7 +28,7 @@ type RunPolarClawCronJobRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the cron job to run.
+	// The ID of the scheduled task to execute.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type RunPolarClawCronJobRequest struct {
 	//
 	// force
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// Specifies whether to restart the gateway after the job completes. Default value: true.
+	// Specifies whether to restart the gateway after creation. Default value: true.
 	//
 	// example:
 	//

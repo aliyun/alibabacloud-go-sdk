@@ -18,18 +18,24 @@ type iApplyLakebaseMountParameterGroupRequest interface {
 }
 
 type ApplyLakebaseMountParameterGroupRequest struct {
+	// The parameter template ID. The ID starts with pagp-.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pagp-xxx
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+	// The PolarFS instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pfs-xxx
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -30,11 +30,11 @@ type CreateAgenticDBTenantApiKeyRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The description of the API key usage.
+	// The description of the purpose.
 	//
 	// example:
 	//
-	// Dedicated key for MCP Server
+	// Dedicated key for MCP server
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The expiration time in ISO 8601 format. If this parameter is not specified, the API key never expires.
 	//
@@ -50,7 +50,7 @@ type CreateAgenticDBTenantApiKeyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tenant name. The name must be unique within the cluster and must be 2 to 64 characters in length.
+	// The name of the tenant. The name must be unique within the same cluster and be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//

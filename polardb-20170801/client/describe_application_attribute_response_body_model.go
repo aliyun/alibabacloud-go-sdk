@@ -1293,6 +1293,10 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	// myendpoint
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The domain name of the application endpoint.
+	//
+	// example:
+	//
+	// app.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The endpoint ID.
 	//

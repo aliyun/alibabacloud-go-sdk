@@ -18,19 +18,19 @@ type iCreatePolarFsObjectResponseBody interface {
 }
 
 type CreatePolarFsObjectResponseBody struct {
-	// The absolute path of the created directory.
+	// The destination path.
 	//
 	// example:
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The PolarFS instance id.
+	// The PolarFS instance ID.
 	//
 	// example:
 	//
 	// pfs-test****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// The request id.
+	// Id of the request
 	//
 	// example:
 	//

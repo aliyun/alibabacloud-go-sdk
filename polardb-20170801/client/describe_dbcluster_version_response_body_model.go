@@ -50,7 +50,7 @@ type DescribeDBClusterVersionResponseBody struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The latest stable version of PolarDB for PostgreSQL.
+	// The latest stable version of the PolarDB for PostgreSQL database.
 	//
 	// example:
 	//
@@ -64,15 +64,15 @@ type DescribeDBClusterVersionResponseBody struct {
 	DBLatestVersion *string `json:"DBLatestVersion,omitempty" xml:"DBLatestVersion,omitempty"`
 	// The minor version number of the database engine.
 	//
-	// 	- If `DBVersion` is **8.0**, valid values:
+	// 	- When `DBVersion` is **8.0**, valid values:
 	//
 	//     	- **8.0.2**
 	//
 	//     	- **8.0.1**
 	//
-	// 	- If `DBVersion` is **5.7**, the value is **5.7.28**.
+	// 	- When `DBVersion` is **5.7**, the value is **5.7.28**.
 	//
-	// 	- If `DBVersion` is **5.6**, the value is **5.6.16**.
+	// 	- When `DBVersion` is **5.6**, the value is **5.6.16**.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type DescribeDBClusterVersionResponseBody struct {
 	DBMinorVersion *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
 	// The Milvus version number of the database engine.
 	//
-	// > For PolarDB for MySQL 5.6 clusters, only the `Milvus version` information with a release date later than August 31, 2020 is returned. Otherwise, this parameter is empty. For more information about the minor engine versions of PolarDB for MySQL clusters, see [Release notes](https://help.aliyun.com/document_detail/423884.html).
+	// > For PolarDB for MySQL 5.6 clusters, only the `Milvus version` information with a release date after August 31, 2020 is returned. Otherwise, this parameter is empty. For more information about the kernel versions of PolarDB for MySQL clusters, see [Kernel release notes](https://help.aliyun.com/document_detail/423884.html).
 	//
 	// example:
 	//
 	// 8.0.1.1.7
 	DBRevisionVersion *string `json:"DBRevisionVersion,omitempty" xml:"DBRevisionVersion,omitempty"`
-	// The list of available upgrade version information.
+	// The list of upgradable versions.
 	DBRevisionVersionList []*DescribeDBClusterVersionResponseBodyDBRevisionVersionList `json:"DBRevisionVersionList,omitempty" xml:"DBRevisionVersionList,omitempty" type:"Repeated"`
 	// The major version number of the database engine. Valid values:
 	//
@@ -106,9 +106,9 @@ type DescribeDBClusterVersionResponseBody struct {
 	//
 	// 	- **Old**: The current version is outdated. Upgrade to the latest version.
 	//
-	// 	- **HighRisk**: The current version has critical bugs. Upgrade to the latest version immediately.
+	// 	- **HighRisk**: The current version has critical defects. Upgrade to the latest version immediately.
 	//
-	// 	- **Beta**: The current version is a beta version.
+	// 	- **Beta**: The current version is a beta release.
 	//
 	// >For more information about how to upgrade the database minor version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
 	//
@@ -116,23 +116,23 @@ type DescribeDBClusterVersionResponseBody struct {
 	//
 	// Stable
 	DBVersionStatus *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
-	// Indicates whether the current version is the latest stable version of PolarDB for PostgreSQL.
+	// Indicates whether the version is the latest stable version of PolarDB for PostgreSQL.
 	//
 	// example:
 	//
 	// true
 	IsLatestStableVersion *string `json:"IsLatestStableVersion,omitempty" xml:"IsLatestStableVersion,omitempty"`
-	// Indicates whether the current database kernel DPI engine version is the latest database engine version. Valid values:
+	// Indicates whether the current database kernel engine version is the latest version. Valid values:
 	//
-	// -  **true**
+	// - **true**
 	//
-	// -  **false**
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	IsLatestVersion *string `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	// Indicates whether the current PolarProxy version is the latest version. Valid values:
+	// Indicates whether the current database proxy version is the latest version. Valid values:
 	//
 	// 	- **true**
 	//
@@ -142,39 +142,39 @@ type DescribeDBClusterVersionResponseBody struct {
 	//
 	// true
 	IsProxyLatestVersion *string `json:"IsProxyLatestVersion,omitempty" xml:"IsProxyLatestVersion,omitempty"`
-	// The latest version of PolarProxy.
+	// The latest version of the database proxy.
 	//
 	// example:
 	//
 	// 2.4.17
 	ProxyLatestVersion *string `json:"ProxyLatestVersion,omitempty" xml:"ProxyLatestVersion,omitempty"`
-	// The version of PolarProxy.
+	// The database proxy version.
 	//
 	// example:
 	//
 	// 2.4.15
 	ProxyRevisionVersion *string `json:"ProxyRevisionVersion,omitempty" xml:"ProxyRevisionVersion,omitempty"`
-	// The release status of the PolarProxy version. Valid values:
+	// The release status of the database proxy version. Valid values:
 	//
 	// - **Stable**: The current version is stable.
 	//
-	// - **Old**: The current version is outdated. Upgrading to this version is not recommended.
+	// - **Old**: The current version is outdated. Do not upgrade to this version.
 	//
-	// - **HighRisk**: The current version has critical bugs. Upgrading to this version is not recommended.
+	// - **HighRisk**: The current version has critical defects. Do not upgrade to this version.
 	//
-	// - **Beta**: The current version is a beta version.
+	// - **Beta**: The current version is a beta release.
 	ProxyRevisionVersionList []*DescribeDBClusterVersionResponseBodyProxyRevisionVersionList `json:"ProxyRevisionVersionList,omitempty" xml:"ProxyRevisionVersionList,omitempty" type:"Repeated"`
-	// The version status of PolarProxy. Valid values:
+	// The version status of the database proxy. Valid values:
 	//
 	// 	- **Stable**: The current version is stable.
 	//
 	// 	- **Old**: The current version is outdated. Upgrade to the latest version.
 	//
-	// 	- **HighRisk**: The current version has critical bugs. Upgrade to the latest version immediately.
+	// 	- **HighRisk**: The current version has critical defects. Upgrade to the latest version immediately.
 	//
-	// 	- **Beta**: The current version is a beta version.
+	// 	- **Beta**: The current version is a beta release.
 	//
-	// >For more information about how to upgrade the PolarProxy version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
+	// >For more information about how to upgrade the database proxy version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
 	//
 	// example:
 	//
@@ -363,7 +363,7 @@ func (s *DescribeDBClusterVersionResponseBody) Validate() error {
 }
 
 type DescribeDBClusterVersionResponseBodyDBRevisionVersionList struct {
-	// The release notes for the version.
+	// The version release notes.
 	//
 	// example:
 	//
@@ -373,11 +373,11 @@ type DescribeDBClusterVersionResponseBodyDBRevisionVersionList struct {
 	//
 	// 	- **Stable**: The current version is stable.
 	//
-	// 	- **Old**: The current version is outdated. Upgrading to this version is not recommended.
+	// 	- **Old**: The current version is outdated. Do not upgrade to this version.
 	//
-	// 	- **HighRisk**: The current version has critical bugs. Upgrading to this version is not recommended.
+	// 	- **HighRisk**: The current version has critical defects. Do not upgrade to this version.
 	//
-	// 	- **Beta**: The current version is a beta version.
+	// 	- **Beta**: The current version is a beta release.
 	//
 	// example:
 	//
@@ -446,7 +446,7 @@ func (s *DescribeDBClusterVersionResponseBodyDBRevisionVersionList) Validate() e
 }
 
 type DescribeDBClusterVersionResponseBodyProxyRevisionVersionList struct {
-	// The release notes for the version.
+	// The version release notes.
 	//
 	// example:
 	//
@@ -462,13 +462,13 @@ type DescribeDBClusterVersionResponseBodyProxyRevisionVersionList struct {
 	//
 	// LTS
 	ReleaseType *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
-	// The revision version code of the PolarProxy engine, which is used to specify the target version for the upgrade.
+	// The revision version code of the database proxy engine, which is used to specify the target version for the upgrade.
 	//
 	// example:
 	//
 	// 20230707
 	RevisionVersionCode *string `json:"RevisionVersionCode,omitempty" xml:"RevisionVersionCode,omitempty"`
-	// The revision version number of the PolarProxy engine.
+	// The revision version number of the database proxy engine.
 	//
 	// example:
 	//

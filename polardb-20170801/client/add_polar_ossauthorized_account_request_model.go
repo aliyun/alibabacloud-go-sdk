@@ -20,7 +20,7 @@ type iAddPolarOSSAuthorizedAccountRequest interface {
 }
 
 type AddPolarOSSAuthorizedAccountRequest struct {
-	// The list of authorized accounts to add, separated by commas. You can pass in UIDs and RAM role ARNs in mixed parameter notation.
+	// The list of authorized accounts to add. Separate multiple accounts with commas. You can specify a mix of UIDs and RAM role ARNs.
 	//
 	// This parameter is required.
 	//

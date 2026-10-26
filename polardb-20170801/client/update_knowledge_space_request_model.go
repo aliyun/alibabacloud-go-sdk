@@ -66,7 +66,7 @@ type UpdateKnowledgeSpaceRequest struct {
 	//
 	// qwen3-rerank
 	RerankModel *string `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
-	// The default chunking strategy configuration for the knowledge space. Both simple strategies and composite strategies that match by content type are supported.
+	// The default chunking strategy configuration for the knowledge space. Simple strategies and composite strategies matched by content type are supported.
 	ShardingStrategyConfig *UpdateKnowledgeSpaceRequestShardingStrategyConfig `json:"ShardingStrategyConfig,omitempty" xml:"ShardingStrategyConfig,omitempty" type:"Struct"`
 }
 
@@ -151,9 +151,9 @@ func (s *UpdateKnowledgeSpaceRequest) Validate() error {
 }
 
 type UpdateKnowledgeSpaceRequestShardingStrategyConfig struct {
-	// The default chunking strategy. This strategy is used when no rule is matched.
+	// The default chunking strategy. This strategy is used when no rules are matched.
 	DefaultStrategy *UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategy `json:"DefaultStrategy,omitempty" xml:"DefaultStrategy,omitempty" type:"Struct"`
-	// The list of override rules that are matched in order. Currently, a maximum of one exact-match rule with ContentType set to table is supported.
+	// The list of override rules matched in sequence. Currently, a maximum of one exact match rule with ContentType set to table is supported.
 	Rules []*UpdateKnowledgeSpaceRequestShardingStrategyConfigRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -204,7 +204,7 @@ func (s *UpdateKnowledgeSpaceRequestShardingStrategyConfig) Validate() error {
 type UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategy struct {
 	// The parameters of the default chunking strategy. MaxTokens and MergePeers take effect only when Type is set to hybrid.
 	Parameters *UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	// The type of the default chunking strategy. Valid values: hybrid or hierarchical.
+	// The type of the default chunking strategy. Valid values: hybrid and hierarchical.
 	//
 	// example:
 	//
@@ -293,9 +293,9 @@ func (s *UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategyParamet
 }
 
 type UpdateKnowledgeSpaceRequestShardingStrategyConfigRules struct {
-	// The match condition of the rule. Currently, only exact matching of table content by content type is supported.
+	// The match conditions of the rule. Currently, only exact match for table content by content type is supported.
 	Match *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesMatch `json:"Match,omitempty" xml:"Match,omitempty" type:"Struct"`
-	// The chunking strategy to use when the rule is matched.
+	// The chunking strategy used after a successful match.
 	Strategy *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
@@ -372,7 +372,7 @@ func (s *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesMatch) Validate()
 type UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategy struct {
 	// The chunking strategy parameters for the override rule. MaxTokens takes effect only when Type is set to hybrid. MarkdownTables supports auto, on, or off.
 	Parameters *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	// The type of the chunking strategy to use when the rule is matched. Valid values: hybrid or hierarchical.
+	// The type of the chunking strategy used after a rule is matched. Valid values: hybrid and hierarchical.
 	//
 	// example:
 	//
@@ -416,13 +416,13 @@ func (s *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategy) Validat
 }
 
 type UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategyParameters struct {
-	// The processing mode for Markdown tables. Valid values: auto, on, or off.
+	// The processing mode for Markdown tables. Valid values: auto, on, and off.
 	//
 	// example:
 	//
 	// auto
 	MarkdownTables *string `json:"MarkdownTables,omitempty" xml:"MarkdownTables,omitempty"`
-	// The maximum number of tokens per chunk for matched content. The value must be a positive integer.
+	// The maximum number of tokens per chunk for the matched content. The value must be a positive integer.
 	//
 	// example:
 	//

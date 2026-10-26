@@ -18,7 +18,7 @@ type iResetConsumerApiKeyResponseBody interface {
 }
 
 type ResetConsumerApiKeyResponseBody struct {
-	// The complete api key, which is returned only in this response.
+	// The complete API key, which is returned only in this response.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ResetConsumerApiKeyResponseBody struct {
 	//
 	// c-mqveroemc***
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

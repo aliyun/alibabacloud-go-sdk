@@ -38,7 +38,7 @@ type DeleteAgenticDBBranchRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the project to which the branch belongs.
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DeleteAgenticDBBranchRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the tenant to which the branch belongs.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//

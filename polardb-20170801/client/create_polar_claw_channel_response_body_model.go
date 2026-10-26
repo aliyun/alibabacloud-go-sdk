@@ -38,7 +38,7 @@ type CreatePolarClawChannelResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the channel that was created.
+	// The ID of the created channel.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CreatePolarClawChannelResponseBody struct {
 	//
 	// @larksuite/openclaw-lark@2026.4.7
 	NpmPackage *string `json:"NpmPackage,omitempty" xml:"NpmPackage,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreatePolarClawChannelResponseBody struct {
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Indicates whether a new plugin was installed.
+	// Indicates whether a new plugin is installed.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type CreatePolarClawChannelResponseBody struct {
 	//
 	// 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the gateway was restarted.
+	// Indicates whether the gateway is restarted.
 	//
 	// example:
 	//

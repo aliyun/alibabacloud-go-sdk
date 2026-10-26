@@ -30,7 +30,7 @@ type UpdateKnowledgeSpaceResponseBody struct {
 	//
 	// CD35F3-F3-44CA-AFFF-BAF869******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the asynchronous workflow task. This value is empty if no actual model change occurs.
+	// The ID of the asynchronous workflow task. This parameter is empty when no actual model changes occur.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iApplyLakebaseMountParameterGroupResponseBody interface {
 }
 
 type ApplyLakebaseMountParameterGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F45FFACC-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The asynchronous task ID.
+	//
 	// example:
 	//
 	// 123456

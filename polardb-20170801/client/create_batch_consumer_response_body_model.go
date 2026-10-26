@@ -159,13 +159,13 @@ func (s *CreateBatchConsumerResponseBody) Validate() error {
 }
 
 type CreateBatchConsumerResponseBodyItems struct {
-	// Indicates whether the key is active.
+	// Indicates whether the consumer is active.
 	//
 	// example:
 	//
 	// true
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
-	// The complete API key. Returned only in this response.
+	// The complete API key. This value is returned only in the current response.
 	//
 	// example:
 	//
@@ -183,19 +183,19 @@ type CreateBatchConsumerResponseBodyItems struct {
 	//
 	// Active
 	ApiKeyStatus *string `json:"ApiKeyStatus,omitempty" xml:"ApiKeyStatus,omitempty"`
-	// The API key status. Default value: Active.
+	// The status of the API key. Default value: Active.
 	//
 	// example:
 	//
 	// Active
 	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
-	// The budget limit, which equals the number of credits per package.
+	// The budget limit, which is equal to the points of a single package.
 	//
 	// example:
 	//
 	// 3000
 	BudgetLimit *int64 `json:"BudgetLimit,omitempty" xml:"BudgetLimit,omitempty"`
-	// The budget policy ID. Each key has an independent budget policy.
+	// The ID of the budget policy. Each key has an independent budget policy.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ type CreateBatchConsumerResponseBodyItems struct {
 	//
 	// 0
 	BudgetUsed *int64 `json:"BudgetUsed,omitempty" xml:"BudgetUsed,omitempty"`
-	// The user group ID.
+	// The ID of the consumer group.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type CreateBatchConsumerResponseBodyItems struct {
 	//
 	// test
 	ConsumerTag *string `json:"ConsumerTag,omitempty" xml:"ConsumerTag,omitempty"`
-	// The application description or remarks.
+	// The application description or remark.
 	//
 	// example:
 	//
@@ -233,13 +233,13 @@ type CreateBatchConsumerResponseBodyItems struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The expiration time.
 	//
-	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2025-06-25T09:37:10Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the key has expired.
+	// Indicates whether the consumer has expired.
 	//
 	// example:
 	//
@@ -269,7 +269,7 @@ type CreateBatchConsumerResponseBodyItems struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The consumer status. Default value: Enabled.
+	// The status of the consumer. Default value: Enabled.
 	//
 	// example:
 	//

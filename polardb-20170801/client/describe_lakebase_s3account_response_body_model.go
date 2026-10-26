@@ -38,7 +38,7 @@ type DescribeLakebaseS3AccountResponseBody struct {
 	//
 	// {"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["s3:*"],"Resource":["*"]}]}
 	UserAccPolicy *string `json:"UserAccPolicy,omitempty" xml:"UserAccPolicy,omitempty"`
-	// The Secret Key of the S3 account (masked).
+	// The masked Secret Key of the S3 account.
 	//
 	// example:
 	//

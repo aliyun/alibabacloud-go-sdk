@@ -1462,14 +1462,23 @@ func (s *DescribeDBClusterAttributeResponseBodyBranch) Validate() error {
 }
 
 type DescribeDBClusterAttributeResponseBodyBranchChildBranch struct {
-	BranchLsn  *string `json:"BranchLsn,omitempty" xml:"BranchLsn,omitempty"`
+	// example:
+	//
+	// 2/2
+	BranchLsn *string `json:"BranchLsn,omitempty" xml:"BranchLsn,omitempty"`
+	// example:
+	//
+	// 2026-01-01T00:00:00Z
 	BranchTime *string `json:"BranchTime,omitempty" xml:"BranchTime,omitempty"`
 	// example:
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	HasChild             *bool   `json:"HasChild,omitempty" xml:"HasChild,omitempty"`
-	InsName              *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// example:
+	//
+	// pc-2bbb22b2bb22bb222
+	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 }
 
 func (s DescribeDBClusterAttributeResponseBodyBranchChildBranch) String() string {

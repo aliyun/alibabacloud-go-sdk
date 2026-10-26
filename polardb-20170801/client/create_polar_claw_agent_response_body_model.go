@@ -28,9 +28,9 @@ type iCreatePolarClawAgentResponseBody interface {
 }
 
 type CreatePolarClawAgentResponseBody struct {
-	// Details of the new agent.
+	// The details of the created agent.
 	Agent *CreatePolarClawAgentResponseBodyAgent `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
-	// The agent ID.
+	// Agent ID
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreatePolarClawAgentResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreatePolarClawAgentResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The display name of the agent.
+	// The agent name.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreatePolarClawAgentResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The workspace path.
+	// The working directory path.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ func (s *CreatePolarClawAgentResponseBody) Validate() error {
 }
 
 type CreatePolarClawAgentResponseBodyAgent struct {
-	// The agent ID.
+	// Agent ID
 	//
 	// example:
 	//
 	// work
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The agent\\"s identity.
+	// The identity information.
 	Identity *CreatePolarClawAgentResponseBodyAgentIdentity `json:"Identity,omitempty" xml:"Identity,omitempty" type:"Struct"`
 	// The display name of the agent.
 	//
@@ -178,7 +178,7 @@ type CreatePolarClawAgentResponseBodyAgent struct {
 	//
 	// work
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The workspace path.
+	// The working directory path.
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ func (s *CreatePolarClawAgentResponseBodyAgent) Validate() error {
 }
 
 type CreatePolarClawAgentResponseBodyAgentIdentity struct {
-	// The avatar\\"s path or content.
+	// The avatar path or content.
 	//
 	// example:
 	//

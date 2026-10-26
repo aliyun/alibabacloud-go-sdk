@@ -50,7 +50,7 @@ type CreatePolarClawChannelRequest struct {
 	//
 	// }
 	ChannelConfig map[string]interface{} `json:"ChannelConfig,omitempty" xml:"ChannelConfig,omitempty"`
-	// The channel\\"s unique identifier.
+	// The unique identifier of the channel.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreatePolarClawChannelRequest struct {
 	//
 	// feishu
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The name and version of the npm package for the channel plugin.
+	// The npm package name of the channel plugin, including the version number.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreatePolarClawChannelRequest struct {
 	//
 	// @larksuite/openclaw-lark@2026.4.7
 	NpmPackage *string `json:"NpmPackage,omitempty" xml:"NpmPackage,omitempty"`
-	// The channel plugin\\"s name.
+	// The channel plugin name.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type CreatePolarClawChannelRequest struct {
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Indicates whether to restart the gateway after the channel is created. Default: `true`.
+	// Specifies whether to restart the gateway after creation. Default value: true.
 	//
 	// example:
 	//

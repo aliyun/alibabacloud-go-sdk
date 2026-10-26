@@ -30,19 +30,19 @@ type AddPolarClawMCPServerResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The returned status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type AddPolarClawMCPServerResponseBody struct {
 	//
 	// 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the added or updated MCP server.
+	// The ID of the added or updated MCP server.
 	//
 	// example:
 	//

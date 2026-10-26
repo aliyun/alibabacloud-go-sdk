@@ -377,17 +377,17 @@ func (client *Client) AddFirewallRules(request *AddFirewallRulesRequest) (_resul
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - The `ApplicationId` and `ServerName` parameters are required.
+// - `ApplicationId` and `ServerName` are required query parameters.
 //
-// - The `ApplicationId` parameter specifies the application ID.
+// - `ApplicationId` specifies the ID of the application program to operate on.
 //
-// - The `ServerName` parameter specifies the MCP server name to add.
+// - `ServerName` specifies the name of the MCP server to add.
 //
-// - A successful response returns the request ID, a message, a status code, the application ID, and the server name.
+// - A successful response returns the request ID, message, status code, application program ID, and server name.
 //
-// - If the request fails, the API may return a 500 error code with a detailed error message.
+// - In case of a failed request, a 500 error code may be returned, along with a specific error message describing the fault.
 //
 // @param tmpReq - AddPolarClawMCPServerRequest
 //
@@ -449,17 +449,17 @@ func (client *Client) AddPolarClawMCPServerWithOptions(tmpReq *AddPolarClawMCPSe
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - The `ApplicationId` and `ServerName` parameters are required.
+// - `ApplicationId` and `ServerName` are required query parameters.
 //
-// - The `ApplicationId` parameter specifies the application ID.
+// - `ApplicationId` specifies the ID of the application program to operate on.
 //
-// - The `ServerName` parameter specifies the MCP server name to add.
+// - `ServerName` specifies the name of the MCP server to add.
 //
-// - A successful response returns the request ID, a message, a status code, the application ID, and the server name.
+// - A successful response returns the request ID, message, status code, application program ID, and server name.
 //
-// - If the request fails, the API may return a 500 error code with a detailed error message.
+// - In case of a failed request, a 500 error code may be returned, along with a specific error message describing the fault.
 //
 // @param request - AddPolarClawMCPServerRequest
 //
@@ -1003,7 +1003,7 @@ func (client *Client) ApplyApplicationPrompts(request *ApplyApplicationPromptsRe
 
 // Summary:
 //
-// 应用Lakebase挂载参数模板
+// Applies a parameter template to Lakebase.
 //
 // @param request - ApplyLakebaseMountParameterGroupRequest
 //
@@ -1055,7 +1055,7 @@ func (client *Client) ApplyLakebaseMountParameterGroupWithOptions(request *Apply
 
 // Summary:
 //
-// 应用Lakebase挂载参数模板
+// Applies a parameter template to Lakebase.
 //
 // @param request - ApplyLakebaseMountParameterGroupRequest
 //
@@ -1073,7 +1073,7 @@ func (client *Client) ApplyLakebaseMountParameterGroup(request *ApplyLakebaseMou
 
 // Summary:
 //
-// Approves a PolarClaw device pairing.
+// Approves PolarClaw device pairing.
 //
 // @param request - ApprovePolarClawDevicePairRequest
 //
@@ -1121,7 +1121,7 @@ func (client *Client) ApprovePolarClawDevicePairWithOptions(request *ApprovePola
 
 // Summary:
 //
-// Approves a PolarClaw device pairing.
+// Approves PolarClaw device pairing.
 //
 // @param request - ApprovePolarClawDevicePairRequest
 //
@@ -3947,7 +3947,7 @@ func (client *Client) CreateAgenticDBTenant(request *CreateAgenticDBTenantReques
 
 // Summary:
 //
-// Creates an API key for an AgenticDB tenant.
+// Creates an AgenticDB tenant API key.
 //
 // @param request - CreateAgenticDBTenantApiKeyRequest
 //
@@ -4007,7 +4007,7 @@ func (client *Client) CreateAgenticDBTenantApiKeyWithOptions(request *CreateAgen
 
 // Summary:
 //
-// Creates an API key for an AgenticDB tenant.
+// Creates an AgenticDB tenant API key.
 //
 // @param request - CreateAgenticDBTenantApiKeyRequest
 //
@@ -4613,15 +4613,15 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 
 // Summary:
 //
-// Creates API keys in batches.
+// Creates multiple API keys.
 //
 // Description:
 //
-// > 	- Each cluster can have a maximum of three manually created backups at a time.
+// > 	- A maximum of three manually created backups can exist for each cluster at the same time.
 //
-// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, it indicates that three manually created backups already exist in your cluster. [Delete a backup](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
 //
-// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
+// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the task may take a long time to complete.
 //
 // @param request - CreateBatchConsumerRequest
 //
@@ -4689,15 +4689,15 @@ func (client *Client) CreateBatchConsumerWithOptions(request *CreateBatchConsume
 
 // Summary:
 //
-// Creates API keys in batches.
+// Creates multiple API keys.
 //
 // Description:
 //
-// > 	- Each cluster can have a maximum of three manually created backups at a time.
+// > 	- A maximum of three manually created backups can exist for each cluster at the same time.
 //
-// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, it indicates that three manually created backups already exist in your cluster. [Delete a backup](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
 //
-// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
+// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the task may take a long time to complete.
 //
 // @param request - CreateBatchConsumerRequest
 //
@@ -8133,13 +8133,13 @@ func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest)
 
 // Summary:
 //
-// Creates a PolarClaw Agent.
+// Creates a new PolarClaw agent.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// Use this operation to create a PolarClaw Agent. You can optionally specify an `emoji` and an `avatar`.
+// You can use this API to create a PolarClaw agent and optionally configure its `Emoji` and `Avatar`.
 //
 // @param request - CreatePolarClawAgentRequest
 //
@@ -8203,13 +8203,13 @@ func (client *Client) CreatePolarClawAgentWithOptions(request *CreatePolarClawAg
 
 // Summary:
 //
-// Creates a PolarClaw Agent.
+// Creates a new PolarClaw agent.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// Use this operation to create a PolarClaw Agent. You can optionally specify an `emoji` and an `avatar`.
+// You can use this API to create a PolarClaw agent and optionally configure its `Emoji` and `Avatar`.
 //
 // @param request - CreatePolarClawAgentRequest
 //
@@ -8227,11 +8227,11 @@ func (client *Client) CreatePolarClawAgent(request *CreatePolarClawAgentRequest)
 
 // Summary:
 //
-// Creates a channel in PolarClaw.
+// Creates a new communication channel in PolarClaw.
 //
 // Description:
 //
-// ## Request
+// ## Request description.
 //
 // @param tmpReq - CreatePolarClawChannelRequest
 //
@@ -8301,11 +8301,11 @@ func (client *Client) CreatePolarClawChannelWithOptions(tmpReq *CreatePolarClawC
 
 // Summary:
 //
-// Creates a channel in PolarClaw.
+// Creates a new communication channel in PolarClaw.
 //
 // Description:
 //
-// ## Request
+// ## Request description.
 //
 // @param request - CreatePolarClawChannelRequest
 //
@@ -8327,9 +8327,9 @@ func (client *Client) CreatePolarClawChannel(request *CreatePolarClawChannelRequ
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Use this API to create a cron job. You can configure the job\\"s payload, execution frequency, timezone, target channel, recipients, and a failure alert mechanism.
+// You can use this API to define and create a scheduled task. The task is triggered periodically based on a specified schedule and carries specific messages or instructions. This API supports advanced options such as custom execution frequency, time zone settings, and failure alert mechanisms. You can also configure details such as message content, target channels, and recipients.
 //
 // @param tmpReq - CreatePolarClawCronJobRequest
 //
@@ -8451,9 +8451,9 @@ func (client *Client) CreatePolarClawCronJobWithOptions(tmpReq *CreatePolarClawC
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Use this API to create a cron job. You can configure the job\\"s payload, execution frequency, timezone, target channel, recipients, and a failure alert mechanism.
+// You can use this API to define and create a scheduled task. The task is triggered periodically based on a specified schedule and carries specific messages or instructions. This API supports advanced options such as custom execution frequency, time zone settings, and failure alert mechanisms. You can also configure details such as message content, target channels, and recipients.
 //
 // @param request - CreatePolarClawCronJobRequest
 //
@@ -8629,17 +8629,17 @@ func (client *Client) CreatePolarFs(request *CreatePolarFsRequest) (_result *Cre
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - **Path**: The absolute path of the directory to create.
+// - **Path**: The absolute path of the folder to create.
 //
-// - **Recursive**: Specifies whether to recursively create parent directories. The default value is `false`.
+// - **Recursive**: Specifies whether to use recursion to create parent folders. Default value: `false`.
 //
-// - This operation creates a directory structure with one or more levels in the specified PolarFS instance.
+// - This operation supports creating single-level or multi-level folder structures in a specified PolarFS instance.
 //
-// - Setting `Recursive` to `true` automatically creates all non-existent parent directories.
+// - If the `Recursive` Settings are `true`, the automatic creation of all non-existent parent folders is enabled.
 //
-// - Ensure that you have sufficient permissions to create the directory.
+// - Ensure that you have sufficient permissions when creating a folder.
 //
 // @param request - CreatePolarFsObjectRequest
 //
@@ -8691,17 +8691,17 @@ func (client *Client) CreatePolarFsObjectWithOptions(request *CreatePolarFsObjec
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - **Path**: The absolute path of the directory to create.
+// - **Path**: The absolute path of the folder to create.
 //
-// - **Recursive**: Specifies whether to recursively create parent directories. The default value is `false`.
+// - **Recursive**: Specifies whether to use recursion to create parent folders. Default value: `false`.
 //
-// - This operation creates a directory structure with one or more levels in the specified PolarFS instance.
+// - This operation supports creating single-level or multi-level folder structures in a specified PolarFS instance.
 //
-// - Setting `Recursive` to `true` automatically creates all non-existent parent directories.
+// - If the `Recursive` Settings are `true`, the automatic creation of all non-existent parent folders is enabled.
 //
-// - Ensure that you have sufficient permissions to create the directory.
+// - Ensure that you have sufficient permissions when creating a folder.
 //
 // @param request - CreatePolarFsObjectRequest
 //
@@ -8801,21 +8801,21 @@ func (client *Client) CreateRateLimitPolicy(request *CreateRateLimitPolicyReques
 
 // Summary:
 //
-// Creates a resource control rule for a specified PolarDB for MySQL cluster. You can set MaxCpu to specify the maximum CPU quota percentage that the rule can use, or set CpuCount to specify the maximum number of CPU cores that the rule can use. You must specify one and only one of MaxCpu and CpuCount when creating a rule.
+// Creates a resource control rule for a specified PolarDB for MySQL cluster. You can use MaxCpu to specify the maximum CPU quota percentage or CpuCount to specify the maximum number of CPU cores that the rule can use. You must specify exactly one of the MaxCpu and CpuCount parameters when you create the rule.
 //
 // Description:
 //
-// Resource Control limits the CPU resources that can be used by a specified user, database, query, or connection in a PolarDB for MySQL cluster. This release supports creating, modifying, deleting, binding, and unbinding resource control rules. Querying Resource Control CPU usage is not supported.
+// Resource Control limits the CPU resources available to specified users, databases, queries, or connections in a PolarDB for MySQL cluster. This release supports creating, modifying, deleting, binding, and unbinding resource control rules, but does not support querying CPU utilization for Resource Control.
 //
-// ### Before you begin
+// ### Limits
 //
-// - This feature applies only to PolarDB for MySQL Cluster Edition clusters that support Resource Control. PolarDB for MySQL Standard Edition is not supported.
+// - Applies only to PolarDB for MySQL Cluster Edition that supports Resource Control. PolarDB for MySQL Standard Edition is not supported.
 //
 // - The cluster kernel parameter loose_enable_resource_control must be set to ON.
 //
 // - MaxCpu and CpuCount are two mutually exclusive CPU quota modes.
 //
-// - The maximum value of CpuCount is determined by the kernel parameter resource_control_cpu_count_limit of the target cluster.
+// - The maximum value of CpuCount is determined by the resource_control_cpu_count_limit kernel parameter of the target cluster.
 //
 //	Notice: This is a notice.</notice>
 //
@@ -8877,21 +8877,21 @@ func (client *Client) CreateResourceControlWithOptions(request *CreateResourceCo
 
 // Summary:
 //
-// Creates a resource control rule for a specified PolarDB for MySQL cluster. You can set MaxCpu to specify the maximum CPU quota percentage that the rule can use, or set CpuCount to specify the maximum number of CPU cores that the rule can use. You must specify one and only one of MaxCpu and CpuCount when creating a rule.
+// Creates a resource control rule for a specified PolarDB for MySQL cluster. You can use MaxCpu to specify the maximum CPU quota percentage or CpuCount to specify the maximum number of CPU cores that the rule can use. You must specify exactly one of the MaxCpu and CpuCount parameters when you create the rule.
 //
 // Description:
 //
-// Resource Control limits the CPU resources that can be used by a specified user, database, query, or connection in a PolarDB for MySQL cluster. This release supports creating, modifying, deleting, binding, and unbinding resource control rules. Querying Resource Control CPU usage is not supported.
+// Resource Control limits the CPU resources available to specified users, databases, queries, or connections in a PolarDB for MySQL cluster. This release supports creating, modifying, deleting, binding, and unbinding resource control rules, but does not support querying CPU utilization for Resource Control.
 //
-// ### Before you begin
+// ### Limits
 //
-// - This feature applies only to PolarDB for MySQL Cluster Edition clusters that support Resource Control. PolarDB for MySQL Standard Edition is not supported.
+// - Applies only to PolarDB for MySQL Cluster Edition that supports Resource Control. PolarDB for MySQL Standard Edition is not supported.
 //
 // - The cluster kernel parameter loose_enable_resource_control must be set to ON.
 //
 // - MaxCpu and CpuCount are two mutually exclusive CPU quota modes.
 //
-// - The maximum value of CpuCount is determined by the kernel parameter resource_control_cpu_count_limit of the target cluster.
+// - The maximum value of CpuCount is determined by the resource_control_cpu_count_limit kernel parameter of the target cluster.
 //
 //	Notice: This is a notice.</notice>
 //
@@ -20349,11 +20349,11 @@ func (client *Client) DescribeDBClusterTDE(request *DescribeDBClusterTDERequest)
 
 // Summary:
 //
-// Queries the details of the current Milvus version of a PolarDB for MySQL cluster.
+// Queries the details of the current kernel version of a PolarDB for MySQL cluster.
 //
 // Description:
 //
-// >For more information about the minor Milvus versions and details of PolarDB for MySQL Cluster Edition, see [Minor Milvus version description](https://help.aliyun.com/document_detail/471239.html) and [Release notes](https://help.aliyun.com/document_detail/423884.html).
+// >For more information about the Milvus versions of PolarDB for MySQL clusters, see [Milvus version overview](https://help.aliyun.com/document_detail/471239.html) and [Kernel release notes](https://help.aliyun.com/document_detail/423884.html).
 //
 // @param request - DescribeDBClusterVersionRequest
 //
@@ -20417,11 +20417,11 @@ func (client *Client) DescribeDBClusterVersionWithOptions(request *DescribeDBClu
 
 // Summary:
 //
-// Queries the details of the current Milvus version of a PolarDB for MySQL cluster.
+// Queries the details of the current kernel version of a PolarDB for MySQL cluster.
 //
 // Description:
 //
-// >For more information about the minor Milvus versions and details of PolarDB for MySQL Cluster Edition, see [Minor Milvus version description](https://help.aliyun.com/document_detail/471239.html) and [Release notes](https://help.aliyun.com/document_detail/423884.html).
+// >For more information about the Milvus versions of PolarDB for MySQL clusters, see [Milvus version overview](https://help.aliyun.com/document_detail/471239.html) and [Kernel release notes](https://help.aliyun.com/document_detail/423884.html).
 //
 // @param request - DescribeDBClusterVersionRequest
 //
@@ -31161,7 +31161,7 @@ func (client *Client) ListPolarClawBindings(request *ListPolarClawBindingsReques
 
 // Summary:
 //
-// # List PolarClaw device pairings
+// Lists PolarClaw device pairings.
 //
 // @param request - ListPolarClawDevicePairsRequest
 //
@@ -31205,7 +31205,7 @@ func (client *Client) ListPolarClawDevicePairsWithOptions(request *ListPolarClaw
 
 // Summary:
 //
-// # List PolarClaw device pairings
+// Lists PolarClaw device pairings.
 //
 // @param request - ListPolarClawDevicePairsRequest
 //
@@ -36315,7 +36315,7 @@ func (client *Client) ModifyDBEndpointAddress(request *ModifyDBEndpointAddressRe
 
 // Summary:
 //
-// Changes the node specifications of a PolarDB cluster.
+// Modifies the node specifications of a PolarDB cluster.
 //
 // @param request - ModifyDBNodeClassRequest
 //
@@ -36419,7 +36419,7 @@ func (client *Client) ModifyDBNodeClassWithOptions(request *ModifyDBNodeClassReq
 
 // Summary:
 //
-// Changes the node specifications of a PolarDB cluster.
+// Modifies the node specifications of a PolarDB cluster.
 //
 // @param request - ModifyDBNodeClassRequest
 //
@@ -38299,21 +38299,21 @@ func (client *Client) ModifyRateLimitPolicy(request *ModifyRateLimitPolicyReques
 
 // Summary:
 //
-// Modifies the CPU quota of an existing resource control rule in a specified PolarDB for MySQL cluster. You can modify the current quota value or switch between the maximum CPU percentage mode and the maximum CPU core count mode. You must specify one and only one of the MaxCpu and CpuCount parameters.
+// Modifies the CPU quota of an existing resource control rule in a specified PolarDB for MySQL cluster. You can modify the current quota value or switch between the maximum CPU quota percentage mode and the maximum CPU core count mode. When modifying the rule, you must specify exactly one of the MaxCpu and CpuCount parameters.
 //
 // Description:
 //
-// Resource Control limits the CPU resources that can be used by a specified user, database, query, or connection in a PolarDB for MySQL cluster. This release supports creating, modifying, deleting, binding, and unbinding resource control rules. It does not support querying Resource Control CPU usage.
+// Resource Control is used to limit the CPU resources available to specified users, databases, queries, or connections in a PolarDB for MySQL cluster. This release supports creating, modifying, deleting, binding, and unbinding resource control rules, but does not support querying Resource Control CPU utilization.
 //
-// ### Before you begin
+// ### Limits
 //
-// - This operation applies only to PolarDB for MySQL Cluster Edition clusters that support Resource Control. PolarDB for MySQL Standard Edition is not supported.
+// - Applies only to PolarDB for MySQL Cluster Edition clusters that support Resource Control. PolarDB for MySQL Standard Edition is not supported.
 //
 // - The cluster kernel parameter loose_enable_resource_control must be set to ON.
 //
 // - MaxCpu and CpuCount are two mutually exclusive CPU quota modes.
 //
-// - The maximum value of CpuCount is determined by the cluster kernel parameter resource_control_cpu_count_limit.
+// - The maximum value of CpuCount is determined by the resource_control_cpu_count_limit kernel parameter of the target cluster.
 //
 //	Notice: This is a notice.</notice>
 //
@@ -38375,21 +38375,21 @@ func (client *Client) ModifyResourceControlWithOptions(request *ModifyResourceCo
 
 // Summary:
 //
-// Modifies the CPU quota of an existing resource control rule in a specified PolarDB for MySQL cluster. You can modify the current quota value or switch between the maximum CPU percentage mode and the maximum CPU core count mode. You must specify one and only one of the MaxCpu and CpuCount parameters.
+// Modifies the CPU quota of an existing resource control rule in a specified PolarDB for MySQL cluster. You can modify the current quota value or switch between the maximum CPU quota percentage mode and the maximum CPU core count mode. When modifying the rule, you must specify exactly one of the MaxCpu and CpuCount parameters.
 //
 // Description:
 //
-// Resource Control limits the CPU resources that can be used by a specified user, database, query, or connection in a PolarDB for MySQL cluster. This release supports creating, modifying, deleting, binding, and unbinding resource control rules. It does not support querying Resource Control CPU usage.
+// Resource Control is used to limit the CPU resources available to specified users, databases, queries, or connections in a PolarDB for MySQL cluster. This release supports creating, modifying, deleting, binding, and unbinding resource control rules, but does not support querying Resource Control CPU utilization.
 //
-// ### Before you begin
+// ### Limits
 //
-// - This operation applies only to PolarDB for MySQL Cluster Edition clusters that support Resource Control. PolarDB for MySQL Standard Edition is not supported.
+// - Applies only to PolarDB for MySQL Cluster Edition clusters that support Resource Control. PolarDB for MySQL Standard Edition is not supported.
 //
 // - The cluster kernel parameter loose_enable_resource_control must be set to ON.
 //
 // - MaxCpu and CpuCount are two mutually exclusive CPU quota modes.
 //
-// - The maximum value of CpuCount is determined by the cluster kernel parameter resource_control_cpu_count_limit.
+// - The maximum value of CpuCount is determined by the resource_control_cpu_count_limit kernel parameter of the target cluster.
 //
 //	Notice: This is a notice.</notice>
 //
@@ -38885,7 +38885,7 @@ func (client *Client) OperateApplication(request *OperateApplicationRequest) (_r
 
 // Summary:
 //
-// Updates a PolarClaw configuration.
+// Updates the PolarClaw configuration.
 //
 // @param tmpReq - PatchPolarClawConfigRequest
 //
@@ -38943,7 +38943,7 @@ func (client *Client) PatchPolarClawConfigWithOptions(tmpReq *PatchPolarClawConf
 
 // Summary:
 //
-// Updates a PolarClaw configuration.
+// Updates the PolarClaw configuration.
 //
 // @param request - PatchPolarClawConfigRequest
 //
@@ -40019,7 +40019,7 @@ func (client *Client) ResetAgenticDBTenantApiKey(request *ResetAgenticDBTenantAp
 
 // Summary:
 //
-// Resets an api key.
+// Resets an API key.
 //
 // @param request - ResetConsumerApiKeyRequest
 //
@@ -40071,7 +40071,7 @@ func (client *Client) ResetConsumerApiKeyWithOptions(request *ResetConsumerApiKe
 
 // Summary:
 //
-// Resets an api key.
+// Resets an API key.
 //
 // @param request - ResetConsumerApiKeyRequest
 //
@@ -41065,7 +41065,7 @@ func (client *Client) RevokeAccountPrivilegeZonal(request *RevokeAccountPrivileg
 
 // Summary:
 //
-// Runs a PolarClaw cron job.
+// Executes a PolarClaw scheduled task.
 //
 // @param request - RunPolarClawCronJobRequest
 //
@@ -41121,7 +41121,7 @@ func (client *Client) RunPolarClawCronJobWithOptions(request *RunPolarClawCronJo
 
 // Summary:
 //
-// Runs a PolarClaw cron job.
+// Executes a PolarClaw scheduled task.
 //
 // @param request - RunPolarClawCronJobRequest
 //
@@ -41895,13 +41895,13 @@ func (client *Client) TriggerKnowledgeBaseSync(request *TriggerKnowledgeBaseSync
 
 // Summary:
 //
-// Unbinds a PolarClaw Agent.
+// Disassociates a PolarClaw agent.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 调用前，先通过 BindPolarClawAgent 为指定应用、Agent 和通道建立绑定。本接口使用同一组 ApplicationId、AgentId 和 Channel 解除绑定。
+// Before calling this operation, use BindPolarClawAgent to establish a binding for the specified application, agent, and channel. This operation uses the same ApplicationId, AgentId, and Channel to remove the binding.
 //
 // @param request - UnbindPolarClawAgentRequest
 //
@@ -41957,13 +41957,13 @@ func (client *Client) UnbindPolarClawAgentWithOptions(request *UnbindPolarClawAg
 
 // Summary:
 //
-// Unbinds a PolarClaw Agent.
+// Disassociates a PolarClaw agent.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 调用前，先通过 BindPolarClawAgent 为指定应用、Agent 和通道建立绑定。本接口使用同一组 ApplicationId、AgentId 和 Channel 解除绑定。
+// Before calling this operation, use BindPolarClawAgent to establish a binding for the specified application, agent, and channel. This operation uses the same ApplicationId, AgentId, and Channel to remove the binding.
 //
 // @param request - UnbindPolarClawAgentRequest
 //
@@ -43205,7 +43205,7 @@ func (client *Client) UpdatePolarClawCronJob(request *UpdatePolarClawCronJobRequ
 
 // Summary:
 //
-// Updates the PolarClaw Skill configuration.
+// Updates the PolarClaw skill configuration.
 //
 // @param tmpReq - UpdatePolarClawSkillRequest
 //
@@ -43271,7 +43271,7 @@ func (client *Client) UpdatePolarClawSkillWithOptions(tmpReq *UpdatePolarClawSki
 
 // Summary:
 //
-// Updates the PolarClaw Skill configuration.
+// Updates the PolarClaw skill configuration.
 //
 // @param request - UpdatePolarClawSkillRequest
 //

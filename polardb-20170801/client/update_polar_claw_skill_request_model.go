@@ -22,7 +22,7 @@ type iUpdatePolarClawSkillRequest interface {
 }
 
 type UpdatePolarClawSkillRequest struct {
-	// The Skill API key. An empty string indicates that the key is deleted.
+	// The skill API key. An empty string indicates that the key is deleted.
 	//
 	// example:
 	//
@@ -36,19 +36,19 @@ type UpdatePolarClawSkillRequest struct {
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Specifies whether to enable the Skill.
+	// Specifies whether the skill is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The environment variables as a key-value map. A null value indicates that the variable is deleted.
+	// The environment variables as a key-value map. An empty value indicates that the variable is deleted.
 	//
 	// example:
 	//
 	// {"NETA_TOKEN":"my-token"}
 	Env map[string]*string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The Skill identifier key.
+	// The skill identifier key.
 	//
 	// This parameter is required.
 	//

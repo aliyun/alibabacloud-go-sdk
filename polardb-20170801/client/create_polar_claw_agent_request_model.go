@@ -24,7 +24,7 @@ type iCreatePolarClawAgentRequest interface {
 }
 
 type CreatePolarClawAgentRequest struct {
-	// The agent ID.
+	// The agent name.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreatePolarClawAgentRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The avatar\\"s URL or path.
+	// The avatar URL or path.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type CreatePolarClawAgentRequest struct {
 	//
 	// U+1F99E
 	Emoji *string `json:"Emoji,omitempty" xml:"Emoji,omitempty"`
-	// Specifies whether to restart the gateway after the agent is created. The default value is `true`.
+	// Specifies whether to restart the gateway after creation. Default value: true.
 	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
-	// The absolute path of the agent workspace.
+	// The absolute path of the agent working directory.
 	//
 	// This parameter is required.
 	//

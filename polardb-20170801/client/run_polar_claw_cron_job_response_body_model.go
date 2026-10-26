@@ -32,37 +32,37 @@ type RunPolarClawCronJobResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The status code.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The unique ID for this job execution.
+	// The ID of the executed task.
 	//
 	// example:
 	//
 	// 8006e51c-dab3-4602-bc69-4f728002c6ce
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// Indicates whether the job actually ran.
+	// Indicates whether the task was actually executed.
 	//
 	// example:
 	//
 	// true
 	Ran *bool `json:"Ran,omitempty" xml:"Ran,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

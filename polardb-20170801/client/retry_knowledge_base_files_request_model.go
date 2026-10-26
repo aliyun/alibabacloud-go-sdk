@@ -18,7 +18,7 @@ type iRetryKnowledgeBaseFilesRequest interface {
 }
 
 type RetryKnowledgeBaseFilesRequest struct {
-	// The IDs of the files to retry. Separate multiple IDs with commas (,). A maximum of 30 IDs can be specified.
+	// The IDs of the files to retry. Separate multiple IDs with commas (,). You can specify up to 30 IDs.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type RetryKnowledgeBaseFilesRequest struct {
 	//
 	// 91b97b71-xxxx-xxxx-xxxx-33c6a6341cdc
 	FileIds *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
-	// The unique ID of the knowledge base.
+	// The unique identifier of the knowledge base.
 	//
 	// This parameter is required.
 	//

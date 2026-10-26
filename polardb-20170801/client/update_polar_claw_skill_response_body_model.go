@@ -32,15 +32,15 @@ type UpdatePolarClawSkillResponseBody struct {
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The response status code.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The updated Skill configuration. Sensitive values are masked.
+	// The updated skill configuration. Sensitive values are masked.
 	Config *UpdatePolarClawSkillResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type UpdatePolarClawSkillResponseBody struct {
 	//
 	// F45FFACC-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Skill identifier key.
+	// The skill identifier key.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ func (s *UpdatePolarClawSkillResponseBody) Validate() error {
 }
 
 type UpdatePolarClawSkillResponseBodyConfig struct {
-	// Specifies whether to enable the Skill.
+	// Specifies whether the skill is enabled.
 	//
 	// example:
 	//

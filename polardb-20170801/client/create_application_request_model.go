@@ -1255,6 +1255,22 @@ type CreateApplicationRequestKnowledgeApplicationSpec struct {
 	//
 	// qwen3-max
 	LlmModel *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
+	// example:
+	//
+	// pm-xxxxxx
+	PolarAIEmbedderInstanceId *string `json:"PolarAIEmbedderInstanceId,omitempty" xml:"PolarAIEmbedderInstanceId,omitempty"`
+	// example:
+	//
+	// pm-xxxxxx
+	PolarAILlmInstanceId *string `json:"PolarAILlmInstanceId,omitempty" xml:"PolarAILlmInstanceId,omitempty"`
+	// example:
+	//
+	// pm-xxxxxx
+	PolarAIRerankerInstanceId *string `json:"PolarAIRerankerInstanceId,omitempty" xml:"PolarAIRerankerInstanceId,omitempty"`
+	// example:
+	//
+	// pm-xxxxxx
+	PolarAIVlInstanceId *string `json:"PolarAIVlInstanceId,omitempty" xml:"PolarAIVlInstanceId,omitempty"`
 }
 
 func (s CreateApplicationRequestKnowledgeApplicationSpec) String() string {
@@ -1277,6 +1293,22 @@ func (s *CreateApplicationRequestKnowledgeApplicationSpec) GetLlmModel() *string
 	return s.LlmModel
 }
 
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) GetPolarAIEmbedderInstanceId() *string {
+	return s.PolarAIEmbedderInstanceId
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) GetPolarAILlmInstanceId() *string {
+	return s.PolarAILlmInstanceId
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) GetPolarAIRerankerInstanceId() *string {
+	return s.PolarAIRerankerInstanceId
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) GetPolarAIVlInstanceId() *string {
+	return s.PolarAIVlInstanceId
+}
+
 func (s *CreateApplicationRequestKnowledgeApplicationSpec) SetDashboardPassword(v string) *CreateApplicationRequestKnowledgeApplicationSpec {
 	s.DashboardPassword = &v
 	return s
@@ -1289,6 +1321,26 @@ func (s *CreateApplicationRequestKnowledgeApplicationSpec) SetDbPassword(v strin
 
 func (s *CreateApplicationRequestKnowledgeApplicationSpec) SetLlmModel(v string) *CreateApplicationRequestKnowledgeApplicationSpec {
 	s.LlmModel = &v
+	return s
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) SetPolarAIEmbedderInstanceId(v string) *CreateApplicationRequestKnowledgeApplicationSpec {
+	s.PolarAIEmbedderInstanceId = &v
+	return s
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) SetPolarAILlmInstanceId(v string) *CreateApplicationRequestKnowledgeApplicationSpec {
+	s.PolarAILlmInstanceId = &v
+	return s
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) SetPolarAIRerankerInstanceId(v string) *CreateApplicationRequestKnowledgeApplicationSpec {
+	s.PolarAIRerankerInstanceId = &v
+	return s
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) SetPolarAIVlInstanceId(v string) *CreateApplicationRequestKnowledgeApplicationSpec {
+	s.PolarAIVlInstanceId = &v
 	return s
 }
 

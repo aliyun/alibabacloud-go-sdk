@@ -26,7 +26,7 @@ type AddPolarClawMCPServerRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The configuration object for the MCP server.
+	// The MCP server configuration object.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type AddPolarClawMCPServerRequest struct {
 	//
 	// }
 	ServerConfig map[string]interface{} `json:"ServerConfig,omitempty" xml:"ServerConfig,omitempty"`
-	// The unique identifier for the MCP server.
+	// The unique identifier of the MCP server.
 	//
 	// This parameter is required.
 	//
