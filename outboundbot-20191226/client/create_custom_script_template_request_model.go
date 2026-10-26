@@ -44,7 +44,7 @@ type CreateCustomScriptTemplateRequest struct {
 	//
 	// example:
 	//
-	// [{\\"name\\":\\"Delivered\\",\\"description\\":\\"Whether the purchased home appliance has been delivered\\",\\"valueList\\":\\"[\\\\\\"Yes\\\\\\",\\\\\\"No\\\\\\"]\\"},{\\"name\\":\\"Appointment Time\\",\\"description\\":\\"Collect the customer\\"s expected on-site installation time\\",\\"valueList\\":\\"[]\\"}]
+	// [{\\"name\\":\\"Delivered\\",\\"description\\":\\"Whether the purchased home appliance has been delivered\\",\\"valueList\\":\\"[\\\\\\"Yes\\\\\\",\\\\\\"No\\\\\\"]\\"},{\\"name\\":\\"On-site Appointment Time\\",\\"description\\":\\"Collect the customer\\"s expected on-site installation time\\",\\"valueList\\":\\"[]\\"}]
 	LabelsJson *string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty"`
 	// The ID of the model used to create the template.
 	//
@@ -58,11 +58,11 @@ type CreateCustomScriptTemplateRequest struct {
 	//
 	// Test scenario
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The prompt for professional mode.
+	// The prompt in professional mode.
 	//
 	// example:
 	//
-	// \\nName: Annie \\nIdentity: Game Promoter\\nBackground: Promote the latest welfare activities to players over the phone to ensure that every player can get the information in time and enjoy the game.\\nSkills: As a game customer service representative, recommend time-limited game welfare activities to users, highlight the benefits, and inform them of the participation process.\\nConstraints: You need to remember that you are Annie,
+	// \\nName: Annie \\nRole: Game Promoter\\nBackground: Promote the latest benefit activities to players over the phone, ensuring that every player stays informed and enjoys the game.\\nSkills: As a game customer service representative, recommend time-limited game benefit activities to users, highlight the benefits, and explain the participation process.\\nConstraints: You must remember that you are Annie,
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// The agent configuration in JSON format.
 	//

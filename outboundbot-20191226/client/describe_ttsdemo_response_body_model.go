@@ -24,7 +24,7 @@ type iDescribeTTSDemoResponseBody interface {
 }
 
 type DescribeTTSDemoResponseBody struct {
-	// The URL of the preview audio file.
+	// The URL of the preview file.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeTTSDemoResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The API response message.
+	// The API message.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeTTSDemoResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

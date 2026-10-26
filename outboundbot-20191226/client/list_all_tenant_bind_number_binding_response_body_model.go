@@ -166,6 +166,10 @@ func (s *ListAllTenantBindNumberBindingResponseBodyData) Validate() error {
 
 type ListAllTenantBindNumberBindingResponseBodyDataList struct {
 	// The billing method of the number.
+	//
+	// example:
+	//
+	// 1
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
 	// The binding ID.
 	//

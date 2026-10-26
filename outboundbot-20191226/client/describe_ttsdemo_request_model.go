@@ -25,6 +25,8 @@ type iDescribeTTSDemoRequest interface {
 	GetNlsServiceType() *string
 	SetPitchRate(v int32) *DescribeTTSDemoRequest
 	GetPitchRate() *int32
+	SetSampleRate(v int32) *DescribeTTSDemoRequest
+	GetSampleRate() *int32
 	SetScriptId(v string) *DescribeTTSDemoRequest
 	GetScriptId() *string
 	SetSecretKey(v string) *DescribeTTSDemoRequest
@@ -40,9 +42,9 @@ type iDescribeTTSDemoRequest interface {
 }
 
 type DescribeTTSDemoRequest struct {
-	// The AccessKey (AK) of the namespace.
+	// The AccessKey ID of the namespace.
 	//
-	// > When the engine is xunfei, enter the AK here.
+	// > When the engine is xunfei, you must enter the AccessKey ID.
 	//
 	// example:
 	//
@@ -56,31 +58,31 @@ type DescribeTTSDemoRequest struct {
 	AliCustomizedVoice *string `json:"AliCustomizedVoice,omitempty" xml:"AliCustomizedVoice,omitempty"`
 	// The speech service type.
 	//
-	// - When you use **ali*	- as the custom service, this field stores the appKey of the interactive voice response product project.
+	// - When **ali*	- is used as the custom service, this field stores the appKey of the interactive voice response product project.
 	//
-	// - When you use **xunfei*	- as the custom service provider, this field stores the corresponding appKey.
+	// - When **xunfei*	- is used as the custom service provider, this field stores the corresponding appKey.
 	//
 	// example:
 	//
 	// xusi*******RnP7
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The storage engine. Valid values: ali, volc, xunfei.
+	// The storage engine. Valid values: **ali**, **volc**, and **xunfei**.
 	//
-	// - When using traditional voices, CosyVoice, or selecting Alibaba Cloud as the custom service, set this to **ali**.
+	// - To use traditional voices, CosyVoice, or Alibaba Cloud as the custom service, enter **ali**.
 	//
-	// - When using the doubao service, set this to **volc**.
+	// - To use the doubao service, enter **volc**.
 	//
-	// - When using xunfei as the service provider, set this to **xunfei*	- (can only be used in small model scenarios).
+	// - To use xunfei as the service provider, enter **xunfei**. This option is only available for small model scenarios.
 	//
-	// - When using your own service, set this to **dock**, and set NlsServiceType to Authorized.
+	// - To use a self-managed service, enter **dock*	- and set NlsServiceType to Authorized.
 	//
-	// - When using CV-v3-flash and Qwen voices, set this to **bailian**.
+	// - To use CV-v3-flash and Qwen voices, enter **bailian**.
 	//
 	// example:
 	//
 	// ali
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The extended parameter. When Engine is set to **dock**, enter the configuration ID.
+	// The extended parameters. When Engine is set to **dock**, you must enter the configuration ID.
 	//
 	// example:
 	//
@@ -96,37 +98,45 @@ type DescribeTTSDemoRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The service type.
 	//
-	// Managed: the default service (public service) of the outbound robot product.
+	// Managed: the default service (public service) for the outbound robot product.
 	//
-	// Authorized: the interactive voice response service purchased by the public cloud customer (custom service), configured through system administration > Third-party Voice Configuration.
+	// Authorized: the interactive voice response service purchased by public cloud customers (custom service). You can configure it in system administration > Third-party Speech Configuration.
 	//
-	// > When using Alibaba Cloud interactive voice response as the custom service provider, set this to Authorized.
+	// > When you need to use Alibaba Cloud interactive voice response, that is, when you use Alibaba Cloud as the custom service provider, you must enter Authorized.
 	//
 	// example:
 	//
 	// Authorized
 	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
-	// The pitch.
+	// The intonation.
 	//
 	// example:
 	//
 	// 0
 	PitchRate *int32 `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	// The sample rate.
+	//
+	// example:
+	//
+	// 8000
+	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
 	// The scenario ID.
 	//
 	// example:
 	//
 	// 5ab2d935-306c-478a-88bf-d08e4e25c1b7
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The AccessKey Secret (SK) of the namespace.
+	// The AccessKey secret of the namespace.
 	//
-	// > When the engine is xunfei, enter the SK here.
+	// > When the engine is xunfei, you must enter the AccessKey secret.
 	//
 	// example:
 	//
 	// OTdhNDE3Z********zQ****
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// The speech rate. The value is an integer in the range of [-500, 500]. Default value: 0.
+	// The speech rate.
+	//
+	// Valid values: integers from -500 to 500. Default value: 0.
 	//
 	// A value greater than 0 increases the pitch.
 	//
@@ -144,15 +154,17 @@ type DescribeTTSDemoRequest struct {
 	//
 	// Test
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The voice information, such as aixia, siyue, or xiaoyun. For the complete list of available voices, refer to the voice list below.
+	// The voice information, such as aixia, siyue, or xiaoyun. For the complete list of voices, refer to the voice list below.
 	//
-	// > Because the Voice value for cloned voices is a non-fixed value generated during voice cloning, a specific Voice value cannot be provided at this stage. You can obtain the specific VoiceID from the voice cloning page by calling the ListVoiceClone operation.
+	// > Because the Voice value for cloned voices is not fixed and is generated during voice cloning, a specific Voice value cannot be provided at this stage. You must obtain the specific Voice ID from the ListVoiceClone request on the voice cloning page.
 	//
 	// example:
 	//
 	// aixia
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	// The volume. The value is an integer in the range of [0, 100]. Default value: 50.
+	// The volume.
+	//
+	// Valid values: integers from 0 to 100. Default value: 50.
 	//
 	// A value greater than 50 increases the volume.
 	//
@@ -202,6 +214,10 @@ func (s *DescribeTTSDemoRequest) GetNlsServiceType() *string {
 
 func (s *DescribeTTSDemoRequest) GetPitchRate() *int32 {
 	return s.PitchRate
+}
+
+func (s *DescribeTTSDemoRequest) GetSampleRate() *int32 {
+	return s.SampleRate
 }
 
 func (s *DescribeTTSDemoRequest) GetScriptId() *string {
@@ -265,6 +281,11 @@ func (s *DescribeTTSDemoRequest) SetNlsServiceType(v string) *DescribeTTSDemoReq
 
 func (s *DescribeTTSDemoRequest) SetPitchRate(v int32) *DescribeTTSDemoRequest {
 	s.PitchRate = &v
+	return s
+}
+
+func (s *DescribeTTSDemoRequest) SetSampleRate(v int32) *DescribeTTSDemoRequest {
+	s.SampleRate = &v
 	return s
 }
 

@@ -36,7 +36,7 @@ type CreateTaskExportTaskResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type CreateTaskExportTaskResponseBody struct {
 	//
 	// C377C5FF-4F94-1B23-89D0-50C560623EE4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

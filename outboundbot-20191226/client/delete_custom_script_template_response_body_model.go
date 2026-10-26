@@ -30,7 +30,7 @@ type DeleteCustomScriptTemplateResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data. No business data is returned if the deletion succeeds.
+	// The returned data. No business data is returned when the deletion is successful.
 	//
 	// example:
 	//

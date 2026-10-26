@@ -24,7 +24,7 @@ type iModifyScriptResponseBody interface {
 }
 
 type ModifyScriptResponseBody struct {
-	// The status of the API.
+	// The API status.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ModifyScriptResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The script information.
 	Script *ModifyScriptResponseBodyScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// Indicates whether the call is successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ModifyScriptResponseBody) Validate() error {
 }
 
 type ModifyScriptResponseBodyScript struct {
-	// The debug status of the script.
+	// The script debug status.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type ModifyScriptResponseBodyScript struct {
 	//
 	// example:
 	//
-	// 政务
+	// Government
 	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
 	// Indicates whether the script is a debug draft.
 	//
@@ -158,27 +158,27 @@ type ModifyScriptResponseBodyScript struct {
 	//
 	// example:
 	//
-	// 回访
+	// Follow-up visit
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The description of the script.
+	// The script description.
 	//
 	// example:
 	//
-	// 返工回访话术
+	// Rework callback script
 	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
-	// The ID of the script.
+	// The script ID.
 	//
 	// example:
 	//
 	// c153d0d8-ba04-41c0-8632-453944c9dd0b
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The name of the script.
+	// The script name.
 	//
 	// example:
 	//
-	// 回访话术
+	// Callback script
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	// The status of the script.
+	// The script status.
 	//
 	// example:
 	//

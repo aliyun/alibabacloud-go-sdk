@@ -3118,7 +3118,7 @@ func (client *Client) DescribeIntentStatisticsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Returns the conversation data of a job.
+// Retrieves the conversation data of a job.
 //
 // @param request - DescribeJobRequest
 //
@@ -3511,6 +3511,10 @@ func (client *Client) DescribeTTSDemoWithContext(ctx context.Context, request *D
 
 	if !dara.IsNil(request.PitchRate) {
 		query["PitchRate"] = request.PitchRate
+	}
+
+	if !dara.IsNil(request.SampleRate) {
+		query["SampleRate"] = request.SampleRate
 	}
 
 	if !dara.IsNil(request.ScriptId) {
@@ -5447,7 +5451,7 @@ func (client *Client) ListChatbotInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询自定义场景模板列表
+// Queries the custom script templates of a specified instance.
 //
 // @param request - ListCustomScriptTemplatesRequest
 //
@@ -7600,7 +7604,7 @@ func (client *Client) ModifyOutboundCallNumberWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modify script information.
+// Updates script information.
 //
 // @param request - ModifyScriptRequest
 //
@@ -7928,7 +7932,7 @@ func (client *Client) ModifyTagGroupsWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// 修改声音克隆
+// Modifies the name or status of a cloned voice.
 //
 // @param request - ModifyVoiceCloneRequest
 //

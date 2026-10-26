@@ -20,25 +20,33 @@ type iModifyVoiceCloneRequest interface {
 }
 
 type ModifyVoiceCloneRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the voice. Note: For a newly created voice, you must call the ModifyVoiceClone operation and set Status to Enabled before it can be used.
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the cloned voice to modify.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cosyvoice-v2-067dc4b2e9d34dbeb5de20b5b093d1e3
 	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	// The name of the voice.
+	//
 	// example:
 	//
-	// 克隆音色1
+	// Cloned voice 1
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 

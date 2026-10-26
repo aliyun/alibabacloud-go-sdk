@@ -223,6 +223,10 @@ type ListScriptsResponseBodyScriptsList struct {
 	// false
 	AgentLlm *bool `json:"AgentLlm,omitempty" xml:"AgentLlm,omitempty"`
 	// The chatbot ID.
+	//
+	// example:
+	//
+	// d31794e2a51f47d2901b4094d88311d7
 	ChatBotId *string `json:"ChatBotId,omitempty" xml:"ChatBotId,omitempty"`
 	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//

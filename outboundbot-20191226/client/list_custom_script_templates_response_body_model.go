@@ -28,31 +28,46 @@ type iListCustomScriptTemplatesResponseBody interface {
 }
 
 type ListCustomScriptTemplatesResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListCustomScriptTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Not used.
+	//
 	// example:
 	//
-	// 暂无使用
+	// Not used
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The message returned by the API operation.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Not used.
+	//
 	// example:
 	//
-	// 暂无使用
+	// Not used
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
@@ -149,15 +164,22 @@ func (s *ListCustomScriptTemplatesResponseBody) Validate() error {
 }
 
 type ListCustomScriptTemplatesResponseBodyData struct {
+	// The list of custom scenario templates.
 	List []*ListCustomScriptTemplatesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of custom scenario templates.
+	//
 	// example:
 	//
 	// 15
@@ -222,42 +244,62 @@ func (s *ListCustomScriptTemplatesResponseBodyData) Validate() error {
 }
 
 type ListCustomScriptTemplatesResponseBodyDataList struct {
+	// The ID of the custom scenario template.
+	//
 	// example:
 	//
 	// d31794e2a51f47d2901b4094d88311d7
 	AgentProfileId *string `json:"AgentProfileId,omitempty" xml:"AgentProfileId,omitempty"`
+	// The creation time. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1741338619000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the custom scenario template.
+	//
 	// example:
 	//
-	// 这是一个大模型机器人
+	// This is a large language model bot
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID to which the template belongs.
+	//
 	// example:
 	//
 	// e49ad122-15a1-443a-a102-84a78a93be79
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The label description. The value is a string in JSON array format.
+	//
 	// example:
 	//
-	// [{\\"name\\":\\"是否送达\\",\\"description\\":\\"购买的家电是否已经送达\\",\\"valueList\\":\\"[\\\\\\"是\\\\\\",\\\\\\"否\\\\\\"]\\"},{\\"name\\":\\"预约上门时间\\",\\"description\\":\\"收集客户期望的上门安装时间\\",\\"valueList\\":\\"[]\\"}]
+	// [{\\"name\\":\\"Delivered\\",\\"description\\":\\"Whether the purchased home appliance has been delivered\\",\\"valueList\\":\\"[\\\\\\"Yes\\\\\\",\\\\\\"No\\\\\\"]\\"},{\\"name\\":\\"Appointment time for on-site service\\",\\"description\\":\\"Collect the customer\\"s expected on-site installation time\\",\\"valueList\\":\\"[]\\"}]
 	LabelsJson *string `json:"LabelsJson,omitempty" xml:"LabelsJson,omitempty"`
+	// The ID of the model used.
+	//
 	// example:
 	//
 	// model_002
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The name of the custom scenario template.
+	//
 	// example:
 	//
-	// 测试场景
+	// Test scenario
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The prompt in professional mode.
+	//
 	// example:
 	//
-	// \\n名称：安妮 \\n身份：游戏推广员\\n背景：通过电话向玩家宣传最新福利活动，确保每一位玩家都能及时掌握信息，享受游戏的乐趣。\\n技能：作为游戏客服，向用户推荐限时游戏福利活动，强调福利亮点并告知参与流程。\\n约束条件：你需要记住你是安妮，
+	// \\nName: Annie \\nRole: Game Promoter\\nBackground: Promote the latest benefit events to players over the phone to ensure that every player stays informed and enjoys the game.\\nSkills: As a game customer service representative, recommend time-limited game benefit events to users, highlight the benefits, and explain how to participate.\\nConstraints: You must remember that you are Annie,
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The agent configuration. The value is a string in JSON format.
+	//
 	// example:
 	//
-	// {"name":"小x","gender":"男","age":18,"role":"游戏推广员","communicationStyle":["亲切"],"goals":"你好","background":"不是很好","openingPrompt":"你好，我是xxx"}
+	// {"name":"Xiao X","gender":"Male","age":18,"role":"Game Promoter","communicationStyle":["Friendly"],"goals":"Hello","background":"Not very good","openingPrompt":"Hello, I am XXX"}
 	PromptJson *string `json:"PromptJson,omitempty" xml:"PromptJson,omitempty"`
+	// The ID of the scenario associated with the custom scenario template.
+	//
 	// example:
 	//
 	// 43972417-0657-452a-81c2-c59d8245a9b2

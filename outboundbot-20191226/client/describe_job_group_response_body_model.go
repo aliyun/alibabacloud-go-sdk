@@ -225,6 +225,10 @@ type DescribeJobGroupResponseBodyJobGroup struct {
 	// Collection script
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
 	// The natural language understanding (NLU) engine used by the script.
+	//
+	// example:
+	//
+	// Prompts
 	ScriptNluEngine *string `json:"ScriptNluEngine,omitempty" xml:"ScriptNluEngine,omitempty"`
 	// The version number of the script scenario.
 	//

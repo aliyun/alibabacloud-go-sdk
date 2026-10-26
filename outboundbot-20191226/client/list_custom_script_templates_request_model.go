@@ -18,14 +18,20 @@ type iListCustomScriptTemplatesRequest interface {
 }
 
 type ListCustomScriptTemplatesRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// 0ec0c897-b92c-40e4-9ad7-e6e4f5ce13bb
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number for paging. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page for paging. Default value: 10.
+	//
 	// example:
 	//
 	// 10

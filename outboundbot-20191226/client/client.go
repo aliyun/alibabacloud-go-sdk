@@ -4178,7 +4178,7 @@ func (client *Client) DescribeIntentStatistics(request *DescribeIntentStatistics
 
 // Summary:
 //
-// Returns the conversation data of a job.
+// Retrieves the conversation data of a job.
 //
 // @param request - DescribeJobRequest
 //
@@ -4230,7 +4230,7 @@ func (client *Client) DescribeJobWithOptions(request *DescribeJobRequest, runtim
 
 // Summary:
 //
-// Returns the conversation data of a job.
+// Retrieves the conversation data of a job.
 //
 // @param request - DescribeJobRequest
 //
@@ -4697,6 +4697,10 @@ func (client *Client) DescribeTTSDemoWithOptions(request *DescribeTTSDemoRequest
 
 	if !dara.IsNil(request.PitchRate) {
 		query["PitchRate"] = request.PitchRate
+	}
+
+	if !dara.IsNil(request.SampleRate) {
+		query["SampleRate"] = request.SampleRate
 	}
 
 	if !dara.IsNil(request.ScriptId) {
@@ -7475,7 +7479,7 @@ func (client *Client) ListChatbotInstances(request *ListChatbotInstancesRequest)
 
 // Summary:
 //
-// 查询自定义场景模板列表
+// Queries the custom script templates of a specified instance.
 //
 // @param request - ListCustomScriptTemplatesRequest
 //
@@ -7527,7 +7531,7 @@ func (client *Client) ListCustomScriptTemplatesWithOptions(request *ListCustomSc
 
 // Summary:
 //
-// 查询自定义场景模板列表
+// Queries the custom script templates of a specified instance.
 //
 // @param request - ListCustomScriptTemplatesRequest
 //
@@ -10280,7 +10284,7 @@ func (client *Client) ModifyOutboundCallNumber(request *ModifyOutboundCallNumber
 
 // Summary:
 //
-// Modify script information.
+// Updates script information.
 //
 // @param request - ModifyScriptRequest
 //
@@ -10416,7 +10420,7 @@ func (client *Client) ModifyScriptWithOptions(request *ModifyScriptRequest, runt
 
 // Summary:
 //
-// Modify script information.
+// Updates script information.
 //
 // @param request - ModifyScriptRequest
 //
@@ -10684,7 +10688,7 @@ func (client *Client) ModifyTagGroups(request *ModifyTagGroupsRequest) (_result 
 
 // Summary:
 //
-// 修改声音克隆
+// Modifies the name or status of a cloned voice.
 //
 // @param request - ModifyVoiceCloneRequest
 //
@@ -10740,7 +10744,7 @@ func (client *Client) ModifyVoiceCloneWithOptions(request *ModifyVoiceCloneReque
 
 // Summary:
 //
-// 修改声音克隆
+// Modifies the name or status of a cloned voice.
 //
 // @param request - ModifyVoiceCloneRequest
 //
