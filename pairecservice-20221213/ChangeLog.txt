@@ -1,3 +1,6 @@
+2026-10-26 Version: v7.2.5
+- Generated golang 2022-12-13 for PaiRecService.
+
 2026-10-26 Version: v7.2.4
 - Update API PublishRecallManagementTable: add request parameters body.StartTimestampMs.
 
