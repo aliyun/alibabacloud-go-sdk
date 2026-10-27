@@ -64,13 +64,13 @@ func (s *UpdateMemoryStoreRequest) Validate() error {
 }
 
 type UpdateMemoryStoreRequestBody struct {
-	// The MemoryStore description. Maximum length: 1,024 characters.
+	// The MemoryStore description, up to 1,024 characters.
 	//
 	// example:
 	//
 	// Memory store used to save long-term customer preferences
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The custom memory extraction instructions. Maximum length: 4,096 characters.
+	// The custom memory extraction instructions, up to 4,096 characters.
 	//
 	// example:
 	//

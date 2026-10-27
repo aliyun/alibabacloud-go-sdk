@@ -20,7 +20,7 @@ type iListMemorySessionsRequest interface {
 }
 
 type ListMemorySessionsRequest struct {
-	// The agent ID. If this parameter is not specified, all agents are matched. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain / or *.
+	// The agent ID. If you do not specify this parameter, all agents are matched. The value must be 1 to 128 bytes in length and cannot contain forward slashes (/) or asterisks (*).
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListMemorySessionsRequest struct {
 	//
 	// eyJvZmZzZXQiOjEwMH0=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The user ID. If this parameter is not specified, all users are matched. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain / or *.
+	// The user ID. If you do not specify this parameter, all users are matched. The value must be 1 to 128 bytes in length and cannot contain forward slashes (/) or asterisks (*).
 	//
 	// example:
 	//

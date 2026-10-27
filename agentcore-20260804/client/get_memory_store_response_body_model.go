@@ -136,7 +136,7 @@ type GetMemoryStoreResponseBodyData struct {
 	//
 	// example:
 	//
-	// Used to save long-term user preferences
+	// Used to store long-term user preferences
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The custom extraction instructions.
 	//
@@ -156,13 +156,13 @@ type GetMemoryStoreResponseBodyData struct {
 	//
 	// customer-memory
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
-	// The MemoryStore lifecycle state.
+	// The lifecycle state of the MemoryStore.
 	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last update time.
+	// The last updated time.
 	//
 	// example:
 	//

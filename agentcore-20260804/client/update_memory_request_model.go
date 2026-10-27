@@ -14,7 +14,7 @@ type iUpdateMemoryRequest interface {
 }
 
 type UpdateMemoryRequest struct {
-	// The request to update a memory.
+	// The update memory request.
 	//
 	// This parameter is required.
 	Body *UpdateMemoryRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
@@ -47,9 +47,9 @@ func (s *UpdateMemoryRequest) Validate() error {
 }
 
 type UpdateMemoryRequestBody struct {
-	// The updated string key-value metadata. You must provide at least one of Metadata or Text. A maximum of 16 keys are allowed. Each key can be up to 64 characters in length, and each value can be up to 1,024 characters in length.
+	// The updated string key-value metadata. You must provide at least one of Metadata or Text. A maximum of 16 keys are allowed. The maximum length of a key is 64 characters, and the maximum length of a value is 1,024 characters.
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The updated memory text. You must provide at least one of Text or Metadata. The text cannot exceed 32,000 UTF-8 bytes.
+	// The updated memory text. You must provide at least one of Text or Metadata. The maximum size is 32,000 UTF-8 bytes.
 	//
 	// example:
 	//

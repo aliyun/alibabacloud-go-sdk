@@ -30,7 +30,7 @@ type CreateMemoryStoreResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The memory store details.
+	// The MemoryStore details.
 	Data *CreateMemoryStoreResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -132,7 +132,7 @@ type CreateMemoryStoreResponseBodyData struct {
 	//
 	// 2026-09-23T10:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The memory store description.
+	// The MemoryStore description.
 	//
 	// example:
 	//
@@ -142,27 +142,27 @@ type CreateMemoryStoreResponseBodyData struct {
 	//
 	// example:
 	//
-	// Extract only long-term preferences explicitly expressed by the user
+	// Extract only explicitly expressed long-term user preferences
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
-	// The memory store ID.
+	// The MemoryStore ID.
 	//
 	// example:
 	//
 	// ms-2f5f9c5a8d0e4c3b
 	MemoryStoreId *string `json:"memoryStoreId,omitempty" xml:"memoryStoreId,omitempty"`
-	// The name of the memory store. The name cannot be modified after creation.
+	// The name of the MemoryStore. The name cannot be modified after creation.
 	//
 	// example:
 	//
 	// customer-memory
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
-	// The lifecycle status of the memory store.
+	// The lifecycle state of the MemoryStore.
 	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last updated time.
+	// The last update time.
 	//
 	// example:
 	//

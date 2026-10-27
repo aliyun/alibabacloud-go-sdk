@@ -130,7 +130,7 @@ func (s *CreateWorkspaceResponseBody) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyData struct {
-	// The AI Registry namespace ID. It is returned after related resources are bound and may be empty during initialization.
+	// The AI Registry namespace ID. This value is returned after related resources are bound and may be empty during initialization.
 	//
 	// if can be null:
 	// true
@@ -151,7 +151,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The CloudMonitor workspace ID. It is returned after related resources are bound and may be empty during initialization.
+	// The CloudMonitor workspace ID. This value is returned after related resources are bound and may be empty during initialization.
 	//
 	// if can be null:
 	// true
@@ -160,7 +160,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// cms-ws-0123456789abcdef
 	CmsWorkspaceId *string `json:"cmsWorkspaceId,omitempty" xml:"cmsWorkspaceId,omitempty"`
-	// The time when the workspace was created, in ISO 8601 format.
+	// The time when the workspace was created. The time follows the ISO 8601 standard.
 	//
 	// This parameter is required.
 	//
@@ -182,7 +182,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The ID of the resource group to which the workspace belongs. It may be empty if no resource group is specified.
+	// The ID of the resource group to which the workspace belongs. This value may be empty if no resource group is specified.
 	//
 	// if can be null:
 	// true
@@ -197,7 +197,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// Initialized
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The supplementary reason for the current status of the workspace. It is used to display the specific reason when initialization fails or when waiting for authorization. It may be empty under normal circumstances.
+	// The supplementary reason for the current status of the workspace. This value is used to display the specific reason when initialization fails or authorization is pending, and may be empty under normal circumstances.
 	//
 	// if can be null:
 	// true
@@ -216,13 +216,13 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// This parameter is required.
 	Tags []*CreateWorkspaceResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The ID of the tenant.
+	// The ID of the tenant to which the workspace belongs.
 	//
 	// example:
 	//
 	// tenant-123456
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
@@ -392,19 +392,19 @@ func (s *CreateWorkspaceResponseBodyData) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyDataNetworkConfiguration struct {
-	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public network egress of the user VPC.
+	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
 	//
 	// example:
 	//
 	// true
 	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
-	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public network ingress for all agent endpoints in the workspace is closed. The original public network ingress is restored when re-enabled. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
+	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. If disabled, the public ingress for all agent endpoints in the workspace is closed, and the original public ingress is restored when re-enabled. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
 	//
 	// example:
 	//
 	// true
 	PublicIngressEnabled *bool `json:"publicIngressEnabled,omitempty" xml:"publicIngressEnabled,omitempty"`
-	// The user VPC network configuration.
+	// The VPC network configuration of the user.
 	Vpc *CreateWorkspaceResponseBodyDataNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -461,7 +461,7 @@ type CreateWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The user VPC ID.
+	// The ID of the user VPC.
 	//
 	// example:
 	//

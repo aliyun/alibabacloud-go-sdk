@@ -30,7 +30,7 @@ type AddMemoriesResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The write result.
+	// The result of the write operation.
 	Data *AddMemoriesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -44,7 +44,7 @@ type AddMemoriesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ func (s *AddMemoriesResponseBody) Validate() error {
 type AddMemoriesResponseBodyData struct {
 	// The memory references returned only when sync is set to true. An empty array is allowed. This parameter is not returned together with taskId.
 	Memories []*AddMemoriesResponseBodyDataMemories `json:"memories,omitempty" xml:"memories,omitempty" type:"Repeated"`
-	// The task ID returned only when sync is set to false. This parameter is not returned together with memories.
+	// The ID of the task returned only when sync is set to false. This parameter is not returned together with memories.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *AddMemoriesResponseBodyData) Validate() error {
 }
 
 type AddMemoriesResponseBodyDataMemories struct {
-	// The long-term memory ID.
+	// The ID of the long-term memory.
 	//
 	// example:
 	//

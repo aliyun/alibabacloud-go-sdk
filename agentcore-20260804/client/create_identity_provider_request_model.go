@@ -14,7 +14,7 @@ type iCreateIdentityProviderRequest interface {
 }
 
 type CreateIdentityProviderRequest struct {
-	// The request body for binding an external identity provider.
+	// The request content for binding an external identity provider.
 	Body *CreateIdentityProviderRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 }
 
@@ -53,12 +53,16 @@ type CreateIdentityProviderRequestBody struct {
 	//
 	// DingTalk
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// Specifies whether workspace users can log on through the external identity provider.
+	// Specifies whether to allow workspace users to log on through the external identity provider.
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
-	// The application configuration for the external identity provider. When you bind DingTalk, you must provide appKey, appSecret, and corpId. When you bind Feishu, you must provide appId and appSecret.
+	// The application configuration of the external identity provider. When you bind DingTalk, you must provide appKey, appSecret, and corpId. When you bind Feishu, you must provide appId and appSecret.
 	Metadata *CreateIdentityProviderRequestBodyMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// Specifies whether to enable organization member synchronization. If enabled, organization members are synchronized to workspace users from the external identity provider.
+	// Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
+	// Controls the first synchronization when DingTalk or Feishu is bound. If this parameter is omitted or set to null, the default value is true. If this parameter is set to false, only the configuration is saved, and synchronization is explicitly triggered later. CustomSSO does not use the vendor pull link.
+	SyncOnBind *bool `json:"syncOnBind,omitempty" xml:"syncOnBind,omitempty"`
+	// Retains the department-based synchronization scope definition. If this parameter is omitted during creation, the default value is AllAuthorized, and the first vendor synchronization is determined by syncOnBind. If this parameter is omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically perform full synchronization.
+	SyncScope *CreateIdentityProviderRequestBodySyncScope `json:"syncScope,omitempty" xml:"syncScope,omitempty" type:"Struct"`
 }
 
 func (s CreateIdentityProviderRequestBody) String() string {
@@ -85,6 +89,14 @@ func (s *CreateIdentityProviderRequestBody) GetSyncEnabled() *bool {
 	return s.SyncEnabled
 }
 
+func (s *CreateIdentityProviderRequestBody) GetSyncOnBind() *bool {
+	return s.SyncOnBind
+}
+
+func (s *CreateIdentityProviderRequestBody) GetSyncScope() *CreateIdentityProviderRequestBodySyncScope {
+	return s.SyncScope
+}
+
 func (s *CreateIdentityProviderRequestBody) SetIdentityProviderType(v string) *CreateIdentityProviderRequestBody {
 	s.IdentityProviderType = &v
 	return s
@@ -105,9 +117,24 @@ func (s *CreateIdentityProviderRequestBody) SetSyncEnabled(v bool) *CreateIdenti
 	return s
 }
 
+func (s *CreateIdentityProviderRequestBody) SetSyncOnBind(v bool) *CreateIdentityProviderRequestBody {
+	s.SyncOnBind = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestBody) SetSyncScope(v *CreateIdentityProviderRequestBodySyncScope) *CreateIdentityProviderRequestBody {
+	s.SyncScope = v
+	return s
+}
+
 func (s *CreateIdentityProviderRequestBody) Validate() error {
 	if s.Metadata != nil {
 		if err := s.Metadata.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SyncScope != nil {
+		if err := s.SyncScope.Validate(); err != nil {
 			return err
 		}
 	}
@@ -115,37 +142,37 @@ func (s *CreateIdentityProviderRequestBody) Validate() error {
 }
 
 type CreateIdentityProviderRequestBodyMetadata struct {
-	// The App ID of the Lark application. This parameter is required when the binding type is Feishu.
+	// The app ID of the Feishu application. This parameter is required when the binding type is Feishu.
 	//
 	// example:
 	//
 	// cli_exampleappid01
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// The AppKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
+	// The appKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
 	//
 	// example:
 	//
 	// dingexampleappkey01
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// Required. The application secret of the external identity provider. This parameter is used only for write operations and is not returned by query operations.
+	// Required. The secret of the external identity provider application. This parameter is used only for writing and is not returned by the query API.
 	//
 	// example:
 	//
 	// example-app-secret
 	AppSecret *string `json:"appSecret,omitempty" xml:"appSecret,omitempty"`
-	// The CorpId of the DingTalk organization. This parameter is required when the binding type is DingTalk.
+	// The corpId of the DingTalk enterprise. This parameter is required when the binding type is DingTalk.
 	//
 	// example:
 	//
 	// dingexamplecorpid01
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// The data encryption key for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
+	// The data encryption key for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for writing and is not returned by the query API.
 	//
 	// example:
 	//
 	// example-encrypt-key
 	EncryptKey *string `json:"encryptKey,omitempty" xml:"encryptKey,omitempty"`
-	// The verification token for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
+	// The verification token for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for writing and is not returned by the query API.
 	//
 	// example:
 	//
@@ -216,5 +243,56 @@ func (s *CreateIdentityProviderRequestBodyMetadata) SetVerificationToken(v strin
 }
 
 func (s *CreateIdentityProviderRequestBodyMetadata) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateIdentityProviderRequestBodySyncScope struct {
+	// When the mode is SelectedDepartments, at least one non-empty department ID must be included, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
+	//
+	// example:
+	//
+	// ["10001"]
+	DepartmentIds []*string `json:"departmentIds,omitempty" xml:"departmentIds,omitempty" type:"Repeated"`
+	// Valid values:
+	//
+	// - AllAuthorized: The full authorization scope, which is limited by the application address book authorization.
+	//
+	// - SelectedDepartments: The selected departments and all their sub-departments.
+	//
+	// When you explicitly submit syncScope, you must provide a valid mode, which is verified by the backend.
+	//
+	// example:
+	//
+	// SelectedDepartments
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestBodySyncScope) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestBodySyncScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestBodySyncScope) GetDepartmentIds() []*string {
+	return s.DepartmentIds
+}
+
+func (s *CreateIdentityProviderRequestBodySyncScope) GetMode() *string {
+	return s.Mode
+}
+
+func (s *CreateIdentityProviderRequestBodySyncScope) SetDepartmentIds(v []*string) *CreateIdentityProviderRequestBodySyncScope {
+	s.DepartmentIds = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestBodySyncScope) SetMode(v string) *CreateIdentityProviderRequestBodySyncScope {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestBodySyncScope) Validate() error {
 	return dara.Validate(s)
 }

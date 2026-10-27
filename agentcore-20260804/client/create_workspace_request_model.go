@@ -16,7 +16,7 @@ type iCreateWorkspaceRequest interface {
 }
 
 type CreateWorkspaceRequest struct {
-	// The workspace creation request body.
+	// The request body for creating a workspace.
 	Body *CreateWorkspaceRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 	// The client idempotency token.
 	//
@@ -62,6 +62,18 @@ func (s *CreateWorkspaceRequest) Validate() error {
 }
 
 type CreateWorkspaceRequestBody struct {
+	// If specified, the workspace is directly bound to this AgentSpace without creating a new one. The associated CloudMonitor (CMS) workspace is determined by the server\\"s reverse lookup result, and CmsWorkspace validation is skipped. When the workspace is deleted, only the binding is removed, and the AgentSpace is not deleted. The value must match the current account and region, and the associated CMS workspace must be found through reverse lookup. Otherwise, InvalidParameter is returned.
+	//
+	// example:
+	//
+	// my-agent-space
+	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// If specified, the workspace is bound to this CloudMonitor (CMS) workspace without creating a new one. When the workspace is deleted, only the binding is removed, and the CMS workspace is not deleted. The value must match the current account and region. Otherwise, InvalidParameter is returned.
+	//
+	// example:
+	//
+	// my-cms-workspace
+	CmsWorkspace *string `json:"cmsWorkspace,omitempty" xml:"cmsWorkspace,omitempty"`
 	// The name of the workspace.
 	//
 	// This parameter is required.
@@ -72,7 +84,7 @@ type CreateWorkspaceRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *CreateWorkspaceRequestBodyNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
-	// The workspace storage type. PLATFORM indicates platform-managed storage, and PRIVATE indicates user private OSS storage.
+	// The storage type of the workspace. PLATFORM indicates platform-managed storage. PRIVATE indicates user-owned private Object Storage Service (OSS) storage.
 	//
 	// example:
 	//
@@ -88,6 +100,14 @@ func (s CreateWorkspaceRequestBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateWorkspaceRequestBody) GetAgentSpace() *string {
+	return s.AgentSpace
+}
+
+func (s *CreateWorkspaceRequestBody) GetCmsWorkspace() *string {
+	return s.CmsWorkspace
+}
+
 func (s *CreateWorkspaceRequestBody) GetName() *string {
 	return s.Name
 }
@@ -98,6 +118,16 @@ func (s *CreateWorkspaceRequestBody) GetNetworkConfiguration() *CreateWorkspaceR
 
 func (s *CreateWorkspaceRequestBody) GetStorageType() *string {
 	return s.StorageType
+}
+
+func (s *CreateWorkspaceRequestBody) SetAgentSpace(v string) *CreateWorkspaceRequestBody {
+	s.AgentSpace = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequestBody) SetCmsWorkspace(v string) *CreateWorkspaceRequestBody {
+	s.CmsWorkspace = &v
+	return s
 }
 
 func (s *CreateWorkspaceRequestBody) SetName(v string) *CreateWorkspaceRequestBody {
@@ -125,19 +155,19 @@ func (s *CreateWorkspaceRequestBody) Validate() error {
 }
 
 type CreateWorkspaceRequestBodyNetworkConfiguration struct {
-	// Specifies whether to allow public outbound access from the platform. If this parameter is not specified, the default value is true. This setting only controls whether the latest versions of managed and custom agents use the public outbound endpoint of the platform. It does not affect fixed historical versions, model or MCP proxy endpoints, or the public outbound endpoint of the user VPC.
+	// Specifies whether to allow public outbound access from the platform. If not specified, the default value is true. This setting only controls whether the latest versions of managed and custom agents use the public outbound endpoint of the platform. It does not affect fixed historical versions, model or Model Context Protocol (MCP) proxy outbound endpoints, or the public outbound endpoint of the user VPC.
 	//
 	// example:
 	//
 	// true
 	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
-	// Specifies whether to allow public inbound access. If this parameter is not specified, the default value is true. If disabled, the public inbound endpoints of all agent endpoints in the workspace are closed, and the original public inbound endpoints are restored when re-enabled. INNER_DIRECT and user VPC endpoints are not affected. Collaboration and Element Web endpoints are not controlled by this parameter.
+	// Specifies whether to allow public inbound access. If not specified, the default value is true. If disabled, the public inbound endpoints of all agent endpoints in the workspace are closed. If re-enabled, the original public inbound endpoints are restored. INNER_DIRECT and user VPC inbound endpoints are not affected. Collaboration and Element Web inbound endpoints are not controlled by this setting.
 	//
 	// example:
 	//
 	// true
 	PublicIngressEnabled *bool `json:"publicIngressEnabled,omitempty" xml:"publicIngressEnabled,omitempty"`
-	// The user VPC network configuration.
+	// The VPC network configuration of the user.
 	Vpc *CreateWorkspaceRequestBodyNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -192,9 +222,9 @@ type CreateWorkspaceRequestBodyNetworkConfigurationVpc struct {
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The list of vSwitch IDs. When the VPC network is enabled, the list must contain at least one vSwitch, and all vSwitches must belong to the VPC specified by VpcId.
+	// The list of vSwitch IDs. If the VPC network is enabled, at least one vSwitch must be included, and all vSwitches must belong to the VPC specified by VpcId.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The user VPC ID.
+	// The ID of the user VPC.
 	//
 	// example:
 	//

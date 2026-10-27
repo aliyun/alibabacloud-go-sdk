@@ -126,7 +126,9 @@ func (s *GetIdentityProviderResponseBody) Validate() error {
 }
 
 type GetIdentityProviderResponseBodyData struct {
-	// The creation time in RFC 3339 UTC format.
+	// The actual SAML configuration is read back on demand only by GetIdentityProvider. SCIM queries and preparations return the actual received status and URLs.
+	Configuration *GetIdentityProviderResponseBodyDataConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// The creation time in UTC format based on RFC 3339.
 	//
 	// example:
 	//
@@ -152,35 +154,45 @@ type GetIdentityProviderResponseBodyData struct {
 	LoginCallbackUrl *string `json:"loginCallbackUrl,omitempty" xml:"loginCallbackUrl,omitempty"`
 	// Specifies whether workspace users are allowed to log on through this external identity provider.
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
-	// The application configurations of the external identity provider. Application secret configurations are not returned.
+	// The application configuration of the external identity provider. Application secret configurations are not returned.
 	Metadata *GetIdentityProviderResponseBodyDataMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
+	// Only SAML is currently supported. This parameter may not be returned if no valid configuration is saved. Placeholder initialization with OIDC is not supported.
+	//
+	// example:
+	//
+	// SAML
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This parameter can be omitted if it is not configured.
+	Saml *GetIdentityProviderResponseBodyDataSaml `json:"saml,omitempty" xml:"saml,omitempty" type:"Struct"`
 	// The status. Valid values:
 	//
 	// - CONFIGURED: The configuration is accepted and waiting for the user pool to be activated.
 	//
 	// - SYNCING: Organization members are being synchronized.
 	//
-	// - SYNCED: Organization members are synchronized.
+	// - SYNCED: The synchronization of organization members is complete.
 	//
 	// - READY: The binding is in effect.
 	//
-	// - SYNC_FAILED: Failed to synchronize organization members.
+	// - SYNC_FAILED: The synchronization of organization members failed.
 	//
 	// - UPDATING: The configuration is being updated.
 	//
-	// - UPDATE_FAILED: Failed to update the configuration.
+	// - UPDATE_FAILED: The configuration update failed.
 	//
-	// - DISCONNECTING: The binding is being disconnected.
+	// - DISCONNECTING: The unbinding is in progress.
 	//
-	// - DISCONNECT_FAILED: Failed to disconnect the binding.
+	// - DISCONNECT_FAILED: The unbinding failed.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Specifies whether organization member synchronization is enabled. After this feature is enabled, organization members are synchronized as workspace users by this external identity provider.
+	// Specifies whether to enable the synchronization of organization members. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
-	// The time of the last update in RFC 3339 UTC format.
+	// The synchronization scope definition by department is retained. If this parameter is omitted during creation, the default value AllAuthorized is used. The first vendor synchronization is determined by syncOnBind. If this parameter is omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically trigger full synchronization.
+	SyncScope *GetIdentityProviderResponseBodyDataSyncScope `json:"syncScope,omitempty" xml:"syncScope,omitempty" type:"Struct"`
+	// The time of the last modification in UTC format based on RFC 3339.
 	//
 	// example:
 	//
@@ -200,6 +212,10 @@ func (s GetIdentityProviderResponseBodyData) String() string {
 
 func (s GetIdentityProviderResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyData) GetConfiguration() *GetIdentityProviderResponseBodyDataConfiguration {
+	return s.Configuration
 }
 
 func (s *GetIdentityProviderResponseBodyData) GetCreatedAt() *string {
@@ -226,6 +242,14 @@ func (s *GetIdentityProviderResponseBodyData) GetMetadata() *GetIdentityProvider
 	return s.Metadata
 }
 
+func (s *GetIdentityProviderResponseBodyData) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *GetIdentityProviderResponseBodyData) GetSaml() *GetIdentityProviderResponseBodyDataSaml {
+	return s.Saml
+}
+
 func (s *GetIdentityProviderResponseBodyData) GetStatus() *string {
 	return s.Status
 }
@@ -234,12 +258,21 @@ func (s *GetIdentityProviderResponseBodyData) GetSyncEnabled() *bool {
 	return s.SyncEnabled
 }
 
+func (s *GetIdentityProviderResponseBodyData) GetSyncScope() *GetIdentityProviderResponseBodyDataSyncScope {
+	return s.SyncScope
+}
+
 func (s *GetIdentityProviderResponseBodyData) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
 
 func (s *GetIdentityProviderResponseBodyData) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *GetIdentityProviderResponseBodyData) SetConfiguration(v *GetIdentityProviderResponseBodyDataConfiguration) *GetIdentityProviderResponseBodyData {
+	s.Configuration = v
+	return s
 }
 
 func (s *GetIdentityProviderResponseBodyData) SetCreatedAt(v string) *GetIdentityProviderResponseBodyData {
@@ -272,6 +305,16 @@ func (s *GetIdentityProviderResponseBodyData) SetMetadata(v *GetIdentityProvider
 	return s
 }
 
+func (s *GetIdentityProviderResponseBodyData) SetProtocol(v string) *GetIdentityProviderResponseBodyData {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyData) SetSaml(v *GetIdentityProviderResponseBodyDataSaml) *GetIdentityProviderResponseBodyData {
+	s.Saml = v
+	return s
+}
+
 func (s *GetIdentityProviderResponseBodyData) SetStatus(v string) *GetIdentityProviderResponseBodyData {
 	s.Status = &v
 	return s
@@ -279,6 +322,11 @@ func (s *GetIdentityProviderResponseBodyData) SetStatus(v string) *GetIdentityPr
 
 func (s *GetIdentityProviderResponseBodyData) SetSyncEnabled(v bool) *GetIdentityProviderResponseBodyData {
 	s.SyncEnabled = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyData) SetSyncScope(v *GetIdentityProviderResponseBodyDataSyncScope) *GetIdentityProviderResponseBodyData {
+	s.SyncScope = v
 	return s
 }
 
@@ -293,12 +341,102 @@ func (s *GetIdentityProviderResponseBodyData) SetWorkspaceId(v string) *GetIdent
 }
 
 func (s *GetIdentityProviderResponseBodyData) Validate() error {
+	if s.Configuration != nil {
+		if err := s.Configuration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Metadata != nil {
 		if err := s.Metadata.Validate(); err != nil {
 			return err
 		}
 	}
+	if s.Saml != nil {
+		if err := s.Saml.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SyncScope != nil {
+		if err := s.SyncScope.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
+}
+
+type GetIdentityProviderResponseBodyDataConfiguration struct {
+	// HTTP-Redirect or HTTP-POST. This parameter is required for manual entry. Queries return the short name.
+	//
+	// example:
+	//
+	// HTTP-Redirect
+	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
+	// This parameter is required for manual entry. It must be non-empty and cannot exceed 2,048 characters. Existing configurations do not support replacement. This is different from the local entity ID queried by the SP.
+	//
+	// example:
+	//
+	// https://idp.example.com/entity
+	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
+	// This parameter is required for manual entry. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	//
+	// example:
+	//
+	// https://idp.example.com/sso
+	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
+	// The actual switch value is Enabled or Disabled. This is not equivalent to the expected loginEnabled value saved by AC.
+	//
+	// example:
+	//
+	// Enabled
+	SsoStatus *string `json:"ssoStatus,omitempty" xml:"ssoStatus,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyDataConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyDataConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyDataConfiguration) GetBindingType() *string {
+	return s.BindingType
+}
+
+func (s *GetIdentityProviderResponseBodyDataConfiguration) GetEntityId() *string {
+	return s.EntityId
+}
+
+func (s *GetIdentityProviderResponseBodyDataConfiguration) GetLoginUrl() *string {
+	return s.LoginUrl
+}
+
+func (s *GetIdentityProviderResponseBodyDataConfiguration) GetSsoStatus() *string {
+	return s.SsoStatus
+}
+
+func (s *GetIdentityProviderResponseBodyDataConfiguration) SetBindingType(v string) *GetIdentityProviderResponseBodyDataConfiguration {
+	s.BindingType = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataConfiguration) SetEntityId(v string) *GetIdentityProviderResponseBodyDataConfiguration {
+	s.EntityId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataConfiguration) SetLoginUrl(v string) *GetIdentityProviderResponseBodyDataConfiguration {
+	s.LoginUrl = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataConfiguration) SetSsoStatus(v string) *GetIdentityProviderResponseBodyDataConfiguration {
+	s.SsoStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataConfiguration) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetIdentityProviderResponseBodyDataMetadata struct {
@@ -314,12 +452,36 @@ type GetIdentityProviderResponseBodyDataMetadata struct {
 	//
 	// dingexampleappkey01
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
+	// The SAML Binding URI in the historical metadata snapshot. To update CustomSSO, use saml.bindingType.
+	//
+	// example:
+	//
+	// urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+	Binding *string `json:"binding,omitempty" xml:"binding,omitempty"`
+	// The certificate string in the historical metadata snapshot. To edit the configuration, use saml.x509Certificates and do not submit the old metadata.
+	//
+	// example:
+	//
+	// MIICwDCCAaigAwIBAgIULlsHLfcADyBax5ZtFlj+YGzZVo0wDQYJKoZIhvcNAQELBQAwGjEYMBYGA1UEAwwPaWRwLmV4YW1wbGUuY29tMB4XDTI2MDEwMTAwMDAwMFoXDTM2MDEwMTAwMDAwMFowGjEYMBYGA1UEAwwPaWRwLmV4YW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAto0DN0W1CrPRzK9QZ9A1aApb4Lg8oGlp2c0PbN3LokXe/HzwxCMXx65IDnrenttxzTwp9BgUnUN/3LRzWaOL2UQ/vNYNW9LFLkI1T64UPyI7eyi28YlALhb41xkYhEp7rz+MjqifBzVZeTDUxBYtbK2hAhbYEL1+udwsXEx0KB7xuQ/rbI2OKeqAEAD1tfYg7T/SM2wrXNYhx+o1HtchM4/0I8Okkk27JQ4y3ofzC5sTySmFF1Y7XcpSd+5WSyazedhkAieo8AB01DkJV6nnKfH8sH0EBsnH3FP8FhqCLrIeEkjX9B9OcIRLGjiZqx4u/ryW1QhMldnv+pFfNjWy/wIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQC1hSQG8AwtGOoX2gKBK4Hi5XBrBreij8WlLTUWld0FINQ0Rg84f/27CjDthywj6wgxCesCuOVFhpxQa1UacsP/Gcai1aKABtLWImcaWECRYK5gDkwhTMFKM9mXA26hH1l4v/UR2iTpEK9H78egC4W7bs2LDTpPryuaNKTqP2O0tMbNkAHB8yecz5LxHXnxadL9Egow25g2RClvpifWqDnuS9TSbKkIWLcPLjocJj2K9ILpBwhXiXi/BiSgyYTLiYvVvih9vX4s+hKGZNJc0j92YLiOHDF0XH1oxgdVjfTmRiedeb2VZJZElptD92z0AqFR7z2d5B+OqpPA2gjuMLV5
+	Certificates *string `json:"certificates,omitempty" xml:"certificates,omitempty"`
 	// The CorpId of the DingTalk enterprise. This parameter is required when the binding type is DingTalk.
 	//
 	// example:
 	//
 	// dingexamplecorpid01
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
+	// This parameter is required for manual entry. It must be non-empty and cannot exceed 2,048 characters. Existing configurations do not support replacement. This is different from the local entity ID queried by the SP.
+	//
+	// example:
+	//
+	// https://idp.example.com/entity
+	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
+	// This parameter is required for manual entry. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	//
+	// example:
+	//
+	// https://idp.example.com/sso
+	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
 }
 
 func (s GetIdentityProviderResponseBodyDataMetadata) String() string {
@@ -338,8 +500,24 @@ func (s *GetIdentityProviderResponseBodyDataMetadata) GetAppKey() *string {
 	return s.AppKey
 }
 
+func (s *GetIdentityProviderResponseBodyDataMetadata) GetBinding() *string {
+	return s.Binding
+}
+
+func (s *GetIdentityProviderResponseBodyDataMetadata) GetCertificates() *string {
+	return s.Certificates
+}
+
 func (s *GetIdentityProviderResponseBodyDataMetadata) GetCorpId() *string {
 	return s.CorpId
+}
+
+func (s *GetIdentityProviderResponseBodyDataMetadata) GetEntityId() *string {
+	return s.EntityId
+}
+
+func (s *GetIdentityProviderResponseBodyDataMetadata) GetLoginUrl() *string {
+	return s.LoginUrl
 }
 
 func (s *GetIdentityProviderResponseBodyDataMetadata) SetAppId(v string) *GetIdentityProviderResponseBodyDataMetadata {
@@ -352,11 +530,157 @@ func (s *GetIdentityProviderResponseBodyDataMetadata) SetAppKey(v string) *GetId
 	return s
 }
 
+func (s *GetIdentityProviderResponseBodyDataMetadata) SetBinding(v string) *GetIdentityProviderResponseBodyDataMetadata {
+	s.Binding = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataMetadata) SetCertificates(v string) *GetIdentityProviderResponseBodyDataMetadata {
+	s.Certificates = &v
+	return s
+}
+
 func (s *GetIdentityProviderResponseBodyDataMetadata) SetCorpId(v string) *GetIdentityProviderResponseBodyDataMetadata {
 	s.CorpId = &v
 	return s
 }
 
+func (s *GetIdentityProviderResponseBodyDataMetadata) SetEntityId(v string) *GetIdentityProviderResponseBodyDataMetadata {
+	s.EntityId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataMetadata) SetLoginUrl(v string) *GetIdentityProviderResponseBodyDataMetadata {
+	s.LoginUrl = &v
+	return s
+}
+
 func (s *GetIdentityProviderResponseBodyDataMetadata) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetIdentityProviderResponseBodyDataSaml struct {
+	// HTTP-Redirect or HTTP-POST. This parameter is required for manual entry. Queries return the short name.
+	//
+	// example:
+	//
+	// HTTP-Redirect
+	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
+	// This parameter is required for manual entry. It must be non-empty and cannot exceed 2,048 characters. Existing configurations do not support replacement. This is different from the local entity ID queried by the SP.
+	//
+	// example:
+	//
+	// https://idp.example.com/entity
+	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
+	// This parameter is required for manual entry. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	//
+	// example:
+	//
+	// https://idp.example.com/sso
+	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
+	// A non-empty array is required for manual entry. Use PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
+	//
+	// example:
+	//
+	// ["-----BEGIN CERTIFICATE-----\\\\nMIICwDCCAaigAwIBAgIULlsHLfcADyBax5ZtFlj+YGzZVo0wDQYJKoZIhvcNAQEL\\\\nBQAwGjEYMBYGA1UEAwwPaWRwLmV4YW1wbGUuY29tMB4XDTI2MDEwMTAwMDAwMFoX\\\\nDTM2MDEwMTAwMDAwMFowGjEYMBYGA1UEAwwPaWRwLmV4YW1wbGUuY29tMIIBIjAN\\\\nBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAto0DN0W1CrPRzK9QZ9A1aApb4Lg8\\\\noGlp2c0PbN3LokXe/HzwxCMXx65IDnrenttxzTwp9BgUnUN/3LRzWaOL2UQ/vNYN\\\\nW9LFLkI1T64UPyI7eyi28YlALhb41xkYhEp7rz+MjqifBzVZeTDUxBYtbK2hAhbY\\\\nEL1+udwsXEx0KB7xuQ/rbI2OKeqAEAD1tfYg7T/SM2wrXNYhx+o1HtchM4/0I8Ok\\\\nkk27JQ4y3ofzC5sTySmFF1Y7XcpSd+5WSyazedhkAieo8AB01DkJV6nnKfH8sH0E\\\\nBsnH3FP8FhqCLrIeEkjX9B9OcIRLGjiZqx4u/ryW1QhMldnv+pFfNjWy/wIDAQAB\\\\nMA0GCSqGSIb3DQEBCwUAA4IBAQC1hSQG8AwtGOoX2gKBK4Hi5XBrBreij8WlLTUW\\\\nld0FINQ0Rg84f/27CjDthywj6wgxCesCuOVFhpxQa1UacsP/Gcai1aKABtLWImca\\\\nWECRYK5gDkwhTMFKM9mXA26hH1l4v/UR2iTpEK9H78egC4W7bs2LDTpPryuaNKTq\\\\nP2O0tMbNkAHB8yecz5LxHXnxadL9Egow25g2RClvpifWqDnuS9TSbKkIWLcPLjoc\\\\nJj2K9ILpBwhXiXi/BiSgyYTLiYvVvih9vX4s+hKGZNJc0j92YLiOHDF0XH1oxgdV\\\\njfTmRiedeb2VZJZElptD92z0AqFR7z2d5B+OqpPA2gjuMLV5\\\\n-----END CERTIFICATE-----"]
+	X509Certificates []*string `json:"x509Certificates,omitempty" xml:"x509Certificates,omitempty" type:"Repeated"`
+}
+
+func (s GetIdentityProviderResponseBodyDataSaml) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyDataSaml) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyDataSaml) GetBindingType() *string {
+	return s.BindingType
+}
+
+func (s *GetIdentityProviderResponseBodyDataSaml) GetEntityId() *string {
+	return s.EntityId
+}
+
+func (s *GetIdentityProviderResponseBodyDataSaml) GetLoginUrl() *string {
+	return s.LoginUrl
+}
+
+func (s *GetIdentityProviderResponseBodyDataSaml) GetX509Certificates() []*string {
+	return s.X509Certificates
+}
+
+func (s *GetIdentityProviderResponseBodyDataSaml) SetBindingType(v string) *GetIdentityProviderResponseBodyDataSaml {
+	s.BindingType = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataSaml) SetEntityId(v string) *GetIdentityProviderResponseBodyDataSaml {
+	s.EntityId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataSaml) SetLoginUrl(v string) *GetIdentityProviderResponseBodyDataSaml {
+	s.LoginUrl = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataSaml) SetX509Certificates(v []*string) *GetIdentityProviderResponseBodyDataSaml {
+	s.X509Certificates = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataSaml) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetIdentityProviderResponseBodyDataSyncScope struct {
+	// When the mode is SelectedDepartments, this parameter must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
+	//
+	// example:
+	//
+	// ["10001"]
+	DepartmentIds []*string `json:"departmentIds,omitempty" xml:"departmentIds,omitempty" type:"Repeated"`
+	// Valid values:
+	//
+	// - AllAuthorized: The full authorization scope, which is limited by the application address book authorization.
+	//
+	// - SelectedDepartments: The selected departments and all their sub-departments.
+	//
+	// When explicitly submitting syncScope, you must provide a valid mode, which is verified by the backend.
+	//
+	// example:
+	//
+	// SelectedDepartments
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyDataSyncScope) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyDataSyncScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyDataSyncScope) GetDepartmentIds() []*string {
+	return s.DepartmentIds
+}
+
+func (s *GetIdentityProviderResponseBodyDataSyncScope) GetMode() *string {
+	return s.Mode
+}
+
+func (s *GetIdentityProviderResponseBodyDataSyncScope) SetDepartmentIds(v []*string) *GetIdentityProviderResponseBodyDataSyncScope {
+	s.DepartmentIds = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataSyncScope) SetMode(v string) *GetIdentityProviderResponseBodyDataSyncScope {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyDataSyncScope) Validate() error {
 	return dara.Validate(s)
 }

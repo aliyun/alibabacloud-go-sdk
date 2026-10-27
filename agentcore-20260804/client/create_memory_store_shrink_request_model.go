@@ -16,11 +16,11 @@ type iCreateMemoryStoreShrinkRequest interface {
 }
 
 type CreateMemoryStoreShrinkRequest struct {
-	// The request to create a memory store.
+	// The MemoryStore creation request.
 	//
 	// This parameter is required.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client request token.
+	// The client token.
 	//
 	// example:
 	//

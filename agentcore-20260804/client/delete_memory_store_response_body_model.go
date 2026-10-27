@@ -132,7 +132,7 @@ type DeleteMemoryStoreResponseBodyData struct {
 	//
 	// 2026-09-23T10:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The MemoryStore description.
+	// The description of the MemoryStore.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type DeleteMemoryStoreResponseBodyData struct {
 	//
 	// example:
 	//
-	// Extract only long-term preferences explicitly expressed by the user
+	// Extract only the long-term preferences explicitly expressed by the user
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
 	// The MemoryStore ID.
 	//
@@ -150,7 +150,7 @@ type DeleteMemoryStoreResponseBodyData struct {
 	//
 	// ms-2f5f9c5a8d0e4c3b
 	MemoryStoreId *string `json:"memoryStoreId,omitempty" xml:"memoryStoreId,omitempty"`
-	// The MemoryStore name. It cannot be modified after creation.
+	// The name of the MemoryStore. It cannot be modified after creation.
 	//
 	// example:
 	//

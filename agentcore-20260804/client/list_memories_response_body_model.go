@@ -40,7 +40,7 @@ type ListMemoriesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The memory list.
+	// The list of memory records.
 	Items []*ListMemoriesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The maximum number of records per page.
 	//
