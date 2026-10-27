@@ -24,59 +24,37 @@ type iListAddonsRequest interface {
 }
 
 type ListAddonsRequest struct {
-	// The cluster ID.
-	//
-	// If you specify a cluster ID, the available add-on components for the cluster are returned, and all other parameters are ignored.
+	// The cluster ID. If this parameter is specified, the system queries the available components for the specified cluster and ignores other parameters.
 	//
 	// example:
 	//
 	// c02b3e03be10643e8a644a843ffcb****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The cluster specification.
-	//
-	// If cluster_id is specified, this parameter is ignored.
-	//
-	// The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
+	// The cluster specification. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
 	//
 	// example:
 	//
 	// ack.pro.small
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// The cluster type.
-	//
-	// If cluster_id is specified, this parameter is ignored.
-	//
-	// The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
+	// The cluster type. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
 	//
 	// example:
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// The cluster version.
-	//
-	// If cluster_id is specified, this parameter is ignored.
-	//
-	// The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
+	// The cluster version. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
 	//
 	// example:
 	//
 	// 1.32.1-aliyun.1
 	ClusterVersion *string `json:"cluster_version,omitempty" xml:"cluster_version,omitempty"`
-	// The cluster subtype.
-	//
-	// If cluster_id is specified, this parameter is ignored.
-	//
-	// The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
+	// The cluster profile. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
 	//
 	// example:
 	//
 	// Default
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
-	// The region ID.
-	//
-	// If cluster_id is specified, this parameter is ignored.
-	//
-	// The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
+	// The region. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
 	//
 	// example:
 	//

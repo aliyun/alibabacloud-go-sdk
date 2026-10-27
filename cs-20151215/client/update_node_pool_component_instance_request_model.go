@@ -24,13 +24,13 @@ type iUpdateNodePoolComponentInstanceRequest interface {
 type UpdateNodePoolComponentInstanceRequest struct {
 	// The node component configuration.
 	Config *UpdateNodePoolComponentInstanceRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// Specifies whether to disable the rolling update. Default value: false. Updating the baseline configuration triggers a rolling update of the nodes.
+	// Specifies whether to disable rolling updates. Default value: false. Updating the baseline configuration triggers a rolling update of the nodes.
 	//
 	// example:
 	//
 	// false
 	DisableRolling *bool `json:"disable_rolling,omitempty" xml:"disable_rolling,omitempty"`
-	// The list of nodes to be updated in a rolling manner. By default, all nodes are updated.
+	// The list of nodes to be updated in a rolling manner. Default value: all nodes.
 	NodeNames []*string `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
 	// The rolling update configuration.
 	RollingPolicy *UpdateNodePoolComponentInstanceRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
@@ -211,19 +211,19 @@ type UpdateNodePoolComponentInstanceRequestRollingPolicy struct {
 	//
 	// 10
 	BatchInterval *int64 `json:"batch_interval,omitempty" xml:"batch_interval,omitempty"`
-	// The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
+	// The maximum number of nodes allowed to fail during the rolling update. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
 	//
 	// example:
 	//
 	// 0
 	MaxFailedNodes *int64 `json:"max_failed_nodes,omitempty" xml:"max_failed_nodes,omitempty"`
-	// The maximum number of parallel updates per batch. Default value: 1.
+	// The maximum number of parallel nodes per batch. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	MaxParallelism *int64 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
-	// The auto-pause policy during the node upgrade process. Valid values: NotPause, FirstBatch, and EveryBatch. Default value: NotPause.
+	// The automatic pause policy during node upgrades. Valid values: NotPause, FirstBatch, and EveryBatch. Default value: NotPause.
 	//
 	// example:
 	//

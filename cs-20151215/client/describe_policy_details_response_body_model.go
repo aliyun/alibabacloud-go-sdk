@@ -30,15 +30,15 @@ type iDescribePolicyDetailsResponseBody interface {
 type DescribePolicyDetailsResponseBody struct {
 	// The governance action of the rule. Valid values:
 	//
-	// - `enforce`: blocks non-compliant deployments.
+	// - `enforce`: Blocks non-compliant deployments.
 	//
-	// - `inform`: generates alerts.
+	// - `inform`: Triggers alerts.
 	//
 	// example:
 	//
 	// enforce
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The templatetype of the rule.
+	// The rule templatetype.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DescribePolicyDetailsResponseBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Indicates whether the rule is deleted. Valid values:
 	//
-	// - 0: not deleted.
+	// - 0: Not deleted.
 	//
-	// - 1: deleted.
+	// - 1: Deleted.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type DescribePolicyDetailsResponseBody struct {
 	//
 	// ACKAllowedRepos
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether the policy requires configuration. Valid values:
+	// Specifies whether policy configuration is required. Valid values:
 	//
-	// - 0: parameter settings required.
+	// - 0: Parameter settings are required.
 	//
-	// - 1: no parameter settings required.
+	// - 1: No parameter settings are required.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type DescribePolicyDetailsResponseBody struct {
 	NoConfig *int32 `json:"no_config,omitempty" xml:"no_config,omitempty"`
 	// The governance severity of the rule. Valid values:
 	//
-	// 	- `high`: high risk.
+	// 	- `high`: High-risk.
 	//
-	// 	- `medium`: medium risk.
+	// 	- `medium`: Medium-risk.
 	//
-	// 	- `low`: low risk.
+	// 	- `low`: Low-risk.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DescribePolicyDetailsResponseBody struct {
 	//
 	// example:
 	//
-	// For more information, see the request example
+	// For more information, see the request examples
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
 }
 

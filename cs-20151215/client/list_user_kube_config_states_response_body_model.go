@@ -16,7 +16,7 @@ type iListUserKubeConfigStatesResponseBody interface {
 }
 
 type ListUserKubeConfigStatesResponseBody struct {
-	// The pagination information.
+	// The pagination parameters.
 	Page *ListUserKubeConfigStatesResponseBodyPage `json:"page,omitempty" xml:"page,omitempty" type:"Struct"`
 	// The KubeConfig status details of the user.
 	States []*ListUserKubeConfigStatesResponseBodyStates `json:"states,omitempty" xml:"states,omitempty" type:"Repeated"`
@@ -73,13 +73,13 @@ type ListUserKubeConfigStatesResponseBodyPage struct {
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of records per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of results.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ func (s *ListUserKubeConfigStatesResponseBodyPage) Validate() error {
 }
 
 type ListUserKubeConfigStatesResponseBodyStates struct {
-	// The expiration time of the KubeConfig certificate. Format: UTC time in RFC 3339 format.
+	// The expiration time of the KubeConfig certificate. The time is displayed in UTC and follows the RFC 3339 standard.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListUserKubeConfigStatesResponseBodyStates struct {
 	//
 	// - Unknown: The status is unknown.
 	//
-	// - Removed: The certificate has been removed (an issuance record exists for the certificate).
+	// - Removed: The certificate has been removed (the certificate has an issuance record).
 	//
 	// example:
 	//
@@ -175,11 +175,11 @@ type ListUserKubeConfigStatesResponseBodyStates struct {
 	//
 	// - `scaling`: The cluster is being scaled.
 	//
-	// - `stopped`: The cluster has stopped running.
+	// - `stopped`: The cluster is stopped.
 	//
 	// - `deleting`: The cluster is being deleted.
 	//
-	// - `deleted`: The cluster has been deleted.
+	// - `deleted`: The cluster is deleted.
 	//
 	// - `delete_failed`: The cluster failed to be deleted.
 	//

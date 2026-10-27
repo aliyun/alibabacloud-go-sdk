@@ -20,6 +20,7 @@ type iDescribeClusterTasksResponseBody interface {
 }
 
 type DescribeClusterTasksResponseBody struct {
+	// The pagination token.
 	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeClusterTasksResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
@@ -29,7 +30,7 @@ type DescribeClusterTasksResponseBody struct {
 	//
 	// 0527ac9a-c899-4341-a21a-xxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The task array.
+	// The array of tasks.
 	Tasks []*DescribeClusterTasksResponseBodyTasks `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
 }
 
@@ -102,7 +103,7 @@ type DescribeClusterTasksResponseBodyPageInfo struct {
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
@@ -162,7 +163,7 @@ type DescribeClusterTasksResponseBodyTasks struct {
 	//
 	// 2022-08-03T10:11:33+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// The node fault error message.
+	// The node fault message.
 	Error *DescribeClusterTasksResponseBodyTasksError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
 	// The task status.
 	//

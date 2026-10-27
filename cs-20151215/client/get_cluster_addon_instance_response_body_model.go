@@ -22,35 +22,35 @@ type iGetClusterAddonInstanceResponseBody interface {
 }
 
 type GetClusterAddonInstanceResponseBody struct {
-	// The custom parameter settings of the component.
+	// The custom parameter settings of the add-on.
 	//
 	// example:
 	//
 	// {"sls_project_name":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The logging status of the component.
+	// The log feature status of the add-on.
 	Logging *GetClusterAddonInstanceResponseBodyLogging `json:"logging,omitempty" xml:"logging,omitempty" type:"Struct"`
-	// The component instance name.
+	// The name of the add-on instance.
 	//
 	// example:
 	//
 	// ack-node-problem-detector
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The component status. Valid values:
+	// The state of the add-on. Valid values:
 	//
-	// - active: The component is installed.
+	// - active: Installed.
 	//
-	// - updating: The component is being modified.
+	// - updating: Updating.
 	//
-	// - upgrading: The component is being upgraded.
+	// - upgrading: Upgrading.
 	//
-	// - deleting: The component is being uninstalled.
+	// - deleting: Uninstalling.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The component instance version.
+	// The version of the add-on instance.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ func (s *GetClusterAddonInstanceResponseBody) Validate() error {
 }
 
 type GetClusterAddonInstanceResponseBodyLogging struct {
-	// Indicates whether the component supports the logging feature.
+	// Specifies whether the add-on supports the log feature. Valid values:
 	//
 	// - true: Supported.
 	//
@@ -131,23 +131,23 @@ type GetClusterAddonInstanceResponseBodyLogging struct {
 	//
 	// false
 	Capable *bool `json:"capable,omitempty" xml:"capable,omitempty"`
-	// Indicates whether the logging feature is enabled for the component.
+	// Specifies whether the log feature is enabled. Valid values:
 	//
 	// - true: Enabled.
 	//
-	// - false: Not enabled.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The log project used by the logging feature of the component.
+	// The Log Service project used by the add-on log feature.
 	//
 	// example:
 	//
 	// k8s-log-c02b3e03be10643e8a644a843ffcb****
 	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
-	// The Logstore used by the logging feature of the component.
+	// The Logstore used by the add-on log feature.
 	//
 	// example:
 	//

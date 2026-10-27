@@ -90,7 +90,7 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// ngw-wz9sphwk42sdtjixo****
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// The resource information. For source information about the resource, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
+	// The resource information. For more information about the source information of resources, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
 	//
 	// example:
 	//
@@ -102,21 +102,21 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// ALIYUN::VPC::NatGateway
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The resource status. Valid values:
+	// The resource state. Valid values:
 	//
-	// - `CREATE_COMPLETE`: The resource was created.
+	// - `CREATE_COMPLETE`: The resource is created.
 	//
-	// - `CREATE_FAILED`: The resource failed to be created.
+	// - `CREATE_FAILED`: The resource fails to be created.
 	//
 	// - `CREATE_IN_PROGRESS`: The resource is being created.
 	//
-	// - `DELETE_FAILED`: The resource failed to be deleted.
+	// - `DELETE_FAILED`: The resource fails to be deleted.
 	//
 	// - `DELETE_IN_PROGRESS`: The resource is being deleted.
 	//
-	// - `ROLLBACK_COMPLETE`: The rollback was successful.
+	// - `ROLLBACK_COMPLETE`: The rollback is successful.
 	//
-	// - `ROLLBACK_FAILED`: The rollback failed.
+	// - `ROLLBACK_FAILED`: The rollback fails.
 	//
 	// - `ROLLBACK_IN_PROGRESS`: The rollback is in progress.
 	//
@@ -124,11 +124,11 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// CREATE_COMPLETE
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// Indicates whether the resource was created by ACK.
+	// Specifies whether the resource is created by ACK. Valid values:
 	//
-	// - 1: The resource was created by ACK.
+	// - 1: The resource is created by ACK.
 	//
-	// - 0: The resource is a pre-existing resource.
+	// - 0: The resource is an existing resource.
 	//
 	// example:
 	//
@@ -140,13 +140,13 @@ type DescribeClusterResourcesResponseBody struct {
 	AssociatedObject *DescribeClusterResourcesResponseBodyAssociatedObject `json:"associated_object,omitempty" xml:"associated_object,omitempty" type:"Struct"`
 	// The deletion behavior of the resource when the cluster is deleted.
 	DeleteBehavior *DescribeClusterResourcesResponseBodyDeleteBehavior `json:"delete_behavior,omitempty" xml:"delete_behavior,omitempty" type:"Struct"`
-	// The type of the resource creator. Valid values:
+	// The type of the creator of the resource. Valid values:
 	//
-	// - user: Created by the user.
+	// - user: The resource is created by the user.
 	//
-	// - system: Created by the ACK control system.
+	// - system: The resource is created by the ACK control system.
 	//
-	// - addon: Created by a cluster component.
+	// - addon: The resource is created by a cluster component.
 	//
 	// example:
 	//
@@ -360,7 +360,7 @@ func (s *DescribeClusterResourcesResponseBodyDependencies) Validate() error {
 }
 
 type DescribeClusterResourcesResponseBodyAssociatedObject struct {
-	// The object type of the Kubernetes object.
+	// The Kubernetes object type.
 	//
 	// example:
 	//
@@ -420,7 +420,7 @@ func (s *DescribeClusterResourcesResponseBodyAssociatedObject) Validate() error 
 }
 
 type DescribeClusterResourcesResponseBodyDeleteBehavior struct {
-	// Indicates whether the resource is deleted by default when the cluster is deleted.
+	// Specifies whether the resource is deleted by default when the cluster is deleted. Valid values:
 	//
 	// - true: The resource is deleted by default.
 	//
@@ -430,11 +430,11 @@ type DescribeClusterResourcesResponseBodyDeleteBehavior struct {
 	//
 	// false
 	DeleteByDefault *bool `json:"delete_by_default,omitempty" xml:"delete_by_default,omitempty"`
-	// Indicates whether the default behavior of `delete_by_default` can be changed.
+	// Specifies whether the default behavior returned in `delete_by_default` can be changed. Valid values:
 	//
-	// - true: The behavior can be changed.
+	// - true: The default behavior can be changed.
 	//
-	// - false: The behavior cannot be changed.
+	// - false: The default behavior cannot be changed.
 	//
 	// example:
 	//

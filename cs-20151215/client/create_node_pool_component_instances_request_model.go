@@ -22,7 +22,7 @@ type CreateNodePoolComponentInstancesRequest struct {
 	//
 	// This parameter is required.
 	Components []*CreateNodePoolComponentInstancesRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	// The list of nodes for the rolling update. Default value: all nodes.
+	// The list of nodes specified for the rolling update. Default value: all nodes.
 	NodeNames []*string `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
 	// The rolling update configuration.
 	RollingPolicy *CreateNodePoolComponentInstancesRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
@@ -242,13 +242,13 @@ func (s *CreateNodePoolComponentInstancesRequestComponentsConfigEnvs) Validate()
 }
 
 type CreateNodePoolComponentInstancesRequestRollingPolicy struct {
-	// The interval between batches in seconds. Default value: 0.
+	// The upgrade interval between batches, in seconds. Default value: 0.
 	//
 	// example:
 	//
 	// 10
 	BatchInterval *int64 `json:"batch_interval,omitempty" xml:"batch_interval,omitempty"`
-	// The maximum number of nodes that can fail during the rolling update. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
+	// The maximum number of nodes allowed to fail during the rolling update. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
 	//
 	// example:
 	//
@@ -260,7 +260,7 @@ type CreateNodePoolComponentInstancesRequestRollingPolicy struct {
 	//
 	// 1
 	MaxParallelism *int64 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
-	// The auto-pause policy during the node upgrade. Valid values: NotPause, FirstBatch, and EveryBatch. Default value: NotPause.
+	// The auto-pause policy during the node upgrade process. Valid values: NotPause, FirstBatch, and EveryBatch. Default value: NotPause.
 	//
 	// example:
 	//

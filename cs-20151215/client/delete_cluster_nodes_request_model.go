@@ -18,11 +18,11 @@ type iDeleteClusterNodesRequest interface {
 }
 
 type DeleteClusterNodesRequest struct {
-	// Specifies whether to automatically drain Pods on the nodes. Valid values:
+	// Specifies whether to automatically drain the pods on the nodes. Valid values:
 	//
-	// - `true`: Automatically drains Pods on the nodes.
+	// - `true`: Automatically drains the pods on the nodes.
 	//
-	// - `false`: Does not automatically drain Pods on the nodes.
+	// - `false`: Does not automatically drain the pods on the nodes.
 	//
 	// Default value: `false`.
 	//
@@ -42,7 +42,7 @@ type DeleteClusterNodesRequest struct {
 	//
 	// Default value: `false`.
 	//
-	// > Releasing ECS instances at the same time is not supported when the nodes are subscription instances.
+	// > If the nodes are subscription instances, you cannot release the ECS instances at the same time.
 	//
 	// example:
 	//

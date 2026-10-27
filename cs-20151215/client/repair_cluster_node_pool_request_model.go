@@ -20,7 +20,7 @@ type iRepairClusterNodePoolRequest interface {
 type RepairClusterNodePoolRequest struct {
 	// Deprecated
 	//
-	// **[Deprecated]*	- Specifies whether to allow instance restart.
+	// **[Deprecated]*	- Specifies whether to restart the instance.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type RepairClusterNodePoolRequest struct {
 	AutoRestart *bool `json:"auto_restart,omitempty" xml:"auto_restart,omitempty"`
 	// The list of nodes.
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
-	// The repair operations to perform. If not specified, all repair operations are performed by default. In most scenarios, you do not need to specify this parameter.
+	// The repair operations to be performed. If you do not specify this parameter, all repair operations are performed by default. You do not need to specify this parameter in common scenarios.
 	Operations []*RepairClusterNodePoolRequestOperations `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
 }
 
@@ -93,13 +93,13 @@ type RepairClusterNodePoolRequestOperations struct {
 	//
 	// - restart.ntp: Restarts ntpd or chronyd.
 	//
-	// - remove.containerdContainerInSandbox: Removes a specified sandbox container under Containerd.
+	// - remove.containerdContainerInSandbox: Deletes the specified sandbox container in Containerd.
 	//
-	// - remove.dockerContainerInSandbox: Removes a specified sandbox container under Docker.
+	// - remove.dockerContainerInSandbox: Deletes the specified sandbox container in Docker.
 	//
-	// - remove.containerdContainer: Removes a specified container under Containerd.
+	// - remove.containerdContainer: Deletes the specified container in Containerd.
 	//
-	// - remove.dockerContainer: Removes a specified container under Docker.
+	// - remove.dockerContainer: Deletes the specified container in Docker.
 	//
 	// example:
 	//

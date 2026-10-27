@@ -59,7 +59,7 @@ type InstallClusterAddonsRequestBody struct {
 	//
 	// {\\"IngressDashboardEnabled\\":\\"true\\",\\"sls_project_name\\":\\"your_sls_project_name\\"}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The component name. You can call the [ListAddons](https://help.aliyun.com/document_detail/2667939.html) operation to query information about available components, including component names and versions.
+	// The name of the component. You can call the [ListAddons](https://help.aliyun.com/document_detail/2667939.html) operation to query the information about available components, including component names and versions.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +67,7 @@ type InstallClusterAddonsRequestBody struct {
 	//
 	// storage-operato
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The component version. You can call the [ListAddons](https://help.aliyun.com/document_detail/2667939.html) operation to query information about available components, including component names and versions.
+	// The version of the component. You can call the [ListAddons](https://help.aliyun.com/document_detail/2667939.html) operation to query the information about available components, including component names and versions.
 	//
 	// This parameter is required.
 	//

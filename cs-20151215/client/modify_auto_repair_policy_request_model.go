@@ -66,7 +66,7 @@ func (s *ModifyAutoRepairPolicyRequest) Validate() error {
 }
 
 type ModifyAutoRepairPolicyRequestRules struct {
-	// The list of identified faults.
+	// The list of identified incidents.
 	Incidents []*ModifyAutoRepairPolicyRequestRulesIncidents `json:"incidents,omitempty" xml:"incidents,omitempty" type:"Repeated"`
 	// The repair procedure.
 	RepairProcedure []*ModifyAutoRepairPolicyRequestRulesRepairProcedure `json:"repair_procedure,omitempty" xml:"repair_procedure,omitempty" type:"Repeated"`
@@ -121,7 +121,7 @@ func (s *ModifyAutoRepairPolicyRequestRules) Validate() error {
 }
 
 type ModifyAutoRepairPolicyRequestRulesIncidents struct {
-	// The name of the fault.
+	// The name of the incident.
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ func (s *ModifyAutoRepairPolicyRequestRulesRepairProcedure) Validate() error {
 }
 
 type ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention struct {
-	// The label configuration for authorization confirmation. When you add the following labels to the node, you authorize ACK to execute the operation for this stage. After completing the operation for this stage, ACK automatically removes the authorization inquiry and authorization confirmation labels corresponding to this stage. If you do not promptly add the following labels to grant authorization, ACK will not execute the action for this stage and subsequent actions, and the node may remain in a damaged state.
+	// The label configuration for authorization confirmation. When you add the following labels to the node, you authorize ACK to execute the operation for this stage. After completing the operation for this stage, ACK automatically removes the authorization inquiry and confirmation labels corresponding to this stage. If you do not add the following labels in time to grant authorization, ACK will not execute the action for this stage and subsequent actions, and the node may remain in a damaged state.
 	ApprovedLabel *ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel `json:"approved_label,omitempty" xml:"approved_label,omitempty" type:"Struct"`
 	// Specifies whether to enable manual approval.
 	//
@@ -300,7 +300,7 @@ func (s *ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention) Validate
 }
 
 type ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel struct {
-	// The key value of the label.
+	// The key of the label.
 	//
 	// example:
 	//
@@ -345,7 +345,7 @@ func (s *ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLa
 }
 
 type ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel struct {
-	// The key value of the label.
+	// The key of the label.
 	//
 	// example:
 	//

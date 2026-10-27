@@ -38,13 +38,13 @@ type DescribeTriggerRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - `deployment`: a trigger for a stateless application.
+	// - `deployment`: Triggers for stateless applications.
 	//
-	// - `application`: a trigger for an application in Open Applications.
+	// - `application`: Triggers for Application Center applications.
 	//
 	// Default value: `deployment`.
 	//
-	// If you do not specify a trigger type, the query results are not filtered by trigger type.
+	// If you do not specify the trigger type, the query results are not filtered by trigger type.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DescribeTriggerRequest struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The trigger action. Valid values:
 	//
-	// `redeploy`: redeploys the application.
+	// `redeploy`: Redeploys the application.
 	//
-	// If you do not specify a trigger action, the query results are not filtered by trigger action.
+	// If you do not specify the trigger action, the query results are not filtered by trigger action.
 	//
 	// example:
 	//

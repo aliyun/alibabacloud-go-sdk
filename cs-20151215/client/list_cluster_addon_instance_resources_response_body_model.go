@@ -166,7 +166,7 @@ type ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects struct {
 	//
 	// kube-system
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The Kubernetes API version to which the object belongs.
+	// The Kubernetes API version of the object.
 	//
 	// example:
 	//

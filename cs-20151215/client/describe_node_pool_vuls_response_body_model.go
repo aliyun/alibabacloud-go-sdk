@@ -16,9 +16,9 @@ type iDescribeNodePoolVulsResponseBody interface {
 }
 
 type DescribeNodePoolVulsResponseBody struct {
-	// The list of node pool vulnerabilities.
+	// The list of vulnerabilities in the node pool.
 	VulRecords []*DescribeNodePoolVulsResponseBodyVulRecords `json:"vul_records,omitempty" xml:"vul_records,omitempty" type:"Repeated"`
-	// Indicates whether the China Cloud Security CVE fix service has been purchased.
+	// Indicates whether the Security Center CVE fix service is purchased. Valid values:
 	//
 	// - true: Purchased.
 	//
@@ -76,7 +76,7 @@ type DescribeNodePoolVulsResponseBodyVulRecords struct {
 	//
 	// i-t4n2qolb0wtzt0pz****
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// The node name, which is the identifier of the node within the cluster.
+	// The name of the node, which identifies the node in the cluster.
 	//
 	// example:
 	//
@@ -135,21 +135,21 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecords) Validate() error {
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecordsVulList struct {
-	// The vulnerability alias.
+	// The alias of the vulnerability.
 	//
 	// example:
 	//
 	// RHSA-2019:3197-Important: sudo security update
 	AliasName *string `json:"alias_name,omitempty" xml:"alias_name,omitempty"`
-	// The list of CVEs associated with the vulnerability.
+	// The list of CVEs corresponding to the vulnerability.
 	CveList []*string `json:"cve_list,omitempty" xml:"cve_list,omitempty" type:"Repeated"`
-	// The vulnerability name.
+	// The name of the vulnerability.
 	//
 	// example:
 	//
 	// oval:com.redhat.rhsa:def:20193197
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The vulnerability severity level.
+	// The vulnerability level.
 	//
 	// example:
 	//
@@ -241,7 +241,7 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) Validate() error {
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList struct {
-	// The package name.
+	// The name of the package.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iDescribeExternalAgentRequest interface {
 type DescribeExternalAgentRequest struct {
 	// The agent permission mode. Valid values:
 	//
-	// - admin: Administrator mode. Grants all permissions.
+	// - admin: Administrator mode. The agent has all permissions.
 	//
-	// - restricted: Restricted mode. Grants only partial permissions.
+	// - restricted: Restricted mode. The agent has only partial permissions.
 	//
 	// Default value: admin.
 	//

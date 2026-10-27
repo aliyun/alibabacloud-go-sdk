@@ -32,13 +32,13 @@ type iDescribeAddonResponseBody interface {
 type DescribeAddonResponseBody struct {
 	// The CPU architectures supported by the component.
 	Architecture []*string `json:"architecture,omitempty" xml:"architecture,omitempty" type:"Repeated"`
-	// The component category.
+	// The category of the component.
 	//
 	// example:
 	//
 	// network
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The schema of custom parameters for the component.
+	// The custom parameter schema of the component.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeAddonResponseBody struct {
 	//
 	// true
 	InstallByDefault *bool `json:"install_by_default,omitempty" xml:"install_by_default,omitempty"`
-	// Indicates whether the component is managed.
+	// Indicates whether the component is a managed component.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeAddonResponseBody struct {
 	//
 	// coredns
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The information about newer versions of the component.
+	// The information about the latest versions of the component.
 	NewerVersions []*DescribeAddonResponseBodyNewerVersions `json:"newer_versions,omitempty" xml:"newer_versions,omitempty" type:"Repeated"`
 	// The operations supported by the component.
 	SupportedActions []*string `json:"supported_actions,omitempty" xml:"supported_actions,omitempty" type:"Repeated"`
@@ -183,11 +183,11 @@ type DescribeAddonResponseBodyNewerVersions struct {
 	//
 	// 1.20.4
 	MinimumClusterVersion *string `json:"minimum_cluster_version,omitempty" xml:"minimum_cluster_version,omitempty"`
-	// Indicates whether the component can be upgraded to this version.
+	// Indicates whether the component can be upgraded to this version. Valid values:
 	//
-	// - true: The upgrade is supported.
+	// - true: Supported.
 	//
-	// - false: The upgrade is not supported.
+	// - false: Not supported.
 	//
 	// example:
 	//

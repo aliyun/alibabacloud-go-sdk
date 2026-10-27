@@ -44,29 +44,29 @@ type iDescribeClusterNodePoolDetailResponseBody interface {
 }
 
 type DescribeClusterNodePoolDetailResponseBody struct {
-	// The intelligent management configuration.
+	// The auto mode configuration.
 	AutoMode *DescribeClusterNodePoolDetailResponseBodyAutoMode `json:"auto_mode,omitempty" xml:"auto_mode,omitempty" type:"Struct"`
-	// The auto scaling configurations of the node pool.
+	// The auto scaling configuration of the node pool.
 	AutoScaling *DescribeClusterNodePoolDetailResponseBodyAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
 	// The Lingjun node group information.
 	EfloNodeGroup *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup `json:"eflo_node_group,omitempty" xml:"eflo_node_group,omitempty" type:"Struct"`
-	// Specifies whether the pod network uses the host network mode. Valid values:
+	// Specifies whether pods in the node pool use the host network mode. Valid values:
 	//
-	// - true: Host network. Pods directly use the network stack of the host and share the IP address and ports with the host.
+	// - `true`: host network. Pods directly use the network stack of the host and share the IP address and ports with the host.
 	//
-	// - false: Container network. Pods have independent network stacks and do not occupy host network ports.
+	// - `false`: container network. Pods have independent network stacks and do not occupy host network ports.
 	//
 	// example:
 	//
 	// true
 	HostNetwork *bool `json:"host_network,omitempty" xml:"host_network,omitempty"`
-	// **[Deprecated]*	- The network configuration for edge node pools. This value is valid only for node pools of the edge type.
+	// **[Deprecated]*	- The network configuration related to the edge node pool. This parameter is valid only for node pools whose type is edge.
 	InterconnectConfig *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig `json:"interconnect_config,omitempty" xml:"interconnect_config,omitempty" type:"Struct"`
-	// The network type of the edge node pool. This parameter takes effect only when type is set to edge. Valid values:
+	// The network type of the edge node pool. This parameter takes effect only when `type` is set to `edge`. Valid values:
 	//
-	// - basic: Public network. Nodes in cloud node pool interact with cloud nodes over the public network. Applications in cloud node pool cannot directly access the internal network of the cloud VPC.
+	// - `basic`: Internet. Nodes in cloud node pool interact with cloud nodes over the Internet. Applications in cloud node pool cannot directly access the internal network of the cloud VPC.
 	//
-	// - private: Private network. Nodes in cloud node pool connect on-premises and cloud networks through Express Connect circuits, VPNs, or CEN. This provides higher cloud-edge communication quality and more effective security protection.
+	// - `private`: private network. Nodes in cloud node pool connect the cloud and on-premises networks through Express Connect circuits, VPNs, or CEN. This provides higher cloud-edge communication quality and more effective security protection.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type DescribeClusterNodePoolDetailResponseBody struct {
 	InterconnectMode *string `json:"interconnect_mode,omitempty" xml:"interconnect_mode,omitempty"`
 	// Specifies whether Layer 3 network connectivity is enabled among nodes in the edge node pool. Valid values:
 	//
-	// - true: Connected. Layer 3 network connectivity is enabled among all nodes in the node pool.
+	// - `true`: enabled. Layer 3 network connectivity is enabled among all nodes in the node pool.
 	//
-	// - false: Disconnected. Layer 3 network connectivity is disabled among all hosts in the node pool.
+	// - `false`: disabled. Layer 3 network connectivity is disabled among all hosts in the node pool.
 	//
 	// example:
 	//
 	// true
 	Intranet *bool `json:"intranet,omitempty" xml:"intranet,omitempty"`
-	// The cluster-related configuration.
+	// The cluster-related configurations.
 	KubernetesConfig *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
-	// The configurations of the managed node pool.
+	// The managed node pool configuration.
 	Management *DescribeClusterNodePoolDetailResponseBodyManagement `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
-	// **[Deprecated]*	- The maximum number of nodes allowed in the edge node pool.
+	// **[Deprecated]*	- The maximum number of nodes that an edge node pool can accommodate.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type DescribeClusterNodePoolDetailResponseBody struct {
 	NodeComponents []*DescribeClusterNodePoolDetailResponseBodyNodeComponents `json:"node_components,omitempty" xml:"node_components,omitempty" type:"Repeated"`
 	// The node configuration.
 	NodeConfig *DescribeClusterNodePoolDetailResponseBodyNodeConfig `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
-	// The node pool configurations.
+	// The node pool configuration.
 	NodepoolInfo *DescribeClusterNodePoolDetailResponseBodyNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
-	// The scaling group configuration of the node pool.
+	// The scaling group configurations of the node pool.
 	ScalingGroup *DescribeClusterNodePoolDetailResponseBodyScalingGroup `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
 	// The status of the node pool.
 	Status *DescribeClusterNodePoolDetailResponseBodyStatus `json:"status,omitempty" xml:"status,omitempty" type:"Struct"`
-	// The confidential computing cluster configuration.
+	// The TEE cluster configuration.
 	TeeConfig *DescribeClusterNodePoolDetailResponseBodyTeeConfig `json:"tee_config,omitempty" xml:"tee_config,omitempty" type:"Struct"`
 }
 
@@ -327,7 +327,7 @@ func (s *DescribeClusterNodePoolDetailResponseBody) Validate() error {
 }
 
 type DescribeClusterNodePoolDetailResponseBodyAutoMode struct {
-	// Specifies whether intelligent management is enabled.
+	// Specifies whether auto mode is enabled.
 	//
 	// example:
 	//
@@ -357,39 +357,39 @@ func (s *DescribeClusterNodePoolDetailResponseBodyAutoMode) Validate() error {
 }
 
 type DescribeClusterNodePoolDetailResponseBodyAutoScaling struct {
-	// The peak bandwidth of the EIP. Valid values: 1 to 100. Unit: Mbit/s.
+	// The peak bandwidth of the elastic IP address (EIP). Valid values: 1 to 100. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 5
 	EipBandwidth *int64 `json:"eip_bandwidth,omitempty" xml:"eip_bandwidth,omitempty"`
-	// The billing method of the elastic IP address (EIP). Valid values:
+	// The billing method of the EIP. Valid values:
 	//
-	// - `PayByBandwidth`: pay-by-bandwidth.
+	// - `PayByBandwidth`: pay-by-bandwidth
 	//
-	// - `PayByTraffic`: pay-by-data-transfer.
+	// - `PayByTraffic`: pay-by-data-transfer
 	//
 	// example:
 	//
 	// PayByBandwidth
 	EipInternetChargeType *string `json:"eip_internet_charge_type,omitempty" xml:"eip_internet_charge_type,omitempty"`
-	// Indicates whether auto scaling is enabled. Valid values:
+	// Specifies whether auto scaling is enabled. Valid values:
 	//
-	// - `true`: Auto scaling is enabled for the node pool. When the capacity planning of the cluster cannot meet the scheduling requirements of application pods, ACK automatically scales node resources based on the configured minimum and maximum numbers of instances. For clusters of Kubernetes 1.24 and later, just-in-time elasticity is enabled by default. For clusters earlier than Kubernetes 1.24, auto scaling is enabled by default. For more information, see [Node scaling](https://help.aliyun.com/document_detail/2746785.html).
+	// - `true`: enables auto scaling for the node pool. When the capacity planning of the cluster cannot meet the scheduling requirements of application pods, ACK automatically scales the node resources based on the configured minimum and maximum numbers of instances. For clusters of Kubernetes 1.24 and later, node instant elasticity is enabled by default. For clusters earlier than Kubernetes 1.24, node auto scaling is enabled by default. For more information, see [Node scaling](https://help.aliyun.com/document_detail/2746785.html).
 	//
-	// - `false`: Auto scaling is disabled. ACK adjusts the number of nodes in the node pool based on the configured expected number of nodes to keep the number of nodes at the expected value.
+	// - `false`: disables auto scaling. ACK adjusts the number of nodes in the node pool based on the configured expected number of nodes and always maintains the number of nodes at the expected value.
 	//
-	// If this parameter is set to `false`, other configuration parameters in auto_scaling do not take effect.
+	// If this parameter is set to false, other configuration parameters in `auto_scaling` do not take effect.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// Indicates whether an EIP is bound. Valid values:
+	// Specifies whether to associate an EIP. Valid values:
 	//
-	// - `true`: An EIP is bound.
+	// - `true`: associates an EIP.
 	//
-	// - `false`: No EIP is bound.
+	// - `false`: does not associate an EIP.
 	//
 	// example:
 	//
@@ -409,13 +409,13 @@ type DescribeClusterNodePoolDetailResponseBodyAutoScaling struct {
 	MinInstances *int64 `json:"min_instances,omitempty" xml:"min_instances,omitempty"`
 	// The auto scaling type, which is classified by the type of auto scaling instances. Valid values:
 	//
-	// - `cpu`: standard instance.
+	// - `cpu`: regular instance
 	//
-	// - `gpu`: GPU-accelerated instance.
+	// - `gpu`: GPU-accelerated instance
 	//
-	// - `gpushare`: shared GPU-accelerated instance.
+	// - `gpushare`: shared GPU-accelerated instance
 	//
-	// - `spot`: spot instance.
+	// - `spot`: spot instance
 	//
 	// example:
 	//
@@ -499,7 +499,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyAutoScaling) Validate() error 
 }
 
 type DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup struct {
-	// Specifies whether automatic attachment to the Lingjun node pool is enabled.
+	// Specifies whether to enable automatic addition to the Lingjun node pool.
 	AutoAttachEnabled *bool `json:"auto_attach_enabled,omitempty" xml:"auto_attach_enabled,omitempty"`
 	// The ID of the Lingjun cluster.
 	//
@@ -513,7 +513,7 @@ type DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup struct {
 	//
 	// i128147721760688002463
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
-	// The worker RAM role used by the Lingjun node pool.
+	// The name of the worker RAM role used by the Lingjun node pool.
 	WorkerRamRoleName *string `json:"worker_ram_role_name,omitempty" xml:"worker_ram_role_name,omitempty"`
 }
 
@@ -566,31 +566,31 @@ func (s *DescribeClusterNodePoolDetailResponseBodyEfloNodeGroup) Validate() erro
 }
 
 type DescribeClusterNodePoolDetailResponseBodyInterconnectConfig struct {
-	// **[Deprecated]*	- The network bandwidth of the edge-optimized node pool. Unit: Mbit/s.
+	// **[Deprecated]*	- The network bandwidth of the edge-enhanced node pool. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 10
 	Bandwidth *int64 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
-	// **[Deprecated]*	- The instance ID of the Cloud Connect Network (CCN) attached to the edge-optimized node pool.
+	// **[Deprecated]*	- The instance ID of the Cloud Connect Network (CCN) attached to the edge-enhanced node pool.
 	//
 	// example:
 	//
 	// ccn-qm5i0i0q9yi*******
 	CcnId *string `json:"ccn_id,omitempty" xml:"ccn_id,omitempty"`
-	// **[Deprecated]*	- The region of the CCN instance bound to the edge-optimized node pool.
+	// **[Deprecated]*	- The region of the CCN instance associated with the edge-enhanced node pool.
 	//
 	// example:
 	//
 	// cn-shanghai
 	CcnRegionId *string `json:"ccn_region_id,omitempty" xml:"ccn_region_id,omitempty"`
-	// **[Deprecated]*	- The instance ID of the Cloud Enterprise Network (CEN) attached to the edge-optimized node pool.
+	// **[Deprecated]*	- The instance ID of the Cloud Enterprise Network (CEN) attached to the edge-enhanced node pool.
 	//
 	// example:
 	//
 	// cen-ey9k9nfhz0f*******
 	CenId *string `json:"cen_id,omitempty" xml:"cen_id,omitempty"`
-	// **[Deprecated]*	- The subscription duration of the edge-optimized node pool. Unit: months.
+	// **[Deprecated]*	- The subscription duration of the edge-enhanced node pool. Unit: months.
 	//
 	// example:
 	//
@@ -656,11 +656,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig) Validate()
 }
 
 type DescribeClusterNodePoolDetailResponseBodyKubernetesConfig struct {
-	// Specifies whether to install the CloudMonitor agent on ECS nodes. After installation, you can view the monitoring information of the created ECS instances in the CloudMonitor console. Recommended. Valid values:
+	// Specifies whether to install the CloudMonitor agent on ECS nodes. After the agent is installed, you can view the monitoring information of the created ECS instances in the CloudMonitor console. Valid values:
 	//
-	// - true: Install the CloudMonitor agent on ECS nodes.
+	// - `true`: installs the CloudMonitor agent on ECS nodes.
 	//
-	// - false: Do not install the CloudMonitor agent on ECS nodes.
+	// - `false`: does not install the CloudMonitor agent on ECS nodes.
 	//
 	// example:
 	//
@@ -668,23 +668,27 @@ type DescribeClusterNodePoolDetailResponseBodyKubernetesConfig struct {
 	CmsEnabled *bool `json:"cms_enabled,omitempty" xml:"cms_enabled,omitempty"`
 	// The CPU management policy for nodes. The following two policies are supported when the cluster version is 1.12.6 or later:
 	//
-	// - static: Allows pods with specific resource characteristics on the node to have enhanced CPU affinity and exclusivity.
+	// - `static`: allows you to enhance the CPU affinity and exclusivity for pods with specific resource characteristics on the node.
 	//
-	// - none: Indicates that the existing default CPU affinity scheme is used.
+	// - `none`: indicates that the existing default CPU affinity scheme is used.
 	//
 	// example:
 	//
 	// none
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	// The tag of the node.
+	// The node labels.
 	Labels []*Tag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	// The custom node name.
 	//
-	// A node name consists of three parts: prefix + node IP address substring + suffix.
+	// A node name consists of three parts: prefix + node IP address substring + suffix:
+	//
+	//
 	//
 	// - The prefix and suffix can each consist of one or more parts separated by periods (.). Each part can contain lowercase letters, digits, and hyphens (-). The node name must start and end with a lowercase letter or a digit.
 	//
 	// - The IP address substring length refers to the number of digits truncated from the end of the node IP address. Valid values: 5 to 12.
+	//
+	//
 	//
 	// For example, if the node IP address is 192.168.0.55, the specified prefix is aliyun.com, the IP address substring length is 5, and the suffix is test, the node name is aliyun.com00055test.
 	//
@@ -692,7 +696,7 @@ type DescribeClusterNodePoolDetailResponseBodyKubernetesConfig struct {
 	//
 	// aliyun.com192.XX.YY.55test
 	NodeNameMode *string `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
-	// The pre-custom data for the node pool, which refers to the scripts that run before node initialization. For more information, see [Generate instance user data](https://help.aliyun.com/document_detail/49121.html).
+	// The pre-custom data of the node pool, which is the script that runs before node initialization. For more information, see [Generate instance user data](https://help.aliyun.com/document_detail/49121.html).
 	//
 	// example:
 	//
@@ -700,11 +704,11 @@ type DescribeClusterNodePoolDetailResponseBodyKubernetesConfig struct {
 	PreUserData *string `json:"pre_user_data,omitempty" xml:"pre_user_data,omitempty"`
 	// The name of the container runtime. ACK supports the following three container runtimes:
 	//
-	// - containerd: Recommended. Supported by all cluster versions.
+	// - containerd: recommended. Supported by all cluster versions.
 	//
-	// - Sandboxed-Container.runv: Sandboxed container. Provides higher isolation. Supported by clusters of version 1.31 and earlier.
+	// - Sandboxed-Container.runv: sandboxed container. Provides higher isolation. Supported by clusters of version 1.31 and earlier.
 	//
-	// - docker: Deprecated. Supported by clusters of version 1.22 and earlier.
+	// - docker: no longer maintained. Supported by clusters of version 1.22 and earlier.
 	//
 	// example:
 	//
@@ -716,19 +720,19 @@ type DescribeClusterNodePoolDetailResponseBodyKubernetesConfig struct {
 	//
 	// 1.6.38
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
-	// The node taint information. Taints and tolerations work together to prevent pods from being scheduled onto inappropriate nodes. For more information, see [Taints and Tolerations](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	// The node taint information. Taints and tolerations work together to prevent pods from being scheduled onto inappropriate nodes. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// Specifies whether the scaled-out nodes are unschedulable. Valid values:
+	// Specifies whether nodes are unschedulable after a scale-out. Valid values:
 	//
-	// - true: Unschedulable.
+	// - true: The nodes are unschedulable.
 	//
-	// - false: Schedulable.
+	// - false: The nodes are schedulable.
 	//
 	// example:
 	//
 	// true
 	Unschedulable *bool `json:"unschedulable,omitempty" xml:"unschedulable,omitempty"`
-	// The custom data for the node pool, which refers to the scripts that run after node initialization. For more information, see [Generate instance user data](https://help.aliyun.com/document_detail/49121.html).
+	// The custom data of the node pool, which is the script that runs after node initialization. For more information, see [Generate instance user data](https://help.aliyun.com/document_detail/49121.html).
 	//
 	// example:
 	//
@@ -857,57 +861,57 @@ func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) Validate() e
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagement struct {
-	// Specifies whether to enable ECS fault detection for node auto-repair.
+	// Specifies whether to enable ECS fault detection for node self-healing.
 	AutoFaultDiagnosis *bool `json:"auto_fault_diagnosis,omitempty" xml:"auto_fault_diagnosis,omitempty"`
-	// Indicates whether auto repair is enabled. This parameter takes effect only when enable is set to `true`. Valid values:
+	// The auto repair feature. This feature takes effect only when `enable` is set to `true`. Valid values:
 	//
-	// - `true`: Auto repair is enabled.
+	// - `true`: enables auto repair.
 	//
-	// - `false`: Auto repair is disabled.
+	// - `false`: disables auto repair.
 	//
 	// example:
 	//
 	// true
 	AutoRepair *bool `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
-	// The auto repair policy for nodes.
+	// The auto-repair policy for nodes.
 	AutoRepairPolicy *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy `json:"auto_repair_policy,omitempty" xml:"auto_repair_policy,omitempty" type:"Struct"`
-	// Specifies whether to automatically upgrade nodes. This parameter takes effect only when `enable` is set to `true`. Valid values:
+	// Specifies whether to automatically upgrade nodes. This parameter takes effect only when enable is set to true. Valid values:
 	//
-	// - `true`: Enables auto-upgrade.
+	// - true: Auto-upgrade is enabled.
 	//
-	// - `false`: Disables auto-upgrade.
+	// - false: Auto-upgrade is disabled.
 	//
 	// example:
 	//
 	// true
 	AutoUpgrade *bool `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
-	// The policy for automatic upgrades.
+	// The auto-upgrade policy.
 	AutoUpgradePolicy *DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy `json:"auto_upgrade_policy,omitempty" xml:"auto_upgrade_policy,omitempty" type:"Struct"`
-	// Specifies whether to automatically repair CVEs. This parameter takes effect only when `enable` is set to `true`. Valid values:
+	// Specifies whether to automatically fix CVEs. This parameter takes effect only when enable is set to true. Valid values:
 	//
-	// - `true`: Automatically repairs CVEs.
+	// - true: Automatic CVE fixes are allowed.
 	//
-	// - `false`: Does not automatically repair CVEs.
+	// - false: Automatic CVE fixes are not allowed.
 	//
 	// example:
 	//
 	// true
 	AutoVulFix *bool `json:"auto_vul_fix,omitempty" xml:"auto_vul_fix,omitempty"`
-	// The policy for automatically repairing CVEs.
+	// The automatic CVE fix policy.
 	AutoVulFixPolicy *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy `json:"auto_vul_fix_policy,omitempty" xml:"auto_vul_fix_policy,omitempty" type:"Struct"`
-	// Specifies whether to enable node rotation. This feature is supported only by intelligent managed node pools and is enabled by default. It is not supported by regular node pools.
+	// Specifies whether to enable the node rotation capability. This feature is supported only by intelligent managed node pools and is enabled by default. Common node pools do not support this feature.
 	DriftEnabled *bool `json:"drift_enabled,omitempty" xml:"drift_enabled,omitempty"`
-	// Indicates whether the managed node pool is enabled. Valid values:
+	// Specifies whether to enable the managed node pool. Valid values:
 	//
-	// - `true`: The managed node pool is enabled.
+	// - true: The managed node pool is enabled.
 	//
-	// - `false`: The managed node pool is disabled. Other related configurations take effect only when enable is set to `true`.
+	// - false: The managed node pool is disabled. Other related configurations take effect only when enable is set to true.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The configuration for automatic upgrades. This parameter takes effect only when `enable` is set to `true`.
+	// The auto-upgrade configuration. This parameter takes effect only when enable is set to true.
 	UpgradeConfig *DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig `json:"upgrade_config,omitempty" xml:"upgrade_config,omitempty" type:"Struct"`
 }
 
@@ -1034,7 +1038,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagement) Validate() error {
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy struct {
-	// Indicates whether manual approval is required for node repair.
+	// Specifies whether manual approval is required for node repair.
 	//
 	// example:
 	//
@@ -1052,17 +1056,17 @@ type DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy struct 
 	//
 	// 1
 	MaxParallelRepairingNodes *string `json:"max_parallel_repairing_nodes,omitempty" xml:"max_parallel_repairing_nodes,omitempty"`
-	// The circuit breaker threshold for auto-repair. When the number or percentage of faulty nodes exceeds this threshold, auto-repair enters the circuit breaker state and stops initiating new repair actions.
+	// The circuit breaker threshold for auto-repair. When the number or percentage of failed nodes exceeds this threshold, the auto-repair process enters the circuit breaker state and stops initiating new repair actions.
 	//
 	// example:
 	//
 	// 10%
 	MaxUnhealthyNodesThreshold *string `json:"max_unhealthy_nodes_threshold,omitempty" xml:"max_unhealthy_nodes_threshold,omitempty"`
-	// Indicates whether nodes can be restarted. This parameter takes effect only when auto_repair is set to `true`. Valid values:
+	// Specifies whether to allow node restarts. This parameter takes effect only when auto_repair is set to true. Valid values:
 	//
-	// - `true`: Nodes can be restarted.
+	// - true: Node restarts are allowed.
 	//
-	// - `false`: Nodes cannot be restarted.
+	// - false: Node restarts are not allowed.
 	//
 	// example:
 	//
@@ -1128,11 +1132,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy) Va
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy struct {
-	// Specifies whether to allow automatic kubelet upgrades. This parameter takes effect only when `auto_upgrade` is set to `true`. Valid values:
+	// Specifies whether to allow automatic kubelet upgrades. This parameter takes effect only when auto_upgrade is set to true. Valid values:
 	//
-	// - `true`: Allows automatic kubelet upgrades.
+	// - true: Automatic kubelet upgrades are allowed.
 	//
-	// - `false`: Does not allow automatic kubelet upgrades.
+	// - false: Automatic kubelet upgrades are not allowed.
 	//
 	// example:
 	//
@@ -1162,29 +1166,29 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy) V
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy struct {
-	// The packages to be excluded during vulnerability repair.
+	// The packages to be excluded during vulnerability fixes.
 	//
 	// example:
 	//
 	// kernel
 	ExcludePackages *string `json:"exclude_packages,omitempty" xml:"exclude_packages,omitempty"`
-	// Specifies whether to allow node restarts. This parameter takes effect only when `auto_vul_fix` is set to `true`. Valid values:
+	// Specifies whether to allow node restarts. This parameter takes effect only when auto_vul_fix is set to true. Valid values:
 	//
-	// - `true`: Allows node restarts.
+	// - true: Node restarts are allowed.
 	//
-	// - `false`: Does not allow node restarts.
+	// - false: Node restarts are not allowed.
 	//
 	// example:
 	//
 	// true
 	RestartNode *bool `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
-	// The vulnerability levels that are allowed for auto-repair, separated by commas. Valid values:
+	// The vulnerability levels that are allowed for automatic fixes, separated by commas. Valid values:
 	//
-	// - `asap`: High.
+	// - asap: high
 	//
-	// - `later`: Medium.
+	// - later: medium
 	//
-	// - `nntf`: Low.
+	// - nntf: low
 	//
 	// example:
 	//
@@ -1232,11 +1236,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy) Va
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig struct {
-	// Specifies whether to enable automatic upgrades. Valid values:
+	// Specifies whether to enable auto-upgrade. Valid values:
 	//
-	// - `true`: Enables automatic upgrades.
+	// - true: Auto-upgrade is enabled.
 	//
-	// - `false`: Disables automatic upgrades.
+	// - false: Auto-upgrade is disabled.
 	//
 	// example:
 	//
@@ -1250,13 +1254,13 @@ type DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig struct {
 	//
 	// 1
 	MaxUnavailable *int64 `json:"max_unavailable,omitempty" xml:"max_unavailable,omitempty"`
-	// The number of surge nodes. This parameter and `surge_percentage` are mutually exclusive.
+	// The number of surge nodes. This parameter and surge_percentage are mutually exclusive.
 	//
 	// example:
 	//
 	// 5
 	Surge *int64 `json:"surge,omitempty" xml:"surge,omitempty"`
-	// The percentage of surge nodes. This parameter and `surge` are mutually exclusive.
+	// The percentage of surge nodes. This parameter and surge are mutually exclusive.
 	//
 	// The number of surge nodes is calculated by multiplying the surge node percentage by the total number of nodes. For example, if the surge node percentage is set to 50% and the total number of nodes is 6, the number of surge nodes generated is 50% × 6 = 3.
 	//
@@ -1486,7 +1490,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfigEnvs) Vali
 }
 
 type DescribeClusterNodePoolDetailResponseBodyNodeConfig struct {
-	// The Kubelet parameter settings.
+	// The kubelet parameter settings.
 	KubeletConfiguration *KubeletConfig `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
 	// The node operating system configuration.
 	NodeOsConfig *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig `json:"node_os_config,omitempty" xml:"node_os_config,omitempty" type:"Struct"`
@@ -1533,8 +1537,10 @@ func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfig) Validate() error {
 }
 
 type DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig struct {
-	// The Hugepage configuration.
+	// The huge page configuration.
 	Hugepage *Hugepage `json:"hugepage,omitempty" xml:"hugepage,omitempty"`
+	// The sysctl kernel parameter settings.
+	Sysctl map[string]interface{} `json:"sysctl,omitempty" xml:"sysctl,omitempty"`
 }
 
 func (s DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) String() string {
@@ -1549,8 +1555,17 @@ func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) GetHug
 	return s.Hugepage
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) GetSysctl() map[string]interface{} {
+	return s.Sysctl
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) SetHugepage(v *Hugepage) *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig {
 	s.Hugepage = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) SetSysctl(v map[string]interface{}) *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig {
+	s.Sysctl = v
 	return s
 }
 
@@ -1570,11 +1585,11 @@ type DescribeClusterNodePoolDetailResponseBodyNodepoolInfo struct {
 	//
 	// 2025-04-10T14:25:37.285530433+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// Indicates whether the node pool is the default node pool. Typically, a cluster has only one default node pool. Valid values:
+	// Specifies whether the node pool is the default node pool. Typically, a cluster has only one default node pool. Valid values:
 	//
-	// - `true`: The node pool is the default node pool.
+	// - true: The node pool is the default node pool.
 	//
-	// - `false`: The node pool is not the default node pool.
+	// - false: The node pool is not the default node pool.
 	//
 	// example:
 	//
@@ -1598,15 +1613,15 @@ type DescribeClusterNodePoolDetailResponseBodyNodepoolInfo struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmyvw3wjmb****
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
-	// The type of the node pool. Valid values:
+	// The node pool type. Valid values:
 	//
-	// - `ess`: standard node pool, which includes managed and automatic elastic scaling features.
+	// - `ess`: standard node pool (includes managed and automatic scaling features).
 	//
 	// - `edge`: edge node pool.
 	//
@@ -1709,17 +1724,17 @@ func (s *DescribeClusterNodePoolDetailResponseBodyNodepoolInfo) Validate() error
 }
 
 type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
-	// Specifies whether to enable auto-renewal for nodes. This parameter takes effect only when `instance_charge_type` is set to `PrePaid`. Valid values:
+	// Specifies whether auto-renewal is enabled for nodes. This parameter takes effect only when `instance_charge_type` is set to `PrePaid`. Valid values:
 	//
-	// - `true`: Enables auto-renewal.
+	// - `true`: enables auto-renewal.
 	//
-	// - `false`: Disables auto-renewal.
+	// - `false`: disables auto-renewal.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	// The auto-renewal period. Valid values:
+	// The auto-renewal duration for a single renewal. Valid values:
 	//
 	// - When PeriodUnit is set to Week: 1, 2, and 3.
 	//
@@ -1737,21 +1752,21 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// false
 	CisEnabled *bool `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
-	// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if sufficient spot instances cannot be created due to price or inventory reasons when multi_az_policy is set to COST_OPTIMIZED. Valid values:
+	// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances when `multi_az_policy` is set to `COST_OPTIMIZED` and sufficient spot instances cannot be created due to price or inventory reasons. Valid values:
 	//
-	// - true: Allow automatic creation of pay-as-you-go instances to meet the required number of ECS instances.
+	// - `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances.
 	//
-	// - false: Do not allow automatic creation of pay-as-you-go instances to meet the required number of ECS instances.
+	// - `false`: does not automatically create pay-as-you-go instances.
 	//
 	// example:
 	//
 	// true
 	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
-	// The CPU-related configuration options.
+	// The CPU options.
 	CpuOptions *DescribeClusterNodePoolDetailResponseBodyScalingGroupCpuOptions `json:"cpu_options,omitempty" xml:"cpu_options,omitempty" type:"Struct"`
-	// The combination of configurations such as the type and size of the data cloud disks for the node.
+	// The combination of configurations such as the type and size of data cloud disks for nodes.
 	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
-	// The ID of the deployment set.
+	// The deployment set ID.
 	//
 	// example:
 	//
@@ -1763,31 +1778,31 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// 2
 	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
-	// The block device initialization configuration.
+	// The block device initialization configurations.
 	DiskInit []*DiskInit `json:"disk_init,omitempty" xml:"disk_init,omitempty" type:"Repeated"`
-	// Specifies whether to enable high-density cloud disk mode. This feature is supported only when the node pool uses instance types. After this feature is enabled, the total number of system cloud disks and data cloud disks does not exceed the maximum number of high-density cloud disks supported by the instance type.
+	// Specifies whether to enable the high-density cloud disk mode. This mode is supported only when the node pool uses instance types. After this mode is enabled, the total number of system cloud disks and data cloud disks does not exceed the maximum number of high-density cloud disks supported by the instance type.
 	//
 	// example:
 	//
 	// false
 	EnableHighDensityMode *bool `json:"enable_high_density_mode,omitempty" xml:"enable_high_density_mode,omitempty"`
-	// The ID of the custom image.
+	// The custom image ID.
 	//
 	// example:
 	//
 	// aliyun_3_x64_20G_alibase_20241218.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// The type of the operating system image. Valid values:
+	// The operating system image type. We recommend that you use this field to specify the node operating system. Valid values:
 	//
-	// - `AliyunLinux`: Alinux 2 image.
+	// - `AliyunLinux`: Alinux2 image.
 	//
-	// - `AliyunLinuxSecurity`: Alinux 2 UEFI image.
+	// - `AliyunLinuxSecurity`: Alinux2 UEFI image.
 	//
-	// - `AliyunLinux3`: Alinux 3 image.
+	// - `AliyunLinux3`: Alinux3 image.
 	//
-	// - `AliyunLinux3Arm64`: Alinux 3 ARM image.
+	// - `AliyunLinux3Arm64`: Alinux3 ARM image.
 	//
-	// - `AliyunLinux3Security`: Alinux 3 UEFI image.
+	// - `AliyunLinux3Security`: Alinux3 UEFI image.
 	//
 	// - `CentOS`: CentOS image.
 	//
@@ -1795,9 +1810,9 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// - `WindowsCore`: Windows Core image.
 	//
-	// - `ContainerOS`: Container-optimized image.
+	// - `ContainerOS`: container-optimized image.
 	//
-	// - `AliyunLinux3ContainerOptimized`: Alinux 3 container-optimized image.
+	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	//
 	// example:
 	//
@@ -1805,55 +1820,55 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	// The billing method of nodes in the node pool. Valid values:
 	//
-	// - `PrePaid`: Subscription.
+	// - `PrePaid`: subscription.
 	//
-	// - `PostPaid`: Pay-as-you-go.
+	// - `PostPaid`: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	// The metadata access configurations of the ECS instance.
+	// The metadata access configurations for ECS instances.
 	InstanceMetadataOptions *InstanceMetadataOptions `json:"instance_metadata_options,omitempty" xml:"instance_metadata_options,omitempty"`
 	// The instance property configurations.
 	InstancePatterns []*InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty" type:"Repeated"`
 	// The list of instance types for nodes.
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	// The billing method for the public IP address of the node. Valid values:
+	// The billing method for public IP addresses of nodes. Valid values:
 	//
-	// - PayByBandwidth: Pay-by-bandwidth.
+	// - PayByBandwidth: pay-by-bandwidth.
 	//
-	// - PayByTraffic: Pay-by-traffic.
+	// - PayByTraffic: pay-by-traffic.
 	//
 	// example:
 	//
 	// PayByBandwidth
 	InternetChargeType *string `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
-	// The maximum outbound bandwidth for the public IP address of the node. Unit: Mbit/s. Valid values: 1 to 100.
+	// The maximum outbound bandwidth for public IP addresses of nodes. Unit: Mbit/s. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	InternetMaxBandwidthOut *int64 `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
-	// The name of the key pair. You must specify either this parameter or login_password. If the node pool is a managed node pool, only key_pair is supported.
+	// The key pair name. You must specify either this parameter or `login_password`. If the node pool is a managed node pool, only `key_pair` is supported.
 	//
 	// example:
 	//
 	// pro-nodepool
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// Specifies whether to log on to the created ECS instance as a non-root user. Valid values:
+	// Specifies whether to log on to the created ECS instances as a non-root user. Valid values:
 	//
-	// - true: Log on as a non-root user (ecs-user).
+	// - true: logs on as a non-root user (ecs-user).
 	//
-	// - false: Log on as the root user.
+	// - false: logs on as the root user.
 	//
 	// example:
 	//
 	// true
 	LoginAsNonRoot *bool `json:"login_as_non_root,omitempty" xml:"login_as_non_root,omitempty"`
-	// The SSH logon password. You must specify either this parameter or key_pair. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// The SSH logon password. You must specify either this parameter or `key_pair`. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// For security reasons, the password in the query result is encrypted.
+	// For security reasons, the password is encrypted in the query result.
 	//
 	// example:
 	//
@@ -1861,47 +1876,47 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
 	// The scaling policy for ECS instances in a multi-zone scaling group. Valid values:
 	//
-	// - PRIORITY: Scale based on the vSwitches (VSwitchIds.N) that you specify. If ECS instances cannot be created in the zone of the vSwitch with the highest priority, the system automatically uses the vSwitch with the next highest priority to create ECS instances.
+	// - `PRIORITY`: scales ECS instances based on the vSwitches (VSwitchIds.N) that you specify. If ECS instances cannot be created in the zone of the vSwitch with the highest priority, the system automatically uses the vSwitch with the next highest priority to create ECS instances.
 	//
-	// - COST_OPTIMIZED: Create instances based on the vCPU unit price in ascending order. If the scaling configuration specifies multiple instance types that use the spot billing method, the system preferentially creates spot instances. You can use the CompensateWithOnDemand parameter to specify whether to automatically create pay-as-you-go instances if spot instances cannot be created due to insufficient inventory or other reasons.
+	// - `COST_OPTIMIZED`: creates ECS instances based on the unit price of vCPUs in ascending order. If the scaling configuration settings specify multiple instance types and the billing method is set to preemptible, the system preferentially creates spot instances. You can use the `CompensateWithOnDemand` parameter to specify whether to automatically create pay-as-you-go instances when spot instances cannot be created due to insufficient inventory.
 	//
-	//   > The COST_OPTIMIZED value takes effect only when the scaling configuration specifies multiple instance types or uses spot instances.
+	//   > `COST_OPTIMIZED` takes effect only when the scaling configuration settings specify multiple instance types or use spot instances.
 	//
-	// - BALANCE: Evenly allocate ECS instances across the zones specified in the scaling group. If the instances are unevenly distributed across zones due to insufficient inventory or other reasons, you can call the RebalanceInstances operation to balance the resources. For more information, see [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html).
+	// - `BALANCE`: evenly allocates ECS instances across the zones specified in the scaling group. If the distribution becomes unbalanced due to insufficient inventory, you can call the RebalanceInstances operation to balance the resources. For more information, see [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html).
 	//
-	// Default value: PRIORITY.
+	// Default value: `PRIORITY`.
 	//
 	// example:
 	//
 	// BALANCE
 	MultiAzPolicy *string `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
-	// The minimum number of pay-as-you-go instances required in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than this value, the system preferentially creates pay-as-you-go instances.
+	// The minimum number of pay-as-you-go instances required by the scaling group. Valid values: [0,1000\\]. If the number of pay-as-you-go instances is less than this value, the system preferentially creates pay-as-you-go instances.
 	//
 	// example:
 	//
 	// 0
 	OnDemandBaseCapacity *int64 `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
-	// The percentage of pay-as-you-go instances among the excess instances after the scaling group meets the minimum number of pay-as-you-go instances (on_demand_base_capacity). Valid values: 0 to 100.
+	// The percentage of pay-as-you-go instances among the instances that exceed the minimum number of pay-as-you-go instances (`on_demand_base_capacity`) required by the scaling group. Valid values: [0,100\\].
 	//
 	// example:
 	//
 	// 20
 	OnDemandPercentageAboveBaseCapacity *int64 `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
-	// The subscription duration of nodes. This parameter is required and takes effect only when `instance_charge_type` is set to `PrePaid`. Valid values:
+	// The subscription duration of nodes. This parameter takes effect and is required only when `instance_charge_type` is set to `PrePaid`. Valid values:
 	//
-	// - When `period_unit` is set to `Week`, valid values are 1, 2, 3, and 4.
+	// - When `period_unit` is set to `Week`: 1, 2, 3, and 4.
 	//
-	// - When `period_unit` is set to `Month`, valid values are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	// - When `period_unit` is set to `Month`: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
 	//
 	// example:
 	//
 	// 0
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
-	// The billing period of nodes. This parameter is required when `instance_charge_type` is set to `PrePaid`. Valid values:
+	// The subscription epoch of nodes. This parameter is required when `instance_charge_type` is set to `PrePaid`. Valid values:
 	//
-	// - `Month`: Uses the month as the time unit.
+	// - `Month`: uses month as the compute unit (CU).
 	//
-	// - `Week`: Uses the week as the time unit.
+	// - `Week`: uses week as the compute unit (CU).
 	//
 	// example:
 	//
@@ -1909,13 +1924,13 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
 	// The operating system distribution. Valid values:
 	//
-	// - CentOS
+	// - `CentOS`
 	//
-	// - AliyunLinux
+	// - `AliyunLinux`
 	//
-	// - Windows
+	// - `Windows`
 	//
-	// - WindowsCore
+	// - `WindowsCore`
 	//
 	// example:
 	//
@@ -1929,33 +1944,33 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// KubernetesWorkerRole-021dc54f-929b-437a-8ae0-34c24d3e****
 	RamPolicy *string `json:"ram_policy,omitempty" xml:"ram_policy,omitempty"`
-	// The name of the worker RAM role.
+	// The name of the RAM role for worker nodes.
 	//
 	// example:
 	//
 	// KubernetesWorkerRole-4a4fa089-80c1-48a5-b3c6-9349311f****
 	RamRoleName *string `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
-	// If ApsaraDB RDS instances are specified, the ECS instances of the cluster nodes are automatically added to the whitelist of the ApsaraDB RDS instances.
+	// If ApsaraDB RDS instances are specified, the ECS instances in the cluster are automatically added to the whitelist of the RDS instances.
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	// The resource pool and resource pool policies used when creating instances.
+	// The resource pool and resource pool policy used when creating instances.
 	ResourcePoolOptions *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions `json:"resource_pool_options,omitempty" xml:"resource_pool_options,omitempty" type:"Struct"`
-	// The ID of the scaling group.
+	// The scaling group ID.
 	//
 	// example:
 	//
 	// asg-2zeieod8giqmov7z****
 	ScalingGroupId *string `json:"scaling_group_id,omitempty" xml:"scaling_group_id,omitempty"`
-	// The pattern of the scaling group. Valid values:
+	// The scaling group pattern. Valid values:
 	//
-	// - release: Standard pattern. The scaling group scales by creating and releasing ECS instances based on the requested resource usage.
+	// - `release`: standard pattern. Scales by creating and releasing ECS instances based on the requested resource usage.
 	//
-	// - recycle: Swift pattern. The scaling group scales by creating, stopping, and starting instances to improve the speed of subsequent scaling operations. When an instance is stopped, you are not charged for compute resources, but you are still charged for storage resources, except for instances with local disks.
+	// - `recycle`: extreme pattern. Scales by creating, stopping, and starting instances to improve scaling speed. When an instance is stopped, compute resources are not billed, but storage resources are billed, except for instances with local disks.
 	//
 	// example:
 	//
 	// release
 	ScalingPolicy *string `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
-	// The security group ID of the node pool. If multiple security groups are bound to the node pool, this value is the first value in security_group_ids.
+	// The security group ID of the node pool. If multiple security groups are bound to the node pool, this is the first value in `security_group_ids`.
 	//
 	// example:
 	//
@@ -1965,33 +1980,33 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	SecurityGroupIds []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
 	// Specifies whether to enable Alibaba Cloud OS security hardening. Valid values:
 	//
-	// - true: Enable Alibaba Cloud OS security hardening.
+	// - `true`: enables Alibaba Cloud OS security hardening.
 	//
-	// - false: Do not enable Alibaba Cloud OS security hardening.
+	// - `false`: does not enable Alibaba Cloud OS security hardening.
 	//
-	// Default value: false.
+	// Default value: `false`.
 	//
 	// example:
 	//
 	// false
 	SecurityHardeningOs *bool `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
-	// Specifies whether to enable MLPS 2.0 security hardening. You can enable this feature for nodes only when the system image is Alibaba Cloud Linux 2 or Alibaba Cloud Linux 3. Alibaba Cloud provides classified protection compliance baseline check standards and scanning programs for the Alibaba Cloud Linux 2 and Alibaba Cloud Linux 3 MLPS 2.0 Level 3 images.
+	// Specifies whether to enable MLPS 2.0 security hardening. You can enable this feature for nodes only when the system image is Alibaba Cloud Linux 2 or Alibaba Cloud Linux 3. Alibaba Cloud provides classified protection compliance baseline check standards and scanning programs for the MLPS 2.0 Level 3 images of Alibaba Cloud Linux 2 and Alibaba Cloud Linux 3.
 	//
 	// example:
 	//
 	// false
 	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
-	// The number of available instance types specified. The scaling group evenly creates spot instances based on the most cost-effective instance types. Valid values: 1 to 10.
+	// The number of available instance types. The scaling group evenly creates spot instances across multiple instance types with the lowest cost. Valid values: [1, 10].
 	//
 	// example:
 	//
 	// 5
 	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
-	// Specifies whether to enable spot instance replenishment. After this feature is enabled, if the scaling group receives a system message indicating that a spot instance will be reclaimed, the scaling group attempts to create a new instance to replace the spot instance to be reclaimed. Valid values:
+	// Specifies whether to enable spot instance replenishment. After this feature is enabled, when a system message indicating that a spot instance will be reclaimed is received, the scaling group attempts to create a new instance to replace the spot instance to be reclaimed. Valid values:
 	//
-	// - true: Enable spot instance replenishment.
+	// - `true`: enables spot instance replenishment.
 	//
-	// - false: Disable spot instance replenishment.
+	// - `false`: disables spot instance replenishment.
 	//
 	// example:
 	//
@@ -1999,13 +2014,13 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	SpotInstanceRemedy *bool `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
 	// The market price range configuration for spot instances.
 	SpotPriceLimit []*DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
-	// The bidding strategy for spot instances. Valid values:
+	// The spot instance strategy. Valid values:
 	//
-	// - `NoSpot`: Regular pay-as-you-go instances.
+	// - NoSpot: non-spot instance.
 	//
-	// - `SpotWithPriceLimit`: Sets a maximum price for spot instances.
+	// - SpotWithPriceLimit: sets a maximum price for spot instances.
 	//
-	// - `SpotAsPriceGo`: Uses the current market price automatically.
+	// - SpotAsPriceGo: uses automatic system bidding, which follows the actual market price.
 	//
 	// For more information, see [Spot instances](https://help.aliyun.com/document_detail/157759.html).
 	//
@@ -2013,25 +2028,25 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// NoSpot
 	SpotStrategy *string `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
-	// Specifies whether to enable burst mode for the system cloud disk of the node. This parameter is configured when the disk type is cloud_auto. Valid values:
+	// Specifies whether to enable the burst mode (performance burst) for the system disk of the node. Valid values:
 	//
-	// - true: Enabled. After this feature is enabled, if the workload faces sudden data read and write pressure, the cloud disk temporarily improves its performance based on the actual workload conditions until the workload returns to a stable state.
+	// - true: enables the burst mode. After this feature is enabled, when a volatile business faces sudden data read and write pressure, the cloud disk temporarily improves its performance based on the actual business conditions until the business returns to a stable state.
 	//
-	// - false: Disabled.
+	// - false: disables the burst mode.
 	//
-	// This parameter is supported only when system_disk_category is set to cloud_auto. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
+	// This parameter is supported only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// true
 	SystemDiskBurstingEnabled *bool `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
-	// The categories of the system cloud disk. If a high-priority disk category is unavailable, the system automatically attempts to use the next priority disk category to create the system cloud disk.
+	// The categories of the system disk. If a high-priority disk category is unavailable, the system automatically attempts to use the next priority disk category to create the system disk.
 	SystemDiskCategories []*string `json:"system_disk_categories,omitempty" xml:"system_disk_categories,omitempty" type:"Repeated"`
-	// The category of the system cloud disk. Valid values:
+	// The category of the node system disk. Valid values:
 	//
-	// - `cloud_efficiency`: Ultra cloud disk.
+	// - `cloud_efficiency`: ultra disk.
 	//
-	// - `cloud_ssd`: Standard SSD.
+	// - `cloud_ssd`: standard SSD.
 	//
 	// - `cloud_essd`: ESSD.
 	//
@@ -2043,65 +2058,67 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// cloud_efficiency
 	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	// The encryption algorithm used for the system cloud disk. Valid values: aes-256.
+	// The encryption algorithm used for the system disk. Valid value: aes-256.
 	//
 	// example:
 	//
 	// aes-256
 	SystemDiskEncryptAlgorithm *string `json:"system_disk_encrypt_algorithm,omitempty" xml:"system_disk_encrypt_algorithm,omitempty"`
-	// Specifies whether to encrypt the system cloud disk. Valid values:
+	// Specifies whether to encrypt the system disk. Valid values:
 	//
-	// - `true`: Encrypts the system cloud disk.
+	// - `true`: encrypts the system disk.
 	//
-	// - `false`: Does not encrypt the system cloud disk.
+	// - `false`: does not encrypt the system disk.
 	//
 	// example:
 	//
 	// false
 	SystemDiskEncrypted *bool `json:"system_disk_encrypted,omitempty" xml:"system_disk_encrypted,omitempty"`
-	// The KMS key ID used for the system cloud disk.
+	// The ID of the KMS key used for the system disk.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	SystemDiskKmsKeyId *string `json:"system_disk_kms_key_id,omitempty" xml:"system_disk_kms_key_id,omitempty"`
-	// The performance level of the system cloud disk. This parameter takes effect only for ESSDs. The performance level is related to the disk size. For more information, see [ESSD](https://help.aliyun.com/document_detail/122389.html). Valid values:
+	// The performance level of the node system disk. This parameter takes effect only for ESSD. The performance level is related to the disk size. For more information, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
 	//
-	// - `PL0`: Medium concurrent I/O performance and relatively stable read/write latency.
+	// - PL0: provides medium concurrent I/O performance and relatively stable read/write latency.
 	//
-	// - `PL1`: Medium concurrent I/O performance and relatively stable read/write latency.
+	// - PL1: provides medium concurrent I/O performance and relatively stable read/write latency.
 	//
-	// - `PL2`: High concurrent I/O performance and stable read/write latency.
+	// - PL2: provides high concurrent I/O performance and stable read/write latency.
 	//
-	// - `PL3`: Ultra-high concurrent I/O performance and ultra-stable read/write latency.
+	// - PL3: provides extremely high concurrent I/O performance and highly stable read/write latency.
 	//
 	// example:
 	//
 	// PL1
 	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	// The provisioned read and write IOPS for the system cloud disk of the node.
+	// The provisioned read/write IOPS for the node system disk.
 	//
-	// Valid values: 0 to min{50,000, 1000 × Capacity - Baseline performance}. Baseline performance = min{1,800 + 50 × Capacity, 50000}.
+	// Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50000}.
 	//
-	// This parameter is supported only when system_disk_category is set to cloud_auto. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
+	// This parameter is supported only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// 1000
 	SystemDiskProvisionedIops *int64 `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
-	// The size of the system cloud disk. Unit: GiB. Valid values: 20 to 2048.
+	// The size of the node system disk. Unit: GiB.
+	//
+	// Valid values: [20, 2048].
 	//
 	// example:
 	//
 	// 120
 	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	// The system cloud disk snapshot policy.
+	// The snapshot policy for the system disk.
 	//
 	// example:
 	//
 	// sp-bp11g8z59rawcud9****
 	SystemDiskSnapshotPolicyId *string `json:"system_disk_snapshot_policy_id,omitempty" xml:"system_disk_snapshot_policy_id,omitempty"`
-	// The labels of the ECS instance.
+	// The ECS instance labels.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The list of vSwitch IDs.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
@@ -2671,11 +2688,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) Validate() error
 }
 
 type DescribeClusterNodePoolDetailResponseBodyScalingGroupCpuOptions struct {
-	// Specifies whether nested virtualization is enabled. Valid values:
+	// Specifies whether to enable nested virtualization. Valid values:
 	//
-	// - disabled: Nested virtualization is disabled.
+	// - disabled: disables nested virtualization.
 	//
-	// - enabled: Nested virtualization is enabled.
+	// - enabled: enables nested virtualization.
 	//
 	// example:
 	//
@@ -2705,19 +2722,19 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupCpuOptions) Valida
 }
 
 type DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions struct {
-	// The ID of the private node pool.
+	// The private node pool ID.
 	//
 	// example:
 	//
 	// eap-bp67acfmxazb4****
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The type of the private node pool and the private pool capacity matching criteria for instance startup. After the elasticity assurance or capacity reservation takes effect, private pool capacity is generated for you to select when you start instances. Valid values:
+	// The private pool capacity matching criteria for instance startup. After an elasticity assurance or capacity reservation takes effect, a private pool is generated for you to select when you start instances. Valid values:
 	//
-	// - Open: Open mode. The system automatically matches the capacity of open private pools. If no eligible private pool capacity is available, the system uses public pool resources to start the instance. In this mode, you do not need to specify the PrivatePoolOptions.Id parameter.
+	// - `Open`: open mode. The system automatically matches the capacity of an open private pool. If no matching private pool capacity is available, the system uses public pool resources to start the instance. In this mode, you do not need to specify the PrivatePoolOptions.Id parameter.
 	//
-	// - Target: Target mode. The system uses the specified private pool capacity to start the instance. If the specified private pool capacity is unavailable, the instance fails to start. In this mode, you must specify the private pool ID, which means the PrivatePoolOptions.Id parameter is required.
+	// - `Target`: specified mode. The system uses the capacity of the specified private pool to start the instance. If the specified private pool capacity is unavailable, the instance fails to start. In this mode, you must specify the private pool ID by setting the PrivatePoolOptions.Id parameter.
 	//
-	// - None: None mode. The system does not use private pool capacity to start the instance.
+	// - `None`: no private pool mode. The system does not use private pool capacity to start the instance.
 	//
 	// example:
 	//
@@ -2758,13 +2775,13 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions
 type DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions struct {
 	// The list of private pool IDs.
 	PrivatePoolIds []*string `json:"private_pool_ids,omitempty" xml:"private_pool_ids,omitempty" type:"Repeated"`
-	// The resource pool strategy used when creating instances. Valid values:
+	// The resource pool strategy used to create instances. Valid values:
 	//
-	// - PrivatePoolFirst: Private pool first.
+	// PrivatePoolFirst: Private pools are prioritized.
 	//
-	// - PrivatePoolOnly: Private pool only.
+	// PrivatePoolOnly: Only private pools are used.
 	//
-	// - None: No resource pool strategy is used.
+	// None: No resource pool strategy is used.
 	//
 	// example:
 	//
@@ -2809,7 +2826,7 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit struct 
 	//
 	// ecs.c6.large
 	InstanceType *string `json:"instance_type,omitempty" xml:"instance_type,omitempty"`
-	// The market price per instance.
+	// The market price of a single instance.
 	//
 	// <props="china">Unit: CNY/hour.
 	//
@@ -2855,7 +2872,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit) Va
 }
 
 type DescribeClusterNodePoolDetailResponseBodyStatus struct {
-	// The current conditions of the node pool, which indicate the status information of the node pool across different dimensions.
+	// The current conditions of the node pool, which indicate the status information of the node pool in different dimensions.
 	Conditions []*DescribeClusterNodePoolDetailResponseBodyStatusConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 	// The number of failed nodes.
 	//
@@ -2869,7 +2886,7 @@ type DescribeClusterNodePoolDetailResponseBodyStatus struct {
 	//
 	// 3
 	HealthyNodes *int64 `json:"healthy_nodes,omitempty" xml:"healthy_nodes,omitempty"`
-	// The number of nodes that are being created.
+	// The number of nodes being created.
 	//
 	// example:
 	//
@@ -2881,13 +2898,13 @@ type DescribeClusterNodePoolDetailResponseBodyStatus struct {
 	//
 	// 0
 	OfflineNodes *int64 `json:"offline_nodes,omitempty" xml:"offline_nodes,omitempty"`
-	// The number of nodes that are being removed.
+	// The number of nodes being removed.
 	//
 	// example:
 	//
 	// 0
 	RemovingNodes *int64 `json:"removing_nodes,omitempty" xml:"removing_nodes,omitempty"`
-	// The number of working nodes.
+	// The number of serving nodes.
 	//
 	// example:
 	//
@@ -2895,15 +2912,15 @@ type DescribeClusterNodePoolDetailResponseBodyStatus struct {
 	ServingNodes *int64 `json:"serving_nodes,omitempty" xml:"serving_nodes,omitempty"`
 	// The state of the node pool. Valid values:
 	//
-	// - `active`: The node pool is active.
+	// - `active`: Activated.
 	//
-	// - `scaling`: The node pool is scaling.
+	// - `scaling`: Scaling.
 	//
-	// - `removing`: Nodes are being removed from the node pool.
+	// - `removing`: Removing nodes.
 	//
-	// - `deleting`: The node pool is being deleted.
+	// - `deleting`: Deleting.
 	//
-	// - `updating`: The node pool is being updated.
+	// - `updating`: Updating.
 	//
 	// example:
 	//
@@ -3020,31 +3037,31 @@ func (s *DescribeClusterNodePoolDetailResponseBodyStatus) Validate() error {
 }
 
 type DescribeClusterNodePoolDetailResponseBodyStatusConditions struct {
-	// The time of the last status transition. The time is in the ISO 8601 format and includes time zone information.
+	// The time of the last status transition, in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
 	// 20**-**-30T10:39:00+08:00
 	LastTransitionTime *string `json:"last_transition_time,omitempty" xml:"last_transition_time,omitempty"`
-	// The detailed information about the condition.
+	// The detailed information.
 	//
 	// example:
 	//
 	// AutoUpgradeDisabled
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The reason for the condition.
+	// The reason.
 	//
 	// example:
 	//
 	// UpgradeDisabled
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// The status of the condition.
+	// The status.
 	//
 	// example:
 	//
 	// True
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The type of the condition.
+	// The type.
 	//
 	// example:
 	//
@@ -3110,11 +3127,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyStatusConditions) Validate() e
 }
 
 type DescribeClusterNodePoolDetailResponseBodyTeeConfig struct {
-	// Specifies whether to enable the confidential computing cluster. Valid values:
+	// Specifies whether to enable the TEE cluster. Valid values:
 	//
-	// - true: Enabled.
+	// - `true`: Enabled.
 	//
-	// - false: Disabled.
+	// - `false`: Disabled.
 	//
 	// example:
 	//

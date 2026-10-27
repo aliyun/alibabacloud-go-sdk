@@ -20,15 +20,21 @@ type iDescribeClusterTasksRequest interface {
 }
 
 type DescribeClusterTasksRequest struct {
-	MaxResults *int32  `json:"max_results,omitempty" xml:"max_results,omitempty"`
-	NextToken  *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
-	// The current page number.
+	// The maximum number of results to return per request.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
+	// The pagination token. Set the value to the next_token parameter value returned from the previous API call.
+	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//

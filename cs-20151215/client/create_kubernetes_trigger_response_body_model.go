@@ -22,7 +22,7 @@ type iCreateKubernetesTriggerResponseBody interface {
 }
 
 type CreateKubernetesTriggerResponseBody struct {
-	// The action of the trigger. Example: `redeploy`: Redeployment.
+	// The action of the trigger. For example, `redeploy`: Redeploys the resources.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateKubernetesTriggerResponseBody struct {
 	//
 	// - `deployment`: The trigger for stateless applications.
 	//
-	// - `application`: The trigger for Hybrid Cloud Application Center applications.
+	// - `application`: The trigger for applications in Hybrid Cloud Application Center.
 	//
 	// example:
 	//

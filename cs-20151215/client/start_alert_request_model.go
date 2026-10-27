@@ -16,13 +16,13 @@ type iStartAlertRequest interface {
 }
 
 type StartAlertRequest struct {
-	// The alert rule group name.
+	// The name of the alert rule group.
 	//
 	// example:
 	//
 	// sample
 	AlertRuleGroupName *string `json:"alert_rule_group_name,omitempty" xml:"alert_rule_group_name,omitempty"`
-	// The alert rule name.
+	// The name of the alert rule.
 	//
 	// example:
 	//

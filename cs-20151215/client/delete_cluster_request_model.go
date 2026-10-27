@@ -20,29 +20,33 @@ type iDeleteClusterRequest interface {
 }
 
 type DeleteClusterRequest struct {
-	// The deletion options for cluster-associated resources.
+	// The deletion options for the resources associated with the cluster.
 	DeleteOptions []*DeleteClusterRequestDeleteOptions `json:"delete_options,omitempty" xml:"delete_options,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// Specifies whether to retain SLB instances. Valid values:
+	// Specifies whether to retain the Server Load Balancer (SLB) instances created by using Services.
 	//
-	// - `true`: Retains the created SLB resources.
+	// Valid values:
 	//
-	// - `false`: Does not retain the created SLB resources.
+	// - `true`: retains the created SLB resources.
+	//
+	// - `false`: does not retain the created SLB resources.
 	//
 	// Default value: `false`.
 	//
-	// Use `SLB` in `delete_options` to manage this setting.
+	// **[Deprecated]*	- Use `SLB` in `delete_options` instead.
 	//
 	// example:
 	//
 	// false
 	KeepSlb *bool `json:"keep_slb,omitempty" xml:"keep_slb,omitempty"`
-	// Specifies whether to retain all resources. If this parameter is set to `true`, `retain_resources` is ignored, and cloud resources created through the cluster that are queried by the `DescribeClusterResources` operation are retained. If this parameter is set to `false`, note that resources that are retained by default in `delete_options` are still retained. To delete these resources, set `delete_mode` to `delete` separately in `delete_options`.
+	// Specifies whether to retain all resources. If you set this parameter to `true`, the `retain_resources` parameter is ignored, and all cloud resources created by the cluster that are queried by calling the `DescribeClusterResources` operation are retained. If you set this parameter to `false`, note that the resources that are retained by default in `delete_options` are still retained. To delete these resources, set `delete_mode` to `delete` in `delete_options`.
 	//
-	// - `true`: Retains all resources, including all cloud resources created through the cluster.
+	// Valid values:
 	//
-	// - `false`: Does not retain all resources (except resources defined as retained by default in `delete_options`. For example, `ALB` is still retained when this parameter is set to `false`).
+	// - `true`: retains all resources, including all cloud resources created by the cluster.
+	//
+	// - `false`: does not retain all resources, except for the resources that are retained by default in `delete_options`. For example, ALB resources are still retained even if this parameter is set to `false`.
 	//
 	// Default value: `false`.
 	//
@@ -50,7 +54,7 @@ type DeleteClusterRequest struct {
 	//
 	// false
 	RetainAllResources *bool `json:"retain_all_resources,omitempty" xml:"retain_all_resources,omitempty"`
-	// The list of resources. To retain resources when deleting a cluster, specify the IDs of the corresponding resources.
+	// The list of resources. To retain resources when you delete the cluster, specify the IDs of the corresponding resources.
 	RetainResources []*string `json:"retain_resources,omitempty" xml:"retain_resources,omitempty" type:"Repeated"`
 }
 
@@ -112,27 +116,27 @@ func (s *DeleteClusterRequest) Validate() error {
 }
 
 type DeleteClusterRequestDeleteOptions struct {
-	// The deletion policy for this resource type. Valid values:
+	// The deletion mode for this type of resource. Valid values:
 	//
-	// - delete: Deletes this type of resource.
+	// - `delete`: deletes this type of resource.
 	//
-	// - retain: Retains this type of resource.
+	// - `retain`: retains this type of resource.
 	//
 	// example:
 	//
 	// delete
 	DeleteMode *string `json:"delete_mode,omitempty" xml:"delete_mode,omitempty"`
-	// The resource type. Valid values:
+	// The type of the resource. Valid values:
 	//
-	// - SLB: SLB resources created through services. Deleted by default. You can choose to retain them.
+	// - `SLB`: the SLB resources created by using Services. By default, these resources are deleted. You can choose to retain them.
 	//
-	// - ALB: ALB resources created by ALB Ingress Controller. Retained by default. You can choose to delete them.
+	// - `ALB`: the ALB resources created by the ALB Ingress controller. By default, these resources are retained. You can choose to delete them.
 	//
-	// - SLS_Data: The Simple Log Service project used by the cluster logging feature. Retained by default. You can choose to delete it.
+	// - `SLS_Data`: the SLS projects used for the cluster log feature. By default, these resources are retained. You can choose to delete them.
 	//
-	// - SLS_ControlPlane: The Simple Log Service project used by the control plane logs of managed clusters. Retained by default. You can choose to delete it.
+	// - `SLS_ControlPlane`: the SLS projects used for the control plane logs of managed clusters. By default, these resources are retained. You can choose to delete them.
 	//
-	// - PrivateZone: PrivateZone resources created by ACK Serverless clusters. Retained by default. You can choose to delete them.
+	// - `PrivateZone`: the PrivateZone resources created by ACK Serverless clusters. By default, these resources are retained. You can choose to delete them.
 	//
 	// example:
 	//

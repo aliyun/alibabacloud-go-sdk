@@ -22,7 +22,7 @@ type iUpdateResourcesDeleteProtectionResponseBody interface {
 }
 
 type UpdateResourcesDeleteProtectionResponseBody struct {
-	// The namespace of the resource.
+	// The namespace where the resource resides.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UpdateResourcesDeleteProtectionResponseBody struct {
 	//
 	// namespaces
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The list of resources whose deletion protection status is updated.
+	// The list of resources for which the deletion protection status is updated.
 	Resources []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 

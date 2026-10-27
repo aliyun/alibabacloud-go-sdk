@@ -14,7 +14,7 @@ type iListAddonsResponseBody interface {
 }
 
 type ListAddonsResponseBody struct {
-	// The list of available add-on components.
+	// The list of available components.
 	Addons []*ListAddonsResponseBodyAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
 }
 
@@ -51,21 +51,21 @@ func (s *ListAddonsResponseBody) Validate() error {
 type ListAddonsResponseBodyAddons struct {
 	// The CPU architectures supported by the component.
 	Architecture []*string `json:"architecture,omitempty" xml:"architecture,omitempty" type:"Repeated"`
-	// The component categorization. Valid values:
+	// The category of the component. Valid values:
 	//
-	// - core: core component.
+	// - core: core component
 	//
-	// - network: network type component.
+	// - network: network component
 	//
-	// - security: security component.
+	// - security: security component
 	//
-	// - storage: storage component.
+	// - storage: storage component
 	//
-	// - monitor: logging and monitoring component.
+	// - monitor: logging and monitoring component
 	//
-	// - application: application component.
+	// - application: application component
 	//
-	// An empty value indicates that the component belongs to another categorization.
+	// An empty value indicates that the component belongs to another category.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ type ListAddonsResponseBodyAddons struct {
 	ConfigSchema *string `json:"config_schema,omitempty" xml:"config_schema,omitempty"`
 	// Indicates whether the component is installed by default. Valid values:
 	//
-	// - true: The component is installed by default when a cluster is created.
+	// - true: The component is installed by default when the cluster is created.
 	//
 	// - false: The component is not installed by default.
 	//
@@ -97,7 +97,7 @@ type ListAddonsResponseBodyAddons struct {
 	//
 	// false
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// The component name.
+	// The name of the component.
 	//
 	// example:
 	//
@@ -105,7 +105,7 @@ type ListAddonsResponseBodyAddons struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The operations supported by the component.
 	SupportedActions []*string `json:"supported_actions,omitempty" xml:"supported_actions,omitempty" type:"Repeated"`
-	// The component version.
+	// The version of the component.
 	//
 	// example:
 	//

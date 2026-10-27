@@ -18,19 +18,19 @@ type iUnInstallClusterAddonsResponseBody interface {
 }
 
 type UnInstallClusterAddonsResponseBody struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// c5b5e80b0b64a4bf6939d2d8fbb******
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 74D1512F-67DA-54E8-99EA-4D50EB******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iAddon interface {
 }
 
 type Addon struct {
-	// The configuration of the component.
+	// The component configuration.
 	//
 	// example:
 	//
 	// {\\"IngressSlbNetworkType\\":\\"internet\\"}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// Specifies whether to disable default installation. When a cluster is created, required components and additional components such as log components are installed by default. You can disable this default behavior and install these components later by calling the component installation API or by using the console. Valid values:
+	// Specifies whether to disable default installation. When a cluster is created, in addition to required components, additional components such as log components are installed by default. You can disable this default behavior and install these components later by calling the component installation API or through the console. Valid values:
 	//
 	// - `true`: Disables default installation.
 	//
@@ -36,13 +36,13 @@ type Addon struct {
 	//
 	// false
 	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	// The name of the component.
+	// The component name.
 	//
 	// example:
 	//
 	// nginx-ingress-controller
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version of the component.
+	// The component version.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type UpdateContactGroupForAlertResponseBody struct {
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
 	// The status of the update result. Valid values:
 	//
-	// - true: The operation is successful.
+	// - true: The operation succeeded.
 	//
 	// - false: The operation failed.
 	//

@@ -14,7 +14,7 @@ type iListClusterAddonInstancesResponseBody interface {
 }
 
 type ListClusterAddonInstancesResponseBody struct {
-	// The list of installed component instances.
+	// The list of installed add-on instances.
 	Addons []*ListClusterAddonInstancesResponseBodyAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
 }
 
@@ -49,27 +49,27 @@ func (s *ListClusterAddonInstancesResponseBody) Validate() error {
 }
 
 type ListClusterAddonInstancesResponseBodyAddons struct {
-	// The component name.
+	// The add-on name.
 	//
 	// example:
 	//
 	// coredns
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The component status. Valid values:
+	// The add-on status. Valid values:
 	//
-	// - active: installed
+	// - active: Installed.
 	//
-	// - updating: being updated
+	// - updating: Modifying.
 	//
-	// - upgrading: being upgraded
+	// - upgrading: Upgrading.
 	//
-	// - deleting: being uninstalled
+	// - deleting: Uninstalling.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The component version.
+	// The add-on version.
 	//
 	// example:
 	//

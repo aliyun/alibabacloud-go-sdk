@@ -30,7 +30,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// E368C761-F8F6-4A36-9B58-BD53D5******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The collection of tag resources.
+	// The collection of tagged resources.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"tag_resources,omitempty" xml:"tag_resources,omitempty" type:"Struct"`
 }
 
@@ -79,7 +79,7 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The tag resource.
+	// The tagged resource.
 	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"tag_resource,omitempty" xml:"tag_resource,omitempty" type:"Repeated"`
 }
 

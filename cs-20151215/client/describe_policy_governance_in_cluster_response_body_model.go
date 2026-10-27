@@ -408,10 +408,22 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny) V
 
 type DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn struct {
 	// The description of the policy.
+	//
+	// example:
+	//
+	// Restricts the creation of Application Load Balancer (ALB) instances.
 	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
 	// The policy name.
+	//
+	// example:
+	//
+	// ACKRestrictALBCreation
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
 	// The severity level.
+	//
+	// example:
+	//
+	// low
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
 	// The number of violations.
 	//

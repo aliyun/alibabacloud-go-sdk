@@ -20,7 +20,7 @@ type iUpdateContactGroupForAlertRequest interface {
 }
 
 type UpdateContactGroupForAlertRequest struct {
-	// The name of the alert metric contact group.
+	// The name of the contact group for the alert metric.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type UpdateContactGroupForAlertRequest struct {
 	//
 	// sample
 	CrName *string `json:"cr_name,omitempty" xml:"cr_name,omitempty"`
-	// The namespace in which the resource resides.
+	// The namespace where the resource resides.
 	//
 	// example:
 	//

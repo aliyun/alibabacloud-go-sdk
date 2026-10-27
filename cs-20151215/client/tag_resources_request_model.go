@@ -28,13 +28,13 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// The list of resource IDs. You can specify up to 50 resource IDs.
+	// The list of resource IDs. You can add up to 50 resource IDs.
 	//
 	// This parameter is required.
 	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
-	// The resource type.
+	// The resource type. Valid values:
 	//
-	// CLUSTER: cluster.
+	// - CLUSTER: cluster.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type TagResourcesRequest struct {
 	//
 	// CLUSTER
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The tag key-value pairs of the resource. You can specify up to 20 tag key-value pairs. Note:
+	// The tag key-value pairs of the resource. You can add up to 20 tag key-value pairs. Take note of the following items:
 	//
-	// - Once a value is specified, it cannot be an empty string. The value can be up to 128 characters in length.
+	// - If a value is specified, it cannot be an empty string and can be up to 128 characters in length.
 	//
 	// - The value cannot start with `aliyun` or `acs:`.
 	//

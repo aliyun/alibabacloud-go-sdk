@@ -14,7 +14,7 @@ type iRunClusterInspectRequest interface {
 }
 
 type RunClusterInspectRequest struct {
-	// The idempotence token.
+	// The idempotency token.
 	//
 	// example:
 	//

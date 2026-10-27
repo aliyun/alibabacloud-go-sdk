@@ -20,11 +20,7 @@ type iRunClusterCheckRequest interface {
 type RunClusterCheckRequest struct {
 	// The check options.
 	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	// The check target.
-	//
-	// If the check type parameter `type` is set to `NodePoolUpgrade`, this parameter must be set to the node pool ID.
-	//
-	// If other check types are selected, this parameter does not need to be set.
+	// The check target. If the type parameter is set to NodePoolUpgrade, this parameter must be set to the node pool ID. For other check types, this parameter is not required.
 	//
 	// example:
 	//

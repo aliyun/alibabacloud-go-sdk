@@ -28,7 +28,7 @@ type GetUpgradeStatusResponseBody struct {
 	//
 	// subject to actual return
 	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
-	// The precheck report ID.
+	// The ID of the precheck report.
 	//
 	// example:
 	//
@@ -36,19 +36,19 @@ type GetUpgradeStatusResponseBody struct {
 	PrecheckReportId *string `json:"precheck_report_id,omitempty" xml:"precheck_report_id,omitempty"`
 	// The current upgrade status of the cluster. Valid values:
 	//
-	// - `success`: The upgrade is successful.
+	// - `success`: Upgrade succeeded.
 	//
-	// - `fail`: The upgrade failed.
+	// - `fail`: Upgrade failed.
 	//
-	// - `pause`: The upgrade is paused.
+	// - `pause`: Upgrade paused.
 	//
-	// - `running`: The upgrade is in progress.
+	// - `running`: Upgrade in progress.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The current upgrade phase of the cluster. Valid values:
+	// The current upgrade stage of the cluster. Valid values:
 	//
 	// - `not_start`: Not started.
 	//
@@ -58,13 +58,13 @@ type GetUpgradeStatusResponseBody struct {
 	//
 	// - `pause`: Paused.
 	//
-	// - `success`: The upgrade is successful.
+	// - `success`: Upgrade succeeded.
 	//
 	// example:
 	//
 	// prechecking
 	UpgradeStep *string `json:"upgrade_step,omitempty" xml:"upgrade_step,omitempty"`
-	// The upgrade task details.
+	// The details of the upgrade task.
 	UpgradeTask *GetUpgradeStatusResponseBodyUpgradeTask `json:"upgrade_task,omitempty" xml:"upgrade_task,omitempty" type:"Struct"`
 }
 
@@ -137,11 +137,11 @@ type GetUpgradeStatusResponseBodyUpgradeTask struct {
 	//
 	// subject to actual return
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The upgrade task status. Valid values:
+	// The status of the upgrade task. Valid values:
 	//
 	// - `running`: Running.
 	//
-	// - `Success`: Successful.
+	// - `Success`: Succeeded.
 	//
 	// - `Failed`: Failed.
 	//

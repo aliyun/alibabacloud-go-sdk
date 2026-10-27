@@ -14,6 +14,7 @@ type iDescribeClusterV2UserKubeconfigResponseBody interface {
 }
 
 type DescribeClusterV2UserKubeconfigResponseBody struct {
+	// The kubeconfig content.
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 }
 

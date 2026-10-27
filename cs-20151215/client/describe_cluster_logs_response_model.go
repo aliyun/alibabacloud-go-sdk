@@ -90,7 +90,7 @@ type DescribeClusterLogsResponseBody struct {
 	//
 	// start to update cluster status to CREATE_COMPLETE
 	ClusterLog *string `json:"cluster_log,omitempty" xml:"cluster_log,omitempty"`
-	// The time when the log was created.
+	// The time when the log was generated.
 	//
 	// example:
 	//

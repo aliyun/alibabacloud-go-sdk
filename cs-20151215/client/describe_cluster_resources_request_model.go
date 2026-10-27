@@ -14,7 +14,7 @@ type iDescribeClusterResourcesRequest interface {
 }
 
 type DescribeClusterResourcesRequest struct {
-	// Specifies whether to also query resources created by cluster components.
+	// Specifies whether to query the resources created by cluster add-ons. Valid values:
 	//
 	// - true: Queries the resources.
 	//

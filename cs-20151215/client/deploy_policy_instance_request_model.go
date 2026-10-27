@@ -20,17 +20,17 @@ type iDeployPolicyInstanceRequest interface {
 type DeployPolicyInstanceRequest struct {
 	// The governance action of the rule. Valid values:
 	//
-	// - `deny`: blocks deployments that violate the policy.
+	// - `deny`: Blocks non-compliant deployments.
 	//
-	// - `warn`: generates alerts.
+	// - `warn`: Generates an alert.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The namespaces to which the policy applies. An empty value indicates all namespaces.
+	// The namespaces where the policy is enforced. If this parameter is left empty, the policy is enforced in all namespaces.
 	Namespaces []*string `json:"namespaces,omitempty" xml:"namespaces,omitempty" type:"Repeated"`
-	// The parameter settings of the current rule instance. For the parameters supported by each policy governance rule and the corresponding metric description, see [Container security policy rules](https://www.alibabacloud.com/help/doc-detail/359819.html).
+	// The parameter settings of the current rule instance. For more information about the parameters supported by each policy governance rule and the corresponding metric description, see [Container security policy rule library](https://www.alibabacloud.com/help/doc-detail/359819.html).
 	//
 	// example:
 	//

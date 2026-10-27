@@ -24,9 +24,9 @@ type iUntagResourcesRequest interface {
 type UntagResourcesRequest struct {
 	// Specifies whether to delete all custom tags. This parameter takes effect only when `tag_keys` is empty. Valid values:
 	//
-	// - `true`: Deletes all tags.
+	// - `true`: deletes all tags.
 	//
-	// - `false`: Does not delete all tags.
+	// - `false`: does not delete all tags.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// The list of resource IDs. You can specify up to 50 resource IDs.
+	// The list of resource IDs. Up to 50 resource IDs can be specified.
 	//
 	// This parameter is required.
 	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
-	// The resource type.
+	// The resource type. Valid values:
 	//
-	// CLUSTER: cluster.
+	// - CLUSTER: cluster.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type UntagResourcesRequest struct {
 	//
 	// CLUSTER
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The list of tag keys for the resource. You can specify up to 20 tag keys.
+	// The list of tag keys for the resources. Up to 20 tag keys can be specified.
 	//
 	// This parameter is required.
 	TagKeys []*string `json:"tag_keys,omitempty" xml:"tag_keys,omitempty" type:"Repeated"`

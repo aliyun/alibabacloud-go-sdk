@@ -80,27 +80,27 @@ func (s *DescribeClusterEventsResponseBody) Validate() error {
 }
 
 type DescribeClusterEventsResponseBodyEvents struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c82e6987e2961451182edacd74faf****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The description of the event.
+	// The event description.
 	Data *DescribeClusterEventsResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the event.
+	// The event ID.
 	//
 	// example:
 	//
 	// e-9ad04f72-8ee7-46bf-a02c-e4a06b39****
 	EventId *string `json:"event_id,omitempty" xml:"event_id,omitempty"`
-	// The source of the event.
+	// The event source.
 	//
 	// example:
 	//
 	// task
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The operation object associated with the event.
+	// The object associated with the event.
 	//
 	// example:
 	//
@@ -114,37 +114,37 @@ type DescribeClusterEventsResponseBodyEvents struct {
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The event type. Valid values:
 	//
-	// - cluster_create: Creates a cluster.
+	// - cluster_create: cluster creation
 	//
-	// - cluster_scaleout: Scales out a cluster.
+	// - cluster_scaleout: cluster scale-out
 	//
-	// - cluster_attach: Adds existing nodes.
+	// - cluster_attach: addition of existing nodes
 	//
-	// - cluster_delete: Deletes a cluster.
+	// - cluster_delete: cluster deletion
 	//
-	// - cluster_upgrade: Upgrades a cluster.
+	// - cluster_upgrade: cluster upgrade
 	//
-	// - cluster_migrate: Migrates a cluster.
+	// - cluster_migrate: cluster migration
 	//
-	// - cluster_node_delete: Removes a node.
+	// - cluster_node_delete: node removal
 	//
-	// - cluster_node_drain: Drains a node.
+	// - cluster_node_drain: node draining
 	//
-	// - cluster_modify: Modifies a cluster.
+	// - cluster_modify: cluster modification
 	//
-	// - cluster_configuration_modify: Modifies the control configurations of a cluster.
+	// - cluster_configuration_modify: cluster management configuration modification
 	//
-	// - cluster_addon_install: Installs a component.
+	// - cluster_addon_install: add-on installation
 	//
-	// - cluster_addon_upgrade: Upgrades a component.
+	// - cluster_addon_upgrade: add-on upgrade
 	//
-	// - cluster_addon_uninstall: Uninstalls a component.
+	// - cluster_addon_uninstall: add-on uninstallation
 	//
-	// - runtime_upgrade: Upgrades the runtime.
+	// - runtime_upgrade: runtime upgrade
 	//
-	// - nodepool_upgrade: Upgrades a node pool.
+	// - nodepool_upgrade: node pool upgrade
 	//
-	// - nodepool_update: Updates a node pool.
+	// - nodepool_update: node pool update
 	//
 	// example:
 	//
@@ -239,13 +239,13 @@ type DescribeClusterEventsResponseBodyEventsData struct {
 	//
 	// info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The details of the event.
+	// The event details.
 	//
 	// example:
 	//
 	// Start to upgrade NodePool nodePool/npdd89dc2b76c04f14b06774883b******
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The status of the event.
+	// The event status.
 	//
 	// example:
 	//
@@ -299,7 +299,7 @@ type DescribeClusterEventsResponseBodyPageInfo struct {
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The maximum number of results to return per page.
+	// The maximum number of results to display on each page.
 	//
 	// example:
 	//

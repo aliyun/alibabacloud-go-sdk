@@ -49,7 +49,7 @@ func (s *UnInstallClusterAddonsRequest) Validate() error {
 }
 
 type UnInstallClusterAddonsRequestAddons struct {
-	// Specifies whether to clean up associated cloud resources when uninstalling the component. Valid values:
+	// Specifies whether to clean up the associated cloud resources when uninstalling the component. Valid values:
 	//
 	// - true: Clean up.
 	//
@@ -59,7 +59,7 @@ type UnInstallClusterAddonsRequestAddons struct {
 	//
 	// true
 	CleanupCloudResources *bool `json:"cleanup_cloud_resources,omitempty" xml:"cleanup_cloud_resources,omitempty"`
-	// The name of the component to uninstall. You can call the [ListClusterAddonInstances](https://help.aliyun.com/document_detail/2667940.html) operation to query the components installed in a cluster.
+	// The name of the component to uninstall. You can call the [ListClusterAddonInstances](https://help.aliyun.com/document_detail/2667940.html) operation to query the components installed in the cluster.
 	//
 	// example:
 	//

@@ -14,11 +14,11 @@ type iOpenAckServiceRequest interface {
 }
 
 type OpenAckServiceRequest struct {
-	// The type of service to activate. Valid values:
+	// The type of the service to activate. Valid values:
 	//
-	// - `propayasgo`: Container Service for Kubernetes (including ACK managed clusters and ACK dedicated clusters), Container Service Serverless, and registered clusters.
+	// - `propayasgo`: Container Service for Kubernetes (including ACK managed clusters and ACK dedicated clusters), ACK Serverless, and registered clusters.
 	//
-	// - `edgepayasgo`: Container Service Edge.
+	// - `edgepayasgo`: ACK Edge.
 	//
 	// example:
 	//

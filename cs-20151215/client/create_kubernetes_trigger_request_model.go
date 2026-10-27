@@ -38,11 +38,7 @@ type CreateKubernetesTriggerRequest struct {
 	//
 	// c5cdf7e3938bc4f8eb0e44b21a80f****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The project name of the trigger.
-	//
-	// It consists of the namespace and the name of the application, in the format of `${namespace}/${name}`.
-	//
-	// Example: `default/test-app`.
+	// The project name of the trigger. It consists of the namespace and the name of the application, in the format of `${namespace}/${name}`. Example: `default/test-app`.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +50,7 @@ type CreateKubernetesTriggerRequest struct {
 	//
 	// - `deployment`: The trigger for stateless applications.
 	//
-	// - `application`: The trigger for Hybrid Cloud Application Center applications.
+	// - `application`: The trigger for applications in Hybrid Cloud Application Center.
 	//
 	// Default value: `deployment`.
 	//

@@ -18,9 +18,9 @@ type iListNodePoolComponentsResponseBody interface {
 }
 
 type ListNodePoolComponentsResponseBody struct {
-	// The list of node components.
+	// The node components.
 	Components []*ListNodePoolComponentsResponseBodyComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	// The maximum number of results to return. Default value: 200.
+	// The maximum number of results per page. Default value: 200.
 	//
 	// example:
 	//

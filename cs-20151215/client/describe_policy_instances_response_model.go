@@ -72,7 +72,7 @@ func (s *DescribePolicyInstancesResponse) Validate() error {
 }
 
 type DescribePolicyInstancesResponseBody struct {
-	// The UID of the policy instance implementer.
+	// The UID of the policy instance enforcer.
 	//
 	// example:
 	//
@@ -120,11 +120,11 @@ type DescribePolicyInstancesResponseBody struct {
 	//
 	// low
 	PolicySeverity *string `json:"policy_severity,omitempty" xml:"policy_severity,omitempty"`
-	// The scope of the policy instance.
+	// The enforcement scope of the policy instance.
 	//
-	// By default, an asterisk (*) indicates all namespaces in the cluster.
+	// A value of "*" indicates all namespaces in the cluster.
 	//
-	// Otherwise, the names of the namespaces to which the policy applies are returned. Multiple namespaces are separated by commas (,).
+	// Otherwise, the names of the target namespaces are returned, separated by commas (,).
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type DescribePolicyInstancesResponseBody struct {
 	//
 	// - `deny`: Blocks non-compliant deployments.
 	//
-	// - `warn`: Generates an alert.
+	// - `warn`: Triggers an alert.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type DescribePolicyInstancesResponseBody struct {
 	PolicyAction *string `json:"policy_action,omitempty" xml:"policy_action,omitempty"`
 	// Deprecated
 	//
-	// The creation time. This parameter is deprecated. Do not use it.
+	// **[Deprecated]*	- The creation time. Do not use this parameter.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribePolicyInstancesResponseBody struct {
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
 	// Deprecated
 	//
-	// The update time. This parameter is deprecated. Do not use it.
+	// **[Deprecated]*	- The update time. Do not use this parameter.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type DescribePolicyInstancesResponseBody struct {
 	Updated *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
 	// Deprecated
 	//
-	// The resource ID. This parameter is deprecated. Do not use it.
+	// **[Deprecated]*	- The resource ID. Do not use this parameter.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type DescribePolicyInstancesResponseBody struct {
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty"`
 	// Deprecated
 	//
-	// The number of violations processed in the cluster. This parameter is deprecated. Do not use it.
+	// **[Deprecated]*	- The number of processed violations in the cluster. Do not use this parameter.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type DescribePolicyInstancesResponseBody struct {
 	TotalViolations *int64 `json:"total_violations,omitempty" xml:"total_violations,omitempty"`
 	// Deprecated
 	//
-	// The deletion status. This parameter is deprecated. Do not use it.
+	// **[Deprecated]*	- The deletion status. Do not use this parameter.
 	//
 	// example:
 	//

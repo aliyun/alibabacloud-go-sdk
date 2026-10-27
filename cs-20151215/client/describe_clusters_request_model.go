@@ -24,12 +24,17 @@ type DescribeClustersRequest struct {
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
-	// Specifies the cluster name for fuzzy matching.
+	// The cluster name used for fuzzy matching.
 	//
 	// example:
 	//
 	// test
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the resource group used to filter clusters.
+	//
+	// example:
+	//
+	// rg-a1b2c3d4e5f6g7h
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
 }
 

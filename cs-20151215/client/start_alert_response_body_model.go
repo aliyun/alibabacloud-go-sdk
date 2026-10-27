@@ -16,7 +16,7 @@ type iStartAlertResponseBody interface {
 }
 
 type StartAlertResponseBody struct {
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//

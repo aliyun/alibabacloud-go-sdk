@@ -97,7 +97,7 @@ type ListNodePoolComponentInstancesResponseBodyComponentInstances struct {
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The state of the component.
+	// The state of the component. Valid values: installing, failed, active, upgrading, updating, and uninstalling.
 	//
 	// example:
 	//

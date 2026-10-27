@@ -118,7 +118,7 @@ type GetClusterDiagnosisCheckItemsResponseBodyCheckItems struct {
 	//
 	// Node
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The assessment result of the check item.
+	// The evaluation result of the check item.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type GetClusterDiagnosisCheckItemsResponseBodyCheckItems struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The check item name.
+	// The name of the check item.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type GetClusterDiagnosisCheckItemsResponseBodyCheckItems struct {
 	//
 	// True
 	Refer *string `json:"refer,omitempty" xml:"refer,omitempty"`
-	// The check item value.
+	// The value of the check item.
 	//
 	// example:
 	//

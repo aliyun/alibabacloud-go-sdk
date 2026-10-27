@@ -22,35 +22,33 @@ type iDescribeAddonsRequest interface {
 }
 
 type DescribeAddonsRequest struct {
-	// The cluster type. Valid values:
+	// The cluster profile. Valid values:
 	//
-	// - `Default`: managed cluster.
+	// - Default: managed cluster.
 	//
-	// - `Serverless`: serverless cluster.
+	// - Serverless: Serverless cluster.
 	//
-	// - `Edge`: edge cluster.
+	// - Edge: edge cluster.
 	//
 	// example:
 	//
 	// Default
 	ClusterProfile *string `json:"cluster_profile,omitempty" xml:"cluster_profile,omitempty"`
-	// After you set `cluster_type` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification.
+	// The cluster specifications. You can specify this parameter when you set cluster_type to ManagedKubernetes and configure profile. Valid values:
 	//
-	// - `ack.pro.small`: Pro cluster.
+	// - ack.pro.small: ACK Pro.
 	//
-	// - `ack.standard`: Basic cluster (selected by default if this parameter is left empty).
+	// - ack.standard: ACK Basic. This is the default value if this parameter is left empty.
 	//
 	// example:
 	//
 	// ack.pro.small
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// Valid values:
+	// - Kubernetes: ACK dedicated cluster.
 	//
-	// - `Kubernetes`: ACK dedicated cluster.
+	// - ManagedKubernetes: ACK ACK clusters, including ACK ACK clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
 	//
-	// - `ManagedKubernetes`: ACK ACK cluster types, including ACK ACK clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
-	//
-	// - `ExternalKubernetes`: registered cluster.
+	// - ExternalKubernetes: registered cluster.
 	//
 	// example:
 	//
@@ -62,7 +60,7 @@ type DescribeAddonsRequest struct {
 	//
 	// 1.24.6-aliyun.1
 	ClusterVersion *string `json:"cluster_version,omitempty" xml:"cluster_version,omitempty"`
-	// The ID of the region where the cluster resides.
+	// The ID of the region where the cluster is deployed.
 	//
 	// This parameter is required.
 	//

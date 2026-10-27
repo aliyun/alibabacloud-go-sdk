@@ -38,13 +38,13 @@ type GetKubernetesTriggerRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - `deployment`: the trigger for stateless applications.
+	// - `deployment`: The trigger for stateless applications.
 	//
-	// - `application`: the trigger for Application Center applications.
+	// - `application`: The trigger for application center applications.
 	//
 	// Default value: `deployment`.
 	//
-	// If you do not specify the trigger type, the query results are not filtered by trigger type.
+	// If the trigger type is not specified, the query results are not filtered by trigger type.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetKubernetesTriggerRequest struct {
 	//
 	// - `redeploy`: Redeploys the resources defined in `project_id`.
 	//
-	// If you do not specify the trigger action, the query results are not filtered by trigger action.
+	// If the trigger action is not specified, the query results are not filtered by trigger action.
 	//
 	// example:
 	//

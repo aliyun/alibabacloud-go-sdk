@@ -68,7 +68,7 @@ type DescribeAddonsResponseBodyComponentGroups struct {
 	//
 	// storage
 	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
-	// The names of the components in the group.
+	// The names of the components included in the group.
 	Items []*DescribeAddonsResponseBodyComponentGroupsItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 

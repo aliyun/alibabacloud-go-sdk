@@ -26,7 +26,7 @@ type UpdateClusterInspectConfigRequest struct {
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The inspection schedule defined by using the RFC 5545 Recurrence Rule syntax. You must specify BYHOUR and BYMINUTE. Only FREQ=DAILY is supported. COUNT and UNTIL are not supported.
+	// The inspection cycle defined by using the RFC5545 Recurrence Rule syntax. BYHOUR and BYMINUTE must be specified. Only FREQ=DAILY is supported. COUNT and UNTIL are not supported.
 	//
 	// example:
 	//

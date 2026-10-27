@@ -20,25 +20,25 @@ type iDescribeClusterAddonInstanceResponseBody interface {
 }
 
 type DescribeClusterAddonInstanceResponseBody struct {
-	// The component configuration.
+	// The add-on configuration.
 	//
 	// example:
 	//
 	// {"NetworkPolicy":"true"}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The component name.
+	// The add-on name.
 	//
 	// example:
 	//
 	// terway-eniip
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The component status. Valid values:
+	// The add-on state. Valid values:
 	//
 	// - initial: Installing.
 	//
 	// - active: Installed.
 	//
-	// - unhealthy: Unhealthy.
+	// - unhealthy: Abnormal.
 	//
 	// - upgrading: Upgrading.
 	//
@@ -52,7 +52,7 @@ type DescribeClusterAddonInstanceResponseBody struct {
 	//
 	// active
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The component version.
+	// The add-on version.
 	//
 	// example:
 	//

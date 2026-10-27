@@ -51,43 +51,43 @@ func (s *DescribeClusterVulsResponseBody) Validate() error {
 type DescribeClusterVulsResponseBodyVulRecords struct {
 	// The list of CVEs.
 	CveList []*string `json:"cve_list,omitempty" xml:"cve_list,omitempty" type:"Repeated"`
-	// The vulnerability severity level.
+	// The severity level of the vulnerability.
 	//
 	// example:
 	//
 	// asap
 	Necessity *string `json:"necessity,omitempty" xml:"necessity,omitempty"`
-	// The number of nodes that have this vulnerability.
+	// The number of nodes that have the vulnerability.
 	//
 	// example:
 	//
 	// 1
 	NodeCount *int32 `json:"node_count,omitempty" xml:"node_count,omitempty"`
-	// The node pool ID.
+	// The ID of the node pool.
 	//
 	// example:
 	//
 	// np0156da1082b54fa987e32618dd******
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// The node pool name.
+	// The name of the node pool.
 	//
 	// example:
 	//
 	// test
 	NodepoolName *string `json:"nodepool_name,omitempty" xml:"nodepool_name,omitempty"`
-	// The vulnerability alias.
+	// The alias of the vulnerability.
 	//
 	// example:
 	//
 	// CVE-2022-xxxx:rsync security vulnerability
 	VulAliasName *string `json:"vul_alias_name,omitempty" xml:"vul_alias_name,omitempty"`
-	// The vulnerability name.
+	// The name of the vulnerability.
 	//
 	// example:
 	//
 	// oval:com.redhat.rhsa:def:xxxxxxx
 	VulName *string `json:"vul_name,omitempty" xml:"vul_name,omitempty"`
-	// The vulnerability type.
+	// The type of the vulnerability.
 	//
 	// example:
 	//

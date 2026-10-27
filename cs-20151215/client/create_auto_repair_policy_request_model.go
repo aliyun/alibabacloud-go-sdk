@@ -26,19 +26,19 @@ type CreateAutoRepairPolicyRequest struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The resource subtype to which the self-healing rule can be bound.
+	// The resource subtype that can be associated with the self-healing rule.
 	//
 	// example:
 	//
 	// ess
 	ResourceSubType *string `json:"resource_sub_type,omitempty" xml:"resource_sub_type,omitempty"`
-	// The resource type to which the self-healing rule can be bound.
+	// The resource type that can be associated with the self-healing rule.
 	//
 	// example:
 	//
 	// nodepool
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The list of self-healing sub-rules.
+	// The list of self-healing subrules.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ func (s *CreateAutoRepairPolicyRequestRulesIncidents) Validate() error {
 type CreateAutoRepairPolicyRequestRulesRepairProcedure struct {
 	// The configuration parameters for the repair procedure.
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	// The manual intervention process.
+	// The configuration for the manual intervention procedure.
 	Intervention *CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention `json:"intervention,omitempty" xml:"intervention,omitempty" type:"Struct"`
 	// The name of the procedure.
 	//
@@ -261,7 +261,7 @@ func (s *CreateAutoRepairPolicyRequestRulesRepairProcedure) Validate() error {
 }
 
 type CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention struct {
-	// The label configuration for authorization confirmation. Adding the following labels to the node indicates that you authorize ACK to execute the action for this stage. After completing the action for this stage, ACK automatically removes the authorization inquiry and authorization confirmation labels corresponding to this stage. If you do not add the following labels in time to grant authorization, ACK will not execute the action for this stage and subsequent actions, and the node may remain in an impaired state.
+	// The label configuration for authorization confirmation. Adding the following labels to the node indicates that you authorize ACK to execute the operations in this stage. After completing the operations in this stage, ACK automatically removes the authorization inquiry and confirmation labels corresponding to this stage. If you do not add the following labels in time to grant authorization, ACK will not execute the actions in this stage and subsequent stages, and the node may remain in a damaged state.
 	ApprovedLabel *CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel `json:"approved_label,omitempty" xml:"approved_label,omitempty" type:"Struct"`
 	// Specifies whether to enable manual approval.
 	//
@@ -269,7 +269,7 @@ type CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention struct {
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The label configuration for authorization inquiry. When this stage is reached, ACK adds the following labels to your node and waits for your authorization to execute the action for this stage.
+	// The label configuration for authorization inquiry. When this stage is reached, ACK adds the following labels to your node and waits for your authorization to execute the actions in this stage.
 	InquiringLabel *CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel `json:"inquiring_label,omitempty" xml:"inquiring_label,omitempty" type:"Struct"`
 	// The type of manual approval.
 	//

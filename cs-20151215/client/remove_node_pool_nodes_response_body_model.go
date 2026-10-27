@@ -16,13 +16,13 @@ type iRemoveNodePoolNodesResponseBody interface {
 }
 
 type RemoveNodePoolNodesResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// A9891419-D125-4D89-AFCA-68846675****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

@@ -16,6 +16,7 @@ type iDescribeClusterV2UserKubeconfigRequest interface {
 }
 
 type DescribeClusterV2UserKubeconfigRequest struct {
+	// Specifies whether to access the cluster over the internal network.
 	PrivateIpAddress         *bool  `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	TemporaryDurationMinutes *int64 `json:"TemporaryDurationMinutes,omitempty" xml:"TemporaryDurationMinutes,omitempty"`
 }

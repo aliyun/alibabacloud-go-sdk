@@ -14,7 +14,7 @@ type iCheckServiceRoleResponseBody interface {
 }
 
 type CheckServiceRoleResponseBody struct {
-	// The service role check results.
+	// The check results of the service roles.
 	Roles []*CheckServiceRoleResponseBodyRoles `json:"roles,omitempty" xml:"roles,omitempty" type:"Repeated"`
 }
 
@@ -49,19 +49,19 @@ func (s *CheckServiceRoleResponseBody) Validate() error {
 }
 
 type CheckServiceRoleResponseBodyRoles struct {
-	// Indicates whether the role has been authorized.
+	// Indicates whether the service role is authorized.
 	//
 	// example:
 	//
 	// true
 	Granted *bool `json:"granted,omitempty" xml:"granted,omitempty"`
-	// The message returned when the role is not authorized.
+	// The prompt message when the service role is not authorized.
 	//
 	// example:
 	//
 	// The role does not exist: AliyunCSManagedAutoScalerRole
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The service role name.
+	// The name of the service role.
 	//
 	// example:
 	//

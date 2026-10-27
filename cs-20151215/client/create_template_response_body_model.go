@@ -14,7 +14,7 @@ type iCreateTemplateResponseBody interface {
 }
 
 type CreateTemplateResponseBody struct {
-	// The orchestration template ID.
+	// The ID of the orchestration template.
 	//
 	// example:
 	//

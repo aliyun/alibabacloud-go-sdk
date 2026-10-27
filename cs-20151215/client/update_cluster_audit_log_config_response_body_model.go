@@ -18,19 +18,19 @@ type iUpdateClusterAuditLogConfigResponseBody interface {
 }
 
 type UpdateClusterAuditLogConfigResponseBody struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// c93095129fc41463aa455d89444fd****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 48BD70F6-A7E6-543D-9F23-08DEB764****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

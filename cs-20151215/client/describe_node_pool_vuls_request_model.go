@@ -14,7 +14,7 @@ type iDescribeNodePoolVulsRequest interface {
 }
 
 type DescribeNodePoolVulsRequest struct {
-	// The severity levels of vulnerabilities to query. Separate multiple levels with commas (,). Valid values:
+	// The necessity levels of the vulnerability fixes to query. Separate multiple levels with commas (,). Valid values:
 	//
 	// - `asap`: high
 	//

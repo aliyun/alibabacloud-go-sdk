@@ -18,7 +18,7 @@ type iDescribeTemplatesRequest interface {
 }
 
 type DescribeTemplatesRequest struct {
-	// The page number to return when paginating query results.
+	// The page number of the returned results.
 	//
 	// Default value: 1.
 	//
@@ -26,7 +26,7 @@ type DescribeTemplatesRequest struct {
 	//
 	// 1
 	PageNum *int64 `json:"page_num,omitempty" xml:"page_num,omitempty"`
-	// The number of entries per page when paginating query results.
+	// The number of entries to return on each page.
 	//
 	// Default value: 10.
 	//
@@ -34,13 +34,13 @@ type DescribeTemplatesRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The templatetype.
+	// The templatetype. Valid values:
 	//
-	// - If the value is set to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
+	// - `kubernetes`: The template is displayed on the Orchestration Templates page in the console.
 	//
-	// - If this parameter is left empty or set to other values, the template is not displayed on the Orchestration Templates page in the console.
+	// - If this parameter is left empty or set to other values: The template is not displayed on the Orchestration Templates page in the console.
 	//
-	// Set this parameter to `kubernetes` in Settings.
+	// Recommended settings: `kubernetes`.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iCreateTriggerResponseBody interface {
 }
 
 type CreateTriggerResponseBody struct {
-	// The trigger action.
+	// The action of the trigger.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type CreateTriggerResponseBody struct {
 	//
 	// 75973497486******
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The trigger project name.
+	// The project name of the trigger.
 	//
 	// example:
 	//
 	// default/test-app
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	// The trigger type.
+	// The type of the trigger.
 	//
 	// example:
 	//

@@ -16,11 +16,11 @@ type iGetClusterAuditProjectResponseBody interface {
 }
 
 type GetClusterAuditProjectResponseBody struct {
-	// Indicates whether the API server audit feature is enabled for the cluster.
+	// Indicates whether the API server audit feature is enabled for the cluster. Valid values:
 	//
 	// - `true`: Enabled.
 	//
-	// - `false`: Not enabled.
+	// - `false`: Disabled.
 	//
 	// example:
 	//

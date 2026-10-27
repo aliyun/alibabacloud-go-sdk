@@ -32,9 +32,9 @@ type iGetClusterDiagnosisResultResponseBody interface {
 type GetClusterDiagnosisResultResponseBody struct {
 	// The diagnosis result code. Valid values:
 	//
-	// - 0: Diagnosis completed.
+	// - 0: The diagnosis is completed.
 	//
-	// - 1: Diagnosis failed.
+	// - 1: The diagnosis failed.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetClusterDiagnosisResultResponseBody struct {
 	//
 	// 2024-05-28T11:29Z
 	Finished *string `json:"finished,omitempty" xml:"finished,omitempty"`
-	// The diagnosis status information.
+	// The diagnosis status message.
 	//
 	// example:
 	//
@@ -72,11 +72,11 @@ type GetClusterDiagnosisResultResponseBody struct {
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 	// The diagnosis status. Valid values:
 	//
-	// - 0: Diagnosis created.
+	// - 0: The diagnosis is created.
 	//
-	// - 1: Diagnosis running.
+	// - 1: The diagnosis is running.
 	//
-	// - 2: Diagnosis completed.
+	// - 2: The diagnosis is completed.
 	//
 	// example:
 	//

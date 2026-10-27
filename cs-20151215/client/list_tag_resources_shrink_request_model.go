@@ -46,7 +46,9 @@ type ListTagResourcesShrinkRequest struct {
 	ResourceIdsShrink *string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty"`
 	// The resource type.
 	//
-	// CLUSTER: cluster.
+	// Valid values:
+	//
+	// - CLUSTER: cluster.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +56,7 @@ type ListTagResourcesShrinkRequest struct {
 	//
 	// CLUSTER
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The list of tags to query. A maximum of 20 items can be specified.
+	// The list of tags to query. You can specify a maximum of 20 tags.
 	//
 	// example:
 	//

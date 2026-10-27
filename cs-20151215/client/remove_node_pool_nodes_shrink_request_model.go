@@ -22,11 +22,11 @@ type iRemoveNodePoolNodesShrinkRequest interface {
 }
 
 type RemoveNodePoolNodesShrinkRequest struct {
-	// Specifies whether to remove nodes concurrently.
+	// Specifies whether to remove the nodes concurrently. Valid values:
 	//
-	// - true: Nodes are concurrently removed from the scaling group.
+	// - true: removes the nodes from the scaling group concurrently.
 	//
-	// - false: Nodes are sequentially removed from the scaling group.
+	// - false: removes the nodes from the scaling group sequentially.
 	//
 	// Default value: false.
 	//
@@ -36,29 +36,29 @@ type RemoveNodePoolNodesShrinkRequest struct {
 	Concurrency *bool `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
 	// Specifies whether to drain the nodes. Valid values:
 	//
-	// - true: Drain the nodes.
+	// - true: drains the nodes.
 	//
-	// - false: Do not drain the nodes.
+	// - false: does not drain the nodes.
 	//
 	// example:
 	//
 	// true
 	DrainNode *bool `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
-	// The list of instances to remove.
+	// The list of instances to be removed.
 	InstanceIdsShrink *string `json:"instance_ids,omitempty" xml:"instance_ids,omitempty"`
 	// Deprecated
 	//
 	// **[Deprecated]**
 	//
-	// The list of nodes to remove.
+	// The list of nodes to be removed.
 	//
-	// 	Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>
+	// 	Danger: This parameter is deprecated. Use instance_ids instead.</danger>
 	NodesShrink *string `json:"nodes,omitempty" xml:"nodes,omitempty"`
 	// Specifies whether to release the nodes. Valid values:
 	//
-	// - true: Release the nodes.
+	// - true: releases the nodes.
 	//
-	// - false: Do not release the nodes.
+	// - false: does not release the nodes.
 	//
 	// example:
 	//

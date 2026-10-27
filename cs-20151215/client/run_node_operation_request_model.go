@@ -24,7 +24,7 @@ type RunNodeOperationRequest struct {
 	//
 	// restart.kubelet
 	OperationAction *string `json:"operationAction,omitempty" xml:"operationAction,omitempty"`
-	// The list of parameters accepted by the O&M action.
+	// The list of parameters for the O&M action.
 	OperationArgs []*string `json:"operationArgs,omitempty" xml:"operationArgs,omitempty" type:"Repeated"`
 }
 
