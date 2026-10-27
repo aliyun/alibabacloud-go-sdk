@@ -21,18 +21,24 @@ type iPaChatCompletionStreamHeaders interface {
 
 type PaChatCompletionStreamHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The Agent instance access key used for QICloud Customer API authentication.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qis_xxx
 	XQIAgentApiKey *string `json:"X-QI-Agent-Api-Key,omitempty" xml:"X-QI-Agent-Api-Key,omitempty"`
+	// The published Mobile Planner Agent instance ID. Must correspond to the X-QI-Agent-Api-Key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PA_xxx
 	XQIInstanceId *string `json:"X-QI-Instance-Id,omitempty" xml:"X-QI-Instance-Id,omitempty"`
+	// The optional session identifier. Can be omitted for the first turn, in which case the server generates one. Pass it back in subsequent turns to continue the Mobile Planner Agent session.
+	//
 	// example:
 	//
 	// session-xxx

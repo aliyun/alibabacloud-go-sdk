@@ -21,18 +21,24 @@ type iAigcChatCompletionStreamHeaders interface {
 
 type AigcChatCompletionStreamHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The instance access key. The key must belong to the Creative Agent instance being called. This key is different from the AccessKey Secret used for OpenAPI signing. Do not expose it publicly.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qis_xxx
 	XQIAgentApiKey *string `json:"X-QI-Agent-Api-Key,omitempty" xml:"X-QI-Agent-Api-Key,omitempty"`
+	// The published Creative Agent instance ID. Must correspond to the X-QI-Agent-Api-Key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AIGC_xxx
 	XQIInstanceId *string `json:"X-QI-Instance-Id,omitempty" xml:"X-QI-Instance-Id,omitempty"`
+	// The session identifier. Can be omitted for the first turn. Obtain it from the qi_session_id field in the SSE response and pass it back in subsequent turns. Use no more than 128 characters consisting of letters, digits, periods, underscores, colons, or hyphens.
+	//
 	// example:
 	//
 	// session-xxx

@@ -80,117 +80,182 @@ type iPaChatCompletionStreamRequest interface {
 }
 
 type PaChatCompletionStreamRequest struct {
+	// The whitelist of token IDs allowed for generation.
+	//
 	// example:
 	//
 	// [10,11]
 	AllowedTokenIds []*int64 `json:"allowedTokenIds,omitempty" xml:"allowedTokenIds,omitempty" type:"Repeated"`
+	// The list of words or strings prohibited from generation.
+	//
 	// example:
 	//
 	// ["blocked"]
-	BadWords           []*string                                        `json:"badWords,omitempty" xml:"badWords,omitempty" type:"Repeated"`
+	BadWords []*string `json:"badWords,omitempty" xml:"badWords,omitempty" type:"Repeated"`
+	// The vLLM/OpenAI-Compatible template parameter object. Request values are merged with model defaults, with request keys taking precedence, and passed to the model as-is.
 	ChatTemplateKwargs *PaChatCompletionStreamRequestChatTemplateKwargs `json:"chatTemplateKwargs,omitempty" xml:"chatTemplateKwargs,omitempty" type:"Struct"`
+	// The frequency penalty parameter passed through to the Mobile Planner Agent model.
+	//
 	// example:
 	//
 	// 0.0
 	FrequencyPenalty *float64 `json:"frequencyPenalty,omitempty" xml:"frequencyPenalty,omitempty"`
+	// Specifies whether to ignore EOS and continue generation.
+	//
 	// example:
 	//
 	// false
 	IgnoreEos *bool `json:"ignoreEos,omitempty" xml:"ignoreEos,omitempty"`
+	// Specifies whether to request reasoning content from the upstream. The actual capability depends on the model.
+	//
 	// example:
 	//
 	// true
 	IncludeReasoning *bool `json:"includeReasoning,omitempty" xml:"includeReasoning,omitempty"`
+	// A model-compatible parameter with the JSON field name logprobs. Whether it is accepted and takes effect depends on the model used by the instance. The current Agent response does not provide token log probability details.
+	//
 	// example:
 	//
 	// false
 	Logprobs *bool `json:"logprobs,omitempty" xml:"logprobs,omitempty"`
+	// The maximum number of completion tokens. Must be greater than 0 if provided, and is passed as an OpenAI-compatible model parameter.
+	//
 	// example:
 	//
 	// 2048
 	MaxCompletionTokens *int64 `json:"maxCompletionTokens,omitempty" xml:"maxCompletionTokens,omitempty"`
+	// The OpenAI-compatible maximum number of generated tokens. Must be greater than 0 if provided.
+	//
 	// example:
 	//
 	// 2048
 	MaxTokens *int64 `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	// The list of conversation messages. The first call can submit one turn or an existing multi-turn conversation. When continuing with an existing session ID, retain the complete and unmodified historical message prefix and append the current turn messages. Tool results are associated through role=tool and the corresponding tool_call_id.
+	//
 	// This parameter is required.
 	Messages []*PaChatCompletionStreamRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	// The vLLM Min-P sampling parameter.
+	//
 	// example:
 	//
 	// 0.05
 	MinP *float64 `json:"minP,omitempty" xml:"minP,omitempty"`
+	// The minimum number of tokens to generate.
+	//
 	// example:
 	//
 	// 1
-	MinTokens         *int64                                          `json:"minTokens,omitempty" xml:"minTokens,omitempty"`
+	MinTokens *int64 `json:"minTokens,omitempty" xml:"minTokens,omitempty"`
+	// The multimodal preprocessor parameters passed through to vLLM as-is by key.
 	MmProcessorKwargs *PaChatCompletionStreamRequestMmProcessorKwargs `json:"mmProcessorKwargs,omitempty" xml:"mmProcessorKwargs,omitempty" type:"Struct"`
-	Model             *string                                         `json:"model,omitempty" xml:"model,omitempty"`
+	// Reserved for OpenAI client compatibility. Ignored during routing. The actual model is determined by the published instance configuration. The model field in the response is always an empty string.
+	//
+	// example:
+	//
+	// " "
+	Model *string `json:"model,omitempty" xml:"model,omitempty"`
+	// Set this parameter to 1. Whether the model accepts this parameter depends on the model. The current Mobile Planner Agent response does not return multiple candidate results. Do not use this parameter for multiple-candidate responses.
+	//
 	// example:
 	//
 	// 1
 	N *int64 `json:"n,omitempty" xml:"n,omitempty"`
+	// Specifies whether the model is allowed to generate multiple tool calling requests in parallel. The model invokes tools concurrently when this parameter is enabled.
+	//
 	// example:
 	//
 	// false
 	ParallelToolCalls *bool `json:"parallelToolCalls,omitempty" xml:"parallelToolCalls,omitempty"`
+	// The presence penalty parameter, passed through to the Mobile Planner Agent model.
+	//
 	// example:
 	//
 	// 0.0
 	PresencePenalty *float64 `json:"presencePenalty,omitempty" xml:"presencePenalty,omitempty"`
+	// A model compatibility parameter. The JSON field is prompt_logprobs. Whether the model accepts this parameter depends on the model. The current Agent response does not return probability details for input tokens.
+	//
 	// example:
 	//
 	// 2
 	PromptLogprobs *int64 `json:"promptLogprobs,omitempty" xml:"promptLogprobs,omitempty"`
+	// The OpenAI-compatible reasoning effort level, such as low, medium, or high.
+	//
 	// example:
 	//
 	// high
 	ReasoningEffort *string `json:"reasoningEffort,omitempty" xml:"reasoningEffort,omitempty"`
+	// The vLLM repetition penalty parameter.
+	//
 	// example:
 	//
 	// 1.1
-	RepetitionPenalty *float64                                     `json:"repetitionPenalty,omitempty" xml:"repetitionPenalty,omitempty"`
-	ResponseFormat    *PaChatCompletionStreamRequestResponseFormat `json:"responseFormat,omitempty" xml:"responseFormat,omitempty" type:"Struct"`
+	RepetitionPenalty *float64 `json:"repetitionPenalty,omitempty" xml:"repetitionPenalty,omitempty"`
+	// The structured response format, such as json_object or json_schema.
+	ResponseFormat *PaChatCompletionStreamRequestResponseFormat `json:"responseFormat,omitempty" xml:"responseFormat,omitempty" type:"Struct"`
+	// The random seed.
+	//
 	// example:
 	//
 	// 42
 	Seed *int64 `json:"seed,omitempty" xml:"seed,omitempty"`
+	// Specifies whether to skip special tokens.
+	//
 	// example:
 	//
 	// true
 	SkipSpecialTokens *bool `json:"skipSpecialTokens,omitempty" xml:"skipSpecialTokens,omitempty"`
+	// The stop sequences. Compatible with a single string or an array of strings. This field is displayed in array format.
+	//
 	// example:
 	//
 	// ["END"]
 	Stop []*string `json:"stop,omitempty" xml:"stop,omitempty" type:"Repeated"`
+	// The vLLM stop token ID list.
+	//
 	// example:
 	//
 	// [1,2]
 	StopTokenIds []*int64 `json:"stopTokenIds,omitempty" xml:"stopTokenIds,omitempty" type:"Repeated"`
+	// Specifies whether to use SSE streaming responses. This parameter must be set to true for this operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
-	Stream            *bool                                           `json:"stream,omitempty" xml:"stream,omitempty"`
-	StreamOptions     *PaChatCompletionStreamRequestStreamOptions     `json:"streamOptions,omitempty" xml:"streamOptions,omitempty" type:"Struct"`
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+	// The OpenAI-compatible streaming options.
+	StreamOptions *PaChatCompletionStreamRequestStreamOptions `json:"streamOptions,omitempty" xml:"streamOptions,omitempty" type:"Struct"`
+	// The vLLM structured output constraints.
 	StructuredOutputs *PaChatCompletionStreamRequestStructuredOutputs `json:"structuredOutputs,omitempty" xml:"structuredOutputs,omitempty" type:"Struct"`
+	// The sampling temperature. Passed as an OpenAI-compatible model parameter to override the model default value.
+	//
 	// example:
 	//
 	// 0.2
 	Temperature *float64 `json:"temperature,omitempty" xml:"temperature,omitempty"`
+	// The tool choice strategy. Valid values: auto, none, required, or a named selection supported by the model.
+	//
 	// example:
 	//
 	// auto
-	ToolChoice *string                               `json:"toolChoice,omitempty" xml:"toolChoice,omitempty"`
-	Tools      []*PaChatCompletionStreamRequestTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	ToolChoice *string `json:"toolChoice,omitempty" xml:"toolChoice,omitempty"`
+	// The array of function tool definitions available for this request. Mobile Planner Agent registers each named function in the runtime Toolkit and returns tool_calls in the streaming response.
+	Tools []*PaChatCompletionStreamRequestTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	// The vLLM Top-K sampling parameter.
+	//
 	// example:
 	//
 	// 20
 	TopK *int64 `json:"topK,omitempty" xml:"topK,omitempty"`
+	// A model compatibility parameter. The JSON field is top_logprobs. Used for models that support this feature. The current Agent response does not provide candidate token probability details.
+	//
 	// example:
 	//
 	// 3
 	TopLogprobs *int64 `json:"topLogprobs,omitempty" xml:"topLogprobs,omitempty"`
+	// Top-P sampling parameter. Passed as an OpenAI-compatible model parameter to override the model default value.
+	//
 	// example:
 	//
 	// 0.9
@@ -559,10 +624,14 @@ func (s *PaChatCompletionStreamRequest) Validate() error {
 }
 
 type PaChatCompletionStreamRequestChatTemplateKwargs struct {
+	// Controls whether the model generates reasoning_content through chat_template_kwargs. This value is passed to the model used by the Mobile Planner Agent.
+	//
 	// example:
 	//
 	// true
 	EnableThinking *bool `json:"enableThinking,omitempty" xml:"enableThinking,omitempty"`
+	// Specifies whether the model preserves and reuses existing reasoning content in subsequent turns. Passed through as-is per vLLM/Qwen chat_template_kwargs.
+	//
 	// example:
 	//
 	// true
@@ -600,19 +669,26 @@ func (s *PaChatCompletionStreamRequestChatTemplateKwargs) Validate() error {
 }
 
 type PaChatCompletionStreamRequestMessages struct {
+	// The message content. Mobile Planner Agent supports text and multimodal content. Image URLs or base64 Data URLs are passed through to the Mobile Planner Agent model if it supports multimodal input.
+	//
 	// example:
 	//
-	// 请分析图片内容
+	// Analyze the image content
 	Content []*PaChatCompletionStreamRequestMessagesContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	// The message role: user, assistant, tool, system, or developer. system/developer is used for optional per-turn text instruction overrides. If omitted, the instructions from the instance configuration are used. Tool results use tool and are associated with tool_call_id.
+	//
 	// example:
 	//
 	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// Required when role=tool. Must match an id from the preceding assistant.tool_calls.
+	//
 	// example:
 	//
 	// call_weather_1
-	ToolCallId *string                                           `json:"toolCallId,omitempty" xml:"toolCallId,omitempty"`
-	ToolCalls  []*PaChatCompletionStreamRequestMessagesToolCalls `json:"toolCalls,omitempty" xml:"toolCalls,omitempty" type:"Repeated"`
+	ToolCallId *string `json:"toolCallId,omitempty" xml:"toolCallId,omitempty"`
+	// The list of function invocation entries that can be carried when role=assistant. Used for multi-turn tool invocation continuation.
+	ToolCalls []*PaChatCompletionStreamRequestMessagesToolCalls `json:"toolCalls,omitempty" xml:"toolCalls,omitempty" type:"Repeated"`
 }
 
 func (s PaChatCompletionStreamRequestMessages) String() string {
@@ -682,11 +758,16 @@ func (s *PaChatCompletionStreamRequestMessages) Validate() error {
 }
 
 type PaChatCompletionStreamRequestMessagesContent struct {
+	// The image reference when type=image_url. Supports HTTPS URLs or data:image/...;base64,... format.
 	ImageUrl *PaChatCompletionStreamRequestMessagesContentImageUrl `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
+	// The non-empty text when type=text.
+	//
 	// example:
 	//
-	// 请分析这张图片
+	// Analyze this image
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The content part type. Mobile Planner Agent user messages support text or image_url.
+	//
 	// example:
 	//
 	// text
@@ -738,6 +819,8 @@ func (s *PaChatCompletionStreamRequestMessagesContent) Validate() error {
 }
 
 type PaChatCompletionStreamRequestMessagesContentImageUrl struct {
+	// The image URL. Remote images must use HTTPS. Base64 Data URLs are also accepted.
+	//
 	// example:
 	//
 	// https://example.com/image.png
@@ -766,11 +849,16 @@ func (s *PaChatCompletionStreamRequestMessagesContentImageUrl) Validate() error 
 }
 
 type PaChatCompletionStreamRequestMessagesToolCalls struct {
+	// The function information of a historical tool invocation entry, including name and arguments as a JSON character string. Retain the actual returned values in subsequent turns.
 	Function *PaChatCompletionStreamRequestMessagesToolCallsFunction `json:"function,omitempty" xml:"function,omitempty" type:"Struct"`
+	// The tool invocation ID. Subsequent tool messages reference this through tool_call_id.
+	//
 	// example:
 	//
 	// call_weather_1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The tool invocation type. Currently fixed as function.
+	//
 	// example:
 	//
 	// function
@@ -822,10 +910,14 @@ func (s *PaChatCompletionStreamRequestMessagesToolCalls) Validate() error {
 }
 
 type PaChatCompletionStreamRequestMessagesToolCallsFunction struct {
+	// The JSON object string of function arguments.
+	//
 	// example:
 	//
-	// {"city":"杭州"}
+	// {"city":"Hangzhou"}
 	Arguments *string `json:"arguments,omitempty" xml:"arguments,omitempty"`
+	// The name of the function to call.
+	//
 	// example:
 	//
 	// get_weather
@@ -863,6 +955,8 @@ func (s *PaChatCompletionStreamRequestMessagesToolCallsFunction) Validate() erro
 }
 
 type PaChatCompletionStreamRequestMmProcessorKwargs struct {
+	// Example: the maximum number of dynamic image patches allowed by the vision model.
+	//
 	// example:
 	//
 	// 8
@@ -891,6 +985,8 @@ func (s *PaChatCompletionStreamRequestMmProcessorKwargs) Validate() error {
 }
 
 type PaChatCompletionStreamRequestResponseFormat struct {
+	// The response format type, such as text, json_object, or json_schema.
+	//
 	// example:
 	//
 	// json_object
@@ -919,6 +1015,8 @@ func (s *PaChatCompletionStreamRequestResponseFormat) Validate() error {
 }
 
 type PaChatCompletionStreamRequestStreamOptions struct {
+	// Specifies whether to output a usage statistics chunk before data:[DONE].
+	//
 	// example:
 	//
 	// true
@@ -947,6 +1045,8 @@ func (s *PaChatCompletionStreamRequestStreamOptions) Validate() error {
 }
 
 type PaChatCompletionStreamRequestStructuredOutputs struct {
+	// The set of allowed enumeration text values.
+	//
 	// example:
 	//
 	// ["yes","no"]
@@ -975,7 +1075,10 @@ func (s *PaChatCompletionStreamRequestStructuredOutputs) Validate() error {
 }
 
 type PaChatCompletionStreamRequestTools struct {
+	// The function tool definition, including the name, description, and JSON Schema parameters.
 	Function *PaChatCompletionStreamRequestToolsFunction `json:"function,omitempty" xml:"function,omitempty" type:"Struct"`
+	// The tool type. This parameter must be set to function.
+	//
 	// example:
 	//
 	// function
@@ -1018,15 +1121,22 @@ func (s *PaChatCompletionStreamRequestTools) Validate() error {
 }
 
 type PaChatCompletionStreamRequestToolsFunction struct {
+	// The description of the function purpose. The model uses this to determine when to call the tool.
+	//
 	// example:
 	//
-	// 查询指定城市天气
+	// Query the weather for a specified city
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The function name. This parameter is required. Used to match assistant.tool_calls with subsequent tool results.
+	//
 	// example:
 	//
 	// get_weather
-	Name       *string                                               `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The JSON Schema for function parameters, passed to the model as raw JSON. If not provided, an empty object Schema is used.
 	Parameters *PaChatCompletionStreamRequestToolsFunctionParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
+	// Specifies whether the model must strictly follow the function parameter JSON Schema.
+	//
 	// example:
 	//
 	// true
@@ -1087,8 +1197,12 @@ func (s *PaChatCompletionStreamRequestToolsFunction) Validate() error {
 }
 
 type PaChatCompletionStreamRequestToolsFunctionParameters struct {
+	// The property definitions of the JSON Schema.
 	Properties *PaChatCompletionStreamRequestToolsFunctionParametersProperties `json:"properties,omitempty" xml:"properties,omitempty" type:"Struct"`
-	Required   []*string                                                       `json:"required,omitempty" xml:"required,omitempty" type:"Repeated"`
+	// The array of required field names in the JSON Schema.
+	Required []*string `json:"required,omitempty" xml:"required,omitempty" type:"Repeated"`
+	// The root Schema type of the function parameters. Typically set to object.
+	//
 	// example:
 	//
 	// object
@@ -1140,6 +1254,7 @@ func (s *PaChatCompletionStreamRequestToolsFunctionParameters) Validate() error 
 }
 
 type PaChatCompletionStreamRequestToolsFunctionParametersProperties struct {
+	// The Schema for the sample business parameter city. The actual fields are determined by the caller\\"s tool definition.
 	City *PaChatCompletionStreamRequestToolsFunctionParametersPropertiesCity `json:"city,omitempty" xml:"city,omitempty" type:"Struct"`
 }
 
@@ -1170,10 +1285,14 @@ func (s *PaChatCompletionStreamRequestToolsFunctionParametersProperties) Validat
 }
 
 type PaChatCompletionStreamRequestToolsFunctionParametersPropertiesCity struct {
+	// The sample parameter description.
+	//
 	// example:
 	//
-	// 要查询天气的城市名称
+	// The name of the city for which to query the weather
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The JSON Schema type of the sample city field.
+	//
 	// example:
 	//
 	// string
