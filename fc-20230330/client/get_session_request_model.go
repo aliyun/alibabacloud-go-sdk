@@ -14,7 +14,7 @@ type iGetSessionRequest interface {
 }
 
 type GetSessionRequest struct {
-	// The function alias or version associated with the session ID to query.
+	// The alias or version of the function associated with the session ID to query.
 	//
 	// example:
 	//

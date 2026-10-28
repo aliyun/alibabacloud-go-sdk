@@ -14,7 +14,7 @@ type iCreateCustomDomainRequest interface {
 }
 
 type CreateCustomDomainRequest struct {
-	// The information about the custom domain name.
+	// The custom domain name information.
 	//
 	// This parameter is required.
 	Body *CreateCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`

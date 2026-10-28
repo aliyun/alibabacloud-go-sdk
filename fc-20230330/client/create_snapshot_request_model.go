@@ -18,7 +18,7 @@ type iCreateSnapshotRequest interface {
 type CreateSnapshotRequest struct {
 	// The request body for creating a snapshot.
 	Body *CreateSnapshotInput `json:"body,omitempty" xml:"body,omitempty"`
-	// The function alias.
+	// The alias of the function.
 	//
 	// example:
 	//

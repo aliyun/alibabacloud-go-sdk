@@ -18,19 +18,19 @@ type iFunctionLockInfo interface {
 }
 
 type FunctionLockInfo struct {
-	// The timestamp when the lock was applied.
+	// The lock time.
 	//
 	// example:
 	//
 	// 2025-04-05T10:00:00Z
 	LockedAt *string `json:"lockedAt,omitempty" xml:"lockedAt,omitempty"`
-	// The name of the entity that applied the lock.
+	// The name of the locking entity.
 	//
 	// example:
 	//
 	// AgentRun
 	LockedBy *string `json:"lockedBy,omitempty" xml:"lockedBy,omitempty"`
-	// The list of locked resource types. Valid values include `function`, `trigger`, `version`, and `alias`.
+	// The list of locked resource types.
 	//
 	// example:
 	//

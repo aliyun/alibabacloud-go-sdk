@@ -14,15 +14,15 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language in which the list of regions is returned. For more information, see RFC 7231. Valid values:
+	// Specifies the language of the returned region list, such as Chinese or English. For more information, see RFC 7231. Valid values:
 	//
-	// 	- zh-CN: Simplified Chinese.
+	// - zh-CN: Simplified Chinese.
 	//
-	// 	- en-US: English.
+	// - en-US: English.
 	//
-	// 	- ja: Japanese
+	// - ja: Japanese.
 	//
-	// Default value: en-US
+	// Default value: zh-CN.
 	//
 	// example:
 	//

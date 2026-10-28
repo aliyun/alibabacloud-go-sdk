@@ -45,7 +45,7 @@ func (s *DescribeRegionsOutput) Validate() error {
 }
 
 type DescribeRegionsOutputRegions struct {
-	// The collection of region information.
+	// The region information collection.
 	Region []*DescribeRegionsOutputRegionsRegion `json:"Region" xml:"Region" type:"Repeated"`
 }
 
@@ -84,7 +84,7 @@ type DescribeRegionsOutputRegionsRegion struct {
 	//
 	// example:
 	//
-	// 华北1（青岛）
+	// China (Qingdao)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The region ID.
 	//

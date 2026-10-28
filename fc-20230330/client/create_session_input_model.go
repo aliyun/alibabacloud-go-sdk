@@ -11,6 +11,8 @@ type iCreateSessionInput interface {
 	GoString() string
 	SetAllowInternetAccess(v bool) *CreateSessionInput
 	GetAllowInternetAccess() *bool
+	SetAutoPauseFileSystemOnly(v bool) *CreateSessionInput
+	GetAutoPauseFileSystemOnly() *bool
 	SetDisableSessionIdReuse(v bool) *CreateSessionInput
 	GetDisableSessionIdReuse() *bool
 	SetEnableAutoPause(v bool) *CreateSessionInput
@@ -38,7 +40,8 @@ type iCreateSessionInput interface {
 }
 
 type CreateSessionInput struct {
-	AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+	AllowInternetAccess     *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+	AutoPauseFileSystemOnly *bool `json:"autoPauseFileSystemOnly,omitempty" xml:"autoPauseFileSystemOnly,omitempty"`
 	// Specifies whether to disable session ID reuse. Default value: False, which indicates that after a session expires, you can use the same SessionID to initiate requests. The system treats this as a new session and binds it to a new instance. If set to True, the SessionID cannot be reused after the session expires.
 	//
 	// example:
@@ -87,6 +90,10 @@ func (s CreateSessionInput) GoString() string {
 
 func (s *CreateSessionInput) GetAllowInternetAccess() *bool {
 	return s.AllowInternetAccess
+}
+
+func (s *CreateSessionInput) GetAutoPauseFileSystemOnly() *bool {
+	return s.AutoPauseFileSystemOnly
 }
 
 func (s *CreateSessionInput) GetDisableSessionIdReuse() *bool {
@@ -139,6 +146,11 @@ func (s *CreateSessionInput) GetSnapshotId() *string {
 
 func (s *CreateSessionInput) SetAllowInternetAccess(v bool) *CreateSessionInput {
 	s.AllowInternetAccess = &v
+	return s
+}
+
+func (s *CreateSessionInput) SetAutoPauseFileSystemOnly(v bool) *CreateSessionInput {
+	s.AutoPauseFileSystemOnly = &v
 	return s
 }
 

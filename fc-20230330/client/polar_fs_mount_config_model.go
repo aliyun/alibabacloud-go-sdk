@@ -22,29 +22,31 @@ type iPolarFsMountConfig interface {
 }
 
 type PolarFsMountConfig struct {
+	// The additional mount parameter settings.
+	//
 	// example:
 	//
 	// --skip-delete-rows-check=false  --skip-dir-nlink=0
 	ExtraOptions *string `json:"extraOptions,omitempty" xml:"extraOptions,omitempty"`
-	// The ID of the PolarFS file system instance to mount.
+	// The PolarFS instance ID.
 	//
 	// example:
 	//
 	// pfs-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The local mount directory in the function\\"s runtime environment.
+	// The local mount directory.
 	//
 	// example:
 	//
 	// /mnt/polarfs
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	// Specifies whether the file system is mounted as read-only. If `true`, write operations are prohibited.
+	// The read-only mount.
 	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-	// The directory within the PolarFS file system to mount.
+	// The PolarFS directory.
 	//
 	// example:
 	//

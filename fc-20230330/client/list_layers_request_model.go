@@ -28,25 +28,25 @@ type ListLayersRequest struct {
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token that marks the start of the next page of results.
+	// The pagination start token.
 	//
 	// example:
 	//
 	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Specifies whether the layer is an official layer. Valid values: true and false.
+	// Specifies whether the layer is an official layer. Valid values: true, false.
 	//
 	// example:
 	//
 	// true
 	Official *string `json:"official,omitempty" xml:"official,omitempty"`
-	// The prefix of the layer name.
+	// The layer name prefix.
 	//
 	// example:
 	//
 	// my-layer
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// Specifies whether the layer is public. Valid values: true and false.
+	// Specifies whether the layer is public. Valid values: true, false.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteScalingConfigRequest interface {
 }
 
 type DeleteScalingConfigRequest struct {
-	// The function alias.
+	// The alias of the function.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iCreateLayerVersionRequest interface {
 }
 
 type CreateLayerVersionRequest struct {
-	// The configuration of the layer.
+	// The layer configuration.
 	//
 	// This parameter is required.
 	Body *CreateLayerVersionInput `json:"body,omitempty" xml:"body,omitempty"`

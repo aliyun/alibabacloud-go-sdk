@@ -24,26 +24,38 @@ type iCORSConfig interface {
 }
 
 type CORSConfig struct {
+	// Specifies whether to allow sending credentials.
+	//
 	// example:
 	//
 	// true
 	AllowCredentials *bool `json:"allowCredentials,omitempty" xml:"allowCredentials,omitempty"`
+	// The list of allowed request headers.
+	//
 	// example:
 	//
 	// ["Content-Type", "Authorization"]
 	AllowHeaders []*string `json:"allowHeaders" xml:"allowHeaders" type:"Repeated"`
+	// The list of allowed HTTP methods.
+	//
 	// example:
 	//
 	// ["GET", "POST", "OPTIONS"]
 	AllowMethods []*string `json:"allowMethods" xml:"allowMethods" type:"Repeated"`
+	// The list of allowed origins.
+	//
 	// example:
 	//
 	// ["https://example.com", "https://app.example.com"]
 	AllowOrigins []*string `json:"allowOrigins" xml:"allowOrigins" type:"Repeated"`
+	// The list of exposed response headers.
+	//
 	// example:
 	//
 	// ["X-Custom-Header"]
 	ExposeHeaders []*string `json:"exposeHeaders" xml:"exposeHeaders" type:"Repeated"`
+	// The cache time for preflight requests, in seconds.
+	//
 	// example:
 	//
 	// 3600

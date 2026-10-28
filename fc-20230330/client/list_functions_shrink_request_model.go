@@ -32,33 +32,33 @@ type iListFunctionsShrinkRequest interface {
 }
 
 type ListFunctionsShrinkRequest struct {
-	// The function description to filter by.
+	// The description used to filter functions.
 	//
 	// example:
 	//
 	// test_description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The version to which the function belongs. Valid values:
+	// The version of the function. Valid values:
 	//
-	// - v3: lists only FC 3.0 functions.
+	// - v3: Lists only Function Compute 3.0 functions.
 	//
-	// - v2: lists only FC 2.0 functions.
+	// - v2: Lists only Function Compute 2.0 functions.
 	//
-	// If not specified, both FC 3.0 and FC 2.0 functions are listed.
+	// Default value: empty. An empty value indicates that both Function Compute 3.0 and Function Compute 2.0 functions are listed.
 	//
 	// example:
 	//
 	// v3
 	FcVersion *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
-	// The function name.
+	// The name of the function.
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The function GPU type to filter by.
+	// The GPU type used to filter functions.
 	//
 	// example:
 	//
 	// fc.gpu.tesla.1
 	GpuType *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
-	// The number of functions to return. Minimum value: 1. Maximum value: 100.
+	// The number of functions to return. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -70,21 +70,21 @@ type ListFunctionsShrinkRequest struct {
 	//
 	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The function name prefix.
+	// The prefix of the function name.
 	//
 	// example:
 	//
 	// my-func
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The function runtime to filter by.
+	// The runtime used to filter functions.
 	//
 	// example:
 	//
 	// python3.10
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The function tags to filter by.
+	// The tags used to filter functions.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 

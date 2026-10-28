@@ -40,7 +40,7 @@ type iCustomDomain interface {
 }
 
 type CustomDomain struct {
-	// The ID of the Alibaba Cloud account (primary account).
+	// The ID of your Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -54,11 +54,10 @@ type CustomDomain struct {
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The HTTPS certificate configuration.
+	// The HTTPS certificate information.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	// The cross-origin resource sharing (CORS) configuration.
 	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
-	// The time when the custom domain was created.
+	// The time when the custom domain name was created.
 	//
 	// example:
 	//
@@ -71,19 +70,19 @@ type CustomDomain struct {
 	// example.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	IsE2B      *bool   `json:"isE2B,omitempty" xml:"isE2B,omitempty"`
-	// The time when the custom domain was last modified.
+	// The time when the custom domain name was last updated.
 	//
 	// example:
 	//
 	// 2023-03-30T08:02:19Z
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The protocols that are supported by the domain name. Valid values: HTTP (HTTP only), HTTPS (HTTPS only), and HTTP,HTTPS (both HTTP and HTTPS).
+	// The protocol types supported by the domain name. HTTP: supports only the HTTP protocol. HTTPS: supports only the HTTPS protocol. HTTP,HTTPS: supports both the HTTP and HTTPS protocols.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The route table that maps paths to functions.
+	// The route table that maps paths to functions when the custom domain name is accessed.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
 	// The number of subdomains.
 	//
@@ -93,7 +92,7 @@ type CustomDomain struct {
 	SubdomainCount *string `json:"subdomainCount,omitempty" xml:"subdomainCount,omitempty"`
 	// The TLS configuration.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
-	// The Web Application Firewall (WAF) aconfiguration.
+	// The Web Application Firewall (WAF) configuration.
 	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 

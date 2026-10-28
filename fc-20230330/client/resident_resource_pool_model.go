@@ -34,22 +34,22 @@ type iResidentResourcePool interface {
 }
 
 type ResidentResourcePool struct {
-	// The real-time allocation status of the resource pool, including the specific allocation details for each function.
+	// 资源池实时分配情况，包含每个函数的具体分配情况
 	AllocationStatus *ResidentResourceAllocationStatus `json:"allocationStatus,omitempty" xml:"allocationStatus,omitempty"`
 	AssociatedPoolId *string                           `json:"associatedPoolId,omitempty" xml:"associatedPoolId,omitempty"`
-	// The resource property field that represents the creation time.
+	// 代表创建时间的资源属性字段
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The expiration time of the resource pool.
+	// 资源池过期时间
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The last modification time, including operations such as scaling, renewal, and renaming.
+	// 上次修改时间，包含扩容、续费、更名等操作
 	LastModifiedTime       *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	PoolType               *string `json:"poolType,omitempty" xml:"poolType,omitempty"`
 	ResidentResourcePoolId *string `json:"residentResourcePoolId,omitempty" xml:"residentResourcePoolId,omitempty"`
-	// The resource property field that represents the resource name.
+	// 代表资源名称的资源属性字段
 	ResidentResourcePoolName *string `json:"residentResourcePoolName,omitempty" xml:"residentResourcePoolName,omitempty"`
-	// The overall specifications of the resource pool.
+	// 资源池总体规格
 	ResourcePoolCapacity *ResidentResourceCapacity `json:"resourcePoolCapacity,omitempty" xml:"resourcePoolCapacity,omitempty"`
 	ResourcePoolConfig   *ResidentResourceCapacity `json:"resourcePoolConfig,omitempty" xml:"resourcePoolConfig,omitempty"`
 	TimedConfig          *TimedPoolConfig          `json:"timedConfig,omitempty" xml:"timedConfig,omitempty"`

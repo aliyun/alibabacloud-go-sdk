@@ -14,7 +14,7 @@ type iDeleteProvisionConfigRequest interface {
 }
 
 type DeleteProvisionConfigRequest struct {
-	// The function alias.
+	// The alias of the function.
 	//
 	// example:
 	//

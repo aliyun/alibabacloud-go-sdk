@@ -29,12 +29,20 @@ type iListInstancesRequest interface {
 
 type ListInstancesRequest struct {
 	// The end time of the query range, specified as a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1790899200000
 	EndTimeMs *int64 `json:"endTimeMs,omitempty" xml:"endTimeMs,omitempty"`
 	// A list of instance IDs to return.
 	InstanceIds []*string `json:"instanceIds" xml:"instanceIds" type:"Repeated"`
 	// An array of instance statuses. The operation returns only instances whose status is in this array.
 	InstanceStatus []*string `json:"instanceStatus" xml:"instanceStatus" type:"Repeated"`
 	// The maximum number of instances to return.
+	//
+	// example:
+	//
+	// 100
 	Limit *string `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The function version or alias.
 	//
@@ -43,8 +51,16 @@ type ListInstancesRequest struct {
 	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	// The token that specifies where to start the query. It is returned in a truncated response and can be used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// c-01234567-89abcdef-0123456789ab～
 	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 	// The start time of the query range, specified as a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1790812800000
 	StartTimeMs *int64 `json:"startTimeMs,omitempty" xml:"startTimeMs,omitempty"`
 	// Specifies whether to list all active instances.
 	//

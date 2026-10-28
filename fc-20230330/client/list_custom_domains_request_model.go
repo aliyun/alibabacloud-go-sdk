@@ -24,13 +24,13 @@ type ListCustomDomainsRequest struct {
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token that is used to start paging.
+	// The pagination start token.
 	//
 	// example:
 	//
 	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The prefix of the domain name.
+	// The domain name prefix.
 	//
 	// example:
 	//

@@ -21,10 +21,12 @@ type iMicroSandboxConfig interface {
 	GetRegistryConfig() *RegistryConfig
 	SetStartCommand(v string) *MicroSandboxConfig
 	GetStartCommand() *string
+	SetSteps(v []*Step) *MicroSandboxConfig
+	GetSteps() []*Step
 }
 
 type MicroSandboxConfig struct {
-	// The instance ID of the Container Registry (ACR) Enterprise Edition image repository. This parameter is used together with MicroSandbox images. This parameter is optional. If not provided, the server resolves it as needed.
+	// The ID of the ACR Enterprise Edition image repository instance. It is used in combination with MicroSandbox images. This parameter is optional. If it is not provided, the server resolves it on demand.
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
 	// The image address.
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
@@ -34,8 +36,10 @@ type MicroSandboxConfig struct {
 	ReadyCommand *string `json:"readyCommand,omitempty" xml:"readyCommand,omitempty"`
 	// The image repository configuration.
 	RegistryConfig *RegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
-	// The start command.
+	// The startup command.
 	StartCommand *string `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
+	// The build steps.
+	Steps []*Step `json:"steps" xml:"steps" type:"Repeated"`
 }
 
 func (s MicroSandboxConfig) String() string {
@@ -70,6 +74,10 @@ func (s *MicroSandboxConfig) GetStartCommand() *string {
 	return s.StartCommand
 }
 
+func (s *MicroSandboxConfig) GetSteps() []*Step {
+	return s.Steps
+}
+
 func (s *MicroSandboxConfig) SetAcrInstanceId(v string) *MicroSandboxConfig {
 	s.AcrInstanceId = &v
 	return s
@@ -100,10 +108,24 @@ func (s *MicroSandboxConfig) SetStartCommand(v string) *MicroSandboxConfig {
 	return s
 }
 
+func (s *MicroSandboxConfig) SetSteps(v []*Step) *MicroSandboxConfig {
+	s.Steps = v
+	return s
+}
+
 func (s *MicroSandboxConfig) Validate() error {
 	if s.RegistryConfig != nil {
 		if err := s.RegistryConfig.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Steps != nil {
+		for _, item := range s.Steps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil

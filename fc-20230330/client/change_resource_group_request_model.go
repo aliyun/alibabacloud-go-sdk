@@ -14,7 +14,7 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
-	// The request body to change the resource group.
+	// The request information for updating the resource group.
 	Body *ChangeResourceGroupInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

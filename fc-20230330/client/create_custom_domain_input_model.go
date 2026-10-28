@@ -30,12 +30,13 @@ type iCreateCustomDomainInput interface {
 }
 
 type CreateCustomDomainInput struct {
-	// Permission authentication configuration.
+	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// HTTPS certificate information.
+	// The HTTPS certificate information.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// The CORS configuration.
 	CorsConfig *CORSConfig `json:"corsConfig,omitempty" xml:"corsConfig,omitempty"`
-	// Domain name. Enter a custom domain name that has an ICP filing with Alibaba Cloud or has added Alibaba Cloud to the ICP filing information as a service provider.
+	// The domain name. Specify a custom domain name that has an ICP filing obtained through Alibaba Cloud or has been added to Alibaba Cloud for ICP filing.
 	//
 	// This parameter is required.
 	//
@@ -44,17 +45,23 @@ type CreateCustomDomainInput struct {
 	// example.com
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	IsE2B      *bool   `json:"isE2B,omitempty" xml:"isE2B,omitempty"`
-	// Protocol type supported by the domain. HTTP: supports HTTP only. HTTPS: supports HTTPS only. HTTP,HTTPS: supports both HTTP and HTTPS.
+	// The protocol types supported by the domain name. Valid values:
+	//
+	// - HTTP: Only the HTTP protocol is supported.
+	//
+	// - HTTPS: Only the HTTPS protocol is supported.
+	//
+	// - HTTP,HTTPS: Both the HTTP and HTTPS protocols are supported.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// Route table: maps PATHs to functions when accessing the custom domain.
+	// The route table that maps paths to functions when the custom domain name is accessed.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	// TLS configuration information.
+	// The TLS configuration information.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
-	// Web Application Firewall configuration information.
+	// The WAF configuration information.
 	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 

@@ -17,7 +17,7 @@ type iPauseSessionRequest interface {
 
 type PauseSessionRequest struct {
 	FileSystemOnly *string `json:"fileSystemOnly,omitempty" xml:"fileSystemOnly,omitempty"`
-	// The function alias or version associated with the session ID to save.
+	// The alias or version of the function associated with the session ID to be saved.
 	//
 	// example:
 	//

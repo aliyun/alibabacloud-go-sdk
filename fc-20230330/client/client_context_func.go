@@ -9,11 +9,11 @@ import (
 
 // Summary:
 //
-// Changes the resource group of a Function Compute resource.
+// Updates the resource group of a Function Compute resource.
 //
 // Description:
 //
-// To change the resource group of a Function Compute resource, you must have the ChangeResourceGroup permission for both the current and target resource groups.
+// Updates the resource group of a Function Compute resource. You must grant the user the ChangeResourceGroup permission on both the current and target resource groups.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -101,7 +101,7 @@ func (client *Client) CreateAliasWithContext(ctx context.Context, functionName *
 //
 // Description:
 //
-// You can attach a custom domain name to an application or function in Function Compute to access it through a fixed domain name in a production environment, or to resolve the forced download behavior when you access an HTTP trigger.
+// To access applications or functions created in Function Compute through a fixed domain name in a production environment, or to resolve the forced download behavior when accessing HTTP triggers, you can bind a custom domain name to the application or function.
 //
 // @param request - CreateCustomDomainRequest
 //
@@ -143,11 +143,11 @@ func (client *Client) CreateCustomDomainWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a function by calling the CreateFunction operation.
+// Creates a function.
 //
 // Description:
 //
-// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is reported, grant the current user access permissions on the OSS bucket. For example, you can use the system access policy AliyunOSSReadOnlyAccess or a custom policy with finer granularity such as authorization for oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
+// When you create a function by using an OSS code package, if the error "unable to access object xxx in bucket xxx" is returned, grant the current user access permissions to the OSS bucket. For example, you can attach the system access policy AliyunOSSReadOnlyAccess or a custom authorization with finer granularity such as oss:GetObject. For details about the policy content, see [Grant a Resource Access Management (RAM) user the permissions to read all resources in a bucket](https://help.aliyun.com/document_detail/199058.html).
 //
 // @param request - CreateFunctionRequest
 //
@@ -189,7 +189,7 @@ func (client *Client) CreateFunctionWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// This operation publishes a layer version.
+// Publishes a layer version.
 //
 // @param request - CreateLayerVersionRequest
 //
@@ -231,7 +231,7 @@ func (client *Client) CreateLayerVersionWithContext(ctx context.Context, layerNa
 
 // Summary:
 //
-// Creates an explicit session resource. The system automatically generates a unique SessionID, pre-allocates a function instance, and binds it to the session. You can specify TTL and IdleTimeout. This operation applies to the HEADER_FIELD or GENERATED_COOKIE affinity types to implement session warm-up and configuration initialization. After the call, you can include the session in InvokeFunction requests for request routing.
+// Creates an explicit session resource. The system automatically generates a unique session ID, pre-allocates a function instance, and binds the instance to the session. You can specify the TTL and idle timeout. This operation applies to the HEADER_FIELD or GENERATED_COOKIE affinity types to implement session warm-up and configuration initialization. After the session is created, you can include the session ID in InvokeFunction requests to route requests.
 //
 // @param request - CreateSessionRequest
 //
@@ -283,15 +283,15 @@ func (client *Client) CreateSessionWithContext(ctx context.Context, functionName
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API operation creates a user snapshot from a specified micro-sandbox session.
+// - This operation creates a user snapshot from the specified micro-sandbox session.
 //
-// - The optional parameter `qualifier` identifies the valid alias or specific function version used when creating the source session. If omitted, it defaults to `LATEST`.
+// - The optional `qualifier` parameter identifies the valid alias or specific function version used when the source session was created. If omitted, the default value is `LATEST`.
 //
-// - The `sessionId` parameter is required to specify the client session ID from which to create the snapshot.
+// - The `sessionId` parameter is required to specify the client session ID from which the snapshot is created.
 //
-// - The `description` parameter is optional. If provided, it cannot contain control characters and is limited to 256 UTF-8 bytes.
+// - The `description` parameter is optional. If provided, it must not contain control characters and is limited to 256 UTF-8 bytes in length.
 //
 // @param request - CreateSnapshotRequest
 //
@@ -456,7 +456,7 @@ func (client *Client) DeleteAliasWithContext(ctx context.Context, functionName *
 
 // Summary:
 //
-// Deletes an asynchronous invocation configuration.
+// Deletes the asynchronous invocation configuration.
 //
 // @param request - DeleteAsyncInvokeConfigRequest
 //
@@ -503,7 +503,7 @@ func (client *Client) DeleteAsyncInvokeConfigWithContext(ctx context.Context, fu
 
 // Summary:
 //
-// Deletes a concurrency configuration.
+// Deletes the concurrency configuration.
 //
 // @param headers - map
 //
@@ -668,7 +668,7 @@ func (client *Client) DeleteLayerVersionWithContext(ctx context.Context, layerNa
 
 // Summary:
 //
-// Deletes a provisioned configuration.
+// Deletes the provisioned configuration.
 //
 // @param request - DeleteProvisionConfigRequest
 //
@@ -715,7 +715,7 @@ func (client *Client) DeleteProvisionConfigWithContext(ctx context.Context, func
 
 // Summary:
 //
-// Deletes the scaling settings of a function.
+// Deletes the elastic configuration of a function.
 //
 // @param request - DeleteScalingConfigRequest
 //
@@ -862,7 +862,7 @@ func (client *Client) DeleteSnapshotWithContext(ctx context.Context, functionNam
 
 // Summary:
 //
-// Deletes the specified trigger.
+// Deletes a specified trigger.
 //
 // @param headers - map
 //
@@ -895,7 +895,7 @@ func (client *Client) DeleteTriggerWithContext(ctx context.Context, functionName
 
 // Summary:
 //
-// Deletes an access control policy from a specified VPC firewall policy group.
+// Deletes the access control policy of a specified VPC firewall policy group.
 //
 // @param headers - map
 //
@@ -928,7 +928,7 @@ func (client *Client) DeleteVpcBindingWithContext(ctx context.Context, functionN
 
 // Summary:
 //
-// Queries the regions where Function Compute 3.0 is available.
+// Queries the regions supported by Function Compute 3.0.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1223,7 +1223,7 @@ func (client *Client) GetConcurrencyConfigWithContext(ctx context.Context, funct
 
 // Summary:
 //
-// Retrieves the configuration of a custom domain name.
+// Retrieves the custom domain name configuration.
 //
 // @param headers - map
 //
@@ -1463,7 +1463,7 @@ func (client *Client) GetProvisionConfigWithContext(ctx context.Context, functio
 
 // Summary:
 //
-// Retrieves the scaling configuration for a function.
+// Retrieves the elastic configuration of a function.
 //
 // @param request - GetScalingConfigRequest
 //
@@ -1510,7 +1510,7 @@ func (client *Client) GetScalingConfigWithContext(ctx context.Context, functionN
 
 // Summary:
 //
-// Retrieves the details of a specified session, including the session ID, associated function, affinity type, lifecycle configuration, status, and instance information. This operation queries the current metadata of a single session, supports precise identification by functionName and qualifier for external system monitoring and debugging, and only supports querying sessions in the Active state.
+// Retrieves the details of a specified session, including the session ID, associated function, affinity type, lifecycle configuration, status, and instance information. This operation queries the current metadata of a single session and supports precise lookup by functionName and qualifier to facilitate monitoring and debugging by external systems. Only sessions in the Active state can be queried.
 //
 // @param request - GetSessionRequest
 //
@@ -1561,11 +1561,11 @@ func (client *Client) GetSessionWithContext(ctx context.Context, functionName *s
 //
 // Description:
 //
-// - This API operation retrieves the MicroSandbox snapshot information of a specified function for the user.
+// - Retrieves user MicroSandbox snapshot information for a specified function.
 //
-// - Snapshot details are returned only when the snapshot belongs to the current function, has a status of Available, and has not expired.
+// - Returns snapshot details only when the snapshot belongs to the current function, its status is Available, and it has not expired.
 //
-// - If the snapshot does not exist, has expired, is being created, is being deleted, is an internal snapshot, or does not belong to the current function, it is treated as invisible and a 404 SnapshotNotFound error is returned.
+// - Treats the snapshot as invisible and returns a 404 SnapshotNotFound error if the snapshot does not exist, has expired, is being created, is being deleted, is an internal snapshot, or does not belong to the current function.
 //
 // @param request - GetSnapshotRequest
 //
@@ -2080,7 +2080,7 @@ func (client *Client) ListFunctionVersionsWithContext(ctx context.Context, funct
 //
 // Description:
 //
-// ListFunctions returns only a subset of function attribute fields. To retrieve more attribute fields for a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+// Calling ListFunctions returns only a subset of function property fields. To retrieve more properties of a specific function, including state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
 //
 // @param tmpReq - ListFunctionsRequest
 //
@@ -2305,7 +2305,7 @@ func (client *Client) ListLayerVersionsWithContext(ctx context.Context, layerNam
 
 // Summary:
 //
-// Lists layers.
+// Retrieves a list of layers.
 //
 // @param request - ListLayersRequest
 //
@@ -2423,7 +2423,7 @@ func (client *Client) ListProvisionConfigsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Lists the auto scaling configurations for a function.
+// Lists the elastic configurations of a function.
 //
 // @param request - ListScalingConfigsRequest
 //
@@ -2478,7 +2478,7 @@ func (client *Client) ListScalingConfigsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists sessions in Active or Expired status under a specified function. Supports filtering by qualifier, status, and session ID, and supports paging. Returns basic session properties for batch viewing of session distribution and status, facilitating Service Monitoring and external system integration, and improving session visibility and management capabilities.
+// Lists the active or expired sessions of a specified function. This operation supports filtering by qualifier, status, and session ID, and supports paging. It returns the basic property of sessions to help you view session distribution and status in batches, facilitate Service Monitoring and external system integration, and improve session visibility and management.
 //
 // @param request - ListSessionsRequest
 //
@@ -2689,7 +2689,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// Lists the triggers for a specified function.
+// Queries the list of triggers for a specified function.
 //
 // @param request - ListTriggersRequest
 //
@@ -2777,11 +2777,11 @@ func (client *Client) ListVpcBindingsWithContext(ctx context.Context, functionNa
 
 // Summary:
 //
-// Pauses and saves a session.
+// Pauses or saves a session.
 //
 // Description:
 //
-// Pauses an Active session by persisting the state of its associated execution environment and then releasing compute resources. After you invoke this operation, the session status changes to Paused, and the session no longer accepts function invocation requests. This operation retains the session configuration (such as SessionTTL) and SessionID. You can use it to break long-running tasks or save snapshots of development environments for cost optimization and state management. This operation applies to custom image functions configured with the HEADER_FIELD or GENERATED_COOKIE affinity type and session isolation.
+// Pauses an Active session, persists the state of the environment used to execute functions, and then releases compute resources. After you invoke this operation, the session state changes to Paused, and the session no longer accepts function invocation requests. This operation retains the session configurations, such as SessionTTL, and the SessionID. It can be used to interrupt long-running tasks or save snapshots of development environments for cost optimization and state management. This operation applies to custom image functions that are configured with the HEADER_FIELD or GENERATED_COOKIE affinity type and session isolation.
 //
 // @param request - PauseSessionRequest
 //
@@ -3063,7 +3063,7 @@ func (client *Client) PutProvisionConfigWithContext(ctx context.Context, functio
 
 // Summary:
 //
-// Set the elastic scaling configuration for a function.
+// Sets the elastic configuration for a function.
 //
 // @param request - PutScalingConfigRequest
 //
@@ -3115,7 +3115,7 @@ func (client *Client) PutScalingConfigWithContext(ctx context.Context, functionN
 //
 // Description:
 //
-// Resumes a session that is in the Paused state. The system quickly restores the session in a new execution environment based on the previously persisted state, returning it to the state before it was paused. After the session is successfully resumed, its status changes back to Active, and it can continue to accept function calling requests that are routed to the restored instance. This operation applies to custom image functions that are configured with the HEADER_FIELD or GENERATED_COOKIE affinity type and session isolation.
+// Resumes a session in the Paused state. The system quickly resumes the session in a new environment to execute based on the previously persisted state, restoring it to the state before it was paused. After the session is successfully resumed, its state changes back to Active, and it can continue to receive requests to invoke functions and route them to the resumed instance. This operation applies to custom image functions configured with the HEADER_FIELD or GENERATED_COOKIE affinity type and session isolation.
 //
 // @param request - ResumeSessionRequest
 //
@@ -3408,7 +3408,7 @@ func (client *Client) UpdateCustomDomainWithContext(ctx context.Context, domainN
 
 // Summary:
 //
-// Updates function information.
+// Updates the function information.
 //
 // @param request - UpdateFunctionRequest
 //
@@ -3450,7 +3450,7 @@ func (client *Client) UpdateFunctionWithContext(ctx context.Context, functionNam
 
 // Summary:
 //
-// Updates the configuration of a session in Active state, such as lifecycle settings including SessionTTLInSeconds and SessionIdleTimeoutInSeconds. The update takes effect immediately, and LastModifiedTime is automatically refreshed. You can use this operation to extend or shorten the session validity period for dynamic management without changing the execution environment bound to the session.
+// Updates the session configuration for active sessions, such as lifecycle configurations including SessionTTLInSeconds and SessionIdleTimeoutInSeconds. The updates take effect immediately, and LastModifiedTime is automatically refreshed. This operation extends or shortens the session validity period to implement dynamic management without changing the execution environment bound to the session.
 //
 // @param request - UpdateSessionRequest
 //
@@ -3498,7 +3498,7 @@ func (client *Client) UpdateSessionWithContext(ctx context.Context, functionName
 
 // Summary:
 //
-// Updates the information of a trigger.
+// Updates the trigger information.
 //
 // @param request - UpdateTriggerRequest
 //

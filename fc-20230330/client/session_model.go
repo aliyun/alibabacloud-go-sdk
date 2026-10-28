@@ -11,6 +11,8 @@ type iSession interface {
 	GoString() string
 	SetAllowInternetAccess(v bool) *Session
 	GetAllowInternetAccess() *bool
+	SetAutoPauseFileSystemOnly(v bool) *Session
+	GetAutoPauseFileSystemOnly() *bool
 	SetContainerId(v string) *Session
 	GetContainerId() *string
 	SetCreatedTime(v string) *Session
@@ -52,7 +54,8 @@ type iSession interface {
 }
 
 type Session struct {
-	AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+	AllowInternetAccess     *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+	AutoPauseFileSystemOnly *bool `json:"autoPauseFileSystemOnly,omitempty" xml:"autoPauseFileSystemOnly,omitempty"`
 	// The instance ID of the function associated with the session.
 	//
 	// example:
@@ -152,6 +155,10 @@ func (s *Session) GetAllowInternetAccess() *bool {
 	return s.AllowInternetAccess
 }
 
+func (s *Session) GetAutoPauseFileSystemOnly() *bool {
+	return s.AutoPauseFileSystemOnly
+}
+
 func (s *Session) GetContainerId() *string {
 	return s.ContainerId
 }
@@ -230,6 +237,11 @@ func (s *Session) GetTrafficAccessToken() *string {
 
 func (s *Session) SetAllowInternetAccess(v bool) *Session {
 	s.AllowInternetAccess = &v
+	return s
+}
+
+func (s *Session) SetAutoPauseFileSystemOnly(v bool) *Session {
+	s.AutoPauseFileSystemOnly = &v
 	return s
 }
 
