@@ -116,9 +116,9 @@ type iGetJobResponseBody interface {
 type GetJobResponseBody struct {
 	// The visibility of the job. Valid values:
 	//
-	// - PUBLIC: The job is visible to all users in the workspace.
+	// - PUBLIC: Visible to all users in the workspace.
 	//
-	// - PRIVATE (default): The job is visible only to you and administrators in the workspace.
+	// - PRIVATE (default): Visible only to you and administrators in the workspace.
 	//
 	// example:
 	//
@@ -133,18 +133,24 @@ type GetJobResponseBody struct {
 	// The code source.
 	CodeSource *GetJobResponseBodyCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
 	// The access credential configuration.
-	CredentialConfig *CredentialConfig               `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	CustomEnvs       []*GetJobResponseBodyCustomEnvs `json:"CustomEnvs,omitempty" xml:"CustomEnvs,omitempty" type:"Repeated"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The list of custom environment variables.
+	CustomEnvs []*GetJobResponseBodyCustomEnvs `json:"CustomEnvs,omitempty" xml:"CustomEnvs,omitempty" type:"Repeated"`
 	// The list of data sources.
 	DataSources []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	Description *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the job.
+	//
+	// example:
+	//
+	// This is a training job
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The job name.
 	//
 	// example:
 	//
 	// tf-mnist-test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The job duration. Unit: seconds.
+	// The runtime of the job, in seconds.
 	//
 	// example:
 	//
@@ -152,7 +158,7 @@ type GetJobResponseBody struct {
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The elastic job parameters.
 	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
-	// Indicates whether the debugger job is enabled.
+	// Indicates whether the debugger task is enabled.
 	//
 	// example:
 	//
@@ -172,7 +178,7 @@ type GetJobResponseBody struct {
 	//
 	// 2021-01-12T15:36:08Z
 	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
-	// The time when the job finished (UTC).
+	// The time when the job ended (UTC).
 	//
 	// example:
 	//
@@ -196,7 +202,7 @@ type GetJobResponseBody struct {
 	//
 	// 2021-01-12T14:36:01Z
 	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
-	// The time when the job completed successfully (UTC).
+	// The time when the job successfully ended (UTC).
 	//
 	// example:
 	//
@@ -208,17 +214,17 @@ type GetJobResponseBody struct {
 	//
 	// dlc*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The job replica statuses.
+	// The job replica status.
 	JobReplicaStatuses []*JobReplicaStatus `json:"JobReplicaStatuses,omitempty" xml:"JobReplicaStatuses,omitempty" type:"Repeated"`
-	// The node configurations in the job. For more information, see **JobSpecs*	- in the CreateJob API.
+	// The node configurations in the job. Refer to **JobSpecs*	- in the CreateJob operation.
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	// The job type. Specified by the JobType parameter in the [CreateJob](https://help.aliyun.com/document_detail/459672.html) API.
+	// The job type. This is specified by the JobType parameter in the [CreateJob](https://help.aliyun.com/document_detail/459672.html) operation.
 	//
 	// example:
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// All pods running in the job.
+	// All running pods of the job.
 	Pods []*GetJobResponseBodyPods `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
 	// The priority of the job. Valid values: 1 to 9.
 	//
@@ -226,7 +232,7 @@ type GetJobResponseBody struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The status detail code, which categorizes the substatus under the current status (Status).
+	// The reason code, which categorizes the substatus under the current status.
 	//
 	// example:
 	//
@@ -238,56 +244,57 @@ type GetJobResponseBody struct {
 	//
 	// Job is stopped by user.
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// The amount of CPU resources required by the job.
+	// The amount of CPU resources requested by the job.
 	//
 	// example:
 	//
 	// 10
 	RequestCPU *int32 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
-	// The amount of GPU resources required by the job.
+	// The amount of GPU resources requested by the job.
 	//
 	// example:
 	//
 	// 10
 	RequestGPU *float64 `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
-	// The request ID, which is used for diagnostics and troubleshooting.
+	// The request ID, which is used for troubleshooting and support.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The amount of memory resources required by the job.
+	// The amount of memory resources requested by the job.
 	//
 	// example:
 	//
 	// 10
 	RequestMemory *float64 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
-	// The ID of the resource group in which the job runs.
+	// The ID of the resource group where the job runs.
 	//
 	// example:
 	//
 	// r******
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource level used by the job at runtime.
+	// The resource level used when the job runs.
 	//
 	// example:
 	//
 	// L0
 	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
-	// The resource type. Valid values: ECS, Lingjun, ACS.
+	// The resource type. Valid values: ECS, Lingjun, and ACS.
 	//
 	// example:
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The job restart records.
+	// The restart records of the job.
 	RestartRecord []*GetJobResponseBodyRestartRecord `json:"RestartRecord,omitempty" xml:"RestartRecord,omitempty" type:"Repeated"`
-	// The number of retries used by the job and the maximum number of retries.
+	// The number of retries used and the maximum number of retries for the job.
 	//
 	// example:
 	//
 	// 0/10
-	RestartTimes   *string                           `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
+	RestartTimes *string `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
+	// The system environment variables grouped by task role.
 	RoleSystemEnvs map[string]map[string]interface{} `json:"RoleSystemEnvs,omitempty" xml:"RoleSystemEnvs,omitempty"`
 	// The scheduling strategy configuration.
 	//
@@ -295,7 +302,7 @@ type GetJobResponseBody struct {
 	//
 	// Auto
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
-	// The additional parameter settings of the job.
+	// The additional parameter settings for the job.
 	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// The running status of the job. Valid values:
 	//
@@ -343,13 +350,13 @@ type GetJobResponseBody struct {
 	//
 	// GAR***W134
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The folder where the third-party library (requirements.txt) file is located.
+	// The directory where the third-party library (requirements.txt) file is located.
 	//
 	// example:
 	//
 	// /root/code/
 	ThirdpartyLibDir *string `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	// The list of third-party Python libraries to install.
+	// The list of third-party Python libraries to be installed.
 	ThirdpartyLibs []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
 	// The startup command for each node.
 	//
@@ -1020,8 +1027,23 @@ func (s *GetJobResponseBodyCodeSource) Validate() error {
 }
 
 type GetJobResponseBodyCustomEnvs struct {
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value   *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the environment variable.
+	//
+	// example:
+	//
+	// PUB
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the environment variable.
+	//
+	// example:
+	//
+	// keep
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The visibility of the environment variable. Valid values: public and private.
+	//
+	// example:
+	//
+	// public
 	Visible *string `json:"Visible,omitempty" xml:"Visible,omitempty"`
 }
 
@@ -1071,7 +1093,7 @@ type GetJobResponseBodyDataSources struct {
 	//
 	// d*******
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The local mount path. This is an optional parameter. If left empty, the mount path specified in the data source is used.
+	// The local mount path. This parameter is optional and empty by default, which indicates that the mount path in the data source is used.
 	//
 	// example:
 	//
@@ -1125,7 +1147,11 @@ func (s *GetJobResponseBodyDataSources) Validate() error {
 }
 
 type GetJobResponseBodyPods struct {
-	// The pod duration.
+	// The runtime of the pod.
+	//
+	// example:
+	//
+	// 0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The time when the pod was created (UTC).
 	//
@@ -1133,7 +1159,7 @@ type GetJobResponseBodyPods struct {
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the pod finished (UTC).
+	// The time when the pod ended (UTC).
 	//
 	// example:
 	//
@@ -1153,9 +1179,9 @@ type GetJobResponseBodyPods struct {
 	//
 	// 10.0.1.2
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The node name.
+	// The name of the node.
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The node ID. You can use this ID with the GetPodLogs and GetPodEvents APIs to retrieve detailed logs and events for the node.
+	// The ID of the pod. You can use this ID in the GetPodLogs and GetPodEvents API operations to retrieve detailed logs and events of the pod.
 	//
 	// example:
 	//
@@ -1163,7 +1189,7 @@ type GetJobResponseBodyPods struct {
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
 	// The IP addresses of the pod.
 	PodIps []*PodNetworkInterface `json:"PodIps,omitempty" xml:"PodIps,omitempty" type:"Repeated"`
-	// Pod UID。
+	// The pod UID.
 	//
 	// example:
 	//
@@ -1175,7 +1201,7 @@ type GetJobResponseBodyPods struct {
 	//
 	// Normal
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The node status. Valid values:
+	// The status of the pod. Valid values:
 	//
 	// - Pending
 	//
@@ -1191,7 +1217,7 @@ type GetJobResponseBodyPods struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The pod substatus, such as the preemption status. Valid values:
+	// The substatus of the pod, such as the preemption status. Valid values:
 	//
 	// - Normal
 	//
@@ -1201,7 +1227,7 @@ type GetJobResponseBodyPods struct {
 	//
 	// Normal
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	// The node type, which corresponds to a specific JobSpec in the JobSpecs parameter of the CreateJob operation.
+	// The type of the pod. This corresponds to a specific JobSpec in the JobSpecs parameter of the CreateJob operation.
 	//
 	// example:
 	//
@@ -1381,7 +1407,11 @@ func (s *GetJobResponseBodyPods) Validate() error {
 }
 
 type GetJobResponseBodyPodsHistoryPods struct {
-	// The pod duration.
+	// The runtime of the pod.
+	//
+	// example:
+	//
+	// 0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The time when the pod was created (UTC).
 	//
@@ -1389,27 +1419,27 @@ type GetJobResponseBodyPodsHistoryPods struct {
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the pod ended (UTC).
+	// The end time of the pod in UTC.
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	// The time when the pod started (UTC).
+	// The start time of the pod in UTC.
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	// Pod IP。
+	// The pod IP address.
 	//
 	// example:
 	//
 	// 10.0.1.3
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The node name.
+	// The name of the node.
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// Pod ID。
+	// The pod ID.
 	//
 	// example:
 	//
@@ -1417,7 +1447,7 @@ type GetJobResponseBodyPodsHistoryPods struct {
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
 	// The IP addresses of the pod.
 	PodIps []*PodNetworkInterface `json:"PodIps,omitempty" xml:"PodIps,omitempty" type:"Repeated"`
-	// Pod UID。
+	// The pod UID.
 	//
 	// example:
 	//
@@ -1429,13 +1459,13 @@ type GetJobResponseBodyPodsHistoryPods struct {
 	//
 	// Normal
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The pod status.
+	// The status of the pod.
 	//
 	// example:
 	//
 	// Failed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The pod substatus, such as the preemption status. Valid values:
+	// The substatus of the pod, such as the preemption status. Valid values:
 	//
 	// - Normal
 	//
@@ -1445,7 +1475,7 @@ type GetJobResponseBodyPodsHistoryPods struct {
 	//
 	// Normal
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	// The pod type.
+	// The type of the pod.
 	//
 	// example:
 	//
@@ -1607,21 +1637,29 @@ func (s *GetJobResponseBodyPodsHistoryPods) Validate() error {
 }
 
 type GetJobResponseBodyRestartRecord struct {
-	// The list of fault error messages.
+	// The list of fault messages.
 	DetailErrorInfoList []*GetJobResponseBodyRestartRecordDetailErrorInfoList `json:"DetailErrorInfoList,omitempty" xml:"DetailErrorInfoList,omitempty" type:"Repeated"`
 	// The number of job restarts.
+	//
+	// example:
+	//
+	// 0
 	JobRestartCount *int64 `json:"JobRestartCount,omitempty" xml:"JobRestartCount,omitempty"`
 	// The phase in which the event occurred.
 	OccurPhase *string `json:"OccurPhase,omitempty" xml:"OccurPhase,omitempty"`
 	// The time when the event occurred.
 	OccurTime *string `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
-	// The reason for the restart.
+	// The reason.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The restart duration, in seconds.
+	// The restart duration in seconds.
+	//
+	// example:
+	//
+	// 0
 	RestartDurationInSec *int64 `json:"RestartDurationInSec,omitempty" xml:"RestartDurationInSec,omitempty"`
 	// The reason for the restart failure.
 	RestartFailReason *string `json:"RestartFailReason,omitempty" xml:"RestartFailReason,omitempty"`
-	// The restart level (pod-level restart or job-level restart).
+	// The restart level, such as pod-level restart or job-level restart.
 	RestartLevelType *string `json:"RestartLevelType,omitempty" xml:"RestartLevelType,omitempty"`
 	// The restart status.
 	RestartStatus *string `json:"RestartStatus,omitempty" xml:"RestartStatus,omitempty"`
@@ -1741,7 +1779,7 @@ func (s *GetJobResponseBodyRestartRecord) Validate() error {
 }
 
 type GetJobResponseBodyRestartRecordDetailErrorInfoList struct {
-	// The job-level blacklist.
+	// The job blacklist.
 	AddJobLevelBlacklist *bool `json:"AddJobLevelBlacklist,omitempty" xml:"AddJobLevelBlacklist,omitempty"`
 	// The node blacklist.
 	AddNodeToBlacklist *bool `json:"AddNodeToBlacklist,omitempty" xml:"AddNodeToBlacklist,omitempty"`
@@ -1749,7 +1787,7 @@ type GetJobResponseBodyRestartRecordDetailErrorInfoList struct {
 	DetailErrorMsg *string `json:"DetailErrorMsg,omitempty" xml:"DetailErrorMsg,omitempty"`
 	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The fault error message.
+	// The error message.
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The error source.
 	ErrorSource *string `json:"ErrorSource,omitempty" xml:"ErrorSource,omitempty"`
@@ -1757,7 +1795,7 @@ type GetJobResponseBodyRestartRecordDetailErrorInfoList struct {
 	Node *string `json:"Node,omitempty" xml:"Node,omitempty"`
 	// The instance.
 	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
-	// Indicates whether a restart is triggered.
+	// Specifies whether a restart is triggered.
 	TriggerRestart *bool `json:"TriggerRestart,omitempty" xml:"TriggerRestart,omitempty"`
 }
 
@@ -1857,11 +1895,15 @@ func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) Validate() error {
 type GetJobResponseBodyUserVpc struct {
 	// The default route. This parameter is valid only for general computing resources. Valid values:
 	//
-	// eth0: uses the default network interface controller (NIC) to access external networks through the public gateway.
+	// eth0: Uses the default network interface controller (NIC) to access external networks through the public gateway.
 	//
-	// eth1: uses the user elastic network interfaces (ENIs) to access external networks through the private gateway.
+	// eth1: Uses the user elastic network interface (ENI) to access external networks through the private gateway.
+	//
+	// example:
+	//
+	// eth0
 	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	// The extended CIDR blocks. Example: 192.168.0.1/24.
+	// The extended CIDR block. Example: 192.168.0.1/24.
 	ExtendedCidrs []*string `json:"ExtendedCidrs,omitempty" xml:"ExtendedCidrs,omitempty" type:"Repeated"`
 	// The ID of the user security group.
 	//

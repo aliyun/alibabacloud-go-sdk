@@ -20,10 +20,22 @@ type iAssumeUserInfo interface {
 }
 
 type AssumeUserInfo struct {
-	AccessKeyId   *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The AccessKey ID used for role assumption.
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 203610320085271232
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The security token used for role assumption.
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user identity type.
+	//
+	// example:
+	//
+	// sub
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AssumeUserInfo) String() string {

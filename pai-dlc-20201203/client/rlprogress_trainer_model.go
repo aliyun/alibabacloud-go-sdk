@@ -20,24 +20,24 @@ type iRLProgressTrainer interface {
 }
 
 type RLProgressTrainer struct {
-	// micro-batch 进度
+	// The micro-batch progress.
 	//
 	// if can be null:
 	// true
 	Micro *RLProgressMicro `json:"Micro,omitempty" xml:"Micro,omitempty"`
-	// 当前 mini batch 序号
+	// The current mini-batch ordinal number.
 	//
 	// example:
 	//
 	// 1
 	MiniIdx *int32 `json:"MiniIdx,omitempty" xml:"MiniIdx,omitempty"`
-	// mini-batch 总数
+	// The total number of mini-batches.
 	//
 	// example:
 	//
 	// 4
 	NumMinibatches *int32 `json:"NumMinibatches,omitempty" xml:"NumMinibatches,omitempty"`
-	// 参数同步状态
+	// The parameter synchronization status.
 	//
 	// if can be null:
 	// true

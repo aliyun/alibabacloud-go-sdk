@@ -62,24 +62,31 @@ type iJobSpec interface {
 }
 
 type JobSpec struct {
-	// The node scheduling configuration.
+	// The specified node scheduling configuration.
 	AssignNodeSpec *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
 	// The auto scaling configuration.
 	AutoScalingSpec *AutoScalingSpec `json:"AutoScalingSpec,omitempty" xml:"AutoScalingSpec,omitempty"`
 	// Specifies whether to consider this role when determining job success. This parameter takes effect only when the success policy is set to Partial.
-	ConsiderInSuccessPolicy *bool   `json:"ConsiderInSuccessPolicy,omitempty" xml:"ConsiderInSuccessPolicy,omitempty"`
-	Driver                  *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	// The hardware specification of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed specification list.	Notice: Prices vary depending on the specification.
+	ConsiderInSuccessPolicy *bool `json:"ConsiderInSuccessPolicy,omitempty" xml:"ConsiderInSuccessPolicy,omitempty"`
+	// The GPU driver version used by the job.
+	//
+	// example:
+	//
+	// 535.54.03
+	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// The hardware specifications of the worker. For a detailed list of specifications, see [PAI-DLC billing overview](https://help.aliyun.com/document_detail/171758.html).	Notice: Prices vary by specification.
 	//
 	// example:
 	//
 	// ecs.c6.large
-	EcsSpec          *string            `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The list of candidate instance types for this role to participate in elastic spot bidding.
 	ElasticSpotSpecs []*ElasticSpotSpec `json:"ElasticSpotSpecs,omitempty" xml:"ElasticSpotSpecs,omitempty" type:"Repeated"`
-	// The extra pod configuration.
-	ExtraPodSpec              *ExtraPodSpec              `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
+	// The additional pod configuration.
+	ExtraPodSpec *ExtraPodSpec `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
+	// The hypernode scheduling configuration for this role.
 	HyperNodeSchedulingConfig *HyperNodeSchedulingConfig `json:"HyperNodeSchedulingConfig,omitempty" xml:"HyperNodeSchedulingConfig,omitempty"`
-	// The runtime image address for this type of worker. Call [ListImages](https://help.aliyun.com/document_detail/449118.html) to retrieve images provided by the PAI platform. You can also specify a third-party public image.
+	// The runtime image URL for this type of worker. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain images provided by the PAI platform. You can also specify a public third-party image.
 	//
 	// example:
 	//
@@ -89,20 +96,30 @@ type JobSpec struct {
 	ImageConfig *ImageConfig `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- This field is deprecated due to a spelling error.
+	// **[Deprecated]*	- This field is misspelled and deprecated.
 	IsCheif *bool `json:"IsCheif,omitempty" xml:"IsCheif,omitempty"`
-	// Specifies whether the role is the Chief role. Only one Chief role is allowed.
+	// Specifies whether this role is the chief role. Only one chief role is allowed.
 	IsChief *bool `json:"IsChief,omitempty" xml:"IsChief,omitempty"`
 	// The list of local mount configurations.
 	LocalMountSpecs []*LocalMountSpec `json:"LocalMountSpecs,omitempty" xml:"LocalMountSpecs,omitempty" type:"Repeated"`
-	OversoldType    *string           `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
+	// The usage type of idle resources.
+	//
+	// example:
+	//
+	// AcceptQuotaOverSold
+	OversoldType *string `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
 	// The number of replicas.
 	//
 	// example:
 	//
 	// 1
-	PodCount *int64  `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
-	QuotaId  *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	PodCount *int64 `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
+	// The ID of the resource quota used by the job.
+	//
+	// example:
+	//
+	// quota12345
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	// The resource configuration.
 	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
 	// The restart policy. Valid values: Always, Never, OnFailure, and ExitCode.
@@ -117,8 +134,9 @@ type JobSpec struct {
 	SpotSpec *SpotSpec `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
 	// The dependencies required before this role starts.
 	StartupDependencies []*StartupDependency `json:"StartupDependencies,omitempty" xml:"StartupDependencies,omitempty" type:"Repeated"`
-	SystemDisk          *SystemDisk          `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
-	// The type, which is closely related to the job type. Different job types support different worker types.
+	// The system cloud disk configuration for the job replicas.
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	// The type is closely related to the job type. Different job types support different worker types.
 	//
 	// - **TFJob**: Supports Chief, PS, Worker, Evaluator, and GraphLearn.
 	//
@@ -132,7 +150,7 @@ type JobSpec struct {
 	//
 	// - **RayJob**: Supports Head, Worker, and Worker[-xxx].
 	//
-	// Master is optional in PyTorchJob, XGBoostJob, OneFlowJob, and ElasticBatch. If not specified, the system automatically designates the first Worker node as Master.
+	// The Master role in PyTorchJob, XGBoostJob, OneFlowJob, and ElasticBatch is optional. If not specified, the system automatically assigns the first worker node as the master.
 	//
 	// example:
 	//

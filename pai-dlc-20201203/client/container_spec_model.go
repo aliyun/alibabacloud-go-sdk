@@ -28,7 +28,7 @@ type iContainerSpec interface {
 }
 
 type ContainerSpec struct {
-	// The command parameters.
+	// The command arguments.
 	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
 	// The user command.
 	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
@@ -47,8 +47,9 @@ type ContainerSpec struct {
 	// data-init
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The container resources.
-	Resources       *ResourceRequirements `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	SecurityContext *SecurityContext      `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty"`
+	Resources *ResourceRequirements `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The container security context configuration.
+	SecurityContext *SecurityContext `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty"`
 	// The working directory in the container.
 	//
 	// example:

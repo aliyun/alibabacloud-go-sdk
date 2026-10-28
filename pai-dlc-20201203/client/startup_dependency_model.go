@@ -18,9 +18,24 @@ type iStartupDependency interface {
 }
 
 type StartupDependency struct {
+	// The minimum number of dependent roles that must reach the expected phase to be considered satisfied.
+	//
+	// example:
+	//
+	// 1
 	MinReplicas *string `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	OnPhase     *string `json:"OnPhase,omitempty" xml:"OnPhase,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The phase that dependent roles must reach to be considered satisfied.
+	//
+	// example:
+	//
+	// ServiceReady
+	OnPhase *string `json:"OnPhase,omitempty" xml:"OnPhase,omitempty"`
+	// The type of the dependent role.
+	//
+	// example:
+	//
+	// Worker
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s StartupDependency) String() string {

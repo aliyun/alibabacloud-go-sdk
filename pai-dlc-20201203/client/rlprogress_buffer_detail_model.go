@@ -22,31 +22,31 @@ type iRLProgressBufferDetail interface {
 }
 
 type RLProgressBufferDetail struct {
-	// 已被 trainer 消费的样本数
+	// The number of samples consumed by the trainer.
 	//
 	// example:
 	//
 	// 0
 	Consumed *int32 `json:"Consumed,omitempty" xml:"Consumed,omitempty"`
-	// 已完成样本数
+	// The number of finished samples.
 	//
 	// example:
 	//
 	// 500
 	Finished *int32 `json:"Finished,omitempty" xml:"Finished,omitempty"`
-	// 已就绪样本数
+	// The number of ready samples.
 	//
 	// example:
 	//
 	// 500
 	Ready *int32 `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	// buffer 标签，即 global batch 序号
+	// The buffer tag, which is the global batch ordinal number.
 	//
 	// example:
 	//
 	// 1
 	Tag *int32 `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// 目标样本数
+	// The target number of samples.
 	//
 	// example:
 	//

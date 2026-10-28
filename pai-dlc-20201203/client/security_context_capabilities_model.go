@@ -16,7 +16,9 @@ type iSecurityContextCapabilities interface {
 }
 
 type SecurityContextCapabilities struct {
-	Add  []*string `json:"Add,omitempty" xml:"Add,omitempty" type:"Repeated"`
+	// The list of Linux capabilities to add.
+	Add []*string `json:"Add,omitempty" xml:"Add,omitempty" type:"Repeated"`
+	// The list of Linux capabilities to remove.
 	Drop []*string `json:"Drop,omitempty" xml:"Drop,omitempty" type:"Repeated"`
 }
 

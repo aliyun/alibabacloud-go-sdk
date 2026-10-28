@@ -18,11 +18,23 @@ type iCredentialConfigItem interface {
 }
 
 type CredentialConfigItem struct {
+	// The identity key of the credential configuration item.
+	//
+	// example:
+	//
+	// 0
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The list of associated roles.
+	//
 	// if can be null:
 	// true
 	Roles []*CredentialRole `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	Type  *string           `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The credential type.
+	//
+	// example:
+	//
+	// RoleChain
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CredentialConfigItem) String() string {

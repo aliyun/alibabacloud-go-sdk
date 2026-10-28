@@ -42,47 +42,80 @@ type iJobElasticSpec interface {
 }
 
 type JobElasticSpec struct {
+	// The AIMaster Docker image.
 	AIMasterDockerImage *string `json:"AIMasterDockerImage,omitempty" xml:"AIMasterDockerImage,omitempty"`
-	AIMasterType        *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
+	// The resource specifications for the AIMaster role.
+	//
+	// example:
+	//
+	// ecs.c6.large
+	AIMasterType *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
+	// The maximum EDP parallelism.
+	//
 	// example:
 	//
 	// 16
 	EDPMaxParallelism *int32 `json:"EDPMaxParallelism,omitempty" xml:"EDPMaxParallelism,omitempty"`
+	// The minimum EDP parallelism.
+	//
 	// example:
 	//
 	// 8
-	EDPMinParallelism *int32  `json:"EDPMinParallelism,omitempty" xml:"EDPMinParallelism,omitempty"`
-	ElasticStrategy   *string `json:"ElasticStrategy,omitempty" xml:"ElasticStrategy,omitempty"`
-	EnableAIMaster    *bool   `json:"EnableAIMaster,omitempty" xml:"EnableAIMaster,omitempty"`
+	EDPMinParallelism *int32 `json:"EDPMinParallelism,omitempty" xml:"EDPMinParallelism,omitempty"`
+	// The elastic training strategy.
+	//
+	// example:
+	//
+	// chief
+	ElasticStrategy *string `json:"ElasticStrategy,omitempty" xml:"ElasticStrategy,omitempty"`
+	// Specifies whether to enable AIMaster.
+	EnableAIMaster *bool `json:"EnableAIMaster,omitempty" xml:"EnableAIMaster,omitempty"`
+	// Specifies whether to enable EDP.
+	//
 	// example:
 	//
 	// true
 	EnableEDP *bool `json:"EnableEDP,omitempty" xml:"EnableEDP,omitempty"`
+	// Specifies whether to enable elastic training.
+	//
 	// example:
 	//
 	// true
 	EnableElasticTraining *bool `json:"EnableElasticTraining,omitempty" xml:"EnableElasticTraining,omitempty"`
+	// Specifies whether to enable the elastic PS feature.
+	//
 	// example:
 	//
 	// true
-	EnablePsJobElasticPS     *bool `json:"EnablePsJobElasticPS,omitempty" xml:"EnablePsJobElasticPS,omitempty"`
+	EnablePsJobElasticPS *bool `json:"EnablePsJobElasticPS,omitempty" xml:"EnablePsJobElasticPS,omitempty"`
+	// Specifies whether to enable elastic workers for PS jobs.
 	EnablePsJobElasticWorker *bool `json:"EnablePsJobElasticWorker,omitempty" xml:"EnablePsJobElasticWorker,omitempty"`
+	// Specifies whether to enable PS resource estimation.
+	//
 	// example:
 	//
 	// true
 	EnablePsResourceEstimate *bool `json:"EnablePsResourceEstimate,omitempty" xml:"EnablePsResourceEstimate,omitempty"`
+	// The maximum parallelism.
+	//
 	// example:
 	//
 	// 8
 	MaxParallelism *int32 `json:"MaxParallelism,omitempty" xml:"MaxParallelism,omitempty"`
+	// The minimum parallelism.
+	//
 	// example:
 	//
 	// 1
 	MinParallelism *int32 `json:"MinParallelism,omitempty" xml:"MinParallelism,omitempty"`
+	// The maximum PS parallelism.
+	//
 	// example:
 	//
 	// 10
 	PSMaxParallelism *int32 `json:"PSMaxParallelism,omitempty" xml:"PSMaxParallelism,omitempty"`
+	// The minimum PS parallelism.
+	//
 	// example:
 	//
 	// 4

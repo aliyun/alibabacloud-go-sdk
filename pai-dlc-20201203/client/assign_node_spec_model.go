@@ -22,16 +22,24 @@ type iAssignNodeSpec interface {
 }
 
 type AssignNodeSpec struct {
+	// The list of hyper nodes to avoid during scheduling.
 	AntiAffinityHyperNodes []*HyperNodeSpec `json:"AntiAffinityHyperNodes,omitempty" xml:"AntiAffinityHyperNodes,omitempty" type:"Repeated"`
+	// AntiAffinityNodeNames
+	//
 	// example:
 	//
 	// lingjxxxxxxxx
 	AntiAffinityNodeNames *string `json:"AntiAffinityNodeNames,omitempty" xml:"AntiAffinityNodeNames,omitempty"`
+	// EnableAssignNode
+	//
 	// example:
 	//
 	// true
-	EnableAssignNode *bool            `json:"EnableAssignNode,omitempty" xml:"EnableAssignNode,omitempty"`
-	HyperNodes       []*HyperNodeSpec `json:"HyperNodes,omitempty" xml:"HyperNodes,omitempty" type:"Repeated"`
+	EnableAssignNode *bool `json:"EnableAssignNode,omitempty" xml:"EnableAssignNode,omitempty"`
+	// The list of hyper nodes to schedule to.
+	HyperNodes []*HyperNodeSpec `json:"HyperNodes,omitempty" xml:"HyperNodes,omitempty" type:"Repeated"`
+	// NodeNames
+	//
 	// example:
 	//
 	// lingjxxxxxxxx

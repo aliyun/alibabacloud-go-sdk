@@ -18,9 +18,24 @@ type iModelTemplate interface {
 }
 
 type ModelTemplate struct {
+	// The collection where the model template resides. Default value: QuickStartTemplate.
+	//
+	// example:
+	//
+	// QuickStartTemplate
 	Collections *string `json:"Collections,omitempty" xml:"Collections,omitempty"`
-	ModelName   *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	Provider    *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The name of the model template.
+	//
+	// example:
+	//
+	// Qwen3-VL-32B-Instruct-PAI_template
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The provider of the model template. Default value: pai, which indicates that the model template is officially provided by PAI.
+	//
+	// example:
+	//
+	// pai
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
 }
 
 func (s ModelTemplate) String() string {

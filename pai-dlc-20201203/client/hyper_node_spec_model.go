@@ -16,8 +16,18 @@ type iHyperNodeSpec interface {
 }
 
 type HyperNodeSpec struct {
+	// The name of the HyperNode.
+	//
+	// example:
+	//
+	// mg1234567
 	HyperNodeName *string `json:"HyperNodeName,omitempty" xml:"HyperNodeName,omitempty"`
-	NodeNames     *string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty"`
+	// The comma-separated names of the specified nodes in the HyperNode. If you leave this parameter empty, all nodes in the HyperNode are specified.
+	//
+	// example:
+	//
+	// lingjxxxxxxxx
+	NodeNames *string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty"`
 }
 
 func (s HyperNodeSpec) String() string {

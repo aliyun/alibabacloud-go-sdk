@@ -18,9 +18,24 @@ type iSystemDisk interface {
 }
 
 type SystemDisk struct {
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The system cloud disk type, such as cloud_essd.
+	//
+	// example:
+	//
+	// cloud_essd
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The performance level of the ESSD cloud disk, such as PL0 and PL1.
+	//
+	// example:
+	//
+	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Size             *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The size of the system cloud disk, in GiB.
+	//
+	// example:
+	//
+	// 200
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s SystemDisk) String() string {

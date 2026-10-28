@@ -22,7 +22,7 @@ type GetTokenResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task sharing token, which can be used to view information about the shared task.
+	// The sharing token of the job, which can be used to view information about the shared job.
 	//
 	// example:
 	//

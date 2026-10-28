@@ -16,13 +16,13 @@ type iRLProgressMicro interface {
 }
 
 type RLProgressMicro struct {
-	// 当前 micro-batch 序号
+	// The current micro-batch ordinal number.
 	//
 	// example:
 	//
 	// 3
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
-	// micro-batch 总数
+	// The micro-batch total count.
 	//
 	// example:
 	//

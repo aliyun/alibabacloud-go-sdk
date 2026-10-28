@@ -20,17 +20,29 @@ type iElasticSpotSpec interface {
 }
 
 type ElasticSpotSpec struct {
-  // The spot instance type.
+  // The instance type.
+  // 
+  // example:
+  // 
+  // ecs.gn6e-c12g1.3xlarge
   InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-  // The maximum discount percentage for the spot instance. The system does not select an instance if its discount exceeds this limit. For example, if you set this parameter to `90`, the system considers only instances with a discount of 90% or less.
+  // The maximum discount.
+  // 
+  // example:
+  // 
+  // 0.8
   SpotDiscountLimit *float64 `json:"SpotDiscountLimit,omitempty" xml:"SpotDiscountLimit,omitempty"`
-  // The maximum hourly price you are willing to pay for a spot instance. If omitted, the on-demand price is the default.
+  // The maximum bid price.
+  // 
+  // example:
+  // 
+  // 0.4744
   SpotPriceLimit *float64 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-  // The strategy for allocating spot instances. Valid values:
+  // The spot strategy.
   // 
-  // - `LowestPrice`: Launches instances from the spot capacity pool offering the lowest price. This is the default strategy.
+  // example:
   // 
-  // - `CapacityOptimized`: Launches instances from the spot capacity pool offering optimal capacity.
+  // SpotWithPriceLimit
   SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 }
 

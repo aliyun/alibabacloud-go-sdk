@@ -16,7 +16,17 @@ type iHyperNodeSchedulingConfig interface {
 }
 
 type HyperNodeSchedulingConfig struct {
-	MinAvailable  *int32  `json:"MinAvailable,omitempty" xml:"MinAvailable,omitempty"`
+	// The minimum number of available instances required when the role participates in HyperNode scheduling. The value must be greater than 0.
+	//
+	// example:
+	//
+	// 1
+	MinAvailable *int32 `json:"MinAvailable,omitempty" xml:"MinAvailable,omitempty"`
+	// The quality policy. Currently, only AlwaysRequire is supported.
+	//
+	// example:
+	//
+	// AlwaysRequire
 	QualityPolicy *string `json:"QualityPolicy,omitempty" xml:"QualityPolicy,omitempty"`
 }
 

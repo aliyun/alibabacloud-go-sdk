@@ -20,24 +20,25 @@ type iGetTokenRequest interface {
 }
 
 type GetTokenRequest struct {
-	// The expiration time of the sharing link in seconds. Default value: 604800. Minimum value: 0.
+	// The expiration time of the sharing link. Default value: 604800 seconds. Minimum value: 0.
 	//
 	// example:
 	//
 	// 60
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the task to share.
+	// The ID of the job to be shared.
 	//
 	// example:
 	//
 	// dlc*******
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the task to share. Valid values: job and tensorboard.
+	// The type of the shared job. Valid values: job and tensorboard.
 	//
 	// example:
 	//
 	// job
-	TargetType    *string        `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The permission settings of the sharing token, which controls log download and cross-account access.
 	TokenSettings *TokenSettings `json:"TokenSettings,omitempty" xml:"TokenSettings,omitempty"`
 }
 

@@ -22,7 +22,7 @@ type CreateJobResponseBody struct {
 	//
 	// dlc7*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID, which is used for diagnostics and troubleshooting.
+	// The ID of the request. It is used for diagnostics and troubleshooting.
 	//
 	// example:
 	//

@@ -30,26 +30,40 @@ type iWorkspace interface {
 }
 
 type Workspace struct {
+	// The creator.
+	//
 	// example:
 	//
 	// ken
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
-	GmtModifyTime   *string    `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	Members         []*Member  `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
-	Quotas          []*Quota   `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	TotalResources  *Resources `json:"TotalResources,omitempty" xml:"TotalResources,omitempty"`
-	WorkspaceAdmins []*Member  `json:"WorkspaceAdmins,omitempty" xml:"WorkspaceAdmins,omitempty" type:"Repeated"`
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// The member list.
+	Members []*Member `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	// The resource quota list.
+	Quotas []*Quota `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	// The total resources.
+	TotalResources *Resources `json:"TotalResources,omitempty" xml:"TotalResources,omitempty"`
+	// The administrator list.
+	WorkspaceAdmins []*Member `json:"WorkspaceAdmins,omitempty" xml:"WorkspaceAdmins,omitempty" type:"Repeated"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-20210126170216-mtl37ge7gkvdz
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// dlc-workspace

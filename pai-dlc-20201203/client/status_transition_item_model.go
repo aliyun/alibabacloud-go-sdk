@@ -23,14 +23,34 @@ type iStatusTransitionItem interface {
 
 type StatusTransitionItem struct {
 	// The end time of this status (UTC).
+	//
+	// example:
+	//
+	// 2020-11-08T17:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The reason code for this status.
+	//
+	// example:
+	//
+	// JobStoppedByUser
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// The detailed message for this status.
+	//
+	// example:
+	//
+	// Job is stopped by user.
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
 	// The start time of this status (UTC).
+	//
+	// example:
+	//
+	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The job status.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

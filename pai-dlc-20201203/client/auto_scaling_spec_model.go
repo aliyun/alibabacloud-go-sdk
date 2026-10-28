@@ -22,11 +22,28 @@ type iAutoScalingSpec interface {
 }
 
 type AutoScalingSpec struct {
+	// The monitoring metrics configuration for autoscaling.
 	AutoscalingMetricSpec *AutoscalingMetricSpec `json:"AutoscalingMetricSpec,omitempty" xml:"AutoscalingMetricSpec,omitempty"`
-	MaxReplicas           *int32                 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	MinReplicas           *int32                 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	PodsToDelete          []*string              `json:"PodsToDelete,omitempty" xml:"PodsToDelete,omitempty" type:"Repeated"`
-	ScalingStrategy       *string                `json:"ScalingStrategy,omitempty" xml:"ScalingStrategy,omitempty"`
+	// The maximum number of replicas.
+	//
+	// example:
+	//
+	// 10
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// The minimum number of replicas.
+	//
+	// example:
+	//
+	// 1
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// The Pods to delete for scale-in. This can only be modified through UpdateJob, and the number of Pods to delete must match PodCount.
+	PodsToDelete []*string `json:"PodsToDelete,omitempty" xml:"PodsToDelete,omitempty" type:"Repeated"`
+	// The autoscaling policy. Valid values: Default, ScaleByAPI, RayAutoscaler, and CloudMonitorMetric.
+	//
+	// example:
+	//
+	// Default
+	ScalingStrategy *string `json:"ScalingStrategy,omitempty" xml:"ScalingStrategy,omitempty"`
 }
 
 func (s AutoScalingSpec) String() string {

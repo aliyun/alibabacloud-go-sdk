@@ -16,8 +16,18 @@ type iPodNetworkInterface interface {
 }
 
 type PodNetworkInterface struct {
+	// The name of the network interface.
+	//
+	// example:
+	//
+	// eth0
 	InterfaceName *string `json:"InterfaceName,omitempty" xml:"InterfaceName,omitempty"`
-	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The IP address of the network interface.
+	//
+	// example:
+	//
+	// 10.0.1.2
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
 func (s PodNetworkInterface) String() string {

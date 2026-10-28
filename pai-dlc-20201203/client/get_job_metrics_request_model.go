@@ -22,7 +22,7 @@ type iGetJobMetricsRequest interface {
 }
 
 type GetJobMetricsRequest struct {
-	// The end time (UTC) of the time range for querying monitoring data. Default value: the current time.
+	// The end time of the time range for querying monitoring data, in UTC. Default value: the current time.
 	//
 	// example:
 	//
@@ -30,21 +30,21 @@ type GetJobMetricsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The metric type of the monitoring data to query. Valid values:
 	//
-	// - GpuCoreUsage: GPU utilization.
+	// - GpuCoreUsage: the GPU usage
 	//
-	// - GpuMemoryUsage: GPU memory usage.
+	// - GpuMemoryUsage: the GPU memory usage
 	//
-	// - CpuCoreUsage: CPU utilization.
+	// - CpuCoreUsage: the CPU usage
 	//
-	// - MemoryUsage: memory usage.
+	// - MemoryUsage: the memory usage
 	//
-	// - NetworkInputRate: network input rate.
+	// - NetworkInputRate: the network input rate
 	//
-	// - NetworkOutputRate: network output rate.
+	// - NetworkOutputRate: the network output rate
 	//
-	// - DiskReadRate: disk read rate.
+	// - DiskReadRate: the disk read rate
 	//
-	// - DiskWriteRate: disk write rate.
+	// - DiskWriteRate: the disk write rate
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type GetJobMetricsRequest struct {
 	//
 	// GpuMemoryUsage
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The start time (UTC) of the time range for querying monitoring data. Default value: one hour before the current time.
+	// The start time of the time range for querying monitoring data, in UTC. Default value: 1 hour ago.
 	//
 	// example:
 	//

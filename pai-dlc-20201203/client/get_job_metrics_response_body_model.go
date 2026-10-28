@@ -18,15 +18,15 @@ type iGetJobMetricsResponseBody interface {
 }
 
 type GetJobMetricsResponseBody struct {
-	// The node ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// dlc-20210126170216-*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The list of node monitoring data.
+	// The list of job monitoring data.
 	PodMetrics []*PodMetric `json:"PodMetrics,omitempty" xml:"PodMetrics,omitempty" type:"Repeated"`
-	// The request ID of this call, used for diagnostics and troubleshooting.
+	// The request ID, which is used for diagnostics and troubleshooting.
 	//
 	// example:
 	//

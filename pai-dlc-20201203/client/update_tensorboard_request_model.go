@@ -20,24 +20,29 @@ type iUpdateTensorboardRequest interface {
 }
 
 type UpdateTensorboardRequest struct {
-	// Visibility of the task. Valid values:
+	// The visibility of the task. Valid values:
 	//
-	// - PUBLIC: Visible to all users in this workspace.
+	// - PUBLIC: The task is visible to all users in the workspace.
 	//
-	// - PRIVATE: Visible only to you and administrators in this workspace.
+	// - PRIVATE: The task is visible only to you and administrators in the workspace.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// Maximum runtime. Unit: minutes.
+	// The maximum running duration in minutes.
 	//
 	// example:
 	//
 	// 300
-	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
-	Priority              *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Workspace ID. For more information about how to get a workspace ID, see [ListWorkspaces]().
+	MaxRunningTimeMinutes *int64 `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	// The scheduling priority of the TensorBoard task. Valid values: 1 to 9. A value of 1 indicates the lowest priority, and a value of 9 indicates the highest priority.
+	//
+	// example:
+	//
+	// 1
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The workspace ID. <props="china">For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

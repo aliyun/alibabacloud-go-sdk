@@ -18,11 +18,20 @@ type iGPUDetail interface {
 }
 
 type GPUDetail struct {
+	// The number of GPUs.
+	//
+	// example:
+	//
+	// 4
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The GPU type.
+	//
 	// example:
 	//
 	// Tesla-V100-32G
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The full name of the GPU type.
+	//
 	// example:
 	//
 	// nvidia.com/gpu-tesla-v100-sxm2-16gb

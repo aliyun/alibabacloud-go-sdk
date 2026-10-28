@@ -22,31 +22,31 @@ type iRLFlowTurns interface {
 }
 
 type RLFlowTurns struct {
-	// 平均生成轮数
+	// The average number of generation rounds.
 	//
 	// example:
 	//
 	// 1.9
 	Avg *float64 `json:"Avg,omitempty" xml:"Avg,omitempty"`
-	// 参与统计的轨迹数
+	// The number of traces included in the statistics.
 	//
 	// example:
 	//
 	// 96
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 最大生成轮数
+	// The maximum number of generation rounds.
 	//
 	// example:
 	//
 	// 9.2
 	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// 生成轮数 P50
+	// The P50 of generation rounds.
 	//
 	// example:
 	//
 	// 0.8
 	P50 *int32 `json:"P50,omitempty" xml:"P50,omitempty"`
-	// 生成轮数 P90
+	// The P90 of generation rounds.
 	//
 	// example:
 	//

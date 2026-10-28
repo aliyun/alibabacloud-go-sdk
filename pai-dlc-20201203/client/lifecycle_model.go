@@ -16,8 +16,10 @@ type iLifecycle interface {
 }
 
 type Lifecycle struct {
+	// The post-start action.
 	PostStart *LifecyclePostStart `json:"PostStart,omitempty" xml:"PostStart,omitempty" type:"Struct"`
-	PreStop   *LifecyclePreStop   `json:"PreStop,omitempty" xml:"PreStop,omitempty" type:"Struct"`
+	// The pre-stop action.
+	PreStop *LifecyclePreStop `json:"PreStop,omitempty" xml:"PreStop,omitempty" type:"Struct"`
 }
 
 func (s Lifecycle) String() string {
@@ -61,6 +63,7 @@ func (s *Lifecycle) Validate() error {
 }
 
 type LifecyclePostStart struct {
+	// The exec action.
 	Exec *LifecyclePostStartExec `json:"Exec,omitempty" xml:"Exec,omitempty" type:"Struct"`
 }
 
@@ -91,6 +94,7 @@ func (s *LifecyclePostStart) Validate() error {
 }
 
 type LifecyclePostStartExec struct {
+	// The command.
 	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
 }
 
@@ -116,6 +120,7 @@ func (s *LifecyclePostStartExec) Validate() error {
 }
 
 type LifecyclePreStop struct {
+	// The exec action.
 	Exec *LifecyclePreStopExec `json:"Exec,omitempty" xml:"Exec,omitempty" type:"Struct"`
 }
 
@@ -146,6 +151,7 @@ func (s *LifecyclePreStop) Validate() error {
 }
 
 type LifecyclePreStopExec struct {
+	// The command.
 	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
 }
 

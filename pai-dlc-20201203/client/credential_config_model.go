@@ -19,10 +19,14 @@ type iCredentialConfig interface {
 
 type CredentialConfig struct {
 	// The role identity key injected into environment variables.
+	//
+	// example:
+	//
+	// 0
 	AliyunEnvRoleKey *string `json:"AliyunEnvRoleKey,omitempty" xml:"AliyunEnvRoleKey,omitempty"`
 	// The list of credential configuration items.
 	CredentialConfigItems []*CredentialConfigItem `json:"CredentialConfigItems,omitempty" xml:"CredentialConfigItems,omitempty" type:"Repeated"`
-	// Specifies whether to enable credential injection.
+	// Specifies whether credential injection is enabled.
 	EnableCredentialInject *bool `json:"EnableCredentialInject,omitempty" xml:"EnableCredentialInject,omitempty"`
 }
 

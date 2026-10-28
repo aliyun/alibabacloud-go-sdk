@@ -22,11 +22,24 @@ type iQuotaConfig interface {
 }
 
 type QuotaConfig struct {
-	AllowedMaxPriority *int32  `json:"AllowedMaxPriority,omitempty" xml:"AllowedMaxPriority,omitempty"`
-	EnableDLC          *bool   `json:"EnableDLC,omitempty" xml:"EnableDLC,omitempty"`
-	EnableDSW          *bool   `json:"EnableDSW,omitempty" xml:"EnableDSW,omitempty"`
-	EnableTideResource *bool   `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
-	ResourceLevel      *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	// The maximum allowed priority.
+	//
+	// example:
+	//
+	// 9
+	AllowedMaxPriority *int32 `json:"AllowedMaxPriority,omitempty" xml:"AllowedMaxPriority,omitempty"`
+	// Specifies whether DLC is enabled.
+	EnableDLC *bool `json:"EnableDLC,omitempty" xml:"EnableDLC,omitempty"`
+	// Specifies whether DSW is enabled.
+	EnableDSW *bool `json:"EnableDSW,omitempty" xml:"EnableDSW,omitempty"`
+	// Specifies whether to use tide resources.
+	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
+	// The resource level (L0, L1).
+	//
+	// example:
+	//
+	// L0
+	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
 }
 
 func (s QuotaConfig) String() string {

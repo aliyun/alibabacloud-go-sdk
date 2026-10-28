@@ -16,8 +16,10 @@ type iTokenSettings interface {
 }
 
 type TokenSettings struct {
+	// Specifies whether cross-account access through sharing links is allowed.
 	EnableCrossAccountAccess *bool `json:"EnableCrossAccountAccess,omitempty" xml:"EnableCrossAccountAccess,omitempty"`
-	EnableLogDownloadJob     *bool `json:"EnableLogDownloadJob,omitempty" xml:"EnableLogDownloadJob,omitempty"`
+	// Specifies whether task logs can be downloaded through sharing links.
+	EnableLogDownloadJob *bool `json:"EnableLogDownloadJob,omitempty" xml:"EnableLogDownloadJob,omitempty"`
 }
 
 func (s TokenSettings) String() string {

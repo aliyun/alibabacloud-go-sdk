@@ -16,13 +16,13 @@ type iRLProgressProcessed interface {
 }
 
 type RLProgressProcessed struct {
-	// 已处理条数
+	// The processed count.
 	//
 	// example:
 	//
 	// true
 	Done *int32 `json:"Done,omitempty" xml:"Done,omitempty"`
-	// 总条数
+	// The total count.
 	//
 	// example:
 	//

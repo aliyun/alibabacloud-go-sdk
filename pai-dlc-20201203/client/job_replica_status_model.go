@@ -28,27 +28,51 @@ type iJobReplicaStatus interface {
 }
 
 type JobReplicaStatus struct {
-	// The number of active pods for this replica type.
+	// The number of replicas of this role that are currently running.
+	//
+	// example:
+	//
+	// 0
 	Active *int32 `json:"Active,omitempty" xml:"Active,omitempty"`
-	// The type of spot instance in use, if any.
+	// The currently selected spot instance type (applies only to elastic spot tasks).
+	//
+	// example:
+	//
+	// ecs.gn6e-c12g1.3xlarge
 	CurrentSpotInstanceType *string `json:"CurrentSpotInstanceType,omitempty" xml:"CurrentSpotInstanceType,omitempty"`
-	// The number of dequeued pods.
+	// The number of replicas of this role that have been dequeued.
+	//
+	// example:
+	//
+	// 0
 	Dequeued *int32 `json:"Dequeued,omitempty" xml:"Dequeued,omitempty"`
-	// The estimated auto scaling specification.
+	// The estimated auto-scaling configuration for this role.
 	//
 	// if can be null:
 	// true
 	EstimatedAutoScalingSpec *AutoScalingSpec `json:"EstimatedAutoScalingSpec,omitempty" xml:"EstimatedAutoScalingSpec,omitempty"`
-	// The estimated number of pods for this replica type, used for auto scaling.
+	// The estimated number of pods for this role.
+	//
+	// example:
+	//
+	// 2
 	EstimatedPodCount *int64 `json:"EstimatedPodCount,omitempty" xml:"EstimatedPodCount,omitempty"`
-	// The estimated resource configuration.
+	// The estimated resource configuration for this role.
 	//
 	// if can be null:
 	// true
 	EstimatedResourceConfig *ResourceConfig `json:"EstimatedResourceConfig,omitempty" xml:"EstimatedResourceConfig,omitempty"`
-	// The number of queued pods.
+	// The number of replicas of this role that are still in the queue.
+	//
+	// example:
+	//
+	// 0
 	Queuing *int32 `json:"Queuing,omitempty" xml:"Queuing,omitempty"`
-	// The type of the job replica.
+	// The role type to which the task replicas belong.
+	//
+	// example:
+	//
+	// Worker
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

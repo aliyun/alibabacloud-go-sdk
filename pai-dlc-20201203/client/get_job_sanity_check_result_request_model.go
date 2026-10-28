@@ -28,21 +28,21 @@ type GetJobSanityCheckResultRequest struct {
 	SanityCheckNumber *int32 `json:"SanityCheckNumber,omitempty" xml:"SanityCheckNumber,omitempty"`
 	// The phase of the computing power health check. Valid values:
 	//
-	// - CheckInit: environment preparation check.
+	// - CheckInit: environment preparation.
 	//
-	// - DeviceCheck: single-card computing power check.
+	// - DeviceCheck: single-device computing power check.
 	//
 	// - SingleNodeCommCheck: intra-node communication check.
 	//
-	// - TwoNodeCommCheck: two-node communication check.
+	// - TwoNodeCommCheck: inter-node communication check between two nodes.
 	//
-	// - AllNodeCommCheck: all-node communication check.
+	// - AllNodeCommCheck: communication check across all nodes.
 	//
 	// example:
 	//
 	// DeviceCheck
 	SanityCheckPhase *string `json:"SanityCheckPhase,omitempty" xml:"SanityCheckPhase,omitempty"`
-	// The token information in the job sharing token. To obtain the token, see [GetToken](https://help.aliyun.com/document_detail/2557812.html).
+	// The token information in the job sharing token. For information about how to obtain the token, see [GetToken](https://help.aliyun.com/document_detail/2557812.html).
 	//
 	// example:
 	//

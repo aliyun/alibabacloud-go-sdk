@@ -160,7 +160,7 @@ type JobItem struct {
 	//
 	// tf-mnist-test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The job running duration, in seconds.
+	// The job duration in seconds.
 	//
 	// example:
 	//
@@ -168,19 +168,19 @@ type JobItem struct {
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The elastic job parameters.
 	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
-	// Indicates whether PreemptibleJob is enabled.
+	// Specifies whether the preemptible job is enabled.
 	//
 	// example:
 	//
 	// false
 	EnablePreemptibleJob *bool `json:"EnablePreemptibleJob,omitempty" xml:"EnablePreemptibleJob,omitempty"`
-	// Indicates whether debugger analysis is enabled.
+	// Specifies whether debugger analysis is enabled.
 	//
 	// example:
 	//
 	// false
 	EnabledDebugger *bool `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
-	// The environment variables injected into the job at runtime.
+	// The environment variables injected during job execution.
 	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	// The job creation time in UTC format.
 	//
@@ -188,49 +188,49 @@ type JobItem struct {
 	//
 	// 2025-04-16T07:25:34Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the job failed (UTC).
+	// The job failure time in UTC.
 	//
 	// example:
 	//
 	// null
 	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
-	// The time when the job finished (UTC).
+	// The job end time in UTC.
 	//
 	// example:
 	//
 	// 2025-04-16T07:28:20Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	// The time when the job was modified (UTC).
+	// The job modification time in UTC.
 	//
 	// example:
 	//
 	// 2025-04-16T07:28:22Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The time when the job started running in UTC format.
+	// The job start time in UTC.
 	//
 	// example:
 	//
 	// 2025-04-16T07:26:41Z
 	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
-	// The time when the job was stopped (UTC).
+	// The job stop time in UTC.
 	//
 	// example:
 	//
 	// null
 	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
-	// The job submission time in UTC format.
+	// The job submission time in UTC.
 	//
 	// example:
 	//
 	// 2025-04-16T07:26:14Z
 	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
-	// The time when the job completed successfully in UTC format.
+	// The job success time in UTC.
 	//
 	// example:
 	//
 	// 2025-04-16T07:28:20Z
 	GmtSuccessedTime *string `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
-	// Indicates whether the job is deleted.
+	// Specifies whether the job is deleted.
 	//
 	// example:
 	//
@@ -242,16 +242,33 @@ type JobItem struct {
 	//
 	// dlc-20210126170216-********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The maximum job running duration.
+	// The maximum job running time.
 	//
 	// example:
 	//
 	// 0
-	JobMaxRunningTimeMinutes *int64              `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
-	JobReplicaStatuses       []*JobReplicaStatus `json:"JobReplicaStatuses,omitempty" xml:"JobReplicaStatuses,omitempty" type:"Repeated"`
-	// The node configurations for the job at runtime.
+	JobMaxRunningTimeMinutes *int64 `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
+	// The list of replica running statuses for each task role.
+	JobReplicaStatuses []*JobReplicaStatus `json:"JobReplicaStatuses,omitempty" xml:"JobReplicaStatuses,omitempty" type:"Repeated"`
+	// The node configuration during job execution.
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// The job type. Valid values:
+	//
+	// - TFJob
+	//
+	// - PyTorchJob
+	//
+	// - MPIJob
+	//
+	// - XGBoostJob
+	//
+	// - OneFlowJob
+	//
+	// - ElasticBatchJob
+	//
+	// - RayJob
+	//
+	// - SlurmJob
 	//
 	// example:
 	//
@@ -265,7 +282,7 @@ type JobItem struct {
 	NodeCount *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
 	// The node names.
 	NodeNames []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
-	// Pods。
+	// The pods.
 	Pods []*PodItem `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
 	// The job priority.
 	//
@@ -273,13 +290,19 @@ type JobItem struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The reason code for the job entering its current status. Valid values:
+	// The reason code for the current job status. Valid values:
+	//
+	// - InvalidParameter
+	//
+	// - JobSucceeded
+	//
+	// - JobStoppedByUser
 	//
 	// example:
 	//
 	// JobStoppedByUser
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// The detailed description of the reason for the job entering its current status.
+	// The detailed description of the reason for the current job status.
 	//
 	// example:
 	//
@@ -303,64 +326,88 @@ type JobItem struct {
 	//
 	// 1Gi
 	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
-	// The ID of the resource group in which the job runs.
+	// The ID of the resource group where the job runs.
 	//
 	// example:
 	//
 	// dlc-quota
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource level of the job at runtime.
+	// The resource level when the job runs.
 	//
 	// example:
 	//
 	// L0
 	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
-	// The name of the resource on which the job runs.
+	// The name of the resource where the job runs.
 	//
 	// example:
 	//
 	// my_resource_group
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The resource name.
+	// The name of the resource.
 	//
 	// example:
 	//
 	// test
 	ResourceQuotaName *string `json:"ResourceQuotaName,omitempty" xml:"ResourceQuotaName,omitempty"`
-	// The resource type. Valid values: ECS, Lingjun, and ACS.
+	// The resource type, such as ECS, Lingjun, or ACS.
 	//
 	// example:
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The number of times the job has been restarted.
+	// The number of times the job is restarted.
 	//
 	// example:
 	//
 	// 1
-	RestartTimes       *string `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
-	RetryCount         *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RestartTimes *string `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
+	// The number of retries configured for the node.
+	//
+	// example:
+	//
+	// 0
+	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// The scheduling strategy of the node.
+	//
+	// example:
+	//
+	// Auto
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
 	// The additional parameters of the job.
 	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// The job status. Valid values:
 	//
+	// - Succeeded
+	//
+	// - Failed
+	//
 	// example:
 	//
 	// Stopped
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The job status transition information.
+	// The status transition information of the job.
 	StatusHistory []*StatusTransitionItem `json:"StatusHistory,omitempty" xml:"StatusHistory,omitempty" type:"Repeated"`
-	// The job sub-status, such as preemption retry status.
+	// The substatus of the job, such as the preemptible retry status.
 	//
 	// example:
 	//
 	// Restarting
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
 	// The system environment variable configuration.
-	SystemEnvs   map[string]*string `json:"SystemEnvs,omitempty" xml:"SystemEnvs,omitempty"`
-	TemplateId   *string            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName *string            `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	SystemEnvs map[string]*string `json:"SystemEnvs,omitempty" xml:"SystemEnvs,omitempty"`
+	// The ID of the node template used to create the node.
+	//
+	// example:
+	//
+	// tplmceolmf2****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the node template used to create the node.
+	//
+	// example:
+	//
+	// job-template-example-1778047****
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -375,19 +422,19 @@ type JobItem struct {
 	ThirdpartyLibDir *string `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
 	// The list of third-party Python libraries installed before the job runs.
 	ThirdpartyLibs []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
-	// Indicates whether the job uses idle resources.
+	// Specifies whether the job uses idle resources.
 	//
 	// example:
 	//
 	// false
 	UseOversoldResource *bool `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
-	// The startup command that runs on each node of the job.
+	// The startup command run by each node of the job.
 	//
 	// example:
 	//
 	// python /root/code/mnist.py
 	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
-	// The UID of the user who owns the job.
+	// The UID of the user to whom the job belongs.
 	//
 	// example:
 	//
@@ -429,6 +476,8 @@ type JobItem struct {
 	//
 	// dlc-workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The list of supported profiling types, separated by commas, such as sysom. An empty string indicates that profiling is not supported.
+	//
 	// example:
 	//
 	// sysom
@@ -1196,7 +1245,11 @@ func (s *JobItemDataSources) Validate() error {
 }
 
 type JobItemUserVpc struct {
-	// The default route. Valid values:
+	// The default routing. Valid values:
+	//
+	// - eth0: Uses the default network interface controller (NIC) to access external networks through the public gateway.
+	//
+	// - eth1: Uses the user elastic network interfaces (ENIs) to access external networks through the private gateway.
 	//
 	// example:
 	//

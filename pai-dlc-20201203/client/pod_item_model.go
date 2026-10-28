@@ -40,43 +40,78 @@ type iPodItem interface {
 }
 
 type PodItem struct {
+	// The time when the pod was created (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the pod was completed (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T15:36:05Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// The time when the pod was started (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:05Z
-	GmtStartTime *string    `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	HistoryPods  []*PodItem `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
+	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	// The historical pods.
+	HistoryPods []*PodItem `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
+	// Pod Ip
+	//
 	// example:
 	//
 	// 10.0.1.2
-	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The name of the compute node where the pod is located.
+	//
+	// example:
+	//
+	// i-a
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// Pod Id
+	//
 	// example:
 	//
 	// dlc-20210126170216-mtl37ge7gkvdz-worker-0
-	PodId  *string                `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodIp  *string                `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// The IP address of the pod.
+	//
+	// example:
+	//
+	// 10.0.1.2
+	PodIp *string `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
+	// The IP addresses of the pod. For Lingjun AI Computing Service: user VPC net0, management VPC net, and pod-to-pod communication ethx. For general-purpose computing: user VPC eth1 with dedicated gateway default route, management VPC eth0 with public gateway default route, and pod-to-pod communication net eRDMA.
 	PodIps []*PodNetworkInterface `json:"PodIps,omitempty" xml:"PodIps,omitempty" type:"Repeated"`
+	// Pod Uid
+	//
 	// example:
 	//
 	// fe846462-af2c-4521-bd6f-96787a57591d
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// The status of the pod.
+	//
 	// example:
 	//
 	// Stopped
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The substatus of the pod.
+	//
+	// example:
+	//
+	// Restarting
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// The type of the pod.
+	//
 	// example:
 	//
 	// Worker
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The list of supported profiling types, separated by commas, such as sysom. An empty string indicates that profiling is not supported.
+	//
 	// example:
 	//
 	// sysom

@@ -26,7 +26,7 @@ type iListEcsSpecsRequest interface {
 }
 
 type ListEcsSpecsRequest struct {
-	// Filters by accelerator type. Valid values:
+	// The accelerator type. Valid values:
 	//
 	// - CPU
 	//
@@ -36,7 +36,7 @@ type ListEcsSpecsRequest struct {
 	//
 	// GPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	// The list of instance types to query. Separate multiple instance types with commas (,).
+	// The instance types to query. Separate multiple instance types with commas (,).
 	//
 	// example:
 	//
@@ -44,21 +44,21 @@ type ListEcsSpecsRequest struct {
 	InstanceTypes *string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - desc: descending order.
+	// - desc: Descending order.
 	//
-	// - asc: ascending order.
+	// - asc: Ascending order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. The minimum value is 1.
+	// The page number. Minimum value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page in a paged query. This parameter is used for paging.
+	// The number of entries to return per page in a paging query.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListEcsSpecsRequest struct {
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Sorts by return field. Valid values:
+	// The field by which to sort the returned results. Valid values:
 	//
 	// - CPU
 	//

@@ -9,13 +9,13 @@ import (
 
 // Summary:
 //
-// Creates a job and runs it in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node of the job.
+// Creates a job to run in a cluster. You can specify configurations such as datasource config, code sources, startup commands, and compute resources for each node where the job runs.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
 //
-//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes.
+//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - CreateJobRequest
 //
@@ -62,6 +62,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 
 	if !dara.IsNil(request.DisplayName) {
 		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.ElasticSpec) {
@@ -367,7 +371,7 @@ func (client *Client) CreateSignalWithContext(ctx context.Context, JobId *string
 
 // Summary:
 //
-// Creates a TensorBoard instance. You can create a TensorBoard instance from a job or by specifying a datasource config.
+// Creates a TensorBoard instance by using a node or a specified datasource config.
 //
 // @param request - CreateTensorboardRequest
 //
@@ -609,7 +613,7 @@ func (client *Client) DeleteRayHistoryServerWithContext(ctx context.Context, Ray
 
 // Summary:
 //
-// Deletes a stopped Tensorboard.
+// Deletes a stopped TensorBoard.
 //
 // @param request - DeleteTensorboardRequest
 //
@@ -711,7 +715,7 @@ func (client *Client) GetDashboardWithContext(ctx context.Context, jobId *string
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a node.
+// Retrieves the detailed configuration and runtime information of a job.
 //
 // @param request - GetJobRequest
 //
@@ -813,9 +817,9 @@ func (client *Client) GetJobEventsWithContext(ctx context.Context, JobId *string
 
 // Summary:
 //
-// Retrieves monitoring data for a node, including CPU, GPU, and memory usage, as well as network and disk read/write rates.
+// Retrieves the monitoring data of a node, including the CPU, GPU, and memory usage, as well as the network and disk read and write rates.
 //
-// ⚠️ Note: All node types except pay-as-you-go (postpaid) nodes based on general computing resources are integrated with CloudMonitor. Use CloudMonitor API operations for monitoring calls. Features already covered by the new API operations will no longer undergo maintenance in the original API operations. For more information, see [Training Monitoring and Alerts](https://www.alibabacloud.com/help/zh/pai/user-guide/training-monitoring-and-alerting).
+// ⚠️ Note: Except for pay-as-you-go nodes based on general computing resources, all other node types are integrated with CloudMonitor. To invoke related monitoring, use CloudMonitor API operations. Any feature overwrite in the original API operations will no longer be maintained. For more information, see [Training monitoring and alerting](https://www.alibabacloud.com/help/zh/pai/user-guide/training-monitoring-and-alerting).
 //
 // @param request - GetJobMetricsRequest
 //
@@ -878,7 +882,7 @@ func (client *Client) GetJobMetricsWithContext(ctx context.Context, JobId *strin
 
 // Summary:
 //
-// Retrieves the computing power health check result for a specific run of a DLC job.
+// Retrieves a specific computing power health check result for a DLC job.
 //
 // @param request - GetJobSanityCheckResultRequest
 //
@@ -1360,7 +1364,7 @@ func (client *Client) GetSignalWithContext(ctx context.Context, JobId *string, S
 
 // Summary:
 //
-// Retrieves the details of a Tensorboard.
+// Retrieves the details of a TensorBoard.
 //
 // @param request - GetTensorboardRequest
 //
@@ -1462,7 +1466,7 @@ func (client *Client) GetTensorboardSharedUrlWithContext(ctx context.Context, Te
 
 // Summary:
 //
-// Retrieves a sharing token for a DLC job, which is used to view information about the shared task.
+// Retrieves the sharing token for a DLC job to view information about the shared job.
 //
 // @param request - GetTokenRequest
 //
@@ -1572,7 +1576,7 @@ func (client *Client) GetWebTerminalWithContext(ctx context.Context, JobId *stri
 
 // Summary:
 //
-// Queries the list of currently supported machine resource configurations.
+// Queries the list of supported machine resource configurations.
 //
 // @param request - ListEcsSpecsRequest
 //
@@ -1643,7 +1647,7 @@ func (client *Client) ListEcsSpecsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Retrieves all computing power health check results for a specific DLC job.
+// Retrieves all computing power health check results for a DLC job.
 //
 // @param request - ListJobSanityCheckResultsRequest
 //
@@ -1769,7 +1773,7 @@ func (client *Client) ListJobTemplatesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves a list of jobs with support for pagination, sorting, and conditional filtering.
+// Queries a list of jobs with support for pagination, sorting, and conditional filtering.
 //
 // @param tmpReq - ListJobsRequest
 //
@@ -2156,7 +2160,7 @@ func (client *Client) ListSignalsWithContext(ctx context.Context, JobId *string,
 
 // Summary:
 //
-// Queries a list of created Tensorboard instances.
+// Queries the list of created TensorBoard instances.
 //
 // @param request - ListTensorboardsRequest
 //
@@ -2373,7 +2377,7 @@ func (client *Client) StartRayHistoryServerWithContext(ctx context.Context, RayH
 
 // Summary:
 //
-// Starts a Tensorboard.
+// Starts a TensorBoard.
 //
 // @param request - StartTensorboardRequest
 //
@@ -2677,7 +2681,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, tmpReq *Unt
 
 // Summary:
 //
-// Updates the configuration of a node, such as modifying the priority of a queued node.
+// Updates the configuration of a job, such as modifying the priority of a queued job.
 //
 // @param request - UpdateJobRequest
 //
@@ -2811,7 +2815,7 @@ func (client *Client) UpdateJobTemplateWithContext(ctx context.Context, Template
 
 // Summary:
 //
-// Update a Tensorboard.
+// Updates a TensorBoard.
 //
 // @param request - UpdateTensorboardRequest
 //

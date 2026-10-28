@@ -20,25 +20,25 @@ type iRLProgressStages interface {
 }
 
 type RLProgressStages struct {
-	// 当前所处阶段的下标
+	// The index of the current stage.
 	//
 	// example:
 	//
 	// 6
 	CurrentIndex *int32 `json:"CurrentIndex,omitempty" xml:"CurrentIndex,omitempty"`
-	// disagg / colocate / 空串
+	// The disagg, colocate, or empty string.
 	//
 	// example:
 	//
 	// colocate
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// 阶段列表，按流水线顺序
+	// The list of stages in pipeline order.
 	//
 	// example:
 	//
-	// [{"Key":"generation","Label":"生成","Marker":"start/end generation","Optional":false,"Status":"done","StartTime":1787474487,"EndTime":1787474487,"Duration":0.483}]
+	// [{"Key":"generation","Label":"Generation","Marker":"start/end generation","Optional":false,"Status":"done","StartTime":1787474487,"EndTime":1787474487,"Duration":0.483}]
 	Stages []*RLProgressStage `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
-	// 本 step 的阶段流水线是否已走完
+	// Indicates whether the stage pipeline for this step is completed.
 	//
 	// example:
 	//

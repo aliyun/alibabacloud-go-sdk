@@ -28,43 +28,43 @@ type iRLProgressStage interface {
 }
 
 type RLProgressStage struct {
-	// 阶段耗时（秒，保留 3 位小数）；一个 step 常整体落在同一秒内，故不取整
+	// The duration of the stage in seconds, with three decimal places. A step often falls entirely within the same second, so the value is not rounded to an integer.
 	//
 	// example:
 	//
 	// 0.483
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 阶段结束时间（unix 秒）
+	// The end time of the stage in UNIX seconds.
 	//
 	// example:
 	//
 	// 1787474487
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 阶段标识
+	// The stage identifier.
 	//
 	// example:
 	//
 	// traj
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 阶段中文名
+	// The Chinese name of the stage.
 	//
 	// example:
 	//
-	// 生成轨迹
+	// Generate trace
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// 匹配该阶段的日志标记文案
+	// The log marker text used to match the stage.
 	//
 	// example:
 	//
 	// start/end generation
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// 是否为可选阶段；可选阶段未出现时状态记为 skipped
+	// Specifies whether the stage is optional. If an optional stage does not occur, its status is recorded as skipped.
 	//
 	// example:
 	//
 	// false
 	Optional *bool `json:"Optional,omitempty" xml:"Optional,omitempty"`
-	// 阶段开始时间（unix 秒）
+	// The start time of the stage in UNIX seconds.
 	//
 	// example:
 	//

@@ -22,10 +22,23 @@ type iEventInfo interface {
 }
 
 type EventInfo struct {
+  // The text content of the event.
   Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+  // The ID of the event, which is used to obtain the related context.
   Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+  // The ID of the pod to which the event belongs.
+  // 
+  // example:
+  // 
+  // dlc*****-master-0
   PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+  // The UID of the pod to which the event belongs.
+  // 
+  // example:
+  // 
+  // 94a7cc7c-0033-48b5-85bd-71c63592c268
   PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+  // The timestamp of the event in UTC.
   Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 

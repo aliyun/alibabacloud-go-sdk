@@ -78,13 +78,23 @@ type Tensorboard struct {
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Cpu           *int64  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The CPU resources.
+	//
+	// example:
+	//
+	// 1
+	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The data source ID.
 	//
 	// example:
 	//
 	// datasource-test
-	DataSourceId   *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The dataset type.
+	//
+	// example:
+	//
+	// OSS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The display name.
 	//
@@ -121,23 +131,38 @@ type Tensorboard struct {
 	// example:
 	//
 	// dlc-20210114104214-vf9lowjt3pso
-	JobId                 *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
-	Memory                *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Options               *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The priority of the TensorBoard job.
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The maximum running duration in minutes.
+	//
+	// example:
+	//
+	// 240
+	MaxRunningTimeMinutes *int64 `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	// The memory size in GB.
+	//
+	// example:
+	//
+	// 1000
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The extended fields of the dataset in JSON format. Currently, MountPath is supported, which specifies the mount path for a custom dataset.
+	//
+	// example:
+	//
+	// {"mountpath":"/root/data/"}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The priority of the Tensorboard job.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the resource group used by TensorBoard.
+	// The ID of the resource group used by Tensorboard.
 	//
 	// example:
 	//
 	// quota12***
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The name of the resource quota used by TensorBoard.
+	// The name of the resource quota used by Tensorboard.
 	//
 	// example:
 	//
@@ -172,25 +197,35 @@ type Tensorboard struct {
 	// example:
 	//
 	// /root/data
-	SummaryPath         *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	SummaryPath *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	// The absolute path of the summary.
+	//
+	// example:
+	//
+	// /summary/
 	SummaryRelativePath *string `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
-	// The datasets mounted to the TensorBoard job.
+	// The datasets mounted to the Tensorboard job.
 	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
-	// Tensorboard ID。
+	// The Tensorboard ID.
 	//
 	// example:
 	//
 	// tensorboard-xxx
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
-	// The pay-as-you-go configuration of the TensorBoard job.
+	// The pay-as-you-go configuration for the Tensorboard job.
 	TensorboardSpec *TensorboardSpec `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
-	// Tensorboard URL。
+	// The Tensorboard URL.
 	//
 	// example:
 	//
 	// http://xxxxxx
 	TensorboardUrl *string `json:"TensorboardUrl,omitempty" xml:"TensorboardUrl,omitempty"`
-	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The token value.
+	//
+	// example:
+	//
+	// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9*****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	// The ID of the creator.
 	//
 	// example:
@@ -202,7 +237,12 @@ type Tensorboard struct {
 	// example:
 	//
 	// tensorboard.pai
-	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123***
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

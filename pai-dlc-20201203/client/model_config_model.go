@@ -16,7 +16,13 @@ type iModelConfig interface {
 }
 
 type ModelConfig struct {
-	ModelName     *string        `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The name of the output model. The output model of a joint training job is registered in the Models section of AI Asset Management under this name.
+	//
+	// example:
+	//
+	// model_a
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model template configuration. This configuration is required if you want to deploy the output model to Elastic Algorithm Service (EAS) with one click.
 	ModelTemplate *ModelTemplate `json:"ModelTemplate,omitempty" xml:"ModelTemplate,omitempty"`
 }
 

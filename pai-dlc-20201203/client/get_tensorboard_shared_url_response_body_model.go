@@ -16,7 +16,7 @@ type iGetTensorboardSharedUrlResponseBody interface {
 }
 
 type GetTensorboardSharedUrlResponseBody struct {
-	// The request ID. Used for troubleshooting and support inquiries.
+	// The request ID. It is used for troubleshooting and technical support.
 	//
 	// example:
 	//

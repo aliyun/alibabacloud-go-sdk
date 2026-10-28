@@ -20,9 +20,21 @@ type iAliyunAccounts interface {
 }
 
 type AliyunAccounts struct {
-	AliyunUid     *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	EmployeeId    *string `json:"EmployeeId,omitempty" xml:"EmployeeId,omitempty"`
+	// The UID of the Alibaba Cloud account.
+	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The employee ID of the internal user.
+	EmployeeId *string `json:"EmployeeId,omitempty" xml:"EmployeeId,omitempty"`
+	// The creation time of the record.
+	//
+	// example:
+	//
+	// 2021-01-18T12:52:15Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modification time of the record.
+	//
+	// example:
+	//
+	// 2021-01-18T12:52:15Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
 }
 

@@ -28,28 +28,42 @@ type iFreeResourceItem interface {
 }
 
 type FreeResourceItem struct {
+	// The resource count.
+	//
 	// example:
 	//
 	// 2
-	AvailableNumber *int64  `json:"AvailableNumber,omitempty" xml:"AvailableNumber,omitempty"`
-	ClusterID       *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
-	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	AvailableNumber *int64 `json:"AvailableNumber,omitempty" xml:"AvailableNumber,omitempty"`
+	// The cluster ID.
+	ClusterID *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
+	// The cluster name.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The idle resource ID.
+	//
 	// example:
 	//
 	// freeres-whateversth
 	FreeResourceId *string `json:"FreeResourceId,omitempty" xml:"FreeResourceId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-01-18T12:52:15Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2021-01-18T12:52:15Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// inner
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// cpu

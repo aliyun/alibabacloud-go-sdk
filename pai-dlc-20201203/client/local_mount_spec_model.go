@@ -18,8 +18,23 @@ type iLocalMountSpec interface {
 }
 
 type LocalMountSpec struct {
+	// The local path on the host. This field is invalid when MountMode is set to Block.
+	//
+	// example:
+	//
+	// /local/a
 	LocalPath *string `json:"LocalPath,omitempty" xml:"LocalPath,omitempty"`
+	// The mount mode. Valid values: Block and Filesystem.
+	//
+	// example:
+	//
+	// Filesystem
 	MountMode *string `json:"MountMode,omitempty" xml:"MountMode,omitempty"`
+	// The absolute mount path in the container. The path must start with a forward slash (/). When MountMode is set to Block, the path must start with /dev/.
+	//
+	// example:
+	//
+	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 

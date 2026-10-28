@@ -24,23 +24,34 @@ type iQuotaDetail interface {
 }
 
 type QuotaDetail struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 5
-	GPU        *string      `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The GPU details.
 	GPUDetails []*GPUDetail `json:"GPUDetails,omitempty" xml:"GPUDetails,omitempty" type:"Repeated"`
+	// The GPU type.
+	//
 	// example:
 	//
 	// Tesla-V100
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The full name of the GPU type.
+	//
 	// example:
 	//
 	// nvidia.com/gpu
 	GPUTypeFullName *string `json:"GPUTypeFullName,omitempty" xml:"GPUTypeFullName,omitempty"`
+	// The memory capacity.
+	//
 	// example:
 	//
 	// 10Gi

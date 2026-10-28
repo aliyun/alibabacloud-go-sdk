@@ -20,13 +20,13 @@ type iListJobsResponseBody interface {
 type ListJobsResponseBody struct {
 	// The job list.
 	Jobs []*JobItem `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// The request ID, used for diagnostics and troubleshooting.
+	// The request ID, which is used for diagnostics and troubleshooting.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of jobs that match the filter conditions.
+	// The total number of jobs that meet the filtering conditions.
 	//
 	// example:
 	//

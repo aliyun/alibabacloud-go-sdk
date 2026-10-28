@@ -23,15 +23,15 @@ type iJobTemplateVersionDetail interface {
 
 type JobTemplateVersionDetail struct {
 	Constraints map[string]*string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	// Configuration content of the job template. It supports all parameter fields of the CreateJob API and is stored as a JSON object.
+	// 任务模板的配置内容，支持 CreateJob 接口的所有参数字段，以 JSON 对象存储
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// User ID that created this version
+	// 创建该版本的用户ID
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// Creation time of this version
+	// 该版本的创建时间
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// Template version number
+	// 模板版本号
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
