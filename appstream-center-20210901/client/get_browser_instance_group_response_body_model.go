@@ -16,9 +16,9 @@ type iGetBrowserInstanceGroupResponseBody interface {
 }
 
 type GetBrowserInstanceGroupResponseBody struct {
-	// The details of the browser group.
+	// The browser instance group details.
 	BrowserInstanceGroupModel *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel `json:"BrowserInstanceGroupModel,omitempty" xml:"BrowserInstanceGroupModel,omitempty" type:"Struct"`
-	// The request ID, which is used for troubleshooting.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,161 +62,161 @@ func (s *GetBrowserInstanceGroupResponseBody) Validate() error {
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel struct {
-	// Indicates whether authorization and deauthorization notification emails are enabled. `true` indicates that the feature is enabled. `false` indicates that the feature is disabled.
+	// Specifies whether authorization and revocation notification emails are enabled. A value of `true` indicates that the feature is enabled, and a value of `false` indicates that the feature is disabled.
 	//
 	// example:
 	//
 	// true
 	AuthNotificationEnabled *bool `json:"AuthNotificationEnabled,omitempty" xml:"AuthNotificationEnabled,omitempty"`
-	// The statistics of authorized users for the browser group.
+	// The statistics of authorized users for the browser instance group.
 	AuthorizedUserInfo *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelAuthorizedUserInfo `json:"AuthorizedUserInfo,omitempty" xml:"AuthorizedUserInfo,omitempty" type:"Struct"`
-	// The business region where the browser group resides.
+	// The business region where the browser instance group is located.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The current browser configuration.
+	// The current configuration of the browser.
 	BrowserConfig *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConfig `json:"BrowserConfig,omitempty" xml:"BrowserConfig,omitempty" type:"Struct"`
-	// The cloud browser group ID.
+	// The ID of the cloud browser instance group.
 	//
 	// example:
 	//
 	// big-0c7loey7fzjq****
 	BrowserInstanceGroupId *string `json:"BrowserInstanceGroupId,omitempty" xml:"BrowserInstanceGroupId,omitempty"`
-	// The cloud browser group name.
+	// The name of the cloud browser instance group.
 	//
 	// example:
 	//
-	// Office Browser
+	// Office browser
 	BrowserInstanceGroupName *string `json:"BrowserInstanceGroupName,omitempty" xml:"BrowserInstanceGroupName,omitempty"`
-	// The ID of the browser group set to which the browser group belongs.
+	// The ID of the browser instance group set to which the browser instance group belongs.
 	//
 	// example:
 	//
 	// set-3jm9d0abc00example
 	BrowserInstanceGroupSetId *string `json:"BrowserInstanceGroupSetId,omitempty" xml:"BrowserInstanceGroupSetId,omitempty"`
-	// The billing type. In MAU scenarios, `PostPaid` is returned, which indicates the pay-as-you-go billing method.
+	// The billing method. In the monthly active user (MAU) scenario, `PostPaid` is returned, which indicates pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The default access URL of the browser group. Use the URL returned by the API to access the browser group. Replace the resource ID in the example with your actual value.
+	// The default access URL of the browser instance group. Use the actual URL returned by the API operation. Replace the resource ID in the example.
 	//
 	// example:
 	//
 	// https://wuying.aliyun.com/integration?appId=browser&appInstanceGroupId=big-0c7loey7fzjq****
 	DefaultAccessUrl *string `json:"DefaultAccessUrl,omitempty" xml:"DefaultAccessUrl,omitempty"`
-	// The plan duration information. In MAU scenarios, plan duration does not apply, and an empty object may be returned.
+	// The package duration information. This parameter is not applicable to the MAU scenario and may return an empty object.
 	Duration *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelDuration `json:"Duration,omitempty" xml:"Duration,omitempty" type:"Struct"`
-	// The expiration time of the browser group. This field does not apply to MAU scenarios and is not returned.
+	// The expiration time of the browser instance group. This parameter is not applicable to the MAU scenario and is not returned.
 	//
 	// example:
 	//
 	// -
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The creation time of the browser group. The value is an RFC 3339 time string in the `yyyy-MM-ddTHH:mm:ss.SSSXXX` format, which includes milliseconds and a time zone offset. The `+00:00` in the example indicates the UTC time zone.
+	// The creation time of the browser instance group. The time is displayed in the RFC 3339 format `yyyy-MM-ddTHH:mm:ss.SSSXXX`, which includes milliseconds and time zone offset. In the example, `+00:00` indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2026-09-21T07:00:39.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The homepage URL of the browser group.
+	// The homepage URL of the browser instance group.
 	//
 	// example:
 	//
 	// https://www.aliyun.com
 	Homepage *string `json:"Homepage,omitempty" xml:"Homepage,omitempty"`
-	// The image ID used by the browser group.
+	// The ID of the image used by the browser instance group.
 	//
 	// example:
 	//
 	// imgc-070qhs8oeju4****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance type used by the browser group.
+	// The instance type used by the browser instance group.
 	//
 	// example:
 	//
 	// appstreaming.general.basic
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The maximum number of instances configured for the MAU scenario.
+	// The maximum number of instances configured in the MAU scenario.
 	//
 	// example:
 	//
 	// 100
 	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
-	// The office network and website access restriction configuration.
+	// The office network and website access restriction configurations.
 	Network *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	// The node specifications information. This field does not apply to MAU scenarios.
+	// The node specifications. This parameter is not applicable to the MAU scenario.
 	NodeInstanceType *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNodeInstanceType `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty" type:"Struct"`
-	// The list of node pool information. In MAU scenarios, this field does not apply and an empty list may be returned.
+	// The list of node pool information. This parameter is not applicable to the MAU scenario and may return an empty list.
 	NodePool []*GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
-	// The operating system type of the browser group. The current MAU product scenario uses Windows.
+	// The operating system type of the browser instance group. Currently, Windows is used in the MAU scenario.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The policy configuration returned for the browser group. The policy fields are used to view existing settings and do not indicate that all corresponding creation parameters are configurable.
+	// The policy configuration returned for the browser instance group. The policy fields are used to view existing settings and do not indicate that all corresponding creation parameters are configurable.
 	Policy *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	// The status of the browser instance group.
+	// The status of the browser instance group. Valid values:
 	//
-	// - `DEPLOYING`: Being deployed.
+	// - DEPLOYING: Publishing.
 	//
-	// - `PUBLISHED`: Deployed.
+	// - PUBLISHED: Published.
 	//
-	// - `FAILED`: Deployment failed.
+	// - FAILED: Publish failed.
 	//
-	// - `EXPIRED`: Expired.
+	// - EXPIRED: Expired.
 	//
-	// - `CEASED`: Suspended due to overdue payment.
+	// - CEASED: Suspended due to overdue payment.
 	//
-	// - `MAINTAINING`: Being updated.
+	// - MAINTAINING: Updating.
 	//
-	// - `MAINTAIN_FAILED`: Update failed.
+	// - MAINTAIN_FAILED: Update failed.
 	//
-	// - `DELETING`: Being deleted.
+	// - DELETING: Deleting.
 	//
-	// - `UNAVAILABLE`: Unavailable.
+	// - UNAVAILABLE: Unavailable.
 	//
 	// example:
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The sub-billing type. In MAU scenarios, the actual returned value is `mau`, which indicates billing by monthly active users.
+	// The sub-billing type. In the MAU scenario, mau is returned, which indicates billing by monthly active users.
 	//
 	// example:
 	//
 	// mau
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// Indicates whether mixed authorization of users and user groups is supported. `true` indicates supported, and `false` indicates not supported. Evaluate this value based on the current authorization mode.
+	// Specifies whether mixed authorization of users and user groups is supported. A value of true indicates that it is supported, and false indicates that it is not supported. Evaluate this parameter based on the current authorization mode.
 	//
 	// example:
 	//
 	// false
 	SupportUserGroupMixedAuth *bool `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
-	// The version of the browser.
+	// The version of the browser. Valid values:
 	//
-	// - `Basic`: Basic Edition.
+	// - Basic: Basic Edition.
 	//
-	// - `Pro`: Premium Edition.
+	// - Pro: Premium Edition.
 	//
-	// In MAU scenarios, the value is `Pro`.
+	// In the MAU scenario, the value is Pro.
 	//
 	// example:
 	//
 	// Pro
 	Tier *string `json:"Tier,omitempty" xml:"Tier,omitempty"`
-	// The session timer configurations currently returned. These are for viewing the effective settings and do not indicate that the creation API supports setting this parameter.
+	// The session timer configurations returned in the current response. This parameter is used to view the effective settings and does not indicate that the create operation supports configuring this parameter.
 	Timers []*GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
-	// The current authorization mode.
+	// The current authorization mode. Valid values:
 	//
-	// - `Mixed`: Mixed authorization of users and user groups.
+	// - Mixed: Mixed authorization of users and user groups.
 	//
-	// - `User`: User authorization.
+	// - User: User authorization.
 	//
-	// - `UserGroup`: User group authorization.
+	// - UserGroup: User group authorization.
 	//
 	// example:
 	//
@@ -589,15 +589,15 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelAuthorizedU
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConfig struct {
-	// The list of browser bookmarks. A maximum of 20 entries are returned. To query the complete bookmark list, call `ListBrowserBookmarks`.
+	// The list of browser bookmarks. A maximum of 20 bookmarks are returned. To query the complete list of bookmarks, call the `ListBrowserBookmarks` operation.
 	Bookmarks []*GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConfigBookmarks `json:"Bookmarks,omitempty" xml:"Bookmarks,omitempty" type:"Repeated"`
-	// The browser startup parameters. For example, `--incognito` specifies the incognito window mode.
+	// The browser startup parameters. For example, `--incognito` specifies an incognito window.
 	//
 	// example:
 	//
 	// --incognito
 	BrowserParam *string `json:"BrowserParam,omitempty" xml:"BrowserParam,omitempty"`
-	// The cookie synchronization configuration. The string `true` indicates that synchronization is enabled. The string `false` indicates that synchronization is disabled.
+	// The cookie synchronization configuration. A value of `true` indicates that synchronization is enabled, and a value of `false` indicates that synchronization is disabled.
 	//
 	// example:
 	//
@@ -669,11 +669,11 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConf
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConfigBookmarks struct {
-	// The folder in which the bookmark resides.
+	// The folder where the bookmark is located.
 	//
 	// example:
 	//
-	// Work Portal
+	// Work portal
 	BookmarkFolder *string `json:"BookmarkFolder,omitempty" xml:"BookmarkFolder,omitempty"`
 	// The bookmark ID.
 	//
@@ -685,7 +685,7 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConfigBo
 	//
 	// example:
 	//
-	// Alibaba Cloud Official Website
+	// Alibaba Cloud website
 	BookmarkName *string `json:"BookmarkName,omitempty" xml:"BookmarkName,omitempty"`
 	// The URL of the bookmark.
 	//
@@ -744,31 +744,31 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConf
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelDuration struct {
-	// The current payment stage of the plan. This field does not apply to MAU scenarios.
+	// The current payment stage of the package. This parameter is not applicable to the MAU scenario.
 	//
 	// example:
 	//
 	// -
 	CurrentPayStage *string `json:"CurrentPayStage,omitempty" xml:"CurrentPayStage,omitempty"`
-	// The end time of the plan period. This field does not apply to MAU scenarios and is not returned.
+	// The end time of the package cycle. This parameter is not applicable to the MAU scenario and is not returned.
 	//
 	// example:
 	//
 	// -
 	PeriodEndTime *string `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
-	// The start time of the plan period. This field does not apply to MAU scenarios and is not returned.
+	// The start time of the package cycle. This parameter is not applicable to the MAU scenario and is not returned.
 	//
 	// example:
 	//
 	// -
 	PeriodStartTime *string `json:"PeriodStartTime,omitempty" xml:"PeriodStartTime,omitempty"`
-	// The total duration of the plan, in seconds. This field does not apply to MAU scenarios.
+	// The total duration of the package, in seconds. This parameter is not applicable to the MAU scenario.
 	//
 	// example:
 	//
 	// -
 	TotalDuration *int32 `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
-	// The used duration of the plan, in seconds. This field does not apply to MAU scenarios.
+	// The used duration of the package, in seconds. This parameter is not applicable to the MAU scenario.
 	//
 	// example:
 	//
@@ -836,25 +836,25 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelDuration) V
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNetwork struct {
 	// The website access restriction mode.
 	//
-	// - `ALLOW_ALL`: All domain names are allowed.
+	// - `ALLOW_ALL`: allows all domain names.
 	//
-	// - `ALLOW_LIST`: Only websites in the allowlist are allowed.
+	// - `ALLOW_LIST`: allows only websites in the list.
 	//
-	// The returned value reflects the current configuration of the browser group.
+	// The returned value reflects the current configuration of the browser instance group.
 	//
 	// example:
 	//
 	// ALLOW_ALL
 	AccessRestriction *string `json:"AccessRestriction,omitempty" xml:"AccessRestriction,omitempty"`
-	// The office network ID to which the browser group belongs.
+	// The ID of the office network to which the browser instance group belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-843734****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The website access restriction list. A maximum of 20 entries are returned. To query the complete list, call `ListBrowserRestrictedURLs`.
+	// The list of website access restrictions. A maximum of 20 restrictions are returned. To query the complete list, call the `ListBrowserRestrictedURLs` operation.
 	RestrictedURLs []*GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNetworkRestrictedURLs `json:"RestrictedURLs,omitempty" xml:"RestrictedURLs,omitempty" type:"Repeated"`
-	// The list of vSwitch IDs used by the browser group. This is available for scenarios with custom network configurations.
+	// The list of vSwitch IDs used by the browser instance group. This parameter is available for scenarios where custom networks are configured.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
@@ -961,13 +961,13 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNetworkRest
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNodeInstanceType struct {
-	// The CPU configuration of the node. This field does not apply to MAU scenarios.
+	// The CPU configuration of the node. This parameter is not applicable to the MAU scenario.
 	//
 	// example:
 	//
 	// -
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The memory configuration of the node. This field does not apply to MAU scenarios.
+	// The memory configuration of the node. This parameter is not applicable to the MAU scenario.
 	//
 	// example:
 	//
@@ -1006,13 +1006,13 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNodeInstanc
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNodePool struct {
-	// The total number of nodes. This field does not apply to MAU scenarios.
+	// The total number of nodes. This parameter is not applicable to the MAU scenario.
 	//
 	// example:
 	//
 	// -
 	NodeAmount *string `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	// The number of used nodes. This field does not apply to MAU scenarios.
+	// The number of used nodes. This parameter is not applicable to the MAU scenario.
 	//
 	// example:
 	//
@@ -1051,41 +1051,41 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNodePool) V
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy struct {
-	// The screenshot protection switch.
+	// The screen capture prevention switch.
 	//
-	// - `on`: Screenshot protection is enabled.
+	// - `on`: enables screen capture prevention.
 	//
-	// - `off`: Screenshot protection is disabled.
+	// - `off`: disables screen capture prevention.
 	//
 	// example:
 	//
 	// on
 	AppContentProtection *string `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
-	// The client access IP address whitelist rules.
+	// The IP address whitelist rules for client access.
 	AuthorizeAccessPolicyRules []*GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyAuthorizeAccessPolicyRules `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
 	// The list of client access control configurations.
 	ClientTypes []*GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
-	// The clipboard transfer direction, content type, and size limit settings. read indicates transfer from the local PC to the cloud browser. write indicates transfer from the cloud browser to the local PC.
+	// Sets the clipboard transfer direction, content type, and size limits. `read` indicates transfer from the local PC to the cloud browser, and `write` indicates transfer from the cloud browser to the local PC.
 	ClipboardPolicy *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClipboardPolicy `json:"ClipboardPolicy,omitempty" xml:"ClipboardPolicy,omitempty" type:"Struct"`
-	// The data retention policy for sessions after disconnection.
+	// The data retention policy after disconnection. Valid values:
 	//
-	// - `customTime`: The session is retained for the duration specified by `DisconnectKeepSessionTime`.
+	// - `customTime`: Retains the session for the duration specified by `DisconnectKeepSessionTime`.
 	//
-	// - `persistent`: The session is not subject to automatic release based on disconnection duration.
+	// - `persistent`: No automatic release based on disconnection duration.
 	//
-	// **Note:*	- The `persistent` option is still subject to authorization and other release policies.
+	// **Note:*	- `persistent` is still subject to authorization and other release policies.
 	//
 	// example:
 	//
 	// customTime
 	DisconnectKeepSession *string `json:"DisconnectKeepSession,omitempty" xml:"DisconnectKeepSession,omitempty"`
-	// The session retention duration after disconnection. Unit: seconds. This value is for viewing the configuration only and does not indicate that this parameter can be set through the create operation.
+	// The returned retention duration for disconnected sessions, in seconds. This parameter is for viewing configurations only and does not indicate that the create operation supports setting this parameter.
 	//
 	// example:
 	//
 	// 1800
 	DisconnectKeepSessionTime *int32 `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
-	// The floating ball file manager switch.
+	// The floating ball file manager switch. Valid values:
 	//
 	// - `on`: Enabled.
 	//
@@ -1095,35 +1095,41 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy struct {
 	//
 	// off
 	FileManager *string `json:"FileManager,omitempty" xml:"FileManager,omitempty"`
-	// The file transfer policy for the web client.
+	// The file transfer policy for the web client. Valid values:
 	//
-	// - `off`: Transfer is denied.
+	// - `off`: Transfer disabled.
 	//
-	// - `upload`: Only upload is allowed.
+	// - `upload`: Upload only.
 	//
-	// - `download`: Only download is allowed.
+	// - `download`: Download only.
 	//
-	// - `full`: Both upload and download are allowed.
+	// - `full`: Upload and download allowed.
 	//
-	// Configure this parameter together with the clipboard policy.
+	// Configure this parameter in conjunction with the clipboard policy.
 	//
 	// example:
 	//
 	// full
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// The switch for automatic disconnection upon no operation. The value is case-insensitive.
+	// The dual-screen switch for cloud browsers.
 	//
-	// - `on`: Enabled.
+	// example:
 	//
-	// - `off`: Disabled.
+	// off
+	MultiScreen *string `json:"MultiScreen,omitempty" xml:"MultiScreen,omitempty"`
+	// Specifies whether to automatically disconnect sessions after a period of inactivity. The value is case-insensitive. Valid values:
 	//
-	// When enabled, use `NoOperationDisconnectTime` to set the wait duration.
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// When enabled, use NoOperationDisconnectTime to set the idle timeout period.
 	//
 	// example:
 	//
 	// on
 	NoOperationDisconnect *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
-	// The wait duration before disconnection is triggered after no operation, in seconds. Whether this feature is enabled is indicated by `NoOperationDisconnect`.
+	// The idle timeout period in seconds before a session is automatically disconnected. This feature is enabled or disabled by the NoOperationDisconnect parameter.
 	//
 	// example:
 	//
@@ -1135,11 +1141,11 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy struct {
 	//
 	// pg-0bf5d87epuq5****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The policy version.
+	// The policy version. Valid values:
 	//
-	// - `DEFAULT`: Legacy policy.
+	// - DEFAULT: Legacy policy.
 	//
-	// - `CENTER`: Centralized policy.
+	// - CENTER: Centralized policy.
 	//
 	// example:
 	//
@@ -1189,6 +1195,10 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy) Get
 
 func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy) GetHtml5FileTransfer() *string {
 	return s.Html5FileTransfer
+}
+
+func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy) GetMultiScreen() *string {
+	return s.MultiScreen
 }
 
 func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy) GetNoOperationDisconnect() *string {
@@ -1252,6 +1262,11 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy) Set
 
 func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy) SetHtml5FileTransfer(v string) *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy {
 	s.Html5FileTransfer = &v
+	return s
+}
+
+func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy) SetMultiScreen(v string) *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy {
+	s.MultiScreen = &v
 	return s
 }
 
@@ -1323,7 +1338,7 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy) Val
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyAuthorizeAccessPolicyRules struct {
-	// The client source CIDR block that is allowed to access the browser group.
+	// The source CIDR block of the client that is allowed to access.
 	//
 	// example:
 	//
@@ -1337,9 +1352,9 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyAuthorize
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The action of the client access rule.
 	//
-	// - `allow`: Access is allowed.
+	// - `allow`: allows access.
 	//
-	// - `deny`: Access is denied.
+	// - `deny`: denies access.
 	//
 	// example:
 	//
@@ -1387,7 +1402,7 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyAutho
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClientTypes struct {
-	// The client type.
+	// The client type. Valid values:
 	//
 	// - `windows`: Windows client.
 	//
@@ -1401,17 +1416,17 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClientTyp
 	//
 	// - `ios`: iOS client.
 	//
-	// This field reflects the existing access configuration and does not indicate that all client types are available for the current product.
+	// This field reflects the existing access configurations and does not indicate that all clients are currently available for the product.
 	//
 	// example:
 	//
 	// windows
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The access policy switch for the client type.
+	// The access policy switch for the client type. Valid values:
 	//
-	// - `on`: Access from this client type is allowed.
+	// - `on`: Allows access from this type of client.
 	//
-	// - `off`: Access from this client type is denied.
+	// - `off`: Denies access from this type of client.
 	//
 	// example:
 	//
@@ -1450,39 +1465,39 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClien
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClipboardPolicy struct {
-	// The clipboard transfer direction. The value is case-insensitive.
+	// The clipboard transfer direction. The value is case-insensitive. Valid values:
 	//
-	// - `off`: Bidirectional transfer is denied.
+	// - `off`: Disabled in both directions.
 	//
-	// - `read`: Copy and paste from the local PC to the cloud browser is allowed.
+	// - `read`: Allows copy and paste from the local PC to the cloud browser.
 	//
-	// - `write`: Copy and paste from the cloud browser to the local PC is allowed.
+	// - `write`: Allows copy and paste from the cloud browser to the local PC.
 	//
-	// - `readwrite`: Bidirectional transfer is allowed.
+	// - `readwrite`: Enabled in both directions.
 	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	// The clipboard size limit for inbound transfer (from the local PC to the cloud browser).
+	// The clipboard size limit for inbound transfer from the local PC to the cloud browser.
 	//
 	// example:
 	//
 	// 1024
 	ClipboardReadLimit *int32 `json:"ClipboardReadLimit,omitempty" xml:"ClipboardReadLimit,omitempty"`
-	// The clipboard control granularity.
+	// The clipboard control granularity. Valid values:
 	//
 	// - `global`: Unified control.
 	//
-	// - `grained`: Separate control by text, rich text, and file.
+	// - `grained`: Separate control for text, rich text, and files.
 	//
 	// example:
 	//
 	// grained
 	ClipboardScope *string `json:"ClipboardScope,omitempty" xml:"ClipboardScope,omitempty"`
-	// The unit of the clipboard size.
+	// The clipboard size unit. Valid values:
 	//
-	// - `B`: bytes.
+	// - `B`: Bytes.
 	//
 	// - `KB`: 1024 bytes.
 	//
@@ -1490,55 +1505,55 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClipboard
 	//
 	// KB
 	ClipboardSizeUnit *string `json:"ClipboardSizeUnit,omitempty" xml:"ClipboardSizeUnit,omitempty"`
-	// The clipboard size limit for outbound transfer (from the cloud browser to the local PC).
+	// The clipboard size limit for outbound transfer from the cloud browser to the local PC.
 	//
 	// example:
 	//
 	// 1024
 	ClipboardWriteLimit *int32 `json:"ClipboardWriteLimit,omitempty" xml:"ClipboardWriteLimit,omitempty"`
-	// The clipboard transfer direction. The value is case-insensitive.
+	// The clipboard transfer direction. The value is case-insensitive. Valid values:
 	//
-	// - `off`: Bidirectional transfer is denied.
+	// - `off`: Disabled in both directions.
 	//
-	// - `read`: Copy and paste from the local PC to the cloud browser is allowed.
+	// - `read`: Allows copy and paste from the local PC to the cloud browser.
 	//
-	// - `write`: Copy and paste from the cloud browser to the local PC is allowed.
+	// - `write`: Allows copy and paste from the cloud browser to the local PC.
 	//
-	// - `readwrite`: Bidirectional transfer is allowed.
+	// - `readwrite`: Enabled in both directions.
 	//
 	// example:
 	//
 	// off
 	FileClipboard *string `json:"FileClipboard,omitempty" xml:"FileClipboard,omitempty"`
-	// The clipboard transfer direction. The value is case-insensitive.
+	// The clipboard transfer direction. The value is case-insensitive. Valid values:
 	//
-	// - `off`: Bidirectional transfer is denied.
+	// - `off`: Disabled in both directions.
 	//
-	// - `read`: Copy and paste from the local PC to the cloud browser is allowed.
+	// - `read`: Allows copy and paste from the local PC to the cloud browser.
 	//
-	// - `write`: Copy and paste from the cloud browser to the local PC is allowed.
+	// - `write`: Allows copy and paste from the cloud browser to the local PC.
 	//
-	// - `readwrite`: Bidirectional transfer is allowed.
+	// - `readwrite`: Enabled in both directions.
 	//
 	// example:
 	//
 	// off
 	RichTextClipboard *string `json:"RichTextClipboard,omitempty" xml:"RichTextClipboard,omitempty"`
-	// The rich text clipboard size limit.
+	// The clipboard size limit for rich text.
 	//
 	// example:
 	//
 	// 1024
 	RichTextClipboardLimit *int32 `json:"RichTextClipboardLimit,omitempty" xml:"RichTextClipboardLimit,omitempty"`
-	// The clipboard size limit for inbound transfer (from the local PC to the cloud browser).
+	// The clipboard size limit for inbound transfer from the local PC to the cloud browser.
 	//
 	// example:
 	//
 	// 1
 	RichTextClipboardReadLimit *int32 `json:"RichTextClipboardReadLimit,omitempty" xml:"RichTextClipboardReadLimit,omitempty"`
-	// The unit of the clipboard size.
+	// The clipboard size unit. Valid values:
 	//
-	// - `B`: bytes.
+	// - `B`: Bytes.
 	//
 	// - `KB`: 1024 bytes.
 	//
@@ -1546,9 +1561,9 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClipboard
 	//
 	// KB
 	RichTextClipboardReadSizeUnit *string `json:"RichTextClipboardReadSizeUnit,omitempty" xml:"RichTextClipboardReadSizeUnit,omitempty"`
-	// The unit of the clipboard size.
+	// The clipboard size unit. Valid values:
 	//
-	// - `B`: bytes.
+	// - `B`: Bytes.
 	//
 	// - `KB`: 1024 bytes.
 	//
@@ -1556,15 +1571,15 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClipboard
 	//
 	// KB
 	RichTextClipboardSizeUnit *string `json:"RichTextClipboardSizeUnit,omitempty" xml:"RichTextClipboardSizeUnit,omitempty"`
-	// The clipboard size limit for outbound transfer (from the cloud browser to the local PC).
+	// The clipboard size limit for outbound transfer from the cloud browser to the local PC.
 	//
 	// example:
 	//
 	// 1
 	RichTextClipboardWriteLimit *int32 `json:"RichTextClipboardWriteLimit,omitempty" xml:"RichTextClipboardWriteLimit,omitempty"`
-	// The unit of the clipboard size.
+	// The clipboard size unit. Valid values:
 	//
-	// - `B`: bytes.
+	// - `B`: Bytes.
 	//
 	// - `KB`: 1024 bytes.
 	//
@@ -1572,29 +1587,29 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClipboard
 	//
 	// KB
 	RichTextClipboardWriteSizeUnit *string `json:"RichTextClipboardWriteSizeUnit,omitempty" xml:"RichTextClipboardWriteSizeUnit,omitempty"`
-	// The clipboard transfer direction. The value is case-insensitive.
+	// The clipboard transfer direction. The value is case-insensitive. Valid values:
 	//
-	// - `off`: Bidirectional transfer is denied.
+	// - `off`: Disabled in both directions.
 	//
-	// - `read`: Copy and paste from the local PC to the cloud browser is allowed.
+	// - `read`: Allows copy and paste from the local PC to the cloud browser.
 	//
-	// - `write`: Copy and paste from the cloud browser to the local PC is allowed.
+	// - `write`: Allows copy and paste from the cloud browser to the local PC.
 	//
-	// - `readwrite`: Bidirectional transfer is allowed.
+	// - `readwrite`: Enabled in both directions.
 	//
 	// example:
 	//
 	// readwrite
 	TextClipboard *string `json:"TextClipboard,omitempty" xml:"TextClipboard,omitempty"`
-	// The clipboard size limit for inbound transfer (from the local PC to the cloud browser).
+	// The clipboard size limit for inbound transfer from the local PC to the cloud browser.
 	//
 	// example:
 	//
 	// 1
 	TextClipboardReadLimit *int32 `json:"TextClipboardReadLimit,omitempty" xml:"TextClipboardReadLimit,omitempty"`
-	// The unit of the clipboard size.
+	// The clipboard size unit. Valid values:
 	//
-	// - `B`: bytes.
+	// - `B`: Bytes.
 	//
 	// - `KB`: 1024 bytes.
 	//
@@ -1602,15 +1617,15 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClipboard
 	//
 	// KB
 	TextClipboardReadSizeUnit *string `json:"TextClipboardReadSizeUnit,omitempty" xml:"TextClipboardReadSizeUnit,omitempty"`
-	// The clipboard size limit for outbound transfer (from the cloud browser to the local PC).
+	// The clipboard size limit for outbound transfer from the cloud browser to the local PC.
 	//
 	// example:
 	//
 	// 1
 	TextClipboardWriteLimit *int32 `json:"TextClipboardWriteLimit,omitempty" xml:"TextClipboardWriteLimit,omitempty"`
-	// The unit of the clipboard size.
+	// The clipboard size unit. Valid values:
 	//
-	// - `B`: bytes.
+	// - `B`: Bytes.
 	//
 	// - `KB`: 1024 bytes.
 	//
@@ -1795,7 +1810,7 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClipb
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyVideoPolicy struct {
-	// The frame rate of browser sessions.
+	// The frame rate for browser sessions.
 	//
 	// example:
 	//
@@ -1825,11 +1840,11 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyVideo
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyWatermarkPolicy struct {
-	// The watermark switch. The value is case-insensitive.
+	// Specifies whether to enable watermarks. The value is case-insensitive. Valid values:
 	//
-	// - `ON`: Watermark enabled.
+	// - ON: Enabled.
 	//
-	// - `OFF`: Watermark disabled.
+	// - OFF: Disabled.
 	//
 	// When disabled, the watermark content type list is not used.
 	//
@@ -1837,15 +1852,15 @@ type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyWatermark
 	//
 	// ON
 	WatermarkSwitch *string `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
-	// The list of watermark content types.
+	// The list of watermark content types. Valid values:
 	//
-	// - `EndUserId`: User ID.
+	// - EndUserId: User ID.
 	//
-	// - `InstanceGroupId`: Delivery group ID.
+	// - InstanceGroupId: Delivery group ID.
 	//
-	// - `ClientTime`: Current time on the client.
+	// - ClientTime: Current client time.
 	//
-	// Use watermark types supported by the browser and client.
+	// Use watermark types that are supported by the browser and client.
 	WatermarkTypes []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
 }
 
@@ -1880,13 +1895,13 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyWater
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelTimers struct {
-	// The session retention duration after disconnection, in minutes. A value of `-1` indicates that the session is not unbound due to this timeout, but is still subject to authorization and other session release policies.
+	// The session retention period in minutes after disconnection. A value of -1 indicates that the session is not unbound due to this timeout, but is still subject to authorization and other session release policies.
 	//
 	// example:
 	//
 	// 15
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The timer configuration type. `SESSION_TIMEOUT` indicates the session retention duration after disconnection.
+	// The timer configuration type. A value of SESSION_TIMEOUT indicates the session retention period after disconnection.
 	//
 	// example:
 	//
@@ -1925,7 +1940,7 @@ func (s *GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelTimers) Val
 }
 
 type GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelUserLimit struct {
-	// The user quota.
+	// The number of user quotas.
 	//
 	// example:
 	//

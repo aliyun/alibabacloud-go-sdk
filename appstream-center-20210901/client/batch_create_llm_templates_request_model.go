@@ -18,7 +18,7 @@ type iBatchCreateLlmTemplatesRequest interface {
 }
 
 type BatchCreateLlmTemplatesRequest struct {
-	// The list of model configurations to create.
+	// The list of model configurations to be created.
 	LlmTemplateItems []*BatchCreateLlmTemplatesRequestLlmTemplateItems `json:"LlmTemplateItems,omitempty" xml:"LlmTemplateItems,omitempty" type:"Repeated"`
 	// The ID of the associated model group.
 	//
@@ -26,7 +26,7 @@ type BatchCreateLlmTemplatesRequest struct {
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The ID of the model provider template to which the models belong.
+	// The ID of the model provider template to which the model templates belong.
 	//
 	// This parameter is required.
 	//
@@ -85,7 +85,7 @@ func (s *BatchCreateLlmTemplatesRequest) Validate() error {
 }
 
 type BatchCreateLlmTemplatesRequestLlmTemplateItems struct {
-	// The model configuration JSON object.
+	// The JSON object for model configuration.
 	//
 	// example:
 	//
@@ -127,15 +127,15 @@ type BatchCreateLlmTemplatesRequestLlmTemplateItems struct {
 	//
 	// example:
 	//
-	// 千问Plus系列模型
+	// Qwen Plus series models
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to set the model as the default model. A model group can have at most one default model.
+	// Specifies whether to set the model as the default model. Each model group can have at most one default model.
 	//
 	// example:
 	//
 	// false
 	IsDefaultModel *bool `json:"IsDefaultModel,omitempty" xml:"IsDefaultModel,omitempty"`
-	// The model code, which must be unique within the same provider.
+	// The model code. It must be unique under the same provider.
 	//
 	// example:
 	//

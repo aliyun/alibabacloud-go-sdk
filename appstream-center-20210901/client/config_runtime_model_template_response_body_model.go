@@ -26,7 +26,7 @@ type ConfigRuntimeModelTemplateResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
@@ -101,13 +101,13 @@ type ConfigRuntimeModelTemplateResponseBodyData struct {
 	//
 	// The parameter callerUid may not be null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The Agent runtime ID. The ID mapping is as follows:
+	// The agent runtime ID. The ID mappings are as follows:
 	//
-	// JVS Computer: JVS Computer ID, in the format of jvs-xxxx.
+	// JVS Computer: the JVS Computer ID, in the format of jvs-xxxx.
 	//
-	// OpenClaw: cloud computer ID, in the format of ecd-xxxx.
+	// OpenClaw: the cloud desktop ID, in the format of ecd-xxxx.
 	//
-	// Hermes Agent: Hermes Agent ID, in the format of jvs-xxxx.
+	// Hermes Agent: the Hermes Agent ID, in the format of jvs-xxxx.
 	//
 	// example:
 	//

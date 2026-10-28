@@ -28,19 +28,19 @@ type iConfigRuntimeChannelRequest interface {
 }
 
 type ConfigRuntimeChannelRequest struct {
-	// The Agent platform.
+	// The agent platform.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The Agent provider.
+	// The agent provider.
 	//
-	// - JVS Computer: set to OpenClaw.
+	// - JVS Computer: Set to OpenClaw.
 	//
-	// - OpenClaw: set to OpenClaw.
+	// - OpenClaw: Set to OpenClaw.
 	//
-	// - Hermes Agent: set to HermesAgent.
+	// - Hermes Agent: Set to HermesAgent.
 	//
 	// This parameter is required.
 	//
@@ -56,9 +56,9 @@ type ConfigRuntimeChannelRequest struct {
 	//
 	// dingtalk-connector
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The channel configuration JSON string.
+	// The JSON string for channel configuration.
 	//
-	// - Simple configuration mode example:
+	// - Example of the simple configuration mode:
 	//
 	// ```json
 	//
@@ -72,7 +72,7 @@ type ConfigRuntimeChannelRequest struct {
 	//
 	// ```
 	//
-	// - Custom configuration mode example:
+	// - Example of the custom configuration mode:
 	//
 	// ```json
 	//
@@ -108,17 +108,17 @@ type ConfigRuntimeChannelRequest struct {
 	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
 	// The channel name.
 	//
-	// If you leave this parameter empty, the system automatically uses the value of Code as the name.
+	// If you do not specify this parameter, the system automatically uses the value of Code as the name.
 	//
 	// example:
 	//
-	// 钉钉
+	// DingTalk
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of runtime IDs.
 	//
 	// This parameter is required.
 	RuntimeIds []*string `json:"RuntimeIds,omitempty" xml:"RuntimeIds,omitempty" type:"Repeated"`
-	// The Agent runtime type.
+	// The agent runtime type.
 	//
 	// This parameter is required.
 	//

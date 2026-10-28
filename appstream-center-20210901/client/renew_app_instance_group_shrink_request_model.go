@@ -38,13 +38,13 @@ type RenewAppInstanceGroupShrinkRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// Specifies whether to enable automatic payment.
+	// Specifies whether to enable automatic payment. If RenewMode is set to RENEW_SPECIFIED_NODE_COUNT or RENEW_SPECIFIED_NODE_IDS, this parameter must be set to false.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The numeric part of the resource purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
+	// The numeric part of the resource purchase duration. Use this parameter together with `PeriodUnit` to specify the full purchase duration.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type RenewAppInstanceGroupShrinkRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit part of the resource purchase duration. This parameter is used together with Period to specify the complete purchase duration. Valid combinations of Period and PeriodUnit:
+	// The unit part of the resource purchase duration. Use this parameter together with `Period` to specify the full purchase duration. The valid combinations of `Period` and `PeriodUnit` are as follows:
 	//
 	// - 1 Week (1 week)
 	//
@@ -70,7 +70,7 @@ type RenewAppInstanceGroupShrinkRequest struct {
 	//
 	// - 3 Year (3 years)
 	//
-	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
+	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is not. If the request parameters do not match the combinations listed above, such as `2 Week`, the operation call succeeds but an error occurs during order placement.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type RenewAppInstanceGroupShrinkRequest struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The promotion ID. You can obtain this value by calling the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation.
+	// The promotion ID. You can obtain this ID by calling the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation.
 	//
 	// example:
 	//

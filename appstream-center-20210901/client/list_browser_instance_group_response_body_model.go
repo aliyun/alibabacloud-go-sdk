@@ -22,7 +22,7 @@ type iListBrowserInstanceGroupResponseBody interface {
 }
 
 type ListBrowserInstanceGroupResponseBody struct {
-	// The list of browser groups on the current page.
+	// The list of browser instance groups on the current page.
 	BrowserInstanceGroupModels []*ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels `json:"BrowserInstanceGroupModels,omitempty" xml:"BrowserInstanceGroupModels,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -36,13 +36,13 @@ type ListBrowserInstanceGroupResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID, which is used for troubleshooting.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 01A0C2ED-95F2-1A37-9FC6-4A395179****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of browser groups that match the filter conditions.
+	// The total number of browser groups that meet the filter conditions.
 	//
 	// example:
 	//
@@ -117,113 +117,111 @@ func (s *ListBrowserInstanceGroupResponseBody) Validate() error {
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels struct {
-	// Indicates whether authorization and deauthorization notification emails are enabled. `true` indicates enabled. `false` indicates disabled.
+	// Specifies whether notification emails for authorization and revocation are enabled. A value of `true` indicates that the feature is enabled. A value of `false` indicates that the feature is disabled.
 	//
 	// example:
 	//
 	// true
 	AuthNotificationEnabled *bool `json:"AuthNotificationEnabled,omitempty" xml:"AuthNotificationEnabled,omitempty"`
-	// The authorized user statistics of the browser group.
+	// The statistics of authorized users for the browser instance group.
 	AuthorizedUserInfo *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsAuthorizedUserInfo `json:"AuthorizedUserInfo,omitempty" xml:"AuthorizedUserInfo,omitempty" type:"Struct"`
-	// The business region where the browser group is located.
+	// The business region where the browser instance group is located.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The current browser configuration.
+	// The current configuration of the browser.
 	BrowserConfig *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsBrowserConfig `json:"BrowserConfig,omitempty" xml:"BrowserConfig,omitempty" type:"Struct"`
-	// The ID of the cloud browser group.
+	// The ID of the cloud browser instance group.
 	//
 	// example:
 	//
 	// big-0c7loey7fzjq****
 	BrowserInstanceGroupId *string `json:"BrowserInstanceGroupId,omitempty" xml:"BrowserInstanceGroupId,omitempty"`
-	// The name of the cloud browser group.
+	// The name of the cloud browser instance group.
 	//
 	// example:
 	//
-	// OfficeBrowser
+	// Office browser
 	BrowserInstanceGroupName *string `json:"BrowserInstanceGroupName,omitempty" xml:"BrowserInstanceGroupName,omitempty"`
-	// The ID of the browser group set to which the browser group belongs.
+	// The ID of the browser instance group set to which the group belongs.
 	//
 	// example:
 	//
 	// set-3jm9d0abc00example
 	BrowserInstanceGroupSetId *string `json:"BrowserInstanceGroupSetId,omitempty" xml:"BrowserInstanceGroupSetId,omitempty"`
-	// The billing type. In MAU scenarios, `PostPaid` is returned, which indicates pay-as-you-go.
+	// The billing method. In the MAU scenario, `PostPaid` is returned, which indicates pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The default access URL of the browser group. Use the URL returned by the API for access. The resource identifiers in the example must be replaced.
+	// The default access URL of the browser instance group. Use the actual URL returned by the API operation. Replace the resource ID in the example.
 	//
 	// example:
 	//
 	// https://wuying.aliyun.com/integration?appId=browser&appInstanceGroupId=big-0c7loey7fzjq****
 	DefaultAccessUrl *string `json:"DefaultAccessUrl,omitempty" xml:"DefaultAccessUrl,omitempty"`
-	// The plan duration information. In MAU scenarios, plan duration does not apply, and an empty object may be returned.
+	// The package duration information. This parameter is not applicable to the MAU scenario and may return an empty object.
 	Duration *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsDuration `json:"Duration,omitempty" xml:"Duration,omitempty" type:"Struct"`
-	// The expiration time of the browser group. Not applicable in MAU scenarios. This field is not returned.
+	// The expiration time of the browser instance group. This parameter is not applicable to the MAU scenario and is not returned.
 	//
 	// example:
 	//
 	// -
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The creation time of the browser group.
-	//
-	// The time is in RFC 3339 format: `yyyy-MM-dd\\"T\\"HH:mm:ss.SSSXXX`, which includes milliseconds and a time zone offset. The actual POP response uses the UTC offset `+00:00`.
+	// The creation time of the browser instance group. The time follows the RFC 3339 standard in the `yyyy-MM-dd\\"T\\"HH:mm:ss.SSSXXX` format, which includes milliseconds and time zone offset. The actual POP response uses the UTC offset `+00:00`.
 	//
 	// example:
 	//
 	// 2026-09-21T07:00:39.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The homepage URL of the browser group.
+	// The homepage URL of the browser instance group.
 	//
 	// example:
 	//
 	// https://www.aliyun.com
 	Homepage *string `json:"Homepage,omitempty" xml:"Homepage,omitempty"`
-	// The image ID used by the browser group.
+	// The ID of the image used by the browser instance group.
 	//
 	// example:
 	//
 	// imgc-070qhs8oeju4****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance type used by the browser group.
+	// The instance type used by the browser instance group.
 	//
 	// example:
 	//
 	// appstreaming.general.basic
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The workspace network and website access restriction configuration.
+	// The office network and website access restriction configurations.
 	Network *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	// The operating system type of the browser group. The current MAU product scenario uses Windows.
+	// The operating system type of the browser instance group. The current MAU product scenario uses Windows.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The policy configuration returned for the browser group. Policy fields are used to view existing settings and do not indicate that all corresponding creation parameters are configurable.
+	// The policy configuration returned for the browser instance group. The policy fields are used to view existing settings and do not indicate that all corresponding creation parameters are configurable.
 	Policy *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	// The browser group status.
+	// The status of the browser group. Valid values:
 	//
-	// - `DEPLOYING`: Being deployed.
+	// - `DEPLOYING`: Deploying.
 	//
-	// - `PUBLISHED`: Deployed.
+	// - `PUBLISHED`: Published.
 	//
-	// - `FAILED`: Deployment failed.
+	// - `FAILED`: Failed.
 	//
 	// - `EXPIRED`: Expired.
 	//
 	// - `CEASED`: Suspended due to overdue payment.
 	//
-	// - `MAINTAINING`: Being updated.
+	// - `MAINTAINING`: Updating.
 	//
 	// - `MAINTAIN_FAILED`: Update failed.
 	//
-	// - `DELETING`: Being deleted.
+	// - `DELETING`: Deleting.
 	//
 	// - `UNAVAILABLE`: Unavailable.
 	//
@@ -231,19 +229,19 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels struct {
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The sub-payment type. In MAU scenarios, the actual returned value is `mau`, which indicates billing by monthly active users.
+	// The sub-billing method. In the MAU scenario, `mau` is returned, which indicates billing by monthly active users.
 	//
 	// example:
 	//
 	// mau
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// Indicates whether mixed authorization of users and user groups is supported. `true` indicates supported, and `false` indicates not supported. Evaluate this value based on the current authorization mode.
+	// Indicates whether mixed authorization of users and user groups is supported. A value of `true` indicates that it is supported, and a value of `false` indicates that it is not supported. Evaluate this parameter based on the current authorization mode.
 	//
 	// example:
 	//
 	// false
 	SupportUserGroupMixedAuth *bool `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
-	// The list of resource tags.
+	// The list of resource tags returned.
 	Tags []*ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The version of the browser. Valid values:
 	//
@@ -251,13 +249,13 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels struct {
 	//
 	// - `Pro`: Premium Edition.
 	//
-	// In MAU scenarios, the value is `Pro`.
+	// In the MAU scenario, the value is `Pro`.
 	//
 	// example:
 	//
 	// Pro
 	Tier *string `json:"Tier,omitempty" xml:"Tier,omitempty"`
-	// The session timer configurations currently returned. This is used to view the effective settings and does not indicate that the create operation supports setting this parameter.
+	// The session timer configuration returned. This is used to view the effective settings and does not indicate that the create operation supports configuring this parameter.
 	Timers []*ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
 	// The current authorization mode. Valid values:
 	//
@@ -615,13 +613,13 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsAuthorize
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsBrowserConfig struct {
-	// The browser startup parameters. For example, `--incognito` indicates an incognito window.
+	// The browser startup parameters. For example, `--incognito` specifies an incognito window.
 	//
 	// example:
 	//
 	// --incognito
 	BrowserParam *string `json:"BrowserParam,omitempty" xml:"BrowserParam,omitempty"`
-	// The cookie synchronization configuration. The string `true` indicates enabled. `false` indicates disabled.
+	// The cookie synchronization configuration. A value of `true` indicates that synchronization is enabled. A value of `false` indicates that synchronization is disabled.
 	//
 	// example:
 	//
@@ -675,31 +673,31 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsBrowserCo
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsDuration struct {
-	// The current payment stage of the plan. Not applicable in MAU scenarios.
+	// The current payment stage of the package. This parameter is not applicable to the MAU scenario.
 	//
 	// example:
 	//
 	// -
 	CurrentPayStage *string `json:"CurrentPayStage,omitempty" xml:"CurrentPayStage,omitempty"`
-	// The end time of the plan period. Not applicable in MAU scenarios. This field is not returned.
+	// The end time of the package cycle. This parameter is not applicable to the MAU scenario and is not returned.
 	//
 	// example:
 	//
 	// -
 	PeriodEndTime *string `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
-	// The start time of the plan period. Not applicable in MAU scenarios. This field is not returned.
+	// The start time of the package cycle. This parameter is not applicable to the MAU scenario and is not returned.
 	//
 	// example:
 	//
 	// -
 	PeriodStartTime *string `json:"PeriodStartTime,omitempty" xml:"PeriodStartTime,omitempty"`
-	// The total duration of the plan, in seconds. Not applicable in MAU scenarios.
+	// The total duration of the package, in seconds. This parameter is not applicable to the MAU scenario.
 	//
 	// example:
 	//
 	// -
 	TotalDuration *int32 `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
-	// The used duration of the plan, in seconds. Not applicable in MAU scenarios.
+	// The used duration of the package, in seconds. This parameter is not applicable to the MAU scenario.
 	//
 	// example:
 	//
@@ -765,25 +763,25 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsDuration)
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsNetwork struct {
-	// The website access restriction mode.
+	// The website access restriction mode. Valid values:
 	//
-	// - `ALLOW_ALL`: All domain names are allowed.
+	// - `ALLOW_ALL`: Allows all domain names.
 	//
-	// - `ALLOW_LIST`: Only websites in the allowlist are allowed.
+	// - `ALLOW_LIST`: Allows only websites in the whitelist.
 	//
-	// The returned value reflects the current configuration of the browser group.
+	// The returned value reflects the existing configuration of the browser instance group.
 	//
 	// example:
 	//
 	// ALLOW_ALL
 	AccessRestriction *string `json:"AccessRestriction,omitempty" xml:"AccessRestriction,omitempty"`
-	// The ID of the workspace to which the browser group belongs.
+	// The ID of the office network to which the browser instance group belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-843734****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The list of vSwitch IDs used by the browser group, available for scenarios with custom network configurations.
+	// The list of vSwitch IDs used by the browser instance group. This parameter is available for scenarios where a custom network is configured.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
@@ -827,22 +825,28 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsNetwork) 
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy struct {
-	// The screenshot protection switch.
+	// The screen capture prevention switch. Valid values:
 	//
-	// - `on`: Screenshot protection is enabled.
+	// - `on`: Enables screen capture prevention.
 	//
-	// - `off`: Screenshot protection is disabled.
+	// - `off`: Disables screen capture prevention.
 	//
 	// example:
 	//
 	// on
 	AppContentProtection *string `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
-	// The client access IP address whitelist rules.
+	// The IP address whitelist rules for client access.
 	AuthorizeAccessPolicyRules []*ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyAuthorizeAccessPolicyRules `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
-	// The client access control configuration list.
+	// The list of client access control configurations.
 	ClientTypes []*ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
-	// The clipboard transfer direction, content type, and size limit settings. read indicates transfer from the local PC to the cloud browser. write indicates transfer from the cloud browser to the local PC.
+	// Sets the clipboard transfer direction, content type, and size limit. `read` indicates transfer from the local PC to the cloud browser, and `write` indicates transfer from the cloud browser to the local PC.
 	ClipboardPolicy *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClipboardPolicy `json:"ClipboardPolicy,omitempty" xml:"ClipboardPolicy,omitempty" type:"Struct"`
+	// The dual-screen switch for the cloud browser.
+	//
+	// example:
+	//
+	// off
+	MultiScreen *string `json:"MultiScreen,omitempty" xml:"MultiScreen,omitempty"`
 	// The video display policy for browser sessions.
 	VideoPolicy *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyVideoPolicy `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty" type:"Struct"`
 	// The watermark display configuration for browser sessions.
@@ -873,6 +877,10 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy) G
 	return s.ClipboardPolicy
 }
 
+func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy) GetMultiScreen() *string {
+	return s.MultiScreen
+}
+
 func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy) GetVideoPolicy() *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyVideoPolicy {
 	return s.VideoPolicy
 }
@@ -898,6 +906,11 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy) S
 
 func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy) SetClipboardPolicy(v *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClipboardPolicy) *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy {
 	s.ClipboardPolicy = v
+	return s
+}
+
+func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy) SetMultiScreen(v string) *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy {
+	s.MultiScreen = &v
 	return s
 }
 
@@ -961,11 +974,11 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyAuthori
 	//
 	// Office network access
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The action of the client access rule.
+	// The action of the client access rule. Valid values:
 	//
-	// - `allow`: Access is allowed.
+	// - `allow`: Allows access.
 	//
-	// - `deny`: Access is denied.
+	// - `deny`: Denies access.
 	//
 	// example:
 	//
@@ -1013,7 +1026,7 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyAut
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClientTypes struct {
-	// The client type.
+	// The client type. Valid values:
 	//
 	// - `windows`: Windows client.
 	//
@@ -1027,17 +1040,17 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClientT
 	//
 	// - `ios`: iOS client.
 	//
-	// This field reflects the existing access configuration and does not indicate that all client types are available for the current product.
+	// This field reflects the existing access configurations and does not indicate that all clients are currently available for the product.
 	//
 	// example:
 	//
 	// windows
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The access policy switch for this client type.
+	// The access policy switch for the client type. Valid values:
 	//
-	// - `on`: Access from this client type is allowed.
+	// - `on`: Allows access from this type of client.
 	//
-	// - `off`: Access from this client type is denied.
+	// - `off`: Denies access from this type of client.
 	//
 	// example:
 	//
@@ -1076,15 +1089,15 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyCli
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClipboardPolicy struct {
-	// The clipboard transfer direction. The value is case-insensitive.
+	// The clipboard transfer direction. The value is not case-sensitive. Valid values:
 	//
-	// - `off`: Bidirectional transfer is disabled.
+	// - `off`: Prohibits transfer in both directions.
 	//
-	// - `read`: Copy and paste from the local PC to the cloud browser is allowed.
+	// - `read`: Allows copy and paste from the local PC to the cloud browser.
 	//
-	// - `write`: Copy and paste from the cloud browser to the local PC is allowed.
+	// - `write`: Allows copy and paste from the cloud browser to the local PC.
 	//
-	// - `readwrite`: Bidirectional transfer is allowed.
+	// - `readwrite`: Allows transfer in both directions.
 	//
 	// example:
 	//
@@ -1114,7 +1127,7 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyCli
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyVideoPolicy struct {
-	// The frame rate of browser sessions.
+	// The frame rate for browser sessions.
 	//
 	// example:
 	//
@@ -1146,11 +1159,11 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyVid
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyWatermarkPolicy struct {
 	// The watermark switch. The value is case-insensitive. Valid values:
 	//
-	// - `ON`: Watermark is enabled.
+	// - `ON`: Enables the watermark.
 	//
-	// - `OFF`: Watermark is disabled.
+	// - `OFF`: Disables the watermark.
 	//
-	// When disabled, the watermark content type list is not used.
+	// If the watermark is disabled, the watermark content type list is not used.
 	//
 	// example:
 	//
@@ -1162,9 +1175,9 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyWaterma
 	//
 	// - `InstanceGroupId`: The delivery group identifier.
 	//
-	// - `ClientTime`: The current time on the client.
+	// - `ClientTime`: The current time of the client.
 	//
-	// Use watermark types that are supported by the browser and client.
+	// Use the watermark types supported by the browser and the client.
 	WatermarkTypes []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
 }
 
@@ -1244,13 +1257,13 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsTags) Val
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsTimers struct {
-	// The session retention duration after disconnection, in minutes. `-1` indicates that the session is not unbound due to this timeout. The session is still subject to authorization and other session release policies.
+	// The session retention duration after disconnection, in minutes. A value of `-1` indicates that the session is not unbound due to the timeout of this duration, but is still affected by authorization and other session release policies.
 	//
 	// example:
 	//
 	// 15
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The timer configuration type. `SESSION_TIMEOUT` indicates the session retention duration after disconnection.
+	// The timer configuration type. A value of `SESSION_TIMEOUT` indicates the session retention duration after disconnection.
 	//
 	// example:
 	//
@@ -1289,7 +1302,7 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsTimers) V
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsUserLimit struct {
-	// The user quota.
+	// The number of user quotas.
 	//
 	// example:
 	//

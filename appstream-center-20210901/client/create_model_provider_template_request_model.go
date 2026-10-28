@@ -32,13 +32,13 @@ type iCreateModelProviderTemplateRequest interface {
 }
 
 type CreateModelProviderTemplateRequest struct {
-	// The Agent platform.
+	// The agent platform.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The Agent provider name.
+	// The name of the agent provider.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateModelProviderTemplateRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The model provider configuration in JSON format, which contains connection information such as baseUrl, apiKey, and api. The apiKey is encrypted after creation. When ProviderType is set to WuyingCredit, this parameter is not required because the configuration is copied from the system template.
+	// The JSON configuration of the model provider, which includes connection information such as baseUrl, apiKey, and api. The apiKey is encrypted and stored after creation. When ProviderType is WuyingCredit, this parameter is not required and will be copied from the system template.
 	//
 	// This parameter is required.
 	//
@@ -74,15 +74,15 @@ type CreateModelProviderTemplateRequest struct {
 	//
 	// example:
 	//
-	// 阿里云百炼服务商
+	// Alibaba Cloud Bailian provider
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the WUYING secure proxy. This parameter must be set to true when ProviderType is set to WuyingCredit.
+	// Specifies whether to enable the Wuying secure proxy. This parameter must be set to true when ProviderType is WuyingCredit.
 	//
 	// example:
 	//
 	// true
 	EnableWuyingProxy *bool `json:"EnableWuyingProxy,omitempty" xml:"EnableWuyingProxy,omitempty"`
-	// The ID of the associated model template.
+	// The ID of the associated model group.
 	//
 	// This parameter is required.
 	//
@@ -94,9 +94,9 @@ type CreateModelProviderTemplateRequest struct {
 	//
 	// example:
 	//
-	// 阿里云百炼
+	// Alibaba Cloud Bailian
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The model provider name. The name must be unique within the same model template. The naming rules vary based on the value of ProviderType. For more information, see the description of ProviderType.
+	// The name of the model provider. The name must be unique within the same model template. The naming conventions vary based on the ProviderType. For more information, see the description of ProviderType.
 	//
 	// This parameter is required.
 	//
@@ -104,13 +104,13 @@ type CreateModelProviderTemplateRequest struct {
 	//
 	// bailian
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	// The model provider type. Different types impose different constraints on ProviderName and Config. Valid values:
+	// The type of the model provider. Different types have different constraints on ProviderName and Config:
 	//
-	// - WuyingCredit: WUYING credit plan. ProviderName must be set to wuying-credit. The template is created by copying from a system template, and Config is not required.
+	// - WuyingCredit: Wuying credit package. The ProviderName must be wuying-credit. The template is created by copying from a system template, and Config is not required.
 	//
-	// - Managed: managed provider. System-reserved names such as wuying-credit cannot be used. Config is required.
+	// - Managed: Managed provider. System-reserved names such as wuying-credit cannot be used, and Config is required.
 	//
-	// - Custom: user-defined provider. ProviderName must start with the prefix provider-. Config is required.
+	// - Custom: Custom provider. The ProviderName must start with the provider- prefix, and Config is required.
 	//
 	// example:
 	//

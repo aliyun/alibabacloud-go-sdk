@@ -210,39 +210,39 @@ func (client *Client) AuthorizeInstanceGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Adds or removes authorized users for a specified application deployed in a delivery group. Only authorized users can access the application.
+// Adds or removes authorized users for a specified application deployed in an app instance group. Only authorized users can access the application.
 //
 // Description:
 //
 // ## Operation description
 //
-// This operation manages user authorization for a delivery group at the application level. The authorization result applies only to the application specified by AppId and does not affect the authorization of other applications in the delivery group. To authorize users for an entire delivery group, call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation.
+// This operation manages user authorization for an app instance group at the application level. The authorization result applies only to the application specified by AppId and does not affect the authorization relationships of other applications in the app instance group. To authorize users for the entire app instance group, call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation.
 //
 // ## Before you begin
 //
-// - The delivery group is created, and **the application specified by AppId is deployed in the image used by the delivery group**. Otherwise, the error code `InvalidAppId.NotFound` is returned.
+// - The app instance group is created, and **the application specified by AppId is deployed in the image used by the app instance group**. Otherwise, the error code `InvalidAppId.NotFound` is returned.
 //
-// - The delivery group **has not been added to a delivery group set that is in effect**. A delivery group that has been added to a set cannot be authorized individually. You must authorize it through the set. Otherwise, the error code `InvalidAppInstanceGroup.AuthorizeBlockedBySet` is returned.
+// - The app instance group **is not added to an active app instance group set**. App instance groups added to a set cannot be authorized individually and must be authorized through the set. Otherwise, the error code `InvalidAppInstanceGroup.AuthorizeBlockedBySet` is returned.
 //
-// - If the workspace to which the delivery group belongs is an Active Directory (AD) workspace, **you must specify UserMeta**, with `UserMeta.Type` set to `ad` and `UserMeta.AdDomain` matching the AD domain bound to the workspace.
+// - If the workspace to which the app instance group belongs is an AD workspace, **UserMeta must be specified**, the value of UserMeta.Type must be ad, and the value of UserMeta.AdDomain must be the same as the AD domain bound to the workspace.
 //
-// - If the delivery group has been authorized through user groups and mixed authorization of users and user groups is not supported, you cannot authorize by user. Otherwise, the error code `AuthAppInstanceGroup.MixNotSupported` is returned.
+// - If the app instance group is already authorized through a user group and mixed authorization of users and user groups is not supported, you cannot authorize individual users. Otherwise, the error code `AuthAppInstanceGroup.MixNotSupported` is returned.
 //
 // ## Parameter description
 //
-// - **At least one of AuthorizeUserIds and UnAuthorizeUserIds must be specified.*	- You can also specify both. If both are empty, this invocation does not change any authorization.
+// - **You must specify at least one of AuthorizeUserIds and UnAuthorizeUserIds**, or specify both. If both are empty, the system does not change any authorization relationships when you invoke this operation.
 //
-// - When adding authorizations, the sum of the currently authorized users for the application and the users to be added cannot exceed the authorized user quota for the application. If the quota is exceeded, the error code `ExceedAppAuthUserQuota` is returned. Removing authorizations is not subject to quota limits.
+// - When adding authorization, the sum of the current number of authorized users for the application and the number of newly added users cannot exceed the authorized user quota for the application. If the quota is exceeded, the error code `ExceedAppAuthUserQuota` is returned. Removing authorization is not subject to the quota limit.
 //
 // ## Call sequence
 //
-// 1. Call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) or [GetAppInstanceGroup](https://help.aliyun.com/document_detail/600836.html) operation to obtain the delivery group ID (AppInstanceGroupId) and the application IDs of deployed applications in the delivery group (AppId in the Apps list).
+// 1. Call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) or [GetAppInstanceGroup](https://help.aliyun.com/document_detail/600836.html) operation to obtain the app instance group ID (AppInstanceGroupId) and the application IDs of the applications deployed in the app instance group (AppId in the Apps list).
 //
 // 2. Call the [DescribeUsers](https://help.aliyun.com/document_detail/436936.html) operation to obtain the usernames of the users to be authorized or unauthorized.
 //
 // 3. Call this operation to complete the authorization change.
 //
-// > After the authorization is changed, the selected users receive a notification email. It typically takes about 2 minutes for the change to take effect on the client.
+// > After the authorization is changed, the selected users will receive a notification email. It generally takes about 2 minutes for the changes to take effect on the terminal.
 //
 // @param tmpReq - AuthorizeUsersForAppRequest
 //
@@ -314,13 +314,13 @@ func (client *Client) AuthorizeUsersForAppWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Creates LLM templates in batches.
+// Creates multiple LLM templates.
 //
 // Description:
 //
-// You can batch create model templates under a model provider template in the Wuying Agent Management Center. Multiple models can be added at a time, and one of them can be specified as the default model. Existing models are automatically skipped and not created again.
+// You can create multiple model templates under a model provider template in the Wuying Agent Management Center. You can add multiple models at a time and specify one of them as the default model. Existing models are automatically skipped to prevent duplicate model creation.
 //
-// Before using this operation, make sure you are familiar with the operations and usage of the Wuying Agent Management Center.
+// Make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center before you call this operation.
 //
 // @param request - BatchCreateLlmTemplatesRequest
 //
@@ -376,11 +376,11 @@ func (client *Client) BatchCreateLlmTemplatesWithContext(ctx context.Context, re
 //
 // Description:
 //
-// You can assign a model group to the resources that belong to agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. The model group serves as the inference engine for agents within the resource group to execute tasks.
+// You can authorize a model group for the resources to which agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent belong in the Wuying Agent Management Center. The model group serves as the inference engine for agents in the resource group to execute tasks.
 //
-// When an agent runtime has its own model group configured and the resource group it belongs to also has a model group configured, the model group bound to the resource group takes effect. The resource group setting has a higher priority than the agent runtime setting.
+// If an agent runtime is configured with a model group and its resource group is also configured with a model group, the model group bound to the resource group takes effect. This means that the resource group settings take precedence over the agent runtime settings.
 //
-// Make sure that you are familiar with the operations and usage of the WUYING Agent Management Center before calling this operation.
+// Make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center before you call this operation.
 //
 // @param request - ConfigResourceGroupModelTemplateRequest
 //
@@ -428,13 +428,13 @@ func (client *Client) ConfigResourceGroupModelTemplateWithContext(ctx context.Co
 
 // Summary:
 //
-// Configures a third-party channel for Agent runtime.
+// Configures third-party channels for agent runtimes.
 //
 // Description:
 //
-// You can configure third-party channels for Agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. These channels serve as extended Agent communication methods beyond the AgentIM channel.
+// You can configure third-party channels for agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. These channels serve as extended agent communication methods in addition to the AgentIM channel.
 //
-// Before using this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
+// Make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center before you call this operation.
 //
 // @param request - ConfigRuntimeChannelRequest
 //
@@ -506,13 +506,13 @@ func (client *Client) ConfigRuntimeChannelWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Configures model groups for Agent runtime resources.
+// Configures the model group for agent runtime resources.
 //
 // Description:
 //
-// You can authorize model groups for Agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. The model groups serve as inference engines for Agent task execution.
+// You can authorize model groups for agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center to serve as inference engines for agent task execution.
 //
-// Make sure that you are familiar with the operations and usage of the Wuying Agent Management Center before calling this operation.
+// Before you call this operation, make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - ConfigRuntimeModelTemplateRequest
 //
@@ -758,41 +758,41 @@ func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates a cloud browser group that is billed by monthly active users (MAU).
+// Creates a cloud browser group billed by monthly active users (MAUs).
 //
 // Description:
 //
 // ## Before you begin
 //
-// - Prepare an available office network, image, and instance type in the target business region. Make sure that the account has the required browser configurations and resource quotas.
+// - Prepare available office networks, images, and specifications in the target business region, and ensure that your account has the corresponding browser configurations and resource quotas.
 //
-// - Specify `CloudBrowserName` and `BizRegionId`. Set `OsType` to `Windows`.
+// - Specify CloudBrowserName and BizRegionId. You must set OsType to Windows.
 //
-// - Authorized users must be created in advance and must match the account type. Authorized user groups must belong to the current account and match the account type of the office network.
+// - The authorized users must be created in advance and match the account type. The authorized user groups must belong to the current account and match the account type of the office network.
 //
-// - **`Users` and `UserGroupIds` cannot both be non-empty.**
+// - **Users and UserGroupIds cannot be specified at the same time.**
 //
 // ## MAU billing parameters
 //
-// - Set `ChargeType` to `PostPaid`.
+// - Set ChargeType to PostPaid.
 //
-// - **Set `SubPayType` to `mau` explicitly. Omitting this field does not enable MAU billing.**
+// - **You must explicitly set SubPayType to mau. Omitting this parameter does not enable MAU billing.**
 //
-// - Set `ChargeResourceMode` to `AppInstance`.
+// - Set ChargeResourceMode to AppInstance.
 //
-// - Do not specify `Period`, `PeriodUnit`, `AppPackageType`, `AutoPay`, `AutoRenew`, or `NodePool`.
+// - You do not need to specify Period, PeriodUnit, AppPackageType, AutoPay, AutoRenew, or NodePool.
 //
-// ## Post-call processing
+// ## Post-processing
 //
-// **A successful response does not indicate that the browser resources are ready.*	- After creation, query the browser group status and confirm that the group is connectable before use.
+// **A successful API response does not indicate that the browser resources are ready.*	- After creation, query the status of the browser group and use it only after confirming that it is connectable.
 //
 // This operation creates a new cloud browser group. You do not need to create a delivery group in advance.
 //
-// ## Example description
+// ## Example descriptions
 //
-// The example values of fields are provided to demonstrate how to specify the fields. Replace resource identifiers with actual values under your account. Capacity examples do not represent default values or upper limits.
+// Field examples demonstrate how to specify parameters. Replace resource identifiers with actual values under your current account. Capacity examples do not represent default values or upper limits.
 //
-// An example value of `-` indicates that the field does not need to be specified. Omit the corresponding parameter when you call the operation. Do not pass the character `-`.
+// An example value of - indicates that the parameter is not required. When calling the API, omit the corresponding parameter instead of passing the - character.
 //
 // @param tmpReq - CreateBrowserInstanceGroupRequest
 //
@@ -1068,7 +1068,7 @@ func (client *Client) CreateImageByInstanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a new image from a debug delivery group.
+// Creates a new image by debugging a delivery group.
 //
 // @param request - CreateImageFromAppInstanceGroupRequest
 //
@@ -1124,9 +1124,9 @@ func (client *Client) CreateImageFromAppInstanceGroupWithContext(ctx context.Con
 //
 // Description:
 //
-// You can create a model provider template under Model Templates in the WUYING Agent Management Center. This template is used to configure connection information and keys for model services (such as Alibaba Cloud Bailian, Token Plan, and Moonshot) that an Agent can invoke. After model creation, the model provider template is automatically associated with the specified model template.
+// You can create a model provider template for model creation under the model templates in the Wuying Agent Management Center to configure the connection information and keys for model services (such as Alibaba Cloud Bailian, Token Plan, and Moonshot AI) that can be invoked by agents. The created model provider template is automatically associated with the specified model template.
 //
-// Make sure that you are familiar with the operations and usage of the WUYING Agent Management Center before you invoke this operation.
+// Make sure that you fully understand the operations and usage of the Wuying Agent Management Center before you call this operation.
 //
 // @param request - CreateModelProviderTemplateRequest
 //
@@ -1443,7 +1443,7 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a pay-as-you-go delivery group of the resource-based type.
+// Deletes a resource-based pay-as-you-go delivery group.
 //
 // Description:
 //
@@ -1495,7 +1495,7 @@ func (client *Client) DeleteAppInstanceGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes a specified application instance.
+// Deletes specified application instances.
 //
 // Description:
 //
@@ -1555,13 +1555,13 @@ func (client *Client) DeleteAppInstancesWithContext(ctx context.Context, request
 //
 // Description:
 //
-// - You can delete only custom images that belong to your account.
+// - Only custom images that belong to your account can be deleted.
 //
-// - For images associated with WUYING Cloud Computer Pool, WUYING Cloud Application, or WUYING Workspace product lines, ensure that no WUYING instances are using the image before you delete it.
+// - For images associated with WUYING Workspace pools, WUYING Cloud Apps, or WUYING Workstations, ensure that no WUYING instances are using the image before you delete it.
 //
-// - If a WUYING Cloud Desktop template references an image, the template is also deleted when the image is deleted.
+// - If a WUYING Cloud Desktop template references the image, the template is also deleted when you delete the image.
 //
-// - For images that span multiple regions, deleting the image removes the image from all regions.
+// - If the image is available in multiple regions, deleting the image removes it from all regions.
 //
 // @param request - DeleteImageRequest
 //
@@ -1609,9 +1609,7 @@ func (client *Client) DeleteImageWithContext(ctx context.Context, request *Delet
 //
 // Description:
 //
-// You can delete a model template that has been created under a model service provider template in the WUYING Agent Management Center. Before deletion, ensure that the model is not the default model of an associated model group. Otherwise, the deletion fails. After deletion, the model configurations of associated cloud computers are automatically refreshed.
-//
-// Before using this operation, make sure you are familiar with the operations and usage of the WUYING Agent Management Center.
+// You can delete a model template created under a model service provider template in the Wuying Agent Management Center. Before you delete the template, make sure that the model is not the default model of an associated model group. Otherwise, the deletion fails. After the deletion, the model configurations of associated cloud computers are automatically refreshed. Make sure that you fully understand the operations and usage of the Wuying Agent Management Center before you call this operation.
 //
 // @param request - DeleteLlmTemplateRequest
 //
@@ -1659,9 +1657,9 @@ func (client *Client) DeleteLlmTemplateWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// You can delete a model provider template that has been created under model templates in the WUYING Agent Management Center. Before deletion, ensure that the model provider is not the provider of the default model and is not a system preset type provider (such as WUYING credit package). After deletion, the associated models and key configurations are also removed.
+// You can delete a model provider template created under model templates in the Wuying Agent Management Center. Before deletion, ensure that the model provider is not the provider of the default model and is not a system-preset provider, such as the Wuying credit package. After deletion, the associated models and key configurations are also cleared.
 //
-// Before using this operation, make sure you are familiar with the operations and usage of the WUYING Agent Management Center.
+// Make sure that you fully understand the operations and usage of the Wuying Agent Management Center before you call this operation.
 //
 // @param request - DeleteModelProviderTemplateRequest
 //
@@ -1709,9 +1707,9 @@ func (client *Client) DeleteModelProviderTemplateWithContext(ctx context.Context
 //
 // Description:
 //
-// You can delete a model group that has been created in the WUYING Agent Management Center. Before deletion, ensure that the template has not been authorized to any resource. Otherwise, the deletion fails. After deletion, the model providers and models under the model group are also removed.
+// You can delete a model group created in the Wuying Agent Management Center. Before you delete the model group, make sure that the template is not authorized for any resources. Otherwise, the deletion fails. After the model group is deleted, the model providers and models in the model group are also removed.
 //
-// Before using this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
+// Before you call this operation, make sure that you fully understand the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - DeleteModelTemplateRequest
 //
@@ -1755,11 +1753,11 @@ func (client *Client) DeleteModelTemplateWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes a cloud graphics workstation.
+// Deletes a workstation.
 //
 // Description:
 //
-// Deletes a cloud graphics workstation.
+// Deletes a workstation.
 //
 // @param request - DeleteWuyingServerRequest
 //
@@ -2014,23 +2012,23 @@ func (client *Client) GetAppInstanceGroupWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// This topic describes the query usage for the monthly active user (MAU) billing scenario.
+// This topic describes how to use the query operation in the monthly active user (MAU) billing scenario.
 //
 // ## Before you begin
 //
-// Obtain the cloud browser group ID under the current account. Call `ListBrowserInstanceGroup` to retrieve the ID.
+// Obtain the ID of a cloud browser group within the current account. You can call `ListBrowserInstanceGroup` to obtain the ID.
 //
-// ## Response
+// ## Response content
 //
-// The response includes the current configuration, status, and authorization statistics of the browser group. The details return up to 20 bookmarks and 20 website access entries. To retrieve the complete lists, call `ListBrowserBookmarks` and `ListBrowserRestrictedURLs`.
+// Returns the current configuration, status, and authorization statistics of the browser group. The bookmark and website access lists in the details return up to the first 20 entries each. To query the complete lists, call `ListBrowserBookmarks` and `ListBrowserRestrictedURLs` respectively.
 //
 // ## What to do next
 //
-// This operation only queries configurations and does not modify resources. After you read the returned status, perform the connection or management operation that corresponds to the status.
+// This operation only queries the configuration and does not modify resources. After reading the returned status, perform connection or management operations that match the status.
 //
 // ## Example description
 //
-// The `-` value in the examples indicates that the field is not applicable or not returned in the current scenario. It is not an actual string returned by the operation. Sample resource IDs are masked. Use the actual query results when you call this operation.
+// In the examples, `-` indicates that the current scenario does not apply or the field is not returned. It is not a string actually returned by the operation. Examples of common resource IDs are masked. Use the actual query results.
 //
 // @param request - GetBrowserInstanceGroupRequest
 //
@@ -2570,11 +2568,11 @@ func (client *Client) GetRuntimeChannelWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the model configuration details of a cloud computer.
+// Queries the details of the model configuration for a cloud desktop.
 //
 // Description:
 //
-// You can query the model configuration details currently bound to a specified cloud computer in the Wuying Agent Management Center, including model groups, model provider lists, and associated model information. After you enable the risk information mode, you can also identify differences between the end user\\"s actual configuration and the configuration delivered by the administrator.
+// You can query the details of the model configuration currently bound to a specified cloud desktop in the Wuying Agent Management Center, including the model group, the list of model providers, and their associated model information. When the risk information mode is enabled, you can also identify discrepancies between the actual configuration of the end user and the configuration delivered by the administrator.
 //
 // @param request - GetRuntimeModelConfigRequest
 //
@@ -2607,6 +2605,10 @@ func (client *Client) GetRuntimeModelConfigWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.RuntimeType) {
 		query["RuntimeType"] = request.RuntimeType
+	}
+
+	if !dara.IsNil(request.SmartModel) {
+		query["SmartModel"] = request.SmartModel
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3380,27 +3382,27 @@ func (client *Client) ListBindInfoWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries cloud browser groups and their current status by paging.
+// Performs a paging query of cloud browser groups and their current statuses.
 //
 // Description:
 //
-// This topic describes how to use this operation in the monthly active user (MAU) billing scenario.
+// This topic describes how paged query cloud browser groups in the monthly active user (MAU) billing scenario.
 //
 // ## Query conditions
 //
-// You can filter by browser group identity, name, business region, office network, set, authorized user group, and status. Only one status value can be specified at a time.
+// You can filter cloud browser groups by browser group ID, name, business region, office network, set, authorized user group, and status. You can specify only one status value at a time for status filtering.
 //
-// ## Paging
+// ## Pagination
 //
-// Use `PageNumber` and `PageSize` for paging. Use the returned `TotalCount` to determine whether to continue querying the next page.
+// Use PageNumber and PageSize paged query data by page. You can determine whether paged query the next page based on the returned TotalCount.
 //
 // ## What to do next
 //
-// To view the detailed configuration of a single browser group, invoke `GetBrowserInstanceGroup` with the returned identity.
+// To view the detailed configurations of a single browser group, call GetBrowserInstanceGroup by using the returned ID.
 //
 // ## Example notes
 //
-// The `-` in the examples indicates that the field is not applicable or not returned in the current scenario. It is not an actual character string returned by the operation. Resource identities in the examples are masked. Use the actual query results in your environment.
+// The hyphen (`-`) in the examples indicates that the field is not applicable or not returned in the current scenario, and is not an actual string returned by the API operation. The common resource IDs in the examples are desensitized. Use the actual query results when you use the API operation.
 //
 // @param request - ListBrowserInstanceGroupRequest
 //
@@ -3775,13 +3777,13 @@ func (client *Client) ListImageWithContext(ctx context.Context, request *ListIma
 
 // Summary:
 //
-// Queries the list of LLM templates.
+// Queries a list of LLM templates.
 //
 // Description:
 //
-// You can query the list of model templates under a model provider template in the WUYING Agent Management Center with paging. Filtering by model group ID, model provider template ID, model template ID, and model encoding is supported. When querying by model group dimension, the default model is automatically pinned to the top.
+// You can use paging to perform a paged query of the model template list under a model provider template in the Wuying Agent Management Center. You can filter the results by model group ID, model provider template ID, model template ID, and model encoding. When you query by the model group dimension, the default model is automatically pinned to the top.
 //
-// Before using this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
+// Before you call this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param tmpReq - ListLlmTemplatesRequest
 //
@@ -3804,6 +3806,10 @@ func (client *Client) ListLlmTemplatesWithContext(ctx context.Context, tmpReq *L
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
 		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
 	}
 
 	if !dara.IsNil(request.LlmCode) {
@@ -5287,11 +5293,11 @@ func (client *Client) ModifyAppPolicyWithContext(ctx context.Context, tmpReq *Mo
 
 // Summary:
 //
-// Modifies the attributes of a Wuying Cloud Browser.
+// Modifies the attributes of a Wuying cloud browser.
 //
 // Description:
 //
-// Modifies the attributes of a Wuying Cloud Browser.
+// Modifies the attributes of a Wuying cloud browser.
 //
 // @param tmpReq - ModifyBrowserInstanceGroupRequest
 //
@@ -5517,6 +5523,62 @@ func (client *Client) ModifyNodePoolAttributeWithContext(ctx context.Context, tm
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNodePoolAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyShareImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyShareImageResponse
+func (client *Client) ModifyShareImageWithContext(ctx context.Context, request *ModifyShareImageRequest, runtime *dara.RuntimeOptions) (_result *ModifyShareImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddAccount) {
+		body["AddAccount"] = request.AddAccount
+	}
+
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.RemoveAccount) {
+		body["RemoveAccount"] = request.RemoveAccount
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyShareImage"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyShareImageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5873,11 +5935,11 @@ func (client *Client) RemoveRuntimeModelTemplateWithContext(ctx context.Context,
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the [billing and pricing](https://help.aliyun.com/document_detail/426039.html) of WUYING Workspace.
+// Make sure you understand the [billing methods and pricing](https://help.aliyun.com/document_detail/426039.html) of WUYING Workspace before calling this operation.
 //
 // > Prerequisites:
 //
-// > - The delivery group must be in the PUBLISHED state, and ChargeType must be set to PrePaid.
+// > - The delivery group must be in the PUBLISHED state and ChargeType must be PrePaid.
 //
 // @param tmpReq - RenewAppInstanceGroupRequest
 //
@@ -6240,7 +6302,7 @@ func (client *Client) StopWuyingServerWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates and attaches tags to cloud resources. For resources that already have the specified tags, updates the tag values.
+// Creates and binds tags to cloud resources, and updates the values of existing tags.
 //
 // @param request - TagCloudResourcesRequest
 //
@@ -6548,47 +6610,47 @@ func (client *Client) UntagCloudResourcesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Unbinds tags from specified Wuying delivery groups in compliance with Alibaba Cloud tagging standards. You can unbind specific tags by tag key or unbind all custom tags from a resource at once by setting `All=true` without specifying tag keys. Currently, only the delivery group (`APPINSTANCEGROUP`) resource type is supported.
+// Untags the specified Wuying app instance groups according to Alibaba Cloud tagging specifications. You can remove specific tags by specifying tag keys, or remove all custom tags from the resources at once by setting `All=true` without specifying tag keys. Currently, only the app instance group (`APPINSTANCEGROUP`) resource type is supported.
 //
 // Description:
 //
-// ## Before you begin
+// ## Prerequisites
 //
-// When calling this operation with a RAM user or STS credential, the `appstreaming:UntagResources` permission is required.
+// To call this operation as a RAM user or by using STS credentials, you must have the `appstreaming:UntagResources` permission.
 //
-// The resources from which you want to unbind tags must belong to the current Alibaba Cloud account. **This operation currently supports only delivery group resources.*	- You can set `ResourceType` only to `APPINSTANCEGROUP`. You can obtain delivery group IDs by calling [ListAppInstanceGroup](~~ListAppInstanceGroup~~), and query tags that are bound to a resource by calling [ListTagResources](~~ListTagResources~~).
+// The resources to be untagged must belong to the current Alibaba Cloud account. **This operation currently supports only app instance group resources**. You must set `ResourceType` to `APPINSTANCEGROUP`. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the app instance group ID, and call the [ListTagResources](~~ListTagResources~~) operation to query the tags bound to the resources.
 //
-// ## Parameter description
+// ## Metric description
 //
-// - You can unbind tags from up to **50 resources*	- in a single request. Duplicate resource IDs are automatically deduplicated.
+// - A single request can detach labels from up to **50 resources**. Duplicate resource IDs are automatically deduplicated.
 //
-// - **Specify at least one of `TagKey.N` and `All`.*	- If neither is specified, or if `TagKey.N` is not specified and `All` is set to `false`, the error code `InvalidParameter.TagKeyListOrAll` is returned.
+// - **You must specify at least one of `TagKey.N` and `All`**: If neither is specified, or if `TagKey.N` is not specified and `All` is set to `false`, the operation returns the error code `InvalidParameter.TagKeyListOrAll`.
 //
-//   - If `TagKey.N` is specified: only the tags that correspond to the specified tag keys are unbound. You can specify up to 20 tag keys at a time. The `All` parameter is ignored.
+//   - If `TagKey.N` is specified: Only the labels corresponding to these label keys are detached. A maximum of 20 label keys can be specified in a single request. In this case, the `All` parameter is ignored.
 //
-//   - If `TagKey.N` is not specified and `All=true`: all custom tags on the resource are unbound, including Wuying system tags that start with `System/` and were attached by calling [TagResources](~~TagResources~~).
+//   - If `TagKey.N` is not specified and `All` is set to `true`: All custom labels on the resources are detached, including Wuying system labels that start with `System/` and were attached by calling the [TagResources](~~TagResources~~) operation.
 //
-// - If a specified tag key does not exist on the resource, the tag key is skipped and no error is returned.
+// - If a specified label key does not exist on a resource, the label key is skipped and no fault is returned.
 //
-// - Tag keys that start with `System/` are Wuying system tags. Only `System/Scheduler/GRAYSCALE` and `System/Scheduler/STOP_NEW_USER_CONNECTION` are supported. If you specify other tag keys that start with `System/`, the error code `InvalidTagPolicy.KeyInvalid` or `InvalidTag.SystemKeyNotAllow` is returned.
+// - Label keys that start with `System/` are Wuying system labels. Only `System/Scheduler/GRAYSCALE` and `System/Scheduler/STOP_NEW_USER_CONNECTION` are supported. If you specify other label keys that start with `System/`, the operation returns the error code `InvalidTagPolicy.KeyInvalid` or `InvalidTag.SystemKeyNotAllow`.
 //
 // ## Execution results
 //
-// - **If any specified delivery group does not exist or does not belong to the current account, the entire request fails*	- with the error code `InvalidAppInstanceGroup.NotFound`, and no tags are unbound from any resource.
+// - **If any specified app instance group does not exist or does not belong to the current account, the entire request fails**, and the operation returns the error code `InvalidAppInstanceGroup.NotFound`. No resources are untagged.
 //
-// - On success, the response contains only `RequestId` and does not return tag details.
+// - If the untagging is successful, the response contains only `RequestId` and does not return tag details.
 //
-// - When multiple resources are specified and only some fail to have tags unbound, the operation still returns success and the response does not contain failure details. Call [ListTagResources](~~ListTagResources~~) to verify the unbinding results. When only one resource is specified and the unbinding fails, the operation returns the corresponding error code directly.
+// - If multiple resources are specified and the untagging fails for only some of the resources, the operation still returns a success response, and the response does not contain failure details. Call the [ListTagResources](~~ListTagResources~~) operation to verify the untagging results. If only one resource is specified and the untagging fails, the operation directly returns the corresponding error code.
 //
 // ## Call sequence
 //
-// 1. Call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain delivery group IDs. To check which tag keys are bound to a resource, call [ListTagResources](~~ListTagResources~~).
+// 1. Call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the app instance group ID. To confirm the tag keys bound to the resources, call the [ListTagResources](~~ListTagResources~~) operation.
 //
-// 2. Call this operation with `ResourceType=APPINSTANCEGROUP` and `ResourceId.N`, and specify `TagKey.N` or `All=true` to indicate the tags to unbind.
+// 2. Call this operation, specify `ResourceType=APPINSTANCEGROUP` and `ResourceId.N`, and specify `TagKey.N` or set `All=true` to indicate the tags to be removed.
 //
-// 3. To rebind tags, call [TagResources](~~TagResources~~).
+// 3. To rebind tags, call the [TagResources](~~TagResources~~) operation.
 //
-// The masked identifiers in the examples are for format demonstration purposes only. Replace them with your actual identifiers when making calls.
+// The masked identifiers in the examples are used to demonstrate the format. Replace them with your actual identifiers when you call the operation.
 //
 // @param request - UntagResourcesRequest
 //

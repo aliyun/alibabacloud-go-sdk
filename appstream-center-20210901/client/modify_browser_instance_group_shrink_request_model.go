@@ -38,7 +38,7 @@ type ModifyBrowserInstanceGroupShrinkRequest struct {
 	AuthNotificationEnabled *bool `json:"AuthNotificationEnabled,omitempty" xml:"AuthNotificationEnabled,omitempty"`
 	// The browser configuration.
 	BrowserConfigShrink *string `json:"BrowserConfig,omitempty" xml:"BrowserConfig,omitempty"`
-	// The ID of the cloud browser to modify.
+	// The ID of the cloud browser.
 	//
 	// This parameter is required.
 	//
@@ -52,19 +52,19 @@ type ModifyBrowserInstanceGroupShrinkRequest struct {
 	//
 	// BrowserTest
 	CloudBrowserName *string `json:"CloudBrowserName,omitempty" xml:"CloudBrowserName,omitempty"`
-	// The maximum resource count. This parameter takes effect for monthly active pay-as-you-go billing.
+	// The maximum resource count. This parameter takes effect only for the pay-as-you-go billing method based on monthly active users.
 	//
 	// example:
 	//
 	// 5
 	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
-	// The network configuration.
+	// The network configurations.
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The access policy.
 	PolicyShrink *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The storage-related policy.
 	StoragePolicyShrink *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
-	// The timers.
+	// The timer.
 	TimersShrink *string `json:"Timers,omitempty" xml:"Timers,omitempty"`
 }
 

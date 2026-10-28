@@ -14,7 +14,7 @@ type iDeleteWuyingServerRequest interface {
 }
 
 type DeleteWuyingServerRequest struct {
-	// The cloud graphics workstation ID.
+	// The workstation ID.
 	//
 	// This parameter is required.
 	//

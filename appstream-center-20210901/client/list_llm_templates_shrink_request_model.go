@@ -11,6 +11,8 @@ type iListLlmTemplatesShrinkRequest interface {
 	GoString() string
 	SetBizType(v int32) *ListLlmTemplatesShrinkRequest
 	GetBizType() *int32
+	SetLanguage(v string) *ListLlmTemplatesShrinkRequest
+	GetLanguage() *string
 	SetLlmCode(v string) *ListLlmTemplatesShrinkRequest
 	GetLlmCode() *string
 	SetLlmTemplateIdsShrink(v string) *ListLlmTemplatesShrinkRequest
@@ -34,21 +36,37 @@ type ListLlmTemplatesShrinkRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The model code used for filtering. Fuzzy match is supported.
+	// The display language of the model. Valid values:
+	//
+	// - zh-CN: Simplified Chinese.
+	//
+	// - en-US: English.
+	//
+	// - ja-JP: Japanese.
+	//
+	// - zh-TW: Traditional Chinese.
+	//
+	// Default value: zh-CN. Currently, zh-TW returns Simplified Chinese, and ja-JP returns English. If the model is not included in Alibaba Cloud Model Studio or the English text is missing, the original source text is retained without automatic translation.
+	//
+	// example:
+	//
+	// en-US
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The model code for filtering. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// qwen3.6-plus
 	LlmCode *string `json:"LlmCode,omitempty" xml:"LlmCode,omitempty"`
-	// The model template IDs used for filtering.
+	// The model template IDs for filtering.
 	LlmTemplateIdsShrink *string `json:"LlmTemplateIds,omitempty" xml:"LlmTemplateIds,omitempty"`
-	// The ID of the associated model group.
+	// The associated model group ID.
 	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The page number. Pages start from page 1. Both 0 and 1 return the same result.
+	// The page number. Pages start from 1. A value of 0 returns the same result as 1.
 	//
 	// example:
 	//
@@ -60,7 +78,7 @@ type ListLlmTemplatesShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the model provider template.
+	// The model provider template ID.
 	//
 	// example:
 	//
@@ -68,9 +86,9 @@ type ListLlmTemplatesShrinkRequest struct {
 	ProviderTemplateId *string `json:"ProviderTemplateId,omitempty" xml:"ProviderTemplateId,omitempty"`
 	// Specifies whether to query smart models. Valid values:
 	//
-	// - true: Only LLMs under system preset smart models are returned. In this case, BizType is required.
+	// - true: Only LLMs under system-preset smart models are returned. In this case, BizType is required.
 	//
-	// - false: Smart model filtering is not applied.
+	// - false: Smart models are not specifically filtered.
 	//
 	// Default value: false.
 	//
@@ -90,6 +108,10 @@ func (s ListLlmTemplatesShrinkRequest) GoString() string {
 
 func (s *ListLlmTemplatesShrinkRequest) GetBizType() *int32 {
 	return s.BizType
+}
+
+func (s *ListLlmTemplatesShrinkRequest) GetLanguage() *string {
+	return s.Language
 }
 
 func (s *ListLlmTemplatesShrinkRequest) GetLlmCode() *string {
@@ -122,6 +144,11 @@ func (s *ListLlmTemplatesShrinkRequest) GetSmartModel() *bool {
 
 func (s *ListLlmTemplatesShrinkRequest) SetBizType(v int32) *ListLlmTemplatesShrinkRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *ListLlmTemplatesShrinkRequest) SetLanguage(v string) *ListLlmTemplatesShrinkRequest {
+	s.Language = &v
 	return s
 }
 

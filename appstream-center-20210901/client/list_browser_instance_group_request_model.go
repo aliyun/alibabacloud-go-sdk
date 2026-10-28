@@ -38,78 +38,78 @@ type iListBrowserInstanceGroupRequest interface {
 }
 
 type ListBrowserInstanceGroupRequest struct {
-	// The browser group set ID for exact match queries of active members in the set.
+	// The ID of the browser group set. This parameter is used to query the valid members of the set by exact match.
 	//
 	// example:
 	//
 	// set-3jm9d0abc00example
 	AppInstanceGroupSetId *string `json:"AppInstanceGroupSetId,omitempty" xml:"AppInstanceGroupSetId,omitempty"`
-	// Filters browser groups by business region.
+	// Filters cloud browser groups by business region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The cloud browser group ID for exact match queries.
+	// The ID of the cloud browser group. This parameter is used for exact match.
 	//
 	// example:
 	//
 	// big-0c7loey7fzjq****
 	BrowserInstanceGroupId *string `json:"BrowserInstanceGroupId,omitempty" xml:"BrowserInstanceGroupId,omitempty"`
-	// The browser group name. Fuzzy match is supported.
+	// The name of the browser group. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// Office
 	BrowserInstanceGroupName *string `json:"BrowserInstanceGroupName,omitempty" xml:"BrowserInstanceGroupName,omitempty"`
-	// Performs a contains match by browser group name or ID.
+	// Filters cloud browser groups by name or ID based on partial match.
 	//
 	// example:
 	//
 	// Office
 	CloudBrowserName *string `json:"CloudBrowserName,omitempty" xml:"CloudBrowserName,omitempty"`
-	// Excludes browser groups that are authorized to the specified user groups.
+	// Excludes cloud browser groups that are authorized to the specified user groups.
 	//
 	// if can be null:
 	// true
 	ExcludedUserGroupIds []*string `json:"ExcludedUserGroupIds,omitempty" xml:"ExcludedUserGroupIds,omitempty" type:"Repeated"`
-	// Filters browser groups by office network ID.
+	// Filters cloud browser groups by the ID of the office network to which they belong.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-843734****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The page number, starting from page 1.
+	// The page number. Pages start from page 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters by browser group status.
+	// Filters cloud browser groups by status.
 	//
-	// **Limit:*	- Only one status value can be specified at a time.
+	// **Limit:*	- You can specify only one status at a time.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The tag filter parameters. This parameter is not supported in customer-facing scenarios. Do not specify this parameter.
+	// The tag filtering parameter. This parameter is not supported in customer-facing scenarios. Do not specify this parameter.
 	Tag []*ListBrowserInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Filters by version of the browser.
+	// Filters cloud browser groups by browser version. Valid values:
 	//
 	// - `Basic`: Basic Edition.
 	//
 	// - `Pro`: Premium Edition.
 	//
-	// Use `Pro` to query MAU browser groups.
+	// Use `Pro` when you query MAU browser groups.
 	//
 	// example:
 	//
 	// Pro
 	Tier *string `json:"Tier,omitempty" xml:"Tier,omitempty"`
-	// Filters by authorized user group IDs.
+	// Filters cloud browser groups by the IDs of authorized user groups.
 	//
 	// if can be null:
 	// true

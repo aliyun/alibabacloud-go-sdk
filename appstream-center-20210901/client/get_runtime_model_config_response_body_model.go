@@ -62,7 +62,7 @@ func (s *GetRuntimeModelConfigResponseBody) Validate() error {
 }
 
 type GetRuntimeModelConfigResponseBodyData struct {
-	// The default model (format: providerName/llmCode).
+	// The default model, in the format of providerName/llmCode.
 	//
 	// example:
 	//
@@ -70,25 +70,25 @@ type GetRuntimeModelConfigResponseBodyData struct {
 	DefaultModel *string `json:"DefaultModel,omitempty" xml:"DefaultModel,omitempty"`
 	// The list of model providers.
 	ModelProviderList []*GetRuntimeModelConfigResponseBodyDataModelProviderList `json:"ModelProviderList,omitempty" xml:"ModelProviderList,omitempty" type:"Repeated"`
-	// The configured model group ID.
+	// The ID of the configured model group.
 	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The model group name.
+	// The name of the model group.
 	//
 	// example:
 	//
 	// model-template-001
 	ModelTemplateName *string `json:"ModelTemplateName,omitempty" xml:"ModelTemplateName,omitempty"`
-	// The model template association type (only when present).
+	// The model template association type.
 	//
 	// example:
 	//
 	// Runtime
 	ModelTemplateRefType *string `json:"ModelTemplateRefType,omitempty" xml:"ModelTemplateRefType,omitempty"`
-	// The resource group ID to which the runtime belongs (null if not assigned to a resource group).
+	// The ID of the resource group to which the runtime belongs. If the runtime does not belong to any resource group, the value is null.
 	//
 	// example:
 	//
@@ -174,19 +174,19 @@ func (s *GetRuntimeModelConfigResponseBodyData) Validate() error {
 type GetRuntimeModelConfigResponseBodyDataModelProviderList struct {
 	// The list of model information.
 	LlmInfoList []*GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList `json:"LlmInfoList,omitempty" xml:"LlmInfoList,omitempty" type:"Repeated"`
-	// The model provider template ID.
+	// The ID of the model provider template.
 	//
 	// example:
 	//
 	// mpt-xxxx
 	ModelProviderTemplateId *string `json:"ModelProviderTemplateId,omitempty" xml:"ModelProviderTemplateId,omitempty"`
-	// The model provider template name.
+	// The name of the model provider template.
 	//
 	// example:
 	//
-	// 百炼
+	// Model Studio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The model provider name.
+	// The name of the model provider.
 	//
 	// example:
 	//
@@ -252,17 +252,17 @@ func (s *GetRuntimeModelConfigResponseBodyDataModelProviderList) Validate() erro
 }
 
 type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList struct {
-	// The credit consumption multiplier. A null value indicates that the model does not participate in credit-based billing.
+	// The credit consumption multiplier. If this parameter is empty, it indicates that the model does not participate in credit billing.
 	CreditMultiplier *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier `json:"CreditMultiplier,omitempty" xml:"CreditMultiplier,omitempty" type:"Struct"`
 	// The model description.
 	//
 	// example:
 	//
-	// The Qwen3.6 native vision-language series Plus model demonstrates outstanding performance comparable to current top frontier models, with significant improvements over the 3.5 series. The model features significantly enhanced capabilities in agentic coding, frontend programming, vibe coding, multimodal universal recognition, OCR, and object localization
+	// The Qwen3.6 native vision-language Plus model series demonstrates exceptional performance comparable to current top-tier frontier models, with significantly improved model effects compared to the 3.5 series. The model shows significant enhancements in coding capabilities such as agentic coding, front-end programming, and vibe coding, as well as in multimodal universal recognition, OCR, and object localization
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of model features (such as function-calling, web-search, and structured-outputs).
+	// The list of model features, such as function-calling, web-search, and structured-outputs.
 	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// The inference metadata (request and response modalities).
+	// The inference metadata, including request and response modalities.
 	InferenceMetadata *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata `json:"InferenceMetadata,omitempty" xml:"InferenceMetadata,omitempty" type:"Struct"`
 	// The model code.
 	//
@@ -276,13 +276,13 @@ type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList struct {
 	//
 	// Qwen3.6-Plus
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The publish time (ISO 8601 format).
+	// The published time in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-03-04T06:25:17.000+00:00
 	PublishedTime *string `json:"PublishedTime,omitempty" xml:"PublishedTime,omitempty"`
-	// The model risk type (returned only when the request parameter IncludeRiskInfo is set to true).
+	// The model risk type. This parameter is returned only when the IncludeRiskInfo request parameter is set to true.
 	//
 	// example:
 	//
@@ -385,13 +385,13 @@ func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) Vali
 }
 
 type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier struct {
-	// The maximum multiplier. A null value indicates no upper limit. For example, Min=1 with a null Max is displayed as 1x and above.
+	// The upper limit of the multiplier. If this parameter is empty, it indicates that there is no upper limit. For example, if Min is 1 and Max is empty, it is displayed as 1x and above.
 	//
 	// example:
 	//
 	// 3
 	Max *float32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The minimum multiplier. When equal to Max, the multiplier is fixed. For example, Min=Max=2 is displayed as 2x.
+	// The lower limit of the multiplier. When it is equal to Max, it is a fixed multiplier. For example, if Min and Max are both 2, it is displayed as 2x.
 	//
 	// example:
 	//
@@ -430,9 +430,9 @@ func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCredit
 }
 
 type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata struct {
-	// The list of request modalities (such as Text, Image, and Audio).
+	// The list of request modalities, such as Text, Image, and Audio.
 	RequestModality []*string `json:"RequestModality,omitempty" xml:"RequestModality,omitempty" type:"Repeated"`
-	// The list of response modalities (such as Text, Image, and Audio).
+	// The list of response modalities, such as Text, Image, and Audio.
 	ResponseModality []*string `json:"ResponseModality,omitempty" xml:"ResponseModality,omitempty" type:"Repeated"`
 }
 

@@ -24,9 +24,9 @@ type iDeleteImageResponseBody interface {
 type DeleteImageResponseBody struct {
 	// The status code. Valid values:
 	//
-	// - `200`: Succeeded.
+	// - `200`: Success.
 	//
-	// - `400`: Failed.
+	// - `400`: Error.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DeleteImageResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
