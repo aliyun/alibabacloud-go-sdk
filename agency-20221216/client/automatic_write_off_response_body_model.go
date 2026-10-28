@@ -26,11 +26,20 @@ type AutomaticWriteOffResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the configuration is successful.
+	//
 	// example:
 	//
 	// true
-	Data    *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 6fc1309b17543600398356606d0096

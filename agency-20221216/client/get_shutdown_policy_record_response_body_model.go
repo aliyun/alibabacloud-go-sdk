@@ -26,27 +26,40 @@ type iGetShutdownPolicyRecordResponseBody interface {
 }
 
 type GetShutdownPolicyRecordResponseBody struct {
+	// The result code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the customer was created. If the value is true, the Message contains the CID.
 	Data []*GetShutdownPolicyRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 210e876f16704666020714468dab35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -138,22 +151,62 @@ func (s *GetShutdownPolicyRecordResponseBody) Validate() error {
 }
 
 type GetShutdownPolicyRecordResponseBodyData struct {
+	// The current policy. Valid values:
+	//
+	// - immediatelyStop: immediate shutdown upon overdue payment.
+	//
+	// - delayStop: deferred shutdown quota applied.
+	//
+	// - noStop: no shutdown upon overdue payment.
+	//
+	// [_single.resp.200.props.Data.items.CurrentPolicy.enum.immediatelyStop ]Immediate shutdown upon overdue payment.
+	//
+	// [_single.resp.200.props.Data.items.CurrentPolicy.enum.noStop ]No shutdown upon overdue payment.
+	//
+	// [_single.resp.200.props.Data.items.CurrentPolicy.enum.delayStop ]Deferred shutdown quota applied.
+	//
 	// example:
 	//
 	// noStop
 	CurrentPolicy *string `json:"CurrentPolicy,omitempty" xml:"CurrentPolicy,omitempty"`
+	// The method by which the operation was initiated. Valid values:
+	//
+	// - API: API.
+	//
+	// - ACPN: ACPN.
+	//
+	// - ALIYUN_BIZ: Alibaba Cloud internal.
+	//
 	// example:
 	//
 	// ACPN
 	OperationPath *string `json:"OperationPath,omitempty" xml:"OperationPath,omitempty"`
+	// The operation time (UTC+8).
+	//
 	// example:
 	//
 	// 2023-12-15 10:34:36
 	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
+	// The operator.
+	//
 	// example:
 	//
 	// 11111111111
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The policy before the change. Valid values:
+	//
+	// - immediatelyStop: immediate shutdown upon overdue payment.
+	//
+	// - delayStop: deferred shutdown quota applied.
+	//
+	// - noStop: no shutdown upon overdue payment.
+	//
+	// [_single.resp.200.props.Data.items.PreviousPolicy.enum.immediatelyStop ]Immediate shutdown upon overdue payment.
+	//
+	// [_single.resp.200.props.Data.items.PreviousPolicy.enum.noStop ]No shutdown upon overdue payment.
+	//
+	// [_single.resp.200.props.Data.items.PreviousPolicy.enum.delayStop ]Deferred shutdown quota applied.
+	//
 	// example:
 	//
 	// immediatelyStop

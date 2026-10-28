@@ -14,6 +14,8 @@ type iGetCouponTemplateDetailRequest interface {
 }
 
 type GetCouponTemplateDetailRequest struct {
+	// The ID of the coupon template.
+	//
 	// This parameter is required.
 	//
 	// example:

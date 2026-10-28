@@ -18,19 +18,33 @@ type iProcessApprovalRequest interface {
 }
 
 type ProcessApprovalRequest struct {
+	// The ID of the application form.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d54ca949-9b88-4514-add3-c6029c4027f4
 	ApplicationSheetId *string `json:"ApplicationSheetId,omitempty" xml:"ApplicationSheetId,omitempty"`
+	// The approval action. Valid values:
+	//
+	// - Approve: approved.
+	//
+	// - Reject: rejected.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Approve
 	ApprovalAction *string `json:"ApprovalAction,omitempty" xml:"ApprovalAction,omitempty"`
+	// The approval comments.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 同意
 	ApprovalComments *string `json:"ApprovalComments,omitempty" xml:"ApprovalComments,omitempty"`
 }
 

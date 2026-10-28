@@ -22,26 +22,46 @@ type iListExportTasksRequest interface {
 }
 
 type ListExportTasksRequest struct {
+	// The ID of the export task.
+	//
 	// example:
 	//
 	// 12343
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language. Valid values:
+	//
+	// - en: English.
+	//
+	// - zh: Chinese.
+	//
+	// - ja: Japanese.
+	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The current page number. Pages start from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The export scenario code. Valid values:
+	//
+	// - intlCustomerQuotaRecord: Customer management, quota transaction export.
+	//
+	// - intlExportUsageDeductHistory: Customer management, deduction detail export.
+	//
 	// This parameter is required.
 	//
 	// example:

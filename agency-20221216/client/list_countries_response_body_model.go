@@ -22,31 +22,31 @@ type iListCountriesResponseBody interface {
 }
 
 type ListCountriesResponseBody struct {
-	// Error Code
+	// The error code. Valid values:
 	//
-	// 	- 200: OK
+	// - 200: OK.
 	//
-	// 	- 1109: System error
+	// - 1109: System error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// List of Region Code
+	// The list of region codes.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Message information
+	// The message information.
 	//
 	// example:
 	//
-	// success
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID, Alibaba Cloud will track errors with this.
+	// The request ID. Alibaba Cloud uses this ID for error tracking.
 	//
 	// example:
 	//
 	// A747A00F-E096-5244-88B3-3E474BAE3AE4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	// Indicates whether the current API call itself is successful. Valid values: True and False. This does not indicate the success of subsequent business operations.
 	//
 	// example:
 	//

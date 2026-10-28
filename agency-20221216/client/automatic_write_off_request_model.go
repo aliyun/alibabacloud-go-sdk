@@ -20,22 +20,40 @@ type iAutomaticWriteOffRequest interface {
 }
 
 type AutomaticWriteOffRequest struct {
+	// The automatic write-off amount. This parameter is required if automatic write-off is enabled. Valid values: 100, 500, and 1000.
+	//
 	// example:
 	//
 	// 100
 	AutomaticWriteOffAmount *int64 `json:"AutomaticWriteOffAmount,omitempty" xml:"AutomaticWriteOffAmount,omitempty"`
+	// Specifies whether to enable automatic write-off and set the automatic write-off amount. Valid values:
+	//
+	// - true: Enables automatic write-off and sets the automatic write-off amount.
+	//
+	// - false: Disables automatic write-off.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	AutomaticWriteOffEnabled *bool `json:"AutomaticWriteOffEnabled,omitempty" xml:"AutomaticWriteOffEnabled,omitempty"`
+	// The UID of the customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	CustomerUid *int64 `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
+	// The language. If this parameter is not specified, English is used by default. Valid values:
+	//
+	// - en: English.
+	//
+	// - zh: Chinese.
+	//
+	// - ja: Japanese.
+	//
 	// example:
 	//
 	// en

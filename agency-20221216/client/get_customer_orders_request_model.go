@@ -38,62 +38,116 @@ type iGetCustomerOrdersRequest interface {
 }
 
 type GetCustomerOrdersRequest struct {
+	// The customer account.
+	//
 	// example:
 	//
 	// test_123
 	CustomerAccount *string `json:"CustomerAccount,omitempty" xml:"CustomerAccount,omitempty"`
+	// The account manager.
+	//
 	// example:
 	//
 	// myBd
 	CustomerManager *string `json:"CustomerManager,omitempty" xml:"CustomerManager,omitempty"`
+	// The customer UID.
+	//
 	// example:
 	//
 	// 123456
 	CustomerUid *int64 `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
+	// The end time. This parameter is used in combination with TimeType. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-08-23 00:00:00
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 209335720330622
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The order source. Valid values:
+	//
+	// - 0: Regular customer.
+	//
+	// - 1: Enterprise customer.
+	//
+	// - 2: Tier-2 distributor.
+	//
 	// example:
 	//
 	// 0
 	OrderSource *int32 `json:"OrderSource,omitempty" xml:"OrderSource,omitempty"`
+	// The order status. Valid values:
+	//
+	// - 1: Unpaid.
+	//
+	// - 2: Canceled.
+	//
+	// - 3: Paid.
+	//
 	// example:
 	//
 	// 3
 	OrderStatus *int32 `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// The order type. Valid values:
+	//
+	// - BUY: New purchase.
+	//
+	// - UPGRADE: Upgrade.
+	//
+	// - DOWNGRADE: Downgrade.
+	//
+	// - RENEW: Renewal.
+	//
+	// - REFUND: Refund.
+	//
+	// - OTHERS: Others.
+	//
 	// example:
 	//
 	// RENEW
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product detail code.
+	//
 	// example:
 	//
 	// vm_intl
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The start time. This parameter is used in combination with TimeType. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-08-13 00:00:00
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The time type used as the basis for the query. This is not a date or time value. Valid values:
+	//
+	// - 1: Payment time.
+	//
+	// - 2: Order placement time.
+	//
 	// This parameter is required.
 	//
 	// example:

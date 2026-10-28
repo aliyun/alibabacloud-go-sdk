@@ -20,14 +20,20 @@ type iProcessApprovalResponseBody interface {
 }
 
 type ProcessApprovalResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The approval result.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The prompt message.
+	//
 	// example:
 	//
 	// SUCCESS

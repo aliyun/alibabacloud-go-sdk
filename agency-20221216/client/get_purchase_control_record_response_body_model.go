@@ -26,15 +26,24 @@ type iGetPurchaseControlRecordResponseBody interface {
 }
 
 type GetPurchaseControlRecordResponseBody struct {
+	// The result code. Value range:
+	//
+	// - 200: OK.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*GetPurchaseControlRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
@@ -45,10 +54,14 @@ type GetPurchaseControlRecordResponseBody struct {
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -140,18 +153,30 @@ func (s *GetPurchaseControlRecordResponseBody) Validate() error {
 }
 
 type GetPurchaseControlRecordResponseBodyData struct {
+	// The change type. Valid values:
+	//
+	// - ban: new purchases are prohibited.
+	//
+	// - cancelBan: the purchase prohibition is canceled.
+	//
 	// example:
 	//
 	// ban
 	ChangedType *string `json:"ChangedType,omitempty" xml:"ChangedType,omitempty"`
+	// The method by which the operation was initiated.
+	//
 	// example:
 	//
 	// ACPN
 	OperationPath *string `json:"OperationPath,omitempty" xml:"OperationPath,omitempty"`
+	// The operation time (UTC+8).
+	//
 	// example:
 	//
 	// 2023-12-15 10:34:36
 	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
+	// The operator.
+	//
 	// example:
 	//
 	// 292828565558721922

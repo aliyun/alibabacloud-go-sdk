@@ -24,30 +24,54 @@ type iListTier2CouponApprovalRequest interface {
 }
 
 type ListTier2CouponApprovalRequest struct {
+	// The ID of the application form.
+	//
 	// example:
 	//
 	// d54ca949-9b88-4514-add3-c6029c4027f4
 	ApplicationSheetId *string `json:"ApplicationSheetId,omitempty" xml:"ApplicationSheetId,omitempty"`
+	// The approval status. Valid values:
+	//
+	// - 1: Revoked.
+	//
+	// - 2: Under review.
+	//
+	// - 3: Rejected.
+	//
+	// - 4: Approved.
+	//
+	// - 5: Approved but issuance failed.
+	//
+	// - 8: Pending.
+	//
 	// example:
 	//
 	// 1
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// The page number. Pages start from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the secondary distributor.
+	//
 	// example:
 	//
 	// test account
 	T2PartnerName *string `json:"T2PartnerName,omitempty" xml:"T2PartnerName,omitempty"`
+	// The UID of the secondary distributor.
+	//
 	// example:
 	//
 	// 5248516956402795

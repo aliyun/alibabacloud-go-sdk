@@ -22,7 +22,7 @@ type iCreateCustomerRequest interface {
 }
 
 type CreateCustomerRequest struct {
-	// Customer\\"s name.
+	// The customer name.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,9 @@ type CreateCustomerRequest struct {
 	//
 	// DoorBell Marketing
 	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
-	// The source/channel that allow client to connected with us. Please enumerate with Customer Source.
+	// The customer source.
+	//
+	// Use the Customer Source enumeration.
 	//
 	// This parameter is required.
 	//
@@ -38,21 +40,25 @@ type CreateCustomerRequest struct {
 	//
 	// website
 	CustomerSource *string `json:"CustomerSource,omitempty" xml:"CustomerSource,omitempty"`
-	// The sub-industry that Customer\\"s business belongs to. Please enumerate with Customer Trade.
+	// The customer sub-industry.
+	//
+	// Use the Customer Sub Trade enumeration.
 	//
 	// example:
 	//
-	// 0101
+	// 020501
 	CustomerSubTrade *string `json:"CustomerSubTrade,omitempty" xml:"CustomerSubTrade,omitempty"`
-	// The industry that Customer\\"s business belongs to. Please enumerate with Customer Trade.
+	// The customer industry name.
+	//
+	// Use the Customer Trade enumeration.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 01
+	// 0205
 	CustomerTrade *string `json:"CustomerTrade,omitempty" xml:"CustomerTrade,omitempty"`
-	// The region that Customer choose to launch the Cloud Service. Please use ListCountries to confirm the valid region list for current UID.
+	// The region to which the customer belongs. Call ListCountries to obtain the list of available regions for the current UID.
 	//
 	// This parameter is required.
 	//

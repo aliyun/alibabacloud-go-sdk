@@ -20,22 +20,30 @@ type iGetPurchaseControlRecordRequest interface {
 }
 
 type GetPurchaseControlRecordRequest struct {
+	// The customer UID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 292828565558721922
 	CustomerUID *int64 `json:"CustomerUID,omitempty" xml:"CustomerUID,omitempty"`
+	// The start time. If left empty, data from the last six months is returned. The time format is yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2023-12-15 10:34:36
 	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:

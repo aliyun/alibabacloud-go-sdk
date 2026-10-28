@@ -22,23 +22,50 @@ type iCouponApprovalStatusListRequest interface {
 }
 
 type CouponApprovalStatusListRequest struct {
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the coupon template.
+	//
 	// example:
 	//
 	// 5093156
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the template.
+	//
+	// example:
+	//
+	// Test coupon template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The status of the coupon template. Valid values:
+	//
+	// - **1**: application revoked
+	//
+	// - **2**: under review
+	//
+	// - **3**: review rejected
+	//
+	// - **4**: review approved
+	//
+	// - **5**: review approved but issuance failed
+	//
+	// - **6**: automatically approved
+	//
+	// - **7**: automatically approved but issuance failed
+	//
 	// example:
 	//
 	// 2

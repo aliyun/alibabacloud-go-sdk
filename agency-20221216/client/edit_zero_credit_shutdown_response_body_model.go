@@ -22,31 +22,31 @@ type iEditZeroCreditShutdownResponseBody interface {
 }
 
 type EditZeroCreditShutdownResponseBody struct {
-  // Success or not</br>
+  // The status code.
   // 
   // example:
   // 
   // 200
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // Request ID</br>
+  // Indicates whether the operation is successful.
   // 
   // example:
   // 
   // true
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-  // Message</br>
+  // The prompt message.
   // 
   // example:
   // 
-  // Message</br>
+  // 成功
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // NO_STOP
+  // The prompt message.
   // 
   // example:
   // 
   // SUCCESS
   Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-  // success
+  // The request ID.
   // 
   // example:
   // 

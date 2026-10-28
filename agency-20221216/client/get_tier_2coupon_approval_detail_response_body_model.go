@@ -20,15 +20,22 @@ type iGetTier2CouponApprovalDetailResponseBody interface {
 }
 
 type GetTier2CouponApprovalDetailResponseBody struct {
+	// The return code. A value of 200 indicates success. Other values indicate error codes. For more information, see Error codes.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetTier2CouponApprovalDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0b9a079e17691387754512757e6a1b
@@ -89,21 +96,48 @@ func (s *GetTier2CouponApprovalDetailResponseBody) Validate() error {
 }
 
 type GetTier2CouponApprovalDetailResponseBodyData struct {
-	ApplicantInfo     *GetTier2CouponApprovalDetailResponseBodyDataApplicantInfo `json:"ApplicantInfo,omitempty" xml:"ApplicantInfo,omitempty" type:"Struct"`
-	ApplicationReason *string                                                    `json:"ApplicationReason,omitempty" xml:"ApplicationReason,omitempty"`
+	// The basic information of the application.
+	ApplicantInfo *GetTier2CouponApprovalDetailResponseBodyDataApplicantInfo `json:"ApplicantInfo,omitempty" xml:"ApplicantInfo,omitempty" type:"Struct"`
+	// The reason for the application.
+	//
+	// example:
+	//
+	// Reason for application
+	ApplicationReason *string `json:"ApplicationReason,omitempty" xml:"ApplicationReason,omitempty"`
+	// The ID of the application form.
+	//
 	// example:
 	//
 	// 0b9a079e17691387754512757e6a1b
 	ApplicationSheetId *string `json:"ApplicationSheetId,omitempty" xml:"ApplicationSheetId,omitempty"`
+	// The approval status. Valid values:
+	//
+	// - 1: Revoked.
+	//
+	// - 2: Under review.
+	//
+	// - 3: Rejected.
+	//
+	// - 4: Approved.
+	//
+	// - 5: Approved but issuance failed.
+	//
+	// - 8: Pending.
+	//
 	// example:
 	//
 	// 2
-	ApprovalStatus       *string                                                             `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// The list of customer UIDs that receive the coupons.
 	CouponReceiptUidList []*GetTier2CouponApprovalDetailResponseBodyDataCouponReceiptUidList `json:"CouponReceiptUidList,omitempty" xml:"CouponReceiptUidList,omitempty" type:"Repeated"`
+	// The estimated remaining quota of PoC coupon benefits for new partner customers after the coupons are issued.
+	//
 	// example:
 	//
 	// 20.00
 	RemainingQuota *string `json:"RemainingQuota,omitempty" xml:"RemainingQuota,omitempty"`
+	// The requested amount.
+	//
 	// example:
 	//
 	// 100.00
@@ -200,26 +234,48 @@ func (s *GetTier2CouponApprovalDetailResponseBodyData) Validate() error {
 }
 
 type GetTier2CouponApprovalDetailResponseBodyDataApplicantInfo struct {
+	// The applicable products. Valid values:
+	//
+	// - UNIVERSAL: All products.
+	//
+	// - A specific commodity code.
+	//
 	// example:
 	//
 	// UNIVERSAL
 	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
+	// The timestamp when the application was submitted.
+	//
 	// example:
 	//
 	// 2026-01-21 11:24
 	ApplicationTime *string `json:"ApplicationTime,omitempty" xml:"ApplicationTime,omitempty"`
+	// The order type for which the coupon is used. Valid values:
+	//
+	// - ALL: Alibaba Cloud subscription.
+	//
+	// - BILLING: Alibaba Cloud pay-as-you-go bills.
+	//
+	// - ALL,BILLING: Alibaba Cloud subscription and pay-as-you-go bills.
+	//
 	// example:
 	//
 	// ALL,BILLING
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The name of the tier-2 distributor.
+	//
 	// example:
 	//
 	// test account
 	T2PartnerName *string `json:"T2PartnerName,omitempty" xml:"T2PartnerName,omitempty"`
+	// The UID of the tier-2 distributor.
+	//
 	// example:
 	//
 	// 5248516846402795
 	T2PartnerUid *int64 `json:"T2PartnerUid,omitempty" xml:"T2PartnerUid,omitempty"`
+	// The validity period, which can be a number of valid days or a valid time range.
+	//
 	// example:
 	//
 	// 2026-01-21 ~ 2199-12-31
@@ -293,10 +349,14 @@ func (s *GetTier2CouponApprovalDetailResponseBodyDataApplicantInfo) Validate() e
 }
 
 type GetTier2CouponApprovalDetailResponseBodyDataCouponReceiptUidList struct {
+	// The denomination.
+	//
 	// example:
 	//
 	// 100.00
 	NominalValue *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
+	// The UID of the customer.
+	//
 	// example:
 	//
 	// 1703016242044705

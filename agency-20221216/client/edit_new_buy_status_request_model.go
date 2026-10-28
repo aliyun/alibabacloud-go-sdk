@@ -16,17 +16,17 @@ type iEditNewBuyStatusRequest interface {
 }
 
 type EditNewBuyStatusRequest struct {
-  // New Purchase Status</br>
+  // The new purchase status. Valid values:
   // 
-  // - cancelBan: Cancel the restriction for New Purchase request</br>
+  // - cancelBan: allows new purchases
   // 
-  // - ban: ban the New Purchase request</br>
+  // - ban: prohibits new purchases.
   // 
   // example:
   // 
   // cancelBan
   NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
-  // Customer UID
+  // The UID of the customer.
   // 
   // example:
   // 

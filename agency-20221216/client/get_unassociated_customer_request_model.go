@@ -16,7 +16,7 @@ type iGetUnassociatedCustomerRequest interface {
 }
 
 type GetUnassociatedCustomerRequest struct {
-	// Pagination, current page.
+	// The current page number for pagination.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetUnassociatedCustomerRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Pagination, record number on each page.
+	// The number of records per page for pagination.
 	//
 	// This parameter is required.
 	//

@@ -20,12 +20,22 @@ type iQueryAutomaticWriteOffChangeRecordsResponseBody interface {
 }
 
 type QueryAutomaticWriteOffChangeRecordsResponseBody struct {
+	// The status code of the response. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	Code    *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*QueryAutomaticWriteOffChangeRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of query results.
+	Data []*QueryAutomaticWriteOffChangeRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message of the response.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8cd24f2917797624314748873d0096
@@ -90,15 +100,26 @@ func (s *QueryAutomaticWriteOffChangeRecordsResponseBody) Validate() error {
 }
 
 type QueryAutomaticWriteOffChangeRecordsResponseBodyData struct {
+	// The content of the operation.
+	//
+	// example:
+	//
+	// Enable automatic write-off and select 500 USD
 	ChangeContent *string `json:"ChangeContent,omitempty" xml:"ChangeContent,omitempty"`
+	// The operator.
+	//
 	// example:
 	//
 	// 12312312
 	OperateId *string `json:"OperateId,omitempty" xml:"OperateId,omitempty"`
+	// The description of the operation source.
+	//
 	// example:
 	//
 	// API
 	OperateSource *string `json:"OperateSource,omitempty" xml:"OperateSource,omitempty"`
+	// The time of the operation. Format: YYYY-MM-DD HH:mm:ss UTC+8.
+	//
 	// example:
 	//
 	// 2023-12-15 10:34:36 UTC+8

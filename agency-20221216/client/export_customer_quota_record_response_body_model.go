@@ -20,21 +20,21 @@ type iExportCustomerQuotaRecordResponseBody interface {
 }
 
 type ExportCustomerQuotaRecordResponseBody struct {
-  // Code
+  // code
   // 
   // example:
   // 
   // 200
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // Data
+  // The data.
   Data *ExportCustomerQuotaRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-  // Description
+  // The description.
   // 
   // example:
   // 
   // SUCCESS
   Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-  // ID of the Request
+  // Id of the request
   // 
   // example:
   // 
@@ -96,13 +96,13 @@ func (s *ExportCustomerQuotaRecordResponseBody) Validate() error {
 }
 
 type ExportCustomerQuotaRecordResponseBodyData struct {
-  // Estimated duration, in minutes.
+  // The estimated time required, in minutes.
   // 
   // example:
   // 
   // 1
   Cost *int32 `json:"Cost,omitempty" xml:"Cost,omitempty"`
-  // ID of Export task
+  // The ID of the export task.
   // 
   // example:
   // 

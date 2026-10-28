@@ -14,6 +14,8 @@ type iCancelCouponRequest interface {
 }
 
 type CancelCouponRequest struct {
+	// The coupon ID.
+	//
 	// This parameter is required.
 	//
 	// example:

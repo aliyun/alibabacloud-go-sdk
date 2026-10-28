@@ -20,7 +20,7 @@ type iGetAccountInfoRequest interface {
 }
 
 type GetAccountInfoRequest struct {
-	// Pagination, current page.
+	// The current page number for pagination.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetAccountInfoRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Pagination, record number on each page, maximum 20.
+	// The number of entries per page for pagination. Maximum value: 20.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type GetAccountInfoRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Account UID of Distribution Customer. This parameter and the UserType parameter must have one filled. If this parameter is empty, then check all Distribution Customer accounts of the selected UserType.
+	// The UID of the distribution customer account. Either this parameter or the UserType parameter must be specified. If this parameter is empty, all distribution customer accounts of the specified UserType are queried.
 	//
 	// example:
 	//
 	// 1215848086704806
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// Distribution Customer\\"s Account Type:
+	// The type of the distribution customer account. Valid values:
 	//
-	// - 1 End User
+	// - 1: End user.
 	//
-	// - 2 Enterprise
+	// - 2: Enterprise customer.
 	//
-	// - 3 T2 Partner
+	// - 3: T2 partner.
 	//
 	// example:
 	//

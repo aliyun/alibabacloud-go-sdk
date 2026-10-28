@@ -22,28 +22,26 @@ type iGetInviteStatusResponseBody interface {
 }
 
 type GetInviteStatusResponseBody struct {
-	// Status Code. Error Code:
-	//
-	// - 3057 InviteId is empty
+	// The status code. Error code: 3057: InviteId is empty.
 	//
 	// example:
 	//
 	// 200
 	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *GetInviteStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// success
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID, Alibaba Cloud will track errors with this.
+	// The request ID. Alibaba Cloud uses this ID for error tracking.
 	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	// Indicates whether the API call is successful. Valid values: true and false. This parameter does not indicate whether subsequent business operations are successful.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDeductOutstandingBalanceRequest interface {
 }
 
 type DeductOutstandingBalanceRequest struct {
-	// The Deducted Credit to be offset.
+	// The amount of deducted credit to reduce.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeductOutstandingBalanceRequest struct {
 	//
 	// 300
 	DeductAmount *string `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
-	// Account UID of Distribution Customer.
+	// The UID of the reseller\\"s customer account.
 	//
 	// This parameter is required.
 	//

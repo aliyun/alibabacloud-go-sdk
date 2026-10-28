@@ -16,7 +16,7 @@ type iSetCreditLineRequest interface {
 }
 
 type SetCreditLineRequest struct {
-	// New Credit Line
+	// The new credit limit.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type SetCreditLineRequest struct {
 	//
 	// 100
 	CreditLine *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
-	// The UID of Sub Account.
+	// The UID of the sub-account.
 	//
 	// This parameter is required.
 	//

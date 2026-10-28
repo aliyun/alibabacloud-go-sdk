@@ -22,23 +22,23 @@ type iListCouponUsageResponseBody interface {
 }
 
 type ListCouponUsageResponseBody struct {
-	// 接口状态码
+	// The status code of the API operation.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据
+	// The returned data.
 	Data []*ListCouponUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 接口返回提示信息
+	// The message returned by the API operation.
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 分页信息
+	// The pagination information.
 	PageInfo *ListCouponUsageResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// 接口请求id返回问题提供查询使用
+	// The request ID. You can provide this ID for troubleshooting.
 	//
 	// example:
 	//
@@ -118,69 +118,69 @@ func (s *ListCouponUsageResponseBody) Validate() error {
 }
 
 type ListCouponUsageResponseBodyData struct {
-	// 阿里云账号
+	// The Alibaba Cloud account.
 	//
 	// example:
 	//
 	// oqevfbveuadcrduzmf@ttirv.net
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// 优惠券面额
+	// The face value of the coupon.
 	//
 	// example:
 	//
 	// 200
 	Amount *float64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// 余额
+	// The remaining balance.
 	//
 	// example:
 	//
 	// 0.01
 	Balance *float64 `json:"Balance,omitempty" xml:"Balance,omitempty"`
-	// 优惠券id
+	// The ID of the coupon.
 	//
 	// example:
 	//
 	// 59226280
 	CouponId *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
-	// 优惠券模版id
+	// The ID of the coupon template.
 	//
 	// example:
 	//
 	// 503802
 	CouponTemplateId *int64 `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
-	// 优惠券有效期
+	// The validity period of the coupon.
 	//
 	// example:
 	//
 	// 2023-04-06 00:00:00 ~ 2023-04-07 00:00:00
 	EffDate *string `json:"EffDate,omitempty" xml:"EffDate,omitempty"`
-	// 优惠券发放时间
+	// The time when the coupon was issued. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-04-06 19:32:10
 	PublishDate *string `json:"PublishDate,omitempty" xml:"PublishDate,omitempty"`
-	// 优惠券状态 </br>
+	// The coupon status. Valid values:</br>
 	//
-	// AVAILABLE 正常 </br>
+	// AVAILABLE: Normal.</br>
 	//
-	// EXHAUSTED 已用完 </br>
+	// EXHAUSTED: Used up.</br>
 	//
-	// EXPIRED 已过期 </br>
+	// EXPIRED: Expired.</br>
 	//
-	// ABANDONED 已作废 </br>
+	// ABANDONED: Voided.</br>
 	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 二级分销商Uid
+	// The UID of the T2 partner.
 	//
 	// example:
 	//
 	// 5248516956402795
 	T2PartnerUid *string `json:"T2PartnerUid,omitempty" xml:"T2PartnerUid,omitempty"`
-	// 阿里云uid
+	// The UID of the Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -291,19 +291,19 @@ func (s *ListCouponUsageResponseBodyData) Validate() error {
 }
 
 type ListCouponUsageResponseBodyPageInfo struct {
-	// 分页，当前页
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 分页，每页数量
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 分页，总量
+	// The total number of entries.
 	//
 	// example:
 	//

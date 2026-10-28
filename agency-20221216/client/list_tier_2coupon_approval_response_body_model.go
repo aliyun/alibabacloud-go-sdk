@@ -26,27 +26,40 @@ type iListTier2CouponApprovalResponseBody interface {
 }
 
 type ListTier2CouponApprovalResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
 	Data []*ListTier2CouponApprovalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -138,26 +151,50 @@ func (s *ListTier2CouponApprovalResponseBody) Validate() error {
 }
 
 type ListTier2CouponApprovalResponseBodyData struct {
+	// The ID of the application form.
+	//
 	// example:
 	//
 	// d54ca949-9b88-4514-add3-c6029c4027f4
 	ApplicationSheetId *string `json:"ApplicationSheetId,omitempty" xml:"ApplicationSheetId,omitempty"`
+	// The application time. The time is in the YYYY-MM-DD HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2026-01-21 11:24
 	ApplicationTime *string `json:"ApplicationTime,omitempty" xml:"ApplicationTime,omitempty"`
+	// The approval status. Valid values:
+	//
+	// - 1: Revoked.
+	//
+	// - 2: Under review.
+	//
+	// - 3: Rejected.
+	//
+	// - 4: Approved.
+	//
+	// - 5: Approved but issuance failed.
+	//
+	// - 8: Pending.
+	//
 	// example:
 	//
 	// 1
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// The name of the secondary distributor.
+	//
 	// example:
 	//
 	// test account
 	T2PartnerName *string `json:"T2PartnerName,omitempty" xml:"T2PartnerName,omitempty"`
+	// The UID of the secondary distributor.
+	//
 	// example:
 	//
 	// 5248516956402795
 	T2PartnerUid *int64 `json:"T2PartnerUid,omitempty" xml:"T2PartnerUid,omitempty"`
+	// The requested amount.
+	//
 	// example:
 	//
 	// 200

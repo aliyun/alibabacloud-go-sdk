@@ -30,17 +30,34 @@ type iGetCustomerOrdersResponseBody interface {
 }
 
 type GetCustomerOrdersResponseBody struct {
+	// The result code.
+	//
 	// example:
 	//
 	// 200
-	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*GetCustomerOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	Msg     *string                              `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data []*GetCustomerOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message. The value is the same as the Code parameter.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message. The value is the same as the Code parameter.
+	//
+	// example:
+	//
+	// Success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 1
@@ -51,10 +68,18 @@ type GetCustomerOrdersResponseBody struct {
 	//
 	// 23309219-4A34-589D-A3E0-9B2A3BFFD24F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - 200: OK.
+	//
+	// - 201: Parameter error.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -164,58 +189,110 @@ func (s *GetCustomerOrdersResponseBody) Validate() error {
 }
 
 type GetCustomerOrdersResponseBodyData struct {
+	// The customer account.
+	//
 	// example:
 	//
 	// test_123
 	CustomerAccount *string `json:"CustomerAccount,omitempty" xml:"CustomerAccount,omitempty"`
+	// The account manager.
+	//
 	// example:
 	//
 	// myBd
 	CustomerManager *string `json:"CustomerManager,omitempty" xml:"CustomerManager,omitempty"`
+	// The customer UID.
+	//
 	// example:
 	//
 	// 123456
 	CustomerNo *int64 `json:"CustomerNo,omitempty" xml:"CustomerNo,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 236414227150922
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The order source. Valid values:
+	//
+	// - 0: Regular customer.
+	//
+	// - 1: Enterprise customer.
+	//
+	// - 2: Tier-2 distributor.
+	//
 	// example:
 	//
 	// 0
 	OrderSource *string `json:"OrderSource,omitempty" xml:"OrderSource,omitempty"`
+	// The order status. Valid values:
+	//
+	// - 1: Unpaid.
+	//
+	// - 2: Canceled.
+	//
+	// - 3: Paid.
+	//
 	// example:
 	//
 	// 3
 	OrderStatus *int32 `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// The order type. Valid values:
+	//
+	// - BUY: New purchase.
+	//
+	// - UPGRADE: Upgrade.
+	//
+	// - DOWNGRADE: Downgrade.
+	//
+	// - RENEW: Renewal.
+	//
+	// - REFUND: Refund.
+	//
+	// - OTHERS: Others.
+	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The original order price.
+	//
 	// example:
 	//
 	// 3.92
 	OriginalCost *float64 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
+	// The payment method.
+	//
 	// example:
 	//
 	// 3:32
 	PaymentMethod *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
+	// The payment time. Format: YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2024-08-13 13:02:02
 	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	// The payable amount.
+	//
 	// example:
 	//
 	// 3.92
 	PretaxCost *float64 `json:"PretaxCost,omitempty" xml:"PretaxCost,omitempty"`
+	// The product details.
+	//
 	// example:
 	//
 	// oss
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// The product detail code.
+	//
 	// example:
 	//
 	// snapshot
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The order placement time. Format: YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2024-08-13 13:02:02

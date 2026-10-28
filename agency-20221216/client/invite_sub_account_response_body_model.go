@@ -22,30 +22,30 @@ type iInviteSubAccountResponseBody interface {
 }
 
 type InviteSubAccountResponseBody struct {
-	// Error Code: </br>
+	// The fault code. Valid values:
 	//
-	// • 200 OK</br>
+	// - 200: OK.
 	//
-	// • 1109 System Error</br>
+	// - 1109: System Error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Message</br>
+	// The message returned.
 	//
 	// example:
 	//
-	// success
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID, Alibaba Cloud will track errors with this ID.
+	// The request ID. Alibaba Cloud uses this ID for fault tracking.
 	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Results   *InviteSubAccountResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
-	// Candidate Values: True/False, this value states if the current API calling action is successful. It does not guarantee the success of subsequent business operations.
+	// Indicates whether the current API invocation is successful. Valid values: True and False. This does not indicate whether the subsequent business operation is successful.
 	//
 	// example:
 	//

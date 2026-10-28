@@ -26,57 +26,55 @@ type iListCouponUsageRequest interface {
 }
 
 type ListCouponUsageRequest struct {
-	// 阿里云客户账号
+	// The Alibaba Cloud customer account.
 	//
 	// example:
 	//
 	// oqevfbveuadcrduzmf@ttirv.net
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// 优惠券模版id
+	// The ID of the coupon template.
 	//
 	// example:
 	//
 	// 5075915
 	CouponTemplateId *int64 `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
-	// 页码</br>
+	// The page number.</br>
 	//
-	//  默认值为1 最小值1
+	// Default value: 1. Minimum value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 分页行数 </br>
+	// The number of entries per page.</br>
 	//
-	//   默认值20 最大值50 最小值1
+	// Default value: 20. Maximum value: 50. Minimum value: 1.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 优惠券状态 </br>
+	// The coupon status. Valid values:</br>
 	//
-	// AVAILABLE 正常 </br>
+	// AVAILABLE: Normal.</br>
 	//
-	// EXHAUSTED 已用完 </br>
+	// EXHAUSTED: Used up.</br>
 	//
-	// EXPIRED 已过期 </br>
+	// EXPIRED: Expired.</br>
 	//
-	// ABANDONED 已作废 </br>
+	// ABANDONED: Voided.</br>
 	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// T2伙伴uid
-	//
-	// 如：123456789
+	// The UID of the T2 partner. Example: 123456789.
 	//
 	// example:
 	//
 	// 123456768
 	T2PartnerUid *int64 `json:"T2PartnerUid,omitempty" xml:"T2PartnerUid,omitempty"`
-	// 阿里云账号uid
+	// The UID of the Alibaba Cloud account.
 	//
 	// example:
 	//

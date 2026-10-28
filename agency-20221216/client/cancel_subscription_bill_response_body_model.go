@@ -22,25 +22,25 @@ type iCancelSubscriptionBillResponseBody interface {
 }
 
 type CancelSubscriptionBillResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data that is returned.
+	// The data returned.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message that is returned.
+	// The message returned.
 	//
 	// example:
 	//
-	// Successful
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iSetWarningThresholdRequest interface {
 }
 
 type SetWarningThresholdRequest struct {
-	// The UID of the partner‘s customer.
+	// The UID of the reseller customer account.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type SetWarningThresholdRequest struct {
 	//
 	// 1792155717328010
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// Percentage, 1 to 100. When the available credit limit is lower than the credit limit percentage, an email is sent to the main account.
+	// The percentage value. Valid values: 1 to 100. When the available credit drops below this percentage of the total credit limit, an alert email is sent to the reseller partner account.
 	//
 	// This parameter is required.
 	//

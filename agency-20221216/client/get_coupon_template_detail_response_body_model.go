@@ -22,16 +22,28 @@ type iGetCouponTemplateDetailResponseBody interface {
 }
 
 type GetCouponTemplateDetailResponseBody struct {
+	// The result code.
+	//
 	// example:
 	//
 	// 200
-	Code    *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetCouponTemplateDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The operation result.
+	Data *GetCouponTemplateDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The prompt message.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
@@ -101,45 +113,108 @@ func (s *GetCouponTemplateDetailResponseBody) Validate() error {
 }
 
 type GetCouponTemplateDetailResponseBodyData struct {
+	// The applicable products. Valid values:
+	//
+	// - UNIVERSAL: all products
+	//
+	// - a specific commodity code
+	//
 	// example:
 	//
 	// UNIVERSAL
 	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
+	// The party that bears the coupon cost. Valid values:
+	//
+	// ● cost_by_self: The cost is borne by the caller.
+	//
+	// ● aliyun_poc: The cost is borne by Alibaba Cloud.
+	//
 	// example:
 	//
 	// aliyun_poc
-	CostBearer        *string `json:"CostBearer,omitempty" xml:"CostBearer,omitempty"`
+	CostBearer *string `json:"CostBearer,omitempty" xml:"CostBearer,omitempty"`
+	// The remarks of the coupon.
+	//
+	// example:
+	//
+	// For testing
 	CouponDescription *string `json:"CouponDescription,omitempty" xml:"CouponDescription,omitempty"`
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2024-11-21 18:18:22
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The face value.
+	//
 	// example:
 	//
 	// 100
 	Denomination *float64 `json:"Denomination,omitempty" xml:"Denomination,omitempty"`
+	// The maximum number of coupons that each person can claim. Valid values:
+	//
+	// - 1: Each person can claim one coupon.
+	//
+	// - 0: No limit applies.
+	//
 	// example:
 	//
 	// 1
 	LimitPerPerson *int32 `json:"LimitPerPerson,omitempty" xml:"LimitPerPerson,omitempty"`
+	// The order type. Valid values:
+	//
+	// - ALL: Alibaba Cloud upfront order
+	//
+	// - BILLING: Alibaba Cloud pay-as-you-go bill
+	//
 	// example:
 	//
 	// ALL,BILLING
-	PurchaseType         *string `json:"PurchaseType,omitempty" xml:"PurchaseType,omitempty"`
+	PurchaseType *string `json:"PurchaseType,omitempty" xml:"PurchaseType,omitempty"`
+	// The reason for the template application.
+	//
+	// example:
+	//
+	// For testing
 	ReasonForApplication *string `json:"ReasonForApplication,omitempty" xml:"ReasonForApplication,omitempty"`
+	// The status. Valid values:
+	//
+	// - APPROVED: approved
+	//
+	// - ABANDONED: voided
+	//
 	// example:
 	//
 	// APPROVED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 1576
-	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the coupon template.
+	//
+	// example:
+	//
+	// Template name
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The validity period. This parameter is used together with the validity period type.
+	//
+	// - If the validity period type is relative time, the validity period is the number of valid days.
+	//
+	// - If the validity period type is absolute time, the validity period is a time period.
+	//
 	// example:
 	//
 	// 100
 	ValidUntil *string `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
+	// The type of the validity period. Valid values:
+	//
+	// - 0: relative time
+	//
+	// - 1: absolute time
+	//
 	// example:
 	//
 	// 0

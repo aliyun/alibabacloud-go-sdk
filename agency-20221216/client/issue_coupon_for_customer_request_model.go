@@ -22,14 +22,24 @@ type iIssueCouponForCustomerRequest interface {
 }
 
 type IssueCouponForCustomerRequest struct {
+	// The language parameter. Default value: none. Valid values:
+	//
+	// - zh-CN: Chinese.
+	//
+	// - en-US: English.
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The reason for applying for the coupon. The reason can be up to 500 characters in length. Example: Apply for a coupon for Customer XXX.
+	//
 	// example:
 	//
-	// 为客户XXX审批优惠券，该客户是XXXX
+	// Apply for a coupon for Customer XXX, who is XXXX
 	ApplicationReason *string `json:"ApplicationReason,omitempty" xml:"ApplicationReason,omitempty"`
+	// The ID of the coupon template.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37,7 +47,19 @@ type IssueCouponForCustomerRequest struct {
 	// 5075915
 	CouponTemplateId *int64 `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
 	// Deprecated
+	//
+	// Specifies whether to use the POC privilege quota. Valid values:
+	//
+	// - true: Uses the POC privilege quota. If all submitted accounts are marked as approval-exempt, the current coupon application skips the approval process, and the POC privilege quota in your partner benefit package is deducted.
+	//
+	// - false: Does not use the POC privilege quota. Regardless of the approval-exempt status of the submitted accounts, your POC coupon benefit quota remains unchanged. In this case, the application follows the standard coupon application approval process.
+	//
+	// example:
+	//
+	// true
 	IsUseBenefit *bool `json:"IsUseBenefit,omitempty" xml:"IsUseBenefit,omitempty"`
+	// The list of UIDs. Separate multiple UIDs with commas (,). Example: 111,2222.
+	//
 	// This parameter is required.
 	//
 	// example:

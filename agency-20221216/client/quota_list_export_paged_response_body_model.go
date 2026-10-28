@@ -26,39 +26,39 @@ type iQuotaListExportPagedResponseBody interface {
 }
 
 type QuotaListExportPagedResponseBody struct {
-	// Status code of returning result, 200 means success.
+	// The status code of the returned result. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Listed data of returning result
+	// The list of returned results.
 	Data []*QuotaListExportPagedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Description of returning result
+	// The description of the returned result.
 	//
 	// example:
 	//
 	// SUCCESS
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Record number on each page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID of the Request
+	// The request ID.
 	//
 	// example:
 	//
 	// 210e876f16704666020714468dab35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total volume
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,43 +151,43 @@ func (s *QuotaListExportPagedResponseBody) Validate() error {
 }
 
 type QuotaListExportPagedResponseBodyData struct {
-	// Create Time
+	// The creation time. The time is in the YYYY-MM-DD HH:mm:ss format in the UTC+8 time zone.
 	//
 	// example:
 	//
 	// 2023-12-21 21:31:57 UTC+8
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// File Name
+	// The name of the file.
 	//
 	// example:
 	//
 	// 5113766248601929_quota_2023-06-22_2023-12-21_all_2023122121310057
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// Notification Message
+	// The prompt message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Display of Task Status
+	// The display status of the task.
 	//
 	// example:
 	//
 	// 3
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Task Status Enum</br>
+	// The status code of the task. Valid values:
 	//
-	// 2: Exporting</br>
+	// - 2: Exporting.
 	//
-	// 3: Export Success</br>
+	// - 3: Export succeeded.
 	//
-	// -1: Export Fail</br>
+	// - -1: Export failed.
 	//
 	// example:
 	//
 	// Export Success
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The link to download exported file.
+	// The download URL of the file.
 	//
 	// example:
 	//

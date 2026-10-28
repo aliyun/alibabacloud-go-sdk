@@ -14,9 +14,7 @@ type iGetInviteStatusRequest interface {
 }
 
 type GetInviteStatusRequest struct {
-	// inviteId list</br>
-	//
-	// `Sub-levels <= 5`
+	// inviteId list
 	//
 	// This parameter is required.
 	InviteStatusList []*GetInviteStatusRequestInviteStatusList `json:"InviteStatusList,omitempty" xml:"InviteStatusList,omitempty" type:"Repeated"`
@@ -53,7 +51,7 @@ func (s *GetInviteStatusRequest) Validate() error {
 }
 
 type GetInviteStatusRequestInviteStatusList struct {
-	// Invitation ID, From interface InviteSubAccount
+	// The invitation ID, which is obtained from the InviteSubAccount operation.
 	//
 	// example:
 	//

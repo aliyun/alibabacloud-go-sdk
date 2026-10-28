@@ -26,24 +26,40 @@ type iCouponApprovalStatusListResponseBody interface {
 }
 
 type CouponApprovalStatusListResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code    *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*CouponApprovalStatusListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data []*CouponApprovalStatusListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -135,24 +151,58 @@ func (s *CouponApprovalStatusListResponseBody) Validate() error {
 }
 
 type CouponApprovalStatusListResponseBodyData struct {
+	// The issuing account.
+	//
 	// example:
 	//
 	// test@test.aliyunid.com
 	IssuerAccount *string `json:"IssuerAccount,omitempty" xml:"IssuerAccount,omitempty"`
+	// The UID of the issuing account.
+	//
 	// example:
 	//
 	// 5432738203821334
 	IssuerUid *string `json:"IssuerUid,omitempty" xml:"IssuerUid,omitempty"`
-	Note      *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The approval comment.
+	//
+	// example:
+	//
+	// Approved
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The ID of the template.
+	//
 	// example:
 	//
 	// S00000101-100040
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the coupon template.
+	//
+	// example:
+	//
+	// Template name
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The status of the coupon template. Valid values:
+	//
+	// - **1**: application revoked
+	//
+	// - **2**: under review
+	//
+	// - **3**: review rejected
+	//
+	// - **4**: review approved
+	//
+	// - **5**: review approved but issuance failed
+	//
+	// - **6**: automatically approved
+	//
+	// - **7**: automatically approved but issuance failed
+	//
 	// example:
 	//
 	// 2
 	TemplateStatus *int64 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+	// The application time. The format is YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2024-02-02 09:46:59

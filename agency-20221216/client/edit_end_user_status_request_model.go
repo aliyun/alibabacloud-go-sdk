@@ -16,17 +16,17 @@ type iEditEndUserStatusRequest interface {
 }
 
 type EditEndUserStatusRequest struct {
-  // Shutdown Status</br>
+  // ### Shutdown status
   // 
-  // - postPayFreeze, the account have been blocked</br>
+  // - postPayFreeze: pay-as-you-go resource suspension
   // 
-  // - postPayThaw, the account have been unlocked</br>
+  // - postPayThaw: pay-as-you-go resource resumption.
   // 
   // example:
   // 
   // postPayFreeze
   CreditStatus *string `json:"CreditStatus,omitempty" xml:"CreditStatus,omitempty"`
-  // UID
+  // The UID of the customer to be processed.
   // 
   // example:
   // 

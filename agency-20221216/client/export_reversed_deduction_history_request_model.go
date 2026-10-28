@@ -20,22 +20,36 @@ type iExportReversedDeductionHistoryRequest interface {
 }
 
 type ExportReversedDeductionHistoryRequest struct {
+  // The end date. Format: yyyy-MM-dd.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 2023-05-01
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+  // The UID for which the reversed deduction details are exported.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 123
   ExportUid *int64 `json:"ExportUid,omitempty" xml:"ExportUid,omitempty"`
+  // The language of the exported content. Valid values:
+  // 
+  // - en: English.
+  // 
+  // - zh: Chinese.
+  // 
+  // - ja: Japanese.
+  // 
   // example:
   // 
   // en
   Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+  // The start date. Format: yyyy-MM-dd.
+  // 
   // This parameter is required.
   // 
   // example:

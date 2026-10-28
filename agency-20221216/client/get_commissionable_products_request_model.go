@@ -28,31 +28,46 @@ type iGetCommissionableProductsRequest interface {
 }
 
 type GetCommissionableProductsRequest struct {
+	// The commodity codes. Separate multiple codes with commas.
+	//
 	// example:
 	//
 	// "oceanbase_obpre_public_intl,savingplan_common_public_intl"
 	CommodityCodeList *string `json:"CommodityCodeList,omitempty" xml:"CommodityCodeList,omitempty"`
+	// The fiscal year. If this parameter is left empty, the current fiscal year is used by default.
+	//
 	// example:
 	//
 	// “FY26”
-	FiscalYear         *string   `json:"FiscalYear,omitempty" xml:"FiscalYear,omitempty"`
+	FiscalYear *string `json:"FiscalYear,omitempty" xml:"FiscalYear,omitempty"`
+	// The list of display statuses for commission-eligible commodities.
 	ListShowStatusList []*string `json:"ListShowStatusList,omitempty" xml:"ListShowStatusList,omitempty" type:"Repeated"`
+	// The current page number. Pages start from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product codes. Separate multiple codes with commas.
+	//
 	// example:
 	//
 	// "oceanbase"
 	PipCodeList *string `json:"PipCodeList,omitempty" xml:"PipCodeList,omitempty"`
+	// The actual end month in the yyyymm format.
+	//
 	// example:
 	//
 	// “202509”
 	RealEndMonth *string `json:"RealEndMonth,omitempty" xml:"RealEndMonth,omitempty"`
+	// The actual start month in the yyyymm format.
+	//
 	// example:
 	//
 	// “202502”

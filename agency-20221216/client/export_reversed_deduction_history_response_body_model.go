@@ -20,15 +20,22 @@ type iExportReversedDeductionHistoryResponseBody interface {
 }
 
 type ExportReversedDeductionHistoryResponseBody struct {
+  // The status code of the response. A value of 200 indicates success.
+  // 
   // example:
   // 
   // 200
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The response object.
   Data *ExportReversedDeductionHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+  // The description of the response.
+  // 
   // example:
   // 
   // SUCCESS
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // asfasd123
@@ -89,10 +96,14 @@ func (s *ExportReversedDeductionHistoryResponseBody) Validate() error {
 }
 
 type ExportReversedDeductionHistoryResponseBodyData struct {
+  // The estimated duration, in minutes.
+  // 
   // example:
   // 
   // 1
   Cost *int32 `json:"Cost,omitempty" xml:"Cost,omitempty"`
+  // The ID of the export task.
+  // 
   // example:
   // 
   // 2131

@@ -18,7 +18,7 @@ type iQuotaListExportPagedRequest interface {
 }
 
 type QuotaListExportPagedRequest struct {
-	// Pagination, current page number, starting from 1.
+	// The page number. Pages start from page 1.
 	//
 	// This parameter is required.
 	//
@@ -26,19 +26,19 @@ type QuotaListExportPagedRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Multilingual Parameters, the default language is English.</br>
+	// The language. Default value: en. Valid values:
 	//
-	// en: English</br>
+	// - en: English.
 	//
-	// zh: Chinese</br>
+	// - zh: Chinese.
 	//
-	// ja: Japanese </br>
+	// - ja: Japanese.
 	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Pagination, record number on each page, maximum 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//

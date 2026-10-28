@@ -18,11 +18,13 @@ type iGetMonthlyBillRequest interface {
 }
 
 type GetMonthlyBillRequest struct {
-	// Bill Owner type. Value Range:</br>
+	// Bill Owner type.
 	//
-	// 1: Master account</br>
+	//  Value range:
 	//
-	// 2: Sub account</br>
+	// 1: Master account
+	//
+	// 2: Sub account
 	//
 	// This parameter is required.
 	//
@@ -32,23 +34,23 @@ type GetMonthlyBillRequest struct {
 	BillOwner *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
 	// Value Range:
 	//
-	// - MonthlyInvoice
+	// MonthlyInvoice
 	//
-	// - MonthRefundInvoice
+	// MonthRefundInvoice
 	//
-	// - MonthlySummary (Deprecated)
+	// MonthlySummary (Deprecated)
 	//
-	// - MonthlyInstanceAddAdjustBill
+	// MonthlyInstanceAddAdjustBill
 	//
-	// - MonthlyInstanceRefundBill
+	// MonthlyInstanceRefundBill
 	//
-	// - MonthlyAddAdjustInvoce
+	// MonthlyAddAdjustInvoce
 	//
-	// - MonthlyRefundAdjustInvoce
+	// MonthlyRefundAdjustInvoce
 	//
-	// - MonthlyInstanceConsumeV2
+	// MonthlyInstanceConsumeV2
 	//
-	// - MarginReportV2
+	// MarginReportV2
 	//
 	// This parameter is required.
 	//

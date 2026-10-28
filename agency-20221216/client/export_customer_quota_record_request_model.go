@@ -22,7 +22,7 @@ type iExportCustomerQuotaRecordRequest interface {
 }
 
 type ExportCustomerQuotaRecordRequest struct {
-  // End Date Format:  yyyy-MM-dd
+  // The end date. Format: yyyy-MM-dd.
   // 
   // This parameter is required.
   // 
@@ -30,7 +30,7 @@ type ExportCustomerQuotaRecordRequest struct {
   // 
   // 2023-12-24
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-  // Customer UID
+  // The UID of the customer.
   // 
   // This parameter is required.
   // 
@@ -38,25 +38,25 @@ type ExportCustomerQuotaRecordRequest struct {
   // 
   // 5113766248601929
   EndUserPk *int64 `json:"EndUserPk,omitempty" xml:"EndUserPk,omitempty"`
-  // Multilingual Parameters, the default language is English.</br>
+  // The language parameter. Default value: en. Valid values:
   // 
-  // en: English</br>
+  // - en: English.
   // 
-  // zh: Chinese</br>
+  // - zh: Chinese.
   // 
-  // ja: Japanese </br>
+  // - ja: Japanese.
   // 
   // example:
   // 
   // en
   Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-  // Operation Type Enum</br>
+  // The operation type. Valid values:
   // 
-  // all All types</br>
+  // - all: All operations.
   // 
-  // quota_create Create quota</br>
+  // - quota_create: Creation.
   // 
-  // quota_amount_adjust Adjust the amount of quota</br>
+  // - quota_amount_adjust: Quota amount adjustment.
   // 
   // This parameter is required.
   // 
@@ -64,7 +64,7 @@ type ExportCustomerQuotaRecordRequest struct {
   // 
   // all
   OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-  // Start Date Format:  yyyy-MM-dd
+  // The start date. Format: yyyy-MM-dd.
   // 
   // This parameter is required.
   // 

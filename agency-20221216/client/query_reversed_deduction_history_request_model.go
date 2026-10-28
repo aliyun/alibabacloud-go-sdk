@@ -24,34 +24,52 @@ type iQueryReversedDeductionHistoryRequest interface {
 }
 
 type QueryReversedDeductionHistoryRequest struct {
+	// The end date. Format: yyyy-MM-dd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2023-12-31
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language. Valid values:
+	//
+	// - en: English.
+	//
+	// - zh: Chinese.
+	//
+	// - ja: Japanese.
+	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The page number. Pages start from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start date. Format: yyyy-MM-dd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2023-07-31
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The customer UID.
+	//
 	// This parameter is required.
 	//
 	// example:

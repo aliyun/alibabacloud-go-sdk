@@ -14,6 +14,8 @@ type iDeleteCouponTemplateRequest interface {
 }
 
 type DeleteCouponTemplateRequest struct {
+	// The coupon template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

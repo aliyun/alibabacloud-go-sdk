@@ -22,22 +22,32 @@ type iDeleteCouponTemplateResponseBody interface {
 }
 
 type DeleteCouponTemplateResponseBody struct {
+	// The result code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The operation result.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The result message.
+	//
 	// example:
 	//
 	// 200
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A747A00F-E096-5244-88B3-3E474BAE3AE4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true

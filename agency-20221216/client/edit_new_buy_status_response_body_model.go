@@ -22,31 +22,31 @@ type iEditNewBuyStatusResponseBody interface {
 }
 
 type EditNewBuyStatusResponseBody struct {
-  // Status Code</br>
+  // The status code.
   // 
   // example:
   // 
   // 200
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // Success or not</br>
+  // Indicates whether the operation is successful.
   // 
   // example:
   // 
   // true
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-  // Message</br>
+  // The prompt message.
   // 
   // example:
   // 
-  // success
+  // 成功
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // Message</br>
+  // The prompt message.
   // 
   // example:
   // 
   // success
   Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-  // Request ID</br>
+  // The request ID.
   // 
   // example:
   // 

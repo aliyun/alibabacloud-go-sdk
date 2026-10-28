@@ -26,27 +26,40 @@ type iQueryReversedDeductionHistoryResponseBody interface {
 }
 
 type QueryReversedDeductionHistoryResponseBody struct {
+	// The status code of the returned result. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list data.
 	Data []*QueryReversedDeductionHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The description of the returned result.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// asda1231as
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 12
@@ -138,18 +151,26 @@ func (s *QueryReversedDeductionHistoryResponseBody) Validate() error {
 }
 
 type QueryReversedDeductionHistoryResponseBodyData struct {
+	// The offset amount.
+	//
 	// example:
 	//
 	// 1.00
 	OffsetAmount *string `json:"OffsetAmount,omitempty" xml:"OffsetAmount,omitempty"`
+	// The method used to initiate the operation, such as API or ACPN.
+	//
 	// example:
 	//
 	// ACPN
 	OperationSubmitType *string `json:"OperationSubmitType,omitempty" xml:"OperationSubmitType,omitempty"`
+	// The operation time. Format: YYYY-MM-DD HH:mm:ss UTC+8.
+	//
 	// example:
 	//
 	// 2024-11-01 10:22:11 UTC+8
 	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
+	// The UID of the operator.
+	//
 	// example:
 	//
 	// 132

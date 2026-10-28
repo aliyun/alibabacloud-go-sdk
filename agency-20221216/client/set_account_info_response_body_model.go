@@ -20,15 +20,34 @@ type iSetAccountInfoResponseBody interface {
 }
 
 type SetAccountInfoResponseBody struct {
+	// The result code. Valid values:
+	//
+	// - 200: OK.
+	//
+	// - 1109: A system error occurred.
+	//
+	// - 3030: The account nickname exceeds the maximum length of 150 bytes.
+	//
+	// - 3031: The remark exceeds the maximum length of 3000 bytes.
+	//
 	// example:
 	//
 	// 200
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned.
+	//
+	// example:
+	//
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Alibaba Cloud uses this ID for error tracking.
+	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Valid values: True and False. Indicates whether the current API call itself is successful. This does not indicate the success of subsequent business operations.
+	//
 	// example:
 	//
 	// true

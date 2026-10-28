@@ -18,11 +18,11 @@ type iGetDailyBillRequest interface {
 }
 
 type GetDailyBillRequest struct {
-	// Bill Owner type. Value Range:</br>
+	// The type of the bill owner. Valid values:
 	//
-	// 1: Master account</br>
+	// 1: reseller partner account
 	//
-	// 2: Sub account</br>
+	// 2: reseller customer account
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type GetDailyBillRequest struct {
 	//
 	// 1
 	BillOwner *string `json:"BillOwner,omitempty" xml:"BillOwner,omitempty"`
-	// BillType. Value Range:</br>
+	// The bill type. Valid values:
 	//
-	// - DailyOrder(Deprecated)
+	// - DailyOrder (deprecated)
 	//
-	// - DailyBill (Deprecated)
+	// - DailyBill (deprecated)
 	//
-	// - DailyInstanceBill (Deprecated)
+	// - DailyInstanceBill (deprecated)
 	//
 	// - DailyInstanceBillV2
 	//

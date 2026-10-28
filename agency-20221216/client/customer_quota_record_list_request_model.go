@@ -26,7 +26,9 @@ type iCustomerQuotaRecordListRequest interface {
 }
 
 type CustomerQuotaRecordListRequest struct {
-	// End Date Format: yyyy-MM-dd
+	// The end date.
+	//
+	// Format: yyyy-MM-dd.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +36,7 @@ type CustomerQuotaRecordListRequest struct {
 	//
 	// 2023-09-24
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Customer UID
+	// The UID of the customer.
 	//
 	// This parameter is required.
 	//
@@ -42,25 +44,25 @@ type CustomerQuotaRecordListRequest struct {
 	//
 	// 5113766248601929
 	EndUserPk *int64 `json:"EndUserPk,omitempty" xml:"EndUserPk,omitempty"`
-	// Multilingual Parameters, the default language is English.</br>
+	// The language. Default value: en. Valid values:
 	//
-	// en: English</br>
+	// - en: English.
 	//
-	// zh: Chinese</br>
+	// - zh: Chinese.
 	//
-	// ja: Japanese </br>
+	// - ja: Japanese.
 	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Operation Type Enum</br>
+	// The operation type. Valid values:
 	//
-	// all All types</br>
+	// - all: All.
 	//
-	// quota_create Create quota</br>
+	// - quota_create: Create.
 	//
-	// quota_amount_adjust Adjust the amount of quota</br>
+	// - quota_amount_adjust: Quota adjustment.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +70,7 @@ type CustomerQuotaRecordListRequest struct {
 	//
 	// all
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// Pagination, current page number, starting from 1.
+	// The page number. Pages start from 1.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +78,7 @@ type CustomerQuotaRecordListRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Pagination, record number on each page. Maximum 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +86,9 @@ type CustomerQuotaRecordListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Start Date Format: yyyy-MM-dd
+	// The start date.
+	//
+	// Format: yyyy-MM-dd.
 	//
 	// This parameter is required.
 	//

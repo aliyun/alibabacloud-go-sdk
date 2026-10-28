@@ -40,58 +40,146 @@ type iCreateCouponTemplateShrinkRequest interface {
 }
 
 type CreateCouponTemplateShrinkRequest struct {
+	// The accepted language.
+	//
+	// Default value: None.
+	//
+	// Valid values:
+	//
+	// - zh-CN: Chinese.
+	//
+	// - en-US: English.
+	//
+	// - ja: Japanese.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The applicable products.
+	//
+	// - All Products: All products.
+	//
+	// - Custom: Custom products.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// All Products
 	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
+	// The party that bears the coupon cost.
+	//
+	// - Partner: Borne by the partner.
+	//
+	// - Alibaba Cloud: Borne by Alibaba Cloud.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Partner
-	CostBearer        *string `json:"CostBearer,omitempty" xml:"CostBearer,omitempty"`
+	CostBearer *string `json:"CostBearer,omitempty" xml:"CostBearer,omitempty"`
+	// The remark for the coupon.
+	//
+	// The field length is limited to 100 characters.
+	//
+	// example:
+	//
+	// Coupon remark
 	CouponDescription *string `json:"CouponDescription,omitempty" xml:"CouponDescription,omitempty"`
+	// The end time of the effective period.
+	//
+	// Format: yyyy-MM-dd.
+	//
+	// Example: 2024-08-26.
+	//
+	// This parameter is required when the validity period is set to Custom Timeframe.
+	//
 	// example:
 	//
 	// 2024-08-26
 	Expireddate *string `json:"Expireddate,omitempty" xml:"Expireddate,omitempty"`
+	// The maximum number of coupons that each person can claim.
+	//
+	// - Limited to 1: Limited to one coupon.
+	//
+	// - Unlimited: Unlimited.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Unlimited
-	LimitPerPerson    *string `json:"LimitPerPerson,omitempty" xml:"LimitPerPerson,omitempty"`
+	LimitPerPerson *string `json:"LimitPerPerson,omitempty" xml:"LimitPerPerson,omitempty"`
+	// The list of product codes.
 	ProductTypeShrink *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The order type.
+	//
 	// example:
 	//
 	// ALL
 	PurchaseType *string `json:"PurchaseType,omitempty" xml:"PurchaseType,omitempty"`
+	// The reason for the template application.
+	//
+	// The field length is limited to 100 characters.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Reason for template application
 	ReasonForApplication *string `json:"ReasonForApplication,omitempty" xml:"ReasonForApplication,omitempty"`
+	// The template name.
+	//
+	// The field length is limited to 30 characters.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Template name
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The start time of the effective period.
+	//
+	// Format: yyyy-MM-dd.
+	//
+	// Example: 2024-08-26.
+	//
+	// This parameter is required when the validity period is set to Custom Timeframe.
+	//
 	// example:
 	//
 	// 2024-08-26
 	Vailddate *string `json:"Vailddate,omitempty" xml:"Vailddate,omitempty"`
+	// The duration of the relative time in days.
+	//
+	// The value must be a positive integer.
+	//
+	// This parameter is required when the validity period is set to Validity Duration.
+	//
 	// example:
 	//
 	// 1
 	Vaildperioddays *string `json:"Vaildperioddays,omitempty" xml:"Vaildperioddays,omitempty"`
+	// The validity period of the coupon.
+	//
+	// - Validity Duration: From the date of issuance.
+	//
+	// - Custom Timeframe: Custom time period.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Validity Duration
 	ValidUntil *string `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
+	// The denomination of the coupon.
+	//
+	// The value must be an integer.
+	//
 	// This parameter is required.
 	//
 	// example:

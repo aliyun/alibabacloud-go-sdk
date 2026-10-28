@@ -14,6 +14,8 @@ type iGetTier2CouponApprovalDetailRequest interface {
 }
 
 type GetTier2CouponApprovalDetailRequest struct {
+	// The ID of the application form.
+	//
 	// example:
 	//
 	// d54ca949-9b88-4514-add3-c6029c4027f4

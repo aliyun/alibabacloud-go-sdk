@@ -14,9 +14,7 @@ type iResendEmailRequest interface {
 }
 
 type ResendEmailRequest struct {
-	// Invitation ID, from interface InviteSubAccount </br>
-	//
-	// Note: This field type is Long, which may result in precision loss in serialization/deserialization process. Please ensure the value does not exceed 9007199254740991.
+	// The invitation ID, obtained from the InviteSbuAccount operation.
 	//
 	// This parameter is required.
 	//

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 设置自动销账
+// Configures the automatic write-off feature before the end-of-month settlement. When the consumed but undeducted quota reaches the specified automatic write-off amount, the amount is transferred to the deducted quota for offset.
 //
 // @param request - AutomaticWriteOffRequest
 //
@@ -65,7 +65,7 @@ func (client *Client) AutomaticWriteOffWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 作废优惠券
+// Invalidates a coupon.
 //
 // @param request - CancelCouponRequest
 //
@@ -109,17 +109,17 @@ func (client *Client) CancelCouponWithContext(ctx context.Context, request *Canc
 
 // Summary:
 //
-// Cancels the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+// Unsubscribe from multi-level bills for international channel ecosystem partners.
 //
 // Description:
 //
-// Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+// Make sure that the caller is an international Alibaba Cloud master reseller partner.
 //
-// You can call this operation to cancel the subscription to only one type of bill at a time.
+// You can unsubscribe from one type of bill file at a time.
 //
-// After the subscription to a type of bill is canceled, bills of this type are no longer pushed to the specified Object Storage Service (OSS) bucket.
+// After the corresponding bill type is unsubscribed, files are no longer pushed to the specified OSS space.
 //
-// **This topic is published only on the international site (alibabacloud.com).
+// **This content is published only on the international site.**
 //
 // @param request - CancelSubscriptionBillRequest
 //
@@ -163,7 +163,13 @@ func (client *Client) CancelSubscriptionBillWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 优惠券审批状态列表
+// Queries the list of coupon approval statuses.
+//
+// Description:
+//
+// Ensure that the current calling account is a distribution partner.
+//
+// <notice>Available only on the international site.</notice>
 //
 // @param request - CouponApprovalStatusListRequest
 //
@@ -223,7 +229,7 @@ func (client *Client) CouponApprovalStatusListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 创建优惠券模板
+// Creates a coupon template.
 //
 // @param tmpReq - CreateCouponTemplateRequest
 //
@@ -325,7 +331,7 @@ func (client *Client) CreateCouponTemplateWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// This function is designed for create a customer who is to be invited.
+// Registers a customer to be invited.
 //
 // @param request - CreateCustomerRequest
 //
@@ -385,7 +391,11 @@ func (client *Client) CreateCustomerWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Query quota adjustment list of Distribution Customer from International Site. Not available on Domestic Site.
+// Queries the quota adjustment records for distribution customers on the Alibaba Cloud International Website. This operation applies only to international users and cannot be called on the Alibaba Cloud China Website.
+//
+// Description:
+//
+// The caller must be a channel master distributor partner or a channel distributor partner on the Alibaba Cloud International Website.
 //
 // @param request - CustomerQuotaRecordListRequest
 //
@@ -425,13 +435,11 @@ func (client *Client) CustomerQuotaRecordListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// This API is used to offset the Deducted Credit of a Distribution Customer. For example, if the current Deducted Credit is 500 and the Available Credit is 1000, by offsetting 300, the Deducted Credit will then become 200, and the Available Credit becomes 1300.
+// Reduces the deducted credit of a reseller\\"s customer. For example, if the current deducted credit is 500 and the available credit is 1000, a reduction of 300 changes the deducted credit to 200 and the available credit to 1300.
 //
-// Description:
+// Note: Sometimes the used credit of a customer may be negative. This indicates that no recovery of the used credit is needed. Wait for the customer to consume the credit. This occurs when a refund is issued while the customer\\"s credit is fully used. As a result, the customer\\"s credit increases beyond the original limit.
 //
-// Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
-//
-// For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
+// For example, if the current maximum available credit of a customer is 1000 with no usage, and a refund of 300 occurs, the used credit becomes -300.
 //
 // @param request - DeductOutstandingBalanceRequest
 //
@@ -479,7 +487,13 @@ func (client *Client) DeductOutstandingBalanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 作废优惠券模板
+// Invalidates a coupon template.
+//
+// Description:
+//
+// Make sure that the current caller is a distribution partner.
+//
+// <notice>Available only on the China site.</notice>.
 //
 // @param request - DeleteCouponTemplateRequest
 //
@@ -523,13 +537,13 @@ func (client *Client) DeleteCouponTemplateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Set the after-shutdown instance status for post-pay End Users as a Reseller.
+// Manages the shutdown status of pay-as-you-go instances for resold subordinate customers by Alibaba Cloud international channel master distributor partners and Alibaba Cloud international channel distributor partners.
 //
 // Description:
 //
-// The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+// The caller must be an Alibaba Cloud international channel master distributor partner or an Alibaba Cloud international channel distributor partner.
 //
-// **This content is only published on the international site. **
+// **This content is published only on the China site (Chinese).**.
 //
 // @param request - EditEndUserStatusRequest
 //
@@ -569,13 +583,13 @@ func (client *Client) EditEndUserStatusWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Set the New Buy status for Sub-Customer as a Partner.
+// Sets the new purchase status of a subordinate reseller customer for an Alibaba Cloud reseller partner.
 //
 // Description:
 //
-// The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+// The caller must be an Alibaba Cloud reseller partner.
 //
-// **This content is only published on the international site. **
+// **This content is published only on the China site.**.
 //
 // @param request - EditNewBuyStatusRequest
 //
@@ -623,13 +637,13 @@ func (client *Client) EditNewBuyStatusWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Modify the End User\\"s Shutdown Policy as a Reseller.
+// Modifies the shutdown policy of a subordinate customer by an Alibaba Cloud distributor partner or reseller partner.
 //
 // Description:
 //
-// The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+// The caller must be an Alibaba Cloud international channel distributor partner or an Alibaba Cloud international channel reseller partner.
 //
-// **This content is only published on the international site. **
+// **This content is published only on the Chinese site.**.
 //
 // @param request - EditZeroCreditShutdownRequest
 //
@@ -677,11 +691,11 @@ func (client *Client) EditZeroCreditShutdownWithContext(ctx context.Context, req
 
 // Summary:
 //
-// The ExportCustomerQuotaRecord interface corresponds to the export function of "Quota Adjust Details" on ACPN.
+// Exports the quota adjustment records of a distributor\\"s customer, corresponding to the total budget adjustment details export feature on ACPN.
 //
 // Description:
 //
-// Caller must be a Partner from International Site, either Distribution or Reseller will do.
+// The caller must be an Alibaba Cloud international site channel master distributor partner or an Alibaba Cloud international site channel distributor partner.
 //
 // @param request - ExportCustomerQuotaRecordRequest
 //
@@ -741,7 +755,7 @@ func (client *Client) ExportCustomerQuotaRecordWithContext(ctx context.Context, 
 
 // Summary:
 //
-// The ExportReversedDeductionHistory interface corresponds to the export function of "Quota Offsetting Details" on ACPN.
+// Exports the reversed deduction details from ACPN.
 //
 // @param request - ExportReversedDeductionHistoryRequest
 //
@@ -797,7 +811,7 @@ func (client *Client) ExportReversedDeductionHistoryWithContext(ctx context.Cont
 
 // Summary:
 //
-// Return Distribution Customer\\"s account information.
+// Returns the account information of distribution customers.
 //
 // @param request - GetAccountInfoRequest
 //
@@ -837,7 +851,13 @@ func (client *Client) GetAccountInfoWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 提供返佣商品API
+// Queries a list of all active and delisted commission-eligible commodities for T1-level international distribution partners. This operation is available only for international users and cannot be called on the China site.
+//
+// Description:
+//
+// Ensure that the current calling account is a distribution partner.
+//
+// <notice>Available only on the international site.</notice>
 //
 // @param tmpReq - GetCommissionableProductsRequest
 //
@@ -915,7 +935,13 @@ func (client *Client) GetCommissionableProductsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询优惠券模板详情
+// Queries the details of a coupon template.
+//
+// Description:
+//
+// Ensure that the current calling account is a distribution partner.
+//
+// <notice>Available only on the International site
 //
 // @param request - GetCouponTemplateDetailRequest
 //
@@ -959,7 +985,7 @@ func (client *Client) GetCouponTemplateDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 国际渠道分销优惠券可抵扣产品
+// Queries the products that can be offset by international channel distribution coupons.
 //
 // @param request - GetCoupondeductProductCodeRequest
 //
@@ -999,7 +1025,7 @@ func (client *Client) GetCoupondeductProductCodeWithContext(ctx context.Context,
 
 // Summary:
 //
-// Query Credit Control information of Distribution Customers. The PopCreditInfoJson in the Return Parameter will be empty if the Distribution Customer is an Agency. This function is only available for Resellers and Distributors.
+// Queries the credit control information of a distributor customer. If the distributor customer is of the Agency type, the PopCreditInfoJson parameter in the response is empty. This feature is available only for Reseller and Distributor.
 //
 // @param request - GetCreditInfoRequest
 //
@@ -1039,7 +1065,11 @@ func (client *Client) GetCreditInfoWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 客户订单查询
+// Queries customer orders on the Alibaba Cloud International site. This operation is only allowed for the international site.
+//
+// Description:
+//
+// The caller must be an Alibaba Cloud International site channel master distributor partner or an Alibaba Cloud International site channel distributor partner.
 //
 // @param request - GetCustomerOrdersRequest
 //
@@ -1079,7 +1109,7 @@ func (client *Client) GetCustomerOrdersWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Issue Distributor\\"s daily Bill. This function is only available for Resellers and Distributors.
+// Retrieves the daily bills for resellers and distributors. This feature is only available for resellers and distributors.
 //
 // @param request - GetDailyBillRequest
 //
@@ -1131,7 +1161,7 @@ func (client *Client) GetDailyBillWithContext(ctx context.Context, request *GetD
 
 // Summary:
 //
-// Query invitation status of customer who have been created and invited.
+// Queries the invitation status of registered customers who have been sent invitations.
 //
 // @param request - GetInviteStatusRequest
 //
@@ -1175,7 +1205,7 @@ func (client *Client) GetInviteStatusWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Issue Distributor\\"s Monthly Bill. This function is only available for Resellers and Distributors.
+// Retrieves the monthly bill for distributors. This feature is available only to resellers and distributors.
 //
 // @param request - GetMonthlyBillRequest
 //
@@ -1227,7 +1257,11 @@ func (client *Client) GetMonthlyBillWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 下单控制记录查询
+// Queries order control change records.
+//
+// Description:
+//
+// The caller must be an Alibaba Cloud international site channel master distributor partner or an Alibaba Cloud international site channel distributor partner.
 //
 // @param request - GetPurchaseControlRecordRequest
 //
@@ -1283,7 +1317,13 @@ func (client *Client) GetPurchaseControlRecordWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询延停策略修改记录
+// Queries the modification records of the deferred shutdown policy.
+//
+// Description:
+//
+// The caller must be an Alibaba Cloud international site channel master distributor partner or an Alibaba Cloud international site channel distributor partner.
+//
+// **This content is published only on the international site.**.
 //
 // @param request - GetShutdownPolicyRecordRequest
 //
@@ -1339,7 +1379,7 @@ func (client *Client) GetShutdownPolicyRecordWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # View Tier 2 coupon approval details
+// Queries the details of a coupon application initiated by a tier-2 distributor. This operation applies only to distributors.
 //
 // @param request - GetTier2CouponApprovalDetailRequest
 //
@@ -1383,7 +1423,7 @@ func (client *Client) GetTier2CouponApprovalDetailWithContext(ctx context.Contex
 
 // Summary:
 //
-// Query all the Unassociated Customer.
+// Retrieves all unassociated customers.
 //
 // @param request - GetUnassociatedCustomerRequest
 //
@@ -1423,11 +1463,7 @@ func (client *Client) GetUnassociatedCustomerWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Initiate the Partner registration invitation.
-//
-// Description:
-//
-// The current API request rate for the Cloud Product has not been disclosed.
+// Invites a customer to register as a partner customer.
 //
 // @param request - InviteSubAccountRequest
 //
@@ -1471,17 +1507,17 @@ func (client *Client) InviteSubAccountWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// T2 Sub-distributor Invitation (Supports Cross-Regional Validation)
+// Invites T2 Reseller sub-accounts in batch as a T1 partner.
 //
 // Description:
 //
-// 1. The API caller must be a channel general distributor partner of Alibaba Cloud International.
+// 1. The caller of this operation must be a channel master reseller partner on Alibaba Cloud International Website.
 //
-// 2. The system automatically determines if the invitation is cross-regional based on whether the `registerNation` parameter is within the T1 contract coverage area (the contract coverage area can be queried using the ListCountries API).
+// 2. The system automatically determines whether the invitation is cross-region based on whether the RegisterNation parameter falls within the T1 contract coverage area. You can call the ListCountries operation to query the contract coverage area.
 //
-// - If it\\"s a cross-regional invitation, a cross-regional approval process will be initiated. After approval by Alibaba Cloud, an invitation registration email will be sent to the invited email address.
+// - If the invitation is cross-region, a cross-region invitation approval process is initiated. After Alibaba Cloud approves the request, an invitation registration email is sent to the specified email address.
 //
-// - If it\\"s not a cross-regional invitation, an invitation registration email will be sent directly.
+// - If the invitation is not cross-region, an invitation registration email is sent directly.
 //
 // @param request - InviteSubResellerRequest
 //
@@ -1525,7 +1561,7 @@ func (client *Client) InviteSubResellerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 发放优惠券
+// Issues coupons.
 //
 // @param request - IssueCouponForCustomerRequest
 //
@@ -1585,13 +1621,13 @@ func (client *Client) IssueCouponForCustomerWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 优惠券使用量列表查询
+// Queries the usage of coupons issued by a distribution partner.
 //
 // Description:
 //
-// 确保当前调用账号身份为分销伙伴
+// Ensure that the current calling account is a distribution partner.
 //
-// <notice>仅国际提供
+// <notice>Available only on the international site.</notice>
 //
 // @param request - ListCouponUsageRequest
 //
@@ -1659,7 +1695,7 @@ func (client *Client) ListCouponUsageWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Query the list of exported files.
+// Queries the list of exported files.
 //
 // @param request - ListExportTasksRequest
 //
@@ -1719,7 +1755,7 @@ func (client *Client) ListExportTasksWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// # T1查询T2优惠券申请列表
+// Queries the coupon applications submitted by secondary distributors for their end users. This operation applies only to tier-1 distributors.
 //
 // @param request - ListTier2CouponApprovalRequest
 //
@@ -1783,7 +1819,7 @@ func (client *Client) ListTier2CouponApprovalWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 审批流审批通用接口
+// Approves a process that requires partner approval. This operation is applicable only to distributors.
 //
 // @param request - ProcessApprovalRequest
 //
@@ -1835,7 +1871,7 @@ func (client *Client) ProcessApprovalWithContext(ctx context.Context, request *P
 
 // Summary:
 //
-// 查询自动销账变更记录
+// Queries the change records of the automatic write-off quota by using paging.
 //
 // @param request - QueryAutomaticWriteOffChangeRecordsRequest
 //
@@ -1899,7 +1935,7 @@ func (client *Client) QueryAutomaticWriteOffChangeRecordsWithContext(ctx context
 
 // Summary:
 //
-// 额度冲减明细列表
+// Queries the quota offset details of a specified customer.
 //
 // @param request - QueryReversedDeductionHistoryRequest
 //
@@ -1963,11 +1999,11 @@ func (client *Client) QueryReversedDeductionHistoryWithContext(ctx context.Conte
 
 // Summary:
 //
-// Check the result of export quota list as a Distribution Customer from International Site. Only available on International Site.
+// Queries the quota transaction export results for international distribution users. This API operation is available only on the international site.
 //
 // Description:
 //
-// Caller must be a Partner from International Site, either Distribution or Reseller will do.
+// The caller must be an Alibaba Cloud International site channel master distributor partner or an Alibaba Cloud International site channel distributor partner.
 //
 // @param request - QuotaListExportPagedRequest
 //
@@ -2007,7 +2043,7 @@ func (client *Client) QuotaListExportPagedWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Resend invitation email.
+// Resends an invitation email.
 //
 // @param request - ResendEmailRequest
 //
@@ -2051,7 +2087,7 @@ func (client *Client) ResendEmailWithContext(ctx context.Context, request *Resen
 
 // Summary:
 //
-// This function is designed for Sub Account information maintenance, including Nickname and Remark.
+// Updates sub-account information, including the nickname and remarks.
 //
 // @param request - SetAccountInfoRequest
 //
@@ -2107,7 +2143,7 @@ func (client *Client) SetAccountInfoWithContext(ctx context.Context, request *Se
 
 // Summary:
 //
-// Set Credit Line for Distribution Customers. This function is only available for Resellers and Distributors.
+// Sets the credit limit for a reseller customer. This feature is available only for Resellers and Distributors.
 //
 // @param request - SetCreditLineRequest
 //
@@ -2155,7 +2191,7 @@ func (client *Client) SetCreditLineWithContext(ctx context.Context, request *Set
 
 // Summary:
 //
-// You can use this API to set the threshold for the use of credit control. When the customer credit control reaches below the threshold, it will pass through the notification email distributor. This feature is for Reseller and Distributor only.
+// Sets the credit usage threshold. When a customer\\"s available credit falls below the threshold, the reseller is notified by email. This feature is available only for Resellers and Distributors.
 //
 // @param request - SetWarningThresholdRequest
 //
@@ -2203,49 +2239,49 @@ func (client *Client) SetWarningThresholdWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Generates the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+// Subscribes to multi-level ecosystem partner bills on Alibaba Cloud International and generates bill files to OSS.
 //
 // Description:
 //
-//	  Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+// - Ensure that the caller is an Alibaba Cloud international master reseller partner.
 //
-//		- You can call this operation to subscribe to only one type of bill at a time.
+// - A user can subscribe to one type of bill file at a time.
 //
-//		- After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
+// - After subscription, bill files generated on the previous day are pushed daily starting from the next day. On the 5th of each month, full bill files for the previous billing cycle are pushed.
 //
-//		- A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
+// - Bill files generated on a daily basis may be delayed. Delayed bill files are pushed the day after they are generated and may include bills that were delayed from earlier days. Pull the full files for the previous month at the beginning of each month.
 //
-//		- Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+// - Grant the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission to the subscribing user.
 //
-//		- The following file name formats are supported for bills:
+// - File names.
+//
+// ```.
+//
+// BillingItemDetailForBillingPeriod   (Billing item detail)
+//
+// Daily push file name format: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_BillingItemDetail_20190310_0001_01.
+//
+// Full file name format at the beginning of the next month: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetail_201903_0001_01.
+//
+// InstanceDetailForBillingPeriod  (Instance bill detail)
+//
+//	Daily push file name format: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_InstanceDetail_20190310_0001_01.
+//
+// Full file name format at the beginning of the next month: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetail_201903_1999-0001_01.
+//
+// BillingItemDetailMonthly   (Billing item monthly bill)
+//
+// Daily push file name format: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetailMonthly_201903_0001_01. This file is updated daily with full data from the beginning of the month to the current day, until the 5th of the next month.
+//
+// InstanceDetailMonthly  (Instance monthly bill)
+//
+// Daily push file name format: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetailMonthly_201903_0001_01. This file is updated daily with full data from the beginning of the month to the current day, until the 5th of the next month.
+//
+// fileNo exists only when the number of bill rows reaches the split threshold and the file is split.
 //
 // ```
 //
-// # BillingItemDetailForBillingPeriod
-//
-// File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_BillingItemDetail_20190310_0001_01.
-//
-// File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetail_201903_0001_01.
-//
-// # InstanceDetailForBillingPeriod
-//
-//	File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_InstanceDetail_20190310_0001_01.
-//
-// File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetail_201903_1999-0001_01.
-//
-// # BillingItemDetailMonthly
-//
-// File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
-//
-// # InstanceDetailMonthly
-//
-// File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
-//
-// The fileNo field exists only when the number of bill rows reaches the maximum rows in a single bill file and the bill is split into multiple files.
-//
-// ```
-//
-// **This topic is published only on the international site (alibabacloud.com).
+// **This content is published only on the Chinese site.**.
 //
 // @param request - SubscriptionBillRequest
 //

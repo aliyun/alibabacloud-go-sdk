@@ -22,18 +22,30 @@ type iGetCoupondeductProductCodeResponseBody interface {
 }
 
 type GetCoupondeductProductCodeResponseBody struct {
+	// The result code. Valid values:
+	//
+	// 200: OK.
+	//
 	// example:
 	//
 	// code
-	Code    *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*GetCoupondeductProductCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
+	Data []*GetCoupondeductProductCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message information.
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 210e876f16704666020714468dab35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful.
+	//
 	// example:
 	//
 	// true
@@ -107,6 +119,8 @@ func (s *GetCoupondeductProductCodeResponseBody) Validate() error {
 }
 
 type GetCoupondeductProductCodeResponseBodyData struct {
+	// The product code.
+	//
 	// example:
 	//
 	// code1

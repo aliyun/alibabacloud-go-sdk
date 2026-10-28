@@ -24,32 +24,32 @@ type iGetUnassociatedCustomerResponseBody interface {
 }
 
 type GetUnassociatedCustomerResponseBody struct {
-	// Error Code, Candidate Value：
+	// The error code. Valid values:
 	//
-	// 	- 200: OK
+	// 200: OK.
 	//
-	// 	- 1109: System error
+	// 1109: System error.
 	//
 	// example:
 	//
 	// 200
 	Code           *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	InviteInfoList *GetUnassociatedCustomerResponseBodyInviteInfoList `json:"InviteInfoList,omitempty" xml:"InviteInfoList,omitempty" type:"Struct"`
-	// Message information
+	// The message information.
 	//
 	// example:
 	//
-	// success
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Pagination Information
+	// The pagination information.
 	PageInfo *GetUnassociatedCustomerResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// Request ID, Alibaba Cloud will track errors with this.
+	// The request ID. Alibaba Cloud uses this ID for error tracking.
 	//
 	// example:
 	//
 	// 23309219-4A34-589D-A3E0-9B2A3BFFD24F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	// Indicates whether the current API call itself is successful. Valid values: True and False. This does not indicate the success of subsequent business operations.
 	//
 	// example:
 	//
@@ -233,19 +233,19 @@ func (s *GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo) Validate()
 }
 
 type GetUnassociatedCustomerResponseBodyPageInfo struct {
-	// Pagination, current page.
+	// The current page number for pagination.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// Pagination, record number on each page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Pagination, page volume in total.
+	// The total number of records.
 	//
 	// example:
 	//

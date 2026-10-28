@@ -22,11 +22,16 @@ type iCreateCouponTemplateResponseBody interface {
 }
 
 type CreateCouponTemplateResponseBody struct {
+	// The status code. 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreateCouponTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// 200
@@ -37,6 +42,8 @@ type CreateCouponTemplateResponseBody struct {
 	//
 	// 2103a30617045934095083027d88c5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -106,44 +113,100 @@ func (s *CreateCouponTemplateResponseBody) Validate() error {
 }
 
 type CreateCouponTemplateResponseBodyData struct {
+	// The applicable products.
+	//
+	// - All Products: All products.
+	//
+	// - Custom: Custom products.
+	//
 	// example:
 	//
 	// Custom
 	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
+	// The party that bears the coupon cost.
+	//
+	// - Partner: Borne by the partner.
+	//
+	// - Alibaba Cloud: Borne by Alibaba Cloud.
+	//
 	// example:
 	//
 	// Partner
 	CostBearer *string `json:"CostBearer,omitempty" xml:"CostBearer,omitempty"`
+	// The ID of the coupon template.
+	//
 	// example:
 	//
 	// 111111
 	CouponTemplateID *int64 `json:"CouponTemplateID,omitempty" xml:"CouponTemplateID,omitempty"`
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2024-04-02 16:15:31
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end time of the effective period.
+	//
+	// Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2024-01-01
-	Expireddate *string   `json:"Expireddate,omitempty" xml:"Expireddate,omitempty"`
+	Expireddate *string `json:"Expireddate,omitempty" xml:"Expireddate,omitempty"`
+	// The list of product codes.
 	ProductType []*string `json:"ProductType,omitempty" xml:"ProductType,omitempty" type:"Repeated"`
+	// The status of the coupon template. Valid values:
+	//
+	// - CREATED: Created.
+	//
+	// - APPROVING: Under review.
+	//
+	// - APPROVED: Approved.
+	//
+	// - UNAPPROVED: Unapproved.
+	//
+	// - ABANDONED: Abandoned.
+	//
+	// - EXPIRED: Expired.
+	//
+	// - EXHAUSTED: Exhausted.
+	//
 	// example:
 	//
 	// APPROVED
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the coupon template.
+	//
+	// example:
+	//
+	// Template name
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The start time of the effective period.
+	//
+	// Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2024-01-01
 	Vailddate *string `json:"Vailddate,omitempty" xml:"Vailddate,omitempty"`
+	// The duration of the relative time in days.
+	//
 	// example:
 	//
 	// 1
 	Vaildperioddays *string `json:"Vaildperioddays,omitempty" xml:"Vaildperioddays,omitempty"`
+	// The validity period of the coupon.
+	//
+	// - Validity Duration: From the date of issuance.
+	//
+	// - Custom Timeframe: Custom time period.
+	//
 	// example:
 	//
 	// Validity Duration
 	ValidUntil *string `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
+	// The denomination.
+	//
 	// example:
 	//
 	// 1

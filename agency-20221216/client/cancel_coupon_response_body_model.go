@@ -22,19 +22,32 @@ type iCancelCouponResponseBody interface {
 }
 
 type CancelCouponResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The operation result.
+	//
 	// example:
 	//
 	// true
-	Data    *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message.
+	//
+	// example:
+	//
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// true

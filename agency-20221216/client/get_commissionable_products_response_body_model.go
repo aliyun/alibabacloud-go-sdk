@@ -26,27 +26,40 @@ type iGetCommissionableProductsResponseBody interface {
 }
 
 type GetCommissionableProductsResponseBody struct {
+	// The status code of the response. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of returned data.
 	Data []*GetCommissionableProductsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2103a30617045934095083027d88c5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call is successful. Valid values: True and False. This parameter indicates only the success of the API call and does not indicate the success of subsequent business operations.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -138,46 +151,74 @@ func (s *GetCommissionableProductsResponseBody) Validate() error {
 }
 
 type GetCommissionableProductsResponseBodyData struct {
+	// The actual start month in the yyyymm format.
+	//
 	// example:
 	//
 	// “202502”
 	ActualStartMonth *string `json:"ActualStartMonth,omitempty" xml:"ActualStartMonth,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// “oceanbase_obpre_public_intl”
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The commodity name.
+	//
 	// example:
 	//
 	// “ApsaraDB for OceanBase Pre”
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
+	// Specifies whether the commodity is eligible for commission.
+	//
 	// example:
 	//
 	// Yes
 	EligibleForCommission *string `json:"EligibleForCommission,omitempty" xml:"EligibleForCommission,omitempty"`
+	// Specifies whether the commodity is eligible for discounts.
+	//
 	// example:
 	//
 	// Yes
 	EligibleForDiscount *string `json:"EligibleForDiscount,omitempty" xml:"EligibleForDiscount,omitempty"`
+	// Specifies whether the commodity is counted towards performance.
+	//
+	// example:
+	//
+	// Yes
+	EligibleForPerformance *string `json:"EligibleForPerformance,omitempty" xml:"EligibleForPerformance,omitempty"`
+	// The actual end month in the yyyymm format.
+	//
 	// example:
 	//
 	// “202509”
 	EndMonth *string `json:"EndMonth,omitempty" xml:"EndMonth,omitempty"`
+	// Specifies whether the commodity is a product line incentive commodity.
+	//
 	// example:
 	//
 	// Yes
 	ProductCampaign *string `json:"ProductCampaign,omitempty" xml:"ProductCampaign,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// “oceanbase”
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The product name.
+	//
 	// example:
 	//
 	// “ApsaraDB for OceanBase”
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// Specifies whether the product is a core product.
+	//
 	// example:
 	//
 	// Yes
 	SevenCoreProducts *string `json:"SevenCoreProducts,omitempty" xml:"SevenCoreProducts,omitempty"`
+	// The display status of the product.
+	//
 	// example:
 	//
 	// “ONLINE”
@@ -210,6 +251,10 @@ func (s *GetCommissionableProductsResponseBodyData) GetEligibleForCommission() *
 
 func (s *GetCommissionableProductsResponseBodyData) GetEligibleForDiscount() *string {
 	return s.EligibleForDiscount
+}
+
+func (s *GetCommissionableProductsResponseBodyData) GetEligibleForPerformance() *string {
+	return s.EligibleForPerformance
 }
 
 func (s *GetCommissionableProductsResponseBodyData) GetEndMonth() *string {
@@ -258,6 +303,11 @@ func (s *GetCommissionableProductsResponseBodyData) SetEligibleForCommission(v s
 
 func (s *GetCommissionableProductsResponseBodyData) SetEligibleForDiscount(v string) *GetCommissionableProductsResponseBodyData {
 	s.EligibleForDiscount = &v
+	return s
+}
+
+func (s *GetCommissionableProductsResponseBodyData) SetEligibleForPerformance(v string) *GetCommissionableProductsResponseBodyData {
+	s.EligibleForPerformance = &v
 	return s
 }
 

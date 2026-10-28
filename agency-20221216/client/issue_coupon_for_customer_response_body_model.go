@@ -22,10 +22,14 @@ type iIssueCouponForCustomerResponseBody interface {
 }
 
 type IssueCouponForCustomerResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 200
@@ -36,11 +40,14 @@ type IssueCouponForCustomerResponseBody struct {
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
-	Success *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data    *IssueCouponForCustomerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned data.
+	Data *IssueCouponForCustomerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s IssueCouponForCustomerResponseBody) String() string {
@@ -106,14 +113,20 @@ func (s *IssueCouponForCustomerResponseBody) Validate() error {
 }
 
 type IssueCouponForCustomerResponseBodyData struct {
+	// The ID of the coupon template.
+	//
 	// example:
 	//
 	// 5075915
 	CouponTemplateId *int64 `json:"CouponTemplateId,omitempty" xml:"CouponTemplateId,omitempty"`
+	// The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2024-03-05 18:24:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The UIDs to which the coupons are issued.
+	//
 	// example:
 	//
 	// 111,2222

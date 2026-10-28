@@ -26,39 +26,39 @@ type iCustomerQuotaRecordListResponseBody interface {
 }
 
 type CustomerQuotaRecordListResponseBody struct {
-	// Status code of returning result, 200 means success.
+	// The status code of the returned result. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Listed data of returning result
+	// The list of returned results.
 	Data []*CustomerQuotaRecordListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Description of returning data
+	// The description of the returned result.
 	//
 	// example:
 	//
 	// SUCCESS
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Record number on each page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2103a0ae16849855284594613d874e
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total volume
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,55 +151,49 @@ func (s *CustomerQuotaRecordListResponseBody) Validate() error {
 }
 
 type CustomerQuotaRecordListResponseBodyData struct {
-	// The way to submit the quota adjustment operation. API/ACPN
+	// The method used to submit the operation, such as API or ACPN.
 	//
 	// example:
 	//
 	// ACPN
 	OperationSubmitType *string `json:"OperationSubmitType,omitempty" xml:"OperationSubmitType,omitempty"`
-	// The time of submit the quota adjustment operation.
+	// The time when the operation was performed. Format: YYYY-MM-DD HH:mm:ss UTC+8.
 	//
 	// example:
 	//
 	// 2023-12-15 10:34:36 UTC+8
 	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
-	// Operation Type Enum</br>
-	//
-	// all All types</br>
-	//
-	// quota_create Create quota</br>
-	//
-	// quota_amount_adjust Adjust the amount of quota</br>
+	// The code of the change type. Valid values: all: All, quota_create: Create, quota_amount_adjust: Quota adjustment.
 	//
 	// example:
 	//
 	// quota_amount_adjust
 	OperationTypeCode *string `json:"OperationTypeCode,omitempty" xml:"OperationTypeCode,omitempty"`
-	// The description of submitted quota adjustment operation.
+	// The description of the change type.
 	//
 	// example:
 	//
 	// Quota Adjustment
 	OperationTypeDesc *string `json:"OperationTypeDesc,omitempty" xml:"OperationTypeDesc,omitempty"`
-	// The UID of operator(Partner\\"s UID).
+	// The UID of the operator.
 	//
 	// example:
 	//
 	// 5113766248601929
 	OperationUid *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
-	// Updated quota amount
+	// The amount after the update.
 	//
 	// example:
 	//
 	// 121.00
 	UpdateAfterAmount *string `json:"UpdateAfterAmount,omitempty" xml:"UpdateAfterAmount,omitempty"`
-	// The difference amount between updated quota and original quota.
+	// The changed amount.
 	//
 	// example:
 	//
 	// -100.00
 	UpdateAmount *string `json:"UpdateAmount,omitempty" xml:"UpdateAmount,omitempty"`
-	// Original quota amount
+	// The amount before the update.
 	//
 	// example:
 	//

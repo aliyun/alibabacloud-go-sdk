@@ -24,32 +24,54 @@ type iQueryAutomaticWriteOffChangeRecordsRequest interface {
 }
 
 type QueryAutomaticWriteOffChangeRecordsRequest struct {
+	// The customer UID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	CustomerUid *int64 `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
+	// The end date.
+	//
+	// Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2026-05-20
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language. If you do not specify this parameter, English is used by default. Valid values:
+	//
+	// - en: English.
+	//
+	// - zh: Chinese.
+	//
+	// - ja: Japanese.
+	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The page number. Pages start from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start date.
+	//
+	// Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2026-06-20

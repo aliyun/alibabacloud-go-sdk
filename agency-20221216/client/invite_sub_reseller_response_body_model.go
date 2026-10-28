@@ -22,27 +22,27 @@ type iInviteSubResellerResponseBody interface {
 }
 
 type InviteSubResellerResponseBody struct {
-	// Result code.
+	// The result code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Message.
+	// message
 	//
 	// example:
 	//
 	// 200
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 邀请结果信息
+	// The invitation result information.
 	Results []*InviteSubResellerResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -117,21 +117,21 @@ func (s *InviteSubResellerResponseBody) Validate() error {
 }
 
 type InviteSubResellerResponseBodyResults struct {
-	// Error code, 200 OK
+	// The error code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Prompt message, explanation of the code
+	// The prompt message that describes the code.
 	//
 	// example:
 	//
 	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Returned invitation result information
+	// The invitation result details.
 	Result *InviteSubResellerResponseBodyResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Always true
+	// Always true.
 	//
 	// example:
 	//
@@ -193,19 +193,19 @@ func (s *InviteSubResellerResponseBodyResults) Validate() error {
 }
 
 type InviteSubResellerResponseBodyResultsResult struct {
-	// Validity period of the registration URL, in days
+	// The validity period of the registration URL, in days.
 	//
 	// example:
 	//
 	// 15
 	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
-	// Invitation ID, used for querying the invitation status
+	// The invitation ID, which is used to query the invitation status.
 	//
 	// example:
 	//
 	// 12345
 	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
-	// T2 Reseller registration URL
+	// The registration URL of the T2 Reseller.
 	//
 	// example:
 	//
