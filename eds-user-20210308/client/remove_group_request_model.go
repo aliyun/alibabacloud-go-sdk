@@ -18,19 +18,19 @@ type iRemoveGroupRequest interface {
 }
 
 type RemoveGroupRequest struct {
-	// Channel
+	// The business channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The ID of the user group to be deleted.
+	// The ID of the user group to delete.
 	//
 	// example:
 	//
 	// ug-dzjax1ez5qgph****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The IDs of the user groups to be deleted.
+	// The IDs of the user groups to delete.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 }
 

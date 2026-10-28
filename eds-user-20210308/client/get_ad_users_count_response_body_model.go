@@ -16,10 +16,14 @@ type iGetAdUsersCountResponseBody interface {
 }
 
 type GetAdUsersCountResponseBody struct {
+	// The number of Active Directory (AD) users.
+	//
 	// example:
 	//
 	// 1000
 	AdUserCount *int32 `json:"AdUserCount,omitempty" xml:"AdUserCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****

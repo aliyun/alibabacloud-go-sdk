@@ -14,7 +14,7 @@ type iQuerySyncStatusByAliUidRequest interface {
 }
 
 type QuerySyncStatusByAliUidRequest struct {
-	// Channel
+	// The channel.
 	//
 	// example:
 	//

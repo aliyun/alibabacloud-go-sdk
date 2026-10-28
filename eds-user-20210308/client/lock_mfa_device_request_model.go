@@ -18,19 +18,19 @@ type iLockMfaDeviceRequest interface {
 }
 
 type LockMfaDeviceRequest struct {
-	// The domain of the Active Directory (AD) workspace.
+	// The address of the AD office network.
 	//
 	// example:
 	//
 	// upower.vip
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The serial number of the virtual MFA device. The serial number is unique for each device.
+	// The serial number of the bound virtual MFA device. The user must first complete the MFA binding in the client authentication flow. You can call [DescribeMfaDevices](~~DescribeMfaDevices~~) to query the serial number of the bound device.
 	//
 	// example:
 	//

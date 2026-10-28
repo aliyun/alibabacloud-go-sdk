@@ -14,7 +14,7 @@ type iModifyOrgResponseBody interface {
 }
 
 type ModifyOrgResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

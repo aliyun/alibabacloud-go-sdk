@@ -22,11 +22,16 @@ type iWaIdPermissions interface {
 }
 
 type WaIdPermissions struct {
-	Code           *string            `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsBasicChild   *bool              `json:"IsBasicChild,omitempty" xml:"IsBasicChild,omitempty"`
-	Name           *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// basic
+	IsBasicChild *bool `json:"IsBasicChild,omitempty" xml:"IsBasicChild,omitempty"`
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// subPermissions
 	SubPermissions []*WaIdPermissions `json:"SubPermissions,omitempty" xml:"SubPermissions,omitempty" type:"Repeated"`
-	Type           *string            `json:"Type,omitempty" xml:"Type,omitempty"`
+	// type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s WaIdPermissions) String() string {

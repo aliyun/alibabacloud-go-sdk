@@ -18,8 +18,9 @@ type iCreateUsersResponseBody interface {
 }
 
 type CreateUsersResponseBody struct {
+	// Indicates whether all convenience accounts are created.
 	AllSucceed *bool `json:"AllSucceed,omitempty" xml:"AllSucceed,omitempty"`
-	// The result of creating convenience accounts.
+	// The result of the convenience account creation operation.
 	CreateResult *CreateUsersResponseBodyCreateResult `json:"CreateResult,omitempty" xml:"CreateResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,9 +75,9 @@ func (s *CreateUsersResponseBody) Validate() error {
 }
 
 type CreateUsersResponseBodyCreateResult struct {
-	// The convenience accounts that were successfully created.
+	// The information about the convenience accounts that are created.
 	CreatedUsers []*CreateUsersResponseBodyCreateResultCreatedUsers `json:"CreatedUsers,omitempty" xml:"CreatedUsers,omitempty" type:"Repeated"`
-	// The convenience accounts that failed to be created.
+	// The information about the convenience accounts that failed to be created.
 	FailedUsers []*CreateUsersResponseBodyCreateResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
 }
 
@@ -135,7 +136,7 @@ type CreateUsersResponseBodyCreateResultCreatedUsers struct {
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The user name.
+	// The username.
 	//
 	// example:
 	//
@@ -147,13 +148,13 @@ type CreateUsersResponseBodyCreateResultCreatedUsers struct {
 	//
 	// 1381111****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The display name.
+	// The display name of the user.
 	//
 	// example:
 	//
 	// Bean
 	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
-	// The user\\"s remark.
+	// The user remarks.
 	//
 	// example:
 	//
@@ -225,7 +226,7 @@ type CreateUsersResponseBodyCreateResultFailedUsers struct {
 	//
 	// username2@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The user name.
+	// The username.
 	//
 	// example:
 	//

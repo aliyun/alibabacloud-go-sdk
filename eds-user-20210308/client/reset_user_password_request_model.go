@@ -18,21 +18,21 @@ type iResetUserPasswordRequest interface {
 }
 
 type ResetUserPasswordRequest struct {
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The method to notify the user after the password is reset.
+	// The method used to notify the user after the password is reset.
 	//
-	// > Alibaba Cloud accounts of the international site do not support sending notification through text messages.
+	// > Notification by text message is not supported for Alibaba Cloud International Website accounts.
 	//
 	// example:
 	//
 	// 1
 	NotifyType *int32 `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	// The names of the convenience users whose passwords you want to reset.
+	// The usernames of the convenience users whose passwords you want to reset.
 	//
 	// This parameter is required.
 	//

@@ -21,6 +21,8 @@ type iCreateResourceGroupRequest interface {
 	GetPlatform() *string
 	SetResourceClassification(v string) *CreateResourceGroupRequest
 	GetResourceClassification() *string
+	SetResourceGroupDescription(v string) *CreateResourceGroupRequest
+	GetResourceGroupDescription() *string
 	SetResourceGroupName(v string) *CreateResourceGroupRequest
 	GetResourceGroupName() *string
 }
@@ -40,18 +42,29 @@ type CreateResourceGroupRequest struct {
 	//
 	// 0
 	IsResourceGroupWithOfficeSite *int64 `json:"IsResourceGroupWithOfficeSite,omitempty" xml:"IsResourceGroupWithOfficeSite,omitempty"`
-	// For WUYING Workspace Enterprise Edition, set this parameter to `AliyunConsole`. Other platforms are not supported.
+	// For Elastic Desktop Service (EDS) Enterprise Edition, set the value to `AliyunConsole`. Other platforms are not supported.
 	//
 	// example:
 	//
 	// AliyunConsole
-	Platform               *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The resource category.
+	//
+	// example:
+	//
+	// Default
 	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
+	// The description of the resource group. This parameter is optional. The description can be up to 500 characters in length and is saved as-is.
+	//
+	// example:
+	//
+	// Department A resource group
+	ResourceGroupDescription *string `json:"ResourceGroupDescription,omitempty" xml:"ResourceGroupDescription,omitempty"`
 	// The name of the resource group.
 	//
 	// example:
 	//
-	// 部门A资源组
+	// Department A resource group
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
@@ -87,6 +100,10 @@ func (s *CreateResourceGroupRequest) GetResourceClassification() *string {
 	return s.ResourceClassification
 }
 
+func (s *CreateResourceGroupRequest) GetResourceGroupDescription() *string {
+	return s.ResourceGroupDescription
+}
+
 func (s *CreateResourceGroupRequest) GetResourceGroupName() *string {
 	return s.ResourceGroupName
 }
@@ -118,6 +135,11 @@ func (s *CreateResourceGroupRequest) SetPlatform(v string) *CreateResourceGroupR
 
 func (s *CreateResourceGroupRequest) SetResourceClassification(v string) *CreateResourceGroupRequest {
 	s.ResourceClassification = &v
+	return s
+}
+
+func (s *CreateResourceGroupRequest) SetResourceGroupDescription(v string) *CreateResourceGroupRequest {
+	s.ResourceGroupDescription = &v
 	return s
 }
 

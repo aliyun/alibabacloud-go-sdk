@@ -20,19 +20,26 @@ type iTransferResourcesIntoGroupRequest interface {
 }
 
 type TransferResourcesIntoGroupRequest struct {
+	// The channel.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	// The WUYING product type.
+	//
 	// example:
 	//
 	// AliyunConsole
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-ckf3cx7isinhk***
-	ResourceGroupId *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Resources       []*TransferResourcesIntoGroupRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of resource objects.
+	Resources []*TransferResourcesIntoGroupRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
 func (s TransferResourcesIntoGroupRequest) String() string {
@@ -93,14 +100,20 @@ func (s *TransferResourcesIntoGroupRequest) Validate() error {
 }
 
 type TransferResourcesIntoGroupRequestResources struct {
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// ecd-0jl0dwz61hn59tto****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// DESKTOP

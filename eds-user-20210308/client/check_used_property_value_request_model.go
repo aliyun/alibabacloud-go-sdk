@@ -18,13 +18,13 @@ type iCheckUsedPropertyValueRequest interface {
 }
 
 type CheckUsedPropertyValueRequest struct {
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query property ID.
+	// The property ID. You can call the [ListProperty](~~ListProperty~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CheckUsedPropertyValueRequest struct {
 	//
 	// 380
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The ID of the property value. You can call the [ListProperty](~~ListProperty~~) operation to query the ID of the property value.
+	// The property value ID. You can call the [ListProperty](~~ListProperty~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

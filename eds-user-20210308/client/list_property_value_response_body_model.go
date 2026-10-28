@@ -16,9 +16,9 @@ type iListPropertyValueResponseBody interface {
 }
 
 type ListPropertyValueResponseBody struct {
-	// Details about property values.
+	// The list of property values.
 	PropertyValueInfos []*ListPropertyValueResponseBodyPropertyValueInfos `json:"PropertyValueInfos,omitempty" xml:"PropertyValueInfos,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *ListPropertyValueResponseBody) Validate() error {
 }
 
 type ListPropertyValueResponseBodyPropertyValueInfos struct {
-	// The value of the property.
+	// The property value.
 	//
 	// example:
 	//
 	// HR
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	// The ID of the property value.
+	// The property value ID.
 	//
 	// example:
 	//

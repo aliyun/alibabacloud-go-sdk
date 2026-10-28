@@ -18,13 +18,14 @@ type iLockUsersRequest interface {
 }
 
 type LockUsersRequest struct {
-	// The channel.
+	// The business channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	LogoutSession   *bool   `json:"LogoutSession,omitempty" xml:"LogoutSession,omitempty"`
+	// Specifies whether to log off the current session of the convenience account when the account is locked.
+	LogoutSession *bool `json:"LogoutSession,omitempty" xml:"LogoutSession,omitempty"`
 	// The usernames of the convenience accounts to lock.
 	//
 	// This parameter is required.

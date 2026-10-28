@@ -26,19 +26,19 @@ type iDescribeGroupUserRequest interface {
 }
 
 type DescribeGroupUserRequest struct {
-	// >  This parameter is not available for public use.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The fuzzy search string that matches the username (EndUserId) and email address (Email) of the regular user.
+	// The fuzzy search string. This parameter supports matching the username (EndUserId) and email address (Email).
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type DescribeGroupUserRequest struct {
 	//
 	// ug-12341234****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries to return per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. You can obtain this parameter from the response parameters of the last call to this operation.
+	// The token for the next query. You can obtain the token from the response parameters of the previous call to this operation.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// >  This parameter is not available for public use.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//

@@ -32,8 +32,13 @@ type iDescribeResourceGroupsRequest interface {
 }
 
 type DescribeResourceGroupsRequest struct {
+	// The agent subtype of the DesktopAgent resource group. Valid values: JVSClaw and HermesAgent.
+	//
+	// example:
+	//
+	// JVSClaw
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The IDs of the cloud platform resource groups.
 	AliyunResourceGroupIds []*string `json:"AliyunResourceGroupIds,omitempty" xml:"AliyunResourceGroupIds,omitempty" type:"Repeated"`
 	// The channel tag.
 	//
@@ -61,21 +66,25 @@ type DescribeResourceGroupsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// > Fixed value: AliyunConsole.
 	//
-	// > - For Elastic Desktop Service Enterprise Edition, set this parameter to AliyunConsole. Other platforms are not publicly available.
+	// > - For Wuying Enterprise Edition, set this parameter to AliyunConsole. Other platforms are not publicly available.
 	//
 	// example:
 	//
 	// AliyunConsole
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The resource classification within the resource group.
-	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
-	// The list of resource group IDs.
-	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
-	// The resource group name.
+	// The resource classification in the resource group.
 	//
 	// example:
 	//
-	// DepartmentAResourceGroup
+	// Default
+	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
+	// The IDs of the resource groups.
+	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// Department A resource group
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

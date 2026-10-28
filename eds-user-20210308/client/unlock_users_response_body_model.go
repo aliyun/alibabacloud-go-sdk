@@ -16,13 +16,13 @@ type iUnlockUsersResponseBody interface {
 }
 
 type UnlockUsersResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 023F4EC4-3602-4A3E-A514-4970847D59DB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of unlocking the convenience user.
+	// The result of the unlock operation for the convenience users.
 	UnlockUsersResult *UnlockUsersResponseBodyUnlockUsersResult `json:"UnlockUsersResult,omitempty" xml:"UnlockUsersResult,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *UnlockUsersResponseBody) Validate() error {
 }
 
 type UnlockUsersResponseBodyUnlockUsersResult struct {
-	// The convenience users that failed to be unlocked.
+	// The list of convenience users that fail to be unlocked.
 	FailedUsers []*UnlockUsersResponseBodyUnlockUsersResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
-	// The convenience users that were unlocked.
+	// The list of convenience users that are successfully unlocked.
 	UnlockedUsers []*string `json:"UnlockedUsers,omitempty" xml:"UnlockedUsers,omitempty" type:"Repeated"`
 }
 
@@ -108,7 +108,7 @@ func (s *UnlockUsersResponseBodyUnlockUsersResult) Validate() error {
 }
 
 type UnlockUsersResponseBodyUnlockUsersResultFailedUsers struct {
-	// The ID of the convenience user that failed to be unlocked.
+	// The convenience user that fails to be unlocked.
 	//
 	// example:
 	//

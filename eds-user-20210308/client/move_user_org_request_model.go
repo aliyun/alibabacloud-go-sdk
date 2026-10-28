@@ -18,17 +18,17 @@ type iMoveUserOrgRequest interface {
 }
 
 type MoveUserOrgRequest struct {
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The user IDs.
+	// The list of user IDs.
 	//
 	// This parameter is required.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The organization ID.
+	// The ID of the organizational structure.
 	//
 	// This parameter is required.
 	//

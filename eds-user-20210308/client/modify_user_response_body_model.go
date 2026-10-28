@@ -14,7 +14,7 @@ type iModifyUserResponseBody interface {
 }
 
 type ModifyUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -20,9 +20,13 @@ type iDescribeUsersResponseBody interface {
 }
 
 type DescribeUsersResponseBody struct {
-	// The total number of users that meet the query conditions
+	// The total number of users that meet the query conditions.
+	//
+	// example:
+	//
+	// 0
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The pagination token for the next query. An empty NextToken indicates that no more results exist.
+	// The token for the next query. An empty NextToken indicates that no more results are available.
 	//
 	// example:
 	//
@@ -34,7 +38,7 @@ type DescribeUsersResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The collection of convenience account information.
+	// The collection of convenience user information.
 	Users []*DescribeUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -100,9 +104,9 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// example:
 	//
-	// Hangzhou ***
+	// Hangzhou***
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The URL of the user\\"s profile picture.
+	// The URL of the profile picture.
 	//
 	// example:
 	//
@@ -114,7 +118,7 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Indicates whether administrator access permissions are enabled.
+	// Specifies whether to enable administrator access permissions.
 	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
 	// The username.
 	//
@@ -122,7 +126,7 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The username imported from an external source.
+	// The name of the externally imported user.
 	//
 	// > This field is not publicly available.
 	//
@@ -130,17 +134,17 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// Ma**
 	ExternalName *string `json:"ExternalName,omitempty" xml:"ExternalName,omitempty"`
-	// The extended user information.
+	// The extended information of the user.
 	Extras *DescribeUsersResponseBodyUsersExtras `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Struct"`
-	// The collection of user groups to which the convenience account belongs.
+	// The collection of user groups to which the convenience user belongs.
 	Groups []*DescribeUsersResponseBodyUsersGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The convenience account ID.
+	// The ID of the convenience user.
 	//
 	// example:
 	//
 	// 4205**
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the user is a user administrator. If the convenience account is of the administrator-activated type, a user administrator must be specified. Notifications such as password resets initiated by end users through the client are sent to the user administrator\\"s email or phone. For more information, see [Create a convenience account](https://help.aliyun.com/document_detail/214472.html).
+	// Indicates whether the user is a tenant administrator. If the convenience user to be created uses the administrator activation type, you must specify a tenant administrator. Notifications such as password resets initiated by end users through the client are sent to the email address or mobile phone number of the tenant administrator. For more information, see [Create a convenience user](https://help.aliyun.com/document_detail/214472.html).
 	//
 	// example:
 	//
@@ -152,7 +156,7 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// A10000**
 	JobNumber *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
-	// The nickname of the user. The value is determined in the following order:
+	// The nickname of the user. The value is obtained in the following order:
 	//
 	// - RealNickName
 	//
@@ -164,29 +168,39 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// Li**
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The department ID to which the convenience account belongs.
+	// The ID of the department to which the convenience user belongs.
 	//
-	// > This parameter will be deprecated soon.
+	// > **[Deprecated]*	- This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// org-4mdgc1cocc59z****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The collection of departments to which the convenience account belongs.
+	// The collection of departments to which the convenience user belongs.
 	Orgs []*DescribeUsersResponseBodyUsersOrgs `json:"Orgs,omitempty" xml:"Orgs,omitempty" type:"Repeated"`
-	// The convenience account type, which includes:
+	// The convenience user type. Valid values:
 	//
-	// 	- Administrator-activated type: The administrator sets the username and password. User notifications such as password resets are sent to the administrator\\"s email or phone.
+	// - CreateFromManager: administrator-activated. The administrator sets the username and password. User notifications such as password reset notifications are sent to the email address or mobile phone number of the administrator.
 	//
-	// 	- User-activated type: The administrator sets the username and the user\\"s email or phone for receiving notifications. User notifications such as cloud computer provisioning notifications (including the initial password) are sent to the user\\"s email or phone.
+	// - Normal: user-activated. The administrator sets the username and the email address or mobile phone number for receiving notifications. User notifications such as cloud desktop activation notifications (including the initial password) are sent to the email address or mobile phone number of the user.
 	//
 	// example:
 	//
 	// Normal
-	OwnerType              *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	PasswordExpireDays     *int32  `json:"PasswordExpireDays,omitempty" xml:"PasswordExpireDays,omitempty"`
-	PasswordExpireRestDays *int32  `json:"PasswordExpireRestDays,omitempty" xml:"PasswordExpireRestDays,omitempty"`
-	// The phone number. This parameter is not returned if it is not set.
+	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	// The password validity period, in days. Valid values: 30 to 365. By default, the password never expires.
+	//
+	// example:
+	//
+	// 30
+	PasswordExpireDays *int32 `json:"PasswordExpireDays,omitempty" xml:"PasswordExpireDays,omitempty"`
+	// The remaining days of the password validity period.
+	//
+	// example:
+	//
+	// 10
+	PasswordExpireRestDays *int32 `json:"PasswordExpireRestDays,omitempty" xml:"PasswordExpireRestDays,omitempty"`
+	// The mobile phone number. This parameter is not returned if it is not configured.
 	//
 	// example:
 	//
@@ -200,7 +214,7 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// Li**
 	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
-	// The remark of the convenience account.
+	// The remarks for the convenience user.
 	//
 	// example:
 	//
@@ -212,7 +226,7 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// 0
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The globally unique ID of the convenience account.
+	// The globally unique ID of the convenience user.
 	//
 	// example:
 	//
@@ -472,9 +486,10 @@ func (s *DescribeUsersResponseBodyUsers) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsersExtras struct {
-	// The number of assigned cloud resources.
-	AssignedResourceCount map[string]interface{}                                    `json:"AssignedResourceCount,omitempty" xml:"AssignedResourceCount,omitempty"`
-	ResourcePolicyList    []*DescribeUsersResponseBodyUsersExtrasResourcePolicyList `json:"ResourcePolicyList,omitempty" xml:"ResourcePolicyList,omitempty" type:"Repeated"`
+	// The number of allocated cloud resources.
+	AssignedResourceCount map[string]interface{} `json:"AssignedResourceCount,omitempty" xml:"AssignedResourceCount,omitempty"`
+	// The list of resource policies associated with the user.
+	ResourcePolicyList []*DescribeUsersResponseBodyUsersExtrasResourcePolicyList `json:"ResourcePolicyList,omitempty" xml:"ResourcePolicyList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeUsersResponseBodyUsersExtras) String() string {
@@ -517,7 +532,9 @@ func (s *DescribeUsersResponseBodyUsersExtras) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsersExtrasResourcePolicyList struct {
-	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The ID of the resource policy.
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The Policy Name of the resource policy.
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -552,17 +569,17 @@ func (s *DescribeUsersResponseBodyUsersExtrasResourcePolicyList) Validate() erro
 }
 
 type DescribeUsersResponseBodyUsersGroups struct {
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
 	// ug-12341234****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The user group name.
+	// The name of the user group.
 	//
 	// example:
 	//
-	// UserGroup1
+	// User Group 1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -597,18 +614,23 @@ func (s *DescribeUsersResponseBodyUsersGroups) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsersOrgs struct {
-	// The department ID.
+	// The ID of the department.
 	//
 	// example:
 	//
 	// org-4mdgc1cocc59z****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The department name.
+	// The name of the department.
 	//
 	// example:
 	//
-	// Department1
-	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// Department 1
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// The name path from the root organization to the current organization.
+	//
+	// example:
+	//
+	// Product Department/Design Department
 	OrgNamePath *string `json:"OrgNamePath,omitempty" xml:"OrgNamePath,omitempty"`
 }
 

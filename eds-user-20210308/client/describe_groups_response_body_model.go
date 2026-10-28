@@ -18,7 +18,7 @@ type iDescribeGroupsResponseBody interface {
 }
 
 type DescribeGroupsResponseBody struct {
-	// The number of entries returned in the query result.
+	// The number of query results.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type DescribeGroupsResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The list of user groups.
 	Groups []*DescribeGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,10 +83,11 @@ func (s *DescribeGroupsResponseBody) Validate() error {
 }
 
 type DescribeGroupsResponseBodyGroups struct {
+	// The logon policy associated with the user group.
 	AttachedLoginPolicy *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy `json:"AttachedLoginPolicy,omitempty" xml:"AttachedLoginPolicy,omitempty" type:"Struct"`
-	// The list of assigned resources.
+	// The list of allocated resources.
 	AuthedResources map[string]*string `json:"AuthedResources,omitempty" xml:"AuthedResources,omitempty"`
-	// The creation time.
+	// The creation time in the ISO 8601 standard in the UTC+08:00 time zone.
 	//
 	// example:
 	//
@@ -98,27 +99,27 @@ type DescribeGroupsResponseBodyGroups struct {
 	//
 	// A test group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether download requires approval.
+	// Indicates whether approval is required for downloads.
 	DownloadNeedApproval *bool `json:"DownloadNeedApproval,omitempty" xml:"DownloadNeedApproval,omitempty"`
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
 	// ug-2412ojkwtybd****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The user group name.
+	// The name of the user group.
 	//
 	// example:
 	//
 	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Indicates whether file approval is enabled.
+	// Specifies whether file approval is enabled.
 	//
 	// example:
 	//
 	// false
 	TransferFileNeedApproval *bool `json:"TransferFileNeedApproval,omitempty" xml:"TransferFileNeedApproval,omitempty"`
-	// Indicates whether upload requires approval.
+	// Indicates whether approval is required for uploads.
 	UploadNeedApproval *bool `json:"UploadNeedApproval,omitempty" xml:"UploadNeedApproval,omitempty"`
 	// The number of members in the user group.
 	//
@@ -236,7 +237,9 @@ func (s *DescribeGroupsResponseBodyGroups) Validate() error {
 }
 
 type DescribeGroupsResponseBodyGroupsAttachedLoginPolicy struct {
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Policy Name of the logon policy.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the logon policy.
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 

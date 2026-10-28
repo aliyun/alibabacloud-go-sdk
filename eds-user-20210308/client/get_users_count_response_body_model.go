@@ -22,22 +22,32 @@ type iGetUsersCountResponseBody interface {
 }
 
 type GetUsersCountResponseBody struct {
+	// The number of user groups.
+	//
 	// example:
 	//
 	// 0
 	GroupCount *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	// The user quota.
+	//
 	// example:
 	//
 	// 10000
 	MaxUserNumber *int32 `json:"MaxUserNumber,omitempty" xml:"MaxUserNumber,omitempty"`
+	// The number of organizations.
+	//
 	// example:
 	//
 	// 278
 	OrgCount *int32 `json:"OrgCount,omitempty" xml:"OrgCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9677D40F-0040-5956-A0EB-11B8B88****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of users.
+	//
 	// example:
 	//
 	// 200

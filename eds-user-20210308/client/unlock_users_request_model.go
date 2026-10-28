@@ -18,19 +18,19 @@ type iUnlockUsersRequest interface {
 }
 
 type UnlockUsersRequest struct {
-	// The date on which the convenience users are automatically locked.
+	// The date when the convenience user is automatically locked. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2023-03-03
 	AutoLockTime *string `json:"AutoLockTime,omitempty" xml:"AutoLockTime,omitempty"`
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The usernames of the convenience users that you want to unlock.
+	// The list of usernames of the convenience users to unlock.
 	//
 	// This parameter is required.
 	//

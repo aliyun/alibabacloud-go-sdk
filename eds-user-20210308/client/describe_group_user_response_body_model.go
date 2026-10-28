@@ -20,21 +20,21 @@ type iDescribeGroupUserResponseBody interface {
 }
 
 type DescribeGroupUserResponseBody struct {
-	// >  This field is deprecated.
+	// > **[Deprecated]*	- This field is deprecated.
 	Groups []*DescribeGroupUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The token for the next query. If NextToken is empty, all results have been queried.
+	// The token for the next query. If NextToken is empty, all results have been returned.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// AA8D67CB-345D-5CDA-986E-FFAC7D0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The members.
+	// The list of members.
 	Users []*DescribeGroupUserResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -105,7 +105,7 @@ func (s *DescribeGroupUserResponseBody) Validate() error {
 }
 
 type DescribeGroupUserResponseBodyGroups struct {
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
@@ -115,9 +115,9 @@ type DescribeGroupUserResponseBodyGroups struct {
 	//
 	// example:
 	//
-	// 开发组
+	// Development team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The number of members in the user group.
+	// The number of members.
 	//
 	// example:
 	//
@@ -165,13 +165,13 @@ func (s *DescribeGroupUserResponseBodyGroups) Validate() error {
 }
 
 type DescribeGroupUserResponseBodyUsers struct {
-	// >  This field is deprecated.
+	// > **[Deprecated]*	- This field is deprecated.
 	//
 	// example:
 	//
 	// xx-xx-xx
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// >  This field is deprecated.
+	// > **[Deprecated]*	- This field is deprecated.
 	//
 	// example:
 	//
@@ -183,7 +183,7 @@ type DescribeGroupUserResponseBodyUsers struct {
 	//
 	// alex****@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The user name.
+	// The username.
 	//
 	// example:
 	//
@@ -195,13 +195,13 @@ type DescribeGroupUserResponseBodyUsers struct {
 	//
 	// 2024-08-26T02:59:22.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the user was added to the user group.
+	// The time when the member was added.
 	//
 	// example:
 	//
 	// 2024-08-26T02:59:22.000+00:00
 	GmtJoinGroup *string `json:"GmtJoinGroup,omitempty" xml:"GmtJoinGroup,omitempty"`
-	// >  This field is deprecated.
+	// > **[Deprecated]*	- This field is deprecated.
 	//
 	// example:
 	//
@@ -213,13 +213,13 @@ type DescribeGroupUserResponseBodyUsers struct {
 	//
 	// alex
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The mobile number.
+	// The mobile phone number.
 	//
 	// example:
 	//
 	// 138****1111
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The remarks on the user.
+	// The remarks of the user.
 	//
 	// example:
 	//

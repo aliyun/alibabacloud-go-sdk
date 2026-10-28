@@ -18,25 +18,19 @@ type iBatchSetDesktopManagerRequest interface {
 }
 
 type BatchSetDesktopManagerRequest struct {
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// Whether the convenience account has the local administrator permissions on cloud computers.
-	//
-	// Valid values:
-	//
-	// 	- 0: no
-	//
-	// 	- 1 (default): yes
+	// Specifies whether the convenience account has local administrator permissions on the cloud desktop.
 	//
 	// example:
 	//
 	// 1
 	IsDesktopManager *string `json:"IsDesktopManager,omitempty" xml:"IsDesktopManager,omitempty"`
-	// The convenience accounts.
+	// The list of convenience accounts.
 	//
 	// This parameter is required.
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`

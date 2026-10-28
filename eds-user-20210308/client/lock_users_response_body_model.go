@@ -16,7 +16,7 @@ type iLockUsersResponseBody interface {
 }
 
 type LockUsersResponseBody struct {
-	// The result of the LockUsers operation.
+	// The result of the lock operation for the convenience accounts.
 	LockUsersResult *LockUsersResponseBodyLockUsersResult `json:"LockUsersResult,omitempty" xml:"LockUsersResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,9 +62,9 @@ func (s *LockUsersResponseBody) Validate() error {
 }
 
 type LockUsersResponseBodyLockUsersResult struct {
-	// A list of convenience accounts that failed to lock.
+	// The list of convenience accounts that failed to be locked.
 	FailedUsers []*LockUsersResponseBodyLockUsersResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
-	// A list of successfully locked convenience accounts.
+	// The list of convenience accounts that are successfully locked.
 	LockedUsers []*string `json:"LockedUsers,omitempty" xml:"LockedUsers,omitempty" type:"Repeated"`
 }
 
@@ -108,7 +108,7 @@ func (s *LockUsersResponseBodyLockUsersResult) Validate() error {
 }
 
 type LockUsersResponseBodyLockUsersResultFailedUsers struct {
-	// The username of the convenience account that failed to lock.
+	// The convenience account that failed to be locked.
 	//
 	// example:
 	//

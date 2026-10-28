@@ -24,7 +24,7 @@ type iQuerySyncStatusByAliUidResponseBody interface {
 }
 
 type QuerySyncStatusByAliUidResponseBody struct {
-	// System status code.
+	// The system status code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type QuerySyncStatusByAliUidResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned when the request fails.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type QuerySyncStatusByAliUidResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *QuerySyncStatusByAliUidResponseBody) Validate() error {
 }
 
 type QuerySyncStatusByAliUidResponseBodyData struct {
-	// Alibaba Cloud account ID.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -142,37 +142,37 @@ type QuerySyncStatusByAliUidResponseBodyData struct {
 	//
 	// cdrs948144195608****
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// Creation Time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2020-06-30 07:50:42
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The updated at time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2022-03-02 14:27:39
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Auto increment ID.
+	// The auto-increment ID.
 	//
 	// example:
 	//
 	// 18500
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The latest start time.
+	// The last start time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-03-02 14:31:39
 	LatestBeginTime *string `json:"LatestBeginTime,omitempty" xml:"LatestBeginTime,omitempty"`
-	// The latest end time, regardless of whether the operation succeeded or failed.
+	// The last end time, regardless of success or failure. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-03-02 16:13:12
 	LatestEndTime *string `json:"LatestEndTime,omitempty" xml:"LatestEndTime,omitempty"`
-	// The latest success time.
+	// The last success time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

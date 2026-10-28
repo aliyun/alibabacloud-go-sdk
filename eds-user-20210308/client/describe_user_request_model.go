@@ -18,19 +18,19 @@ type iDescribeUserRequest interface {
 }
 
 type DescribeUserRequest struct {
-	// Business type.
+	// The business type.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// Username.
+	// The username.
 	//
 	// example:
 	//
 	// alex
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// List of attributes to query.
+	// The list of attributes to query.
 	RequireExtraAttributes []*string `json:"RequireExtraAttributes,omitempty" xml:"RequireExtraAttributes,omitempty" type:"Repeated"`
 }
 

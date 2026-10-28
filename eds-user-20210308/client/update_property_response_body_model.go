@@ -16,13 +16,13 @@ type iUpdatePropertyResponseBody interface {
 }
 
 type UpdatePropertyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the modification.
+	// The update result.
 	UpdateResult *UpdatePropertyResponseBodyUpdateResult `json:"UpdateResult,omitempty" xml:"UpdateResult,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *UpdatePropertyResponseBody) Validate() error {
 }
 
 type UpdatePropertyResponseBodyUpdateResult struct {
-	// The ID of the property.
+	// The property ID.
 	//
 	// example:
 	//
 	// 390
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The name of the property.
+	// The property name.
 	//
 	// example:
 	//
 	// testkey2
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The result of the property value modification.
+	// The property value update result.
 	SavePropertyValueModel *UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel `json:"SavePropertyValueModel,omitempty" xml:"SavePropertyValueModel,omitempty" type:"Struct"`
 }
 
@@ -123,9 +123,9 @@ func (s *UpdatePropertyResponseBodyUpdateResult) Validate() error {
 }
 
 type UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel struct {
-	// The property values that failed to be modified.
+	// The property values that failed to update.
 	FailedPropertyValues []*UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedPropertyValues `json:"FailedPropertyValues,omitempty" xml:"FailedPropertyValues,omitempty" type:"Repeated"`
-	// The property values that were modified.
+	// The successfully updated property values.
 	SavePropertyValues []*UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelSavePropertyValues `json:"SavePropertyValues,omitempty" xml:"SavePropertyValues,omitempty" type:"Repeated"`
 }
 
@@ -190,13 +190,13 @@ type UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedPropertyV
 	//
 	// The property value is used by another property.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the property.
+	// The property ID.
 	//
 	// example:
 	//
 	// 390
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The value of the property.
+	// The property value.
 	//
 	// example:
 	//
@@ -253,13 +253,13 @@ func (s *UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedPrope
 }
 
 type UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelSavePropertyValues struct {
-	// The value of the property.
+	// The property value.
 	//
 	// example:
 	//
 	// testvalue2
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	// The ID of the property value.
+	// The property value ID.
 	//
 	// example:
 	//

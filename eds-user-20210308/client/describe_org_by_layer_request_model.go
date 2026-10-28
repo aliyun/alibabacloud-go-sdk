@@ -18,7 +18,7 @@ type iDescribeOrgByLayerRequest interface {
 }
 
 type DescribeOrgByLayerRequest struct {
-	// Channel
+	// The business channel.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type DescribeOrgByLayerRequest struct {
 	//
 	// example:
 	//
-	// 产品部
+	// Product Department
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	// The ID of the parent organization.
 	//

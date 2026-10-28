@@ -14,6 +14,8 @@ type iTransferResourcesIntoGroupResponseBody interface {
 }
 
 type TransferResourcesIntoGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// AA8D67CB-345D-5CDA-986E-FFAC7D0****

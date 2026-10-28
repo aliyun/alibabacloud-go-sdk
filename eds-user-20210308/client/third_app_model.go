@@ -20,10 +20,14 @@ type iThirdApp interface {
 }
 
 type ThirdApp struct {
-	AppKey        *string                `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Name          *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The application ID.
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The application name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The OIDC configuration.
 	OidcSsoConfig *ThirdAppOidcSsoConfig `json:"OidcSsoConfig,omitempty" xml:"OidcSsoConfig,omitempty" type:"Struct"`
-	Secrets       []*ThirdAppSecrets     `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
+	// The secrets.
+	Secrets []*ThirdAppSecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
 }
 
 func (s ThirdApp) String() string {
@@ -89,16 +93,26 @@ func (s *ThirdApp) Validate() error {
 }
 
 type ThirdAppOidcSsoConfig struct {
-	AccessTokenEffectiveTime *int32                          `json:"AccessTokenEffectiveTime,omitempty" xml:"AccessTokenEffectiveTime,omitempty"`
-	CodeEffectiveTime        *int32                          `json:"CodeEffectiveTime,omitempty" xml:"CodeEffectiveTime,omitempty"`
-	EnableAuthLogin          *bool                           `json:"EnableAuthLogin,omitempty" xml:"EnableAuthLogin,omitempty"`
-	Endpoints                *ThirdAppOidcSsoConfigEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	GrantScopes              []*string                       `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
-	GrantTypes               []*string                       `json:"GrantTypes,omitempty" xml:"GrantTypes,omitempty" type:"Repeated"`
-	IdTokenAlgorithmType     *string                         `json:"IdTokenAlgorithmType,omitempty" xml:"IdTokenAlgorithmType,omitempty"`
-	IdTokenEffectiveTime     *int32                          `json:"IdTokenEffectiveTime,omitempty" xml:"IdTokenEffectiveTime,omitempty"`
-	RedirectUris             []*string                       `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Repeated"`
-	RefreshTokenEffective    *int32                          `json:"RefreshTokenEffective,omitempty" xml:"RefreshTokenEffective,omitempty"`
+	// 1
+	AccessTokenEffectiveTime *int32 `json:"AccessTokenEffectiveTime,omitempty" xml:"AccessTokenEffectiveTime,omitempty"`
+	// 1
+	CodeEffectiveTime *int32 `json:"CodeEffectiveTime,omitempty" xml:"CodeEffectiveTime,omitempty"`
+	// Specifies whether to enable authorized logon.
+	EnableAuthLogin *bool `json:"EnableAuthLogin,omitempty" xml:"EnableAuthLogin,omitempty"`
+	// The endpoints.
+	Endpoints *ThirdAppOidcSsoConfigEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	// The grant scopes.
+	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
+	// The grant types.
+	GrantTypes []*string `json:"GrantTypes,omitempty" xml:"GrantTypes,omitempty" type:"Repeated"`
+	// The signature type.
+	IdTokenAlgorithmType *string `json:"IdTokenAlgorithmType,omitempty" xml:"IdTokenAlgorithmType,omitempty"`
+	// 1
+	IdTokenEffectiveTime *int32 `json:"IdTokenEffectiveTime,omitempty" xml:"IdTokenEffectiveTime,omitempty"`
+	// The URI whitelist.
+	RedirectUris []*string `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Repeated"`
+	// 1
+	RefreshTokenEffective *int32 `json:"RefreshTokenEffective,omitempty" xml:"RefreshTokenEffective,omitempty"`
 }
 
 func (s ThirdAppOidcSsoConfig) String() string {
@@ -209,15 +223,24 @@ func (s *ThirdAppOidcSsoConfig) Validate() error {
 }
 
 type ThirdAppOidcSsoConfigEndpoints struct {
-	AuthorizationEndpoint      *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
-	DiscoveryEndpoint          *string `json:"DiscoveryEndpoint,omitempty" xml:"DiscoveryEndpoint,omitempty"`
+	// The authorization endpoint.
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
+	// The discovery endpoint.
+	DiscoveryEndpoint *string `json:"DiscoveryEndpoint,omitempty" xml:"DiscoveryEndpoint,omitempty"`
+	// The guest authorization endpoint.
 	GuestAuthorizationEndpoint *string `json:"GuestAuthorizationEndpoint,omitempty" xml:"GuestAuthorizationEndpoint,omitempty"`
-	Issuer                     *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	JwksEndpoint               *string `json:"JwksEndpoint,omitempty" xml:"JwksEndpoint,omitempty"`
-	LogoutEndpoint             *string `json:"LogoutEndpoint,omitempty" xml:"LogoutEndpoint,omitempty"`
-	RevokeEndpoint             *string `json:"RevokeEndpoint,omitempty" xml:"RevokeEndpoint,omitempty"`
-	TokenEndpoint              *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
-	UserinfoEndpoint           *string `json:"UserinfoEndpoint,omitempty" xml:"UserinfoEndpoint,omitempty"`
+	// Issuer
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The signature public key endpoint.
+	JwksEndpoint *string `json:"JwksEndpoint,omitempty" xml:"JwksEndpoint,omitempty"`
+	// The logout endpoint.
+	LogoutEndpoint *string `json:"LogoutEndpoint,omitempty" xml:"LogoutEndpoint,omitempty"`
+	// The revocation endpoint.
+	RevokeEndpoint *string `json:"RevokeEndpoint,omitempty" xml:"RevokeEndpoint,omitempty"`
+	// The token endpoint.
+	TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
+	// The user information endpoint.
+	UserinfoEndpoint *string `json:"UserinfoEndpoint,omitempty" xml:"UserinfoEndpoint,omitempty"`
 }
 
 func (s ThirdAppOidcSsoConfigEndpoints) String() string {
@@ -314,7 +337,9 @@ func (s *ThirdAppOidcSsoConfigEndpoints) Validate() error {
 }
 
 type ThirdAppSecrets struct {
-	Enable *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Specifies whether it is enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ciphertext.
 	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
 }
 

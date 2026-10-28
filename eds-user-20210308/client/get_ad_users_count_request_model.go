@@ -18,14 +18,20 @@ type iGetAdUsersCountRequest interface {
 }
 
 type GetAdUsersCountRequest struct {
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The business channel type.
+	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	// > This parameter is not publicly available.
+	//
 	// example:
 	//
 	// co-0esnf80jab***

@@ -30,7 +30,7 @@ type GetManagerInfoByAuthCodeResponseBody struct {
 	//
 	// 12345678901234****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The mobile number.
+	// The phone number.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetManagerInfoByAuthCodeResponseBody struct {
 	//
 	// zhangsan
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The ID of the Elastic Desktop Service account.
+	// The Wuying account ID of the tenant.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iInitTenantAliasResponseBody interface {
 }
 
 type InitTenantAliasResponseBody struct {
-	// The data returned.
+	// The returned data.
 	AliasInfo *InitTenantAliasResponseBodyAliasInfo `json:"AliasInfo,omitempty" xml:"AliasInfo,omitempty" type:"Struct"`
-	// The generated ID of the organization.
+	// The generated organization ID.
 	//
 	// example:
 	//
@@ -79,13 +79,13 @@ func (s *InitTenantAliasResponseBody) Validate() error {
 }
 
 type InitTenantAliasResponseBodyAliasInfo struct {
-	// The reason why modification is not allowed.
+	// The reason why editing is not allowed.
 	//
 	// example:
 	//
 	// FrequencyExceedsLimit
 	AliasEditDisabledReason *string `json:"AliasEditDisabledReason,omitempty" xml:"AliasEditDisabledReason,omitempty"`
-	// Indicates whether modification is allowed.
+	// Indicates whether editing is allowed.
 	//
 	// example:
 	//
@@ -93,17 +93,11 @@ type InitTenantAliasResponseBodyAliasInfo struct {
 	AliasEditable *bool `json:"AliasEditable,omitempty" xml:"AliasEditable,omitempty"`
 	// The source of the organization ID.
 	//
-	// Valid values:
-	//
-	// 	- Generated: auto-generated.
-	//
-	// 	- Customized: user-defined.
-	//
 	// example:
 	//
 	// Customized
 	AliasSourceType *string `json:"AliasSourceType,omitempty" xml:"AliasSourceType,omitempty"`
-	// The time window during which modification is allowed.
+	// The time when editing is allowed, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

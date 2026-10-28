@@ -16,9 +16,9 @@ type iCreatePropertyResponseBody interface {
 }
 
 type CreatePropertyResponseBody struct {
-	// The result of creating the property.
+	// The creation result.
 	CreateResult *CreatePropertyResponseBodyCreateResult `json:"CreateResult,omitempty" xml:"CreateResult,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *CreatePropertyResponseBody) Validate() error {
 }
 
 type CreatePropertyResponseBodyCreateResult struct {
-	// The ID of the property.
+	// The property ID.
 	//
 	// example:
 	//
 	// 390
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The name of the property.
+	// The property key.
 	//
 	// example:
 	//
 	// department
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The result of creating the property value.
+	// The property value creation result.
 	SavePropertyValueModel *CreatePropertyResponseBodyCreateResultSavePropertyValueModel `json:"SavePropertyValueModel,omitempty" xml:"SavePropertyValueModel,omitempty" type:"Struct"`
 }
 
@@ -125,7 +125,7 @@ func (s *CreatePropertyResponseBodyCreateResult) Validate() error {
 type CreatePropertyResponseBodyCreateResultSavePropertyValueModel struct {
 	// The property values that failed to be created.
 	FailedPropertyValues []*CreatePropertyResponseBodyCreateResultSavePropertyValueModelFailedPropertyValues `json:"FailedPropertyValues,omitempty" xml:"FailedPropertyValues,omitempty" type:"Repeated"`
-	// Details of the property values that were created.
+	// The successfully created property values.
 	SavePropertyValues []*CreatePropertyResponseBodyCreateResultSavePropertyValueModelSavePropertyValues `json:"SavePropertyValues,omitempty" xml:"SavePropertyValues,omitempty" type:"Repeated"`
 }
 
@@ -190,13 +190,13 @@ type CreatePropertyResponseBodyCreateResultSavePropertyValueModelFailedPropertyV
 	//
 	// The property value is used by another property.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the property value.
+	// The property value ID.
 	//
 	// example:
 	//
 	// 390
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The value of the property.
+	// The property value.
 	//
 	// example:
 	//
@@ -253,13 +253,13 @@ func (s *CreatePropertyResponseBodyCreateResultSavePropertyValueModelFailedPrope
 }
 
 type CreatePropertyResponseBodyCreateResultSavePropertyValueModelSavePropertyValues struct {
-	// The value of the property.
+	// The property value.
 	//
 	// example:
 	//
 	// HR
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	// The ID of the property value.
+	// The property value ID.
 	//
 	// example:
 	//

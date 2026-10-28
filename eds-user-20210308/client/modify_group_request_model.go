@@ -20,7 +20,7 @@ type iModifyGroupRequest interface {
 }
 
 type ModifyGroupRequest struct {
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ModifyGroupRequest struct {
 	//
 	// ug-dzjax1ez5qgph****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the new user group.
+	// The new name of the user group.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 开发组
+	// Development group
 	NewGroupName *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
 }
 

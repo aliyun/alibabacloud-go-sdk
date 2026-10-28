@@ -11,18 +11,21 @@ type iRemoveUsersRequest interface {
 	GoString() string
 	SetBusinessChannel(v string) *RemoveUsersRequest
 	GetBusinessChannel() *string
+	SetUnbindDesktops(v bool) *RemoveUsersRequest
+	GetUnbindDesktops() *bool
 	SetUsers(v []*string) *RemoveUsersRequest
 	GetUsers() []*string
 }
 
 type RemoveUsersRequest struct {
-	// Channel
+	// The business channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The usernames of the convenience users that you want to remove.
+	UnbindDesktops  *bool   `json:"UnbindDesktops,omitempty" xml:"UnbindDesktops,omitempty"`
+	// The usernames of the convenience users to delete.
 	//
 	// This parameter is required.
 	//
@@ -44,12 +47,21 @@ func (s *RemoveUsersRequest) GetBusinessChannel() *string {
 	return s.BusinessChannel
 }
 
+func (s *RemoveUsersRequest) GetUnbindDesktops() *bool {
+	return s.UnbindDesktops
+}
+
 func (s *RemoveUsersRequest) GetUsers() []*string {
 	return s.Users
 }
 
 func (s *RemoveUsersRequest) SetBusinessChannel(v string) *RemoveUsersRequest {
 	s.BusinessChannel = &v
+	return s
+}
+
+func (s *RemoveUsersRequest) SetUnbindDesktops(v bool) *RemoveUsersRequest {
+	s.UnbindDesktops = &v
 	return s
 }
 

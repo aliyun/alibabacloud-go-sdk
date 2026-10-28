@@ -18,19 +18,19 @@ type iUnlockMfaDeviceRequest interface {
 }
 
 type UnlockMfaDeviceRequest struct {
-	// The domain of the Active Directory (AD) workspace.
+	// The address of the AD office network.
 	//
 	// example:
 	//
 	// welab.co.id
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The serial number of the virtual MFA device. The serial number is unique for each device.
+	// The serial number of the virtual MFA device. You can call [DescribeMfaDevices](~~DescribeMfaDevices~~) to obtain the serial number.
 	//
 	// This parameter is required.
 	//

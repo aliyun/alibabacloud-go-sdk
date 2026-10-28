@@ -39,32 +39,42 @@ type DescribeGroupsRequest struct {
 	// example:
 	//
 	// ENTERPRISE
-	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The business channel.
+	//
+	// example:
+	//
+	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// Specifies whether to exclude user groups that have associated logon policies.
+	// Specifies whether to exclude user groups that are associated with logon policies.
 	ExcludeAttachedLoginPolicyGroups *bool `json:"ExcludeAttachedLoginPolicyGroups,omitempty" xml:"ExcludeAttachedLoginPolicyGroups,omitempty"`
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
 	// ug-16nf7xxh4o9gc****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The user group name.
+	// The name of the user group.
 	//
 	// example:
 	//
 	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IdpId     *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	// Filters user groups by the specified associated logon policy.
+	// Filters user groups by the identity provider ID.
+	//
+	// example:
+	//
+	// idp-hlyexfvwert9m8****
+	IdpId *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// Specifies the ID of the associated logon policy for filtering.
 	LoginPolicyId *string `json:"LoginPolicyId,omitempty" xml:"LoginPolicyId,omitempty"`
-	// The page number for a paged query.
+	// The page number for paging in the paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+	// The number of entries per page for paging in the paged query Settings. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
@@ -76,7 +86,7 @@ type DescribeGroupsRequest struct {
 	//
 	// co-0esnf80jab***
 	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
-	// Indicates whether file approval is enabled.
+	// Specifies whether file approval is enabled.
 	//
 	// example:
 	//

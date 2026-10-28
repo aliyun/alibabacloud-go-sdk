@@ -26,38 +26,43 @@ type iDescribeMfaDevicesRequest interface {
 }
 
 type DescribeMfaDevicesRequest struct {
-	// The AD domain name.
+	// The address of the AD office network.
 	//
 	// example:
 	//
 	// cn.misumi.pri
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
-	// The business channel.
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// An array of end user usernames.
+	// The list of usernames of the convenience accounts.
 	//
 	// example:
 	//
 	// test
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	Filter     *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The maximum number of results to return per page. Valid range: 1–500.<br>Default value: 100.<br>
+	// Filters the virtual MFA devices by convenience account username.
+	//
+	// example:
+	//
+	// alice
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The maximum number of results to return. Valid values: 1 to 500. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results. This value is the `NextToken` returned from a previous call.
+	// The query token. Set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// An array of serial numbers for virtual MFA devices.
+	// The list of serial numbers of the virtual MFA devices.
 	//
 	// example:
 	//

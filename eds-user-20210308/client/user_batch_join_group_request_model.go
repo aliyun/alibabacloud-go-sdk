@@ -18,7 +18,7 @@ type iUserBatchJoinGroupRequest interface {
 }
 
 type UserBatchJoinGroupRequest struct {
-	// Channel
+	// The business channel.
 	//
 	// example:
 	//

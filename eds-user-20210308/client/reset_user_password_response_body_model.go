@@ -16,13 +16,13 @@ type iResetUserPasswordResponseBody interface {
 }
 
 type ResetUserPasswordResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 32D05B39-E6EE-4D7A-9FD0-762A26859D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of resetting the password of the convenience user.
+	// The result of the password reset operation for the convenience users.
 	ResetUsersResult *ResetUserPasswordResponseBodyResetUsersResult `json:"ResetUsersResult,omitempty" xml:"ResetUsersResult,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *ResetUserPasswordResponseBody) Validate() error {
 }
 
 type ResetUserPasswordResponseBodyResetUsersResult struct {
-	// The information about the convenience users whose passwords failed to be reset.
+	// The list of convenience users for whom the password reset failed.
 	FailedUsers []*ResetUserPasswordResponseBodyResetUsersResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
-	// The convenience users to which the system sent a password reset email.
+	// The list of convenience users to whom the password reset emails have been sent.
 	ResetUsers []*string `json:"ResetUsers,omitempty" xml:"ResetUsers,omitempty" type:"Repeated"`
 }
 
@@ -108,7 +108,7 @@ func (s *ResetUserPasswordResponseBodyResetUsersResult) Validate() error {
 }
 
 type ResetUserPasswordResponseBodyResetUsersResultFailedUsers struct {
-	// The ID of the convenience user whose password failed to be reset.
+	// The convenience user for whom the password reset failed.
 	//
 	// example:
 	//

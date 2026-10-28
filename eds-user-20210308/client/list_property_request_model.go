@@ -14,7 +14,7 @@ type iListPropertyRequest interface {
 }
 
 type ListPropertyRequest struct {
-	// Channel
+	// The business channel.
 	//
 	// example:
 	//

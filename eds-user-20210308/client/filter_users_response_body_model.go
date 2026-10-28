@@ -18,7 +18,7 @@ type iFilterUsersResponseBody interface {
 }
 
 type FilterUsersResponseBody struct {
-	// The token for paginated results. If the response is truncated, this parameter is returned. To retrieve the next page of results, include this value in a subsequent request.
+	// The token for the next query. If a query does not return all results, the returned NextToken is not empty. You can pass the returned NextToken in a subsequent query to continue the query.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type FilterUsersResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of convenience accounts.
+	// The collection of convenience user information.
 	Users []*FilterUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -83,19 +83,19 @@ func (s *FilterUsersResponseBody) Validate() error {
 }
 
 type FilterUsersResponseBodyUsers struct {
-	// The date the account will be automatically locked.
+	// The date when the account is automatically locked, in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2023-03-03
 	AutoLockTime *string `json:"AutoLockTime,omitempty" xml:"AutoLockTime,omitempty"`
-	// The number of cloud desktops assigned to the user.
+	// The number of cloud computers assigned to the user.
 	//
 	// example:
 	//
 	// 1
 	DesktopCount *int64 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
-	// The number of desktop groups the user can access. This parameter is returned only when `IncludeDesktopGroupCount` is set to `true`.
+	// The number of cloud computer pools authorized for the user. This value is returned when `IncludeDesktopGroupCount` is set to `true`.
 	//
 	// example:
 	//
@@ -107,21 +107,22 @@ type FilterUsersResponseBodyUsers struct {
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Indicates whether the user has local administrator permissions.
+	// Indicates whether the user is a local administrator.
 	//
 	// example:
 	//
 	// true
 	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	// The user name.
+	// The username.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// External user information.
+	// The extended user information.
 	ExternalInfo *FilterUsersResponseBodyUsersExternalInfo `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty" type:"Struct"`
-	Groups       []*FilterUsersResponseBodyUsersGroups     `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// The list of user groups to which the convenience user belongs.
+	Groups []*FilterUsersResponseBodyUsersGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The user ID.
 	//
 	// example:
@@ -134,56 +135,57 @@ type FilterUsersResponseBodyUsers struct {
 	//
 	// true
 	IsTenantManager *bool `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
-	// A list of organizations the user belongs to.
+	// The list of organizations to which the user belongs.
 	OrgList []*FilterUsersResponseBodyUsersOrgList `json:"OrgList,omitempty" xml:"OrgList,omitempty" type:"Repeated"`
-	// The account ownership type.
+	// The ownership type of the account.
 	//
 	// example:
 	//
 	// Normal
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	// The password validity period in days. By default, passwords do not expire. Set this to a value from 30 to 365 to enforce an expiration policy. When a password expires, the user must change it before logging on again.
+	// The password of the user account is valid permanently by default. You can use this parameter to set a password validity period of 30 to 365 days. After the password expires, the end user must change the password before logging on again.
 	//
-	// > This feature is in preview and available by invitation only. To use this feature, submit a ticket.
+	// > This feature is currently in invitational preview. To use this feature, submit a ticket.
 	//
 	// example:
 	//
 	// 30
 	PasswordExpireDays *int32 `json:"PasswordExpireDays,omitempty" xml:"PasswordExpireDays,omitempty"`
-	// The number of days until the password expires.
+	// The remaining days of the password validity period for the account.
 	//
 	// example:
 	//
 	// 10
 	PasswordExpireRestDays *int32 `json:"PasswordExpireRestDays,omitempty" xml:"PasswordExpireRestDays,omitempty"`
-	// The phone number.
+	// The mobile phone number.
 	//
 	// example:
 	//
 	// 1381111****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The user\\"s nickname.
+	// The user nickname.
 	//
 	// example:
 	//
-	// 小明
+	// Xiaoming
 	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
-	// The remark about the user.
+	// The user remarks.
 	//
 	// example:
 	//
-	// 测试专用
-	Remark             *string                                           `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// For testing only
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The list of resource policies associated with the convenience user.
 	ResourcePolicyList []*FilterUsersResponseBodyUsersResourcePolicyList `json:"ResourcePolicyList,omitempty" xml:"ResourcePolicyList,omitempty" type:"Repeated"`
-	// The status of the convenience account.
+	// The status of the convenience user.
 	//
 	// example:
 	//
 	// 0
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A list of identity providers (IdPs) that the user can use to log on.
+	// The supported logon identity sources.
 	SupportLoginIdps []*FilterUsersResponseBodyUsersSupportLoginIdps `json:"SupportLoginIdps,omitempty" xml:"SupportLoginIdps,omitempty" type:"Repeated"`
-	// A list of user properties.
+	// The collection of user properties.
 	UserSetPropertiesModels []*FilterUsersResponseBodyUsersUserSetPropertiesModels `json:"UserSetPropertiesModels,omitempty" xml:"UserSetPropertiesModels,omitempty" type:"Repeated"`
 }
 
@@ -439,13 +441,13 @@ func (s *FilterUsersResponseBodyUsers) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersExternalInfo struct {
-	// The name of the mapped external account.
+	// The name of the external account associated with the user.
 	//
 	// example:
 	//
 	// account
 	ExternalName *string `json:"ExternalName,omitempty" xml:"ExternalName,omitempty"`
-	// The ID of the external account, such as a student ID or an employee ID.
+	// The external account, student ID, or employee ID associated with the user.
 	//
 	// example:
 	//
@@ -484,7 +486,17 @@ func (s *FilterUsersResponseBodyUsersExternalInfo) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersGroups struct {
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The user group ID.
+	//
+	// example:
+	//
+	// ug-2412ojkwtybd****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The user group name.
+	//
+	// example:
+	//
+	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -519,11 +531,23 @@ func (s *FilterUsersResponseBodyUsersGroups) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersOrgList struct {
-	// The organization ID.
+	// The organization structure ID.
+	//
+	// example:
+	//
+	// org-1mox****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The organization name.
+	// The organization structure name.
+	//
+	// example:
+	//
+	// Design Department
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	// The organization name path.
+	// The organization structure name path.
+	//
+	// example:
+	//
+	// Product Department/Design Department
 	OrgNamePath *string `json:"OrgNamePath,omitempty" xml:"OrgNamePath,omitempty"`
 }
 
@@ -567,7 +591,9 @@ func (s *FilterUsersResponseBodyUsersOrgList) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersResourcePolicyList struct {
-	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The resource policy ID.
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The resource policy name.
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -602,9 +628,17 @@ func (s *FilterUsersResponseBodyUsersResourcePolicyList) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersSupportLoginIdps struct {
-	// The ID of the identity provider (IdP).
+	// The enterprise identity source ID.
+	//
+	// example:
+	//
+	// idp-hlyexfvwert9m8****
 	IdpId *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	// The name of the identity provider (IdP).
+	// The enterprise identity source name.
+	//
+	// example:
+	//
+	// DingTalk
 	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
 }
 
@@ -639,33 +673,33 @@ func (s *FilterUsersResponseBodyUsersSupportLoginIdps) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersUserSetPropertiesModels struct {
-	// The ID of the user property.
+	// The user property ID.
 	//
 	// example:
 	//
 	// 12
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The name of the user property.
+	// The user property name.
 	//
 	// example:
 	//
 	// department
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The type of the user property.
+	// The user property number.
 	//
 	// example:
 	//
 	// 2
 	PropertyType *int32 `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
-	// The property values.
+	// The user property value.
 	PropertyValues []*FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Repeated"`
-	// The ID of the user associated with the property.
+	// The ID of the user to which the property is bound.
 	//
 	// example:
 	//
 	// 4205**
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The user name associated with the property.
+	// The username of the user to which the property is bound.
 	//
 	// example:
 	//
@@ -749,13 +783,13 @@ func (s *FilterUsersResponseBodyUsersUserSetPropertiesModels) Validate() error {
 }
 
 type FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues struct {
-	// The property value.
+	// The user property value.
 	//
 	// example:
 	//
 	// dev
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	// The ID of the property value.
+	// The user property value ID.
 	//
 	// example:
 	//

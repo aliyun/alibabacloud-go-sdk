@@ -9,11 +9,11 @@ import (
 
 // Summary:
 //
-// Add or remove local administrator permissions on a cloud computer for a convenience account.
+// Grants or revokes local administrator permissions on a cloud desktop for a convenience account.
 //
 // Description:
 //
-// A convenience account with local administrator permissions can install software or modify certain system settings on the cloud computer.
+// A convenience account with local administrator permissions can install software or modify specific system settings on the cloud desktop.
 //
 // @param request - BatchSetDesktopManagerRequest
 //
@@ -65,7 +65,7 @@ func (client *Client) BatchSetDesktopManagerWithContext(ctx context.Context, req
 
 // Summary:
 //
-// When the administrator activates the mode, you can use this API to modify the user logon password.
+// Modifies the logon password of a user in administrator activation mode.
 //
 // @param request - ChangeUserPasswordRequest
 //
@@ -117,7 +117,7 @@ func (client *Client) ChangeUserPasswordWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Query the number of convenience accounts associated with a specified custom property.
+// Queries the number of convenience accounts associated with a specified custom property.
 //
 // @param request - CheckUsedPropertyRequest
 //
@@ -165,7 +165,7 @@ func (client *Client) CheckUsedPropertyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Query the number of convenience accounts associated with a specified custom attribute value.
+// Queries the number of convenience accounts associated with a specified custom property value.
 //
 // @param request - CheckUsedPropertyValueRequest
 //
@@ -217,7 +217,7 @@ func (client *Client) CheckUsedPropertyValueWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Create a group.
+// Creates a user group.
 //
 // @param request - CreateGroupRequest
 //
@@ -281,7 +281,7 @@ func (client *Client) CreateGroupWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Create an organization.
+// Creates an organization.
 //
 // @param request - CreateOrgRequest
 //
@@ -333,13 +333,13 @@ func (client *Client) CreateOrgWithContext(ctx context.Context, request *CreateO
 
 // Summary:
 //
-// Create a user attribute.
+// Creates a user property.
 //
 // Description:
 //
-// - You can create up to 10 different properties under one Alibaba Cloud account. Each property includes a property name (PropertyKey) and multiple attribute values (PropertyValue).
+// - You can create up to 10 different properties under an Alibaba Cloud account. Each property includes a property key (PropertyKey) and multiple property values (PropertyValue).
 //
-// - You can add up to 50 different attribute values to a single property.
+// - You can add up to 50 different property values to a single property.
 //
 // @param request - CreatePropertyRequest
 //
@@ -430,6 +430,10 @@ func (client *Client) CreateResourceGroupWithContext(ctx context.Context, reques
 		query["ResourceClassification"] = request.ResourceClassification
 	}
 
+	if !dara.IsNil(request.ResourceGroupDescription) {
+		query["ResourceGroupDescription"] = request.ResourceGroupDescription
+	}
+
 	if !dara.IsNil(request.ResourceGroupName) {
 		query["ResourceGroupName"] = request.ResourceGroupName
 	}
@@ -459,17 +463,13 @@ func (client *Client) CreateResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Easily create accounts for your end users.
+// Creates a convenience account for an end user.
 //
 // Description:
 //
-// <props="china">
+// <props="china">A convenience account is an account system dedicated to Wuying Workspace, which is suitable for simple scenarios where you do not want to connect to an enterprise Active Directory (AD). The information of a convenience account includes the username, email address, and phone number. The username is required, and you must specify at least one of the email address and phone number.
 //
-// A convenience account is a dedicated account system in Wuying Workspace for simple use cases that do not require enterprise AD integration. Accounts require a username, and either an email or a phone number.
-//
-// <props="intl">
-//
-// A convenience account is a dedicated account system in Wuying Workspace for simple use cases that do not require enterprise AD integration. Accounts require both a username and an email.
+// <props="intl">A convenience account is an account system dedicated to Wuying Workspace, which is suitable for simple scenarios where you do not want to connect to an enterprise Active Directory (AD). The information of a convenience account includes the username and email address, both of which are required.
 //
 // @param request - CreateUsersRequest
 //
@@ -535,7 +535,7 @@ func (client *Client) CreateUsersWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Delete a resource group.
+// Deletes a resource group.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -587,7 +587,7 @@ func (client *Client) DeleteResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Detach a user from a user attribute.
+// Dissociates a user from a user property.
 //
 // @param request - DeleteUserPropertyValueRequest
 //
@@ -643,7 +643,7 @@ func (client *Client) DeleteUserPropertyValueWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Query group members.
+// Queries the members of a user group.
 //
 // @param request - DescribeGroupUserRequest
 //
@@ -795,7 +795,7 @@ func (client *Client) DescribeGroupsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Lists virtual MFA devices bound to directory accounts.
+// Queries the virtual MFA devices bound to convenience accounts.
 //
 // @param request - DescribeMfaDevicesRequest
 //
@@ -863,7 +863,7 @@ func (client *Client) DescribeMfaDevicesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Find subordinate organizations.
+// Queries subordinate organizations.
 //
 // @param request - DescribeOrgByLayerRequest
 //
@@ -919,7 +919,7 @@ func (client *Client) DescribeOrgByLayerWithContext(ctx context.Context, request
 //
 // Description:
 //
-// Organizations have a tree structure. The root organization ID is org-aliyun-wy-org-id.
+// Organizations use a tree structure. The root organization ID is org-aliyun-wy-org-id.
 //
 // @param tmpReq - DescribeOrgsRequest
 //
@@ -1077,7 +1077,7 @@ func (client *Client) DescribeResourceGroupsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Query user basic information
+// Queries the basic information of a user.
 //
 // @param request - DescribeUserRequest
 //
@@ -1129,7 +1129,7 @@ func (client *Client) DescribeUserWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Queries convenience account information, such as usernames, email addresses, and remarks.
+// Queries the information of convenience users, such as usernames, email addresses, and remarks.
 //
 // @param tmpReq - DescribeUsersRequest
 //
@@ -1257,7 +1257,7 @@ func (client *Client) DescribeUsersWithContext(ctx context.Context, tmpReq *Desc
 
 // Summary:
 //
-// Filter account information by user attribute.
+// Queries convenience account information by filtering based on user property.
 //
 // @param tmpReq - FilterUsersRequest
 //
@@ -1383,13 +1383,13 @@ func (client *Client) FilterUsersWithContext(ctx context.Context, tmpReq *Filter
 
 // Summary:
 //
-// 获取用户数量
+// Retrieves the number of Active Directory (AD) users.
 //
 // Description:
 //
-// 出于安全考虑，您可以锁定便捷账号。被锁定的便捷用户无法登录无影终端，因此也无法访问任何无影云资源。
+// For security purposes, you can lock convenience accounts. Locked convenience users cannot log on to Wuying terminals and therefore cannot access any Wuying cloud resources.
 //
-// > 您可以调用[DescribeUsers](https://help.aliyun.com/document_detail/283609.html)查询便捷账号信息。若返回数据中`Status`取值为0，表示该便捷账号未被锁定；若`Status`取值为9，表示该便捷账号已被锁定。
+// > You can call [DescribeUsers](https://help.aliyun.com/document_detail/283609.html) to query convenience account information. If the `Status` value in the returned data is 0, the convenience account is not locked. If the `Status` value is 9, the convenience account is locked.
 //
 // @param request - GetAdUsersCountRequest
 //
@@ -1443,7 +1443,7 @@ func (client *Client) GetAdUsersCountWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Obtains the information about the current logon administrator based on the authorization code.
+// Retrieves the information about the currently logged-on administrator based on the authorization code.
 //
 // @param request - GetManagerInfoByAuthCodeRequest
 //
@@ -1487,13 +1487,13 @@ func (client *Client) GetManagerInfoByAuthCodeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取用户数量
+// Retrieves the total number of Wuying convenience users.
 //
 // Description:
 //
-// 出于安全考虑，您可以锁定便捷账号。被锁定的便捷用户无法登录无影终端，因此也无法访问任何无影云资源。
+// For security purposes, you can lock convenience accounts. Locked convenience users cannot log on to Wuying terminals and therefore cannot access any Wuying cloud resources.
 //
-// > 您可以调用[DescribeUsers](https://help.aliyun.com/document_detail/283609.html)查询便捷账号信息。若返回数据中`Status`取值为0，表示该便捷账号未被锁定；若`Status`取值为9，表示该便捷账号已被锁定。
+// > You can call [DescribeUsers](https://help.aliyun.com/document_detail/283609.html) to query convenience account information. If the `Status` value in the returned data is 0, the convenience account is not locked. If the `Status` value is 9, the convenience account is locked.
 //
 // @param request - GetUsersCountRequest
 //
@@ -1547,7 +1547,7 @@ func (client *Client) GetUsersCountWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Initialize the organization ID.
+// Initializes the organization ID.
 //
 // @param request - InitTenantAliasRequest
 //
@@ -1591,7 +1591,7 @@ func (client *Client) InitTenantAliasWithContext(ctx context.Context, request *I
 
 // Summary:
 //
-// Query the list of existing user attributes under the current account.
+// Queries the list of user properties under the current account.
 //
 // @param request - ListPropertyRequest
 //
@@ -1635,7 +1635,7 @@ func (client *Client) ListPropertyWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Query the list of attribute values for a specific user attribute.
+// Queries the list of property values for a specific user property.
 //
 // @param request - ListPropertyValueRequest
 //
@@ -1683,11 +1683,11 @@ func (client *Client) ListPropertyValueWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Lock the virtual MFA device attached to a convenience account.
+// Locks the virtual MFA device bound to a convenience account.
 //
 // Description:
 //
-// After locking, the status of the virtual MFA device changes to LOCKED. When the associated convenience account attempts to log on to a WUYING Terminal through an office network with MFA enabled, authentication will fail due to the locked MFA device, preventing successful logon. You can invoke [UnlockMfaDevice](~~UnlockMfaDevice~~) to unlock it.
+// After the device is locked, the status of the virtual MFA device changes to LOCKED. When the corresponding convenience account logs on to a Wuying terminal through an office network with MFA enabled, the logon fails because the MFA device cannot be authenticated. You can call [UnlockMfaDevice](~~UnlockMfaDevice~~) to unlock the device.
 //
 // @param request - LockMfaDeviceRequest
 //
@@ -1739,13 +1739,13 @@ func (client *Client) LockMfaDeviceWithContext(ctx context.Context, request *Loc
 
 // Summary:
 //
-// Locks one or more convenience accounts. Locked convenience accounts cannot be used to sign in to Wuying clients.
+// Locks one or more convenience accounts. Locked convenience accounts cannot log on to cloud desktop terminals.
 //
 // Description:
 //
-// For security purposes, you can lock convenience accounts. Locked convenience users cannot sign in to Wuying clients, and therefore cannot access any Wuying cloud resources.
+// For security purposes, you can lock convenience accounts. Locked convenience users cannot log on to cloud desktop terminals and therefore cannot access any cloud desktop resources.
 //
-// > Call the [DescribeUsers](https://help.aliyun.com/document_detail/283609.html) operation to check the lock status of convenience accounts. The `Status` value in the response is 0 for unlocked accounts and 9 for locked accounts.
+// > You can call [DescribeUsers](https://help.aliyun.com/document_detail/283609.html) to query convenience account information. If the `Status` value in the response is 0, the convenience account is not locked. If the `Status` value is 9, the convenience account is locked.
 //
 // @param request - LockUsersRequest
 //
@@ -1799,7 +1799,7 @@ func (client *Client) LockUsersWithContext(ctx context.Context, request *LockUse
 
 // Summary:
 //
-// Modify the name and description of a group.
+// Modifies the name and description of a user group.
 //
 // @param request - ModifyGroupRequest
 //
@@ -1855,7 +1855,7 @@ func (client *Client) ModifyGroupWithContext(ctx context.Context, request *Modif
 
 // Summary:
 //
-// Modify an organization.
+// Updates an organization.
 //
 // @param request - ModifyOrgRequest
 //
@@ -1907,7 +1907,7 @@ func (client *Client) ModifyOrgWithContext(ctx context.Context, request *ModifyO
 
 // Summary:
 //
-// Modify the contact information of a convenience account.
+// Updates the contact information of a convenience account.
 //
 // @param request - ModifyUserRequest
 //
@@ -1963,7 +1963,7 @@ func (client *Client) ModifyUserWithContext(ctx context.Context, request *Modify
 
 // Summary:
 //
-// Shift organization.
+// Moves an organization.
 //
 // @param request - MoveOrgRequest
 //
@@ -2015,7 +2015,7 @@ func (client *Client) MoveOrgWithContext(ctx context.Context, request *MoveOrgRe
 
 // Summary:
 //
-// Shift users to the target organization architecture.
+// Moves users to the target organizational structure.
 //
 // @param request - MoveUserOrgRequest
 //
@@ -2067,7 +2067,7 @@ func (client *Client) MoveUserOrgWithContext(ctx context.Context, request *MoveU
 
 // Summary:
 //
-// Query the user synchronization status.
+// Queries the user synchronization status.
 //
 // @param request - QuerySyncStatusByAliUidRequest
 //
@@ -2111,7 +2111,7 @@ func (client *Client) QuerySyncStatusByAliUidWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Delete a group. Supports batch operations.
+// Deletes one or more user groups. Batch operations are supported.
 //
 // @param request - RemoveGroupRequest
 //
@@ -2163,11 +2163,11 @@ func (client *Client) RemoveGroupWithContext(ctx context.Context, request *Remov
 
 // Summary:
 //
-// Delete the virtual MFA device attached to a convenience account.
+// Deletes the virtual MFA device bound to a convenience user.
 //
 // Description:
 //
-// Deleting the virtual MFA device attached to a convenience account unbinds the MFA device, which is equivalent to resetting or disabling it. The corresponding convenience account must reattach a new virtual MFA device when logging on to a WUYING Terminal.
+// Deleting the virtual MFA device bound to a convenience user unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The convenience user must bind a new virtual MFA device when logging on to the Wuying terminal.
 //
 // @param request - RemoveMfaDeviceRequest
 //
@@ -2219,7 +2219,7 @@ func (client *Client) RemoveMfaDeviceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Remove an organization.
+// Removes an organization.
 //
 // @param request - RemoveOrgRequest
 //
@@ -2267,7 +2267,7 @@ func (client *Client) RemoveOrgWithContext(ctx context.Context, request *RemoveO
 
 // Summary:
 //
-// Delete a set of user attributes.
+// Deletes a set of user properties.
 //
 // @param request - RemovePropertyRequest
 //
@@ -2317,7 +2317,7 @@ func (client *Client) RemovePropertyWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// Delete one or more convenience accounts.
+// Deletes one or more convenience users.
 //
 // @param request - RemoveUsersRequest
 //
@@ -2331,6 +2331,11 @@ func (client *Client) RemoveUsersWithContext(ctx context.Context, request *Remov
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.UnbindDesktops) {
+		query["UnbindDesktops"] = request.UnbindDesktops
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessChannel) {
 		body["BusinessChannel"] = request.BusinessChannel
@@ -2341,7 +2346,8 @@ func (client *Client) RemoveUsersWithContext(ctx context.Context, request *Remov
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("RemoveUsers"),
@@ -2365,7 +2371,7 @@ func (client *Client) RemoveUsersWithContext(ctx context.Context, request *Remov
 
 // Summary:
 //
-// Reset the password of a convenience account, including generating a password reset token and sending a password reset email to the mailbox of the convenience account.
+// Resets the password of a convenience user, including generating a password reset token and sending a password reset email to the email address of the convenience user.
 //
 // @param request - ResetUserPasswordRequest
 //
@@ -2417,7 +2423,7 @@ func (client *Client) ResetUserPasswordWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Associate a user attribute with a specific user.
+// Associates a user property with a specified user.
 //
 // @param request - SetUserPropertyValueRequest
 //
@@ -2477,7 +2483,7 @@ func (client *Client) SetUserPropertyValueWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 将资源转移到资源组中
+// Transfers resources to a resource group.
 //
 // @param request - TransferResourcesIntoGroupRequest
 //
@@ -2533,7 +2539,7 @@ func (client *Client) TransferResourcesIntoGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// 将资源从资源组中转出
+// Moves resources out of a resource group.
 //
 // @param request - TransferResourcesOutofGroupRequest
 //
@@ -2548,12 +2554,20 @@ func (client *Client) TransferResourcesOutofGroupWithContext(ctx context.Context
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppRuleId) {
+		query["AppRuleId"] = request.AppRuleId
+	}
+
 	if !dara.IsNil(request.BusinessChannel) {
 		query["BusinessChannel"] = request.BusinessChannel
 	}
 
 	if !dara.IsNil(request.Platform) {
 		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["PolicyId"] = request.PolicyId
 	}
 
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -2566,6 +2580,10 @@ func (client *Client) TransferResourcesOutofGroupWithContext(ctx context.Context
 
 	if !dara.IsNil(request.TargetResourceGroupId) {
 		query["TargetResourceGroupId"] = request.TargetResourceGroupId
+	}
+
+	if !dara.IsNil(request.TimerId) {
+		query["TimerId"] = request.TimerId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2593,7 +2611,7 @@ func (client *Client) TransferResourcesOutofGroupWithContext(ctx context.Context
 
 // Summary:
 //
-// Unlock the virtual MFA device attached to a convenience account.
+// Unlocks the virtual MFA device bound to a convenience account.
 //
 // @param request - UnlockMfaDeviceRequest
 //
@@ -2645,13 +2663,13 @@ func (client *Client) UnlockMfaDeviceWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Unlock one or more convenience accounts. After being unlocked, the convenience accounts can log on to WUYING Terminal.
+// Unlocks one or more convenience users. Unlocked convenience users can log on to Wuying terminals.
 //
 // Description:
 //
-// Locked convenience accounts cannot log on to WUYING Terminal and therefore cannot access any WUYING cloud resources. To allow a convenience account to log on to WUYING Terminal, you must first unlock it.
+// Locked convenience users cannot log on to Wuying terminals and therefore cannot access any Wuying cloud resources. To allow a convenience user to log on to a Wuying terminal, you must unlock the user first.
 //
-// > You can invoke [DescribeUsers](https://help.aliyun.com/document_detail/283609.html) to query convenience account information. If the value of `Status` in the returned data is 0, the convenience account is not locked. If the value of `Status` is 9, the convenience account is locked.
+// > You can call [DescribeUsers](https://help.aliyun.com/document_detail/283609.html) to query the information of convenience users. If the `Status` parameter in the response is 0, the convenience user is not locked. If the `Status` parameter is 9, the convenience user is locked.
 //
 // @param request - UnlockUsersRequest
 //
@@ -2705,7 +2723,7 @@ func (client *Client) UnlockUsersWithContext(ctx context.Context, request *Unloc
 
 // Summary:
 //
-// Modify User Attributes.
+// Updates user properties.
 //
 // @param request - UpdatePropertyRequest
 //
@@ -2763,7 +2781,7 @@ func (client *Client) UpdatePropertyWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Add users to a group in batch.
+// Adds users to a user group in batches.
 //
 // @param request - UserBatchJoinGroupRequest
 //
@@ -2815,7 +2833,7 @@ func (client *Client) UserBatchJoinGroupWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Remove users from a group in batch.
+// Removes multiple users from a user group.
 //
 // @param request - UserBatchQuitGroupRequest
 //

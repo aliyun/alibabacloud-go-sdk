@@ -14,6 +14,8 @@ type iTransferResourcesOutofGroupResponseBody interface {
 }
 
 type TransferResourcesOutofGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D2B1DF9E-576B-5B91-BAF6-2C3DD1****

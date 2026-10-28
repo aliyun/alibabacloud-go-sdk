@@ -16,9 +16,9 @@ type iRemoveUsersResponseBody interface {
 }
 
 type RemoveUsersResponseBody struct {
-	// The result of removing the convenience user.
+	// The result of deleting the convenience users.
 	RemoveUsersResult *RemoveUsersResponseBodyRemoveUsersResult `json:"RemoveUsersResult,omitempty" xml:"RemoveUsersResult,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,10 +62,12 @@ func (s *RemoveUsersResponseBody) Validate() error {
 }
 
 type RemoveUsersResponseBodyRemoveUsersResult struct {
-	// The convenience users that failed to be removed.
-	FailedUsers []*RemoveUsersResponseBodyRemoveUsersResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
-	// The convenience users that were removed.
-	RemovedUsers []*string `json:"RemovedUsers,omitempty" xml:"RemovedUsers,omitempty" type:"Repeated"`
+	// The information about the users that failed to be deleted.
+	FailedUsers     []*RemoveUsersResponseBodyRemoveUsersResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
+	ProcessingUsers []*string                                              `json:"ProcessingUsers,omitempty" xml:"ProcessingUsers,omitempty" type:"Repeated"`
+	// The convenience users that are successfully deleted.
+	RemovedUsers   []*string `json:"RemovedUsers,omitempty" xml:"RemovedUsers,omitempty" type:"Repeated"`
+	SubmittedUsers []*string `json:"SubmittedUsers,omitempty" xml:"SubmittedUsers,omitempty" type:"Repeated"`
 }
 
 func (s RemoveUsersResponseBodyRemoveUsersResult) String() string {
@@ -80,8 +82,16 @@ func (s *RemoveUsersResponseBodyRemoveUsersResult) GetFailedUsers() []*RemoveUse
 	return s.FailedUsers
 }
 
+func (s *RemoveUsersResponseBodyRemoveUsersResult) GetProcessingUsers() []*string {
+	return s.ProcessingUsers
+}
+
 func (s *RemoveUsersResponseBodyRemoveUsersResult) GetRemovedUsers() []*string {
 	return s.RemovedUsers
+}
+
+func (s *RemoveUsersResponseBodyRemoveUsersResult) GetSubmittedUsers() []*string {
+	return s.SubmittedUsers
 }
 
 func (s *RemoveUsersResponseBodyRemoveUsersResult) SetFailedUsers(v []*RemoveUsersResponseBodyRemoveUsersResultFailedUsers) *RemoveUsersResponseBodyRemoveUsersResult {
@@ -89,8 +99,18 @@ func (s *RemoveUsersResponseBodyRemoveUsersResult) SetFailedUsers(v []*RemoveUse
 	return s
 }
 
+func (s *RemoveUsersResponseBodyRemoveUsersResult) SetProcessingUsers(v []*string) *RemoveUsersResponseBodyRemoveUsersResult {
+	s.ProcessingUsers = v
+	return s
+}
+
 func (s *RemoveUsersResponseBodyRemoveUsersResult) SetRemovedUsers(v []*string) *RemoveUsersResponseBodyRemoveUsersResult {
 	s.RemovedUsers = v
+	return s
+}
+
+func (s *RemoveUsersResponseBodyRemoveUsersResult) SetSubmittedUsers(v []*string) *RemoveUsersResponseBodyRemoveUsersResult {
+	s.SubmittedUsers = v
 	return s
 }
 
@@ -108,7 +128,7 @@ func (s *RemoveUsersResponseBodyRemoveUsersResult) Validate() error {
 }
 
 type RemoveUsersResponseBodyRemoveUsersResultFailedUsers struct {
-	// The ID of the convenience user that failed to be removed.
+	// The convenience user that failed to be deleted.
 	//
 	// example:
 	//

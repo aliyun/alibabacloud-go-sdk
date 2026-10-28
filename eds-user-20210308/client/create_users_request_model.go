@@ -24,39 +24,39 @@ type iCreateUsersRequest interface {
 }
 
 type CreateUsersRequest struct {
-	// The date and time when the system automatically locks the convenience user\\"s account. The value must be in the `yyyy-MM-dd HH:mm:ss` format.
+	// The date when the account is automatically locked. Specify the date in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-11-28 00:00:00
 	AutoLockTime *string `json:"AutoLockTime,omitempty" xml:"AutoLockTime,omitempty"`
-	// The business channel.
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// Specifies whether to set the convenience user as a local administrator.
+	// Specifies whether to set the convenience account as a local administrator.
 	//
 	// example:
 	//
 	// true
 	IsLocalAdmin *bool `json:"IsLocalAdmin,omitempty" xml:"IsLocalAdmin,omitempty"`
-	// The initial password. If you do not specify this parameter, the system sends a password reset email to the convenience user\\"s email address.
+	// The initial password. If you do not specify this parameter, a password reset email is sent to the user\\"s email address.
 	//
 	// example:
 	//
 	// Test123****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// By default, a convenience user\\"s password does not expire. You can use this parameter to specify a password validity period of 30 to 365 days. After the password expires, the user must reset it to log in again.
+	// The validity period of the password for the user account. By default, the password never expires. You can set this parameter to a value from 30 to 365 to specify the validity period in days. After the password expires, the end user must change the password before logging on again.
 	//
-	// > This feature is in invited preview. To use this feature, submit a ticket.
+	// > This feature is in invitational preview. To use this feature, submit a ticket.
 	//
 	// example:
 	//
 	// 30
 	PasswordExpireDays *string `json:"PasswordExpireDays,omitempty" xml:"PasswordExpireDays,omitempty"`
-	// Details about the convenience users.
+	// The convenience account information.
 	//
 	// This parameter is required.
 	//
@@ -142,22 +142,23 @@ func (s *CreateUsersRequest) Validate() error {
 }
 
 type CreateUsersRequestUsers struct {
-	// The email address of the convenience user. This email address is used for notifications, such as an alert when a cloud computer is assigned. You must specify either this parameter or the `Phone` parameter.
+	// The email address. The email address is used to receive relevant emails, such as notification emails for cloud computer allocation. You must specify either the email address or the phone number.
 	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The user name. The user name must be 3 to 24 characters long and can contain lowercase letters, digits, and underscores (_).
+	// The username. The username is custom and must be 3 to 24 characters in length. It can contain only lowercase letters, digits, and underscores.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alice
-	EndUserId   *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The IDs of the user groups to join.
 	GroupIdList []*string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty" type:"Repeated"`
-	// The ID of the organization to which the convenience user belongs.
+	// The organization to which the user belongs.
 	//
 	// example:
 	//
@@ -169,35 +170,29 @@ type CreateUsersRequestUsers struct {
 	//
 	// Normal
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	// The password for the convenience user.
+	// The user password.
 	//
-	// > The password must be at least 10 characters long and contain characters from at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (excluding spaces).
+	// > The password must be at least 10 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (excluding spaces).
 	//
 	// example:
 	//
 	// Wuying1234
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// <props="china">
+	// <props="china">The phone number. The phone number is used to receive relevant text messages, such as notification text messages for cloud computer allocation. You must specify either the email address or the phone number.
 	//
-	// The phone number of the convenience user. This phone number is used for notifications, such as a text message when a cloud computer is assigned. You must specify either this parameter or the `Email` parameter.
-	//
-	//
-	//
-	// <props="intl">
-	//
-	// Phone numbers are not supported on the international site.
+	// <props="intl">Phone numbers are not supported on the international site.
 	//
 	// example:
 	//
 	// 1381111****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The display name of the convenience user.
+	// The display name of the user.
 	//
 	// example:
 	//
 	// Bean
 	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
-	// A remark for the convenience user.
+	// The user remarks.
 	//
 	// example:
 	//

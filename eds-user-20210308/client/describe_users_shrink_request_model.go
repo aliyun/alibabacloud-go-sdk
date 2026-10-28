@@ -55,20 +55,27 @@ type DescribeUsersShrinkRequest struct {
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The list of usernames (EndUserId) for exact match.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The list of usernames (EndUserId) to exclude exactly.
+	// The list of usernames (EndUserId) to be exactly excluded.
 	ExcludeEndUserIds []*string `json:"ExcludeEndUserIds,omitempty" xml:"ExcludeEndUserIds,omitempty" type:"Repeated"`
-	ExcludeGroupId    *string   `json:"ExcludeGroupId,omitempty" xml:"ExcludeGroupId,omitempty"`
-	// The fuzzy search string that supports matching by username (EndUserId) and email (Email). This field supports wildcards (*). For example, if you set this field to `a*m`, all results whose username or email starts with `a` and ends with `m` are returned.
+	// Excludes convenience users that belong to the specified user group.
+	//
+	// example:
+	//
+	// ug-12341234****
+	ExcludeGroupId *string `json:"ExcludeGroupId,omitempty" xml:"ExcludeGroupId,omitempty"`
+	// The fuzzy search string. This parameter supports matching usernames (EndUserId) and email addresses (Email). This field supports wildcards (*). For example, if you set this field to `a*m`, all results where the username or email address starts with `a` and ends with `m` are returned.
 	//
 	// example:
 	//
 	// a*m
-	Filter                           *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	FilterMapShrink                  *string `json:"FilterMap,omitempty" xml:"FilterMap,omitempty"`
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The mapping of fuzzy match conditions for user information. This parameter supports usernames, nicknames, mobile phone numbers, email addresses, remarks, and employee IDs.
+	FilterMapShrink *string `json:"FilterMap,omitempty" xml:"FilterMap,omitempty"`
+	// Filters users based on the allocation relationship of specified resources. The mapping key is the resource type.
 	FilterWithAssignedResourceShrink *string `json:"FilterWithAssignedResource,omitempty" xml:"FilterWithAssignedResource,omitempty"`
-	// Filters users based on whether cloud resources are assigned.
+	// Filters users based on whether cloud resources are allocated.
 	FilterWithAssignedResourcesShrink *string `json:"FilterWithAssignedResources,omitempty" xml:"FilterWithAssignedResources,omitempty"`
-	// Performs an exact match by user group ID and queries the list of accounts that belong to the specified user group.
+	// The user group ID for exact match. Queries the list of accounts that belong to the specified user group.
 	//
 	// example:
 	//
@@ -80,7 +87,7 @@ type DescribeUsersShrinkRequest struct {
 	//
 	// true
 	IsQueryAllSubOrgs *bool `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries to return on each page in a paging query.
 	//
 	// - Valid values: 1 to 500.
 	//
@@ -90,22 +97,28 @@ type DescribeUsersShrinkRequest struct {
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. You do not need to set this parameter for the first request. If not all results are returned in a single query, a non-empty NextToken is returned. You can pass the returned NextToken in subsequent requests to continue the query.
+	// The token for the next query. You do not need to specify this parameter for the first call.
+	//
+	// If the results returned in a single call do not include all entries, a non-empty NextToken is returned. You can use the returned NextToken in subsequent calls to continue the query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Performs an exact match by organization ID and queries the list of accounts that belong to the specified organization.
+	// The organization ID for exact match. Queries the list of accounts that belong to the specified organization.
 	//
 	// example:
 	//
 	// org-4mdgc1cocc59z****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// Queries extended user information.
+	// The extended information of users to query.
 	ShowExtrasShrink *string `json:"ShowExtras,omitempty" xml:"ShowExtras,omitempty"`
 	SolutionId       *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 	// The status.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

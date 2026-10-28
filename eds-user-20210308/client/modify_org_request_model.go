@@ -18,7 +18,7 @@ type iModifyOrgRequest interface {
 }
 
 type ModifyOrgRequest struct {
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ModifyOrgRequest struct {
 	//
 	// example:
 	//
-	// 开发部。
+	// Development Department
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 }
 

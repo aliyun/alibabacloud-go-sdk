@@ -18,13 +18,13 @@ type iCreatePropertyRequest interface {
 }
 
 type CreatePropertyRequest struct {
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The property name.
+	// The property key.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreatePropertyRequest struct {
 	//
 	// department
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The values of the property. You can specify up to 50 values for a property.
+	// The property values. You can add up to 50 different property values to a single property.
 	PropertyValues []*string `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Repeated"`
 }
 

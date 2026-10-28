@@ -22,13 +22,13 @@ type iSetUserPropertyValueRequest interface {
 }
 
 type SetUserPropertyValueRequest struct {
-	// Channel
+	// The business channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property ID.
+	// The property ID. You can call the [ListProperty](~~ListProperty~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type SetUserPropertyValueRequest struct {
 	//
 	// 240**
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The ID of the property value. You can call the [ListProperty](~~ListProperty~~) operation to query the ID of the property value.
+	// The property value ID. You can call the [ListProperty](~~ListProperty~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type SetUserPropertyValueRequest struct {
 	//
 	// 2251**
 	PropertyValueId *int64 `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
-	// The ID of the convenience user. You can call the [DescribeUsers](~~DescribeUsers~~) operation to query the user ID.
+	// The user ID. You can call the [DescribeUsers](~~DescribeUsers~~) operation to obtain this parameter, which corresponds to the value of the `Id` response parameter.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type SetUserPropertyValueRequest struct {
 	//
 	// 111****
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the convenience user.
+	// The username. You can call the [DescribeUsers](~~DescribeUsers~~) operation to obtain this parameter, which corresponds to the value of the `EndUserId` response parameter.
 	//
 	// This parameter is required.
 	//

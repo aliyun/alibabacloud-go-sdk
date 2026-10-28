@@ -18,15 +18,15 @@ type iListPropertyResponseBody interface {
 }
 
 type ListPropertyResponseBody struct {
-	// The token that is used for the next query. If this parameter is empty, all results have been returned.
+	// The token used to start the next query. An empty NextToken indicates that no more results are available.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The information about the properties.
+	// The property information.
 	Properties []*ListPropertyResponseBodyProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,19 +83,19 @@ func (s *ListPropertyResponseBody) Validate() error {
 }
 
 type ListPropertyResponseBodyProperties struct {
-	// The ID of the property.
+	// The property ID.
 	//
 	// example:
 	//
 	// 30
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The name of the property.
+	// The property name.
 	//
 	// example:
 	//
 	// department
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// Details about the property values.
+	// The property value information.
 	PropertyValues []*ListPropertyResponseBodyPropertiesPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Repeated"`
 }
 
@@ -148,13 +148,13 @@ func (s *ListPropertyResponseBodyProperties) Validate() error {
 }
 
 type ListPropertyResponseBodyPropertiesPropertyValues struct {
-	// The value of the property.
+	// The property value.
 	//
 	// example:
 	//
 	// A
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	// The ID of the property value.
+	// The property value ID.
 	//
 	// example:
 	//

@@ -18,13 +18,13 @@ type iUserBatchQuitGroupRequest interface {
 }
 
 type UserBatchQuitGroupRequest struct {
-	// Channel
+	// The business channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The user IDs.
+	// The list of user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The ID of the user group.
 	//

@@ -16,9 +16,9 @@ type iDescribeOrgByLayerResponseBody interface {
 }
 
 type DescribeOrgByLayerResponseBody struct {
-	// The organizations.
+	// The list of organization information.
 	Orgs []*DescribeOrgByLayerResponseBodyOrgs `json:"Orgs,omitempty" xml:"Orgs,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeOrgByLayerResponseBodyOrgs struct {
 	//
 	// example:
 	//
-	// 开发部
+	// Development Department
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	// The ID of the parent organization.
 	//

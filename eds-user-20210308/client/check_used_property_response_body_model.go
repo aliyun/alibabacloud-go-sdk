@@ -16,13 +16,13 @@ type iCheckUsedPropertyResponseBody interface {
 }
 
 type CheckUsedPropertyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 22C97624-2405-54AC-BD44-A63FBE97****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of convenience users that are associated with the property.
+	// The number of convenience accounts associated with the specified custom property.
 	//
 	// example:
 	//

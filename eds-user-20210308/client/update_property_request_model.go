@@ -20,13 +20,13 @@ type iUpdatePropertyRequest interface {
 }
 
 type UpdatePropertyRequest struct {
-	// Channel
+	// The business channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The ID of the property that you want to modify. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
+	// The ID of the property to update. You can call [ListProperty](~~ListProperty~~) to query the property ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdatePropertyRequest struct {
 	//
 	// 390
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The new property name.
+	// The updated property name.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,9 @@ type UpdatePropertyRequest struct {
 	//
 	// testkey
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The values of property.
+	// The list of all updated property values for the property.
+	//
+	// 	Notice: The property values specified here overwrite the existing property values instead of appending to them.
 	PropertyValues []*UpdatePropertyRequestPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Repeated"`
 }
 
@@ -104,13 +106,13 @@ func (s *UpdatePropertyRequest) Validate() error {
 }
 
 type UpdatePropertyRequestPropertyValues struct {
-	// The new property value.
+	// The updated property value.
 	//
 	// example:
 	//
 	// testvalue
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	// The ID of property value that you want to modify. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property value ID.
+	// The ID of the updated property value.
 	//
 	// example:
 	//

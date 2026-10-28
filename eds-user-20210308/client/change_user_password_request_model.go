@@ -18,7 +18,7 @@ type iChangeUserPasswordRequest interface {
 }
 
 type ChangeUserPasswordRequest struct {
-	// Channel
+	// The channel.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ChangeUserPasswordRequest struct {
 	//
 	// alice***
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The new password for the user.
+	// The new password for the user. The password must meet the password length and character type policies of the current enterprise. If no policy is configured, the password must be at least 10 characters in length and contain uppercase letters, lowercase letters, and digits.
 	//
 	// example:
 	//

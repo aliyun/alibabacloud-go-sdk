@@ -18,7 +18,7 @@ type iDescribeOrgsResponseBody interface {
 }
 
 type DescribeOrgsResponseBody struct {
-	// The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
+	// The pagination token. Set the value to the NextToken parameter returned by the previous API call.
 	//
 	// example:
 	//
@@ -83,11 +83,11 @@ func (s *DescribeOrgsResponseBody) Validate() error {
 }
 
 type DescribeOrgsResponseBodyOrgs struct {
-	// The access type of the organization node. Valid values:
+	// The access type of the organization node. A value of MANAGEABLE indicates a manageable node. A value of PATH_ONLY indicates that the node is used only to display the full path to the root organization.
 	//
-	// - MANAGEABLE: indicates a manageable node.
+	// example:
 	//
-	// - PATH_ONLY: indicates a node used only to display the full path to the root organization.
+	// MANAGEABLE
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The organization ID.
 	//
@@ -95,19 +95,25 @@ type DescribeOrgsResponseBodyOrgs struct {
 	//
 	// org-1mox****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The organization name.
+	// The name of the organization.
 	//
 	// example:
 	//
-	// DesignDepartment****
-	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// Design Department****
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// The name path from the root organization to the current organization.
+	//
+	// example:
+	//
+	// Product Department/Design Department
 	OrgNamePath *string `json:"OrgNamePath,omitempty" xml:"OrgNamePath,omitempty"`
-	// The parent organization ID.
+	// The ID of the parent organization.
 	//
 	// example:
 	//
 	// org-ezqr****
-	ParentOrgId        *string                                           `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+	ParentOrgId *string `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+	// The list of resource policies associated with the organization.
 	ResourcePolicyList []*DescribeOrgsResponseBodyOrgsResourcePolicyList `json:"ResourcePolicyList,omitempty" xml:"ResourcePolicyList,omitempty" type:"Repeated"`
 }
 
@@ -187,7 +193,9 @@ func (s *DescribeOrgsResponseBodyOrgs) Validate() error {
 }
 
 type DescribeOrgsResponseBodyOrgsResourcePolicyList struct {
-	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The resource policy ID.
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The Policy Name.
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 

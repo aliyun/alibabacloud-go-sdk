@@ -28,41 +28,41 @@ type iDescribeOrgsShrinkRequest interface {
 }
 
 type DescribeOrgsShrinkRequest struct {
-	// The channel.
+	// The business channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
-	BusinessChannel *string   `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	IncludeOrgIds   []*string `json:"IncludeOrgIds,omitempty" xml:"IncludeOrgIds,omitempty" type:"Repeated"`
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	// The list of organization IDs to query.
+	IncludeOrgIds []*string `json:"IncludeOrgIds,omitempty" xml:"IncludeOrgIds,omitempty" type:"Repeated"`
 	// Specifies whether to query all subordinate organizations when a parent organization is specified.
 	IsQueryAllSubOrgs *bool `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
-	// The maximum number of results to return. Valid values: 1 to 100.
-	//
-	// Default value: 100.
+	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
+	// The pagination token. Set the value to the NextToken parameter returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The organization name.
+	// The name of the organization.
 	//
 	// example:
 	//
-	// ProductDepartment
+	// Product Department
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	// The parent organization ID.
+	// The ID of the parent organization.
 	//
 	// example:
 	//
 	// org-11fs****
-	ParentOrgId      *string `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+	ParentOrgId *string `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+	// The switch mapping for additional response information. This parameter controls whether to return organization paths and resource policy information.
 	ShowExtrasShrink *string `json:"ShowExtras,omitempty" xml:"ShowExtras,omitempty"`
 }
 

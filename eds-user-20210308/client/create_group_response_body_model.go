@@ -16,7 +16,7 @@ type iCreateGroupResponseBody interface {
 }
 
 type CreateGroupResponseBody struct {
-	// The ID of the user group.
+	// The user group ID.
 	//
 	// example:
 	//
