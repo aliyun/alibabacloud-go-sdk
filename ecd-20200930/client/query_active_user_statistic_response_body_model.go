@@ -89,7 +89,7 @@ type QueryActiveUserStatisticResponseBodyUserStatisticList struct {
 	//
 	// 56
 	ActiveUserCount *int32 `json:"ActiveUserCount,omitempty" xml:"ActiveUserCount,omitempty"`
-	// The formatted date string in UTC+8, in the format of yyyy-MM-dd.
+	// The formatted date string in the UTC+8 time zone. The format is yyyy-MM-dd.
 	//
 	// example:
 	//

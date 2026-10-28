@@ -1,3 +1,6 @@
+2026-10-28 Version: v6.3.2
+- Generated golang 2020-09-30 for ecd.
+
 2026-10-12 Version: v6.4.0
 - Support API DescribeConsoleMessages.
 - Support API SendConsoleMessage.

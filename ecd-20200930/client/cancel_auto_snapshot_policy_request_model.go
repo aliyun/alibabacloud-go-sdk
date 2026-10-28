@@ -18,7 +18,7 @@ type iCancelAutoSnapshotPolicyRequest interface {
 }
 
 type CancelAutoSnapshotPolicyRequest struct {
-	// The IDs of the cloud computers. You can specify 1 to 50 IDs. The IDs cannot be an empty string. The IDs can be up to 64 characters in length and cannot contain `http://` or `https://`. The IDs cannot start with `acs:` or `aliyun`.
+	// The ID of the cloud desktop. You can specify 1 to 50 IDs. If this parameter is specified, it cannot be an empty string. The value can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// This parameter is required.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
@@ -28,7 +28,7 @@ type CancelAutoSnapshotPolicyRequest struct {
 	//
 	// sp-78lhzpe7kjfnd****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by cloud desktops.
 	//
 	// This parameter is required.
 	//

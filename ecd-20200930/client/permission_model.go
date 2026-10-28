@@ -32,15 +32,25 @@ type iPermission interface {
 }
 
 type Permission struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestCidrIp      *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	NicType         *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
-	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority        *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	SourceCidrIp    *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	// The creation time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination CIDR block.
+	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	// The protocol type.
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The NIC type.
+	NicType *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
+	// The policy.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The port range.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The priority.
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The source CIDR block.
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	// The source port range.
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 }
 

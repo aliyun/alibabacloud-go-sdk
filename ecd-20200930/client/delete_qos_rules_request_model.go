@@ -14,7 +14,7 @@ type iDeleteQosRulesRequest interface {
 }
 
 type DeleteQosRulesRequest struct {
-	// A list of QoS rule IDs.
+	// The list of QoS rule IDs.
 	//
 	// This parameter is required.
 	QosRuleId []*string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty" type:"Repeated"`

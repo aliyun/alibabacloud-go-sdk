@@ -46,36 +46,32 @@ type DescribeSnapshotsRequest struct {
 	//
 	// Administrator
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The cloud computer ID.
+	// The ID of the cloud desktop.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The cloud computer name.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// testName
 	DesktopName     *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	DesktopScenario *string `json:"DesktopScenario,omitempty" xml:"DesktopScenario,omitempty"`
-	// The end of the time range during which the snapshots were created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
+	// The end time of the snapshot creation. The time is displayed in UTC and follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format.
 	//
 	// example:
 	//
 	// 2020-11-31T06:32:31Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of entries per page for paging.
-	//
-	// - Maximum value: 100.
-	//
-	// - Default value: 10.
+	// The number of entries to return per page in a paging query.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	// The query token. Set the value to the NextToken parameter value returned by the previous API call.
 	//
 	// example:
 	//
@@ -87,7 +83,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -95,13 +91,13 @@ type DescribeSnapshotsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The snapshot ID.
+	// The ID of the snapshot.
 	//
 	// example:
 	//
 	// s-2ze81owrnv9pity4****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The display name of the snapshot. The name must be 2 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter. The name cannot start with `auto` to avoid conflicts with automatic snapshot names.
+	// The display name of the snapshot. The name must be 2 to 127 characters in length. It must start with a letter or a Chinese character, and can contain digits, underscores (_), and hyphens (-). To prevent name conflicts with automatic snapshots, the name cannot start with `auto`.
 	//
 	// example:
 	//
@@ -113,15 +109,15 @@ type DescribeSnapshotsRequest struct {
 	//
 	// user
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The type of the cloud disk from which the snapshot is created.
+	// The type of the disk for which you want to create a snapshot.
 	//
-	// > The value is case-insensitive.
+	// > The values are not case-sensitive.
 	//
 	// example:
 	//
 	// system
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	// The beginning of the time range during which the snapshots were created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
+	// The start time of the snapshot creation. The time is displayed in UTC and follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format.
 	//
 	// example:
 	//

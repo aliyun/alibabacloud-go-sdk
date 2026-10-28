@@ -107,6 +107,8 @@ type iCreateCenterPolicyRequest interface {
 	GetFileTransferSpeed() *string
 	SetFileTransferSpeedLocation(v string) *CreateCenterPolicyRequest
 	GetFileTransferSpeedLocation() *string
+	SetFolderSync(v string) *CreateCenterPolicyRequest
+	GetFolderSync() *string
 	SetGpuAcceleration(v string) *CreateCenterPolicyRequest
 	GetGpuAcceleration() *string
 	SetHoverConfigMsg(v string) *CreateCenterPolicyRequest
@@ -610,6 +612,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// client
 	FileTransferSpeedLocation *string `json:"FileTransferSpeedLocation,omitempty" xml:"FileTransferSpeedLocation,omitempty"`
+	FolderSync                *string `json:"FolderSync,omitempty" xml:"FolderSync,omitempty"`
 	// Specifies whether to enable the image quality policy for GPU-accelerated Cloud Desktops. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
 	//
 	// example:
@@ -1414,6 +1417,10 @@ func (s *CreateCenterPolicyRequest) GetFileTransferSpeedLocation() *string {
 	return s.FileTransferSpeedLocation
 }
 
+func (s *CreateCenterPolicyRequest) GetFolderSync() *string {
+	return s.FolderSync
+}
+
 func (s *CreateCenterPolicyRequest) GetGpuAcceleration() *string {
 	return s.GpuAcceleration
 }
@@ -2028,6 +2035,11 @@ func (s *CreateCenterPolicyRequest) SetFileTransferSpeed(v string) *CreateCenter
 
 func (s *CreateCenterPolicyRequest) SetFileTransferSpeedLocation(v string) *CreateCenterPolicyRequest {
 	s.FileTransferSpeedLocation = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetFolderSync(v string) *CreateCenterPolicyRequest {
+	s.FolderSync = &v
 	return s
 }
 

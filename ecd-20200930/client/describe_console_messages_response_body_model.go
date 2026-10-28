@@ -18,9 +18,9 @@ type iDescribeConsoleMessagesResponseBody interface {
 }
 
 type DescribeConsoleMessagesResponseBody struct {
-	// The list of console messages queried on the current page. If no messages match, an empty list is returned.
+	// The list of console messages queried for the current page. If no messages match, an empty list is returned.
 	MessageList []*DescribeConsoleMessagesResponseBodyMessageList `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the current request, which is used to locate and troubleshoot issues.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type DescribeConsoleMessagesResponseBodyMessageList struct {
 	ClientTypes []*string `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
 	// The list of message body configurations for each language.
 	ContentConfigs []*DescribeConsoleMessagesResponseBodyMessageListContentConfigs `json:"ContentConfigs,omitempty" xml:"ContentConfigs,omitempty" type:"Repeated"`
-	// The time when the operational message stops taking effect.
+	// The time when the operational message stops taking effect. The time is in ISO 8601 format. A time zone offset of +00:00 indicates UTC time.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type DescribeConsoleMessagesResponseBodyMessageList struct {
 	ImageFilePath *string `json:"ImageFilePath,omitempty" xml:"ImageFilePath,omitempty"`
 	// The list of image configurations, which is mainly used for custom wallpaper messages. Each item includes the image name, image type, storage path, and temporary download URL.
 	ImageInfoList []*DescribeConsoleMessagesResponseBodyMessageListImageInfoList `json:"ImageInfoList,omitempty" xml:"ImageInfoList,omitempty" type:"Repeated"`
-	// The temporary download URL of the operational message image. The link has a limited validity period. If it expires, you can query again to obtain a new one.
+	// The temporary download URL of the operational message image. The link has a limited validity period. If the link expires, you can query again to obtain a new one.
 	//
 	// example:
 	//
@@ -147,19 +147,19 @@ type DescribeConsoleMessagesResponseBodyMessageList struct {
 	//
 	// CENTER
 	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The time when the operational message starts taking effect.
+	// The time when the operational message starts taking effect. The time is in ISO 8601 format. A time zone offset of +00:00 indicates UTC time.
 	//
 	// example:
 	//
 	// 2026-10-10T02:00:00.000+00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The current status of the message. Valid values: Init (initializing), Pushing (pushing), Published (published), Expired (expired), Deleting (deleting), and Failed (failed). Published indicates that the message has been published or the server has finished pushing, but it does not indicate that all target terminals have successfully received the message.
+	// The current status of the message. Valid values: Init (initializing), Pushing (pushing), Published (published), Expired (expired), Deleting (deleting), and Failed (failed). Published indicates that the message has been published or the server-side push processing has finished, but it does not indicate that all target terminals have successfully received the message.
 	//
 	// example:
 	//
 	// Published
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The JSON string of the list of targets to which the message applies. For Organization and AdOrg, it is an array of objects containing orgId (organization ID) and orgName (organization name). The organization name may be empty, and records in the old format may not contain orgName. For Tag, it is an array of objects containing tagKey (tag key), tagValue (tag value), and regionId (region ID). For other target types, it is an array of strings. The target for all users is represented by ALL_USERS.
+	// The JSON string of the list of targets to which the message applies. For Organization and AdOrg, it is an array of objects containing orgId (organization ID) and orgName (organization name). The organization name may be empty, and records in the old format may not contain orgName. For Tag, it is an array of objects containing tagKey (tag key), tagValue (tag value), and regionId (region ID). For other target types, it is an array of strings. The all-users target is represented by ALL_USERS.
 	//
 	// example:
 	//
@@ -400,7 +400,7 @@ func (s *DescribeConsoleMessagesResponseBodyMessageList) Validate() error {
 }
 
 type DescribeConsoleMessagesResponseBodyMessageListContentConfigs struct {
-	// The color of the body text, which retains the color value saved when the message was created or modified.
+	// The color of the body text. The color value saved when the message is created or modified is used.
 	//
 	// example:
 	//
@@ -412,7 +412,7 @@ type DescribeConsoleMessagesResponseBodyMessageListContentConfigs struct {
 	//
 	// The cloud computer will undergo routine maintenance. Please save your work in advance
 	ContentText *string `json:"ContentText,omitempty" xml:"ContentText,omitempty"`
-	// The body language. Valid values: CN (Chinese), EN (English), and JP (Japanese). The query returns the language value saved when the message was created or modified, retaining the original case.
+	// The body language. Valid values: CN (Chinese), EN (English), and JP (Japanese). The query returns the language value saved when the message is created or modified, retaining the original case.
 	//
 	// example:
 	//
@@ -466,7 +466,7 @@ type DescribeConsoleMessagesResponseBodyMessageListHyperLinkConfigs struct {
 	//
 	// View Details
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The URL accessed after clicking the hyperlink button.
+	// The URL accessed after the hyperlink button is clicked.
 	//
 	// example:
 	//
@@ -517,13 +517,13 @@ type DescribeConsoleMessagesResponseBodyMessageListImageInfoList struct {
 	//
 	// image_file/CUSTOM_WALLPAPER/00000000-0000-img0.jpg
 	ImageFilePath *string `json:"ImageFilePath,omitempty" xml:"ImageFilePath,omitempty"`
-	// The image type. Configuration types defined by the backend include Operational (operational message image), WallpaperBasic (basic wallpaper image), and WallpaperAppend (appended wallpaper image). The query returns the image type value saved when the message was created or modified, retaining the original case.
+	// The image type. Configuration types defined by the backend include Operational (operational message image), WallpaperBasic (basic wallpaper image), and WallpaperAppend (appended wallpaper image). The query returns the image type value saved when the message is created or modified, retaining the original case.
 	//
 	// example:
 	//
 	// WallpaperBasic
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The temporary download URL of the image file. The link has a limited validity period. If it expires, you can query again to obtain a new one.
+	// The temporary download URL of the image file. The link has a limited validity period. If the link expires, you can query again to obtain a new one.
 	//
 	// example:
 	//
@@ -651,13 +651,13 @@ func (s *DescribeConsoleMessagesResponseBodyMessageListMetaData) Validate() erro
 }
 
 type DescribeConsoleMessagesResponseBodyMessageListTitleConfigs struct {
-	// The color of the title text, which retains the color value saved when the message was created or modified.
+	// The color of the title text. The color value saved when the message is created or modified is used.
 	//
 	// example:
 	//
 	// #333333
 	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
-	// The title language. Valid values: CN (Chinese), EN (English), and JP (Japanese). The query returns the language value saved when the message was created or modified, retaining the original case.
+	// The title language. Valid values: CN (Chinese), EN (English), and JP (Japanese). The query returns the language value saved when the message is created or modified, retaining the original case.
 	//
 	// example:
 	//

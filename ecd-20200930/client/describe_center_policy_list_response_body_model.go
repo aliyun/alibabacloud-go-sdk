@@ -423,6 +423,10 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// client
 	FileTransferSpeedLocation *string `json:"FileTransferSpeedLocation,omitempty" xml:"FileTransferSpeedLocation,omitempty"`
+	// example:
+	//
+	// off
+	FolderSync *string `json:"FolderSync,omitempty" xml:"FolderSync,omitempty"`
 	// Indicates whether the image quality policy is enabled for GPU-accelerated cloud desktops. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
 	//
 	// example:
@@ -1299,6 +1303,10 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetFileTransf
 	return s.FileTransferSpeedLocation
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetFolderSync() *string {
+	return s.FolderSync
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetGpuAcceleration() *string {
 	return s.GpuAcceleration
 }
@@ -1951,6 +1959,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransf
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransferSpeedLocation(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.FileTransferSpeedLocation = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFolderSync(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.FolderSync = &v
 	return s
 }
 

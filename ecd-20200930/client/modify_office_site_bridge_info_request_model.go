@@ -26,13 +26,13 @@ type iModifyOfficeSiteBridgeInfoRequest interface {
 }
 
 type ModifyOfficeSiteBridgeInfoRequest struct {
-	// The virtual bridge ID.
+	// The ID of the virtual bridge.
 	//
 	// example:
 	//
 	// vb-fsifhaiushfishf***
 	BridgeId *string `json:"BridgeId,omitempty" xml:"BridgeId,omitempty"`
-	// The virtual bridge specifications.
+	// The specifications of the virtual bridge.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ModifyOfficeSiteBridgeInfoRequest struct {
 	//
 	// ab5b76f4c0bf4a5abd06ea23991a47afa1a4bb4acb4e4204882b40795f946e74
 	License *string `json:"License,omitempty" xml:"License,omitempty"`
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-387822****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

@@ -18,9 +18,9 @@ type iDescribeNASFileSystemsResponseBody interface {
 }
 
 type DescribeNASFileSystemsResponseBody struct {
-	// The NAS file system information list.
+	// The NAS file system information.
 	FileSystems []*DescribeNASFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Repeated"`
-	// The pagination token for the next query. An empty value indicates that no more results exist.
+	// The pagination token for the next query. An empty NextToken indicates that no more results are available.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeNASFileSystemsResponseBody) Validate() error {
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystems struct {
-	// Indicates whether operations on user directories (adding users, deleting data) are supported.
+	// Indicates whether operations on user directories are supported, such as adding users and deleting data.
 	//
 	// example:
 	//
 	// false
 	AllowOperateUserDrive *bool `json:"AllowOperateUserDrive,omitempty" xml:"AllowOperateUserDrive,omitempty"`
-	// The list of cloud application delivery group objects bound to the UPM-supported NAS file system.
+	// The list of cloud application delivery groups bound to the NAS file system that supports UPM.
 	AppInstanceGroups []*DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups `json:"AppInstanceGroups,omitempty" xml:"AppInstanceGroups,omitempty" type:"Repeated"`
 	// The bandwidth.
 	//
@@ -99,15 +99,15 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The total capacity of the NAS file system. Unit: GiB.
 	//
-	// - If the storage type is Capacity, the capacity is fixed at 10 PiB (10485760 GiB).
+	// - If the storage type is Capacity, the capacity is fixed at 10 PiB, which is 10485760 GiB.
 	//
-	// - If the storage type is Performance, the capacity is fixed at 1 PiB (1048576 GiB).
+	// - If the storage type is Performance, the capacity is fixed at 1 PiB, which is 1048576 GiB.
 	//
 	// example:
 	//
 	// 10485760
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The time when the NAS file system was created. The time is in the ISO 8601 format in UTC.
+	// The time when the NAS file system was created. The time follows the ISO 8601 standard in the UTC time zone.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of shared cloud computer objects bound to the UPM-supported NAS file system.
+	// The list of shared cloud desktops bound to the NAS file system that supports UPM.
 	DesktopGroups []*DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups `json:"DesktopGroups,omitempty" xml:"DesktopGroups,omitempty" type:"Repeated"`
 	// Indicates whether disk encryption is enabled.
 	//
@@ -127,7 +127,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// false
 	EncryptionEnabled *bool `json:"EncryptionEnabled,omitempty" xml:"EncryptionEnabled,omitempty"`
-	// The NAS file system ID.
+	// The ID of the NAS file system.
 	//
 	// example:
 	//
@@ -151,31 +151,31 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// standard
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	// The used capacity of the NAS file system. Unit: bytes.
+	// The used capacity of the NAS file system. Unit: Byte.
 	//
 	// example:
 	//
 	// 0
 	MeteredSize *int64 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
-	// The mount target domain name.
+	// The domain name of the mount target.
 	//
 	// example:
 	//
 	// 04f314****-at***.cn-hangzhou.nas.aliyuncs.com
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	// The mount target status.
+	// The status of the mount target.
 	//
 	// example:
 	//
 	// Active
 	MountTargetStatus *string `json:"MountTargetStatus,omitempty" xml:"MountTargetStatus,omitempty"`
-	// The office network ID (deprecated).
+	// **[Deprecated]*	- The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The office network name (deprecated).
+	// **[Deprecated]*	- The name of the office network.
 	//
 	// example:
 	//
@@ -184,6 +184,10 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	// The list of office networks.
 	OfficeSites []*DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
 	// The product type of the NAS file system.
+	//
+	// example:
+	//
+	// CloudDesktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// Indicates whether the User Profile Management (UPM) feature is supported.
 	//
@@ -193,9 +197,9 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	ProfileCompatible *bool `json:"ProfileCompatible,omitempty" xml:"ProfileCompatible,omitempty"`
 	// The protocol type of the file system. Valid values:
 	//
-	// - NFS: NFS file protocol.
+	// - NFS: NFS protocol
 	//
-	// - SMB: SMB file protocol.
+	// - SMB: SMB protocol
 	//
 	// example:
 	//
@@ -522,13 +526,13 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) Validate() error {
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups struct {
-	// The delivery group ID.
+	// The ID of the delivery group.
 	//
 	// example:
 	//
 	// aig-0bz55ibznu9p7****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The delivery group name.
+	// The name of the delivery group.
 	//
 	// example:
 	//
@@ -567,13 +571,13 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups) Validat
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups struct {
-	// The shared cloud computer ID.
+	// The ID of the shared cloud desktop.
 	//
 	// example:
 	//
 	// dg-9eeyf15b25nyl****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The shared cloud computer name.
+	// The name of the shared cloud desktop.
 	//
 	// example:
 	//
@@ -612,13 +616,13 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups) Validate() 
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites struct {
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The office network name.
+	// The name of the office network.
 	//
 	// example:
 	//

@@ -22,17 +22,17 @@ type iDescribeResourceByCenterPolicyIdRequest interface {
 }
 
 type DescribeResourceByCenterPolicyIdRequest struct {
-	// The number of entries per page.
+	// The number of entries per page for a paged query.
 	//
-	// 	- Maximum value: 100.
+	// - Maximum value: 100.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -46,17 +46,7 @@ type DescribeResourceByCenterPolicyIdRequest struct {
 	//
 	// pg-53iyi2aar0nd6****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The service type.
-	//
-	// Valid values:
-	//
-	// 	- app: cloud applications.
-	//
-	// 	- resourceGroup: resource groups.
-	//
-	// 	- desktop: cloud computers.
-	//
-	// 	- desktopGroup: cloud computer shares.
+	// The product type.
 	//
 	// example:
 	//

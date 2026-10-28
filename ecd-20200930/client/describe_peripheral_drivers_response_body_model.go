@@ -22,27 +22,27 @@ type iDescribePeripheralDriversResponseBody interface {
 }
 
 type DescribePeripheralDriversResponseBody struct {
-	// The total number of matching drivers, not the length of the current page list. This value may be 0 when the current page contains no data.
+	// The total number of matched drivers, not the length of the list on the current page. If no data exists on the current page, 0 may be returned.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The list of driver information on the current page. An empty list is returned when no data is available.
+	// The list of driver information on the current page. An empty list is returned if no data exists.
 	DriverInfos []*DescribePeripheralDriversResponseBodyDriverInfos `json:"DriverInfos,omitempty" xml:"DriverInfos,omitempty" type:"Repeated"`
-	// Reserved field. This field does not provide a valid return value and may not be returned. This operation uses PageSize and PageNumber for pagination. Do not rely on this field. The example value 20 is provided only to illustrate the integer type and does not represent the actual return value, default value, or page size of this operation.
+	// The reserved field. This field does not provide a valid return value and may not be returned. This operation uses PageSize and PageNumber for pagination. Do not rely on this field. The sample value 20 is used only to demonstrate the integer type and does not represent the actual return value, default value, or page size of the current query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Reserved field. Token-based pagination is not supported and this field may not be returned. Do not rely on this field for continued queries. The example value token-for-format-only is provided only to illustrate the string type and is not an actual return value or a usable pagination token.
+	// The reserved field. This field does not provide token-based pagination and may not be returned. Do not rely on this field for subsequent queries. The sample value token-for-format-only is used only to demonstrate the string type and is not an actual return value or a usable pagination token.
 	//
 	// example:
 	//
 	// token-for-format-only
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID. Provide this value when troubleshooting issues.
+	// The request ID. You can provide this value for troubleshooting.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type DescribePeripheralDriversResponseBodyDriverInfos struct {
 	//
 	// hp
 	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
-	// The time when the driver record was created, in ISO 8601 (RFC 3339) format with a time zone offset. The time zone offset is based on the returned value. This field may be empty or not returned if the time information does not exist.
+	// The time when the driver record was created. The time is in the ISO 8601 (RFC 3339) format with time zone offset. The time zone offset is subject to the returned value. If the time information does not exist, this field may be empty or not returned.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type DescribePeripheralDriversResponseBodyDriverInfos struct {
 	//
 	// printer
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The brand icon URL. This field may be empty or not returned if no icon is configured. The example value is for illustration purposes only.
+	// The URL of the brand icon. If no icon is configured, this field may be empty or not returned. The example is a placeholder address.
 	//
 	// example:
 	//
@@ -159,25 +159,13 @@ type DescribePeripheralDriversResponseBodyDriverInfos struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The driver ownership. Valid values:
-	//
-	// - WUYING: Wuying official driver.
-	//
-	// - CUSTOMER: Custom driver of the current account.
+	// The driver ownership. Valid values: WUYING: Wuying official drivers. CUSTOMER: custom drivers of the current account.
 	//
 	// example:
 	//
 	// WUYING
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	// The driver source. Valid values:
-	//
-	// - OpsApp: Uploaded from the management console.
-	//
-	// - WuyingHelper: Uploaded from Wuying Helper.
-	//
-	// - Wuying: Wuying source.
-	//
-	// Unrecognized sources may also be classified as Wuying. To distinguish between official and custom drivers, use OwnerType.
+	// The driver source. Valid values: OpsApp: uploaded from the management console. WuyingHelper: uploaded from Wuying Assistant. Wuying: from Wuying. Unrecognized sources may also be classified as Wuying. To distinguish between official and custom drivers, use OwnerType.
 	//
 	// example:
 	//

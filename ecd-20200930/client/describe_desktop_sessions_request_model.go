@@ -46,13 +46,13 @@ type iDescribeDesktopSessionsRequest interface {
 }
 
 type DescribeDesktopSessionsRequest struct {
-	// Specifies whether to check the session status within the cloud computer.
+	// Specifies whether to check the session status in the cloud computer.
 	//
 	// example:
 	//
 	// true
 	CheckOsSession *bool `json:"CheckOsSession,omitempty" xml:"CheckOsSession,omitempty"`
-	// The cloud computer IDs. You can specify 1 to 100 IDs.
+	// The cloud computer ID. You can specify 1 to 100 IDs.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The cloud computer name.
 	//
@@ -60,9 +60,7 @@ type DescribeDesktopSessionsRequest struct {
 	//
 	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -74,7 +72,7 @@ type DescribeDesktopSessionsRequest struct {
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The end user ID. This parameter is the same as EndUserId. You only need to specify one of them.
+	// The end user ID. This parameter is the same as the EndUserId parameter. You only need to specify one of them.
 	//
 	// example:
 	//
@@ -84,7 +82,7 @@ type DescribeDesktopSessionsRequest struct {
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// Specifies whether to include terminal information in the response.
 	FillHardwareInfo *bool `json:"FillHardwareInfo,omitempty" xml:"FillHardwareInfo,omitempty"`
-	// The language type of the response.
+	// The language of the response.
 	//
 	// example:
 	//
@@ -96,19 +94,19 @@ type DescribeDesktopSessionsRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The page number of the current page in a paged query.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of rows per page in a paged query.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Wuying Cloud Computer.
 	//
 	// This parameter is required.
 	//
@@ -128,15 +126,13 @@ type DescribeDesktopSessionsRequest struct {
 	//
 	// Connected
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2023-01-28T02:31:43Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The purchase method of the cloud computer.
+	// The billing method of the cloud computer.
 	//
 	// example:
 	//

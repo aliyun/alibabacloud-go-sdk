@@ -36,31 +36,31 @@ type DescribeFotaPendingDesktopsRequest struct {
 	//
 	// example:
 	//
-	// testName
+	// demo-computer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page for a paged query.
 	//
-	// 	- Valid values: 1 to 100.
+	// - Maximum value: 100
 	//
-	// 	- Default value: 20.
+	// - Default value: 20
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	// The pagination token. Set the value to the `NextToken` value returned from the previous call to this operation. You do not need to specify this parameter for the first call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the office network. You can call the [DescribeOfficeSites](https://help.aliyun.com/document_detail/216071.html) operation to obtain the value of this parameter.
+	// The ID of the office network. You can call the [DescribeOfficeSites](https://help.aliyun.com/document_detail/216071.html) operation to obtain this parameter.
 	//
 	// example:
 	//
-	// cn-hangzhou+dir-363353****
+	// cn-shanghai+dir-428216****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by cloud computers.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type DescribeFotaPendingDesktopsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the image update task. You can call the [DescribeFotaTasks](https://help.aliyun.com/document_detail/437001.html) operation to obtain the value of this parameter.
+	// The information about the image upgrade task. You can call the [DescribeFotaTasks](https://help.aliyun.com/document_detail/437001.html) operation to obtain this parameter.
 	//
 	// example:
 	//

@@ -22,12 +22,12 @@ type iCreateCloudDriveGroupRequest interface {
 }
 
 type CreateCloudDriveGroupRequest struct {
-	// List of user IDs to be set as team space administrators.
+	// The list of user IDs to be set as team space administrators.
 	//
 	// if can be null:
 	// true
 	AdminUserIds []*string `json:"AdminUserIds,omitempty" xml:"AdminUserIds,omitempty" type:"Repeated"`
-	// The ID of the cloud disk in Cloud Drive Service.
+	// The ID of the Wuying cloud disk.
 	//
 	// This parameter is required.
 	//
@@ -35,7 +35,7 @@ type CreateCloudDriveGroupRequest struct {
 	//
 	// cn-hangzhou+cds-532033****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The ID of the team.
+	// The ID of the organizational team.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +43,7 @@ type CreateCloudDriveGroupRequest struct {
 	//
 	// 7f4bbccda0cf40bb85981b65fb5e****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -51,7 +51,7 @@ type CreateCloudDriveGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The size of the cloud disk in Cloud Drive Service. Unit: bytes. The size is unlimited.
+	// The capacity of the Wuying cloud disk team space. Unit: bytes. Default value: unlimited.
 	//
 	// This parameter is required.
 	//

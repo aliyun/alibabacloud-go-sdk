@@ -16,15 +16,13 @@ type iModifyDiskSpecResponseBody interface {
 }
 
 type ModifyDiskSpecResponseBody struct {
-	// The order ID. You can obtain it from <props="china">[Expenses and Costs > My Orders](https://billing-cost.console.aliyun.com/order/list).
-	//
-	// <props="intl">[Expenses and Costs > Order Management](https://usercenter2-intl.aliyun.com/order/list).
+	// The order ID. You can obtain the order ID on the <props="china">[Expenses and Costs > My Orders](https://billing-cost.console.aliyun.com/order/list) page.<props="intl">[Expenses and Costs > Order Management](https://usercenter2-intl.aliyun.com/order/list) page.
 	//
 	// example:
 	//
 	// 219861020660568
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -22,21 +22,21 @@ type iDescribeFotaPendingDesktopsResponseBody interface {
 }
 
 type DescribeFotaPendingDesktopsResponseBody struct {
-	// The response code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The cloud computers whose images can be and are pending to be updated to the version specified in `TaskUid`.
+	// The list of cloud computers that can be upgraded to the image version corresponding to `TaskUid` but have not been upgraded.
 	FotaPendingDesktops []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops `json:"FotaPendingDesktops,omitempty" xml:"FotaPendingDesktops,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message.
 	//
 	// example:
 	//
 	// Succeeded
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token for the next query. If NextToken is empty, no more results are available.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeFotaPendingDesktopsResponseBody) Validate() error {
 }
 
 type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops struct {
-	// The current version of the image used by the cloud computer.
+	// The current image version of the cloud computer.
 	//
 	// example:
 	//
@@ -133,41 +133,23 @@ type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops struct {
 	//
 	// example:
 	//
-	// TestDesktop
+	// demo-computer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	// > This parameter is not publicly available.
 	//
 	// example:
 	//
-	// To be hidden
+	// windows
 	FotaProject *string `json:"FotaProject,omitempty" xml:"FotaProject,omitempty"`
 	// The ID of the office network.
 	//
 	// example:
 	//
-	// cn-hangzhou+dir-815419****
+	// cn-shanghai+dir-428216****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The connected sessions.
+	// The list of connected sessions.
 	Sessions []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 	// The status of the cloud computer.
-	//
-	// Valid values:
-	//
-	// 	- 0: The cloud computer is being created.
-	//
-	// 	- 1: The cloud computer is being started.
-	//
-	// 	- 2: The cloud computer is running.
-	//
-	// 	- 3: The cloud computer is being stopped.
-	//
-	// 	- 5: The cloud computer is stopped.
-	//
-	// 	- 6: The cloud computer expires.
-	//
-	// 	- 7: The cloud computer is deleted.
-	//
-	// 	- 9: Failed to create the cloud computer.
 	//
 	// example:
 	//
@@ -260,11 +242,11 @@ func (s *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops) Validate() 
 }
 
 type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions struct {
-	// The ID of the end user that connects to the cloud computer.
+	// The ID of the connected user.
 	//
 	// example:
 	//
-	// end user id
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 }
 

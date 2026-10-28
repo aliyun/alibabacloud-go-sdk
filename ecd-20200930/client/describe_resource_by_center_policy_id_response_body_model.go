@@ -20,13 +20,13 @@ type iDescribeResourceByCenterPolicyIdResponseBody interface {
 }
 
 type DescribeResourceByCenterPolicyIdResponseBody struct {
-	// The total number of resources.
+	// The total count.
 	//
 	// example:
 	//
 	// 2
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token for the next query. If NextToken is empty, no more results are available.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeResourceByCenterPolicyIdResponseBody struct {
 	//
 	// 48174475-5EB2-5F99-A9E9-6F892D645****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources.
+	// The list of resources.
 	ResourceModelList []*DescribeResourceByCenterPolicyIdResponseBodyResourceModelList `json:"ResourceModelList,omitempty" xml:"ResourceModelList,omitempty" type:"Repeated"`
 }
 
@@ -100,7 +100,7 @@ func (s *DescribeResourceByCenterPolicyIdResponseBody) Validate() error {
 }
 
 type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
-	// The cloud applications.
+	// The list of cloud applications.
 	AppModelList []*DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList `json:"AppModelList,omitempty" xml:"AppModelList,omitempty" type:"Repeated"`
 	// The number of vCPUs.
 	//
@@ -108,7 +108,7 @@ type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
 	//
 	// 64
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the cloud computer types supported by Alibaba Cloud Workspace.
+	// The target cloud desktop specification. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by WUYING Workspace.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
 	//
 	// 10240
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The OS type.
+	// The operating system type.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
 	//
 	// postPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The service type.
+	// The product type.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
 	//
 	// test
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// The number of associated resource groups
+	// The number of associated resource groups.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
 	//
 	// O&M
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The region ID of the resource.
+	// The region where the resource resides.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
 	//
 	// desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The resource status.
+	// The status of the resource.
 	//
 	// example:
 	//
@@ -390,7 +390,7 @@ func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) Validate
 }
 
 type DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList struct {
-	// The application ID. This parameter is only applicable to cloud applications.
+	// The application ID. This parameter is specific to resources whose resource type is App.
 	//
 	// example:
 	//

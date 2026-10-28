@@ -20,13 +20,13 @@ type iDescribeUserConnectionRecordsResponseBody interface {
 type DescribeUserConnectionRecordsResponseBody struct {
 	// The array of user connection records.
 	ConnectionRecords []*DescribeUserConnectionRecordsResponseBodyConnectionRecords `json:"ConnectionRecords,omitempty" xml:"ConnectionRecords,omitempty" type:"Repeated"`
-	// The pagination token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -89,19 +89,23 @@ type DescribeUserConnectionRecordsResponseBodyConnectionRecords struct {
 	//
 	// 1800000
 	ConnectDuration *string `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
-	// The connection end time.
+	// The time when the connection is disconnected.
+	//
+	// The time is in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-02-27T20:03:13Z
 	ConnectEndTime *string `json:"ConnectEndTime,omitempty" xml:"ConnectEndTime,omitempty"`
-	// The connection start time.
+	// The start time of the connection.
+	//
+	// The time is in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-01-19T10:12:38Z
 	ConnectStartTime *string `json:"ConnectStartTime,omitempty" xml:"ConnectStartTime,omitempty"`
-	// The connection record ID.
+	// The ID of the connection record.
 	//
 	// example:
 	//

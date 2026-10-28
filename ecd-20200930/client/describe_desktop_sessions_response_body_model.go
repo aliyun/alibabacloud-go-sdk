@@ -26,7 +26,7 @@ type DescribeDesktopSessionsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The session details.
 	Sessions []*DescribeDesktopSessionsResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	// The total number of query results.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	//
 	// SIMPLE
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	// The duration of remote assistance for the end user. Unit: seconds.
+	// The duration of remote assistance requested by the end user. Unit: seconds.
 	//
 	// example:
 	//
@@ -137,6 +137,12 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The IP address of the last connected client.
+	//
+	// example:
+	//
+	// 10.0.0.0:8080
+	LastClientIp *string `json:"LastClientIp,omitempty" xml:"LastClientIp,omitempty"`
 	// The duration of the most recent connection to the cloud computer. Unit: seconds.
 	//
 	// example:
@@ -149,13 +155,13 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	//
 	// cn-hangzhou+dir-8904****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The name of the office network.
+	// The office network name.
 	//
 	// example:
 	//
 	// TestOfficeSite
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// Specifies whether to check the session status within the cloud computer.
+	// Specifies whether to check the session status in the cloud computer.
 	//
 	// example:
 	//
@@ -175,23 +181,19 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The resource group information.
 	ResourceGroups []*DescribeDesktopSessionsResponseBodySessionsResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
-	// The end time of the session.
-	//
-	// The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The end time of the session. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-01-28T02:31:43Z
 	SessionEndTime *string `json:"SessionEndTime,omitempty" xml:"SessionEndTime,omitempty"`
-	// The session idle duration. Unit: seconds.
+	// The idle duration of the session. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	SessionIdleTime *int64 `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
-	// The start time of the session.
-	//
-	// The time is displayed in UTC in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the session. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -203,7 +205,7 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	//
 	// Connected
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	// The purchase method of the cloud computer.
+	// The billing method of the cloud computer.
 	//
 	// example:
 	//
@@ -261,6 +263,10 @@ func (s *DescribeDesktopSessionsResponseBodySessions) GetEndUserApplyCoordinateT
 
 func (s *DescribeDesktopSessionsResponseBodySessions) GetEndUserId() *string {
 	return s.EndUserId
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) GetLastClientIp() *string {
+	return s.LastClientIp
 }
 
 func (s *DescribeDesktopSessionsResponseBodySessions) GetLatestConnectionTime() *int64 {
@@ -361,6 +367,11 @@ func (s *DescribeDesktopSessionsResponseBodySessions) SetEndUserApplyCoordinateT
 
 func (s *DescribeDesktopSessionsResponseBodySessions) SetEndUserId(v string) *DescribeDesktopSessionsResponseBodySessions {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessions) SetLastClientIp(v string) *DescribeDesktopSessionsResponseBodySessions {
+	s.LastClientIp = &v
 	return s
 }
 
@@ -510,7 +521,7 @@ type DescribeDesktopSessionsResponseBodySessionsTerminalInfo struct {
 	//
 	// Mac
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The terminal device serial number.
+	// The serial number of the terminal device.
 	//
 	// example:
 	//

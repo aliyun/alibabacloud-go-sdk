@@ -18,7 +18,7 @@ type iQueryEndUserHistoryUsageResponseBody interface {
 }
 
 type QueryEndUserHistoryUsageResponseBody struct {
-	// The request ID.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type QueryEndUserHistoryUsageResponseBody struct {
 	//
 	// 50
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of user usage duration entries on the current page.
+	// The list of user usage durations on the current page.
 	UserUsageInfoList []*QueryEndUserHistoryUsageResponseBodyUserUsageInfoList `json:"UserUsageInfoList,omitempty" xml:"UserUsageInfoList,omitempty" type:"Repeated"`
 }
 
@@ -83,19 +83,19 @@ func (s *QueryEndUserHistoryUsageResponseBody) Validate() error {
 }
 
 type QueryEndUserHistoryUsageResponseBodyUserUsageInfoList struct {
-	// The remarks of the user. This parameter has a value only for convenience account users.
+	// The description of the user. This parameter has a value only for convenience users.
 	//
 	// example:
 	//
 	// Test user
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of usage duration details for each desktop.
+	// The list of usage duration details for each cloud desktop.
 	DesktopUsageList []*QueryEndUserHistoryUsageResponseBodyUserUsageInfoListDesktopUsageList `json:"DesktopUsageList,omitempty" xml:"DesktopUsageList,omitempty" type:"Repeated"`
-	// The display name of the user. For convenience account users, this is the actual nickname. For AD users, this is the display name.
+	// The display name of the user. For convenience users, this is the real nickname. For AD users, this is the display name.
 	//
 	// example:
 	//
-	// John Smith
+	// Zhang San
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The total usage duration, in seconds.
 	//
@@ -103,21 +103,21 @@ type QueryEndUserHistoryUsageResponseBodyUserUsageInfoList struct {
 	//
 	// 3600
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The end user ID.
+	// The ID of the end user.
 	//
 	// example:
 	//
 	// user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The username. For convenience account users, this is the nickname. For AD users, this is the UserPrincipalName.
+	// The username. For convenience users, this is the nickname. For AD users, this is the UserPrincipalName.
 	//
 	// example:
 	//
 	// zhangsan
 	EndUserName *string `json:"EndUserName,omitempty" xml:"EndUserName,omitempty"`
-	// The list of organization paths. For convenience account users, this contains multiple organization paths. For AD users, this is the organizational unit (OU) path.
+	// The list of organization paths. For convenience users, this includes multiple organization paths. For AD users, this is the OU path.
 	OrgPathList []*string `json:"OrgPathList,omitempty" xml:"OrgPathList,omitempty" type:"Repeated"`
-	// The list of user groups. This parameter has a value only for convenience account users.
+	// The list of user groups. This parameter has a value only for convenience users.
 	UserGroupList []*QueryEndUserHistoryUsageResponseBodyUserUsageInfoListUserGroupList `json:"UserGroupList,omitempty" xml:"UserGroupList,omitempty" type:"Repeated"`
 }
 
@@ -224,19 +224,19 @@ func (s *QueryEndUserHistoryUsageResponseBodyUserUsageInfoList) Validate() error
 }
 
 type QueryEndUserHistoryUsageResponseBodyUserUsageInfoListDesktopUsageList struct {
-	// The desktop ID.
+	// The ID of the cloud desktop.
 	//
 	// example:
 	//
 	// ecd-abc123
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The desktop name.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// DemoDesktop
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The usage duration of the user on the desktop, in seconds.
+	// The usage duration of the user on the cloud desktop, in seconds.
 	//
 	// example:
 	//
@@ -284,13 +284,13 @@ func (s *QueryEndUserHistoryUsageResponseBodyUserUsageInfoListDesktopUsageList) 
 }
 
 type QueryEndUserHistoryUsageResponseBodyUserUsageInfoListUserGroupList struct {
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
 	// ug-12345678
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The user group name.
+	// The name of the user group.
 	//
 	// example:
 	//

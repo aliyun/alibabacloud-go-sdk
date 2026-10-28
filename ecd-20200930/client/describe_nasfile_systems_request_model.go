@@ -24,7 +24,7 @@ type iDescribeNASFileSystemsRequest interface {
 }
 
 type DescribeNASFileSystemsRequest struct {
-	// The list of NAS file system IDs.
+	// The IDs of the NAS file systems.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeNASFileSystemsRequest struct {
 	//
 	// false
 	MatchCompatibleProfile *bool `json:"MatchCompatibleProfile,omitempty" xml:"MatchCompatibleProfile,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries to return per page in a paging query.
 	//
 	// - Maximum value: 100.
 	//
@@ -46,19 +46,19 @@ type DescribeNASFileSystemsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	// The pagination token. Set the value to the NextToken value returned from the last API call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//

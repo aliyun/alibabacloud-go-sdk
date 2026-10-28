@@ -1344,15 +1344,15 @@ func (client *Client) AttachEndUser(request *AttachEndUserRequest) (_result *Att
 
 // Summary:
 //
-// Assigns users to multiple cloud computers in a batch.
+// Assigns users to multiple cloud desktops in batches.
 //
 // Description:
 //
-// - The cloud computers must be in the Running state.
+// - The cloud desktop must be in the Running state.
 //
-// - This operation immediately returns a result. To check whether the assignment is successful, call [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) and check the `ManagementFlags` response parameter: `ASSIGNING` indicates that the assignment is in progress, and other values indicate that the assignment is complete.
+// - This operation returns a result immediately. To check whether the assignment is successful, call [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) and check the `ManagementFlags` response parameter to determine whether the assignment is complete. A value of `ASSIGNING` indicates that the assignment is in progress. Any other value indicates that the assignment is complete.
 //
-// - Check whether the assignment is complete every 2 to 5 seconds, for a maximum of 50 seconds. In most cases, the assignment is completed within 1 to 5 seconds.
+// - Check the assignment status every 2 to 5 seconds, up to a maximum of 50 seconds. In most cases, the assignment is completed within 1 to 5 seconds.
 //
 // @param request - BatchModifyEntitlementRequest
 //
@@ -1420,15 +1420,15 @@ func (client *Client) BatchModifyEntitlementWithOptions(request *BatchModifyEnti
 
 // Summary:
 //
-// Assigns users to multiple cloud computers in a batch.
+// Assigns users to multiple cloud desktops in batches.
 //
 // Description:
 //
-// - The cloud computers must be in the Running state.
+// - The cloud desktop must be in the Running state.
 //
-// - This operation immediately returns a result. To check whether the assignment is successful, call [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) and check the `ManagementFlags` response parameter: `ASSIGNING` indicates that the assignment is in progress, and other values indicate that the assignment is complete.
+// - This operation returns a result immediately. To check whether the assignment is successful, call [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) and check the `ManagementFlags` response parameter to determine whether the assignment is complete. A value of `ASSIGNING` indicates that the assignment is in progress. Any other value indicates that the assignment is complete.
 //
-// - Check whether the assignment is complete every 2 to 5 seconds, for a maximum of 50 seconds. In most cases, the assignment is completed within 1 to 5 seconds.
+// - Check the assignment status every 2 to 5 seconds, up to a maximum of 50 seconds. In most cases, the assignment is completed within 1 to 5 seconds.
 //
 // @param request - BatchModifyEntitlementRequest
 //
@@ -1516,7 +1516,7 @@ func (client *Client) BindConfigGroup(request *BindConfigGroupRequest) (_result 
 
 // Summary:
 //
-// Cancels an automatic snapshot policy for cloud computers.
+// Cancels the automatic snapshot policy for a cloud desktop.
 //
 // @param request - CancelAutoSnapshotPolicyRequest
 //
@@ -1568,7 +1568,7 @@ func (client *Client) CancelAutoSnapshotPolicyWithOptions(request *CancelAutoSna
 
 // Summary:
 //
-// Cancels an automatic snapshot policy for cloud computers.
+// Cancels the automatic snapshot policy for a cloud desktop.
 //
 // @param request - CancelAutoSnapshotPolicyRequest
 //
@@ -2268,7 +2268,7 @@ func (client *Client) CopyCdsFile(request *CopyCdsFileRequest) (_result *CopyCds
 
 // Summary:
 //
-// Copies an image to another region. To share an image across regions, call this operation to copy the image to the destination region first, and then share it.
+// Copies an image to another region. To share an image across regions, call this operation to copy the image to the destination region before sharing it.
 //
 // @param request - CopyImageRequest
 //
@@ -2328,7 +2328,7 @@ func (client *Client) CopyImageWithOptions(request *CopyImageRequest, runtime *d
 
 // Summary:
 //
-// Copies an image to another region. To share an image across regions, call this operation to copy the image to the destination region first, and then share it.
+// Copies an image to another region. To share an image across regions, call this operation to copy the image to the destination region before sharing it.
 //
 // @param request - CopyImageRequest
 //
@@ -3441,6 +3441,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["FileTransferSpeedLocation"] = request.FileTransferSpeedLocation
 	}
 
+	if !dara.IsNil(request.FolderSync) {
+		query["FolderSync"] = request.FolderSync
+	}
+
 	if !dara.IsNil(request.GpuAcceleration) {
 		query["GpuAcceleration"] = request.GpuAcceleration
 	}
@@ -3856,11 +3860,11 @@ func (client *Client) CreateCenterPolicy(request *CreateCenterPolicyRequest) (_r
 
 // Summary:
 //
-// Disk organization authorization.
+// Grants organization authorization for a cloud disk.
 //
 // Description:
 //
-// The disk team list is synchronized from the EDS client -> User Management -> organization chart. If a user wants to use a team space, you can move the user to the specified organization in the User Management interface. The user can then see the team space menu bar in the disk client.
+// The cloud disk team list is synchronized from the Wuying client by navigating to User Management > Organizational structure. To use a team space, you must move users to a specified organization in the user management interface. Then, the users can view the team space menu bar in the cloud disk client.
 //
 // @param request - CreateCloudDriveGroupRequest
 //
@@ -3920,11 +3924,11 @@ func (client *Client) CreateCloudDriveGroupWithOptions(request *CreateCloudDrive
 
 // Summary:
 //
-// Disk organization authorization.
+// Grants organization authorization for a cloud disk.
 //
 // Description:
 //
-// The disk team list is synchronized from the EDS client -> User Management -> organization chart. If a user wants to use a team space, you can move the user to the specified organization in the User Management interface. The user can then see the team space menu bar in the disk client.
+// The cloud disk team list is synchronized from the Wuying client by navigating to User Management > Organizational structure. To use a team space, you must move users to a specified organization in the user management interface. Then, the users can view the team space menu bar in the cloud disk client.
 //
 // @param request - CreateCloudDriveGroupRequest
 //
@@ -4668,25 +4672,25 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 
 // Summary:
 //
-// Creates one or more cloud desktops. If user information is specified during creation, the cloud desktops are directly assigned to the users.
+// Creates one or more cloud desktops. If user information is provided during creation, the cloud desktops are directly assigned.
 //
 // Description:
 //
-// Before creating cloud desktops, complete the following preparations:
+// Before you create a cloud desktop, complete the following preparations:
 //
-// - Create an office network (formerly workspace) and users. For more information about the related API operations or documentation, see:
+// - An office network (formerly workspace) and users are created. For related API operations or documentation, see:
 //
 //   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
 //
-//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create AD users](https://help.aliyun.com/document_detail/188619.html).
+//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create an AD user](https://help.aliyun.com/document_detail/188619.html).
 //
-// - Call [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) to create a policy, or confirm that an existing policy is available.
+// - A policy is created by calling [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html), or an existing policy is used.
 //
 // **Call examples:**
 //
 // <details>
 //
-// <summary>Example of creating a cloud desktop by using a template</summary>
+// <summary>Example of request parameters for creating a cloud desktop by using a template</summary>
 //
 // ```
 //
@@ -4698,7 +4702,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// Create an office network in advance
+//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// An office network must be created in advance.
 //
 //	"PolicyGroupId": "system-all-enabled-policy",
 //
@@ -4726,7 +4730,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// Create an office network in advance
+//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// An office network must be created in advance.
 //
 //	"PolicyGroupId": "system-all-enabled-policy",
 //
@@ -4754,7 +4758,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 // <details>
 //
-// <summary>Example of creating a cloud desktop with a monthly hourly package</summary>
+// <summary>Example of request parameters for creating a monthly hourly package</summary>
 //
 // ```
 //
@@ -4766,7 +4770,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// Create an office network in advance
+//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// An office network must be created in advance.
 //
 //	"PolicyGroupId": "system-all-enabled-policy",
 //
@@ -4804,7 +4808,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 // <details>
 //
-// <summary>Example of creating an agent resource</summary>
+// <summary>Example of request parameters for creating an agent resource</summary>
 //
 // ```
 //
@@ -4818,7 +4822,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// Create an office network in advance
+//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// An office network must be created in advance.
 //
 //	"ChargeType": "PostPaid",
 //
@@ -4844,7 +4848,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 // </details>
 //
-// To have the cloud desktop automatically run custom command scripts, use the `UserCommands` field to configure custom commands.
+// To allow the cloud desktop to automatically execute custom command scripts, you can use the UserCommands field to configure custom commands.
 //
 // @param tmpReq - CreateDesktopsRequest
 //
@@ -4943,6 +4947,10 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 
 	if !dara.IsNil(request.GroupId) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.HostGpuDriverVersion) {
+		query["HostGpuDriverVersion"] = request.HostGpuDriverVersion
 	}
 
 	if !dara.IsNil(request.Hostname) {
@@ -5074,25 +5082,25 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 
 // Summary:
 //
-// Creates one or more cloud desktops. If user information is specified during creation, the cloud desktops are directly assigned to the users.
+// Creates one or more cloud desktops. If user information is provided during creation, the cloud desktops are directly assigned.
 //
 // Description:
 //
-// Before creating cloud desktops, complete the following preparations:
+// Before you create a cloud desktop, complete the following preparations:
 //
-// - Create an office network (formerly workspace) and users. For more information about the related API operations or documentation, see:
+// - An office network (formerly workspace) and users are created. For related API operations or documentation, see:
 //
 //   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
 //
-//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create AD users](https://help.aliyun.com/document_detail/188619.html).
+//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create an AD user](https://help.aliyun.com/document_detail/188619.html).
 //
-// - Call [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) to create a policy, or confirm that an existing policy is available.
+// - A policy is created by calling [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html), or an existing policy is used.
 //
 // **Call examples:**
 //
 // <details>
 //
-// <summary>Example of creating a cloud desktop by using a template</summary>
+// <summary>Example of request parameters for creating a cloud desktop by using a template</summary>
 //
 // ```
 //
@@ -5104,7 +5112,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// Create an office network in advance
+//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// An office network must be created in advance.
 //
 //	"PolicyGroupId": "system-all-enabled-policy",
 //
@@ -5132,7 +5140,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// Create an office network in advance
+//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// An office network must be created in advance.
 //
 //	"PolicyGroupId": "system-all-enabled-policy",
 //
@@ -5160,7 +5168,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 // <details>
 //
-// <summary>Example of creating a cloud desktop with a monthly hourly package</summary>
+// <summary>Example of request parameters for creating a monthly hourly package</summary>
 //
 // ```
 //
@@ -5172,7 +5180,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// Create an office network in advance
+//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// An office network must be created in advance.
 //
 //	"PolicyGroupId": "system-all-enabled-policy",
 //
@@ -5210,7 +5218,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 // <details>
 //
-// <summary>Example of creating an agent resource</summary>
+// <summary>Example of request parameters for creating an agent resource</summary>
 //
 // ```
 //
@@ -5224,7 +5232,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// Create an office network in advance
+//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// An office network must be created in advance.
 //
 //	"ChargeType": "PostPaid",
 //
@@ -5250,7 +5258,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 // </details>
 //
-// To have the cloud desktop automatically run custom command scripts, use the `UserCommands` field to configure custom commands.
+// To allow the cloud desktop to automatically execute custom command scripts, you can use the UserCommands field to configure custom commands.
 //
 // @param request - CreateDesktopsRequest
 //
@@ -7391,7 +7399,7 @@ func (client *Client) CreateVirtualBridge(request *CreateVirtualBridgeRequest) (
 
 // Summary:
 //
-// Deletes an automatic snapshot policy.
+// Deletes automatic snapshot policies.
 //
 // @param request - DeleteAutoSnapshotPolicyRequest
 //
@@ -7439,7 +7447,7 @@ func (client *Client) DeleteAutoSnapshotPolicyWithOptions(request *DeleteAutoSna
 
 // Summary:
 //
-// Deletes an automatic snapshot policy.
+// Deletes automatic snapshot policies.
 //
 // @param request - DeleteAutoSnapshotPolicyRequest
 //
@@ -8917,7 +8925,7 @@ func (client *Client) DeletePolicyGroups(request *DeletePolicyGroupsRequest) (_r
 
 // Summary:
 //
-// Delete a rate-limiting rule.
+// Deletes QoS rules.
 //
 // @param request - DeleteQosRulesRequest
 //
@@ -8961,7 +8969,7 @@ func (client *Client) DeleteQosRulesWithOptions(request *DeleteQosRulesRequest, 
 
 // Summary:
 //
-// Delete a rate-limiting rule.
+// Deletes QoS rules.
 //
 // @param request - DeleteQosRulesRequest
 //
@@ -10753,13 +10761,13 @@ func (client *Client) DescribeConfigGroup(request *DescribeConfigGroupRequest) (
 //
 // Description:
 //
-// Queries console messages and their configurations under the current Alibaba Cloud account. You can filter messages by message ID, business channel, message type, client type, message level, title or body keyword, and target audience. Returns the list of messages on the current page and the total number of messages that match the query conditions.
+// Queries console messages and their configurations under the current Alibaba Cloud account. Supports filtering by message ID, business channel, message type, client type, message level, title or body keywords, and message target. Returns the message list for the current page and the total number of messages that match the query conditions.
 //
-// - When multiple filter conditions are provided, all conditions are applied together to limit the query results.
+// - When multiple filter conditions are provided, all conditions jointly restrict the query results.
 //
-// - Uses PageNum and PageSize for pagination. The default value of PageNum is 1, and the default and maximum values of PageSize are both 200.
+// - Uses PageNum and PageSize for pagination. The default value of PageNum is 1. The default and maximum values of PageSize are both 200.
 //
-// - When querying by a specified convenience user, the results include messages targeted at all convenience users, the user themselves, and the organization to which the user belongs. When querying by a specified AD user, the results also include messages targeted at all AD users, the user themselves, and the AD organization to which the user belongs.
+// - When querying by a specified convenience user, the query matches messages targeted at all convenience users, the user themselves, and the organization to which the user belongs. When querying by a specified AD user, the query also matches messages targeted at all AD users, the user themselves, and the AD organization to which the user belongs.
 //
 // - Query results may include messages in the initializing, pushing, published, expired, deleting, and failed states. The Published state does not indicate that all target terminals have successfully received the message.
 //
@@ -10847,13 +10855,13 @@ func (client *Client) DescribeConsoleMessagesWithOptions(request *DescribeConsol
 //
 // Description:
 //
-// Queries console messages and their configurations under the current Alibaba Cloud account. You can filter messages by message ID, business channel, message type, client type, message level, title or body keyword, and target audience. Returns the list of messages on the current page and the total number of messages that match the query conditions.
+// Queries console messages and their configurations under the current Alibaba Cloud account. Supports filtering by message ID, business channel, message type, client type, message level, title or body keywords, and message target. Returns the message list for the current page and the total number of messages that match the query conditions.
 //
-// - When multiple filter conditions are provided, all conditions are applied together to limit the query results.
+// - When multiple filter conditions are provided, all conditions jointly restrict the query results.
 //
-// - Uses PageNum and PageSize for pagination. The default value of PageNum is 1, and the default and maximum values of PageSize are both 200.
+// - Uses PageNum and PageSize for pagination. The default value of PageNum is 1. The default and maximum values of PageSize are both 200.
 //
-// - When querying by a specified convenience user, the results include messages targeted at all convenience users, the user themselves, and the organization to which the user belongs. When querying by a specified AD user, the results also include messages targeted at all AD users, the user themselves, and the AD organization to which the user belongs.
+// - When querying by a specified convenience user, the query matches messages targeted at all convenience users, the user themselves, and the organization to which the user belongs. When querying by a specified AD user, the query also matches messages targeted at all AD users, the user themselves, and the AD organization to which the user belongs.
 //
 // - Query results may include messages in the initializing, pushing, published, expired, deleting, and failed states. The Published state does not indicate that all target terminals have successfully received the message.
 //
@@ -11627,7 +11635,7 @@ func (client *Client) DescribeDesktopOversoldUserGroup(request *DescribeDesktopO
 //
 // Description:
 //
-// Only data within the last 30 days can be queried.
+// Currently, only data within the last 30 days is supported.
 //
 // @param request - DescribeDesktopSessionsRequest
 //
@@ -11739,7 +11747,7 @@ func (client *Client) DescribeDesktopSessionsWithOptions(request *DescribeDeskto
 //
 // Description:
 //
-// Only data within the last 30 days can be queried.
+// Currently, only data within the last 30 days is supported.
 //
 // @param request - DescribeDesktopSessionsRequest
 //
@@ -12731,7 +12739,7 @@ func (client *Client) DescribeForwardTableEntries(request *DescribeForwardTableE
 
 // Summary:
 //
-// Queries information about the cloud computers whose images can be and are pending to be updated to the specified version.
+// Retrieves the information about cloud computers that can be upgraded to a specified image version but have not been upgraded.
 //
 // @param request - DescribeFotaPendingDesktopsRequest
 //
@@ -12799,7 +12807,7 @@ func (client *Client) DescribeFotaPendingDesktopsWithOptions(request *DescribeFo
 
 // Summary:
 //
-// Queries information about the cloud computers whose images can be and are pending to be updated to the specified version.
+// Retrieves the information about cloud computers that can be upgraded to a specified image version but have not been upgraded.
 //
 // @param request - DescribeFotaPendingDesktopsRequest
 //
@@ -14477,19 +14485,19 @@ func (client *Client) DescribeOnlineUserCount(request *DescribeOnlineUserCountRe
 
 // Summary:
 //
-// Queries peripheral drivers visible to the current account, with support for filtering by ownership, brand, device type, driver ID, and keyword, and returns paginated results.
+// Queries the peripheral drivers visible to the current account. Supports filtering by ownership, brand, device type, driver ID, and keyword, and returns paginated results.
 //
 // Description:
 //
-// When multiple filter conditions are specified, only drivers that meet all conditions are returned. If no filter conditions are specified, both Wuying official drivers and drivers of the current account are returned. Use PageSize and PageNumber for pagination. Keep the filter conditions and PageSize unchanged, increment PageNumber page by page, and stop when an empty list is returned. The example values are provided to illustrate the format. Replace them with actual values.
+// When multiple filter conditions are specified, the drivers that meet all the conditions are returned. If no filter condition is specified, both Wuying official drivers and custom drivers of the current account are queried. Use PageSize and PageNumber for pagination. Keep the filter conditions and PageSize unchanged, and increment PageNumber page by page. Stop when an empty list is returned. The sample values are used to illustrate the format. Replace them with actual values.
 //
 // ## Request examples
 //
-// The following JSON examples show the logical request parameters. Common signature parameters are generated by the SDK or signing component.
+// The following JSON shows the logical request parameters. Common signature parameters are generated by the SDK or signature component.
 //
 // ### Query official printer drivers
 //
-// Query official printer drivers of a specified brand that contain a keyword. The first page is returned with a maximum of 20 entries per page.
+// Queries the official printer drivers of a specified brand that contain a specific keyword. Returns the first page with a maximum of 20 entries per page.
 //
 // ```json
 //
@@ -14515,7 +14523,7 @@ func (client *Client) DescribeOnlineUserCount(request *DescribeOnlineUserCountRe
 //
 // ```
 //
-// ### Query drivers by driver ID in batches
+// ### Batch query by driver ID
 //
 // ```json
 //
@@ -14541,7 +14549,7 @@ func (client *Client) DescribeOnlineUserCount(request *DescribeOnlineUserCountRe
 //
 // ```
 //
-// When you construct request parameters directly, expand DriverIds by sequence number:
+// When constructing request parameters directly, DriverIds are expanded by serial number:
 //
 // ```text
 //
@@ -14551,13 +14559,13 @@ func (client *Client) DescribeOnlineUserCount(request *DescribeOnlineUserCountRe
 //
 // ```
 //
-// When you use an SDK, pass in a string array and the SDK handles the encoding.
+// When using an SDK, pass a string array and the SDK completes the encoding.
 //
 // ## Response examples
 //
-// The following responses are format examples. The icon URLs are for illustration purposes only. The reserved fields MaxResults and NextToken do not provide valid values and are omitted from the examples.
+// The following responses are format examples. The icon URLs are placeholder addresses. The reserved fields MaxResults and NextToken do not provide valid values and are omitted in the examples.
 //
-// ### Successful query
+// ### Query succeeded
 //
 // ```json
 //
@@ -14687,19 +14695,19 @@ func (client *Client) DescribePeripheralDriversWithOptions(request *DescribePeri
 
 // Summary:
 //
-// Queries peripheral drivers visible to the current account, with support for filtering by ownership, brand, device type, driver ID, and keyword, and returns paginated results.
+// Queries the peripheral drivers visible to the current account. Supports filtering by ownership, brand, device type, driver ID, and keyword, and returns paginated results.
 //
 // Description:
 //
-// When multiple filter conditions are specified, only drivers that meet all conditions are returned. If no filter conditions are specified, both Wuying official drivers and drivers of the current account are returned. Use PageSize and PageNumber for pagination. Keep the filter conditions and PageSize unchanged, increment PageNumber page by page, and stop when an empty list is returned. The example values are provided to illustrate the format. Replace them with actual values.
+// When multiple filter conditions are specified, the drivers that meet all the conditions are returned. If no filter condition is specified, both Wuying official drivers and custom drivers of the current account are queried. Use PageSize and PageNumber for pagination. Keep the filter conditions and PageSize unchanged, and increment PageNumber page by page. Stop when an empty list is returned. The sample values are used to illustrate the format. Replace them with actual values.
 //
 // ## Request examples
 //
-// The following JSON examples show the logical request parameters. Common signature parameters are generated by the SDK or signing component.
+// The following JSON shows the logical request parameters. Common signature parameters are generated by the SDK or signature component.
 //
 // ### Query official printer drivers
 //
-// Query official printer drivers of a specified brand that contain a keyword. The first page is returned with a maximum of 20 entries per page.
+// Queries the official printer drivers of a specified brand that contain a specific keyword. Returns the first page with a maximum of 20 entries per page.
 //
 // ```json
 //
@@ -14725,7 +14733,7 @@ func (client *Client) DescribePeripheralDriversWithOptions(request *DescribePeri
 //
 // ```
 //
-// ### Query drivers by driver ID in batches
+// ### Batch query by driver ID
 //
 // ```json
 //
@@ -14751,7 +14759,7 @@ func (client *Client) DescribePeripheralDriversWithOptions(request *DescribePeri
 //
 // ```
 //
-// When you construct request parameters directly, expand DriverIds by sequence number:
+// When constructing request parameters directly, DriverIds are expanded by serial number:
 //
 // ```text
 //
@@ -14761,13 +14769,13 @@ func (client *Client) DescribePeripheralDriversWithOptions(request *DescribePeri
 //
 // ```
 //
-// When you use an SDK, pass in a string array and the SDK handles the encoding.
+// When using an SDK, pass a string array and the SDK completes the encoding.
 //
 // ## Response examples
 //
-// The following responses are format examples. The icon URLs are for illustration purposes only. The reserved fields MaxResults and NextToken do not provide valid values and are omitted from the examples.
+// The following responses are format examples. The icon URLs are placeholder addresses. The reserved fields MaxResults and NextToken do not provide valid values and are omitted in the examples.
 //
-// ### Successful query
+// ### Query succeeded
 //
 // ```json
 //
@@ -15919,7 +15927,7 @@ func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest)
 
 // Summary:
 //
-// Queries cloud resources that are associated with a global policy.
+// Queries cloud resources that are not associated with a region policy.
 //
 // @param request - DescribeResourceByCenterPolicyIdRequest
 //
@@ -15979,7 +15987,7 @@ func (client *Client) DescribeResourceByCenterPolicyIdWithOptions(request *Descr
 
 // Summary:
 //
-// Queries cloud resources that are associated with a global policy.
+// Queries cloud resources that are not associated with a region policy.
 //
 // @param request - DescribeResourceByCenterPolicyIdRequest
 //
@@ -16313,7 +16321,7 @@ func (client *Client) DescribeSessionStatistic(request *DescribeSessionStatistic
 
 // Summary:
 //
-// Queries the snapshot list and detailed snapshot information of a cloud computer.
+// Queries the list and details of snapshots for a cloud desktop.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -16409,7 +16417,7 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 
 // Summary:
 //
-// Queries the snapshot list and detailed snapshot information of a cloud computer.
+// Queries the list and details of snapshots for a cloud desktop.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -16849,7 +16857,7 @@ func (client *Client) DescribeUserConnectTime(request *DescribeUserConnectTimeRe
 
 // Summary:
 //
-// Queries the connection records of authorized users connecting to pooled cloud computers in a cloud computer pool.
+// Queries the connection records of authorized users to pooled cloud computers in a cloud computer pool.
 //
 // @param request - DescribeUserConnectionRecordsRequest
 //
@@ -16941,7 +16949,7 @@ func (client *Client) DescribeUserConnectionRecordsWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the connection records of authorized users connecting to pooled cloud computers in a cloud computer pool.
+// Queries the connection records of authorized users to pooled cloud computers in a cloud computer pool.
 //
 // @param request - DescribeUserConnectionRecordsRequest
 //
@@ -18793,7 +18801,7 @@ func (client *Client) GetCoordinateTicket(request *GetCoordinateTicketRequest) (
 
 // Summary:
 //
-// Retrieves the details of a shared cloud computer.
+// Retrieves the details of a shared cloud desktop.
 //
 // @param request - GetDesktopGroupDetailRequest
 //
@@ -18841,7 +18849,7 @@ func (client *Client) GetDesktopGroupDetailWithOptions(request *GetDesktopGroupD
 
 // Summary:
 //
-// Retrieves the details of a shared cloud computer.
+// Retrieves the details of a shared cloud desktop.
 //
 // @param request - GetDesktopGroupDetailRequest
 //
@@ -21104,6 +21112,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 		query["FileTransferSpeedLocation"] = request.FileTransferSpeedLocation
 	}
 
+	if !dara.IsNil(request.FolderSync) {
+		query["FolderSync"] = request.FolderSync
+	}
+
 	if !dara.IsNil(request.GpuAcceleration) {
 		query["GpuAcceleration"] = request.GpuAcceleration
 	}
@@ -22921,13 +22933,13 @@ func (client *Client) ModifyDesktopsPolicyGroup(request *ModifyDesktopsPolicyGro
 
 // Summary:
 //
-// Modifies the performance level (PL) of the system cloud disk or data cloud disk of a cloud computer.
+// Modifies the performance level of the system cloud disk or data cloud disk of a cloud desktop.
 //
 // Description:
 //
-// When you create a cloud computer, you can select specifications by creating a custom template. Enterprise Graphics or High Frequency Office specifications use ESSDs by default and support settings for disk capacity and performance level (PL). You can change the performance level (PL) of the system cloud disk or data cloud disk as needed.
+// When you create a cloud desktop, you can select specifications by creating a custom template. Enterprise Graphics or High-frequency Office cloud desktops use ESSDs by default and support disk capacity and performance level settings. You can change the performance level of the system cloud disk or data cloud disk as needed.
 //
-// > Only Enterprise Graphics and High Frequency Office cloud computers support changing the disk performance level (PL).
+// > Only Enterprise Graphics and High-frequency Office cloud desktops support changing the disk performance level.
 //
 // @param request - ModifyDiskSpecRequest
 //
@@ -22995,13 +23007,13 @@ func (client *Client) ModifyDiskSpecWithOptions(request *ModifyDiskSpecRequest, 
 
 // Summary:
 //
-// Modifies the performance level (PL) of the system cloud disk or data cloud disk of a cloud computer.
+// Modifies the performance level of the system cloud disk or data cloud disk of a cloud desktop.
 //
 // Description:
 //
-// When you create a cloud computer, you can select specifications by creating a custom template. Enterprise Graphics or High Frequency Office specifications use ESSDs by default and support settings for disk capacity and performance level (PL). You can change the performance level (PL) of the system cloud disk or data cloud disk as needed.
+// When you create a cloud desktop, you can select specifications by creating a custom template. Enterprise Graphics or High-frequency Office cloud desktops use ESSDs by default and support disk capacity and performance level settings. You can change the performance level of the system cloud disk or data cloud disk as needed.
 //
-// > Only Enterprise Graphics and High Frequency Office cloud computers support changing the disk performance level (PL).
+// > Only Enterprise Graphics and High-frequency Office cloud desktops support changing the disk performance level.
 //
 // @param request - ModifyDiskSpecRequest
 //
@@ -23735,11 +23747,11 @@ func (client *Client) ModifyOfficeSiteAttribute(request *ModifyOfficeSiteAttribu
 
 // Summary:
 //
-// Modifies the bridge information for behavior management.
+// Updates the behavior management bridge information.
 //
 // Description:
 //
-// Only AD office networks in the `ERROR` or `REGISTERING` state support modifications to domain name and DNS-related parameters, including `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
+// Only AD office networks in the `ERROR` or `REGISTERING` state support the modification of domain name and DNS-related parameters, including `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
 //
 // @param request - ModifyOfficeSiteBridgeInfoRequest
 //
@@ -23807,11 +23819,11 @@ func (client *Client) ModifyOfficeSiteBridgeInfoWithOptions(request *ModifyOffic
 
 // Summary:
 //
-// Modifies the bridge information for behavior management.
+// Updates the behavior management bridge information.
 //
 // Description:
 //
-// Only AD office networks in the `ERROR` or `REGISTERING` state support modifications to domain name and DNS-related parameters, including `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
+// Only AD office networks in the `ERROR` or `REGISTERING` state support the modification of domain name and DNS-related parameters, including `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
 //
 // @param request - ModifyOfficeSiteBridgeInfoRequest
 //
@@ -25400,7 +25412,7 @@ func (client *Client) MoveCdsFile(request *MoveCdsFileRequest) (_result *MoveCds
 
 // Summary:
 //
-// Queries the trend of active user count statistics within a specified time range. Returns the deduplicated active user count at each time slice based on the specified aggregation interval (Period), which can be used to plot online user trend charts.
+// Queries the trend of active user statistics within a specified time range. Returns the number of deduplicated active users at each time slice based on the specified time aggregation granularity (Period) for plotting online user trend charts.
 //
 // @param request - QueryActiveUserStatisticRequest
 //
@@ -25460,7 +25472,7 @@ func (client *Client) QueryActiveUserStatisticWithOptions(request *QueryActiveUs
 
 // Summary:
 //
-// Queries the trend of active user count statistics within a specified time range. Returns the deduplicated active user count at each time slice based on the specified aggregation interval (Period), which can be used to plot online user trend charts.
+// Queries the trend of active user statistics within a specified time range. Returns the number of deduplicated active users at each time slice based on the specified time aggregation granularity (Period) for plotting online user trend charts.
 //
 // @param request - QueryActiveUserStatisticRequest
 //
@@ -25576,7 +25588,7 @@ func (client *Client) QueryAuthUserConnectDurationList(request *QueryAuthUserCon
 
 // Summary:
 //
-// Queries the usage duration ranking and details of each end user under a tenant within a specified date range. Aggregates offline statistical data, summarizes connection duration by user dimension, and populates basic information and per-desktop usage duration details for users on the current page.
+// Queries the usage duration rankings and details of end users within a specified date range for a tenant. It aggregates offline statistical data, summarizes the connection duration by user, and populates basic information and usage duration details for each cloud desktop for the users on the current page.
 //
 // @param request - QueryEndUserHistoryUsageRequest
 //
@@ -25636,7 +25648,7 @@ func (client *Client) QueryEndUserHistoryUsageWithOptions(request *QueryEndUserH
 
 // Summary:
 //
-// Queries the usage duration ranking and details of each end user under a tenant within a specified date range. Aggregates offline statistical data, summarizes connection duration by user dimension, and populates basic information and per-desktop usage duration details for users on the current page.
+// Queries the usage duration rankings and details of end users within a specified date range for a tenant. It aggregates offline statistical data, summarizes the connection duration by user, and populates basic information and usage duration details for each cloud desktop for the users on the current page.
 //
 // @param request - QueryEndUserHistoryUsageRequest
 //
