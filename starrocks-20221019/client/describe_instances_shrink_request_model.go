@@ -44,7 +44,7 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// <ul>
 	//
-	// <li>unpaid: Pending payment.</li>
+	// <li>unpaid: Unpaid.</li>
 	//
 	// <li>paid: Paid.</li>
 	//
@@ -52,7 +52,7 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// <li>running: Running.</li>
 	//
-	// <li>updating: Updating.</li>
+	// <li>updating: Upgrading.</li>
 	//
 	// <li>disable: Unavailable.</li>
 	//
@@ -66,13 +66,13 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// <li>scaling_down: Scaling down.</li>
 	//
-	// <li>upgrading: Upgrading.</li>
+	// <li>upgrading: Upgrading the version.</li>
 	//
 	// <li>modifying_config: Updating configurations.</li>
 	//
-	// <li>enable_public_network: Enabling public network access.</li>
+	// <li>enable_public_network: Enabling the public network.</li>
 	//
-	// <li>disable_public_network: Disabling public network access.</li>
+	// <li>disable_public_network: Disabling the public network.</li>
 	//
 	// <li>convert_from_trial_to_official: Upgrading the instance edition.</li>
 	//
@@ -82,7 +82,7 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// <li>actively_disabled: Stopped.</li>
 	//
-	// <li>enabling: Resuming.</li>
+	// <li>enabling: Recovering.</li>
 	//
 	// <li>agent_creating: Creating the agent.</li>
 	//
@@ -100,7 +100,7 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paging query.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// rg-acfmygmtrcenXXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of tags.
+	// The tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

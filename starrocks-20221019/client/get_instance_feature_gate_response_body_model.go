@@ -199,7 +199,8 @@ type GetInstanceFeatureGateResponseBodyData struct {
 	// example:
 	//
 	// true
-	SupportBackup *bool `json:"SupportBackup,omitempty" xml:"SupportBackup,omitempty"`
+	SupportBackup                       *bool `json:"SupportBackup,omitempty" xml:"SupportBackup,omitempty"`
+	SupportConvertComputeFreeToPostPaid *bool `json:"SupportConvertComputeFreeToPostPaid,omitempty" xml:"SupportConvertComputeFreeToPostPaid,omitempty"`
 	// Indicates whether agent creation is supported.
 	//
 	// example:
@@ -322,6 +323,10 @@ func (s *GetInstanceFeatureGateResponseBodyData) GetSupportBackup() *bool {
 	return s.SupportBackup
 }
 
+func (s *GetInstanceFeatureGateResponseBodyData) GetSupportConvertComputeFreeToPostPaid() *bool {
+	return s.SupportConvertComputeFreeToPostPaid
+}
+
 func (s *GetInstanceFeatureGateResponseBodyData) GetSupportCreateAgent() *bool {
 	return s.SupportCreateAgent
 }
@@ -413,6 +418,11 @@ func (s *GetInstanceFeatureGateResponseBodyData) SetSupportAddConfigTypes(v []*s
 
 func (s *GetInstanceFeatureGateResponseBodyData) SetSupportBackup(v bool) *GetInstanceFeatureGateResponseBodyData {
 	s.SupportBackup = &v
+	return s
+}
+
+func (s *GetInstanceFeatureGateResponseBodyData) SetSupportConvertComputeFreeToPostPaid(v bool) *GetInstanceFeatureGateResponseBodyData {
+	s.SupportConvertComputeFreeToPostPaid = &v
 	return s
 }
 

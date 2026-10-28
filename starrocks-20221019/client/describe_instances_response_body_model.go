@@ -157,13 +157,13 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// acl-bp1xc6b9vs013jjtp****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The AI dedicated cluster ID. The ID is prefixed with af-. This parameter is returned if an unreleased dedicated cluster exists, including those being created. If no dedicated cluster is created, this parameter is empty.
+	// The AI dedicated cluster ID. The ID has an af- prefix. This parameter is returned if an unreleased dedicated cluster exists, including those being created. If no dedicated cluster is created, this parameter is empty.
 	//
 	// example:
 	//
 	// af-498ae4af
 	AiFunctionClusterId *string `json:"AiFunctionClusterId,omitempty" xml:"AiFunctionClusterId,omitempty"`
-	// The internal network connection endpoint of the AI dedicated cluster. The format is fe-{AiFunctionClusterId}-internal.starrocks.aliyuncs.com. This parameter is returned only after the dedicated cluster is created. If no dedicated cluster is created, this parameter is empty.
+	// The internal network endpoint of the AI dedicated cluster. The format is fe-{AiFunctionClusterId}-internal.starrocks.aliyuncs.com. This parameter is returned only after the dedicated cluster is created. If no dedicated cluster is created, this parameter is empty.
 	//
 	// example:
 	//
@@ -192,35 +192,38 @@ type DescribeInstancesResponseBodyData struct {
 	// example:
 	//
 	// 1733292921000
-	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// Specifies whether the AI center is enabled. Default value: false.
+	BeginTime   *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	ComputeFree *bool  `json:"ComputeFree,omitempty" xml:"ComputeFree,omitempty"`
+	// Indicates whether the AI center is enabled. Default value: false.
 	EnableAiFunction *bool `json:"EnableAiFunction,omitempty" xml:"EnableAiFunction,omitempty"`
-	// Specifies whether automatic minor version upgrades are allowed.
+	// Indicates whether automatic minor version upgrades are allowed.
 	//
 	// example:
 	//
 	// true
 	EnableAutoMinorVersionUpgrade *bool `json:"EnableAutoMinorVersionUpgrade,omitempty" xml:"EnableAutoMinorVersionUpgrade,omitempty"`
-	// Specifies whether disaster recovery is enabled.
+	// Indicates whether disaster recovery is enabled.
 	EnableMultiAz *bool `json:"EnableMultiAz,omitempty" xml:"EnableMultiAz,omitempty"`
-	// Specifies whether SSL is enabled.
+	// Indicates whether SSL is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
-	// Specifies whether the audit plug-in is enabled.
+	// Indicates whether the audit plug-in is enabled.
 	//
 	// example:
 	//
 	// true
 	EnabledAuditLoader *bool `json:"EnabledAuditLoader,omitempty" xml:"EnabledAuditLoader,omitempty"`
-	// Specifies whether encryption is enabled.
+	// Indicates whether encryption is enabled.
 	//
 	// example:
 	//
 	// true
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// The end-of-support date for the cluster version.
+	//
 	// example:
 	//
 	// 2026-07
@@ -247,7 +250,7 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// - not_init: Not initialized.
 	//
-	// - unpaid: Pending payment.
+	// - unpaid: Unpaid.
 	//
 	// - paid: Paid.
 	//
@@ -259,7 +262,7 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// - running: Running.
 	//
-	// - updating: Updating.
+	// - updating: Upgrading.
 	//
 	// - agent_creating: Creating the agent.
 	//
@@ -277,11 +280,11 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// - scaling_down: Scaling down.
 	//
-	// - upgrading: Upgrading.
+	// - upgrading: Upgrading the version.
 	//
-	// - enable_public_network: Enabling public network access.
+	// - enable_public_network: Enabling the public network.
 	//
-	// - disable_public_network: Disabling public network access.
+	// - disable_public_network: Disabling the public network.
 	//
 	// - convert_from_trial_to_official: Converting the edition.
 	//
@@ -291,7 +294,7 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// - switch_az: Switching the primary and secondary zones.
 	//
-	// - enabling: Resuming.
+	// - enabling: Recovering.
 	//
 	// - disable: Unavailable.
 	//
@@ -309,7 +312,7 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// Specifies whether read/write splitting is enabled. If enabled, the leader FE node processes write requests and other nodes process read requests.
+	// Indicates whether read/write splitting is enabled. If enabled, the leader FE node processes write requests and other nodes process read requests.
 	//
 	// example:
 	//
@@ -417,9 +420,9 @@ type DescribeInstancesResponseBodyData struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The running mode of the cluster. Valid values:
 	//
-	// - shared_nothing: Shared-nothing architecture.
+	// - shared_nothing: Shared-nothing.
 	//
-	// - shared_data: Shared-data architecture.
+	// - shared_data: Shared-data.
 	//
 	// - lakehouse: Lakehouse.
 	//
@@ -433,7 +436,7 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// 3645445
 	RunningTime *int64 `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
-	// Specifies whether the security group is a managed security group.
+	// Indicates whether the managed security group is used.
 	//
 	// example:
 	//
@@ -447,7 +450,7 @@ type DescribeInstancesResponseBodyData struct {
 	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
 	// The tags bound to the instance.
 	Tags []*DescribeInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The list of vSwitches.
+	// The vSwitches.
 	VSwitches []*DescribeInstancesResponseBodyDataVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The cluster version.
 	//
@@ -455,9 +458,11 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// 3.2
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version lifecycle status.
+	//
 	// example:
 	//
-	// 长期支持
+	// Long-term support
 	VersionLifecycleStatus *string `json:"VersionLifecycleStatus,omitempty" xml:"VersionLifecycleStatus,omitempty"`
 	// The VPC ID.
 	//
@@ -497,6 +502,10 @@ func (s *DescribeInstancesResponseBodyData) GetArchitecture() *string {
 
 func (s *DescribeInstancesResponseBodyData) GetBeginTime() *int64 {
 	return s.BeginTime
+}
+
+func (s *DescribeInstancesResponseBodyData) GetComputeFree() *bool {
+	return s.ComputeFree
 }
 
 func (s *DescribeInstancesResponseBodyData) GetEnableAiFunction() *bool {
@@ -646,6 +655,11 @@ func (s *DescribeInstancesResponseBodyData) SetArchitecture(v string) *DescribeI
 
 func (s *DescribeInstancesResponseBodyData) SetBeginTime(v int64) *DescribeInstancesResponseBodyData {
 	s.BeginTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyData) SetComputeFree(v bool) *DescribeInstancesResponseBodyData {
+	s.ComputeFree = &v
 	return s
 }
 
@@ -867,7 +881,7 @@ func (s *DescribeInstancesResponseBodyDataTags) Validate() error {
 }
 
 type DescribeInstancesResponseBodyDataVSwitches struct {
-	// Specifies whether the vSwitch is the primary vSwitch.
+	// Indicates whether the vSwitch is the primary vSwitch.
 	//
 	// example:
 	//

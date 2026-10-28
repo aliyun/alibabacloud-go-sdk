@@ -1990,11 +1990,11 @@ func (client *Client) DescribeInstanceMetaToken(request *DescribeInstanceMetaTok
 
 // Summary:
 //
-// Queries Serverless StarRocks instances. You can filter the results by instance name or tags.
+// Queries Serverless StarRocks instances and supports filtering by instance name or tags.
 //
 // Description:
 //
-//	Danger: After an instance is released, the physical resources used by the instance are reclaimed. All related data is lost and cannot be recovered.
+//	Danger: After an instance is released, all physical resources used by the instance are reclaimed. All related data is lost and cannot be recovered.
 //
 // @param tmpReq - DescribeInstancesRequest
 //
@@ -2075,11 +2075,11 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 
 // Summary:
 //
-// Queries Serverless StarRocks instances. You can filter the results by instance name or tags.
+// Queries Serverless StarRocks instances and supports filtering by instance name or tags.
 //
 // Description:
 //
-//	Danger: After an instance is released, the physical resources used by the instance are reclaimed. All related data is lost and cannot be recovered.
+//	Danger: After an instance is released, all physical resources used by the instance are reclaimed. All related data is lost and cannot be recovered.
 //
 // @param request - DescribeInstancesRequest
 //
