@@ -22,15 +22,15 @@ type ModifyOpenLogShipperRequest struct {
 	//
 	// - **sas**: Security Center edition.
 	//
-	// > Server Guard users must use **aegis**, and Security Center users must use **sas**.
+	// > If you use Server Guard, set this parameter to **aegis**. If you use Security Center, set this parameter to **sas**.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The ID of the member accounts in the resource directory (Alibaba Cloud account).
+	// The ID of the member accounts (Alibaba Cloud account) in the resource folder.
 	//
-	// > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//

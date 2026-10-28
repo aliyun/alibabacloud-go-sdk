@@ -14,7 +14,7 @@ type iDeleteFileProtectRuleRequest interface {
 }
 
 type DeleteFileProtectRuleRequest struct {
-	// The IDs of the core file monitoring rules that you want to delete.
+	// The IDs of the rules to delete.
 	Id []*int64 `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
 }
 

@@ -123,6 +123,10 @@ type ListUnknownThreatDetectMachineResponseBodyData struct {
 	// 0
 	NormalEventCount *int64 `json:"NormalEventCount,omitempty" xml:"NormalEventCount,omitempty"`
 	// The plug-in status.
+	//
+	// example:
+	//
+	// online
 	PluginStatus *string `json:"PluginStatus,omitempty" xml:"PluginStatus,omitempty"`
 	// The number of processes.
 	//

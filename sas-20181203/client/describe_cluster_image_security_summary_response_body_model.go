@@ -165,11 +165,11 @@ type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageBaseli
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **high**: High.
+	// - **high**: High risk.
 	//
-	// - **medium**: Medium.
+	// - **medium**: Medium risk.
 	//
-	// - **low**: Low.
+	// - **low**: Low risk.
 	//
 	// example:
 	//
@@ -214,13 +214,13 @@ type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageCveVul
 	//
 	// 0
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The warning level. Valid values:
+	// The alert level. Valid values:
 	//
-	// - **asap**: High. Fix the vulnerability at the earliest opportunity.
+	// - **asap**: High. Fix as soon as possible.
 	//
-	// - **nntf**: Medium. The vulnerability can be temporarily left unfixed.
+	// - **nntf**: Medium. Can be fixed later.
 	//
-	// - **later**: Low. The vulnerability can be left unfixed.
+	// - **later**: Low. Can be left unfixed.
 	//
 	// example:
 	//
@@ -267,11 +267,11 @@ type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageMalici
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **high**: High.
+	// - **high**: High risk.
 	//
-	// - **medium**: Medium.
+	// - **medium**: Medium risk.
 	//
-	// - **low**: Low.
+	// - **low**: Low risk.
 	//
 	// example:
 	//
@@ -316,13 +316,13 @@ type DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageScaVul
 	//
 	// 0
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The warning level. Valid values:
+	// The alert level. Valid values:
 	//
-	// - **asap**: High. Fix the vulnerability at the earliest opportunity.
+	// - **asap**: High. Fix as soon as possible.
 	//
-	// - **nntf**: Medium. The vulnerability can be temporarily left unfixed.
+	// - **nntf**: Medium. Can be fixed later.
 	//
-	// - **later**: Low. The vulnerability can be left unfixed.
+	// - **later**: Low. Can be left unfixed.
 	//
 	// example:
 	//

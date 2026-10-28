@@ -22,7 +22,7 @@ type iUpdatePublishCronRequest interface {
 }
 
 type UpdatePublishCronRequest struct {
-	// The Cron expression for the upgrade start time.
+	// The cron expression for the upgrade start time.
 	//
 	// This parameter is required.
 	//
@@ -32,17 +32,17 @@ type UpdatePublishCronRequest struct {
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
 	// The day of the week for the upgrade time. Valid values:
 	//
-	// - **MON**: Monday
+	// - **MON**: Monday.
 	//
-	// - **TUE**: Tuesday
+	// - **TUE**: Tuesday.
 	//
-	// - **WED**: Wednesday
+	// - **WED**: Wednesday.
 	//
-	// - **THU**: Thursday
+	// - **THU**: Thursday.
 	//
-	// - **FRI**: Friday
+	// - **FRI**: Friday.
 	//
-	// - **SAT**: Saturday
+	// - **SAT**: Saturday.
 	//
 	// - **SUN**: Sunday.
 	//
@@ -50,23 +50,23 @@ type UpdatePublishCronRequest struct {
 	//
 	// SUN
 	CronDay *string `json:"CronDay,omitempty" xml:"CronDay,omitempty"`
-	// The publish start timestamp. Unit: milliseconds.
+	// The start timestamp of the release, in milliseconds.
 	//
 	// example:
 	//
 	// 1657407600000
 	CronTime *int64 `json:"CronTime,omitempty" xml:"CronTime,omitempty"`
-	// The upgrade start cycle type. Valid values:
+	// The cycle type for the upgrade start time. Valid values:
 	//
-	// - **day**: every day
+	// - **day**: Daily.
 	//
-	// - **week**: every week.
+	// - **week**: Weekly.
 	//
 	// example:
 	//
 	// day
 	CronType *string `json:"CronType,omitempty" xml:"CronType,omitempty"`
-	// The upgrade duration. Unit: hours.
+	// The duration of the upgrade, in hours.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iDescribeUserSettingRequest interface {
 }
 
 type DescribeUserSettingRequest struct {
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//

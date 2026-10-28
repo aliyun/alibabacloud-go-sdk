@@ -18,27 +18,27 @@ type iDescribeSearchConditionRequest interface {
 }
 
 type DescribeSearchConditionRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The source IP address.
 	//
 	// example:
 	//
 	// 117.220.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the asset. Valid values:
+	// The Asset Type to query. Valid values:
 	//
-	// 	- **ecs**: Elastic Compute Service (ECS) instances.
+	// - **ecs**: queries the filter conditions for all ECS servers.
 	//
-	// 	- **cloud_product**: cloud services except ECS.
+	// - **cloud_product**: queries the filter conditions for all other cloud services.
 	//
 	// example:
 	//

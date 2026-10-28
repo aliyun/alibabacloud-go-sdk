@@ -14,7 +14,7 @@ type iModifyVulTargetResponseBody interface {
 }
 
 type ModifyVulTargetResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type GetAppNetworkRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The timestamp of the end time. Unit: milliseconds.
 	//
-	// > The difference between the start timestamp and the end timestamp cannot exceed **7*	- days.
+	// > The interval between the start timestamp and the end timestamp cannot exceed **7*	- days.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetAppNetworkRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The timestamp of the start time. Unit: milliseconds.
 	//
-	// > The difference between the start timestamp and the end timestamp cannot exceed **7*	- days.
+	// > The interval between the start timestamp and the end timestamp cannot exceed **7*	- days.
 	//
 	// example:
 	//

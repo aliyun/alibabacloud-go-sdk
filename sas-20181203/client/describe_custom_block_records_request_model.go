@@ -22,32 +22,32 @@ type iDescribeCustomBlockRecordsRequest interface {
 }
 
 type DescribeCustomBlockRecordsRequest struct {
-	// The IP address to be blocked for brute-force attacks prevention.
+	// The IP address to be blocked to prevent brute-force attacks.
 	//
 	// example:
 	//
 	// 117.66.XX.XX
 	BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
-	// The page number of the page to return. Default value: **1**.
+	// Specifies the page number of the returned results. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Settings for paged query. The number of records to return on each page during paging. Default value: **20**, which indicates that 20 records are displayed per page.
+	// Settings for paging. Specifies the number of records to return on each page during a paged query. Default value: **20**, which indicates that 20 records are displayed on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the brute-force attacks defense rule. Valid values:
+	// The status of the defense rule against brute-force attacks. Valid values:
 	//
-	// - **0**: Invalid.
+	// - **0**: invalid
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled
 	//
-	// - **2**: Failed.
+	// - **2**: failed
 	//
 	// example:
 	//

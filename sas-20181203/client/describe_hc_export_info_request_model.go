@@ -14,7 +14,11 @@ type iDescribeHcExportInfoRequest interface {
 }
 
 type DescribeHcExportInfoRequest struct {
-	// The ID of the export task. You must call the [ExportWarning](https://help.aliyun.com/document_detail/425092.html) operation to obtain the task ID (**Id**).
+	// The ID of the export task.
+	//
+	// > To obtain the task ID (**Id**), call the [ExportWarning](https://help.aliyun.com/document_detail/425092.html) operation.
+	//
+	// This parameter is required. If you do not specify this parameter, the API returns HTTP 400 and the error code -101.
 	//
 	// example:
 	//

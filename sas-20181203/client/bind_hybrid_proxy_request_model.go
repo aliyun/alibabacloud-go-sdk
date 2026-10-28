@@ -24,7 +24,7 @@ type BindHybridProxyRequest struct {
 	//
 	// sas-proxy
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The UUIDs of servers that you want to add to Security Center over the proxy server.
+	// The UUIDs of the servers connected to the proxy.
 	//
 	// This parameter is required.
 	YundunUuids []*string `json:"YundunUuids,omitempty" xml:"YundunUuids,omitempty" type:"Repeated"`

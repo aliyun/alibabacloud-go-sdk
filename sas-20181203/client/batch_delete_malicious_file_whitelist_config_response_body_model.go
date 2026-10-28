@@ -22,35 +22,35 @@ type iBatchDeleteMaliciousFileWhitelistConfigResponseBody interface {
 }
 
 type BatchDeleteMaliciousFileWhitelistConfigResponseBody struct {
-	// The response code. The status code **200*	- indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+	// The result code. A value of **200*	- indicates success, whereas any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. A value of 200 indicates that the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The additional message returned for the request result.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// A3D7C47D-3F11-57BB-90E8-E5C20C61****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The API call is successful.
 	//
-	// 	- **false**
+	// - **false**: The API call fails.
 	//
 	// example:
 	//

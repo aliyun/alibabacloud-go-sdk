@@ -20,11 +20,11 @@ type GetAccountLabelRequest struct {
 	//
 	// This parameter is required.
 	LabelList []*string `json:"LabelList,omitempty" xml:"LabelList,omitempty" type:"Repeated"`
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	// Specifies the language type for requests and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

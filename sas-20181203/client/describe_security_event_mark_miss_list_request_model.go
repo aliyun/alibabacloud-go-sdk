@@ -24,7 +24,7 @@ type iDescribeSecurityEventMarkMissListRequest interface {
 }
 
 type DescribeSecurityEventMarkMissListRequest struct {
-	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
+	// The number of the page to return. Default value: **1**.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type DescribeSecurityEventMarkMissListRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The alert event name (child class).
+	// The name of the alert event (subtype).
 	//
 	// example:
 	//
 	// Login with unusual location
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The number of whitelist rules to display on each page in a paged query. Default value: **20**, which indicates that 20 whitelist rules are displayed on each page.
+	// The number of whitelist rules to return on each page during paging. Default value: **20**, which indicates that 20 whitelist rules are returned on each page.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeSecurityEventMarkMissListRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The asset search keyword. You can enter the IP address, public IP address, private IP address, or asset name for fuzzy matching.
+	// The asset search criterion. You can specify the IP address, public IP address, private IP address, or name of an asset for fuzzy matching.
 	//
 	// example:
 	//

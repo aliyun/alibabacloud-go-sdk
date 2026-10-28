@@ -16,21 +16,21 @@ type iAddSasModuleTrialRequest interface {
 }
 
 type AddSasModuleTrialRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The code of the feature. Valid values:
+	// The module code. Valid values:
 	//
-	// 	- **vulFix**: vulnerability fixing.
+	// - **vulFix**: vulnerability remediation
 	//
-	// 	- **cloudSiem**: threat analysis and response.
+	// - **cloudSiem**: threat analysis and response
 	//
 	// example:
 	//

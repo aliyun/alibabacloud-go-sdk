@@ -34,7 +34,7 @@ type ListInterceptionTargetPageRequest struct {
 	//
 	// frontend
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The page number of the page to return. Default value: **1**, which indicates the first page.
+	// The number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type ListInterceptionTargetPageRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The list of images included in the network object.
 	ImageList []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
-	// The namespace of the network object.
+	// The namespace to which the network object belongs.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The maximum number of entries per page for paging. Default value: 20. If you leave this parameter empty, 20 entries are returned by default.
+	// The maximum number of entries to return per page in a paging query. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > Do not leave PageSize empty.
+	// > Do not leave this parameter empty.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListInterceptionTargetPageRequest struct {
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The object type. Valid values:
 	//
-	// - IMAGE: image.
+	// - IMAGE: Image.
 	//
 	// example:
 	//

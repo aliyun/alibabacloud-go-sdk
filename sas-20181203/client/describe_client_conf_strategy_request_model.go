@@ -16,7 +16,7 @@ type iDescribeClientConfStrategyRequest interface {
 }
 
 type DescribeClientConfStrategyRequest struct {
-	// The resource tag of the client to query.
+	// Specifies the client resource tag to query.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeClientConfStrategyRequest struct {
 	//
 	// - advanced
 	//
-	// - basic.
+	// - basic
 	//
 	// This parameter is required.
 	//

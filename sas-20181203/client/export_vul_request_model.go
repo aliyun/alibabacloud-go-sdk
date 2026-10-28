@@ -58,9 +58,9 @@ type ExportVulRequest struct {
   // 
   // RHSA-2019:3197-Important: sudo security update
   AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-  // The asset type where the vulnerability is detected. Separate multiple types with commas (,). Valid values:
+  // The asset type where the vulnerability resides. Separate multiple types with commas (,). Valid values:
   // 
-  // - **ECS**: host asset
+  // - **ECS**: server asset
   // 
   // - **CONTAINER**: container asset
   // 
@@ -68,21 +68,21 @@ type ExportVulRequest struct {
   // 
   // ECS
   AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-  // The additional vulnerability type when querying application vulnerabilities. This parameter is required when Type is set to app. The value is fixed as **sca**.
+  // The additional vulnerability type when you query application vulnerabilities. You must configure this parameter when you query application vulnerabilities, which means the Type parameter is set to app. Set the value to **sca**.
   // 
-  // > If this parameter is set to **sca**, both application vulnerabilities (**app*	- type) and software composition analysis (**sca*	- type) vulnerabilities are queried. If this parameter is not set, only application vulnerabilities are queried.
+  // > If you set this parameter to **sca**, you can query application vulnerabilities (type **app**) and software composition analysis (type **sca**) vulnerabilities. If you do not set this parameter, only application vulnerabilities are queried.
   // 
   // example:
   // 
   // sca
   AttachTypes *string `json:"AttachTypes,omitempty" xml:"AttachTypes,omitempty"`
-  // The name of the container affected by the vulnerability.
+  // The name of the container affected by the vulnerabilities to be queried.
   // 
   // example:
   // 
   // xxljob-7b87597b99-mcskr
   ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-  // The end of the time range during which the first scan was performed.
+  // The end time of the first scan.
   // 
   // > The value is a UNIX timestamp. Unit: milliseconds.
   // 
@@ -90,7 +90,7 @@ type ExportVulRequest struct {
   // 
   // 1696186800000
   CreateTsEnd *int64 `json:"CreateTsEnd,omitempty" xml:"CreateTsEnd,omitempty"`
-  // The start of the time range during which the first scan was performed.
+  // The start time of the first scan.
   // 
   // > The value is a UNIX timestamp. Unit: milliseconds.
   // 
@@ -104,31 +104,31 @@ type ExportVulRequest struct {
   // 
   // CVE-2022-44702
   CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
-  // Specifies whether the vulnerability is fixed. Valid values:
+  // Specifies whether the vulnerabilities to be queried are fixed. Valid values:
   // 
   // - **y**: fixed
   // 
-  // - **n**: not fixed
+  // - **n**: unfixed
   // 
   // example:
   // 
   // n
   Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-  // The ID of the asset group to which the server with the vulnerability belongs.
+  // The ID of the asset group to which the servers affected by the vulnerabilities to be queried belong.
   // 
-  // > Call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain this parameter.
+  // > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the value of this parameter.
   // 
   // example:
   // 
   // 8834224
   GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-  // The name of the image affected by the vulnerability.
+  // The name of the image affected by the vulnerabilities to be queried.
   // 
   // example:
   // 
   // container-***:****
   ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-  // The language of the content within the request and response. Default value: **zh**. Valid values:
+  // Specifies the language of the request and response. Default value: **zh**. Valid values:
   // 
   // - zh: Chinese
   // 
@@ -138,7 +138,7 @@ type ExportVulRequest struct {
   // 
   // zh
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-  // The priority of the vulnerability to query. Separate multiple priorities with commas (,). Valid values:
+  // The priorities of the vulnerabilities to be queried. Separate multiple priorities with commas (,). Valid values:
   // 
   // - **asap**: high
   // 
@@ -150,17 +150,17 @@ type ExportVulRequest struct {
   // 
   // asap
   Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-  // The path of the process affected by the vulnerability.
+  // The path of the process affected by the vulnerabilities to be queried.
   // 
   // example:
   // 
   // /etc/test
   Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-  // Specifies whether runtime application self-protection (RASP) supports real-time protection against the vulnerability. Valid values:
+  // Specifies whether Runtime Application Self-Protection (RASP) supports real-time protection against the vulnerability. Valid values:
   // 
-  // - **0**: Not supported.
+  // - **0**: not supported
   // 
-  // - **1**: Supported.
+  // - **1**: supported
   // 
   // example:
   // 
@@ -172,13 +172,13 @@ type ExportVulRequest struct {
   // 
   // 1
   ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-  // Filters results by label. Valid values:
+  // The tags used for filtering. Valid values:
   // 
   // <props="china">
   // 
   // - Restart required
   // 
-  // - Remote utilization
+  // - Remote exploitation
   // 
   // - EXP exists
   // 
@@ -199,15 +199,15 @@ type ExportVulRequest struct {
   // 
   // - **Available**
   // 
-  // - **Elevation of Privilege**
+  // - **Elevation of privilege**
   // 
-  // - **Code Execution**
+  // - **Code execution**
   // 
   // example:
   // 
   // Restart required
   SearchTags *string `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
-  // The type of vulnerabilities to export. Valid values:
+  // The type of the vulnerabilities to be exported. Valid values:
   // 
   // - **cve**: Linux software vulnerability
   // 
@@ -225,15 +225,15 @@ type ExportVulRequest struct {
   // 
   // app
   Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-  // The UUIDs of the servers to query for vulnerabilities. Separate multiple UUIDs with commas (,).
+  // The UUIDs of the servers on which you want to query vulnerabilities. Separate multiple UUIDs with commas (,).
   // 
   // example:
   // 
   // 1587bedb-fdb4-48c4-9330-****
   Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
-  // The instance IDs of the VPC-connected instances to query for vulnerabilities. Separate multiple IDs with commas (,).
+  // The IDs of the VPC-connected instances where the vulnerabilities to be queried reside. Separate multiple IDs with commas (,).
   // 
-  // > Invoke the [DescribeVpcList](~~DescribeVpcList~~) operation to obtain this parameter.
+  // > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to obtain the value of this parameter.
   // 
   // example:
   // 

@@ -22,7 +22,7 @@ type iDescribeImageEventOperationConditionResponseBody interface {
 }
 
 type DescribeImageEventOperationConditionResponseBody struct {
-	// The return code of the call.
+	// The return code.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DescribeImageEventOperationConditionResponseBody struct {
 	//
 	// ADE57832-9666-511C-9A80-B87DE2E8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - **true**: The call was successful.
+	// - **true**: The call is successful.
 	//
-	// - **false**: The call failed.
+	// - **false**: The call fails.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *DescribeImageEventOperationConditionResponseBody) Validate() error {
 type DescribeImageEventOperationConditionResponseBodyData struct {
 	// The alerting type. Valid values:
 	//
-	// - **sensitiveFile**: sensitive file.
+	// - **sensitiveFile**: Sensitive file.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type DescribeImageEventOperationConditionResponseBodyDataOperations struct {
 	Conditions []*DescribeImageEventOperationConditionResponseBodyDataOperationsConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	// The operation code. Valid values:
 	//
-	// - **whitelist**: whitelist.
+	// - **whitelist**: Whitelist.
 	//
 	// example:
 	//
@@ -251,7 +251,7 @@ type DescribeImageEventOperationConditionResponseBodyDataOperationsConditions st
 	//
 	// - **MD5**: MD5.
 	//
-	// - **PATH**: path.
+	// - **PATH**: Path.
 	//
 	// example:
 	//

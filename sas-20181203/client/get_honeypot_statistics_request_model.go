@@ -14,11 +14,11 @@ type iGetHoneypotStatisticsRequest interface {
 }
 
 type GetHoneypotStatisticsRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//

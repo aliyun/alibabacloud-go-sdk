@@ -22,7 +22,7 @@ type DescribeImageBaselineStrategyRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type DescribeImageBaselineStrategyRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The data source. If this parameter is left empty, the image baseline policy is queried by default. Valid values:
 	//
-	// - **default**: image
+	// - **default**: Image
 	//
-	// - **agentless**: agentless.
+	// - **agentless**: Agentless
 	//
 	// example:
 	//

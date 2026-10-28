@@ -28,21 +28,19 @@ type iModifyPostPayModuleSwitchShrinkRequest interface {
 }
 
 type ModifyPostPayModuleSwitchShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use different tokens for different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run on the request. Valid values:
+	// Specifies whether to only precheck the request. Valid values:
 	//
-	// - true: Performs a dry run. The system checks the request but does not perform the actual operation.
+	// - true: Only prechecks the request and does not perform the actual operation.
 	//
-	// - false: Performs the request normally.
-	//
-	// Default value: false.
+	// - false: Performs the actual operation.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The switch configuration of the EDR module.
+	// The switch configuration for the EDR module.
 	EdrModuleSwitchShrink *string `json:"EdrModuleSwitch,omitempty" xml:"EdrModuleSwitch,omitempty"`
 	// Specifies whether to automatically bind new assets to the host and container protection feature. Valid values:
 	//
@@ -60,7 +58,7 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	//
 	// - **3**: Enterprise Edition
 	//
-	// - **5**: Advanced Edition
+	// - **5**: Premium Edition
 	//
 	// - **6**: Anti-virus Edition
 	//
@@ -72,13 +70,13 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	PostPaidHostAutoBindVersion *int32 `json:"PostPaidHostAutoBindVersion,omitempty" xml:"PostPaidHostAutoBindVersion,omitempty"`
 	// The pay-as-you-go instance ID. This parameter is required.
 	//
-	// > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain the value of this parameter.
+	// > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// postpay-sas-**
 	PostPayInstanceId *string `json:"PostPayInstanceId,omitempty" xml:"PostPayInstanceId,omitempty"`
-	// The switch status of pay-as-you-go modules. The value is a JSON string. Valid values:
+	// The switch status of the pay-as-you-go modules. The value is a JSON string. Valid values:
 	//
 	// - Key:
 	//
@@ -102,7 +100,7 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	//
 	//   - **ANTI_RANSOMWARE**: Anti-ransomware management
 	//
-	// - Value: 0 indicates disabled. 1 indicates enabled.
+	// - Value: 0 indicates disabled, and 1 indicates enabled.
 	//
 	// > The values of modules that are not specified remain unchanged.
 	//
@@ -112,9 +110,9 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	//
 	// {"VUL":1,"CSPM":0}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	// The switches of pay-as-you-go modules.
+	// The switch status of the pay-as-you-go modules.
 	//
-	// 	Notice:  This parameter has the same meaning as the PostPayModuleSwitch parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
+	// 	Notice: This parameter has the same meaning as the PostPayModuleSwitch parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
 	PostPayModuleSwitchObjShrink *string `json:"PostPayModuleSwitchObj,omitempty" xml:"PostPayModuleSwitchObj,omitempty"`
 }
 

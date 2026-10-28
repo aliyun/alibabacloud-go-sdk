@@ -27,7 +27,10 @@ type GetCheckTimeDimensionStatisticRequest struct {
 	// example:
 	//
 	// 1672285044000
-	EndTimeStamp               *int64 `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
+	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
+	// example:
+	//
+	// 1234567890123456
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The start time in timestamp format.
 	//

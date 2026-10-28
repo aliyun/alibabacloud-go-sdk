@@ -18,11 +18,11 @@ type iAddFileProtectBindMachineRequest interface {
 }
 
 type AddFileProtectBindMachineRequest struct {
-	// The list of servers for which the alert protection level is enabled.
+	// The list of servers with the alert protection level enabled.
 	AlertUuids []*string `json:"AlertUuids,omitempty" xml:"AlertUuids,omitempty" type:"Repeated"`
-	// The list of servers for which tamper-proofing is enabled.
+	// The list of servers with tamper-proofing enabled.
 	BlockUuids []*string `json:"BlockUuids,omitempty" xml:"BlockUuids,omitempty" type:"Repeated"`
-	// The list of servers for which file protection is disabled.
+	// The list of servers with the file protection feature disabled.
 	NoneUuids []*string `json:"NoneUuids,omitempty" xml:"NoneUuids,omitempty" type:"Repeated"`
 }
 

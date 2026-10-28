@@ -16,7 +16,9 @@ type iGetFileProtectEventRequest interface {
 type GetFileProtectEventRequest struct {
 	// The event ID.
 	//
-	// This parameter is required. If it is not provided, the API returns HTTP 400 with the error code -101. You can call the ListFileProtectEvent operation to obtain a valid event ID.
+	// > You can call the [ListFileProtectEvent](~~ListFileProtectEvent~~) operation to retrieve this parameter.
+	//
+	// This parameter is required. If it is not provided, the API returns HTTP 400 with error code -101.
 	//
 	// example:
 	//

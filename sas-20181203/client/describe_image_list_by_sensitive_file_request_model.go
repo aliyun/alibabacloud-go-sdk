@@ -34,7 +34,7 @@ type iDescribeImageListBySensitiveFileRequest interface {
 }
 
 type DescribeImageListBySensitiveFileRequest struct {
-	// The page number of the current page returned. Pages start from 1. Default value: 1.
+	// The page number of the returned page. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type DescribeImageListBySensitiveFileRequest struct {
 	//
 	// v005
 	ImageDigest *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	// Specifies the language type for requests and responses. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries returned per page in a paged query. Default value: 20.
+	// The maximum number of entries to return on each page during paging in a paged query. Default value: 20.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeImageListBySensitiveFileRequest struct {
 	//
 	// harbor-image-v001
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the image repository namespace.
+	// The name of the namespace of the image repository.
 	//
 	// > Fuzzy match is supported.
 	//
@@ -88,25 +88,25 @@ type DescribeImageListBySensitiveFileRequest struct {
 	//
 	// libssh2
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The risk level of the file. Separate multiple levels with commas (,). Valid values:
+	// The risk level of the file. Separate multiple risk levels with commas (,). Valid values:
 	//
-	// - **high**: high
+	// - **high**: High.
 	//
-	// - **medium**: medium
+	// - **medium**: Medium.
 	//
-	// - **low**: low
+	// - **low**: Low.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The scan scope collection. Valid values:
+	// The scan scope. Valid values:
 	//
-	// - **image**: image
+	// - **image**: Images.
 	//
-	// - **container**: container
+	// - **container**: Containers.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
-	// The alerting type for sensitive files. Valid values:
+	// The alert type for sensitive files. Valid values:
 	//
 	// - **npm_token**: NPM access token
 	//
@@ -142,7 +142,7 @@ type DescribeImageListBySensitiveFileRequest struct {
 	//
 	// - **pem**: PEM
 	//
-	// - **common_cred**: common credential
+	// - **common_cred**: Common credential
 	//
 	// - **sftp_cfg**: SFTP connection configuration
 	//
@@ -170,7 +170,7 @@ type DescribeImageListBySensitiveFileRequest struct {
 	//
 	// - **typeform_token**: Typeform token
 	//
-	// - **common_database_cfg**: common database connection configuration
+	// - **common_database_cfg**: Common database connection configuration
 	//
 	// - **wordpress_database_cfg**: WordPress database configuration
 	//
@@ -200,7 +200,7 @@ type DescribeImageListBySensitiveFileRequest struct {
 	//
 	// - **github_personal_token**: GitHub personal access token
 	//
-	// - **pgp**: PGP ciphertext file
+	// - **pgp**: PGP encrypt file
 	//
 	// - **stripe_skpk**: Stripe secret key
 	//
@@ -290,7 +290,7 @@ type DescribeImageListBySensitiveFileRequest struct {
 	//
 	// - **php_config**: PHP configuration
 	//
-	// - **common_private_key**: common private key type
+	// - **common_private_key**: Common private key type
 	//
 	// - **microsoft_mdf**: Microsoft SQL database
 	//
@@ -328,9 +328,11 @@ type DescribeImageListBySensitiveFileRequest struct {
 	//
 	// - **newrelic_api_key**: New Relic user API key
 	//
-	// - **github_hub**: hub configuration that stores GitHub tokens
+	// - **github_hub**: Hub configuration that stores GitHub tokens
 	//
 	// - **rubygem**: RubyGems token
+	//
+	// > This parameter is required. If you do not specify this parameter, the API returns an HTTP 400 error with the error code -101.
 	//
 	// example:
 	//
@@ -338,11 +340,11 @@ type DescribeImageListBySensitiveFileRequest struct {
 	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
 	// The status of the sensitive file. Valid values:
 	//
-	// - **0**: unhandled
+	// - **0**: Unhandled.
 	//
-	// - **1**: ignored
+	// - **1**: Ignored.
 	//
-	// - **2**: false positive
+	// - **2**: False positive.
 	//
 	// example:
 	//

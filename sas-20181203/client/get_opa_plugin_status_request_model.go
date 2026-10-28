@@ -14,9 +14,9 @@ type iGetOpaPluginStatusRequest interface {
 }
 
 type GetOpaPluginStatusRequest struct {
-	// The cluster IDs.
+	// The list of cluster IDs.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+	// > You can query this value by calling the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation.
 	//
 	// This parameter is required.
 	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`

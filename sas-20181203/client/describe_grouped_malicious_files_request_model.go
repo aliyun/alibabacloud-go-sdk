@@ -50,7 +50,7 @@ type DescribeGroupedMaliciousFilesRequest struct {
 	//
 	// c556c8133b5ad4378b7fc533ddbda****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The page number of the page to return. Minimum value: **1**. Default value: **1**, which indicates that the first page is returned.
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +58,9 @@ type DescribeGroupedMaliciousFilesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the malicious file that you want to query.
+	// The name of the malicious file to query.
 	//
-	// > Fuzzy match is supported.
+	// > Fuzzy search is supported.
 	//
 	// example:
 	//
@@ -88,31 +88,31 @@ type DescribeGroupedMaliciousFilesRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The severity levels of the malicious samples in container images that you want to query. Separate multiple values with commas (,). Valid values:
+	// The severity levels of the malicious image samples to query. You can specify multiple values separated by commas (,). Valid values:
 	//
-	// - **serious**: urgent
+	// - **serious**: Urgent
 	//
-	// - **suspicious**: suspicious
+	// - **suspicious**: Suspicious
 	//
-	// - **remind**: reminder.
+	// - **remind**: Reminder
 	//
 	// example:
 	//
 	// serious
 	Levels *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
-	// The MD5 hash of the malicious file.
+	// The MD5 hash value of the malicious file.
 	//
 	// example:
 	//
 	// d836968041f7683b5459****
 	MaliciousMd5 *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
-	// The maximum number of entries per page in a paging query. Default value: **20**.
+	// The maximum number of entries to return on each page in a paging query. Default value: **20**.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type DescribeGroupedMaliciousFilesRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the image repository.
 	//
-	// > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry to obtain the value of the **RepoId*	- response parameter.
+	// > You can call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry to obtain the repository ID from the **RepoId*	- response parameter.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type DescribeGroupedMaliciousFilesRequest struct {
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The instance ID of the container image.
 	//
-	// > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry to obtain the value of the **InstanceId*	- response parameter.
+	// > You can call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry to obtain the instance ID from the **InstanceId*	- response parameter.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DescribeGroupedMaliciousFilesRequest struct {
 	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
 	// The name of the image repository.
 	//
-	// > Fuzzy match is supported.
+	// > Fuzzy search is supported.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeGroupedMaliciousFilesRequest struct {
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The namespace of the image repository.
 	//
-	// > Fuzzy match is supported.
+	// > Fuzzy search is supported.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ type DescribeGroupedMaliciousFilesRequest struct {
 	//
 	// - **eu-central-1**: Germany (Frankfurt)
 	//
-	// - **eu-west-1**: UK (London).
+	// - **eu-west-1**: UK (London)
 	//
 	// example:
 	//
 	// cn-shanghai
 	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	// The collection of scan ranges.
+	// The scan ranges.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 

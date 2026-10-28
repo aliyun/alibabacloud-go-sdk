@@ -32,29 +32,29 @@ type DescribeClusterHostSecuritySummaryRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The container search field. Valid values:
 	//
-	// - **instanceId**: instance ID.
+	// - **instanceId**: The instance ID.
 	//
-	// - **appName**: application name.
+	// - **appName**: The application name.
 	//
-	// - **clusterId**: cluster ID.
+	// - **clusterId**: The cluster ID.
 	//
-	// - **regionId**: region.
+	// - **regionId**: The region ID.
 	//
-	// - **nodeName**: node name.
+	// - **nodeName**: The node name.
 	//
-	// - **namespace**: namespace.
+	// - **namespace**: The namespace.
 	//
-	// - **clusterName**: cluster name.
+	// - **clusterName**: The cluster name.
 	//
-	// - **image**: image name.
+	// - **image**: The image name.
 	//
-	// - **imageRepoName**: image repository name.
+	// - **imageRepoName**: The image repository name.
 	//
-	// - **imageRepoNamespace**: image repository namespace.
+	// - **imageRepoNamespace**: The image repository namespace.
 	//
-	// - **imageRepoTag**: image tag.
+	// - **imageRepoTag**: The image tag.
 	//
-	// - **imageDigest**: image digest.
+	// - **imageDigest**: The image digest.
 	//
 	// example:
 	//
@@ -67,7 +67,7 @@ type DescribeClusterHostSecuritySummaryRequest struct {
 	// c1fdb5fd8d42e425d88fd73eec7be****
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
 	ResourceOwnerId     *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//
@@ -75,9 +75,9 @@ type DescribeClusterHostSecuritySummaryRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The query type. Valid values:
 	//
-	// - **containerId**: container ID.
+	// - **containerId**: The container ID.
 	//
-	// - **uuid**: asset ID.
+	// - **uuid**: The asset ID.
 	//
 	// example:
 	//

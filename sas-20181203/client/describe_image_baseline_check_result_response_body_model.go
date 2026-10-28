@@ -20,7 +20,7 @@ type iDescribeImageBaselineCheckResultResponseBody interface {
 type DescribeImageBaselineCheckResultResponseBody struct {
 	// The details of the image baseline check results.
 	BaselineResult []*DescribeImageBaselineCheckResultResponseBodyBaselineResult `json:"BaselineResult,omitempty" xml:"BaselineResult,omitempty" type:"Repeated"`
-	// The paging information.
+	// The paging information for a paged query.
 	PageInfo *DescribeImageBaselineCheckResultResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -84,7 +84,7 @@ func (s *DescribeImageBaselineCheckResultResponseBody) Validate() error {
 }
 
 type DescribeImageBaselineCheckResultResponseBodyBaselineResult struct {
-	// The type key of the baseline item.
+	// The key of the baseline item type.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type DescribeImageBaselineCheckResultResponseBodyBaselineResult struct {
 	//
 	// example:
 	//
-	// 身份鉴别
+	// Identity authentication
 	BaselineNameAlias *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
-	// The name key of the baseline item.
+	// The key of the baseline item name.
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ type DescribeImageBaselineCheckResultResponseBodyBaselineResult struct {
 	//
 	// - **medium**: medium risk
 	//
-	// - **low**: low risk.
+	// - **low**: low risk
 	//
 	// example:
 	//
 	// high
 	BaselineNameLevel *string `json:"BaselineNameLevel,omitempty" xml:"BaselineNameLevel,omitempty"`
-	// The timestamp of the first scan, in milliseconds.
+	// The timestamp of the first scan. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type DescribeImageBaselineCheckResultResponseBodyBaselineResult struct {
 	//
 	// 1
 	HighRiskItemCount *int32 `json:"HighRiskItemCount,omitempty" xml:"HighRiskItemCount,omitempty"`
-	// The timestamp of the most recent scan, in milliseconds.
+	// The timestamp of the latest scan. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -152,9 +152,9 @@ type DescribeImageBaselineCheckResultResponseBodyBaselineResult struct {
 	MiddleRiskItemCount *int32 `json:"MiddleRiskItemCount,omitempty" xml:"MiddleRiskItemCount,omitempty"`
 	// The fix status of the baseline risk. Valid values:
 	//
-	// - **0**: Unfixed.
+	// - **0**: unfixed
 	//
-	// - **1**: Fixed.
+	// - **1**: fixed
 	//
 	// example:
 	//
@@ -274,19 +274,19 @@ func (s *DescribeImageBaselineCheckResultResponseBodyBaselineResult) Validate() 
 }
 
 type DescribeImageBaselineCheckResultResponseBodyPageInfo struct {
-	// The number of entries on the current page when using paging.
+	// The number of entries returned on the current page when paging in a paged query.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page when using paging.
+	// The page number of the current page when paging in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page when using paging.
+	// The maximum number of entries returned per page when paging in a paged query.
 	//
 	// example:
 	//

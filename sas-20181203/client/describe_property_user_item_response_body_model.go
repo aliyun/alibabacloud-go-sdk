@@ -22,7 +22,7 @@ type DescribePropertyUserItemResponseBody struct {
 	PageInfo *DescribePropertyUserItemResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The account information.
 	PropertyItems []*DescribePropertyUserItemResponseBodyPropertyItems `json:"PropertyItems,omitempty" xml:"PropertyItems,omitempty" type:"Repeated"`
-	// The unique identifier that Alibaba Cloud generated for the request.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -84,19 +84,19 @@ func (s *DescribePropertyUserItemResponseBody) Validate() error {
 }
 
 type DescribePropertyUserItemResponseBodyPageInfo struct {
-	// The number of entries on the current page in a paged query.
+	// The number of entries returned on the current page for a paging query.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page to display in a paged query.
+	// The page number of the current page returned for a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries displayed on each page in a paged query.
+	// The maximum number of entries returned per page for a paging query.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type DescribePropertyUserItemResponseBodyPropertyItems struct {
 	//
 	// 384
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The account name.
+	// The name of the account.
 	//
 	// example:
 	//

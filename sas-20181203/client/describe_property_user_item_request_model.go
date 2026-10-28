@@ -20,23 +20,23 @@ type iDescribePropertyUserItemRequest interface {
 }
 
 type DescribePropertyUserItemRequest struct {
-	// The page number of the current page to display in a paged query.
+	// The page number of the current page returned for a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specifies whether to forcefully refresh the data to be queried. Valid values:
+	// Specifies whether to forcibly refresh the data to be queried. Valid values:
 	//
-	// - **true**: Forcefully refresh.
+	// - **true**: Forces a refresh.
 	//
-	// - **false**: Do not forcefully refresh.
+	// - **false**: Does not force a refresh.
 	//
 	// example:
 	//
 	// true
 	ForceFlush *bool `json:"ForceFlush,omitempty" xml:"ForceFlush,omitempty"`
-	// The maximum number of entries to display on each page in a paged query.
+	// The maximum number of entries returned per page for a paging query.
 	//
 	// example:
 	//

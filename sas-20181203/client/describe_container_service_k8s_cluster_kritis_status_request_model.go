@@ -25,7 +25,7 @@ type DescribeContainerServiceK8sClusterKritisStatusRequest struct {
 	// c0e9efc6dea5f41db93b7e977123c****
 	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address of the request.
+	// The source IP address.
 	//
 	// example:
 	//

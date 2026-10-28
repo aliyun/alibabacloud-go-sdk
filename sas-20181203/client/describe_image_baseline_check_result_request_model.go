@@ -34,17 +34,17 @@ type DescribeImageBaselineCheckResultRequest struct {
 	//
 	// ak_leak
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The query type of the baseline to query. Valid values:
+	// The query type for the baseline to query. Valid values:
 	//
 	// - **BaselineNameAlias**: baseline name
 	//
-	// - **BaselineClassAlias**: baseline category.
+	// - **BaselineClassAlias**: baseline category
 	//
 	// example:
 	//
 	// BaselineNameAlias
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The page number of the current page when using paging. Default value: 20, which indicates the first page.
+	// The page number of the current page when paging in a paged query. Default value: 20, which indicates the first page.
 	//
 	// example:
 	//
@@ -58,35 +58,35 @@ type DescribeImageBaselineCheckResultRequest struct {
 	//
 	// a910053dd4710173ecc9e9d8931f****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language type for the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page when using paging. Default value: **20**, which indicates that 20 logon configuration entries are displayed per page.
+	// The number of logon configuration entries to return on each page when paging in a paged query. Default value: **20**, which indicates that 20 logon configuration entries are displayed on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The risk level of the baseline to query. Separate multiple levels with commas (,). By default, all levels are included. Valid values:
+	// The risk level of the baselines to query. Separate multiple risk levels with commas (,). By default, all risk levels are queried. Valid values:
 	//
 	// - **high**: high risk
 	//
 	// - **medium**: medium risk
 	//
-	// - **low**: low risk.
+	// - **low**: low risk
 	//
 	// example:
 	//
 	// high,medium,low
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The scan scope.
+	// The scan ranges.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 

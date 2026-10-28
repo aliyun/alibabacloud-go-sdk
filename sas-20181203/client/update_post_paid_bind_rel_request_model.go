@@ -174,6 +174,10 @@ type UpdatePostPaidBindRelRequestBindAction struct {
 	// true
 	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
 	// The type of free quota used for the binding operation.
+	//
+	// example:
+	//
+	// freeEnterprise
 	FreeType *string `json:"FreeType,omitempty" xml:"FreeType,omitempty"`
 	// The UUIDs of the specified servers.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`

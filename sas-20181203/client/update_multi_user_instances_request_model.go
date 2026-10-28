@@ -78,6 +78,10 @@ type UpdateMultiUserInstancesRequestMemberInstances struct {
 	// 0
 	CspmCapacity *int64 `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty"`
 	// The number of platform configuration check instance authorizations allocated to the member accounts.
+	//
+	// example:
+	//
+	// 0
 	CspmInstanceCapacity *int64 `json:"CspmInstanceCapacity,omitempty" xml:"CspmInstanceCapacity,omitempty"`
 	// The number of cloud honeypot authorizations allocated to the member.
 	//

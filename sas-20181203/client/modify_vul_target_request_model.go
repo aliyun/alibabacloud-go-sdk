@@ -20,13 +20,13 @@ type ModifyVulTargetRequest struct {
 	//
 	// - **vulType**: The vulnerability type. Valid values:
 	//
-	//      - **cve**: Linux software vulnerability.
+	//   - **cve**: Linux system vulnerability.
 	//
-	//     - **sys**: Windows system vulnerability.
+	//   - **sys**: Windows system vulnerability.
 	//
-	//     - **cms**: Web-CMS vulnerability.
+	//   - **cms**: Web-CMS vulnerability.
 	//
-	//     - **emg**: Emergency vulnerability.
+	//   - **emg**: Emergency vulnerability.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ModifyVulTargetRequest struct {
 	//
 	// - **flag**: The flag. Valid values:
 	//
-	//     - **add**: Selected.
+	//   - **add**: Selected.
 	//
-	//     - **del**: Deselected.
+	//   - **del**: Deselected.
 	//
 	// example:
 	//

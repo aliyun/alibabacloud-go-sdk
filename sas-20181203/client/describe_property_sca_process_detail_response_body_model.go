@@ -20,9 +20,9 @@ type iDescribePropertyScaProcessDetailResponseBody interface {
 type DescribePropertyScaProcessDetailResponseBody struct {
 	// The pagination information.
 	PageInfo *DescribePropertyScaProcessDetailResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The processes collected by the asset fingerprints feature.
+	// The list of processes in Asset Fingerprints.
 	Propertys []*DescribePropertyScaProcessDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -84,19 +84,19 @@ func (s *DescribePropertyScaProcessDetailResponseBody) Validate() error {
 }
 
 type DescribePropertyScaProcessDetailResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries returned on the current page for paging in a paged query.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number.
+	// The page number of the current page for paging in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of processes returned on each page for paging in a paged query. Default value: **10**.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type DescribePropertyScaProcessDetailResponseBodyPropertys struct {
 	//
 	// java -Xms128m -Xmx512m -DNACOS_URL=http://10.184.XX.XX:8848 -DNACOS_NAMESPACE=iam-sit -jar /opt/service/xxl-job/xxl-job-admin-2.3.0.jar
 	Cmdline *string `json:"Cmdline,omitempty" xml:"Cmdline,omitempty"`
-	// The timestamp at which the last asset fingerprint collection is performed. Unit: milliseconds.
+	// The timestamp of the latest scan by Asset Fingerprints. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type DescribePropertyScaProcessDetailResponseBodyPropertys struct {
 	//
 	// i-hp35tftuh52wbp1g****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name of the server.
+	// The name of the server instance.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type DescribePropertyScaProcessDetailResponseBodyPropertys struct {
 	//
 	// java
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the process.
+	// The process ID.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ type DescribePropertyScaProcessDetailResponseBodyPropertys struct {
 	//
 	// 162eb349-c2d9-4f8b-805c-75b43d4c****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The version of web application service.
+	// The version of the web application service.
 	//
 	// example:
 	//

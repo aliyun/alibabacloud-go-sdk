@@ -14,7 +14,7 @@ type iListInstanceRiskNumRequest interface {
 }
 
 type ListInstanceRiskNumRequest struct {
-	// The instances.
+	// The instance list.
 	InstanceList []*ListInstanceRiskNumRequestInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 }
 
@@ -49,13 +49,13 @@ func (s *ListInstanceRiskNumRequest) Validate() error {
 }
 
 type ListInstanceRiskNumRequestInstanceList struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-wz9fdluqx20mp2x7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The UUID of the instance.
+	// The UUID of the instance. You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain the UUID of the server.
 	//
 	// example:
 	//

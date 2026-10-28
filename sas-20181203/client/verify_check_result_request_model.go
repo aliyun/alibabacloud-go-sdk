@@ -22,15 +22,15 @@ type iVerifyCheckResultRequest interface {
 type VerifyCheckResultRequest struct {
 	// The list of check item IDs.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
-	// Specifies whether to forcibly run the specified check items. Default value: false.
+	// Specifies whether to forcibly execute the specified check item. Default value: false.
 	//
-	// - true: Forcibly runs the specified check items. Forced execution bypasses frequency and quantity limits and initiates the check directly, which may cause duplicate checks to run multiple times within a short period.
+	// - true: Forcibly executes the specified check item. Forcible execution bypasses frequency and quantity limits and directly initiates the check, which may result in repeated executions within a short period.
 	//
-	// - false (default): Does not forcibly run the specified check items. This ensures that the same check item is executed only once within a short period.
+	// - false (default): Does not forcibly execute the specified check item. This ensures that the same check item is executed only once within a short period.
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The list of instance IDs of the assets associated with the check items.
+	// The list of instance IDs for the check item assets.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The task source. Valid values:
+	// The source of the task. Valid values:
 	//
 	// - **YAO_CHI**: ApsaraDB console.
 	//

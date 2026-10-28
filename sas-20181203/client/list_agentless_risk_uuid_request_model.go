@@ -19,6 +19,8 @@ type iListAgentlessRiskUuidRequest interface {
 	GetInternetIp() *string
 	SetIntranetIp(v string) *ListAgentlessRiskUuidRequest
 	GetIntranetIp() *string
+	SetLang(v string) *ListAgentlessRiskUuidRequest
+	GetLang() *string
 	SetMachineName(v string) *ListAgentlessRiskUuidRequest
 	GetMachineName() *string
 	SetPageSize(v int32) *ListAgentlessRiskUuidRequest
@@ -62,6 +64,12 @@ type ListAgentlessRiskUuidRequest struct {
 	//
 	// 172.26.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// 报告语言。取值：zh（中文）、en（英文）。不传或为空时使用 zh。
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The instance name.
 	//
 	// example:
@@ -134,6 +142,10 @@ func (s *ListAgentlessRiskUuidRequest) GetIntranetIp() *string {
 	return s.IntranetIp
 }
 
+func (s *ListAgentlessRiskUuidRequest) GetLang() *string {
+	return s.Lang
+}
+
 func (s *ListAgentlessRiskUuidRequest) GetMachineName() *string {
 	return s.MachineName
 }
@@ -176,6 +188,11 @@ func (s *ListAgentlessRiskUuidRequest) SetInternetIp(v string) *ListAgentlessRis
 
 func (s *ListAgentlessRiskUuidRequest) SetIntranetIp(v string) *ListAgentlessRiskUuidRequest {
 	s.IntranetIp = &v
+	return s
+}
+
+func (s *ListAgentlessRiskUuidRequest) SetLang(v string) *ListAgentlessRiskUuidRequest {
+	s.Lang = &v
 	return s
 }
 

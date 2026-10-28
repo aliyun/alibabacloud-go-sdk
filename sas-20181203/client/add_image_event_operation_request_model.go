@@ -28,57 +28,59 @@ type iAddImageEventOperationRequest interface {
 }
 
 type AddImageEventOperationRequest struct {
-	// The rule conditions. The value is in the JSON format. Valid values of keys:
+	// The rule conditions. The value is in JSON format. Valid keys:
 	//
-	// 	- **condition**: the matching condition.
+	// - **condition**: The matching condition.
 	//
-	// 	- **type**: the matching type.
+	// - **type**: The matching type.
 	//
-	// 	- **value**: the matching value.
+	// - **value**: The matching value.
 	//
 	// example:
 	//
 	// [{\\"condition\\": \\"MD5\\", \\"type\\": \\"equals\\", \\"value\\": \\"0083a31cc0083a31ccf7c10367a6e783e\\"}]
 	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
-	// The keyword of the alert item.
+	// The alert metric keyword.
 	//
 	// example:
 	//
 	// PEM
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// The name of the alert item.
+	// The alert metric name.
 	//
 	// example:
 	//
 	// PEM
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The alert type.
+	// The Alarm Metric for alerting. Valid values:
 	//
-	// 	- Set the value to **sensitiveFile**.
+	// - **sensitiveFile**: Sensitive file.
 	//
 	// example:
 	//
 	// sensitiveFile
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The remarks that you want to add.
+	// The note to add.
 	//
 	// example:
 	//
 	// test
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The operation code.
+	// The operation code. Valid values:
 	//
-	// 	- Set the value to **whitelist*	- to add the alert item to the whitelist.
+	// - **whitelist**: Whitelist.
 	//
 	// example:
 	//
 	// whitelist
 	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
-	// The application scope of the rule. The value is in the JSON format. Valid values of keys:
+	// The rule scope. The value is in JSON format. Valid keys:
 	//
-	// 	- **type**
+	// - **type**: The scope type.
 	//
-	// 	- **value**
+	// - **value**: The scope value.
+	//
+	// > This parameter and **Source*	- cannot be empty at the same time. If **Source*	- is set to **agentless**, this parameter does not take effect.
 	//
 	// example:
 	//
@@ -86,9 +88,11 @@ type AddImageEventOperationRequest struct {
 	Scenarios *string `json:"Scenarios,omitempty" xml:"Scenarios,omitempty"`
 	// The source of the whitelist. Valid values:
 	//
-	// 	- **image**: image.
+	// - **image**: Image.
 	//
-	// 	- **agentless**: agentless detection.
+	// - **agentless**: Agentless detection.
+	//
+	// > This parameter and **Scenarios*	- cannot be empty at the same time. If this parameter is set to **agentless**, the **Scenarios*	- parameter does not take effect.
 	//
 	// example:
 	//

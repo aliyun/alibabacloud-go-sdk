@@ -16,9 +16,9 @@ type iDescribeClusterHostSecuritySummaryResponseBody interface {
 }
 
 type DescribeClusterHostSecuritySummaryResponseBody struct {
-	// The host alert details.
+	// The details of host alerts.
 	ClusterHostEvent *DescribeClusterHostSecuritySummaryResponseBodyClusterHostEvent `json:"ClusterHostEvent,omitempty" xml:"ClusterHostEvent,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *DescribeClusterHostSecuritySummaryResponseBody) Validate() error {
 }
 
 type DescribeClusterHostSecuritySummaryResponseBodyClusterHostEvent struct {
-	// The host alert details.
+	// The details of host alerts.
 	AlarmEvent []*DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventAlarmEvent `json:"AlarmEvent,omitempty" xml:"AlarmEvent,omitempty" type:"Repeated"`
-	// The host baseline details.
+	// The details of host baselines.
 	BaselineEvent []*DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventBaselineEvent `json:"BaselineEvent,omitempty" xml:"BaselineEvent,omitempty" type:"Repeated"`
-	// The host vulnerability details.
+	// The details of host vulnerabilities.
 	VulEvent []*DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventVulEvent `json:"VulEvent,omitempty" xml:"VulEvent,omitempty" type:"Repeated"`
 }
 
@@ -143,13 +143,13 @@ type DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventAlarmEvent st
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The warning level. Valid values:
+	// The alert level. Valid values:
 	//
-	// - **serious**: urgent.
+	// - **serious**: Urgent.
 	//
-	// - **suspicious**: suspicious.
+	// - **suspicious**: Suspicious.
 	//
-	// - **remind**: reminder.
+	// - **remind**: Reminder.
 	//
 	// example:
 	//
@@ -196,11 +196,11 @@ type DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventBaselineEvent
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The baseline risk level. Valid values:
 	//
-	// - **high**: high risk.
+	// - **high**: High.
 	//
-	// - **medium**: medium risk.
+	// - **medium**: Medium.
 	//
-	// - **low**: low risk.
+	// - **low**: Low.
 	//
 	// example:
 	//
@@ -245,13 +245,13 @@ type DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventVulEvent stru
 	//
 	// 3
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The warning level. Valid values:
+	// The vulnerability severity. Valid values:
 	//
-	// - **asap**: high. Fix the vulnerability at the earliest opportunity.
+	// - **asap**: High. Fix as soon as possible.
 	//
-	// - **nntf**: medium. The vulnerability can be temporarily left unfixed.
+	// - **nntf**: Medium. Fix later.
 	//
-	// - **later**: low. The vulnerability can be left unfixed.
+	// - **later**: Low. Fix is optional.
 	//
 	// example:
 	//

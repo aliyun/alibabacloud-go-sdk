@@ -26,43 +26,43 @@ type iListInstanceCatalogRequest interface {
 }
 
 type ListInstanceCatalogRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language type of the request and response messages. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether to filter the assets that support custom checks. Valid values:
+	// Specifies whether to filter assets that support custom checks. Valid values:
 	//
-	// 	- **true**: Filter assets that support custom checks.
+	// - **true**: Filters assets that support custom checks.
 	//
-	// 	- **false**: All assets are selected. This is the default value.
+	// - **false**: All check assets. This is the default value.
 	//
 	// example:
 	//
 	// true
 	OnlyCustom *bool `json:"OnlyCustom,omitempty" xml:"OnlyCustom,omitempty"`
-	// The ID of the region in which the asset resides. Valid values:
+	// The ID of the region where the instance to be queried is located. Valid values:
 	//
-	// 	- **cn-hangzhou**: International
+	// - **cn-hangzhou**: Center.
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1**: Singapore.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of requirement items.
+	// The list of requirement IDs.
 	RequirementIds []*int64 `json:"RequirementIds,omitempty" xml:"RequirementIds,omitempty" type:"Repeated"`
-	// The IDs of standards.
+	// The list of standard IDs.
 	StandardIds []*int64 `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
-	// List of task sources.
+	// The list of task sources.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
-	// The types of check standards.
+	// The list of types to which the check standards belong.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 

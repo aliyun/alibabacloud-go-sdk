@@ -32,7 +32,7 @@ type iDescribeImageRepoListRequest interface {
 }
 
 type DescribeImageRepoListRequest struct {
-	// The page number of the page to return. Default value: **1**.
+	// Specifies the number of the page to return. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeImageRepoListRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The search field. Valid values:
 	//
-	// - **repoName**: image repository name
+	// - **repoName**: image repository name.
 	//
-	// - **repoNamespace**: image repository namespace
+	// - **repoNamespace**: image repository namespace.
 	//
 	// > This parameter takes effect only when **OperateType*	- is set to **other**.
 	//
@@ -60,7 +60,7 @@ type DescribeImageRepoListRequest struct {
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - **count**: statistics
+	// - **count**: statistics.
 	//
 	// - **other**: other.
 	//
@@ -68,9 +68,9 @@ type DescribeImageRepoListRequest struct {
 	//
 	// count
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// The number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page during paging.
+	// Specifies the maximum number of entries to return on each page in a paging query. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > Set PageSize to a non-empty value.
+	// > Do not leave this parameter empty.
 	//
 	// example:
 	//
@@ -90,15 +90,15 @@ type DescribeImageRepoListRequest struct {
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
 	// Specifies whether the item is selected. Valid values:
 	//
-	// - **0**: No.
+	// - **0**: no.
 	//
-	// - **1**: Yes.
+	// - **1**: yes.
 	//
 	// example:
 	//
 	// 1
 	Selected *int32 `json:"Selected,omitempty" xml:"Selected,omitempty"`
-	// The dimension of the defense switch configuration. Valid values:
+	// The operation dimension for the defense switch configuration. Valid values:
 	//
 	// - **image_repo**: image repository ID.
 	//

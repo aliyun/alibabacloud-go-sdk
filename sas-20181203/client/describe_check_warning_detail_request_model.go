@@ -28,23 +28,23 @@ type iDescribeCheckWarningDetailRequest interface {
 type DescribeCheckWarningDetailRequest struct {
 	// The ID of the check item.
 	//
-	// > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.	Notice: When this parameter is specified, the Uuid parameter is required.
+	// > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.	Notice: If this parameter is specified, the Uuid parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The alert ID of the check item.
+	// The ID of the check item alert.
 	//
-	// > To query the details of a specified check item, provide the alert ID of the check item. You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to obtain this ID.
+	// > To query the details of a specified check item, you must provide the check item alert ID. You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to obtain the ID.
 	//
-	// 	Notice: This parameter is required when both Uuid and CheckId are empty.
+	// 	Notice: This parameter is required if both the Uuid and CheckId parameters are left empty.
 	//
 	// example:
 	//
 	// 98675301
 	CheckWarningId *int64 `json:"CheckWarningId,omitempty" xml:"CheckWarningId,omitempty"`
-	// The container name.
+	// The name of the container.
 	//
 	// example:
 	//
@@ -60,15 +60,15 @@ type DescribeCheckWarningDetailRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	// The ID of the Alibaba Cloud account for the member accounts in the resource folder.
 	//
-	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 16670360956*****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The source IP address of the request.
+	// The source IP address.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeCheckWarningDetailRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The UUID of the server to query.
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.	Notice: When this parameter is specified, the CheckId parameter is required.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.	Notice: If this parameter is specified, the CheckId parameter is required.
 	//
 	// example:
 	//

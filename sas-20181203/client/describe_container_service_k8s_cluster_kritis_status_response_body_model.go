@@ -16,9 +16,9 @@ type iDescribeContainerServiceK8sClusterKritisStatusResponseBody interface {
 }
 
 type DescribeContainerServiceK8sClusterKritisStatusResponseBody struct {
-	// The Kritis status information of the ACK cluster.
+	// The Kritis status information of the Container Service for Kubernetes cluster.
 	KritisStatus *DescribeContainerServiceK8sClusterKritisStatusResponseBodyKritisStatus `json:"KritisStatus,omitempty" xml:"KritisStatus,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

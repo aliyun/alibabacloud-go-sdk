@@ -28,9 +28,9 @@ type iDescribePropertyScaProcessDetailRequest interface {
 type DescribePropertyScaProcessDetailRequest struct {
 	// The type of the application process. Default value: **java**. Valid values:
 	//
-	// 	- **java**: Java process.
+	// - **java**: Java process
 	//
-	// 	- **php**: PHP process.
+	// - **php**: PHP process
 	//
 	// example:
 	//
@@ -38,21 +38,21 @@ type DescribePropertyScaProcessDetailRequest struct {
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The startup parameter.
 	//
-	// >  This parameter supports only prefix queries. Fuzzy match is not supported.
+	// > Only prefix match is supported. Fuzzy match is not supported.
 	//
 	// example:
 	//
 	// java -jar
 	Cmdline *string `json:"Cmdline,omitempty" xml:"Cmdline,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page. Default value: 10. If you leave this parameter empty, 10 entries are returned on each page.
+	// The maximum number of entries to return on each page in a paged query. The default number of entries per page for paging is 10. If this parameter is left empty, 10 entries are returned by default.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Specify a value for this parameter.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type DescribePropertyScaProcessDetailRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The process ID.
 	//
-	// >  Only exact match is supported.
+	// > Only exact match is supported.
 	//
 	// example:
 	//
 	// 756
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// The information about the server that you want to query. The value can be the public IP address, private IP address, or name of the server. Fuzzy match is supported.
+	// The asset information to query. You can set this parameter to the asset name, public IP address, or private IP address. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -74,11 +74,9 @@ type DescribePropertyScaProcessDetailRequest struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The UUID of the server.
 	//
-	// >
+	// >- You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
-	// 	- You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
-	//
-	// 	- Only exact match is supported.
+	// >- Only exact match is supported.
 	//
 	// example:
 	//

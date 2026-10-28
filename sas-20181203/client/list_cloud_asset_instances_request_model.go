@@ -89,6 +89,10 @@ type ListCloudAssetInstancesRequest struct {
 	// The ID of the Alibaba Cloud account for the member account in the resource directory.
 	//
 	// > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 1234567890123456
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 

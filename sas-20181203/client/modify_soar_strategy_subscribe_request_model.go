@@ -16,9 +16,9 @@ type iModifySoarStrategySubscribeRequest interface {
 }
 
 type ModifySoarStrategySubscribeRequest struct {
-	// The policy ID.
+	// The strategy ID.
 	//
-	// >Call the [DescribeSoarStrategies](~~DescribeSoarStrategies~~) operation to obtain this parameter.
+	// You can call the [DescribeSoarStrategies](~~DescribeSoarStrategies~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type ModifySoarStrategySubscribeRequest struct {
 	//
 	// 8000
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The add or remove status. Valid values:
+	// Specifies whether to add or remove the strategy template. Valid values:
 	//
-	// - true: adds the policy template to My Policies
+	// - true: Adds the strategy template to My Strategies.
 	//
-	// - false: removes the policy template from My Policies.
+	// - false: Removes the strategy template from My Strategies.
 	//
 	// This parameter is required.
 	//

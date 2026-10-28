@@ -46,7 +46,7 @@ type UpdateHoneypotNodeRequest struct {
 	//
 	// HoneypotNodeTest
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The collection of allowed CIDR blocks.
+	// The list of allowed CIDR blocks.
 	SecurityGroupProbeIpList []*string `json:"SecurityGroupProbeIpList,omitempty" xml:"SecurityGroupProbeIpList,omitempty" type:"Repeated"`
 }
 

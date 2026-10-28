@@ -16,9 +16,9 @@ type iDescribeCloudVendorTrialConfigRequest interface {
 }
 
 type DescribeCloudVendorTrialConfigRequest struct {
-	// Unique ID of the AK.
+	// The unique ID of the AccessKey.
 	//
-	// > You can call [DescribeCloudVendorAccountAKList](~~DescribeCloudVendorAccountAKList~~) to get the AuthId.
+	// > You can call [DescribeCloudVendorAccountAKList](~~DescribeCloudVendorAccountAKList~~) to obtain the AuthId.
 	//
 	// > -
 	//
@@ -28,7 +28,7 @@ type DescribeCloudVendorTrialConfigRequest struct {
 	//
 	// 23**
 	AuthId *int64 `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
-	// Cloud asset vendor. Values:
+	// The cloud asset vendor. Valid values:
 	//
 	// - **Tencent**: Tencent Cloud
 	//

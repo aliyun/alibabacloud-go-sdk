@@ -24,13 +24,21 @@ type iListUuidsByAppIdRequest interface {
 }
 
 type ListUuidsByAppIdRequest struct {
-	// The ID of the SAE application.
+	// The SAE application ID.
+	//
+	// > You can call the [ListMachineApps](~~ListMachineApps~~) operation to obtain the value of this parameter.
+	//
+	// This parameter is required. If it is not provided, the API returns HTTP 400 with the error code -101.
 	//
 	// example:
 	//
 	// 5b41f4bf-349f-4263-89b1-9234c034****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The region ID.
+	//
+	// > You can call the [ListMachineApps](~~ListMachineApps~~) operation to obtain the value of this parameter.
+	//
+	// This parameter is required. If it is not provided, the API returns HTTP 400 with the error code -101.
 	//
 	// example:
 	//
@@ -58,7 +66,7 @@ type ListUuidsByAppIdRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The UID of the resource directory.
+	// The UID of the associated resource directory.
 	//
 	// example:
 	//

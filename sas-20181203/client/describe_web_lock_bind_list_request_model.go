@@ -26,7 +26,7 @@ type iDescribeWebLockBindListRequest interface {
 }
 
 type DescribeWebLockBindListRequest struct {
-	// The page number of the current page in a paging query. Minimum value: 1. Default value: 1.
+	// The page number of the current page returned for a paging query. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -36,31 +36,31 @@ type DescribeWebLockBindListRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries per page in a paging query. Default value: 20.
+	// The maximum number of entries to return on each page for a paging query. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The fuzzy match field for the server. The value can be a server name or IP address.
+	// The fuzzy match keyword for the server, which can be the server name or IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//
 	// 116.30.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The protection status of the servers that you want to query. Valid values:
+	// The protection status of the servers to query. Valid values:
 	//
 	// - **on**: Protection is enabled.
 	//
@@ -70,9 +70,9 @@ type DescribeWebLockBindListRequest struct {
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The UUID of the asset that you want to query.
+	// The UUID of the asset to query.
 	//
-	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//

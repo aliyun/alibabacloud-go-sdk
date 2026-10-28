@@ -22,9 +22,9 @@ type DeleteHybridProxyRequest struct {
 	//
 	// example:
 	//
-	// IDC-代理
+	// IDC-Proxy
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The UUID of the proxy server to delete. The value starts with inet-proxy-.
+	// The UUID of the proxy server to delete. The UUID starts with inet-proxy-.
 	//
 	// This parameter is required.
 	//

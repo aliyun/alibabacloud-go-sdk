@@ -16,7 +16,7 @@ type iDescribeContainerStatisticsRequest interface {
 type DescribeContainerStatisticsRequest struct {
 	// The ID of the container cluster to query.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//

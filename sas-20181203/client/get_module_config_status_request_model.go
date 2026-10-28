@@ -14,7 +14,7 @@ type iGetModuleConfigStatusRequest interface {
 }
 
 type GetModuleConfigStatusRequest struct {
-	// The service modules that you want to query.
+	// The list of product modules to query.
 	//
 	// This parameter is required.
 	ModuleNames []*string `json:"ModuleNames,omitempty" xml:"ModuleNames,omitempty" type:"Repeated"`

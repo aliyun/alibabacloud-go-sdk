@@ -24,19 +24,25 @@ type iDescribeImageSensitiveFileByKeyRequest interface {
 }
 
 type DescribeImageSensitiveFileByKeyRequest struct {
-	// The page number of the returned page. Default value: **1**.
+	// Specifies the page number of the returned results. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The UUID of the image.
+	// The image UUID.
+	//
+	// > You can call the [DescribeImageListBySensitiveFile](~~DescribeImageListBySensitiveFile~~) operation to obtain this parameter from the ImageInfos[].Uuid field in the response.
+	//
+	// This parameter is required. If you do not specify this parameter, the API returns an HTTP 400 error with the error code -101.
+	//
+	// The ByKey suffix in the operation name indicates filtering by sensitive file type. To locate an image, you must specify this parameter (imageUuid). SensitiveFileKey is an optional filter condition for the sensitive file type.
 	//
 	// example:
 	//
 	// 0083a31ccf7c10367a6e783e8601****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language of the request and response. Default value: **zh**. Valid values:
+	// Specifies the language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -46,7 +52,7 @@ type DescribeImageSensitiveFileByKeyRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page in a paging query. Default value: **20**.
+	// Specifies the maximum number of entries to return on each page in a paging query. Default value: **20**.
 	//
 	// example:
 	//
@@ -58,7 +64,7 @@ type DescribeImageSensitiveFileByKeyRequest struct {
 	//
 	// - **container**: container
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
-	// The alerting type of the sensitive file. Valid values:
+	// The sensitive file alerting type. Valid values:
 	//
 	// - **npm_token**: NPM access token
 	//
@@ -66,7 +72,7 @@ type DescribeImageSensitiveFileByKeyRequest struct {
 	//
 	// - **google_oauth_key**: Google OAuth key
 	//
-	// - **planetscale_passwd**: Planetscale password
+	// - **planetscale_passwd**: PlanetScale password
 	//
 	// - **github_ssh_key**: GitHub SSH key
 	//
@@ -92,7 +98,7 @@ type DescribeImageSensitiveFileByKeyRequest struct {
 	//
 	// - **docker_registry_cfg**: Docker image repository configuration
 	//
-	// - **pem**: PEM
+	// - **pem**: PEM file
 	//
 	// - **common_cred**: common credential
 	//
@@ -130,9 +136,9 @@ type DescribeImageSensitiveFileByKeyRequest struct {
 	//
 	// - **vscode_sftp**: VSCode SFTP configuration
 	//
-	// - **apache_htpasswd**: Apache htpasswd
+	// - **apache_htpasswd**: Apache htpasswd file
 	//
-	// - **planetscale_token**: Planetscale token
+	// - **planetscale_token**: PlanetScale token
 	//
 	// - **contentful_preview_token**: Contentful preview token
 	//
@@ -146,7 +152,7 @@ type DescribeImageSensitiveFileByKeyRequest struct {
 	//
 	// - **asana_client_private_key**: Asana project management platform client key
 	//
-	// - **tencentcloud_ak**: SecretId of other cloud service providers
+	// - **tencentcloud_ak**: Tencent Cloud SecretId
 	//
 	// - **rsa_private_key**: RSA private key
 	//
@@ -228,7 +234,7 @@ type DescribeImageSensitiveFileByKeyRequest struct {
 	//
 	// - **messagebird_token**: MessageBird token
 	//
-	// - **github_app_token**: GitHub app token
+	// - **github_app_token**: GitHub App token
 	//
 	// - **hashicorp_vault_token**: HashiCorp Vault token
 	//
@@ -236,7 +242,7 @@ type DescribeImageSensitiveFileByKeyRequest struct {
 	//
 	// - **sshpasswd**: SSH password
 	//
-	// - **huaweicloud_ak**: Secret access key of other cloud service providers
+	// - **huaweicloud_ak**: Huawei Cloud Secret Access Key
 	//
 	// - **aws_s3cmd**: AWS S3cmd configuration
 	//
@@ -280,7 +286,7 @@ type DescribeImageSensitiveFileByKeyRequest struct {
 	//
 	// - **newrelic_api_key**: New Relic user API key
 	//
-	// - **github_hub**: Hub configuration that stores GitHub tokens
+	// - **github_hub**: hub configuration that stores GitHub tokens
 	//
 	// - **rubygem**: RubyGems token
 	//

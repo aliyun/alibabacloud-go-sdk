@@ -20,25 +20,25 @@ type iDeleteBaselineCheckWhiteRecordRequest interface {
 }
 
 type DeleteBaselineCheckWhiteRecordRequest struct {
-	// The IDs of check items.
+	// The list of check item IDs.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The IDs of the whitelist records.
+	// The list of whitelist record IDs.
 	RecordIds []*int64 `json:"RecordIds,omitempty" xml:"RecordIds,omitempty" type:"Repeated"`
 	// The data source. Valid values:
 	//
-	// 	- **default**: host baseline
+	// - **default**: server baseline
 	//
-	// 	- **agentless**: agentless detection
+	// - **agentless**: agentless baseline
 	//
 	// example:
 	//

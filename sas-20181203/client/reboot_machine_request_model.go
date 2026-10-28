@@ -14,9 +14,9 @@ type iRebootMachineRequest interface {
 }
 
 type RebootMachineRequest struct {
-	// The UUID of the server that you want to restart.
+	// The UUID of the server to restart.
 	//
-	// >Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

@@ -70,7 +70,7 @@ type DescribeImageBaselineStrategyResponseBodyStrategy struct {
 	BaselineItem *string `json:"BaselineItem,omitempty" xml:"BaselineItem,omitempty"`
 	// The list of baseline items.
 	BaselineItemList []*DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList `json:"BaselineItemList,omitempty" xml:"BaselineItemList,omitempty" type:"Repeated"`
-	// The retention period of baseline risks. Unit: days.
+	// The retention period of baseline risks, in days.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeImageBaselineStrategyResponseBodyStrategy struct {
 	//
 	// 8257
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The Policy Name.
+	// The policy name.
 	//
 	// example:
 	//
@@ -102,11 +102,11 @@ type DescribeImageBaselineStrategyResponseBodyStrategy struct {
 	TotalItemCount *int32 `json:"TotalItemCount,omitempty" xml:"TotalItemCount,omitempty"`
 	// The type of the baseline check policy. Valid values:
 	//
-	// - **default**: default policy
+	// - **default**: Default policy
 	//
-	// - **full**: full baseline item policy
+	// - **full**: Full baseline item policy
 	//
-	// - **normal**: common baseline item policy.
+	// - **normal**: Standard baseline item policy
 	//
 	// example:
 	//
@@ -208,19 +208,19 @@ func (s *DescribeImageBaselineStrategyResponseBodyStrategy) Validate() error {
 }
 
 type DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList struct {
-	// The classification key of the baseline main item.
+	// The classification key of the primary baseline item.
 	//
 	// example:
 	//
 	// identification
 	ClassKey *string `json:"ClassKey,omitempty" xml:"ClassKey,omitempty"`
-	// The key of the baseline subitem.
+	// The key of the sub-baseline item.
 	//
 	// example:
 	//
 	// duplicate_pwd_hash
 	ItemKey *string `json:"ItemKey,omitempty" xml:"ItemKey,omitempty"`
-	// The name key of the baseline main item.
+	// The name key of the primary baseline item.
 	//
 	// example:
 	//

@@ -99,6 +99,10 @@ type ModifyOperateVulRequest struct {
 	// The ID of the Alibaba Cloud account associated with a member account in the resource directory.
 	//
 	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 1234567890123456
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of vulnerability to handle. Valid values:
 	//

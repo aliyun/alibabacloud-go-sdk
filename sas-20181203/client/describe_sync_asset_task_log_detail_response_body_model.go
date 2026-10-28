@@ -84,19 +84,19 @@ func (s *DescribeSyncAssetTaskLogDetailResponseBody) Validate() error {
 }
 
 type DescribeSyncAssetTaskLogDetailResponseBodyPageInfo struct {
-	// The number of IDC scan task details returned on the current page.
+	// The number of IDC scan task details displayed on the current page.
 	//
 	// example:
 	//
 	// 4
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page during paging in a paged query.
+	// The page number of the current page in a paged query during paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of IDC scan node details returned on each page during paging in a paged query. Default value: 20, which indicates that 20 IDC scan node details are returned per page.
+	// The number of IDC scan node details displayed on each page in a paged query. Default value: 20. This indicates that 20 IDC scan node details are displayed on each page during paging.
 	//
 	// example:
 	//
@@ -179,17 +179,17 @@ type DescribeSyncAssetTaskLogDetailResponseBodyTaskRecordDetails struct {
 	LeafTaskId *string `json:"LeafTaskId,omitempty" xml:"LeafTaskId,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// - **INIT**: Pending.
+	// - **INIT**: pending
 	//
-	// - **START**: Started.
+	// - **START**: started
 	//
-	// - **MESSAGE_SEND**: Command issued.
+	// - **MESSAGE_SEND**: command issued
 	//
-	// - **SUCCESS**: Completed.
+	// - **SUCCESS**: completed
 	//
-	// - **FAIL**: Failed.
+	// - **FAIL**: failed
 	//
-	// - **TIMEOUT**: Timed out.
+	// - **TIMEOUT**: timed out
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type DescribeSyncAssetTaskLogDetailResponseBodyTaskRecordDetails struct {
 	//
 	// unknown reason
 	TaskMsg *string `json:"TaskMsg,omitempty" xml:"TaskMsg,omitempty"`
-	// The timestamp when the task was reported.
+	// The timestamp of the report time.
 	//
 	// example:
 	//

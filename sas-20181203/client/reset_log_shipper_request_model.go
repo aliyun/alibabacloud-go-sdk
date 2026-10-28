@@ -18,19 +18,19 @@ type iResetLogShipperRequest interface {
 }
 
 type ResetLogShipperRequest struct {
-	// The global retention period of hot data.
+	// The global data retention period in the hot storage tier.
 	//
-	// >  The value of this parameter must be at least 7 and smaller than the log retention period. Unit: days.
+	// > Valid values: greater than or equal to 7 days and less than the log retention period.
 	//
 	// example:
 	//
 	// 7
 	HotTtl *int32 `json:"HotTtl,omitempty" xml:"HotTtl,omitempty"`
-	// The settings of the log analysis feature.
+	// The configuration information for log analysis in Security Center.
 	LogMetaList []*ResetLogShipperRequestLogMetaList `json:"LogMetaList,omitempty" xml:"LogMetaList,omitempty" type:"Repeated"`
-	// The global log retention period.
+	// The global log retention period in days.
 	//
-	// >  This parameter is supported only when the log analysis feature uses the pay-as-you-go billing method.
+	// > This parameter is supported only in the pay-as-you-go billing mode for logs.
 	//
 	// example:
 	//
@@ -87,35 +87,35 @@ func (s *ResetLogShipperRequest) Validate() error {
 }
 
 type ResetLogShipperRequestLogMetaList struct {
-	// The Logstore that you want to configure.
+	// The Logstore to be configured.
 	//
-	// >  You can call the [DescribeLogMeta](~~DescribeLogMeta~~) operation to query the Logstore.
+	// > You can call the [DescribeLogMeta](~~DescribeLogMeta~~) operation to obtain the value of this parameter.
 	//
 	// example:
 	//
 	// sas-security-log
 	ConfigLogStore *string `json:"ConfigLogStore,omitempty" xml:"ConfigLogStore,omitempty"`
-	// The retention period of hot data in the Logstore.
+	// The data retention period in the hot storage tier of the Logstore.
 	//
-	// >  The value of this parameter must be at least 7 and smaller than the log retention period. Unit: days. If you specify this parameter for the Logstore, the global retention period of hot data specified by the HotTtl parameter is overwritten.
+	// > Valid values: greater than or equal to 7 days and less than the log retention period. Specifying the data retention period in the hot storage tier for a single Logstore overrides the global settings.
 	//
 	// example:
 	//
 	// 7
 	HotTtl *int32 `json:"HotTtl,omitempty" xml:"HotTtl,omitempty"`
-	// The status of the log analysis feature. Valid values:
+	// The current enabling status. Valid values:
 	//
-	// 	- **disabled**
+	// - **disabled**: The feature is disabled.
 	//
-	// 	- **enabled**
+	// - **enabled**: The feature is enabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The log retention period of the Logstore.
+	// The log retention period of the Logstore in days.
 	//
-	// >  If you specify this parameter for the Logstore, the global log retention period specified by the Ttl parameter is overwritten.
+	// > Specifying the log retention period for a single Logstore overrides the global settings.
 	//
 	// example:
 	//

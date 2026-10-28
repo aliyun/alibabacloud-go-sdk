@@ -181,7 +181,7 @@ func (client *Client) AddAssetSelectionCriteria(request *AddAssetSelectionCriter
 
 // Summary:
 //
-// Creates a whitelist rule for a baseline check item.
+// Creates a baseline whitelist record.
 //
 // @param request - AddBaselineCheckWhiteRecordRequest
 //
@@ -241,7 +241,7 @@ func (client *Client) AddBaselineCheckWhiteRecordWithOptions(request *AddBaselin
 
 // Summary:
 //
-// Creates a whitelist rule for a baseline check item.
+// Creates a baseline whitelist record.
 //
 // @param request - AddBaselineCheckWhiteRecordRequest
 //
@@ -1091,7 +1091,7 @@ func (client *Client) AddIdcProbe(request *AddIdcProbeRequest) (_result *AddIdcP
 
 // Summary:
 //
-// Creates an alert handling rule.
+// Adds an image alert handling rule.
 //
 // @param request - AddImageEventOperationRequest
 //
@@ -1163,7 +1163,7 @@ func (client *Client) AddImageEventOperationWithOptions(request *AddImageEventOp
 
 // Summary:
 //
-// Creates an alert handling rule.
+// Adds an image alert handling rule.
 //
 // @param request - AddImageEventOperationRequest
 //
@@ -1681,7 +1681,7 @@ func (client *Client) AddSasContainerWebDefenseRule(request *AddSasContainerWebD
 
 // Summary:
 //
-// Enables the trial use of Security Center value-added features, including vulnerability fixing and threat analysis and response.
+// Adds a trial for the value-added modules of Security Center, including vulnerability remediation and threat analysis and response.
 //
 // @param request - AddSasModuleTrialRequest
 //
@@ -1729,7 +1729,7 @@ func (client *Client) AddSasModuleTrialWithOptions(request *AddSasModuleTrialReq
 
 // Summary:
 //
-// Enables the trial use of Security Center value-added features, including vulnerability fixing and threat analysis and response.
+// Adds a trial for the value-added modules of Security Center, including vulnerability remediation and threat analysis and response.
 //
 // @param request - AddSasModuleTrialRequest
 //
@@ -2113,7 +2113,7 @@ func (client *Client) AdvanceSecurityEventOperations(request *AdvanceSecurityEve
 
 // Summary:
 //
-// Adds alert description in batches.
+// Adds notes to multiple security alerts.
 //
 // @param request - BatchCreateMaliciousNoteRequest
 //
@@ -2157,7 +2157,7 @@ func (client *Client) BatchCreateMaliciousNoteWithOptions(request *BatchCreateMa
 
 // Summary:
 //
-// Adds alert description in batches.
+// Adds notes to multiple security alerts.
 //
 // @param request - BatchCreateMaliciousNoteRequest
 //
@@ -2175,7 +2175,7 @@ func (client *Client) BatchCreateMaliciousNote(request *BatchCreateMaliciousNote
 
 // Summary:
 //
-// Deletes whitelist rules for alerts generated for sensitive files that are detected by using the agentless detection feature in batches.
+// Deletes multiple whitelist rules for sensitive file alerts in agentless detection.
 //
 // @param request - BatchDeleteMaliciousFileWhitelistConfigRequest
 //
@@ -2219,7 +2219,7 @@ func (client *Client) BatchDeleteMaliciousFileWhitelistConfigWithOptions(request
 
 // Summary:
 //
-// Deletes whitelist rules for alerts generated for sensitive files that are detected by using the agentless detection feature in batches.
+// Deletes multiple whitelist rules for sensitive file alerts in agentless detection.
 //
 // @param request - BatchDeleteMaliciousFileWhitelistConfigRequest
 //
@@ -2303,7 +2303,7 @@ func (client *Client) BatchOperateCommonOverallConfig(request *BatchOperateCommo
 
 // Summary:
 //
-// Modifies multiple alert whitelist rules of sensitive files that are detected by using the agentless detection feature at a time.
+// Modifies multiple whitelist rules for sensitive file alerts in agentless detection.
 //
 // @param request - BatchUpdateMaliciousFileWhitelistConfigRequest
 //
@@ -2347,7 +2347,7 @@ func (client *Client) BatchUpdateMaliciousFileWhitelistConfigWithOptions(request
 
 // Summary:
 //
-// Modifies multiple alert whitelist rules of sensitive files that are detected by using the agentless detection feature at a time.
+// Modifies multiple whitelist rules for sensitive file alerts in agentless detection.
 //
 // @param request - BatchUpdateMaliciousFileWhitelistConfigRequest
 //
@@ -2479,7 +2479,7 @@ func (client *Client) BindAuthToMachine(request *BindAuthToMachineRequest) (_res
 
 // Summary:
 //
-// Adds servers to Security Center over a proxy server. After you create a proxy cluster and deploy a proxy server, you can connect a server to the proxy cluster as a client. This way, the server is added to Security Center over the proxy server and is protected.
+// Connects servers to a proxy server. After you create a cluster and deploy the proxy server, you can add servers as clients to the proxy cluster. This enables the servers to connect to Security Center through the proxy for protection.
 //
 // @param request - BindHybridProxyRequest
 //
@@ -2527,7 +2527,7 @@ func (client *Client) BindHybridProxyWithOptions(request *BindHybridProxyRequest
 
 // Summary:
 //
-// Adds servers to Security Center over a proxy server. After you create a proxy cluster and deploy a proxy server, you can connect a server to the proxy cluster as a client. This way, the server is added to Security Center over the proxy server and is protected.
+// Connects servers to a proxy server. After you create a cluster and deploy the proxy server, you can add servers as clients to the proxy cluster. This enables the servers to connect to Security Center through the proxy for protection.
 //
 // @param request - BindHybridProxyRequest
 //
@@ -2607,7 +2607,7 @@ func (client *Client) CancelOnceTask(request *CancelOnceTaskRequest) (_result *C
 
 // Summary:
 //
-// Modifies the interval of asset synchronization configurations.
+// Modifies the custom refresh cycle configuration for assets.
 //
 // @param request - ChangeAssetRefreshTaskConfigRequest
 //
@@ -2655,7 +2655,7 @@ func (client *Client) ChangeAssetRefreshTaskConfigWithOptions(request *ChangeAss
 
 // Summary:
 //
-// Modifies the interval of asset synchronization configurations.
+// Modifies the custom refresh cycle configuration for assets.
 //
 // @param request - ChangeAssetRefreshTaskConfigRequest
 //
@@ -3163,7 +3163,7 @@ func (client *Client) CheckSecurityEventId(request *CheckSecurityEventIdRequest)
 
 // Summary:
 //
-// Checks a Security Token Service (STS) token and returns the ID of the Alibaba Cloud account.
+// Authenticates an STS token and returns the Alibaba Cloud account ID.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3192,7 +3192,7 @@ func (client *Client) CheckStsTokenAuthWithOptions(runtime *dara.RuntimeOptions)
 
 // Summary:
 //
-// Checks a Security Token Service (STS) token and returns the ID of the Alibaba Cloud account.
+// Authenticates an STS token and returns the Alibaba Cloud account ID.
 //
 // @return CheckStsTokenAuthResponse
 func (client *Client) CheckStsTokenAuth() (_result *CheckStsTokenAuthResponse, _err error) {
@@ -3772,7 +3772,7 @@ func (client *Client) CreateAssetSelectionConfig(request *CreateAssetSelectionCo
 
 // Summary:
 //
-// Create attack path sensitive asset configuration.
+// Creates the sensitive asset configuration for attack paths.
 //
 // @param request - CreateAttackPathSensitiveAssetConfigRequest
 //
@@ -3820,7 +3820,7 @@ func (client *Client) CreateAttackPathSensitiveAssetConfigWithOptions(request *C
 
 // Summary:
 //
-// Create attack path sensitive asset configuration.
+// Creates the sensitive asset configuration for attack paths.
 //
 // @param request - CreateAttackPathSensitiveAssetConfigRequest
 //
@@ -4921,11 +4921,11 @@ func (client *Client) CreateDynamicDict(request *CreateDynamicDictRequest) (_res
 //
 // Description:
 //
-// Initiates deep analysis for a specified file and streams the progress of each analysis stage in real time by using Server-Sent Events (SSE).
+// Initiates deep analysis for a specified file and streams the progress of each analysis phase in real time by using Server-Sent Events (SSE).
 //
-// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the details of the corresponding alert. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial verification based on the source.
+// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the details of the corresponding alert. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial edition verification based on the source.
 //
-// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing stages. Valid values for the event name (event):
+// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing phases. Valid values for the event name (event):
 //
 // - accepted: The request is accepted.
 //
@@ -4943,7 +4943,7 @@ func (client *Client) CreateDynamicDict(request *CreateDynamicDictRequest) (_res
 //
 // - error: A processing exception occurs, including the error code and message.
 //
-// The data body of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
+// The data payload of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
 //
 // @param request - CreateFileDeepAnalyzeRequest
 //
@@ -4962,11 +4962,11 @@ func (client *Client) CreateFileDeepAnalyzeWithSSE(request *CreateFileDeepAnalyz
 //
 // Description:
 //
-// Initiates deep analysis for a specified file and streams the progress of each analysis stage in real time by using Server-Sent Events (SSE).
+// Initiates deep analysis for a specified file and streams the progress of each analysis phase in real time by using Server-Sent Events (SSE).
 //
-// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the details of the corresponding alert. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial verification based on the source.
+// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the details of the corresponding alert. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial edition verification based on the source.
 //
-// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing stages. Valid values for the event name (event):
+// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing phases. Valid values for the event name (event):
 //
 // - accepted: The request is accepted.
 //
@@ -4984,7 +4984,7 @@ func (client *Client) CreateFileDeepAnalyzeWithSSE(request *CreateFileDeepAnalyz
 //
 // - error: A processing exception occurs, including the error code and message.
 //
-// The data body of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
+// The data payload of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
 //
 // @param request - CreateFileDeepAnalyzeRequest
 //
@@ -5048,11 +5048,11 @@ func (client *Client) CreateFileDeepAnalyzeWithOptions(request *CreateFileDeepAn
 //
 // Description:
 //
-// Initiates deep analysis for a specified file and streams the progress of each analysis stage in real time by using Server-Sent Events (SSE).
+// Initiates deep analysis for a specified file and streams the progress of each analysis phase in real time by using Server-Sent Events (SSE).
 //
-// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the details of the corresponding alert. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial verification based on the source.
+// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the details of the corresponding alert. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial edition verification based on the source.
 //
-// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing stages. Valid values for the event name (event):
+// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing phases. Valid values for the event name (event):
 //
 // - accepted: The request is accepted.
 //
@@ -5070,7 +5070,7 @@ func (client *Client) CreateFileDeepAnalyzeWithOptions(request *CreateFileDeepAn
 //
 // - error: A processing exception occurs, including the error code and message.
 //
-// The data body of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
+// The data payload of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
 //
 // @param request - CreateFileDeepAnalyzeRequest
 //
@@ -9088,7 +9088,7 @@ func (client *Client) DeleteBackupPolicyMachine(request *DeleteBackupPolicyMachi
 
 // Summary:
 //
-// Deletes snapshots of anti-ransomware backups in Security Center.
+// Deletes the snapshots of anti-ransomware backups for servers in Security Center.
 //
 // @param request - DeleteBackupSnapshotRequest
 //
@@ -9140,7 +9140,7 @@ func (client *Client) DeleteBackupSnapshotWithOptions(request *DeleteBackupSnaps
 
 // Summary:
 //
-// Deletes snapshots of anti-ransomware backups in Security Center.
+// Deletes the snapshots of anti-ransomware backups for servers in Security Center.
 //
 // @param request - DeleteBackupSnapshotRequest
 //
@@ -9158,7 +9158,7 @@ func (client *Client) DeleteBackupSnapshot(request *DeleteBackupSnapshotRequest)
 
 // Summary:
 //
-// Deletes the whitelist record for a baseline check item.
+// Deletes baseline whitelist records.
 //
 // @param request - DeleteBaselineCheckWhiteRecordRequest
 //
@@ -9214,7 +9214,7 @@ func (client *Client) DeleteBaselineCheckWhiteRecordWithOptions(request *DeleteB
 
 // Summary:
 //
-// Deletes the whitelist record for a baseline check item.
+// Deletes baseline whitelist records.
 //
 // @param request - DeleteBaselineCheckWhiteRecordRequest
 //
@@ -9686,7 +9686,7 @@ func (client *Client) DeleteContainerPluginRule(request *DeleteContainerPluginRu
 
 // Summary:
 //
-// Deletes the blocking records of specific IP addresses that are custom-defined on one or more servers.
+// Deletes the blocking records for specific IP addresses on one or more user-defined servers.
 //
 // @param request - DeleteCustomBlockRecordRequest
 //
@@ -9734,7 +9734,7 @@ func (client *Client) DeleteCustomBlockRecordWithOptions(request *DeleteCustomBl
 
 // Summary:
 //
-// Deletes the blocking records of specific IP addresses that are custom-defined on one or more servers.
+// Deletes the blocking records for specific IP addresses on one or more user-defined servers.
 //
 // @param request - DeleteCustomBlockRecordRequest
 //
@@ -10086,7 +10086,7 @@ func (client *Client) DeleteFileProtectClientRule(request *DeleteFileProtectClie
 
 // Summary:
 //
-// Deletes core file monitoring rules.
+// Deletes core file protection rules.
 //
 // @param request - DeleteFileProtectRuleRequest
 //
@@ -10130,7 +10130,7 @@ func (client *Client) DeleteFileProtectRuleWithOptions(request *DeleteFileProtec
 
 // Summary:
 //
-// Deletes core file monitoring rules.
+// Deletes core file protection rules.
 //
 // @param request - DeleteFileProtectRuleRequest
 //
@@ -10152,7 +10152,7 @@ func (client *Client) DeleteFileProtectRule(request *DeleteFileProtectRuleReques
 //
 // Description:
 //
-// You cannot delete the default server group provided by Security Center, which is **Ungrouped**. After you delete a group, the assets in the group are moved to **Ungrouped*	- by default.
+// You cannot delete the default server group provided by Security Center, which is **Ungrouped**. After you delete a group, the assets in the group are moved to the **Ungrouped*	- group by default.
 //
 // @param request - DeleteGroupRequest
 //
@@ -10204,7 +10204,7 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 //
 // Description:
 //
-// You cannot delete the default server group provided by Security Center, which is **Ungrouped**. After you delete a group, the assets in the group are moved to **Ungrouped*	- by default.
+// You cannot delete the default server group provided by Security Center, which is **Ungrouped**. After you delete a group, the assets in the group are moved to the **Ungrouped*	- group by default.
 //
 // @param request - DeleteGroupRequest
 //
@@ -10288,7 +10288,7 @@ func (client *Client) DeleteHoneypot(request *DeleteHoneypotRequest) (_result *D
 
 // Summary:
 //
-// Deletes a specified management node.
+// Deletes a specified honeypot node.
 //
 // @param request - DeleteHoneypotNodeRequest
 //
@@ -10336,7 +10336,7 @@ func (client *Client) DeleteHoneypotNodeWithOptions(request *DeleteHoneypotNodeR
 
 // Summary:
 //
-// Deletes a specified management node.
+// Deletes a specified honeypot node.
 //
 // @param request - DeleteHoneypotNodeRequest
 //
@@ -10746,7 +10746,7 @@ func (client *Client) DeleteIdcProbe(request *DeleteIdcProbeRequest) (_result *D
 
 // Summary:
 //
-// Deletes an alert disposal rule.
+// Deletes an alert handling rule.
 //
 // @param request - DeleteImageEventOperationRequest
 //
@@ -10790,7 +10790,7 @@ func (client *Client) DeleteImageEventOperationWithOptions(request *DeleteImageE
 
 // Summary:
 //
-// Deletes an alert disposal rule.
+// Deletes an alert handling rule.
 //
 // @param request - DeleteImageEventOperationRequest
 //
@@ -11208,7 +11208,7 @@ func (client *Client) DeleteLoginBaseConfig(request *DeleteLoginBaseConfigReques
 
 // Summary:
 //
-// Deletes a whitelist rule for agentless detection of sensitive file alerts.
+// Deletes a whitelist rule for sensitive file alerts in agentless detection.
 //
 // @param request - DeleteMaliciousFileWhitelistConfigRequest
 //
@@ -11252,7 +11252,7 @@ func (client *Client) DeleteMaliciousFileWhitelistConfigWithOptions(request *Del
 
 // Summary:
 //
-// Deletes a whitelist rule for agentless detection of sensitive file alerts.
+// Deletes a whitelist rule for sensitive file alerts in agentless detection.
 //
 // @param request - DeleteMaliciousFileWhitelistConfigRequest
 //
@@ -11402,7 +11402,7 @@ func (client *Client) DeleteMonitorAccount(request *DeleteMonitorAccountRequest)
 
 // Summary:
 //
-// Deletes a risky image blocking policy.
+// Deletes risky image blocking policies.
 //
 // @param request - DeleteOpaStrategyNewRequest
 //
@@ -11446,7 +11446,7 @@ func (client *Client) DeleteOpaStrategyNewWithOptions(request *DeleteOpaStrategy
 
 // Summary:
 //
-// Deletes a risky image blocking policy.
+// Deletes risky image blocking policies.
 //
 // @param request - DeleteOpaStrategyNewRequest
 //
@@ -12389,7 +12389,7 @@ func (client *Client) DeleteVpcHoneyPot(request *DeleteVpcHoneyPotRequest) (_res
 
 // Summary:
 //
-// Deletes the configurations of vulnerabilities that can be automatically fixed in the vulnerability task center in batches.
+// Deletes the auto-repair configurations for vulnerabilities in the task center in batches.
 //
 // @param request - DeleteVulAutoRepairConfigRequest
 //
@@ -12441,7 +12441,7 @@ func (client *Client) DeleteVulAutoRepairConfigWithOptions(request *DeleteVulAut
 
 // Summary:
 //
-// Deletes the configurations of vulnerabilities that can be automatically fixed in the vulnerability task center in batches.
+// Deletes the auto-repair configurations for vulnerabilities in the task center in batches.
 //
 // @param request - DeleteVulAutoRepairConfigRequest
 //
@@ -13004,7 +13004,7 @@ func (client *Client) DescribeAgentInstallStatus(request *DescribeAgentInstallSt
 
 // Summary:
 //
-// Retrieves the list of assets that contain a specific type of sensitive file detected by the agentless detection feature.
+// Queries the list of assets that contain a specific type of sensitive file detected by the agentless detection feature.
 //
 // Description:
 //
@@ -13054,7 +13054,7 @@ func (client *Client) DescribeAgentlessSensitiveFileByKeyWithOptions(tmpReq *Des
 
 // Summary:
 //
-// Retrieves the list of assets that contain a specific type of sensitive file detected by the agentless detection feature.
+// Queries the list of assets that contain a specific type of sensitive file detected by the agentless detection feature.
 //
 // Description:
 //
@@ -14607,7 +14607,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 
 // Summary:
 //
-// Queries data of anti-ransomware restoration tasks.
+// Queries the data of anti-ransomware restoration tasks.
 //
 // Description:
 //
@@ -14640,7 +14640,7 @@ func (client *Client) DescribeBackupRestoreCountWithOptions(runtime *dara.Runtim
 
 // Summary:
 //
-// Queries data of anti-ransomware restoration tasks.
+// Queries the data of anti-ransomware restoration tasks.
 //
 // Description:
 //
@@ -15260,7 +15260,7 @@ func (client *Client) DescribeChartData(request *DescribeChartDataRequest) (_res
 
 // Summary:
 //
-// Queries the charts supported for statistics in Security Center security reports.
+// Queries the statistical charts supported by Security Center security reports.
 //
 // @param request - DescribeChartListRequest
 //
@@ -15312,7 +15312,7 @@ func (client *Client) DescribeChartListWithOptions(request *DescribeChartListReq
 
 // Summary:
 //
-// Queries the charts supported for statistics in Security Center security reports.
+// Queries the statistical charts supported by Security Center security reports.
 //
 // @param request - DescribeChartListRequest
 //
@@ -16051,7 +16051,7 @@ func (client *Client) DescribeClientConfSetup(request *DescribeClientConfSetupRe
 
 // Summary:
 //
-// Queries the machine configuration information for different client tags.
+// Queries the server configuration information for clients with different tags.
 //
 // @param request - DescribeClientConfStrategyRequest
 //
@@ -16099,7 +16099,7 @@ func (client *Client) DescribeClientConfStrategyWithOptions(request *DescribeCli
 
 // Summary:
 //
-// Queries the machine configuration information for different client tags.
+// Queries the server configuration information for clients with different tags.
 //
 // @param request - DescribeClientConfStrategyRequest
 //
@@ -16504,7 +16504,7 @@ func (client *Client) DescribeCloudVendorProductTemplateConfig(request *Describe
 
 // Summary:
 //
-// # Query the trail configuration attributes of the corresponding AK configuration
+// Queries the integration configurations for audit logs of third-party cloud assets.
 //
 // @param request - DescribeCloudVendorTrialConfigRequest
 //
@@ -16544,7 +16544,7 @@ func (client *Client) DescribeCloudVendorTrialConfigWithOptions(request *Describ
 
 // Summary:
 //
-// # Query the trail configuration attributes of the corresponding AK configuration
+// Queries the integration configurations for audit logs of third-party cloud assets.
 //
 // @param request - DescribeCloudVendorTrialConfigRequest
 //
@@ -16632,7 +16632,7 @@ func (client *Client) DescribeClusterBasicInfo(request *DescribeClusterBasicInfo
 
 // Summary:
 //
-// Queries the security statistics of a host.
+// Queries the statistics on host security information.
 //
 // @param request - DescribeClusterHostSecuritySummaryRequest
 //
@@ -16696,7 +16696,7 @@ func (client *Client) DescribeClusterHostSecuritySummaryWithOptions(request *Des
 
 // Summary:
 //
-// Queries the security statistics of a host.
+// Queries the statistics on host security information.
 //
 // @param request - DescribeClusterHostSecuritySummaryRequest
 //
@@ -16714,7 +16714,7 @@ func (client *Client) DescribeClusterHostSecuritySummary(request *DescribeCluste
 
 // Summary:
 //
-// Queries the security statistics of container images.
+// Retrieves image security statistics.
 //
 // @param request - DescribeClusterImageSecuritySummaryRequest
 //
@@ -16790,7 +16790,7 @@ func (client *Client) DescribeClusterImageSecuritySummaryWithOptions(request *De
 
 // Summary:
 //
-// Queries the security statistics of container images.
+// Retrieves image security statistics.
 //
 // @param request - DescribeClusterImageSecuritySummaryRequest
 //
@@ -17080,7 +17080,7 @@ func (client *Client) DescribeClusterVulStatistics(request *DescribeClusterVulSt
 
 // Summary:
 //
-// Queries the global configuration of the master switch.
+// Queries the global configuration of the main switch.
 //
 // @param request - DescribeCommonOverallConfigRequest
 //
@@ -17128,7 +17128,7 @@ func (client *Client) DescribeCommonOverallConfigWithOptions(request *DescribeCo
 
 // Summary:
 //
-// Queries the global configuration of the master switch.
+// Queries the global configuration of the main switch.
 //
 // @param request - DescribeCommonOverallConfigRequest
 //
@@ -17789,7 +17789,7 @@ func (client *Client) DescribeContainerScanConfig(request *DescribeContainerScan
 
 // Summary:
 //
-// Queries the Kritis status of a Container Service for Kubernetes (ACK) cluster.
+// Queries the Kritis status of a Container Service for Kubernetes cluster.
 //
 // @param request - DescribeContainerServiceK8sClusterKritisStatusRequest
 //
@@ -17841,7 +17841,7 @@ func (client *Client) DescribeContainerServiceK8sClusterKritisStatusWithOptions(
 
 // Summary:
 //
-// Queries the Kritis status of a Container Service for Kubernetes (ACK) cluster.
+// Queries the Kritis status of a Container Service for Kubernetes cluster.
 //
 // @param request - DescribeContainerServiceK8sClusterKritisStatusRequest
 //
@@ -18007,7 +18007,7 @@ func (client *Client) DescribeContainerServiceK8sClusters(request *DescribeConta
 //
 // Description:
 //
-// Only users who have purchased Container Registry Enterprise instances can invoke this operation.
+// Only users who have purchased Container Registry Enterprise instances can invoke this API operation.
 //
 // @param request - DescribeContainerStatisticsRequest
 //
@@ -18055,7 +18055,7 @@ func (client *Client) DescribeContainerStatisticsWithOptions(request *DescribeCo
 //
 // Description:
 //
-// Only users who have purchased Container Registry Enterprise instances can invoke this operation.
+// Only users who have purchased Container Registry Enterprise instances can invoke this API operation.
 //
 // @param request - DescribeContainerStatisticsRequest
 //
@@ -18204,7 +18204,7 @@ func (client *Client) DescribeCountNotScannedImage() (_result *DescribeCountNotS
 
 // Summary:
 //
-// Queries statistics on scanned image data.
+// Retrieves statistics on scanned images.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -18233,7 +18233,7 @@ func (client *Client) DescribeCountScannedImageWithOptions(runtime *dara.Runtime
 
 // Summary:
 //
-// Queries statistics on scanned image data.
+// Retrieves statistics on scanned images.
 //
 // @return DescribeCountScannedImageResponse
 func (client *Client) DescribeCountScannedImage() (_result *DescribeCountScannedImageResponse, _err error) {
@@ -18249,7 +18249,7 @@ func (client *Client) DescribeCountScannedImage() (_result *DescribeCountScanned
 
 // Summary:
 //
-// Queries the fuzzy match conditions for asset properties that can be displayed when you query assets.
+// Queries the fuzzy match criteria for asset properties displayed during asset queries.
 //
 // @param request - DescribeCriteriaRequest
 //
@@ -18305,7 +18305,7 @@ func (client *Client) DescribeCriteriaWithOptions(request *DescribeCriteriaReque
 
 // Summary:
 //
-// Queries the fuzzy match conditions for asset properties that can be displayed when you query assets.
+// Queries the fuzzy match criteria for asset properties displayed during asset queries.
 //
 // @param request - DescribeCriteriaRequest
 //
@@ -18405,7 +18405,7 @@ func (client *Client) DescribeCustomBlockInstances(request *DescribeCustomBlockI
 
 // Summary:
 //
-// Queries brute-force attacks interception records for custom blocked IP addresses defined on one or more servers.
+// Queries interception records for IP addresses blocked due to brute-force attacks on one or more servers.
 //
 // @param request - DescribeCustomBlockRecordsRequest
 //
@@ -18465,7 +18465,7 @@ func (client *Client) DescribeCustomBlockRecordsWithOptions(request *DescribeCus
 
 // Summary:
 //
-// Queries brute-force attacks interception records for custom blocked IP addresses defined on one or more servers.
+// Queries interception records for IP addresses blocked due to brute-force attacks on one or more servers.
 //
 // @param request - DescribeCustomBlockRecordsRequest
 //
@@ -18643,7 +18643,7 @@ func (client *Client) DescribeCustomizeReportList(request *DescribeCustomizeRepo
 
 // Summary:
 //
-// Queries the upload result of a custom weak password file.
+// Retrieves the upload results of custom weak passwords.
 //
 // @param request - DescribeCustomizedDictRequest
 //
@@ -18687,7 +18687,7 @@ func (client *Client) DescribeCustomizedDictWithOptions(request *DescribeCustomi
 
 // Summary:
 //
-// Queries the upload result of a custom weak password file.
+// Retrieves the upload results of custom weak passwords.
 //
 // @param request - DescribeCustomizedDictRequest
 //
@@ -21313,7 +21313,7 @@ func (client *Client) DescribeGroupedInstances(request *DescribeGroupedInstances
 
 // Summary:
 //
-// Queries the list of malicious sample files in container images.
+// Queries the list of malicious sample files in images.
 //
 // @param request - DescribeGroupedMaliciousFilesRequest
 //
@@ -21417,7 +21417,7 @@ func (client *Client) DescribeGroupedMaliciousFilesWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the list of malicious sample files in container images.
+// Queries the list of malicious sample files in images.
 //
 // @param request - DescribeGroupedMaliciousFilesRequest
 //
@@ -21755,7 +21755,7 @@ func (client *Client) DescribeHoneyPotAuth(request *DescribeHoneyPotAuthRequest)
 
 // Summary:
 //
-// Queries information about the top 5 VPCs or assets ranked by the number of security alerts.
+// Queries the top 5 VPCs or assets by number of security alerts.
 //
 // @param request - DescribeHoneyPotSuspStatisticsRequest
 //
@@ -21811,7 +21811,7 @@ func (client *Client) DescribeHoneyPotSuspStatisticsWithOptions(request *Describ
 
 // Summary:
 //
-// Queries information about the top 5 VPCs or assets ranked by the number of security alerts.
+// Queries the top 5 VPCs or assets by number of security alerts.
 //
 // @param request - DescribeHoneyPotSuspStatisticsRequest
 //
@@ -21829,7 +21829,7 @@ func (client *Client) DescribeHoneyPotSuspStatistics(request *DescribeHoneyPotSu
 
 // Summary:
 //
-// Queries proxy clusters by using paging.
+// Queries the list of proxy clusters by using paging.
 //
 // @param request - DescribeHybridProxyClusterListRequest
 //
@@ -21881,7 +21881,7 @@ func (client *Client) DescribeHybridProxyClusterListWithOptions(request *Describ
 
 // Summary:
 //
-// Queries proxy clusters by using paging.
+// Queries the list of proxy clusters by using paging.
 //
 // @param request - DescribeHybridProxyClusterListRequest
 //
@@ -22179,7 +22179,7 @@ func (client *Client) DescribeIdcAssetCriteria(request *DescribeIdcAssetCriteria
 
 // Summary:
 //
-// Retrieves the list of IDC probe instances used for asset discovery in the multi-cloud configuration management feature.
+// Queries the list of IDC probes for asset discovery in the multi-cloud configuration management feature.
 //
 // @param request - DescribeIdcProbeListRequest
 //
@@ -22235,7 +22235,7 @@ func (client *Client) DescribeIdcProbeListWithOptions(request *DescribeIdcProbeL
 
 // Summary:
 //
-// Retrieves the list of IDC probe instances used for asset discovery in the multi-cloud configuration management feature.
+// Queries the list of IDC probes for asset discovery in the multi-cloud configuration management feature.
 //
 // @param request - DescribeIdcProbeListRequest
 //
@@ -22413,7 +22413,7 @@ func (client *Client) DescribeImage(request *DescribeImageRequest) (_result *Des
 
 // Summary:
 //
-// Queries the detection results of image security scans.
+// Queries the results of image security scans.
 //
 // @param request - DescribeImageBaselineCheckResultRequest
 //
@@ -22485,7 +22485,7 @@ func (client *Client) DescribeImageBaselineCheckResultWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the detection results of image security scans.
+// Queries the results of image security scans.
 //
 // @param request - DescribeImageBaselineCheckResultRequest
 //
@@ -22991,7 +22991,7 @@ func (client *Client) DescribeImageBuildRiskList(request *DescribeImageBuildRisk
 
 // Summary:
 //
-// Retrieves image search criteria.
+// Retrieves the image search criteria.
 //
 // @param request - DescribeImageCriteriaRequest
 //
@@ -23035,7 +23035,7 @@ func (client *Client) DescribeImageCriteriaWithOptions(request *DescribeImageCri
 
 // Summary:
 //
-// Retrieves image search criteria.
+// Retrieves the image search criteria.
 //
 // @param request - DescribeImageCriteriaRequest
 //
@@ -23782,7 +23782,7 @@ func (client *Client) DescribeImageListByBuildRisk(request *DescribeImageListByB
 
 // Summary:
 //
-// Queries the information about images affected by sensitive files.
+// Queries the details of images affected by sensitive files.
 //
 // @param tmpReq - DescribeImageListBySensitiveFileRequest
 //
@@ -23872,7 +23872,7 @@ func (client *Client) DescribeImageListBySensitiveFileWithOptions(tmpReq *Descri
 
 // Summary:
 //
-// Queries the information about images affected by sensitive files.
+// Queries the details of images affected by sensitive files.
 //
 // @param request - DescribeImageListBySensitiveFileRequest
 //
@@ -24152,7 +24152,7 @@ func (client *Client) DescribeImageRepoDetailList(request *DescribeImageRepoDeta
 
 // Summary:
 //
-// Retrieves statistics information on image defense switch configurations.
+// Retrieves the statistics of image defense switch configurations.
 //
 // @param request - DescribeImageRepoListRequest
 //
@@ -24232,7 +24232,7 @@ func (client *Client) DescribeImageRepoListWithOptions(request *DescribeImageRep
 
 // Summary:
 //
-// Retrieves statistics information on image defense switch configurations.
+// Retrieves the statistics of image defense switch configurations.
 //
 // @param request - DescribeImageRepoListRequest
 //
@@ -24438,7 +24438,7 @@ func (client *Client) DescribeImageSecurityScanCount(request *DescribeImageSecur
 
 // Summary:
 //
-// Queries sensitive files in an image.
+// Queries the sensitive files in an image.
 //
 // @param tmpReq - DescribeImageSensitiveFileByKeyRequest
 //
@@ -24508,7 +24508,7 @@ func (client *Client) DescribeImageSensitiveFileByKeyWithOptions(tmpReq *Describ
 
 // Summary:
 //
-// Queries sensitive files in an image.
+// Queries the sensitive files in an image.
 //
 // @param request - DescribeImageSensitiveFileByKeyRequest
 //
@@ -25066,15 +25066,15 @@ func (client *Client) DescribeInstallCode() (_result *DescribeInstallCodeRespons
 
 // Summary:
 //
-// Queries the list of commands for manually installing the Security Center agent.
+// Queries the list of installation commands for manually installing the Security Center agent.
 //
 // Description:
 //
-// This operation queries the commands for manually installing the Security Center agent on servers. The query results include installation verification codes and server-related information. If you need to manually install the Security Center agent on a server, call this operation to obtain the manual installation commands.
+// This operation queries the installation commands used to manually install the Security Center agent on a server. The query result includes the installation verification code and server-related information. When you need to manually install the Security Center agent on a server, you can call this operation to obtain the manual installation commands.
 //
-// ### Rate limit
+// ### QPS limits
 //
-// The single-user queries per second (QPS) limit for this operation is 10. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Call this operation as needed.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -25103,15 +25103,15 @@ func (client *Client) DescribeInstallCodesWithOptions(runtime *dara.RuntimeOptio
 
 // Summary:
 //
-// Queries the list of commands for manually installing the Security Center agent.
+// Queries the list of installation commands for manually installing the Security Center agent.
 //
 // Description:
 //
-// This operation queries the commands for manually installing the Security Center agent on servers. The query results include installation verification codes and server-related information. If you need to manually install the Security Center agent on a server, call this operation to obtain the manual installation commands.
+// This operation queries the installation commands used to manually install the Security Center agent on a server. The query result includes the installation verification code and server-related information. When you need to manually install the Security Center agent on a server, you can call this operation to obtain the manual installation commands.
 //
-// ### Rate limit
+// ### QPS limits
 //
-// The single-user queries per second (QPS) limit for this operation is 10. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Call this operation as needed.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @return DescribeInstallCodesResponse
 func (client *Client) DescribeInstallCodes() (_result *DescribeInstallCodesResponse, _err error) {
@@ -25341,7 +25341,7 @@ func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatis
 
 // Summary:
 //
-// Queries vulnerability statistics for a cluster.
+// Queries the vulnerability statistics of a cluster.
 //
 // @param request - DescribeInstanceVulStatisticsRequest
 //
@@ -25389,7 +25389,7 @@ func (client *Client) DescribeInstanceVulStatisticsWithOptions(request *Describe
 
 // Summary:
 //
-// Queries vulnerability statistics for a cluster.
+// Queries the vulnerability statistics of a cluster.
 //
 // @param request - DescribeInstanceVulStatisticsRequest
 //
@@ -25452,7 +25452,7 @@ func (client *Client) DescribeLatestScanTask() (_result *DescribeLatestScanTaskR
 
 // Summary:
 //
-// Queries the configuration information of log analysis in Security Center.
+// Queries the log analysis configurations of Security Center.
 //
 // @param request - DescribeLogMetaRequest
 //
@@ -25508,7 +25508,7 @@ func (client *Client) DescribeLogMetaWithOptions(request *DescribeLogMetaRequest
 
 // Summary:
 //
-// Queries the configuration information of log analysis in Security Center.
+// Queries the log analysis configurations of Security Center.
 //
 // @param request - DescribeLogMetaRequest
 //
@@ -27407,7 +27407,7 @@ func (client *Client) DescribePropertyScaItem(request *DescribePropertyScaItemRe
 
 // Summary:
 //
-// Queries the Java processes that are collected by the asset fingerprints feature of Security Center in your assets.
+// Queries the list of Java processes collected by the Asset Fingerprints feature of Security Center for your assets.
 //
 // @param request - DescribePropertyScaProcessDetailRequest
 //
@@ -27475,7 +27475,7 @@ func (client *Client) DescribePropertyScaProcessDetailWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the Java processes that are collected by the asset fingerprints feature of Security Center in your assets.
+// Queries the list of Java processes collected by the Asset Fingerprints feature of Security Center for your assets.
 //
 // @param request - DescribePropertyScaProcessDetailRequest
 //
@@ -28724,11 +28724,11 @@ func (client *Client) DescribeRiskCheckSummary(request *DescribeRiskCheckSummary
 //
 // Summary:
 //
-// Queries the types of all cloud service configuration check items.
+// Queries the types of configuration check items for all cloud services.
 //
 // Description:
 //
-// This operation is offline. Use the upgraded operation ListCheckStandard instead.
+// This operation is deprecated. Use the upgraded operation ListCheckStandard instead.
 //
 // @param request - DescribeRiskItemTypeRequest
 //
@@ -28782,11 +28782,11 @@ func (client *Client) DescribeRiskItemTypeWithOptions(request *DescribeRiskItemT
 //
 // Summary:
 //
-// Queries the types of all cloud service configuration check items.
+// Queries the types of configuration check items for all cloud services.
 //
 // Description:
 //
-// This operation is offline. Use the upgraded operation ListCheckStandard instead.
+// This operation is deprecated. Use the upgraded operation ListCheckStandard instead.
 //
 // @param request - DescribeRiskItemTypeRequest
 //
@@ -29312,7 +29312,7 @@ func (client *Client) DescribeScreenScoreThread(request *DescribeScreenScoreThre
 
 // Summary:
 //
-// Queries the filter conditions that are used to search for assets.
+// Queries the filter conditions for the Security Center asset list.
 //
 // @param request - DescribeSearchConditionRequest
 //
@@ -29364,7 +29364,7 @@ func (client *Client) DescribeSearchConditionWithOptions(request *DescribeSearch
 
 // Summary:
 //
-// Queries the filter conditions that are used to search for assets.
+// Queries the filter conditions for the Security Center asset list.
 //
 // @param request - DescribeSearchConditionRequest
 //
@@ -29543,7 +29543,7 @@ func (client *Client) DescribeSecurityCheckScheduleConfig(request *DescribeSecur
 
 // Summary:
 //
-// Queries the auto-whitelist rules for security alerts.
+// Queries the automatic whitelist rules for alerts.
 //
 // @param request - DescribeSecurityEventMarkMissListRequest
 //
@@ -29607,7 +29607,7 @@ func (client *Client) DescribeSecurityEventMarkMissListWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the auto-whitelist rules for security alerts.
+// Queries the automatic whitelist rules for alerts.
 //
 // @param request - DescribeSecurityEventMarkMissListRequest
 //
@@ -29773,7 +29773,7 @@ func (client *Client) DescribeSecurityEventOperations(request *DescribeSecurityE
 
 // Summary:
 //
-// Queries the statistics of each security check item and the daily statistics in the security check item trend chart.
+// Queries the statistical values of each security check item and the daily statistical values in the trend chart of security check items.
 //
 // @param request - DescribeSecurityStatInfoRequest
 //
@@ -29825,7 +29825,7 @@ func (client *Client) DescribeSecurityStatInfoWithOptions(request *DescribeSecur
 
 // Summary:
 //
-// Queries the statistics of each security check item and the daily statistics in the security check item trend chart.
+// Queries the statistical values of each security check item and the daily statistical values in the trend chart of security check items.
 //
 // @param request - DescribeSecurityStatInfoRequest
 //
@@ -30151,11 +30151,11 @@ func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_res
 
 // Summary:
 //
-// # Query the execution details of a remediation task playbook
+// Retrieves the execution results of the playbook corresponding to a policy in Task Center.
 //
 // Description:
 //
-// This API is only supported by the Enterprise and Flagship editions of Cloud Security Center, other versions do not support it.
+// Only the Enterprise and Ultimate editions of Security Center support this API operation.
 //
 // @param request - DescribeSoarPlaybookTaskDetailRequest
 //
@@ -30207,11 +30207,11 @@ func (client *Client) DescribeSoarPlaybookTaskDetailWithOptions(request *Describ
 
 // Summary:
 //
-// # Query the execution details of a remediation task playbook
+// Retrieves the execution results of the playbook corresponding to a policy in Task Center.
 //
 // Description:
 //
-// This API is only supported by the Enterprise and Flagship editions of Cloud Security Center, other versions do not support it.
+// Only the Enterprise and Ultimate editions of Security Center support this API operation.
 //
 // @param request - DescribeSoarPlaybookTaskDetailRequest
 //
@@ -30447,11 +30447,11 @@ func (client *Client) DescribeSoarStrategyTaskDetail(request *DescribeSoarStrate
 
 // Summary:
 //
-// Queries the parameters of a policy task in the task center.
+// Queries the parameters of a policy task in the Task Center.
 //
 // Description:
 //
-// Only the Enterprise and Ultimate editions of Security Center support this API operation. Other editions do not support this operation.
+// This API operation is supported only by the Enterprise and Ultimate editions of Security Center.
 //
 // @param request - DescribeSoarStrategyTaskParamsRequest
 //
@@ -30491,11 +30491,11 @@ func (client *Client) DescribeSoarStrategyTaskParamsWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the parameters of a policy task in the task center.
+// Queries the parameters of a policy task in the Task Center.
 //
 // Description:
 //
-// Only the Enterprise and Ultimate editions of Security Center support this API operation. Other editions do not support this operation.
+// This API operation is supported only by the Enterprise and Ultimate editions of Security Center.
 //
 // @param request - DescribeSoarStrategyTaskParamsRequest
 //
@@ -31015,7 +31015,7 @@ func (client *Client) DescribeStrategyTarget(request *DescribeStrategyTargetRequ
 
 // Summary:
 //
-// # Strict mode supports alarm queries
+// Queries the names of all alerts that support strict mode.
 //
 // @param request - DescribeStrictEventNameRequest
 //
@@ -31055,7 +31055,7 @@ func (client *Client) DescribeStrictEventNameWithOptions(request *DescribeStrict
 
 // Summary:
 //
-// # Strict mode supports alarm queries
+// Queries the names of all alerts that support strict mode.
 //
 // @param request - DescribeStrictEventNameRequest
 //
@@ -31139,7 +31139,7 @@ func (client *Client) DescribeSummaryInfo(request *DescribeSummaryInfoRequest) (
 
 // Summary:
 //
-// Queries the latest system vulnerability discovery time.
+// Queries the discovery time of the latest system vulnerability.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -31168,7 +31168,7 @@ func (client *Client) DescribeSupervisonInfoWithOptions(runtime *dara.RuntimeOpt
 
 // Summary:
 //
-// Queries the latest system vulnerability discovery time.
+// Queries the discovery time of the latest system vulnerability.
 //
 // @return DescribeSupervisonInfoResponse
 func (client *Client) DescribeSupervisonInfo() (_result *DescribeSupervisonInfoResponse, _err error) {
@@ -31809,7 +31809,7 @@ func (client *Client) DescribeSuspiciousOverallConfig(request *DescribeSuspiciou
 
 // Summary:
 //
-// # Query Alarm Security Event Statistics
+// Queries the statistics on security alert events.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -31838,7 +31838,7 @@ func (client *Client) DescribeSuspiciousSecurityEventyStatisticsWithOptions(runt
 
 // Summary:
 //
-// # Query Alarm Security Event Statistics
+// Queries the statistics on security alert events.
 //
 // @return DescribeSuspiciousSecurityEventyStatisticsResponse
 func (client *Client) DescribeSuspiciousSecurityEventyStatistics() (_result *DescribeSuspiciousSecurityEventyStatisticsResponse, _err error) {
@@ -32076,7 +32076,7 @@ func (client *Client) DescribeSyncAssetTaskLogDetail(request *DescribeSyncAssetT
 
 // Summary:
 //
-// Queries the machine list settings for vulnerability scanning.
+// Queries the machine list settings for enabled vulnerability scanning.
 //
 // @param request - DescribeTargetRequest
 //
@@ -32124,7 +32124,7 @@ func (client *Client) DescribeTargetWithOptions(request *DescribeTargetRequest, 
 
 // Summary:
 //
-// Queries the machine list settings for vulnerability scanning.
+// Queries the machine list settings for enabled vulnerability scanning.
 //
 // @param request - DescribeTargetRequest
 //
@@ -32828,7 +32828,7 @@ func (client *Client) DescribeUniSupportRegion() (_result *DescribeUniSupportReg
 
 // Summary:
 //
-// Queries servers that have anti-ransomware backup policies enabled.
+// Queries the servers that have the anti-ransomware backup policy enabled.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -32857,7 +32857,7 @@ func (client *Client) DescribeUserBackupMachinesWithOptions(runtime *dara.Runtim
 
 // Summary:
 //
-// Queries servers that have anti-ransomware backup policies enabled.
+// Queries the servers that have the anti-ransomware backup policy enabled.
 //
 // @return DescribeUserBackupMachinesResponse
 func (client *Client) DescribeUserBackupMachines() (_result *DescribeUserBackupMachinesResponse, _err error) {
@@ -34235,7 +34235,7 @@ func (client *Client) DescribeVulMetaCountStatistics() (_result *DescribeVulMeta
 
 // Summary:
 //
-// Get vulnerability statistics.
+// Retrieves vulnerability statistics information.
 //
 // @param request - DescribeVulNumStatisticsRequest
 //
@@ -34283,7 +34283,7 @@ func (client *Client) DescribeVulNumStatisticsWithOptions(request *DescribeVulNu
 
 // Summary:
 //
-// Get vulnerability statistics.
+// Retrieves vulnerability statistics information.
 //
 // @param request - DescribeVulNumStatisticsRequest
 //
@@ -34679,7 +34679,7 @@ func (client *Client) DescribeWarningMachines(request *DescribeWarningMachinesRe
 
 // Summary:
 //
-// Retrieves the list of servers that have web tamper-proofing protection enabled.
+// Queries the list of servers protected by web tamper-proofing.
 //
 // @param request - DescribeWebLockBindListRequest
 //
@@ -34747,7 +34747,7 @@ func (client *Client) DescribeWebLockBindListWithOptions(request *DescribeWebLoc
 
 // Summary:
 //
-// Retrieves the list of servers that have web tamper-proofing protection enabled.
+// Queries the list of servers protected by web tamper-proofing.
 //
 // @param request - DescribeWebLockBindListRequest
 //
@@ -35036,7 +35036,7 @@ func (client *Client) DescribeWebLockFileEvents(request *DescribeWebLockFileEven
 
 // Summary:
 //
-// Queries the WebLock file type summary.
+// Queries the summary of WebLock file types.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -35065,7 +35065,7 @@ func (client *Client) DescribeWebLockFileTypeSummaryWithOptions(runtime *dara.Ru
 
 // Summary:
 //
-// Queries the WebLock file type summary.
+// Queries the summary of WebLock file types.
 //
 // @return DescribeWebLockFileTypeSummaryResponse
 func (client *Client) DescribeWebLockFileTypeSummary() (_result *DescribeWebLockFileTypeSummaryResponse, _err error) {
@@ -36505,11 +36505,11 @@ func (client *Client) EnableCustomInstanceBlockRecord(request *EnableCustomInsta
 
 // Summary:
 //
-// Enables the multi-account management feature of Security Center.
+// Enables the multi-account security management feature of Security Center.
 //
 // Description:
 //
-// Call this operation by using the management account of the resource directory or a delegated administrator account of Security Center.
+// You must use the management account of a resource directory or the delegated administrator account of Security Center to call this operation.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -36538,11 +36538,11 @@ func (client *Client) EnableServiceAccessResourceDirectoryWithOptions(runtime *d
 
 // Summary:
 //
-// Enables the multi-account management feature of Security Center.
+// Enables the multi-account security management feature of Security Center.
 //
 // Description:
 //
-// Call this operation by using the management account of the resource directory or a delegated administrator account of Security Center.
+// You must use the management account of a resource directory or the delegated administrator account of Security Center to call this operation.
 //
 // @return EnableServiceAccessResourceDirectoryResponse
 func (client *Client) EnableServiceAccessResourceDirectory() (_result *EnableServiceAccessResourceDirectoryResponse, _err error) {
@@ -36558,7 +36558,7 @@ func (client *Client) EnableServiceAccessResourceDirectory() (_result *EnableSer
 
 // Summary:
 //
-// Performs a baseline check on machines within a specified policy.
+// Executes a specified policy to scan the servers within the policy for check items.
 //
 // @param request - ExecStrategyRequest
 //
@@ -36610,7 +36610,7 @@ func (client *Client) ExecStrategyWithOptions(request *ExecStrategyRequest, runt
 
 // Summary:
 //
-// Performs a baseline check on machines within a specified policy.
+// Executes a specified policy to scan the servers within the policy for check items.
 //
 // @param request - ExecStrategyRequest
 //
@@ -36698,7 +36698,7 @@ func (client *Client) ExportCustomizeReport(request *ExportCustomizeReportReques
 
 // Summary:
 //
-// Exports the detection results of the Asset Center, cloud platform configuration check, image security scan, attack analysis, AccessKey leak detection, and baseline check to an Excel file.
+// Exports the detection results of the Asset Center, cloud platform configuration assessment, image security scanning, attack analysis, AccessKey leak detection, and baseline checks to an Excel file.
 //
 // Description:
 //
@@ -36762,7 +36762,7 @@ func (client *Client) ExportRecordWithOptions(request *ExportRecordRequest, runt
 
 // Summary:
 //
-// Exports the detection results of the Asset Center, cloud platform configuration check, image security scan, attack analysis, AccessKey leak detection, and baseline check to an Excel file.
+// Exports the detection results of the Asset Center, cloud platform configuration assessment, image security scanning, attack analysis, AccessKey leak detection, and baseline checks to an Excel file.
 //
 // Description:
 //
@@ -36938,17 +36938,17 @@ func (client *Client) ExportSuspEvents(request *ExportSuspEventsRequest) (_resul
 
 // Summary:
 //
-// Exports a vulnerability list.
+// Exports the vulnerability list.
 //
 // Description:
 //
-// Exports a vulnerability list. You can export vulnerability lists for Linux software vulnerabilities, Windows system vulnerabilities, Web-CMS vulnerabilities, application vulnerabilities, and emergency vulnerabilities.
+// This operation exports vulnerability lists. You can use it to export lists of Linux software vulnerabilities, Windows system vulnerabilities, Web-CMS vulnerabilities, application vulnerabilities, and emergency vulnerabilities.
 //
-// This operation is used together with the DescribeVulExportInfo operation. After you call this operation to create a vulnerability export task, call the [DescribeVulExportInfo](~~DescribeVulExportInfo~~) operation with the export task ID to check the progress of the export task.
+// This operation is used together with the DescribeVulExportInfo operation. After you use this operation to create a vulnerability export task, you can call the DescribeVulExportInfo operation and specify the ID of the vulnerability export task to view the progress of the export task.
 //
 // ### QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Manage your calls appropriately.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - ExportVulRequest
 //
@@ -37068,17 +37068,17 @@ func (client *Client) ExportVulWithOptions(request *ExportVulRequest, runtime *d
 
 // Summary:
 //
-// Exports a vulnerability list.
+// Exports the vulnerability list.
 //
 // Description:
 //
-// Exports a vulnerability list. You can export vulnerability lists for Linux software vulnerabilities, Windows system vulnerabilities, Web-CMS vulnerabilities, application vulnerabilities, and emergency vulnerabilities.
+// This operation exports vulnerability lists. You can use it to export lists of Linux software vulnerabilities, Windows system vulnerabilities, Web-CMS vulnerabilities, application vulnerabilities, and emergency vulnerabilities.
 //
-// This operation is used together with the DescribeVulExportInfo operation. After you call this operation to create a vulnerability export task, call the [DescribeVulExportInfo](~~DescribeVulExportInfo~~) operation with the export task ID to check the progress of the export task.
+// This operation is used together with the DescribeVulExportInfo operation. After you use this operation to create a vulnerability export task, you can call the DescribeVulExportInfo operation and specify the ID of the vulnerability export task to view the progress of the export task.
 //
 // ### QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Manage your calls appropriately.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - ExportVulRequest
 //
@@ -37098,11 +37098,11 @@ func (client *Client) ExportVul(request *ExportVulRequest) (_result *ExportVulRe
 //
 // Summary:
 //
-// Exports the list of baseline check results. This operation is deprecated.
+// *[Deprecated]*	- This operation is deprecated. Use ExportRecord instead.
 //
 // Description:
 //
-// Exports the list of baseline check results. This operation is deprecated. Use [ExportRecord](~~ExportRecord~~) instead.
+// *[Deprecated]*	- Exports the list of baseline check results. This operation is deprecated. Use [ExportRecord](~~ExportRecord~~) instead.
 //
 // @param request - ExportWarningRequest
 //
@@ -37208,11 +37208,11 @@ func (client *Client) ExportWarningWithOptions(request *ExportWarningRequest, ru
 //
 // Summary:
 //
-// Exports the list of baseline check results. This operation is deprecated.
+// *[Deprecated]*	- This operation is deprecated. Use ExportRecord instead.
 //
 // Description:
 //
-// Exports the list of baseline check results. This operation is deprecated. Use [ExportRecord](~~ExportRecord~~) instead.
+// *[Deprecated]*	- Exports the list of baseline check results. This operation is deprecated. Use [ExportRecord](~~ExportRecord~~) instead.
 //
 // @param request - ExportWarningRequest
 //
@@ -38859,7 +38859,7 @@ func (client *Client) GetAttackPathEventDetail(request *GetAttackPathEventDetail
 
 // Summary:
 //
-// Queries attack path event statistics.
+// Queries the statistics of attack path events.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -38888,7 +38888,7 @@ func (client *Client) GetAttackPathEventStatisticsWithOptions(runtime *dara.Runt
 
 // Summary:
 //
-// Queries attack path event statistics.
+// Queries the statistics of attack path events.
 //
 // @return GetAttackPathEventStatisticsResponse
 func (client *Client) GetAttackPathEventStatistics() (_result *GetAttackPathEventStatisticsResponse, _err error) {
@@ -40637,7 +40637,7 @@ func (client *Client) GetClusterRuleSummary(request *GetClusterRuleSummaryReques
 
 // Summary:
 //
-// Queries the scan access configuration of a Kubernetes cluster.
+// Queries the scan integration configuration for a Kubernetes cluster.
 //
 // @param request - GetClusterScannerYamlRequest
 //
@@ -40681,7 +40681,7 @@ func (client *Client) GetClusterScannerYamlWithOptions(request *GetClusterScanne
 
 // Summary:
 //
-// Queries the scan access configuration of a Kubernetes cluster.
+// Queries the scan integration configuration for a Kubernetes cluster.
 //
 // @param request - GetClusterScannerYamlRequest
 //
@@ -40872,7 +40872,7 @@ func (client *Client) GetCommonSwitchConfig(request *GetCommonSwitchConfigReques
 
 // Summary:
 //
-// Query whether the core function\\"s gray switch is hit
+// Retrieves the grayscale status of console feature modules.
 //
 // @param request - GetConsoleFuncGrayStatusRequest
 //
@@ -40920,7 +40920,7 @@ func (client *Client) GetConsoleFuncGrayStatusWithOptions(request *GetConsoleFun
 
 // Summary:
 //
-// Query whether the core function\\"s gray switch is hit
+// Retrieves the grayscale status of console feature modules.
 //
 // @param request - GetConsoleFuncGrayStatusRequest
 //
@@ -40938,7 +40938,7 @@ func (client *Client) GetConsoleFuncGrayStatus(request *GetConsoleFuncGrayStatus
 
 // Summary:
 //
-// Retrieves the details of a non-image program defense rule.
+// Retrieves the details of a defense rule for non-image programs.
 //
 // @param request - GetContainerDefenseRuleDetailRequest
 //
@@ -40986,7 +40986,7 @@ func (client *Client) GetContainerDefenseRuleDetailWithOptions(request *GetConta
 
 // Summary:
 //
-// Retrieves the details of a non-image program defense rule.
+// Retrieves the details of a defense rule for non-image programs.
 //
 // @param request - GetContainerDefenseRuleDetailRequest
 //
@@ -41172,7 +41172,7 @@ func (client *Client) GetDefenceCount() (_result *GetDefenceCountResponse, _err 
 
 // Summary:
 //
-// Queries the rankings of images by various dimensions.
+// Queries the rankings of images across different dimensions.
 //
 // @param request - GetDockerhubImageRiskRankInfoRequest
 //
@@ -41216,7 +41216,7 @@ func (client *Client) GetDockerhubImageRiskRankInfoWithOptions(request *GetDocke
 
 // Summary:
 //
-// Queries the rankings of images by various dimensions.
+// Queries the rankings of images across different dimensions.
 //
 // @param request - GetDockerhubImageRiskRankInfoRequest
 //
@@ -41296,7 +41296,7 @@ func (client *Client) GetDockerhubImageRiskStatistic(request *GetDockerhubImageR
 
 // Summary:
 //
-// Obtains the usage information of the malicious file detection SDK.
+// Retrieves the usage information of the malicious file detection SDK.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -41325,7 +41325,7 @@ func (client *Client) GetFileDetectApiInvokeInfoWithOptions(runtime *dara.Runtim
 
 // Summary:
 //
-// Obtains the usage information of the malicious file detection SDK.
+// Retrieves the usage information of the malicious file detection SDK.
 //
 // @return GetFileDetectApiInvokeInfoResponse
 func (client *Client) GetFileDetectApiInvokeInfo() (_result *GetFileDetectApiInvokeInfoResponse, _err error) {
@@ -42058,7 +42058,7 @@ func (client *Client) GetFileUploadLimit() (_result *GetFileUploadLimitResponse,
 
 // Summary:
 //
-// # Get Trial Status
+// Retrieves the trial eligibility status of a feature.
 //
 // @param request - GetFunctionTrialStatusRequest
 //
@@ -42102,7 +42102,7 @@ func (client *Client) GetFunctionTrialStatusWithOptions(request *GetFunctionTria
 
 // Summary:
 //
-// # Get Trial Status
+// Retrieves the trial eligibility status of a feature.
 //
 // @param request - GetFunctionTrialStatusRequest
 //
@@ -42182,7 +42182,7 @@ func (client *Client) GetHoneyPotUploadPolicyInfo(request *GetHoneyPotUploadPoli
 
 // Summary:
 //
-// Queries the attack event statistics information of a honeypot attack source.
+// Retrieves the statistics on attack events from honeypot attack sources.
 //
 // @param request - GetHoneypotAttackStatisticsRequest
 //
@@ -42254,7 +42254,7 @@ func (client *Client) GetHoneypotAttackStatisticsWithOptions(request *GetHoneypo
 
 // Summary:
 //
-// Queries the attack event statistics information of a honeypot attack source.
+// Retrieves the statistics on attack events from honeypot attack sources.
 //
 // @param request - GetHoneypotAttackStatisticsRequest
 //
@@ -42646,7 +42646,7 @@ func (client *Client) GetHoneypotProbe(request *GetHoneypotProbeRequest) (_resul
 
 // Summary:
 //
-// Get statistics on honey pot usage.
+// Retrieves the statistics on honeypot usage.
 //
 // @param request - GetHoneypotStatisticsRequest
 //
@@ -42690,7 +42690,7 @@ func (client *Client) GetHoneypotStatisticsWithOptions(request *GetHoneypotStati
 
 // Summary:
 //
-// Get statistics on honey pot usage.
+// Retrieves the statistics on honeypot usage.
 //
 // @param request - GetHoneypotStatisticsRequest
 //
@@ -43533,7 +43533,7 @@ func (client *Client) GetModuleConfig(request *GetModuleConfigRequest) (_result 
 
 // Summary:
 //
-// Checks whether the purchased Security Center features are enabled and whether related configurations take effect.
+// Queries whether the features of the purchased Security Center modules are enabled or configured.
 //
 // @param tmpReq - GetModuleConfigStatusRequest
 //
@@ -43583,7 +43583,7 @@ func (client *Client) GetModuleConfigStatusWithOptions(tmpReq *GetModuleConfigSt
 
 // Summary:
 //
-// Checks whether the purchased Security Center features are enabled and whether related configurations take effect.
+// Queries whether the features of the purchased Security Center modules are enabled or configured.
 //
 // @param request - GetModuleConfigStatusRequest
 //
@@ -44070,7 +44070,7 @@ func (client *Client) GetOpaClusterNamespaceList(request *GetOpaClusterNamespace
 
 // Summary:
 //
-// Queries the installation status of the components that are required for clusters protected by proactive defense for containers.
+// Queries the installation status of the container proactive defense component.
 //
 // @param request - GetOpaPluginStatusRequest
 //
@@ -44114,7 +44114,7 @@ func (client *Client) GetOpaPluginStatusWithOptions(request *GetOpaPluginStatusR
 
 // Summary:
 //
-// Queries the installation status of the components that are required for clusters protected by proactive defense for containers.
+// Queries the installation status of the container proactive defense component.
 //
 // @param request - GetOpaPluginStatusRequest
 //
@@ -44132,7 +44132,7 @@ func (client *Client) GetOpaPluginStatus(request *GetOpaPluginStatusRequest) (_r
 
 // Summary:
 //
-// Queries the details of a risky image blocking policy.
+// Retrieves the details of a risky image blocking policy.
 //
 // @param request - GetOpaStrategyDetailNewRequest
 //
@@ -44176,7 +44176,7 @@ func (client *Client) GetOpaStrategyDetailNewWithOptions(request *GetOpaStrategy
 
 // Summary:
 //
-// Queries the details of a risky image blocking policy.
+// Retrieves the details of a risky image blocking policy.
 //
 // @param request - GetOpaStrategyDetailNewRequest
 //
@@ -46191,11 +46191,11 @@ func (client *Client) HandleSecurityEvents(request *HandleSecurityEventsRequest)
 
 // Summary:
 //
-// Batch processes malicious sample alerts.
+// Processes malicious sample alerts in batches.
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - HandleSimilarMaliciousFilesRequest
 //
@@ -46255,11 +46255,11 @@ func (client *Client) HandleSimilarMaliciousFilesWithOptions(request *HandleSimi
 
 // Summary:
 //
-// Batch processes malicious sample alerts.
+// Processes malicious sample alerts in batches.
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - HandleSimilarMaliciousFilesRequest
 //
@@ -46830,11 +46830,11 @@ func (client *Client) InstallBackupClient(request *InstallBackupClientRequest) (
 
 // Summary:
 //
-// Installs the CloudMonitor agent on a specified server.
+// Installs the CloudMonitor agent on specified servers.
 //
 // Description:
 //
-// > Before installation, make sure that the Security Center client on your server is online and that your server can access Alibaba Cloud services over the network.
+// > Before installation, ensure that the Security Center agent on your server is online and that your server has Normal access to Alibaba Cloud services.
 //
 // @param request - InstallCloudMonitorRequest
 //
@@ -46894,11 +46894,11 @@ func (client *Client) InstallCloudMonitorWithOptions(request *InstallCloudMonito
 
 // Summary:
 //
-// Installs the CloudMonitor agent on a specified server.
+// Installs the CloudMonitor agent on specified servers.
 //
 // Description:
 //
-// > Before installation, make sure that the Security Center client on your server is online and that your server can access Alibaba Cloud services over the network.
+// > Before installation, ensure that the Security Center agent on your server is online and that your server has Normal access to Alibaba Cloud services.
 //
 // @param request - InstallCloudMonitorRequest
 //
@@ -47753,6 +47753,10 @@ func (client *Client) ListAgentlessRiskUuidWithOptions(request *ListAgentlessRis
 		query["IntranetIp"] = request.IntranetIp
 	}
 
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
 	if !dara.IsNil(request.MachineName) {
 		query["MachineName"] = request.MachineName
 	}
@@ -48355,7 +48359,7 @@ func (client *Client) ListAttackEventInfo(request *ListAttackEventInfoRequest) (
 
 // Summary:
 //
-// Queries the list of attack path events.
+// Queries the attack path events.
 //
 // @param request - ListAttackPathEventRequest
 //
@@ -48431,7 +48435,7 @@ func (client *Client) ListAttackPathEventWithOptions(request *ListAttackPathEven
 
 // Summary:
 //
-// Queries the list of attack path events.
+// Queries the attack path events.
 //
 // @param request - ListAttackPathEventRequest
 //
@@ -48449,7 +48453,7 @@ func (client *Client) ListAttackPathEvent(request *ListAttackPathEventRequest) (
 
 // Summary:
 //
-// Queries the attack path whitelist.
+// Queries the attack path whitelists.
 //
 // @param request - ListAttackPathWhitelistRequest
 //
@@ -48513,7 +48517,7 @@ func (client *Client) ListAttackPathWhitelistWithOptions(request *ListAttackPath
 
 // Summary:
 //
-// Queries the attack path whitelist.
+// Queries the attack path whitelists.
 //
 // @param request - ListAttackPathWhitelistRequest
 //
@@ -48725,7 +48729,7 @@ func (client *Client) ListAvailableHoneypot(request *ListAvailableHoneypotReques
 
 // Summary:
 //
-// Queries a list of backup records.
+// Queries the backup records.
 //
 // @param request - ListBackupRecordRequest
 //
@@ -48789,7 +48793,7 @@ func (client *Client) ListBackupRecordWithOptions(request *ListBackupRecordReque
 
 // Summary:
 //
-// Queries a list of backup records.
+// Queries the backup records.
 //
 // @param request - ListBackupRecordRequest
 //
@@ -49075,7 +49079,7 @@ func (client *Client) ListCheckItem(request *ListCheckItemRequest) (_result *Lis
 
 // Summary:
 //
-// Query the list of warning machines for a specific baseline check item.
+// Queries the list of servers affected by baseline check item risks.
 //
 // @param request - ListCheckItemWarningMachineRequest
 //
@@ -49167,7 +49171,7 @@ func (client *Client) ListCheckItemWarningMachineWithOptions(request *ListCheckI
 
 // Summary:
 //
-// Query the list of warning machines for a specific baseline check item.
+// Queries the list of servers affected by baseline check item risks.
 //
 // @param request - ListCheckItemWarningMachineRequest
 //
@@ -49677,7 +49681,7 @@ func (client *Client) ListCheckRuleInstance(request *ListCheckRuleInstanceReques
 
 // Summary:
 //
-// Queries the standards of configuration checks.
+// Retrieves the list of standards for cloud platform configuration checks.
 //
 // @param request - ListCheckStandardRequest
 //
@@ -49741,7 +49745,7 @@ func (client *Client) ListCheckStandardWithOptions(request *ListCheckStandardReq
 
 // Summary:
 //
-// Queries the standards of configuration checks.
+// Retrieves the list of standards for cloud platform configuration checks.
 //
 // @param request - ListCheckStandardRequest
 //
@@ -50334,7 +50338,7 @@ func (client *Client) ListCloudVendorRegions(request *ListCloudVendorRegionsRequ
 
 // Summary:
 //
-// # Query Cluster Check Item Scan Results
+// Queries the details of risk items in cluster configuration check results.
 //
 // @param request - ListClusterCheckResultRequest
 //
@@ -50406,7 +50410,7 @@ func (client *Client) ListClusterCheckResultWithOptions(request *ListClusterChec
 
 // Summary:
 //
-// # Query Cluster Check Item Scan Results
+// Queries the details of risk items in cluster configuration check results.
 //
 // @param request - ListClusterCheckResultRequest
 //
@@ -50760,7 +50764,7 @@ func (client *Client) ListCompressFileDetectResult(request *ListCompressFileDete
 
 // Summary:
 //
-// Retrieves the list of defense rules for non-image programs.
+// Queries a list of non-image program defense rules.
 //
 // @param request - ListContainerDefenseRuleRequest
 //
@@ -50824,7 +50828,7 @@ func (client *Client) ListContainerDefenseRuleWithOptions(request *ListContainer
 
 // Summary:
 //
-// Retrieves the list of defense rules for non-image programs.
+// Queries a list of non-image program defense rules.
 //
 // @param request - ListContainerDefenseRuleRequest
 //
@@ -51542,7 +51546,7 @@ func (client *Client) ListFileProtectRule(request *ListFileProtectRuleRequest) (
 
 // Summary:
 //
-// Retrieves the list of server groups for the current user.
+// Retrieves the list of server groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -51602,7 +51606,7 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 
 // Summary:
 //
-// Retrieves the list of server groups for the current user.
+// Retrieves the list of server groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -51842,7 +51846,7 @@ func (client *Client) ListHoneypotAttackerPortrait(request *ListHoneypotAttacker
 
 // Summary:
 //
-// Queries the attack source IP addresses that are used to attack a honeypot.
+// Retrieves a list of attack sources that launched attacks on honeypots.
 //
 // @param request - ListHoneypotAttackerSourceRequest
 //
@@ -51910,7 +51914,7 @@ func (client *Client) ListHoneypotAttackerSourceWithOptions(request *ListHoneypo
 
 // Summary:
 //
-// Queries the attack source IP addresses that are used to attack a honeypot.
+// Retrieves a list of attack sources that launched attacks on honeypots.
 //
 // @param request - ListHoneypotAttackerSourceRequest
 //
@@ -52442,7 +52446,7 @@ func (client *Client) ListImageBuildRiskItem(request *ListImageBuildRiskItemRequ
 
 // Summary:
 //
-// Queries the extra configuration information of an image repository.
+// Queries the additional configuration information of an image registry.
 //
 // @param request - ListImageRegistryExtraRequest
 //
@@ -52486,7 +52490,7 @@ func (client *Client) ListImageRegistryExtraWithOptions(request *ListImageRegist
 
 // Summary:
 //
-// Queries the extra configuration information of an image repository.
+// Queries the additional configuration information of an image registry.
 //
 // @param request - ListImageRegistryExtraRequest
 //
@@ -52648,7 +52652,7 @@ func (client *Client) ListImageRisk(request *ListImageRiskRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the asset types and asset subtypes for configuration assessment.
+// Queries the assets and sub-assets for cloud platform configuration checks.
 //
 // @param request - ListInstanceCatalogRequest
 //
@@ -52716,7 +52720,7 @@ func (client *Client) ListInstanceCatalogWithOptions(request *ListInstanceCatalo
 
 // Summary:
 //
-// Queries the asset types and asset subtypes for configuration assessment.
+// Queries the assets and sub-assets for cloud platform configuration checks.
 //
 // @param request - ListInstanceCatalogRequest
 //
@@ -52796,7 +52800,7 @@ func (client *Client) ListInstanceRiskLevels(request *ListInstanceRiskLevelsRequ
 
 // Summary:
 //
-// Queries the statistics about risks in instances.
+// Retrieves the number of security issues for instances.
 //
 // @param request - ListInstanceRiskNumRequest
 //
@@ -52840,7 +52844,7 @@ func (client *Client) ListInstanceRiskNumWithOptions(request *ListInstanceRiskNu
 
 // Summary:
 //
-// Queries the statistics about risks in instances.
+// Retrieves the number of security issues for instances.
 //
 // @param request - ListInstanceRiskNumRequest
 //
@@ -53325,7 +53329,7 @@ func (client *Client) ListLogShipperRegions() (_result *ListLogShipperRegionsRes
 
 // Summary:
 //
-// Queries the Serverless Application Engine (SAE) applications of a serverless instance.
+// Queries the SAE applications of a serverless instance.
 //
 // @param request - ListMachineAppsRequest
 //
@@ -53397,7 +53401,7 @@ func (client *Client) ListMachineAppsWithOptions(request *ListMachineAppsRequest
 
 // Summary:
 //
-// Queries the Serverless Application Engine (SAE) applications of a serverless instance.
+// Queries the SAE applications of a serverless instance.
 //
 // @param request - ListMachineAppsRequest
 //
@@ -55018,7 +55022,7 @@ func (client *Client) ListSupportObjectSuffix() (_result *ListSupportObjectSuffi
 
 // Summary:
 //
-// Retrieves the details of system rule clusters.
+// Queries the details of system rule aggregations.
 //
 // @param request - ListSystemAggregationRulesRequest
 //
@@ -55058,7 +55062,7 @@ func (client *Client) ListSystemAggregationRulesWithOptions(request *ListSystemA
 
 // Summary:
 //
-// Retrieves the details of system rule clusters.
+// Queries the details of system rule aggregations.
 //
 // @param request - ListSystemAggregationRulesRequest
 //
@@ -55211,7 +55215,7 @@ func (client *Client) ListSystemClientRules(request *ListSystemClientRulesReques
 
 // Summary:
 //
-// Queries the aggregation types of system defense rules.
+// Queries the clustering types of system defense rules.
 //
 // @param request - ListSystemRuleAggregationTypesRequest
 //
@@ -55251,7 +55255,7 @@ func (client *Client) ListSystemRuleAggregationTypesWithOptions(request *ListSys
 
 // Summary:
 //
-// Queries the aggregation types of system defense rules.
+// Queries the clustering types of system defense rules.
 //
 // @param request - ListSystemRuleAggregationTypesRequest
 //
@@ -55953,7 +55957,7 @@ func (client *Client) ListUnknownThreatDetectStrategy(request *ListUnknownThreat
 
 // Summary:
 //
-// Retrieves VPC data for the user in a specified region by using the third-party image repository integration feature of Container Asset in Security Center.
+// Retrieves the VPC data of users in a specified region by using the container assets and third-party image repository access features of Security Center.
 //
 // @param request - ListUserVpcRequest
 //
@@ -55997,7 +56001,7 @@ func (client *Client) ListUserVpcWithOptions(request *ListUserVpcRequest, runtim
 
 // Summary:
 //
-// Retrieves VPC data for the user in a specified region by using the third-party image repository integration feature of Container Asset in Security Center.
+// Retrieves the VPC data of users in a specified region by using the container assets and third-party image repository access features of Security Center.
 //
 // @param request - ListUserVpcRequest
 //
@@ -56015,7 +56019,7 @@ func (client *Client) ListUserVpc(request *ListUserVpcRequest) (_result *ListUse
 
 // Summary:
 //
-// Queries the UUIDs of Serverless instances by application ID.
+// Queries the UUIDs of Serverless instances based on the application ID.
 //
 // @param request - ListUuidsByAppIdRequest
 //
@@ -56079,7 +56083,7 @@ func (client *Client) ListUuidsByAppIdWithOptions(request *ListUuidsByAppIdReque
 
 // Summary:
 //
-// Queries the UUIDs of Serverless instances by application ID.
+// Queries the UUIDs of Serverless instances based on the application ID.
 //
 // @param request - ListUuidsByAppIdRequest
 //
@@ -56323,7 +56327,7 @@ func (client *Client) ListVirusScanMachineEvent(request *ListVirusScanMachineEve
 
 // Summary:
 //
-// Queries virus scan tasks that match specified conditions such as scan type, scan status, and scanned machine information.
+// Queries virus scan tasks that meet the specified conditions based on the scan type, scan status, and machine information.
 //
 // @param request - ListVirusScanTaskRequest
 //
@@ -56419,7 +56423,7 @@ func (client *Client) ListVirusScanTaskWithOptions(request *ListVirusScanTaskReq
 
 // Summary:
 //
-// Queries virus scan tasks that match specified conditions such as scan type, scan status, and scanned machine information.
+// Queries virus scan tasks that meet the specified conditions based on the scan type, scan status, and machine information.
 //
 // @param request - ListVirusScanTaskRequest
 //
@@ -57583,11 +57587,11 @@ func (client *Client) ModifyCheckRule(request *ModifyCheckRuleRequest) (_result 
 
 // Summary:
 //
-// Clears the storage capacity space for log analysis.
+// Clears the storage capacity for log analysis.
 //
 // Description:
 //
-// Cleared logs cannot be recovered. Before calling this operation, perform a log export and save the logs to a local device, and then call this operation to clear the logs and free up storage capacity space.
+// Logs cannot be recovered after they are cleared. Perform log export and store the logs locally before you call this operation to clear the logs and release storage capacity.
 //
 // @param request - ModifyClearLogstoreStorageRequest
 //
@@ -57643,11 +57647,11 @@ func (client *Client) ModifyClearLogstoreStorageWithOptions(request *ModifyClear
 
 // Summary:
 //
-// Clears the storage capacity space for log analysis.
+// Clears the storage capacity for log analysis.
 //
 // Description:
 //
-// Cleared logs cannot be recovered. Before calling this operation, perform a log export and save the logs to a local device, and then call this operation to clear the logs and free up storage capacity space.
+// Logs cannot be recovered after they are cleared. Perform log export and store the logs locally before you call this operation to clear the logs and release storage capacity.
 //
 // @param request - ModifyClearLogstoreStorageRequest
 //
@@ -59981,7 +59985,7 @@ func (client *Client) ModifyLoginSwitchConfig(request *ModifyLoginSwitchConfigRe
 
 // Summary:
 //
-// Modifies notification configuration information.
+// Modifies the notification configuration.
 //
 // @param request - ModifyNoticeConfigRequest
 //
@@ -60053,7 +60057,7 @@ func (client *Client) ModifyNoticeConfigWithOptions(request *ModifyNoticeConfigR
 
 // Summary:
 //
-// Modifies notification configuration information.
+// Modifies the notification configuration.
 //
 // @param request - ModifyNoticeConfigRequest
 //
@@ -60071,7 +60075,7 @@ func (client *Client) ModifyNoticeConfig(request *ModifyNoticeConfigRequest) (_r
 
 // Summary:
 //
-// Activates Simple Log Service.
+// Enables Simple Log Service.
 //
 // Description:
 //
@@ -60079,13 +60083,11 @@ func (client *Client) ModifyNoticeConfig(request *ModifyNoticeConfigRequest) (_r
 //
 // Activate <props="china">[Simple Log Service](https://help.aliyun.com/document_detail/48863.html)
 //
-// <props="intl">[Log Service](https://www.alibabacloud.com/help/en/log-service/latest/billable-items).
+// <props="intl">[Simple Log Service](https://www.alibabacloud.com/help/en/log-service/latest/billable-items) first, and create a service-linked role to authorize Security Center to access cloud resources. You can call the [CreateServiceLinkedRole](~~CreateServiceLinkedRole~~) operation to create a service-linked role and authorize Security Center to access cloud resources.
 //
-// Create a service-linked role and authorize Security Center to access cloud resources. You can call the [CreateServiceLinkedRole](~~CreateServiceLinkedRole~~) operation to create a service-linked role and authorize Security Center to access cloud resources.
+// **Scenarios**
 //
-// **Common scenarios**
-//
-// Before you use the log analysis feature of Security Center, call the [ModifyOpenLogShipper](~~ModifyOpenLogShipper~~) operation to activate Simple Log Service.
+// Before you use the log analysis feature of Security Center, you must call the [ModifyOpenLogShipper](~~ModifyOpenLogShipper~~) operation to enable Simple Log Service.
 //
 // @param request - ModifyOpenLogShipperRequest
 //
@@ -60133,7 +60135,7 @@ func (client *Client) ModifyOpenLogShipperWithOptions(request *ModifyOpenLogShip
 
 // Summary:
 //
-// Activates Simple Log Service.
+// Enables Simple Log Service.
 //
 // Description:
 //
@@ -60141,13 +60143,11 @@ func (client *Client) ModifyOpenLogShipperWithOptions(request *ModifyOpenLogShip
 //
 // Activate <props="china">[Simple Log Service](https://help.aliyun.com/document_detail/48863.html)
 //
-// <props="intl">[Log Service](https://www.alibabacloud.com/help/en/log-service/latest/billable-items).
+// <props="intl">[Simple Log Service](https://www.alibabacloud.com/help/en/log-service/latest/billable-items) first, and create a service-linked role to authorize Security Center to access cloud resources. You can call the [CreateServiceLinkedRole](~~CreateServiceLinkedRole~~) operation to create a service-linked role and authorize Security Center to access cloud resources.
 //
-// Create a service-linked role and authorize Security Center to access cloud resources. You can call the [CreateServiceLinkedRole](~~CreateServiceLinkedRole~~) operation to create a service-linked role and authorize Security Center to access cloud resources.
+// **Scenarios**
 //
-// **Common scenarios**
-//
-// Before you use the log analysis feature of Security Center, call the [ModifyOpenLogShipper](~~ModifyOpenLogShipper~~) operation to activate Simple Log Service.
+// Before you use the log analysis feature of Security Center, you must call the [ModifyOpenLogShipper](~~ModifyOpenLogShipper~~) operation to enable Simple Log Service.
 //
 // @param request - ModifyOpenLogShipperRequest
 //
@@ -60355,11 +60355,11 @@ func (client *Client) ModifyPostPayModuleSwitch(request *ModifyPostPayModuleSwit
 
 // Summary:
 //
-// Adds processes to or removes processes from the whitelist in the application whitelist feature.
+// Adds a process to or removes a process from the application whitelist.
 //
 // Description:
 //
-// The application whitelist is a China-site public preview feature that is no longer open for new applications. Users who have already applied for or are using this feature can call this operation as expected.
+// The application whitelist feature is in public preview and is no longer available for new applications. Users who have already applied for or are currently using this feature can call this operation as usual.
 //
 // @param request - ModifyProcessWhiteListRequest
 //
@@ -60419,11 +60419,11 @@ func (client *Client) ModifyProcessWhiteListWithOptions(request *ModifyProcessWh
 
 // Summary:
 //
-// Adds processes to or removes processes from the whitelist in the application whitelist feature.
+// Adds a process to or removes a process from the application whitelist.
 //
 // Description:
 //
-// The application whitelist is a China-site public preview feature that is no longer open for new applications. Users who have already applied for or are using this feature can call this operation as expected.
+// The application whitelist feature is in public preview and is no longer available for new applications. Users who have already applied for or are currently using this feature can call this operation as usual.
 //
 // @param request - ModifyProcessWhiteListRequest
 //
@@ -61088,11 +61088,11 @@ func (client *Client) ModifyServerlessAuthToMachine(request *ModifyServerlessAut
 
 // Summary:
 //
-// Adds or removes a policy template to or from My Policies in the task center.
+// Adds or removes a strategy template to or from My Strategies in Task Center.
 //
 // Description:
 //
-// Only the Enterprise and Ultimate editions of Security Center support this API call. Other editions do not support this call.
+// Only the Enterprise and Ultimate editions of Security Center support this API operation.
 //
 // @param request - ModifySoarStrategySubscribeRequest
 //
@@ -61140,11 +61140,11 @@ func (client *Client) ModifySoarStrategySubscribeWithOptions(request *ModifySoar
 
 // Summary:
 //
-// Adds or removes a policy template to or from My Policies in the task center.
+// Adds or removes a strategy template to or from My Strategies in Task Center.
 //
 // Description:
 //
-// Only the Enterprise and Ultimate editions of Security Center support this API call. Other editions do not support this call.
+// Only the Enterprise and Ultimate editions of Security Center support this API operation.
 //
 // @param request - ModifySoarStrategySubscribeRequest
 //
@@ -61162,7 +61162,7 @@ func (client *Client) ModifySoarStrategySubscribe(request *ModifySoarStrategySub
 
 // Summary:
 //
-// Enables the one-click scan feature on the vulnerability management page of the console.
+// Enables the quick scan feature on the Vulnerability Management page in the console.
 //
 // @param request - ModifyStartVulScanRequest
 //
@@ -61222,7 +61222,7 @@ func (client *Client) ModifyStartVulScanWithOptions(request *ModifyStartVulScanR
 
 // Summary:
 //
-// Enables the one-click scan feature on the vulnerability management page of the console.
+// Enables the quick scan feature on the Vulnerability Management page in the console.
 //
 // @param request - ModifyStartVulScanRequest
 //
@@ -61743,7 +61743,7 @@ func (client *Client) ModifyVulConfig(request *ModifyVulConfigRequest) (_result 
 
 // Summary:
 //
-// Modifies the machine-level toggle settings for vulnerability scanning.
+// Modifies the machine switch settings for vulnerability scanning.
 //
 // @param request - ModifyVulTargetRequest
 //
@@ -61791,7 +61791,7 @@ func (client *Client) ModifyVulTargetWithOptions(request *ModifyVulTargetRequest
 
 // Summary:
 //
-// Modifies the machine-level toggle settings for vulnerability scanning.
+// Modifies the machine switch settings for vulnerability scanning.
 //
 // @param request - ModifyVulTargetRequest
 //
@@ -62395,7 +62395,7 @@ func (client *Client) ModifyWebLockStart(request *ModifyWebLockStartRequest) (_r
 
 // Summary:
 //
-// Enables or shuts down web tamper-proofing for a server.
+// Enables or initiates a shutdown of the web tamper-proofing protection status of a server.
 //
 // @param request - ModifyWebLockStatusRequest
 //
@@ -62451,7 +62451,7 @@ func (client *Client) ModifyWebLockStatusWithOptions(request *ModifyWebLockStatu
 
 // Summary:
 //
-// Enables or shuts down web tamper-proofing for a server.
+// Enables or initiates a shutdown of the web tamper-proofing protection status of a server.
 //
 // @param request - ModifyWebLockStatusRequest
 //
@@ -62469,7 +62469,7 @@ func (client *Client) ModifyWebLockStatus(request *ModifyWebLockStatusRequest) (
 
 // Summary:
 //
-// Removes the web tamper proofing protection folder from a specified server.
+// Dissociates the web tamper-proofing protected directory from a specified server.
 //
 // @param request - ModifyWebLockUnbindRequest
 //
@@ -62513,7 +62513,7 @@ func (client *Client) ModifyWebLockUnbindWithOptions(request *ModifyWebLockUnbin
 
 // Summary:
 //
-// Removes the web tamper proofing protection folder from a specified server.
+// Dissociates the web tamper-proofing protected directory from a specified server.
 //
 // @param request - ModifyWebLockUnbindRequest
 //
@@ -62711,7 +62711,7 @@ func (client *Client) ModifyWebPath(request *ModifyWebPathRequest) (_result *Mod
 
 // Summary:
 //
-// Enables the anti-ransomware managed service to configure server backup policies with one click. This operation can be called only after you purchase the anti-ransomware managed service.
+// Enables the one-click configuration of anti-ransomware backup policies for servers in the managed anti-ransomware service. You can call this operation only after you purchase the managed anti-ransomware service.
 //
 // @param request - OpenBackupAutoConfigRequest
 //
@@ -62755,7 +62755,7 @@ func (client *Client) OpenBackupAutoConfigWithOptions(request *OpenBackupAutoCon
 
 // Summary:
 //
-// Enables the anti-ransomware managed service to configure server backup policies with one click. This operation can be called only after you purchase the anti-ransomware managed service.
+// Enables the one-click configuration of anti-ransomware backup policies for servers in the managed anti-ransomware service. You can call this operation only after you purchase the managed anti-ransomware service.
 //
 // @param request - OpenBackupAutoConfigRequest
 //
@@ -64989,7 +64989,7 @@ func (client *Client) QueryGroupedSecurityEventMarkMissList(request *QueryGroupe
 
 // Summary:
 //
-// Security Center provides rewards such as value-added service authorization quotas and log analysis storage capacity to users who complete tasks. Queries the completion status and reward information of configuration tasks.
+// Queries the completion status and reward information of onboarding tasks. Security Center provides rewards such as value-added service authorizations and log analysis storage capacity for users who complete tasks. You can call this API operation to query the completion status and reward information of configured tasks.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -65018,7 +65018,7 @@ func (client *Client) QueryGuidTaskListWithOptions(runtime *dara.RuntimeOptions)
 
 // Summary:
 //
-// Security Center provides rewards such as value-added service authorization quotas and log analysis storage capacity to users who complete tasks. Queries the completion status and reward information of configuration tasks.
+// Queries the completion status and reward information of onboarding tasks. Security Center provides rewards such as value-added service authorizations and log analysis storage capacity for users who complete tasks. You can call this API operation to query the completion status and reward information of configured tasks.
 //
 // @return QueryGuidTaskListResponse
 func (client *Client) QueryGuidTaskList() (_result *QueryGuidTaskListResponse, _err error) {
@@ -65228,7 +65228,7 @@ func (client *Client) RebootMachine(request *RebootMachineRequest) (_result *Reb
 
 // Summary:
 //
-// Claims a trial reward for the cloud honeypot or malicious file detection SDK feature after completing a task.
+// Grants the trial reward for enabling the cloud honeypot or malicious file detection SDK feature upon task completion.
 //
 // @param request - ReceiveFunctionTrialRewardByAliUidRequest
 //
@@ -65276,7 +65276,7 @@ func (client *Client) ReceiveFunctionTrialRewardByAliUidWithOptions(request *Rec
 
 // Summary:
 //
-// Claims a trial reward for the cloud honeypot or malicious file detection SDK feature after completing a task.
+// Grants the trial reward for enabling the cloud honeypot or malicious file detection SDK feature upon task completion.
 //
 // @param request - ReceiveFunctionTrialRewardByAliUidRequest
 //
@@ -65834,7 +65834,7 @@ func (client *Client) ResetHoneypot(request *ResetHoneypotRequest) (_result *Res
 
 // Summary:
 //
-// Resets and upgrades the log analysis feature. You can call this operation only when the log analysis feature uses the pay-as-you-go billing method.
+// Resets and upgrades the log analysis feature. You can invoke this operation only in the pay-as-you-go pattern for logs.
 //
 // @param request - ResetLogShipperRequest
 //
@@ -65886,7 +65886,7 @@ func (client *Client) ResetLogShipperWithOptions(request *ResetLogShipperRequest
 
 // Summary:
 //
-// Resets and upgrades the log analysis feature. You can call this operation only when the log analysis feature uses the pay-as-you-go billing method.
+// Resets and upgrades the log analysis feature. You can invoke this operation only in the pay-as-you-go pattern for logs.
 //
 // @param request - ResetLogShipperRequest
 //
@@ -67826,7 +67826,7 @@ func (client *Client) SubmitTenantCheck() (_result *SubmitTenantCheckResponse, _
 
 // Summary:
 //
-// Triggers ISO 27001 compliance checks of Security Center.
+// Triggers an ISO 27001 compliance check task in Security Center.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -67855,7 +67855,7 @@ func (client *Client) TriggerCheckWithOptions(runtime *dara.RuntimeOptions) (_re
 
 // Summary:
 //
-// Triggers ISO 27001 compliance checks of Security Center.
+// Triggers an ISO 27001 compliance check task in Security Center.
 //
 // @return TriggerCheckResponse
 func (client *Client) TriggerCheck() (_result *TriggerCheckResponse, _err error) {
@@ -67871,7 +67871,7 @@ func (client *Client) TriggerCheck() (_result *TriggerCheckResponse, _err error)
 
 // Summary:
 //
-// Removes servers from a proxy cluster.
+// Dissociates the client from the current proxy cluster.
 //
 // @param request - UnBindHybridProxyRequest
 //
@@ -67919,7 +67919,7 @@ func (client *Client) UnBindHybridProxyWithOptions(request *UnBindHybridProxyReq
 
 // Summary:
 //
-// Removes servers from a proxy cluster.
+// Dissociates the client from the current proxy cluster.
 //
 // @param request - UnBindHybridProxyRequest
 //
@@ -67999,19 +67999,19 @@ func (client *Client) UnMarkMonitorAccounts(request *UnMarkMonitorAccountsReques
 
 // Summary:
 //
-// Unbinds non-Alibaba Cloud servers from Security Center.
+// Unbinds a non-Alibaba Cloud server from Security Center.
 //
 // Description:
 //
-// If you no longer need Security Center to protect your non-Alibaba Cloud servers, you can call the UnbindAegis operation to unbind the servers. After a non-Alibaba Cloud server is unbound, the server no longer consumes your Security Center quota (the number of servers or compute cores). The released quota can then be used to protect other servers.
+// If you no longer need Security Center to protect your non-Alibaba Cloud servers, you can call the UnbindAegis operation to unbind the servers. After a non-Alibaba Cloud server is unbound, it no longer consumes the quota of Security Center (the number of protected servers or CPU cores). The released quota can be used to protect other servers.
 //
-// > Only non-Alibaba Cloud servers require the unbinding operation. Alibaba Cloud ECS instances do not require unbinding. For ECS instances, even if you uninstall the agent, the server still appears in the asset management list in an offline state and is not removed from the list.
+// > Only non-Alibaba Cloud servers need to be unbound. You do not need to unbind Alibaba Cloud ECS instances. Even if you uninstall the agent from an ECS instance, the instance remains in the asset management list in the offline state and is not removed from the list.
 //
 // **Before you begin**
 //
-// - The agent on the non-Alibaba Cloud server that you want to unbind has been paused (the client status is disabled). You can call the [PauseClient](~~PauseClient~~) operation to pause the agent.
+// - The agent on the non-Alibaba Cloud server that you want to unbind is paused (the client status is Disabled). You can call the [PauseClient](~~PauseClient~~) operation to pause the agent.
 //
-// - Client self-protection has been disabled on the non-Alibaba Cloud server that you want to unbind. For more information, see [Client self-protection](https://help.aliyun.com/document_detail/460802.html).
+// - Client self-protection is disabled for the non-Alibaba Cloud server that you want to unbind. For more information about how to disable client self-protection, see [Client self-protection](https://help.aliyun.com/document_detail/460802.html).
 //
 // @param request - UnbindAegisRequest
 //
@@ -68055,19 +68055,19 @@ func (client *Client) UnbindAegisWithOptions(request *UnbindAegisRequest, runtim
 
 // Summary:
 //
-// Unbinds non-Alibaba Cloud servers from Security Center.
+// Unbinds a non-Alibaba Cloud server from Security Center.
 //
 // Description:
 //
-// If you no longer need Security Center to protect your non-Alibaba Cloud servers, you can call the UnbindAegis operation to unbind the servers. After a non-Alibaba Cloud server is unbound, the server no longer consumes your Security Center quota (the number of servers or compute cores). The released quota can then be used to protect other servers.
+// If you no longer need Security Center to protect your non-Alibaba Cloud servers, you can call the UnbindAegis operation to unbind the servers. After a non-Alibaba Cloud server is unbound, it no longer consumes the quota of Security Center (the number of protected servers or CPU cores). The released quota can be used to protect other servers.
 //
-// > Only non-Alibaba Cloud servers require the unbinding operation. Alibaba Cloud ECS instances do not require unbinding. For ECS instances, even if you uninstall the agent, the server still appears in the asset management list in an offline state and is not removed from the list.
+// > Only non-Alibaba Cloud servers need to be unbound. You do not need to unbind Alibaba Cloud ECS instances. Even if you uninstall the agent from an ECS instance, the instance remains in the asset management list in the offline state and is not removed from the list.
 //
 // **Before you begin**
 //
-// - The agent on the non-Alibaba Cloud server that you want to unbind has been paused (the client status is disabled). You can call the [PauseClient](~~PauseClient~~) operation to pause the agent.
+// - The agent on the non-Alibaba Cloud server that you want to unbind is paused (the client status is Disabled). You can call the [PauseClient](~~PauseClient~~) operation to pause the agent.
 //
-// - Client self-protection has been disabled on the non-Alibaba Cloud server that you want to unbind. For more information, see [Client self-protection](https://help.aliyun.com/document_detail/460802.html).
+// - Client self-protection is disabled for the non-Alibaba Cloud server that you want to unbind. For more information about how to disable client self-protection, see [Client self-protection](https://help.aliyun.com/document_detail/460802.html).
 //
 // @param request - UnbindAegisRequest
 //
@@ -68359,7 +68359,7 @@ func (client *Client) UpdateAttackPathSensitiveAssetConfig(request *UpdateAttack
 
 // Summary:
 //
-// Update Attack Path Whitelist.
+// Updates the attack path whitelist.
 //
 // @param request - UpdateAttackPathWhitelistRequest
 //
@@ -68427,7 +68427,7 @@ func (client *Client) UpdateAttackPathWhitelistWithOptions(request *UpdateAttack
 
 // Summary:
 //
-// Update Attack Path Whitelist.
+// Updates the attack path whitelist.
 //
 // @param request - UpdateAttackPathWhitelistRequest
 //
@@ -69645,7 +69645,7 @@ func (client *Client) UpdateFileProtectRule(request *UpdateFileProtectRuleReques
 
 // Summary:
 //
-// Modifies the QPS for client file uploads.
+// Modifies the QPS limit for client file uploads.
 //
 // @param request - UpdateFileUploadLimitRequest
 //
@@ -69689,7 +69689,7 @@ func (client *Client) UpdateFileUploadLimitWithOptions(request *UpdateFileUpload
 
 // Summary:
 //
-// Modifies the QPS for client file uploads.
+// Modifies the QPS limit for client file uploads.
 //
 // @param request - UpdateFileUploadLimitRequest
 //
@@ -71107,9 +71107,7 @@ func (client *Client) UpdatePublishBatch(request *UpdatePublishBatchRequest) (_r
 
 // Summary:
 //
-// Modifies the configuration of the client upgrade time.
-//
-// To use this feature, contact technical support.
+// Modifies the client upgrade time configuration. To use this feature, contact technical support.
 //
 // @param request - UpdatePublishCronRequest
 //
@@ -71169,9 +71167,7 @@ func (client *Client) UpdatePublishCronWithOptions(request *UpdatePublishCronReq
 
 // Summary:
 //
-// Modifies the configuration of the client upgrade time.
-//
-// To use this feature, contact technical support.
+// Modifies the client upgrade time configuration. To use this feature, contact technical support.
 //
 // @param request - UpdatePublishCronRequest
 //
@@ -72357,7 +72353,7 @@ func (client *Client) VerifyCheckInstanceResult(request *VerifyCheckInstanceResu
 
 // Summary:
 //
-// Validates check items.
+// Validates check item dimensions.
 //
 // @param request - VerifyCheckResultRequest
 //
@@ -72413,7 +72409,7 @@ func (client *Client) VerifyCheckResultWithOptions(request *VerifyCheckResultReq
 
 // Summary:
 //
-// Validates check items.
+// Validates check item dimensions.
 //
 // @param request - VerifyCheckResultRequest
 //

@@ -38,79 +38,79 @@ type iDescribeVulNumStatisticsResponseBody interface {
 }
 
 type DescribeVulNumStatisticsResponseBody struct {
-	// The number of application vulnerability entries detected by the scanner on your assets.
+	// The number of scanner application vulnerability records in the assets.
 	//
 	// example:
 	//
 	// 0
 	AppCnt *int32 `json:"AppCnt,omitempty" xml:"AppCnt,omitempty"`
-	// The number of application vulnerabilities detected by the scanner on your assets.
+	// The number of scanner application vulnerabilities in the assets.
 	//
 	// example:
 	//
 	// 0
 	AppNum *int32 `json:"AppNum,omitempty" xml:"AppNum,omitempty"`
-	// The total number of handled CMS vulnerabilities.
+	// The number of handled Web-CMS vulnerabilities.
 	//
 	// example:
 	//
 	// 0
 	CmsDealedTotalNum *int32 `json:"CmsDealedTotalNum,omitempty" xml:"CmsDealedTotalNum,omitempty"`
-	// The number of Web-CMS vulnerabilities on your assets.
+	// The number of the Web-CMS vulnerability in the assets.
 	//
 	// example:
 	//
 	// 0
 	CmsNum *int32 `json:"CmsNum,omitempty" xml:"CmsNum,omitempty"`
-	// The number of Linux software vulnerabilities on your assets.
+	// The number of the Linux system vulnerability in the assets.
 	//
 	// example:
 	//
 	// 0
 	CveNum *int32 `json:"CveNum,omitempty" xml:"CveNum,omitempty"`
-	// The number of urgent vulnerabilities on your assets.
+	// The number of emergency vulnerabilities in the assets.
 	//
 	// example:
 	//
 	// 0
 	EmgNum *int32 `json:"EmgNum,omitempty" xml:"EmgNum,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// E22C89D2-FE13-5800-8746-9D0EF1827A59
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of middleware vulnerabilities on your assets.
+	// The number of middleware vulnerabilities in the assets.
 	//
 	// example:
 	//
 	// 0
 	ScaNum *int32 `json:"ScaNum,omitempty" xml:"ScaNum,omitempty"`
-	// The number of Windows system vulnerabilities on your assets.
+	// The number of the Windows system vulnerability in the assets.
 	//
 	// example:
 	//
 	// 0
 	SysNum *int32 `json:"SysNum,omitempty" xml:"SysNum,omitempty"`
-	// The number of vulnerabilities with a high fix priority.
+	// The number of high-priority vulnerabilities.
 	//
 	// example:
 	//
 	// 0
 	VulAsapSum *int32 `json:"VulAsapSum,omitempty" xml:"VulAsapSum,omitempty"`
-	// This field is deprecated.
+	// **[Deprecated]*	- This field is deprecated.
 	//
 	// example:
 	//
 	// 0
 	VulDealedTotalNum *int32 `json:"VulDealedTotalNum,omitempty" xml:"VulDealedTotalNum,omitempty"`
-	// The number of vulnerabilities with a medium fix priority.
+	// The number of medium-priority vulnerabilities.
 	//
 	// example:
 	//
 	// 0
 	VulLaterSum *int32 `json:"VulLaterSum,omitempty" xml:"VulLaterSum,omitempty"`
-	// The number of vulnerabilities with a low fix priority.
+	// The number of low-priority vulnerabilities.
 	//
 	// example:
 	//

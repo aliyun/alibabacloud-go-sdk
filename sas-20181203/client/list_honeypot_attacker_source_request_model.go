@@ -26,35 +26,35 @@ type iListHoneypotAttackerSourceRequest interface {
 }
 
 type ListHoneypotAttackerSourceRequest struct {
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. This value is a timestamp.
+	// The end time in UNIX timestamp format.
 	//
 	// example:
 	//
 	// 1676945366221
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries to return on each page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// An array that consists of risk levels.
+	// The list of risk levels.
 	RiskLevelList []*string `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
 	// The source IP address of the attack.
 	//
@@ -62,7 +62,7 @@ type ListHoneypotAttackerSourceRequest struct {
 	//
 	// 175.136.230.***
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
-	// The beginning of the time range to query. This value is a timestamp.
+	// The start time in UNIX timestamp format.
 	//
 	// example:
 	//

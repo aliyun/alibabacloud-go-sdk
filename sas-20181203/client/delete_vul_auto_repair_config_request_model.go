@@ -26,11 +26,11 @@ type DeleteVulAutoRepairConfigRequest struct {
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The list of configuration IDs to delete.
 	//
-	// > You can call the [ListVulAutoRepairConfig](~~ListVulAutoRepairConfig~~) operation to obtain configuration IDs.
+	// > You can call the [ListVulAutoRepairConfig](~~ListVulAutoRepairConfig~~) operation to retrieve the configuration IDs.
 	ConfigIdList []*int64 `json:"ConfigIdList,omitempty" xml:"ConfigIdList,omitempty" type:"Repeated"`
-	// The type of the vulnerability. Valid values:
+	// The vulnerability type. Valid values:
 	//
-	// - cve: Linux software vulnerability
+	// - cve: Linux software vulnerability.
 	//
 	// - sys: Windows system vulnerability.
 	//

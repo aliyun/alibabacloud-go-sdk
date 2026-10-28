@@ -24,13 +24,13 @@ type DescribeHybridProxyClusterListRequest struct {
 	//
 	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The page number of the current page to display in a paged query.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries to display on each page in a paged query.
+	// The maximum number of entries to return per page in a paging query.
 	//
 	// example:
 	//

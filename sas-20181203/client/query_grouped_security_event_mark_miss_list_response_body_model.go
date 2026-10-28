@@ -177,7 +177,7 @@ type QueryGroupedSecurityEventMarkMissListResponseBodyList struct {
 	//
 	// example:
 	//
-	// 异常登录
+	// Unusual logon
 	EventTypeOriginal *string `json:"EventTypeOriginal,omitempty" xml:"EventTypeOriginal,omitempty"`
 	// The field that is used in the whitelist rule.
 	//

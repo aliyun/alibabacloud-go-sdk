@@ -24,7 +24,7 @@ type GenerateDynamicDictRequest struct {
 	//
 	// example:
 	//
-	// Admin
+	// keyword
 	ArgKeywords *string `json:"ArgKeywords,omitempty" xml:"ArgKeywords,omitempty"`
 	// The domain name for custom weak passwords.
 	//

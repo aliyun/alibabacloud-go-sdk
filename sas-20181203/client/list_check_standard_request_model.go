@@ -24,25 +24,25 @@ type iListCheckStandardRequest interface {
 }
 
 type ListCheckStandardRequest struct {
-	// The instance IDs of the cloud services to which the check items belong.
+	// The target cloud service instance ID for the check item.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The subtypes of cloud services.
+	// The subtype of the cloud service.
 	InstanceSubTypes []*string `json:"InstanceSubTypes,omitempty" xml:"InstanceSubTypes,omitempty" type:"Repeated"`
-	// The asset types of cloud services.
+	// The asset type of the cloud service.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// List of task sources.
+	// The list of task sources.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
-	// The cloud service providers. Valid values:
+	// The list of cloud vendors. Valid values:
 	//
 	// - **ALIYUN**: Alibaba Cloud.
 	//
@@ -50,7 +50,7 @@ type ListCheckStandardRequest struct {
 	//
 	// - **HUAWEICLOUD**: Huawei Cloud.
 	//
-	// - **MICROSOFT**: Microsoft Azure.
+	// - **MICROSOFT**: Azure.
 	//
 	// - **AWS**: Amazon Web Services (AWS).
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`

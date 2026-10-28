@@ -18,9 +18,9 @@ type iDescribeChartListRequest interface {
 }
 
 type DescribeChartListRequest struct {
-	// The language type for the request and response messages. Valid values:
+	// The language type of the request and response messages. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
 	// - **en**: English.
 	//
@@ -30,7 +30,7 @@ type DescribeChartListRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The project code. Valid values:
 	//
-	// - **customize_report**: custom report.
+	// - **customize_report**: Custom report.
 	//
 	// This parameter is required.
 	//

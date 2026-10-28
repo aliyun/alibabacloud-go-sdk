@@ -14,7 +14,7 @@ type iDeleteCustomizedDictRequest interface {
 }
 
 type DeleteCustomizedDictRequest struct {
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//

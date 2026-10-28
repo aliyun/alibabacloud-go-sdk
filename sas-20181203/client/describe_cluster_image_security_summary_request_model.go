@@ -38,33 +38,33 @@ type DescribeClusterImageSecuritySummaryRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The container search field. Valid values:
 	//
-	// - **instanceId**: container instance ID
+	// - **instanceId**: the container instance ID
 	//
-	// - **clusterId**: cluster ID
+	// - **clusterId**: the cluster ID
 	//
-	// - **regionId**: container region
+	// - **regionId**: the container region
 	//
-	// - **clusterName**: cluster name
+	// - **clusterName**: the cluster name
 	//
-	// - **image**: image name
+	// - **image**: the image name
 	//
-	// - **imageRepoName**: image repository name
+	// - **imageRepoName**: the image repository name
 	//
-	// - **imageRepoNamespace**: image repository namespace
+	// - **imageRepoNamespace**: the image repository namespace
 	//
-	// - **imageRepoTag**: image repository tag
+	// - **imageRepoTag**: the image repository tag
 	//
-	// - **imageDigest**: image digest
+	// - **imageDigest**: the image digest
 	//
-	// - **clusterType**: cluster type
+	// - **clusterType**: the cluster type
 	//
-	// - **hostIp**: public IP address
+	// - **hostIp**: the public IP address
 	//
-	// - **pod**: pod
+	// - **pod**: the pod
 	//
-	// - **podIp**: pod IP address
+	// - **podIp**: the pod IP address
 	//
-	// - **containerId**: container ID
+	// - **containerId**: the container ID
 	//
 	// - **vulStatus**: whether the container has vulnerabilities
 	//
@@ -72,9 +72,9 @@ type DescribeClusterImageSecuritySummaryRequest struct {
 	//
 	// - **riskStatus**: whether the container has risks
 	//
-	// - **riskLevel**: container risk level
+	// - **riskLevel**: the container risk level
 	//
-	// - **containerScope**: container type.
+	// - **containerScope**: the container type
 	//
 	// example:
 	//
@@ -111,7 +111,7 @@ type DescribeClusterImageSecuritySummaryRequest struct {
 	// 3.54.0.1
 	ImageTag        *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//

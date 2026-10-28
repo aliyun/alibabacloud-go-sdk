@@ -22,7 +22,7 @@ type iAddImageEventOperationResponseBody interface {
 }
 
 type AddImageEventOperationResponseBody struct {
-	// The HTTP status code.
+	// The status code returned.
 	//
 	// example:
 	//
@@ -30,23 +30,23 @@ type AddImageEventOperationResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *AddImageEventOperationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0C8487EF-50C2-54BB-8634-10F8C35D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The API call succeeded.
 	//
-	// 	- **false**
+	// - **false**: The API call failed.
 	//
 	// example:
 	//
@@ -117,33 +117,33 @@ func (s *AddImageEventOperationResponseBody) Validate() error {
 }
 
 type AddImageEventOperationResponseBodyData struct {
-	// The rule conditions. The value is in the JSON format. Valid values of keys:
+	// The rule conditions. The value is in JSON format. Valid keys:
 	//
-	// 	- **condition**: the matching condition.
+	// - **condition**: The matching condition.
 	//
-	// 	- **type**: the matching type.
+	// - **type**: The matching type.
 	//
-	// 	- **value**: the matching value.
+	// - **value**: The matching value.
 	//
 	// example:
 	//
 	// [{\\"condition\\": \\"MD5\\", \\"type\\": \\"equals\\", \\"value\\": \\"0083a31cc0083a31ccf7c10367a6e783e\\"}]
 	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
-	// The keyword of the alert item.
+	// The alert metric keyword.
 	//
 	// example:
 	//
 	// PEM
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// The name of the alert item.
+	// The alert metric name.
 	//
 	// example:
 	//
 	// PEM
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The alert type.
+	// The Alarm Metric for alerting. Valid values:
 	//
-	// 	- Only **sensitiveFile*	- may be returned.
+	// - **sensitiveFile**: Sensitive file.
 	//
 	// example:
 	//
@@ -155,19 +155,19 @@ type AddImageEventOperationResponseBodyData struct {
 	//
 	// 443496
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The operation code.
+	// The operation code. Valid values:
 	//
-	// 	- Only **whitelist*	- may be returned, which indicates that the alert item is added to the whitelist.
+	// - **whitelist**: Whitelist.
 	//
 	// example:
 	//
 	// whitelist
 	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
-	// The application scope of the rule. The value is in the JSON format. Valid values of keys:
+	// The rule scope. The value is in JSON format. Valid keys:
 	//
-	// 	- **type**
+	// - **type**: The scope type.
 	//
-	// 	- **value**
+	// - **value**: The scope value.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iGetModuleConfigStatusShrinkRequest interface {
 }
 
 type GetModuleConfigStatusShrinkRequest struct {
-	// The service modules that you want to query.
+	// The list of product modules to query.
 	//
 	// This parameter is required.
 	ModuleNamesShrink *string `json:"ModuleNames,omitempty" xml:"ModuleNames,omitempty"`

@@ -32,13 +32,13 @@ type iListAttackPathEventRequest interface {
 type ListAttackPathEventRequest struct {
 	// The list of cloud service assets in the attack path.
 	AttackPathAssetList []*ListAttackPathEventRequestAttackPathAssetList `json:"AttackPathAssetList,omitempty" xml:"AttackPathAssetList,omitempty" type:"Repeated"`
-	// The page number of the results to return. Default value: 1, which indicates the first page.
+	// The number of the page to return. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time as a timestamp. Unit: milliseconds.
+	// The timestamp of the end time. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -48,21 +48,21 @@ type ListAttackPathEventRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries per page in a paged query. Default value: **20**.
+	// The maximum number of entries to return on each page in a paging query. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The path name description.
+	// The description of the path name.
 	//
-	// > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path name descriptions.
+	// > You can call the [ListAvailableAttackPath](~~ListAvailableAttackPath~~) operation to query the description of the path name.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListAttackPathEventRequest struct {
 	PathNameDesc *string `json:"PathNameDesc,omitempty" xml:"PathNameDesc,omitempty"`
 	// The path type.
 	//
-	// > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path types.
+	// > You can call the [ListAvailableAttackPath](~~ListAvailableAttackPath~~) operation to query the path type.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListAttackPathEventRequest struct {
 	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
 	// The list of risk levels.
 	RiskLevelList []*string `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
-	// The start time as a timestamp. Unit: milliseconds.
+	// The timestamp of the start time. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ func (s *ListAttackPathEventRequest) Validate() error {
 type ListAttackPathEventRequestAttackPathAssetList struct {
 	// The subtype of the cloud service asset.
 	//
-	// > Call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the subtypes of cloud service assets.
+	// > You can call the [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) operation to query the subtype of the cloud service asset.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type ListAttackPathEventRequestAttackPathAssetList struct {
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
 	// The type of the cloud service asset.
 	//
-	// > Call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the types of cloud service assets.
+	// > You can call the [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) operation to query the type of the cloud service asset.
 	//
 	// example:
 	//
@@ -207,9 +207,9 @@ type ListAttackPathEventRequestAttackPathAssetList struct {
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 	// The node type. Valid values:
 	//
-	// - **start**: start node.
+	// - **start**: the start node
 	//
-	// - **end**: end node.
+	// - **end**: the end node
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type ListAttackPathEventRequestAttackPathAssetList struct {
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The vendor of the cloud service asset.
 	//
-	// > Call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the vendors of cloud service assets.
+	// > You can call the [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) operation to query the vendor of the cloud service asset.
 	//
 	// example:
 	//

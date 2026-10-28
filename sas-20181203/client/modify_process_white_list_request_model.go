@@ -22,19 +22,19 @@ type iModifyProcessWhiteListRequest interface {
 }
 
 type ModifyProcessWhiteListRequest struct {
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	// Specifies the language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The MD5 hash of the process startup file.
+	// The MD5 hash value of the process startup file.
 	//
-	// > You can call the [DescribeWhiteListProcess](~~DescribeWhiteListProcess~~) operation to obtain this parameter.
+	// > You can call the [DescribeWhiteListProcess](~~DescribeWhiteListProcess~~) operation to query the value.
 	//
 	// This parameter is required.
 	//
@@ -42,17 +42,17 @@ type ModifyProcessWhiteListRequest struct {
 	//
 	// 001d7f68c3b44147988f0dc81192****
 	Md5s *string `json:"Md5s,omitempty" xml:"Md5s,omitempty"`
-	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
+	// The source IP address of the request. You do not need to specify this parameter. The system automatically retrieves the value.
 	//
 	// example:
 	//
 	// 173.128.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The whitelist status of the process. Valid values:
+	// Specifies the whitelist status of the process. Valid values:
 	//
-	// - **1**: Remove from the whitelist.
+	// - **1**: remove from the whitelist
 	//
-	// - **2**: Add to the whitelist.
+	// - **2**: add to the whitelist
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type ModifyProcessWhiteListRequest struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the policy.
 	//
-	// > You can call the [DescribeWhiteListStrategyList](~~DescribeWhiteListStrategyList~~) operation to obtain this parameter.
+	// > You can call the [DescribeWhiteListStrategyList](~~DescribeWhiteListStrategyList~~) operation to query the ID.
 	//
 	// This parameter is required.
 	//

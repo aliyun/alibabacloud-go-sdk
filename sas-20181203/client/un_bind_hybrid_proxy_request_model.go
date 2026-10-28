@@ -24,7 +24,7 @@ type UnBindHybridProxyRequest struct {
 	//
 	// proxy-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The UUIDs of the servers that you want to remove from the proxy cluster.
+	// The list of Security Center client UUIDs for the machines connected to the proxy.
 	//
 	// This parameter is required.
 	YundunUuids []*string `json:"YundunUuids,omitempty" xml:"YundunUuids,omitempty" type:"Repeated"`

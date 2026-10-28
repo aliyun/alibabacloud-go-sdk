@@ -52,7 +52,7 @@ type GetClusterScannerYamlResponseBody struct {
 	//
 	// xxxx-registry.cn-shanghai.cr.aliyuncs.com/default/scanner:v1
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type GetClusterScannerYamlResponseBody struct {
 	TlsKeyBase64 *string `json:"TlsKeyBase64,omitempty" xml:"TlsKeyBase64,omitempty"`
 	// Indicates whether incremental scanning is enabled. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//

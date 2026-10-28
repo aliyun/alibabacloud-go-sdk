@@ -18,21 +18,19 @@ type iListAutoTagRulesRequest interface {
 }
 
 type ListAutoTagRulesRequest struct {
-	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
+	// The number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
-	//
-	// > Do not leave PageSize empty.
+	// The maximum number of entries to return per page during paging. Default value: 20. If this parameter is left empty, 20 entries are returned. Specify a value for this parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule name.
+	// The name of the rule.
 	//
 	// example:
 	//

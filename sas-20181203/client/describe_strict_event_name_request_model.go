@@ -14,11 +14,11 @@ type iDescribeStrictEventNameRequest interface {
 }
 
 type DescribeStrictEventNameRequest struct {
-	// Sets the language type for requests and received messages, default is **zh**. Values:
+	// Specifies the language for requests and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

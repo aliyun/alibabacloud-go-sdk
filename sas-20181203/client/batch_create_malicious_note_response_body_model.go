@@ -22,7 +22,7 @@ type iBatchCreateMaliciousNoteResponseBody interface {
 }
 
 type BatchCreateMaliciousNoteResponseBody struct {
-	// The response code. The status code **200*	- indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+	// The result code. A value of **200*	- indicates success, whereas other values indicate failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
@@ -34,23 +34,23 @@ type BatchCreateMaliciousNoteResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The message returned in the response.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F8B6F758-BCD4-597A-8A2C-DA5A552C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//

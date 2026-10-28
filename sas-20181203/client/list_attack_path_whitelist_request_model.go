@@ -24,7 +24,7 @@ type iListAttackPathWhitelistRequest interface {
 }
 
 type ListAttackPathWhitelistRequest struct {
-	// The page number when using paging. Default value: **1**.
+	// The page number Settings of the current page for paging in a paged query. Default value: **1**.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type ListAttackPathWhitelistRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries per page when using paging. Default value: 20.
+	// The maximum number of entries to return per page for paging in a paged query. Default value: 20.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListAttackPathWhitelistRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The path name description.
 	//
-	// > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path name descriptions.
+	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path name descriptions.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListAttackPathWhitelistRequest struct {
 	PathNameDesc *string `json:"PathNameDesc,omitempty" xml:"PathNameDesc,omitempty"`
 	// The path type.
 	//
-	// > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path types.
+	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path types.
 	//
 	// example:
 	//

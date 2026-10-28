@@ -24,19 +24,19 @@ type iListBackupRecordRequest interface {
 }
 
 type ListBackupRecordRequest struct {
-	// The backup end time. The value is a timestamp in milliseconds.
+	// The end time of the backup. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1699600611000
 	BackupEndTime *int64 `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The backup start time. The value is a timestamp in milliseconds.
+	// The start time of the backup. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1699514211000
 	BackupStartTime *int64 `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The page number of the page to return. Default value: **1**, which indicates the first page.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type ListBackupRecordRequest struct {
 	//
 	// 192.168.XX.XX
 	MachineRemark *string `json:"MachineRemark,omitempty" xml:"MachineRemark,omitempty"`
-	// The maximum number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned.
+	// The maximum number of entries to return on each page in a paged query. The default number of entries per page for paging is 20. If the PageSize parameter is empty, 20 entries are returned by default.
 	//
-	// > Do not leave PageSize empty.
+	// > Do not leave the PageSize parameter empty.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type ListBackupRecordRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of backup task statuses. Valid values:
 	//
-	// - **BACKUP_COMPLETE**: backup succeeded
+	// - **BACKUP_COMPLETE**: The backup is successful.
 	//
-	// - **BACKUP_FAILED**: backup failed
+	// - **BACKUP_FAILED**: The backup fails.
 	//
-	// - **PARTIAL_COMPLETE**: partial backup succeeded.
+	// - **PARTIAL_COMPLETE**: The backup is partially successful.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 

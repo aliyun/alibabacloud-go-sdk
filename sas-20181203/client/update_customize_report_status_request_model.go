@@ -18,7 +18,7 @@ type iUpdateCustomizeReportStatusRequest interface {
 }
 
 type UpdateCustomizeReportStatusRequest struct {
-	// The pinning time. Unit: milliseconds.
+	// The time when the report is pinned. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type UpdateCustomizeReportStatusRequest struct {
 	PinnedTime *int64 `json:"PinnedTime,omitempty" xml:"PinnedTime,omitempty"`
 	// The report ID.
 	//
-	// >Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this parameter.
+	// >You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,11 @@ type UpdateCustomizeReportStatusRequest struct {
 	//
 	// 123
 	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The report status. Valid values:
+	// The status of the report. Valid values:
 	//
-	//  - **0**: Disabled.
+	//  - **0**: disabled
 	//
-	//  - **1**: Enabled.
+	//  - **1**: enabled
 	//
 	// This parameter is required.
 	//

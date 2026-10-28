@@ -28,13 +28,13 @@ type iListClusterCheckResultRequest interface {
 }
 
 type ListClusterCheckResultRequest struct {
-	// Fuzzy search key for check items.
+	// The keyword for fuzzy search of check items.
 	//
 	// example:
 	//
 	// container
 	CheckKey *string `json:"CheckKey,omitempty" xml:"CheckKey,omitempty"`
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -42,17 +42,17 @@ type ListClusterCheckResultRequest struct {
 	//
 	// c3aaf6c8085f84791882eef200cd2****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Page number for the current page in a paginated query. The default value is **1**.
+	// Specifies the page number of the current page during paging in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Language type for requests and responses. The default value is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// This parameter is required.
 	//
@@ -60,15 +60,15 @@ type ListClusterCheckResultRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Number of records to display per page when performing a paginated query. The default value is **20**, indicating 20 records per page.
+	// The Settings for paging in a paged query. Specifies the number of records to display on each page. Default value: **20**, which indicates that 20 records are displayed on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// List of risk levels.
+	// The list of risk levels.
 	RiskLevels []*string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty" type:"Repeated"`
-	// Custom sorting type. Values:
+	// The custom sort type. Valid values:
 	//
 	// - **RISK_LEVEL**: Risk level.
 	//
@@ -78,7 +78,7 @@ type ListClusterCheckResultRequest struct {
 	//
 	// STATUS
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// List of check item statuses.
+	// The list of check item statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 

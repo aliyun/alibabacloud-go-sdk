@@ -28,13 +28,13 @@ type iGetHoneypotAttackStatisticsRequest interface {
 }
 
 type GetHoneypotAttackStatisticsRequest struct {
-	// The page number of the page to return. Minimum value: **1**. Default value: **1**, which indicates that the first page is returned.
+	// The page number of the returned page. Pages start from page **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time in timestamp format.
+	// The end time in the timestamp format.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type GetHoneypotAttackStatisticsRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned by default. > Specify a value for the paging parameter.
+	// The maximum number of entries to return on each page in a paging query. Default value: 20. If this parameter is left empty, 20 entries are returned by default. Do not leave this parameter empty.
 	//
 	// example:
 	//
@@ -66,21 +66,21 @@ type GetHoneypotAttackStatisticsRequest struct {
 	//
 	// 47.92.139.**
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
-	// The start time in timestamp format.
+	// The start time in the timestamp format.
 	//
 	// example:
 	//
 	// 1681624877761
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" xml:"StartTimeStamp,omitempty"`
-	// The type of attack source statistics information. Valid values:
+	// The type of statistics for the attack source. Valid values:
 	//
-	// - **TOP_ATTACKED_AGENT**: the top 5 probes by number of attacks.
+	// - **TOP_ATTACKED_AGENT**: The top 5 probes that are attacked most frequently.
 	//
-	// - **TOP_ATTACKED_IP**: the top 5 IP addresses by number of attacks.
+	// - **TOP_ATTACKED_IP**: The top 5 IP addresses that are attacked most frequently.
 	//
-	// - **ATTACK_EVENT_TYPE**: the intrusion event type.
+	// - **ATTACK_EVENT_TYPE**: The intrusion event type.
 	//
-	// - **ATTACK_HONEYPOT_TYPE**: the type of the compromised honeypot.
+	// - **ATTACK_HONEYPOT_TYPE**: The type of the attacked honeypot.
 	//
 	// This parameter is required.
 	//

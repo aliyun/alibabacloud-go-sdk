@@ -16,9 +16,9 @@ type iDeleteGroupRequest interface {
 }
 
 type DeleteGroupRequest struct {
-	// The ID of the server group that you want to delete.
+	// Specifies the ID of the server group to delete.
 	//
-	// > To delete a server group, you must specify the server group ID. You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the server group ID.
+	// > To delete a server group, you must provide the server group ID. You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteGroupRequest struct {
 	//
 	// 9454789
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The source IP address of the request.
+	// The source IP address.
 	//
 	// example:
 	//

@@ -36,6 +36,9 @@ type ListUnknownThreatDetectMachineRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 1
 	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
 	// The maximum number of entries to display per page in a paged query.
 	//

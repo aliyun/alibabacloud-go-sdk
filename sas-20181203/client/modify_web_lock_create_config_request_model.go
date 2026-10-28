@@ -38,9 +38,9 @@ type iModifyWebLockCreateConfigRequest interface {
 type ModifyWebLockCreateConfigRequest struct {
 	// The defense mode. Valid values:
 	//
-	// - **block**: Block mode.
+	// - **block**: Blocks requests.
 	//
-	// - **audit**: Alert mode.
+	// - **audit**: Generates alerts.
 	//
 	// This parameter is required.
 	//
@@ -56,23 +56,23 @@ type ModifyWebLockCreateConfigRequest struct {
 	//
 	// /home/admin/tomcat
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// The folder to exclude from web tamper proofing protection.
+	// The directory that does not require web tamper-proofing (excluded directory).
 	//
-	// > This parameter is required when the Defense mode **Mode*	- is set to **blacklist*	- pattern.
+	// > If the defense pattern **Mode*	- is set to **blacklist**, you must configure this parameter.
 	//
 	// example:
 	//
 	// /home/admin/test
 	ExclusiveDir *string `json:"ExclusiveDir,omitempty" xml:"ExclusiveDir,omitempty"`
-	// The file to exclude from web tamper proofing protection.
+	// The files that do not require web tamper-proofing (excluded files).
 	//
-	// > This parameter is required when the Defense mode **Mode*	- is set to **blacklist*	- pattern.
+	// > If the defense pattern **Mode*	- is set to **blacklist**, you must configure this parameter.
 	//
 	// example:
 	//
 	// /home/admin/apache.log
 	ExclusiveFile *string `json:"ExclusiveFile,omitempty" xml:"ExclusiveFile,omitempty"`
-	// The file types to exclude from web tamper proofing protection. Separate multiple file types with semicolons (;). Valid values:
+	// The file types that do not require web tamper-proofing (excluded file types). Separate multiple file types with a semicolon. Valid values:
 	//
 	// - php
 	//
@@ -102,21 +102,21 @@ type ModifyWebLockCreateConfigRequest struct {
 	//
 	// - png
 	//
-	// > This parameter is required when the Defense mode **Mode*	- is set to **blacklist*	- pattern.
+	// > If the defense pattern **Mode*	- is set to **blacklist**, you must configure this parameter.
 	//
 	// example:
 	//
 	// jpg
 	ExclusiveFileType *string `json:"ExclusiveFileType,omitempty" xml:"ExclusiveFileType,omitempty"`
-	// The file to protect.
+	// The files that require protection.
 	//
-	// > This parameter is required when the Defense mode **Mode*	- is set to **whitelist*	- pattern.
+	// > If the defense pattern **Mode*	- is set to **whitelist**, you must configure this parameter.
 	//
 	// example:
 	//
 	// /home/admin/test.log
 	InclusiveFile *string `json:"InclusiveFile,omitempty" xml:"InclusiveFile,omitempty"`
-	// The file types to protect with web tamper proofing. Separate multiple file types with semicolons (;). Valid values:
+	// The file types that require web tamper-proofing. Separate multiple file types with a semicolon. Valid values:
 	//
 	// - php
 	//
@@ -146,23 +146,23 @@ type ModifyWebLockCreateConfigRequest struct {
 	//
 	// - png
 	//
-	// > This parameter is required when the Defense mode **Mode*	- is set to **whitelist*	- pattern.
+	// > If the defense pattern **Mode*	- is set to **whitelist**, you must configure this parameter.
 	//
 	// example:
 	//
 	// jpg
 	InclusiveFileType *string `json:"InclusiveFileType,omitempty" xml:"InclusiveFileType,omitempty"`
-	// The language type of the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The local backup path used for secure backup of the protected directory.
+	// The local backup path used for the secure backup of the protected directory.
 	//
 	// This parameter is required.
 	//
@@ -170,17 +170,17 @@ type ModifyWebLockCreateConfigRequest struct {
 	//
 	// /usr/local/backup
 	LocalBackupDir *string `json:"LocalBackupDir,omitempty" xml:"LocalBackupDir,omitempty"`
-	// The protection directory mode. Valid values:
+	// The protection mode of the directory. Valid values:
 	//
-	// - **whitelist**: whitelist mode. Protects only the specified directories and file types.
+	// - **whitelist**: Whitelist mode. Protects the added protected directories and file types.
 	//
-	// - **blacklist**: blacklist mode. Protects all subdirectories, file types, and specified files under the protected directory that are not excluded.
+	// - **blacklist**: Blacklist mode. Protects all subdirectories, file types, and specified files under the added protected directory that are not excluded.
 	//
 	// example:
 	//
 	// whitelist
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//

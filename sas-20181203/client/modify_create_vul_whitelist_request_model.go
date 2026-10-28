@@ -47,6 +47,10 @@ type ModifyCreateVulWhitelistRequest struct {
 	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
 	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 1234567890123456
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The scope in which the whitelist takes effect. The value is a JSON string that contains the following fields:
 	//

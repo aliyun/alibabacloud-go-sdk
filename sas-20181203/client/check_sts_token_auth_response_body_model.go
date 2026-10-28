@@ -16,13 +16,13 @@ type iCheckStsTokenAuthResponseBody interface {
 }
 
 type CheckStsTokenAuthResponseBody struct {
-	// The ID of the Alibaba Cloud account.
+	// The customer UID.
 	//
 	// example:
 	//
 	// 185685871307****
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

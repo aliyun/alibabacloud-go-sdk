@@ -46,99 +46,99 @@ type ListCheckItemWarningMachineRequest struct {
 	//
 	// 8
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The name of the field that is used to query containers.
+	// The name of the container security query parameter.
 	//
 	// example:
 	//
 	// clusterId
 	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	// The value of the field that is used to query containers.
+	// The value of the container security query parameter.
 	//
 	// example:
 	//
 	// ce89cdd0ea732472a8703821b19e****
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number of the page to return. Pages start from page **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the asset group.
+	// The ID of the asset group to query.
 	//
-	// > You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to query the ID of the asset group.
+	// > You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to obtain the value of this parameter.
 	//
 	// example:
 	//
 	// 1161****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries to display on each page during paging in a paged query. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned by default.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave this parameter empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword that is used to query servers in fuzzy match mode.
+	// The fuzzy match keyword for servers.
 	//
 	// example:
 	//
 	// 225
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the member accounts in the resource folder (Alibaba Cloud account).
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1082098404740323
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The type of the check item.
+	// The category to which the check item belongs.
 	//
 	// example:
 	//
 	// cis
 	RiskType *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
-	// The data source. Default value: default. Valid values:
+	// The data source. If you leave this parameter empty, the baseline check results for servers are queried by default. Valid values:
 	//
-	// 	- **default**: The check items of baselines for hosts.
+	// - **default**: server
 	//
-	// 	- **agentless**: The check items of baselines for agentless detection.
+	// - **agentless**: agentless
 	//
 	// example:
 	//
 	// agentless
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The status of the check item. Valid values:
+	// The status of the check item. Default value: null. Valid values:
 	//
-	// 	- **1**: failed
+	// - **1**: failed
 	//
-	// 	- **2**: verifying
+	// - **2**: verifying
 	//
-	// 	- **3**: passed
+	// - **3**: passed
 	//
-	// 	- **6**: ignored
+	// - **6**: ignored
 	//
-	// 	- **7**: fixing
+	// - **7**: fixing
 	//
-	// 	- **8**: fixed
+	// - **8**: fixed
 	//
 	// example:
 	//
 	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The UUID array of the servers.
+	// The list of server UUIDs.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 

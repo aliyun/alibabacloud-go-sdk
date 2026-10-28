@@ -20,7 +20,7 @@ type iDescribeHoneyPotSuspStatisticsRequest interface {
 }
 
 type DescribeHoneyPotSuspStatisticsRequest struct {
-	// The source of the request. Set the value to **honeypot**.
+	// Specifies the source of the request. Set the value to **honeypot**.
 	//
 	// This parameter is required.
 	//
@@ -28,17 +28,17 @@ type DescribeHoneyPotSuspStatisticsRequest struct {
 	//
 	// honeypot
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language of the request and response. Default value: **zh**. Valid values:
+	// Specifies the language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The time range of the data to query. Unit: days.
+	// Specifies the time range of the data to query. Unit: days.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeHoneyPotSuspStatisticsRequest struct {
 	//
 	// 30
 	StatisticsDays *int32 `json:"StatisticsDays,omitempty" xml:"StatisticsDays,omitempty"`
-	// The Asset Type to query. Valid values:
+	// Specifies the asset type to query. Valid values:
 	//
 	// - **vpcInstanceId**: VPC-connected instance
 	//

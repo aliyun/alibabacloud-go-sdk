@@ -89,8 +89,11 @@ type DescribePropertyUserDetailRequest struct {
 	// example:
 	//
 	// 192.168.XX.XX
-	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// Specifies whether to use the NextToken method to retrieve the vulnerability list data. If this parameter is used, TotalCount is no longer returned. Valid values:
 	//
 	// - **true**: Uses the NextToken method.

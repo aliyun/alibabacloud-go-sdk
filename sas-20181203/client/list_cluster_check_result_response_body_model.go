@@ -18,11 +18,11 @@ type iListClusterCheckResultResponseBody interface {
 }
 
 type ListClusterCheckResultResponseBody struct {
-	// Information on check results.
+	// The check result information.
 	Checks []*ListClusterCheckResultResponseBodyChecks `json:"Checks,omitempty" xml:"Checks,omitempty" type:"Repeated"`
-	// Pagination information.
+	// The pagination information.
 	PageInfo *ListClusterCheckResultResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the current request.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -84,139 +84,147 @@ func (s *ListClusterCheckResultResponseBody) Validate() error {
 }
 
 type ListClusterCheckResultResponseBodyChecks struct {
-	// Subtype of the cloud product.
+	// The subtype of the cloud service.
 	//
 	// example:
 	//
 	// 0
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
-	// Asset type.
+	// The asset type.
 	//
 	// example:
 	//
 	// 0
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// ID of the check item.
+	// The ID of the check item.
 	//
 	// example:
 	//
 	// 5
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// Information about the standards, requirements, and sections associated with the check result.
+	// The standards, regulations, and sections associated with the check result.
 	CheckPolicies []*ListClusterCheckResultResponseBodyChecksCheckPolicies `json:"CheckPolicies,omitempty" xml:"CheckPolicies,omitempty" type:"Repeated"`
-	// Name of the check item.
+	// The name of the check item.
 	//
 	// example:
 	//
 	// OSS-PublicReadOpenManifestFileWithoutEncryption
 	CheckShowName *string `json:"CheckShowName,omitempty" xml:"CheckShowName,omitempty"`
-	// Source type of the security check item:
+	// The source type of the Threat Detection Service check item. Valid values:
 	//
-	// - **CUSTOM**:User-defined
+	//  - **CUSTOM**: Custom.
 	//
-	// - **SYSTEM**:Predefined by the Security Platform
+	//  - **SYSTEM**: Predefined by the Threat Detection Service platform.
 	//
 	// example:
 	//
 	// SYSTEM
 	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// Subtype of the cloud product asset. Values:
+	// The asset subtype of the cloud service. Valid values:
 	//
-	// - When **InstanceType*	- is **ECS**, this parameter can take the following values:
+	// - If **InstanceType*	- is set to **ECS**, valid values are:
 	//
-	//   - **INSTANCE**
+	//     - **INSTANCE**
 	//
-	//   - **DISK**
+	//     - **DISK**
 	//
-	//   - **SECURITY_GROUP**
+	//     - **SECURITY_GROUP**
 	//
-	// - When **InstanceType*	- is **ACR**, this parameter can take the following values:
+	// - If **InstanceType*	- is set to **ACR**, valid values are:
 	//
-	//   - **REPOSITORY_ENTERPRISE**
+	//     - **REPOSITORY_ENTERPRISE**
 	//
-	//   - **REPOSITORY_PERSON**
+	//     - **REPOSITORY_PERSON**
 	//
-	// - When **InstanceType*	- is **RAM**, this parameter can take the following values:
+	// - If **InstanceType*	- is set to **RAM**, valid values are:
 	//
-	//   - **ALIAS**
+	//     - **ALIAS**
 	//
-	//   - **USER**
+	//     - **USER**
 	//
-	//   - **POLICY**
+	//     - **POLICY**
 	//
-	//   - **GROUP**
+	//     - **GROUP**
 	//
-	// - When **InstanceType*	- is **WAF**, this parameter can take the following values:
+	// - If **InstanceType*	- is set to **WAF**, valid values are:
 	//
-	//   - **DOMAIN**
+	//     - **DOMAIN**
 	//
-	// - For other **InstanceType*	- values, this parameter can take the following value:
+	// - If **InstanceType*	- is set to other values, valid values are:
 	//
-	//   - **INSTANCE**
+	//     - **INSTANCE**
 	//
 	// example:
 	//
 	// DISK
 	InstanceSubType *string `json:"InstanceSubType,omitempty" xml:"InstanceSubType,omitempty"`
-	// Asset type of the cloud product.
+	// The asset type of the cloud service.
 	//
 	// example:
 	//
 	// Workload
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Timestamp of the latest check, in milliseconds.
+	// The timestamp of the latest check. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1657793398000
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
-	// Risk level of the check item. Possible values:
+	// The risk level of the check item. Valid values:
 	//
-	// - **HIGH**:High
+	// - **HIGH**: High.
 	//
-	// - **MEDIUM**:Medium
+	// - **MEDIUM**: Medium.
 	//
-	// - **LOW**:Low
+	// - **LOW**: Low.
 	//
 	// example:
 	//
 	// HIGH
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Status of the check item. Values:
+	// The status of the check item. Valid values:
 	//
-	// - **PASS**: Passed
+	// - **PASS**: Passed.
 	//
-	// - **NOT_PASS**: Not passed
+	// - **NOT_PASS**: Failed.
 	//
-	// - **CHECKING**: Checking
+	// - **CHECKING**: Checking.
 	//
-	// - **NOT_CHECK**: Not checked
+	// - **NOT_CHECK**: Not checked.
 	//
-	// - **WHITELIST**: Whitelisted
+	// - **WHITELIST**: Whitelisted.
 	//
 	// example:
 	//
 	// PASS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Whether the check depends on TRIAL permissions.
+	// Specifies whether the check depends on the TRIAL permission.
 	//
 	// example:
 	//
 	// true
 	TrialPermission *bool `json:"TrialPermission,omitempty" xml:"TrialPermission,omitempty"`
-	// Whether the check item requires enabling data delivery of operation audit for more than 30 days to build a behavior baseline.
+	// Specifies whether the check item requires enabling data delivery for ActionTrail for more than 30 days to build a behavior baseline. Valid values:
 	//
-	// - **1**:Required
+	// - **1**: Yes.
 	//
-	// - **0**:Not Required
+	// - **0**: No.
 	//
 	// example:
 	//
 	// 1
 	TrialPermissionType *int32 `json:"TrialPermissionType,omitempty" xml:"TrialPermissionType,omitempty"`
-	// Vendor of the asset. Values:
+	// The vendor of the asset. Valid values:
 	//
-	// 0: Alibaba Cloud 3: Other cloud 4: Other cloud 5: Other cloud 7: Other cloud
+	// 0: Alibaba Cloud.
+	//
+	// 3: Other cloud.
+	//
+	// 4: Other cloud.
+	//
+	// 5: Other cloud.
+	//
+	// 7: Other cloud.
 	//
 	// example:
 	//
@@ -372,37 +380,37 @@ func (s *ListClusterCheckResultResponseBodyChecks) Validate() error {
 }
 
 type ListClusterCheckResultResponseBodyChecksCheckPolicies struct {
-	// Requirement ID of the check item.
+	// The ID of the regulation for the check item.
 	//
 	// example:
 	//
 	// 2
 	RequirementId *int64 `json:"RequirementId,omitempty" xml:"RequirementId,omitempty"`
-	// Display name of the requirement for the check item.
+	// The display name of the regulation for the check item.
 	//
 	// example:
 	//
 	// Alibaba cloud OSS best security practices
 	RequirementShowName *string `json:"RequirementShowName,omitempty" xml:"RequirementShowName,omitempty"`
-	// Section ID of the check item.
+	// The ID of the section for the check item.
 	//
 	// example:
 	//
 	// 3
 	SectionId *int64 `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// Display name of the section for the check item.
+	// The display name of the section for the check item.
 	//
 	// example:
 	//
 	// Log Audit
 	SectionShowName *string `json:"SectionShowName,omitempty" xml:"SectionShowName,omitempty"`
-	// Standard ID of the check item.
+	// The ID of the standard for the check item.
 	//
 	// example:
 	//
 	// 1
 	StandardId *int64 `json:"StandardId,omitempty" xml:"StandardId,omitempty"`
-	// Display name of the standard for the check item.
+	// The display name of the standard for the check item.
 	//
 	// example:
 	//
@@ -477,25 +485,25 @@ func (s *ListClusterCheckResultResponseBodyChecksCheckPolicies) Validate() error
 }
 
 type ListClusterCheckResultResponseBodyPageInfo struct {
-	// The number of data entries displayed on the current page during pagination.
+	// The number of data entries displayed on the current page during paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Page number in the pagination query.
+	// The page number of the current page during paging in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Number of items per page in the pagination query. The default value is **20**, indicating that 20 items are displayed per page.
+	// The number of alerting events to display on each page during paging in a paged query. Default value: **20**, which indicates that 20 alerting events are displayed on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of data entries.
+	// The total number of entries.
 	//
 	// example:
 	//

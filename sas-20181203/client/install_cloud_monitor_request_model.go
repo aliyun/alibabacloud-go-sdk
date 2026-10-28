@@ -30,7 +30,7 @@ type InstallCloudMonitorRequest struct {
 	//
 	// usY*****R_U
 	AgentAccessKey *string `json:"AgentAccessKey,omitempty" xml:"AgentAccessKey,omitempty"`
-	// The AccessSecret required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](https://help.aliyun.com/document_detail/114948.html) operation to obtain this parameter.
+	// The AccessKey secret required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](https://help.aliyun.com/document_detail/114948.html) operation to obtain this parameter.
 	//
 	// > This parameter is required only when you install the CloudMonitor agent on a non-Alibaba Cloud server.
 	//
@@ -38,7 +38,7 @@ type InstallCloudMonitorRequest struct {
 	//
 	// UCxF2R1sIO90XlU9****
 	AgentSecretKey *string `json:"AgentSecretKey,omitempty" xml:"AgentSecretKey,omitempty"`
-	// The version of the CloudMonitor agent to install. You can obtain the latest CloudMonitor agent version from [Plugin overview](https://help.aliyun.com/document_detail/183431.html).
+	// The version of the CloudMonitor agent to install. You can obtain the latest CloudMonitor agent version from [Agent overview](https://help.aliyun.com/document_detail/183431.html).
 	//
 	// This parameter is required.
 	//

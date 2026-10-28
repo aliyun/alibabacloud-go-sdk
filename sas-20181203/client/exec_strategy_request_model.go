@@ -18,17 +18,17 @@ type iExecStrategyRequest interface {
 }
 
 type ExecStrategyRequest struct {
-  // The action to perform. Default value: **exec**. Valid values:
+  // Specifies the action for this execution. Default value: **exec**. Valid values:
   // 
-  // - **exec**: exec.
+  // - **exec**: Execute.
   // 
-  // - **terminate**: stop.
+  // - **terminate**: Stop.
   // 
   // example:
   // 
   // terminate
   ExecAction *string `json:"ExecAction,omitempty" xml:"ExecAction,omitempty"`
-  // The language of the request and response. Default value: **zh**. Valid values:
+  // Specifies the language of the request and response. Default value: **zh**. Valid values:
   // 
   // - **zh**: Chinese.
   // 
@@ -40,7 +40,7 @@ type ExecStrategyRequest struct {
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
   // The ID of the baseline check policy.
   // 
-  // >You can call the [DescribeStrategy](~~DescribeStrategy~~) operation to obtain this parameter.
+  // >You can call the [DescribeStrategy](~~DescribeStrategy~~) operation to obtain the policy ID.
   // 
   // example:
   // 

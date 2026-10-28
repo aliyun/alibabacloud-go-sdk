@@ -14,7 +14,7 @@ type iBatchCreateMaliciousNoteRequest interface {
 }
 
 type BatchCreateMaliciousNoteRequest struct {
-	// The batches.
+	// The batch list.
 	ImageMaliciousFileList []*BatchCreateMaliciousNoteRequestImageMaliciousFileList `json:"ImageMaliciousFileList,omitempty" xml:"ImageMaliciousFileList,omitempty" type:"Repeated"`
 }
 
@@ -49,15 +49,13 @@ func (s *BatchCreateMaliciousNoteRequest) Validate() error {
 }
 
 type BatchCreateMaliciousNoteRequestImageMaliciousFileList struct {
-	// The ID of the alert.
-	//
-	// >  You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the alert IDs.
+	// The alert ID. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query this parameter.
 	//
 	// example:
 	//
 	// 1
 	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The description.
+	// The note.
 	//
 	// example:
 	//

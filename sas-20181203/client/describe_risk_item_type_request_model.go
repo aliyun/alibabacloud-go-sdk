@@ -22,7 +22,7 @@ type DescribeRiskItemTypeRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//

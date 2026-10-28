@@ -24,13 +24,13 @@ type DescribeTargetRequest struct {
 	//
 	// - **cve**: Linux software vulnerability
 	//
-	// - **emg**: emergency vulnerability.
+	// - **emg**: emergency vulnerability
 	//
 	// example:
 	//
 	// {"vulType":"cms"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The query type. Set this parameter to vul.
+	// The query type. Set the value to vul.
 	//
 	// example:
 	//

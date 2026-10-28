@@ -20,7 +20,7 @@ type iDescribeIdcProbeListRequest interface {
 }
 
 type DescribeIdcProbeListRequest struct {
-	// The page number of the page to return. Default value: 1, which indicates that the first page is returned.
+	// Specifies the page number of the page to return. Default value: 1.
 	//
 	// example:
 	//
@@ -32,19 +32,19 @@ type DescribeIdcProbeListRequest struct {
 	//
 	// 3K IDC
 	IdcName *string `json:"IdcName,omitempty" xml:"IdcName,omitempty"`
-	// The maximum number of entries per page when paging. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+	// Specifies the maximum number of entries to return on each page for a paging query. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// > Do not leave PageSize empty.
+	// > Specify a value for the PageSize parameter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The usage status of the probe. Valid values:
+	// The status of the probe. Valid values:
 	//
-	// - **0**: enabled
+	// - **0**: Enabled.
 	//
-	// - **1**: disabled.
+	// - **1**: Disabled.
 	//
 	// example:
 	//

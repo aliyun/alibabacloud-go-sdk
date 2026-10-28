@@ -14,7 +14,7 @@ type iBatchUpdateMaliciousFileWhitelistConfigRequest interface {
 }
 
 type BatchUpdateMaliciousFileWhitelistConfigRequest struct {
-	// The whitelist rules.
+	// The list of whitelist rules for sensitive file alerts in agentless detection.
 	ConfigList []*BatchUpdateMaliciousFileWhitelistConfigRequestConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
 }
 
@@ -49,63 +49,63 @@ func (s *BatchUpdateMaliciousFileWhitelistConfigRequest) Validate() error {
 }
 
 type BatchUpdateMaliciousFileWhitelistConfigRequestConfigList struct {
-	// The ID of the whitelist rule. If you do not specify this parameter, a whitelist rule is created.
+	// The ID of the whitelist rule for sensitive file alerts in agentless detection. This parameter is optional. If you do not specify this parameter, a new rule is created. You can call the [ListMaliciousFileWhitelistConfigs](~~ListMaliciousFileWhitelistConfigs~~) operation to obtain the ID of the whitelist rule for sensitive files.
 	//
 	// example:
 	//
 	// 1
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The name of the alert.
+	// The alerting name. Valid values:
 	//
-	// 	- Set the value to **ALL**, which indicates all alert types.
+	// - **ALL**: all Alarm Metrics.
 	//
 	// example:
 	//
 	// ALL
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The field that you want to use in the whitelist rule.
+	// The field used to determine the whitelist for sensitive file alerts.
 	//
 	// example:
 	//
 	// fileMd5
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The value of the field that you want to use in the whitelist rule.
+	// The expected field value to be whitelisted.
 	//
 	// example:
 	//
 	// b2cf9747ee49d8d9b105cf16e078cc16
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// The logical operator that you want to use in the whitelist rule.
+	// The operator used to evaluate the rule. Valid values:
 	//
-	// 	- Set the value to strEqual, which indicates the equality operator (=).
+	// - strEqual: equal to.
 	//
 	// example:
 	//
 	// strEqual
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The feature to which this operation belongs.
+	// The business source. Valid values:
 	//
-	// 	- Set the value to agentless, which indicates the agentless detection feature.
+	// - agentless: agentless detection.
 	//
 	// example:
 	//
 	// agentless
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The type of the assets on which you want the whitelist rule to take effect. Valid values:
+	// The type of the target to which the rule applies. Valid values:
 	//
-	// 	- ALL: all assets
+	// - ALL: all assets.
 	//
-	// 	- SELECTION_KEY: selected assets
+	// - SELECTION_KEY: assets selected by using the asset selection component.
 	//
 	// example:
 	//
 	// ALL
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The assets on which you want the whitelist rule to take effect. Valid values:
+	// The scope of the target to which the rule applies. Valid values:
 	//
-	// 	- ALL: all assets
+	// - ALL: all assets.
 	//
-	// 	- Others: selected assets
+	// - Other values: the key of the asset scope selected by using the asset selection component.
 	//
 	// example:
 	//

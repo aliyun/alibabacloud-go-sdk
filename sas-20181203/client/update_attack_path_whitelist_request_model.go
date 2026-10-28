@@ -26,11 +26,11 @@ type iUpdateAttackPathWhitelistRequest interface {
 }
 
 type UpdateAttackPathWhitelistRequest struct {
-	// List of cloud product assets in the attack path.
+	// The list of cloud assets in the attack path.
 	AttackPathAssetList []*UpdateAttackPathWhitelistRequestAttackPathAssetList `json:"AttackPathAssetList,omitempty" xml:"AttackPathAssetList,omitempty" type:"Repeated"`
-	// Attack path whitelist ID.
+	// The ID of the attack path whitelist.
 	//
-	// > You can call [ListAttackPathWhitelist](~~ListAttackPathWhitelist~~) to query the attack path whitelist ID.
+	// > You can call [ListAttackPathWhitelist](~~ListAttackPathWhitelist~~) to query the ID of the attack path whitelist.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UpdateAttackPathWhitelistRequest struct {
 	//
 	// apwl-b33dec0acf9b42aabde032d656c0****
 	AttackPathWhitelistId *string `json:"AttackPathWhitelistId,omitempty" xml:"AttackPathWhitelistId,omitempty"`
-	// Path name.
+	// The path name.
 	//
 	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path name.
 	//
@@ -46,7 +46,7 @@ type UpdateAttackPathWhitelistRequest struct {
 	//
 	// ecs_get_credential_by_create_login_profile
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
-	// Path type.
+	// The path type.
 	//
 	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path type.
 	//
@@ -54,23 +54,23 @@ type UpdateAttackPathWhitelistRequest struct {
 	//
 	// role_escalation
 	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
-	// Remark information.
+	// The remark.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Whitelist name.
+	// The name of the whitelist.
 	//
 	// example:
 	//
 	// test
 	WhitelistName *string `json:"WhitelistName,omitempty" xml:"WhitelistName,omitempty"`
-	// Whitelist type. Values:
+	// The whitelist type. Valid values:
 	//
-	// - **ALL_ASSET**: All assets
+	// - **ALL_ASSET**: all assets.
 	//
-	// - **PART_ASSET**: Partial assets
+	// - **PART_ASSET**: partial assets.
 	//
 	// example:
 	//
@@ -163,51 +163,51 @@ func (s *UpdateAttackPathWhitelistRequest) Validate() error {
 }
 
 type UpdateAttackPathWhitelistRequestAttackPathAssetList struct {
-	// Subtype of the cloud product asset.
+	// The subtype of the cloud asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud product asset.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud asset.
 	//
 	// example:
 	//
 	// 0
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
-	// Type of the cloud product asset.
+	// The type of the cloud asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud product asset.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud asset.
 	//
 	// example:
 	//
 	// 0
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// Cloud product asset instance ID.
+	// Instance ID of the cloud asset instance.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the cloud product asset instance ID.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query instance ID of the cloud asset instance.
 	//
 	// example:
 	//
 	// i-8vb0e8qdaj0yyxjo****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Node type, with values:
+	// The node type. Valid values:
 	//
-	// - **start**: Start point.
+	// - **start**: start node.
 	//
-	// - **end**: End point.
+	// - **end**: end node.
 	//
 	// example:
 	//
 	// start
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Region ID of the cloud product asset instance.
+	// The region ID of the cloud asset instance.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud product asset instance.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud asset instance.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Vendor of the cloud product asset.
+	// The vendor of the cloud asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the vendor of the cloud product asset.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the vendor of the cloud asset.
 	//
 	// example:
 	//

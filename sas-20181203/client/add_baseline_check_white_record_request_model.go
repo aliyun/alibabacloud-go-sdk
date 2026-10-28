@@ -24,43 +24,43 @@ type iAddBaselineCheckWhiteRecordRequest interface {
 type AddBaselineCheckWhiteRecordRequest struct {
 	// The ID of the check item.
 	//
-	// >  You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to query the IDs of check items.
+	// > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.
 	//
 	// example:
 	//
 	// 76
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The reason why the check item is added to the whitelist.
+	// The reason for adding the item to the whitelist.
 	//
 	// example:
 	//
-	// 无效
+	// Invalid
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The data source. If you leave this parameter empty, the default value is used. Valid values:
+	// The data source. If this parameter is left empty, servers are queried by default. Valid values:
 	//
-	// 	- **default**: server
+	// - **default**: server
 	//
-	// 	- **agentless**: agentless detection
+	// - **agentless**: agentless
 	//
 	// example:
 	//
 	// agentless
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The type of the assets on which the whitelist rule takes effect. Valid values:
+	// The type of the target to which the whitelist applies. Valid values:
 	//
-	// 	- **all_instance**: all servers
+	// - **all_instance**: all servers
 	//
-	// 	- **instance**: specific servers
+	// - **instance**: specified servers
 	//
 	// example:
 	//

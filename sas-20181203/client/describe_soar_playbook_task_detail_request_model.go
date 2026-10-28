@@ -18,9 +18,9 @@ type iDescribeSoarPlaybookTaskDetailRequest interface {
 }
 
 type DescribeSoarPlaybookTaskDetailRequest struct {
-	// Playbook ID.
+	// The ID of the playbook.
 	//
-	// > You can obtain this parameter by calling the [DescribePlaybooks](https://help.aliyun.com/document_detail/2627461.html) interface.
+	// >You can call the [DescribePlaybooks](https://help.aliyun.com/document_detail/3000306.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type DescribeSoarPlaybookTaskDetailRequest struct {
 	//
 	// 123
 	PlaybookId *int64 `json:"PlaybookId,omitempty" xml:"PlaybookId,omitempty"`
-	// The vulnerability ID passed when creating the policy task.
+	// The ID of the vulnerability passed when creating the policy task.
 	//
-	// > You can obtain this parameter by calling the [DescribeVulList](~~DescribeVulList~~) interface.
+	// >You can call the [DescribeVulList](~~DescribeVulList~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type DescribeSoarPlaybookTaskDetailRequest struct {
 	//
 	// 14
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// UUID of the playbook task execution.
+	// The UUID of the playbook task execution.
 	//
-	// > You can obtain this parameter by calling the [DescribeSoarRecords](https://help.aliyun.com/document_detail/2627455.html) interface.
+	// >You can call the [DescribeSoarRecords](https://help.aliyun.com/document_detail/2627455.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

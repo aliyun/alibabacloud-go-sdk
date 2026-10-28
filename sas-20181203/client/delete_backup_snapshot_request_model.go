@@ -24,9 +24,9 @@ type DeleteBackupSnapshotRequest struct {
 	BackupSnapshotList []*DeleteBackupSnapshotRequestBackupSnapshotList `json:"BackupSnapshotList,omitempty" xml:"BackupSnapshotList,omitempty" type:"Repeated"`
 	// Specifies whether to retain the latest snapshot. Valid values:
 	//
-	// - **true**: retains the latest snapshot.
+	// - **true**: Yes.
 	//
-	// - **false**: does not retain the latest snapshot.
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -103,11 +103,11 @@ type DeleteBackupSnapshotRequestBackupSnapshotList struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region of the Security Center instance. Valid values:
 	//
-	// - **cn-hangzhou**: China (Hangzhou).
+	// - **cn-hangzhou**: China (Hangzhou)
 	//
-	// - **ap-southeast-1**: Singapore.
+	// - **ap-southeast-1**: Singapore
 	//
-	// - **cn-beijing**: China (Beijing).
+	// - **cn-beijing**: China (Beijing)
 	//
 	// This parameter is required.
 	//
@@ -115,9 +115,9 @@ type DeleteBackupSnapshotRequestBackupSnapshotList struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the snapshot to delete.
+	// The ID of the snapshot to be deleted.
 	//
-	// >You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to obtain this parameter.
+	// > You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -127,13 +127,13 @@ type DeleteBackupSnapshotRequestBackupSnapshotList struct {
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// - **ECS_FILE**: backup snapshot of ECS files.
+	// - **ECS_FILE**: backup snapshots of ECS files
 	//
-	// - **OSS**: backup snapshot of Alibaba Cloud OSS.
+	// - **OSS**: backup snapshots of Alibaba Cloud OSS
 	//
-	// - **NAS**: backup snapshot of Alibaba Cloud NAS.
+	// - **NAS**: backup snapshots of Alibaba Cloud NAS
 	//
-	// - **OTS_TABLE**: backup snapshot of Alibaba Cloud Tablestore.
+	// - **OTS_TABLE**: backup snapshots of Alibaba Cloud Tablestore
 	//
 	// This parameter is required.
 	//
@@ -143,7 +143,7 @@ type DeleteBackupSnapshotRequestBackupSnapshotList struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The ID of the backup vault for the restoration task.
 	//
-	// >You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to obtain this parameter.
+	// > You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

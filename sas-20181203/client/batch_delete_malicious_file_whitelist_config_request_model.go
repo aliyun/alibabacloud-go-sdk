@@ -14,7 +14,7 @@ type iBatchDeleteMaliciousFileWhitelistConfigRequest interface {
 }
 
 type BatchDeleteMaliciousFileWhitelistConfigRequest struct {
-	// The IDs of the whitelist rules. You can call the [ListMaliciousFileWhitelistConfigs](~~ListMaliciousFileWhitelistConfigs~~) operation to query the IDs of whitelist rules.
+	// The list of sensitive file whitelist rule IDs. Call [ListMaliciousFileWhitelistConfigs](~~ListMaliciousFileWhitelistConfigs~~) to obtain the IDs of sensitive file whitelist rules.
 	ConfigIdList []*int64 `json:"ConfigIdList,omitempty" xml:"ConfigIdList,omitempty" type:"Repeated"`
 }
 

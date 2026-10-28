@@ -14,7 +14,7 @@ type iGetFunctionTrialStatusRequest interface {
 }
 
 type GetFunctionTrialStatusRequest struct {
-	// The name of the function module.
+	// The name of the feature module.
 	//
 	// example:
 	//

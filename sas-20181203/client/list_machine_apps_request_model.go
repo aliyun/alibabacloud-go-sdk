@@ -28,13 +28,13 @@ type iListMachineAppsRequest interface {
 }
 
 type ListMachineAppsRequest struct {
-	// The SAE application ID.
+	// The ID of the SAE application.
 	//
 	// example:
 	//
 	// 5b41f4bf-349f-4263-89b1-9234c034****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The SAE application name.
+	// The name of the SAE application.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ListMachineAppsRequest struct {
 	//
 	// - **7**: Ultimate Edition
 	//
-	// - **10**: value-added service Edition.
+	// - **10**: Value-added Service Edition
 	//
 	// example:
 	//
 	// 7
 	AuthVersion *string `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
-	// The page number of the current page in a paging query.
+	// The page number of the current page returned during paging in a paged query.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type ListMachineAppsRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of entries to return per page during paging in a paged query.
 	//
 	// example:
 	//

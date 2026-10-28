@@ -145,7 +145,7 @@ type GetModuleTrialAuthInfoResponseBodyDataTrialRecordList struct {
 	//
 	// example:
 	//
-	// [100,1]
+	// [1,100]
 	AuthLimitList *string `json:"AuthLimitList,omitempty" xml:"AuthLimitList,omitempty"`
 	// The end time of the trial use.
 	//

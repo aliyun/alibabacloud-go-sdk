@@ -28,23 +28,23 @@ type iUpdateBaselineCheckWhiteRecordRequest interface {
 type UpdateBaselineCheckWhiteRecordRequest struct {
 	// The ID of the check item.
 	//
-	// > Call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.
+	// > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.
 	//
 	// example:
 	//
 	// 16
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The reason for adding the whitelist entry.
+	// The reason for adding the item to the whitelist.
 	//
 	// example:
 	//
@@ -56,23 +56,23 @@ type UpdateBaselineCheckWhiteRecordRequest struct {
 	//
 	// 14
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The list of asset UUIDs for which container names are to be removed from the whitelist.
+	// The list of UUIDs of the assets whose container names need to be removed from the whitelist.
 	RemoveContainerUuids []*string `json:"RemoveContainerUuids,omitempty" xml:"RemoveContainerUuids,omitempty" type:"Repeated"`
 	// The data source. Valid values:
 	//
-	// - **default**: host
+	// - **default**: Server
 	//
-	// - **agentless**: agentless.
+	// - **agentless**: agentless
 	//
 	// example:
 	//
 	// agentless
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The type of the target on which the whitelist takes effect. Valid values:
+	// The type of the target to which the whitelist applies. Valid values:
 	//
-	// - **all_instance**: all servers
+	// - **all_instance**: All servers
 	//
-	// - **instance**: specific servers.
+	// - **instance**: Specified servers
 	//
 	// example:
 	//

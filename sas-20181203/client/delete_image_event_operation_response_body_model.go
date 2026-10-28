@@ -22,7 +22,7 @@ type iDeleteImageEventOperationResponseBody interface {
 }
 
 type DeleteImageEventOperationResponseBody struct {
-	// The HTTP status code.
+	// The status code of the API call.
 	//
 	// example:
 	//
@@ -30,23 +30,23 @@ type DeleteImageEventOperationResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DeleteImageEventOperationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The message returned in the response.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// A3D7C47D-3F11-57BB-90E8-E5C20C61****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DeleteImageEventOperationResponseBody) Validate() error {
 }
 
 type DeleteImageEventOperationResponseBodyData struct {
-	// The primary key of the alert disposal rule.
+	// The primary key of the alert handling rule.
 	//
 	// example:
 	//

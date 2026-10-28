@@ -18,17 +18,17 @@ type iReceiveFunctionTrialRewardByAliUidRequest interface {
 type ReceiveFunctionTrialRewardByAliUidRequest struct {
 	// The name of the trial feature. Valid values:
 	//
-	// - **trail_honeypot_reward**: cloud honeypot
+	// - **trail_honeypot_reward**: Cloud honeypot.
 	//
-	// - **trail_file_detect_api_reward**: malicious file detection SDK.
+	// - **trail_file_detect_api_reward**: Malicious file detection SDK.
 	//
 	// example:
 	//
 	// trail_honeypot_reward
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The language type for the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
 	// - **en**: English.
 	//

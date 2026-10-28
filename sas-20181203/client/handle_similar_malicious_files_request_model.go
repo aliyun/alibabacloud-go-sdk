@@ -42,15 +42,15 @@ type HandleSimilarMaliciousFilesRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The handling action. Valid values:
 	//
-	// - addWhitelist: adds to the whitelist.
+	// - addWhitelist: Adds the alert to the whitelist.
 	//
-	// - offWhitelist: removes from the whitelist.
+	// - offWhitelist: Removes the alert from the whitelist.
 	//
-	// - offline_handled: handled offline.
+	// - offline_handled: Marks the alert as handled offline.
 	//
-	// - mark_mis_info: submits as a false positive.
+	// - mark_mis_info: Submits the alert as a false positive.
 	//
-	// - ignore: ignores the alert.
+	// - ignore: Ignores the alert.
 	//
 	// This parameter is required.
 	//
@@ -60,21 +60,21 @@ type HandleSimilarMaliciousFilesRequest struct {
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The file source. Valid values:
 	//
-	// - agentless: host detection.
+	// - agentless: Host detection.
 	//
-	// - ecs_snapshot: user snapshot detection.
+	// - ecs_snapshot: User snapshot detection.
 	//
-	// - ecs_image: user custom image detection.
+	// - ecs_image: Custom image detection.
 	//
 	// example:
 	//
 	// agentless
 	ScanRange *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
-	// The batch processing scenario. Valid values:
+	// The scenario for batch processing. Valid values:
 	//
-	// - same_file_md5: same file MD5.
+	// - same_file_md5: The same file MD5.
 	//
-	// - default (default value): same alerting type.
+	// - default: The same alerting type. This is the default value.
 	//
 	// example:
 	//
