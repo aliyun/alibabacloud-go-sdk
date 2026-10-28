@@ -32,13 +32,13 @@ type GetInstanceGroupInspectReportListResponseBody struct {
 	Data []*GetInstanceGroupInspectReportListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	//
-	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an exception message such as an error code is returned.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -123,37 +123,25 @@ func (s *GetInstanceGroupInspectReportListResponseBody) Validate() error {
 }
 
 type GetInstanceGroupInspectReportListResponseBodyData struct {
-	// The time when the task was created. The time is in the YYYY-MM-DD HH:mm:ss format.
+	// The time when the task was created, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-12-11 00:39:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The diagnosis date in the YYYY-MM-DD format.
+	// The date of diagnosis, in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2025-12-10
 	ReportDate *string `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
-	// The report ID.
+	// The ID of the report.
 	//
 	// example:
 	//
 	// 13f52040-5a6e-42c3-bb84-051f5d6d****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The task status. Valid values:
-	//
-	// - 0: WAITING_UNREADY.
-	//
-	// - 1: WAITING_READY.
-	//
-	// - 2: PROCESSING.
-	//
-	// - 3: FINISHED.
-	//
-	// - 4: ERROR.
-	//
-	// - -1: STOPPED.
+	// The status of the task. Valid values: WAITING_UNREADY = 0, WAITING_READY = 1, PROCESSING = 2, FINISHED = 3, ERROR = 4, and STOPPED = -1.
 	//
 	// example:
 	//

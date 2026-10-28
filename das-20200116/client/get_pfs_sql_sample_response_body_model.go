@@ -22,17 +22,17 @@ type iGetPfsSqlSampleResponseBody interface {
 }
 
 type GetPfsSqlSampleResponseBody struct {
-	// The HTTP status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The SQL sample data.
+	// The returned SQL sample data.
 	Data []*GetPfsSqlSampleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned for the request.
 	//
-	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -123,31 +123,31 @@ func (s *GetPfsSqlSampleResponseBody) Validate() error {
 }
 
 type GetPfsSqlSampleResponseBodyData struct {
-	// The number of internal on-disk temporary tables that were created when the SQL statement was executed.
+	// The number of on-disk internal temporary tables created during statement execution.
 	//
 	// example:
 	//
 	// 0
 	CreateTmpDiskTables *int32 `json:"CreateTmpDiskTables,omitempty" xml:"CreateTmpDiskTables,omitempty"`
-	// The number of internal temporary tables that were created when the SQL statement was executed.
+	// The number of internal temporary tables created during statement execution.
 	//
 	// example:
 	//
 	// 0
 	CreateTmpTables *int32 `json:"CreateTmpTables,omitempty" xml:"CreateTmpTables,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// testDB
 	Db *string `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The end ID of the event. By default, the value of this parameter is NULL when the event starts and is changed to the event ID when the event ends.
+	// The end event ID. This parameter is NULL by default when the event starts and is updated to the current event ID of the thread when the event ends.
 	//
 	// example:
 	//
 	// 0
 	EndEventId *int32 `json:"EndEventId,omitempty" xml:"EndEventId,omitempty"`
-	// The number of errors returned for the SQL statement.
+	// The number of errors in the SQL statement.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type GetPfsSqlSampleResponseBodyData struct {
 	//
 	// 63735293
 	EventId *int32 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The name of the event.
+	// The event name.
 	//
 	// example:
 	//
@@ -171,39 +171,39 @@ type GetPfsSqlSampleResponseBodyData struct {
 	//
 	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The execution duration. Unit: millisecond.
+	// The execution duration, in milliseconds.
 	//
 	// example:
 	//
 	// 0.199
 	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	// The lock wait duration. Unit: millisecond.
+	// The lock wait time, in milliseconds.
 	//
 	// example:
 	//
 	// 0.09
 	LockLatency *float64 `json:"LockLatency,omitempty" xml:"LockLatency,omitempty"`
-	// The ID of the logical database.
+	// The logical database ID.
 	//
 	// example:
 	//
 	// xxxxx
 	LogicId *string `json:"LogicId,omitempty" xml:"LogicId,omitempty"`
-	// Indicates whether the server failed to find an index that can be used for the SQL statement. Valid values:
+	// Indicates whether the server could not find a good index to use for the statement. Valid values:
 	//
-	// - **1**: yes.
+	// - **1**: Yes.
 	//
-	// - **0**: no.
+	// - **0**: No.
 	//
 	// example:
 	//
 	// 1
 	NoGoodIndexUsed *int32 `json:"NoGoodIndexUsed,omitempty" xml:"NoGoodIndexUsed,omitempty"`
-	// Indicates whether table scans were performed when indexes were not used. Valid values:
+	// Indicates whether the statement performed a table scan without using an index. Valid values:
 	//
-	// - **1**: yes.
+	// - **1**: Yes.
 	//
-	// - **0**: no.
+	// - **0**: No.
 	//
 	// example:
 	//
@@ -217,13 +217,13 @@ type GetPfsSqlSampleResponseBodyData struct {
 	//
 	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The number of rows affected by the SQL statement.
+	// The number of affected rows.
 	//
 	// example:
 	//
 	// 0
 	RowsAffected *int32 `json:"RowsAffected,omitempty" xml:"RowsAffected,omitempty"`
-	// The number of rows scanned by the SQL statement.
+	// The number of scanned rows.
 	//
 	// example:
 	//
@@ -235,29 +235,29 @@ type GetPfsSqlSampleResponseBodyData struct {
 	//
 	// 0
 	RowsSent *int32 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
-	// The number of joins that are used to perform table scans without using indexes.
+	// The number of joins that perform table scans without using indexes.
 	//
-	// > : This parameter is used for the scenario in which indexes are not used in a union query. If the returned value is not 0, check the indexes of tables.
+	// 	Notice: This parameter counts the joins that do not use indexes during a join query. If the value is not 0, check the table indexes.
 	//
 	// example:
 	//
 	// 0
 	SelectFullJoin *int32 `json:"SelectFullJoin,omitempty" xml:"SelectFullJoin,omitempty"`
-	// The number of joins that used ranges on referenced tables.
+	// The number of joins that use a range search on a reference table.
 	//
 	// example:
 	//
 	// 0
 	SelectFullRangeJoin *int32 `json:"SelectFullRangeJoin,omitempty" xml:"SelectFullRangeJoin,omitempty"`
-	// The number of joins that used ranges on the first table.
+	// The number of joins that use a range on the first table.
 	//
 	// example:
 	//
 	// 0
 	SelectRange *int32 `json:"SelectRange,omitempty" xml:"SelectRange,omitempty"`
-	// The number of joins that did not have key values. The keys and values were checked for each row of data.
+	// The number of joins without keys that check for key usage after each row.
 	//
-	// > : This parameter is used for the scenario in which indexes are not used in a union query. If the returned value is not 0, check the indexes of tables.
+	// 	Notice: This parameter counts the joins that do not use indexes during a join query. If the value is not 0, check the table indexes.
 	//
 	// example:
 	//
@@ -269,13 +269,13 @@ type GetPfsSqlSampleResponseBodyData struct {
 	//
 	// 0
 	SelectScan *int32 `json:"SelectScan,omitempty" xml:"SelectScan,omitempty"`
-	// The number of merges that the sorting algorithm must perform.
+	// The number of merge passes that the sort algorithm must perform.
 	//
 	// example:
 	//
 	// 0
 	SortMergePasses *int32 `json:"SortMergePasses,omitempty" xml:"SortMergePasses,omitempty"`
-	// The number of times the data was sorted by using ranges.
+	// The number of sorts that use a range.
 	//
 	// example:
 	//
@@ -287,19 +287,19 @@ type GetPfsSqlSampleResponseBodyData struct {
 	//
 	// 0
 	SortRows *int32 `json:"SortRows,omitempty" xml:"SortRows,omitempty"`
-	// The number of sorts that were performed during table scans.
+	// The number of sort scans.
 	//
 	// example:
 	//
 	// 1
 	SortScan *int32 `json:"SortScan,omitempty" xml:"SortScan,omitempty"`
-	// The sample SQL statement.
+	// The SQL sample.
 	//
 	// example:
 	//
 	// select 	- from xxxx where ****
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	// The SQL statement ID.
+	// The SQL ID.
 	//
 	// example:
 	//
@@ -311,7 +311,7 @@ type GetPfsSqlSampleResponseBodyData struct {
 	//
 	// 81751940
 	ThreadId *int32 `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	// The time when the SQL statement was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the SQL statement was executed. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -323,7 +323,7 @@ type GetPfsSqlSampleResponseBodyData struct {
 	//
 	// 196278346919****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The number of warnings returned for the SQL statement.
+	// The number of warnings for the SQL statement.
 	//
 	// example:
 	//

@@ -30,25 +30,25 @@ type ModifyForwardSqlLogConfigResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// ForwardSqlLogResult
 	Data *ModifyForwardSqlLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
-	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request is successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request fails.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *ModifyForwardSqlLogConfigResponseBody) Validate() error {
 }
 
 type ModifyForwardSqlLogConfigResponseBodyData struct {
-	// The LogStore name for real-time delivery to Simple Log Service.
+	// The name of the Simple Log Service Logstore for real-time log delivery.
 	//
 	// example:
 	//

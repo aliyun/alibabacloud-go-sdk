@@ -42,7 +42,7 @@ type iGetFullRequestStatResultByInstanceIdRequest interface {
 }
 
 type GetFullRequestStatResultByInstanceIdRequest struct {
-	// Specifies whether to sort the results in ascending order. By default, the results are not sorted in ascending order.
+	// Specifies whether to sort the results in ascending order. Default value: false.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type GetFullRequestStatResultByInstanceIdRequest struct {
 	//
 	// dbtest01
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time of the query. The time is a UNIX timestamp in milliseconds.
 	//
-	// > The end time must be later than the start time. The interval cannot exceed one day.
+	// > The end time must be later than the start time, and the interval between the start time and the end time cannot exceed one day.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type GetFullRequestStatResultByInstanceIdRequest struct {
 	//
 	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The keywords that are used for query.
+	// The query keyword.
 	//
 	// example:
 	//
@@ -80,19 +80,19 @@ type GetFullRequestStatResultByInstanceIdRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The node ID.
 	//
-	// > You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
+	// > For PolarDB for MySQL instances, the node ID is required.
 	//
 	// example:
 	//
 	// pi-bp12v7243x012****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The field by which to sort the returned entries. Default value: **count**. Valid values:
+	// The field by which to sort the results. Default value: **count**.
 	//
 	// - **count**: the number of executions.
 	//
-	// - **avgRt**: the average execution duration.
+	// - **avgRt**: the average execution time.
 	//
-	// - **rtRate**: the execution duration percentage.
+	// - **rtRate**: the execution time proportion.
 	//
 	// - **rowsExamined**: the total number of scanned rows.
 	//
@@ -104,15 +104,15 @@ type GetFullRequestStatResultByInstanceIdRequest struct {
 	//
 	// count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The IP address of the client that executes the SQL statement.
+	// The IP address of the client that executed the SQL statement.
 	//
-	// > This parameter is optional. If this parameter is specified, the full request statistics of the specified IP address are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
+	// > This parameter is optional. If you specify a client IP address, the full request data of the specified client IP address is aggregated. If you leave this parameter empty, the full request data of the entire database instance is aggregated.
 	//
 	// example:
 	//
 	// 172.26.XX.XXX
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number for the paged query. The paging starts from 1. Default value: 1.
 	//
 	// This parameter is required.
 	//
@@ -120,7 +120,7 @@ type GetFullRequestStatResultByInstanceIdRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The data volume per page for paging in a paged query. Default value: 20.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +128,7 @@ type GetFullRequestStatResultByInstanceIdRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The role of the node in the PolarDB-X 2.0 instance. Valid values:
+	// The node information of the PolarDB-X 2.0 database instance. Valid values:
 	//
 	// - **polarx_cn**: compute node.
 	//
@@ -140,7 +140,7 @@ type GetFullRequestStatResultByInstanceIdRequest struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The SQL ID.
 	//
-	// > If this parameter is specified, the full request statistics of the specified SQL query are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
+	// > If you specify an SQL ID, the full request data of the specified SQL ID is aggregated. If you leave this parameter empty, the full request data of the entire database instance is aggregated.
 	//
 	// example:
 	//
@@ -148,15 +148,15 @@ type GetFullRequestStatResultByInstanceIdRequest struct {
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **LOGIN**, **LOGOUT**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
 	//
-	// > If your database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, or a PolarDB-X 2.0 instance, the statistics can be collected based on the SQL statement type.
+	// > If the database instance is an ApsaraDB RDS for MySQL, PolarDB for MySQL, or PolarDB-X 2.0 instance, you can aggregate data by SQL statement type.
 	//
 	// example:
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the query. The format is a UNIX timestamp, in milliseconds.
 	//
-	// > The start time can be up to 90 days earlier than the current time.
+	// > The start time must be within the SQL Explorer storage duration for the database instance and cannot be more than 90 days earlier than the current time.
 	//
 	// This parameter is required.
 	//
@@ -164,9 +164,9 @@ type GetFullRequestStatResultByInstanceIdRequest struct {
 	//
 	// 1645581813000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The ID of the Alibaba Cloud account that was used to create the database instance.
+	// The instance ID, which is the ID of the Alibaba Cloud account that created the database instance.
 	//
-	// > This parameter is optional. The system can automatically obtain the Alibaba Cloud account ID based on the value of InstanceId when you call the GetFullRequestOriginStatByInstanceId operation.
+	// > This parameter is optional. After you enter the ID of the target database instance, the system automatically obtains the instance ID when you call the API operation.
 	//
 	// example:
 	//

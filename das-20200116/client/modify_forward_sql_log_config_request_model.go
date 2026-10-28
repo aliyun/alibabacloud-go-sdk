@@ -22,9 +22,9 @@ type iModifyForwardSqlLogConfigRequest interface {
 type ModifyForwardSqlLogConfigRequest struct {
 	// Specifies whether to enable the feature. Valid values:
 	//
-	// - **true**: Enable.
+	// - **true**: yes.
 	//
-	// - **false**: Disable.
+	// - **false**: no.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ModifyForwardSqlLogConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The service type. Valid values:
 	//
-	// DAS_OPS: enables TOP KEY delivery.
+	// - DAS_OPS: enables top key delivery.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +50,9 @@ type ModifyForwardSqlLogConfigRequest struct {
 	//
 	// DAS_OPS
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The task source. Valid values:
+	// The source of the task. Valid values:
 	//
-	// - TOP_KEY: enables TOP KEY delivery.
+	// - TOP_KEY: enables top key delivery.
 	//
 	// This parameter is required.
 	//

@@ -28,15 +28,15 @@ type DescribeSqlInsightStatisticResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The envelope for asynchronous query results. The first call returns **ResultId*	- and **State**. Poll with the exact same request parameters until **State*	- is **SUCCESS**, then retrieve the statistical details from **List**.
+	// The envelope for the asynchronous query result. The first call returns **ResultId*	- and **State**. You must poll the API with the exact same request parameters until **State*	- is **SUCCESS**, and then retrieve the statistical details from **List**.
 	Data *DescribeSqlInsightStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. An error description is returned when the request fails.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request, which can be used for troubleshooting.
+	// The unique identifier of the request, which can be used for troubleshooting.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeSqlInsightStatisticResponseBody struct {
 	//
 	// - **true**: The request was successful.
 	//
-	// - **false**: The request failed. Check the **Code*	- and **Message*	- fields to determine the cause.
+	// - **false**: The request failed. Check the cause based on **Code*	- and **Message**.
 	//
 	// example:
 	//
@@ -117,11 +117,11 @@ func (s *DescribeSqlInsightStatisticResponseBody) Validate() error {
 }
 
 type DescribeSqlInsightStatisticResponseBodyData struct {
-	// The SQL Explorer statistical query results.
+	// The SQL Explorer statistical query result.
 	//
 	// > Returned only when **State*	- is **SUCCESS**.
 	Data *DescribeSqlInsightStatisticResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code of the asynchronous query failure.
+	// The error code for the failed asynchronous query.
 	//
 	// > This field is returned only when the query fails.
 	//
@@ -129,13 +129,13 @@ type DescribeSqlInsightStatisticResponseBodyData struct {
 	//
 	// -10200020
 	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the asynchronous query has completed. Valid values:
+	// Indicates whether the asynchronous query has finished. Valid values:
 	//
 	// - **true**: **State*	- is **SUCCESS*	- or **FAIL**.
 	//
 	// - **false**: **State*	- is **RUNNING**.
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
-	// The error description of the asynchronous query failure.
+	// The error description for the failed asynchronous query.
 	//
 	// > This field is returned only when the query fails.
 	//
@@ -151,31 +151,31 @@ type DescribeSqlInsightStatisticResponseBodyData struct {
 	//
 	// 507044db6c4eadfa2dab9b084e80****
 	RequestKey *string `json:"RequestKey,omitempty" xml:"RequestKey,omitempty"`
-	// The asynchronous query result ID, in the format of an async_ prefix followed by a hash value computed from all business parameters of the request.
+	// The asynchronous query result ID, which is in the format of an async_ prefix followed by a hash value. It is calculated based on all business parameters of the current request.
 	//
-	// > Repeated calls with the same parameters return the same query result. Therefore, when polling, you must use exactly the same request parameters as the initial call. Any change in parameters generates a different **ResultId*	- and triggers a new query.
+	// > Repeated calls with the same parameters hit the same query result. Therefore, you must carry the exact same request parameters as the first call when polling. Any parameter change generates a different **ResultId*	- and triggers a new query.
 	//
 	// example:
 	//
 	// async__507044db6c4eadfa2dab9b084e80****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
-	// The current status of the asynchronous query. Valid values:
+	// The current state of the asynchronous query. Valid values:
 	//
-	// - **RUNNING**: The query is in progress. Continue polling.
+	// - **RUNNING**: The query is running. Continue polling.
 	//
-	// - **SUCCESS**: The query succeeded. The **Data*	- field contains data only in this state.
+	// - **SUCCESS**: The query is successful. The **Data*	- field has a value.
 	//
 	// - **FAIL**: The query failed.
 	//
-	// > When the query fails, the operation directly returns an error code and error message instead of a normal response body with **State*	- set to **FAIL**.
+	// > When the query fails, the operation directly returns an error code and an error message, instead of a normal response body with **State*	- set to **FAIL**.
 	//
 	// example:
 	//
 	// SUCCESS
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The time when the asynchronous query was submitted. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the asynchronous query was submitted, which is a UNIX timestamp in milliseconds.
 	//
-	// > When the query fails, this value indicates the time when the failure occurred.
+	// > When the query fails, this value is the time when the failure occurred.
 	//
 	// example:
 	//
@@ -275,7 +275,7 @@ func (s *DescribeSqlInsightStatisticResponseBodyData) Validate() error {
 type DescribeSqlInsightStatisticResponseBodyDataData struct {
 	// The extended information.
 	//
-	// > This field is not returned by this operation.
+	// > This operation does not return this field.
 	//
 	// example:
 	//
@@ -283,19 +283,19 @@ type DescribeSqlInsightStatisticResponseBodyDataData struct {
 	Extra interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The list of SQL Explorer statistical results. Each element is a statistical entry under an aggregation dimension.
 	List []*DescribeSqlInsightStatisticResponseBodyDataDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The current page number, corresponding to the request parameter **PageNo**.
+	// The current page number, which corresponds to the request parameter **PageNo**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page, corresponding to the request parameter **PageSize**.
+	// The number of entries returned per page, which corresponds to the request parameter **PageSize**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of statistical entries that match the query conditions. You can use this value for pagination calculation.
+	// The total number of statistical entries that meet the query conditions, which can be used for pagination.
 	//
 	// example:
 	//
@@ -378,13 +378,13 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	//
 	// 30
 	AffectRows *int64 `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
-	// The value of the aggregation dimension for this statistical entry, which varies based on the **Type*	- request parameter. Valid values:
+	// The value of the aggregation dimension for the current statistics. This value varies based on the **Type*	- request parameter. Valid values:
 	//
 	// - When aggregated by SQL template: the SQL template ID, which is the same as **SqlId**.
 	//
-	// - When **Type*	- is set to **FullRequestOrigin**: the access source address.
+	// - When **Type*	- is **FullRequestOrigin**: the source access address.
 	//
-	// - When **Type*	- is set to **FullRequestUser**: the database username.
+	// - When **Type*	- is **FullRequestUser**: the database username.
 	//
 	// example:
 	//
@@ -392,7 +392,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	AggKey *string `json:"AggKey,omitempty" xml:"AggKey,omitempty"`
 	// The average number of affected rows.
 	//
-	// > Returned only for Lindorm instances. The value is null for other database engines.
+	// > Returned only for Lindorm instances. For other engines, the value is null.
 	//
 	// example:
 	//
@@ -400,15 +400,15 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	AvgAffectRows *float64 `json:"AvgAffectRows,omitempty" xml:"AvgAffectRows,omitempty"`
 	// The average CPU time consumed by SQL execution, in microseconds.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
 	// 12.5
 	AvgCpuTime *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	// The average number of rows fetched by the PolarDB-X compute node from data nodes.
+	// The average number of rows fetched by PolarDB-X compute nodes from data nodes.
 	//
-	// > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other database engines.
+	// > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
 	//
 	// example:
 	//
@@ -416,7 +416,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	AvgFrows *float64 `json:"AvgFrows,omitempty" xml:"AvgFrows,omitempty"`
 	// The average lock wait time per execution, in milliseconds.
 	//
-	// > Data is available only when **Version*	- is set to **1**.
+	// > Data is available only when **Version*	- is **1**.
 	//
 	// example:
 	//
@@ -424,7 +424,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	AvgLockWaitTime *float64 `json:"AvgLockWaitTime,omitempty" xml:"AvgLockWaitTime,omitempty"`
 	// The average number of logical reads per execution.
 	//
-	// > Data is available only when **Version*	- is set to **1**.
+	// > Data is available only when **Version*	- is **1**.
 	//
 	// example:
 	//
@@ -432,7 +432,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	AvgLogicalRead *float64 `json:"AvgLogicalRead,omitempty" xml:"AvgLogicalRead,omitempty"`
 	// The average number of physical asynchronous reads per execution.
 	//
-	// > Data is available only when **Version*	- is set to **1**.
+	// > Data is available only when **Version*	- is **1**.
 	//
 	// example:
 	//
@@ -440,7 +440,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	AvgPhysicalAsyncRead *float64 `json:"AvgPhysicalAsyncRead,omitempty" xml:"AvgPhysicalAsyncRead,omitempty"`
 	// The average number of physical reads.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
@@ -448,33 +448,33 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	AvgPhysicalRead *float64 `json:"AvgPhysicalRead,omitempty" xml:"AvgPhysicalRead,omitempty"`
 	// The average number of physical synchronous reads per execution.
 	//
-	// > Data is available only when **Version*	- is set to **1**.
+	// > Data is available only when **Version*	- is **1**.
 	//
 	// example:
 	//
 	// 0
 	AvgPhysicalSyncRead *float64 `json:"AvgPhysicalSyncRead,omitempty" xml:"AvgPhysicalSyncRead,omitempty"`
-	// The average number of updated rows and returned rows for the PolarDB-X compute node.
+	// The average number of updated and returned rows for PolarDB-X compute nodes.
 	//
-	// > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other database engines.
+	// > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
 	//
 	// example:
 	//
 	// 10
 	AvgRows *float64 `json:"AvgRows,omitempty" xml:"AvgRows,omitempty"`
-	// The average number of rows scanned per execution.
+	// The average number of scanned rows per execution.
 	//
 	// example:
 	//
 	// 53421.0
 	AvgRowsExamined *float64 `json:"AvgRowsExamined,omitempty" xml:"AvgRowsExamined,omitempty"`
-	// The average number of rows returned per execution.
+	// The average number of returned rows per execution.
 	//
 	// example:
 	//
 	// 14
 	AvgRowsReturned *float64 `json:"AvgRowsReturned,omitempty" xml:"AvgRowsReturned,omitempty"`
-	// The average number of rows updated per execution.
+	// The average number of updated rows per execution.
 	//
 	// example:
 	//
@@ -488,15 +488,15 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	AvgRt *float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
 	// The average number of scanned rows.
 	//
-	// > This field is not returned by this operation. Use **AvgRowsExamined*	- for the average number of scanned rows.
+	// > This operation does not return this field. To obtain the average number of scanned rows, use **AvgRowsExamined**.
 	//
 	// example:
 	//
 	// 53421.0
 	AvgScanRows *float64 `json:"AvgScanRows,omitempty" xml:"AvgScanRows,omitempty"`
-	// The average number of requests sent by the PolarDB-X compute node to data nodes.
+	// The average number of requests sent from PolarDB-X compute nodes to data nodes.
 	//
-	// > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other database engines.
+	// > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
 	//
 	// example:
 	//
@@ -504,19 +504,19 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	AvgScnt *float64 `json:"AvgScnt,omitempty" xml:"AvgScnt,omitempty"`
 	// The average number of logical writes.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
 	// 10
 	AvgWrites *float64 `json:"AvgWrites,omitempty" xml:"AvgWrites,omitempty"`
-	// The total number of executions of the SQL template within the statistical interval.
+	// The total number of executions for the SQL template within the statistical period.
 	//
 	// example:
 	//
 	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ratio of the number of executions of this statistical entry to the total number of executions of all SQL statements on the instance. The value ranges from 0 to 1.
+	// The ratio of the number of times the SQL template in this entry is executed to the total number of times SQL statements execute on the instance. Valid values: 0 to 1.
 	//
 	// example:
 	//
@@ -524,7 +524,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	CountRate *float64 `json:"CountRate,omitempty" xml:"CountRate,omitempty"`
 	// The total CPU time consumed by SQL execution, in microseconds.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
@@ -536,31 +536,31 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	//
 	// dbtest01
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The error code returned by SQL execution.
+	// The error code returned by the SQL execution.
 	//
-	// > The error code is a detail of a single SQL statement. This operation returns template-level aggregated statistics and does not return this field. Use **ErrorCount*	- for error information.
+	// > Error codes belong to the details of a single SQL statement. This operation returns aggregated statistics at the template level and does not return this field. To check error occurrences, use **ErrorCount**.
 	//
 	// example:
 	//
 	// 1146
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The number of execution errors for the SQL template within the statistical interval.
+	// The number of execution errors for the SQL template within the statistical period.
 	//
 	// example:
 	//
 	// 1
 	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
-	// The time when the SQL template first appeared.
+	// The time when the SQL template first appeared. The time is a UNIX timestamp in milliseconds.
 	//
-	// > This field is not returned by this operation.
+	// > This operation does not return this field.
 	//
 	// example:
 	//
 	// 1659308149000
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// The total number of rows fetched by the PolarDB-X compute node from data nodes.
+	// The total number of rows fetched by PolarDB-X compute nodes from data nodes.
 	//
-	// > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other database engines.
+	// > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
 	//
 	// example:
 	//
@@ -568,7 +568,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	Frows *int64 `json:"Frows,omitempty" xml:"Frows,omitempty"`
 	// The hash value of the SQL template, returned together with the SQL template.
 	//
-	// > This value is generated by the PolarDB-X compute node kernel. The value is empty for non-PolarDB-X compute node instances.
+	// > This value is generated by the kernel of PolarDB-X compute nodes. For instances that are not PolarDB-X compute nodes, the value is empty.
 	//
 	// example:
 	//
@@ -576,7 +576,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
 	// The endpoint of the instance to which the statistical data belongs.
 	//
-	// > Whether this field is returned depends on the aggregated storage link of the instance. The value is null for some links.
+	// > Whether this field is returned depends on the converged storage link of the instance. For some links, the value is null.
 	//
 	// example:
 	//
@@ -584,7 +584,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The total lock wait time, in milliseconds.
 	//
-	// > Data is available only when **Version*	- is set to **1**.
+	// > Data is available only when **Version*	- is **1**.
 	//
 	// example:
 	//
@@ -592,15 +592,15 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	LockWaitTime *float64 `json:"LockWaitTime,omitempty" xml:"LockWaitTime,omitempty"`
 	// The total number of logical reads.
 	//
-	// > Data is available only when **Version*	- is set to **1**.
+	// > Data is available only when **Version*	- is **1**.
 	//
 	// example:
 	//
 	// 165848
 	LogicalRead *float64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
-	// The maximum CPU time in a single execution, in microseconds.
+	// The maximum CPU time consumed in a single execution, in microseconds.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
@@ -608,7 +608,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	MaxCpuTime *int64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
 	// The maximum number of logical reads in a single execution.
 	//
-	// > Data is available only when **Version*	- is set to **1**.
+	// > Data is available only when **Version*	- is **1**.
 	//
 	// example:
 	//
@@ -616,21 +616,21 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	MaxLogicalRead *int64 `json:"MaxLogicalRead,omitempty" xml:"MaxLogicalRead,omitempty"`
 	// The maximum number of physical reads in a single execution.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
 	// 3186
 	MaxPhysicalRead *int64 `json:"MaxPhysicalRead,omitempty" xml:"MaxPhysicalRead,omitempty"`
-	// The maximum number of rows scanned in a single execution.
+	// The maximum number of scanned rows in a single execution.
 	//
-	// > This field is not returned by this operation. Use **RowsExamined*	- and **AvgRowsExamined*	- for scanned row counts.
+	// > This operation does not return this field. To obtain the number of scanned rows, use **RowsExamined*	- and **AvgRowsExamined**.
 	//
 	// example:
 	//
 	// 318613
 	MaxRowsExamined *int64 `json:"MaxRowsExamined,omitempty" xml:"MaxRowsExamined,omitempty"`
-	// The maximum number of rows returned in a single execution.
+	// The maximum number of returned rows in a single execution.
 	//
 	// example:
 	//
@@ -644,15 +644,15 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	MaxRt *float64 `json:"MaxRt,omitempty" xml:"MaxRt,omitempty"`
 	// The maximum number of logical writes in a single execution.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
 	// 12
 	MaxWrites *int64 `json:"MaxWrites,omitempty" xml:"MaxWrites,omitempty"`
-	// The minimum CPU time in a single execution, in microseconds.
+	// The minimum CPU time consumed in a single execution, in microseconds.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
@@ -660,7 +660,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	MinCpuTime *int64 `json:"MinCpuTime,omitempty" xml:"MinCpuTime,omitempty"`
 	// The minimum number of logical reads in a single execution.
 	//
-	// > Data is available only when **Version*	- is set to **1**.
+	// > Data is available only when **Version*	- is **1**.
 	//
 	// example:
 	//
@@ -668,13 +668,13 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	MinLogicalRead *int64 `json:"MinLogicalRead,omitempty" xml:"MinLogicalRead,omitempty"`
 	// The minimum number of physical reads in a single execution.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
 	// 12
 	MinPhysicalRead *int64 `json:"MinPhysicalRead,omitempty" xml:"MinPhysicalRead,omitempty"`
-	// The minimum number of rows returned in a single execution.
+	// The minimum number of returned rows in a single execution.
 	//
 	// example:
 	//
@@ -688,15 +688,15 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	MinRt *float64 `json:"MinRt,omitempty" xml:"MinRt,omitempty"`
 	// The minimum number of logical writes in a single execution.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
 	// 8
 	MinWrites *int64 `json:"MinWrites,omitempty" xml:"MinWrites,omitempty"`
-	// The display alias configured for the access source address.
+	// The display alias configured for the source access address.
 	//
-	// > Returned only when aggregated by access source (when **Type*	- is set to **FullRequestOrigin**). The value is null in other scenarios.
+	// > Returned only when aggregated by access source (when **Type*	- is **FullRequestOrigin**). In other scenarios, the value is null.
 	//
 	// example:
 	//
@@ -704,7 +704,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	OriginAlias *string `json:"OriginAlias,omitempty" xml:"OriginAlias,omitempty"`
 	// The source address of the client that initiated the SQL statement.
 	//
-	// > When **Type*	- is set to **FullRequestOrigin**, this field serves as the aggregation dimension for the statistical entry.
+	// > When **Type*	- is **FullRequestOrigin**, this field is the aggregation dimension for the statistics.
 	//
 	// example:
 	//
@@ -712,7 +712,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
 	// The parameter content of the SQL sample.
 	//
-	// > This operation returns template-level aggregated statistics and does not return this field.
+	// > This operation returns aggregated statistics at the template level and does not return this field.
 	//
 	// example:
 	//
@@ -720,7 +720,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The total number of physical asynchronous reads.
 	//
-	// > Data is available only when **Version*	- is set to **1**.
+	// > Data is available only when **Version*	- is **1**.
 	//
 	// example:
 	//
@@ -728,7 +728,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	PhysicalAsyncRead *float64 `json:"PhysicalAsyncRead,omitempty" xml:"PhysicalAsyncRead,omitempty"`
 	// The total number of physical reads.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
@@ -736,15 +736,15 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	PhysicalRead *int64 `json:"PhysicalRead,omitempty" xml:"PhysicalRead,omitempty"`
 	// The total number of physical synchronous reads.
 	//
-	// > Data is available only when **Version*	- is set to **1**.
+	// > Data is available only when **Version*	- is **1**.
 	//
 	// example:
 	//
 	// 0
 	PhysicalSyncRead *float64 `json:"PhysicalSyncRead,omitempty" xml:"PhysicalSyncRead,omitempty"`
-	// The port of the instance to which the statistical data belongs.
+	// The connection port of the instance to which the statistical data belongs.
 	//
-	// > Whether this field is returned depends on the aggregated storage link of the instance. The value is null for some links.
+	// > Whether this field is returned depends on the converged storage link of the instance. For some links, the value is null.
 	//
 	// example:
 	//
@@ -756,43 +756,43 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	//
 	// select 	- from t_order where id = ?
 	Psql *string `json:"Psql,omitempty" xml:"Psql,omitempty"`
-	// The total number of updated rows and returned rows for the PolarDB-X compute node.
+	// The total number of updated and returned rows for PolarDB-X compute nodes.
 	//
-	// > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other engines.
+	// > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
 	//
 	// example:
 	//
 	// 10
 	Rows *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	// The total number of rows examined by the SQL template within the statistical interval.
+	// The total number of scanned rows for the SQL template within the statistical period.
 	//
 	// example:
 	//
 	// 2048576
 	RowsExamined *int64 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
-	// The total number of rows returned by the SQL template within the statistical interval.
+	// The total number of returned rows for the SQL template within the statistical period.
 	//
 	// example:
 	//
 	// 14
 	RowsReturned *int64 `json:"RowsReturned,omitempty" xml:"RowsReturned,omitempty"`
-	// The total execution duration of the SQL template within the statistical interval. Unit: milliseconds.
+	// The total execution time of the SQL template within the statistical period, in milliseconds.
 	//
-	// > For PolarDB-X compute nodes (where **Role*	- is **polarx_cn**) with kernel versions earlier than 5.4.13, this value is converted from microseconds to milliseconds.
+	// > For PolarDB-X compute nodes (where **Role*	- is **polarx_cn**) with a kernel version earlier than 5.4.13, this value is converted from microseconds to milliseconds.
 	//
 	// example:
 	//
 	// 0.409789
 	Rt *float64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// The number of times the execution duration exceeds 1 second.
+	// The number of times the execution duration exceeded 1 second.
 	//
-	// > Whether this field is returned depends on the aggregation storage link of the instance. The value is null for certain links.
+	// > Whether this field is returned depends on the aggregated storage link of the instance. For some links, the value is null.
 	//
 	// example:
 	//
 	// 20
 	RtGreaterThanOneSecondCount *int64 `json:"RtGreaterThanOneSecondCount,omitempty" xml:"RtGreaterThanOneSecondCount,omitempty"`
-	// The ratio of the total execution duration of this entry to the total execution duration of all SQL statements on the instance. Valid values: 0 to 1.
+	// The ratio of the total execution time of this statistic to the total execution time of all SQL statements for the instance. Valid values: 0 to 1.
 	//
 	// example:
 	//
@@ -806,17 +806,17 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	//
 	// sql
 	SampleType *string `json:"SampleType,omitempty" xml:"SampleType,omitempty"`
-	// The number of rows scanned by a single SQL statement.
+	// The number of scanned rows for a single SQL statement.
 	//
-	// > This operation returns template-level aggregated statistics and does not return this field. Use the aggregated metrics **RowsExamined*	- and **AvgRowsExamined*	- instead.
+	// > This operation returns aggregated statistics at the template dimension and does not return this field. Use the aggregated metrics **RowsExamined*	- and **AvgRowsExamined*	- instead.
 	//
 	// example:
 	//
 	// 29
 	ScanRows *int64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
-	// The total number of requests sent from the PolarDB-X compute node to data nodes.
+	// The total number of requests sent from PolarDB-X compute nodes to data nodes.
 	//
-	// > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other engines.
+	// > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
 	//
 	// example:
 	//
@@ -830,13 +830,13 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	//
 	// select 	- from t_order where id = 1
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	// The SQL template ID that uniquely identifies a type of parameterized SQL statement. Multiple executions under the same template are aggregated into a single statistical entry. You can use this ID to correlate the same type of SQL across multi-dimensional queries.
+	// The SQL template ID, which uniquely identifies a category of parameterized SQL statements. Multiple executions under the same template are aggregated into a single statistic. You can use this ID to associate the same category of SQL statements across multi-dimensional queries.
 	//
 	// example:
 	//
 	// 651b56fe9418d48edb8fdf0980ec****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	// The SQL text with parameter values uniformly processed, used in sample data scenarios.
+	// The SQL text after unified processing of parameter values, used in sample data scenarios.
 	//
 	// > This operation does not return this field.
 	//
@@ -868,7 +868,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	//
 	// select
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The total number of rows updated by the SQL template within the statistical interval.
+	// The total number of updated rows for the SQL template within the statistical period.
 	//
 	// example:
 	//
@@ -878,23 +878,23 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 	// The database thread ID that executed the SQL statement.
 	//
-	// > The thread ID is a detail of a single SQL statement. This operation returns template-level aggregated statistics and does not return this field.
+	// > The thread ID belongs to the details of a single SQL statement. This operation returns aggregated statistics at the template dimension and does not return this field.
 	//
 	// example:
 	//
 	// 57472578
 	ThreadId *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	// The execution duration ratio.
+	// The execution time proportion.
 	//
-	// > This operation returns the execution duration ratio through **RtRate*	- and does not return this field.
+	// > This operation returns the execution time proportion through **RtRate*	- and does not return this field.
 	//
 	// example:
 	//
 	// 0.1384
 	TimeRate *float64 `json:"TimeRate,omitempty" xml:"TimeRate,omitempty"`
-	// The data timestamp. This value is a UNIX timestamp. Unit: milliseconds.
+	// The data timestamp, which is a UNIX timestamp in milliseconds.
 	//
-	// > The statistical results are aggregated at the SQL template level and do not return this field.
+	// > The statistical results are aggregated at the SQL template dimension and do not return this field.
 	//
 	// example:
 	//
@@ -902,35 +902,35 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The total number of affected rows.
 	//
-	// > This field is returned only for Lindorm instances. The value is null for other engines.
+	// > This field is returned only for Lindorm instances. For other engines, the value is null.
 	//
 	// example:
 	//
 	// 3810
 	TotalAffectRows *int64 `json:"TotalAffectRows,omitempty" xml:"TotalAffectRows,omitempty"`
-	// The total SQL execution duration.
+	// The total execution time of the SQL statement.
 	//
-	// > This operation does not return this field. Use **Rt*	- for the total execution duration.
+	// > This operation does not return this field. Use **Rt*	- for the total execution time.
 	//
 	// example:
 	//
 	// 310
 	TotalRt *int64 `json:"TotalRt,omitempty" xml:"TotalRt,omitempty"`
-	// The total number of rows scanned.
+	// The total number of scanned rows.
 	//
-	// > This operation does not return this field. Use **RowsExamined*	- for the total number of rows scanned.
+	// > This operation does not return this field. Use **RowsExamined*	- for the total number of scanned rows.
 	//
 	// example:
 	//
 	// 2048576
 	TotalScanRows *int64 `json:"TotalScanRows,omitempty" xml:"TotalScanRows,omitempty"`
-	// The execution count trend sequence of the SQL template, divided into time slices within the query time window.
+	// The trend sequence of execution counts for the SQL template, divided by time slices within the query time window.
 	//
-	// > This field is returned only when the request parameter **DoFillTrend*	- is set to **true*	- and the trend padding capability is enabled for the instance. The time slice interval is automatically determined by the query span. Time slices with no data may be padded with zeros.
+	// > This field is returned only when the request parameter **DoFillTrend*	- is set to **true*	- and the trend padding feature is enabled for the instance. The time slice interval is automatically determined by the query span. Time slices with no data may be padded with zeros.
 	Trend []*DescribeSqlInsightStatisticResponseBodyDataDataListTrend `json:"Trend,omitempty" xml:"Trend,omitempty" type:"Repeated"`
-	// The number of rows updated by a single SQL statement.
+	// The number of updated rows for a single SQL statement.
 	//
-	// > This operation returns template-level aggregated statistics and does not return this field. Use the aggregated metrics **SumRowsUpdated*	- and **AvgRowsUpdated*	- instead.
+	// > This operation returns aggregated statistics at the template dimension and does not return this field. Use the aggregated metrics **SumRowsUpdated*	- and **AvgRowsUpdated*	- instead.
 	//
 	// example:
 	//
@@ -938,19 +938,19 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	UpdateRows *int64 `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
 	// The database username that executed the SQL statement.
 	//
-	// > When **Type*	- is set to **FullRequestUser**, this field serves as the aggregation dimension for the statistical entry.
+	// > When **Type*	- is **FullRequestUser**, this field is the aggregation dimension for this statistic.
 	//
 	// example:
 	//
 	// testUser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
-	// The SQL Explorer data collection link version. The value **1*	- is returned when the instance collects logical read or lock wait data. Otherwise, the value **0*	- is returned. Valid values:
+	// The version of the SQL Explorer data collection link. If the instance collects logical read or lock wait data, the value is **1**. Otherwise, the value is **0**. Valid values:
 	//
 	// - **0**: V0 basic collection link.
 	//
-	// - **1**: V1 collection link, which additionally collects four metrics (**LockWaitTime**, **LogicalRead**, **PhysicalSyncRead**, and **PhysicalAsyncRead**) on top of V0.
+	// - **1**: V1 collection link, which collects four additional metrics based on V0: **LockWaitTime**, **LogicalRead**, **PhysicalSyncRead**, and **PhysicalAsyncRead**.
 	//
-	// > When the value is **0**, the extended metrics contain no data.
+	// > When **0*	- is returned, the preceding extended metrics have no data.
 	//
 	// example:
 	//
@@ -958,7 +958,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The VPC ID of the instance to which the statistical data belongs.
 	//
-	// > Whether this field is returned depends on the aggregation storage link of the instance. The value is null for certain links.
+	// > Whether this field is returned depends on the aggregated storage link of the instance. For some links, the value is null.
 	//
 	// example:
 	//
@@ -966,7 +966,7 @@ type DescribeSqlInsightStatisticResponseBodyDataDataList struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The total number of logical writes.
 	//
-	// > This metric is exclusive to SQL Server instances. The value is null for other engines.
+	// > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
 	//
 	// example:
 	//
@@ -1707,7 +1707,7 @@ func (s *DescribeSqlInsightStatisticResponseBodyDataDataList) Validate() error {
 }
 
 type DescribeSqlInsightStatisticResponseBodyDataDataListTrend struct {
-	// The timestamp of the trend data point. This value is a UNIX timestamp. Unit: milliseconds.
+	// The timestamp of the trend point, which is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

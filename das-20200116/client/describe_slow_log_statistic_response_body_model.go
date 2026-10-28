@@ -22,7 +22,7 @@ type iDescribeSlowLogStatisticResponseBody interface {
 }
 
 type DescribeSlowLogStatisticResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type DescribeSlowLogStatisticResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// AsyncResult<DBLogRecords<SlowLogStat>>
 	Data *DescribeSlowLogStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned for the request.
+	// The returned message.
 	//
-	// > If the request is successful, **Successful*	- is returned. If the request fails, exception information (such as an error code) is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeSlowLogStatisticResponseBody struct {
 	//
 	// 52D540CF-C517-1F57-BB42-9035F96******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request is successful.
+	// - **true**: The request was successful.
 	//
-	// - **false**: The request fails.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type DescribeSlowLogStatisticResponseBodyData struct {
 	//
 	// 10910
 	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the task is finished.
+	// Indicates whether the task is completed.
 	//
 	// example:
 	//
@@ -151,19 +151,19 @@ type DescribeSlowLogStatisticResponseBodyData struct {
 	//
 	// async__665ee69612f1627c7fd9f3c85075****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
-	// The current status. Valid values:
+	// The current state. Valid values:
 	//
-	// - **RUNNING**: running.
+	// - **RUNNING**: Running.
 	//
-	// - **SUCCESS**: succeeded.
+	// - **SUCCESS**: Successful.
 	//
-	// - **FAIL**: failed.
+	// - **FAIL**: Failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The request time.
+	// The request time, in the format of a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -273,7 +273,7 @@ type DescribeSlowLogStatisticResponseBodyDataData struct {
 	//
 	// 0
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	// The end time of the query task, in UNIX timestamp format. Unit: milliseconds.
+	// The end time of the query task. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// > The end time of the query task must be later than the start time.
 	//
@@ -289,7 +289,7 @@ type DescribeSlowLogStatisticResponseBodyDataData struct {
 	ItemsNumbers *int64 `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
 	// The name of the operation object.
 	Logs []*DescribeSlowLogStatisticResponseBodyDataDataLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// The maximum number of records per page for the paged query. Valid values: 5 to 100.
+	// The maximum number of records per page for paging. Valid values: 5 to 100.
 	//
 	// example:
 	//
@@ -297,25 +297,25 @@ type DescribeSlowLogStatisticResponseBodyDataData struct {
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
 	// The node ID.
 	//
-	// For MongoDB instances, specify a node for storage analysis by using this parameter. Call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/123802.html) operation to query the details of each node in a MongoDB instance.
+	// For an ApsaraDB for MongoDB instance, you can specify a node for storage analysis by using this parameter. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/123802.html) operation to query the details of each node in the ApsaraDB for MongoDB instance.
 	//
-	// - If you specify the **InsName*	- (node ID) of the target node, such as `d-bp1872fa24d5****`, this operation analyzes the corresponding Hidden node.
+	// - If you specify the **InsName*	- (node ID) of the target node, such as `d-bp1872fa24d5****`, the operation analyzes the corresponding hidden node.
 	//
-	// - If you specify the `InsName#RoleId` of the target node, such as `d-bp1872fa24d5****#299****5`, this operation analyzes the specified node.
+	// - If you specify the `InsName#RoleId` of the target node, such as `d-bp1872fa24d5****#299****5`, the operation analyzes the specified node.
 	//
-	// 	Notice: For MongoDB replica set instances, if you do not specify this parameter, this operation analyzes the only Hidden node by default. For MongoDB sharded cluster instances, specify this parameter to designate the target node.</notice>
+	// 	Notice: If you do not specify this parameter for an ApsaraDB for MongoDB replica set instance, the operation analyzes the only hidden node by default. For an ApsaraDB for MongoDB sharded cluster instance, we recommend that you specify this parameter to identify the target node.</notice>
 	//
 	// example:
 	//
 	// pi-wz99g5rn7w1x8h0sf
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The page number for the paged query. The value starts from 1. Default value: 1.
+	// The page number for paging. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	// The start time, in UNIX timestamp format. Unit: milliseconds.
+	// The start time. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -447,13 +447,13 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// edu_admin
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// -
 	AvgCPUTime *float64 `json:"AvgCPUTime,omitempty" xml:"AvgCPUTime,omitempty"`
-	// The average CPU query time. Unit: seconds.
+	// The average CPU query time, in seconds.
 	//
 	// example:
 	//
@@ -461,13 +461,13 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	AvgCPUTimeSeconds *float64 `json:"AvgCPUTimeSeconds,omitempty" xml:"AvgCPUTimeSeconds,omitempty"`
 	// The average number of documents scanned.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
 	// 10000
 	AvgDocExamined *float64 `json:"AvgDocExamined,omitempty" xml:"AvgDocExamined,omitempty"`
-	// The average number of rows fetched.
+	// The average number of pulled rows.
 	//
 	// example:
 	//
@@ -475,15 +475,15 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	AvgFrows *float64 `json:"AvgFrows,omitempty" xml:"AvgFrows,omitempty"`
 	// The average number of I/O writes.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	AvgIOWrites *float64 `json:"AvgIOWrites,omitempty" xml:"AvgIOWrites,omitempty"`
-	// The average number of rows scanned by the index.
+	// The average number of index entries scanned.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
@@ -491,13 +491,13 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	AvgKeysExamined *float64 `json:"AvgKeysExamined,omitempty" xml:"AvgKeysExamined,omitempty"`
 	// The average number of rows affected by the last statement.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	AvgLastRowsCountAffected *float64 `json:"AvgLastRowsCountAffected,omitempty" xml:"AvgLastRowsCountAffected,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
@@ -511,7 +511,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	AvgLockTimeSeconds *float64 `json:"AvgLockTimeSeconds,omitempty" xml:"AvgLockTimeSeconds,omitempty"`
 	// The average number of logical reads.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
@@ -519,31 +519,39 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	AvgLogicalIOReads *float64 `json:"AvgLogicalIOReads,omitempty" xml:"AvgLogicalIOReads,omitempty"`
 	// The average number of physical reads.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	AvgPhysicalIOReads *float64 `json:"AvgPhysicalIOReads,omitempty" xml:"AvgPhysicalIOReads,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// -
 	AvgQueryTime *float64 `json:"AvgQueryTime,omitempty" xml:"AvgQueryTime,omitempty"`
-	// The average query execution duration. Unit: seconds.
+	// The average query duration, in seconds.
 	//
 	// example:
 	//
 	// 6.211
 	AvgQueryTimeSeconds *float64 `json:"AvgQueryTimeSeconds,omitempty" xml:"AvgQueryTimeSeconds,omitempty"`
-	// The average size of the request, in bytes. This parameter is valid only for Redis.
-	AvgRequestSize *float64 `json:"AvgRequestSize,omitempty" xml:"AvgRequestSize,omitempty"`
-	// The average response size, in bytes. This parameter is valid only for Redis.
-	AvgResponseSize *float64 `json:"AvgResponseSize,omitempty" xml:"AvgResponseSize,omitempty"`
-	// The average number of rows returned.
+	// The average size of the request, in bytes (valid only for Redis).
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// example:
+	//
+	// 0
+	AvgRequestSize *float64 `json:"AvgRequestSize,omitempty" xml:"AvgRequestSize,omitempty"`
+	// The average response size, in bytes (valid only for Redis).
+	//
+	// example:
+	//
+	// 0
+	AvgResponseSize *float64 `json:"AvgResponseSize,omitempty" xml:"AvgResponseSize,omitempty"`
+	// The average number of returned rows.
+	//
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
@@ -555,27 +563,31 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 10
 	AvgRows *float64 `json:"AvgRows,omitempty" xml:"AvgRows,omitempty"`
-	// The average number of rows affected.
+	// The average number of affected rows.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	AvgRowsCountAffected *float64 `json:"AvgRowsCountAffected,omitempty" xml:"AvgRowsCountAffected,omitempty"`
-	// The average number of rows examined.
+	// The average number of scanned rows.
 	//
 	// example:
 	//
 	// 53421.0
 	AvgRowsExamined *float64 `json:"AvgRowsExamined,omitempty" xml:"AvgRowsExamined,omitempty"`
-	// The average number of rows returned.
+	// The average number of returned rows.
 	//
 	// example:
 	//
 	// 2.0
 	AvgRowsSent *float64 `json:"AvgRowsSent,omitempty" xml:"AvgRowsSent,omitempty"`
 	// The average execution duration.
+	//
+	// example:
+	//
+	// 0
 	AvgRt *float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
 	// The average number of requests.
 	//
@@ -583,15 +595,15 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 10
 	AvgScnt *float64 `json:"AvgScnt,omitempty" xml:"AvgScnt,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// -
 	CPUTime *float64 `json:"CPUTime,omitempty" xml:"CPUTime,omitempty"`
-	// The CPU query time. Unit: seconds.
+	// The CPU query time, in seconds.
 	//
-	// > This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
@@ -603,7 +615,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 10.57.84.109
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The command that was executed. This parameter is valid only for Redis.
+	// The executed command (valid only for Redis).
 	//
 	// example:
 	//
@@ -611,7 +623,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	Cmd *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
 	// The slow query statement.
 	//
-	// >This field is supported only for ApsaraDB for Tair (Redis® OSS-Compatible) database instances.
+	// > This parameter is supported only by ApsaraDB for Tair (Redis OSS-Compatible) database instances.
 	//
 	// example:
 	//
@@ -629,7 +641,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 0.2034
 	CountRate *float64 `json:"CountRate,omitempty" xml:"CountRate,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
@@ -641,7 +653,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// work-wechat-api
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The database ID. This parameter is valid only for Redis.
+	// The database ID (valid only for Redis).
 	//
 	// example:
 	//
@@ -655,21 +667,21 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
 	// The number of documents scanned.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
 	// 2000000
 	DocExamined *int64 `json:"DocExamined,omitempty" xml:"DocExamined,omitempty"`
-	// The number of documents scanned during the MongoDB operation.
+	// The number of documents scanned when the MongoDB operation is executed.
 	//
 	// example:
 	//
 	// 1
 	DocsExamined *int64 `json:"DocsExamined,omitempty" xml:"DocsExamined,omitempty"`
-	// The number of rows fetched by the compute node (CN) of the ApsaraDB for PolarDB-X 2.0 database instance.
+	// The number of rows pulled by the compute node (CN) of the PolarDB-X 2.0 instance.
 	//
-	// > This field is supported only for ApsaraDB for PolarDB-X 2.0 instances.
+	// > This parameter is supported only by ApsaraDB for PolarDB-X 2.0 database instances.
 	//
 	// example:
 	//
@@ -683,9 +695,9 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 172.23.142.178
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The host instance ID.
+	// The ID of the host instance.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
@@ -693,27 +705,27 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	HostInsId *string `json:"HostInsId,omitempty" xml:"HostInsId,omitempty"`
 	// The number of I/O writes.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	IOWrites *int64 `json:"IOWrites,omitempty" xml:"IOWrites,omitempty"`
-	// The shard name.
+	// The name of the shard.
 	//
 	// example:
 	//
 	// rm-uf6zix1z2jh1y6fe5
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The instance role.
+	// The role of the instance.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
 	// __system
 	InsRole *string `json:"InsRole,omitempty" xml:"InsRole,omitempty"`
-	// The number of rows scanned by the MongoDB index.
+	// The number of index entries scanned in MongoDB.
 	//
 	// example:
 	//
@@ -721,19 +733,19 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	KeysExamined *int64 `json:"KeysExamined,omitempty" xml:"KeysExamined,omitempty"`
 	// The number of rows affected by the last statement.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	LastRowsCountAffected *int64 `json:"LastRowsCountAffected,omitempty" xml:"LastRowsCountAffected,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// -
 	LockTime *float64 `json:"LockTime,omitempty" xml:"LockTime,omitempty"`
-	// The lock wait time. Unit: seconds.
+	// The lock wait time, in seconds.
 	//
 	// example:
 	//
@@ -741,19 +753,19 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	LockTimeSeconds *float64 `json:"LockTimeSeconds,omitempty" xml:"LockTimeSeconds,omitempty"`
 	// The number of logical reads.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	LogicalIOReads *int64 `json:"LogicalIOReads,omitempty" xml:"LogicalIOReads,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// -
 	MaxCPUTime *float64 `json:"MaxCPUTime,omitempty" xml:"MaxCPUTime,omitempty"`
-	// The maximum CPU query time. Unit: seconds.
+	// The maximum CPU query time, in seconds.
 	//
 	// example:
 	//
@@ -761,13 +773,13 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	MaxCPUTimeSeconds *float64 `json:"MaxCPUTimeSeconds,omitempty" xml:"MaxCPUTimeSeconds,omitempty"`
 	// The maximum number of documents scanned.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
 	// 1000000
 	MaxDocExamined *int64 `json:"MaxDocExamined,omitempty" xml:"MaxDocExamined,omitempty"`
-	// The maximum number of rows fetched.
+	// The maximum number of pulled rows.
 	//
 	// example:
 	//
@@ -775,15 +787,15 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	MaxFrows *int64 `json:"MaxFrows,omitempty" xml:"MaxFrows,omitempty"`
 	// The maximum number of I/O writes.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	MaxIOWrites *int64 `json:"MaxIOWrites,omitempty" xml:"MaxIOWrites,omitempty"`
-	// The maximum number of rows scanned by the index.
+	// The maximum number of index entries scanned.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
@@ -791,13 +803,13 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	MaxKeysExamined *int64 `json:"MaxKeysExamined,omitempty" xml:"MaxKeysExamined,omitempty"`
 	// The maximum number of rows affected by the last statement.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	MaxLastRowsCountAffected *int64 `json:"MaxLastRowsCountAffected,omitempty" xml:"MaxLastRowsCountAffected,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
@@ -811,7 +823,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	MaxLockTimeSeconds *float64 `json:"MaxLockTimeSeconds,omitempty" xml:"MaxLockTimeSeconds,omitempty"`
 	// The maximum number of logical reads.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
@@ -819,31 +831,39 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	MaxLogicalIOReads *int64 `json:"MaxLogicalIOReads,omitempty" xml:"MaxLogicalIOReads,omitempty"`
 	// The maximum number of physical reads.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	MaxPhysicalIOReads *int64 `json:"MaxPhysicalIOReads,omitempty" xml:"MaxPhysicalIOReads,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// -
 	MaxQueryTime *float64 `json:"MaxQueryTime,omitempty" xml:"MaxQueryTime,omitempty"`
-	// The maximum query execution duration. Unit: seconds.
+	// The maximum query duration, in seconds.
 	//
 	// example:
 	//
 	// 14.402
 	MaxQueryTimeSeconds *float64 `json:"MaxQueryTimeSeconds,omitempty" xml:"MaxQueryTimeSeconds,omitempty"`
-	// The maximum size of the request, in bytes. This parameter is valid only for Redis.
-	MaxRequestSize *float64 `json:"MaxRequestSize,omitempty" xml:"MaxRequestSize,omitempty"`
-	// The maximum response size, in bytes. This parameter is valid only for Redis.
-	MaxResponseSize *float64 `json:"MaxResponseSize,omitempty" xml:"MaxResponseSize,omitempty"`
-	// The maximum number of rows returned.
+	// The maximum size of the request, in bytes (valid only for Redis).
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// example:
+	//
+	// 0
+	MaxRequestSize *float64 `json:"MaxRequestSize,omitempty" xml:"MaxRequestSize,omitempty"`
+	// The maximum response size, in bytes (valid only for Redis).
+	//
+	// example:
+	//
+	// 0
+	MaxResponseSize *float64 `json:"MaxResponseSize,omitempty" xml:"MaxResponseSize,omitempty"`
+	// The maximum number of returned rows.
+	//
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
@@ -855,27 +875,31 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 10
 	MaxRows *int64 `json:"MaxRows,omitempty" xml:"MaxRows,omitempty"`
-	// The maximum number of rows affected.
+	// The maximum number of affected rows.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	MaxRowsCountAffected *int64 `json:"MaxRowsCountAffected,omitempty" xml:"MaxRowsCountAffected,omitempty"`
-	// The maximum number of rows examined.
+	// The maximum number of scanned rows.
 	//
 	// example:
 	//
 	// 318613
 	MaxRowsExamined *int64 `json:"MaxRowsExamined,omitempty" xml:"MaxRowsExamined,omitempty"`
-	// The maximum number of rows returned.
+	// The maximum number of returned rows.
 	//
 	// example:
 	//
 	// 256
 	MaxRowsSent *int64 `json:"MaxRowsSent,omitempty" xml:"MaxRowsSent,omitempty"`
 	// The maximum execution duration, in seconds.
+	//
+	// example:
+	//
+	// 0
 	MaxRt *float64 `json:"MaxRt,omitempty" xml:"MaxRt,omitempty"`
 	// The maximum number of requests.
 	//
@@ -885,7 +909,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	MaxScnt *int64 `json:"MaxScnt,omitempty" xml:"MaxScnt,omitempty"`
 	// The namespace.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
@@ -893,7 +917,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The node type.
 	//
-	// > Databases that support this field: ApsaraDB for MongoDB and Tair (Redis® OSS-Compatible).
+	// > This field is currently supported by ApsaraDB for MongoDB and Tair (Redis OSS-Compatible).
 	//
 	// example:
 	//
@@ -901,7 +925,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The operation type.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
@@ -915,7 +939,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	OriginAlias *string `json:"OriginAlias,omitempty" xml:"OriginAlias,omitempty"`
 	// The number of physical reads.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
@@ -929,19 +953,19 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	Psql *string `json:"Psql,omitempty" xml:"Psql,omitempty"`
 	// The query ID.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
 	// sq-1pzcdMwRb
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	// The time when the query started. Format: yyyy-MM-dd hh:mm:ss (UTC).
+	// The start time of the query. Format: yyyy-MM-dd hh:mm:ss (UTC).
 	//
 	// example:
 	//
 	// 2024-12-25T03:00:00Z
 	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
-	// The query execution time threshold. Unit: milliseconds (ms).
+	// The execution time threshold of the query, in milliseconds.
 	//
 	// example:
 	//
@@ -953,51 +977,51 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 0.1018
 	QueryTimeRate *float64 `json:"QueryTimeRate,omitempty" xml:"QueryTimeRate,omitempty"`
-	// The query execution duration. Unit: seconds.
+	// The query duration, in seconds.
 	//
 	// example:
 	//
 	// 25.472
 	QueryTimeSeconds *float64 `json:"QueryTimeSeconds,omitempty" xml:"QueryTimeSeconds,omitempty"`
-	// The return item numbers.
+	// The number of returned items.
 	//
 	// example:
 	//
-	// 暂无
+	// None
 	ReturnItemNumbers *string `json:"ReturnItemNumbers,omitempty" xml:"ReturnItemNumbers,omitempty"`
-	// The number of rows returned.
+	// The number of returned rows.
 	//
-	// >This field is supported only for ApsaraDB for MongoDB instances.
+	// > This parameter is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
 	// 1
 	ReturnNum *int64 `json:"ReturnNum,omitempty" xml:"ReturnNum,omitempty"`
-	// The total number of rows updated or returned by the compute nodes of the ApsaraDB for PolarDB-X 2.0 database instance.
+	// The total number of rows updated or returned by the compute node of the PolarDB-X 2.0 database instance.
 	//
-	// > This field is supported only for ApsaraDB for PolarDB-X 2.0 instances.
+	// > This parameter is supported only by ApsaraDB for PolarDB-X 2.0 database instances.
 	//
 	// example:
 	//
 	// 105
 	Rows *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	// The number of rows affected.
+	// The number of affected rows.
 	//
-	// >This field is supported only for ApsaraDB RDS for SQL Server instances.
+	// > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
 	// 1000
 	RowsCountAffected *int64 `json:"RowsCountAffected,omitempty" xml:"RowsCountAffected,omitempty"`
-	// The total number of rows examined.
+	// The total number of scanned rows.
 	//
-	// > Databases that currently support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
+	// > Databases that support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
 	//
 	// example:
 	//
 	// 2444081
 	RowsExamined *int64 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
-	// The number of rows returned.
+	// The number of returned rows.
 	//
 	// example:
 	//
@@ -1015,21 +1039,21 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// SELECT \\"Hello, World!\\" FROM DUAL
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// HTTP or HTTPS.
+	// The scheme, such as HTTP or HTTPS.
 	//
 	// example:
 	//
 	// HTTP
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
-	// The number of DN requests from the compute node (CN) of the ApsaraDB for PolarDB-X 2.0 database instance.
+	// The number of data node (DN) requests made by the compute node (CN) of the PolarDB-X 2.0 instance.
 	//
-	// > This field is supported only for ApsaraDB for PolarDB-X 2.0 instances.
+	// > This parameter is supported only by ApsaraDB for PolarDB-X 2.0 database instances.
 	//
 	// example:
 	//
 	// 10
 	Scnt *int64 `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
-	// SQL ID。
+	// The SQL ID.
 	//
 	// example:
 	//
@@ -1049,25 +1073,25 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// r-8vba51c588ba3a94
 	SubInstanceId *string `json:"SubInstanceId,omitempty" xml:"SubInstanceId,omitempty"`
-	// The table name.
+	// The name of the table.
 	//
 	// example:
 	//
 	// users\\nifconfig\\n
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The thread_id. This field is available only for PolarDB for MySQL.
+	// The thread ID. This parameter is available only for PolarDB for MySQL.
 	//
 	// example:
 	//
 	// 1
 	ThreadId *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	// The execution time, in UNIX timestamp format. Unit: milliseconds (ms).
+	// The execution time. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1708568930
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The total number of records. This parameter is valid only for the Redis engine.
+	// The total number of records (valid only for the Redis engine).
 	//
 	// example:
 	//
@@ -2026,31 +2050,31 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) Validate() error {
 type DescribeSlowLogStatisticResponseBodyDataDataLogsHistogram struct {
 	// The average lock wait time. Unit: seconds.
 	AvgLockTime []*float64 `json:"AvgLockTime,omitempty" xml:"AvgLockTime,omitempty" type:"Repeated"`
-	// The average number of rows examined.
+	// The average number of scanned rows.
 	AvgRowsExamined []*float64 `json:"AvgRowsExamined,omitempty" xml:"AvgRowsExamined,omitempty" type:"Repeated"`
-	// The average number of rows returned.
+	// The average number of returned rows.
 	AvgRowsSent []*float64 `json:"AvgRowsSent,omitempty" xml:"AvgRowsSent,omitempty" type:"Repeated"`
 	// The average execution duration.
 	AvgRt []*float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty" type:"Repeated"`
-	// The number of slow logs.
+	// The number of slow query logs.
 	Count []*int64 `json:"Count,omitempty" xml:"Count,omitempty" type:"Repeated"`
-	// The task status.
+	// The task state.
 	Item []*DescribeSlowLogStatisticResponseBodyDataDataLogsHistogramItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
 	// The lock wait time. Unit: milliseconds.
 	LockTime []*float64 `json:"LockTime,omitempty" xml:"LockTime,omitempty" type:"Repeated"`
 	// The maximum lock wait time. Unit: seconds.
 	MaxLockTime []*float64 `json:"MaxLockTime,omitempty" xml:"MaxLockTime,omitempty" type:"Repeated"`
-	// The maximum number of rows examined.
+	// The maximum number of scanned rows.
 	MaxRowsExamined []*int64 `json:"MaxRowsExamined,omitempty" xml:"MaxRowsExamined,omitempty" type:"Repeated"`
-	// The maximum number of rows returned.
+	// The maximum number of returned rows.
 	MaxRowsSent []*int64 `json:"MaxRowsSent,omitempty" xml:"MaxRowsSent,omitempty" type:"Repeated"`
-	// The maximum response time. Unit: ms.
+	// The maximum RT. Unit: milliseconds.
 	MaxRt []*float64 `json:"MaxRt,omitempty" xml:"MaxRt,omitempty" type:"Repeated"`
-	// The total number of rows examined.
+	// The total number of scanned rows.
 	//
-	// > Databases that currently support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
+	// > Databases that support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
 	RowsExamined []*int64 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty" type:"Repeated"`
-	// The number of rows returned.
+	// The number of returned rows.
 	RowsSent []*int64 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty" type:"Repeated"`
 	// The execution duration. Unit: seconds.
 	Rt []*float64 `json:"Rt,omitempty" xml:"Rt,omitempty" type:"Repeated"`
@@ -2062,7 +2086,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogsHistogram struct {
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 	// The execution timestamp.
 	Ts []*int64 `json:"Ts,omitempty" xml:"Ts,omitempty" type:"Repeated"`
-	// Deprecated.
+	// **[Deprecated]**
 	TsEnd []*int64 `json:"TsEnd,omitempty" xml:"TsEnd,omitempty" type:"Repeated"`
 }
 
@@ -2241,7 +2265,7 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogsHistogram) Validate() e
 }
 
 type DescribeSlowLogStatisticResponseBodyDataDataLogsHistogramItem struct {
-	// The number of slow logs.
+	// The number of slow query logs.
 	Count []*int64 `json:"Count,omitempty" xml:"Count,omitempty" type:"Repeated"`
 	// The node ID.
 	//
@@ -2284,19 +2308,19 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogsHistogramItem) Validate
 type DescribeSlowLogStatisticResponseBodyDataDataLogsSqlTag struct {
 	// The remarks.
 	//
-	// The value must be 1 to 300 characters in length.
+	// The remarks must be 1 to 300 characters in length.
 	//
 	// example:
 	//
-	// dba archiving
+	// DBA archiving
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// SQL ID。
+	// The SQL ID.
 	//
 	// example:
 	//
 	// a3931d8c3a9315dd5ed016d71cf*****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	// Multiple tags separated by commas.
+	// The comma-separated tags.
 	//
 	// example:
 	//
@@ -2344,13 +2368,13 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogsSqlTag) Validate() erro
 }
 
 type DescribeSlowLogStatisticResponseBodyDataDataLogsTrend struct {
-	// The execution time, in UNIX timestamp format. Unit: milliseconds (ms).
+	// The execution time. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1723775362
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The value of the filter parameter.
+	// The value of the filter key.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iEnableDasProResponseBody interface {
 }
 
 type EnableDasProResponseBody struct {
-  // The HTTP status code returned.
+  // The status code.
   // 
   // example:
   // 
@@ -36,15 +36,15 @@ type EnableDasProResponseBody struct {
   // 
   // None
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-  // The returned message.
+  // The message returned for the request.
   // 
-  // > If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+  // > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
   // 
   // example:
   // 
   // Successful
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // The request ID.
+  // The ID of the request.
   // 
   // example:
   // 
@@ -52,9 +52,9 @@ type EnableDasProResponseBody struct {
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
   // Indicates whether the request was successful. Valid values:
   // 
-  // - **true**
+  // - **true**: The request was successful.
   // 
-  // - **false**
+  // - **false**: The request failed.
   // 
   // example:
   // 

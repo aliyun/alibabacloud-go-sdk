@@ -22,7 +22,7 @@ type iDescribeSlowLogHistogramAsyncRequest interface {
 }
 
 type DescribeSlowLogHistogramAsyncRequest struct {
-	// The end time of the query. Specify a UNIX timestamp in milliseconds.
+	// The end time of the query. Specify the time as a UNIX timestamp in milliseconds.
 	//
 	// > The end time must be later than the start time.
 	//
@@ -42,15 +42,15 @@ type DescribeSlowLogHistogramAsyncRequest struct {
 	//
 	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The node ID.
+	// The ID of the node.
 	//
-	// > For PolarDB for MySQL instances, specify the node ID.
+	// > For a PolarDB for MySQL instance, you must specify the node ID.
 	//
 	// example:
 	//
 	// r-****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The start time of the query. Specify a UNIX timestamp in milliseconds.
+	// The start time of the query task. Specify the time as a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//

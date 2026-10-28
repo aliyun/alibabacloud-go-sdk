@@ -34,13 +34,13 @@ type iDescribeSlowLogStatisticRequest interface {
 }
 
 type DescribeSlowLogStatisticRequest struct {
-	// Specifies whether to sort results in ascending order. This feature is disabled by default.
+	// Specifies whether to sort the results in ascending order. Default value: false.
 	//
 	// example:
 	//
 	// true
 	Asc *bool `json:"Asc,omitempty" xml:"Asc,omitempty"`
-	// The end time of the query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	// The end time of the query. The time is a UNIX timestamp in UTC. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type DescribeSlowLogStatisticRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// - For ApsaraDB RDS for MySQL and PolarDB for MySQL, this parameter is applicable only to cluster instances. If you do not specify this parameter, the log details of the primary node are queried by default.
+	// - For ApsaraDB RDS for MySQL and PolarDB for MySQL, this parameter applies only to Cluster Edition instances. If you do not specify this parameter, the slow query logs of the primary node are queried by default.
 	//
-	// - For PolarDB-X 2.0, set this parameter to **polarx_cn*	- (compute node) or **polarx_dn*	- (data node).
+	// - For PolarDB-X 2.0, set this parameter to **polarx_cn*	- for compute nodes or **polarx_dn*	- for data nodes.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeSlowLogStatisticRequest struct {
 	//
 	// count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. The value starts from 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DescribeSlowLogStatisticRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time of the query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	// The start time of the query task. The time is a UNIX timestamp in UTC. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type DescribeSlowLogStatisticRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The task type.
 	//
-	// SQL engine-specific:
+	// Specific to SQL engines:
 	//
 	// **SlowLogRequestOrigin**: aggregates logs by source IP address.
 	//
@@ -120,24 +120,23 @@ type DescribeSlowLogStatisticRequest struct {
 	//
 	// **SQL**: aggregates logs by SQL ID.
 	//
-	//
-	// MongoDB engine-specific:
+	// Specific to MongoDB engines:
 	//
 	// **SlowLogRequestOrigin**: aggregates logs by source IP address.
 	//
 	// **SlowLogRequestUser**: aggregates logs by source user.
 	//
-	// **SQL**: aggregates logs by Query ID.
+	// **SQL**: aggregates logs by query ID.
 	//
 	// **SlowLogRequestOpType**: aggregates logs by operation type.
 	//
 	// **SlowLogRequestNamespace**: aggregates logs by namespace.
 	//
-	// Redis engine-specific:
+	// Specific to Redis engines:
 	//
 	// **SlowLogRequestNodeId**: aggregates logs by node ID.
 	//
-	// **SlowLogRequestHostInsId**: aggregates logs by HostInsId.
+	// **SlowLogRequestHostInsId**: aggregates logs by host instance ID.
 	//
 	// example:
 	//
@@ -266,13 +265,13 @@ func (s *DescribeSlowLogStatisticRequest) Validate() error {
 }
 
 type DescribeSlowLogStatisticRequestFilters struct {
-	// The filter parameter.
+	// The filter key.
 	//
 	// example:
 	//
 	// KeyWords
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the filter parameter.
+	// The value of the filter key.
 	//
 	// example:
 	//

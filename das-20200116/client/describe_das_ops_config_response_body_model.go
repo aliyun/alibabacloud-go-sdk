@@ -32,7 +32,7 @@ type DescribeDasOpsConfigResponseBody struct {
 	Data *DescribeDasOpsConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeDasOpsConfigResponseBody struct {
 	//
 	// D00DB161-FEF6-5428-B37A-8D29A4C2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request is successful.
+	// - **true**: The request was successful.
 	//
-	// - **false**: The request fails.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type DescribeDasOpsConfigResponseBodyData struct {
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The payment method.
+	// The billing method.
 	//
 	// example:
 	//
 	// http://prodpopscanGGfYbZif.302prod.xaliyun.com
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The Alibaba Cloud Managed Services instance ID.
+	// The instance ID of Alibaba Cloud Managed Services.
 	//
 	// example:
 	//
@@ -147,19 +147,19 @@ type DescribeDasOpsConfigResponseBodyData struct {
 	//
 	// false
 	EcoEnable *bool `json:"EcoEnable,omitempty" xml:"EcoEnable,omitempty"`
-	// Indicates whether the Alibaba Cloud Managed Services is enabled.
+	// Indicates whether Alibaba Cloud Managed Services is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The end time. The value is a UNIX timestamp. Unit: milliseconds.
+	// The end time. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1608888296000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the Alibaba Cloud Managed Services is enabled.
+	// Indicates whether Alibaba Cloud Managed Services is enabled.
 	OpsEnable *bool `json:"OpsEnable,omitempty" xml:"OpsEnable,omitempty"`
 	// The order ID.
 	//
@@ -167,7 +167,7 @@ type DescribeDasOpsConfigResponseBodyData struct {
 	//
 	// 275772887390786
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The start time. The value is a UNIX timestamp. Unit: milliseconds.
+	// The start time. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

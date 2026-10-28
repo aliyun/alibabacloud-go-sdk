@@ -28,7 +28,7 @@ type iDescribeSqlLogRecordsRequest interface {
 }
 
 type DescribeSqlLogRecordsRequest struct {
-	// The end of the time range to query. This is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeSqlLogRecordsRequest struct {
 	//
 	// 1608888296000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A list of filter conditions.
+	// The list of filter conditions.
 	Filters []*DescribeSqlLogRecordsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The ID of the database instance.
 	//
@@ -48,7 +48,7 @@ type DescribeSqlLogRecordsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// - This parameter is applicable only to ApsaraDB RDS for MySQL and PolarDB for MySQL cluster instances. If this parameter is omitted, the log details of the primary node are returned by default.
+	// - For ApsaraDB RDS for MySQL and PolarDB for MySQL, this parameter applies only to Cluster Edition instances. If you do not specify this parameter, the log details of the primary node are queried by default.
 	//
 	// - For PolarDB-X 2.0, set this parameter to **polarx_cn*	- (compute node) or **polarx_dn*	- (data node).
 	//
@@ -56,19 +56,19 @@ type DescribeSqlLogRecordsRequest struct {
 	//
 	// pi-uf6k5f6g3912i****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number for paging. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Maximum value: 100. Default value: 10.
+	// The maximum number of entries per page. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The role of the node in the PolarDB-X 2.0 database instance.
+	// The role of the node in the PolarDB-X 2.0 instance. Valid values:
 	//
 	// - **polarx_cn**: compute node.
 	//
@@ -78,7 +78,7 @@ type DescribeSqlLogRecordsRequest struct {
 	//
 	// polarx_cn
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The beginning of the time range to query. This is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -182,15 +182,15 @@ func (s *DescribeSqlLogRecordsRequest) Validate() error {
 }
 
 type DescribeSqlLogRecordsRequestFilters struct {
-	// The filter key.
+	// The filter parameter.
 	//
-	// > For details on supported filter keys and their values, see **Additional information about request parameters**.
+	// > For supported filter parameters and their valid values, refer to **Supplementary request parameter descriptions**.
 	//
 	// example:
 	//
 	// keyWords
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value.
+	// The value of the filter parameter.
 	//
 	// example:
 	//

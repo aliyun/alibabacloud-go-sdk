@@ -26,19 +26,19 @@ type iModifySqlLogConfigRequest interface {
 }
 
 type ModifySqlLogConfigRequest struct {
-	// Indicates whether to enable DAS Enterprise Edition. Valid values:
+	// Specifies whether to enable DAS Enterprise Edition. Valid values:
 	//
-	// - **true**: enables DAS Enterprise Edition.
+	// - **true**: Yes.
 	//
-	// - **false**: disables DAS Enterprise Edition.
+	// - **false**: No.
 	//
-	// > This parameter is required when you enable DAS Enterprise Edition. By default, this operation enables the latest supported version.
+	// > This parameter is required when you enable DAS Enterprise Edition. By default, the latest supported version is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Indicates whether to enable security audit.
+	// Specifies whether to enable security auditing.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type ModifySqlLogConfigRequest struct {
 	EnableAudit *bool `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
 	// A reserved parameter.
 	Filters []*ModifySqlLogConfigRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The hot storage retention period, in days. The value must be an integer from 1 to 7.
+	// The hot data storage duration. Unit: days. The value is an integer in the range of [1, 7].
 	//
-	// > This parameter is required only if you enable DAS Enterprise Edition V3.
+	// > This parameter is required only when you enable DAS Enterprise Edition V3.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ type ModifySqlLogConfigRequest struct {
 	//
 	// rr-2ze770smbq3tp****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether to enable SQL Explorer. Valid values:
+	// Specifies whether to enable SQL Explorer. Valid values:
 	//
-	// - **true**: enables SQL Explorer.
+	// - **true**: Yes.
 	//
-	// - **false**: disables SQL Explorer.
+	// - **false**: No.
 	//
-	// > This parameter is required only if you enable DAS Enterprise Edition V3.
+	// > This parameter is required only when you enable DAS Enterprise Edition V3.
 	//
 	// example:
 	//
 	// true
 	RequestEnable *bool `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
-	// The data retention period, in days. Valid values:
+	// The total data storage duration. Unit: days. Valid values:
 	//
 	// - 7
 	//
@@ -84,7 +84,7 @@ type ModifySqlLogConfigRequest struct {
 	//
 	// - 365
 	//
-	// > If you enable DAS Enterprise Edition V3, the value of this parameter must be 30 or greater.
+	// > When you enable DAS Enterprise Edition V3, the value of this parameter must be greater than or equal to 30.
 	//
 	// example:
 	//

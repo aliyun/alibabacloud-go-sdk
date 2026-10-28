@@ -70,7 +70,7 @@ type iGetDasSQLLogHotDataRequest interface {
 type GetDasSQLLogHotDataRequest struct {
 	// The database account.
 	//
-	// > You can specify multiple database accounts. Separate multiple accounts with a space. For example: `user1 user2 user3`.
+	// > You can use multiple database accounts for a combined query. Separate multiple database accounts with spaces. Example: `user1 user2 user3`.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type GetDasSQLLogHotDataRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The node ID.
 	//
-	// > This parameter is required if the database instance is a PolarDB for MySQL cluster.
+	// > For a PolarDB for MySQL instance, you must specify the node ID.
 	//
 	// example:
 	//
@@ -86,15 +86,15 @@ type GetDasSQLLogHotDataRequest struct {
 	ChildDBInstanceIDs *string `json:"ChildDBInstanceIDs,omitempty" xml:"ChildDBInstanceIDs,omitempty"`
 	// The database name.
 	//
-	// > You can specify multiple database names. Separate multiple names with a space. For example: `DB1 DB2 DB3`.
+	// > You can use multiple database names for a combined query. Separate multiple database names with spaces. Example: `DB1 DB2 DB3`.
 	//
 	// example:
 	//
 	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end of the time range to query. This value must be a Unix timestamp in milliseconds.
+	// The end time of the query. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
-	// > The end time must be later than the start time. The time range cannot exceed one day.
+	// > The end time must be later than the start time, and the interval between the start time and the end time cannot exceed 1 day.
 	//
 	// This parameter is required.
 	//
@@ -102,21 +102,21 @@ type GetDasSQLLogHotDataRequest struct {
 	//
 	// 1684820697000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The SQL execution error code. You can call the [GetAsyncErrorRequestStatByCode](https://help.aliyun.com/document_detail/409804.html) operation to obtain the error code.
+	// The error code returned when the SQL statement is executed. You can call the [GetAsyncErrorRequestStatByCode](https://help.aliyun.com/document_detail/409804.html) operation to obtain the error code.
 	//
 	// example:
 	//
 	// 1064
 	Fail *string `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	// The client IP address.
+	// The IP address of the client.
 	//
-	// > You can specify multiple client IP addresses. Separate multiple IP addresses with a space. For example: `IP1 IP2 IP3`.
+	// > You can use multiple client IP addresses for a combined query. Separate multiple client IP addresses with spaces. Example: `IP1 IP2 IP3`.
 	//
 	// example:
 	//
 	// 47.100.XX.XX
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The ID of the database instance.
+	// The database instance ID.
 	//
 	// This parameter is required.
 	//
@@ -124,85 +124,85 @@ type GetDasSQLLogHotDataRequest struct {
 	//
 	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The logical operator to use with multiple keywords. Valid values:
+	// The logical relationship between multiple keywords. Valid values:
 	//
-	// - **or**
+	// - **or**: OR.
 	//
-	// - **and**
+	// - **and**: AND.
 	//
 	// example:
 	//
 	// or
 	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
-	// The maximum execution time in microseconds. Returns SQL statements that have an execution time less than this value.
+	// The maximum execution duration. Unit: microseconds. This parameter is used to query SQL statements whose execution duration is less than the specified value.
 	//
 	// example:
 	//
 	// 100
 	MaxLatancy *int64 `json:"MaxLatancy,omitempty" xml:"MaxLatancy,omitempty"`
-	// The maximum number of entries per page. Valid values: 5 to 100.
+	// The maximum number of records per page for the paging query. Valid values: 5 to 100.
 	//
 	// example:
 	//
 	// 10
 	MaxRecordsPerPage *int64 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	MaxRows *int64 `json:"MaxRows,omitempty" xml:"MaxRows,omitempty"`
-	// The maximum number of scanned rows. Returns SQL statements that scanned fewer than this number of rows.
+	// The maximum number of scanned rows. This parameter is used to query SQL statements whose number of scanned rows is less than the specified value.
 	//
 	// example:
 	//
 	// 10000
 	MaxScanRows *int64 `json:"MaxScanRows,omitempty" xml:"MaxScanRows,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	MaxSpillCnt *int64 `json:"MaxSpillCnt,omitempty" xml:"MaxSpillCnt,omitempty"`
-	// The minimum execution time in microseconds. Returns SQL statements with an execution time greater than or equal to this value.
+	// The minimum execution duration. Unit: microseconds. This parameter is used to query SQL statements whose execution duration is greater than or equal to the specified value.
 	//
 	// example:
 	//
 	// 10
 	MinLatancy *int64 `json:"MinLatancy,omitempty" xml:"MinLatancy,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	MinRows *int64 `json:"MinRows,omitempty" xml:"MinRows,omitempty"`
-	// The minimum number of scanned rows. Returns SQL statements that scanned at least this number of rows.
+	// The minimum number of scanned rows. This parameter is used to query SQL statements whose number of scanned rows is greater than or equal to the specified value.
 	//
 	// example:
 	//
 	// 10
 	MinScanRows *int64 `json:"MinScanRows,omitempty" xml:"MinScanRows,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	MinSpillCnt *int64 `json:"MinSpillCnt,omitempty" xml:"MinSpillCnt,omitempty"`
-	// The page number to return. Pages start from 1. The default value is 1.
+	// The page number for the paging query. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 2
 	PageNumbers *int64 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	// The query keyword.
+	// The keyword.
 	//
-	// > Fuzzy search is supported. You can specify up to 10 keywords. Separate multiple keywords with a space. For example: a1 b2 c3.
+	// > Fuzzy match is supported. You can use a maximum of 10 keywords for a combined query. Separate multiple keywords with spaces. Example: a1 b2 c3.
 	//
 	// example:
 	//
 	// a1 b2
 	QueryKeyword *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
@@ -210,15 +210,15 @@ type GetDasSQLLogHotDataRequest struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The sort key. Valid values:
 	//
-	// - **ScanRows**: scanned rows.
+	// - **ScanRows**: the number of scanned rows.
 	//
-	// - **UpdateRows**: updated rows.
+	// - **UpdateRows**: the number of updated rows.
 	//
-	// - **Consume**: execution time.
+	// - **Consume**: the execution duration.
 	//
-	// - **OriginTime**: The execution start time.
+	// - **OriginTime**: the execution time.
 	//
-	// - **ReturnRows**: returned rows.
+	// - **ReturnRows**: the number of returned rows.
 	//
 	// example:
 	//
@@ -226,23 +226,29 @@ type GetDasSQLLogHotDataRequest struct {
 	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - **ASC**: ascending
+	// - **ASC**: ascending order.
 	//
-	// - **DESC**: descending
+	// - **DESC**: descending order.
 	//
 	// example:
 	//
 	// ASC
 	SortMethod *string `json:"SortMethod,omitempty" xml:"SortMethod,omitempty"`
-	// The SQL type.
+	// The type of the SQL statement. Valid values:
+	//
+	// - **select**
+	//
+	// - **update**
+	//
+	// - **delete**
 	//
 	// example:
 	//
 	// select
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The start of the time range to query. This value must be a Unix timestamp in milliseconds.
+	// The start time of the query. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
-	// > You can query only data that is generated after you enable DAS Enterprise Edition. The start time cannot be earlier than seven days before the current time.
+	// > You can only query data generated after DAS Enterprise Edition is enabled. The start time cannot be more than 7 days earlier than the current time.
 	//
 	// This parameter is required.
 	//
@@ -250,7 +256,7 @@ type GetDasSQLLogHotDataRequest struct {
 	//
 	// 1684734297000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The execution state. Set this parameter to **0*	- to query for successfully executed SQL statements. You can also specify an error code to query for the corresponding SQL statements.
+	// The execution result. If you enter **0**, the system queries SQL statements that are successfully executed. You can also enter a specific error code to query the corresponding SQL statements.
 	//
 	// example:
 	//
@@ -258,13 +264,13 @@ type GetDasSQLLogHotDataRequest struct {
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The thread ID.
 	//
-	// > You can specify multiple thread IDs. Separate multiple IDs with a space. For example: `657 658 659`.
+	// > You can use multiple thread IDs for a combined query. Separate multiple thread IDs with spaces. Example: `ThreadID1 ThreadID2 ThreadID3`.
 	//
 	// example:
 	//
 	// 657
 	ThreadID *string `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//

@@ -22,17 +22,17 @@ type iDescribeSlowLogHistogramAsyncResponseBody interface {
 }
 
 type DescribeSlowLogHistogramAsyncResponseBody struct {
-	// The status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// AsyncResult<Histogram>。
+	// The AsyncResult<Histogram>.
 	Data *DescribeSlowLogHistogramAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned for the request.
 	//
-	// >  This parameter returns **Successful*	- when the request succeeds. If the request fails, an exception message (such as an error code) is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeSlowLogHistogramAsyncResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful:
+	// Indicates whether the request was successful. Valid values:
 	//
 	// - **true**: The request was successful.
 	//
@@ -127,7 +127,7 @@ type DescribeSlowLogHistogramAsyncResponseBodyData struct {
 	//
 	// 10910
 	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the task is finished.
+	// Indicates whether the task is completed.
 	//
 	// example:
 	//
@@ -153,17 +153,17 @@ type DescribeSlowLogHistogramAsyncResponseBodyData struct {
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
 	// The current state. Valid values:
 	//
-	// - **RUNNING**: Running.
+	// - **RUNNING**: The task is running.
 	//
-	// - **SUCCESS**: Succeeded.
+	// - **SUCCESS**: The task was successful.
 	//
-	// - **FAIL**: Failed.
+	// - **FAIL**: The task failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The request time.
+	// The request time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -261,29 +261,29 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyData) Validate() error {
 }
 
 type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
-	// The average CPU processing duration. Unit: seconds (s).
+	// The average CPU processing time. Unit: seconds.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	AvgCPUTime []*float64 `json:"AvgCPUTime,omitempty" xml:"AvgCPUTime,omitempty" type:"Repeated"`
-	// The average number of document rows scanned.
+	// The average number of scanned documents.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	AvgDocExamined []*float64 `json:"AvgDocExamined,omitempty" xml:"AvgDocExamined,omitempty" type:"Repeated"`
-	// The average number of rows fetched.
+	// The average number of fetched rows.
 	AvgFrows []*float64 `json:"AvgFrows,omitempty" xml:"AvgFrows,omitempty" type:"Repeated"`
 	// The average number of I/O writes.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	AvgIOWrites []*float64 `json:"AvgIOWrites,omitempty" xml:"AvgIOWrites,omitempty" type:"Repeated"`
-	// The average number of index rows scanned.
+	// The average number of scanned index rows.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	AvgKeysExamined []*float64 `json:"AvgKeysExamined,omitempty" xml:"AvgKeysExamined,omitempty" type:"Repeated"`
 	// The average number of rows affected by the last statement.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	AvgLastRowsCountAffected []*float64 `json:"AvgLastRowsCountAffected,omitempty" xml:"AvgLastRowsCountAffected,omitempty" type:"Repeated"`
-	// The average lock wait time. Unit: seconds.
+	// The average lock wait time, in seconds.
 	AvgLockTime []*float64 `json:"AvgLockTime,omitempty" xml:"AvgLockTime,omitempty" type:"Repeated"`
 	// The average number of logical reads.
 	//
@@ -293,37 +293,37 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	AvgPhysicalIOReads []*float64 `json:"AvgPhysicalIOReads,omitempty" xml:"AvgPhysicalIOReads,omitempty" type:"Repeated"`
-	// The average number of rows returned.
+	// The average number of returned rows.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	AvgReturnNum []*float64 `json:"AvgReturnNum,omitempty" xml:"AvgReturnNum,omitempty" type:"Repeated"`
 	// The average number of rows.
 	AvgRows []*float64 `json:"AvgRows,omitempty" xml:"AvgRows,omitempty" type:"Repeated"`
-	// The average number of rows affected.
+	// The average number of affected rows.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	AvgRowsCountAffected []*float64 `json:"AvgRowsCountAffected,omitempty" xml:"AvgRowsCountAffected,omitempty" type:"Repeated"`
-	// The average number of rows scanned.
+	// The average number of scanned rows.
 	AvgRowsExamined []*float64 `json:"AvgRowsExamined,omitempty" xml:"AvgRowsExamined,omitempty" type:"Repeated"`
-	// The average number of rows returned.
+	// The average number of returned rows.
 	AvgRowsSent []*float64 `json:"AvgRowsSent,omitempty" xml:"AvgRowsSent,omitempty" type:"Repeated"`
 	// The average execution duration.
 	AvgRt []*float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty" type:"Repeated"`
 	// The average number of requests.
 	AvgScnt []*float64 `json:"AvgScnt,omitempty" xml:"AvgScnt,omitempty" type:"Repeated"`
-	// The CPU processing duration. Unit: seconds (s).
+	// The CPU processing time. Unit: seconds.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	CPUTime []*float64 `json:"CPUTime,omitempty" xml:"CPUTime,omitempty" type:"Repeated"`
-	// The slow log count trend.
+	// The trend of the number of slow query logs.
 	Count []*int64 `json:"Count,omitempty" xml:"Count,omitempty" type:"Repeated"`
-	// The number of document rows scanned.
+	// The number of scanned documents.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	DocExamined []*int64 `json:"DocExamined,omitempty" xml:"DocExamined,omitempty" type:"Repeated"`
-	// The number of rows fetched by the compute node (CN) of the PolarDB-X 2.0 database instance.
+	// The number of rows fetched by the compute nodes (CN) of a PolarDB-X 2.0 database instance.
 	//
-	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	// > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
 	Frows []*int64 `json:"Frows,omitempty" xml:"Frows,omitempty" type:"Repeated"`
 	// The number of I/O writes.
 	//
@@ -331,43 +331,43 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
 	IOWrites []*int64 `json:"IOWrites,omitempty" xml:"IOWrites,omitempty" type:"Repeated"`
 	// The trend metrics.
 	Item []*DescribeSlowLogHistogramAsyncResponseBodyDataDataItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-	// The number of index rows scanned.
+	// The number of scanned index rows.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	KeysExamined []*int64 `json:"KeysExamined,omitempty" xml:"KeysExamined,omitempty" type:"Repeated"`
 	// The number of rows affected by the last statement.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	LastRowsCountAffected []*int64 `json:"LastRowsCountAffected,omitempty" xml:"LastRowsCountAffected,omitempty" type:"Repeated"`
-	// The total lock wait time. Unit: seconds.
+	// The total lock wait time, in seconds.
 	LockTime []*float64 `json:"LockTime,omitempty" xml:"LockTime,omitempty" type:"Repeated"`
 	// The number of logical reads.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	LogicalIOReads []*int64 `json:"LogicalIOReads,omitempty" xml:"LogicalIOReads,omitempty" type:"Repeated"`
-	// The maximum CPU processing duration. Unit: seconds (s).
+	// The maximum CPU processing time. Unit: seconds.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	MaxCPUTime []*float64 `json:"MaxCPUTime,omitempty" xml:"MaxCPUTime,omitempty" type:"Repeated"`
-	// The maximum number of document rows scanned.
+	// The maximum number of scanned documents.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	MaxDocExamined []*int64 `json:"MaxDocExamined,omitempty" xml:"MaxDocExamined,omitempty" type:"Repeated"`
-	// The maximum number of rows fetched.
+	// The maximum number of fetched rows.
 	MaxFrows []*int64 `json:"MaxFrows,omitempty" xml:"MaxFrows,omitempty" type:"Repeated"`
 	// The maximum number of I/O writes.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	MaxIOWrites []*int64 `json:"MaxIOWrites,omitempty" xml:"MaxIOWrites,omitempty" type:"Repeated"`
-	// The maximum number of index rows scanned.
+	// The maximum number of scanned index rows.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	MaxKeysExamined []*int64 `json:"MaxKeysExamined,omitempty" xml:"MaxKeysExamined,omitempty" type:"Repeated"`
 	// The maximum number of rows affected by the last statement.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	MaxLastRowsCountAffected []*int64 `json:"MaxLastRowsCountAffected,omitempty" xml:"MaxLastRowsCountAffected,omitempty" type:"Repeated"`
-	// The maximum lock wait time. Unit: seconds.
+	// The maximum lock wait time, in seconds.
 	MaxLockTime []*float64 `json:"MaxLockTime,omitempty" xml:"MaxLockTime,omitempty" type:"Repeated"`
 	// The maximum number of logical reads.
 	//
@@ -377,21 +377,21 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	MaxPhysicalIOReads []*int64 `json:"MaxPhysicalIOReads,omitempty" xml:"MaxPhysicalIOReads,omitempty" type:"Repeated"`
-	// The maximum number of rows returned.
+	// The maximum number of returned rows.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	MaxReturnNum []*int64 `json:"MaxReturnNum,omitempty" xml:"MaxReturnNum,omitempty" type:"Repeated"`
 	// The maximum number of rows.
 	MaxRows []*int64 `json:"MaxRows,omitempty" xml:"MaxRows,omitempty" type:"Repeated"`
-	// The maximum number of rows affected.
+	// The maximum number of affected rows.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	MaxRowsCountAffected []*int64 `json:"MaxRowsCountAffected,omitempty" xml:"MaxRowsCountAffected,omitempty" type:"Repeated"`
-	// The maximum number of rows scanned.
+	// The maximum number of scanned rows.
 	MaxRowsExamined []*int64 `json:"MaxRowsExamined,omitempty" xml:"MaxRowsExamined,omitempty" type:"Repeated"`
-	// The maximum number of rows returned.
+	// The maximum number of returned rows.
 	MaxRowsSent []*int64 `json:"MaxRowsSent,omitempty" xml:"MaxRowsSent,omitempty" type:"Repeated"`
-	// The maximum execution duration. Unit: seconds.
+	// The maximum execution duration, in seconds.
 	MaxRt []*float64 `json:"MaxRt,omitempty" xml:"MaxRt,omitempty" type:"Repeated"`
 	// The maximum number of requests.
 	MaxScnt []*int64 `json:"MaxScnt,omitempty" xml:"MaxScnt,omitempty" type:"Repeated"`
@@ -399,29 +399,29 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	PhysicalIOReads []*int64 `json:"PhysicalIOReads,omitempty" xml:"PhysicalIOReads,omitempty" type:"Repeated"`
-	// The number of rows returned.
+	// The number of returned rows.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	ReturnNum []*int64 `json:"ReturnNum,omitempty" xml:"ReturnNum,omitempty" type:"Repeated"`
-	// The total number of rows updated or returned by compute nodes of the PolarDB-X 2.0 database instance.
+	// The total number of rows updated or returned by the compute nodes of a PolarDB-X 2.0 database instance.
 	//
-	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	// > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
 	Rows []*int64 `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
-	// The number of rows affected.
+	// The number of affected rows.
 	//
 	// >Only ApsaraDB RDS for SQL Server instances are supported.
 	RowsCountAffected []*int64 `json:"RowsCountAffected,omitempty" xml:"RowsCountAffected,omitempty" type:"Repeated"`
-	// The total number of rows scanned.
+	// The total number of scanned rows.
 	//
-	// > Databases that currently support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
+	// > This field is supported by the following databases: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
 	RowsExamined []*int64 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty" type:"Repeated"`
-	// The number of rows returned.
+	// The number of returned rows.
 	RowsSent []*int64 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty" type:"Repeated"`
-	// The total execution duration. Unit: seconds.
+	// The total execution duration, in seconds.
 	Rt []*float64 `json:"Rt,omitempty" xml:"Rt,omitempty" type:"Repeated"`
-	// The number of DN requests from the compute node (CN) of the PolarDB-X 2.0 database instance.
+	// The number of requests sent to data nodes (DN) by the compute nodes (CN) of a PolarDB-X 2.0 database instance.
 	//
-	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	// > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
 	Scnt []*int64 `json:"Scnt,omitempty" xml:"Scnt,omitempty" type:"Repeated"`
 	// The total number of records queried.
 	//
@@ -435,9 +435,9 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataData struct {
 	//
 	// 5
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Used only for relational databases.
+	// The timestamp. This field is used only for relational databases.
 	Ts []*int64 `json:"Ts,omitempty" xml:"Ts,omitempty" type:"Repeated"`
-	// Not used. Reserved field.
+	// Unused. Reserved field.
 	TsEnd []*int64 `json:"TsEnd,omitempty" xml:"TsEnd,omitempty" type:"Repeated"`
 }
 
@@ -949,15 +949,19 @@ func (s *DescribeSlowLogHistogramAsyncResponseBodyDataData) Validate() error {
 }
 
 type DescribeSlowLogHistogramAsyncResponseBodyDataDataItem struct {
-	// The number of slow logs.
+	// The number of slow query logs.
 	Count []*int64 `json:"Count,omitempty" xml:"Count,omitempty" type:"Repeated"`
 	// The trend metrics.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	InsItems []*DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems `json:"InsItems,omitempty" xml:"InsItems,omitempty" type:"Repeated"`
 	// The instance role.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
+	//
+	// example:
+	//
+	// userAdmin
 	InsRole *string `json:"InsRole,omitempty" xml:"InsRole,omitempty"`
 	// The node ID.
 	//
@@ -965,7 +969,7 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataDataItem struct {
 	//
 	// r-bp1hi0wg57s3n0i3n8-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The total number of slow logs.
+	// The total number of slow query logs.
 	//
 	// example:
 	//
@@ -1044,7 +1048,7 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems struct {
 	Count []*int64 `json:"Count,omitempty" xml:"Count,omitempty" type:"Repeated"`
 	// The instance role ID.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
@@ -1052,13 +1056,13 @@ type DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems struct {
 	InsId *string `json:"InsId,omitempty" xml:"InsId,omitempty"`
 	// The instance role.
 	//
-	// >Supported only for ApsaraDB for MongoDB instances.
+	// > This field is supported only by ApsaraDB for MongoDB instances.
 	//
 	// example:
 	//
 	// userAdmin
 	InsRole *string `json:"InsRole,omitempty" xml:"InsRole,omitempty"`
-	// The number of slow logs on the physical node.
+	// The number of slow query logs on the physical node.
 	//
 	// example:
 	//

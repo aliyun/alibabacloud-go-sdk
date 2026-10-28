@@ -13,6 +13,8 @@ type iChatResponseBody interface {
 	GetActivityType() *string
 	SetAgentId(v string) *ChatResponseBody
 	GetAgentId() *string
+	SetCode(v string) *ChatResponseBody
+	GetCode() *string
 	SetContent(v string) *ChatResponseBody
 	GetContent() *string
 	SetDelta(v string) *ChatResponseBody
@@ -21,6 +23,8 @@ type iChatResponseBody interface {
 	GetKind() *string
 	SetLabel(v string) *ChatResponseBody
 	GetLabel() *string
+	SetMessage(v string) *ChatResponseBody
+	GetMessage() *string
 	SetMessageId(v string) *ChatResponseBody
 	GetMessageId() *string
 	SetName(v string) *ChatResponseBody
@@ -70,6 +74,10 @@ type ChatResponseBody struct {
 	//
 	// agent-7f9c2a81
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// example:
+	//
+	// direct_skill_rejected
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response content.
 	//
 	// example:
@@ -94,6 +102,10 @@ type ChatResponseBody struct {
 	//
 	// SQL performance diagnostics
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// [HdmApiClient] instance is not managed by the agent
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The message ID.
 	//
 	// example:
@@ -214,6 +226,10 @@ func (s *ChatResponseBody) GetAgentId() *string {
 	return s.AgentId
 }
 
+func (s *ChatResponseBody) GetCode() *string {
+	return s.Code
+}
+
 func (s *ChatResponseBody) GetContent() *string {
 	return s.Content
 }
@@ -228,6 +244,10 @@ func (s *ChatResponseBody) GetKind() *string {
 
 func (s *ChatResponseBody) GetLabel() *string {
 	return s.Label
+}
+
+func (s *ChatResponseBody) GetMessage() *string {
+	return s.Message
 }
 
 func (s *ChatResponseBody) GetMessageId() *string {
@@ -308,6 +328,11 @@ func (s *ChatResponseBody) SetAgentId(v string) *ChatResponseBody {
 	return s
 }
 
+func (s *ChatResponseBody) SetCode(v string) *ChatResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ChatResponseBody) SetContent(v string) *ChatResponseBody {
 	s.Content = &v
 	return s
@@ -325,6 +350,11 @@ func (s *ChatResponseBody) SetKind(v string) *ChatResponseBody {
 
 func (s *ChatResponseBody) SetLabel(v string) *ChatResponseBody {
 	s.Label = &v
+	return s
+}
+
+func (s *ChatResponseBody) SetMessage(v string) *ChatResponseBody {
+	s.Message = &v
 	return s
 }
 

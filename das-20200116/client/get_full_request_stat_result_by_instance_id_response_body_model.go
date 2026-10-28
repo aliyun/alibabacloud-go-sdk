@@ -22,7 +22,7 @@ type iGetFullRequestStatResultByInstanceIdResponseBody interface {
 }
 
 type GetFullRequestStatResultByInstanceIdResponseBody struct {
-	// The HTTP status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type GetFullRequestStatResultByInstanceIdResponseBody struct {
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetFullRequestStatResultByInstanceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
-	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetFullRequestStatResultByInstanceIdResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**
+	// - **true**: The request was successful.
 	//
-	// - **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -119,21 +119,21 @@ func (s *GetFullRequestStatResultByInstanceIdResponseBody) Validate() error {
 }
 
 type GetFullRequestStatResultByInstanceIdResponseBodyData struct {
-	// Indicates whether the asynchronous request failed. Valid values:
+	// Indicates whether the request failed. Valid values:
 	//
-	// - **true**
+	// - **true**: yes.
 	//
-	// - **false**
+	// - **false**: no.
 	//
 	// example:
 	//
 	// false
 	Fail *bool `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	// Indicates whether the asynchronous request was complete. Valid values:
+	// Indicates whether the asynchronous request is completed. Valid values:
 	//
-	// - **true**
+	// - **true**: yes.
 	//
-	// - **false**
+	// - **false**: no.
 	//
 	// example:
 	//
@@ -141,25 +141,25 @@ type GetFullRequestStatResultByInstanceIdResponseBodyData struct {
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
 	// The returned full request data.
 	Result *GetFullRequestStatResultByInstanceIdResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9CB97BC4-6479-55D0-B9D0-EA925AFE****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
-	// The state of the asynchronous request. Valid values:
+	// The execution status of the asynchronous request. Valid values:
 	//
-	// - **RUNNING**
+	// - **RUNNING**: running.
 	//
-	// - **SUCCESS**
+	// - **SUCCESS**: successful.
 	//
-	// - **FAIL**
+	// - **FAIL**: failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The time when the asynchronous request was sent. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The execution time. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -239,9 +239,9 @@ func (s *GetFullRequestStatResultByInstanceIdResponseBodyData) Validate() error 
 }
 
 type GetFullRequestStatResultByInstanceIdResponseBodyDataResult struct {
-	// The full request data.
+	// The list of full request data.
 	List []*GetFullRequestStatResultByInstanceIdResponseBodyDataResultList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total amount of data.
 	//
 	// example:
 	//
@@ -291,19 +291,19 @@ func (s *GetFullRequestStatResultByInstanceIdResponseBodyDataResult) Validate() 
 type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	// The average number of scanned rows.
 	//
-	// > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+	// > This field is supported by the following databases: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
 	//
 	// example:
 	//
 	// 10000
 	AvgExaminedRows *float64 `json:"AvgExaminedRows,omitempty" xml:"AvgExaminedRows,omitempty"`
-	// The average number of rows that are fetched by compute nodes from data nodes on the PolarDB-X 2.0 instance.
+	// The average number of rows pulled by the compute node from the data node in the PolarDB-X 2.0 database instance.
 	//
 	// example:
 	//
 	// 0
 	AvgFetchRows *int64 `json:"AvgFetchRows,omitempty" xml:"AvgFetchRows,omitempty"`
-	// The average lock wait latency. Unit: seconds.
+	// The average lock wait time, in seconds.
 	//
 	// example:
 	//
@@ -333,13 +333,13 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	//
 	// 10000
 	AvgReturnedRows *float64 `json:"AvgReturnedRows,omitempty" xml:"AvgReturnedRows,omitempty"`
-	// The average execution duration.
+	// The average time to execute.
 	//
 	// example:
 	//
 	// 2.499
 	AvgRt *float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
-	// The average number of SQL statements.
+	// The average SQL count.
 	//
 	// example:
 	//
@@ -347,7 +347,7 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	AvgSqlCount *int64 `json:"AvgSqlCount,omitempty" xml:"AvgSqlCount,omitempty"`
 	// The average number of updated rows.
 	//
-	// > This parameter is returned only for ApsaraDB RDS for MySQL and PolarDB-X 2.0 databases.
+	// > This field is supported by the following databases: ApsaraDB RDS for MySQL and PolarDB-X 2.0.
 	//
 	// example:
 	//
@@ -359,7 +359,7 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	//
 	// 100000
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The percentage of the total number of executions.
+	// The proportion of times the statements execute.
 	//
 	// example:
 	//
@@ -371,7 +371,7 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	//
 	// dbtest01
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The number of failed executions.
+	// The number of execution errors.
 	//
 	// example:
 	//
@@ -379,25 +379,25 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
 	// The total number of scanned rows.
 	//
-	// > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+	// > This field is supported by the following databases: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
 	//
 	// example:
 	//
 	// 10000
 	ExaminedRows *int64 `json:"ExaminedRows,omitempty" xml:"ExaminedRows,omitempty"`
-	// The number of rows that are fetched by compute nodes from data nodes on the PolarDB-X 2.0 instance.
+	// The number of rows pulled by the compute node from the data node in the PolarDB-X 2.0 database instance.
 	//
 	// example:
 	//
 	// 0
 	FetchRows *int64 `json:"FetchRows,omitempty" xml:"FetchRows,omitempty"`
-	// The IP address of the database instance.
+	// The network address of the instance.
 	//
 	// example:
 	//
 	// rm-uf6dyi58dm6****.mysql.rds.aliy****.com
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The lock wait latency. Unit: seconds.
+	// The lock wait time, in seconds.
 	//
 	// example:
 	//
@@ -421,7 +421,7 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	//
 	// 0
 	PhysicalSyncRead *int64 `json:"PhysicalSyncRead,omitempty" xml:"PhysicalSyncRead,omitempty"`
-	// The port number that is used to connect to the database instance.
+	// The port number.
 	//
 	// example:
 	//
@@ -433,19 +433,19 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	//
 	// select 	- from dbtest01 where ****
 	Psql *string `json:"Psql,omitempty" xml:"Psql,omitempty"`
-	// The total number of rows updated or returned by the compute nodes of the PolarDB-X 2.0 instance.
+	// The total number of rows updated or returned by the compute node in the PolarDB-X 2.0 database instance.
 	//
 	// example:
 	//
 	// 0
 	Rows *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	// The number of SQL statements that take longer than 1 second to execute.
+	// The number of SQL statements whose execution time is greater than 1 second.
 	//
 	// example:
 	//
 	// 20
 	RtGreaterThanOneSecondCount *int64 `json:"RtGreaterThanOneSecondCount,omitempty" xml:"RtGreaterThanOneSecondCount,omitempty"`
-	// The execution duration percentage.
+	// The execution time proportion.
 	//
 	// example:
 	//
@@ -463,21 +463,21 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	//
 	// d71f82be1eef72bd105128204d2e****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	// The total number of updated rows.
+	// The total number of changed rows.
 	//
 	// example:
 	//
 	// 100
 	SumUpdatedRows *int64 `json:"SumUpdatedRows,omitempty" xml:"SumUpdatedRows,omitempty"`
-	// The names of tables in the database.
+	// The name of the database table.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The version number.
+	// The version.
 	//
 	// example:
 	//
 	// 1
 	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

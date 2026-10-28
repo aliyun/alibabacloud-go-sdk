@@ -22,7 +22,7 @@ type iModifySqlLogConfigResponseBody interface {
 }
 
 type ModifySqlLogConfigResponseBody struct {
-	// The status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
@@ -30,15 +30,15 @@ type ModifySqlLogConfigResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *ModifySqlLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
-	// > If the request is successful, **Successful*	- is returned. Otherwise, an error message is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -119,65 +119,65 @@ func (s *ModifySqlLogConfigResponseBody) Validate() error {
 }
 
 type ModifySqlLogConfigResponseBodyData struct {
-	// Indicates whether the cold data storage is enabled.
+	// Indicates whether cold data storage is enabled. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: Yes.
 	//
-	// - **false**: Disabled.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	ColdEnable *bool `json:"ColdEnable,omitempty" xml:"ColdEnable,omitempty"`
-	// The retention period of the cold data. Unit: day. This value is calculated by using the following formula: `Retention - HotRetention`.
+	// The cold data storage duration. Unit: days. The value is calculated by using the formula: `Retention - HotRetention`.
 	//
 	// example:
 	//
 	// 23
 	ColdRetention *int32 `json:"ColdRetention,omitempty" xml:"ColdRetention,omitempty"`
-	// The time when the cold data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of cold data storage. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1683712800000
 	ColdStartTime *int64 `json:"ColdStartTime,omitempty" xml:"ColdStartTime,omitempty"`
-	// The version of the database collector. Valid values:
+	// The collector version. Valid values:
 	//
-	// - **MYSQL_V0**: MySQL V0
+	// - **MYSQL_V0**: MySQL V0.
 	//
-	// - **MYSQL_V1**: MySQL V1
+	// - **MYSQL_V1**: MySQL V1.
 	//
-	// - **MYSQL_V2**: MySQL V2
+	// - **MYSQL_V2**: MySQL V2.
 	//
-	// - **MYSQL_V3**: MySQL V3
+	// - **MYSQL_V3**: MySQL V3.
 	//
-	// - **PG_V1**: PostgreSQL V1
+	// - **PG_V1**: PostgreSQL V1.
 	//
-	// - **rdspg_v1**: ApsaraDB RDS for PostgreSQL V1
+	// - **rdspg_v1**: ApsaraDB RDS for PostgreSQL V1.
 	//
-	// - **polarpg_v1**: PolarDB for PostgreSQL V1
+	// - **polarpg_v1**: PolarDB for PostgreSQL V1.
 	//
 	// example:
 	//
 	// MYSQL_V3
 	CollectorVersion *string `json:"CollectorVersion,omitempty" xml:"CollectorVersion,omitempty"`
-	// Indicates whether the hot data storage is enabled.
+	// Indicates whether hot data storage is enabled. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: Yes.
 	//
-	// - **false**: Disabled.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	HotEnable *bool `json:"HotEnable,omitempty" xml:"HotEnable,omitempty"`
-	// The retention period of the hot data. Unit: day.
+	// The hot data storage duration. Unit: days.
 	//
 	// example:
 	//
 	// 7
 	HotRetention *int32 `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
-	// The time when the hot data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of hot data storage. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -189,73 +189,77 @@ type ModifySqlLogConfigResponseBodyData struct {
 	//
 	// None
 	LogFilter *string `json:"LogFilter,omitempty" xml:"LogFilter,omitempty"`
-	// Indicates whether SQL Explorer is enabled.
+	// Indicates whether SQL Explorer is enabled. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: Yes.
 	//
-	// - **false**: Disabled.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// false
 	RequestEnable *bool `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
-	// The time when SQL Explorer was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when SQL Explorer was enabled. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1683712800000
 	RequestStartTime *int64 `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
-	// The expiration time of DAS Enterprise Edition. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The expiration time of DAS Enterprise Edition V1. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1715335200000
 	RequestStopTime *int64 `json:"RequestStopTime,omitempty" xml:"RequestStopTime,omitempty"`
-	// The total retention period of data. Unit: day.
+	// The total data storage duration. Unit: days.
 	//
 	// example:
 	//
 	// 30
 	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// Indicates whether DAS Enterprise Edition is enabled.
+	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: Yes.
 	//
-	// - **false**: Disabled.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	SqlLogEnable *bool `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
-	// The source of the audit log.
+	// The source of the enabled audit logs.
+	//
+	// example:
+	//
+	// DSC:DAS_SIDE
 	SqlLogSource *string `json:"SqlLogSource,omitempty" xml:"SqlLogSource,omitempty"`
-	// The data migration state. Valid values:
+	// The data migration status. Valid values:
 	//
-	// - **FINISH**: The historical data is migrated.
+	// - **FINISH**: Historical data migration is completed.
 	//
-	// - **RUNNING**: The historical data is being migrated.
+	// - **RUNNING**: Historical data migration is in progress.
 	//
-	// - **FAILURE**: The historical data fails to be migrated.
+	// - **FAILURE**: Historical data migration failed.
 	//
 	// example:
 	//
 	// FINISH
 	SqlLogState *string `json:"SqlLogState,omitempty" xml:"SqlLogState,omitempty"`
-	// The time when DAS Enterprise Edition was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when DAS Enterprise Edition was enabled. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1683712800000
 	SqlLogVisibleTime *int64 `json:"SqlLogVisibleTime,omitempty" xml:"SqlLogVisibleTime,omitempty"`
-	// The latest supported version of DAS Enterprise Edition. Valid values:
+	// The latest supported DAS Enterprise Edition version. Valid values:
 	//
-	// - **SQL_LOG_V0**: DAS Enterprise Edition V0
+	// - **SQL_LOG_V0**: DAS Enterprise Edition V0.
 	//
-	// - **SQL_LOG_V1**: DAS Enterprise Edition V1
+	// - **SQL_LOG_V1**: DAS Enterprise Edition V1.
 	//
-	// - **SQL_LOG_V2**: DAS Enterprise Edition V2
+	// - **SQL_LOG_V2**: DAS Enterprise Edition V2.
 	//
-	// - **SQL_LOG_V3**: DAS Enterprise Edition V3
+	// - **SQL_LOG_V3**: DAS Enterprise Edition V3.
 	//
 	// - **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
 	//
@@ -265,15 +269,15 @@ type ModifySqlLogConfigResponseBodyData struct {
 	//
 	// SQL_LOG_V3
 	SupportVersion *string `json:"SupportVersion,omitempty" xml:"SupportVersion,omitempty"`
-	// The current version of DAS Enterprise Edition. Valid values:
+	// The enabled DAS Enterprise Edition version. Valid values:
 	//
-	// - **SQL_LOG_V0**: DAS Enterprise Edition V0
+	// - **SQL_LOG_V0**: DAS Enterprise Edition V0.
 	//
-	// - **SQL_LOG_V1**: DAS Enterprise Edition V1
+	// - **SQL_LOG_V1**: DAS Enterprise Edition V1.
 	//
-	// - **SQL_LOG_V2**: DAS Enterprise Edition V2
+	// - **SQL_LOG_V2**: DAS Enterprise Edition V2.
 	//
-	// - **SQL_LOG_V3**: DAS Enterprise Edition V3
+	// - **SQL_LOG_V3**: DAS Enterprise Edition V3.
 	//
 	// - **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
 	//
