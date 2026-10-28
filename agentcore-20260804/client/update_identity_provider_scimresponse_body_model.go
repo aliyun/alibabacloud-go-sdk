@@ -156,6 +156,12 @@ type UpdateIdentityProviderSCIMResponseBodyData struct {
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
 	// The standard IdP metadata. Vendor parameters are used for DingTalk and Feishu. CustomSSO updates use protocol and saml, and do not accept this field. The return value does not contain vendor keys.
 	Metadata *UpdateIdentityProviderSCIMResponseBodyDataMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
+	// PENDING/RUNNING 时轮询 GetIdentityProviderSCIM；保留失败、暂停和取消事实，不表示 SAML 状态。
+	//
+	// example:
+	//
+	// PENDING
+	OperationStatus *string `json:"operationStatus,omitempty" xml:"operationStatus,omitempty"`
 	// The logon protocol. Currently, only SAML is supported. This field may not be returned if no valid configuration is saved. OIDC placeholder initialization is not supported.
 	//
 	// example:
@@ -164,6 +170,12 @@ type UpdateIdentityProviderSCIMResponseBodyData struct {
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The SAML logon configuration. The input supports either XML or complete manual entry. The query returns the standardized configuration and does not echo the original XML. This field can be omitted if it is not configured.
 	Saml *UpdateIdentityProviderSCIMResponseBodyDataSaml `json:"saml,omitempty" xml:"saml,omitempty" type:"Struct"`
+	// 独立 SCIM 状态；不改变原 status 的共享资源及登录配置含义。与查询接口的 data.status 对应。
+	//
+	// example:
+	//
+	// UPDATING
+	ScimStatus *string `json:"scimStatus,omitempty" xml:"scimStatus,omitempty"`
 	// The operation status of shared resources and logon configurations. It indicates the user pool lifecycle and logon configuration task status of CustomSSO, and does not represent the SCIM operation result. Query GetIdentityProviderSCIM.operationStatus for the SCIM switch result. You cannot use this field to determine whether all protocols are configured.
 	//
 	// example:
@@ -222,12 +234,20 @@ func (s *UpdateIdentityProviderSCIMResponseBodyData) GetMetadata() *UpdateIdenti
 	return s.Metadata
 }
 
+func (s *UpdateIdentityProviderSCIMResponseBodyData) GetOperationStatus() *string {
+	return s.OperationStatus
+}
+
 func (s *UpdateIdentityProviderSCIMResponseBodyData) GetProtocol() *string {
 	return s.Protocol
 }
 
 func (s *UpdateIdentityProviderSCIMResponseBodyData) GetSaml() *UpdateIdentityProviderSCIMResponseBodyDataSaml {
 	return s.Saml
+}
+
+func (s *UpdateIdentityProviderSCIMResponseBodyData) GetScimStatus() *string {
+	return s.ScimStatus
 }
 
 func (s *UpdateIdentityProviderSCIMResponseBodyData) GetStatus() *string {
@@ -281,6 +301,11 @@ func (s *UpdateIdentityProviderSCIMResponseBodyData) SetMetadata(v *UpdateIdenti
 	return s
 }
 
+func (s *UpdateIdentityProviderSCIMResponseBodyData) SetOperationStatus(v string) *UpdateIdentityProviderSCIMResponseBodyData {
+	s.OperationStatus = &v
+	return s
+}
+
 func (s *UpdateIdentityProviderSCIMResponseBodyData) SetProtocol(v string) *UpdateIdentityProviderSCIMResponseBodyData {
 	s.Protocol = &v
 	return s
@@ -288,6 +313,11 @@ func (s *UpdateIdentityProviderSCIMResponseBodyData) SetProtocol(v string) *Upda
 
 func (s *UpdateIdentityProviderSCIMResponseBodyData) SetSaml(v *UpdateIdentityProviderSCIMResponseBodyDataSaml) *UpdateIdentityProviderSCIMResponseBodyData {
 	s.Saml = v
+	return s
+}
+
+func (s *UpdateIdentityProviderSCIMResponseBodyData) SetScimStatus(v string) *UpdateIdentityProviderSCIMResponseBodyData {
+	s.ScimStatus = &v
 	return s
 }
 
