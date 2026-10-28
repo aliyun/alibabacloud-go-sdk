@@ -641,6 +641,14 @@ type GetCallDetailRecordResponseBodyDataTranscripts struct {
 	//
 	// 0
 	OutputTokens *int32 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// INTERRUPTED
+	PlaybackStatus *string `json:"PlaybackStatus,omitempty" xml:"PlaybackStatus,omitempty"`
+	// example:
+	//
+	// 好的
+	PlayedAnswer *string `json:"PlayedAnswer,omitempty" xml:"PlayedAnswer,omitempty"`
 	// The played text.
 	//
 	// example:
@@ -741,6 +749,14 @@ func (s *GetCallDetailRecordResponseBodyDataTranscripts) GetOutputTokens() *int3
 	return s.OutputTokens
 }
 
+func (s *GetCallDetailRecordResponseBodyDataTranscripts) GetPlaybackStatus() *string {
+	return s.PlaybackStatus
+}
+
+func (s *GetCallDetailRecordResponseBodyDataTranscripts) GetPlayedAnswer() *string {
+	return s.PlayedAnswer
+}
+
 func (s *GetCallDetailRecordResponseBodyDataTranscripts) GetPlayedWords() *string {
 	return s.PlayedWords
 }
@@ -826,6 +842,16 @@ func (s *GetCallDetailRecordResponseBodyDataTranscripts) SetModel(v string) *Get
 
 func (s *GetCallDetailRecordResponseBodyDataTranscripts) SetOutputTokens(v int32) *GetCallDetailRecordResponseBodyDataTranscripts {
 	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataTranscripts) SetPlaybackStatus(v string) *GetCallDetailRecordResponseBodyDataTranscripts {
+	s.PlaybackStatus = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataTranscripts) SetPlayedAnswer(v string) *GetCallDetailRecordResponseBodyDataTranscripts {
+	s.PlayedAnswer = &v
 	return s
 }
 
