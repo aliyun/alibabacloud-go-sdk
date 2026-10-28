@@ -28,25 +28,29 @@ type iListQuotaApplicationsForTemplateRequest interface {
 }
 
 type ListQuotaApplicationsForTemplateRequest struct {
-	// The UTC time when the quota application ends.
+	// The end of the time range to query. The value is in UTC.
+	//
+	// > The interval between `ApplyStartTime` and `ApplyEndTime` must be 7 days or less. If you do not set these two parameters, quota applications submitted within the last 7 days are queried.
 	//
 	// example:
 	//
 	// 2023-05-22T16:00:00Z
 	ApplyEndTime *string `json:"ApplyEndTime,omitempty" xml:"ApplyEndTime,omitempty"`
-	// The UTC time when the quota application starts.
+	// The beginning of the time range to query. The value is in UTC.
+	//
+	// > The interval between `ApplyStartTime` and `ApplyEndTime` must be 7 days or less. If you do not set these two parameters, quota applications submitted within the last 7 days are queried.
 	//
 	// example:
 	//
 	// 2023-05-22T16:00:00Z
 	ApplyStartTime *string `json:"ApplyStartTime,omitempty" xml:"ApplyStartTime,omitempty"`
-	// The ID of the quota application batch.
+	// The ID of the batch quota application.
 	//
 	// example:
 	//
 	// d314d6ae-867d-484c-9009-3d421a80****
 	BatchQuotaApplicationId *string `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
-	// The maximum number of entries to return for a single request.
+	// The maximum number of results to return for a single request.
 	//
 	// Valid values: 1 to 100. Default value: 30.
 	//
@@ -54,17 +58,17 @@ type ListQuotaApplicationsForTemplateRequest struct {
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which you want to start the query.
+	// The token that marks the start of the data to read.
 	//
-	// >  An empty value indicates that the query starts from the beginning.
+	// > If you do not set this parameter, the query starts from the beginning.
 	//
 	// example:
 	//
 	// 4
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the Alibaba Cloud service.
 	//
-	// >  To query the abbreviation of an Alibaba Cloud service name, call the [ListProducts](https://help.aliyun.com/document_detail/440555.html) operation and check the value of `ProductCode` in the response.
+	// > For more information about how to obtain the abbreviation of an Alibaba Cloud service, see the `ProductCode` parameter in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
 	//
 	// example:
 	//
@@ -78,11 +82,11 @@ type ListQuotaApplicationsForTemplateRequest struct {
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 	// The type of the quota. Valid values:
 	//
-	// 	- CommonQuota: general quota
+	// - CommonQuota: general quota.
 	//
-	// 	- FlowControl: API rate limit
+	// - FlowControl: API rate limit.
 	//
-	// 	- WhiteListLabel: privilege
+	// - WhiteListLabel: privilege.
 	//
 	// example:
 	//

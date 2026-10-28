@@ -50,7 +50,7 @@ type ListQuotaApplicationTemplatesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  To query the abbreviation of an Alibaba Cloud service name, call the [ListProducts](https://help.aliyun.com/document_detail/440555.html) operation and check the value of `ProductCode` in the response.
+	// > To query the abbreviation of an Alibaba Cloud service name, call the [ListProducts](https://help.aliyun.com/document_detail/440555.html) operation and check the value of `ProductCode` in the response.
 	//
 	// example:
 	//
@@ -64,11 +64,11 @@ type ListQuotaApplicationTemplatesRequest struct {
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 	// The quota type. Valid values:
 	//
-	// 	- CommonQuota: general quota.
+	// - CommonQuota: general quota.
 	//
-	// 	- WhiteListLabel: whitelist quota.
+	// - WhiteListLabel: whitelist quota.
 	//
-	// 	- FlowControl: API rate limit.
+	// - FlowControl: API rate limit.
 	//
 	// example:
 	//
@@ -148,7 +148,16 @@ func (s *ListQuotaApplicationTemplatesRequest) SetQuotaCategory(v string) *ListQ
 }
 
 func (s *ListQuotaApplicationTemplatesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotaApplicationTemplatesRequestDimensions struct {
@@ -156,9 +165,9 @@ type ListQuotaApplicationTemplatesRequestDimensions struct {
 	//
 	// >
 	//
-	// 	- The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
+	// - The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
 	//
-	// 	- You must specify both Key and Value for each quota dimension.
+	// - You must specify both Key and Value for each quota dimension.
 	//
 	// example:
 	//
@@ -168,9 +177,9 @@ type ListQuotaApplicationTemplatesRequestDimensions struct {
 	//
 	// >
 	//
-	// 	- The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
+	// - The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
 	//
-	// 	- You must specify both Key and Value for each quota dimension.
+	// - You must specify both Key and Value for each quota dimension.
 	//
 	// example:
 	//

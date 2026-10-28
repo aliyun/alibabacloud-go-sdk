@@ -24,29 +24,29 @@ type iListProductDimensionGroupsResponseBody interface {
 type ListProductDimensionGroupsResponseBody struct {
 	// The dimension groups.
 	DimensionGroups []*ListProductDimensionGroupsResponseBodyDimensionGroups `json:"DimensionGroups,omitempty" xml:"DimensionGroups,omitempty" type:"Repeated"`
-	// The maximum number of records that are returned for the query.
+	// The maximum number of entries returned on each page.
 	//
 	// example:
 	//
-	// 1
+	// 3
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position at which the query ends. An empty value indicates that all data is returned.
+	// The token that marks the position where the returned query results end. An empty value indicates that all data is returned.
 	//
 	// example:
 	//
-	// 1
+	// 21
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 057D210F-F2FC-5329-A536-26C16628BB09
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that are returned for the query.
+	// The total number of entries that match the query.
 	//
 	// example:
 	//
-	// 1
+	// 3
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -104,29 +104,38 @@ func (s *ListProductDimensionGroupsResponseBody) SetTotalCount(v int32) *ListPro
 }
 
 func (s *ListProductDimensionGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DimensionGroups != nil {
+		for _, item := range s.DimensionGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProductDimensionGroupsResponseBodyDimensionGroups struct {
-	// The key of the dimension group.
+	// The keys of the dimension group.
 	DimensionKeys []*string `json:"DimensionKeys,omitempty" xml:"DimensionKeys,omitempty" type:"Repeated"`
 	// The code of the dimension group.
 	//
 	// example:
 	//
-	// oss_wf1ngqmd7q
+	// entconsole_zjzp4d****
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
 	// The name of the dimension group.
 	//
 	// example:
 	//
-	// OSS_Group
+	// Resource sharing
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The service code.
+	// The code of the Alibaba Cloud service.
 	//
 	// example:
 	//
-	// oss
+	// entconsole
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 

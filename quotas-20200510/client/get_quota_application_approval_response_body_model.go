@@ -32,11 +32,11 @@ type iGetQuotaApplicationApprovalResponseBody interface {
 }
 
 type GetQuotaApplicationApprovalResponseBody struct {
-	// Indicates whether retries are allowed. Valid values:
+	// Specifies whether retries are allowed. Valid values:
 	//
-	// 	- false
+	// - false: Retries are not allowed.
 	//
-	// 	- true
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetQuotaApplicationApprovalResponseBody struct {
 	//
 	// Parameter[%s] is required.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The parameters whose values are invalid.
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -74,7 +74,7 @@ type GetQuotaApplicationApprovalResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The information about quota application approval.
+	// The response object.
 	Module *GetQuotaApplicationApprovalResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -82,11 +82,11 @@ type GetQuotaApplicationApprovalResponseBody struct {
 	//
 	// 7ED584FB-ECBF-4A2A-969D-F54D25EFABF9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Specifies whether the call was successful. Valid values:
 	//
-	// 	- true
+	// - true: The call was successful.
 	//
-	// 	- false
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -193,33 +193,38 @@ func (s *GetQuotaApplicationApprovalResponseBody) SetSuccess(v bool) *GetQuotaAp
 }
 
 func (s *GetQuotaApplicationApprovalResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Module != nil {
+		if err := s.Module.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQuotaApplicationApprovalResponseBodyModule struct {
-	// The average amount of time required to approve quota applications. Unit: hour.
+	// The average approval time for the quota application. Unit: hours.
 	//
 	// example:
 	//
 	// 24
 	ApprovalHours *int32 `json:"ApprovalHours,omitempty" xml:"ApprovalHours,omitempty"`
-	// The interval between two consecutive approval reminders. Unit: hour.
+	// The approval reminder interval for the quota application. Unit: hours.
 	//
 	// example:
 	//
 	// 24
 	ReminderIntervalHours *int32 `json:"ReminderIntervalHours,omitempty" xml:"ReminderIntervalHours,omitempty"`
-	// Indicates whether approval reminders are supported for quota applications. Valid values:
+	// Specifies whether approval reminders are supported for the quota application. Valid values:
 	//
-	// 	- false
+	// - false: Not supported.
 	//
-	// 	- true
+	// - true: Supported.
 	//
 	// example:
 	//
 	// false
 	SupportReminder *bool `json:"SupportReminder,omitempty" xml:"SupportReminder,omitempty"`
-	// The reason why approval reminders are not supported for quota applications.
+	// The reason why approval reminders are not supported for the quota application.
 	//
 	// example:
 	//

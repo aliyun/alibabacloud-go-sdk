@@ -18,27 +18,29 @@ type iListProductDimensionGroupsRequest interface {
 }
 
 type ListProductDimensionGroupsRequest struct {
-	// The maximum number of records that can be returned for the query. Valid values: 1 to 200. Default value: 30.
+	// The maximum number of records to return for the query.
+	//
+	// Valid values: 1 to 200. Default value: 30.
 	//
 	// example:
 	//
-	// 30
+	// 3
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which you want to start the query. If you leave this parameter empty, the query starts from the beginning.
+	// The token that marks the position from which to start the query. If you leave this parameter empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The service code.
+	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// > For more information, see [Alibaba Cloud services that support Quota Center](https://help.aliyun.com/document_detail/182368.html).
+	// > For information about how to obtain the abbreviation of an Alibaba Cloud service name, see the \\`ProductCode\\` parameter in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// oss
+	// entconsole
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 

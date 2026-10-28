@@ -16,7 +16,7 @@ type iListDependentQuotasResponseBody interface {
 }
 
 type ListDependentQuotasResponseBody struct {
-	// The quotas on which the specified quota depends.
+	// The list of quotas on which the target quota depends.
 	Quotas []*ListDependentQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -53,29 +53,38 @@ func (s *ListDependentQuotasResponseBody) SetRequestId(v string) *ListDependentQ
 }
 
 func (s *ListDependentQuotasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Quotas != nil {
+		for _, item := range s.Quotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDependentQuotasResponseBodyQuotas struct {
-	// The dimensions of the quotas on which the specified quota depends.
+	// The quota dimensions on which the target quota depends.
 	Dimensions []*ListDependentQuotasResponseBodyQuotasDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviated name of the cloud service.
 	//
 	// example:
 	//
-	// ecs
+	// ram
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The quota ID.
+	// The ID of the quota on which the target quota depends.
 	//
 	// example:
 	//
-	// q_elastic-network-interfaces
+	// q_laxtn4
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The relationship percentage between the specified quota and the quotas on which the specified quota depends.
+	// The ratio between the target quota and the dependent quota.
 	//
 	// example:
 	//
-	// 50
+	// 100
 	Scale *float32 `json:"Scale,omitempty" xml:"Scale,omitempty"`
 }
 
@@ -124,19 +133,28 @@ func (s *ListDependentQuotasResponseBodyQuotas) SetScale(v float32) *ListDepende
 }
 
 func (s *ListDependentQuotasResponseBodyQuotas) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDependentQuotasResponseBodyQuotasDimensions struct {
-	// The dimensions of the quotas on which the specified quota depends.
+	// The quota dimension on which the dependent dimension of the target quota depends.
 	DependentDimension []*string `json:"DependentDimension,omitempty" xml:"DependentDimension,omitempty" type:"Repeated"`
-	// The key of the quota dimension.
+	// The key of the quota dimension on which the target quota depends.
 	//
 	// example:
 	//
-	// regionId
+	// []
 	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The dimension values.
+	// The value of the quota dimension on which the dependent dimension of the target quota depends.
 	DimensionValues []*string `json:"DimensionValues,omitempty" xml:"DimensionValues,omitempty" type:"Repeated"`
 }
 

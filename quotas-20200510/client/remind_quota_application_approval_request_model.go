@@ -14,9 +14,9 @@ type iRemindQuotaApplicationApprovalRequest interface {
 }
 
 type RemindQuotaApplicationApprovalRequest struct {
-	// The quota application ID.
+	// The ID of the quota application.
 	//
-	// For more information about how to obtain the ID of a quota application, see [ListQuotaApplications](https://help.aliyun.com/document_detail/440568.html).
+	// For more information, see [ListQuotaApplications](https://help.aliyun.com/document_detail/440568.html).
 	//
 	// example:
 	//

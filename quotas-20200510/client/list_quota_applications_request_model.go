@@ -29,14 +29,18 @@ type iListQuotaApplicationsRequest interface {
 
 type ListQuotaApplicationsRequest struct {
 	// The quota dimensions.
+	//
+	// The dimensions are properties of a quota item. A combination of dimensions (Dimensions) and a quota ID (QuotaActionCode) uniquely identifies a quota item.
+	//
+	// > Some cloud services require dimensions. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The `Requisite` response parameter indicates whether a dimension is required.
 	Dimensions []*ListQuotaApplicationsRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The keyword that you want to use to search for the application.
+	// The keyword for searching quota increase applications.
 	//
 	// example:
 	//
 	// Cluster
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of records to return in this query.
 	//
 	// Valid values: 1 to 200. Default value: 30.
 	//
@@ -44,45 +48,45 @@ type ListQuotaApplicationsRequest struct {
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which you want to start the query. If you leave this parameter empty, the query starts from the beginning.
+	// The token that marks the position from which you want to start the query. Leave this parameter empty to query from the beginning.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service name.
 	//
 	// example:
 	//
 	// csk
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
+	// The quota ID.
 	//
 	// example:
 	//
 	// q_i5uzm3
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The quota type. Valid values:
+	// The quota category. Valid values:
 	//
-	// 	- CommonQuota: general quota
+	// - CommonQuota: general quota.
 	//
-	// 	- FlowControl: API rate limit
+	// - FlowControl: API rate limit.
 	//
-	// 	- WhiteListLabel: whitelist quota
+	// - WhiteListLabel: privilege.
 	//
 	// example:
 	//
 	// CommonQuota
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
-	// The approval state of the quota increase application. Valid values:
+	// The approval status of the quota increase application. Valid values:
 	//
-	// 	- Disagree: The application is rejected.
+	// - Disagree: Rejected.
 	//
-	// 	- Agree: The application is approved.
+	// - Agree: Approved.
 	//
-	// 	- Process: The application is in review.
+	// - Process: Under review.
 	//
-	// 	- Cancel: The application is canceled.
+	// - Cancel: Closed.
 	//
 	// example:
 	//
@@ -171,21 +175,30 @@ func (s *ListQuotaApplicationsRequest) SetStatus(v string) *ListQuotaApplication
 }
 
 func (s *ListQuotaApplicationsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotaApplicationsRequestDimensions struct {
-	// The key of the dimension.
+	// The key of the quota dimension.
 	//
-	// >  The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
+	// > `Dimensions.N.Key` and `Dimensions.N.Value` must be specified together. The valid values of N depend on the number of dimensions supported by the cloud service. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The length of the returned array is the value of N.
 	//
 	// example:
 	//
 	// regionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the dimension.
+	// The value of the quota dimension.
 	//
-	// >  The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
+	// > `Dimensions.N.Key` and `Dimensions.N.Value` must be specified together. The valid values of N depend on the number of dimensions supported by the cloud service. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The length of the returned array is the value of N.
 	//
 	// example:
 	//

@@ -26,25 +26,25 @@ type iListAlarmHistoriesRequest interface {
 }
 
 type ListAlarmHistoriesRequest struct {
-	// The ID of the alert.
+	// The alert ID.
 	//
 	// example:
 	//
 	// 18b3be23-b7b0-4d45-91bc-d0c331aa****
 	AlarmId *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
-	// The end of the time range to query.
+	// The end time of the query.
 	//
 	// example:
 	//
 	// 20201024
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The keyword that is used for the query.
+	// The search keyword.
 	//
 	// example:
 	//
 	// Quantity
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The maximum number of records that can be returned for the query.
+	// The maximum number of entries to return for the current query.
 	//
 	// Valid values: 1 to 200. Default value: 30.
 	//
@@ -52,21 +52,21 @@ type ListAlarmHistoriesRequest struct {
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which you want to start the query. If you leave this parameter empty, the query starts from the beginning.
+	// The token that specifies the starting position of the query. An empty value indicates that the query starts from the beginning.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service name.
 	//
-	// > For more information, see [Alibaba Cloud services that support Quota Center](https://help.aliyun.com/document_detail/182368.html).
+	// > For more information about the cloud services that support Quota Center, see [Cloud services that support Quota Center](https://help.aliyun.com/document_detail/182368.html).
 	//
 	// example:
 	//
 	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The beginning of the time range to query.
+	// The start time of the query.
 	//
 	// example:
 	//

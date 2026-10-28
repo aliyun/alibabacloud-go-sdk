@@ -16,7 +16,7 @@ type iListProductsRequest interface {
 }
 
 type ListProductsRequest struct {
-	// The maximum number of entries to return.
+	// The maximum number of entries to return for this query.
 	//
 	// Valid values: 1 to 200. Default value: 30.
 	//
@@ -24,7 +24,7 @@ type ListProductsRequest struct {
 	//
 	// 4
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which you want to start the query. If you leave this parameter empty, the query starts from the beginning.
+	// The token that marks the position from which the query starts. An empty value indicates that the query starts from the beginning.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iGetQuotaApplicationRequest interface {
 }
 
 type GetQuotaApplicationRequest struct {
-	// The ID of the application.
+	// The ID of the quota increase application.
 	//
 	// example:
 	//

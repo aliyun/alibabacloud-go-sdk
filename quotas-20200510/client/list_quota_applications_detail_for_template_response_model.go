@@ -59,5 +59,10 @@ func (s *ListQuotaApplicationsDetailForTemplateResponse) SetBody(v *ListQuotaApp
 }
 
 func (s *ListQuotaApplicationsDetailForTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

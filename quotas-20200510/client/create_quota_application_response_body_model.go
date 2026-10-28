@@ -48,93 +48,93 @@ type iCreateQuotaApplicationResponseBody interface {
 }
 
 type CreateQuotaApplicationResponseBody struct {
-	// The ID of the application.
+	// The ID of the quota increase request.
 	//
 	// example:
 	//
 	// d314d6ae-867d-484c-9009-3d421a80****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The time when the application was submitted.
+	// The time when the quota increase request was submitted. The time is in ISO 8601 format and in UTC. The value ends with Z.
 	//
 	// example:
 	//
 	// 2021-01-19T09:25:56Z
 	ApplyTime *string `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
-	// The quota value that is approved.
+	// The approved quota value.
 	//
 	// example:
 	//
 	// 804
 	ApproveValue *float32 `json:"ApproveValue,omitempty" xml:"ApproveValue,omitempty"`
-	// The result of the application.
+	// The review comments on the quota increase request.
 	//
 	// example:
 	//
 	// Agree
 	AuditReason *string `json:"AuditReason,omitempty" xml:"AuditReason,omitempty"`
-	// The requested value of the quota.
+	// The requested quota value.
 	//
 	// example:
 	//
-	// 12
+	// 804
 	DesireValue *int32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
-	// The quota dimension.
+	// The quota dimensions.
 	//
 	// example:
 	//
 	// {"regionId":"cn-hangzhou"}
 	Dimension map[string]interface{} `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The time when the new quota value takes effect.
+	// The effective period of the quota. The time is in ISO 8601 format and in UTC. The value ends with Z.
 	//
 	// example:
 	//
 	// 2021-01-19T09:25:56Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The time when the new quota expires.
+	// The time when the quota expires. The time is in ISO 8601 format and in UTC. The value ends with Z.
 	//
 	// example:
 	//
 	// 2021-01-20T09:25:56Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the notification about the application result is sent. Valid values:
+	// Indicates whether a notification is sent about the request result. Valid values:
 	//
-	// 	- 0: The notification is not sent.
+	// - 0: no notification is sent.
 	//
-	// 	- 3: The notification is sent.
+	// - 3: a notification is sent.
 	//
 	// example:
 	//
 	// 3
 	NoticeType *int64 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service name.
 	//
 	// example:
 	//
-	// ecs-spec
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The quota ID.
 	//
 	// example:
 	//
-	// ecs.c5.large
+	// q_security-groups
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the quota.
 	//
 	// example:
 	//
-	// acs:quotas:cn-hangzhou:*:quota/ecs/ecs.m2.medium/prepaid/classic/instancetype/cn-hangzhou-b
+	// acs:quotas::141339776561****:quota/ecs/q_security-groups
 	QuotaArn *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
 	// The description of the quota.
 	//
 	// example:
 	//
-	// ecs.c5.large
+	// The maximum number of security groups that can be owned by the current account.
 	QuotaDescription *string `json:"QuotaDescription,omitempty" xml:"QuotaDescription,omitempty"`
 	// The name of the quota.
 	//
 	// example:
 	//
-	// ecs.c5.large
+	// Maximum Number of Security Groups
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
 	// The unit of the quota.
 	//
@@ -142,29 +142,19 @@ type CreateQuotaApplicationResponseBody struct {
 	//
 	// AMOUNT
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
-	// The reason for the application.
+	// The reason for the quota increase request.
 	//
 	// example:
 	//
 	// Scale Out
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D47B3A10-CDAC-5412-B2EE-EC9A3DBE9053
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The approval state of the quota increase application.
-	//
-	// Valid values:
-	//
-	// 	- Cancel: The application is canceled.
-	//
-	// 	- Agree: The application is approved.
-	//
-	// 	- Process: The application is in review.
-	//
-	// 	- Disagree: The application is rejected.
+	// The approval status of the quota increase request.
 	//
 	// example:
 	//

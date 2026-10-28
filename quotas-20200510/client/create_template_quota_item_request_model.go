@@ -30,13 +30,11 @@ type iCreateTemplateQuotaItemRequest interface {
 }
 
 type CreateTemplateQuotaItemRequest struct {
-	// The requested value of the quota.
+	// The requested quota value.
 	//
-	// >
+	// > - Set the requested quota value based on the `TotalUsage` (quota usage) and `ApplicableRange` (applicable range for the quota item) of the target quota in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
 	//
-	// 	- You can specify DesireValue based on the values of `TotalUsage` and `ApplicableRange` in the response to the [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html) operation.
-	//
-	// 	- Applications are reviewed by the technical support team for each cloud service. To increase the success rate of your application, specify a reasonable quota value and a detailed reason.
+	// > - Quota applications are reviewed by the technical support team of each cloud service. To increase the approval rate, specify a reasonable requested value and provide a detailed reason when you apply for a quota increase.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +44,11 @@ type CreateTemplateQuotaItemRequest struct {
 	DesireValue *float32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
 	// The quota dimensions.
 	Dimensions []*CreateTemplateQuotaItemRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The start time of the validity period of the quota. Specify the value in UTC. This parameter is valid only if you set the QuotaCategory parameter to WhiteListLabel.
+	// The UTC time when the quota takes effect.
 	//
-	// > If you leave this parameter empty, the quota takes effect immediately.
+	// This parameter applies only to privileges (WhiteListLabel).
+	//
+	// > An empty value indicates that the quota takes effect immediately.
 	//
 	// example:
 	//
@@ -56,35 +56,37 @@ type CreateTemplateQuotaItemRequest struct {
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The language of the quota alert notification. Valid values:
 	//
-	// 	- zh (default value): Chinese
+	// - zh (default): Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	EnvLanguage *string `json:"EnvLanguage,omitempty" xml:"EnvLanguage,omitempty"`
-	// The end time of the validity period of the quota. Specify the value in UTC. This parameter is valid only if you set the QuotaCategory parameter to WhiteListLabel.
+	// The UTC time when the quota expires.
 	//
-	// > If you leave this parameter empty, no end time is specified.
+	// This parameter applies only to privileges (WhiteListLabel).
+	//
+	// > An empty value indicates that no UTC expiration time is specified.
 	//
 	// example:
 	//
 	// 2021-01-20T09:25:56Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Specifies whether to send a notification about the application result. Valid values:
+	// Specifies whether to send a notification for the quota application result. Valid values:
 	//
-	// 	- 0 (default value): no
+	// - 0 (default): No.
 	//
-	// 	- 3: yes
+	// - 3: Yes.
 	//
 	// example:
 	//
 	// 0
 	NoticeType *int64 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service.
 	//
-	// >  To query the abbreviation of an Alibaba Cloud service name, call the [ListProducts](https://help.aliyun.com/document_detail/440555.html) operation and check the value of `ProductCode` in the response.
+	// > For information about how to obtain the abbreviation of a cloud service, see `ProductCode` in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
 	//
 	// This parameter is required.
 	//
@@ -94,7 +96,7 @@ type CreateTemplateQuotaItemRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The quota ID.
 	//
-	// >  To obtain the quota ID of an Alibaba Cloud service, call the [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html) operation and check the value of `QuotaActionCode` in the response.
+	// > For information about how to obtain the quota ID of a cloud service, see `QuotaActionCode` in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
 	//
 	// This parameter is required.
 	//
@@ -102,13 +104,13 @@ type CreateTemplateQuotaItemRequest struct {
 	//
 	// q_security-groups
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The quota type. Valid values:
+	// The quota category. Valid values:
 	//
-	// 	- CommonQuota: general quota
+	// - CommonQuota: general quota.
 	//
-	// 	- WhiteListLabel: privilege
+	// - WhiteListLabel: privilege.
 	//
-	// 	- FlowControl: API rate limit
+	// - FlowControl: API rate limit.
 	//
 	// example:
 	//
@@ -206,29 +208,34 @@ func (s *CreateTemplateQuotaItemRequest) SetQuotaCategory(v string) *CreateTempl
 }
 
 func (s *CreateTemplateQuotaItemRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTemplateQuotaItemRequestDimensions struct {
-	// The key of the dimension.
+	// The key of the quota dimension.
 	//
-	// >
+	// > - The value range of N depends on the number of dimensions supported by the cloud service.
 	//
-	// 	- The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
-	//
-	// 	- This parameter is required if you set the `ProductCode` parameter to `ecs`, `ecs-spec`, `actiontrail`, or `ess`.
+	// > - If `ProductCode` is `ecs`, `ecs-spec`, `actiontrail`, or `ess`, you must specify both the key and the value of the quota dimension.
 	//
 	// example:
 	//
 	// regionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the dimension.
+	// The value of the quota dimension.
 	//
-	// >
+	// > - The value range of N depends on the number of dimensions supported by the cloud service.
 	//
-	// 	- The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
-	//
-	// 	- This parameter is required if you set the `ProductCode` parameter to `ecs`, `ecs-spec`, `actiontrail`, or `ess`.
+	// > - If `ProductCode` is `ecs`, `ecs-spec`, `actiontrail`, or `ess`, you must specify both the key and the value of the quota dimension.
 	//
 	// example:
 	//

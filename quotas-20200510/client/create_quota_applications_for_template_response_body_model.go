@@ -20,15 +20,15 @@ type iCreateQuotaApplicationsForTemplateResponseBody interface {
 }
 
 type CreateQuotaApplicationsForTemplateResponseBody struct {
-	// The Alibaba Cloud accounts for which the quotas are applied.
+	// The list of Alibaba Cloud accounts that belong to the resource directory members for which quotas are applied.
 	AliyunUids []*string `json:"AliyunUids,omitempty" xml:"AliyunUids,omitempty" type:"Repeated"`
-	// The ID of the quota application batch.
+	// The batch ID of the quota application.
 	//
 	// example:
 	//
 	// d314d6ae-867d-484c-9009-3d421a80****
 	BatchQuotaApplicationId *string `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
-	// The Alibaba Cloud accounts of the members in a resource directory whose quota increase request is rejected, and the reason for the rejection.
+	// The list of Alibaba Cloud accounts that belong to the resource directory members for which quota applications failed and the reasons for the failures.
 	FailResults []*CreateQuotaApplicationsForTemplateResponseBodyFailResults `json:"FailResults,omitempty" xml:"FailResults,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,17 +83,26 @@ func (s *CreateQuotaApplicationsForTemplateResponseBody) SetRequestId(v string) 
 }
 
 func (s *CreateQuotaApplicationsForTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailResults != nil {
+		for _, item := range s.FailResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateQuotaApplicationsForTemplateResponseBodyFailResults struct {
-	// The Alibaba Cloud account of the members in a resource directory whose quota increase request is rejected.
+	// The Alibaba Cloud account that belongs to the resource directory member for which the quota application failed.
 	//
 	// example:
 	//
 	// 135048337611****
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	// The reason for the rejection.
+	// The reason for the failure.
 	//
 	// example:
 	//

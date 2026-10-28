@@ -22,27 +22,27 @@ type iListProductsResponseBody interface {
 }
 
 type ListProductsResponseBody struct {
-	// The maximum number of records that are returned for the query.
+	// The maximum number of entries returned for this query.
 	//
 	// example:
 	//
 	// 4
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position at which the query ends. An empty value indicates that all data is returned.
+	// The token that marks the position of the returned query data. An empty value indicates that all data has been queried.
 	//
 	// example:
 	//
 	// 4
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The information about the Alibaba Cloud services.
+	// The information about the Alibaba Cloud service.
 	ProductInfo []*ListProductsResponseBodyProductInfo `json:"ProductInfo,omitempty" xml:"ProductInfo,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1DA9C136-11BC-4C39-ADC6-B86276128072
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that are returned for the query.
+	// The total number of entries returned for this request.
 	//
 	// example:
 	//
@@ -104,37 +104,46 @@ func (s *ListProductsResponseBody) SetTotalCount(v int32) *ListProductsResponseB
 }
 
 func (s *ListProductsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProductInfo != nil {
+		for _, item := range s.ProductInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProductsResponseBodyProductInfo struct {
-	// Indicates whether the Alibaba Cloud service supports general quotas. Valid values:
+	// Specifies whether general quotas are supported. Valid values:
 	//
-	// 	- support: The Alibaba Cloud service supports general quotas.
+	// - support: Supported.
 	//
-	// 	- unsupport: The Alibaba Cloud service does not support general quotas.
+	// - unsupport: Not supported.
 	//
 	// example:
 	//
 	// support
 	CommonQuotaSupport *string `json:"CommonQuotaSupport,omitempty" xml:"CommonQuotaSupport,omitempty"`
-	// >  This parameter is discontinued and is not recommended.
+	// <notice>**[Deprecated]*	- We recommend that you do not use this parameter.</notice>
 	//
-	// Indicates whether the Alibaba Cloud service supports dynamic quota adjustment. Valid values:
+	// Specifies whether dynamic quota adjustment is supported. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	Dynamic *bool `json:"Dynamic,omitempty" xml:"Dynamic,omitempty"`
-	// Indicates whether the Alibaba Cloud service supports API rate limits. Valid values:
+	// Specifies whether API rate limits are supported. Valid values:
 	//
-	// 	- support: The Alibaba Cloud service supports API rate limits.
+	// - support: Supported.
 	//
-	// 	- unsupport: The Alibaba Cloud service does not support API rate limits.
+	// - unsupport: Not supported.
 	//
 	// example:
 	//
@@ -176,11 +185,11 @@ type ListProductsResponseBodyProductInfo struct {
 	//
 	// Elastic Compute
 	SecondCategoryNameEn *string `json:"SecondCategoryNameEn,omitempty" xml:"SecondCategoryNameEn,omitempty"`
-	// Indicates whether the Alibaba Cloud service supports whitelist quotas. Valid values:
+	// Specifies whether privileges are supported. Valid values:
 	//
-	// 	- support: The Alibaba Cloud service supports whitelist quotas.
+	// - support: Supported.
 	//
-	// 	- unsupport: The Alibaba Cloud service does not support whitelist quotas.
+	// - unsupport: Not supported.
 	//
 	// example:
 	//

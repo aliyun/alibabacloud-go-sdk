@@ -16,9 +16,9 @@ type iGetQuotaApplicationResponseBody interface {
 }
 
 type GetQuotaApplicationResponseBody struct {
-	// The details of the quota application.
+	// The details of the quota increase application.
 	QuotaApplication *GetQuotaApplicationResponseBodyQuotaApplication `json:"QuotaApplication,omitempty" xml:"QuotaApplication,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -53,17 +53,22 @@ func (s *GetQuotaApplicationResponseBody) SetRequestId(v string) *GetQuotaApplic
 }
 
 func (s *GetQuotaApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaApplication != nil {
+		if err := s.QuotaApplication.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQuotaApplicationResponseBodyQuotaApplication struct {
-	// The ID of the application.
+	// The ID of the quota increase application.
 	//
 	// example:
 	//
 	// d314d6ae-867d-484c-9009-3d421a80****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The time when the application was submitted.
+	// The time when the quota increase application was submitted.
 	//
 	// example:
 	//
@@ -75,113 +80,113 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	//
 	// 10
 	ApproveValue *float32 `json:"ApproveValue,omitempty" xml:"ApproveValue,omitempty"`
-	// The result of the application.
+	// The review comments for the quota increase application.
 	//
 	// example:
 	//
 	// Agree
 	AuditReason *string `json:"AuditReason,omitempty" xml:"AuditReason,omitempty"`
-	// The expected value of the quota.
+	// The requested quota value.
 	//
 	// example:
 	//
 	// 804
 	DesireValue *int32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
-	// The dimension.
+	// The quota dimension.
 	//
-	// Format: `{"regionId":"Region"}`.
+	// Format: `{"regionId":"region"}`.
 	//
 	// example:
 	//
 	// ["cn-shanghai","cn-hangzhou"]
 	Dimension map[string]interface{} `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The time when the new quota value takes effect.
+	// The effective period of the quota.
 	//
 	// example:
 	//
 	// 2021-01-19 15:30:00
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The time when the new quota expires.
+	// The time when the quota expires.
 	//
 	// example:
 	//
 	// 2023-06-29 15:30:00
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The method of that is used to send alert notifications. Valid values:
+	// The notification type. Valid values:
 	//
-	// 	- 0: Quota Center does not send a notification.
+	// - 0: no notification
 	//
-	// 	- 1: Quota Center sends an email notification.
+	// - 1: email notification
 	//
-	// 	- 2: Quota Center sends an SMS notification.
+	// - 2: SMS notification
 	//
 	// example:
 	//
 	// 0
 	NoticeType *int64 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service name.
 	//
 	// example:
 	//
 	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
+	// The quota ID.
 	//
 	// example:
 	//
 	// q_security-groups
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the quota.
+	// The ARN of the quota.
 	//
 	// example:
 	//
 	// acs:quotas:cn-hangzhou:120886317861****:quota/ecs/q_security-groups/
 	QuotaArn *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
-	// The quota type. Valid values:
+	// The quota category. Valid values:
 	//
-	// 	- CommonQuota: general quota.
+	// - CommonQuota: general quota
 	//
-	// 	- FlowControl: API rate limit.
+	// - FlowControl: API rate limit
 	//
-	// 	- WhiteListLabel: whitelist quota.
+	// - WhiteListLabel: privilege
 	//
 	// example:
 	//
 	// CommonQuota
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
-	// The description of the quota.
+	// The quota description.
 	//
 	// example:
 	//
-	// The maximum number of security groups that can be owned by the current account
+	// The maximum number of security groups that can be owned by the current account.
 	QuotaDescription *string `json:"QuotaDescription,omitempty" xml:"QuotaDescription,omitempty"`
-	// The name of the quota.
+	// The quota name.
 	//
 	// example:
 	//
 	// Maximum Number of Security Groups
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The unit of the new quota value.
+	// The quota unit.
 	//
 	// example:
 	//
-	// Count
+	// AMOUNT
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
-	// The reason for the application.
+	// The reason for the quota increase application.
 	//
 	// example:
 	//
 	// Scale Out
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The status of the application. Valid values:
+	// The approval status of the quota increase application. Valid values:
 	//
-	// 	- Disagree: The application is rejected.
+	// - Disagree: Rejected.
 	//
-	// 	- Agree: The application is approved.
+	// - Agree: Approved.
 	//
-	// 	- Process: The application is being reviewed.
+	// - Process: Under review.
 	//
-	// 	- Cancel: The application is closed.
+	// - Cancel: Closed.
 	//
 	// example:
 	//

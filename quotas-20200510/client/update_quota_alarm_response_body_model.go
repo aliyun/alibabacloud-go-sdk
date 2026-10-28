@@ -14,7 +14,7 @@ type iUpdateQuotaAlarmResponseBody interface {
 }
 
 type UpdateQuotaAlarmResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

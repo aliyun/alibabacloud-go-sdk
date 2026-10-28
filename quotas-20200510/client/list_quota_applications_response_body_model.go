@@ -22,13 +22,13 @@ type iListQuotaApplicationsResponseBody interface {
 }
 
 type ListQuotaApplicationsResponseBody struct {
-	// The maximum number of records that are returned for the query.
+	// The maximum number of records returned in this query.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position at which the query ends. An empty value indicates that all data is returned.
+	// The token that marks the position of the returned data. An empty value indicates that all data has been returned.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type ListQuotaApplicationsResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The details of the quota increase applications.
 	QuotaApplications []*ListQuotaApplicationsResponseBodyQuotaApplications `json:"QuotaApplications,omitempty" xml:"QuotaApplications,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 730925FB-0BD0-40AC-AF3A-A6C6E9716879
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of applications.
+	// The total number of quota increase applications.
 	//
 	// example:
 	//
@@ -104,83 +104,92 @@ func (s *ListQuotaApplicationsResponseBody) SetTotalCount(v int32) *ListQuotaApp
 }
 
 func (s *ListQuotaApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaApplications != nil {
+		for _, item := range s.QuotaApplications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotaApplicationsResponseBodyQuotaApplications struct {
-	// The ID of the application.
+	// The ID of the quota increase application.
 	//
 	// example:
 	//
 	// b926571d-cc09-4711-b547-58a615f0****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The time when the application was submitted.
+	// The time when the quota increase application was submitted. The value is in ISO 8601 format, in UTC, and ends with Z.
 	//
 	// example:
 	//
 	// 2021-01-15T09:13:53Z
 	ApplyTime *string `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
-	// The quota value that is approved.
+	// The approved quota value of the quota increase application.
 	//
 	// example:
 	//
 	// 101
 	ApproveValue *float32 `json:"ApproveValue,omitempty" xml:"ApproveValue,omitempty"`
-	// The result of the application.
+	// The approval comment for the quota increase application.
 	//
 	// example:
 	//
 	// Agree
 	AuditReason *string `json:"AuditReason,omitempty" xml:"AuditReason,omitempty"`
-	// The remarks of the application.
+	// The remarks of the quota increase application.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The quota value that is approved.
+	// The requested quota value of the quota increase application.
 	//
 	// example:
 	//
 	// 101
 	DesireValue *float32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
-	// The dimension of the application.
+	// The quota dimensions of the quota increase application.
 	//
 	// example:
 	//
 	// {"regionId":"cn-hangzhou"}
 	Dimension map[string]interface{} `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The time when the application took effect.
+	// The effective period of the quota increase application. The value is in ISO 8601 format, in UTC, and ends with Z.
 	//
 	// example:
 	//
 	// 2021-01-15T11:46:25Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The time when the application expired.
+	// The expiration time of the quota increase application. The value is in ISO 8601 format, in UTC, and ends with Z.
 	//
 	// example:
 	//
 	// 2021-01-17T11:46:25Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether Quota Center sends a notification about the application result. Valid values:
+	// Indicates whether a notification is sent for the quota increase application result. Valid values:
 	//
-	// 	- 0: A notification about the application result is not sent.
+	// - 0: No.
 	//
-	// 	- 3: A notification about the application result is sent.
+	// - 3: Yes.
 	//
 	// example:
 	//
 	// 3
 	NoticeType *int32 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// The calculation cycle of the quota.
+	// The quota calculation period.
 	Period *ListQuotaApplicationsResponseBodyQuotaApplicationsPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service name.
 	//
 	// example:
 	//
 	// csk
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
+	// The quota ID.
 	//
 	// example:
 	//
@@ -192,13 +201,13 @@ type ListQuotaApplicationsResponseBodyQuotaApplications struct {
 	//
 	// acs:quotas:*:120886317861****:quota/csk/q_i5uzm3
 	QuotaArn *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
-	// The quota type. Valid values:
+	// The quota category. Valid values:
 	//
-	// 	- CommonQuota (default): general quota.
+	// - CommonQuota (default): general quota.
 	//
-	// 	- WhiteListLabel: whitelist quota.
+	// - WhiteListLabel: privilege.
 	//
-	// 	- FlowControl: API rate limit.
+	// - FlowControl: API rate limit.
 	//
 	// example:
 	//
@@ -208,7 +217,7 @@ type ListQuotaApplicationsResponseBodyQuotaApplications struct {
 	//
 	// example:
 	//
-	// The maximum number of nodes in a cluster
+	// The maximum number of nodes in a cluster.
 	QuotaDescription *string `json:"QuotaDescription,omitempty" xml:"QuotaDescription,omitempty"`
 	// The name of the quota.
 	//
@@ -216,27 +225,27 @@ type ListQuotaApplicationsResponseBodyQuotaApplications struct {
 	//
 	// Maximum Number of Nodes
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The unit of the new quota value.
+	// The unit of the quota.
 	//
 	// example:
 	//
 	// Node
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
-	// The reason for the application.
+	// The reason for the quota increase application.
 	//
 	// example:
 	//
 	// Business expansion
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The status of the application. Valid values:
+	// The approval status of the quota increase application. Valid values:
 	//
-	// 	- Disagree: The application is rejected.
+	// - Disagree: Rejected.
 	//
-	// 	- Agree: The application is approved.
+	// - Agree: Approved.
 	//
-	// 	- Process: The application is being reviewed.
+	// - Process: Under review.
 	//
-	// 	- Cancel: The application is canceled.
+	// - Cancel: Closed.
 	//
 	// example:
 	//
@@ -433,27 +442,32 @@ func (s *ListQuotaApplicationsResponseBodyQuotaApplications) SetStatus(v string)
 }
 
 func (s *ListQuotaApplicationsResponseBodyQuotaApplications) Validate() error {
-	return dara.Validate(s)
+	if s.Period != nil {
+		if err := s.Period.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQuotaApplicationsResponseBodyQuotaApplicationsPeriod struct {
-	// The unit of the calculation cycle. Valid values:
+	// The unit of the quota calculation period. Valid values:
 	//
-	// 	- second
+	// - second: seconds.
 	//
-	// 	- minute
+	// - minute: minutes.
 	//
-	// 	- hour
+	// - hour: hours.
 	//
-	// 	- day
+	// - day: days.
 	//
-	// 	- week
+	// - week: weeks.
 	//
 	// example:
 	//
 	// second
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The value of the calculation cycle.
+	// The value of the quota calculation period.
 	//
 	// example:
 	//

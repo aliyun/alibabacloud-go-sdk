@@ -59,5 +59,10 @@ func (s *ListProductDimensionGroupsResponse) SetBody(v *ListProductDimensionGrou
 }
 
 func (s *ListProductDimensionGroupsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

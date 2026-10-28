@@ -16,7 +16,7 @@ type iGetProductQuotaResponseBody interface {
 }
 
 type GetProductQuotaResponseBody struct {
-	// The details of the quota.
+	// The quota details.
 	Quota *GetProductQuotaResponseBodyQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -53,61 +53,66 @@ func (s *GetProductQuotaResponseBody) SetRequestId(v string) *GetProductQuotaRes
 }
 
 func (s *GetProductQuotaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProductQuotaResponseBodyQuota struct {
 	// Indicates whether the quota is adjustable. Valid values:
 	//
-	// 	- true
+	// - true: Adjustable.
 	//
-	// 	- false
+	// - false: Not adjustable.
 	//
 	// example:
 	//
 	// true
 	Adjustable *bool `json:"Adjustable,omitempty" xml:"Adjustable,omitempty"`
-	// The range of the quota value that can be requested for the quota item.
+	// The applicable range for quota adjustment.
 	ApplicableRange []*float32 `json:"ApplicableRange,omitempty" xml:"ApplicableRange,omitempty" type:"Repeated"`
-	// The type of the adjustable value. Valid values:
+	// The type of quota adjustment. Valid values:
 	//
-	// 	- continuous
+	// - continuous: Continuous.
 	//
-	// 	- discontinuous
+	// - discontinuous: Discontinuous.
 	//
 	// example:
 	//
 	// continuous
 	ApplicableType *string `json:"ApplicableType,omitempty" xml:"ApplicableType,omitempty"`
-	// The reason for submitting a quota increase request.
+	// The sample reasons for applying for a quota adjustment.
 	//
 	// example:
 	//
 	// The business xxx is expected to grow by 50%.
 	ApplyReasonTips *string `json:"ApplyReasonTips,omitempty" xml:"ApplyReasonTips,omitempty"`
-	// Indicates whether the system shows the used value of the quota. Valid values:
+	// Indicates whether the used quota is displayed. Valid values:
 	//
-	// 	- true
+	// - true: The used quota is displayed.
 	//
-	// 	- false
+	// - false: The used quota is not displayed.
 	//
 	// example:
 	//
 	// true
 	Consumable *bool `json:"Consumable,omitempty" xml:"Consumable,omitempty"`
-	// The quota dimensions. Format: `{"regionId":"Region"}`.
+	// The quota dimensions. Format: `{"regionId":"region"}`.
 	//
 	// example:
 	//
 	// {"regionId":"cn-hangzhou"}
 	Dimensions map[string]interface{} `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The start time of the validity period of the quota. Specify the value in UTC.
+	// The UTC time when the quota takes effect.
 	//
 	// example:
 	//
 	// 2022-09-28T06:06:00Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The end time of the validity period of the quota. Specify the value in UTC.
+	// The UTC time when the quota expires.
 	//
 	// example:
 	//
@@ -115,17 +120,17 @@ type GetProductQuotaResponseBodyQuota struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the quota is a global quota. Valid values:
 	//
-	// 	- true: The quota is shared in all regions.
+	// - true: The quota item is shared across all regions.
 	//
-	// 	- false: The quota is independently used in a region.
+	// - false: The quota item is independent for each region.
 	//
 	// example:
 	//
 	// true
 	GlobalQuota *bool `json:"GlobalQuota,omitempty" xml:"GlobalQuota,omitempty"`
-	// The calculation cycle of the quota.
+	// The quota period.
 	Period *GetProductQuotaResponseBodyQuotaPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviated name of the cloud service.
 	//
 	// example:
 	//
@@ -137,87 +142,87 @@ type GetProductQuotaResponseBodyQuota struct {
 	//
 	// q_security-groups
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the quota.
+	// The ARN of the quota.
 	//
 	// example:
 	//
 	// acs:quotas:cn-hangzhou:120886317861****:quota/ecs/q_security-groups/
 	QuotaArn *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
-	// The type of the quota. Valid values:
+	// The quota category. Valid values:
 	//
-	// 	- CommonQuota: general quota
+	// - CommonQuota: General quota.
 	//
-	// 	- FlowControl: API rate limit
+	// - FlowControl: API rate limit.
 	//
-	// 	- WhiteListLabel: whitelist quota
+	// - WhiteListLabel: Privilege.
 	//
 	// example:
 	//
 	// CommonQuota
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
-	// The description of the quota.
+	// The quota description.
 	//
 	// example:
 	//
-	// The maximum number of security groups that can be owned by the current account
+	// The maximum number of security groups that can be owned by the current account.
 	QuotaDescription *string `json:"QuotaDescription,omitempty" xml:"QuotaDescription,omitempty"`
-	// The details of the quota.
+	// The quota details.
 	QuotaItems []*GetProductQuotaResponseBodyQuotaQuotaItems `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
-	// The name of the quota.
+	// The quota name.
 	//
 	// example:
 	//
 	// Maximum Number of Security Groups
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The type of the quota. Valid values:
+	// The quota type. Valid values:
 	//
-	// 	- privilege
+	// - privilege: Privilege.
 	//
-	// 	- normal
+	// - normal: Normal.
 	//
 	// example:
 	//
 	// normal
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	// The unit of the quota.
+	// The quota unit.
 	//
-	// >  The unit of each quota is unique. For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
+	// > The unit varies for each quota. For example, the unit of the q_cbdch3 quota (maximum number of clusters) for Container Service for Kubernetes is Cluster, and the unit of the q_security-groups quota (maximum number of security groups) for Elastic Compute Service servers is count.
 	//
 	// example:
 	//
 	// Count
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
-	// The range of the quota value.
+	// The supported range of quota values for the current quota item, which can be used as a reference when configuring a quota template.
 	SupportedRange []*float32 `json:"SupportedRange,omitempty" xml:"SupportedRange,omitempty" type:"Repeated"`
-	// The value of the quota.
+	// The quota value.
 	//
 	// example:
 	//
 	// 801
 	TotalQuota *float32 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	// The used quota.
+	// The quota usage.
 	//
 	// example:
 	//
 	// 26
 	TotalUsage *float32 `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty"`
-	// The reason why the quota is not adjustable. Valid values:
+	// The reason why the quota cannot be adjusted. Valid values:
 	//
-	// 	- nonactivated: The service is not activated.
+	// - nonactivated: The service is not activated.
 	//
-	// 	- applicationProcess: The application is being processed.
+	// - applicationProcess: The quota application is being processed.
 	//
-	// 	- limitReached: The quota limit is reached.
+	// - limitReached: The quota limit is reached.
 	//
-	// 	- supportTicketRequired: The quota can be increased only by submitting a ticket.
+	// - supportTicketRequired: A ticket must be submitted for the application.
 	//
 	// example:
 	//
 	// limitReached
 	UnadjustableDetail *string `json:"UnadjustableDetail,omitempty" xml:"UnadjustableDetail,omitempty"`
-	// The monitoring information of the quota in CloudMonitor.
+	// The monitoring information of the quota usage in CloudMonitor.
 	//
-	// >  If this parameter is empty, no monitoring data of the quota exists in CloudMonitor.
+	// > An empty value indicates that no monitoring data is available for this quota in CloudMonitor.
 	UsageMetric *GetProductQuotaResponseBodyQuotaUsageMetric `json:"UsageMetric,omitempty" xml:"UsageMetric,omitempty" type:"Struct"`
 }
 
@@ -446,27 +451,46 @@ func (s *GetProductQuotaResponseBodyQuota) SetUsageMetric(v *GetProductQuotaResp
 }
 
 func (s *GetProductQuotaResponseBodyQuota) Validate() error {
-	return dara.Validate(s)
+	if s.Period != nil {
+		if err := s.Period.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuotaItems != nil {
+		for _, item := range s.QuotaItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UsageMetric != nil {
+		if err := s.UsageMetric.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProductQuotaResponseBodyQuotaPeriod struct {
-	// The unit of the calculation cycle of the quota. Valid values:
+	// The unit of the quota period. Valid values:
 	//
-	// 	- second
+	// - second: Seconds.
 	//
-	// 	- minute
+	// - minute: Minutes.
 	//
-	// 	- hour
+	// - hour: Hours.
 	//
-	// 	- day
+	// - day: Days.
 	//
-	// 	- week
+	// - week: Weeks.
 	//
 	// example:
 	//
-	// Day
+	// day
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The value of the calculation cycle of the quota.
+	// The value of the quota period.
 	//
 	// example:
 	//
@@ -505,31 +529,31 @@ func (s *GetProductQuotaResponseBodyQuotaPeriod) Validate() error {
 }
 
 type GetProductQuotaResponseBodyQuotaQuotaItems struct {
-	// The value of the quota.
+	// The quota value.
 	//
 	// example:
 	//
 	// 801
 	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// The unit of the quota.
+	// The quota unit.
 	//
-	// >  The unit of each quota is unique. For example, the quota whose ID is `q_cbdch3` represents the maximum number of ACK clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
+	// > The unit varies for each quota. For example, the unit of the q_cbdch3 quota (maximum number of clusters) for Container Service for Kubernetes is Cluster, and the unit of the q_security-groups quota (maximum number of security groups) for Elastic Compute Service servers is count.
 	//
 	// example:
 	//
 	// Count
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
-	// The category of the quota. Valid values:
+	// The quota item type. Valid values:
 	//
-	// 	- BaseQuota: base quota.
+	// - BaseQuota: Base quota.
 	//
-	// 	- ReservedQuota: reserved quota.
+	// - ReservedQuota: Reserved quota.
 	//
 	// example:
 	//
 	// BaseQuota
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The used quota.
+	// The quota usage.
 	//
 	// example:
 	//
@@ -586,17 +610,19 @@ func (s *GetProductQuotaResponseBodyQuotaQuotaItems) Validate() error {
 }
 
 type GetProductQuotaResponseBodyQuotaUsageMetric struct {
-	// The monitoring dimensions.
+	// The CloudMonitor monitoring dimensions.
 	//
-	// The value is a collection of `key:value` pairs. Example: `{"productCode":"***","metricKey":"***","regionId":"***","label":"***"}`.
+	// Format: a collection of `key:value` pairs. Example:
+	//
+	// `{"productCode":"***","metricKey":"***","regionId":"***","label":"***"}`.
 	MetricDimensions map[string]*string `json:"MetricDimensions,omitempty" xml:"MetricDimensions,omitempty"`
-	// The monitoring metric.
+	// The CloudMonitor metric name.
 	//
 	// example:
 	//
 	// Usage
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The monitoring namespace.
+	// The CloudMonitor metric namespace.
 	//
 	// example:
 	//

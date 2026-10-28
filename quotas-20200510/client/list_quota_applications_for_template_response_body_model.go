@@ -22,19 +22,19 @@ type iListQuotaApplicationsForTemplateResponseBody interface {
 }
 
 type ListQuotaApplicationsForTemplateResponseBody struct {
-	// The maximum number of records that can be returned for the query.
+	// The maximum number of records returned for the query.
 	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which you want to start the query.
+	// The token that marks the start of the data to read.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The queried quota application records.
+	// The list of historical quota applications.
 	QuotaBatchApplications []*ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications `json:"QuotaBatchApplications,omitempty" xml:"QuotaBatchApplications,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type ListQuotaApplicationsForTemplateResponseBody struct {
 	//
 	// D47B3A10-CDAC-5412-B2EE-EC9A3DBE9053
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that are returned for the query.
+	// The total number of records returned for the request.
 	//
 	// example:
 	//
@@ -104,13 +104,22 @@ func (s *ListQuotaApplicationsForTemplateResponseBody) SetTotalCount(v int32) *L
 }
 
 func (s *ListQuotaApplicationsForTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaBatchApplications != nil {
+		for _, item := range s.QuotaBatchApplications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications struct {
-	// The Alibaba Cloud accounts that correspond to the resource directory members for which the quotas are applied.
+	// The list of Alibaba Cloud accounts of the members in a resource directory for which the quota applications are submitted.
 	AliyunUids []*string `json:"AliyunUids,omitempty" xml:"AliyunUids,omitempty" type:"Repeated"`
-	// The time when the quota increase application was submitted. The value is displayed in UTC.
+	// The UTC time when the quota increase application was submitted.
 	//
 	// example:
 	//
@@ -118,13 +127,13 @@ type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications struct {
 	ApplyTime *string `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
 	// The number of applications in different approval states.
 	AuditStatusVos []*ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos `json:"AuditStatusVos,omitempty" xml:"AuditStatusVos,omitempty" type:"Repeated"`
-	// The ID of the quota application batch.
+	// The ID of the batch quota application.
 	//
 	// example:
 	//
 	// d314d6ae-867d-484c-9009-3d421a80****
 	BatchQuotaApplicationId *string `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
-	// The requested value of the quota.
+	// The requested quota value.
 	//
 	// example:
 	//
@@ -132,25 +141,25 @@ type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications struct {
 	DesireValue *float64 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
 	// The quota dimensions.
 	//
-	// Format example: {"regionId":"cn-hangzhou"}.
+	// Format: {"regionId":"cn-hangzhou"}.
 	//
 	// example:
 	//
 	// {"regionId":"cn-hangzhou"}
 	Dimensions map[string]interface{} `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The start time of the validity period of the quota. The value is displayed in UTC.
+	// The UTC time when the quota takes effect.
 	//
 	// example:
 	//
 	// 2023-05-22T16:00:00Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The end time of the validity period of the quota. The value is displayed in UTC.
+	// The UTC time when the quota expires.
 	//
 	// example:
 	//
 	// 2024-05-14T02:08:56Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the Alibaba Cloud service.
 	//
 	// example:
 	//
@@ -162,13 +171,13 @@ type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications struct {
 	//
 	// q_fhoz4k
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The quota type. Valid values:
+	// The type of the quota. Valid values:
 	//
-	// 	- CommonQuota: general quota
+	// - CommonQuota: general quota.
 	//
-	// 	- FlowControl: API rate limit
+	// - FlowControl: API rate limit.
 	//
-	// 	- WhiteListLabel: privilege
+	// - WhiteListLabel: privilege.
 	//
 	// example:
 	//
@@ -299,25 +308,34 @@ func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) Set
 }
 
 func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) Validate() error {
-	return dara.Validate(s)
+	if s.AuditStatusVos != nil {
+		for _, item := range s.AuditStatusVos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos struct {
-	// The number of approval tickets.
+	// The number of applications.
 	//
 	// example:
 	//
 	// 4
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The approval state of the quota increase application. Valid values:
+	// The approval status of the quota increase application. Valid values:
 	//
-	// 	- Disagree: The application is rejected.
+	// - Disagree: denied.
 	//
-	// 	- Agree: The application is approved.
+	// - Agree: approved.
 	//
-	// 	- Process: The application is in review.
+	// - Process: pending approval.
 	//
-	// 	- Cancel: The application is canceled.
+	// - Cancel: closed.
 	//
 	// example:
 	//

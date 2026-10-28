@@ -38,17 +38,17 @@ type ListProductQuotasRequest struct {
 	//
 	// example:
 	//
-	// entconsole_w1j3msbo2g
+	// entconsole_w1j3ms****
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	// The keyword that you want to use to search for the quotas.
+	// The search keyword for the quota.
 	//
-	// >  This parameter is available only for quotas that belong to ECS Quotas by Instance Type. The keyword is used to match the values of `QuotaName` and `QuotaActionCode`.
+	// > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). The search scope includes `QuotaName` and `QuotaActionCode`.
 	//
 	// example:
 	//
-	// ecs-spec
+	// security
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The maximum number of records that can be returned for the query.
+	// The maximum number of entries to return in a single request.
 	//
 	// Valid values: 1 to 100. Default value: 30.
 	//
@@ -56,73 +56,51 @@ type ListProductQuotasRequest struct {
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token used to retrieve the next page of results.
 	//
-	// 	- You do not need to specify this parameter for the first and last requests.
+	// - Leave this parameter empty for the first request or when no more results are available.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - If more results are available, set this parameter to the NextToken value returned when you invoke the previous API call.
 	//
 	// example:
 	//
-	// 1
+	// AAAAAd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service.
 	//
-	// >  To query the abbreviation of an Alibaba Cloud service name, call the [ListProducts](https://help.aliyun.com/document_detail/440555.html) operation and check the value of the `ProductCode` parameter.
+	// > For more information about how to obtain the abbreviation of a cloud service, see `ProductCode` in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ecs-spec
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The quota ID.
+	// The ID of the quota.
 	//
 	// example:
 	//
-	// ecs.g5.2xlarge
+	// q_security-groups
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The type of the quota.
+	// The quota category.
 	//
 	// Default value: CommonQuota.
-	//
-	// Valid values:
-	//
-	// 	- FlowControl: API rate limit
-	//
-	// 	- WhiteListLabel: privilege
-	//
-	// 	- CommonQuota: general quota
 	//
 	// example:
 	//
 	// FlowControl
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
-	// The field based on which you want to sort the returned records.
+	// The sorting method supported by the quota.
 	//
-	// >  This parameter is available only for quotas that belong to ECS Quotas by Instance Type. You can leave this parameter empty.
-	//
-	// Valid values:
-	//
-	// 	- TOTAL: sorts the returned records based on the total quota.
-	//
-	// 	- TIME: sorts the returned records based on the time when the quota was last modified.
-	//
-	// 	- RESERVED: sorts the returned records based on the reserved quota.
+	// > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). If no Settings are specified, it is left empty.
 	//
 	// example:
 	//
 	// TIME
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
-	// The order in which you want to sort the returned records.
+	// The sorting method supported by the quota.
 	//
-	// >  This parameter is available only for quotas that belong to ECS Quotas by Instance Type. You can leave this parameter empty.
-	//
-	// Valid values:
-	//
-	// 	- Descending
-	//
-	// 	- Ascending
+	// > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). If no Settings are specified, it is left empty.
 	//
 	// example:
 	//
@@ -229,21 +207,30 @@ func (s *ListProductQuotasRequest) SetSortOrder(v string) *ListProductQuotasRequ
 }
 
 func (s *ListProductQuotasRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProductQuotasRequestDimensions struct {
-	// The key of the dimension.
+	// The key of the quota dimension.
 	//
-	// >  The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
+	// > The value range of N depends on the number of dimensions supported by the corresponding cloud service.
 	//
 	// example:
 	//
 	// regionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the dimension.
+	// The value of the quota dimension.
 	//
-	// >  The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
+	// > The value range of N depends on the number of dimensions supported by the corresponding cloud service.
 	//
 	// example:
 	//

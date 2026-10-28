@@ -53,7 +53,12 @@ func (s *GetQuotaAlarmResponseBody) SetRequestId(v string) *GetQuotaAlarmRespons
 }
 
 func (s *GetQuotaAlarmResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaAlarm != nil {
+		if err := s.QuotaAlarm.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQuotaAlarmResponseBodyQuotaAlarm struct {
@@ -67,7 +72,7 @@ type GetQuotaAlarmResponseBodyQuotaAlarm struct {
 	//
 	// example:
 	//
-	// tf-testacccn-hangzhouquotasquotaalarm81611
+	// q_security-groups alarm
 	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
 	// The time when the quota alert was created.
 	//
@@ -75,9 +80,9 @@ type GetQuotaAlarmResponseBodyQuotaAlarm struct {
 	//
 	// 2021-01-21T03:47:28Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The alert notification methods.
+	// The notification channels for the alert.
 	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
-	// The alert contact.
+	// The notification recipient of the quota alert.
 	//
 	// example:
 	//
@@ -101,7 +106,7 @@ type GetQuotaAlarmResponseBodyQuotaAlarm struct {
 	//
 	// {"regionId":"cn-hangzhou"}
 	QuotaDimension map[string]interface{} `json:"QuotaDimension,omitempty" xml:"QuotaDimension,omitempty"`
-	// The used quota.
+	// The quota usage.
 	//
 	// example:
 	//
@@ -113,29 +118,29 @@ type GetQuotaAlarmResponseBodyQuotaAlarm struct {
 	//
 	// 804
 	QuotaValue *float32 `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
-	// The numeric value of the alert threshold.
+	// The numeric value of the quota alert threshold.
 	//
 	// example:
 	//
 	// 29
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The percentage of the alert threshold.
+	// The percentage of the quota alert threshold.
 	//
 	// example:
 	//
 	// 50
 	ThresholdPercent *float32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
-	// The type of the quota alert. Valid values:
+	// The Alarm Metric of the quota alerting. Valid values:
 	//
-	// 	- used: The alert is created for the used quota.
+	// - used: Alerting on the used quota usage.
 	//
-	// 	- usable: The alert is created for the available quota.
+	// - usable: Alerting on the remaining active quota.
 	//
 	// example:
 	//
 	// used
 	ThresholdType *string `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
-	// The webhook URL. Quota Center sends alert notifications to the specified URL by using HTTP POST requests.
+	// The public URL to which Quota Center sends alert messages by using HTTP POST requests.
 	//
 	// example:
 	//

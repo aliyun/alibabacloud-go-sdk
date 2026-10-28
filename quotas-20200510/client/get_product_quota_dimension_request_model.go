@@ -18,23 +18,25 @@ type iGetProductQuotaDimensionRequest interface {
 }
 
 type GetProductQuotaDimensionRequest struct {
-	// The information about quota dimensions.
+	// The quota dimensions on which the target quota dimension depends.
 	DependentDimensions []*GetProductQuotaDimensionRequestDependentDimensions `json:"DependentDimensions,omitempty" xml:"DependentDimensions,omitempty" type:"Repeated"`
-	// The key of the quota dimension.
+	// The key of the target quota dimension.
+	//
+	// > If the target quota dimension has dependent quota dimensions, you must specify the keys and values of the dependent quota dimensions at the same time.
 	//
 	// example:
 	//
-	// regionId
+	// zoneId
 	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service.
 	//
-	// > For more information, see [Alibaba Cloud services that support Quota Center](https://help.aliyun.com/document_detail/182368.html).
+	// > For more information about how to obtain the abbreviation of a cloud service, see the ProductCode parameter in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ecs-spec
+	// disk
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -74,21 +76,34 @@ func (s *GetProductQuotaDimensionRequest) SetProductCode(v string) *GetProductQu
 }
 
 func (s *GetProductQuotaDimensionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DependentDimensions != nil {
+		for _, item := range s.DependentDimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetProductQuotaDimensionRequestDependentDimensions struct {
-	// The key of the quota dimension on which the quota dimension that you want to query is dependent.
+	// The key of the quota dimension on which the target quota dimension depends.
 	//
-	// > The value range of N varies based on the number of quota dimensions that are supported by the specified Alibaba Cloud service.
+	// > - The value of N depends on the number of quota dimensions on which the target quota dimension depends.
+	//
+	// > - You must specify the key and value of a dependent quota dimension at the same time.
 	//
 	// example:
 	//
 	// regionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the quota dimension on which the quota dimension that you want to query is dependent.
+	// The value of the quota dimension on which the target quota dimension depends.
 	//
-	// > The value range of N varies based on the number of quota dimensions that are supported by the specified Alibaba Cloud service.
+	// > - The value of N depends on the number of quota dimensions on which the target quota dimension depends.
+	//
+	// > - You must specify the key and value of a dependent quota dimension at the same time.
 	//
 	// example:
 	//

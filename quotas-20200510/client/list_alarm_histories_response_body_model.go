@@ -22,27 +22,27 @@ type iListAlarmHistoriesResponseBody interface {
 }
 
 type ListAlarmHistoriesResponseBody struct {
-	// The details of the quota alert records.
+	// The details of the quota alert history records.
 	AlarmHistories []*ListAlarmHistoriesResponseBodyAlarmHistories `json:"AlarmHistories,omitempty" xml:"AlarmHistories,omitempty" type:"Repeated"`
-	// The maximum number of records that are returned for the query.
+	// The maximum number of entries returned for the current query.
 	//
 	// example:
 	//
 	// 4
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position at which the query ends. An empty value indicates that all data is returned.
+	// The token that marks the position of the returned query data. An empty value indicates that all data has been queried.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CB38DDF9-B1E0-48C1-9966-19C443C2841E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that are returned for the query.
+	// The total number of entries returned for the current request.
 	//
 	// example:
 	//
@@ -104,7 +104,16 @@ func (s *ListAlarmHistoriesResponseBody) SetTotalCount(v int32) *ListAlarmHistor
 }
 
 func (s *ListAlarmHistoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmHistories != nil {
+		for _, item := range s.AlarmHistories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlarmHistoriesResponseBodyAlarmHistories struct {
@@ -112,23 +121,23 @@ type ListAlarmHistoriesResponseBodyAlarmHistories struct {
 	//
 	// example:
 	//
-	// security_groups
+	// q_security-groups alarm
 	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
-	// The time when the quota alert rule was created.
+	// The time when the quota alert was created.
 	//
 	// example:
 	//
 	// 2021-01-24T09:20:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The notification methods of the quota alert.
+	// The notification channels for the quota alert.
 	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
-	// The quota alert contact.
+	// The notification recipients of the quota alert.
 	//
 	// example:
 	//
 	// accountContact
 	NotifyTarget *string `json:"NotifyTarget,omitempty" xml:"NotifyTarget,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service name.
 	//
 	// example:
 	//
@@ -140,13 +149,13 @@ type ListAlarmHistoriesResponseBodyAlarmHistories struct {
 	//
 	// q_security-groups
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The used quota.
+	// The quota usage.
 	//
 	// example:
 	//
 	// 31
 	QuotaUsage *float32 `json:"QuotaUsage,omitempty" xml:"QuotaUsage,omitempty"`
-	// The threshold to trigger quota alerts.
+	// The value of the quota alert threshold.
 	//
 	// example:
 	//

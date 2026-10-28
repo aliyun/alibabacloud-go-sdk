@@ -22,31 +22,31 @@ type iListProductQuotaDimensionsResponseBody interface {
 }
 
 type ListProductQuotaDimensionsResponseBody struct {
-	// The maximum number of records that are returned for the query.
+	// The maximum number of entries returned for this query.
 	//
 	// example:
 	//
-	// 10
+	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position at which the query ends. An empty value indicates that all data is returned.
+	// The pagination token that indicates the position of the returned data. If this parameter is not returned, it indicates that all data has been queried.
 	//
 	// example:
 	//
-	// 10
+	// 84
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The quota dimensions.
 	QuotaDimensions []*ListProductQuotaDimensionsResponseBodyQuotaDimensions `json:"QuotaDimensions,omitempty" xml:"QuotaDimensions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7ED584FB-ECBF-4A2A-969D-F54D25EFABF9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that are returned for the query.
+	// The total number of entries returned for this request.
 	//
 	// example:
 	//
-	// 10
+	// 5
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -104,29 +104,40 @@ func (s *ListProductQuotaDimensionsResponseBody) SetTotalCount(v int32) *ListPro
 }
 
 func (s *ListProductQuotaDimensionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaDimensions != nil {
+		for _, item := range s.QuotaDimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProductQuotaDimensionsResponseBodyQuotaDimensions struct {
-	// The quota dimensions on which the quota dimension that you want to query is dependent.
+	// The quota dimensions on which the target quota dimension depends.
 	DependentDimensions []*string `json:"DependentDimensions,omitempty" xml:"DependentDimensions,omitempty" type:"Repeated"`
 	// The key of the quota dimension. Valid values:
 	//
-	// 	- regionId: the region ID.
+	// - regionId: the region ID.
 	//
-	// 	- zoneId: the zone ID.
+	// - zoneId: the zone ID.
 	//
-	// 	- chargeType: the billing method.
+	// - chargeType: the billing method.
 	//
-	// 	- networkType: the network type.
+	// - networkType: the network type.
+	//
+	// - resourceType: the resource type.
 	//
 	// example:
 	//
 	// zoneId
 	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The details about the dimension value.
+	// The details of the quota dimension value.
 	DimensionValueDetail []*ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetail `json:"DimensionValueDetail,omitempty" xml:"DimensionValueDetail,omitempty" type:"Repeated"`
-	// The dimension values.
+	// The list of quota dimension values.
 	DimensionValues []*string `json:"DimensionValues,omitempty" xml:"DimensionValues,omitempty" type:"Repeated"`
 	// The name of the quota dimension.
 	//
@@ -134,11 +145,11 @@ type ListProductQuotaDimensionsResponseBodyQuotaDimensions struct {
 	//
 	// Zone
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the quota dimension is required when you query quota dimensions. Valid values:
+	// Specifies whether the quota dimension is required when you query quota dimensions. Valid values:
 	//
-	// 	- true
+	// - true: The quota dimension is required.
 	//
-	// 	- false
+	// - false: The quota dimension is optional.
 	//
 	// example:
 	//
@@ -209,23 +220,32 @@ func (s *ListProductQuotaDimensionsResponseBodyQuotaDimensions) SetRequisite(v b
 }
 
 func (s *ListProductQuotaDimensionsResponseBodyQuotaDimensions) Validate() error {
-	return dara.Validate(s)
+	if s.DimensionValueDetail != nil {
+		for _, item := range s.DimensionValueDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetail struct {
-	// The quota dimensions on which the quota dimension that you want to query is dependent.
+	// The quota dimensions on which the target quota dimension depends.
 	DependentDimensions []*ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetailDependentDimensions `json:"DependentDimensions,omitempty" xml:"DependentDimensions,omitempty" type:"Repeated"`
-	// The name of the quota dimension.
+	// The name of the quota dimension value.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-hangzhou-b
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The value of the quota dimension.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-hangzhou-b
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -265,17 +285,26 @@ func (s *ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDeta
 }
 
 func (s *ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetail) Validate() error {
-	return dara.Validate(s)
+	if s.DependentDimensions != nil {
+		for _, item := range s.DependentDimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetailDependentDimensions struct {
-	// The key of the quota dimension on which the quota dimension that you want to query is dependent.
+	// The key of the quota dimension on which the target quota dimension depends.
 	//
 	// example:
 	//
 	// regionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the quota dimension on which the quota dimension that you want to query is dependent.
+	// The value of the quota dimension on which the target quota dimension depends.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type CreateTemplateQuotaItemResponseBody struct {
 	//
 	// 1****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

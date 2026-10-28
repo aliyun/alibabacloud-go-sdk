@@ -16,7 +16,7 @@ type iGetQuotaAlarmRequest interface {
 type GetQuotaAlarmRequest struct {
 	// The ID of the quota alert.
 	//
-	// For more information about how to query the ID of a quota alert, see [ListQuotaAlarms](https://help.aliyun.com/document_detail/184348.html).
+	// For more information about how to obtain the ID of a quota alert, see [ListQuotaAlarms](https://help.aliyun.com/document_detail/184348.html).
 	//
 	// example:
 	//

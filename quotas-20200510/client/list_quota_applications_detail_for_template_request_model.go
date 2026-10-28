@@ -28,7 +28,7 @@ type iListQuotaApplicationsDetailForTemplateRequest interface {
 }
 
 type ListQuotaApplicationsDetailForTemplateRequest struct {
-	// The Alibaba Cloud account that is used to submit the quota increase application.
+	// The Alibaba Cloud account for which the quota increase is requested.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListQuotaApplicationsDetailForTemplateRequest struct {
 	//
 	// d314d6ae-867d-484c-9009-3d421a80****
 	BatchQuotaApplicationId *string `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
-	// The maximum number of records that can be returned for the query.
+	// The maximum number of records to return for the current query.
 	//
 	// Valid values: 1 to 100. Default value: 30.
 	//
@@ -48,9 +48,9 @@ type ListQuotaApplicationsDetailForTemplateRequest struct {
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which you want to start the query.
+	// The token that marks the position from which the query starts.
 	//
-	// >  An empty value indicates that the query starts from the beginning.
+	// > If you do not specify this parameter, the query starts from the beginning.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListQuotaApplicationsDetailForTemplateRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  To query the abbreviation of an Alibaba Cloud service name, call the [ListProducts](https://help.aliyun.com/document_detail/440555.html) operation and check the value of `ProductCode` in the response.
+	// > For more information about how to obtain the abbreviation of an Alibaba Cloud service name, see the `ProductCode` parameter in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
 	//
 	// example:
 	//
@@ -70,27 +70,27 @@ type ListQuotaApplicationsDetailForTemplateRequest struct {
 	//
 	// ecs.c5.large
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The type of the quota. Valid values:
+	// The quota type. Valid values:
 	//
-	// 	- CommonQuota: general quota
+	// - CommonQuota: General quota.
 	//
-	// 	- FlowControl: API rate limit
+	// - FlowControl: API rate limit quota.
 	//
-	// 	- WhiteListLabel: privilege
+	// - WhiteListLabel: Privilege quota.
 	//
 	// example:
 	//
 	// CommonQuota
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
-	// The approval state of the quota increase application. Valid values:
+	// The approval status of the quota increase request. Valid values:
 	//
-	// 	- Disagree: The application is rejected.
+	// - Disagree: The request is rejected.
 	//
-	// 	- Agree: The application is approved.
+	// - Agree: The request is approved.
 	//
-	// 	- Process: The application is in review.
+	// - Process: The request is in review.
 	//
-	// 	- Cancel: The application is canceled.
+	// - Cancel: The request is closed.
 	//
 	// example:
 	//

@@ -32,11 +32,11 @@ type iRemindQuotaApplicationApprovalResponseBody interface {
 }
 
 type RemindQuotaApplicationApprovalResponseBody struct {
-	// Indicates whether retries are allowed. Valid values:
+	// Indicates whether the request can be retried. Valid values:
 	//
-	// 	- false
+	// - false: The request cannot be retried.
 	//
-	// 	- true
+	// - true: The request can be retried.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type RemindQuotaApplicationApprovalResponseBody struct {
 	//
 	// Parameter[%s] is required.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The parameters whose values are invalid.
+	// The array of error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -74,7 +74,7 @@ type RemindQuotaApplicationApprovalResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The quota application ID.
+	// The ID of the quota application.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type RemindQuotaApplicationApprovalResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//

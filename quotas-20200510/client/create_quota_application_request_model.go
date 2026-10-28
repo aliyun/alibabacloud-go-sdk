@@ -34,27 +34,19 @@ type iCreateQuotaApplicationRequest interface {
 }
 
 type CreateQuotaApplicationRequest struct {
-	// >  This parameter is deprecated and is not recommended.
+	// 	Notice: This parameter is deprecated and is not recommended.
 	//
-	// The mode in which you want the application to be reviewed.
-	//
-	// Valid values:
-	//
-	// 	- Async
-	//
-	// 	- Sync
+	// The quota review mode.
 	//
 	// example:
 	//
 	// Sync
 	AuditMode *string `json:"AuditMode,omitempty" xml:"AuditMode,omitempty"`
-	// The requested value of the quota.
+	// The requested quota value.
 	//
-	// >
+	// > - Set the requested quota value based on the `TotalUsage` (quota usage) and `ApplicableRange` (applicable range of the quota) of the target quota in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
 	//
-	// 	- You can specify the DesireValue parameter based on the values of the `TotalUsage` and `ApplicableRange` parameters that are returned by the [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html) operation.
-	//
-	// 	- Applications are reviewed by the technical support team of each Alibaba Cloud service. To increase the success rate of your application, you must specify a reasonable quota value and detailed reasons when you submit an application to increase the value of the quota.
+	// > - Quota increase requests are reviewed by the technical support of each cloud service. To increase the chances of approval, provide a reasonable requested value and a detailed reason when you submit the request.
 	//
 	// This parameter is required.
 	//
@@ -62,13 +54,17 @@ type CreateQuotaApplicationRequest struct {
 	//
 	// 804
 	DesireValue *float32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
-	// The quota dimensions. A quota item is uniquely determined by the values of Dimensions and QuotaActionCode.
+	// The quota dimensions.
 	//
-	// >  Some dimensions are required. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quota dimensions that are supported by an Alibaba Cloud service. The value of `Requisite` in the response indicates whether a dimension is required.
+	// The dimensions are attributes of the quota. The combination of dimensions (Dimensions) and quota ID (QuotaActionCode) uniquely identifies a quota.
+	//
+	// > Some cloud services require dimensions. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The `Requisite` response parameter indicates whether a dimension is required.
 	Dimensions []*CreateQuotaApplicationRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The end time of the validity period of the quota. Specify the value in UTC. This parameter is valid only if you set the QuotaCategory parameter to WhiteListLabel.
+	// The UTC time when the quota takes effect.
 	//
-	// >  If you do not specify an end time, the default end time is 99 years after the quota application is submitted.
+	// This parameter is applicable only to privileges (WhiteListLabel).
+	//
+	// > If you do not specify an effective period, the default value is 99 years from the start time of the current quota.
 	//
 	// example:
 	//
@@ -76,37 +72,33 @@ type CreateQuotaApplicationRequest struct {
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The language of the quota alert notification.
 	//
-	// Valid values:
-	//
-	// 	- en: English
-	//
-	// 	- zh: Chinese
-	//
 	// example:
 	//
 	// zh
 	EnvLanguage *string `json:"EnvLanguage,omitempty" xml:"EnvLanguage,omitempty"`
-	// The start time of the validity period of the quota. Specify the value in UTC. This parameter is valid only if you set the QuotaCategory parameter to WhiteListLabel.
+	// The UTC time when the quota expires.
 	//
-	// >  If you do not specify a start time, the default start time is the time when the quota application is submitted.
+	// This parameter is applicable only to privileges (WhiteListLabel).
+	//
+	// > If you do not specify an expiration time, the default value is the submission time.
 	//
 	// example:
 	//
 	// 2021-01-20T09:25:56Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Specifies whether to send a notification about the application result. Valid values:
+	// Specifies whether to send a notification about the request result. Valid values:
 	//
-	// 	- 0 (default): no
+	// - 0 (default): does not send a notification.
 	//
-	// 	- 3: sends a notification.
+	// - 3: sends a notification.
 	//
 	// example:
 	//
 	// 0
 	NoticeType *int32 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service name.
 	//
-	// >  To query the abbreviation of an Alibaba Cloud service name, check the `ProductCode` parameter that is described in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
+	// > For information about how to obtain the abbreviation of a cloud service name, see `ProductCode` in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
 	//
 	// This parameter is required.
 	//
@@ -116,7 +108,7 @@ type CreateQuotaApplicationRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The quota ID.
 	//
-	// >  To query the quota ID of an Alibaba Cloud service, check the `QuotaActionCode` parameter that is described in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
+	// > For information about how to obtain the quota ID of a cloud service, see `QuotaActionCode` in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
 	//
 	// This parameter is required.
 	//
@@ -124,25 +116,17 @@ type CreateQuotaApplicationRequest struct {
 	//
 	// q_security-groups
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The type of the quota. Valid values:
+	// The quota type.
 	//
 	// Default value: CommonQuota.
-	//
-	// Valid values:
-	//
-	// 	- FlowControl: API rate limit
-	//
-	// 	- WhiteListLabel: whitelist quota
-	//
-	// 	- CommonQuota: general quota
 	//
 	// example:
 	//
 	// CommonQuota
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
-	// The reason for the application.
+	// The reason for the quota increase request.
 	//
-	// > Applications are reviewed by the technical support team of each Alibaba Cloud service. To increase the success rate of your application, you must specify a reasonable quota value and detailed reasons when you submit an application to increase the value of the quota.
+	// > Quota increase requests are reviewed by the technical support of each cloud service. To increase the chances of approval, provide a reasonable requested value and a detailed reason when you submit the request.
 	//
 	// This parameter is required.
 	//
@@ -260,21 +244,30 @@ func (s *CreateQuotaApplicationRequest) SetReason(v string) *CreateQuotaApplicat
 }
 
 func (s *CreateQuotaApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateQuotaApplicationRequestDimensions struct {
-	// The key of the dimension.
+	// The key of the quota dimension.
 	//
-	// >  You must configure `Dimensions.N.Key` and `Dimensions.N.Value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+	// > `Dimensions.N.Key` and `Dimensions.N.Value` must be specified together. The valid values of N depend on the number of dimensions supported by the cloud service. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The length of the returned array is the value of N.
 	//
 	// example:
 	//
 	// regionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the dimension.
+	// The value of the quota dimension.
 	//
-	// >  You must configure `Dimensions.N.Key` and `Dimensions.N.Value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+	// > `Dimensions.N.Key` and `Dimensions.N.Value` must be specified together. The valid values of N depend on the number of dimensions supported by the cloud service. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The length of the returned array is the value of N.
 	//
 	// example:
 	//

@@ -30,18 +30,23 @@ type iCreateQuotaAlarmRequest interface {
 }
 
 type CreateQuotaAlarmRequest struct {
-	// Quota alarm name
+	// The name of the quota alert rule.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// q_344t4 alarm
-	AlarmName       *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
-	OriginalContext *string `json:"OriginalContext,omitempty" xml:"OriginalContext,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// q_hvnoqv alarm
+	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
+	// The original context information.
 	//
-	// >  To query the abbreviation of an Alibaba Cloud service name, check the `ProductCode` parameter that is described in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
+	// example:
+	//
+	// {}
+	OriginalContext *string `json:"OriginalContext,omitempty" xml:"OriginalContext,omitempty"`
+	// The abbreviation of the cloud service.
+	//
+	// > For more information about how to obtain the abbreviation of a cloud service, see ProductCode in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
 	//
 	// This parameter is required.
 	//
@@ -51,7 +56,7 @@ type CreateQuotaAlarmRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The quota ID.
 	//
-	// >  To obtain the quota ID of an Alibaba Cloud service, call the [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html) operation and check the value of `QuotaActionCode` in the response.
+	// > For more information about how to obtain the quota ID of a cloud service, see QuotaActionCode in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
 	//
 	// This parameter is required.
 	//
@@ -59,45 +64,47 @@ type CreateQuotaAlarmRequest struct {
 	//
 	// q_hvnoqv
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The quota dimensions. A quota item is uniquely identified by the values of `Dimensions` and `QuotaActionCode`.
+	// The quota dimensions.
 	//
-	// >  This parameter is required for specific Alibaba Cloud services. You can call the [ListProductQuotaDimensions](https://help.aliyun.com/document_detail/440553.html) operation to query the quota dimensions that are supported by an Alibaba Cloud service. The value of `Requisite` in the response indicates whether a dimension is required.
+	// The dimensions are properties of a quota item. A quota item is uniquely identified by Dimensions and QuotaActionCode.
+	//
+	// > Some dimensions are required for specific cloud services. You can call the [ListProductQuotaDimensions](https://help.aliyun.com/document_detail/440553.html) operation to query the supported quota dimensions of a cloud service. The Requisite response parameter indicates whether a dimension is required.
 	QuotaDimensions []*CreateQuotaAlarmRequestQuotaDimensions `json:"QuotaDimensions,omitempty" xml:"QuotaDimensions,omitempty" type:"Repeated"`
-	// The numerical value of the quota alarm threshold. Value settings:
+	// The numeric value of the quota alert threshold. Valid values:
 	//
-	// - When `ThresholdType` is set to `used`, an alarm notification will be sent if the used amount of the quota is greater than or equal to the preset value. The quota alarm threshold must be greater than the used amount of the quota.
+	// - If ThresholdType is set to used, you receive an alert notification when the used quota is greater than or equal to the specified value. The quota alert threshold must be greater than the used quota.
 	//
-	// - When `ThresholdType` is set to `usable`, an alarm notification will be sent if the remaining available amount of the quota is less than or equal to the preset value. The quota alarm threshold must be less than the remaining available amount of the quota.
+	// - If ThresholdType is set to usable, you receive an alert notification when the available quota is less than or equal to the specified value. The quota alert threshold must be less than the available quota.
 	//
-	// > One of this parameter and ThresholdPercent must be set.
+	// > You must specify either this parameter or ThresholdPercent.
 	//
 	// example:
 	//
 	// 150
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The percentage of the quota alert threshold. Values:
+	// The percentage of the quota alert threshold. Valid values:
 	//
-	// - When `ThresholdType` is set to `used`, you will receive an alert notification if the used amount of the quota is greater than or equal to the preset percentage. The value range is (50%, 100%].
+	// - If ThresholdType is set to used, you receive an alert notification when the used quota is greater than or equal to the specified percentage. Valid values: (50%, 100%].
 	//
-	// - When `ThresholdType` is set to `usable`, you will receive an alert notification if the remaining available amount of the quota is less than or equal to the preset percentage. The value range is (0%, 50%].
+	// - If ThresholdType is set to usable, you receive an alert notification when the available quota is less than or equal to the specified percentage. Valid values: (0%, 50%].
 	//
-	// > One of this parameter and Threshold must be set.
+	// > You must specify either this parameter or Threshold.
 	//
 	// example:
 	//
 	// 50
 	ThresholdPercent *float32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
-	// The type of the quota alert. Valid values:
+	// The quota alert type. Valid values:
 	//
-	// 	- used (default): The alert is created for the used quota.
+	// - used: alerts on the used quota. This is the default value.
 	//
-	// 	- usable: The alert is created for the available quota.
+	// - usable: alerts on the remaining available quota.
 	//
 	// example:
 	//
 	// used
 	ThresholdType *string `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
-	// The quota center sends alert information to the specified public URL address via a POST request using the HTTP protocol.
+	// The public URL to which Quota Center sends alert notifications by using HTTP POST requests.
 	//
 	// example:
 	//
@@ -195,21 +202,30 @@ func (s *CreateQuotaAlarmRequest) SetWebHook(v string) *CreateQuotaAlarmRequest 
 }
 
 func (s *CreateQuotaAlarmRequest) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaDimensions != nil {
+		for _, item := range s.QuotaDimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateQuotaAlarmRequestQuotaDimensions struct {
-	// The key of the dimension.
+	// The key of the quota dimension.
 	//
-	// >  You must configure `Dimensions.N.Key` and `Dimensions.N.Value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://help.aliyun.com/document_detail/440553.html) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of items in the returned array is N.
+	// > You must specify both Dimensions.N.Key and Dimensions.N.Value. The value range of N depends on the number of dimensions supported by the cloud service. You can call the [ListProductQuotaDimensions](https://help.aliyun.com/document_detail/440553.html) operation to query the supported quota dimensions. The length of the returned array is the maximum value of N.
 	//
 	// example:
 	//
 	// regionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the dimension.
+	// The value of the quota dimension.
 	//
-	// >  You must configure `Dimensions.N.Key` and `Dimensions.N.Value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://help.aliyun.com/document_detail/440553.html) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of items in the returned array is N.
+	//  > You must specify both Dimensions.N.Key and Dimensions.N.Value. The value range of N depends on the number of dimensions supported by the cloud service. You can call the [ListProductQuotaDimensions](https://help.aliyun.com/document_detail/440553.html) operation to query the supported quota dimensions. The length of the returned array is the maximum value of N.
 	//
 	// example:
 	//

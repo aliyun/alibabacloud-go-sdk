@@ -16,10 +16,14 @@ type iModifyTemplateQuotaItemResponseBody interface {
 }
 
 type ModifyTemplateQuotaItemResponseBody struct {
+	// The ID of the quota template.
+	//
 	// example:
 	//
 	// 1****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D47B3A10-CDAC-5412-B2EE-EC9A3DBE9053

@@ -106,7 +106,16 @@ func (s *ListQuotaApplicationTemplatesResponseBody) SetTotalCount(v int32) *List
 }
 
 func (s *ListQuotaApplicationTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaApplicationTemplates != nil {
+		for _, item := range s.QuotaApplicationTemplates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates struct {
@@ -114,9 +123,9 @@ type ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates struct {
 	ApplicableRange []*float32 `json:"ApplicableRange,omitempty" xml:"ApplicableRange,omitempty" type:"Repeated"`
 	// The type of the adjustable value. Valid values:
 	//
-	// 	- continuous
+	// - continuous
 	//
-	// 	- discontinuous
+	// - discontinuous
 	//
 	// example:
 	//
@@ -144,9 +153,9 @@ type ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates struct {
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The language of the quota alert notification. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -166,9 +175,9 @@ type ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates whether Quota Center sends a notification about the application result. Valid values:
 	//
-	// 	- 0: no
+	// - 0: no
 	//
-	// 	- 3: yes
+	// - 3: yes
 	//
 	// example:
 	//
@@ -190,11 +199,11 @@ type ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates struct {
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 	// The type of the quota. Valid values:
 	//
-	// 	- CommonQuota: general quota
+	// - CommonQuota: general quota
 	//
-	// 	- FlowControl: API rate limit
+	// - FlowControl: API rate limit
 	//
-	// 	- WhiteListLabel: privilege
+	// - WhiteListLabel: privilege
 	//
 	// example:
 	//
@@ -358,21 +367,26 @@ func (s *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates) Set
 }
 
 func (s *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.Period != nil {
+		if err := s.Period.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplatesPeriod struct {
 	// The unit of the calculation cycle. Valid values:
 	//
-	// 	- second
+	// - second
 	//
-	// 	- minute
+	// - minute
 	//
-	// 	- hour
+	// - hour
 	//
-	// 	- day
+	// - day
 	//
-	// 	- week
+	// - week
 	//
 	// example:
 	//

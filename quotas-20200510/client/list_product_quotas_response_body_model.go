@@ -22,23 +22,23 @@ type iListProductQuotasResponseBody interface {
 }
 
 type ListProductQuotasResponseBody struct {
-	// The number of records that are returned for the query.
+	// The maximum number of records returned for the current query.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// Indicates whether a token for the next query is available.
 	//
-	// 	- If NextToken is empty, no next page exists.
+	// - If NextToken is empty, it indicates that no subsequent query is available.
 	//
-	// 	- If a value of NextToken is returned, the value indicates the token that is used for the next query.
+	// - If NextToken is returned, the value is the token used to start the next query.
 	//
 	// example:
 	//
-	// AAAAAd98/tlL5GF2aM7UMKQGM8LZesIPr0CbfxASQvHV/pwcmVKNfdBbW8OPld3NvG9Cy8+dNcyFzyUttQA3IONfBhRGpXFyiVoTgK+dupBsP2mX
+	// AAAAAd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The details of the quotas.
+	// The quota details.
 	Quotas []*ListProductQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -46,11 +46,11 @@ type ListProductQuotasResponseBody struct {
 	//
 	// D0131FD5-5397-44FE-BF5A-4B7165B813CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records returned for the current request.
 	//
 	// example:
 	//
-	// 4
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -108,67 +108,58 @@ func (s *ListProductQuotasResponseBody) SetTotalCount(v int32) *ListProductQuota
 }
 
 func (s *ListProductQuotasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Quotas != nil {
+		for _, item := range s.Quotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProductQuotasResponseBodyQuotas struct {
 	// Indicates whether the quota is adjustable.
 	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
 	// example:
 	//
 	// true
 	Adjustable *bool `json:"Adjustable,omitempty" xml:"Adjustable,omitempty"`
-	// The range of the quota value that can be requested for the quota item.
+	// The range of quota values that can be applied for the current quota item, which serves as a reference for quota applications.
 	ApplicableRange []*float32 `json:"ApplicableRange,omitempty" xml:"ApplicableRange,omitempty" type:"Repeated"`
-	// The type of the adjustable value.
-	//
-	// Valid values:
-	//
-	// 	- continuous
-	//
-	// 	- discontinuous
+	// The quota adjustment type.
 	//
 	// example:
 	//
 	// discontinuous
 	ApplicableType *string `json:"ApplicableType,omitempty" xml:"ApplicableType,omitempty"`
-	// The reason for submitting a quota increase request.
+	// The sample reasons for applying for a quota adjustment.
 	//
 	// example:
 	//
 	// The business xxx is expected to grow by 50%.
 	ApplyReasonTips *string `json:"ApplyReasonTips,omitempty" xml:"ApplyReasonTips,omitempty"`
-	// Indicates whether the system shows the used value of the quota.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Indicates whether the used quota is displayed.
 	//
 	// example:
 	//
 	// true
 	Consumable *bool `json:"Consumable,omitempty" xml:"Consumable,omitempty"`
-	// The quota dimension. Format: `{"regionId":"Region"}`.
+	// The quota dimensions. Format: `{"regionId":"region"}`.
 	//
 	// example:
 	//
 	// {"regionId":"cn-hangzhou"}
 	Dimensions map[string]interface{} `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The start time of the validity period of the quota. The value is displayed in UTC.
+	// The UTC time when the quota takes effect.
 	//
 	// example:
 	//
 	// 2022-09-28T06:07:00Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The end time of the validity period of the quota. The value is displayed in UTC.
+	// The UTC time when the quota expires.
 	//
 	// example:
 	//
@@ -176,85 +167,65 @@ type ListProductQuotasResponseBodyQuotas struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the quota is a global quota.
 	//
-	// Valid values:
-	//
-	// 	- true: The quota is shared in all regions.
-	//
-	// 	- false: The quota is independently used in a region.
-	//
 	// example:
 	//
 	// true
 	GlobalQuota *bool `json:"GlobalQuota,omitempty" xml:"GlobalQuota,omitempty"`
-	// The calculation cycle of the quota.
+	// The quota calculation period.
 	Period *ListProductQuotasResponseBodyQuotasPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service name.
 	//
 	// example:
 	//
-	// ecs-spec
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The quota ID.
+	// The ID of the quota.
 	//
 	// example:
 	//
-	// ecs.g5.2xlarge
+	// q_security-groups
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the quota.
+	// The ARN of the quota.
 	//
 	// example:
 	//
-	// acs:quotas:cn-hangzhou:107992689699****:quota/ecs/ecs.g5.2xlarge/postpaid/vpc/cn-hangzhou/instancetype/cn-hangzhou-i
+	// acs:quotas:cn-hangzhou:120886317861****:quota/ecs/q_security-groups
 	QuotaArn *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
-	// The type of the quota.
-	//
-	// Valid values:
-	//
-	// 	- FlowControl: API rate limit
-	//
-	// 	- WhiteListLabel: whitelist quota
-	//
-	// 	- CommonQuota: general quota
+	// The quota type.
 	//
 	// example:
 	//
 	// CommonQuota
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
-	// The description of the quota.
+	// The quota description.
 	//
 	// example:
 	//
-	// ecs.g5.2xlarge
+	// The maximum number of security groups that can be owned by the current account.
 	QuotaDescription *string `json:"QuotaDescription,omitempty" xml:"QuotaDescription,omitempty"`
-	// The details of the quotas.
+	// The quota details.
 	QuotaItems []*ListProductQuotasResponseBodyQuotasQuotaItems `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
-	// The name of the quota.
+	// The quota name.
 	//
 	// example:
 	//
 	// ecs.g5.2xlarge
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The type of the quota.
-	//
-	// Valid values:
-	//
-	// 	- normal
-	//
-	// 	- privilege
+	// The quota type.
 	//
 	// example:
 	//
 	// privilege
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	// The unit of the quota.
+	// The quota unit.
 	//
 	// example:
 	//
 	// AMOUNT
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
-	// The range of the quota value that can be requested for the current quota item. When you configure a quota template, you can use the range as a reference.
+	// The range of quota values supported by the current quota item, which serves as a reference when you configure a quota template.
 	SupportedRange []*float32 `json:"SupportedRange,omitempty" xml:"SupportedRange,omitempty" type:"Repeated"`
-	// The value of the quota.
+	// The quota value.
 	//
 	// example:
 	//
@@ -264,25 +235,17 @@ type ListProductQuotasResponseBodyQuotas struct {
 	//
 	// example:
 	//
-	// 1
+	// 1009
 	TotalUsage *float32 `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty"`
 	// The reason why the quota is not adjustable.
-	//
-	// Valid values:
-	//
-	// 	- limitReached: The quota limit is reached.
-	//
-	// 	- nonactivated: The service is not activated.
-	//
-	// 	- applicationProcess: The application is being processed.
 	//
 	// example:
 	//
 	// applicationProcess
 	UnadjustableDetail *string `json:"UnadjustableDetail,omitempty" xml:"UnadjustableDetail,omitempty"`
-	// The monitoring information of the quota in CloudMonitor.
+	// The monitoring information of the quota usage in CloudMonitor.
 	//
-	// >  If this parameter is empty, no monitoring data of the quota exists in CloudMonitor.
+	// > An empty value indicates that no monitoring data is available for this quota in CloudMonitor.
 	UsageMetric *ListProductQuotasResponseBodyQuotasUsageMetric `json:"UsageMetric,omitempty" xml:"UsageMetric,omitempty" type:"Struct"`
 }
 
@@ -511,33 +474,40 @@ func (s *ListProductQuotasResponseBodyQuotas) SetUsageMetric(v *ListProductQuota
 }
 
 func (s *ListProductQuotasResponseBodyQuotas) Validate() error {
-	return dara.Validate(s)
+	if s.Period != nil {
+		if err := s.Period.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuotaItems != nil {
+		for _, item := range s.QuotaItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UsageMetric != nil {
+		if err := s.UsageMetric.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProductQuotasResponseBodyQuotasPeriod struct {
-	// The unit of the calculation cycle.
-	//
-	// Valid values:
-	//
-	// 	- week
-	//
-	// 	- hour
-	//
-	// 	- day
-	//
-	// 	- second
-	//
-	// 	- minute
+	// The unit of the quota calculation period.
 	//
 	// example:
 	//
 	// day
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The value of the calculation cycle.
+	// The value of the quota calculation period.
 	//
 	// example:
 	//
-	// 1
+	// {}
 	PeriodValue *int32 `json:"PeriodValue,omitempty" xml:"PeriodValue,omitempty"`
 }
 
@@ -572,25 +542,19 @@ func (s *ListProductQuotasResponseBodyQuotasPeriod) Validate() error {
 }
 
 type ListProductQuotasResponseBodyQuotasQuotaItems struct {
-	// The value of the quota.
+	// The quota value.
 	//
 	// example:
 	//
-	// 10
+	// 1009
 	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// The unit of the quota.
+	// The quota unit.
 	//
 	// example:
 	//
-	// AMOUNT
+	// Count
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
-	// The category of the quota.
-	//
-	// Valid values:
-	//
-	// 	- BaseQuota: base quota
-	//
-	// 	- ReservedQuota: reserved quota
+	// The quota category.
 	//
 	// example:
 	//
@@ -600,7 +564,7 @@ type ListProductQuotasResponseBodyQuotasQuotaItems struct {
 	//
 	// example:
 	//
-	// 1
+	// 1009
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
@@ -653,17 +617,19 @@ func (s *ListProductQuotasResponseBodyQuotasQuotaItems) Validate() error {
 }
 
 type ListProductQuotasResponseBodyQuotasUsageMetric struct {
-	// The monitoring dimensions.
+	// The CloudMonitor monitoring dimensions.
 	//
-	// The value is a collection of `key:value` pairs. Example: `{"productCode":"***","metricKey":"***","regionId":"***","label":"***"}`.
+	// Format: a collection of `key:value` pairs. Example:
+	//
+	// `{"productCode":"***","metricKey":"***","regionId":"***","label":"***"}`.
 	MetricDimensions map[string]*string `json:"MetricDimensions,omitempty" xml:"MetricDimensions,omitempty"`
-	// The monitoring metric.
+	// The name of the CloudMonitor monitoring metric.
 	//
 	// example:
 	//
 	// Usage
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The monitoring namespace.
+	// The namespace of the CloudMonitor monitoring data.
 	//
 	// example:
 	//

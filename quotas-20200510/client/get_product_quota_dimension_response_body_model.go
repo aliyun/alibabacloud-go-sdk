@@ -18,7 +18,7 @@ type iGetProductQuotaDimensionResponseBody interface {
 type GetProductQuotaDimensionResponseBody struct {
 	// The details of the quota dimension.
 	QuotaDimension *GetProductQuotaDimensionResponseBodyQuotaDimension `json:"QuotaDimension,omitempty" xml:"QuotaDimension,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -53,35 +53,42 @@ func (s *GetProductQuotaDimensionResponseBody) SetRequestId(v string) *GetProduc
 }
 
 func (s *GetProductQuotaDimensionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaDimension != nil {
+		if err := s.QuotaDimension.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProductQuotaDimensionResponseBodyQuotaDimension struct {
-	// The quota dimensions on which the quota dimension that you want to query is dependent.
+	// The quota dimensions of the cloud service on which the target quota depends.
 	DependentDimensions []*string `json:"DependentDimensions,omitempty" xml:"DependentDimensions,omitempty" type:"Repeated"`
 	// The key of the quota dimension. Valid values:
 	//
-	// 	- regionId: the region ID.
+	// - regionId: region
 	//
-	// 	- zoneId: the zone ID.
+	// - zoneId: zone
 	//
-	// 	- chargeType: the billing method.
+	// - chargeType: billing method
 	//
-	// 	- networkType: the network type.
+	// - networkType: network type
+	//
+	// - resourceType: resource type
 	//
 	// example:
 	//
-	// regionId
+	// zoneId
 	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
 	// The details of the quota dimension value.
 	DimensionValueDetail []*GetProductQuotaDimensionResponseBodyQuotaDimensionDimensionValueDetail `json:"DimensionValueDetail,omitempty" xml:"DimensionValueDetail,omitempty" type:"Repeated"`
-	// The values of the quota dimension.
+	// The list of quota dimension values.
 	DimensionValues []*string `json:"DimensionValues,omitempty" xml:"DimensionValues,omitempty" type:"Repeated"`
 	// The name of the quota dimension.
 	//
 	// example:
 	//
-	// region
+	// Zone
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -139,21 +146,30 @@ func (s *GetProductQuotaDimensionResponseBodyQuotaDimension) SetName(v string) *
 }
 
 func (s *GetProductQuotaDimensionResponseBodyQuotaDimension) Validate() error {
-	return dara.Validate(s)
+	if s.DimensionValueDetail != nil {
+		for _, item := range s.DimensionValueDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetProductQuotaDimensionResponseBodyQuotaDimensionDimensionValueDetail struct {
-	// The name of the quota dimension.
+	// The name of the quota dimension value.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-hangzhou-b
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The value of the quota dimension.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-hangzhou-b
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

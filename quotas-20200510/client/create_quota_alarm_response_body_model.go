@@ -16,7 +16,7 @@ type iCreateQuotaAlarmResponseBody interface {
 }
 
 type CreateQuotaAlarmResponseBody struct {
-	// Alarm ID.
+	// The alert ID.
 	//
 	// example:
 	//

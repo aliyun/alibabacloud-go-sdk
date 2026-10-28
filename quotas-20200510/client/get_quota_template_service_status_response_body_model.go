@@ -53,7 +53,12 @@ func (s *GetQuotaTemplateServiceStatusResponseBody) SetTemplateServiceStatus(v *
 }
 
 func (s *GetQuotaTemplateServiceStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateServiceStatus != nil {
+		if err := s.TemplateServiceStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQuotaTemplateServiceStatusResponseBodyTemplateServiceStatus struct {
@@ -65,11 +70,11 @@ type GetQuotaTemplateServiceStatusResponseBodyTemplateServiceStatus struct {
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	// The status of the quota template. Valid values:
 	//
-	// 	- \\-1: The quota template is disabled.
+	// - -1: Disabled.
 	//
-	// 	- 1: The quota template is enabled.
+	// - 1: Enabled.
 	//
-	// 	- 0: No quota template is specified.
+	// - 0: Unset.
 	//
 	// example:
 	//

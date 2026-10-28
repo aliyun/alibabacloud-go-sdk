@@ -24,13 +24,13 @@ type iListQuotaAlarmsRequest interface {
 }
 
 type ListQuotaAlarmsRequest struct {
-	// The name of the alert.
+	// The name of the quota usage alert.
 	//
 	// example:
 	//
-	// rules
+	// q_hvnoqv alarm
 	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
-	// The maximum number of records that you want to return for the query.
+	// The maximum number of records to return.
 	//
 	// Valid values: 1 to 200. Default value: 30.
 	//
@@ -38,9 +38,9 @@ type ListQuotaAlarmsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which you want to start the query.
+	// The token that specifies the start point of the query.
 	//
-	// > An empty value indicates that the query starts from the beginning.
+	// > If you do not specify this parameter, the query starts from the beginning.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListQuotaAlarmsRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  To query the abbreviation of an Alibaba Cloud service name, call the [ListProducts](https://help.aliyun.com/document_detail/440554.html) operation and check the value of `ProductCode` in the response.
+	// > To obtain the abbreviation of an Alibaba Cloud service name, see the `ProductCode` parameter in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
 	//
 	// example:
 	//
@@ -56,11 +56,11 @@ type ListQuotaAlarmsRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The quota ID.
 	//
+	// > - To obtain the quota ID of an Alibaba Cloud service, see the `QuotaActionCode` parameter in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
+	//
 	// >
 	//
-	// 	- To obtain the quota ID of a cloud service, call the [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html) operation and check the value of `QuotaActionCode` in the response.
-	//
-	// 	- If you specify this parameter, you must specify `ProductCode`.
+	// > - If you specify this parameter, you must also specify `ProductCode`.
 	//
 	// example:
 	//
@@ -133,29 +133,38 @@ func (s *ListQuotaAlarmsRequest) SetQuotaDimensions(v []*ListQuotaAlarmsRequestQ
 }
 
 func (s *ListQuotaAlarmsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaDimensions != nil {
+		for _, item := range s.QuotaDimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotaAlarmsRequestQuotaDimensions struct {
-	// The key of the dimension.
+	// The key of the quota dimension.
+	//
+	// > - The number of key-value pairs that you can specify for the quota dimensions varies based on the Alibaba Cloud service.
 	//
 	// >
 	//
-	// 	- The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
-	//
-	// 	- This parameter is required if you set the `ProductCode` parameter to `ecs`, `ecs-spec`, `actiontrail`, or `ess`.
+	// > - If you set `ProductCode` to `ecs`, `ecs-spec`, `actiontrail`, or `ess`, you must specify both the key and value for the quota dimension.
 	//
 	// example:
 	//
 	// regionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the dimension.
+	// The value of the quota dimension.
+	//
+	// > - The number of key-value pairs that you can specify for the quota dimensions varies based on the Alibaba Cloud service.
 	//
 	// >
 	//
-	// 	- The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
-	//
-	// 	- This parameter is required if you set the `ProductCode` parameter to `ecs`, `ecs-spec`, `actiontrail`, or `ess`.
+	// > - If you set `ProductCode` to `ecs`, `ecs-spec`, `actiontrail`, or `ess`, you must specify both the key and value for the quota dimension.
 	//
 	// example:
 	//

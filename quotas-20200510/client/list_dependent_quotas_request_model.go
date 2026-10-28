@@ -16,23 +16,25 @@ type iListDependentQuotasRequest interface {
 }
 
 type ListDependentQuotasRequest struct {
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviated name of the cloud service.
 	//
-	// > For more information, see [Alibaba Cloud services that support Quota Center](https://help.aliyun.com/document_detail/182368.html).
+	// > For more information about how to obtain the abbreviated name of a cloud service, see `ProductCode` in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// csk
+	// cloudsso
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The quota ID.
 	//
+	// > For more information about how to obtain the quota ID of a target cloud service, see `QuotaActionCode` in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// q_i5uzm3
+	// q_system-policy-per-access-configuration
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 }
 

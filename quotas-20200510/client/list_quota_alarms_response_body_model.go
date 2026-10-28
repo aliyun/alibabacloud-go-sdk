@@ -22,29 +22,29 @@ type iListQuotaAlarmsResponseBody interface {
 }
 
 type ListQuotaAlarmsResponseBody struct {
-	// The maximum number of records that are returned for the query.
+	// The maximum number of records returned for the current query.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position at which the query ends.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
-	// > An empty value indicates that all data is returned.
+	// > If this parameter is empty, all results have been returned.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The details about the quota alert rules.
+	// The details of the quota usage alerts.
 	QuotaAlarms []*ListQuotaAlarmsResponseBodyQuotaAlarms `json:"QuotaAlarms,omitempty" xml:"QuotaAlarms,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 87F3B755-3BD2-4C76-B36A-93247002918C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of quota alerts.
+	// The total number of quota usage alerts.
 	//
 	// example:
 	//
@@ -106,43 +106,52 @@ func (s *ListQuotaAlarmsResponseBody) SetTotalCount(v int32) *ListQuotaAlarmsRes
 }
 
 func (s *ListQuotaAlarmsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaAlarms != nil {
+		for _, item := range s.QuotaAlarms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQuotaAlarmsResponseBodyQuotaAlarms struct {
-	// The ID of the alert.
+	// The alert ID.
 	//
 	// example:
 	//
 	// a2efa7fc-832f-47bb-8054-39e28012****
 	AlarmId *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
-	// The name of the alert event.
+	// The alert name.
 	//
 	// example:
 	//
-	// rules
+	// q_hvnoqv alarm
 	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
-	// The time when the quota alert was created.
+	// The time when the quota usage alert was created.
 	//
 	// example:
 	//
 	// 2020-11-27T07:23:34Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the alert threshold was reached. Valid values:
+	// Indicates whether the quota usage exceeds the alert threshold. Valid values:
 	//
-	// 	- false
+	// - false
 	//
-	// 	- true
+	// - true
 	//
 	// example:
 	//
 	// false
 	ExceedThreshold *bool `json:"ExceedThreshold,omitempty" xml:"ExceedThreshold,omitempty"`
-	// The alert notification methods.
+	// The notification channels of the quota alert.
 	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
-	// The alert contact.
+	// The notification object of the alert.
 	//
-	// >  Valid value: accountContact. Only the account contact is supported.
+	// > The value can only be accountContact, which specifies the contacts of the account.
 	//
 	// example:
 	//
@@ -154,7 +163,7 @@ type ListQuotaAlarmsResponseBodyQuotaAlarms struct {
 	//
 	// config
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
+	// The quota ID.
 	//
 	// example:
 	//
@@ -172,7 +181,7 @@ type ListQuotaAlarmsResponseBodyQuotaAlarms struct {
 	//
 	// 73
 	QuotaUsage *float32 `json:"QuotaUsage,omitempty" xml:"QuotaUsage,omitempty"`
-	// The value of the quota.
+	// The quota value.
 	//
 	// example:
 	//
@@ -192,9 +201,9 @@ type ListQuotaAlarmsResponseBodyQuotaAlarms struct {
 	ThresholdPercent *float32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
 	// The type of the quota alert. Valid values:
 	//
-	// 	- used: The alert is created for the used quota.
+	// - used: an alert for the used quota.
 	//
-	// 	- usable: The alert is created for the available quota.
+	// - usable: an alert for the available quota.
 	//
 	// example:
 	//
