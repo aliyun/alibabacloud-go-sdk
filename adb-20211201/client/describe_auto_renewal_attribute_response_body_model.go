@@ -23,13 +23,13 @@ type iDescribeAutoRenewalAttributeResponseBody interface {
 
 type DescribeAutoRenewalAttributeResponseBody struct {
 	Items *DescribeAutoRenewalAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeAutoRenewalAttributeResponseBody struct {
 	//
 	// BA0F6761-7A8C-59F8-9624-FB56788C0EDF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

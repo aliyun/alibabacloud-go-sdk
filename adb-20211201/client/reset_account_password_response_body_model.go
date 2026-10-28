@@ -14,7 +14,7 @@ type iResetAccountPasswordResponseBody interface {
 }
 
 type ResetAccountPasswordResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

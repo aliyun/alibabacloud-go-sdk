@@ -30,35 +30,39 @@ type iDatabaseSummaryModel interface {
 }
 
 type DatabaseSummaryModel struct {
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-01-05 13:17:55
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation source of the database.
 	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
-	CreatedByUser   *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
-	DbType          *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// Description.
+	// The user who created the database.
+	CreatedByUser *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
+	// The database type.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The description.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// Owner.
+	// The data storage location of the database.
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The owner.
 	//
 	// example:
 	//
 	// abc
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// logical database name.
+	// The logical database name.
 	//
 	// example:
 	//
 	// testSchema
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// Update time.
+	// The update time.
 	//
 	// example:
 	//

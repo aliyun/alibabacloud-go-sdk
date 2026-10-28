@@ -24,7 +24,7 @@ type iConfigureResultExportShrinkRequest interface {
 type ConfigureResultExportShrinkRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the cluster IDs of all AnalyticDB for MySQL clusters in the destination region.
 	//
 	// This parameter is required.
 	//
@@ -34,17 +34,17 @@ type ConfigureResultExportShrinkRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The export type. Valid values:
 	//
-	// 	- SLS: Specifies that the export destination is SLS.
+	// - SLS: Exports data to SLS.
 	//
-	// 	- OSS: Specifies that the export destination is OSS.
+	// - OSS: Exports data to OSS.
 	//
 	// example:
 	//
 	// SLS
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	// The OSS configuration details if the destination is of the OSS type.
+	// The OSS configuration information when the export destination is OSS.
 	OssInfoShrink *string `json:"OssInfo,omitempty" xml:"OssInfo,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ConfigureResultExportShrinkRequest struct {
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The SLS configuration details if the destination is of the SLS type.
+	// The SLS configuration information when the export destination is SLS.
 	SlsInfoShrink *string `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty"`
 }
 

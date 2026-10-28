@@ -28,14 +28,46 @@ type iOperatorNode interface {
 }
 
 type OperatorNode struct {
-	Children   []*OperatorNode    `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
-	Id         *int32             `json:"id,omitempty" xml:"id,omitempty"`
-	LevelWidth *int32             `json:"levelWidth,omitempty" xml:"levelWidth,omitempty"`
-	NodeDepth  *int32             `json:"nodeDepth,omitempty" xml:"nodeDepth,omitempty"`
-	NodeName   *string            `json:"nodeName,omitempty" xml:"nodeName,omitempty"`
-	NodeWidth  *int32             `json:"nodeWidth,omitempty" xml:"nodeWidth,omitempty"`
-	ParentId   *int32             `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	Stats      *OperatorNodeStats `json:"stats,omitempty" xml:"stats,omitempty" type:"Struct"`
+	// The child operator queue.
+	Children []*OperatorNode `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
+	// The operator ID.
+	//
+	// example:
+	//
+	// 0
+	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
+	// The total number of nodes at the tree level of the operator.
+	//
+	// example:
+	//
+	// 0
+	LevelWidth *int32 `json:"levelWidth,omitempty" xml:"levelWidth,omitempty"`
+	// The level of the operator in the tree.
+	//
+	// example:
+	//
+	// 0
+	NodeDepth *int32 `json:"nodeDepth,omitempty" xml:"nodeDepth,omitempty"`
+	// The operator name.
+	//
+	// example:
+	//
+	// TableScan
+	NodeName *string `json:"nodeName,omitempty" xml:"nodeName,omitempty"`
+	// The left-to-right position of the node at the corresponding level.
+	//
+	// example:
+	//
+	// 0
+	NodeWidth *int32 `json:"nodeWidth,omitempty" xml:"nodeWidth,omitempty"`
+	// The parent operator ID.
+	//
+	// example:
+	//
+	// 0
+	ParentId *int32 `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The operator statistics information.
+	Stats *OperatorNodeStats `json:"stats,omitempty" xml:"stats,omitempty" type:"Struct"`
 }
 
 func (s OperatorNode) String() string {
@@ -137,11 +169,32 @@ func (s *OperatorNode) Validate() error {
 }
 
 type OperatorNodeStats struct {
-	Bytes      *int64  `json:"bytes,omitempty" xml:"bytes,omitempty"`
-	OutputRows *int64  `json:"outputRows,omitempty" xml:"outputRows,omitempty"`
+	// The data volume.
+	//
+	// example:
+	//
+	// 0
+	Bytes *int64 `json:"bytes,omitempty" xml:"bytes,omitempty"`
+	// The number of output rows.
+	//
+	// example:
+	//
+	// 0
+	OutputRows *int64 `json:"outputRows,omitempty" xml:"outputRows,omitempty"`
+	// The operator parameters.
 	Parameters *string `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	PeakMemory *int64  `json:"peakMemory,omitempty" xml:"peakMemory,omitempty"`
-	TimeCost   *int64  `json:"timeCost,omitempty" xml:"timeCost,omitempty"`
+	// The maximum memory size consumed.
+	//
+	// example:
+	//
+	// 0
+	PeakMemory *int64 `json:"peakMemory,omitempty" xml:"peakMemory,omitempty"`
+	// The execution time.
+	//
+	// example:
+	//
+	// 0
+	TimeCost *int64 `json:"timeCost,omitempty" xml:"timeCost,omitempty"`
 }
 
 func (s OperatorNodeStats) String() string {

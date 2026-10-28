@@ -30,11 +30,11 @@ type iDescribeMvRecommendSubTasksRequest interface {
 }
 
 type DescribeMvRecommendSubTasksRequest struct {
-	// A static value. This parameter cannot be modified.
+	// A fixed value. This value cannot be modified.
 	//
 	// example:
 	//
-	// Modification is not supported.
+	// Not modifiable
 	ActionInner *string `json:"ActionInner,omitempty" xml:"ActionInner,omitempty"`
 	// The cluster ID.
 	//
@@ -42,21 +42,21 @@ type DescribeMvRecommendSubTasksRequest struct {
 	//
 	// am-bp1ub9grke1****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// A static value. This parameter cannot be modified.
+	// A fixed value. This value cannot be modified.
 	//
 	// example:
 	//
-	// Modification is not supported.
+	// Not modifiable
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The sorting criteria.
+	// The sort field.
 	//
-	// Valid values for \\`Type\\`:
+	// Valid values for the sort order:
 	//
 	// - Asc
 	//
 	// - Desc
 	//
-	// Valid values for \\`Field\\`:
+	// Valid values for the sort field:
 	//
 	// - StartTime
 	//
@@ -84,7 +84,7 @@ type DescribeMvRecommendSubTasksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The subtask ID.
+	// The ID of the subtask.
 	//
 	// example:
 	//

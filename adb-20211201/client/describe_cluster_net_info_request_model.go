@@ -18,11 +18,11 @@ type iDescribeClusterNetInfoRequest interface {
 }
 
 type DescribeClusterNetInfoRequest struct {
-	// <props="china">The ID of an Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
 	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of clusters in a specific region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of clusters in a specified region, including the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -32,14 +32,19 @@ type DescribeClusterNetInfoRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The database engine. Valid values:
 	//
-	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	// - **AnalyticDB*	- (default): AnalyticDB for MySQL.
 	//
-	// - **ClickHouse**: the wide table engine.
+	// - **Clickhouse**: wide table engine.
 	//
 	// example:
 	//
 	// Clickhouse
-	Engine            *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// test_group
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

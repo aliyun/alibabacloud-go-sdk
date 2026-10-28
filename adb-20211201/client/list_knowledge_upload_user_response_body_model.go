@@ -16,7 +16,7 @@ type iListKnowledgeUploadUserResponseBody interface {
 }
 
 type ListKnowledgeUploadUserResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *ListKnowledgeUploadUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,23 +62,23 @@ func (s *ListKnowledgeUploadUserResponseBody) Validate() error {
 }
 
 type ListKnowledgeUploadUserResponseBodyData struct {
-	// The location of the knowledge base file.
+	// The address of the knowledge base file.
 	//
 	// example:
 	//
 	// oss://bucket/doc.pdf
 	FileLocation *string `json:"FileLocation,omitempty" xml:"FileLocation,omitempty"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//

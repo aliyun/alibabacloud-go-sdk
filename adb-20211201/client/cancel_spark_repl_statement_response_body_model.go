@@ -62,45 +62,45 @@ func (s *CancelSparkReplStatementResponseBody) Validate() error {
 }
 
 type CancelSparkReplStatementResponseBodyData struct {
-	// The ID of the Alibaba Cloud account that owns the cluster.
+	// The Alibaba Cloud account to which the cluster belongs.
 	//
 	// example:
 	//
 	// 190063530332****
 	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	// The code that is executed.
+	// The input code.
 	//
 	// example:
 	//
 	// print(1+1)
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The code execution status. Valid values:
+	// The execution status of the code. Valid values:
 	//
-	// 	- CANCELLED
+	// - CANCELLED: The execution is canceled.
 	//
-	// 	- RUNNING
+	// - RUNNING: The execution is in progress.
 	//
-	// 	- SUCCEEDED
+	// - SUCCEEDED: The execution is successful.
 	//
-	// 	- ERROR
+	// - ERROR: The execution failed.
 	//
 	// example:
 	//
 	// RUNNING
 	CodeState *string `json:"CodeState,omitempty" xml:"CodeState,omitempty"`
-	// The code type. Valid values:
+	// The type of the code. Valid values:
 	//
-	// 	- SCALA
+	// - SCALA
 	//
-	// 	- PYTHON
+	// - PYTHON
 	//
 	// example:
 	//
 	// PYTHON
 	CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-	// The column names.
+	// The column names of the table when the output is a table.
 	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The end time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time of the execution, in milliseconds.
 	//
 	// example:
 	//
@@ -112,23 +112,23 @@ type CancelSparkReplStatementResponseBodyData struct {
 	//
 	// StackOverflow Exception：
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The code execution result, which is a JSON string that conforms to Apache Livy.
+	// The code execution result. The value is a JSON-formatted string that complies with the Apache Livy output standard.
 	//
 	// example:
 	//
 	// {"text/plain": "2"}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The execution result type, which is in the JSON format. Valid values:
+	// The serialization format of the execution result. The structure is a JSON object. Valid values:
 	//
-	// 	- TEXT: the text content that conforms to Apache Livy.
+	// - TEXT: The output is text content that complies with the Apache Livy standard.
 	//
-	// 	- TABLE: the table content that conforms to Apache Livy.
+	// - TABLE: The output is table content that complies with the Apache Livy standard.
 	//
 	// example:
 	//
 	// TEXT
 	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
-	// The start time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the execution, in milliseconds.
 	//
 	// example:
 	//

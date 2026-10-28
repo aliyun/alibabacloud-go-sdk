@@ -20,7 +20,7 @@ type iModifyApsJobRequest interface {
 }
 
 type ModifyApsJobRequest struct {
-	// The job ID.
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ModifyApsJobRequest struct {
 	//
 	// aps-bj1xxxxxx
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
-	// The objects to be synchronized.
+	// The list of synchronization objects.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ModifyApsJobRequest struct {
 	//
 	// {"EntireInstance":true}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	// The partitions.
+	// The list of partitions.
 	//
 	// example:
 	//

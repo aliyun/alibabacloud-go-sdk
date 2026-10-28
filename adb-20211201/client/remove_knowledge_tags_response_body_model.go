@@ -62,29 +62,29 @@ func (s *RemoveKnowledgeTagsResponseBody) Validate() error {
 }
 
 type RemoveKnowledgeTagsResponseBodyData struct {
-	// The location of the knowledge base file.
+	// The knowledge base file location.
 	//
 	// example:
 	//
 	// oss://bucket/doc.pdf
 	FileLocation *string `json:"FileLocation,omitempty" xml:"FileLocation,omitempty"`
-	// The message returned by the operation.
+	// The API message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of tags that were successfully deleted.
+	// The number of tags successfully deleted.
 	//
 	// example:
 	//
 	// 1
 	Removed *int32 `json:"Removed,omitempty" xml:"Removed,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//

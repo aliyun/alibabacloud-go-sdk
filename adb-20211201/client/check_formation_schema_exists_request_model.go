@@ -22,7 +22,7 @@ type iCheckFormationSchemaExistsRequest interface {
 type CheckFormationSchemaExistsRequest struct {
 	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters in a region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in the destination region.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,11 @@ type CheckFormationSchemaExistsRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable prefix mode. Valid values:
+	// Specifies whether to enable the prefix mode. Valid values:
 	//
-	// - true: Enable prefix mode.
+	// - true: Yes.
 	//
-	// - false: Disable prefix mode.
+	// - false: No.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CheckFormationSchemaExistsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// schema 。
+	// The schema.
 	//
 	// This parameter is required.
 	//

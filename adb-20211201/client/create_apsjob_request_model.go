@@ -36,7 +36,7 @@ type iCreateAPSJobRequest interface {
 }
 
 type CreateAPSJobRequest struct {
-	// The name of the synchronization job.
+	// The name of the task.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateAPSJobRequest struct {
 	//
 	// aps-xxxxx
 	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
-	// The objects to be synchronized.
+	// The list of synchronization objects.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateAPSJobRequest struct {
 	//
 	// {"EntireInstance":true}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	// The name of the database account of the destination cluster.
+	// The instance ID of the destination database.
 	//
 	// This parameter is required.
 	//
@@ -60,19 +60,19 @@ type CreateAPSJobRequest struct {
 	//
 	// amv-xxxxx
 	DestinationEndpointInstanceID *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
-	// The password of the database account of the destination cluster.
+	// The password of the destination instance.
 	//
 	// example:
 	//
 	// ******
 	DestinationEndpointPassword *string `json:"DestinationEndpointPassword,omitempty" xml:"DestinationEndpointPassword,omitempty"`
-	// The name of the database account of the destination cluster.
+	// The username of the destination instance.
 	//
 	// example:
 	//
 	// ******
 	DestinationEndpointUserName *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
-	// The partitions.
+	// The list of partitions.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateAPSJobRequest struct {
 	PartitionList *string `json:"PartitionList,omitempty" xml:"PartitionList,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type CreateAPSJobRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the source instance or cluster.
+	// The instance ID of the source database.
 	//
 	// This parameter is required.
 	//
@@ -96,25 +96,25 @@ type CreateAPSJobRequest struct {
 	//
 	// pc-xxxxx
 	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
-	// The password of the database account of the source instance.
+	// The password of the source endpoint.
 	//
 	// example:
 	//
 	// ******
 	SourceEndpointPassword *string `json:"SourceEndpointPassword,omitempty" xml:"SourceEndpointPassword,omitempty"`
-	// The region ID of the source instance.
+	// The region of the source database.
 	//
 	// example:
 	//
 	// cn-beijing
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
-	// The name of the database account of the source instance.
+	// The username of the source endpoint.
 	//
 	// example:
 	//
 	// xxxx
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
-	// The mode of the destination table.
+	// The destination table mode.
 	//
 	// example:
 	//

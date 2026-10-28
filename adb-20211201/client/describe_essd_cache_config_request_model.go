@@ -11,6 +11,8 @@ type iDescribeEssdCacheConfigRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *DescribeEssdCacheConfigRequest
 	GetDBClusterId() *string
+	SetRegionId(v string) *DescribeEssdCacheConfigRequest
+	GetRegionId() *string
 }
 
 type DescribeEssdCacheConfigRequest struct {
@@ -22,6 +24,12 @@ type DescribeEssdCacheConfigRequest struct {
 	//
 	// amv-uf685u1o987hj6rn
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the region where the instance resides. The value must be the same as the region of the instance specified by DBClusterId.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeEssdCacheConfigRequest) String() string {
@@ -36,8 +44,17 @@ func (s *DescribeEssdCacheConfigRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *DescribeEssdCacheConfigRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *DescribeEssdCacheConfigRequest) SetDBClusterId(v string) *DescribeEssdCacheConfigRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeEssdCacheConfigRequest) SetRegionId(v string) *DescribeEssdCacheConfigRequest {
+	s.RegionId = &v
 	return s
 }
 

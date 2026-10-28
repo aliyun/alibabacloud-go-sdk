@@ -38,19 +38,26 @@ type ModifyAccountPrivilegesShrinkRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The list of granted permissions.
 	AccountPrivilegesShrink *string `json:"AccountPrivileges,omitempty" xml:"AccountPrivileges,omitempty"`
-	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp1k5p066e1a****
-	DBClusterId                  *string  `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	PromqlInsertPrivilegesShrink *string  `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty"`
-	PromqlSelectNodePercentage   *float64 `json:"PromqlSelectNodePercentage,omitempty" xml:"PromqlSelectNodePercentage,omitempty"`
-	PromqlSelectPrivilegesShrink *string  `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The list of PromQL write permissions.
+	PromqlInsertPrivilegesShrink *string `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty"`
+	// The percentage of PromQL query nodes.
+	//
+	// example:
+	//
+	// 0.6
+	PromqlSelectNodePercentage *float64 `json:"PromqlSelectNodePercentage,omitempty" xml:"PromqlSelectNodePercentage,omitempty"`
+	// The list of PromQL query permissions.
+	PromqlSelectPrivilegesShrink *string `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -58,7 +65,12 @@ type ModifyAccountPrivilegesShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// test_group
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

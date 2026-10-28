@@ -62,13 +62,7 @@ func (s *DescribeCompactionServiceSwitchResponseBody) Validate() error {
 }
 
 type DescribeCompactionServiceSwitchResponseBodyData struct {
-	// Indicates whether the remote build feature is enabled.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Indicates whether the remote build service is enabled.
 	//
 	// example:
 	//

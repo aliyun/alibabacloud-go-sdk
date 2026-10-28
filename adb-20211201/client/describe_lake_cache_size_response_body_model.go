@@ -18,7 +18,7 @@ type iDescribeLakeCacheSizeResponseBody interface {
 }
 
 type DescribeLakeCacheSizeResponseBody struct {
-	// The status code. The value 200 indicates that the request is successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *DescribeLakeCacheSizeResponseBody) Validate() error {
 }
 
 type DescribeLakeCacheSizeResponseBodyData struct {
-	// The size of the lake cache space. Unit: GB.
+	// The size of the lake storage acceleration cache space, in GB.
 	//
 	// example:
 	//
@@ -91,19 +91,19 @@ type DescribeLakeCacheSizeResponseBodyData struct {
 	//
 	// amv-bp10b6646l07akdt
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The size of the data that occupies the lake cache space. Unit: GB.
+	// The used capacity of the lake storage cache space, in GB.
 	//
 	// example:
 	//
 	// 100
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// Indicates whether the lake cache feature is enabled.
+	// Indicates whether lake storage acceleration is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableLakeCache *bool `json:"EnableLakeCache,omitempty" xml:"EnableLakeCache,omitempty"`
-	// The clusters that share the lake cache space.
+	// The list of instances that share the lake storage cache space.
 	Instances []*string `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 }
 

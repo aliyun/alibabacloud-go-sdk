@@ -22,13 +22,13 @@ type iExecuteSparkReplStatementRequest interface {
 type ExecuteSparkReplStatementRequest struct {
   // The application ID.
   // 
-  // >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query Spark application IDs.
+  // > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query the application ID of Spark.
   // 
   // example:
   // 
   // s202411071444hzdvk486d9d2001****
   AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-  // The code that you want to execute.
+  // The code to execute.
   // 
   // This parameter is required.
   // 
@@ -38,9 +38,9 @@ type ExecuteSparkReplStatementRequest struct {
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
   // The language type of the code. Valid values:
   // 
-  // 	- SCALA
+  // - SCALA
   // 
-  // 	- PYTHON
+  // - PYTHON
   // 
   // This parameter is required.
   // 
@@ -48,7 +48,7 @@ type ExecuteSparkReplStatementRequest struct {
   // 
   // PYTHON
   CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-  // The ID of the session that you want to use to execute the code.
+  // The session ID for executing the code.
   // 
   // This parameter is required.
   // 

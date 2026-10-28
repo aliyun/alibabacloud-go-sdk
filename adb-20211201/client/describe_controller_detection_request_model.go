@@ -32,9 +32,7 @@ type iDescribeControllerDetectionRequest interface {
 type DescribeControllerDetectionRequest struct {
 	// The cluster ID.
 	//
-	// >
-	//
-	// 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	// > 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query all clusters in a region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -42,19 +40,19 @@ type DescribeControllerDetectionRequest struct {
 	//
 	// amv-xxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mmZ*	- format. The time must be in UTC.
+	// The end time of the logs. Format: **yyyy-MM-ddTHH:mmZ*	- (UTC).
 	//
-	// >  The end time must be later than the start time. The maximum time range that can be specified is 30 days.
+	// > When you query logs, the end time must be later than the start time, and the maximum interval between the start time and the end time is 30 days.
 	//
 	// example:
 	//
 	// 2024-06-23T02:21Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language. Valid values:
+	// The language configuration. Valid values:
 	//
-	// 	- **zh**: simplified Chinese.
+	// - **zh**: Simplified Chinese (default).
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -64,7 +62,7 @@ type DescribeControllerDetectionRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query supported regions and zones, including region IDs.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +72,7 @@ type DescribeControllerDetectionRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	// The start time of the query. Format: <i>yyyy-MM-ddTHH:mmZ</i> (UTC).
 	//
 	// example:
 	//

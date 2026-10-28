@@ -22,11 +22,23 @@ type iUserSummaryModel interface {
 }
 
 type UserSummaryModel struct {
+	// The list of access tokens for the user.
 	AccessTokens []*AccessTokenModel `json:"AccessTokens,omitempty" xml:"AccessTokens,omitempty" type:"Repeated"`
 	Host         *string             `json:"Host,omitempty" xml:"Host,omitempty"`
-	RamUser      *string             `json:"RamUser,omitempty" xml:"RamUser,omitempty"`
-	Status       *string             `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserName     *string             `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The ID of the associated Alibaba Cloud RAM user.
+	//
+	// example:
+	//
+	// 1444832459****
+	RamUser *string `json:"RamUser,omitempty" xml:"RamUser,omitempty"`
+	// The user status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// test_user
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s UserSummaryModel) String() string {

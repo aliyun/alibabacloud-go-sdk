@@ -28,7 +28,7 @@ type iDescribeTableStatisticsRequest interface {
 type DescribeTableStatisticsRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,31 +36,37 @@ type DescribeTableStatisticsRequest struct {
 	//
 	// amv-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The keyword that is used to query information by table name.
+	// The search keyword. Fuzzy search by table name is supported.
 	//
 	// example:
 	//
 	// you_table_name
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The order by which to sort query results. Specify the parameter value in the JSON format.
+	// The sorting rule for a specified field. The value is a JSON array. The array is ordered. Specify the fields to be sorted and the sorting order in sequence:
 	//
-	// Example:
+	// For example:
 	//
-	//     [
+	// ```
 	//
-	//         {
+	// [
 	//
-	//             "Field":"Name",
+	//     {
 	//
-	//             "Type":"Asc"
+	//         "Field":"Name",
 	//
-	//         }
+	//         "Type":"Asc"
 	//
-	//     ]
+	//     }
 	//
-	// Field specifies the field by which to sort the query results. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
+	// ]
 	//
-	// Field and Type are case-insensitive.
+	// ```
+	//
+	// Field specifies the name of the field to be sorted. Only the Name field is supported.
+	//
+	// Type specifies the sorting order. Desc indicates descending order, and Asc indicates ascending order.
+	//
+	// Both parameters are case-insensitive.
 	//
 	// example:
 	//
@@ -78,15 +84,15 @@ type DescribeTableStatisticsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID
+	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//

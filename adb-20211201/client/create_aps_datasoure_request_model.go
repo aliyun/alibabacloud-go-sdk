@@ -118,7 +118,7 @@ type CreateApsDatasoureRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Simple Log Service (SLS) information for the data source to be created.
+	// The Simple Log Service (SLS) information.
 	//
 	// example:
 	//
@@ -348,7 +348,7 @@ type CreateApsDatasoureRequestHiveInfo struct {
 	//
 	// ******
 	HostConfig *string `json:"HostConfig,omitempty" xml:"HostConfig,omitempty"`
-	// The MetaStore endpoint.
+	// The metastore endpoint.
 	//
 	// example:
 	//
@@ -432,7 +432,7 @@ type CreateApsDatasoureRequestKafkaInfo struct {
 	//
 	// ******
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
-	// The assigned Kafka topic name.
+	// The name of the allocated Kafka topic.
 	//
 	// example:
 	//
@@ -471,7 +471,7 @@ func (s *CreateApsDatasoureRequestKafkaInfo) Validate() error {
 }
 
 type CreateApsDatasoureRequestPolarDBMysqlInfo struct {
-	// Specifies whether cross-account access is enabled. Valid values:
+	// Specifies whether cross-account access is used. Valid values:
 	//
 	// - **true**: The current network instance is a cross-account resource.
 	//
@@ -487,13 +487,13 @@ type CreateApsDatasoureRequestPolarDBMysqlInfo struct {
 	//
 	// test-role
 	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
-	// The UID of the cross-account.
+	// The cross-account UID.
 	//
 	// example:
 	//
 	// 123456789*
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
-	// The custom RDS endpoint.
+	// The endpoint of the private custom RDS instance.
 	//
 	// example:
 	//
@@ -655,7 +655,7 @@ func (s *CreateApsDatasoureRequestPolarDBXInfo) Validate() error {
 }
 
 type CreateApsDatasoureRequestRdsMysqlInfo struct {
-	// The read-only instance endpoint.
+	// The endpoint of the read-only instance.
 	//
 	// example:
 	//
@@ -760,19 +760,19 @@ func (s *CreateApsDatasoureRequestRdsMysqlInfo) Validate() error {
 }
 
 type CreateApsDatasoureRequestSlsInfo struct {
-	// Specifies whether cross-account access is enabled.
+	// Specifies whether cross-account access is used.
 	//
 	// example:
 	//
 	// false
 	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
-	// The role name for cross-account access.
+	// The name of the cross-account role.
 	//
 	// example:
 	//
 	// yyy
 	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
-	// The UID of the cross-account.
+	// The cross-account UID.
 	//
 	// example:
 	//
@@ -790,7 +790,7 @@ type CreateApsDatasoureRequestSlsInfo struct {
 	//
 	// cn-beijing
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	// sls logstore。
+	// The Simple Log Service Logstore.
 	//
 	// example:
 	//

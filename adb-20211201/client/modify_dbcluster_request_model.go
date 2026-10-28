@@ -21,6 +21,8 @@ type iModifyDBClusterRequest interface {
 	GetEnableDefaultResourcePool() *bool
 	SetProductForm(v string) *ModifyDBClusterRequest
 	GetProductForm() *string
+	SetProductVersion(v string) *ModifyDBClusterRequest
+	GetProductVersion() *string
 	SetRegionId(v string) *ModifyDBClusterRequest
 	GetRegionId() *string
 	SetReservedNodeCount(v int32) *ModifyDBClusterRequest
@@ -32,12 +34,19 @@ type iModifyDBClusterRequest interface {
 }
 
 type ModifyDBClusterRequest struct {
+	// The number of AI nodes.
+	//
+	// example:
+	//
+	// 3
 	AINodeNumber *int32 `json:"AINodeNumber,omitempty" xml:"AINodeNumber,omitempty"`
+	// The AI node specifications.
+	//
 	// example:
 	//
 	// ADB.MLPlus.4
 	AINodeSpec *string `json:"AINodeSpec,omitempty" xml:"AINodeSpec,omitempty"`
-	// The compute reserved resources. Valid values: 0 ACU to 4096 ACU, in increments of 16. 1 ACU is approximately equivalent to 1 core and 4 GB of memory.
+	// The reserved compute resources. Valid values: 0 ACU to 4096 ACU. Step: 16. 1 ACU is approximately equal to 1 core and 4 GB of memory.
 	//
 	// > Include the unit when you specify this parameter.
 	//
@@ -47,7 +56,7 @@ type ModifyDBClusterRequest struct {
 	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
 	// The ID of the Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster ID of a Data Lakehouse Edition cluster.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -55,11 +64,11 @@ type ModifyDBClusterRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to allocate all compute reserved resources to the default resource group (user_default). Valid values:
+	// Specifies whether to allocate all reserved compute resources to the default resource group (user_default). Valid values:
 	//
-	// - true (default): All compute reserved resources are allocated to the default resource group.
+	// - true (default): Yes.
 	//
-	// - false: Not all compute reserved resources are allocated to the default resource group.
+	// - false: No.
 	//
 	// example:
 	//
@@ -67,7 +76,7 @@ type ModifyDBClusterRequest struct {
 	EnableDefaultResourcePool *bool `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
 	// The product form. Valid values:
 	//
-	// - **IntegrationForm**: integrated form.
+	// - **IntegrationForm**: Integration form.
 	//
 	// - **LegacyForm**: Data Lakehouse Edition.
 	//
@@ -75,9 +84,15 @@ type ModifyDBClusterRequest struct {
 	//
 	// LegacyForm
 	ProductForm *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
+	// The target product version. When you switch from LegacyForm to IntegrationForm Enterprise Edition in-place, set this parameter to enterprise_version and specify ProductForm, ReservedNodeSize, and ReservedNodeCount at the same time.
+	//
+	// example:
+	//
+	// enterprise_version
+	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of the specified Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
@@ -85,25 +100,25 @@ type ModifyDBClusterRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of reserved nodes.
 	//
-	// - Enterprise Edition: The default value is 3. The value increases in increments of 3.
+	// - For Enterprise Edition, the default value is 3 and the step is 3.
 	//
-	// - Basic Edition: The default value is 1.
+	// - For Basic Edition, the default value is 1.
 	//
-	// > This parameter is required only when ProductForm is set to IntegrationForm.
+	// > Specify this parameter only when ProductForm is set to IntegrationForm.
 	//
 	// example:
 	//
 	// 3
 	ReservedNodeCount *int32 `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
-	// The node specifications of storage reserved resources. Valid values: 8ACU, 12ACU, and 16ACU.
+	// The node specifications for reserved storage resources. Valid values: 8 ACU, 12 ACU, and 16 ACU.
 	//
-	// > Include the unit when you specify this parameter. This parameter is required only when ProductForm is set to IntegrationForm.
+	// > Include the unit when you specify this parameter. Specify this parameter only when ProductForm is set to IntegrationForm.
 	//
 	// example:
 	//
 	// 8ACU
 	ReservedNodeSize *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
-	// The storage reserved resources. Valid values: 0 ACU to 2064 ACU, in increments of 24. 1 ACU is approximately equivalent to 1 core and 4 GB of memory.
+	// The reserved storage resources. Valid values: 0 ACU to 2064 ACU. Step: 24. 1 ACU is approximately equal to 1 core and 4 GB of memory.
 	//
 	// > Include the unit when you specify this parameter.
 	//
@@ -143,6 +158,10 @@ func (s *ModifyDBClusterRequest) GetEnableDefaultResourcePool() *bool {
 
 func (s *ModifyDBClusterRequest) GetProductForm() *string {
 	return s.ProductForm
+}
+
+func (s *ModifyDBClusterRequest) GetProductVersion() *string {
+	return s.ProductVersion
 }
 
 func (s *ModifyDBClusterRequest) GetRegionId() *string {
@@ -188,6 +207,11 @@ func (s *ModifyDBClusterRequest) SetEnableDefaultResourcePool(v bool) *ModifyDBC
 
 func (s *ModifyDBClusterRequest) SetProductForm(v string) *ModifyDBClusterRequest {
 	s.ProductForm = &v
+	return s
+}
+
+func (s *ModifyDBClusterRequest) SetProductVersion(v string) *ModifyDBClusterRequest {
+	s.ProductVersion = &v
 	return s
 }
 

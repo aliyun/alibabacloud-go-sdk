@@ -16,9 +16,9 @@ type iSubmitSparkLogAnalyzeTaskResponseBody interface {
 }
 
 type SubmitSparkLogAnalyzeTaskResponseBody struct {
-	// The information about the Spark log analysis task.
+	// The details of the Spark log analysis task.
 	Data *SparkAnalyzeLogTask `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

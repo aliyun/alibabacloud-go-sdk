@@ -16,7 +16,7 @@ type iDescribeApsJobDetailResponseBody interface {
 }
 
 type DescribeApsJobDetailResponseBody struct {
-	// The queried job.
+	// The job details.
 	//
 	// example:
 	//
@@ -66,49 +66,49 @@ func (s *DescribeApsJobDetailResponseBody) Validate() error {
 }
 
 type DescribeApsJobDetailResponseBodyAPSJobDetail struct {
-	// The objects that are synchronized.
+	// The list of synchronization objects.
 	//
 	// example:
 	//
 	// {}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	// The ID of the destination cluster.
+	// The target database instance ID.
 	//
 	// example:
 	//
 	// amv-******
 	DestinationEndpointInstanceID *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
-	// The region of the destination cluster.
+	// The region of the target instance.
 	//
 	// example:
 	//
 	// cn-beijing
 	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
-	// The partitions.
+	// The list of partitions.
 	//
 	// example:
 	//
 	// {}
 	PartitionList *string `json:"PartitionList,omitempty" xml:"PartitionList,omitempty"`
-	// The ID of the source instance.
+	// The source database instance ID.
 	//
 	// example:
 	//
 	// pc-*******
 	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
-	// The region of the source instance.
+	// The region of the source database.
 	//
 	// example:
 	//
 	// cn-beijing
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
-	// The status of the job.
+	// The status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The mode of the destination table.
+	// The target table mode.
 	//
 	// example:
 	//

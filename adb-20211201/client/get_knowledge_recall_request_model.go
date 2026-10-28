@@ -36,11 +36,11 @@ type GetKnowledgeRecallRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The array of images to retrieve during image retrieval. Currently, only one image is supported.
+	// The array of images to search for image retrieval. Currently, only one image is supported. The image must be Base64-encoded and passed in JSON format. Set the base64 key to the encoded image and the mime_type key to the image format. For more information, see the examples.
 	//
 	// example:
 	//
-	// [     {       "base64": "/9j/4AAQSkZJRgABAQ...",       "mime_type": "image/jpeg"     }   ]
+	// [{"base64": "/9j/4AAQSkZJRgABAQ...", "mime_type": "image/jpeg"}]
 	Images *string `json:"Images,omitempty" xml:"Images,omitempty"`
 	// The file path prefix. Only files that match the path prefix are retrieved.
 	//

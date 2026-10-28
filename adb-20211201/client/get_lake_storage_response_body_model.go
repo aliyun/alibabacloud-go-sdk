@@ -24,29 +24,29 @@ type iGetLakeStorageResponseBody interface {
 }
 
 type GetLakeStorageResponseBody struct {
-	// The HTTP status code or the error code.
+	// The status code or POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried lake storage.
+	// The returned data.
 	//
 	// example:
 	//
 	// -
 	Data *GetLakeStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response code. The status code 200 indicates that the request was successful.
+	// The HTTP status code returned for the request. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The additional information about the call result. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.****
+	// - If the request is normal, **Ok*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type GetLakeStorageResponseBody struct {
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -142,19 +142,19 @@ func (s *GetLakeStorageResponseBody) Validate() error {
 }
 
 type GetLakeStorageResponseBodyData struct {
-	// The time when the lake storage was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-05-15T07:24:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator UID.
+	// The UID of the creator.
 	//
 	// example:
 	//
 	// 123456
 	CreatorUid *string `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
-	// The ID of the AnalyticDB for MySQL cluster.
+	// The ADB instance ID.
 	//
 	// example:
 	//
@@ -178,13 +178,13 @@ type GetLakeStorageResponseBodyData struct {
 	//
 	// -
 	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
-	// The operator UID.
+	// The UID of the operator.
 	//
 	// example:
 	//
 	// 123456
 	OperatorUid *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
-	// The owner UID.
+	// The UID of the owner.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type GetLakeStorageResponseBodyData struct {
 	//
 	// -
 	PartitionCount *string `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
-	// The permissions on the lake storage.
+	// The permissions of the lake storage.
 	//
 	// example:
 	//
@@ -208,19 +208,19 @@ type GetLakeStorageResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The total number of entries returned.
+	// The total number of data rows.
 	//
 	// example:
 	//
 	// -
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	// The number of the tables.
+	// The number of databases and tables.
 	//
 	// example:
 	//
 	// -
 	TableCount *int32 `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	// The time when the lake storage was last updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -382,7 +382,7 @@ type GetLakeStorageResponseBodyDataPermissions struct {
 	//
 	// test
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The read permissions.
+	// The read permission.
 	//
 	// example:
 	//
@@ -394,7 +394,7 @@ type GetLakeStorageResponseBodyDataPermissions struct {
 	//
 	// -
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The write permissions.
+	// The write permission.
 	//
 	// example:
 	//

@@ -28,9 +28,11 @@ type iDescribeSqlPatternRequest interface {
 }
 
 type DescribeSqlPatternRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// > You can call the DescribeDBClusters operation to query the IDs of all clusters in a specified region.
+	//
+	// [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html)
 	//
 	// This parameter is required.
 	//
@@ -38,55 +40,55 @@ type DescribeSqlPatternRequest struct {
 	//
 	// amv-bp1ej1nq9n6****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"Pattern","Type":"Asc"}]`. Parameters:
+	// Specifies the sorting of query results by a specified field. The format is a JSON character string, such as `[{"Field":"Pattern","Type":"Asc"}]`. Parameters:
 	//
-	// 	- `Field` specifies the field by which to sort the query results. Valid values:
+	// - Field: the sorting field. Valid values:
 	//
-	//     	- `Pattern`: the SQL pattern.
+	//     - Pattern: SQL pattern.
 	//
-	//     	- `AccessIP`: the IP address of the client.
+	//     - AccessIP: client IP address.
 	//
-	//     	- `User`: the username.
+	//     - User: username.
 	//
-	//     	- `QueryCount`: the number of queries performed in association with the SQL pattern within the time range to query.
+	//     - QueryCount: total number of queries.
 	//
-	//     	- `AvgPeakMemory`: the average peak memory usage of the SQL pattern within the time range to query. Unit: KB.
+	//     - AvgPeakMemory: average peak memory. Unit: KB.
 	//
-	//     	- `MaxPeakMemory`: the maximum peak memory usage of the SQL pattern within the time range to query. Unit: KB.
+	//     - MaxPeakMemory: Peak Volume memory. Unit: KB.
 	//
-	//     	- `AvgCpuTime`: the average execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
+	//     - AvgCpuTime: average computing duration. Unit: milliseconds.
 	//
-	//     	- `MaxCpuTime`: the maximum execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
+	//     - MaxCpuTime: maximum computing duration. Unit: milliseconds.
 	//
-	//     	- `AvgStageCount`: the average number of stages.
+	//     - AvgStageCount: average number of stages.
 	//
-	//     	- `MaxStageCount`: the maximum number of stages.
+	//     - MaxStageCount: maximum number of stages.
 	//
-	//     	- `AvgTaskCount`: the average number of tasks.
+	//     - AvgTaskCount: average number of tasks.
 	//
-	//     	- `MaxTaskCount`: the maximum number of tasks.
+	//     - MaxTaskCount: maximum number of tasks.
 	//
-	//     	- `AvgScanSize`: the average amount of data scanned based on the SQL pattern within the time range to query. Unit: KB.
+	//     - AvgScanSize: average scan size. Unit: KB.
 	//
-	//     	- `MaxScanSize`: the maximum amount of data scanned based on the SQL pattern within the time range to query. Unit: KB.
+	//     - MaxScanSize: maximum scan size. Unit: KB.
 	//
-	// 	- `Type` specifies the sorting order. Valid values:
+	// - Type: the sorting method. Valid values:
 	//
-	//     	- `Asc`: ascending order.
+	//     - Asc: ascending sorting.
 	//
-	//     	- `Desc`: descending order.
+	//     - Desc: descending sorting.
 	//
-	// >
+	// > - If no Settings are specified for this parameter, the results are sorted in ascending order by the Pattern field by default.
 	//
-	// 	- If you do not specify this parameter, query results are sorted in ascending order of `Pattern`.
-	//
-	// 	- If you want to sort query results by `AccessIP`, you must set the `Type` parameter to `accessip`. If you want to sort query results by `User`, you must leave the `Type` parameter empty or set it to `user`.
+	// - To perform sorting by the AccessIP field, you must set the Type parameter to accessip. To perform sorting by the User field, you must leave the Type parameter empty or set it to user.
 	//
 	// example:
 	//
 	// [{"Field":"Pattern","Type":"Asc"}]
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Valid values: integers greater than 0 and no greater than the maximum value of the Integer type.
+	//
+	// Default value: 1.
 	//
 	// example:
 	//
@@ -94,19 +96,19 @@ type DescribeSqlPatternRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **10*	- (default)
+	// - **10*	- (default)
 	//
-	// 	- **30**
+	// - **30**
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -114,29 +116,29 @@ type DescribeSqlPatternRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The keyword that is used for the query.
+	// The keyword that the SQL pattern must contain.
 	//
-	// > If you do not specify this parameter, all SQL patterns of the AnalyticDB for MySQL cluster within the time period specified by `StartTime` are returned.
+	// > If this parameter is not specified, the details of all SQL patterns for the cluster on the date specified by the StartTime parameter are returned by default.
 	//
 	// example:
 	//
 	// SELECT
 	SqlPattern *string `json:"SqlPattern,omitempty" xml:"SqlPattern,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd format. The time must be in UTC.
+	// The start date of the query. The time is in UTC and formatted as yyyy-MM-dd.
 	//
-	// > Only data within the last 30 days can be queried.
+	// > You can only query data within the last 30 days.
 	//
 	// example:
 	//
 	// 2022-08-30
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The dimension by which to aggregate the SQL patterns. Valid values:
+	// Aggregates SQL patterns by a specified dimension. Valid values:
 	//
-	// 	- `user`: aggregates the SQL patterns by user.
+	//  - user: aggregates by user.
 	//
-	// 	- `accessip`: aggregates the SQL patterns by client IP address.
+	//  - accessip: aggregates by access IP address.
 	//
-	// > If you do not specify this parameter, the SQL patterns are aggregated by `user`.
+	// > If this parameter is not specified, SQL patterns are aggregated by user by default.
 	//
 	// example:
 	//

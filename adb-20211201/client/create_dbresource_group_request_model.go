@@ -948,8 +948,17 @@ func (s *CreateDBResourceGroupRequestRayConfig) Validate() error {
 }
 
 type CreateDBResourceGroupRequestRayConfigStorageMounts struct {
-	MountPath   *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	StorageId   *int64  `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	// example:
+	//
+	// /mnt/data01
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// 1
+	StorageId *int64 `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	// example:
+	//
+	// training-data
 	StorageName *string `json:"StorageName,omitempty" xml:"StorageName,omitempty"`
 }
 

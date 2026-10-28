@@ -20,7 +20,7 @@ type GetSparkConfigLogPathRequest struct {
 	//
 	// example:
 	//
-	// amv-bp19lm077co*****
+	// am-adsdxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 

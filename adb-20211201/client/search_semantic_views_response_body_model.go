@@ -16,9 +16,9 @@ type iSearchSemanticViewsResponseBody interface {
 }
 
 type SearchSemanticViewsResponseBody struct {
-	// A list of semantic view objects.
+	// The response data body.
 	Data []*SemanticViewModel `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

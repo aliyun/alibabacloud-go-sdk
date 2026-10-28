@@ -22,9 +22,9 @@ type iDescribeAdbMySqlSchemasResponseBody interface {
 type DescribeAdbMySqlSchemasResponseBody struct {
 	// The additional information about the call result. Valid values:
 	//
-	// - If the request was successful, **Success*	- is returned.
+	// - **Success**: The request is successful.
 	//
-	// - If the request failed, a specific error code is returned.
+	// - Specific error code: An exception occurred.
 	//
 	// example:
 	//

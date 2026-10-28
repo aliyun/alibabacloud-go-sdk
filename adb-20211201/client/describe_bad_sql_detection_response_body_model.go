@@ -22,7 +22,7 @@ type iDescribeBadSqlDetectionResponseBody interface {
 }
 
 type DescribeBadSqlDetectionResponseBody struct {
-	// The information about the request denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeBadSqlDetectionResponseBody struct {
 	//
 	// amv-xxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The queried detection items and detection results.
+	// The list of detection items and detection results.
 	DetectionItems []*DescribeBadSqlDetectionResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -58,7 +58,7 @@ type DescribeBadSqlDetectionResponseBody struct {
 	//
 	// 584CFCAE-E3C8-5BBB-B46C-724E77A830A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ func (s *DescribeBadSqlDetectionResponseBody) Validate() error {
 }
 
 type DescribeBadSqlDetectionResponseBodyDetectionItems struct {
-	// The information about the detection result.
+	// The detection result message.
 	//
 	// example:
 	//
@@ -145,15 +145,15 @@ type DescribeBadSqlDetectionResponseBodyDetectionItems struct {
 	//
 	// Cost
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The detection result items.
+	// The collection of detection results.
 	Results []*DescribeBadSqlDetectionResponseBodyDetectionItemsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// The severity level of the detection result. Valid values:
+	// The status of the detection result. Valid values:
 	//
-	// 	- NORMAL
+	// - NORMAL
 	//
-	// 	- WARNING
+	// - WARNING
 	//
-	// 	- CRITICAL
+	// - CRITICAL
 	//
 	// example:
 	//
@@ -219,17 +219,17 @@ func (s *DescribeBadSqlDetectionResponseBodyDetectionItems) Validate() error {
 }
 
 type DescribeBadSqlDetectionResponseBodyDetectionItemsResults struct {
-	// The total execution duration. Unit: milliseconds.
+	// The total time consumed by the query. Unit: milliseconds.
 	//
-	// >  This value is the cumulative value of the `QueuedTime`, `TotalPlanningTime`, and `ExecutionTime` parameters.
+	// > This time metric is the sum of the `QueuedTime`, `TotalPlanningTime`, and `ExecutionTime` metrics.
 	//
 	// example:
 	//
 	// 709
 	Cost *int64 `json:"Cost,omitempty" xml:"Cost,omitempty"`
-	// The diagnostic result items.
+	// The collection of self-diagnosis results for the query.
 	DiagnosisResults []*DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults `json:"DiagnosisResults,omitempty" xml:"DiagnosisResults,omitempty" type:"Repeated"`
-	// The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
+	// The total time consumed by operators within the stage, which is equivalent to the CPU time of the stage. This metric plays an active role in determining which parts of the query consume more compute resource. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -241,27 +241,27 @@ type DescribeBadSqlDetectionResponseBodyDetectionItemsResults struct {
 	//
 	// 235433
 	OutputDataSize *int64 `json:"OutputDataSize,omitempty" xml:"OutputDataSize,omitempty"`
-	// The SQL pattern ID.
+	// The ID of the SQL pattern.
 	//
 	// example:
 	//
 	// 3467484070025860498
 	PatternId *string `json:"PatternId,omitempty" xml:"PatternId,omitempty"`
-	// The peak memory. Unit: bytes.
+	// The peak memory usage of the query. Unit: bytes.
 	//
 	// example:
 	//
 	// 234
 	PeakMemory *int64 `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
-	// The query ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 202410161002191720161451770345363xxxx
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The SQL statement.
+	// The details of the SQL statement.
 	//
-	// >  For performance considerations, an SQL statement cannot exceed 5,120 characters in length. Otherwise, the SQL statement is truncated. You can call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/308212.html) operation to download the information about SQL statements that meet a query condition for an AnalyticDB for MySQL cluster, including the complete SQL statements.
+	// > For performance reasons, a maximum of 5,120 characters of an SQL statement can be displayed. SQL statements that exceed this limit are truncated. You can call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/308212.html) operation to download the summary information of SQL statements that meet specified conditions, including the complete SQL statements.
 	//
 	// example:
 	//
@@ -273,13 +273,13 @@ type DescribeBadSqlDetectionResponseBodyDetectionItemsResults struct {
 	//
 	// 2342
 	ScanSize *int64 `json:"ScanSize,omitempty" xml:"ScanSize,omitempty"`
-	// The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time is displayed in UTC.
+	// The start time of the query. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i> (UTC time).
 	//
 	// example:
 	//
 	// 2024-09-06T02:11:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of stages generated.
+	// The total number of stages generated by the query.
 	//
 	// example:
 	//
@@ -408,13 +408,13 @@ func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) Validate() er
 }
 
 type DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults struct {
-	// The diagnostic code.
+	// The diagnosis code.
 	//
 	// example:
 	//
 	// Large amounts of data are returned to the client.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the diagnostic result.
+	// The details of the diagnosis result.
 	//
 	// example:
 	//

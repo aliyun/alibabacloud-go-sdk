@@ -32,25 +32,33 @@ type GetDatabaseObjectsRequest struct {
 	//
 	// am-bp1565u55p32****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The owner of the database.
+	// The owner.
 	//
 	// example:
 	//
 	// admin
 	FilterOwner *string `json:"FilterOwner,omitempty" xml:"FilterOwner,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// test_db
 	FilterSchemaName *string `json:"FilterSchemaName,omitempty" xml:"FilterSchemaName,omitempty"`
-	// The order in which you want to sort the query results. Valid values:
+	// The sort field.
 	//
-	// 	- Asc
+	// Valid values for Type:
 	//
-	// 	- Desc
+	// - Asc
 	//
-	// Valid values for Field: DatabaseName, CreateTime, and UpdateTime. -CreateTime; -UpdateTime;
+	// - Desc
+	//
+	// Valid values for Field:
+	//
+	// - DatabseName
+	//
+	// - CreateTime
+	//
+	// - UpdateTime
 	//
 	// Default value: {"Type": "Desc","Field": "DatabaseName"}.
 	//
@@ -64,7 +72,7 @@ type GetDatabaseObjectsRequest struct {
 	//
 	// }
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value must be greater than 0 and no greater than the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -72,11 +80,11 @@ type GetDatabaseObjectsRequest struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- 30
+	// - 30
 	//
-	// 	- 50
+	// - 50
 	//
-	// 	- 100
+	// - 100
 	//
 	// Default value: 30.
 	//
@@ -84,7 +92,7 @@ type GetDatabaseObjectsRequest struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the database.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

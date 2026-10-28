@@ -24,9 +24,9 @@ type iDescribeAuditLogRecordsResponseBody interface {
 }
 
 type DescribeAuditLogRecordsResponseBody struct {
-	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The cluster ID of an Enterprise Edition, Basic Edition, or Lakehouse Edition cluster.
 	//
-	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The cluster ID of a Lakehouse Edition cluster.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeAuditLogRecordsResponseBody struct {
 	//
 	// 8A564B7F-8C00-43C0-8EC5-919FBB70573
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -136,25 +136,25 @@ func (s *DescribeAuditLogRecordsResponseBody) Validate() error {
 }
 
 type DescribeAuditLogRecordsResponseBodyItems struct {
-	// The connection ID.
+	// The communication ID.
 	//
 	// example:
 	//
 	// 14356****
 	ConnId *string `json:"ConnId,omitempty" xml:"ConnId,omitempty"`
-	// The name of the database on which the SQL statement is executed.
+	// The name of the database on which the target SQL statement is executed.
 	//
 	// example:
 	//
 	// adb_demo
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The execution start time of the SQL statement in local time. Format: yyyy-MM-dd HH:mm:ss.
+	// The start time of the target SQL statement execution. The time is displayed in local time and in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2022-08-12 10:10:00
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The execution start time of the SQL statement. The value is a UNIX timestamp in milliseconds.
+	// The start time of the target SQL statement execution, represented as a millisecond timestamp.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type DescribeAuditLogRecordsResponseBodyItems struct {
 	//
 	// true
 	HasDiagnosticInfo *bool `json:"HasDiagnosticInfo,omitempty" xml:"HasDiagnosticInfo,omitempty"`
-	// The IP address and port number of the client that executes the SQL statement.
+	// The IP address and port number of the client that executes the target SQL statement.
 	//
 	// example:
 	//
@@ -187,29 +187,29 @@ type DescribeAuditLogRecordsResponseBodyItems struct {
 	//
 	// SELECT 	- FROM adb_hdfs_import_source
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The type of the SQL statement.
+	// The type of the target SQL statement.
 	//
 	// example:
 	//
 	// SELECT
 	SQLType *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
-	// Indicates whether the SQL statement is executed successfully. Valid values:
+	// Indicates whether the target SQL statement is executed successfully. Valid values:
 	//
-	// - **true**: Executed successfully.
+	// - **true**: The SQL statement is executed successfully.
 	//
-	// - **false**: Execution failed.
+	// - **false**: The SQL statement fails to be executed.
 	//
 	// example:
 	//
 	// true
 	Succeed *string `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	// The execution duration of the SQL statement. Unit: milliseconds (ms).
+	// The execution duration of the target SQL statement. Unit: milliseconds (ms).
 	//
 	// example:
 	//
 	// 216
 	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	// The username that executes the SQL statement.
+	// The username that executes the target SQL statement.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iExecuteSparkReplStatementResponseBody interface {
 }
 
 type ExecuteSparkReplStatementResponseBody struct {
-  // The returned data.
+  // The response data.
   Data *ExecuteSparkReplStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
   // The request ID.
   // 
@@ -62,45 +62,45 @@ func (s *ExecuteSparkReplStatementResponseBody) Validate() error {
 }
 
 type ExecuteSparkReplStatementResponseBodyData struct {
-  // The ID of the Alibaba Cloud account that owns the cluster.
+  // The Alibaba Cloud account to which the cluster belongs.
   // 
   // example:
   // 
   // 17108278707****
   AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-  // The code that is executed.
+  // The executed code.
   // 
   // example:
   // 
   // print(1+1)
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // The code execution status. Valid values:
+  // The execution status of the code. Valid values:
   // 
-  // 	- CANCELLED
+  // - CANCELLED: The execution is canceled.
   // 
-  // 	- RUNNING
+  // - RUNNING: The execution is in progress.
   // 
-  // 	- SUCCEEDED
+  // - SUCCEEDED: The execution is successful.
   // 
-  // 	- ERROR
+  // - ERROR: The execution failed.
   // 
   // example:
   // 
   // RUNNING
   CodeState *string `json:"CodeState,omitempty" xml:"CodeState,omitempty"`
-  // The code type. Valid values:
+  // The type of the code. Valid values:
   // 
-  // 	- SCALA
+  // - SCALA
   // 
-  // 	- PYTHON
+  // - PYTHON
   // 
   // example:
   // 
   // PYTHON
   CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-  // The column names.
+  // The array of column names.
   Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-  // The end time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+  // The end time. The time is a UNIX timestamp in milliseconds.
   // 
   // example:
   // 
@@ -112,23 +112,23 @@ type ExecuteSparkReplStatementResponseBodyData struct {
   // 
   // StackOverflow Exception
   Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-  // The code execution result, which is a JSON string that conforms to Apache Livy.
+  // The code execution result. It is a JSON-formatted string that follows the Apache Livy output standard.
   // 
   // example:
   // 
   // {"text/plain": 2}
   Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-  // The execution result type, which is in the JSON format. Valid values:
+  // The serialization format of the execution result. The structure is a JSON object. Valid values:
   // 
-  // 	- TEXT: the text content that conforms to Apache Livy.
+  // - TEXT: The output is text content that follows the Apache Livy standard.
   // 
-  // 	- TABLE: the table content that conforms to Apache Livy.
+  // - TABLE: The output is table content that follows the Apache Livy standard.
   // 
   // example:
   // 
   // TEXT
   OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
-  // The start time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+  // The start time. The time is a UNIX timestamp in milliseconds.
   // 
   // example:
   // 

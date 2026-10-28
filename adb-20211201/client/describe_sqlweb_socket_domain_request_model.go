@@ -20,17 +20,17 @@ type iDescribeSQLWebSocketDomainRequest interface {
 type DescribeSQLWebSocketDomainRequest struct {
 	// The cluster ID.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) API to query the details of all clusters in your account, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster IDs.
 	//
 	// example:
 	//
 	// amv-bp1lw6g669zpi660
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The application module name.
+	// The name of the application module.
 	//
-	// - `SQLWebSocket`: The module for SQL development.
+	// - SQLWebSocket: SQL development.
 	//
-	// - `Assistant`: The module for the intelligent assistant.
+	// - Assistant: intelligent assistant.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeSQLWebSocketDomainRequest struct {
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) API to query the region IDs supported by AnalyticDB for MySQL.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region IDs supported by AnalyticDB for MySQL Data Warehouse Edition.
 	//
 	// This parameter is required.
 	//

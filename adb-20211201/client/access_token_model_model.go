@@ -22,11 +22,20 @@ type iAccessTokenModel interface {
 }
 
 type AccessTokenModel struct {
+	// The access token.
+	//
+	// example:
+	//
+	// ******
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreatedAt   *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	ExpiredAt   *string `json:"ExpiredAt,omitempty" xml:"ExpiredAt,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The comment for the access token.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time of the access token.
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The expiration time of the access token.
+	ExpiredAt *string `json:"ExpiredAt,omitempty" xml:"ExpiredAt,omitempty"`
+	// The status of the access token.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AccessTokenModel) String() string {

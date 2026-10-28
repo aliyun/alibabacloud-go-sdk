@@ -269,13 +269,13 @@ type DescribeExcessivePrimaryKeysResponseBodyTables struct {
 	//
 	// example:
 	//
-	// id,date
+	// 2
 	PrimaryKeyColumns *string `json:"PrimaryKeyColumns,omitempty" xml:"PrimaryKeyColumns,omitempty"`
 	// The number of primary key fields.
 	//
 	// example:
 	//
-	// 2
+	// 3
 	PrimaryKeyCount *int32 `json:"PrimaryKeyCount,omitempty" xml:"PrimaryKeyCount,omitempty"`
 	// The data size of primary key indexes. Unit: bytes.
 	//

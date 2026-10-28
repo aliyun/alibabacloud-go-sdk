@@ -16,7 +16,7 @@ type iGetSparkAppLogResponseBody interface {
 }
 
 type GetSparkAppLogResponseBody struct {
-	// The queried log.
+	// The log details.
 	Data *GetSparkAppLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,25 +62,27 @@ func (s *GetSparkAppLogResponseBody) Validate() error {
 }
 
 type GetSparkAppLogResponseBodyData struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
 	// amv-clusterxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The content of the log.
+	// The log content.
 	//
 	// example:
 	//
 	// 22/04/22 15:30:49 INFO Utils: Start the dump task because s202206061441hz22a35ab000****-0001 app end, the interval is 238141ms;22/04/22 15:30:49 INFO AbstractConnector: Stopped Spark@5e774d9d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
-	// The number of log entries. A value of 0 indicates that no valid logs are returned.
+	// The number of log lines. A value of 0 indicates that no valid logs exist.
 	//
 	// example:
 	//
 	// 3517972480
 	LogSize *int32 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
+	// The alert information, such as task execution failure or insufficient resources. If no alerts are triggered, an empty value is returned.
 	//
 	// example:
 	//

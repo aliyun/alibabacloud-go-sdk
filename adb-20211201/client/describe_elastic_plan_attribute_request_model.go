@@ -16,9 +16,9 @@ type iDescribeElasticPlanAttributeRequest interface {
 }
 
 type DescribeElasticPlanAttributeRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type DescribeElasticPlanAttributeRequest struct {
 	//
 	// amv-wz9509beptiz****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the scaling plan.
+	// The name of the elastic plan.
 	//
-	// >  You can call the [DescribeElasticPlans](https://help.aliyun.com/document_detail/601334.html) operation to query the names of scaling plans.
+	// > Call the [DescribeElasticPlans](https://help.aliyun.com/document_detail/601334.html) operation to query the name of the elastic plan for the cluster.
 	//
 	// This parameter is required.
 	//

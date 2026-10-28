@@ -54,11 +54,11 @@ type iDescribeAuditLogRecordsRequest interface {
 }
 
 type DescribeAuditLogRecordsRequest struct {
-	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The cluster ID of an Enterprise Edition, Basic Edition, or Lakehouse Edition cluster.
 	//
-	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The cluster ID of a Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster IDs of all clusters in a specified region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in a specified region.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	// amv-t4nj8619bz2w3****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database on which the SQL statement is executed.
+	// The name of the database on which the target SQL statement is executed.
 	//
 	// example:
 	//
 	// adb_demo
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end of the time range to query. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ format.
+	// The end time of the query. The time is displayed in UTC and in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// > - The end time must be later than the start time.
 	//
@@ -94,39 +94,39 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	// XIHE
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The IP address and port number of the client that executes the SQL statement.
+	// The IP address and port number of the client that executes the target SQL statement.
 	//
 	// example:
 	//
 	// 100.104.XX.XX:43908
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The sorting order based on specified fields. The value is in JSON format and is an ordered JSON array. Compound sorting is performed in the order of the input array. The array contains the `Field` and `Type` fields. Example: `[{"Field":"ExecutionStartTime","Type":"Desc"},{"Field":"ScanRows","Type":"Asc"}]`.
+	// The sort configuration in JSON format. The value is an ordered JSON array that specifies composite sorting based on the input array order. Each element contains the `Field` and `Type` parameters. Example: `[{"Field":"ExecutionStartTime","Type":"Desc"},{"Field":"ScanRows","Type":"Asc"}]`. Details:
 	//
 	// 	- `Field` specifies the field name for sorting. Valid values:
 	//
-	//     	- **HostAddress**: the address of the client that connects to the database.
+	//     	- **HostAddress**: the client address used to connect to the database.
 	//
 	//     	- **UserName**: the username.
 	//
-	//     	- **ExecutionStartTime**: the execution start time of the SQL statement.
+	//     	- **ExecutionStartTime**: the start time of the target SQL statement execution.
 	//
-	//     	- **QueryTime**: the execution duration of the SQL statement.
+	//     	- **QueryTime**: the execution duration of the target SQL statement.
 	//
-	//     	- **PeakMemoryUsage**: the peak memory usage during the execution of the SQL statement.
+	//     	- **PeakMemoryUsage**: the peak memory usage during the execution of the target SQL statement.
 	//
-	//     	- **ScanRows**: the number of rows scanned by tasks with data sources.
+	//     	- **ScanRows**: the number of scanned rows for tasks with a data source.
 	//
-	//     	- **ScanSize**: the amount of scanned data.
+	//     	- **ScanSize**: the volume of scanned data.
 	//
-	//     	- **ScanTime**: the total time consumed for scanning data.
+	//     	- **ScanTime**: the total time consumed by data scanning.
 	//
-	//     	- **PlanningTime**: the time consumed for generating the execution plan.
+	//     	- **PlanningTime**: the time consumed by execution plan generation.
 	//
-	//     	- **WallTime**: the cumulative CPU time of all operators across all nodes in the query.
+	//     	- **WallTime**: the cumulative CPU time of all operators in the query across all nodes.
 	//
 	//     	- **ProcessID**: the process ID.
 	//
-	// 	- `Type` specifies the sorting type. Valid values:
+	// 	- `Type` specifies the sort order. Valid values:
 	//
 	//     	- **Desc**: descending order.
 	//
@@ -136,7 +136,7 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	// [{"Field":"ExecuteTime","Type":"Desc"},{"Field":"HostAddress","Type":"Asc"}]
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The order in which the results are sorted by SQL execution time. Valid values:
+	// The sort order of SQL statements by execution time. Valid values:
 	//
 	// 	- **asc**: ascending order.
 	//
@@ -148,7 +148,7 @@ type DescribeAuditLogRecordsRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -167,15 +167,20 @@ type DescribeAuditLogRecordsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The process ID of the SQL query, used to filter audit logs of a specified process.
+	//
+	// example:
+	//
+	// 20210608175202172016166249034536****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// A reserved parameter.
+	// Reserved parameter.
 	//
 	// example:
 	//
 	// None
 	ProxyUser *string `json:"ProxyUser,omitempty" xml:"ProxyUser,omitempty"`
-	// The keyword used to search the returned results.
+	// A string value that is used as a keyword to filter the returned results.
 	//
 	// example:
 	//
@@ -193,7 +198,7 @@ type DescribeAuditLogRecordsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the SQL statement. Valid values:
+	// The SQL statement type. Valid values:
 	//
 	// - **DELETE**
 	//
@@ -209,31 +214,31 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	// - **CREATE**
 	//
-	// > Only one type can be specified per request. If this parameter is not specified, all types are queried by default.
+	// > Only one type can be specified at a time. If this parameter is left empty, all types are queried by default.
 	//
 	// example:
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The beginning of the time range to query. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ format.
+	// The start time of the query. The time is displayed in UTC and in the yyyy-MM-ddTHH:mmZ format.
 	//
-	// > SQL audit logs can be queried only when SQL audit is enabled, and only logs from the last 30 days are supported. If SQL audit is disabled and then re-enabled, only logs generated after re-enabling can be queried.
+	// > SQL audit logs can be queried only when SQL Audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL Audit is disabled and then re-enabled, only SQL audit logs generated after the re-enablement can be queried.
 	//
 	// example:
 	//
 	// 2022-08-12T04:17Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Specifies whether the SQL statement is executed successfully. Valid values:
+	// Indicates whether the target SQL statement is executed successfully. Valid values:
 	//
-	// 	- **true**: Executed successfully.
+	// 	- **true**: The SQL statement is executed successfully.
 	//
-	// 	- **false**: Execution failed.
+	// 	- **false**: The SQL statement fails to be executed.
 	//
 	// example:
 	//
 	// true
 	Succeed *string `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	// The username that executes the SQL statement.
+	// The username that executes the target SQL statement.
 	//
 	// example:
 	//

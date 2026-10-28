@@ -24,7 +24,7 @@ type iDescribeSparkSQLDiagnosisAttributeRequest interface {
 type DescribeSparkSQLDiagnosisAttributeRequest struct {
 	// The application ID.
 	//
-	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
+	// > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query the ID of the Spark application.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,7 @@ type DescribeSparkSQLDiagnosisAttributeRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The cluster ID.
 	//
-	// >
-	//
-	// 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	// > 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the information of all clusters in the specified region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +42,7 @@ type DescribeSparkSQLDiagnosisAttributeRequest struct {
 	//
 	// amv-2zeq4788qyy7k662
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the query executed within the Spark application.
+	// The internal query execution ID of the Spark application.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +50,11 @@ type DescribeSparkSQLDiagnosisAttributeRequest struct {
 	//
 	// 1
 	InnerQueryId *int64 `json:"InnerQueryId,omitempty" xml:"InnerQueryId,omitempty"`
-	// The language in which to return the query results. Valid values:
+	// The language type. The description of the system access policy is returned in this language.
 	//
-	// 	- en: English.
+	// - en: English.
 	//
-	// 	- zh: Chinese.
+	// - zh: Chinese.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +64,7 @@ type DescribeSparkSQLDiagnosisAttributeRequest struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

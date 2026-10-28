@@ -20,19 +20,19 @@ type iAllocateClusterPublicConnectionRequest interface {
 }
 
 type AllocateClusterPublicConnectionRequest struct {
-	// The prefix of the public connection address.
+	// Specifies the prefix of the public endpoint. The prefix must meet the following requirements:
 	//
-	// - It must begin with a lowercase letter and can contain only lowercase letters, digits, and hyphens (-).
+	// - It must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-).
 	//
-	// - It must be no more than 30 characters long.
+	// - It can be up to 30 characters in length.
 	//
 	// example:
 	//
 	// test12
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// <props="china">The cluster ID of an Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// <props="intl">The cluster ID of a Data Lakehouse Edition cluster.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -42,14 +42,19 @@ type AllocateClusterPublicConnectionRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The database engine. Valid values:
 	//
-	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	// - **AnalyticDB*	- (default): AnalyticDB for MySQL engine.
 	//
-	// - **Clickhouse**: the wide table engine.
+	// - **Clickhouse**: wide table engine.
 	//
 	// example:
 	//
 	// Clickhouse
-	Engine            *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// test_group
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

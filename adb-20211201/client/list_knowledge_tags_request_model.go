@@ -11,12 +11,14 @@ type iListKnowledgeTagsRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *ListKnowledgeTagsRequest
 	GetDBClusterId() *string
+	SetFileId(v string) *ListKnowledgeTagsRequest
+	GetFileId() *string
 	SetFileLocation(v string) *ListKnowledgeTagsRequest
 	GetFileLocation() *string
 }
 
 type ListKnowledgeTagsRequest struct {
-	// The ID of the AnalyticDB for MySQL instance.
+	// The ADB instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,9 +26,13 @@ type ListKnowledgeTagsRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The location of the knowledge base document.
+	// The file ID.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// 2112314
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The location of the knowledge base document.
 	//
 	// example:
 	//
@@ -46,12 +52,21 @@ func (s *ListKnowledgeTagsRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *ListKnowledgeTagsRequest) GetFileId() *string {
+	return s.FileId
+}
+
 func (s *ListKnowledgeTagsRequest) GetFileLocation() *string {
 	return s.FileLocation
 }
 
 func (s *ListKnowledgeTagsRequest) SetDBClusterId(v string) *ListKnowledgeTagsRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListKnowledgeTagsRequest) SetFileId(v string) *ListKnowledgeTagsRequest {
+	s.FileId = &v
 	return s
 }
 

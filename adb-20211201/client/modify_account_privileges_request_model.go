@@ -38,19 +38,26 @@ type ModifyAccountPrivilegesRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The list of granted permissions.
 	AccountPrivileges []*ModifyAccountPrivilegesRequestAccountPrivileges `json:"AccountPrivileges,omitempty" xml:"AccountPrivileges,omitempty" type:"Repeated"`
-	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp1k5p066e1a****
-	DBClusterId                *string   `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	PromqlInsertPrivileges     []*string `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty" type:"Repeated"`
-	PromqlSelectNodePercentage *float64  `json:"PromqlSelectNodePercentage,omitempty" xml:"PromqlSelectNodePercentage,omitempty"`
-	PromqlSelectPrivileges     []*string `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty" type:"Repeated"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The list of PromQL write permissions.
+	PromqlInsertPrivileges []*string `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty" type:"Repeated"`
+	// The percentage of PromQL query nodes.
+	//
+	// example:
+	//
+	// 0.6
+	PromqlSelectNodePercentage *float64 `json:"PromqlSelectNodePercentage,omitempty" xml:"PromqlSelectNodePercentage,omitempty"`
+	// The list of PromQL query permissions.
+	PromqlSelectPrivileges []*string `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty" type:"Repeated"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -58,7 +65,12 @@ type ModifyAccountPrivilegesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// test_group
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
@@ -156,9 +168,9 @@ func (s *ModifyAccountPrivilegesRequest) Validate() error {
 }
 
 type ModifyAccountPrivilegesRequestAccountPrivileges struct {
-	// The privilege object, which is a tuple of database, table, and column.
+	// The permission object, which is a triplet of database, table, and column.
 	PrivilegeObject *ModifyAccountPrivilegesRequestAccountPrivilegesPrivilegeObject `json:"PrivilegeObject,omitempty" xml:"PrivilegeObject,omitempty" type:"Struct"`
-	// The privilege level, obtained from the `DescribeEnabledPrivileges` operation.
+	// The permission level obtained from the `DescribeEnabledPrivileges` operation.
 	//
 	// example:
 	//
@@ -213,19 +225,19 @@ func (s *ModifyAccountPrivilegesRequestAccountPrivileges) Validate() error {
 }
 
 type ModifyAccountPrivilegesRequestAccountPrivilegesPrivilegeObject struct {
-	// The column to which permissions are granted. This parameter is required when the privilege level is column.
+	// The authorized column. This parameter is required when the permission level is column.
 	//
 	// example:
 	//
 	// column1
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// The database to which permissions are granted. This parameter is required when the privilege level is database, table, or column.
+	// The authorized database. This parameter is required when the permission level is database, table, or column.
 	//
 	// example:
 	//
 	// tsdb1
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The table to which permissions are granted. This parameter is required when the privilege level is table or column.
+	// The authorized table. This parameter is required when the permission level is table or column.
 	//
 	// example:
 	//

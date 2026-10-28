@@ -16,17 +16,17 @@ type iCheckBindRamUserResponseBody interface {
 }
 
 type CheckBindRamUserResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 2FB9DCA3-DA56-5B43-A9A0-68E3D0E6AA84
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result of the request. Valid values:
+	// The result returned by the node. Valid values:
 	//
-	// 	- **true**: the database account is associated with a RAM user.
+	// - **true**: The current Resource Access Management (RAM) user is attached to a database account.
 	//
-	// 	- **false**: the database account is not associated with a RAM user.
+	// - **false**: The current Resource Access Management (RAM) user is not attached to a database account.
 	//
 	// example:
 	//

@@ -96,6 +96,10 @@ func (client *Client) AddKnowledgeTagsWithContext(ctx context.Context, request *
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
 	if !dara.IsNil(request.FileLocation) {
 		query["FileLocation"] = request.FileLocation
 	}
@@ -148,6 +152,10 @@ func (client *Client) AddKnowledgeUploadUserWithContext(ctx context.Context, req
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
 	if !dara.IsNil(request.FileLocation) {
 		query["FileLocation"] = request.FileLocation
 	}
@@ -181,11 +189,11 @@ func (client *Client) AddKnowledgeUploadUserWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Allocates a public connection address for a cluster.
+// Applies for a public endpoint for a cluster.
 //
 // Description:
 //
-// For a list of service endpoints, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - AllocateClusterPublicConnectionRequest
 //
@@ -241,11 +249,11 @@ func (client *Client) AllocateClusterPublicConnectionWithContext(ctx context.Con
 
 // Summary:
 //
-// Applies a single optimization suggestion.
+// Applies one of the optimization suggestions.
 //
 // Description:
 //
-// For the endpoints of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of the current service, refer to [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ApplyAdviceByIdRequest
 //
@@ -309,11 +317,11 @@ func (client *Client) ApplyAdviceByIdWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL cluster.
+// Creates a VPC and an elastic network interface controller (NIC) for a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - AttachUserENIRequest
 //
@@ -361,7 +369,7 @@ func (client *Client) AttachUserENIWithContext(ctx context.Context, request *Att
 //
 // Description:
 //
-// For the endpoint of this service, refer to [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - BatchApplyAdviceByIdListRequest
 //
@@ -425,11 +433,11 @@ func (client *Client) BatchApplyAdviceByIdListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Bind a Resource Access Management (RAM) user to a standard database account in a cluster.
+// Attaches a Resource Access Management (RAM) user to a standard database account of a cluster.
 //
 // Description:
 //
-// For the current service endpoint, see [service endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - BindAccountRequest
 //
@@ -491,11 +499,11 @@ func (client *Client) BindAccountWithContext(ctx context.Context, tmpReq *BindAc
 
 // Summary:
 //
-// Associates a resource group with a database account.
+// Associates a resource group.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - BindDBResourceGroupWithUserRequest
 //
@@ -547,7 +555,7 @@ func (client *Client) BindDBResourceGroupWithUserWithContext(ctx context.Context
 
 // Summary:
 //
-// Terminates part of the code in a Spark job.
+// Terminates a code block in a Spark job.
 //
 // @param request - CancelSparkReplStatementRequest
 //
@@ -599,15 +607,15 @@ func (client *Client) CancelSparkReplStatementWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Cancels a Spark SQL execution.
+// Cancels the execution of Spark SQL.
 //
 // Description:
 //
-// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+// - The public endpoint for the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+// - The VPC endpoint for the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// > If you encounter a 409 error when initiating requests from China North 1 (Qingdao), China South 1 (Shenzhen), China South 3 (Guangzhou), or Hong Kong (China), contact technical support.
+// > If you encounter a 409 fault when initiating requests from China (Qingdao), China (Shenzhen), China (Guangzhou), or Hong Kong (China), contact technical support.
 //
 // @param request - CancelSparkWarehouseBatchSQLRequest
 //
@@ -727,11 +735,11 @@ func (client *Client) CancelSqlPatternCompareReportWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries whether a database account of an AnalyticDB for MySQL cluster is associated with a Resource Access Management (RAM) user.
+// Checks whether the Resource Access Management (RAM) user that invokes the API operation is attached to a cluster database account.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CheckBindRamUserRequest
 //
@@ -779,7 +787,7 @@ func (client *Client) CheckBindRamUserWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Checks whether a metadata discovery schema exists.
+// Checks whether the metadata discovery schema exists.
 //
 // @param request - CheckFormationSchemaExistsRequest
 //
@@ -833,9 +841,13 @@ func (client *Client) CheckFormationSchemaExistsWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks the status of the built-in dataset.
+//
 // Description:
 //
-// For the service endpoint, see [endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, refer to [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CheckSampleDataSetRequest
 //
@@ -939,7 +951,7 @@ func (client *Client) CloseLogSyncToSLSWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Configures the export destination (SLS or OSS) at the instance level. The configuration is unique per instance and follows the "configure once, use multiple times" principle.
+// Configures the Simple Log Service (SLS) or Object Storage Service (OSS) export information. The configuration is unique at the instance level and can be configured once and used multiple times.
 //
 // @param tmpReq - ConfigureResultExportRequest
 //
@@ -1009,11 +1021,11 @@ func (client *Client) ConfigureResultExportWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates an AnalyticDB Pipeline Service (APS) job.
+// Creates an APS task.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, refer to [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CreateAPSJobRequest
 //
@@ -1105,7 +1117,7 @@ func (client *Client) CreateAPSJobWithContext(ctx context.Context, request *Crea
 //
 // Description:
 //
-// For information about the endpoint of the current service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration endpoint of the current service, see [service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - CreateAccountRequest
 //
@@ -1275,7 +1287,7 @@ func (client *Client) CreateApsCopyWorkloadWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// For the service registration of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - CreateApsDatasoureRequest
 //
@@ -1493,7 +1505,7 @@ func (client *Client) CreateApsHiveJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates an APS Kafka to data lakehouse job.
+// Creates an APS Kafka lakehouse ingestion task.
 //
 // @param tmpReq - CreateApsKafkaHudiJobRequest
 //
@@ -1981,7 +1993,7 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 //
 // Description:
 //
-// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration endpoint of the current service, refer to [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CreateDBClusterRequest
 //
@@ -2979,11 +2991,11 @@ func (client *Client) CreateSqlPatternCompareReportWithContext(ctx context.Conte
 
 // Summary:
 //
-// Deletes a database account from a cluster.
+// Deletes a database account of a cluster.
 //
 // Description:
 //
-// For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration endpoint of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DeleteAccountRequest
 //
@@ -3514,6 +3526,10 @@ func (client *Client) DeleteKnowledgeFileWithContext(ctx context.Context, reques
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
 	if !dara.IsNil(request.FileLocation) {
 		query["FileLocation"] = request.FileLocation
 	}
@@ -4025,7 +4041,7 @@ func (client *Client) DescribeAbnormalPatternDetectionWithContext(ctx context.Co
 //
 // Description:
 //
-// For the endpoint of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, refer to [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAccountAllPrivilegesRequest
 //
@@ -4245,7 +4261,7 @@ func (client *Client) DescribeAccountPrivilegesWithContext(ctx context.Context, 
 //
 // Description:
 //
-// For the service registration information of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration endpoint of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAccountsRequest
 //
@@ -4309,9 +4325,9 @@ func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+// - Public endpoint for a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+// - VPC endpoint for a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlColumnsRequest
 //
@@ -4431,9 +4447,9 @@ func (client *Client) DescribeAdbMySqlIndexesWithContext(ctx context.Context, re
 //
 // Description:
 //
-// - Public endpoint of the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+// - Public endpoint for a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// - VPC endpoint of the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+// - VPC endpoint for a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlSchemasRequest
 //
@@ -4545,9 +4561,9 @@ func (client *Client) DescribeAdbMySqlTableMetaWithContext(ctx context.Context, 
 //
 // Description:
 //
-// - Public endpoint of the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+// - Public endpoint of the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// - VPC endpoint of the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+// - VPC endpoint of the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlTablesRequest
 //
@@ -4603,11 +4619,11 @@ func (client *Client) DescribeAdbMySqlTablesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries whether the suggestion feature is enabled.
+// Queries whether the advisory service is enabled.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAdviceServiceEnabledRequest
 //
@@ -5029,7 +5045,7 @@ func (client *Client) DescribeApsDatasourcesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about an AnalyticDB Pipeline Service (APS) job from a Hive data source.
+// Queries the details of an APS Hive workload.
 //
 // @param request - DescribeApsHiveWorkloadRequest
 //
@@ -5081,7 +5097,7 @@ func (client *Client) DescribeApsHiveWorkloadWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about an AnalyticDB Pipeline Service (APS) job.
+// Queries the details of an APS job.
 //
 // @param request - DescribeApsJobDetailRequest
 //
@@ -5261,7 +5277,7 @@ func (client *Client) DescribeApsMigrationWorkloadsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the progress of an AnalyticDB Pipeline Service (APS) job.
+// Queries the APS progress.
 //
 // @param request - DescribeApsProgressRequest
 //
@@ -5375,9 +5391,9 @@ func (client *Client) DescribeApsResourceGroupsWithContext(ctx context.Context, 
 //
 // Description:
 //
-// - SQL audit logs can be queried only when SQL audit is enabled, and only logs from the last 30 days are supported. If SQL audit is shutdown and then re-enabled, only logs generated after re-enabling can be queried. SQL audit logs do not record **INSERT INTO VALUES**, **REPLACE INTO VALUES**, or **UPSERT INTO VALUES*	- operations.
+// - SQL audit logs can be queried only when SQL Audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL Audit is disabled and then re-enabled, only SQL audit logs generated after the re-enablement can be queried. SQL audit logs do not record **INSERT INTO VALUES**, **REPLACE INTO VALUES**, or **UPSERT INTO VALUES*	- operations.
 //
-// - For the service registration of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// - For the current service endpoint, see [Service endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAuditLogRecordsRequest
 //
@@ -5501,7 +5517,7 @@ func (client *Client) DescribeAuditLogRecordsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the auto-renewal status of a subscription cluster.
+// Queries the auto-renewal status of subscription clusters.
 //
 // @param tmpReq - DescribeAutoRenewalAttributeRequest
 //
@@ -5583,7 +5599,7 @@ func (client *Client) DescribeAutoRenewalAttributeWithContext(ctx context.Contex
 
 // Summary:
 //
-// Use DescribeAvailableAdvices to list available optimization recommendations.
+// Queries available optimization suggestions.
 //
 // @param request - DescribeAvailableAdvicesRequest
 //
@@ -5727,11 +5743,11 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the backup sets for an instance.
+// Queries the backup sets of an instance.
 //
 // Description:
 //
-// For information about the endpoints for this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeBackupsRequest
 //
@@ -5815,7 +5831,7 @@ func (client *Client) DescribeBackupsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the bad SQL statements that affect cluster stability within a time range.
+// Queries bad SQL statements that affect instance stability within a specified time range.
 //
 // @param request - DescribeBadSqlDetectionRequest
 //
@@ -5951,7 +5967,7 @@ func (client *Client) DescribeClusterAccessWhiteListWithContext(ctx context.Cont
 //
 // Description:
 //
-// For service endpoints, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeClusterNetInfoRequest
 //
@@ -6157,7 +6173,7 @@ func (client *Client) DescribeColumnsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries whether the remote build feature is enabled in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+// Queries whether the remote build service is enabled in the cluster acceleration configuration.
 //
 // @param request - DescribeCompactionServiceSwitchRequest
 //
@@ -6174,6 +6190,10 @@ func (client *Client) DescribeCompactionServiceSwitchWithContext(ctx context.Con
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6261,7 +6281,7 @@ func (client *Client) DescribeComputeResourceUsageWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the diagnostic results of the access layer.
+// Retrieves the access layer diagnostic results.
 //
 // @param request - DescribeControllerDetectionRequest
 //
@@ -6507,10 +6527,6 @@ func (client *Client) DescribeDBClusterPerformanceWithContext(ctx context.Contex
 //
 // Queries the SSL configurations of a cluster.
 //
-// Description:
-//
-//	Warning: 目前该功能处于内测阶段，控制台界面展示及API调用接口尚未稳定，可能持续变化。
-//
 // @param request - DescribeDBClusterSSLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6557,11 +6573,11 @@ func (client *Client) DescribeDBClusterSSLWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the storage overview information of an AnalyticDB for MySQL cluster, such as the total data size, hot data size, cold data size, and data growth.
+// Queries the storage overview of an instance, including the total data volume, hot data volume, cold data volume, and data growth.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration endpoint of the current service, see [service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterSpaceSummaryRequest
 //
@@ -6761,7 +6777,7 @@ func (client *Client) DescribeDBClustersWithContext(ctx context.Context, request
 //
 // Description:
 //
-// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [service registration endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBResourceGroupRequest
 //
@@ -7137,11 +7153,11 @@ func (client *Client) DescribeDownloadRecordsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about a scaling plan for an AnalyticDB for MySQL cluster.
+// Queries the details of the elastic plan for a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeElasticPlanAttributeRequest
 //
@@ -7261,11 +7277,11 @@ func (client *Client) DescribeElasticPlanJobsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the resource specifications that are supported by different types of scaling plans of an AnalyticDB for MySQL cluster.
+// Queries the list of specifications supported by different types of elastic plans for a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeElasticPlanSpecificationsRequest
 //
@@ -7437,7 +7453,7 @@ func (client *Client) DescribeEnabledPrivilegesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+// Queries the acceleration configuration of a cluster and the cloud disk cache size in GB.
 //
 // @param request - DescribeEssdCacheConfigRequest
 //
@@ -7454,6 +7470,10 @@ func (client *Client) DescribeEssdCacheConfigWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -7965,11 +7985,11 @@ func (client *Client) DescribeInclinedTablesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves resource usage statistics for jobs.
+// Retrieves job resource usage statistics.
 //
 // Description:
 //
-// For the service registration information of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of the current service, refer to [service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeJobResourceUsageRequest
 //
@@ -8033,7 +8053,7 @@ func (client *Client) DescribeJobResourceUsageWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about the minor version of an AnalyticDB for MySQL cluster.
+// Queries the kernel version information of a specified cluster.
 //
 // @param request - DescribeKernelVersionRequest
 //
@@ -8097,7 +8117,7 @@ func (client *Client) DescribeKernelVersionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the lake cache size of an AnalyticDB for MySQL cluster.
+// Retrieves the size of the lake storage acceleration cache space for a cluster.
 //
 // @param request - DescribeLakeCacheSizeRequest
 //
@@ -8114,6 +8134,10 @@ func (client *Client) DescribeLakeCacheSizeWithContext(ctx context.Context, requ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8225,7 +8249,7 @@ func (client *Client) DescribeMVRecommendResultsWithContext(ctx context.Context,
 
 // Summary:
 //
-// # View subtasks of a materialized view
+// Queries the execution list of subtasks for a materialized view recommendation task.
 //
 // @param request - DescribeMvRecommendSubTasksRequest
 //
@@ -8301,7 +8325,7 @@ func (client *Client) DescribeMvRecommendSubTasksWithContext(ctx context.Context
 
 // Summary:
 //
-// Views recommendation tasks for materialized views.
+// Queries the list of materialized view recommendation tasks.
 //
 // @param request - DescribeMvRecommendTasksRequest
 //
@@ -8429,7 +8453,7 @@ func (client *Client) DescribeOperatorPermissionWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+// Checks non-partitioned tables in a cluster for unreasonable configurations.
 //
 // @param request - DescribeOversizeNonPartitionTableInfosRequest
 //
@@ -8581,7 +8605,7 @@ func (client *Client) DescribePatternPerformanceWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the information about a monitoring view.
+// Queries the details of a monitoring view.
 //
 // @param request - DescribePerformanceViewAttributeRequest
 //
@@ -8979,15 +9003,15 @@ func (client *Client) DescribeResultExportConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// View the list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition cluster for a specified date range.
+// Queries the list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition cluster within a specified time range.
 //
 // Description:
 //
-// - Global public endpoint: `adb.aliyuncs.com`.
+// - Central public endpoint: `adb.aliyuncs.com`.
 //
-// - Regional public endpoint: `adb.<region-id>.aliyuncs.com` (e.g., `adb.cn-hangzhou.aliyuncs.com`).
+// - Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// - Regional VPC endpoint: `adb-vpc.<region-id>.aliyuncs.com` (e.g., `adb-vpc.cn-hangzhou.aliyuncs.com`).
+// - Regional VPC endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSQLPatternsRequest
 //
@@ -9071,7 +9095,7 @@ func (client *Client) DescribeSQLPatternsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the registered WebSocket domain.
+// Queries the registered WebSocket domain names.
 //
 // @param request - DescribeSQLWebSocketDomainRequest
 //
@@ -9419,9 +9443,9 @@ func (client *Client) DescribeSparkAuditLogRecordsWithContext(ctx context.Contex
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - The public endpoint of the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - The VPC endpoint of the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSparkCodeLogRequest
 //
@@ -9589,7 +9613,7 @@ func (client *Client) DescribeSparkCodeWebUiWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the diagnostic information about a Spark SQL query.
+// Queries the diagnostic details of a single Spark SQL query.
 //
 // @param request - DescribeSparkSQLDiagnosisAttributeRequest
 //
@@ -9721,11 +9745,11 @@ func (client *Client) DescribeSparkSQLDiagnosisListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the information about SQL patterns of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
+// Queries the details of SQL patterns for an AnalyticDB for MySQL cluster on a specified date.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeSqlPatternRequest
 //
@@ -10237,7 +10261,7 @@ func (client *Client) DescribeTablePartitionDiagnoseWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the table statistics of an AnalyticDB for MySQL cluster.
+// Queries the table statistics information of a cluster.
 //
 // @param request - DescribeTableStatisticsRequest
 //
@@ -10363,11 +10387,11 @@ func (client *Client) DescribeTablesWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Queries available quotas.
+// Queries the available quotas.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration endpoint of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeUserQuotaRequest
 //
@@ -10655,11 +10679,11 @@ func (client *Client) DisableAdviceServiceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Disables a scaling plan for an AnalyticDB for MySQL cluster.
+// Disables the elastic plan of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DisableElasticPlanRequest
 //
@@ -10867,7 +10891,7 @@ func (client *Client) DownloadInstanceCACertificateWithContext(ctx context.Conte
 
 // Summary:
 //
-// Enables the suggestion feature.
+// Enables the advice service.
 //
 // @param request - EnableAdviceServiceRequest
 //
@@ -10967,7 +10991,7 @@ func (client *Client) EnableElasticPlanWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Executes part of the code in a Spark job.
+// Executes a portion of code in a Spark job.
 //
 // @param request - ExecuteSparkReplStatementRequest
 //
@@ -11024,14 +11048,6 @@ func (client *Client) ExecuteSparkReplStatementWithContext(ctx context.Context, 
 // Summary:
 //
 // Executes Spark SQL statements in batches.
-//
-// Description:
-//
-// - 地域的公网接入地址：`adb.<region-id>.aliyuncs.com`。示例：`adb.cn-hangzhou.aliyuncs.com`。
-//
-// - 地域的VPC接入地址：`adb-vpc.<region-id>.aliyuncs.com`。示例：`adb-vpc.cn-hangzhou.aliyuncs.com`。
-//
-// > 如果华北1（青岛）、华南1（深圳）、华南3（广州）、中国香港发起请求时，遇到409错误，请联系技术支持。
 //
 // @param request - ExecuteSparkWarehouseBatchSQLRequest
 //
@@ -11213,11 +11229,11 @@ func (client *Client) GenerateSqlBySemanticSqlWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the basic permission diagnostic report of the current user for Spark.
+// Retrieves the diagnostic report on basic Spark permissions for the current user.
 //
 // Description:
 //
-// The API diagnostic report contains all the permissions required by the current user for ADB Spark-related features. The scope of the permission check may exceed the minimum requirements of your business. This API is used for quick initialization of the ADB Spark environment. To configure fine-grained permissions, [refer to the ADB Spark fine-grained permission configuration documentation.](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-mysql/user-guide/create-the-aliyunadbsparkprocessingdatarole-role-for-a-ram-user-and-grant-permissions-to-the-role?spm=a2c63.p38356.help-menu-92664.d_2_5_0.48362a487dMzm9#section-y2z-ucd-1ko)
+// The diagnostic report for this API indicates whether the current user has all the permissions required for ADB Spark features. The scope of the checked permissions may exceed the minimum business requirements. This diagnostic report is used for quick environment initialization of ADB Spark. To configure fine-grained permissions, refer to [ADB Spark fine-grained permission configuration documentation](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-mysql/user-guide/create-the-aliyunadbsparkprocessingdatarole-role-for-a-ram-user-and-grant-permissions-to-the-role?spm=a2c63.p38356.help-menu-92664.d_2_5_0.48362a487dMzm9#section-y2z-ucd-1ko).
 //
 // @param request - GetADBSparkNecessaryRAMPermissionsRequest
 //
@@ -11333,13 +11349,13 @@ func (client *Client) GetCreateTableSQLWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information about databases.
+// Queries database information.
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Public endpoint for a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - VPC endpoint for a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetDatabaseObjectsRequest
 //
@@ -11463,7 +11479,7 @@ func (client *Client) GetFormationCrawlerWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Adds a knowledge base document.
+// Adds a document to the knowledge base.
 //
 // @param request - GetKnowledgeRecallRequest
 //
@@ -11537,7 +11553,7 @@ func (client *Client) GetKnowledgeRecallWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries a lake storage.
+// Retrieves the lake storage.
 //
 // @param request - GetLakeStorageRequest
 //
@@ -11831,11 +11847,11 @@ func (client *Client) GetSparkAppInfoWithContext(ctx context.Context, request *G
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - The public endpoint for a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - The VPC endpoint for a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+// > If you encounter a 409 fault when initiating requests from China (Qingdao), China (Shenzhen), China (Guangzhou), or Hong Kong (China), contact technical support.
 //
 // @param request - GetSparkAppLogRequest
 //
@@ -11897,17 +11913,17 @@ func (client *Client) GetSparkAppLogWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the metrics of a Spark application.
+// Retrieves the metric data of a Spark application.
 //
 // Description:
 //
-//	  Before you call this operation, you must call the [PreloadSparkAppMetrics](https://help.aliyun.com/document_detail/612447.html) operation to preload the metrics of a Spark application.
+// - Before invoking this operation, invoke the [PreloadSparkAppMetrics](https://help.aliyun.com/document_detail/612447.html) operation to preload the metric data of the Spark node. Otherwise, the invocation will be failed.
 //
-//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Public endpoint for a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - VPC endpoint for a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+// > If you encounter a 409 fault when initiating requests in China (Qingdao), China (Shenzhen), China (Guangzhou), or Hong Kong (China), contact technical support.
 //
 // @param request - GetSparkAppMetricsRequest
 //
@@ -11961,11 +11977,11 @@ func (client *Client) GetSparkAppMetricsWithContext(ctx context.Context, request
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - The public endpoint for a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - The VPC endpoint for a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+// > If you encounter a 409 fault when initiating requests from China (Qingdao), China (Shenzhen), China (Guangzhou), or Hong Kong (China), contact technical support.
 //
 // @param request - GetSparkAppStateRequest
 //
@@ -12905,9 +12921,9 @@ func (client *Client) GetViewDDLWithContext(ctx context.Context, request *GetVie
 //
 // Description:
 //
-// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+// - Public endpoint for a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+// - VPC endpoint for a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetViewObjectsRequest
 //
@@ -13404,6 +13420,10 @@ func (client *Client) ListKnowledgeTagsWithContext(ctx context.Context, request 
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
 	if !dara.IsNil(request.FileLocation) {
 		query["FileLocation"] = request.FileLocation
 	}
@@ -13450,6 +13470,10 @@ func (client *Client) ListKnowledgeUploadUserWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
 	}
 
 	if !dara.IsNil(request.FileLocation) {
@@ -13909,14 +13933,6 @@ func (client *Client) ListSparkTemplateFileIdsWithContext(ctx context.Context, r
 //
 // Queries a list of Spark SQL statements.
 //
-// Description:
-//
-// - 地域的公网接入地址：`adb.<region-id>.aliyuncs.com`。示例：`adb.cn-hangzhou.aliyuncs.com`。
-//
-// - 地域的VPC接入地址：`adb-vpc.<region-id>.aliyuncs.com`。示例：`adb-vpc.cn-hangzhou.aliyuncs.com`。
-//
-// > 如果华北1（青岛）、华南1（深圳）、华南3（广州）、中国香港发起请求时，遇到409错误，请联系技术支持。
-//
 // @param request - ListSparkWarehouseBatchSQLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14095,11 +14111,11 @@ func (client *Client) LoadSampleDataSetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the description of a database account for a specified cluster.
+// Modifies the description of a database account in a specified cluster.
 //
 // Description:
 //
-// For information about the service registration of the current service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of the current service, refer to [service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -14163,7 +14179,7 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 //
 // Description:
 //
-// For the service registration of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, refer to [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - ModifyAccountPrivilegesRequest
 //
@@ -14359,11 +14375,11 @@ func (client *Client) ModifyApsDatasoureWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Modifies an AnalyticDB Pipeline Service (APS) job.
+// Modifies an APS task.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, refer to [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyApsJobRequest
 //
@@ -14981,23 +14997,23 @@ func (client *Client) ModifyCompactionServiceSwitchWithContext(ctx context.Conte
 
 // Summary:
 //
-// Scales up or scales down a Data Lakehouse Edition cluster.
+// Upgrades or downgrades the specifications of a Data Lakehouse Edition cluster.
 //
 // Description:
 //
-// ### Before you begin
+// ### Precautions
 //
-// - During scaling, `submit job` for submitting asynchronous tasks is disabled. If your business depends on this feature, schedule the scaling operation during an appropriate time window.
+// - During scaling, the `submit job` command for submitting asynchronous tasks is disabled. If your business relies on this feature, execute the scaling operation during off-peak hours based on your business requirements.
 //
-// - Scaling operations redistribute and migrate data. The migration duration is proportional to the data volume, and the service is not interrupted during scaling. When you scale down a cluster from a large specification to a small specification, data migration typically takes several hours or even tens of hours. Exercise caution when you scale down a cluster with a large data volume.
+// - Scaling operations redistribute and migrate data. The migration duration is proportional to the data volume, and services are not interrupted during scaling. When you scale down a cluster from large specifications to small specifications, data migration typically takes several hours or even dozens of hours. Exercise caution when scaling down clusters with large data volumes.
 //
-// - If the cluster has loaded a built-in dataset, make sure that the cluster has at least 24 ACUs of storage reserved resources during scale-down. Otherwise, the built-in dataset cannot be used.
+// - If the cluster has built-in datasets loaded, ensure that the cluster has at least 24 ACUs of reserved storage resources when you scale down the cluster. Otherwise, the built-in datasets become unavailable.
 //
-// - Transient connections may occur near the end of scaling. Scale during off-peak hours, or make sure that your application has an automatic reconnection mechanism.
+// - Transient connections may occur when the scaling operation is about to complete. Execute scaling operations during off-peak hours or ensure that your applications have an automatic reconnection mechanism.
 //
-// - You cannot perform an Upgrade/Downgrade from Data Lakehouse Edition to Data Warehouse Edition. You can perform an Upgrade/Downgrade from Data Warehouse Edition to Data Lakehouse Edition. For details, refer to the documentation about changing Data Warehouse Edition to Data Lakehouse Edition.
+// - You cannot change a Data Lakehouse Edition cluster to a Data Warehouse Edition cluster. You can change a Data Warehouse Edition cluster to a Data Lakehouse Edition cluster. For more information, see Change a Data Warehouse Edition cluster to a Data Lakehouse Edition cluster.
 //
-// - For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// - For the endpoint of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -15034,6 +15050,10 @@ func (client *Client) ModifyDBClusterWithContext(ctx context.Context, request *M
 
 	if !dara.IsNil(request.ProductForm) {
 		query["ProductForm"] = request.ProductForm
+	}
+
+	if !dara.IsNil(request.ProductVersion) {
+		query["ProductVersion"] = request.ProductVersion
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -15245,7 +15265,7 @@ func (client *Client) ModifyDBClusterResourceGroupWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the SSL link configuration of a cluster.
+// Modifies the SSL connection configuration of a cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -15276,6 +15296,10 @@ func (client *Client) ModifyDBClusterSSLWithContext(ctx context.Context, request
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.SSLEnabled) {
+		query["SSLEnabled"] = request.SSLEnabled
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15301,7 +15325,7 @@ func (client *Client) ModifyDBClusterSSLWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
+// Modifies the VIP for cluster access.
 //
 // @param request - ModifyDBClusterVipRequest
 //
@@ -15357,11 +15381,11 @@ func (client *Client) ModifyDBClusterVipWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Changes the resource group of a cluster.
+// Modifies the resource group of a cluster.
 //
 // Description:
 //
-// For the endpoint of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - ModifyDBResourceGroupRequest
 //
@@ -15683,7 +15707,7 @@ func (client *Client) ModifyLakeCacheSizeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies materialized views.
+// Modifies a materialized view.
 //
 // @param request - ModifyMaterializedViewRequest
 //
@@ -16209,7 +16233,7 @@ func (client *Client) PreloadSparkAppMetricsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the list of metadata discovery task instances.
+// Queries a list of metadata discovery task instances.
 //
 // @param request - QueryFormationInstsByTaskIDRequest
 //
@@ -16369,11 +16393,11 @@ func (client *Client) QueryFormationTasksByTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Releases the public endpoint of a specified cluster.
+// Releases the public network connection endpoint of a specified cluster.
 //
 // Description:
 //
-// For the endpoints of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// Refer to [Endpoints](https://help.aliyun.com/document_detail/612373.html) for the service registration endpoint of the current service.
 //
 // @param request - ReleaseClusterPublicConnectionRequest
 //
@@ -16425,7 +16449,7 @@ func (client *Client) ReleaseClusterPublicConnectionWithContext(ctx context.Cont
 
 // Summary:
 //
-// Deletes tags from a knowledge base document.
+// Deletes the tags of a knowledge base document.
 //
 // @param request - RemoveKnowledgeTagsRequest
 //
@@ -16442,6 +16466,10 @@ func (client *Client) RemoveKnowledgeTagsWithContext(ctx context.Context, reques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
 	}
 
 	if !dara.IsNil(request.FileLocation) {
@@ -16477,7 +16505,7 @@ func (client *Client) RemoveKnowledgeTagsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes authorized users from a knowledge base document.
+// Deletes authorized users of a knowledge base document.
 //
 // @param request - RemoveKnowledgeUploadUserRequest
 //
@@ -16494,6 +16522,10 @@ func (client *Client) RemoveKnowledgeUploadUserWithContext(ctx context.Context, 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
 	}
 
 	if !dara.IsNil(request.FileLocation) {
@@ -16649,7 +16681,7 @@ func (client *Client) ReplaceSemanticViewWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// For information about the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration address of the current service, refer to [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -16841,7 +16873,7 @@ func (client *Client) RunMaterializedViewRecommendWithContext(ctx context.Contex
 
 // Summary:
 //
-// Searches for semantic views.
+// Retrieves semantic views.
 //
 // @param request - SearchSemanticViewsRequest
 //
@@ -16893,15 +16925,15 @@ func (client *Client) SearchSemanticViewsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies the Spark log configuration.
+// Modifies the Spark log configuration for a user.
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+// > If you encounter a 409 fault when making requests in the China (Qingdao), China (Shenzhen), China (Guangzhou), or Hong Kong (China) regions, contact technical support.
 //
 // @param request - SetSparkAppLogRootPathRequest
 //
@@ -17401,15 +17433,15 @@ func (client *Client) SubmitSparkAppWithContext(ctx context.Context, request *Su
 
 // Summary:
 //
-// Submits a Spark log analysis task and queries the analysis results.
+// Submits a Spark log analysis task. The server starts the analysis process for the logs of the specified Spark job and returns the analysis results.
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+// - The public endpoint for the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// - The VPC endpoint for the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+// > If you encounter a 409 fault when initiating requests in China (Qingdao), China (Shenzhen), China (Guangzhou), or Hong Kong (China), contact technical support.
 //
 // @param request - SubmitSparkLogAnalyzeTaskRequest
 //

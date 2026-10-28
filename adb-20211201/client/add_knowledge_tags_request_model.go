@@ -11,6 +11,8 @@ type iAddKnowledgeTagsRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *AddKnowledgeTagsRequest
 	GetDBClusterId() *string
+	SetFileId(v string) *AddKnowledgeTagsRequest
+	GetFileId() *string
 	SetFileLocation(v string) *AddKnowledgeTagsRequest
 	GetFileLocation() *string
 	SetTags(v string) *AddKnowledgeTagsRequest
@@ -26,9 +28,11 @@ type AddKnowledgeTagsRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The location of the knowledge base document.
+	// example:
 	//
-	// This parameter is required.
+	// 21321
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The location of the knowledge base document.
 	//
 	// example:
 	//
@@ -54,6 +58,10 @@ func (s *AddKnowledgeTagsRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *AddKnowledgeTagsRequest) GetFileId() *string {
+	return s.FileId
+}
+
 func (s *AddKnowledgeTagsRequest) GetFileLocation() *string {
 	return s.FileLocation
 }
@@ -64,6 +72,11 @@ func (s *AddKnowledgeTagsRequest) GetTags() *string {
 
 func (s *AddKnowledgeTagsRequest) SetDBClusterId(v string) *AddKnowledgeTagsRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *AddKnowledgeTagsRequest) SetFileId(v string) *AddKnowledgeTagsRequest {
+	s.FileId = &v
 	return s
 }
 

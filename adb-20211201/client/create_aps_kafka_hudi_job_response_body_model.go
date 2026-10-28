@@ -24,7 +24,7 @@ type iCreateApsKafkaHudiJobResponseBody interface {
 }
 
 type CreateApsKafkaHudiJobResponseBody struct {
-	// The same as the HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -54,9 +54,11 @@ type CreateApsKafkaHudiJobResponseBody struct {
 	//
 	// 1A943417-5B0E-1DB9-A8**-A566****C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// True: The request was successful. False: The request failed.
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
 	//
 	// example:
 	//

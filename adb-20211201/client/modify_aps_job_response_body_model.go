@@ -28,13 +28,13 @@ type iModifyApsJobResponseBody interface {
 }
 
 type ModifyApsJobResponseBody struct {
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// aps-bj1xxxxxx
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
-	// The status code. A value of 200 indicates that the request is successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -46,23 +46,23 @@ type ModifyApsJobResponseBody struct {
 	//
 	// Success
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
 	// OK
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The status code. A value of 200 indicates that the request was successful.
+	// The HTTP status code returned. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The message about the call result. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.****
+	// - **Success**: The request is normal.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - Specific error message: The request is abnormal.
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type ModifyApsJobResponseBody struct {
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//

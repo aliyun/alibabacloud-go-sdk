@@ -26,7 +26,7 @@ type iCreateApsDatasoureResponseBody interface {
 }
 
 type CreateApsDatasoureResponseBody struct {
-	// The API status or POP error code.
+	// The API status code or POP error code.
 	//
 	// example:
 	//
@@ -38,23 +38,23 @@ type CreateApsDatasoureResponseBody struct {
 	//
 	// amv-7xxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The detailed resource usage of the cluster.
+	// The detailed usage of cluster resources.
 	//
 	// example:
 	//
 	// 69
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned. A value of 200 indicates that the request was successful.
+	// The HTTP status code returned by the request. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The additional information of the call result. Valid values:
+	// The additional information about the call result. Valid values:
 	//
-	// - If the request was successful, **Success*	- is returned.
+	// - If the request is normal, **Success*	- is returned.
 	//
-	// - If the request failed, a specific error code is returned.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//

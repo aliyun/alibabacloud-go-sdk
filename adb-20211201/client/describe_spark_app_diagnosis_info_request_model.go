@@ -50,7 +50,7 @@ type DescribeSparkAppDiagnosisInfoRequest struct {
 	//
 	// example:
 	//
-	// zh
+	// PYTHON
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The region ID.
 	//

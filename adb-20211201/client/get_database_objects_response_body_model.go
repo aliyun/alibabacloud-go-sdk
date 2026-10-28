@@ -24,7 +24,7 @@ type iGetDatabaseObjectsResponseBody interface {
 type GetDatabaseObjectsResponseBody struct {
 	// The returned data.
 	Data *GetDatabaseObjectsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value is a positive integer. Default value: **1**.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type GetDatabaseObjectsResponseBody struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetDatabaseObjectsResponseBody struct {
 	//
 	// 863D51B7-5321-41D8-A0B6-A088B0******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -119,9 +119,9 @@ func (s *GetDatabaseObjectsResponseBody) Validate() error {
 }
 
 type GetDatabaseObjectsResponseBodyData struct {
-	// The queried databases.
+	// The result array.
 	DatabaseSummaryModels []*DatabaseSummaryModel `json:"DatabaseSummaryModels,omitempty" xml:"DatabaseSummaryModels,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value must be greater than 0 and no greater than the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -129,11 +129,11 @@ type GetDatabaseObjectsResponseBodyData struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- 30
+	// - 30
 	//
-	// 	- 50
+	// - 50
 	//
-	// 	- 100
+	// - 100
 	//
 	// Default value: 30.
 	//
@@ -141,7 +141,7 @@ type GetDatabaseObjectsResponseBodyData struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

@@ -11,6 +11,8 @@ type iRemoveKnowledgeTagsRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *RemoveKnowledgeTagsRequest
 	GetDBClusterId() *string
+	SetFileId(v string) *RemoveKnowledgeTagsRequest
+	GetFileId() *string
 	SetFileLocation(v string) *RemoveKnowledgeTagsRequest
 	GetFileLocation() *string
 	SetTags(v string) *RemoveKnowledgeTagsRequest
@@ -26,15 +28,19 @@ type RemoveKnowledgeTagsRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The location of the knowledge base document.
+	// The file ID.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// 2131234
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The knowledge base document location.
 	//
 	// example:
 	//
 	// oss://bucket/doc.pdf
 	FileLocation *string `json:"FileLocation,omitempty" xml:"FileLocation,omitempty"`
-	// The JSON string of the tag array to delete.
+	// The JSON string of the tag array to be deleted.
 	//
 	// example:
 	//
@@ -54,6 +60,10 @@ func (s *RemoveKnowledgeTagsRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *RemoveKnowledgeTagsRequest) GetFileId() *string {
+	return s.FileId
+}
+
 func (s *RemoveKnowledgeTagsRequest) GetFileLocation() *string {
 	return s.FileLocation
 }
@@ -64,6 +74,11 @@ func (s *RemoveKnowledgeTagsRequest) GetTags() *string {
 
 func (s *RemoveKnowledgeTagsRequest) SetDBClusterId(v string) *RemoveKnowledgeTagsRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *RemoveKnowledgeTagsRequest) SetFileId(v string) *RemoveKnowledgeTagsRequest {
+	s.FileId = &v
 	return s
 }
 

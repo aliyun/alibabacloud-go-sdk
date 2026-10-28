@@ -18,7 +18,7 @@ type iDescribeJobResourceUsageResponseBody interface {
 }
 
 type DescribeJobResourceUsageResponseBody struct {
-	// The API status or POP error code.
+	// The API status code or POP error code.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type DescribeJobResourceUsageResponseBodyData struct {
 	//
 	// amv-clusterxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time. Format: yyyy-MM-ddTHH:mmZ (UTC).
+	// The end time. Format: yyyy-MM-ddTHH:mmZ (UTC time).
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type DescribeJobResourceUsageResponseBodyData struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time. Format: yyyy-MM-ddTHH:mmZ (UTC).
+	// The start time. Format: yyyy-MM-ddTHH:mmZ (UTC time).
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ func (s *DescribeJobResourceUsageResponseBodyData) Validate() error {
 type DescribeJobResourceUsageResponseBodyDataJobAcuUsage struct {
 	// The ACU resource usage details.
 	AcuUsageDetail *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail `json:"AcuUsageDetail,omitempty" xml:"AcuUsageDetail,omitempty" type:"Struct"`
-	// The end time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC).
+	// The end time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC time).
 	//
 	// example:
 	//
@@ -220,7 +220,7 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsage struct {
 	//
 	// 1592
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The start time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC).
+	// The start time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC time).
 	//
 	// example:
 	//
@@ -232,8 +232,13 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsage struct {
 	//
 	// job_default
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	SparkAppName      *string `json:"SparkAppName,omitempty" xml:"SparkAppName,omitempty"`
-	// Indicates whether the hot pool is used.
+	// The name of the Spark application.
+	//
+	// example:
+	//
+	// SparkTest
+	SparkAppName *string `json:"SparkAppName,omitempty" xml:"SparkAppName,omitempty"`
+	// Indicates whether the cache pool is used.
 	//
 	// example:
 	//
@@ -322,19 +327,19 @@ func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) Validate() error {
 }
 
 type DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail struct {
-	// The number of elastic ACU resources.
+	// The number of elastic ACUs.
 	//
 	// example:
 	//
 	// 16ACU
 	ElasticAcuNumber *float32 `json:"ElasticAcuNumber,omitempty" xml:"ElasticAcuNumber,omitempty"`
-	// The number of reserved ACU resources.
+	// The number of reserved ACUs.
 	//
 	// example:
 	//
 	// 16ACU
 	ReservedAcuNumber *float32 `json:"ReservedAcuNumber,omitempty" xml:"ReservedAcuNumber,omitempty"`
-	// The number of spot instance ACU resources.
+	// The number of spot instance ACUs.
 	//
 	// example:
 	//
@@ -346,7 +351,7 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail struct {
 	//
 	// 0.9
 	SpotAcuPercentage *float32 `json:"SpotAcuPercentage,omitempty" xml:"SpotAcuPercentage,omitempty"`
-	// The total number of ACU resources.
+	// The total number of ACUs.
 	//
 	// example:
 	//

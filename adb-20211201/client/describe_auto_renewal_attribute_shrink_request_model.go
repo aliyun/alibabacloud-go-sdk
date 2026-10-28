@@ -30,23 +30,23 @@ type iDescribeAutoRenewalAttributeShrinkRequest interface {
 }
 
 type DescribeAutoRenewalAttributeShrinkRequest struct {
-	// The cluster IDs.
+	// The list of cluster IDs.
 	DBClusterIdShrink *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. A positive integer greater than 0 and not exceeding the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30**(Default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//

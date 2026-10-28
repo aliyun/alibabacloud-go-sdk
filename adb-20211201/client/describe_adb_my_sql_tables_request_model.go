@@ -20,8 +20,14 @@ type iDescribeAdbMySqlTablesRequest interface {
 }
 
 type DescribeAdbMySqlTablesRequest struct {
+	// The name of the external data source.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// oss
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
 	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
@@ -35,7 +41,7 @@ type DescribeAdbMySqlTablesRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of the specified cluster.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +49,7 @@ type DescribeAdbMySqlTablesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// if can be null:
 	// false

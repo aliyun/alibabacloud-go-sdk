@@ -11,6 +11,8 @@ type iDeleteKnowledgeFileRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *DeleteKnowledgeFileRequest
 	GetDBClusterId() *string
+	SetFileId(v string) *DeleteKnowledgeFileRequest
+	GetFileId() *string
 	SetFileLocation(v string) *DeleteKnowledgeFileRequest
 	GetFileLocation() *string
 }
@@ -24,9 +26,13 @@ type DeleteKnowledgeFileRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The location of the knowledge base document.
+	// The ID of the file.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// 2131213
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The path of the knowledge base document.
 	//
 	// example:
 	//
@@ -46,12 +52,21 @@ func (s *DeleteKnowledgeFileRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *DeleteKnowledgeFileRequest) GetFileId() *string {
+	return s.FileId
+}
+
 func (s *DeleteKnowledgeFileRequest) GetFileLocation() *string {
 	return s.FileLocation
 }
 
 func (s *DeleteKnowledgeFileRequest) SetDBClusterId(v string) *DeleteKnowledgeFileRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeleteKnowledgeFileRequest) SetFileId(v string) *DeleteKnowledgeFileRequest {
+	s.FileId = &v
 	return s
 }
 

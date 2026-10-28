@@ -70,9 +70,9 @@ type iCreateApsKafkaHudiJobShrinkRequest interface {
 }
 
 type CreateApsKafkaHudiJobShrinkRequest struct {
-	// The RAM role of a trusted entity that is an Alibaba Cloud account. For more information about how to create a RAM role, see Create a RAM role for a trusted Alibaba Cloud account.
+	// The RAM role whose trusted entity is an Alibaba Cloud account. For more information about how to create a RAM role, see Create a RAM role for a trusted Alibaba Cloud account.
 	//
-	// The Alibaba Cloud account that owns the AnalyticDB for MySQL cluster must be added as a trusted account to the RAM role.
+	// In the RAM role, the Alibaba Cloud account to which AnalyticDB for MySQL belongs must be configured as a trusted account for the Alibaba Cloud account to which the Kafka instance belongs.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	//
 	// 123************
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
-	// The advanced configuration.
+	// The advanced configurations.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	ColumnsShrink *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
 	// The cluster ID.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the cluster IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters in the destination region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in the specified region.
 	//
 	// This parameter is required.
 	//
@@ -110,11 +110,11 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	//
 	// json
 	DataFormatType *string `json:"DataFormatType,omitempty" xml:"DataFormatType,omitempty"`
-	// The valid values and their descriptions are as follows:
+	// The data output format. Valid values:
 	//
-	// Single: The source is a single-line JSON record.
+	// - Single: The source is a single-line JSON record.
 	//
-	// Multi: The source is a JSON array. A single JSON record is returned as the output.
+	// - Multi: The source is a JSON array. A single JSON record must be output.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The user-defined name of the database.
+	// The custom database name.
 	//
 	// This parameter is required.
 	//
@@ -134,19 +134,19 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	//
 	// testDB
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The configuration for full synchronization.
+	// The full synchronization configurations.
 	//
 	// example:
 	//
 	// 2ACU
 	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
-	// The Hudi configuration for the destination.
+	// The destination Hudi configurations.
 	//
 	// example:
 	//
 	// hoodie.keep.min.commits=20
 	HudiAdvancedConfig *string `json:"HudiAdvancedConfig,omitempty" xml:"HudiAdvancedConfig,omitempty"`
-	// The configuration for incremental synchronization.
+	// The incremental synchronization configurations.
 	//
 	// This parameter is required.
 	//
@@ -154,31 +154,31 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	//
 	// 2ACU
 	IncrementalComputeUnit *string `json:"IncrementalComputeUnit,omitempty" xml:"IncrementalComputeUnit,omitempty"`
-	// The number of nested JSON layers to parse. Valid values:
+	// The nesting parse level for JSON. Valid values:
 	//
-	// 0: No parsing is performed.
+	// - 0: No parsing.
 	//
-	// 1: One layer is parsed.
+	// - 1: Parse one level.
 	//
-	// 2: Two layers are parsed.
+	// - 2: Parse two levels.
 	//
-	// 3: Three layers are parsed.
+	// - 3: Parse three levels.
 	//
-	// 4: Four layers are parsed.
+	// - 4: Parse four levels.
 	//
-	// By default, one layer is parsed. For more information about the JSON parsing policy for nested data, see JSON parsing levels and schema field inference examples.
+	// Default value: 1. For more information about the JSON nesting parse strategy, see JSON parse levels and schema field inference examples.
 	//
 	// example:
 	//
 	// 0
 	JsonParseLevel *int32 `json:"JsonParseLevel,omitempty" xml:"JsonParseLevel,omitempty"`
-	// The ID of the Kafka instance. Obtain the ID from the Kafka console.
+	// Instance ID of the Kafka instance. You can obtain instance ID in the Kafka console.
 	//
 	// example:
 	//
 	// xxx
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
-	// The ID of the Kafka topic. Obtain the ID from the Kafka console.
+	// The ID of the Kafka topic. You can obtain the ID in the Kafka console.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	//
 	// 123
 	LakehouseId *int64 `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty"`
-	// The number of entries to consume in a single batch.
+	// The maximum number of messages to consume per trigger.
 	//
 	// example:
 	//
 	// 50000
 	MaxOffsetsPerTrigger *int64 `json:"MaxOffsetsPerTrigger,omitempty" xml:"MaxOffsetsPerTrigger,omitempty"`
-	// The destination lakehouse address. This must be a complete OSS path.
+	// The destination lakehouse address, which is a complete OSS path.
 	//
 	// example:
 	//
@@ -213,25 +213,25 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	// if can be null:
 	// true
 	PartitionSpecsShrink *string `json:"PartitionSpecs,omitempty" xml:"PartitionSpecs,omitempty"`
-	// The primary key settings. This parameter supports the UUID policy and the mapping policy. The policies are described as follows.
+	// The primary key settings, including the UUID strategy and the mapping strategy. Details:
 	//
-	// UUID policy: "Strategy": "uuid".
+	// UUID strategy: "Strategy": "uuid".
 	//
-	// Mapping policy:
+	// Mapping strategy:
 	//
 	// "Strategy": "mapping",
 	//
 	// "Values":[
 	//
-	// "f1",
+	//  "f1",
 	//
-	// "f2"
+	//  "f2"
 	//
 	// ],
 	//
 	// "RecordVersionField","xxx"
 	//
-	// \\`RecordVersionField\\` specifies the Hudi record version.
+	// RecordVersionField specifies the Hudi record version.
 	//
 	// example:
 	//
@@ -259,13 +259,13 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	//
 	// cn-hangzhou
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	// The initial consumer offset for Kafka.
+	// The starting consumption offset for Kafka. Valid values:
 	//
-	// Valid values:
+	// - begin_cursor: The earliest offset.
 	//
-	// begin_cursor, end_cursor, and timestamp.
+	// - end_cursor: The latest offset.
 	//
-	// These values correspond to the earliest offset, the latest offset, and a specified time.
+	// - timestamp: A specified time.
 	//
 	// This parameter is required.
 	//
@@ -273,7 +273,7 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	//
 	// begincursor
 	StartingOffsets *string `json:"StartingOffsets,omitempty" xml:"StartingOffsets,omitempty"`
-	// The user-defined name of the table.
+	// The custom table name.
 	//
 	// This parameter is required.
 	//
@@ -281,13 +281,13 @@ type CreateApsKafkaHudiJobShrinkRequest struct {
 	//
 	// testTB
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The generation rule for the destination.
+	// The destination generation rule.
 	//
 	// example:
 	//
 	// xxx
 	TargetGenerateRule *string `json:"TargetGenerateRule,omitempty" xml:"TargetGenerateRule,omitempty"`
-	// The type of the destination.
+	// The destination type.
 	//
 	// example:
 	//

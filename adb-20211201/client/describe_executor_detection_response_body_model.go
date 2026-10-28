@@ -104,7 +104,7 @@ type DescribeExecutorDetectionResponseBodyDetectionItems struct {
 	//
 	// example:
 	//
-	// 检测到Aggregation算子消耗内存资源较多
+	// Large amounts of memory resources are used by the Aggregation operator.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The name of the detection item.
 	//
@@ -449,7 +449,7 @@ type DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSe
 	//
 	// example:
 	//
-	// Group By字段：uid
+	// GROUP BY field: uid
 	OperatorInfo *string `json:"OperatorInfo,omitempty" xml:"OperatorInfo,omitempty"`
 	// The name of the operator.
 	//

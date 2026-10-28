@@ -11,6 +11,8 @@ type iAddKnowledgeUploadUserRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *AddKnowledgeUploadUserRequest
 	GetDBClusterId() *string
+	SetFileId(v string) *AddKnowledgeUploadUserRequest
+	GetFileId() *string
 	SetFileLocation(v string) *AddKnowledgeUploadUserRequest
 	GetFileLocation() *string
 	SetUsers(v string) *AddKnowledgeUploadUserRequest
@@ -26,15 +28,19 @@ type AddKnowledgeUploadUserRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The location of the knowledge base document.
+	// The ID of the file.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// 3214123
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The path of the knowledge base document.
 	//
 	// example:
 	//
 	// oss://bucketName/path/to/file.pdf
 	FileLocation *string `json:"FileLocation,omitempty" xml:"FileLocation,omitempty"`
-	// The JSON string of the authorized user array.
+	// The JSON string of the authorized users array.
 	//
 	// This parameter is required.
 	//
@@ -56,6 +62,10 @@ func (s *AddKnowledgeUploadUserRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *AddKnowledgeUploadUserRequest) GetFileId() *string {
+	return s.FileId
+}
+
 func (s *AddKnowledgeUploadUserRequest) GetFileLocation() *string {
 	return s.FileLocation
 }
@@ -66,6 +76,11 @@ func (s *AddKnowledgeUploadUserRequest) GetUsers() *string {
 
 func (s *AddKnowledgeUploadUserRequest) SetDBClusterId(v string) *AddKnowledgeUploadUserRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *AddKnowledgeUploadUserRequest) SetFileId(v string) *AddKnowledgeUploadUserRequest {
+	s.FileId = &v
 	return s
 }
 

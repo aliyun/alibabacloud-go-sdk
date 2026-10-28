@@ -20,7 +20,7 @@ type iModifyDBClusterVipRequest interface {
 }
 
 type ModifyDBClusterVipRequest struct {
-	// The endpoint of the cluster.
+	// The connection string.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type ModifyDBClusterVipRequest struct {
 	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster ID of an AnalyticDB for MySQL Data Lakehouse Edition cluster in a specific region.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,7 @@ type ModifyDBClusterVipRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The VPC ID.
 	//
-	// >
-	//
-	// 	- The new **VPC*	- must reside in the same region as the cluster.
+	// > - The **VPC*	- must be in the same region as the cluster.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +48,7 @@ type ModifyDBClusterVipRequest struct {
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID.
 	//
-	// >
-	//
-	// 	- The new vSwitch must reside in the same zone as the cluster.
+	// > - The new vSwitch must be in the same zone as the cluster.
 	//
 	// This parameter is required.
 	//

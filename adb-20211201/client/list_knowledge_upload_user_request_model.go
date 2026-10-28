@@ -11,12 +11,14 @@ type iListKnowledgeUploadUserRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *ListKnowledgeUploadUserRequest
 	GetDBClusterId() *string
+	SetFileId(v string) *ListKnowledgeUploadUserRequest
+	GetFileId() *string
 	SetFileLocation(v string) *ListKnowledgeUploadUserRequest
 	GetFileLocation() *string
 }
 
 type ListKnowledgeUploadUserRequest struct {
-	// The ADB instance ID.
+	// The ID of the ADB instance.
 	//
 	// This parameter is required.
 	//
@@ -24,9 +26,13 @@ type ListKnowledgeUploadUserRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The location of the knowledge base document.
+	// The file ID.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// 213141
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The address of the knowledge base document.
 	//
 	// example:
 	//
@@ -46,12 +52,21 @@ func (s *ListKnowledgeUploadUserRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *ListKnowledgeUploadUserRequest) GetFileId() *string {
+	return s.FileId
+}
+
 func (s *ListKnowledgeUploadUserRequest) GetFileLocation() *string {
 	return s.FileLocation
 }
 
 func (s *ListKnowledgeUploadUserRequest) SetDBClusterId(v string) *ListKnowledgeUploadUserRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListKnowledgeUploadUserRequest) SetFileId(v string) *ListKnowledgeUploadUserRequest {
+	s.FileId = &v
 	return s
 }
 

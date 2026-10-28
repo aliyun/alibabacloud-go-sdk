@@ -34,7 +34,7 @@ type BindDBResourceGroupWithUserRequest struct {
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The name of the database account. It can be a standard account or a privileged account.
+	// The database account to be associated. You can associate a standard database account or a privileged database account.
 	//
 	// This parameter is required.
 	//

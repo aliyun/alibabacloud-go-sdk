@@ -11,6 +11,8 @@ type iRemoveKnowledgeUploadUserRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *RemoveKnowledgeUploadUserRequest
 	GetDBClusterId() *string
+	SetFileId(v string) *RemoveKnowledgeUploadUserRequest
+	GetFileId() *string
 	SetFileLocation(v string) *RemoveKnowledgeUploadUserRequest
 	GetFileLocation() *string
 	SetUsers(v string) *RemoveKnowledgeUploadUserRequest
@@ -26,9 +28,13 @@ type RemoveKnowledgeUploadUserRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The location of the knowledge base document.
+	// The file ID.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// 2134143
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The address of the knowledge base document.
 	//
 	// example:
 	//
@@ -56,6 +62,10 @@ func (s *RemoveKnowledgeUploadUserRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *RemoveKnowledgeUploadUserRequest) GetFileId() *string {
+	return s.FileId
+}
+
 func (s *RemoveKnowledgeUploadUserRequest) GetFileLocation() *string {
 	return s.FileLocation
 }
@@ -66,6 +76,11 @@ func (s *RemoveKnowledgeUploadUserRequest) GetUsers() *string {
 
 func (s *RemoveKnowledgeUploadUserRequest) SetDBClusterId(v string) *RemoveKnowledgeUploadUserRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *RemoveKnowledgeUploadUserRequest) SetFileId(v string) *RemoveKnowledgeUploadUserRequest {
+	s.FileId = &v
 	return s
 }
 

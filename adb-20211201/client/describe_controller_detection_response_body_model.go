@@ -26,7 +26,7 @@ type DescribeControllerDetectionResponseBody struct {
 	//
 	// amv-xxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The queried detection items and detection results.
+	// The list of detection items and results.
 	DetectionItems []*DescribeControllerDetectionResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -100,7 +100,7 @@ func (s *DescribeControllerDetectionResponseBody) Validate() error {
 }
 
 type DescribeControllerDetectionResponseBodyDetectionItems struct {
-	// The information about the detection result.
+	// The detection result message.
 	//
 	// example:
 	//
@@ -110,15 +110,15 @@ type DescribeControllerDetectionResponseBodyDetectionItems struct {
 	//
 	// example:
 	//
-	// CPU增高检测
+	// CPU usage spike detection
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The severity level of the detection result. Valid values:
+	// The status of the detection result. Valid values:
 	//
-	// 	- NORMAL
+	// - NORMAL
 	//
-	// 	- WARNING
+	// - WARNING
 	//
-	// 	- CRITICAL
+	// - CRITICAL
 	//
 	// example:
 	//

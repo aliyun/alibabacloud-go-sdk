@@ -22,7 +22,7 @@ type iDescribeElasticPlanSpecificationsResponseBody interface {
 }
 
 type DescribeElasticPlanSpecificationsResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -34,15 +34,15 @@ type DescribeElasticPlanSpecificationsResponseBody struct {
 	//
 	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// A5C433C2-001F-58E3-99F5-3274C14DF8BD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried resource specifications.
+	// The list of supported specifications.
 	Specifications []*string `json:"Specifications,omitempty" xml:"Specifications,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of specifications.
 	//
 	// example:
 	//

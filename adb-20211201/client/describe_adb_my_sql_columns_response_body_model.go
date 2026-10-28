@@ -36,27 +36,27 @@ type DescribeAdbMySqlColumnsResponseBody struct {
 	Columns []*DescribeAdbMySqlColumnsResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	// The additional information about the call result. Valid values:
 	//
-	// - If the request was successful, **Success*	- is returned.
+	// - If the request is successful, **Success*	- is returned.
 	//
-	// - If the request failed, a specific error code is returned.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// A9F013CD-0222-595E-8157-445969B97F03
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// adb_demo
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
 	// - **true**: The call was successful.
 	//
@@ -66,7 +66,7 @@ type DescribeAdbMySqlColumnsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The table name.
+	// The name of the table.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type DescribeAdbMySqlColumnsResponseBodyColumns struct {
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The column name.
+	// The name of the column.
 	//
 	// example:
 	//

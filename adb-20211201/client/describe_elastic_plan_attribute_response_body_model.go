@@ -16,9 +16,9 @@ type iDescribeElasticPlanAttributeResponseBody interface {
 }
 
 type DescribeElasticPlanAttributeResponseBody struct {
-	// The queried scaling plan.
+	// The elastic plan.
 	ElasticPlan *DescribeElasticPlanAttributeResponseBodyElasticPlan `json:"ElasticPlan,omitempty" xml:"ElasticPlan,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,61 +62,67 @@ func (s *DescribeElasticPlanAttributeResponseBody) Validate() error {
 }
 
 type DescribeElasticPlanAttributeResponseBodyElasticPlan struct {
-	// Indicates whether **Default Proportional Scaling for EIUs*	- is enabled. Valid values: true: Default Proportional Scaling for EIUs is enabled. If you set this parameter to true, storage resources are scaled along with computing resources. false: Default Proportional Scaling for EIUs is not enabled.
+	// Indicates whether **proportional default elastic scaling for the storage acceleration service (EIU)*	- is enabled.
 	//
-	// >  You can enable Default Proportional Scaling for EIUs for only a single scaling plan of a cluster. After you enable a scaling plan of the Default Proportional Scaling for EIUs type, you cannot enable scaling plans of other types.
+	// Valid values:
+	//
+	// - true: Enabled. After this feature is enabled, storage resources scale in or out along with the elastic scaling of compute resources.
+	//
+	// - false: Disabled.
+	//
+	// > Only one storage elastic plan with proportional default elastic scaling for the storage acceleration service (EIU) can be enabled for the entire cluster. After this type of elastic plan is enabled, no other storage elastic plans can be enabled.
 	//
 	// example:
 	//
 	// false
 	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	// A CORN expression that indicates the scaling cycle and time for the scaling plan.
+	// The cron expression, which indicates the scaling cycle and scaling time of the elastic plan.
 	//
 	// example:
 	//
 	// 0 20 14 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The name of the scaling plan.
+	// The name of the elastic plan.
 	//
 	// example:
 	//
 	// test
 	ElasticPlanName *string `json:"ElasticPlanName,omitempty" xml:"ElasticPlanName,omitempty"`
-	// Indicates whether the scaling plan is enabled.
+	// Indicates whether the elastic plan is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The end time of the scaling plan.
+	// The end time.
 	//
-	// >  The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	// > The time is in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2025-01-01T12:01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the resource group used by the scaling plan.
+	// The name of the resource group to which the elastic plan belongs.
 	//
 	// example:
 	//
 	// test
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// The start time of the scaling plan.
+	// The start time.
 	//
-	// >  The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	// > The time is in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-01-01T12:01:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The amount of elastic resources after scaling.
+	// The target specifications.
 	//
 	// example:
 	//
 	// 32ACU
 	TargetSize *string `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
-	// The type of the scaling plan.
+	// The type of the elastic plan.
 	//
 	// example:
 	//

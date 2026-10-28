@@ -34,11 +34,11 @@ type iCreateAccountRequest interface {
 }
 
 type CreateAccountRequest struct {
-	// The description of the account.
+	// The description of the account. The description must meet the following requirements:
 	//
-	// - Cannot start with `http://` or `https://`.
+	// - It cannot start with `http://` or `https://`.
 	//
-	// - Cannot exceed 256 characters in length.
+	// - It can be up to 256 characters in length.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type CreateAccountRequest struct {
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account. The name must meet the following requirements:
 	//
-	// - Starts with a lowercase letter and ends with a lowercase letter or digit.
+	// - It must start with a lowercase letter and end with a lowercase letter or a digit.
 	//
-	// - Contains only lowercase letters, digits, or underscores (_).
+	// - It can contain only lowercase letters, digits, and underscores (_).
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type CreateAccountRequest struct {
 	//
 	// test_accout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the database account.
+	// The password of the database account. The password must meet the following requirements:
 	//
-	// - Must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// - Special characters include: `!@#$%^&*()_+-=`
 	//
-	// - Must be 8 to 32 characters in length.
+	// - It must be 8 to 32 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -94,20 +94,32 @@ type CreateAccountRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The database engine. Valid values:
 	//
-	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	// - **AnalyticDB*	- (default): AnalyticDB for MySQL engine.
 	//
-	// - **Clickhouse**: the wide table engine.
+	// - **Clickhouse**: wide table engine.
 	//
 	// example:
 	//
 	// Clickhouse
-	Engine                     *string   `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	PromqlInsertPrivileges     []*string `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty" type:"Repeated"`
-	PromqlSelectNodePercentage *float64  `json:"PromqlSelectNodePercentage,omitempty" xml:"PromqlSelectNodePercentage,omitempty"`
-	PromqlSelectPrivileges     []*string `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty" type:"Repeated"`
-	// The list of Alibaba Cloud RAM user IDs to bind. Currently, only one RAM user can be bound.
-	RamUserList       []*string `json:"RamUserList,omitempty" xml:"RamUserList,omitempty" type:"Repeated"`
-	ResourceGroupName *string   `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The list of PromQL write permissions.
+	PromqlInsertPrivileges []*string `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty" type:"Repeated"`
+	// The percentage of PromQL query nodes.
+	//
+	// example:
+	//
+	// 0.6
+	PromqlSelectNodePercentage *float64 `json:"PromqlSelectNodePercentage,omitempty" xml:"PromqlSelectNodePercentage,omitempty"`
+	// The list of PromQL query permissions.
+	PromqlSelectPrivileges []*string `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty" type:"Repeated"`
+	// The IDs of the Alibaba Cloud Resource Access Management (RAM) users to bind. Currently, only one RAM user can be bound.
+	RamUserList []*string `json:"RamUserList,omitempty" xml:"RamUserList,omitempty" type:"Repeated"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// test_group
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
 func (s CreateAccountRequest) String() string {

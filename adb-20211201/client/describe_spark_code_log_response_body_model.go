@@ -20,33 +20,33 @@ type iDescribeSparkCodeLogResponseBody interface {
 }
 
 type DescribeSparkCodeLogResponseBody struct {
-	// The content of the log.
+	// The log content.
 	//
 	// example:
 	//
 	// >>>>>>>> stdout:n++++++++++++++++++executing sql: MSCK REPAIR TABLE  `footprint_ethereum`.`dwd_eth_eth_txr_v2_di` n++n
 	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
-	// The returned message.
+	// The additional information about the call result. Valid values:
 	//
-	// 	- If the request was successful, **Success*	- is returned.
+	// - If the request succeeds, **Success*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If an exception occurs, the specific error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1CD65640-9963-5D60-929C-118F2C84070E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

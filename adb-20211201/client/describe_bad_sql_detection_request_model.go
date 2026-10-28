@@ -32,7 +32,7 @@ type iDescribeBadSqlDetectionRequest interface {
 type DescribeBadSqlDetectionRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL clusters in a specific region, including the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -40,17 +40,17 @@ type DescribeBadSqlDetectionRequest struct {
 	//
 	// amv-xxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	// The end time of the query, which must be later than the start time. Format: <i>yyyy-MM-ddTHH:mmZ</i> (UTC time).
 	//
 	// example:
 	//
 	// 2024-11-17T02:16Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language. Valid values:
+	// The language configuration. Valid values:
 	//
-	// 	- **zh**: simplified Chinese.
+	// - **zh**: Simplified Chinese (default).
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeBadSqlDetectionRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type DescribeBadSqlDetectionRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	// The start time of the query. Format: <i>yyyy-MM-ddTHH:mmZ</i> (UTC time).
 	//
 	// example:
 	//

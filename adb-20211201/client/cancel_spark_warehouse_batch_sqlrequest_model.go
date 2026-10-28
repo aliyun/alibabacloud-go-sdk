@@ -18,7 +18,7 @@ type iCancelSparkWarehouseBatchSQLRequest interface {
 }
 
 type CancelSparkWarehouseBatchSQLRequest struct {
-	// The client name for auxiliary recording. The value is a meaningful string of up to 16 characters.
+	// The client name used for logging purposes. The value is a meaningful string up to 16 characters in length.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CancelSparkWarehouseBatchSQLRequest struct {
 	//
 	// amv-uf6485635f***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The execution ID of the Spark SQL.
+	// The execution ID of the Spark SQL statement.
 	//
 	// This parameter is required.
 	//

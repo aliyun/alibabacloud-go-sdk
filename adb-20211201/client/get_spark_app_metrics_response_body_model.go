@@ -18,7 +18,7 @@ type iGetSparkAppMetricsResponseBody interface {
 type GetSparkAppMetricsResponseBody struct {
 	// The returned data.
 	Data *GetSparkAppMetricsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *GetSparkAppMetricsResponseBody) Validate() error {
 }
 
 type GetSparkAppMetricsResponseBodyData struct {
-	// The ID of the Spark application.
+	// The application ID.
 	//
 	// example:
 	//
 	// s202302051515shfa865f8000****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The attempt ID of the Spark application.
+	// The retry ID of the Spark application.
 	//
 	// example:
 	//
@@ -80,17 +80,17 @@ type GetSparkAppMetricsResponseBodyData struct {
 	//
 	// oss://path/to/eventLog
 	EventLogPath *string `json:"EventLogPath,omitempty" xml:"EventLogPath,omitempty"`
-	// Indicates whether parsing is complete. Valid values:
+	// Indicates whether the parsing is completed. Valid values:
 	//
-	// 	- true
+	// - **true**: Completed.
 	//
-	// 	- false
+	// - **false**: Not completed.
 	//
 	// example:
 	//
 	// True
 	Finished *bool `json:"Finished,omitempty" xml:"Finished,omitempty"`
-	// The metrics.
+	// The metric data.
 	ScanMetrics *GetSparkAppMetricsResponseBodyDataScanMetrics `json:"ScanMetrics,omitempty" xml:"ScanMetrics,omitempty" type:"Struct"`
 }
 
@@ -163,7 +163,7 @@ type GetSparkAppMetricsResponseBodyDataScanMetrics struct {
 	//
 	// 1000
 	OutputRowsCount *int64 `json:"OutputRowsCount,omitempty" xml:"OutputRowsCount,omitempty"`
-	// The number of scanned bytes.
+	// The size of the scanned data in bytes.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iDescribeAccountsRequest interface {
 type DescribeAccountsRequest struct {
 	// The database account.
 	//
-	// > If you do not specify this parameter, information about all database accounts is returned.
+	// > If you do not specify this parameter, the information about all database accounts is returned by default.
 	//
 	// example:
 	//
 	// test_accout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The ID of the cluster. The cluster can be of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
 	//
 	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
@@ -42,9 +42,9 @@ type DescribeAccountsRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The database engine. Valid values:
 	//
-	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	// - **AnalyticDB*	- (default): AnalyticDB for MySQL engine
 	//
-	// - **Clickhouse**: the wide table engine.
+	// - **Clickhouse**: wide-table engine
 	//
 	// example:
 	//
@@ -52,6 +52,10 @@ type DescribeAccountsRequest struct {
 	Engine  *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the resource group.
+	//
+	// example:
+	//
+	// test_group
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

@@ -62,13 +62,13 @@ func (s *GetSparkAppStateResponseBody) Validate() error {
 }
 
 type GetSparkAppStateResponseBodyData struct {
-	// The Spark application ID.
+	// The application ID.
 	//
 	// example:
 	//
 	// s202204191546hzpread6a896000****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -80,35 +80,35 @@ type GetSparkAppStateResponseBodyData struct {
 	//
 	// amv-bp1h405854m****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The alert message returned for the operation, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
+	// The alert message returned, such as task execution failure or insufficient resources. This parameter is empty if no alerts are generated.
 	//
 	// example:
 	//
 	// Insufficient resources.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The execution state of the application. Valid values:
+	// The execution status of the application. Valid values:
 	//
-	// 	- **SUBMITTED**
+	// - **SUBMITTED**: Submitted.
 	//
-	// 	- **STARTING**
+	// - **STARTING**: Starting.
 	//
-	// 	- **RUNNING**
+	// - **RUNNING**: Running.
 	//
-	// 	- **FAILING**
+	// - **FAILING**: Failing. The task failed and the environment is being cleaned up.
 	//
-	// 	- **FAILED**
+	// - **FAILED**: Failed.
 	//
-	// 	- **KILLING**
+	// - **KILLING**: Killing. The task is being terminated and the environment is being cleaned up.
 	//
-	// 	- **KILLED**
+	// - **KILLED**: Killed.
 	//
-	// 	- **SUCCEEDING**
+	// - **SUCCEEDING**: Succeeding. The task execution is complete and the environment is being cleaned up.
 	//
-	// 	- **COMPLETED**
+	// - **COMPLETED**: Completed.
 	//
-	// 	- **FATAL**
+	// - **FATAL**: Fatal error.
 	//
-	// 	- **UNKNOWN**
+	// - **UNKNOWN**: Unknown error.
 	//
 	// example:
 	//

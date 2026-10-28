@@ -24,7 +24,7 @@ type iGetViewObjectsResponseBody interface {
 type GetViewObjectsResponseBody struct {
 	// The response struct.
 	Data *GetViewObjectsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The page number. The value is a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type GetViewObjectsResponseBody struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default).
+	// 	- **30*	- (default)
 	//
-	// 	- **50**.
+	// 	- **50**
 	//
-	// 	- **100**.
+	// 	- **100**
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetViewObjectsResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *GetViewObjectsResponseBody) Validate() error {
 }
 
 type GetViewObjectsResponseBodyData struct {
-	// The page number. The value is a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -127,11 +127,11 @@ type GetViewObjectsResponseBodyData struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default).
+	// 	- **30*	- (default)
 	//
-	// 	- **50**.
+	// 	- **50**
 	//
-	// 	- **100**.
+	// 	- **100**
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type GetViewObjectsResponseBodyData struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The result array.
 	TableSummaryModels []*TableSummaryModel `json:"TableSummaryModels,omitempty" xml:"TableSummaryModels,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iBatchApplyAdviceByIdListRequest interface {
 }
 
 type BatchApplyAdviceByIdListRequest struct {
-	// The date when the suggestions were generated. Format: yyyyMMdd.
+	// The date when the suggestion was generated. Format: yyyyMMdd.
 	//
 	// example:
 	//
 	// 20221115
 	AdviceDate *int64 `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
-	// The list of suggestion IDs to apply in batches. Separate multiple suggestion IDs with commas (,).
+	// The list of suggestion IDs to be applied in batches. Separate multiple suggestion IDs with commas (,).
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type BatchApplyAdviceByIdListRequest struct {
 	//
 	// DROP_INDEX
 	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
-	// Specifies whether to immediately start a build task.
+	// Specifies whether to immediately start the build task.
 	//
 	// example:
 	//

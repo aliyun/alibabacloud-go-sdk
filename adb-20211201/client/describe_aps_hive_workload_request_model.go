@@ -32,7 +32,7 @@ type DescribeApsHiveWorkloadRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The job ID.
+	// The data link task ID.
 	//
 	// This parameter is required.
 	//

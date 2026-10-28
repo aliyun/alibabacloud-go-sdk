@@ -39,7 +39,7 @@ type DescribeTableStatisticsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -51,13 +51,13 @@ type DescribeTableStatisticsResponseBody struct {
 	//
 	// 4C4433FF-5D3A-4C3E-A19C-6D93B2******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The names of databases.
+	// The list of database names.
 	//
 	// example:
 	//
 	// [\\"adb_platform\\", \\"adb_ai\\", \\"adb_data\\"]
 	SchemaNames *string `json:"SchemaNames,omitempty" xml:"SchemaNames,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

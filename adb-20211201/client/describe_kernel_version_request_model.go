@@ -24,11 +24,9 @@ type iDescribeKernelVersionRequest interface {
 }
 
 type DescribeKernelVersionRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
-	// >
-	//
-	// 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	// > 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all clusters in a specified region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +38,7 @@ type DescribeKernelVersionRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the IDs of available regions.
 	//
 	// example:
 	//

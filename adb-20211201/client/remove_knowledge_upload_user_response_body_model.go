@@ -62,29 +62,29 @@ func (s *RemoveKnowledgeUploadUserResponseBody) Validate() error {
 }
 
 type RemoveKnowledgeUploadUserResponseBodyData struct {
-	// The location of the knowledge base file.
+	// The address of the knowledge base file.
 	//
 	// example:
 	//
 	// oss://bucketName/path/to/file.pdf
 	FileLocation *string `json:"FileLocation,omitempty" xml:"FileLocation,omitempty"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of users that were successfully deleted.
+	// The number of successfully deleted users.
 	//
 	// example:
 	//
 	// 1
 	Removed *int32 `json:"Removed,omitempty" xml:"Removed,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//

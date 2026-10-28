@@ -30,35 +30,35 @@ type ConfigureResultExportResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The path where the result sets are stored.
+	// The configured result set export information.
 	Data *ConfigureResultExportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. A value of 200 indicates that the request is successful.
+	// The HTTP status code. A status code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The additional information about the call result. Description:
 	//
-	// 	- OK is returned if the request is normal.
+	// - If the request is normal, OK is returned.
 	//
-	// 	- The specific error code is returned if the request is abnormal,
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**: Succeeded.
+	// - **true**: The call was successful.
 	//
-	// 	- **false**: Failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -140,17 +140,17 @@ func (s *ConfigureResultExportResponseBody) Validate() error {
 type ConfigureResultExportResponseBodyData struct {
 	// The export type. Valid values:
 	//
-	// 	- SLS: Indicates that the export destination is SLS.
+	// - SLS: Exports data to SLS.
 	//
-	// 	- OSS: Indicates that the export destination is OSS.
+	// - OSS: Exports data to OSS.
 	//
 	// example:
 	//
 	// SLS
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	// The OSS configuration if the destination is of the OSS type.
+	// The OSS export information configured when the export destination is OSS.
 	OssInfo *ConfigureResultExportResponseBodyDataOssInfo `json:"OssInfo,omitempty" xml:"OssInfo,omitempty" type:"Struct"`
-	// The SLS configuration if the destination is of the SLS type.
+	// The SLS configuration information when the export destination is SLS.
 	SlsInfo *ConfigureResultExportResponseBodyDataSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
 }
 
@@ -204,19 +204,19 @@ func (s *ConfigureResultExportResponseBodyData) Validate() error {
 }
 
 type ConfigureResultExportResponseBodyDataOssInfo struct {
-	// The OSS path where the result sets are stored.
+	// The OSS path where the export results are stored.
 	//
 	// example:
 	//
 	// oss://testBucketName/data_result
 	ExportBasePath *string `json:"ExportBasePath,omitempty" xml:"ExportBasePath,omitempty"`
-	// The name of the resource group that runs the job.
+	// The name of the resource group in which the export SQL statement is executed.
 	//
 	// example:
 	//
 	// aps
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The expiration time of the OSS file. Unit: days. Minimum: 1 day, maximum: 30 days.
+	// The expiration time of the OSS file. Unit: days. The minimum value is 1 day and the maximum value is 30 days.
 	//
 	// example:
 	//
@@ -264,13 +264,13 @@ func (s *ConfigureResultExportResponseBodyDataOssInfo) Validate() error {
 }
 
 type ConfigureResultExportResponseBodyDataSlsInfo struct {
-	// The expiration time of the Logstore temporarily generated during the result set export. Unit: days. The Logstore is automatically deleted after it expires. Minimum value: 1 day. Maximum value: 30 days.
+	// The expiration time of the temporary Logstore generated for result set export. Unit: days. The Logstore is automatically deleted after expiration. The minimum value is 1 day and the maximum value is 30 days.
 	//
 	// example:
 	//
 	// 10
 	LogstoreTtl *int32 `json:"LogstoreTtl,omitempty" xml:"LogstoreTtl,omitempty"`
-	// The name of the resource group that runs the job.
+	// The name of the resource group in which the export SQL statement is executed.
 	//
 	// example:
 	//

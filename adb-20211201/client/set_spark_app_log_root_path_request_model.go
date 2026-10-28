@@ -26,13 +26,13 @@ type SetSparkAppLogRootPathRequest struct {
 	//
 	// amv-bp169ea59k****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The path of Object Storage Service (OSS) logs.
+	// The OSS log path.
 	//
 	// example:
 	//
 	// oss://testBucketname/to/log
 	OssLogPath *string `json:"OssLogPath,omitempty" xml:"OssLogPath,omitempty"`
-	// Specifies whether to use the default OSS log path.
+	// Specifies whether to use the default OSS path.
 	//
 	// example:
 	//

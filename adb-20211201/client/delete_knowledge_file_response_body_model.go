@@ -62,23 +62,23 @@ func (s *DeleteKnowledgeFileResponseBody) Validate() error {
 }
 
 type DeleteKnowledgeFileResponseBodyData struct {
-	// The file location. Currently, only OSS paths are supported.
+	// The file path. Currently, only OSS paths are supported.
 	//
 	// example:
 	//
 	// oss://bucket/doc.pdf
 	FileLocation *string `json:"FileLocation,omitempty" xml:"FileLocation,omitempty"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//

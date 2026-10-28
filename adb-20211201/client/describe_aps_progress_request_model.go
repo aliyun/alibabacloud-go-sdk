@@ -18,7 +18,7 @@ type iDescribeApsProgressRequest interface {
 }
 
 type DescribeApsProgressRequest struct {
-	// The cluster ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribeApsProgressRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The job ID.
+	// The ID of the data link task.
 	//
 	// This parameter is required.
 	//

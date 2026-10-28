@@ -20,21 +20,21 @@ type iDescribeKernelVersionResponseBody interface {
 }
 
 type DescribeKernelVersionResponseBody struct {
-	// The minor versions to which you can update the current minor version of the cluster.
+	// The list of target versions to which the current version can be upgraded.
 	AvailableKernelVersions []*DescribeKernelVersionResponseBodyAvailableKernelVersions `json:"AvailableKernelVersions,omitempty" xml:"AvailableKernelVersions,omitempty" type:"Repeated"`
-	// The maintenance expiration time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. After the time arrives, the system no longer maintains the version. If any issues occur, update the minor version of the cluster to a later version.
+	// The end-of-support date of the version. The time is in the yyyy-MM-DD HH:mm:ss format. After this date, the system no longer maintains this version. If any issues occur, upgrade to a later version.
 	//
 	// example:
 	//
 	// 2025-01-12T16:00:00Z
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The minor version of the cluster. Example: **3.1.8**.
+	// The kernel version number of the cluster. Example: **3.1.8**.
 	//
 	// example:
 	//
 	// 3.1.8
 	KernelVersion *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ func (s *DescribeKernelVersionResponseBody) Validate() error {
 }
 
 type DescribeKernelVersionResponseBodyAvailableKernelVersions struct {
-	// The maintenance expiration time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. After the time arrives, the system no longer maintains the version. If any issues occur, update the minor version of the cluster to a later version.
+	// The end-of-support date of the version. The time is in the yyyy-MM-DD HH:mm:ss format. After this date, the system no longer maintains this version. If any issues occur, upgrade to a later version.
 	//
 	// example:
 	//
 	// 2025-07-17T16:00:00Z
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The minor version. Example: **3.1.9**.
+	// The kernel version number of the cluster. Example: **3.1.9**.
 	//
 	// example:
 	//
 	// 3.1.9
 	KernelVersion *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
-	// The time when the minor version was released. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The release time of the kernel version. The time format is yyyy-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

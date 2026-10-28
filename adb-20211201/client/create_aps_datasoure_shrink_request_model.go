@@ -118,7 +118,7 @@ type CreateApsDatasoureShrinkRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Simple Log Service (SLS) information for the data source to be created.
+	// The Simple Log Service (SLS) information.
 	//
 	// example:
 	//

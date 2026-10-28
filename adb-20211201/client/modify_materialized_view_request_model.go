@@ -54,33 +54,33 @@ type ModifyMaterializedViewRequest struct {
 	//
 	// myDB
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// Enable the refresh delay alert. Valid values:
+	// Specifies whether to enable alerting for refresh latency. Valid values:
 	//
-	// 	- true: Enables alert.
+	// - true: Yes.
 	//
-	// 	- false: Disables alert.
+	// - false: No.
 	//
 	// example:
 	//
 	// false
 	EnableDelayAlert *bool `json:"EnableDelayAlert,omitempty" xml:"EnableDelayAlert,omitempty"`
-	// Specifies whether to send alerts when the refresh task fails. Valid values:
+	// Specifies whether to enable alerting for refresh task failures. Valid values:
 	//
-	// 	- true: Send alerts.
+	// - true: Yes.
 	//
-	// 	- false: Alerts disabled.
+	// - false: No.
 	//
 	// example:
 	//
 	// false
 	EnableFailureAlert *bool `json:"EnableFailureAlert,omitempty" xml:"EnableFailureAlert,omitempty"`
-	// The name of the resource group to which the materialized view is bound.
+	// The name of the resource group bound to the materialized view.
 	//
 	// example:
 	//
 	// res_1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Refresh delay tolerance (in minutes).
+	// The refresh latency tolerance in minutes.
 	//
 	// example:
 	//
@@ -88,11 +88,11 @@ type ModifyMaterializedViewRequest struct {
 	LatencyTolerance *int32  `json:"LatencyTolerance,omitempty" xml:"LatencyTolerance,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to enable query rewrite. Valid values:
+	// Specifies whether to enable the rewrite feature. Valid values:
 	//
-	// 	- true: Enables query rewrite.
+	// - true: Yes.
 	//
-	// 	- false: Disables query rewrite.
+	// - false: No.
 	//
 	// example:
 	//

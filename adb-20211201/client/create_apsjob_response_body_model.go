@@ -24,45 +24,45 @@ type iCreateAPSJobResponseBody interface {
 }
 
 type CreateAPSJobResponseBody struct {
-	// The job ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// aps-bj1xxxxxx
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
-	// The HTTP status code or the error code.
+	// The operation status code or POP error code.
 	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful.
+	// The HTTP status code returned. A value of 200 indicates that the request was sent successfully.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The additional information about the call result. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.****
+	// - If the request is normal, **OK*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D1B8ED33-5E9B-512D-B188-1579ED6xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

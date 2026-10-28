@@ -44,7 +44,7 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// <props="china">The ID of the cluster. The cluster can be an Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
 	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
@@ -58,12 +58,17 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
 	//
-	// - **Clickhouse**: the wide table engine.
+	// - **Clickhouse**: the wide-table engine.
 	//
 	// example:
 	//
 	// Clickhouse
-	Engine            *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// test_group
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

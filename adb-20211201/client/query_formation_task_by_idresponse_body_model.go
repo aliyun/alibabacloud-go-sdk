@@ -68,11 +68,11 @@ type QueryFormationTaskByIDResponseBody struct {
 	//
 	// 5DC10091-348D-12B1-906D-AB49D658012E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//

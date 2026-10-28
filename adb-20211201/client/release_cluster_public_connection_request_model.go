@@ -18,9 +18,9 @@ type iReleaseClusterPublicConnectionRequest interface {
 }
 
 type ReleaseClusterPublicConnectionRequest struct {
-	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
 	//
-	// <props="intl">The ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The cluster ID of the Data Lakehouse Edition.
 	//
 	// This parameter is required.
 	//
@@ -30,14 +30,19 @@ type ReleaseClusterPublicConnectionRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The database engine. Valid values:
 	//
-	// - **AnalyticDB*	- (Default): AnalyticDB for MySQL.
+	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
 	//
-	// - **ClickHouse**: a wide table engine.
+	// - **Clickhouse**: the wide-table engine.
 	//
 	// example:
 	//
 	// Clickhouse
-	Engine            *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// test_group
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 

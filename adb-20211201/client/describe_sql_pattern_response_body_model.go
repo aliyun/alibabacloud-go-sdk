@@ -22,7 +22,7 @@ type iDescribeSqlPatternResponseBody interface {
 }
 
 type DescribeSqlPatternResponseBody struct {
-	// The queried SQL pattern.
+	// The list details.
 	Items []*DescribeSqlPatternResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -42,7 +42,7 @@ type DescribeSqlPatternResponseBody struct {
 	//
 	// DB1F6C23-CBCA-5260-9366-BA7BB5EBF6F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,27 +117,27 @@ func (s *DescribeSqlPatternResponseBody) Validate() error {
 }
 
 type DescribeSqlPatternResponseBodyItems struct {
-	// The IP address of the client.
+	// The client IP address.
 	//
-	// >  This parameter is returned only when **Type*	- is set to **accessip**.
+	// > This parameter is returned only when the Type parameter is set to accessip.
 	//
 	// example:
 	//
 	// 100.104.xx.xx
 	AccessIP *string `json:"AccessIP,omitempty" xml:"AccessIP,omitempty"`
-	// The average execution duration of the SQL pattern within the query time range. Unit: milliseconds.
+	// The average execution time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1.0625
 	AvgCpuTime *string `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	// The average peak memory usage of the SQL pattern within the query time range. Unit: KB.
+	// The average peak memory. Unit: KB.
 	//
 	// example:
 	//
 	// 240048
 	AvgPeakMemory *string `json:"AvgPeakMemory,omitempty" xml:"AvgPeakMemory,omitempty"`
-	// The average amount of data scanned based on the SQL pattern within the query time range. Unit: KB.
+	// The average scan size. Unit: KB.
 	//
 	// example:
 	//
@@ -155,25 +155,25 @@ type DescribeSqlPatternResponseBodyItems struct {
 	//
 	// 2
 	AvgTaskCount *string `json:"AvgTaskCount,omitempty" xml:"AvgTaskCount,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// amv-bp1ej1nq9n6****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The maximum execution duration of the SQL pattern within the query time range. Unit: milliseconds.
+	// The maximum execution time of the SQL statement. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 17
 	MaxCpuTime *string `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
-	// The maximum peak memory usage of the SQL pattern within the query time range. Unit: KB.
+	// The Peak Volume memory. Unit: KB.
 	//
 	// example:
 	//
 	// 480096
 	MaxPeakMemory *string `json:"MaxPeakMemory,omitempty" xml:"MaxPeakMemory,omitempty"`
-	// The maximum amount of data scanned based on the SQL pattern within the query time range. Unit: KB.
+	// The maximum scan size. Unit: KB.
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ type DescribeSqlPatternResponseBodyItems struct {
 	//
 	// SELECT table_name, table_schema AS schema_name, create_time, create_time AS last_ddl_time, table_comment AS description , ceil((data_length + index_length) / ? / ?) AS store_capacity , data_length AS data_bytes, index_length AS index_bytes, table_collation AS collation, auto_increment, table_rows AS num_rows , engine FROM information_schema.tables WHERE table_type != ? AND table_schema = ? AND table_name IN (?) ORDER BY 1
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The number of queries performed in association with the SQL pattern within the query time range.
+	// The total number of queries.
 	//
 	// example:
 	//
 	// 16
 	QueryCount *string `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	// The start date of the query.
+	// The query date.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type DescribeSqlPatternResponseBodyItems struct {
 	ReportDate *string `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
 	// The username.
 	//
-	// >  This parameter is returned only when **Type*	- is left empty or set to **user**.
+	// > This parameter is returned only when the Type parameter is left empty or set to user.
 	//
 	// example:
 	//

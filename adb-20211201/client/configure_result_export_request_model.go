@@ -24,7 +24,7 @@ type iConfigureResultExportRequest interface {
 type ConfigureResultExportRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the cluster IDs of all AnalyticDB for MySQL clusters in the destination region.
 	//
 	// This parameter is required.
 	//
@@ -34,17 +34,17 @@ type ConfigureResultExportRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The export type. Valid values:
 	//
-	// 	- SLS: Specifies that the export destination is SLS.
+	// - SLS: Exports data to SLS.
 	//
-	// 	- OSS: Specifies that the export destination is OSS.
+	// - OSS: Exports data to OSS.
 	//
 	// example:
 	//
 	// SLS
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	// The OSS configuration details if the destination is of the OSS type.
+	// The OSS configuration information when the export destination is OSS.
 	OssInfo *ConfigureResultExportRequestOssInfo `json:"OssInfo,omitempty" xml:"OssInfo,omitempty" type:"Struct"`
-	// The ID of the region where the instance resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ConfigureResultExportRequest struct {
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The SLS configuration details if the destination is of the SLS type.
+	// The SLS configuration information when the export destination is SLS.
 	SlsInfo *ConfigureResultExportRequestSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
 }
 
@@ -124,19 +124,19 @@ func (s *ConfigureResultExportRequest) Validate() error {
 }
 
 type ConfigureResultExportRequestOssInfo struct {
-	// The OSS path where the result sets are stored.
+	// The OSS path where the export results are stored.
 	//
 	// example:
 	//
 	// oss://testBucketName/data_result
 	ExportBasePath *string `json:"ExportBasePath,omitempty" xml:"ExportBasePath,omitempty"`
-	// The name of the resource group that runs the job.
+	// The name of the resource group in which the export SQL statement is executed.
 	//
 	// example:
 	//
 	// aps
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The expiration time of the OSS file. Unit: days. Minimum: 1 day, maximum: 30 days. Values outside this range will result in an error.
+	// The expiration time of the OSS file. Unit: days. The minimum value is 1 day and the maximum value is 30 days. An error is returned if the value is out of range.
 	//
 	// example:
 	//
@@ -184,13 +184,13 @@ func (s *ConfigureResultExportRequestOssInfo) Validate() error {
 }
 
 type ConfigureResultExportRequestSlsInfo struct {
-	// The expiration time of the Logstore temporarily generated during the result set export. Unit: days. The Logstore is automatically deleted after it expires. Minimum value: 1 day, maximum: 30 days. Values outside this range will result in an error.
+	// The expiration time of the temporary Logstore generated for result set export. Unit: days. The Logstore is automatically deleted after expiration. The minimum value is 1 day and the maximum value is 30 days. An error is returned if the value is out of range.
 	//
 	// example:
 	//
 	// 10
 	LogstoreTtl *int32 `json:"LogstoreTtl,omitempty" xml:"LogstoreTtl,omitempty"`
-	// The name of the resource group that runs the job.
+	// The name of the resource group in which the export SQL statement is executed.
 	//
 	// example:
 	//

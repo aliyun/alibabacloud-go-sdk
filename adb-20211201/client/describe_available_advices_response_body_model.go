@@ -24,15 +24,15 @@ type iDescribeAvailableAdvicesResponseBody interface {
 }
 
 type DescribeAvailableAdvicesResponseBody struct {
-	// The optimization advice items.
+	// The details.
 	Items []*DescribeAvailableAdvicesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number. The value is greater than 0 and less than or equal to the maximum value of the integer data type. Default value: 1.
+	// The page number. Valid values: greater than 0 and up to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// - **30*	- (default)
 	//
@@ -50,9 +50,9 @@ type DescribeAvailableAdvicesResponseBody struct {
 	//
 	// 96A55627-28E9-5E47-B8F6-D786BE551349
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The names of databases and tables.
+	// The concatenated string of the database name and table name.
 	SchemaTableNames []*string `json:"SchemaTableNames,omitempty" xml:"SchemaTableNames,omitempty" type:"Repeated"`
-	// The total number of entries returned. The value is greater than or equal to 0 and less than or equal to the maximum value of the integer data type. Default value: 0.
+	// The total number of returned results. Valid values: greater than or equal to 0 and up to the maximum value of the Integer data type. Default value: 0.
 	//
 	// example:
 	//
@@ -136,33 +136,33 @@ func (s *DescribeAvailableAdvicesResponseBody) Validate() error {
 }
 
 type DescribeAvailableAdvicesResponseBodyItems struct {
-	// The date when the advice was generated. The date is displayed in the yyyyMMdd format.
+	// The time when the suggestion was generated, in the yyyyMMdd format.
 	//
 	// example:
 	//
 	// 20221124
 	AdviceDate *string `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
-	// The advice ID.
+	// The suggestion ID.
 	//
 	// example:
 	//
 	// dcd04135-0925-4aed-a5a7-e7d92cb1****
 	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
-	// The type of the advice. Valid values:
+	// The type of the suggestion. Valid values:
 	//
-	// - **INDEX**: index optimization.
+	// - **INDEX**: Index optimization.
 	//
-	// - **TIERING**: hot and cold data optimization.
+	// - **TIERING**: Hot and cold data optimization.
 	//
 	// example:
 	//
 	// INDEX
 	AdviceType *string `json:"AdviceType,omitempty" xml:"AdviceType,omitempty"`
-	// The benefits of the advice.
+	// The benefit of the suggestion.
 	//
 	// example:
 	//
-	// 节省0.4 GB的存储空间。
+	// Saves 0.4 GB of storage space
 	Benefit *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
 	// The index fields.
 	//
@@ -170,13 +170,13 @@ type DescribeAvailableAdvicesResponseBodyItems struct {
 	//
 	// message
 	IndexFields *string `json:"IndexFields,omitempty" xml:"IndexFields,omitempty"`
-	// The page number. The value is greater than 0 and less than or equal to the maximum value of the integer data type. Default value: 1.
+	// The page number. Valid values: greater than 0 and up to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// - **30*	- (default)
 	//
@@ -188,13 +188,13 @@ type DescribeAvailableAdvicesResponseBodyItems struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The reason why the optimization advice is generated.
+	// The reason for generating optimization suggestions.
 	//
 	// example:
 	//
-	// 15天未使用，历史使用统计概率小于1%
+	// Not used for 15 days, and the historical usage probability is less than 1%
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The SQL statement that is used to apply the advice.
+	// The SQL statement to apply the suggestion.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribeAvailableAdvicesResponseBodyItems struct {
 	//
 	// test_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The total number of entries returned. The value is greater than or equal to 0 and less than or equal to the maximum value of the integer data type. Default value: 0.
+	// The total number of returned results. Valid values: greater than or equal to 0 and up to the maximum value of the Integer data type. Default value: 0.
 	//
 	// example:
 	//

@@ -26,9 +26,7 @@ type iDescribePerformanceViewAttributeResponseBody interface {
 }
 
 type DescribePerformanceViewAttributeResponseBody struct {
-	// The details about the access denial.
-	//
-	// >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	// The details of the access denial. This field is returned only when RAM authentication fails.
 	//
 	// example:
 	//
@@ -50,7 +48,11 @@ type DescribePerformanceViewAttributeResponseBody struct {
 	//
 	// }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The type of the view.
+	// The type of the source for the original chart. Valid values:
+	//
+	// - **Basic**: basic view
+	//
+	// - **Advanced**: advanced view
 	//
 	// example:
 	//
@@ -58,17 +60,15 @@ type DescribePerformanceViewAttributeResponseBody struct {
 	CreateFromViewType *string `json:"CreateFromViewType,omitempty" xml:"CreateFromViewType,omitempty"`
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
-	//
 	// example:
 	//
 	// amv-bp198m028ih55xxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to populate the names of the metrics in the original monitoring view when you view the monitoring view. Valid values:
+	// Indicates whether the keys completed in the original monitoring view are populated when you view the monitoring view. Valid values:
 	//
-	// 	- **true**
+	// - true
 	//
-	// 	- **false**
+	// - false
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type DescribePerformanceViewAttributeResponseBody struct {
 	//
 	// E031AABF-BD56-5966-A063-4283EF18DB45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the monitoring view.
+	// The details of the monitoring view.
 	ViewDetail *DescribePerformanceViewAttributeResponseBodyViewDetail `json:"ViewDetail,omitempty" xml:"ViewDetail,omitempty" type:"Struct"`
-	// The name of the view.
+	// The name of the monitoring view.
 	//
 	// example:
 	//
@@ -171,19 +171,19 @@ func (s *DescribePerformanceViewAttributeResponseBody) Validate() error {
 }
 
 type DescribePerformanceViewAttributeResponseBodyViewDetail struct {
-	// The metric category.
+	// The list of metric categories.
 	Categories []*DescribePerformanceViewAttributeResponseBodyViewDetailCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// Specifies whether to enable the filter interaction feature. Valid values:
+	// Indicates whether it is a linkage chart. Valid values:
 	//
-	// 	- **true**
+	// - true
 	//
-	// 	- **false**
+	// - false
 	//
 	// example:
 	//
 	// true
 	ChartLinked *bool `json:"ChartLinked,omitempty" xml:"ChartLinked,omitempty"`
-	// The number of charts to display in each row.
+	// The number of charts displayed in each row.
 	//
 	// example:
 	//
@@ -242,19 +242,19 @@ func (s *DescribePerformanceViewAttributeResponseBodyViewDetail) Validate() erro
 type DescribePerformanceViewAttributeResponseBodyViewDetailCategories struct {
 	// The name of the metric category. Valid values:
 	//
-	// 	- **Node**
+	// 	- **Node**: node resource metrics
 	//
-	// 	- **DiskData**
+	// 	- **DiskData**: disk metrics
 	//
-	// 	- **WorkLoad**
+	// 	- **WorkLoad**: workload metrics
 	//
-	// 	- **ResourceGroup**
+	// 	- **ResourceGroup**: resource group metrics
 	//
 	// example:
 	//
 	// Node
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The metrics.
+	// The list of metrics.
 	Keys []*DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 }
 
@@ -298,39 +298,22 @@ func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategories) Valid
 }
 
 type DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys struct {
-	// Indicates whether the multi-cluster feature is enabled. Valid values:
-	//
-	// - true
-	//
-	// - false
-	//
-	// example:
-	//
-	// true
 	EnableAutoMc *bool `json:"EnableAutoMc,omitempty" xml:"EnableAutoMc,omitempty"`
-	// The database engine of the cluster. Valid values:
-	//
-	// 	- AnalyticDB
+	// The list of applicable cluster engines.
 	Engine []*string `json:"Engine,omitempty" xml:"Engine,omitempty" type:"Repeated"`
-	// The type of the resource group. Valid values:
-	//
-	// 	- **Interactive**
-	//
-	// 	- **Job**
-	//
-	// >  For more information about resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
+	// The list of applicable resource group types.
 	GroupType []*string `json:"GroupType,omitempty" xml:"GroupType,omitempty" type:"Repeated"`
-	// The name of the metric.
+	// The key of the metric.
 	//
 	// example:
 	//
 	// AnalyticDB_CPU
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// Specifies whether to select the metric. Valid values:
+	// Indicates whether the metric is selected. Valid values:
 	//
-	// 	- **true**
+	// - true
 	//
-	// 	- **false**
+	// - false
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type DescribeMvRecommendTasksResponseBody struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type DescribeMvRecommendSubTasksResponseBody struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *DescribeMvRecommendSubTasksResponseBody) Validate() error {
 }
 
 type DescribeMvRecommendSubTasksResponseBodyData struct {
-	// The list of materialized view recommendation task executions.
+	// The execution list of the materialized view recommendation task.
 	MvRecommendSubTaskModels []*OpenStructMvRecommendSubTaskModel `json:"MvRecommendSubTaskModels,omitempty" xml:"MvRecommendSubTaskModels,omitempty" type:"Repeated"`
 	// The page number.
 	//

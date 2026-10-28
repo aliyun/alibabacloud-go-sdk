@@ -18,7 +18,7 @@ type iSearchSemanticViewsRequest interface {
 }
 
 type SearchSemanticViewsRequest struct {
-	// The ID of the AnalyticDB for MySQL cluster.
+	// The ADB cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type SearchSemanticViewsRequest struct {
 	//
 	// am-bp*****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The search query.
+	// The text content to search.
 	//
 	// example:
 	//
-	// 销售额
+	// Sales revenue
 	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
-	// The number of the most relevant semantic views to return.
+	// The number of most relevant documents to return.
 	//
 	// example:
 	//

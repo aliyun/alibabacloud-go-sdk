@@ -20,7 +20,7 @@ type iCancelSparkReplStatementRequest interface {
 type CancelSparkReplStatementRequest struct {
 	// The application ID.
 	//
-	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query Spark application IDs.
+	// > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query the Spark application ID.
 	//
 	// example:
 	//

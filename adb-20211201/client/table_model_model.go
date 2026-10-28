@@ -124,7 +124,7 @@ type TableModel struct {
 	//
 	// 64
 	BlockSize *int64 `json:"BlockSize,omitempty" xml:"BlockSize,omitempty"`
-	// The bucket ID.
+	// The bucket number.
 	//
 	// example:
 	//
@@ -150,27 +150,29 @@ type TableModel struct {
 	//
 	// Compression
 	Compression *string `json:"Compression,omitempty" xml:"Compression,omitempty"`
-	// The time when the table was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-01-05 13:17:55
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation source of the table.
 	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
-	CreatedByUser   *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
+	// The user who created the table.
+	CreatedByUser *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
 	// The current version.
 	//
 	// example:
 	//
 	// 2
 	CurrentVersion *int64 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	// The name of the logical database.
+	// The logical database name.
 	//
 	// example:
 	//
 	// example
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// Indicates whether the dictionary is encrypted.
+	// Indicates whether encryption is enabled.
 	//
 	// example:
 	//
@@ -184,7 +186,7 @@ type TableModel struct {
 	//
 	// DistributeType
 	DistributeType *string `json:"DistributeType,omitempty" xml:"DistributeType,omitempty"`
-	// Indicates whether DFS is allowed.
+	// Indicates whether DFS is enabled.
 	//
 	// example:
 	//
@@ -198,13 +200,13 @@ type TableModel struct {
 	HotPartitionCount *int64 `json:"HotPartitionCount,omitempty" xml:"HotPartitionCount,omitempty"`
 	// The indexes.
 	Indexes []*CstoreIndexModel `json:"Indexes,omitempty" xml:"Indexes,omitempty" type:"Repeated"`
-	// Indicates whether the index is a full index.
+	// Indicates whether full indexing is enabled.
 	//
 	// example:
 	//
 	// true
 	IsAllIndex *bool `json:"IsAllIndex,omitempty" xml:"IsAllIndex,omitempty"`
-	// Indicates whether the table is a full-text index dictionary.
+	// Indicates whether it is a full-text index dictionary.
 	//
 	// example:
 	//
@@ -218,7 +220,7 @@ type TableModel struct {
 	MaxColumnId *int64 `json:"MaxColumnId,omitempty" xml:"MaxColumnId,omitempty"`
 	// The parameters.
 	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The information about the partition key column.
+	// The partition column information.
 	//
 	// example:
 	//
@@ -238,13 +240,13 @@ type TableModel struct {
 	//
 	// PartitionType
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
-	// The name of the physical database.
+	// The physical database name.
 	//
 	// example:
 	//
 	// physicalDatabaseName
 	PhysicalDatabaseName *string `json:"PhysicalDatabaseName,omitempty" xml:"PhysicalDatabaseName,omitempty"`
-	// The name of the physical table.
+	// The physical table name.
 	//
 	// example:
 	//
@@ -256,7 +258,7 @@ type TableModel struct {
 	//
 	// 1
 	PreviousVersion *int64 `json:"PreviousVersion,omitempty" xml:"PreviousVersion,omitempty"`
-	// The raw table name.
+	// The original table name.
 	//
 	// example:
 	//
@@ -278,7 +280,7 @@ type TableModel struct {
 	//
 	// RtEngineType
 	RtEngineType *string `json:"RtEngineType,omitempty" xml:"RtEngineType,omitempty"`
-	// Indicates whether to route all indexes.
+	// Indicates whether all indexes are routed.
 	//
 	// example:
 	//
@@ -290,7 +292,7 @@ type TableModel struct {
 	//
 	// RtModeType
 	RtModeType *string `json:"RtModeType,omitempty" xml:"RtModeType,omitempty"`
-	// The description of the storage.
+	// The storage description.
 	Sd *StorageDescriptorModel `json:"Sd,omitempty" xml:"Sd,omitempty"`
 	// The storage policy.
 	//
@@ -298,7 +300,7 @@ type TableModel struct {
 	//
 	// StoragePolicy
 	StoragePolicy *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
-	// The information about the subpartition column.
+	// The subpartition column information.
 	//
 	// example:
 	//
@@ -316,13 +318,13 @@ type TableModel struct {
 	//
 	// SubpartitionColumn
 	SubpartitionType *string `json:"SubpartitionType,omitempty" xml:"SubpartitionType,omitempty"`
-	// The name of the table engine.
+	// The table engine name.
 	//
 	// example:
 	//
 	// hive
 	TableEngineName *string `json:"TableEngineName,omitempty" xml:"TableEngineName,omitempty"`
-	// The name of the logical table.
+	// The logical table name.
 	//
 	// example:
 	//
@@ -346,25 +348,25 @@ type TableModel struct {
 	//
 	// false
 	Temporary *bool `json:"Temporary,omitempty" xml:"Temporary,omitempty"`
-	// The time when the table was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 2023-01-05 13:17:55
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The normalized SQL statement that is used to create the view.
+	// The normalized result of the SQL statement used to create the view.
 	//
 	// example:
 	//
 	// ViewExpandedText
 	ViewExpandedText *string `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
-	// The SQL statement used to create the view.
+	// The SQL statement entered when creating the view.
 	//
 	// example:
 	//
 	// ViewOriginalText
 	ViewOriginalText *string `json:"ViewOriginalText,omitempty" xml:"ViewOriginalText,omitempty"`
-	// The security mode of the view.
+	// The view safe mode pattern.
 	//
 	// example:
 	//

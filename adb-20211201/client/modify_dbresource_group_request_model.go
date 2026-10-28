@@ -58,27 +58,27 @@ type iModifyDBResourceGroupRequest interface {
 type ModifyDBResourceGroupRequest struct {
 	// The PromQL resource group configuration.
 	AtmConfig *ModifyDBResourceGroupRequestAtmConfig `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty" type:"Struct"`
-	// The auto-stop interval.
+	// The auto-stop time.
 	//
 	// example:
 	//
 	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
-	// Reserved parameter (not applicable).
+	// Reserved parameter.
 	//
 	// example:
 	//
 	// None
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// Reserved parameter (not applicable).
+	// Reserved parameter.
 	//
 	// example:
 	//
 	// None
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the spot instance feature for the resource group. After spot instances are enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After you enable this feature, the unit price of resources decreases, but the resources may be released. This feature can be enabled only for Job resource groups. Valid values:
 	//
 	// - **True**: Enables the spot instance feature.
 	//
@@ -96,17 +96,17 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// True
 	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
-	// The engine configuration.
+	// The engine configurations.
 	//
 	// example:
 	//
 	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
-	// The GPU time-sharing elastic plan.
+	// The GPU time-based elastic plan.
 	GpuElasticPlan *ModifyDBResourceGroupRequestGpuElasticPlan `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty" type:"Struct"`
-	// The resource group name.
+	// The name of the resource group.
 	//
-	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group names of a specified cluster.
+	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of the resource group for a specified cluster.
 	//
 	// This parameter is required.
 	//
@@ -114,13 +114,13 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The resource group type. Valid values:
+	// The type of the resource group. Valid values:
 	//
 	// - **Interactive**
 	//
 	// - **Job**
 	//
-	// > For more information about Data Lakehouse Edition resource groups, refer to [Resource group introduction](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -128,7 +128,7 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// Interactive
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// Reserved parameter (not applicable).
+	// Reserved parameter.
 	//
 	// example:
 	//
@@ -136,21 +136,21 @@ type ModifyDBResourceGroupRequest struct {
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum reserved computing resources.
 	//
-	// - If the resource group type is Interactive, the maximum reserved computing resources are the current unallocated resources of the cluster, in increments of 16 ACUs.
+	// - If the resource group type is Interactive, the maximum reserved computing resources is the currently unallocated resources of the cluster, and the step size is 16 ACUs.
 	//
-	// - If the resource group type is Job, the maximum reserved computing resources are the current unallocated resources of the cluster, in increments of 8 ACUs.
+	// - If the resource group type is Job, the maximum reserved computing resources is the currently unallocated resources of the cluster, and the step size is 8 ACUs.
 	//
 	// example:
 	//
 	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	// Reserved parameter (not applicable).
+	// Reserved parameter.
 	//
 	// example:
 	//
-	// Reserved parameter. Not applicable.
+	// Reserved parameter
 	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
-	// Reserved parameter (not applicable).
+	// Reserved parameter.
 	//
 	// example:
 	//
@@ -158,21 +158,21 @@ type ModifyDBResourceGroupRequest struct {
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum reserved computing resources.
 	//
-	// - If the resource group type is Interactive, the minimum reserved computing resources are 16 ACUs.
+	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
 	//
-	// - If the resource group type is Job, the minimum reserved computing resources are 0 ACUs.
+	// - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
 	//
 	// example:
 	//
 	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	// Reserved parameter (not applicable).
+	// Reserved parameter.
 	//
 	// example:
 	//
-	// Reserved parameter. Not applicable.
+	// Reserved parameter
 	MinGpuQuantity *int32 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
-	// The Ray configuration. This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
+	// The Ray configuration information. This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
 	RayConfig *ModifyDBResourceGroupRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -182,25 +182,25 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The job routing rules.
+	// The job delivery rules.
 	Rules []*ModifyDBResourceGroupRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// Reserved parameter (not applicable).
+	// Reserved parameter.
 	//
 	// example:
 	//
-	// Reserved parameter. Not applicable.
+	// Reserved parameter
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// The resource group status. **starting*	- indicates that the resource group is being started. **stopping*	- indicates that the resource group is being stopped.
+	// The status of the resource group. **starting*	- indicates that the resource group is being started. **stopping*	- indicates that the resource group is being stopped.
 	//
 	// example:
 	//
 	// starting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Reserved parameter (not applicable).
+	// Reserved parameter.
 	//
 	// example:
 	//
-	// Reserved parameter. Not applicable.
+	// Reserved parameter
 	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
 }
 
@@ -445,7 +445,7 @@ type ModifyDBResourceGroupRequestAtmConfig struct {
 	//
 	// 2
 	AuthNodeNum *int32 `json:"AuthNodeNum,omitempty" xml:"AuthNodeNum,omitempty"`
-	// The authentication node specification in [0-9+]ACU.
+	// The authentication node specifications ([0-9+] ACU).
 	//
 	// example:
 	//
@@ -457,13 +457,13 @@ type ModifyDBResourceGroupRequestAtmConfig struct {
 	//
 	// 2
 	InsertNodeNum *int32 `json:"InsertNodeNum,omitempty" xml:"InsertNodeNum,omitempty"`
-	// The insert node specification in [0-9+]ACU.
+	// The insert node specifications ([0-9+] ACU).
 	//
 	// example:
 	//
 	// 8ACU
 	InsertNodeSpec *string `json:"InsertNodeSpec,omitempty" xml:"InsertNodeSpec,omitempty"`
-	// The query node cache size in GB.
+	// The query node cache size (GB).
 	//
 	// example:
 	//
@@ -475,13 +475,13 @@ type ModifyDBResourceGroupRequestAtmConfig struct {
 	//
 	// 1
 	SelectNodeNum *int32 `json:"SelectNodeNum,omitempty" xml:"SelectNodeNum,omitempty"`
-	// The query node specification ([0-9+]ACU).
+	// The query node specifications ([0-9+] ACU).
 	//
 	// example:
 	//
 	// 8ACU
 	SelectNodeSpec *string `json:"SelectNodeSpec,omitempty" xml:"SelectNodeSpec,omitempty"`
-	// The storage node disk size.
+	// The disk size of the storage node.
 	//
 	// example:
 	//
@@ -499,7 +499,7 @@ type ModifyDBResourceGroupRequestAtmConfig struct {
 	//
 	// 2
 	StorageNodeNum *int32 `json:"StorageNodeNum,omitempty" xml:"StorageNodeNum,omitempty"`
-	// The storage node specification in [0-9+]ACU.
+	// The storage node specifications ([0-9+] ACU).
 	//
 	// example:
 	//
@@ -621,9 +621,9 @@ func (s *ModifyDBResourceGroupRequestAtmConfig) Validate() error {
 type ModifyDBResourceGroupRequestGpuElasticPlan struct {
 	// Specifies whether to enable the elastic plan immediately after creation. Valid values:
 	//
-	// - **true**: Enables the plan immediately.
+	// - **true**: Enables the elastic plan immediately.
 	//
-	// - **false**: Does not enable the plan.
+	// - **false**: Does not enable the elastic plan.
 	//
 	// example:
 	//
@@ -673,13 +673,13 @@ func (s *ModifyDBResourceGroupRequestGpuElasticPlan) Validate() error {
 }
 
 type ModifyDBResourceGroupRequestGpuElasticPlanRules struct {
-	// The end time, specified as a cron expression. The interval must be at least 1 hour.
+	// The end time specified by a cron expression. The interval must be at least 1 hour.
 	//
 	// example:
 	//
 	// 0 0 3 	- 	- ?
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
-	// The start time, specified as a cron expression. The interval must be at least 1 hour.
+	// The start time specified by a cron expression. The interval must be at least 1 hour.
 	//
 	// example:
 	//
@@ -720,11 +720,11 @@ func (s *ModifyDBResourceGroupRequestGpuElasticPlanRules) Validate() error {
 type ModifyDBResourceGroupRequestRayConfig struct {
 	// The Ray application configuration.
 	AppConfig *ModifyDBResourceGroupRequestRayConfigAppConfig `json:"AppConfig,omitempty" xml:"AppConfig,omitempty" type:"Struct"`
-	// The Ray cluster type. Valid values:
+	// The type of the Ray cluster. Valid values:
 	//
-	// - BASIC: basic type, non-high availability
+	// - BASIC: Basic type, non-high-availability.
 	//
-	// - HIGH_AVAILABILITY: high availability type
+	// - HIGH_AVAILABILITY: High-availability type.
 	//
 	// example:
 	//
@@ -744,7 +744,7 @@ type ModifyDBResourceGroupRequestRayConfig struct {
 	//
 	// 100G
 	HeadDiskCapacity *string `json:"HeadDiskCapacity,omitempty" xml:"HeadDiskCapacity,omitempty"`
-	// The specification of the head node.
+	// The node specifications of the head node.
 	//
 	// example:
 	//
@@ -756,10 +756,15 @@ type ModifyDBResourceGroupRequestRayConfig struct {
 	//
 	// CPU
 	HeadSpecType *string `json:"HeadSpecType,omitempty" xml:"HeadSpecType,omitempty"`
-	// The storage mount list.
-	StorageMounts           []*ModifyDBResourceGroupRequestRayConfigStorageMounts `json:"StorageMounts,omitempty" xml:"StorageMounts,omitempty" type:"Repeated"`
-	UserDefinedRequirements *string                                               `json:"UserDefinedRequirements,omitempty" xml:"UserDefinedRequirements,omitempty"`
-	// The list of Ray worker group configurations.
+	// The list of storage mounts.
+	StorageMounts []*ModifyDBResourceGroupRequestRayConfigStorageMounts `json:"StorageMounts,omitempty" xml:"StorageMounts,omitempty" type:"Repeated"`
+	// The custom Python dependencies for RayCluster. The content must be in the requirements.txt format, with one pip dependency per line. A maximum of 200 lines are allowed, and each line cannot exceed 512 characters. Version constraints, extras, PEP 440 direct URLs, and # comments are supported, but shell metacharacters are not supported. This parameter applies only to AI resource groups of the RayCluster type.
+	//
+	// example:
+	//
+	// numpy==1.24.0
+	UserDefinedRequirements *string `json:"UserDefinedRequirements,omitempty" xml:"UserDefinedRequirements,omitempty"`
+	// The list of Ray worker group configuration information.
 	WorkerGroups []*ModifyDBResourceGroupRequestRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
 }
 
@@ -889,13 +894,13 @@ func (s *ModifyDBResourceGroupRequestRayConfig) Validate() error {
 }
 
 type ModifyDBResourceGroupRequestRayConfigAppConfig struct {
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
 	// app01
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application type.
+	// The type of the application.
 	//
 	// example:
 	//
@@ -950,7 +955,7 @@ func (s *ModifyDBResourceGroupRequestRayConfigAppConfig) Validate() error {
 }
 
 type ModifyDBResourceGroupRequestRayConfigAppConfigImageSelector struct {
-	// The image name.
+	// The name of the image.
 	//
 	// example:
 	//
@@ -1016,12 +1021,17 @@ type ModifyDBResourceGroupRequestRayConfigStorageMounts struct {
 	//
 	// /mnt/data01
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The storage ID.
+	// The ID of the storage.
 	//
 	// example:
 	//
 	// 1
-	StorageId   *int64  `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	StorageId *int64 `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	// The name of the storage to mount. You must specify either this parameter or StorageId.
+	//
+	// example:
+	//
+	// training-data
 	StorageName *string `json:"StorageName,omitempty" xml:"StorageName,omitempty"`
 }
 
@@ -1071,7 +1081,7 @@ type ModifyDBResourceGroupRequestRayConfigWorkerGroups struct {
 	//
 	// 1
 	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
-	// The worker group name.
+	// The name of the worker group.
 	//
 	// example:
 	//
@@ -1095,7 +1105,7 @@ type ModifyDBResourceGroupRequestRayConfigWorkerGroups struct {
 	//
 	// 100G
 	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
-	// The specification of the worker node.
+	// The node specifications of the worker node.
 	//
 	// example:
 	//
@@ -1185,19 +1195,19 @@ func (s *ModifyDBResourceGroupRequestRayConfigWorkerGroups) Validate() error {
 }
 
 type ModifyDBResourceGroupRequestRules struct {
-	// The resource group name.
+	// The name of the resource group.
 	//
 	// example:
 	//
 	// user_default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The query execution time threshold. Unit: milliseconds (ms).
+	// The threshold for query execution time, in milliseconds.
 	//
 	// example:
 	//
 	// 180000
 	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	// The target resource group name.
+	// The name of the destination resource group.
 	//
 	// example:
 	//

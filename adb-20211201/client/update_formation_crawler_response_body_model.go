@@ -32,7 +32,7 @@ type UpdateFormationCrawlerResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is processed successfully.
+	// Indicates whether the request was processed successfully.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type UpdateFormationCrawlerResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The additional information about the call result. Valid values:
+	// The additional information about the call result.
 	//
-	// - If the request is successful, OK is returned.
+	// - If the request is normal, OK is returned.
 	//
-	// - If the request fails, a specific error code is returned.
+	// - If an exception occurs, a specific error code is returned.
 	//
 	// example:
 	//
@@ -60,11 +60,11 @@ type UpdateFormationCrawlerResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//

@@ -44,47 +44,51 @@ type DescribeOversizeNonPartitionTableInfosRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	// The end time of the query. The time is in UTC and follows the <i>yyyy-MM-ddTHH:mm:ssZ</i> format.
 	//
-	// >  The end time must be later than the start time. The specified time range must be less than seven days.
+	// > The end time must be later than the start time. The interval between the start time and the end time must be less than 7 days.
 	//
 	// example:
 	//
 	// 2024-05-11T05:44Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of file titles and error messages. Valid values:
+	// The language of the title for the downloaded file and specific error messages. Valid values:
 	//
-	// 	- **zh (default)**: simplified Chinese.
+	// - **zh**: Simplified Chinese. This is the default value.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
-	// 	- **ja**: Japanese.
+	// - **ja**: Japanese.
 	//
-	// 	- **zh-tw**: traditional Chinese.
+	// - **zh-tw**: Traditional Chinese.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The order by which to sort query results. Specify the parameter value in the JSON format.
+	// The sorting rule for a specified field. The value is a JSON array. You must specify the fields to be sorted and the sorting order in sequence. Example:
 	//
-	// Example:
+	// ```
 	//
-	//     [
+	// [
 	//
-	//         {
+	//     {
 	//
-	//             "Field":"Name",
+	//         "Field":"Name",
 	//
-	//             "Type":"Asc"
+	//         "Type":"Asc"
 	//
-	//         }
+	//     }
 	//
-	//     ]
+	// ]
 	//
-	// Field specifies the field by which to sort the query results. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
+	// ```
 	//
-	// Field and Type are case-insensitive.
+	// Field: the name of the field to be sorted. Only the Name field is supported.
+	//
+	// Type: the sorting order. Valid values: Desc for descending order, and Asc for ascending order.
+	//
+	// The values are not case-sensitive.
 	//
 	// example:
 	//
@@ -92,7 +96,7 @@ type DescribeOversizeNonPartitionTableInfosRequest struct {
 	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value must be a positive integer. Default value: **1**.
 	//
 	// example:
 	//
@@ -100,11 +104,11 @@ type DescribeOversizeNonPartitionTableInfosRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- 30
+	// - 30
 	//
-	// 	- 50
+	// - 50
 	//
-	// 	- 100
+	// - 100
 	//
 	// Default value: 30.
 	//
@@ -114,7 +118,7 @@ type DescribeOversizeNonPartitionTableInfosRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -124,9 +128,9 @@ type DescribeOversizeNonPartitionTableInfosRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	// The start time of the query. The time is in UTC and follows the yyyy-MM-ddTHH:mmZ format.
 	//
-	// >
+	// > SQL audit logs can be queried only when SQL audit is enabled. You can query SQL audit logs generated within the last 30 days. If SQL audit is disabled and then re-enabled, you can query only the SQL audit logs generated after it is re-enabled.
 	//
 	// example:
 	//

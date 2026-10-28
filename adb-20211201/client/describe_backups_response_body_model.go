@@ -26,7 +26,7 @@ type iDescribeBackupsResponseBody interface {
 }
 
 type DescribeBackupsResponseBody struct {
-	// The free backup space. Unit: bytes.
+	// The free quota for backup sets. Unit: bytes.
 	//
 	// example:
 	//
@@ -45,13 +45,13 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CE17270B-F8F8-5A31-9DB4-DADDFDAD7940
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total size of the backup sets. Unit: bytes.
+	// The total size of backup sets. Unit: bytes.
 	//
 	// example:
 	//

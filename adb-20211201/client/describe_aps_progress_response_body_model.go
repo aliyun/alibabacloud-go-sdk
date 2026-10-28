@@ -34,19 +34,19 @@ type DescribeApsProgressResponseBody struct {
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The success rate.
+	// The success percentage.
 	//
 	// example:
 	//
 	// 100
 	SuccessPercentage *int32 `json:"SuccessPercentage,omitempty" xml:"SuccessPercentage,omitempty"`
-	// The total number of migrated tables returned.
+	// The total number of successfully migrated tables.
 	//
 	// example:
 	//
 	// 10
 	SuccessTableCount *int32 `json:"SuccessTableCount,omitempty" xml:"SuccessTableCount,omitempty"`
-	// The total number of tables to be migrated.
+	// The total number of tables.
 	//
 	// example:
 	//
@@ -121,13 +121,13 @@ func (s *DescribeApsProgressResponseBody) Validate() error {
 }
 
 type DescribeApsProgressResponseBodyApsHiveProgress struct {
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The migration progress.
+	// The progress.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type DescribeApsProgressResponseBodyApsHiveProgress struct {
 	//
 	// 2
 	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//

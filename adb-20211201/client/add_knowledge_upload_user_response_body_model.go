@@ -62,13 +62,13 @@ func (s *AddKnowledgeUploadUserResponseBody) Validate() error {
 }
 
 type AddKnowledgeUploadUserResponseBodyData struct {
-	// The location of the knowledge base file.
+	// The path of the knowledge base file.
 	//
 	// example:
 	//
 	// oss://bucketName/path/to/file.pfg
 	FileLocation *string `json:"FileLocation,omitempty" xml:"FileLocation,omitempty"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
@@ -76,17 +76,17 @@ type AddKnowledgeUploadUserResponseBodyData struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The list of skipped users.
 	Skipped []*AddKnowledgeUploadUserResponseBodyDataSkipped `json:"Skipped,omitempty" xml:"Skipped,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The number of users that were successfully added.
+	// The number of successfully added users.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ func (s *AddKnowledgeUploadUserResponseBodyData) Validate() error {
 }
 
 type AddKnowledgeUploadUserResponseBodyDataSkipped struct {
-	// The reason why the user was skipped.
+	// The reason for skipping.
 	//
 	// example:
 	//

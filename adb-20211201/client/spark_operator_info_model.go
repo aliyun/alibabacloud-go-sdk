@@ -16,7 +16,17 @@ type iSparkOperatorInfo interface {
 }
 
 type SparkOperatorInfo struct {
-	MetricValue  *int64 `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+	// The metric value.
+	//
+	// example:
+	//
+	// 0
+	MetricValue *int64 `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+	// The operator name.
+	//
+	// example:
+	//
+	// TableScan
 	OperatorName []byte `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
 }
 

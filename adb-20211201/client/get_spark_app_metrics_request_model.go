@@ -16,7 +16,7 @@ type iGetSparkAppMetricsRequest interface {
 }
 
 type GetSparkAppMetricsRequest struct {
-	// The ID of the Spark application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,9 +24,11 @@ type GetSparkAppMetricsRequest struct {
 	//
 	// s202204221525hzca7d8140000003
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
+	//
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all clusters in the target region.
 	//
 	// example:
 	//

@@ -68,7 +68,7 @@ func (s *DescribeDBResourceGroupResponseBody) Validate() error {
 type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	// The PromQL resource group configuration.
 	AtmConfig *DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty" type:"Struct"`
-	// The automatic stop interval, in the format of a number followed by m (minutes). The value ranges from 0m or 5m to 10080m. A value of 0m indicates that automatic stop is disabled.
+	// The auto-stop interval. The value is in the format of a number followed by "m", which indicates minutes. Valid values range from 0m or 5m to 10080m. A value of 0m indicates that the resource group does not automatically stop.
 	//
 	// example:
 	//
@@ -88,37 +88,37 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// SQL
 	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	// A reserved parameter. Not applicable.
+	// The reserved parameter. This parameter is not applicable.
 	//
 	// example:
 	//
 	// Reserved parameter
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// A reserved parameter. Not applicable.
+	// The reserved parameter. This parameter is not applicable.
 	//
 	// example:
 	//
 	// Reserved parameter
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	// The time when the resource group was created, in UTC. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i>.
+	// The time when the resource group was created. The time is displayed in UTC in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format.
 	//
 	// example:
 	//
 	// 2022-08-29T03:34:30Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The minimum elastic computing resources, in ACUs.
+	// The minimum elastic compute resources. Unit: ACU.
 	//
 	// example:
 	//
 	// 16ACU
 	ElasticMinComputeResource *string `json:"ElasticMinComputeResource,omitempty" xml:"ElasticMinComputeResource,omitempty"`
-	// Indicates whether the spot instance feature is enabled for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After you enable this feature, the unit price of resources decreases, but the instances may be released. Valid values:
 	//
-	// - **True**: The spot instance feature is enabled.
+	// - **True**: enables the spot instance feature.
 	//
-	// - **False**: The spot instance feature is disabled.
+	// - **False**: disables the spot instance feature.
 	//
-	// Only Job-type resource groups can be set to True.
+	// This parameter can be set to True only for Job resource groups.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The engine parameters.
 	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
-	// The GPU time-sharing elastic plan.
+	// The GPU time-based elastic plan.
 	GpuElasticPlan *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty" type:"Struct"`
-	// The resource group name.
+	// The name of the resource group.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// - **Job**
 	//
-	// > For more information about resource groups of the Data Lakehouse Edition, see [Resource group introduction (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// example:
 	//
@@ -158,13 +158,13 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// testb,testc
 	GroupUsers *string `json:"GroupUsers,omitempty" xml:"GroupUsers,omitempty"`
-	// A reserved parameter. Not applicable.
+	// The reserved parameter. This parameter is not applicable.
 	//
 	// example:
 	//
 	// Reserved parameter
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum reserved computing resources, in ACUs.
+	// The maximum reserved compute resources. Unit: ACU.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// 2
 	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
-	// The job routing rule message.
+	// The message of the job delivery rule.
 	//
 	// This parameter is required.
 	//
@@ -184,13 +184,13 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A reserved parameter. Not applicable.
+	// The reserved parameter. This parameter is not applicable.
 	//
 	// example:
 	//
 	// Reserved parameter
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum reserved computing resources, in ACUs.
+	// The minimum reserved compute resources. Unit: ACU.
 	//
 	// example:
 	//
@@ -204,21 +204,21 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	MinGpuQuantity *int32 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
 	// The Ray configuration information.
 	RayConfig *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
-	// The job routing rules.
+	// The job delivery rules.
 	Rules []*DescribeDBResourceGroupResponseBodyGroupsInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// A reserved parameter. Not applicable.
+	// The reserved parameter. This parameter is not applicable.
 	//
 	// example:
 	//
 	// Reserved parameter
 	RunningClusterCount *int32 `json:"RunningClusterCount,omitempty" xml:"RunningClusterCount,omitempty"`
-	// The scaling policy of the resource group. Valid values:
+	// The scale-out policy of the resource group. Valid values:
 	//
-	// - AutoScaling: enables the AutoScaling automatic scaling policy.
+	// - AutoScaling: enables the AutoScaling policy.
 	//
-	// - Disable: disables automatic scaling.
+	// - Disable: disables auto scaling.
 	//
-	// - MultiCluster: enables the MultiCluster automatic scaling policy.
+	// - MultiCluster: enables the MultiCluster policy.
 	//
 	// example:
 	//
@@ -230,29 +230,29 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// ADB.MLLarge.2
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// The resource group status. Valid values:
+	// The status of the resource group. Valid values:
 	//
-	// - **Pending**: being created.
+	// - **Pending**: The resource group is being created.
 	//
-	// - **Running**: running.
+	// - **Running**: The resource group is running.
 	//
-	// - **Scaling**: being scaled.
+	// - **Scaling**: The resource group is being scaled.
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: The resource group is being deleted.
 	//
-	// - **Deleted**: deleted.
+	// - **Deleted**: The resource group is deleted.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the target resource group.
+	// The name of the destination resource group.
 	//
 	// example:
 	//
 	// test
 	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
-	// The time when the resource group was last updated, in UTC. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i>.
+	// The time when the resource group was updated. The time is displayed in UTC in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format.
 	//
 	// example:
 	//
@@ -564,25 +564,25 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig struct {
 	//
 	// 2
 	AuthNodeNum *string `json:"AuthNodeNum,omitempty" xml:"AuthNodeNum,omitempty"`
-	// The node specifications of authentication nodes.
+	// The authentication node specifications.
 	//
 	// example:
 	//
 	// 8ACU
 	AuthNodeSpec *string `json:"AuthNodeSpec,omitempty" xml:"AuthNodeSpec,omitempty"`
-	// The number of write nodes.
+	// The number of insert nodes.
 	//
 	// example:
 	//
 	// 1
 	InsertNodeNum *string `json:"InsertNodeNum,omitempty" xml:"InsertNodeNum,omitempty"`
-	// The node specifications of write nodes.
+	// The insert node specifications.
 	//
 	// example:
 	//
 	// 8ACU
 	InsertNodeSpec *string `json:"InsertNodeSpec,omitempty" xml:"InsertNodeSpec,omitempty"`
-	// The cache size of query nodes.
+	// The cache size of the query node.
 	//
 	// example:
 	//
@@ -594,19 +594,19 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig struct {
 	//
 	// 1
 	SelectNodeNum *string `json:"SelectNodeNum,omitempty" xml:"SelectNodeNum,omitempty"`
-	// The node specifications of query nodes.
+	// The query node specifications.
 	//
 	// example:
 	//
 	// 8ACU
 	SelectNodeSpec *string `json:"SelectNodeSpec,omitempty" xml:"SelectNodeSpec,omitempty"`
-	// The disk size of storage nodes.
+	// The disk size of the storage node.
 	//
 	// example:
 	//
 	// 100
 	StorageNodeDiskSize *string `json:"StorageNodeDiskSize,omitempty" xml:"StorageNodeDiskSize,omitempty"`
-	// The disk type of storage nodes.
+	// The disk type of the storage node.
 	//
 	// example:
 	//
@@ -618,7 +618,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig struct {
 	//
 	// 2
 	StorageNodeNum *string `json:"StorageNodeNum,omitempty" xml:"StorageNodeNum,omitempty"`
-	// The node specifications of storage nodes.
+	// The storage node specifications.
 	//
 	// example:
 	//
@@ -738,7 +738,7 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig) Validate() erro
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan struct {
-	// Indicates whether the plan is enabled.
+	// Indicates whether the GPU time-based elastic plan is enabled.
 	//
 	// example:
 	//
@@ -788,13 +788,13 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) Validate()
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules struct {
-	// The end time in cron expression format. The interval must be at least 1 hour.
+	// The end time in cron expression format. The interval must be no less than 1 hour.
 	//
 	// example:
 	//
 	// 0 0 3 	- 	- ?
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
-	// The start time in cron expression format. The interval must be at least 1 hour.
+	// The start time in cron expression format. The interval must be no less than 1 hour.
 	//
 	// example:
 	//
@@ -840,15 +840,15 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig struct {
 	AppConfig *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig `json:"AppConfig,omitempty" xml:"AppConfig,omitempty" type:"Struct"`
 	// The Ray cluster type. Valid values:
 	//
-	// - BASIC: basic type, non-high-availability.
+	// - **BASIC**: the basic type, which is not highly available.
 	//
-	// - HIGH_AVAILABILITY: high-availability type.
+	// - **HIGH_AVAILABILITY**: the high-availability type.
 	//
 	// example:
 	//
 	// BASIC
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Indicates whether ENI is enabled.
+	// Specifies whether to enable the elastic network interface (ENI).
 	//
 	// if can be null:
 	// false
@@ -859,7 +859,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig struct {
 	//
 	// 1
 	HeadAllocateUnit *string `json:"HeadAllocateUnit,omitempty" xml:"HeadAllocateUnit,omitempty"`
-	// The disk capacity of the head node.
+	// The disk size of the head node.
 	//
 	// example:
 	//
@@ -877,33 +877,38 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig struct {
 	//
 	// cpu
 	HeadSpecType *string `json:"HeadSpecType,omitempty" xml:"HeadSpecType,omitempty"`
-	// The Ray cluster address.
+	// The address of the Ray cluster.
 	//
 	// example:
 	//
 	// http://ray-cluster-address.example.com
 	RayClusterAddress *string `json:"RayClusterAddress,omitempty" xml:"RayClusterAddress,omitempty"`
-	// The Ray Dashboard address.
+	// The address of the Ray dashboard.
 	//
 	// example:
 	//
 	// http://ray-dashboard-address.example.com
 	RayDashboardAddress *string `json:"RayDashboardAddress,omitempty" xml:"RayDashboardAddress,omitempty"`
-	// The Ray Grafana address.
+	// The address of Ray Grafana.
 	//
 	// example:
 	//
 	// http://ray-grafana-address.example.com
 	RayGrafanaAddress *string `json:"RayGrafanaAddress,omitempty" xml:"RayGrafanaAddress,omitempty"`
-	// The Ray Serve public address.
+	// The public endpoint of Ray Serve.
 	//
 	// example:
 	//
 	// 1.2.3.4:8100
 	RayServePublicAddress *string `json:"RayServePublicAddress,omitempty" xml:"RayServePublicAddress,omitempty"`
-	// The list of storage mounts.
-	StorageMounts           []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts `json:"StorageMounts,omitempty" xml:"StorageMounts,omitempty" type:"Repeated"`
-	UserDefinedRequirements *string                                                                `json:"UserDefinedRequirements,omitempty" xml:"UserDefinedRequirements,omitempty"`
+	// The list of mounted storage.
+	StorageMounts []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts `json:"StorageMounts,omitempty" xml:"StorageMounts,omitempty" type:"Repeated"`
+	// The custom Python dependencies for RayCluster. Specify the content in the requirements.txt format, with one pip dependency per line. A maximum of 200 lines are allowed, and each line cannot exceed 512 characters. Version constraints, extras, PEP 440 direct URLs, and # comments are supported, but shell metacharacters are not supported. This parameter applies only to AI resource groups of the RayCluster type.
+	//
+	// example:
+	//
+	// numpy==1.24.0
+	UserDefinedRequirements *string `json:"UserDefinedRequirements,omitempty" xml:"UserDefinedRequirements,omitempty"`
 	// The list of Ray worker groups.
 	WorkerGroups []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
 }
@@ -1070,13 +1075,13 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) Validate() erro
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig struct {
-	// The Ray application name.
+	// The name of the Ray application.
 	//
 	// example:
 	//
 	// app01
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The Ray application type.
+	// The type of the Ray application.
 	//
 	// example:
 	//
@@ -1146,7 +1151,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelecto
 	//
 	// vLLM
 	InferenceEngine *string `json:"InferenceEngine,omitempty" xml:"InferenceEngine,omitempty"`
-	// The LLM model.
+	// The large language model (LLM).
 	//
 	// example:
 	//
@@ -1205,7 +1210,12 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts struct 
 	// example:
 	//
 	// 1
-	StorageId   *int64  `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	StorageId *int64 `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	// The name of the mounted storage.
+	//
+	// example:
+	//
+	// training-data
 	StorageName *string `json:"StorageName,omitempty" xml:"StorageName,omitempty"`
 }
 
@@ -1273,19 +1283,19 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups struct {
 	//
 	// 1
 	MinWorkerQuantity *int32 `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
-	// The disk capacity per worker.
+	// The disk size of each worker.
 	//
 	// example:
 	//
 	// 100G
 	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
-	// The worker specification name.
+	// The specification of the worker.
 	//
 	// example:
 	//
 	// large
 	WorkerSpecName *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
-	// The Ray worker resource type.
+	// The resource type of the Ray worker.
 	//
 	// example:
 	//
@@ -1369,19 +1379,19 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) Val
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfoRules struct {
-	// The resource group name.
+	// The name of the resource group.
 	//
 	// example:
 	//
 	// user_default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The query execution time threshold, in milliseconds (ms).
+	// The threshold for query execution time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 180000
 	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	// The name of the target resource group.
+	// The name of the destination resource group.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iAllocateClusterPublicConnectionResponseBody interface {
 }
 
 type AllocateClusterPublicConnectionResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

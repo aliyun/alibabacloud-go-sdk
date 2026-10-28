@@ -22,7 +22,7 @@ type iDescribeUserQuotaResponseBody interface {
 }
 
 type DescribeUserQuotaResponseBody struct {
-	// The available elastic AnalyticDB compute units (ACUs).
+	// The available elastic ACUs.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type DescribeUserQuotaResponseBody struct {
 	//
 	// 0322C7FB-4584-5D2A-BF7F-F9036E940C35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The available reserved computing resources.
+	// The available reserved compute resources.
 	//
 	// example:
 	//
 	// 48 ACU
 	ReserverdCompteACU *string `json:"ReserverdCompteACU,omitempty" xml:"ReserverdCompteACU,omitempty"`
-	// The available reserved storage resources.
+	// The available storage compute resources.
 	//
 	// example:
 	//

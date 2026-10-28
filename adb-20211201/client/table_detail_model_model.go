@@ -38,55 +38,63 @@ type iTableDetailModel interface {
 }
 
 type TableDetailModel struct {
-	// External data source.
+	// The external data source.
 	//
 	// example:
 	//
 	// oss
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// Column information.
+	// The column information.
 	Columns []*ColDetailModel `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-01-05 13:17:55
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation source of the table.
 	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
-	CreatedByUser   *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
-	// Description.
+	// The user who created the table.
+	CreatedByUser *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
+	// The description.
 	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// Owner.
+	// The storage location of the table data.
+	//
+	// example:
+	//
+	// oss://**************
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The owner.
 	//
 	// example:
 	//
 	// abc
-	Owner      *string            `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The table property parameters.
 	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// Logical database name.
+	// The logical database name.
 	//
 	// example:
 	//
 	// schemaName
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// Logical table name.
+	// The logical table name.
 	//
 	// example:
 	//
 	// tableName
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// Table type.
+	// The table type.
 	//
 	// example:
 	//
 	// PHYSICAL_SCHEMA_NAME
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	// Update time.
+	// The update time.
 	//
 	// example:
 	//

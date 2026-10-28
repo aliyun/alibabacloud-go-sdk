@@ -32,7 +32,7 @@ type DescribeOversizeNonPartitionTableInfosResponseBody struct {
 	//
 	// am-bp16t5ci7r74s****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The queried detection items and detection results.
+	// The list of check items and check results.
 	DetectionItems []*DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -42,11 +42,11 @@ type DescribeOversizeNonPartitionTableInfosResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type DescribeOversizeNonPartitionTableInfosResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried oversized non-partitioned tables.
+	// The information about unreasonable non-partitioned tables.
 	Tables []*DescribeOversizeNonPartitionTableInfosResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -162,19 +162,19 @@ func (s *DescribeOversizeNonPartitionTableInfosResponseBody) Validate() error {
 }
 
 type DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems struct {
-	// The information about the detection result.
+	// The check result message.
 	//
 	// example:
 	//
 	// Multiple oversized non-partitioned tables are detected.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the detection item.
+	// The name of the check item.
 	//
 	// example:
 	//
 	// Oversized non-partitioned table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The severity level of the detection result.
+	// The status of the check result.
 	//
 	// example:
 	//
@@ -226,13 +226,13 @@ func (s *DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems) Valid
 }
 
 type DescribeOversizeNonPartitionTableInfosResponseBodyTables struct {
-	// The data size of the table. Unit: bytes.
+	// The size of table data. Unit: bytes.
 	//
 	// example:
 	//
 	// 2921132457984
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The data size of regular indexes. Unit: bytes.
+	// The size of normal index data. Unit: bytes.
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ type DescribeOversizeNonPartitionTableInfosResponseBodyTables struct {
 	//
 	// 1223
 	LocalDataSize *int64 `json:"LocalDataSize,omitempty" xml:"LocalDataSize,omitempty"`
-	// The data size of the primary key index. Unit: bytes.
+	// The size of the primary key index. Unit: bytes.
 	//
 	// example:
 	//
@@ -268,9 +268,9 @@ type DescribeOversizeNonPartitionTableInfosResponseBodyTables struct {
 	//
 	// adb_demo
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The percentage of the table size. Unit: %.
+	// The tablespace proportion. Unit: %.
 	//
-	// >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+	// > Calculation formula: Tablespace proportion = (Total data size of the table / Total data size of the instance) × 100.
 	//
 	// example:
 	//

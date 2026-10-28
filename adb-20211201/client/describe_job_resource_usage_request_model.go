@@ -34,7 +34,7 @@ type DescribeJobResourceUsageRequest struct {
 	//
 	// am-uf6g8w25jacm7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i> (UTC).
+	// The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i> (UTC time).
 	//
 	// This parameter is required.
 	//
@@ -61,9 +61,14 @@ type DescribeJobResourceUsageRequest struct {
 	// example:
 	//
 	// 30
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the Spark application, which is used to filter job resource usage.
+	//
+	// example:
+	//
+	// SparkTest
 	SparkAppName *string `json:"SparkAppName,omitempty" xml:"SparkAppName,omitempty"`
-	// The start time of the query. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i> (UTC).
+	// The start time of the query. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i> (UTC time).
 	//
 	// This parameter is required.
 	//

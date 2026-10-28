@@ -17,10 +17,12 @@ type iModifyDBClusterSSLRequest interface {
 	GetEnableSSL() *bool
 	SetRegionId(v string) *ModifyDBClusterSSLRequest
 	GetRegionId() *string
+	SetSSLEnabled(v string) *ModifyDBClusterSSLRequest
+	GetSSLEnabled() *string
 }
 
 type ModifyDBClusterSSLRequest struct {
-	// The private or public endpoint for which the server certificate needs to be created or updated.
+	// The internal or public endpoint for which to create or update a server certificate.
 	//
 	// example:
 	//
@@ -34,13 +36,11 @@ type ModifyDBClusterSSLRequest struct {
 	//
 	// amv-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable SSL encryption. Valid values:
+	// Specifies whether to enable SSL connection encryption. Valid values:
 	//
-	// 	- **true**: enabled
+	// - **true**: Enabled.
 	//
-	// 	- **false**: disabled
-	//
-	// This parameter is required.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -52,6 +52,18 @@ type ModifyDBClusterSSLRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The SSL operation. This parameter and EnableSSL are mutually exclusive. Valid values:
+	//
+	// - Enable: Enables SSL.
+	//
+	// - Disable: Disables SSL.
+	//
+	// - Update: Updates the validity period of an enabled SSL certificate and retains the current endpoint bound to the certificate. When you set this parameter to Update, do not specify ConnectionString, or specify an endpoint that is the same as the current endpoint bound to the certificate.
+	//
+	// example:
+	//
+	// Update
+	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 }
 
 func (s ModifyDBClusterSSLRequest) String() string {
@@ -78,6 +90,10 @@ func (s *ModifyDBClusterSSLRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ModifyDBClusterSSLRequest) GetSSLEnabled() *string {
+	return s.SSLEnabled
+}
+
 func (s *ModifyDBClusterSSLRequest) SetConnectionString(v string) *ModifyDBClusterSSLRequest {
 	s.ConnectionString = &v
 	return s
@@ -95,6 +111,11 @@ func (s *ModifyDBClusterSSLRequest) SetEnableSSL(v bool) *ModifyDBClusterSSLRequ
 
 func (s *ModifyDBClusterSSLRequest) SetRegionId(v string) *ModifyDBClusterSSLRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDBClusterSSLRequest) SetSSLEnabled(v string) *ModifyDBClusterSSLRequest {
+	s.SSLEnabled = &v
 	return s
 }
 

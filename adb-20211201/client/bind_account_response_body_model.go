@@ -14,7 +14,7 @@ type iBindAccountResponseBody interface {
 }
 
 type BindAccountResponseBody struct {
-	// ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

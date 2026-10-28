@@ -32,19 +32,19 @@ type iDescribeAvailableAdvicesRequest interface {
 }
 
 type DescribeAvailableAdvicesRequest struct {
-	// The date when the advice was generated, in the `yyyyMMdd` format.
+	// The generation date of the suggestion, in the yyyyMMdd format.
 	//
-	// > Advice is generated daily. To query for advice, specify a date at least one day before the current date. For example, if you query on June 27, 2024, set this parameter to `20240626` or an earlier date.
+	// > Data is generated after daily analysis in the early morning. Therefore, you must specify a date of T-1 or earlier to query the data. For example, if today is 20240627, you must specify 20240626 or an earlier date.
 	//
 	// example:
 	//
 	// 20221124
 	AdviceDate *int64 `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
-	// The type of advice. Valid values:
+	// The type of the suggestion. Valid values:
 	//
-	// - **INDEX**: index optimization.
+	// - **INDEX**: Index optimization.
 	//
-	// - **TIERING**: hot and cold data tiering.
+	// - **TIERING**: Hot and cold data optimization.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type DescribeAvailableAdvicesRequest struct {
 	//
 	// am-bp198m028ih55****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The keyword for a fuzzy search on table names.
+	// The query keyword. Fuzzy search by table name is supported.
 	//
 	// example:
 	//
 	// you_table_name
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The display language for the advice. Valid values:
+	// The display language of the suggestions. Valid values:
 	//
 	// - **zh**: Simplified Chinese (default).
 	//
@@ -78,29 +78,29 @@ type DescribeAvailableAdvicesRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies the sort order for the results. The value is a JSON string. Example: `[{"Field":"SchemaName","Type":"Asc"}]`. The JSON string contains the following key-value pairs:
+	// The field by which to sort the query results. The value is a JSON string. Example: `[{"Field":"SchemaName","Type":"Asc"}]`. Parameters:
 	//
-	// - `Field`: the field to sort by. Valid values:
+	// - `Field`: the sort field. Valid values:
 	//
-	//   - `SchemaName`: the database name.
+	//     - `SchemaName`: the database name.
 	//
-	//   - `TableName`: the table name.
+	//     - `TableName`: the table name.
 	//
-	//   - `Benefit`: the expected benefit.
+	//     - `Benefit`: the expected optimization benefit.
 	//
 	// - `Type`: the sort order. Valid values:
 	//
-	//   - `Asc`: ascending order.
+	//     - `Asc`: ascending order.
 	//
-	//   - `Desc`: descending order.
+	//     - `Desc`: descending order.
 	//
-	// > By default, results are sorted by expected benefit in descending order.
+	// > If this parameter is not specified, the results are sorted in descending order of the expected optimization benefit by default.
 	//
 	// example:
 	//
 	// [{\\"Field\\":\\"AdviceType\\",\\"Type\\":\\"Desc\\"}]
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. The value must be an integer that is greater than 0. Default value: 1.
+	// The page number. Valid values: greater than 0 and up to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type DescribeAvailableAdvicesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A concatenation of the database name and the table name.
+	// The concatenated string of the database name and table name.
 	//
 	// example:
 	//

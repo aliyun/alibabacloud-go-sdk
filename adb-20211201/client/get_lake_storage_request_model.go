@@ -24,7 +24,7 @@ type GetLakeStorageRequest struct {
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The lake storage ID.
+	// The instance ID.
 	//
 	// example:
 	//

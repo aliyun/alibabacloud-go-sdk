@@ -20,7 +20,7 @@ type LoadSampleDataSetResponseBody struct {
 	//
 	// example:
 	//
-	// amv-2ze0z517o1mg****
+	// amv-2ze0z517o1mgp66a
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The request ID.
 	//

@@ -22,9 +22,9 @@ type iGetSparkAppLogRequest interface {
 }
 
 type GetSparkAppLogRequest struct {
-	// The Spark application ID.
+	// The application ID.
 	//
-	// > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query the Spark application ID.
+	// > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query the ID of the Spark application.
 	//
 	// This parameter is required.
 	//
@@ -32,27 +32,29 @@ type GetSparkAppLogRequest struct {
 	//
 	// s202206061441hz22a35ab000****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
+	//
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in the target region.
 	//
 	// example:
 	//
 	// amv-2ze6fl8ud7t***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
+	// The number of log lines. Valid values: 1 to 500. Default value: 300.
 	//
 	// example:
 	//
 	// 20
 	LogLength *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
-	// The page number.
+	// The page number for reading logs.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of data rows per page.
 	//
 	// example:
 	//

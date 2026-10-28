@@ -48,7 +48,7 @@ type QueryFormationInstsByTaskIDResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The task list.
 	Items []map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The response message. OK is returned if the request was successful.
+	// The message. The value is OK when the request is successful.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type QueryFormationInstsByTaskIDResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ func (s *QueryFormationInstsByTaskIDResponseBody) Validate() error {
 }
 
 type QueryFormationInstsByTaskIDResponseBodyData struct {
-	// The time when the task was created.
+	// The creation time of the task.
 	//
 	// example:
 	//
@@ -242,9 +242,9 @@ type QueryFormationInstsByTaskIDResponseBodyData struct {
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	// The task source. Valid values:
 	//
-	// - **system**: system.
+	// - **system**: System.
 	//
-	// - **custom**: custom.
+	// - **custom**: Custom.
 	//
 	// example:
 	//

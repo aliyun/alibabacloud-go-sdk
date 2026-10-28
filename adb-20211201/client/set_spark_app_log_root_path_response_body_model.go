@@ -16,9 +16,9 @@ type iSetSparkAppLogRootPathResponseBody interface {
 }
 
 type SetSparkAppLogRootPathResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *SetSparkAppLogRootPathResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *SetSparkAppLogRootPathResponseBody) Validate() error {
 }
 
 type SetSparkAppLogRootPathResponseBodyData struct {
-	// The default log path.
+	// The recommended default path.
 	//
 	// example:
 	//
 	// oss://testBucketname/to/log
 	DefaultLogPath *string `json:"DefaultLogPath,omitempty" xml:"DefaultLogPath,omitempty"`
-	// Indicates whether a log path exists.
+	// Indicates whether the log path exists.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type SetSparkAppLogRootPathResponseBodyData struct {
 	//
 	// 1675236908
 	ModifiedTimestamp *string `json:"ModifiedTimestamp,omitempty" xml:"ModifiedTimestamp,omitempty"`
-	// The modifier ID.
+	// The ID of the modifier.
 	//
 	// example:
 	//

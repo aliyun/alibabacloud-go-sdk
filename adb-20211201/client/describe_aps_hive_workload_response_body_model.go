@@ -16,7 +16,7 @@ type iDescribeApsHiveWorkloadResponseBody interface {
 }
 
 type DescribeApsHiveWorkloadResponseBody struct {
-	// The queried job.
+	// The workload information.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {
 	//
 	// test.adv.config=value
 	AdvancedConfig *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
-	// The policy to handle tables with the same name in the destination cluster.
+	// The handling strategy when a database or table with the same name exists at the destination.
 	//
 	// example:
 	//
 	// Intercept
 	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
-	// The time when the workload was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -96,37 +96,37 @@ type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {
 	//
 	// 8
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
 	// sls-******
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// The ID of the E-MapReduce (EMR) cluster.
+	// The EMR cluster ID.
 	//
 	// example:
 	//
 	// -
 	EmrClusterId *string `json:"EmrClusterId,omitempty" xml:"EmrClusterId,omitempty"`
-	// The number of AnalyticDB compute units (ACUs) required for migration.
+	// The number of ACUs required for migration.
 	//
 	// example:
 	//
 	// 16
 	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
-	// The URL of the Hive Metastore.
+	// The Hive metastore URL.
 	//
 	// example:
 	//
 	// -
 	MetaStoreUri *string `json:"MetaStoreUri,omitempty" xml:"MetaStoreUri,omitempty"`
-	// The Object Storage Service (OSS) URL of the AnalyticDB for MySQL cluster data.
+	// The OSS address.
 	//
 	// example:
 	//
 	// oss://******
 	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
-	// The number of tasks that are allowed in parallel.
+	// The degree of parallelism.
 	//
 	// example:
 	//
@@ -138,25 +138,25 @@ type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group to which the SQL statement belongs.
+	// The resource pool to which the SQL statement belongs.
 	//
 	// example:
 	//
 	// test
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The status of the workload.
+	// The status.
 	//
 	// example:
 	//
 	// COMPLETED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The expression that manually matches the source database table whitelist.
+	// The whitelist expression for manually matching source databases and tables.
 	//
 	// example:
 	//
 	// abc
 	SyncAllowExpression *string `json:"SyncAllowExpression,omitempty" xml:"SyncAllowExpression,omitempty"`
-	// Manually match the blacklist expressions for source database tables.
+	// The blacklist expression for manually matching source databases and tables.
 	//
 	// example:
 	//
@@ -168,25 +168,25 @@ type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {
 	//
 	// OSS
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The name of the vSwitch.
+	// The vSwitch name.
 	//
 	// example:
 	//
 	// vsw-******
 	Vswitch *string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
-	// The job ID.
+	// The data link task ID.
 	//
 	// example:
 	//
 	// aps-******
 	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
-	// The name of the workload.
+	// The workload name.
 	//
 	// example:
 	//
 	// test
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
-	// The name of the workload.
+	// The workload name.
 	//
 	// example:
 	//

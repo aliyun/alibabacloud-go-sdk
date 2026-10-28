@@ -34,7 +34,7 @@ type iDescribeBackupsRequest interface {
 }
 
 type DescribeBackupsRequest struct {
-	// The backup set ID.
+	// The ID of the backup set.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeBackupsRequest struct {
 	//
 	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in a specific region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in the specified region.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeBackupsRequest struct {
 	//
 	// am-bp18934i73vb5****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the \\`yyyy-MM-ddTHH:mmZ\\` format.
+	// The end time of the query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// This parameter is required.
 	//
@@ -62,13 +62,13 @@ type DescribeBackupsRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the integer data type. Default value: 1.
+	// The page number. Valid values: positive integers that are greater than 0 and do not exceed the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// - 30
 	//
@@ -82,7 +82,7 @@ type DescribeBackupsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to query only cross-region backups. Set the value to true to query only cross-region backups. Set the value to false to query only local backups.
+	// Specifies whether to query only cross-region backups. If you set this parameter to true, only cross-region backups are queried. If you set this parameter to false, only local backups are queried.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeBackupsRequest struct {
 	Remote               *bool   `json:"Remote,omitempty" xml:"Remote,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the \\`yyyy-MM-ddTHH:mmZ\\` format.
+	// The start time of the query. Specify the time in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// This parameter is required.
 	//

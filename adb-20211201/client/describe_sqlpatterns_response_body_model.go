@@ -24,7 +24,7 @@ type iDescribeSQLPatternsResponseBody interface {
 }
 
 type DescribeSQLPatternsResponseBody struct {
-	// Details about the access denial. This parameter is returned only if RAM authentication fails.
+	// The details of the access denial. This field is returned only when RAM authentication fails.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeSQLPatternsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of SQL patterns.
+	// The list of patterns.
 	PatternDetails []*DescribeSQLPatternsResponseBodyPatternDetails `json:"PatternDetails,omitempty" xml:"PatternDetails,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -150,115 +150,115 @@ func (s *DescribeSQLPatternsResponseBody) Validate() error {
 }
 
 type DescribeSQLPatternsResponseBodyPatternDetails struct {
-	// The client IP address used to submit the queries.
+	// The IP address of the client that submitted the SQL statement related to the pattern.
 	//
 	// example:
 	//
 	// 192.168.xx.xx
 	AccessIp *string `json:"AccessIp,omitempty" xml:"AccessIp,omitempty"`
-	// The average execution time of queries matching this pattern. Unit: milliseconds.
+	// The average execution time of the pattern within the specified time range. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 234.78
 	AverageExecutionTime *float64 `json:"AverageExecutionTime,omitempty" xml:"AverageExecutionTime,omitempty"`
-	// The average CPU cost for queries that match this pattern. Unit: milliseconds.
+	// The average CPU cost. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 5
 	AverageOperatorCost *float64 `json:"AverageOperatorCost,omitempty" xml:"AverageOperatorCost,omitempty"`
-	// The average peak memory usage of queries matching this pattern. Unit: bytes.
+	// The average peak memory usage of the pattern within the specified time range. Unit: bytes.
 	//
 	// example:
 	//
 	// 234.22
 	AveragePeakMemory *float64 `json:"AveragePeakMemory,omitempty" xml:"AveragePeakMemory,omitempty"`
-	// The average duration of queries matching this pattern. Unit: milliseconds.
+	// The average total time consumed by the pattern within the specified time range. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 4
 	AverageQueryTime *float64 `json:"AverageQueryTime,omitempty" xml:"AverageQueryTime,omitempty"`
-	// The average scan time for queries that match this pattern. Unit: milliseconds.
+	// The average scan time.
 	//
 	// example:
 	//
 	// 5
 	AverageScanCost *float64 `json:"AverageScanCost,omitempty" xml:"AverageScanCost,omitempty"`
-	// The average amount of data scanned by queries matching this pattern. Unit: bytes.
+	// The average amount of data read by the pattern within the specified time range. Unit: bytes.
 	//
 	// example:
 	//
 	// 234149.23
 	AverageScanSize *float64 `json:"AverageScanSize,omitempty" xml:"AverageScanSize,omitempty"`
-	// Indicates whether queries that match this pattern can be blocked. Valid values:
+	// Specifies whether the execution of the current SQL pattern can be blocked. Valid values:
 	//
-	// - **true**: The queries can be blocked.
+	// 	- **true**: The execution can be blocked.
 	//
-	// - **false**: The queries cannot be blocked.
+	// 	- **false**: The execution cannot be blocked.
 	//
-	// > Currently, AnalyticDB for MySQL allows you to block only SELECT and INSERT statements.
+	// > Currently, AnalyticDB for MySQL only supports blocking SELECT and INSERT statements.
 	//
 	// example:
 	//
 	// true
 	Blockable *bool `json:"Blockable,omitempty" xml:"Blockable,omitempty"`
-	// The number of failed queries that match this pattern.
+	// The number of failed executions of the pattern within the specified time range.
 	//
 	// example:
 	//
 	// 18
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The maximum execution time of a query matching this pattern. Unit: milliseconds.
+	// The maximum execution time of the pattern within the specified time range. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 2142
 	MaxExecutionTime *int64 `json:"MaxExecutionTime,omitempty" xml:"MaxExecutionTime,omitempty"`
-	// The maximum CPU cost for a query that matches this pattern. Unit: milliseconds.
+	// The maximum CPU cost. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 5
 	MaxOperatorCost *float64 `json:"MaxOperatorCost,omitempty" xml:"MaxOperatorCost,omitempty"`
-	// The maximum peak memory usage of a query matching this pattern. Unit: bytes.
+	// The maximum peak memory usage for the SQL statement related to the pattern. Unit: bytes.
 	//
 	// example:
 	//
 	// 234149
 	MaxPeakMemory *int64 `json:"MaxPeakMemory,omitempty" xml:"MaxPeakMemory,omitempty"`
-	// The maximum duration of a query matching this pattern. Unit: milliseconds.
+	// The maximum total time consumed by the pattern within the specified time range. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 2341
 	MaxQueryTime *int64 `json:"MaxQueryTime,omitempty" xml:"MaxQueryTime,omitempty"`
-	// The maximum scan time for a query that matches this pattern. Unit: milliseconds.
+	// The maximum scan time.
 	//
 	// example:
 	//
 	// 5
 	MaxScanCost *float64 `json:"MaxScanCost,omitempty" xml:"MaxScanCost,omitempty"`
-	// The maximum amount of data scanned by a query matching this pattern. Unit: bytes.
+	// The maximum amount of data read by the SQL statement related to the pattern. Unit: bytes.
 	//
 	// example:
 	//
 	// 32212254
 	MaxScanSize *int64 `json:"MaxScanSize,omitempty" xml:"MaxScanSize,omitempty"`
-	// The total CPU cost of queries matching this pattern as a percentage of the total CPU cost for all queries. Unit: %.
+	// The percentage of the total CPU cost. Unit: %.
 	//
 	// example:
 	//
 	// 20
 	OperatorCostPercentage *float64 `json:"OperatorCostPercentage,omitempty" xml:"OperatorCostPercentage,omitempty"`
-	// The total CPU cost for all queries that match this pattern. Unit: milliseconds.
+	// The total CPU cost. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 5
 	OperatorCostSum *float64 `json:"OperatorCostSum,omitempty" xml:"OperatorCostSum,omitempty"`
-	// The submission time of the first query that matches this pattern within the specified time range.
+	// The earliest submission time of the pattern within the specified time range.
 	//
 	// example:
 	//
@@ -270,73 +270,73 @@ type DescribeSQLPatternsResponseBodyPatternDetails struct {
 	//
 	// 5575924945138******
 	PatternId *string `json:"PatternId,omitempty" xml:"PatternId,omitempty"`
-	// The total peak memory usage of queries matching this pattern as a percentage of the total peak memory usage for all queries. Unit: %.
+	// The percentage of the total peak memory usage of a single pattern within the query time range out of the total peak memory usage of all patterns. Unit: %.
 	//
 	// example:
 	//
 	// 10
 	PeakMemoryPercentage *float64 `json:"PeakMemoryPercentage,omitempty" xml:"PeakMemoryPercentage,omitempty"`
-	// The sum of the peak memory usage for all queries that match this pattern. Unit: bytes.
+	// The total peak memory usage. Unit: bytes.
 	//
 	// example:
 	//
 	// 5
 	PeakMemorySum *float64 `json:"PeakMemorySum,omitempty" xml:"PeakMemorySum,omitempty"`
-	// The number of executed queries that match this pattern.
+	// The number of executions of the pattern within the specified time range.
 	//
 	// example:
 	//
 	// 345
 	QueryCount *int64 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	// The total query time of queries matching this pattern as a percentage of the total query time for all queries. Unit: %.
+	// The percentage of the time consumed by a single pattern within the query time range out of the total time consumed by all patterns. Unit: %.
 	//
 	// example:
 	//
 	// 10
 	QueryTimePercentage *float64 `json:"QueryTimePercentage,omitempty" xml:"QueryTimePercentage,omitempty"`
-	// The total query duration for all queries that match this pattern. Unit: milliseconds.
+	// The total time consumed. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 5
 	QueryTimeSum *float64 `json:"QueryTimeSum,omitempty" xml:"QueryTimeSum,omitempty"`
-	// The SQL pattern.
+	// The SQL statement of the pattern.
 	//
 	// example:
 	//
 	// SELECT 	- FROM KEPLER_META_NODE_STATIC_INFO WHERE elastic_node = ? OR (elastic_node = ? AND enable = ?)
 	SQLPattern *string `json:"SQLPattern,omitempty" xml:"SQLPattern,omitempty"`
-	// The total scan cost of queries matching this pattern as a percentage of the total scan cost for all queries. Unit: %.
+	// The percentage of the total data scan cost. Unit: %.
 	//
 	// example:
 	//
 	// 5
 	ScanCostPercentage *float64 `json:"ScanCostPercentage,omitempty" xml:"ScanCostPercentage,omitempty"`
-	// The total scan cost for all queries that match this pattern. Unit: milliseconds.
+	// The total data scan cost. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 5
 	ScanCostSum *float64 `json:"ScanCostSum,omitempty" xml:"ScanCostSum,omitempty"`
-	// The total amount of data scanned by queries matching this pattern as a percentage of the total data scanned by all queries. Unit: %.
+	// The percentage of the total amount of data scanned by a single pattern within the query time range out of the total amount of data scanned by all patterns. Unit: %.
 	//
 	// example:
 	//
 	// 80
 	ScanSizePercentage *float64 `json:"ScanSizePercentage,omitempty" xml:"ScanSizePercentage,omitempty"`
-	// The total amount of data scanned by all queries that match this pattern. Unit: bytes.
+	// The total amount of scanned data. Unit: bytes.
 	//
 	// example:
 	//
 	// 5
 	ScanSizeSum *float64 `json:"ScanSizeSum,omitempty" xml:"ScanSizeSum,omitempty"`
-	// The tables scanned by the SQL pattern.
+	// The list of tables scanned by the SQL pattern.
 	//
 	// example:
 	//
 	// tpch.orders
 	Tables *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
-	// The name of the database user who submitted the matching SQL statements.
+	// The name of the database user that submitted the SQL statement related to the pattern.
 	//
 	// example:
 	//

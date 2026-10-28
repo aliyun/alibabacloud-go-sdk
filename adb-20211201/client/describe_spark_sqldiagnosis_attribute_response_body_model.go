@@ -28,7 +28,7 @@ type iDescribeSparkSQLDiagnosisAttributeResponseBody interface {
 }
 
 type DescribeSparkSQLDiagnosisAttributeResponseBody struct {
-	// The information about the request denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -36,27 +36,27 @@ type DescribeSparkSQLDiagnosisAttributeResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The application ID.
 	//
-	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
+	// > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query the ID of the Spark application.
 	//
 	// example:
 	//
 	// s202411071444hzdvk486d9d2001****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The queried diagnostic information.
+	// The collection of diagnostic suggestions.
 	DiagnosisInfos []*Adb4MysqlSparkDiagnosisInfo `json:"DiagnosisInfos,omitempty" xml:"DiagnosisInfos,omitempty" type:"Repeated"`
-	// The execution duration of the query. Unit: milliseconds.
+	// The actual execution time, in milliseconds.
 	//
 	// example:
 	//
 	// 100
 	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The ID of the query executed within the Spark application.
+	// The internal query execution ID of the Spark application.
 	//
 	// example:
 	//
 	// 1
 	InnerQueryId *int64 `json:"InnerQueryId,omitempty" xml:"InnerQueryId,omitempty"`
-	// The operators sorted by metrics.
+	// The operator queue sorted by metrics.
 	OperatorListSortedByMetrics *DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics `json:"OperatorListSortedByMetrics,omitempty" xml:"OperatorListSortedByMetrics,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -172,9 +172,9 @@ func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) Validate() error {
 }
 
 type DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics struct {
-	// The operators sorted by the execution duration.
+	// The operator queue sorted by execution time.
 	OperatorListSortedByExclusiveTime []*SparkOperatorInfo `json:"OperatorListSortedByExclusiveTime,omitempty" xml:"OperatorListSortedByExclusiveTime,omitempty" type:"Repeated"`
-	// The operators sorted by the maximum memory used.
+	// The operator queue sorted by maximum memory consumption.
 	OperatorListSortedByMaxMemory []*SparkOperatorInfo `json:"OperatorListSortedByMaxMemory,omitempty" xml:"OperatorListSortedByMaxMemory,omitempty" type:"Repeated"`
 }
 

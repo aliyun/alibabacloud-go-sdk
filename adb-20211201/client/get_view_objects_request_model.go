@@ -52,29 +52,27 @@ type GetViewObjectsRequest struct {
 	//
 	// test_filter
 	FilterViewName *string `json:"FilterViewName,omitempty" xml:"FilterViewName,omitempty"`
-	// The view type.
-	//
-	// Valid values:
+	// The view type. Valid values:
 	//
 	// - VIRTUAL_VIEW
 	//
 	// - MATERIALIZED_VIEW
 	//
-	// Default value: null.
+	// Default value: empty.
 	//
 	// example:
 	//
 	// VIRTUAL_VIEW
 	FilterViewType *string `json:"FilterViewType,omitempty" xml:"FilterViewType,omitempty"`
-	// The sorting field.
+	// The sort field.
 	//
-	// Valid values for Type:
+	// Valid values for the sort type:
 	//
 	// - Asc
 	//
 	// - Desc
 	//
-	// Valid values for Field:
+	// Valid values for the sort field:
 	//
 	// - ViewName
 	//
@@ -96,11 +94,11 @@ type GetViewObjectsRequest struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default).
+	// 	- **30*	- (default)
 	//
-	// 	- **50**.
+	// 	- **50**
 	//
-	// 	- **100**.
+	// 	- **100**
 	//
 	// example:
 	//
