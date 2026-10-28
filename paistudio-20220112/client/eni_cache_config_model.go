@@ -16,7 +16,13 @@ type iEniCacheConfig interface {
 }
 
 type EniCacheConfig struct {
+  // The size of the cache pool.
+  // 
+  // example:
+  // 
+  // 0
   CachePoolSize *int32 `json:"CachePoolSize,omitempty" xml:"CachePoolSize,omitempty"`
+  // Specifies whether it is enabled.
   Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 

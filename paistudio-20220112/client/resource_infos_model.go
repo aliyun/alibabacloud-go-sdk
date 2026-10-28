@@ -32,16 +32,54 @@ type iResourceInfos interface {
 }
 
 type ResourceInfos struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	EcsSpec      *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	GpuCardType  *string `json:"GpuCardType,omitempty" xml:"GpuCardType,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// c1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ECS instance type information.
+	//
+	// example:
+	//
+	// ecs.gn5-c8g1.2xlarge
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The GPU card type.
+	GpuCardType *string `json:"GpuCardType,omitempty" xml:"GpuCardType,omitempty"`
+	// The machine model.
 	MachineModel *string `json:"MachineModel,omitempty" xml:"MachineModel,omitempty"`
-	MaxQuota     *int64  `json:"MaxQuota,omitempty" xml:"MaxQuota,omitempty"`
+	// The maximum quota.
+	//
+	// example:
+	//
+	// 100
+	MaxQuota *int64 `json:"MaxQuota,omitempty" xml:"MaxQuota,omitempty"`
+	// The network pod ID.
 	NetworkPodId *string `json:"NetworkPodId,omitempty" xml:"NetworkPodId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UsedQuota    *int64  `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The used quota.
+	//
+	// example:
+	//
+	// 10
+	UsedQuota *int64 `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 123456789
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// test
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ResourceInfos) String() string {

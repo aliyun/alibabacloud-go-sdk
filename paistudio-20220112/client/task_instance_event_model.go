@@ -24,11 +24,37 @@ type iTaskInstanceEvent interface {
 }
 
 type TaskInstanceEvent struct {
-	GmtEndTime   *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	// The end time.
+	//
+	// example:
+	//
+	// 2023-06-22T00:02:00Z
+	GmtEndTime *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	// The start time.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PodName      *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The message content.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the pod involved in the task.
+	//
+	// example:
+	//
+	// test
+	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	// The status.
+	//
+	// example:
+	//
+	// Complete
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The sub-product type involved in the task.
+	//
+	// example:
+	//
+	// dlc
 	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
 }
 

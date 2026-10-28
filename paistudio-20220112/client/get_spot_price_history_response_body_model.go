@@ -24,9 +24,9 @@ type GetSpotPriceHistoryResponseBody struct {
 	//
 	// 8BDA4440-DD3C-5F4B-BBDD-94A9CE1E75C7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of historical spot instance price details
+	// The list of historical price details of spot instances.
 	SpotPriceHistory []*SpotPriceItem `json:"SpotPriceHistory,omitempty" xml:"SpotPriceHistory,omitempty" type:"Repeated"`
-	// The total number of historical spot instance prices
+	// The total number of historical prices of spot instances.
 	//
 	// example:
 	//

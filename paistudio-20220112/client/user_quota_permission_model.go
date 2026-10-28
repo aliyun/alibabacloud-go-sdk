@@ -16,8 +16,14 @@ type iUserQuotaPermission interface {
 }
 
 type UserQuotaPermission struct {
+	// The permissions.
 	Permissions []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	QuotaId     *string   `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// Quota ID
+	//
+	// example:
+	//
+	// quotamtl37ge7gkvdz
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 }
 
 func (s UserQuotaPermission) String() string {

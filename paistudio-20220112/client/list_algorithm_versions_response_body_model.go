@@ -18,7 +18,7 @@ type iListAlgorithmVersionsResponseBody interface {
 }
 
 type ListAlgorithmVersionsResponseBody struct {
-	// A list of algorithm version details.
+	// The list of algorithm version details.
 	AlgorithmVersions []*ListAlgorithmVersionsResponseBodyAlgorithmVersions `json:"AlgorithmVersions,omitempty" xml:"AlgorithmVersions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -107,25 +107,25 @@ type ListAlgorithmVersionsResponseBodyAlgorithmVersions struct {
 	//
 	// v0.1.0
 	AlgorithmVersion *string `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
-	// The time when the algorithm was created.
+	// The time when the algorithm was created, in ISO 8601 format, in UTC.
 	//
 	// example:
 	//
 	// 2024-01-19T02:00:26Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the algorithm was last updated.
+	// The time when the algorithm was last updated, in ISO 8601 format, in UTC.
 	//
 	// example:
 	//
 	// 2024-01-22T02:00:59Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The tenant ID that owns the algorithm.
+	// The ID of the tenant to which the algorithm belongs.
 	//
 	// example:
 	//
 	// 123456789
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The user ID that owns the algorithm.
+	// The ID of the user to which the algorithm belongs.
 	//
 	// example:
 	//

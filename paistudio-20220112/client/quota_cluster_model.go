@@ -22,11 +22,28 @@ type iQuotaCluster interface {
 }
 
 type QuotaCluster struct {
-	ClusterType *string            `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	DataSources []*DataSource      `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	Endpoints   map[string]*string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
-	Image       *string            `json:"Image,omitempty" xml:"Image,omitempty"`
-	Status      *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The cluster type.
+	//
+	// example:
+	//
+	// RayCluster
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The datasource config.
+	DataSources []*DataSource `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The service access endpoints.
+	Endpoints map[string]*string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
+	// The container image address.
+	//
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai-training/kmeans:v1.0.0
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The status.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QuotaCluster) String() string {

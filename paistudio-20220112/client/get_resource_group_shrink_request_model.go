@@ -16,13 +16,13 @@ type iGetResourceGroupShrinkRequest interface {
 }
 
 type GetResourceGroupShrinkRequest struct {
-	// Optional. Defaults to `true`.
+	// Specifies whether to enable AI workspace data. This parameter is optional. Default value: true.
 	//
 	// example:
 	//
 	// true
 	IsAIWorkspaceDataEnabled *bool `json:"IsAIWorkspaceDataEnabled,omitempty" xml:"IsAIWorkspaceDataEnabled,omitempty"`
-	// A list of up to 20 tags to add to the instance.
+	// The list of tags to be added. A maximum of 20 tags can be added.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

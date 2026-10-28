@@ -20,10 +20,26 @@ type iQuotaUser interface {
 }
 
 type QuotaUser struct {
-	Resources     *QuotaUserResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	UserId        *string             `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Username      *string             `json:"Username,omitempty" xml:"Username,omitempty"`
-	WorkloadCount *int32              `json:"WorkloadCount,omitempty" xml:"WorkloadCount,omitempty"`
+	// The resources.
+	Resources *QuotaUserResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 123456789
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// test
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The workload count.
+	//
+	// example:
+	//
+	// 0
+	WorkloadCount *int32 `json:"WorkloadCount,omitempty" xml:"WorkloadCount,omitempty"`
 }
 
 func (s QuotaUser) String() string {
@@ -80,8 +96,10 @@ func (s *QuotaUser) Validate() error {
 }
 
 type QuotaUserResources struct {
+	// The submitted resources.
 	Submitted *ResourceAmount `json:"Submitted,omitempty" xml:"Submitted,omitempty"`
-	Used      *ResourceAmount `json:"Used,omitempty" xml:"Used,omitempty"`
+	// The used resources.
+	Used *ResourceAmount `json:"Used,omitempty" xml:"Used,omitempty"`
 }
 
 func (s QuotaUserResources) String() string {

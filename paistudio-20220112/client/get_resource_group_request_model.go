@@ -16,13 +16,13 @@ type iGetResourceGroupRequest interface {
 }
 
 type GetResourceGroupRequest struct {
-	// Optional. Defaults to `true`.
+	// Specifies whether to enable AI workspace data. This parameter is optional. Default value: true.
 	//
 	// example:
 	//
 	// true
 	IsAIWorkspaceDataEnabled *bool `json:"IsAIWorkspaceDataEnabled,omitempty" xml:"IsAIWorkspaceDataEnabled,omitempty"`
-	// A list of up to 20 tags to add to the instance.
+	// The list of tags to be added. A maximum of 20 tags can be added.
 	Tag []*GetResourceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *GetResourceGroupRequest) Validate() error {
 }
 
 type GetResourceGroupRequestTag struct {
-	// The tag key.
+	// The tag key of the instance. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the instance. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

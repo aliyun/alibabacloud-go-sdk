@@ -24,17 +24,37 @@ type iQuotaNodeStatistics interface {
 }
 
 type QuotaNodeStatistics struct {
-	// The guaranteed minimum number of hyper nodes available in the quota.
+	// The number of super nodes.
+	//
+	// example:
+	//
+	// 0
 	ActualMinHyperNodeNum *int64 `json:"ActualMinHyperNodeNum,omitempty" xml:"ActualMinHyperNodeNum,omitempty"`
-	// The guaranteed minimum number of nodes available in the quota.
+	// The number of nodes.
+	//
+	// example:
+	//
+	// 0
 	ActualMinNodeNum *int64 `json:"ActualMinNodeNum,omitempty" xml:"ActualMinNodeNum,omitempty"`
-	// The details of an allocated hyper node.
+	// The super node details.
 	AllocatedHyperNodeDetails []*AllocatedHyperNodeDetail `json:"AllocatedHyperNodeDetails,omitempty" xml:"AllocatedHyperNodeDetails,omitempty" type:"Repeated"`
-	// The number of hyper nodes currently allocated from the quota.
+	// The number of allocated super nodes.
+	//
+	// example:
+	//
+	// 0
 	AllocatedHyperNodeNum *int64 `json:"AllocatedHyperNodeNum,omitempty" xml:"AllocatedHyperNodeNum,omitempty"`
-	// The number of nodes currently allocated from the quota.
+	// The number of allocated nodes.
+	//
+	// example:
+	//
+	// 0
 	AllocatedNodeNum *int64 `json:"AllocatedNodeNum,omitempty" xml:"AllocatedNodeNum,omitempty"`
-	// The number of allocated nodes currently idle.
+	// The number of idle nodes.
+	//
+	// example:
+	//
+	// 0
 	EmptyNodeNum *int64 `json:"EmptyNodeNum,omitempty" xml:"EmptyNodeNum,omitempty"`
 }
 

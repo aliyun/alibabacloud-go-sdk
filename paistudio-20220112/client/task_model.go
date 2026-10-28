@@ -38,19 +38,76 @@ type iTask interface {
 }
 
 type Task struct {
-	Actions          []*Action `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtActivatedTime *string   `json:"GmtActivatedTime,omitempty" xml:"GmtActivatedTime,omitempty"`
-	GmtCreatedTime   *string   `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	GmtModifiedTime  *string   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	GmtStoppedTime   *string   `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
-	QuotaId          *string   `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	Rules            *Rules    `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId           *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName         *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	UserId           *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName         *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The actions performed by the task.
+	Actions []*Action `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// The description of the task.
+	//
+	// example:
+	//
+	// this is a test quota
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the task was activated.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
+	GmtActivatedTime *string `json:"GmtActivatedTime,omitempty" xml:"GmtActivatedTime,omitempty"`
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
+	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	// The time when the task was updated.
+	//
+	// example:
+	//
+	// 2024-07-10T11:49:47Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The time when the task was stopped.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
+	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	// The ID of the quota.
+	//
+	// example:
+	//
+	// quotad2kd8ljpsno
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The execution rules of the task.
+	Rules *Rules `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The status of the task.
+	//
+	// example:
+	//
+	// Activated
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// taskxxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task.
+	//
+	// example:
+	//
+	// test
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The ID of the user.
+	//
+	// example:
+	//
+	// 123456789
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// test
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s Task) String() string {

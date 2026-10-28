@@ -24,12 +24,18 @@ type iNodeStatistics interface {
 }
 
 type NodeStatistics struct {
-	ActualMinResources      *StatisticsResources              `json:"ActualMinResources,omitempty" xml:"ActualMinResources,omitempty"`
-	GPUDetails              []*NodeStatisticsGPUDetails       `json:"GPUDetails,omitempty" xml:"GPUDetails,omitempty" type:"Repeated"`
-	HyperNodeDetails        []*NodeStatisticsHyperNodeDetails `json:"HyperNodeDetails,omitempty" xml:"HyperNodeDetails,omitempty" type:"Repeated"`
-	IdleResources           *StatisticsResources              `json:"IdleResources,omitempty" xml:"IdleResources,omitempty"`
-	SchedulableResources    *StatisticsResources              `json:"SchedulableResources,omitempty" xml:"SchedulableResources,omitempty"`
-	SystemReservedResources *StatisticsResources              `json:"SystemReservedResources,omitempty" xml:"SystemReservedResources,omitempty"`
+	// The total resources.
+	ActualMinResources *StatisticsResources `json:"ActualMinResources,omitempty" xml:"ActualMinResources,omitempty"`
+	// The GPU idle statistics.
+	GPUDetails []*NodeStatisticsGPUDetails `json:"GPUDetails,omitempty" xml:"GPUDetails,omitempty" type:"Repeated"`
+	// The hypernode idle statistics.
+	HyperNodeDetails []*NodeStatisticsHyperNodeDetails `json:"HyperNodeDetails,omitempty" xml:"HyperNodeDetails,omitempty" type:"Repeated"`
+	// The idle resources.
+	IdleResources *StatisticsResources `json:"IdleResources,omitempty" xml:"IdleResources,omitempty"`
+	// The amount of scheduling resources.
+	SchedulableResources *StatisticsResources `json:"SchedulableResources,omitempty" xml:"SchedulableResources,omitempty"`
+	// The system reserved resources.
+	SystemReservedResources *StatisticsResources `json:"SystemReservedResources,omitempty" xml:"SystemReservedResources,omitempty"`
 }
 
 func (s NodeStatistics) String() string {
@@ -137,7 +143,17 @@ func (s *NodeStatistics) Validate() error {
 }
 
 type NodeStatisticsGPUDetails struct {
-	Count   *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The count.
+	//
+	// example:
+	//
+	// 10
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The idle count.
+	//
+	// example:
+	//
+	// 16
 	IdleNum *int64 `json:"IdleNum,omitempty" xml:"IdleNum,omitempty"`
 }
 
@@ -172,7 +188,17 @@ func (s *NodeStatisticsGPUDetails) Validate() error {
 }
 
 type NodeStatisticsHyperNodeDetails struct {
-	Count   *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The count.
+	//
+	// example:
+	//
+	// 10
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The idle count.
+	//
+	// example:
+	//
+	// 18
 	IdleNum *int64 `json:"IdleNum,omitempty" xml:"IdleNum,omitempty"`
 }
 

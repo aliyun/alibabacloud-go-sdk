@@ -18,9 +18,12 @@ type iResourceLimitDetails interface {
 }
 
 type ResourceLimitDetails struct {
-	GCLevel                   *string                `json:"GCLevel,omitempty" xml:"GCLevel,omitempty"`
-	ResourceLimit             map[string]interface{} `json:"ResourceLimit,omitempty" xml:"ResourceLimit,omitempty"`
-	ShouldIgnoreResourceCheck *bool                  `json:"ShouldIgnoreResourceCheck,omitempty" xml:"ShouldIgnoreResourceCheck,omitempty"`
+	// The GC level.
+	GCLevel *string `json:"GCLevel,omitempty" xml:"GCLevel,omitempty"`
+	// The resource limit details.
+	ResourceLimit map[string]interface{} `json:"ResourceLimit,omitempty" xml:"ResourceLimit,omitempty"`
+	// Specifies whether to ignore the resource check.
+	ShouldIgnoreResourceCheck *bool `json:"ShouldIgnoreResourceCheck,omitempty" xml:"ShouldIgnoreResourceCheck,omitempty"`
 }
 
 func (s ResourceLimitDetails) String() string {

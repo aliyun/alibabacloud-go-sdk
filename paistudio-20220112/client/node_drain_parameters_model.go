@@ -18,10 +18,11 @@ type iNodeDrainParameters interface {
 }
 
 type NodeDrainParameters struct {
+	// Specifies whether to forcibly drain the node.
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// Delete pods of the specified job types
+	// The pods of the specified job types to drain.
 	PodFromSubProducts []*string `json:"PodFromSubProducts,omitempty" xml:"PodFromSubProducts,omitempty" type:"Repeated"`
-	// Delete specified pods
+	// The specified pods to drain.
 	PodNames []*string `json:"PodNames,omitempty" xml:"PodNames,omitempty" type:"Repeated"`
 }
 

@@ -18,9 +18,12 @@ type iSelfQuotaPreemptionConfig interface {
 }
 
 type SelfQuotaPreemptionConfig struct {
-	PreemptedPriorities []*int32  `json:"PreemptedPriorities,omitempty" xml:"PreemptedPriorities,omitempty" type:"Repeated"`
-	PreemptedProducts   []*string `json:"PreemptedProducts,omitempty" xml:"PreemptedProducts,omitempty" type:"Repeated"`
-	PreemptorPriorities []*int32  `json:"PreemptorPriorities,omitempty" xml:"PreemptorPriorities,omitempty" type:"Repeated"`
+	// The priorities that can be preempted.
+	PreemptedPriorities []*int32 `json:"PreemptedPriorities,omitempty" xml:"PreemptedPriorities,omitempty" type:"Repeated"`
+	// The task types that can be preempted.
+	PreemptedProducts []*string `json:"PreemptedProducts,omitempty" xml:"PreemptedProducts,omitempty" type:"Repeated"`
+	// The priorities that can initiate preemption.
+	PreemptorPriorities []*int32 `json:"PreemptorPriorities,omitempty" xml:"PreemptorPriorities,omitempty" type:"Repeated"`
 }
 
 func (s SelfQuotaPreemptionConfig) String() string {

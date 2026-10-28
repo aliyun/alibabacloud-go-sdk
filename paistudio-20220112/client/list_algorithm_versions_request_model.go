@@ -22,7 +22,7 @@ type ListAlgorithmVersionsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size for paging.
+	// The page size for pagination.
 	//
 	// example:
 	//

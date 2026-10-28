@@ -50,24 +50,88 @@ type iEcsSpec interface {
 }
 
 type EcsSpec struct {
+  // The accelerator type.
+  // 
+  // example:
+  // 
+  // CPU
   AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+  // The number of CPU cores.
+  // 
+  // example:
+  // 
+  // 12
   Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+  // The ECS image ID.
+  // 
+  // example:
+  // 
+  // m-bp1g7004ksh0oeuc****
   EcsImageId *string `json:"EcsImageId,omitempty" xml:"EcsImageId,omitempty"`
+  // The number of Elastic RDMA Interface (ERI) network interface controllers.
+  // 
+  // example:
+  // 
+  // 0
   EriQuantity *int32 `json:"EriQuantity,omitempty" xml:"EriQuantity,omitempty"`
+  // The number of GPUs.
+  // 
+  // example:
+  // 
+  // 1
   Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+  // The GPU computing unit specifications.
   GpuGUSpec *string `json:"GpuGUSpec,omitempty" xml:"GpuGUSpec,omitempty"`
+  // The GPU memory size.
+  // 
+  // example:
+  // 
+  // 80
   GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+  // example:
+  // 
+  // A100
   GpuType *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+  // The GPU type alias.
+  // 
+  // example:
+  // 
+  // A100
   GpuTypeAlias *string `json:"GpuTypeAlias,omitempty" xml:"GpuTypeAlias,omitempty"`
+  // The instance type.
+  // 
+  // example:
+  // 
+  // ml.gu7xf.8xlarge-gu108
   InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+  // The machine model.
   MachineModel *string `json:"MachineModel,omitempty" xml:"MachineModel,omitempty"`
+  // The memory resources.
+  // 
+  // example:
+  // 
+  // 92
   Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+  // The network mode.
   NetworkMode *string `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+  // The planned number of CPU cores.
+  // 
+  // example:
+  // 
+  // 12
   PlannedCpu *int32 `json:"PlannedCpu,omitempty" xml:"PlannedCpu,omitempty"`
+  // The planned memory size.
   PlannedMemory *int32 `json:"PlannedMemory,omitempty" xml:"PlannedMemory,omitempty"`
+  // The resource type.
+  // 
+  // example:
+  // 
+  // ECS
   ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+  // Specifies whether GPU sharing is supported.
   SupportGPUShare *bool `json:"SupportGPUShare,omitempty" xml:"SupportGPUShare,omitempty"`
   SupportRDMA *bool `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
+  // Specifies whether setting the network interface controller index is supported.
   SupportSetNetworkCardIndex *bool `json:"SupportSetNetworkCardIndex,omitempty" xml:"SupportSetNetworkCardIndex,omitempty"`
 }
 

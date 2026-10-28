@@ -18,9 +18,20 @@ type iCredentialConfigItem interface {
 }
 
 type CredentialConfigItem struct {
-	Key   *string           `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The configuration key.
+	//
+	// example:
+	//
+	// 0
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The role configuration.
 	Roles []*CredentialRole `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	Type  *string           `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The credential configuration type.
+	//
+	// example:
+	//
+	// Role
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CredentialConfigItem) String() string {

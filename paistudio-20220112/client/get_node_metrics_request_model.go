@@ -22,7 +22,7 @@ type iGetNodeMetricsRequest interface {
 }
 
 type GetNodeMetricsRequest struct {
-	// The end time.
+	// The end time in ISO 8601 format.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type GetNodeMetricsRequest struct {
 	//
 	// V100
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	// The start time.
+	// The start time in ISO 8601 format. The time zone is UTC.
 	//
 	// example:
 	//
@@ -52,11 +52,11 @@ type GetNodeMetricsRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The time step. Default value: 5m. Valid values for the time unit:
 	//
-	// - h: hours.
+	// - h: Hours.
 	//
-	// - m: minutes.
+	// - m: Minutes.
 	//
-	// - s: seconds.
+	// - s: Seconds.
 	//
 	// If no unit is specified, the default unit is s (seconds).
 	//
@@ -64,11 +64,11 @@ type GetNodeMetricsRequest struct {
 	//
 	// 1h
 	TimeStep *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
-	// Specifies whether to display non-essential information. Non-essential information currently includes Labels. Valid values:
+	// Specifies whether to display non-essential information. Non-essential information currently includes labels. Valid values:
 	//
-	// false: does not display non-essential information (default).
+	// - false: Does not display non-essential information. This is the default value.
 	//
-	// true: displays non-essential information.
+	// - true: Displays non-essential information.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iListTrainingJobInstanceMetricsResponseBody interface {
 }
 
 type ListTrainingJobInstanceMetricsResponseBody struct {
-	// List of all monitoring metrics that match the filter condition.
+	// The list of all monitoring metrics that match the filter conditions.
 	InstanceMetrics []*ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics `json:"InstanceMetrics,omitempty" xml:"InstanceMetrics,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ func (s *ListTrainingJobInstanceMetricsResponseBody) Validate() error {
 }
 
 type ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// trainkxen7qjyg6y-master-0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// List of instance monitoring metrics.
+	// The list of instance monitoring metrics.
 	Metrics []*ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// Node name.
+	// The node name.
 	//
 	// example:
 	//
@@ -131,13 +131,13 @@ func (s *ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics) Validate() e
 }
 
 type ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics struct {
-	// UTC time in ISO 8601 format.
+	// The UTC time in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// Metric value.
+	// The metric value.
 	//
 	// example:
 	//

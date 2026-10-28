@@ -22,7 +22,11 @@ type WorkspaceIdName struct {
 	//
 	// ws123***
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The workspace name.
+	// The name of the workspace to which the task belongs.
+	//
+	// example:
+	//
+	// myshellprod
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

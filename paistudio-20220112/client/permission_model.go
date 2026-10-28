@@ -16,7 +16,13 @@ type iPermission interface {
 }
 
 type Permission struct {
-	IsEnabled    *bool   `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
+	// IsEnabled
+	IsEnabled *bool `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
+	// ResourceType
+	//
+	// example:
+	//
+	// Ecs
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type iGetResourceGroupMachineGroupRequest interface {
 }
 
 type GetResourceGroupMachineGroupRequest struct {
-	// A list of up to 20 tags.
+	// The list of tags to add. You can specify up to 20 tags.
 	Tag []*GetResourceGroupMachineGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -49,13 +49,13 @@ func (s *GetResourceGroupMachineGroupRequest) Validate() error {
 }
 
 type GetResourceGroupMachineGroupRequestTag struct {
-	// The tag key.
+	// The key of the tag. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

@@ -14,6 +14,11 @@ type iAction interface {
 }
 
 type Action struct {
+	// The operation type.
+	//
+	// example:
+	//
+	// Defrag
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 }
 

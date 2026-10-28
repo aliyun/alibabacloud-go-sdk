@@ -34,34 +34,71 @@ type iNodeType interface {
 }
 
 type NodeType struct {
+	// The accelerator type of the resource node specifications (CPU/GPU).
+	//
 	// example:
 	//
 	// CPU
-	AcceleratorType   *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	AllocatableCPU    *string `json:"AllocatableCPU,omitempty" xml:"AllocatableCPU,omitempty"`
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The number of allocatable CPU cores.
+	//
+	// example:
+	//
+	// 2
+	AllocatableCPU *string `json:"AllocatableCPU,omitempty" xml:"AllocatableCPU,omitempty"`
+	// The allocatable memory size.
+	//
+	// example:
+	//
+	// 2Gi
 	AllocatableMemory *string `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 16
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 0
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The GPU memory.
+	//
 	// example:
 	//
 	// 80G
 	GPUMemory *string `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
-	GPUType   *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The GPU type.
+	//
+	// example:
+	//
+	// A10
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
 	// 64Gi
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The resource node specifications type.
+	//
 	// example:
 	//
 	// ecs.g6.4xlarge
-	NodeType             *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	SystemReservedCPU    *string `json:"SystemReservedCPU,omitempty" xml:"SystemReservedCPU,omitempty"`
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The number of system-reserved CPU cores.
+	//
+	// example:
+	//
+	// 0
+	SystemReservedCPU *string `json:"SystemReservedCPU,omitempty" xml:"SystemReservedCPU,omitempty"`
+	// The system-reserved memory size.
+	//
+	// example:
+	//
+	// 2Gi
 	SystemReservedMemory *string `json:"SystemReservedMemory,omitempty" xml:"SystemReservedMemory,omitempty"`
 }
 

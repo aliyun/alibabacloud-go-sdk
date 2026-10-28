@@ -456,7 +456,7 @@ func (client *Client) CreateQuota(request *CreateQuotaRequest) (_result *CreateQ
 
 // Summary:
 //
-// Use the CreateResourceGroup operation to create a resource group.
+// Creates a ResourceGroup using CreateResourceGroup.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -527,7 +527,7 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 
 // Summary:
 //
-// Use the CreateResourceGroup operation to create a resource group.
+// Creates a ResourceGroup using CreateResourceGroup.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -957,7 +957,7 @@ func (client *Client) DeleteResourceGroup(ResourceGroupID *string) (_result *Del
 //
 // Summary:
 //
-// Deletes a machine group.
+// Deletes a machine group from a resource group.
 //
 // @param headers - map
 //
@@ -992,7 +992,7 @@ func (client *Client) DeleteResourceGroupMachineGroupWithOptions(MachineGroupID 
 //
 // Summary:
 //
-// Deletes a machine group.
+// Deletes a machine group from a resource group.
 //
 // @return DeleteResourceGroupMachineGroupResponse
 // Deprecated
@@ -1126,7 +1126,7 @@ func (client *Client) DeleteTrainingJobLabels(TrainingJobId *string, request *De
 
 // Summary:
 //
-// Retrieves algorithm details.
+// Retrieves the details of an algorithm.
 //
 // @param headers - map
 //
@@ -1159,7 +1159,7 @@ func (client *Client) GetAlgorithmWithOptions(AlgorithmId *string, headers map[s
 
 // Summary:
 //
-// Retrieves algorithm details.
+// Retrieves the details of an algorithm.
 //
 // @return GetAlgorithmResponse
 func (client *Client) GetAlgorithm(AlgorithmId *string) (_result *GetAlgorithmResponse, _err error) {
@@ -1176,7 +1176,7 @@ func (client *Client) GetAlgorithm(AlgorithmId *string) (_result *GetAlgorithmRe
 
 // Summary:
 //
-// Retrieve details about an algorithm version.
+// Retrieves the details of an algorithm version.
 //
 // @param headers - map
 //
@@ -1209,7 +1209,7 @@ func (client *Client) GetAlgorithmVersionWithOptions(AlgorithmId *string, Algori
 
 // Summary:
 //
-// Retrieve details about an algorithm version.
+// Retrieves the details of an algorithm version.
 //
 // @return GetAlgorithmVersionResponse
 func (client *Client) GetAlgorithmVersion(AlgorithmId *string, AlgorithmVersion *string) (_result *GetAlgorithmVersionResponse, _err error) {
@@ -1228,7 +1228,7 @@ func (client *Client) GetAlgorithmVersion(AlgorithmId *string, AlgorithmVersion 
 //
 // Summary:
 //
-// Retrieves the details of a specific machine group.
+// Retrieves the details of a machine group.
 //
 // @param headers - map
 //
@@ -1263,7 +1263,7 @@ func (client *Client) GetMachineGroupWithOptions(MachineGroupID *string, headers
 //
 // Summary:
 //
-// Retrieves the details of a specific machine group.
+// Retrieves the details of a machine group.
 //
 // @return GetMachineGroupResponse
 // Deprecated
@@ -1283,7 +1283,7 @@ func (client *Client) GetMachineGroup(MachineGroupID *string) (_result *GetMachi
 //
 // Summary:
 //
-// Retrieves metric information for resource group nodes.
+// Retrieves the metrics of nodes in a resource group.
 //
 // @param request - GetNodeMetricsRequest
 //
@@ -1348,7 +1348,7 @@ func (client *Client) GetNodeMetricsWithOptions(ResourceGroupID *string, MetricT
 //
 // Summary:
 //
-// Retrieves metric information for resource group nodes.
+// Retrieves the metrics of nodes in a resource group.
 //
 // @param request - GetNodeMetricsRequest
 //
@@ -1368,7 +1368,7 @@ func (client *Client) GetNodeMetrics(ResourceGroupID *string, MetricType *string
 
 // Summary:
 //
-// Retrieves the details of a resource quota to help you understand the current resource usage and facilitate resource management and planning.
+// Retrieves the details of a resource quota to understand current resource usage and facilitate resource management and planning.
 //
 // @param request - GetQuotaRequest
 //
@@ -1419,7 +1419,7 @@ func (client *Client) GetQuotaWithOptions(QuotaId *string, request *GetQuotaRequ
 
 // Summary:
 //
-// Retrieves the details of a resource quota to help you understand the current resource usage and facilitate resource management and planning.
+// Retrieves the details of a resource quota to understand current resource usage and facilitate resource management and planning.
 //
 // @param request - GetQuotaRequest
 //
@@ -1438,7 +1438,7 @@ func (client *Client) GetQuota(QuotaId *string, request *GetQuotaRequest) (_resu
 
 // Summary:
 //
-// `GetResourceGroup` retrieves details for a resource group.
+// Retrieves the details of a resource group.
 //
 // @param tmpReq - GetResourceGroupRequest
 //
@@ -1495,7 +1495,7 @@ func (client *Client) GetResourceGroupWithOptions(ResourceGroupID *string, tmpRe
 
 // Summary:
 //
-// `GetResourceGroup` retrieves details for a resource group.
+// Retrieves the details of a resource group.
 //
 // @param request - GetResourceGroupRequest
 //
@@ -1514,7 +1514,7 @@ func (client *Client) GetResourceGroup(ResourceGroupID *string, request *GetReso
 
 // Summary:
 //
-// Call GetResourceGroupMachineGroup to retrieve the details of a machine group.
+// Retrieves the details of a machine group.
 //
 // @param tmpReq - GetResourceGroupMachineGroupRequest
 //
@@ -1567,7 +1567,7 @@ func (client *Client) GetResourceGroupMachineGroupWithOptions(MachineGroupID *st
 
 // Summary:
 //
-// Call GetResourceGroupMachineGroup to retrieve the details of a machine group.
+// Retrieves the details of a machine group.
 //
 // @param request - GetResourceGroupMachineGroupRequest
 //
@@ -1817,7 +1817,7 @@ func (client *Client) GetSpotPriceHistory(InstanceType *string, request *GetSpot
 
 // Summary:
 //
-// Obtains a share token for a training task.
+// Retrieves the sharing token for a training job.
 //
 // @param request - GetTokenRequest
 //
@@ -1868,7 +1868,7 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 
 // Summary:
 //
-// Obtains a share token for a training task.
+// Retrieves the sharing token for a training job.
 //
 // @param request - GetTokenRequest
 //
@@ -2148,7 +2148,7 @@ func (client *Client) GetUserViewMetrics(ResourceGroupID *string, request *GetUs
 
 // Summary:
 //
-// Retrieve a list of algorithm version details.
+// Retrieves a list of algorithm version details.
 //
 // @param request - ListAlgorithmVersionsRequest
 //
@@ -2199,7 +2199,7 @@ func (client *Client) ListAlgorithmVersionsWithOptions(AlgorithmId *string, requ
 
 // Summary:
 //
-// Retrieve a list of algorithm version details.
+// Retrieves a list of algorithm version details.
 //
 // @param request - ListAlgorithmVersionsRequest
 //
@@ -2218,7 +2218,7 @@ func (client *Client) ListAlgorithmVersions(AlgorithmId *string, request *ListAl
 
 // Summary:
 //
-// Lists algorithm details.
+// Retrieves a list of algorithm details.
 //
 // @param request - ListAlgorithmsRequest
 //
@@ -2285,7 +2285,7 @@ func (client *Client) ListAlgorithmsWithOptions(request *ListAlgorithmsRequest, 
 
 // Summary:
 //
-// Lists algorithm details.
+// Retrieves a list of algorithm details.
 //
 // @param request - ListAlgorithmsRequest
 //
@@ -2504,11 +2504,11 @@ func (client *Client) ListNodeTypes(request *ListNodeTypesRequest) (_result *Lis
 
 // Summary:
 //
-// Retrieves a list of resource nodes.
+// Queries a list of resource nodes.
 //
 // Description:
 //
-// You can call ListNodes to retrieve resource nodes that match specified filter conditions.
+// You can call ListNodes to retrieve resource nodes that meet specified filter conditions.
 //
 // @param tmpReq - ListNodesRequest
 //
@@ -2685,11 +2685,11 @@ func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, headers map
 
 // Summary:
 //
-// Retrieves a list of resource nodes.
+// Queries a list of resource nodes.
 //
 // Description:
 //
-// You can call ListNodes to retrieve resource nodes that match specified filter conditions.
+// You can call ListNodes to retrieve resource nodes that meet specified filter conditions.
 //
 // @param request - ListNodesRequest
 //
@@ -2708,11 +2708,11 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 
 // Summary:
 //
-// Retrieves the list of users under the current resource quota and their resource usage.
+// Retrieves the list of users in the current resource quota and the resources that they use.
 //
 // Description:
 //
-// Retrieves the resource usage of users for a specified QuotaId.
+// Retrieves the resource usage of users for the specified QuotaId.
 //
 // @param request - ListQuotaActiveUserUsagesRequest
 //
@@ -2791,11 +2791,11 @@ func (client *Client) ListQuotaActiveUserUsagesWithOptions(QuotaId *string, requ
 
 // Summary:
 //
-// Retrieves the list of users under the current resource quota and their resource usage.
+// Retrieves the list of users in the current resource quota and the resources that they use.
 //
 // Description:
 //
-// Retrieves the resource usage of users for a specified QuotaId.
+// Retrieves the resource usage of users for the specified QuotaId.
 //
 // @param request - ListQuotaActiveUserUsagesRequest
 //
@@ -2814,7 +2814,7 @@ func (client *Client) ListQuotaActiveUserUsages(QuotaId *string, request *ListQu
 
 // Summary:
 //
-// Retrieves the list of node information on a resource quota.
+// Retrieves a list of workloads for a quota.
 //
 // @param request - ListQuotaWorkloadsRequest
 //
@@ -2953,7 +2953,7 @@ func (client *Client) ListQuotaWorkloadsWithOptions(QuotaId *string, request *Li
 
 // Summary:
 //
-// Retrieves the list of node information on a resource quota.
+// Retrieves a list of workloads for a quota.
 //
 // @param request - ListQuotaWorkloadsRequest
 //
@@ -3106,7 +3106,7 @@ func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuota
 
 // Summary:
 //
-// Retrieves a list of machine groups in a specified resource group.
+// Queries the machine groups in a specified resource group.
 //
 // @param request - ListResourceGroupMachineGroupsRequest
 //
@@ -3205,7 +3205,7 @@ func (client *Client) ListResourceGroupMachineGroupsWithOptions(ResourceGroupID 
 
 // Summary:
 //
-// Retrieves a list of machine groups in a specified resource group.
+// Queries the machine groups in a specified resource group.
 //
 // @param request - ListResourceGroupMachineGroupsRequest
 //
@@ -3224,11 +3224,11 @@ func (client *Client) ListResourceGroupMachineGroups(ResourceGroupID *string, re
 
 // Summary:
 //
-// Call this operation to list resource groups for ECS or Lingjun intelligent computing resources.
+// Retrieves a list of resource groups for general compute resources or Lingjun AI compute resources.
 //
 // Description:
 //
-// Currently, AI computing resource groups (including ECS and Lingjun intelligent computing resources) are available only in specific regions. For a list of supported regions, see [AI computing resource management](https://help.aliyun.com/document_detail/143986.html).
+// Currently, AI compute resource groups, including general compute resources and Lingjun AI compute resources, are available only in specific regions. For the list of supported regions, see [AI compute resource management](https://help.aliyun.com/document_detail/143986.html).
 //
 // @param request - ListResourceGroupsRequest
 //
@@ -3319,11 +3319,11 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 
 // Summary:
 //
-// Call this operation to list resource groups for ECS or Lingjun intelligent computing resources.
+// Retrieves a list of resource groups for general compute resources or Lingjun AI compute resources.
 //
 // Description:
 //
-// Currently, AI computing resource groups (including ECS and Lingjun intelligent computing resources) are available only in specific regions. For a list of supported regions, see [AI computing resource management](https://help.aliyun.com/document_detail/143986.html).
+// Currently, AI compute resource groups, including general compute resources and Lingjun AI compute resources, are available only in specific regions. For the list of supported regions, see [AI compute resource management](https://help.aliyun.com/document_detail/143986.html).
 //
 // @param request - ListResourceGroupsRequest
 //
@@ -3614,7 +3614,7 @@ func (client *Client) ListTrainingJobInstanceEvents(TrainingJobId *string, Insta
 
 // Summary:
 //
-// Retrieve monitoring metrics for training job instances.
+// Retrieves the monitoring metrics of a training job instance.
 //
 // @param request - ListTrainingJobInstanceMetricsRequest
 //
@@ -3677,7 +3677,7 @@ func (client *Client) ListTrainingJobInstanceMetricsWithOptions(TrainingJobId *s
 
 // Summary:
 //
-// Retrieve monitoring metrics for training job instances.
+// Retrieves the monitoring metrics of a training job instance.
 //
 // @param request - ListTrainingJobInstanceMetricsRequest
 //
@@ -3782,7 +3782,7 @@ func (client *Client) ListTrainingJobLogs(TrainingJobId *string, request *ListTr
 
 // Summary:
 //
-// Retrieve monitoring data for a training task.
+// Retrieves the monitoring data of a training job.
 //
 // @param request - ListTrainingJobMetricsRequest
 //
@@ -3849,7 +3849,7 @@ func (client *Client) ListTrainingJobMetricsWithOptions(TrainingJobId *string, r
 
 // Summary:
 //
-// Retrieve monitoring data for a training task.
+// Retrieves the monitoring data of a training job.
 //
 // @param request - ListTrainingJobMetricsRequest
 //
@@ -4042,11 +4042,11 @@ func (client *Client) ListTrainingJobs(request *ListTrainingJobsRequest) (_resul
 
 // Summary:
 //
-// Operates on a specified node.
+// Performs operations on a node using OperateNode.
 //
 // Description:
 //
-// You can call OperateNode to operate on a specified resource node, including operations such as disabling scheduling and enabling scheduling.
+// Uses OperateNode to perform operations on a specified resource node, including disabling scheduling, enabling scheduling, and other operations.
 //
 // @param request - OperateNodeRequest
 //
@@ -4101,11 +4101,11 @@ func (client *Client) OperateNodeWithOptions(NodeId *string, request *OperateNod
 
 // Summary:
 //
-// Operates on a specified node.
+// Performs operations on a node using OperateNode.
 //
 // Description:
 //
-// You can call OperateNode to operate on a specified resource node, including operations such as disabling scheduling and enabling scheduling.
+// Uses OperateNode to perform operations on a specified resource node, including disabling scheduling, enabling scheduling, and other operations.
 //
 // @param request - OperateNodeRequest
 //
@@ -4581,8 +4581,20 @@ func (client *Client) UpdateQuotaWithOptions(QuotaId *string, request *UpdateQuo
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterSpec) {
+		body["ClusterSpec"] = request.ClusterSpec
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnableGracefulUpgrade) {
+		body["EnableGracefulUpgrade"] = request.EnableGracefulUpgrade
+	}
+
+	if !dara.IsNil(request.GracefulUpgradeConfig) {
+		body["GracefulUpgradeConfig"] = request.GracefulUpgradeConfig
 	}
 
 	if !dara.IsNil(request.Labels) {

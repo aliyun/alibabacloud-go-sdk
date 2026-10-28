@@ -22,11 +22,24 @@ type iCredentialRole interface {
 }
 
 type CredentialRole struct {
-	AssumeRoleFor  *string         `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
+	// The entity that uses the role credentials.
+	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
+	// The user information for role assumption.
 	AssumeUserInfo *AssumeUserInfo `json:"AssumeUserInfo,omitempty" xml:"AssumeUserInfo,omitempty"`
-	Policy         *string         `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	RoleArn        *string         `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	RoleType       *string         `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The access policy.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The ARN of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::1157703270994901:role/aliyunserviceroleforpaiworkspace
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The role type.
+	//
+	// example:
+	//
+	// user
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s CredentialRole) String() string {

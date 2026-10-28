@@ -16,11 +16,14 @@ type iSubQuotaPreemptionConfig interface {
 }
 
 type SubQuotaPreemptionConfig struct {
+	// The maximum priority of preempted nodes.
+	//
 	// example:
 	//
 	// 9
-	PreemptedPriorityUpperBound *int64    `json:"PreemptedPriorityUpperBound,omitempty" xml:"PreemptedPriorityUpperBound,omitempty"`
-	PreemptedProducts           []*string `json:"PreemptedProducts,omitempty" xml:"PreemptedProducts,omitempty" type:"Repeated"`
+	PreemptedPriorityUpperBound *int64 `json:"PreemptedPriorityUpperBound,omitempty" xml:"PreemptedPriorityUpperBound,omitempty"`
+	// The preemptable node types.
+	PreemptedProducts []*string `json:"PreemptedProducts,omitempty" xml:"PreemptedProducts,omitempty" type:"Repeated"`
 }
 
 func (s SubQuotaPreemptionConfig) String() string {

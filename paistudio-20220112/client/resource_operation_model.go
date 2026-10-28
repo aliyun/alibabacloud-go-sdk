@@ -40,20 +40,86 @@ type iResourceOperation interface {
 }
 
 type ResourceOperation struct {
-	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	GmtCreatedTime       *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	GmtEndTime           *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
-	GmtModifiedTime      *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	GmtStartTime         *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	ObjectId             *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ObjectType           *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The ID of the creator of the resource change.
+	//
+	// example:
+	//
+	// 1884692****
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The time when the resource change was created.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
+	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	// The time when the resource change ended.
+	//
+	// example:
+	//
+	// 2023-06-22T00:02:00Z
+	GmtEndTime *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	// The time when the resource change was updated.
+	//
+	// example:
+	//
+	// 2024-07-10T11:49:47Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The time when the resource change started.
+	//
+	// example:
+	//
+	// 2023-06-22T00:01:00Z
+	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	// The object ID of the resource change.
+	//
+	// example:
+	//
+	// quotaxxx
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The object type of the resource change.
+	//
+	// example:
+	//
+	// Quota
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The description of the resource change.
+	//
+	// example:
+	//
+	// A user requests to change the Desired Capacity from 4 to 5.
 	OperationDescription *string `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
-	OperationId          *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	OperationSpecJson    *string `json:"OperationSpecJson,omitempty" xml:"OperationSpecJson,omitempty"`
-	OperationType        *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	ReasonCode           *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage        *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The resource change ID.
+	//
+	// example:
+	//
+	// operation-123
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// The details of the resource change.
+	//
+	// example:
+	//
+	// {"ScaleQuota":{"Min":{"NodeSpecs":[{"Type":"ecs.gn6i-c8g1.2xlarge","Count":20,"IncludeNodes":["A","B","C"],"ExcludeNodes":["D"]}]}}}
+	OperationSpecJson *string `json:"OperationSpecJson,omitempty" xml:"OperationSpecJson,omitempty"`
+	// The type of the resource change.
+	//
+	// example:
+	//
+	// ScaleQuota
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The error code.
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// ""
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The status of the resource change.
+	//
+	// example:
+	//
+	// Executing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ResourceOperation) String() string {

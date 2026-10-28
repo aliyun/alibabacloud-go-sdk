@@ -16,13 +16,13 @@ type iCreateTrainingJobResponseBody interface {
 }
 
 type CreateTrainingJobResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// E7C42CC7-2E85-508A-84F4-923B605FD10F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The training job ID.
+	// The ID of the training job.
 	//
 	// example:
 	//

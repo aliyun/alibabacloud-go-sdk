@@ -20,18 +20,26 @@ type iSpotPriceItem interface {
 }
 
 type SpotPriceItem struct {
+	// The spot instance type.
+	//
 	// example:
 	//
 	// ml.gu8xf.8xlarge-gu108
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The spot instance discount.
+	//
 	// example:
 	//
 	// 0.1
 	SpotDiscount *float32 `json:"SpotDiscount,omitempty" xml:"SpotDiscount,omitempty"`
+	// The timestamp of the current spot instance price.
+	//
 	// example:
 	//
 	// 2024-01-17T06:00:00Z
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-wulanchabu-a

@@ -16,7 +16,17 @@ type iStatisticsDetails interface {
 }
 
 type StatisticsDetails struct {
-	Count   *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The count.
+	//
+	// example:
+	//
+	// 10
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The idle count.
+	//
+	// example:
+	//
+	// 18
 	IdleNum *int64 `json:"IdleNum,omitempty" xml:"IdleNum,omitempty"`
 }
 

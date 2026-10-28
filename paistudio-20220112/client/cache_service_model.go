@@ -40,15 +40,15 @@ type iCacheService interface {
 }
 
 type CacheService struct {
-	// The list of data source cache information connected to the cache service. Each element corresponds to a data source and its access port.
+	// The list of connected data source cache information for the cache service, where each element corresponds to a data source and its access port.
 	CacheInfos []*CacheInfo `json:"CacheInfos,omitempty" xml:"CacheInfos,omitempty" type:"Repeated"`
-	// The cache service ID. This is the unique identifier of the cache service.
+	// The ID of the cache service, which is the unique identifier of the cache service.
 	//
 	// example:
 	//
 	// cachea1b2c3d4e5f
 	CacheServiceId *string `json:"CacheServiceId,omitempty" xml:"CacheServiceId,omitempty"`
-	// The ID of the cluster where the cache service resides.
+	// The ID of the cluster where the cache service is located.
 	//
 	// example:
 	//
@@ -60,21 +60,15 @@ type CacheService struct {
 	//
 	// quota1a2b3c4d5e6
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The time when the cache service was created, in UTC in ISO 8601 format.
+	// The time when the cache service was created, in UTC and ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-08-10T03:17:31Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// Indicates whether the service discovery of the cache service uses shard mode.
+	// Indicates whether the service discovery of the cache service uses the shard mode.
 	IsSharded *bool `json:"IsSharded,omitempty" xml:"IsSharded,omitempty"`
-	// The type of RDMA network interface controller used by the cache service. This parameter is returned only when SupportRDMA is set to true. Valid values:
-	//
-	// - eic: EIC network interface controller.
-	//
-	// - mlx: Mellanox network interface controller.
-	//
-	// This parameter is empty when RDMA is not enabled.
+	// The type of RDMA network interface controller (NIC) used by the cache service. This parameter is returned only when SupportRDMA is true. Valid values: eic: EIC NIC. mlx: Mellanox NIC. If RDMA is not enabled, this parameter is empty.
 	//
 	// example:
 	//
@@ -92,11 +86,15 @@ type CacheService struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the cache service supports access through RDMA networks.
+	// Indicates whether the cache service supports access over an RDMA network.
+	//
+	// example:
+	//
+	// true
 	SupportRDMA *string `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
 	// The list of client quota IDs that are allowed to access the cache service.
 	SupportedClientQuotaIds []*string `json:"SupportedClientQuotaIds,omitempty" xml:"SupportedClientQuotaIds,omitempty" type:"Repeated"`
-	// The tenant ID to which the cache service belongs, which is the Alibaba Cloud account ID.
+	// The ID of the tenant to which the cache service belongs, which is the Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -108,7 +106,7 @@ type CacheService struct {
 	//
 	// 123456789012345678
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The VPC network information of the cache service, including the VPC, vSwitch, and security group configurations.
+	// The user VPC network information of the cache service, including configurations such as the VPC, vSwitch, and security group.
 	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 }
 

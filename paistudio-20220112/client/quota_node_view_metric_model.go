@@ -56,31 +56,130 @@ type iQuotaNodeViewMetric interface {
 }
 
 type QuotaNodeViewMetric struct {
-	CPUUsageRate      *string `json:"CPUUsageRate,omitempty" xml:"CPUUsageRate,omitempty"`
-	CreatedTime       *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DiskReadRate      *string `json:"DiskReadRate,omitempty" xml:"DiskReadRate,omitempty"`
-	DiskWriteRate     *string `json:"DiskWriteRate,omitempty" xml:"DiskWriteRate,omitempty"`
-	GPUType           *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	MemoryUsageRate   *string `json:"MemoryUsageRate,omitempty" xml:"MemoryUsageRate,omitempty"`
-	NetworkInputRate  *string `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
+	// The CPU utilization.
+	//
+	// example:
+	//
+	// 59
+	CPUUsageRate *string `json:"CPUUsageRate,omitempty" xml:"CPUUsageRate,omitempty"`
+	// The node import time.
+	//
+	// example:
+	//
+	// 2022-08-25T15:20:56Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The disk read rate.
+	//
+	// example:
+	//
+	// 22
+	DiskReadRate *string `json:"DiskReadRate,omitempty" xml:"DiskReadRate,omitempty"`
+	// The disk write rate.
+	//
+	// example:
+	//
+	// 22
+	DiskWriteRate *string `json:"DiskWriteRate,omitempty" xml:"DiskWriteRate,omitempty"`
+	// The GPU model.
+	//
+	// example:
+	//
+	// V100
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The memory utilization.
+	//
+	// example:
+	//
+	// 20
+	MemoryUsageRate *string `json:"MemoryUsageRate,omitempty" xml:"MemoryUsageRate,omitempty"`
+	// The network inbound rate.
+	//
+	// example:
+	//
+	// 1
+	NetworkInputRate *string `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
+	// The network outbound rate.
+	//
+	// example:
+	//
+	// 1
 	NetworkOutputRate *string `json:"NetworkOutputRate,omitempty" xml:"NetworkOutputRate,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// -i121212node
-	NodeID        *string                `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
-	NodeStatus    *string                `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	NodeType      *string                `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	QuotaId       *string                `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	RequestCPU    *int64                 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
-	RequestGPU    *int64                 `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
-	RequestMemory *int64                 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
-	TaskIdMap     map[string]interface{} `json:"TaskIdMap,omitempty" xml:"TaskIdMap,omitempty"`
-	TotalCPU      *int64                 `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
-	TotalGPU      *int64                 `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
-	TotalMemory   *int64                 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
-	TotalTasks    *int64                 `json:"TotalTasks,omitempty" xml:"TotalTasks,omitempty"`
-	UserIDs       []*string              `json:"UserIDs,omitempty" xml:"UserIDs,omitempty" type:"Repeated"`
-	UserNumber    *string                `json:"UserNumber,omitempty" xml:"UserNumber,omitempty"`
+	NodeID *string `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
+	// The node status.
+	//
+	// example:
+	//
+	// Ready
+	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// The GPU type.
+	//
+	// example:
+	//
+	// ecs.g6.large
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The resource quota ID.
+	//
+	// example:
+	//
+	// quotamtl37ge7gkvdz
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The used CPU.
+	//
+	// example:
+	//
+	// 100
+	RequestCPU *int64 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// The used GPU.
+	//
+	// example:
+	//
+	// 10
+	RequestGPU *int64 `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	// The used memory.
+	//
+	// example:
+	//
+	// 102400000
+	RequestMemory *int64 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// The node tasks.
+	TaskIdMap map[string]interface{} `json:"TaskIdMap,omitempty" xml:"TaskIdMap,omitempty"`
+	// The total CPU.
+	//
+	// example:
+	//
+	// 1000
+	TotalCPU *int64 `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	// The total GPU.
+	//
+	// example:
+	//
+	// 1
+	TotalGPU *int64 `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	// The total memory.
+	//
+	// example:
+	//
+	// 10240
+	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	// The total number of node tasks.
+	//
+	// example:
+	//
+	// 1
+	TotalTasks *int64 `json:"TotalTasks,omitempty" xml:"TotalTasks,omitempty"`
+	// The user list.
+	UserIDs []*string `json:"UserIDs,omitempty" xml:"UserIDs,omitempty" type:"Repeated"`
+	// The total number of users.
+	//
+	// example:
+	//
+	// 1
+	UserNumber *string `json:"UserNumber,omitempty" xml:"UserNumber,omitempty"`
 }
 
 func (s QuotaNodeViewMetric) String() string {

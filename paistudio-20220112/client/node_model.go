@@ -102,25 +102,30 @@ type iNode interface {
 }
 
 type Node struct {
-	// The accelerator type of the resource node specifications (CPU/GPU).
+	// The accelerator type of the node specifications (CPU/GPU).
 	//
 	// example:
 	//
 	// CPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	// The number of CPU cores that can be allocated to users.
+	// The number of allocatable CPU cores.
 	//
 	// example:
 	//
 	// 4
 	AllocatableCPU *string `json:"AllocatableCPU,omitempty" xml:"AllocatableCPU,omitempty"`
-	// The memory size that can be allocated to users.
+	// The allocatable memory size.
 	//
 	// example:
 	//
 	// 5
-	AllocatableMemory        *string `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
-	AncestorQuotaWorkloadNum *int64  `json:"AncestorQuotaWorkloadNum,omitempty" xml:"AncestorQuotaWorkloadNum,omitempty"`
+	AllocatableMemory *string `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
+	// The number of workloads that use the ancestor quota.
+	//
+	// example:
+	//
+	// 0
+	AncestorQuotaWorkloadNum *int64 `json:"AncestorQuotaWorkloadNum,omitempty" xml:"AncestorQuotaWorkloadNum,omitempty"`
 	// The zone.
 	//
 	// example:
@@ -135,15 +140,30 @@ type Node struct {
 	//
 	// 4
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// The creator of the resource node.
+	// The ID of the creator of the resource node.
 	//
 	// example:
 	//
 	// 281044699048527748
-	CreatorId                  *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	DescendantQuotaWorkloadNum *int64  `json:"DescendantQuotaWorkloadNum,omitempty" xml:"DescendantQuotaWorkloadNum,omitempty"`
-	DiskCapacity               *int64  `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
-	DiskPL                     *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The number of workloads that use the descendant quota.
+	//
+	// example:
+	//
+	// 0
+	DescendantQuotaWorkloadNum *int64 `json:"DescendantQuotaWorkloadNum,omitempty" xml:"DescendantQuotaWorkloadNum,omitempty"`
+	// The data cloud disk capacity.
+	//
+	// example:
+	//
+	// 0
+	DiskCapacity *int64 `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
+	// The data cloud disk performance level.
+	//
+	// example:
+	//
+	// PL2
+	DiskPL *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
 	// The number of GPUs.
 	//
 	// example:
@@ -171,6 +191,10 @@ type Node struct {
 	// 2024-07-10T11:49:47Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	// The creation time of the resource node.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
 	// The expiration time of the resource node.
 	//
@@ -190,25 +214,25 @@ type Node struct {
 	//
 	// C3
 	HyperZone *string `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
-	// Indicates whether the resource node is bound to a quota.
+	// Indicates whether a quota is bound.
 	//
 	// example:
 	//
 	// false
 	IsBound *bool `json:"IsBound,omitempty" xml:"IsBound,omitempty"`
-	// The maximum number of CPU cores.
+	// The limit on the number of CPU cores.
 	//
 	// example:
 	//
 	// 4
 	LimitCPU *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
-	// The maximum number of GPUs.
+	// The limit on the number of GPU cores.
 	//
 	// example:
 	//
 	// 0
 	LimitGPU *string `json:"LimitGPU,omitempty" xml:"LimitGPU,omitempty"`
-	// The maximum memory size.
+	// The limit on the memory size.
 	//
 	// example:
 	//
@@ -250,7 +274,7 @@ type Node struct {
 	//
 	// Ready
 	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	// The node specifications type of the resource node.
+	// The type of node specifications of the resource node.
 	//
 	// example:
 	//
@@ -286,7 +310,7 @@ type Node struct {
 	//
 	// 4
 	RequestCPU *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
-	// The number of requested GPUs.
+	// The number of requested GPU cores.
 	//
 	// example:
 	//
@@ -309,8 +333,13 @@ type Node struct {
 	// example:
 	//
 	// test
-	ResourceGroupName    *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	SelfQuotaWorkloadNum *int64  `json:"SelfQuotaWorkloadNum,omitempty" xml:"SelfQuotaWorkloadNum,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The number of workloads that use this quota.
+	//
+	// example:
+	//
+	// 1
+	SelfQuotaWorkloadNum *int64 `json:"SelfQuotaWorkloadNum,omitempty" xml:"SelfQuotaWorkloadNum,omitempty"`
 	// The names of the child nodes.
 	SubNodes []*string `json:"SubNodes,omitempty" xml:"SubNodes,omitempty" type:"Repeated"`
 	// The number of system-reserved CPU cores.
@@ -319,7 +348,7 @@ type Node struct {
 	//
 	// 0
 	SystemReservedCPU *string `json:"SystemReservedCPU,omitempty" xml:"SystemReservedCPU,omitempty"`
-	// The system-reserved memory size.
+	// The size of the system reserved memory.
 	//
 	// example:
 	//

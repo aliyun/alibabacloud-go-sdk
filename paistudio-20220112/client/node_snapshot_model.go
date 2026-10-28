@@ -30,15 +30,56 @@ type iNodeSnapshot interface {
 }
 
 type NodeSnapshot struct {
-	AncestorQuotaWorkloadNum   *int32                   `json:"AncestorQuotaWorkloadNum,omitempty" xml:"AncestorQuotaWorkloadNum,omitempty"`
-	DescendantQuotaWorkloadNum *int32                   `json:"DescendantQuotaWorkloadNum,omitempty" xml:"DescendantQuotaWorkloadNum,omitempty"`
-	NodeName                   *string                  `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	RequestCPU                 *string                  `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
-	RequestGPU                 *string                  `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
-	RequestMemory              *string                  `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
-	SelfQuotaWorkloadNum       *int32                   `json:"SelfQuotaWorkloadNum,omitempty" xml:"SelfQuotaWorkloadNum,omitempty"`
-	WorkloadNum                *int32                   `json:"WorkloadNum,omitempty" xml:"WorkloadNum,omitempty"`
-	Workloads                  []*NodeSnapshotWorkloads `json:"Workloads,omitempty" xml:"Workloads,omitempty" type:"Repeated"`
+	// The number of workloads using ancestor quotas.
+	//
+	// example:
+	//
+	// 0
+	AncestorQuotaWorkloadNum *int32 `json:"AncestorQuotaWorkloadNum,omitempty" xml:"AncestorQuotaWorkloadNum,omitempty"`
+	// The number of workloads using descendant quotas.
+	//
+	// example:
+	//
+	// 0
+	DescendantQuotaWorkloadNum *int32 `json:"DescendantQuotaWorkloadNum,omitempty" xml:"DescendantQuotaWorkloadNum,omitempty"`
+	// The node name.
+	//
+	// example:
+	//
+	// trains930928remn-master-0
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The CPU usage.
+	//
+	// example:
+	//
+	// 4
+	RequestCPU *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// The GPU usage.
+	//
+	// example:
+	//
+	// 0
+	RequestGPU *string `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	// The memory usage.
+	//
+	// example:
+	//
+	// 8
+	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// The number of workloads using the current quota.
+	//
+	// example:
+	//
+	// 1
+	SelfQuotaWorkloadNum *int32 `json:"SelfQuotaWorkloadNum,omitempty" xml:"SelfQuotaWorkloadNum,omitempty"`
+	// The number of node workloads.
+	//
+	// example:
+	//
+	// 2
+	WorkloadNum *int32 `json:"WorkloadNum,omitempty" xml:"WorkloadNum,omitempty"`
+	// The node workload snapshot.
+	Workloads []*NodeSnapshotWorkloads `json:"Workloads,omitempty" xml:"Workloads,omitempty" type:"Repeated"`
 }
 
 func (s NodeSnapshot) String() string {
@@ -144,8 +185,23 @@ func (s *NodeSnapshot) Validate() error {
 }
 
 type NodeSnapshotWorkloads struct {
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	WorkloadId   *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// The corresponding queue unit name.
+	//
+	// example:
+	//
+	// dlc1yhisjtmqh15s-master-0
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workload ID.
+	//
+	// example:
+	//
+	// dlcxxxx
+	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// The workload type.
+	//
+	// example:
+	//
+	// dlc
 	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
 }
 

@@ -18,9 +18,16 @@ type iCredentialConfig interface {
 }
 
 type CredentialConfig struct {
-	AliyunEnvRoleKey       *string                 `json:"AliyunEnvRoleKey,omitempty" xml:"AliyunEnvRoleKey,omitempty"`
-	CredentialConfigItems  []*CredentialConfigItem `json:"CredentialConfigItems,omitempty" xml:"CredentialConfigItems,omitempty" type:"Repeated"`
-	EnableCredentialInject *bool                   `json:"EnableCredentialInject,omitempty" xml:"EnableCredentialInject,omitempty"`
+	// The Alibaba Cloud environment role identifier.
+	//
+	// example:
+	//
+	// 0
+	AliyunEnvRoleKey *string `json:"AliyunEnvRoleKey,omitempty" xml:"AliyunEnvRoleKey,omitempty"`
+	// The credential configuration items.
+	CredentialConfigItems []*CredentialConfigItem `json:"CredentialConfigItems,omitempty" xml:"CredentialConfigItems,omitempty" type:"Repeated"`
+	// Specifies whether credential injection is enabled.
+	EnableCredentialInject *bool `json:"EnableCredentialInject,omitempty" xml:"EnableCredentialInject,omitempty"`
 }
 
 func (s CredentialConfig) String() string {

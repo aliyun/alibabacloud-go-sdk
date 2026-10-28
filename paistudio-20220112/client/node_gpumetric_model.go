@@ -30,15 +30,52 @@ type iNodeGPUMetric interface {
 }
 
 type NodeGPUMetric struct {
-	AcceleratorType *string      `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	GPUCount        *int32       `json:"GPUCount,omitempty" xml:"GPUCount,omitempty"`
-	GPUMetrics      []*GPUMetric `json:"GPUMetrics,omitempty" xml:"GPUMetrics,omitempty" type:"Repeated"`
-	GPUType         *string      `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	MemoryUtil      *float32     `json:"MemoryUtil,omitempty" xml:"MemoryUtil,omitempty"`
-	NodeId          *string      `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeType        *string      `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	TotalMemory     *float32     `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
-	UsedMemory      *float32     `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
+	// The accelerator type.
+	//
+	// example:
+	//
+	// GPU
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The GPU count.
+	//
+	// example:
+	//
+	// 1
+	GPUCount *int32 `json:"GPUCount,omitempty" xml:"GPUCount,omitempty"`
+	// The GPU metrics.
+	GPUMetrics []*GPUMetric `json:"GPUMetrics,omitempty" xml:"GPUMetrics,omitempty" type:"Repeated"`
+	// The GPU type.
+	//
+	// example:
+	//
+	// V100
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The memory utilization.
+	//
+	// example:
+	//
+	// 0
+	MemoryUtil *float32 `json:"MemoryUtil,omitempty" xml:"MemoryUtil,omitempty"`
+	// The node ID.
+	//
+	// example:
+	//
+	// lingj19q90jp66nq-mg1a2kc92f9nn8yd-20
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node type.
+	//
+	// example:
+	//
+	// ecs.c8i.xlarge
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The total memory.
+	TotalMemory *float32 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	// The used memory.
+	//
+	// example:
+	//
+	// 0
+	UsedMemory *float32 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
 }
 
 func (s NodeGPUMetric) String() string {

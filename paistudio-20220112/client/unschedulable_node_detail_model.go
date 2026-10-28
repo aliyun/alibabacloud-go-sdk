@@ -16,8 +16,14 @@ type iUnschedulableNodeDetail interface {
 }
 
 type UnschedulableNodeDetail struct {
-	Nodes  []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Reason *string   `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The list of nodes.
+	Nodes []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The failure cause.
+	//
+	// example:
+	//
+	// NotEnoughGPU
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s UnschedulableNodeDetail) String() string {

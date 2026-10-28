@@ -26,13 +26,48 @@ type iTaskInstance interface {
 }
 
 type TaskInstance struct {
+	// The instance creation time.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	GmtEndTime     *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The instance end time.
+	//
+	// example:
+	//
+	// 2023-06-22T00:02:00Z
+	GmtEndTime *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	// The task instance status.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// taskxxxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task instance ID.
+	//
+	// example:
+	//
+	// task-instance-xxxxx
 	TaskInstanceId *string `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
-	TenantId       *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The cloud account ID.
+	//
+	// example:
+	//
+	// 123456789
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The creator ID.
+	//
+	// example:
+	//
+	// 123456789
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s TaskInstance) String() string {

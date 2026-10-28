@@ -22,7 +22,7 @@ type GetQuotaRequest struct {
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// Specifies whether to return the node metadata bound to the quota.
+	// Specifies whether to return the metadata of nodes bound to the quota.
 	WithNodeMeta *bool `json:"WithNodeMeta,omitempty" xml:"WithNodeMeta,omitempty"`
 }
 

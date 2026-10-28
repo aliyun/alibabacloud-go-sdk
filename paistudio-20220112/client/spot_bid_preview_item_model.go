@@ -34,27 +34,59 @@ type iSpotBidPreviewItem interface {
 }
 
 type SpotBidPreviewItem struct {
-	// Indicates whether the spot bid is active. If set to `false`, the bid is paused.
+	// Specifies whether it is active.
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
-	// Determines whether instances can be deployed across different High-Performance Network (HPN) zones. Defaults to `false`.
+	// Specifies whether cross-super-node zones are allowed.
 	AllowCrossHpnZone *bool `json:"allowCrossHpnZone,omitempty" xml:"allowCrossHpnZone,omitempty"`
-	// The ID of the cluster where resources are provisioned.
+	// The cluster ID.
+	//
+	// example:
+	//
+	// cluster1
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The GC level for the spot instance.
+	// The GC level.
+	//
+	// example:
+	//
+	// A1
 	GcLevel *string `json:"gcLevel,omitempty" xml:"gcLevel,omitempty"`
-	// The type of compute instance.
+	// The instance type.
+	//
+	// example:
+	//
+	// ml.gp7vf.16.40xlarge
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The name of the associated job.
+	// The job name.
+	//
+	// example:
+	//
+	// dlc1abcdefg12345
 	JobName *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
-	// The maximum discount percentage from the on-demand price.
+	// The maximum discount price.
+	//
+	// example:
+	//
+	// 0.4
 	MaxDiscount *float64 `json:"maxDiscount,omitempty" xml:"maxDiscount,omitempty"`
-	// A message that provides additional details about the current phase.
+	// The message.
+	//
+	// example:
+	//
+	// bid succeeded
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The name of the spot bid preview.
+	// The pre-bid name.
+	//
+	// example:
+	//
+	// preview-xxxx
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The current phase of the spot bid preview. Valid values are `Pending`, `Active`, and `Failed`.
+	// The phase.
 	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
-	// The number of instance replicas.
+	// The number of replicas.
+	//
+	// example:
+	//
+	// 4
 	Replicas *int32 `json:"replicas,omitempty" xml:"replicas,omitempty"`
 }
 

@@ -48,13 +48,13 @@ type GetResourceGroupResponseBody struct {
 	//
 	// cb2c7bde30b774e46a329c
 	ClusterID *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
-	// The provider of computing resources for the resource group.
+	// The type of compute resources for the resource group.
 	//
 	// example:
 	//
 	// ECS
 	ComputingResourceProvider *string `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
-	// The ID of the user who created the resource group.
+	// The user ID of the creator of the resource group.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type GetResourceGroupResponseBody struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the resource group was created.
+	// The time when the resource group was created. The time follows the ISO 8601 standard in the UTC time zone.
 	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
 	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	// The time when the resource group was last modified.
+	// The time when the resource group was updated. The time follows the ISO 8601 standard in the UTC time zone.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type GetResourceGroupResponseBody struct {
 	//
 	// TestResourceGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 18D5A1C6-14B8-545E-8408-0A7DDB4C6B5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of computing resource for the resource group.
+	// The type of compute resources for the resource group.
 	//
 	// example:
 	//
@@ -108,12 +108,17 @@ type GetResourceGroupResponseBody struct {
 	//
 	// true
 	SupportRDMA *bool `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
-	// A list of tags.
+	// The list of tags.
 	Tags []*GetResourceGroupResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The details of the VPC connected to the resource group.
 	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
-	Version *string  `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The workspace ID.
+	// The version.
+	//
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the workspace.
 	//
 	// example:
 	//
@@ -283,13 +288,13 @@ func (s *GetResourceGroupResponseBody) Validate() error {
 }
 
 type GetResourceGroupResponseBodyTags struct {
-	// The tag key.
+	// The tag key of the instance. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// testKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The tag value of the instance. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

@@ -19,10 +19,18 @@ type iSpotStockItem interface {
 
 type SpotStockItem struct {
 	// The instance type.
+	//
+	// example:
+	//
+	// ml.gp7vf.16.40xlarge
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// Internal information about the stock of the spot instance type.
+	// The inventory details.
 	InternalInfo []*SpotStockInternalInfo `json:"internalInfo,omitempty" xml:"internalInfo,omitempty" type:"Repeated"`
-	// The stock status of the instance type. Valid values are `Available` and `SoldOut`.
+	// The inventory status.
+	//
+	// example:
+	//
+	// High
 	StockStatus *string `json:"stockStatus,omitempty" xml:"stockStatus,omitempty"`
 }
 

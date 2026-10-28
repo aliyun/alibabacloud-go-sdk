@@ -14,7 +14,7 @@ type iResizeDiskParameters interface {
 }
 
 type ResizeDiskParameters struct {
-	// The target disk capacity after the change.
+	// The target disk capacity.
 	NewDiskSize *string `json:"NewDiskSize,omitempty" xml:"NewDiskSize,omitempty"`
 }
 

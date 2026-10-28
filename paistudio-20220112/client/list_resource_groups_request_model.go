@@ -36,13 +36,14 @@ type iListResourceGroupsRequest interface {
 }
 
 type ListResourceGroupsRequest struct {
-	// The provider of the compute resources.
+	// The compute resource type of the resource group.
 	//
 	// example:
 	//
 	// Ecs
 	ComputingResourceProvider *string `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
-	HasResource               *bool   `json:"HasResource,omitempty" xml:"HasResource,omitempty"`
+	// Specifies whether the resource group contains resources.
+	HasResource *bool `json:"HasResource,omitempty" xml:"HasResource,omitempty"`
 	// The name of the resource group.
 	//
 	// example:
@@ -51,9 +52,9 @@ type ListResourceGroupsRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - `desc`: descending.
+	// - desc: descending order.
 	//
-	// - `asc`: ascending.
+	// - asc: ascending order.
 	//
 	// example:
 	//
@@ -65,18 +66,23 @@ type ListResourceGroupsRequest struct {
 	//
 	// 2
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
-	PageSize         *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of resource group IDs.
+	//
+	// example:
+	//
+	// rg123,rg456
 	ResourceGroupIDs *string `json:"ResourceGroupIDs,omitempty" xml:"ResourceGroupIDs,omitempty"`
-	// The resource type. Valid values:
+	// The list of resource types. Valid values:
 	//
-	// - `ECS`: ECS.
+	// - ECS: general compute resources.
 	//
-	// - `Lingjun`: Lingjun intelligent computing resources.
+	// - Lingjun: Lingjun AI compute resources.
 	//
 	// example:
 	//
@@ -88,7 +94,7 @@ type ListResourceGroupsRequest struct {
 	//
 	// false
 	ShowAll *bool `json:"ShowAll,omitempty" xml:"ShowAll,omitempty"`
-	// The field to sort by. Valid values include: `DisplayName`, `GmtCreated`, `GmtModified`, `RegionID`, `Duration`, `PricingCycle`, and `PayType`.
+	// The name of the field used for sorting. Valid values: DisplayName, GmtCreated, GmtModified, RegionID, Duration, PricingCycle, and PayType.
 	//
 	// example:
 	//
@@ -100,7 +106,7 @@ type ListResourceGroupsRequest struct {
 	//
 	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The version to filter by.
+	// The version to search for.
 	//
 	// example:
 	//

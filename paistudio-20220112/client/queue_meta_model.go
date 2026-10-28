@@ -34,27 +34,59 @@ type iQueueMeta interface {
 }
 
 type QueueMeta struct {
-	// The time the entry was removed from the queue.
+	// The time when the task was dequeued.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtDequeuedTime *string `json:"GmtDequeuedTime,omitempty" xml:"GmtDequeuedTime,omitempty"`
-	// The time the entry was added to the queue.
+	// The time when the task was enqueued.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtEnqueuedTime *string `json:"GmtEnqueuedTime,omitempty" xml:"GmtEnqueuedTime,omitempty"`
-	// The last time the position of the entry was modified.
+	// The time when the position of the task in the queue was changed.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtPositionModifiedTime *string `json:"GmtPositionModifiedTime,omitempty" xml:"GmtPositionModifiedTime,omitempty"`
-	// The name of the queue entry.
+	// The name of the task in the queue.
+	//
+	// example:
+	//
+	// dlcxxxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The position of the entry in the queue.
+	// The position of the task in the queue. This parameter takes effect only when the task is queued.
+	//
+	// example:
+	//
+	// 10
 	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The queuing strategy for the entry.
+	// The dequeue strategy.
+	//
+	// example:
+	//
+	// PaiStrategyIntelligent
 	QueueStrategy *string `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
-	// The ID of the associated quota.
+	// The resource quota queue to which the task belongs.
+	//
+	// example:
+	//
+	// quotad2kd8ljpsno
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The resources that the queue entry requires.
+	// The resources occupied by the task in the queue.
 	Resource *ResourceAmount `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The resources scheduled for the entry.
+	// The scheduled resources occupied by the task in the queue.
 	ScheduledResource *string `json:"ScheduledResource,omitempty" xml:"ScheduledResource,omitempty"`
-	// The current status of the entry.
+	// The status of the task in the queue, such as enqueued or dequeued.
+	//
+	// example:
+	//
+	// Enqueued
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the entry can use oversold resources.
+	// Specifies whether the task uses idle resources.
 	UseOversoldResource *bool `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
 }
 

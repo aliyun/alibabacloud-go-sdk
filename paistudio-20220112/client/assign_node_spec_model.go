@@ -18,9 +18,20 @@ type iAssignNodeSpec interface {
 }
 
 type AssignNodeSpec struct {
+	// The anti-affinity node names.
+	//
+	// example:
+	//
+	// node3
 	AntiAffinityNodeNames *string `json:"AntiAffinityNodeNames,omitempty" xml:"AntiAffinityNodeNames,omitempty"`
-	EnableAssignNode      *bool   `json:"EnableAssignNode,omitempty" xml:"EnableAssignNode,omitempty"`
-	NodeNames             *string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty"`
+	// Specifies whether to enable the specified node.
+	EnableAssignNode *bool `json:"EnableAssignNode,omitempty" xml:"EnableAssignNode,omitempty"`
+	// The node names.
+	//
+	// example:
+	//
+	// lingjxxxx
+	NodeNames *string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty"`
 }
 
 func (s AssignNodeSpec) String() string {

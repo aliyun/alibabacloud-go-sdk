@@ -30,17 +30,37 @@ type iComponentSpec interface {
 }
 
 type ComponentSpec struct {
+	// The code directory configuration.
 	CodeDir *Location `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
+	// The command used for submit the job.
+	//
 	// This parameter is required.
-	Command         *string                     `json:"Command,omitempty" xml:"Command,omitempty"`
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The hype parameter used by the algorithm.
 	HyperParameters []*HyperParameterDefinition `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
+	// The docker image used by the job of this algorithm.
+	//
 	// This parameter is required.
-	Image         *string    `json:"Image,omitempty" xml:"Image,omitempty"`
+	//
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai-training/kmeans:v1.0.0
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The input for the algorithm.
 	InputChannels []*Channel `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
+	// Job type of the training job while running the algorithm.
+	//
 	// This parameter is required.
-	JobType              *string                `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MetricDefinitions    []*MetricDefinition    `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
-	OutputChannels       []*Channel             `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// TFJob
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The output metrics of the algorithm.
+	MetricDefinitions []*MetricDefinition `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
+	// The outputs of the algorithm.
+	OutputChannels []*Channel `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	// Resource requirements.
 	ResourceRequirements []*ConditionExpression `json:"ResourceRequirements,omitempty" xml:"ResourceRequirements,omitempty" type:"Repeated"`
 }
 

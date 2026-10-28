@@ -18,9 +18,20 @@ type iClusterSpec interface {
 }
 
 type ClusterSpec struct {
-	ClusterType *string       `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The cluster type.
+	//
+	// example:
+	//
+	// RayCluster
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The datasource config.
 	DataSources []*DataSource `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	Image       *string       `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The container image address.
+	//
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai-training/kmeans:v1.0.0
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
 }
 
 func (s ClusterSpec) String() string {

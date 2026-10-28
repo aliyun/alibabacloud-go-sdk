@@ -48,41 +48,101 @@ type iGetMachineGroupResponseBody interface {
 }
 
 type GetMachineGroupResponseBody struct {
-	// The number of instances in the machine group.
+	// The quantity.
+	//
+	// example:
+	//
+	// 10
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The default driver.
+	// The default driver version.
+	//
+	// example:
+	//
+	// 535
 	DefaultDriver *string `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
-	// The subscription duration. This parameter is returned only when `PayType` is `PrePay`.
+	// The purchase duration.
+	//
+	// example:
+	//
+	// 2
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ECS instance type of the machine group.
+	// The ECS instance type.
+	//
+	// example:
+	//
+	// ecs.c6.large
 	EcsType *string `json:"EcsType,omitempty" xml:"EcsType,omitempty"`
-	// The time when the machine group was created.
+	// The creation time.
+	//
+	// example:
+	//
+	// 2026-08-10T03:17:31Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The expiration time. This parameter is returned only when `PayType` is `PrePay`.
+	// The expiration time.
+	//
+	// example:
+	//
+	// 2023-08-22T00:00:00Z
 	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	// The time when the machine group was last modified.
+	// The modification time.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The time when the machine group started.
+	// The start time.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtStarted *string `json:"GmtStarted,omitempty" xml:"GmtStarted,omitempty"`
-	// The ID of the machine group.
+	// The machine group ID.
+	//
+	// example:
+	//
+	// mg1
 	MachineGroupID *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
 	// The order ID.
 	OrderID *string `json:"OrderID,omitempty" xml:"OrderID,omitempty"`
-	// The instance ID of the order.
+	// The order instance ID.
+	//
+	// example:
+	//
+	// 236553689400333
 	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
 	// The PAI resource ID.
 	PAIResourceID *string `json:"PAIResourceID,omitempty" xml:"PAIResourceID,omitempty"`
-	// The payment type. Valid values: `PostPay` (pay-as-you-go) and `PrePay` (subscription).
+	// The billing type.
+	//
+	// example:
+	//
+	// PrePay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The billing cycle. This parameter is returned only when `PayType` is `PrePay`.
+	// The pricing cycle.
+	//
+	// example:
+	//
+	// Monthly
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// F2D0392B-D749-5C48-A98A-3FAE5C9444A6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the machine group.
+	// The status.
+	//
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The drivers that the machine group supports.
+	// The supported driver versions.
 	SupportedDrivers []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
 }
 

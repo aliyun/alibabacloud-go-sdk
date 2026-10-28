@@ -22,11 +22,36 @@ type iStatisticsResources interface {
 }
 
 type StatisticsResources struct {
-	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	HyperNodeNum *int64  `json:"HyperNodeNum,omitempty" xml:"HyperNodeNum,omitempty"`
-	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NodeNum      *int64  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// The amount of CPU resources.
+	//
+	// example:
+	//
+	// 8
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The amount of GPU resources.
+	//
+	// example:
+	//
+	// 1
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The number of hypernodes.
+	//
+	// example:
+	//
+	// 1
+	HyperNodeNum *int64 `json:"HyperNodeNum,omitempty" xml:"HyperNodeNum,omitempty"`
+	// The amount of memory resources.
+	//
+	// example:
+	//
+	// 32
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The number of nodes.
+	//
+	// example:
+	//
+	// 12
+	NodeNum *int64 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 }
 
 func (s StatisticsResources) String() string {

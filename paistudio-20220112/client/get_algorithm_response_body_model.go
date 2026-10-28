@@ -34,67 +34,67 @@ type iGetAlgorithmResponseBody interface {
 }
 
 type GetAlgorithmResponseBody struct {
-	// Algorithm description.
+	// The algorithm description.
 	//
 	// example:
 	//
-	// Large language model training.
+	// Large language model training
 	AlgorithmDescription *string `json:"AlgorithmDescription,omitempty" xml:"AlgorithmDescription,omitempty"`
-	// Algorithm ID.
+	// The algorithm ID.
 	//
 	// example:
 	//
 	// algo-xsldfvu1334
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
-	// Algorithm name.
+	// The algorithm name.
 	//
 	// example:
 	//
 	// llm_training
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
-	// Algorithm provider.
+	// The algorithm provider.
 	//
 	// example:
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
-	// Display name of the algorithm.
+	// The display name of the algorithm.
 	//
 	// example:
 	//
 	// llm_training
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Time when the algorithm was created.
+	// The time when the algorithm was created. The time follows the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Time when the algorithm was last updated.
+	// The time when the algorithm was last updated. The time follows the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tenant ID of the algorithm owner.
+	// The ID of the tenant to whom the algorithm belongs.
 	//
 	// example:
 	//
 	// 123456789
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// User ID of the algorithm owner.
+	// The ID of the user to whom the algorithm belongs.
 	//
 	// example:
 	//
 	// 123456789
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//

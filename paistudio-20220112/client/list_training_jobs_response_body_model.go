@@ -83,7 +83,7 @@ func (s *ListTrainingJobsResponseBody) Validate() error {
 }
 
 type ListTrainingJobsResponseBodyTrainingJobs struct {
-	// The algorithm name.
+	// The name of the algorithm.
 	//
 	// example:
 	//
@@ -100,23 +100,30 @@ type ListTrainingJobsResponseBodyTrainingJobs struct {
 	// example:
 	//
 	// v0.0.1
-	AlgorithmVersion *string         `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
-	AssignNodeSpec   *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
+	AlgorithmVersion *string `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	// The specified node configuration.
+	AssignNodeSpec *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
 	// The compute resource configuration.
-	ComputeResource  *ListTrainingJobsResponseBodyTrainingJobsComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
-	CredentialConfig *CredentialConfig                                        `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	DlcJobId         *string                                                  `json:"DlcJobId,omitempty" xml:"DlcJobId,omitempty"`
+	ComputeResource *ListTrainingJobsResponseBodyTrainingJobsComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	// The credential configuration.
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The DLC job ID.
+	//
+	// example:
+	//
+	// dlc11gyi2xrc5137
+	DlcJobId *string `json:"DlcJobId,omitempty" xml:"DlcJobId,omitempty"`
 	// The list of environment variables.
 	Environments map[string]*string `json:"Environments,omitempty" xml:"Environments,omitempty"`
 	// The experiment configuration associated with the training job.
 	ExperimentConfig *ListTrainingJobsResponseBodyTrainingJobsExperimentConfig `json:"ExperimentConfig,omitempty" xml:"ExperimentConfig,omitempty" type:"Struct"`
-	// The time when the training job was created.
+	// The time when the training job was created, in ISO 8601 format and UTC.
 	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the training job status was last updated.
+	// The time when the training job status was updated, in ISO 8601 format and UTC.
 	//
 	// example:
 	//
@@ -144,19 +151,19 @@ type ListTrainingJobsResponseBodyTrainingJobs struct {
 	//
 	// TrainingJobSucceed
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// The error message of the training job.
+	// The error message for the training job.
 	//
 	// example:
 	//
 	// None
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// The role ARN used for delegated authorization.
+	// The ARN of the role used for authorization.
 	//
 	// example:
 	//
 	// acs:ram::{accountID}:role/{roleName}
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The scheduling configuration of the training job.
+	// The scheduling configuration for the training job.
 	Scheduler *ListTrainingJobsResponseBodyTrainingJobsScheduler `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
 	// The job status.
 	//
@@ -164,15 +171,15 @@ type ListTrainingJobsResponseBodyTrainingJobs struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of training job status transitions.
+	// The list of status transitions for the training job.
 	StatusTransitions []*ListTrainingJobsResponseBodyTrainingJobsStatusTransitions `json:"StatusTransitions,omitempty" xml:"StatusTransitions,omitempty" type:"Repeated"`
 	// The description of the training job.
 	//
 	// example:
 	//
-	// Qwen2 large language model training.
+	// Qwen2 large language model training
 	TrainingJobDescription *string `json:"TrainingJobDescription,omitempty" xml:"TrainingJobDescription,omitempty"`
-	// The training job ID.
+	// The ID of the training job.
 	//
 	// example:
 	//
@@ -561,13 +568,13 @@ type ListTrainingJobsResponseBodyTrainingJobsComputeResource struct {
 	//
 	// ecs.gn5-c8g1.2xlarge
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	// The number of resource quota instances.
+	// The number of instances in the resource quota.
 	//
 	// example:
 	//
 	// 1
 	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The resource quota instance specification.
+	// The instance configuration for the resource quota.
 	InstanceSpec *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty" type:"Struct"`
 	// The resource quota ID.
 	//
@@ -655,13 +662,13 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) Validate() err
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec struct {
-	// The number of CPU cores of the instance.
+	// The number of CPU cores for the instance.
 	//
 	// example:
 	//
 	// 8
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// The number of GPUs of the instance.
+	// The number of GPUs for the instance.
 	//
 	// example:
 	//
@@ -673,13 +680,13 @@ type ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec struct 
 	//
 	// V100
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	// The memory size of the instance. Unit: GiB.
+	// The memory size of the instance, in GiB.
 	//
 	// example:
 	//
 	// 32
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The shared memory size of the instance. Unit: GiB.
+	// The shared memory size of the instance, in GiB.
 	//
 	// example:
 	//
@@ -841,7 +848,7 @@ type ListTrainingJobsResponseBodyTrainingJobsInputChannels struct {
 	//
 	// d-475megosidivjfgfq6
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The input data URI.
+	// The URI of the input data.
 	//
 	// example:
 	//
@@ -852,8 +859,18 @@ type ListTrainingJobsResponseBodyTrainingJobsInputChannels struct {
 	// example:
 	//
 	// model
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RoleArn     *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ARN of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::1157703270994901:role/aliyunserviceroleforpaiworkspace
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The data version name.
+	//
+	// example:
+	//
+	// v1
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -972,13 +989,23 @@ type ListTrainingJobsResponseBodyTrainingJobsOutputChannels struct {
 	//
 	// model
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output data URI.
+	// The URI of the output data.
 	//
 	// example:
 	//
 	// oss://test-bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/to/output/channel/
-	OutputUri   *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
-	RoleArn     *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	OutputUri *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
+	// The ARN of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::1157703270994901:role/aliyunserviceroleforpaiworkspace
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The data version name.
+	//
+	// example:
+	//
+	// v1
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -1040,7 +1067,7 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) Validate() erro
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsScheduler struct {
-	// The maximum training runtime in seconds. A value of 0 indicates no limit on the maximum runtime.
+	// The maximum training duration, in seconds. A value of 0 indicates that the maximum running time is not limited.
 	//
 	// example:
 	//
@@ -1070,7 +1097,7 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsScheduler) Validate() error {
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsStatusTransitions struct {
-	// The end time of the status.
+	// The end time of the status, in ISO 8601 format and UTC.
 	//
 	// example:
 	//
@@ -1088,7 +1115,7 @@ type ListTrainingJobsResponseBodyTrainingJobsStatusTransitions struct {
 	//
 	// KubeDL job runs successfully
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// The start time of the status.
+	// The start time of the status, in ISO 8601 format and UTC.
 	//
 	// example:
 	//
@@ -1180,7 +1207,7 @@ type ListTrainingJobsResponseBodyTrainingJobsUserVpc struct {
 	//
 	// vs-abcdef****
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//

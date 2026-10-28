@@ -22,7 +22,7 @@ type iListQuotaActiveUserUsagesResponseBody interface {
 type ListQuotaActiveUserUsagesResponseBody struct {
 	// The list of user resource usage details.
 	QuotaUserUsage []*QuotaUser `json:"QuotaUserUsage,omitempty" xml:"QuotaUserUsage,omitempty" type:"Repeated"`
-	// The user usage information.
+	// The list of user resource usage details.
 	QuotaUserUsages []*QuotaUser `json:"QuotaUserUsages,omitempty" xml:"QuotaUserUsages,omitempty" type:"Repeated"`
 	// Id of the request
 	//

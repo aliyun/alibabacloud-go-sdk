@@ -40,7 +40,7 @@ type iListTrainingJobsShrinkRequest interface {
 }
 
 type ListTrainingJobsShrinkRequest struct {
-	// The algorithm name.
+	// The name of the algorithm.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ListTrainingJobsShrinkRequest struct {
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
-	// The end time of the job creation time range for the query. Default value: current time.
+	// The end time of the creation time range used to query jobs. Default value: the current time. The time is in ISO 8601 format and the UTC time zone.
 	//
 	// example:
 	//
 	// 2023-12-27T02:10:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether the algorithm is a temporary algorithm.
+	// Specifies whether the algorithm is temporary.
 	//
 	// if can be null:
 	// true
@@ -75,11 +75,15 @@ type ListTrainingJobsShrinkRequest struct {
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The sort order. Valid values:
 	//
+	// - ASC: Ascending order.
+	//
+	// - DESC: Descending order.
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number for paging.
+	// The page number for the paging query.
 	//
 	// example:
 	//
@@ -97,7 +101,7 @@ type ListTrainingJobsShrinkRequest struct {
 	//
 	// GmtModifiedTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The start time of the job creation time range for the query. Default value: 7 days ago.
+	// The start time of the creation time range used to query jobs. Default value: 7 days ago. The time is in ISO 8601 format and the UTC time zone.
 	//
 	// example:
 	//
@@ -109,7 +113,7 @@ type ListTrainingJobsShrinkRequest struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The training job ID.
+	// The ID of the training job.
 	//
 	// example:
 	//

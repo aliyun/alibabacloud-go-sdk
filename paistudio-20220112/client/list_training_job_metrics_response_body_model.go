@@ -20,13 +20,18 @@ type iListTrainingJobMetricsResponseBody interface {
 type ListTrainingJobMetricsResponseBody struct {
 	// The list of metrics.
 	Metrics []*ListTrainingJobMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count.
+	//
+	// example:
+	//
+	// 194
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTrainingJobMetricsResponseBody) String() string {
@@ -92,7 +97,7 @@ type ListTrainingJobMetricsResponseBodyMetrics struct {
 	//
 	// 2022-04-18T22:20:55Z
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The value of the metric.
+	// The metric value.
 	//
 	// example:
 	//

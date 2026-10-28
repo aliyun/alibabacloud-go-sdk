@@ -18,9 +18,24 @@ type iNodeOperationResult interface {
 }
 
 type NodeOperationResult struct {
-	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The node operation status message.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The node name.
+	//
+	// example:
+	//
+	// trains930928remn-master-0
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The node operation status.
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s NodeOperationResult) String() string {

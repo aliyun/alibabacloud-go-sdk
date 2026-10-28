@@ -58,76 +58,139 @@ type iQueueInfo interface {
 }
 
 type QueueInfo struct {
+	// The error code.
+	//
 	// example:
 	//
 	// roleMaximumResource
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error type.
+	//
 	// example:
 	//
 	// ConfigRule
-	CodeType       *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// The task creation time.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	// The dequeue time.
+	//
 	// example:
 	//
 	// "2023-06-22T00:00:00Z"
 	GmtDequeuedTime *string `json:"GmtDequeuedTime,omitempty" xml:"GmtDequeuedTime,omitempty"`
+	// The enqueue time.
+	//
 	// example:
 	//
 	// “2023-06-22T00:00:00Z”
 	GmtEnqueuedTime *string `json:"GmtEnqueuedTime,omitempty" xml:"GmtEnqueuedTime,omitempty"`
+	// The queue position change time.
+	//
 	// example:
 	//
 	// "2023-06-22T00:00:00Z"
 	GmtPositionModifiedTime *string `json:"GmtPositionModifiedTime,omitempty" xml:"GmtPositionModifiedTime,omitempty"`
+	// The name of the underlying QueueUnit.
+	//
 	// example:
 	//
 	// test-label-79f5498dd-9qrzs
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The queue position.
+	//
 	// example:
 	//
 	// 10
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The task priority.
+	//
 	// example:
 	//
 	// 2
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The dequeue strategy of the queue.
+	//
 	// example:
 	//
 	// PaiStrategyIntelligent
 	QueueStrategy *string `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	// The quota used by the task.
+	//
 	// example:
 	//
 	// “quotamtl37ge7gkvdz”
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Current GPU Limit is 5, limited by Role PAI.AlgoDeveloper
-	Reason   *string         `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The resource usage.
 	Resource *ResourceAmount `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Enqueued
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UseOversoldResource *bool   `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
-	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether the task uses idle resources. Valid values:
+	//
+	// - true: Used.
+	//
+	// - false: Not used.
+	UseOversoldResource *bool `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
+	// The creator information.
+	//
+	// example:
+	//
+	// 1612285282502324
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// test
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// dlcxxxx
-	WorkloadId   *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// test-job
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+	// The specific status of DLC, DSW, or EAS.
+	//
 	// example:
 	//
 	// PreAllocation
 	WorkloadStatus *string `json:"WorkloadStatus,omitempty" xml:"WorkloadStatus,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// dlc
 	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
+	// The workspace of the task.
+	//
 	// example:
 	//
 	// “432524”
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace where the task resides.
+	//
+	// example:
+	//
+	// pai_dlc
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

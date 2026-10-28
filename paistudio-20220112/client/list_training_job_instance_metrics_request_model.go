@@ -22,7 +22,7 @@ type iListTrainingJobInstanceMetricsRequest interface {
 }
 
 type ListTrainingJobInstanceMetricsRequest struct {
-	// End time in UTC, in ISO 8601 format. If empty, use the current time.
+	// The end UTC time in ISO 8601 format. If left empty, the current time is used.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -30,29 +30,29 @@ type ListTrainingJobInstanceMetricsRequest struct {
 	//
 	// 2020-11-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// trains930928remn-master-0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Metric type:
+	// The metric type. Valid values:
 	//
-	// - GpuCoreUsage: POD GPU usage
+	// - GpuCoreUsage: POD GPU utilization.
 	//
-	// - GpuMemoryUsage: POD GPU memory usage
+	// - GpuMemoryUsage: POD GPU memory utilization.
 	//
-	// - CpuCoreUsage: POD CPU usage
+	// - CpuCoreUsage: POD CPU utilization.
 	//
-	// - MemoryUsage: POD memory usage
+	// - MemoryUsage: POD memory utilization.
 	//
-	// - NetworkInputRate: POD network input rate (TCP/IP) (MB/s)
+	// - NetworkInputRate: POD network write rate (TCP/IP) (MB/s).
 	//
-	// - NetworkOutputRate: POD network output rate (TCP/IP) (MB/s)
+	// - NetworkOutputRate: POD network read rate (TCP/IP) (MB/s).
 	//
-	// - DiskReadRate: POD disk read rate (MB/s)
+	// - DiskReadRate: POD disk read rate (MB/s).
 	//
-	// - DiskWriteRate: POD disk write rate (MB/s)
+	// - DiskWriteRate: POD disk write rate (MB/s).
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ListTrainingJobInstanceMetricsRequest struct {
 	//
 	// GpuCoreUsage
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// Start time in UTC, in ISO 8601 format. If empty, use the job start time.
+	// The start UTC time in ISO 8601 format. If left empty, the job start time is used.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -68,7 +68,7 @@ type ListTrainingJobInstanceMetricsRequest struct {
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Time interval. Valid values: 1h, 30m, 5m, 10s.
+	// The metric collection interval. Valid values: 1h, 30m, 5m, and 10s. h indicates hours, m indicates minutes, and s indicates seconds.
 	//
 	// example:
 	//

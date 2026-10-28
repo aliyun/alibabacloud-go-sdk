@@ -16,8 +16,18 @@ type iDeleteMachineGroupResponseBody interface {
 }
 
 type DeleteMachineGroupResponseBody struct {
+	// The ID of the machine group.
+	//
+	// example:
+	//
+	// mg1
 	MachineGroupID *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// F2D0392B-D749-5C48-A98A-3FAE5C9444A6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteMachineGroupResponseBody) String() string {

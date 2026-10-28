@@ -26,7 +26,7 @@ type ListQuotasResponseBody struct {
 	//
 	// F082BD0D-21E1-5F9B-81A0-AB07485B03CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

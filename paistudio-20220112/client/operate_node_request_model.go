@@ -18,7 +18,7 @@ type iOperateNodeRequest interface {
 }
 
 type OperateNodeRequest struct {
-	// The operation. Valid values:
+	// The operation to perform. Valid values:
 	//
 	// - Cordon: disables scheduling
 	//

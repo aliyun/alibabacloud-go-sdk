@@ -38,31 +38,75 @@ type iWorkloadInfo interface {
 }
 
 type WorkloadInfo struct {
-	// Specifies whether the workload is scheduled. Valid values are `true` and `false`.
+	// Specifies whether the task is scheduled.
 	IsScheduled *string `json:"IsScheduled,omitempty" xml:"IsScheduled,omitempty"`
-	// The scheduling priority of the workload. A higher value indicates a higher priority.
+	// The task priority.
+	//
+	// example:
+	//
+	// 0
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// A list of metadata for the queues associated with the workload.
+	// The information about the queue where the task resides.
 	QueueMetas []*QueueMeta `json:"QueueMetas,omitempty" xml:"QueueMetas,omitempty" type:"Repeated"`
-	// The ID of the tenant that contains the workload.
+	// The ID of the Alibaba Cloud account that created the task.
+	//
+	// example:
+	//
+	// 123456789
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The ID of the user who created the workload.
+	// The ID of the RAM user that created the task.
+	//
+	// example:
+	//
+	// 123456789
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The name of the user who created the workload.
+	// The username of the task creator.
+	//
+	// example:
+	//
+	// test
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The creation time of the workload, in UTC format.
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	WorkloadCreatedTime *string `json:"WorkloadCreatedTime,omitempty" xml:"WorkloadCreatedTime,omitempty"`
-	// The unique, system-generated ID for the workload.
+	// The task ID.
+	//
+	// example:
+	//
+	// dlcxxxx
 	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
-	// The user-defined name of the workload.
+	// The task name.
+	//
+	// example:
+	//
+	// test-job
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
-	// The current status of the workload. Possible values include `Pending`, `Running`, `Succeeded`, and `Failed`.
+	// The task status.
+	//
+	// example:
+	//
+	// Running
 	WorkloadStatus *string `json:"WorkloadStatus,omitempty" xml:"WorkloadStatus,omitempty"`
-	// The type of the workload.
+	// The task type.
+	//
+	// example:
+	//
+	// dlc
 	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
-	// The ID of the workspace that contains the workload.
+	// The ID of the workspace where the task resides.
+	//
+	// example:
+	//
+	// 12345
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The name of the workspace that contains the workload.
+	// The name of the workspace where the task resides.
+	//
+	// example:
+	//
+	// myshellprod
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

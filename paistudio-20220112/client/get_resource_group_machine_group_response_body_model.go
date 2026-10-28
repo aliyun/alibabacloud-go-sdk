@@ -62,15 +62,25 @@ type iGetResourceGroupMachineGroupResponseBody interface {
 }
 
 type GetResourceGroupMachineGroupResponseBody struct {
-	AllocatableCpu    *string `json:"AllocatableCpu,omitempty" xml:"AllocatableCpu,omitempty"`
+	// The number of allocatable CPU cores on each machine in the machine group.
+	//
+	// example:
+	//
+	// 2
+	AllocatableCpu *string `json:"AllocatableCpu,omitempty" xml:"AllocatableCpu,omitempty"`
+	// The allocatable memory size on each machine in the machine group.
+	//
+	// example:
+	//
+	// 55
 	AllocatableMemory *string `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
-	// The total number of CPU cores per machine in the machine group.
+	// The total number of CPU cores on each machine in the machine group.
 	//
 	// example:
 	//
 	// 2
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The default GPU driver version per machine in the machine group.
+	// The default GPU driver version of each machine in the machine group.
 	//
 	// example:
 	//
@@ -82,13 +92,13 @@ type GetResourceGroupMachineGroupResponseBody struct {
 	//
 	// 1
 	EcsCount *int64 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	// The ECS spec.
+	// The ECS instance type.
 	//
 	// example:
 	//
 	// ecs.c6.large
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	// The creation time of the machine group.
+	// The time when the machine group was created.
 	//
 	// example:
 	//
@@ -100,25 +110,25 @@ type GetResourceGroupMachineGroupResponseBody struct {
 	//
 	// 2023-06-22T00:00:00Z
 	GmtExpiredTime *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
-	// The last modification time of the machine group.
+	// The time when the machine group was updated.
 	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The start time of the machine group.
+	// The time when the machine group was started.
 	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
 	GmtStartedTime *string `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
-	// The number of GPUs per machine in the machine group.
+	// The number of GPU cores on each machine in the machine group.
 	//
 	// example:
 	//
 	// 8
 	Gpu *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The GPU type per machine in the machine group.
+	// The GPU type of each machine in the machine group.
 	//
 	// example:
 	//
@@ -130,7 +140,7 @@ type GetResourceGroupMachineGroupResponseBody struct {
 	//
 	// mgmioirqjgw6c5lg
 	MachineGroupID *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	// The amount of memory per machine in the machine group.
+	// The memory size of each machine in the machine group.
 	//
 	// example:
 	//
@@ -142,61 +152,69 @@ type GetResourceGroupMachineGroupResponseBody struct {
 	//
 	// testMachineGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The payment duration. When PaymentDurationUnit is set to Month, valid values are: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	// The billing duration. If PaymentDurationUnit is set to Month, valid values are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
 	//
 	// example:
 	//
 	// 1
 	PaymentDuration *string `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	// The unit of the billing cycle for the machine group.
+	// The billing duration unit of the machine group.
 	//
 	// example:
 	//
 	// Month
 	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	// The payment type.
+	// The billing method.
 	//
 	// example:
 	//
 	// PREPAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 18D5A1C6-14B8-545E-8408-0A7DDB4C6B5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group. This ID is globally unique and can be used to retrieve information about the resource group.
+	// The ID of the resource group. Each resource group has a globally unique ID. You can use the resource group ID to retrieve the information about the resource group.
 	//
 	// example:
 	//
 	// rgf0zhfqn1d4ity2
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	// The status of the machine group.
+	// The instance status. Valid values:
 	//
-	// Valid values:
+	// - Creating: The instance is being created.
 	//
-	// Creating: The machine group is being created.
+	// - Ready: The instance is running.
 	//
-	// Ready: The machine group is running.
+	// - Expiring: The instance is about to expire.
 	//
-	// Expiring: The machine group is about to expire.
+	// - Expired: The instance has expired.
 	//
-	// Expired: The machine group has expired.
+	// - Stopping: The instance is being stopped.
 	//
-	// Stopping: The machine group is being stopped.
-	//
-	// Stopped: The machine group has been stopped.
+	// - Stopped: The instance is stopped.
 	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The GPU driver versions supported by the machines in the machine group.
-	SupportedDrivers     []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
-	SystemReservedCpu    *string   `json:"SystemReservedCpu,omitempty" xml:"SystemReservedCpu,omitempty"`
-	SystemReservedMemory *string   `json:"SystemReservedMemory,omitempty" xml:"SystemReservedMemory,omitempty"`
-	// The list of tags attached to the machine group.
+	// The GPU driver versions supported by nodes in the machine group.
+	SupportedDrivers []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
+	// The number of system-reserved CPU cores on each machine in the machine group.
+	//
+	// example:
+	//
+	// 0
+	SystemReservedCpu *string `json:"SystemReservedCpu,omitempty" xml:"SystemReservedCpu,omitempty"`
+	// The size of system-reserved memory on each machine in the machine group.
+	//
+	// example:
+	//
+	// 9
+	SystemReservedMemory *string `json:"SystemReservedMemory,omitempty" xml:"SystemReservedMemory,omitempty"`
+	// The list of tags to query. The value is a JSON string that contains up to 20 tags.
 	Tags []*GetResourceGroupMachineGroupResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -447,13 +465,13 @@ func (s *GetResourceGroupMachineGroupResponseBody) Validate() error {
 }
 
 type GetResourceGroupMachineGroupResponseBodyTags struct {
-	// The tag key.
+	// The key of the tag. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The value of the tag. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

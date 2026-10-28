@@ -14,6 +14,7 @@ type iSandboxCacheConfig interface {
 }
 
 type SandboxCacheConfig struct {
+	// Specifies whether the sandbox cache is enabled.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 

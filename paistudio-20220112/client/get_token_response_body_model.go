@@ -16,13 +16,13 @@ type iGetTokenResponseBody interface {
 }
 
 type GetTokenResponseBody struct {
-	// ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F2D0392B-D749-5C48-A98A-3FAE5C9444A6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Share token for the training task. Use this token as the Token parameter in the GetJob API to view details of the shared task.
+	// The job sharing token. You can use this token as the Token parameter of the GetJob API to view information about the shared job.
 	//
 	// example:
 	//

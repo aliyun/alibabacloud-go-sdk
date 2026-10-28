@@ -74,13 +74,17 @@ type Quota struct {
 	//
 	// 1884692****
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The resource quota description.
+	// The description of the resource quota.
 	//
 	// example:
 	//
 	// this is a test quota
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The GPU type.
+	//
+	// example:
+	//
+	// L20
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	// The time when the resource quota was created.
 	//
@@ -88,14 +92,15 @@ type Quota struct {
 	//
 	// 2023-06-22T00:00:00Z
 	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	// The time when the resource quota was last modified.
+	// The time when the resource quota was updated.
 	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
-	GmtModifiedTime *string   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	HyperZones      []*string `json:"HyperZones,omitempty" xml:"HyperZones,omitempty" type:"Repeated"`
-	// The resource quota labels.
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The list of high-performance network zones.
+	HyperZones []*string `json:"HyperZones,omitempty" xml:"HyperZones,omitempty" type:"Repeated"`
+	// The labels of the resource quota.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The ID of the latest operation on the resource quota.
 	//
@@ -105,7 +110,7 @@ type Quota struct {
 	LatestOperationId *string `json:"LatestOperationId,omitempty" xml:"LatestOperationId,omitempty"`
 	// The guaranteed resources.
 	Min *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
-	// The parent resource quota ID.
+	// The ID of the parent resource quota.
 	//
 	// example:
 	//
@@ -113,30 +118,31 @@ type Quota struct {
 	ParentQuotaId *string `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
 	// The queue policy for the quota. Valid values:
 	//
-	// - PaiStrategyIntelligent: intelligent policies.
+	// - PaiStrategyIntelligent: intelligent policies
 	//
-	// - PaiStrategyBalance: balanced policy.
+	// - PaiStrategyBalance: balanced policy
 	//
-	// - PaiStrategyRoundRobin: resource-priority policy.
+	// - PaiStrategyRoundRobin: resource priority policy
 	//
-	// - PaiStrategyStrictFIFO: FIFO policy.
+	// - PaiStrategyStrictFIFO: FIFO policy
 	//
 	// example:
 	//
 	// PaiStrategyIntelligent
-	QueueStrategy *string       `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
-	QuotaCluster  *QuotaCluster `json:"QuotaCluster,omitempty" xml:"QuotaCluster,omitempty"`
-	// The resource quota configuration.
+	QueueStrategy *string `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	// The specifications and status of the cluster composed of resources in the quota.
+	QuotaCluster *QuotaCluster `json:"QuotaCluster,omitempty" xml:"QuotaCluster,omitempty"`
+	// The configuration of the resource quota.
 	QuotaConfig *QuotaConfig `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
-	// The resource quota details.
+	// The details of the resource quota.
 	QuotaDetails *QuotaDetails `json:"QuotaDetails,omitempty" xml:"QuotaDetails,omitempty"`
-	// The resource quota ID.
+	// The ID of the resource quota.
 	//
 	// example:
 	//
 	// quota12345
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The resource quota name.
+	// The name of the resource quota.
 	//
 	// example:
 	//
@@ -148,7 +154,7 @@ type Quota struct {
 	//
 	// “”
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// The error reason.
+	// The cause of the error.
 	//
 	// example:
 	//
@@ -168,15 +174,19 @@ type Quota struct {
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The resource quota status.
+	// The status of the resource quota.
 	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of sub-quotas under the resource quota.
+	// The list of sub-quotas of the resource quota.
 	SubQuotas []*QuotaIdName `json:"SubQuotas,omitempty" xml:"SubQuotas,omitempty" type:"Repeated"`
 	// The version.
+	//
+	// example:
+	//
+	// 1.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The workspaces associated with the resource quota.
 	Workspaces []*WorkspaceIdName `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`

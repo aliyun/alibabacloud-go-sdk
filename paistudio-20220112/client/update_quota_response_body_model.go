@@ -16,7 +16,7 @@ type iUpdateQuotaResponseBody interface {
 }
 
 type UpdateQuotaResponseBody struct {
-	// Quota ID。
+	// The quota ID.
 	//
 	// example:
 	//

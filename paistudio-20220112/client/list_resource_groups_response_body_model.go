@@ -30,7 +30,7 @@ type ListResourceGroupsResponseBody struct {
 	//
 	// RG1
 	ResourceGroups []*ResourceGroup `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
-	// The total number of matching resource groups.
+	// The total number of resource groups returned.
 	//
 	// This parameter is required.
 	//

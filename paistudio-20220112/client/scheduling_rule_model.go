@@ -20,17 +20,37 @@ type iSchedulingRule interface {
 }
 
 type SchedulingRule struct {
+	// The cron tab. Only the minute, hour, day, month, and week fields are currently supported. Second-level configurations are discarded.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 0 0 	- 	- 7
 	CronTab *string `json:"CronTab,omitempty" xml:"CronTab,omitempty"`
+	// The stop time of the task.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 2025-06-22T00:00:00Z
 	EndAt *string `json:"EndAt,omitempty" xml:"EndAt,omitempty"`
+	// Specifies whether the task is executed only once.
+	//
 	// if can be null:
 	// true
 	ExecuteOnce *bool `json:"ExecuteOnce,omitempty" xml:"ExecuteOnce,omitempty"`
+	// The start time of the effective period for the node.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 2023-06-22T00:00:00Z
 	StartAt *string `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
 }
 

@@ -52,26 +52,74 @@ type iCapacityLock interface {
 }
 
 type CapacityLock struct {
-	AvailableCount           *int32  `json:"availableCount,omitempty" xml:"availableCount,omitempty"`
-	CrsReservationId         *string `json:"crsReservationId,omitempty" xml:"crsReservationId,omitempty"`
-	Description              *string `json:"description,omitempty" xml:"description,omitempty"`
-	ExpireTime               *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	GmtCreated               *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	GmtModified              *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Id                       *string `json:"id,omitempty" xml:"id,omitempty"`
-	InstanceType             *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The number of available instances.
+	//
+	// example:
+	//
+	// 3
+	AvailableCount *int32 `json:"availableCount,omitempty" xml:"availableCount,omitempty"`
+	// The ID of the capacity reservation.
+	CrsReservationId *string `json:"crsReservationId,omitempty" xml:"crsReservationId,omitempty"`
+	// The description of the capacity reservation.
+	//
+	// example:
+	//
+	// Test capacity reservation
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The expiration time of the capacity reservation.
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The creation time.
+	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	// The modification time.
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The ID of the capacity reservation lock record.
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The instance type.
+	//
+	// example:
+	//
+	// ml.gp7vf.16.40xlarge
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The time of the last reconciliation attempt.
 	LastReconcileAttemptTime *string `json:"lastReconcileAttemptTime,omitempty" xml:"lastReconcileAttemptTime,omitempty"`
-	LastSyncTime             *string `json:"lastSyncTime,omitempty" xml:"lastSyncTime,omitempty"`
-	LockProvider             *string `json:"lockProvider,omitempty" xml:"lockProvider,omitempty"`
-	LockedCount              *int32  `json:"lockedCount,omitempty" xml:"lockedCount,omitempty"`
-	Operator                 *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	PaymentType              *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	PrivatePoolId            *string `json:"privatePoolId,omitempty" xml:"privatePoolId,omitempty"`
-	RequestedCount           *int32  `json:"requestedCount,omitempty" xml:"requestedCount,omitempty"`
-	Status                   *string `json:"status,omitempty" xml:"status,omitempty"`
-	TenantId                 *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	UsedCount                *int32  `json:"usedCount,omitempty" xml:"usedCount,omitempty"`
-	ZoneId                   *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	// The last synchronization time.
+	LastSyncTime *string `json:"lastSyncTime,omitempty" xml:"lastSyncTime,omitempty"`
+	// The lock service provider.
+	LockProvider *string `json:"lockProvider,omitempty" xml:"lockProvider,omitempty"`
+	// The number of locked instances.
+	//
+	// example:
+	//
+	// 4
+	LockedCount *int32 `json:"lockedCount,omitempty" xml:"lockedCount,omitempty"`
+	// The operator.
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The billing method.
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The ID of the private pool.
+	PrivatePoolId *string `json:"privatePoolId,omitempty" xml:"privatePoolId,omitempty"`
+	// The number of requested instances.
+	//
+	// example:
+	//
+	// 4
+	RequestedCount *int32 `json:"requestedCount,omitempty" xml:"requestedCount,omitempty"`
+	// The status.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The number of used instances.
+	//
+	// example:
+	//
+	// 1
+	UsedCount *int32 `json:"usedCount,omitempty" xml:"usedCount,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-wulanchabu-a
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
 func (s CapacityLock) String() string {

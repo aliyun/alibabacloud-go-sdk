@@ -30,51 +30,51 @@ type iGetAlgorithmVersionResponseBody interface {
 }
 
 type GetAlgorithmVersionResponseBody struct {
-	// The ID of the algorithm.
+	// The algorithm ID.
 	//
 	// example:
 	//
 	// algo-xsldfvu1334
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
-	// The name of the algorithm.
+	// The algorithm name.
 	//
 	// example:
 	//
 	// llm_training
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
-	// The provider of the algorithm.
+	// The algorithm provider.
 	//
 	// example:
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
-	// Details about the algorithm.
+	// The algorithm details.
 	AlgorithmSpec *AlgorithmSpec `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
-	// The version of the algorithm.
+	// The algorithm version.
 	//
 	// example:
 	//
 	// v0.0.1
 	AlgorithmVersion *string `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
-	// The time when the algorithm was created.
+	// The time when the algorithm was created. The time follows the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the algorithm was last updated.
+	// The time when the algorithm was last updated. The time follows the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The ID of the tenant who owns the algorithm.
+	// The ID of the tenant to whom the algorithm belongs.
 	//
 	// example:
 	//
 	// 123456789
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The ID of the user who owns the algorithm.
+	// The ID of the user to whom the algorithm belongs.
 	//
 	// example:
 	//

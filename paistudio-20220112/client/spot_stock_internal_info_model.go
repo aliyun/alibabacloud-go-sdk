@@ -20,13 +20,29 @@ type iSpotStockInternalInfo interface {
 }
 
 type SpotStockInternalInfo struct {
-	// The number of available Spot Instances.
+	// The available quantity.
+	//
+	// example:
+	//
+	// 100
 	AvailableQuantity *int32 `json:"availableQuantity,omitempty" xml:"availableQuantity,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
+	//
+	// example:
+	//
+	// cluster1
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The ID of the high-performance network (HPN) zone.
+	// The high-performance network zone.
+	//
+	// example:
+	//
+	// A1
 	HpnZone *string `json:"hpnZone,omitempty" xml:"hpnZone,omitempty"`
-	// The total number of Spot Instances.
+	// The total quantity.
+	//
+	// example:
+	//
+	// 1000
 	TotalQuantity *int32 `json:"totalQuantity,omitempty" xml:"totalQuantity,omitempty"`
 }
 

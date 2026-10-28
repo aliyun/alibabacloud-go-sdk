@@ -22,16 +22,32 @@ type iSpotStockPreview interface {
 }
 
 type SpotStockPreview struct {
-	AvailableQuantity *int32  `json:"AvailableQuantity,omitempty" xml:"AvailableQuantity,omitempty"`
-	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The available quantity.
+	//
+	// example:
+	//
+	// 100
+	AvailableQuantity *int32 `json:"AvailableQuantity,omitempty" xml:"AvailableQuantity,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// c1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The spot instance type.
+	//
 	// example:
 	//
 	// ml.gu8xf.8xlarge-gu108
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The current spot instance discount.
+	//
 	// example:
 	//
 	// 0.1
 	SpotDiscount *float32 `json:"SpotDiscount,omitempty" xml:"SpotDiscount,omitempty"`
+	// The spot instance inventory status.
+	//
 	// example:
 	//
 	// WithStock

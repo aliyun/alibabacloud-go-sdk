@@ -20,13 +20,29 @@ type iAllocatedHyperNodeDetail interface {
 }
 
 type AllocatedHyperNodeDetail struct {
-	// The number of allocated nodes in the hyper node.
+	// The number of allocated nodes.
+	//
+	// example:
+	//
+	// 0
 	AllocatedNodeNum *int64 `json:"AllocatedNodeNum,omitempty" xml:"AllocatedNodeNum,omitempty"`
-	// The number of idle nodes in the hyper node.
+	// The number of idle nodes.
+	//
+	// example:
+	//
+	// 0
 	EmptyNodeNum *int64 `json:"EmptyNodeNum,omitempty" xml:"EmptyNodeNum,omitempty"`
-	// The name of the hyper node.
+	// The name of the hypernode.
+	//
+	// example:
+	//
+	// mg123456
 	HyperNodeName *string `json:"HyperNodeName,omitempty" xml:"HyperNodeName,omitempty"`
-	// The total number of nodes in the hyper node.
+	// The total number of nodes.
+	//
+	// example:
+	//
+	// 0
 	TotalNodeNum *int64 `json:"TotalNodeNum,omitempty" xml:"TotalNodeNum,omitempty"`
 }
 

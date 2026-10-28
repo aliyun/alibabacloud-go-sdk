@@ -22,11 +22,20 @@ type iResourceDiagnosisDetail interface {
 }
 
 type ResourceDiagnosisDetail struct {
-	ExceedResources []*string       `json:"ExceedResources,omitempty" xml:"ExceedResources,omitempty" type:"Repeated"`
-	Limit           *ResourceAmount `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Status          *string         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Used            *ResourceAmount `json:"Used,omitempty" xml:"Used,omitempty"`
-	WorkloadIds     []*string       `json:"WorkloadIds,omitempty" xml:"WorkloadIds,omitempty" type:"Repeated"`
+	// The exceeded resources.
+	ExceedResources []*string `json:"ExceedResources,omitempty" xml:"ExceedResources,omitempty" type:"Repeated"`
+	// The resource quota.
+	Limit *ResourceAmount `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The diagnosis status.
+	//
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The resource usage.
+	Used *ResourceAmount `json:"Used,omitempty" xml:"Used,omitempty"`
+	// The related workload IDs.
+	WorkloadIds []*string `json:"WorkloadIds,omitempty" xml:"WorkloadIds,omitempty" type:"Repeated"`
 }
 
 func (s ResourceDiagnosisDetail) String() string {

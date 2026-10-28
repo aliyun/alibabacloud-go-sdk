@@ -18,9 +18,24 @@ type iDataSource interface {
 }
 
 type DataSource struct {
+	// The data source ID.
+	//
+	// example:
+	//
+	// data-source-1
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The mount path of the data source.
+	//
+	// example:
+	//
+	// /mnt/data/
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The URI of the data source.
+	//
+	// example:
+	//
+	// oss://test-bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/to/model/output/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s DataSource) String() string {

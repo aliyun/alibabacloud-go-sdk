@@ -52,52 +52,61 @@ type iQuotaConfig interface {
 }
 
 type QuotaConfig struct {
-	// The ACS-related configurations.
+	// The ACS-related configuration.
 	ACS *ACS `json:"ACS,omitempty" xml:"ACS,omitempty"`
 	// The ID of the cluster where the quota resides.
 	//
 	// example:
 	//
 	// ceeb3724255364***
-	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the control plane cluster.
 	ControlPlaneClusterId *string `json:"ControlPlaneClusterId,omitempty" xml:"ControlPlaneClusterId,omitempty"`
-	// The default GPU driver version for the resource quota.
+	// The default driver version of the resource quota.
 	//
 	// example:
 	//
 	// 470.199.02
 	DefaultGPUDriver *string `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
-	EnableGPUShare   *bool   `json:"EnableGPUShare,omitempty" xml:"EnableGPUShare,omitempty"`
-	// Specifies whether workloads in sub-quotas can be preempted.
+	// Specifies whether GPU sharing is enabled.
+	EnableGPUShare *bool `json:"EnableGPUShare,omitempty" xml:"EnableGPUShare,omitempty"`
+	// Specifies whether sub-quota resources can be preempted.
 	//
 	// example:
 	//
 	// false
 	EnablePreemptSubquotaWorkloads *bool `json:"EnablePreemptSubquotaWorkloads,omitempty" xml:"EnablePreemptSubquotaWorkloads,omitempty"`
-	// Specifies whether guaranteed resources within this quota can be preempted.
+	// Specifies whether guaranteed resource preemption for the current quota is enabled.
 	EnableSelfQuotaPreemption *bool `json:"EnableSelfQuotaPreemption,omitempty" xml:"EnableSelfQuotaPreemption,omitempty"`
-	// Specifies whether resources in sub-quotas can be preempted.
-	EnableSubQuotaPreemption *bool                `json:"EnableSubQuotaPreemption,omitempty" xml:"EnableSubQuotaPreemption,omitempty"`
-	EniCacheConfig           *EniCacheConfig      `json:"EniCacheConfig,omitempty" xml:"EniCacheConfig,omitempty"`
-	IsEncryptedResource      *bool                `json:"IsEncryptedResource,omitempty" xml:"IsEncryptedResource,omitempty"`
-	OversoldUsageConfig      *OversoldUsageConfig `json:"OversoldUsageConfig,omitempty" xml:"OversoldUsageConfig,omitempty"`
-	// The resource specification templates.
-	ResourceSpecs             []*WorkspaceSpecs          `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
-	SandboxCacheConfig        *SandboxCacheConfig        `json:"SandboxCacheConfig,omitempty" xml:"SandboxCacheConfig,omitempty"`
+	// Specifies whether sub-quota resources can be preempted.
+	EnableSubQuotaPreemption *bool `json:"EnableSubQuotaPreemption,omitempty" xml:"EnableSubQuotaPreemption,omitempty"`
+	// The elastic network interface controller (NIC) cache configuration.
+	EniCacheConfig *EniCacheConfig `json:"EniCacheConfig,omitempty" xml:"EniCacheConfig,omitempty"`
+	// Specifies whether the resource is encrypted.
+	IsEncryptedResource *bool `json:"IsEncryptedResource,omitempty" xml:"IsEncryptedResource,omitempty"`
+	// The off-peak resource usage configuration.
+	OversoldUsageConfig *OversoldUsageConfig `json:"OversoldUsageConfig,omitempty" xml:"OversoldUsageConfig,omitempty"`
+	// The resource specification template.
+	ResourceSpecs []*WorkspaceSpecs `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
+	// The sandbox cache configuration.
+	SandboxCacheConfig *SandboxCacheConfig `json:"SandboxCacheConfig,omitempty" xml:"SandboxCacheConfig,omitempty"`
+	// The self-quota preemption configuration.
 	SelfQuotaPreemptionConfig *SelfQuotaPreemptionConfig `json:"SelfQuotaPreemptionConfig,omitempty" xml:"SelfQuotaPreemptionConfig,omitempty"`
-	// The configuration for the sub-quota preemption task.
+	// The sub-quota task preemption configuration.
 	SubQuotaPreemptionConfig *SubQuotaPreemptionConfig `json:"SubQuotaPreemptionConfig,omitempty" xml:"SubQuotaPreemptionConfig,omitempty"`
-	// The GPU driver versions supported by the resource quota.
+	// The driver versions supported by the resource quota.
 	SupportGPUDrivers []*string `json:"SupportGPUDrivers,omitempty" xml:"SupportGPUDrivers,omitempty" type:"Repeated"`
 	// Specifies whether RDMA is supported.
 	//
 	// example:
 	//
 	// false
-	SupportRDMA *bool   `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
-	UseCase     *string `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
+	SupportRDMA *bool `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
+	// The scenarios of the resource quota.
+	UseCase *string `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
 	// The user VPC information.
-	UserVpc       *UserVpc  `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	// The workload types supported by the quota.
 	WorkloadTypes []*string `json:"WorkloadTypes,omitempty" xml:"WorkloadTypes,omitempty" type:"Repeated"`
 }
 

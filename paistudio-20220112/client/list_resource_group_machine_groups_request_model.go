@@ -40,20 +40,25 @@ type iListResourceGroupMachineGroupsRequest interface {
 }
 
 type ListResourceGroupMachineGroupsRequest struct {
-	// The ID of the user who created the machine group.
+	// The user ID of the machine group creator.
 	//
 	// example:
 	//
 	// 1612285282502326
 	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
-	DiskPL    *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
+	// The cloud disk performance level for filtering.
+	//
+	// example:
+	//
+	// PL2
+	DiskPL *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
 	// The ECS instance type.
 	//
 	// example:
 	//
 	// ecs.c6.large
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	// The machine group IDs. Separate multiple IDs with a comma (,).
+	// The IDs of the machine groups. Separate multiple IDs with commas.
 	//
 	// example:
 	//
@@ -65,17 +70,17 @@ type ListResourceGroupMachineGroupsRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort order.
+	// The sort order. Valid values:
 	//
-	// - `Asc`: Sorts the results in ascending order.
+	// - Asc: Ascending order.
 	//
-	// - `Desc`: Sorts the results in descending order.
+	// - Desc: Descending order.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The ID of the purchase order.
+	// The purchased instance ID.
 	//
 	// example:
 	//
@@ -93,7 +98,7 @@ type ListResourceGroupMachineGroupsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The payment duration. If `PaymentDurationUnit` is set to `Month`, valid values are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	// The billing duration. If PaymentDurationUnit is set to Month, valid values are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
 	//
 	// example:
 	//
@@ -105,19 +110,31 @@ type ListResourceGroupMachineGroupsRequest struct {
 	//
 	// Month
 	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	// The payment type.
+	// The billing method.
 	//
 	// example:
 	//
 	// PREPAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The field to sort by.
+	// The sort field.
 	//
 	// example:
 	//
 	// GmtCreatedTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The instance status. `Creating`: The instance is being created. `Ready`: The instance is running. `Expiring`: The instance is expiring. `Expired`: The instance has expired. `Stopping`: The instance is being stopped. `Stopped`: The instance is stopped.
+	// The instance status. Valid values:
+	//
+	// - Creating: The instance is being created.
+	//
+	// - Ready: The instance is running.
+	//
+	// - Expiring: The instance is about to expire.
+	//
+	// - Expired: The instance has expired.
+	//
+	// - Stopping: The instance is being stopped.
+	//
+	// - Stopped: The instance is stopped.
 	//
 	// example:
 	//

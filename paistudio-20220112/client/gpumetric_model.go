@@ -20,12 +20,29 @@ type iGPUMetric interface {
 }
 
 type GPUMetric struct {
-	Index *int64  `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The GPU index.
+	//
+	// example:
+	//
+	// 0
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The GPU model.
+	//
+	// example:
+	//
+	// NVIDIA V100
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The card status.
+	//
 	// example:
 	//
 	// 0：异常；1：正常
-	Status    *int64   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The GPU utilization.
+	//
+	// example:
+	//
+	// 0
 	UsageRate *float32 `json:"UsageRate,omitempty" xml:"UsageRate,omitempty"`
 }
 

@@ -58,13 +58,13 @@ type iCreateTrainingJobRequest interface {
 }
 
 type CreateTrainingJobRequest struct {
-	// The algorithm name.
+	// The name of the algorithm.
 	//
 	// example:
 	//
 	// ev_classification
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
-	// The algorithm provider.
+	// The provider of the algorithm.
 	//
 	// example:
 	//
@@ -72,29 +72,31 @@ type CreateTrainingJobRequest struct {
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
 	// The algorithm configuration for the training job.
 	AlgorithmSpec *AlgorithmSpec `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
-	// The algorithm version.
+	// The version of the algorithm.
 	//
 	// example:
 	//
 	// v1.0.0
-	AlgorithmVersion *string         `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
-	AssignNodeSpec   *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
-	// The code directory for the training job.
+	AlgorithmVersion *string `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	// The specified node configuration.
+	AssignNodeSpec *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
+	// The code configuration for the training job.
 	CodeDir *Location `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
 	// The compute resource configuration.
-	ComputeResource  *CreateTrainingJobRequestComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
-	CredentialConfig *CredentialConfig                        `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	ComputeResource *CreateTrainingJobRequestComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	// The credential configuration.
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The environment variables for the training job.
 	Environments map[string]*string `json:"Environments,omitempty" xml:"Environments,omitempty"`
-	// The experiment configuration associated with the training job.
+	// The associated experiment configuration for the training job.
 	ExperimentConfig *CreateTrainingJobRequestExperimentConfig `json:"ExperimentConfig,omitempty" xml:"ExperimentConfig,omitempty" type:"Struct"`
 	// The training hyperparameter settings.
 	HyperParameters []*CreateTrainingJobRequestHyperParameters `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
-	// The training input data configuration.
+	// The input data configuration for training.
 	InputChannels []*CreateTrainingJobRequestInputChannels `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
-	// The training job labels.
+	// The labels of the training job.
 	Labels []*CreateTrainingJobRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The training output data configuration.
+	// The output data configuration for training.
 	OutputChannels []*CreateTrainingJobRequestOutputChannels `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
 	// The priority of the training job.
 	//
@@ -104,13 +106,13 @@ type CreateTrainingJobRequest struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The Python package configuration for the training job.
 	PythonRequirements []*string `json:"PythonRequirements,omitempty" xml:"PythonRequirements,omitempty" type:"Repeated"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role. Format: acs:ram::$accountID:role/$roleName.
+	// The ARN of the specified role. Format: acs:ram::$accountID:role/$roleName.
 	//
 	// example:
 	//
 	// acs:ram::1157703270994901:role/aliyunserviceroleforpaiworkspace
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The training job scheduling configuration.
+	// The scheduling configuration for the training job.
 	Scheduler *CreateTrainingJobRequestScheduler `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
 	// The additional parameter settings for the training node.
 	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
@@ -130,7 +132,7 @@ type CreateTrainingJobRequest struct {
 	TrainingJobName *string `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
 	// The VPC configuration.
 	UserVpc *CreateTrainingJobRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// This parameter is required.
 	//
@@ -453,15 +455,15 @@ type CreateTrainingJobRequestComputeResource struct {
 	//
 	// ecs.gn5-c8g1.2xlarge
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	// The number of instances used from the resource quota.
+	// The number of instances used in the resource quota.
 	//
 	// example:
 	//
 	// 1
 	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The instance specification for the resource quota.
+	// The instance configuration for the resource quota.
 	InstanceSpec *CreateTrainingJobRequestComputeResourceInstanceSpec `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty" type:"Struct"`
-	// The resource quota ID.
+	// The ID of the resource quota.
 	//
 	// example:
 	//
@@ -575,19 +577,19 @@ type CreateTrainingJobRequestComputeResourceInstanceSpec struct {
 	//
 	// 1
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	// The GPU type for the instance.
+	// The GPU type of the instance.
 	//
 	// example:
 	//
 	// V100
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	// The memory size of the instance. Unit: GiB.
+	// The memory size of the instance, in GiB.
 	//
 	// example:
 	//
 	// 32
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The shared memory size of the instance. Unit: GB.
+	// The shared memory size of the instance, in GB.
 	//
 	// example:
 	//
@@ -653,17 +655,17 @@ func (s *CreateTrainingJobRequestComputeResourceInstanceSpec) Validate() error {
 }
 
 type CreateTrainingJobRequestComputeResourceSpotSpec struct {
-	// The maximum hourly price discount for the instance. This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
+	// Sets the maximum hourly price discount for the instance. This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
 	//
 	// example:
 	//
 	// 9
 	SpotDiscountLimit *float32 `json:"SpotDiscountLimit,omitempty" xml:"SpotDiscountLimit,omitempty"`
-	// The bidding strategy for the spot instance. Valid values:
+	// The preemption policy for the instance. Valid values:
 	//
-	// - SpotWithPriceLimit: a spot instance with a maximum price limit.
+	// - SpotWithPriceLimit: Sets a maximum price for the spot instance.
 	//
-	// - SpotAsPriceGo: the system automatically bids at the current market price.
+	// - SpotAsPriceGo: The system automatically bids and follows the actual market price.
 	//
 	// example:
 	//
@@ -702,7 +704,7 @@ func (s *CreateTrainingJobRequestComputeResourceSpotSpec) Validate() error {
 }
 
 type CreateTrainingJobRequestExperimentConfig struct {
-	// The experiment ID associated with the training job.
+	// The ID of the experiment associated with the training job.
 	//
 	// example:
 	//
@@ -732,13 +734,13 @@ func (s *CreateTrainingJobRequestExperimentConfig) Validate() error {
 }
 
 type CreateTrainingJobRequestHyperParameters struct {
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// example:
 	//
 	// learning_rate
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameter value.
+	// The value of the parameter.
 	//
 	// example:
 	//
@@ -777,31 +779,41 @@ func (s *CreateTrainingJobRequestHyperParameters) Validate() error {
 }
 
 type CreateTrainingJobRequestInputChannels struct {
-	// The dataset ID.
+	// The ID of the dataset.
 	//
 	// example:
 	//
 	// d-475megosidivjfgfq6
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The input data URI.
+	// The URI of the input data.
 	//
 	// example:
 	//
 	// oss://pai-quickstart-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/modelscope/models/qwen2-0.5b/main/
 	InputUri *string `json:"InputUri,omitempty" xml:"InputUri,omitempty"`
-	// The input data name.
+	// The name of the input data.
 	//
 	// example:
 	//
 	// model
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The input data parameter settings.
+	// The parameter settings for the input data.
 	//
 	// example:
 	//
 	// {"appendable": true}
-	Options     *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	RoleArn     *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The ARN of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::1157703270994901:role/aliyunserviceroleforpaiworkspace
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The name of the data version.
+	//
+	// example:
+	//
+	// v1
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -917,25 +929,35 @@ func (s *CreateTrainingJobRequestLabels) Validate() error {
 }
 
 type CreateTrainingJobRequestOutputChannels struct {
-	// The dataset ID.
+	// The ID of the dataset.
 	//
 	// example:
 	//
 	// d-475megosidivjfgfq6
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The output data name.
+	// The name of the output data.
 	//
 	// example:
 	//
 	// model
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output data URI.
+	// The output data configuration.
 	//
 	// example:
 	//
 	// oss://pai-quickstart-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/modelscope/models/qwen2-0.5b/main/
-	OutputUri   *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
-	RoleArn     *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	OutputUri *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
+	// The ARN of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::1157703270994901:role/aliyunserviceroleforpaiworkspace
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The name of the data version.
+	//
+	// example:
+	//
+	// v1
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -997,13 +1019,13 @@ func (s *CreateTrainingJobRequestOutputChannels) Validate() error {
 }
 
 type CreateTrainingJobRequestScheduler struct {
-	// The maximum training runtime in minutes. A value of 0 indicates no limit on the maximum runtime.
+	// The maximum training duration, in minutes. A value of 0 indicates that the maximum duration is not limited.
 	//
 	// example:
 	//
 	// 0
 	MaxRunningTimeInMinutes *int64 `json:"MaxRunningTimeInMinutes,omitempty" xml:"MaxRunningTimeInMinutes,omitempty"`
-	// The maximum training runtime in seconds. A value of 0 indicates no limit on the maximum runtime.
+	// The maximum training duration, in seconds. A value of 0 indicates that the maximum duration is not limited.
 	//
 	// example:
 	//
@@ -1042,7 +1064,7 @@ func (s *CreateTrainingJobRequestScheduler) Validate() error {
 }
 
 type CreateTrainingJobRequestUserVpc struct {
-	// The default route interface. eth0 indicates that the default route uses the PAI VPC. eth1 indicates that the default route uses the user VPC. Default value: eth0.
+	// The default route interface. A value of eth0 indicates that the default route uses the PAI VPC. A value of eth1 indicates that the default route uses the user VPC. Default value: eth0.
 	//
 	// example:
 	//
@@ -1050,19 +1072,19 @@ type CreateTrainingJobRequestUserVpc struct {
 	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	// The extended CIDR block configuration.
 	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-qdfasd13sdasf
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vs-icrc813vdsfol
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//

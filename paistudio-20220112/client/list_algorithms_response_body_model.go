@@ -18,15 +18,15 @@ type iListAlgorithmsResponseBody interface {
 }
 
 type ListAlgorithmsResponseBody struct {
-	// Algorithm list.
+	// The algorithm list.
 	Algorithms []*ListAlgorithmsResponseBodyAlgorithms `json:"Algorithms,omitempty" xml:"Algorithms,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total algorithms.
+	// The total number of algorithms.
 	//
 	// example:
 	//
@@ -83,55 +83,55 @@ func (s *ListAlgorithmsResponseBody) Validate() error {
 }
 
 type ListAlgorithmsResponseBodyAlgorithms struct {
-	// Algorithm description.
+	// The algorithm description.
 	//
 	// example:
 	//
-	// Large language model training.
+	// Large language model training
 	AlgorithmDescription *string `json:"AlgorithmDescription,omitempty" xml:"AlgorithmDescription,omitempty"`
-	// Algorithm ID.
+	// The algorithm ID.
 	//
 	// example:
 	//
 	// algo-sidjc8134hv
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
-	// Algorithm name.
+	// The algorithm name.
 	//
 	// example:
 	//
 	// llm_train
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
-	// Algorithm provider.
+	// The algorithm provider.
 	//
 	// example:
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
-	// Algorithm display name.
+	// The display name of the algorithm.
 	//
 	// example:
 	//
 	// LLM Train
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Algorithm creation time.
+	// The time when the algorithm was created, in ISO 8601 format, in UTC.
 	//
 	// example:
 	//
 	// 2023-07-21T03:35:24Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Algorithm update time.
+	// The time when the algorithm was last updated, in ISO 8601 format, in UTC.
 	//
 	// example:
 	//
 	// 2023-07-25T02:15:40Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Algorithm owner ID.
+	// The ID of the user to whom the algorithm belongs.
 	//
 	// example:
 	//
 	// 123456789
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//

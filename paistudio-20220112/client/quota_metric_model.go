@@ -16,7 +16,14 @@ type iQuotaMetric interface {
 }
 
 type QuotaMetric struct {
+	// The GPU type.
+	//
+	// example:
+	//
+	// GU108
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The performance metrics.
+	//
 	// example:
 	//
 	// 23000

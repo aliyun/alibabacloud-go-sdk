@@ -16,7 +16,13 @@ type iOversoldUsageConfig interface {
 }
 
 type OversoldUsageConfig struct {
-	Disabled   *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// Indicates whether it is disabled.
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The user who disabled it.
+	//
+	// example:
+	//
+	// quotaxxx
 	DisabledBy *string `json:"DisabledBy,omitempty" xml:"DisabledBy,omitempty"`
 }
 

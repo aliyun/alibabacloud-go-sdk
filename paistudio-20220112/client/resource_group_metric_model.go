@@ -18,11 +18,20 @@ type iResourceGroupMetric interface {
 }
 
 type ResourceGroupMetric struct {
+	// The GPU type.
+	//
+	// example:
+	//
+	// A100
 	GpuType *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	// The performance metrics.
+	//
 	// example:
 	//
 	// 23000
 	Metrics []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg17tmvwiokhzaxg

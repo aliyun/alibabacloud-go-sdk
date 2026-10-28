@@ -20,10 +20,22 @@ type iAssumeUserInfo interface {
 }
 
 type AssumeUserInfo struct {
-	AccessKeyId   *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The AccessKey ID of the temporary access credential.
+	//
+	// example:
+	//
+	// STS.L4aBSCSJVMuKg5U1****
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The ID of the assumed user.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The temporary security token.
+	//
+	// example:
+	//
+	// ********
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The identity type of the assumed user.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AssumeUserInfo) String() string {

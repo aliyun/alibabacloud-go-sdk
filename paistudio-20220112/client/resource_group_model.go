@@ -38,15 +38,15 @@ type ResourceGroup struct {
 	//
 	// example:
 	//
-	// 1612285282502324
+	// 161228528250****
 	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
-	// The time the PAI resource group was created.
+	// The time when the PAI resource group was created.
 	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
 	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	// The time the PAI resource group was last modified.
+	// The time when the PAI resource group was updated.
 	//
 	// example:
 	//
@@ -68,14 +68,29 @@ type ResourceGroup struct {
 	//
 	// example:
 	//
-	// rg17tmvwiokhzaxg
+	// rg17tmvwiokh****
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of compute resources in the resource group.
+	//
+	// example:
+	//
+	// Ecs
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The status of the resource group.
+	//
+	// example:
+	//
+	// Ready
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The VPC configuration.
 	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
-	Version *string  `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The workspace ID.
+	// The version of the resource group.
+	//
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the workspace.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListResourceGroupMachineGroupsResponseBody interface {
 }
 
 type ListResourceGroupMachineGroupsResponseBody struct {
-	// A list of machine groups.
+	// The list of machine groups.
 	MachineGroups []*MachineGroup `json:"MachineGroups,omitempty" xml:"MachineGroups,omitempty" type:"Repeated"`
 	// The request ID.
 	//
