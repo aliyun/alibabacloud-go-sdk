@@ -22,6 +22,8 @@ type DeleteSubscriptionResponseBody struct {
 	//
 	// 8A33DBEA-*****-*****-*****-*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The ID of the subscription.
+	//
 	// example:
 	//
 	// 123123123123

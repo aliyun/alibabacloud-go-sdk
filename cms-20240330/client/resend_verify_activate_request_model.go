@@ -14,6 +14,8 @@ type iResendVerifyActivateRequest interface {
 }
 
 type ResendVerifyActivateRequest struct {
+	// The channel type.
+	//
 	// example:
 	//
 	// PHONE

@@ -14,6 +14,8 @@ type iDeleteAlertNotifyTemplatesShrinkRequest interface {
 }
 
 type DeleteAlertNotifyTemplatesShrinkRequest struct {
+	// The IDs of the notification templates.
+	//
 	// This parameter is required.
 	AlertNotifyTemplateIdsShrink *string `json:"alertNotifyTemplateIds,omitempty" xml:"alertNotifyTemplateIds,omitempty"`
 }

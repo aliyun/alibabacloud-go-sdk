@@ -16,10 +16,14 @@ type iCreateAlertNotifyTemplateResponseBody interface {
 }
 
 type CreateAlertNotifyTemplateResponseBody struct {
+	// The ID of the notification template.
+	//
 	// example:
 	//
 	// testId
 	AlertNotifyTemplateId *string `json:"alertNotifyTemplateId,omitempty" xml:"alertNotifyTemplateId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 8A33DBEA-*****-*****-*****-*****

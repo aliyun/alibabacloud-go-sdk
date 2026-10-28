@@ -14,6 +14,8 @@ type iDeleteContactGroupsShrinkRequest interface {
 }
 
 type DeleteContactGroupsShrinkRequest struct {
+	// The IDs of the contact groups.
+	//
 	// This parameter is required.
 	ContactGroupIdsShrink *string `json:"contactGroupIds,omitempty" xml:"contactGroupIds,omitempty"`
 }

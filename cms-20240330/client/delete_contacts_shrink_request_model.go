@@ -14,6 +14,7 @@ type iDeleteContactsShrinkRequest interface {
 }
 
 type DeleteContactsShrinkRequest struct {
+	// The IDs of the contacts.
 	ContactIdsShrink *string `json:"contactIds,omitempty" xml:"contactIds,omitempty"`
 }
 

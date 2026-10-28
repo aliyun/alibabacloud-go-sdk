@@ -16,17 +16,19 @@ type iPreviewNotifyTemplateRequest interface {
 }
 
 type PreviewNotifyTemplateRequest struct {
+	// The rendering context data in key-value pair format. This data source is used to populate Go template placeholders in the templates, such as {{.incident.title}}.
+	//
 	// example:
 	//
-	// {"incident":{"title":"CPU使用率过高","severity":"P1"}}
+	// {"incident":{"title":"High CPU utilization","severity":"P1"}}
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// 待渲染的模板列表，每项包含模板标识和模板内容
+	// The list of templates to be rendered. Each item includes a template identifier and the template content.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// [{"key":"title","template":"云监控报警: {{.incident.title}}"},{"key":"content","template":">- 级别: {{.incident.severity}}"}]
+	// [{"key":"title","template":"CloudMonitor alert: {{.incident.title}}"},{"key":"content","template":">- Severity: {{.incident.severity}}"}]
 	Templates []*PreviewNotifyTemplateRequestTemplates `json:"templates,omitempty" xml:"templates,omitempty" type:"Repeated"`
 }
 
@@ -70,7 +72,7 @@ func (s *PreviewNotifyTemplateRequest) Validate() error {
 }
 
 type PreviewNotifyTemplateRequestTemplates struct {
-	// 模板标识，前端自定义，原样返回。建议使用 title / content 等语义名称
+	// The template identifier. This identifier is defined by the frontend and returned as-is. Use semantic names such as title or content.
 	//
 	// This parameter is required.
 	//
@@ -78,13 +80,13 @@ type PreviewNotifyTemplateRequestTemplates struct {
 	//
 	// title
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Go template 语法的模板内容字符串
+	// The template content string in Go template syntax.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 云监控报警: {{.incident.title}}
+	// CloudMonitor alert: {{.incident.title}}
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
 }
 

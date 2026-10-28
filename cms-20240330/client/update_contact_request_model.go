@@ -22,19 +22,28 @@ type iUpdateContactRequest interface {
 }
 
 type UpdateContactRequest struct {
+	// The email address of the contact.
+	//
 	// example:
 	//
 	// test@aliyun.com
-	Email     *string            `json:"email,omitempty" xml:"email,omitempty"`
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// The IM user ID mappings. Multiple instant messaging tools are supported.
 	ImUserIds map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The name of the contact.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The mobile phone number of the contact. Only mobile phone numbers in the Chinese mainland are supported.
+	//
 	// example:
 	//
 	// 150123456789

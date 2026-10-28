@@ -14,6 +14,7 @@ type iDeleteOncallSchedulesShrinkRequest interface {
 }
 
 type DeleteOncallSchedulesShrinkRequest struct {
+	// The IDs of the on-call schedules.
 	OncallScheduleIdsShrink *string `json:"oncallScheduleIds,omitempty" xml:"oncallScheduleIds,omitempty"`
 }
 

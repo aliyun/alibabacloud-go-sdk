@@ -16,12 +16,14 @@ type iDisableSubscriptionResponseBody interface {
 }
 
 type DisableSubscriptionResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-******
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The ID of the subscription.
+	//
 	// example:
 	//
 	// 123123123123

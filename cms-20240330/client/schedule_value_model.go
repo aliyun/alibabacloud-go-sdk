@@ -20,18 +20,26 @@ type iScheduleValue interface {
 }
 
 type ScheduleValue struct {
+	// The ID of the on-call contact.
+	//
 	// example:
 	//
 	// testId
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
+	// The name of the on-call contact.
+	//
 	// example:
 	//
 	// testName
 	ContactName *string `json:"contactName,omitempty" xml:"contactName,omitempty"`
+	// The end time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2024-10-01 02:00:00
 	End *string `json:"end,omitempty" xml:"end,omitempty"`
+	// The start time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2024-10-01 22:00:00

@@ -20,15 +20,22 @@ type iCreateContactGroupRequest interface {
 }
 
 type CreateContactGroupRequest struct {
+	// The unique identifier of the contact group.
+	//
 	// example:
 	//
 	// test
-	ContactGroupId *string   `json:"contactGroupId,omitempty" xml:"contactGroupId,omitempty"`
-	Contacts       []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	ContactGroupId *string `json:"contactGroupId,omitempty" xml:"contactGroupId,omitempty"`
+	// The IDs of the contacts.
+	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	// The name of the contact.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// default-cms-5884500827389836-cn-hangzhou

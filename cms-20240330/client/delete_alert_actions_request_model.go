@@ -14,6 +14,8 @@ type iDeleteAlertActionsRequest interface {
 }
 
 type DeleteAlertActionsRequest struct {
+	// The unique identifiers of the alert action integrations to delete.
+	//
 	// This parameter is required.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
 }

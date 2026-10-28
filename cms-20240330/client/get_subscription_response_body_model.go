@@ -21,7 +21,8 @@ type GetSubscriptionResponseBody struct {
 	// example:
 	//
 	// 111111-222-333-1111-33333
-	RequestId    *string              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The subscription object.
 	Subscription *SubscriptionForView `json:"subscription,omitempty" xml:"subscription,omitempty"`
 }
 

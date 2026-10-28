@@ -20,16 +20,22 @@ type iUpdateOncallScheduleRequest interface {
 }
 
 type UpdateOncallScheduleRequest struct {
+	// The name of the on-call schedule.
+	//
 	// example:
 	//
 	// testName
-	OncallScheduleName *string                                 `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
-	Rotations          []*UpdateOncallScheduleRequestRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
+	OncallScheduleName *string `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
+	// The list of rotations.
+	Rotations []*UpdateOncallScheduleRequestRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
+	// The ID of the shift reminder chatbot.
+	//
 	// example:
 	//
 	// testId
-	ShiftRobotId *string                                   `json:"shiftRobotId,omitempty" xml:"shiftRobotId,omitempty"`
-	Substitudes  []*UpdateOncallScheduleRequestSubstitudes `json:"substitudes,omitempty" xml:"substitudes,omitempty" type:"Repeated"`
+	ShiftRobotId *string `json:"shiftRobotId,omitempty" xml:"shiftRobotId,omitempty"`
+	// The list of substitution rules.
+	Substitudes []*UpdateOncallScheduleRequestSubstitudes `json:"substitudes,omitempty" xml:"substitudes,omitempty" type:"Repeated"`
 }
 
 func (s UpdateOncallScheduleRequest) String() string {
@@ -99,44 +105,62 @@ func (s *UpdateOncallScheduleRequest) Validate() error {
 }
 
 type UpdateOncallScheduleRequestRotations struct {
+	// The days of the week when the rotation takes effect.
+	//
 	// This parameter is required.
 	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
+	// The IDs of the contacts.
+	//
 	// This parameter is required.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	// The end time of the rotation. Format: HH:mm.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 24:00
 	RotationEndTime *string `json:"rotationEndTime,omitempty" xml:"rotationEndTime,omitempty"`
+	// The name of the rotation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	RotationName *string `json:"rotationName,omitempty" xml:"rotationName,omitempty"`
+	// The start time of the rotation. Format: HH:mm.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 00:00
 	RotationStartTime *string `json:"rotationStartTime,omitempty" xml:"rotationStartTime,omitempty"`
+	// The length of the shift cycle. Used in conjunction with shiftRecurrenceFrequency, such as switching to the next on-call person every 3 days.
+	//
 	// example:
 	//
 	// 3
 	ShiftLength *int32 `json:"shiftLength,omitempty" xml:"shiftLength,omitempty"`
+	// The unit of the shift cycle. Used in conjunction with shiftRecurrenceFrequency, such as switching to the next on-call person every week.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WEEKLY
 	ShiftRecurrenceFrequency *string `json:"shiftRecurrenceFrequency,omitempty" xml:"shiftRecurrenceFrequency,omitempty"`
+	// The start date of the rotation. Format: yyyy-MM-dd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-04-04
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// The time zone name. Uses the IANA Time Zone Database standard, such as Asia/Shanghai.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -239,18 +263,26 @@ func (s *UpdateOncallScheduleRequestRotations) Validate() error {
 }
 
 type UpdateOncallScheduleRequestSubstitudes struct {
+	// The contact ID of the substitute.
+	//
 	// example:
 	//
 	// testId
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
+	// The end time of the substitution. Format: YYYY-MM-DD HH:mm.
+	//
 	// example:
 	//
 	// 2024-10-15 18:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The contact ID of the replaced person.
+	//
 	// example:
 	//
 	// testId
 	ReplacedContactId *string `json:"replacedContactId,omitempty" xml:"replacedContactId,omitempty"`
+	// The start time of the substitution. Format: YYYY-MM-DD HH:mm.
+	//
 	// example:
 	//
 	// 2024-10-10 09:00

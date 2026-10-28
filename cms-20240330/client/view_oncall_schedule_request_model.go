@@ -16,10 +16,14 @@ type iViewOncallScheduleRequest interface {
 }
 
 type ViewOncallScheduleRequest struct {
+	// The end date of the query. Format: yyyy-MM-dd. This parameter must be specified together with startDate.
+	//
 	// example:
 	//
 	// 2024-07-05
 	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The start date of the query. Format: yyyy-MM-dd. This parameter must be specified together with endDate.
+	//
 	// example:
 	//
 	// 2024-04-04

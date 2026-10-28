@@ -20,20 +20,25 @@ type iListSubscriptionsResponseBody interface {
 }
 
 type ListSubscriptionsResponseBody struct {
+	// The maximum number of records returned for the current request.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
-	// xxxxxxxxxx
+	// 2-3408-4595-9d80-****
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 123-123-234-345-123
-	RequestId        *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of subscriptions.
 	SubscriptionList []*SubscriptionForView `json:"subscriptionList,omitempty" xml:"subscriptionList,omitempty" type:"Repeated"`
 }
 

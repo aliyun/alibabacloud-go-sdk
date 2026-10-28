@@ -1,3 +1,7 @@
+2026-10-28 Version: v10.7.0
+- Support API ListAlertHistories.
+
+
 2026-10-28 Version: v10.6.1
 - Generated golang 2024-03-30 for Cms.
 

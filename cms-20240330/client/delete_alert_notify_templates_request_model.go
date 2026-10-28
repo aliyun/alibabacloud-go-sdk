@@ -14,6 +14,8 @@ type iDeleteAlertNotifyTemplatesRequest interface {
 }
 
 type DeleteAlertNotifyTemplatesRequest struct {
+	// The IDs of the notification templates.
+	//
 	// This parameter is required.
 	AlertNotifyTemplateIds []*string `json:"alertNotifyTemplateIds,omitempty" xml:"alertNotifyTemplateIds,omitempty" type:"Repeated"`
 }

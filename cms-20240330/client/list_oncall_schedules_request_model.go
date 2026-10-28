@@ -22,19 +22,28 @@ type iListOncallSchedulesRequest interface {
 }
 
 type ListOncallSchedulesRequest struct {
+	// The IDs of the on-call schedules.
 	OncallScheduleIds []*string `json:"oncallScheduleIds,omitempty" xml:"oncallScheduleIds,omitempty" type:"Repeated"`
+	// The name of the on-call schedule.
+	//
 	// example:
 	//
 	// testOncallScheduleName
 	OncallScheduleName *string `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// default-cms-5884500827389836-cn-hangzhou

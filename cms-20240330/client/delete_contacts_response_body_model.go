@@ -14,7 +14,7 @@ type iDeleteContactsResponseBody interface {
 }
 
 type DeleteContactsResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,7 +16,10 @@ type iListOncallContactsResponseBody interface {
 }
 
 type ListOncallContactsResponseBody struct {
+	// The IDs of the contacts.
 	ContactIds []*string `json:"contactIds,omitempty" xml:"contactIds,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****

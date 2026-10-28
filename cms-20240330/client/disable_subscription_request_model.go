@@ -14,6 +14,8 @@ type iDisableSubscriptionRequest interface {
 }
 
 type DisableSubscriptionRequest struct {
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspace-test

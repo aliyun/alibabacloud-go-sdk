@@ -16,7 +16,10 @@ type iGetAlertActionResponseBody interface {
 }
 
 type GetAlertActionResponseBody struct {
+	// The list of alert action integration configurations.
 	AlertActions *GetAlertActionResponseBodyAlertActions `json:"alertActions,omitempty" xml:"alertActions,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
@@ -59,25 +62,39 @@ func (s *GetAlertActionResponseBody) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActions struct {
+	// The unique identifier of the alert action integration.
+	//
 	// example:
 	//
 	// testId
 	AlertActionId *string `json:"alertActionId,omitempty" xml:"alertActionId,omitempty"`
+	// The name of the alert action integration.
+	//
 	// example:
 	//
 	// testName
-	AlertActionName *string                                               `json:"alertActionName,omitempty" xml:"alertActionName,omitempty"`
-	EbParam         *GetAlertActionResponseBodyAlertActionsEbParam        `json:"ebParam,omitempty" xml:"ebParam,omitempty" type:"Struct"`
-	EssParam        *GetAlertActionResponseBodyAlertActionsEssParam       `json:"essParam,omitempty" xml:"essParam,omitempty" type:"Struct"`
-	Fc3Param        *GetAlertActionResponseBodyAlertActionsFc3Param       `json:"fc3Param,omitempty" xml:"fc3Param,omitempty" type:"Struct"`
-	FcParam         *GetAlertActionResponseBodyAlertActionsFcParam        `json:"fcParam,omitempty" xml:"fcParam,omitempty" type:"Struct"`
-	MnsParam        *GetAlertActionResponseBodyAlertActionsMnsParam       `json:"mnsParam,omitempty" xml:"mnsParam,omitempty" type:"Struct"`
-	PagerDutyParam  *GetAlertActionResponseBodyAlertActionsPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
-	SlsParam        *GetAlertActionResponseBodyAlertActionsSlsParam       `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
+	AlertActionName *string `json:"alertActionName,omitempty" xml:"alertActionName,omitempty"`
+	// The event bus parameters.
+	EbParam *GetAlertActionResponseBodyAlertActionsEbParam `json:"ebParam,omitempty" xml:"ebParam,omitempty" type:"Struct"`
+	// The elastic scaling parameters.
+	EssParam *GetAlertActionResponseBodyAlertActionsEssParam `json:"essParam,omitempty" xml:"essParam,omitempty" type:"Struct"`
+	// The Function Compute 3.0 parameters.
+	Fc3Param *GetAlertActionResponseBodyAlertActionsFc3Param `json:"fc3Param,omitempty" xml:"fc3Param,omitempty" type:"Struct"`
+	// The Function Compute parameters.
+	FcParam *GetAlertActionResponseBodyAlertActionsFcParam `json:"fcParam,omitempty" xml:"fcParam,omitempty" type:"Struct"`
+	// The Simple Message Queue (formerly MNS) parameters.
+	MnsParam *GetAlertActionResponseBodyAlertActionsMnsParam `json:"mnsParam,omitempty" xml:"mnsParam,omitempty" type:"Struct"`
+	// The PagerDuty parameters.
+	PagerDutyParam *GetAlertActionResponseBodyAlertActionsPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
+	// The Simple Log Service parameters.
+	SlsParam *GetAlertActionResponseBodyAlertActionsSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
+	// The type of the alert action integration.
+	//
 	// example:
 	//
 	// FC
-	Type         *string                                             `json:"type,omitempty" xml:"type,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The webhook parameters.
 	WebhookParam *GetAlertActionResponseBodyAlertActionsWebhookParam `json:"webhookParam,omitempty" xml:"webhookParam,omitempty" type:"Struct"`
 }
 
@@ -233,18 +250,26 @@ func (s *GetAlertActionResponseBodyAlertActions) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsEbParam struct {
+	// The event source.
+	//
 	// example:
 	//
 	// test
 	EbSource *string `json:"ebSource,omitempty" xml:"ebSource,omitempty"`
+	// The name of the event bus.
+	//
 	// example:
 	//
 	// test
 	EventBusName *string `json:"eventBusName,omitempty" xml:"eventBusName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The subject.
+	//
 	// example:
 	//
 	// test
@@ -300,14 +325,20 @@ func (s *GetAlertActionResponseBodyAlertActionsEbParam) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsEssParam struct {
+	// The ID of the elastic scaling group.
+	//
 	// example:
 	//
 	// test
 	EssGroupId *string `json:"essGroupId,omitempty" xml:"essGroupId,omitempty"`
+	// The ID of the elastic scaling rule.
+	//
 	// example:
 	//
 	// test
 	EssRuleId *string `json:"essRuleId,omitempty" xml:"essRuleId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -354,14 +385,20 @@ func (s *GetAlertActionResponseBodyAlertActionsEssParam) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsFc3Param struct {
+	// The name of the function.
+	//
 	// example:
 	//
 	// test
 	Function *string `json:"function,omitempty" xml:"function,omitempty"`
+	// The version or alias of the function.
+	//
 	// example:
 	//
 	// test
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-qingdao
@@ -408,14 +445,20 @@ func (s *GetAlertActionResponseBodyAlertActionsFc3Param) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsFcParam struct {
+	// The name of the function in Function Compute.
+	//
 	// example:
 	//
 	// test
 	Function *string `json:"function,omitempty" xml:"function,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The service name in Function Compute.
+	//
 	// example:
 	//
 	// test
@@ -462,14 +505,24 @@ func (s *GetAlertActionResponseBodyAlertActionsFcParam) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsMnsParam struct {
+	// The resource type of Simple Message Queue (formerly MNS).
+	//
 	// example:
 	//
 	// queue
 	MnsType *string `json:"mnsType,omitempty" xml:"mnsType,omitempty"`
+	// The name of the resource.
+	//
+	// - If the resource type is queue, the resource name is the name of the queue.
+	//
+	// - If the resource type is topic, the resource name is the name of the topic.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -516,10 +569,14 @@ func (s *GetAlertActionResponseBodyAlertActionsMnsParam) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsPagerDutyParam struct {
+	// The integration key of PagerDuty.
+	//
 	// example:
 	//
 	// EWR4WR4T4GREG4ET453T5Y
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The integration webhook URL for PagerDuty. V1 and V2 are supported.
+	//
 	// example:
 	//
 	// https://events.pagerduty.com/v2/enqueue
@@ -557,14 +614,20 @@ func (s *GetAlertActionResponseBodyAlertActionsPagerDutyParam) Validate() error 
 }
 
 type GetAlertActionResponseBodyAlertActionsSlsParam struct {
+	// The name of the Simple Log Service Logstore.
+	//
 	// example:
 	//
 	// test
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
 	// test
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -611,15 +674,22 @@ func (s *GetAlertActionResponseBodyAlertActionsSlsParam) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsWebhookParam struct {
+	// The data format. This parameter takes effect only when the request method is POST.
+	//
 	// example:
 	//
 	// JSON
-	ContentType *string            `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	Headers     map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// The request header information.
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// The webhook request method.
+	//
 	// example:
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// The URL for the alert callback.
+	//
 	// example:
 	//
 	// http://www.test.com

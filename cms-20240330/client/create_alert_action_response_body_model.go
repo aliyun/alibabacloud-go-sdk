@@ -16,10 +16,14 @@ type iCreateAlertActionResponseBody interface {
 }
 
 type CreateAlertActionResponseBody struct {
+	// The ID of the alert action integration.
+	//
 	// example:
 	//
 	// testId
 	AlertActionId *string `json:"alertActionId,omitempty" xml:"alertActionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****

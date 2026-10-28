@@ -16,13 +16,17 @@ type iViewOncallScheduleResponseBody interface {
 }
 
 type ViewOncallScheduleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The on-call calendar. The key is the shift name, and the value is a list of on-call shifts for the shift within the queried date range.
+	//
 	// example:
 	//
-	// {"testName":[{"contactId":"testId","contactName":"张三","start":"2024-10-10 09:00","end":"2024-10-15 18:00"}]}
+	// {"testName":[{"contactId":"testId","contactName":"Zhang San","start":"2024-10-10 09:00","end":"2024-10-15 18:00"}]}
 	Schedule map[string][]*ScheduleValue `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 

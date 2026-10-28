@@ -14,6 +14,8 @@ type iDeleteContactGroupsRequest interface {
 }
 
 type DeleteContactGroupsRequest struct {
+	// The IDs of the contact groups.
+	//
 	// This parameter is required.
 	ContactGroupIds []*string `json:"contactGroupIds,omitempty" xml:"contactGroupIds,omitempty" type:"Repeated"`
 }

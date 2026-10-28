@@ -16,11 +16,13 @@ type iCreateContactGroupResponseBody interface {
 }
 
 type CreateContactGroupResponseBody struct {
+	// The ID of the contact group.
+	//
 	// example:
 	//
 	// test
 	ContactGroupId *string `json:"contactGroupId,omitempty" xml:"contactGroupId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

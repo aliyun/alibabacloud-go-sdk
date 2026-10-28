@@ -22,19 +22,28 @@ type iListUserNotifyHistoriesResponseBody interface {
 }
 
 type ListUserNotifyHistoriesResponseBody struct {
+	// The notification history list.
 	HistoryList []*ListUserNotifyHistoriesResponseBodyHistoryList `json:"historyList,omitempty" xml:"historyList,omitempty" type:"Repeated"`
+	// The maximum number of entries returned by this request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next page. It is an opaque string generated and encrypted by the server. An empty value indicates that no more data is available.
+	//
 	// example:
 	//
 	// 2f8aKz3mNq9p****
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-************
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of notification history entries that meet the query conditions.
+	//
 	// example:
 	//
 	// 128
@@ -108,76 +117,154 @@ func (s *ListUserNotifyHistoriesResponseBody) Validate() error {
 }
 
 type ListUserNotifyHistoriesResponseBodyHistoryList struct {
+	// The notification channel. The valid values are the same as those of the `channel` request parameter.
+	//
 	// example:
 	//
 	// DING
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// The list of contacts. Multiple contacts are separated by commas.
+	//
 	// example:
 	//
-	// 张三,李四
+	// Zhang San, Li Si
 	Contacts *string `json:"contacts,omitempty" xml:"contacts,omitempty"`
+	// The list of contact groups. Multiple contact groups are separated by commas.
+	//
 	// example:
 	//
-	// 运维组,值班组
+	// O&M group, on-call group
 	Groups *string `json:"groups,omitempty" xml:"groups,omitempty"`
+	// The incident ID.
+	//
 	// example:
 	//
 	// 5d41402abc4b2a76b9719d911017c592
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	// The notification job ID.
+	//
 	// example:
 	//
 	// 3fa85f64-5717-4562-b3fc-2c963f66afa8
-	JobId     *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	NoChannel *bool   `json:"noChannel,omitempty" xml:"noChannel,omitempty"`
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// Indicates whether the notification record has no actual delivery channel. Valid values:
+	//
+	// - true: The notification record has no actual delivery channel, and the notifyResult is NO_CHANNEL.
+	//
+	// - false: The notification record has an actual delivery channel.
+	NoChannel *bool `json:"noChannel,omitempty" xml:"noChannel,omitempty"`
+	// The notification policy ID.
+	//
 	// example:
 	//
 	// 2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	// The notification policy name.
+	//
 	// example:
 	//
-	// 默认通知策略
+	// Default notification policy
 	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
+	// The recipient address, such as a phone number, email address, or webhook URL, depending on the notification channel.
+	//
 	// example:
 	//
 	// 13800138000
 	Receiver *string `json:"receiver,omitempty" xml:"receiver,omitempty"`
+	// The notification delivery result details. This is the raw response content returned by the channel, such as the API response from a DingTalk or Lark bot.
+	//
 	// example:
 	//
 	// {"errcode":0,"errmsg":"ok"}
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	// The alert rule ID.
+	//
 	// example:
 	//
 	// 3fa85f64-5717-4562-b3fc-2c963f66afa6
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
+	// The alert rule name.
+	//
 	// example:
 	//
-	// CPU使用率告警
+	// CPU usage alert
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// The notification delivery type. Valid values:
+	//
+	// - SUBSCRIBE: subscription notifications
+	//
+	// - DIRECT: direct event notifications
+	//
+	// - ITSM: ticket or action notifications
+	//
 	// example:
 	//
 	// SUBSCRIBE
 	SendType *string `json:"sendType,omitempty" xml:"sendType,omitempty"`
+	// The alert severity. Valid values:
+	//
+	// - CRITICAL: critical
+	//
+	// - ERROR: error
+	//
+	// - WARNING: warning
+	//
+	// - INFO: information
+	//
 	// example:
 	//
 	// CRITICAL
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The incident status. Valid values:
+	//
+	// - TRIGGERED: triggered
+	//
+	// - RESOLVED: resolved
+	//
+	// - ACK: acknowledged
+	//
+	// - ESCALATED: escalated
+	//
+	// - MANUAL_RESOLVED: manually resolved
+	//
+	// - TIMEOUT: automatically resolved due to timeout
+	//
+	// - RETRIGGERED: retriggered
+	//
+	// - PARTIAL_RESOLVED: partially resolved
+	//
+	// - INVALID: invalid
+	//
 	// example:
 	//
 	// TRIGGERED
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The subscription ID.
+	//
 	// example:
 	//
 	// 1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d
 	SubscriptionId *string `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	// The subscription name.
+	//
 	// example:
 	//
-	// 默认订阅
+	// Default subscription
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
-	Success          *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the notification was delivered successfully. Valid values:
+	//
+	// - true: The notification was delivered successfully.
+	//
+	// - false: The notification delivery failed.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The time when the notification record was generated. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1729400000
 	Timestamp *int32 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The Alibaba Cloud account ID to which the notification record belongs.
+	//
 	// example:
 	//
 	// 5884500827389836

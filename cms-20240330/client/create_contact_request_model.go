@@ -26,27 +26,40 @@ type iCreateContactRequest interface {
 }
 
 type CreateContactRequest struct {
+	// The ID of the contact.
+	//
 	// example:
 	//
 	// testId
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
 	// test@aliyun.com
-	Email     *string            `json:"email,omitempty" xml:"email,omitempty"`
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// The instant messaging (IM) user ID mapping, which supports multi-platform integration. The key is the IM type (such as DING or WEIXIN), and the value is the corresponding user ID.
 	ImUserIds map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The name of the contact.
+	//
 	// example:
 	//
 	// test_07
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The mobile phone number. Currently, only mobile phone numbers in the Chinese mainland are supported.
+	//
 	// example:
 	//
 	// 13012345678
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// default-cms-5884500827389836-cn-hangzhou

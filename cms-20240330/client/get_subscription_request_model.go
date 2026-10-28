@@ -14,6 +14,8 @@ type iGetSubscriptionRequest interface {
 }
 
 type GetSubscriptionRequest struct {
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspace-test

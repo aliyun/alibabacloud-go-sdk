@@ -20,18 +20,26 @@ type iPreviewNotifyTemplateResponseBody interface {
 }
 
 type PreviewNotifyTemplateResponseBody struct {
+	// The rendering result object, which contains two mappings: success for successfully rendered items and failed for items that failed to render.
 	Data *PreviewNotifyTemplateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The processing result message. The value is success if the request is successful, or an error message if the request fails.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 452faed9-ab3b-4340-8a92-bc7d9b98f17a
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s PreviewNotifyTemplateResponseBody) String() string {
@@ -88,7 +96,9 @@ func (s *PreviewNotifyTemplateResponseBody) Validate() error {
 }
 
 type PreviewNotifyTemplateResponseBodyData struct {
-	Failed  map[string]interface{} `json:"failed,omitempty" xml:"failed,omitempty"`
+	// The mapping of failed rendering results. The key is the template identifier, and the value is the cause of the failure, such as a template syntax error or a reference to an undefined variable.
+	Failed map[string]interface{} `json:"failed,omitempty" xml:"failed,omitempty"`
+	// The mapping of successful rendering results. The key is the template identifier, which corresponds to templates[].key in the request, and the value is the rendered string content.
 	Success map[string]interface{} `json:"success,omitempty" xml:"success,omitempty"`
 }
 

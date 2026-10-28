@@ -14,6 +14,7 @@ type iDeleteContactsRequest interface {
 }
 
 type DeleteContactsRequest struct {
+	// The IDs of the contacts.
 	ContactIds []*string `json:"contactIds,omitempty" xml:"contactIds,omitempty" type:"Repeated"`
 }
 

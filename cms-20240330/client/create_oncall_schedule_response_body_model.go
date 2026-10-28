@@ -16,10 +16,14 @@ type iCreateOncallScheduleResponseBody interface {
 }
 
 type CreateOncallScheduleResponseBody struct {
+	// The unique identifier of the on-call schedule.
+	//
 	// example:
 	//
 	// testOncallScheduleId
 	OncallScheduleId *string `json:"oncallScheduleId,omitempty" xml:"oncallScheduleId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 3B311FD9-A60B-55E0-A896-A0C73*********

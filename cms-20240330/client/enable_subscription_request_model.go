@@ -14,6 +14,8 @@ type iEnableSubscriptionRequest interface {
 }
 
 type EnableSubscriptionRequest struct {
+  // The name of the workspace.
+  // 
   // example:
   // 
   // workspace-test

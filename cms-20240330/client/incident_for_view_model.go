@@ -60,15 +60,17 @@ type iIncidentForView interface {
 }
 
 type IncidentForView struct {
+	// The expiration time of the notification block.
+	//
 	// example:
 	//
-	// -1 表示未屏蔽
+	// -1 indicates that notifications are not blocked
 	BlockingExpireTimestamp *int64 `json:"blockingExpireTimestamp,omitempty" xml:"blockingExpireTimestamp,omitempty"`
-	// The details of the incident.
+	// The detailed content of the incident.
 	//
 	// example:
 	//
-	// "{"description":"ECS实例CPU过高","impact":"支付服务延迟"}"
+	// "{"description":"High CPU usage on the ECS instance","impact":"Payment service delay"}"
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The list of escalation policies.
 	Escalations []*IncidentEscalationPolicyForView `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
@@ -78,7 +80,7 @@ type IncidentForView struct {
 	//
 	// "group-123456"
 	GroupUuid *string `json:"groupUuid,omitempty" xml:"groupUuid,omitempty"`
-	// The key-value pairs for grouping.
+	// The grouping key-value pairs.
 	GroupingKeys map[string]*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty"`
 	// The unique identifier of the incident.
 	//
@@ -86,19 +88,19 @@ type IncidentForView struct {
 	//
 	// "incident-abc123"
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// The name of the notification policy.
+	// The notification policy name.
 	//
 	// example:
 	//
-	// { "contactId": "contact-123", "name": "张三" }
+	// { "contactId": "contact-123", "name": "Zhang San" }
 	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
-	// The UUID of the associated notification policy, which is used to trigger notifications.
+	// The UUID of the associated notification policy used to trigger notifications.
 	//
 	// example:
 	//
 	// "notify-strategy-789"
 	NotifyStrategyUuid *string `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
-	// The information about the operator.
+	// The operator information.
 	Operator *ContactForIncidentView `json:"operator,omitempty" xml:"operator,omitempty"`
 	// The list of owners.
 	Owners []*ContactForIncidentView `json:"owners,omitempty" xml:"owners,omitempty" type:"Repeated"`
@@ -120,11 +122,11 @@ type IncidentForView struct {
 	//
 	// "Critical"
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The description of the solution.
+	// The solution description.
 	//
 	// example:
 	//
-	// "重启ECS实例后恢复正常"
+	// "Recovered to normal after restarting the ECS instance"
 	Solution *string `json:"solution,omitempty" xml:"solution,omitempty"`
 	// The current state of the incident.
 	//
@@ -132,7 +134,7 @@ type IncidentForView struct {
 	//
 	// "Open"
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The name of the subscription policy.
+	// The subscription policy name.
 	//
 	// example:
 	//
@@ -143,8 +145,9 @@ type IncidentForView struct {
 	// example:
 	//
 	// "subscription-abc"
-	SubscriptionUuid *string            `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
-	Tags             map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	SubscriptionUuid *string `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
+	// The array of tags.
+	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// The timestamp when the incident was created.
 	//
 	// example:
@@ -155,7 +158,7 @@ type IncidentForView struct {
 	//
 	// example:
 	//
-	// "支付服务不可用"
+	// "Payment service unavailable"
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 	// The ID of the user who created the incident.
 	//

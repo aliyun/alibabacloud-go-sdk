@@ -14,6 +14,7 @@ type iDeleteOncallSchedulesRequest interface {
 }
 
 type DeleteOncallSchedulesRequest struct {
+	// The IDs of the on-call schedules.
 	OncallScheduleIds []*string `json:"oncallScheduleIds,omitempty" xml:"oncallScheduleIds,omitempty" type:"Repeated"`
 }
 

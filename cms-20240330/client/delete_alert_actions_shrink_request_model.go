@@ -14,6 +14,8 @@ type iDeleteAlertActionsShrinkRequest interface {
 }
 
 type DeleteAlertActionsShrinkRequest struct {
+	// The unique identifiers of the alert action integrations to delete.
+	//
 	// This parameter is required.
 	AlertActionIdsShrink *string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty"`
 }

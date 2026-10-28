@@ -24,20 +24,30 @@ type iCreateOncallScheduleRequest interface {
 }
 
 type CreateOncallScheduleRequest struct {
+	// The unique identifier of the on-call schedule.
+	//
 	// example:
 	//
 	// testOncallScheduleId
 	OncallScheduleId *string `json:"oncallScheduleId,omitempty" xml:"oncallScheduleId,omitempty"`
+	// The name of the on-call schedule.
+	//
 	// example:
 	//
 	// testOncallScheduleName
-	OncallScheduleName *string                                 `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
-	Rotations          []*CreateOncallScheduleRequestRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
+	OncallScheduleName *string `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
+	// The list of rotations.
+	Rotations []*CreateOncallScheduleRequestRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
+	// The ID of the chatbot for shift reminders.
+	//
 	// example:
 	//
 	// testRobotId
-	ShiftRobotId *string                                   `json:"shiftRobotId,omitempty" xml:"shiftRobotId,omitempty"`
-	Substitudes  []*CreateOncallScheduleRequestSubstitudes `json:"substitudes,omitempty" xml:"substitudes,omitempty" type:"Repeated"`
+	ShiftRobotId *string `json:"shiftRobotId,omitempty" xml:"shiftRobotId,omitempty"`
+	// The list of substitution rules.
+	Substitudes []*CreateOncallScheduleRequestSubstitudes `json:"substitudes,omitempty" xml:"substitudes,omitempty" type:"Repeated"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// default-cms-5884500827389836-cn-hangzhou
@@ -129,44 +139,62 @@ func (s *CreateOncallScheduleRequest) Validate() error {
 }
 
 type CreateOncallScheduleRequestRotations struct {
+	// The days of the week when the rotation is active.
+	//
 	// This parameter is required.
 	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
+	// The list of contacts.
+	//
 	// This parameter is required.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	// The end time of the rotation. Format: HH:mm.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 24:00
 	RotationEndTime *string `json:"rotationEndTime,omitempty" xml:"rotationEndTime,omitempty"`
+	// The name of the rotation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testRotationName
 	RotationName *string `json:"rotationName,omitempty" xml:"rotationName,omitempty"`
+	// The start time of the rotation. Format: HH:mm.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 00:00
 	RotationStartTime *string `json:"rotationStartTime,omitempty" xml:"rotationStartTime,omitempty"`
+	// The length of the shift interval. Use this parameter in conjunction with shiftRecurrenceFrequency. For example, set this parameter to 3 to rotate to the next on-call contact every 3 days.
+	//
 	// example:
 	//
 	// 1
 	ShiftLength *int32 `json:"shiftLength,omitempty" xml:"shiftLength,omitempty"`
+	// The unit of the shift interval. Use this parameter in conjunction with shiftRecurrenceFrequency. For example, set this parameter to week to rotate to the next on-call contact every week.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WEEKLY
 	ShiftRecurrenceFrequency *string `json:"shiftRecurrenceFrequency,omitempty" xml:"shiftRecurrenceFrequency,omitempty"`
+	// The start date of the rotation. Format: yyyy-MM-dd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-08-14
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// The name of the time zone. The time zone must follow the **IANA Time Zone Database*	- standard, such as `Asia/Shanghai`.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -269,18 +297,26 @@ func (s *CreateOncallScheduleRequestRotations) Validate() error {
 }
 
 type CreateOncallScheduleRequestSubstitudes struct {
+	// The ID of the substitute contact.
+	//
 	// example:
 	//
 	// testId
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
+	// The end time of the substitution. Format: YYYY-MM-DD HH:mm.
+	//
 	// example:
 	//
 	// 2024-10-15 18:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The ID of the replaced contact.
+	//
 	// example:
 	//
 	// testId
 	ReplacedContactId *string `json:"replacedContactId,omitempty" xml:"replacedContactId,omitempty"`
+	// The start time of the substitution. Format: YYYY-MM-DD HH:mm.
+	//
 	// example:
 	//
 	// 2024-10-10 09:00

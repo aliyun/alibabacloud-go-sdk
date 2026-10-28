@@ -14,6 +14,8 @@ type iDeleteSubscriptionRequest interface {
 }
 
 type DeleteSubscriptionRequest struct {
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspace-test
