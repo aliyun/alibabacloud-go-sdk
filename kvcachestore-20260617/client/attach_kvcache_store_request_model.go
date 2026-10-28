@@ -13,6 +13,8 @@ type iAttachKVCacheStoreRequest interface {
 	GetArns() []*AttachKVCacheStoreRequestArns
 	SetClientToken(v string) *AttachKVCacheStoreRequest
 	GetClientToken() *string
+	SetInstanceType(v string) *AttachKVCacheStoreRequest
+	GetInstanceType() *string
 	SetRegionId(v string) *AttachKVCacheStoreRequest
 	GetRegionId() *string
 	SetResourceIds(v []*AttachKVCacheStoreRequestResourceIds) *AttachKVCacheStoreRequest
@@ -28,6 +30,12 @@ type AttachKVCacheStoreRequest struct {
 	//
 	// YOUR_CLIENT_TOKEN
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The VSC instance type. Valid values: EFLO, ECS, and INNER_ECS. Default value: EFLO.
+	//
+	// example:
+	//
+	// ECS
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The region ID, such as cn-hangzhou.
 	//
 	// This parameter is required.
@@ -58,6 +66,10 @@ func (s *AttachKVCacheStoreRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *AttachKVCacheStoreRequest) GetInstanceType() *string {
+	return s.InstanceType
+}
+
 func (s *AttachKVCacheStoreRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -73,6 +85,11 @@ func (s *AttachKVCacheStoreRequest) SetArns(v []*AttachKVCacheStoreRequestArns) 
 
 func (s *AttachKVCacheStoreRequest) SetClientToken(v string) *AttachKVCacheStoreRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *AttachKVCacheStoreRequest) SetInstanceType(v string) *AttachKVCacheStoreRequest {
+	s.InstanceType = &v
 	return s
 }
 
@@ -123,11 +140,7 @@ type AttachKVCacheStoreRequestArns struct {
 	//
 	// acs:ram::1028257687084022:role/zeus-locationservicerole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The role type. Valid values:
-	//
-	// - service
-	//
-	// - user
+	// The role type. Valid values: service and user.
 	//
 	// This parameter is required.
 	//

@@ -30,7 +30,7 @@ type iListKVCacheStoresRequest interface {
 }
 
 type ListKVCacheStoresRequest struct {
-	// The list of KvcsId values. Separate multiple IDs with commas. A maximum of 100 IDs are supported.
+	// The list of KvcsId values. Separate multiple IDs with commas (,). A maximum of 100 IDs can be specified.
 	//
 	// example:
 	//
@@ -42,19 +42,19 @@ type ListKVCacheStoresRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The instance name filter. Prefix matching is used.
+	// The instance name used for filtering. Prefix matching is supported.
 	//
 	// example:
 	//
 	// obj-detect
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The pagination token. Do not specify this parameter for the first request. For subsequent requests, use the NextToken value returned in the previous response. This parameter is mutually exclusive with PageNumber.
+	// The pagination token. Do not specify this parameter for the first request. For subsequent requests, use the NextToken value returned in the previous response. This parameter and PageNumber are mutually exclusive.
 	//
 	// example:
 	//
 	// a24c3a9cc8e6da77b10cffc4c93c7922e0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number. Default value: 1. This parameter takes precedence over NextToken if both are specified.
+	// The page number. Default value: 1. This parameter and NextToken are mutually exclusive. If both are specified, PageNumber takes precedence.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListKVCacheStoresRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance status filter. Valid values: Creating, Available, InUse, Stopping, Stopped, and Deleting.
+	// The instance status used for filtering. Valid values: Creating, Available, InUse, Stopping, Stopped, and Deleting.
 	//
 	// example:
 	//

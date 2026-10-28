@@ -18,7 +18,7 @@ type iDescribeRegionsResponseBody interface {
 type DescribeRegionsResponseBody struct {
 	// The list of regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The request ID. A request ID is returned regardless of whether the API call is successful.
+	// The request ID. The request ID is returned regardless of whether the API call is successful.
 	//
 	// example:
 	//

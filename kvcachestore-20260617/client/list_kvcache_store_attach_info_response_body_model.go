@@ -24,9 +24,9 @@ type iListKVCacheStoreAttachInfoResponseBody interface {
 }
 
 type ListKVCacheStoreAttachInfoResponseBody struct {
-	// The list of mount information.
+	// The list of mount records.
 	AttachInfos []*ListKVCacheStoreAttachInfoResponseBodyAttachInfos `json:"AttachInfos,omitempty" xml:"AttachInfos,omitempty" type:"Repeated"`
-	// The pagination token. Used to query the next batch of data.
+	// The query token, which is used to query the next batch of data.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListKVCacheStoreAttachInfoResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID. A request ID is returned regardless of whether the call is successful.
+	// The request ID. This ID is returned regardless of whether the call is successful.
 	//
 	// example:
 	//
 	// B127704C-ECB1-5B0A-AA9C-8F394A6F179F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned for the paged query.
+	// The total number of entries returned for a paging query.
 	//
 	// example:
 	//
@@ -134,25 +134,31 @@ func (s *ListKVCacheStoreAttachInfoResponseBody) Validate() error {
 }
 
 type ListKVCacheStoreAttachInfoResponseBodyAttachInfos struct {
-	// The time of the most recent attach operation, in ISO 8601 format. This value is null if the instance has not been attached.
+	// The time of the last attach operation in ISO 8601 format. If the instance is not attached, the value is null.
 	//
 	// example:
 	//
 	// 2026-06-20T08:30:00Z
 	AttachedAt *string `json:"AttachedAt,omitempty" xml:"AttachedAt,omitempty"`
-	// The file system capacity, in GiB.
+	// The capacity of the file system in GiB.
 	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The ID of the compute resource, which is the ECS instance ID or the Lingjun compute node ID.
+	//
+	// example:
+	//
+	// i-hdsagtg61h2hf21
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// KVCacheStore KvcsId
 	//
 	// example:
 	//
 	// kvcs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
-	// The file system-level mount point ID.
+	// The ID of the file system-level mount point.
 	//
 	// example:
 	//
@@ -164,27 +170,19 @@ type ListKVCacheStoreAttachInfoResponseBodyAttachInfos struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The attach status. Valid values:
-	//
-	// - Attaching: The instance is being mounted.
-	//
-	// - Attached: The instance is mounted.
-	//
-	// - Detaching: The instance is being unmounted.
-	//
-	// After unmounting is complete, the record is deleted and not returned.
+	// The attach status. Valid values: Attaching, Attached, and Detaching. After the instance is detached, the record is deleted and not returned.
 	//
 	// example:
 	//
-	// ATTACHED
+	// Attached
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The instance type. Valid values: kvcs (KVCacheStore, CPFS).
+	// The instance type. Valid value: kvcs.
 	//
 	// example:
 	//
 	// preview
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The VSC ID on the compute side.
+	// The ID of the compute-side VSC.
 	//
 	// example:
 	//
@@ -212,6 +210,10 @@ func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetAttachedAt() *str
 
 func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetCapacity() *int64 {
 	return s.Capacity
+}
+
+func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetInstanceId() *string {
+	return s.InstanceId
 }
 
 func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetKvcsId() *string {
@@ -249,6 +251,11 @@ func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) SetAttachedAt(v stri
 
 func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) SetCapacity(v int64) *ListKVCacheStoreAttachInfoResponseBodyAttachInfos {
 	s.Capacity = &v
+	return s
+}
+
+func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) SetInstanceId(v string) *ListKVCacheStoreAttachInfoResponseBodyAttachInfos {
+	s.InstanceId = &v
 	return s
 }
 

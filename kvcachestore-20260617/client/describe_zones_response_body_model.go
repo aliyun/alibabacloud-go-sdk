@@ -16,13 +16,13 @@ type iDescribeZonesResponseBody interface {
 }
 
 type DescribeZonesResponseBody struct {
-	// The request ID. The request ID is returned regardless of whether the API call is successful.
+	// The request ID. This ID is returned regardless of whether the API call is successful.
 	//
 	// example:
 	//
 	// 6AA27F1A-A62C-59C3-BCC7-D1DFA4E7EEA0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of zones.
+	// The list of available zones.
 	Zones []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 

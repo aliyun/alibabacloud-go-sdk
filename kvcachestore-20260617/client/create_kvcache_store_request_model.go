@@ -32,7 +32,7 @@ type iCreateKVCacheStoreRequest interface {
 }
 
 type CreateKVCacheStoreRequest struct {
-	// The storage capacity in GiB. The minimum capacity is 300 TiB (307200 GiB), and the capacity is scaled in increments of 300 TiB.
+	// The storage capacity in GiB. The minimum capacity is 300 TiB (307200 GiB), and the capacity is scaled out in increments of 300 TiB.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type CreateKVCacheStoreRequest struct {
 	//
 	// 2395
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The client token used to ensure idempotence of the request. The token can be up to 64 characters in length. Use a UUID.
+	// The client token that is used to ensure the idempotency of the request. The token can be up to 64 characters in length. We recommend that you use a UUID.
 	//
 	// example:
 	//
 	// YOUR_CLIENT_TOKEN
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The KVCacheStore description. The description must be 2 to 256 characters in length and cannot start with http:// or https://. Default value: empty.
+	// The KVCacheStore description. The description must be 2 to 256 characters in length and can contain English and Chinese characters. The description cannot start with http:// or https://. Default value: empty.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type CreateKVCacheStoreRequest struct {
 	//
 	// rg-aekzafsjd7i4qaq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of resource tag key-value pairs. A maximum of 20 tags are supported. This overrides the parent TagDTO type and uses the same Tag type as the Get/List response.
+	// The list of resource tag key-value pairs. A maximum of 20 tags are supported. This overrides the parent TagDTO type and uses the same Tag type as returned by Get/List operations.
 	Tag []*CreateKVCacheStoreRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The zone ID. You can call DescribeZones to query the list of zones in the specified region.
 	//

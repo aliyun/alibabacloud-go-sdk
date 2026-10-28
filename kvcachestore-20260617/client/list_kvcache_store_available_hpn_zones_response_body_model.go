@@ -16,9 +16,9 @@ type iListKVCacheStoreAvailableHpnZonesResponseBody interface {
 }
 
 type ListKVCacheStoreAvailableHpnZonesResponseBody struct {
-	// The list of available HpnZone information for instances.
+	// The list of available HpnZones for instances.
 	InstanceHpnZones []*ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones `json:"InstanceHpnZones,omitempty" xml:"InstanceHpnZones,omitempty" type:"Repeated"`
-	// The request ID. A request ID is returned regardless of whether the call is successful.
+	// The request ID. This ID is returned regardless of whether the API call is successful.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ func (s *ListKVCacheStoreAvailableHpnZonesResponseBody) Validate() error {
 type ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones struct {
 	// The list of available HpnZones for the instance.
 	AvailableHpnZones []*ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZonesAvailableHpnZones `json:"AvailableHpnZones,omitempty" xml:"AvailableHpnZones,omitempty" type:"Repeated"`
-	// The KVCacheStore instance ID.
+	// The ID of the KVCacheStore instance.
 	//
 	// example:
 	//
 	// kvcs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
-	// The zone ID of the instance.
+	// The ID of the zone where the instance resides.
 	//
 	// example:
 	//

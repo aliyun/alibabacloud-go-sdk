@@ -21,14 +21,16 @@ type iListKVCacheStoreAttachInfoRequest interface {
 	GetPageSize() *int32
 	SetRegionId(v string) *ListKVCacheStoreAttachInfoRequest
 	GetRegionId() *string
+	SetVscId(v string) *ListKVCacheStoreAttachInfoRequest
+	GetVscId() *string
 }
 
 type ListKVCacheStoreAttachInfoRequest struct {
-	// The list of KVCacheStore KvcsIds to query. You can specify up to 100 IDs.
+	// The list of KvcsIds of the KVCacheStores to query. You can specify up to 100 KvcsIds.
 	//
 	// This parameter is required.
 	KvcsIds []*string `json:"KvcsIds,omitempty" xml:"KvcsIds,omitempty" type:"Repeated"`
-	// The maximum number of entries to return per query. Valid values: 1 to 500.
+	// The maximum number of entries to return in a single call. Valid values: 1 to 500.
 	//
 	// Default value: 10.
 	//
@@ -36,19 +38,19 @@ type ListKVCacheStoreAttachInfoRequest struct {
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request. If NextToken is specified, the PageSize and PageNumber request parameters become ineffective, and TotalCount in the response is invalid.
+	// The query token. Set the value to the NextToken value returned from the last call to this operation. You do not need to specify this parameter for the first call. If NextToken is specified, the PageSize and PageNumber request parameters become invalid, and the TotalCount value in the response is invalid.
 	//
 	// example:
 	//
 	// your-client-token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number for a paged query. Used together with PageSize. If the specified page number exceeds the total number of pages, the last page of data is returned.
+	// The page number for a paging query. This parameter is used together with PageSize. If the specified page number exceeds the total number of pages, the last page is returned.
 	//
 	// example:
 	//
 	// 6
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page for a paging query.
 	//
 	// example:
 	//
@@ -62,6 +64,12 @@ type ListKVCacheStoreAttachInfoRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the compute-side VSC. If you specify this parameter, the mount records are filtered by the specified VSC.
+	//
+	// example:
+	//
+	// vsc-dhag651dsda
+	VscId *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
 }
 
 func (s ListKVCacheStoreAttachInfoRequest) String() string {
@@ -96,6 +104,10 @@ func (s *ListKVCacheStoreAttachInfoRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListKVCacheStoreAttachInfoRequest) GetVscId() *string {
+	return s.VscId
+}
+
 func (s *ListKVCacheStoreAttachInfoRequest) SetKvcsIds(v []*string) *ListKVCacheStoreAttachInfoRequest {
 	s.KvcsIds = v
 	return s
@@ -123,6 +135,11 @@ func (s *ListKVCacheStoreAttachInfoRequest) SetPageSize(v int32) *ListKVCacheSto
 
 func (s *ListKVCacheStoreAttachInfoRequest) SetRegionId(v string) *ListKVCacheStoreAttachInfoRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListKVCacheStoreAttachInfoRequest) SetVscId(v string) *ListKVCacheStoreAttachInfoRequest {
+	s.VscId = &v
 	return s
 }
 

@@ -137,7 +137,7 @@ type ListKVCacheStoreAvailableVscsRequestArns struct {
 	//
 	// 1193522024229156
 	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	// The ARN of the RAM role.
 	//
 	// This parameter is required.
 	//

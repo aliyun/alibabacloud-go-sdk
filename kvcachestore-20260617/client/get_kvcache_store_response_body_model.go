@@ -62,7 +62,7 @@ func (s *GetKVCacheStoreResponseBody) Validate() error {
 }
 
 type GetKVCacheStoreResponseBodyKvCacheStore struct {
-	// The storage capacity, in GiB.
+	// The storage capacity in GiB.
 	//
 	// example:
 	//
@@ -82,17 +82,17 @@ type GetKVCacheStoreResponseBodyKvCacheStore struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extra status information. Valid values:
 	//
-	// - CapacityExpanding
+	// - CapacityExpanding: The capacity is being expanded.
 	//
-	// - CapacityExpandSuccess
+	// - CapacityExpandSuccess: The capacity expansion succeeded.
 	//
-	// - CapacityExpandFail
+	// - CapacityExpandFail: The capacity expansion failed.
 	//
 	// example:
 	//
 	// CapacityExpanding
 	ExtraStatus *string `json:"ExtraStatus,omitempty" xml:"ExtraStatus,omitempty"`
-	// The cluster number.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type GetKVCacheStoreResponseBodyKvCacheStore struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The payment type. Valid values:
 	//
-	// - PREPAY
+	// - PREPAY: subscription.
 	//
-	// - POSTPAY
+	// - POSTPAY: pay-as-you-go.
 	//
 	// example:
 	//
@@ -140,17 +140,17 @@ type GetKVCacheStoreResponseBodyKvCacheStore struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - Creating
+	// - Creating: The instance is being created.
 	//
-	// - Available
+	// - Available: The instance is available.
 	//
-	// - InUse
+	// - InUse: The instance is in use.
 	//
-	// - Stopping
+	// - Stopping: The instance is being stopped.
 	//
-	// - Stopped
+	// - Stopped: The instance is stopped.
 	//
-	// - Deleting
+	// - Deleting: The instance is being deleted.
 	//
 	// example:
 	//

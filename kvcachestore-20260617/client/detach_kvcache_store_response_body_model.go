@@ -16,9 +16,9 @@ type iDetachKVCacheStoreResponseBody interface {
 }
 
 type DetachKVCacheStoreResponseBody struct {
-	// The list of unmount results.
+	// The list of detachment results.
 	DetachResults []*DetachKVCacheStoreResponseBodyDetachResults `json:"DetachResults,omitempty" xml:"DetachResults,omitempty" type:"Repeated"`
-	// The request ID. A request ID is returned regardless of whether the API call succeeds.
+	// The request ID. This ID is returned regardless of whether the operation is successful.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DetachKVCacheStoreResponseBody) Validate() error {
 }
 
 type DetachKVCacheStoreResponseBodyDetachResults struct {
-	// The error code when the operation fails. This value is null when the operation succeeds.
+	// The error code returned when the operation fails. This parameter is null if the operation succeeds.
 	//
 	// example:
 	//
 	// KVCacheInstance.NotAttached
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message when the operation fails. This value is null when the operation succeeds.
+	// The error message returned when the operation fails. This parameter is null if the operation succeeds.
 	//
 	// example:
 	//
@@ -84,13 +84,7 @@ type DetachKVCacheStoreResponseBodyDetachResults struct {
 	//
 	// kvcs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
-	// The operation result. Valid values:
-	//
-	// - DETACHING: The request has been accepted and the asynchronous unmount is in progress. This value is also returned for idempotent calls.
-	//
-	// - Success: The synchronous validation passed and the asynchronous operation completed.
-	//
-	// - Failed: The operation failed.
+	// The status of the operation. Valid values: DETACHING (the request is accepted and the detachment is in progress; this value is also returned for idempotent calls), Success (synchronous verification is passed and the asynchronous operation is complete), and Failed (the operation failed).
 	//
 	// example:
 	//

@@ -28,9 +28,9 @@ type iListKVCacheStoresResponseBody interface {
 }
 
 type ListKVCacheStoresResponseBody struct {
-	// The list of KVCacheStore instances. Each element contains the following fields: KvcsId, Name, Status, ExtraStatus, RegionId, ZoneId, HpnZone, Type, Capacity, PaymentType, MountPointId, CreateTime, and Description.
+	// The list of KVCacheStore instances. Each element contains the following parameters: KvcsId, Name, Status, ExtraStatus, RegionId, ZoneId, HpnZone, Type, Capacity, PaymentType, MountPointId, CreateTime, and Description.
 	KVCacheStores []*ListKVCacheStoresResponseBodyKVCacheStores `json:"KVCacheStores,omitempty" xml:"KVCacheStores,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per pagination request.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
@@ -54,19 +54,19 @@ type ListKVCacheStoresResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of pages. This value is returned only for page number-based pagination.
+	// The total number of pages. This parameter is returned only for page number-based pagination.
 	//
 	// example:
 	//
 	// 1
 	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// The request ID. A request ID is returned regardless of whether the API call succeeds.
+	// The request ID. A request ID is returned regardless of whether the call is successful.
 	//
 	// example:
 	//
 	// 56AC37CD-388E-5D21-951B-C50D16D8E812
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instances. This value is returned only for page number-based pagination. For cursor-based pagination, the value is -1.
+	// The total number of instances. This parameter is returned only for page number-based pagination. For cursor-based pagination, the value is -1.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ func (s *ListKVCacheStoresResponseBody) Validate() error {
 }
 
 type ListKVCacheStoresResponseBodyKVCacheStores struct {
-	// The storage capacity. Unit: GiB.
+	// The storage capacity, in GiB.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type ListKVCacheStoresResponseBodyKVCacheStores struct {
 	//
 	// kvcs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
-	// The file system-level mount point ID. Instances under the same file system share this mount point. For more information, call ListKVCacheInstanceAttachInfo.
+	// The file system-level mount point ID. Instances under the same file system share this mount point. For more information, use the ListKVCacheInstanceAttachInfo operation.
 	//
 	// example:
 	//
