@@ -22,7 +22,7 @@ type CloneLaboratoryResponseBody struct {
 	//
 	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

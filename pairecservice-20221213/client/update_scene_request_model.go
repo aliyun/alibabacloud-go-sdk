@@ -20,21 +20,21 @@ type iUpdateSceneRequest interface {
 }
 
 type UpdateSceneRequest struct {
-	// The scene description.
+	// The description of the scene.
 	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The flows.
+	// The list of flows.
 	Flows []*UpdateSceneRequestFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
-	// The instance ID. To obtain the ID, call the `ListInstances` API.
+	// Instance ID of the instance. You can call the ListInstances operation to obtain instance ID.
 	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The scene name.
+	// The name of the scene.
 	//
 	// example:
 	//
@@ -100,17 +100,17 @@ func (s *UpdateSceneRequest) Validate() error {
 }
 
 type UpdateSceneRequestFlows struct {
-	// The flow code.
+	// The code of the flow.
 	//
 	// example:
 	//
 	// liuliang1
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// The flow name.
+	// The name of the flow.
 	//
 	// example:
 	//
-	// 流量1
+	// Flow 1
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 

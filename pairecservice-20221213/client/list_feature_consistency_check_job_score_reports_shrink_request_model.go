@@ -16,9 +16,9 @@ type iListFeatureConsistencyCheckJobScoreReportsShrinkRequest interface {
 }
 
 type ListFeatureConsistencyCheckJobScoreReportsShrinkRequest struct {
-	// A list of request IDs to exclude from the feature comparison.
+	// The list of request IDs to exclude during feature comparison.
 	ExcludeRequestIdsShrink *string `json:"ExcludeRequestIds,omitempty" xml:"ExcludeRequestIds,omitempty"`
-	// The ID of the instance. To obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	// The ID of the instance. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
 	//
 	// example:
 	//

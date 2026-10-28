@@ -14,7 +14,7 @@ type iUpdateExperimentGroupResponseBody interface {
 }
 
 type UpdateExperimentGroupResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

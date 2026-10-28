@@ -14,7 +14,7 @@ type iCloneFeatureConsistencyCheckJobConfigRequest interface {
 }
 
 type CloneFeatureConsistencyCheckJobConfigRequest struct {
-	// The instance ID. To get the ID, call [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	// The instance ID. For more information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
 	//
 	// This parameter is required.
 	//

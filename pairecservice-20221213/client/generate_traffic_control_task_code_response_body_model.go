@@ -24,7 +24,7 @@ type GenerateTrafficControlTaskCodeResponseBody struct {
 	//
 	// Create Table xxx.......
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the engine configuration for the pre-release environment is incomplete.
+	// Indicates whether configuration information is missing for the engine configuration in the pre-release environment.
 	//
 	// example:
 	//

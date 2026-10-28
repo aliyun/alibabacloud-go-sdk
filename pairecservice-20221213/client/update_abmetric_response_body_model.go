@@ -14,7 +14,7 @@ type iUpdateABMetricResponseBody interface {
 }
 
 type UpdateABMetricResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

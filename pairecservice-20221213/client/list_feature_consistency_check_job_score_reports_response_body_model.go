@@ -32,9 +32,9 @@ type ListFeatureConsistencyCheckJobScoreReportsResponseBody struct {
 	//
 	// oss://********
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	// A list of score difference reports.
+	// The score comparison report.
 	ReportsOfScoreDiff []*ListFeatureConsistencyCheckJobScoreReportsResponseBodyReportsOfScoreDiff `json:"ReportsOfScoreDiff,omitempty" xml:"ReportsOfScoreDiff,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type ListFeatureConsistencyCheckJobScoreReportsResponseBodyReportsOfScoreDiff st
 	//
 	// 4
 	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
-	// The request ID recorded in the log.
+	// The request ID.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type ListFeatureConsistencyCheckJobScoreReportsResponseBodyReportsOfScoreDiff st
 	//
 	// 0.00000234
 	ScoreDiff *string `json:"ScoreDiff,omitempty" xml:"ScoreDiff,omitempty"`
-	// The score difference details.
+	// The score comparison details.
 	//
 	// example:
 	//

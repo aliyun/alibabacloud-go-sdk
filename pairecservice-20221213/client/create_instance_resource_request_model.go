@@ -36,7 +36,7 @@ type CreateInstanceResourceRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The resource group.
 	//
-	// If the resource category is DataManagement, valid values are:
+	// If the resource category is DataManagement, valid values:
 	//
 	// - storage
 	//
@@ -46,7 +46,7 @@ type CreateInstanceResourceRequest struct {
 	//
 	// - modeltrain
 	//
-	// If the resource category is Engine, valid values are:
+	// If the resource category is Engine, valid values:
 	//
 	// - feature
 	//
@@ -56,7 +56,7 @@ type CreateInstanceResourceRequest struct {
 	//
 	// - recengine
 	//
-	// If the resource category is Monitor, valid values are:
+	// If the resource category is Monitor, valid values:
 	//
 	// - logs
 	//
@@ -88,9 +88,9 @@ type CreateInstanceResourceRequest struct {
 	//
 	// - DataHub
 	//
-	// - ApsaraMQ for Kafka
+	// - Kafka
 	//
-	// - Realtime Compute for Apache Flink
+	// - Flinkvvp
 	//
 	// - ACR
 	//
@@ -102,9 +102,9 @@ type CreateInstanceResourceRequest struct {
 	//
 	// - MaxCompute
 	//
-	// - Graph Compute
+	// - GraphCompute
 	//
-	// - ApsaraDB for Redis
+	// - Redis
 	//
 	// This parameter is required.
 	//

@@ -36,19 +36,19 @@ type CreateExperimentRequest struct {
 	//
 	// {"RankBy": "Score"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the debug crowd. Call the ListCrowds operation to obtain this ID.
+	// The debug crowd ID. You can call the ListCrowds operation to obtain the debug crowd ID.
 	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	// The UIDs of Alibaba Cloud accounts or RAM users for debugging. Separate multiple UIDs with a comma.
+	// The debug users. The value must be the UID of an Alibaba Cloud account or RAM user. Separate multiple UIDs with commas.
 	//
 	// example:
 	//
 	// 1124512470******,1124512471******,1124512472******
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	// The experiment description.
+	// The description of the experiment.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateExperimentRequest struct {
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the experiment group. Call the ListExperimentGroups operation to obtain this ID.
+	// The experiment group ID. You can call the ListExperimentGroups operation to obtain the experiment group ID.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type CreateExperimentRequest struct {
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	// The traffic distribution percentage.
+	// The traffic allocation percentage.
 	//
 	// example:
 	//
 	// 100
 	FlowPercent *int32 `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
-	// The instance ID. Call the ListInstances operation to obtain this ID.
+	// The instance ID. You can call the ListInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateExperimentRequest struct {
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The experiment name.
+	// The name of the experiment.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,11 @@ type CreateExperimentRequest struct {
 	//
 	// experiment_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The experiment type. Valid values:<br>● `Baseline`: Indicates a baseline experiment.<br>● `Normal`: Indicates a normal experiment.<br><br>
+	// The type of the experiment. Valid values:
+	//
+	// - Baseline: baseline experiment.
+	//
+	// - Normal: normal experiment.
 	//
 	// This parameter is required.
 	//

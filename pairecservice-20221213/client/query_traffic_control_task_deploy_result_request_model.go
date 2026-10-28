@@ -16,13 +16,7 @@ type iQueryTrafficControlTaskDeployResultRequest interface {
 }
 
 type QueryTrafficControlTaskDeployResultRequest struct {
-	// The environment. Valid values:
-	//
-	// - Daily: daily environment.
-	//
-	// - Pre: staging environment.
-	//
-	// - Prod: production environment.
+	// The environment. Valid values: Daily (daily environment), Pre (staging environment), and Prod (production environment).
 	//
 	// example:
 	//

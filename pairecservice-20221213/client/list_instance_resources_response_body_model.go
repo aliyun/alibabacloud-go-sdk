@@ -24,7 +24,7 @@ type ListInstanceResourcesResponseBody struct {
 	//
 	// 9763624B-5FBB-5E3A-9193-B1ADB554CEAE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of resource objects.
+	// The list of resource objects.
 	Resources []*ListInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of resources.
 	//
@@ -83,7 +83,7 @@ func (s *ListInstanceResourcesResponseBody) Validate() error {
 }
 
 type ListInstanceResourcesResponseBodyResources struct {
-	// The category of the resource. Valid values:
+	// The resource category. Valid values:
 	//
 	// - DataManagement
 	//
@@ -95,7 +95,7 @@ type ListInstanceResourcesResponseBodyResources struct {
 	//
 	// DataManagement
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The configuration of the resource.
+	// The configuration information of the resource.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ type ListInstanceResourcesResponseBodyResources struct {
 	//
 	// 2020-10-13 17:34:52
 	GmtModifiedAt *string `json:"GmtModifiedAt,omitempty" xml:"GmtModifiedAt,omitempty"`
-	// The group of the resource.
+	// The resource group.
 	//
-	// If `Category` is `DataManagement`, valid values are:
+	// If the resource category is DataManagement, valid values are:
 	//
 	// - storage
 	//
@@ -125,7 +125,7 @@ type ListInstanceResourcesResponseBodyResources struct {
 	//
 	// - modeltrain
 	//
-	// If `Category` is `Engine`, valid values are:
+	// If the resource category is Engine, valid values are:
 	//
 	// - feature
 	//
@@ -135,7 +135,7 @@ type ListInstanceResourcesResponseBodyResources struct {
 	//
 	// - recengine
 	//
-	// If `Category` is `Monitor`, valid values are:
+	// If the resource category is Monitor, valid values are:
 	//
 	// - logs
 	//
@@ -155,7 +155,7 @@ type ListInstanceResourcesResponseBodyResources struct {
 	//
 	// reso-2s416t***
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	// The resource type. Valid values:
 	//
 	// - Hologres
 	//
@@ -171,9 +171,9 @@ type ListInstanceResourcesResponseBodyResources struct {
 	//
 	// - DataHub
 	//
-	// - ApsaraMQ for Kafka
+	// - Kafka
 	//
-	// - Realtime Compute for Apache Flink
+	// - Flinkvvp
 	//
 	// - ACR
 	//
@@ -185,15 +185,15 @@ type ListInstanceResourcesResponseBodyResources struct {
 	//
 	// - MaxCompute
 	//
-	// - Graph Compute Service
+	// - GraphCompute
 	//
-	// - ApsaraDB for Redis
+	// - Redis
 	//
 	// example:
 	//
 	// OSS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The resource URI.
+	// The URI of the resource.
 	//
 	// example:
 	//

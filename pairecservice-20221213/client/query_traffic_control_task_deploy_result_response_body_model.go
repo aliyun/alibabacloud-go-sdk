@@ -36,7 +36,7 @@ type iQueryTrafficControlTaskDeployResultResponseBody interface {
 }
 
 type QueryTrafficControlTaskDeployResultResponseBody struct {
-	// The message returned for the Flink platform deployment operation.
+	// The message about the deployment operation on the Flink platform.
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type QueryTrafficControlTaskDeployResultResponseBody struct {
 	DeployMessage *string `json:"DeployMessage,omitempty" xml:"DeployMessage,omitempty"`
 	// The status of deploying the draft. Valid values:
 	//
-	// - Failed: failed.
+	// - `Failed`: Failed.
 	//
-	// - Running: running.
+	// - `Running`: Running.
 	//
-	// - Success: succeeded.
+	// - `Success`: Successful.
 	//
 	// example:
 	//
 	// Success
 	DeployStatus *string `json:"DeployStatus,omitempty" xml:"DeployStatus,omitempty"`
-	// The message returned for pushing the draft to Flink.
+	// The message about pushing the draft to Flink.
 	//
 	// example:
 	//
@@ -62,17 +62,17 @@ type QueryTrafficControlTaskDeployResultResponseBody struct {
 	DraftMessage *string `json:"DraftMessage,omitempty" xml:"DraftMessage,omitempty"`
 	// The status of pushing the draft to Flink. Valid values:
 	//
-	// - Failed: failed.
+	// - `Failed`: Failed.
 	//
-	// - Running: running.
+	// - `Running`: Running.
 	//
-	// - Success: succeeded.
+	// - `Success`: Successful.
 	//
 	// example:
 	//
 	// Success
 	DraftStatus *string `json:"DraftStatus,omitempty" xml:"DraftStatus,omitempty"`
-	// The message returned for the preparation phase.
+	// The message about the preparation phase.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type QueryTrafficControlTaskDeployResultResponseBody struct {
 	PrepareMessage *string `json:"PrepareMessage,omitempty" xml:"PrepareMessage,omitempty"`
 	// The status of the preparation phase. Valid values:
 	//
-	// - Failed: failed.
+	// - `Failed`: Failed.
 	//
-	// - Running: running.
+	// - `Running`: Running.
 	//
-	// - Success: succeeded.
+	// - `Success`: Successful.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type QueryTrafficControlTaskDeployResultResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The message returned for starting the Flink task.
+	// The message about starting the Flink task.
 	//
 	// example:
 	//
@@ -104,11 +104,11 @@ type QueryTrafficControlTaskDeployResultResponseBody struct {
 	StartMessage *string `json:"StartMessage,omitempty" xml:"StartMessage,omitempty"`
 	// The status of starting the Flink task. Valid values:
 	//
-	// - Failed: failed.
+	// - `Failed`: Failed.
 	//
-	// - Running: running.
+	// - `Running`: Running.
 	//
-	// - Success: succeeded.
+	// - `Success`: Successful.
 	//
 	// example:
 	//

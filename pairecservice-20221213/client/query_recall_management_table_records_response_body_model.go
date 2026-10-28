@@ -16,7 +16,7 @@ type iQueryRecallManagementTableRecordsResponseBody interface {
 }
 
 type QueryRecallManagementTableRecordsResponseBody struct {
-	// A list of the retrieved records.
+	// The data list.
 	Records []map[string]interface{} `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The request ID.
 	//

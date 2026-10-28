@@ -26,13 +26,13 @@ type iUpdateTableMetaRequest interface {
 }
 
 type UpdateTableMetaRequest struct {
-	// The description of the data table.
+	// The description of the table.
 	//
 	// example:
 	//
 	// this is a test table
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The fields of the data table.
+	// The list of table fields.
 	//
 	// This parameter is required.
 	Fields []*UpdateTableMetaRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
@@ -44,13 +44,13 @@ type UpdateTableMetaRequest struct {
 	//
 	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The module to which the data table belongs.
+	// The module of the data table.
 	//
-	// - ABTest: a data table for A/B testing.
+	// - ABTest: experiment data table.
 	//
-	// - ExperimentTool: a data table for experiment tools.
+	// - ExperimentTool: experiment tool table.
 	//
-	// - DataDiagnosis: a data table for data diagnosis.
+	// - DataDiagnosis: data diagnosis.
 	//
 	// This parameter is required.
 	//
@@ -175,7 +175,7 @@ type UpdateTableMetaRequestFields struct {
 	//
 	// primary_key
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// Indicates whether the field is a dimension field.
+	// Specifies whether the field is a dimension field.
 	//
 	// This parameter is required.
 	//
@@ -183,7 +183,7 @@ type UpdateTableMetaRequestFields struct {
 	//
 	// false
 	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
-	// Indicates whether the field is a partition field.
+	// Specifies whether the field is a partition field.
 	//
 	// This parameter is required.
 	//
@@ -191,15 +191,15 @@ type UpdateTableMetaRequestFields struct {
 	//
 	// true
 	IsPartitionField *string `json:"IsPartitionField,omitempty" xml:"IsPartitionField,omitempty"`
-	// The business meaning of the field.
+	// The meaning of the field.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 名称字段
+	// Name field
 	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
-	// The field name.
+	// The name of the field.
 	//
 	// This parameter is required.
 	//
@@ -207,7 +207,7 @@ type UpdateTableMetaRequestFields struct {
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The data type of the field.
+	// The type of the field.
 	//
 	// This parameter is required.
 	//

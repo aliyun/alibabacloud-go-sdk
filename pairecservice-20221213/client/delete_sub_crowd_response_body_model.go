@@ -14,7 +14,7 @@ type iDeleteSubCrowdResponseBody interface {
 }
 
 type DeleteSubCrowdResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

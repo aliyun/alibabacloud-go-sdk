@@ -22,7 +22,7 @@ type CloneExperimentGroupResponseBody struct {
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	// The request ID, used for tracking and troubleshooting.
+	// Id of the request
 	//
 	// example:
 	//

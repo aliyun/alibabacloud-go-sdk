@@ -14,7 +14,7 @@ type iDeleteRecallManagementServiceRequest interface {
 }
 
 type DeleteRecallManagementServiceRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iGenerateAlgorithmCustomizationScriptResponseBody interface {
 }
 
 type GenerateAlgorithmCustomizationScriptResponseBody struct {
-	// The log ID.
+	// The ID of the generated log.
 	//
 	// example:
 	//

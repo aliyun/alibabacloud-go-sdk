@@ -48,33 +48,33 @@ type CreateExperimentGroupRequest struct {
 	//
 	// {"RankBy": "Score"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the crowd for crowd targeting. You can obtain this ID by calling the ListCrowds operation.
+	// The ID of the specified crowd for crowd targeting. You can call the ListCrowds operation to obtain the crowd ID.
 	//
 	// example:
 	//
 	// 1
 	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
-	// The crowd targeting type for the experiment group. Valid values:
+	// The type of traffic targeting for the experiment group. Valid values:
 	//
-	// - `All`: All traffic
+	// - All: All traffic.
 	//
-	// - `Filter`: Traffic that matches the filter condition
+	// - Filter: Traffic that uses filter conditions.
 	//
-	// - `CrowdId`: Traffic from a specific crowd
+	// - CrowdId: Traffic specified by a crowd ID.
 	//
-	// - `Random`: A random percentage of traffic
+	// - Random: Random traffic based on a percentage.
 	//
 	// example:
 	//
 	// All
 	CrowdTargetType *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
-	// The ID of the debug crowd. You can obtain this ID by calling the ListCrowds operation.
+	// The ID of the debug crowd. You can call the ListCrowds operation to obtain the crowd ID.
 	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	// The UIDs of the debug users. The value must be the UID of an Alibaba Cloud account or a RAM user. Separate multiple UIDs with a comma.
+	// The debug users. The users must be the UIDs of Alibaba Cloud accounts or RAM users. Separate multiple UIDs with commas.
 	//
 	// example:
 	//
@@ -86,25 +86,29 @@ type CreateExperimentGroupRequest struct {
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time duration for traffic distribution.
+	// The time period for traffic distribution.
 	//
 	// example:
 	//
 	// 3
 	DistributionTimeDuration *int32 `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
-	// The distribution type. Valid values: `UserId` (by user ID) and `TimeDuration` (by time duration).
+	// The traffic distribution method. Valid values:
+	//
+	// - UserId: User ID.
+	//
+	// - TimeDuration: Time period.
 	//
 	// example:
 	//
 	// UserId
 	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
-	// The filter condition for crowd targeting.
+	// The filter conditions for crowd targeting.
 	//
 	// example:
 	//
 	// gender=male
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The instance ID. You can obtain this ID by calling the ListInstances operation.
+	// The ID of the instance. You can call the ListInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +116,7 @@ type CreateExperimentGroupRequest struct {
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the layer. You can obtain this ID by calling the ListLayers operation.
+	// The ID of the layer. You can call the ListLayers operation to obtain the layer ID.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +132,7 @@ type CreateExperimentGroupRequest struct {
 	//
 	// experiment_group_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to create an A/A experiment group.
+	// Specifies whether an AA experiment group is required.
 	//
 	// This parameter is required.
 	//
@@ -136,13 +140,13 @@ type CreateExperimentGroupRequest struct {
 	//
 	// true
 	NeedAA *bool `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
-	// The percentage of traffic to randomly allocate to this experiment group. This parameter is used only when `CrowdTargetType` is set to `Random`. Valid values: 0 to 100.
+	// The percentage of random traffic used to match the experiment group when the traffic targeting type is Random. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 20
 	RandomFlow *int64 `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
-	// A comma-separated list of reserved bucket numbers.
+	// The reserved bucket numbers.
 	//
 	// example:
 	//

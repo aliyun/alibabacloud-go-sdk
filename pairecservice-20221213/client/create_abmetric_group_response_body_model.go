@@ -16,13 +16,13 @@ type iCreateABMetricGroupResponseBody interface {
 }
 
 type CreateABMetricGroupResponseBody struct {
-	// The ID of the A/B metric group.
+	// The ID of the metric group.
 	//
 	// example:
 	//
 	// 1
 	ABMetricGroupId *string `json:"ABMetricGroupId,omitempty" xml:"ABMetricGroupId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

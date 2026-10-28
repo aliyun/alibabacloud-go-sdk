@@ -46,103 +46,111 @@ type iGetExperimentResponseBody interface {
 }
 
 type GetExperimentResponseBody struct {
-	// The alias of the experiment.
+	// The alias of the experiment ID.
 	//
 	// example:
 	//
 	// L1#EG1#E1
 	AliasExperimentId *string `json:"AliasExperimentId,omitempty" xml:"AliasExperimentId,omitempty"`
-	// A comma-separated list of bucket numbers.
+	// The allocated bucket numbers.
 	//
 	// example:
 	//
 	// 1,2,3
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	// The experiment configuration, in JSON format.
+	// The configuration of the experiment.
 	//
 	// example:
 	//
 	// {"RankBy": "Score"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The debug crowd ID.
+	// The ID of the debug crowd.
 	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	// The UIDs of debug users, which can be the UIDs of an Alibaba Cloud main account or a RAM user. Separate multiple UIDs with a comma (,).
+	// The debug users. The value must be the UIDs of Alibaba Cloud accounts or RAM users. Separate multiple UIDs with commas.
 	//
 	// example:
 	//
 	// 1124512470******,1124512471******,1124512472******
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	// The experiment description.
+	// The description of the experiment.
 	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The experiment group ID.
+	// The ID of the experiment group.
 	//
 	// example:
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	// The traffic percentage.
+	// The traffic allocation percentage.
 	//
 	// example:
 	//
 	// 100
 	FlowPercent *int32 `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
-	// The creation time, in ISO 8601 format.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time, in ISO 8601 format.
+	// The update time.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The laboratory ID.
+	// The ID of the laboratory.
 	//
 	// example:
 	//
 	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	// The layer ID.
+	// The ID of the layer.
 	//
 	// example:
 	//
 	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	// The experiment name.
+	// The name of the experiment.
 	//
 	// example:
 	//
 	// experiment_test1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 74D958EF-3598-56FA-8296-FF1575CE43DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scene ID.
+	// The ID of the scene.
 	//
 	// example:
 	//
 	// 3
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The status of the experiment. Valid values:<br>● Offline<br>● Online<br><br>
+	// The status filter. Valid values:
+	//
+	// - Offline: offline
+	//
+	// - Online: online
 	//
 	// example:
 	//
 	// Offline
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the experiment. Valid values:<br>● Baseline: a baseline experiment.<br>● Normal: a normal experiment.<br><br>
+	// The type of the experiment. Valid values:
+	//
+	// - Baseline: baseline experiment
+	//
+	// - Normal: normal experiment
 	//
 	// example:
 	//

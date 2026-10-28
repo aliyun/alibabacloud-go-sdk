@@ -83,13 +83,13 @@ func (s *GetRecallManagementConfigResponseBody) Validate() error {
 }
 
 type GetRecallManagementConfigResponseBodyNetworkConfigs struct {
-	// The private endpoint.
+	// The private network endpoint.
 	//
 	// example:
 	//
 	// http://xxx
 	PrivateLinkAddress *string `json:"PrivateLinkAddress,omitempty" xml:"PrivateLinkAddress,omitempty"`
-	// The public endpoint.
+	// The public network connection endpoint.
 	//
 	// example:
 	//
@@ -97,15 +97,15 @@ type GetRecallManagementConfigResponseBodyNetworkConfigs struct {
 	PublicEndpoint *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
 	// The network connectivity status. Valid values:
 	//
-	// - Connecting: connecting.
+	// - Connecting: Connecting.
 	//
-	// - Connected: connected.
+	// - Connected: Connected.
 	//
-	// - ConnectionFailed: connection failed.
+	// - ConnectionFailed: Connection failed.
 	//
-	// - Updating: updating.
+	// - Updating: Updating.
 	//
-	// - UpdateFailed: update failed.
+	// - UpdateFailed: Update failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ type GetRecallManagementConfigResponseBodyNetworkConfigs struct {
 	//
 	// ""
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//

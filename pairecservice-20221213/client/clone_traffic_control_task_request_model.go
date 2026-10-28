@@ -14,7 +14,7 @@ type iCloneTrafficControlTaskRequest interface {
 }
 
 type CloneTrafficControlTaskRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//

@@ -48,8 +48,9 @@ type iCreateABMetricRequest interface {
 }
 
 type CreateABMetricRequest struct {
+	// Specifies whether to aggregate by user dimension when calculating significance. Two aggregation methods are available: by user and by sample.
 	AggregationByUser *bool `json:"AggregationByUser,omitempty" xml:"AggregationByUser,omitempty"`
-	// The metric definition.
+	// The definition of the metric.
 	//
 	// This parameter is required.
 	//
@@ -57,55 +58,61 @@ type CreateABMetricRequest struct {
 	//
 	// sum(click_cnt)
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The denominator used for significance calculation.
+	//
 	// example:
 	//
 	// pv
 	Denominator *string `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
-	// The metric description.
+	// The description of the metric.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pv指标
+	// PV metric
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance ID. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain this ID.
+	// Instance ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-test1
-	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsBinomialDistribution *bool   `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
-	// The ID of the left metric used to calculate the derived metric.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the current metric follows a binomial distribution when the metric type is a derived metric. If yes, the mean and variance of the metric are calculated based on the binomial distribution.
+	IsBinomialDistribution *bool `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
+	// The ID of the left metric for a derived metric.
 	//
 	// example:
 	//
 	// 2
 	LeftMetricId *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
-	// The metric name.
+	// The name of the metric.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pv
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NeedSignificance *bool   `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to calculate significance.
+	NeedSignificance *bool `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
+	// The numerator used for significance calculation.
+	//
 	// example:
 	//
 	// click
 	Numerator *string `json:"Numerator,omitempty" xml:"Numerator,omitempty"`
-	// The operator used to calculate the derived metric. Valid values:
+	// The operator used to calculate a derived metric. Valid values:
 	//
-	// - `Plus`: Addition
+	// - Plus: addition.
 	//
-	// - `Minus`: Subtraction
+	// - Minus: subtraction.
 	//
-	// - `Multiplication`: Multiplication
+	// - Multiplication: multiplication.
 	//
-	// - `Division`: Division
+	// - Division: division.
 	//
 	// example:
 	//
@@ -113,9 +120,9 @@ type CreateABMetricRequest struct {
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// Specifies whether the metric is a real-time metric. Valid values:
 	//
-	// - `true`: The metric is real-time.
+	// - true: yes.
 	//
-	// - `false`: The metric is not real-time.
+	// - false: no.
 	//
 	// This parameter is required.
 	//
@@ -123,19 +130,19 @@ type CreateABMetricRequest struct {
 	//
 	// false
 	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	// The data source ID to which the results are written back. Call the ListInstanceResources operation to obtain this ID.
+	// The ID of the data source to which the data table is written back. You can call the ListInstanceResources operation to obtain the ID.
 	//
 	// example:
 	//
 	// 3
 	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
-	// The ID of the right metric used to calculate the derived metric.
+	// The ID of the right metric for a derived metric.
 	//
 	// example:
 	//
 	// 3
 	RightMetricId *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
-	// The scene ID. Call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain this ID.
+	// The ID of the scene. You can call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -143,13 +150,13 @@ type CreateABMetricRequest struct {
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The statistics cycle.
+	// The statistical period.
 	//
 	// example:
 	//
 	// 1
 	StatisticsCycle *int32 `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
-	// The data table ID. Call the ListTableMetas operation to obtain this ID.
+	// The ID of the data table. You can call the ListTableMetas operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -157,11 +164,11 @@ type CreateABMetricRequest struct {
 	//
 	// 2
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
-	// The metric type. Valid values:
+	// The type of the metric. Valid values:
 	//
-	// - `Single`: A single metric.
+	// - Single: single metric.
 	//
-	// - `Derived`: A derived metric.
+	// - Derived: derived metric.
 	//
 	// This parameter is required.
 	//

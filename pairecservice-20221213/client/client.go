@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Applies an engine configuration.
+// Publishes an engine configuration.
 //
 // @param request - ApplyEngineConfigRequest
 //
@@ -105,7 +105,7 @@ func (client *Client) ApplyEngineConfigWithOptions(EngineConfigId *string, reque
 
 // Summary:
 //
-// Applies an engine configuration.
+// Publishes an engine configuration.
 //
 // @param request - ApplyEngineConfigRequest
 //
@@ -230,21 +230,21 @@ func (client *Client) BackflowFeatureConsistencyCheckJobData(request *BackflowFe
 
 // Summary:
 //
-// This API changes the version of a recall management service.
+// Updates the version of a specified recall management service.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Use this API to change the version of a recall management service. Ensure that the provided `RecallManagementServiceId`, `InstanceId`, and target `RecallManagementServiceVersionId` are valid, and that you have the required permissions for these resources.
+// You can call this API to change the version of a specific recall management service. Ensure that the provided `RecallManagementServiceId`, `InstanceId`, and target `RecallManagementServiceVersionId` are valid and that you have the required permissions to manage these resources.
 //
-// - **RecallManagementServiceId**: The unique identifier of the recall management service.
+// - **RecallManagementServiceId**: The unique identifier of the recall management service whose version you want to change.
 //
-// - **InstanceId**: The instance ID associated with the recall management service.
+// - **InstanceId**: Instance ID of the instance associated with the recall management service.
 //
-// - **RecallManagementServiceVersionId**: The target version ID to switch to.
+// - **RecallManagementServiceVersionId**: Instance ID of the target version to switch to.
 //
-// Note: Before changing the version, confirm that the new version is fully tested and ready for production.
+// Note: Before you change the version, ensure that the new version has been fully tested and is ready to go live.
 //
 // @param request - ChangeRecallManagementServiceVersionRequest
 //
@@ -295,21 +295,21 @@ func (client *Client) ChangeRecallManagementServiceVersionWithOptions(RecallMana
 
 // Summary:
 //
-// This API changes the version of a recall management service.
+// Updates the version of a specified recall management service.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Use this API to change the version of a recall management service. Ensure that the provided `RecallManagementServiceId`, `InstanceId`, and target `RecallManagementServiceVersionId` are valid, and that you have the required permissions for these resources.
+// You can call this API to change the version of a specific recall management service. Ensure that the provided `RecallManagementServiceId`, `InstanceId`, and target `RecallManagementServiceVersionId` are valid and that you have the required permissions to manage these resources.
 //
-// - **RecallManagementServiceId**: The unique identifier of the recall management service.
+// - **RecallManagementServiceId**: The unique identifier of the recall management service whose version you want to change.
 //
-// - **InstanceId**: The instance ID associated with the recall management service.
+// - **InstanceId**: Instance ID of the instance associated with the recall management service.
 //
-// - **RecallManagementServiceVersionId**: The target version ID to switch to.
+// - **RecallManagementServiceVersionId**: Instance ID of the target version to switch to.
 //
-// Note: Before changing the version, confirm that the new version is fully tested and ready for production.
+// Note: Before you change the version, ensure that the new version has been fully tested and is ready to go live.
 //
 // @param request - ChangeRecallManagementServiceVersionRequest
 //
@@ -533,13 +533,115 @@ func (client *Client) CheckInstanceResources(InstanceId *string, request *CheckI
 
 // Summary:
 //
-// Validates a traffic control task expression.
+// Checks whether a specified recall management service is working properly.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This operation validates a traffic control task expression for a specific instance and table. Provide the correct `InstanceId`, `TableMetaId`, and `Expression` parameters.
+// This operation checks the status or performance of a specific recall management service by using the recall management service ID and related parameters. Ensure that the InstanceId field is correct to target the right instance. To test a specific version of the service, provide the RecallManagementServiceVersionId. You can also customize the request by using parameters such as Recalls, ContextParams, ExposureList, and RetainFields to accurately simulate real-world scenarios.
+//
+// @param request - CheckRecallManagementServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckRecallManagementServiceResponse
+func (client *Client) CheckRecallManagementServiceWithOptions(RecallManagementServiceId *string, request *CheckRecallManagementServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckRecallManagementServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextParams) {
+		body["ContextParams"] = request.ContextParams
+	}
+
+	if !dara.IsNil(request.ExposureList) {
+		body["ExposureList"] = request.ExposureList
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RecallManagementServiceVersionId) {
+		body["RecallManagementServiceVersionId"] = request.RecallManagementServiceVersionId
+	}
+
+	if !dara.IsNil(request.Recalls) {
+		body["Recalls"] = request.Recalls
+	}
+
+	if !dara.IsNil(request.RetainFields) {
+		body["RetainFields"] = request.RetainFields
+	}
+
+	if !dara.IsNil(request.Uid) {
+		body["Uid"] = request.Uid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckRecallManagementService"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementservices/" + dara.PercentEncode(dara.StringValue(RecallManagementServiceId)) + "/action/check"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckRecallManagementServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks whether a specified recall management service is working properly.
+//
+// Description:
+//
+// ## Request description
+//
+// This operation checks the status or performance of a specific recall management service by using the recall management service ID and related parameters. Ensure that the InstanceId field is correct to target the right instance. To test a specific version of the service, provide the RecallManagementServiceVersionId. You can also customize the request by using parameters such as Recalls, ContextParams, ExposureList, and RetainFields to accurately simulate real-world scenarios.
+//
+// @param request - CheckRecallManagementServiceRequest
+//
+// @return CheckRecallManagementServiceResponse
+func (client *Client) CheckRecallManagementService(RecallManagementServiceId *string, request *CheckRecallManagementServiceRequest) (_result *CheckRecallManagementServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckRecallManagementServiceResponse{}
+	_body, _err := client.CheckRecallManagementServiceWithOptions(RecallManagementServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Validates whether a specified traffic control task expression is valid.
+//
+// Description:
+//
+// ## Request description
+//
+// This API operation checks the validity of a traffic control task expression for a specified instance and data table. Make sure that the `InstanceId`, `TableMetaId`, and `Expression` parameters are accurate to correctly perform the validation.
 //
 // @param request - CheckTrafficControlTaskExpressionRequest
 //
@@ -594,13 +696,13 @@ func (client *Client) CheckTrafficControlTaskExpressionWithOptions(request *Chec
 
 // Summary:
 //
-// Validates a traffic control task expression.
+// Validates whether a specified traffic control task expression is valid.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This operation validates a traffic control task expression for a specific instance and table. Provide the correct `InstanceId`, `TableMetaId`, and `Expression` parameters.
+// This API operation checks the validity of a traffic control task expression for a specified instance and data table. Make sure that the `InstanceId`, `TableMetaId`, and `Expression` parameters are accurate to correctly perform the validation.
 //
 // @param request - CheckTrafficControlTaskExpressionRequest
 //
@@ -841,7 +943,7 @@ func (client *Client) CloneExperimentGroup(ExperimentGroupId *string, request *C
 
 // Summary:
 //
-// Clones a feature consistency check job configuration.
+// Clones the feature consistency check job configuration.
 //
 // @param request - CloneFeatureConsistencyCheckJobConfigRequest
 //
@@ -888,7 +990,7 @@ func (client *Client) CloneFeatureConsistencyCheckJobConfigWithOptions(SourceFea
 
 // Summary:
 //
-// Clones a feature consistency check job configuration.
+// Clones the feature consistency check job configuration.
 //
 // @param request - CloneFeatureConsistencyCheckJobConfigRequest
 //
@@ -907,7 +1009,7 @@ func (client *Client) CloneFeatureConsistencyCheckJobConfig(SourceFeatureConsist
 
 // Summary:
 //
-// Clones a specified laboratory to a designated environment. You can specify whether to clone the experiment groups within the laboratory.
+// Clones a specified laboratory to a specified environment and specifies whether to clone the experiment groups under the laboratory.
 //
 // @param request - CloneLaboratoryRequest
 //
@@ -962,7 +1064,7 @@ func (client *Client) CloneLaboratoryWithOptions(LaboratoryId *string, request *
 
 // Summary:
 //
-// Clones a specified laboratory to a designated environment. You can specify whether to clone the experiment groups within the laboratory.
+// Clones a specified laboratory to a specified environment and specifies whether to clone the experiment groups under the laboratory.
 //
 // @param request - CloneLaboratoryRequest
 //
@@ -981,13 +1083,13 @@ func (client *Client) CloneLaboratory(LaboratoryId *string, request *CloneLabora
 
 // Summary:
 //
-// Clones a specified traffic control task to a new instance.
+// Clones a specified traffic shaping task to a new instance.
 //
 // Description:
 //
 // ## Request description
 //
-// This API clones an existing traffic control task to another specified instance. Ensure that the `InstanceId` you provide is valid and that you have the required permissions for the target instance.
+// You can use this API to clone an existing traffic shaping task to another specified instance. Make sure that the `InstanceId` you provide is valid and that you have the required permissions to perform operations on the instance.
 //
 // Note: The cloning process does not affect the status or configuration of the original task.
 //
@@ -1036,13 +1138,13 @@ func (client *Client) CloneTrafficControlTaskWithOptions(TrafficControlTaskId *s
 
 // Summary:
 //
-// Clones a specified traffic control task to a new instance.
+// Clones a specified traffic shaping task to a new instance.
 //
 // Description:
 //
 // ## Request description
 //
-// This API clones an existing traffic control task to another specified instance. Ensure that the `InstanceId` you provide is valid and that you have the required permissions for the target instance.
+// You can use this API to clone an existing traffic shaping task to another specified instance. Make sure that the `InstanceId` you provide is valid and that you have the required permissions to perform operations on the instance.
 //
 // Note: The cloning process does not affect the status or configuration of the original task.
 //
@@ -1129,7 +1231,7 @@ func (client *Client) CompareSampleConsistencyJob(SampleConsistencyJobId *string
 
 // Summary:
 //
-// Creates an AB metric.
+// Creates an AB test metric.
 //
 // @param request - CreateABMetricRequest
 //
@@ -1244,7 +1346,7 @@ func (client *Client) CreateABMetricWithOptions(request *CreateABMetricRequest, 
 
 // Summary:
 //
-// Creates an AB metric.
+// Creates an AB test metric.
 //
 // @param request - CreateABMetricRequest
 //
@@ -1263,7 +1365,7 @@ func (client *Client) CreateABMetric(request *CreateABMetricRequest) (_result *C
 
 // Summary:
 //
-// Creates an A/B metric group.
+// Creates an AB test metric group.
 //
 // @param request - CreateABMetricGroupRequest
 //
@@ -1330,7 +1432,7 @@ func (client *Client) CreateABMetricGroupWithOptions(request *CreateABMetricGrou
 
 // Summary:
 //
-// Creates an A/B metric group.
+// Creates an AB test metric group.
 //
 // @param request - CreateABMetricGroupRequest
 //
@@ -1427,7 +1529,7 @@ func (client *Client) CreateCalculationJobs(request *CreateCalculationJobsReques
 
 // Summary:
 //
-// Creates a crowd that represents a group of users.
+// Creates a crowd to represent a user group.
 //
 // @param request - CreateCrowdRequest
 //
@@ -1494,7 +1596,7 @@ func (client *Client) CreateCrowdWithOptions(request *CreateCrowdRequest, header
 
 // Summary:
 //
-// Creates a crowd that represents a group of users.
+// Creates a crowd to represent a user group.
 //
 // @param request - CreateCrowdRequest
 //
@@ -1925,7 +2027,7 @@ func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_resul
 
 // Summary:
 //
-// Creates an experiment group in a specified layer. You can use experiment groups to categorize experiments and observe their overall performance.
+// Creates an experiment group under a specified layer. You can categorize experiment groups by experiment type to observe the overall performance of experiments by group.
 //
 // @param request - CreateExperimentGroupRequest
 //
@@ -2028,7 +2130,7 @@ func (client *Client) CreateExperimentGroupWithOptions(request *CreateExperiment
 
 // Summary:
 //
-// Creates an experiment group in a specified layer. You can use experiment groups to categorize experiments and observe their overall performance.
+// Creates an experiment group under a specified layer. You can categorize experiment groups by experiment type to observe the overall performance of experiments by group.
 //
 // @param request - CreateExperimentGroupRequest
 //
@@ -2375,7 +2477,7 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfig(request *CreateFeat
 
 // Summary:
 //
-// Creates a configuration resource for a specified instance.
+// Creates a configuration resource for the specified instance.
 //
 // @param request - CreateInstanceResourceRequest
 //
@@ -2434,7 +2536,7 @@ func (client *Client) CreateInstanceResourceWithOptions(InstanceId *string, requ
 
 // Summary:
 //
-// Creates a configuration resource for a specified instance.
+// Creates a configuration resource for the specified instance.
 //
 // @param request - CreateInstanceResourceRequest
 //
@@ -2911,19 +3013,19 @@ func (client *Client) CreateRecallManagementService(request *CreateRecallManagem
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - Use this API to create a new version of a recall management service.
+// - This operation allows you to create a new version for a specific recall management service.
 //
-// - To create a new version from an existing one, specify the source recall management service version ID.
+// - You can create a new version based on an existing version by specifying the source recall management service version ID.
 //
-// - You can configure detailed recall rules, such as the recall name, description, priority, and recall type.
+// - You can configure detailed recall rules, including but not limited to the recall name, description, priority, and recall type.
 //
-// - Configure operators such as filter, trigger, feature extraction, and join.
+// - The operation provides flexible operator configuration options, such as filtering, triggering, feature extraction, and join operations, to meet various business requirements.
 //
-// - The merge configuration specifies how to merge multiple recall results and supports two merge methods: weight-based and alternating.
+// - The merge configuration allows you to specify how to merge multiple recall results. Two merge methods are supported: weight and alternate.
 //
-// - All configuration items are optional.
+// - All configuration items are optional. Specify them as needed.
 //
 // @param request - CreateRecallManagementServiceVersionRequest
 //
@@ -2982,19 +3084,19 @@ func (client *Client) CreateRecallManagementServiceVersionWithOptions(RecallMana
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - Use this API to create a new version of a recall management service.
+// - This operation allows you to create a new version for a specific recall management service.
 //
-// - To create a new version from an existing one, specify the source recall management service version ID.
+// - You can create a new version based on an existing version by specifying the source recall management service version ID.
 //
-// - You can configure detailed recall rules, such as the recall name, description, priority, and recall type.
+// - You can configure detailed recall rules, including but not limited to the recall name, description, priority, and recall type.
 //
-// - Configure operators such as filter, trigger, feature extraction, and join.
+// - The operation provides flexible operator configuration options, such as filtering, triggering, feature extraction, and join operations, to meet various business requirements.
 //
-// - The merge configuration specifies how to merge multiple recall results and supports two merge methods: weight-based and alternating.
+// - The merge configuration allows you to specify how to merge multiple recall results. Two merge methods are supported: weight and alternate.
 //
-// - All configuration items are optional.
+// - All configuration items are optional. Specify them as needed.
 //
 // @param request - CreateRecallManagementServiceVersionRequest
 //
@@ -3579,7 +3681,7 @@ func (client *Client) CreateSampleConsistencyJob(request *CreateSampleConsistenc
 
 // Summary:
 //
-// Creates a scene for metric and experiment analysis.
+// Creates a scenario for metric and experiment analysis.
 //
 // @param request - CreateSceneRequest
 //
@@ -3638,7 +3740,7 @@ func (client *Client) CreateSceneWithOptions(request *CreateSceneRequest, header
 
 // Summary:
 //
-// Creates a scene for metric and experiment analysis.
+// Creates a scenario for metric and experiment analysis.
 //
 // @param request - CreateSceneRequest
 //
@@ -4865,7 +4967,7 @@ func (client *Client) DeleteLaboratory(LaboratoryId *string, request *DeleteLabo
 
 // Summary:
 //
-// Delete the specified layer.
+// Deletes a specified layer.
 //
 // @param request - DeleteLayerRequest
 //
@@ -4912,7 +5014,7 @@ func (client *Client) DeleteLayerWithOptions(LayerId *string, request *DeleteLay
 
 // Summary:
 //
-// Delete the specified layer.
+// Deletes a specified layer.
 //
 // @param request - DeleteLayerRequest
 //
@@ -4997,13 +5099,13 @@ func (client *Client) DeleteParam(ParamId *string, request *DeleteParamRequest) 
 
 // Summary:
 //
-// Deletes a recall management service.
+// Deletes a specified recall management service.
 //
 // Description:
 //
 // ## Request description
 //
-// This operation deletes a recall management service based on the RecallManagementServiceId and InstanceId. Before you call this API, ensure you have the correct information for the service to be deleted.
+// This API operation deletes a specific recall management service based on the provided recall management service ID and instance ID. Make sure that you have obtained the information about the service to be deleted before you call this operation.
 //
 // @param request - DeleteRecallManagementServiceRequest
 //
@@ -5050,13 +5152,13 @@ func (client *Client) DeleteRecallManagementServiceWithOptions(RecallManagementS
 
 // Summary:
 //
-// Deletes a recall management service.
+// Deletes a specified recall management service.
 //
 // Description:
 //
 // ## Request description
 //
-// This operation deletes a recall management service based on the RecallManagementServiceId and InstanceId. Before you call this API, ensure you have the correct information for the service to be deleted.
+// This API operation deletes a specific recall management service based on the provided recall management service ID and instance ID. Make sure that you have obtained the information about the service to be deleted before you call this operation.
 //
 // @param request - DeleteRecallManagementServiceRequest
 //
@@ -5075,13 +5177,13 @@ func (client *Client) DeleteRecallManagementService(RecallManagementServiceId *s
 
 // Summary:
 //
-// Deletes a specified version of a recall management service.
+// Deletes a specified recall management service version.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This operation deletes a specific version of a recall management service. You must provide the recall management service ID, the recall management service version ID, and the instance ID. This operation is irreversible, so back up all critical data before proceeding.
+// This operation allows you to delete a specific version of a recall management service by providing the recall management service ID, recall management service version ID, and instance ID. Back up important data before calling this operation because the deletion is irreversible.
 //
 // @param request - DeleteRecallManagementServiceVersionRequest
 //
@@ -5128,13 +5230,13 @@ func (client *Client) DeleteRecallManagementServiceVersionWithOptions(RecallMana
 
 // Summary:
 //
-// Deletes a specified version of a recall management service.
+// Deletes a specified recall management service version.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This operation deletes a specific version of a recall management service. You must provide the recall management service ID, the recall management service version ID, and the instance ID. This operation is irreversible, so back up all critical data before proceeding.
+// This operation allows you to delete a specific version of a recall management service by providing the recall management service ID, recall management service version ID, and instance ID. Back up important data before calling this operation because the deletion is irreversible.
 //
 // @param request - DeleteRecallManagementServiceVersionRequest
 //
@@ -5239,17 +5341,17 @@ func (client *Client) DeleteRecallManagementServiceVersionConfig(RecallManagemen
 
 // Summary:
 //
-// This API deletes a recall management table using the specified recall management table ID and instance ID.
+// Deletes a recall management data table based on the specified data table ID and instance ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - The required **path parameter*	- `RecallManagementTableId` specifies the ID of the recall management table to delete.
+// - The **path parameter*	- `RecallManagementTableId` is required and specifies instance ID of the data table to delete.
 //
-// - The required **query parameter*	- `InstanceId` specifies the ID of the instance.
+// - The **query parameter*	- `InstanceId` is also required and specifies instance ID of the instance on which the operation is performed.
 //
-// - A successful operation returns a `RequestId` in the response body for request tracking.
+// - After a successful execution, a response body containing the request ID (`RequestId`) is returned, which can be used to track the request.
 //
 // @param request - DeleteRecallManagementTableRequest
 //
@@ -5296,17 +5398,17 @@ func (client *Client) DeleteRecallManagementTableWithOptions(RecallManagementTab
 
 // Summary:
 //
-// This API deletes a recall management table using the specified recall management table ID and instance ID.
+// Deletes a recall management data table based on the specified data table ID and instance ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - The required **path parameter*	- `RecallManagementTableId` specifies the ID of the recall management table to delete.
+// - The **path parameter*	- `RecallManagementTableId` is required and specifies instance ID of the data table to delete.
 //
-// - The required **query parameter*	- `InstanceId` specifies the ID of the instance.
+// - The **query parameter*	- `InstanceId` is also required and specifies instance ID of the instance on which the operation is performed.
 //
-// - A successful operation returns a `RequestId` in the response body for request tracking.
+// - After a successful execution, a response body containing the request ID (`RequestId`) is returned, which can be used to track the request.
 //
 // @param request - DeleteRecallManagementTableRequest
 //
@@ -5523,7 +5625,7 @@ func (client *Client) DeleteSampleConsistencyJob(SampleConsistencyJobId *string,
 
 // Summary:
 //
-// Delete the specified scenario.
+// Deletes a specified scenario.
 //
 // @param request - DeleteSceneRequest
 //
@@ -5570,7 +5672,7 @@ func (client *Client) DeleteSceneWithOptions(SceneId *string, request *DeleteSce
 
 // Summary:
 //
-// Delete the specified scenario.
+// Deletes a specified scenario.
 //
 // @param request - DeleteSceneRequest
 //
@@ -5589,7 +5691,7 @@ func (client *Client) DeleteScene(SceneId *string, request *DeleteSceneRequest) 
 
 // Summary:
 //
-// Deletes the specified subcrowd.
+// Deletes a specified sub-crowd.
 //
 // @param request - DeleteSubCrowdRequest
 //
@@ -5636,7 +5738,7 @@ func (client *Client) DeleteSubCrowdWithOptions(CrowdId *string, SubCrowdId *str
 
 // Summary:
 //
-// Deletes the specified subcrowd.
+// Deletes a specified sub-crowd.
 //
 // @param request - DeleteSubCrowdRequest
 //
@@ -5721,17 +5823,17 @@ func (client *Client) DeleteTableMeta(TableMetaId *string, request *DeleteTableM
 
 // Summary:
 //
-// Deletes the specified traffic control target.
+// Deletes a specified traffic control target by its ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - **TrafficControlTargetId*	- is a required path parameter that specifies the traffic control target to delete.
+// - **TrafficControlTargetId*	- is a required path parameter used as the identity of the specific traffic control target to delete.
 //
-// - **InstanceId*	- is a required query parameter that specifies the instance ID for this operation.
+// - **InstanceId*	- is a required query parameter that specifies the instance ID to execute the operation.
 //
-// - A successful response includes a `RequestId` field to track the request.
+// - A successful response returns a `RequestId` field for tracking the request.
 //
 // @param request - DeleteTrafficControlTargetRequest
 //
@@ -5778,17 +5880,17 @@ func (client *Client) DeleteTrafficControlTargetWithOptions(TrafficControlTarget
 
 // Summary:
 //
-// Deletes the specified traffic control target.
+// Deletes a specified traffic control target by its ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - **TrafficControlTargetId*	- is a required path parameter that specifies the traffic control target to delete.
+// - **TrafficControlTargetId*	- is a required path parameter used as the identity of the specific traffic control target to delete.
 //
-// - **InstanceId*	- is a required query parameter that specifies the instance ID for this operation.
+// - **InstanceId*	- is a required query parameter that specifies the instance ID to execute the operation.
 //
-// - A successful response includes a `RequestId` field to track the request.
+// - A successful response returns a `RequestId` field for tracking the request.
 //
 // @param request - DeleteTrafficControlTargetRequest
 //
@@ -5811,13 +5913,13 @@ func (client *Client) DeleteTrafficControlTarget(TrafficControlTargetId *string,
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API uses `TrafficControlTaskId` and `InstanceId` to delete a traffic control task.
+// - This API locates and deletes a specific traffic control task by providing the `TrafficControlTaskId` and `InstanceId`.
 //
-// - Ensure the `TrafficControlTaskId` and `InstanceId` are correct, or the operation may fail.
+// - Ensure that the provided `TrafficControlTaskId` and `InstanceId` are correct. Otherwise, the deletion may fail.
 //
-// - This operation is irreversible. Proceed with caution.
+// - Once the deletion is complete, the related data cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteTrafficControlTaskRequest
 //
@@ -5868,13 +5970,13 @@ func (client *Client) DeleteTrafficControlTaskWithOptions(TrafficControlTaskId *
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API uses `TrafficControlTaskId` and `InstanceId` to delete a traffic control task.
+// - This API locates and deletes a specific traffic control task by providing the `TrafficControlTaskId` and `InstanceId`.
 //
-// - Ensure the `TrafficControlTaskId` and `InstanceId` are correct, or the operation may fail.
+// - Ensure that the provided `TrafficControlTaskId` and `InstanceId` are correct. Otherwise, the deletion may fail.
 //
-// - This operation is irreversible. Proceed with caution.
+// - Once the deletion is complete, the related data cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteTrafficControlTaskRequest
 //
@@ -6183,17 +6285,17 @@ func (client *Client) GenerateAlgorithmCustomizationScript(AlgorithmCustomizatio
 
 // Summary:
 //
-// Generates Flink code for a specified traffic control task ID and instance information.
+// Generates the corresponding Flink code based on the specified traffic control task ID and instance information.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API generates Flink code for a specified traffic control task ID, instance ID, and environment type.
+// - This API operation generates the corresponding Flink code based on the specified traffic control task ID, instance ID, and environment type.
 //
-// - The `Environment` parameter accepts three values: `Daily` for the daily environment, `Pre` for the pre-release environment, and `Prod` for the production environment.
+// - The Environment parameter supports three values: Daily (daily environment), Pre (pre-release environment), and Prod (production environment). Make sure to select the correct value to meet your requirements.
 //
-// - Check the `PreNeedConfig` field in the response. A `true` value indicates that necessary configuration information might be missing in the pre-release environment. If this occurs, add or adjust the required settings.
+// - Check the PreNeedConfig field in the response. If the value is true, it indicates that required configuration information may be missing in the pre-release environment. Adjust or supplement the relevant settings as needed.
 //
 // @param request - GenerateTrafficControlTaskCodeRequest
 //
@@ -6244,17 +6346,17 @@ func (client *Client) GenerateTrafficControlTaskCodeWithOptions(TrafficControlTa
 
 // Summary:
 //
-// Generates Flink code for a specified traffic control task ID and instance information.
+// Generates the corresponding Flink code based on the specified traffic control task ID and instance information.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API generates Flink code for a specified traffic control task ID, instance ID, and environment type.
+// - This API operation generates the corresponding Flink code based on the specified traffic control task ID, instance ID, and environment type.
 //
-// - The `Environment` parameter accepts three values: `Daily` for the daily environment, `Pre` for the pre-release environment, and `Prod` for the production environment.
+// - The Environment parameter supports three values: Daily (daily environment), Pre (pre-release environment), and Prod (production environment). Make sure to select the correct value to meet your requirements.
 //
-// - Check the `PreNeedConfig` field in the response. A `true` value indicates that necessary configuration information might be missing in the pre-release environment. If this occurs, add or adjust the required settings.
+// - Check the PreNeedConfig field in the response. If the value is true, it indicates that required configuration information may be missing in the pre-release environment. Adjust or supplement the relevant settings as needed.
 //
 // @param request - GenerateTrafficControlTaskCodeRequest
 //
@@ -6405,7 +6507,7 @@ func (client *Client) GetABMetric(ABMetricId *string, request *GetABMetricReques
 
 // Summary:
 //
-// Retrieves the details of an A/B testing metric group.
+// Retrieves the details of an ABTest metric group.
 //
 // @param request - GetABMetricGroupRequest
 //
@@ -6452,7 +6554,7 @@ func (client *Client) GetABMetricGroupWithOptions(ABMetricGroupId *string, reque
 
 // Summary:
 //
-// Retrieves the details of an A/B testing metric group.
+// Retrieves the details of an ABTest metric group.
 //
 // @param request - GetABMetricGroupRequest
 //
@@ -6759,7 +6861,7 @@ func (client *Client) GetExperiment(ExperimentId *string, request *GetExperiment
 
 // Summary:
 //
-// Retrieves details for a specified experiment group.
+// Retrieves the details of a specified experiment group.
 //
 // @param request - GetExperimentGroupRequest
 //
@@ -6806,7 +6908,7 @@ func (client *Client) GetExperimentGroupWithOptions(ExperimentGroupId *string, r
 
 // Summary:
 //
-// Retrieves details for a specified experiment group.
+// Retrieves the details of a specified experiment group.
 //
 // @param request - GetExperimentGroupRequest
 //
@@ -7861,7 +7963,7 @@ func (client *Client) GetSampleConsistencyJob(SampleConsistencyJobId *string, re
 
 // Summary:
 //
-// Retrieves the details of a specified scene.
+// Retrieves the details of a specified scenario.
 //
 // @param request - GetSceneRequest
 //
@@ -7908,7 +8010,7 @@ func (client *Client) GetSceneWithOptions(SceneId *string, request *GetSceneRequ
 
 // Summary:
 //
-// Retrieves the details of a specified scene.
+// Retrieves the details of a specified scenario.
 //
 // @param request - GetSceneRequest
 //
@@ -9553,7 +9655,7 @@ func (client *Client) ListFeatureConsistencyCheckJobFeatureReports(FeatureConsis
 
 // Summary:
 //
-// Retrieves the score difference reports for a feature consistency check job.
+// Retrieves the score report for a feature consistency check task.
 //
 // @param tmpReq - ListFeatureConsistencyCheckJobScoreReportsRequest
 //
@@ -9610,7 +9712,7 @@ func (client *Client) ListFeatureConsistencyCheckJobScoreReportsWithOptions(Feat
 
 // Summary:
 //
-// Retrieves the score difference reports for a feature consistency check job.
+// Retrieves the score report for a feature consistency check task.
 //
 // @param request - ListFeatureConsistencyCheckJobScoreReportsRequest
 //
@@ -9715,13 +9817,13 @@ func (client *Client) ListFeatureConsistencyCheckJobs(request *ListFeatureConsis
 
 // Summary:
 //
-// Lists all schemas for a specified resource in an instance.
+// Queries all schemas for a specified instance and resource.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// To retrieve a list of all schemas for a specified resource, provide the instance ID (InstanceId) and resource ID (ResourceId). Use the optional SchemaName parameter to filter the schemas by a name prefix.
+// Provide the instance ID (InstanceId) and resource ID (ResourceId) to retrieve a list of all schemas for the instance resource. You can use the optional SchemaName parameter to filter results by name prefix and locate the required schemas more precisely.
 //
 // @param request - ListInstanceResourceSchemasRequest
 //
@@ -9768,13 +9870,13 @@ func (client *Client) ListInstanceResourceSchemasWithOptions(InstanceId *string,
 
 // Summary:
 //
-// Lists all schemas for a specified resource in an instance.
+// Queries all schemas for a specified instance and resource.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// To retrieve a list of all schemas for a specified resource, provide the instance ID (InstanceId) and resource ID (ResourceId). Use the optional SchemaName parameter to filter the schemas by a name prefix.
+// Provide the instance ID (InstanceId) and resource ID (ResourceId) to retrieve a list of all schemas for the instance resource. You can use the optional SchemaName parameter to filter results by name prefix and locate the required schemas more precisely.
 //
 // @param request - ListInstanceResourceSchemasRequest
 //
@@ -9871,7 +9973,7 @@ func (client *Client) ListInstanceResourceTables(InstanceId *string, ResourceId 
 
 // Summary:
 //
-// Lists the resources configured for an instance.
+// Retrieves the list of resources configured for an instance.
 //
 // @param request - ListInstanceResourcesRequest
 //
@@ -9926,7 +10028,7 @@ func (client *Client) ListInstanceResourcesWithOptions(InstanceId *string, reque
 
 // Summary:
 //
-// Lists the resources configured for an instance.
+// Retrieves the list of resources configured for an instance.
 //
 // @param request - ListInstanceResourcesRequest
 //
@@ -10179,7 +10281,7 @@ func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayer
 
 // Summary:
 //
-// Retrieves a list of parameters.
+// Retrieves the list of parameters.
 //
 // @param request - ListParamsRequest
 //
@@ -10250,7 +10352,7 @@ func (client *Client) ListParamsWithOptions(request *ListParamsRequest, headers 
 
 // Summary:
 //
-// Retrieves a list of parameters.
+// Retrieves the list of parameters.
 //
 // @param request - ListParamsRequest
 //
@@ -11031,7 +11133,7 @@ func (client *Client) ListSampleConsistencyJobs(request *ListSampleConsistencyJo
 
 // Summary:
 //
-// Retrieves a list of scenes.
+// Retrieves the list of scenes.
 //
 // @param request - ListScenesRequest
 //
@@ -11082,7 +11184,7 @@ func (client *Client) ListScenesWithOptions(request *ListScenesRequest, headers 
 
 // Summary:
 //
-// Retrieves a list of scenes.
+// Retrieves the list of scenes.
 //
 // @param request - ListScenesRequest
 //
@@ -11517,7 +11619,7 @@ func (client *Client) ListTrafficControlTasks(request *ListTrafficControlTasksRe
 
 // Summary:
 //
-// Takes an experiment offline.
+// Takes the specified experiment offline.
 //
 // @param request - OfflineExperimentRequest
 //
@@ -11564,7 +11666,7 @@ func (client *Client) OfflineExperimentWithOptions(ExperimentId *string, request
 
 // Summary:
 //
-// Takes an experiment offline.
+// Takes the specified experiment offline.
 //
 // @param request - OfflineExperimentRequest
 //
@@ -11583,7 +11685,7 @@ func (client *Client) OfflineExperiment(ExperimentId *string, request *OfflineEx
 
 // Summary:
 //
-// Takes a specified experiment group offline.
+// Takes the specified experiment group offline.
 //
 // @param request - OfflineExperimentGroupRequest
 //
@@ -11630,7 +11732,7 @@ func (client *Client) OfflineExperimentGroupWithOptions(ExperimentGroupId *strin
 
 // Summary:
 //
-// Takes a specified experiment group offline.
+// Takes the specified experiment group offline.
 //
 // @param request - OfflineExperimentGroupRequest
 //
@@ -11801,7 +11903,7 @@ func (client *Client) OfflineRecallManagementService(RecallManagementServiceId *
 
 // Summary:
 //
-// Brings a specified experiment online.
+// Publishes the specified experiment online.
 //
 // @param request - OnlineExperimentRequest
 //
@@ -11848,7 +11950,7 @@ func (client *Client) OnlineExperimentWithOptions(ExperimentId *string, request 
 
 // Summary:
 //
-// Brings a specified experiment online.
+// Publishes the specified experiment online.
 //
 // @param request - OnlineExperimentRequest
 //
@@ -12423,13 +12525,13 @@ func (client *Client) QueryDataDiagnosisStatistics(DataDiagnosisId *string, requ
 
 // Summary:
 //
-// Retrieves records from a specified recall management table.
+// Retrieves a list of records from a specified recall management table.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API retrieves records from a specific recall management table using the provided primary keys. You must provide a valid `InstanceId` and `RecallManagementTableId`, and a non-empty `PrimaryKeys` list. If you specify `RecallManagementTableVersionId`, the API returns records from that version; otherwise, it uses the currently published version.
+// This operation retrieves data records from a specific recall management table based on the specified primary keys. Ensure that the provided `InstanceId` and `RecallManagementTableId` are valid and that the `PrimaryKeys` list is not empty. If `RecallManagementTableVersionId` is specified, data of that version is returned. Otherwise, the current published version is used by default.
 //
 // @param request - QueryRecallManagementTableRecordsRequest
 //
@@ -12484,13 +12586,13 @@ func (client *Client) QueryRecallManagementTableRecordsWithOptions(RecallManagem
 
 // Summary:
 //
-// Retrieves records from a specified recall management table.
+// Retrieves a list of records from a specified recall management table.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API retrieves records from a specific recall management table using the provided primary keys. You must provide a valid `InstanceId` and `RecallManagementTableId`, and a non-empty `PrimaryKeys` list. If you specify `RecallManagementTableVersionId`, the API returns records from that version; otherwise, it uses the currently published version.
+// This operation retrieves data records from a specific recall management table based on the specified primary keys. Ensure that the provided `InstanceId` and `RecallManagementTableId` are valid and that the `PrimaryKeys` list is not empty. If `RecallManagementTableVersionId` is specified, data of that version is returned. Otherwise, the current published version is used by default.
 //
 // @param request - QueryRecallManagementTableRecordsRequest
 //
@@ -12673,9 +12775,9 @@ func (client *Client) QueryTrafficControlTargetItemReportDetail(TrafficControlTa
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// You can call this operation to query the deployment result of a traffic control task specified by TrafficControlTaskId for a given instance ID and environment. Make sure that the specified InstanceId is associated with your account and that the Environment parameter value is valid (Daily for daily environment, Pre for staging environment, Prod for production environment). All request parameters are required.
+// You can use this API to query the deployment results of a traffic control task with a specific TrafficControlTaskId for a given instance ID and environment. Make sure that the provided InstanceId is associated with your account and the Environment parameter value meets your expectations (Daily: daily environment, Pre: staging environment, Prod: production environment). All request parameters are required.
 //
 // @param request - QueryTrafficControlTaskDeployResultRequest
 //
@@ -12730,9 +12832,9 @@ func (client *Client) QueryTrafficControlTaskDeployResultWithOptions(TrafficCont
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// You can call this operation to query the deployment result of a traffic control task specified by TrafficControlTaskId for a given instance ID and environment. Make sure that the specified InstanceId is associated with your account and that the Environment parameter value is valid (Daily for daily environment, Pre for staging environment, Prod for production environment). All request parameters are required.
+// You can use this API to query the deployment results of a traffic control task with a specific TrafficControlTaskId for a given instance ID and environment. Make sure that the provided InstanceId is associated with your account and the Environment parameter value meets your expectations (Daily: daily environment, Pre: staging environment, Prod: production environment). All request parameters are required.
 //
 // @param request - QueryTrafficControlTaskDeployResultRequest
 //
@@ -12861,21 +12963,21 @@ func (client *Client) QueryTrafficControlTaskItemReport(TrafficControlTaskId *st
 
 // Summary:
 //
-// Releases a traffic control task for the specified instance and environment.
+// Publishes a traffic control task for a specified instance and environment.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Use this API to release a traffic control task for a specific instance and environment (Daily, Pre, or Prod). Your request must include the `TrafficControlTaskId`, `InstanceId`, and `Environment` parameters.
+// This API allows you to publish a traffic control task for a specific instance ID and environment (daily, staging, or production). Make sure to correctly specify the `TrafficControlTaskId`, `InstanceId`, and `Environment` parameters in the request.
 //
-// - `TrafficControlTaskId`: The unique ID of the traffic control task.
+// - `TrafficControlTaskId`: the unique identifier of the traffic control task to be published.
 //
-// - `InstanceId`: The ID of the target instance.
+// - `InstanceId`: the ID of the target instance to which the traffic control settings will be applied.
 //
-// - `Environment`: The execution environment for the traffic control task. Valid values: `Daily`, `Pre`, and `Prod`.
+// - `Environment`: the environment in which the traffic control task is executed. Valid values: Daily (daily environment), Pre (staging environment), and Prod (production environment). Select an environment based on your business requirements.
 //
-// The request succeeds only if all required parameters are provided correctly. A successful response includes a `RequestId`.
+// Note: The request is processed and a RequestId is returned in the response only when all required fields are correctly provided.
 //
 // @param request - ReleaseTrafficControlTaskRequest
 //
@@ -12926,21 +13028,21 @@ func (client *Client) ReleaseTrafficControlTaskWithOptions(TrafficControlTaskId 
 
 // Summary:
 //
-// Releases a traffic control task for the specified instance and environment.
+// Publishes a traffic control task for a specified instance and environment.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Use this API to release a traffic control task for a specific instance and environment (Daily, Pre, or Prod). Your request must include the `TrafficControlTaskId`, `InstanceId`, and `Environment` parameters.
+// This API allows you to publish a traffic control task for a specific instance ID and environment (daily, staging, or production). Make sure to correctly specify the `TrafficControlTaskId`, `InstanceId`, and `Environment` parameters in the request.
 //
-// - `TrafficControlTaskId`: The unique ID of the traffic control task.
+// - `TrafficControlTaskId`: the unique identifier of the traffic control task to be published.
 //
-// - `InstanceId`: The ID of the target instance.
+// - `InstanceId`: the ID of the target instance to which the traffic control settings will be applied.
 //
-// - `Environment`: The execution environment for the traffic control task. Valid values: `Daily`, `Pre`, and `Prod`.
+// - `Environment`: the environment in which the traffic control task is executed. Valid values: Daily (daily environment), Pre (staging environment), and Prod (production environment). Select an environment based on your business requirements.
 //
-// The request succeeds only if all required parameters are provided correctly. A successful response includes a `RequestId`.
+// Note: The request is processed and a RequestId is returned in the response only when all required fields are correctly provided.
 //
 // @param request - ReleaseTrafficControlTaskRequest
 //
@@ -13460,19 +13562,19 @@ func (client *Client) StartTrafficControlTarget(TrafficControlTargetId *string, 
 
 // Summary:
 //
-// Starts a traffic control task with a specified ID for instances in different environments.
+// Starts the traffic shaping task with the specified ID for instances in different environments.
 //
 // Description:
 //
-// ## Request details
+// ## Request description
 //
-// - This operation starts the traffic control task identified by `TrafficControlTaskId`.
+// - This API operation starts the traffic shaping task identified by the specified `TrafficControlTaskId`.
 //
 // - `InstanceId` specifies the target instance.
 //
-// - `Environment` specifies the target environment. Valid values: Daily, Pre, and Prod.
+// - The `Environment` parameter defines the target environment for this operation (daily, staging, or production).
 //
-// - Ensure that all required parameters are set correctly before you call this operation. The specified `TrafficControlTaskId` must exist in the system.
+// - Ensure that all required parameters are correctly configured before you call this operation. Specifically, the `TrafficControlTaskId` must exist in the system.
 //
 // @param request - StartTrafficControlTaskRequest
 //
@@ -13523,19 +13625,19 @@ func (client *Client) StartTrafficControlTaskWithOptions(TrafficControlTaskId *s
 
 // Summary:
 //
-// Starts a traffic control task with a specified ID for instances in different environments.
+// Starts the traffic shaping task with the specified ID for instances in different environments.
 //
 // Description:
 //
-// ## Request details
+// ## Request description
 //
-// - This operation starts the traffic control task identified by `TrafficControlTaskId`.
+// - This API operation starts the traffic shaping task identified by the specified `TrafficControlTaskId`.
 //
 // - `InstanceId` specifies the target instance.
 //
-// - `Environment` specifies the target environment. Valid values: Daily, Pre, and Prod.
+// - The `Environment` parameter defines the target environment for this operation (daily, staging, or production).
 //
-// - Ensure that all required parameters are set correctly before you call this operation. The specified `TrafficControlTaskId` must exist in the system.
+// - Ensure that all required parameters are correctly configured before you call this operation. Specifically, the `TrafficControlTaskId` must exist in the system.
 //
 // @param request - StartTrafficControlTaskRequest
 //
@@ -14044,21 +14146,21 @@ func (client *Client) TerminateFeatureConsistencyCheckJob(FeatureConsistencyChec
 
 // Summary:
 //
-// Modifies the metric configuration of an existing ABTest experiment.
+// Updates the metric configuration of an existing AB test.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation allows you to update the attributes of a specified ABTest metric, including whether to calculate significance and the aggregation method. Make sure that you have obtained the correct `ABMetricId` before calling this operation.
+// This API operation allows you to update the properties of a specified AB test metric, including whether to calculate significance and the aggregation method. Make sure that you have obtained the correct `ABMetricId` before calling this operation.
 //
 // - `NeedSignificance`: Specifies whether to perform significance analysis on the current metric. Default value: `false`.
 //
-// - `AggregationByUser`: When significance calculation is enabled, specifies whether to aggregate data by user or by sample. Default value: `false` (by sample).
+// - `AggregationByUser`: When significance calculation is selected, specifies whether to aggregate data by user or by sample. Default value: `false` (by sample).
 //
-// - `Numerator` and `Denominator`: The specific definitions of the numerator and denominator used in significance calculation.
+// - `Numerator` and `Denominator`: Represent the specific definitions of the numerator and denominator when performing significance calculation.
 //
-// - `IsBinomialDistribution`: Valid only for derived metrics. Specifies whether the metric follows a binomial distribution, which affects subsequent data processing logic.
+// - `IsBinomialDistribution`: Valid only for derived metrics. Indicates whether the metric follows a binomial distribution, which affects subsequent data processing logic.
 //
 // Note: You do not need to provide all fields at the same time. Include only the parameters whose values you want to change in the request body.
 //
@@ -14175,21 +14277,21 @@ func (client *Client) UpdateABMetricWithOptions(ABMetricId *string, request *Upd
 
 // Summary:
 //
-// Modifies the metric configuration of an existing ABTest experiment.
+// Updates the metric configuration of an existing AB test.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation allows you to update the attributes of a specified ABTest metric, including whether to calculate significance and the aggregation method. Make sure that you have obtained the correct `ABMetricId` before calling this operation.
+// This API operation allows you to update the properties of a specified AB test metric, including whether to calculate significance and the aggregation method. Make sure that you have obtained the correct `ABMetricId` before calling this operation.
 //
 // - `NeedSignificance`: Specifies whether to perform significance analysis on the current metric. Default value: `false`.
 //
-// - `AggregationByUser`: When significance calculation is enabled, specifies whether to aggregate data by user or by sample. Default value: `false` (by sample).
+// - `AggregationByUser`: When significance calculation is selected, specifies whether to aggregate data by user or by sample. Default value: `false` (by sample).
 //
-// - `Numerator` and `Denominator`: The specific definitions of the numerator and denominator used in significance calculation.
+// - `Numerator` and `Denominator`: Represent the specific definitions of the numerator and denominator when performing significance calculation.
 //
-// - `IsBinomialDistribution`: Valid only for derived metrics. Specifies whether the metric follows a binomial distribution, which affects subsequent data processing logic.
+// - `IsBinomialDistribution`: Valid only for derived metrics. Indicates whether the metric follows a binomial distribution, which affects subsequent data processing logic.
 //
 // Note: You do not need to provide all fields at the same time. Include only the parameters whose values you want to change in the request body.
 //
@@ -14700,7 +14802,7 @@ func (client *Client) UpdateExperiment(ExperimentId *string, request *UpdateExpe
 
 // Summary:
 //
-// Updates information for a specified experiment group, such as its name and description.
+// Updates the information of a specified experiment group, such as the name and description.
 //
 // @param request - UpdateExperimentGroupRequest
 //
@@ -14803,7 +14905,7 @@ func (client *Client) UpdateExperimentGroupWithOptions(ExperimentGroupId *string
 
 // Summary:
 //
-// Updates information for a specified experiment group, such as its name and description.
+// Updates the information of a specified experiment group, such as the name and description.
 //
 // @param request - UpdateExperimentGroupRequest
 //
@@ -16016,7 +16118,7 @@ func (client *Client) UpdateResourceRuleItem(ResourceRuleId *string, ResourceRul
 
 // Summary:
 //
-// Updates information for a scene, such as its name and description.
+// Updates scene information, such as the name and description of a scene.
 //
 // @param request - UpdateSceneRequest
 //
@@ -16075,7 +16177,7 @@ func (client *Client) UpdateSceneWithOptions(SceneId *string, request *UpdateSce
 
 // Summary:
 //
-// Updates information for a scene, such as its name and description.
+// Updates scene information, such as the name and description of a scene.
 //
 // @param request - UpdateSceneRequest
 //

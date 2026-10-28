@@ -14,7 +14,7 @@ type iOfflineExperimentResponseBody interface {
 }
 
 type OfflineExperimentResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

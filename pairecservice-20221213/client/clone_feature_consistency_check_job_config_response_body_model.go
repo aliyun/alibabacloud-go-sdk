@@ -16,7 +16,7 @@ type iCloneFeatureConsistencyCheckJobConfigResponseBody interface {
 }
 
 type CloneFeatureConsistencyCheckJobConfigResponseBody struct {
-	// The ID of the new feature consistency check job configuration.
+	// The new feature consistency check configuration ID after cloning.
 	//
 	// example:
 	//

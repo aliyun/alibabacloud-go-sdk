@@ -64,15 +64,15 @@ type GetExperimentGroupResponseBody struct {
 	//
 	// 3
 	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
-	// The method for targeting traffic to the experiment group. Valid values:
+	// The type of traffic targeting for the experiment group. Valid values:
 	//
-	// - `All`: all traffic
+	// - All: All traffic.
 	//
-	// - `Filter`: traffic that matches the filter
+	// - Filter: Traffic that uses filter conditions.
 	//
-	// - `CrowdId`: traffic from the specified crowd
+	// - CrowdId: Traffic targeted by a specified crowd ID.
 	//
-	// - `Random`: a random percentage of traffic
+	// - Random: Random traffic based on a percentage.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetExperimentGroupResponseBody struct {
 	//
 	// 4
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	// The user IDs for debugging, separated by commas.
+	// The debug users. Separate multiple users with commas.
 	//
 	// example:
 	//
@@ -96,29 +96,29 @@ type GetExperimentGroupResponseBody struct {
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The distribution duration.
+	// The time period for traffic distribution.
 	//
 	// example:
 	//
 	// 5
 	DistributionTimeDuration *int32 `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
-	// The traffic distribution method.
+	// The traffic distribution method. Valid values:
 	//
-	// ● `UserId`: Distributes traffic by user ID.
+	// - UserId: User ID.
 	//
-	// ● `TimeDuration`: Distributes traffic by time period.
+	// - TimeDuration: Time period.
 	//
 	// example:
 	//
 	// UserId
 	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
-	// The filter.
+	// The filter conditions.
 	//
 	// example:
 	//
 	// gender=female
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The bucket IDs that correspond to the `RandomFlow` percentage. This parameter is returned only when `CrowdTargetType` is set to `Random`.
+	// The specific bucket numbers returned based on the RandomFlow value when the traffic targeting type is Random.
 	//
 	// example:
 	//
@@ -142,31 +142,31 @@ type GetExperimentGroupResponseBody struct {
 	//
 	// experiment_group1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether an A/B test is required.
+	// Indicates whether an AB experiment group is required.
 	//
 	// example:
 	//
 	// true
 	NeedAA *bool `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
-	// The owner of the experiment group.
+	// The creator.
 	//
 	// example:
 	//
 	// 1124512470******
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The percentage of traffic from 0 to 100 that is randomly allocated to this experiment group. This parameter is returned only when `CrowdTargetType` is set to `Random`.
+	// The percentage of random traffic used to match the experiment group when the traffic targeting type is Random. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 20
 	RandomFlow *int64 `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// BDB621CB-A81E-5D39-8793-39A365CBCC74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The reserved bucket IDs.
+	// The reserved bucket numbers.
 	//
 	// example:
 	//
@@ -180,11 +180,11 @@ type GetExperimentGroupResponseBody struct {
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	// The status of the experiment group. Valid values:
 	//
-	// ● `Offline`: The experiment group is not launched.
+	// - Offline: Not online.
 	//
-	// ● `Online`: The experiment group is launched.
+	// - Online: Online.
 	//
-	// ● `Pushed`: The experiment group is fully launched.
+	// - Pushed: Fully rolled out.
 	//
 	// example:
 	//

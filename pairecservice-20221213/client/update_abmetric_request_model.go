@@ -48,13 +48,13 @@ type iUpdateABMetricRequest interface {
 }
 
 type UpdateABMetricRequest struct {
-	// Specifies whether to aggregate by user dimension when calculating significance. Two aggregation methods are supported: by user and by sample.
+	// Specifies whether to aggregate data by user dimension when calculating significance. There are two logic types: by user and by sample.
 	//
 	// example:
 	//
 	// True
 	AggregationByUser *bool `json:"AggregationByUser,omitempty" xml:"AggregationByUser,omitempty"`
-	// The metric definition.
+	// The definition of the metric.
 	//
 	// This parameter is required.
 	//
@@ -62,21 +62,21 @@ type UpdateABMetricRequest struct {
 	//
 	// sum(click_cnt)
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The denominator used in significance calculation.
+	// The denominator for significance calculation.
 	//
 	// example:
 	//
 	// pv
 	Denominator *string `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
-	// The metric description.
+	// The description of the metric.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pv 指标
+	// PV metric
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance ID. You can obtain it by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	// Instance ID of the instance. You can obtain instance ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -84,19 +84,19 @@ type UpdateABMetricRequest struct {
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the current metric follows a binomial distribution when the metric type is a derived metric. If set to true, the mean and variance of the metric are calculated based on the binomial distribution.
+	// Specifies whether the current metric follows a binomial distribution when the metric type is a derived metric. If yes, the mean and variance of the metric are calculated based on the binomial distribution.
 	//
 	// example:
 	//
 	// False
 	IsBinomialDistribution *bool `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
-	// The left metric ID of the derived metric.
+	// The ID of the left metric for the derived metric.
 	//
 	// example:
 	//
 	// 2
 	LeftMetricId *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
-	// The metric name.
+	// The name of the metric.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type UpdateABMetricRequest struct {
 	//
 	// True
 	NeedSignificance *bool `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
-	// The numerator used in significance calculation.
+	// The numerator for significance calculation.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type UpdateABMetricRequest struct {
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// Specifies whether the metric is a real-time metric. Valid values:
 	//
-	// - true
+	// - true: yes
 	//
-	// - false
+	// - false: no
 	//
 	// This parameter is required.
 	//
@@ -142,19 +142,19 @@ type UpdateABMetricRequest struct {
 	//
 	// false
 	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	// The ID of the data source for the write-back data table. You can obtain it by calling the ListInstanceResources operation.
+	// The ID of the data source for the data table write-back. You can obtain the ID by calling the ListInstanceResources operation.
 	//
 	// example:
 	//
 	// 3
 	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
-	// The right metric ID of the derived metric.
+	// The ID of the right metric for the derived metric.
 	//
 	// example:
 	//
 	// 3
 	RightMetricId *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
-	// The scene ID. You can obtain it by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
+	// The ID of the scene. You can obtain the ID by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -168,7 +168,7 @@ type UpdateABMetricRequest struct {
 	//
 	// 1
 	StatisticsCycle *int32 `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
-	// The data table ID. You can obtain it by calling the ListTableMetas operation.
+	// The ID of the data table. You can obtain the ID by calling the ListTableMetas operation.
 	//
 	// This parameter is required.
 	//
@@ -176,11 +176,11 @@ type UpdateABMetricRequest struct {
 	//
 	// 2
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
-	// The metric type. Valid values:
+	// The type of the metric. Valid values:
 	//
-	// - Single: single metric.
+	// - Single: single metric
 	//
-	// - Derived: derived metric.
+	// - Derived: derived metric
 	//
 	// This parameter is required.
 	//

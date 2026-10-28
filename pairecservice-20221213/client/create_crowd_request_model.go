@@ -32,7 +32,7 @@ type CreateCrowdRequest struct {
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance ID. To get this ID, call the ListInstances operation.
+	// The ID of the instance. You can call the ListInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,27 +40,31 @@ type CreateCrowdRequest struct {
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The crowd label.
+	// The label of the crowd.
 	//
 	// example:
 	//
 	// os=android
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The crowd name.
+	// The name of the crowd.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xx人群
+	// SampleCrowd
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The source of the user data. Valid values: ● ManualInput: Users are provided in the Users parameter. ● UploadFile: Users are provided from an uploaded file.
+	// The source of the crowd. Valid values:
+	//
+	// - ManualInput: Manual input.
+	//
+	// - UploadFile: File upload.
 	//
 	// example:
 	//
 	// ManualInput
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The users to include in the crowd. Separate multiple users with commas (,).
+	// The users included in the crowd. Separate multiple users with commas.
 	//
 	// example:
 	//

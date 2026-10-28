@@ -87,7 +87,7 @@ type ListParamsResponseBodyParams struct {
 	//
 	// - Daily: daily environment
 	//
-	// - Prepub: pre-release environment
+	// - Prepub: staging environment
 	//
 	// - Product: production environment
 	//
@@ -95,13 +95,13 @@ type ListParamsResponseBodyParams struct {
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The update time. The time is formatted in ISO 8601 and includes the time zone offset.
+	// The update time. The time follows the ISO 8601 standard and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type ListParamsResponseBodyParams struct {
 	//
 	// 4
 	ParamId *string `json:"ParamId,omitempty" xml:"ParamId,omitempty"`
-	// The parameter value.
+	// The value of the parameter.
 	//
 	// example:
 	//

@@ -48,23 +48,29 @@ type GetLaboratoryResponseBody struct {
 	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
 	// The bucketing method. Valid values:
 	//
+	// - Uid: UID bucketing (default).
+	//
+	// - UidHash: UID hashing.
+	//
+	// - Filter: Filter condition bucketing.
+	//
 	// example:
 	//
 	// Filter
 	BucketType *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
-	// The assigned buckets.
+	// The assigned bucket numbers.
 	//
 	// example:
 	//
 	// 1,2,3,10-20
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	// The crowd ID.
+	// The ID of the crowd.
 	//
 	// example:
 	//
 	// 3
 	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
-	// The debug crowd ID.
+	// The ID of the debug crowd.
 	//
 	// example:
 	//
@@ -76,31 +82,37 @@ type GetLaboratoryResponseBody struct {
 	//
 	// user1,user2,user3
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	// The laboratory description.
+	// The description of the laboratory.
 	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment. Valid values:
+	// The runtime environment. Valid values:
+	//
+	// - Daily: Daily environment.
+	//
+	// - Pre: Staging environment.
+	//
+	// - Prod: Production environment.
 	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The filter.
+	// The filter condition.
 	//
 	// example:
 	//
 	// filter=xxx
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The laboratory name.
+	// The name of the laboratory.
 	//
 	// example:
 	//
 	// laboratory1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -112,13 +124,21 @@ type GetLaboratoryResponseBody struct {
 	//
 	// 3
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The status of the laboratory. Valid values:
+	// The status. Valid values:
+	//
+	// - Offline: Not online.
+	//
+	// - Online: Online.
 	//
 	// example:
 	//
 	// Offline
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The laboratory type. Valid values:
+	// The type of the laboratory. Valid values:
+	//
+	// - Base
+	//
+	// - NonBase
 	//
 	// example:
 	//

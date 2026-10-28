@@ -22,7 +22,7 @@ type CreateExperimentGroupResponseBody struct {
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

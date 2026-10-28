@@ -14,7 +14,7 @@ type iDeleteSubCrowdRequest interface {
 }
 
 type DeleteSubCrowdRequest struct {
-	// The instance ID. You can obtain this ID by calling the `ListInstances` operation.
+	// The instance ID. You can obtain the ID by calling the ListInstances operation.
 	//
 	// This parameter is required.
 	//

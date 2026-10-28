@@ -14,7 +14,7 @@ type iDeleteRecallManagementServiceVersionResponseBody interface {
 }
 
 type DeleteRecallManagementServiceVersionResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

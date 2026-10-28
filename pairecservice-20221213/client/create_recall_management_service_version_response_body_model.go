@@ -22,7 +22,7 @@ type CreateRecallManagementServiceVersionResponseBody struct {
 	//
 	// 1
 	RecallManagementServiceVersionId *string `json:"RecallManagementServiceVersionId,omitempty" xml:"RecallManagementServiceVersionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

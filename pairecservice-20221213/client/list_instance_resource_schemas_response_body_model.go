@@ -26,7 +26,7 @@ type ListInstanceResourceSchemasResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of schemas.
 	Schemas []*ListInstanceResourceSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
-	// The total count of schemas.
+	// The total number of schemas.
 	//
 	// example:
 	//

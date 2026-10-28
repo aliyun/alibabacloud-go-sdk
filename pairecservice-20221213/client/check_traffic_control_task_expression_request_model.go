@@ -18,7 +18,7 @@ type iCheckTrafficControlTaskExpressionRequest interface {
 }
 
 type CheckTrafficControlTaskExpressionRequest struct {
-	// The expression to validate.
+	// The expression.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CheckTrafficControlTaskExpressionRequest struct {
 	//
 	// event=exposure
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CheckTrafficControlTaskExpressionRequest struct {
 	//
 	// pairec_123****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the table.
+	// The data table ID.
 	//
 	// This parameter is required.
 	//

@@ -28,25 +28,25 @@ type iGetABMetricGroupResponseBody interface {
 }
 
 type GetABMetricGroupResponseBody struct {
-	// A comma-separated list of A/B testing metric IDs.
+	// The IDs of the ABTest metrics, separated by commas.
 	//
 	// example:
 	//
 	// 1,2
 	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
-	// A comma-separated list of A/B testing metric names.
+	// The names of the ABTest metrics, separated by commas.
 	//
 	// example:
 	//
 	// pv,uv
 	ABMetricNames *string `json:"ABMetricNames,omitempty" xml:"ABMetricNames,omitempty"`
-	// The metric group description.
+	// The description of the metric group.
 	//
 	// example:
 	//
-	// 访问量相关指标
+	// Traffic-related metrics
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metric group name.
+	// The name of the metric group.
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type GetABMetricGroupResponseBody struct {
 	//
 	// 2799614***
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// Whether the metric group is a real-time metric group.
+	// Indicates whether the metric group is real-time.
 	//
 	// example:
 	//
 	// false
 	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 01D22D08-BA20-5F35-8302-99115F288220
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scene ID. You can get this ID by calling the [ListScenes](https://icms.alibaba-inc.com/content/learn/pai?l=1\\&m=16768\\&n=4298955) operation.
+	// The ID of the scene. You can obtain the ID by calling the [ListScenes](https://icms.alibaba-inc.com/content/learn/pai?l=1&m=16768&n=4298955) operation.
 	//
 	// example:
 	//

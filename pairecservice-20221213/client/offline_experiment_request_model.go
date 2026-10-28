@@ -14,7 +14,7 @@ type iOfflineExperimentRequest interface {
 }
 
 type OfflineExperimentRequest struct {
-	// The ID of the instance. You can get this ID by calling the ListInstances API.
+	// The ID of the instance. You can call the ListInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//

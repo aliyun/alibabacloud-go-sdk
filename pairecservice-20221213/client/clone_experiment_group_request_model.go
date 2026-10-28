@@ -18,7 +18,13 @@ type iCloneExperimentGroupRequest interface {
 }
 
 type CloneExperimentGroupRequest struct {
-	// The target environment for the experiment group. ● Daily: Daily environment ● Pre: pre-release environment ● Prod: production environment
+	// The target environment. Valid values:
+	//
+	// - Daily: daily environment.
+	//
+	// - Pre: staging environment.
+	//
+	// - Prod: production environment.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +32,7 @@ type CloneExperimentGroupRequest struct {
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The instance ID. You can get this ID by calling the ListInstances operation.
+	// Instance ID of the instance. You can call the ListInstances operation to obtain instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +40,7 @@ type CloneExperimentGroupRequest struct {
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The layer ID. You can get this ID by calling the ListLayers operation.
+	// The ID of the layer. You can call the ListLayers operation to obtain the ID.
 	//
 	// This parameter is required.
 	//

@@ -26,12 +26,17 @@ type iListParamsRequest interface {
 }
 
 type ListParamsRequest struct {
+	// Specifies whether the parameter is encrypted.
+	//
+	// example:
+	//
+	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	// The environment to which the parameter belongs. Valid values:
 	//
 	// - Daily: daily environment
 	//
-	// - Pre: pre-release environment
+	// - Pre: staging environment
 	//
 	// - Prod: production environment
 	//
@@ -39,7 +44,7 @@ type ListParamsRequest struct {
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The instance ID. You can call the ListInstances operation to obtain the instance ID.
+	// The instance ID. You can obtain this ID by calling the ListInstances operation.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +52,7 @@ type ListParamsRequest struct {
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// example:
 	//
@@ -59,13 +64,13 @@ type ListParamsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The scene ID. You can call the ListScenes operation to obtain the scene ID.
+	// The scene ID. You can obtain this ID by calling the ListScenes operation.
 	//
 	// This parameter is required.
 	//

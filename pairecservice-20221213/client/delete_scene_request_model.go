@@ -14,7 +14,7 @@ type iDeleteSceneRequest interface {
 }
 
 type DeleteSceneRequest struct {
-	// Instance ID, which can be obtained by calling the ListInstances API.
+	// Instance ID of the instance. You can call the ListInstances operation to obtain instance ID.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteTrafficControlTaskRequest interface {
 }
 
 type DeleteTrafficControlTaskRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

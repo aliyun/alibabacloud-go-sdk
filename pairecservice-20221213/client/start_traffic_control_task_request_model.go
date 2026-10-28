@@ -16,7 +16,13 @@ type iStartTrafficControlTaskRequest interface {
 }
 
 type StartTrafficControlTaskRequest struct {
-	// The target environment. Valid values:
+	// The environment. Valid values:
+	//
+	// - Daily: the daily environment.
+	//
+	// - Pre: the staging environment.
+	//
+	// - Prod: the production environment.
 	//
 	// example:
 	//

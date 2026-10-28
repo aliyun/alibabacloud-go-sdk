@@ -22,7 +22,7 @@ type CreateExperimentResponseBody struct {
 	//
 	// 3
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	// The unique identifier for the request.
+	// Id of the request
 	//
 	// example:
 	//

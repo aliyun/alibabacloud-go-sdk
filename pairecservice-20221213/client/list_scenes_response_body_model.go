@@ -18,7 +18,7 @@ type iListScenesResponseBody interface {
 }
 
 type ListScenesResponseBody struct {
-	// The unique identifier for the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type ListScenesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of scenes.
 	Scenes []*ListScenesResponseBodyScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
-	// The total number of scenes.
+	// The total number of elements in the list.
 	//
 	// example:
 	//
@@ -83,21 +83,21 @@ func (s *ListScenesResponseBody) Validate() error {
 }
 
 type ListScenesResponseBodyScenes struct {
-	// The description of the scene.
+	// The scene description.
 	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of flows associated with the scene.
+	// The list of flows.
 	Flows []*ListScenesResponseBodyScenesFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
-	// The name of the scene.
+	// The scene name.
 	//
 	// example:
 	//
 	// scene1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unique ID of the scene.
+	// The scene ID.
 	//
 	// example:
 	//
@@ -163,17 +163,17 @@ func (s *ListScenesResponseBodyScenes) Validate() error {
 }
 
 type ListScenesResponseBodyScenesFlows struct {
-	// The code of the flow.
+	// The flow code.
 	//
 	// example:
 	//
 	// liuliang1
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// The name of the flow.
+	// The flow name.
 	//
 	// example:
 	//
-	// 流量1
+	// Flow 1
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 

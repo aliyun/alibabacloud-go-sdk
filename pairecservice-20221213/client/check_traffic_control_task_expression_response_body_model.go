@@ -24,7 +24,7 @@ type CheckTrafficControlTaskExpressionResponseBody struct {
 	//
 	// true
 	IsValie *bool `json:"IsValie,omitempty" xml:"IsValie,omitempty"`
-	// If `IsValid` is `false`, this field provides the reason for the failure.
+	// This field is meaningful only when `IsValid` is `false`.
 	//
 	// example:
 	//

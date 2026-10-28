@@ -22,7 +22,7 @@ type ChangeRecallManagementServiceVersionRequest struct {
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The recall management service version ID.
+	// The version ID of the recall management service.
 	//
 	// example:
 	//

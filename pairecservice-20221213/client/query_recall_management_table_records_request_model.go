@@ -24,13 +24,13 @@ type QueryRecallManagementTableRecordsRequest struct {
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The primary keys of the records to retrieve.
+	// The primary keys for the query.
 	//
 	// example:
 	//
 	// ["1001","1002"]
 	PrimaryKeys []byte `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty"`
-	// The recall management table version ID. If you omit this parameter, the API uses the currently published version.
+	// The version ID of the recall management table. Default value: the current published version.
 	//
 	// example:
 	//

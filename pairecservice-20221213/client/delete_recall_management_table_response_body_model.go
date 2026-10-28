@@ -14,7 +14,7 @@ type iDeleteRecallManagementTableResponseBody interface {
 }
 
 type DeleteRecallManagementTableResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

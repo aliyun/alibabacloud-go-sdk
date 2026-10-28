@@ -18,7 +18,7 @@ type iListInstanceResourcesRequest interface {
 }
 
 type ListInstanceResourcesRequest struct {
-	// The category of the resource. Valid values:
+	// The resource category. Valid values:
 	//
 	// - DataManagement
 	//
@@ -30,9 +30,9 @@ type ListInstanceResourcesRequest struct {
 	//
 	// DataManagement
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The group of the resource.
+	// The resource group.
 	//
-	// If `Category` is `DataManagement`, valid values are:
+	// If the resource category is DataManagement, valid values are:
 	//
 	// - storage
 	//
@@ -42,7 +42,7 @@ type ListInstanceResourcesRequest struct {
 	//
 	// - modeltrain
 	//
-	// If `Category` is `Engine`, valid values are:
+	// If the resource category is Engine, valid values are:
 	//
 	// - feature
 	//
@@ -52,7 +52,7 @@ type ListInstanceResourcesRequest struct {
 	//
 	// - recengine
 	//
-	// If `Category` is `Monitor`, valid values are:
+	// If the resource category is Monitor, valid values are:
 	//
 	// - logs
 	//
@@ -66,7 +66,7 @@ type ListInstanceResourcesRequest struct {
 	//
 	// storage
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The type of the resource. If specified, only resources of this type are returned.
+	// The resource type filter. Valid values:
 	//
 	// - Hologres
 	//
@@ -82,9 +82,9 @@ type ListInstanceResourcesRequest struct {
 	//
 	// - DataHub
 	//
-	// - ApsaraMQ for Kafka
+	// - Kafka
 	//
-	// - Realtime Compute for Apache Flink
+	// - Flinkvvp
 	//
 	// - ACR
 	//
@@ -96,9 +96,9 @@ type ListInstanceResourcesRequest struct {
 	//
 	// - MaxCompute
 	//
-	// - Graph Compute Service
+	// - GraphCompute
 	//
-	// - ApsaraDB for Redis
+	// - Redis
 	//
 	// example:
 	//
