@@ -244,6 +244,7 @@ type GetContextStoreResponseBodyConfig struct {
 	Source *GetContextStoreResponseBodyConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 	// The running status of the data source, applicable to the memory type and experience Dataset follow mode. The experience library submits a checkpoint only after it is published and automatically applied successfully. Pausing and restarting retain the checkpoint.
 	SourceStatus *GetContextStoreResponseBodyConfigSourceStatus `json:"sourceStatus,omitempty" xml:"sourceStatus,omitempty" type:"Struct"`
+	StorageModes []*string                                      `json:"storageModes,omitempty" xml:"storageModes,omitempty" type:"Repeated"`
 	// The storage policy for the memory type.
 	StoragePolicy *GetContextStoreResponseBodyConfigStoragePolicy `json:"storagePolicy,omitempty" xml:"storagePolicy,omitempty" type:"Struct"`
 	// The currently effective strategy version number for the memory type.
@@ -312,6 +313,10 @@ func (s *GetContextStoreResponseBodyConfig) GetSource() *GetContextStoreResponse
 
 func (s *GetContextStoreResponseBodyConfig) GetSourceStatus() *GetContextStoreResponseBodyConfigSourceStatus {
 	return s.SourceStatus
+}
+
+func (s *GetContextStoreResponseBodyConfig) GetStorageModes() []*string {
+	return s.StorageModes
 }
 
 func (s *GetContextStoreResponseBodyConfig) GetStoragePolicy() *GetContextStoreResponseBodyConfigStoragePolicy {
@@ -384,6 +389,11 @@ func (s *GetContextStoreResponseBodyConfig) SetSource(v *GetContextStoreResponse
 
 func (s *GetContextStoreResponseBodyConfig) SetSourceStatus(v *GetContextStoreResponseBodyConfigSourceStatus) *GetContextStoreResponseBodyConfig {
 	s.SourceStatus = v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfig) SetStorageModes(v []*string) *GetContextStoreResponseBodyConfig {
+	s.StorageModes = v
 	return s
 }
 
@@ -553,7 +563,8 @@ type GetContextStoreResponseBodyConfigExtractionPolicies struct {
 	// example:
 	//
 	// fact
-	Preset *string `json:"preset,omitempty" xml:"preset,omitempty"`
+	Preset        *string                                                           `json:"preset,omitempty" xml:"preset,omitempty"`
+	StoragePolicy *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy `json:"storagePolicy,omitempty" xml:"storagePolicy,omitempty" type:"Struct"`
 	// The stable ID of the extraction policy. The ID must start with a letter and can contain only letters, digits, underscores, and hyphens. It can be up to 64 characters in length. The ID must be unique within the same context library. Modifying the name or instructions does not change this ID.
 	//
 	// This parameter is required.
@@ -600,6 +611,10 @@ func (s *GetContextStoreResponseBodyConfigExtractionPolicies) GetPreset() *strin
 	return s.Preset
 }
 
+func (s *GetContextStoreResponseBodyConfigExtractionPolicies) GetStoragePolicy() *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy {
+	return s.StoragePolicy
+}
+
 func (s *GetContextStoreResponseBodyConfigExtractionPolicies) GetStrategyId() *string {
 	return s.StrategyId
 }
@@ -639,6 +654,11 @@ func (s *GetContextStoreResponseBodyConfigExtractionPolicies) SetPreset(v string
 	return s
 }
 
+func (s *GetContextStoreResponseBodyConfigExtractionPolicies) SetStoragePolicy(v *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) *GetContextStoreResponseBodyConfigExtractionPolicies {
+	s.StoragePolicy = v
+	return s
+}
+
 func (s *GetContextStoreResponseBodyConfigExtractionPolicies) SetStrategyId(v string) *GetContextStoreResponseBodyConfigExtractionPolicies {
 	s.StrategyId = &v
 	return s
@@ -647,6 +667,11 @@ func (s *GetContextStoreResponseBodyConfigExtractionPolicies) SetStrategyId(v st
 func (s *GetContextStoreResponseBodyConfigExtractionPolicies) Validate() error {
 	if s.Model != nil {
 		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StoragePolicy != nil {
+		if err := s.StoragePolicy.Validate(); err != nil {
 			return err
 		}
 	}
@@ -680,6 +705,112 @@ func (s *GetContextStoreResponseBodyConfigExtractionPoliciesModel) SetName(v str
 }
 
 func (s *GetContextStoreResponseBodyConfigExtractionPoliciesModel) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy struct {
+	// example:
+	//
+	// ["ADD","UPDATE","MERGE","DELETE"]
+	AllowedActions []*string `json:"allowedActions,omitempty" xml:"allowedActions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Dedupe *bool `json:"dedupe,omitempty" xml:"dedupe,omitempty"`
+	// example:
+	//
+	// true
+	HumanEditProtection *bool `json:"humanEditProtection,omitempty" xml:"humanEditProtection,omitempty"`
+	// example:
+	//
+	// semantic
+	MergeKey *string `json:"mergeKey,omitempty" xml:"mergeKey,omitempty"`
+	// example:
+	//
+	// upsert
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// example:
+	//
+	// 0.4
+	SimilarityThreshold *float64 `json:"similarityThreshold,omitempty" xml:"similarityThreshold,omitempty"`
+	// example:
+	//
+	// 0
+	TtlDays *int32 `json:"ttlDays,omitempty" xml:"ttlDays,omitempty"`
+}
+
+func (s GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) GetAllowedActions() []*string {
+	return s.AllowedActions
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) GetDedupe() *bool {
+	return s.Dedupe
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) GetHumanEditProtection() *bool {
+	return s.HumanEditProtection
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) GetMergeKey() *string {
+	return s.MergeKey
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) GetMode() *string {
+	return s.Mode
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) GetSimilarityThreshold() *float64 {
+	return s.SimilarityThreshold
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) GetTtlDays() *int32 {
+	return s.TtlDays
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) SetAllowedActions(v []*string) *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy {
+	s.AllowedActions = v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) SetDedupe(v bool) *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy {
+	s.Dedupe = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) SetHumanEditProtection(v bool) *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy {
+	s.HumanEditProtection = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) SetMergeKey(v string) *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy {
+	s.MergeKey = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) SetMode(v string) *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) SetSimilarityThreshold(v float64) *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy {
+	s.SimilarityThreshold = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) SetTtlDays(v int32) *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy {
+	s.TtlDays = &v
+	return s
+}
+
+func (s *GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy) Validate() error {
 	return dara.Validate(s)
 }
 

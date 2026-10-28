@@ -178,7 +178,8 @@ type ListContextStoresResponseBodyResults struct {
 	// example:
 	//
 	// upsert
-	StorageMode *string `json:"storageMode,omitempty" xml:"storageMode,omitempty"`
+	StorageMode  *string   `json:"storageMode,omitempty" xml:"storageMode,omitempty"`
+	StorageModes []*string `json:"storageModes,omitempty" xml:"storageModes,omitempty" type:"Repeated"`
 	// The time when the context store was last updated, in ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -237,6 +238,10 @@ func (s *ListContextStoresResponseBodyResults) GetStorageMode() *string {
 	return s.StorageMode
 }
 
+func (s *ListContextStoresResponseBodyResults) GetStorageModes() []*string {
+	return s.StorageModes
+}
+
 func (s *ListContextStoresResponseBodyResults) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -288,6 +293,11 @@ func (s *ListContextStoresResponseBodyResults) SetStatus(v string) *ListContextS
 
 func (s *ListContextStoresResponseBodyResults) SetStorageMode(v string) *ListContextStoresResponseBodyResults {
 	s.StorageMode = &v
+	return s
+}
+
+func (s *ListContextStoresResponseBodyResults) SetStorageModes(v []*string) *ListContextStoresResponseBodyResults {
+	s.StorageModes = v
 	return s
 }
 

@@ -1,3 +1,6 @@
+2026-10-28 Version: v2.4.3
+- Generated golang 2026-05-20 for AgentLoop.
+
 2026-10-22 Version: v2.4.2
 - Update API CreateContextStore: add request parameters body.config.extractionPolicies.
 - Update API GetContextStore: add response parameters Body.config.extractionPolicies.
