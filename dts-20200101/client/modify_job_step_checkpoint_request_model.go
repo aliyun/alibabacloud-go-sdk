@@ -22,19 +22,19 @@ type iModifyJobStepCheckpointRequest interface {
 }
 
 type ModifyJobStepCheckpointRequest struct {
-	// The ID of the migration, synchronization, or tracking task.
+	// The ID of the data migration, data synchronization, or change tracking task.
 	//
 	// example:
 	//
 	// l5512es7w15****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The task step ID, which corresponds to the **synchronization*	- step ID returned by the ListJobStep API.
+	// The ID of the task step, which is the ID of the **synchronization*	- step returned by the ListJobStep operation.
 	//
 	// example:
 	//
 	// wn3z4ukia9wi9xu_0004_0000
 	JobStepId *string `json:"JobStepId,omitempty" xml:"JobStepId,omitempty"`
-	// The new offset as a UNIX timestamp in seconds. The specified value must fall within the offset range of the incremental data collection step.
+	// The timestamp in seconds for the new checkpoint. The new checkpoint must be within the timestamp range of the incremental data collection step.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ModifyJobStepCheckpointRequest struct {
 	NewCheckPoint *int64 `json:"NewCheckPoint,omitempty" xml:"NewCheckPoint,omitempty"`
 	// The region where the DTS instance resides.
 	//
-	// > For regions that support dedicated clusters, see [DTS dedicated cluster](https://help.aliyun.com/document_detail/417481.html).
+	// > For the regions supported by dedicated clusters, see [DTS dedicated clusters](https://help.aliyun.com/document_detail/417481.html).
 	//
 	// This parameter is required.
 	//

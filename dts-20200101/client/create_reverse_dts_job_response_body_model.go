@@ -26,7 +26,7 @@ type iCreateReverseDtsJobResponseBody interface {
 }
 
 type CreateReverseDtsJobResponseBody struct {
-	// The ID of the DTS instance that corresponds to the generated reverse task.
+	// The ID of the instance corresponding to the generated reverse task.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type CreateReverseDtsJobResponseBody struct {
 	//
 	// n99m9jx822k****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The error code returned if the call fails.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call fails.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//

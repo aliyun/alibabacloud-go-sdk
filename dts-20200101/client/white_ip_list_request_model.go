@@ -44,13 +44,13 @@ type iWhiteIpListRequest interface {
 }
 
 type WhiteIpListRequest struct {
-	// The UID of the destination Alibaba Cloud account.
+	// The Alibaba Cloud account ID of the destination.
 	//
 	// example:
 	//
 	// ****
 	DestAliyunUid *string `json:"DestAliyunUid,omitempty" xml:"DestAliyunUid,omitempty"`
-	// The primary vSwitch of the destination for VPC NAT.
+	// The ID of the primary vSwitch for the destination VPC NAT gateway.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type WhiteIpListRequest struct {
 	//
 	// ram-for-dts-sq
 	DestRoleName *string `json:"DestRoleName,omitempty" xml:"DestRoleName,omitempty"`
-	// The secondary vSwitch of the destination for VPC NAT.
+	// The ID of the secondary vSwitch for the destination VPC NAT gateway.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type WhiteIpListRequest struct {
 	//
 	// ****
 	DestVpcId *string `json:"DestVpcId,omitempty" xml:"DestVpcId,omitempty"`
-	// The region ID of the destination instance. For details, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the destination instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
-	// > -  If the destination instance is a self-managed database with a public IP address or a third-party ApsaraDB database, you can set this parameter to **ap-southeast-1*	- or the area ID that is geographically closest to the database.
+	// > - If the destination instance is a self-managed database or a third-party cloud database that has a public IP address, you can specify **cn-hangzhou*	- or the ID of the region that is geographically closest to the database.
 	//
-	// -  This parameter is required when the DTS task is a data migration or data synchronization task.
+	// - This parameter is required when the DTS task is a data migration or data synchronization task.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
-	// The region ID of the source instance. For details, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the source instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
-	// > If the source instance is a self-managed database with a public IP address or a third-party ApsaraDB database, you can set this parameter to **ap-southeast-1*	- or the area ID that is geographically closest to the database.
+	// > If the source instance is a self-managed database or a third-party cloud database that has a public IP address, you can specify **cn-hangzhou*	- or the ID of the region that is geographically closest to the database.
 	//
 	// This parameter is required.
 	//
@@ -94,25 +94,25 @@ type WhiteIpListRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The region to which the DTS instance belongs. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aek26mat2ldb4oy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The UID of the source Alibaba Cloud account.
+	// The Alibaba Cloud account ID of the source.
 	//
 	// example:
 	//
 	// 1971721963139419
 	SrcAliyunUid *string `json:"SrcAliyunUid,omitempty" xml:"SrcAliyunUid,omitempty"`
-	// The primary vSwitch of the source for VPC NAT.
+	// The ID of the primary vSwitch for the source VPC NAT gateway.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type WhiteIpListRequest struct {
 	//
 	// ram-for-dts
 	SrcRoleName *string `json:"SrcRoleName,omitempty" xml:"SrcRoleName,omitempty"`
-	// The secondary vSwitch of the source for VPC NAT.
+	// The ID of the secondary vSwitch for the source VPC NAT gateway.
 	//
 	// example:
 	//
@@ -136,11 +136,11 @@ type WhiteIpListRequest struct {
 	//
 	// ****
 	SrcVpcId *string `json:"SrcVpcId,omitempty" xml:"SrcVpcId,omitempty"`
-	// The connection method of the self-managed database or third-party ApsaraDB database. Valid values:
+	// The connection method of the self-managed database or third-party cloud database. Valid values:
 	//
 	// - **internet**: connected over the Internet.
 	//
-	// - **vpc**: connected over Express Connect, VPN Gateway, or Smart Access Gateway.
+	// - **vpc**: connected over an Express Connect circuit, a VPN gateway, or a Smart Access Gateway (SAG).
 	//
 	// This parameter is required.
 	//
@@ -148,11 +148,11 @@ type WhiteIpListRequest struct {
 	//
 	// vpc
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
+	// Specifies whether the task is a zero-ETL task. Valid values:
 	//
-	// - **true**: The node is a seamless integration (Zero-ETL) node.
+	// - **true**: yes.
 	//
-	// - **false**: The node is not a seamless integration (Zero-ETL) node.
+	// - **false**: no.
 	//
 	// example:
 	//

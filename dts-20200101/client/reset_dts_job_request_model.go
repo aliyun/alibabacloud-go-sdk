@@ -22,7 +22,7 @@ type iResetDtsJobRequest interface {
 }
 
 type ResetDtsJobRequest struct {
-	// The synchronization or subscribe instance ID.
+	// The ID of the data synchronization or subscribe instance.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type ResetDtsJobRequest struct {
 	//
 	// l3m1213ye7l****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ResetDtsJobRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// - **Forward**: forward.
+	// - **Forward**: Forward.
 	//
-	// - **Reverse**: reverse.
+	// - **Reverse**: Reverse.
 	//
 	// > - Default value: **Forward**.
 	//
-	// - You can set this parameter to **Reverse*	- to reset the reverse synchronization task only if the topology of the data synchronization instance is two-way synchronization.
+	// - You can set this parameter to **Reverse*	- to reset the reverse synchronization link only when the data synchronization instance uses a two-way synchronization topology.
 	//
 	// example:
 	//

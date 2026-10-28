@@ -32,7 +32,7 @@ type iWhiteIpListResponseBody interface {
 }
 
 type WhiteIpListResponseBody struct {
-	// The IP whitelist of the destination adapted for VPC NAT.
+	// The IP address whitelist adapted for the destination VPC NAT gateway.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type WhiteIpListResponseBody struct {
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace **%s*	- in the **ErrMessage*	- response parameter.
 	//
 	// example:
 	//
 	// Type
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type WhiteIpListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The IP whitelist. Multiple IP addresses are separated by commas (,).
+	// The IP address whitelist. Multiple IP addresses are separated by commas (,).
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type WhiteIpListResponseBody struct {
 	//
 	// AD823BD3-1BA6-4117-A536-165CB280****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IP whitelist of the source adapted for VPC NAT.
+	// The IP address whitelist adapted for the source VPC NAT gateway.
 	//
 	// example:
 	//

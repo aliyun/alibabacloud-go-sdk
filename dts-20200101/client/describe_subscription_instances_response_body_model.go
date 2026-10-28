@@ -28,13 +28,13 @@ type iDescribeSubscriptionInstancesResponseBody interface {
 }
 
 type DescribeSubscriptionInstancesResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -46,26 +46,26 @@ type DescribeSubscriptionInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of records that can be displayed on the current page.
+	// The maximum number of entries that can be displayed on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// FC3BAAF2-74E3-4471-8EB5-96202D6A****
 	RequestId             *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubscriptionInstances *DescribeSubscriptionInstancesResponseBodySubscriptionInstances `json:"SubscriptionInstances,omitempty" xml:"SubscriptionInstances,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of change tracking instances that meet the specified conditions under the Alibaba Cloud account.
+	// The total number of change tracking instances that meet the query conditions under the Alibaba Cloud account.
 	//
 	// example:
 	//

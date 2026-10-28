@@ -34,19 +34,19 @@ type iConfigureSynchronizationJobAlertRequest interface {
 }
 
 type ConfigureSynchronizationJobAlertRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The mobile phone numbers of contacts for latency alerts. Separate multiple phone numbers with commas (,).
+	// The mobile phone numbers of the contacts to receive latency alerts. Separate multiple mobile phone numbers with commas (,).
 	//
 	// Note
 	//
-	// This parameter is supported only on the China site (aliyun.com) and only Chinese mainland phone numbers are supported. You can specify up to 10 phone numbers.
+	// This parameter is currently only supported on the China site. Only mobile phone numbers in the Chinese mainland are supported, and you can specify up to 10 mobile phone numbers.
 	//
-	// China site (Chinese mainland) does not support phone alerts on the China site. You can configure alert rules for DTS tasks only in the CloudMonitor console.
+	// The international site does not support SMS alerts. You can only configure alert rules for DTS tasks by using CloudMonitor.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type ConfigureSynchronizationJobAlertRequest struct {
 	DelayAlertPhone *string `json:"DelayAlertPhone,omitempty" xml:"DelayAlertPhone,omitempty"`
 	// Specifies whether to monitor the latency status. Valid values:
 	//
-	// - **enable**: yes.
+	// - **enable**: yes
 	//
-	// - **disable**: no.
+	// - **disable**: no
 	//
 	// > - Default value: **enable**.
 	//
@@ -66,37 +66,37 @@ type ConfigureSynchronizationJobAlertRequest struct {
 	//
 	// enable
 	DelayAlertStatus *string `json:"DelayAlertStatus,omitempty" xml:"DelayAlertStatus,omitempty"`
-	// The threshold for triggering a latency alert. Unit: seconds. The value must be an integer. Set the threshold based on your business requirements. We recommend that you set the threshold to 10 seconds or more to avoid alert fluctuations caused by network issues or database loads.
+	// The threshold for triggering a latency alert. Unit: seconds. The value must be an integer. You can set the threshold based on your business requirements. Set the threshold to 10 seconds or more to avoid latency fluctuations caused by network issues or database loads.
 	//
-	// > This parameter is required when **DelayAlertStatus*	- is set to **enable**.
+	// > This parameter is required when the **DelayAlertStatus*	- parameter is set to **enable**.
 	//
 	// example:
 	//
 	// 10
 	DelayOverSeconds *string `json:"DelayOverSeconds,omitempty" xml:"DelayOverSeconds,omitempty"`
-	// The mobile phone numbers of contacts for exception alerts. Separate multiple phone numbers with commas (,).
+	// The mobile phone numbers of the contacts to receive abnormal status alerts. Separate multiple mobile phone numbers with commas (,).
 	//
 	// Note
 	//
-	// This parameter is supported only on the China site (aliyun.com) and only Chinese mainland phone numbers are supported. You can specify up to 10 phone numbers.
+	// This parameter is currently only supported on the China site. Only mobile phone numbers in the Chinese mainland are supported, and you can specify up to 10 mobile phone numbers.
 	//
-	// The China site does not support phone alerts on the international site (alibabacloud.com). You can configure alert rules for DTS tasks only in the CloudMonitor console.
+	// The international site does not support SMS alerts. You can only configure alert rules for DTS tasks by using CloudMonitor.
 	//
 	// example:
 	//
 	// 1361234****,1371234****
 	ErrorAlertPhone *string `json:"ErrorAlertPhone,omitempty" xml:"ErrorAlertPhone,omitempty"`
-	// Specifies whether to monitor the exception status. Valid values:
+	// Specifies whether to monitor the abnormal status. Valid values:
 	//
-	// - **enable**: yes.
+	// - **enable**: yes
 	//
-	// - **disable**: no.
+	// - **disable**: no
 	//
 	// > - Default value: **enable**.
 	//
 	// - You must specify at least one of this parameter and the **DelayAlertStatus*	- parameter.
 	//
-	// - After you enable exception status monitoring, an alert is triggered when an exception is detected.
+	// - After the abnormal status monitoring feature is enabled, an alert is triggered if an exception is detected.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type ConfigureSynchronizationJobAlertRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ type ConfigureSynchronizationJobAlertRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// - **Forward**: forward.
+	// - **Forward**: forward
 	//
-	// - **Reverse**: reverse.
+	// - **Reverse**: reverse
 	//
 	// > Default value: **Forward**.
 	//
@@ -127,7 +127,7 @@ type ConfigureSynchronizationJobAlertRequest struct {
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// Instance ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query instance ID.
+	// Instance ID of the data synchronization instance. You can query instance ID by calling the DescribeSynchronizationJobs operation.
 	//
 	// This parameter is required.
 	//

@@ -26,9 +26,9 @@ type iRenewInstanceRequest interface {
 type RenewInstanceRequest struct {
 	// The subscription duration of the renewed instance. Default value: 1.
 	//
-	// - If **Period*	- is set to **Year**, the valid values are **1 to 5**.
+	// - If **Period*	- is set to **Year**, valid values are **1*	- to **5**.
 	//
-	// - If **Period*	- is set to **Month**, the valid values are **1 to 60**.
+	// - If **Period*	- is set to **Month**, valid values are **1*	- to **60**.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type RenewInstanceRequest struct {
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the data synchronization or change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
+	// The ID of the synchronization or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// This parameter is required.
 	//
@@ -50,23 +50,23 @@ type RenewInstanceRequest struct {
 	//
 	// qi0r643lc31****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The billing method for the renewal instance. Valid values:
+	// The billing method for the renewed instance. Valid values:
 	//
-	// - **Year**: yearly subscription.
+	// - **Year**: Yearly.
 	//
-	// - **Month**: monthly subscription (default).
+	// - **Month**: Monthly. This is the default value.
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

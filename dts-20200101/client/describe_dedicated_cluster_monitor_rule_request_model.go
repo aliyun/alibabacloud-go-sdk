@@ -27,17 +27,17 @@ type DescribeDedicatedClusterMonitorRuleRequest struct {
 	// dtsClustervcwn1oeyu5fx4yf
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. This is a global parameter that does not need to be passed in for this operation.
+	// The resource group ID. This is a global parameter and is not required for this API operation.
 	//
 	// example:
 	//
-	// 资源组ID，全局参数，当前API无需传入。
+	// The resource group ID. This is a global parameter and is not required for this API operation
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

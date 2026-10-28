@@ -34,25 +34,25 @@ type CreateDocParserJobResponseBody struct {
 	//
 	// dts-20250729-boss6pn1w******
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The dynamic error code. This parameter will be deprecated.
+	// The dynamic error code. This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the %s variable in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace %s in the **ErrMessage*	- response parameter.
 	//
 	// example:
 	//
 	// present environment is not support, so skip
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the call fails.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call fails.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//

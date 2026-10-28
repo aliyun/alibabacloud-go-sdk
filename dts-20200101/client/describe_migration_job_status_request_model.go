@@ -24,13 +24,13 @@ type iDescribeMigrationJobStatusRequest interface {
 }
 
 type DescribeMigrationJobStatusRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be discontinued.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated soon.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken*	- parameter can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken*	- parameter can only contain ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeMigrationJobStatusRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

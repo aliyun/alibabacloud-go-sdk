@@ -34,29 +34,29 @@ type iDescribeDocParserJobResultResponseBody interface {
 type DescribeDocParserJobResultResponseBody struct {
 	// The complete text parsing content.
 	//
-	// > If the task type is content, ContentList splits the original document by page. Each page has a separate Markdown text entry.
+	// > For a content task, ContentList splits the original document by page. Each page has a separate Markdown text block.
 	ContentList []*DescribeDocParserJobResultResponseBodyContentList `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
-	// The dynamic error code. This parameter will be deprecated.
+	// The dynamic error code. This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- response parameter.
+	// The dynamic error message. It is used to replace the **%s*	- placeholder in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned when the call fails.
+	// The error code returned when an error occurs.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned when an error occurs.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeDocParserJobResultResponseBody struct {
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	// The OSS download URL of the file.
 	//
-	// > If the task type is zip, this field returns the download URL of the zip package. The URL is valid for 30 minutes.
+	// > For a ZIP task, this field returns the download URL of the ZIP package. The URL is valid for 30 minutes.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeDocParserJobResultResponseBody struct {
 	//
 	// C166D79D-436B-45F0-B5A5-25E1959F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ func (s *DescribeDocParserJobResultResponseBody) Validate() error {
 }
 
 type DescribeDocParserJobResultResponseBodyContentList struct {
-	// The text content of the corresponding page, which is the complete Markdown text after parsing.
+	// The text content of the corresponding page, which is the complete parsed Markdown text.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type iDescribeCheckJobsResponseBody interface {
 }
 
 type DescribeCheckJobsResponseBody struct {
-	// The information about the data validation tasks.
+	// The information about the verification tasks.
 	CheckJobs []*DescribeCheckJobsResponseBodyCheckJobs `json:"CheckJobs,omitempty" xml:"CheckJobs,omitempty" type:"Repeated"`
 	// The dynamic error code. This parameter will be deprecated.
 	//
@@ -42,19 +42,19 @@ type DescribeCheckJobsResponseBody struct {
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- parameter. > If **ErrMessage*	- returns **The value of input parameter %s is not valid*	- and **DynamicMessage*	- returns **[1,2,3]**, the request parameter **DtsJobId*	- is invalid.
+	// The dynamic error message, which is used to replace **%s*	- in the error message of the **ErrMessage*	- parameter. > If **ErrMessage*	- returns **The value of input parameter %s is not valid*	- and **DynamicMessage*	- returns **[1,2,3]**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// present environment is not support,so skip.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeCheckJobsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of records that can be displayed on the current page.
+	// The maximum number of entries that can be displayed on the current page.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeCheckJobsResponseBody struct {
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -237,9 +237,9 @@ type DescribeCheckJobsResponseBodyCheckJobs struct {
 	CheckPoint *int64 `json:"CheckPoint,omitempty" xml:"CheckPoint,omitempty"`
 	// The data validation method. Valid values:
 	//
-	// - **1**: full data validation.
+	// - **1**: Full data validation.
 	//
-	// - **2**: incremental data validation.
+	// - **2**: Incremental data validation.
 	//
 	// example:
 	//
@@ -257,25 +257,27 @@ type DescribeCheckJobsResponseBodyCheckJobs struct {
 	//
 	// 1
 	DiffSum *int64 `json:"DiffSum,omitempty" xml:"DiffSum,omitempty"`
-	// The ID of the data migration, data synchronization, or change tracking instance.
+	// The ID of the data migration, synchronization, or change tracking instance.
 	//
 	// example:
 	//
 	// dtsz8tc99sy2158b36
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	// The ID of the data migration, data synchronization, or change tracking task.
+	// The ID of the data migration, synchronization, or change tracking task.
 	//
 	// example:
 	//
 	// n08o6si4q338b1x
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The number of rows that have been validated in the table.
+	// The number of verified data rows in the table.
 	//
 	// example:
 	//
 	// 15094
 	FinishCount *int64 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	// The DTS task ID. > In most cases, you do not need to specify this parameter.
+	// The ID of the DTS task.
+	//
+	// > In most cases, you do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -287,13 +289,13 @@ type DescribeCheckJobsResponseBodyCheckJobs struct {
 	//
 	// SMALL
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The name of the data validation task.
+	// The name of the verification task.
 	//
 	// example:
 	//
 	// dtstest
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
@@ -311,13 +313,17 @@ type DescribeCheckJobsResponseBodyCheckJobs struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The validation result. Valid values: - **0**: passed. - **1**: failed.
+	// The verification result. Valid values:
+	//
+	// - **0**: Passed.
+	//
+	// - **1**: Failed.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of rows to be validated.
+	// The total number of verified data rows.
 	//
 	// example:
 	//

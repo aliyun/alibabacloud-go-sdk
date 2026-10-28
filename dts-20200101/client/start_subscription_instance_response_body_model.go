@@ -22,13 +22,13 @@ type iStartSubscriptionInstanceResponseBody interface {
 }
 
 type StartSubscriptionInstanceResponseBody struct {
-	// The error code returned when the call fails.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type StartSubscriptionInstanceResponseBody struct {
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The task ID. This parameter is about to be deprecated.
+	// The ID of the task. This parameter will be deprecated soon.
 	//
 	// example:
 	//

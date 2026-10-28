@@ -22,7 +22,7 @@ type iDeleteSynchronizationJobRequest interface {
 }
 
 type DeleteSynchronizationJobRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be deprecated.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DeleteSynchronizationJobRequest struct {
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+	// Instance ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query instance ID.
 	//
 	// This parameter is required.
 	//

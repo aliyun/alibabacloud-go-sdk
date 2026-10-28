@@ -36,43 +36,58 @@ type iPreCheckCreateGadOrderRequest interface {
 }
 
 type PreCheckCreateGadOrderRequest struct {
-	// The ID of the active geo-redundancy instance group.
+	// The ID of the global active instance group.
 	//
 	// example:
 	//
 	// gad-bp1i99e8l7913****
-	InstanceId                 *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the primary database.
+	//
+	// example:
+	//
+	// demo1
 	MasterDatabaseName         *string `json:"MasterDatabaseName,omitempty" xml:"MasterDatabaseName,omitempty"`
 	MasterEngineArchType       *string `json:"MasterEngineArchType,omitempty" xml:"MasterEngineArchType,omitempty"`
 	MasterShardAccountName     *string `json:"MasterShardAccountName,omitempty" xml:"MasterShardAccountName,omitempty"`
 	MasterShardAccountPassword *string `json:"MasterShardAccountPassword,omitempty" xml:"MasterShardAccountPassword,omitempty"`
 	OwnerId                    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfntftbiobqyky
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The name of the secondary database.
+	//
+	// example:
+	//
+	// demo1
 	SlaveDatabaseName *string `json:"SlaveDatabaseName,omitempty" xml:"SlaveDatabaseName,omitempty"`
-	// The instance ID of the database instance that assumes the secondary role.
+	// The instance ID of the secondary database.
 	//
 	// example:
 	//
 	// rm-bp17562h64****
 	SlaveDbInstanceId *string `json:"SlaveDbInstanceId,omitempty" xml:"SlaveDbInstanceId,omitempty"`
-	// The region of the database instance that assumes the secondary role.
+	// The region of the secondary database instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SlaveDbInstanceRegion *string `json:"SlaveDbInstanceRegion,omitempty" xml:"SlaveDbInstanceRegion,omitempty"`
-	SlaveEngineArchType   *string `json:"SlaveEngineArchType,omitempty" xml:"SlaveEngineArchType,omitempty"`
+	// The architecture type of the secondary database engine.
+	//
+	// example:
+	//
+	// 1
+	SlaveEngineArchType *string `json:"SlaveEngineArchType,omitempty" xml:"SlaveEngineArchType,omitempty"`
 }
 
 func (s PreCheckCreateGadOrderRequest) String() string {

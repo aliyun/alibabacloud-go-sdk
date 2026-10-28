@@ -70,19 +70,19 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 30
 	CpuUtilization *int64 `json:"CpuUtilization,omitempty" xml:"CpuUtilization,omitempty"`
-	// The cluster ID.
+	// The ID of the dedicated cluster.
 	//
 	// example:
 	//
 	// dtsCluster****
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The cluster name.
+	// The name of the dedicated cluster.
 	//
 	// example:
 	//
 	// daily_test
 	DedicatedClusterName *string `json:"DedicatedClusterName,omitempty" xml:"DedicatedClusterName,omitempty"`
-	// The disk utilization.
+	// The disk usage.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 16
 	DuUtilization *int64 `json:"DuUtilization,omitempty" xml:"DuUtilization,omitempty"`
-	// The error code returned when the call fails.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 1642476144000
 	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The end time.
+	// The completion time.
 	//
 	// example:
 	//
@@ -136,13 +136,13 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The memory utilization.
+	// The memory usage.
 	//
 	// example:
 	//
 	// 20
 	MemUtilization *int64 `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty"`
-	// The number of nodes in the cluster.
+	// The number of nodes in the dedicated cluster.
 	//
 	// example:
 	//
@@ -154,35 +154,35 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 60
 	OversoldDu *int64 `json:"OversoldDu,omitempty" xml:"OversoldDu,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance is deployed.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The cluster status. Valid values:
+	// The status of the dedicated cluster. Valid values:
 	//
-	// - **init**: initialization.
+	// - **init**: initializing
 	//
-	// - **schedule**: pending scheduling.
+	// - **schedule**: pending scheduling
 	//
-	// - **running**: running.
+	// - **running**: running
 	//
-	// - **upgrade**: upgrading.
+	// - **upgrade**: upgrading
 	//
-	// - **downgrade**: downgrading.
+	// - **downgrade**: downgrading
 	//
-	// - **locked**: locked.
+	// - **locked**: locked
 	//
-	// - **releasing**: being released.
+	// - **releasing**: releasing
 	//
-	// - **released**: released.
+	// - **released**: released
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 100
 	TotalCpuCore *int64 `json:"TotalCpuCore,omitempty" xml:"TotalCpuCore,omitempty"`
-	// The total disk size, in GB.
+	// The total disk size in GB.
 	//
 	// example:
 	//
 	// 2048
 	TotalDiskGBSize *int64 `json:"TotalDiskGBSize,omitempty" xml:"TotalDiskGBSize,omitempty"`
-	// The total memory size, in GB.
+	// The total memory size in GB.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 30
 	UsedCpuCore *int64 `json:"UsedCpuCore,omitempty" xml:"UsedCpuCore,omitempty"`
-	// The used disk size, in GB.
+	// The used disk size in GB.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 5
 	UsedDu *int64 `json:"UsedDu,omitempty" xml:"UsedDu,omitempty"`
-	// The used memory size, in GB.
+	// The used memory size in GB.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iCreateDocParserJobRequest interface {
 type CreateDocParserJobRequest struct {
 	// The name of the document to be parsed.
 	//
-	// > The name must include the file name extension. Currently, only .pdf is supported.
+	// > The name must include the file name extension. Only .pdf is supported.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type CreateDocParserJobRequest struct {
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The OSS URL of the document to be parsed.
 	//
-	// > This parameter is automatically populated when you call this operation by using an SDK.
+	// > This parameter is automatically populated when you use an SDK to call this operation.
 	//
 	// example:
 	//
@@ -53,11 +53,11 @@ type CreateDocParserJobRequest struct {
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The output format of the parsing result after the task is complete. Valid values:
+	// The format of the output result after the parsing task is completed. Valid values:
 	//
-	// - **zip**: a ZIP compressed file.
+	// - **zip**: ZIP archive.
 	//
-	// - **content**: plain text.
+	// - **content**: Plain text.
 	//
 	// example:
 	//

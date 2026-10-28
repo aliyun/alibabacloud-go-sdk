@@ -30,23 +30,23 @@ type iModifyDtsJobPasswordRequest interface {
 }
 
 type ModifyDtsJobPasswordRequest struct {
-	// The instance ID of the data migration, synchronization, or subscribe instance.
+	// The instance ID of the data migration, data synchronization, or subscribe instance.
 	//
 	// example:
 	//
 	// dtsl3m1213ye7l****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the data migration, synchronization, or change tracking task.
+	// The ID of the data migration, data synchronization, or change tracking task.
 	//
 	// example:
 	//
 	// l3m1213ye7l****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The database to which the account belongs. Valid values:
+	// The database to which the account and password to be modified belong. Valid values:
 	//
-	// - **src**: the source database.
+	// - **src**: The source database.
 	//
-	// - **dest**: the destination database.
+	// - **dest**: The destination database.
 	//
 	// > This parameter is required.
 	//
@@ -54,9 +54,9 @@ type ModifyDtsJobPasswordRequest struct {
 	//
 	// src
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The new password for the database account.
+	// The new password of the database account.
 	//
-	// > This parameter is required and must be different from the current password.
+	// > This parameter is required and cannot be the same as the current password.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type ModifyDtsJobPasswordRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The synchronization direction. Valid values:
+	// Specifies the synchronization direction. Valid values:
 	//
-	// - **Forward**: forward.
+	// - **Forward**: Forward.
 	//
-	// - **Reverse**: reverse.
+	// - **Reverse**: Reverse.
 	//
 	// > - Default value: **Forward**.
 	//
@@ -88,7 +88,7 @@ type ModifyDtsJobPasswordRequest struct {
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The username of the database account to modify.
+	// The name of the database account.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type ModifyDtsJobPasswordRequest struct {
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes.
 	//
-	// - **false**.
+	// - **false**: No.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iModifyDtsJobConfigResponseBody interface {
 }
 
 type ModifyDtsJobConfigResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

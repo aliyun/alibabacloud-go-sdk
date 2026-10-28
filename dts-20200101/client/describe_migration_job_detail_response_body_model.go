@@ -34,13 +34,13 @@ type iDescribeMigrationJobDetailResponseBody interface {
 type DescribeMigrationJobDetailResponseBody struct {
 	DataInitializationDetailList  *DescribeMigrationJobDetailResponseBodyDataInitializationDetailList  `json:"DataInitializationDetailList,omitempty" xml:"DataInitializationDetailList,omitempty" type:"Struct"`
 	DataSynchronizationDetailList *DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailList `json:"DataSynchronizationDetailList,omitempty" xml:"DataSynchronizationDetailList,omitempty" type:"Struct"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -52,26 +52,26 @@ type DescribeMigrationJobDetailResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of migration instances that can be displayed on one page.
+	// The maximum number of migration instances that can be displayed on a single page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0AE3CD0B-4148-426F-A90E-952467CC****
 	RequestId                         *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StructureInitializationDetailList *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailList `json:"StructureInitializationDetailList,omitempty" xml:"StructureInitializationDetailList,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

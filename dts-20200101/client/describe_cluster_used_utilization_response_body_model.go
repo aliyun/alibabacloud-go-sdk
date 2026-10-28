@@ -46,7 +46,7 @@ type iDescribeClusterUsedUtilizationResponseBody interface {
 }
 
 type DescribeClusterUsedUtilizationResponseBody struct {
-	// The internal error code. The value is incremented.
+	// The backend error code, which increments numerically.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeClusterUsedUtilizationResponseBody struct {
 	//
 	// 50
 	CpuTotal *float32 `json:"CpuTotal,omitempty" xml:"CpuTotal,omitempty"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeClusterUsedUtilizationResponseBody struct {
 	//
 	// 1024
 	DiskTotal *float32 `json:"DiskTotal,omitempty" xml:"DiskTotal,omitempty"`
-	// The disk usage of the cluster. Unit: GB.
+	// The used disk space of the cluster. Unit: GB.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeClusterUsedUtilizationResponseBody struct {
 	//
 	// 2
 	DuUsed *int32 `json:"DuUsed,omitempty" xml:"DuUsed,omitempty"`
-	// The dynamic error message. This parameter is used to replace the %s placeholder in the ErrMessage response parameter.
+	// The dynamic error message, which is used to replace %s in the error message returned in the ErrMessage parameter.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type DescribeClusterUsedUtilizationResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The total memory. The value 0 is returned.
+	// The total memory. This parameter temporarily returns 0.
 	//
 	// example:
 	//
 	// 0
 	MemoryTotal *float32 `json:"MemoryTotal,omitempty" xml:"MemoryTotal,omitempty"`
-	// The memory usage. The value 0 is returned.
+	// The amount of used memory. This parameter temporarily returns 0.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type DescribeClusterUsedUtilizationResponseBody struct {
 	//
 	// 1.0
 	MemoryUsedPercentage *float32 `json:"MemoryUsedPercentage,omitempty" xml:"MemoryUsedPercentage,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

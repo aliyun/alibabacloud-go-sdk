@@ -22,13 +22,13 @@ type iDescribeDTSIPRequest interface {
 type DescribeDTSIPRequest struct {
 	// The region ID of the destination instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
-	// > If the destination instance is a self-managed database that has a public IP address, you can specify **ap-southeast-1*	- or the region ID that is geographically closest to the self-managed database.
+	// > If the destination instance is a self-managed database with a public IP address, you can specify **cn-hangzhou*	- or the region ID that is geographically closest to the self-managed database.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
-	// The region in which the DTS task instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region where the DTS task instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeDTSIPRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The region ID of the source instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
-	// > If the source instance is a self-managed database that has a public IP address, you can specify **ap-southeast-1*	- or the region ID that is geographically closest to the self-managed database.
+	// > If the source instance is a self-managed database with a public IP address, you can specify **cn-hangzhou*	- or the region ID that is geographically closest to the self-managed database.
 	//
 	// This parameter is required.
 	//

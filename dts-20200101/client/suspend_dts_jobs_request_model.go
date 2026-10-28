@@ -20,11 +20,11 @@ type iSuspendDtsJobsRequest interface {
 }
 
 type SuspendDtsJobsRequest struct {
-	// The IDs of the migration or synchronization tasks.
+	// The IDs of the data migration and synchronization tasks.
 	//
-	// > - Separate multiple task IDs with commas (,).
+	// > - If you specify multiple task IDs, separate them with commas (,).
 	//
-	// - Call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to obtain the DTS task IDs.
+	// - You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the DTS task IDs.
 	//
 	// This parameter is required.
 	//
@@ -32,19 +32,19 @@ type SuspendDtsJobsRequest struct {
 	//
 	// hfi12iv4z7e****
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
-	// The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
+	// Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
 	//
 	// - **false**: No.
 	//

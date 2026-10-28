@@ -29,13 +29,13 @@ type iDescribeConsumerGroupResponseBody interface {
 
 type DescribeConsumerGroupResponseBody struct {
 	ConsumerChannels *DescribeConsumerGroupResponseBodyConsumerChannels `json:"ConsumerChannels,omitempty" xml:"ConsumerChannels,omitempty" type:"Struct"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type DescribeConsumerGroupResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of consumer groups that can be displayed on one page.
+	// The maximum number of consumer groups that can be displayed on a single page.
 	//
 	// example:
 	//

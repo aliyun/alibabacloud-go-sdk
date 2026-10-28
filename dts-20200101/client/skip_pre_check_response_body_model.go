@@ -40,21 +40,21 @@ type SkipPreCheckResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The dynamic error message used to replace the %s variable in the ErrMessage parameter.
+	// The dynamic error message, which is used to replace the %s variable in the error message returned by the ErrMessage parameter.
 	//
-	// > For example, if ErrMessage returns The Value of Input Parameter %s is not valid and DynamicMessage returns JobId, the JobId request parameter is invalid.
+	// > If the ErrMessage parameter returns The Value of Input Parameter %s is not valid and the DynamicMessage parameter returns JobId, the specified JobId request parameter is invalid.
 	//
 	// example:
 	//
 	// JobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type SkipPreCheckResponseBody struct {
 	//
 	// b4my3zg929a****
 	ScheduleJobId *string `json:"ScheduleJobId,omitempty" xml:"ScheduleJobId,omitempty"`
-	// The abbreviated names of the precheck items to suppress or unsuppress.
+	// The abbreviations of the precheck items to skip or unskip.
 	//
 	// example:
 	//
 	// CHECK_SAME_OBJ
 	SkipItems *string `json:"SkipItems,omitempty" xml:"SkipItems,omitempty"`
-	// The full names of the precheck items to suppress or unsuppress.
+	// The names of the precheck items to skip or unskip.
 	//
 	// example:
 	//

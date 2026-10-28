@@ -20,13 +20,13 @@ type iDescribeDocParserJobResultRequest interface {
 }
 
 type DescribeDocParserJobResultRequest struct {
-	// The task ID (DtsJobId) returned when the document parsing task was created.
+	// The task ID (DtsJobId) returned when the document parsing task is created.
 	//
 	// example:
 	//
 	// dts-20250729-y0zz3t13h7d****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The instance ID of the DTS RagFlow instance.
+	// The instance ID of the DTS RagFlow.
 	//
 	// example:
 	//

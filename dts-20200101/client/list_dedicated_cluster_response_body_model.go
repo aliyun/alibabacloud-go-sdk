@@ -31,13 +31,13 @@ type iListDedicatedClusterResponseBody interface {
 
 type ListDedicatedClusterResponseBody struct {
 	DedicatedClusterStatusList *ListDedicatedClusterResponseBodyDedicatedClusterStatusList `json:"DedicatedClusterStatusList,omitempty" xml:"DedicatedClusterStatusList,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
@@ -49,13 +49,13 @@ type ListDedicatedClusterResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The page number. The value is a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
+	// The page number. The value must be an integer greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of records that can be displayed on the current page.
+	// The maximum number of entries that can be displayed on the current page.
 	//
 	// example:
 	//
@@ -67,13 +67,13 @@ type ListDedicatedClusterResponseBody struct {
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of clusters that meet the specified conditions.
+	// The total number of clusters that meet the query conditions.
 	//
 	// example:
 	//

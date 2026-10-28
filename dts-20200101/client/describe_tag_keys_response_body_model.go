@@ -24,13 +24,13 @@ type iDescribeTagKeysResponseBody interface {
 }
 
 type DescribeTagKeysResponseBody struct {
-	// The tag type.
+	// The tag category.
 	//
 	// example:
 	//
 	// Custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//

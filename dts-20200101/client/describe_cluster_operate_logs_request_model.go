@@ -38,13 +38,13 @@ type DescribeClusterOperateLogsRequest struct {
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Ensures the idempotency of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can generate the value from your client. Make sure that the value is unique across different requests. The **ClientToken*	- parameter supports only ASCII characters and can be up to 64 characters in length.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the DTS dedicated cluster.
+	// The ID of the dedicated DTS cluster.
 	//
 	// This parameter is required.
 	//
@@ -52,38 +52,38 @@ type DescribeClusterOperateLogsRequest struct {
 	//
 	// dtsxxxxx
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The ID of the data migration or data synchronization task.
+	// The ID of the data migration or synchronization task.
 	//
 	// example:
 	//
 	// k2gm967v16f****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The end timestamp. Unit: milliseconds (ms).
+	// The end timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1650866995000
 	EndTime *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of log entries per page. Default value: **20**.
+	// The number of entries to return on each page. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The start timestamp. If this parameter is not specified, data from the last seven days is returned by default. Unit: milliseconds (ms).
+	// The start timestamp. If you do not specify this parameter, the logs generated within the last seven days are returned by default. Unit: milliseconds.
 	//
 	// example:
 	//

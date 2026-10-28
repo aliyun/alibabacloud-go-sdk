@@ -20,7 +20,7 @@ type iShieldPrecheckRequest interface {
 }
 
 type ShieldPrecheckRequest struct {
-	// The ID of the data migration or synchronization instance. You can call the **DescribeMigrationJobs*	- or DescribeSynchronizationJobs operation to query the instance ID.
+	// Instance ID of the data migration or data synchronization instance. You can call the **DescribeMigrationJobs*	- or DescribeSynchronizationJobs operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type ShieldPrecheckRequest struct {
 	//
 	// dtsi76118o3w92****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The precheck items to skip. Separate multiple items with commas (,). Valid values:
+	// The precheck items. Separate multiple precheck items with commas (,). Valid values:
 	//
-	// - **CHECK_SAME_OBJ**: checks whether objects with the same name exist.
+	// - **CHECK_SAME_OBJ**: Checks whether objects with the same name exist.
 	//
-	// - **CHECK_SAME_USER**: checks whether accounts with different names exist.
+	// - **CHECK_SAME_USER**: Checks whether accounts with different names exist.
 	//
-	// - **CHECK_SRC**: checks the source database version.
+	// - **CHECK_SRC**: Checks the version of the source database.
 	//
-	// - **CHECK_TOPOLOGY**: checks the topology version.
+	// - **CHECK_TOPOLOGY**: Checks the topology version.
 	//
-	// > For the topology versions supported by DTS, see [Topology overview](https://help.aliyun.com/document_detail/124115.html).
+	// > For more information about the topology versions supported by DTS, see [Topology overview](https://help.aliyun.com/document_detail/124115.html).
 	//
-	// - **CHECK_SERVER_ID**: checks the server_id of the source database.
+	// - **CHECK_SERVER_ID**: Checks the server_id of the source database.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ShieldPrecheckRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

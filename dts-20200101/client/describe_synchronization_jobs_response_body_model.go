@@ -117,13 +117,13 @@ func (s *DescribeSynchronizationJobsResponseBody) Validate() error {
 }
 
 type DescribeSynchronizationJobsResponseBodySynchronizationInstances struct {
-	// The time when the synchronization task was created, in the format of <i>yyyy-MM-dd HH:mm:ss</i>.0 (UTC+8).
+	// The time when the data synchronization task was created. The time is displayed in the <i>yyyy-MM-dd HH:mm:ss</i>.0 format in UTC+8.
 	//
 	// example:
 	//
 	// 2021-06-28 17:34:53.0
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether initial full data synchronization is performed. Valid values:
+	// Specifies whether to perform initial full data synchronization. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -137,7 +137,7 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstances struct {
 	DataInitializationStatus *DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataInitializationStatus `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
 	// The status of incremental data synchronization.
 	//
-	// > This parameter set and its contained parameters have been discontinued.
+	// > **[Deprecated]*	- This parameter collection and its sub-parameters are deprecated.
 	DataSynchronizationStatus *DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
 	// The synchronization latency, in seconds.
 	//
@@ -153,69 +153,69 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstances struct {
 	//
 	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The expiration time of the synchronization instance, in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The expiration time of the data synchronization instance. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
-	// > This parameter is returned only when the value of the **PayType*	- parameter is **PrePaid**.
+	// > This parameter is returned only when the **PayType*	- parameter is set to **PrePaid**.
 	//
 	// example:
 	//
 	// 2021-07-07T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The time when the synchronization instance was created, in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the data synchronization instance was created. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
 	// 2021-06-28T09:36:32Z
 	InstanceCreateTime *string `json:"InstanceCreateTime,omitempty" xml:"InstanceCreateTime,omitempty"`
-	// The time when the synchronization task was created, in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the data synchronization task was created. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
 	// 2021-06-28T09:34:53Z
 	JobCreateTime *string `json:"JobCreateTime,omitempty" xml:"JobCreateTime,omitempty"`
-	// The billing method of the synchronization instance. Valid values:
+	// The billing method of the data synchronization instance. Valid values:
 	//
-	// - **PrePaid**: subscription.
+	// - **PrePaid**: Subscription.
 	//
-	// - **PostPaid**: pay-as-you-go.
+	// - **PostPaid**: Pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The overview information of the synchronization link.
+	// The overview of the synchronization link.
 	Performance *DescribeSynchronizationJobsResponseBodySynchronizationInstancesPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	// The precheck status.
 	PrecheckStatus *DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
 	// The connection information of the source instance.
 	SourceEndpoint *DescribeSynchronizationJobsResponseBodySynchronizationInstancesSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	// The status of the synchronization instance. Valid values:
+	// The status of the data synchronization instance. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: The instance is not started.
 	//
-	// - **Prechecking**: running the precheck.
+	// - **Prechecking**: The precheck is in progress.
 	//
-	// - **PrecheckFailed**: precheck failed.
+	// - **PrecheckFailed**: The precheck failed.
 	//
-	// - **Initializating**: performing initial synchronization.
+	// - **Initializating **: The initial synchronization is in progress.
 	//
-	// - **InitializeFailed**: initial synchronization failed.
+	// - **InitializeFailed**: The initial synchronization failed.
 	//
-	// - **Synchronizing**: synchronizing.
+	// - **Synchronizing **: The synchronization is in progress.
 	//
-	// - **Failed**: synchronization failed.
+	// - **Failed**: The synchronization failed.
 	//
-	// - **Suspending**: paused.
+	// - **Suspending**: The instance is suspended.
 	//
-	// - **Modifying**: modifying synchronization objects.
+	// - **Modifying**: The synchronization objects are being modified.
 	//
-	// - **Finished**: completed.
+	// - **Finished**: The synchronization is completed.
 	//
 	// example:
 	//
 	// synchronizing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether initial schema synchronization is performed. Valid values:
+	// Specifies whether to perform initial schema synchronization. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -229,15 +229,15 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstances struct {
 	StructureInitializationStatus *DescribeSynchronizationJobsResponseBodySynchronizationInstancesStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
 	// The synchronization direction. Valid values:
 	//
-	// - **Forward**: forward.
+	// - **Forward**: Forward.
 	//
-	// - **Reverse**: reverse.
+	// - **Reverse**: Reverse.
 	//
 	// example:
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The specification of the synchronization link.
+	// The specifications of the synchronization link.
 	//
 	// example:
 	//
@@ -249,15 +249,15 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstances struct {
 	//
 	// dtsexjk1alb116****
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
-	// The name of the synchronization instance.
+	// The name of the data synchronization instance.
 	//
 	// example:
 	//
-	// MySQL同步
+	// MySQL synchronization
 	SynchronizationJobName *string `json:"SynchronizationJobName,omitempty" xml:"SynchronizationJobName,omitempty"`
 	// The synchronization objects.
 	SynchronizationObjects []*DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjects `json:"SynchronizationObjects,omitempty" xml:"SynchronizationObjects,omitempty" type:"Repeated"`
-	// The tag collection.
+	// The tags.
 	Tags []*DescribeSynchronizationJobsResponseBodySynchronizationInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -546,7 +546,7 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataInitiali
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of records that have been synchronized during initial full data synchronization.
+	// The number of records for which initial full data synchronization is completed.
 	//
 	// example:
 	//
@@ -554,13 +554,13 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataInitiali
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The status of initial full data synchronization. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: The initial synchronization is not started.
 	//
-	// - **Migrating**: in progress.
+	// - **Migrating**: The initial synchronization is in progress.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: The initial synchronization failed.
 	//
-	// - **Finished**: completed.
+	// - **Finished**: The initial synchronization is completed.
 	//
 	// example:
 	//
@@ -617,9 +617,9 @@ func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataInit
 }
 
 type DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataSynchronizationStatus struct {
-	// The synchronization latency of incremental data synchronization.
+	// The incremental data synchronization latency.
 	//
-	// > This parameter has been discontinued.
+	// > **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
@@ -627,15 +627,15 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataSynchron
 	Delay *string `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	// The error message returned when incremental data synchronization fails.
 	//
-	// > This parameter has been discontinued.
+	// > **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
-	// 任务失败太久无法恢复
+	// The task has failed for too long to be recovered
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The progress of incremental data synchronization.
 	//
-	// > This parameter has been discontinued.
+	// > **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
@@ -643,7 +643,7 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataSynchron
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	// The status of incremental data synchronization.
 	//
-	// > This parameter has been discontinued.
+	// > **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
@@ -718,7 +718,7 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesDestinationE
 	//
 	// rm-bp162d4tp0500****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the destination instance.
+	// The destination instance type.
 	//
 	// example:
 	//
@@ -805,7 +805,7 @@ func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstancesDestinat
 }
 
 type DescribeSynchronizationJobsResponseBodySynchronizationInstancesPerformance struct {
-	// The volume of data synchronized per second, in MB/s.
+	// The traffic of data synchronized per second, in MB/s.
 	//
 	// example:
 	//
@@ -850,7 +850,7 @@ func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstancesPerforma
 }
 
 type DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckStatus struct {
-	// The execution details of each precheck item.
+	// The execution status of each precheck item.
 	Detail []*DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
 	// The overall progress of the precheck, in percentage.
 	//
@@ -860,9 +860,9 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckStat
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	// The precheck result. Valid values:
 	//
-	// - **Success**: passed.
+	// - **Success**: The check item passed.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: The check item failed.
 	//
 	// example:
 	//
@@ -921,9 +921,9 @@ func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheck
 type DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckStatusDetail struct {
 	// The check result. Valid values:
 	//
-	// - **Success**: passed.
+	// - **Success**: The check item passed.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: The check item failed.
 	//
 	// example:
 	//
@@ -931,7 +931,7 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckStat
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
 	// The error message returned when the precheck fails.
 	//
-	// > This parameter is returned only when the value of the **CheckStatus*	- parameter is **Failed**.
+	// > This parameter is returned only when the **CheckStatus*	- parameter is set to **Failed**.
 	//
 	// example:
 	//
@@ -943,9 +943,9 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckStat
 	//
 	// CHECK_CONN_SRC
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// The repair method when the precheck fails.
+	// The solution for a failed precheck item.
 	//
-	// > This parameter is returned only when the value of the **CheckStatus*	- parameter is **Failed**.
+	// > This parameter is returned only when the **CheckStatus*	- parameter is set to **Failed**.
 	//
 	// example:
 	//
@@ -1119,7 +1119,7 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesStructureIni
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of tables for which initial schema synchronization has been completed.
+	// The number of tables for which initial schema synchronization is completed.
 	//
 	// example:
 	//
@@ -1127,13 +1127,13 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesStructureIni
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The status of initial schema synchronization. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: The initial synchronization is not started.
 	//
-	// - **Migrating**: in progress.
+	// - **Migrating **: The initial synchronization is in progress.
 	//
-	// - **Failed**: failed.
+	// - **Failed **: The initial synchronization failed.
 	//
-	// - **Finished**: completed.
+	// - **Finished**: The initial synchronization is completed.
 	//
 	// example:
 	//
@@ -1190,7 +1190,7 @@ func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstancesStructur
 }
 
 type DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjects struct {
-	// The name of the database to which the objects are mapped in the destination database.
+	// The mapped name of the database to be synchronized in the destination database.
 	//
 	// example:
 	//
@@ -1202,7 +1202,7 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizat
 	//
 	// dtstestdatabase
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The tables that are excluded from the database to be synchronized. These tables are not synchronized.
+	// The tables excluded from the database to be synchronized. These tables are not synchronized.
 	TableExcludes []*DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjectsTableExcludes `json:"TableExcludes,omitempty" xml:"TableExcludes,omitempty" type:"Repeated"`
 	// The tables to be synchronized.
 	TableIncludes []*DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjectsTableIncludes `json:"TableIncludes,omitempty" xml:"TableIncludes,omitempty" type:"Repeated"`

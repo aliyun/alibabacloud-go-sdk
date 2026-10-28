@@ -28,7 +28,7 @@ type SwitchPhysicalDtsJobToCloudRequest struct {
 	//
 	// dtsl3m1213ye7l****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the data migration or synchronization task. You can call the **DescribeDtsJobs*	- operation to query the ID.
+	// The ID of the data migration or synchronization instance. You can call the **describedtsjobs*	- operation to query the instance ID.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type SwitchPhysicalDtsJobToCloudRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type SwitchPhysicalDtsJobToCloudRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// - **Forward**: forward.
+	// - **Forward**: Forward.
 	//
-	// - **Reverse**: reverse.
+	// - **Reverse**: Reverse.
 	//
 	// > - Default value: **Forward**.
 	//
-	// - You can set this parameter to **Reverse*	- to release the reverse synchronization link only when the topology of the data synchronization instance is two-way synchronization.
+	// - You can specify **Reverse*	- to release the reverse synchronization link only when the topology of the data synchronization instance is two-way.
 	//
 	// example:
 	//

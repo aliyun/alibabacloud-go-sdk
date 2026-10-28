@@ -26,37 +26,37 @@ type iDescribeTagKeysRequest interface {
 }
 
 type DescribeTagKeysRequest struct {
-	// The tag type. Valid values:
+	// The tag category. Valid values:
 	//
 	// - **System**: tags created by the system.
 	//
 	// - **Custom**: tags added by users.
 	//
-	// > If this parameter is left empty, publicly visible tags are returned by default.
+	// > If this parameter is left empty, public tags are returned by default.
 	//
 	// example:
 	//
 	// Custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. This parameter is used together with PageSize. Default value: 1.
+	// The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer data type. This parameter is typically used in combination with PageSize. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of tag keys to return on each page. Default value: 20.
+	// The number of entries to return on each page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

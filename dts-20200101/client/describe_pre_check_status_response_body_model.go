@@ -48,23 +48,23 @@ type iDescribePreCheckStatusResponseBody interface {
 }
 
 type DescribePreCheckStatusResponseBody struct {
-	// The list of assessment tasks.
+	// The list of evaluation tasks.
 	AnalysisJobProgress []*DescribePreCheckStatusResponseBodyAnalysisJobProgress `json:"AnalysisJobProgress,omitempty" xml:"AnalysisJobProgress,omitempty" type:"Repeated"`
-	// The task code that represents the queried subtask. Valid values:
+	// The task code, which represents the queried subtask. Valid values:
 	//
-	// - **01**: precheck.
+	// - **01**: Precheck.
 	//
-	// - **02**: schema migration or initial schema synchronization.
+	// - **02**: Schema migration or initialization.
 	//
-	// - **03**: full data migration or initial full data synchronization.
+	// - **03**: Full data migration or initialization.
 	//
-	// - **04**: incremental data migration or incremental data synchronization.
+	// - **04**: Incremental migration or synchronization.
 	//
 	// example:
 	//
 	// 01
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of items that failed the assessment.
+	// The number of items that failed the evaluation.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribePreCheckStatusResponseBody struct {
 	//
 	// 0
 	ErrorItem *int32 `json:"ErrorItem,omitempty" xml:"ErrorItem,omitempty"`
-	// The full CIDR block check results.
+	// The check result for all CIDR blocks.
 	FullNetCheckJobStatus []*DescribePreCheckStatusResponseBodyFullNetCheckJobStatus `json:"FullNetCheckJobStatus,omitempty" xml:"FullNetCheckJobStatus,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -84,7 +84,7 @@ type DescribePreCheckStatusResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the data migration or data synchronization task.
+	// The ID of the migration or synchronization task.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type DescribePreCheckStatusResponseBody struct {
 	//
 	// example:
 	//
-	// 预检查
+	// Precheck
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The list of specific items of the subtask and their execution progress.
+	// The list of specific items and the execution progress of each item for the subtask.
 	JobProgress []*DescribePreCheckStatusResponseBodyJobProgress `json:"JobProgress,omitempty" xml:"JobProgress,omitempty" type:"Repeated"`
 	// The network diagnosis result.
 	NetworkDiagnosisResult *DescribePreCheckStatusResponseBodyNetworkDiagnosisResult `json:"NetworkDiagnosisResult,omitempty" xml:"NetworkDiagnosisResult,omitempty" type:"Struct"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. Valid values: an integer greater than **0*	- and less than or equal to the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -120,27 +120,27 @@ type DescribePreCheckStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution status of the subtask. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: Not started.
 	//
-	// - **Suspending**: suspended.
+	// - **Suspending**: Suspending.
 	//
-	// - **Checking**: being checked.
+	// - **Checking**: Checking.
 	//
-	// - **Migrating**: being migrated.
+	// - **Migrating**: Migrating.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: Failed.
 	//
-	// - **Catched**: incremental data migration or synchronization in progress.
+	// - **Catched**: Incremental migration or synchronization in progress.
 	//
-	// - **Finished**: completed.
+	// - **Finished**: Finished.
 	//
 	// example:
 	//
 	// Finished
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The details of distributed subtasks.
+	// The details of the distributed subtask.
 	SubDistributedJobStatus []*DescribePreCheckStatusResponseBodySubDistributedJobStatus `json:"SubDistributedJobStatus,omitempty" xml:"SubDistributedJobStatus,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -376,7 +376,7 @@ func (s *DescribePreCheckStatusResponseBody) Validate() error {
 }
 
 type DescribePreCheckStatusResponseBodyAnalysisJobProgress struct {
-	// The time when the specific item was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+	// The start time of the specific item, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -388,13 +388,13 @@ type DescribePreCheckStatusResponseBodyAnalysisJobProgress struct {
 	//
 	// true
 	CanSkip *bool `json:"CanSkip,omitempty" xml:"CanSkip,omitempty"`
-	// The number of subtasks that are currently running.
+	// The number of currently running subtasks.
 	//
 	// example:
 	//
 	// 0
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
-	// The DDL operation that was executed.
+	// The executed DDL operation.
 	//
 	// example:
 	//
@@ -406,19 +406,19 @@ type DescribePreCheckStatusResponseBodyAnalysisJobProgress struct {
 	//
 	// 0
 	DelaySeconds *int32 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	// The name of the database to which the migration object belongs in the destination instance.
+	// The name of the database to which the migrated object belongs in the destination instance.
 	//
 	// example:
 	//
 	// dest
 	DestSchema *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
-	// This parameter will be deprecated.
+	// This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// 1
 	DiffRow *int64 `json:"DiffRow,omitempty" xml:"DiffRow,omitempty"`
-	// The error details when the item encounters an error.
+	// The error details when the item fails.
 	//
 	// example:
 	//
@@ -430,19 +430,19 @@ type DescribePreCheckStatusResponseBodyAnalysisJobProgress struct {
 	//
 	// ANALYSIS_
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// The time when the assessment task was completed. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+	// The end time of the evaluation task, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2022-03-16T08:01:31.000+00:00
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the assessment item in the database.
+	// The ID of the evaluation item in the database.
 	//
 	// example:
 	//
 	// 123123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the specific item is directly ignored and the next item is processed. Valid values:
+	// Indicates whether the specific item is directly ignored to proceed to the next specific item. Valid values:
 	//
 	// - **N**: No.
 	//
@@ -452,71 +452,71 @@ type DescribePreCheckStatusResponseBodyAnalysisJobProgress struct {
 	//
 	// N
 	IgnoreFlag *string `json:"IgnoreFlag,omitempty" xml:"IgnoreFlag,omitempty"`
-	// The name of the assessment item.
+	// The name of the evaluation item.
 	//
 	// example:
 	//
 	// ANALYSIS_MYSQL_4_ITEM
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The ID of the assessment task.
+	// The ID of the evaluation task.
 	//
 	// example:
 	//
 	// 11234234xc
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The sub-assessment items.
+	// The sub-evaluation items.
 	Logs []*DescribePreCheckStatusResponseBodyAnalysisJobProgressLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// The name of the assessment item.
+	// The name of the evaluation item.
 	//
 	// example:
 	//
 	// ANALYSIS_MYSQL_4_DETAIL
 	Names *string `json:"Names,omitempty" xml:"Names,omitempty"`
-	// The number of the assessment item.
+	// The number of the evaluation item.
 	//
 	// example:
 	//
 	// 10
 	OrderNum *int32 `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
-	// This parameter will be deprecated.
+	// This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// demo
 	ParentObj *string `json:"ParentObj,omitempty" xml:"ParentObj,omitempty"`
-	// The repair method for the assessment item.
+	// The solution for the evaluation item.
 	//
 	// example:
 	//
 	// ANALYSIS_
 	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
-	// Indicates whether you have set to skip this assessment item after it failed. Valid values:
+	// Indicates whether the evaluation item is configured to be skipped after it fails. Valid values:
 	//
-	// 	- **true**: Yes.
+	// - **true**: Yes.
 	//
-	// 	- **false**: No.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// false
 	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	// The name of the database to which the migration object belongs in the source instance.
+	// The name of the database to which the migrated object belongs in the source instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	SourceSchema *string `json:"SourceSchema,omitempty" xml:"SourceSchema,omitempty"`
-	// The result of the assessment item. Valid values:
+	// The result of the evaluation item. Valid values:
 	//
-	// - **Failed**: failed.
+	// - **Failed**: Failed.
 	//
-	// - **Success**: completed.
+	// - **Success**: Successful.
 	//
 	// example:
 	//
 	// Success
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The progress of sub-items of the specific item.
+	// The progress of the sub-items of the specific item.
 	//
 	// > If <b>[]</b> is returned, no sub-items exist.
 	//
@@ -524,13 +524,13 @@ type DescribePreCheckStatusResponseBodyAnalysisJobProgress struct {
 	//
 	// []
 	Sub *string `json:"Sub,omitempty" xml:"Sub,omitempty"`
-	// The name of the target object.
+	// The names of the destination objects.
 	//
 	// example:
 	//
 	// testTable
 	TargetNames *string `json:"TargetNames,omitempty" xml:"TargetNames,omitempty"`
-	// The total number of specific items in the subtask.
+	// The total number of specific items for the subtask.
 	//
 	// example:
 	//
@@ -785,13 +785,13 @@ func (s *DescribePreCheckStatusResponseBodyAnalysisJobProgress) Validate() error
 }
 
 type DescribePreCheckStatusResponseBodyAnalysisJobProgressLogs struct {
-	// The error information.
+	// The error message.
 	//
 	// example:
 	//
-	// 请修改该对象
+	// Modify the object
 	ErrData *string `json:"ErrData,omitempty" xml:"ErrData,omitempty"`
-	// The error message returned by DTS when the specific item encounters an error.
+	// The DTS error message when the specific item fails.
 	//
 	// example:
 	//
@@ -860,7 +860,7 @@ func (s *DescribePreCheckStatusResponseBodyAnalysisJobProgressLogs) Validate() e
 }
 
 type DescribePreCheckStatusResponseBodyFullNetCheckJobStatus struct {
-	// The task code. **01*	- indicates precheck.
+	// The task code. A value of **01*	- indicates a precheck.
 	//
 	// example:
 	//
@@ -880,17 +880,17 @@ type DescribePreCheckStatusResponseBodyFullNetCheckJobStatus struct {
 	DestRegionCidr *string `json:"DestRegionCidr,omitempty" xml:"DestRegionCidr,omitempty"`
 	// The connection method of the destination instance. Valid values:
 	//
-	// - **ALIYUN**: **cloud instance**.
+	// - **ALIYUN**: Alibaba Cloud instance.
 	//
-	// - **OTHER**: **public IP address**.
+	// - **OTHER**: Public IP address.
 	//
-	// - **ECS**: **self-managed database on ECS**.
+	// - **ECS**: Self-managed database hosted on ECS.
 	//
-	// - **EXPRESS**: **Express Connect/VPN Gateway/Smart Access Gateway**.
+	// - **EXPRESS**: Express Connect circuit, VPN gateway, or Smart Access Gateway.
 	//
-	// - **CEN**: **Cloud Enterprise Network (CEN)**.
+	// - **CEN**: Cloud Enterprise Network (CEN).
 	//
-	// - **DG**: **Database Gateway (DG)**.
+	// - **DG**: Database Gateway.
 	//
 	// example:
 	//
@@ -908,33 +908,33 @@ type DescribePreCheckStatusResponseBodyFullNetCheckJobStatus struct {
 	//
 	// cn-hangzhou
 	HostRegion *string `json:"HostRegion,omitempty" xml:"HostRegion,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// l3m1213ye7l****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task name.
+	// The job name.
 	//
 	// example:
 	//
 	// dts.step.fullnetcheck
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The list of specific items of the task and their execution progress.
+	// The list of specific items and the execution progress of each item for the task.
 	JobProgress []*DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress `json:"JobProgress,omitempty" xml:"JobProgress,omitempty" type:"Repeated"`
 	// The connection method of the source instance. Valid values:
 	//
-	// - **ALIYUN**: **cloud instance**.
+	// - **ALIYUN**: Alibaba Cloud instance.
 	//
-	// - **OTHER**: **public IP address**.
+	// - **OTHER**: Public IP address.
 	//
-	// - **ECS**: **self-managed database on ECS**.
+	// - **ECS**: Self-managed database hosted on ECS.
 	//
-	// - **EXPRESS**: **Express Connect/VPN Gateway/Smart Access Gateway**.
+	// - **EXPRESS**: Express Connect circuit, VPN gateway, or Smart Access Gateway.
 	//
-	// - **CEN**: **Cloud Enterprise Network (CEN)**.
+	// - **CEN**: Cloud Enterprise Network (CEN).
 	//
-	// - **DG**: **Database Gateway (DG)**.
+	// - **DG**: Database Gateway.
 	//
 	// example:
 	//
@@ -954,9 +954,9 @@ type DescribePreCheckStatusResponseBodyFullNetCheckJobStatus struct {
 	SrcRegionCidr *string `json:"SrcRegionCidr,omitempty" xml:"SrcRegionCidr,omitempty"`
 	// The check result. Valid values:
 	//
-	// - **Failed**: failed.
+	// - **Failed**: The check failed.
 	//
-	// - **Success**: completed.
+	// - **Success**: The check succeeded.
 	//
 	// example:
 	//
@@ -1118,7 +1118,7 @@ func (s *DescribePreCheckStatusResponseBodyFullNetCheckJobStatus) Validate() err
 }
 
 type DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress struct {
-	// The time when the specific item was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+	// The start time of the specific item, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -1134,13 +1134,13 @@ type DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress struct {
 	//
 	// false
 	CanSkip *bool `json:"CanSkip,omitempty" xml:"CanSkip,omitempty"`
-	// The number of tasks that are currently running.
+	// The number of currently running tasks.
 	//
 	// example:
 	//
 	// 0
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
-	// The DDL operation that was executed.
+	// The executed DDL operation.
 	//
 	// example:
 	//
@@ -1152,43 +1152,43 @@ type DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress struct {
 	//
 	// 0
 	DelaySeconds *int32 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	// The name of the database to which the migration object belongs in the destination instance.
+	// The name of the database to which the migrated object belongs in the destination instance.
 	//
 	// example:
 	//
 	// dest
 	DestSchema *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
-	// This parameter will be deprecated.
+	// This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// 1
 	DiffRow *int64 `json:"DiffRow,omitempty" xml:"DiffRow,omitempty"`
-	// The error details when the specific item encounters an error.
+	// The error details when the specific item fails.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ_DETAIL
 	ErrDetail *string `json:"ErrDetail,omitempty" xml:"ErrDetail,omitempty"`
-	// The error message when the specific item encounters an error.
+	// The error message when the specific item fails.
 	//
 	// example:
 	//
 	// ODPS project does not exist odps.`huijin
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// The time when the task was completed. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
+	// The task completion time. The time follows the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-03-31T03:36:11.000+00:00
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the record in the metastore.
+	// The ID of the record in the metadatabase.
 	//
 	// example:
 	//
 	// 922305811766881****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the specific item is directly ignored and the next item is processed. Valid values:
+	// Indicates whether the specific item is directly ignored to proceed to the next specific item. Valid values:
 	//
 	// - **N**: No.
 	//
@@ -1204,13 +1204,13 @@ type DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress struct {
 	//
 	// CHECK_CONN_SRC
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// l3m1213ye7l****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The execution logs of the error.
+	// The execution log information for errors.
 	Logs []*DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgressLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// The name of the specific item.
 	//
@@ -1224,29 +1224,29 @@ type DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress struct {
 	//
 	// 1
 	OrderNum *int32 `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
-	// This parameter will be deprecated.
+	// This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// demo
 	ParentObj *string `json:"ParentObj,omitempty" xml:"ParentObj,omitempty"`
-	// The repair method when the precheck does not pass.
+	// The solution to a precheck failure.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ_REPAIR
 	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
-	// Indicates whether you have set to skip this specific item after it failed. Valid values:
+	// Indicates whether the specific item is configured to be skipped after it fails. Valid values:
 	//
-	// 	- **true**: Yes.
+	// - **true**: Yes.
 	//
-	// 	- **false**: No.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// false
 	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	// The name of the database to which the migration object belongs in the source instance.
+	// The name of the database to which the migrated object belongs in the source instance.
 	//
 	// example:
 	//
@@ -1254,15 +1254,15 @@ type DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress struct {
 	SourceSchema *string `json:"SourceSchema,omitempty" xml:"SourceSchema,omitempty"`
 	// The check result. Valid values:
 	//
-	// - **Failed**: failed.
+	// - **Failed**: The check failed.
 	//
-	// - **Success**: completed.
+	// - **Success**: The check succeeded.
 	//
 	// example:
 	//
 	// Success
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The progress of sub-items of the specific item.
+	// The progress of the sub-items of the specific item.
 	//
 	// > If <b>[]</b> is returned, no sub-items exist.
 	//
@@ -1270,7 +1270,7 @@ type DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress struct {
 	//
 	// []
 	Sub *string `json:"Sub,omitempty" xml:"Sub,omitempty"`
-	// The name of the target object.
+	// The names of the destination objects.
 	//
 	// example:
 	//
@@ -1606,7 +1606,7 @@ func (s *DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgressLogs)
 }
 
 type DescribePreCheckStatusResponseBodyJobProgress struct {
-	// The time when the specific item was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+	// The start time of the specific item, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -1618,61 +1618,61 @@ type DescribePreCheckStatusResponseBodyJobProgress struct {
 	//
 	// true
 	CanSkip *bool `json:"CanSkip,omitempty" xml:"CanSkip,omitempty"`
-	// The number of subtasks that are currently running.
+	// The number of currently running subtasks.
 	//
 	// example:
 	//
 	// 0
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
-	// The DDL operation that was executed.
+	// The executed DDL operation.
 	//
 	// example:
 	//
 	// CREATE TABLE `dtstestdata`.`order` (\\n`orderid`  int(11)     COMMENT \\"\\"   NOT NULL   , \\n`username`  char(32)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NULL   , \\n`ordertime`  datetime     COMMENT \\"\\"   NULL   , \\n`commodity`  varchar(32)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NULL   , \\n`phonenumber`  int(11)     COMMENT \\"\\"   NULL   , \\n`address`  text  CHARSET `utf8mb4` COLLATE `utf8mb4_general_ci`    COMMENT \\"\\"   NULL   \\n, PRIMARY KEY (`orderid`)) engine=InnoDB DEFAULT CHARSET=`gbk` DEFAULT COLLATE `gbk_chinese_ci` ROW_FORMAT= Dynamic comment = \\"\\" ;\\n
 	DdlSql *string `json:"DdlSql,omitempty" xml:"DdlSql,omitempty"`
-	// The synchronization latency of incremental data migration or incremental data synchronization.
+	// The incremental migration or synchronization latency.
 	//
 	// example:
 	//
 	// 0
 	DelaySeconds *int32 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	// The name of the database to which the migration object belongs in the destination instance.
+	// The name of the database to which the migrated object belongs in the destination instance.
 	//
 	// example:
 	//
 	// dtstestdata_new
 	DestSchema *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
-	// This parameter will be deprecated.
+	// This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// 1
 	DiffRow *int64 `json:"DiffRow,omitempty" xml:"DiffRow,omitempty"`
-	// The error details when the specific item encounters an error.
+	// The error details when the specific item fails.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ_DETAIL
 	ErrDetail *string `json:"ErrDetail,omitempty" xml:"ErrDetail,omitempty"`
-	// The error message when the specific item encounters an error.
+	// The error message when the specific item fails.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// The time when the specific item was completed. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>ZZ format in UTC.
+	// The completion time of the specific item, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>ZZ format (UTC).
 	//
 	// example:
 	//
 	// 2022-03-16T08:01:34.000+00:00
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the record in the metastore.
+	// The ID recorded in the metadatabase.
 	//
 	// example:
 	//
 	// 5632
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the specific item is directly ignored and the next item is processed. Valid values:
+	// Indicates whether the specific item is directly ignored to proceed to the next specific item. Valid values:
 	//
 	// - **N**: No.
 	//
@@ -1688,7 +1688,7 @@ type DescribePreCheckStatusResponseBodyJobProgress struct {
 	//
 	// CHECK_CONN_DEST
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The subtask ID.
+	// The ID of the subtask.
 	//
 	// example:
 	//
@@ -1708,29 +1708,29 @@ type DescribePreCheckStatusResponseBodyJobProgress struct {
 	//
 	// 10
 	OrderNum *int32 `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
-	// This parameter will be deprecated.
+	// This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// demo
 	ParentObj *string `json:"ParentObj,omitempty" xml:"ParentObj,omitempty"`
-	// The repair method when the specific item does not pass.
+	// The solution if the specific item fails.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ_REPAIR
 	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
-	// Indicates whether you have set to skip this specific item after it failed. Valid values:
+	// Indicates whether the specific item is configured to be skipped after it fails. Valid values:
 	//
-	// 	- **true**: Yes.
+	// - **true**: Yes.
 	//
-	// 	- **false**: No.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// false
 	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	// The name of the database to which the migration object belongs in the source instance.
+	// The name of the database to which the migrated object belongs in the source instance.
 	//
 	// example:
 	//
@@ -1738,23 +1738,23 @@ type DescribePreCheckStatusResponseBodyJobProgress struct {
 	SourceSchema *string `json:"SourceSchema,omitempty" xml:"SourceSchema,omitempty"`
 	// The execution progress status of the specific item. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: Not started.
 	//
-	// - **Checking**: being checked.
+	// - **Checking**: Checking.
 	//
-	// - **Migrating**: being migrated.
+	// - **Migrating**: Migrating.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: Failed.
 	//
-	// - **Warning**: warning.
+	// - **Warning**: Warning.
 	//
-	// - **Success**: completed.
+	// - **Success**: Successful.
 	//
 	// example:
 	//
 	// Success
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The progress of sub-items of the specific item.
+	// The progress of the sub-items of the specific item.
 	//
 	// > If <b>[]</b> is returned, no sub-items exist.
 	//
@@ -1762,13 +1762,13 @@ type DescribePreCheckStatusResponseBodyJobProgress struct {
 	//
 	// []
 	Sub *string `json:"Sub,omitempty" xml:"Sub,omitempty"`
-	// The name of the object to be migrated or synchronized.
+	// The names of the objects to be migrated or synchronized.
 	//
 	// example:
 	//
 	// order
 	TargetNames *string `json:"TargetNames,omitempty" xml:"TargetNames,omitempty"`
-	// The total number of specific items in the subtask.
+	// The total number of specific items for the subtask.
 	//
 	// example:
 	//
@@ -2023,13 +2023,13 @@ func (s *DescribePreCheckStatusResponseBodyJobProgress) Validate() error {
 }
 
 type DescribePreCheckStatusResponseBodyJobProgressLogs struct {
-	// The error information.
+	// The error message.
 	//
 	// example:
 	//
 	// CREATE TABLE `dtstestdata`.`customer` (\\n`runoob_id`  int(10) unsigned   auto_increment  COMMENT \\"\\"   NOT NULL   , \\n`runoob_title`  varchar(100)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`runoob_author1216`  varchar(40)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`submission_date1216`  date     COMMENT \\"\\"   NULL   \\n, PRIMARY KEY (`runoob_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \\"\\" ;\\n
 	ErrData *string `json:"ErrData,omitempty" xml:"ErrData,omitempty"`
-	// The error message returned by DTS when the specific item encounters an error.
+	// The DTS error message when the specific item fails.
 	//
 	// example:
 	//
@@ -2148,7 +2148,7 @@ func (s *DescribePreCheckStatusResponseBodyNetworkDiagnosisResult) Validate() er
 }
 
 type DescribePreCheckStatusResponseBodyNetworkDiagnosisResultDiagnosis struct {
-	// The documentation URL for the China region.
+	// The documentation URL for the China site.
 	//
 	// example:
 	//
@@ -2162,11 +2162,11 @@ type DescribePreCheckStatusResponseBodyNetworkDiagnosisResultDiagnosis struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The endpoint type. Valid values:
 	//
-	// - **source**: source endpoint.
+	// - **source**: The source endpoint.
 	//
-	// - **destination**: destination endpoint.
+	// - **destination**: The destination endpoint.
 	//
-	// - **unknown**: unknown.
+	// - **unknown**: Unknown.
 	//
 	// example:
 	//
@@ -2178,7 +2178,7 @@ type DescribePreCheckStatusResponseBodyNetworkDiagnosisResultDiagnosis struct {
 	//
 	// https://www.ali***.com/help/en/data-transmission-service/latest/how-to-solve-an-error-when-accessing-a-database-instance-to-dts-using-vpn
 	InternationalDocUrl *string `json:"InternationalDocUrl,omitempty" xml:"InternationalDocUrl,omitempty"`
-	// The reserved field for the diagnosis result. This field is empty by default.
+	// The reserved field for the diagnosis result. Default value: empty.
 	//
 	// example:
 	//
@@ -2244,27 +2244,27 @@ func (s *DescribePreCheckStatusResponseBodyNetworkDiagnosisResultDiagnosis) Vali
 }
 
 type DescribePreCheckStatusResponseBodySubDistributedJobStatus struct {
-	// The task code that represents the queried subtask type. Valid values:
+	// The task code, which indicates the type of the queried subtask. Valid values:
 	//
-	// - **01**: precheck.
+	// - **01**: Precheck.
 	//
-	// - **02**: schema migration or initial schema synchronization.
+	// - **02**: Schema migration or initial schema synchronization.
 	//
-	// - **03**: full data migration or initial full data synchronization.
+	// - **03**: Full data migration or initial full data synchronization.
 	//
-	// - **04**: incremental data migration or incremental data synchronization.
+	// - **04**: Incremental data migration or incremental data synchronization.
 	//
 	// example:
 	//
 	// 02
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of tasks that are currently failing.
+	// The number of failed tasks.
 	//
 	// example:
 	//
 	// 0
 	ErrorItem *int32 `json:"ErrorItem,omitempty" xml:"ErrorItem,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
@@ -2276,29 +2276,29 @@ type DescribePreCheckStatusResponseBodySubDistributedJobStatus struct {
 	//
 	// dts.step.struct.load
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The list of specific items of the subtask and their execution progress.
+	// The list of specific items and the execution progress of each item for the subtask.
 	JobProgress []*DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress `json:"JobProgress,omitempty" xml:"JobProgress,omitempty" type:"Repeated"`
 	// The execution status of the subtask. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: Not started.
 	//
-	// - **Suspending**: suspended.
+	// - **Suspending**: Suspending.
 	//
-	// - **Checking**: being checked.
+	// - **Checking**: Checking.
 	//
-	// - **Migrating**: being migrated.
+	// - **Migrating**: Migrating.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: Failed.
 	//
-	// - **Catched**: incremental data migration or synchronization in progress.
+	// - **Catched**: Incremental migration or synchronization in progress.
 	//
-	// - **Finished**: completed.
+	// - **Finished**: Finished.
 	//
 	// example:
 	//
 	// Finished
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The total number of returned data entries.
+	// The total number of returned records.
 	//
 	// example:
 	//
@@ -2391,7 +2391,7 @@ func (s *DescribePreCheckStatusResponseBodySubDistributedJobStatus) Validate() e
 }
 
 type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress struct {
-	// The time when the specific item was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+	// The start time of the specific item, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -2407,61 +2407,61 @@ type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress struct
 	//
 	// false
 	CanSkip *bool `json:"CanSkip,omitempty" xml:"CanSkip,omitempty"`
-	// The number of subtasks that are currently running.
+	// The number of currently running subtasks.
 	//
 	// example:
 	//
 	// 0
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
-	// The DDL operation that was executed.
+	// The executed DDL operation.
 	//
 	// example:
 	//
 	// None
 	DdlSql *string `json:"DdlSql,omitempty" xml:"DdlSql,omitempty"`
-	// The synchronization latency of incremental data migration or incremental data synchronization.
+	// The incremental data migration or synchronization latency.
 	//
 	// example:
 	//
 	// 0
 	DelaySeconds *int32 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	// The name of the database to which the migration object belongs in the destination instance.
+	// The name of the database to which the migrated object belongs in the destination instance.
 	//
 	// example:
 	//
 	// databasetest
 	DestSchema *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
-	// This parameter will be deprecated.
+	// This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// None
 	DiffRow *int64 `json:"DiffRow,omitempty" xml:"DiffRow,omitempty"`
-	// The error details when the specific item encounters an error.
+	// The error details when the specific item fails.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ_DETAIL
 	ErrDetail *string `json:"ErrDetail,omitempty" xml:"ErrDetail,omitempty"`
-	// The error message when the specific item encounters an error.
+	// The error message when the specific item fails.
 	//
 	// example:
 	//
 	// ODPS project does not exist odps.`huijin
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// The completion time. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+	// The completion time. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-03-31T03:36:11.000+00:00
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the record in the metastore.
+	// The ID of the record in the metadatabase.
 	//
 	// example:
 	//
 	// 3890****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the specific item is directly ignored and the next item is processed. Valid values:
+	// Indicates whether the specific item is directly ignored to proceed to the next specific item. Valid values:
 	//
 	// - **N**: No.
 	//
@@ -2477,13 +2477,13 @@ type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress struct
 	//
 	// login_common_time
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// l3m1213ye7l****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The execution logs of the error.
+	// The execution log information for errors.
 	Logs []*DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgressLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// The name of the specific item.
 	//
@@ -2497,19 +2497,19 @@ type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress struct
 	//
 	// 1
 	OrderNum *int32 `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
-	// This parameter will be deprecated.
+	// This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// None
 	ParentObj *string `json:"ParentObj,omitempty" xml:"ParentObj,omitempty"`
-	// The repair method when the precheck does not pass.
+	// The solution to a precheck failure.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ_REPAIR
 	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
-	// Indicates whether the item has been skipped. Valid values:
+	// Indicates whether the task is skipped. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -2519,7 +2519,7 @@ type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress struct
 	//
 	// true
 	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	// The name of the database to which the migration object belongs in the source instance.
+	// The name of the database to which the migrated object belongs in the source instance.
 	//
 	// example:
 	//
@@ -2527,25 +2527,25 @@ type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress struct
 	SourceSchema *string `json:"SourceSchema,omitempty" xml:"SourceSchema,omitempty"`
 	// The execution status of the subtask. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: Not started.
 	//
-	// - **Suspending**: suspended.
+	// - **Suspending**: Suspending.
 	//
-	// - **Checking**: being checked.
+	// - **Checking**: Checking.
 	//
-	// - **Migrating**: being migrated.
+	// - **Migrating**: Migrating.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: Failed.
 	//
-	// - **Catched**: incremental data migration or synchronization in progress.
+	// - **Catched**: Incremental migration or synchronization in progress.
 	//
-	// - **Finished**: completed.
+	// - **Finished**: Finished.
 	//
 	// example:
 	//
 	// Finished
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The progress of sub-items of the specific item.
+	// The progress of the sub-items of the specific item.
 	//
 	// > If <b>[]</b> is returned, no sub-items exist.
 	//
@@ -2553,7 +2553,7 @@ type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress struct
 	//
 	// []
 	Sub *string `json:"Sub,omitempty" xml:"Sub,omitempty"`
-	// The name of the target object.
+	// The names of the destination objects.
 	//
 	// example:
 	//

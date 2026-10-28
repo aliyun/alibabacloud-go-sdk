@@ -64,19 +64,19 @@ type iDescribeSynchronizationJobStatusResponseBody interface {
 }
 
 type DescribeSynchronizationJobStatusResponseBody struct {
-	// The timestamp of the latest synchronized data, in UNIX timestamp format.
+	// The timestamp when the latest data record is synchronized. The value is a UNIX timestamp.
 	//
-	// > You can use a search engine to find a UNIX timestamp converter.
+	// > You can use a search engine to obtain a UNIX timestamp converter.
 	//
 	// example:
 	//
 	// 1610616144
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// Indicates whether initial full data synchronization was performed. Valid values:
+	// Specifies whether to perform initial full data synchronization. Valid values:
 	//
-	// - **true**: Yes.
+	// - **true**: yes
 	//
-	// - **false**: No.
+	// - **false**: no
 	//
 	// example:
 	//
@@ -100,43 +100,43 @@ type DescribeSynchronizationJobStatusResponseBody struct {
 	DelayMillis *int64 `json:"DelayMillis,omitempty" xml:"DelayMillis,omitempty"`
 	// The connection information of the destination instance.
 	DestinationEndpoint *DescribeSynchronizationJobStatusResponseBodyDestinationEndpoint `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	// The error code returned when the call failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the call failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message returned when data synchronization failed.
+	// The error message returned when data synchronization fails.
 	//
 	// example:
 	//
 	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The expiration time of the synchronization instance, in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The expiration time of the data synchronization instance. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
-	// > This parameter is returned only when the value of the **PayType*	- parameter is **PrePaid**.
+	// > This parameter is returned only when the **PayType*	- parameter is set to **PrePaid**.
 	//
 	// example:
 	//
 	// 2021-03-07T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The billing method of the synchronization instance. Valid values:
+	// The billing method of the data synchronization instance. Valid values:
 	//
-	// - **PrePaid**: subscription.
+	// - **PrePaid**: subscription
 	//
-	// - **PostPaid**: pay-as-you-go.
+	// - **PostPaid**: pay-as-you-go
 	//
 	// example:
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The overview of the synchronization link.
+	// The performance overview of the synchronization task.
 	Performance *DescribeSynchronizationJobStatusResponseBodyPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	// The precheck status.
 	PrecheckStatus *DescribeSynchronizationJobStatusResponseBodyPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
@@ -148,37 +148,37 @@ type DescribeSynchronizationJobStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The connection information of the source instance.
 	SourceEndpoint *DescribeSynchronizationJobStatusResponseBodySourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	// The status of the synchronization instance. Valid values:
+	// The status of the data synchronization instance. Valid values:
 	//
 	// - **notStarted**: not started.
 	//
-	// - **prechecking**: running a precheck.
+	// - **prechecking**: precheck in progress.
 	//
 	// - **precheckFailed**: precheck failed.
 	//
-	// - **initializating**: performing initial synchronization.
+	// - **initializating**: synchronization initialization in progress.
 	//
-	// - **initializeFailed**: initial synchronization failed.
+	// - **initializeFailed**: synchronization initialization failed.
 	//
 	// - **synchronizing**: synchronizing.
 	//
 	// - **failed**: synchronization failed.
 	//
-	// - **suspending**: paused.
+	// - **suspending**: pausing.
 	//
 	// - **modifying**: modifying synchronization objects.
 	//
-	// - **finished**: completed.
+	// - **finished**: finished.
 	//
 	// example:
 	//
 	// synchronizing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether initial schema synchronization was performed. Valid values:
+	// Specifies whether to perform initial schema synchronization. Valid values:
 	//
-	// - **true**: Yes.
+	// - **true**: yes
 	//
-	// - **false**: No.
+	// - **false**: no
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type DescribeSynchronizationJobStatusResponseBody struct {
 	StructureInitialization *string `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
 	// The status of initial schema synchronization.
 	StructureInitializationStatus *DescribeSynchronizationJobStatusResponseBodyStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -194,15 +194,15 @@ type DescribeSynchronizationJobStatusResponseBody struct {
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// - **Forward**: forward.
+	// - **Forward**: forward
 	//
-	// - **Reverse**: reverse.
+	// - **Reverse**: reverse
 	//
 	// example:
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The specification of the synchronization link.
+	// The specifications of the synchronization task.
 	//
 	// example:
 	//
@@ -214,11 +214,11 @@ type DescribeSynchronizationJobStatusResponseBody struct {
 	//
 	// dtsexjk1alb116****
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
-	// The name of the synchronization instance.
+	// The name of the data synchronization instance.
 	//
 	// example:
 	//
-	// MySQL同步
+	// MySQL synchronization
 	SynchronizationJobName *string `json:"SynchronizationJobName,omitempty" xml:"SynchronizationJobName,omitempty"`
 	// The synchronization objects.
 	SynchronizationObjects []*DescribeSynchronizationJobStatusResponseBodySynchronizationObjects `json:"SynchronizationObjects,omitempty" xml:"SynchronizationObjects,omitempty" type:"Repeated"`
@@ -521,7 +521,7 @@ func (s *DescribeSynchronizationJobStatusResponseBody) Validate() error {
 }
 
 type DescribeSynchronizationJobStatusResponseBodyDataInitializationStatus struct {
-	// The error message returned when initial full data synchronization failed.
+	// The error message returned when initial full data synchronization fails.
 	//
 	// example:
 	//
@@ -533,7 +533,7 @@ type DescribeSynchronizationJobStatusResponseBodyDataInitializationStatus struct
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of records that have been synchronized during initial full data synchronization.
+	// The number of data records that have been synchronized during initial full data synchronization.
 	//
 	// example:
 	//
@@ -541,13 +541,13 @@ type DescribeSynchronizationJobStatusResponseBodyDataInitializationStatus struct
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The status of initial full data synchronization. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: not started
 	//
-	// - **Migrating**: in progress.
+	// - **Migrating**: initializing
 	//
-	// - **Failed**: failed.
+	// - **Failed**: initialization failed
 	//
-	// - **Finished**: completed.
+	// - **Finished**: initialization completed
 	//
 	// example:
 	//
@@ -604,29 +604,29 @@ func (s *DescribeSynchronizationJobStatusResponseBodyDataInitializationStatus) V
 }
 
 type DescribeSynchronizationJobStatusResponseBodyDataSynchronizationStatus struct {
-	// The timestamp of the latest synchronized data, in UNIX timestamp format.
+	// The timestamp when the latest data record is synchronized. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1610709865
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The synchronization latency of incremental data synchronization, in seconds.
+	// The incremental data synchronization latency, in seconds.
 	//
 	// example:
 	//
 	// 0
 	Delay *string `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The synchronization latency of incremental data synchronization, in milliseconds.
+	// The incremental data synchronization latency, in milliseconds.
 	//
 	// example:
 	//
 	// 856
 	DelayMillis *int64 `json:"DelayMillis,omitempty" xml:"DelayMillis,omitempty"`
-	// The error message returned when incremental data synchronization failed.
+	// The error message returned when incremental data synchronization fails.
 	//
 	// example:
 	//
-	// 任务失败太久无法恢复
+	// The task has failed for too long and cannot be recovered
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The progress of incremental data synchronization, in percentage.
 	//
@@ -636,13 +636,13 @@ type DescribeSynchronizationJobStatusResponseBodyDataSynchronizationStatus struc
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	// The status of incremental data synchronization. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: not started
 	//
-	// - **Migrating**: synchronizing.
+	// - **Migrating**: synchronizing
 	//
-	// - **Failed**: failed.
+	// - **Failed**: synchronization failed
 	//
-	// - **Finished**: completed.
+	// - **Finished**: synchronization completed
 	//
 	// example:
 	//
@@ -717,7 +717,7 @@ func (s *DescribeSynchronizationJobStatusResponseBodyDataSynchronizationStatus) 
 }
 
 type DescribeSynchronizationJobStatusResponseBodyDestinationEndpoint struct {
-	// The database type of the destination instance.
+	// The database engine of the destination instance.
 	//
 	// example:
 	//
@@ -735,7 +735,7 @@ type DescribeSynchronizationJobStatusResponseBodyDestinationEndpoint struct {
 	//
 	// rm-bp162d4tp0500****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the destination instance.
+	// The destination instance type.
 	//
 	// example:
 	//
@@ -822,13 +822,13 @@ func (s *DescribeSynchronizationJobStatusResponseBodyDestinationEndpoint) Valida
 }
 
 type DescribeSynchronizationJobStatusResponseBodyPerformance struct {
-	// The data flow rate of synchronization per second, in MB/s.
+	// The amount of data synchronized per second, in MB/s.
 	//
 	// example:
 	//
 	// 1
 	FLOW *string `json:"FLOW,omitempty" xml:"FLOW,omitempty"`
-	// The number of SQL statements synchronized per second, including BEGIN, COMMIT, DML statements (INSERT, DELETE, UPDATE), and DDL statements.
+	// The number of SQL statements synchronized per second, including BEGIN, COMMIT, DML (INSERT, DELETE, and UPDATE), and DDL statements.
 	//
 	// example:
 	//
@@ -867,7 +867,7 @@ func (s *DescribeSynchronizationJobStatusResponseBodyPerformance) Validate() err
 }
 
 type DescribeSynchronizationJobStatusResponseBodyPrecheckStatus struct {
-	// The details of each precheck item.
+	// The execution details of each precheck item.
 	Detail []*DescribeSynchronizationJobStatusResponseBodyPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
 	// The overall progress of the precheck, in percentage.
 	//
@@ -877,9 +877,9 @@ type DescribeSynchronizationJobStatusResponseBodyPrecheckStatus struct {
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	// The precheck result. Valid values:
 	//
-	// - **Success**: passed.
+	// - **Success**: The check item passed.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: The check item failed.
 	//
 	// example:
 	//
@@ -938,31 +938,31 @@ func (s *DescribeSynchronizationJobStatusResponseBodyPrecheckStatus) Validate() 
 type DescribeSynchronizationJobStatusResponseBodyPrecheckStatusDetail struct {
 	// The check result. Valid values:
 	//
-	// - **Success**: passed.
+	// - **Success**: The check item passed.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: The check item failed.
 	//
 	// example:
 	//
 	// Success
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The error message returned when the precheck failed.
+	// The error message returned when a precheck item fails.
 	//
-	// > This parameter is returned only when the value of the **CheckStatus*	- parameter is **Failed**.
+	// > This parameter is returned only when the **CheckStatus*	- parameter is set to **Failed**.
 	//
 	// example:
 	//
 	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The precheck item.
+	// The name of the precheck item.
 	//
 	// example:
 	//
 	// CHECK_CONN_SRC
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// The repair method when the precheck failed.
+	// The solution for a failed precheck item.
 	//
-	// > This parameter is returned only when the value of the **CheckStatus*	- parameter is **Failed**.
+	// > This parameter is returned only when the **CheckStatus*	- parameter is set to **Failed**.
 	//
 	// example:
 	//
@@ -1019,7 +1019,7 @@ func (s *DescribeSynchronizationJobStatusResponseBodyPrecheckStatusDetail) Valid
 }
 
 type DescribeSynchronizationJobStatusResponseBodySourceEndpoint struct {
-	// The database type of the source instance.
+	// The database engine of the source instance.
 	//
 	// example:
 	//
@@ -1124,7 +1124,7 @@ func (s *DescribeSynchronizationJobStatusResponseBodySourceEndpoint) Validate() 
 }
 
 type DescribeSynchronizationJobStatusResponseBodyStructureInitializationStatus struct {
-	// The error message returned when initial schema synchronization encountered an exception.
+	// The error message returned when an exception occurs during initial schema synchronization.
 	//
 	// example:
 	//
@@ -1136,7 +1136,7 @@ type DescribeSynchronizationJobStatusResponseBodyStructureInitializationStatus s
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of tables that have completed initial schema synchronization.
+	// The number of tables that have been synchronized during initial schema synchronization.
 	//
 	// example:
 	//
@@ -1144,13 +1144,13 @@ type DescribeSynchronizationJobStatusResponseBodyStructureInitializationStatus s
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The status of initial schema synchronization. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: not started
 	//
-	// - **Migrating**: in progress.
+	// - **Migrating**: initializing
 	//
-	// - **Failed**: failed.
+	// - **Failed**: initialization failed
 	//
-	// - **Finished**: completed.
+	// - **Finished**: initialization completed
 	//
 	// example:
 	//
@@ -1207,7 +1207,7 @@ func (s *DescribeSynchronizationJobStatusResponseBodyStructureInitializationStat
 }
 
 type DescribeSynchronizationJobStatusResponseBodySynchronizationObjects struct {
-	// The name mapped to the database to be synchronized in the destination database.
+	// The mapped name of the database to be synchronized in the destination database.
 	//
 	// example:
 	//
@@ -1219,7 +1219,7 @@ type DescribeSynchronizationJobStatusResponseBodySynchronizationObjects struct {
 	//
 	// dtstestdatabase
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The tables excluded from the database to be synchronized. These tables will not be synchronized.
+	// The tables excluded from the database to be synchronized. These tables are not synchronized.
 	TableExcludes []*DescribeSynchronizationJobStatusResponseBodySynchronizationObjectsTableExcludes `json:"TableExcludes,omitempty" xml:"TableExcludes,omitempty" type:"Repeated"`
 	// The tables to be synchronized.
 	TableIncludes []*DescribeSynchronizationJobStatusResponseBodySynchronizationObjectsTableIncludes `json:"TableIncludes,omitempty" xml:"TableIncludes,omitempty" type:"Repeated"`

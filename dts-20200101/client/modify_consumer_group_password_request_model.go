@@ -32,7 +32,7 @@ type iModifyConsumerGroupPasswordRequest interface {
 }
 
 type ModifyConsumerGroupPasswordRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter is scheduled to be deprecated.
 	//
 	// example:
 	//
@@ -67,13 +67,13 @@ type ModifyConsumerGroupPasswordRequest struct {
 	// dtstest
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
 	OwnerId               *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the change tracking instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type ModifyConsumerGroupPasswordRequest struct {
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 	// The new password of the consumer group.
 	//
-	// - The password must contain characters from at least two of the following categories: uppercase letters, lowercase letters, digits, and special characters.
+	// - The password must contain at least two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// - The password must be 8 to 32 characters in length.
 	//

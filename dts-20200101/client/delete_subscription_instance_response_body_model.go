@@ -20,19 +20,19 @@ type iDeleteSubscriptionInstanceResponseBody interface {
 }
 
 type DeleteSubscriptionInstanceResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

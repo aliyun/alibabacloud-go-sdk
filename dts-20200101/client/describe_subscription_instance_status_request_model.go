@@ -22,7 +22,7 @@ type iDescribeSubscriptionInstanceStatusRequest interface {
 }
 
 type DescribeSubscriptionInstanceStatusRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated soon.
 	//
 	// example:
 	//
@@ -35,13 +35,13 @@ type DescribeSubscriptionInstanceStatusRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query the instance ID.
+	// Instance ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query instance ID.
 	//
 	// This parameter is required.
 	//

@@ -32,21 +32,21 @@ type ModifyJobStepCheckpointResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The dynamic error message used to replace the %s placeholder in the ErrMessage parameter.
+	// The dynamic error message, which is used to replace the %s placeholder in the error message returned by the ErrMessage parameter.
 	//
-	// > For example, if ErrMessage returns "The Value of Input Parameter %s is not valid" and DynamicMessage returns "JobId", it indicates that the JobId request parameter you provided is invalid.
+	// > If ErrMessage returns The Value of Input Parameter %s is not valid and DynamicMessage returns JobId, it indicates that the value of the JobId request parameter is invalid.
 	//
 	// example:
 	//
 	// can not find env: zbyk-pre
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned when the API call fails.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the API call fails.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type ModifyJobStepCheckpointResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C306C198-7807-409D-930A-D6CE6C32****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request succeeded.
+	// - **true**: The request was successful.
 	//
 	// - **false**: The request failed.
 	//

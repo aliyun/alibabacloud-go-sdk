@@ -22,26 +22,26 @@ type iModifyGadInstanceNameRequest interface {
 }
 
 type ModifyGadInstanceNameRequest struct {
-	// The instance ID of the active geo-redundancy instance group.
+	// The instance ID of the active-active instance group.
 	//
 	// example:
 	//
 	// rm-bp1i99e8l7913****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name of the active geo-redundancy instance group.
+	// The name of the active-active instance group.
 	//
 	// example:
 	//
 	// rm-uf6b0m001ir8mr9i9
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the task. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the task resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

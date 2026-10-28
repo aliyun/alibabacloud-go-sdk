@@ -34,7 +34,7 @@ type iDescribeDataCheckTableDiffDetailsResponseBody interface {
 }
 
 type DescribeDataCheckTableDiffDetailsResponseBody struct {
-	// The name of the database in the source instance that contains the table with inconsistent data.
+	// The name of the source database to which the table with inconsistent data belongs.
 	//
 	// example:
 	//
@@ -48,21 +48,21 @@ type DescribeDataCheckTableDiffDetailsResponseBody struct {
 	DiffCount *int64 `json:"DiffCount,omitempty" xml:"DiffCount,omitempty"`
 	// The inconsistency details.
 	DiffDetails []*DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails `json:"DiffDetails,omitempty" xml:"DiffDetails,omitempty" type:"Repeated"`
-	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response element.
+	// The dynamic error message, which is used to replace **%s*	- in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **Type**, the request parameter **Type*	- that you specified is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **Type**, the specified request parameter **Type*	- is invalid.
 	//
 	// example:
 	//
 	// Type
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
 	// InvalidParameter
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeDataCheckTableDiffDetailsResponseBody struct {
 	//
 	// dtsog8q1z3tc9t****"
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ func (s *DescribeDataCheckTableDiffDetailsResponseBody) Validate() error {
 }
 
 type DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails struct {
-	// The specific inconsistency details, which is a JSON string.
+	// The specific inconsistency details in JSON string format.
 	//
 	// - column: the field name.
 	//
@@ -241,7 +241,7 @@ type DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails struct {
 	//
 	// 2023-04-23T10:36:05.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The auto-increment primary key that identifies a verification result record.
+	// The auto-increment primary key used to identify a verification result record.
 	//
 	// example:
 	//

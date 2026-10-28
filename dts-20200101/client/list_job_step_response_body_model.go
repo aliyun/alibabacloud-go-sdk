@@ -24,13 +24,13 @@ type iListJobStepResponseBody interface {
 }
 
 type ListJobStepResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListJobStepResponseBody struct {
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ func (s *ListJobStepResponseBody) Validate() error {
 }
 
 type ListJobStepResponseBodyJobSteps struct {
-	// The job start time, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the task was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
 	// 2024-04-11T09:33:23Z
 	BootTime *string `json:"BootTime,omitempty" xml:"BootTime,omitempty"`
-	// Task step identity.
+	// The identifier of the task step.
 	//
 	// example:
 	//
 	// 01
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The job creation time, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the task was created. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
@@ -158,59 +158,59 @@ type ListJobStepResponseBodyJobSteps struct {
 	//
 	// fullcheck find different records : 2372
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// The error message.
+	// The fault information.
 	ErrorDetails []*ListJobStepResponseBodyJobStepsErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
-	// Task end time, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the task was finished. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
 	// 2024-03-15T02:15:14Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// Incremental data latency, in milliseconds.
+	// The incremental data latency, in milliseconds.
 	//
 	// example:
 	//
 	// 1
 	IncLatencyMilliseconds *int64 `json:"IncLatencyMilliseconds,omitempty" xml:"IncLatencyMilliseconds,omitempty"`
-	// Incremental data latency, in seconds.
+	// The incremental data latency, in seconds.
 	//
 	// example:
 	//
 	// -1
 	IncLatencySeconds *int64 `json:"IncLatencySeconds,omitempty" xml:"IncLatencySeconds,omitempty"`
-	// The task step ID.
+	// The ID of the task step.
 	//
 	// example:
 	//
 	// l02c1f7h179****
 	JobStepId *string `json:"JobStepId,omitempty" xml:"JobStepId,omitempty"`
-	// Task step information. Valid values:
+	// The task step information. Valid values:
 	//
-	// - Precheck: precheck phase
+	// - Precheck: The precheck phase.
 	//
-	// - Incremental data service: incremental data collection phase
+	// - Incremental data service: The incremental data collection phase.
 	//
-	// - dts.step.struct.load: schema migration phase
+	// - dts.step.struct.load: The schema migration phase.
 	//
-	// - dts.step.data.load: full migration phase
+	// - dts.step.data.load: The full data migration phase.
 	//
-	// - etl-check: extract, transform, and load phase
+	// - etl-check: The ETL phase.
 	//
-	// - Consistency validation: data verification phase
+	// - Consistency check: The data validation phase.
 	//
-	// - Synchronization: incremental synchronization phase
+	// - Synchronization: The incremental synchronization phase.
 	//
 	// example:
 	//
-	// 预检查
+	// Precheck
 	JobStepName *string `json:"JobStepName,omitempty" xml:"JobStepName,omitempty"`
-	// The time when the job was updated, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the task was modified. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
 	// 2025-01-03T02:26:14Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// Indicates whether the acceleration feature should be provided.
+	// Indicates whether the acceleration feature is required.
 	//
 	// example:
 	//
@@ -222,31 +222,31 @@ type ListJobStepResponseBodyJobSteps struct {
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// Task step serial number. Indicates the task execution order. A smaller value indicates an earlier execution order.
+	// The sequence number of the task step. A smaller value indicates an earlier execution order.
 	//
 	// example:
 	//
 	// 1
 	Serial *int32 `json:"Serial,omitempty" xml:"Serial,omitempty"`
-	// Task step status.
+	// The status of the task step.
 	//
 	// example:
 	//
 	// ○ Finished
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The number of sub-jobs.
+	// The number of subtasks.
 	//
 	// example:
 	//
 	// 1
 	SubJobCount *int32 `json:"SubJobCount,omitempty" xml:"SubJobCount,omitempty"`
-	// Step information of the sub-job.
+	// The step information of the subtask.
 	SubJobSteps []*ListJobStepResponseBodyJobStepsSubJobSteps `json:"SubJobSteps,omitempty" xml:"SubJobSteps,omitempty" type:"Repeated"`
-	// Used to distinguish between the Redis full and incremental phases. Valid values:
+	// The phase type used to distinguish between the full data and incremental data phases for Redis. Valid values:
 	//
-	// - full: Full phase
+	// - full: The full data phase.
 	//
-	// - inc: Incremental phase
+	// - inc: The incremental data phase.
 	//
 	// example:
 	//
@@ -447,13 +447,13 @@ func (s *ListJobStepResponseBodyJobSteps) Validate() error {
 }
 
 type ListJobStepResponseBodyJobStepsErrorDetails struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// URL of the help document.
+	// The URL of the help document.
 	//
 	// example:
 	//
@@ -492,77 +492,77 @@ func (s *ListJobStepResponseBodyJobStepsErrorDetails) Validate() error {
 }
 
 type ListJobStepResponseBodyJobStepsSubJobSteps struct {
-	// The time when the sub-job was started, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the subtask was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
 	// 2025-01-02T02:00:21Z
 	BootTime *string `json:"BootTime,omitempty" xml:"BootTime,omitempty"`
-	// Sub-task step identity.
+	// The identifier of the subtask step.
 	//
 	// example:
 	//
 	// 03
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the sub-job was created, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the subtask was created. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
 	// 2024-09-20T02:13:12Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// UncaughtException:java.lang.NullPointerException
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// Error message.
+	// The fault information.
 	ErrorDetails []*ListJobStepResponseBodyJobStepsSubJobStepsErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
-	// End time of the sub-task, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the subtask was finished. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
 	// 2024-03-15T02:15:14Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// Incremental data latency, in milliseconds.
+	// The incremental data latency, in milliseconds.
 	//
 	// example:
 	//
 	// 1
 	IncLatencyMilliseconds *string `json:"IncLatencyMilliseconds,omitempty" xml:"IncLatencyMilliseconds,omitempty"`
-	// Incremental data latency, in seconds.
+	// The incremental data latency, in seconds.
 	//
 	// example:
 	//
 	// 1
 	IncLatencySeconds *int64 `json:"IncLatencySeconds,omitempty" xml:"IncLatencySeconds,omitempty"`
-	// Job ID.
+	// The ID of the job step.
 	//
 	// example:
 	//
 	// mj3z9w9s10am68o_0004_0000
 	JobStepId *string `json:"JobStepId,omitempty" xml:"JobStepId,omitempty"`
-	// Sub-job step information. Valid values are as follows:
+	// The subtask step information. Valid values:
 	//
-	// - Precheck: precheck phase
+	// - Precheck: The precheck phase.
 	//
-	// - Incremental data service: incremental data collection phase
+	// - Incremental data service: The incremental data collection phase.
 	//
-	// - dts.step.struct.load: schema migration phase
+	// - dts.step.struct.load: The schema migration phase.
 	//
-	// - dts.step.data.load: full migration phase
+	// - dts.step.data.load: The full data migration phase.
 	//
-	// - etl-check: extract, transform, and load (ETL) phase
+	// - etl-check: The ETL phase.
 	//
-	// - Consistency validation: data verification phase
+	// - Consistency check: The data validation phase.
 	//
-	// - Synchronization: incremental synchronization phase
+	// - Synchronization: The incremental synchronization phase.
 	//
 	// example:
 	//
 	// test
 	JobStepName *string `json:"JobStepName,omitempty" xml:"JobStepName,omitempty"`
-	// The time when the sub-job was updated, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the subtask was modified. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
@@ -574,33 +574,33 @@ type ListJobStepResponseBodyJobStepsSubJobSteps struct {
 	//
 	// true
 	NeedAcceleration *bool `json:"NeedAcceleration,omitempty" xml:"NeedAcceleration,omitempty"`
-	// Progress of the sub-job step.
+	// The progress of the subtask step.
 	//
 	// example:
 	//
 	// 0
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// Serial number of the sub-task step. Indicates the task execution order; the smaller the numeric value, the earlier the execution order.
+	// The sequence number of the subtask step. A smaller value indicates an earlier execution order.
 	//
 	// example:
 	//
 	// 123
 	Serial *int32 `json:"Serial,omitempty" xml:"Serial,omitempty"`
-	// Status of the sub-task step. Valid values:
+	// The status of the subtask step. Valid values:
 	//
-	// - Failed: failed.
+	// - Failed: Failed.
 	//
-	// - Pause: paused.
+	// - Pause: Paused.
 	//
-	// - Schedule: scheduled.
+	// - Schedule: Scheduled.
 	//
-	// - Init: initialization.
+	// - Init: Initialized.
 	//
-	// - Running: synchronizing.
+	// - Running: Synchronizing.
 	//
-	// - Catched: waiting for synchronization.
+	// - Catched: Waiting for synchronization.
 	//
-	// - Finished: ended.
+	// - Finished: Finished.
 	//
 	// example:
 	//
@@ -765,13 +765,13 @@ func (s *ListJobStepResponseBodyJobStepsSubJobSteps) Validate() error {
 }
 
 type ListJobStepResponseBodyJobStepsSubJobStepsErrorDetails struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// URL of the help document.
+	// The URL of the help document.
 	//
 	// example:
 	//

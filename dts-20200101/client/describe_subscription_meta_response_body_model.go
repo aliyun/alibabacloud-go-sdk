@@ -24,13 +24,13 @@ type iDescribeSubscriptionMetaResponseBody interface {
 }
 
 type DescribeSubscriptionMetaResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeSubscriptionMetaResponseBody struct {
 	//
 	// C12E7A51-09A4-5796-94BE-08B6DA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The data information about the change tracking subtasks.
+	// The data information of the change tracking subtasks.
 	SubscriptionMetaList []*DescribeSubscriptionMetaResponseBodySubscriptionMetaList `json:"SubscriptionMetaList,omitempty" xml:"SubscriptionMetaList,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,15 +134,15 @@ func (s *DescribeSubscriptionMetaResponseBody) Validate() error {
 }
 
 type DescribeSubscriptionMetaResponseBodySubscriptionMetaList struct {
-	// The consumption checkpoint of the subtask, which is the timestamp of the first data record consumed by the client. The value is a UNIX timestamp. Unit: seconds.
+	// The consumption checkpoint of the subtask, which is the timestamp when the client consumes the first data record. The value is a UNIX timestamp in seconds.
 	//
-	// > You can use a search engine to find a UNIX timestamp converter.
+	// > You can use a search engine to obtain a UNIX timestamp converter.
 	//
 	// example:
 	//
 	// 1610524452
 	Checkpoint *int64 `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The objects of the subtask. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+	// The change tracking objects of the subtask. For more information, see [Objects for data migration, synchronization, and change tracking](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type DescribeSubscriptionMetaResponseBodySubscriptionMetaList struct {
 	//
 	// z38m91gg2******
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	// The topic of the subtask.
+	// The change tracking topic of the subtask.
 	//
 	// example:
 	//

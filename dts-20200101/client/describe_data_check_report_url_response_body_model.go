@@ -26,13 +26,13 @@ type iDescribeDataCheckReportUrlResponseBody interface {
 type DescribeDataCheckReportUrlResponseBody struct {
 	// The download URL of the verification report.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned when the call fails.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type DescribeDataCheckReportUrlResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// AF2DE23-B692-5B85-90B7-44B6F4D8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

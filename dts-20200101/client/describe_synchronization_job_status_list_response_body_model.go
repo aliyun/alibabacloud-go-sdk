@@ -28,13 +28,13 @@ type iDescribeSynchronizationJobStatusListResponseBody interface {
 }
 
 type DescribeSynchronizationJobStatusListResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -46,27 +46,27 @@ type DescribeSynchronizationJobStatusListResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of synchronization instances displayed on one page.
+	// The number of synchronization instances returned on each page.
 	//
 	// example:
 	//
 	// 2
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1413460B-138A-48D1-836C-B24EDDC1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The status list of synchronization jobs.
+	// The list of synchronization job statuses.
 	SynchronizationJobListStatusList []*DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusList `json:"SynchronizationJobListStatusList,omitempty" xml:"SynchronizationJobListStatusList,omitempty" type:"Repeated"`
-	// The total number of synchronization instances that were queried.
+	// The total number of queried synchronization instances.
 	//
 	// example:
 	//
@@ -218,35 +218,35 @@ func (s *DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListS
 }
 
 type DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusListSynchronizationDirectionInfoList struct {
-	// The timestamp of the latest synchronized data, in UNIX timestamp format.
+	// The timestamp when the latest data record is synchronized. The value is a UNIX timestamp.
 	//
-	// > You can use a search engine to find a UNIX timestamp converter.
+	// > You can use a search engine to find a UNIX timestamp conversion tool.
 	//
 	// example:
 	//
 	// 1610524452
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The synchronization status of the synchronization instance in this direction. Valid values:
+	// The synchronization status of the synchronization instance in the specified direction. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: Not started.
 	//
-	// - **Prechecking**: running a precheck.
+	// - **Prechecking**: Prechecking.
 	//
-	// - **PrecheckFailed**: precheck failed.
+	// - **PrecheckFailed**: Precheck failed.
 	//
-	// - **Initializing**: performing initial synchronization.
+	// - **Initializing**: Initial synchronization.
 	//
-	// - **InitializeFailed**: initial synchronization failed.
+	// - **InitializeFailed**: Initial synchronization failed.
 	//
-	// - **Synchronizing**: synchronizing.
+	// - **Synchronizing**: Synchronizing.
 	//
-	// - **Failed**: synchronization failed.
+	// - **Failed**: Failed.
 	//
-	// - **Suspending**: paused.
+	// - **Suspending**: Suspending.
 	//
-	// - **Modifying**: modifying synchronization objects.
+	// - **Modifying**: Modifying synchronization objects.
 	//
-	// - **Finished**: completed.
+	// - **Finished**: Finished.
 	//
 	// example:
 	//
@@ -254,9 +254,9 @@ type DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatu
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// - **Forward**: forward.
+	// - **Forward**: Forward.
 	//
-	// - **Reverse**: reverse.
+	// - **Reverse**: Reverse.
 	//
 	// example:
 	//

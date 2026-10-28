@@ -20,13 +20,13 @@ type iUntagResourcesResponseBody interface {
 }
 
 type UntagResourcesResponseBody struct {
-	// The error code returned if the call fails.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call fails.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type UntagResourcesResponseBody struct {
 	//
 	// ED3A8FE0-EEFA-4416-BC42-34D61A52****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

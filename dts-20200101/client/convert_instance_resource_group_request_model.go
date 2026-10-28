@@ -24,25 +24,25 @@ type iConvertInstanceResourceGroupRequest interface {
 }
 
 type ConvertInstanceResourceGroupRequest struct {
-	// A legacy parameter. This parameter does not take effect. You do not need to pass this parameter.
+	// A legacy parameter. This parameter does not take effect and does not need to be specified.
 	//
 	// example:
 	//
 	// m4312mab158****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the new resource group. You can obtain the ID from the Resource Management console. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The ID of the new resource group. You can obtain the ID from the Resource Management console. For more information, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
 	// rg-aek2r4fkrqw****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The region in which the DTS instance resides.
+	// The region ID of the DTS instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A parameter reserved for special business scenarios. You do not need to pass this parameter.
+	// A field reserved for specific business scenarios. You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ConvertInstanceResourceGroupRequest struct {
 	//
 	// dtszhc12zp727o****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// A parameter reserved for special business scenarios. You do not need to pass this parameter.
+	// A field reserved for specific business scenarios. You do not need to specify this parameter.
 	//
 	// example:
 	//

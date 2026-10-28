@@ -36,25 +36,25 @@ type iDescribeDtsEtlJobVersionInfoResponseBody interface {
 type DescribeDtsEtlJobVersionInfoResponseBody struct {
 	// The array of ETL task information objects.
 	DtsEtlJobVersionInfos []*DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos `json:"DtsEtlJobVersionInfos,omitempty" xml:"DtsEtlJobVersionInfos,omitempty" type:"Repeated"`
-	// The dynamic error code associated with this request.
+	// The dynamic error code associated with the request.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message associated with this request.
+	// The dynamic error message associated with the request.
 	//
 	// example:
 	//
 	// present environment is not support,so skip
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned when the specified ETL task ID is invalid and the corresponding task cannot be found.
+	// The error code returned when the specified ETL task ID is incorrect and the corresponding task cannot be found.
 	//
 	// example:
 	//
 	// InvalidJobId
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the specified ETL task ID is invalid and the corresponding task cannot be found. The task may have been deleted.
+	// The error message returned when the specified ETL task ID is incorrect and the corresponding task cannot be found. The task may have been deleted.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeDtsEtlJobVersionInfoResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type DescribeDtsEtlJobVersionInfoResponseBody struct {
 	//
 	// 224DB9F7-3100-4899-AB9C-C938BCCB43E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. A value of false indicates a failure.
+	// Indicates whether the request was successful. If the request fails, false is returned.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos struct {
 	//
 	// 1637229315000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos struct {
 	//
 	// dtsg******gd
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ETL task ID.
+	// The ID of the ETL task.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ type DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos struct {
 	//
 	// 1637230117000
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The safe checkpoint, which indicates the current position of the ETL task.
+	// The security checkpoint, which is the current checkpoint of the ETL task.
 	//
 	// example:
 	//

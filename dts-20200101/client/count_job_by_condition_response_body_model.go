@@ -28,27 +28,27 @@ type iCountJobByConditionResponseBody interface {
 }
 
 type CountJobByConditionResponseBody struct {
-	// The internal error code. This parameter will be deprecated.
+	// The internal service error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message used to replace the **%s*	- placeholder in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace **%s*	- in the **ErrMessage*	- parameter.
 	//
-	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// present environment is not support,so skip.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the call fails.
+	// The error code returned when an error occurs.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call fails.
+	// The error message returned when an error occurs.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CountJobByConditionResponseBody struct {
 	//
 	// FC3BAAF2-74E3-4471-8EB5-96202D6A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

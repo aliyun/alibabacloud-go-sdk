@@ -24,19 +24,19 @@ type iDescribeEndpointSwitchStatusResponseBody interface {
 }
 
 type DescribeEndpointSwitchStatusResponseBody struct {
-	// The error code returned when the call fails.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// This parameter is discontinued.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
@@ -50,21 +50,21 @@ type DescribeEndpointSwitchStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution status of the task. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: The task is not started.
 	//
-	// - **Initializing**: initializing.
+	// - **Initializing**: The task is being initialized.
 	//
-	// - **Switching**: switching.
+	// - **Switching**: The task is being switched.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: The task failed.
 	//
-	// - **Finished**: succeeded.
+	// - **Finished**: The task is completed.
 	//
 	// example:
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

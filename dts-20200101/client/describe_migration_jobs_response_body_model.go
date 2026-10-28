@@ -28,13 +28,13 @@ type iDescribeMigrationJobsResponseBody interface {
 }
 
 type DescribeMigrationJobsResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type DescribeMigrationJobsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of records that can be displayed on the current page.
+	// The maximum number of entries that can be displayed on the current page.
 	//
 	// example:
 	//

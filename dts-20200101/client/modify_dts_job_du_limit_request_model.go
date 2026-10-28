@@ -22,7 +22,7 @@ type iModifyDtsJobDuLimitRequest interface {
 }
 
 type ModifyDtsJobDuLimitRequest struct {
-	// The ID of the DTS migration, synchronization, or change tracking task.
+	// The ID of the DTS data migration, data synchronization, or change tracking task.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ModifyDtsJobDuLimitRequest struct {
 	//
 	// dtsxxx
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The DU upper limit of the task.
+	// The DU limit for the task.
 	//
 	// > The minimum value is **1**.
 	//

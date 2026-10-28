@@ -24,13 +24,13 @@ type iModifyConsumptionTimestampRequest interface {
 }
 
 type ModifyConsumptionTimestampRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be deprecated.
+	// The ID of the Alibaba Cloud account. This parameter is not required and will be deprecated.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The consumption checkpoint in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The consumption checkpoint. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC time).
 	//
 	// This parameter is required.
 	//
@@ -39,13 +39,13 @@ type ModifyConsumptionTimestampRequest struct {
 	// 2019-10-15T17:20:03Z
 	ConsumptionTimestamp *string `json:"ConsumptionTimestamp,omitempty" xml:"ConsumptionTimestamp,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

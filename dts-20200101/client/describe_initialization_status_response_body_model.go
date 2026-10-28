@@ -26,31 +26,31 @@ type iDescribeInitializationStatusResponseBody interface {
 }
 
 type DescribeInitializationStatusResponseBody struct {
-	// The details of full data initialization.
+	// The details of initial full data synchronization.
 	DataInitializationDetails []*DescribeInitializationStatusResponseBodyDataInitializationDetails `json:"DataInitializationDetails,omitempty" xml:"DataInitializationDetails,omitempty" type:"Repeated"`
 	// The details of incremental data synchronization.
 	//
-	// > This parameter set and the included response parameters will be discontinued.
+	// > This parameter collection and its contained response parameters will be deprecated soon.
 	DataSynchronizationDetails []*DescribeInitializationStatusResponseBodyDataSynchronizationDetails `json:"DataSynchronizationDetails,omitempty" xml:"DataSynchronizationDetails,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 150DECD9-13FF-4929-A5DE-855BE9CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of schema initialization.
+	// The details of initial schema synchronization.
 	StructureInitializationDetails []*DescribeInitializationStatusResponseBodyStructureInitializationDetails `json:"StructureInitializationDetails,omitempty" xml:"StructureInitializationDetails,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful.
 	//
@@ -163,13 +163,13 @@ func (s *DescribeInitializationStatusResponseBody) Validate() error {
 }
 
 type DescribeInitializationStatusResponseBodyDataInitializationDetails struct {
-	// The name of the database to which the objects to be synchronized belong in the destination instance.
+	// The name of the database to which the object to be synchronized belongs in the destination instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	DestinationOwnerDBName *string `json:"DestinationOwnerDBName,omitempty" xml:"DestinationOwnerDBName,omitempty"`
-	// The error message returned when full data initialization failed.
+	// The error message returned if the initial full data synchronization fails.
 	//
 	// example:
 	//
@@ -177,33 +177,33 @@ type DescribeInitializationStatusResponseBodyDataInitializationDetails struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The number of rows that have been synchronized.
 	//
-	// > This parameter indicates the total number of rows that are actually synchronized. The value of the **TotalRowNum*	- parameter is obtained from the system table of the source database before synchronization starts. Due to time differences during synchronization, the two values may differ.
+	// > This parameter indicates the actual total number of synchronized rows. The value of the **TotalRowNum*	- parameter is obtained from the system tables of the source database before the synchronization starts. Due to the time difference during synchronization, the values of the two parameters may differ.
 	//
 	// example:
 	//
 	// 9993
 	FinishRowNum *string `json:"FinishRowNum,omitempty" xml:"FinishRowNum,omitempty"`
-	// The name of the database to which the objects to be synchronized belong in the source instance.
+	// The name of the database to which the object to be synchronized belongs in the source instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	SourceOwnerDBName *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
-	// The status of full data initialization. Valid values:
+	// The status of initial full data synchronization. Valid values:
 	//
-	// - **NotStarted**: Not started.
+	// - **NotStarted**: The initialization is not started.
 	//
-	// - **Migrating**: In progress.
+	// - **Migrating**: The initialization is in progress.
 	//
-	// - **Failed**: Failed.
+	// - **Failed**: The initialization failed.
 	//
-	// - **Finished**: Completed.
+	// - **Finished**: The initialization is complete.
 	//
 	// example:
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The table name of the synchronization object.
+	// The name of the table to be synchronized.
 	//
 	// example:
 	//
@@ -211,13 +211,13 @@ type DescribeInitializationStatusResponseBodyDataInitializationDetails struct {
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The total number of rows to be synchronized.
 	//
-	// > The value of this parameter is obtained from the system table of the source database before synchronization starts. The **FinishRowNum*	- parameter indicates the total number of rows that are actually synchronized. Due to time differences during synchronization, the two values may differ.
+	// > The value of this parameter is obtained from the system tables of the source database before the synchronization starts. The **FinishRowNum*	- parameter indicates the actual total number of synchronized rows. Due to the time difference during synchronization, the values of the two parameters may differ.
 	//
 	// example:
 	//
 	// 9981
 	TotalRowNum *string `json:"TotalRowNum,omitempty" xml:"TotalRowNum,omitempty"`
-	// The time consumed by full data initialization.
+	// The duration of the full data initialization.
 	//
 	// example:
 	//
@@ -310,19 +310,19 @@ func (s *DescribeInitializationStatusResponseBodyDataInitializationDetails) Vali
 }
 
 type DescribeInitializationStatusResponseBodyDataSynchronizationDetails struct {
-	// The name of the database to which the objects to be synchronized belong in the destination instance.
+	// The name of the database to which the object to be synchronized belongs in the destination instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	DestinationOwnerDBName *string `json:"DestinationOwnerDBName,omitempty" xml:"DestinationOwnerDBName,omitempty"`
-	// The error message returned when incremental data synchronization failed.
+	// The error message returned if the incremental data synchronization fails.
 	//
 	// example:
 	//
-	// 任务失败太久无法恢复
+	// The task has failed for too long to be recovered
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The name of the database to which the objects to be synchronized belong in the source instance.
+	// The name of the database to which the object to be synchronized belongs in the source instance.
 	//
 	// example:
 	//
@@ -330,19 +330,19 @@ type DescribeInitializationStatusResponseBodyDataSynchronizationDetails struct {
 	SourceOwnerDBName *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
 	// The status of incremental data synchronization. Valid values:
 	//
-	// - **NotStarted**: Not started.
+	// - **NotStarted**: The synchronization is not started.
 	//
-	// - **Migrating**: In progress.
+	// - **Migrating**: The synchronization is in progress.
 	//
-	// - **Failed**: Failed.
+	// - **Failed**: The synchronization failed.
 	//
-	// - **Finished**: Completed.
+	// - **Finished**: The synchronization is complete.
 	//
 	// example:
 	//
 	// Migrating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The table name of the synchronization object.
+	// The name of the table to be synchronized.
 	//
 	// example:
 	//
@@ -408,57 +408,57 @@ func (s *DescribeInitializationStatusResponseBodyDataSynchronizationDetails) Val
 }
 
 type DescribeInitializationStatusResponseBodyStructureInitializationDetails struct {
-	// The constraints of the synchronization object, such as indexes and foreign keys.
+	// The constraints corresponding to the object to be synchronized, such as indexes and foreign keys.
 	//
-	// > This parameter is returned only when **ObjectType*	- is set to **Table*	- and the synchronization object has constraints.
+	// > This parameter is returned only when **ObjectType*	- is **Table*	- and the object to be synchronized has constraints.
 	Constraints []*DescribeInitializationStatusResponseBodyStructureInitializationDetailsConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty" type:"Repeated"`
-	// The name of the database to which the objects to be synchronized belong in the destination instance.
+	// The name of the database to which the object to be synchronized belongs in the destination instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	DestinationOwnerDBName *string `json:"DestinationOwnerDBName,omitempty" xml:"DestinationOwnerDBName,omitempty"`
-	// The error message returned when schema initialization failed.
+	// The error message returned if the initial schema synchronization fails.
 	//
 	// example:
 	//
 	// DTS-1020042 Execute sql error sql: Table \\"customer\\" already exists
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The syntax definition of the synchronization object.
+	// The schema syntax definition of the object to be synchronized.
 	//
 	// example:
 	//
 	// CREATE TABLE `dtstestdata`.`customer` (\\n`customer_id`  int(10) unsigned   auto_increment  COMMENT \\"\\"   NOT NULL   , \\n`customer_title`  varchar(100)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`customer_company1216`  varchar(40)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`submission_date1216`  date     COMMENT \\"\\"   NULL   \\n, PRIMARY KEY (`customer_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \\"\\" ;\\n
 	ObjectDefinition *string `json:"ObjectDefinition,omitempty" xml:"ObjectDefinition,omitempty"`
-	// The name of the synchronization object.
+	// The name of the object to be synchronized.
 	//
 	// example:
 	//
 	// customer
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// The type of the synchronization object. Valid values:
+	// The type of the object to be synchronized. Valid values:
 	//
-	// **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type**, **Synonym**, **Trigger**, **Function**, **Procedure**, **Package**, **Default**, **Rule**, **PlanGuide**, and **Sequence**.
+	// **Table*	- (table), **Constraint*	- (constraint), **Index*	- (index), **View*	- (view), **Materialize View*	- (materialized view), **Type*	- (custom type), **Synonym*	- (synonym), **Trigger*	- (trigger), **Function*	- (function), **Procedure*	- (stored procedure), **Package*	- (package), **Default*	- (default value), **Rule*	- (rule), **PlanGuide*	- (execution plan), and **Sequence*	- (sequence).
 	//
 	// example:
 	//
 	// Table
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The name of the database to which the objects to be synchronized belong in the source instance.
+	// The name of the database to which the object to be synchronized belongs in the source instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	SourceOwnerDBName *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
-	// The status of schema initialization. Valid values:
+	// The status of initial schema synchronization. Valid values:
 	//
-	// - **NotStarted**: Not started.
+	// - **NotStarted**: The initialization is not started.
 	//
-	// - **Migrating**: In progress.
+	// - **Migrating**: The initialization is in progress.
 	//
-	// - **Failed**: Failed.
+	// - **Failed**: The initialization failed.
 	//
-	// - **Finished**: Completed.
+	// - **Finished**: The initialization is complete.
 	//
 	// example:
 	//
@@ -560,51 +560,51 @@ func (s *DescribeInitializationStatusResponseBodyStructureInitializationDetails)
 }
 
 type DescribeInitializationStatusResponseBodyStructureInitializationDetailsConstraints struct {
-	// The name of the database to which the objects to be synchronized belong in the destination instance.
+	// The name of the database to which the object to be synchronized belongs in the destination instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	DestinationOwnerDBName *string `json:"DestinationOwnerDBName,omitempty" xml:"DestinationOwnerDBName,omitempty"`
-	// The error message returned when constraint creation failed.
+	// The error message returned if the constraint creation fails.
 	//
 	// example:
 	//
 	// DTS-1020042 Execute sql error sql: ERROR: type "geometry" does not exist
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The syntax definition for creating the constraint.
+	// The schema syntax definition for creating the constraint.
 	//
 	// example:
 	//
 	// CREATE SEQUENCE "public"."collections_id_seq"   MINVALUE 1   MAXVALUE 9223372036854775807   START 249   INCREMENT BY 1 ;
 	ObjectDefinition *string `json:"ObjectDefinition,omitempty" xml:"ObjectDefinition,omitempty"`
-	// The name of the synchronization object.
+	// The name of the object to be synchronized.
 	//
 	// example:
 	//
 	// customer
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// The type of the synchronization object. The value is fixed as **Table**.
+	// The type of the object to be synchronized. The value is fixed as **Table**.
 	//
 	// example:
 	//
 	// Table
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The name of the database to which the objects to be synchronized belong in the source instance.
+	// The name of the database to which the object to be synchronized belongs in the source instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	SourceOwnerDBName *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
-	// The status of constraint creation. Valid values:
+	// The creation status of the constraint. Valid values:
 	//
-	// - **NotStarted**: Not started.
+	// - **NotStarted**: The creation is not started.
 	//
-	// - **Migrating**: In progress.
+	// - **Migrating**: The creation is in progress.
 	//
-	// - **Failed**: Failed.
+	// - **Failed**: The creation failed.
 	//
-	// - **Finished**: Completed.
+	// - **Finished**: The creation is complete.
 	//
 	// example:
 	//

@@ -26,17 +26,17 @@ type iCreateConsumerChannelRequest interface {
 }
 
 type CreateConsumerChannelRequest struct {
-	// The name of the consumer group. The name can be up to 128 characters in length. Specify a business-meaningful name for easy identification.
+	// The name of the consumer group. The name can be up to 128 characters in length. Specify a descriptive name for easy identification.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 订阅组A
+	// ConsumerGroupA
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
-	// The password of the consumer group account.
+	// The password of the account for the consumer group.
 	//
-	// - The password must contain characters from at least two of the following categories: uppercase letters, lowercase letters, digits, and special characters.
+	// - The password must contain at least two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// - The password must be 8 to 32 characters in length.
 	//
@@ -46,9 +46,11 @@ type CreateConsumerChannelRequest struct {
 	//
 	// Test123456
 	ConsumerGroupPassword *string `json:"ConsumerGroupPassword,omitempty" xml:"ConsumerGroupPassword,omitempty"`
-	// The username of the consumer group account.
+	// The account name for the consumer group.
 	//
-	// The username can contain uppercase letters, lowercase letters, digits, and underscores (_). The username can be up to 16 characters in length.
+	// The account name can contain uppercase letters, lowercase letters, digits, and underscores.
+	//
+	// The account name can be up to 16 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -56,23 +58,23 @@ type CreateConsumerChannelRequest struct {
 	//
 	// dtstest
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
-	// The ID of the change tracking instance. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
-	// > You must specify one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
+	// > You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
 	//
 	// example:
 	//
 	// dtsboss6pn1w******
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
+	// The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
-	// > You must specify one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
+	// > You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
 	//
 	// example:
 	//
 	// boss6pn1w******
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the region in which the DTS change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the DTS change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -80,7 +82,7 @@ type CreateConsumerChannelRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

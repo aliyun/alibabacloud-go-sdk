@@ -36,7 +36,7 @@ type iDescribeMetricListResponseBody interface {
 }
 
 type DescribeMetricListResponseBody struct {
-	// The backend error code, which is an incrementing number.
+	// The backend error code.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeMetricListResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The monitoring statistics information.
 	DataPoints []*DescribeMetricListResponseBodyDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
-	// The dynamic error message, which is used to replace the %s placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the %s placeholder in the **ErrMessage*	- parameter.
 	//
 	// example:
 	//
@@ -62,12 +62,14 @@ type DescribeMetricListResponseBody struct {
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The HTTP status code corresponding to the exception.
+	// The HTTP status code for the exception.
 	//
 	// example:
 	//
 	// 403
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Specifies the metric name. Valid values:
+	//
 	// - **InternetOut**: outbound Internet traffic, in bytes.
 	//
 	// - **diskusage_utilization**: disk usage.
@@ -76,9 +78,9 @@ type DescribeMetricListResponseBody struct {
 	//
 	// - **InternetIn**: inbound Internet traffic, in bytes.
 	//
-	// - **cpu_total**: CPU utilization.
+	// - **cpu_total**: CPU usage.
 	//
-	// - **memory_usedutilization**: memory utilization.
+	// - **memory_usedutilization**: memory usage.
 	//
 	// - **IntranetOutRate**: outbound internal network traffic, in bytes.
 	//
@@ -86,7 +88,7 @@ type DescribeMetricListResponseBody struct {
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// Specifies whether to query a cluster or a node. Valid values:
+	// Specifies the query target. Valid values:
 	//
 	// - **CLUSTER**: cluster.
 	//
@@ -98,9 +100,9 @@ type DescribeMetricListResponseBody struct {
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	// The observation value.
 	//
-	// - If **MetricType*	- is set to **NODE**, the value is **nodeid**.
+	// - If **MetricType*	- is **NODE**, the value is the **nodeid**.
 	//
-	// - If **MetricType*	- is set to **CLUSTER**, the value is the ID of the dedicated cluster, which can be obtained by calling the ListDedicatedCluster operation.
+	// - If **MetricType*	- is **CLUSTER**, the value is the dedicated cluster ID, which can be obtained by calling the ListDedicatedCluster operation.
 	//
 	// example:
 	//
@@ -112,7 +114,7 @@ type DescribeMetricListResponseBody struct {
 	//
 	// 15
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -262,7 +264,7 @@ type DescribeMetricListResponseBodyDataPoints struct {
 	//
 	// 15.25
 	Statistics *float32 `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The record timestamp, in milliseconds.
+	// The record timestamp in milliseconds.
 	//
 	// example:
 	//

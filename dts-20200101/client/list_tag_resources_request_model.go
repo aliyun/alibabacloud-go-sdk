@@ -26,13 +26,13 @@ type iListTagResourcesRequest interface {
 type ListTagResourcesRequest struct {
 	// The query token.
 	//
-	// > If a single request does not return all results, you can pass the **NextToken*	- value returned from the previous request in the subsequent request to continue the query.
+	// > If a single query does not return all results, you can include the **NextToken*	- value returned from the previous query in the subsequent query to retrieve more results.
 	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707ec2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID. Specify this parameter to indicate the region where the instances reside. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,11 @@ type ListTagResourcesRequest struct {
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the data migration, data synchronization, or change tracking instance. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query instance IDs.
+	// The IDs of the data migration, data synchronization, and change tracking instances. You can obtain the instance IDs by calling the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation.
 	//
-	// > - N specifies the sequence number of the instance ID. For example, ResourceId.0 specifies the first instance ID, and ResourceId.1 specifies the second instance ID. You can query 1 to 50 instance IDs at a time.
+	// > - N specifies the sequence number of the instance ID. For example, ResourceId.0 specifies the first instance ID, and ResourceId.1 specifies the second instance ID. You can specify 1 to 50 instance IDs at a time.
 	//
-	// - You must specify at least one of this parameter and **Tag.N.Key**.
+	// - You must specify at least one of this parameter and the **Tag.N.Key*	- parameter.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListTagResourcesRequest struct {
 	//
 	// ALIYUN::DTS::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag value that corresponds to the tag key.
+	// The tag values that correspond to the tag keys.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -146,9 +146,9 @@ func (s *ListTagResourcesRequest) Validate() error {
 type ListTagResourcesRequestTag struct {
 	// The tag key.
 	//
-	// > - N specifies the sequence number of the tag key. For example, Tag.0.Key specifies the first tag key, and Tag.1.Key specifies the second tag key. You can query 1 to 20 tag keys at a time.
+	// > - N specifies the sequence number of the tag key. For example, Tag.0.Key specifies the first tag key, and Tag.1.Key specifies the second tag key. You can specify 1 to 20 tag keys at a time.
 	//
-	// - You must specify at least one of this parameter and **ResourceId.N**. An empty string is not allowed.
+	// - You must specify at least one of this parameter and the **ResourceId.N*	- parameter. If you specify this parameter, you cannot specify an empty string.
 	//
 	// example:
 	//
@@ -156,9 +156,9 @@ type ListTagResourcesRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// > - N specifies the sequence number of the tag value. For example, Tag.0.Value specifies the first tag value, and Tag.1.Value specifies the second tag value. You can query 1 to 20 tag values at a time.
+	// > - N specifies the sequence number of the tag value. For example, Tag.0.Value specifies the first tag value, and Tag.1.Value specifies the second tag value. You can specify 1 to 20 tag values at a time.
 	//
-	// - An empty string is allowed.
+	// - You can specify an empty string.
 	//
 	// example:
 	//

@@ -28,22 +28,22 @@ type ModifyDtsJobDedicatedClusterRequest struct {
 	//
 	// dtsxxxx
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The task ID. You can specify multiple task IDs in a JSON array. Separate the IDs with commas (,).
+	// The task IDs. The value can be a JSON array that contains multiple task IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// ["dtsxxxx01", "dtsxxx02"]
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
 	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region in which the DTS instance resides.
+	// The region where the DTS instance resides.
 	//
-	// > For the regions supported by dedicated clusters, see [DTS dedicated cluster](https://help.aliyun.com/document_detail/417481.html).
+	// > For more information about the regions supported by dedicated clusters, see [DTS dedicated clusters](https://help.aliyun.com/document_detail/417481.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

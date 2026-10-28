@@ -42,30 +42,32 @@ type DescribeMetricListRequest struct {
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Ensures the idempotency of the request. Generate a parameter value from your client to make sure that the value is unique among different requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters in length.
+	// Ensures the idempotency of the request. Generate a value on your client and ensure that the value is unique across different requests. **ClientToken*	- supports only ASCII characters and can be up to 64 characters in length.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the data migration or data synchronization task.
+	// The ID of the migration or synchronization task.
 	//
 	// example:
 	//
 	// k2gm967v16f****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The end timestamp, in milliseconds.
+	// The end timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1642476194000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Default value: **ALIYUN**.
+	// The environment. Default value: **ALIYUN**.
 	//
 	// example:
 	//
 	// ALIYUN
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// Specifies the metric name. Valid values:
+	//
 	// - **InternetOut**: outbound Internet traffic, in bytes.
 	//
 	// - **diskusage_utilization**: disk usage.
@@ -74,9 +76,9 @@ type DescribeMetricListRequest struct {
 	//
 	// - **InternetIn**: inbound Internet traffic, in bytes.
 	//
-	// - **cpu_total**: CPU utilization.
+	// - **cpu_total**: CPU usage.
 	//
-	// - **memory_usedutilization**: memory utilization.
+	// - **memory_usedutilization**: memory usage.
 	//
 	// - **IntranetOutRate**: outbound internal network traffic, in bytes.
 	//
@@ -86,7 +88,7 @@ type DescribeMetricListRequest struct {
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// Specifies whether to query a cluster or a node. Valid values:
+	// Specifies the query target. Valid values:
 	//
 	// - **CLUSTER**: cluster.
 	//
@@ -97,7 +99,7 @@ type DescribeMetricListRequest struct {
 	// NODE
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	OwnerID    *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The observation value. If **MetricType*	- is set to **NODE**, the value is **nodeid**.
+	// The observation value. If **MetricType*	- is **NODE**, the value is the **nodeid**.
 	//
 	// This parameter is required.
 	//
@@ -111,13 +113,13 @@ type DescribeMetricListRequest struct {
 	//
 	// 15
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The start timestamp, in milliseconds.
+	// The start timestamp in milliseconds.
 	//
 	// example:
 	//

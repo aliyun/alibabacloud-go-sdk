@@ -22,13 +22,13 @@ type iCreateMigrationJobResponseBody interface {
 }
 
 type CreateMigrationJobResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CreateMigrationJobResponseBody struct {
 	//
 	// dtsi8911td9233****
 	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

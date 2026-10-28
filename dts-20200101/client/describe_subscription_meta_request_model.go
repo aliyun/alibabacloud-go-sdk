@@ -32,7 +32,7 @@ type DescribeSubscriptionMetaRequest struct {
 	//
 	// dtsbr4m9luv2******
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The region in which the change tracking instance resides.
+	// The region where the change tracking instance resides.
 	//
 	// example:
 	//
@@ -52,17 +52,17 @@ type DescribeSubscriptionMetaRequest struct {
 	//
 	// z38m91gg2******
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	// The IDs of all change tracking subtasks in the distributed change tracking task. Separate multiple IDs with commas (,).
+	// The IDs of all change tracking subtasks under the distributed change tracking task. Separate multiple subtask IDs with commas (,).
 	//
-	// > You must specify at least one of this parameter and **Topics**. We recommend that you specify this parameter.
+	// > You must specify at least one of this parameter and the **Topics*	- parameter. We recommend that you specify this parameter.
 	//
 	// example:
 	//
 	// ["zsls58agp6f****"]
 	SubMigrationJobIds map[string]interface{} `json:"SubMigrationJobIds,omitempty" xml:"SubMigrationJobIds,omitempty"`
-	// All topics of the distributed change tracking task. Separate multiple topics with commas (,).
+	// All change tracking topics under the distributed change tracking task. Separate multiple topics with commas (,).
 	//
-	// > You must specify at least one of this parameter and **SubMigrationJobIds**. We recommend that you specify **SubMigrationJobIds**.
+	// > You must specify at least one of this parameter and the **SubMigrationJobIds*	- parameter. We recommend that you specify the **SubMigrationJobIds*	- parameter.
 	//
 	// example:
 	//

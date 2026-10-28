@@ -36,15 +36,15 @@ type SummaryJobDetailResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the data migration or synchronization task.
+	// The ID of the migration or synchronization task.
 	//
 	// example:
 	//
 	// l3m1213ye7l****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The array of migration object information.
+	// The returned information about the array of migrated objects.
 	//
-	// > The array is returned in the following format: [{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
+	// > The array is returned in the following format: [{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}\\].
 	ProgressSummaryDetails []*SummaryJobDetailResponseBodyProgressSummaryDetails `json:"ProgressSummaryDetails,omitempty" xml:"ProgressSummaryDetails,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -140,7 +140,7 @@ func (s *SummaryJobDetailResponseBody) Validate() error {
 }
 
 type SummaryJobDetailResponseBodyProgressSummaryDetails struct {
-	// The object type of the migration object. Valid values: **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type*	- (user-defined type), **Synonym**, **Trigger**, **Function**, **Procedure*	- (stored procedure), **Package**, **Default**, **Rule**, **PlanGuide*	- (execute plan), and **Sequence**.
+	// The migrated object type. Valid values: **Table*	- (table), **Constraint*	- (constraint), **Index*	- (index), **View*	- (view), **Materialize View*	- (materialized view), **Type*	- (custom type), **Synonym*	- (synonym), **Trigger*	- (trigger), **Function*	- (function), **Procedure*	- (stored procedure), **Package*	- (package), **Default*	- (default value), **Rule*	- (rule), **PlanGuide*	- (execute plan), and **Sequence*	- (sequence).
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type SummaryJobDetailResponseBodyProgressSummaryDetails struct {
 	//
 	// 0
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
-	// The total number of migration objects.
+	// The total number of migrated objects.
 	//
 	// example:
 	//

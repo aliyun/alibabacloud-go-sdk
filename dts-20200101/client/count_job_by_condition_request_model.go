@@ -38,7 +38,7 @@ type CountJobByConditionRequest struct {
 	//
 	// MongoDB
 	DestDbType *string `json:"DestDbType,omitempty" xml:"DestDbType,omitempty"`
-	// The parent task ID of a distributed synchronization task.
+	// The ID of the parent task for a distributed synchronization task.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type CountJobByConditionRequest struct {
 	//
 	// SYNC
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The query value that corresponds to JobType.
+	// The query value, which corresponds to JobType.
 	//
 	// example:
 	//
 	// dtspk3f13r731m****
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// The region ID used as a filter condition. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID, which is one of the filter conditions. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -78,11 +78,11 @@ type CountJobByConditionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. This is a global parameter and does not need to be passed for this API operation.
+	// The resource group ID. This is a global parameter and is not required for this operation.
 	//
 	// example:
 	//
-	// 资源组ID，全局参数，当前API无需传入。
+	// The resource group ID. This is a global parameter and is not required for this operation
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the source database.
 	//
@@ -90,45 +90,45 @@ type CountJobByConditionRequest struct {
 	//
 	// MongoDB
 	SrcDbType *string `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
-	// The instance status of the DTS instance. Valid values:
+	// The DTS instance status. Valid values:
 	//
-	// Data migration node statuses:
+	// Status of a data migration task:
 	//
 	// - **NotStarted**: not started.
 	//
-	// - **Prechecking**: running a dry run.
+	// - **Prechecking**: performing a precheck.
 	//
-	// - **PrecheckFailed**: dry run failed.
+	// - **PrecheckFailed**: precheck failed.
 	//
-	// - **PreCheckPass**: dry run passed.
+	// - **PreCheckPass**: precheck passed.
 	//
 	// - **NotConfigured**: not configured.
 	//
-	// - **Migrating**: migrating.
+	// - **Migrating**: migrating data.
 	//
-	// - **Suspending**: paused.
+	// - **Suspending**: being paused.
 	//
 	// - **MigrationFailed**: migration failed.
 	//
-	// - **Finished**: finished.
+	// - **Finished**: completed.
 	//
-	// - **Retrying**: retrying.
+	// - **Retrying**: being retried.
 	//
-	// - **Upgrade**: upgrading.
+	// - **Upgrade**: being upgraded.
 	//
 	// - **Locked**: locked.
 	//
-	// - **Downgrade**: downgrading.
+	// - **Downgrade**: being downgraded.
 	//
-	// Data synchronization node statuses:
+	// Status of a data synchronization task:
 	//
 	// - **NotStarted**: not started.
 	//
-	// - **Prechecking**: running a dry run.
+	// - **Prechecking**: performing a precheck.
 	//
-	// - **PrecheckFailed**: dry run failed.
+	// - **PrecheckFailed**: precheck failed.
 	//
-	// - **PreCheckPass**: dry run passed.
+	// - **PreCheckPass**: precheck passed.
 	//
 	// - **NotConfigured**: not configured.
 	//
@@ -136,55 +136,55 @@ type CountJobByConditionRequest struct {
 	//
 	// - **InitializeFailed**: initial synchronization failed.
 	//
-	// - **Synchronizing**: synchronizing.
+	// - **Synchronizing**: synchronizing data.
 	//
 	// - **Failed**: synchronization failed.
 	//
-	// - **Suspending**: paused.
+	// - **Suspending**: being paused.
 	//
 	// - **Modifying**: modifying sub-objects.
 	//
-	// - **Finished**: finished.
+	// - **Finished**: completed.
 	//
-	// - **Retrying**: retrying.
+	// - **Retrying**: being retried.
 	//
-	// - **Upgrade**: upgrading.
+	// - **Upgrade**: being upgraded.
 	//
 	// - **Locked**: locked.
 	//
-	// - **Downgrade**: downgrading.
+	// - **Downgrade**: being downgraded.
 	//
-	// Subscribe node statuses:
+	// Status of a change tracking task:
 	//
 	// - **NotConfigured**: not configured.
 	//
 	// - **NotStarted**: not started.
 	//
-	// - **Prechecking**: running a dry run.
+	// - **Prechecking**: performing a precheck.
 	//
-	// - **PrecheckFailed**: dry run failed.
+	// - **PrecheckFailed**: precheck failed.
 	//
-	// - **PreCheckPass**: dry run passed.
+	// - **PreCheckPass**: precheck passed.
 	//
-	// - **Starting**: starting.
+	// - **Starting**: being started.
 	//
-	// - **Normal**: Normal.
+	// - **Normal**: normal.
 	//
-	// - **Retrying**: retrying.
+	// - **Retrying**: being retried.
 	//
 	// - **Abnormal**: abnormal.
 	//
-	// - **Upgrade**: upgrading.
+	// - **Upgrade**: being upgraded.
 	//
 	// - **Locked**: locked.
 	//
-	// - **Downgrade**: downgrading.
+	// - **Downgrade**: being downgraded.
 	//
 	// example:
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The query type. Valid values:
+	// Specifies the query type. Valid values:
 	//
 	// - **name**: queries by job name.
 	//
@@ -194,7 +194,7 @@ type CountJobByConditionRequest struct {
 	//
 	// - **srcRds**: queries by source instance ID.
 	//
-	// > This parameter corresponds to the **JobType*	- parameter.
+	// > This parameter corresponds to the query value and **JobType**.
 	//
 	// example:
 	//

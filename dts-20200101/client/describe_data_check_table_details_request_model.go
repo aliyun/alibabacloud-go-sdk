@@ -30,9 +30,9 @@ type iDescribeDataCheckTableDetailsRequest interface {
 type DescribeDataCheckTableDetailsRequest struct {
 	// The data validation method. Valid values:
 	//
-	// - **1**: full data validation.
+	// - **1**: full verification.
 	//
-	// - **2**: incremental data validation.
+	// - **2**: incremental verification.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeDataCheckTableDetailsRequest struct {
 	//
 	// 1
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	// The ID of the data migration or synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type DescribeDataCheckTableDetailsRequest struct {
 	//
 	// xd4e4xb419q****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be greater than **0*	- and less than or equal to the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type DescribeDataCheckTableDetailsRequest struct {
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The status of the verification result. Valid values:
 	//
-	// - **-1*	- (default): all statuses.
+	// - **-1**: all statuses. This is the default value.
 	//
-	// - **6**: tables with inconsistent data.
+	// - **6**: tables that contain inconsistent data.
 	//
 	// example:
 	//

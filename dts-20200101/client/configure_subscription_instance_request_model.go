@@ -37,20 +37,22 @@ type ConfigureSubscriptionInstanceRequest struct {
 	SourceEndpoint       *ConfigureSubscriptionInstanceRequestSourceEndpoint       `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
 	SubscriptionDataType *ConfigureSubscriptionInstanceRequestSubscriptionDataType `json:"SubscriptionDataType,omitempty" xml:"SubscriptionDataType,omitempty" type:"Struct"`
 	SubscriptionInstance *ConfigureSubscriptionInstanceRequestSubscriptionInstance `json:"SubscriptionInstance,omitempty" xml:"SubscriptionInstance,omitempty" type:"Struct"`
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated soon.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the change tracking instance resides. For more information, see
+	//
+	// [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -70,19 +72,19 @@ type ConfigureSubscriptionInstanceRequest struct {
 	//
 	// example:
 	//
-	// MySQL订阅
+	// MySQL change tracking
 	SubscriptionInstanceName *string `json:"SubscriptionInstanceName,omitempty" xml:"SubscriptionInstanceName,omitempty"`
-	// The network type of the change tracking instance. The only valid value is **vpc**, which indicates a virtual private cloud (VPC).
+	// The network type of the change tracking instance. Set the value to **vpc**, which specifies a virtual private cloud (VPC).
 	//
-	// > - If you specify this parameter, the change tracking instance is defined as the new version. You must also correctly set the **SubscriptionInstance.VPCId*	- and **SubscriptionInstance.VSwitchID*	- parameters. If you do not specify this parameter, the change tracking instance is defined as the legacy version.
+	// > - If you specify this parameter, the change tracking instance is defined as a new version instance, and you must also correctly set the **SubscriptionInstance.VPCId*	- and **SubscriptionInstance.VSwitchID*	- parameters. If you do not specify this parameter, the change tracking instance is defined as a legacy instance.
 	//
-	// > - The legacy version supports change tracking for self-managed MySQL, ApsaraDB RDS for MySQL, and DRDS. The new version supports change tracking for self-managed MySQL, ApsaraDB RDS for MySQL, PolarDB for MySQL, and Oracle.
+	// - Legacy change tracking instances support tracking data from self-managed MySQL databases, ApsaraDB RDS for MySQL instances, and DRDS instances. New version change tracking instances support tracking data from self-managed MySQL databases, ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and Oracle databases.
 	//
 	// example:
 	//
 	// vpc
 	SubscriptionInstanceNetworkType *string `json:"SubscriptionInstanceNetworkType,omitempty" xml:"SubscriptionInstanceNetworkType,omitempty"`
-	// The objects to be subscribed to. The value is a JSON string that supports regular expressions. For more information, see [Subscription object configuration](https://help.aliyun.com/document_detail/141902.html).
+	// The objects to be tracked. The value is a JSON string and supports specific regular expressions. For more information, see [Configure the objects to be tracked](https://help.aliyun.com/document_detail/141902.html).
 	//
 	// This parameter is required.
 	//
@@ -219,91 +221,91 @@ func (s *ConfigureSubscriptionInstanceRequest) Validate() error {
 }
 
 type ConfigureSubscriptionInstanceRequestSourceEndpoint struct {
-	// 待订阅的数据库名称。
+	// The name of the database to be tracked.
 	//
 	// example:
 	//
 	// dtstestdata
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// 源数据库的连接地址。
+	// The endpoint of the source database.
 	//
-	// > 当源数据库为自建数据库时，本参数才可用且必须传入。
+	// > This parameter is available and required only when the source database is a self-managed database.
 	//
 	// example:
 	//
 	// 172.16.88.***
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// 源实例ID。
+	// The instance ID of the source instance.
 	//
-	// > 源数据库的实例类型为RDS MySQL、PolarDB-X 1.0、PolarDB MySQL时，本参数才可用且必须传入。
+	// > This parameter is available and required only when the source database is an ApsaraDB RDS for MySQL instance, a PolarDB-X 1.0 instance, or a PolarDB for MySQL cluster.
 	//
 	// example:
 	//
 	// rm-bp1zc3iyqe3qw****
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	// 源数据库的实例类型，取值：
+	// The instance type of the source database. Valid values:
 	//
-	// - **RDS**：RDS MySQL。
+	// - **RDS**: ApsaraDB RDS for MySQL.
 	//
-	// - **PolarDB**：PolarDB MySQL。
+	// - **PolarDB**: PolarDB for MySQL.
 	//
-	// - **LocalInstance**：有公网IP的自建数据库。
+	// - **LocalInstance**: a self-managed database with a public IP address.
 	//
-	// - **ECS**：ECS上的自建数据库。
+	// - **ECS**: a self-managed database hosted on an ECS instance.
 	//
-	// - **Express**：通过专线接入的自建数据库。
+	// - **Express**: a self-managed database connected over an Express Connect circuit.
 	//
-	// - **CEN**：通过云企业网CEN接入的自建数据库。
+	// - **CEN**: a self-managed database connected over a Cloud Enterprise Network (CEN) instance.
 	//
-	// - **dg**：通过数据库网关接入的自建数据库。
+	// - **dg**: a self-managed database connected over a database gateway.
 	//
-	// > 支持自建数据库的数据库类型为MySQL、Oracle，您需要提前调用[CreateSubscriptionInstance](https://help.aliyun.com/document_detail/49436.html)设置。
+	// > Self-managed MySQL and Oracle databases are supported. You must call the [CreateSubscriptionInstance](https://help.aliyun.com/document_detail/49436.html) operation to configure the database type in advance.
 	//
 	// example:
 	//
 	// RDS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Oracle数据库的SID信息。
+	// The system ID (SID) of the Oracle database.
 	//
-	// > 当源数据库为自建Oracle时，且Oracle数据库为非RAC实例时，本参数才可用且必须传入。
+	// > This parameter is available and required only when the source database is a self-managed Oracle database and the Oracle database is not a Real Application Clusters (RAC) instance.
 	//
 	// example:
 	//
 	// testsid
 	OracleSID *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	// 源实例所属的阿里云账号ID。
+	// The Alibaba Cloud account ID of the source instance.
 	//
-	// > 仅在配置跨阿里云账号的数据订阅时本参数才可用，且必须传入。
+	// > This parameter is available and required only when you configure change tracking across Alibaba Cloud accounts.
 	//
 	// example:
 	//
 	// 140692647406****
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// 源实例的数据库账号密码。
+	// The password of the database account of the source instance.
 	//
 	// example:
 	//
 	// Test123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// 源数据库的服务端口。
+	// The service port number of the source database.
 	//
-	// > 当源数据库为自建数据库时，本参数才可用且必须传入。
+	// > This parameter is available and required only when the source database is a self-managed database.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 源实例的授权角色。当源实例与配置订阅任务所属阿里云账号不同时，需传入该参数，来指定源实例的授权角色，以允许配置订阅任务所属阿里云账号访问源实例的实例信息。
+	// The RAM role that is authorized to access the source instance. If the source instance and the change tracking task belong to different Alibaba Cloud accounts, you must specify this parameter to authorize the Alibaba Cloud account that owns the change tracking task to access the source instance.
 	//
-	// > 角色所需的权限及授权方式，请参见[跨阿里云账号数据迁移或同步时如何配置RAM授权](https://help.aliyun.com/document_detail/48468.html)。
+	// > For more information about the required permissions and authorization methods for the RAM role, see [Configure RAM authorization for cross-account data migration or synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
 	// ram-for-dts
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 源实例的数据库账号。
+	// The database account of the source instance.
 	//
-	// > 订阅不同的数据库所需的权限有所差异，详情请参见[DTS数据订阅方案概览](https://help.aliyun.com/document_detail/145715.html)中对应的配置案例。
+	// > The required permissions vary based on the database to be tracked. For more information, see the corresponding configuration examples in [Overview of DTS change tracking solutions](https://help.aliyun.com/document_detail/145715.html).
 	//
 	// example:
 	//
@@ -414,11 +416,11 @@ func (s *ConfigureSubscriptionInstanceRequestSourceEndpoint) Validate() error {
 }
 
 type ConfigureSubscriptionInstanceRequestSubscriptionDataType struct {
-	// 是否订阅DDL类型的数据，取值：
+	// Specifies whether to track data definition language (DDL) operations. Valid values:
 	//
-	// - **true**：是，为默认值。
+	// - **true**: yes. This is the default value.
 	//
-	// - **false**：否。
+	// - **false**: no.
 	//
 	// This parameter is required.
 	//
@@ -426,11 +428,11 @@ type ConfigureSubscriptionInstanceRequestSubscriptionDataType struct {
 	//
 	// true
 	DDL *bool `json:"DDL,omitempty" xml:"DDL,omitempty"`
-	// 是否订阅DML类型的数据，取值：
+	// Specifies whether to track data manipulation language (DML) operations. Valid values:
 	//
-	// - **true**：是，为默认值。
+	// - **true**: yes. This is the default value.
 	//
-	// - **false**：否。
+	// - **false**: no.
 	//
 	// This parameter is required.
 	//
@@ -471,17 +473,17 @@ func (s *ConfigureSubscriptionInstanceRequestSubscriptionDataType) Validate() er
 }
 
 type ConfigureSubscriptionInstanceRequestSubscriptionInstance struct {
-	// 订阅实例的专有网络ID。
+	// The VPC ID of the change tracking instance.
 	//
-	// > 当**SubscriptionInstanceNetworkType**取值为**vpc**时，本参数才可用且必须传入。
+	// > This parameter is available and required only when **SubscriptionInstanceNetworkType*	- is set to **vpc**.
 	//
 	// example:
 	//
 	// vpc-bp1vwnn14rqpyiczj****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// 订阅实例的虚拟交换机ID。
+	// The vSwitch ID of the change tracking instance.
 	//
-	// > 当**SubscriptionInstanceNetworkType**取值为**vpc**时，本参数才可用且必须传入。
+	// > This parameter is available and required only when **SubscriptionInstanceNetworkType*	- is set to **vpc**.
 	//
 	// example:
 	//

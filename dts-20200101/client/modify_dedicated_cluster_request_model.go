@@ -28,7 +28,7 @@ type iModifyDedicatedClusterRequest interface {
 type ModifyDedicatedClusterRequest struct {
 	// The ID of the dedicated cluster.
 	//
-	// > Either **InstanceId*	- or **DedicatedClusterId*	- must be specified.
+	// > You must specify either the **InstanceId*	- or **DedicatedClusterId*	- parameter.
 	//
 	// example:
 	//
@@ -42,26 +42,26 @@ type ModifyDedicatedClusterRequest struct {
 	DedicatedClusterName *string `json:"DedicatedClusterName,omitempty" xml:"DedicatedClusterName,omitempty"`
 	// The instance ID of the cluster.
 	//
-	// > Either the **InstanceId*	- or **DedicatedClusterId*	- parameter must be specified.
+	// > You must specify either the **InstanceId*	- or **DedicatedClusterId*	- parameter.
 	//
 	// example:
 	//
 	// rm-bp1162kryivb8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The overcommit ratio. Unit: %.
+	// The oversubscription ratio. Unit: %.
 	//
 	// example:
 	//
 	// 150
 	OversoldRatio *int32  `json:"OversoldRatio,omitempty" xml:"OversoldRatio,omitempty"`
 	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region in which the DTS instance resides.
+	// The region where the DTS instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

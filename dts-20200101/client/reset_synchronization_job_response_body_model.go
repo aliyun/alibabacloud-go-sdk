@@ -20,13 +20,13 @@ type iResetSynchronizationJobResponseBody interface {
 }
 
 type ResetSynchronizationJobResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ResetSynchronizationJobResponseBody struct {
 	//
 	// FDC111B1-ACBF-457D-9656-247FDEE9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type iDescribeJobMonitorRuleResponseBody interface {
 }
 
 type DescribeJobMonitorRuleResponseBody struct {
-	// The error code. This parameter will be deprecated.
+	// The error code. This parameter will be deprecated soon.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type DescribeJobMonitorRuleResponseBody struct {
 	//
 	// ta7w132u12h****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The dynamic error message used to replace the **%s*	- placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace **%s*	- in the **ErrMessage*	- parameter.
 	//
-	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeJobMonitorRuleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The monitoring rule information of the DTS task.
+	// The monitoring rules of the DTS task.
 	MonitorRules []*DescribeJobMonitorRuleResponseBodyMonitorRules `json:"MonitorRules,omitempty" xml:"MonitorRules,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -78,11 +78,11 @@ type DescribeJobMonitorRuleResponseBody struct {
 	//
 	// 0CA14388-DD89-4A7B-8CDD-884A10CE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ func (s *DescribeJobMonitorRuleResponseBody) Validate() error {
 }
 
 type DescribeJobMonitorRuleResponseBodyMonitorRules struct {
-	// The threshold that triggers a latency alert. Unit: seconds.
+	// The threshold that triggers a latency alert, in seconds.
 	//
 	// example:
 	//
@@ -218,11 +218,11 @@ type DescribeJobMonitorRuleResponseBodyMonitorRules struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The task type of the DTS instance. Valid values:
 	//
-	// - **normal**: data migration or data synchronization task.
+	// - **normal**: Data migration or data synchronization task.
 	//
-	// - **full_check**: associated full data validation task.
+	// - **full_check**: Associated full data check task.
 	//
-	// - **etl_check**: associated incremental data validation task.
+	// - **etl_check**: Associated incremental data check task.
 	//
 	// example:
 	//
@@ -234,15 +234,15 @@ type DescribeJobMonitorRuleResponseBodyMonitorRules struct {
 	//
 	// 2
 	NoticeValue *int32 `json:"NoticeValue,omitempty" xml:"NoticeValue,omitempty"`
-	// The statistical period of the incremental data validation task. Unit: minutes.
+	// The statistical period of the incremental data check task, in minutes.
 	//
-	// > Valid values: 1, 5, 10, and 30 minutes.
+	// > Valid values are 1, 5, 10, and 30.
 	//
 	// example:
 	//
 	// 5
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The phone numbers of the contacts to be notified when an alert is triggered. Multiple phone numbers are separated by commas (,).
+	// The mobile phone numbers of the contacts to be notified after an alert is triggered. Separate multiple mobile phone numbers with commas (,).
 	//
 	// example:
 	//
@@ -250,15 +250,15 @@ type DescribeJobMonitorRuleResponseBodyMonitorRules struct {
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	// Indicates whether the monitoring rule is enabled. Valid values:
 	//
-	// - **Y**: enabled.
+	// - **Y**: The monitoring rule is enabled.
 	//
-	// - **N**: disabled.
+	// - **N**: The monitoring rule is disabled.
 	//
 	// example:
 	//
 	// Y
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The number of periods for the incremental data validation task.
+	// The number of periods for the incremental data check task.
 	//
 	// example:
 	//
@@ -266,13 +266,13 @@ type DescribeJobMonitorRuleResponseBodyMonitorRules struct {
 	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
 	// The type of the monitoring rule. Valid values:
 	//
-	// - **delay**: latency alert.
+	// - **delay**: Latency alerting.
 	//
-	// - **error**: anomaly alert.
+	// - **error**: Anomaly alert.
 	//
-	// - **full_timeout**: alert for the runtime of the full data module.
+	// - **full_timeout**: Full module execution duration alerting.
 	//
-	// - **warn**: notification alert (the task succeeded but the result did not meet expectations).
+	// - **warn**: Notification alerting (the node is executed successfully, but the result does not meet expectations).
 	//
 	// example:
 	//

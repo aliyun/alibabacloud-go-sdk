@@ -34,7 +34,7 @@ type iTransferPayTypeResponseBody interface {
 }
 
 type TransferPayTypeResponseBody struct {
-	// The billing method after conversion. Valid values:
+	// The new billing method. Valid values:
 	//
 	// - **PrePaid**: subscription.
 	//
@@ -56,31 +56,31 @@ type TransferPayTypeResponseBody struct {
 	//
 	// o4nh3g7jg56****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace **%s*	- in the error message returned in the **ErrMessage*	- parameter.
 	//
-	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The time when the subscription instance expires, in UNIX timestamp format.
+	// The time when the subscription instance expires. The value is a UNIX timestamp.
 	//
-	// > - If the instance is converted to pay-as-you-go, this value is empty.
+	// > - If the modified instance is a pay-as-you-go instance, this value is null.
 	//
-	// - You can use a search engine to find a UNIX timestamp conversion tool.
+	// - You can obtain a UNIX timestamp conversion tool by using a search engine.
 	//
 	// example:
 	//
 	// 1614916318
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//

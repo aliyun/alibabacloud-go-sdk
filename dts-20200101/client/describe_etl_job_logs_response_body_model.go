@@ -28,31 +28,31 @@ type iDescribeEtlJobLogsResponseBody interface {
 }
 
 type DescribeEtlJobLogsResponseBody struct {
-	// The dynamic error code associated with this request.
+	// The dynamic error code related to the request.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message associated with this request.
+	// The dynamic error message related to the request.
 	//
 	// example:
 	//
 	// present environment is not support,so skip.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned when the specified ETL task ID is invalid and the corresponding task cannot be found.
+	// The error code returned if the specified ETL task ID is invalid and the corresponding task cannot be found.
 	//
 	// example:
 	//
 	// InvalidJobId
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the specified ETL task ID is invalid and the corresponding task cannot be found. The task may have been deleted.
+	// The error message returned if the specified ETL task ID is invalid and the corresponding task cannot be found. The task may have been deleted.
 	//
 	// example:
 	//
 	// The specified dts job id %s is not exists.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The array of ETL task running log objects.
+	// The array of running log objects for the ETL task.
 	EtlRunningLogs []*DescribeEtlJobLogsResponseBodyEtlRunningLogs `json:"EtlRunningLogs,omitempty" xml:"EtlRunningLogs,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -66,7 +66,7 @@ type DescribeEtlJobLogsResponseBody struct {
 	//
 	// 224DB9F7-3100-4899-AB9C-C938BCCB43E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. A value of false indicates a failure.
+	// Indicates whether the request was successful. false is returned if the request fails.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ func (s *DescribeEtlJobLogsResponseBody) Validate() error {
 }
 
 type DescribeEtlJobLogsResponseBodyEtlRunningLogs struct {
-	// The description of the ETL task running status.
+	// The description of the running status of the ETL task.
 	//
 	// example:
 	//
 	// Starting DTS-ETL...
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The status, which indicates the name of the module that generated the log, such as the transformation module of the ETL task.
+	// The status, which indicates the name of the module that generates the log, such as the transformation module of the ETL task.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type DescribeEtlJobLogsResponseBodyEtlRunningLogs struct {
 	//
 	// INFO
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

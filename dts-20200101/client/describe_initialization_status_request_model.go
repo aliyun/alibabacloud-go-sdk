@@ -26,14 +26,14 @@ type iDescribeInitializationStatusRequest interface {
 }
 
 type DescribeInitializationStatusRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be discontinued.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be greater than **0*	- and cannot exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. Valid values: any integer greater than **0*	- and less than or equal to the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -51,13 +51,13 @@ type DescribeInitializationStatusRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+	// Instance ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query instance ID.
 	//
 	// This parameter is required.
 	//

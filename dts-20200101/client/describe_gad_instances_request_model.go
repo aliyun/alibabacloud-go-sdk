@@ -30,6 +30,11 @@ type iDescribeGadInstancesRequest interface {
 }
 
 type DescribeGadInstancesRequest struct {
+	// The list of database engine types. Separate multiple types with commas (,).
+	//
+	// example:
+	//
+	// MySQL,PostgreSQL,SQLServer
 	DbEngineTypes *string `json:"DbEngineTypes,omitempty" xml:"DbEngineTypes,omitempty"`
 	// The name of the active geo-redundancy instance group.
 	//
@@ -51,7 +56,7 @@ type DescribeGadInstancesRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. Specify this parameter to query instances in a specific region. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -62,7 +67,12 @@ type DescribeGadInstancesRequest struct {
 	// example:
 	//
 	// rg-acfmzawhxxc****
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the secondary database instance.
+	//
+	// example:
+	//
+	// rm-a1b2c3d4e5f6g7h8i
 	SlaveDbInstanceId *string `json:"SlaveDbInstanceId,omitempty" xml:"SlaveDbInstanceId,omitempty"`
 }
 

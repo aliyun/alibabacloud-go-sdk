@@ -24,21 +24,21 @@ type iModifyDtsJobResponseBody interface {
 }
 
 type ModifyDtsJobResponseBody struct {
-	// The DTS task ID.
+	// The ID of the DTS task.
 	//
 	// example:
 	//
 	// bi6e22a****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the call fails.
 	//
-	// > The data type of this parameter should be String. An example value is **The request processing has failed due to some unknown error**.
+	// > The data type of this parameter should be String, and the actual example value is **The request processing has failed due to some unknown error**.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type ModifyDtsJobResponseBody struct {
 	//
 	// 1D6ECADF-C5E9-4C96-8811-77602B31****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

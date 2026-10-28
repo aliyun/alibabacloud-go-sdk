@@ -20,7 +20,7 @@ type iListJobStepRequest interface {
 }
 
 type ListJobStepRequest struct {
-	// Migration or sync task ID.
+	// The ID of the migration or synchronization task.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type ListJobStepRequest struct {
 	//
 	// k2gm967v16f****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aek3dcgyq7p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the job is a seamless integration (Zero-ETL) job. Valid values:
+	// Specifies whether the task is a seamless integration (Zero-ETL) task. Valid values:
 	//
 	// - **true**: Yes.
 	//

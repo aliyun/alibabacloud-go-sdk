@@ -28,9 +28,9 @@ type iDescribeDataCheckTableDiffDetailsRequest interface {
 type DescribeDataCheckTableDiffDetailsRequest struct {
 	// The data validation method. Valid values:
 	//
-	// - **1**: full verification.
+	// - **1**: Full validation.
 	//
-	// - **2**: incremental verification.
+	// - **2**: Incremental validation.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeDataCheckTableDiffDetailsRequest struct {
 	//
 	// 2
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// The name of the database that contains the table with inconsistent data.
+	// The name of the database to which the table with inconsistent data belongs.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeDataCheckTableDiffDetailsRequest struct {
 	//
 	// db_dtstest
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	// The ID of the migration or synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,19 @@ type DescribeDataCheckTableDiffDetailsRequest struct {
 	//
 	// xd4e4xb419q****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
+	// The page number. The value must be greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

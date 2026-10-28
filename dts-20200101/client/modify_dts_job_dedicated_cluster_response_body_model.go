@@ -26,13 +26,13 @@ type iModifyDtsJobDedicatedClusterResponseBody interface {
 }
 
 type ModifyDtsJobDedicatedClusterResponseBody struct {
-	// The error code returned by the backend. The value is incremental.
+	// The backend error code, which is an incrementing number.
 	//
 	// example:
 	//
 	// 500
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The dynamic error message used to replace the %s variable in the ErrMessage parameter.
+	// The dynamic error message, which is used to replace the %s placeholder in the error message returned in the **ErrMessage*	- response parameter.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ModifyDtsJobDedicatedClusterResponseBody struct {
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

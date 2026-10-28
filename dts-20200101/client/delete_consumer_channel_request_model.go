@@ -30,23 +30,23 @@ type DeleteConsumerChannelRequest struct {
 	//
 	// dtsktbb6jdn2******
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// The ID of the change tracking instance. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
-	// > You must specify one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
+	// > You must specify either the **DtsInstanceId*	- or **DtsJobId*	- parameter.
 	//
 	// example:
 	//
 	// dtsboss6pn1w73****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
+	// The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
-	// > You must specify one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
+	// > You must specify either the **DtsInstanceId*	- or **DtsJobId*	- parameter.
 	//
 	// example:
 	//
 	// boss6pn1w73****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The region ID of the DTS change tracking instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the DTS change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DeleteConsumerChannelRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

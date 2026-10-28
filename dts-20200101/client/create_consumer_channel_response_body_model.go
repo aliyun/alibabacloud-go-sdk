@@ -24,19 +24,19 @@ type iCreateConsumerChannelResponseBody interface {
 }
 
 type CreateConsumerChannelResponseBody struct {
-	// The consumer group ID. You can pass this ID to the downstream client to consume the change tracking data.
+	// The ID of the consumer group. You can specify this ID when a downstream client consumes change tracking data.
 	//
 	// example:
 	//
 	// dtsor2y66j4219****
 	ConsumerGroupID *string `json:"ConsumerGroupID,omitempty" xml:"ConsumerGroupID,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateConsumerChannelResponseBody struct {
 	//
 	// 5F566C5B-E5B0-4020-A531-FC6F5005****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type SummaryJobDetailRequest struct {
 	//
 	// dtsl3m1213ye7l****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the data migration or synchronization task.
+	// The ID of the migration or synchronization task.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +54,13 @@ type SummaryJobDetailRequest struct {
 	//
 	// 02
 	JobCode *string `json:"JobCode,omitempty" xml:"JobCode,omitempty"`
-	// The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type SummaryJobDetailRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of schema definition. Valid values:
 	//
-	// - **before**: schema migration or initial schema synchronization.
+	// - **before**: schema migration or initial schema synchronization for databases and tables.
 	//
 	// - **after**: DDL operations during incremental data migration or synchronization.
 	//
@@ -76,7 +76,7 @@ type SummaryJobDetailRequest struct {
 	//
 	// before
 	StructType *string `json:"StructType,omitempty" xml:"StructType,omitempty"`
-	// The synchronization direction. Valid values:
+	// The direction of the synchronization link. Valid values:
 	//
 	// - **Forward**: forward.
 	//
@@ -84,17 +84,17 @@ type SummaryJobDetailRequest struct {
 	//
 	// > - Default value: **Forward**.
 	//
-	// - You can set this parameter to **Reverse*	- to release the reverse synchronization link only when the topology of the data synchronization instance is two-way synchronization.
+	// - You can set this parameter to **Reverse*	- to release the reverse synchronization link only when the synchronization topology of the data synchronization instance is two-way.
 	//
 	// example:
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
+	// Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
 	//
-	// - **true**: The node is a seamless integration node.
+	// - **true**: yes.
 	//
-	// - **false**: The node is not a seamless integration node.
+	// - **false**: no.
 	//
 	// example:
 	//

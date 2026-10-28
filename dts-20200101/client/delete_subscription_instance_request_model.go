@@ -22,7 +22,7 @@ type iDeleteSubscriptionInstanceRequest interface {
 }
 
 type DeleteSubscriptionInstanceRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be discontinued.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated soon.
 	//
 	// example:
 	//

@@ -26,27 +26,27 @@ type iConvertInstanceResourceGroupResponseBody interface {
 }
 
 type ConvertInstanceResourceGroupResponseBody struct {
-	// The backend error code, which increments numerically.
+	// The backend error code, which is an incrementing number.
 	//
 	// example:
 	//
 	// 500
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace **%s*	- in the error message of the **ErrMessage*	- response parameter.
 	//
-	// > For example, if **The Value of Input Parameter %s is not valid*	- is returned and DynamicMessage returns DtsJobId, the request parameter DtsJobId that you specified is invalid.
+	// > If **The Value of Input Parameter %s is not valid*	- is returned and the DynamicMessage parameter returns DtsJobId, it indicates that the specified DtsJobId request parameter is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//

@@ -34,65 +34,65 @@ type iDescribeDtsServiceLogRequest interface {
 }
 
 type DescribeDtsServiceLogRequest struct {
-	// The ID of the data migration or synchronization task.
+	// The ID of the migration or synchronization task.
 	//
 	// example:
 	//
 	// c1yr56py103****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The end time of the log information. You can call [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) to query the end time.
+	// The end time of the logs. You can call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to query the time.
 	//
-	// > - To query the log information of a DTS subtask within a specific time range, call [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) to query the execution time of the DTS subtask.
+	// > - To query the logs of a DTS subtask within a specific time range, call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to obtain the execution time of the DTS subtask.
 	//
-	// - The time is a 13-digit UNIX timestamp in milliseconds. You can use a search engine to find a UNIX timestamp converter.
+	// - Specify the time as a 13-digit UNIX timestamp in milliseconds. You can use a search engine to find a UNIX timestamp converter.
 	//
 	// example:
 	//
 	// 1620897227000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The keyword used to filter query results.
+	// The keyword used to filter the logs.
 	//
-	// > Fuzzy match is used and the keyword is case-sensitive.
+	// > Fuzzy matching is supported and the keyword is case-sensitive.
 	//
 	// example:
 	//
 	// state = IDLE
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be a positive integer. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of log entries per page. Valid values: **20**, **50**, **100**, **500**, and **1000**. Default value: **20**.
+	// The number of log entries to return on each page. Valid values: **20**, **50**, **100**, **500**, and **1000**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The start time of the log information.
+	// The start time of the logs.
 	//
-	// > - To query the log information of a DTS subtask within a specific time range, call [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) to query the execution time of the DTS subtask.
+	// > - To query the logs of a DTS subtask within a specific time range, call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to obtain the execution time of the DTS subtask.
 	//
-	// - The start time is a 13-digit UNIX timestamp in milliseconds. You can use a search engine to find a UNIX timestamp converter.
+	// - Specify the time as a 13-digit UNIX timestamp in milliseconds. You can use a search engine to find a UNIX timestamp converter.
 	//
 	// example:
 	//
 	// 1620896327000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The log level of the log information. Separate multiple values with commas (,). Valid values:
+	// The log level. Separate multiple log levels with commas (,). Valid values:
 	//
 	// - **NORMAL**: Normal.
 	//
@@ -104,14 +104,14 @@ type DescribeDtsServiceLogRequest struct {
 	//
 	// NORMAL,WARN,ERROR
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the DTS task subnode. Valid values:
+	// The specific sub-node type of the DTS task. Valid values:
 	//
 	//
-	// - **DATA_LOAD**: full data migration or initial full data synchronization.
+	// - **DATA_LOAD**: Full data migration or full data synchronization.
 	//
-	// - **ONLINE_WRITER**: incremental data migration.
+	// - **ONLINE_WRITER**: Incremental data migration.
 	//
-	// - **SYNC_WRITER**: incremental data synchronization.
+	// - **SYNC_WRITER**: Incremental data synchronization.
 	//
 	// example:
 	//

@@ -62,29 +62,29 @@ type iDescribeConnectionStatusRequest interface {
 type DescribeConnectionStatusRequest struct {
 	// This parameter is required only when **SourceEndpointEngineName*	- is set to **Oracle**. Valid values:
 	//
-	// - **SID**: non-cluster architecture.
+	// - **SID**: Non-cluster architecture.
 	//
-	// - **RAC**: Real Application Cluster architecture.
+	// - **RAC**: Cluster architecture.
 	//
-	// > The type of this parameter is String, and this parameter is optional.
+	// > The value must be of the String type. This parameter is optional.
 	//
 	// example:
 	//
 	// SID
 	DestinationEndpointArchitecture *string `json:"DestinationEndpointArchitecture,omitempty" xml:"DestinationEndpointArchitecture,omitempty"`
-	// The name of the database to be migrated to or the name of the authentication database.
+	// The name of the destination database or the authentication database.
 	//
 	// > - This parameter is available and required only when **DestinationEndpointEngineName*	- is set to **PostgreSQL**, **DRDS**, or **MongoDB**, or when **DestinationEndpointInstanceType*	- is set to **PolarDB_o**.
 	//
-	// - When **DestinationEndpointEngineName*	- is set to **PostgreSQL*	- or **DRDS**, specify the name of the database to be migrated. When the value is **MongoDB**, specify the name of the authentication database for the database account.
+	// - If **DestinationEndpointEngineName*	- is set to **PostgreSQL*	- or **DRDS**, specify the name of the database to be migrated. If it is set to **MongoDB**, specify the name of the authentication database for the database account.
 	//
-	// - When **DestinationEndpointInstanceType*	- is set to **PolarDB_o**, specify the name of the database to be migrated.
+	// - If **DestinationEndpointInstanceType*	- is set to **PolarDB_o**, specify the name of the database to be migrated.
 	//
 	// example:
 	//
 	// dtstestdata
 	DestinationEndpointDatabaseName *string `json:"DestinationEndpointDatabaseName,omitempty" xml:"DestinationEndpointDatabaseName,omitempty"`
-	// The database type of the destination database. Valid values: **MySQL**, **DRDS**, **SQLServer**, **PostgreSQL**, **PPAS**, **MongoDB**, and **Redis**.
+	// The database engine type of the destination database. Valid values: **MySQL**, **DRDS**, **SQLServer**, **PostgreSQL**, **PPAS**, **MongoDB**, and **Redis**.
 	//
 	// > This parameter is available and required only when **DestinationEndpointInstanceType*	- is set to **RDS**, **DRDS**, **ECS**, **LocalInstance**, or **Express**.
 	//
@@ -106,11 +106,11 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// testsid
 	DestinationEndpointInstanceID *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
-	// The type of the destination instance. Valid values:
+	// The instance type of the destination database. Valid values:
 	//
-	// > - **ECS**: self-managed database hosted on an ECS instance.
+	// > - **ECS**: Self-managed database hosted on ECS.
 	//
-	// - **LocalInstance**: self-managed database with a public IP address.
+	// - **LocalInstance**: Self-managed database with a public IP address.
 	//
 	// - **RDS**: ApsaraDB RDS instance.
 	//
@@ -124,11 +124,11 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// - **POLARDB**: PolarDB for MySQL cluster.
 	//
-	// - **PolarDB_o**: PolarDB for PostgreSQL (Oracle-Compatible) cluster.
+	// - **PolarDB_o**: PolarDB for Oracle cluster.
 	//
-	// - **AnalyticDB**: AnalyticDB for MySQL V3.0 or V2.0.
+	// - **AnalyticDB**: AnalyticDB for MySQL cluster of version 3.0 or 2.0.
 	//
-	// - **Greenplum**: AnalyticDB for PostgreSQL.
+	// - **Greenplum**: AnalyticDB for PostgreSQL instance.
 	//
 	// This parameter is required.
 	//
@@ -138,24 +138,24 @@ type DescribeConnectionStatusRequest struct {
 	DestinationEndpointInstanceType *string `json:"DestinationEndpointInstanceType,omitempty" xml:"DestinationEndpointInstanceType,omitempty"`
 	// This parameter is required only when **DestinationEndpointEngineName*	- is set to **Oracle**. Valid values:
 	//
-	// - **SID**: non-cluster architecture.
+	// - **SID**: Non-cluster architecture.
 	//
-	// - **RAC**: Real Application Cluster architecture.
+	// - **RAC**: Cluster architecture.
 	//
 	//
-	// > The type of this parameter is String, and this parameter is optional.
+	// > The value must be of the String type. This parameter is optional.
 	//
 	// example:
 	//
 	// SID
 	DestinationEndpointOracleSID *string `json:"DestinationEndpointOracleSID,omitempty" xml:"DestinationEndpointOracleSID,omitempty"`
-	// The password of the destination database account.
+	// The password of the database account for the destination database.
 	//
 	// example:
 	//
 	// Test123456
 	DestinationEndpointPassword *string `json:"DestinationEndpointPassword,omitempty" xml:"DestinationEndpointPassword,omitempty"`
-	// The service port of the source database.
+	// The service port of the destination database.
 	//
 	// > This parameter is available and required only when **SourceEndpointInstanceType*	- is set to **ECS**, **LocalInstance**, or **Express**.
 	//
@@ -163,7 +163,7 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// 3306
 	DestinationEndpointPort *string `json:"DestinationEndpointPort,omitempty" xml:"DestinationEndpointPort,omitempty"`
-	// The region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region where the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -175,13 +175,13 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// dtstest
 	DestinationEndpointUserName *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
-	// The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region where the DTS instance resides. For details, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -189,9 +189,9 @@ type DescribeConnectionStatusRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// This parameter is required only when **SourceEndpointEngineName*	- is set to **Oracle**. Valid values:
 	//
-	// - **SID**: non-cluster architecture.
+	// - **SID**: Non-cluster architecture.
 	//
-	// - **RAC**: Real Application Cluster architecture.
+	// - **RAC**: Cluster architecture.
 	//
 	//
 	// > This parameter is optional.
@@ -200,13 +200,13 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// SID
 	SourceEndpointArchitecture *string `json:"SourceEndpointArchitecture,omitempty" xml:"SourceEndpointArchitecture,omitempty"`
-	// The name of the database to be migrated or the name of the authentication database.
+	// The name of the database to be migrated or the authentication database.
 	//
 	// >- This parameter is available and required only when **SourceEndpointEngineName*	- is set to **PostgreSQL*	- or **MongoDB**, or when **SourceEndpointInstanceType*	- is set to **PolarDB_o**.
 	//
-	// - When **SourceEndpointEngineName*	- is set to **PostgreSQL*	- or **DRDS**, specify the name of the database to be migrated. When the value is **MongoDB**, specify the name of the authentication database for the database account.
+	// - If **SourceEndpointEngineName*	- is set to **PostgreSQL*	- or **DRDS**, specify the name of the database to be migrated. If it is set to **MongoDB**, specify the name of the authentication database for the database account.
 	//
-	// - When **SourceEndpointInstanceType*	- is set to **PolarDB_o**, specify the name of the database to be migrated.
+	// - If **SourceEndpointInstanceType*	- is set to **PolarDB_o**, specify the name of the database to be migrated.
 	//
 	// example:
 	//
@@ -238,19 +238,19 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// - **RDS**: ApsaraDB RDS instance.
 	//
-	// - **LocalInstance**: self-managed database with a public IP address.
+	// - **LocalInstance**: Self-managed database.
 	//
-	// - **ECS**: self-managed database hosted on an ECS instance.
+	// - **ECS**: Self-managed database hosted on Elastic Compute Service (ECS).
 	//
-	// - **Express**: self-managed database connected over Express Connect.
+	// - **Express**: Self-managed database connected over Express Connect.
 	//
-	// - **dg**: self-managed database connected over Database Gateway.
+	// - **dg**: Self-managed database connected over Database Gateway.
 	//
 	// - **MongoDB**: ApsaraDB for MongoDB instance.
 	//
 	// - **POLARDB**: PolarDB for MySQL cluster.
 	//
-	// - **PolarDB_o**: PolarDB for PostgreSQL (Oracle-Compatible) cluster.
+	// - **PolarDB_o**: PolarDB for Oracle cluster.
 	//
 	// This parameter is required.
 	//
@@ -258,7 +258,7 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// RDS
 	SourceEndpointInstanceType *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
-	// The SID of the Oracle database.
+	// The system ID (SID) of the Oracle database.
 	//
 	// > This parameter is available and required only when **SourceEndpointEngineName*	- is set to **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
@@ -266,7 +266,7 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// testsid
 	SourceEndpointOracleSID *string `json:"SourceEndpointOracleSID,omitempty" xml:"SourceEndpointOracleSID,omitempty"`
-	// The password of the source database account.
+	// The password of the database account for the source database.
 	//
 	// example:
 	//
@@ -280,7 +280,7 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// 3306
 	SourceEndpointPort *string `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
-	// The region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region where the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//

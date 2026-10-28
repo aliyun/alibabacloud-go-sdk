@@ -24,7 +24,7 @@ type iModifyDedicatedClusterResponseBody interface {
 }
 
 type ModifyDedicatedClusterResponseBody struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ModifyDedicatedClusterResponseBody struct {
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

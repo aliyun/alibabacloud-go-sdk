@@ -32,13 +32,13 @@ type ModifyDtsJobNameRequest struct {
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The new name of the task.
 	//
-	// > Configure a descriptive name that has business meaning (uniqueness is not required) for easy identification.
+	// > Specify a meaningful name for your business to facilitate identification. The name does not need to be unique.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// RDS间迁移
+	// Migration between RDS instances
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
 	// The region ID of the task. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
@@ -46,17 +46,17 @@ type ModifyDtsJobNameRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekzfkjjb5gyy6i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
+	// Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
 	//
-	// - **true**: The node is a seamless integration (zero-ETL) node.
+	// - **true**: Yes.
 	//
-	// - **false**: The node is not a seamless integration (zero-ETL) node.
+	// - **false**: No.
 	//
 	// example:
 	//

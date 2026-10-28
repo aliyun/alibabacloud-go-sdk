@@ -20,13 +20,13 @@ type iModifySubscriptionObjectResponseBody interface {
 }
 
 type ModifySubscriptionObjectResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ModifySubscriptionObjectResponseBody struct {
 	//
 	// ABBACEFC-CBA9-4F80-A337-42F202F5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -26,41 +26,41 @@ type iDescribeConsumerChannelRequest interface {
 }
 
 type DescribeConsumerChannelRequest struct {
-	// The ID of the change tracking instance. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
-	// > You must specify one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
+	// > You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
 	//
 	// example:
 	//
 	// dtsboss6pn1w******
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
+	// The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
-	// > You must specify one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
+	// > You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
 	//
 	// example:
 	//
 	// boss6pn1w******
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be greater than **0*	- and cannot exceed the maximum value of the INTEGER data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The parent task ChannelId of the distributed task.
+	// The channel ID of the parent task for a distributed task.
 	//
 	// example:
 	//
 	// dtsan5114c52******
 	ParentChannelId *string `json:"ParentChannelId,omitempty" xml:"ParentChannelId,omitempty"`
-	// The region ID of the DTS change tracking instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the DTS change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type DescribeConsumerChannelRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

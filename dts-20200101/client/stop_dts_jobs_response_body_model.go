@@ -32,7 +32,7 @@ type StopDtsJobsResponseBody struct {
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the **%s*	- variable in the **ErrMessage*	- parameter. > For example, if **ErrMessage*	- returns **The value of input parameter %s is not valid*	- and **DynamicMessage*	- returns **[timeout]**, the request parameter **timeout*	- is invalid.
+	// The dynamic error message, which is used to replace **%s*	- in the error message returned in the **ErrMessage*	- parameter. > If **ErrMessage*	- returns **the value of input parameter %s is not valid*	- and **DynamicMessage*	- returns **[timeout]**, it indicates that the **timeout*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type StopDtsJobsResponseBody struct {
 	//
 	// AD823BD3-1BA6-4117-A536-165CB280****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

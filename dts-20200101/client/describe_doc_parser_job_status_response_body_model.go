@@ -34,21 +34,21 @@ type DescribeDocParserJobStatusResponseBody struct {
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace **%s*	- in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned when the call fails.
+	// The error code returned when an error occurs.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned when an error occurs.
 	//
 	// example:
 	//
@@ -68,21 +68,21 @@ type DescribeDocParserJobStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the DTS document parsing task. Valid values:
 	//
-	// - **NotStarted**: not started.
+	// - **NotStarted**: Not started.
 	//
-	// - **Running**: document parsing in progress.
+	// - **Running**: Parsing documents.
 	//
-	// - **Suspending**: pausing.
+	// - **Suspending**: Suspending.
 	//
-	// - **Failed**: document parsing failed.
+	// - **Failed**: Document parsing failed.
 	//
-	// - **Finished**: document parsing completed.
+	// - **Finished**: Document parsing completed.
 	//
 	// example:
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

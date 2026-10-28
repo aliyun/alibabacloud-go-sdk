@@ -42,41 +42,41 @@ type RenewInstanceResponseBody struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The error code.
 	//
-	// > This parameter will be deprecated.
+	// > This parameter is scheduled for deprecation.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the data synchronization or change tracking task.
+	// The ID of the synchronization or change tracking task.
 	//
 	// example:
 	//
 	// qi0r643lc31****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The dynamic error message, which is used to replace the %**s*	- variable in the **ErrMessage*	- response parameter.
+	// The dynamic error message. This parameter is used to replace the **%s*	- placeholder in the error message returned by the **ErrMessage*	- parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The time when the renewal instance expires. The time is displayed in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ssZZZ</i> (UTC).
+	// The time when the renewed instance expires. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ssZZZ</i> format in UTC.
 	//
-	// > **ZZZ*	- indicates the full time zone offset ("+" or "-" followed by hours and minutes), for example, **+00:00**.
+	// > **ZZZ*	- indicates the full time zone offset, which consists of a plus sign (+) or a minus sign (-) followed by hours and minutes. Example: **+00:00**.
 	//
 	// example:
 	//
 	// 2021-08-04T16:00:00.000+00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The error code returned when the call fails.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -100,11 +100,11 @@ type RenewInstanceResponseBody struct {
 	//
 	// 1112E255-0C38-4970-8159-1D54AD92****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iConfigureSynchronizationJobReplicatorCompareResponseBody interface {
 }
 
 type ConfigureSynchronizationJobReplicatorCompareResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ConfigureSynchronizationJobReplicatorCompareResponseBody struct {
 	//
 	// 86A8FF0F-FA92-449D-B559-05CFF9F9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iDescribeDocParserJobStatusRequest interface {
 }
 
 type DescribeDocParserJobStatusRequest struct {
-	// The task ID (DtsJobId) returned when the document parsing task was created.
+	// The task ID (DtsJobId) returned when the document parsing task is created.
 	//
 	// example:
 	//

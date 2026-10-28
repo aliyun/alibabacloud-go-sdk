@@ -40,51 +40,51 @@ type DescribeSubscriptionInstanceAlertResponseBody struct {
 	//
 	// 13465****
 	DelayAlertPhone *string `json:"DelayAlertPhone,omitempty" xml:"DelayAlertPhone,omitempty"`
-	// Indicates whether latency alerting is enabled. Valid values:
+	// Indicates whether the latency status is monitored. Valid values:
 	//
-	// - **enable**: Enabled.
+	// - **enable**: Yes.
 	//
-	// - **disable**: Disabled.
+	// - **disable**: No.
 	//
 	// example:
 	//
 	// enable
 	DelayAlertStatus *string `json:"DelayAlertStatus,omitempty" xml:"DelayAlertStatus,omitempty"`
-	// The threshold for triggering latency alerts. Unit: seconds. The value must be an integer. A value of 10 seconds is recommended.
+	// The threshold for triggering a latency alert. Unit: seconds. The value must be an integer. Recommended value: 10.
 	//
 	// example:
 	//
 	// 10
 	DelayOverSeconds *string `json:"DelayOverSeconds,omitempty" xml:"DelayOverSeconds,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The mobile phone number of the contact for error alerts.
+	// The mobile phone number of the contact for exception alerts.
 	//
 	// example:
 	//
 	// 13555*****
 	ErrorAlertPhone *string `json:"ErrorAlertPhone,omitempty" xml:"ErrorAlertPhone,omitempty"`
-	// Indicates whether error alerting is enabled. Valid values:
+	// Indicates whether the exception status is monitored. Valid values:
 	//
-	// - **enable**: Enabled.
+	// - **enable**: Yes.
 	//
-	// - **disable**: Disabled.
+	// - **disable**: No.
 	//
 	// example:
 	//
 	// enable
 	ErrorAlertStatus *string `json:"ErrorAlertStatus,omitempty" xml:"ErrorAlertStatus,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeSubscriptionInstanceAlertResponseBody struct {
 	//
 	// test
 	SubscriptionInstanceName *string `json:"SubscriptionInstanceName,omitempty" xml:"SubscriptionInstanceName,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

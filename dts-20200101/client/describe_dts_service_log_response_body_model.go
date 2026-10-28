@@ -40,19 +40,19 @@ type DescribeDtsServiceLogResponseBody struct {
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace **%s*	- in the **ErrMessage*	- response parameter.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeDtsServiceLogResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of log entries per page.
+	// The number of log entries returned on the current page.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribeDtsServiceLogResponseBody struct {
 	//
 	// F87DF250-952C-47FE-8A02-69414FAA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task logs details of the node.
+	// The details of the task logs.
 	ServiceLogContexts []*DescribeDtsServiceLogResponseBodyServiceLogContexts `json:"ServiceLogContexts,omitempty" xml:"ServiceLogContexts,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful.
 	//
@@ -90,7 +90,7 @@ type DescribeDtsServiceLogResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of log entries that meet the specified conditions.
+	// The total number of log entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -219,19 +219,19 @@ func (s *DescribeDtsServiceLogResponseBody) Validate() error {
 }
 
 type DescribeDtsServiceLogResponseBodyServiceLogContexts struct {
-	// The specific log information.
+	// The log content.
 	//
 	// example:
 	//
 	// Statistics: generator = 369173; collector = 470109; replicator = 2470; ping = 2/2/2; execute = 29/29/29; rt = 29/29/29; state = IDLE; queries = -1; exceptions = {connects = 0, replicates = 0}; infos = {}
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	// The status of the log entry.
+	// The state of the log.
 	//
 	// example:
 	//
 	// NORMAL
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The time when the log was collected, in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The time when the log was collected. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//

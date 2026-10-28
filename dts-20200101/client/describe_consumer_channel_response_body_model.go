@@ -32,13 +32,13 @@ type iDescribeConsumerChannelResponseBody interface {
 type DescribeConsumerChannelResponseBody struct {
 	// The list of consumer groups.
 	ConsumerChannels []*DescribeConsumerChannelResponseBodyConsumerChannels `json:"ConsumerChannels,omitempty" xml:"ConsumerChannels,omitempty" type:"Repeated"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeConsumerChannelResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of consumer groups that can be displayed on one page.
+	// The maximum number of consumer groups that can be displayed on a single page.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ func (s *DescribeConsumerChannelResponseBody) Validate() error {
 }
 
 type DescribeConsumerChannelResponseBodyConsumerChannels struct {
-	// The consumer group ID.
+	// The ID of the consumer group.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type DescribeConsumerChannelResponseBodyConsumerChannels struct {
 	//
 	// example:
 	//
-	// 订阅组A
+	// Consumer group A
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
 	// The account of the consumer group.
 	//
@@ -203,25 +203,25 @@ type DescribeConsumerChannelResponseBodyConsumerChannels struct {
 	//
 	// dtstest
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
-	// The consumption checkpoint, which is the point in time when the client consumed the last message in the subscription channel. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The consumption checkpoint, which is the time when the client consumed the last message in the change tracking channel. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC time).
 	//
 	// example:
 	//
 	// 2021-06-20T12:00:00Z
 	ConsumptionCheckpoint *string `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	// The message delay. This value is calculated as the timestamp of the latest data consumed by the downstream client minus the timestamp of the latest data in the change tracking task. The value is a UNIX timestamp. Unit: seconds.
+	// The message delay, which is the difference between the timestamp of the latest data tracked in the change tracking task and the timestamp of the latest data consumed by the downstream client. The value is a UNIX timestamp in seconds.
 	//
-	// For example, if the latest data in the source database was generated at 10:00, the DTS change tracking task has read data up to 09:55, and the downstream client has consumed data up to 09:30, the message delay is the difference in UNIX timestamps between 09:55 and 09:30.
+	// For example, if the latest data in the source database is generated at 10:00, the DTS change tracking task has tracked data up to 09:55, and the downstream client has consumed data up to 09:30, the message delay is the difference between the UNIX timestamps of 09:55 and 09:30.
 	//
-	// > If this parameter returns **-1**, no client is connected to the consumer group.
+	// > If this parameter returns **-1**, it indicates that no client is connected to the consumer group.
 	//
 	// example:
 	//
 	// 1500
 	MessageDelay *int64 `json:"MessageDelay,omitempty" xml:"MessageDelay,omitempty"`
-	// The total number of unconsumed messages, which is the sum of unconsumed subscription data and heartbeat messages.
+	// The total number of unconsumed messages, which is the sum of the number of unconsumed tracked data records and the number of heartbeat messages.
 	//
-	// > If this parameter returns -1, no client is connected to the consumer group.
+	// > If this parameter returns -1, it indicates that no client is connected to the consumer group.
 	//
 	// example:
 	//

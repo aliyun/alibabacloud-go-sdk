@@ -26,7 +26,7 @@ type iInitDtsRdsInstanceResponseBody interface {
 }
 
 type InitDtsRdsInstanceResponseBody struct {
-	// The built-in account that DTS uses to connect to the unit node.
+	// The built-in account used by DTS to connect to the unit node.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type InitDtsRdsInstanceResponseBody struct {
 	//
 	// 7796ECE0-9C17-5E4D-9CE6-B7EC825A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

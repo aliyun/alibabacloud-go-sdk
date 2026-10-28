@@ -24,20 +24,20 @@ type iSuspendSynchronizationJobRequest interface {
 }
 
 type SuspendSynchronizationJobRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be deprecated.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID. Set this parameter to specify the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type SuspendSynchronizationJobRequest struct {
 	//
 	// > - Default value: **Forward**.
 	//
-	// - You can set this parameter to **Reverse*	- to pause the reverse synchronization link only if the topology of the data synchronization instance is two-way synchronization.
+	// - You can set this parameter to **Reverse*	- to suspend the reverse synchronization link only when the synchronization topology of the data synchronization instance is two-way.
 	//
 	// example:
 	//

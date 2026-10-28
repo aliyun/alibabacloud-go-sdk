@@ -20,13 +20,13 @@ type iConfigureSubscriptionInstanceResponseBody interface {
 }
 
 type ConfigureSubscriptionInstanceResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type iDescribeDedicatedClusterMonitorRuleResponseBody interface {
 }
 
 type DescribeDedicatedClusterMonitorRuleResponseBody struct {
-	// The CPU alert threshold, in percentage.
+	// The CPU alert threshold. Unit: percentage.
 	//
 	// example:
 	//
@@ -48,25 +48,25 @@ type DescribeDedicatedClusterMonitorRuleResponseBody struct {
 	//
 	// dtsClustervcwn1oeyu5fx4yf
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The disk alert threshold, in percentage.
+	// The disk alert threshold. Unit: percentage.
 	//
 	// example:
 	//
 	// 80
 	DiskAlarmThreshold *string `json:"DiskAlarmThreshold,omitempty" xml:"DiskAlarmThreshold,omitempty"`
-	// The DU alert threshold, in percentage.
+	// The DU alert threshold. Unit: percentage.
 	//
 	// example:
 	//
 	// 46
 	DuAlarmThreshold *string `json:"DuAlarmThreshold,omitempty" xml:"DuAlarmThreshold,omitempty"`
-	// The error code returned if the call fails.
+	// The error code returned when an error occurs.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call fails.
+	// The error message returned when an error occurs.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeDedicatedClusterMonitorRuleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The memory alert threshold, in percentage.
+	// The memory alert threshold. Unit: percentage.
 	//
 	// example:
 	//
@@ -86,15 +86,15 @@ type DescribeDedicatedClusterMonitorRuleResponseBody struct {
 	MemAlarmThreshold *string `json:"MemAlarmThreshold,omitempty" xml:"MemAlarmThreshold,omitempty"`
 	// The alert switch. Valid values:
 	//
-	// - **1**: enabled.
+	// - **1**: Enabled.
 	//
-	// - **0**: disabled.
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	NoticeSwitch *string `json:"NoticeSwitch,omitempty" xml:"NoticeSwitch,omitempty"`
-	// The phone numbers that receive alerts. If there are multiple phone numbers, they are separated by commas (,).
+	// The phone numbers that receive alert notifications. If multiple phone numbers are specified, separate them with commas (,).
 	//
 	// example:
 	//

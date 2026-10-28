@@ -26,19 +26,19 @@ type iCreateMigrationJobRequest interface {
 }
 
 type CreateMigrationJobRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be discontinued.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Generate a value from your client to ensure that the value is unique among different requests. The **ClientToken*	- parameter supports only ASCII characters and cannot exceed 64 characters in length.
+	// Ensures the idempotence of the request. You can generate the value on your client to ensure that it is unique across different requests. The **ClientToken*	- parameter supports only ASCII characters and can be up to 64 characters in length.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**.
+	// The specifications of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**.
 	//
 	// > - For the test performance of each specification, see [Data migration specifications](https://help.aliyun.com/document_detail/26606.html).
 	//
@@ -51,7 +51,7 @@ type CreateMigrationJobRequest struct {
 	// 2xlarge
 	MigrationJobClass *string `json:"MigrationJobClass,omitempty" xml:"MigrationJobClass,omitempty"`
 	OwnerId           *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region of the data migration instance, which is the region of the destination database instance. For more information, see the supported [region list](https://help.aliyun.com/document_detail/141033.html).
+	// The region where the data migration instance resides. This is the region where the destination database instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -59,13 +59,13 @@ type CreateMigrationJobRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The region of the data migration instance. You do not need to specify this parameter. This parameter will be discontinued.
+	// The region where the data migration instance resides. You do not need to specify this parameter because it will be deprecated.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type iDescribeClusterOperateLogsResponseBody interface {
 }
 
 type DescribeClusterOperateLogsResponseBody struct {
-	// The backend error code, which is incrementally numeric.
+	// The backend error code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeClusterOperateLogsResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The monitoring statistics information.
 	DataPoints []*DescribeClusterOperateLogsResponseBodyDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
-	// The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
+	// The dynamic error message, which is used to replace the %s placeholder in the ErrMessage parameter.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeClusterOperateLogsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries displayed on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeClusterOperateLogsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -219,13 +219,13 @@ func (s *DescribeClusterOperateLogsResponseBody) Validate() error {
 }
 
 type DescribeClusterOperateLogsResponseBodyDataPoints struct {
-	// The additional remarks.
+	// Additional remarks.
 	//
 	// example:
 	//
 	// null
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The primary key of the log record table.
+	// The primary key of the log record.
 	//
 	// example:
 	//
@@ -237,13 +237,13 @@ type DescribeClusterOperateLogsResponseBodyDataPoints struct {
 	//
 	// 1642077211574
 	LogDatetime *int64 `json:"LogDatetime,omitempty" xml:"LogDatetime,omitempty"`
-	// The new parameter value when the operation type is update.
+	// The new parameter value if the operation type is modification.
 	//
 	// example:
 	//
 	// 105
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// The old parameter value when the operation type is update.
+	// The original parameter value if the operation type is modification.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ type DescribeClusterOperateLogsResponseBodyDataPoints struct {
 	//
 	// null
 	OperationUser *string `json:"OperationUser,omitempty" xml:"OperationUser,omitempty"`
-	// The call result. Indicates whether the call was successful. A value of **1*	- indicates success.
+	// The call result. A value of **1*	- indicates success.
 	//
 	// example:
 	//
