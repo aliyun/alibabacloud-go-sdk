@@ -22,17 +22,19 @@ type iListAddonsRequest interface {
 }
 
 type ListAddonsRequest struct {
-	// The locale. Valid values: zh and en. Default value: zh.
+	// The language environment. Valid values: zh and en. Default value: zh.
 	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
+	// The add-on catalog version. Valid values: v1 and v2. Default value: v2. If you specify v1, the add-ons in the v1 catalog are listed.
+	//
 	// example:
 	//
 	// v2
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The tag filter.
+	// The category filter.
 	//
 	// example:
 	//
@@ -44,7 +46,7 @@ type ListAddonsRequest struct {
 	//
 	// false
 	Regexp *bool `json:"regexp,omitempty" xml:"regexp,omitempty"`
-	// The search query. Supports searching by add-on name, description, or keyword.
+	// The search keyword. You can search by add-on name, description, or keyword.
 	//
 	// example:
 	//

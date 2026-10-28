@@ -24,7 +24,7 @@ type CreateIntegrationPolicyResponseBody struct {
 	//
 	// true
 	Created *bool `json:"created,omitempty" xml:"created,omitempty"`
-	// The policy.
+	// The uploaded policy.
 	Policy *CreateIntegrationPolicyResponseBodyPolicy `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -115,7 +115,7 @@ type CreateIntegrationPolicyResponseBodyPolicy struct {
 	//
 	// u1234567
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The workspace to which the policy belongs.
+	// The workspace where the policy resides.
 	//
 	// example:
 	//

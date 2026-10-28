@@ -127,11 +127,13 @@ func (s *ListIntegrationPoliciesResponseBody) Validate() error {
 type ListIntegrationPoliciesResponseBodyPolicies struct {
 	// The names of all add-ons installed in this policy.
 	AddonNames []*string `json:"addonNames,omitempty" xml:"addonNames,omitempty" type:"Repeated"`
+	// The policy version.
+	//
 	// example:
 	//
 	// v2
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The information about the bound resources.
+	// The information about the bound resource.
 	BindResource *ListIntegrationPoliciesResponseBodyPoliciesBindResource `json:"bindResource,omitempty" xml:"bindResource,omitempty" type:"Struct"`
 	// The installation status of umodel in the container environment.
 	//
@@ -141,7 +143,7 @@ type ListIntegrationPoliciesResponseBodyPolicies struct {
 	CsUmodelStatus *bool `json:"csUmodelStatus,omitempty" xml:"csUmodelStatus,omitempty"`
 	// The entity group.
 	EntityGroup *ListIntegrationPoliciesResponseBodyPoliciesEntityGroup `json:"entityGroup,omitempty" xml:"entityGroup,omitempty" type:"Struct"`
-	// The billing type.
+	// The billing method.
 	//
 	// example:
 	//
@@ -161,7 +163,7 @@ type ListIntegrationPoliciesResponseBodyPolicies struct {
 	//
 	// 6f5HSsg3AP
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The Access Center policy type.
+	// The access center policy type.
 	//
 	// example:
 	//
@@ -748,7 +750,7 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules) Vali
 }
 
 type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesAnnotations struct {
-	// The operation to perform.
+	// The operation to be performed.
 	//
 	// example:
 	//
@@ -760,7 +762,7 @@ type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesAnnotation
 	//
 	// key
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The tag values.
+	// The tag value.
 	TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -810,9 +812,9 @@ type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRules
 	//
 	// test
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// The field values. Separate multiple values with commas (,).
+	// The field content. Separate multiple values with commas (,).
 	FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
-	// The operation to perform.
+	// The operation to be performed.
 	//
 	// example:
 	//
@@ -905,19 +907,19 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesIpMatc
 }
 
 type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesLabels struct {
-	// The operation to perform.
+	// The operation to be performed.
 	//
 	// example:
 	//
 	// add
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
-	// The tag key.
+	// The label key.
 	//
 	// example:
 	//
 	// test
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The tag values.
+	// The tag value.
 	TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -961,19 +963,19 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesLabels
 }
 
 type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesTags struct {
-	// The operation to perform.
+	// The operation to be performed.
 	//
 	// example:
 	//
 	// add
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
-	// The tag key.
+	// The label key.
 	//
 	// example:
 	//
 	// key
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The tag values.
+	// The tag value.
 	TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -1017,7 +1019,7 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesTags) 
 }
 
 type ListIntegrationPoliciesResponseBodyPoliciesManagedInfo struct {
-	// The ID of the elastic network interface (ENI) for the managed probe. Example: eni-xxxx.
+	// The elastic network interface (ENI) ID of the managed probe. Example: eni-xxxx.
 	//
 	// example:
 	//
@@ -1083,7 +1085,7 @@ type ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease struct {
 	//
 	// 30
 	Ready *int32 `json:"ready,omitempty" xml:"ready,omitempty"`
-	// The number of rules.
+	// The total number of rules.
 	//
 	// example:
 	//

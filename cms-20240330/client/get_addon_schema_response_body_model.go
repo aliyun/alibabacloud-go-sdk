@@ -18,15 +18,15 @@ type iGetAddonSchemaResponseBody interface {
 }
 
 type GetAddonSchemaResponseBody struct {
-	// A list of data table fields.
+	// The list of data table fields.
 	Fields []*GetAddonSchemaResponseBodyFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E5B1D3D4-BB28-5996-8AD2-***********
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The type of the schema.
+	// The schema type.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *GetAddonSchemaResponseBody) Validate() error {
 }
 
 type GetAddonSchemaResponseBodyFields struct {
-	// A list of display conditions.
+	// The list of display conditions.
 	Conditions []*GetAddonSchemaResponseBodyFieldsConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 	// The default value.
 	//
@@ -97,19 +97,19 @@ type GetAddonSchemaResponseBodyFields struct {
 	//
 	// MySQL datasource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether the field is hidden. Valid values: \\`true\\` (hidden) and \\`false\\` (displayed).
+	// Specifies whether the field is hidden. Valid values: true: Hidden. false: Displayed.
 	//
 	// example:
 	//
 	// false
 	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	// The type of the element.
+	// The element type.
 	//
 	// example:
 	//
 	// input
 	Element *string `json:"element,omitempty" xml:"element,omitempty"`
-	// The path of the field.
+	// The field path.
 	//
 	// example:
 	//
@@ -121,27 +121,27 @@ type GetAddonSchemaResponseBodyFields struct {
 	//
 	// mysql
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The name of the field.
+	// The field name.
 	//
 	// example:
 	//
 	// host
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The placeholder text.
+	// The input prompt.
 	//
 	// example:
 	//
 	// Please enter the metrics collection interval
 	Placeholder *string `json:"placeholder,omitempty" xml:"placeholder,omitempty"`
-	// Other properties of the component.
+	// The other properties of the component.
 	Props *GetAddonSchemaResponseBodyFieldsProps `json:"props,omitempty" xml:"props,omitempty" type:"Struct"`
-	// The type of the field.
+	// The field type.
 	//
 	// example:
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The validation rule for the field.
+	// The field validation rules.
 	Validation *GetAddonSchemaResponseBodyFieldsValidation `json:"validation,omitempty" xml:"validation,omitempty" type:"Struct"`
 }
 
@@ -285,19 +285,19 @@ func (s *GetAddonSchemaResponseBodyFields) Validate() error {
 }
 
 type GetAddonSchemaResponseBodyFieldsConditions struct {
-	// The control mode of the field.
+	// The field control mode.
 	//
 	// example:
 	//
 	// show
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The name of the field.
+	// The field name.
 	//
 	// example:
 	//
 	// store.storageTarget
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// The operator for the condition.
+	// The condition operator.
 	//
 	// example:
 	//
@@ -360,11 +360,11 @@ func (s *GetAddonSchemaResponseBodyFieldsConditions) Validate() error {
 }
 
 type GetAddonSchemaResponseBodyFieldsProps struct {
-	// The information about the data source.
+	// The data source information.
 	DataSource []*GetAddonSchemaResponseBodyFieldsPropsDataSource `json:"dataSource,omitempty" xml:"dataSource,omitempty" type:"Repeated"`
-	// A collection of related data.
+	// The related data collection.
 	Related []*string `json:"related,omitempty" xml:"related,omitempty" type:"Repeated"`
-	// The mode.
+	// The selection mode.
 	//
 	// example:
 	//
@@ -427,7 +427,7 @@ type GetAddonSchemaResponseBodyFieldsPropsDataSource struct {
 	//
 	// tagKey
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The value of the label.
+	// The label value.
 	//
 	// example:
 	//
@@ -466,19 +466,19 @@ func (s *GetAddonSchemaResponseBodyFieldsPropsDataSource) Validate() error {
 }
 
 type GetAddonSchemaResponseBodyFieldsValidation struct {
-	// The maximum value. The value is inclusive.
+	// The maximum value of the score range (inclusive).
 	//
 	// example:
 	//
 	// 2000
 	Max *int32 `json:"max,omitempty" xml:"max,omitempty"`
-	// The maximum length that is supported by the text control.
+	// The maximum length supported by the text control.
 	//
 	// example:
 	//
 	// 100
 	MaxLength *int32 `json:"maxLength,omitempty" xml:"maxLength,omitempty"`
-	// The details.
+	// The detailed information.
 	//
 	// example:
 	//

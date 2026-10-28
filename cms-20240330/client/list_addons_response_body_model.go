@@ -98,7 +98,7 @@ type ListAddonsResponseBodyAddons struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The latest release creation time.
+	// The time of the latest release. The time is in ISO 8601 format and includes the UTC identifier or time zone offset.
 	//
 	// example:
 	//
@@ -293,13 +293,13 @@ func (s *ListAddonsResponseBodyAddons) Validate() error {
 }
 
 type ListAddonsResponseBodyAddonsDashboards struct {
-	// The dashboard description.
+	// The description of the dashboard.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The dashboard name.
+	// The name of the dashboard.
 	//
 	// example:
 	//
@@ -363,7 +363,7 @@ type ListAddonsResponseBodyAddonsEnvironments struct {
 	//
 	// o11y-demo-cn-heyuan
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether the integration policy type is enabled.
+	// Specifies whether it is enabled.
 	//
 	// example:
 	//
@@ -594,7 +594,7 @@ type ListAddonsResponseBodyAddonsEnvironmentsPolicies struct {
 	//
 	// RUNNING
 	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
-	// Specifies whether to install the component by default.
+	// Specifies whether to install by default.
 	//
 	// example:
 	//
@@ -608,13 +608,13 @@ type ListAddonsResponseBodyAddonsEnvironmentsPolicies struct {
 	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
 	// The metric check rule.
 	MetricCheckRule *ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	// Specifies whether to trigger a pod restart guide immediately after the plug-in installation is completed during integration.
+	// Specifies whether to initiate a pod restart guide immediately after the plug-in installation is completed during integration.
 	//
 	// example:
 	//
 	// true
 	NeedRestartAfterIntegration *bool `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
-	// The supported protocol types in the configuration.
+	// The supported protocol types for configuration.
 	Protocols []*ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 	// The name of the target add-on.
 	//

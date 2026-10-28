@@ -64,6 +64,8 @@ type ListUserNotifyHistoriesRequest struct {
 	//
 	// 3fa85f64-5717-4562-b3fc-2c963f66afa7
 	BatchId *string `json:"batchId,omitempty" xml:"batchId,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// arms
@@ -106,6 +108,8 @@ type ListUserNotifyHistoriesRequest struct {
 	//
 	// 默认通知策略
 	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 1234567890123456

@@ -9,6 +9,8 @@ type iIncidentForView interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBlockingExpireTimestamp(v int64) *IncidentForView
+	GetBlockingExpireTimestamp() *int64
 	SetContent(v string) *IncidentForView
 	GetContent() *string
 	SetEscalations(v []*IncidentEscalationPolicyForView) *IncidentForView
@@ -45,6 +47,8 @@ type iIncidentForView interface {
 	GetSubscriptionName() *string
 	SetSubscriptionUuid(v string) *IncidentForView
 	GetSubscriptionUuid() *string
+	SetTags(v map[string]*string) *IncidentForView
+	GetTags() map[string]*string
 	SetTime(v int64) *IncidentForView
 	GetTime() *int64
 	SetTitle(v string) *IncidentForView
@@ -56,6 +60,10 @@ type iIncidentForView interface {
 }
 
 type IncidentForView struct {
+	// example:
+	//
+	// -1 表示未屏蔽
+	BlockingExpireTimestamp *int64 `json:"blockingExpireTimestamp,omitempty" xml:"blockingExpireTimestamp,omitempty"`
 	// The details of the incident.
 	//
 	// example:
@@ -135,7 +143,8 @@ type IncidentForView struct {
 	// example:
 	//
 	// "subscription-abc"
-	SubscriptionUuid *string `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
+	SubscriptionUuid *string            `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
+	Tags             map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// The timestamp when the incident was created.
 	//
 	// example:
@@ -168,6 +177,10 @@ func (s IncidentForView) String() string {
 
 func (s IncidentForView) GoString() string {
 	return s.String()
+}
+
+func (s *IncidentForView) GetBlockingExpireTimestamp() *int64 {
+	return s.BlockingExpireTimestamp
 }
 
 func (s *IncidentForView) GetContent() *string {
@@ -242,6 +255,10 @@ func (s *IncidentForView) GetSubscriptionUuid() *string {
 	return s.SubscriptionUuid
 }
 
+func (s *IncidentForView) GetTags() map[string]*string {
+	return s.Tags
+}
+
 func (s *IncidentForView) GetTime() *int64 {
 	return s.Time
 }
@@ -256,6 +273,11 @@ func (s *IncidentForView) GetUserId() *string {
 
 func (s *IncidentForView) GetWorkspace() *string {
 	return s.Workspace
+}
+
+func (s *IncidentForView) SetBlockingExpireTimestamp(v int64) *IncidentForView {
+	s.BlockingExpireTimestamp = &v
+	return s
 }
 
 func (s *IncidentForView) SetContent(v string) *IncidentForView {
@@ -345,6 +367,11 @@ func (s *IncidentForView) SetSubscriptionName(v string) *IncidentForView {
 
 func (s *IncidentForView) SetSubscriptionUuid(v string) *IncidentForView {
 	s.SubscriptionUuid = &v
+	return s
+}
+
+func (s *IncidentForView) SetTags(v map[string]*string) *IncidentForView {
+	s.Tags = v
 	return s
 }
 

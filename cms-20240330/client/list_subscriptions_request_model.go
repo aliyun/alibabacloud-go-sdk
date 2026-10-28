@@ -76,6 +76,8 @@ type ListSubscriptionsRequest struct {
 	//
 	// NORMAL
 	SubscriptionType *string `json:"subscriptionType,omitempty" xml:"subscriptionType,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// true

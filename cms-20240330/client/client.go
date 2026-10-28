@@ -45,8 +45,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shanghai":           dara.String("metrics.cn-shanghai.aliyuncs.com"),
 		"cn-hongkong":           dara.String("metrics.cn-hongkong.aliyuncs.com"),
 		"cn-shenzhen":           dara.String("metrics.cn-shenzhen.aliyuncs.com"),
-		"cn-nanjing":            dara.String("metrics.cn-nanjing.aliyuncs.com"),
-		"cn-fuzhou":             dara.String("metrics.cn-fuzhou.aliyuncs.com"),
 		"cn-chengdu":            dara.String("metrics.cn-chengdu.aliyuncs.com"),
 		"cn-guangzhou":          dara.String("metrics.cn-guangzhou.aliyuncs.com"),
 		"cn-huhehaote":          dara.String("metrics.cn-huhehaote.aliyuncs.com"),
@@ -93,6 +91,76 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 激活验证码
+//
+// @param request - ActiveContactChannelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActiveContactChannelResponse
+func (client *Client) ActiveContactChannelWithOptions(request *ActiveContactChannelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ActiveContactChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		query["code"] = request.Code
+	}
+
+	if !dara.IsNil(request.Site) {
+		query["site"] = request.Site
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ActiveContactChannel"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/contacts/action/activate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ActiveContactChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 激活验证码
+//
+// @param request - ActiveContactChannelRequest
+//
+// @return ActiveContactChannelResponse
+func (client *Client) ActiveContactChannel(request *ActiveContactChannelRequest) (_result *ActiveContactChannelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ActiveContactChannelResponse{}
+	_body, _err := client.ActiveContactChannelWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -352,7 +420,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Installs an add-on component, which represents an integration operation.
+// Installs an integration component to perform an integration.
 //
 // Description:
 //
@@ -443,7 +511,7 @@ func (client *Client) CreateAddonReleaseWithOptions(policyId *string, request *C
 
 // Summary:
 //
-// Installs an add-on component, which represents an integration operation.
+// Installs an integration component to perform an integration.
 //
 // Description:
 //
@@ -589,6 +657,194 @@ func (client *Client) CreateAggTaskGroup(instanceId *string, request *CreateAggT
 	headers := make(map[string]*string)
 	_result = &CreateAggTaskGroupResponse{}
 	_body, _err := client.CreateAggTaskGroupWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建告警动作
+//
+// @param request - CreateAlertActionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAlertActionResponse
+func (client *Client) CreateAlertActionWithOptions(request *CreateAlertActionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAlertActionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AlertActionId) {
+		body["alertActionId"] = request.AlertActionId
+	}
+
+	if !dara.IsNil(request.AlertActionName) {
+		body["alertActionName"] = request.AlertActionName
+	}
+
+	if !dara.IsNil(request.EbParam) {
+		body["ebParam"] = request.EbParam
+	}
+
+	if !dara.IsNil(request.EssParam) {
+		body["essParam"] = request.EssParam
+	}
+
+	if !dara.IsNil(request.Fc3Param) {
+		body["fc3Param"] = request.Fc3Param
+	}
+
+	if !dara.IsNil(request.FcParam) {
+		body["fcParam"] = request.FcParam
+	}
+
+	if !dara.IsNil(request.MnsParam) {
+		body["mnsParam"] = request.MnsParam
+	}
+
+	if !dara.IsNil(request.PagerDutyParam) {
+		body["pagerDutyParam"] = request.PagerDutyParam
+	}
+
+	if !dara.IsNil(request.SlsParam) {
+		body["slsParam"] = request.SlsParam
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	if !dara.IsNil(request.WebhookParam) {
+		body["webhookParam"] = request.WebhookParam
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAlertAction"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/alertAction"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAlertActionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建告警动作
+//
+// @param request - CreateAlertActionRequest
+//
+// @return CreateAlertActionResponse
+func (client *Client) CreateAlertAction(request *CreateAlertActionRequest) (_result *CreateAlertActionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAlertActionResponse{}
+	_body, _err := client.CreateAlertActionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建通知模板
+//
+// @param request - CreateAlertNotifyTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAlertNotifyTemplateResponse
+func (client *Client) CreateAlertNotifyTemplateWithOptions(request *CreateAlertNotifyTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAlertNotifyTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AlertNotifyTemplateId) {
+		body["alertNotifyTemplateId"] = request.AlertNotifyTemplateId
+	}
+
+	if !dara.IsNil(request.AlertNotifyTemplateName) {
+		body["alertNotifyTemplateName"] = request.AlertNotifyTemplateName
+	}
+
+	if !dara.IsNil(request.ProgramLang) {
+		body["programLang"] = request.ProgramLang
+	}
+
+	if !dara.IsNil(request.Templates) {
+		body["templates"] = request.Templates
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAlertNotifyTemplate"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/alertNotifyTemplate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAlertNotifyTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建通知模板
+//
+// @param request - CreateAlertNotifyTemplateRequest
+//
+// @return CreateAlertNotifyTemplateResponse
+func (client *Client) CreateAlertNotifyTemplate(request *CreateAlertNotifyTemplateRequest) (_result *CreateAlertNotifyTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAlertNotifyTemplateResponse{}
+	_body, _err := client.CreateAlertNotifyTemplateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -917,6 +1173,174 @@ func (client *Client) CreateCloudResource() (_result *CreateCloudResourceRespons
 	headers := make(map[string]*string)
 	_result = &CreateCloudResourceResponse{}
 	_body, _err := client.CreateCloudResourceWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建联系人
+//
+// @param request - CreateContactRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContactResponse
+func (client *Client) CreateContactWithOptions(request *CreateContactRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContactId) {
+		body["contactId"] = request.ContactId
+	}
+
+	if !dara.IsNil(request.Email) {
+		body["email"] = request.Email
+	}
+
+	if !dara.IsNil(request.ImUserIds) {
+		body["imUserIds"] = request.ImUserIds
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phone) {
+		body["phone"] = request.Phone
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContact"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/contact"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建联系人
+//
+// @param request - CreateContactRequest
+//
+// @return CreateContactResponse
+func (client *Client) CreateContact(request *CreateContactRequest) (_result *CreateContactResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateContactResponse{}
+	_body, _err := client.CreateContactWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建联系人组
+//
+// @param request - CreateContactGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContactGroupResponse
+func (client *Client) CreateContactGroupWithOptions(request *CreateContactGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateContactGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContactGroupId) {
+		body["contactGroupId"] = request.ContactGroupId
+	}
+
+	if !dara.IsNil(request.Contacts) {
+		body["contacts"] = request.Contacts
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContactGroup"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/contactGroup"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContactGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建联系人组
+//
+// @param request - CreateContactGroupRequest
+//
+// @return CreateContactGroupResponse
+func (client *Client) CreateContactGroup(request *CreateContactGroupRequest) (_result *CreateContactGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateContactGroupResponse{}
+	_body, _err := client.CreateContactGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1742,6 +2166,94 @@ func (client *Client) CreateNotifyPolicy(request *CreateNotifyPolicyRequest) (_r
 
 // Summary:
 //
+// 创建OncallSchedule
+//
+// @param request - CreateOncallScheduleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOncallScheduleResponse
+func (client *Client) CreateOncallScheduleWithOptions(request *CreateOncallScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateOncallScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OncallScheduleId) {
+		body["oncallScheduleId"] = request.OncallScheduleId
+	}
+
+	if !dara.IsNil(request.OncallScheduleName) {
+		body["oncallScheduleName"] = request.OncallScheduleName
+	}
+
+	if !dara.IsNil(request.Rotations) {
+		body["rotations"] = request.Rotations
+	}
+
+	if !dara.IsNil(request.ShiftRobotId) {
+		body["shiftRobotId"] = request.ShiftRobotId
+	}
+
+	if !dara.IsNil(request.Substitudes) {
+		body["substitudes"] = request.Substitudes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOncallSchedule"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/oncallschedule"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOncallScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建OncallSchedule
+//
+// @param request - CreateOncallScheduleRequest
+//
+// @return CreateOncallScheduleResponse
+func (client *Client) CreateOncallSchedule(request *CreateOncallScheduleRequest) (_result *CreateOncallScheduleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOncallScheduleResponse{}
+	_body, _err := client.CreateOncallScheduleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Create a pipeline.
 //
 // @param request - CreatePipelineRequest
@@ -2464,7 +2976,7 @@ func (client *Client) CreateServiceTask(workspace *string, serviceId *string, re
 
 // Summary:
 //
-// 创建订阅
+// Creates a subscription.
 //
 // @param request - CreateSubscriptionRequest
 //
@@ -2512,7 +3024,7 @@ func (client *Client) CreateSubscriptionWithOptions(request *CreateSubscriptionR
 
 // Summary:
 //
-// 创建订阅
+// Creates a subscription.
 //
 // @param request - CreateSubscriptionRequest
 //
@@ -2809,6 +3321,150 @@ func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string, re
 
 // Summary:
 //
+// 删除告警动作
+//
+// @param tmpReq - DeleteAlertActionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAlertActionsResponse
+func (client *Client) DeleteAlertActionsWithOptions(tmpReq *DeleteAlertActionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAlertActionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteAlertActionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AlertActionIds) {
+		request.AlertActionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertActionIds, dara.String("alertActionIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertActionIdsShrink) {
+		query["alertActionIds"] = request.AlertActionIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAlertActions"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/alertActions"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAlertActionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除告警动作
+//
+// @param request - DeleteAlertActionsRequest
+//
+// @return DeleteAlertActionsResponse
+func (client *Client) DeleteAlertActions(request *DeleteAlertActionsRequest) (_result *DeleteAlertActionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAlertActionsResponse{}
+	_body, _err := client.DeleteAlertActionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除报警通知模板
+//
+// @param tmpReq - DeleteAlertNotifyTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAlertNotifyTemplatesResponse
+func (client *Client) DeleteAlertNotifyTemplatesWithOptions(tmpReq *DeleteAlertNotifyTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAlertNotifyTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteAlertNotifyTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AlertNotifyTemplateIds) {
+		request.AlertNotifyTemplateIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertNotifyTemplateIds, dara.String("alertNotifyTemplateIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertNotifyTemplateIdsShrink) {
+		query["alertNotifyTemplateIds"] = request.AlertNotifyTemplateIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAlertNotifyTemplates"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/alertNotifyTemplates"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAlertNotifyTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除报警通知模板
+//
+// @param request - DeleteAlertNotifyTemplatesRequest
+//
+// @return DeleteAlertNotifyTemplatesResponse
+func (client *Client) DeleteAlertNotifyTemplates(request *DeleteAlertNotifyTemplatesRequest) (_result *DeleteAlertNotifyTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAlertNotifyTemplatesResponse{}
+	_body, _err := client.DeleteAlertNotifyTemplatesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a chatbot.
 //
 // @param tmpReq - DeleteAlertRobotsRequest
@@ -3058,6 +3714,150 @@ func (client *Client) DeleteCloudResource() (_result *DeleteCloudResourceRespons
 	headers := make(map[string]*string)
 	_result = &DeleteCloudResourceResponse{}
 	_body, _err := client.DeleteCloudResourceWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除联系人组
+//
+// @param tmpReq - DeleteContactGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContactGroupsResponse
+func (client *Client) DeleteContactGroupsWithOptions(tmpReq *DeleteContactGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteContactGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteContactGroupsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ContactGroupIds) {
+		request.ContactGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactGroupIds, dara.String("contactGroupIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactGroupIdsShrink) {
+		query["contactGroupIds"] = request.ContactGroupIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContactGroups"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/contactGroups"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContactGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除联系人组
+//
+// @param request - DeleteContactGroupsRequest
+//
+// @return DeleteContactGroupsResponse
+func (client *Client) DeleteContactGroups(request *DeleteContactGroupsRequest) (_result *DeleteContactGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteContactGroupsResponse{}
+	_body, _err := client.DeleteContactGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除联系人
+//
+// @param tmpReq - DeleteContactsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContactsResponse
+func (client *Client) DeleteContactsWithOptions(tmpReq *DeleteContactsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteContactsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteContactsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ContactIds) {
+		request.ContactIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactIds, dara.String("contactIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactIdsShrink) {
+		query["contactIds"] = request.ContactIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContacts"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/contacts"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除联系人
+//
+// @param request - DeleteContactsRequest
+//
+// @return DeleteContactsResponse
+func (client *Client) DeleteContacts(request *DeleteContactsRequest) (_result *DeleteContactsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteContactsResponse{}
+	_body, _err := client.DeleteContactsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3972,6 +4772,78 @@ func (client *Client) DeleteNotifyPolicy(request *DeleteNotifyPolicyRequest) (_r
 	headers := make(map[string]*string)
 	_result = &DeleteNotifyPolicyResponse{}
 	_body, _err := client.DeleteNotifyPolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除OncallSchedule
+//
+// @param tmpReq - DeleteOncallSchedulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOncallSchedulesResponse
+func (client *Client) DeleteOncallSchedulesWithOptions(tmpReq *DeleteOncallSchedulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteOncallSchedulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteOncallSchedulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OncallScheduleIds) {
+		request.OncallScheduleIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OncallScheduleIds, dara.String("oncallScheduleIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OncallScheduleIdsShrink) {
+		query["oncallScheduleIds"] = request.OncallScheduleIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteOncallSchedules"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/oncallSchedule"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteOncallSchedulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除OncallSchedule
+//
+// @param request - DeleteOncallSchedulesRequest
+//
+// @return DeleteOncallSchedulesResponse
+func (client *Client) DeleteOncallSchedules(request *DeleteOncallSchedulesRequest) (_result *DeleteOncallSchedulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteOncallSchedulesResponse{}
+	_body, _err := client.DeleteOncallSchedulesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5691,11 +6563,11 @@ func (client *Client) GetAddonRelease(releaseName *string, policyId *string, req
 
 // Summary:
 //
-// The details of an add-on schema.
+// Queries the schema details of an add-on.
 //
 // Description:
 //
-// Retrieves the schema of an add-on.
+// Retrieves the schema information of an add-on.
 //
 // @param request - GetAddonSchemaRequest
 //
@@ -5754,11 +6626,11 @@ func (client *Client) GetAddonSchemaWithOptions(addonName *string, request *GetA
 
 // Summary:
 //
-// The details of an add-on schema.
+// Queries the schema details of an add-on.
 //
 // Description:
 //
-// Retrieves the schema of an add-on.
+// Retrieves the schema information of an add-on.
 //
 // @param request - GetAddonSchemaRequest
 //
@@ -5828,6 +6700,66 @@ func (client *Client) GetAggTaskGroup(instanceId *string, groupId *string, reque
 	headers := make(map[string]*string)
 	_result = &GetAggTaskGroupResponse{}
 	_body, _err := client.GetAggTaskGroupWithOptions(instanceId, groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询告警动作
+//
+// @param request - GetAlertActionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAlertActionResponse
+func (client *Client) GetAlertActionWithOptions(alertActionId *string, request *GetAlertActionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlertActionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAlertAction"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/alertAction/" + dara.PercentEncode(dara.StringValue(alertActionId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAlertActionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询告警动作
+//
+// @param request - GetAlertActionRequest
+//
+// @return GetAlertActionResponse
+func (client *Client) GetAlertAction(alertActionId *string, request *GetAlertActionRequest) (_result *GetAlertActionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAlertActionResponse{}
+	_body, _err := client.GetAlertActionWithOptions(alertActionId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7168,6 +8100,66 @@ func (client *Client) GetNotifyPolicy(request *GetNotifyPolicyRequest) (_result 
 
 // Summary:
 //
+// 查询 OncallSchedule
+//
+// @param request - GetOncallScheduleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOncallScheduleResponse
+func (client *Client) GetOncallScheduleWithOptions(oncallScheduleId *string, request *GetOncallScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOncallScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOncallSchedule"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/oncallSchedule/" + dara.PercentEncode(dara.StringValue(oncallScheduleId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOncallScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 OncallSchedule
+//
+// @param request - GetOncallScheduleRequest
+//
+// @return GetOncallScheduleResponse
+func (client *Client) GetOncallSchedule(oncallScheduleId *string, request *GetOncallScheduleRequest) (_result *GetOncallScheduleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetOncallScheduleResponse{}
+	_body, _err := client.GetOncallScheduleWithOptions(oncallScheduleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a pipeline.
 //
 // @param request - GetPipelineRequest
@@ -8411,6 +9403,98 @@ func (client *Client) ListAlertActions(request *ListAlertActionsRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &ListAlertActionsResponse{}
 	_body, _err := client.ListAlertActionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询通知模板
+//
+// @param tmpReq - ListAlertNotifyTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertNotifyTemplatesResponse
+func (client *Client) ListAlertNotifyTemplatesWithOptions(tmpReq *ListAlertNotifyTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAlertNotifyTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAlertNotifyTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AlertNotifyTemplateIds) {
+		request.AlertNotifyTemplateIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertNotifyTemplateIds, dara.String("alertNotifyTemplateIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertNotifyTemplateIdsShrink) {
+		query["alertNotifyTemplateIds"] = request.AlertNotifyTemplateIdsShrink
+	}
+
+	if !dara.IsNil(request.AlertNotifyTemplateName) {
+		query["alertNotifyTemplateName"] = request.AlertNotifyTemplateName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProgramLang) {
+		query["programLang"] = request.ProgramLang
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAlertNotifyTemplates"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/alertNotifyTemplate"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAlertNotifyTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询通知模板
+//
+// @param request - ListAlertNotifyTemplatesRequest
+//
+// @return ListAlertNotifyTemplatesResponse
+func (client *Client) ListAlertNotifyTemplates(request *ListAlertNotifyTemplatesRequest) (_result *ListAlertNotifyTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAlertNotifyTemplatesResponse{}
+	_body, _err := client.ListAlertNotifyTemplatesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10240,6 +11324,160 @@ func (client *Client) ListNotifyPolicies(request *ListNotifyPoliciesRequest) (_r
 
 // Summary:
 //
+// 查询值班人
+//
+// @param request - ListOncallContactsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOncallContactsResponse
+func (client *Client) ListOncallContactsWithOptions(oncallScheduleId *string, request *ListOncallContactsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOncallContactsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Timestamp) {
+		query["timestamp"] = request.Timestamp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOncallContacts"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/oncallSchedule/" + dara.PercentEncode(dara.StringValue(oncallScheduleId)) + "/contacts"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOncallContactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询值班人
+//
+// @param request - ListOncallContactsRequest
+//
+// @return ListOncallContactsResponse
+func (client *Client) ListOncallContacts(oncallScheduleId *string, request *ListOncallContactsRequest) (_result *ListOncallContactsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOncallContactsResponse{}
+	_body, _err := client.ListOncallContactsWithOptions(oncallScheduleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前账号下所有值班排班的配置信息
+//
+// @param tmpReq - ListOncallSchedulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOncallSchedulesResponse
+func (client *Client) ListOncallSchedulesWithOptions(tmpReq *ListOncallSchedulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOncallSchedulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListOncallSchedulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OncallScheduleIds) {
+		request.OncallScheduleIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OncallScheduleIds, dara.String("oncallScheduleIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OncallScheduleIdsShrink) {
+		query["oncallScheduleIds"] = request.OncallScheduleIdsShrink
+	}
+
+	if !dara.IsNil(request.OncallScheduleName) {
+		query["oncallScheduleName"] = request.OncallScheduleName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOncallSchedules"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/oncallSchedules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOncallSchedulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前账号下所有值班排班的配置信息
+//
+// @param request - ListOncallSchedulesRequest
+//
+// @return ListOncallSchedulesResponse
+func (client *Client) ListOncallSchedules(request *ListOncallSchedulesRequest) (_result *ListOncallSchedulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOncallSchedulesResponse{}
+	_body, _err := client.ListOncallSchedulesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists pipelines.
 //
 // @param request - ListPipelinesRequest
@@ -11686,6 +12924,84 @@ func (client *Client) PreviewDataPipeline(workspace *string, request *PreviewDat
 
 // Summary:
 //
+// 预览通知模板渲染结果
+//
+// Description:
+//
+// 传入 Go template 语法的模板内容和渲染上下文数据，返回各模板的渲染结果。支持同时预览多个模板（如 title 和 content），用于前端模板编辑器的实时预览能力。
+//
+// @param request - PreviewNotifyTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewNotifyTemplateResponse
+func (client *Client) PreviewNotifyTemplateWithOptions(request *PreviewNotifyTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewNotifyTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Data) {
+		body["data"] = request.Data
+	}
+
+	if !dara.IsNil(request.Templates) {
+		body["templates"] = request.Templates
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreviewNotifyTemplate"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/template/batchRender"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreviewNotifyTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预览通知模板渲染结果
+//
+// Description:
+//
+// 传入 Go template 语法的模板内容和渲染上下文数据，返回各模板的渲染结果。支持同时预览多个模板（如 title 和 content），用于前端模板编辑器的实时预览能力。
+//
+// @param request - PreviewNotifyTemplateRequest
+//
+// @return PreviewNotifyTemplateResponse
+func (client *Client) PreviewNotifyTemplate(request *PreviewNotifyTemplateRequest) (_result *PreviewNotifyTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PreviewNotifyTemplateResponse{}
+	_body, _err := client.PreviewNotifyTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a workspace.
 //
 // @param request - PutWorkspaceRequest
@@ -11857,6 +13173,72 @@ func (client *Client) QueryAlertRules(request *QueryAlertRulesRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &QueryAlertRulesResponse{}
 	_body, _err := client.QueryAlertRulesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重新发送激活链接
+//
+// @param request - ResendVerifyActivateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResendVerifyActivateResponse
+func (client *Client) ResendVerifyActivateWithOptions(contactId *string, request *ResendVerifyActivateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResendVerifyActivateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChannelType) {
+		body["channelType"] = request.ChannelType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResendVerifyActivate"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/contact/" + dara.PercentEncode(dara.StringValue(contactId)) + "/action/reSendVerifyActivate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResendVerifyActivateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重新发送激活链接
+//
+// @param request - ResendVerifyActivateRequest
+//
+// @return ResendVerifyActivateResponse
+func (client *Client) ResendVerifyActivate(contactId *string, request *ResendVerifyActivateRequest) (_result *ResendVerifyActivateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResendVerifyActivateResponse{}
+	_body, _err := client.ResendVerifyActivateWithOptions(contactId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12502,6 +13884,178 @@ func (client *Client) UpdateAggTaskGroupStatus(instanceId *string, groupId *stri
 
 // Summary:
 //
+// 修改告警动作
+//
+// @param request - UpdateAlertActionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlertActionResponse
+func (client *Client) UpdateAlertActionWithOptions(alertActionId *string, request *UpdateAlertActionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAlertActionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AlertActionName) {
+		body["alertActionName"] = request.AlertActionName
+	}
+
+	if !dara.IsNil(request.EbParam) {
+		body["ebParam"] = request.EbParam
+	}
+
+	if !dara.IsNil(request.EssParam) {
+		body["essParam"] = request.EssParam
+	}
+
+	if !dara.IsNil(request.Fc3Param) {
+		body["fc3Param"] = request.Fc3Param
+	}
+
+	if !dara.IsNil(request.FcParam) {
+		body["fcParam"] = request.FcParam
+	}
+
+	if !dara.IsNil(request.MnsParam) {
+		body["mnsParam"] = request.MnsParam
+	}
+
+	if !dara.IsNil(request.PagerDutyParam) {
+		body["pagerDutyParam"] = request.PagerDutyParam
+	}
+
+	if !dara.IsNil(request.SlsParam) {
+		body["slsParam"] = request.SlsParam
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	if !dara.IsNil(request.WebhookParam) {
+		body["webhookParam"] = request.WebhookParam
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAlertAction"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/alertAction/" + dara.PercentEncode(dara.StringValue(alertActionId))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAlertActionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改告警动作
+//
+// @param request - UpdateAlertActionRequest
+//
+// @return UpdateAlertActionResponse
+func (client *Client) UpdateAlertAction(alertActionId *string, request *UpdateAlertActionRequest) (_result *UpdateAlertActionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAlertActionResponse{}
+	_body, _err := client.UpdateAlertActionWithOptions(alertActionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改已存在的告警通知模板内容。
+//
+// @param request - UpdateAlertNotifyTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlertNotifyTemplateResponse
+func (client *Client) UpdateAlertNotifyTemplateWithOptions(alertNotifyTemplateId *string, request *UpdateAlertNotifyTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAlertNotifyTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AlertNotifyTemplateName) {
+		body["alertNotifyTemplateName"] = request.AlertNotifyTemplateName
+	}
+
+	if !dara.IsNil(request.Templates) {
+		body["templates"] = request.Templates
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAlertNotifyTemplate"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/alertNotifyTemplate/" + dara.PercentEncode(dara.StringValue(alertNotifyTemplateId))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAlertNotifyTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改已存在的告警通知模板内容。
+//
+// @param request - UpdateAlertNotifyTemplateRequest
+//
+// @return UpdateAlertNotifyTemplateResponse
+func (client *Client) UpdateAlertNotifyTemplate(alertNotifyTemplateId *string, request *UpdateAlertNotifyTemplateRequest) (_result *UpdateAlertNotifyTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAlertNotifyTemplateResponse{}
+	_body, _err := client.UpdateAlertNotifyTemplateWithOptions(alertNotifyTemplateId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an alert robot.
 //
 // @param request - UpdateAlertRobotRequest
@@ -12743,6 +14297,158 @@ func (client *Client) UpdateBizTrace(bizTraceId *string, request *UpdateBizTrace
 	headers := make(map[string]*string)
 	_result = &UpdateBizTraceResponse{}
 	_body, _err := client.UpdateBizTraceWithOptions(bizTraceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改已存在的联系人的详细信息
+//
+// @param request - UpdateContactRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContactResponse
+func (client *Client) UpdateContactWithOptions(contactId *string, request *UpdateContactRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Email) {
+		body["email"] = request.Email
+	}
+
+	if !dara.IsNil(request.ImUserIds) {
+		body["imUserIds"] = request.ImUserIds
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phone) {
+		body["phone"] = request.Phone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContact"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/contact/" + dara.PercentEncode(dara.StringValue(contactId))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改已存在的联系人的详细信息
+//
+// @param request - UpdateContactRequest
+//
+// @return UpdateContactResponse
+func (client *Client) UpdateContact(contactId *string, request *UpdateContactRequest) (_result *UpdateContactResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateContactResponse{}
+	_body, _err := client.UpdateContactWithOptions(contactId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改已存在的联系人组信息。
+//
+// @param request - UpdateContactGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContactGroupResponse
+func (client *Client) UpdateContactGroupWithOptions(contactGroupId *string, request *UpdateContactGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateContactGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Contacts) {
+		body["contacts"] = request.Contacts
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContactGroup"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/contactGroup/" + dara.PercentEncode(dara.StringValue(contactGroupId))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContactGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改已存在的联系人组信息。
+//
+// @param request - UpdateContactGroupRequest
+//
+// @return UpdateContactGroupResponse
+func (client *Client) UpdateContactGroup(contactGroupId *string, request *UpdateContactGroupRequest) (_result *UpdateContactGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateContactGroupResponse{}
+	_body, _err := client.UpdateContactGroupWithOptions(contactGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13633,6 +15339,84 @@ func (client *Client) UpdateNotifyStrategy(notifyStrategyId *string, request *Up
 
 // Summary:
 //
+// 更新UpdateOncallSchedule
+//
+// @param request - UpdateOncallScheduleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOncallScheduleResponse
+func (client *Client) UpdateOncallScheduleWithOptions(oncallScheduleId *string, request *UpdateOncallScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateOncallScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OncallScheduleName) {
+		body["oncallScheduleName"] = request.OncallScheduleName
+	}
+
+	if !dara.IsNil(request.Rotations) {
+		body["rotations"] = request.Rotations
+	}
+
+	if !dara.IsNil(request.ShiftRobotId) {
+		body["shiftRobotId"] = request.ShiftRobotId
+	}
+
+	if !dara.IsNil(request.Substitudes) {
+		body["substitudes"] = request.Substitudes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateOncallSchedule"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/oncallSchedule/" + dara.PercentEncode(dara.StringValue(oncallScheduleId))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateOncallScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新UpdateOncallSchedule
+//
+// @param request - UpdateOncallScheduleRequest
+//
+// @return UpdateOncallScheduleResponse
+func (client *Client) UpdateOncallSchedule(oncallScheduleId *string, request *UpdateOncallScheduleRequest) (_result *UpdateOncallScheduleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateOncallScheduleResponse{}
+	_body, _err := client.UpdateOncallScheduleWithOptions(oncallScheduleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Update pipeline
 //
 // @param request - UpdatePipelineRequest
@@ -14427,6 +16211,76 @@ func (client *Client) UpsertUmodelData(workspace *string, request *UpsertUmodelD
 	headers := make(map[string]*string)
 	_result = &UpsertUmodelDataResponse{}
 	_body, _err := client.UpsertUmodelDataWithOptions(workspace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看值班日历
+//
+// @param request - ViewOncallScheduleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ViewOncallScheduleResponse
+func (client *Client) ViewOncallScheduleWithOptions(oncallScheduleId *string, request *ViewOncallScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ViewOncallScheduleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		query["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["startDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ViewOncallSchedule"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/oncallSchedule/" + dara.PercentEncode(dara.StringValue(oncallScheduleId)) + "/calendar"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ViewOncallScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看值班日历
+//
+// @param request - ViewOncallScheduleRequest
+//
+// @return ViewOncallScheduleResponse
+func (client *Client) ViewOncallSchedule(oncallScheduleId *string, request *ViewOncallScheduleRequest) (_result *ViewOncallScheduleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ViewOncallScheduleResponse{}
+	_body, _err := client.ViewOncallScheduleWithOptions(oncallScheduleId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -16,7 +16,10 @@ type iCreateSubscriptionRequest interface {
 }
 
 type CreateSubscriptionRequest struct {
+	// The request body.
 	Body *SubscriptionForModify `json:"body,omitempty" xml:"body,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspace-test

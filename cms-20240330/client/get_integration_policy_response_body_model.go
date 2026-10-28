@@ -62,13 +62,15 @@ func (s *GetIntegrationPolicyResponseBody) Validate() error {
 }
 
 type GetIntegrationPolicyResponseBodyPolicy struct {
-	// The names of all components installed in the policy.
+	// The names of all components installed in this policy.
 	AddonNames []*string `json:"addonNames,omitempty" xml:"addonNames,omitempty" type:"Repeated"`
+	// The policy version.
+	//
 	// example:
 	//
 	// v2
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The information about the bound resource.
+	// The information about the bound resources.
 	BindResource *GetIntegrationPolicyResponseBodyPolicyBindResource `json:"bindResource,omitempty" xml:"bindResource,omitempty" type:"Struct"`
 	// The installation status of umodel in the container environment.
 	//
@@ -86,7 +88,7 @@ type GetIntegrationPolicyResponseBodyPolicy struct {
 	//
 	// policy-c9efed2b99c348d49e589c5f780fc074
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// The policy name.
+	// The rule name.
 	//
 	// example:
 	//
@@ -399,7 +401,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroup struct {
 	EntityGroupName *string `json:"entityGroupName,omitempty" xml:"entityGroupName,omitempty"`
 	// The entity rules.
 	EntityRules *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules `json:"entityRules,omitempty" xml:"entityRules,omitempty" type:"Struct"`
-	// The query.
+	// The query condition.
 	//
 	// example:
 	//
@@ -521,7 +523,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules struct {
 	EntityTypes []*string `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
 	// The list of property rules.
 	FieldRules []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
-	// The instance ID.
+	// The instance IDs.
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
 	// The IP matching rule.
 	IpMatchRule *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Struct"`
@@ -535,7 +537,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules struct {
 	//
 	// rg-aek3aqsuvlv3yyq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The tag value.
+	// The tag values.
 	Tags []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -674,7 +676,7 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules) Validate(
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations struct {
-	// The operation to perform.
+	// The operation to be performed.
 	//
 	// example:
 	//
@@ -686,7 +688,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations str
 	//
 	// use
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The tag value.
+	// The tag values.
 	TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -738,7 +740,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules stru
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
 	// The field content.
 	FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
-	// The operation to perform.
+	// The operation to be performed.
 	//
 	// example:
 	//
@@ -831,7 +833,7 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels struct {
-	// The operation to perform.
+	// The operation to be performed.
 	//
 	// example:
 	//
@@ -887,7 +889,7 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels) Val
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags struct {
-	// The operation to perform.
+	// The operation to be performed.
 	//
 	// example:
 	//
