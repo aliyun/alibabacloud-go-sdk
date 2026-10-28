@@ -20,12 +20,26 @@ type iUpdateVariableRequest interface {
 }
 
 type UpdateVariableRequest struct {
+	// The description.
+	//
+	// example:
+	//
+	// The current age of the user
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// Age
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 026ca0f4-483b-4252-ae1d-1f15f056f8b9
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The variable ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b

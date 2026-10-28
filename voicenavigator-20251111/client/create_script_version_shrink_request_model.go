@@ -28,19 +28,31 @@ type iCreateScriptVersionShrinkRequest interface {
 }
 
 type CreateScriptVersionShrinkRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// abb4aa26-3a8e-43dd-82f8-0c3898c9c67f
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The interaction configuration.
 	InteractionConfigShrink *string `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty"`
-	LabelConfigShrink       *string `json:"LabelConfig,omitempty" xml:"LabelConfig,omitempty"`
+	// The custom label configuration.
+	LabelConfigShrink *string `json:"LabelConfig,omitempty" xml:"LabelConfig,omitempty"`
+	// The scenario ID.
+	//
 	// example:
 	//
 	// 64241e64-190c-45d1-af66-06f51c07b090
-	ScriptId                *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	ScriptProfileShrink     *string `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty"`
-	SourceVersionId         *string `json:"SourceVersionId,omitempty" xml:"SourceVersionId,omitempty"`
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The conversation capability configuration.
+	ScriptProfileShrink *string `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty"`
+	// example:
+	//
+	// d7b8a210-1f2d-4c5b-8a63-01e4f3b7c9d2
+	SourceVersionId *string `json:"SourceVersionId,omitempty" xml:"SourceVersionId,omitempty"`
+	// The TTS configuration.
 	SynthesizerConfigShrink *string `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty"`
+	// The ASR configuration.
 	TranscriberConfigShrink *string `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty"`
 }
 

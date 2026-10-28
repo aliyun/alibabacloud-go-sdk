@@ -16,10 +16,14 @@ type iDeleteScriptRequest interface {
 }
 
 type DeleteScriptRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The scenario ID.
+	//
 	// example:
 	//
 	// 64241e64-190c-45d1-af66-06f51c07b090

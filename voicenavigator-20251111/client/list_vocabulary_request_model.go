@@ -20,15 +20,26 @@ type iListVocabularyRequest interface {
 }
 
 type ListVocabularyRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the vocabulary.
+	//
+	// example:
+	//
+	// 金融
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

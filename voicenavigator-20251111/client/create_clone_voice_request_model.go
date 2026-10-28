@@ -18,11 +18,20 @@ type iCreateCloneVoiceRequest interface {
 }
 
 type CreateCloneVoiceRequest struct {
+	// The path of the uploaded file.
+	//
+	// example:
+	//
+	// voice_clone/VoiceCloneUnitTest.wav
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The voice cloning model.
+	//
 	// example:
 	//
 	// CosyVoice

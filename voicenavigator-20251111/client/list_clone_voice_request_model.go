@@ -20,18 +20,26 @@ type iListCloneVoiceRequest interface {
 }
 
 type ListCloneVoiceRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number to return. Defaults to 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Defaults to 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the cloned voice.
+	//
 	// example:
 	//
 	// Published

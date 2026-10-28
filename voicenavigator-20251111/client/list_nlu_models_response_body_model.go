@@ -24,22 +24,32 @@ type iListNluModelsResponseBody interface {
 }
 
 type ListNluModelsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A list of the NLU models.
 	Data []*ListNluModelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The dynamic parameters for the error.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7401D698-0AAC-5909-B68E-88C68805FFB8
@@ -122,10 +132,17 @@ func (s *ListNluModelsResponseBody) Validate() error {
 }
 
 type ListNluModelsResponseBodyData struct {
+	// The model ID.
+	//
 	// example:
 	//
 	// qwen-plus
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The model name.
+	//
+	// example:
+	//
+	// 千问-Plus
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

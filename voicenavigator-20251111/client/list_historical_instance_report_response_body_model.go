@@ -24,21 +24,29 @@ type iListHistoricalInstanceReportResponseBody interface {
 }
 
 type ListHistoricalInstanceReportResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *ListHistoricalInstanceReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// Id of the request
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -118,15 +126,22 @@ func (s *ListHistoricalInstanceReportResponseBody) Validate() error {
 }
 
 type ListHistoricalInstanceReportResponseBodyData struct {
+	// A list of historical reports for the instances.
 	List []*ListHistoricalInstanceReportResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
@@ -191,30 +206,44 @@ func (s *ListHistoricalInstanceReportResponseBodyData) Validate() error {
 }
 
 type ListHistoricalInstanceReportResponseBodyDataList struct {
+	// The number of answered calls.
+	//
 	// example:
 	//
 	// 7
 	CallsHandled *int64 `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
+	// The number of offered calls.
+	//
 	// example:
 	//
 	// 10
 	CallsOffered *int64 `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	// The number of rejected calls.
+	//
 	// example:
 	//
 	// 3
 	CallsRejected *int64 `json:"CallsRejected,omitempty" xml:"CallsRejected,omitempty"`
+	// The number of calls classified as resolved by the large language model (LLM).
+	//
 	// example:
 	//
 	// 4
 	CallsResolved *int64 `json:"CallsResolved,omitempty" xml:"CallsResolved,omitempty"`
+	// The most recent concurrency configuration.
+	//
 	// example:
 	//
 	// 2
 	ConfiguredConcurrency *int64 `json:"ConfiguredConcurrency,omitempty" xml:"ConfiguredConcurrency,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 38d5fb05092b469e86b6061ad7945437
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The breakdown of labels.
+	//
 	// example:
 	//
 	// {
@@ -229,10 +258,14 @@ type ListHistoricalInstanceReportResponseBodyDataList struct {
 	//
 	// }
 	LabelBreakdown *string `json:"LabelBreakdown,omitempty" xml:"LabelBreakdown,omitempty"`
+	// The maximum talk time in milliseconds (ms).
+	//
 	// example:
 	//
 	// 20
 	MaxTalkTime *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	// The breakdown of rejection reasons.
+	//
 	// example:
 	//
 	// {
@@ -241,6 +274,8 @@ type ListHistoricalInstanceReportResponseBodyDataList struct {
 	//
 	// }
 	RejectionBreakdown *string `json:"RejectionBreakdown,omitempty" xml:"RejectionBreakdown,omitempty"`
+	// A breakdown of release reasons for answered calls.
+	//
 	// example:
 	//
 	// {
@@ -257,6 +292,8 @@ type ListHistoricalInstanceReportResponseBodyDataList struct {
 	//
 	// }
 	ReleaseReasonBreakdown *string `json:"ReleaseReasonBreakdown,omitempty" xml:"ReleaseReasonBreakdown,omitempty"`
+	// The distribution of conversation turns.
+	//
 	// example:
 	//
 	// {
@@ -267,22 +304,32 @@ type ListHistoricalInstanceReportResponseBodyDataList struct {
 	//
 	// }
 	TalkTurnsDistribution *string `json:"TalkTurnsDistribution,omitempty" xml:"TalkTurnsDistribution,omitempty"`
+	// Reserved for future use.
+	//
 	// example:
 	//
 	// 0
 	TotalInputTokens *int64 `json:"TotalInputTokens,omitempty" xml:"TotalInputTokens,omitempty"`
+	// Reserved for future use.
+	//
 	// example:
 	//
 	// 0
 	TotalOutputTokens *int64 `json:"TotalOutputTokens,omitempty" xml:"TotalOutputTokens,omitempty"`
+	// The total talk time in milliseconds (ms).
+	//
 	// example:
 	//
 	// 100
 	TotalTalkTime *int64 `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	// Reserved for future use.
+	//
 	// example:
 	//
 	// 0
 	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+	// The peak number of concurrent calls.
+	//
 	// example:
 	//
 	// 11

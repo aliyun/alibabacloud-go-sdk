@@ -24,21 +24,29 @@ type iGetRealtimeScriptStatsResponseBody interface {
 }
 
 type GetRealtimeScriptStatsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The real-time script statistics.
 	Data *GetRealtimeScriptStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// Id of the request
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
@@ -118,14 +126,20 @@ func (s *GetRealtimeScriptStatsResponseBody) Validate() error {
 }
 
 type GetRealtimeScriptStatsResponseBodyData struct {
+	// The configured concurrency.
+	//
 	// example:
 	//
 	// 13
 	ConfiguredConcurrency *int32 `json:"ConfiguredConcurrency,omitempty" xml:"ConfiguredConcurrency,omitempty"`
+	// The time the statistics were collected, expressed as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1774881658931
 	StatsTime *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+	// The current concurrency.
+	//
 	// example:
 	//
 	// 10

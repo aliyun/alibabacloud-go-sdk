@@ -24,23 +24,34 @@ type iUpdateCallCenterProviderResponseBody interface {
 }
 
 type UpdateCallCenterProviderResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the agent service provider.
+	//
 	// example:
 	//
 	// xxxxxxxxx
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD

@@ -24,22 +24,32 @@ type iListVariableResponseBody interface {
 }
 
 type ListVariableResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated data of the variable list.
 	Data *ListVariableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// d74d6290-7cbe-4436-b5d7-014ebb0f4060
@@ -118,19 +128,26 @@ func (s *ListVariableResponseBody) Validate() error {
 }
 
 type ListVariableResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Variables  []*ListVariableResponseBodyDataVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of variable objects.
+	Variables []*ListVariableResponseBodyDataVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
 func (s ListVariableResponseBodyData) String() string {
@@ -191,28 +208,50 @@ func (s *ListVariableResponseBodyData) Validate() error {
 }
 
 type ListVariableResponseBodyDataVariables struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1754013825102
-	CreatedTime *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// The current age of the user
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// Age
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66c
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The variable name.
+	//
 	// example:
 	//
 	// age
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1308144684576655
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1754013825102
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The variable ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b

@@ -16,10 +16,13 @@ type iExportVocabularyShrinkRequest interface {
 }
 
 type ExportVocabularyShrinkRequest struct {
+  // The ID of the Voice Navigator instance.
+  // 
   // example:
   // 
   // af81a389-91f0-4157-8d82-720edd02b66a
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // The IDs of the vocabularies to export.
   VocabularyIdsShrink *string `json:"VocabularyIds,omitempty" xml:"VocabularyIds,omitempty"`
 }
 

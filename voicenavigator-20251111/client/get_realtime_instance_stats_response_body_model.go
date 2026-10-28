@@ -24,21 +24,29 @@ type iGetRealtimeInstanceStatsResponseBody interface {
 }
 
 type GetRealtimeInstanceStatsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The real-time stats for the instance.
 	Data *GetRealtimeInstanceStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// Id of the request
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of parameters that are related to an error, if one occurred.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
@@ -118,15 +126,22 @@ func (s *GetRealtimeInstanceStatsResponseBody) Validate() error {
 }
 
 type GetRealtimeInstanceStatsResponseBodyData struct {
+	// The maximum number of concurrent tasks configured for the instance.
+	//
 	// example:
 	//
 	// 13
-	ConfiguredConcurrency   *int32                                                             `json:"ConfiguredConcurrency,omitempty" xml:"ConfiguredConcurrency,omitempty"`
+	ConfiguredConcurrency *int32 `json:"ConfiguredConcurrency,omitempty" xml:"ConfiguredConcurrency,omitempty"`
+	// A list of real-time stats for scripts.
 	RealtimeScriptStatsList []*GetRealtimeInstanceStatsResponseBodyDataRealtimeScriptStatsList `json:"RealtimeScriptStatsList,omitempty" xml:"RealtimeScriptStatsList,omitempty" type:"Repeated"`
+	// The time when the statistics were collected, expressed as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1774881208361
 	StatsTime *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+	// The current number of concurrent tasks for the instance.
+	//
 	// example:
 	//
 	// 10
@@ -191,22 +206,32 @@ func (s *GetRealtimeInstanceStatsResponseBodyData) Validate() error {
 }
 
 type GetRealtimeInstanceStatsResponseBodyDataRealtimeScriptStatsList struct {
+	// The maximum number of concurrent tasks configured for this script.
+	//
 	// example:
 	//
 	// 13
 	ConfiguredConcurrency *int32 `json:"ConfiguredConcurrency,omitempty" xml:"ConfiguredConcurrency,omitempty"`
+	// The script ID.
+	//
 	// example:
 	//
 	// 92836ced-6f3a-4cec-bc3d-c3893d3c7efa
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The script name.
+	//
 	// example:
 	//
 	// TypeCombinationTest
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	// The time when the statistics were collected, expressed as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1774881208361
 	StatsTime *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+	// The current number of concurrent tasks for this script.
+	//
 	// example:
 	//
 	// 10

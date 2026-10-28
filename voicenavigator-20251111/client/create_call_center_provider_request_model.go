@@ -30,32 +30,66 @@ type iCreateCallCenterProviderRequest interface {
 }
 
 type CreateCallCenterProviderRequest struct {
+	// The callee number during the transfer. This parameter is required when the transfer method is Bridge.
+	//
 	// example:
 	//
 	// 153*********
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The display name of the service provider.
+	//
+	// example:
+	//
+	// Internal service provider of Cloud Call Center
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The attached data.
+	//
+	// 	Notice: Format: k1=v1;k2=v2.</notice>
+	//
 	// example:
 	//
 	// key1=value1
 	Extras *string `json:"Extras,omitempty" xml:"Extras,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Internal service provider of Cloud Call Center
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The caller number during the transfer. This parameter is required when the transfer method is Bridge.
+	//
 	// example:
 	//
 	// 010****
 	Originator *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
+	// The provider type.
+	//
+	// >
+	//
+	// > - CCC: Cloud Call Center.
+	//
+	// >- CUSTOM: Customer-owned call center.
+	//
 	// example:
 	//
 	// CCC
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// The Refer address.<notice>This parameter is required when the transfer method is Refer.</notice>
+	//
 	// example:
 	//
 	// -
 	ReferTo *string `json:"ReferTo,omitempty" xml:"ReferTo,omitempty"`
+	// The trunk ID.
+	//
+	// 	Notice: This parameter is required when the transfer method is Bridge.</notice>
+	//
 	// example:
 	//
 	// trunk-xxx

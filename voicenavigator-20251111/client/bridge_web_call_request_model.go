@@ -32,42 +32,76 @@ type iBridgeWebCallRequest interface {
 }
 
 type BridgeWebCallRequest struct {
+	// The channel ID.
+	//
+	// > This parameter is valid only when AccessChannelType is set to Web or Trial.
+	//
 	// example:
 	//
 	// 33606503-c22c-4547-a51c-dda5e8d87962
 	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// The channel type.
+	//
+	// > - Text: text test window
+	//
+	// > - Test: test window
+	//
+	// > - Trial: trial link
+	//
 	// example:
 	//
 	// Text
 	AccessChannelType *string `json:"AccessChannelType,omitempty" xml:"AccessChannelType,omitempty"`
+	// The caller number.
+	//
 	// example:
 	//
 	// 010123*****
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The device ID.
+	//
 	// example:
 	//
 	// d4c38420-****-43bc-b001-56bfc274****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Specifies whether the test environment is used.
+	//
+	// >Default value: false.
+	//
 	// example:
 	//
 	// false
 	DraftVersion *bool `json:"DraftVersion,omitempty" xml:"DraftVersion,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The sampling rate.
+	//
 	// example:
 	//
 	// 8000
 	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The script ID.
+	//
 	// example:
 	//
 	// 0a88e269-01f5-49ac-97af-5830f0ccb271
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The attached data.
+	//
 	// example:
 	//
 	// {"key":"value"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The timeout period.
+	//
+	// >
+	//
+	// > - If the call is not connected within the time specified by this parameter, the system actively hangs up the call. Unit: seconds. Default value: 60.
+	//
 	// example:
 	//
 	// 60

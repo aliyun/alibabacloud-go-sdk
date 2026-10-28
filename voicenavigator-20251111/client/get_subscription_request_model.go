@@ -14,6 +14,8 @@ type iGetSubscriptionRequest interface {
 }
 
 type GetSubscriptionRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// 19ac2375-53e3-477f-abe9-6cd334227981

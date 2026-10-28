@@ -26,24 +26,40 @@ type iPreviewVoiceShrinkRequest interface {
 }
 
 type PreviewVoiceShrinkRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The TTS model.
+	//
 	// example:
 	//
 	// Qwen
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The TTS invocation method.
+	//
 	// example:
 	//
 	// MANAGED
 	NlsAccessType *string `json:"NlsAccessType,omitempty" xml:"NlsAccessType,omitempty"`
+	// The TTS engine.
+	//
 	// example:
 	//
 	// BAILIAN
-	NlsEngine    *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The synthesis parameters.
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	Text         *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The preview text.
+	//
+	// example:
+	//
+	// Hello, nice to meet you
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The voice.
+	//
 	// example:
 	//
 	// Cherry

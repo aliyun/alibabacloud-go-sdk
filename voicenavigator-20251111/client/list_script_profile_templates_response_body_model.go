@@ -24,22 +24,32 @@ type iListScriptProfileTemplatesResponseBody interface {
 }
 
 type ListScriptProfileTemplatesResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of scenario templates.
 	Data []*ListScriptProfileTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E6E61E1A-D2DC-5ACF-AED4-A115B6691F98
@@ -122,17 +132,76 @@ func (s *ListScriptProfileTemplatesResponseBody) Validate() error {
 }
 
 type ListScriptProfileTemplatesResponseBodyData struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1752829090000
-	CreatedTime *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Build professional conversational prompt engineering from a blank document
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Schema      *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// General scenario
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template definition.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "name": "General",
+	//
+	//   "properties": {
+	//
+	//     "prompts": {
+	//
+	//       "displayName": "Instruction information",
+	//
+	//       "dataType": "TEXT",
+	//
+	//       "name": "prompts",
+	//
+	//       "displayOrder": 1,
+	//
+	//       "defaultValue": "You are a friendly and approachable chat assistant, focusing on natural Chinese conversations. Stay positive and patient, provide helpful responses, and avoid sensitive content. Honestly admit when you do not know the answer to create a relaxed and pleasant communication experience.",
+	//
+	//       "attributes": {
+	//
+	//         "placeholder": "You are a friendly and approachable chat assistant, focusing on natural Chinese conversations. Stay positive and patient, provide helpful responses, and avoid sensitive content. Honestly admit when you do not know the answer to create a relaxed and pleasant communication experience.",
+	//
+	//         "rows": 20
+	//
+	//       },
+	//
+	//       "editorType": "MENTIONS_TEXTAREA",
+	//
+	//       "maxLength": 2000,
+	//
+	//       "required": true,
+	//
+	//       "group": "Business description"
+	//
+	//     }
+	//
+	//   }
+	//
+	// }
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// CCC_PROMPTS_DEFAULT
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1752829090000

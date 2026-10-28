@@ -26,24 +26,40 @@ type iListScriptsShrinkRequest interface {
 }
 
 type ListScriptsShrinkRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scenario name.
+	//
+	// example:
+	//
+	// Navigation test scenario
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number.
+	//
 	// example:
 	//
 	// 13816111993
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of scenario IDs.
 	ScriptIdsShrink *string `json:"ScriptIds,omitempty" xml:"ScriptIds,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// DRAFT

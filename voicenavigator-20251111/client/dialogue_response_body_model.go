@@ -24,20 +24,30 @@ type iDialogueResponseBody interface {
 }
 
 type DialogueResponseBody struct {
+	// The business status code. A value of `OK` indicates that the operation was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business-specific data returned by the operation.
 	Data *DialogueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code. A value of `200` indicates a successful response.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The HTTP response message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The parameters associated with an error.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9DB8BA95-4513-54B9-9C67-A28909CFB4AD
@@ -116,24 +126,40 @@ func (s *DialogueResponseBody) Validate() error {
 }
 
 type DialogueResponseBodyData struct {
-	Answer            *string                                      `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The bot\\"s reply.
+	//
+	// example:
+	//
+	// 不好意思，我没听
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// A list of control parameters.
 	ControlParamsList []*DialogueResponseBodyDataControlParamsList `json:"ControlParamsList,omitempty" xml:"ControlParamsList,omitempty" type:"Repeated"`
+	// The Unix timestamp for when the operation ended.
+	//
 	// example:
 	//
 	// 1752283603978
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 07d72ea0-6e38-48d4-8371-14deaaba996f
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The Unix timestamp for when the operation started.
+	//
 	// example:
 	//
 	// 1774858849987
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// A flag that indicates whether the stream has ended. A value of `true` signifies the end of the stream.
+	//
 	// example:
 	//
 	// true
 	StreamEnd *bool `json:"StreamEnd,omitempty" xml:"StreamEnd,omitempty"`
+	// The stream ID for the conversational turn.
+	//
 	// example:
 	//
 	// 1
@@ -225,6 +251,22 @@ func (s *DialogueResponseBodyData) Validate() error {
 }
 
 type DialogueResponseBodyDataControlParamsList struct {
+	// The type of the control parameter.
+	//
+	// > - `HangUp`: Hang up.
+	//
+	// >
+	//
+	// > - `Transfer`: Transfer.
+	//
+	// >
+	//
+	// > - `GatherDtmf`: Gather DTMF.
+	//
+	// >
+	//
+	// > - `Voice`: Voice.
+	//
 	// example:
 	//
 	// Voice

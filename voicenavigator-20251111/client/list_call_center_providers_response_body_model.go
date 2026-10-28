@@ -24,20 +24,30 @@ type iListCallCenterProvidersResponseBody interface {
 }
 
 type ListCallCenterProvidersResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The call center provider data.
 	Data *ListCallCenterProvidersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75BAAB9B-40B2-5FF5-A59A-7BCF8154C6EE
@@ -116,15 +126,22 @@ func (s *ListCallCenterProvidersResponseBody) Validate() error {
 }
 
 type ListCallCenterProvidersResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize  *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A list of call center providers.
 	Providers []*ListCallCenterProvidersResponseBodyDataProviders `json:"Providers,omitempty" xml:"Providers,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -189,36 +206,68 @@ func (s *ListCallCenterProvidersResponseBodyData) Validate() error {
 }
 
 type ListCallCenterProvidersResponseBodyDataProviders struct {
+	// The destination of the call transfer. Required if the transfer mode is `Bridge`.
+	//
 	// example:
 	//
 	// 153*********
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The display name of the service provider.
+	//
+	// example:
+	//
+	// 云联络中心内部服务提供商
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The extra data.	Notice:  Format: `k1=v1;k2=v2`
+	//
 	// example:
 	//
 	// key1=value1
 	Extras *string `json:"Extras,omitempty" xml:"Extras,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The service provider name.
+	//
+	// example:
+	//
+	// 云联络中心内部服务提供商
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The originator of the call transfer. Required if the transfer mode is `Bridge`.
+	//
 	// example:
 	//
 	// 010****
 	Originator *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
+	// The call center provider ID.
+	//
 	// example:
 	//
 	// xxxxxxxxx
 	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// The provider type.
+	//
+	// > - `CCC`: Cloud Contact Center
+	//
+	// >
+	//
+	// > - `CUSTOM`: customer-owned contact center
+	//
 	// example:
 	//
 	// CCC
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// The Refer address.	Notice:  Required if the transfer mode is `Refer`.
+	//
 	// example:
 	//
 	// -
 	ReferTo *string `json:"ReferTo,omitempty" xml:"ReferTo,omitempty"`
+	// The trunk ID.
+	//
 	// example:
 	//
 	// trunk-xxx

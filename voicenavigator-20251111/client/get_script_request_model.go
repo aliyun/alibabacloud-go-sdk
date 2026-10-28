@@ -16,10 +16,14 @@ type iGetScriptRequest interface {
 }
 
 type GetScriptRequest struct {
+	// Instance ID
+	//
 	// example:
 	//
 	// 8a503680-815d-473e-a9b0-e010f47a64d2
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Scenario ID
+	//
 	// example:
 	//
 	// ac6db76a-bbe7-4a2c-b7cc-7f62da7bb4c6

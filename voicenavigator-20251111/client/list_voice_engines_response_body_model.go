@@ -24,22 +24,32 @@ type iListVoiceEnginesResponseBody interface {
 }
 
 type ListVoiceEnginesResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated results of voice engines.
 	Data *ListVoiceEnginesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7401D698-0AAC-5909-B68E-88C68805FFB8
@@ -118,18 +128,25 @@ func (s *ListVoiceEnginesResponseBody) Validate() error {
 }
 
 type ListVoiceEnginesResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
-	TotalCount   *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of voice engine objects.
 	VoiceEngines []*ListVoiceEnginesResponseBodyDataVoiceEngines `json:"VoiceEngines,omitempty" xml:"VoiceEngines,omitempty" type:"Repeated"`
 }
 
@@ -191,14 +208,23 @@ func (s *ListVoiceEnginesResponseBodyData) Validate() error {
 }
 
 type ListVoiceEnginesResponseBodyDataVoiceEngines struct {
+	// The engine configuration.
+	//
 	// example:
 	//
 	// [{\\"displayName\\":\\"AppKey\\",\\"maxLength\\":64,\\"name\\":\\"AppKey\\",\\"order\\":1,\\"required\\":true},{\\"displayName\\":\\"AccessKey\\",\\"maxLength\\":64,\\"name\\":\\"AccessKey\\",\\"order\\":2,\\"required\\":true}]
 	ConfigSchema *string `json:"ConfigSchema,omitempty" xml:"ConfigSchema,omitempty"`
+	// The voice engine.
+	//
 	// example:
 	//
 	// VOLC
-	NlsEngine     *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// Doubao
 	NlsEngineName *string `json:"NlsEngineName,omitempty" xml:"NlsEngineName,omitempty"`
 }
 

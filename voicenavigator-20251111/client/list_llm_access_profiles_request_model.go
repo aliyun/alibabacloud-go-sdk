@@ -18,14 +18,20 @@ type iListLlmAccessProfilesRequest interface {
 }
 
 type ListLlmAccessProfilesRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 12f407b22cbe4890ac595f09985848d5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

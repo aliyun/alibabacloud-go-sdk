@@ -20,13 +20,26 @@ type iCreateVocabularyRequest interface {
 }
 
 type CreateVocabularyRequest struct {
+	// The description.
+	//
+	// example:
+	//
+	// Contains financial industry terminology
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// e48e45dd-e47a-4744-a063-f08cbebb1c5a
-	InstanceId *string            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Words      map[string]*string `json:"Words,omitempty" xml:"Words,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The hotword name.
+	//
+	// example:
+	//
+	// Financial industry hotwords
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of hotwords.
+	Words map[string]*string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s CreateVocabularyRequest) String() string {

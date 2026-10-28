@@ -24,21 +24,29 @@ type iListCallDetailRecordsResponseBody interface {
 }
 
 type ListCallDetailRecordsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// An object containing the returned call records.
 	Data *ListCallDetailRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// Id of the request
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of invalid parameters in the request.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -118,15 +126,22 @@ func (s *ListCallDetailRecordsResponseBody) Validate() error {
 }
 
 type ListCallDetailRecordsResponseBodyData struct {
+	// A list of call detail records.
 	CallDetailRecords []*ListCallDetailRecordsResponseBodyDataCallDetailRecords `json:"CallDetailRecords,omitempty" xml:"CallDetailRecords,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 362
@@ -191,62 +206,92 @@ func (s *ListCallDetailRecordsResponseBodyData) Validate() error {
 }
 
 type ListCallDetailRecordsResponseBodyDataCallDetailRecords struct {
+	// The callee\\"s phone number.
+	//
 	// example:
 	//
 	// 15100000001
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// The caller\\"s phone number.
+	//
 	// example:
 	//
 	// 4001027277
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The disposition code.
+	//
 	// example:
 	//
 	// Answered
 	DispositionCode *string `json:"DispositionCode,omitempty" xml:"DispositionCode,omitempty"`
+	// The disposition reason.
+	//
 	// example:
 	//
 	// ConcurrentLimitExceeded
 	DispositionReason *string `json:"DispositionReason,omitempty" xml:"DispositionReason,omitempty"`
+	// The total duration of the call, in seconds.
+	//
 	// example:
 	//
 	// 265
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The end time of the session, as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1767315903531
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether the customer\\"s issue was resolved.
+	//
 	// example:
 	//
 	// false
 	IssueResolved *bool `json:"IssueResolved,omitempty" xml:"IssueResolved,omitempty"`
+	// The party who released the call.
+	//
 	// example:
 	//
 	// Customer
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	// The evidence for the `IssueResolved` status.
+	//
 	// example:
 	//
 	// unknown
 	ResolutionEvidence *string `json:"ResolutionEvidence,omitempty" xml:"ResolutionEvidence,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 99eebcba-7f8a-4a54-b0da-603ada79d8e2
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The start time of the session, as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1767315903531
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The talk time, in seconds.
+	//
 	// example:
 	//
 	// 245
 	TalkTime *int32 `json:"TalkTime,omitempty" xml:"TalkTime,omitempty"`
+	// The number of talk turns.
+	//
 	// example:
 	//
 	// 1
 	TalkTurns *int32 `json:"TalkTurns,omitempty" xml:"TalkTurns,omitempty"`
+	// The transfer target.
+	//
 	// example:
 	//
 	// default@testinstance1
 	TransferTarget *string `json:"TransferTarget,omitempty" xml:"TransferTarget,omitempty"`
+	// The transfer type.
+	//
 	// example:
 	//
 	// Agent

@@ -16,11 +16,14 @@ type iCreateLlmAccessProfileRequest interface {
 }
 
 type CreateLlmAccessProfileRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
-	InstanceId *string                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Profile    *CreateLlmAccessProfileRequestProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The parameter settings.
+	Profile *CreateLlmAccessProfileRequestProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 }
 
 func (s CreateLlmAccessProfileRequest) String() string {
@@ -59,15 +62,24 @@ func (s *CreateLlmAccessProfileRequest) Validate() error {
 }
 
 type CreateLlmAccessProfileRequestProfile struct {
+	// The API key of the third-party model.
+	//
 	// example:
 	//
 	// 70tKleNtMGaaIem7us7Miw-Tf3kPzE6l
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The endpoint of the third-party model.
+	//
 	// example:
 	//
 	// api.llm.enpoint.example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the third-party model configuration.
+	//
+	// example:
+	//
+	// Qwen-Omni
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateLlmAccessProfileRequestProfile) String() string {

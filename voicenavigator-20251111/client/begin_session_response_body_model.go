@@ -24,20 +24,30 @@ type iBeginSessionResponseBody interface {
 }
 
 type BeginSessionResponseBody struct {
+	// The business status code. A value of OK indicates that the request is successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *BeginSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code. A value of 200 indicates that the HTTP request is successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The HTTP response message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The POP request ID.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
@@ -116,24 +126,40 @@ func (s *BeginSessionResponseBody) Validate() error {
 }
 
 type BeginSessionResponseBodyData struct {
-	Answer            *string                                          `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The chatbot reply content.
+	//
+	// example:
+	//
+	// Hello, welcome to STO Express. How can I help you?
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The list of control parameters.
 	ControlParamsList []*BeginSessionResponseBodyDataControlParamsList `json:"ControlParamsList,omitempty" xml:"ControlParamsList,omitempty" type:"Repeated"`
+	// The end time.
+	//
 	// example:
 	//
 	// 1752283603978
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 07d72ea0-6e38-48d4-8371-14deaaba996f
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1774858849987
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Specifies whether the streaming response has ended.
+	//
 	// example:
 	//
 	// true
 	StreamEnd *bool `json:"StreamEnd,omitempty" xml:"StreamEnd,omitempty"`
+	// The turn ID of the conversation.
+	//
 	// example:
 	//
 	// 1
@@ -225,6 +251,16 @@ func (s *BeginSessionResponseBodyData) Validate() error {
 }
 
 type BeginSessionResponseBodyDataControlParamsList struct {
+	// The control parameter type. Valid values:
+	//
+	// >- HangUp: Hang up.
+	//
+	// >- Transfer: Transfer.
+	//
+	// >- GatherDtmf: Gather DTMF.
+	//
+	// >- Voice: Voice.
+	//
 	// example:
 	//
 	// Voice

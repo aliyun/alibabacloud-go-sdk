@@ -20,19 +20,26 @@ type iUpdateVoiceAccessProfileRequest interface {
 }
 
 type UpdateVoiceAccessProfileRequest struct {
+	// The access profile ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The voice engine.
+	//
 	// example:
 	//
 	// VOLC
-	NlsEngine *string                                 `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
-	Profile   *UpdateVoiceAccessProfileRequestProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The parameter configuration for the selected voice engine.
+	Profile *UpdateVoiceAccessProfileRequestProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 }
 
 func (s UpdateVoiceAccessProfileRequest) String() string {
@@ -89,27 +96,47 @@ func (s *UpdateVoiceAccessProfileRequest) Validate() error {
 }
 
 type UpdateVoiceAccessProfileRequestProfile struct {
+	// This parameter is required when `NlsEngine` is set to `VOLC`.
+	//
 	// example:
 	//
 	// HwRnTXgwnQOlsj68URDS5_VMm4Wtapq9
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// This parameter is required when `NlsEngine` is set to `BAILIAN` or `IFLYTEK`.
+	//
 	// example:
 	//
 	// sk-12341e259b1049e8872b47981e545f78
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// This parameter is required when `NlsEngine` is set to `IFLYTEK`.
+	//
 	// example:
 	//
 	// c0358c6e51c1013b446fdeb21a3a1234
 	ApiSecret *string `json:"ApiSecret,omitempty" xml:"ApiSecret,omitempty"`
+	// This parameter is required when `NlsEngine` is set to `IFLYTEK`.
+	//
 	// example:
 	//
 	// 5b123bfb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required when `NlsEngine` is set to `VOLC`.
+	//
 	// example:
 	//
 	// 2541370123
-	AppKey    *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// Reserved for future use.
+	//
+	// example:
+	//
+	// 暂无使用
 	AsrAppKey *string `json:"AsrAppKey,omitempty" xml:"AsrAppKey,omitempty"`
+	// Reserved for future use.
+	//
+	// example:
+	//
+	// 暂无使用
 	TtsApiKey *string `json:"TtsApiKey,omitempty" xml:"TtsApiKey,omitempty"`
 }
 

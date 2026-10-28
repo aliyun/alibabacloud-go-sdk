@@ -18,15 +18,20 @@ type iUpdateLlmAccessProfileRequest interface {
 }
 
 type UpdateLlmAccessProfileRequest struct {
+	// The ID of the third-party model configuration.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// d74d6290-7cbe-4436-b5d7-014ebb0f4060
-	InstanceId *string                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Profile    *UpdateLlmAccessProfileRequestProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The parameter settings.
+	Profile *UpdateLlmAccessProfileRequestProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 }
 
 func (s UpdateLlmAccessProfileRequest) String() string {
@@ -74,15 +79,24 @@ func (s *UpdateLlmAccessProfileRequest) Validate() error {
 }
 
 type UpdateLlmAccessProfileRequestProfile struct {
+	// The API key of the third-party model.
+	//
 	// example:
 	//
 	// akm-091e4c2c-9938-4a0d-ade2-b9c477fbcbdb
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The endpoint of the third-party model.
+	//
 	// example:
 	//
 	// api.llm.enpoint.example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the third-party model configuration.
+	//
+	// example:
+	//
+	// Qwen-Omni
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateLlmAccessProfileRequestProfile) String() string {

@@ -16,10 +16,14 @@ type iDeleteInstructionRequest interface {
 }
 
 type DeleteInstructionRequest struct {
+	// The instruction code.
+	//
 	// example:
 	//
 	// Transfer00
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e

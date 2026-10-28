@@ -30,35 +30,52 @@ type iUpdateSubscriptionRequest interface {
 }
 
 type UpdateSubscriptionRequest struct {
+	// The endpoint. This parameter is required when ROCKET_MQ_4 or ROCKET_MQ_5 is used.
+	//
 	// example:
 	//
 	// rmq-cn-l4p89zajz67.cn-hangzhou.rmq.aliyuncs.com:8080
-	Endpoint           *string   `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The list of subscribed events.
 	EventSubscriptions []*string `json:"EventSubscriptions,omitempty" xml:"EventSubscriptions,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The MQ instance ID. This parameter is required when ROCKET_MQ_5 is used.
+	//
 	// example:
 	//
 	// rmq-cn-l4p89zajz67.cn
 	MqInstanceId *string `json:"MqInstanceId,omitempty" xml:"MqInstanceId,omitempty"`
+	// The message push type.
+	//
 	// example:
 	//
 	// ROCKET_MQ_4
 	MqType *string `json:"MqType,omitempty" xml:"MqType,omitempty"`
+	// The password. This parameter is required when ROCKET_MQ_5 is used.
+	//
 	// example:
 	//
 	// pwd
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The producer ID. This parameter is required when ROCKET_MQ_4 is used.
+	//
 	// example:
 	//
 	// user1
 	ProducerId *string `json:"ProducerId,omitempty" xml:"ProducerId,omitempty"`
+	// The queue topic. This parameter is required when ROCKET_MQ_4 or ROCKET_MQ_5 is used.
+	//
 	// example:
 	//
 	// test
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The username. This parameter is required when ROCKET_MQ_5 is used.
+	//
 	// example:
 	//
 	// username

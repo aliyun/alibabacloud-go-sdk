@@ -24,21 +24,29 @@ type iGetRecordingResponseBody interface {
 }
 
 type GetRecordingResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The recording object.
 	Data *GetRecordingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// Id of the request
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error parameter list.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
@@ -118,14 +126,20 @@ func (s *GetRecordingResponseBody) Validate() error {
 }
 
 type GetRecordingResponseBodyData struct {
+	// The recording file name.
+	//
 	// example:
 	//
 	// 61f7f225-3a2e-4b6e-8a1d-888f1862590f.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The recording file URL.
+	//
 	// example:
 	//
 	// https://bgc-us-east.oss-accelerate.aliyuncs.com/intellidocs/2025-08-27/bc84ce11-f110-436d-af70-382ce7c5690a.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// f814f3ae-b2a7-44fb-883c-771221274673

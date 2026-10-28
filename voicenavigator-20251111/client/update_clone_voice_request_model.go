@@ -18,15 +18,24 @@ type iUpdateCloneVoiceRequest interface {
 }
 
 type UpdateCloneVoiceRequest struct {
+	// The cloned voice ID.
+	//
 	// example:
 	//
 	// 8ee1160a-6999-478f-8df6-f33ef21f27d5
 	CloneVoiceId *string `json:"CloneVoiceId,omitempty" xml:"CloneVoiceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 0099b75d-60fd-4c63-8541-7fbba0ae6bb0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the cloned voice.
+	//
+	// example:
+	//
+	// Test cloned voice
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateCloneVoiceRequest) String() string {

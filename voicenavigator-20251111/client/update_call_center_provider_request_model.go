@@ -32,36 +32,70 @@ type iUpdateCallCenterProviderRequest interface {
 }
 
 type UpdateCallCenterProviderRequest struct {
+	// The called number used during transfer when the transfer mode is set to Bridge.
+	//
 	// example:
 	//
 	// 153*********
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The display name of the service provider.
+	//
+	// example:
+	//
+	// Cloud Call Center internal service provider
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The associated data.
+	//
+	// 	Notice: Format: k1=v1;k2=v2.</notice>
+	//
 	// example:
 	//
 	// key1=value1
 	Extras *string `json:"Extras,omitempty" xml:"Extras,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Cloud Call Center internal service provider
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The calling number used during transfer when the transfer mode is set to Bridge.
+	//
 	// example:
 	//
 	// 010****
 	Originator *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
+	// The ID of the agent service provider.
+	//
 	// example:
 	//
 	// xxxxxxxxx
 	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// The provider type. Valid values:
+	//
+	// >
+	//
+	// > - CCC: Cloud Call Center.
+	//
+	// > - CUSTOM: Customer-owned call center.
+	//
 	// example:
 	//
 	// CCC
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// The Refer address.
+	//
 	// example:
 	//
 	// -
 	ReferTo *string `json:"ReferTo,omitempty" xml:"ReferTo,omitempty"`
+	// The trunk ID.
+	//
 	// example:
 	//
 	// trunk-xxx

@@ -24,22 +24,32 @@ type iListCloneVoiceModelsResponseBody interface {
 }
 
 type ListCloneVoiceModelsResponseBody struct {
+	// The status code of the request. A value of "OK" indicates success.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated data.
 	Data *ListCloneVoiceModelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The detailed message returned for the request. It provides more context about the status code.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The unique ID generated for the request.
+	//
 	// example:
 	//
 	// 9DB8BA95-4513-54B9-9C67-A28909CFB4AD
@@ -118,15 +128,22 @@ func (s *ListCloneVoiceModelsResponseBody) Validate() error {
 }
 
 type ListCloneVoiceModelsResponseBodyData struct {
+	// A list of clone voice models.
 	CloneVoiceModels []*ListCloneVoiceModelsResponseBodyDataCloneVoiceModels `json:"CloneVoiceModels,omitempty" xml:"CloneVoiceModels,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 66
@@ -191,11 +208,20 @@ func (s *ListCloneVoiceModelsResponseBodyData) Validate() error {
 }
 
 type ListCloneVoiceModelsResponseBodyDataCloneVoiceModels struct {
+	// The description of the model.
+	//
+	// example:
+	//
+	// 口音还原相似度高、韵律流畅
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the model.
+	//
 	// example:
 	//
 	// CosyVoice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// CosyVoice

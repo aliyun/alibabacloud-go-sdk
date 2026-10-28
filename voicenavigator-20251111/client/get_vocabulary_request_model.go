@@ -16,10 +16,14 @@ type iGetVocabularyRequest interface {
 }
 
 type GetVocabularyRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// d74d6290-7cbe-4436-b5d7-014ebb0f4060
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The vocabulary ID.
+	//
 	// example:
 	//
 	// d74d6290-7cbe-4436-b5d7-014ebb0f4061

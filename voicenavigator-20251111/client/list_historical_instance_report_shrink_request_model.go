@@ -22,19 +22,28 @@ type iListHistoricalInstanceReportShrinkRequest interface {
 }
 
 type ListHistoricalInstanceReportShrinkRequest struct {
+	// The end time for the query. The server rounds this value up to the next hour.
+	//
 	// example:
 	//
 	// 1775131200000
-	EndTime           *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// A JSON array of instance IDs. The array can contain up to 100 IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The number of the page to return. The maximum value is 100.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. The maximum value is 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time for the query. The server rounds this value up to the next hour.
+	//
 	// example:
 	//
 	// 1775044800000

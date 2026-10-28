@@ -20,12 +20,26 @@ type iCreateVariableRequest interface {
 }
 
 type CreateVariableRequest struct {
+	// The description.
+	//
+	// example:
+	//
+	// Indicates the user type, including VIP and regular users
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// User type
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 5daac920-d6c1-429f-a95f-2a798f5255b5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The variable name.
+	//
 	// example:
 	//
 	// userType

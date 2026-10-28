@@ -16,10 +16,14 @@ type iGetDataChannelCredentialRequest interface {
 }
 
 type GetDataChannelCredentialRequest struct {
+	// The device ID.
+	//
 	// example:
 	//
 	// d4c38420-****-43bc-b001-56bfc274****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0

@@ -20,18 +20,26 @@ type iListCallCenterProvidersRequest interface {
 }
 
 type ListCallCenterProvidersRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the call center provider.
+	//
 	// example:
 	//
 	// xxxxxxxxx

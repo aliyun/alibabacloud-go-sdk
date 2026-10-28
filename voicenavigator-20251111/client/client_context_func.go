@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// 开启会话
+// Initiates a session.
 //
 // @param request - BeginSessionRequest
 //
@@ -25,7 +25,7 @@ func (client *Client) BeginSessionWithSSECtx(ctx context.Context, request *Begin
 
 // Summary:
 //
-// 开启会话
+// Initiates a session.
 //
 // @param request - BeginSessionRequest
 //
@@ -81,7 +81,7 @@ func (client *Client) BeginSessionWithContext(ctx context.Context, request *Begi
 
 // Summary:
 //
-// 发起呼叫
+// Initiates a web call.
 //
 // @param request - BridgeWebCallRequest
 //
@@ -161,7 +161,7 @@ func (client *Client) BridgeWebCallWithContext(ctx context.Context, request *Bri
 
 // Summary:
 //
-// 创建服务提供商
+// Creates a human agent service provider.
 //
 // @param request - CreateCallCenterProviderRequest
 //
@@ -239,7 +239,7 @@ func (client *Client) CreateCallCenterProviderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param request - CreateCloneVoiceRequest
 //
@@ -291,7 +291,7 @@ func (client *Client) CreateCloneVoiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建指令
+// Adds an instruction to the global configuration of a digital employee.
 //
 // @param request - CreateInstructionRequest
 //
@@ -351,7 +351,7 @@ func (client *Client) CreateInstructionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建语言模型配置信息
+// Creates the configuration information for a language model.
 //
 // @param tmpReq - CreateLlmAccessProfileRequest
 //
@@ -405,7 +405,7 @@ func (client *Client) CreateLlmAccessProfileWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param request - CreateScriptRequest
 //
@@ -465,7 +465,7 @@ func (client *Client) CreateScriptWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 创建场景配置
+// Creates a scenario configuration.
 //
 // @param tmpReq - CreateScriptVersionRequest
 //
@@ -559,7 +559,7 @@ func (client *Client) CreateScriptVersionWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 创建变量
+// Creates a variable.
 //
 // @param request - CreateVariableRequest
 //
@@ -615,7 +615,7 @@ func (client *Client) CreateVariableWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param tmpReq - CreateVocabularyRequest
 //
@@ -677,7 +677,7 @@ func (client *Client) CreateVocabularyWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param tmpReq - CreateVoiceAccessProfileRequest
 //
@@ -735,7 +735,7 @@ func (client *Client) CreateVoiceAccessProfileWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 删除服务提供商
+// Deletes a human service provider in system administration.
 //
 // @param request - DeleteCallCenterProviderRequest
 //
@@ -783,7 +783,7 @@ func (client *Client) DeleteCallCenterProviderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteCloneVoiceRequest
 //
@@ -831,7 +831,7 @@ func (client *Client) DeleteCloneVoiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除指令
+// Deletes an instruction from the global configuration of a digital employee.
 //
 // @param request - DeleteInstructionRequest
 //
@@ -879,7 +879,7 @@ func (client *Client) DeleteInstructionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除语言模型配置信息
+// Deletes the language model configuration.
 //
 // @param request - DeleteLlmAccessProfileRequest
 //
@@ -927,7 +927,7 @@ func (client *Client) DeleteLlmAccessProfileWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteScriptRequest
 //
@@ -975,7 +975,7 @@ func (client *Client) DeleteScriptWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除变量
+// Deletes a variable.
 //
 // @param request - DeleteVariableRequest
 //
@@ -1023,7 +1023,7 @@ func (client *Client) DeleteVariableWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除场景
+// Deletes a vocabulary from a Voice Navigator instance.
 //
 // @param request - DeleteVocabularyRequest
 //
@@ -1071,7 +1071,7 @@ func (client *Client) DeleteVocabularyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除场景
+// Deletes a Voice Access Profile.
 //
 // @param request - DeleteVoiceAccessProfileRequest
 //
@@ -1119,7 +1119,7 @@ func (client *Client) DeleteVoiceAccessProfileWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 开启会话
+// Process a single conversational turn.
 //
 // @param request - DialogueRequest
 //
@@ -1134,7 +1134,7 @@ func (client *Client) DialogueWithSSECtx(ctx context.Context, request *DialogueR
 
 // Summary:
 //
-// 开启会话
+// Process a single conversational turn.
 //
 // @param request - DialogueRequest
 //
@@ -1194,7 +1194,7 @@ func (client *Client) DialogueWithContext(ctx context.Context, request *Dialogue
 
 // Summary:
 //
-// 禁用消息订阅
+// Disables the subscription for a Voice Navigator instance.
 //
 // @param request - DisableSubscriptionRequest
 //
@@ -1238,7 +1238,7 @@ func (client *Client) DisableSubscriptionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 结束会话
+// Ends a session.
 //
 // @param request - EndSessionRequest
 //
@@ -1290,7 +1290,7 @@ func (client *Client) EndSessionWithContext(ctx context.Context, request *EndSes
 
 // Summary:
 //
-// 获取实例详情
+// Exports a specified script.
 //
 // @param request - ExportScriptRequest
 //
@@ -1338,7 +1338,7 @@ func (client *Client) ExportScriptWithContext(ctx context.Context, request *Expo
 
 // Summary:
 //
-// 导出热词
+// Exports vocabularies.
 //
 // @param tmpReq - ExportVocabularyRequest
 //
@@ -1392,7 +1392,7 @@ func (client *Client) ExportVocabularyWithContext(ctx context.Context, tmpReq *E
 
 // Summary:
 //
-// 获取实例详情
+// Generates temporary credentials and parameters to upload a file to Object Storage Service (OSS).
 //
 // @param request - GenerateFileUploadParamsRequest
 //
@@ -1444,7 +1444,7 @@ func (client *Client) GenerateFileUploadParamsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取通话详情
+// Get call details.
 //
 // @param request - GetCallDetailRecordRequest
 //
@@ -1492,7 +1492,7 @@ func (client *Client) GetCallDetailRecordWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取语音对话参数
+// Retrieves a data channel credential.
 //
 // @param request - GetDataChannelCredentialRequest
 //
@@ -1540,7 +1540,17 @@ func (client *Client) GetDataChannelCredentialWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取实例指标趋势详情
+// Retrieves the metric trends chart for an instance.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API operation is used to query the script configuration details for a specific scenario, including settings for ASR, TTS, and dialog capabilities.
+//
+// - No additional parameters are required in the request. The response contains configuration data for both the draft version and the published version.
+//
+// - Check the `Data` field in the response to obtain detailed configuration information.
 //
 // @param request - GetInstanceTrendingReportRequest
 //
@@ -1596,7 +1606,7 @@ func (client *Client) GetInstanceTrendingReportWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取实例实时指标
+// Retrieves real-time stats for an instance.
 //
 // @param request - GetRealtimeInstanceStatsRequest
 //
@@ -1640,7 +1650,7 @@ func (client *Client) GetRealtimeInstanceStatsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取场景实时指标
+// Queries the real-time statistics for a specified script.
 //
 // @param request - GetRealtimeScriptStatsRequest
 //
@@ -1688,7 +1698,7 @@ func (client *Client) GetRealtimeScriptStatsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取录音
+// Retrieves the download URL for a call recording.
 //
 // @param request - GetRecordingRequest
 //
@@ -1736,7 +1746,17 @@ func (client *Client) GetRecordingWithContext(ctx context.Context, request *GetR
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the detailed configuration information for the draft and published versions of a specified scenario.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation queries the detailed script configuration for a specific scenario. The configuration includes settings for Automatic Speech Recognition (ASR), Text-to-Speech (TTS), and dialogue capabilities.
+//
+// - No additional parameters are required for the request. The response contains the configuration data for both the draft and published versions.
+//
+// - The detailed configuration information is returned in the `Data` field of the response.
 //
 // @param request - GetScriptRequest
 //
@@ -1784,7 +1804,17 @@ func (client *Client) GetScriptWithContext(ctx context.Context, request *GetScri
 
 // Summary:
 //
-// 获取场景指标趋势详情
+// # View the scenario metric trend chart
+//
+// Description:
+//
+// ## Request
+//
+// - This API returns the script configuration for a specific scenario, including settings for ASR, TTS, and conversational capability.
+//
+// - This request requires no parameters. The response includes configuration data for both the draft and published versions.
+//
+// - Check the `Data` field for configuration details.
 //
 // @param request - GetScriptTrendingReportRequest
 //
@@ -1844,7 +1874,7 @@ func (client *Client) GetScriptTrendingReportWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取MQ配置
+// Retrieves the details of a message queue (MQ) subscription.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -1888,7 +1918,7 @@ func (client *Client) GetSubscriptionWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取实例详情
+// Gets the details of a specified vocabulary.
 //
 // @param request - GetVocabularyRequest
 //
@@ -1936,7 +1966,7 @@ func (client *Client) GetVocabularyWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 导入热词
+// Imports a custom vocabulary.
 //
 // @param request - ImportVocabularyRequest
 //
@@ -1984,7 +2014,7 @@ func (client *Client) ImportVocabularyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取背景音列表
+// Retrieves a list of background music tracks.
 //
 // @param request - ListBackgroundMusicsRequest
 //
@@ -2036,7 +2066,7 @@ func (client *Client) ListBackgroundMusicsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询服务提供商
+// System Management > Manual Service Provider Management > Query
 //
 // @param request - ListCallCenterProvidersRequest
 //
@@ -2092,7 +2122,7 @@ func (client *Client) ListCallCenterProvidersWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取实例详情
+// Gets the call list.
 //
 // @param tmpReq - ListCallDetailRecordsRequest
 //
@@ -2216,7 +2246,7 @@ func (client *Client) ListCallDetailRecordsWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 获取实例详情
+// Lists the cloned voices in an instance.
 //
 // @param request - ListCloneVoiceRequest
 //
@@ -2272,7 +2302,7 @@ func (client *Client) ListCloneVoiceWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取克隆音色可用模型列表
+// Lists the available clone voice models.
 //
 // @param request - ListCloneVoiceModelsRequest
 //
@@ -2320,7 +2350,17 @@ func (client *Client) ListCloneVoiceModelsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取实例指标汇总数据
+// # Retrieve aggregated instance metrics
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves the script configuration for a specific scenario, including settings for ASR, TTS, and dialogue capability.
+//
+// - This request requires no parameters. The response includes the configuration data for both the draft and published versions.
+//
+// - The configuration data is returned in the `Data` field of the response.
 //
 // @param tmpReq - ListHistoricalInstanceReportRequest
 //
@@ -2386,7 +2426,7 @@ func (client *Client) ListHistoricalInstanceReportWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取场景指标汇总数据
+// # Get scene metric summary data
 //
 // @param tmpReq - ListHistoricalScriptReportRequest
 //
@@ -2456,7 +2496,7 @@ func (client *Client) ListHistoricalScriptReportWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询指令
+// Lists the instructions that are configured for a Digital Employee.
 //
 // @param request - ListInstructionsRequest
 //
@@ -2512,7 +2552,7 @@ func (client *Client) ListInstructionsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取语言模型配置信息
+// Get the language model configuration.
 //
 // @param request - ListLlmAccessProfilesRequest
 //
@@ -2564,7 +2604,7 @@ func (client *Client) ListLlmAccessProfilesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取对话模型列表
+// Lists the available NLU models.
 //
 // @param request - ListNluModelsRequest
 //
@@ -2608,7 +2648,7 @@ func (client *Client) ListNluModelsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取实例实时指标
+// Retrieves real-time statistics for instances.
 //
 // @param tmpReq - ListRealtimeInstanceStatsRequest
 //
@@ -2666,7 +2706,7 @@ func (client *Client) ListRealtimeInstanceStatsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取场景配置模板列表
+// Retrieves a list of scenario configuration templates.
 //
 // @param request - ListScriptProfileTemplatesRequest
 //
@@ -2710,7 +2750,7 @@ func (client *Client) ListScriptProfileTemplatesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param tmpReq - ListScriptsRequest
 //
@@ -2784,7 +2824,7 @@ func (client *Client) ListScriptsWithContext(ctx context.Context, tmpReq *ListSc
 
 // Summary:
 //
-// 获取变量列表
+// Retrieves a list of variables.
 //
 // @param request - ListVariableRequest
 //
@@ -2840,7 +2880,7 @@ func (client *Client) ListVariableWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves a list of vocabularies for a specified instance.
 //
 // @param request - ListVocabularyRequest
 //
@@ -2896,7 +2936,7 @@ func (client *Client) ListVocabularyWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - ListVoiceAccessProfileRequest
 //
@@ -2948,7 +2988,7 @@ func (client *Client) ListVoiceAccessProfileWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取引擎列表
+// Retrieves a list of engines.
 //
 // @param request - ListVoiceEnginesRequest
 //
@@ -2996,7 +3036,7 @@ func (client *Client) ListVoiceEnginesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves a list of available voices.
 //
 // @param request - ListVoicesRequest
 //
@@ -3056,7 +3096,7 @@ func (client *Client) ListVoicesWithContext(ctx context.Context, request *ListVo
 
 // Summary:
 //
-// 试听
+// Creates an instance.
 //
 // @param tmpReq - PreviewVoiceRequest
 //
@@ -3130,7 +3170,7 @@ func (client *Client) PreviewVoiceWithContext(ctx context.Context, tmpReq *Previ
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - PublishScriptRequest
 //
@@ -3182,7 +3222,7 @@ func (client *Client) PublishScriptWithContext(ctx context.Context, request *Pub
 
 // Summary:
 //
-// 修改服务提供商
+// Updates an agent service provider in system administration.
 //
 // @param request - UpdateCallCenterProviderRequest
 //
@@ -3264,7 +3304,7 @@ func (client *Client) UpdateCallCenterProviderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateCloneVoiceRequest
 //
@@ -3316,7 +3356,7 @@ func (client *Client) UpdateCloneVoiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 修改指令
+// Updates the global configuration of a specific instruction for a Digital Employee.
 //
 // @param request - UpdateInstructionRequest
 //
@@ -3376,7 +3416,7 @@ func (client *Client) UpdateInstructionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新语言模型配置信息
+// Updates the language model configuration.
 //
 // @param tmpReq - UpdateLlmAccessProfileRequest
 //
@@ -3434,7 +3474,7 @@ func (client *Client) UpdateLlmAccessProfileWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateScriptRequest
 //
@@ -3494,7 +3534,7 @@ func (client *Client) UpdateScriptWithContext(ctx context.Context, request *Upda
 
 // Summary:
 //
-// 创建或更新MQ配置
+// Creates or updates the Message Queue (MQ) configuration.
 //
 // @param tmpReq - UpdateSubscriptionRequest
 //
@@ -3576,7 +3616,7 @@ func (client *Client) UpdateSubscriptionWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 更新变量
+// Updates a variable.
 //
 // @param request - UpdateVariableRequest
 //
@@ -3632,7 +3672,7 @@ func (client *Client) UpdateVariableWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param tmpReq - UpdateVocabularyRequest
 //
@@ -3698,7 +3738,7 @@ func (client *Client) UpdateVocabularyWithContext(ctx context.Context, tmpReq *U
 
 // Summary:
 //
-// 更新实例
+// Updates a voice access profile.
 //
 // @param tmpReq - UpdateVoiceAccessProfileRequest
 //

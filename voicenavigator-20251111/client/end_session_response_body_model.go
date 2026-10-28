@@ -22,19 +22,28 @@ type iEndSessionResponseBody interface {
 }
 
 type EndSessionResponseBody struct {
+  // The business status code. A value of OK indicates that the operation was successful.
+  // 
   // example:
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The HTTP status code. A value of 200 indicates that the request was successful.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // The HTTP response message.
+  // 
   // example:
   // 
   // SUCCESS
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The dynamic error parameters.
   Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+  // The request ID.
+  // 
   // example:
   // 
   // 9DB8BA95-4513-54B9-9C67-A28909CFB4AD

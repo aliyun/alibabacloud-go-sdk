@@ -22,16 +22,32 @@ type iUpdateScriptRequest interface {
 }
 
 type UpdateScriptRequest struct {
+	// The concurrency.
+	//
 	// example:
 	//
 	// 10
-	Concurrency *int32  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// For testing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 19ac2375-53e3-477f-abe9-6cd334227981
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scenario name.
+	//
+	// example:
+	//
+	// Navigation test scenario
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scenario ID.
+	//
 	// example:
 	//
 	// 64241e64-190c-45d1-af66-06f51c07b090

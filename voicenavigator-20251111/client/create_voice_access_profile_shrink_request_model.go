@@ -18,14 +18,19 @@ type iCreateVoiceAccessProfileShrinkRequest interface {
 }
 
 type CreateVoiceAccessProfileShrinkRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The speech engine.
+	//
 	// example:
 	//
 	// VOLC
-	NlsEngine     *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The parameter settings.
 	ProfileShrink *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 

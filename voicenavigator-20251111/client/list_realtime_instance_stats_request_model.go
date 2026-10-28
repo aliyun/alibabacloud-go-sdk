@@ -18,11 +18,16 @@ type iListRealtimeInstanceStatsRequest interface {
 }
 
 type ListRealtimeInstanceStatsRequest struct {
+	// The IDs of the instances. You can specify 1 to 100 instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

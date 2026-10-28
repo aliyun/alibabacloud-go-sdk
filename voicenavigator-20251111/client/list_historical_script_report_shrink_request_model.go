@@ -24,23 +24,34 @@ type iListHistoricalScriptReportShrinkRequest interface {
 }
 
 type ListHistoricalScriptReportShrinkRequest struct {
+	// The end of the query time range, which is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1582103299434
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Voice Bot instance.
+	//
 	// example:
 	//
 	// 12f407b22cbe4890ac595f09985848d5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number to retrieve.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A list of up to 100 script IDs.
 	ScriptIdsShrink *string `json:"ScriptIds,omitempty" xml:"ScriptIds,omitempty"`
+	// The start of the query time range, which is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1582267398628

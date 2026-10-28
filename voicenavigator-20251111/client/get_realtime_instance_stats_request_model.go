@@ -14,6 +14,8 @@ type iGetRealtimeInstanceStatsRequest interface {
 }
 
 type GetRealtimeInstanceStatsRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// 12f407b22cbe4890ac595f09985848d5

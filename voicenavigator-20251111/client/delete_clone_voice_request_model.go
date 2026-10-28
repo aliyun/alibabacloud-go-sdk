@@ -16,10 +16,14 @@ type iDeleteCloneVoiceRequest interface {
 }
 
 type DeleteCloneVoiceRequest struct {
+	// The cloned voice ID.
+	//
 	// example:
 	//
 	// e48e45dd-e47a-4744-a063-f08cbebb1c5b
 	CloneVoiceId *string `json:"CloneVoiceId,omitempty" xml:"CloneVoiceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// e48e45dd-e47a-4744-a063-f08cbebb1c5a

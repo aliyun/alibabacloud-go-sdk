@@ -14,6 +14,8 @@ type iListScriptProfileTemplatesRequest interface {
 }
 
 type ListScriptProfileTemplatesRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0

@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 开启会话
+// Initiates a session.
 //
 // @param request - BeginSessionRequest
 //
@@ -73,7 +73,7 @@ func (client *Client) BeginSessionWithSSE(request *BeginSessionRequest, runtime 
 
 // Summary:
 //
-// 开启会话
+// Initiates a session.
 //
 // @param request - BeginSessionRequest
 //
@@ -129,7 +129,7 @@ func (client *Client) BeginSessionWithOptions(request *BeginSessionRequest, runt
 
 // Summary:
 //
-// 开启会话
+// Initiates a session.
 //
 // @param request - BeginSessionRequest
 //
@@ -147,7 +147,7 @@ func (client *Client) BeginSession(request *BeginSessionRequest) (_result *Begin
 
 // Summary:
 //
-// 发起呼叫
+// Initiates a web call.
 //
 // @param request - BridgeWebCallRequest
 //
@@ -227,7 +227,7 @@ func (client *Client) BridgeWebCallWithOptions(request *BridgeWebCallRequest, ru
 
 // Summary:
 //
-// 发起呼叫
+// Initiates a web call.
 //
 // @param request - BridgeWebCallRequest
 //
@@ -245,7 +245,7 @@ func (client *Client) BridgeWebCall(request *BridgeWebCallRequest) (_result *Bri
 
 // Summary:
 //
-// 创建服务提供商
+// Creates a human agent service provider.
 //
 // @param request - CreateCallCenterProviderRequest
 //
@@ -323,7 +323,7 @@ func (client *Client) CreateCallCenterProviderWithOptions(request *CreateCallCen
 
 // Summary:
 //
-// 创建服务提供商
+// Creates a human agent service provider.
 //
 // @param request - CreateCallCenterProviderRequest
 //
@@ -341,7 +341,7 @@ func (client *Client) CreateCallCenterProvider(request *CreateCallCenterProvider
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param request - CreateCloneVoiceRequest
 //
@@ -393,7 +393,7 @@ func (client *Client) CreateCloneVoiceWithOptions(request *CreateCloneVoiceReque
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param request - CreateCloneVoiceRequest
 //
@@ -411,7 +411,7 @@ func (client *Client) CreateCloneVoice(request *CreateCloneVoiceRequest) (_resul
 
 // Summary:
 //
-// 创建指令
+// Adds an instruction to the global configuration of a digital employee.
 //
 // @param request - CreateInstructionRequest
 //
@@ -471,7 +471,7 @@ func (client *Client) CreateInstructionWithOptions(request *CreateInstructionReq
 
 // Summary:
 //
-// 创建指令
+// Adds an instruction to the global configuration of a digital employee.
 //
 // @param request - CreateInstructionRequest
 //
@@ -489,7 +489,7 @@ func (client *Client) CreateInstruction(request *CreateInstructionRequest) (_res
 
 // Summary:
 //
-// 创建语言模型配置信息
+// Creates the configuration information for a language model.
 //
 // @param tmpReq - CreateLlmAccessProfileRequest
 //
@@ -543,7 +543,7 @@ func (client *Client) CreateLlmAccessProfileWithOptions(tmpReq *CreateLlmAccessP
 
 // Summary:
 //
-// 创建语言模型配置信息
+// Creates the configuration information for a language model.
 //
 // @param request - CreateLlmAccessProfileRequest
 //
@@ -561,7 +561,7 @@ func (client *Client) CreateLlmAccessProfile(request *CreateLlmAccessProfileRequ
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param request - CreateScriptRequest
 //
@@ -621,7 +621,7 @@ func (client *Client) CreateScriptWithOptions(request *CreateScriptRequest, runt
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param request - CreateScriptRequest
 //
@@ -639,7 +639,7 @@ func (client *Client) CreateScript(request *CreateScriptRequest) (_result *Creat
 
 // Summary:
 //
-// 创建场景配置
+// Creates a scenario configuration.
 //
 // @param tmpReq - CreateScriptVersionRequest
 //
@@ -733,7 +733,7 @@ func (client *Client) CreateScriptVersionWithOptions(tmpReq *CreateScriptVersion
 
 // Summary:
 //
-// 创建场景配置
+// Creates a scenario configuration.
 //
 // @param request - CreateScriptVersionRequest
 //
@@ -751,7 +751,7 @@ func (client *Client) CreateScriptVersion(request *CreateScriptVersionRequest) (
 
 // Summary:
 //
-// 创建变量
+// Creates a variable.
 //
 // @param request - CreateVariableRequest
 //
@@ -807,7 +807,7 @@ func (client *Client) CreateVariableWithOptions(request *CreateVariableRequest, 
 
 // Summary:
 //
-// 创建变量
+// Creates a variable.
 //
 // @param request - CreateVariableRequest
 //
@@ -825,7 +825,7 @@ func (client *Client) CreateVariable(request *CreateVariableRequest) (_result *C
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param tmpReq - CreateVocabularyRequest
 //
@@ -887,7 +887,7 @@ func (client *Client) CreateVocabularyWithOptions(tmpReq *CreateVocabularyReques
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param request - CreateVocabularyRequest
 //
@@ -905,7 +905,7 @@ func (client *Client) CreateVocabulary(request *CreateVocabularyRequest) (_resul
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param tmpReq - CreateVoiceAccessProfileRequest
 //
@@ -963,7 +963,7 @@ func (client *Client) CreateVoiceAccessProfileWithOptions(tmpReq *CreateVoiceAcc
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param request - CreateVoiceAccessProfileRequest
 //
@@ -981,7 +981,7 @@ func (client *Client) CreateVoiceAccessProfile(request *CreateVoiceAccessProfile
 
 // Summary:
 //
-// 删除服务提供商
+// Deletes a human service provider in system administration.
 //
 // @param request - DeleteCallCenterProviderRequest
 //
@@ -1029,7 +1029,7 @@ func (client *Client) DeleteCallCenterProviderWithOptions(request *DeleteCallCen
 
 // Summary:
 //
-// 删除服务提供商
+// Deletes a human service provider in system administration.
 //
 // @param request - DeleteCallCenterProviderRequest
 //
@@ -1047,7 +1047,7 @@ func (client *Client) DeleteCallCenterProvider(request *DeleteCallCenterProvider
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteCloneVoiceRequest
 //
@@ -1095,7 +1095,7 @@ func (client *Client) DeleteCloneVoiceWithOptions(request *DeleteCloneVoiceReque
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteCloneVoiceRequest
 //
@@ -1113,7 +1113,7 @@ func (client *Client) DeleteCloneVoice(request *DeleteCloneVoiceRequest) (_resul
 
 // Summary:
 //
-// 删除指令
+// Deletes an instruction from the global configuration of a digital employee.
 //
 // @param request - DeleteInstructionRequest
 //
@@ -1161,7 +1161,7 @@ func (client *Client) DeleteInstructionWithOptions(request *DeleteInstructionReq
 
 // Summary:
 //
-// 删除指令
+// Deletes an instruction from the global configuration of a digital employee.
 //
 // @param request - DeleteInstructionRequest
 //
@@ -1179,7 +1179,7 @@ func (client *Client) DeleteInstruction(request *DeleteInstructionRequest) (_res
 
 // Summary:
 //
-// 删除语言模型配置信息
+// Deletes the language model configuration.
 //
 // @param request - DeleteLlmAccessProfileRequest
 //
@@ -1227,7 +1227,7 @@ func (client *Client) DeleteLlmAccessProfileWithOptions(request *DeleteLlmAccess
 
 // Summary:
 //
-// 删除语言模型配置信息
+// Deletes the language model configuration.
 //
 // @param request - DeleteLlmAccessProfileRequest
 //
@@ -1245,7 +1245,7 @@ func (client *Client) DeleteLlmAccessProfile(request *DeleteLlmAccessProfileRequ
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteScriptRequest
 //
@@ -1293,7 +1293,7 @@ func (client *Client) DeleteScriptWithOptions(request *DeleteScriptRequest, runt
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteScriptRequest
 //
@@ -1311,7 +1311,7 @@ func (client *Client) DeleteScript(request *DeleteScriptRequest) (_result *Delet
 
 // Summary:
 //
-// 删除变量
+// Deletes a variable.
 //
 // @param request - DeleteVariableRequest
 //
@@ -1359,7 +1359,7 @@ func (client *Client) DeleteVariableWithOptions(request *DeleteVariableRequest, 
 
 // Summary:
 //
-// 删除变量
+// Deletes a variable.
 //
 // @param request - DeleteVariableRequest
 //
@@ -1377,7 +1377,7 @@ func (client *Client) DeleteVariable(request *DeleteVariableRequest) (_result *D
 
 // Summary:
 //
-// 删除场景
+// Deletes a vocabulary from a Voice Navigator instance.
 //
 // @param request - DeleteVocabularyRequest
 //
@@ -1425,7 +1425,7 @@ func (client *Client) DeleteVocabularyWithOptions(request *DeleteVocabularyReque
 
 // Summary:
 //
-// 删除场景
+// Deletes a vocabulary from a Voice Navigator instance.
 //
 // @param request - DeleteVocabularyRequest
 //
@@ -1443,7 +1443,7 @@ func (client *Client) DeleteVocabulary(request *DeleteVocabularyRequest) (_resul
 
 // Summary:
 //
-// 删除场景
+// Deletes a Voice Access Profile.
 //
 // @param request - DeleteVoiceAccessProfileRequest
 //
@@ -1491,7 +1491,7 @@ func (client *Client) DeleteVoiceAccessProfileWithOptions(request *DeleteVoiceAc
 
 // Summary:
 //
-// 删除场景
+// Deletes a Voice Access Profile.
 //
 // @param request - DeleteVoiceAccessProfileRequest
 //
@@ -1509,7 +1509,7 @@ func (client *Client) DeleteVoiceAccessProfile(request *DeleteVoiceAccessProfile
 
 // Summary:
 //
-// 开启会话
+// Process a single conversational turn.
 //
 // @param request - DialogueRequest
 //
@@ -1524,7 +1524,7 @@ func (client *Client) DialogueWithSSE(request *DialogueRequest, runtime *dara.Ru
 
 // Summary:
 //
-// 开启会话
+// Process a single conversational turn.
 //
 // @param request - DialogueRequest
 //
@@ -1584,7 +1584,7 @@ func (client *Client) DialogueWithOptions(request *DialogueRequest, runtime *dar
 
 // Summary:
 //
-// 开启会话
+// Process a single conversational turn.
 //
 // @param request - DialogueRequest
 //
@@ -1602,7 +1602,7 @@ func (client *Client) Dialogue(request *DialogueRequest) (_result *DialogueRespo
 
 // Summary:
 //
-// 禁用消息订阅
+// Disables the subscription for a Voice Navigator instance.
 //
 // @param request - DisableSubscriptionRequest
 //
@@ -1646,7 +1646,7 @@ func (client *Client) DisableSubscriptionWithOptions(request *DisableSubscriptio
 
 // Summary:
 //
-// 禁用消息订阅
+// Disables the subscription for a Voice Navigator instance.
 //
 // @param request - DisableSubscriptionRequest
 //
@@ -1664,7 +1664,7 @@ func (client *Client) DisableSubscription(request *DisableSubscriptionRequest) (
 
 // Summary:
 //
-// 结束会话
+// Ends a session.
 //
 // @param request - EndSessionRequest
 //
@@ -1716,7 +1716,7 @@ func (client *Client) EndSessionWithOptions(request *EndSessionRequest, runtime 
 
 // Summary:
 //
-// 结束会话
+// Ends a session.
 //
 // @param request - EndSessionRequest
 //
@@ -1734,7 +1734,7 @@ func (client *Client) EndSession(request *EndSessionRequest) (_result *EndSessio
 
 // Summary:
 //
-// 获取实例详情
+// Exports a specified script.
 //
 // @param request - ExportScriptRequest
 //
@@ -1782,7 +1782,7 @@ func (client *Client) ExportScriptWithOptions(request *ExportScriptRequest, runt
 
 // Summary:
 //
-// 获取实例详情
+// Exports a specified script.
 //
 // @param request - ExportScriptRequest
 //
@@ -1800,7 +1800,7 @@ func (client *Client) ExportScript(request *ExportScriptRequest) (_result *Expor
 
 // Summary:
 //
-// 导出热词
+// Exports vocabularies.
 //
 // @param tmpReq - ExportVocabularyRequest
 //
@@ -1854,7 +1854,7 @@ func (client *Client) ExportVocabularyWithOptions(tmpReq *ExportVocabularyReques
 
 // Summary:
 //
-// 导出热词
+// Exports vocabularies.
 //
 // @param request - ExportVocabularyRequest
 //
@@ -1872,7 +1872,7 @@ func (client *Client) ExportVocabulary(request *ExportVocabularyRequest) (_resul
 
 // Summary:
 //
-// 获取实例详情
+// Generates temporary credentials and parameters to upload a file to Object Storage Service (OSS).
 //
 // @param request - GenerateFileUploadParamsRequest
 //
@@ -1924,7 +1924,7 @@ func (client *Client) GenerateFileUploadParamsWithOptions(request *GenerateFileU
 
 // Summary:
 //
-// 获取实例详情
+// Generates temporary credentials and parameters to upload a file to Object Storage Service (OSS).
 //
 // @param request - GenerateFileUploadParamsRequest
 //
@@ -1942,7 +1942,7 @@ func (client *Client) GenerateFileUploadParams(request *GenerateFileUploadParams
 
 // Summary:
 //
-// 获取通话详情
+// Get call details.
 //
 // @param request - GetCallDetailRecordRequest
 //
@@ -1990,7 +1990,7 @@ func (client *Client) GetCallDetailRecordWithOptions(request *GetCallDetailRecor
 
 // Summary:
 //
-// 获取通话详情
+// Get call details.
 //
 // @param request - GetCallDetailRecordRequest
 //
@@ -2008,7 +2008,7 @@ func (client *Client) GetCallDetailRecord(request *GetCallDetailRecordRequest) (
 
 // Summary:
 //
-// 获取语音对话参数
+// Retrieves a data channel credential.
 //
 // @param request - GetDataChannelCredentialRequest
 //
@@ -2056,7 +2056,7 @@ func (client *Client) GetDataChannelCredentialWithOptions(request *GetDataChanne
 
 // Summary:
 //
-// 获取语音对话参数
+// Retrieves a data channel credential.
 //
 // @param request - GetDataChannelCredentialRequest
 //
@@ -2074,7 +2074,17 @@ func (client *Client) GetDataChannelCredential(request *GetDataChannelCredential
 
 // Summary:
 //
-// 获取实例指标趋势详情
+// Retrieves the metric trends chart for an instance.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API operation is used to query the script configuration details for a specific scenario, including settings for ASR, TTS, and dialog capabilities.
+//
+// - No additional parameters are required in the request. The response contains configuration data for both the draft version and the published version.
+//
+// - Check the `Data` field in the response to obtain detailed configuration information.
 //
 // @param request - GetInstanceTrendingReportRequest
 //
@@ -2130,7 +2140,17 @@ func (client *Client) GetInstanceTrendingReportWithOptions(request *GetInstanceT
 
 // Summary:
 //
-// 获取实例指标趋势详情
+// Retrieves the metric trends chart for an instance.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API operation is used to query the script configuration details for a specific scenario, including settings for ASR, TTS, and dialog capabilities.
+//
+// - No additional parameters are required in the request. The response contains configuration data for both the draft version and the published version.
+//
+// - Check the `Data` field in the response to obtain detailed configuration information.
 //
 // @param request - GetInstanceTrendingReportRequest
 //
@@ -2148,7 +2168,7 @@ func (client *Client) GetInstanceTrendingReport(request *GetInstanceTrendingRepo
 
 // Summary:
 //
-// 获取实例实时指标
+// Retrieves real-time stats for an instance.
 //
 // @param request - GetRealtimeInstanceStatsRequest
 //
@@ -2192,7 +2212,7 @@ func (client *Client) GetRealtimeInstanceStatsWithOptions(request *GetRealtimeIn
 
 // Summary:
 //
-// 获取实例实时指标
+// Retrieves real-time stats for an instance.
 //
 // @param request - GetRealtimeInstanceStatsRequest
 //
@@ -2210,7 +2230,7 @@ func (client *Client) GetRealtimeInstanceStats(request *GetRealtimeInstanceStats
 
 // Summary:
 //
-// 获取场景实时指标
+// Queries the real-time statistics for a specified script.
 //
 // @param request - GetRealtimeScriptStatsRequest
 //
@@ -2258,7 +2278,7 @@ func (client *Client) GetRealtimeScriptStatsWithOptions(request *GetRealtimeScri
 
 // Summary:
 //
-// 获取场景实时指标
+// Queries the real-time statistics for a specified script.
 //
 // @param request - GetRealtimeScriptStatsRequest
 //
@@ -2276,7 +2296,7 @@ func (client *Client) GetRealtimeScriptStats(request *GetRealtimeScriptStatsRequ
 
 // Summary:
 //
-// 获取录音
+// Retrieves the download URL for a call recording.
 //
 // @param request - GetRecordingRequest
 //
@@ -2324,7 +2344,7 @@ func (client *Client) GetRecordingWithOptions(request *GetRecordingRequest, runt
 
 // Summary:
 //
-// 获取录音
+// Retrieves the download URL for a call recording.
 //
 // @param request - GetRecordingRequest
 //
@@ -2342,7 +2362,17 @@ func (client *Client) GetRecording(request *GetRecordingRequest) (_result *GetRe
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the detailed configuration information for the draft and published versions of a specified scenario.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation queries the detailed script configuration for a specific scenario. The configuration includes settings for Automatic Speech Recognition (ASR), Text-to-Speech (TTS), and dialogue capabilities.
+//
+// - No additional parameters are required for the request. The response contains the configuration data for both the draft and published versions.
+//
+// - The detailed configuration information is returned in the `Data` field of the response.
 //
 // @param request - GetScriptRequest
 //
@@ -2390,7 +2420,17 @@ func (client *Client) GetScriptWithOptions(request *GetScriptRequest, runtime *d
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the detailed configuration information for the draft and published versions of a specified scenario.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation queries the detailed script configuration for a specific scenario. The configuration includes settings for Automatic Speech Recognition (ASR), Text-to-Speech (TTS), and dialogue capabilities.
+//
+// - No additional parameters are required for the request. The response contains the configuration data for both the draft and published versions.
+//
+// - The detailed configuration information is returned in the `Data` field of the response.
 //
 // @param request - GetScriptRequest
 //
@@ -2408,7 +2448,17 @@ func (client *Client) GetScript(request *GetScriptRequest) (_result *GetScriptRe
 
 // Summary:
 //
-// 获取场景指标趋势详情
+// # View the scenario metric trend chart
+//
+// Description:
+//
+// ## Request
+//
+// - This API returns the script configuration for a specific scenario, including settings for ASR, TTS, and conversational capability.
+//
+// - This request requires no parameters. The response includes configuration data for both the draft and published versions.
+//
+// - Check the `Data` field for configuration details.
 //
 // @param request - GetScriptTrendingReportRequest
 //
@@ -2468,7 +2518,17 @@ func (client *Client) GetScriptTrendingReportWithOptions(request *GetScriptTrend
 
 // Summary:
 //
-// 获取场景指标趋势详情
+// # View the scenario metric trend chart
+//
+// Description:
+//
+// ## Request
+//
+// - This API returns the script configuration for a specific scenario, including settings for ASR, TTS, and conversational capability.
+//
+// - This request requires no parameters. The response includes configuration data for both the draft and published versions.
+//
+// - Check the `Data` field for configuration details.
 //
 // @param request - GetScriptTrendingReportRequest
 //
@@ -2486,7 +2546,7 @@ func (client *Client) GetScriptTrendingReport(request *GetScriptTrendingReportRe
 
 // Summary:
 //
-// 获取MQ配置
+// Retrieves the details of a message queue (MQ) subscription.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -2530,7 +2590,7 @@ func (client *Client) GetSubscriptionWithOptions(request *GetSubscriptionRequest
 
 // Summary:
 //
-// 获取MQ配置
+// Retrieves the details of a message queue (MQ) subscription.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -2548,7 +2608,7 @@ func (client *Client) GetSubscription(request *GetSubscriptionRequest) (_result 
 
 // Summary:
 //
-// 获取实例详情
+// Gets the details of a specified vocabulary.
 //
 // @param request - GetVocabularyRequest
 //
@@ -2596,7 +2656,7 @@ func (client *Client) GetVocabularyWithOptions(request *GetVocabularyRequest, ru
 
 // Summary:
 //
-// 获取实例详情
+// Gets the details of a specified vocabulary.
 //
 // @param request - GetVocabularyRequest
 //
@@ -2614,7 +2674,7 @@ func (client *Client) GetVocabulary(request *GetVocabularyRequest) (_result *Get
 
 // Summary:
 //
-// 导入热词
+// Imports a custom vocabulary.
 //
 // @param request - ImportVocabularyRequest
 //
@@ -2662,7 +2722,7 @@ func (client *Client) ImportVocabularyWithOptions(request *ImportVocabularyReque
 
 // Summary:
 //
-// 导入热词
+// Imports a custom vocabulary.
 //
 // @param request - ImportVocabularyRequest
 //
@@ -2680,7 +2740,7 @@ func (client *Client) ImportVocabulary(request *ImportVocabularyRequest) (_resul
 
 // Summary:
 //
-// 获取背景音列表
+// Retrieves a list of background music tracks.
 //
 // @param request - ListBackgroundMusicsRequest
 //
@@ -2732,7 +2792,7 @@ func (client *Client) ListBackgroundMusicsWithOptions(request *ListBackgroundMus
 
 // Summary:
 //
-// 获取背景音列表
+// Retrieves a list of background music tracks.
 //
 // @param request - ListBackgroundMusicsRequest
 //
@@ -2750,7 +2810,7 @@ func (client *Client) ListBackgroundMusics(request *ListBackgroundMusicsRequest)
 
 // Summary:
 //
-// 查询服务提供商
+// System Management > Manual Service Provider Management > Query
 //
 // @param request - ListCallCenterProvidersRequest
 //
@@ -2806,7 +2866,7 @@ func (client *Client) ListCallCenterProvidersWithOptions(request *ListCallCenter
 
 // Summary:
 //
-// 查询服务提供商
+// System Management > Manual Service Provider Management > Query
 //
 // @param request - ListCallCenterProvidersRequest
 //
@@ -2824,7 +2884,7 @@ func (client *Client) ListCallCenterProviders(request *ListCallCenterProvidersRe
 
 // Summary:
 //
-// 获取实例详情
+// Gets the call list.
 //
 // @param tmpReq - ListCallDetailRecordsRequest
 //
@@ -2948,7 +3008,7 @@ func (client *Client) ListCallDetailRecordsWithOptions(tmpReq *ListCallDetailRec
 
 // Summary:
 //
-// 获取实例详情
+// Gets the call list.
 //
 // @param request - ListCallDetailRecordsRequest
 //
@@ -2966,7 +3026,7 @@ func (client *Client) ListCallDetailRecords(request *ListCallDetailRecordsReques
 
 // Summary:
 //
-// 获取实例详情
+// Lists the cloned voices in an instance.
 //
 // @param request - ListCloneVoiceRequest
 //
@@ -3022,7 +3082,7 @@ func (client *Client) ListCloneVoiceWithOptions(request *ListCloneVoiceRequest, 
 
 // Summary:
 //
-// 获取实例详情
+// Lists the cloned voices in an instance.
 //
 // @param request - ListCloneVoiceRequest
 //
@@ -3040,7 +3100,7 @@ func (client *Client) ListCloneVoice(request *ListCloneVoiceRequest) (_result *L
 
 // Summary:
 //
-// 获取克隆音色可用模型列表
+// Lists the available clone voice models.
 //
 // @param request - ListCloneVoiceModelsRequest
 //
@@ -3088,7 +3148,7 @@ func (client *Client) ListCloneVoiceModelsWithOptions(request *ListCloneVoiceMod
 
 // Summary:
 //
-// 获取克隆音色可用模型列表
+// Lists the available clone voice models.
 //
 // @param request - ListCloneVoiceModelsRequest
 //
@@ -3106,7 +3166,17 @@ func (client *Client) ListCloneVoiceModels(request *ListCloneVoiceModelsRequest)
 
 // Summary:
 //
-// 获取实例指标汇总数据
+// # Retrieve aggregated instance metrics
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves the script configuration for a specific scenario, including settings for ASR, TTS, and dialogue capability.
+//
+// - This request requires no parameters. The response includes the configuration data for both the draft and published versions.
+//
+// - The configuration data is returned in the `Data` field of the response.
 //
 // @param tmpReq - ListHistoricalInstanceReportRequest
 //
@@ -3172,7 +3242,17 @@ func (client *Client) ListHistoricalInstanceReportWithOptions(tmpReq *ListHistor
 
 // Summary:
 //
-// 获取实例指标汇总数据
+// # Retrieve aggregated instance metrics
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves the script configuration for a specific scenario, including settings for ASR, TTS, and dialogue capability.
+//
+// - This request requires no parameters. The response includes the configuration data for both the draft and published versions.
+//
+// - The configuration data is returned in the `Data` field of the response.
 //
 // @param request - ListHistoricalInstanceReportRequest
 //
@@ -3190,7 +3270,7 @@ func (client *Client) ListHistoricalInstanceReport(request *ListHistoricalInstan
 
 // Summary:
 //
-// 获取场景指标汇总数据
+// # Get scene metric summary data
 //
 // @param tmpReq - ListHistoricalScriptReportRequest
 //
@@ -3260,7 +3340,7 @@ func (client *Client) ListHistoricalScriptReportWithOptions(tmpReq *ListHistoric
 
 // Summary:
 //
-// 获取场景指标汇总数据
+// # Get scene metric summary data
 //
 // @param request - ListHistoricalScriptReportRequest
 //
@@ -3278,7 +3358,7 @@ func (client *Client) ListHistoricalScriptReport(request *ListHistoricalScriptRe
 
 // Summary:
 //
-// 查询指令
+// Lists the instructions that are configured for a Digital Employee.
 //
 // @param request - ListInstructionsRequest
 //
@@ -3334,7 +3414,7 @@ func (client *Client) ListInstructionsWithOptions(request *ListInstructionsReque
 
 // Summary:
 //
-// 查询指令
+// Lists the instructions that are configured for a Digital Employee.
 //
 // @param request - ListInstructionsRequest
 //
@@ -3352,7 +3432,7 @@ func (client *Client) ListInstructions(request *ListInstructionsRequest) (_resul
 
 // Summary:
 //
-// 获取语言模型配置信息
+// Get the language model configuration.
 //
 // @param request - ListLlmAccessProfilesRequest
 //
@@ -3404,7 +3484,7 @@ func (client *Client) ListLlmAccessProfilesWithOptions(request *ListLlmAccessPro
 
 // Summary:
 //
-// 获取语言模型配置信息
+// Get the language model configuration.
 //
 // @param request - ListLlmAccessProfilesRequest
 //
@@ -3422,7 +3502,7 @@ func (client *Client) ListLlmAccessProfiles(request *ListLlmAccessProfilesReques
 
 // Summary:
 //
-// 获取对话模型列表
+// Lists the available NLU models.
 //
 // @param request - ListNluModelsRequest
 //
@@ -3466,7 +3546,7 @@ func (client *Client) ListNluModelsWithOptions(request *ListNluModelsRequest, ru
 
 // Summary:
 //
-// 获取对话模型列表
+// Lists the available NLU models.
 //
 // @param request - ListNluModelsRequest
 //
@@ -3484,7 +3564,7 @@ func (client *Client) ListNluModels(request *ListNluModelsRequest) (_result *Lis
 
 // Summary:
 //
-// 获取实例实时指标
+// Retrieves real-time statistics for instances.
 //
 // @param tmpReq - ListRealtimeInstanceStatsRequest
 //
@@ -3542,7 +3622,7 @@ func (client *Client) ListRealtimeInstanceStatsWithOptions(tmpReq *ListRealtimeI
 
 // Summary:
 //
-// 获取实例实时指标
+// Retrieves real-time statistics for instances.
 //
 // @param request - ListRealtimeInstanceStatsRequest
 //
@@ -3560,7 +3640,7 @@ func (client *Client) ListRealtimeInstanceStats(request *ListRealtimeInstanceSta
 
 // Summary:
 //
-// 获取场景配置模板列表
+// Retrieves a list of scenario configuration templates.
 //
 // @param request - ListScriptProfileTemplatesRequest
 //
@@ -3604,7 +3684,7 @@ func (client *Client) ListScriptProfileTemplatesWithOptions(request *ListScriptP
 
 // Summary:
 //
-// 获取场景配置模板列表
+// Retrieves a list of scenario configuration templates.
 //
 // @param request - ListScriptProfileTemplatesRequest
 //
@@ -3622,7 +3702,7 @@ func (client *Client) ListScriptProfileTemplates(request *ListScriptProfileTempl
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param tmpReq - ListScriptsRequest
 //
@@ -3696,7 +3776,7 @@ func (client *Client) ListScriptsWithOptions(tmpReq *ListScriptsRequest, runtime
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - ListScriptsRequest
 //
@@ -3714,7 +3794,7 @@ func (client *Client) ListScripts(request *ListScriptsRequest) (_result *ListScr
 
 // Summary:
 //
-// 获取变量列表
+// Retrieves a list of variables.
 //
 // @param request - ListVariableRequest
 //
@@ -3770,7 +3850,7 @@ func (client *Client) ListVariableWithOptions(request *ListVariableRequest, runt
 
 // Summary:
 //
-// 获取变量列表
+// Retrieves a list of variables.
 //
 // @param request - ListVariableRequest
 //
@@ -3788,7 +3868,7 @@ func (client *Client) ListVariable(request *ListVariableRequest) (_result *ListV
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves a list of vocabularies for a specified instance.
 //
 // @param request - ListVocabularyRequest
 //
@@ -3844,7 +3924,7 @@ func (client *Client) ListVocabularyWithOptions(request *ListVocabularyRequest, 
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves a list of vocabularies for a specified instance.
 //
 // @param request - ListVocabularyRequest
 //
@@ -3862,7 +3942,7 @@ func (client *Client) ListVocabulary(request *ListVocabularyRequest) (_result *L
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - ListVoiceAccessProfileRequest
 //
@@ -3914,7 +3994,7 @@ func (client *Client) ListVoiceAccessProfileWithOptions(request *ListVoiceAccess
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - ListVoiceAccessProfileRequest
 //
@@ -3932,7 +4012,7 @@ func (client *Client) ListVoiceAccessProfile(request *ListVoiceAccessProfileRequ
 
 // Summary:
 //
-// 获取引擎列表
+// Retrieves a list of engines.
 //
 // @param request - ListVoiceEnginesRequest
 //
@@ -3980,7 +4060,7 @@ func (client *Client) ListVoiceEnginesWithOptions(request *ListVoiceEnginesReque
 
 // Summary:
 //
-// 获取引擎列表
+// Retrieves a list of engines.
 //
 // @param request - ListVoiceEnginesRequest
 //
@@ -3998,7 +4078,7 @@ func (client *Client) ListVoiceEngines(request *ListVoiceEnginesRequest) (_resul
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves a list of available voices.
 //
 // @param request - ListVoicesRequest
 //
@@ -4058,7 +4138,7 @@ func (client *Client) ListVoicesWithOptions(request *ListVoicesRequest, runtime 
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves a list of available voices.
 //
 // @param request - ListVoicesRequest
 //
@@ -4076,7 +4156,7 @@ func (client *Client) ListVoices(request *ListVoicesRequest) (_result *ListVoice
 
 // Summary:
 //
-// 试听
+// Creates an instance.
 //
 // @param tmpReq - PreviewVoiceRequest
 //
@@ -4150,7 +4230,7 @@ func (client *Client) PreviewVoiceWithOptions(tmpReq *PreviewVoiceRequest, runti
 
 // Summary:
 //
-// 试听
+// Creates an instance.
 //
 // @param request - PreviewVoiceRequest
 //
@@ -4168,7 +4248,7 @@ func (client *Client) PreviewVoice(request *PreviewVoiceRequest) (_result *Previ
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - PublishScriptRequest
 //
@@ -4220,7 +4300,7 @@ func (client *Client) PublishScriptWithOptions(request *PublishScriptRequest, ru
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - PublishScriptRequest
 //
@@ -4238,7 +4318,7 @@ func (client *Client) PublishScript(request *PublishScriptRequest) (_result *Pub
 
 // Summary:
 //
-// 修改服务提供商
+// Updates an agent service provider in system administration.
 //
 // @param request - UpdateCallCenterProviderRequest
 //
@@ -4320,7 +4400,7 @@ func (client *Client) UpdateCallCenterProviderWithOptions(request *UpdateCallCen
 
 // Summary:
 //
-// 修改服务提供商
+// Updates an agent service provider in system administration.
 //
 // @param request - UpdateCallCenterProviderRequest
 //
@@ -4338,7 +4418,7 @@ func (client *Client) UpdateCallCenterProvider(request *UpdateCallCenterProvider
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateCloneVoiceRequest
 //
@@ -4390,7 +4470,7 @@ func (client *Client) UpdateCloneVoiceWithOptions(request *UpdateCloneVoiceReque
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateCloneVoiceRequest
 //
@@ -4408,7 +4488,7 @@ func (client *Client) UpdateCloneVoice(request *UpdateCloneVoiceRequest) (_resul
 
 // Summary:
 //
-// 修改指令
+// Updates the global configuration of a specific instruction for a Digital Employee.
 //
 // @param request - UpdateInstructionRequest
 //
@@ -4468,7 +4548,7 @@ func (client *Client) UpdateInstructionWithOptions(request *UpdateInstructionReq
 
 // Summary:
 //
-// 修改指令
+// Updates the global configuration of a specific instruction for a Digital Employee.
 //
 // @param request - UpdateInstructionRequest
 //
@@ -4486,7 +4566,7 @@ func (client *Client) UpdateInstruction(request *UpdateInstructionRequest) (_res
 
 // Summary:
 //
-// 更新语言模型配置信息
+// Updates the language model configuration.
 //
 // @param tmpReq - UpdateLlmAccessProfileRequest
 //
@@ -4544,7 +4624,7 @@ func (client *Client) UpdateLlmAccessProfileWithOptions(tmpReq *UpdateLlmAccessP
 
 // Summary:
 //
-// 更新语言模型配置信息
+// Updates the language model configuration.
 //
 // @param request - UpdateLlmAccessProfileRequest
 //
@@ -4562,7 +4642,7 @@ func (client *Client) UpdateLlmAccessProfile(request *UpdateLlmAccessProfileRequ
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateScriptRequest
 //
@@ -4622,7 +4702,7 @@ func (client *Client) UpdateScriptWithOptions(request *UpdateScriptRequest, runt
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateScriptRequest
 //
@@ -4640,7 +4720,7 @@ func (client *Client) UpdateScript(request *UpdateScriptRequest) (_result *Updat
 
 // Summary:
 //
-// 创建或更新MQ配置
+// Creates or updates the Message Queue (MQ) configuration.
 //
 // @param tmpReq - UpdateSubscriptionRequest
 //
@@ -4722,7 +4802,7 @@ func (client *Client) UpdateSubscriptionWithOptions(tmpReq *UpdateSubscriptionRe
 
 // Summary:
 //
-// 创建或更新MQ配置
+// Creates or updates the Message Queue (MQ) configuration.
 //
 // @param request - UpdateSubscriptionRequest
 //
@@ -4740,7 +4820,7 @@ func (client *Client) UpdateSubscription(request *UpdateSubscriptionRequest) (_r
 
 // Summary:
 //
-// 更新变量
+// Updates a variable.
 //
 // @param request - UpdateVariableRequest
 //
@@ -4796,7 +4876,7 @@ func (client *Client) UpdateVariableWithOptions(request *UpdateVariableRequest, 
 
 // Summary:
 //
-// 更新变量
+// Updates a variable.
 //
 // @param request - UpdateVariableRequest
 //
@@ -4814,7 +4894,7 @@ func (client *Client) UpdateVariable(request *UpdateVariableRequest) (_result *U
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param tmpReq - UpdateVocabularyRequest
 //
@@ -4880,7 +4960,7 @@ func (client *Client) UpdateVocabularyWithOptions(tmpReq *UpdateVocabularyReques
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateVocabularyRequest
 //
@@ -4898,7 +4978,7 @@ func (client *Client) UpdateVocabulary(request *UpdateVocabularyRequest) (_resul
 
 // Summary:
 //
-// 更新实例
+// Updates a voice access profile.
 //
 // @param tmpReq - UpdateVoiceAccessProfileRequest
 //
@@ -4960,7 +5040,7 @@ func (client *Client) UpdateVoiceAccessProfileWithOptions(tmpReq *UpdateVoiceAcc
 
 // Summary:
 //
-// 更新实例
+// Updates a voice access profile.
 //
 // @param request - UpdateVoiceAccessProfileRequest
 //

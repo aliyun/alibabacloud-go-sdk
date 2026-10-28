@@ -22,17 +22,32 @@ type iUpdateVocabularyShrinkRequest interface {
 }
 
 type UpdateVocabularyShrinkRequest struct {
+	// The description.
+	//
+	// example:
+	//
+	// Contains professional terms for finance scenarios
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the hot word.
+	//
+	// example:
+	//
+	// Finance scenario hot words
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The hot word ID.
+	//
 	// example:
 	//
 	// d74d6290-7cbe-4436-b5d7-014ebb0f4061
 	VocabularyId *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
-	WordsShrink  *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	// The list of hot words.
+	WordsShrink *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s UpdateVocabularyShrinkRequest) String() string {

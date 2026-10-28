@@ -24,20 +24,30 @@ type iBridgeWebCallResponseBody interface {
 }
 
 type BridgeWebCallResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The call record.
 	Data *BridgeWebCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
@@ -116,19 +126,28 @@ func (s *BridgeWebCallResponseBody) Validate() error {
 }
 
 type BridgeWebCallResponseBodyData struct {
+	// The channel ID.
+	//
 	// example:
 	//
 	// 1515602866088888___5ec8446df1e2495a97969e887ab9e748
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The expiration time of the token.
+	//
 	// example:
 	//
 	// 1774794266093
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ServerUrl  *string `json:"ServerUrl,omitempty" xml:"ServerUrl,omitempty"`
+	// The server URL.
+	ServerUrl *string `json:"ServerUrl,omitempty" xml:"ServerUrl,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// f814f3ae-b2a7-44fb-883c-771221274673

@@ -22,22 +22,32 @@ type iListVoicesRequest interface {
 }
 
 type ListVoicesRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// e48e45dd-e47a-4744-a063-f08cbebb1c5a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The TTS access type.
+	//
 	// example:
 	//
 	// MANAGED
 	NlsAccessType *string `json:"NlsAccessType,omitempty" xml:"NlsAccessType,omitempty"`
+	// The TTS engine.
+	//
 	// example:
 	//
 	// BAILIAN
 	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

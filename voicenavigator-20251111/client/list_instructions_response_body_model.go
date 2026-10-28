@@ -24,20 +24,30 @@ type iListInstructionsResponseBody interface {
 }
 
 type ListInstructionsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned for the list of instructions.
 	Data *ListInstructionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The result message.
+	//
 	// example:
 	//
 	// Success
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of request parameters that are echoed in the response.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// e48e45dd-e47a-4744-a063-f08cbebb1c5a
@@ -116,15 +126,22 @@ func (s *ListInstructionsResponseBody) Validate() error {
 }
 
 type ListInstructionsResponseBodyData struct {
+	// The list of instructions.
 	Instructions []*ListInstructionsResponseBodyDataInstructions `json:"Instructions,omitempty" xml:"Instructions,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of instructions.
+	//
 	// example:
 	//
 	// 100
@@ -189,10 +206,36 @@ func (s *ListInstructionsResponseBodyData) Validate() error {
 }
 
 type ListInstructionsResponseBodyDataInstructions struct {
+	// The instruction code.
+	//
 	// example:
 	//
 	// Transfer00
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The instruction configuration, in a JSON string format.
+	//
+	// > - `providerId`: The ID of the call center provider. You can obtain this ID by calling the `ListCallCenterProviders` operation.
+	//
+	// >
+	//
+	// > - `transferMethod`: The transfer method. Valid values: `BYE`, `BRIDGE`, and `REFER`.
+	//
+	// >
+	//
+	// > - `transferType`: The transfer target type. Valid values: `External` (external number), `Agent` (agent), and `SkillGroup` (skill group).
+	//
+	// >
+	//
+	// > - `transferTarget`: The transfer target.
+	//
+	// >
+	//
+	// > - `transferor`: The caller ID. If not specified, the caller\\"s phone number is used.
+	//
+	// >
+	//
+	// > - `timeoutSeconds`: The transfer timeout, in seconds. The default value is 30.
+	//
 	// example:
 	//
 	// {
@@ -211,11 +254,20 @@ type ListInstructionsResponseBodyDataInstructions struct {
 	//
 	// }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The instruction name.
+	//
+	// example:
+	//
+	// 转人工指令一
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The instruction type.
+	//
 	// example:
 	//
 	// TRANSFER

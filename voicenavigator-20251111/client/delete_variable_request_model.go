@@ -16,10 +16,14 @@ type iDeleteVariableRequest interface {
 }
 
 type DeleteVariableRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// 0099b75d-60fd-4c63-8541-7fbba0ae6bb0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The variable ID.
+	//
 	// example:
 	//
 	// 0099b75d-60fd-4c63-8541-7fbba0ae6bb1

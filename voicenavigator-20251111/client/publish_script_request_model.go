@@ -18,14 +18,20 @@ type iPublishScriptRequest interface {
 }
 
 type PublishScriptRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// 19ac2375-53e3-477f-abe9-6cd334227981
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The scenario ID.
+	//
 	// example:
 	//
 	// 64241e64-190c-45d1-af66-06f51c07b090
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The version ID.
+	//
 	// example:
 	//
 	// 64241e64-190c-45d1-af66-06f51c07b091

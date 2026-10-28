@@ -22,16 +22,38 @@ type iCreateScriptRequest interface {
 }
 
 type CreateScriptRequest struct {
+	// The concurrency.
+	//
 	// example:
 	//
 	// 10
-	Concurrency *int32  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// First navigation instance
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// Navigation test instance
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The NLU engine. Valid values:
+	//
+	// - PROMPTS: Prompt mode.
+	//
+	// - FUNCTION: Function computing mode.
+	//
+	// - BEEBOT: Workflow mode.
+	//
 	// example:
 	//
 	// BEEBOT

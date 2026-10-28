@@ -20,18 +20,25 @@ type iUpdateVoiceAccessProfileShrinkRequest interface {
 }
 
 type UpdateVoiceAccessProfileShrinkRequest struct {
+	// The access profile ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The voice engine.
+	//
 	// example:
 	//
 	// VOLC
-	NlsEngine     *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The parameter configuration for the selected voice engine.
 	ProfileShrink *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 

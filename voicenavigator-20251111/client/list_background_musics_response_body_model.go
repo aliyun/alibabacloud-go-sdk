@@ -24,22 +24,32 @@ type iListBackgroundMusicsResponseBody interface {
 }
 
 type ListBackgroundMusicsResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated result of the background music list.
 	Data *ListBackgroundMusicsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7401D698-0AAC-5909-B68E-88C68805FFB8
@@ -118,15 +128,22 @@ func (s *ListBackgroundMusicsResponseBody) Validate() error {
 }
 
 type ListBackgroundMusicsResponseBodyData struct {
+	// The list of background music tracks.
 	BackgroundMusics []*ListBackgroundMusicsResponseBodyDataBackgroundMusics `json:"BackgroundMusics,omitempty" xml:"BackgroundMusics,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
@@ -196,7 +213,12 @@ type ListBackgroundMusicsResponseBodyDataBackgroundMusics struct {
 	// example:
 	//
 	// 3258b551-4847-45fa-bbd8-838d90b90080
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// Office ambiance
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

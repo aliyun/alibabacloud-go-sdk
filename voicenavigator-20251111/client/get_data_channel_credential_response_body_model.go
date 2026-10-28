@@ -24,20 +24,30 @@ type iGetDataChannelCredentialResponseBody interface {
 }
 
 type GetDataChannelCredentialResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data channel credential.
 	Data *GetDataChannelCredentialResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A8AED3C8-F57B-5D71-9A34-4A170287533F
@@ -116,30 +126,44 @@ func (s *GetDataChannelCredentialResponseBody) Validate() error {
 }
 
 type GetDataChannelCredentialResponseBodyData struct {
+	// The client ID.
+	//
 	// example:
 	//
 	// GID_rtc-datachannel@@@*******
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The device ID.
+	//
 	// example:
 	//
 	// d4c38420-****-43bc-b001-56bfc274****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The endpoint.
+	//
 	// example:
 	//
 	// mqtt.***.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The expiration time of the credential.
+	//
 	// example:
 	//
 	// 1774794266093
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The password.
+	//
 	// example:
 	//
 	// *********
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The topic for the data channel.
+	//
 	// example:
 	//
 	// datachannel-hz/****
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// Token|LTAI****|mqtt-***

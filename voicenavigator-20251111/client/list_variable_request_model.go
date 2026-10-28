@@ -20,18 +20,26 @@ type iListVariableRequest interface {
 }
 
 type ListVariableRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Performs a fuzzy search based on the variable name or display name.
+	//
 	// example:
 	//
 	// age

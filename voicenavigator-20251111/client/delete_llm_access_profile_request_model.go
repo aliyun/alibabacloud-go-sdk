@@ -16,10 +16,14 @@ type iDeleteLlmAccessProfileRequest interface {
 }
 
 type DeleteLlmAccessProfileRequest struct {
+	// The ID of the third-party model configuration.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a

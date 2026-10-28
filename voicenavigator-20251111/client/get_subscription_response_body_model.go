@@ -24,22 +24,32 @@ type iGetSubscriptionResponseBody interface {
 }
 
 type GetSubscriptionResponseBody struct {
+	// The request status. `OK` indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The subscription details.
 	Data *GetSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Dynamic parameters used in the error message.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7401D698-0AAC-5909-B68E-88C68805FFB8
@@ -118,39 +128,58 @@ func (s *GetSubscriptionResponseBody) Validate() error {
 }
 
 type GetSubscriptionResponseBodyData struct {
+	// Specifies whether the subscription is disabled.
+	//
 	// example:
 	//
 	// 0
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The message queue endpoint. This parameter is required if `MqType` is set to `ROCKET_MQ_4` or `ROCKET_MQ_5`. The example endpoint is for the China (Hangzhou) region.
+	//
 	// example:
 	//
 	// rmq-cn-l4p89zajz67.cn-hangzhou.rmq.aliyuncs.com:8080
-	Endpoint  *string                                     `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// A list of subscribed events.
 	EventList []*GetSubscriptionResponseBodyDataEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The RocketMQ instance ID. This parameter is required if `MqType` is set to `ROCKET_MQ_5`.
+	//
 	// example:
 	//
 	// rmq-cn-l4p89zajz67.cn
 	MqInstanceId *string `json:"MqInstanceId,omitempty" xml:"MqInstanceId,omitempty"`
+	// The message queue type.
+	//
 	// example:
 	//
 	// ROCKET_MQ_4
 	MqType *string `json:"MqType,omitempty" xml:"MqType,omitempty"`
+	// The password for authentication. This parameter is required if `MqType` is set to `ROCKET_MQ_5`.
+	//
 	// example:
 	//
 	// pwd
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The producer ID. This parameter is required if `MqType` is set to `ROCKET_MQ_4`.
+	//
 	// example:
 	//
 	// user1
 	ProducerId *string `json:"ProducerId,omitempty" xml:"ProducerId,omitempty"`
+	// The message queue topic. This parameter is required if `MqType` is set to `ROCKET_MQ_4` or `ROCKET_MQ_5`.
+	//
 	// example:
 	//
 	// test
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The username for authentication. This parameter is required if `MqType` is set to `ROCKET_MQ_5`.
+	//
 	// example:
 	//
 	// username
@@ -269,11 +298,20 @@ func (s *GetSubscriptionResponseBodyData) Validate() error {
 }
 
 type GetSubscriptionResponseBodyDataEventList struct {
+	// Specifies whether pushes for this event are disabled.
+	//
 	// example:
 	//
 	// false
-	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The event\\"s display name.
+	//
+	// example:
+	//
+	// 通话结束
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The event name.
+	//
 	// example:
 	//
 	// Released

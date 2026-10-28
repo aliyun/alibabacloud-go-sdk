@@ -16,10 +16,14 @@ type iDeleteCallCenterProviderRequest interface {
 }
 
 type DeleteCallCenterProviderRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the human service provider.
+	//
 	// example:
 	//
 	// xxxxxxxxx

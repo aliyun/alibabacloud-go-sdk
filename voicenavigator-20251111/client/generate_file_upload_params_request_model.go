@@ -18,14 +18,20 @@ type iGenerateFileUploadParamsRequest interface {
 }
 
 type GenerateFileUploadParamsRequest struct {
+	// The file type.
+	//
 	// example:
 	//
 	// CloneVoice
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// test.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a

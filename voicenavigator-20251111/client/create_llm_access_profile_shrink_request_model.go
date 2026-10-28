@@ -16,10 +16,13 @@ type iCreateLlmAccessProfileShrinkRequest interface {
 }
 
 type CreateLlmAccessProfileShrinkRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The parameter settings.
 	ProfileShrink *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 

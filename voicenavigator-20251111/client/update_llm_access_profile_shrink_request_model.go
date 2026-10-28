@@ -18,14 +18,19 @@ type iUpdateLlmAccessProfileShrinkRequest interface {
 }
 
 type UpdateLlmAccessProfileShrinkRequest struct {
+	// The ID of the third-party model configuration.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// d74d6290-7cbe-4436-b5d7-014ebb0f4060
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The parameter settings.
 	ProfileShrink *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 

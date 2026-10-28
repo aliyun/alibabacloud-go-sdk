@@ -24,22 +24,30 @@ type iGetInstanceTrendingReportResponseBody interface {
 }
 
 type GetInstanceTrendingReportResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The scenario ID.
 	Data []*GetInstanceTrendingReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -124,26 +132,38 @@ func (s *GetInstanceTrendingReportResponseBody) Validate() error {
 }
 
 type GetInstanceTrendingReportResponseBodyData struct {
+	// The number of answered sessions.
+	//
 	// example:
 	//
 	// 7
 	CallsHandled *int64 `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
+	// The number of incoming sessions.
+	//
 	// example:
 	//
 	// 10
 	CallsOffered *int64 `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	// The number of rejected sessions.
+	//
 	// example:
 	//
 	// 3
 	CallsRejected *int64 `json:"CallsRejected,omitempty" xml:"CallsRejected,omitempty"`
+	// The number of resolved sessions, based on the model evaluation results.
+	//
 	// example:
 	//
 	// 4
 	CallsResolved *int64 `json:"CallsResolved,omitempty" xml:"CallsResolved,omitempty"`
+	// The latest configured concurrency.
+	//
 	// example:
 	//
 	// 13
 	ConfiguredConcurrency *int64 `json:"ConfiguredConcurrency,omitempty" xml:"ConfiguredConcurrency,omitempty"`
+	// The distribution of labels.
+	//
 	// example:
 	//
 	// {
@@ -158,10 +178,14 @@ type GetInstanceTrendingReportResponseBodyData struct {
 	//
 	// }
 	LabelBreakdown *string `json:"LabelBreakdown,omitempty" xml:"LabelBreakdown,omitempty"`
+	// The maximum talk time, in milliseconds.
+	//
 	// example:
 	//
 	// 20
 	MaxTalkTime *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	// The distribution of rejection reasons.
+	//
 	// example:
 	//
 	// {
@@ -170,6 +194,8 @@ type GetInstanceTrendingReportResponseBodyData struct {
 	//
 	// }
 	RejectionBreakdown *string `json:"RejectionBreakdown,omitempty" xml:"RejectionBreakdown,omitempty"`
+	// The distribution of hang-up reasons after a session is connected.
+	//
 	// example:
 	//
 	// {
@@ -186,10 +212,14 @@ type GetInstanceTrendingReportResponseBodyData struct {
 	//
 	// }
 	ReleaseReasonBreakdown *string `json:"ReleaseReasonBreakdown,omitempty" xml:"ReleaseReasonBreakdown,omitempty"`
+	// The statistical time. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1774881208361
 	StatsTime *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+	// The distribution of dialog turns.
+	//
 	// example:
 	//
 	// {
@@ -200,22 +230,32 @@ type GetInstanceTrendingReportResponseBodyData struct {
 	//
 	// }
 	TalkTurnsDistribution *string `json:"TalkTurnsDistribution,omitempty" xml:"TalkTurnsDistribution,omitempty"`
+	// Reserved for future use.
+	//
 	// example:
 	//
 	// 0
 	TotalInputTokens *int64 `json:"TotalInputTokens,omitempty" xml:"TotalInputTokens,omitempty"`
+	// Reserved for future use.
+	//
 	// example:
 	//
 	// 0
 	TotalOutputTokens *int64 `json:"TotalOutputTokens,omitempty" xml:"TotalOutputTokens,omitempty"`
+	// The total talk time, in milliseconds.
+	//
 	// example:
 	//
 	// 100
 	TotalTalkTime *int64 `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	// Reserved for future use.
+	//
 	// example:
 	//
 	// 0
 	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+	// The maximum concurrency used.
+	//
 	// example:
 	//
 	// 10

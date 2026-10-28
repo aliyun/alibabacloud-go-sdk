@@ -24,22 +24,36 @@ type iExportVocabularyResponseBody interface {
 }
 
 type ExportVocabularyResponseBody struct {
+  // The internal error code. A value of `OK` indicates that the request was successful.
+  // 
   // example:
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // This parameter is reserved. You can ignore it.
+  // 
+  // example:
+  // 
+  // 请忽略
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // Instance af81a389-91f0-4157-8d82-720edd02b66a
   // 
   //  does not exist.
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // A list of dynamic error parameters.
   Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+  // The request ID.
+  // 
   // example:
   // 
   // 7401D698-0AAC-5909-B68E-88C68805FFB8

@@ -16,10 +16,14 @@ type iGetRecordingRequest interface {
 }
 
 type GetRecordingRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// 868eef14-7515-4856-8a50-5c9a22abdbcc
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 89ab28c2-eb94-4010-a539-f0eee922e371

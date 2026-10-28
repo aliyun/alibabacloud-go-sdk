@@ -24,21 +24,29 @@ type iGetCallDetailRecordResponseBody interface {
 }
 
 type GetCallDetailRecordResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The call detail record.
 	Data *GetCallDetailRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SUCCESS
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// Id of the request
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of parameters related to the error.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -118,60 +126,94 @@ func (s *GetCallDetailRecordResponseBody) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyData struct {
+	// The phone number of the callee.
+	//
 	// example:
 	//
 	// 15100000001
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// The phone number of the caller.
+	//
 	// example:
 	//
 	// 15929990193
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The disposition code for the call.
+	//
 	// example:
 	//
 	// Answered
 	DispositionCode *string `json:"DispositionCode,omitempty" xml:"DispositionCode,omitempty"`
+	// The reason for the call\\"s disposition.
+	//
 	// example:
 	//
 	// ConcurrentLimitExceeded
 	DispositionReason *string `json:"DispositionReason,omitempty" xml:"DispositionReason,omitempty"`
+	// The session duration, in seconds.
+	//
 	// example:
 	//
 	// 160
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 1752283603978
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether the user\\"s issue was resolved.
+	//
 	// example:
 	//
 	// false
 	IssueResolved *bool `json:"IssueResolved,omitempty" xml:"IssueResolved,omitempty"`
+	// The party that ended the call.
+	//
 	// example:
 	//
 	// Customer
-	ReleaseInitiator   *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	// The basis for the resolution judgment.
+	//
+	// example:
+	//
+	// unknown
 	ResolutionEvidence *string `json:"ResolutionEvidence,omitempty" xml:"ResolutionEvidence,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 07d72ea0-6e38-48d4-8371-14deaaba996f
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1774858849987
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The talk time, in seconds.
+	//
 	// example:
 	//
 	// 100
 	TalkTime *int32 `json:"TalkTime,omitempty" xml:"TalkTime,omitempty"`
+	// The number of conversation turns.
+	//
 	// example:
 	//
 	// 5
-	TalkTurns   *int32                                            `json:"TalkTurns,omitempty" xml:"TalkTurns,omitempty"`
+	TalkTurns *int32 `json:"TalkTurns,omitempty" xml:"TalkTurns,omitempty"`
+	// The conversation transcripts.
 	Transcripts []*GetCallDetailRecordResponseBodyDataTranscripts `json:"Transcripts,omitempty" xml:"Transcripts,omitempty" type:"Repeated"`
+	// The transfer target.
+	//
 	// example:
 	//
 	// default@testInstance1
 	TransferTarget *string `json:"TransferTarget,omitempty" xml:"TransferTarget,omitempty"`
+	// The transfer type.
+	//
 	// example:
 	//
 	// SkillGroup
@@ -344,56 +386,100 @@ func (s *GetCallDetailRecordResponseBodyData) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataTranscripts struct {
+	// The bot\\"s response. This parameter is valid when `Role` is `ASSISTANT`.
+	//
+	// example:
+	//
+	// 不好意思，
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// Indicates whether the user\\"s utterance is a backchannel (for example, "uh-huh" or "okay"). This parameter is valid when `Role` is `USER`.
+	//
 	// example:
 	//
 	// false
 	Backchannels *bool `json:"Backchannels,omitempty" xml:"Backchannels,omitempty"`
+	// The start timestamp of the turn, in milliseconds since the Unix epoch.
+	//
 	// example:
 	//
 	// 1748945414222
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// A list of control parameters. This parameter is valid when `Role` is `ASSISTANT`.
+	//
 	// example:
 	//
 	// [{"endSilenceTimeout":500,"interruptible":false,"silenceDetectionTimeout":5,"type":"Voice"}]
 	ControlParamsList *string `json:"ControlParamsList,omitempty" xml:"ControlParamsList,omitempty"`
+	// The end timestamp of the turn, in milliseconds since the Unix epoch.
+	//
 	// example:
 	//
 	// 1767315903531
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event timestamp, in milliseconds since the Unix epoch.
+	//
 	// example:
 	//
 	// 1774859592165
 	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// Additional input from the user other than speech. This parameter is valid when `Role` is `USER`.
+	//
 	// example:
 	//
 	// [{"dataType":"Silence"}]
 	Extras *string `json:"Extras,omitempty" xml:"Extras,omitempty"`
+	// Indicates whether the turn was interrupted.
+	//
 	// example:
 	//
 	// false
 	Interrupted *bool `json:"Interrupted,omitempty" xml:"Interrupted,omitempty"`
+	// Indicates whether the bot\\"s response is obsolete. This parameter is valid when `Role` is `ASSISTANT`.
+	//
 	// example:
 	//
 	// false
 	Legacy *bool `json:"Legacy,omitempty" xml:"Legacy,omitempty"`
 	// example:
 	//
+	// INTERRUPTED
+	PlaybackStatus *string `json:"PlaybackStatus,omitempty" xml:"PlaybackStatus,omitempty"`
+	// example:
+	//
+	// 好的
+	PlayedAnswer *string `json:"PlayedAnswer,omitempty" xml:"PlayedAnswer,omitempty"`
+	// The number of words played from the bot\\"s response. This parameter is valid when `Role` is `USER`.
+	//
+	// example:
+	//
 	// 10
 	PlayedWords *int32 `json:"PlayedWords,omitempty" xml:"PlayedWords,omitempty"`
+	// The role of the speaker.
+	//
 	// example:
 	//
 	// USER
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Indicates if this is the final part of a streamed response.
+	//
 	// example:
 	//
 	// true
 	StreamEnd *bool `json:"StreamEnd,omitempty" xml:"StreamEnd,omitempty"`
+	// The ID of the conversation turn.
+	//
 	// example:
 	//
 	// 1
-	StreamId  *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	StreamId *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	// The user\\"s utterance. This parameter is valid when `Role` is `USER`.
+	//
+	// example:
+	//
+	// 你要说你快点说不说，我挂了哈。
 	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	// Vendor-specific data sent from the client. This parameter is valid when `Role` is `USER`.
+	//
 	// example:
 	//
 	// {"test1":"1234"}
@@ -442,6 +528,14 @@ func (s *GetCallDetailRecordResponseBodyDataTranscripts) GetInterrupted() *bool 
 
 func (s *GetCallDetailRecordResponseBodyDataTranscripts) GetLegacy() *bool {
 	return s.Legacy
+}
+
+func (s *GetCallDetailRecordResponseBodyDataTranscripts) GetPlaybackStatus() *string {
+	return s.PlaybackStatus
+}
+
+func (s *GetCallDetailRecordResponseBodyDataTranscripts) GetPlayedAnswer() *string {
+	return s.PlayedAnswer
 }
 
 func (s *GetCallDetailRecordResponseBodyDataTranscripts) GetPlayedWords() *int32 {
@@ -510,6 +604,16 @@ func (s *GetCallDetailRecordResponseBodyDataTranscripts) SetInterrupted(v bool) 
 
 func (s *GetCallDetailRecordResponseBodyDataTranscripts) SetLegacy(v bool) *GetCallDetailRecordResponseBodyDataTranscripts {
 	s.Legacy = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataTranscripts) SetPlaybackStatus(v string) *GetCallDetailRecordResponseBodyDataTranscripts {
+	s.PlaybackStatus = &v
+	return s
+}
+
+func (s *GetCallDetailRecordResponseBodyDataTranscripts) SetPlayedAnswer(v string) *GetCallDetailRecordResponseBodyDataTranscripts {
+	s.PlayedAnswer = &v
 	return s
 }
 

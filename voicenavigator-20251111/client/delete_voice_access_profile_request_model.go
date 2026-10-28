@@ -16,10 +16,14 @@ type iDeleteVoiceAccessProfileRequest interface {
 }
 
 type DeleteVoiceAccessProfileRequest struct {
+	// The ID of the access profile.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a

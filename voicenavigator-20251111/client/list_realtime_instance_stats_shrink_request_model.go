@@ -18,11 +18,16 @@ type iListRealtimeInstanceStatsShrinkRequest interface {
 }
 
 type ListRealtimeInstanceStatsShrinkRequest struct {
+	// The IDs of the instances. You can specify 1 to 100 instance IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

@@ -24,22 +24,30 @@ type iListRealtimeInstanceStatsResponseBody interface {
 }
 
 type ListRealtimeInstanceStatsResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The call records.
 	Data *ListRealtimeInstanceStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -120,15 +128,22 @@ func (s *ListRealtimeInstanceStatsResponseBody) Validate() error {
 }
 
 type ListRealtimeInstanceStatsResponseBodyData struct {
+	// The list of real-time statistics for instances.
 	List []*ListRealtimeInstanceStatsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
@@ -193,18 +208,26 @@ func (s *ListRealtimeInstanceStatsResponseBodyData) Validate() error {
 }
 
 type ListRealtimeInstanceStatsResponseBodyDataList struct {
+	// The configured concurrency.
+	//
 	// example:
 	//
 	// 12
 	ConfiguredConcurrency *int64 `json:"ConfiguredConcurrency,omitempty" xml:"ConfiguredConcurrency,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 88b64330a8d34e63b60c9d272f8b3950
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time of the statistics.
+	//
 	// example:
 	//
 	// 1776837256000
 	StatsTime *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+	// The used concurrency.
+	//
 	// example:
 	//
 	// 10

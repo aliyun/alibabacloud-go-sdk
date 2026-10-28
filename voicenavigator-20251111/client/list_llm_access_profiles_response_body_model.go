@@ -24,22 +24,32 @@ type iListLlmAccessProfilesResponseBody interface {
 }
 
 type ListLlmAccessProfilesResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated list of third-party model configurations.
 	Data *ListLlmAccessProfilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of dynamic parameters associated with the error.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// A unique identifier for the request.
+	//
 	// example:
 	//
 	// ED56B723-5802-5C32-865F-6E20B06D2455
@@ -118,15 +128,22 @@ func (s *ListLlmAccessProfilesResponseBody) Validate() error {
 }
 
 type ListLlmAccessProfilesResponseBodyData struct {
+	// The list of third-party model configurations.
 	LlmAccessProfiles []*ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles `json:"LlmAccessProfiles,omitempty" xml:"LlmAccessProfiles,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -191,19 +208,28 @@ func (s *ListLlmAccessProfilesResponseBodyData) Validate() error {
 }
 
 type ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1747620752000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 8fe2b8b1cdd446318610ccbc70bcfff0
-	InstanceId *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Profile    *ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The parameter configuration.
+	Profile *ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1768788798
@@ -273,19 +299,32 @@ func (s *ListLlmAccessProfilesResponseBodyDataLlmAccessProfiles) Validate() erro
 }
 
 type ListLlmAccessProfilesResponseBodyDataLlmAccessProfilesProfile struct {
+	// The API key.
+	//
 	// example:
 	//
 	// akm-93929110-d7c1-4014-8678-613aacd58fa2
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The service endpoint.
+	//
 	// example:
 	//
 	// api.llm.enpoint.example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the configuration.
+	//
+	// example:
+	//
+	// 千问Omni
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The NLU access type.
+	//
 	// example:
 	//
 	// MANAGED
 	NluAccessType *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
+	// The NLU engine.
+	//
 	// example:
 	//
 	// BEEBOT

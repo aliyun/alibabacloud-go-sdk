@@ -24,22 +24,32 @@ type iListVoicesResponseBody interface {
 }
 
 type ListVoicesResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A paginated list of voices.
 	Data *ListVoicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of dynamic parameters related to the error.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9DB8BA95-4513-54B9-9C67-A28909CFB4AD
@@ -118,19 +128,26 @@ func (s *ListVoicesResponseBody) Validate() error {
 }
 
 type ListVoicesResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total count of voices.
+	//
 	// example:
 	//
 	// 100
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Voices     []*ListVoicesResponseBodyDataVoices `json:"Voices,omitempty" xml:"Voices,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of voices.
+	Voices []*ListVoicesResponseBodyDataVoices `json:"Voices,omitempty" xml:"Voices,omitempty" type:"Repeated"`
 }
 
 func (s ListVoicesResponseBodyData) String() string {
@@ -191,19 +208,46 @@ func (s *ListVoicesResponseBodyData) Validate() error {
 }
 
 type ListVoicesResponseBodyDataVoices struct {
+	// The category of the voice.
+	//
+	// example:
+	//
+	// 千问音色
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The language supported by the voice.
+	//
+	// example:
+	//
+	// 中文及中英文混合
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The TTS model.
+	//
 	// example:
 	//
 	// Qwen
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the voice.
+	//
+	// example:
+	//
+	// 芊悦
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The TTS engine.
+	//
 	// example:
 	//
 	// BAILIAN
-	NlsEngine       *string   `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
-	Style           *string   `json:"Style,omitempty" xml:"Style,omitempty"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The style of the voice.
+	//
+	// example:
+	//
+	// 女声
+	Style *string `json:"Style,omitempty" xml:"Style,omitempty"`
+	// A list of supported parameters.
 	SupportedParams []*string `json:"SupportedParams,omitempty" xml:"SupportedParams,omitempty" type:"Repeated"`
+	// The identifier for the voice.
+	//
 	// example:
 	//
 	// Cherry

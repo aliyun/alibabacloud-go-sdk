@@ -24,22 +24,32 @@ type iListScriptsResponseBody interface {
 }
 
 type ListScriptsResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated result of the scenario list.
 	Data *ListScriptsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance af81a389-91f0-4157-8d82-720edd02b66a
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BA092E9B-3421-5862-BC75-E646B7587531
@@ -118,15 +128,22 @@ func (s *ListScriptsResponseBody) Validate() error {
 }
 
 type ListScriptsResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Scripts  []*ListScriptsResponseBodyDataScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of scenarios.
+	Scripts []*ListScriptsResponseBodyDataScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
+	// The total count.
+	//
 	// example:
 	//
 	// 30
@@ -191,44 +208,74 @@ func (s *ListScriptsResponseBodyData) Validate() error {
 }
 
 type ListScriptsResponseBodyDataScripts struct {
+	// The concurrency.
+	//
 	// example:
 	//
 	// 10
 	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1773228988000
-	CreatedTime *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Used for testing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The draft version ID.
+	//
 	// example:
 	//
 	// efbafa38-336d-4eb0-865e-c16c97a91773
 	DraftVersionId *string `json:"DraftVersionId,omitempty" xml:"DraftVersionId,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scenario name.
+	//
+	// example:
+	//
+	// Navigation test scenario
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The NLU invocation method.
+	//
 	// example:
 	//
 	// MANAGED
 	NluAccessType *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
+	// The NLU engine.
+	//
 	// example:
 	//
 	// BEEBOT
 	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	// The number.
+	//
 	// example:
 	//
 	// 13816111993
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The published version ID.
+	//
 	// example:
 	//
 	// efbafa38-336d-4eb0-865e-c16c97a91774
 	PublishedVersionId *string `json:"PublishedVersionId,omitempty" xml:"PublishedVersionId,omitempty"`
+	// The scenario ID.
+	//
 	// example:
 	//
 	// efbafa38-336d-4eb0-865e-c16c97a91772
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// DRAFT
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1773228988000

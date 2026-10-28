@@ -46,61 +46,94 @@ type iListCallDetailRecordsRequest interface {
 }
 
 type ListCallDetailRecordsRequest struct {
+	// The channel ID.
+	//
 	// example:
 	//
 	// 33606503-c22c-4547-a51c-dda5e8d87962
 	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// The channel type.
+	//
 	// example:
 	//
 	// PSTN
 	AccessChannelType *string `json:"AccessChannelType,omitempty" xml:"AccessChannelType,omitempty"`
+	// The callee\\"s number.
+	//
 	// example:
 	//
 	// 18104560087
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// The caller\\"s number.
+	//
 	// example:
 	//
 	// 09876543210,
-	Caller             *string   `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	DispositionCodes   []*string `json:"DispositionCodes,omitempty" xml:"DispositionCodes,omitempty" type:"Repeated"`
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The disposition codes.
+	DispositionCodes []*string `json:"DispositionCodes,omitempty" xml:"DispositionCodes,omitempty" type:"Repeated"`
+	// The disposition reasons.
 	DispositionReasons []*string `json:"DispositionReasons,omitempty" xml:"DispositionReasons,omitempty" type:"Repeated"`
+	// Specifies whether to query a draft.
+	//
 	// example:
 	//
 	// false
 	DraftVersion *bool `json:"DraftVersion,omitempty" xml:"DraftVersion,omitempty"`
+	// The end of the time range to query. This value is a Unix timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1582103299434
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the issue was resolved.
+	//
 	// example:
 	//
 	// false
 	IssueResolved *bool `json:"IssueResolved,omitempty" xml:"IssueResolved,omitempty"`
+	// The maximum number of conversational turns.
+	//
 	// example:
 	//
 	// 10
 	MaxTalkTurns *int32 `json:"MaxTalkTurns,omitempty" xml:"MaxTalkTurns,omitempty"`
+	// The minimum number of conversational turns.
+	//
 	// example:
 	//
 	// 1
 	MinTalkTurns *int32 `json:"MinTalkTurns,omitempty" xml:"MinTalkTurns,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The script ID.
+	//
 	// example:
 	//
 	// 64241e64-190c-45d1-af66-06f51c07b090
-	ScriptId   *string   `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The session IDs.
+	//
+	// > The value is a JSON array of strings. Example: `["session-id-1","session-id-2"]`.
 	SessionIds []*string `json:"SessionIds,omitempty" xml:"SessionIds,omitempty" type:"Repeated"`
+	// The beginning of the time range to query. This value is a Unix timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1774858849987

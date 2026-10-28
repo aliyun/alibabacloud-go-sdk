@@ -20,18 +20,28 @@ type iBeginSessionRequest interface {
 }
 
 type BeginSessionRequest struct {
+	// Specifies whether the draft version is used.
+	//
 	// example:
 	//
 	// false
 	DraftVersion *bool `json:"DraftVersion,omitempty" xml:"DraftVersion,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 36e9a4cd-a821-4f78-86fa-a9a4aefeea2e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The scenario ID.
+	//
 	// example:
 	//
 	// 0a88e269-01f5-49ac-97af-5830f0ccb271
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// The vendor parameters.
+	//
+	// >JSON format: {"key1":"value1"}
+	//
 	// example:
 	//
 	// {"key1":"value1"}
