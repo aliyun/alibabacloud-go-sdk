@@ -37,10 +37,25 @@ type SwitchGdnMemberRoleRequest struct {
 	// example:
 	//
 	// pxc-********
-	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The endpoint of the primary node of the target instance.
+	//
+	// example:
+	//
+	// pxc-*********.polarx.rds.aliyuncs.com
 	DstMainConnectString *string `json:"DstMainConnectString,omitempty" xml:"DstMainConnectString,omitempty"`
-	DstMainPort          *string `json:"DstMainPort,omitempty" xml:"DstMainPort,omitempty"`
-	IsModifyEndpoint     *string `json:"IsModifyEndpoint,omitempty" xml:"IsModifyEndpoint,omitempty"`
+	// The port number of the primary node of the target instance.
+	//
+	// example:
+	//
+	// 3313
+	DstMainPort *string `json:"DstMainPort,omitempty" xml:"DstMainPort,omitempty"`
+	// Specifies whether the endpoint and port of the source or target instance is simultaneously modified.
+	//
+	// example:
+	//
+	// true
+	IsModifyEndpoint *string `json:"IsModifyEndpoint,omitempty" xml:"IsModifyEndpoint,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -48,20 +63,30 @@ type SwitchGdnMemberRoleRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The endpoint of the primary node of the source instance.
+	//
+	// example:
+	//
+	// rm-*********.mysql.rds.aliyuncs.com
 	SrcMainConnectString *string `json:"SrcMainConnectString,omitempty" xml:"SrcMainConnectString,omitempty"`
-	SrcMainPort          *string `json:"SrcMainPort,omitempty" xml:"SrcMainPort,omitempty"`
+	// The port number of the primary node of the source instance.
+	//
+	// example:
+	//
+	// 3308
+	SrcMainPort *string `json:"SrcMainPort,omitempty" xml:"SrcMainPort,omitempty"`
 	// The switchover mode.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Regular switchover: switch_over
+	// Normal switchover: switch_over
 	//
 	// Forced switchover: fail_over
 	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
-	// The timeout period of the switchover task. Unit: seconds.
+	// The timeout period for the switchover task, in seconds.
 	//
 	// example:
 	//

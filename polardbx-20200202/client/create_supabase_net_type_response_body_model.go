@@ -18,7 +18,7 @@ type iCreateSupabaseNetTypeResponseBody interface {
 }
 
 type CreateSupabaseNetTypeResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *CreateSupabaseNetTypeResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The operation result.
 	Data *CreateSupabaseNetTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -86,31 +86,31 @@ type CreateSupabaseNetTypeResponseBodyAccessDeniedDetail struct {
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The security principal name.
 	//
 	// example:
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authentication principal.
+	// The owner ID of the security principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the authentication principal.
+	// The security principal type.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The encoded diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The no permission type.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *CreateSupabaseNetTypeResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type CreateSupabaseNetTypeResponseBodyData struct {
-	// The public endpoint.
+	// The public network connection endpoint.
 	//
 	// example:
 	//

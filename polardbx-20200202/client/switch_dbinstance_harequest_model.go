@@ -24,13 +24,45 @@ type iSwitchDBInstanceHARequest interface {
 }
 
 type SwitchDBInstanceHARequest struct {
+	// The name of the PolarDB-X instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-htri0ori2r****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SwitchTime            *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	SwitchTimeMode        *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
-	TargetPrimaryAzoneId  *string `json:"TargetPrimaryAzoneId,omitempty" xml:"TargetPrimaryAzoneId,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The specified switchover time. This parameter is required when SwitchTimeMode is set to 2. The time must be in UTC and in the YYYY-MM-DDThh:mm:ssZ format.
+	//
+	// example:
+	//
+	// 2018-02-05T09:12:00Z
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The switchover mode. Valid values: 0: Immediate switchover. 1: Switchover during the O&M window. 2: Switchover at a specified time.
+	//
+	// example:
+	//
+	// 0
+	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
+	// The zone ID of the primary node after the switchover.
+	//
+	// example:
+	//
+	// cn-hangzhou-d
+	TargetPrimaryAzoneId *string `json:"TargetPrimaryAzoneId,omitempty" xml:"TargetPrimaryAzoneId,omitempty"`
+	// The region ID of the primary node after the switchover.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	TargetPrimaryRegionId *string `json:"TargetPrimaryRegionId,omitempty" xml:"TargetPrimaryRegionId,omitempty"`
 }
 

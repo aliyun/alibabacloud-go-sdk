@@ -36,13 +36,13 @@ type iDescribeActiveOperationTasksRequest interface {
 }
 
 type DescribeActiveOperationTasksRequest struct {
-	// Specifies whether cancellation is allowed. Valid values:
+	// Specifies whether the event can be canceled. Valid values:
 	//
-	// - **-1**: allows cancellation of all O&M events.
+	// - **-1**: All O&M events can be canceled.
 	//
-	// - **0**: not allowed.
+	// - **0**: The event cannot be canceled.
 	//
-	// - **1**: allowed.
+	// - **1**: The event can be canceled.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type DescribeActiveOperationTasksRequest struct {
 	AllowCancel *int64 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
 	// Specifies whether the time can be modified. Valid values:
 	//
-	// - **-1**: allows modification of the time for all O&M events.
+	// - **-1**: The time of all O&M events can be modified.
 	//
-	// - **0**: not allowed.
+	// - **0**: The time cannot be modified.
 	//
-	// - **1**: allowed.
+	// - **1**: The time can be modified.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ type DescribeActiveOperationTasksRequest struct {
 	AllowChange *int64 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
 	// The change level. Default value: all. Valid values:
 	//
-	// - **all**: all levels of exception repair and system O&M.
+	// - **all**: all exception fix and system O&M levels
 	//
-	// - **S0**: exception repair.
+	// - **S0**: exception fix
 	//
-	// - **S1**: system O&M.
+	// - **S1**: system O&M
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// polarx
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The instance name. Default value: empty string.
+	// The instance name. Default value: an empty string.
 	//
 	// example:
 	//
@@ -118,17 +118,17 @@ type DescribeActiveOperationTasksRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **-1**: all pending and running tasks.
+	// - **-1**: all pending and running tasks
 	//
-	// - **3**: pending.
+	// - **3**: pending
 	//
-	// - **4**: running.
+	// - **4**: running
 	//
 	// example:
 	//
 	// -1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task type. A value of all indicates that all tasks of the user are queried. Set the value to all.
+	// The task type. Set the value to all to query all tasks under the current account.
 	//
 	// example:
 	//

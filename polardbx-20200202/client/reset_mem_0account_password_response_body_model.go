@@ -18,6 +18,7 @@ type iResetMem0AccountPasswordResponseBody interface {
 }
 
 type ResetMem0AccountPasswordResponseBody struct {
+	// The details of the access denial.
 	AccessDeniedDetail *ResetMem0AccountPasswordResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The data struct.
 	Data *ResetMem0AccountPasswordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -79,13 +80,48 @@ func (s *ResetMem0AccountPasswordResponseBody) Validate() error {
 }
 
 type ResetMem0AccountPasswordResponseBodyAccessDeniedDetail struct {
-	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The authentication action.
+	//
+	// example:
+	//
+	// polardbx:ResetMem0AccountPassword
+	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The display name of the security principal.
+	//
+	// example:
+	//
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The owner ID of the security principal.
+	//
+	// example:
+	//
+	// 111
+	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The type of the security principal, such as RAM user SubUser or RAM role AssumedRoleUser.
+	//
+	// example:
+	//
+	// SubUser
+	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The diagnostic message.
+	//
+	// example:
+	//
+	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The type of the missing permission.
+	//
+	// example:
+	//
+	// ImplicitDeny
+	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
+	// example:
+	//
+	// PRIORITY
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ResetMem0AccountPasswordResponseBodyAccessDeniedDetail) String() string {

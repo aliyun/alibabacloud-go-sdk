@@ -16,9 +16,13 @@ type iDescribeArchiveTableListResponseBody interface {
 }
 
 type DescribeArchiveTableListResponseBody struct {
-	// The returned data.
+	// The data.
 	Data *DescribeArchiveTableListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// 1A6D328C-84B8-40DC-BF49-6C73984D7494
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -58,16 +62,49 @@ func (s *DescribeArchiveTableListResponseBody) Validate() error {
 }
 
 type DescribeArchiveTableListResponseBodyData struct {
-	// The page index.
+	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// The number of entries per page.
-	PageSize          *int64                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PausedCount       *int32                                            `json:"PausedCount,omitempty" xml:"PausedCount,omitempty"`
-	RunningCount      *int32                                            `json:"RunningCount,omitempty" xml:"RunningCount,omitempty"`
-	SuccessCount      *int32                                            `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	Tables            []*DescribeArchiveTableListResponseBodyDataTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	TobeArchivedConut *int32                                            `json:"TobeArchivedConut,omitempty" xml:"TobeArchivedConut,omitempty"`
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of tables in the PAUSE state.
+	//
+	// example:
+	//
+	// 0
+	PausedCount *int32 `json:"PausedCount,omitempty" xml:"PausedCount,omitempty"`
+	// The number of tables being archived.
+	//
+	// example:
+	//
+	// 0
+	RunningCount *int32 `json:"RunningCount,omitempty" xml:"RunningCount,omitempty"`
+	// The number of successfully archived tables.
+	//
+	// example:
+	//
+	// 0
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The list of archived tables.
+	Tables []*DescribeArchiveTableListResponseBodyDataTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The number of tables to be archived.
+	//
+	// example:
+	//
+	// 0
+	TobeArchivedConut *int32 `json:"TobeArchivedConut,omitempty" xml:"TobeArchivedConut,omitempty"`
 	// The total number of entries.
+	//
+	// example:
+	//
+	// 0
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -165,17 +202,39 @@ func (s *DescribeArchiveTableListResponseBodyData) Validate() error {
 }
 
 type DescribeArchiveTableListResponseBodyDataTables struct {
+	// The archiving status. Valid values: SUCCESS, PAUSE, and RUNNING.
+	//
+	// example:
+	//
+	// SUCCESS
 	ArchiveStatus *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
-	// The creation time.
+	// The time when the table was created.
 	CreatedDate *int64 `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The number of files.
-	FileCount              *int32 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	FileCount *int32 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	// The time of the last successful archiving.
 	LastSuccessArchiveTime *int64 `json:"LastSuccessArchiveTime,omitempty" xml:"LastSuccessArchiveTime,omitempty"`
-	// The database name.
+	// The name of the database.
+	//
+	// example:
+	//
+	// test
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The space size occupied by the table.
+	// The amount of storage space used.
+	//
+	// example:
+	//
+	// 0
 	SpaceSize *float64 `json:"SpaceSize,omitempty" xml:"SpaceSize,omitempty"`
-	// The table name.
+	// The name of the table.
+	//
+	// example:
+	//
+	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 

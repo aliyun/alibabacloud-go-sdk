@@ -18,7 +18,7 @@ type iCreatePolardbxSupabaseInstanceResponseBody interface {
 }
 
 type CreatePolardbxSupabaseInstanceResponseBody struct {
-	// The details of the access denial.
+	// The access denied details.
 	AccessDeniedDetail *CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The creation result.
 	Data *CreatePolardbxSupabaseInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -98,7 +98,7 @@ type CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authentication principal type.
+	// The type of the authentication principal.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The no permission type.
 	//
 	// example:
 	//

@@ -30,6 +30,11 @@ type iUpdatePolarDBXInstanceNodeRequest interface {
 }
 
 type UpdatePolarDBXInstanceNodeRequest struct {
+	// The node specifications of the storage nodes to add.
+	//
+	// example:
+	//
+	// mysql.n4.medium.25
 	AddDNSpec *string `json:"AddDNSpec,omitempty" xml:"AddDNSpec,omitempty"`
 	// The number of compute nodes.
 	//
@@ -37,13 +42,13 @@ type UpdatePolarDBXInstanceNodeRequest struct {
 	//
 	// 2
 	CNNodeCount *int32 `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
-	// The client token, which is an arbitrary random string.
+	// The client token. It can be any random string.
 	//
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance name ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -62,8 +67,13 @@ type UpdatePolarDBXInstanceNodeRequest struct {
 	// example:
 	//
 	// 3
-	DbInstanceNodeCount *int32  `json:"DbInstanceNodeCount,omitempty" xml:"DbInstanceNodeCount,omitempty"`
-	DeleteDNIds         *string `json:"DeleteDNIds,omitempty" xml:"DeleteDNIds,omitempty"`
+	DbInstanceNodeCount *int32 `json:"DbInstanceNodeCount,omitempty" xml:"DbInstanceNodeCount,omitempty"`
+	// The IDs of the storage nodes to remove.
+	//
+	// example:
+	//
+	// pxc-xdb-s-pxcshr****rh7fn2654fc
+	DeleteDNIds *string `json:"DeleteDNIds,omitempty" xml:"DeleteDNIds,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -71,7 +81,12 @@ type UpdatePolarDBXInstanceNodeRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the storage pool.
+	//
+	// example:
+	//
+	// test
 	StoragePoolName *string `json:"StoragePoolName,omitempty" xml:"StoragePoolName,omitempty"`
 }
 

@@ -24,7 +24,7 @@ type iModifyParameterRequest interface {
 }
 
 type ModifyParameterRequest struct {
-	// The client request token. You can set this parameter to any unique string.
+	// The client token. It can be any unique string.
 	//
 	// example:
 	//
@@ -40,16 +40,23 @@ type ModifyParameterRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The parameter type. Valid values:
 	//
-	// - **compute**: compute layer parameter.
+	// - **compute**: compute layer parameters
 	//
-	// - **storage**: storage layer parameter.
+	// - **storage**: storage layer parameters
 	//
 	// example:
 	//
 	// compute
-	ParamLevel       *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	// The parameter template ID.
+	//
+	// > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates in the specified region, including the parameter template IDs.
+	//
+	// example:
+	//
+	// rpg-s1y1xy06****fqs7y
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// A JSON-formatted string. MapKey specifies the parameter name, and MapValue specifies the parameter value. The modifiable parameters are dynamically added or removed. Call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/196856.html) operation to query the available parameters. You can specify multiple parameters at a time.
+	// The parameters in JSON format. The key represents the parameter name, and the value represents the parameter value. Modifiable parameters are dynamically added or removed. Call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/196856.html) operation to obtain the list of modifiable parameters. You can specify multiple parameters at a time.
 	//
 	// example:
 	//

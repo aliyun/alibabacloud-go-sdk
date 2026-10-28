@@ -38,7 +38,7 @@ type CreateOpenSearchWhitelistGroupRequest struct {
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The list of allowed source IP addresses.
+	// The list of source IP addresses.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateOpenSearchWhitelistGroupRequest struct {
 	//
 	// 192.168.1.0/24
 	IPs *string `json:"IPs,omitempty" xml:"IPs,omitempty"`
-	// The ID of the region in which the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateOpenSearchWhitelistGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of the group ID.
+	// The description of the group.
 	//
 	// example:
 	//

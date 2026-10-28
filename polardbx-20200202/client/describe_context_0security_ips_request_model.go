@@ -24,7 +24,7 @@ type DescribeContext0SecurityIpsRequest struct {
 	//
 	// pxc-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region in which the instance resides.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//

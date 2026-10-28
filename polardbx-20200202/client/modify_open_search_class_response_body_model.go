@@ -80,25 +80,25 @@ func (s *ModifyOpenSearchClassResponseBody) Validate() error {
 }
 
 type ModifyOpenSearchClassResponseBodyAccessDeniedDetail struct {
-	// The authentication action.
+	// The authorization action.
 	//
 	// example:
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The display name of the authorization principal.
 	//
 	// example:
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authentication principal.
+	// The owner ID of the authorization principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The identity type used for authentication in the request. Valid values:
+	// The type of identity used for authorization in the request. Valid values:
 	//
 	// - SubUser: RAM user.
 	//
@@ -110,13 +110,13 @@ type ModifyOpenSearchClassResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encrypted complete diagnostic message.
+	// The encoded full diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of permission denial.
+	// The no permission type.
 	//
 	// example:
 	//

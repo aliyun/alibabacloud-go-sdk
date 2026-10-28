@@ -16,7 +16,7 @@ type iDeleteMem0Request interface {
 }
 
 type DeleteMem0Request struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//

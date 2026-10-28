@@ -22,7 +22,7 @@ type iModifyContext0SecurityIpsRequest interface {
 }
 
 type ModifyContext0SecurityIpsRequest struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type ModifyContext0SecurityIpsRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The modification mode of the whitelist. Valid values:
 	//
-	// - 0: overwrites the whitelist group.
+	// - 0: Overwrites the whitelist group.
 	//
-	// - 1: adds a whitelist group.
+	// - 1: Adds a whitelist group.
 	//
-	// - 2: deletes a whitelist group.
+	// - 2: Deletes a whitelist group.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ModifyContext0SecurityIpsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP addresses in the whitelist group. Separate multiple IP addresses with commas (,).
+	// The IP addresses in the whitelist. Separate multiple IP addresses with commas (,).
 	//
 	// This parameter is required.
 	//

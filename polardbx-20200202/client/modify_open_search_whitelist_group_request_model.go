@@ -38,7 +38,7 @@ type ModifyOpenSearchWhitelistGroupRequest struct {
 	//
 	// group_y6sqhtr6jyu52w4oublg3674du
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The list of source IP address restrictions.
+	// The list of source IP addresses.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ModifyOpenSearchWhitelistGroupRequest struct {
 	//
 	// 192.168.1.0/24
 	IPs *string `json:"IPs,omitempty" xml:"IPs,omitempty"`
-	// The region in which the instance resides.
+	// The region of the instance.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyOpenSearchWhitelistGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remarks.
+	// The remark.
 	//
 	// example:
 	//

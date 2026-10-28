@@ -32,7 +32,7 @@ type iDescribeTasksRequest interface {
 }
 
 type DescribeTasksRequest struct {
-	// The instance name.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeTasksRequest struct {
 	//
 	// pxc-hzjasd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end time of the task.
+	// The end time of the task. The format is YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type DescribeTasksRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start time of the task.
+	// The start time of the task. The format is YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//

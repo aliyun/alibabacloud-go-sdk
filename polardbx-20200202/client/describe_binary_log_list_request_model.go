@@ -34,22 +34,27 @@ type DescribeBinaryLogListRequest struct {
 	//
 	// pxc-hz1fds
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The end time of the query for the binary log list.
+	// The end time of the query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2021-11-09 10:27:46
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// pxc-hzrh51fze****pon-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The page number of the current binary log list. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of binary logs to return on each page. Default value: 30.
+	// The number of entries per page. Default value: 30.
 	//
 	// example:
 	//
@@ -63,7 +68,7 @@ type DescribeBinaryLogListRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of the query for the binary log list.
+	// The start time of the query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// This parameter is required.
 	//

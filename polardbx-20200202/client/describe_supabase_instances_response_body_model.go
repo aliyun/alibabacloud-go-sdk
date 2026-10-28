@@ -22,17 +22,17 @@ type iDescribeSupabaseInstancesResponseBody interface {
 }
 
 type DescribeSupabaseInstancesResponseBody struct {
-	// The details of the access denial.
+	// The access denied details.
 	AccessDeniedDetail *DescribeSupabaseInstancesResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The paginated result of the instance list.
+	// The paginated list of instances.
 	Data *DescribeSupabaseInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The maximum number of entries per page for a paged query. Maximum value: 100. Default value: If you do not specify this parameter or specify a value less than 10, the default value is 10. If you specify a value greater than 100, the default value is 100.
+	// The number of entries to return on each page in a paged query. Maximum value: 100. Default value: 10. If you do not specify the Settings or the Settings value is less than 10, the default value is 10. If the Settings value is greater than 100, the default value is 100. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type DescribeSupabaseInstancesResponseBodyAccessDeniedDetail struct {
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ type DescribeSupabaseInstancesResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAacnceTlBNjlFODgyLTlBMDUtNUUyRC04MzE5LUQwMzZDRjJFQTM3NA==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The access denial type.
 	//
 	// example:
 	//
@@ -314,7 +314,7 @@ func (s *DescribeSupabaseInstancesResponseBodyData) Validate() error {
 }
 
 type DescribeSupabaseInstancesResponseBodyDataInstances struct {
-	// The creation time.
+	// The time when the instance was created.
 	//
 	// example:
 	//
@@ -330,7 +330,7 @@ type DescribeSupabaseInstancesResponseBodyDataInstances struct {
 	//
 	// example:
 	//
-	// 我的 Supabase 项目
+	// My Supabase project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The region ID.
 	//
@@ -344,7 +344,7 @@ type DescribeSupabaseInstancesResponseBodyDataInstances struct {
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The Supabase specification code.
+	// The Supabase instance type code.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iUpdatePolarDBXInstanceNodeResponseBody interface {
 }
 
 type UpdatePolarDBXInstanceNodeResponseBody struct {
-	// The order ID generated when the number of instance nodes is changed.
+	// The ID of the order generated when the number of nodes for the instance is changed.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDescribeEventsRequest interface {
 }
 
 type DescribeEventsRequest struct {
-	// The end time.
+	// The end time. Specify the time in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeEventsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time.
+	// The start time. Specify the time in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//

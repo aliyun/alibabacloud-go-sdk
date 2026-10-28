@@ -18,7 +18,7 @@ type iModifyDBInstanceClassResponseBody interface {
 }
 
 type ModifyDBInstanceClassResponseBody struct {
-	// The order ID. An order is generated when you upgrade, downgrade, or change the instance specifications.
+	// The order ID. An order is generated when you upgrade or downgrade an instance, or change the instance specifications.
 	//
 	// example:
 	//
@@ -30,7 +30,12 @@ type ModifyDBInstanceClassResponseBody struct {
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the instance specification change task.
+	//
+	// example:
+	//
+	// 0
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyDBInstanceClassResponseBody) String() string {

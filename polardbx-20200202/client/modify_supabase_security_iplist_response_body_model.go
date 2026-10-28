@@ -18,7 +18,7 @@ type iModifySupabaseSecurityIPListResponseBody interface {
 }
 
 type ModifySupabaseSecurityIPListResponseBody struct {
-	// The details of the access denial.
+	// The details of the access denied error.
 	AccessDeniedDetail *ModifySupabaseSecurityIPListResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The operation result.
 	Data *ModifySupabaseSecurityIPListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -104,13 +104,13 @@ type ModifySupabaseSecurityIPListResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The type of the no permission error.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ func (s *ModifySupabaseSecurityIPListResponseBodyAccessDeniedDetail) Validate() 
 }
 
 type ModifySupabaseSecurityIPListResponseBodyData struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// pxsp-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The whitelist group name.
+	// The name of the whitelist group.
 	//
 	// example:
 	//

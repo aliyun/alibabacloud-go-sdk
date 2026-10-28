@@ -257,6 +257,12 @@ type DescribeContext0InfoResponseBodyDataInstance struct {
 	//
 	// pxc-spsil01pww4hfz-mem
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Service 当前已确认的小版本完整 tag，未知时为空。
+	//
+	// example:
+	//
+	// polardb-2.6.0_release_contextdb-20261023
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
 	// The number of nodes.
 	//
 	// example:
@@ -337,6 +343,10 @@ func (s *DescribeContext0InfoResponseBodyDataInstance) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeContext0InfoResponseBodyDataInstance) GetMinorVersion() *string {
+	return s.MinorVersion
+}
+
 func (s *DescribeContext0InfoResponseBodyDataInstance) GetNodeCount() *int32 {
 	return s.NodeCount
 }
@@ -395,6 +405,11 @@ func (s *DescribeContext0InfoResponseBodyDataInstance) SetDBInstanceName(v strin
 
 func (s *DescribeContext0InfoResponseBodyDataInstance) SetInstanceId(v string) *DescribeContext0InfoResponseBodyDataInstance {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeContext0InfoResponseBodyDataInstance) SetMinorVersion(v string) *DescribeContext0InfoResponseBodyDataInstance {
+	s.MinorVersion = &v
 	return s
 }
 

@@ -32,8 +32,13 @@ type iDescribeDBInstancesRequest interface {
 }
 
 type DescribeDBInstancesRequest struct {
+	// The database version.
+	//
+	// example:
+	//
+	// 5.5
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The description of the database.
+	// The description or remark of the database.
 	//
 	// example:
 	//
@@ -45,7 +50,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// dinga93c84f4d***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the instance must have a log engine.
+	// Specifies whether a log engine is required.
 	//
 	// example:
 	//
@@ -57,7 +62,13 @@ type DescribeDBInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Valid values:
+	// The number of entries per page. Valid values:
+	//
+	// - 30
+	//
+	// - 50
+	//
+	// - 100
 	//
 	// example:
 	//
@@ -71,13 +82,17 @@ type DescribeDBInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmyst47******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The instance edition. Valid values:
+	//
+	// - **enterprise**: Enterprise Edition
+	//
+	// - **standard**: Standard Edition
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type ResetMem0AccountPasswordRequest struct {
 	//
 	// pxc-hzravgpt8q****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The API key.
+	// apikey
 	//
 	// example:
 	//

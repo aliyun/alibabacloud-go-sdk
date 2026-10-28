@@ -22,11 +22,11 @@ type iExecuteMetaQueryResponseBody interface {
 }
 
 type ExecuteMetaQueryResponseBody struct {
-  // The details about the access denial.
+  // The detailed information about the access denial.
   AccessDeniedDetail *ExecuteMetaQueryResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
   // The list of instance details.
   Data *ExecuteMetaQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-  // The additional information returned by the operation. success is returned if the request is successful. Otherwise, an error code is returned.
+  // The additional message returned by the API operation. If the request is successful, success is returned. If an error occurs, the corresponding error code is returned.
   // 
   // example:
   // 
@@ -114,13 +114,13 @@ func (s *ExecuteMetaQueryResponseBody) Validate() error {
 }
 
 type ExecuteMetaQueryResponseBodyAccessDeniedDetail struct {
-  // The description is the same as above.
+  // Same as above.
   // 
   // example:
   // 
   // xxx
   AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-  // The description is the same as above.
+  // Same as above.
   // 
   // example:
   // 
@@ -204,12 +204,33 @@ func (s *ExecuteMetaQueryResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type ExecuteMetaQueryResponseBodyData struct {
+  // The actual top-level LIMIT offset applied to the SQL statement. If no offset is specified, the value is 0.
+  // 
+  // example:
+  // 
+  // 0
   AppliedOffset *int64 `json:"AppliedOffset,omitempty" xml:"AppliedOffset,omitempty"`
+  // The effective upper limit of returned rows for this request.
+  // 
+  // example:
+  // 
+  // 100
   AppliedRowLimit *int64 `json:"AppliedRowLimit,omitempty" xml:"AppliedRowLimit,omitempty"`
   // The column names.
   Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+  // Indicates whether the query result contains at least one more row beyond the effective row limit for this request.
   HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+  // The size in bytes of the Rows JSON array in the returned result after UTF-8 encoding, excluding protocol overhead.
+  // 
+  // example:
+  // 
+  // 2048
   RecordsSizeBytes *int64 `json:"RecordsSizeBytes,omitempty" xml:"RecordsSizeBytes,omitempty"`
+  // The actual number of result rows returned for this request.
+  // 
+  // example:
+  // 
+  // 100
   ReturnedRowCount *int64 `json:"ReturnedRowCount,omitempty" xml:"ReturnedRowCount,omitempty"`
   // The total number of data rows.
   // 
@@ -217,7 +238,7 @@ type ExecuteMetaQueryResponseBodyData struct {
   // 
   // 97901
   RowCount *int32 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-  // The number of affected or returned rows. This field is available only for compute nodes (CNs).
+  // The number of affected or returned rows. This field is available only for CN.
   Rows []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
 }
 

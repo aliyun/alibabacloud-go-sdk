@@ -64,7 +64,12 @@ func (s *DescribeParametersResponseBody) Validate() error {
 type DescribeParametersResponseBodyData struct {
 	// The list of original parameters.
 	ConfigParameters []*DescribeParametersResponseBodyDataConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Repeated"`
-	DBInstanceId     *string                                               `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// pxc-********
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The engine. Default value: polarx.
 	//
 	// example:

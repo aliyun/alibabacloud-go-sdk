@@ -18,9 +18,9 @@ type iCreateOpenSearchAccountResponseBody interface {
 }
 
 type CreateOpenSearchAccountResponseBody struct {
-	// The details of the access denial.
+	// The details of the access denied error.
 	AccessDeniedDetail *CreateOpenSearchAccountResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The details of the returned policy.
+	// The returned policy details.
 	Data *CreateOpenSearchAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -110,7 +110,7 @@ type CreateOpenSearchAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The no-permission type.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *CreateOpenSearchAccountResponseBodyAccessDeniedDetail) Validate() error
 }
 
 type CreateOpenSearchAccountResponseBodyData struct {
-	// The account name.
+	// The name of the account.
 	//
 	// example:
 	//

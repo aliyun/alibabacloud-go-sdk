@@ -123,7 +123,29 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// pxc-c-dmlgit****
 	CdcInstanceName *string `json:"CdcInstanceName,omitempty" xml:"CdcInstanceName,omitempty"`
-	// The CN node specifications.
+	// The CN node specifications. Valid values:
+	//
+	// - **polarx.x4.medium.2e**: 2 cores, 8 GB
+	//
+	// - **polarx.x4.large.2e**: 4 cores, 16 GB
+	//
+	// - **polarx.x8.large.2e**: 4 cores, 32 GB
+	//
+	// - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
+	//
+	// - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
+	//
+	// - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
+	//
+	// - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
+	//
+	// - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
+	//
+	// - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
+	//
+	// - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
+	//
+	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB
 	//
 	// example:
 	//
@@ -141,7 +163,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// xxxxxxxx
 	ColumnarInstanceName *string `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
-	// The column store read-only instance information.
+	// The information about the column store read-only instance.
 	ColumnarReadDBInstances []*string `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
 	// The commodity code.
 	//
@@ -149,13 +171,22 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// drds_polarxpre_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// Specifies whether the instance contains the multi-stream log service. Valid values:
+	// Indicates whether the multi-flow log service is included. Valid values:
+	//
+	// - **true**: yes
+	//
+	// - **false**: no
 	//
 	// example:
 	//
 	// true
-	ContainBinlogX *bool   `json:"ContainBinlogX,omitempty" xml:"ContainBinlogX,omitempty"`
-	CpuType        *string `json:"CpuType,omitempty" xml:"CpuType,omitempty"`
+	ContainBinlogX *bool `json:"ContainBinlogX,omitempty" xml:"ContainBinlogX,omitempty"`
+	// The CPU architecture.
+	//
+	// example:
+	//
+	// x86
+	CpuType *string `json:"CpuType,omitempty" xml:"CpuType,omitempty"`
 	// The creation time.
 	//
 	// example:
@@ -174,7 +205,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// polarx
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The database engine version.
+	// The database version.
 	//
 	// example:
 	//
@@ -186,7 +217,37 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The DN node specifications.
+	// The DN node specifications. Valid values:
+	//
+	// - **mysql.n2.medium.25**: 2 cores, 4 GB
+	//
+	// - **mysql.n4.medium.25**: 2 cores, 8 GB
+	//
+	// - **mysql.x8.medium.25**: 2 cores, 16 GB
+	//
+	// - **mysql.n2.large.25**: 4 cores, 8 GB
+	//
+	// - **mysql.n4.large.25**: 4 cores, 16 GB
+	//
+	// - **mysql.x8.large.25**: 4 cores, 32 GB
+	//
+	// - **mysql.n2.xlarge.25**: 8 cores, 16 GB
+	//
+	// - **mysql.n4.xlarge.25**: 8 cores, 32 GB
+	//
+	// - **mysql.x8.xlarge.25**: 8 cores, 64 GB
+	//
+	// - **mysql.n4.2xlarge.25**: 16 cores, 64 GB
+	//
+	// - **mysql.x8.2xlarge.25**: 16 cores, 128 GB
+	//
+	// - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
+	//
+	// - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
+	//
+	// - **mysql.st.8xlarge.25**: 60 cores, 470 GB
+	//
+	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB
 	//
 	// example:
 	//
@@ -203,7 +264,12 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	// example:
 	//
 	// polarx
-	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine version.
+	//
+	// example:
+	//
+	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The expiration time.
 	//
@@ -233,9 +299,9 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// example:
 	//
-	// Overdue
+	// Overdue payments
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The current Milvus version.
+	// The current kernel version.
 	//
 	// example:
 	//
@@ -263,10 +329,19 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	Nodes []*DescribeDBInstancesResponseBodyDBInstancesNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	// The billing method of the instance. Valid values:
 	//
+	// - **Postpaid**: pay-as-you-go
+	//
+	// - **Prepaid**: subscription
+	//
 	// example:
 	//
 	// Prepaid
-	PayType           *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The primary instance ID.
+	//
+	// example:
+	//
+	// pxc-hzrof9vitxxx
 	PrimaryInstanceId *string `json:"PrimaryInstanceId,omitempty" xml:"PrimaryInstanceId,omitempty"`
 	// The primary zone.
 	//
@@ -298,16 +373,25 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
 	// The instance edition. Valid values:
 	//
+	// - **enterprise**: Enterprise Edition
+	//
+	// - **standard**: Standard Edition
+	//
 	// example:
 	//
 	// enterprise
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
-	// The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/339826.html).
+	// The instance status. For more information, see the following section.
 	//
 	// example:
 	//
 	// Running
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage type.
+	//
+	// example:
+	//
+	// custom_local_ssd | cloud_auto
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The storage usage.
 	//
@@ -315,21 +399,29 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// 40658534400
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	// Indicates whether the instance supports multi-stream. Valid values:
+	// Indicates whether the current instance supports multi-stream. Valid values:
+	//
+	// - **true**: yes
+	//
+	// - **false**: no
 	//
 	// example:
 	//
 	// true
 	SupportBinlogX *bool `json:"SupportBinlogX,omitempty" xml:"SupportBinlogX,omitempty"`
-	// The set of tags.
+	// The tag set.
 	TagSet []*DescribeDBInstancesResponseBodyDBInstancesTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
-	// The tertiary active zone for three-zone deployment.
+	// The third active zone in a Three-zone deployment.
 	//
 	// example:
 	//
 	// cn-hangzhou-k
 	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
-	// The topology type.
+	// The topology type. Valid values:
+	//
+	// - **3azones**: Three-zone deployment (three active zones)
+	//
+	// - **1azone**: Single-zone deployment (single active zone)
 	//
 	// This parameter is required.
 	//
@@ -337,13 +429,17 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// 3azones
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	// The instance type.
+	// The instance type. Valid values:
+	//
+	// - **ReadWrite**: primary instance
+	//
+	// - **ReadOnly**: read-only instance
 	//
 	// example:
 	//
 	// ReadWrite
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -354,9 +450,19 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	// example:
 	//
 	// cn-hangzhou-g
-	ZoneId  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The GDN role.
+	//
+	// example:
+	//
+	// master | standby
 	GdnRole *string `json:"gdnRole,omitempty" xml:"gdnRole,omitempty"`
-	IsInGdn *bool   `json:"isInGdn,omitempty" xml:"isInGdn,omitempty"`
+	// Indicates whether the instance belongs to a global database network (GDN).
+	//
+	// example:
+	//
+	// false
+	IsInGdn *bool `json:"isInGdn,omitempty" xml:"isInGdn,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyDBInstances) String() string {
@@ -813,7 +919,7 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesNodes struct {
-	// The instance specifications.
+	// The instance type.
 	//
 	// example:
 	//
@@ -825,8 +931,14 @@ type DescribeDBInstancesResponseBodyDBInstancesNodes struct {
 	//
 	// pxi-zd89wrzqh******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The node name.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// pxc-bjryuycxlckxxxx-cn
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
 	//

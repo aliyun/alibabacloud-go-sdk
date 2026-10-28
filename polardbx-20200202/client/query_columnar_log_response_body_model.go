@@ -34,7 +34,7 @@ type iQueryColumnarLogResponseBody interface {
 type QueryColumnarLogResponseBody struct {
 	// The details about the access denial.
 	AccessDeniedDetail *QueryColumnarLogResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The top-level SQL LIMIT offset that the service actually applied. The value is 0 if no offset is specified in the SQL statement.
+	// The top-level SQL LIMIT offset that the service actually applied. The value is 0 if the SQL statement does not specify an offset.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type QueryColumnarLogResponseBody struct {
 	//
 	// False
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The elapsed time from the start of the JDBC statement execution to the completion of reading the last returned row or probe row. Unit: milliseconds.
+	// The elapsed time from the start of the JDBC statement execution to the completion of reading the last result row or probe row. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type QueryColumnarLogResponseBody struct {
 	//
 	// {\\"NodeId\\":\\"n_7844571364614995969\\"}
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	// The list of query results. Each row is a JSON key-value object that maps column names to text values. All scalar values are returned as strings. SQL NULL is encoded as the string null, and empty strings remain as empty strings.
+	// The list of query results. Each row is a JSON key-value object that maps column names to text values. All scalars are returned as strings. SQL NULL is encoded as the string null, and empty strings remain as empty strings.
 	Records []map[string]*string `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The total number of UTF-8 bytes of the JSON objects across all returned rows, excluding the array and fixed response fields. The complete JSON response of the synchronous API is also subject to a 16 MiB upper limit.
 	//
@@ -78,7 +78,7 @@ type QueryColumnarLogResponseBody struct {
 	//
 	// 9B2F3840-****-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of result rows actually returned in this synchronous response.
+	// The actual number of result rows returned in this synchronous response.
 	//
 	// example:
 	//
@@ -198,13 +198,13 @@ type QueryColumnarLogResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:QueryColumnarLog
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//

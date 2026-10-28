@@ -22,9 +22,9 @@ type iDescribeGdnInstancesResponseBody interface {
 type DescribeGdnInstancesResponseBody struct {
 	// The list of instance details.
 	Data *DescribeGdnInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The message returned for the request.
 	//
-	// > This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+	// > This parameter is empty if the request is successful. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeGdnInstancesResponseBody struct {
 	//
 	// 7B044BD1-6402-5DE9-9AED-63D15A994E37
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -184,37 +184,53 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The GDN instance name.
+	// The name of the GDN instance.
 	//
 	// example:
 	//
 	// gdn-***
 	GdnInstanceName *string `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
-	GdnMode         *string `json:"GdnMode,omitempty" xml:"GdnMode,omitempty"`
+	// The replication mode of the GDN. Valid values: gdn_mode_master_slave and gdn_mode_bidirectional.
+	//
+	// example:
+	//
+	// gdn_mode_master_slave
+	GdnMode *string `json:"GdnMode,omitempty" xml:"GdnMode,omitempty"`
 	// The creation time.
 	//
 	// example:
 	//
 	// 2025-01-02T13:11:10.000+0000
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The member list.
+	// The list of members.
 	MemberList []*DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
 	// The MySQL version supported by the instance.
 	//
 	// example:
 	//
 	// 5.7
-	MysqlVersion        *string `json:"MysqlVersion,omitempty" xml:"MysqlVersion,omitempty"`
+	MysqlVersion *string `json:"MysqlVersion,omitempty" xml:"MysqlVersion,omitempty"`
+	// The replication conflict handling strategy. Valid values: DIRECT_OVERWRITE, OVERWRITE, IGNORE, and INTERRUPT.
+	//
+	// example:
+	//
+	// OVERWRITE
 	RplConflictStrategy *string `json:"RplConflictStrategy,omitempty" xml:"RplConflictStrategy,omitempty"`
-	RplDmlStrategy      *string `json:"RplDmlStrategy,omitempty" xml:"RplDmlStrategy,omitempty"`
-	RplSyncDdl          *bool   `json:"RplSyncDdl,omitempty" xml:"RplSyncDdl,omitempty"`
+	// The DML replication policy. Valid values: MERGE, SERIAL, TRANSACTION, and SPLIT.
+	//
+	// example:
+	//
+	// SPLIT
+	RplDmlStrategy *string `json:"RplDmlStrategy,omitempty" xml:"RplDmlStrategy,omitempty"`
+	// Specifies whether to synchronously replicate DDL operations.
+	RplSyncDdl *bool `json:"RplSyncDdl,omitempty" xml:"RplSyncDdl,omitempty"`
 	// The status.
 	//
 	// example:
 	//
 	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The switchover history.
+	// The switchover logs.
 	//
 	// example:
 	//
@@ -343,13 +359,13 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) Validate() error {
 }
 
 type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
-	// The instance specifications.
+	// The instance type.
 	//
 	// example:
 	//
 	// polarx.x4.medium.2e
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The CN node specifications.
+	// The CN node specifications. Valid values:
 	//
 	// - **polarx.x4.medium.2e**: 2 cores, 8 GB
 	//
@@ -377,7 +393,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// polarx.x4.medium.2e
 	CnNodeClassCode *string `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
-	// The number of CN nodes.
+	// The number of compute nodes (CNs).
 	//
 	// example:
 	//
@@ -388,9 +404,10 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	// example:
 	//
 	// drds_polarxpre_public_cn
-	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The data synchronization status of the member.
 	DataSyncStatus *string `json:"DataSyncStatus,omitempty" xml:"DataSyncStatus,omitempty"`
-	// The DN node specifications.
+	// The DN node specifications. Valid values:
 	//
 	// - **mysql.n2.medium.25**: 2 cores, 4 GB
 	//
@@ -426,13 +443,13 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// mysql.n4.medium.25
 	DnNodeClassCode *string `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
-	// The number of DN nodes.
+	// The number of data nodes (DNs).
 	//
 	// example:
 	//
 	// 2
 	DnNodeCount *string `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
-	// The expiration time.
+	// The expiration time. The format is YYYY-MM-DDTHH:mm:ss.SSS±HHmm, which includes the time zone offset.
 	//
 	// example:
 	//
@@ -444,7 +461,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// 2025-01-02T13:11:10.000+0000
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The member name (PolarDB-X instance name).
+	// The name of the member, which is the name of the PolarDB-X instance.
 	//
 	// example:
 	//
@@ -452,9 +469,9 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: pay-as-you-go
 	//
-	// - **Prepaid**: subscription.
+	// - **Prepaid**: subscription
 	//
 	// example:
 	//
@@ -465,7 +482,8 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	// example:
 	//
 	// cn-zhangjiakou-a
-	PrimaryZone     *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// The read/write status of the member.
 	ReadWriteStatus *string `json:"ReadWriteStatus,omitempty" xml:"ReadWriteStatus,omitempty"`
 	// The region ID.
 	//
@@ -473,7 +491,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The member role.
+	// The role of the member.
 	//
 	// example:
 	//
@@ -487,33 +505,33 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// cn-zhangjiakou-a
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
-	// The data replication lag.
+	// The data synchronization latency.
 	//
 	// example:
 	//
 	// 1s
 	SecondsBehindMaster *string `json:"SecondsBehindMaster,omitempty" xml:"SecondsBehindMaster,omitempty"`
-	// The member status.
+	// The status of the member.
 	//
 	// example:
 	//
 	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The switchover task status.
+	// The status of the switchover task.
 	//
 	// example:
 	//
-	// prepared: Parameter initialization is complete.
+	// prepared: Parameter initialization completed
 	//
-	// set_old_primary_readonly: The original primary instance is set to read-only.
+	// set_old_primary_readonly: Write operations disabled on the original primary instance
 	//
-	// set_new_primary_read_write: The switchover is complete.
+	// set_new_primary_read_write: Switchover completed
 	//
-	// timeout: The task has timed out.
+	// timeout: Task timed out
 	//
-	// rollback: The task has been rolled back
+	// rollback: Rolled back
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The zone for three-zone deployment. This zone is active along with the primary and secondary zones.
+	// The third active zone in a three-zone deployment.
 	//
 	// example:
 	//

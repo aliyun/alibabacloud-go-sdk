@@ -64,7 +64,7 @@ type QueryColumnarLogSSEResponseBody struct {
 	//
 	// InternalError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned only when Type is EOF. Indicates whether the service or API row limit truncated the SQL submitted by the caller. A value of false when the SQL statement has a smaller LIMIT that was fully executed does not indicate that no more data exists in the underlying table.
+	// Returned only when Type is EOF. Indicates whether the service or API row limit truncated the SQL statement submitted by the caller. A value of false when the SQL statement completes with a smaller LIMIT does not indicate that no more data exists in the underlying table.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type QueryColumnarLogSSEResponseBody struct {
 	//
 	// Query execution failed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether at least one RECORD event was sent before the ERROR occurred. A value of true indicates that the results already received by the caller are incomplete and must not be treated as complete query results.
+	// Indicates whether at least one RECORD event was sent before the ERROR occurred. A value of true indicates that the results already received by the caller are incomplete and should not be treated as complete query results.
 	Partial *bool `json:"Partial,omitempty" xml:"Partial,omitempty"`
-	// Returned only when Type is EOF. The elapsed time from the start of JDBC statement execution to the completion of reading the last result row or probe row. Unit: milliseconds.
+	// Returned only when Type is EOF. The elapsed time in milliseconds from the start of JDBC statement execution to the completion of reading the last result row or probe row.
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type QueryColumnarLogSSEResponseBody struct {
 	//
 	// 5d3d88ea-3df0-4c2d-a8bb-2ec423b86b56
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	// Returned only when Type is RECORD. A batch of query results carried by this event. Each row is a JSON key-value object that maps column names to text values. SQL NULL values are encoded as the string null.
+	// Returned only when Type is RECORD. A batch of query results carried by this event. Each row is a JSON key-value object that maps column names to text values. SQL NULL is encoded as the string null.
 	Records []map[string]*string `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// Returned only when Type is EOF. The sum of UTF-8 bytes of the JSON objects for all returned rows. This value does not include arrays, SSE frames, or fixed response fields.
+	// Returned only when Type is EOF. The total UTF-8 byte size of all returned row JSON objects. This value does not include arrays, SSE frames, or fixed response fields.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type QueryColumnarLogSSEResponseBody struct {
 	//
 	// 1
 	Sequence *int64 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The SSE event type. RECORD indicates a batch of query results. EOF indicates that the query has completed. ERROR indicates that the query ended abnormally.
+	// The SSE event type. RECORD carries a batch of query results. EOF indicates that the query has completed. ERROR indicates that the query ended with an exception.
 	//
 	// example:
 	//
@@ -296,13 +296,13 @@ type QueryColumnarLogSSEResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:QueryColumnarLogSSE
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -328,7 +328,7 @@ type QueryColumnarLogSSEResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// NoPermissionType
+	// The type of the permission denial.
 	//
 	// example:
 	//

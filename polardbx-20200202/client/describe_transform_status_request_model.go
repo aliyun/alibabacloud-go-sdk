@@ -24,7 +24,7 @@ type DescribeTransformStatusRequest struct {
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The verification report.
+	// The check report.
 	//
 	// example:
 	//

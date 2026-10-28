@@ -25,13 +25,18 @@ type DescribeParameterTemplatesRequest struct {
 	// example:
 	//
 	// pxc-********
-	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The DPI engine version. Default value: 2.0.
+	//
+	// example:
+	//
+	// 2.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The parameter level. Valid values:
 	//
-	// - **compute**: compute layer.
+	// - **compute**: the compute layer.
 	//
-	// - **storage**: storage layer.
+	// - **storage**: the storage layer.
 	//
 	// example:
 	//

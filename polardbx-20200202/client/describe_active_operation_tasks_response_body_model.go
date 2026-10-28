@@ -22,7 +22,7 @@ type iDescribeActiveOperationTasksResponseBody interface {
 }
 
 type DescribeActiveOperationTasksResponseBody struct {
-	// The list of parameters.
+	// The list of items.
 	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -42,7 +42,7 @@ type DescribeActiveOperationTasksResponseBody struct {
 	//
 	// xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,27 +117,27 @@ func (s *DescribeActiveOperationTasksResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
-	// Indicates whether cancellation is allowed. Valid values:
+	// Indicates whether the event can be canceled. Valid values:
 	//
-	// - **0**: not allowed.
+	// - **0**: No.
 	//
-	// - **1**: allowed.
+	// - **1**: Yes.
 	//
 	// example:
 	//
 	// 0
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Indicates whether modification is allowed. Valid values:
+	// Indicates whether the time can be modified. Valid values:
 	//
-	// - **0**: not allowed.
+	// - **0**: No.
 	//
-	// - **1**: allowed.
+	// - **1**: Yes.
 	//
 	// example:
 	//
 	// 0
 	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The change level (can be ignored).
+	// The change level. This parameter can be ignored.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// 风险修复
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
-	// The creation time.
+	// The creation time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The impact (not output).
+	// The impact. This parameter is not returned.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// pxc-dd
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The modification time.
+	// The modification time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -239,13 +239,13 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// cn-shanghai-et15-b01
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The result information (can be ignored).
+	// The result information. This parameter can be ignored.
 	//
 	// example:
 	//
 	// --
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The start time.
+	// The start time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -253,9 +253,9 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status. Valid values:
 	//
-	// - **3**: pending.
+	// - **3**: pending
 	//
-	// - **4**: running.
+	// - **4**: running
 	//
 	// example:
 	//
@@ -263,7 +263,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of child instances.
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	// The switchover time.
+	// The switchover time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -275,13 +275,13 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// rds_apsaradb_transfer
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The task type in English (can be ignored).
+	// The task type in English. This parameter can be ignored.
 	//
 	// example:
 	//
 	// --
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
-	// The task type in Chinese (can be ignored).
+	// The task type in Chinese. This parameter can be ignored.
 	//
 	// example:
 	//

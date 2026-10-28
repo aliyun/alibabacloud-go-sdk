@@ -18,8 +18,9 @@ type iCreateMem0ResponseBody interface {
 }
 
 type CreateMem0ResponseBody struct {
+	// The detailed reasons for the access denial.
 	AccessDeniedDetail *CreateMem0ResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The data structure.
+	// The data struct.
 	Data *CreateMem0ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -79,13 +80,48 @@ func (s *CreateMem0ResponseBody) Validate() error {
 }
 
 type CreateMem0ResponseBodyAccessDeniedDetail struct {
-	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The authentication action.
+	//
+	// example:
+	//
+	// polardbx:CreateMem0
+	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The name of the authentication principal.
+	//
+	// example:
+	//
+	// Example RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The owner ID of the authentication principal.
+	//
+	// example:
+	//
+	// 111
+	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The type of the authentication principal, such as RAM user SubUser or RAM role AssumedRoleUser.
+	//
+	// example:
+	//
+	// SubUser
+	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The diagnostic message.
+	//
+	// example:
+	//
+	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The no-permission type.
+	//
+	// example:
+	//
+	// ImplicitDeny
+	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
+	// example:
+	//
+	// PRIORITY
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s CreateMem0ResponseBodyAccessDeniedDetail) String() string {

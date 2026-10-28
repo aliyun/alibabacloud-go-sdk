@@ -119,8 +119,11 @@ type UpdateBackupPolicyRequest struct {
 	// example:
 	//
 	// 30
-	CrossRegionDataBackupRetention *int32  `json:"CrossRegionDataBackupRetention,omitempty" xml:"CrossRegionDataBackupRetention,omitempty"`
-	CrossRegionFilterValue         *string `json:"CrossRegionFilterValue,omitempty" xml:"CrossRegionFilterValue,omitempty"`
+	CrossRegionDataBackupRetention *int32 `json:"CrossRegionDataBackupRetention,omitempty" xml:"CrossRegionDataBackupRetention,omitempty"`
+	// example:
+	//
+	// 3,7,1,5,6,2,4
+	CrossRegionFilterValue *string `json:"CrossRegionFilterValue,omitempty" xml:"CrossRegionFilterValue,omitempty"`
 	// The retention period of cross-region log backups. Unit: days.
 	//
 	// example:

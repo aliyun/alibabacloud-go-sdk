@@ -24,13 +24,13 @@ type iDescribeBinaryLogListResponseBody interface {
 type DescribeBinaryLogListResponseBody struct {
 	// The list of binary log files.
 	LogList []*DescribeBinaryLogListResponseBodyLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	// The page number of the current query.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of binary logs displayed on the current page.
+	// The number of binary logs returned on the current page.
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *DescribeBinaryLogListResponseBody) Validate() error {
 }
 
 type DescribeBinaryLogListResponseBodyLogList struct {
-	// The start time of the log.
+	// The start time of the log. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2021-09-09 10:27:46
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The creation time of the file.
+	// The creation time of the file. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2021-09-09 10:27:46
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The download link of the file. The link is valid for 2 days.
+	// The download URL of the file. The URL is valid for two days.
 	//
 	// example:
 	//
 	// http://polarx-cdc-binlog-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/polardbx_cdc/pxc-hzfd132143sfds1/binlog.000001?Expires=1636469502&OSSAccessKeyId=LT13fds12dsafddsf&Signature=fdpm%bdsfadsa%2F%bdsafdsaf%3D
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The end time of the current binary log.
+	// The end time of the binary log. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -147,29 +147,29 @@ type DescribeBinaryLogListResponseBodyLogList struct {
 	//
 	// binlog.000001
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The unique ID of the current record.
+	// The unique ID of the record.
 	//
 	// example:
 	//
 	// 100
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The size of the current log file.
+	// The size of the log file.
 	//
 	// example:
 	//
 	// 536870912
 	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The last modified time.
+	// The last update time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2021-11-09 10:27:46
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The purge status. Valid values:
+	// The cleanup status. Valid values:
 	//
-	// - 0: not deleted.
+	// - 0: Not deleted.
 	//
-	// - 1: deleted.
+	// - 1: Deleted.
 	//
 	// example:
 	//
@@ -183,11 +183,11 @@ type DescribeBinaryLogListResponseBodyLogList struct {
 	UploadHost *string `json:"UploadHost,omitempty" xml:"UploadHost,omitempty"`
 	// The backup status. Valid values:
 	//
-	// - 0: not backed up.
+	// - 0: Not backed up.
 	//
-	// - 1: being backed up.
+	// - 1: Being backed up.
 	//
-	// - 2: backed up.
+	// - 2: Backed up.
 	//
 	// example:
 	//

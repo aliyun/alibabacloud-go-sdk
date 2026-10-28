@@ -18,9 +18,9 @@ type iModifyDBInstanceVipResponseBody interface {
 }
 
 type ModifyDBInstanceVipResponseBody struct {
-	// The response message.
+	// The message returned for the request.
 	//
-	// > This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
+	// > This parameter is empty if the request is successful. If the request fails, an exception message such as an error code is returned.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ModifyDBInstanceVipResponseBody struct {
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

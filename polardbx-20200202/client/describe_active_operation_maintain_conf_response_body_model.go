@@ -20,7 +20,7 @@ type iDescribeActiveOperationMaintainConfResponseBody interface {
 type DescribeActiveOperationMaintainConfResponseBody struct {
 	// The configuration information.
 	Config *DescribeActiveOperationMaintainConfResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// Indicates whether the O&M window has been configured. Valid values:
+	// Specifies whether the settings are configured. Valid values:
 	//
 	// - 1: Configured.
 	//
@@ -83,7 +83,7 @@ func (s *DescribeActiveOperationMaintainConfResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationMaintainConfResponseBodyConfig struct {
-	// The creation time.
+	// The creation time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -101,19 +101,19 @@ type DescribeActiveOperationMaintainConfResponseBodyConfig struct {
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The O&M end time.
+	// The end time of the O&M window. The time is displayed in UTC in the HH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 04:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The O&M start time.
+	// The start time of the O&M window. The time is displayed in UTC in the HH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 04:00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The modification time.
+	// The update time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

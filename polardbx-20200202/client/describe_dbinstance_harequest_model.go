@@ -16,9 +16,21 @@ type iDescribeDBInstanceHARequest interface {
 }
 
 type DescribeDBInstanceHARequest struct {
+	// The name of the PolarDB-X instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-htri0ori2r****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

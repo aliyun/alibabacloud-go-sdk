@@ -18,7 +18,7 @@ type iCreateContext0ResponseBody interface {
 }
 
 type CreateContext0ResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *CreateContext0ResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The instance data.
 	Data *CreateContext0ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -86,7 +86,7 @@ type CreateContext0ResponseBodyAccessDeniedDetail struct {
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type CreateContext0ResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the authentication principal.
+	// The authentication principal type.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type CreateContext0ResponseBodyData struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the context service dashboard instance.
+	// The dashboard instance name of the context service.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type CreateContext0ResponseBodyData struct {
 	//
 	// pxs-*********
 	OpenSearchInstanceName *string `json:"OpenSearchInstanceName,omitempty" xml:"OpenSearchInstanceName,omitempty"`
-	// The name of the context service instance.
+	// The service instance name of the context service.
 	//
 	// example:
 	//

@@ -32,9 +32,7 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	//
 	// 1,2,3,4,5,6,7
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
-	// The cycle mode. Valid values:
-	//
-	// - Week: weekly.
+	// The cycle type. Valid value: Week.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +40,7 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The end time.
+	// The end time. Specify the time in the HH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +48,7 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	//
 	// 02:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time.
+	// The start time. Specify the time in the HH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +64,7 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to enable the configuration. Valid values:
+	// Specifies whether to enable the feature. Valid values:
 	//
 	// - **1**: Enabled.
 	//

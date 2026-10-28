@@ -20,10 +20,22 @@ type iDescribeDBInstanceHAResponseBody interface {
 }
 
 type DescribeDBInstanceHAResponseBody struct {
-	Data      *DescribeDBInstanceHAResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The high availability deployment information of the instance.
+	Data *DescribeDBInstanceHAResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
+	// example:
+	//
+	// successs
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1A6D328C-84B8-40DC-BF49-6C73984D7494
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDBInstanceHAResponseBody) String() string {
@@ -80,11 +92,36 @@ func (s *DescribeDBInstanceHAResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceHAResponseBodyData struct {
-	PrimaryAzoneId    *string `json:"PrimaryAzoneId,omitempty" xml:"PrimaryAzoneId,omitempty"`
-	PrimaryRegionId   *string `json:"PrimaryRegionId,omitempty" xml:"PrimaryRegionId,omitempty"`
-	SecondaryAzoneId  *string `json:"SecondaryAzoneId,omitempty" xml:"SecondaryAzoneId,omitempty"`
+	// The zone ID of the primary node.
+	//
+	// example:
+	//
+	// cn-hangzhou-d
+	PrimaryAzoneId *string `json:"PrimaryAzoneId,omitempty" xml:"PrimaryAzoneId,omitempty"`
+	// The region ID of the primary node.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	PrimaryRegionId *string `json:"PrimaryRegionId,omitempty" xml:"PrimaryRegionId,omitempty"`
+	// The zone ID of the secondary node.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
+	SecondaryAzoneId *string `json:"SecondaryAzoneId,omitempty" xml:"SecondaryAzoneId,omitempty"`
+	// The region ID of the secondary node.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	SecondaryRegionId *string `json:"SecondaryRegionId,omitempty" xml:"SecondaryRegionId,omitempty"`
-	TopologyType      *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	// The high availability topology type of the instance.
+	//
+	// example:
+	//
+	// 3azones
+	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
 }
 
 func (s DescribeDBInstanceHAResponseBodyData) String() string {

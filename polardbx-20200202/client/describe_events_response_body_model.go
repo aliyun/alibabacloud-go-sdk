@@ -129,7 +129,7 @@ type DescribeEventsResponseBodyEventItems struct {
 	//
 	// ModifySecurityIps
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The supplementary information.
+	// The additional information.
 	//
 	// example:
 	//
@@ -141,13 +141,13 @@ type DescribeEventsResponseBodyEventItems struct {
 	//
 	// FROM_USER
 	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
-	// The record time.
+	// The record time. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//
 	// 2021-10-15T06:39:49Z
 	EventRecordTime *string `json:"EventRecordTime,omitempty" xml:"EventRecordTime,omitempty"`
-	// The event time.
+	// The event time. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//

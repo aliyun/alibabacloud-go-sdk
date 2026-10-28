@@ -16,7 +16,7 @@ type iDescribeScaleOutMigrateTaskListResponseBody interface {
 }
 
 type DescribeScaleOutMigrateTaskListResponseBody struct {
-	// The migration task progress.
+	// The progress of the migration task.
 	//
 	// example:
 	//

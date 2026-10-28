@@ -18,7 +18,7 @@ type iModifyOpenSearchWhitelistGroupResponseBody interface {
 }
 
 type ModifyOpenSearchWhitelistGroupResponseBody struct {
-	// The details of the access denial.
+	// The details of the access denied error.
 	AccessDeniedDetail *ModifyOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The creation result.
 	Data *ModifyOpenSearchWhitelistGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -104,7 +104,7 @@ type ModifyOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type ModifyOpenSearchWhitelistGroupResponseBodyData struct {
 	//
 	// g-00mzurifez86htk8fn90
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The time when the task was last updated, in timestamp format.
+	// The time when the task was last updated, in the UNIX timestamp format.
 	//
 	// example:
 	//

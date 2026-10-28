@@ -32,9 +32,9 @@ type DescribeGdnInstancesRequest struct {
 	//
 	// polarx_id
 	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
-	// The filter value for querying resources.
+	// The filter value used when querying resources.
 	//
-	// Used together with FilterKey.
+	// This parameter is used in conjunction with FilterKey.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type DescribeGdnInstancesRequest struct {
 	//
 	// pxc-***
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	// GDN ID。
+	// The GDN ID.
 	//
 	// example:
 	//
 	// gdn-***
 	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
+	// The page number. Valid values: an integer greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//

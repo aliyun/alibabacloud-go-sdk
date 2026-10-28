@@ -98,7 +98,7 @@ type DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the authentication principal.
+	// The authentication principal type.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ func (s *DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail) Valida
 type DescribeSupabaseInstanceAttributeResponseBodyData struct {
 	// The list of endpoints.
 	ConnAddrs []*DescribeSupabaseInstanceAttributeResponseBodyDataConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
-	// The time when the instance was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type DescribeSupabaseInstanceAttributeResponseBodyData struct {
 	//
 	// example:
 	//
-	// polardb-2.4.0_5.4.19-20250116_xcluster5.4.20-20241213
+	// polardb-2.6.0_xcluster8.4.21-20260716_pxbaas-20260915
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
 	// The node specifications.
 	//

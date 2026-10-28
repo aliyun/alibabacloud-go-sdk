@@ -28,7 +28,7 @@ type CreateOpenSearchAccountRequest struct {
 	//
 	// account_sec
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the account. The password must be 6 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$&%^*()_+-=).
+	// The password of the account. The password must be 6 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$&%^*()_+-=).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateOpenSearchAccountRequest struct {
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region in which the instance resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

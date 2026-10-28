@@ -26,19 +26,56 @@ type iDescribeArchiveTableListRequest interface {
 }
 
 type DescribeArchiveTableListRequest struct {
+	// The name of the PolarDB-X instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-htri0ori2r****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The page number, starting from 1.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of tables to return on each page. Default value: 20.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The database name used to filter archived tables.
+	//
+	// example:
+	//
+	// testdb
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The archiving status used to filter tables. Valid values: SUCCESS, PAUSE, and RUNNING.
+	//
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The table name used to filter archived tables.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeArchiveTableListRequest) String() string {

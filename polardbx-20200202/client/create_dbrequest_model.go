@@ -34,7 +34,7 @@ type iCreateDBRequest interface {
 }
 
 type CreateDBRequest struct {
-	// The name of the account that is authorized to access the created database.
+	// The name of the account to be authorized for the new database.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CreateDBRequest struct {
 	//
 	// testaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The permissions granted to the account on the new database. Valid values:
+	// The permissions granted to the new account on the database. Valid values:
 	//
 	// - **ReadWrite**
 	//
@@ -56,7 +56,7 @@ type CreateDBRequest struct {
 	//
 	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The character set. The following character sets are supported:
+	// The character set. Valid values:
 	//
 	// - **utf8**
 	//
@@ -86,7 +86,7 @@ type CreateDBRequest struct {
 	//
 	// db for test
 	DbDescription *string `json:"DbDescription,omitempty" xml:"DbDescription,omitempty"`
-	// The name of the database to create.
+	// The name of the database to be created.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type CreateDBRequest struct {
 	//
 	// - **auto**: The database supports automatic partitioning. You do not need to specify a partition key when creating a table.
 	//
-	// - **drds**: The database does not support automatic partitioning. You must use dedicated table and database sharding syntax and specify sharding keys when creating a table.
+	// - **drds**: The database does not support automatic partitioning. You must use the dedicated database and table sharding syntax and specify the shard keys when creating a table.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type CreateDBRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the security administrator account.
 	//
-	// > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is optional.
+	// > This parameter is required if the three-role mode is enabled. If the three-role mode is not enabled, this parameter is optional.
 	//
 	// example:
 	//
@@ -122,13 +122,18 @@ type CreateDBRequest struct {
 	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
 	// The password of the security administrator account.
 	//
-	// > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is optional.
+	// > This parameter is required if the three-role mode is enabled. If the three-role mode is not enabled, this parameter is optional.
 	//
 	// example:
 	//
 	// securityPassword
 	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
-	StoragePoolName         *string `json:"StoragePoolName,omitempty" xml:"StoragePoolName,omitempty"`
+	// The name of the storage pool.
+	//
+	// example:
+	//
+	// test
+	StoragePoolName *string `json:"StoragePoolName,omitempty" xml:"StoragePoolName,omitempty"`
 }
 
 func (s CreateDBRequest) String() string {

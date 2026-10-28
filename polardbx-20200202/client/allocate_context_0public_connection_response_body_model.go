@@ -18,7 +18,7 @@ type iAllocateContext0PublicConnectionResponseBody interface {
 }
 
 type AllocateContext0PublicConnectionResponseBody struct {
-	// The details of the access denial.
+	// The detailed reasons for access denial.
 	AccessDeniedDetail *AllocateContext0PublicConnectionResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The task details.
 	Data *AllocateContext0PublicConnectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -80,7 +80,7 @@ func (s *AllocateContext0PublicConnectionResponseBody) Validate() error {
 }
 
 type AllocateContext0PublicConnectionResponseBodyAccessDeniedDetail struct {
-	// The description is the same as above.
+	// The action that is evaluated.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type AllocateContext0PublicConnectionResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The description is the same as above.
+	// The action that is evaluated.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ func (s *AllocateContext0PublicConnectionResponseBodyAccessDeniedDetail) Validat
 }
 
 type AllocateContext0PublicConnectionResponseBodyData struct {
-	// The endpoint.
+	// The connection string.
 	//
 	// example:
 	//
 	// test2.polarx.huhehaote.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The context service instance name.
+	// The name of the context service instance.
 	//
 	// example:
 	//
@@ -218,25 +218,25 @@ type AllocateContext0PublicConnectionResponseBodyData struct {
 	//
 	// pxsp-xxxxxxxxxx
 	DBInstanceId *int32 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The instance ID.
+	// The instance name.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The network type of the endpoint.
+	// The network type of the connection string.
 	//
 	// example:
 	//
 	// 1
 	DBInstanceNetType *int32 `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The target node type: service or dashboard.
+	// The target node type. Valid values: service and dashboard.
 	//
 	// example:
 	//
 	// service
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The port of the endpoint.
+	// The port number.
 	//
 	// example:
 	//
@@ -248,7 +248,7 @@ type AllocateContext0PublicConnectionResponseBodyData struct {
 	//
 	// 2209883
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The IP address of the Anti-DDoS Proxy instance protected by the policy.
+	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance protected by the policy.
 	//
 	// example:
 	//

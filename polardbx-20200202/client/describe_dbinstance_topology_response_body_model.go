@@ -16,7 +16,7 @@ type iDescribeDBInstanceTopologyResponseBody interface {
 }
 
 type DescribeDBInstanceTopologyResponseBody struct {
-	// The data struct.
+	// The data structure.
 	Data *DescribeDBInstanceTopologyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -99,7 +99,7 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology struct {
 	//
 	// lvs
 	DBInstanceConnType *string `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
-	// The instance creation time, in the format of yyyy-MM-dd HH:mm:ss.
+	// The time when the instance was created. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -147,17 +147,21 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology struct {
 	//
 	// polarx
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version. Default value: 2.0.
+	// The DPI engine version. Default value: 2.0.
 	//
 	// example:
 	//
 	// 2.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The historical node list.
+	// The list of historical nodes.
 	HistoryItems []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems `json:"HistoryItems,omitempty" xml:"HistoryItems,omitempty" type:"Repeated"`
-	// The node list.
+	// The list of nodes.
 	Items []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The lock status:
+	// The lock status. Valid values:
+	//
+	// - **0**: Unlocked.
+	//
+	// - **1**: Locked.
 	//
 	// example:
 	//
@@ -167,15 +171,15 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology struct {
 	//
 	// example:
 	//
-	// Overdue
+	// Overdue payment
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The O&M window end time, in the format of HH:mm:ss.
+	// The end time of the O&M window. The format is HH:mm:ss.
 	//
 	// example:
 	//
 	// 05:00:00
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The O&M window start time, in the format of HH:mm:ss.
+	// The start time of the O&M window. The format is HH:mm:ss.
 	//
 	// example:
 	//
@@ -358,19 +362,25 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology) Valida
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems struct {
-	// Indicates whether the node is activated. For the compute layer, only the primary zone node is activated. After a primary/secondary switchover is performed on the instance, the standby compute node becomes the primary node. All storage layer nodes are activated.
+	// Indicates whether the node is enabled. In the compute layer, only the nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary nodes in the compute layer are switched to primary nodes. All nodes in the storage layer are enabled.
 	//
 	// example:
 	//
 	// true
 	Activated *bool `json:"Activated,omitempty" xml:"Activated,omitempty"`
-	// The zone of the node. If the node is an RDS node, the zones of multiple child nodes are separated by semicolons (;).
+	// The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons (;).
 	//
 	// example:
 	//
 	// cn-hangzhou-a
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	// The node property. Valid values:
+	// The node attribute. Valid values:
+	//
+	// - **polarx_cn**: Compute node.
+	//
+	// - **polarx_store**: Data node.
+	//
+	// - **polarx_gms**: GMS node.
 	//
 	// example:
 	//
@@ -388,19 +398,23 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems
 	//
 	// pxc-sprcym7g7w****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The physical instance name.
+	// The name of the physical instance.
 	//
 	// example:
 	//
 	// pxc-unrbk8oyz**********
 	PhyInstanceName *string `json:"PhyInstanceName,omitempty" xml:"PhyInstanceName,omitempty"`
-	// The region of the node. If the node is an RDS node, the regions of multiple child nodes are separated by semicolons (;).
+	// The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons (;).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The node role. Valid values:
+	//
+	// - **master**: Primary node.
+	//
+	// - **standby**: Secondary node.
 	//
 	// example:
 	//
@@ -493,27 +507,33 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryI
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct {
-	// Indicates whether the node is activated. For the compute layer, only the primary zone node is activated. After a primary/secondary switchover is performed on the instance, the standby compute node becomes the primary node. All storage layer nodes are activated.
+	// Indicates whether the node is enabled. In the compute layer, only the nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary nodes in the compute layer are switched to primary nodes. All nodes in the storage layer are enabled.
 	//
 	// example:
 	//
 	// true
 	Activated *bool `json:"Activated,omitempty" xml:"Activated,omitempty"`
-	// The zone of the node. If the node is an RDS node, the zones of multiple child nodes are separated by semicolons (;).
+	// The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons (;).
 	//
 	// example:
 	//
 	// cn-hangzhou-a
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	// The data information list of the RDS three-node cluster.
+	// The list of data information for the three-node ApsaraDB RDS deployment.
 	AzoneRoleList []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList `json:"AzoneRoleList,omitempty" xml:"AzoneRoleList,omitempty" type:"Repeated"`
-	// The node property. Valid values:
+	// The node attribute. Valid values:
+	//
+	// - **polarx_cn**: Compute node.
+	//
+	// - **polarx_store**: Data node.
+	//
+	// - **polarx_gms**: GMS node.
 	//
 	// example:
 	//
 	// Node role
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	// The data struct.
+	// The data structure.
 	ConnectionIp []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnectionIp `json:"ConnectionIp,omitempty" xml:"ConnectionIp,omitempty" type:"Repeated"`
 	// The connection type.
 	//
@@ -521,7 +541,7 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	//
 	// Not displayed
 	DBInstanceConnType *int32 `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
-	// The instance creation time.
+	// The time when the instance was created.
 	//
 	// example:
 	//
@@ -563,21 +583,35 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	//
 	// 3145728
 	DiskSize *int64 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The engine version. Valid values:
+	// The DPI engine version. Valid values:
+	//
+	// - **mysql**
+	//
+	// - **polarx_cdc**
+	//
+	// - **polarx_dn**
 	//
 	// example:
 	//
 	// mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version. Default value: 2.0.
+	// The DPI engine version. Default value: 2.0.
 	//
 	// example:
 	//
 	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance CN cluster name, such as default.
+	// The name of the CN cluster for the instance, such as default.
+	//
+	// example:
+	//
+	// default
 	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
-	// Indicates whether the node is locked. Valid values:
+	// The lock status. Valid values:
+	//
+	// - **0**: Unlocked.
+	//
+	// - **1**: Locked.
 	//
 	// example:
 	//
@@ -589,13 +623,13 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	//
 	// Not displayed
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The O&M window end time.
+	// The end time of the O&M window.
 	//
 	// example:
 	//
 	// Not displayed
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The O&M window start time.
+	// The start time of the O&M window.
 	//
 	// example:
 	//
@@ -613,21 +647,47 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	//
 	// 7000
 	MaxIops *int32 `json:"MaxIops,omitempty" xml:"MaxIops,omitempty"`
-	// The node specifications:
+	// The node specifications. Valid values:
+	//
+	// - **polarx.x4.medium.2e**: 2 vCPUs and 8 GB of memory.
+	//
+	// - **polarx.x4.large.2e**: 4 vCPUs and 16 GB of memory.
+	//
+	// - **polarx.x8.large.2e**: 4 vCPUs and 32 GB of memory.
+	//
+	// - **polarx.x4.xlarge.2e**: 8 vCPUs and 32 GB of memory.
+	//
+	// - **polarx.x8.xlarge.2e**: 8 vCPUs and 64 GB of memory.
+	//
+	// - **polarx.x4.2xlarge.2e**: 16 vCPUs and 64 GB of memory.
+	//
+	// - **polarx.x8.2xlarge.2e**: 16 vCPUs and 128 GB of memory.
+	//
+	// - **polarx.x4.4xlarge.2e**: 32 vCPUs and 128 GB of memory.
+	//
+	// - **polarx.x8.4xlarge.2e**: 32 vCPUs and 256 GB of memory.
+	//
+	// - **polarx.st.8xlarge.2e**: 60 vCPUs and 470 GB of memory.
+	//
+	// - **polarx.st.12xlarge.2e**: 90 vCPUs and 720 GB of memory.
 	//
 	// example:
 	//
 	// polarx.x4.large.2e
 	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	// The physical instance name.
+	// The name of the physical instance.
 	//
 	// example:
 	//
 	// pxc-unrbk8oyz**********
 	PhyInstanceName *string `json:"PhyInstanceName,omitempty" xml:"PhyInstanceName,omitempty"`
 	// The read/write type, such as ReadWrite.
+	//
+	// example:
+	//
+	// ReadWrite
 	ReadType *string `json:"ReadType,omitempty" xml:"ReadType,omitempty"`
-	// The region of the node. If the node is an RDS node, the regions of multiple child nodes are separated by semicolons (;).
+	// The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons (;).
 	//
 	// example:
 	//
@@ -635,23 +695,41 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The node role. Valid values:
 	//
+	// - **master**: Primary node.
+	//
+	// - **standby**: Secondary node.
+	//
 	// example:
 	//
 	// master
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The node status:
+	// The node status. Valid values:
+	//
+	// - **0**: Running.
+	//
+	// - **1**: Creating.
+	//
+	// - **2**: Abnormal.
+	//
+	// - **3**: Expired.
+	//
+	// - **4**: Releasing.
+	//
+	// - **5**: Released.
+	//
+	// - **6**: Locked.
 	//
 	// example:
 	//
 	// 0
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage usage, in MB.
+	// The amount of used storage space. Unit: MB.
 	//
 	// example:
 	//
 	// 16681
 	StorageUsed *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	// The log node version.
+	// The version of the logger node.
 	//
 	// example:
 	//
@@ -960,13 +1038,19 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) V
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList struct {
-	// The zone of a node in the RDS three-node cluster.
+	// The zone to which a specific node in the three-node ApsaraDB RDS deployment belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou-a
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	// The role of a node in the RDS three-node cluster. Valid values:
+	// The role of a specific node in the three-node ApsaraDB RDS deployment. Valid values:
+	//
+	// - **leader**: Primary node.
+	//
+	// - **follower**: Secondary node.
+	//
+	// - **logger**: Logger node.
 	//
 	// example:
 	//

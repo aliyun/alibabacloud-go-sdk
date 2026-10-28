@@ -36,7 +36,7 @@ type AllocateMem0PublicConnectionRequest struct {
 	//
 	// pxc-spsil01pww4hfz
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The port number.
+	// The port.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type AllocateMem0PublicConnectionRequest struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//

@@ -19,6 +19,10 @@ type DescribeColdDataBasicInfoResponseBody struct {
 	// The details.
 	Data *DescribeColdDataBasicInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// 1A6D328C-84B8-40DC-BF49-6C73984D7494
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -59,20 +63,60 @@ func (s *DescribeColdDataBasicInfoResponseBody) Validate() error {
 
 type DescribeColdDataBasicInfoResponseBodyData struct {
 	// The number of backup sets.
+	//
+	// example:
+	//
+	// 0
 	BackupSetCount *int32 `json:"BackupSetCount,omitempty" xml:"BackupSetCount,omitempty"`
 	// The data size of valid backup sets.
+	//
+	// example:
+	//
+	// 0
 	BackupSetSpaceSize *float64 `json:"BackupSetSpaceSize,omitempty" xml:"BackupSetSpaceSize,omitempty"`
-	// The underlying storage cloud product.
+	// The underlying cloud storage service.
+	//
+	// example:
+	//
+	// aliyunOSS
 	CloudProduct *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
 	// The data size of cold storage.
-	CurrentSpaceSize   *float64 `json:"CurrentSpaceSize,omitempty" xml:"CurrentSpaceSize,omitempty"`
-	DataRedundancyType *string  `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	CurrentSpaceSize *float64 `json:"CurrentSpaceSize,omitempty" xml:"CurrentSpaceSize,omitempty"`
+	// The data redundancy type of cold storage. LRS indicates locally redundant storage.
+	//
+	// example:
+	//
+	// LRS
+	DataRedundancyType *string `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
 	// Indicates whether cold storage is enabled.
-	EnableStatus  *bool   `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	ReadAccessNum *int64  `json:"ReadAccessNum,omitempty" xml:"ReadAccessNum,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The storage volume name.
-	VolumeName     *string  `json:"VolumeName,omitempty" xml:"VolumeName,omitempty"`
+	EnableStatus *bool `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The number of read accesses to cold data.
+	//
+	// example:
+	//
+	// 0
+	ReadAccessNum *int64 `json:"ReadAccessNum,omitempty" xml:"ReadAccessNum,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the storage volume.
+	//
+	// example:
+	//
+	// polardbx-oss-columnar-bucket-cn-hangzhou-1
+	VolumeName *string `json:"VolumeName,omitempty" xml:"VolumeName,omitempty"`
+	// The number of write accesses to cold data.
+	//
+	// example:
+	//
+	// 0
 	WriteAccessNum *float64 `json:"WriteAccessNum,omitempty" xml:"WriteAccessNum,omitempty"`
 }
 

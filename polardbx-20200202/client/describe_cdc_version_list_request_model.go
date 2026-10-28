@@ -18,14 +18,19 @@ type iDescribeCdcVersionListRequest interface {
 }
 
 type DescribeCdcVersionListRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// pxc-bjrl7****k2vp7
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region ID of the instance.
+	// The name of the CDC instance. This parameter specifies the CDC instance for which to query versions.
+	//
+	// example:
+	//
+	// pxc-***
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The ID of the region where the instance resides.
 	//
 	// example:
 	//

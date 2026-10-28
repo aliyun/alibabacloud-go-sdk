@@ -36,7 +36,7 @@ type DisableOpenSearchPublicEndpointRequest struct {
 	//
 	// search
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The region in which the instance resides.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//

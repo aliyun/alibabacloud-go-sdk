@@ -18,7 +18,7 @@ type iDisableOpenSearchPublicEndpointResponseBody interface {
 }
 
 type DisableOpenSearchPublicEndpointResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	AccessDeniedDetail *DisableOpenSearchPublicEndpointResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -85,13 +85,13 @@ type DisableOpenSearchPublicEndpointResponseBodyAccessDeniedDetail struct {
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The name of the authentication principal.
+	// The display name of the authentication principal.
 	//
 	// example:
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The description is the same as above.
+	// The owner ID of the authentication principal.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type DisableOpenSearchPublicEndpointResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//

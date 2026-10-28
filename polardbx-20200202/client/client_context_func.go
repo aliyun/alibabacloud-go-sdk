@@ -8,6 +8,10 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// Aligns the primary zone of the storage nodes of a PolarDB-X instance.
+//
 // @param request - AlignStoragePrimaryAzoneRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -114,11 +118,11 @@ func (client *Client) AllocateColdDataVolumeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Enables a public network connection for a specified physical ReplicaSet of the context service.
+// Enables public network connections for a specified physical ReplicaSet of the context service.
 //
 // Description:
 //
-// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+// This operation confirms that no active connections exist before a rollback task to ensure operational security.
 //
 // @param request - AllocateContext0PublicConnectionRequest
 //
@@ -318,11 +322,11 @@ func (client *Client) AllocateInstancePublicConnectionWithContext(ctx context.Co
 
 // Summary:
 //
-// Enables a public domain name for a Mem0 instance.
+// Enables the public domain name for a Mem0 instance.
 //
 // Description:
 //
-// This operation is used to confirm that no active connections exist before a rollback task, to ensure operation safety.
+// This operation checks for active connections before a rollback task to ensure operational security.
 //
 // @param request - AllocateMem0PublicConnectionRequest
 //
@@ -368,6 +372,58 @@ func (client *Client) AllocateMem0PublicConnectionWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateMem0PublicConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables public network connection for PXFS.
+//
+// Description:
+//
+// Enables public network connection for the agent file service.
+//
+// @param request - AllocatePxfsPublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocatePxfsPublicConnectionResponse
+func (client *Client) AllocatePxfsPublicConnectionWithContext(ctx context.Context, request *AllocatePxfsPublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *AllocatePxfsPublicConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AllocatePxfsPublicConnection"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AllocatePxfsPublicConnectionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -853,7 +909,7 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates a backup by calling the CreateBackup operation.
+// Creates a backup.
 //
 // @param request - CreateBackupRequest
 //
@@ -1093,7 +1149,7 @@ func (client *Client) CreateCustomEndpointWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a database by calling the CreateDB operation.
+// Creates a database.
 //
 // @param request - CreateDBRequest
 //
@@ -1177,7 +1233,7 @@ func (client *Client) CreateDBWithContext(ctx context.Context, request *CreateDB
 
 // Summary:
 //
-// Calls the CreateDBInstance operation to create a PolarDB-X instance.
+// Creates a PolarDB-X instance.
 //
 // Description:
 //
@@ -1443,7 +1499,7 @@ func (client *Client) CreateDataImportTaskWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - CreateGatewayConsumerForPolarDBXRequest
 //
@@ -1699,7 +1755,7 @@ func (client *Client) CreateGdnStandbyMemberWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Enable Memory Engine
+// Enables the memory engine.
 //
 // Description:
 //
@@ -1875,7 +1931,7 @@ func (client *Client) CreateOpenSearchWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates an account for a PolarDB-X Search instance.
+// Creates a PolarDB-X Search instance account.
 //
 // Description:
 //
@@ -2093,6 +2149,290 @@ func (client *Client) CreatePolardbxSupabaseInstanceWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePolardbxSupabaseInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an Agent file service instance.
+//
+// Description:
+//
+// Creates an Agent file service instance.
+//
+// @param request - CreatePxfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePxfsResponse
+func (client *Client) CreatePxfsWithContext(ctx context.Context, request *CreatePxfsRequest, runtime *dara.RuntimeOptions) (_result *CreatePxfsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClassCode) {
+		query["ClassCode"] = request.ClassCode
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.NodeCount) {
+		query["NodeCount"] = request.NodeCount
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	if !dara.IsNil(request.StorageSize) {
+		query["StorageSize"] = request.StorageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePxfs"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePxfsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Issues an access token for the Agent file service.
+//
+// Description:
+//
+// Issues an access token for the Agent file service.
+//
+// @param request - CreatePxfsAccessTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePxfsAccessTokenResponse
+func (client *Client) CreatePxfsAccessTokenWithContext(ctx context.Context, request *CreatePxfsAccessTokenRequest, runtime *dara.RuntimeOptions) (_result *CreatePxfsAccessTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.IdentityName) {
+		query["IdentityName"] = request.IdentityName
+	}
+
+	if !dara.IsNil(request.Label) {
+		query["Label"] = request.Label
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.TtlSeconds) {
+		query["TtlSeconds"] = request.TtlSeconds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePxfsAccessToken"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePxfsAccessTokenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an Agent file service tenant.
+//
+// Description:
+//
+// Creates an Agent file service tenant.
+//
+// @param request - CreatePxfsTenantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePxfsTenantResponse
+func (client *Client) CreatePxfsTenantWithContext(ctx context.Context, request *CreatePxfsTenantRequest, runtime *dara.RuntimeOptions) (_result *CreatePxfsTenantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.QuotaBytes) {
+		query["QuotaBytes"] = request.QuotaBytes
+	}
+
+	if !dara.IsNil(request.QuotaFiles) {
+		query["QuotaFiles"] = request.QuotaFiles
+	}
+
+	if !dara.IsNil(request.RateLimitRps) {
+		query["RateLimitRps"] = request.RateLimitRps
+	}
+
+	if !dara.IsNil(request.RateLimitWbps) {
+		query["RateLimitWbps"] = request.RateLimitWbps
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.TenantName) {
+		query["TenantName"] = request.TenantName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePxfsTenant"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePxfsTenantResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a tenant identity for the Agent file service.
+//
+// Description:
+//
+// Creates a tenant identity for the Agent file service.
+//
+// @param request - CreatePxfsUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePxfsUserResponse
+func (client *Client) CreatePxfsUserWithContext(ctx context.Context, request *CreatePxfsUserRequest, runtime *dara.RuntimeOptions) (_result *CreatePxfsUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.IdentityName) {
+		query["IdentityName"] = request.IdentityName
+	}
+
+	if !dara.IsNil(request.PosixGid) {
+		query["PosixGid"] = request.PosixGid
+	}
+
+	if !dara.IsNil(request.PosixUid) {
+		query["PosixUid"] = request.PosixUid
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePxfsUser"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePxfsUserResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2557,7 +2897,7 @@ func (client *Client) CreateSubCNInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Enables the public endpoint for a Supabase instance.
+// Enables the public endpoint for Supabase.
 //
 // Description:
 //
@@ -3149,7 +3489,7 @@ func (client *Client) DeleteGdnInstanceWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// Deletes the custom endpoint of a specified database instance and disables the access entry for the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access to the domain name.
 //
 // @param request - DeleteMem0Request
 //
@@ -3407,6 +3747,118 @@ func (client *Client) DeletePolardbxSupabaseInstanceWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePolardbxSupabaseInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an Agent file service instance.
+//
+// Description:
+//
+// Deletes an Agent file service instance.
+//
+// @param request - DeletePxfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePxfsResponse
+func (client *Client) DeletePxfsWithContext(ctx context.Context, request *DeletePxfsRequest, runtime *dara.RuntimeOptions) (_result *DeletePxfsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePxfs"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePxfsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an Agent file service tenant identity.
+//
+// Description:
+//
+// Deletes an Agent file service tenant identity.
+//
+// @param request - DeletePxfsUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePxfsUserResponse
+func (client *Client) DeletePxfsUserWithContext(ctx context.Context, request *DeletePxfsUserRequest, runtime *dara.RuntimeOptions) (_result *DeletePxfsUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.IdentityName) {
+		query["IdentityName"] = request.IdentityName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePxfsUser"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePxfsUserResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3689,7 +4141,7 @@ func (client *Client) DescribeAccountListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Calls the DescribeActiveOperationMaintainConf operation to display the O&M window configuration.
+// Queries the O&M time configuration.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -3773,7 +4225,7 @@ func (client *Client) DescribeActiveOperationTaskCountWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries O&M events by calling the DescribeActiveOperationTasks operation.
+// Queries O&M events.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -3813,7 +4265,7 @@ func (client *Client) DescribeActiveOperationTasksWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the list of cold storage tables.
+// Lists cold storage tables.
 //
 // @param request - DescribeArchiveTableListRequest
 //
@@ -4073,15 +4525,15 @@ func (client *Client) DescribeBackupSetListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries binary logs by calling the DescribeBinaryLogList operation.
+// Queries binary logs.
 //
 // Description:
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs log record end time is after the query start time and log record start time is before the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - When DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If the value of DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeBinaryLogListRequest
 //
@@ -4257,15 +4709,15 @@ func (client *Client) DescribeCdcInfoWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Retrieves the list of CDC versions.
+// Retrieves a list of CDC versions.
 //
 // Description:
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all log records whose end time is after the query start time and whose start time is before the query end time.
 //
-// - When DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeCdcVersionListRequest
 //
@@ -4365,7 +4817,7 @@ func (client *Client) DescribeCharacterSetWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves the basic information of cold storage.
+// Queries the basic information of cold storage.
 //
 // @param request - DescribeColdDataBasicInfoRequest
 //
@@ -4721,7 +5173,7 @@ func (client *Client) DescribeContext0InfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the whitelist of the context service.
+// Queries the whitelist for the context service.
 //
 // Description:
 //
@@ -4989,7 +5441,11 @@ func (client *Client) DescribeCustomEndpointListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Calls the DescribeDBInstanceAttribute operation to retrieve instance attributes.
+// Queries the attributes of an instance.
+//
+// Description:
+//
+// This operation retrieves the list of custom endpoints configured by the user to facilitate the management and viewing of private connections or VPC endpoint service settings.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -5153,7 +5609,7 @@ func (client *Client) DescribeDBInstanceEndpointWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the high availability (HA) information of an instance.
+// Queries the high availability information of an instance.
 //
 // @param request - DescribeDBInstanceHARequest
 //
@@ -5201,7 +5657,7 @@ func (client *Client) DescribeDBInstanceHAWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries SSL information.
+// Retrieves SSL information.
 //
 // @param request - DescribeDBInstanceSSLRequest
 //
@@ -5297,7 +5753,7 @@ func (client *Client) DescribeDBInstanceTDEWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the topology information of an instance.
+// Retrieves the topology information of an instance.
 //
 // @param request - DescribeDBInstanceTopologyRequest
 //
@@ -5405,7 +5861,7 @@ func (client *Client) DescribeDBInstanceViaEndpointWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries a list of instances by calling the DescribeDBInstances operation.
+// Queries a list of database instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -5925,7 +6381,7 @@ func (client *Client) DescribeEventsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Retrieves the list of global database network (GDN) instances.
+// Queries the list of global database network (GDN) instances.
 //
 // @param request - DescribeGdnInstancesRequest
 //
@@ -6249,7 +6705,7 @@ func (client *Client) DescribeOpenSearchConnectionInfoWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the information about a PolarDB-X Search instance.
+// Queries the details of PolarDB-X Search instances.
 //
 // Description:
 //
@@ -6625,7 +7081,7 @@ func (client *Client) DescribeParameterGroupsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Calls the DescribeParameterTemplates operation to retrieve the parameter template list of an instance.
+// Queries the instance parameter templates.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -6783,6 +7239,282 @@ func (client *Client) DescribePolarxDataNodesWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePolarxDataNodesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the access token for the Agent file service.
+//
+// Description:
+//
+// Queries the access token for the Agent file service.
+//
+// @param request - DescribePxfsAccessTokensRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePxfsAccessTokensResponse
+func (client *Client) DescribePxfsAccessTokensWithContext(ctx context.Context, request *DescribePxfsAccessTokensRequest, runtime *dara.RuntimeOptions) (_result *DescribePxfsAccessTokensResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.IdentityName) {
+		query["IdentityName"] = request.IdentityName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePxfsAccessTokens"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePxfsAccessTokensResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about an Agent file service instance.
+//
+// Description:
+//
+// Queries the information about an Agent file service instance.
+//
+// @param request - DescribePxfsInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePxfsInfoResponse
+func (client *Client) DescribePxfsInfoWithContext(ctx context.Context, request *DescribePxfsInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribePxfsInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePxfsInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePxfsInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the whitelist for the Agent file service.
+//
+// Description:
+//
+// Queries the whitelist for the Agent file service.
+//
+// @param request - DescribePxfsSecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePxfsSecurityIpsResponse
+func (client *Client) DescribePxfsSecurityIpsWithContext(ctx context.Context, request *DescribePxfsSecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *DescribePxfsSecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePxfsSecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePxfsSecurityIpsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Agent file service tenant.
+//
+// Description:
+//
+// Queries the Agent file service tenant.
+//
+// @param request - DescribePxfsTenantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePxfsTenantResponse
+func (client *Client) DescribePxfsTenantWithContext(ctx context.Context, request *DescribePxfsTenantRequest, runtime *dara.RuntimeOptions) (_result *DescribePxfsTenantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePxfsTenant"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePxfsTenantResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tenant identity of the Agent file service.
+//
+// Description:
+//
+// Queries the tenant identity of the Agent file service.
+//
+// @param request - DescribePxfsUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePxfsUsersResponse
+func (client *Client) DescribePxfsUsersWithContext(ctx context.Context, request *DescribePxfsUsersRequest, runtime *dara.RuntimeOptions) (_result *DescribePxfsUsersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePxfsUsers"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePxfsUsersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7073,7 +7805,7 @@ func (client *Client) DescribeRplInspectionTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Displays the progress of a ScaleOut migration task.
+// Retrieves the progress of a scale-out migration task.
 //
 // @param request - DescribeScaleOutMigrateTaskListRequest
 //
@@ -7583,9 +8315,9 @@ func (client *Client) DescribeStructureImportTaskInfoWithContext(ctx context.Con
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose log record end time is later than the query start time and whose log record start time is earlier than the query end time.
+// - The returned log list includes all log records whose end time is after the query start time and whose start time is before the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeSupabaseApiKeyRequest
 //
@@ -7689,7 +8421,7 @@ func (client *Client) DescribeSupabaseInstanceAttributeWithContext(ctx context.C
 //
 // Description:
 //
-// Queries the list of custom endpoints configured by the user for managing and viewing private connection or VPC endpoint service settings.
+// Retrieves the list of custom endpoints configured by the user to facilitate the management and viewing of private connections or VPC endpoint service settings.
 //
 // @param request - DescribeSupabaseInstancesRequest
 //
@@ -7757,15 +8489,15 @@ func (client *Client) DescribeSupabaseInstancesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the IP whitelist of a Supabase instance.
+// Queries the Supabase IP whitelist.
 //
 // Description:
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose log record end time is later than the specified query start time and whose log record start time is earlier than the specified query end time.
+// - The returned log list includes all log records whose record end time is after the query start time and whose record start time is before the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeSupabaseIpWhitelistRequest
 //
@@ -7869,7 +8601,7 @@ func (client *Client) DescribeTagsWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Retrieves the task list of an instance.
+// Retrieves the list of tasks for an instance.
 //
 // @param request - DescribeTasksRequest
 //
@@ -8049,7 +8781,7 @@ func (client *Client) DescribeUserEncryptionKeyListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Disables public network access for PolarDB-X Search.
+// Disables public network access to PolarDB-X Search.
 //
 // Description:
 //
@@ -8417,7 +9149,7 @@ func (client *Client) EnableSqlAuditWithContext(ctx context.Context, request *En
 //
 // Description:
 //
-// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
 //
 // @param request - ExecuteMetaQueryRequest
 //
@@ -8737,7 +9469,7 @@ func (client *Client) ModifyAccountPrivilegeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the time configuration of O&M events by calling the ModifyActiveOperationMaintainConf operation.
+// Modifies the time configuration for O&M events.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -8961,7 +9693,7 @@ func (client *Client) ModifyColumnarClassWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Synchronously modifies the whitelists of the context service (Service) and Dashboard.
+// Synchronously modifies the whitelists for the context service and dashboard.
 //
 // Description:
 //
@@ -9233,7 +9965,7 @@ func (client *Client) ModifyCustomEndpointNetWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Calls the ModifyDBInstanceClass operation to modify the instance specifications.
+// Modifies the specifications of an instance.
 //
 // @param request - ModifyDBInstanceClassRequest
 //
@@ -9553,11 +10285,11 @@ func (client *Client) ModifyDBInstanceMaintainTimeWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the virtual IP (VIP) address or network properties bound to a database instance. This operation supports changing the internal IP address, adjusting the vSwitch, migrating across zones, and other operations.
+// Modifies the virtual IP address or network properties of a database instance. This operation supports changing the internal IP address, adjusting the subnet, and migrating across zones.
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - ModifyDBInstanceVipRequest
 //
@@ -9861,7 +10593,7 @@ func (client *Client) ModifyOpenSearchAccessProtocolWithContext(ctx context.Cont
 
 // Summary:
 //
-// Changes the specifications of a PolarDB-X Search instance.
+// Modifies the specifications of a PolarDBX Search instance.
 //
 // Description:
 //
@@ -9985,7 +10717,7 @@ func (client *Client) ModifyOpenSearchWhitelistGroupWithContext(ctx context.Cont
 
 // Summary:
 //
-// Modifies instance parameters, including parameters at the compute layer and storage layer.
+// Modifies the parameters of an instance, including the compute and storage layer parameters.
 //
 // @param request - ModifyParameterRequest
 //
@@ -10039,6 +10771,70 @@ func (client *Client) ModifyParameterWithContext(ctx context.Context, request *M
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyParameterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the whitelist of the Agent file service.
+//
+// Description:
+//
+// Modifies the whitelist of the Agent file service.
+//
+// @param request - ModifyPxfsSecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPxfsSecurityIpsResponse
+func (client *Client) ModifyPxfsSecurityIpsWithContext(ctx context.Context, request *ModifyPxfsSecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifyPxfsSecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.ModifyMode) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyPxfsSecurityIps"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyPxfsSecurityIpsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10229,7 +11025,7 @@ func (client *Client) ModifySupabaseDashboardPasswordWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the IP whitelist of a Supabase instance.
+// Modifies the IP whitelist for Supabase.
 //
 // Description:
 //
@@ -10413,7 +11209,7 @@ func (client *Client) QueryColumnarLogWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries complete column store audit logs by using streaming.
+// Queries full column store audit logs by using streaming.
 //
 // Description:
 //
@@ -10432,7 +11228,7 @@ func (client *Client) QueryColumnarLogSSEWithSSECtx(ctx context.Context, request
 
 // Summary:
 //
-// Queries complete column store audit logs by using streaming.
+// Queries full column store audit logs by using streaming.
 //
 // Description:
 //
@@ -10820,6 +11616,58 @@ func (client *Client) ReleaseMem0PublicConnectionWithContext(ctx context.Context
 
 // Summary:
 //
+// Disables the public network connection for the Agent file service.
+//
+// Description:
+//
+// Disables the public network connection for the Agent file service.
+//
+// @param request - ReleasePxfsPublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleasePxfsPublicConnectionResponse
+func (client *Client) ReleasePxfsPublicConnectionWithContext(ctx context.Context, request *ReleasePxfsPublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *ReleasePxfsPublicConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReleasePxfsPublicConnection"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReleasePxfsPublicConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets the password of an account.
 //
 // @param request - ResetAccountPasswordRequest
@@ -10956,7 +11804,7 @@ func (client *Client) ResetAccountPasswordRestrictWithContext(ctx context.Contex
 //
 // Description:
 //
-// ***.
+// ***
 //
 // @param request - ResetMem0AccountPasswordRequest
 //
@@ -11224,6 +12072,58 @@ func (client *Client) RestartOpenSearchWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Restarts an Agent file service instance.
+//
+// Description:
+//
+// Restarts an Agent file service instance.
+//
+// @param request - RestartPxfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartPxfsResponse
+func (client *Client) RestartPxfsWithContext(ctx context.Context, request *RestartPxfsRequest, runtime *dara.RuntimeOptions) (_result *RestartPxfsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestartPxfs"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestartPxfsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Restarts a Supabase instance.
 //
 // Description:
@@ -11434,6 +12334,66 @@ func (client *Client) RestoreDBInstanceWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestoreDBInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes an access token for the Agent file service.
+//
+// Description:
+//
+// Revokes an access token for the Agent file service.
+//
+// @param request - RevokePxfsAccessTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokePxfsAccessTokenResponse
+func (client *Client) RevokePxfsAccessTokenWithContext(ctx context.Context, request *RevokePxfsAccessTokenRequest, runtime *dara.RuntimeOptions) (_result *RevokePxfsAccessTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.TokenId) {
+		query["TokenId"] = request.TokenId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokePxfsAccessToken"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokePxfsAccessTokenResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11818,6 +12778,10 @@ func (client *Client) SubmitSqlFlashbackTaskWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches the zone of the primary node for a PolarDB-X instance.
+//
 // @param request - SwitchDBInstanceHARequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12196,7 +13160,7 @@ func (client *Client) UpdateBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies instance tags.
+// Updates instance labels.
 //
 // Description:
 //
@@ -12372,7 +13336,7 @@ func (client *Client) UpdateDBInstanceTDEWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Calls the UpdatePolarDBXInstanceNode operation to change the number of nodes for an instance, including scaling out and scaling in. This request generates a billable order.
+// Changes the number of nodes for a PolarDB-X instance, including scaling out and scaling in. This request generates an order.
 //
 // @param request - UpdatePolarDBXInstanceNodeRequest
 //
@@ -12618,6 +13582,62 @@ func (client *Client) UpgradeDBInstanceKernelVersionWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeDBInstanceKernelVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Upgrades the minor version of the Agent file service.
+//
+// Description:
+//
+// Upgrades the minor version of the Agent file service.
+//
+// @param request - UpgradePxfsVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradePxfsVersionResponse
+func (client *Client) UpgradePxfsVersionWithContext(ctx context.Context, request *UpgradePxfsVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradePxfsVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.MinorVersion) {
+		query["MinorVersion"] = request.MinorVersion
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradePxfsVersion"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradePxfsVersionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

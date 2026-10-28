@@ -18,7 +18,7 @@ type iDescribeSupabaseIpWhitelistResponseBody interface {
 }
 
 type DescribeSupabaseIpWhitelistResponseBody struct {
-	// The details of the access denial.
+	// The details of the access denied error.
 	AccessDeniedDetail *DescribeSupabaseIpWhitelistResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The whitelist information.
 	Data *DescribeSupabaseIpWhitelistResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -116,7 +116,7 @@ type DescribeSupabaseIpWhitelistResponseBodyAccessDeniedDetail struct {
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The policy type.
+	// The type of the policy.
 	//
 	// example:
 	//
@@ -250,13 +250,13 @@ func (s *DescribeSupabaseIpWhitelistResponseBodyData) Validate() error {
 }
 
 type DescribeSupabaseIpWhitelistResponseBodyDataGroupItems struct {
-	// The group name.
+	// The name of the group.
 	//
 	// example:
 	//
 	// defaultGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The group tag.
+	// The tag of the group.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
-	// The backup type. Currently, only "0" is supported, which indicates a fast backup.
+	// The backup type. Valid values: 0: quick backup.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CreateBackupRequest struct {
 	//
 	// pxc-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region where the instance resides.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//

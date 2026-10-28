@@ -22,7 +22,7 @@ type ModifyContext0SecurityIpsResponseBody struct {
 	AccessDeniedDetail *ModifyContext0SecurityIpsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The returned data.
 	Data *ModifyContext0SecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type ModifyContext0SecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ModifyContext0SecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The identity type used for authentication in the request. Valid values:
+	// The type of identity used for authentication in the request. Valid values:
 	//
 	// - SubUser: RAM user.
 	//
@@ -218,13 +218,13 @@ type ModifyContext0SecurityIpsResponseBodyData struct {
 	//
 	// pxsp-xxxxxxxxxx
 	DBInstanceId *int32 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

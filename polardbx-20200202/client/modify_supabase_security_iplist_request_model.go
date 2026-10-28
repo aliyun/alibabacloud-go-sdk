@@ -22,7 +22,7 @@ type iModifySupabaseSecurityIPListRequest interface {
 }
 
 type ModifySupabaseSecurityIPListRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
@@ -30,19 +30,13 @@ type ModifySupabaseSecurityIPListRequest struct {
 	//
 	// pxsp-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The whitelist group name.
+	// The name of the whitelist group.
 	//
 	// example:
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The modification mode. Valid values:
-	//
-	// - Cover: overwrites the existing whitelist.
-	//
-	// - Append: appends entries to the existing whitelist.
-	//
-	// - Delete: deletes entries from the existing whitelist.
+	// The modification mode. Valid values: Cover, Append, and Delete.
 	//
 	// example:
 	//
@@ -56,7 +50,7 @@ type ModifySupabaseSecurityIPListRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP whitelist. Separate multiple IP addresses with commas (,).
+	// The IP whitelist. Separate multiple IP addresses with commas.
 	//
 	// This parameter is required.
 	//

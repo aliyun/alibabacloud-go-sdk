@@ -36,13 +36,13 @@ type AllocateContext0PublicConnectionRequest struct {
 	//
 	// pxsp-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The target node type: service or dashboard.
+	// The target node type. Valid values: service and dashboard.
 	//
 	// example:
 	//
 	// dn
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The port.
+	// The port number.
 	//
 	// example:
 	//

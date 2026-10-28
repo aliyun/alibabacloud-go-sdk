@@ -18,7 +18,7 @@ type iDescribeOpenSearchInfoResponseBody interface {
 }
 
 type DescribeOpenSearchInfoResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	AccessDeniedDetail *DescribeOpenSearchInfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The returned result set.
 	Data *DescribeOpenSearchInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -80,37 +80,37 @@ func (s *DescribeOpenSearchInfoResponseBody) Validate() error {
 }
 
 type DescribeOpenSearchInfoResponseBodyAccessDeniedDetail struct {
-	// The authentication action.
+	// The authorization action.
 	//
 	// example:
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The identity used for authentication in the request.
+	// The identity used for authorization in the request.
 	//
 	// example:
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authentication principal.
+	// The ID of the owner of the authorization principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authentication principal type.
+	// The type of the authorization principal.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The type of access denial.
 	//
 	// example:
 	//
@@ -249,15 +249,15 @@ func (s *DescribeOpenSearchInfoResponseBodyData) Validate() error {
 type DescribeOpenSearchInfoResponseBodyDataInstance struct {
 	// The billing method. Valid values:
 	//
-	// - **POSTPAY**: pay-as-you-go.
+	// - **POSTPAY**: pay-as-you-go
 	//
-	// - **PREPAY**: subscription.
+	// - **PREPAY**: subscription
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The OpenSearch-compatible version.
+	// The OpenSearch compatible version.
 	//
 	// example:
 	//
@@ -271,9 +271,9 @@ type DescribeOpenSearchInfoResponseBodyDataInstance struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The deployment mode. Valid values:
 	//
-	// - multiple: multi-zone deployment.
+	// - multiple: multi-zone deployment
 	//
-	// - single: single-zone deployment.
+	// - single: single-zone deployment
 	//
 	// example:
 	//
@@ -305,11 +305,11 @@ type DescribeOpenSearchInfoResponseBodyDataInstance struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The network type of the connection string. Valid values:
 	//
-	// 	- **Public**: public endpoint.
+	// 	- **Public**: public endpoint
 	//
-	// 	- **Private**: private endpoint.
+	// 	- **Private**: private endpoint
 	//
-	// 	- **Inner**: private endpoint (classic network).
+	// 	- **Inner**: private endpoint (classic network)
 	//
 	// example:
 	//
@@ -327,13 +327,13 @@ type DescribeOpenSearchInfoResponseBodyDataInstance struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the last task was updated (in timestamp format).
+	// The last task update time in UNIX timestamp format.
 	//
 	// example:
 	//
 	// 2025-09-02T16:01:51Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the access endpoint resides.
+	// The ID of the virtual private cloud (VPC) where the access endpoint resides.
 	//
 	// example:
 	//
@@ -492,15 +492,15 @@ type DescribeOpenSearchInfoResponseBodyDataSpec struct {
 	//
 	// 3
 	CoordinatorNodeCount *int32 `json:"CoordinatorNodeCount,omitempty" xml:"CoordinatorNodeCount,omitempty"`
-	// The number of CPU cores of a single coordinator node.
+	// The number of CPU cores per coordinator node.
 	//
 	// example:
 	//
 	// 4
 	CoordinatorNodeCpu *int32 `json:"CoordinatorNodeCpu,omitempty" xml:"CoordinatorNodeCpu,omitempty"`
-	// Indicates whether coordinator nodes are enabled.
+	// Indicates whether the coordinator node is enabled.
 	CoordinatorNodeEnabled *bool `json:"CoordinatorNodeEnabled,omitempty" xml:"CoordinatorNodeEnabled,omitempty"`
-	// The memory size of a single coordinator node. Unit: GB.
+	// The memory size per coordinator node, in GB.
 	//
 	// example:
 	//
@@ -512,13 +512,13 @@ type DescribeOpenSearchInfoResponseBodyDataSpec struct {
 	//
 	// 3
 	DataNodeCount *int32 `json:"DataNodeCount,omitempty" xml:"DataNodeCount,omitempty"`
-	// The number of CPU cores of a single data node.
+	// The number of CPU cores per data node.
 	//
 	// example:
 	//
 	// 8
 	DataNodeCpu *int32 `json:"DataNodeCpu,omitempty" xml:"DataNodeCpu,omitempty"`
-	// The memory size of a single data node. Unit: GB.
+	// The memory size per data node, in GB.
 	//
 	// example:
 	//
@@ -526,37 +526,37 @@ type DescribeOpenSearchInfoResponseBodyDataSpec struct {
 	DataNodeMemoryGB *int32 `json:"DataNodeMemoryGB,omitempty" xml:"DataNodeMemoryGB,omitempty"`
 	// The master node type. Valid values:
 	//
-	// - **0**: The master node is a single node.
+	// - **0**: single-node master
 	//
-	// - **2**: The master node is in Cluster Edition.
+	// - **2**: cluster-edition master
 	//
 	// example:
 	//
 	// 2
 	MasterNodeCount *int32 `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
-	// The number of CPU cores of a single dedicated master node.
+	// The number of CPU cores per dedicated master node.
 	//
 	// example:
 	//
 	// 4
 	MasterNodeCpu *int32 `json:"MasterNodeCpu,omitempty" xml:"MasterNodeCpu,omitempty"`
-	// Indicates whether dedicated master nodes are enabled.
+	// Indicates whether the dedicated master node is enabled.
 	MasterNodeEnabled *bool `json:"MasterNodeEnabled,omitempty" xml:"MasterNodeEnabled,omitempty"`
-	// The memory size of a single dedicated master node. Unit: GB.
+	// The memory size per dedicated master node, in GB.
 	//
 	// example:
 	//
 	// 16
 	MasterNodeMemoryGB *int32 `json:"MasterNodeMemoryGB,omitempty" xml:"MasterNodeMemoryGB,omitempty"`
-	// The number of replica nodes in the primary zone.
+	// The number of secondary nodes in the primary zone.
 	//
-	// > The **ReplicaCount*	- and **SlaveReplicaCount*	- parameters apply only to cloud-native instances. If the instance uses a cluster architecture, these parameters indicate the number of replica nodes of a **single shard*	- in the primary and secondary zones.
+	// > The **ReplicaCount*	- and **SlaveReplicaCount*	- parameters apply only to cloud-native instances. If the instance uses a cluster architecture, these parameters indicate the number of secondary nodes per shard in the primary and secondary zones.
 	//
 	// example:
 	//
 	// 0
 	ReplicaCount *int32 `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
-	// The storage size of a single data node. Unit: GB.
+	// The storage space per data node, in GB.
 	//
 	// example:
 	//

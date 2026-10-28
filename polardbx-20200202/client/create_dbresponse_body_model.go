@@ -18,7 +18,7 @@ type iCreateDBResponseBody interface {
 }
 
 type CreateDBResponseBody struct {
-	// Empty if the request is successful. An error message is returned if the request fails.
+	// The error message. This parameter is empty if the request is successful.
 	//
 	// example:
 	//

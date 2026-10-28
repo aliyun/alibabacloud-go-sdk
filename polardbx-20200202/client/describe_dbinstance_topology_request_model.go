@@ -30,7 +30,7 @@ type DescribeDBInstanceTopologyRequest struct {
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The end time of the time range for querying historical instances in the topology. Format: yyyy-MM-dd HH:mm:ss.
+	// The end time of the historical instance range for the topology query, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeDBInstanceTopologyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of the time range for querying historical instances in the topology. Format: yyyy-MM-dd HH:mm:ss.
+	// The start time of the historical instance range for the topology query, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//

@@ -52,17 +52,17 @@ type iCreateOpenSearchRequest interface {
 }
 
 type CreateOpenSearchRequest struct {
-	// Specifies whether to enable auto-renewal. Default value: true.
+	// Specifies whether to enable auto-renewal. Default value: true. Valid values:
 	//
-	// - **true**: enabled.
+	// - **true**: enables auto-renewal
 	//
-	// - **false**: disabled.
+	// - **false**: disables auto-renewal
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The client token used to ensure the idempotence of the request. Use a different value for each creation request.
+	// The idempotency token. Make sure that the value is unique for each creation request.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type CreateOpenSearchRequest struct {
 	//
 	// example:
 	//
-	// TestInstance
+	// Test instance
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The node specifications code of PolarDBX Search data nodes. Available specifications depend on the region and sales configuration. Use a PolarDBX Search specification code that is available for purchase in the current region.
+	// The code for the node specifications of the PolarDBX Search data node. The active node specifications vary by region and sales configuration. Use a PolarDBX Search node specifications code that is available for purchase in the current region.
 	//
 	// This parameter is required.
 	//
@@ -82,19 +82,19 @@ type CreateOpenSearchRequest struct {
 	//
 	// opensearch.sn2ne.large.1
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The PolarDBX Search DPI engine version. The value is fixed to 3.0. If this parameter is not specified, the default value 3.0 is used.
+	// The database engine version of PolarDBX Search. The current fixed DPI engine version is 3.0. If this parameter is not specified, 3.0 is used.
 	//
 	// example:
 	//
 	// 3.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// A compatible parameter that does not take effect. Use DBNodeClass to specify the PolarDBX Search data node specifications.
+	// A compatible parameter. This parameter does not take effect. Specify the node specifications of the PolarDBX Search data node by using DBNodeClass.
 	//
 	// example:
 	//
 	// opensearch.sn2ne.large.1
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The number of PolarDBX Search data nodes. The value must be a positive integer and a multiple of the number of selected zones.
+	// The number of PolarDBX Search data nodes. The value must be a positive integer and an integer multiple of the number of selected zones.
 	//
 	// This parameter is required.
 	//
@@ -102,11 +102,11 @@ type CreateOpenSearchRequest struct {
 	//
 	// 3
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The billing method of the instance.
+	// The billing method of the instance. Valid values:
 	//
-	// - **PREPAY**: subscription.
+	// - **PREPAY**: subscription
 	//
-	// - **POSTPAY**: pay-as-you-go.
+	// - **POSTPAY**: pay-as-you-go
 	//
 	// This parameter is required.
 	//
@@ -114,13 +114,13 @@ type CreateOpenSearchRequest struct {
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The billing cycle. Valid values for subscription: Year and Month. Default value for pay-as-you-go: Hour.
+	// The billing cycle. For subscription instances, only Year and Month are supported. For pay-as-you-go instances, the default value is Hour.
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The region in which the instance resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +128,7 @@ type CreateOpenSearchRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. This parameter can be left empty. This parameter is not supported.
+	// The resource group ID. This parameter can be left empty and is not currently supported.
 	//
 	// example:
 	//
@@ -146,17 +146,17 @@ type CreateOpenSearchRequest struct {
 	//
 	// cloud_auto
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The topology type. Valid values:
+	// The active topology type. Valid values:
 	//
-	// - **1azone**: single active zone.
+	// - **1azone**: single-zone.
 	//
-	// - **3azones**: three active zones.
+	// - **3azones**: Three-zone deployment.
 	//
 	// example:
 	//
 	// 3azones
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	// The subscription duration. Specify the number of months or years for prepaid instances.
+	// The subscription duration. You can specify a duration in months or years for subscription instances.
 	//
 	// > When Period is set to Year, valid values for this parameter are 1, 2, and 3.
 	//
@@ -164,7 +164,7 @@ type CreateOpenSearchRequest struct {
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//
@@ -180,13 +180,13 @@ type CreateOpenSearchRequest struct {
 	//
 	// vsw-*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The second zone. This parameter is required when TopologyType is set to 3azones. The value cannot be the same as other zones.
+	// The secondary zone. This parameter is required when TopologyType is set to 3azones, and the value must be different from other zones.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	Zone2 *string `json:"Zone2,omitempty" xml:"Zone2,omitempty"`
-	// The third zone. This parameter is required when TopologyType is set to 3azones. The value cannot be the same as other zones.
+	// The third zone for Three-zone deployment. This parameter is required when TopologyType is set to 3azones, and the value must be different from other active zones.
 	//
 	// example:
 	//

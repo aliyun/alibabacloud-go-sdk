@@ -20,7 +20,7 @@ type iModifyOpenSearchClassRequest interface {
 }
 
 type ModifyOpenSearchClassRequest struct {
-	// The target disk size per node, in GB. If not specified, the current disk size is retained.
+	// The target disk size per node, in GB. If this parameter is not specified, the current disk size is retained.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ModifyOpenSearchClassRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The node specifications code of the PolarDB-X Search data node. This parameter is required. Active node specifications depend on the region and sales configuration, and must differ from the current node specifications.
+	// The node specifications code for PolarDBX Search data nodes. This parameter is required. The active node specifications depend on the region and sales configuration, and must differ from the current node specifications.
 	//
 	// example:
 	//

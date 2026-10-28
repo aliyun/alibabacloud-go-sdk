@@ -22,7 +22,7 @@ type iCreateBackupResponseBody interface {
 type CreateBackupResponseBody struct {
 	// The returned data.
 	Data *CreateBackupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Empty if the request is successful. An error message is returned if the request fails.
+	// The message. If the request is successful, this field is empty. If the request fails, an error message is returned.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type CreateBackupResponseBody struct {
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -96,6 +96,11 @@ func (s *CreateBackupResponseBody) Validate() error {
 }
 
 type CreateBackupResponseBodyData struct {
+	// The ID of the backup set.
+	//
+	// example:
+	//
+	// 111
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 }
 

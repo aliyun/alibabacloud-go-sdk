@@ -28,15 +28,15 @@ type DescribeParametersRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The parameter level. Valid values:
 	//
-	// - compute: compute layer.
+	// - compute: compute layer
 	//
-	// - storage: storage layer.
+	// - storage: storage layer
 	//
 	// example:
 	//
 	// compute
 	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
-	// The region to which the instance belongs.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//

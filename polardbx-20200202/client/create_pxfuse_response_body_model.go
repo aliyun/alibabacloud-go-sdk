@@ -20,7 +20,7 @@ type iCreatePxfuseResponseBody interface {
 type CreatePxfuseResponseBody struct {
 	// The details of the access denial.
 	AccessDeniedDetail *CreatePxfuseResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The policy details.
+	// The details of the returned policy.
 	Data *CreatePxfuseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -110,7 +110,7 @@ type CreatePxfuseResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The type of access denial.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *CreatePxfuseResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type CreatePxfuseResponseBodyData struct {
-	// Indicates whether the instance already exists.
+	// Indicates whether the resource already exists.
 	//
 	// example:
 	//

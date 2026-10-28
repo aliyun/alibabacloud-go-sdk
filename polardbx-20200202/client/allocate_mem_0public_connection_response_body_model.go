@@ -16,7 +16,7 @@ type iAllocateMem0PublicConnectionResponseBody interface {
 }
 
 type AllocateMem0PublicConnectionResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason for the access denial.
 	AccessDeniedDetail *AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,7 +62,7 @@ func (s *AllocateMem0PublicConnectionResponseBody) Validate() error {
 }
 
 type AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail struct {
-	// As described above.
+	// Same as above.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail struct {
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// As described above.
+	// Same as above.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// As described above.
+	// Same as above.
 	//
 	// example:
 	//

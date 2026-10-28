@@ -54,7 +54,7 @@ type CreatePolardbxSupabaseInstanceRequest struct {
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The dashboard password.
+	// The Dashboard password.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +62,11 @@ type CreatePolardbxSupabaseInstanceRequest struct {
 	//
 	// dTyMQem0o3HOAFh!
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
-	// The instance description.
+	// The description of the instance.
 	//
 	// example:
 	//
-	// Supabase实例
+	// Supabase instance
 	DbInstanceDescription *string `json:"DbInstanceDescription,omitempty" xml:"DbInstanceDescription,omitempty"`
 	// The database password.
 	//
@@ -82,11 +82,7 @@ type CreatePolardbxSupabaseInstanceRequest struct {
 	//
 	// polarx.supabase.x2.small
 	NodeSpec *string `json:"NodeSpec,omitempty" xml:"NodeSpec,omitempty"`
-	// The billing type. Valid values:
-	//
-	// - PREPAY: subscription.
-	//
-	// - POSTPAY: pay-as-you-go.
+	// The billing method. Valid values: PREPAY and POSTPAY.
 	//
 	// This parameter is required.
 	//
@@ -94,13 +90,7 @@ type CreatePolardbxSupabaseInstanceRequest struct {
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The billing cycle. Valid values:
-	//
-	// - Year
-	//
-	// - Month
-	//
-	// - Hour
+	// The billing cycle. Valid values: Year, Month, and Hour.
 	//
 	// example:
 	//

@@ -28,15 +28,15 @@ type UpdateCustinsParamRequest struct {
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The tag name.
+	// The name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// DataWarehouseExtractionAddress
+	// Data warehouse data extraction address
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
 	//
 	// This parameter is required.
 	//
