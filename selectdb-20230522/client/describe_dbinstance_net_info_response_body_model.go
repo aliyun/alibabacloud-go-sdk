@@ -18,7 +18,7 @@ type iDescribeDBInstanceNetInfoResponseBody interface {
 }
 
 type DescribeDBInstanceNetInfoResponseBody struct {
-	// The network information list of the BE instances.
+	// The network information of the BE instances.
 	DBClustersNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos `json:"DBClustersNetInfos,omitempty" xml:"DBClustersNetInfos,omitempty" type:"Repeated"`
 	// The network information of the instance.
 	DBInstanceNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Repeated"`
@@ -112,7 +112,7 @@ type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos struct {
 	//
 	// VPC/PUBLIC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The port list.
+	// The ports.
 	PortList []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
 	// Indicates whether the network information is visible to users.
 	//
@@ -120,7 +120,7 @@ type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos struct {
 	//
 	// true/false
 	UserVisible *bool `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -308,7 +308,7 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// - **VPC**: virtual private cloud (VPC).
+	// - **VPC**: VPC.
 	//
 	//
 	//
@@ -318,19 +318,19 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos struct {
 	//
 	// VPC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The port objects.
+	// The ports.
 	PortList []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
 	// Indicates whether the network information is visible to users. Valid values:
 	//
-	// - **true**: Visible to users.
+	// - **true**: Visible.
 	//
-	// - **false**: Not visible to users.
+	// - **false**: Invisible.
 	//
 	// example:
 	//
 	// true
 	UserVisible *bool `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -461,9 +461,9 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The port type. Valid values:
 	//
-	// - **HttpPort**: HTTP protocol port.
+	// - **HttpPort**: HTTP port.
 	//
-	// - **MySQLPort**: MySQL protocol port.
+	// - **MySQLPort**: MySQL port.
 	//
 	// example:
 	//

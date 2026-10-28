@@ -42,7 +42,7 @@ type GetCreateBEClusterInquiryRequest struct {
 	//
 	// 200
 	CacheSize *int64 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
-	// The billing type.
+	// The billing method.
 	//
 	// This parameter is required.
 	//
@@ -90,6 +90,8 @@ type GetCreateBEClusterInquiryRequest struct {
 	//
 	// Hour
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The coupon code.
+	//
 	// example:
 	//
 	// 2374923467

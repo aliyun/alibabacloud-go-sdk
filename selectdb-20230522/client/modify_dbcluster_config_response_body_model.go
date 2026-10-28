@@ -22,7 +22,7 @@ type iModifyDBClusterConfigResponseBody interface {
 }
 
 type ModifyDBClusterConfigResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -30,13 +30,13 @@ type ModifyDBClusterConfigResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The returned data.
 	Data *ModifyDBClusterConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The dynamic code. This parameter is not in use. Ignore this parameter.
+	// The dynamic code. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	// The dynamic message. This parameter is not used and can be ignored.
 	//
 	// example:
 	//

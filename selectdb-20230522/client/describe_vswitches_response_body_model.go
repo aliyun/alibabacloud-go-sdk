@@ -26,15 +26,15 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// The result list.
+	// The list of results.
 	Items []*DescribeVSwitchesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. An empty value of NextToken indicates that no more results exist.
+	// The token for the next query. An empty NextToken indicates that no more results are available.
 	//
 	// example:
 	//

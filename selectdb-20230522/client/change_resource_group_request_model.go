@@ -36,7 +36,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// test_resource_group
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the instance you want to move.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Default value: `DBInstance`.
+	// The resource type.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDescribeDBClusterConfigChangeLogsResponseBody interface {
 }
 
 type DescribeDBClusterConfigChangeLogsResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -30,13 +30,13 @@ type DescribeDBClusterConfigChangeLogsResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The returned data.
 	Data *DescribeDBClusterConfigChangeLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The dynamic code. This parameter is not in use. Ignore this parameter.
+	// The dynamic code. This parameter is not in use and can be ignored.
 	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	// The dynamic message. This parameter is not in use and can be ignored.
 	//
 	// example:
 	//
@@ -208,13 +208,13 @@ func (s *DescribeDBClusterConfigChangeLogsResponseBodyData) Validate() error {
 }
 
 type DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs struct {
-	// The task creation time (GMT).
+	// The time when the task was created (GMT).
 	//
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The task modification time (GMT).
+	// The time when the task was modified (GMT).
 	//
 	// example:
 	//

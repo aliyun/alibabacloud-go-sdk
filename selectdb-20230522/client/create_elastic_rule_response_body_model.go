@@ -62,7 +62,7 @@ func (s *CreateElasticRuleResponseBody) Validate() error {
 }
 
 type CreateElasticRuleResponseBodyData struct {
-	// The target compute resource specification for the cluster.
+	// The target compute resource rule of the cluster.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateElasticRuleResponseBodyData struct {
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The start time of the time-based elastic scaling rule.
+	// The start time of the time-based elastic rule. The time is in the HH:mm format.
 	//
 	// example:
 	//

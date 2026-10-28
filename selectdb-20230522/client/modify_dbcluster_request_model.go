@@ -39,24 +39,30 @@ type ModifyDBClusterRequest struct {
 	// example:
 	//
 	// 200
-	CacheSize        *string `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
-	ClusterNodeCount *int32  `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
-	ClusterNodeType  *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
+	CacheSize *string `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// The number of cluster nodes. This parameter takes effect only in Serverless mode.
+	//
+	// example:
+	//
+	// 1
+	ClusterNodeCount *int32 `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
+	// The cluster node type. This parameter takes effect only in Serverless mode.
+	ClusterNodeType *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
 	// The cluster specifications. Valid values:
 	//
-	// - **selectdb.xlarge**: 4 cores, 32 GB memory.
+	// - **selectdb.xlarge**: 4 cores and 32 GB.
 	//
-	// - **selectdb.2xlarge**: 8 cores, 64 GB memory.
+	// - **selectdb.2xlarge**: 8 cores and 64 GB.
 	//
-	// - **selectdb.4xlarge**: 16 cores, 128 GB memory.
+	// - **selectdb.4xlarge**: 16 cores and 128 GB.
 	//
-	// - **selectdb.8xlarge**: 32 cores, 256 GB memory.
+	// - **selectdb.8xlarge**: 32 cores and 256 GB.
 	//
-	// - **selectdb.16xlarge**: 16 cores, 512 GB memory.
+	// - **selectdb.16xlarge**: 16 cores and 512 GB.
 	//
-	// - **selectdb.24xlarge**: 24 cores, 768 GB memory.
+	// - **selectdb.24xlarge**: 24 cores and 768 GB.
 	//
-	// - **selectdb.32xlarge**: 32 cores, 1024 GB memory.
+	// - **selectdb.32xlarge**: 32 cores and 1024 GB.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +86,7 @@ type ModifyDBClusterRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database type. Set the value to selectdb.
+	// The database engine type. Set the value to selectdb.
 	//
 	// example:
 	//
@@ -93,10 +99,20 @@ type ModifyDBClusterRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId *int64   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ScaleMax        *float64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	ScaleMin        *float64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The maximum value of the auto-scaling range for the instance RCU (RDS Capacity Unit).
+	//
+	// example:
+	//
+	// 32
+	ScaleMax *float64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum value of the auto-scaling range for the instance RCU (RDS Capacity Unit).
+	//
+	// example:
+	//
+	// 4
+	ScaleMin *float64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
 }
 
 func (s ModifyDBClusterRequest) String() string {

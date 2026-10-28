@@ -28,7 +28,7 @@ type DescribeQueryExplainRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The Explain mode.
+	// The EXPLAIN mode.
 	//
 	// example:
 	//

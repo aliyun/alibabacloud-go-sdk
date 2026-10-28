@@ -22,13 +22,13 @@ type iDescribeZonesResponseBody interface {
 type DescribeZonesResponseBody struct {
 	// The list of results.
 	Items []*DescribeZonesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries per page for a paged query.
+	// The number of rows per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results. If this parameter is empty, all results have been returned.
+	// The token used to start the next query. If NextToken is empty, no more results are available.
 	//
 	// example:
 	//

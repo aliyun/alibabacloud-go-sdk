@@ -16,7 +16,7 @@ type iRestartDBClusterResponseBody interface {
 }
 
 type RestartDBClusterResponseBody struct {
-	// The response data.
+	// The returned information.
 	Data *RestartDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//

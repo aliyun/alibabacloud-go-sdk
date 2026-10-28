@@ -24,9 +24,9 @@ type iDescribeDBInstancesResponseBody interface {
 type DescribeDBInstancesResponseBody struct {
 	// The list of instance details.
 	Items []*DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries to return per page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (default value)
+	// - **30**: Default value.
 	//
 	// - **50**
 	//
@@ -36,7 +36,7 @@ type DescribeDBInstancesResponseBody struct {
 	//
 	// 30
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page number.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeDBInstancesResponseBody struct {
 	//
 	// BC854513-E85E-54F3-9842-B9CCD3308CDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ func (s *DescribeDBInstancesResponseBody) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyItems struct {
-	// The instance edition. The default value is basic.
+	// The edition of the instance. Default value: basic.
 	//
 	// example:
 	//
@@ -151,11 +151,11 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The deployment mode of the instance:
+	// The deployment mode of the instance. Valid values:
 	//
-	// - multi_az: zone-redundant storage.
+	// - multi_az: zone-redundant
 	//
-	// - single_az: locally redundant storage.
+	// - single_az: locally redundant
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// New instance test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The database type.
+	// The database engine.
 	//
 	// example:
 	//
@@ -179,20 +179,21 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// 4.0.4
 	EngineMinorVersion *string `json:"EngineMinorVersion,omitempty" xml:"EngineMinorVersion,omitempty"`
-	// The database version.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time of the cluster.
+	// The expiration time of the cluster. The time is displayed in ISO 8601 format and includes the time zone.
 	//
-	// > This parameter is returned only for **Prepaid*	- (subscription) clusters. For **Postpaid*	- (pay-as-you-go) clusters, this parameter is empty.
+	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription). For clusters whose billing method is **Postpaid*	- (pay-as-you-go), an empty value is returned.
 	//
 	// example:
 	//
 	// 2024-03-29T03:47:05Z
-	ExpireTime    *string                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The FE cluster list.
 	FEClusterList []*DescribeDBInstancesResponseBodyItemsFEClusterList `json:"FEClusterList,omitempty" xml:"FEClusterList,omitempty" type:"Repeated"`
 	// The time when the task was created (GMT).
 	//
@@ -200,13 +201,13 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// 2023-08-12T04:14Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the task was last modified (GMT).
+	// The time when the task was modified (GMT).
 	//
 	// example:
 	//
 	// 2023-08-12T19:05Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The instance usage type.
+	// The usage type of the instance.
 	//
 	// example:
 	//
@@ -214,9 +215,9 @@ type DescribeDBInstancesResponseBodyItems struct {
 	InstanceUsedType *string `json:"InstanceUsedType,omitempty" xml:"InstanceUsedType,omitempty"`
 	// Indicates whether the instance is deleted. Valid values:
 	//
-	// - **true**: The instance is deleted.
+	// - **true**: deleted
 	//
-	// - **false**: The instance is not deleted.
+	// - **fasle**: not deleted
 	//
 	// example:
 	//
@@ -234,29 +235,29 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// nolock
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The timestamp that indicates the end of the maintenance window.
+	// The end timestamp of the maintenance window.
 	//
 	// example:
 	//
-	// Reserved parameter. Not returned.
+	// Reserved parameter. Not returned
 	MaintainEndTimeStr *string `json:"MaintainEndTimeStr,omitempty" xml:"MaintainEndTimeStr,omitempty"`
-	// The end time of the maintenance window for the instance.
+	// Reserved parameter. Not returned. Therefore, the time format does not apply.
 	//
 	// example:
 	//
-	// Reserved parameter. Not returned.
+	// Reserved parameter. Not returned
 	MaintainEndtime *string `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
-	// The timestamp that indicates the start of the maintenance window.
+	// The start timestamp of the maintenance window.
 	//
 	// example:
 	//
-	// Reserved parameter. Not returned.
+	// Reserved parameter. Not returned
 	MaintainStartTimeStr *string `json:"MaintainStartTimeStr,omitempty" xml:"MaintainStartTimeStr,omitempty"`
-	// The start time of the maintenance window for the instance.
+	// Reserved parameter. Not returned. Therefore, the time format does not apply.
 	//
 	// example:
 	//
-	// Reserved parameter. Not returned.
+	// Reserved parameter. Not returned
 	MaintainStarttime *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
 	// The multi-zone configuration.
 	MultiZone []*DescribeDBInstancesResponseBodyItemsMultiZone `json:"MultiZone,omitempty" xml:"MultiZone,omitempty" type:"Repeated"`
@@ -270,7 +271,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Reserved parameter. Not returned.
+	// Reserved parameter. Not returned
 	ParentInstance *string `json:"ParentInstance,omitempty" xml:"ParentInstance,omitempty"`
 	// The region ID.
 	//
@@ -278,7 +279,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The allocated CPU for the resource.
+	// The CPU resources.
 	//
 	// example:
 	//
@@ -288,31 +289,31 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Reserved parameter. Not returned.
+	// Reserved parameter. Not returned
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The memory size.
+	// The memory resources.
 	//
 	// example:
 	//
 	// 64
 	ResourceMemory *int64 `json:"ResourceMemory,omitempty" xml:"ResourceMemory,omitempty"`
-	// The maximum number of RDS Capacity Units (RCUs) for the instance.
+	// The maximum value of the automatic scaling range for the RDS Capacity Unit (RCU) of the instance.
 	//
 	// example:
 	//
 	// 0
 	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum number of RDS Capacity Units (RCUs) for the instance.
+	// The minimum value of the automatic scaling range for the RDS Capacity Unit (RCU) of the instance.
 	//
 	// example:
 	//
 	// 0
 	ScaleMin *int64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// This field is redundant.
+	// The redundant field.
 	//
 	// example:
 	//
-	// 空
+	// Empty
 	ScaleReplica *int64 `json:"ScaleReplica,omitempty" xml:"ScaleReplica,omitempty"`
 	// Indicates whether the instance is a serverless instance.
 	//
@@ -320,55 +321,57 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// false
 	Serverless *bool `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
-	// The state of the instance. Valid values:
+	// The status of the instance. Valid values:
 	//
-	// - **CREATING**: The instance is being created.
+	// - **CREATING**: Creating.
 	//
-	// - **ACTIVATION**: The instance is running.
+	// - **ACTIVATION**: Running.
 	//
-	// - **RESOURCE_CHANGING**: The instance is being upgraded or downgraded.
+	// - **RESOURCE_CHANGING**: Changing specifications.
 	//
-	// - **ORDER_PREPARING**: The order is being confirmed.
+	// - **ORDER_PREPARING**: Confirming order.
 	//
-	// - **READONLY_RESOURCE_CHANGING**: The instance configuration is being changed, and the instance is write-locked.
+	// - **READONLY_RESOURCE_CHANGING**: Changing resources (the instance is locked for write operations).
 	//
-	// - **DELETING**: The instance is being deleted.
+	// - **DELETING**: Deleting.
 	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage capacity.
+	// The storage space size.
 	//
 	// example:
 	//
 	// 100
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// The storage class of the instance.
+	// The instance storage type.
 	//
 	// example:
 	//
 	// cloud_essd
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The list of tags of the instance.
+	// The instance tags.
 	Tags []*DescribeDBInstancesResponseBodyItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Indicates whether TDE is enabled.
+	TdeEnabled *bool `json:"TdeEnabled,omitempty" xml:"TdeEnabled,omitempty"`
 	// The ID of the Prometheus monitoring cluster.
 	//
 	// example:
 	//
-	// Reserved parameter. Not returned.
+	// Reserved parameter. Not returned
 	TenantClusterId *string `json:"TenantClusterId,omitempty" xml:"TenantClusterId,omitempty"`
-	// The token for connecting to Prometheus monitoring.
+	// The access token for Prometheus monitoring.
 	//
 	// example:
 	//
-	// Reserved parameter. Not returned.
+	// Reserved parameter. Not returned
 	TenantToken *string `json:"TenantToken,omitempty" xml:"TenantToken,omitempty"`
 	// The user account label for Prometheus monitoring.
 	//
 	// example:
 	//
-	// Reserved parameter. Not returned.
+	// Reserved parameter. Not returned
 	TenantUserId *string `json:"TenantUserId,omitempty" xml:"TenantUserId,omitempty"`
 	// The VPC ID.
 	//
@@ -388,11 +391,11 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The connection address.
+	// The connection endpoint.
 	//
 	// example:
 	//
-	// Not applicable.
+	// Not returned
 	ConnectionString *string `json:"connectionString,omitempty" xml:"connectionString,omitempty"`
 }
 
@@ -546,6 +549,10 @@ func (s *DescribeDBInstancesResponseBodyItems) GetStorageType() *string {
 
 func (s *DescribeDBInstancesResponseBodyItems) GetTags() []*DescribeDBInstancesResponseBodyItemsTags {
 	return s.Tags
+}
+
+func (s *DescribeDBInstancesResponseBodyItems) GetTdeEnabled() *bool {
+	return s.TdeEnabled
 }
 
 func (s *DescribeDBInstancesResponseBodyItems) GetTenantClusterId() *string {
@@ -756,6 +763,11 @@ func (s *DescribeDBInstancesResponseBodyItems) SetTags(v []*DescribeDBInstancesR
 	return s
 }
 
+func (s *DescribeDBInstancesResponseBodyItems) SetTdeEnabled(v bool) *DescribeDBInstancesResponseBodyItems {
+	s.TdeEnabled = &v
+	return s
+}
+
 func (s *DescribeDBInstancesResponseBodyItems) SetTenantClusterId(v string) *DescribeDBInstancesResponseBodyItems {
 	s.TenantClusterId = &v
 	return s
@@ -823,11 +835,36 @@ func (s *DescribeDBInstancesResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyItemsFEClusterList struct {
-	DbClusterId          *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	NodeCount            *int64  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	SingleNodeCpuCores   *int64  `json:"SingleNodeCpuCores,omitempty" xml:"SingleNodeCpuCores,omitempty"`
-	SingleNodeMemoryInGB *int64  `json:"SingleNodeMemoryInGB,omitempty" xml:"SingleNodeMemoryInGB,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the FE cluster.
+	//
+	// example:
+	//
+	// selectdb-cn-demo12345-fe
+	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// The number of nodes in the FE cluster.
+	//
+	// example:
+	//
+	// 0
+	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// The number of CPU cores per node in the FE cluster.
+	//
+	// example:
+	//
+	// 0
+	SingleNodeCpuCores *int64 `json:"SingleNodeCpuCores,omitempty" xml:"SingleNodeCpuCores,omitempty"`
+	// The memory per node in the FE cluster. Unit: GB.
+	//
+	// example:
+	//
+	// 0
+	SingleNodeMemoryInGB *int64 `json:"SingleNodeMemoryInGB,omitempty" xml:"SingleNodeMemoryInGB,omitempty"`
+	// The status of the FE cluster.
+	//
+	// example:
+	//
+	// ACTIVATION
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyItemsFEClusterList) String() string {

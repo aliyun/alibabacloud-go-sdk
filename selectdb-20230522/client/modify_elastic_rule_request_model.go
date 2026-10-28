@@ -30,7 +30,7 @@ type iModifyElasticRuleRequest interface {
 }
 
 type ModifyElasticRuleRequest struct {
-	// The rule for computing resources of the required cluster.
+	// The target compute resource rule for the cluster.
 	//
 	// example:
 	//
@@ -52,23 +52,19 @@ type ModifyElasticRuleRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The time when you want to execute the scheduled scaling rule.
+	// The start time of the time-based elastic rule. The time is in the HH:mm format.
 	//
 	// example:
 	//
 	// 00:00
 	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
-	// The execution cycle.
-	//
-	// Valid value:
-	//
-	// - Day
+	// The execution period.
 	//
 	// example:
 	//
 	// Day
 	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
-	// The cloud service.
+	// The cloud service type.
 	//
 	// example:
 	//

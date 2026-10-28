@@ -22,13 +22,7 @@ type DeleteElasticRuleResponseBody struct {
 	//
 	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the deletion is successful.
-	//
-	// Valid values:
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether the deletion was successful.
 	//
 	// example:
 	//

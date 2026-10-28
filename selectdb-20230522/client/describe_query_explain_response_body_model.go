@@ -18,7 +18,7 @@ type iDescribeQueryExplainResponseBody interface {
 }
 
 type DescribeQueryExplainResponseBody struct {
-	// The Explain result.
+	// The EXPLAIN result.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeQueryExplainResponseBody struct {
 	//
 	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The SQL statement for which the execution plan is retrieved. Excessively long SQL statements in audit logs may be truncated.
+	// The SQL statement for which the execution plan is queried. Overly long SQL statements in audit logs may be truncated.
 	//
 	// example:
 	//

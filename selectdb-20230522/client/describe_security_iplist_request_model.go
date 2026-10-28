@@ -26,7 +26,7 @@ type DescribeSecurityIPListRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

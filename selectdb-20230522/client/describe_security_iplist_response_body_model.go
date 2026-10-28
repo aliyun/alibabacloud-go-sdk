@@ -24,7 +24,7 @@ type DescribeSecurityIPListResponseBody struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The details about each IP address whitelist returned.
+	// The list of whitelist groups.
 	GroupItems []*DescribeSecurityIPListResponseBodyGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -93,19 +93,19 @@ type DescribeSecurityIPListResponseBodyGroupItems struct {
 	//
 	// ipv4
 	AecurityIPType *string `json:"AecurityIPType,omitempty" xml:"AecurityIPType,omitempty"`
-	// The name of the whitelist.
+	// The name of the whitelist group.
 	//
 	// example:
 	//
 	// group1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The tag of the whitelist.
+	// The group tag.
 	//
 	// example:
 	//
 	// ""
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	// The IP addresses in the whitelist. Multiple IP addresses are separated by commas (,).
+	// The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//

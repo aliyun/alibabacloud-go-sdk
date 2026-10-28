@@ -32,7 +32,7 @@ type ModifySecurityIPListRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the whitelist. Default value: **Default**.
+	// The name of the whitelist group. By default, the **Default*	- group is modified.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type ModifySecurityIPListRequest struct {
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The mode in which you want to modify the whitelist. Valid values:
+	// The modification mode of the whitelist. Valid values:
 	//
-	// - **0**: overwrites the IP addresses in the whitelist.
+	// - **0**: Overwrites the original whitelist.
 	//
-	// - **1**: adds IP addresses to the whitelist.
+	// - **1**: Adds IP addresses to the whitelist.
 	//
-	// - **2**: removes IP addresses from the whitelist.
+	// - **2**: Removes IP addresses from the whitelist.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifySecurityIPListRequest struct {
 	//
 	// 0
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

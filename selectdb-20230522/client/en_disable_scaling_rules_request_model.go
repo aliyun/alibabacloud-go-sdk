@@ -40,7 +40,7 @@ type EnDisableScalingRulesRequest struct {
   // 
   // selectdb-cn-7213cjv****
   DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-  // The cloud service.
+  // The cloud service type.
   // 
   // example:
   // 
@@ -55,13 +55,7 @@ type EnDisableScalingRulesRequest struct {
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-  // Specifies whether to enable the scheduled scaling policy.
-  // 
-  // Valid values:
-  // 
-  // - true
-  // 
-  // - false
+  // Specifies whether the time-based elastic policy is enabled.
   // 
   // This parameter is required.
   // 

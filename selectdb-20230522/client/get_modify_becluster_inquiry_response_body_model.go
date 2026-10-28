@@ -68,17 +68,17 @@ type GetModifyBEClusterInquiryResponseBodyData struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The coupon codes.
+	// The coupon ID.
 	OptionalPromotions []*GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
-	// The unit price results of billing items.
+	// The unit price results of billable items.
 	PricingRules map[string]*string `json:"PricingRules,omitempty" xml:"PricingRules,omitempty"`
-	// The estimated refund amount when converting a subscription cluster to a pay-as-you-go cluster under a subscription instance.
+	// The estimated refund amount when a subscription cluster under a subscription instance is changed to a pay-as-you-go cluster.
 	//
 	// example:
 	//
 	// -100
 	RefundAmount *string `json:"RefundAmount,omitempty" xml:"RefundAmount,omitempty"`
-	// The trade amount.
+	// The amount.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions struct {
 	//
 	// 100
 	CanPromFee *string `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
-	// The promotion rule description.
+	// The description of the promotion rule.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions struct {
 	//
 	// example:
 	//
-	// General coupon can deduct 100
+	// General coupon with a deduction of 100
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The coupon name.
 	//
@@ -179,7 +179,7 @@ type GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions struct {
 	//
 	// General coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	// The coupon code.
+	// The coupon ID.
 	//
 	// example:
 	//

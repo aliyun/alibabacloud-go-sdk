@@ -81,6 +81,12 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 	GetSubDomain() *string
 	SetTags(v []*DescribeDBInstanceAttributeResponseBodyTags) *DescribeDBInstanceAttributeResponseBody
 	GetTags() []*DescribeDBInstanceAttributeResponseBodyTags
+	SetTdeAlgorithm(v string) *DescribeDBInstanceAttributeResponseBody
+	GetTdeAlgorithm() *string
+	SetTdeEnabled(v bool) *DescribeDBInstanceAttributeResponseBody
+	GetTdeEnabled() *bool
+	SetTdeMode(v string) *DescribeDBInstanceAttributeResponseBody
+	GetTdeMode() *string
 	SetVSwitchId(v string) *DescribeDBInstanceAttributeResponseBody
 	GetVSwitchId() *string
 	SetVirtualClusterList(v []*DescribeDBInstanceAttributeResponseBodyVirtualClusterList) *DescribeDBInstanceAttributeResponseBody
@@ -92,15 +98,33 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
+	// The community versions corresponding to the upgradable versions.
+	//
+	// example:
+	//
+	// "4.1.10-20260922":"Apache Doris 3.1.4"
 	CanUpgradeVersionCommunityMap map[string]*string `json:"CanUpgradeVersionCommunityMap,omitempty" xml:"CanUpgradeVersionCommunityMap,omitempty"`
-	// The list of versions to which the instance can be upgraded.
+	// The list of upgradable versions.
+	//
+	// example:
+	//
+	// "4.1.10-20260922"
 	CanUpgradeVersions []*string `json:"CanUpgradeVersions,omitempty" xml:"CanUpgradeVersions,omitempty" type:"Repeated"`
-	// The billing type of the instance. Valid values:
+	// The billing method of the instance. Valid values:
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
+	// - **Prepaid**: subscription.
 	//
 	// example:
 	//
 	// Prepaid
-	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The community version corresponding to the current version.
+	//
+	// example:
+	//
+	// Apache Doris 4.0.8
 	CommunityVersion *string `json:"CommunityVersion,omitempty" xml:"CommunityVersion,omitempty"`
 	// The configuration template applied to the instance.
 	//
@@ -108,13 +132,13 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// log
 	ConfigPatternType *string `json:"ConfigPatternType,omitempty" xml:"ConfigPatternType,omitempty"`
-	// The creation time of the instance.
+	// The creation time in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
 	// 2023-08-14T03:00:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The list of clusters that belong to the instance.
+	// The list of clusters to which the instance belongs.
 	DBClusterList []*DescribeDBInstanceAttributeResponseBodyDBClusterList `json:"DBClusterList,omitempty" xml:"DBClusterList,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -134,7 +158,7 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The database engine type.
+	// The database engine.
 	//
 	// example:
 	//
@@ -146,27 +170,33 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// 3.0.1
 	EngineMinorVersion *string `json:"EngineMinorVersion,omitempty" xml:"EngineMinorVersion,omitempty"`
-	// The database engine version.
+	// The database version.
 	//
 	// example:
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time when the instance expires.
+	// The time when the instance expires, in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
 	// 2023-09-17T00:00Z
-	ExpireTime    *string                                                 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The list of FE clusters.
 	FEClusterList []*DescribeDBInstanceAttributeResponseBodyFEClusterList `json:"FEClusterList,omitempty" xml:"FEClusterList,omitempty" type:"Repeated"`
-	// The time when the instance was last modified (for example, restarted or had public network access enabled). The time is in the yyyy-MM-ddTHH:mmZ format (UTC).
+	// The time when the instance was modified, such as restart or public network application. The time is in the yyyy-MM-ddTHH:mmZ format (UTC time).
 	//
 	// example:
 	//
 	// 2023-08-17T09:58Z
-	GmtModified         *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The list of Langfuse instance IDs associated with the SelectDB instance.
+	//
+	// example:
+	//
+	// ["lfu-xxkshuf23sdj"]
 	LangfuseInstanceIds []*string `json:"LangfuseInstanceIds,omitempty" xml:"LangfuseInstanceIds,omitempty" type:"Repeated"`
-	// The lock mode of the instance. The value is **lock**, which indicates that the instance is automatically expired or has an overdue payment.
+	// The lock mode of the instance. A value of **lock*	- indicates that the instance is locked due to expiration or overdue payment.
 	//
 	// example:
 	//
@@ -178,29 +208,45 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// nolock
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// The service status of the MCP Server.
+	//
 	// example:
 	//
 	// not_enabled
 	MCPServerServiceStatus *string `json:"MCPServerServiceStatus,omitempty" xml:"MCPServerServiceStatus,omitempty"`
-	// The end time of the maintenance window of the instance.
+	// Reserved parameter. This parameter is not returned and does not apply to the time format.
 	//
 	// example:
 	//
-	// Reserved parameter.
+	// Reserved parameter, not currently returned
 	MaintainEndtime *string `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
-	// The start time of the maintenance window of the instance.
+	// Reserved parameter. This parameter is not returned and does not apply to the time format.
 	//
 	// example:
 	//
-	// Reserved parameter.
+	// Reserved parameter, not currently returned
 	MaintainStarttime *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
 	// The multi-zone configuration.
 	//
+	// >
+	//
+	// > - This parameter is valid when DeployScheme is set to multi_az.
+	//
 	// if can be null:
 	// true
-	MultiZone                []*DescribeDBInstanceAttributeResponseBodyMultiZone `json:"MultiZone,omitempty" xml:"MultiZone,omitempty" type:"Repeated"`
-	OTelBearerToken          *string                                             `json:"OTelBearerToken,omitempty" xml:"OTelBearerToken,omitempty"`
-	OTelGrafanaServiceStatus *string                                             `json:"OTelGrafanaServiceStatus,omitempty" xml:"OTelGrafanaServiceStatus,omitempty"`
+	MultiZone []*DescribeDBInstanceAttributeResponseBodyMultiZone `json:"MultiZone,omitempty" xml:"MultiZone,omitempty" type:"Repeated"`
+	// The OTel collector bearer token.
+	//
+	// example:
+	//
+	// nDVkJstxQEwyXIae8cRBzK33Hev68len
+	OTelBearerToken *string `json:"OTelBearerToken,omitempty" xml:"OTelBearerToken,omitempty"`
+	// The service status of the OTel collector and Grafana.
+	//
+	// example:
+	//
+	// not_enabled
+	OTelGrafanaServiceStatus *string `json:"OTelGrafanaServiceStatus,omitempty" xml:"OTelGrafanaServiceStatus,omitempty"`
 	// The storage space.
 	//
 	// example:
@@ -219,7 +265,7 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// 06758CAB-1204-5852-A471-29C87D5C1D0F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of CPU resources.
+	// The number of CPU cores.
 	//
 	// example:
 	//
@@ -231,13 +277,21 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// rg-aekzbck4asz3dsa
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the direct port connection feature is enabled for the VPC in which the instance resides.
+	// Indicates whether the port direct connection feature is enabled for the VPC where the current instance resides.
+	//
+	// - A value of true indicates that the feature is enabled.
+	//
+	// - A value of false indicates that the feature is disabled.
 	//
 	// example:
 	//
 	// false
 	SecGroupConnValid *string `json:"SecGroupConnValid,omitempty" xml:"SecGroupConnValid,omitempty"`
-	// Indicates whether the serverless feature is enabled for the instance.
+	// Indicates whether the serverless feature is enabled for the current instance.
+	//
+	// - A value of true indicates that the feature is enabled.
+	//
+	// - A value of false indicates that the feature is disabled.
 	//
 	// example:
 	//
@@ -245,11 +299,23 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	Serverless *bool `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
 	// The status of the instance. Valid values:
 	//
+	// - **CREATING**: The instance is being created.
+	//
+	// - **ACTIVE**: The instance is running.
+	//
+	// - **RESOURCE_CHANGING**: The instance specifications are being changed.
+	//
+	// - **ORDER_PREPARING**: The order is being confirmed.
+	//
+	// - **READONLY_RESOURCE_CHANGING**: The resources are being changed and the instance is locked for writes.
+	//
+	// - **DELETING**: The instance is being deleted.
+	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage size.
+	// The size of the storage space.
 	//
 	// example:
 	//
@@ -259,10 +325,28 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// Reserved parameter.
+	// cn-beijing-h-aliyun
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	// The list of instance labels.
+	// The instance label list information.
 	Tags []*DescribeDBInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The algorithm used for TDE on the instance.
+	//
+	// example:
+	//
+	// AES256
+	TdeAlgorithm *string `json:"TdeAlgorithm,omitempty" xml:"TdeAlgorithm,omitempty"`
+	// Indicates whether TDE is enabled for the instance.
+	//
+	// example:
+	//
+	// true
+	TdeEnabled *bool `json:"TdeEnabled,omitempty" xml:"TdeEnabled,omitempty"`
+	// The TDE mode of the instance.
+	//
+	// example:
+	//
+	// MANAGED
+	TdeMode *string `json:"TdeMode,omitempty" xml:"TdeMode,omitempty"`
 	// The vSwitch ID.
 	//
 	// example:
@@ -435,6 +519,18 @@ func (s *DescribeDBInstanceAttributeResponseBody) GetSubDomain() *string {
 
 func (s *DescribeDBInstanceAttributeResponseBody) GetTags() []*DescribeDBInstanceAttributeResponseBodyTags {
 	return s.Tags
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) GetTdeAlgorithm() *string {
+	return s.TdeAlgorithm
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) GetTdeEnabled() *bool {
+	return s.TdeEnabled
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) GetTdeMode() *string {
+	return s.TdeMode
 }
 
 func (s *DescribeDBInstanceAttributeResponseBody) GetVSwitchId() *string {
@@ -633,6 +729,21 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetTags(v []*DescribeDBInstanc
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBody) SetTdeAlgorithm(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.TdeAlgorithm = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) SetTdeEnabled(v bool) *DescribeDBInstanceAttributeResponseBody {
+	s.TdeEnabled = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) SetTdeMode(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.TdeMode = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBody) SetVSwitchId(v string) *DescribeDBInstanceAttributeResponseBody {
 	s.VSwitchId = &v
 	return s
@@ -717,6 +828,10 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	CacheStorageType *string `json:"CacheStorageType,omitempty" xml:"CacheStorageType,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
+	// - **Postpaid**: pay-as-you-go.
+	//
+	// - **Prepaid**: subscription.
+	//
 	// example:
 	//
 	// Prepaid
@@ -727,13 +842,13 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	//
 	// selectdb-cn-7213cjv****-be
 	ClusterBinding *string `json:"ClusterBinding,omitempty" xml:"ClusterBinding,omitempty"`
-	// The number of cluster nodes. This parameter takes effect only in serverless mode.
+	// The number of nodes in the cluster. This parameter takes effect only in serverless mode.
 	//
 	// example:
 	//
 	// 1
 	ClusterNodeCount *int32 `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
-	// The cluster node type. This parameter takes effect only in serverless mode.
+	// The node type of the cluster. This parameter takes effect only in serverless mode.
 	//
 	// example:
 	//
@@ -745,13 +860,41 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	//
 	// 8
 	CpuCores *int64 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	// The time when the cluster was created.
+	// The creation time of the cluster in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
 	// 2023-08-14T09:24:13Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The cluster specifications. Valid values:
+	//
+	// - **selectdb.xlarge**: 4 cores and 16 GB memory
+	//
+	// - **selectdb.2xlarge**: 8 cores and 32 GB memory
+	//
+	// - **selectdb.4xlarge**: 16 cores and 64 GB memory
+	//
+	// - **selectdb.8xlarge**: 32 cores and 128 GB memory
+	//
+	// - **selectdb.16xlarge**: 64 cores and 256 GB memory
+	//
+	// - **selectdb.24xlarge**: 96 cores and 384 GB memory
+	//
+	// - **selectdb.32xlarge**: 128 cores and 512 GB memory
+	//
+	// - **selectdb.g.xlarge**: 4 cores and 16 GB memory
+	//
+	// - **selectdb.g.2xlarge**: 8 cores and 32 GB memory
+	//
+	// - **selectdb.g.4xlarge**: 16 cores and 64 GB memory
+	//
+	// - **selectdb.g.8xlarge**: 32 cores and 128 GB memory
+	//
+	// - **selectdb.g.16xlarge**: 64 cores and 256 GB memory
+	//
+	// - **selectdb.g.24xlarge**: 96 cores and 384 GB memory
+	//
+	// - **selectdb.g.32xlarge**: 128 cores and 512 GB memory
 	//
 	// example:
 	//
@@ -773,7 +916,7 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	//
 	// example:
 	//
-	// Instance test
+	// Test instance
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
 	// The memory size.
 	//
@@ -781,7 +924,7 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	//
 	// 64
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The modification time.
+	// The modification time in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
@@ -793,31 +936,43 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The maximum value of the automatic scaling range for the instance RCU (RDS Capacity Unit).
+	// The maximum number of RDS Capacity Units (RCUs) for auto-scaling.
 	//
 	// example:
 	//
 	// 4
 	ScaleMax *float64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum value of the automatic scaling range for the instance RCU (RDS Capacity Unit).
+	// The minimum number of RDS Capacity Units (RCUs) for auto-scaling.
 	//
 	// example:
 	//
 	// 0.5
 	ScaleMin *float64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// Indicates whether the time-based elastic policy is enabled.
+	// Specifies whether the time-based elastic policy is enabled.
 	//
 	// example:
 	//
 	// false
 	ScalingRulesEnable *bool `json:"ScalingRulesEnable,omitempty" xml:"ScalingRulesEnable,omitempty"`
-	// The start time of the cluster.
+	// The start time of the cluster in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
 	// 2023-08-14T09:24:13Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the cluster. Valid values:
+	//
+	// - **CREATING**: The cluster is being created.
+	//
+	// - **ACTIVATION**: The cluster is running.
+	//
+	// - **RESOURCE_CHANGING**: The cluster specifications are being changed.
+	//
+	// - **ORDER_PREPARING**: The order is being confirmed.
+	//
+	// - **READONLY_RESOURCE_CHANGING**: The cluster resources are being changed and the instance is locked for writes.
+	//
+	// - **DELETING**: The cluster is being deleted.
 	//
 	// example:
 	//
@@ -827,7 +982,7 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	//
 	// example:
 	//
-	// Reserved parameter. Not returned
+	// Reserved parameter, not returned
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 	// The vSwitch ID.
 	//
@@ -1063,11 +1218,36 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) Validate() error 
 }
 
 type DescribeDBInstanceAttributeResponseBodyFEClusterList struct {
-	DbClusterId          *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	NodeCount            *int64  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	SingleNodeCpuCores   *int64  `json:"SingleNodeCpuCores,omitempty" xml:"SingleNodeCpuCores,omitempty"`
-	SingleNodeMemoryInGB *int64  `json:"SingleNodeMemoryInGB,omitempty" xml:"SingleNodeMemoryInGB,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the FE cluster.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****-fe
+	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// The number of nodes in the FE cluster.
+	//
+	// example:
+	//
+	// 1
+	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// The number of CPU cores per node in the FE cluster.
+	//
+	// example:
+	//
+	// 4
+	SingleNodeCpuCores *int64 `json:"SingleNodeCpuCores,omitempty" xml:"SingleNodeCpuCores,omitempty"`
+	// The memory size per node in the FE cluster. Unit: GB.
+	//
+	// example:
+	//
+	// 16
+	SingleNodeMemoryInGB *int64 `json:"SingleNodeMemoryInGB,omitempty" xml:"SingleNodeMemoryInGB,omitempty"`
+	// The status of the FE cluster.
+	//
+	// example:
+	//
+	// ACTIVATION
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyFEClusterList) String() string {
@@ -1134,7 +1314,7 @@ type DescribeDBInstanceAttributeResponseBodyMultiZone struct {
 	//
 	// 4096
 	AvailableIpCount *int64 `json:"AvailableIpCount,omitempty" xml:"AvailableIpCount,omitempty"`
-	// The Classless Inter-Domain Routing block of the prefix list entry.
+	// The CIDR block information of the prefix list entry.
 	//
 	// example:
 	//
@@ -1205,7 +1385,7 @@ type DescribeDBInstanceAttributeResponseBodyTags struct {
 	//
 	// testKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -1256,7 +1436,7 @@ type DescribeDBInstanceAttributeResponseBodyVirtualClusterList struct {
 	//
 	// test1
 	ActiveClusterName *string `json:"ActiveClusterName,omitempty" xml:"ActiveClusterName,omitempty"`
-	// The creation time of the instance.
+	// The creation time in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
@@ -1287,6 +1467,14 @@ type DescribeDBInstanceAttributeResponseBodyVirtualClusterList struct {
 	// test2
 	StandbyClusterName *string `json:"StandbyClusterName,omitempty" xml:"StandbyClusterName,omitempty"`
 	// The status of the instance. Valid values:
+	//
+	// - **CREATING**: The instance is being created.
+	//
+	// - **RUNNING**: The instance is running.
+	//
+	// - **DELETING**: The instance is being deleted.
+	//
+	// - **UPDATING**: The instance is being updated.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// 200
 	CacheSize *int64 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
-	// The billing type.
+	// The billing method.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// selectdb-cn-xxx
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// Specifies whether to query the price for converting the cluster billing type.
+	// Specifies whether to query the pricing for changing the billing method of the cluster.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// Hour
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The coupon code.
+	// The coupon ID.
 	//
 	// example:
 	//

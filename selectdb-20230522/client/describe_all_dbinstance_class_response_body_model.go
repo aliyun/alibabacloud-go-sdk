@@ -16,7 +16,7 @@ type iDescribeAllDBInstanceClassResponseBody interface {
 }
 
 type DescribeAllDBInstanceClassResponseBody struct {
-	// The list of instance specifications.
+	// The list of instance types.
 	ClassCodeList []*DescribeAllDBInstanceClassResponseBodyClassCodeList `json:"ClassCodeList,omitempty" xml:"ClassCodeList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,7 +66,7 @@ func (s *DescribeAllDBInstanceClassResponseBody) Validate() error {
 }
 
 type DescribeAllDBInstanceClassResponseBodyClassCodeList struct {
-	// The specification code.
+	// The instance type code.
 	//
 	// example:
 	//

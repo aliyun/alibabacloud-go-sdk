@@ -38,7 +38,7 @@ type DescribeElasticRulesRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The cloud service.
+	// The cloud service type.
 	//
 	// example:
 	//

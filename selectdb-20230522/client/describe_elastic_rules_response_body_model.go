@@ -16,7 +16,7 @@ type iDescribeElasticRulesResponseBody interface {
 }
 
 type DescribeElasticRulesResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *DescribeElasticRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,7 +74,7 @@ type DescribeElasticRulesResponseBodyData struct {
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The details of the rules.
+	// The list of rules.
 	Rules []*DescribeElasticRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -127,23 +127,19 @@ func (s *DescribeElasticRulesResponseBodyData) Validate() error {
 }
 
 type DescribeElasticRulesResponseBodyDataRules struct {
-	// The rule for computing resources of the required cluster.
+	// The target compute resource rule of the cluster.
 	//
 	// example:
 	//
 	// selectdb.2xlarge
 	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
-	// The time when you want to execute the scheduled scaling rule.
+	// The start time of the time-based elastic rule, in the HH:mm format.
 	//
 	// example:
 	//
 	// 00:00
 	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
-	// The execution cycle.
-	//
-	// Valid value:
-	//
-	// - Day
+	// The execution period.
 	//
 	// example:
 	//

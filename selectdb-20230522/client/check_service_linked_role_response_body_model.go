@@ -16,7 +16,7 @@ type iCheckServiceLinkedRoleResponseBody interface {
 }
 
 type CheckServiceLinkedRoleResponseBody struct {
-	// Indicates whether the service-linked role has been created.
+	// Indicates whether the service-linked role is created.
 	//
 	// example:
 	//

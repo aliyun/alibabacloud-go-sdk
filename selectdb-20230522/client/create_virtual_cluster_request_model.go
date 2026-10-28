@@ -32,7 +32,7 @@ type CreateVirtualClusterRequest struct {
 	//
 	// -be
 	ActiveClusterId *string `json:"ActiveClusterId,omitempty" xml:"ActiveClusterId,omitempty"`
-	// The instance name. Naming rules: must start with a letter, can contain up to 64 characters, and can include letters (case-insensitive), digits, and underscores (_). The name cannot contain two or more consecutive underscores (_), and cluster names must be unique within the same instance.
+	// The cluster name. The name must start with a letter and can be up to 64 characters in length. It can contain letters (case-insensitive), digits, and underscores (_). It cannot contain two or more consecutive underscores (_). Cluster names must be unique within the same instance.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateVirtualClusterRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The secondary cluster ID.
+	// The standby cluster ID.
 	//
 	// This parameter is required.
 	//

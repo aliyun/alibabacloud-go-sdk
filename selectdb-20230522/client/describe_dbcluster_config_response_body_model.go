@@ -22,21 +22,21 @@ type iDescribeDBClusterConfigResponseBody interface {
 }
 
 type DescribeDBClusterConfigResponseBody struct {
-	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) authentication failed.
+	// The details of the access denial. This field is returned only when RAM authentication fails.
 	//
 	// example:
 	//
 	// failed
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The information returned.
+	// The returned data.
 	Data *DescribeDBClusterConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The dynamic code. This parameter is not returned.
+	// The dynamic code. This field is not used and can be ignored.
 	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not returned.
+	// The dynamic message. This field is not used and can be ignored.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type DescribeDBClusterConfigResponseBodyData struct {
 	//
 	// selectdb-cn-wny3li0****
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	// The details about each parameter returned.
+	// The user parameters.
 	Params []*DescribeDBClusterConfigResponseBodyDataParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// The task ID.
 	//
@@ -208,11 +208,11 @@ func (s *DescribeDBClusterConfigResponseBodyData) Validate() error {
 }
 
 type DescribeDBClusterConfigResponseBodyDataParams struct {
-	// The comments on the parameter.
+	// The comment of the field.
 	//
 	// example:
 	//
-	// 存储引擎并发扫描硬盘的线程数。采用线程池统一管理。
+	// The number of threads used by the storage engine to concurrently scan hard disks. A thread pool is used for unified management
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The default value of the parameter.
 	//
@@ -220,37 +220,37 @@ type DescribeDBClusterConfigResponseBodyDataParams struct {
 	//
 	// 15
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// Indicates whether the parameter immediately takes effect without requiring a restart.
+	// Specifies whether the parameter takes effect dynamically without a restart.
 	//
 	// example:
 	//
 	// true
 	IsDynamic *int32 `json:"IsDynamic,omitempty" xml:"IsDynamic,omitempty"`
-	// Indicates whether the parameter is modifiable.
+	// Specifies whether users are allowed to modify the parameter.
 	//
 	// example:
 	//
 	// true
 	IsUserModifiable *int32 `json:"IsUserModifiable,omitempty" xml:"IsUserModifiable,omitempty"`
-	// The name of the parameter.
+	// The name of the configuration item.
 	//
 	// example:
 	//
 	// doris_scanner_thread_pool_thread_num
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value range of the parameter.
+	// The value range.
 	//
 	// example:
 	//
 	// [0-20000]
 	Optional *string `json:"Optional,omitempty" xml:"Optional,omitempty"`
-	// The category of the parameter.
+	// The category of the configuration item.
 	//
 	// example:
 	//
 	// Query
 	ParamCategory *string `json:"ParamCategory,omitempty" xml:"ParamCategory,omitempty"`
-	// The current value of the parameter.
+	// The current value.
 	//
 	// example:
 	//

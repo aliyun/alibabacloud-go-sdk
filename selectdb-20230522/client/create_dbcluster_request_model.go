@@ -58,33 +58,43 @@ type CreateDBClusterRequest struct {
 	CacheSize *string `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: pay-as-you-go
 	//
-	// - **Prepaid**: subscription.
+	// - **Prepaid**: subscription
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Prepaid
-	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClusterNodeCount *int32  `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
-	ClusterNodeType  *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
-	// The instance type of the cluster. Valid values:
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The number of nodes in the cluster. This parameter takes effect only in Serverless mode.
 	//
-	// - **selectdb.xlarge**: 4 cores, 32 GB.
+	// example:
 	//
-	// - **selectdb.2xlarge**: 8 cores, 64 GB.
+	// 1
+	ClusterNodeCount *int32 `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
+	// The node type of the cluster. This parameter takes effect only in Serverless mode.
 	//
-	// - **selectdb.4xlarge**: 16 cores, 128 GB.
+	// example:
 	//
-	// - **selectdb.8xlarge**: 32 cores, 256 GB.
+	// base
+	ClusterNodeType *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
+	// The cluster specifications. Valid values:
 	//
-	// - **selectdb.16xlarge**: 64 cores, 512 GB.
+	// - **selectdb.xlarge**: 4 cores and 32 GB memory
 	//
-	// - **selectdb.24xlarge**: 96 cores, 768 GB.
+	// - **selectdb.2xlarge**: 8 cores and 64 GB memory
 	//
-	// - **selectdb.32xlarge**: 128 cores, 1024 GB.
+	// - **selectdb.4xlarge**: 16 cores and 128 GB memory
+	//
+	// - **selectdb.8xlarge**: 32 cores and 256 GB memory
+	//
+	// - **selectdb.16xlarge**: 64 cores and 512 GB memory
+	//
+	// - **selectdb.24xlarge**: 96 cores and 768 GB memory
+	//
+	// - **selectdb.32xlarge**: 128 cores and 1024 GB memory
 	//
 	// This parameter is required.
 	//
@@ -92,7 +102,7 @@ type CreateDBClusterRequest struct {
 	//
 	// selectdb.2xlarge
 	DBClusterClass *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
-	// The description of the cluster.
+	// The cluster description.
 	//
 	// This parameter is required.
 	//
@@ -108,13 +118,13 @@ type CreateDBClusterRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine type.
+	// The database type.
 	//
 	// example:
 	//
 	// selectdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version.
+	// The database version.
 	//
 	// This parameter is required.
 	//
@@ -122,13 +132,13 @@ type CreateDBClusterRequest struct {
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The billing cycle of the subscription cluster. Valid values:
+	// Specifies whether the subscription cluster is billed on a yearly or monthly basis. Valid values:
 	//
-	// - **Year**: The cluster is billed on a yearly basis.
+	// - **Year**: yearly
 	//
-	// - **Month**: The cluster is billed on a monthly basis.
+	// - **Month**: monthly
 	//
-	// > This parameter is required and takes effect only when **ChargeType*	- is set to **Prepaid**.
+	// > This parameter takes effect and is required only when **ChargeType*	- is set to **Prepaid**.
 	//
 	// example:
 	//
@@ -141,17 +151,27 @@ type CreateDBClusterRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId *int64   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ScaleMax        *float64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	ScaleMin        *float64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The subscription duration of the subscription cluster. Valid values:
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The maximum value of the auto-scaling range for the instance RCU (RDS Capacity Unit).
+	//
+	// example:
+	//
+	// 32
+	ScaleMax *float64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum value of the auto-scaling range for the instance RCU (RDS Capacity Unit).
+	//
+	// example:
+	//
+	// 4
+	ScaleMin *float64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// Specifies the purchase duration of the subscription cluster. The unit is specified by Period: Year indicates years, and Month indicates months. Valid values:
 	//
 	// - If Period is set to Year, valid values for UsedTime are 1, 2, 3, and 5.
 	//
-	// - If Period is set to Month, the value of UsedTime can be an integer from 1 to 9.
+	// - If Period is set to Month, valid values for UsedTime are 1 to 9.
 	//
-	// > This parameter is required and takes effect only when ChargeType is set to Prepaid.
+	// > This parameter takes effect and is required only when ChargeType is set to Prepaid.
 	//
 	// example:
 	//

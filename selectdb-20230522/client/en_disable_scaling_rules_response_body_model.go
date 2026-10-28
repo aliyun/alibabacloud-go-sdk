@@ -16,7 +16,7 @@ type iEnDisableScalingRulesResponseBody interface {
 }
 
 type EnDisableScalingRulesResponseBody struct {
-  // The data returned.
+  // The returned data.
   Data *EnDisableScalingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
   // The request ID.
   // 
@@ -74,13 +74,7 @@ type EnDisableScalingRulesResponseBodyData struct {
   // 
   // selectdb-cn-7213cjv****
   DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-  // Indicates whether the scheduled scaling policy is enabled.
-  // 
-  // Valid values:
-  // 
-  // - true
-  // 
-  // - false
+  // Indicates whether the time-based elastic scaling rule is enabled.
   // 
   // example:
   // 

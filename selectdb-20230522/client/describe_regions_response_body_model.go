@@ -16,7 +16,7 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// An array of regions.
+	// The list of region data.
 	RegionModelList []*DescribeRegionsResponseBodyRegionModelList `json:"RegionModelList,omitempty" xml:"RegionModelList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,7 +72,7 @@ type DescribeRegionsResponseBodyRegionModelList struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// An array of zones.
+	// The list of zones.
 	Zones []*DescribeRegionsResponseBodyRegionModelListZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -120,9 +120,9 @@ type DescribeRegionsResponseBodyRegionModelListZones struct {
 	//
 	// example:
 	//
-	// 北京H可用区
+	// Beijing Zone H
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the VPC is disabled.
+	// Indicates whether the zone is disabled.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type DescribeRegionsResponseBodyRegionModelListZones struct {
 	//
 	// true
 	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
-	// Indicates whether the virtual private cloud (VPC) is available.
+	// Indicates whether the VPC is available.
 	//
 	// example:
 	//

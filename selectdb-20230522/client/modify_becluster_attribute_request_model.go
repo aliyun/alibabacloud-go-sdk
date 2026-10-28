@@ -40,7 +40,7 @@ type ModifyBEClusterAttributeRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The type of the attribute to modify. Set this parameter to DBInstanceDescription.
+	// The type of the attribute to modify. Set the value to DBInstanceDescription.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iCreateDBClusterResponseBody interface {
 }
 
 type CreateDBClusterResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *CreateDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//

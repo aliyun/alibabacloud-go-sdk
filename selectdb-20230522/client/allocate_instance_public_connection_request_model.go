@@ -22,7 +22,7 @@ type iAllocateInstancePublicConnectionRequest interface {
 }
 
 type AllocateInstancePublicConnectionRequest struct {
-	// The prefix of the endpoint. Set the parameter to the prefix of the value of **ConnectionString**.
+	// The prefix of the target endpoint, which is the prefix of the **ConnectionString*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type AllocateInstancePublicConnectionRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The network type of the endpoint to be applied for. Set the value to Public.
+	// The network type of the new endpoint. Set the value to Public.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type AllocateInstancePublicConnectionRequest struct {
 	//
 	// Public
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

@@ -18,6 +18,11 @@ type iDescribeAllDBInstanceClassRequest interface {
 }
 
 type DescribeAllDBInstanceClassRequest struct {
+	// The SelectDB instance ID. This parameter is required when you create a cluster or change the specifications of a cluster.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The region ID.
 	//

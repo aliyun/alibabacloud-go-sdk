@@ -36,25 +36,25 @@ type DescribeDBInstancesRequest struct {
 	//
 	// New instance test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The instance ID. Separate multiple instance IDs with commas (,).
+	// The instance IDs. Separate multiple instance IDs with commas (,).
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
-	// The state of the instance. Valid values:
+	// The status of the instance. Valid values:
 	//
-	// - **CREATING**: The instance is being created.
+	// - **CREATING**: Creating.
 	//
-	// - **ACTIVATION**: The instance is running.
+	// - **ACTIVATION**: Running.
 	//
-	// - **RESOURCE_CHANGING**: The instance is being upgraded or downgraded.
+	// - **RESOURCE_CHANGING**: Changing specifications.
 	//
-	// - **ORDER_PREPARING**: The order is being confirmed.
+	// - **ORDER_PREPARING**: Confirming order.
 	//
-	// - **READONLY_RESOURCE_CHANGING**: The instance configuration is being changed, and the instance is write-locked.
+	// - **READONLY_RESOURCE_CHANGING**: Changing resources (the instance is locked for write operations).
 	//
-	// - **DELETING**: The instance is being deleted.
+	// - **DELETING**: Deleting.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type DescribeDBInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (default)
+	// - **30**: Default value.
 	//
 	// - **50**
 	//
@@ -86,14 +86,14 @@ type DescribeDBInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-4690g37929****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The list of tags of instances.
+	// The instance tags.
 	Tag []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

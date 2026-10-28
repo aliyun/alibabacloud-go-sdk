@@ -57,9 +57,9 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The upgrade mode.
 	//
-	// - If this parameter is left empty, the upgrade is performed immediately.
+	// - If you leave this parameter empty, the upgrade is performed immediately.
 	//
-	// - If this parameter is set to 1, the upgrade is performed during the maintenance window.
+	// - If you set this parameter to 1, the upgrade is performed during the maintenance window.
 	//
 	// example:
 	//

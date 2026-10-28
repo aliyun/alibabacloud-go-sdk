@@ -22,7 +22,7 @@ type iDescribeDBClusterStorageLimitationResponseBody interface {
 }
 
 type DescribeDBClusterStorageLimitationResponseBody struct {
-	// The details of the access denial. This field is returned only when the RAM verification fails.
+	// The details about the access denial. This parameter is returned only when RAM authentication fails.
 	//
 	// example:
 	//
@@ -30,13 +30,13 @@ type DescribeDBClusterStorageLimitationResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The returned data.
 	Data *DescribeDBClusterStorageLimitationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The dynamic code. This parameter is not used. Ignore this parameter.
+	// The dynamic code. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not used. Ignore this parameter.
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
@@ -154,37 +154,37 @@ type DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList struct {
 	//
 	// selectdb.xlarge
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The number of vCPU cores.
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 4
 	CpuCores *int32 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	// The default cache size in GB.
+	// The default cache size. Unit: GB.
 	//
 	// example:
 	//
 	// 8
 	DefaultStorageInGB *int32 `json:"DefaultStorageInGB,omitempty" xml:"DefaultStorageInGB,omitempty"`
-	// The maximum cache size in GB.
+	// The maximum cache size. Unit: GB.
 	//
 	// example:
 	//
 	// 16
 	MaxStorageInGB *int32 `json:"MaxStorageInGB,omitempty" xml:"MaxStorageInGB,omitempty"`
-	// The memory size in GB.
+	// The memory size. Unit: GB.
 	//
 	// example:
 	//
 	// 16
 	MemoryInGB *int32 `json:"MemoryInGB,omitempty" xml:"MemoryInGB,omitempty"`
-	// The minimum cache size in GB.
+	// The minimum cache size. Unit: GB.
 	//
 	// example:
 	//
 	// 2
 	MinStorageInGB *int32 `json:"MinStorageInGB,omitempty" xml:"MinStorageInGB,omitempty"`
-	// The cache step size in GB.
+	// The cache step size. Unit: GB.
 	//
 	// example:
 	//

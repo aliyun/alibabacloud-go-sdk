@@ -16,7 +16,7 @@ type iModifyElasticRuleResponseBody interface {
 }
 
 type ModifyElasticRuleResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *ModifyElasticRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ModifyElasticRuleResponseBody) Validate() error {
 }
 
 type ModifyElasticRuleResponseBodyData struct {
-	// The rule for computing resources of the required cluster.
+	// The target compute resource rule for the cluster.
 	//
 	// example:
 	//
@@ -80,17 +80,13 @@ type ModifyElasticRuleResponseBodyData struct {
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The time when the scheduled scaling rule is executed.
+	// The start time of the time-based elastic rule. The time is in the HH:mm format.
 	//
 	// example:
 	//
 	// 00:00
 	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
-	// The execution cycle.
-	//
-	// Valid value:
-	//
-	// - Day
+	// The execution period.
 	//
 	// example:
 	//

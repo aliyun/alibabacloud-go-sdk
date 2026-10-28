@@ -18,15 +18,15 @@ type iDescribeZonesRequest interface {
 }
 
 type DescribeZonesRequest struct {
-	// - If you do not specify the **MaxResults*	- request parameter, paged query is disabled. The **MaxResults*	- response parameter indicates the total number of entries.
+	// - If you do not specify the **MaxResults*	- request parameter, you do not need to query data in batches. The value of the **MaxResults*	- response parameter indicates the total number of list entries.
 	//
-	// - If you specify the **MaxResults*	- request parameter, paged query is enabled. The **MaxResults*	- response parameter indicates the number of entries on the current page.
+	// - If you specify the **MaxResults*	- request parameter, you must query data in batches. The value of the **MaxResults*	- response parameter indicates the number of list entries in the current batch.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results.
+	// The token used to start the next query.
 	//
 	// example:
 	//

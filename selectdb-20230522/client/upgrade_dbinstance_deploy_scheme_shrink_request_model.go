@@ -28,11 +28,11 @@ type UpgradeDBInstanceDeploySchemeShrinkRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// A list of multi-zone configurations.
+	// The list of multiple zones.
 	//
 	// This parameter is required.
 	MultiZoneShrink *string `json:"MultiZone,omitempty" xml:"MultiZone,omitempty"`
-	// The ID of the region where the instance resides.
+	// The ID of the region in which the instance resides.
 	//
 	// This parameter is required.
 	//

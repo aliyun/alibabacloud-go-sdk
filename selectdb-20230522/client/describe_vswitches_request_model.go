@@ -26,9 +26,9 @@ type iDescribeVSwitchesRequest interface {
 }
 
 type DescribeVSwitchesRequest struct {
-	// The number of entries per page for a paged query.
+	// The number of entries per page for paging.
 	//
-	// 	Warning: This is a reserved parameter and is not supported.</warning>
+	// 	Warning: Reserved parameter. Not supported.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeVSwitchesRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token for the next query.
 	//
-	// 	Warning: This is a reserved parameter and is not supported.</warning>
+	// 	Warning: Reserved parameter. Not supported.</warning>
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeVSwitchesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The VPC ID of the instance.
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//

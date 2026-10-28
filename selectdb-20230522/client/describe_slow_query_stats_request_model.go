@@ -32,7 +32,7 @@ type DescribeSlowQueryStatsRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end time. Must be later than the start time. Defaults to the current time.
+	// The end time. It must be later than the start time. Default value: the current time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type DescribeSlowQueryStatsRequest struct {
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time. Defaults to 24 hours before the current time.
+	// The start time. Default value: 24 hours ago. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-04-07 16:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The slow query threshold, in milliseconds. The default value is 5000.
+	// The slow query threshold in milliseconds. Default value: 5000.
 	//
 	// example:
 	//
 	// 5000
 	ThresholdMs *int64 `json:"ThresholdMs,omitempty" xml:"ThresholdMs,omitempty"`
-	// The number of top slow queries to return. The default value is 10.
+	// The number of top slow queries to return. Default value: 10.
 	//
 	// example:
 	//

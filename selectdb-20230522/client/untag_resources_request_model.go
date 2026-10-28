@@ -22,7 +22,7 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the instances. This parameter takes effect only when you do not specify TagKey. The default value is false.
+	// Specifies whether to remove all tags from the instance. This parameter takes effect only when TagKey is not specified. Default value: false.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// An array of instance IDs.
+	// The array of instance IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type.
 	//
@@ -46,7 +46,7 @@ type UntagResourcesRequest struct {
 	//
 	// DBInstance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// An array of tag keys.
+	// The array of tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

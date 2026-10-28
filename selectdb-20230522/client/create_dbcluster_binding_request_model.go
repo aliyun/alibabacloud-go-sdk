@@ -44,7 +44,7 @@ type CreateDBClusterBindingRequest struct {
 	//
 	// selectdb-cn-7213cjv2ez
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID
+	// The region ID.
 	//
 	// example:
 	//

@@ -67,10 +67,20 @@ type GetCreateBEClusterInquiryResponseBodyData struct {
 	// example:
 	//
 	// CNY
-	Currency           *string                                                        `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The coupon information.
+	//
+	// example:
+	//
+	// [{"OptionCode":"7afs9d","PromotionDesc":"General coupon for a deduction of 100","PromotionName":"General coupon","CanPromFee":"100","PromotionOptionNo":"775735400028"}]
 	OptionalPromotions []*GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
-	PricingRules       map[string]*string                                             `json:"PricingRules,omitempty" xml:"PricingRules,omitempty"`
-	// The trade amount.
+	// The unit price results of billable items.
+	//
+	// example:
+	//
+	// {"compute_size":{"priceUnit":"CNY/(CU*hour)","payFee":"0.0"},"cache_size":{"priceUnit":"CNY/(GB*hour)","payFee":"0.0"},"storage_size":{"priceUnit":"CNY/(GB*hour)","payFee":"0.0"}}
+	PricingRules map[string]*string `json:"PricingRules,omitempty" xml:"PricingRules,omitempty"`
+	// The amount.
 	//
 	// example:
 	//
@@ -136,22 +146,34 @@ func (s *GetCreateBEClusterInquiryResponseBodyData) Validate() error {
 }
 
 type GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions struct {
+	// The discount amount.
+	//
+	// > This parameter is not applicable to the Chinese site.
+	//
 	// example:
 	//
 	// 100
 	CanPromFee *string `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
+	// The description of the promotion rule.
+	//
 	// example:
 	//
 	// 7afs9d
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The coupon description.
+	//
 	// example:
 	//
-	// General coupon with a deduction of 100
+	// General coupon for a deduction of 100
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The coupon name.
+	//
 	// example:
 	//
 	// General coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// The coupon code.
+	//
 	// example:
 	//
 	// 775735400028

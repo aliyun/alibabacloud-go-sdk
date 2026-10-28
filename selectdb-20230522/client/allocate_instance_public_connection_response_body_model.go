@@ -18,7 +18,7 @@ type iAllocateInstancePublicConnectionResponseBody interface {
 }
 
 type AllocateInstancePublicConnectionResponseBody struct {
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//

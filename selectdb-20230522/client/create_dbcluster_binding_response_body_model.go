@@ -16,7 +16,7 @@ type iCreateDBClusterBindingResponseBody interface {
 }
 
 type CreateDBClusterBindingResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *CreateDBClusterBindingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -68,7 +68,7 @@ type CreateDBClusterBindingResponseBodyData struct {
 	//
 	// selectdb-cn-7213cjv2ez-be
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	// The numeric ID.
+	// The numeric ID of the instance.
 	//
 	// example:
 	//

@@ -34,13 +34,13 @@ type ModifySecurityIPListResponseBody struct {
 	//
 	// Instance test
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the whitelist.
+	// The name of the whitelist group.
 	//
 	// example:
 	//
 	// group1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The tag of the whitelist.
+	// The tag of the group.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ModifySecurityIPListResponseBody struct {
 	//
 	// 195F64C2-8F11-532B-A436-FC08A221D756
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IP addresses in the whitelist of the instance. Multiple IP addresses are separated by commas (,).
+	// The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
 	// 127.0.XX.XX,127.2.XX.XX
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The IP address type.
+	// The type of the IP address.
 	//
 	// example:
 	//
