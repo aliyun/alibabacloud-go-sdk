@@ -18,11 +18,11 @@ type iDescribePolicyGovernanceInClusterResponseBody interface {
 }
 
 type DescribePolicyGovernanceInClusterResponseBody struct {
-	// The policy violation information aggregated by severity level.
+	// The policy violation information summarized by severity level.
 	Violation *DescribePolicyGovernanceInClusterResponseBodyViolation `json:"Violation,omitempty" xml:"Violation,omitempty" type:"Struct"`
-	// The policy governance audit logs of the cluster.
+	// The current policy governance audit logs of the cluster.
 	AdmitLog *DescribePolicyGovernanceInClusterResponseBodyAdmitLog `json:"admit_log,omitempty" xml:"admit_log,omitempty" type:"Struct"`
-	// The counts of enabled policies at different severity levels in the current cluster.
+	// The counts of enabled policies at different severity levels in the cluster.
 	OnState []*DescribePolicyGovernanceInClusterResponseBodyOnState `json:"on_state,omitempty" xml:"on_state,omitempty" type:"Repeated"`
 }
 
@@ -85,9 +85,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBody) Validate() error {
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyViolation struct {
-	// The aggregated information.
+	// The summary information.
 	TotalViolations *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations `json:"totalViolations,omitempty" xml:"totalViolations,omitempty" type:"Struct"`
-	// The violation records aggregated by policy name.
+	// The violation records summarized by policy name.
 	Violations *DescribePolicyGovernanceInClusterResponseBodyViolationViolations `json:"violations,omitempty" xml:"violations,omitempty" type:"Struct"`
 }
 
@@ -132,9 +132,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyViolation) Validate() erro
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations struct {
-	// The aggregated interception records.
+	// The summary of interception records.
 	Deny []*DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny `json:"deny,omitempty" xml:"deny,omitempty" type:"Repeated"`
-	// The aggregated alert records.
+	// The summary of alert records.
 	Warn []*DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn `json:"warn,omitempty" xml:"warn,omitempty" type:"Repeated"`
 }
 
@@ -277,9 +277,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWa
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyViolationViolations struct {
-	// The aggregated interception records.
+	// The summary of interception records.
 	Deny []*DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny `json:"deny,omitempty" xml:"deny,omitempty" type:"Repeated"`
-	// The aggregated alert information.
+	// The summary of alert information.
 	Warn []*DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn `json:"warn,omitempty" xml:"warn,omitempty" type:"Repeated"`
 }
 
@@ -338,7 +338,7 @@ type DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny struct
 	//
 	// Prevent specific namespaces from being deleted.
 	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
-	// The policy name.
+	// The Policy Name.
 	//
 	// example:
 	//
@@ -413,7 +413,7 @@ type DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn struct
 	//
 	// Restricts the creation of Application Load Balancer (ALB) instances.
 	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
-	// The policy name.
+	// The Policy Name.
 	//
 	// example:
 	//
@@ -488,19 +488,19 @@ type DescribePolicyGovernanceInClusterResponseBodyAdmitLog struct {
 	//
 	// 100
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// The Log Service project that stores the policy action information.
+	// The log project that stores the policy action information.
 	//
 	// example:
 	//
 	// k8s-log-clusterid
 	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
-	// The Log Service Logstore that stores the policy action information.
+	// The Logstore that stores the policy action information.
 	//
 	// example:
 	//
 	// policyadmit-clusterid
 	LogStore *string `json:"log_store,omitempty" xml:"log_store,omitempty"`
-	// The log entries for policy violations.
+	// The log information about policy violations.
 	Logs []*DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
 	// The status of the query result. Valid values:
 	//
@@ -589,9 +589,9 @@ type DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs struct {
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// The action taken by the policy. Valid values:
 	//
-	// - warn: Alerts on policy violations but does not intercept the requests.
+	// - warn: Generates an alert for the policy violation but does not intercept the request.
 	//
-	// - deny: Intercepts requests that violate the policy.
+	// - deny: Intercepts the request that violates the policy.
 	//
 	// example:
 	//
@@ -615,7 +615,7 @@ type DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs struct {
 	//
 	// constraints.gatekeeper.sh
 	ConstraintGroup *string `json:"constraint_group,omitempty" xml:"constraint_group,omitempty"`
-	// The policy kind that corresponds to the policy name in policy management.
+	// The corresponding Policy Name in policy management.
 	//
 	// example:
 	//
@@ -669,7 +669,7 @@ type DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs struct {
 	//
 	// test
 	ResourceName *string `json:"resource_name,omitempty" xml:"resource_name,omitempty"`
-	// The time when the policy violation occurred. The time is in ISO 8601 format and includes time zone information.
+	// The time when the policy was violated. The time is in ISO 8601 format and includes time zone information.
 	//
 	// example:
 	//

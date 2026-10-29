@@ -21,10 +21,12 @@ type iDescribeAutoRepairPolicyResponseBody interface {
 	GetResourceType() *string
 	SetRules(v []*DescribeAutoRepairPolicyResponseBodyRules) *DescribeAutoRepairPolicyResponseBody
 	GetRules() []*DescribeAutoRepairPolicyResponseBodyRules
+	SetType(v string) *DescribeAutoRepairPolicyResponseBody
+	GetType() *string
 }
 
 type DescribeAutoRepairPolicyResponseBody struct {
-	// The self-healing rule ID.
+	// The ID of the self-healing rule.
 	//
 	// example:
 	//
@@ -38,13 +40,13 @@ type DescribeAutoRepairPolicyResponseBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The list of resources bound to the self-healing rule.
 	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
-	// The subtype of the resource bound to the self-healing rule.
+	// The resource subtype bound to the self-healing rule.
 	//
 	// example:
 	//
 	// ess
 	ResourceSubType *string `json:"resource_sub_type,omitempty" xml:"resource_sub_type,omitempty"`
-	// The type of resource bound to the self-healing rule.
+	// The resource type bound to the self-healing rule.
 	//
 	// example:
 	//
@@ -52,6 +54,16 @@ type DescribeAutoRepairPolicyResponseBody struct {
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
 	// The list of self-healing sub-rules.
 	Rules []*DescribeAutoRepairPolicyResponseBodyRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+	// The rule type. The value is case-sensitive. Valid values:
+	//
+	// - custom: user-defined rules that support modification and deletion
+	//
+	// - builtin: built-in system rules that are read-only and do not support creation, modification, or deletion
+	//
+	// example:
+	//
+	// custom
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s DescribeAutoRepairPolicyResponseBody) String() string {
@@ -86,6 +98,10 @@ func (s *DescribeAutoRepairPolicyResponseBody) GetRules() []*DescribeAutoRepairP
 	return s.Rules
 }
 
+func (s *DescribeAutoRepairPolicyResponseBody) GetType() *string {
+	return s.Type
+}
+
 func (s *DescribeAutoRepairPolicyResponseBody) SetId(v string) *DescribeAutoRepairPolicyResponseBody {
 	s.Id = &v
 	return s
@@ -116,6 +132,11 @@ func (s *DescribeAutoRepairPolicyResponseBody) SetRules(v []*DescribeAutoRepairP
 	return s
 }
 
+func (s *DescribeAutoRepairPolicyResponseBody) SetType(v string) *DescribeAutoRepairPolicyResponseBody {
+	s.Type = &v
+	return s
+}
+
 func (s *DescribeAutoRepairPolicyResponseBody) Validate() error {
 	if s.Rules != nil {
 		for _, item := range s.Rules {
@@ -130,7 +151,7 @@ func (s *DescribeAutoRepairPolicyResponseBody) Validate() error {
 }
 
 type DescribeAutoRepairPolicyResponseBodyRules struct {
-	// The list of identified incidents.
+	// The list of identified faults.
 	Incidents []*DescribeAutoRepairPolicyResponseBodyRulesIncidents `json:"incidents,omitempty" xml:"incidents,omitempty" type:"Repeated"`
 	// The repair procedure.
 	RepairProcedure []*DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure `json:"repair_procedure,omitempty" xml:"repair_procedure,omitempty" type:"Repeated"`
@@ -185,13 +206,13 @@ func (s *DescribeAutoRepairPolicyResponseBodyRules) Validate() error {
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesIncidents struct {
-	// The name of the incident.
+	// The fault name.
 	//
 	// example:
 	//
 	// Node.FaultNeedReboot.HOST
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the incident.
+	// The fault type.
 	//
 	// example:
 	//
@@ -232,7 +253,7 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesIncidents) Validate() error {
 type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure struct {
 	// The configuration parameters of the procedure.
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	// The configuration of the manual intervention procedure.
+	// The manual intervention procedure.
 	Intervention *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention `json:"intervention,omitempty" xml:"intervention,omitempty" type:"Struct"`
 	// The name of the procedure.
 	//
@@ -287,15 +308,15 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure) Validate() er
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention struct {
-	// The label configuration for authorization confirmation. Adding the following labels to the node indicates that you authorize ACK to execute the operations in this stage. After completing the operations in this stage, ACK automatically removes the authorization inquiry and confirmation labels for this stage. If you do not add the following labels promptly, ACK will not execute the actions in this stage and subsequent stages, and the node may remain in a damaged state.
+	// The label configuration for authorization confirmation. When you add the following label to a node, you authorize ACK to perform the operations in this phase. After completing the operations in this phase, ACK automatically removes the inquiry and confirmation labels for this phase. If you do not add the following label in time, ACK will not perform the operations in this phase and subsequent phases, and the node may remain in a damaged state.
 	ApprovedLabel *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprovedLabel `json:"approved_label,omitempty" xml:"approved_label,omitempty" type:"Struct"`
-	// Indicates whether manual approval is enabled.
+	// Specifies whether manual approval is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The label configuration for authorization inquiry. When this stage is reached, ACK adds the following labels to your node and waits for your authorization to execute the actions in this stage.
+	// The label configuration for authorization inquiry. When this phase is entered, ACK adds the following label to your node and waits for your authorization to perform the operations in this phase.
 	InquiringLabel *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquiringLabel `json:"inquiring_label,omitempty" xml:"inquiring_label,omitempty" type:"Struct"`
 	// The type of manual approval.
 	//
@@ -364,7 +385,7 @@ func (s *DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention) V
 }
 
 type DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprovedLabel struct {
-	// The `key` of the label.
+	// The key of the label.
 	//
 	// example:
 	//
