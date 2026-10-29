@@ -16,7 +16,7 @@ type iPushFileRequest interface {
 }
 
 type PushFileRequest struct {
-	// File ID
+	// The file ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type PushFileRequest struct {
 	//
 	// f-1671accd4dafdag3er256cvgewt13f7141db2f7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Cloud application service instance ID
+	// The instance ID of the cloud application service.
 	//
 	// This parameter is required.
 	//

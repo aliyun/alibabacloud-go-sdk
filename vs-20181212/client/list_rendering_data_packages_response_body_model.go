@@ -18,7 +18,7 @@ type iListRenderingDataPackagesResponseBody interface {
 }
 
 type ListRenderingDataPackagesResponseBody struct {
-	// A list of data packages for the cloud application service.
+	// The list of cloud application service data packages.
 	DataPackages []*ListRenderingDataPackagesResponseBodyDataPackages `json:"DataPackages,omitempty" xml:"DataPackages,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -26,7 +26,7 @@ type ListRenderingDataPackagesResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of Graphic Computing Service instances.
+	// The total number of cloud rendering instances.
 	//
 	// example:
 	//
@@ -85,59 +85,59 @@ func (s *ListRenderingDataPackagesResponseBody) Validate() error {
 type ListRenderingDataPackagesResponseBodyDataPackages struct {
 	// The category. Valid values:
 	//
-	// - Package
+	// - Package: package
 	//
-	// - Baseline
+	// - Baseline: baseline
 	//
 	// example:
 	//
 	// Package
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The creation time of the Graphic Computing Service instance.
+	// The creation time of the cloud rendering instance. The time is displayed in the YYYY-MM-DDTHH:mm:ss+HH:mm format and follows the ISO 8601 standard with a time zone offset.
 	//
 	// example:
 	//
 	// 2024-10-15T10:23:06+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the data pack.
+	// The ID of the data package.
 	//
 	// example:
 	//
 	// dp-449ea3d16c0841b8bf33ec5bbc86a152
 	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
-	// Remarks.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the Graphic Computing Service instance.
+	// The ID of the cloud application service instance.
 	//
 	// example:
 	//
 	// render-342012a227dc4ddf91f024639e43051a
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// The size of the data pack.
+	// The size of the data package.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The status of the data pack. Valid values:
+	// The status of the data package. Valid values:
 	//
-	// available
+	// available: available for binding
 	//
-	// packing
+	// packing: in progress
 	//
-	// failed
+	// failed: failed
 	//
-	// bonded
+	// bonded: bound
 	//
 	// example:
 	//
 	// available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The update time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

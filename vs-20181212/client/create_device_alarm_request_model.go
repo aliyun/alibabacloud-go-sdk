@@ -40,7 +40,7 @@ type CreateDeviceAlarmRequest struct {
 	//
 	// - 3: switch alerting
 	//
-	// - 4: video loss alerting.
+	// - 4: video loss alerting
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateDeviceAlarmRequest struct {
 	//
 	// - 2: video
 	//
-	// - 3: GIF image.
+	// - 3: GIF image
 	//
 	// This parameter is required.
 	//
@@ -106,6 +106,10 @@ type CreateDeviceAlarmRequest struct {
 	// The alert subtype.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	SubAlarm *int32 `json:"SubAlarm,omitempty" xml:"SubAlarm,omitempty"`
 }
 

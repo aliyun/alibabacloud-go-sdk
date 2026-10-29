@@ -28,25 +28,25 @@ type DescribeComfyUserDataUploadUrlResponseBody struct {
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The expiration time of the upload URL.
+	// The expiration time of the upload URL. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format.
 	//
 	// example:
 	//
 	// 2026-08-28T16:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The description.
+	// The message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The URL for uploading the user file.
+	// The URL for uploading user files.
 	//
 	// example:
 	//

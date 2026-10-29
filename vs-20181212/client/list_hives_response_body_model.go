@@ -26,7 +26,7 @@ type ListHivesResponseBody struct {
 	//
 	// xxxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListHivesResponseBody) Validate() error {
 }
 
 type ListHivesResponseBodyHives struct {
-	// The creation time.
+	// The creation time. The time follows the ISO 8601 standard and includes the time zone offset. Format: YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//

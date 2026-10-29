@@ -14,7 +14,7 @@ type iDeleteCloudAppRequest interface {
 }
 
 type DeleteCloudAppRequest struct {
-	// The cloud application ID, which corresponds to a unique application package.
+	// The ID of the cloud application, which corresponds to a unique application package.
 	//
 	// This parameter is required.
 	//

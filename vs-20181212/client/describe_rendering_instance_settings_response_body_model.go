@@ -16,7 +16,7 @@ type iDescribeRenderingInstanceSettingsResponseBody interface {
 }
 
 type DescribeRenderingInstanceSettingsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DescribeRenderingInstanceSettingsResponseBody) Validate() error {
 }
 
 type DescribeRenderingInstanceSettingsResponseBodySettings struct {
-	// The name of an instance configuration.
+	// The instance configuration name.
 	//
 	// example:
 	//
 	// navbar.hide
 	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
-	// The value of an instance configuration.
+	// The content of the instance configuration.
 	//
 	// example:
 	//

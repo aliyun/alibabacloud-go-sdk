@@ -14,7 +14,7 @@ type iDeleteRenderingInstanceSettingsResponseBody interface {
 }
 
 type DeleteRenderingInstanceSettingsResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

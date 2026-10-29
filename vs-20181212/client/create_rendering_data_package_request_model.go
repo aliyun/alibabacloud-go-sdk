@@ -20,31 +20,31 @@ type iCreateRenderingDataPackageRequest interface {
 }
 
 type CreateRenderingDataPackageRequest struct {
-	// Data type. Valid values:
+	// The data type. Valid values:
 	//
-	// - Package (default value).
+	// - Package (default)
 	//
-	// - Baseline.
+	// - Baseline
 	//
 	// example:
 	//
 	// Package
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// testdescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Billing type. Valid values:
+	// The billing type. Valid values:
 	//
-	// - Hour: Hour.
+	// - Hour: hourly.
 	//
 	// example:
 	//
 	// Hour
 	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
-	// Cloud application service instance ID (Note: This operation is only for crs.cp.\\	- series instance types.)
+	// The instance ID of the Cloud Application Service. Note: This operation applies only to crs.cp.	- series instance types.
 	//
 	// This parameter is required.
 	//

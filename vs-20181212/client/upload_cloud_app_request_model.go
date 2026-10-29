@@ -32,15 +32,7 @@ type iUploadCloudAppRequest interface {
 }
 
 type UploadCloudAppRequest struct {
-	// The application name. For Android applications, use the package name, such as com.aaa.bbb.
-	//
-	// Value rules:
-	//
-	// 1. Length: 4 to 50 characters.
-	//
-	// 2. Lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
-	//
-	// 3. The first and last characters must be letters or digits.
+	// The application name. For Android applications, we recommend that you use the package name, such as com.aaa.bbb. Naming conventions: 1. The length is 4 to 50 characters. 2. The name can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). 3. The first and last characters must be letters or digits.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +40,7 @@ type UploadCloudAppRequest struct {
 	//
 	// com.aaa.bbb
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application version. For Android applications, use the VersionName, such as 1.1.1.
-	//
-	// Value rules:
-	//
-	// 1. Length: 1 to 50 characters.
-	//
-	// 2. Lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
-	//
-	// 3. The first and last characters must be letters or digits.
+	// The application version. For Android applications, we recommend that you use the VersionName, such as 1.1.1. Naming conventions: 1. The length is 1 to 50 characters. 2. The version can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). 3. The first and last characters must be letters or digits.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +62,7 @@ type UploadCloudAppRequest struct {
 	//
 	// https://xxx.xxx.xxx.apk
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The MD5 checksum of the application package, used to verify package integrity.
+	// The MD5 hash of the application package, which is used to check the integrity of the application package.
 	//
 	// This parameter is required.
 	//
@@ -86,65 +70,27 @@ type UploadCloudAppRequest struct {
 	//
 	// 0CFBB7BD10CDD7279642ADAB8FEF3DEE
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The package format. The default value is the file extension of the download URL. Valid values:
-	//
-	// 1. apk
-	//
-	// 2. tar.gz
-	//
-	// 3. tar
-	//
-	// 4. zip
-	//
-	// 5. rar
+	// The format of the installation package. The default value is the file name extension of the download URL. Valid values: 1. apk 2. tar.gz 3. tar 4. zip 5. rar.
 	//
 	// example:
 	//
 	// apk
 	PkgFormat *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
-	// The cloud application labels. You can select multiple values. Valid values:
-	//
-	// 1. hot
-	//
-	// 2. game
-	//
-	// 3. app
+	// The tags of the cloud application. You can specify multiple tags. Valid values: 1. hot 2. game 3. app.
 	PkgLabels []*string `json:"PkgLabels,omitempty" xml:"PkgLabels,omitempty" type:"Repeated"`
-	// The package type.
-	//
-	// ## Valid values:
-	//
-	// 1. android
-	//
-	// 2. win
-	//
-	// 3. android_appmarket: corresponds to the Android app marketplace scenario. In this scenario, the actual APK PackageName is restricted:
-	//
-	// a. Different AppName values cannot share the same PackageName.
-	//
-	// b. The same AppName with different AppVersion values can be associated with different PackageName values.
-	//
-	// ## Default value:
-	//
-	// If not specified, the package type is automatically mapped based on PkgFormat (or the file extension of DownloadUrl). Default mappings between PkgFormat and package type:
-	//
-	// 1. android: apk (the apk format is mapped to android by default).
-	//
-	// 2. win: tar.gz, tar, zip, rar.
-	//
-	// 3. android_appmarket: apk.
+	// The type of the installation package. ## Valid values: 1. android 2. win 3. android_appmarket: This value applies to Android app marketplace scenarios. In this scenario, the actual package name of the APK is restricted. a. The package names of different AppName values cannot be duplicated. b. Different AppVersion values of the same AppName can be associated with different package names. ## Default value description: If this parameter is not specified, the installation package type is automatically mapped based on the PkgFormat parameter or the file name extension of the DownloadUrl parameter. The default mapping between PkgFormat and the installation package type is as follows: 1. android: apk. The apk format is mapped to android by default. 2. win: tar.gz, tar, zip, and rar. 3. android_appmarket: apk.
 	//
 	// example:
 	//
 	// android
 	PkgType *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
-	// The relative path of the post-installation command within the application package. Only supported for win type applications.
+	// The relative path of the post-command in the application package. This parameter is supported only for Windows applications.
 	//
 	// example:
 	//
 	// install.ps1
 	PostCommandPath *string `json:"PostCommandPath,omitempty" xml:"PostCommandPath,omitempty"`
-	// The timeout period (in seconds) for the post-installation command. Only supported for win type applications.
+	// The timeout period for executing the post-command, in seconds. This parameter is supported only for Windows applications.
 	//
 	// example:
 	//

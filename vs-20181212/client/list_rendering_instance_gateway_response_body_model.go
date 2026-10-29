@@ -22,15 +22,15 @@ type iListRenderingInstanceGatewayResponseBody interface {
 }
 
 type ListRenderingInstanceGatewayResponseBody struct {
-	// A list of custom gateway information.
+	// The list of custom gateway information.
 	GatewayConfigurationInfos []*ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos `json:"GatewayConfigurationInfos,omitempty" xml:"GatewayConfigurationInfos,omitempty" type:"Repeated"`
-	// The page number of the query results list
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries per page in the paging Settings for a paged query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListRenderingInstanceGatewayResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of installation records.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListRenderingInstanceGatewayResponseBody) Validate() error {
 }
 
 type ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos struct {
-	// The time when the cloud application service instance was created.
+	// The creation time of the cloud application service instance. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-10-15 10:19:13
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the custom gateway instance.
+	// The instance ID of the custom gateway.
 	//
 	// example:
 	//
 	// render-xxx
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" xml:"GatewayInstanceId,omitempty"`
-	// The ID of the cloud application service instance.
+	// The instance ID of the cloud application service.
 	//
 	// example:
 	//
@@ -137,15 +137,15 @@ type ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos struct {
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
 	// The status of the custom gateway. Valid values:
 	//
-	// 1. Transitional states: creating, deleting
+	// - Intermediate states: creating and deleting.
 	//
-	// 2. Desired states: available, failed
+	// - Final states: available and failed.
 	//
 	// example:
 	//
 	// available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the information was last updated.
+	// The update time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

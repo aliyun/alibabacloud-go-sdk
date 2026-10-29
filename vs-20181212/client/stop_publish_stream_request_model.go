@@ -16,7 +16,13 @@ type iStopPublishStreamRequest interface {
 }
 
 type StopPublishStreamRequest struct {
+	// The ID of the cloud application service instance for which to stop desktop capture and streaming.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }

@@ -18,15 +18,15 @@ type iListRenderingProjectsResponseBody interface {
 }
 
 type ListRenderingProjectsResponseBody struct {
-	// Project list
+	// The list of projects.
 	Projects []*ListRenderingProjectsResponseBodyProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of matching projects
+	// The total number of matched projects.
 	//
 	// example:
 	//
@@ -83,33 +83,33 @@ func (s *ListRenderingProjectsResponseBody) Validate() error {
 }
 
 type ListRenderingProjectsResponseBodyProjects struct {
-	// Project creation time
+	// The time when the project was created. The time follows the ISO 8601 standard and includes a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
 	// 2024-09-09T18:44:49+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Project description
+	// The project description.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Project ID
+	// The project ID.
 	//
 	// example:
 	//
 	// project-422bc38dfgh5eb44149f135ef76304f63b
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Project name
+	// The project name.
 	//
 	// example:
 	//
 	// prod-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Project session attributes
+	// The session attributes of the project.
 	SessionAttribs *ListRenderingProjectsResponseBodyProjectsSessionAttribs `json:"SessionAttribs,omitempty" xml:"SessionAttribs,omitempty" type:"Struct"`
-	// Last update time
+	// The time when the project was updated. The time follows the ISO 8601 standard and includes a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ func (s *ListRenderingProjectsResponseBodyProjects) Validate() error {
 }
 
 type ListRenderingProjectsResponseBodyProjectsSessionAttribs struct {
-	// Startup mode
+	// The startup mode.
 	//
 	// example:
 	//

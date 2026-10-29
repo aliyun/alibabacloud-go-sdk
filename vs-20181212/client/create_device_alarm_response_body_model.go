@@ -22,31 +22,31 @@ type iCreateDeviceAlarmResponseBody interface {
 }
 
 type CreateDeviceAlarmResponseBody struct {
-	// 下次相同告警的最小间隔。（单位：秒）
+	// The minimum interval before the next identical alert. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	AlarmDelay *int64 `json:"AlarmDelay,omitempty" xml:"AlarmDelay,omitempty"`
-	// 告警ID。
+	// The alert ID.
 	//
 	// example:
 	//
 	// 0hyNgTdgv2D000195842
 	AlarmId *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
-	// URL的过期时长。（单位：秒）
+	// The expiration period of the URL. Unit: seconds.
 	//
 	// example:
 	//
 	// 3600
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// 76E11E6A-4441-51C9-AF60-D354362257A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 媒体上传的URL，可使用PUT上传。
+	// The media upload URL. You can use the PUT method to upload media.
 	//
 	// example:
 	//

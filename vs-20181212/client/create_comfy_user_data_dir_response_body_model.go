@@ -24,13 +24,13 @@ type CreateComfyUserDataDirResponseBody struct {
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. If the request fails, this parameter contains the failure reason.
+	// The description. If Status is Failed, this field contains the cause of the failure.
 	//
 	// example:
 	//
 	// conn failed!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

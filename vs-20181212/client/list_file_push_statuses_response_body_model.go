@@ -22,27 +22,27 @@ type iListFilePushStatusesResponseBody interface {
 }
 
 type ListFilePushStatusesResponseBody struct {
-	// The page number of the returned results.
+	// The page number of the returned list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query.
+	// The Settings for the number of entries per page during paging in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of file push status records.
+	// The list of file push statuses.
 	PushStatuses []*ListFilePushStatusesResponseBodyPushStatuses `json:"PushStatuses,omitempty" xml:"PushStatuses,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of matching file push records.
+	// The total number of matched file push records.
 	//
 	// example:
 	//
@@ -117,51 +117,51 @@ func (s *ListFilePushStatusesResponseBody) Validate() error {
 }
 
 type ListFilePushStatusesResponseBodyPushStatuses struct {
-	// The file ID.
+	// The ID of the file.
 	//
 	// example:
 	//
 	// f-1671accd4dafdag3er256cvgewt13f7141db2f7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//
 	// myfile
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The scheduled push start time.
+	// The start time of the push. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
 	// 2024-03-26T16:32:20+08:00
 	PushTime *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	// The cloud application service instance ID.
+	// The instance ID of the cloud application service.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// The file push status. Valid values:
+	// The push status of the file. Valid values:
 	//
-	// 1. Created
+	// - Created
 	//
-	// 2. Doing
+	// - Doing
 	//
-	// 3. Success: desired state
+	// - Success: final state.
 	//
-	// 4. Failed: desired state
+	// - Failed: final state.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status description.
+	// The description of the status.
 	//
 	// example:
 	//
 	// push success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// The latest update time of the status.
+	// The latest update time of the status. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

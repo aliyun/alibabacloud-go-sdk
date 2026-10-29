@@ -16,13 +16,13 @@ type iDescribeVsVerifyContentResponseBody interface {
 }
 
 type DescribeVsVerifyContentResponseBody struct {
-	// 校验内容。
+	// The verification content.
 	//
 	// example:
 	//
 	// verify_dffeb6610035dcb77b413a59c3*****
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//

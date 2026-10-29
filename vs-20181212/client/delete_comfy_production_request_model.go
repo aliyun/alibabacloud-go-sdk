@@ -14,7 +14,7 @@ type iDeleteComfyProductionRequest interface {
 }
 
 type DeleteComfyProductionRequest struct {
-	// The ID of the production.
+	// The ID of the artifact.
 	//
 	// example:
 	//

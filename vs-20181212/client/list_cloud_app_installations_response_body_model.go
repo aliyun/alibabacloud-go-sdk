@@ -22,27 +22,27 @@ type iListCloudAppInstallationsResponseBody interface {
 }
 
 type ListCloudAppInstallationsResponseBody struct {
-	// List of installation records.
+	// The list of installation information.
 	InstallationInfos []*ListCloudAppInstallationsResponseBodyInstallationInfos `json:"InstallationInfos,omitempty" xml:"InstallationInfos,omitempty" type:"Repeated"`
-	// Page number of the returned list.
+	// The page number of the returned list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page for paged queries.
+	// The number of entries returned per page for a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of installation records.
+	// The total number of installation records.
 	//
 	// example:
 	//
@@ -117,59 +117,55 @@ func (s *ListCloudAppInstallationsResponseBody) Validate() error {
 }
 
 type ListCloudAppInstallationsResponseBodyInstallationInfos struct {
-	// Application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Application name.
+	// The name of the application.
 	//
 	// example:
 	//
 	// com.aaa.bbb
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Application version.
+	// The version of the application.
 	//
 	// example:
 	//
 	// 1.5.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// Installation time.
+	// The installation time. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
 	// 2024-05-28T14:48:34+08:00
 	InstallationTime *string `json:"InstallationTime,omitempty" xml:"InstallationTime,omitempty"`
-	// Patch package ID.
+	// The ID of the patch package.
 	//
 	// example:
 	//
 	// patch-7bdf679812484df08a956b73e0b3bdf6
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// Cloud application service instance ID.
+	// The cloud application service instance ID.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// Cloud application installation status. Valid values:
-	//
-	// 1. Intermediate states: install-init, installing
-	//
-	// 2. Final states: installed, install-failed
+	// The installation status of the cloud application. Valid values: install-init and installing (intermediate states), and installed and install-failed (final states).
 	//
 	// example:
 	//
 	// installed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Status description.
+	// The description of the status.
 	//
 	// example:
 	//
 	// install success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// Time when the status was last updated.
+	// The time when the status was last updated. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

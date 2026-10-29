@@ -26,7 +26,7 @@ type iListPublicKeysRequest interface {
 }
 
 type ListPublicKeysRequest struct {
-	// A parameter for filtering by time range. The time must be in UTC and follow the ISO 8601 standard. The format is yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -54,23 +54,19 @@ type ListPublicKeysRequest struct {
 	//
 	// ssh
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The page number of the list to query. The value starts from 1.
-	//
-	// Default value: 1
+	// The page number of the list to query. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page for a paged query. Valid values: 1 to 100.
-	//
-	// Default value: 10
+	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A parameter for filtering by time range. The time must be in UTC and follow the ISO 8601 standard. The format is yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

@@ -18,13 +18,13 @@ type iStopRenderingSessionRequest interface {
 }
 
 type StopRenderingSessionRequest struct {
-	// Unique ID of the end customer. Specify either SessionId or ClientId.
+	// The unique ID of the end client. You must specify at least one of SessionId or ClientId.
 	//
 	// example:
 	//
 	// 04c30850-1d91-4da1-b811-66d0ee94af7d
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// Project ID
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type StopRenderingSessionRequest struct {
 	//
 	// project-422bc38dfgh5eb44149f135ef76304f63b
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Session ID. Specify either SessionId or ClientId.
+	// The session ID. You must specify at least one of SessionId or ClientId.
 	//
 	// example:
 	//

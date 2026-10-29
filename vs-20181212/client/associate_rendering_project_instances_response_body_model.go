@@ -22,27 +22,27 @@ type iAssociateRenderingProjectInstancesResponseBody interface {
 }
 
 type AssociateRenderingProjectInstancesResponseBody struct {
-	// Number of failed cloud application service instances
+	// The number of cloud application service instances that failed to be associated.
 	//
 	// example:
 	//
 	// 0
 	FailedInstanceCount *string `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	// List of instances that failed to associate
+	// The list of instances that failed to be associated.
 	FailedInstances []*AssociateRenderingProjectInstancesResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Number of successful cloud application service instances
+	// The number of successfully associated cloud application service instances.
 	//
 	// example:
 	//
 	// 5
 	SuccessInstanceCount *string `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	// List of successfully associated instances
+	// The list of successfully associated instances.
 	SuccessInstances []*AssociateRenderingProjectInstancesResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
@@ -122,13 +122,13 @@ func (s *AssociateRenderingProjectInstancesResponseBody) Validate() error {
 }
 
 type AssociateRenderingProjectInstancesResponseBodyFailedInstances struct {
-	// Failure reason
+	// The cause of the failure.
 	//
 	// example:
 	//
 	// invalid id
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Cloud application service instance ID
+	// The instance ID of the cloud application service.
 	//
 	// example:
 	//
@@ -167,13 +167,13 @@ func (s *AssociateRenderingProjectInstancesResponseBodyFailedInstances) Validate
 }
 
 type AssociateRenderingProjectInstancesResponseBodySuccessInstances struct {
-	// Description
+	// The description.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Cloud application service instance ID
+	// The instance ID of the cloud application service.
 	//
 	// example:
 	//

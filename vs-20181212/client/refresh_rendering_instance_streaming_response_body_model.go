@@ -24,37 +24,37 @@ type iRefreshRenderingInstanceStreamingResponseBody interface {
 }
 
 type RefreshRenderingInstanceStreamingResponseBody struct {
-	// Token for this connection.
+	// The token for the current connection.
 	//
 	// example:
 	//
 	// 792fy125-594c-4dde-ab35-9ff8hrf0a86f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Domain name of the streaming gateway for the cloud application service instance.
+	// The domain name of the streaming gateway for the cloud application service instance.
 	//
 	// example:
 	//
 	// 10.178.208.22
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// Streaming domain name/IP for the cloud application service instance.
+	// The streaming domain name or IP address of the cloud application service instance.
 	//
 	// example:
 	//
 	// cn-xxx.ecr.aliyuncs.com
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The port for the stream connection.
+	// The port for the streaming connection.
 	//
 	// example:
 	//
 	// 8080
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Cloud application service instance ID.
+	// The instance ID of the cloud application service.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

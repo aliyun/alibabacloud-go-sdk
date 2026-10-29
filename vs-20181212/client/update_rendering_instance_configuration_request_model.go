@@ -20,7 +20,7 @@ type UpdateRenderingInstanceConfigurationRequest struct {
 	//
 	// This parameter is required.
 	Configuration []*UpdateRenderingInstanceConfigurationRequestConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Repeated"`
-	// The ID of the cloud application service instance.
+	// The instance ID of the cloud application service.
 	//
 	// This parameter is required.
 	//
@@ -70,29 +70,29 @@ func (s *UpdateRenderingInstanceConfigurationRequest) Validate() error {
 }
 
 type UpdateRenderingInstanceConfigurationRequestConfiguration struct {
-	// The list of properties for the module.
+	// The list of attributes corresponding to the module.
 	//
 	// This parameter is required.
 	Attributes []*UpdateRenderingInstanceConfigurationRequestConfigurationAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// The name of the real device simulation module. Valid values include the following:
+	// The name of the real-device simulation feature module. Valid values:
 	//
-	// 1. ctl: control module
+	// - ctl: Control module.
 	//
-	// 2. prop: property module
+	// - prop: Property module.
 	//
-	// 3. location: location module
+	// - location: Location module.
 	//
-	// 4. battery: battery module
+	// - battery: Battery module.
 	//
-	// 5. network: network module
+	// - network: Network module.
 	//
-	// 6. bluetooth: bluetooth module
+	// - bluetooth: Bluetooth module.
 	//
-	// 7. sim: SIM card module
+	// - sim: SIM card module.
 	//
-	// 8. display: device module
+	// - display: Device module.
 	//
-	// 9. system: basic module
+	// - system: Basic module.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +142,7 @@ func (s *UpdateRenderingInstanceConfigurationRequestConfiguration) Validate() er
 }
 
 type UpdateRenderingInstanceConfigurationRequestConfigurationAttributes struct {
-	// The name of the property.
+	// The name of the attribute.
 	//
 	// This parameter is required.
 	//
@@ -150,7 +150,7 @@ type UpdateRenderingInstanceConfigurationRequestConfigurationAttributes struct {
 	//
 	// lon
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the property.
+	// The value of the attribute.
 	//
 	// This parameter is required.
 	//

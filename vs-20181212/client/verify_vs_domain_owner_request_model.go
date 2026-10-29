@@ -18,7 +18,7 @@ type iVerifyVsDomainOwnerRequest interface {
 }
 
 type VerifyVsDomainOwnerRequest struct {
-	// The domain name of Visual Edge Computing Service.
+	// The Visual Edge Computing Service domain name.
 	//
 	// This parameter is required.
 	//

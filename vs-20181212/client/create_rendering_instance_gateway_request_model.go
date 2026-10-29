@@ -16,7 +16,7 @@ type iCreateRenderingInstanceGatewayRequest interface {
 }
 
 type CreateRenderingInstanceGatewayRequest struct {
-	// The ID of the custom gateway instance.
+	// The custom gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type CreateRenderingInstanceGatewayRequest struct {
 	//
 	// render-xxx
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" xml:"GatewayInstanceId,omitempty"`
-	// The ID of the cloud application service instance.
+	// The cloud application service instance ID.
 	//
 	// This parameter is required.
 	//

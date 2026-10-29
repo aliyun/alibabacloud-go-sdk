@@ -30,18 +30,21 @@ type BatchForbidVsStreamRequest struct {
 	//
 	// > - Format: AppName/StreamName.
 	//
-	// >
-	//
-	// > - Specify multiple names, separated by commas (,).
+	// > - You can specify multiple stream names separated by commas (,).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// live/stream1,live/stream2
-	Channel             *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The stream control action. Set the value to forbid, which indicates that stream push is forbidden.
+	//
+	// example:
+	//
+	// forbid
 	ControlStreamAction *string `json:"ControlStreamAction,omitempty" xml:"ControlStreamAction,omitempty"`
-	// Your accelerated domain name.
+	// The accelerated domain name.
 	//
 	// This parameter is required.
 	//
@@ -49,11 +52,11 @@ type BatchForbidVsStreamRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether the operation applies to stream ingest by a streamer or stream pulling by a client. Valid values:
+	// Specifies whether the stream is pushed by the streamer or pulled by the client. Valid values:
 	//
-	// - publisher (streamer ingest)
+	// - publisher: The stream is pushed by the streamer.
 	//
-	// > Only publisher is supported.
+	// > Currently, only publisher is supported.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +64,7 @@ type BatchForbidVsStreamRequest struct {
 	//
 	// publisher
 	LiveStreamType *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
-	// Specifies whether to stop ingest without adding the stream to the blacklist. Valid values:
+	// Specifies whether to only interrupt the stream without adding it to the blacklist. Valid values:
 	//
 	// - yes
 	//
@@ -72,9 +75,9 @@ type BatchForbidVsStreamRequest struct {
 	// yes
 	Oneshot *string `json:"Oneshot,omitempty" xml:"Oneshot,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The time to resume ingest.
+	// The time to resume the stream.
 	//
-	// > Use UTC format. Example: 2015-12-01T17:37:00Z
+	// > Specify the time in UTC format, for example, 2015-12-01T17:37:00Z.
 	//
 	// example:
 	//

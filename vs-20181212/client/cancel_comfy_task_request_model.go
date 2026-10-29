@@ -14,7 +14,7 @@ type iCancelComfyTaskRequest interface {
 }
 
 type CancelComfyTaskRequest struct {
-	// The ID of the Comfy task to cancel.
+	// The ID of the Comfy task.
 	//
 	// This parameter is required.
 	//

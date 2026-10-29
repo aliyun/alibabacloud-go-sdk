@@ -22,27 +22,27 @@ type iListFilesResponseBody interface {
 }
 
 type ListFilesResponseBody struct {
-	// List of file information.
+	// The list of file information.
 	Files []*ListFilesResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// Page number of the list.
+	// The page number of the returned list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page for paged queries.
+	// The Settings for the number of entries per page during paging in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of matching file records.
+	// The total number of matched file records.
 	//
 	// example:
 	//
@@ -117,57 +117,57 @@ func (s *ListFilesResponseBody) Validate() error {
 }
 
 type ListFilesResponseBodyFiles struct {
-	// File description.
+	// The description of the file.
 	//
 	// example:
 	//
-	// 我的文件
+	// My file
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// File ID.
+	// The ID of the file.
 	//
 	// example:
 	//
 	// f-1671accd4dafdag3er256cvgewt13f7141db2f7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// File name.
+	// The name of the file.
 	//
 	// example:
 	//
 	// myfile
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// Upload status. Valid values:
+	// The upload status of the file. Valid values:
 	//
-	// 1. Created
+	// - Created
 	//
-	// 2. Doing
+	// - Doing
 	//
-	// 3. Success (desired state)
+	// - Success: final state
 	//
-	// 4. Failed (desired state)
+	// - Failed: final state
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Status description.
+	// The description of the status.
 	//
 	// example:
 	//
 	// upload success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// Destination path for pushing the file to the service instance.
+	// The target path for pushing the file to the cloud application service instance.
 	//
 	// example:
 	//
 	// /data/tmp/test/xxx.tar
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// Most recent status update time.
+	// The time when the status was last updated. The time follows the ISO 8601 standard and includes the time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
 	// 2024-03-28T14:15:08+08:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Upload start time.
+	// The time when the upload started. The time follows the ISO 8601 standard and includes the time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

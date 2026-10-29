@@ -18,7 +18,7 @@ type iRecoverRenderingDataPackageRequest interface {
 }
 
 type RecoverRenderingDataPackageRequest struct {
-	// Cloud application service data pack ID
+	// The ID of the cloud application service data package.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,19 @@ type RecoverRenderingDataPackageRequest struct {
 	//
 	// dp-449ea3d16c0841b8bf33ec5bbc86a152
 	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
-	// Data loading mode. Valid values: System or Process. Default value: System. System indicates system-level loading, which offers high stability but takes longer. Process indicates process-level loading, which provides high timeliness but relatively lower stability.
+	// The data loading mode. Valid values:
+	//
+	// - System: system-level loading, which provides high stability but takes a relatively long time.
+	//
+	// - Process: process-level loading, which provides high loading timeliness but relatively low stability.
+	//
+	// Default value: System.
 	//
 	// example:
 	//
 	// Process
 	LoadMode *string `json:"LoadMode,omitempty" xml:"LoadMode,omitempty"`
-	// Cloud application service instance ID
+	// The cloud application service instance ID.
 	//
 	// This parameter is required.
 	//

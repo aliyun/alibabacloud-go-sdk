@@ -16,6 +16,11 @@ type iDescribeVsUserResourcePackageResponseBody interface {
 }
 
 type DescribeVsUserResourcePackageResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 84839536-2B7E-457D-9D8C-82E6C7D4E1A3
 	RequestId            *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourcePackageInfos *DescribeVsUserResourcePackageResponseBodyResourcePackageInfos `json:"ResourcePackageInfos,omitempty" xml:"ResourcePackageInfos,omitempty" type:"Struct"`
 }

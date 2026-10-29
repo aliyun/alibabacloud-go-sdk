@@ -16,17 +16,17 @@ type iVerifyVsDomainOwnerResponseBody interface {
 }
 
 type VerifyVsDomainOwnerResponseBody struct {
-	// 校验内容。
+	// The verification content.
 	//
 	// >
 	//
-	// 调用成功不返回该参数，调用失败返回校验内容。
+	// This parameter is not returned if the call is successful. If the call fails, the verification content is returned.
 	//
 	// example:
 	//
 	// verify_dffeb6610035dcb77b413a59c32c****
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//

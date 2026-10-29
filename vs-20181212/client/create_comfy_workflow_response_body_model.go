@@ -30,13 +30,13 @@ type CreateComfyWorkflowResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. If `Status` is `Failed`, this parameter provides the reason for the failure.
+	// The description. If Status is Failed, it includes the cause of the failure.
 	//
 	// example:
 	//
 	// conn failed!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A list of missing nodes.
+	// The list of missing nodes.
 	MissingNodes []*string `json:"MissingNodes,omitempty" xml:"MissingNodes,omitempty" type:"Repeated"`
 	// The request ID.
 	//

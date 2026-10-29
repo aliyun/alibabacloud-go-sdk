@@ -34,15 +34,15 @@ type SetVsDomainCertificateRequest struct {
 	//
 	// example:
 	//
-	// Cert-77****7
+	// Cert-77****6
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The certificate type.
+	// The certificate type. Valid values:
 	//
-	// - upload: Upload certificate
+	// - upload: uploaded certificate
 	//
-	// - cas: Alibaba Cloud Security certificate
+	// - cas: SSL Certificates Service certificate
 	//
-	// - free: Personal test certificate (Free Edition)
+	// - free: free certificate
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type SetVsDomainCertificateRequest struct {
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// The accelerated domain name to which the certificate belongs.
 	//
-	// > The domain must use HTTPS acceleration.
+	// > The domain name must use HTTPS acceleration.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type SetVsDomainCertificateRequest struct {
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Set to 1 to skip the certificate name duplication check and overwrite an existing certificate with the same name.
+	// If you set this parameter to 1, the system ignores the validation for duplicate certificate names and overwrites the existing certificate with the same name.
 	//
 	// example:
 	//
@@ -71,17 +71,17 @@ type SetVsDomainCertificateRequest struct {
 	//
 	// cn-qingdao
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The private key content. Omit this parameter if you disable the certificate. Provide the private key content if you configure a certificate.
+	// The content of the private key. This parameter is not required if the certificate is disabled. If you configure a certificate, enter the private key content.
 	//
 	// example:
 	//
 	// xxxxxxx
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
-	// Whether to enable the HTTPS certificate. Valid values:
+	// Specifies whether the HTTPS certificate is enabled. Valid values:
 	//
-	// - **on**: Enable.
+	// - **on**: Enabled.
 	//
-	// - **off*	- (default): Disable.
+	// - **off**: Disabled. This is the default value.
 	//
 	// This parameter is required.
 	//
@@ -89,7 +89,7 @@ type SetVsDomainCertificateRequest struct {
 	//
 	// on
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
-	// The public certificate content. Omit this parameter if you disable the certificate. Provide the certificate content if you configure a certificate.
+	// The content of the security certificate. This parameter is not required if the certificate is disabled. If you configure a certificate, enter the certificate content.
 	//
 	// example:
 	//

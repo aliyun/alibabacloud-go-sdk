@@ -9,6 +9,8 @@ type iModifyRenderingInstanceAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetInstanceName(v string) *ModifyRenderingInstanceAttributeRequest
+	GetInstanceName() *string
 	SetPassword(v string) *ModifyRenderingInstanceAttributeRequest
 	GetPassword() *string
 	SetRenderingInstanceId(v string) *ModifyRenderingInstanceAttributeRequest
@@ -16,15 +18,19 @@ type iModifyRenderingInstanceAttributeRequest interface {
 }
 
 type ModifyRenderingInstanceAttributeRequest struct {
-	// Password for the device.
+	// The name of the instance.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// TestInstance
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The device password.
 	//
 	// example:
 	//
 	// Toehold2020
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// ID of the cloud application service instance.
+	// The cloud application service instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,12 +48,21 @@ func (s ModifyRenderingInstanceAttributeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyRenderingInstanceAttributeRequest) GetInstanceName() *string {
+	return s.InstanceName
+}
+
 func (s *ModifyRenderingInstanceAttributeRequest) GetPassword() *string {
 	return s.Password
 }
 
 func (s *ModifyRenderingInstanceAttributeRequest) GetRenderingInstanceId() *string {
 	return s.RenderingInstanceId
+}
+
+func (s *ModifyRenderingInstanceAttributeRequest) SetInstanceName(v string) *ModifyRenderingInstanceAttributeRequest {
+	s.InstanceName = &v
+	return s
 }
 
 func (s *ModifyRenderingInstanceAttributeRequest) SetPassword(v string) *ModifyRenderingInstanceAttributeRequest {

@@ -14,7 +14,7 @@ type iStopRenderingSessionResponseBody interface {
 }
 
 type StopRenderingSessionResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

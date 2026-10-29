@@ -18,7 +18,7 @@ type iDescribeRenderingInstanceSettingsRequest interface {
 type DescribeRenderingInstanceSettingsRequest struct {
 	// The list of instance configuration names.
 	AttributeNames []*string `json:"AttributeNames,omitempty" xml:"AttributeNames,omitempty" type:"Repeated"`
-	// The ID of the Cloud Application service instance.
+	// The cloud application service instance ID.
 	//
 	// example:
 	//

@@ -24,31 +24,31 @@ type iDescribeVsDomainRegionDataResponseBody interface {
 }
 
 type DescribeVsDomainRegionDataResponseBody struct {
-	// Time interval, in seconds.
+	// The time interval.
 	//
 	// example:
 	//
 	// 3600
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The domain name that is accelerated by Visual Edge Computing Service.
+	// The domain name of Visual Edge Computing Service.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// End time.
+	// The end time. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-10-31T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Start time.
+	// The start time in UTC. The time follows the ISO 8601 standard and is formatted as YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//

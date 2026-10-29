@@ -16,7 +16,7 @@ type iUpgradeRenderingInstanceImageRequest interface {
 }
 
 type UpgradeRenderingInstanceImageRequest struct {
-	// The image ID.
+	// The ID of the image.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type UpgradeRenderingInstanceImageRequest struct {
 	//
 	// m-bp15om9lg9zb20magg86
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The list of cloud application service instance IDs. A maximum of 100 IDs can be specified.
+	// The IDs of the cloud application service instances. A maximum of 100 instance IDs can be specified.
 	//
 	// This parameter is required.
 	RenderingInstanceIds []*string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty" type:"Repeated"`

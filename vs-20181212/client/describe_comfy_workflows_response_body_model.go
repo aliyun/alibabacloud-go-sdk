@@ -32,19 +32,19 @@ type DescribeComfyWorkflowsResponseBody struct {
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of workflows on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type DescribeComfyWorkflowsResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of workflows that match the query.
+	// The total number of workflows.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of Comfy workflows.
+	// The list of workflows.
 	Workflows []*DescribeComfyWorkflowsResponseBodyWorkflows `json:"Workflows,omitempty" xml:"Workflows,omitempty" type:"Repeated"`
 }
 
@@ -151,7 +151,7 @@ func (s *DescribeComfyWorkflowsResponseBody) Validate() error {
 }
 
 type DescribeComfyWorkflowsResponseBodyWorkflows struct {
-	// The time when the workflow was created.
+	// The creation time. The time follows the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//
@@ -161,15 +161,15 @@ type DescribeComfyWorkflowsResponseBodyWorkflows struct {
 	//
 	// example:
 	//
-	// 这是一个图生视频工作流
+	// This is an image-to-video workflow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The workflow name.
+	// The name of the workflow.
 	//
 	// example:
 	//
-	// 图生视频工作流
+	// Image-to-video workflow
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the workflow was last updated.
+	// The update time. The time is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

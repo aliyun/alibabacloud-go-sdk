@@ -30,59 +30,59 @@ type iListRenderingDataPackagesRequest interface {
 type ListRenderingDataPackagesRequest struct {
 	// The category. Valid values:
 	//
-	// - Package
+	// - Package: package
 	//
-	// - Baseline
+	// - Baseline: baseline
 	//
 	// example:
 	//
 	// Baseline
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the data pack.
+	// The ID of the data package.
 	//
 	// example:
 	//
 	// dp-449ea3d16c0841b8bf33ec5bbc86a152
 	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
-	// The parameter for filtering by time range. Use UTC time in ISO8601 format: yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the time range filter. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-09-24T03:30:46Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number for the query list.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries displayed per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The size of the data pack.
+	// The size of the data package.
 	//
 	// example:
 	//
 	// 20
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The parameter for filtering by time range. Use UTC time in ISO8601 format: yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the time range filter. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-10-30T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the data pack. Valid values:
+	// The status of the data package. Valid values:
 	//
-	// - available
+	// - available: available for binding
 	//
-	// - packing
+	// - packing: in progress
 	//
-	// - failed
+	// - failed: failed
 	//
-	// - bonded
+	// - bonded: bound
 	//
 	// example:
 	//

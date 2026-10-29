@@ -16,9 +16,9 @@ type iManageLoginResponseBody interface {
 }
 
 type ManageLoginResponseBody struct {
-	// Connection information.
+	// The connection information.
 	LoginInfo *ManageLoginResponseBodyLoginInfo `json:"LoginInfo,omitempty" xml:"LoginInfo,omitempty" type:"Struct"`
-	// ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *ManageLoginResponseBody) Validate() error {
 }
 
 type ManageLoginResponseBodyLoginInfo struct {
-	// Port for ADB connections.
+	// The port for the ADB connection.
 	//
 	// example:
 	//
 	// 10005
 	AdbLoginPort *int32 `json:"AdbLoginPort,omitempty" xml:"AdbLoginPort,omitempty"`
-	// Host for SSH connections.
+	// The host for the SSH connection.
 	//
 	// example:
 	//
 	// 12.10.4.10
 	LoginHostname *string `json:"LoginHostname,omitempty" xml:"LoginHostname,omitempty"`
-	// Port for SSH connections.
+	// The port for the SSH connection.
 	//
 	// example:
 	//

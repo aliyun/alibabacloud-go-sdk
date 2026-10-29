@@ -134,7 +134,7 @@ func (s *DescribePurchasedDevicesResponseBody) Validate() error {
 }
 
 type DescribePurchasedDevicesResponseBodyDevices struct {
-	// The time the device was created.
+	// The time when the device was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -144,19 +144,19 @@ type DescribePurchasedDevicesResponseBodyDevices struct {
 	//
 	// example:
 	//
-	// xxx路口摄像头
+	// XXX intersection camera
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the group to which the device belongs.
+	// The ID of the workspace to which the device belongs.
 	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Group name.
+	// The workspace name.
 	//
 	// example:
 	//
-	// 测试空间
+	// Test workspace
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The device ID.
 	//
@@ -168,7 +168,7 @@ type DescribePurchasedDevicesResponseBodyDevices struct {
 	//
 	// example:
 	//
-	// xxx路口摄像头
+	// XXX intersection camera
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The order ID.
 	//
@@ -176,7 +176,7 @@ type DescribePurchasedDevicesResponseBodyDevices struct {
 	//
 	// 2117*****0447
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The region to which the space belongs. This is the service center.
+	// The region of the workspace, which is the service center.
 	//
 	// example:
 	//
@@ -190,11 +190,11 @@ type DescribePurchasedDevicesResponseBodyDevices struct {
 	RegisterCode *string `json:"RegisterCode,omitempty" xml:"RegisterCode,omitempty"`
 	// The device subtype. Valid values:
 	//
-	// - bullet (bullet camera)
+	// - bullet: Bullet camera.
 	//
-	// - dome (dome camera)
+	// - dome: Dome camera.
 	//
-	// - ptz (PTZ camera)
+	// - ptz: PTZ camera.
 	//
 	// example:
 	//
@@ -202,11 +202,11 @@ type DescribePurchasedDevicesResponseBodyDevices struct {
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
 	// The device type. Valid values:
 	//
-	// - ipc (camera)
+	// - ipc: Camera.
 	//
-	// - platform (platform)
+	// - platform: Platform.
 	//
-	// - ied (intelligent edge device)
+	// - ied: Intelligent device.
 	//
 	// example:
 	//
@@ -216,7 +216,7 @@ type DescribePurchasedDevicesResponseBodyDevices struct {
 	//
 	// example:
 	//
-	// 公司A
+	// Company A
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type iDescribeComfyTaskWaitingQueueRequest interface {
 }
 
 type DescribeComfyTaskWaitingQueueRequest struct {
-	// The waiting queue information of a specified Hive.
+	// The ID of the specified Hive.
 	//
 	// example:
 	//

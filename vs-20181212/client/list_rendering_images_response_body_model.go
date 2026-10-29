@@ -22,7 +22,7 @@ type iListRenderingImagesResponseBody interface {
 }
 
 type ListRenderingImagesResponseBody struct {
-	// The session list.
+	// The list of sessions.
 	Images []*ListRenderingImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,13 +30,13 @@ type ListRenderingImagesResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *ListRenderingImagesResponseBody) Validate() error {
 }
 
 type ListRenderingImagesResponseBodyImages struct {
-	// The image description.
+	// The description of the image.
 	//
 	// example:
 	//
 	// this is test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The image ID.
+	// The ID of the image.
 	//
 	// example:
 	//
 	// m-0nd0nxyl7zn220n2y
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The image name.
+	// The name of the image.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The publish time.
+	// The time when the image was published. The time follows the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//

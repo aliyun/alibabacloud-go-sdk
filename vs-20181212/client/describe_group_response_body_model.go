@@ -56,81 +56,81 @@ type iDescribeGroupResponseBody interface {
 }
 
 type DescribeGroupResponseBody struct {
-	// Alias for the space ID.
+	// The alias of the workspace ID.
 	//
 	// example:
 	//
 	// 337639*****24964-cn-qingdao
 	AliasId *string `json:"AliasId,omitempty" xml:"AliasId,omitempty"`
-	// The name of the application used by the group.
+	// The name of the application used by the workspace.
 	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The callback URL that is used to receive device status updates in the group.
+	// The callback triggered when the device status in the workspace is updated.
 	//
 	// example:
 	//
 	// http://example.com/callback
 	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
-	// The time when the group was created.
+	// The time when the workspace was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2019-02-28T17:00:17Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// A description of the group.
+	// The workspace description.
 	//
 	// example:
 	//
-	// 上海高速监控
+	// Shanghai Expressway Monitoring
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the group is enabled.
+	// Indicates whether the workspace is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The GB/T 28181 ID that is associated with the group.
+	// The GB/T 28181 ID associated with the workspace.
 	//
-	// > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
+	// > This parameter is applicable only to workspaces that are accessed by using the GB/T 28181 protocol.
 	//
 	// example:
 	//
 	// 3100000*****0000001
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
-	// The IP address of the GB/T 28181 signaling server that is associated with the group.
+	// The IP address of the GB/T 28181 signaling server associated with the workspace.
 	//
-	// > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
+	// > This parameter is applicable only to workspaces that are accessed by using the GB/T 28181 protocol.
 	//
 	// example:
 	//
 	// 10.10.10.10
 	GbIp *string `json:"GbIp,omitempty" xml:"GbIp,omitempty"`
-	// The port of the GB/T 28181 signaling server that is associated with the group.
+	// The server port of the GB/T 28181 signaling server associated with the workspace.
 	//
-	// > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
+	// > This parameter is applicable only to workspaces that are accessed by using the GB/T 28181 protocol.
 	//
 	// example:
 	//
 	// 5060
 	GbPort *int64 `json:"GbPort,omitempty" xml:"GbPort,omitempty"`
-	// The TCP ports of the GB/T 28181 signaling server that are provided by the group.
+	// The TCP port of the GB/T 28181 signaling server provided by the workspace.
 	//
-	// > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
+	// > This parameter is applicable only to workspaces that are accessed by using the GB/T 28181 protocol.
 	GbTcpPorts []*string `json:"GbTcpPorts,omitempty" xml:"GbTcpPorts,omitempty" type:"Repeated"`
-	// The UDP ports of the GB/T 28181 signaling server that are provided by the group.
+	// The UDP port of the GB/T 28181 signaling server provided by the workspace.
 	//
-	// > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
+	// > This parameter is applicable only to workspaces that are accessed by using the GB/T 28181 protocol.
 	GbUdpPorts []*string `json:"GbUdpPorts,omitempty" xml:"GbUdpPorts,omitempty" type:"Repeated"`
-	// The ID of the space.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 337639****224964-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ingest protocol used by the group. Valid values:
+	// The access protocol used by the workspace. Valid values:
 	//
 	// - gb28181
 	//
@@ -146,13 +146,13 @@ type DescribeGroupResponseBody struct {
 	//
 	// false
 	LazyPull *bool `json:"LazyPull,omitempty" xml:"LazyPull,omitempty"`
-	// The name of the space.
+	// The workspace name.
 	//
 	// example:
 	//
-	// 上海高速监控
+	// Shanghai Expressway Monitoring
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The streaming protocol used by the group. Valid values:
+	// The playback protocol used by the workspace. Valid values:
 	//
 	// - flv
 	//
@@ -160,25 +160,25 @@ type DescribeGroupResponseBody struct {
 	//
 	// - rtmp
 	//
-	// > You can specify multiple protocols. Separate them with commas (,).
+	// > You can specify multiple values. Separate multiple values with commas (,).
 	//
 	// example:
 	//
 	// flv,hls,rtmp
 	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
-	// The streaming domain used by the group.
+	// The streaming domain name used by the workspace.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
-	// The ingest domain used by the group.
+	// The ingest domain name used by the workspace.
 	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	PushDomain *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
-	// The region where the space is located, which is the service center.
+	// The region to which the workspace belongs, which is the service center.
 	//
 	// example:
 	//
@@ -190,9 +190,9 @@ type DescribeGroupResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics of devices in the group.
+	// The statistics information of the devices in the workspace.
 	Stats *DescribeGroupResponseBodyStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
-	// The status of the group.
+	// The workspace status.
 	//
 	// example:
 	//
@@ -416,25 +416,25 @@ func (s *DescribeGroupResponseBody) Validate() error {
 }
 
 type DescribeGroupResponseBodyStats struct {
-	// The total number of devices in the group.
+	// The total number of devices in the workspace.
 	//
 	// example:
 	//
 	// 200
 	DeviceNum *int64 `json:"DeviceNum,omitempty" xml:"DeviceNum,omitempty"`
-	// The number of intelligent electronic devices (IEDs) in the group.
+	// The number of intelligent devices in the workspace.
 	//
 	// example:
 	//
 	// 0
 	IedNum *int64 `json:"IedNum,omitempty" xml:"IedNum,omitempty"`
-	// The number of cameras in the group.
+	// The number of cameras in the workspace.
 	//
 	// example:
 	//
 	// 100
 	IpcNum *int64 `json:"IpcNum,omitempty" xml:"IpcNum,omitempty"`
-	// The number of platforms in the group.
+	// The number of platforms in the workspace.
 	//
 	// example:
 	//

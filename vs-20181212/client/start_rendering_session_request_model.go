@@ -22,13 +22,13 @@ type iStartRenderingSessionRequest interface {
 }
 
 type StartRenderingSessionRequest struct {
-	// Cloud application ID
+	// The cloud application ID.
 	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Unique ID of the client
+	// The unique ID of the end user.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type StartRenderingSessionRequest struct {
 	//
 	// 04c30850-1d91-4da1-b811-66d0ee94af7d
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// Client parameter information
+	// The parameter information of the end user.
 	ClientParams *StartRenderingSessionRequestClientParams `json:"ClientParams,omitempty" xml:"ClientParams,omitempty" type:"Struct"`
-	// Cloud application patch ID.
+	// The cloud application patch package ID.
 	//
-	// 1. By default, start the stable version of the AppId (if no stable patch version is set, the original version is used).
+	// 1. By default, the stable version of the application specified by AppId is started. If no stable patch version is set, the original version is started.
 	//
-	// 2. If you enter "origin", start the original version.
+	// 2. If you specify origin, the original version is started.
 	//
 	// example:
 	//
 	// patch-03fa76e8e13a49b63456b063dgh309b4
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// Project ID
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -121,7 +121,7 @@ func (s *StartRenderingSessionRequest) Validate() error {
 }
 
 type StartRenderingSessionRequestClientParams struct {
-	// Client IP address. This IP address is used by default for scheduling instances based on proximity.
+	// The IP address of the end user. By default, this IP address is used for proximity-based instance scheduling.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iUpdateCloudAppInfoRequest interface {
 }
 
 type UpdateCloudAppInfoRequest struct {
-	// The cloud application ID, which corresponds to a unique application package.
+	// The ID of the cloud application, which corresponds to a unique application package.
 	//
 	// This parameter is required.
 	//
@@ -34,33 +34,21 @@ type UpdateCloudAppInfoRequest struct {
 	//
 	// example:
 	//
-	// For testing purposes
+	// Used for testing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The information about the patch package to upload.
-	//
-	// 1. Not supported when PkgType is set to android.
-	//
-	// 2. Only one patch can be in the uploading state at a time for the same AppId (only one patch in a non-final state is allowed per AppId).
+	// The information about the patch package to be uploaded. 1. This parameter is not supported when PkgType is set to android. 2. Only one patch package can be in the uploading state (non-final state) for the same AppId at a time.
 	Patch *UpdateCloudAppInfoRequestPatch `json:"Patch,omitempty" xml:"Patch,omitempty" type:"Struct"`
-	// The cloud application labels. You can select multiple labels. This operation resets the cloud application labels.
+	// The tags of the cloud application. You can specify multiple tags to reset the cloud application tags. Valid values:
 	//
-	// 1. Valid values:
+	// - hot
 	//
-	//   a. hot
+	// - game
 	//
-	//   b. game
+	// - app
 	//
-	//   c. app
-	//
-	// 2. Special cases:
-	//
-	//   a. To delete all labels, set this parameter to ["NULL"].
+	// To delete all tags, set the value to ["NULL"].
 	PkgLabels []*string `json:"PkgLabels,omitempty" xml:"PkgLabels,omitempty" type:"Repeated"`
-	// The stable PatchId. When a PatchId is not specified during business operations (such as session startup), this PatchId is used by default. Not supported when PkgType is set to android.
-	//
-	// Special values:
-	//
-	// 1. origin: cancels the patch version and uses the initial version by default.
+	// The ID of the stable patch. This is the default patch ID used in customer business scenarios, such as session startup, when no patch ID is specified. This parameter is not supported when PkgType is set to android. Special value: origin: cancels the patch version and uses the initial version by default.
 	//
 	// example:
 	//
@@ -131,69 +119,57 @@ func (s *UpdateCloudAppInfoRequest) Validate() error {
 }
 
 type UpdateCloudAppInfoRequestPatch struct {
-	// Specifies whether to automatically set the patch as the stable patch after a successful upload. Default value: false.
+	// Specifies whether to automatically configure the patch as the stable patch after a successful upload. Default value: false.
 	//
 	// example:
 	//
 	// false
 	AsStablePatch *bool `json:"AsStablePatch,omitempty" xml:"AsStablePatch,omitempty"`
-	// The download URL of the patch package.
-	//
-	// Either RenderingInstanceId or DownloadURL is required. DownloadURL takes priority.
+	// The download URL of the patch package. By default, the format of the patch package is the same as that of the original cloud application package. You must specify either RenderingInstanceId or DownloadURL. DownloadURL takes precedence.
 	//
 	// example:
 	//
 	// https://test_host/app/test-tar-pkg.tar
 	DownloadURL *string `json:"DownloadURL,omitempty" xml:"DownloadURL,omitempty"`
-	// The MD5 hash of the patch package, used for integrity verification. Valid only when DownloadURL is not empty. Required when DownloadURL is not empty.
+	// The MD5 hash of the patch package, which is used to verify integrity. This parameter is valid and required only when DownloadURL is not empty.
 	//
 	// example:
 	//
 	// 346f6404395adfg5bae1e45g4e943bf7
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The name or description of the patch package, which serves as a unique identifier under the AppId.
-	//
-	// Naming conventions:
-	//
-	// 1. Cannot be set to origin or all.
-	//
-	// 2. Must be 1 to 50 characters in length.
-	//
-	// 3. Can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
-	//
-	// 4. Must start and end with a letter or digit.
+	// The name or description of the patch package, which is one of the unique identifiers under the AppId. Naming conventions: 1. The value cannot be origin or all. 2. The length must be 1 to 50 characters. 3. The value can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). 4. The first and last characters must be letters or digits.
 	//
 	// example:
 	//
 	// p1
 	PatchName *string `json:"PatchName,omitempty" xml:"PatchName,omitempty"`
-	// The format of the installation package. The default value is the file extension of the download URL. Valid only when DownloadURL is not empty. Valid values:
+	// The format of the installation package. By default, the format is the same as the suffix of the download file URL. This parameter is valid only when DownloadURL is not empty. Valid values:
 	//
-	// 1. tar.gz
+	// - tar.gz
 	//
-	// 2. tar
+	// - tar
 	//
-	// 3. zip
+	// - zip
 	//
-	// 4. rar
+	// - rar
 	//
 	// example:
 	//
 	// tar
 	PkgFormat *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
-	// The relative path of the post-command within the application package. Only supported for Windows applications.
+	// The relative path of the post-command within the application package. This parameter is supported only for Windows applications.
 	//
 	// example:
 	//
 	// install.ps1
 	PostCommandPath *string `json:"PostCommandPath,omitempty" xml:"PostCommandPath,omitempty"`
-	// The timeout period for the post-command execution, in seconds. Only supported for Windows applications.
+	// The timeout period for executing the post-command, in seconds. This parameter is supported only for Windows applications.
 	//
 	// example:
 	//
 	// 10
 	PostCommandTimeoutSec *int32 `json:"PostCommandTimeoutSec,omitempty" xml:"PostCommandTimeoutSec,omitempty"`
-	// The instance ID of the instance used to create the patch package. Valid only for Android application marketplace scenarios (PkgType=andrpid_appmarket). Either RenderingInstanceId or DownloadURL is required. DownloadURL takes priority.
+	// The instance ID used to create the patch package. This parameter is valid only for Android application marketplace scenarios where PkgType is set to andrpid_appmarket. You must specify either RenderingInstanceId or DownloadURL. DownloadURL takes precedence.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iListCloudAppPatchesRequest interface {
 }
 
 type ListCloudAppPatchesRequest struct {
-	// The cloud application ID, which corresponds to a unique application package.
+	// The ID of the cloud application, which corresponds to a unique application package.
 	//
 	// This parameter is required.
 	//
@@ -34,41 +34,37 @@ type ListCloudAppPatchesRequest struct {
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The start time for time range filtering. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number of the list to query. Minimum value: 1.
-	//
-	// Default value: 1.
+	// The page number of the list to query. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: 100.
-	//
-	// Default value: 10.
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the patch package.
+	// The ID of the patch.
 	//
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// The name of the patch package.
+	// The name of the patch.
 	//
 	// example:
 	//
 	// patch-1
 	PatchName *string `json:"PatchName,omitempty" xml:"PatchName,omitempty"`
-	// The start time for time range filtering. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iListRenderingSessionsResponseBody interface {
 }
 
 type ListRenderingSessionsResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Session list
+	// The session list.
 	Sessions []*ListRenderingSessionsResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	// Total number of matching sessions
+	// The total number of matched sessions.
 	//
 	// example:
 	//
@@ -83,37 +83,37 @@ func (s *ListRenderingSessionsResponseBody) Validate() error {
 }
 
 type ListRenderingSessionsResponseBodySessions struct {
-	// Cloud application ID
+	// The cloud application ID.
 	//
 	// example:
 	//
 	// cap-4e1a6a425495458ba78693b8ac6600ea
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Client ID
+	// The ID of the end client.
 	//
 	// example:
 	//
 	// fd6b2134-7954-4754-8915-5fb8b0469622
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// Cloud application patch ID. An empty value indicates the original version.
+	// The ID of the cloud application patch package. A null value indicates the original version.
 	//
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// Cloud application service instance ID
+	// The instance ID of the cloud application service.
 	//
 	// example:
 	//
 	// render-a10722fb84b243f6ba02a89a2e5c838d
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//
 	// session-i205217481741918129226
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// Start time
+	// The start time. The time is in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format and is in UTC.
 	//
 	// example:
 	//

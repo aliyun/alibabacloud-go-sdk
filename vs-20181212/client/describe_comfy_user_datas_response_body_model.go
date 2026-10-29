@@ -32,19 +32,19 @@ type DescribeComfyUserDatasResponseBody struct {
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description.
+	// The error message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned list.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The default value is 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
@@ -61,7 +61,8 @@ type DescribeComfyUserDatasResponseBody struct {
 	// example:
 	//
 	// 1
-	Total     *int32                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The list of user data.
 	UserDatas []*DescribeComfyUserDatasResponseBodyUserDatas `json:"UserDatas,omitempty" xml:"UserDatas,omitempty" type:"Repeated"`
 }
 
@@ -150,7 +151,7 @@ func (s *DescribeComfyUserDatasResponseBody) Validate() error {
 }
 
 type DescribeComfyUserDatasResponseBodyUserDatas struct {
-	// The name of the file or folder.
+	// The name of the file or directory.
 	//
 	// example:
 	//
@@ -162,13 +163,13 @@ type DescribeComfyUserDatasResponseBodyUserDatas struct {
 	//
 	// 1024
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The entry type. Valid values are \\`file\\` and \\`dir\\`.
+	// The file type. Valid values: file and dir.
 	//
 	// example:
 	//
 	// file
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time the file was last modified.
+	// The last modified time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

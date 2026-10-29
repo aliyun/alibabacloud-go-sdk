@@ -14,7 +14,7 @@ type iResetRenderingInstanceResponseBody interface {
 }
 
 type ResetRenderingInstanceResponseBody struct {
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//

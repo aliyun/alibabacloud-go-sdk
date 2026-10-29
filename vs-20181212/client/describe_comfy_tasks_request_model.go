@@ -24,7 +24,7 @@ type iDescribeComfyTasksRequest interface {
 }
 
 type DescribeComfyTasksRequest struct {
-	// The HiveId used as a filter condition to query tasks executed under the specified HiveId.
+	// The Hive ID, used as a filter to query tasks executed under the specified Hive.
 	//
 	// example:
 	//
@@ -36,21 +36,25 @@ type DescribeComfyTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of records to display on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The Comfy workflow ID used as a filter condition.
+	// The ID of the Comfy task, used as a filter.
+	//
+	// example:
+	//
+	// 6c8234f4-d1e1-4cea-b08b-7926fbdea144
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task status used as a filter condition.
+	// The task state, used as a filter.
 	//
 	// example:
 	//
 	// QUEUED
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	// The Comfy workflow ID used as a filter condition.
+	// The ID of the Comfy workflow, used as a filter.
 	//
 	// example:
 	//

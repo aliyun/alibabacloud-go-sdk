@@ -16,9 +16,9 @@ type iDescribeRenderingInstanceConfigurationRequest interface {
 }
 
 type DescribeRenderingInstanceConfigurationRequest struct {
-	// The configuration to query. By default, the configurations of all modules are returned.
+	// The configuration content to be queried. By default, all modules are queried.
 	Configuration []*DescribeRenderingInstanceConfigurationRequestConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Repeated"`
-	// The ID of the cloud application service instance.
+	// The instance ID of the cloud application service.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ func (s *DescribeRenderingInstanceConfigurationRequest) Validate() error {
 }
 
 type DescribeRenderingInstanceConfigurationRequestConfiguration struct {
-	// The list of attribute names to query. By default, all attributes are returned.
+	// The list of attribute names to be queried. By default, all attributes are queried.
 	AttributeNames []*string `json:"AttributeNames,omitempty" xml:"AttributeNames,omitempty" type:"Repeated"`
 	// The name of the module.
 	//

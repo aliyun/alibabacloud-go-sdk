@@ -36,66 +36,62 @@ type iDescribeStreamsRequest interface {
 }
 
 type DescribeStreamsRequest struct {
-	// Filter by application.
+	// The application.
 	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// Filter by device ID.
+	// The device ID.
 	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// Filter by domain name.
+	// The domain name.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the space to query.
+	// The space ID.
 	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Stream ID.
-	//
-	// > Enter multiple IDs separated by commas (,).
+	// The stream ID. You can specify multiple IDs separated by commas (,).
 	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Filter by stream name.
-	//
-	// > Enter multiple names separated by commas (,).
+	// The stream name. You can specify multiple names separated by commas (,).
 	//
 	// example:
 	//
 	// 3100000*****00000002
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Page number. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Number of items per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Parent device ID of the device that hosts this stream.
+	// The parent device ID of the device to which the stream belongs.
 	//
 	// example:
 	//
 	// 399*****774-cn-qingdao
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// Sort results by a field. Valid values:
+	// The field by which to sort the results. Valid values:
 	//
 	// - Id (default)
 	//
@@ -107,17 +103,17 @@ type DescribeStreamsRequest struct {
 	//
 	// - Protocol
 	//
-	// > You can specify only one field.
+	// You can specify only one field.
 	//
 	// example:
 	//
 	// Id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// Sort order. Valid values:
+	// The sort order. Valid values:
 	//
-	// - asc (ascending, default)
+	// - asc: ascending order (default)
 	//
-	// - desc (descending)
+	// - desc: descending order
 	//
 	// example:
 	//

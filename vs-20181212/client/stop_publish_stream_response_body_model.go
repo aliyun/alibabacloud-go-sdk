@@ -18,8 +18,23 @@ type iStopPublishStreamResponseBody interface {
 }
 
 type StopPublishStreamResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *int64  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The return code.
+	//
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return message.
+	//
+	// example:
+	//
+	// 0
+	Message *int64 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

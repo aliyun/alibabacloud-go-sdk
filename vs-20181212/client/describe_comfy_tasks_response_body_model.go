@@ -32,7 +32,7 @@ type DescribeComfyTasksResponseBody struct {
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description.
+	// The message.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeComfyTasksResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The page size.
 	//
-	// > Only available for recording queries.
+	// > Only for recording queries.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeComfyTasksResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task list.
+	// The list of tasks.
 	Tasks []*DescribeComfyTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 	// The total number of tasks.
 	//
@@ -153,25 +153,25 @@ func (s *DescribeComfyTasksResponseBody) Validate() error {
 }
 
 type DescribeComfyTasksResponseBodyTasks struct {
-	// The creation time.
+	// The creation time, represented as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780387493000
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The task end time.
+	// The end time of the task, represented as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780387494000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The resource pool ID used by the task.
+	// The ID of the resource pool used by the task.
 	//
 	// example:
 	//
 	// hive-26cd567b35c04a0a90f017388207b2
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
-	// The task status.
+	// The task error message.
 	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
 	// The task ID.
 	//
@@ -179,21 +179,25 @@ type DescribeComfyTasksResponseBodyTasks struct {
 	//
 	// 6c8234f4-d1e1-4cea-b08b-7926fbdea144
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task status.
+	// The task state.
 	//
 	// example:
 	//
 	// RUNNING
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	// The task status.
+	// The task state message.
+	//
+	// example:
+	//
+	// 任务执行成功
 	TaskStateMessage *string `json:"TaskStateMessage,omitempty" xml:"TaskStateMessage,omitempty"`
-	// The last modified time.
+	// The last modified time, represented as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780387494000
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// The Comfy workflow ID used by the task.
+	// The ID of the Comfy workflow used by the task.
 	//
 	// example:
 	//

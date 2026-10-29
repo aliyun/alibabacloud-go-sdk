@@ -22,27 +22,27 @@ type iDisassociateRenderingProjectInstancesResponseBody interface {
 }
 
 type DisassociateRenderingProjectInstancesResponseBody struct {
-	// The number of cloud application service instances that failed to dissociate.
+	// The number of cloud application service instances that failed to be dissociated.
 	//
 	// example:
 	//
 	// 0
 	FailedInstanceCount *string `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	// A list of instances that failed to dissociate.
+	// The list of instances that failed to be dissociated.
 	FailedInstances []*DisassociateRenderingProjectInstancesResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of cloud application service instances that were successfully dissociated.
+	// The number of successfully dissociated cloud application service instances.
 	//
 	// example:
 	//
 	// 5
 	SuccessInstanceCount *string `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	// A list of instances that were successfully dissociated.
+	// The list of successfully dissociated instances.
 	SuccessInstances []*DisassociateRenderingProjectInstancesResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
@@ -122,13 +122,13 @@ func (s *DisassociateRenderingProjectInstancesResponseBody) Validate() error {
 }
 
 type DisassociateRenderingProjectInstancesResponseBodyFailedInstances struct {
-	// The reason for failure.
+	// The cause of the failure.
 	//
 	// example:
 	//
-	// 会话中
+	// In session
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A cloud application service instance ID.
+	// The cloud application service instance ID.
 	//
 	// example:
 	//
@@ -167,13 +167,13 @@ func (s *DisassociateRenderingProjectInstancesResponseBodyFailedInstances) Valid
 }
 
 type DisassociateRenderingProjectInstancesResponseBodySuccessInstances struct {
-	// The result message.
+	// The description.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A cloud application service instance ID.
+	// The cloud application service instance ID.
 	//
 	// example:
 	//

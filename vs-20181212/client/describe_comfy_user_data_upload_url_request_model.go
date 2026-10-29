@@ -20,7 +20,7 @@ type iDescribeComfyUserDataUploadUrlRequest interface {
 }
 
 type DescribeComfyUserDataUploadUrlRequest struct {
-	// The content type of the file.
+	// The content type of the file to be uploaded.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DescribeComfyUserDataUploadUrlRequest struct {
 	//
 	// application/jpeg
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The MD5 hash of the file to be uploaded. This value must be the file\\"s actual MD5 hash. The file size is also verified during the upload.
+	// The MD5 value of the file to be uploaded. This value must be the exact MD5 value of the file. The file MD5 value is verified when the upload URL is used.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeComfyUserDataUploadUrlRequest struct {
 	//
 	// 54d6911ba6d59dbe68990835a409f18c
 	FileMd5 *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
-	// The name of the file to upload. The filename can be a single file, such as \\`1.jpg\\`, or include a path, such as \\`directory1/1.jpg\\`.
+	// The name of the file to be uploaded. The file name format can be a single file name (such as 1.jpg) or a path format (such as directory1/1.jpg).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeComfyUserDataUploadUrlRequest struct {
 	//
 	// myfile
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The actual size of the file in bytes. This value must be the exact size of the file. The file size is verified when you use the upload URL.
+	// The actual size of the file to be uploaded, in bytes. This value must be the exact size of the file in bytes. The file size is verified when the upload URL is used.
 	//
 	// This parameter is required.
 	//

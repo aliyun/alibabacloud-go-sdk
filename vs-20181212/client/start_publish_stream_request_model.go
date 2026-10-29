@@ -18,10 +18,22 @@ type iStartPublishStreamRequest interface {
 }
 
 type StartPublishStreamRequest struct {
+	// The ID of the cloud application service instance for which to start desktop capture and streaming.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The streaming URL for the desktop capture content.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rtmp://example.com/live/stream
 	PublishUrl *string `json:"PublishUrl,omitempty" xml:"PublishUrl,omitempty"`
 }
 

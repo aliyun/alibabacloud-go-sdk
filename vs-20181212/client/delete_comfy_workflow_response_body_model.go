@@ -24,7 +24,7 @@ type DeleteComfyWorkflowResponseBody struct {
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The description.
 	//
 	// example:
 	//

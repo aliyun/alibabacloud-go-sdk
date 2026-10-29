@@ -16,7 +16,7 @@ type iDisassociateRenderingProjectInstancesRequest interface {
 }
 
 type DisassociateRenderingProjectInstancesRequest struct {
-	// The ID of the project.
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DisassociateRenderingProjectInstancesRequest struct {
 	//
 	// project-422bc38dfgh5eb44149f135ef76304f63b
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// A list of cloud application service instance IDs.
+	// The list of cloud application service instance IDs.
 	//
 	// This parameter is required.
 	RenderingInstanceIds []*string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty" type:"Repeated"`

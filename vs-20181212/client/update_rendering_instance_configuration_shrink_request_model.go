@@ -20,7 +20,7 @@ type UpdateRenderingInstanceConfigurationShrinkRequest struct {
 	//
 	// This parameter is required.
 	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	// The ID of the cloud application service instance.
+	// The instance ID of the cloud application service.
 	//
 	// This parameter is required.
 	//

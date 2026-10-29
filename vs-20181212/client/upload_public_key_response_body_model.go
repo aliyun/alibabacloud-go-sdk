@@ -14,7 +14,7 @@ type iUploadPublicKeyResponseBody interface {
 }
 
 type UploadPublicKeyResponseBody struct {
-	// ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

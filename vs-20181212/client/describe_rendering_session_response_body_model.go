@@ -38,27 +38,27 @@ type iDescribeRenderingSessionResponseBody interface {
 }
 
 type DescribeRenderingSessionResponseBody struct {
-	// Additional optional ingress network information
+	// The additional optional ingress network information.
 	AdditionalIngresses []*DescribeRenderingSessionResponseBodyAdditionalIngresses `json:"AdditionalIngresses,omitempty" xml:"AdditionalIngresses,omitempty" type:"Repeated"`
-	// Cloud application ID
+	// The cloud application ID.
 	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// End client ID
+	// The client ID.
 	//
 	// example:
 	//
 	// c91263a0-f9ac-45bd-bbe9-6e293ad32d91
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// Instance hostname. Defaults to the EIP address.
+	// The instance hostname. By default, the value is the elastic IP address (EIP) used for access.
 	//
 	// example:
 	//
 	// 111.45.29.96
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// Carrier code. Valid values:
+	// The ISP code. Valid values:
 	//
 	// 1. cmcc
 	//
@@ -70,41 +70,41 @@ type DescribeRenderingSessionResponseBody struct {
 	//
 	// telecom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// Cloud application service instance location
+	// The location information of the cloud application service instance.
 	Location *DescribeRenderingSessionResponseBodyLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	// Cloud application patch package ID. An empty value means the original version.
+	// The cloud application patch package ID. An empty value indicates the original version.
 	//
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// Port mapping information
+	// The port mapping information.
 	PortMappings []*DescribeRenderingSessionResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
-	// Cloud application service instance ID
+	// The cloud application service instance ID.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//
 	// session-i205217481741918129226
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// Start time
+	// The start time. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2025-05-18T02:20:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Session state information
+	// The session status information.
 	StateInfo *DescribeRenderingSessionResponseBodyStateInfo `json:"StateInfo,omitempty" xml:"StateInfo,omitempty" type:"Struct"`
 }
 
@@ -266,13 +266,13 @@ func (s *DescribeRenderingSessionResponseBody) Validate() error {
 }
 
 type DescribeRenderingSessionResponseBodyAdditionalIngresses struct {
-	// Domain name or IP address of the cloud application service instance
+	// The domain name or IP address of the cloud application service instance.
 	//
 	// example:
 	//
 	// 111.45.29.96
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// Carrier code. Valid values:
+	// The ISP code. Valid values:
 	//
 	// 1. cmcc
 	//
@@ -284,7 +284,7 @@ type DescribeRenderingSessionResponseBodyAdditionalIngresses struct {
 	//
 	// unicom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// List of port mappings
+	// The port mapping list.
 	PortMappings []*DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
 }
 
@@ -337,13 +337,13 @@ func (s *DescribeRenderingSessionResponseBodyAdditionalIngresses) Validate() err
 }
 
 type DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings struct {
-	// Public port or port range, such as 22. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+	// The external port or port range, such as 22. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
 	//
 	// example:
 	//
 	// 11060/11079
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	// Private port or port range. Each private port maps one-to-one with a public port. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+	// The internal port or port range. The internal ports correspond one-to-one to the external ports. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
 	//
 	// example:
 	//
@@ -382,7 +382,7 @@ func (s *DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings) Va
 }
 
 type DescribeRenderingSessionResponseBodyLocation struct {
-	// Province code of the cloud application service instance
+	// The province code of the cloud application service instance.
 	//
 	// example:
 	//
@@ -412,13 +412,13 @@ func (s *DescribeRenderingSessionResponseBodyLocation) Validate() error {
 }
 
 type DescribeRenderingSessionResponseBodyPortMappings struct {
-	// Public port or port range, such as 22. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+	// The external port or port range, such as 22. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
 	//
 	// example:
 	//
 	// 10013/10020
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	// Private port or port range. Each private port maps one-to-one with a public port. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+	// The internal port or port range. The internal ports correspond one-to-one to the external ports. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
 	//
 	// example:
 	//
@@ -457,33 +457,33 @@ func (s *DescribeRenderingSessionResponseBodyPortMappings) Validate() error {
 }
 
 type DescribeRenderingSessionResponseBodyStateInfo struct {
-	// State description
+	// The status description.
 	//
 	// example:
 	//
-	// 已启动
+	// Started
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Session state. Valid values:
+	// The session status. Valid values:
 	//
-	// 1. SessionStarting: Starting the session
+	// 1. SessionStarting: The session is starting.
 	//
-	// 2. SessionStartSuspended: Session start is suspended. Retry by calling Start again.
+	// 2. SessionStartSuspended: The session start is suspended. You can initiate start again to retry.
 	//
-	// 3. SessionStarted: Session started or in use
+	// 3. SessionStarted: The session is started or in use.
 	//
-	// 4. SessionStartFailed: Session failed to start
+	// 4. SessionStartFailed: The session failed to start.
 	//
-	// 5. SessionAbnormal: Session became abnormal after starting successfully
+	// 5. SessionAbnormal: The session is abnormal after a successful start.
 	//
-	// 6. SessionStopping: Stopping the session
+	// 6. SessionStopping: The session is stopping.
 	//
-	// 7. SessionStopFailed: Session failed to stop
+	// 7. SessionStopFailed: The session failed to stop.
 	//
 	// example:
 	//
 	// SessionStarted
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Time when the state was last updated
+	// The time when the status was last updated. The time follows the ISO 8601 standard and includes the time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//

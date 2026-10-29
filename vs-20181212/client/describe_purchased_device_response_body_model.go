@@ -38,91 +38,91 @@ type iDescribePurchasedDeviceResponseBody interface {
 }
 
 type DescribePurchasedDeviceResponseBody struct {
-	// Device creation time.
+	// The time when the device was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2018-12-10T21:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Device description.
+	// The device description.
 	//
 	// example:
 	//
-	// xxx路口摄像头
+	// Camera at xxx intersection
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Space ID.
+	// The group ID.
 	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Space name.
+	// The group name.
 	//
 	// example:
 	//
-	// 测试空间
+	// Test group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Device ID.
+	// The device ID.
 	//
 	// example:
 	//
 	// 33763****77224964-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Device name.
+	// The device name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Order ID.
+	// The order ID.
 	//
 	// example:
 	//
 	// 2117*****0447
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Region where the space belongs, also known as the service center.
+	// The region to which the group belongs, which is the service center.
 	//
 	// example:
 	//
 	// cn-qingdao
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Device registration code.
+	// The device registration code.
 	//
 	// example:
 	//
 	// 12345*****67890
 	RegisterCode *string `json:"RegisterCode,omitempty" xml:"RegisterCode,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Device child type. Valid values:
+	// The device subtype. Valid values:
 	//
-	// - bullet (bullet camera)
+	// - bullet: Bullet camera.
 	//
-	// - dome (dome camera)
+	// - dome: Dome camera.
 	//
-	// - ptz (PTZ)
+	// - ptz: PTZ camera.
 	//
 	// example:
 	//
 	// dome
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// Device type. Valid values:
+	// The device type. Valid values:
 	//
-	// - ipc (camera)
+	// - ipc: Camera.
 	//
-	// - platform
+	// - platform: Platform.
 	//
-	// - ied (intelligent device)
+	// - ied: Intelligent device.
 	//
 	// example:
 	//
 	// ipc
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Device vendor.
+	// The device vendor.
 	//
 	// example:
 	//

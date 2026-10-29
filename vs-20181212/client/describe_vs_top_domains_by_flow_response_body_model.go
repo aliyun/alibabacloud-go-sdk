@@ -24,19 +24,19 @@ type iDescribeVsTopDomainsByFlowResponseBody interface {
 }
 
 type DescribeVsTopDomainsByFlowResponseBody struct {
-	// The total number of domain names under your account.
+	// The total number of domains under the account.
 	//
 	// example:
 	//
 	// 20
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	// The total number of **running*	- domain names under your account.
+	// The total number of domains that are **running*	- under the account.
 	//
 	// example:
 	//
 	// 12
 	DomainOnlineCount *int64 `json:"DomainOnlineCount,omitempty" xml:"DomainOnlineCount,omitempty"`
-	// The end time of the query time range.
+	// The end time of the query. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeVsTopDomainsByFlowResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query.
+	// The start time of the query. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
 	//
 	// example:
 	//

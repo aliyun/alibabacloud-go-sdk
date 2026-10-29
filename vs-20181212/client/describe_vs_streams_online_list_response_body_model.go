@@ -31,7 +31,7 @@ type DescribeVsStreamsOnlineListResponseBody struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries displayed per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -43,7 +43,7 @@ type DescribeVsStreamsOnlineListResponseBody struct {
 	//
 	// B31FC4AD-3592-573E-8063-878F722B322A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that meet the criteria.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//

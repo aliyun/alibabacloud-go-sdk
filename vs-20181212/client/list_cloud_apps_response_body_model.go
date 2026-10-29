@@ -22,27 +22,27 @@ type iListCloudAppsResponseBody interface {
 }
 
 type ListCloudAppsResponseBody struct {
-	// The list of cloud application information.
+	// The list of cloud applications.
 	CloudApps []*ListCloudAppsResponseBodyCloudApps `json:"CloudApps,omitempty" xml:"CloudApps,omitempty" type:"Repeated"`
-	// The page number of the query list.
+	// The page number of the returned list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for the paged query.
+	// The Settings for the number of entries returned on each page during paging for a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of matched cloud applications.
+	// The total number of cloud applications that match the query conditions.
 	//
 	// example:
 	//
@@ -117,91 +117,87 @@ func (s *ListCloudAppsResponseBody) Validate() error {
 }
 
 type ListCloudAppsResponseBodyCloudApps struct {
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
 	// com.aaa.bbb
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application version.
+	// The version of the application.
 	//
 	// example:
 	//
 	// 1.5.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The application description.
+	// The description of the application.
 	//
 	// example:
 	//
 	// demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The installation package format.
+	// The format of the installation package.
 	//
 	// example:
 	//
 	// apk
 	PkgFormat *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
-	// The installation package type. Valid values: android and win.
+	// The type of the installation package, such as android or win.
 	//
 	// example:
 	//
 	// android
 	PkgType *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
-	// The relative path of the post-command within the application package. Only win type applications are supported.
+	// The relative path of the post-command in the application package. This parameter is supported only for Windows applications.
 	//
 	// example:
 	//
 	// install.ps1
 	PostCommandPath *string `json:"PostCommandPath,omitempty" xml:"PostCommandPath,omitempty"`
-	// The timeout period for post-command execution, in seconds. Only win type applications are supported.
+	// The timeout period for executing the post-command, in seconds. This parameter is supported only for Windows applications.
 	//
 	// example:
 	//
 	// 10
 	PostCommandTimeoutSec *int32 `json:"PostCommandTimeoutSec,omitempty" xml:"PostCommandTimeoutSec,omitempty"`
-	// The ID of the stable version patch package.
+	// The ID of the stable patch package.
 	//
 	// example:
 	//
 	// patch-7bdf679812484df08a956b73e0b3bdf6
 	StablePatchId *string `json:"StablePatchId,omitempty" xml:"StablePatchId,omitempty"`
-	// The application upload status. Valid values:
+	// The upload status of the application. Valid values:
 	//
-	// 1. Created
+	// - Created
 	//
-	// 2. Doing
+	// - Doing
 	//
-	// 3. Success: desired state.
+	// - Success: This is a final state.
 	//
-	// 4. Failed: desired state.
-	//
-	// 5. Deleting
-	//
-	// 6. DeleteFailed: desired state.
+	// - Failed: This is a final state.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status description.
+	// The description of the status.
 	//
 	// example:
 	//
 	// upload success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// The latest status update time.
+	// The time when the status was last updated. The time is displayed in the ISO 8601 standard with a time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
 	// 2024-05-28T14:48:34+08:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The application upload time.
+	// The time when the application was uploaded. The time is displayed in the ISO 8601 standard with a time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

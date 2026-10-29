@@ -22,27 +22,27 @@ type iUninstallCloudAppResponseBody interface {
 }
 
 type UninstallCloudAppResponseBody struct {
-	// The number of cloud application service instances that failed.
+	// The number of cloud application service instances on which the operation failed.
 	//
 	// example:
 	//
 	// 0
 	FailedInstanceCount *int32 `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	// List of failed cloud application service instances
+	// The list of cloud application service instances on which the operation failed.
 	FailedInstances []*UninstallCloudAppResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Number of successfully uninstalled cloud application instances
+	// The number of cloud application service instances on which the operation succeeded.
 	//
 	// example:
 	//
 	// 5
 	SuccessInstanceCount *int32 `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	// A list of service instances for which the cloud application was uninstalled successfully.
+	// The list of cloud application service instances on which the operation succeeded.
 	SuccessInstances []*UninstallCloudAppResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
@@ -122,19 +122,19 @@ func (s *UninstallCloudAppResponseBody) Validate() error {
 }
 
 type UninstallCloudAppResponseBodyFailedInstances struct {
-	// Error code
+	// The error code for the failure.
 	//
 	// example:
 	//
 	// 300000
 	ErrCode *int32 `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Error message
+	// The cause of the failure.
 	//
 	// example:
 	//
 	// Rejected due to timeout
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// Cloud application instance ID
+	// The cloud application service instance ID.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ func (s *UninstallCloudAppResponseBodyFailedInstances) Validate() error {
 }
 
 type UninstallCloudAppResponseBodySuccessInstances struct {
-	// Cloud application instance ID
+	// The cloud application service instance ID.
 	//
 	// example:
 	//

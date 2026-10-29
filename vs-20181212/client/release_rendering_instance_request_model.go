@@ -14,7 +14,7 @@ type iReleaseRenderingInstanceRequest interface {
 }
 
 type ReleaseRenderingInstanceRequest struct {
-	// Graphic Computing Service application instance ID
+	// The cloud application service instance ID.
 	//
 	// This parameter is required.
 	//

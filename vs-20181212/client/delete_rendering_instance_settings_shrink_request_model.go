@@ -16,9 +16,9 @@ type iDeleteRenderingInstanceSettingsShrinkRequest interface {
 }
 
 type DeleteRenderingInstanceSettingsShrinkRequest struct {
-	// List of attribute names.
+	// The list of attribute names.
 	AttributeNamesShrink *string `json:"AttributeNames,omitempty" xml:"AttributeNames,omitempty"`
-	// ID of the cloud application service instance.
+	// The cloud application service instance ID.
 	//
 	// example:
 	//

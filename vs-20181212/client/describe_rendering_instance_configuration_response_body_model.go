@@ -16,7 +16,7 @@ type iDescribeRenderingInstanceConfigurationResponseBody interface {
 }
 
 type DescribeRenderingInstanceConfigurationResponseBody struct {
-	// The configuration.
+	// The configuration content.
 	Configuration []*DescribeRenderingInstanceConfigurationResponseBodyConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,27 +66,27 @@ func (s *DescribeRenderingInstanceConfigurationResponseBody) Validate() error {
 }
 
 type DescribeRenderingInstanceConfigurationResponseBodyConfiguration struct {
-	// The list of properties for the module.
+	// The list of attributes for the module.
 	Attributes []*DescribeRenderingInstanceConfigurationResponseBodyConfigurationAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// The name of the device simulation feature module. Valid values:
+	// The name of the real-device simulation feature module. Valid values:
 	//
-	// 1. ctl: The control module.
+	// - ctl: Control module.
 	//
-	// 2. prop: The property module.
+	// - prop: Attribute module.
 	//
-	// 3. location: The location module.
+	// - location: Location module.
 	//
-	// 4. battery: The battery module.
+	// - battery: Battery module.
 	//
-	// 5. network: The network module.
+	// - network: Network module.
 	//
-	// 6. bluetooth: The Bluetooth module.
+	// - bluetooth: Bluetooth module.
 	//
-	// 7. sim: The SIM card module.
+	// - sim: SIM card module.
 	//
-	// 8. display: The device module.
+	// - display: Device module.
 	//
-	// 9. system: The basic module.
+	// - system: Basic module.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *DescribeRenderingInstanceConfigurationResponseBodyConfiguration) Valida
 }
 
 type DescribeRenderingInstanceConfigurationResponseBodyConfigurationAttributes struct {
-	// The name of the attribute.
+	// The attribute name.
 	//
 	// example:
 	//
 	// lon
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the attribute.
+	// The attribute value.
 	//
 	// example:
 	//

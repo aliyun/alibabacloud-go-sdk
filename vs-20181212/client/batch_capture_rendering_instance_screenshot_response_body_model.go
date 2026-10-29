@@ -24,7 +24,7 @@ type iBatchCaptureRenderingInstanceScreenshotResponseBody interface {
 }
 
 type BatchCaptureRenderingInstanceScreenshotResponseBody struct {
-	// The dry run result.
+	// The data pre-check result.
 	Datatest *BatchCaptureRenderingInstanceScreenshotResponseBodyDatatest `json:"Datatest,omitempty" xml:"Datatest,omitempty" type:"Struct"`
 	// The number of failed instances.
 	//
@@ -32,7 +32,7 @@ type BatchCaptureRenderingInstanceScreenshotResponseBody struct {
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The list of instances for which screenshots failed.
+	// The list of instances for which screenshot capture failed.
 	FailedItems []*BatchCaptureRenderingInstanceScreenshotResponseBodyFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -140,7 +140,7 @@ func (s *BatchCaptureRenderingInstanceScreenshotResponseBody) Validate() error {
 }
 
 type BatchCaptureRenderingInstanceScreenshotResponseBodyDatatest struct {
-	// The dry run result.
+	// The pre-check result.
 	Result *BatchCaptureRenderingInstanceScreenshotResponseBodyDatatestResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -201,19 +201,19 @@ func (s *BatchCaptureRenderingInstanceScreenshotResponseBodyDatatestResult) Vali
 }
 
 type BatchCaptureRenderingInstanceScreenshotResponseBodyFailedItems struct {
-	// The error code of the failure.
+	// The error code for the failure.
 	//
 	// example:
 	//
 	// Success
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message of the failure.
+	// The reason for the failure.
 	//
 	// example:
 	//
 	// Not Applied
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The instance ID of the cloud application service instance.
+	// The cloud application service instance ID.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ func (s *BatchCaptureRenderingInstanceScreenshotResponseBodyFailedItems) Validat
 }
 
 type BatchCaptureRenderingInstanceScreenshotResponseBodySuccessItems struct {
-	// The time when the screenshot was created.
+	// The time when the screenshot was created. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
@@ -273,7 +273,7 @@ type BatchCaptureRenderingInstanceScreenshotResponseBodySuccessItems struct {
 	//
 	// https://testts-1.oss-cn-beijing.aliyuncs.com/app/test-zip-file.zip
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The instance ID of the cloud application service instance.
+	// The cloud application service instance ID.
 	//
 	// example:
 	//

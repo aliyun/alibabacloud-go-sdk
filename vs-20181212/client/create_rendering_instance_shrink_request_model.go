@@ -32,63 +32,63 @@ type iCreateRenderingInstanceShrinkRequest interface {
 }
 
 type CreateRenderingInstanceShrinkRequest struct {
-	// > Unless you have specific requirements, keep the default values. For customers with special requirements, fill in the relevant parameters after communication and confirmation.
+	// > Unless you have special requirements, keep the default value. If you have special requirements, consult and confirm before specifying this parameter.
 	//
-	// Attribute information.
+	// The attribute information.
 	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// > This value is valid only when `InstanceChargeType` is `PrePaid` (subscription).
+	// > This parameter takes effect only when `InstanceChargeType` is set to `PrePaid` (subscription).
 	//
-	// Enable or disable auto-renewal. Values:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - **true**: Enable.
+	// 	- **true**: enables auto-renewal.
 	//
-	// - **false**: Disable.
+	// 	- **false**: disables auto-renewal.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Client information.
+	// The client information.
 	ClientInfoShrink *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
-	// > This value is valid only when `InstanceChargeType` is `PostPaid` (pay-as-you-go).
+	// > This parameter takes effect only when `InstanceChargeType` is set to `PostPaid` (pay-as-you-go).
 	//
-	// Billing type. Valid values:
+	// The billing cycle. Valid values:
 	//
-	// - Hour: Hourly.
+	// - Hour: hour.
 	//
 	// example:
 	//
 	// Hour
 	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
-	// The billing method for the instance. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// - PrePaid (default): Subscription.
+	// - PrePaid (default): subscription.
 	//
-	// - PostPaid: Pay-as-you-go.
+	// - PostPaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// > Only one billing method is allowed. If a billing method already exists, the new value is invalid by default, and the existing one prevails. Note that this field is required when a user makes the first purchase.
+	// > Only one billing method is supported. If a billing method already exists, the new value is invalid by default, and the existing billing method prevails. Note that this parameter is required when you purchase the instance for the first time.
 	//
-	// Network billing type. Value:
+	// The network billing type. Valid values:
 	//
-	// - 95BandwidthByMonth: Monthly 95th percentile bandwidth.
+	// - 95BandwidthByMonth: monthly 95th percentile bandwidth.
 	//
 	// example:
 	//
 	// 95BandwidthByMonth
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// Maximum bandwidth, in Mbps. Default is 10.
+	// The maximum bandwidth. Unit: Mbit/s. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitempty" xml:"InternetMaxBandwidth,omitempty"`
-	// > This value is valid only when `InstanceChargeType` is `PrePaid` (subscription).
+	// > This parameter takes effect only when `InstanceChargeType` is set to `PrePaid` (subscription).
 	//
-	// The subscription period. Valid values (Note: 12 is converted to one year; other values are in months):
+	// The subscription duration. Valid values (note: if you select 12, it is calculated as one year, and other values are calculated in months):
 	//
 	// - 1 (default)
 	//
@@ -114,13 +114,13 @@ type CreateRenderingInstanceShrinkRequest struct {
 	//
 	// 1
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// Cloud application service instance specifications.
+	// The specifications of the cloud application service instance.
 	//
-	// - For crs.cp.\\	- series specifications, choose between subscription or pay-as-you-go billing.
+	// - For the crs.cp.	- series, the billing method can be subscription or pay-as-you-go.
 	//
-	// - For crs.vm.\\	- series specifications, choose between subscription or pay-as-you-go billing.
+	// - For the crs.vm.	- series, the billing method can be subscription or pay-as-you-go.
 	//
-	// - For other series, only subscription billing is supported.
+	// - For other series, only the subscription billing method is supported.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +128,7 @@ type CreateRenderingInstanceShrinkRequest struct {
 	//
 	// crs.cp.l1
 	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
-	// The cloud storage capacity used by the cloud application service instance (Note: not local storage).
+	// The cloud storage capacity used by the cloud application service instance. Note: This is not local storage.
 	//
 	// example:
 	//

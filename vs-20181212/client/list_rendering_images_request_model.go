@@ -18,19 +18,19 @@ type iListRenderingImagesRequest interface {
 }
 
 type ListRenderingImagesRequest struct {
-	// The cloud application service instance ID.
+	// The ID of the cloud application service instance.
 	//
 	// example:
 	//
 	// m-9timxhrrgopkec8ju
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The page number. The value starts from 1.
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries to return on each page in a paged query.
 	//
 	// example:
 	//

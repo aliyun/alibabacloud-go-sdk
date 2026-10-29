@@ -18,15 +18,15 @@ type iListRenderingProjectInstancesResponseBody interface {
 }
 
 type ListRenderingProjectInstancesResponseBody struct {
-	// List of cloud application service instances
+	// The list of cloud application service instances.
 	RenderingInstances []*ListRenderingProjectInstancesResponseBodyRenderingInstances `json:"RenderingInstances,omitempty" xml:"RenderingInstances,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of cloud application service instances
+	// The total number of cloud application service instances.
 	//
 	// example:
 	//
@@ -83,19 +83,19 @@ func (s *ListRenderingProjectInstancesResponseBody) Validate() error {
 }
 
 type ListRenderingProjectInstancesResponseBodyRenderingInstances struct {
-	// Time when the instance was associated with the project
+	// The association time. The time is in the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//
 	// 2024-09-11T18:19:04+08:00
 	AssociationTime *string `json:"AssociationTime,omitempty" xml:"AssociationTime,omitempty"`
-	// Cloud application service instance
+	// The ID of the cloud application service instance.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// Status information for the project instance
+	// The project instance status information.
 	StateInfo *ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo `json:"StateInfo,omitempty" xml:"StateInfo,omitempty" type:"Struct"`
 }
 
@@ -144,19 +144,19 @@ func (s *ListRenderingProjectInstancesResponseBodyRenderingInstances) Validate()
 }
 
 type ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo struct {
-	// Description of the current status
+	// The status description.
 	//
 	// example:
 	//
-	// 正在会话中
+	// In a session
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Instance status
+	// The project instance status.
 	//
 	// example:
 	//
 	// InUse
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Time when the status was last updated
+	// The latest update time of the status. The time is in the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//

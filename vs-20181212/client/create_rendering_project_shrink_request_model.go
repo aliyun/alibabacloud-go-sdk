@@ -18,21 +18,21 @@ type iCreateRenderingProjectShrinkRequest interface {
 }
 
 type CreateRenderingProjectShrinkRequest struct {
-	// The description of the project. The description can be 0 to 255 characters in length.
+	// The description of the project. The description must be 0 to 255 characters in length.
 	//
 	// example:
 	//
-	// 项目概述
+	// Project overview
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The custom name of the project. This name is the unique identifier for the project.
+	// The custom project name, which serves as the unique identifier for the project.
 	//
-	// The name must meet the following requirements:
+	// Naming conventions:
 	//
-	// 1. Be 1 to 128 characters in length.
+	// 1. The length must be 1 to 128 characters.
 	//
-	// 2. Contain only lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+	// 2. The name can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
 	//
-	// 3. Start and end with a letter or a digit.
+	// 3. The first and last characters must be letters or digits.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateRenderingProjectShrinkRequest struct {
 	//
 	// du_merchant_d
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The session properties.
+	// The session attributes.
 	SessionAttribsShrink *string `json:"SessionAttribs,omitempty" xml:"SessionAttribs,omitempty"`
 }
 

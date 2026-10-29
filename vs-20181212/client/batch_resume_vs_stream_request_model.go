@@ -22,14 +22,19 @@ type iBatchResumeVsStreamRequest interface {
 }
 
 type BatchResumeVsStreamRequest struct {
-	// The name of the stream in the AppName/StreamName format. To specify multiple streams, separate the stream names with commas.
+	// The stream name in the format of AppName/StreamName. Separate multiple stream names with commas (,).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// live/stream1
-	Channel             *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The stream control operation. Set the value to resume to resume the stream push.
+	//
+	// example:
+	//
+	// resume
 	ControlStreamAction *string `json:"ControlStreamAction,omitempty" xml:"ControlStreamAction,omitempty"`
 	// The accelerated domain name.
 	//
@@ -39,7 +44,7 @@ type BatchResumeVsStreamRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The type of live stream. Only publisher is supported, which indicates that the stream is ingested by a streamer.
+	// Specifies whether the stream is pushed by the broadcaster or pulled by the client. Valid value: publisher (broadcaster push).
 	//
 	// This parameter is required.
 	//

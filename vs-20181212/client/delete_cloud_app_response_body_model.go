@@ -14,7 +14,7 @@ type iDeleteCloudAppResponseBody interface {
 }
 
 type DeleteCloudAppResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//

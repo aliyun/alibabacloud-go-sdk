@@ -18,7 +18,7 @@ type iModifyRenderingInstanceRequest interface {
 }
 
 type ModifyRenderingInstanceRequest struct {
-	// ID of the cloud application service instance. You can only upgrade or downgrade to another instance type in the same series.
+	// The instance ID of the cloud application service instance. Note: Only Upgrade/Downgrade within the same instance family is supported.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type ModifyRenderingInstanceRequest struct {
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// Instance type of the cloud application service instance.
+	// The specifications of the cloud application service instance.
 	//
 	// example:
 	//
 	// crs.cp.l1
 	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
-	// Cloud storage capacity used by the cloud application service instance. This is not local storage.
+	// The cloud storage capacity used by the cloud application service instance. Note: This is not local storage.
 	//
 	// example:
 	//

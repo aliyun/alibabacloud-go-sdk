@@ -32,7 +32,7 @@ type iDescribeRecordsRequest interface {
 }
 
 type DescribeRecordsRequest struct {
-	// Specify the end time for the query.
+	// The end time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +47,7 @@ type DescribeRecordsRequest struct {
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Page size. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
@@ -59,25 +59,25 @@ type DescribeRecordsRequest struct {
 	//
 	// true
 	PrivateBucket *bool `json:"PrivateBucket,omitempty" xml:"PrivateBucket,omitempty"`
-	// The field to sort the records by. Valid value:
+	// The field by which to sort. Valid values:
 	//
-	// - Id (default)
+	// - Id: default
 	//
 	// example:
 	//
 	// Id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The sorting method. Valid values:
+	// The sort order. Valid values:
 	//
-	// - asc (ascending, default)
+	// - asc: ascending order (default)
 	//
-	// - desc (descending)
+	// - desc: descending order
 	//
 	// example:
 	//
 	// asc
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
-	// Query records by start time.
+	// The start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -85,7 +85,7 @@ type DescribeRecordsRequest struct {
 	//
 	// 2021-11-22T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Query by stream ID.
+	// The ID of the stream.
 	//
 	// This parameter is required.
 	//
@@ -93,11 +93,11 @@ type DescribeRecordsRequest struct {
 	//
 	// 323*****997-cn-qingdao
 	StreamId *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
-	// The type of the recording record to query. Valid values:
+	// The type of the storage record. Valid values:
 	//
-	// - record (Recording)
+	// - record: recording
 	//
-	// - snapshot
+	// - snapshot: snapshot
 	//
 	// This parameter is required.
 	//

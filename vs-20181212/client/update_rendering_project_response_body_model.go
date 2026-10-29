@@ -14,7 +14,7 @@ type iUpdateRenderingProjectResponseBody interface {
 }
 
 type UpdateRenderingProjectResponseBody struct {
-	// Request ID
+	// Id of the request
 	//
 	// example:
 	//

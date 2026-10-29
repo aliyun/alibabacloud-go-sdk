@@ -75,7 +75,7 @@ func (client *Client) AddHiveEdgeWorkersWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Adds a stream pulling configuration.
+// Adds pull stream configurations.
 //
 // @param request - AddVsPullStreamInfoConfigRequest
 //
@@ -505,13 +505,13 @@ func (client *Client) BatchBindTemplatesWithContext(ctx context.Context, request
 //
 // ## Request description
 //
-// - **Authentication**: Requests must include the `AliUid` parameter for identity verification.
+// - **Authentication**: The request must include the `AliUid` parameter to authenticate and perform identity verification.
 //
-// - **Instance specification**: Use `RenderingInstanceIds` to specify the instances to capture screenshots from.
+// - **Instance specification**: You can specify the instances to capture screenshots of by using `RenderingInstanceIds`.
 //
-// - **Screenshot quality**: Use the `Quality` parameter to set the image quality of screenshots. The default value is 75 (if not configured). Valid values: 1 to 100.
+// - **Screenshot quality**: You can configure the Settings for the screenshot image quality by using the `Quality` parameter. The default value is 75 if not configured, and the valid values range from 1 to 100.
 //
-// - **Response handling**: The response contains lists of successful and failed instances with related information, including download URLs and screenshot completion times.
+// - **Response processing**: The response includes lists of successful and failed instances along with their related information, such as download URLs and screenshot completion times.
 //
 // @param tmpReq - BatchCaptureRenderingInstanceScreenshotRequest
 //
@@ -665,7 +665,7 @@ func (client *Client) BatchDeleteVsDomainConfigsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Stop stream ingest for one or more streams. You can schedule when to resume ingest.
+// Forbids the push of a specific stream and allows you to schedule a time to resume the stream.
 //
 // @param request - BatchForbidVsStreamRequest
 //
@@ -733,7 +733,7 @@ func (client *Client) BatchForbidVsStreamWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Resumes stream ingest for one or more streams.
+// Resumes the push of a specific stream.
 //
 // @param request - BatchResumeVsStreamRequest
 //
@@ -1553,7 +1553,7 @@ func (client *Client) BindTemplateWithContext(ctx context.Context, request *Bind
 //
 // Description:
 //
-// > Stop the parent platform before canceling the task.
+// > Stop the parent platform before deletion.
 //
 // @param request - CancelComfyTaskRequest
 //
@@ -1717,7 +1717,7 @@ func (client *Client) ContinuousMoveWithContext(ctx context.Context, request *Co
 //
 // Description:
 //
-// > You must enable on-demand snapshot in the associated snapshot template in advance.
+// > Enable the on-demand screenshot feature in the associated screenshot template.
 //
 // @param request - CreateComfyTaskRequest
 //
@@ -1773,7 +1773,7 @@ func (client *Client) CreateComfyTaskWithContext(ctx context.Context, request *C
 //
 // Description:
 //
-// > You must specify either a template ID or a template type.
+// > Specify at least one of the template ID and the templatetype.
 //
 // @param request - CreateComfyUserDataDirRequest
 //
@@ -1817,11 +1817,11 @@ func (client *Client) CreateComfyUserDataDirWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a Comfy workflow.
+// Uploads a Comfy workflow.
 //
 // Description:
 //
-// > You must enable the on-demand screenshot feature in the associated screenshot template before calling this operation.
+// > You must first enable the on-demand snapshot feature in the associated snapshot template.
 //
 // @param request - CreateComfyWorkflowRequest
 //
@@ -2363,7 +2363,7 @@ func (client *Client) CreateParentPlatformWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a data pack for a cloud application service.
+// Creates a Cloud Application Service data package.
 //
 // @param request - CreateRenderingDataPackageRequest
 //
@@ -2419,7 +2419,7 @@ func (client *Client) CreateRenderingDataPackageWithContext(ctx context.Context,
 
 // Summary:
 //
-// Call CreateRenderingInstance to create a cloud application service instance.
+// Applies for a cloud rendering resource instance.
 //
 // @param tmpReq - CreateRenderingInstanceRequest
 //
@@ -2513,7 +2513,7 @@ func (client *Client) CreateRenderingInstanceWithContext(ctx context.Context, tm
 //
 // Description:
 //
-// > You can specify a template ID or a template type.
+// > Specify at least one of the template ID and templatetype.
 //
 // @param request - CreateRenderingInstanceGatewayRequest
 //
@@ -2561,7 +2561,7 @@ func (client *Client) CreateRenderingInstanceGatewayWithContext(ctx context.Cont
 
 // Summary:
 //
-// Creates a cloud application service project and configures its properties, such as session attributes.
+// Creates a cloud application service project and configures session-related properties.
 //
 // @param tmpReq - CreateRenderingProjectRequest
 //
@@ -2863,7 +2863,7 @@ func (client *Client) DelHiveEdgeWorkersWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Deletes a cloud application. You cannot delete a cloud application that is in use.
+// Deletes a cloud application. Cloud applications in use cannot be deleted.
 //
 // @param request - DeleteCloudAppRequest
 //
@@ -2907,11 +2907,11 @@ func (client *Client) DeleteCloudAppWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// # Deleting artifacts
+// Deletes an artifact.
 //
 // Description:
 //
-// > Stop the parent platform before you delete a production.
+// > Stop the parent platform before deletion.
 //
 // @param request - DeleteComfyProductionRequest
 //
@@ -2955,11 +2955,11 @@ func (client *Client) DeleteComfyProductionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes a file or directory from user data.
+// Deletes a file or directory in user data.
 //
 // Description:
 //
-// > You must stop the upper-level platform before performing this operation.
+// > Stop the parent platform before deletion.
 //
 // @param request - DeleteComfyUserDataRequest
 //
@@ -3007,7 +3007,7 @@ func (client *Client) DeleteComfyUserDataWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// > You must stop the parent platform before you can delete the workflow.
+// > Stop the parent platform before deletion.
 //
 // @param request - DeleteComfyWorkflowRequest
 //
@@ -3147,7 +3147,7 @@ func (client *Client) DeleteDirectoryWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// You cannot delete a file while it is uploading or pre-pushing. After deletion, all related push records become invalid. You can push a file with the same name again.
+// Deletes a file object. You cannot delete a file that is being uploaded or pre-pushed. After a file is deleted, all associated push records become invalid, and you can push a file with the same name again.
 //
 // @param request - DeleteFileRequest
 //
@@ -3439,7 +3439,7 @@ func (client *Client) DeletePublicKeyWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes the configuration of a cloud application service instance. This operation deletes only module properties that are configured using the UpdateRenderingInstanceConfiguration operation.
+// Clears the configuration settings of a cloud application service instance. Only module properties configured through the UpdateRenderingInstanceConfiguration operation can be removed.
 //
 // @param tmpReq - DeleteRenderingInstanceConfigurationRequest
 //
@@ -3499,7 +3499,7 @@ func (client *Client) DeleteRenderingInstanceConfigurationWithContext(ctx contex
 //
 // Description:
 //
-// > Stop the parent platform before you delete the gateway.
+// > Stop the upper-level platform before deletion.
 //
 // @param request - DeleteRenderingInstanceGatewayRequest
 //
@@ -3543,7 +3543,7 @@ func (client *Client) DeleteRenderingInstanceGatewayWithContext(ctx context.Cont
 
 // Summary:
 //
-// You can call DeleteRenderingInstanceSettings to delete the settings of a cloud application service instance.
+// Deletes the settings of a cloud application service instance.
 //
 // @param tmpReq - DeleteRenderingInstanceSettingsRequest
 //
@@ -3597,7 +3597,7 @@ func (client *Client) DeleteRenderingInstanceSettingsWithContext(ctx context.Con
 
 // Summary:
 //
-// Delete a Data Service Project. Projects that have business scheduling data, such as active sessions, cannot be deleted.
+// Deletes a cloud application service project. Projects that contain business scheduling data such as online sessions cannot be deleted.
 //
 // @param request - DeleteRenderingProjectRequest
 //
@@ -3841,11 +3841,11 @@ func (client *Client) DescribeAccountStatWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves a download link for a production.
+// Retrieves the download URL for user-generated results.
 //
 // Description:
 //
-// > Screenshot queries do not support pagination and must be performed iteratively. To fetch the next page, use the extStartTime value from the response as the StartTime for your subsequent request.
+// > Screenshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyProductionDownloadUrlRequest
 //
@@ -3889,11 +3889,11 @@ func (client *Client) DescribeComfyProductionDownloadUrlWithContext(ctx context.
 
 // Summary:
 //
-// Lists a user\\"s productions.
+// Lists the generation results of a user.
 //
 // Description:
 //
-// > This API uses pagination. Use the PageNumber and PageSize parameters to navigate through the results.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyProductionsRequest
 //
@@ -3945,7 +3945,7 @@ func (client *Client) DescribeComfyProductionsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the waiting queue information of Comfy tasks. The maximum length of a single Hive waiting queue is 100 by default.
+// Queries the waiting queue information of Comfy tasks. The default maximum length of a single Hive waiting queue is 100.
 //
 // @param request - DescribeComfyTaskWaitingQueueRequest
 //
@@ -3993,7 +3993,7 @@ func (client *Client) DescribeComfyTaskWaitingQueueWithContext(ctx context.Conte
 //
 // Description:
 //
-// > Screenshot queries do not support pagination. Only iteration-based queries are supported. Use the extStartTime parameter value from the response as the StartTime for a new request to retrieve the next page.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in a new request.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -4057,7 +4057,7 @@ func (client *Client) DescribeComfyTasksWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Gets a download URL for user data.
+// Retrieves the download URL for user data.
 //
 // @param request - DescribeComfyUserDataDownloadUrlRequest
 //
@@ -4101,11 +4101,11 @@ func (client *Client) DescribeComfyUserDataDownloadUrlWithContext(ctx context.Co
 
 // Summary:
 //
-// Retrieves a URL to upload a user file.
+// Retrieves the URL for uploading user files.
 //
 // Description:
 //
-// You can upload files using the retrieved URL and the Alibaba Cloud OSS software development kit (SDK).
+// The retrieved URL must be used with the Alibaba Cloud OSS SDK to upload files.
 //
 // @param request - DescribeComfyUserDataUploadUrlRequest
 //
@@ -4161,17 +4161,19 @@ func (client *Client) DescribeComfyUserDataUploadUrlWithContext(ctx context.Cont
 
 // Summary:
 //
-// Lists all files and folders in the user data.
+// Lists all files and directories in the user data.
 //
 // Description:
 //
-// If StartTime and EndTime are not specified, data from the last 24 hours is read by default. To query a specific time range, you must specify both StartTime and EndTime. The maximum time range for a query is 31 days.
+// If StartTime and EndTime are not specified, data from the past 24 hours is queried by default. You can also query data within a specified start and end time range. Both parameters must be specified at the same time.
 //
-// - You can query multiple domain names in a batch. Separate the domain names with a comma (,).
+// The maximum query range is 31 days.
 //
-// - You can retrieve data from the last 90 days.
+//   - Batch domain name queries are supported. Separate multiple domain names with commas (,).
 //
-// - The time granularity is one hour.
+//   - You can retrieve data from up to the last 90 days.
+//
+//   - The time granularity is one hour.
 //
 // @param request - DescribeComfyUserDatasRequest
 //
@@ -4223,11 +4225,11 @@ func (client *Client) DescribeComfyUserDatasWithContext(ctx context.Context, req
 
 // Summary:
 //
-// This operation retrieves a paginated list of your Comfy workflows.
+// Queries the information of all Comfy workflows. Paging is supported.
 //
 // Description:
 //
-// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
+// > Pagination is currently not supported for queries. Only iteration is supported. To request the next page, use the value of the extStartTime parameter from the response as the StartTime parameter in a new request.
 //
 // @param request - DescribeComfyWorkflowsRequest
 //
@@ -4279,7 +4281,7 @@ func (client *Client) DescribeComfyWorkflowsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Query information about a device.
+// Queries the details of a device.
 //
 // @param request - DescribeDeviceRequest
 //
@@ -4519,7 +4521,7 @@ func (client *Client) DescribeDeviceURLWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of devices.
+// Queries the list of devices.
 //
 // @param request - DescribeDevicesRequest
 //
@@ -4747,7 +4749,7 @@ func (client *Client) DescribeDirectoryWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves information about a space.
+// Retrieves workspace information.
 //
 // @param request - DescribeGroupRequest
 //
@@ -5155,7 +5157,7 @@ func (client *Client) DescribePublishStreamStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries information about purchased devices.
+// Queries the details of purchased devices.
 //
 // @param request - DescribePurchasedDeviceRequest
 //
@@ -5287,11 +5289,11 @@ func (client *Client) DescribePurchasedDevicesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of recordings.
+// Queries a list of recording records.
 //
 // Description:
 //
-// > Paging is not supported for snapshot queries. Only iteration is supported. To request the next page, use the NextStartTime value from the response as the StartTime for the new request.
+// > Snapshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeRecordsRequest
 //
@@ -5415,7 +5417,7 @@ func (client *Client) DescribeRenderingInstanceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the real-time configuration of a cloud application service instance.
+// Queries the real-time system configuration information of a cloud application service instance.
 //
 // @param tmpReq - DescribeRenderingInstanceConfigurationRequest
 //
@@ -5461,7 +5463,7 @@ func (client *Client) DescribeRenderingInstanceConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// DescribeRenderingInstanceSettings queries the configuration of a Cloud Application service instance.
+// Queries the configurations of a cloud application service instance.
 //
 // @param tmpReq - DescribeRenderingInstanceSettingsRequest
 //
@@ -5515,7 +5517,7 @@ func (client *Client) DescribeRenderingInstanceSettingsWithContext(ctx context.C
 
 // Summary:
 //
-// Retrieve details about a rendering session, including the current session state, network access IP address and port, and the location of the cloud application service instance.
+// Queries the details of a session, including the current session status, network access IP address and port, and location of the cloud application service instance.
 //
 // @param request - DescribeRenderingSessionRequest
 //
@@ -5695,7 +5697,7 @@ func (client *Client) DescribeStreamURLWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Get the stream VOD record list, such as historical stream list from NVR.
+// Retrieves a list of video-on-demand records for a stream, such as historical stream lists from an NVR.
 //
 // @param request - DescribeStreamVodListRequest
 //
@@ -5751,7 +5753,7 @@ func (client *Client) DescribeStreamVodListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Lists video streams. You can filter the results by stream ID, name, group ID, device ID, or other criteria.
+// Queries a list of streams. You can filter streams by stream ID, name, space ID, and device ID.
 //
 // @param request - DescribeStreamsRequest
 //
@@ -6103,17 +6105,19 @@ func (client *Client) DescribeVsCertificateListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves usage data for connected devices.
+// Retrieves the usage data of connected devices.
 //
 // Description:
 //
-// If you do not specify \\`StartTime\\` and \\`EndTime\\`, the API retrieves data from the last 24 hours by default. To query data for a specific time range, you must specify both \\`StartTime\\` and \\`EndTime\\`. The maximum time range for a single query is 31 days.
+// If StartTime and EndTime are not specified, the data of the last 24 hours is retrieved by default. You can also query data within a specified time range. Both StartTime and EndTime must be specified at the same time.
 //
-// - You can query multiple domain names at once. Separate the domain names with commas.
+// The maximum query range is 31 days.
 //
-// - You can retrieve data from the last 90 days.
+//   - Batch domain name queries are supported. Separate multiple domain names with commas (,).
 //
-// - The time granularity is one hour.
+//   - You can retrieve data for the last 90 days at most.
+//
+//   - The time granularity is 1 hour.
 //
 // @param request - DescribeVsDevicesDataRequest
 //
@@ -6557,7 +6561,7 @@ func (client *Client) DescribeVsDomainRecordDataWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves domain region data.
+// Queries the regional data for a domain name.
 //
 // @param request - DescribeVsDomainRegionDataRequest
 //
@@ -6929,7 +6933,7 @@ func (client *Client) DescribeVsDomainUvDataWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the pull stream configurations for a domain name.
+// Queries the pull stream configuration for a domain name.
 //
 // @param request - DescribeVsPullStreamInfoConfigRequest
 //
@@ -7025,7 +7029,7 @@ func (client *Client) DescribeVsStreamsNotifyUrlConfigWithContext(ctx context.Co
 
 // Summary:
 //
-// Retrieves information about all active streams for a specified domain name or application.
+// Queries the information about all active streams under a specified domain name or a specific application under the domain name.
 //
 // @param request - DescribeVsStreamsOnlineListRequest
 //
@@ -7193,11 +7197,11 @@ func (client *Client) DescribeVsStreamsPublishListWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves a user\\"s domain names ranked by traffic.
+// Queries the domains of a user ranked by traffic.
 //
-// If you do not specify StartTime and EndTime, data for the current month is retrieved by default. To query data over a specific time range, you must specify both StartTime and EndTime.
+// If you do not specify StartTime and EndTime, data of the current month is queried by default. You can also query data within a specified time range. Both StartTime and EndTime must be specified.
 //
-// \\	- You can retrieve data for a maximum of 90 days.
+//   - You can query data of up to 90 days.
 //
 // @param request - DescribeVsTopDomainsByFlowRequest
 //
@@ -7311,6 +7315,10 @@ func (client *Client) DescribeVsUpPeakPublishStreamDataWithContext(ctx context.C
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Visual Edge Computing Service resource plan information for the current user.
+//
 // @param request - DescribeVsUserResourcePackageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7357,7 +7365,7 @@ func (client *Client) DescribeVsUserResourcePackageWithContext(ctx context.Conte
 
 // Summary:
 //
-// # DescribeVsVerifyContent
+// Queries the verification content.
 //
 // @param request - DescribeVsVerifyContentRequest
 //
@@ -7405,7 +7413,7 @@ func (client *Client) DescribeVsVerifyContentWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Disassociate cloud application service instances from a project.
+// Dissociates cloud application service instances from a project.
 //
 // @param tmpReq - DisassociateRenderingProjectInstancesRequest
 //
@@ -7531,7 +7539,7 @@ func (client *Client) ForbidVsStreamWithContext(ctx context.Context, request *Fo
 
 // Summary:
 //
-// Queries the execution status of a control command to determine whether the command was successful and to retrieve the result string.
+// Queries the execution status of a control command, including whether the command was executed successfully and the result string.
 //
 // @param request - GetRenderingInstanceCommandsStatusRequest
 //
@@ -7579,7 +7587,7 @@ func (client *Client) GetRenderingInstanceCommandsStatusWithContext(ctx context.
 
 // Summary:
 //
-// Retrieves the streaming connection information for a cloud application service instance. Call this operation before establishing each streaming connection to obtain the latest connection details.
+// Retrieves the streaming connection information for a cloud application service instance. Call this operation to obtain the latest connection information before establishing each streaming connection.
 //
 // @param request - GetRenderingInstanceStreamingInfoRequest
 //
@@ -7623,7 +7631,7 @@ func (client *Client) GetRenderingInstanceStreamingInfoWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the data volume statistics for the states of project instances that meet specified conditions.
+// Queries the statistics on the number of project instances in each state that meet specific conditions for a project.
 //
 // @param request - GetRenderingProjectInstanceStateMetricsRequest
 //
@@ -7719,7 +7727,9 @@ func (client *Client) GotoPresetWithContext(ctx context.Context, request *GotoPr
 
 // Summary:
 //
-// Installs a cloud application to a specified cloud application instance. This is an asynchronous interface. To monitor the installation progress, use the ListCloudAppInstallations interface.
+// Installs a cloud application on a specified cloud application instance.
+//
+// This operation is asynchronous. You can call the ListCloudAppInstallations operation to query the installation progress.
 //
 // @param tmpReq - InstallCloudAppRequest
 //
@@ -7793,7 +7803,7 @@ func (client *Client) InstallCloudAppWithContext(ctx context.Context, tmpReq *In
 
 // Summary:
 //
-// Lists cloud application installations. The response includes the installation status of cloud application service instances and supports paged queries.
+// Queries the installation information list of cloud applications. The returned information includes the installation status of cloud application service instances. Paging is supported for paged query.
 //
 // @param request - ListCloudAppInstallationsRequest
 //
@@ -7837,7 +7847,7 @@ func (client *Client) ListCloudAppInstallationsWithContext(ctx context.Context, 
 //
 // Description:
 //
-// >You must specify at least one of the template ID and templatetype.
+// >Specify at least one of the template ID and the templatetype.
 //
 // @param request - ListCloudAppPatchesRequest
 //
@@ -7905,7 +7915,7 @@ func (client *Client) ListCloudAppPatchesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a list of cloud applications. Paging is supported.
+// Queries the list of cloud applications and supports paging and paged query.
 //
 // @param request - ListCloudAppsRequest
 //
@@ -7945,19 +7955,19 @@ func (client *Client) ListCloudAppsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries load information with paged query and paging support.
+// Queries workload information and supports paging and paged query.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API operation queries load information. You can filter results by using various parameters and perform paged query operations.
+// - This API queries workload information and supports filtering, paging, and paged query by using various parameters.
 //
-// - Optional parameters include Spec (specification), Statuses (status list), InstanceIds (instance ID list), PlanIds (plan ID list), and HiveIds (cluster ID list).
+// - Optional parameters include `Spec` (specifications), `Statuses` (status list), `InstanceIds` (instance ID list), `PlanIds` (plan ID list), and `HiveIds` (cluster ID list).
 //
-// - For paged query operations, use the PageNumber and PageSize parameters to control the data volume of returned results. The default page size is 10 records, and the maximum is 100 records. Paging is supported.
+// - During a paged query, you can use the `PageNumber` and `PageSize` parameters to control the returned data volume. The default is 10 records per page, and the maximum is 100 records.
 //
-// - To query by time range, specify the StartTime and EndTime parameters.
+// - You can specify a time range for the query by using the `StartTime` and `EndTime` parameters.
 //
 // @param tmpReq - ListEdgeWorkersRequest
 //
@@ -8051,7 +8061,7 @@ func (client *Client) ListEdgeWorkersWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// Lists the push status records for a file pushed to cloud application service instances. It supports paged query.
+// Queries the push status list of cloud application service instances for a file. Paging is supported for paged query.
 //
 // @param request - ListFilePushStatusesRequest
 //
@@ -8091,7 +8101,7 @@ func (client *Client) ListFilePushStatusesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Lists uploaded files. The response includes the upload status for each file and supports paged queries.
+// Queries a list of uploaded files. The response includes the upload status of the files and supports paging for a paged query.
 //
 // @param request - ListFilesRequest
 //
@@ -8131,19 +8141,19 @@ func (client *Client) ListFilesWithContext(ctx context.Context, request *ListFil
 
 // Summary:
 //
-// Queries all cluster information by paging and supports filtering by conditions.
+// Performs a paged query to retrieve all cluster information with paging and supports filtering by conditions.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API operation queries information about all clusters created by the user.
+// - This operation queries the information of all clusters created by the user.
 //
-// - You can use the `HiveId` and `Name` parameters to filter query results.
+// - You can filter the query results by using the `HiveId` and `Name` parameters.
 //
-// - The `PageNumber` and `PageSize` pagination parameters control the number of results and page number. By default, 10 records are displayed per page, with a maximum of 100.
+// - The pagination parameters `PageNumber` and `PageSize` control the number of returned results and the page number. By default, 10 entries are displayed on each page, and a maximum of 100 entries are supported.
 //
-// - The `StartTime` and `EndTime` parameters specify a time range for querying cluster information. These parameters are optional.
+// - The `StartTime` and `EndTime` parameters can be used to query clusters within a specified time range. These parameters are optional.
 //
 // @param request - ListHivesRequest
 //
@@ -8207,7 +8217,7 @@ func (client *Client) ListHivesWithContext(ctx context.Context, request *ListHiv
 
 // Summary:
 //
-// Retrieves a list of public keys that match the specified criteria. This operation supports pagination.
+// Queries a list of public keys that meet specified conditions and supports paging.
 //
 // @param request - ListPublicKeysRequest
 //
@@ -8247,7 +8257,7 @@ func (client *Client) ListPublicKeysWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries information about the data packets of cloud applications. Paged queries are supported.
+// Queries information about all cloud application data packages and supports paging.
 //
 // @param request - ListRenderingDataPackagesRequest
 //
@@ -8319,15 +8329,15 @@ func (client *Client) ListRenderingDataPackagesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries a list of images.
+// Queries the list of images.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This operation supports filtering and paged query of rendering session lists by using various parameter combinations.
+// - This operation supports filtering and paginating the list of user rendering sessions by using various parameter combinations.
 //
-// - You must specify at least one of the `SessionId` and `ClientId` parameters, but neither is required. If both parameters are specified, more precise matching is performed based on the two parameters.
+// - You must specify at least one of the `SessionId` and `ClientId` parameters, but neither is required. If both parameters are specified, a more precise match is performed based on these two parameters.
 //
 // @param request - ListRenderingImagesRequest
 //
@@ -8383,7 +8393,7 @@ func (client *Client) ListRenderingImagesWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// > Specify at least the template ID or the template type.
+// >Specify at least one of the template ID and templatetype.
 //
 // @param request - ListRenderingInstanceGatewayRequest
 //
@@ -8447,7 +8457,7 @@ func (client *Client) ListRenderingInstanceGatewayWithContext(ctx context.Contex
 
 // Summary:
 //
-// Lists basic information about cloud application service instances and supports paged queries.
+// Queries a list of basic information about cloud application service instances. Paging is supported for paged query.
 //
 // @param request - ListRenderingInstancesRequest
 //
@@ -8487,13 +8497,13 @@ func (client *Client) ListRenderingInstancesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieve a paginated list of cloud application service instances associated with a project.
+// Queries the list of cloud application service instances associated with a project by using paging in a paged query.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This operation enables you to query cloud application service instances in a project using multiple filter conditions, such as status and instance ID.
+// - This operation allows you to query cloud application service instances in a specified project by using various filter conditions, such as status and instance ID.
 //
 // @param request - ListRenderingProjectInstancesRequest
 //
@@ -8561,15 +8571,15 @@ func (client *Client) ListRenderingProjectInstancesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Obtain a paged list of basic information about cloud application projects for the current user.
+// Performs a paged query with paging to retrieve the list of basic information about cloud application service projects for a user.
 //
 // Description:
 //
-// ## Request details
+// ## Request description
 //
-// - This operation returns a paged list of basic information about rendering projects for a specified user.
+// - This operation performs a paged query with paging to retrieve the list of basic information about rendering projects for a specified user.
 //
-// - Filter results by `ProjectId` or `ProjectName`.
+// - You can filter the query by `ProjectId` and `ProjectName`.
 //
 // @param request - ListRenderingProjectsRequest
 //
@@ -8633,15 +8643,15 @@ func (client *Client) ListRenderingProjectsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Performs a paged query for the list of cloud application service sessions based on specified conditions.
+// Queries the list of cloud application service sessions under specified conditions by using paging.
 //
 // Description:
 //
-// ## Request Description
+// ## Operation description
 //
-// - This API supports filtering and paged query of user rendering session lists with various parameter combinations.
+// - This operation supports filtering and performing a paging query on the array of user rendering sessions by using various parameter combinations.
 //
-// - You must provide at least one of the `SessionId` or `ClientId` parameters. Neither parameter is mandatory independently. If both parameters are provided, a more precise match is performed based on these two parameters.
+// - You must specify at least one of the SessionId and ClientId parameters, but neither is required. If both parameters are specified, a more precise match is performed based on these two parameters.
 //
 // @param request - ListRenderingSessionsRequest
 //
@@ -8843,11 +8853,11 @@ func (client *Client) ManageLoginWithContext(ctx context.Context, request *Manag
 
 // Summary:
 //
-// Modifies the metadata of a specified workflow.
+// Modifies the metadata of a ComfyWorkflow.
 //
 // Description:
 //
-// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
+// > Screenshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - ModifyComfyWorkflowRequest
 //
@@ -9557,7 +9567,7 @@ func (client *Client) ModifyRenderingChargeTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Upgrades or downgrades a cloud application service instance.
+// Changes the specifications of a cloud application service instance.
 //
 // @param request - ModifyRenderingInstanceRequest
 //
@@ -9624,6 +9634,10 @@ func (client *Client) ModifyRenderingInstanceAttributeWithContext(ctx context.Co
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
 	if !dara.IsNil(request.Password) {
 		query["Password"] = request.Password
 	}
@@ -9657,7 +9671,7 @@ func (client *Client) ModifyRenderingInstanceAttributeWithContext(ctx context.Co
 
 // Summary:
 //
-// Updates the rate limiting bandwidth for a cloud application service instance. You can call the DescribeRenderingInstance operation to retrieve the current rate limiting value and check the status of the rate limiting update.
+// Updates the bandwidth limit of a cloud application service instance. You can call the DescribeRenderingInstance operation to query the bandwidth limit and the update status.
 //
 // @param request - ModifyRenderingInstanceBandwidthRequest
 //
@@ -9899,7 +9913,9 @@ func (client *Client) MoveHiveEdgeWorkersWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Push a file to a specified cloud application service instance. This is an asynchronous operation. You can query the push progress using the ListFilePushStatuses operation.
+// Pushes a file to a specified cloud application service instance.
+//
+// This operation is asynchronous. You can call the ListFilePushStatuses operation to query the push progress.
 //
 // @param request - PushFileRequest
 //
@@ -9947,7 +9963,7 @@ func (client *Client) PushFileWithContext(ctx context.Context, request *PushFile
 
 // Summary:
 //
-// Restarts a cloud application service instance. You can call the DescribeRenderingInstance API to monitor the restart progress.
+// Restarts a cloud application service instance. You can call the DescribeRenderingInstance operation to query the restart progress.
 //
 // @param request - RebootRenderingInstanceRequest
 //
@@ -10045,7 +10061,7 @@ func (client *Client) RebootRenderingServerWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// # Recover data to a Graphic Computing Service instance
+// Restores data to a cloud rendering instance.
 //
 // @param request - RecoverRenderingDataPackageRequest
 //
@@ -10097,11 +10113,11 @@ func (client *Client) RecoverRenderingDataPackageWithContext(ctx context.Context
 
 // Summary:
 //
-// Call RefreshRenderingInstanceStreaming to refresh the stream connection for a cloud application service instance.
+// Refreshes the streaming connection of a cloud application service instance.
 //
 // Description:
 //
-// > Specify at least one of the template ID or template type.
+// > Specify at least one of the template ID and templatetype.
 //
 // @param tmpReq - RefreshRenderingInstanceStreamingRequest
 //
@@ -10155,7 +10171,7 @@ func (client *Client) RefreshRenderingInstanceStreamingWithContext(ctx context.C
 
 // Summary:
 //
-// # Release a cloud application service data pack
+// Releases a cloud application service data package.
 //
 // @param request - ReleaseRenderingDataPackageRequest
 //
@@ -10199,7 +10215,7 @@ func (client *Client) ReleaseRenderingDataPackageWithContext(ctx context.Context
 
 // Summary:
 //
-// Invoke ReleaseRenderingInstance to release a Graphic Computing Service application instance.
+// Releases a cloud application service instance.
 //
 // @param request - ReleaseRenderingInstanceRequest
 //
@@ -10243,7 +10259,7 @@ func (client *Client) ReleaseRenderingInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Invoke RenewRenderingInstance to renew a cloud application service instance.
+// Renews a cloud application service instance.
 //
 // @param request - RenewRenderingInstanceRequest
 //
@@ -10295,7 +10311,7 @@ func (client *Client) RenewRenderingInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Resets a cloud application service instance. You can query the DescribeRenderingInstance interface to obtain the reset progress.
+// Resets a cloud application service instance. You can call the DescribeRenderingInstance operation to check the reset progress.
 //
 // @param request - ResetRenderingInstanceRequest
 //
@@ -10521,7 +10537,7 @@ func (client *Client) SetPresetWithContext(ctx context.Context, request *SetPres
 
 // Summary:
 //
-// Enable or disable the certificate feature for a domain name.
+// Sets whether the certificate feature is enabled for a domain name.
 //
 // @param request - SetVsDomainCertificateRequest
 //
@@ -10755,6 +10771,10 @@ func (client *Client) StartParentPlatformWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts desktop capture and streaming for a specified cloud application service instance.
+//
 // @param request - StartPublishStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10873,7 +10893,9 @@ func (client *Client) StartRecordStreamWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Schedules an idle cloud application service instance for the requesting client (ClientId) and starts the service. If the requesting client (ClientId) sends another start request after a successful start and the associated session is in the SessionStartSuspended state, the session is restarted. If the session is in any other state, the session information is returned directly.
+// Schedules an idle cloud application service instance for the client (ClientId) and completes service startup.
+//
+// If the client (ClientId) sends another start request after the first start request succeeds, the operation restarts the session if the associated session is in the SessionStartSuspended state. If the session is in another state, the operation directly returns the session information.
 //
 // @param tmpReq - StartRenderingSessionRequest
 //
@@ -11221,6 +11243,10 @@ func (client *Client) StopMoveWithContext(ctx context.Context, request *StopMove
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops desktop capture and streaming for a specified cloud application service instance.
+//
 // @param request - StopPublishStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11331,11 +11357,11 @@ func (client *Client) StopRecordStreamWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Shut down the specified cloud application service session and revoke the associated instance resources.
+// Closes the specified cloud application service session and reclaims the related instance resources.
 //
 // Description:
 //
-// ## Request information
+// ## Request description.
 //
 // @param request - StopRenderingSessionRequest
 //
@@ -11759,7 +11785,7 @@ func (client *Client) UnbindTemplateWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// You can uninstall a specified cloud application from a specified cloud application instance. This operation is asynchronous. You can use the ListCloudAppInstallations operation to check the uninstallation progress. After successful uninstallation, the query operation no longer returns related information.
+// Uninstalls a specified cloud application from a specified cloud application service instance. This is an asynchronous operation. You can call the ListCloudAppInstallations operation to query the uninstallation progress. After the cloud application is uninstalled, the query operation no longer returns related information.
 //
 // @param tmpReq - UninstallCloudAppRequest
 //
@@ -11881,9 +11907,7 @@ func (client *Client) UnlockDeviceWithContext(ctx context.Context, request *Unlo
 
 // Summary:
 //
-// Updates the information of a cloud application, such as the description, application labels, and patches.
-//
-// You can upload patches or hot update packages, and create hot update packages for Android cloud application marketplace applications. Each cloud application supports up to 20 patches, and only one patch can be in the uploading state at a time for a single cloud application.
+// Updates the information of a cloud application, such as the description, application tags, and patch uploads. You can upload patch packages or hot update packages, and create hot update packages for Android cloud application markets. A cloud application supports up to 20 patch packages, and only one patch package can be in the uploading state at a time.
 //
 // @param tmpReq - UpdateCloudAppInfoRequest
 //
@@ -11955,7 +11979,7 @@ func (client *Client) UpdateCloudAppInfoWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Update basic information for a file, such as its description.
+// Updates the basic information of a file, such as the description.
 //
 // @param request - UpdateFileInfoRequest
 //
@@ -12003,11 +12027,7 @@ func (client *Client) UpdateFileInfoWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// This operation updates the configuration parameters of a cloud application service instance. It lets you modify various configurations of the Cloud Android system, such as prop, location, and network, to create a real device simulation.
-//
-// You can retrieve the configured values for the real device simulation by calling the DescribeRenderingInstance API.
-//
-// To query the configuration parameters of the real-time environment, see the DescribeRenderingInstanceConfiguration API.
+// Updates the configuration parameters of a cloud application service instance. This operation supports modifying various configurations of the cloud Android system, such as prop, location, and network, to build a real-device simulation. You can call the DescribeRenderingInstance operation to obtain the configured real-device simulation values. To query the configuration parameters of the real-time environment, refer to the DescribeRenderingInstanceConfiguration operation.
 //
 // @param tmpReq - UpdateRenderingInstanceConfigurationRequest
 //
@@ -12117,7 +12137,7 @@ func (client *Client) UpdateRenderingInstanceSettingsWithContext(ctx context.Con
 
 // Summary:
 //
-// Updates a project’s properties.
+// Updates the attributes of a project.
 //
 // @param tmpReq - UpdateRenderingProjectRequest
 //
@@ -12179,7 +12199,7 @@ func (client *Client) UpdateRenderingProjectWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Updates the configuration for stream pulling. You can modify the start and end times of origin server addresses in an existing stream pulling task.
+// Updates stream pulling information by modifying the start time and end time of the addresses of the origin server for an existing stream pulling node.
 //
 // @param request - UpdateVsPullStreamInfoConfigRequest
 //
@@ -12251,7 +12271,7 @@ func (client *Client) UpdateVsPullStreamInfoConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Upgrades instance images in batch.
+// Upgrades the images of cloud application service instances.
 //
 // @param tmpReq - UpgradeRenderingInstanceImageRequest
 //
@@ -12305,7 +12325,7 @@ func (client *Client) UpgradeRenderingInstanceImageWithContext(ctx context.Conte
 
 // Summary:
 //
-// Uploads a cloud application package for listing. This is an asynchronous operation. You can call the ListCloudApps operation to query the upload progress.
+// Uploads or publishes a cloud application package. This is an asynchronous operation. You can call the ListCloudApps operation to query the upload progress.
 //
 // @param tmpReq - UploadCloudAppRequest
 //
@@ -12451,7 +12471,7 @@ func (client *Client) UploadFileWithContext(ctx context.Context, request *Upload
 
 // Summary:
 //
-// Upload a new public key.
+// Uploads a new public key.
 //
 // @param request - UploadPublicKeyRequest
 //
@@ -12511,7 +12531,7 @@ func (client *Client) UploadPublicKeyWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// # VerifyVsDomainOwner
+// Verifies the ownership of a specified Visual Edge Computing Service domain name.
 //
 // @param request - VerifyVsDomainOwnerRequest
 //

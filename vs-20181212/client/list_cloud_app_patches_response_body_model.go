@@ -22,19 +22,19 @@ type iListCloudAppPatchesResponseBody interface {
 }
 
 type ListCloudAppPatchesResponseBody struct {
-	// The page number of the query list.
+	// The page number of the returned list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for the paged query.
+	// Settings for the number of entries per page when paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of patches for the cloud application.
+	// The patch list of the cloud application.
 	Patches []*ListCloudAppPatchesResponseBodyPatches `json:"Patches,omitempty" xml:"Patches,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -117,61 +117,61 @@ func (s *ListCloudAppPatchesResponseBody) Validate() error {
 }
 
 type ListCloudAppPatchesResponseBodyPatches struct {
-	// The ID of the patch package.
+	// The ID of the patch.
 	//
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// The name of the patch package.
+	// The name of the patch.
 	//
 	// example:
 	//
 	// patch-1
 	PatchName *string `json:"PatchName,omitempty" xml:"PatchName,omitempty"`
-	// The relative path of the post-command within the application package. Only Windows-type applications are supported.
+	// The relative path of the post-command in the application package. This parameter is supported only for Windows applications.
 	//
 	// example:
 	//
 	// install.ps1
 	PostCommandPath *string `json:"PostCommandPath,omitempty" xml:"PostCommandPath,omitempty"`
-	// The timeout period for the post-command execution, in seconds. Only Windows-type applications are supported.
+	// The timeout period for executing the post-command, in seconds. This parameter is supported only for Windows applications.
 	//
 	// example:
 	//
 	// 10
 	PostCommandTimeoutSec *int32 `json:"PostCommandTimeoutSec,omitempty" xml:"PostCommandTimeoutSec,omitempty"`
-	// The application upload status. Valid values:
+	// The upload status of the application. Valid values:
 	//
-	// 1. Created
+	// - Created
 	//
-	// 2. Doing
+	// - Doing
 	//
-	// 3. Success: desired state.
+	// - Success: desired state
 	//
-	// 4. Failed: desired state.
+	// - Failed: desired state
 	//
-	// 5. Deleting
+	// - Deleting
 	//
-	// 6. DeleteFailed: desired state.
+	// - DeleteFailed: desired state
 	//
 	// example:
 	//
 	// Doing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status description.
+	// The description of the status.
 	//
 	// example:
 	//
 	// Uploading
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// The most recent time when the status was updated.
+	// The latest time when the status was updated. The time is in the YYYY-MM-DDTHH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-09-23T02:12:28
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the patch was uploaded.
+	// The time when the application was uploaded. The time is in the ISO 8601 standard and includes the time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

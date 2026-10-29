@@ -20,13 +20,13 @@ type iUpdateRenderingProjectShrinkRequest interface {
 }
 
 type UpdateRenderingProjectShrinkRequest struct {
-	// Project description
+	// The project description.
 	//
 	// example:
 	//
-	// 目录1
+	// Directory 1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Project ID
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -34,19 +34,13 @@ type UpdateRenderingProjectShrinkRequest struct {
 	//
 	// project-422bc38dfgh5eb44149f135ef76304f63b
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Default naming rules:
-	//
-	// 1. Length 1-128
-	//
-	// 2. Lowercase letters, numbers, underscores (_), hyphens (-), and periods (.).
-	//
-	// 3. The first and last characters must be letters or digits. At least one of ProjectName, SessionAttribs, or Description must be specified.
+	// The custom project name, which serves as the unique identifier of the project. Default naming conventions: 1. The length must be 1 to 128 characters. 2. The name can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). 3. The first and last characters must be letters or digits. At least one of ProjectName, SessionAttribs, or Description must be specified.
 	//
 	// example:
 	//
 	// idata_content
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Session attributes
+	// The session attributes.
 	SessionAttribsShrink *string `json:"SessionAttribs,omitempty" xml:"SessionAttribs,omitempty"`
 }
 

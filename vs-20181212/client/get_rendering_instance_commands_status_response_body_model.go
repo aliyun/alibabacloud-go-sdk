@@ -20,7 +20,7 @@ type iGetRenderingInstanceCommandsStatusResponseBody interface {
 }
 
 type GetRenderingInstanceCommandsStatusResponseBody struct {
-	// Description. When Status=Failed, this field contains the failure reason.
+	// The description. When Status is Failed, this field includes the cause of the failure.
 	//
 	// example:
 	//
@@ -32,19 +32,19 @@ type GetRenderingInstanceCommandsStatusResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Command execution result string
+	// The execution result string of the command.
 	//
 	// example:
 	//
 	// Thu Jun 27 16:06:26 CST 2024
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Command execution status. Valid values:
+	// The command execution status. Valid values:
 	//
-	// 1. Doing: Executing
+	// - Doing: Executing.
 	//
-	// 2. Success: Succeeded
+	// - Success: Succeeded.
 	//
-	// 3. Failed: Failed. The system automatically retries within the timeout period. You can either wait or resend the request.
+	// - Failed: Failed. Within the timeout period, the system automatically retries the command. You can continue to wait or initiate a new request.
 	//
 	// example:
 	//

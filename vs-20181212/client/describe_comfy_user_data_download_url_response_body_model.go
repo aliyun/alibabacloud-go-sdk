@@ -28,25 +28,25 @@ type DescribeComfyUserDataDownloadUrlResponseBody struct {
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The download URL for the application package.
+	// The download URL of the application package.
 	//
 	// example:
 	//
 	// https://xxx.xxx.xxx.
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The expiration time for the download link.
+	// The expiration time of the download URL. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1752805579553
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The result message.
+	// The message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

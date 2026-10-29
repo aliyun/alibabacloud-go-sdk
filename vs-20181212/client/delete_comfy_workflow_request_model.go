@@ -14,7 +14,7 @@ type iDeleteComfyWorkflowRequest interface {
 }
 
 type DeleteComfyWorkflowRequest struct {
-	// The ID of the workflow.
+	// The workflow ID.
 	//
 	// This parameter is required.
 	//

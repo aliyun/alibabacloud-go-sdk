@@ -16,9 +16,9 @@ type iDeleteRenderingInstanceConfigurationRequest interface {
 }
 
 type DeleteRenderingInstanceConfigurationRequest struct {
-	// Configuration content. Purge all configured modules by default.
+	// The configuration content. By default, all configured modules are cleared.
 	Configuration []*DeleteRenderingInstanceConfigurationRequestConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Repeated"`
-	// Cloud application service instance ID.
+	// The cloud application service instance ID.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ func (s *DeleteRenderingInstanceConfigurationRequest) Validate() error {
 }
 
 type DeleteRenderingInstanceConfigurationRequestConfiguration struct {
-	// List attribute names to purge. Purge all configured attributes for this module by default.
+	// The list of attribute names whose configurations are to be cleared. By default, all configured attributes of the module are cleared.
 	AttributeNames []*string `json:"AttributeNames,omitempty" xml:"AttributeNames,omitempty" type:"Repeated"`
-	// Module name.
+	// The name of the module.
 	//
 	// This parameter is required.
 	//

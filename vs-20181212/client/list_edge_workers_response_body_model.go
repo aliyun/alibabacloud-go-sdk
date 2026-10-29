@@ -22,15 +22,15 @@ type iListEdgeWorkersResponseBody interface {
 }
 
 type ListEdgeWorkersResponseBody struct {
-	// The list of loads.
+	// The list of workloads.
 	Instances []*ListEdgeWorkersResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The page number of the query list. The value starts from 1. Default value: 1.
+	// The page number of the list to query. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Settings for paging. Maximum value: 100. Default value: 100.
+	// The Settings for the number of lines per page during paging and paged query. Maximum value: 100. Default value: 100.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListEdgeWorkersResponseBody) Validate() error {
 }
 
 type ListEdgeWorkersResponseBodyInstances struct {
-	// The creation time.
+	// The creation time. The time is expressed in the ISO 8601 standard and includes a time zone offset. Format: YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//
 	// 2025-05-14T15:20:37+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The expiration time.
+	// The end time. The time is expressed in the ISO 8601 standard and includes a time zone offset. Format: YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListEdgeWorkersResponseBodyInstances struct {
 	//
 	// hive-58mq6jynvgxxmlid3pt39x6gk-0
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
-	// The load ID.
+	// The workload ID.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type ListEdgeWorkersResponseBodyInstances struct {
 	//
 	// pk-db3394401cc8403f85e4d72d99b52449
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The specification.
+	// The specifications.
 	//
 	// example:
 	//

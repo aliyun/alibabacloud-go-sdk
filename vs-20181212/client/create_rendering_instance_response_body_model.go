@@ -16,7 +16,7 @@ type iCreateRenderingInstanceResponseBody interface {
 }
 
 type CreateRenderingInstanceResponseBody struct {
-	// The ID of the cloud application service instance.
+	// The instance ID of the cloud application service.
 	//
 	// example:
 	//

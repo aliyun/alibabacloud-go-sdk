@@ -24,33 +24,33 @@ type iDescribeStreamsResponseBody interface {
 }
 
 type DescribeStreamsResponseBody struct {
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 5
 	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of streams.
+	// The list of streams.
 	Streams []*DescribeStreamsResponseBodyStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Repeated"`
-	// Total number of streams.
+	// The total number of streams.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ func (s *DescribeStreamsResponseBody) Validate() error {
 }
 
 type DescribeStreamsResponseBodyStreams struct {
-	// Application that owns this stream.
+	// The application to which the stream belongs.
 	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// Time when the stream was created.
+	// The time when the stream was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2018-12-10T17:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Device ID of this stream.
+	// The ID of the device to which the stream belongs.
 	//
 	// example:
 	//
@@ -158,59 +158,59 @@ type DescribeStreamsResponseBodyStreams struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the group to which the stream belongs.
+	// The ID of the space to which the stream belongs.
 	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Video stream height in pixels.
+	// The height of the video stream resolution.
 	//
 	// example:
 	//
 	// 720
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// Stream ID.
+	// The stream ID.
 	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Stream name.
+	// The stream name.
 	//
 	// example:
 	//
 	// 31000000*****0000002
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Streaming domain for this stream.
+	// The playback domain name to which the stream belongs.
 	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
-	// Stream protocol.
+	// The stream protocol.
 	//
 	// example:
 	//
 	// gb28181
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// Ingest domain for this stream.
+	// The ingest domain name to which the stream belongs.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	PushDomain *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
-	// Stream status. Valid values:
+	// The stream status. Valid values:
 	//
-	// - on (online)
+	// - on: online
 	//
-	// - off (offline)
+	// - off: offline
 	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Video stream width in pixels.
+	// The width of the video stream resolution.
 	//
 	// example:
 	//

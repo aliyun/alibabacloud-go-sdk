@@ -22,27 +22,27 @@ type iInstallCloudAppResponseBody interface {
 }
 
 type InstallCloudAppResponseBody struct {
-	// Number of failed cloud application service instances
+	// The number of failed cloud application service instances.
 	//
 	// example:
 	//
 	// 0
 	FailedInstanceCount *int32 `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	// List of failed cloud application service instances
+	// The list of failed cloud application service instances.
 	FailedInstances []*InstallCloudAppResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Number of successful cloud application service instances
+	// The number of successful cloud application service instances.
 	//
 	// example:
 	//
 	// 5
 	SuccessInstanceCount *int32 `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	// List of successful cloud application service instances
+	// The list of successful cloud application service instances.
 	SuccessInstances []*InstallCloudAppResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
@@ -122,19 +122,19 @@ func (s *InstallCloudAppResponseBody) Validate() error {
 }
 
 type InstallCloudAppResponseBodyFailedInstances struct {
-	// Failure error code
+	// The failure error code.
 	//
 	// example:
 	//
 	// 300000
 	ErrCode *int32 `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Failure reason message
+	// The failure reason information.
 	//
 	// example:
 	//
 	// Rejected due to timeout
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// Cloud application service instance ID
+	// The cloud application service instance ID.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ func (s *InstallCloudAppResponseBodyFailedInstances) Validate() error {
 }
 
 type InstallCloudAppResponseBodySuccessInstances struct {
-	// Cloud application service instance ID
+	// The cloud application service instance ID.
 	//
 	// example:
 	//

@@ -34,38 +34,38 @@ type iDescribePurchasedDevicesRequest interface {
 }
 
 type DescribePurchasedDevicesRequest struct {
-	// Queries by the ID of the group to which the device belongs.
+	// The ID of the workspace to which the device belongs.
 	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Queries by device ID.
+	// The device ID.
 	//
 	// example:
 	//
 	// 4070*****1132-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Queries by device name.
+	// The device name.
 	//
 	// example:
 	//
-	// xxx路口摄像头
+	// XXX intersection camera
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The default is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. The default is 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field to sort by. Valid value:
+	// The field by which to sort the results. Valid values:
 	//
 	// - id (default)
 	//
@@ -73,45 +73,45 @@ type DescribePurchasedDevicesRequest struct {
 	//
 	// id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The sorting order. The default is ascending. Valid values:
+	// The sort order. Default value: asc. Valid values:
 	//
-	// - asc (ascending)
+	// - asc: Ascending order.
 	//
-	// - desc (descending)
+	// - desc: Descending order.
 	//
 	// example:
 	//
 	// asc
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
-	// Queries by device subtype. Valid values:
+	// The device subtype. Valid values:
 	//
-	// - bullet (bullet camera)
+	// - bullet: Bullet camera.
 	//
-	// - dome (dome camera)
+	// - dome: Dome camera.
 	//
-	// - ptz (PTZ camera)
+	// - ptz: PTZ camera.
 	//
 	// example:
 	//
 	// dome
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// Queries by device type. Valid values:
+	// The device type. Valid values:
 	//
-	// - ipc (camera)
+	// - ipc: Camera.
 	//
-	// - platform (platform)
+	// - platform: Platform.
 	//
-	// - ied (intelligent edge device)
+	// - ied: Intelligent device.
 	//
 	// example:
 	//
 	// ipc
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Queries by device vendor.
+	// The device vendor.
 	//
 	// example:
 	//
-	// 公司A
+	// Company A
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 

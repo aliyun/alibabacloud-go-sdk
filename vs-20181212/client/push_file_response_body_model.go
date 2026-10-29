@@ -14,7 +14,7 @@ type iPushFileResponseBody interface {
 }
 
 type PushFileResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//

@@ -52,27 +52,25 @@ type DescribeDevicesRequest struct {
 	//
 	// 399*****488-cn-qingdao
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The serial number of the device. The value must be unique.
+	// The device serial number, which uniquely identifies the device.
 	//
 	// example:
 	//
 	// 7D0*****4C0
 	Dsn *string `json:"Dsn,omitempty" xml:"Dsn,omitempty"`
-	// You can query by device national standard ID.
+	// The national standard ID of the device.
 	//
 	// example:
 	//
 	// 310000000****0000002
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
-	// Query by device Space ID.
+	// The ID of the workspace to which the device belongs.
 	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The device ID.
-	//
-	// > Specify multiple IDs. Separate them with commas (,).
+	// The device ID. You can specify multiple IDs separated by commas (,).
 	//
 	// example:
 	//
@@ -84,19 +82,17 @@ type DescribeDevicesRequest struct {
 	//
 	// false
 	IncludeDirectory *bool `json:"IncludeDirectory,omitempty" xml:"IncludeDirectory,omitempty"`
-	// Specifies whether to return stream statistics. Default value: false.
+	// Specifies whether to return stream statistics information. Default value: false.
 	//
 	// example:
 	//
 	// false
 	IncludeStats *bool `json:"IncludeStats,omitempty" xml:"IncludeStats,omitempty"`
-	// The device name.
-	//
-	// > Specify multiple names. Separate them with commas (,).
+	// The device name. You can specify multiple names separated by commas (,).
 	//
 	// example:
 	//
-	// 摄像头A
+	// Camera A
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Default value: 1.
@@ -111,15 +107,15 @@ type DescribeDevicesRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the parent device.
+	// The ID of the parent device to which the device belongs.
 	//
 	// example:
 	//
 	// 399*****774-cn-qingdao
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The field by which to sort the results. Valid value:
+	// The field used for sorting. Valid value:
 	//
-	// > id (default)
+	// - id: Sort by ID. This is the default value.
 	//
 	// example:
 	//
@@ -127,15 +123,15 @@ type DescribeDevicesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - asc (ascending) (default)
+	// - asc: Ascending order. This is the default value.
 	//
-	// - desc (descending)
+	// - desc: Descending order.
 	//
 	// example:
 	//
 	// asc
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
-	// Query devices by status.
+	// The device status.
 	//
 	// example:
 	//
@@ -143,17 +139,17 @@ type DescribeDevicesRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The device type. Valid values:
 	//
-	// - ipc (camera)
+	// - ipc: Camera.
 	//
-	// - platform
+	// - platform: Platform.
 	//
-	// - ied (intelligent edge device)
+	// - ied: Intelligent device.
 	//
 	// example:
 	//
 	// ipc
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Query by device manufacturer.
+	// The device vendor.
 	//
 	// example:
 	//

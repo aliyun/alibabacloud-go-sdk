@@ -28,41 +28,41 @@ type iStartRenderingSessionResponseBody interface {
 }
 
 type StartRenderingSessionResponseBody struct {
-	// Instance hostname. By default, this is the EIP used for access.
+	// The instance hostname. The default value is the access elastic IP address (EIP).
 	//
 	// example:
 	//
 	// cn-xxx.ecr.aliyuncs.com
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// Is this a repeated request
+	// Indicates whether the request is a repeated request.
 	//
 	// example:
 	//
 	// false
 	IsRepeatedRequest *bool `json:"IsRepeatedRequest,omitempty" xml:"IsRepeatedRequest,omitempty"`
-	// Cloud application service instance location information
+	// The location information of the cloud application service instance.
 	Location *StartRenderingSessionResponseBodyLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	// Port mapping information
+	// The port mapping information.
 	PortMappings []*StartRenderingSessionResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
-	// Cloud application service instance ID
+	// The cloud application service instance ID.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//
 	// session-i205217481741918129226
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// Session state information
+	// The session state information.
 	StateInfo *StartRenderingSessionResponseBodyStateInfo `json:"StateInfo,omitempty" xml:"StateInfo,omitempty" type:"Struct"`
 }
 
@@ -170,7 +170,7 @@ func (s *StartRenderingSessionResponseBody) Validate() error {
 }
 
 type StartRenderingSessionResponseBodyLocation struct {
-	// Province code of the cloud application service instance
+	// The province code of the cloud application service instance.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ func (s *StartRenderingSessionResponseBodyLocation) Validate() error {
 }
 
 type StartRenderingSessionResponseBodyPortMappings struct {
-	// External port or port range, such as 22. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
+	// The public port or port range, such as 22. For a port range, separate the start port and end port with a forward slash (/), for example, 10/20.
 	//
 	// example:
 	//
 	// 10013/10020
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	// Internal port or port range. Ports correspond one-to-one with external ports. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
+	// The internal port or port range. The internal port corresponds to the public port on a one-to-one basis. For a port range, separate the start port and end port with a forward slash (/), for example, 10/20.
 	//
 	// example:
 	//
@@ -245,19 +245,19 @@ func (s *StartRenderingSessionResponseBodyPortMappings) Validate() error {
 }
 
 type StartRenderingSessionResponseBodyStateInfo struct {
-	// State description
+	// The state description.
 	//
 	// example:
 	//
-	// 会话启动中
+	// Session starting
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Session state
+	// The session state.
 	//
 	// example:
 	//
 	// SessionStarting
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Last update time of the state
+	// The time when the state was last updated. The value is a UTC time in the YYYY-MM-DDTHH:mmZ format based on the ISO 8601 standard.
 	//
 	// example:
 	//

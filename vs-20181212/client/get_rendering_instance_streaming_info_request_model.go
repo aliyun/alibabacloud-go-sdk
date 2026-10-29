@@ -14,7 +14,7 @@ type iGetRenderingInstanceStreamingInfoRequest interface {
 }
 
 type GetRenderingInstanceStreamingInfoRequest struct {
-	// Cloud application service instance ID
+	// The cloud application service instance ID.
 	//
 	// This parameter is required.
 	//

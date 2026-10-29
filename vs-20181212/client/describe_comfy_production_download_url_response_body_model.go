@@ -28,25 +28,25 @@ type DescribeComfyProductionDownloadUrlResponseBody struct {
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The download link for the production. Use an Alibaba Cloud Object Storage Service (OSS) SDK to download the file.
+	// The download URL of the production. Use the Alibaba Cloud OSS SDK to download the production.
 	//
 	// example:
 	//
 	// https://xxx.xxx.xxx
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The download link\\"s expiration time.
+	// The expiration time of the download URL. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format.
 	//
 	// example:
 	//
 	// 2029-03-28T16:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The response message.
+	// The description.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iDescribeVodStreamURLResponseBody interface {
 }
 
 type DescribeVodStreamURLResponseBody struct {
-	// 流播放协议
+	// The stream playback protocol.
 	//
 	// example:
 	//
 	// rtsp
 	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
-	// 流播放端口
+	// The stream playback port.
 	//
 	// example:
 	//
 	// 8080
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 该条任务请求ID。
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 流播放URL
+	// The stream playback URL.
 	//
 	// example:
 	//

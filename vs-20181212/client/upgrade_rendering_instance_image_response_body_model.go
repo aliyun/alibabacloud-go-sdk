@@ -28,21 +28,21 @@ type UpgradeRenderingInstanceImageResponseBody struct {
 	//
 	// 1
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The information about failed instances.
+	// The information about the failed instances.
 	FailedItems []*UpgradeRenderingInstanceImageResponseBodyFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of successful instances.
+	// The number of successfully upgraded instances.
 	//
 	// example:
 	//
 	// 1
 	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The information about successful instances.
+	// The information about the successfully upgraded instances.
 	SuccessItems []*UpgradeRenderingInstanceImageResponseBodySuccessItems `json:"SuccessItems,omitempty" xml:"SuccessItems,omitempty" type:"Repeated"`
 }
 
@@ -122,13 +122,13 @@ func (s *UpgradeRenderingInstanceImageResponseBody) Validate() error {
 }
 
 type UpgradeRenderingInstanceImageResponseBodyFailedItems struct {
-	// The error code of the failure.
+	// The error code for the failure.
 	//
 	// example:
 	//
 	// 200302
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message of the failure.
+	// The error message for the failure.
 	//
 	// example:
 	//

@@ -48,13 +48,11 @@ type DescribeVsStreamsOnlineListRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
+	// The end time.
 	//
-	// > - Specify the time in the UTC format. Example: 2016-06-30T19:00:00Z.
+	// > - The time must be in UTC. Example: 2016-06-30T19:00:00Z.
 	//
-	// >
-	//
-	// > - The time range between EndTime and StartTime cannot exceed 30 days.
+	// > - The interval between EndTime and StartTime cannot exceed 30 days.
 	//
 	// example:
 	//
@@ -62,13 +60,13 @@ type DescribeVsStreamsOnlineListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The sorting method. Valid values:
 	//
-	// - stream_name_desc: sorts by stream name in descending order.
+	// - stream_name_desc: sorts by live stream name in descending order.
 	//
-	// - stream_name_asc: sorts by stream name in ascending order.
+	// - stream_name_asc: sorts by live stream name in ascending order.
 	//
-	// - publish_time_desc: sorts by ingest time in descending order.
+	// - publish_time_desc: sorts by stream ingest time in descending order.
 	//
-	// - publish_time_asc (default): sorts by ingest time in ascending order.
+	// - publish_time_asc: sorts by stream ingest time in ascending order. This is the default value.
 	//
 	// example:
 	//
@@ -89,19 +87,19 @@ type DescribeVsStreamsOnlineListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to perform a fuzzy match for the stream name. Valid values:
+	// Specifies whether to use fuzzy match for the stream name. Valid values:
 	//
-	// - fuzzy: fuzzy match
+	// - fuzzy: fuzzy match.
 	//
-	// - strict: exact match
+	// - strict: exact match.
 	//
 	// example:
 	//
 	// fuzzy
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	// The start of the time range to query.
+	// The start time.
 	//
-	// > Specify the time in the UTC format. Example: 2016-06-29T19:00:00Z.
+	// > The time must be in UTC. Example: 2016-06-29T19:00:00Z.
 	//
 	// example:
 	//
@@ -115,11 +113,11 @@ type DescribeVsStreamsOnlineListRequest struct {
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 	// The stream type. Valid values:
 	//
-	// - all (default): all streams
+	// - all: all streams. This is the default value.
 	//
-	// - raw: raw streams
+	// - raw: raw streams.
 	//
-	// - trans: transcoded streams
+	// - trans: transcoded streams.
 	//
 	// example:
 	//

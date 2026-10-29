@@ -34,9 +34,9 @@ type ListPublicKeysResponseBody struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of public keys.
+	// The list of user public keys.
 	PublicKeys []*ListPublicKeysResponseBodyPublicKeys `json:"PublicKeys,omitempty" xml:"PublicKeys,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListPublicKeysResponseBody) Validate() error {
 }
 
 type ListPublicKeysResponseBodyPublicKeys struct {
-	// The content of the public key. The content is encoded in Base64 format by default.
+	// The encoded content of the public key. Default encoding format: Base64.
 	//
 	// example:
 	//
@@ -127,9 +127,9 @@ type ListPublicKeysResponseBodyPublicKeys struct {
 	//
 	// example:
 	//
-	// 测试使用
+	// For testing purposes
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The public key group.
+	// The group of the public key.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListPublicKeysResponseBodyPublicKeys struct {
 	//
 	// ssh
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The time when the public key was uploaded.
+	// The time when the public key was uploaded. The time is specified in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

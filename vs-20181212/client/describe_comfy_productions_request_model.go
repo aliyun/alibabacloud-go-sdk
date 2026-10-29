@@ -18,19 +18,19 @@ type iDescribeComfyProductionsRequest interface {
 }
 
 type DescribeComfyProductionsRequest struct {
-	// The page number of the results to return. Pages are 1-indexed. Default: 1.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the Comfy task whose productions you want to list.
+	// The ID of the specified ComfyTask.
 	//
 	// This parameter is required.
 	//

@@ -26,7 +26,7 @@ type iUninstallCloudAppRequest interface {
 }
 
 type UninstallCloudAppRequest struct {
-	// Cloud application ID
+	// The ID of the cloud application.
 	//
 	// This parameter is required.
 	//
@@ -34,57 +34,57 @@ type UninstallCloudAppRequest struct {
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Page number for paged queries of instance associations in the project. Results are sorted by association time in descending order. This parameter applies only when ProjectId is not empty. It limits the maximum number of instances affected by this operation to control impact scope. Default value: 1.
+	// The page number for instance associations in a project. By default, a paged query sorts results in descending order of instance association time. This parameter is valid only when ProjectId is not empty. It limits the maximum number of instances on which the action is executed in the project to control the impact scope of the action. Default value: 1.
 	//
-	// 1. Valid PageNumber range:
+	// 1. Valid values of PageNumber:
 	//
-	//    a. Recommended method: Calculate the upper limit based on the total number of instances associated with the project. You can get this count using the ListRenderingProjectInstances API.
+	//   a. [Recommended] Method 1: Calculate the upper limit based on the total number of instances associated with the project. You can call the ListRenderingProjectInstances operation to obtain the total number.
 	//
-	//    b. Alternative method: Check the API response to determine whether PageNumber has reached the upper limit. This avoids manual calculation. PageNumber has reached the upper limit if either of the following occurs:
+	//   b. Method 2: Determine whether PageNumber reaches the upper limit for the project based on the response. [Advantage: No need to calculate the valid value range]. PageNumber reaches the upper limit if the response meets any of the following conditions:
 	//
-	//    ⅰ. The API returns HTTP status 403 and error code 200301.
+	//     i. The response returns HTTP status code 403 and error code 200301.
 	//
-	//    ⅱ. The sum of SuccessInstanceCount and FailedInstanceCount in the response is less than PageSize.
+	//     ii. The sum of SuccessInstanceCount and FailedInstanceCount in the response is less than PageSize.
 	//
-	// 2. Example scenario:
+	// 2. Scenario example:
 	//
-	//    a. Full uninstall across all project instances: If the project has more instances than PageSize (default 100), call UninstallCloudApp multiple times, incrementing PageNumber by 1 each time. Track uninstall progress using the ListCloudAppInstallations API.
+	//   a. Uninstall instances in a project in full: If the number of instances in the project is greater than PageSize (default value: 100), you can call the Uninstall operation multiple times and increment PageNumber by 1 each time to uninstall all instances. You can call the ListCloudAppInstallations operation to query the uninstallation progress of the instances in the project.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Maximum number of instances selected in the project. This parameter applies only when ProjectId is not empty. It limits the maximum number of instances affected by this operation to control impact scope. Default value: 100. Valid values: 1 to 100.
+	// The maximum number of selected instances in a project. This parameter is valid only when ProjectId is not empty. It limits the maximum number of instances on which the action is executed in the project to control the impact scope of the action. Default value: 100. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID of the patch package to uninstall. Supported only on Windows.
+	// The ID of the patch package to uninstall. This parameter is supported only in Windows scenarios.
 	//
-	// 1. Default: uninstall the StablePatchId.
+	// 1. By default, the StablePatchId is uninstalled.
 	//
-	// 2. Set to origin to uninstall the original version.
+	// 2. If you set this parameter to origin, the original version is uninstalled.
 	//
-	// 3. Set to all to uninstall all installed versions.
+	// 3. If you set this parameter to all, all installed versions are uninstalled.
 	//
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// Project ID
+	// The ID of the project.
 	//
 	// example:
 	//
 	// project-422bc38dfgh5eb44149f135ef76304f63b
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Cloud application instance ID
+	// The cloud application service instance ID.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// List of cloud application instance IDs
+	// The list of cloud application service instance IDs.
 	RenderingInstanceIds []*string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty" type:"Repeated"`
 }
 

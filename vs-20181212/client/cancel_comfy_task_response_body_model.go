@@ -18,19 +18,19 @@ type iCancelComfyTaskResponseBody interface {
 }
 
 type CancelComfyTaskResponseBody struct {
-	// The error code. A value of 0 indicates success.
+	// The error code.
 	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. A `success` value indicates a successful request.
+	// The description.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

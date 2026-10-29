@@ -18,17 +18,19 @@ type iResetRenderingInstanceRequest interface {
 }
 
 type ResetRenderingInstanceRequest struct {
+	// The name of the operation. Set the value to Reset.
+	//
 	// example:
 	//
 	// Reset
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// Data baseline ID
+	// The ID of the data baseline.
 	//
 	// example:
 	//
 	// dp-449ea3d16c0841b8bf33ec5bbc86a152
 	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
-	// Service instance ID
+	// The cloud application service instance ID.
 	//
 	// This parameter is required.
 	//

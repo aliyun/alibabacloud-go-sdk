@@ -45,18 +45,14 @@ type AddVsPullStreamInfoConfigRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time for stream pulling.
-	//
-	// > The time must be in UTC format. The interval between StartTime and EndTime cannot exceed 7 days. EndTime must be later than the current time.
+	// The end time of stream pulling. Specify the time in UTC. The interval between StartTime and EndTime must be within 7 days, and EndTime must be later than the current time.
 	//
 	// example:
 	//
 	// 2017-08-28T09:30:30Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The source URL of the live stream.
-	//
-	// > Multiple source URLs are supported. Separate them with semicolons (;).
+	// The origin server of the live stream. Separate multiple origin servers with semicolons (;).
 	//
 	// This parameter is required.
 	//
@@ -64,9 +60,7 @@ type AddVsPullStreamInfoConfigRequest struct {
 	//
 	// up.******.com.cn
 	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	// The start time for stream pulling.
-	//
-	// > The time must be in UTC format. The interval between StartTime and EndTime cannot exceed 7 days.
+	// The start time of stream pulling. Specify the time in UTC. The interval between StartTime and EndTime must be within 7 days.
 	//
 	// example:
 	//

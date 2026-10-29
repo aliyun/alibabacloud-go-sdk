@@ -14,7 +14,7 @@ type iDeleteRenderingProjectRequest interface {
 }
 
 type DeleteRenderingProjectRequest struct {
-	// Project ID
+	// The project ID.
 	//
 	// This parameter is required.
 	//

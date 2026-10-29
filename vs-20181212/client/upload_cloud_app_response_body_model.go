@@ -16,7 +16,7 @@ type iUploadCloudAppResponseBody interface {
 }
 
 type UploadCloudAppResponseBody struct {
-	// The cloud application ID, which uniquely identifies the application package.
+	// The ID of the cloud application, which corresponds to a unique application package.
 	//
 	// example:
 	//

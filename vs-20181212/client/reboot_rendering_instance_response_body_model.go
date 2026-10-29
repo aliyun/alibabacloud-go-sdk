@@ -14,7 +14,7 @@ type iRebootRenderingInstanceResponseBody interface {
 }
 
 type RebootRenderingInstanceResponseBody struct {
-	// ID of the request
+	// The request ID.
 	//
 	// example:
 	//

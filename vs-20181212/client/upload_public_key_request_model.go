@@ -22,7 +22,7 @@ type iUploadPublicKeyRequest interface {
 }
 
 type UploadPublicKeyRequest struct {
-	// Base64-encoded public key content.
+	// The encoded content of the public key. The default encoding format is Base64.
 	//
 	// This parameter is required.
 	//
@@ -30,33 +30,37 @@ type UploadPublicKeyRequest struct {
 	//
 	// verify_dffeb6610035dcb77b413a59c3*****
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Description of the public key.
+	// The description of the public key.
 	//
 	// example:
 	//
-	// 测试使用
+	// For testing purposes
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Group for the public key. Used for public key management.
+	// The group of the public key. Used for public key management.
 	//
-	// 1. Length: 0 to 255 characters.
+	// Naming conventions:
 	//
-	// 2. Valid characters: lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+	// 1. The length must be 0 to 255 characters.
 	//
-	// 3. First character must be a letter or digit.
+	// 2. The name can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+	//
+	// 3. The first character must be a letter or a digit.
 	//
 	// example:
 	//
 	// g-test
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
-	// Name of the public key. Must be unique.
+	// The name of the public key. The name must be unique.
 	//
-	// 1. Length: 8 to 255 characters.
+	// Naming conventions:
 	//
-	// 2. Valid characters: lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+	// 1. The length must be 8 to 255 characters.
 	//
-	// 3. First character must be a letter or digit.
+	// 2. The name can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
 	//
-	// 4. Prefix cannot be group-.
+	// 3. The first character must be a letter or a digit.
+	//
+	// 4. The prefix cannot be "group-".
 	//
 	// This parameter is required.
 	//
@@ -64,7 +68,7 @@ type UploadPublicKeyRequest struct {
 	//
 	// mykey-v1.0
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// Type of the public key. Valid values:
+	// The type of the public key. Valid values:
 	//
 	// - **adb**: ADB key.
 	//

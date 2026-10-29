@@ -34,97 +34,89 @@ type iListCloudAppsRequest interface {
 }
 
 type ListCloudAppsRequest struct {
-	// The cloud application ID, which corresponds to a unique application package.
+	// The ID of the cloud application, which corresponds to a unique application package.
 	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
 	// com.aaa.bbb
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application version.
+	// The version of the application.
 	//
 	// example:
 	//
 	// 1.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The start time for time range filtering. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2021-09-30T02:23:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to return only the latest submitted version of each application. Default value: false.
+	// Specifies whether to return only the latest submitted version of the application. Default value: false.
 	//
 	// example:
 	//
 	// false
 	LatestVersionOnly *bool `json:"LatestVersionOnly,omitempty" xml:"LatestVersionOnly,omitempty"`
-	// The page number of the query list. Minimum value: 1.
-	//
-	// Default value: 1.
+	// The page number of the list to query. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Valid values: 1 to 100.
-	//
-	// Default value: 10.
+	// The number of entries to return on each page during paging for a paged query. Settings: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The cloud application label.
+	// The label of the cloud application. Valid values:
 	//
-	// 1. Valid values:
+	// - hot
 	//
-	//    a. hot
+	// - game
 	//
-	//    b. game
+	// - app
 	//
-	//    c. app
-	//
-	// 2. Special case:
-	//
-	//    a. To query applications without a label, enter "NULL".
+	// To query cloud applications without labels, set this parameter to NULL.
 	//
 	// example:
 	//
 	// app
 	PkgLabel *string `json:"PkgLabel,omitempty" xml:"PkgLabel,omitempty"`
-	// The installation package type. Valid values:
+	// The type of the installation package. Valid values:
 	//
-	// 1. android
+	// - android
 	//
-	// 2. win
+	// - win
 	//
-	// 3. android_appmarket
+	// - android_appmarket
 	//
 	// example:
 	//
 	// android
 	PkgType *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
-	// The start time for time range filtering. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2021-09-29T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The application upload status. Valid values:
+	// The upload status of the application. Valid values:
 	//
-	// 1. Success: desired state, succeeded.
+	// - Success: The upload is successful. This is a final state.
 	//
-	// 2. Failed: desired state, failed.
+	// - Failed: The upload failed. This is a final state.
 	//
-	// 3. Created
+	// - Created
 	//
-	// 4. Doing
+	// - Doing
 	//
 	// example:
 	//

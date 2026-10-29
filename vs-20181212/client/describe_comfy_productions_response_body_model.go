@@ -32,33 +32,33 @@ type DescribeComfyProductionsResponseBody struct {
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The description.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The current page number.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of productions.
+	// The list of productions.
 	Productions []*DescribeComfyProductionsResponseBodyProductions `json:"Productions,omitempty" xml:"Productions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of productions.
+	// The total number of alert rules.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ func (s *DescribeComfyProductionsResponseBody) Validate() error {
 }
 
 type DescribeComfyProductionsResponseBodyProductions struct {
-	// The ID of the Comfy task.
+	// The ComfyTask ID.
 	//
 	// example:
 	//
 	// 6c8234f4-d1e1-4cea-b08b-7926fbdea144
 	ComfyTaskId *string `json:"ComfyTaskId,omitempty" xml:"ComfyTaskId,omitempty"`
-	// The creation time of the production, in ISO 8601 format.
+	// The creation time. The time follows the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//
@@ -169,19 +169,19 @@ type DescribeComfyProductionsResponseBodyProductions struct {
 	//
 	// 1755051607877.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The ID of the production.
+	// The production ID.
 	//
 	// example:
 	//
 	// 3e5bda20-5cd4-4d55-8d23-88d624a18caa
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
-	// The state of the production.
+	// The production status.
 	//
 	// example:
 	//
 	// NORMAL
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The last modification time of the production, as a Unix timestamp.
+	// The last modified time. The time is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

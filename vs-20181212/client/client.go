@@ -154,7 +154,7 @@ func (client *Client) AddHiveEdgeWorkers(request *AddHiveEdgeWorkersRequest) (_r
 
 // Summary:
 //
-// Adds a stream pulling configuration.
+// Adds pull stream configurations.
 //
 // @param request - AddVsPullStreamInfoConfigRequest
 //
@@ -226,7 +226,7 @@ func (client *Client) AddVsPullStreamInfoConfigWithOptions(request *AddVsPullStr
 
 // Summary:
 //
-// Adds a stream pulling configuration.
+// Adds pull stream configurations.
 //
 // @param request - AddVsPullStreamInfoConfigRequest
 //
@@ -716,13 +716,13 @@ func (client *Client) BatchBindTemplates(request *BatchBindTemplatesRequest) (_r
 //
 // ## Request description
 //
-// - **Authentication**: Requests must include the `AliUid` parameter for identity verification.
+// - **Authentication**: The request must include the `AliUid` parameter to authenticate and perform identity verification.
 //
-// - **Instance specification**: Use `RenderingInstanceIds` to specify the instances to capture screenshots from.
+// - **Instance specification**: You can specify the instances to capture screenshots of by using `RenderingInstanceIds`.
 //
-// - **Screenshot quality**: Use the `Quality` parameter to set the image quality of screenshots. The default value is 75 (if not configured). Valid values: 1 to 100.
+// - **Screenshot quality**: You can configure the Settings for the screenshot image quality by using the `Quality` parameter. The default value is 75 if not configured, and the valid values range from 1 to 100.
 //
-// - **Response handling**: The response contains lists of successful and failed instances with related information, including download URLs and screenshot completion times.
+// - **Response processing**: The response includes lists of successful and failed instances along with their related information, such as download URLs and screenshot completion times.
 //
 // @param tmpReq - BatchCaptureRenderingInstanceScreenshotRequest
 //
@@ -782,13 +782,13 @@ func (client *Client) BatchCaptureRenderingInstanceScreenshotWithOptions(tmpReq 
 //
 // ## Request description
 //
-// - **Authentication**: Requests must include the `AliUid` parameter for identity verification.
+// - **Authentication**: The request must include the `AliUid` parameter to authenticate and perform identity verification.
 //
-// - **Instance specification**: Use `RenderingInstanceIds` to specify the instances to capture screenshots from.
+// - **Instance specification**: You can specify the instances to capture screenshots of by using `RenderingInstanceIds`.
 //
-// - **Screenshot quality**: Use the `Quality` parameter to set the image quality of screenshots. The default value is 75 (if not configured). Valid values: 1 to 100.
+// - **Screenshot quality**: You can configure the Settings for the screenshot image quality by using the `Quality` parameter. The default value is 75 if not configured, and the valid values range from 1 to 100.
 //
-// - **Response handling**: The response contains lists of successful and failed instances with related information, including download URLs and screenshot completion times.
+// - **Response processing**: The response includes lists of successful and failed instances along with their related information, such as download URLs and screenshot completion times.
 //
 // @param request - BatchCaptureRenderingInstanceScreenshotRequest
 //
@@ -942,7 +942,7 @@ func (client *Client) BatchDeleteVsDomainConfigs(request *BatchDeleteVsDomainCon
 
 // Summary:
 //
-// Stop stream ingest for one or more streams. You can schedule when to resume ingest.
+// Forbids the push of a specific stream and allows you to schedule a time to resume the stream.
 //
 // @param request - BatchForbidVsStreamRequest
 //
@@ -1010,7 +1010,7 @@ func (client *Client) BatchForbidVsStreamWithOptions(request *BatchForbidVsStrea
 
 // Summary:
 //
-// Stop stream ingest for one or more streams. You can schedule when to resume ingest.
+// Forbids the push of a specific stream and allows you to schedule a time to resume the stream.
 //
 // @param request - BatchForbidVsStreamRequest
 //
@@ -1028,7 +1028,7 @@ func (client *Client) BatchForbidVsStream(request *BatchForbidVsStreamRequest) (
 
 // Summary:
 //
-// Resumes stream ingest for one or more streams.
+// Resumes the push of a specific stream.
 //
 // @param request - BatchResumeVsStreamRequest
 //
@@ -1088,7 +1088,7 @@ func (client *Client) BatchResumeVsStreamWithOptions(request *BatchResumeVsStrea
 
 // Summary:
 //
-// Resumes stream ingest for one or more streams.
+// Resumes the push of a specific stream.
 //
 // @param request - BatchResumeVsStreamRequest
 //
@@ -2122,7 +2122,7 @@ func (client *Client) BindTemplate(request *BindTemplateRequest) (_result *BindT
 //
 // Description:
 //
-// > Stop the parent platform before canceling the task.
+// > Stop the parent platform before deletion.
 //
 // @param request - CancelComfyTaskRequest
 //
@@ -2170,7 +2170,7 @@ func (client *Client) CancelComfyTaskWithOptions(request *CancelComfyTaskRequest
 //
 // Description:
 //
-// > Stop the parent platform before canceling the task.
+// > Stop the parent platform before deletion.
 //
 // @param request - CancelComfyTaskRequest
 //
@@ -2344,7 +2344,7 @@ func (client *Client) ContinuousMove(request *ContinuousMoveRequest) (_result *C
 //
 // Description:
 //
-// > You must enable on-demand snapshot in the associated snapshot template in advance.
+// > Enable the on-demand screenshot feature in the associated screenshot template.
 //
 // @param request - CreateComfyTaskRequest
 //
@@ -2400,7 +2400,7 @@ func (client *Client) CreateComfyTaskWithOptions(request *CreateComfyTaskRequest
 //
 // Description:
 //
-// > You must enable on-demand snapshot in the associated snapshot template in advance.
+// > Enable the on-demand screenshot feature in the associated screenshot template.
 //
 // @param request - CreateComfyTaskRequest
 //
@@ -2422,7 +2422,7 @@ func (client *Client) CreateComfyTask(request *CreateComfyTaskRequest) (_result 
 //
 // Description:
 //
-// > You must specify either a template ID or a template type.
+// > Specify at least one of the template ID and the templatetype.
 //
 // @param request - CreateComfyUserDataDirRequest
 //
@@ -2470,7 +2470,7 @@ func (client *Client) CreateComfyUserDataDirWithOptions(request *CreateComfyUser
 //
 // Description:
 //
-// > You must specify either a template ID or a template type.
+// > Specify at least one of the template ID and the templatetype.
 //
 // @param request - CreateComfyUserDataDirRequest
 //
@@ -2488,11 +2488,11 @@ func (client *Client) CreateComfyUserDataDir(request *CreateComfyUserDataDirRequ
 
 // Summary:
 //
-// Creates a Comfy workflow.
+// Uploads a Comfy workflow.
 //
 // Description:
 //
-// > You must enable the on-demand screenshot feature in the associated screenshot template before calling this operation.
+// > You must first enable the on-demand snapshot feature in the associated snapshot template.
 //
 // @param request - CreateComfyWorkflowRequest
 //
@@ -2544,11 +2544,11 @@ func (client *Client) CreateComfyWorkflowWithOptions(request *CreateComfyWorkflo
 
 // Summary:
 //
-// Creates a Comfy workflow.
+// Uploads a Comfy workflow.
 //
 // Description:
 //
-// > You must enable the on-demand screenshot feature in the associated screenshot template before calling this operation.
+// > You must first enable the on-demand snapshot feature in the associated snapshot template.
 //
 // @param request - CreateComfyWorkflowRequest
 //
@@ -3170,7 +3170,7 @@ func (client *Client) CreateParentPlatform(request *CreateParentPlatformRequest)
 
 // Summary:
 //
-// Creates a data pack for a cloud application service.
+// Creates a Cloud Application Service data package.
 //
 // @param request - CreateRenderingDataPackageRequest
 //
@@ -3226,7 +3226,7 @@ func (client *Client) CreateRenderingDataPackageWithOptions(request *CreateRende
 
 // Summary:
 //
-// Creates a data pack for a cloud application service.
+// Creates a Cloud Application Service data package.
 //
 // @param request - CreateRenderingDataPackageRequest
 //
@@ -3244,7 +3244,7 @@ func (client *Client) CreateRenderingDataPackage(request *CreateRenderingDataPac
 
 // Summary:
 //
-// Call CreateRenderingInstance to create a cloud application service instance.
+// Applies for a cloud rendering resource instance.
 //
 // @param tmpReq - CreateRenderingInstanceRequest
 //
@@ -3334,7 +3334,7 @@ func (client *Client) CreateRenderingInstanceWithOptions(tmpReq *CreateRendering
 
 // Summary:
 //
-// Call CreateRenderingInstance to create a cloud application service instance.
+// Applies for a cloud rendering resource instance.
 //
 // @param request - CreateRenderingInstanceRequest
 //
@@ -3356,7 +3356,7 @@ func (client *Client) CreateRenderingInstance(request *CreateRenderingInstanceRe
 //
 // Description:
 //
-// > You can specify a template ID or a template type.
+// > Specify at least one of the template ID and templatetype.
 //
 // @param request - CreateRenderingInstanceGatewayRequest
 //
@@ -3408,7 +3408,7 @@ func (client *Client) CreateRenderingInstanceGatewayWithOptions(request *CreateR
 //
 // Description:
 //
-// > You can specify a template ID or a template type.
+// > Specify at least one of the template ID and templatetype.
 //
 // @param request - CreateRenderingInstanceGatewayRequest
 //
@@ -3426,7 +3426,7 @@ func (client *Client) CreateRenderingInstanceGateway(request *CreateRenderingIns
 
 // Summary:
 //
-// Creates a cloud application service project and configures its properties, such as session attributes.
+// Creates a cloud application service project and configures session-related properties.
 //
 // @param tmpReq - CreateRenderingProjectRequest
 //
@@ -3484,7 +3484,7 @@ func (client *Client) CreateRenderingProjectWithOptions(tmpReq *CreateRenderingP
 
 // Summary:
 //
-// Creates a cloud application service project and configures its properties, such as session attributes.
+// Creates a cloud application service project and configures session-related properties.
 //
 // @param request - CreateRenderingProjectRequest
 //
@@ -3814,7 +3814,7 @@ func (client *Client) DelHiveEdgeWorkers(request *DelHiveEdgeWorkersRequest) (_r
 
 // Summary:
 //
-// Deletes a cloud application. You cannot delete a cloud application that is in use.
+// Deletes a cloud application. Cloud applications in use cannot be deleted.
 //
 // @param request - DeleteCloudAppRequest
 //
@@ -3858,7 +3858,7 @@ func (client *Client) DeleteCloudAppWithOptions(request *DeleteCloudAppRequest, 
 
 // Summary:
 //
-// Deletes a cloud application. You cannot delete a cloud application that is in use.
+// Deletes a cloud application. Cloud applications in use cannot be deleted.
 //
 // @param request - DeleteCloudAppRequest
 //
@@ -3876,11 +3876,11 @@ func (client *Client) DeleteCloudApp(request *DeleteCloudAppRequest) (_result *D
 
 // Summary:
 //
-// # Deleting artifacts
+// Deletes an artifact.
 //
 // Description:
 //
-// > Stop the parent platform before you delete a production.
+// > Stop the parent platform before deletion.
 //
 // @param request - DeleteComfyProductionRequest
 //
@@ -3924,11 +3924,11 @@ func (client *Client) DeleteComfyProductionWithOptions(request *DeleteComfyProdu
 
 // Summary:
 //
-// # Deleting artifacts
+// Deletes an artifact.
 //
 // Description:
 //
-// > Stop the parent platform before you delete a production.
+// > Stop the parent platform before deletion.
 //
 // @param request - DeleteComfyProductionRequest
 //
@@ -3946,11 +3946,11 @@ func (client *Client) DeleteComfyProduction(request *DeleteComfyProductionReques
 
 // Summary:
 //
-// Deletes a file or directory from user data.
+// Deletes a file or directory in user data.
 //
 // Description:
 //
-// > You must stop the upper-level platform before performing this operation.
+// > Stop the parent platform before deletion.
 //
 // @param request - DeleteComfyUserDataRequest
 //
@@ -3994,11 +3994,11 @@ func (client *Client) DeleteComfyUserDataWithOptions(request *DeleteComfyUserDat
 
 // Summary:
 //
-// Deletes a file or directory from user data.
+// Deletes a file or directory in user data.
 //
 // Description:
 //
-// > You must stop the upper-level platform before performing this operation.
+// > Stop the parent platform before deletion.
 //
 // @param request - DeleteComfyUserDataRequest
 //
@@ -4020,7 +4020,7 @@ func (client *Client) DeleteComfyUserData(request *DeleteComfyUserDataRequest) (
 //
 // Description:
 //
-// > You must stop the parent platform before you can delete the workflow.
+// > Stop the parent platform before deletion.
 //
 // @param request - DeleteComfyWorkflowRequest
 //
@@ -4068,7 +4068,7 @@ func (client *Client) DeleteComfyWorkflowWithOptions(request *DeleteComfyWorkflo
 //
 // Description:
 //
-// > You must stop the parent platform before you can delete the workflow.
+// > Stop the parent platform before deletion.
 //
 // @param request - DeleteComfyWorkflowRequest
 //
@@ -4218,7 +4218,7 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 
 // Summary:
 //
-// You cannot delete a file while it is uploading or pre-pushing. After deletion, all related push records become invalid. You can push a file with the same name again.
+// Deletes a file object. You cannot delete a file that is being uploaded or pre-pushed. After a file is deleted, all associated push records become invalid, and you can push a file with the same name again.
 //
 // @param request - DeleteFileRequest
 //
@@ -4262,7 +4262,7 @@ func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, runtime 
 
 // Summary:
 //
-// You cannot delete a file while it is uploading or pre-pushing. After deletion, all related push records become invalid. You can push a file with the same name again.
+// Deletes a file object. You cannot delete a file that is being uploaded or pre-pushed. After a file is deleted, all associated push records become invalid, and you can push a file with the same name again.
 //
 // @param request - DeleteFileRequest
 //
@@ -4630,7 +4630,7 @@ func (client *Client) DeletePublicKey(request *DeletePublicKeyRequest) (_result 
 
 // Summary:
 //
-// Deletes the configuration of a cloud application service instance. This operation deletes only module properties that are configured using the UpdateRenderingInstanceConfiguration operation.
+// Clears the configuration settings of a cloud application service instance. Only module properties configured through the UpdateRenderingInstanceConfiguration operation can be removed.
 //
 // @param tmpReq - DeleteRenderingInstanceConfigurationRequest
 //
@@ -4686,7 +4686,7 @@ func (client *Client) DeleteRenderingInstanceConfigurationWithOptions(tmpReq *De
 
 // Summary:
 //
-// Deletes the configuration of a cloud application service instance. This operation deletes only module properties that are configured using the UpdateRenderingInstanceConfiguration operation.
+// Clears the configuration settings of a cloud application service instance. Only module properties configured through the UpdateRenderingInstanceConfiguration operation can be removed.
 //
 // @param request - DeleteRenderingInstanceConfigurationRequest
 //
@@ -4708,7 +4708,7 @@ func (client *Client) DeleteRenderingInstanceConfiguration(request *DeleteRender
 //
 // Description:
 //
-// > Stop the parent platform before you delete the gateway.
+// > Stop the upper-level platform before deletion.
 //
 // @param request - DeleteRenderingInstanceGatewayRequest
 //
@@ -4756,7 +4756,7 @@ func (client *Client) DeleteRenderingInstanceGatewayWithOptions(request *DeleteR
 //
 // Description:
 //
-// > Stop the parent platform before you delete the gateway.
+// > Stop the upper-level platform before deletion.
 //
 // @param request - DeleteRenderingInstanceGatewayRequest
 //
@@ -4774,7 +4774,7 @@ func (client *Client) DeleteRenderingInstanceGateway(request *DeleteRenderingIns
 
 // Summary:
 //
-// You can call DeleteRenderingInstanceSettings to delete the settings of a cloud application service instance.
+// Deletes the settings of a cloud application service instance.
 //
 // @param tmpReq - DeleteRenderingInstanceSettingsRequest
 //
@@ -4828,7 +4828,7 @@ func (client *Client) DeleteRenderingInstanceSettingsWithOptions(tmpReq *DeleteR
 
 // Summary:
 //
-// You can call DeleteRenderingInstanceSettings to delete the settings of a cloud application service instance.
+// Deletes the settings of a cloud application service instance.
 //
 // @param request - DeleteRenderingInstanceSettingsRequest
 //
@@ -4846,7 +4846,7 @@ func (client *Client) DeleteRenderingInstanceSettings(request *DeleteRenderingIn
 
 // Summary:
 //
-// Delete a Data Service Project. Projects that have business scheduling data, such as active sessions, cannot be deleted.
+// Deletes a cloud application service project. Projects that contain business scheduling data such as online sessions cannot be deleted.
 //
 // @param request - DeleteRenderingProjectRequest
 //
@@ -4890,7 +4890,7 @@ func (client *Client) DeleteRenderingProjectWithOptions(request *DeleteRendering
 
 // Summary:
 //
-// Delete a Data Service Project. Projects that have business scheduling data, such as active sessions, cannot be deleted.
+// Deletes a cloud application service project. Projects that contain business scheduling data such as online sessions cannot be deleted.
 //
 // @param request - DeleteRenderingProjectRequest
 //
@@ -5180,11 +5180,11 @@ func (client *Client) DescribeAccountStat(request *DescribeAccountStatRequest) (
 
 // Summary:
 //
-// Retrieves a download link for a production.
+// Retrieves the download URL for user-generated results.
 //
 // Description:
 //
-// > Screenshot queries do not support pagination and must be performed iteratively. To fetch the next page, use the extStartTime value from the response as the StartTime for your subsequent request.
+// > Screenshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyProductionDownloadUrlRequest
 //
@@ -5228,11 +5228,11 @@ func (client *Client) DescribeComfyProductionDownloadUrlWithOptions(request *Des
 
 // Summary:
 //
-// Retrieves a download link for a production.
+// Retrieves the download URL for user-generated results.
 //
 // Description:
 //
-// > Screenshot queries do not support pagination and must be performed iteratively. To fetch the next page, use the extStartTime value from the response as the StartTime for your subsequent request.
+// > Screenshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyProductionDownloadUrlRequest
 //
@@ -5250,11 +5250,11 @@ func (client *Client) DescribeComfyProductionDownloadUrl(request *DescribeComfyP
 
 // Summary:
 //
-// Lists a user\\"s productions.
+// Lists the generation results of a user.
 //
 // Description:
 //
-// > This API uses pagination. Use the PageNumber and PageSize parameters to navigate through the results.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyProductionsRequest
 //
@@ -5306,11 +5306,11 @@ func (client *Client) DescribeComfyProductionsWithOptions(request *DescribeComfy
 
 // Summary:
 //
-// Lists a user\\"s productions.
+// Lists the generation results of a user.
 //
 // Description:
 //
-// > This API uses pagination. Use the PageNumber and PageSize parameters to navigate through the results.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyProductionsRequest
 //
@@ -5328,7 +5328,7 @@ func (client *Client) DescribeComfyProductions(request *DescribeComfyProductions
 
 // Summary:
 //
-// Queries the waiting queue information of Comfy tasks. The maximum length of a single Hive waiting queue is 100 by default.
+// Queries the waiting queue information of Comfy tasks. The default maximum length of a single Hive waiting queue is 100.
 //
 // @param request - DescribeComfyTaskWaitingQueueRequest
 //
@@ -5372,7 +5372,7 @@ func (client *Client) DescribeComfyTaskWaitingQueueWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the waiting queue information of Comfy tasks. The maximum length of a single Hive waiting queue is 100 by default.
+// Queries the waiting queue information of Comfy tasks. The default maximum length of a single Hive waiting queue is 100.
 //
 // @param request - DescribeComfyTaskWaitingQueueRequest
 //
@@ -5394,7 +5394,7 @@ func (client *Client) DescribeComfyTaskWaitingQueue(request *DescribeComfyTaskWa
 //
 // Description:
 //
-// > Screenshot queries do not support pagination. Only iteration-based queries are supported. Use the extStartTime parameter value from the response as the StartTime for a new request to retrieve the next page.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in a new request.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -5462,7 +5462,7 @@ func (client *Client) DescribeComfyTasksWithOptions(request *DescribeComfyTasksR
 //
 // Description:
 //
-// > Screenshot queries do not support pagination. Only iteration-based queries are supported. Use the extStartTime parameter value from the response as the StartTime for a new request to retrieve the next page.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in a new request.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -5480,7 +5480,7 @@ func (client *Client) DescribeComfyTasks(request *DescribeComfyTasksRequest) (_r
 
 // Summary:
 //
-// Gets a download URL for user data.
+// Retrieves the download URL for user data.
 //
 // @param request - DescribeComfyUserDataDownloadUrlRequest
 //
@@ -5524,7 +5524,7 @@ func (client *Client) DescribeComfyUserDataDownloadUrlWithOptions(request *Descr
 
 // Summary:
 //
-// Gets a download URL for user data.
+// Retrieves the download URL for user data.
 //
 // @param request - DescribeComfyUserDataDownloadUrlRequest
 //
@@ -5542,11 +5542,11 @@ func (client *Client) DescribeComfyUserDataDownloadUrl(request *DescribeComfyUse
 
 // Summary:
 //
-// Retrieves a URL to upload a user file.
+// Retrieves the URL for uploading user files.
 //
 // Description:
 //
-// You can upload files using the retrieved URL and the Alibaba Cloud OSS software development kit (SDK).
+// The retrieved URL must be used with the Alibaba Cloud OSS SDK to upload files.
 //
 // @param request - DescribeComfyUserDataUploadUrlRequest
 //
@@ -5602,11 +5602,11 @@ func (client *Client) DescribeComfyUserDataUploadUrlWithOptions(request *Describ
 
 // Summary:
 //
-// Retrieves a URL to upload a user file.
+// Retrieves the URL for uploading user files.
 //
 // Description:
 //
-// You can upload files using the retrieved URL and the Alibaba Cloud OSS software development kit (SDK).
+// The retrieved URL must be used with the Alibaba Cloud OSS SDK to upload files.
 //
 // @param request - DescribeComfyUserDataUploadUrlRequest
 //
@@ -5624,17 +5624,19 @@ func (client *Client) DescribeComfyUserDataUploadUrl(request *DescribeComfyUserD
 
 // Summary:
 //
-// Lists all files and folders in the user data.
+// Lists all files and directories in the user data.
 //
 // Description:
 //
-// If StartTime and EndTime are not specified, data from the last 24 hours is read by default. To query a specific time range, you must specify both StartTime and EndTime. The maximum time range for a query is 31 days.
+// If StartTime and EndTime are not specified, data from the past 24 hours is queried by default. You can also query data within a specified start and end time range. Both parameters must be specified at the same time.
 //
-// - You can query multiple domain names in a batch. Separate the domain names with a comma (,).
+// The maximum query range is 31 days.
 //
-// - You can retrieve data from the last 90 days.
+//   - Batch domain name queries are supported. Separate multiple domain names with commas (,).
 //
-// - The time granularity is one hour.
+//   - You can retrieve data from up to the last 90 days.
+//
+//   - The time granularity is one hour.
 //
 // @param request - DescribeComfyUserDatasRequest
 //
@@ -5686,17 +5688,19 @@ func (client *Client) DescribeComfyUserDatasWithOptions(request *DescribeComfyUs
 
 // Summary:
 //
-// Lists all files and folders in the user data.
+// Lists all files and directories in the user data.
 //
 // Description:
 //
-// If StartTime and EndTime are not specified, data from the last 24 hours is read by default. To query a specific time range, you must specify both StartTime and EndTime. The maximum time range for a query is 31 days.
+// If StartTime and EndTime are not specified, data from the past 24 hours is queried by default. You can also query data within a specified start and end time range. Both parameters must be specified at the same time.
 //
-// - You can query multiple domain names in a batch. Separate the domain names with a comma (,).
+// The maximum query range is 31 days.
 //
-// - You can retrieve data from the last 90 days.
+//   - Batch domain name queries are supported. Separate multiple domain names with commas (,).
 //
-// - The time granularity is one hour.
+//   - You can retrieve data from up to the last 90 days.
+//
+//   - The time granularity is one hour.
 //
 // @param request - DescribeComfyUserDatasRequest
 //
@@ -5714,11 +5718,11 @@ func (client *Client) DescribeComfyUserDatas(request *DescribeComfyUserDatasRequ
 
 // Summary:
 //
-// This operation retrieves a paginated list of your Comfy workflows.
+// Queries the information of all Comfy workflows. Paging is supported.
 //
 // Description:
 //
-// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
+// > Pagination is currently not supported for queries. Only iteration is supported. To request the next page, use the value of the extStartTime parameter from the response as the StartTime parameter in a new request.
 //
 // @param request - DescribeComfyWorkflowsRequest
 //
@@ -5770,11 +5774,11 @@ func (client *Client) DescribeComfyWorkflowsWithOptions(request *DescribeComfyWo
 
 // Summary:
 //
-// This operation retrieves a paginated list of your Comfy workflows.
+// Queries the information of all Comfy workflows. Paging is supported.
 //
 // Description:
 //
-// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
+// > Pagination is currently not supported for queries. Only iteration is supported. To request the next page, use the value of the extStartTime parameter from the response as the StartTime parameter in a new request.
 //
 // @param request - DescribeComfyWorkflowsRequest
 //
@@ -5792,7 +5796,7 @@ func (client *Client) DescribeComfyWorkflows(request *DescribeComfyWorkflowsRequ
 
 // Summary:
 //
-// Query information about a device.
+// Queries the details of a device.
 //
 // @param request - DescribeDeviceRequest
 //
@@ -5848,7 +5852,7 @@ func (client *Client) DescribeDeviceWithOptions(request *DescribeDeviceRequest, 
 
 // Summary:
 //
-// Query information about a device.
+// Queries the details of a device.
 //
 // @param request - DescribeDeviceRequest
 //
@@ -6104,7 +6108,7 @@ func (client *Client) DescribeDeviceURL(request *DescribeDeviceURLRequest) (_res
 
 // Summary:
 //
-// Queries a list of devices.
+// Queries the list of devices.
 //
 // @param request - DescribeDevicesRequest
 //
@@ -6212,7 +6216,7 @@ func (client *Client) DescribeDevicesWithOptions(request *DescribeDevicesRequest
 
 // Summary:
 //
-// Queries a list of devices.
+// Queries the list of devices.
 //
 // @param request - DescribeDevicesRequest
 //
@@ -6386,7 +6390,7 @@ func (client *Client) DescribeDirectory(request *DescribeDirectoryRequest) (_res
 
 // Summary:
 //
-// Retrieves information about a space.
+// Retrieves workspace information.
 //
 // @param request - DescribeGroupRequest
 //
@@ -6438,7 +6442,7 @@ func (client *Client) DescribeGroupWithOptions(request *DescribeGroupRequest, ru
 
 // Summary:
 //
-// Retrieves information about a space.
+// Retrieves workspace information.
 //
 // @param request - DescribeGroupRequest
 //
@@ -6916,7 +6920,7 @@ func (client *Client) DescribePublishStreamStatus(request *DescribePublishStream
 
 // Summary:
 //
-// Queries information about purchased devices.
+// Queries the details of purchased devices.
 //
 // @param request - DescribePurchasedDeviceRequest
 //
@@ -6964,7 +6968,7 @@ func (client *Client) DescribePurchasedDeviceWithOptions(request *DescribePurcha
 
 // Summary:
 //
-// Queries information about purchased devices.
+// Queries the details of purchased devices.
 //
 // @param request - DescribePurchasedDeviceRequest
 //
@@ -7084,11 +7088,11 @@ func (client *Client) DescribePurchasedDevices(request *DescribePurchasedDevices
 
 // Summary:
 //
-// Queries a list of recordings.
+// Queries a list of recording records.
 //
 // Description:
 //
-// > Paging is not supported for snapshot queries. Only iteration is supported. To request the next page, use the NextStartTime value from the response as the StartTime for the new request.
+// > Snapshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeRecordsRequest
 //
@@ -7168,11 +7172,11 @@ func (client *Client) DescribeRecordsWithOptions(request *DescribeRecordsRequest
 
 // Summary:
 //
-// Queries a list of recordings.
+// Queries a list of recording records.
 //
 // Description:
 //
-// > Paging is not supported for snapshot queries. Only iteration is supported. To request the next page, use the NextStartTime value from the response as the StartTime for the new request.
+// > Snapshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeRecordsRequest
 //
@@ -7252,7 +7256,7 @@ func (client *Client) DescribeRenderingInstance(request *DescribeRenderingInstan
 
 // Summary:
 //
-// Queries the real-time configuration of a cloud application service instance.
+// Queries the real-time system configuration information of a cloud application service instance.
 //
 // @param tmpReq - DescribeRenderingInstanceConfigurationRequest
 //
@@ -7298,7 +7302,7 @@ func (client *Client) DescribeRenderingInstanceConfigurationWithOptions(tmpReq *
 
 // Summary:
 //
-// Queries the real-time configuration of a cloud application service instance.
+// Queries the real-time system configuration information of a cloud application service instance.
 //
 // @param request - DescribeRenderingInstanceConfigurationRequest
 //
@@ -7316,7 +7320,7 @@ func (client *Client) DescribeRenderingInstanceConfiguration(request *DescribeRe
 
 // Summary:
 //
-// DescribeRenderingInstanceSettings queries the configuration of a Cloud Application service instance.
+// Queries the configurations of a cloud application service instance.
 //
 // @param tmpReq - DescribeRenderingInstanceSettingsRequest
 //
@@ -7370,7 +7374,7 @@ func (client *Client) DescribeRenderingInstanceSettingsWithOptions(tmpReq *Descr
 
 // Summary:
 //
-// DescribeRenderingInstanceSettings queries the configuration of a Cloud Application service instance.
+// Queries the configurations of a cloud application service instance.
 //
 // @param request - DescribeRenderingInstanceSettingsRequest
 //
@@ -7388,7 +7392,7 @@ func (client *Client) DescribeRenderingInstanceSettings(request *DescribeRenderi
 
 // Summary:
 //
-// Retrieve details about a rendering session, including the current session state, network access IP address and port, and the location of the cloud application service instance.
+// Queries the details of a session, including the current session status, network access IP address and port, and location of the cloud application service instance.
 //
 // @param request - DescribeRenderingSessionRequest
 //
@@ -7440,7 +7444,7 @@ func (client *Client) DescribeRenderingSessionWithOptions(request *DescribeRende
 
 // Summary:
 //
-// Retrieve details about a rendering session, including the current session state, network access IP address and port, and the location of the cloud application service instance.
+// Queries the details of a session, including the current session status, network access IP address and port, and location of the cloud application service instance.
 //
 // @param request - DescribeRenderingSessionRequest
 //
@@ -7622,7 +7626,7 @@ func (client *Client) DescribeStreamURL(request *DescribeStreamURLRequest) (_res
 
 // Summary:
 //
-// Get the stream VOD record list, such as historical stream list from NVR.
+// Retrieves a list of video-on-demand records for a stream, such as historical stream lists from an NVR.
 //
 // @param request - DescribeStreamVodListRequest
 //
@@ -7678,7 +7682,7 @@ func (client *Client) DescribeStreamVodListWithOptions(request *DescribeStreamVo
 
 // Summary:
 //
-// Get the stream VOD record list, such as historical stream list from NVR.
+// Retrieves a list of video-on-demand records for a stream, such as historical stream lists from an NVR.
 //
 // @param request - DescribeStreamVodListRequest
 //
@@ -7696,7 +7700,7 @@ func (client *Client) DescribeStreamVodList(request *DescribeStreamVodListReques
 
 // Summary:
 //
-// Lists video streams. You can filter the results by stream ID, name, group ID, device ID, or other criteria.
+// Queries a list of streams. You can filter streams by stream ID, name, space ID, and device ID.
 //
 // @param request - DescribeStreamsRequest
 //
@@ -7784,7 +7788,7 @@ func (client *Client) DescribeStreamsWithOptions(request *DescribeStreamsRequest
 
 // Summary:
 //
-// Lists video streams. You can filter the results by stream ID, name, group ID, device ID, or other criteria.
+// Queries a list of streams. You can filter streams by stream ID, name, space ID, and device ID.
 //
 // @param request - DescribeStreamsRequest
 //
@@ -8156,17 +8160,19 @@ func (client *Client) DescribeVsCertificateList(request *DescribeVsCertificateLi
 
 // Summary:
 //
-// Retrieves usage data for connected devices.
+// Retrieves the usage data of connected devices.
 //
 // Description:
 //
-// If you do not specify \\`StartTime\\` and \\`EndTime\\`, the API retrieves data from the last 24 hours by default. To query data for a specific time range, you must specify both \\`StartTime\\` and \\`EndTime\\`. The maximum time range for a single query is 31 days.
+// If StartTime and EndTime are not specified, the data of the last 24 hours is retrieved by default. You can also query data within a specified time range. Both StartTime and EndTime must be specified at the same time.
 //
-// - You can query multiple domain names at once. Separate the domain names with commas.
+// The maximum query range is 31 days.
 //
-// - You can retrieve data from the last 90 days.
+//   - Batch domain name queries are supported. Separate multiple domain names with commas (,).
 //
-// - The time granularity is one hour.
+//   - You can retrieve data for the last 90 days at most.
+//
+//   - The time granularity is 1 hour.
 //
 // @param request - DescribeVsDevicesDataRequest
 //
@@ -8222,17 +8228,19 @@ func (client *Client) DescribeVsDevicesDataWithOptions(request *DescribeVsDevice
 
 // Summary:
 //
-// Retrieves usage data for connected devices.
+// Retrieves the usage data of connected devices.
 //
 // Description:
 //
-// If you do not specify \\`StartTime\\` and \\`EndTime\\`, the API retrieves data from the last 24 hours by default. To query data for a specific time range, you must specify both \\`StartTime\\` and \\`EndTime\\`. The maximum time range for a single query is 31 days.
+// If StartTime and EndTime are not specified, the data of the last 24 hours is retrieved by default. You can also query data within a specified time range. Both StartTime and EndTime must be specified at the same time.
 //
-// - You can query multiple domain names at once. Separate the domain names with commas.
+// The maximum query range is 31 days.
 //
-// - You can retrieve data from the last 90 days.
+//   - Batch domain name queries are supported. Separate multiple domain names with commas (,).
 //
-// - The time granularity is one hour.
+//   - You can retrieve data for the last 90 days at most.
+//
+//   - The time granularity is 1 hour.
 //
 // @param request - DescribeVsDevicesDataRequest
 //
@@ -8764,7 +8772,7 @@ func (client *Client) DescribeVsDomainRecordData(request *DescribeVsDomainRecord
 
 // Summary:
 //
-// Retrieves domain region data.
+// Queries the regional data for a domain name.
 //
 // @param request - DescribeVsDomainRegionDataRequest
 //
@@ -8820,7 +8828,7 @@ func (client *Client) DescribeVsDomainRegionDataWithOptions(request *DescribeVsD
 
 // Summary:
 //
-// Retrieves domain region data.
+// Queries the regional data for a domain name.
 //
 // @param request - DescribeVsDomainRegionDataRequest
 //
@@ -9244,7 +9252,7 @@ func (client *Client) DescribeVsDomainUvData(request *DescribeVsDomainUvDataRequ
 
 // Summary:
 //
-// Queries the pull stream configurations for a domain name.
+// Queries the pull stream configuration for a domain name.
 //
 // @param request - DescribeVsPullStreamInfoConfigRequest
 //
@@ -9292,7 +9300,7 @@ func (client *Client) DescribeVsPullStreamInfoConfigWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the pull stream configurations for a domain name.
+// Queries the pull stream configuration for a domain name.
 //
 // @param request - DescribeVsPullStreamInfoConfigRequest
 //
@@ -9376,7 +9384,7 @@ func (client *Client) DescribeVsStreamsNotifyUrlConfig(request *DescribeVsStream
 
 // Summary:
 //
-// Retrieves information about all active streams for a specified domain name or application.
+// Queries the information about all active streams under a specified domain name or a specific application under the domain name.
 //
 // @param request - DescribeVsStreamsOnlineListRequest
 //
@@ -9460,7 +9468,7 @@ func (client *Client) DescribeVsStreamsOnlineListWithOptions(request *DescribeVs
 
 // Summary:
 //
-// Retrieves information about all active streams for a specified domain name or application.
+// Queries the information about all active streams under a specified domain name or a specific application under the domain name.
 //
 // @param request - DescribeVsStreamsOnlineListRequest
 //
@@ -9580,11 +9588,11 @@ func (client *Client) DescribeVsStreamsPublishList(request *DescribeVsStreamsPub
 
 // Summary:
 //
-// Retrieves a user\\"s domain names ranked by traffic.
+// Queries the domains of a user ranked by traffic.
 //
-// If you do not specify StartTime and EndTime, data for the current month is retrieved by default. To query data over a specific time range, you must specify both StartTime and EndTime.
+// If you do not specify StartTime and EndTime, data of the current month is queried by default. You can also query data within a specified time range. Both StartTime and EndTime must be specified.
 //
-// \\	- You can retrieve data for a maximum of 90 days.
+//   - You can query data of up to 90 days.
 //
 // @param request - DescribeVsTopDomainsByFlowRequest
 //
@@ -9640,11 +9648,11 @@ func (client *Client) DescribeVsTopDomainsByFlowWithOptions(request *DescribeVsT
 
 // Summary:
 //
-// Retrieves a user\\"s domain names ranked by traffic.
+// Queries the domains of a user ranked by traffic.
 //
-// If you do not specify StartTime and EndTime, data for the current month is retrieved by default. To query data over a specific time range, you must specify both StartTime and EndTime.
+// If you do not specify StartTime and EndTime, data of the current month is queried by default. You can also query data within a specified time range. Both StartTime and EndTime must be specified.
 //
-// \\	- You can retrieve data for a maximum of 90 days.
+//   - You can query data of up to 90 days.
 //
 // @param request - DescribeVsTopDomainsByFlowRequest
 //
@@ -9738,6 +9746,10 @@ func (client *Client) DescribeVsUpPeakPublishStreamData(request *DescribeVsUpPea
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Visual Edge Computing Service resource plan information for the current user.
+//
 // @param request - DescribeVsUserResourcePackageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9782,6 +9794,10 @@ func (client *Client) DescribeVsUserResourcePackageWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Visual Edge Computing Service resource plan information for the current user.
+//
 // @param request - DescribeVsUserResourcePackageRequest
 //
 // @return DescribeVsUserResourcePackageResponse
@@ -9798,7 +9814,7 @@ func (client *Client) DescribeVsUserResourcePackage(request *DescribeVsUserResou
 
 // Summary:
 //
-// # DescribeVsVerifyContent
+// Queries the verification content.
 //
 // @param request - DescribeVsVerifyContentRequest
 //
@@ -9846,7 +9862,7 @@ func (client *Client) DescribeVsVerifyContentWithOptions(request *DescribeVsVeri
 
 // Summary:
 //
-// # DescribeVsVerifyContent
+// Queries the verification content.
 //
 // @param request - DescribeVsVerifyContentRequest
 //
@@ -9864,7 +9880,7 @@ func (client *Client) DescribeVsVerifyContent(request *DescribeVsVerifyContentRe
 
 // Summary:
 //
-// Disassociate cloud application service instances from a project.
+// Dissociates cloud application service instances from a project.
 //
 // @param tmpReq - DisassociateRenderingProjectInstancesRequest
 //
@@ -9918,7 +9934,7 @@ func (client *Client) DisassociateRenderingProjectInstancesWithOptions(tmpReq *D
 
 // Summary:
 //
-// Disassociate cloud application service instances from a project.
+// Dissociates cloud application service instances from a project.
 //
 // @param request - DisassociateRenderingProjectInstancesRequest
 //
@@ -10026,7 +10042,7 @@ func (client *Client) ForbidVsStream(request *ForbidVsStreamRequest) (_result *F
 
 // Summary:
 //
-// Queries the execution status of a control command to determine whether the command was successful and to retrieve the result string.
+// Queries the execution status of a control command, including whether the command was executed successfully and the result string.
 //
 // @param request - GetRenderingInstanceCommandsStatusRequest
 //
@@ -10074,7 +10090,7 @@ func (client *Client) GetRenderingInstanceCommandsStatusWithOptions(request *Get
 
 // Summary:
 //
-// Queries the execution status of a control command to determine whether the command was successful and to retrieve the result string.
+// Queries the execution status of a control command, including whether the command was executed successfully and the result string.
 //
 // @param request - GetRenderingInstanceCommandsStatusRequest
 //
@@ -10092,7 +10108,7 @@ func (client *Client) GetRenderingInstanceCommandsStatus(request *GetRenderingIn
 
 // Summary:
 //
-// Retrieves the streaming connection information for a cloud application service instance. Call this operation before establishing each streaming connection to obtain the latest connection details.
+// Retrieves the streaming connection information for a cloud application service instance. Call this operation to obtain the latest connection information before establishing each streaming connection.
 //
 // @param request - GetRenderingInstanceStreamingInfoRequest
 //
@@ -10136,7 +10152,7 @@ func (client *Client) GetRenderingInstanceStreamingInfoWithOptions(request *GetR
 
 // Summary:
 //
-// Retrieves the streaming connection information for a cloud application service instance. Call this operation before establishing each streaming connection to obtain the latest connection details.
+// Retrieves the streaming connection information for a cloud application service instance. Call this operation to obtain the latest connection information before establishing each streaming connection.
 //
 // @param request - GetRenderingInstanceStreamingInfoRequest
 //
@@ -10154,7 +10170,7 @@ func (client *Client) GetRenderingInstanceStreamingInfo(request *GetRenderingIns
 
 // Summary:
 //
-// Queries the data volume statistics for the states of project instances that meet specified conditions.
+// Queries the statistics on the number of project instances in each state that meet specific conditions for a project.
 //
 // @param request - GetRenderingProjectInstanceStateMetricsRequest
 //
@@ -10198,7 +10214,7 @@ func (client *Client) GetRenderingProjectInstanceStateMetricsWithOptions(request
 
 // Summary:
 //
-// Queries the data volume statistics for the states of project instances that meet specified conditions.
+// Queries the statistics on the number of project instances in each state that meet specific conditions for a project.
 //
 // @param request - GetRenderingProjectInstanceStateMetricsRequest
 //
@@ -10286,7 +10302,9 @@ func (client *Client) GotoPreset(request *GotoPresetRequest) (_result *GotoPrese
 
 // Summary:
 //
-// Installs a cloud application to a specified cloud application instance. This is an asynchronous interface. To monitor the installation progress, use the ListCloudAppInstallations interface.
+// Installs a cloud application on a specified cloud application instance.
+//
+// This operation is asynchronous. You can call the ListCloudAppInstallations operation to query the installation progress.
 //
 // @param tmpReq - InstallCloudAppRequest
 //
@@ -10360,7 +10378,9 @@ func (client *Client) InstallCloudAppWithOptions(tmpReq *InstallCloudAppRequest,
 
 // Summary:
 //
-// Installs a cloud application to a specified cloud application instance. This is an asynchronous interface. To monitor the installation progress, use the ListCloudAppInstallations interface.
+// Installs a cloud application on a specified cloud application instance.
+//
+// This operation is asynchronous. You can call the ListCloudAppInstallations operation to query the installation progress.
 //
 // @param request - InstallCloudAppRequest
 //
@@ -10378,7 +10398,7 @@ func (client *Client) InstallCloudApp(request *InstallCloudAppRequest) (_result 
 
 // Summary:
 //
-// Lists cloud application installations. The response includes the installation status of cloud application service instances and supports paged queries.
+// Queries the installation information list of cloud applications. The returned information includes the installation status of cloud application service instances. Paging is supported for paged query.
 //
 // @param request - ListCloudAppInstallationsRequest
 //
@@ -10418,7 +10438,7 @@ func (client *Client) ListCloudAppInstallationsWithOptions(request *ListCloudApp
 
 // Summary:
 //
-// Lists cloud application installations. The response includes the installation status of cloud application service instances and supports paged queries.
+// Queries the installation information list of cloud applications. The returned information includes the installation status of cloud application service instances. Paging is supported for paged query.
 //
 // @param request - ListCloudAppInstallationsRequest
 //
@@ -10440,7 +10460,7 @@ func (client *Client) ListCloudAppInstallations(request *ListCloudAppInstallatio
 //
 // Description:
 //
-// >You must specify at least one of the template ID and templatetype.
+// >Specify at least one of the template ID and the templatetype.
 //
 // @param request - ListCloudAppPatchesRequest
 //
@@ -10512,7 +10532,7 @@ func (client *Client) ListCloudAppPatchesWithOptions(request *ListCloudAppPatche
 //
 // Description:
 //
-// >You must specify at least one of the template ID and templatetype.
+// >Specify at least one of the template ID and the templatetype.
 //
 // @param request - ListCloudAppPatchesRequest
 //
@@ -10530,7 +10550,7 @@ func (client *Client) ListCloudAppPatches(request *ListCloudAppPatchesRequest) (
 
 // Summary:
 //
-// Queries a list of cloud applications. Paging is supported.
+// Queries the list of cloud applications and supports paging and paged query.
 //
 // @param request - ListCloudAppsRequest
 //
@@ -10570,7 +10590,7 @@ func (client *Client) ListCloudAppsWithOptions(request *ListCloudAppsRequest, ru
 
 // Summary:
 //
-// Queries a list of cloud applications. Paging is supported.
+// Queries the list of cloud applications and supports paging and paged query.
 //
 // @param request - ListCloudAppsRequest
 //
@@ -10588,19 +10608,19 @@ func (client *Client) ListCloudApps(request *ListCloudAppsRequest) (_result *Lis
 
 // Summary:
 //
-// Queries load information with paged query and paging support.
+// Queries workload information and supports paging and paged query.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API operation queries load information. You can filter results by using various parameters and perform paged query operations.
+// - This API queries workload information and supports filtering, paging, and paged query by using various parameters.
 //
-// - Optional parameters include Spec (specification), Statuses (status list), InstanceIds (instance ID list), PlanIds (plan ID list), and HiveIds (cluster ID list).
+// - Optional parameters include `Spec` (specifications), `Statuses` (status list), `InstanceIds` (instance ID list), `PlanIds` (plan ID list), and `HiveIds` (cluster ID list).
 //
-// - For paged query operations, use the PageNumber and PageSize parameters to control the data volume of returned results. The default page size is 10 records, and the maximum is 100 records. Paging is supported.
+// - During a paged query, you can use the `PageNumber` and `PageSize` parameters to control the returned data volume. The default is 10 records per page, and the maximum is 100 records.
 //
-// - To query by time range, specify the StartTime and EndTime parameters.
+// - You can specify a time range for the query by using the `StartTime` and `EndTime` parameters.
 //
 // @param tmpReq - ListEdgeWorkersRequest
 //
@@ -10694,19 +10714,19 @@ func (client *Client) ListEdgeWorkersWithOptions(tmpReq *ListEdgeWorkersRequest,
 
 // Summary:
 //
-// Queries load information with paged query and paging support.
+// Queries workload information and supports paging and paged query.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API operation queries load information. You can filter results by using various parameters and perform paged query operations.
+// - This API queries workload information and supports filtering, paging, and paged query by using various parameters.
 //
-// - Optional parameters include Spec (specification), Statuses (status list), InstanceIds (instance ID list), PlanIds (plan ID list), and HiveIds (cluster ID list).
+// - Optional parameters include `Spec` (specifications), `Statuses` (status list), `InstanceIds` (instance ID list), `PlanIds` (plan ID list), and `HiveIds` (cluster ID list).
 //
-// - For paged query operations, use the PageNumber and PageSize parameters to control the data volume of returned results. The default page size is 10 records, and the maximum is 100 records. Paging is supported.
+// - During a paged query, you can use the `PageNumber` and `PageSize` parameters to control the returned data volume. The default is 10 records per page, and the maximum is 100 records.
 //
-// - To query by time range, specify the StartTime and EndTime parameters.
+// - You can specify a time range for the query by using the `StartTime` and `EndTime` parameters.
 //
 // @param request - ListEdgeWorkersRequest
 //
@@ -10724,7 +10744,7 @@ func (client *Client) ListEdgeWorkers(request *ListEdgeWorkersRequest) (_result 
 
 // Summary:
 //
-// Lists the push status records for a file pushed to cloud application service instances. It supports paged query.
+// Queries the push status list of cloud application service instances for a file. Paging is supported for paged query.
 //
 // @param request - ListFilePushStatusesRequest
 //
@@ -10764,7 +10784,7 @@ func (client *Client) ListFilePushStatusesWithOptions(request *ListFilePushStatu
 
 // Summary:
 //
-// Lists the push status records for a file pushed to cloud application service instances. It supports paged query.
+// Queries the push status list of cloud application service instances for a file. Paging is supported for paged query.
 //
 // @param request - ListFilePushStatusesRequest
 //
@@ -10782,7 +10802,7 @@ func (client *Client) ListFilePushStatuses(request *ListFilePushStatusesRequest)
 
 // Summary:
 //
-// Lists uploaded files. The response includes the upload status for each file and supports paged queries.
+// Queries a list of uploaded files. The response includes the upload status of the files and supports paging for a paged query.
 //
 // @param request - ListFilesRequest
 //
@@ -10822,7 +10842,7 @@ func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *d
 
 // Summary:
 //
-// Lists uploaded files. The response includes the upload status for each file and supports paged queries.
+// Queries a list of uploaded files. The response includes the upload status of the files and supports paging for a paged query.
 //
 // @param request - ListFilesRequest
 //
@@ -10840,19 +10860,19 @@ func (client *Client) ListFiles(request *ListFilesRequest) (_result *ListFilesRe
 
 // Summary:
 //
-// Queries all cluster information by paging and supports filtering by conditions.
+// Performs a paged query to retrieve all cluster information with paging and supports filtering by conditions.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API operation queries information about all clusters created by the user.
+// - This operation queries the information of all clusters created by the user.
 //
-// - You can use the `HiveId` and `Name` parameters to filter query results.
+// - You can filter the query results by using the `HiveId` and `Name` parameters.
 //
-// - The `PageNumber` and `PageSize` pagination parameters control the number of results and page number. By default, 10 records are displayed per page, with a maximum of 100.
+// - The pagination parameters `PageNumber` and `PageSize` control the number of returned results and the page number. By default, 10 entries are displayed on each page, and a maximum of 100 entries are supported.
 //
-// - The `StartTime` and `EndTime` parameters specify a time range for querying cluster information. These parameters are optional.
+// - The `StartTime` and `EndTime` parameters can be used to query clusters within a specified time range. These parameters are optional.
 //
 // @param request - ListHivesRequest
 //
@@ -10916,19 +10936,19 @@ func (client *Client) ListHivesWithOptions(request *ListHivesRequest, runtime *d
 
 // Summary:
 //
-// Queries all cluster information by paging and supports filtering by conditions.
+// Performs a paged query to retrieve all cluster information with paging and supports filtering by conditions.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API operation queries information about all clusters created by the user.
+// - This operation queries the information of all clusters created by the user.
 //
-// - You can use the `HiveId` and `Name` parameters to filter query results.
+// - You can filter the query results by using the `HiveId` and `Name` parameters.
 //
-// - The `PageNumber` and `PageSize` pagination parameters control the number of results and page number. By default, 10 records are displayed per page, with a maximum of 100.
+// - The pagination parameters `PageNumber` and `PageSize` control the number of returned results and the page number. By default, 10 entries are displayed on each page, and a maximum of 100 entries are supported.
 //
-// - The `StartTime` and `EndTime` parameters specify a time range for querying cluster information. These parameters are optional.
+// - The `StartTime` and `EndTime` parameters can be used to query clusters within a specified time range. These parameters are optional.
 //
 // @param request - ListHivesRequest
 //
@@ -10946,7 +10966,7 @@ func (client *Client) ListHives(request *ListHivesRequest) (_result *ListHivesRe
 
 // Summary:
 //
-// Retrieves a list of public keys that match the specified criteria. This operation supports pagination.
+// Queries a list of public keys that meet specified conditions and supports paging.
 //
 // @param request - ListPublicKeysRequest
 //
@@ -10986,7 +11006,7 @@ func (client *Client) ListPublicKeysWithOptions(request *ListPublicKeysRequest, 
 
 // Summary:
 //
-// Retrieves a list of public keys that match the specified criteria. This operation supports pagination.
+// Queries a list of public keys that meet specified conditions and supports paging.
 //
 // @param request - ListPublicKeysRequest
 //
@@ -11004,7 +11024,7 @@ func (client *Client) ListPublicKeys(request *ListPublicKeysRequest) (_result *L
 
 // Summary:
 //
-// Queries information about the data packets of cloud applications. Paged queries are supported.
+// Queries information about all cloud application data packages and supports paging.
 //
 // @param request - ListRenderingDataPackagesRequest
 //
@@ -11076,7 +11096,7 @@ func (client *Client) ListRenderingDataPackagesWithOptions(request *ListRenderin
 
 // Summary:
 //
-// Queries information about the data packets of cloud applications. Paged queries are supported.
+// Queries information about all cloud application data packages and supports paging.
 //
 // @param request - ListRenderingDataPackagesRequest
 //
@@ -11094,15 +11114,15 @@ func (client *Client) ListRenderingDataPackages(request *ListRenderingDataPackag
 
 // Summary:
 //
-// Queries a list of images.
+// Queries the list of images.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This operation supports filtering and paged query of rendering session lists by using various parameter combinations.
+// - This operation supports filtering and paginating the list of user rendering sessions by using various parameter combinations.
 //
-// - You must specify at least one of the `SessionId` and `ClientId` parameters, but neither is required. If both parameters are specified, more precise matching is performed based on the two parameters.
+// - You must specify at least one of the `SessionId` and `ClientId` parameters, but neither is required. If both parameters are specified, a more precise match is performed based on these two parameters.
 //
 // @param request - ListRenderingImagesRequest
 //
@@ -11154,15 +11174,15 @@ func (client *Client) ListRenderingImagesWithOptions(request *ListRenderingImage
 
 // Summary:
 //
-// Queries a list of images.
+// Queries the list of images.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This operation supports filtering and paged query of rendering session lists by using various parameter combinations.
+// - This operation supports filtering and paginating the list of user rendering sessions by using various parameter combinations.
 //
-// - You must specify at least one of the `SessionId` and `ClientId` parameters, but neither is required. If both parameters are specified, more precise matching is performed based on the two parameters.
+// - You must specify at least one of the `SessionId` and `ClientId` parameters, but neither is required. If both parameters are specified, a more precise match is performed based on these two parameters.
 //
 // @param request - ListRenderingImagesRequest
 //
@@ -11184,7 +11204,7 @@ func (client *Client) ListRenderingImages(request *ListRenderingImagesRequest) (
 //
 // Description:
 //
-// > Specify at least the template ID or the template type.
+// >Specify at least one of the template ID and templatetype.
 //
 // @param request - ListRenderingInstanceGatewayRequest
 //
@@ -11252,7 +11272,7 @@ func (client *Client) ListRenderingInstanceGatewayWithOptions(request *ListRende
 //
 // Description:
 //
-// > Specify at least the template ID or the template type.
+// >Specify at least one of the template ID and templatetype.
 //
 // @param request - ListRenderingInstanceGatewayRequest
 //
@@ -11270,7 +11290,7 @@ func (client *Client) ListRenderingInstanceGateway(request *ListRenderingInstanc
 
 // Summary:
 //
-// Lists basic information about cloud application service instances and supports paged queries.
+// Queries a list of basic information about cloud application service instances. Paging is supported for paged query.
 //
 // @param request - ListRenderingInstancesRequest
 //
@@ -11310,7 +11330,7 @@ func (client *Client) ListRenderingInstancesWithOptions(request *ListRenderingIn
 
 // Summary:
 //
-// Lists basic information about cloud application service instances and supports paged queries.
+// Queries a list of basic information about cloud application service instances. Paging is supported for paged query.
 //
 // @param request - ListRenderingInstancesRequest
 //
@@ -11328,13 +11348,13 @@ func (client *Client) ListRenderingInstances(request *ListRenderingInstancesRequ
 
 // Summary:
 //
-// Retrieve a paginated list of cloud application service instances associated with a project.
+// Queries the list of cloud application service instances associated with a project by using paging in a paged query.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This operation enables you to query cloud application service instances in a project using multiple filter conditions, such as status and instance ID.
+// - This operation allows you to query cloud application service instances in a specified project by using various filter conditions, such as status and instance ID.
 //
 // @param request - ListRenderingProjectInstancesRequest
 //
@@ -11402,13 +11422,13 @@ func (client *Client) ListRenderingProjectInstancesWithOptions(request *ListRend
 
 // Summary:
 //
-// Retrieve a paginated list of cloud application service instances associated with a project.
+// Queries the list of cloud application service instances associated with a project by using paging in a paged query.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This operation enables you to query cloud application service instances in a project using multiple filter conditions, such as status and instance ID.
+// - This operation allows you to query cloud application service instances in a specified project by using various filter conditions, such as status and instance ID.
 //
 // @param request - ListRenderingProjectInstancesRequest
 //
@@ -11426,15 +11446,15 @@ func (client *Client) ListRenderingProjectInstances(request *ListRenderingProjec
 
 // Summary:
 //
-// Obtain a paged list of basic information about cloud application projects for the current user.
+// Performs a paged query with paging to retrieve the list of basic information about cloud application service projects for a user.
 //
 // Description:
 //
-// ## Request details
+// ## Request description
 //
-// - This operation returns a paged list of basic information about rendering projects for a specified user.
+// - This operation performs a paged query with paging to retrieve the list of basic information about rendering projects for a specified user.
 //
-// - Filter results by `ProjectId` or `ProjectName`.
+// - You can filter the query by `ProjectId` and `ProjectName`.
 //
 // @param request - ListRenderingProjectsRequest
 //
@@ -11498,15 +11518,15 @@ func (client *Client) ListRenderingProjectsWithOptions(request *ListRenderingPro
 
 // Summary:
 //
-// Obtain a paged list of basic information about cloud application projects for the current user.
+// Performs a paged query with paging to retrieve the list of basic information about cloud application service projects for a user.
 //
 // Description:
 //
-// ## Request details
+// ## Request description
 //
-// - This operation returns a paged list of basic information about rendering projects for a specified user.
+// - This operation performs a paged query with paging to retrieve the list of basic information about rendering projects for a specified user.
 //
-// - Filter results by `ProjectId` or `ProjectName`.
+// - You can filter the query by `ProjectId` and `ProjectName`.
 //
 // @param request - ListRenderingProjectsRequest
 //
@@ -11524,15 +11544,15 @@ func (client *Client) ListRenderingProjects(request *ListRenderingProjectsReques
 
 // Summary:
 //
-// Performs a paged query for the list of cloud application service sessions based on specified conditions.
+// Queries the list of cloud application service sessions under specified conditions by using paging.
 //
 // Description:
 //
-// ## Request Description
+// ## Operation description
 //
-// - This API supports filtering and paged query of user rendering session lists with various parameter combinations.
+// - This operation supports filtering and performing a paging query on the array of user rendering sessions by using various parameter combinations.
 //
-// - You must provide at least one of the `SessionId` or `ClientId` parameters. Neither parameter is mandatory independently. If both parameters are provided, a more precise match is performed based on these two parameters.
+// - You must specify at least one of the SessionId and ClientId parameters, but neither is required. If both parameters are specified, a more precise match is performed based on these two parameters.
 //
 // @param request - ListRenderingSessionsRequest
 //
@@ -11616,15 +11636,15 @@ func (client *Client) ListRenderingSessionsWithOptions(request *ListRenderingSes
 
 // Summary:
 //
-// Performs a paged query for the list of cloud application service sessions based on specified conditions.
+// Queries the list of cloud application service sessions under specified conditions by using paging.
 //
 // Description:
 //
-// ## Request Description
+// ## Operation description
 //
-// - This API supports filtering and paged query of user rendering session lists with various parameter combinations.
+// - This operation supports filtering and performing a paging query on the array of user rendering sessions by using various parameter combinations.
 //
-// - You must provide at least one of the `SessionId` or `ClientId` parameters. Neither parameter is mandatory independently. If both parameters are provided, a more precise match is performed based on these two parameters.
+// - You must specify at least one of the SessionId and ClientId parameters, but neither is required. If both parameters are specified, a more precise match is performed based on these two parameters.
 //
 // @param request - ListRenderingSessionsRequest
 //
@@ -11806,11 +11826,11 @@ func (client *Client) ManageLogin(request *ManageLoginRequest) (_result *ManageL
 
 // Summary:
 //
-// Modifies the metadata of a specified workflow.
+// Modifies the metadata of a ComfyWorkflow.
 //
 // Description:
 //
-// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
+// > Screenshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - ModifyComfyWorkflowRequest
 //
@@ -11862,11 +11882,11 @@ func (client *Client) ModifyComfyWorkflowWithOptions(request *ModifyComfyWorkflo
 
 // Summary:
 //
-// Modifies the metadata of a specified workflow.
+// Modifies the metadata of a ComfyWorkflow.
 //
 // Description:
 //
-// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
+// > Screenshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - ModifyComfyWorkflowRequest
 //
@@ -12714,7 +12734,7 @@ func (client *Client) ModifyRenderingChargeType(request *ModifyRenderingChargeTy
 
 // Summary:
 //
-// Upgrades or downgrades a cloud application service instance.
+// Changes the specifications of a cloud application service instance.
 //
 // @param request - ModifyRenderingInstanceRequest
 //
@@ -12766,7 +12786,7 @@ func (client *Client) ModifyRenderingInstanceWithOptions(request *ModifyRenderin
 
 // Summary:
 //
-// Upgrades or downgrades a cloud application service instance.
+// Changes the specifications of a cloud application service instance.
 //
 // @param request - ModifyRenderingInstanceRequest
 //
@@ -12799,6 +12819,10 @@ func (client *Client) ModifyRenderingInstanceAttributeWithOptions(request *Modif
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
 	if !dara.IsNil(request.Password) {
 		query["Password"] = request.Password
 	}
@@ -12850,7 +12874,7 @@ func (client *Client) ModifyRenderingInstanceAttribute(request *ModifyRenderingI
 
 // Summary:
 //
-// Updates the rate limiting bandwidth for a cloud application service instance. You can call the DescribeRenderingInstance operation to retrieve the current rate limiting value and check the status of the rate limiting update.
+// Updates the bandwidth limit of a cloud application service instance. You can call the DescribeRenderingInstance operation to query the bandwidth limit and the update status.
 //
 // @param request - ModifyRenderingInstanceBandwidthRequest
 //
@@ -12902,7 +12926,7 @@ func (client *Client) ModifyRenderingInstanceBandwidthWithOptions(request *Modif
 
 // Summary:
 //
-// Updates the rate limiting bandwidth for a cloud application service instance. You can call the DescribeRenderingInstance operation to retrieve the current rate limiting value and check the status of the rate limiting update.
+// Updates the bandwidth limit of a cloud application service instance. You can call the DescribeRenderingInstance operation to query the bandwidth limit and the update status.
 //
 // @param request - ModifyRenderingInstanceBandwidthRequest
 //
@@ -13203,7 +13227,9 @@ func (client *Client) OpenVsService() (_result *OpenVsServiceResponse, _err erro
 
 // Summary:
 //
-// Push a file to a specified cloud application service instance. This is an asynchronous operation. You can query the push progress using the ListFilePushStatuses operation.
+// Pushes a file to a specified cloud application service instance.
+//
+// This operation is asynchronous. You can call the ListFilePushStatuses operation to query the push progress.
 //
 // @param request - PushFileRequest
 //
@@ -13251,7 +13277,9 @@ func (client *Client) PushFileWithOptions(request *PushFileRequest, runtime *dar
 
 // Summary:
 //
-// Push a file to a specified cloud application service instance. This is an asynchronous operation. You can query the push progress using the ListFilePushStatuses operation.
+// Pushes a file to a specified cloud application service instance.
+//
+// This operation is asynchronous. You can call the ListFilePushStatuses operation to query the push progress.
 //
 // @param request - PushFileRequest
 //
@@ -13269,7 +13297,7 @@ func (client *Client) PushFile(request *PushFileRequest) (_result *PushFileRespo
 
 // Summary:
 //
-// Restarts a cloud application service instance. You can call the DescribeRenderingInstance API to monitor the restart progress.
+// Restarts a cloud application service instance. You can call the DescribeRenderingInstance operation to query the restart progress.
 //
 // @param request - RebootRenderingInstanceRequest
 //
@@ -13313,7 +13341,7 @@ func (client *Client) RebootRenderingInstanceWithOptions(request *RebootRenderin
 
 // Summary:
 //
-// Restarts a cloud application service instance. You can call the DescribeRenderingInstance API to monitor the restart progress.
+// Restarts a cloud application service instance. You can call the DescribeRenderingInstance operation to query the restart progress.
 //
 // @param request - RebootRenderingInstanceRequest
 //
@@ -13403,7 +13431,7 @@ func (client *Client) RebootRenderingServer(request *RebootRenderingServerReques
 
 // Summary:
 //
-// # Recover data to a Graphic Computing Service instance
+// Restores data to a cloud rendering instance.
 //
 // @param request - RecoverRenderingDataPackageRequest
 //
@@ -13455,7 +13483,7 @@ func (client *Client) RecoverRenderingDataPackageWithOptions(request *RecoverRen
 
 // Summary:
 //
-// # Recover data to a Graphic Computing Service instance
+// Restores data to a cloud rendering instance.
 //
 // @param request - RecoverRenderingDataPackageRequest
 //
@@ -13473,11 +13501,11 @@ func (client *Client) RecoverRenderingDataPackage(request *RecoverRenderingDataP
 
 // Summary:
 //
-// Call RefreshRenderingInstanceStreaming to refresh the stream connection for a cloud application service instance.
+// Refreshes the streaming connection of a cloud application service instance.
 //
 // Description:
 //
-// > Specify at least one of the template ID or template type.
+// > Specify at least one of the template ID and templatetype.
 //
 // @param tmpReq - RefreshRenderingInstanceStreamingRequest
 //
@@ -13531,11 +13559,11 @@ func (client *Client) RefreshRenderingInstanceStreamingWithOptions(tmpReq *Refre
 
 // Summary:
 //
-// Call RefreshRenderingInstanceStreaming to refresh the stream connection for a cloud application service instance.
+// Refreshes the streaming connection of a cloud application service instance.
 //
 // Description:
 //
-// > Specify at least one of the template ID or template type.
+// > Specify at least one of the template ID and templatetype.
 //
 // @param request - RefreshRenderingInstanceStreamingRequest
 //
@@ -13553,7 +13581,7 @@ func (client *Client) RefreshRenderingInstanceStreaming(request *RefreshRenderin
 
 // Summary:
 //
-// # Release a cloud application service data pack
+// Releases a cloud application service data package.
 //
 // @param request - ReleaseRenderingDataPackageRequest
 //
@@ -13597,7 +13625,7 @@ func (client *Client) ReleaseRenderingDataPackageWithOptions(request *ReleaseRen
 
 // Summary:
 //
-// # Release a cloud application service data pack
+// Releases a cloud application service data package.
 //
 // @param request - ReleaseRenderingDataPackageRequest
 //
@@ -13615,7 +13643,7 @@ func (client *Client) ReleaseRenderingDataPackage(request *ReleaseRenderingDataP
 
 // Summary:
 //
-// Invoke ReleaseRenderingInstance to release a Graphic Computing Service application instance.
+// Releases a cloud application service instance.
 //
 // @param request - ReleaseRenderingInstanceRequest
 //
@@ -13659,7 +13687,7 @@ func (client *Client) ReleaseRenderingInstanceWithOptions(request *ReleaseRender
 
 // Summary:
 //
-// Invoke ReleaseRenderingInstance to release a Graphic Computing Service application instance.
+// Releases a cloud application service instance.
 //
 // @param request - ReleaseRenderingInstanceRequest
 //
@@ -13677,7 +13705,7 @@ func (client *Client) ReleaseRenderingInstance(request *ReleaseRenderingInstance
 
 // Summary:
 //
-// Invoke RenewRenderingInstance to renew a cloud application service instance.
+// Renews a cloud application service instance.
 //
 // @param request - RenewRenderingInstanceRequest
 //
@@ -13729,7 +13757,7 @@ func (client *Client) RenewRenderingInstanceWithOptions(request *RenewRenderingI
 
 // Summary:
 //
-// Invoke RenewRenderingInstance to renew a cloud application service instance.
+// Renews a cloud application service instance.
 //
 // @param request - RenewRenderingInstanceRequest
 //
@@ -13747,7 +13775,7 @@ func (client *Client) RenewRenderingInstance(request *RenewRenderingInstanceRequ
 
 // Summary:
 //
-// Resets a cloud application service instance. You can query the DescribeRenderingInstance interface to obtain the reset progress.
+// Resets a cloud application service instance. You can call the DescribeRenderingInstance operation to check the reset progress.
 //
 // @param request - ResetRenderingInstanceRequest
 //
@@ -13799,7 +13827,7 @@ func (client *Client) ResetRenderingInstanceWithOptions(request *ResetRenderingI
 
 // Summary:
 //
-// Resets a cloud application service instance. You can query the DescribeRenderingInstance interface to obtain the reset progress.
+// Resets a cloud application service instance. You can call the DescribeRenderingInstance operation to check the reset progress.
 //
 // @param request - ResetRenderingInstanceRequest
 //
@@ -14045,7 +14073,7 @@ func (client *Client) SetPreset(request *SetPresetRequest) (_result *SetPresetRe
 
 // Summary:
 //
-// Enable or disable the certificate feature for a domain name.
+// Sets whether the certificate feature is enabled for a domain name.
 //
 // @param request - SetVsDomainCertificateRequest
 //
@@ -14121,7 +14149,7 @@ func (client *Client) SetVsDomainCertificateWithOptions(request *SetVsDomainCert
 
 // Summary:
 //
-// Enable or disable the certificate feature for a domain name.
+// Sets whether the certificate feature is enabled for a domain name.
 //
 // @param request - SetVsDomainCertificateRequest
 //
@@ -14355,6 +14383,10 @@ func (client *Client) StartParentPlatform(request *StartParentPlatformRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts desktop capture and streaming for a specified cloud application service instance.
+//
 // @param request - StartPublishStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14403,6 +14435,10 @@ func (client *Client) StartPublishStreamWithOptions(request *StartPublishStreamR
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts desktop capture and streaming for a specified cloud application service instance.
+//
 // @param request - StartPublishStreamRequest
 //
 // @return StartPublishStreamResponse
@@ -14513,7 +14549,9 @@ func (client *Client) StartRecordStream(request *StartRecordStreamRequest) (_res
 
 // Summary:
 //
-// Schedules an idle cloud application service instance for the requesting client (ClientId) and starts the service. If the requesting client (ClientId) sends another start request after a successful start and the associated session is in the SessionStartSuspended state, the session is restarted. If the session is in any other state, the session information is returned directly.
+// Schedules an idle cloud application service instance for the client (ClientId) and completes service startup.
+//
+// If the client (ClientId) sends another start request after the first start request succeeds, the operation restarts the session if the associated session is in the SessionStartSuspended state. If the session is in another state, the operation directly returns the session information.
 //
 // @param tmpReq - StartRenderingSessionRequest
 //
@@ -14579,7 +14617,9 @@ func (client *Client) StartRenderingSessionWithOptions(tmpReq *StartRenderingSes
 
 // Summary:
 //
-// Schedules an idle cloud application service instance for the requesting client (ClientId) and starts the service. If the requesting client (ClientId) sends another start request after a successful start and the associated session is in the SessionStartSuspended state, the session is restarted. If the session is in any other state, the session information is returned directly.
+// Schedules an idle cloud application service instance for the client (ClientId) and completes service startup.
+//
+// If the client (ClientId) sends another start request after the first start request succeeds, the operation restarts the session if the associated session is in the SessionStartSuspended state. If the session is in another state, the operation directly returns the session information.
 //
 // @param request - StartRenderingSessionRequest
 //
@@ -14973,6 +15013,10 @@ func (client *Client) StopMove(request *StopMoveRequest) (_result *StopMoveRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops desktop capture and streaming for a specified cloud application service instance.
+//
 // @param request - StopPublishStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15017,6 +15061,10 @@ func (client *Client) StopPublishStreamWithOptions(request *StopPublishStreamReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops desktop capture and streaming for a specified cloud application service instance.
+//
 // @param request - StopPublishStreamRequest
 //
 // @return StopPublishStreamResponse
@@ -15119,11 +15167,11 @@ func (client *Client) StopRecordStream(request *StopRecordStreamRequest) (_resul
 
 // Summary:
 //
-// Shut down the specified cloud application service session and revoke the associated instance resources.
+// Closes the specified cloud application service session and reclaims the related instance resources.
 //
 // Description:
 //
-// ## Request information
+// ## Request description.
 //
 // @param request - StopRenderingSessionRequest
 //
@@ -15175,11 +15223,11 @@ func (client *Client) StopRenderingSessionWithOptions(request *StopRenderingSess
 
 // Summary:
 //
-// Shut down the specified cloud application service session and revoke the associated instance resources.
+// Closes the specified cloud application service session and reclaims the related instance resources.
 //
 // Description:
 //
-// ## Request information
+// ## Request description.
 //
 // @param request - StopRenderingSessionRequest
 //
@@ -15699,7 +15747,7 @@ func (client *Client) UnbindTemplate(request *UnbindTemplateRequest) (_result *U
 
 // Summary:
 //
-// You can uninstall a specified cloud application from a specified cloud application instance. This operation is asynchronous. You can use the ListCloudAppInstallations operation to check the uninstallation progress. After successful uninstallation, the query operation no longer returns related information.
+// Uninstalls a specified cloud application from a specified cloud application service instance. This is an asynchronous operation. You can call the ListCloudAppInstallations operation to query the uninstallation progress. After the cloud application is uninstalled, the query operation no longer returns related information.
 //
 // @param tmpReq - UninstallCloudAppRequest
 //
@@ -15773,7 +15821,7 @@ func (client *Client) UninstallCloudAppWithOptions(tmpReq *UninstallCloudAppRequ
 
 // Summary:
 //
-// You can uninstall a specified cloud application from a specified cloud application instance. This operation is asynchronous. You can use the ListCloudAppInstallations operation to check the uninstallation progress. After successful uninstallation, the query operation no longer returns related information.
+// Uninstalls a specified cloud application from a specified cloud application service instance. This is an asynchronous operation. You can call the ListCloudAppInstallations operation to query the uninstallation progress. After the cloud application is uninstalled, the query operation no longer returns related information.
 //
 // @param request - UninstallCloudAppRequest
 //
@@ -15857,9 +15905,7 @@ func (client *Client) UnlockDevice(request *UnlockDeviceRequest) (_result *Unloc
 
 // Summary:
 //
-// Updates the information of a cloud application, such as the description, application labels, and patches.
-//
-// You can upload patches or hot update packages, and create hot update packages for Android cloud application marketplace applications. Each cloud application supports up to 20 patches, and only one patch can be in the uploading state at a time for a single cloud application.
+// Updates the information of a cloud application, such as the description, application tags, and patch uploads. You can upload patch packages or hot update packages, and create hot update packages for Android cloud application markets. A cloud application supports up to 20 patch packages, and only one patch package can be in the uploading state at a time.
 //
 // @param tmpReq - UpdateCloudAppInfoRequest
 //
@@ -15931,9 +15977,7 @@ func (client *Client) UpdateCloudAppInfoWithOptions(tmpReq *UpdateCloudAppInfoRe
 
 // Summary:
 //
-// Updates the information of a cloud application, such as the description, application labels, and patches.
-//
-// You can upload patches or hot update packages, and create hot update packages for Android cloud application marketplace applications. Each cloud application supports up to 20 patches, and only one patch can be in the uploading state at a time for a single cloud application.
+// Updates the information of a cloud application, such as the description, application tags, and patch uploads. You can upload patch packages or hot update packages, and create hot update packages for Android cloud application markets. A cloud application supports up to 20 patch packages, and only one patch package can be in the uploading state at a time.
 //
 // @param request - UpdateCloudAppInfoRequest
 //
@@ -15951,7 +15995,7 @@ func (client *Client) UpdateCloudAppInfo(request *UpdateCloudAppInfoRequest) (_r
 
 // Summary:
 //
-// Update basic information for a file, such as its description.
+// Updates the basic information of a file, such as the description.
 //
 // @param request - UpdateFileInfoRequest
 //
@@ -15999,7 +16043,7 @@ func (client *Client) UpdateFileInfoWithOptions(request *UpdateFileInfoRequest, 
 
 // Summary:
 //
-// Update basic information for a file, such as its description.
+// Updates the basic information of a file, such as the description.
 //
 // @param request - UpdateFileInfoRequest
 //
@@ -16017,11 +16061,7 @@ func (client *Client) UpdateFileInfo(request *UpdateFileInfoRequest) (_result *U
 
 // Summary:
 //
-// This operation updates the configuration parameters of a cloud application service instance. It lets you modify various configurations of the Cloud Android system, such as prop, location, and network, to create a real device simulation.
-//
-// You can retrieve the configured values for the real device simulation by calling the DescribeRenderingInstance API.
-//
-// To query the configuration parameters of the real-time environment, see the DescribeRenderingInstanceConfiguration API.
+// Updates the configuration parameters of a cloud application service instance. This operation supports modifying various configurations of the cloud Android system, such as prop, location, and network, to build a real-device simulation. You can call the DescribeRenderingInstance operation to obtain the configured real-device simulation values. To query the configuration parameters of the real-time environment, refer to the DescribeRenderingInstanceConfiguration operation.
 //
 // @param tmpReq - UpdateRenderingInstanceConfigurationRequest
 //
@@ -16077,11 +16117,7 @@ func (client *Client) UpdateRenderingInstanceConfigurationWithOptions(tmpReq *Up
 
 // Summary:
 //
-// This operation updates the configuration parameters of a cloud application service instance. It lets you modify various configurations of the Cloud Android system, such as prop, location, and network, to create a real device simulation.
-//
-// You can retrieve the configured values for the real device simulation by calling the DescribeRenderingInstance API.
-//
-// To query the configuration parameters of the real-time environment, see the DescribeRenderingInstanceConfiguration API.
+// Updates the configuration parameters of a cloud application service instance. This operation supports modifying various configurations of the cloud Android system, such as prop, location, and network, to build a real-device simulation. You can call the DescribeRenderingInstance operation to obtain the configured real-device simulation values. To query the configuration parameters of the real-time environment, refer to the DescribeRenderingInstanceConfiguration operation.
 //
 // @param request - UpdateRenderingInstanceConfigurationRequest
 //
@@ -16171,7 +16207,7 @@ func (client *Client) UpdateRenderingInstanceSettings(request *UpdateRenderingIn
 
 // Summary:
 //
-// Updates a project’s properties.
+// Updates the attributes of a project.
 //
 // @param tmpReq - UpdateRenderingProjectRequest
 //
@@ -16233,7 +16269,7 @@ func (client *Client) UpdateRenderingProjectWithOptions(tmpReq *UpdateRenderingP
 
 // Summary:
 //
-// Updates a project’s properties.
+// Updates the attributes of a project.
 //
 // @param request - UpdateRenderingProjectRequest
 //
@@ -16251,7 +16287,7 @@ func (client *Client) UpdateRenderingProject(request *UpdateRenderingProjectRequ
 
 // Summary:
 //
-// Updates the configuration for stream pulling. You can modify the start and end times of origin server addresses in an existing stream pulling task.
+// Updates stream pulling information by modifying the start time and end time of the addresses of the origin server for an existing stream pulling node.
 //
 // @param request - UpdateVsPullStreamInfoConfigRequest
 //
@@ -16323,7 +16359,7 @@ func (client *Client) UpdateVsPullStreamInfoConfigWithOptions(request *UpdateVsP
 
 // Summary:
 //
-// Updates the configuration for stream pulling. You can modify the start and end times of origin server addresses in an existing stream pulling task.
+// Updates stream pulling information by modifying the start time and end time of the addresses of the origin server for an existing stream pulling node.
 //
 // @param request - UpdateVsPullStreamInfoConfigRequest
 //
@@ -16341,7 +16377,7 @@ func (client *Client) UpdateVsPullStreamInfoConfig(request *UpdateVsPullStreamIn
 
 // Summary:
 //
-// Upgrades instance images in batch.
+// Upgrades the images of cloud application service instances.
 //
 // @param tmpReq - UpgradeRenderingInstanceImageRequest
 //
@@ -16395,7 +16431,7 @@ func (client *Client) UpgradeRenderingInstanceImageWithOptions(tmpReq *UpgradeRe
 
 // Summary:
 //
-// Upgrades instance images in batch.
+// Upgrades the images of cloud application service instances.
 //
 // @param request - UpgradeRenderingInstanceImageRequest
 //
@@ -16413,7 +16449,7 @@ func (client *Client) UpgradeRenderingInstanceImage(request *UpgradeRenderingIns
 
 // Summary:
 //
-// Uploads a cloud application package for listing. This is an asynchronous operation. You can call the ListCloudApps operation to query the upload progress.
+// Uploads or publishes a cloud application package. This is an asynchronous operation. You can call the ListCloudApps operation to query the upload progress.
 //
 // @param tmpReq - UploadCloudAppRequest
 //
@@ -16499,7 +16535,7 @@ func (client *Client) UploadCloudAppWithOptions(tmpReq *UploadCloudAppRequest, r
 
 // Summary:
 //
-// Uploads a cloud application package for listing. This is an asynchronous operation. You can call the ListCloudApps operation to query the upload progress.
+// Uploads or publishes a cloud application package. This is an asynchronous operation. You can call the ListCloudApps operation to query the upload progress.
 //
 // @param request - UploadCloudAppRequest
 //
@@ -16595,7 +16631,7 @@ func (client *Client) UploadFile(request *UploadFileRequest) (_result *UploadFil
 
 // Summary:
 //
-// Upload a new public key.
+// Uploads a new public key.
 //
 // @param request - UploadPublicKeyRequest
 //
@@ -16655,7 +16691,7 @@ func (client *Client) UploadPublicKeyWithOptions(request *UploadPublicKeyRequest
 
 // Summary:
 //
-// Upload a new public key.
+// Uploads a new public key.
 //
 // @param request - UploadPublicKeyRequest
 //
@@ -16673,7 +16709,7 @@ func (client *Client) UploadPublicKey(request *UploadPublicKeyRequest) (_result 
 
 // Summary:
 //
-// # VerifyVsDomainOwner
+// Verifies the ownership of a specified Visual Edge Computing Service domain name.
 //
 // @param request - VerifyVsDomainOwnerRequest
 //
@@ -16725,7 +16761,7 @@ func (client *Client) VerifyVsDomainOwnerWithOptions(request *VerifyVsDomainOwne
 
 // Summary:
 //
-// # VerifyVsDomainOwner
+// Verifies the ownership of a specified Visual Edge Computing Service domain name.
 //
 // @param request - VerifyVsDomainOwnerRequest
 //

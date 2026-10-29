@@ -16,9 +16,9 @@ type iDescribeStreamVodListResponseBody interface {
 }
 
 type DescribeStreamVodListResponseBody struct {
-	// VOD record list
+	// The list of video-on-demand records.
 	Records []*DescribeStreamVodListResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// Request ID of this task.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DescribeStreamVodListResponseBody) Validate() error {
 }
 
 type DescribeStreamVodListResponseBodyRecords struct {
-	// VOD record end time (unix timestamp, unit: seconds)
+	// The end time of the video-on-demand records. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1634873413
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// VOD record start time (unix timestamp, unit: seconds)
+	// The start time of the video-on-demand records. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

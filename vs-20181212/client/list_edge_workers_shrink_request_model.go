@@ -30,7 +30,7 @@ type iListEdgeWorkersShrinkRequest interface {
 }
 
 type ListEdgeWorkersShrinkRequest struct {
-	// The expiration time.
+	// The end time. The time is expressed in the ISO 8601 standard and includes a time zone offset. Format: YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//
@@ -42,19 +42,19 @@ type ListEdgeWorkersShrinkRequest struct {
 	//
 	// ["hive-4fbf3928d40e43948b98acdb4fb5aaed"]
 	HiveIdsShrink *string `json:"HiveIds,omitempty" xml:"HiveIds,omitempty"`
-	// The list of load IDs.
+	// The list of workload IDs.
 	//
 	// example:
 	//
 	// ew-xxxxxx
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The page number of the query list. The value starts from 1. Default value: 1.
+	// The page number of the list to query. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Settings for paging. Maximum value: 100. Default value: 10.
+	// The Settings for the number of lines per page during paging and paged query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type ListEdgeWorkersShrinkRequest struct {
 	//
 	// ["pk-4fbf3928d40e43948b98acdb4fb5aaed"]
 	PlanIdsShrink *string `json:"PlanIds,omitempty" xml:"PlanIds,omitempty"`
-	// The specification.
+	// The specifications.
 	//
 	// example:
 	//
 	// ew.gn8t6xlarge-rb.x1p
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The time range filter parameter. The value is in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the time range filter. The time is expressed in the ISO 8601 standard and must be in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
