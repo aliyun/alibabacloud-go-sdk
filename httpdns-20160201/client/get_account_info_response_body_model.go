@@ -16,7 +16,10 @@ type iGetAccountInfoResponseBody interface {
 }
 
 type GetAccountInfoResponseBody struct {
+	// The current account information.
 	AccountInfo *GetAccountInfoResponseBodyAccountInfo `json:"AccountInfo,omitempty" xml:"AccountInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 50F9C40E-188D-4208-BE2C-74271337****
@@ -59,47 +62,98 @@ func (s *GetAccountInfoResponseBody) Validate() error {
 }
 
 type GetAccountInfoResponseBodyAccountInfo struct {
+	// The account ID.
+	//
 	// example:
 	//
 	// 1337****
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	DohEnabled           *bool   `json:"DohEnabled,omitempty" xml:"DohEnabled,omitempty"`
-	DohResolveAllEnabled *bool   `json:"DohResolveAllEnabled,omitempty" xml:"DohResolveAllEnabled,omitempty"`
-	MonthDohResolveCount *int64  `json:"MonthDohResolveCount,omitempty" xml:"MonthDohResolveCount,omitempty"`
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Indicates whether the DNS over HTTPS (DoH) feature is enabled.
+	//
+	// example:
+	//
+	// true
+	DohEnabled *bool `json:"DohEnabled,omitempty" xml:"DohEnabled,omitempty"`
+	// Indicates whether DoH is used to resolve all domain names.
+	//
+	// example:
+	//
+	// true
+	DohResolveAllEnabled *bool `json:"DohResolveAllEnabled,omitempty" xml:"DohResolveAllEnabled,omitempty"`
+	// The number of DoH resolutions for the current month.
+	//
+	// example:
+	//
+	// 10000
+	MonthDohResolveCount *int64 `json:"MonthDohResolveCount,omitempty" xml:"MonthDohResolveCount,omitempty"`
+	// The monthly free resolution quota. This is the number of times you can call the HTTPDNS service for domain name resolution free of charge each calendar month.
+	//
 	// example:
 	//
 	// 1500000
-	MonthFreeCount            *int32 `json:"MonthFreeCount,omitempty" xml:"MonthFreeCount,omitempty"`
-	MonthHttpAesResolveCount  *int64 `json:"MonthHttpAesResolveCount,omitempty" xml:"MonthHttpAesResolveCount,omitempty"`
+	MonthFreeCount *int32 `json:"MonthFreeCount,omitempty" xml:"MonthFreeCount,omitempty"`
+	// The number of HTTP AES-encrypted resolutions for the current month.
+	//
+	// example:
+	//
+	// 0
+	MonthHttpAesResolveCount *int64 `json:"MonthHttpAesResolveCount,omitempty" xml:"MonthHttpAesResolveCount,omitempty"`
+	// The number of HTTPS AES-encrypted resolutions for the current month.
+	//
+	// example:
+	//
+	// 0
 	MonthHttpsAesResolveCount *int64 `json:"MonthHttpsAesResolveCount,omitempty" xml:"MonthHttpsAesResolveCount,omitempty"`
+	// The total number of HTTPS resolutions for the current month.
+	//
 	// example:
 	//
 	// 3
 	MonthHttpsResolveCount *int32 `json:"MonthHttpsResolveCount,omitempty" xml:"MonthHttpsResolveCount,omitempty"`
+	// The total number of HTTP resolutions for the current month.
+	//
 	// example:
 	//
 	// 9927326
 	MonthResolveCount *int32 `json:"MonthResolveCount,omitempty" xml:"MonthResolveCount,omitempty"`
+	// The number of resource plans. This is a legacy field and is always set to 0.
+	//
 	// example:
 	//
 	// 0
 	PackageCount *int32 `json:"PackageCount,omitempty" xml:"PackageCount,omitempty"`
+	// The signing secret.
+	//
 	// example:
 	//
 	// 50F9C40E****
 	SignSecret *string `json:"SignSecret,omitempty" xml:"SignSecret,omitempty"`
+	// The number of requests to authenticated API operations.
+	//
 	// example:
 	//
 	// 611523
 	SignedCount *int64 `json:"SignedCount,omitempty" xml:"SignedCount,omitempty"`
+	// The number of requests to unauthenticated API operations.
+	//
 	// example:
 	//
 	// 1523
 	UnsignedCount *int64 `json:"UnsignedCount,omitempty" xml:"UnsignedCount,omitempty"`
+	// Indicates whether unauthenticated API operations are enabled.
+	//
 	// example:
 	//
 	// true
 	UnsignedEnabled *bool `json:"UnsignedEnabled,omitempty" xml:"UnsignedEnabled,omitempty"`
+	// The HTTPDNS account status code. Valid values:
+	//
+	// - 1: The account is normal.
+	//
+	// - 2: The account has an overdue payment.
+	//
+	// - 3: The account is suspended.
+	//
 	// example:
 	//
 	// 1

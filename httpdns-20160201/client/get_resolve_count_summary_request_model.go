@@ -16,12 +16,16 @@ type iGetResolveCountSummaryRequest interface {
 }
 
 type GetResolveCountSummaryRequest struct {
+	// The data granularity of the statistics. Valid values: **day*	- and **month**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// day
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// The time span for the statistics.
+	//
 	// This parameter is required.
 	//
 	// example:

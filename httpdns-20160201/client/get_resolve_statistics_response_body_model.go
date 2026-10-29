@@ -17,6 +17,8 @@ type iGetResolveStatisticsResponseBody interface {
 
 type GetResolveStatisticsResponseBody struct {
 	DataPoints *GetResolveStatisticsResponseBodyDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 50F9C40E-188D-B00B-BE2C-7427E531****

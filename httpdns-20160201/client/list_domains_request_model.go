@@ -20,10 +20,14 @@ type iListDomainsRequest interface {
 }
 
 type ListDomainsRequest struct {
+	// The number of the current page. Starting value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page for paging in a paged query. Settings: Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20

@@ -16,10 +16,14 @@ type iAddDomainRequest interface {
 }
 
 type AddDomainRequest struct {
+	// The HTTPDNS account ID.
+	//
 	// example:
 	//
 	// 123456
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The domain name.
+	//
 	// This parameter is required.
 	//
 	// example:

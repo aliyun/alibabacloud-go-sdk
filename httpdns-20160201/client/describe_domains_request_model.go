@@ -18,14 +18,20 @@ type iDescribeDomainsRequest interface {
 }
 
 type DescribeDomainsRequest struct {
+	// The HTTPDNS account ID.
+	//
 	// example:
 	//
 	// 123456
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The current page number. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10

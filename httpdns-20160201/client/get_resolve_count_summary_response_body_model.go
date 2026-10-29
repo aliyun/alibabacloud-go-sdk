@@ -16,10 +16,13 @@ type iGetResolveCountSummaryResponseBody interface {
 }
 
 type GetResolveCountSummaryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3106FFF3-3612-542A-B2CD-3CF4CD48****
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics result.
 	ResolveSummary *GetResolveCountSummaryResponseBodyResolveSummary `json:"ResolveSummary,omitempty" xml:"ResolveSummary,omitempty" type:"Struct"`
 }
 
@@ -60,19 +63,27 @@ func (s *GetResolveCountSummaryResponseBody) Validate() error {
 
 type GetResolveCountSummaryResponseBodyResolveSummary struct {
 	Doh *int64 `json:"Doh,omitempty" xml:"Doh,omitempty"`
+	// The number of IPv4 HTTP resolution requests.
+	//
 	// example:
 	//
 	// 123
 	Http *int64 `json:"Http,omitempty" xml:"Http,omitempty"`
+	// The number of IPv6 HTTP resolution requests.
+	//
 	// example:
 	//
 	// 123
 	Http6   *int64  `json:"Http6,omitempty" xml:"Http6,omitempty"`
 	HttpAes *string `json:"HttpAes,omitempty" xml:"HttpAes,omitempty"`
+	// The number of IPv4 HTTPS resolution requests.
+	//
 	// example:
 	//
 	// 123
 	Https *int64 `json:"Https,omitempty" xml:"Https,omitempty"`
+	// The number of IPv6 HTTPS resolution requests.
+	//
 	// example:
 	//
 	// 123

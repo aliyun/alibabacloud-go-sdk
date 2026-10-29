@@ -16,10 +16,14 @@ type iAddDomainResponseBody interface {
 }
 
 type AddDomainResponseBody struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// www.example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ADA27798-6911-4B06-AF34-53F62F62XXXX

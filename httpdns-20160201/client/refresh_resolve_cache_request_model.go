@@ -14,6 +14,7 @@ type iRefreshResolveCacheRequest interface {
 }
 
 type RefreshResolveCacheRequest struct {
+	// The list of domain names to refresh.
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 }
 

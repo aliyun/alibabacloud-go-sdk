@@ -23,18 +23,26 @@ type iListDomainsResponseBody interface {
 
 type ListDomainsResponseBody struct {
 	DomainInfos *ListDomainsResponseBodyDomainInfos `json:"DomainInfos,omitempty" xml:"DomainInfos,omitempty" type:"Struct"`
+	// The total number of domain names in the list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of domain names returned in this query.
+	//
 	// example:
 	//
 	// 5
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 50F9C40E-188D-4208-BE2C-7427E531****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of domain names in the list.
+	//
 	// example:
 	//
 	// 18

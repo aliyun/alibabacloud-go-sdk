@@ -20,22 +20,30 @@ type iGetResolveStatisticsRequest interface {
 }
 
 type GetResolveStatisticsRequest struct {
+	// The domain name for which to retrieve statistics information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// www.aliyun.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The data granularity. Valid values: **day*	- and **month**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// month
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// The protocol type for resolution. Valid values: http (default) and https.
+	//
 	// example:
 	//
 	// https
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+	// The length of the time span.
+	//
 	// This parameter is required.
 	//
 	// example:

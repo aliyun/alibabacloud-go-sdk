@@ -14,6 +14,7 @@ type iRefreshResolveCacheShrinkRequest interface {
 }
 
 type RefreshResolveCacheShrinkRequest struct {
+	// The list of domain names to refresh.
 	DomainsShrink *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
 }
 
