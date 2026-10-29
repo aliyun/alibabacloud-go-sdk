@@ -3709,11 +3709,11 @@ func (client *Client) CreateDBProxyEndpointAddressWithContext(ctx context.Contex
 
 // Summary:
 //
-// Creates a database in an ApsaraDB RDS instance.
+// Creates a database on an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -3725,7 +3725,7 @@ func (client *Client) CreateDBProxyEndpointAddressWithContext(ctx context.Contex
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation carefully to fully understand the prerequisites and impacts.
 //
 // - [Create a database on an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96105.html)
 //
@@ -15973,6 +15973,66 @@ func (client *Client) DescribeModifyParameterLogWithContext(ctx context.Context,
 
 // Summary:
 //
+// 查询操作权限
+//
+// @param request - DescribeOperatorPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOperatorPermissionResponse
+func (client *Client) DescribeOperatorPermissionWithContext(ctx context.Context, request *DescribeOperatorPermissionRequest, runtime *dara.RuntimeOptions) (_result *DescribeOperatorPermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOperatorPermission"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOperatorPermissionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the file details of a backup data migration task for an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
@@ -23913,23 +23973,23 @@ func (client *Client) ModifyDBInstanceWithContext(ctx context.Context, tmpReq *M
 
 // Summary:
 //
-// Modifies the minor version update policy for an ApsaraDB RDS for MySQL or ApsaraDB RDS for PostgreSQL instance.
+// Modifies the minor version upgrade method for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and ApsaraDB RDS for SQL Server instances.
 //
 // Description:
 //
 // ### Applicable engines
 //
-// - RDS MySQL
+// - ApsaraDB RDS for MySQL
 //
-// - RDS PostgreSQL
+// - ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// - [Modify the automatic upgrade settings for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96059.html)
+// - [Modify the automatic upgrade settings for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96059.html)
 //
-// - [Modify the automatic upgrade settings for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html)
+// - [Modify the automatic upgrade settings for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/146895.html)
 //
 // @param request - ModifyDBInstanceAutoUpgradeMinorVersionRequest
 //
@@ -25329,21 +25389,21 @@ func (client *Client) ModifyDBInstancePayTypeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Enables or disables native replication mode for an ApsaraDB RDS instance by calling the ModifyDBInstanceReplicationSwitch operation.
+// Enables or disables the native replication mode for an ApsaraDB RDS instance.
 //
 // Description:
 //
-// ApsaraDB RDS for MySQL instances with native replication enabled must meet the following requirements:
+// To enable the native replication feature for an ApsaraDB RDS for MySQL instance, the following requirements must be met:
 //
-// - Database engine version: MySQL 5.7
+// - DPI engine version: MySQL 5.7
 //
-// - Instance edition: Basic Edition
+// - Edition: Basic Edition
 //
 // - Billing method: pay-as-you-go or subscription
 //
-// - Minor engine version: 20240930 or later
+// - Milvus version: 20240930 or later
 //
-// For more information about native replication, see [RDS native replication](https://help.aliyun.com/document_detail/2856530.html).
+// For more information about native replication, see [Native replication for ApsaraDB RDS](https://help.aliyun.com/document_detail/2856530.html).
 //
 // @param request - ModifyDBInstanceReplicationSwitchRequest
 //

@@ -22,7 +22,7 @@ type iModifyDBInstanceReplicationSwitchRequest interface {
 }
 
 type ModifyDBInstanceReplicationSwitchRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,11 @@ type ModifyDBInstanceReplicationSwitchRequest struct {
 	//
 	// rm-bp*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether to enable or disable native replication mode. Valid values:
+	// Specifies whether to enable or disable the native replication mode. Valid values:
 	//
-	// - **ON**: Enable native replication.
+	// - **ON**: enables the native replication mode.
 	//
-	// - **OFF**: Disable native replication.
+	// - **OFF**: disables the native replication mode.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ModifyDBInstanceReplicationSwitchRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. This parameter can be left empty.
+	// The ID of the resource group. This parameter can be left empty.
 	//
 	// example:
 	//

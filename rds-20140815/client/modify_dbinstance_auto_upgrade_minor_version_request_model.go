@@ -24,11 +24,11 @@ type iModifyDBInstanceAutoUpgradeMinorVersionRequest interface {
 }
 
 type ModifyDBInstanceAutoUpgradeMinorVersionRequest struct {
-	// The method that is used to update the minor engine version of the instance. Valid values:
+	// The minor version upgrade method for the instance. Valid values:
 	//
-	// 	- **Auto**: Minor engine versions are automatically updated.
+	// 	- **Auto**: Automatically upgrades the minor version.
 	//
-	// 	- **Manual**: Minor engine versions are not automatically updated. A minor engine version is forcefully updated only when the current version is discontinued.
+	// 	- **Manual**: Does not automatically upgrade the minor version. The minor version is forcibly upgraded only when the current version is retired.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ModifyDBInstanceAutoUpgradeMinorVersionRequest struct {
 	//
 	// Auto
 	AutoUpgradeMinorVersion *string `json:"AutoUpgradeMinorVersion,omitempty" xml:"AutoUpgradeMinorVersion,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can be up to 64 characters in length and cannot contain non-ASCII characters.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//

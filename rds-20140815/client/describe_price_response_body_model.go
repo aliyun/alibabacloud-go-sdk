@@ -53,13 +53,13 @@ type DescribePriceResponseBody struct {
 	//
 	// true
 	ShowDiscount *bool `json:"ShowDiscount,omitempty" xml:"ShowDiscount,omitempty"`
-	// The estimated hourly fee calculated based on the maximum number of RCUs selected by the user.
+	// The estimated hourly fee calculated based on the maximum number of RCUs selected.
 	//
 	// example:
 	//
 	// 2**
 	TradeMaxRCUAmount *float32 `json:"TradeMaxRCUAmount,omitempty" xml:"TradeMaxRCUAmount,omitempty"`
-	// The estimated hourly fee calculated based on the minimum number of RCUs selected by the user.
+	// The estimated hourly fee calculated based on the minimum number of RCUs selected.
 	//
 	// example:
 	//
@@ -195,19 +195,19 @@ type DescribePriceResponseBodyPriceInfo struct {
 	// 10508
 	OriginalPrice *float32                                   `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	RuleIds       *DescribePriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// The estimated hourly fee calculated based on the maximum number of RCUs selected by the user.
+	// The estimated hourly fee calculated based on the maximum number of RCUs selected.
 	//
 	// example:
 	//
 	// 1**
 	TradeMaxRCUAmount *float32 `json:"TradeMaxRCUAmount,omitempty" xml:"TradeMaxRCUAmount,omitempty"`
-	// The estimated hourly fee calculated based on the minimum number of RCUs selected by the user.
+	// The estimated hourly fee calculated based on the minimum number of RCUs selected.
 	//
 	// example:
 	//
 	// 2**
 	TradeMinRCUAmount *float32 `json:"TradeMinRCUAmount,omitempty" xml:"TradeMinRCUAmount,omitempty"`
-	// The final price, which is the original price minus the discount amount.
+	// The final price, which is the original price minus the discount.
 	//
 	// example:
 	//
