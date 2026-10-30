@@ -16,9 +16,9 @@ type iAttachKeyPairResponseBody interface {
 }
 
 type AttachKeyPairResponseBody struct {
-	// The object that is returned.
+	// The result object.
 	Data *AttachKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *AttachKeyPairResponseBody) Validate() error {
 }
 
 type AttachKeyPairResponseBodyData struct {
-	// The IDs of the cloud phone instances to which the ADB key pair is successfully attached.
+	// The cloud phone instance ID list to which the key pair was successfully attached.
 	AttachedInstanceIds []*string `json:"AttachedInstanceIds,omitempty" xml:"AttachedInstanceIds,omitempty" type:"Repeated"`
-	// The number of the cloud phone instances to which the ADB key pair failed to be attached.
+	// The number of instances to which the attachment failed.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type AttachKeyPairResponseBodyData struct {
 	//
 	// kp-6v2q33ae4tw3a****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The total number of the cloud phone instances.
+	// The total number of instances for which the attachment was attempted.
 	//
 	// example:
 	//

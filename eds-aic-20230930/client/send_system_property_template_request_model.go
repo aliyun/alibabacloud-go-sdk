@@ -18,15 +18,15 @@ type iSendSystemPropertyTemplateRequest interface {
 }
 
 type SendSystemPropertyTemplateRequest struct {
-	// A list of instance IDs.
+	// The list of instance IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// The ID of the property template.
+	// The property template ID.
 	//
 	// example:
 	//
 	// ap-angyvganxlf****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// A list of property template IDs. If you provide multiple template IDs, the system randomly matches the specified instances with the provided templates.
+	// The list of property template IDs. If multiple templates are provided, the specified instances are randomly matched with all the provided property templates.
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
 }
 

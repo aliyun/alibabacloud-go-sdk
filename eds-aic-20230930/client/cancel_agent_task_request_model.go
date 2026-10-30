@@ -14,7 +14,7 @@ type iCancelAgentTaskRequest interface {
 }
 
 type CancelAgentTaskRequest struct {
-	// A list of task IDs.
+	// The list of task IDs.
 	//
 	// This parameter is required.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`

@@ -62,7 +62,7 @@ func (s *ActivateEdgeMobileAgentResponseBody) Validate() error {
 }
 
 type ActivateEdgeMobileAgentResponseBodyData struct {
-	// The assigned API key. The plaintext value is returned only upon the first activation.
+	// The assigned API key. The plaintext is returned only upon the first activation.
 	//
 	// example:
 	//

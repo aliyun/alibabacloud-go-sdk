@@ -14,7 +14,7 @@ type iUpdateCustomImageNameResponseBody interface {
 }
 
 type UpdateCustomImageNameResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

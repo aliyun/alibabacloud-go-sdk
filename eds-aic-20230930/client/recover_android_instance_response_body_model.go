@@ -26,7 +26,7 @@ type RecoverAndroidInstanceResponseBody struct {
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The returned result objects.
+	// The returned result object.
 	Data []*RecoverAndroidInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//

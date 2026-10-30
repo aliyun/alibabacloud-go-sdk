@@ -40,19 +40,19 @@ type CreatePolicyGroupRequest struct {
 	//
 	// off
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
-	// The clipboard permission.
+	// The clipboard permissions.
 	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	// The file transfer policy for the web client.
+	// The file transfer policy for the Wuying web client.
 	//
 	// example:
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// The local disk mapping permission.
+	// The local disk mapping permissions.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreatePolicyGroupRequest struct {
 	//
 	// off
 	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
-	// Network redirection.
+	// The network redirection settings.
 	NetRedirectPolicy *CreatePolicyGroupRequestNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
 	// The policy name.
 	//
@@ -78,19 +78,19 @@ type CreatePolicyGroupRequest struct {
 	//
 	// Instance
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The resolution height, in pixels.
+	// The height of the resolution. Unit: pixels.
 	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
-	// The resolution width, in pixels.
+	// The width of the resolution. Unit: pixels.
 	//
 	// example:
 	//
 	// 720
 	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
-	// Screen watermark.
+	// The screen watermark settings.
 	Watermark *CreatePolicyGroupRequestWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
 }
 
@@ -222,7 +222,7 @@ type CreatePolicyGroupRequestNetRedirectPolicy struct {
 	//
 	// off
 	CustomProxy *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
-	// The IP address of the transparent proxy. The IP address must be in IPv4 format.
+	// The transparent proxy IP address. The format is an IPv4 address.
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ type CreatePolicyGroupRequestNetRedirectPolicy struct {
 	//
 	// 1145
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The proxy password. The password must be 1 to 256 characters in length. It cannot contain Chinese characters or whitespace characters.
+	// The proxy password. The password must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
 	//
 	// example:
 	//
@@ -252,13 +252,13 @@ type CreatePolicyGroupRequestNetRedirectPolicy struct {
 	//
 	// socks5
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	// The proxy username. The username must be 1 to 256 characters in length. It cannot contain Chinese characters or whitespace characters.
+	// The proxy username. The username must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
 	//
 	// example:
 	//
 	// username
 	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
-	// The list of proxy rules. You can specify up to 100 rules.
+	// The list of proxy rules. A maximum of 100 rules can be configured.
 	Rules []*CreatePolicyGroupRequestNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -407,7 +407,7 @@ type CreatePolicyGroupRequestWatermark struct {
 	//
 	// 0
 	WatermarkColor *int32 `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
-	// The custom text for the watermark. The text can be up to 10 characters long and cannot contain emojis.
+	// The custom text for the watermark. The text must be up to 10 characters in length and cannot contain emoji.
 	//
 	// example:
 	//
@@ -419,7 +419,7 @@ type CreatePolicyGroupRequestWatermark struct {
 	//
 	// 12
 	WatermarkFontSize *int32 `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
-	// Specifies whether to enable the screen watermark.
+	// The screen watermark switch.
 	//
 	// example:
 	//

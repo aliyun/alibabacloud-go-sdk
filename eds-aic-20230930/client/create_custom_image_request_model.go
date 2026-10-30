@@ -20,19 +20,19 @@ type iCreateCustomImageRequest interface {
 }
 
 type CreateCustomImageRequest struct {
-	// The client token that is used to ensure the idempotence of the request. By default, this parameter is left empty. The token cannot exceed 100 characters in length. Requests with the same ClientToken triggers only one creation.
+	// The idempotency parameter. The default value is empty and the length cannot exceed 100 characters. Multiple calls with the same ClientToken perform only one creation operation.
 	//
 	// example:
 	//
 	// 20393E53-8FF1-524C-B494-B478A5369733
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the custom image.
+	// The image description.
 	//
 	// example:
 	//
 	// create for cc5g group auth rules test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the custom image.
+	// The image name.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateCustomImageRequest struct {
 	//
 	// custom image name
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The ID of the cloud phone instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

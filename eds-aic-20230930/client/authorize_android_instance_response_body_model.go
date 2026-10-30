@@ -14,7 +14,7 @@ type iAuthorizeAndroidInstanceResponseBody interface {
 }
 
 type AuthorizeAndroidInstanceResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

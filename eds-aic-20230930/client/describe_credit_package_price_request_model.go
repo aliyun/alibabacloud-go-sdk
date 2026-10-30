@@ -22,22 +22,36 @@ type iDescribeCreditPackagePriceRequest interface {
 }
 
 type DescribeCreditPackagePriceRequest struct {
+	// The number of credits.
+	//
 	// example:
 	//
 	// 1000
 	CreditAmount *int32 `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	// The number of credit boost packages to purchase. Valid values: 1 to 99.
+	//
 	// example:
 	//
 	// 1
 	PackageAmount *string `json:"PackageAmount,omitempty" xml:"PackageAmount,omitempty"`
+	// The subscription period of the resource. The unit is specified by PeriodUnit. Valid values: 3 months, 6 months, and 1 year.
+	//
 	// example:
 	//
 	// 3
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The billing time unit of the subscription Billable methods. Valid values:
+	//
+	// - **Year**: year
+	//
+	// - **Month*	- (default): month
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the promotion.
+	//
 	// example:
 	//
 	// 50003308011****

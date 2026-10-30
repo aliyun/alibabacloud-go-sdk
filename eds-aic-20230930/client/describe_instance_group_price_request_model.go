@@ -36,54 +36,78 @@ type iDescribeInstanceGroupPriceRequest interface {
 }
 
 type DescribeInstanceGroupPriceRequest struct {
+	// The number of instance groups.
+	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The ID of the bandwidth plan.
+	//
 	// example:
 	//
 	// np-shdbbkdubb****
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// imgc-0aae4rgm5umzo****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance group specifications.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acp.basic.small
 	InstanceGroupSpec *string `json:"InstanceGroupSpec,omitempty" xml:"InstanceGroupSpec,omitempty"`
+	// The instance version. You do not need to specify this parameter. The system automatically matches the value.
+	//
 	// example:
 	//
 	// basic
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
+	// The number of instances in the instance group.
+	//
 	// example:
 	//
 	// 10
 	NumberOfInstances *int32 `json:"NumberOfInstances,omitempty" xml:"NumberOfInstances,omitempty"`
+	// The order type.
+	//
 	// example:
 	//
 	// CREATE
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The subscription period. The unit is specified by PeriodUnit. Default value: 1.
+	//
 	// example:
 	//
 	// 2
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription period. Default value: Month.
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the promotion.
+	//
 	// example:
 	//
 	// 88436689****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The sales mode. You do not need to specify this parameter. The system automatically matches the value.
+	//
 	// example:
 	//
 	// Instance

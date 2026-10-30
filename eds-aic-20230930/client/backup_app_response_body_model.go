@@ -20,13 +20,13 @@ type iBackupAppResponseBody interface {
 }
 
 type BackupAppResponseBody struct {
-	// The number of instances that are backed up.
+	// The number of backed-up instances.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The response elements.
+	// The returned result object.
 	Data []*BackupAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -100,7 +100,7 @@ func (s *BackupAppResponseBody) Validate() error {
 }
 
 type BackupAppResponseBodyData struct {
-	// The ID of the cloud phone instance.
+	// The instance ID of the cloud phone.
 	//
 	// example:
 	//

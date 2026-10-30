@@ -18,12 +18,16 @@ type iDescribeCloudPhoneNodeRenewPriceResponseBody interface {
 }
 
 type DescribeCloudPhoneNodeRenewPriceResponseBody struct {
+	// The price.
 	Price *DescribeCloudPhoneNodeRenewPriceResponseBodyPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1A923337-44D9-5CAD-9A53-95084BD4****
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*DescribeCloudPhoneNodeRenewPriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The promotion rules.
+	Rules []*DescribeCloudPhoneNodeRenewPriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCloudPhoneNodeRenewPriceResponseBody) String() string {
@@ -80,20 +84,30 @@ func (s *DescribeCloudPhoneNodeRenewPriceResponseBody) Validate() error {
 }
 
 type DescribeCloudPhoneNodeRenewPriceResponseBodyPrice struct {
+	// The currency.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discounted price.
+	//
 	// example:
 	//
 	// 274.75
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 1860
-	OriginalPrice *float32                                                        `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	PriceDetail   []*DescribeCloudPhoneNodeRenewPriceResponseBodyPricePriceDetail `json:"PriceDetail,omitempty" xml:"PriceDetail,omitempty" type:"Repeated"`
-	Promotions    []*DescribeCloudPhoneNodeRenewPriceResponseBodyPricePromotions  `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The price details.
+	PriceDetail []*DescribeCloudPhoneNodeRenewPriceResponseBodyPricePriceDetail `json:"PriceDetail,omitempty" xml:"PriceDetail,omitempty" type:"Repeated"`
+	// The promotion information.
+	Promotions []*DescribeCloudPhoneNodeRenewPriceResponseBodyPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 769.3
@@ -185,23 +199,34 @@ func (s *DescribeCloudPhoneNodeRenewPriceResponseBodyPrice) Validate() error {
 }
 
 type DescribeCloudPhoneNodeRenewPriceResponseBodyPricePriceDetail struct {
+	// The discounted price.
+	//
 	// example:
 	//
 	// 274.75
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The matrix ID.
+	//
 	// example:
 	//
 	// cpn-9rz9ou1l0wq30****
-	InstanceId  *string                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The price of each module.
 	ModulePrice []*DescribeCloudPhoneNodeRenewPriceResponseBodyPricePriceDetailModulePrice `json:"ModulePrice,omitempty" xml:"ModulePrice,omitempty" type:"Repeated"`
+	// The original price.
+	//
 	// example:
 	//
 	// 2087.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// CloudPhoneMatrix
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 1099.0
@@ -284,18 +309,26 @@ func (s *DescribeCloudPhoneNodeRenewPriceResponseBodyPricePriceDetail) Validate(
 }
 
 type DescribeCloudPhoneNodeRenewPriceResponseBodyPricePriceDetailModulePrice struct {
+	// The discounted price.
+	//
 	// example:
 	//
 	// 878.15
 	DiscountPrice *string `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The name of the module.
+	//
 	// example:
 	//
 	// PhoneData
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 1090
 	OriginalPrice *string `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 73.87
@@ -351,22 +384,32 @@ func (s *DescribeCloudPhoneNodeRenewPriceResponseBodyPricePriceDetailModulePrice
 }
 
 type DescribeCloudPhoneNodeRenewPriceResponseBodyPricePromotions struct {
+	// The promotion code.
+	//
 	// example:
 	//
 	// youhui_quan
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The promotion description.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Daily promotion
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// 91381816****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The promotion name.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Daily promotion
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether the promotion is selected.
+	//
 	// example:
 	//
 	// true
@@ -431,10 +474,14 @@ func (s *DescribeCloudPhoneNodeRenewPriceResponseBodyPricePromotions) Validate()
 }
 
 type DescribeCloudPhoneNodeRenewPriceResponseBodyRules struct {
+	// The description of the rule.
+	//
 	// example:
 	//
-	// 满40减20
+	// 20 off for orders over 40
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 2023110611****

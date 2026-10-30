@@ -20,13 +20,13 @@ type iResumeAgentTaskResponseBody interface {
 }
 
 type ResumeAgentTaskResponseBody struct {
-	// The status code of the API operation.
+	// The API status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned by the API operation.
+	// The API response message.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type ResumeAgentTaskResponseBodyTasks struct {
 	//
 	// RUNNING
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
-	// The reason why the task resumption failed.
+	// The reason why the task failed to resume.
 	//
 	// example:
 	//
 	// Task status [COMPLETED] does not support resume, only PAUSED tasks can be resumed.
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// The ID of the Mobile node.
+	// The Mobile node ID.
 	//
 	// example:
 	//

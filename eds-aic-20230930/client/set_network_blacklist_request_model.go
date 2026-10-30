@@ -16,13 +16,13 @@ type iSetNetworkBlacklistRequest interface {
 }
 
 type SetNetworkBlacklistRequest struct {
-	// Domain name blacklist.
+	// The domain name blacklist.
 	//
-	// > Supports a maximum of 200 domain names.
+	// > A maximum of 200 domain names are supported.
 	DomainBlacklist []*string `json:"DomainBlacklist,omitempty" xml:"DomainBlacklist,omitempty" type:"Repeated"`
-	// IP address blacklist.
+	// The IP address blacklist.
 	//
-	// > Supports a maximum of 200 IP addresses or IP address segments.
+	// > A maximum of 200 IP addresses or CIDR blocks are supported.
 	IpBlacklist []*string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty" type:"Repeated"`
 }
 

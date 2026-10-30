@@ -14,6 +14,8 @@ type iRebootCloudPhoneNodesResponseBody interface {
 }
 
 type RebootCloudPhoneNodesResponseBody struct {
+	// Id of the request
+	//
 	// example:
 	//
 	// 4610632D-D661-5982-B3D7-5D3FD183F****

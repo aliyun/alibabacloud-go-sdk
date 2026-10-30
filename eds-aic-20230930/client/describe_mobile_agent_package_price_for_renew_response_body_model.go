@@ -18,12 +18,16 @@ type iDescribeMobileAgentPackagePriceForRenewResponseBody interface {
 }
 
 type DescribeMobileAgentPackagePriceForRenewResponseBody struct {
+	// The price.
 	Price *DescribeMobileAgentPackagePriceForRenewResponseBodyPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
-	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*DescribeMobileAgentPackagePriceForRenewResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule information.
+	Rules []*DescribeMobileAgentPackagePriceForRenewResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMobileAgentPackagePriceForRenewResponseBody) String() string {
@@ -80,20 +84,30 @@ func (s *DescribeMobileAgentPackagePriceForRenewResponseBody) Validate() error {
 }
 
 type DescribeMobileAgentPackagePriceForRenewResponseBodyPrice struct {
+	// The currency.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discounted price.
+	//
 	// example:
 	//
 	// 200
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 1000
-	OriginalPrice *float32                                                               `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	PriceDetail   []*DescribeMobileAgentPackagePriceForRenewResponseBodyPricePriceDetail `json:"PriceDetail,omitempty" xml:"PriceDetail,omitempty" type:"Repeated"`
-	Promotions    []*DescribeMobileAgentPackagePriceForRenewResponseBodyPricePromotions  `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The price details.
+	PriceDetail []*DescribeMobileAgentPackagePriceForRenewResponseBodyPricePriceDetail `json:"PriceDetail,omitempty" xml:"PriceDetail,omitempty" type:"Repeated"`
+	// The promotion information.
+	Promotions []*DescribeMobileAgentPackagePriceForRenewResponseBodyPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 800
@@ -185,23 +199,34 @@ func (s *DescribeMobileAgentPackagePriceForRenewResponseBodyPrice) Validate() er
 }
 
 type DescribeMobileAgentPackagePriceForRenewResponseBodyPricePriceDetail struct {
+	// The discounted price.
+	//
 	// example:
 	//
 	// 200
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// cmag-shdbcudbaib****
-	InstanceId  *string                                                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The module prices.
 	ModulePrice []*DescribeMobileAgentPackagePriceForRenewResponseBodyPricePriceDetailModulePrice `json:"ModulePrice,omitempty" xml:"ModulePrice,omitempty" type:"Repeated"`
+	// The original price.
+	//
 	// example:
 	//
 	// 1000
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// CloudPhoneMobileAgent
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 800
@@ -284,18 +309,26 @@ func (s *DescribeMobileAgentPackagePriceForRenewResponseBodyPricePriceDetail) Va
 }
 
 type DescribeMobileAgentPackagePriceForRenewResponseBodyPricePriceDetailModulePrice struct {
+	// The discounted price.
+	//
 	// example:
 	//
 	// 629.7
 	DiscountPrice *string `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The module name.
+	//
 	// example:
 	//
-	// 高级版
+	// Advanced Edition
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 1680
 	OriginalPrice *string `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 94.85
@@ -351,22 +384,32 @@ func (s *DescribeMobileAgentPackagePriceForRenewResponseBodyPricePriceDetailModu
 }
 
 type DescribeMobileAgentPackagePriceForRenewResponseBodyPricePromotions struct {
+	// The coupon code.
+	//
 	// example:
 	//
 	// daily
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The coupon description.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Regular discount
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// 91381816****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The coupon name.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Regular discount
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether the coupon is selected.
+	//
 	// example:
 	//
 	// true
@@ -431,10 +474,14 @@ func (s *DescribeMobileAgentPackagePriceForRenewResponseBodyPricePromotions) Val
 }
 
 type DescribeMobileAgentPackagePriceForRenewResponseBodyRules struct {
+	// The rule description.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Regular discount
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 20230629****

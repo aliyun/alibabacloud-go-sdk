@@ -14,7 +14,7 @@ type iDeleteKeyPairsRequest interface {
 }
 
 type DeleteKeyPairsRequest struct {
-	// The IDs of the ADB key pairs.
+	// The list of key pair IDs.
 	KeyPairIds []*string `json:"KeyPairIds,omitempty" xml:"KeyPairIds,omitempty" type:"Repeated"`
 }
 

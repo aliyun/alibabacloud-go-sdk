@@ -18,11 +18,11 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The list of cloud phone IDs. The list can contain 1 to 50 IDs.
+	// The list of resource IDs, which are cloud phone IDs. You can specify 1 to 50 IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. The value must be \\`ALIYUN::ACP::INSTANCE\\`.
+	// The resource type. Set the value to ALIYUN::ACP::INSTANCE.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type TagResourcesRequest struct {
 	//
 	// ALIYUN::ACP::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags. The list can contain 1 to 20 tags.
+	// The list of tags. You can specify 1 to 20 tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -85,13 +85,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key. The key can be up to 128 characters in length. It cannot be an empty string. The key cannot start with \\`aliyun\\` or \\`acs:\\` and cannot contain \\`http\\://\\` or \\`https\\://\\`.
+	// The tag key. It cannot be an empty string. It can be up to 128 characters in length, cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The value can be up to 128 characters in length and can be an empty string. The value cannot start with \\`acs:\\` and cannot contain \\`http\\://\\` or \\`https\\://\\`.
+	// The tag value. It can be an empty string. It can be up to 128 characters in length, cannot start with acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//

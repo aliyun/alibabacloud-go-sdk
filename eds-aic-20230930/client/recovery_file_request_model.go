@@ -17,6 +17,8 @@ type iRecoveryFileRequest interface {
 	GetBackupFileId() *string
 	SetBackupFilePath(v string) *RecoveryFileRequest
 	GetBackupFilePath() *string
+	SetExcludeAppList(v []*string) *RecoveryFileRequest
+	GetExcludeAppList() []*string
 	SetUploadEndpoint(v string) *RecoveryFileRequest
 	GetUploadEndpoint() *string
 	SetUploadType(v string) *RecoveryFileRequest
@@ -24,11 +26,11 @@ type iRecoveryFileRequest interface {
 }
 
 type RecoveryFileRequest struct {
-	// The IDs of the instances.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
-	// Specifies whether to back up the whole instance.
+	// Specifies whether to back up the entire device.
 	//
 	// example:
 	//
@@ -40,19 +42,20 @@ type RecoveryFileRequest struct {
 	//
 	// bf-azhps4rdyi2th****
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
-	// The OSS path to which the backup file is uploaded.
+	// The OSS URL to which the backup file is uploaded.
 	//
-	// > When calling the describeBuckets operation to retrieve a bucket name, you must also call the ossObjectList operation to obtain the object key. Combine these to form the full path: oss\\://${bucketName}/${key}.
-	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
-	// The endpoint of the OSS bucket that stores the backup file.
+	// <notice>Call the describeBuckets operation to obtain the bucketName, and select ossObjectList to obtain the key. The key is the path of the backup file. Concatenate them into "oss://${bucketName}/${key}".</notice>
+	BackupFilePath *string   `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
+	ExcludeAppList []*string `json:"ExcludeAppList,omitempty" xml:"ExcludeAppList,omitempty" type:"Repeated"`
+	// The domain name of the backup address.
 	//
-	// > : When calling the DescribeBuckets operation to query buckets, retrieve the IntranetEndpoint value if the cloud phone and the OSS bucket are in the same region. If they are in different regions, retrieve the ExtranetEndpoint value instead.
+	// <notice>Call the DescribeBuckets operation to obtain the bucket. If the cloud phone and the bucket are in the same region, obtain the IntranetEndpoint field. If they are in different regions, obtain the ExtranetEndpoint field.</notice>
 	//
 	// example:
 	//
 	// oss-cn-hangzhou-internal.aliyuncs.com
 	UploadEndpoint *string `json:"UploadEndpoint,omitempty" xml:"UploadEndpoint,omitempty"`
-	// The type of the backup.
+	// The backup type.
 	//
 	// example:
 	//
@@ -84,6 +87,10 @@ func (s *RecoveryFileRequest) GetBackupFilePath() *string {
 	return s.BackupFilePath
 }
 
+func (s *RecoveryFileRequest) GetExcludeAppList() []*string {
+	return s.ExcludeAppList
+}
+
 func (s *RecoveryFileRequest) GetUploadEndpoint() *string {
 	return s.UploadEndpoint
 }
@@ -109,6 +116,11 @@ func (s *RecoveryFileRequest) SetBackupFileId(v string) *RecoveryFileRequest {
 
 func (s *RecoveryFileRequest) SetBackupFilePath(v string) *RecoveryFileRequest {
 	s.BackupFilePath = &v
+	return s
+}
+
+func (s *RecoveryFileRequest) SetExcludeAppList(v []*string) *RecoveryFileRequest {
+	s.ExcludeAppList = v
 	return s
 }
 

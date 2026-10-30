@@ -26,19 +26,19 @@ type RecoveryFileResponseBody struct {
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The backup file that is restored.
+	// The returned result object.
 	//
 	// example:
 	//
 	// 6AD56E39-430B-5401-AB4A-7B086454****
 	Data []*RecoveryFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6AD56E39-430B-5401-AB4A-7B086454****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the batch task.
+	// The batch task ID.
 	//
 	// example:
 	//

@@ -16,10 +16,20 @@ type iRebootCloudPhoneNodesRequest interface {
 }
 
 type RebootCloudPhoneNodesRequest struct {
+	// Specifies whether to force a restart. Valid values:
+	//
+	// - true: Forces a restart without waiting for the instances to gracefully exit.
+	//
+	// - false: Performs a graceful restart.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The IDs of the cloud phone matrices. Valid values of N: 1 to 100.
+	//
 	// example:
 	//
 	// cpn-05e4d1cec2urdh1j****

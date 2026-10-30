@@ -20,15 +20,7 @@ type iActivateEdgeMobileAgentRequest interface {
 }
 
 type ActivateEdgeMobileAgentRequest struct {
-	// The device form factor. Valid values:
-	//
-	// - BOX
-	//
-	// - PHONE
-	//
-	// - PAD
-	//
-	// - OTHER
+	// The device class. Valid values: BOX, PHONE, PAD, and OTHER.
 	//
 	// example:
 	//
@@ -42,7 +34,7 @@ type ActivateEdgeMobileAgentRequest struct {
 	//
 	// sn-0001eevqa6jeapl*****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// The extended device metadata in JSON format. The string contains information such as fingerprint, deviceModel, and firmwareVersion.
+	// The extended metadata of the device. The value is a JSON string that contains information such as fingerprint, deviceModel, and firmwareVersion.
 	//
 	// example:
 	//

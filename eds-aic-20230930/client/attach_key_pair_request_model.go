@@ -16,7 +16,7 @@ type iAttachKeyPairRequest interface {
 }
 
 type AttachKeyPairRequest struct {
-	// The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
+	// The cloud phone instance ID list. You can specify up to 50 instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the ADB key pair.
 	//

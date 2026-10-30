@@ -18,15 +18,15 @@ type iOperateAppRequest interface {
 }
 
 type OperateAppRequest struct {
-	// The ID of the app.
+	// The application ID.
 	//
 	// example:
 	//
 	// 1234
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The IDs of the cloud phone instances.
+	// The list of instances.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	// The type of the operation.
+	// The operation type. Supported operations include starting, stopping, and restarting.
 	//
 	// example:
 	//

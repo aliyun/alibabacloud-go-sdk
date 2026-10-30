@@ -18,12 +18,16 @@ type iDescribeBandwidthPackagePriceResponseBody interface {
 }
 
 type DescribeBandwidthPackagePriceResponseBody struct {
+	// The price.
 	Price *DescribeBandwidthPackagePriceResponseBodyPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*DescribeBandwidthPackagePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The promotion rules.
+	Rules []*DescribeBandwidthPackagePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeBandwidthPackagePriceResponseBody) String() string {
@@ -80,19 +84,34 @@ func (s *DescribeBandwidthPackagePriceResponseBody) Validate() error {
 }
 
 type DescribeBandwidthPackagePriceResponseBodyPrice struct {
+	// <props="china">The currency unit (CNY).
+	//
+	// <props="intl">The currency unit (USD).
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discounted price.
+	//
 	// example:
 	//
 	// 274.75
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
+	// <props="china">Unit: CNY.
+	//
+	// <props="intl">Unit: USD.
+	//
 	// example:
 	//
 	// 8800
-	OriginalPrice *float32                                                    `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	Promotions    []*DescribeBandwidthPackagePriceResponseBodyPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The promotion information.
+	Promotions []*DescribeBandwidthPackagePriceResponseBodyPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 213.52
@@ -166,22 +185,32 @@ func (s *DescribeBandwidthPackagePriceResponseBodyPrice) Validate() error {
 }
 
 type DescribeBandwidthPackagePriceResponseBodyPricePromotions struct {
+	// The promotion code.
+	//
 	// example:
 	//
 	// youhui_quan
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The promotion description.
+	//
 	// example:
 	//
 	// youhui
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The ID of the promotion.
+	//
 	// example:
 	//
 	// 91381816****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The name of the promotion.
+	//
 	// example:
 	//
 	// youhui
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether the promotion is selected.
+	//
 	// example:
 	//
 	// ture
@@ -246,10 +275,14 @@ func (s *DescribeBandwidthPackagePriceResponseBodyPricePromotions) Validate() er
 }
 
 type DescribeBandwidthPackagePriceResponseBodyRules struct {
+	// The rule description.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// a7gesyly7o34qy****

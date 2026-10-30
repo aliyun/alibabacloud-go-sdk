@@ -34,7 +34,7 @@ type iCreateAICloudPhoneRequest interface {
 }
 
 type CreateAICloudPhoneRequest struct {
-	// The quantity to purchase.
+	// The quantity.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateAICloudPhoneRequest struct {
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The bandwidth package ID.
+	// The ID of the bandwidth plan.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateAICloudPhoneRequest struct {
 	//
 	// np-791ncq8qcuoopxxxx
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The region ID for the purchase.
+	// The ID of the region for the purchase.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type CreateAICloudPhoneRequest struct {
 	//
 	// cn-shanghai
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The image ID.
+	// The ID of the image.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type CreateAICloudPhoneRequest struct {
 	//
 	// imgc-0aae4rxwoktvr851h
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance group name.
+	// The name of the instance group.
 	//
 	// This parameter is required.
 	//
@@ -80,11 +80,11 @@ type CreateAICloudPhoneRequest struct {
 	//
 	// test1
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
-	// The instance group specification. Valid values:
+	// The specification of the instance group. Valid values:
 	//
-	// - STANDARD: standard.
+	// - STANDARD: Standard.
 	//
-	// - MEDIUM: advanced.
+	// - MEDIUM: Advanced.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type CreateAICloudPhoneRequest struct {
 	//
 	// MEDIUM
 	InstanceGroupSpec *string `json:"InstanceGroupSpec,omitempty" xml:"InstanceGroupSpec,omitempty"`
-	// The purchase duration.
+	// The subscription duration.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type CreateAICloudPhoneRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the purchase duration.
+	// The unit of the subscription duration.
 	//
 	// This parameter is required.
 	//
@@ -108,13 +108,13 @@ type CreateAICloudPhoneRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The policy group ID.
+	// The ID of the policy group.
 	//
 	// example:
 	//
 	// pg-0bjrh3oxk2q0xxxxx
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The coupon ID.
+	// The ID of the coupon.
 	//
 	// example:
 	//

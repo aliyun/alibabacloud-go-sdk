@@ -18,12 +18,16 @@ type iDescribeInstanceGroupPriceResponseBody interface {
 }
 
 type DescribeInstanceGroupPriceResponseBody struct {
+	// The price.
 	Price *DescribeInstanceGroupPriceResponseBodyPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 90E4F2B7-BBDA-534D-B872-CCC798996F69
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*DescribeInstanceGroupPriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule information.
+	Rules []*DescribeInstanceGroupPriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstanceGroupPriceResponseBody) String() string {
@@ -80,19 +84,28 @@ func (s *DescribeInstanceGroupPriceResponseBody) Validate() error {
 }
 
 type DescribeInstanceGroupPriceResponseBodyPrice struct {
+	// The currency unit.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discounted price.
+	//
 	// example:
 	//
 	// 12618.0
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 18134.0
-	OriginalPrice *float32                                                 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	Promotions    []*DescribeInstanceGroupPriceResponseBodyPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The promotion information.
+	Promotions []*DescribeInstanceGroupPriceResponseBodyPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 70.0
@@ -166,22 +179,32 @@ func (s *DescribeInstanceGroupPriceResponseBodyPrice) Validate() error {
 }
 
 type DescribeInstanceGroupPriceResponseBodyPricePromotions struct {
+	// The coupon code.
+	//
 	// example:
 	//
 	// code
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The coupon description.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Regular promotion
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// 86744342****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The coupon name.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Regular promotion
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether the promotion is selected.
+	//
 	// example:
 	//
 	// true
@@ -246,10 +269,14 @@ func (s *DescribeInstanceGroupPriceResponseBodyPricePromotions) Validate() error
 }
 
 type DescribeInstanceGroupPriceResponseBodyRules struct {
+	// The rule description.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Regular promotion
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// yhpcxb4qhgp2k4****

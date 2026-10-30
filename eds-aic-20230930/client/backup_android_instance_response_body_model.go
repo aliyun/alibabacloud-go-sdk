@@ -20,21 +20,21 @@ type iBackupAndroidInstanceResponseBody interface {
 }
 
 type BackupAndroidInstanceResponseBody struct {
-	// The number of instances that were backed up.
+	// The number of backed-up instances.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The returned result objects.
+	// The returned result object.
 	Data []*BackupAndroidInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 440D7342-5FC2-5E7C-B2DB-D0B4EAC2BDF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type BackupAndroidInstanceResponseBodyData struct {
 	//
 	// acp-34pqe4r0kd9kn****
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
-	// The ID of the backup file.
+	// The backup file ID.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type BackupAndroidInstanceResponseBodyData struct {
 	//
 	// a-58ftsoo90p0qa****.ab
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

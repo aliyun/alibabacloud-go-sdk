@@ -14,7 +14,7 @@ type iStartInstanceAdbRequest interface {
 }
 
 type StartInstanceAdbRequest struct {
-	// A list of 1 to 100 cloud phone instance IDs.
+	// The list of cloud phone instance IDs. You can specify 1 to 100 IDs.
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`

@@ -20,15 +20,26 @@ type iDescribeCloudPhoneNodeRenewPriceRequest interface {
 }
 
 type DescribeCloudPhoneNodeRenewPriceRequest struct {
+	// The list of cloud phone matrix IDs.
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// The subscription period. The unit is specified by PeriodUnit.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription period. Valid values:
+	//
+	// - **Month**: Month.
+	//
+	// - **Year**: Year.
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the promotion.
+	//
 	// example:
 	//
 	// 50003308011****

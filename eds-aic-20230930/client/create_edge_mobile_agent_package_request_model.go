@@ -32,14 +32,11 @@ type iCreateEdgeMobileAgentPackageRequest interface {
 type CreateEdgeMobileAgentPackageRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: Enable automatic payment. Make sure that your account balance is sufficient.
+	// - **true**: Enables automatic payment. Make sure that your account balance is sufficient.
 	//
-	// - **false*	- (default): Generate the order without making a payment.
+	// - **false**: Generates an unpaid order without deducting fees. This is the default value.
 	//
-	//
-	//
-	//
-	// > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated, and you can log on to the WUYING Cloud Phone console to complete the payment.
+	// > If your payment method has an insufficient balance, you can set this parameter to false. An unpaid order is generated, and you can log on to the WUYING Cloud Phone console to complete the payment.
 	//
 	// >
 	//
@@ -47,11 +44,11 @@ type CreateEdgeMobileAgentPackageRequest struct {
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal. Valid values:
+	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
-	// 	- **true**: Enable auto-renewal.
+	// - **true**: Enables auto-renewal.
 	//
-	// 	- **false*	- (default): Disable auto-renewal.
+	// - **false**: Disables auto-renewal. This is the default value.
 	//
 	// example:
 	//
@@ -71,7 +68,7 @@ type CreateEdgeMobileAgentPackageRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The device form factor.
+	// The device type.
 	//
 	// This parameter is required.
 	//
@@ -79,7 +76,7 @@ type CreateEdgeMobileAgentPackageRequest struct {
 	//
 	// BOX
 	DeviceClass *string `json:"DeviceClass,omitempty" xml:"DeviceClass,omitempty"`
-	// The subscription duration of the resource. The unit is specified by `PeriodUnit`.
+	// The subscription duration of the resource. The unit is specified by PeriodUnit.
 	//
 	// This parameter is required.
 	//
@@ -87,13 +84,11 @@ type CreateEdgeMobileAgentPackageRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration.
+	// The unit of the subscription duration. Valid values:
 	//
-	// Valid values:
+	// - **Month**: month
 	//
-	// - **Month**: month.
-	//
-	// - **Year**: year.
+	// - **Year**: year
 	//
 	// This parameter is required.
 	//
@@ -101,7 +96,7 @@ type CreateEdgeMobileAgentPackageRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The promotion ID.
+	// The ID of the promotion.
 	//
 	// example:
 	//

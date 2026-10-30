@@ -20,7 +20,7 @@ type iResumeAgentTaskRequest interface {
 }
 
 type ResumeAgentTaskRequest struct {
-	// The additional prompt. This parameter takes effect only when the task is passively paused, such as pausing to wait for user confirmation.
+	// The additional prompt. This parameter takes effect only when the task is passively paused, such as when waiting for user confirmation.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type ResumeAgentTaskRequest struct {
 	//
 	// This parameter is required.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The ID of the tool invoke to resume.
+	// The ID of the tool invocation to be resumed.
 	//
 	// example:
 	//
-	// ca*****01
+	// call-0001
 	ToolCallId *string `json:"ToolCallId,omitempty" xml:"ToolCallId,omitempty"`
 }
 
@@ -102,13 +102,13 @@ type ResumeAgentTaskRequestClarificationAnswers struct {
 	//
 	// example:
 	//
-	// Simply ****
+	// Return directly to the desktop
 	CustomValue *string `json:"CustomValue,omitempty" xml:"CustomValue,omitempty"`
 	// The ID of the clarification item.
 	//
 	// example:
 	//
-	// cl*****-1
+	// clarify-1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The list of selected option IDs in the clarification answer.
 	SelectedIds []*string `json:"SelectedIds,omitempty" xml:"SelectedIds,omitempty" type:"Repeated"`

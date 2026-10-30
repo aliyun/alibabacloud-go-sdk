@@ -14,7 +14,7 @@ type iSetNetworkBlacklistResponseBody interface {
 }
 
 type SetNetworkBlacklistResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

@@ -15,6 +15,8 @@ type iRecoverAndroidInstanceRequest interface {
 	GetBackupFileId() *string
 	SetBackupFilePath(v string) *RecoverAndroidInstanceRequest
 	GetBackupFilePath() *string
+	SetExcludeAppList(v []*string) *RecoverAndroidInstanceRequest
+	GetExcludeAppList() []*string
 	SetUploadEndpoint(v string) *RecoverAndroidInstanceRequest
 	GetUploadEndpoint() *string
 	SetUploadType(v string) *RecoverAndroidInstanceRequest
@@ -22,7 +24,7 @@ type iRecoverAndroidInstanceRequest interface {
 }
 
 type RecoverAndroidInstanceRequest struct {
-	// A list of instance IDs.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
@@ -32,11 +34,13 @@ type RecoverAndroidInstanceRequest struct {
 	//
 	// bf-azhps4rdyi2th****
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
-	// The OSS URL where the backup file is uploaded.
+	// The OSS address to which the backup file is uploaded.
 	//
 	// This parameter is required.
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
-	// The region where the backup is located.
+	// The list of app package names excluded from the full-device restore. Excluded apps are not uninstalled and their APKs are not installed, which is compatible with legacy backups that contain APKs. Only user data is replaced. Empty shells must be installed by the customer by using the pm install command. If this parameter is not specified, no apps are excluded.
+	ExcludeAppList []*string `json:"ExcludeAppList,omitempty" xml:"ExcludeAppList,omitempty" type:"Repeated"`
+	// The backup region.
 	//
 	// example:
 	//
@@ -72,6 +76,10 @@ func (s *RecoverAndroidInstanceRequest) GetBackupFilePath() *string {
 	return s.BackupFilePath
 }
 
+func (s *RecoverAndroidInstanceRequest) GetExcludeAppList() []*string {
+	return s.ExcludeAppList
+}
+
 func (s *RecoverAndroidInstanceRequest) GetUploadEndpoint() *string {
 	return s.UploadEndpoint
 }
@@ -92,6 +100,11 @@ func (s *RecoverAndroidInstanceRequest) SetBackupFileId(v string) *RecoverAndroi
 
 func (s *RecoverAndroidInstanceRequest) SetBackupFilePath(v string) *RecoverAndroidInstanceRequest {
 	s.BackupFilePath = &v
+	return s
+}
+
+func (s *RecoverAndroidInstanceRequest) SetExcludeAppList(v []*string) *RecoverAndroidInstanceRequest {
+	s.ExcludeAppList = v
 	return s
 }
 

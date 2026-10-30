@@ -24,7 +24,7 @@ type iBackupAppRequest interface {
 }
 
 type BackupAppRequest struct {
-	// A list of instance IDs.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
@@ -34,7 +34,7 @@ type BackupAppRequest struct {
 	//
 	// MyBackup
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	// The URL of the backup file.
+	// The path to the backup file.
 	//
 	// This parameter is required.
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
@@ -44,11 +44,11 @@ type BackupAppRequest struct {
 	//
 	// this is a backup app
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// A list of package names for the applications to back up.
+	// The list of package names of the applications to back up.
 	//
 	// This parameter is required.
 	SourceAppList []*string `json:"SourceAppList,omitempty" xml:"SourceAppList,omitempty" type:"Repeated"`
-	// Specifies the region where the backup is created.
+	// The backup region.
 	//
 	// This parameter is required.
 	//

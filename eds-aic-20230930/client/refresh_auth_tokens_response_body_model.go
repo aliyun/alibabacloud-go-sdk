@@ -112,7 +112,7 @@ func (s *RefreshAuthTokensResponseBodyData) Validate() error {
 }
 
 type RefreshAuthTokensResponseBodyDataTokens struct {
-	// The authorization token value.
+	// The value of the authorization token.
 	//
 	// example:
 	//

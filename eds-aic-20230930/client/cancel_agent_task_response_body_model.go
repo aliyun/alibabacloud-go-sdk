@@ -20,13 +20,13 @@ type iCancelAgentTaskResponseBody interface {
 }
 
 type CancelAgentTaskResponseBody struct {
-	// The status code.
+	// The API status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CancelAgentTaskResponseBody struct {
 	//
 	// 4B886792-2051-5DB4-8AE6-C8E45D3B4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of task objects.
+	// The list of tasks.
 	Tasks []*CancelAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -100,39 +100,39 @@ func (s *CancelAgentTaskResponseBody) Validate() error {
 }
 
 type CancelAgentTaskResponseBodyTasks struct {
-	// The task\\"s cancellation time, in ISO 8601 format.
+	// The time when the task was canceled, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-04-13T17:42:19Z
 	CancelAt *string `json:"CancelAt,omitempty" xml:"CancelAt,omitempty"`
-	// The task status after the cancellation request. Possible values include:
+	// The current status of the task. Valid values:
 	//
-	// `CANCELLING` or `CANCELED`: The task is being or has been canceled.
+	// - CANCELLING: The task is being canceled.
 	//
-	// `COMPLETED`: The task was already complete and could not be canceled.
+	// - CANCELED: The task is canceled.
 	//
 	// example:
 	//
 	// COMPLETED
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
-	// The failure reason.
+	// The reason why the task cancellation failed.
 	//
 	// example:
 	//
 	// Task status [COMPLETED] does not support cancellation, only PENDING/RUNNING/CANCELLING tasks can be canceled.
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// The mobile node ID.
+	// The ID of the Mobile node.
 	//
 	// example:
 	//
 	// acp-ek65k51zoxia3x8xz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The task status before cancellation. Valid values include:
+	// The status of the task before cancellation. Valid values:
 	//
-	// PENDING: The task is being created.
+	// - PENDING: The task is being created.
 	//
-	// RUNNING: The task is running.
+	// - RUNNING: The task is running.
 	//
 	// example:
 	//

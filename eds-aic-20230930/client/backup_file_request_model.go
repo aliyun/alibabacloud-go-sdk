@@ -19,6 +19,8 @@ type iBackupFileRequest interface {
 	GetBackupFilePath() *string
 	SetDescription(v string) *BackupFileRequest
 	GetDescription() *string
+	SetExcludeAppList(v []*string) *BackupFileRequest
+	GetExcludeAppList() []*string
 	SetExcludeSourceFilePathList(v []*string) *BackupFileRequest
 	GetExcludeSourceFilePathList() []*string
 	SetSourceAppList(v []*string) *BackupFileRequest
@@ -48,7 +50,7 @@ type BackupFileRequest struct {
 	//
 	// MyBackup
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	// The upload path of the backup file.
+	// The upload address of the backup file.
 	//
 	// > If you upload the backup file to an OSS bucket, call the describeBuckets operation to obtain the bucketName, and select ossObjectList to obtain the key. The key is the folder path in the OSS bucket. Concatenate them into `oss://${bucketName}/${key}`.
 	//
@@ -60,15 +62,17 @@ type BackupFileRequest struct {
 	//
 	// This is a request to back up /data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of application package names excluded from full instance backup. Matched applications only skip APK collection, and user data is backed up as usual. If this parameter is not specified, no applications are excluded.
+	ExcludeAppList []*string `json:"ExcludeAppList,omitempty" xml:"ExcludeAppList,omitempty" type:"Repeated"`
 	// The list of file paths in the Android container to exclude from the backup.
 	ExcludeSourceFilePathList []*string `json:"ExcludeSourceFilePathList,omitempty" xml:"ExcludeSourceFilePathList,omitempty" type:"Repeated"`
-	// The list of application package names to back up.
+	// The list of package names of the applications to back up.
 	SourceAppList []*string `json:"SourceAppList,omitempty" xml:"SourceAppList,omitempty" type:"Repeated"`
 	// The list of file paths to back up.
 	SourceFilePathList []*string `json:"SourceFilePathList,omitempty" xml:"SourceFilePathList,omitempty" type:"Repeated"`
-	// The domain name of the backup endpoint.
+	// The domain name of the backup address.
 	//
-	// > If you upload the backup file to an OSS bucket, call the describeBuckets operation to obtain the bucket. If the cloud phone and the bucket are in the same region, obtain the intranetEndpoint field. If they are in different regions, obtain the extranetEndpoint field.
+	// > If you upload the backup file to an OSS bucket, call the describeBuckets operation to obtain the bucket. If the Cloud Phone instance and the bucket are in the same region, obtain the intranetEndpoint field. If they are in different regions, obtain the extranetEndpoint field.
 	//
 	// example:
 	//
@@ -108,6 +112,10 @@ func (s *BackupFileRequest) GetBackupFilePath() *string {
 
 func (s *BackupFileRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *BackupFileRequest) GetExcludeAppList() []*string {
+	return s.ExcludeAppList
 }
 
 func (s *BackupFileRequest) GetExcludeSourceFilePathList() []*string {
@@ -152,6 +160,11 @@ func (s *BackupFileRequest) SetBackupFilePath(v string) *BackupFileRequest {
 
 func (s *BackupFileRequest) SetDescription(v string) *BackupFileRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *BackupFileRequest) SetExcludeAppList(v []*string) *BackupFileRequest {
+	s.ExcludeAppList = v
 	return s
 }
 

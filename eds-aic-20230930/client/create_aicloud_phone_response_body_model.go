@@ -18,7 +18,7 @@ type iCreateAICloudPhoneResponseBody interface {
 type CreateAICloudPhoneResponseBody struct {
 	// The response data object.
 	Data *CreateAICloudPhoneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *CreateAICloudPhoneResponseBody) Validate() error {
 }
 
 type CreateAICloudPhoneResponseBodyData struct {
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 20230930123456
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The list of package IDs. After the payment is successful, instances are created based on these IDs through a callback.
+	// The list of package IDs. After a successful payment, a callback creates instances based on these IDs.
 	PackageIds []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
 }
 

@@ -16,7 +16,7 @@ type iCreateKeyPairResponseBody interface {
 }
 
 type CreateKeyPairResponseBody struct {
-	// The returned data.
+	// The returned result object.
 	Data *CreateKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,13 +62,13 @@ func (s *CreateKeyPairResponseBody) Validate() error {
 }
 
 type CreateKeyPairResponseBodyData struct {
-	// The time when the key pair was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-06-30 08:45:09.0
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The ID of the key pair.
+	// The ID of the ADB key pair.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateKeyPairResponseBodyData struct {
 	//
 	// testKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The private key of the key pair. The private key is PEM-encoded in PKCS#8 format and is compatible with ADB.
+	// The private key of the key pair. The private key is in the PEM-encoded PKCS#8 format that complies with ADB key pair specifications.
 	//
 	// example:
 	//

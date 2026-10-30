@@ -32,7 +32,7 @@ type BackupFileResponseBody struct {
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
 	Data []*BackupFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *BackupFileResponseBody) Validate() error {
 }
 
 type BackupFileResponseBodyData struct {
-	// The instance ID of the cloud phone.
+	// The Cloud Phone instance ID.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type BackupFileResponseBodyData struct {
 	//
 	// MyBackup
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

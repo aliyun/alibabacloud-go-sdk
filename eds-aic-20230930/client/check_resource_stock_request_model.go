@@ -48,7 +48,7 @@ type CheckResourceStockRequest struct {
 	//
 	// false
 	GpuAcceleration *bool `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
-	// The zone to which the resource belongs.
+	// The zone of the resource.
 	//
 	// example:
 	//

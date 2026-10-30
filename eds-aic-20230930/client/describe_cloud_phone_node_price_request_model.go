@@ -36,54 +36,88 @@ type iDescribeCloudPhoneNodePriceRequest interface {
 }
 
 type DescribeCloudPhoneNodePriceRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The billing method.
+	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The number of cloud phone matrices to purchase.
+	//
 	// example:
 	//
 	// 1
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Specifies whether to use a single image disk. Default value: false. Valid values:
+	//
+	// - true: Uses only the system disk.
+	//
+	// - false: Uses the system disk and the shared internal storage image disk.
+	//
 	// example:
 	//
 	// false
 	IsSingleImgDisk *bool `json:"IsSingleImgDisk,omitempty" xml:"IsSingleImgDisk,omitempty"`
+	// The subscription period of the resource. The unit is specified by PeriodUnit. Valid values: 1 month, 2 months, 3 months, 6 months, and 1 year.
+	//
 	// example:
 	//
 	// 1
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription period. Valid values:
+	//
+	// - **Month**: Month.
+	//
+	// - **Year**: Year.
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The number of provisioned instances, which refers to the number of cloud phone instances in the matrix.
+	//
 	// example:
 	//
 	// 40
 	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	// The size of the dedicated internal storage. Unit: GiB.
+	//
 	// example:
 	//
 	// 20
 	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// 50003308011****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The size of the shared internal storage. Unit: GiB.
+	//
+	// > The minimum size of the shared internal storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
+	//
 	// example:
 	//
 	// 200
 	ServerShareDataVolume *int32 `json:"ServerShareDataVolume,omitempty" xml:"ServerShareDataVolume,omitempty"`
+	// The specifications of the cloud phone matrix.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cpm.gx7.10xlarge
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// The size of the swap space.
+	//
 	// example:
 	//
 	// 10

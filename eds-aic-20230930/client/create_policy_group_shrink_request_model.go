@@ -40,19 +40,19 @@ type CreatePolicyGroupShrinkRequest struct {
 	//
 	// off
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
-	// The clipboard permission.
+	// The clipboard permissions.
 	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	// The file transfer policy for the web client.
+	// The file transfer policy for the Wuying web client.
 	//
 	// example:
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// The local disk mapping permission.
+	// The local disk mapping permissions.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreatePolicyGroupShrinkRequest struct {
 	//
 	// off
 	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
-	// Network redirection.
+	// The network redirection settings.
 	NetRedirectPolicyShrink *string `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty"`
 	// The policy name.
 	//
@@ -78,19 +78,19 @@ type CreatePolicyGroupShrinkRequest struct {
 	//
 	// Instance
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The resolution height, in pixels.
+	// The height of the resolution. Unit: pixels.
 	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
-	// The resolution width, in pixels.
+	// The width of the resolution. Unit: pixels.
 	//
 	// example:
 	//
 	// 720
 	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
-	// Screen watermark.
+	// The screen watermark settings.
 	WatermarkShrink *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
 }
 

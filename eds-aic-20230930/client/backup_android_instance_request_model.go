@@ -17,12 +17,14 @@ type iBackupAndroidInstanceRequest interface {
 	GetBackupFilePath() *string
 	SetDescription(v string) *BackupAndroidInstanceRequest
 	GetDescription() *string
+	SetExcludeAppList(v []*string) *BackupAndroidInstanceRequest
+	GetExcludeAppList() []*string
 	SetUploadEndpoint(v string) *BackupAndroidInstanceRequest
 	GetUploadEndpoint() *string
 }
 
 type BackupAndroidInstanceRequest struct {
-	// A list of instance IDs.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
@@ -32,17 +34,19 @@ type BackupAndroidInstanceRequest struct {
 	//
 	// abc
 	BackupFileName *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
-	// The upload URL for the backup file.
+	// The upload URL of the backup file.
 	//
 	// This parameter is required.
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
-	// The description of the full instance backup.
+	// The description of the full backup.
 	//
 	// example:
 	//
 	// this is a backup android instance
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The region where the backup is stored.
+	// The list of application package names to exclude from the full backup. For matched applications, only APK collection is skipped, and user data is backed up as usual. If this parameter is not specified, no applications are excluded.
+	ExcludeAppList []*string `json:"ExcludeAppList,omitempty" xml:"ExcludeAppList,omitempty" type:"Repeated"`
+	// The backup region.
 	//
 	// This parameter is required.
 	//
@@ -76,6 +80,10 @@ func (s *BackupAndroidInstanceRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *BackupAndroidInstanceRequest) GetExcludeAppList() []*string {
+	return s.ExcludeAppList
+}
+
 func (s *BackupAndroidInstanceRequest) GetUploadEndpoint() *string {
 	return s.UploadEndpoint
 }
@@ -97,6 +105,11 @@ func (s *BackupAndroidInstanceRequest) SetBackupFilePath(v string) *BackupAndroi
 
 func (s *BackupAndroidInstanceRequest) SetDescription(v string) *BackupAndroidInstanceRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *BackupAndroidInstanceRequest) SetExcludeAppList(v []*string) *BackupAndroidInstanceRequest {
+	s.ExcludeAppList = v
 	return s
 }
 

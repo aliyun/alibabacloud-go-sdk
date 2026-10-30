@@ -18,12 +18,16 @@ type iDescribeMobileAgentPackagePriceResponseBody interface {
 }
 
 type DescribeMobileAgentPackagePriceResponseBody struct {
+	// The price.
 	Price *DescribeMobileAgentPackagePriceResponseBodyPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC******
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*DescribeMobileAgentPackagePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The promotion rules.
+	Rules []*DescribeMobileAgentPackagePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMobileAgentPackagePriceResponseBody) String() string {
@@ -80,20 +84,30 @@ func (s *DescribeMobileAgentPackagePriceResponseBody) Validate() error {
 }
 
 type DescribeMobileAgentPackagePriceResponseBodyPrice struct {
+	// The currency.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discounted price.
+	//
 	// example:
 	//
 	// 200
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 1000
-	OriginalPrice *float32                                                       `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	PriceDetail   []*DescribeMobileAgentPackagePriceResponseBodyPricePriceDetail `json:"PriceDetail,omitempty" xml:"PriceDetail,omitempty" type:"Repeated"`
-	Promotions    []*DescribeMobileAgentPackagePriceResponseBodyPricePromotions  `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The price details.
+	PriceDetail []*DescribeMobileAgentPackagePriceResponseBodyPricePriceDetail `json:"PriceDetail,omitempty" xml:"PriceDetail,omitempty" type:"Repeated"`
+	// The promotion information.
+	Promotions []*DescribeMobileAgentPackagePriceResponseBodyPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 800
@@ -185,19 +199,28 @@ func (s *DescribeMobileAgentPackagePriceResponseBodyPrice) Validate() error {
 }
 
 type DescribeMobileAgentPackagePriceResponseBodyPricePriceDetail struct {
+	// The discounted price.
+	//
 	// example:
 	//
 	// 800
-	DiscountPrice *float32                                                                  `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	ModulePrice   []*DescribeMobileAgentPackagePriceResponseBodyPricePriceDetailModulePrice `json:"ModulePrice,omitempty" xml:"ModulePrice,omitempty" type:"Repeated"`
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The prices of the modules.
+	ModulePrice []*DescribeMobileAgentPackagePriceResponseBodyPricePriceDetailModulePrice `json:"ModulePrice,omitempty" xml:"ModulePrice,omitempty" type:"Repeated"`
+	// The original price.
+	//
 	// example:
 	//
 	// 1000
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// CloudPhoneMobileAgent
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 200
@@ -271,18 +294,26 @@ func (s *DescribeMobileAgentPackagePriceResponseBodyPricePriceDetail) Validate()
 }
 
 type DescribeMobileAgentPackagePriceResponseBodyPricePriceDetailModulePrice struct {
+	// The discounted price.
+	//
 	// example:
 	//
 	// 800
 	DiscountPrice *string `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The name of the module.
+	//
 	// example:
 	//
-	// 高级版
+	// Advanced Edition
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 1000
 	OriginalPrice *string `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 200
@@ -338,22 +369,32 @@ func (s *DescribeMobileAgentPackagePriceResponseBodyPricePriceDetailModulePrice)
 }
 
 type DescribeMobileAgentPackagePriceResponseBodyPricePromotions struct {
+	// The coupon code.
+	//
 	// example:
 	//
 	// daily
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The coupon description.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Regular discount
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The ID of the promotion.
+	//
 	// example:
 	//
 	// 90712091****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The name of the promotion.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Regular discount
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether the promotion is selected.
+	//
 	// example:
 	//
 	// true
@@ -418,10 +459,14 @@ func (s *DescribeMobileAgentPackagePriceResponseBodyPricePromotions) Validate() 
 }
 
 type DescribeMobileAgentPackagePriceResponseBodyRules struct {
+	// The rule description.
+	//
 	// example:
 	//
-	// 日常优惠
+	// Regular discount
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// f07tkae80jbiy****

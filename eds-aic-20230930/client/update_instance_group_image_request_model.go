@@ -24,7 +24,7 @@ type UpdateInstanceGroupImageRequest struct {
 	//
 	// imgc-075cllfeuazh****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// A list of instance group IDs.
+	// The list of instance group IDs.
 	//
 	// This parameter is required.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`

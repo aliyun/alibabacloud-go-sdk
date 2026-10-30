@@ -16,9 +16,9 @@ type iStartAndroidInstanceRequest interface {
 }
 
 type StartAndroidInstanceRequest struct {
-	// List of instances.
+	// The list of instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// The billing mode. This parameter is deprecated.
+	// The sales mode. **[Deprecated]**
 	//
 	// example:
 	//

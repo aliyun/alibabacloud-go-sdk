@@ -117,7 +117,7 @@ func (s *DescribeMobileAgentPackageResponseBody) Validate() error {
 }
 
 type DescribeMobileAgentPackageResponseBodyPackageList struct {
-	// The expiration time. The time format is YYYY-MM-DD HH:mm:ss.
+	// The expiration time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	ExpiredAt *string `json:"ExpiredAt,omitempty" xml:"ExpiredAt,omitempty"`
 	// The node instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The package credit quota.
+	// The credit quota of the package.
 	//
 	// example:
 	//
@@ -144,6 +144,10 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	// advanced
 	PackageSpec *string `json:"PackageSpec,omitempty" xml:"PackageSpec,omitempty"`
 	// The name of the package specification.
+	//
+	// example:
+	//
+	// Flagship Edition (Custom)
 	PackageSpecName *string `json:"PackageSpecName,omitempty" xml:"PackageSpecName,omitempty"`
 	// The package status.
 	//
@@ -152,8 +156,16 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	// ACTIVE
 	PackageStatus *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
 	// The end time of the package period.
+	//
+	// example:
+	//
+	// 2026-11-02T15:59Z
 	PeriodEndTime *string `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
 	// The start time of the package period.
+	//
+	// example:
+	//
+	// 2026-10-16T15:29Z
 	PeriodStartTime *string `json:"PeriodStartTime,omitempty" xml:"PeriodStartTime,omitempty"`
 	// The tags.
 	Tags []*DescribeMobileAgentPackageResponseBodyPackageListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`

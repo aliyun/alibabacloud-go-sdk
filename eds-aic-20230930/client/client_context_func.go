@@ -65,13 +65,13 @@ func (client *Client) ActivateEdgeMobileAgentWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Attaches an Android Debug Bridge (ADB) key pair to one or more cloud phone instances.
+// Attaches an ADB key pair to one or more cloud phone instances.
 //
 // Description:
 //
-// - You can attach to an ADB key pair only to cloud phone instances in the Running state.
+// - The ADB key pair takes effect only when the instance is in the Running state.
 //
-// - After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the \\~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
+// - After you attach the key pair, copy the private key of the key pair to the local folder where the key pair is stored (for macOS or Linux operating systems, the folder is ~/.android. For the Windows operating system, the folder is C:\\Users\\Username\\.android.), and invoke the adb kill-server command to restart the ADB process. This ensures normal ADB connections. Otherwise, the ADB connection authentication may be failed.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -119,13 +119,13 @@ func (client *Client) AttachKeyPairWithContext(ctx context.Context, request *Att
 
 // Summary:
 //
-// Authorize/unauthorize Android instances for users.
+// Assigns a user to or unassigns a user from a cloud phone instance. Currently, each cloud phone instance supports only one assigned user.
 //
 // Description:
 //
-// Instance states that support user assignment: Available, Shutting Down, Stopped, Starting, Backing Up, Restoring, Backup Failed, Restore Failed.
+// Instance statuses that support user assignment: Available, Shutting down, Stopped, Starting, Backing up, Restoring, Backup failed, and Restoration failed.
 //
-// Instance states that support unassignment: Available, Shutting Down, Stopped, Starting, Backing Up, Restoring, Backup Failed, Restore Failed, Expired, Overdue, Deleted.
+// Instance statuses that support user unassignment: Available, Shutting down, Stopped, Starting, Backing up, Restoring, Backup failed, Restoration failed, Expired, Overdue payment, and Deleted.
 //
 // @param request - AuthorizeAndroidInstanceRequest
 //
@@ -177,15 +177,15 @@ func (client *Client) AuthorizeAndroidInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates a full backup of a Cloud Phone instance. The backup includes installed applications and properties.
+// Creates a full backup of a cloud phone instance, including installed applications and properties.
 //
 // Description:
 //
-// 1. To ensure that the backup is successful, shut down the instance before you start the data backup. The operation may fail if the cloud phone instance is used during the backup process.
+// 1. To ensure a high success rate, back up data after the instance is shut down. Operating the cloud phone during the backup process may cause the backup to fail.
 //
-// 2. You should test the backup file to ensure that you can restore the instance from it. After the restoration is complete, verify that your data is complete and that all features function correctly. Do not delete the original backup file or reset the source instance until this verification is complete. Otherwise, you may lose your data.
+// 2. Ensure that the backup file can be restored properly. After the restoration is complete, check and verify that all data is intact and functions are working properly before deleting the original backup file and resetting the source instance. Otherwise, data loss may occur.
 //
-// 3. You cannot back up and restore data between different image versions, between custom images and public images, or across different architectures, such as cpm.gx7.10xlarge and cpm.gx8.16xlarge.
+// 3. Backup and restoration across different image versions are not supported. Backup and restoration between custom images and public images are not supported. Backup and restoration across different architectures (cpm.gx7.10xlarge and cpm.gx8.16xlarge) are not supported.
 //
 // @param request - BackupAndroidInstanceRequest
 //
@@ -214,6 +214,10 @@ func (client *Client) BackupAndroidInstanceWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExcludeAppList) {
+		query["ExcludeAppList"] = request.ExcludeAppList
 	}
 
 	if !dara.IsNil(request.UploadEndpoint) {
@@ -245,15 +249,15 @@ func (client *Client) BackupAndroidInstanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Backs up specified applications on a cloud phone instance. The backup includes the application and its cache.
+// Backs up specified applications on cloud phone instances, including the applications and application caches.
 //
 // Description:
 //
-// 1. Shut down the cloud phone instance before you back up data to ensure that the operation succeeds. Using the cloud phone during a backup may cause the operation to fail.
+// 1. To ensure a high success rate, back up data after the cloud phone is shut down. Operating the cloud phone during the backup process may cause the backup to fail.
 //
-// 2. Ensure that the backup file can be used to restore the instance successfully. After you restore from a backup, verify that your data is complete and that all features are working correctly. Do not delete the original backup file or reset the source instance until you complete this verification. Failure to do so may result in data loss.
+// 2. Make sure that your backup files can be restored properly. After the restoration is complete, check and verify that all your data is intact and all features work as expected before you delete the original backup files or reset the source instance. Otherwise, your data may be lost.
 //
-// 3. Backup and restore operations are not suppported across different image versions, between custom images and public images, or across different architectures, such as cpm.gx7.10xlarge and cpm.gx8.16xlarge.
+// 3. Backup and restoration are not supported across different image versions, between custom images and public images, or across different architectures (such as cpm.gx7.10xlarge and cpm.gx8.16xlarge).
 //
 // @param request - BackupAppRequest
 //
@@ -317,11 +321,11 @@ func (client *Client) BackupAppWithContext(ctx context.Context, request *BackupA
 
 // Summary:
 //
-// Generates a backup file and uploads it to remote storage. Scenarios: You can perform regular backups for data security, or back up files from one instance and recover them to multiple instances to achieve replication and migration.
+// Generates a backup file and uploads it to remote storage. Scenarios: You can perform regular backups for data security, or back up files from a single instance and recover them to multiple instances to achieve an effect similar to replication and migration.
 //
 // Description:
 //
-// Currently, backup files generated by cloud phones can only be stored in Object Storage Service (OSS).
+// Currently, backup files generated by Cloud Phone can only be saved to Object Storage Service (OSS).
 //
 // @param request - BackupFileRequest
 //
@@ -354,6 +358,10 @@ func (client *Client) BackupFileWithContext(ctx context.Context, request *Backup
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExcludeAppList) {
+		query["ExcludeAppList"] = request.ExcludeAppList
 	}
 
 	if !dara.IsNil(request.ExcludeSourceFilePathList) {
@@ -477,7 +485,7 @@ func (client *Client) BatchGetAcpConnectionTicketWithContext(ctx context.Context
 
 // Summary:
 //
-// Cancels running agent tasks on a mobile node.
+// Cancels running agent tasks on Mobile nodes.
 //
 // @param request - CancelAgentTaskRequest
 //
@@ -605,7 +613,7 @@ func (client *Client) ChangeCloudPhoneNodeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Checks the inventory status of cloud phone resources. Before creating an instance, you can use this operation to check whether the inventory in the target region is sufficient, and then proceed with creation after confirmation.
+// Checks the inventory status of cloud phone resources. Before creating an instance, you can call this operation to check whether the inventory in the target region is sufficient.
 //
 // @param request - CheckResourceStockRequest
 //
@@ -1357,7 +1365,7 @@ func (client *Client) CreateCreditPackageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a custom image from a cloud phone instance. Then, you can use the image to create more cloud phones with the same configuration.
+// Creates a custom image from a cloud phone instance. You can use the custom image to create more cloud phones with the same configuration.
 //
 // @param request - CreateCustomImageRequest
 //
@@ -1413,11 +1421,11 @@ func (client *Client) CreateCustomImageWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Places an order to purchase an edge agent package.
+// Purchases an edge agent package.
 //
 // Description:
 //
-// This operation involves billing. Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://www.alibabacloud.com/help/en/ecp/jvs-mobile-billing-instructions) of WUYING Cloud Phone.
+// This operation involves billing. Make sure that you fully understand the [billing methods and pricing](https://www.alibabacloud.com/help/en/ecp/jvs-mobile-billing-instructions) of WUYING Cloud Phone before you call this operation.
 //
 // @param request - CreateEdgeMobileAgentPackageRequest
 //
@@ -1493,13 +1501,11 @@ func (client *Client) CreateEdgeMobileAgentPackageWithContext(ctx context.Contex
 
 // Summary:
 //
-// You can connect to Cloud Phones using the Android Debug Bridge (ADB). ADB lets you manage devices and applications, and transfer files. These operations require high permissions. Because Cloud Phones do not have physical interfaces, you cannot use a USB connection to trigger an authorization dialog box on the device. Therefore, you must configure a key pair before you connect to a Cloud Phone with ADB over a network. This key pair ensures that the device trusts the client and that all operations are secure. You can call the CreateKeyPair operation to create an ADB key pair. The system stores the public key and returns the private key. The private key is in PEM-encoded PKCS#8 format and complies with ADB connection standards. You must securely store the private key.
+// Creates an ADB key pair. You can use ADB to connect to a cloud phone for device management, application management, and file transfers. ADB operations require elevated permissions. Cloud phones lack physical interfaces, so you cannot trigger a device-side authorization dialog box over USB. Therefore, when ADB connects to a cloud phone over a network, you must configure a key pair in advance to establish trust between the device and the client and ensure secure operations. You can invoke the CreateKeyPair operation to create an ADB key pair. The system stores the public key and returns the private key in the PKCS#8 format with PEM encoding that complies with ADB connection specifications. You must securely store the private key.
 //
 // Description:
 //
-// You can also use the Android Debug Bridge (ADB) tool to create a key pair and then upload it to the Cloud Phone console by calling the [](t2729840.xdita#)operation. This key pair can be used in the same way as a key pair created by the system.
-//
-// Each tenant can have a maximum of 500 key pairs.
+// In addition to calling CreateKeyPair, you can use the ADB tool to create a key pair and upload it to the Wuying Cloud Phone console by calling [ImportKeyPair](https://help.aliyun.com/document_detail/2807340.html). The uploaded key pair works the same way as a system-generated key pair. Each tenant can create a maximum of 500 key pairs.
 //
 // @param request - CreateKeyPairRequest
 //
@@ -1719,7 +1725,7 @@ func (client *Client) CreateMobileAgentTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a policy that applies unified settings to cloud phones. These settings include features such as network redirection, watermarks, resolution, and the clipboard.
+// Creates a policy. Policies are used to configure unified settings for cloud phones, such as network redirection policies, watermarks, resolution, and clipboard settings.
 //
 // @param tmpReq - CreatePolicyGroupRequest
 //
@@ -2049,13 +2055,13 @@ func (client *Client) DeleteAgentSkillWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes an Android instance group. All instances in the group are also deleted. This operation cannot be undone. Proceed with caution.
+// Deletes a cloud phone instance group. All instances in the instance group are also deleted and cannot be recovered. Proceed with caution.
 //
 // Description:
 //
-// Pay-as-you-go instance groups can be deleted at any time.
+// Pay-as-you-go instance groups can be deleted directly.
 //
-// Subscription instance groups can be deleted only after they expire.
+// Subscription instance groups can be deleted only after they expire. Only subscription instance groups in the Expired state can be deleted.
 //
 // @param request - DeleteAndroidInstanceGroupRequest
 //
@@ -2099,7 +2105,7 @@ func (client *Client) DeleteAndroidInstanceGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes an application. Before you delete an application, make sure that the application is not installed on any instances.
+// Deletes an application. Ensure that the application is not installed on any instance group before deletion.
 //
 // @param request - DeleteAppsRequest
 //
@@ -2289,13 +2295,13 @@ func (client *Client) DeleteImagesWithContext(ctx context.Context, tmpReq *Delet
 
 // Summary:
 //
-// Deletes Android Debug Bridge (ADB) key pairs.
+// Deletes a cloud phone key pair.
 //
 // Description:
 //
-//	  If a cloud phone instance is currently associated with the ADB key pair you intend to delete, the ADB key pair cannot be deleted.
+// - If an ADB key pair is already attached to a cloud phone instance, the key pair cannot be deleted.
 //
-//		- Once an ADB key pair is deleted, it cannot be retrieved or queried by using the DescribeKeyPairs operation.
+// - After an ADB key pair is deleted, it can no longer be queried by calling DescribeKeyPairs.
 //
 // @param request - DeleteKeyPairsRequest
 //
@@ -2383,11 +2389,11 @@ func (client *Client) DeleteMobileAgentPackageWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes one or more policy groups.
+// Deletes one or more policies.
 //
 // Description:
 //
-// A policy group cannot be deleted if it is associated with an instance group.
+// You cannot delete a policy if it is associated with an undeleted instance group.
 //
 // @param request - DeletePolicyGroupRequest
 //
@@ -2971,7 +2977,7 @@ func (client *Client) DescribeBackupFilesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 带宽包询价
+// Queries the price of a cloud phone bandwidth plan.
 //
 // @param request - DescribeBandwidthPackagePriceRequest
 //
@@ -3087,7 +3093,7 @@ func (client *Client) DescribeBucketsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 云手机节点询价
+// Queries the purchase price of a cloud phone matrix.
 //
 // @param request - DescribeCloudPhoneNodePriceRequest
 //
@@ -3175,7 +3181,7 @@ func (client *Client) DescribeCloudPhoneNodePriceWithContext(ctx context.Context
 
 // Summary:
 //
-// 云手机节点续费询价
+// Queries the renewal price of a cloud phone matrix.
 //
 // @param request - DescribeCloudPhoneNodeRenewPriceRequest
 //
@@ -3451,7 +3457,7 @@ func (client *Client) DescribeCreditPackageWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 积分包询价
+// Queries the prices of AI credit boost packages for Cloud Phone.
 //
 // @param request - DescribeCreditPackagePriceRequest
 //
@@ -3701,7 +3707,7 @@ func (client *Client) DescribeImageListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询安卓实例组价格
+// Queries the price of an instance group.
 //
 // @param request - DescribeInstanceGroupPriceRequest
 //
@@ -3897,7 +3903,7 @@ func (client *Client) DescribeInvocationsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries JVS instance information.
+// Queries the details of JVS instances.
 //
 // @param request - DescribeJVSInstanceRequest
 //
@@ -4291,7 +4297,7 @@ func (client *Client) DescribeMobileAgentPackageWithContext(ctx context.Context,
 
 // Summary:
 //
-// mobileAgent套餐包询价
+// Queries the pricing of MobileAgent packages.
 //
 // @param request - DescribeMobileAgentPackagePriceRequest
 //
@@ -4359,7 +4365,7 @@ func (client *Client) DescribeMobileAgentPackagePriceWithContext(ctx context.Con
 
 // Summary:
 //
-// # MobileAgent套餐包续费询价
+// Queries the renewal price of MobileAgent resource plans.
 //
 // @param request - DescribeMobileAgentPackagePriceForRenewRequest
 //
@@ -6853,11 +6859,11 @@ func (client *Client) ModifySystemPropertyTemplateWithContext(ctx context.Contex
 
 // Summary:
 //
-// Operates apps in a cloud phone, such as opening, closing, and reopening apps.
+// Starts, stops, or restarts applications in a cloud phone.
 //
 // Description:
 //
-// This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [](t2740507.xdita#)operation.
+// This API operation is asynchronous. You can view the operation results in the task center. To query tasks, call the [DescribeTasks](~~DescribeTasks~~) operation.
 //
 // @param request - OperateAppRequest
 //
@@ -7013,7 +7019,7 @@ func (client *Client) RebootAndroidInstancesInGroupWithContext(ctx context.Conte
 
 // Summary:
 //
-// 重启矩阵
+// Restarts cloud phone matrices.
 //
 // @param request - RebootCloudPhoneNodesRequest
 //
@@ -7061,13 +7067,13 @@ func (client *Client) RebootCloudPhoneNodesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Restores a full instance backup to another cloud phone instance.
+// Restores a backup file of a cloud phone instance generated from a full-device backup to another cloud phone instance.
 //
 // Description:
 //
-// 1. When you restore a full instance, the system restarts the instance to ensure a successful restoration. A restart is not required if you restore only applications and data. Make sure the instance is in an active state. Do not perform any operations on the instance during the restoration process. Otherwise, the restoration may fail.
+// 1. To ensure a high success rate, the cloud phone is restarted during a full-device restore. App and data restoration does not require a restart. Make sure your cloud phone is available and do not operate it during the restoration process. Otherwise, the restoration may fail.
 //
-// 2. Ensure that the backup file can be used to restore the instance properly. After a restoration is complete, check that all your data is complete and all features are working properly. Do not delete the original backup file or reset the source instance until you have verified the restored data. Otherwise, you may lose your data.
+// 2. Make sure your backup file can be restored properly. After the restoration is complete, check and verify that all your data is intact and functions are working properly before you delete the original backup file or reset the source instance. Otherwise, your data may be lost.
 //
 // @param request - RecoverAndroidInstanceRequest
 //
@@ -7092,6 +7098,10 @@ func (client *Client) RecoverAndroidInstanceWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.BackupFilePath) {
 		query["BackupFilePath"] = request.BackupFilePath
+	}
+
+	if !dara.IsNil(request.ExcludeAppList) {
+		query["ExcludeAppList"] = request.ExcludeAppList
 	}
 
 	if !dara.IsNil(request.UploadEndpoint) {
@@ -7195,11 +7205,11 @@ func (client *Client) RecoverAppWithContext(ctx context.Context, request *Recove
 
 // Summary:
 //
-// Restores backup files.
+// Restores a backup file.
 //
 // Description:
 //
-// Currently, this operation allows you to restore only backup files generated by cloud phones that are stored in Object Storage Service (OSS) buckets.
+// Currently, only backup files generated by cloud phones and saved in Object Storage Service (OSS) are supported.
 //
 // @param request - RecoveryFileRequest
 //
@@ -7228,6 +7238,10 @@ func (client *Client) RecoveryFileWithContext(ctx context.Context, request *Reco
 
 	if !dara.IsNil(request.BackupFilePath) {
 		query["BackupFilePath"] = request.BackupFilePath
+	}
+
+	if !dara.IsNil(request.ExcludeAppList) {
+		query["ExcludeAppList"] = request.ExcludeAppList
 	}
 
 	if !dara.IsNil(request.UploadEndpoint) {
@@ -7263,7 +7277,7 @@ func (client *Client) RecoveryFileWithContext(ctx context.Context, request *Reco
 
 // Summary:
 //
-// Refreshes model authentication tokens.
+// Refreshes the model authentication tokens.
 //
 // @param request - RefreshAuthTokensRequest
 //
@@ -7855,11 +7869,11 @@ func (client *Client) RunSyncCommandWithContext(ctx context.Context, request *Ru
 
 // Summary:
 //
-// Pushes files from Object Storage Service (OSS) or a public download link to one or more cloud phones.
+// Pushes files from OSS or public download URLs to cloud phones.
 //
 // Description:
 //
-// Use this operation to send files or folders from Object Storage Service (OSS) to cloud phones.
+// Currently, only files or folders from Object Storage Service (OSS) can be sent to cloud phones.
 //
 // @param request - SendFileRequest
 //
@@ -7935,7 +7949,7 @@ func (client *Client) SendFileWithContext(ctx context.Context, request *SendFile
 
 // Summary:
 //
-// Sends a property template to cloud phone instances and, based on the template, sets properties in the Android system using the setprop command. An APK or a related program can read these property values. If you specify multiple template IDs, the property templates are randomly sent to the cloud phone instances.
+// Sends property templates. The templates are delivered to cloud phones and configured in the Android system of the cloud phones by using the setprop command. APKs or related applications can read these property values. If multiple template IDs are specified, the property templates and cloud phone instances are randomly matched.
 //
 // @param request - SendSystemPropertyTemplateRequest
 //
@@ -7989,11 +8003,11 @@ func (client *Client) SendSystemPropertyTemplateWithContext(ctx context.Context,
 
 // Summary:
 //
-// Sets the authentication status for cloud phone instances. If you enable Android Debug Bridge (ADB) authentication for cloud phone instances, the system will verify the validity of the ADB key pairs provided by end users when they connect to the instances over ADB. To ensure successful authentication and a proper connection, we recommend that you attach ADB key pairs to cloud phone instances. If you disable ADB authentication for cloud phone instances, the system will no longer verify the validity of any ADB key pairs. As a result, end users can connect to the cloud phone instances over ADB without authentication, provided the network connection is functioning properly.
+// Sets the ADB authentication status of an instance. If ADB authentication is enabled, the cloud phone instance verifies the validity of the ADB key pair when you connect to the instance over ADB. In this case, bind an ADB key pair before connecting to the cloud phone instance over ADB. If ADB authentication is disabled, the cloud phone instance does not verify the validity of the ADB key pair. You can connect to the cloud phone instance over ADB as long as network connectivity is available.
 //
 // Description:
 //
-// Before you call this operation, make sure that the desired cloud phone instance is in the Running state.
+// The ADB authentication settings take effect only when the instance is in the Running state.
 //
 // @param request - SetAdbSecureRequest
 //
@@ -8041,19 +8055,19 @@ func (client *Client) SetAdbSecureWithContext(ctx context.Context, request *SetA
 
 // Summary:
 //
-// Adds or purges IP addresses and domain names from the network access blacklist.
+// Updates the network access blacklist by adding or clearing IP addresses and domain names.
 //
 // Description:
 //
-// - This operation requires image version 26.01 or later.
+// - The image version must be 26.01 or later.
 //
-// - This API call synchronously updates the IP address blacklist and the domain name blacklist.
+// - This operation supports synchronous updates of the IP address blacklist and the domain name blacklist.
 //
-// - The IP address blacklist supports individual IP addresses and IP address segments. The update overwrites the existing configuration. If you pass an empty string (""), all configured IP blacklist entries are purged.
+// - The IP address blacklist supports single IP addresses and CIDR blocks and uses an overwrite update method. If an empty string "" is specified, all configured IP blacklist entries are cleared.
 //
-// - The domain name blacklist supports only exact matches and does not support regular expressions. If you pass an empty string (""), all configured domain name blacklist entries are purged.
+// - The domain name blacklist supports only exact match and does not support regular expressions. If an empty string "" is specified, all configured domain name blacklist entries are cleared.
 //
-// - After you change the configuration, restart the cloud phone to apply the new blacklist rules. Note that these rules may not take effect if you use an agent.
+// - After the configuration is changed, you must restart the cloud phone for the new blacklist rules to take effect. Note that these rules may not take effect when a proxy is used.
 //
 // @param request - SetNetworkBlacklistRequest
 //
@@ -8101,11 +8115,11 @@ func (client *Client) SetNetworkBlacklistWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Start cloud phone instances.
+// Starts a cloud phone instance.
 //
 // Description:
 //
-// Only supports starting when the instance is in the **Stopped, Backup Failed, or Recovery Failed*	- state.
+// You can start an instance only when it is in the **Stopped, Backup Failed, or Recovery Failed*	- state.
 //
 // @param request - StartAndroidInstanceRequest
 //
@@ -8153,11 +8167,11 @@ func (client *Client) StartAndroidInstanceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Enables the Android Debug Bridge (ADB) connection for an instance and creates an Internet mapping rule for its ADB port. This feature is available only for standard networks.
+// Enables the ADB connection feature for instances and creates public network mapping rules for the ADB ports of the instances (standard network only).
 //
 // Description:
 //
-// This feature can be enabled when the instance is not in the **UNAVAILABLE*	- state and has a **private IP address*	- assigned.
+// This feature can be enabled only when the instance is in the **non-exception*	- (**UNAVAILABLE**) state and has been successfully assigned a **private IP address**.
 //
 // @param request - StartInstanceAdbRequest
 //
@@ -8301,7 +8315,7 @@ func (client *Client) StopInstanceAdbWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// Adds tags to one or more cloud phones.
+// Adds tags to cloud phones.
 //
 // @param request - TagResourcesRequest
 //
@@ -8505,7 +8519,7 @@ func (client *Client) UninstallSkillsWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Removes tags from cloud phones. If a tag is no longer associated with any cloud phone after it is removed, the tag is automatically deleted.
+// Removes tags from cloud phones. After a tag is removed, if it is not added to any cloud phone, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -8661,11 +8675,11 @@ func (client *Client) UpdateCustomImageNameWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Updates the image of an instance group. This update affects all instances in the group.
+// Changes the image of an instance group. This change applies to all instances in the instance group.
 //
 // Description:
 //
-// The image and the instance group must be in the active state. The image must be available in the same region as the instance group.
+// The image must be in the Available state and available in the region where the instance group is located. The instance group must be in the Available state.
 //
 // @param request - UpdateInstanceGroupImageRequest
 //

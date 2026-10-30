@@ -16,13 +16,13 @@ type iUpdateCustomImageNameRequest interface {
 }
 
 type UpdateCustomImageNameRequest struct {
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// imgc-075cllfeuazh0****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//

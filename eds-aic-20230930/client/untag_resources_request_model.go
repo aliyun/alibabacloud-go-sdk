@@ -20,19 +20,19 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the resources. This parameter applies only when TagKey.N is not specified. The default value is false.
+	// Specifies whether to remove all tags from the resources. This parameter takes effect only when TagKey.N is not specified. Default value: false.
 	//
 	// example:
 	//
 	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The IDs of the resources. You can specify 1 to 50 resource IDs.
+	// The list of resource IDs, which are cloud phone IDs. You can specify 1 to 50 IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource.
+	// The resource type. Valid values:
 	//
-	// Valid value: ALIYUN::ACP::INSTANCE, which represents a cloud phone.
+	// - ALIYUN::ACP::INSTANCE: Cloud phone.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type UntagResourcesRequest struct {
 	//
 	// ALIYUN::ACP::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The keys of the tags to remove. You can specify 1 to 20 tag keys.
+	// The tag keys. You can specify 1 to 20 tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

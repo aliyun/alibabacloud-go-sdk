@@ -16,9 +16,9 @@ type iSetAdbSecureRequest interface {
 }
 
 type SetAdbSecureRequest struct {
-	// The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
+	// The list of cloud phone instance IDs. Up to 50 instances are supported.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The status of the ADB authentication feature.
+	// The ADB authentication status.
 	//
 	// This parameter is required.
 	//

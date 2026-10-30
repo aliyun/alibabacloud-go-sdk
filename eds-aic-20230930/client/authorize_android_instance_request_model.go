@@ -18,15 +18,15 @@ type iAuthorizeAndroidInstanceRequest interface {
 }
 
 type AuthorizeAndroidInstanceRequest struct {
-	// List of instance IDs.
+	// The list of instance IDs.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
-	// User ID to be assigned.
+	// The ID of the user to assign.
 	//
 	// example:
 	//
 	// test
 	AuthorizeUserId *string `json:"AuthorizeUserId,omitempty" xml:"AuthorizeUserId,omitempty"`
-	// User ID to be unassigned.
+	// The ID of the user to unassign.
 	//
 	// example:
 	//

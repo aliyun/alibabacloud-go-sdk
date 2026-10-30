@@ -16,9 +16,9 @@ type iSetAdbSecureResponseBody interface {
 }
 
 type SetAdbSecureResponseBody struct {
-	// The returned object.
+	// The returned result object.
 	Data *SetAdbSecureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *SetAdbSecureResponseBody) Validate() error {
 }
 
 type SetAdbSecureResponseBodyData struct {
-	// The number of the cloud phone instances for which the ADB authentication feature failed to be enabled.
+	// The number of instances that failed to be configured.
 	//
 	// example:
 	//
 	// 0
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The IDs of the cloud phone instances for which the ADB authentication feature is enabled.
+	// The list of cloud phone instance IDs that were successfully configured.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The total number of the cloud phone instances.
+	// The total number of instances for which the configuration was attempted.
 	//
 	// example:
 	//

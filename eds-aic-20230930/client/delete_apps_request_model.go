@@ -14,7 +14,7 @@ type iDeleteAppsRequest interface {
 }
 
 type DeleteAppsRequest struct {
-	// The IDs of the applications.
+	// The list of application IDs.
 	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
 }
 

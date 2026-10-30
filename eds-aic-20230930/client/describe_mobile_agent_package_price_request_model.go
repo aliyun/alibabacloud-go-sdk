@@ -26,30 +26,48 @@ type iDescribeMobileAgentPackagePriceRequest interface {
 }
 
 type DescribeMobileAgentPackagePriceRequest struct {
+	// The number of MobileAgent packages.
+	//
 	// example:
 	//
 	// 1
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The region ID for the purchase.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The number of credits.
+	//
 	// example:
 	//
 	// 1000
 	CreditAmount *int32 `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	// The specifications of the MobileAgent package.
+	//
 	// example:
 	//
 	// advanced
 	MobileAgentPackageSpec *string `json:"MobileAgentPackageSpec,omitempty" xml:"MobileAgentPackageSpec,omitempty"`
+	// The subscription duration of the purchased resource. The unit is specified by PeriodUnit. Valid value: 1 month.
+	//
 	// example:
 	//
 	// 1
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The duration unit of the subscription billing method. Valid values:
+	//
+	// - **Year**: Year.
+	//
+	// - **Month*	- (default): Month.
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the promotion.
+	//
 	// example:
 	//
 	// 50003308011****
