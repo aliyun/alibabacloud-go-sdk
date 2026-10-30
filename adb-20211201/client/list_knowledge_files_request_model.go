@@ -13,6 +13,8 @@ type iListKnowledgeFilesRequest interface {
 	GetDBClusterId() *string
 	SetFileIds(v string) *ListKnowledgeFilesRequest
 	GetFileIds() *string
+	SetFileLocation(v string) *ListKnowledgeFilesRequest
+	GetFileLocation() *string
 	SetPage(v string) *ListKnowledgeFilesRequest
 	GetPage() *string
 	SetPageSize(v string) *ListKnowledgeFilesRequest
@@ -24,7 +26,7 @@ type iListKnowledgeFilesRequest interface {
 }
 
 type ListKnowledgeFilesRequest struct {
-	// The ADB instance ID.
+	// The ID of the ADB instance.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +40,19 @@ type ListKnowledgeFilesRequest struct {
 	//
 	// [1001,1002,1003]
 	FileIds *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
-	// The page number, starting from 1. If this parameter is not specified, the default value is 1.
+	// The URL of the knowledge base file.
+	//
+	// example:
+	//
+	// oss://bucket_name/path/to/file
+	FileLocation *string `json:"FileLocation,omitempty" xml:"FileLocation,omitempty"`
+	// The page number. Pages start from 1. If you do not specify this parameter, the default value is 1.
 	//
 	// example:
 	//
 	// 1
 	Page *string `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. If this parameter is not specified, the default value is 20.
+	// The number of entries per page. Valid values: 1 to 100. If you do not specify this parameter, the default value is 20.
 	//
 	// example:
 	//
@@ -56,7 +64,7 @@ type ListKnowledgeFilesRequest struct {
 	//
 	// FAILED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The stable ID of the authorized user. If this parameter is not specified, all files in the knowledge base can be queried.
+	// The stable ID of the authorized user. If you do not specify this parameter, all files in the knowledge base can be queried.
 	//
 	// example:
 	//
@@ -78,6 +86,10 @@ func (s *ListKnowledgeFilesRequest) GetDBClusterId() *string {
 
 func (s *ListKnowledgeFilesRequest) GetFileIds() *string {
 	return s.FileIds
+}
+
+func (s *ListKnowledgeFilesRequest) GetFileLocation() *string {
+	return s.FileLocation
 }
 
 func (s *ListKnowledgeFilesRequest) GetPage() *string {
@@ -103,6 +115,11 @@ func (s *ListKnowledgeFilesRequest) SetDBClusterId(v string) *ListKnowledgeFiles
 
 func (s *ListKnowledgeFilesRequest) SetFileIds(v string) *ListKnowledgeFilesRequest {
 	s.FileIds = &v
+	return s
+}
+
+func (s *ListKnowledgeFilesRequest) SetFileLocation(v string) *ListKnowledgeFilesRequest {
+	s.FileLocation = &v
 	return s
 }
 

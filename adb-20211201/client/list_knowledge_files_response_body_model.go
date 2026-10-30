@@ -82,17 +82,17 @@ type ListKnowledgeFilesResponseBodyData struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *ListKnowledgeFilesResponseBodyData) Validate() error {
 }
 
 type ListKnowledgeFilesResponseBodyDataFiles struct {
-	// The time when the file was added to the knowledge base. The format is yyyy-MM-dd HH:mm:ss.
+	// The time when the file was added to the knowledge base. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type ListKnowledgeFilesResponseBodyDataFiles struct {
 	//
 	// false
 	IsDirectory *bool `json:"IsDirectory,omitempty" xml:"IsDirectory,omitempty"`
-	// The file_id of the content host.
+	// The `file_id` of the content host.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type ListKnowledgeFilesResponseBodyDataFiles struct {
 	//
 	// 2
 	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	// The processing information of the knowledge base file.
+	// The processing message of the knowledge base file.
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ type ListKnowledgeFilesResponseBodyDataFiles struct {
 	//
 	// Finished
 	ProcessStatus *string `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	// The update time. The format is yyyy-MM-dd HH:mm:ss.
+	// The time when the file was updated. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//

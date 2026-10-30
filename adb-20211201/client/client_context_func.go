@@ -11177,6 +11177,66 @@ func (client *Client) ExistRunningSQLEngineWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Creates a reference record for a knowledge base file.
+//
+// @param request - ForkKnowledgeFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ForkKnowledgeFileResponse
+func (client *Client) ForkKnowledgeFileWithContext(ctx context.Context, request *ForkKnowledgeFileRequest, runtime *dara.RuntimeOptions) (_result *ForkKnowledgeFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.UploadUser) {
+		query["UploadUser"] = request.UploadUser
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ForkKnowledgeFile"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ForkKnowledgeFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates an executable SQL statement from a semantic SQL statement.
 //
 // @param request - GenerateSqlBySemanticSqlRequest
@@ -13358,6 +13418,10 @@ func (client *Client) ListKnowledgeFilesWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.FileIds) {
 		query["FileIds"] = request.FileIds
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
 	}
 
 	if !dara.IsNil(request.Page) {
@@ -17523,6 +17587,58 @@ func (client *Client) SuspendApsJobWithContext(ctx context.Context, request *Sus
 		BodyType:    dara.String("json"),
 	}
 	_result = &SuspendApsJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a reparse task for a knowledge base file.
+//
+// @param request - TriggerKnowledgeFileParseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TriggerKnowledgeFileParseResponse
+func (client *Client) TriggerKnowledgeFileParseWithContext(ctx context.Context, request *TriggerKnowledgeFileParseRequest, runtime *dara.RuntimeOptions) (_result *TriggerKnowledgeFileParseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TriggerKnowledgeFileParse"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TriggerKnowledgeFileParseResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

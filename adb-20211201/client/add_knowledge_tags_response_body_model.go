@@ -74,7 +74,7 @@ type AddKnowledgeTagsResponseBodyData struct {
 	//
 	// 1 tag skipped
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of tags that were successfully updated.
+	// The number of tags that were successfully modified.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type AddKnowledgeTagsResponseBodyData struct {
 	Replaced *int32 `json:"Replaced,omitempty" xml:"Replaced,omitempty"`
 	// The list of skipped tags.
 	Skipped []*AddKnowledgeTagsResponseBodyDataSkipped `json:"Skipped,omitempty" xml:"Skipped,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Valid values:
+	// Specifies whether the request was successful. Valid values:
 	//
 	// - **true**: The request was successful.
 	//

@@ -20,7 +20,7 @@ type iAddKnowledgeTagsRequest interface {
 }
 
 type AddKnowledgeTagsRequest struct {
-	// The database cluster ID.
+	// The ID of the database cluster.
 	//
 	// This parameter is required.
 	//
@@ -28,6 +28,8 @@ type AddKnowledgeTagsRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the file.
+	//
 	// example:
 	//
 	// 21321
