@@ -26,7 +26,7 @@ type GetWorkspaceAcrRamAuthorizeUrlRequest struct {
 	//
 	// cri-1234567890abcdef
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The target ACR namespace, which corresponds to artifact.container.namespace of the agent. This is not a Kubernetes namespace. This parameter, together with the instance and repository, determines the authorization scope.
+	// The target ACR namespace, which corresponds to artifact.container.namespace of the agent. This is not a Kubernetes namespace. It determines the authorization scope together with the instance and repository.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetWorkspaceAcrRamAuthorizeUrlRequest struct {
 	//
 	// example
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The name of the target repository, which corresponds to artifact.container.repo of the agent. The name cannot contain tags, namespaces, or path separators. Wildcards are not supported.
+	// The target repository name, which corresponds to artifact.container.repo of the agent. It does not include tags, namespaces, or path separators. Wildcards are not supported.
 	//
 	// This parameter is required.
 	//

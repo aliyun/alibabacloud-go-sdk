@@ -150,7 +150,7 @@ type GetWorkspaceAcrRamAuthorizeUrlResponseBodyData struct {
 	//
 	// cri-1234567890abcdef
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The RAM authorization URL used to create or append target ACR permissions for the shared role.
+	// The RAM authorization URL for creating or appending target ACR permissions for the shared role.
 	//
 	// This parameter is required.
 	//

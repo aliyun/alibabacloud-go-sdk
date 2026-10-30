@@ -44,7 +44,7 @@ type UpdateCustomAgentResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message that describes the processing result of the request. The value is success if the request is successful.
+	// The description of the processing result for the request. The value is success when the request is successful.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type UpdateCustomAgentResponseBody struct {
 	//
 	// 550E8400-E29B-41D4-A716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
+	// Specifies whether the request was processed successfully. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
 	//
 	// This parameter is required.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
@@ -138,7 +138,7 @@ func (s *UpdateCustomAgentResponseBody) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodyData struct {
-	// The unique identifier of the custom agent. You can obtain this identifier from the response of the CreateCustomAgent or ListCustomAgents operation.
+	// The unique identifier of the custom agent. You can obtain this identifier from the response of CreateCustomAgent or ListCustomAgents.
 	//
 	// This parameter is required.
 	//
@@ -152,31 +152,35 @@ type UpdateCustomAgentResponseBodyData struct {
 	Artifact *UpdateCustomAgentResponseBodyDataArtifact `json:"artifact,omitempty" xml:"artifact,omitempty" type:"Struct"`
 	// The currently saved code package information.
 	CodePackageInfo *UpdateCustomAgentResponseBodyDataCodePackageInfo `json:"codePackageInfo,omitempty" xml:"codePackageInfo,omitempty" type:"Struct"`
-	// The creation method of the agent. A value of CUSTOM is returned for custom agents.
+	// The creation method of the agent. The value is CUSTOM for custom agents.
 	//
 	// example:
 	//
 	// CUSTOM
 	CreateMode *string `json:"createMode,omitempty" xml:"createMode,omitempty"`
-	// The time when the agent was created. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
+	// The time when the agent was created. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
 	//
 	// example:
 	//
 	// 2026-10-10T06:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The deployment method of the agent. Custom agents are deployed and managed by the platform. A value of MANAGED is returned.
+	// The image source snapshot of the current valid configuration version. The value is null before the initial configuration takes effect. This field does not indicate the health status.
+	CurrentImage *UpdateCustomAgentResponseBodyDataCurrentImage `json:"currentImage,omitempty" xml:"currentImage,omitempty" type:"Struct"`
+	// The recently saved source and the verified username of the source. The source may be in preparation or failed. The password is not returned.
+	CustomImage *UpdateCustomAgentResponseBodyDataCustomImage `json:"customImage,omitempty" xml:"customImage,omitempty" type:"Struct"`
+	// The deployment method of the agent. Custom agents are deployed and managed by the platform, and MANAGED is returned.
 	//
 	// example:
 	//
 	// MANAGED
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
-	// The description of the agent.
+	// The description of the agent\\"s purpose.
 	//
 	// example:
 	//
 	// Custom agent that provides conversation services
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The effective configuration version.
+	// The active configuration version.
 	//
 	// This parameter is required.
 	//
@@ -189,7 +193,7 @@ type UpdateCustomAgentResponseBodyData struct {
 	EffectiveSpecVersion *int64 `json:"effectiveSpecVersion,omitempty" xml:"effectiveSpecVersion,omitempty"`
 	// The environment variable configuration for the agent process.
 	Environment *UpdateCustomAgentResponseBodyDataEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The HTTP health check configuration of the agent. This parameter is empty if no health check is configured.
+	// The HTTP health check configuration for the agent. This is empty if not configured.
 	HealthCheck *UpdateCustomAgentResponseBodyDataHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty" type:"Struct"`
 	// The ID of the currently associated image cache.
 	//
@@ -202,11 +206,13 @@ type UpdateCustomAgentResponseBodyData struct {
 	//
 	// img-example
 	ImageCacheId *string `json:"imageCacheId,omitempty" xml:"imageCacheId,omitempty"`
-	// The cache preparation acceptance summary for this request.
+	// The acceptance summary for the current cache preparation.
 	ImageCachePreparation *UpdateCustomAgentResponseBodyDataImageCachePreparation `json:"imageCachePreparation,omitempty" xml:"imageCachePreparation,omitempty" type:"Struct"`
-	// The waiting or execution error of the latest configuration version. This field is returned only when the version is waiting for a retry or fails to execute.
+	// The currently associated image preparation task. The phase indicates the acceptance prompt. Query the preparation API for real-time progress. A standard save operation does not create an image preparation task.
+	ImagePreparation *UpdateCustomAgentResponseBodyDataImagePreparation `json:"imagePreparation,omitempty" xml:"imagePreparation,omitempty" type:"Struct"`
+	// The waiting or execution error of the latest configuration version. This is returned only when the version is waiting for a retry or fails to execute.
 	LatestExecutionError *UpdateCustomAgentResponseBodyDataLatestExecutionError `json:"latestExecutionError,omitempty" xml:"latestExecutionError,omitempty" type:"Struct"`
-	// The current latest configuration version number. Updates to the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
+	// The latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
 	//
 	// This parameter is required.
 	//
@@ -214,19 +220,19 @@ type UpdateCustomAgentResponseBodyData struct {
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The execution status corresponding to latestSpecVersion. Valid values:
+	// The execution status corresponding to the latestSpecVersion. Valid values:
 	//
-	// - pending: waiting for execution
+	// - pending: Waiting for execution.
 	//
-	// - processing: executing
+	// - processing: Executing.
 	//
-	// - waiting_retry: waiting for retry
+	// - waiting_retry: Waiting for a retry.
 	//
-	// - succeeded: executed successfully
+	// - succeeded: Executed successfully.
 	//
-	// - failed: execution failed
+	// - failed: Execution failed.
 	//
-	// - superseded: superseded by a subsequent version
+	// - superseded: Superseded by a subsequent version.
 	//
 	// if can be null:
 	// true
@@ -235,7 +241,7 @@ type UpdateCustomAgentResponseBodyData struct {
 	//
 	// succeeded
 	LatestVersionStatus *string `json:"latestVersionStatus,omitempty" xml:"latestVersionStatus,omitempty"`
-	// The latest submitted log delivery configuration.
+	// The recently submitted log delivery configuration.
 	Logging *UpdateCustomAgentResponseBodyDataLogging `json:"logging,omitempty" xml:"logging,omitempty" type:"Struct"`
 	// The custom agent name.
 	//
@@ -245,11 +251,11 @@ type UpdateCustomAgentResponseBodyData struct {
 	//
 	// my-custom-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network access configuration of the agent. The actual access scope is also limited by the network configuration of the workspace.
+	// The network access configuration of the agent. The actual access scope is also restricted by the network configuration of the workspace.
 	Network *UpdateCustomAgentResponseBodyDataNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
 	// The high-code agent observability configuration.
 	Observability *UpdateCustomAgentResponseBodyDataObservability `json:"observability,omitempty" xml:"observability,omitempty" type:"Struct"`
-	// The latest submitted list of OSS directory mounts.
+	// The list of OSS directory mounts in the latest submission.
 	OssMounts []*UpdateCustomAgentResponseBodyDataOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The list of invocation protocol configurations for the agent.
 	Protocol []*UpdateCustomAgentResponseBodyDataProtocol `json:"protocol,omitempty" xml:"protocol,omitempty" type:"Repeated"`
@@ -265,9 +271,9 @@ type UpdateCustomAgentResponseBodyData struct {
 	//
 	// acs:ram::1234567890123456:role/agentcore-runtime-role
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The latest committed runtime configuration, including compute specifications, session policy, and elastic policy.
+	// The runtime configuration in the latest commit, including compute specifications, session policy, and elastic policy.
 	Runtime *UpdateCustomAgentResponseBodyDataRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// The instance counts grouped by sandbox phase. Keys include PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed). Only phases that actually occur are returned. Missing keys are treated as 0.
+	// The count of runtime instances by phase. Keys include PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed). Only phases that actually occur are returned. Missing keys are treated as 0.
 	SandboxPhaseCounts map[string]*int64 `json:"sandboxPhaseCounts,omitempty" xml:"sandboxPhaseCounts,omitempty"`
 	// The overall status of the agent. Valid values: Creating: The agent is being created. Running: The agent is running. Failed: The agent failed. Updating: The agent is being updated. Deleting: The agent is being deleted. Deleted: The agent is deleted. To check the execution progress of the latest configuration, query latestVersionStatus.
 	//
@@ -283,7 +289,7 @@ type UpdateCustomAgentResponseBodyData struct {
 	//
 	// 2026-10-10T06:05:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// Specifies whether the image cache is enabled.
+	// The image cache switch.
 	//
 	// This parameter is required.
 	//
@@ -333,6 +339,14 @@ func (s *UpdateCustomAgentResponseBodyData) GetCreatedAt() *string {
 	return s.CreatedAt
 }
 
+func (s *UpdateCustomAgentResponseBodyData) GetCurrentImage() *UpdateCustomAgentResponseBodyDataCurrentImage {
+	return s.CurrentImage
+}
+
+func (s *UpdateCustomAgentResponseBodyData) GetCustomImage() *UpdateCustomAgentResponseBodyDataCustomImage {
+	return s.CustomImage
+}
+
 func (s *UpdateCustomAgentResponseBodyData) GetDeployType() *string {
 	return s.DeployType
 }
@@ -359,6 +373,10 @@ func (s *UpdateCustomAgentResponseBodyData) GetImageCacheId() *string {
 
 func (s *UpdateCustomAgentResponseBodyData) GetImageCachePreparation() *UpdateCustomAgentResponseBodyDataImageCachePreparation {
 	return s.ImageCachePreparation
+}
+
+func (s *UpdateCustomAgentResponseBodyData) GetImagePreparation() *UpdateCustomAgentResponseBodyDataImagePreparation {
+	return s.ImagePreparation
 }
 
 func (s *UpdateCustomAgentResponseBodyData) GetLatestExecutionError() *UpdateCustomAgentResponseBodyDataLatestExecutionError {
@@ -459,6 +477,16 @@ func (s *UpdateCustomAgentResponseBodyData) SetCreatedAt(v string) *UpdateCustom
 	return s
 }
 
+func (s *UpdateCustomAgentResponseBodyData) SetCurrentImage(v *UpdateCustomAgentResponseBodyDataCurrentImage) *UpdateCustomAgentResponseBodyData {
+	s.CurrentImage = v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyData) SetCustomImage(v *UpdateCustomAgentResponseBodyDataCustomImage) *UpdateCustomAgentResponseBodyData {
+	s.CustomImage = v
+	return s
+}
+
 func (s *UpdateCustomAgentResponseBodyData) SetDeployType(v string) *UpdateCustomAgentResponseBodyData {
 	s.DeployType = &v
 	return s
@@ -491,6 +519,11 @@ func (s *UpdateCustomAgentResponseBodyData) SetImageCacheId(v string) *UpdateCus
 
 func (s *UpdateCustomAgentResponseBodyData) SetImageCachePreparation(v *UpdateCustomAgentResponseBodyDataImageCachePreparation) *UpdateCustomAgentResponseBodyData {
 	s.ImageCachePreparation = v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyData) SetImagePreparation(v *UpdateCustomAgentResponseBodyDataImagePreparation) *UpdateCustomAgentResponseBodyData {
+	s.ImagePreparation = v
 	return s
 }
 
@@ -599,6 +632,16 @@ func (s *UpdateCustomAgentResponseBodyData) Validate() error {
 			return err
 		}
 	}
+	if s.CurrentImage != nil {
+		if err := s.CurrentImage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomImage != nil {
+		if err := s.CustomImage.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Environment != nil {
 		if err := s.Environment.Validate(); err != nil {
 			return err
@@ -611,6 +654,11 @@ func (s *UpdateCustomAgentResponseBodyData) Validate() error {
 	}
 	if s.ImageCachePreparation != nil {
 		if err := s.ImageCachePreparation.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImagePreparation != nil {
+		if err := s.ImagePreparation.Validate(); err != nil {
 			return err
 		}
 	}
@@ -673,7 +721,7 @@ type UpdateCustomAgentResponseBodyDataAgenticFsMounts struct {
 	//
 	// workspace/data
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. A value of true indicates a read-only mount. A value of false indicates a read-write mount.
+	// Specifies whether the mount is read-only. A value of true indicates a read-only mount, and a value of false indicates a read-write mount.
 	//
 	// example:
 	//
@@ -740,7 +788,7 @@ type UpdateCustomAgentResponseBodyDataArtifact struct {
 	Code *UpdateCustomAgentResponseBodyDataArtifactCode `json:"code,omitempty" xml:"code,omitempty" type:"Struct"`
 	// The latest submitted ACR container image configuration.
 	Container *UpdateCustomAgentResponseBodyDataArtifactContainer `json:"container,omitempty" xml:"container,omitempty" type:"Struct"`
-	// The TCP port listened on by the agent service.
+	// The TCP port on which the agent service listens.
 	//
 	// This parameter is required.
 	//
@@ -800,7 +848,7 @@ func (s *UpdateCustomAgentResponseBodyDataArtifact) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodyDataArtifactCode struct {
-	// The startup command for the code package. This field is required in code package mode. The working directory is the extracted code root directory /code, such as python main.py. Quotes and escapes are supported. Environment variables, pipes, and logical operations are not automatically expanded. For complex commands, use scripts within the package.
+	// The startup command for the code package. This field is required in code package mode. The working directory is the extracted code root directory /code, such as python main.py. Quotes and escapes are supported. Environment variables, pipes, and logical operations are not automatically expanded. Use scripts within the package for complex commands.
 	//
 	// This parameter is required.
 	//
@@ -816,7 +864,7 @@ type UpdateCustomAgentResponseBodyDataArtifactCode struct {
 	//
 	// python3.12
 	LanguageRuntime *string `json:"languageRuntime,omitempty" xml:"languageRuntime,omitempty"`
-	// The oss:// address of the platform-fixed code package referenced by the currently saved configuration. This address does not include the signature parameters of the source HTTPS link. You can use this address to reuse existing code packages. To download the content, call GetAgentCodePackageDownloadUrl.
+	// The oss:// address of the platform-fixed code package referenced in the currently saved configuration. This address does not include the signature parameters of the source HTTPS link. You can use this address to reuse an existing code package. To download the content, call GetAgentCodePackageDownloadUrl.
 	//
 	// This parameter is required.
 	//
@@ -874,15 +922,11 @@ type UpdateCustomAgentResponseBodyDataArtifactContainer struct {
 	Entrypoint *string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty"`
 	// The ID of the ACR instance to which the image repository belongs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cri-a1b2c3d4e5f6
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The namespace to which the ACR image repository belongs.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -890,21 +934,17 @@ type UpdateCustomAgentResponseBodyDataArtifactContainer struct {
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	// The name of the image repository in the ACR namespace.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// chat-agent
 	Repo *string `json:"repo,omitempty" xml:"repo,omitempty"`
 	// The latest submitted image tag.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// v1.0.0
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The source type of the image. A value of acr indicates Alibaba Cloud Container Registry.
+	// The source type of the image. A value of acr indicates Alibaba Cloud Container Registry (ACR).
 	//
 	// This parameter is required.
 	//
@@ -1070,8 +1110,385 @@ func (s *UpdateCustomAgentResponseBodyDataCodePackageInfo) Validate() error {
 	return dara.Validate(s)
 }
 
+type UpdateCustomAgentResponseBodyDataCurrentImage struct {
+	// The original image address for the custom source.
+	//
+	// example:
+	//
+	// registry.example.com/team/agent:v1
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// The instance ID for the acr source.
+	//
+	// example:
+	//
+	// cri-example
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The namespace for the acr source.
+	//
+	// example:
+	//
+	// team
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The dedicated pull network for the custom source.
+	PullNetwork *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork `json:"pullNetwork,omitempty" xml:"pullNetwork,omitempty" type:"Struct"`
+	// The repository name for the acr source.
+	//
+	// example:
+	//
+	// agent
+	Repo *string `json:"repo,omitempty" xml:"repo,omitempty"`
+	// The certificate exception option for the custom source.
+	//
+	// example:
+	//
+	// false
+	SkipTlsVerify *bool `json:"skipTlsVerify,omitempty" xml:"skipTlsVerify,omitempty"`
+	// The image source type of the current valid version.
+	//
+	// example:
+	//
+	// custom
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The tag of the ACR source.
+	//
+	// example:
+	//
+	// v1
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The source snapshot from the current active configuration version. Omitted for anonymous sources. A new source failure does not overwrite this username, and the password is not returned.
+	//
+	// example:
+	//
+	// reader
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s UpdateCustomAgentResponseBodyDataCurrentImage) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateCustomAgentResponseBodyDataCurrentImage) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) GetImage() *string {
+	return s.Image
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) GetNamespace() *string {
+	return s.Namespace
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) GetPullNetwork() *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork {
+	return s.PullNetwork
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) GetRepo() *string {
+	return s.Repo
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) GetSkipTlsVerify() *bool {
+	return s.SkipTlsVerify
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) GetSourceType() *string {
+	return s.SourceType
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) GetTag() *string {
+	return s.Tag
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) GetUsername() *string {
+	return s.Username
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) SetImage(v string) *UpdateCustomAgentResponseBodyDataCurrentImage {
+	s.Image = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) SetInstanceId(v string) *UpdateCustomAgentResponseBodyDataCurrentImage {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) SetNamespace(v string) *UpdateCustomAgentResponseBodyDataCurrentImage {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) SetPullNetwork(v *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) *UpdateCustomAgentResponseBodyDataCurrentImage {
+	s.PullNetwork = v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) SetRepo(v string) *UpdateCustomAgentResponseBodyDataCurrentImage {
+	s.Repo = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) SetSkipTlsVerify(v bool) *UpdateCustomAgentResponseBodyDataCurrentImage {
+	s.SkipTlsVerify = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) SetSourceType(v string) *UpdateCustomAgentResponseBodyDataCurrentImage {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) SetTag(v string) *UpdateCustomAgentResponseBodyDataCurrentImage {
+	s.Tag = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) SetUsername(v string) *UpdateCustomAgentResponseBodyDataCurrentImage {
+	s.Username = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImage) Validate() error {
+	if s.PullNetwork != nil {
+		if err := s.PullNetwork.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork struct {
+	// The ID of the security group. This field is required when type is set to vpc and must belong to the selected VPC.
+	//
+	// example:
+	//
+	// sg-example
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The type of the pull network. This field is required when you submit pullNetwork and is validated by the backend. The default value for a new configuration is public network, which is independent of the agent runtime network.
+	//
+	// example:
+	//
+	// public
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The ID of the security group. This field is required when type is set to vpc and must belong to the selected VPC.
+	//
+	// example:
+	//
+	// vsw-example
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the VPC. This field is required when type is set to vpc. The associated account and region are validated by the backend.
+	//
+	// example:
+	//
+	// vpc-example
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) GetType() *string {
+	return s.Type
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) GetVSwitchId() *string {
+	return s.VSwitchId
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) GetVpcId() *string {
+	return s.VpcId
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) SetSecurityGroupId(v string) *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) SetType(v string) *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) SetVSwitchId(v string) *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) SetVpcId(v string) *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork {
+	s.VpcId = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCurrentImagePullNetwork) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateCustomAgentResponseBodyDataCustomImage struct {
+	// The latest saved source address, which may still be in preparation.
+	//
+	// example:
+	//
+	// registry.example.com/team/agent:v1
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// The saved dedicated pull network.
+	PullNetwork *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork `json:"pullNetwork,omitempty" xml:"pullNetwork,omitempty" type:"Struct"`
+	// The saved HTTPS certificate exception option.
+	//
+	// example:
+	//
+	// false
+	SkipTlsVerify *bool `json:"skipTlsVerify,omitempty" xml:"skipTlsVerify,omitempty"`
+	// Returns the saved username only after the source is successfully prepared. Omitted for anonymous or unverified sources. This does not indicate the presence of a reusable password.
+	//
+	// example:
+	//
+	// reader
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s UpdateCustomAgentResponseBodyDataCustomImage) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateCustomAgentResponseBodyDataCustomImage) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImage) GetImage() *string {
+	return s.Image
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImage) GetPullNetwork() *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork {
+	return s.PullNetwork
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImage) GetSkipTlsVerify() *bool {
+	return s.SkipTlsVerify
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImage) GetUsername() *string {
+	return s.Username
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImage) SetImage(v string) *UpdateCustomAgentResponseBodyDataCustomImage {
+	s.Image = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImage) SetPullNetwork(v *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) *UpdateCustomAgentResponseBodyDataCustomImage {
+	s.PullNetwork = v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImage) SetSkipTlsVerify(v bool) *UpdateCustomAgentResponseBodyDataCustomImage {
+	s.SkipTlsVerify = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImage) SetUsername(v string) *UpdateCustomAgentResponseBodyDataCustomImage {
+	s.Username = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImage) Validate() error {
+	if s.PullNetwork != nil {
+		if err := s.PullNetwork.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateCustomAgentResponseBodyDataCustomImagePullNetwork struct {
+	// The ID of the security group. This field is required when type is set to vpc and must belong to the selected VPC.
+	//
+	// example:
+	//
+	// sg-example
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The type of the pull network. This field is required when you submit pullNetwork and is validated by the backend. The default value for a new configuration is public network, which is independent of the agent runtime network.
+	//
+	// example:
+	//
+	// public
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The ID of the security group. This field is required when type is set to vpc and must belong to the selected VPC.
+	//
+	// example:
+	//
+	// vsw-example
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the VPC. This field is required when type is set to vpc. The associated account and region are validated by the backend.
+	//
+	// example:
+	//
+	// vpc-example
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) GetType() *string {
+	return s.Type
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) GetVSwitchId() *string {
+	return s.VSwitchId
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) GetVpcId() *string {
+	return s.VpcId
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) SetSecurityGroupId(v string) *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) SetType(v string) *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) SetVSwitchId(v string) *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) SetVpcId(v string) *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork {
+	s.VpcId = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataCustomImagePullNetwork) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateCustomAgentResponseBodyDataEnvironment struct {
-	// The latest submitted list of environment variables.
+	// The list of recently submitted environment variables.
 	Variables []*UpdateCustomAgentResponseBodyDataEnvironmentVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
@@ -1155,19 +1572,21 @@ func (s *UpdateCustomAgentResponseBodyDataEnvironmentVariables) Validate() error
 }
 
 type UpdateCustomAgentResponseBodyDataHealthCheck struct {
-	// This parameter does not take effect.
+	// Deprecated
+	//
+	// This parameter does not take effect currently.
 	//
 	// example:
 	//
 	// 1
 	HealthyThreshold *int32 `json:"healthyThreshold,omitempty" xml:"healthyThreshold,omitempty"`
-	// The interval between two consecutive health checks, in seconds.
+	// The interval between two health checks, in seconds.
 	//
 	// example:
 	//
 	// 10
 	IntervalSeconds *int32 `json:"intervalSeconds,omitempty" xml:"intervalSeconds,omitempty"`
-	// The HTTP Health Check Path.
+	// The HTTP health check path.
 	//
 	// example:
 	//
@@ -1260,7 +1679,7 @@ func (s *UpdateCustomAgentResponseBodyDataHealthCheck) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodyDataImageCachePreparation struct {
-	// The ID of the associated cache for this request.
+	// The ID of the currently associated cache.
 	//
 	// This parameter is required.
 	//
@@ -1325,8 +1744,53 @@ func (s *UpdateCustomAgentResponseBodyDataImageCachePreparation) Validate() erro
 	return dara.Validate(s)
 }
 
+type UpdateCustomAgentResponseBodyDataImagePreparation struct {
+	// The current image preparation phase. Configuration acceptance does not mean successful deployment.
+	//
+	// example:
+	//
+	// QUEUED
+	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
+	// The task ID submitted from the console for this submission. This is not the RM operationId.
+	//
+	// example:
+	//
+	// agent-example:1
+	PreparationId *string `json:"preparationId,omitempty" xml:"preparationId,omitempty"`
+}
+
+func (s UpdateCustomAgentResponseBodyDataImagePreparation) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateCustomAgentResponseBodyDataImagePreparation) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAgentResponseBodyDataImagePreparation) GetPhase() *string {
+	return s.Phase
+}
+
+func (s *UpdateCustomAgentResponseBodyDataImagePreparation) GetPreparationId() *string {
+	return s.PreparationId
+}
+
+func (s *UpdateCustomAgentResponseBodyDataImagePreparation) SetPhase(v string) *UpdateCustomAgentResponseBodyDataImagePreparation {
+	s.Phase = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataImagePreparation) SetPreparationId(v string) *UpdateCustomAgentResponseBodyDataImagePreparation {
+	s.PreparationId = &v
+	return s
+}
+
+func (s *UpdateCustomAgentResponseBodyDataImagePreparation) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateCustomAgentResponseBodyDataLatestExecutionError struct {
-	// The reason code for the waiting or execution failure of the latest configuration. This code is used to determine the subsequent processing method.
+	// The reason code for the waiting or execution failure of the latest configuration. This is used to determine the subsequent handling method.
 	//
 	// This parameter is required.
 	//
@@ -1334,15 +1798,15 @@ type UpdateCustomAgentResponseBodyDataLatestExecutionError struct {
 	//
 	// AgentExecutionFailed
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The description of the reason why the latest configuration is waiting or failed to execute. Combine this with the code and retryable fields to determine what to do next.
+	// The description of the reason why the latest configuration is waiting or failed to execute. Refer to the code and retryable fields to determine What to do next.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Agent execution failed. Check the configuration and resubmit
+	// The agent execution failed. Check the configuration and resubmit
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Specifies whether automatic retry is enabled. If the value is true, you can query again later. If the value is false, check and fix the configuration based on the reason, and then resubmit.
+	// Indicates whether the system automatically retries. If true, you can query again later. If false, check and fix the configuration based on the reason, and then resubmit.
 	//
 	// This parameter is required.
 	Retryable *bool `json:"retryable,omitempty" xml:"retryable,omitempty"`
@@ -1419,7 +1883,7 @@ func (s *UpdateCustomAgentResponseBodyDataLogging) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodyDataLoggingSls struct {
-	// The name of the SLS logstore that receives agent logs.
+	// The name of the SLS Logstore that receives agent logs.
 	//
 	// example:
 	//
@@ -1464,9 +1928,9 @@ func (s *UpdateCustomAgentResponseBodyDataLoggingSls) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodyDataNetwork struct {
-	// The Internet access configuration of the agent. If this field is not configured, Internet access is allowed on the agent side but is still limited by the workspace.
+	// The Internet access configuration of the agent. If this item is not configured, the agent allows access, but it is still restricted by the workspace.
 	AccessInternet *UpdateCustomAgentResponseBodyDataNetworkAccessInternet `json:"accessInternet,omitempty" xml:"accessInternet,omitempty" type:"Struct"`
-	// The user VPC access configuration of the agent. If this field is not configured, user VPC access is allowed on the agent side but is still limited by the workspace.
+	// The user VPC access configuration of the agent. If this item is not configured, the agent allows access, but it is still restricted by the workspace.
 	AccessVpc *UpdateCustomAgentResponseBodyDataNetworkAccessVpc `json:"accessVpc,omitempty" xml:"accessVpc,omitempty" type:"Struct"`
 }
 
@@ -1511,7 +1975,7 @@ func (s *UpdateCustomAgentResponseBodyDataNetwork) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodyDataNetworkAccessInternet struct {
-	// Specifies whether Internet access is allowed on the agent side. The actual access is still limited by the workspace.
+	// Specifies whether the agent is allowed to access the Internet. The actual access is still restricted by the workspace.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1537,7 +2001,7 @@ func (s *UpdateCustomAgentResponseBodyDataNetworkAccessInternet) Validate() erro
 }
 
 type UpdateCustomAgentResponseBodyDataNetworkAccessVpc struct {
-	// Specifies whether access to the user VPC configured for the workspace is allowed on the agent side. The actual access is still limited by the workspace.
+	// Specifies whether the agent is allowed to access the user VPC configured for the workspace. The actual access is still restricted by the workspace.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1595,7 +2059,7 @@ type UpdateCustomAgentResponseBodyDataOssMounts struct {
 	//
 	// my-agent-data
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The OSS mount directory in the container, which is located under /mnt/oss/.
+	// The OSS mount directory in the container, located under /mnt/oss/.
 	//
 	// example:
 	//
@@ -1607,7 +2071,7 @@ type UpdateCustomAgentResponseBodyDataOssMounts struct {
 	//
 	// datasets/train
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. A value of true indicates a read-only mount. A value of false indicates a read-write mount.
+	// Specifies whether the mount is read-only. A value of true indicates a read-only mount, and a value of false indicates a read-write mount.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -1662,7 +2126,7 @@ func (s *UpdateCustomAgentResponseBodyDataOssMounts) Validate() error {
 type UpdateCustomAgentResponseBodyDataProtocol struct {
 	// The request header configuration for the current protocol. The key is the name and the value is a string.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The list of API paths for the current protocol.
+	// The list of API paths corresponding to the current protocol.
 	Paths []*UpdateCustomAgentResponseBodyDataProtocolPaths `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
 	// The invocation protocol type. Valid values:
 	//
@@ -1729,13 +2193,13 @@ func (s *UpdateCustomAgentResponseBodyDataProtocol) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodyDataProtocolPaths struct {
-	// The usage description of the current API path.
+	// The purpose description of the current API path.
 	//
 	// example:
 	//
 	// AG-UI conversation API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The interface path corresponding to the current protocol.
+	// The API path corresponding to the current protocol.
 	//
 	// This parameter is required.
 	//
@@ -1843,7 +2307,7 @@ func (s *UpdateCustomAgentResponseBodyDataRuntime) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodyDataRuntimeCompute struct {
-	// The compute specification. Valid values:
+	// The computing specification. Valid values:
 	//
 	// - INTERACTIVE: 1 vCPU and 2 GiB of memory.
 	//
@@ -1881,33 +2345,29 @@ func (s *UpdateCustomAgentResponseBodyDataRuntimeCompute) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodyDataRuntimeHpa struct {
-	// Specifies whether elastic scaling is enabled. Valid values:
-	//
-	// - true: Enabled.
-	//
-	// - false: Disabled.
+	// Specifies whether elastic scaling is enabled.
 	//
 	// This parameter is required.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The maximum number of concurrent sessions configured for a single running instance.
+	// The maximum number of concurrent sessions configured for a single runtime instance.
 	//
 	// example:
 	//
 	// 100
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The maximum number of running instances configured.
+	// The maximum number of runtime instances configured.
 	//
 	// example:
 	//
 	// 10
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// The minimum number of running instances configured.
+	// The minimum number of runtime instances configured.
 	//
 	// example:
 	//
 	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The maximum idle time for a session, in seconds.
+	// The configured maximum idle time for a session, in seconds.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iUpdateIdentityProviderSCIMShrinkRequest interface {
 }
 
 type UpdateIdentityProviderSCIMShrinkRequest struct {
-	// Submits business parameters as described in this API. The body parameters of the public API are mapped to the backend wrapper by the gateway. Do not mix them with the backend direct connection body wrapper.
+	// Submits the business parameters as described in this API. The body parameters of the public API are mapped to the backend wrapper by the gateway. Do not mix them with the backend direct connection body wrapper.
 	//
 	// This parameter is required.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`

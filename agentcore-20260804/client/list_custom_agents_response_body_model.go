@@ -30,13 +30,13 @@ type iListCustomAgentsResponseBody interface {
 }
 
 type ListCustomAgentsResponseBody struct {
-	// The request result code. The value is SUCCESS when the request is successful.
+	// The request result code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code of the current request. The value is 200 when the request is successful.
+	// The HTTP status code of the request. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -50,25 +50,25 @@ type ListCustomAgentsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The message that describes the processing result of the request. The value is success if the request succeeds.
+	// The message that describes the result of the request. The value is success if the request is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The opaque token used to query the next page. An empty value indicates that no more pages exist. Pass this token as is in subsequent requests.
+	// The opaque token used to query the next page. An empty value indicates that no more pages are available. Pass this token as-is in subsequent requests.
 	//
 	// example:
 	//
 	// djE6YWdlbnRjb3JlLmFnZW50Lmxpc3QuY3VzdG9tOjIw
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The unique identifier of the request, used to locate and troubleshoot issues.
+	// The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
 	//
 	// example:
 	//
 	// 550E8400-E29B-41D4-A716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
+	// Indicates whether the request was processed successfully. A value of true indicates that the request was successful. A successful creation, update, or deletion response does not mean that the background operation is complete.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// The total number of custom agents that meet the query conditions in the specified workspace.
 	//
@@ -235,7 +235,21 @@ type ListCustomAgentsResponseBodyItems struct {
 	//
 	// STANDARD
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The overall status of the agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted. To query the execution progress of the latest configuration, call the GetCustomAgent operation.
+	// The overall status of the agent. Valid values:
+	//
+	// - Creating: The agent is being created.
+	//
+	// - Running: The agent is running.
+	//
+	// - Failed: The agent failed.
+	//
+	// - Updating: The agent is being updated.
+	//
+	// - Deleting: The agent is being deleted.
+	//
+	// - Deleted: The agent is deleted.
+	//
+	// To query the execution progress of the latest configuration, call the GetCustomAgent operation.
 	//
 	// example:
 	//
@@ -485,7 +499,7 @@ type ListCustomAgentsResponseBodyItemsArtifactCode struct {
 	//
 	// python main.py
 	Entrypoint *string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty"`
-	// The identifier of the code runtime environment in the currently saved configuration. The runtime image uses a saved snapshot. Adding a new version to the directory does not automatically change the existing configuration.
+	// The identifier of the code runtime environment in the currently saved configuration. The runtime image uses the saved snapshot. Adding a new version to the directory does not automatically change the existing configuration.
 	//
 	// This parameter is required.
 	//
@@ -549,33 +563,25 @@ type ListCustomAgentsResponseBodyItemsArtifactContainer struct {
 	//
 	// python main.py
 	Entrypoint *string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty"`
-	// The ID of the Container Registry Enterprise instance.
-	//
-	// This parameter is required.
+	// The ID of the ACR Enterprise instance.
 	//
 	// example:
 	//
 	// cri-example
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The namespace of the Container Registry instance.
-	//
-	// This parameter is required.
+	// The ACR namespace.
 	//
 	// example:
 	//
 	// team
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The name of the Container Registry image repository.
-	//
-	// This parameter is required.
+	// The name of the ACR image repository.
 	//
 	// example:
 	//
 	// app
 	Repo *string `json:"repo,omitempty" xml:"repo,omitempty"`
-	// The tag of the image.
-	//
-	// This parameter is required.
+	// The image tag.
 	//
 	// example:
 	//
@@ -748,11 +754,17 @@ func (s *ListCustomAgentsResponseBodyItemsCodePackageInfo) Validate() error {
 }
 
 type ListCustomAgentsResponseBodyItemsProtocol struct {
-	// The request header configuration for the current protocol. The key is the header name and the value is a string.
+	// The request header configuration of the current protocol. The key is the header name and the value is a string.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The list of API paths corresponding to the current protocol.
 	Paths []*ListCustomAgentsResponseBodyItemsProtocolPaths `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
-	// The invoke Protocol Type. Valid values: agui (AG-UI protocol), openai-chat-completion (OpenAI Chat Completions compatible protocol), and custom (custom protocol).
+	// The invoke Protocol Type. Valid values:
+	//
+	// - agui: AG-UI protocol.
+	//
+	// - openai-chat-completion: OpenAI Chat Completions compatible protocol.
+	//
+	// - custom: Custom protocol.
 	//
 	// This parameter is required.
 	//
