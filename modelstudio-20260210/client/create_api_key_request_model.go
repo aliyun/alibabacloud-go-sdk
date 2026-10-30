@@ -30,7 +30,7 @@ type CreateApiKeyRequest struct {
 	//
 	// >
 	//
-	// > - If you leave this parameter empty, the API key is automatically assigned to the default workspace.
+	// > - If you do not specify this parameter, the created API key is automatically assigned to the default workspace.
 	//
 	// example:
 	//
@@ -83,19 +83,15 @@ func (s *CreateApiKeyRequest) Validate() error {
 }
 
 type CreateApiKeyRequestAuth struct {
-	// The IP access whitelist.
+	// The IP address whitelist.
 	//
 	// >
 	//
-	// > - When you set custom permissions and leave the IP access whitelist empty, the server sets the default values to IPv4 (0.0.0.0/0) and IPv6 (::/0), which allows all traffic.
+	// > - If you select custom permissions and do not specify an IP address whitelist, the server defaults to IPv4 (0.0.0.0/0) and IPv6 (::/0), which allows all IP addresses.
 	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
-	// The model access scope.
+	// The model access scope. If you configure this parameter, you can only call the selected models. If you do not configure this parameter, you can access all models that have been granted inference permissions in the specified workspace by default.
 	ModelAccessScope *CreateApiKeyRequestAuthModelAccessScope `json:"modelAccessScope,omitempty" xml:"modelAccessScope,omitempty" type:"Struct"`
-	// Valid values:
-	//
-	// - All: all permissions.
-	//
-	// - Custom: custom permissions.
+	// The permission type. Valid values: All: all permissions. Custom: custom permissions.
 	//
 	// example:
 	//
@@ -152,7 +148,7 @@ type CreateApiKeyRequestAuthModelAccessScope struct {
 	//
 	// 	Notice: This parameter takes effect only when allowAllModels is set to false.
 	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
-	// Specifies whether all models with granted inference permissions in the workspace are accessible. Valid values:
+	// Specifies whether to allow access to all models that have been granted inference permissions in the workspace. Valid values:
 	//
 	// - true
 	//

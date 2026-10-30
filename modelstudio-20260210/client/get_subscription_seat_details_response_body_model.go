@@ -36,9 +36,9 @@ type GetSubscriptionSeatDetailsResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: successful
 	//
-	// - false: Failed.
+	// - false: failed
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ func (s *GetSubscriptionSeatDetailsResponseBody) Validate() error {
 type GetSubscriptionSeatDetailsResponseBodyData struct {
 	// The data items.
 	Items []*GetSubscriptionSeatDetailsResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number. The value is greater than 0 and does not exceed the maximum value of the Integer data type.
+	// The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer data type.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	//
 	// 1781422733
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The currently active equity instances. For TokenPlan products, this list contains only one active equity instance.
+	// The active entitlement instances. For the TokenPlan product, this list contains only one active entitlement instance.
 	EquityList []*GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList `json:"EquityList,omitempty" xml:"EquityList,omitempty" type:"Repeated"`
 	// The instance code of the seat.
 	//
@@ -230,11 +230,11 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	SeatId *string `json:"SeatId,omitempty" xml:"SeatId,omitempty"`
 	// The seat type. Valid values:
 	//
-	// - standard: standard seat.
+	// - standard: standard seat
 	//
-	// - pro: pro seat.
+	// - pro: advanced seat
 	//
-	// - max: premium seat.
+	// - max: premium seat
 	//
 	// example:
 	//
@@ -248,17 +248,17 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The seat status. Valid values:
 	//
-	// - CREATING: being created.
+	// - CREATING: creating
 	//
-	// - NORMAL: active.
+	// - NORMAL: valid
 	//
-	// - LIMIT: restricted due to overdue payment.
+	// - LIMIT: restricted due to overdue payment
 	//
-	// - RELEASE: released upon expiration.
+	// - RELEASE: released upon expiration
 	//
-	// - STOP: stopped upon expiration.
+	// - STOP: stopped upon expiration
 	//
-	// - REFUNDED: refunded.
+	// - REFUNDED: refunded
 	//
 	// example:
 	//
@@ -393,7 +393,7 @@ type GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList struct {
 	//
 	// 1755273600
 	CycleEndTime *int64 `json:"CycleEndTime,omitempty" xml:"CycleEndTime,omitempty"`
-	// The equity code (subscription code). This does not need to be consumed in CREDITS scenarios.
+	// The entitlement code (subscription code). Consumption is not required in the credits scenario.
 	//
 	// example:
 	//
@@ -417,13 +417,13 @@ type GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList struct {
 	//
 	// 100.00000000
 	CycleTotalValue *float64 `json:"CycleTotalValue,omitempty" xml:"CycleTotalValue,omitempty"`
-	// The time-series version of the current cycle.
+	// The sequence version of the current cycle.
 	//
 	// example:
 	//
 	// 1
 	CycleVersion *int64 `json:"CycleVersion,omitempty" xml:"CycleVersion,omitempty"`
-	// The equity type, such as CREDITS, SPN, or resource plan.
+	// The entitlement type, such as CREDITS, SPN, or resource plan.
 	//
 	// example:
 	//

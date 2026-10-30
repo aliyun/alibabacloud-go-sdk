@@ -151,7 +151,7 @@ func (s *ListOrganizationMembersResponseBody) Validate() error {
 }
 
 type ListOrganizationMembersResponseBodyData struct {
-	// The member business ID.
+	// The business ID of the member.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type ListOrganizationMembersResponseBodyData struct {
 	//
 	// key_123456789
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
-	// The member email address.
+	// The email address of the member.
 	//
 	// example:
 	//
@@ -193,39 +193,41 @@ type ListOrganizationMembersResponseBodyData struct {
 	//
 	// prefix.abc****456
 	MaskedApiKey *string `json:"MaskedApiKey,omitempty" xml:"MaskedApiKey,omitempty"`
-	// The organization ID.
+	// The ID of the organization.
 	//
 	// example:
 	//
 	// org_123456789
-	OrgId         *string                                               `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The upper limit information for the shared usage package available to the member.
 	PackLimitInfo *ListOrganizationMembersResponseBodyDataPackLimitInfo `json:"PackLimitInfo,omitempty" xml:"PackLimitInfo,omitempty" type:"Struct"`
-	// The list of member roles.
+	// The list of roles for the member.
 	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The seat resource allocate ID.
+	// The resource allocation ID of the seat.
 	//
 	// example:
 	//
 	// seat_123456
 	SeatId *string `json:"SeatId,omitempty" xml:"SeatId,omitempty"`
-	// The seat specification type. Valid values:
+	// The specification type of the seat. Valid values:
 	//
 	// - standard: Standard seat.
 	//
 	// - pro: Pro seat.
 	//
-	// - max: Max seat.
+	// - max: Premium seat.
 	//
 	// example:
 	//
 	// standard
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// The member status.
+	// The status of the member.
 	//
 	// example:
 	//
 	// ACTIVE
-	Status           *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The subscription information of the member.
 	SubscriptionInfo *ListOrganizationMembersResponseBodyDataSubscriptionInfo `json:"SubscriptionInfo,omitempty" xml:"SubscriptionInfo,omitempty" type:"Struct"`
 }
 
@@ -378,15 +380,60 @@ func (s *ListOrganizationMembersResponseBodyData) Validate() error {
 }
 
 type ListOrganizationMembersResponseBodyDataPackLimitInfo struct {
-	AvailableLimit    *float64 `json:"AvailableLimit,omitempty" xml:"AvailableLimit,omitempty"`
-	CycleEndTime      *int64   `json:"CycleEndTime,omitempty" xml:"CycleEndTime,omitempty"`
-	CycleStartTime    *int64   `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
-	FrozenCredits     *float64 `json:"FrozenCredits,omitempty" xml:"FrozenCredits,omitempty"`
-	HasShareLimit     *bool    `json:"HasShareLimit,omitempty" xml:"HasShareLimit,omitempty"`
-	IsAvailable       *bool    `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	LastConfirmedTime *int64   `json:"LastConfirmedTime,omitempty" xml:"LastConfirmedTime,omitempty"`
-	UpperLimit        *float64 `json:"UpperLimit,omitempty" xml:"UpperLimit,omitempty"`
-	UsedCredits       *float64 `json:"UsedCredits,omitempty" xml:"UsedCredits,omitempty"`
+	// The currently available quota.
+	//
+	// example:
+	//
+	// 50000
+	AvailableLimit *float64 `json:"AvailableLimit,omitempty" xml:"AvailableLimit,omitempty"`
+	// The end time of the current cycle.
+	//
+	// example:
+	//
+	// 1792476000001
+	CycleEndTime *int64 `json:"CycleEndTime,omitempty" xml:"CycleEndTime,omitempty"`
+	// The start time of the current cycle.
+	//
+	// example:
+	//
+	// 1792476000000
+	CycleStartTime *int64 `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	// The frozen quota.
+	//
+	// example:
+	//
+	// 0
+	FrozenCredits *float64 `json:"FrozenCredits,omitempty" xml:"FrozenCredits,omitempty"`
+	// Indicates whether a quota limit exists for the shared usage package.
+	//
+	// example:
+	//
+	// true/false
+	HasShareLimit *bool `json:"HasShareLimit,omitempty" xml:"HasShareLimit,omitempty"`
+	// Indicates whether the quota is currently available.
+	//
+	// example:
+	//
+	// true/false
+	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	// The time when the quota limit configuration was last modified.
+	//
+	// example:
+	//
+	// 1792476000000
+	LastConfirmedTime *int64 `json:"LastConfirmedTime,omitempty" xml:"LastConfirmedTime,omitempty"`
+	// The upper limit of the quota.
+	//
+	// example:
+	//
+	// 50000
+	UpperLimit *float64 `json:"UpperLimit,omitempty" xml:"UpperLimit,omitempty"`
+	// The used quota.
+	//
+	// example:
+	//
+	// 0
+	UsedCredits *float64 `json:"UsedCredits,omitempty" xml:"UsedCredits,omitempty"`
 }
 
 func (s ListOrganizationMembersResponseBodyDataPackLimitInfo) String() string {
@@ -483,14 +530,50 @@ func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) Validate() error 
 }
 
 type ListOrganizationMembersResponseBodyDataSubscriptionInfo struct {
-	EndTime      *int64                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EquityList   []*ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList `json:"EquityList,omitempty" xml:"EquityList,omitempty" type:"Repeated"`
-	InstanceCode *string                                                              `json:"InstanceCode,omitempty" xml:"InstanceCode,omitempty"`
-	PayMode      *string                                                              `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
-	ProductCode  *string                                                              `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	SpecType     *string                                                              `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	StartTime    *int64                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status       *string                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The end time of the subscription.
+	//
+	// example:
+	//
+	// 1792476000002
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of subscription entitlements.
+	EquityList []*ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList `json:"EquityList,omitempty" xml:"EquityList,omitempty" type:"Repeated"`
+	// The code of the subscription instance.
+	//
+	// example:
+	//
+	// subs-1234567
+	InstanceCode *string `json:"InstanceCode,omitempty" xml:"InstanceCode,omitempty"`
+	// The billing method.
+	//
+	// example:
+	//
+	// total
+	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
+	// The code of the subscription product.
+	//
+	// example:
+	//
+	// sfm_tokenplanteams_dp_cn
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The specification type of the subscription.
+	//
+	// example:
+	//
+	// standard
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The start time of the subscription.
+	//
+	// example:
+	//
+	// 1792476000000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The subscription status.
+	//
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListOrganizationMembersResponseBodyDataSubscriptionInfo) String() string {
@@ -587,12 +670,42 @@ func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) Validate() err
 }
 
 type ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList struct {
-	CycleEndTime      *int64   `json:"CycleEndTime,omitempty" xml:"CycleEndTime,omitempty"`
-	CycleStartTime    *int64   `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	// The start time of the current cycle.
+	//
+	// example:
+	//
+	// 1792476000001
+	CycleEndTime *int64 `json:"CycleEndTime,omitempty" xml:"CycleEndTime,omitempty"`
+	// The start time of the current cycle.
+	//
+	// example:
+	//
+	// 1792476000000
+	CycleStartTime *int64 `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	// The remaining entitlement quota for the current cycle.
+	//
+	// example:
+	//
+	// 32259
 	CycleSurplusValue *float64 `json:"CycleSurplusValue,omitempty" xml:"CycleSurplusValue,omitempty"`
-	CycleTotalValue   *float64 `json:"CycleTotalValue,omitempty" xml:"CycleTotalValue,omitempty"`
-	EquityType        *string  `json:"EquityType,omitempty" xml:"EquityType,omitempty"`
-	EquityUnit        *string  `json:"EquityUnit,omitempty" xml:"EquityUnit,omitempty"`
+	// The total entitlement quota for the current cycle.
+	//
+	// example:
+	//
+	// 250000
+	CycleTotalValue *float64 `json:"CycleTotalValue,omitempty" xml:"CycleTotalValue,omitempty"`
+	// The entitlement type.
+	//
+	// example:
+	//
+	// CREDITS
+	EquityType *string `json:"EquityType,omitempty" xml:"EquityType,omitempty"`
+	// The unit of measurement for the entitlement.
+	//
+	// example:
+	//
+	// Credit
+	EquityUnit *string `json:"EquityUnit,omitempty" xml:"EquityUnit,omitempty"`
 }
 
 func (s ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) String() string {

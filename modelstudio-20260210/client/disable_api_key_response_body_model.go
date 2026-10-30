@@ -46,11 +46,11 @@ type DisableApiKeyResponseBody struct {
 	//
 	// 36045E0A-551D-592D-B1BC-4C56596CE59E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//

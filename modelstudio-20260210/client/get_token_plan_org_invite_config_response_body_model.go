@@ -26,7 +26,7 @@ type GetTokenPlanOrgInviteConfigResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data result of the current category statistics.
+	// The statistical data results for the current category.
 	Data *GetTokenPlanOrgInviteConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -34,7 +34,7 @@ type GetTokenPlanOrgInviteConfigResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the API call is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
 	// - true: Successful.
 	//
@@ -100,7 +100,7 @@ func (s *GetTokenPlanOrgInviteConfigResponseBody) Validate() error {
 }
 
 type GetTokenPlanOrgInviteConfigResponseBodyData struct {
-	// The default organization role ID to assign. Valid values:
+	// The ID of the default assigned organization role. Valid values:
 	//
 	// - SYSTEM_ROLE_ORG_ADMIN
 	//
@@ -116,7 +116,7 @@ type GetTokenPlanOrgInviteConfigResponseBodyData struct {
 	//
 	// org_123456789
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The default seat allocation strategy. Valid values:
+	// The default seat assignment strategy. Valid values:
 	//
 	// - HIGH_TO_LOW
 	//

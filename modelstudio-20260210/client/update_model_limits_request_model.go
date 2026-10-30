@@ -24,7 +24,7 @@ type UpdateModelLimitsRequest struct {
 	//
 	// ws-ac3ef438bec22dc5
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// The throttling values for the workspace.
+	// The throttling limits for the workspace.
 	WorkspaceLimits []*UpdateModelLimitsRequestWorkspaceLimits `json:"workspaceLimits,omitempty" xml:"workspaceLimits,omitempty" type:"Repeated"`
 }
 
@@ -78,31 +78,31 @@ type UpdateModelLimitsRequestWorkspaceLimits struct {
 	//
 	// - **OVERLAY**: Sets or overwrites the throttling configuration.
 	//
-	// - **DELETE**: Deletes the throttling configuration (restores to no throttling).
+	// - **DELETE**: Deletes the throttling configuration to restore the unlimited state.
 	//
 	// example:
 	//
 	// OVERLAY
 	OperationType *string `json:"operationType,omitempty" xml:"operationType,omitempty"`
-	// The request throttling value.
+	// The request throttling limit.
 	//
 	// example:
 	//
 	// 10
 	RequestLimit *int64 `json:"requestLimit,omitempty" xml:"requestLimit,omitempty"`
-	// The time period for request throttling. Unit: seconds.
+	// The time period for request throttling, in seconds.
 	//
 	// example:
 	//
 	// 1
 	RequestLimitPeriod *int64 `json:"requestLimitPeriod,omitempty" xml:"requestLimitPeriod,omitempty"`
-	// The usage throttling value.
+	// The usage throttling limit.
 	//
 	// example:
 	//
 	// 10
 	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
-	// The time period for usage throttling. Unit: seconds.
+	// The time period for usage throttling, in seconds.
 	//
 	// example:
 	//

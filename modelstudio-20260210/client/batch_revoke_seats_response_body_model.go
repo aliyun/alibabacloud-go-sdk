@@ -18,19 +18,19 @@ type iBatchRevokeSeatsResponseBody interface {
 }
 
 type BatchRevokeSeatsResponseBody struct {
-	// The error code. This parameter is empty if the request was successful.
+	// The error code. This parameter is empty if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message. This parameter is empty if the request was successful.
+	// The error message. This parameter is empty if the request is successful.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iBatchRevokeSeatsRequest interface {
 type BatchRevokeSeatsRequest struct {
 	// The list of revocation items. This parameter is required.
 	Items []*BatchRevokeSeatsRequestItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The language. Valid values: zh-CN and en-US.
+	// The locale. Valid values: zh-CN and en-US.
 	//
 	// example:
 	//

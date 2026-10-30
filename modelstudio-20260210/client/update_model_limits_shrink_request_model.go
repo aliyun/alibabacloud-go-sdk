@@ -24,7 +24,7 @@ type UpdateModelLimitsShrinkRequest struct {
 	//
 	// ws-ac3ef438bec22dc5
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// The throttling values for the workspace.
+	// The throttling limits for the workspace.
 	WorkspaceLimitsShrink *string `json:"workspaceLimits,omitempty" xml:"workspaceLimits,omitempty"`
 }
 

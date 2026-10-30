@@ -44,7 +44,7 @@ type GetOrganizationResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type GetOrganizationResponseBodyData struct {
 	//
 	// example:
 	//
-	// 组织描述
+	// Organization description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The creation time.
 	//
@@ -146,7 +146,7 @@ type GetOrganizationResponseBodyData struct {
 	//
 	// 2025-11-20T02:26:35Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type GetOrganizationResponseBodyData struct {
 	//
 	// example:
 	//
-	// 组织名称
+	// Organization name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The product namespace ID.
 	//
@@ -170,7 +170,7 @@ type GetOrganizationResponseBodyData struct {
 	//
 	// org_123456789
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The business account identifier of the organization owner. The value is aliyunUid for the ALIYUN type and userIdentifier for the SSO type.
+	// The business account identifier of the organization owner. For the ALIYUN type, the value is aliyunUid. For the SSO type, the value is userIdentifier.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type GetOrganizationResponseBodyData struct {
 	//
 	// acc_123456789
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The status. Valid values: ACTIVE and FROZEN.
+	// The status of the organization. Valid values: ACTIVE and FROZEN.
 	//
 	// example:
 	//

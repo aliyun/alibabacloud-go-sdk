@@ -22,19 +22,19 @@ type iListOrganizationMembersRequest interface {
 }
 
 type ListOrganizationMembersRequest struct {
-	// Specifies whether to filter by seat assignment.
+	// Specifies whether to filter by seat allocation status.
 	//
 	// example:
 	//
 	// true
 	HasSeat *bool `json:"HasSeat,omitempty" xml:"HasSeat,omitempty"`
-	// Fuzzy filter by member name. Matches accountName or email, case-insensitive.
+	// The fuzzy filter for the member name. It matches the accountName or email and is case-insensitive.
 	//
 	// example:
 	//
-	// MemberName
+	// Member name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number, starting from 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListOrganizationMembersRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters by member status, such as ACTIVE or FROZEN. A value of null indicates no filtering.
+	// The filter for the member status, such as ACTIVE or FROZEN. A null value indicates no filtering.
 	//
 	// example:
 	//

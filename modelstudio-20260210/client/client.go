@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Creates an account and directly adds it as a member.
+// Creates an account and directly adds a member.
 //
 // @param request - AddOrganizationMemberRequest
 //
@@ -113,7 +113,7 @@ func (client *Client) AddOrganizationMemberWithOptions(request *AddOrganizationM
 
 // Summary:
 //
-// Creates an account and directly adds it as a member.
+// Creates an account and directly adds a member.
 //
 // @param request - AddOrganizationMemberRequest
 //
@@ -132,7 +132,7 @@ func (client *Client) AddOrganizationMember(request *AddOrganizationMemberReques
 
 // Summary:
 //
-// Assigns seats in batches to the member level.
+// Assigns seats to member accounts in batches.
 //
 // @param request - BatchAssignSeatsRequest
 //
@@ -187,7 +187,7 @@ func (client *Client) BatchAssignSeatsWithOptions(request *BatchAssignSeatsReque
 
 // Summary:
 //
-// Assigns seats in batches to the member level.
+// Assigns seats to member accounts in batches.
 //
 // @param request - BatchAssignSeatsRequest
 //
@@ -206,7 +206,7 @@ func (client *Client) BatchAssignSeats(request *BatchAssignSeatsRequest) (_resul
 
 // Summary:
 //
-// Revokes member-level seats in batches.
+// Revokes member-level seats in bulk.
 //
 // @param tmpReq - BatchRevokeSeatsRequest
 //
@@ -263,7 +263,7 @@ func (client *Client) BatchRevokeSeatsWithOptions(tmpReq *BatchRevokeSeatsReques
 
 // Summary:
 //
-// Revokes member-level seats in batches.
+// Revokes member-level seats in bulk.
 //
 // @param request - BatchRevokeSeatsRequest
 //
@@ -282,7 +282,7 @@ func (client *Client) BatchRevokeSeats(request *BatchRevokeSeatsRequest) (_resul
 
 // Summary:
 //
-// Before using large models or applications in Alibaba Cloud Model Studio, create an API key as an authentication credential.
+// Creates an API key as an authentication credential before using large models or applications in Alibaba Cloud Model Studio.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -339,7 +339,7 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, head
 
 // Summary:
 //
-// Before using large models or applications in Alibaba Cloud Model Studio, create an API key as an authentication credential.
+// Creates an API key as an authentication credential before using large models or applications in Alibaba Cloud Model Studio.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -358,21 +358,21 @@ func (client *Client) CreateApiKey(request *CreateApiKeyRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a TokenPlan member invitation link.
+// Creates an invitation link for a TokenPlan member.
 //
 // Description:
 //
-// A user can have only one valid invitation link at a time.
+// A user can have only one valid invitation link.
 //
 // If the user already has a valid invitation link, this operation returns the existing link.
 //
-// To create a new link, call the RevokeTokenPlanInviteLink operation to invalidate the current link first.
+// To create a new link, call the RevokeTokenPlanInviteLink operation to invalidate the current link.
 //
-// This operation returns only the generated token. The invitation link is assembled in the following format: `https://{host}/accept-invite?token=[token]&orgId=[orgId]`
+// This operation returns only the generated token. The invitation link is concatenated in the following format: `https://{host}/accept-invite?token=[token]&orgId=[orgId]`.
 //
 //   - For the China site, the host is tokenplan-enterprise.bailian.aliyunportal.com.
 //
-//   - For the China site, the host is tokenplan-enterprise.modelstudio.aliyunportal.com.
+//   - For the international site, the host is tokenplan-enterprise.modelstudio.aliyunportal.com.
 //
 // @param request - CreateTokenPlanInviteLinkRequest
 //
@@ -423,21 +423,21 @@ func (client *Client) CreateTokenPlanInviteLinkWithOptions(request *CreateTokenP
 
 // Summary:
 //
-// Creates a TokenPlan member invitation link.
+// Creates an invitation link for a TokenPlan member.
 //
 // Description:
 //
-// A user can have only one valid invitation link at a time.
+// A user can have only one valid invitation link.
 //
 // If the user already has a valid invitation link, this operation returns the existing link.
 //
-// To create a new link, call the RevokeTokenPlanInviteLink operation to invalidate the current link first.
+// To create a new link, call the RevokeTokenPlanInviteLink operation to invalidate the current link.
 //
-// This operation returns only the generated token. The invitation link is assembled in the following format: `https://{host}/accept-invite?token=[token]&orgId=[orgId]`
+// This operation returns only the generated token. The invitation link is concatenated in the following format: `https://{host}/accept-invite?token=[token]&orgId=[orgId]`.
 //
 //   - For the China site, the host is tokenplan-enterprise.bailian.aliyunportal.com.
 //
-//   - For the China site, the host is tokenplan-enterprise.modelstudio.aliyunportal.com.
+//   - For the international site, the host is tokenplan-enterprise.modelstudio.aliyunportal.com.
 //
 // @param request - CreateTokenPlanInviteLinkRequest
 //
@@ -596,7 +596,7 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
-// Deletes an authentication credential API key.
+// Deletes an authentication API key.
 //
 // @param headers - map
 //
@@ -629,7 +629,7 @@ func (client *Client) DeleteApiKeyWithOptions(apiKeyId *string, headers map[stri
 
 // Summary:
 //
-// Deletes an authentication credential API key.
+// Deletes an authentication API key.
 //
 // @return DeleteApiKeyResponse
 func (client *Client) DeleteApiKey(apiKeyId *string) (_result *DeleteApiKeyResponse, _err error) {
@@ -650,15 +650,15 @@ func (client *Client) DeleteApiKey(apiKeyId *string) (_result *DeleteApiKeyRespo
 //
 // Description:
 //
-// A workspace can be deleted only if the following conditional requirements are met:
+// You can delete a workspace only if it meets the following conditional requirements:
 //
 // 1. The workspace is not the default workspace.
 //
-// 2. The workspace is not used to purchase other products, such as AMB.
+// 2. The workspace is not used to purchase other services, such as AMB.
 //
-// 3. In permission management, the workspace is not granted to Resource Access Management (RAM) users or RAM roles.
+// 3. The workspace is not granted to Resource Access Management (RAM) users or RAM roles in permission management.
 //
-// 4. The workspace does not contain any resources, such as API keys, model deployments, or knowledge bases.
+// 4. No resources exist in the workspace, such as API keys, model deployments, or knowledge bases.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -703,15 +703,15 @@ func (client *Client) DeleteWorkspaceWithOptions(workspaceId *string, request *D
 //
 // Description:
 //
-// A workspace can be deleted only if the following conditional requirements are met:
+// You can delete a workspace only if it meets the following conditional requirements:
 //
 // 1. The workspace is not the default workspace.
 //
-// 2. The workspace is not used to purchase other products, such as AMB.
+// 2. The workspace is not used to purchase other services, such as AMB.
 //
-// 3. In permission management, the workspace is not granted to Resource Access Management (RAM) users or RAM roles.
+// 3. The workspace is not granted to Resource Access Management (RAM) users or RAM roles in permission management.
 //
-// 4. The workspace does not contain any resources, such as API keys, model deployments, or knowledge bases.
+// 4. No resources exist in the workspace, such as API keys, model deployments, or knowledge bases.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -734,7 +734,7 @@ func (client *Client) DeleteWorkspace(workspaceId *string, request *DeleteWorksp
 //
 // Description:
 //
-// An API key that is already disabled cannot be disabled again.
+// You cannot disable an API key repeatedly.
 //
 // @param request - DisableApiKeyRequest
 //
@@ -779,7 +779,7 @@ func (client *Client) DisableApiKeyWithOptions(apiKeyId *string, request *Disabl
 //
 // Description:
 //
-// An API key that is already disabled cannot be disabled again.
+// You cannot disable an API key repeatedly.
 //
 // @param request - DisableApiKeyRequest
 //
@@ -802,7 +802,7 @@ func (client *Client) DisableApiKey(apiKeyId *string, request *DisableApiKeyRequ
 //
 // Description:
 //
-// An API key that is already enabled cannot be enabled again.
+// You cannot enable an API key multiple times.
 //
 // @param request - EnableApiKeyRequest
 //
@@ -847,7 +847,7 @@ func (client *Client) EnableApiKeyWithOptions(apiKeyId *string, request *EnableA
 //
 // Description:
 //
-// An API key that is already enabled cannot be enabled again.
+// You cannot enable an API key multiple times.
 //
 // @param request - EnableApiKeyRequest
 //
@@ -916,7 +916,7 @@ func (client *Client) GetApiKey(apiKeyId *string) (_result *GetApiKeyResponse, _
 
 // Summary:
 //
-// Queries the bill overview.
+// Queries the billing overview.
 //
 // @param tmpReq - GetBillingOverviewRequest
 //
@@ -942,6 +942,10 @@ func (client *Client) GetBillingOverviewWithOptions(tmpReq *GetBillingOverviewRe
 		request.GroupByShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupBy, dara.String("groupBy"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.TimePeriod) {
+		request.TimePeriodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimePeriod, dara.String("timePeriod"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BillMonth) {
 		query["billMonth"] = request.BillMonth
@@ -949,6 +953,10 @@ func (client *Client) GetBillingOverviewWithOptions(tmpReq *GetBillingOverviewRe
 
 	if !dara.IsNil(request.FilterShrink) {
 		query["filter"] = request.FilterShrink
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["granularity"] = request.Granularity
 	}
 
 	if !dara.IsNil(request.GroupByShrink) {
@@ -961,6 +969,10 @@ func (client *Client) GetBillingOverviewWithOptions(tmpReq *GetBillingOverviewRe
 
 	if !dara.IsNil(request.RegionId) {
 		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TimePeriodShrink) {
+		query["timePeriod"] = request.TimePeriodShrink
 	}
 
 	if !dara.IsNil(request.TopNum) {
@@ -997,7 +1009,7 @@ func (client *Client) GetBillingOverviewWithOptions(tmpReq *GetBillingOverviewRe
 
 // Summary:
 //
-// Queries the bill overview.
+// Queries the billing overview.
 //
 // @param request - GetBillingOverviewRequest
 //
@@ -1016,7 +1028,7 @@ func (client *Client) GetBillingOverview(request *GetBillingOverviewRequest) (_r
 
 // Summary:
 //
-// Queries bill trends.
+// Queries the billing trends.
 //
 // @param tmpReq - GetBillingTrendRequest
 //
@@ -1057,6 +1069,10 @@ func (client *Client) GetBillingTrendWithOptions(tmpReq *GetBillingTrendRequest,
 
 	if !dara.IsNil(request.GroupByShrink) {
 		query["groupBy"] = request.GroupByShrink
+	}
+
+	if !dara.IsNil(request.IncludeHistoryPeriod) {
+		query["includeHistoryPeriod"] = request.IncludeHistoryPeriod
 	}
 
 	if !dara.IsNil(request.Locale) {
@@ -1105,7 +1121,7 @@ func (client *Client) GetBillingTrendWithOptions(tmpReq *GetBillingTrendRequest,
 
 // Summary:
 //
-// Queries bill trends.
+// Queries the billing trends.
 //
 // @param request - GetBillingTrendRequest
 //
@@ -1124,11 +1140,11 @@ func (client *Client) GetBillingTrend(request *GetBillingTrendRequest) (_result 
 
 // Summary:
 //
-// Retrieves information about a specified organization.
+// Retrieves the details of a specified organization.
 //
 // Description:
 //
-// Retrieves information about a specified organization by OrgId.
+// Retrieves the details of a specified organization by using the organization ID.
 //
 // @param request - GetOrganizationRequest
 //
@@ -1169,11 +1185,11 @@ func (client *Client) GetOrganizationWithOptions(request *GetOrganizationRequest
 
 // Summary:
 //
-// Retrieves information about a specified organization.
+// Retrieves the details of a specified organization.
 //
 // Description:
 //
-// Retrieves information about a specified organization by OrgId.
+// Retrieves the details of a specified organization by using the organization ID.
 //
 // @param request - GetOrganizationRequest
 //
@@ -1192,7 +1208,7 @@ func (client *Client) GetOrganization(request *GetOrganizationRequest) (_result 
 
 // Summary:
 //
-// Queries organization member statistics information, including the total number of members, the number of administrators, the number of regular members, the number of members with allocated seats, and the number of members without allocated seats.
+// Queries the statistics information of organization members, including the total number of members, the number of administrators, the number of regular members, the number of members with allocated seats, and the number of members without allocated seats.
 //
 // @param request - GetOrganizationMemberSeatStatsRequest
 //
@@ -1233,7 +1249,7 @@ func (client *Client) GetOrganizationMemberSeatStatsWithOptions(request *GetOrga
 
 // Summary:
 //
-// Queries organization member statistics information, including the total number of members, the number of administrators, the number of regular members, the number of members with allocated seats, and the number of members without allocated seats.
+// Queries the statistics information of organization members, including the total number of members, the number of administrators, the number of regular members, the number of members with allocated seats, and the number of members without allocated seats.
 //
 // @param request - GetOrganizationMemberSeatStatsRequest
 //
@@ -1252,7 +1268,7 @@ func (client *Client) GetOrganizationMemberSeatStats(request *GetOrganizationMem
 
 // Summary:
 //
-// Queries seat details by paging.
+// Performs a paging query on seat details.
 //
 // @param request - GetSubscriptionSeatDetailsRequest
 //
@@ -1319,7 +1335,7 @@ func (client *Client) GetSubscriptionSeatDetailsWithOptions(request *GetSubscrip
 
 // Summary:
 //
-// Queries seat details by paging.
+// Performs a paging query on seat details.
 //
 // @param request - GetSubscriptionSeatDetailsRequest
 //
@@ -1338,7 +1354,7 @@ func (client *Client) GetSubscriptionSeatDetails(request *GetSubscriptionSeatDet
 
 // Summary:
 //
-// Queries the number of members and seats for member management.
+// Queries the member and seat count information for member management.
 //
 // @param request - GetSubscriptionStatsRequest
 //
@@ -1379,7 +1395,7 @@ func (client *Client) GetSubscriptionStatsWithOptions(request *GetSubscriptionSt
 
 // Summary:
 //
-// Queries the number of members and seats for member management.
+// Queries the member and seat count information for member management.
 //
 // @param request - GetSubscriptionStatsRequest
 //
@@ -1398,11 +1414,11 @@ func (client *Client) GetSubscriptionStats(request *GetSubscriptionStatsRequest)
 
 // Summary:
 //
-// Retrieves the TokenPlan account details and organization information.
+// Retrieves the details and organization information of a TokenPlan account.
 //
 // Description:
 //
-// Retrieves the TokenPlan management platform account information when the user is logged in.
+// Retrieves the account information from the TokenPlan management platform when logged on.
 //
 // @param request - GetTokenPlanAccountDetailRequest
 //
@@ -1443,11 +1459,11 @@ func (client *Client) GetTokenPlanAccountDetailWithOptions(request *GetTokenPlan
 
 // Summary:
 //
-// Retrieves the TokenPlan account details and organization information.
+// Retrieves the details and organization information of a TokenPlan account.
 //
 // Description:
 //
-// Retrieves the TokenPlan management platform account information when the user is logged in.
+// Retrieves the account information from the TokenPlan management platform when logged on.
 //
 // @param request - GetTokenPlanAccountDetailRequest
 //
@@ -1466,11 +1482,11 @@ func (client *Client) GetTokenPlanAccountDetail(request *GetTokenPlanAccountDeta
 
 // Summary:
 //
-// Retrieves the TokenPlan member invitation link.
+// Retrieves the invitation link for a TokenPlan member.
 //
 // Description:
 //
-// This operation returns only the generated token and expiration time. The invitation link is assembled in the following format: `https://{host}/accept-invite?token=[token]&orgId=[orgId]`
+// This operation returns only the generated token and expiration time. The invitation link is concatenated in the following format: `https://{host}/accept-invite?token=[token]&orgId=[orgId]`.
 //
 //   - For the China site, the host is tokenplan-enterprise.bailian.aliyunportal.com.
 //
@@ -1515,11 +1531,11 @@ func (client *Client) GetTokenPlanInviteLinkWithOptions(request *GetTokenPlanInv
 
 // Summary:
 //
-// Retrieves the TokenPlan member invitation link.
+// Retrieves the invitation link for a TokenPlan member.
 //
 // Description:
 //
-// This operation returns only the generated token and expiration time. The invitation link is assembled in the following format: `https://{host}/accept-invite?token=[token]&orgId=[orgId]`
+// This operation returns only the generated token and expiration time. The invitation link is concatenated in the following format: `https://{host}/accept-invite?token=[token]&orgId=[orgId]`.
 //
 //   - For the China site, the host is tokenplan-enterprise.bailian.aliyunportal.com.
 //
@@ -1774,23 +1790,23 @@ func (client *Client) ListModelLimits(request *ListModelLimitsRequest) (_result 
 
 // Summary:
 //
-// Queries model authorizations for a workspace.
+// Queries model authorizations in a workspace.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - Use `workspaceId` to specify the workspace to query (required, cannot be empty).
+// - Specify the workspace to query by using `workspaceId` (required and cannot be empty).
 //
-// - Token-based pagination is used: `nextToken` is a string-type offset. Do not pass it for the first page. `maxResults` defaults to 20. If the upper limit is exceeded, `InvalidParameter.maxResults` is returned.
+// - Uses token-based pagination: `nextToken` is a string offset and is not required for the first page. The default value of `maxResults` is 20. If the value exceeds the upper limit, the `InvalidParameter.maxResults` error is returned.
 //
-// - `authorizationScope` controls the query dimension: `AUTHORIZED` = models that have been authorized for the specified action. `AUTHORIZABLE` = full authorizable catalog.
+// - `authorizationScope` controls the query dimension: `AUTHORIZED` specifies models that are authorized for the specified action, and `AUTHORIZABLE` specifies all authorizable directories.
 //
-// - `modelAction` specifies the authorization action dimension. Currently only `INFERENCE` is supported. If left empty, it defaults to `INFERENCE`.
+// - `modelAction` specifies the authorization action dimension. Currently, only `INFERENCE` is supported. If this parameter is left empty, the default value `INFERENCE` is used.
 //
-// - `filter` supports filtering by `name` (fuzzy match on model and name) or `model` (exact match on a single model).
+// - `filter` supports filtering by `name` (fuzzy match for model and name) or `model` (exact match for a single model).
 //
-// - Returns a `TokenBasedPage` that contains the authorization status (inference/fineTune/deploy) and rate limit information for each model.
+// - Returns `TokenBasedPage`, which contains the authorization status (inference, fine-tuning, and deployment) and throttling information for each model.
 //
 // @param request - ListModelPermissionsRequest
 //
@@ -1857,23 +1873,23 @@ func (client *Client) ListModelPermissionsWithOptions(request *ListModelPermissi
 
 // Summary:
 //
-// Queries model authorizations for a workspace.
+// Queries model authorizations in a workspace.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - Use `workspaceId` to specify the workspace to query (required, cannot be empty).
+// - Specify the workspace to query by using `workspaceId` (required and cannot be empty).
 //
-// - Token-based pagination is used: `nextToken` is a string-type offset. Do not pass it for the first page. `maxResults` defaults to 20. If the upper limit is exceeded, `InvalidParameter.maxResults` is returned.
+// - Uses token-based pagination: `nextToken` is a string offset and is not required for the first page. The default value of `maxResults` is 20. If the value exceeds the upper limit, the `InvalidParameter.maxResults` error is returned.
 //
-// - `authorizationScope` controls the query dimension: `AUTHORIZED` = models that have been authorized for the specified action. `AUTHORIZABLE` = full authorizable catalog.
+// - `authorizationScope` controls the query dimension: `AUTHORIZED` specifies models that are authorized for the specified action, and `AUTHORIZABLE` specifies all authorizable directories.
 //
-// - `modelAction` specifies the authorization action dimension. Currently only `INFERENCE` is supported. If left empty, it defaults to `INFERENCE`.
+// - `modelAction` specifies the authorization action dimension. Currently, only `INFERENCE` is supported. If this parameter is left empty, the default value `INFERENCE` is used.
 //
-// - `filter` supports filtering by `name` (fuzzy match on model and name) or `model` (exact match on a single model).
+// - `filter` supports filtering by `name` (fuzzy match for model and name) or `model` (exact match for a single model).
 //
-// - Returns a `TokenBasedPage` that contains the authorization status (inference/fineTune/deploy) and rate limit information for each model.
+// - Returns `TokenBasedPage`, which contains the authorization status (inference, fine-tuning, and deployment) and throttling information for each model.
 //
 // @param request - ListModelPermissionsRequest
 //
@@ -1892,7 +1908,7 @@ func (client *Client) ListModelPermissions(request *ListModelPermissionsRequest)
 
 // Summary:
 //
-// 模型元数据-查询基础模型列表
+// Queries a list of models.
 //
 // @param tmpReq - ListModelsRequest
 //
@@ -1985,7 +2001,7 @@ func (client *Client) ListModelsWithOptions(tmpReq *ListModelsRequest, headers m
 
 // Summary:
 //
-// 模型元数据-查询基础模型列表
+// Queries a list of models.
 //
 // @param request - ListModelsRequest
 //
@@ -2004,7 +2020,7 @@ func (client *Client) ListModels(request *ListModelsRequest) (_result *ListModel
 
 // Summary:
 //
-// Queries the list of organization members (including seat information). Supports filtering by name, status, and seat assignment, and supports pagination.
+// Queries a list of organization members, including seat information. Supports filtering by name, status, and seat allocation status, and supports pagination.
 //
 // @param request - ListOrganizationMembersRequest
 //
@@ -2067,7 +2083,7 @@ func (client *Client) ListOrganizationMembersWithOptions(request *ListOrganizati
 
 // Summary:
 //
-// Queries the list of organization members (including seat information). Supports filtering by name, status, and seat assignment, and supports pagination.
+// Queries a list of organization members, including seat information. Supports filtering by name, status, and seat allocation status, and supports pagination.
 //
 // @param request - ListOrganizationMembersRequest
 //
@@ -2376,7 +2392,7 @@ func (client *Client) ResetApiKey(apiKeyId *string, request *ResetApiKeyRequest)
 
 // Summary:
 //
-// Revokes a TokenPlan member invitation link.
+// Revokes the TokenPlan member invitation link.
 //
 // @param request - RevokeTokenPlanInviteLinkRequest
 //
@@ -2417,7 +2433,7 @@ func (client *Client) RevokeTokenPlanInviteLinkWithOptions(request *RevokeTokenP
 
 // Summary:
 //
-// Revokes a TokenPlan member invitation link.
+// Revokes the TokenPlan member invitation link.
 //
 // @param request - RevokeTokenPlanInviteLinkRequest
 //
@@ -2440,7 +2456,7 @@ func (client *Client) RevokeTokenPlanInviteLink(request *RevokeTokenPlanInviteLi
 //
 // Description:
 //
-// Only the API Key value changes. The API Key ID remains unchanged.
+// Only the API key changes. The API key ID remains unchanged.
 //
 // @param request - RotateTokenPlanKeyRequest
 //
@@ -2491,7 +2507,7 @@ func (client *Client) RotateTokenPlanKeyWithOptions(request *RotateTokenPlanKeyR
 //
 // Description:
 //
-// Only the API Key value changes. The API Key ID remains unchanged.
+// Only the API key changes. The API key ID remains unchanged.
 //
 // @param request - RotateTokenPlanKeyRequest
 //
@@ -2580,7 +2596,7 @@ func (client *Client) SetTokenPlanOrgInviteConfig(request *SetTokenPlanOrgInvite
 
 // Summary:
 //
-// Edits the information of an API Key authentication credential.
+// Modifies the information of an API key.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -2633,7 +2649,7 @@ func (client *Client) UpdateApiKeyWithOptions(apiKeyId *string, request *UpdateA
 
 // Summary:
 //
-// Edits the information of an API Key authentication credential.
+// Modifies the information of an API key.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -2652,7 +2668,7 @@ func (client *Client) UpdateApiKey(apiKeyId *string, request *UpdateApiKeyReques
 
 // Summary:
 //
-// Updates the model throttling configuration for a workspace.
+// Updates the model throttling settings for a workspace.
 //
 // @param tmpReq - UpdateModelLimitsRequest
 //
@@ -2709,7 +2725,7 @@ func (client *Client) UpdateModelLimitsWithOptions(tmpReq *UpdateModelLimitsRequ
 
 // Summary:
 //
-// Updates the model throttling configuration for a workspace.
+// Updates the model throttling settings for a workspace.
 //
 // @param request - UpdateModelLimitsRequest
 //
@@ -2728,7 +2744,7 @@ func (client *Client) UpdateModelLimits(request *UpdateModelLimitsRequest) (_res
 
 // Summary:
 //
-// Updates model authorization for a workspace.
+// Updates the model authorization for a workspace.
 //
 // @param request - UpdateModelPermissionsRequest
 //
@@ -2783,7 +2799,7 @@ func (client *Client) UpdateModelPermissionsWithOptions(request *UpdateModelPerm
 
 // Summary:
 //
-// Updates model authorization for a workspace.
+// Updates the model authorization for a workspace.
 //
 // @param request - UpdateModelPermissionsRequest
 //
@@ -2802,7 +2818,7 @@ func (client *Client) UpdateModelPermissions(request *UpdateModelPermissionsRequ
 
 // Summary:
 //
-// Modifies organization information.
+// Modifies the organization information.
 //
 // @param request - UpdateOrganizationRequest
 //
@@ -2853,7 +2869,7 @@ func (client *Client) UpdateOrganizationWithOptions(request *UpdateOrganizationR
 
 // Summary:
 //
-// Modifies organization information.
+// Modifies the organization information.
 //
 // @param request - UpdateOrganizationRequest
 //

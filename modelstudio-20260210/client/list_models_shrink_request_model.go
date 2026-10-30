@@ -30,32 +30,125 @@ type iListModelsShrinkRequest interface {
 }
 
 type ListModelsShrinkRequest struct {
+	// The model type. Valid values:
+	//
+	// - Reasoning: Deep thinking.
+	//
+	// - VU: Visual understanding.
+	//
+	// - IG: Image generation.
+	//
+	// - VG: Video generation.
+	//
+	// - ASR: Speech recognition.
+	//
+	// - TTS: Speech synthesis.
+	//
+	// - ME: Multimodal embedding.
+	//
+	// - Realtime-Omni: Real-time omni-modal.
+	//
+	// - Multimodal-Omni: Omni-modal.
+	//
+	// - Realtime-Text-to-Speech: Real-time speech synthesis.
+	//
+	// - TG: Text generation.
+	//
+	// - TR: Text embedding.
+	//
+	// - Realtime-ASR: Real-time speech recognition.
+	//
+	// - Realtime-Audio-Translate: Real-time audio translation.
+	//
+	// - 3D-generation: 3D generation.
+	//
+	// - Realtime-Chatting: Real-time voice conversation.
 	CapabilitiesShrink *string `json:"capabilities,omitempty" xml:"capabilities,omitempty"`
+	// The context window size used to filter models with a context window smaller than this value.
+	//
 	// example:
 	//
 	// 10
-	ContextWindow  *int64  `json:"contextWindow,omitempty" xml:"contextWindow,omitempty"`
+	ContextWindow *int64 `json:"contextWindow,omitempty" xml:"contextWindow,omitempty"`
+	// The model capability. Valid values:
+	//
+	// - model-experience: Playground.
+	//
+	// - function-calling: Function calling.
+	//
+	// - structured-outputs: Structured output.
+	//
+	// - web-search: Web search.
+	//
+	// - prefix-completion: Partial mode.
+	//
+	// - cache: Cache.
+	//
+	// - batch: Batch inference.
+	//
+	// - fine-tuning: Model fine-tuning.
 	FeaturesShrink *string `json:"features,omitempty" xml:"features,omitempty"`
+	// The language. Valid values:
+	//
+	// - zh-CN: Chinese.
+	//
+	// - en-US: English.
+	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// The maximum number of results to return. Valid values: 0 to 200.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The model name for exact match.
+	//
 	// example:
 	//
 	// qwen-plus
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
+	// The model name for fuzzy match.
+	//
 	// example:
 	//
 	// qwen-plus
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The next token.
+	//
 	// example:
 	//
 	// lwytFRtLdNk=
-	NextToken       *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The provider. Valid values:
+	//
+	// - qwen: Alibaba Cloud - Qwen.
+	//
+	// - zhipu-ai: Zhipu AI.
+	//
+	// - wan: Alibaba Cloud - Wan.
+	//
+	// - qwen-domain-model: Alibaba Cloud - Domain Model.
+	//
+	// - mini-max: MiniMax.
+	//
+	// - moonshot-ai: Moonshot AI.
+	//
+	// - deepseek: DeepSeek.
+	//
+	// - happyhorse: Alibaba Cloud - HappyHorse.
+	//
+	// - kling: Kling AI.
+	//
+	// - pixverse: PixVerse.
+	//
+	// - vidu: Vidu.
+	//
+	// - tripo: Tripo.
+	//
+	// - xiaomi: Xiaomi MiMo.
 	ProvidersShrink *string `json:"providers,omitempty" xml:"providers,omitempty"`
 }
 

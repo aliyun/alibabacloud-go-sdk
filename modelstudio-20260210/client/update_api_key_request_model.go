@@ -16,9 +16,9 @@ type iUpdateApiKeyRequest interface {
 }
 
 type UpdateApiKeyRequest struct {
-	// The API Key permission settings.
+	// The API key permission settings.
 	//
-	// > Do not specify this parameter or specify it completely for each UpdateApiKey operation. Otherwise, the configuration may not match your expectations.
+	// > When calling the UpdateApiKey operation, either leave this section empty or fill it out completely. Otherwise, the configuration may not match your expectations.
 	Auth *UpdateApiKeyRequestAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -64,17 +64,17 @@ func (s *UpdateApiKeyRequest) Validate() error {
 }
 
 type UpdateApiKeyRequestAuth struct {
-	// The IP access whitelist.
+	// The IP address whitelist.
 	//
 	// >
 	//
-	// > - When you customize the permission scope, if the IP access whitelist is not specified, the server sets it to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
+	// > - When customizing the permission scope, if the IP address whitelist is not specified, the server sets the default values to IPv4 (0.0.0.0/0) and IPv6 (::/0), which allows all traffic.
 	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
 	// The model access scope.
 	ModelAccessScope *UpdateApiKeyRequestAuthModelAccessScope `json:"modelAccessScope,omitempty" xml:"modelAccessScope,omitempty" type:"Struct"`
 	// The permission type. Valid values:
 	//
-	// - All: full permissions.
+	// - All: all permissions.
 	//
 	// - Custom: custom permissions.
 	//
@@ -133,7 +133,7 @@ type UpdateApiKeyRequestAuthModelAccessScope struct {
 	//
 	// 	Notice: The specified content takes effect only when allowAllModels is set to false.
 	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
-	// Specifies whether all models with inference permissions in the workspace are accessible. Valid values:
+	// Specifies whether to allow access to all models that have been granted inference permissions in the workspace. Valid values:
 	//
 	// - true
 	//

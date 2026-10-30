@@ -44,17 +44,17 @@ type UpdateOrganizationResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// EC0B0D42-A88C-55F5-AF48-498B8207F6BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: The call was successful.
 	//
-	// - false: Failed.
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -134,43 +134,43 @@ func (s *UpdateOrganizationResponseBody) Validate() error {
 }
 
 type UpdateOrganizationResponseBodyData struct {
-	// The organization description.
+	// The description of the organization.
 	//
 	// example:
 	//
-	// 组织描述
+	// Organization description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time.
+	// The time when the organization was created.
 	//
 	// example:
 	//
 	// 2025-12-11T02:19:27Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The time when the organization was updated.
 	//
 	// example:
 	//
 	// 2025-07-08 13:59:11
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The organization name.
+	// The name of the organization.
 	//
 	// example:
 	//
-	// 组织名称
+	// Organization name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The product namespace ID.
+	// The ID of the product namespace.
 	//
 	// example:
 	//
 	// namespace-1
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The organization ID.
+	// The ID of the organization.
 	//
 	// example:
 	//
 	// org_123456789
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The business account identifier of the organization owner. The value is aliyunUid for the ALIYUN type and userIdentifier for the SSO type.
+	// The business account identifier of the organization owner. For the ALIYUN type, the value is aliyunUid. For the SSO type, the value is userIdentifier.
 	//
 	// example:
 	//

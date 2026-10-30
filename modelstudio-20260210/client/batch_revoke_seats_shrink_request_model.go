@@ -18,7 +18,7 @@ type iBatchRevokeSeatsShrinkRequest interface {
 type BatchRevokeSeatsShrinkRequest struct {
 	// The list of revocation items. This parameter is required.
 	ItemsShrink *string `json:"Items,omitempty" xml:"Items,omitempty"`
-	// The language. Valid values: zh-CN and en-US.
+	// The locale. Valid values: zh-CN and en-US.
 	//
 	// example:
 	//

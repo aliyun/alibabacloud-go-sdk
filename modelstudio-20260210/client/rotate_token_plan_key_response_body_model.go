@@ -34,7 +34,7 @@ type RotateTokenPlanKeyResponseBody struct {
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the API call is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
 	// - true: Successful.
 	//
@@ -100,31 +100,31 @@ func (s *RotateTokenPlanKeyResponseBody) Validate() error {
 }
 
 type RotateTokenPlanKeyResponseBodyData struct {
-	// The API Key ID, which is system-generated.
+	// The system-generated API key ID.
 	//
 	// example:
 	//
 	// ak_123456
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
-	// The new masked_api_key returned by BaiLian, such as sk_***cdef.
+	// The new masked API key returned by Model Studio, such as sk_***cdef.
 	//
 	// example:
 	//
 	// sk_***6
 	MaskedApiKey *string `json:"MaskedApiKey,omitempty" xml:"MaskedApiKey,omitempty"`
-	// The new plaintext API Key returned by BaiLian. This value is returned only once during the reset operation.
+	// The new plaintext API key returned by Model Studio. This key is returned only once upon reset.
 	//
 	// example:
 	//
 	// sk-ws.abc123456
 	PlainApiKey *string `json:"PlainApiKey,omitempty" xml:"PlainApiKey,omitempty"`
-	// The time when the API key was reset.
+	// The reset time.
 	//
 	// example:
 	//
 	// 2025-07-18T03:19:17Z
 	ResetAt *string `json:"ResetAt,omitempty" xml:"ResetAt,omitempty"`
-	// The source_id returned by BaiLian.
+	// The source_id returned by Model Studio.
 	//
 	// example:
 	//

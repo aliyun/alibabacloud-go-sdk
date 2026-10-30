@@ -30,7 +30,7 @@ type iListModelPermissionsResponseBody interface {
 }
 
 type ListModelPermissionsResponseBody struct {
-	// The error code. This value is empty when the call is successful.
+	// The error code. This parameter is empty if the call is successful.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type ListModelPermissionsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of workspace permissions.
 	List []*ListModelPermissionsResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per request.
+	// The maximum number of records returned in a single call.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next request.
+	// The pagination token for the next request.
 	//
 	// example:
 	//
 	// lwytFRtLdNk=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The unique request ID.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListModelPermissionsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type ListModelPermissionsResponseBodyList struct {
 	//
 	// qwen-plus
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// The model name.
+	// The name of the model.
 	//
 	// example:
 	//
@@ -246,19 +246,19 @@ func (s *ListModelPermissionsResponseBodyList) Validate() error {
 }
 
 type ListModelPermissionsResponseBodyListPermissions struct {
-	// The model deployment authorization. A value of true indicates that the model has been granted authorization. A value of false indicates that the model has not been granted authorization.
+	// The model deployment permission. A value of true indicates that the model is authorized for deployment. A value of false indicates that the model is not authorized.
 	//
 	// example:
 	//
 	// true
 	Deploy *bool `json:"deploy,omitempty" xml:"deploy,omitempty"`
-	// The model training authorization. A value of true indicates that the model has been granted training authorization. A value of false indicates that the model has not been granted authorization.
+	// The model training permission. A value of true indicates that the model is authorized for fine-tuning. A value of false indicates that the model is not authorized.
 	//
 	// example:
 	//
 	// true
 	FineTune *bool `json:"fineTune,omitempty" xml:"fineTune,omitempty"`
-	// Indicates whether the model has inference permission. A value of true indicates that the model is authorized. A value of false indicates that the model is not authorized.
+	// The model invocation permission. A value of true indicates that the model is authorized for inference. A value of false indicates that the model is not authorized.
 	//
 	// example:
 	//

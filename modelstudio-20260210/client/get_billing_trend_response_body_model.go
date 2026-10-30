@@ -28,9 +28,9 @@ type GetBillingTrendResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *GetBillingTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request result description.
+	// The description of the request result.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetBillingTrendResponseBody struct {
 	//
 	// 099A671E-FA21-5A36-8A73-918572DDEF53
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,11 +113,13 @@ func (s *GetBillingTrendResponseBody) Validate() error {
 }
 
 type GetBillingTrendResponseBodyData struct {
-	// The total cost for the entire query time range, including the top N groups and "Others".
+	// The total costs within the entire query time range, including the top N items and Other.
 	CostTotals *GetBillingTrendResponseBodyDataCostTotals `json:"costTotals,omitempty" xml:"costTotals,omitempty" type:"Struct"`
-	// The total cost of the top N groups and the optional "Others" group within the period.
+	// The total costs of the top N groups and the optional Other group within the period.
 	GroupByTotal []*GetBillingTrendResponseBodyDataGroupByTotal `json:"groupByTotal,omitempty" xml:"groupByTotal,omitempty" type:"Repeated"`
-	// The cost trend list sorted by time in ascending order.
+	// The historical period data, which is returned when the includeHistoryPeriod input parameter is set to true.
+	HistoryPeriod *GetBillingTrendResponseBodyDataHistoryPeriod `json:"historyPeriod,omitempty" xml:"historyPeriod,omitempty" type:"Struct"`
+	// The list of cost trends sorted in ascending order by time.
 	ResultByTime []*GetBillingTrendResponseBodyDataResultByTime `json:"resultByTime,omitempty" xml:"resultByTime,omitempty" type:"Repeated"`
 }
 
@@ -137,6 +139,10 @@ func (s *GetBillingTrendResponseBodyData) GetGroupByTotal() []*GetBillingTrendRe
 	return s.GroupByTotal
 }
 
+func (s *GetBillingTrendResponseBodyData) GetHistoryPeriod() *GetBillingTrendResponseBodyDataHistoryPeriod {
+	return s.HistoryPeriod
+}
+
 func (s *GetBillingTrendResponseBodyData) GetResultByTime() []*GetBillingTrendResponseBodyDataResultByTime {
 	return s.ResultByTime
 }
@@ -148,6 +154,11 @@ func (s *GetBillingTrendResponseBodyData) SetCostTotals(v *GetBillingTrendRespon
 
 func (s *GetBillingTrendResponseBodyData) SetGroupByTotal(v []*GetBillingTrendResponseBodyDataGroupByTotal) *GetBillingTrendResponseBodyData {
 	s.GroupByTotal = v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyData) SetHistoryPeriod(v *GetBillingTrendResponseBodyDataHistoryPeriod) *GetBillingTrendResponseBodyData {
+	s.HistoryPeriod = v
 	return s
 }
 
@@ -171,6 +182,11 @@ func (s *GetBillingTrendResponseBodyData) Validate() error {
 			}
 		}
 	}
+	if s.HistoryPeriod != nil {
+		if err := s.HistoryPeriod.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ResultByTime != nil {
 		for _, item := range s.ResultByTime {
 			if item != nil {
@@ -184,7 +200,7 @@ func (s *GetBillingTrendResponseBodyData) Validate() error {
 }
 
 type GetBillingTrendResponseBodyDataCostTotals struct {
-	// The total amount.
+	// The total cost amount.
 	//
 	// example:
 	//
@@ -265,13 +281,13 @@ type GetBillingTrendResponseBodyDataGroupByTotal struct {
 	//
 	// 60
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The grouping dimension value.
+	// The dimension value of the group.
 	//
 	// example:
 	//
 	// qwen-plus
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The display name of the group. This value is affected by the locale parameter.
+	// The display name of the group, which is affected by the locale input parameter.
 	//
 	// example:
 	//
@@ -348,8 +364,490 @@ func (s *GetBillingTrendResponseBodyDataGroupByTotal) Validate() error {
 	return dara.Validate(s)
 }
 
+type GetBillingTrendResponseBodyDataHistoryPeriod struct {
+	// The total costs within the historical range, including the top N items and Other.
+	CostTotals *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals `json:"costTotals,omitempty" xml:"costTotals,omitempty" type:"Struct"`
+	// The total costs of the top N groups and the optional Other group within the historical period.
+	GroupByTotal []*GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal `json:"groupByTotal,omitempty" xml:"groupByTotal,omitempty" type:"Repeated"`
+	// The list of cost trends sorted in ascending order by time.
+	ResultByTime []*GetBillingTrendResponseBodyDataHistoryPeriodResultByTime `json:"resultByTime,omitempty" xml:"resultByTime,omitempty" type:"Repeated"`
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriod) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriod) GoString() string {
+	return s.String()
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriod) GetCostTotals() *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals {
+	return s.CostTotals
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriod) GetGroupByTotal() []*GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal {
+	return s.GroupByTotal
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriod) GetResultByTime() []*GetBillingTrendResponseBodyDataHistoryPeriodResultByTime {
+	return s.ResultByTime
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriod) SetCostTotals(v *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) *GetBillingTrendResponseBodyDataHistoryPeriod {
+	s.CostTotals = v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriod) SetGroupByTotal(v []*GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) *GetBillingTrendResponseBodyDataHistoryPeriod {
+	s.GroupByTotal = v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriod) SetResultByTime(v []*GetBillingTrendResponseBodyDataHistoryPeriodResultByTime) *GetBillingTrendResponseBodyDataHistoryPeriod {
+	s.ResultByTime = v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriod) Validate() error {
+	if s.CostTotals != nil {
+		if err := s.CostTotals.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GroupByTotal != nil {
+		for _, item := range s.GroupByTotal {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResultByTime != nil {
+		for _, item := range s.ResultByTime {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetBillingTrendResponseBodyDataHistoryPeriodCostTotals struct {
+	// The total cost amount.
+	//
+	// example:
+	//
+	// 1000
+	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The currency of the amount.
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// The pretax amount.
+	//
+	// example:
+	//
+	// 800
+	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
+	// The tax amount.
+	//
+	// example:
+	//
+	// 200
+	TaxAmount *string `json:"taxAmount,omitempty" xml:"taxAmount,omitempty"`
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) GoString() string {
+	return s.String()
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) GetAmount() *string {
+	return s.Amount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) GetCurrency() *string {
+	return s.Currency
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) GetPretaxAmount() *string {
+	return s.PretaxAmount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) GetTaxAmount() *string {
+	return s.TaxAmount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) SetAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals {
+	s.Amount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) SetCurrency(v string) *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) SetPretaxAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) SetTaxAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals {
+	s.TaxAmount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal struct {
+	// The total amount of the current group.
+	//
+	// example:
+	//
+	// 246
+	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The dimension value of the group. If the value is null, DIMENSION_FILTER_NULL_VALUE is returned.
+	//
+	// example:
+	//
+	// qwen-plus
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The display name of the group, which is affected by the locale parameter. If the value is null, a hyphen (-) is displayed.
+	//
+	// example:
+	//
+	// qwen-plus
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The total pretax amount.
+	//
+	// example:
+	//
+	// 100
+	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
+	// The total tax amount.
+	//
+	// example:
+	//
+	// 146
+	TaxAmount *string `json:"taxAmount,omitempty" xml:"taxAmount,omitempty"`
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) GoString() string {
+	return s.String()
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) GetAmount() *string {
+	return s.Amount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) GetName() *string {
+	return s.Name
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) GetPretaxAmount() *string {
+	return s.PretaxAmount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) GetTaxAmount() *string {
+	return s.TaxAmount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) SetAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal {
+	s.Amount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) SetKey(v string) *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal {
+	s.Key = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) SetName(v string) *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal {
+	s.Name = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) SetPretaxAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) SetTaxAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal {
+	s.TaxAmount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetBillingTrendResponseBodyDataHistoryPeriodResultByTime struct {
+	// The statistical period.
+	//
+	// example:
+	//
+	// 20260801
+	Period *string `json:"period,omitempty" xml:"period,omitempty"`
+	// The cost groups that actually exist in the current period.
+	PeriodDetails []*GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails `json:"periodDetails,omitempty" xml:"periodDetails,omitempty" type:"Repeated"`
+	// The total costs of the current period.
+	Total *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal `json:"total,omitempty" xml:"total,omitempty" type:"Struct"`
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriodResultByTime) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriodResultByTime) GoString() string {
+	return s.String()
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTime) GetPeriod() *string {
+	return s.Period
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTime) GetPeriodDetails() []*GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails {
+	return s.PeriodDetails
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTime) GetTotal() *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal {
+	return s.Total
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTime) SetPeriod(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTime {
+	s.Period = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTime) SetPeriodDetails(v []*GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTime {
+	s.PeriodDetails = v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTime) SetTotal(v *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTime {
+	s.Total = v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTime) Validate() error {
+	if s.PeriodDetails != nil {
+		for _, item := range s.PeriodDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Total != nil {
+		if err := s.Total.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails struct {
+	// The amount of the current group.
+	//
+	// example:
+	//
+	// 526
+	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The dimension value of the group. If the value is null, DIMENSION_FILTER_NULL_VALUE is returned.
+	//
+	// example:
+	//
+	// qwen-plus
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The display name of the group, which is affected by the locale parameter. If the value is null, a hyphen (-) is displayed.
+	//
+	// example:
+	//
+	// qwen-plus
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The percentage of the group amount.
+	//
+	// example:
+	//
+	// 0.5
+	Percentage *string `json:"percentage,omitempty" xml:"percentage,omitempty"`
+	// The total pretax amount.
+	//
+	// example:
+	//
+	// 100
+	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
+	// The total tax amount.
+	//
+	// example:
+	//
+	// 426
+	TaxAmount *string `json:"taxAmount,omitempty" xml:"taxAmount,omitempty"`
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) GetAmount() *string {
+	return s.Amount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) GetName() *string {
+	return s.Name
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) GetPercentage() *string {
+	return s.Percentage
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) GetPretaxAmount() *string {
+	return s.PretaxAmount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) GetTaxAmount() *string {
+	return s.TaxAmount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) SetAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails {
+	s.Amount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) SetKey(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails {
+	s.Key = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) SetName(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails {
+	s.Name = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) SetPercentage(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails {
+	s.Percentage = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) SetPretaxAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) SetTaxAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails {
+	s.TaxAmount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal struct {
+	// The total cost amount of the current period.
+	//
+	// example:
+	//
+	// 600
+	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The currency of the amount.
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// The total pretax amount.
+	//
+	// example:
+	//
+	// 100
+	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
+	// The total tax amount.
+	//
+	// example:
+	//
+	// 500
+	TaxAmount *string `json:"taxAmount,omitempty" xml:"taxAmount,omitempty"`
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) GoString() string {
+	return s.String()
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) GetAmount() *string {
+	return s.Amount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) GetCurrency() *string {
+	return s.Currency
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) GetPretaxAmount() *string {
+	return s.PretaxAmount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) GetTaxAmount() *string {
+	return s.TaxAmount
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) SetAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal {
+	s.Amount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) SetCurrency(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) SetPretaxAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) SetTaxAmount(v string) *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal {
+	s.TaxAmount = &v
+	return s
+}
+
+func (s *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetBillingTrendResponseBodyDataResultByTime struct {
-	// The statistical period. DAY returns yyyyMMdd. MONTH returns yyyyMM.
+	// The statistical period. DAY returns yyyyMMdd, and MONTH returns yyyyMM.
 	//
 	// example:
 	//
@@ -357,7 +855,7 @@ type GetBillingTrendResponseBodyDataResultByTime struct {
 	Period *string `json:"period,omitempty" xml:"period,omitempty"`
 	// The cost groups that actually exist in the current period.
 	PeriodDetails []*GetBillingTrendResponseBodyDataResultByTimePeriodDetails `json:"periodDetails,omitempty" xml:"periodDetails,omitempty" type:"Repeated"`
-	// The total cost for the current period.
+	// The total costs of the current period.
 	Total *GetBillingTrendResponseBodyDataResultByTimeTotal `json:"total,omitempty" xml:"total,omitempty" type:"Struct"`
 }
 
@@ -415,19 +913,19 @@ func (s *GetBillingTrendResponseBodyDataResultByTime) Validate() error {
 }
 
 type GetBillingTrendResponseBodyDataResultByTimePeriodDetails struct {
-	// The amount of the group within the current period.
+	// The amount of the group in the current period.
 	//
 	// example:
 	//
 	// 20
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The grouping dimension value. Data beyond the top N uses DIMENSION_GROUP_OTHERS_VALUE.
+	// The dimension value of the group. For data other than the top N items, DIMENSION_GROUP_OTHERS_VALUE is used.
 	//
 	// example:
 	//
 	// qwen-plus
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The display name of the group. This value is affected by the locale parameter.
+	// The display name of the group, which is affected by the locale input parameter.
 	//
 	// example:
 	//
@@ -439,13 +937,13 @@ type GetBillingTrendResponseBodyDataResultByTimePeriodDetails struct {
 	//
 	// 0.6667
 	Percentage *string `json:"percentage,omitempty" xml:"percentage,omitempty"`
-	// The pretax amount of the group within the current period.
+	// The pretax amount of the group in the current period.
 	//
 	// example:
 	//
 	// 18.87
 	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
-	// The tax amount of the group within the current period.
+	// The tax amount of the group in the current period.
 	//
 	// example:
 	//
@@ -520,25 +1018,25 @@ func (s *GetBillingTrendResponseBodyDataResultByTimePeriodDetails) Validate() er
 }
 
 type GetBillingTrendResponseBodyDataResultByTimeTotal struct {
-	// The total amount for the current period.
+	// The total cost amount of the current period.
 	//
 	// example:
 	//
 	// 30
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The currency of the amount for the current period.
+	// The currency of the amount in the current period.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
-	// The pretax amount for the current period.
+	// The pretax amount of the current period.
 	//
 	// example:
 	//
 	// 28.30
 	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
-	// The tax amount for the current period.
+	// The tax amount of the current period.
 	//
 	// example:
 	//

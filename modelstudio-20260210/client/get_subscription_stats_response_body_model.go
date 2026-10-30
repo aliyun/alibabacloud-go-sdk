@@ -34,7 +34,7 @@ type GetSubscriptionStatsResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the API call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
 	// - true: Successful.
 	//
@@ -100,15 +100,15 @@ func (s *GetSubscriptionStatsResponseBody) Validate() error {
 }
 
 type GetSubscriptionStatsResponseBodyData struct {
-	// The list of seat information, grouped by specType.
+	// The list of seat information grouped by specType.
 	Items []*GetSubscriptionStatsResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The subscription end time, in milliseconds.
+	// The subscription end time in milliseconds.
 	//
 	// example:
 	//
 	// 1781422734
 	SubscriptionEndTime *int64 `json:"SubscriptionEndTime,omitempty" xml:"SubscriptionEndTime,omitempty"`
-	// The subscription start time, in milliseconds.
+	// The subscription start time in milliseconds.
 	//
 	// example:
 	//
@@ -171,13 +171,13 @@ type GetSubscriptionStatsResponseBodyDataItems struct {
 	//
 	// 1
 	AssignedSeats *int64 `json:"AssignedSeats,omitempty" xml:"AssignedSeats,omitempty"`
-	// The total credits quota for the seat.
+	// The total credits quota for seats.
 	//
 	// example:
 	//
 	// 100
 	SeatCredits *float64 `json:"SeatCredits,omitempty" xml:"SeatCredits,omitempty"`
-	// The refresh time of the current cycle, in milliseconds.
+	// The refresh time of the current cycle in milliseconds.
 	//
 	// example:
 	//

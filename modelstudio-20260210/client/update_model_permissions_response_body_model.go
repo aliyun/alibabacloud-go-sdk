@@ -22,13 +22,13 @@ type iUpdateModelPermissionsResponseBody interface {
 }
 
 type UpdateModelPermissionsResponseBody struct {
-	// The error code. This parameter is empty when the call is successful.
+	// The error code. This parameter is empty if the call is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error message. This parameter is empty when the call is successful.
+	// The error message. This parameter is empty if the call is successful.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type UpdateModelPermissionsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int64 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The unique request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

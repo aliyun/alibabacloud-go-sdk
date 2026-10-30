@@ -30,35 +30,52 @@ type iListModelsResponseBody interface {
 }
 
 type ListModelsResponseBody struct {
+	// The error code. This field is empty when the call is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The error message. This field is empty when the call is successful.
+	//
 	// example:
 	//
 	// The specified parameter is invalid
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The maximum number of records returned per request.
+	//
 	// example:
 	//
 	// 20
-	MaxResults *int64                          `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	Models     []*ListModelsResponseBodyModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The list of models.
+	Models []*ListModelsResponseBodyModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	// The token for the next request.
+	//
 	// example:
 	//
 	// lwytFRtLdNk=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The unique identifier of the request.
+	//
 	// example:
 	//
 	// 36045E0A-551D-592D-B1BC-4C56596CE59E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -168,27 +185,42 @@ func (s *ListModelsResponseBody) Validate() error {
 }
 
 type ListModelsResponseBodyModels struct {
+	// The model type.
 	Capabilities []*string `json:"capabilities,omitempty" xml:"capabilities,omitempty" type:"Repeated"`
+	// The model description.
+	//
 	// example:
 	//
 	// provided by qwen
-	Description       *string                                        `json:"description,omitempty" xml:"description,omitempty"`
-	Features          []*string                                      `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The list of model capabilities.
+	Features []*string `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
+	// The modality type.
 	InferenceMetadata *ListModelsResponseBodyModelsInferenceMetadata `json:"inferenceMetadata,omitempty" xml:"inferenceMetadata,omitempty" type:"Struct"`
+	// The model name for exact match.
+	//
 	// example:
 	//
 	// qwen-plus
-	Model     *string                                `json:"model,omitempty" xml:"model,omitempty"`
+	Model *string `json:"model,omitempty" xml:"model,omitempty"`
+	// The model information, including various context lengths.
 	ModelInfo *ListModelsResponseBodyModelsModelInfo `json:"modelInfo,omitempty" xml:"modelInfo,omitempty" type:"Struct"`
+	// The model name for fuzzy match.
+	//
 	// example:
 	//
 	// qwen-plus
-	Name   *string                               `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The list of model pricing.
 	Prices []*ListModelsResponseBodyModelsPrices `json:"prices,omitempty" xml:"prices,omitempty" type:"Repeated"`
+	// The model provider.
+	//
 	// example:
 	//
 	// qwen
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The release time.
+	//
 	// example:
 	//
 	// 1779268196000
@@ -317,7 +349,9 @@ func (s *ListModelsResponseBodyModels) Validate() error {
 }
 
 type ListModelsResponseBodyModelsInferenceMetadata struct {
-	RequestModality  []*string `json:"requestModality,omitempty" xml:"requestModality,omitempty" type:"Repeated"`
+	// The input modality. Valid values: Text, Image, Audio, and Video.
+	RequestModality []*string `json:"requestModality,omitempty" xml:"requestModality,omitempty" type:"Repeated"`
+	// The output modality. Valid values: Text, Image, Audio, and Video.
 	ResponseModality []*string `json:"responseModality,omitempty" xml:"responseModality,omitempty" type:"Repeated"`
 }
 
@@ -352,26 +386,38 @@ func (s *ListModelsResponseBodyModelsInferenceMetadata) Validate() error {
 }
 
 type ListModelsResponseBodyModelsModelInfo struct {
+	// The context length.
+	//
 	// example:
 	//
 	// 10
 	ContextWindow *int64 `json:"contextWindow,omitempty" xml:"contextWindow,omitempty"`
+	// The maximum input length.
+	//
 	// example:
 	//
 	// 10
 	MaxInputTokens *int64 `json:"maxInputTokens,omitempty" xml:"maxInputTokens,omitempty"`
+	// The maximum output length.
+	//
 	// example:
 	//
 	// 10
 	MaxOutputTokens *int64 `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
+	// The maximum chain-of-thought length.
+	//
 	// example:
 	//
 	// 10
 	MaxReasoningTokens *int64 `json:"maxReasoningTokens,omitempty" xml:"maxReasoningTokens,omitempty"`
+	// The maximum input length in thinking mode.
+	//
 	// example:
 	//
 	// 10
 	ReasoningMaxInputTokens *int64 `json:"reasoningMaxInputTokens,omitempty" xml:"reasoningMaxInputTokens,omitempty"`
+	// The maximum output length in thinking mode.
+	//
 	// example:
 	//
 	// 10
@@ -445,7 +491,10 @@ func (s *ListModelsResponseBodyModelsModelInfo) Validate() error {
 }
 
 type ListModelsResponseBodyModelsPrices struct {
+	// The model pricing.
 	Prices []*ListModelsResponseBodyModelsPricesPrices `json:"prices,omitempty" xml:"prices,omitempty" type:"Repeated"`
+	// The tier name. If tiered pricing is not used, the value is Default.
+	//
 	// example:
 	//
 	// Default
@@ -492,18 +541,32 @@ func (s *ListModelsResponseBodyModelsPrices) Validate() error {
 }
 
 type ListModelsResponseBodyModelsPricesPrices struct {
+	// The price. The currency unit depends on the account type: ￥ for accounts in the Chinese mainland and $ for international accounts.
+	//
 	// example:
 	//
 	// 12
 	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// The price type.
+	//
 	// example:
 	//
 	// input
 	PriceName *string `json:"priceName,omitempty" xml:"priceName,omitempty"`
+	// The billing method.
+	//
 	// example:
 	//
 	// Per 1M tokens
 	PriceUnit *string `json:"priceUnit,omitempty" xml:"priceUnit,omitempty"`
+	// The time band. Valid values:
+	//
+	// - peak: Peak hours.
+	//
+	// - offpeak: Off-peak hours.
+	//
+	// - standard: No time-based tiering.
+	//
 	// example:
 	//
 	// standard

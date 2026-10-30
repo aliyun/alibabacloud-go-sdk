@@ -24,9 +24,9 @@ type AddOrganizationMemberRequest struct {
 	//
 	// example:
 	//
-	// 账号名称
+	// Account name
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The organization role code. Only ORG_ADMIN or ORG_MEMBER is allowed. Default value: ORG_MEMBER.
+	// The organization role code. Valid values: ORG_ADMIN and ORG_MEMBER. Default value: ORG_MEMBER.
 	//
 	// This parameter is required.
 	//
@@ -36,11 +36,11 @@ type AddOrganizationMemberRequest struct {
 	OrgRoleCode *string `json:"OrgRoleCode,omitempty" xml:"OrgRoleCode,omitempty"`
 	// The seat specification. Valid values:
 	//
-	// - standard: standard seat.
+	// - standard: Standard seat.
 	//
-	// - pro: premium seat.
+	// - pro: Pro seat.
 	//
-	// - max: exclusive seat.
+	// - max: Premium seat.
 	//
 	// example:
 	//

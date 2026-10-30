@@ -36,7 +36,13 @@ type GetSubscriptionSeatDetailsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The seat assignment status filter. Set to true for assigned seats, false for unassigned seats, or null for all seats.
+	// The filter for the seat assignment status. Valid values:
+	//
+	// - true: assigned
+	//
+	// - false: unassigned
+	//
+	// - null: all
 	//
 	// example:
 	//
@@ -50,17 +56,17 @@ type GetSubscriptionSeatDetailsRequest struct {
 	SeatId *string `json:"SeatId,omitempty" xml:"SeatId,omitempty"`
 	// The seat type (specType). Valid values:
 	//
-	// - standard: standard seat.
+	// - standard: standard seat
 	//
-	// - pro: pro seat.
+	// - pro: advanced seat
 	//
-	// - max: premium seat.
+	// - max: premium seat
 	//
 	// example:
 	//
 	// standard
 	SeatType *string `json:"SeatType,omitempty" xml:"SeatType,omitempty"`
-	// The list of seat statuses used for filtering.
+	// The list of seat statuses for filtering.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 

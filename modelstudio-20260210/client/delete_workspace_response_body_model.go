@@ -40,11 +40,11 @@ type DeleteWorkspaceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Indicates whether the workspace is successfully deleted. Valid values:
+	// Indicates whether the deletion is successful. Valid values:
 	//
-	// - true: Succeeded.
+	// - true: successful
 	//
-	// - false: Failed.
+	// - false: failed
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type DeleteWorkspaceResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the API call is successful. Valid values:
 	//
-	// - true: Succeeded.
+	// - true: successful
 	//
-	// - false: Failed.
+	// - false: failed
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type CreateTokenPlanKeyRequest struct {
 	//
 	// example:
 	//
-	// APIKEY描述
+	// API key description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 

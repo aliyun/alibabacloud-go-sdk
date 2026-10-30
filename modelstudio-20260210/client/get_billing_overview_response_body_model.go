@@ -22,15 +22,15 @@ type iGetBillingOverviewResponseBody interface {
 }
 
 type GetBillingOverviewResponseBody struct {
-	// The request result code.
+	// The result code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The bill overview data.
+	// The billing overview data.
 	Data *GetBillingOverviewResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request result message.
+	// The description of the request result.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetBillingOverviewResponseBody struct {
 	//
 	// BB521414-5D38-5E66-AA66-963B2B4200E2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type GetBillingOverviewResponseBodyData struct {
 	//
 	// USD
 	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
-	// The top N groups sorted by amount in descending order.
+	// The list of top N groups sorted by amount in descending order.
 	Groups []*GetBillingOverviewResponseBodyDataGroups `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
 	// The total pretax amount.
 	//
@@ -214,21 +214,21 @@ type GetBillingOverviewResponseBodyDataGroups struct {
 	//
 	// 3000
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The list of commodity codes associated with the current group.
+	// The list of commodity codes involved in the current group.
 	ArticleCodes []*string `json:"articleCodes,omitempty" xml:"articleCodes,omitempty" type:"Repeated"`
-	// The grouping dimension value. A null value is returned as DIMENSION_FILTER_NULL_VALUE.
+	// The value of the grouping dimension. If the value is null, DIMENSION_FILTER_NULL_VALUE is returned.
 	//
 	// example:
 	//
 	// inference
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The display name of the group, which is affected by the locale parameter. A null value is displayed as -.
+	// The display name of the group, which is affected by the locale parameter. If the value is null, a hyphen (-) is displayed.
 	//
 	// example:
 	//
 	// Model invocation
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ratio of the group amount to the total amount of the top N groups.
+	// The proportion of the group amount to the total amount of the top N groups.
 	//
 	// example:
 	//

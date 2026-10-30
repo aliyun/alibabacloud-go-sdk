@@ -30,7 +30,7 @@ type RevokeTokenPlanInviteLinkResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the API call is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
 	// - true: Successful.
 	//

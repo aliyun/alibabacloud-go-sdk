@@ -44,7 +44,7 @@ type GetTokenPlanAccountDetailResponseBody struct {
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type GetTokenPlanAccountDetailResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the API call is successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: The call is successful.
 	//
-	// - false: Failed.
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -152,25 +152,29 @@ type GetTokenPlanAccountDetailResponseBodyData struct {
 	//
 	// ALIYUN
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The Alibaba Cloud UID. This parameter applies only to accounts of the ALIYUN type.
+	// The Alibaba Cloud UID of an ALIYUN account.
 	//
 	// example:
 	//
 	// 1122334455
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	// The time when the account was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// Thu May 28 14:33:52 CST 2026
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The email address. This parameter applies only to accounts of the SSO type.
+	// The email address of an SSO account.
 	//
 	// example:
 	//
 	// test@email.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The global status of the account. A value of 0 indicates Normal. A value of 1 indicates Frozen.
+	// The global status of the account. Valid values:
+	//
+	// - 0: Normal.
+	//
+	// - 1: Frozen.
 	//
 	// example:
 	//
@@ -182,7 +186,7 @@ type GetTokenPlanAccountDetailResponseBodyData struct {
 	//
 	// test_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of organization memberships in a tree structure (organization → workspace).
+	// The list of organization memberships in a tree structure from organization to workspace.
 	OrgMemberships []*GetTokenPlanAccountDetailResponseBodyDataOrgMemberships `json:"OrgMemberships,omitempty" xml:"OrgMemberships,omitempty" type:"Repeated"`
 }
 
@@ -280,7 +284,7 @@ func (s *GetTokenPlanAccountDetailResponseBodyData) Validate() error {
 }
 
 type GetTokenPlanAccountDetailResponseBodyDataOrgMemberships struct {
-	// The organization member status. Valid values:
+	// The status of the organization member. Valid values:
 	//
 	// - ACTIVE
 	//

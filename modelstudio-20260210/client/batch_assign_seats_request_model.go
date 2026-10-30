@@ -20,7 +20,7 @@ type iBatchAssignSeatsRequest interface {
 type BatchAssignSeatsRequest struct {
 	// The list of target member IDs.
 	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// The language. Valid values: zh-CN and en-US.
+	// The locale. Valid values: zh-CN and en-US.
 	//
 	// example:
 	//
@@ -28,11 +28,11 @@ type BatchAssignSeatsRequest struct {
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
 	// The seat type. Valid values:
 	//
-	// - standard: standard seat
+	// - standard: Standard seat.
 	//
-	// - pro: pro seat
+	// - pro: Pro seat.
 	//
-	// - max: premium seat
+	// - max: Max seat.
 	//
 	// This parameter is required.
 	//

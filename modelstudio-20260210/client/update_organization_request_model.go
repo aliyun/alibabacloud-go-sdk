@@ -16,17 +16,17 @@ type iUpdateOrganizationRequest interface {
 }
 
 type UpdateOrganizationRequest struct {
-	// The organization description.
+	// The description of the organization.
 	//
 	// example:
 	//
-	// 新的组织描述
+	// New organization description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The organization name.
+	// The name of the organization.
 	//
 	// example:
 	//
-	// 新的组织名称
+	// New organization name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

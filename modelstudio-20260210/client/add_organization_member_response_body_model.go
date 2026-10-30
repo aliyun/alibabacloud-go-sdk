@@ -50,7 +50,7 @@ type AddOrganizationMemberResponseBody struct {
 	//
 	// 385C2BC3-52FC-564F-9312-97E5DFE1DFC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type AddOrganizationMemberResponseBodyData struct {
 	//
 	// acc_123456789
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Indicates whether the seat was assigned successfully.
+	// Indicates whether the seat is assigned successfully.
 	//
 	// example:
 	//

@@ -34,11 +34,11 @@ type CreateTokenPlanInviteLinkResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The call was successful.
+	// - true: Successful.
 	//
-	// - false: The call failed.
+	// - false: Failed.
 	//
 	// example:
 	//

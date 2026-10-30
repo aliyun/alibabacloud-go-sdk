@@ -24,11 +24,11 @@ type iListModelPermissionsRequest interface {
 }
 
 type ListModelPermissionsRequest struct {
-	// The authorization query dimension. Valid values:
+	// The query dimension for the authorization scope.
 	//
-	// - **AUTHORIZED**: models that have been authorized for the specified modelAction. Use this value together with modelAction.
+	// - **AUTHORIZED**: models that are authorized for the specified modelAction. This value must be used together with modelAction.
 	//
-	// - **AUTHORIZABLE**: full authorizable catalog.
+	// - **AUTHORIZABLE**: all authorizable directories.
 	//
 	// example:
 	//
@@ -36,27 +36,27 @@ type ListModelPermissionsRequest struct {
 	AuthorizationScope *string `json:"authorizationScope,omitempty" xml:"authorizationScope,omitempty"`
 	// The filter conditions.
 	Filter *ListModelPermissionsRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
-	// The maximum number of entries to return per page. Default value: 20. If the upper limit is exceeded, the error code InvalidParameter.maxResults is returned.
+	// The maximum number of entries to return on each page. Default value: 20. If the value exceeds the upper limit, the `InvalidParameter.maxResults` error is returned.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The authorization action dimension. Valid values:
+	// The authorization action dimension.
 	//
-	// - **INFERENCE**: model inference authorization.
+	// - **INFERENCE**: model invocation authorization.
 	//
 	// example:
 	//
 	// INFERENCE
 	ModelAction *string `json:"modelAction,omitempty" xml:"modelAction,omitempty"`
-	// The pagination token (offset) for the next page. Do not pass this parameter for the first page.
+	// The pagination token that is used to retrieve the next page. This parameter is not required for the first page.
 	//
 	// example:
 	//
 	// lwytFRtLdNk=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The workspace ID. This parameter is required and cannot be empty.
+	// The ID of the workspace. This parameter is required.
 	//
 	// This parameter is required.
 	//

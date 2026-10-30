@@ -15,6 +15,8 @@ type iGetBillingTrendShrinkRequest interface {
 	GetGranularity() *string
 	SetGroupByShrink(v string) *GetBillingTrendShrinkRequest
 	GetGroupByShrink() *string
+	SetIncludeHistoryPeriod(v bool) *GetBillingTrendShrinkRequest
+	GetIncludeHistoryPeriod() *bool
 	SetLocale(v string) *GetBillingTrendShrinkRequest
 	GetLocale() *string
 	SetRegionId(v string) *GetBillingTrendShrinkRequest
@@ -28,7 +30,7 @@ type iGetBillingTrendShrinkRequest interface {
 }
 
 type GetBillingTrendShrinkRequest struct {
-	// The dimension filter conditions.
+	// The dimension filter condition.
 	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
 	// The query granularity. This parameter is required.
 	//
@@ -36,9 +38,15 @@ type GetBillingTrendShrinkRequest struct {
 	//
 	// DAY
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
-	// The grouping conditions. This parameter must contain one and only one element.
+	// The grouping condition. This parameter must contain exactly one element.
 	GroupByShrink *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
-	// The response language. Default value: en-US.
+	// Specifies whether to query the previous non-overlapping period of the same length. Default value: false.
+	//
+	// example:
+	//
+	// false
+	IncludeHistoryPeriod *bool `json:"includeHistoryPeriod,omitempty" xml:"includeHistoryPeriod,omitempty"`
+	// The language of the response. Default value: en-US.
 	//
 	// example:
 	//
@@ -50,15 +58,15 @@ type GetBillingTrendShrinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The query time range, including the start time and end time. This parameter is required.
+	// The time range to query, including the start time and end time. This parameter is required.
 	TimePeriodShrink *string `json:"timePeriod,omitempty" xml:"timePeriod,omitempty"`
-	// The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Others".
+	// The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Other".
 	//
 	// example:
 	//
 	// 20
 	TopNum *int32 `json:"topNum,omitempty" xml:"topNum,omitempty"`
-	// Specifies whether to filter out groups with a zero amount. Default value: true.
+	// Specifies whether to filter out groups with an amount of 0. Default value: true.
 	//
 	// example:
 	//
@@ -84,6 +92,10 @@ func (s *GetBillingTrendShrinkRequest) GetGranularity() *string {
 
 func (s *GetBillingTrendShrinkRequest) GetGroupByShrink() *string {
 	return s.GroupByShrink
+}
+
+func (s *GetBillingTrendShrinkRequest) GetIncludeHistoryPeriod() *bool {
+	return s.IncludeHistoryPeriod
 }
 
 func (s *GetBillingTrendShrinkRequest) GetLocale() *string {
@@ -118,6 +130,11 @@ func (s *GetBillingTrendShrinkRequest) SetGranularity(v string) *GetBillingTrend
 
 func (s *GetBillingTrendShrinkRequest) SetGroupByShrink(v string) *GetBillingTrendShrinkRequest {
 	s.GroupByShrink = &v
+	return s
+}
+
+func (s *GetBillingTrendShrinkRequest) SetIncludeHistoryPeriod(v bool) *GetBillingTrendShrinkRequest {
+	s.IncludeHistoryPeriod = &v
 	return s
 }
 

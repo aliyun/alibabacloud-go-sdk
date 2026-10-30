@@ -22,7 +22,7 @@ type iUpdateModelLimitsResponseBody interface {
 }
 
 type UpdateModelLimitsResponseBody struct {
-	// The error code. This parameter is empty when the request is successful.
+	// The error code. This parameter is empty if the call is successful.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type UpdateModelLimitsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The unique request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
