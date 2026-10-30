@@ -14,6 +14,11 @@ type iSinkDataWorksTriggerParameters interface {
 }
 
 type SinkDataWorksTriggerParameters struct {
+	// Specifies whether to enable the DataWorks trigger.
+	//
+	// example:
+	//
+	// true
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 

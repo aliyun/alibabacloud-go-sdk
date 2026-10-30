@@ -17,6 +17,10 @@ type iDeleteEventSourceRequest interface {
 
 type DeleteEventSourceRequest struct {
 	// The event bus to which the event source is attached.
+	//
+	// example:
+	//
+	// eEXaMPLEBUSNameAaAaAa
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// The name of the event source.
 	//

@@ -22,7 +22,7 @@ type iCreateKnowledgeBaseResponseBody interface {
 }
 
 type CreateKnowledgeBaseResponseBody struct {
-	// The response code. A value of Success indicates a successful operation. An error code is returned if the operation fails.
+	// The response code. Success indicates that the call was successful. If the call fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateKnowledgeBaseResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the created knowledge base, including the name, status, and configuration information.
 	Data *KnowledgeBase `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response message. A value of Operation success is returned if the operation succeeds. A specific error description is returned if the operation fails.
+	// The response message. Operation success is returned if the call is successful. A specific error description is returned if the call fails.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateKnowledgeBaseResponseBody struct {
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. A value of true indicates success.
+	// Indicates whether the call was successful. A value of true indicates success.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iSearchLumaKnowledgeBaseRequest interface {
 }
 
 type SearchLumaKnowledgeBaseRequest struct {
-	// The name of the Agent.
+	// The name of the agent.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type SearchLumaKnowledgeBaseRequest struct {
 	//
 	// my_agent
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// The name of the data catalog bound to the Agent. You can call ListLumaCatalogs to obtain the catalog name.
+	// The name of the data catalog bound to the agent. You can call ListLumaCatalogs to obtain this value.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type SearchLumaKnowledgeBaseRequest struct {
 	//
 	// my_catalog
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The name of the knowledge base bound to the Agent. You can call ListLumaKnowledgeBases to obtain the knowledge base name.
+	// The name of the knowledge base bound to the agent. You can call ListLumaKnowledgeBases to obtain this value.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,19 @@ type SearchLumaKnowledgeBaseRequest struct {
 	//
 	// my-knowledge-base
 	KnowledgeBaseName *string `json:"KnowledgeBaseName,omitempty" xml:"KnowledgeBaseName,omitempty"`
-	// A JSON string that filters the retrieval scope based on document metadata. For available fields, refer to the MetadataSchema of the knowledge base.
+	// The metadata filter conditions. The value is a JSON string used to filter the recall scope based on document metadata. For available fields, see the MetadataSchema of the knowledge base.
 	//
 	// example:
 	//
 	// {"category":"faq"}
 	MetadataFilter *string `json:"MetadataFilter,omitempty" xml:"MetadataFilter,omitempty"`
-	// Valid values: vector (AISearch), keyword (keyword match), hybrid (hybrid search). If not specified, the retrieve configuration of the knowledge base is used.
+	// The retrieve mode. Valid values: vector (AISearch), keyword (keyword retrieve), and hybrid (hybrid retrieve). If you do not specify this parameter, the retrieve configuration of the knowledge base is used.
 	//
 	// example:
 	//
 	// hybrid
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The name of the namespace bound to the Agent. You can call ListLumaNamespaces to obtain the namespace name.
+	// The name of the namespace bound to the agent. You can call ListLumaNamespaces to obtain this value.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type SearchLumaKnowledgeBaseRequest struct {
 	//
 	// my_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The natural language query for retrieval.
+	// The search query in natural language.
 	//
 	// This parameter is required.
 	//
@@ -82,13 +82,13 @@ type SearchLumaKnowledgeBaseRequest struct {
 	//
 	// How to configure event rules
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// Specifies whether to enable reranking for the retrieved results. Reranking improves accuracy but increases latency. If not specified, the retrieval configuration of the knowledge base is used.
+	// Specifies whether to enable reranking. If enabled, the recalled results are reranked to improve precision at the cost of longer execution duration. If you do not specify this parameter, the search configuration of the knowledge base is used.
 	//
 	// example:
 	//
 	// true
 	Rerank *bool `json:"Rerank,omitempty" xml:"Rerank,omitempty"`
-	// Valid values: 1 to 100. If not specified, the retrieval configuration of the knowledge base is used.
+	// The number of text chunks to return. Valid values: 1 to 100. If you do not specify this parameter, the search configuration of the knowledge base is used.
 	//
 	// example:
 	//

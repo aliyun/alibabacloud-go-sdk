@@ -46,6 +46,10 @@ func (s *TestEventSourceConfigRequest) Validate() error {
 
 type TestEventSourceConfigRequestSourceMySQLParameters struct {
 	// The list of allowed CIDR blocks.
+	//
+	// example:
+	//
+	// 192.0.2.0/24
 	AllowedCIDRs *string `json:"AllowedCIDRs,omitempty" xml:"AllowedCIDRs,omitempty"`
 	// The database name.
 	//
@@ -90,6 +94,10 @@ type TestEventSourceConfigRequestSourceMySQLParameters struct {
 	// sg-xxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The snapshot mode.
+	//
+	// example:
+	//
+	// when_needed
 	SnapshotMode *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
 	// The table name. The name must be prefixed with the database name in the ${DatabaseName}.${TableName} format.
 	//

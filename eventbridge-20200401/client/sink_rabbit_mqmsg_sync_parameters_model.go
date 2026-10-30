@@ -44,22 +44,82 @@ type iSinkRabbitMQMsgSyncParameters interface {
 }
 
 type SinkRabbitMQMsgSyncParameters struct {
-	Body            *SinkRabbitMQMsgSyncParametersBody       `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	Endpoint        *string                                  `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Exchange        *SinkRabbitMQMsgSyncParametersExchange   `json:"Exchange,omitempty" xml:"Exchange,omitempty" type:"Struct"`
-	InstanceId      *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType    *string                                  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MaxHops         *string                                  `json:"MaxHops,omitempty" xml:"MaxHops,omitempty"`
-	MessageId       *SinkRabbitMQMsgSyncParametersMessageId  `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
-	NetworkType     *string                                  `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Password        *string                                  `json:"Password,omitempty" xml:"Password,omitempty"`
-	Properties      *SinkRabbitMQMsgSyncParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	RoutingKey      *SinkRabbitMQMsgSyncParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
-	SecurityGroupId *string                                  `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Username        *string                                  `json:"Username,omitempty" xml:"Username,omitempty"`
-	VSwitchIds      *string                                  `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VirtualHostName *string                                  `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
-	VpcId           *string                                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The message body.
+	Body *SinkRabbitMQMsgSyncParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	// The endpoint of the ApsaraMQ for RabbitMQ cluster.
+	//
+	// example:
+	//
+	// rabbitmq-cn-hangzhou-2x***.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The exchange. This parameter is required only when the TargetType parameter is set to Exchange.
+	Exchange *SinkRabbitMQMsgSyncParametersExchange `json:"Exchange,omitempty" xml:"Exchange,omitempty" type:"Struct"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	//
+	// example:
+	//
+	// rabbitmq-cn-a1b2c3d4e5f
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the ApsaraMQ for RabbitMQ instance.
+	//
+	// example:
+	//
+	// Cloud
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The maximum number of hops allowed for message forwarding in a federation task. Messages that exceed this limit are dropped.
+	//
+	// example:
+	//
+	// 1
+	MaxHops *string `json:"MaxHops,omitempty" xml:"MaxHops,omitempty"`
+	// The message ID.
+	MessageId *SinkRabbitMQMsgSyncParametersMessageId `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
+	// The network type used to connect to the ApsaraMQ for RabbitMQ instance.
+	//
+	// example:
+	//
+	// PrivateNetwork
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The password used to connect to the ApsaraMQ for RabbitMQ cluster.
+	//
+	// example:
+	//
+	// yourPassword
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The message properties.
+	Properties *SinkRabbitMQMsgSyncParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	// The routing key of the message. This parameter is required only when the TargetType parameter is set to Exchange.
+	RoutingKey *SinkRabbitMQMsgSyncParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
+	// The ID of the security group to which the nodes of the ApsaraMQ for RabbitMQ cluster belong.
+	//
+	// example:
+	//
+	// sg-a1b2c3d4e5f6g7h8i9j0
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The username used to connect to the ApsaraMQ for RabbitMQ cluster.
+	//
+	// example:
+	//
+	// admin
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The IDs of the vSwitches in the VPC where the ApsaraMQ for RabbitMQ cluster resides.
+	//
+	// example:
+	//
+	// vsw-a1b2c3d4e5f6g7h8i9j0k
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The name of the virtual host (vhost) in the ApsaraMQ for RabbitMQ cluster.
+	//
+	// example:
+	//
+	// test-001
+	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
+	// The ID of the VPC where the ApsaraMQ for RabbitMQ cluster resides.
+	//
+	// example:
+	//
+	// vpc-a1b2c3d4e5f6g7h8i9j0k
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SinkRabbitMQMsgSyncParameters) String() string {
@@ -244,9 +304,24 @@ func (s *SinkRabbitMQMsgSyncParameters) Validate() error {
 }
 
 type SinkRabbitMQMsgSyncParametersBody struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The method used to generate the message body.
+	//
+	// example:
+	//
+	// JSONPATH
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value expression of the message body.
+	//
+	// example:
+	//
+	// $.data.body
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkRabbitMQMsgSyncParametersBody) String() string {
@@ -289,9 +364,24 @@ func (s *SinkRabbitMQMsgSyncParametersBody) Validate() error {
 }
 
 type SinkRabbitMQMsgSyncParametersExchange struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The method used to generate the target exchange.
+	//
+	// example:
+	//
+	// JSONPATH
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value expression of the target exchange.
+	//
+	// example:
+	//
+	// $.data.exchange
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkRabbitMQMsgSyncParametersExchange) String() string {
@@ -334,9 +424,24 @@ func (s *SinkRabbitMQMsgSyncParametersExchange) Validate() error {
 }
 
 type SinkRabbitMQMsgSyncParametersMessageId struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The method used to generate the message ID.
+	//
+	// example:
+	//
+	// JSONPATH
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value expression of the message ID.
+	//
+	// example:
+	//
+	// $.data.messageId
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkRabbitMQMsgSyncParametersMessageId) String() string {
@@ -379,9 +484,24 @@ func (s *SinkRabbitMQMsgSyncParametersMessageId) Validate() error {
 }
 
 type SinkRabbitMQMsgSyncParametersProperties struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The method used to generate the message properties.
+	//
+	// example:
+	//
+	// JSONPATH
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value expression of the message properties.
+	//
+	// example:
+	//
+	// $.data.properties
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkRabbitMQMsgSyncParametersProperties) String() string {
@@ -424,9 +544,24 @@ func (s *SinkRabbitMQMsgSyncParametersProperties) Validate() error {
 }
 
 type SinkRabbitMQMsgSyncParametersRoutingKey struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The method used to generate the routing key.
+	//
+	// example:
+	//
+	// JSONPATH
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value expression of the routing key.
+	//
+	// example:
+	//
+	// $.data.routingKey
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkRabbitMQMsgSyncParametersRoutingKey) String() string {

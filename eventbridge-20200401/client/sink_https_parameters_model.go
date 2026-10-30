@@ -28,14 +28,46 @@ type iSinkHttpsParameters interface {
 }
 
 type SinkHttpsParameters struct {
-	Body            *SinkHttpsParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	Method          *string                  `json:"Method,omitempty" xml:"Method,omitempty"`
-	NetworkType     *string                  `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	SecurityGroupId *string                  `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Token           *string                  `json:"Token,omitempty" xml:"Token,omitempty"`
-	URL             *SinkHttpsParametersURL  `json:"URL,omitempty" xml:"URL,omitempty" type:"Struct"`
-	VSwitchIds      *string                  `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId           *string                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// HTTP Body
+	Body *SinkHttpsParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	// The HTTP method.
+	//
+	// example:
+	//
+	// POST
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The network type, PrivateNetwork/PublicNetwork.
+	//
+	// example:
+	//
+	// PublicNetwork
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The security group.
+	//
+	// example:
+	//
+	// sg-a1b2c3d4e5f6g7h8i9j0
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// HTTP Token
+	//
+	// example:
+	//
+	// token-****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The HTTP/HTTPS address.
+	URL *SinkHttpsParametersURL `json:"URL,omitempty" xml:"URL,omitempty" type:"Struct"`
+	// The vSwitch IDs.
+	//
+	// example:
+	//
+	// vsw-a1b2c3d4e5f6g7h8i9j0k
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// vpc ID
+	//
+	// example:
+	//
+	// vpc-a1b2c3d4e5f6g7h8i9j0k
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SinkHttpsParameters) String() string {
@@ -133,9 +165,24 @@ func (s *SinkHttpsParameters) Validate() error {
 }
 
 type SinkHttpsParametersBody struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// Form
+	//
+	// example:
+	//
+	// TEMPLATE
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// Template
+	//
+	// example:
+	//
+	// {"message":"${message}"}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Value
+	//
+	// example:
+	//
+	// {"message":"$.data.message"}
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkHttpsParametersBody) String() string {
@@ -178,9 +225,24 @@ func (s *SinkHttpsParametersBody) Validate() error {
 }
 
 type SinkHttpsParametersURL struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// Form
+	//
+	// example:
+	//
+	// CONSTANT
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// Template
+	//
+	// example:
+	//
+	// https://${host}/events
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Value
+	//
+	// example:
+	//
+	// https://example.com/events
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkHttpsParametersURL) String() string {

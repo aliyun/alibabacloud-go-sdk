@@ -24,7 +24,7 @@ type CreateAgentRequest struct {
 	//
 	// example:
 	//
-	// 连接配置描述信息
+	// Connection configuration description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The associated metadata.
 	Metadata *CreateAgentRequestMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
@@ -40,7 +40,7 @@ type CreateAgentRequest struct {
 	//
 	// example:
 	//
-	// 我想要她，你这样增加请求头获取用户IP CF-Connecting-IP%3B
+	// I want her, you add the request header to obtain the user IP CF-Connecting-IP%3B
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 }
 

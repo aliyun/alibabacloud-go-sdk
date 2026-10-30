@@ -20,25 +20,25 @@ type iCreateNamespaceRequest interface {
 }
 
 type CreateNamespaceRequest struct {
-	// Data catalog
+	// The data catalog to which the namespace belongs.
 	//
 	// example:
 	//
 	// my_catalog
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// Idempotent Token
+	// The idempotency token.
 	//
 	// example:
 	//
 	// 1e9b8f60-3a2c-4d7e-9f1b-8c3d5e7a2b4f
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Remarks
+	// The comment.
 	//
 	// example:
 	//
-	// 测试命名空间
+	// Test namespace
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Namespace name
+	// The name of the namespace.
 	//
 	// This parameter is required.
 	//

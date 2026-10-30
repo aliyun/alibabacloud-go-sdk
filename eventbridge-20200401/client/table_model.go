@@ -28,45 +28,45 @@ type iTable interface {
 }
 
 type Table struct {
-	// The name of the data catalog to which the table belongs
+	// The name of the data catalog to which the table belongs.
 	//
 	// example:
 	//
 	// my_catalog
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The column definition list of the table. Each column contains Name (column name), Type (data type), and Comment (remarks)
+	// The column definitions of the table. Each column includes the name, data type, and comment.
 	//
 	// example:
 	//
 	// [{"Name":"id","Type":"bigint","Comment":"Primary key"}]
 	Columns []*TableColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// Comment description of the table
+	// The comment of the table.
 	//
 	// example:
 	//
-	// 测试事件表
+	// Test event table
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The creation time of the table (Unix timestamp, in milliseconds)
+	// The creation time of the table. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1717948800000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The unique identifier name of the event table
+	// The unique name of the event table.
 	//
 	// example:
 	//
 	// my_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the namespace to which the table belongs
+	// The name of the namespace to which the table belongs.
 	//
 	// example:
 	//
 	// my_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// Data retention policy. Includes the retention days for hot data and cold data
+	// The data retention policy. This includes the retention periods for hot and cold data in days.
 	RetentionPolicy *TableRetentionPolicy `json:"RetentionPolicy,omitempty" xml:"RetentionPolicy,omitempty" type:"Struct"`
-	// The last update time of the table (Unix timestamp, in milliseconds)
+	// The last update time of the table. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -173,14 +173,20 @@ func (s *Table) Validate() error {
 }
 
 type TableColumns struct {
+	// The comment of the column.
+	//
 	// example:
 	//
-	// 主键ID
+	// Primary key ID
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of the column.
+	//
 	// example:
 	//
 	// id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the column.
+	//
 	// example:
 	//
 	// bigint
@@ -227,13 +233,13 @@ func (s *TableColumns) Validate() error {
 }
 
 type TableRetentionPolicy struct {
-	// Retention days for cold data, used for low-cost archival storage
+	// The number of days to retain cold data in low-cost archive storage.
 	//
 	// example:
 	//
 	// 30
 	ColdTTL *int32 `json:"ColdTTL,omitempty" xml:"ColdTTL,omitempty"`
-	// Retention days for hot data, used for high-performance query storage
+	// The number of days to retain hot data in high-performance query storage.
 	//
 	// example:
 	//

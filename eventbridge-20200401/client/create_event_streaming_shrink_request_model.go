@@ -44,7 +44,7 @@ type CreateEventStreamingShrinkRequest struct {
 	//
 	// myeventstreaming
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
-	// The event filtering rule. If you do not specify this parameter, all events are matched.
+	// The event filtering rule. If this parameter is not specified, all events are matched.
 	//
 	// example:
 	//
@@ -82,17 +82,21 @@ type CreateEventStreamingShrinkRequest struct {
 	//
 	// }
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
-	// The general JSON Configurations for the event provider. This parameter is mutually exclusive with Source. Specify one of the two parameters.
+	// The common JSON configurations for the event provider. This parameter is mutually exclusive with the Source parameter.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The runtime parameters.
+	// The runtime environment parameters.
 	RunOptionsShrink *string `json:"RunOptions,omitempty" xml:"RunOptions,omitempty"`
-	// The event target. You must select exactly one type of Sink.
+	// The event target. You must select one and only one sink.
 	SinkShrink *string `json:"Sink,omitempty" xml:"Sink,omitempty"`
-	// The event provider. You must select exactly one Source type.
+	// The event provider. You must specify exactly one source.
 	SourceShrink *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The list of tags. A maximum of 20 tags can be specified.
+	// The list of tags. You can specify up to 20 tags.
 	Tags []*CreateEventStreamingShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The Transform-related configurations.
+	// The transform configurations.
 	TransformsShrink *string `json:"Transforms,omitempty" xml:"Transforms,omitempty"`
 }
 
@@ -200,8 +204,16 @@ func (s *CreateEventStreamingShrinkRequest) Validate() error {
 
 type CreateEventStreamingShrinkRequestTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// prod
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

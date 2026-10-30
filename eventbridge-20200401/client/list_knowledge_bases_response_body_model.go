@@ -22,15 +22,15 @@ type iListKnowledgeBasesResponseBody interface {
 }
 
 type ListKnowledgeBasesResponseBody struct {
-	// The response code. A value of Success indicates that the call was successful. If the call failed, a specific error code is returned.
+	// The response code. A value of Success indicates that the call is successful. If the call fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The query result of the knowledge base list, including knowledge base entries and pagination information.
+	// The query results of the knowledge base list, including knowledge base entries and pagination information.
 	Data *ListKnowledgeBasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned by the operation. The value Operation success is returned if the call was successful. A specific error description is returned if the call failed.
+	// The response message. If the call is successful, the value is Operation success. If the call fails, a specific error description is returned.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListKnowledgeBasesResponseBody struct {
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of true indicates success.
+	// Indicates whether the call is successful. A value of true indicates that the call is successful.
 	//
 	// example:
 	//
@@ -119,19 +119,19 @@ type ListKnowledgeBasesResponseBodyData struct {
 	//
 	// [{"KnowledgeBaseName":"my-knowledge-base","Status":"ACTIVE"}]
 	KnowledgeBases []*KnowledgeBase `json:"KnowledgeBases,omitempty" xml:"KnowledgeBases,omitempty" type:"Repeated"`
-	// The maximum number of results per page that was applied to this request.
+	// The actual maximum number of results per page that takes effect for the current request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token (an opaque string) for the next page. Pass this value as the NextToken parameter in the next request to retrieve the next page. An empty value indicates that no more data is available.
+	// The pagination token for the next page. It is an opaque string. You can pass this token as the NextToken parameter in the next request to retrieve the next page. An empty value indicates that no more data is available.
 	//
 	// example:
 	//
 	// ca1eb85f5d99c7d6a97e6****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of knowledge bases that match the filter conditions. Use an empty NextToken value as the termination condition for pagination.
+	// The total number of knowledge bases that meet the filter conditions. Pagination ends when NextToken is empty.
 	//
 	// example:
 	//

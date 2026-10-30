@@ -22,11 +22,32 @@ type iBaiLianAgentTransformParameters interface {
 }
 
 type BaiLianAgentTransformParameters struct {
-	ApiKey           *string                                `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	ApplicationId    *string                                `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Prompt           *BaiLianAgentTransformParametersPrompt `json:"Prompt,omitempty" xml:"Prompt,omitempty" type:"Struct"`
-	RequestPerMinute *int64                                 `json:"RequestPerMinute,omitempty" xml:"RequestPerMinute,omitempty"`
-	TokenPerMinute   *int64                                 `json:"TokenPerMinute,omitempty" xml:"TokenPerMinute,omitempty"`
+	// The API key for Model Studio.
+	//
+	// example:
+	//
+	// Q34****
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The application ID.
+	//
+	// example:
+	//
+	// 0123456789abcdef0123456789abcdef
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The prompt.
+	Prompt *BaiLianAgentTransformParametersPrompt `json:"Prompt,omitempty" xml:"Prompt,omitempty" type:"Struct"`
+	// The throttling limit in requests per minute.
+	//
+	// example:
+	//
+	// 1000
+	RequestPerMinute *int64 `json:"RequestPerMinute,omitempty" xml:"RequestPerMinute,omitempty"`
+	// The throttling limit in tokens per minute.
+	//
+	// example:
+	//
+	// 100000
+	TokenPerMinute *int64 `json:"TokenPerMinute,omitempty" xml:"TokenPerMinute,omitempty"`
 }
 
 func (s BaiLianAgentTransformParameters) String() string {
@@ -92,9 +113,24 @@ func (s *BaiLianAgentTransformParameters) Validate() error {
 }
 
 type BaiLianAgentTransformParametersPrompt struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template form.
+	//
+	// example:
+	//
+	// JSONPATH
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The template value.
+	//
+	// example:
+	//
+	// $.data.message
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s BaiLianAgentTransformParametersPrompt) String() string {

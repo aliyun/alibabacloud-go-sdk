@@ -22,11 +22,24 @@ type iSinkMQTTParameters interface {
 }
 
 type SinkMQTTParameters struct {
-	InstanceId        *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the destination MQTT instance.
+	//
+	// example:
+	//
+	// mqtt-cn-a1b2c3d4e5f
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The user properties.
 	Mqtt5UserProperty *SinkMQTTParametersMqtt5UserProperty `json:"Mqtt5UserProperty,omitempty" xml:"Mqtt5UserProperty,omitempty" type:"Struct"`
-	ParentTopic       *string                              `json:"ParentTopic,omitempty" xml:"ParentTopic,omitempty"`
-	Payload           *SinkMQTTParametersPayload           `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
-	SubTopic          *SinkMQTTParametersSubTopic          `json:"SubTopic,omitempty" xml:"SubTopic,omitempty" type:"Struct"`
+	// The parent topic of the destination MQTT instance.
+	//
+	// example:
+	//
+	// example-topic
+	ParentTopic *string `json:"ParentTopic,omitempty" xml:"ParentTopic,omitempty"`
+	// The message payload.
+	Payload *SinkMQTTParametersPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// The subtopic name.
+	SubTopic *SinkMQTTParametersSubTopic `json:"SubTopic,omitempty" xml:"SubTopic,omitempty" type:"Struct"`
 }
 
 func (s SinkMQTTParameters) String() string {
@@ -102,9 +115,24 @@ func (s *SinkMQTTParameters) Validate() error {
 }
 
 type SinkMQTTParametersMqtt5UserProperty struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from event content), and TEMPLATE (template).
+	//
+	// example:
+	//
+	// CONSTANT
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template string used to format the parameter value. This parameter is used only when Form is set to TEMPLATE.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The source content of the parameter value specified by Form. When Form is set to CONSTANT, this value is the content.
+	//
+	// example:
+	//
+	// DEMO CONTENT
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkMQTTParametersMqtt5UserProperty) String() string {
@@ -147,9 +175,24 @@ func (s *SinkMQTTParametersMqtt5UserProperty) Validate() error {
 }
 
 type SinkMQTTParametersPayload struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The method used to generate the message content.
+	//
+	// example:
+	//
+	// ORIGINAL
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template string used to format the parameter value. This parameter is used only when Form is set to TEMPLATE.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The source content of the parameter value specified by Form. When Form is set to CONSTANT, this value is the content.
+	//
+	// example:
+	//
+	// DEMO CONTENT
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkMQTTParametersPayload) String() string {
@@ -192,9 +235,24 @@ func (s *SinkMQTTParametersPayload) Validate() error {
 }
 
 type SinkMQTTParametersSubTopic struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from event content), and TEMPLATE (template).
+	//
+	// example:
+	//
+	// CONSTANT
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template string used to format the parameter value. This parameter is used only when Form is set to TEMPLATE.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The source content of the parameter value specified by Form. When Form is set to CONSTANT, this value is the content.
+	//
+	// example:
+	//
+	// SUB-TOPIC
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkMQTTParametersSubTopic) String() string {

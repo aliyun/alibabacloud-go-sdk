@@ -18,13 +18,13 @@ type iDeleteApiDestinationResponseBody interface {
 }
 
 type DeleteApiDestinationResponseBody struct {
-	// The returned response code. The value Success indicates that the request is successful.
+	// The API operation status or POP error code. Valid values: Success: The operation is successful.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. If the request is successful, success is returned. If the request failed, an error code is returned.
+	// The additional information. If the request is normal, success is returned. If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//

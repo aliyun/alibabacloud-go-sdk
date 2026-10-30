@@ -16,13 +16,13 @@ type iCreateEventBusRequest interface {
 }
 
 type CreateEventBusRequest struct {
-	// The description of the event bus.
+	// The description.
 	//
 	// example:
 	//
 	// demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the request is successful. The value true indicates that the request is successful.
+	// The name of the event bus.
 	//
 	// This parameter is required.
 	//

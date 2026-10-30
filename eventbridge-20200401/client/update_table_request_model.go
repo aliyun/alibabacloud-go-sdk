@@ -38,7 +38,7 @@ type UpdateTableRequest struct {
 	//
 	// example:
 	//
-	// {"Name":"id","Type":"bigint","Comment":"主键"}
+	// {"Name":"id","Type":"bigint","Comment":"Primary key"}
 	AddColumn *UpdateTableRequestAddColumn `json:"AddColumn,omitempty" xml:"AddColumn,omitempty" type:"Struct"`
 	// Data catalog to which it belongs
 	//
@@ -82,7 +82,7 @@ type UpdateTableRequest struct {
 	//
 	// example:
 	//
-	// {"Name":"id","Comment":"主键ID"}
+	// {"Name":"id","Comment":"Primary key ID"}
 	UpdateColumnComment *UpdateTableRequestUpdateColumnComment `json:"UpdateColumnComment,omitempty" xml:"UpdateColumnComment,omitempty" type:"Struct"`
 	// Update column type
 	//

@@ -22,11 +22,11 @@ type iQueryWithSQLResponseBody interface {
 }
 
 type QueryWithSQLResponseBody struct {
-	// The response code. Valid values:
+	// The response code returned by the API operation. Valid values:
 	//
-	// - Success: The request was successful.
+	// - Success: The request is successful.
 	//
-	// - Other values: An error occurred. For more information, see error codes.
+	// - Other values: An error code. For more information, see Error codes.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type QueryWithSQLResponseBody struct {
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. A value of true indicates success. A value of false indicates failure.
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: The operation is successful.
+	//
+	// - false: The operation fails.
 	//
 	// example:
 	//
@@ -117,7 +121,7 @@ func (s *QueryWithSQLResponseBody) Validate() error {
 }
 
 type QueryWithSQLResponseBodyData struct {
-	// The query result rows.
+	// The rows in the query result.
 	Rows []*Row `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//

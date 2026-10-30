@@ -86,7 +86,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Queries data using natural language.
+// Performs a natural language query.
 //
 // @param request - AskLumaRequest
 //
@@ -142,7 +142,7 @@ func (client *Client) AskLumaWithOptions(request *AskLumaRequest, runtime *dara.
 
 // Summary:
 //
-// Queries data using natural language.
+// Performs a natural language query.
 //
 // @param request - AskLumaRequest
 //
@@ -160,11 +160,11 @@ func (client *Client) AskLuma(request *AskLumaRequest) (_result *AskLumaResponse
 
 // Summary:
 //
-// Checks whether a service-linked role is authorized for an account.
+// Checks whether the account has service-linked role authorization.
 //
 // Description:
 //
-// Checks for a service-linked role by name.
+// Checks whether a service-linked role exists based on the name of the service-linked role.
 //
 // @param request - CheckServiceLinkedRoleForProductRequest
 //
@@ -208,11 +208,11 @@ func (client *Client) CheckServiceLinkedRoleForProductWithOptions(request *Check
 
 // Summary:
 //
-// Checks whether a service-linked role is authorized for an account.
+// Checks whether the account has service-linked role authorization.
 //
 // Description:
 //
-// Checks for a service-linked role by name.
+// Checks whether a service-linked role exists based on the name of the service-linked role.
 //
 // @param request - CheckServiceLinkedRoleForProductRequest
 //
@@ -310,11 +310,11 @@ func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateA
 
 // Summary:
 //
-// Creates an API destination.
+// Creates API destination information.
 //
 // Description:
 //
-// You can call this API operation to create an API destination.
+// Creates API destination information.
 //
 // @param tmpReq - CreateApiDestinationRequest
 //
@@ -376,11 +376,11 @@ func (client *Client) CreateApiDestinationWithOptions(tmpReq *CreateApiDestinati
 
 // Summary:
 //
-// Creates an API destination.
+// Creates API destination information.
 //
 // Description:
 //
-// You can call this API operation to create an API destination.
+// Creates API destination information.
 //
 // @param request - CreateApiDestinationRequest
 //
@@ -964,7 +964,7 @@ func (client *Client) CreateKnowledgeBase(request *CreateKnowledgeBaseRequest) (
 
 // Summary:
 //
-// # Create Namespace
+// Creates a namespace.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -1022,7 +1022,7 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 
 // Summary:
 //
-// # Create Namespace
+// Creates a namespace.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -1136,11 +1136,11 @@ func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRul
 
 // Summary:
 //
-// Creates the service-linked role (SLR) that is associated with a specified product.
+// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
 //
 // Description:
 //
-// Creates the service-linked role (SLR) that is associated with a specified product.
+// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
 //
 // @param request - CreateServiceLinkedRoleForProductRequest
 //
@@ -1184,11 +1184,11 @@ func (client *Client) CreateServiceLinkedRoleForProductWithOptions(request *Crea
 
 // Summary:
 //
-// Creates the service-linked role (SLR) that is associated with a specified product.
+// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
 //
 // Description:
 //
-// Creates the service-linked role (SLR) that is associated with a specified product.
+// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
 //
 // @param request - CreateServiceLinkedRoleForProductRequest
 //
@@ -1206,11 +1206,11 @@ func (client *Client) CreateServiceLinkedRoleForProduct(request *CreateServiceLi
 
 // Summary:
 //
-// # Create a data catalog
+// Creates a data catalog.
 //
 // Description:
 //
-// Creates an event target under the specified rule.
+// Creates an event target under a specified rule.
 //
 // @param tmpReq - CreateTableRequest
 //
@@ -1288,11 +1288,11 @@ func (client *Client) CreateTableWithOptions(tmpReq *CreateTableRequest, runtime
 
 // Summary:
 //
-// # Create a data catalog
+// Creates a data catalog.
 //
 // Description:
 //
-// Creates an event target under the specified rule.
+// Creates an event target under a specified rule.
 //
 // @param request - CreateTableRequest
 //
@@ -1376,7 +1376,7 @@ func (client *Client) DeleteAgent(request *DeleteAgentRequest) (_result *DeleteA
 //
 // Description:
 //
-// You can call this API operation to delete an API destination.
+// Deletes a specified API destination.
 //
 // @param request - DeleteApiDestinationRequest
 //
@@ -1424,7 +1424,7 @@ func (client *Client) DeleteApiDestinationWithOptions(request *DeleteApiDestinat
 //
 // Description:
 //
-// You can call this API operation to delete an API destination.
+// Deletes a specified API destination.
 //
 // @param request - DeleteApiDestinationRequest
 //
@@ -1442,11 +1442,11 @@ func (client *Client) DeleteApiDestination(request *DeleteApiDestinationRequest)
 
 // Summary:
 //
-// Deletes a connection.
+// Deletes the specified connection configuration.
 //
 // Description:
 //
-// You can call this API operation to delete a connection.
+// Deletes the specified connection configuration.
 //
 // @param request - DeleteConnectionRequest
 //
@@ -1490,11 +1490,11 @@ func (client *Client) DeleteConnectionWithOptions(request *DeleteConnectionReque
 
 // Summary:
 //
-// Deletes a connection.
+// Deletes the specified connection configuration.
 //
 // Description:
 //
-// You can call this API operation to delete a connection.
+// Deletes the specified connection configuration.
 //
 // @param request - DeleteConnectionRequest
 //
@@ -1650,7 +1650,7 @@ func (client *Client) DeleteEventBus(request *DeleteEventBusRequest) (_result *D
 
 // Summary:
 //
-// Deletes an EventHouse Runtime.
+// Deletes an EventHouse runtime.
 //
 // @param request - DeleteEventHouseRuntimeRequest
 //
@@ -1694,7 +1694,7 @@ func (client *Client) DeleteEventHouseRuntimeWithOptions(request *DeleteEventHou
 
 // Summary:
 //
-// Deletes an EventHouse Runtime.
+// Deletes an EventHouse runtime.
 //
 // @param request - DeleteEventHouseRuntimeRequest
 //
@@ -2460,7 +2460,7 @@ func (client *Client) EnableRule(request *EnableRuleRequest) (_result *EnableRul
 
 // Summary:
 //
-// Queries events from the event center.
+// Queries events in the event analysis feature.
 //
 // @param tmpReq - EventCenterQueryEventsRequest
 //
@@ -2524,7 +2524,7 @@ func (client *Client) EventCenterQueryEventsWithOptions(tmpReq *EventCenterQuery
 
 // Summary:
 //
-// Queries events from the event center.
+// Queries events in the event analysis feature.
 //
 // @param request - EventCenterQueryEventsRequest
 //
@@ -2866,7 +2866,7 @@ func (client *Client) GetCatalog(request *GetCatalogRequest) (_result *GetCatalo
 
 // Summary:
 //
-// Queries the details of a chunk.
+// Retrieves the details of a chunk.
 //
 // @param request - GetChunkRequest
 //
@@ -2926,7 +2926,7 @@ func (client *Client) GetChunkWithOptions(request *GetChunkRequest, runtime *dar
 
 // Summary:
 //
-// Queries the details of a chunk.
+// Retrieves the details of a chunk.
 //
 // @param request - GetChunkRequest
 //
@@ -3088,7 +3088,7 @@ func (client *Client) GetDocument(request *GetDocumentRequest) (_result *GetDocu
 
 // Summary:
 //
-// Retrieves the download URL of a document.
+// Retrieves the download URL for a document.
 //
 // @param request - GetDocumentDownloadUrlRequest
 //
@@ -3148,7 +3148,7 @@ func (client *Client) GetDocumentDownloadUrlWithOptions(request *GetDocumentDown
 
 // Summary:
 //
-// Retrieves the download URL of a document.
+// Retrieves the download URL for a document.
 //
 // @param request - GetDocumentDownloadUrlRequest
 //
@@ -3236,7 +3236,7 @@ func (client *Client) GetEventBus(request *GetEventBusRequest) (_result *GetEven
 
 // Summary:
 //
-// Queries the status and operation progress of an EventHouse Runtime.
+// Queries the status and operation progress of an EventHouse runtime.
 //
 // @param request - GetEventHouseRuntimeRequest
 //
@@ -3280,7 +3280,7 @@ func (client *Client) GetEventHouseRuntimeWithOptions(request *GetEventHouseRunt
 
 // Summary:
 //
-// Queries the status and operation progress of an EventHouse Runtime.
+// Queries the status and operation progress of an EventHouse runtime.
 //
 // @param request - GetEventHouseRuntimeRequest
 //
@@ -4154,11 +4154,11 @@ func (client *Client) GetNamespace(request *GetNamespaceRequest) (_result *GetNa
 
 // Summary:
 //
-// Retrieves the details of an event rule.
+// Queries the details of an event rule.
 //
 // Description:
 //
-// Gets the details of an event rule.
+// Retrieves the details of an event rule.
 //
 // @param request - GetRuleRequest
 //
@@ -4206,11 +4206,11 @@ func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *dara.
 
 // Summary:
 //
-// Retrieves the details of an event rule.
+// Queries the details of an event rule.
 //
 // Description:
 //
-// Gets the details of an event rule.
+// Retrieves the details of an event rule.
 //
 // @param request - GetRuleRequest
 //
@@ -4575,7 +4575,7 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 
 // Summary:
 //
-// Queries the list of document chunks.
+// Queries a list of document chunks.
 //
 // @param request - ListChunksRequest
 //
@@ -4647,7 +4647,7 @@ func (client *Client) ListChunksWithOptions(request *ListChunksRequest, runtime 
 
 // Summary:
 //
-// Queries the list of document chunks.
+// Queries a list of document chunks.
 //
 // @param request - ListChunksRequest
 //
@@ -4751,7 +4751,7 @@ func (client *Client) ListConnections(request *ListConnectionsRequest) (_result 
 
 // Summary:
 //
-// Queries a list of documents.
+// Queries the list of documents.
 //
 // @param request - ListDocumentsRequest
 //
@@ -4819,7 +4819,7 @@ func (client *Client) ListDocumentsWithOptions(request *ListDocumentsRequest, ru
 
 // Summary:
 //
-// Queries a list of documents.
+// Queries the list of documents.
 //
 // @param request - ListDocumentsRequest
 //
@@ -5071,7 +5071,7 @@ func (client *Client) ListEventStreamings(request *ListEventStreamingsRequest) (
 
 // Summary:
 //
-// Queries a list of knowledge bases.
+// Queries the list of knowledge bases.
 //
 // @param request - ListKnowledgeBasesRequest
 //
@@ -5127,7 +5127,7 @@ func (client *Client) ListKnowledgeBasesWithOptions(request *ListKnowledgeBasesR
 
 // Summary:
 //
-// Queries a list of knowledge bases.
+// Queries the list of knowledge bases.
 //
 // @param request - ListKnowledgeBasesRequest
 //
@@ -5677,7 +5677,7 @@ func (client *Client) ListLumaTables(request *ListLumaTablesRequest) (_result *L
 
 // Summary:
 //
-// # Query namespace list
+// Queries the list of namespaces.
 //
 // @param request - ListNamespacesRequest
 //
@@ -5729,7 +5729,7 @@ func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, 
 
 // Summary:
 //
-// # Query namespace list
+// Queries the list of namespaces.
 //
 // @param request - ListNamespacesRequest
 //
@@ -5981,11 +5981,11 @@ func (client *Client) ListTargets(request *ListTargetsRequest) (_result *ListTar
 
 // Summary:
 //
-// This operation queries all custom event sources.
+// Queries all external event sources.
 //
 // Description:
 //
-// Queries all custom event sources.
+// Queries all external event sources.
 //
 // @param request - ListUserDefinedEventSourcesRequest
 //
@@ -6041,11 +6041,11 @@ func (client *Client) ListUserDefinedEventSourcesWithOptions(request *ListUserDe
 
 // Summary:
 //
-// This operation queries all custom event sources.
+// Queries all external event sources.
 //
 // Description:
 //
-// Queries all custom event sources.
+// Queries all external event sources.
 //
 // @param request - ListUserDefinedEventSourcesRequest
 //
@@ -6279,11 +6279,11 @@ func (client *Client) PutEvents(request *PutEventsRequest) (_result *PutEventsRe
 
 // Summary:
 //
-// Create or update event targets for the specified rule.
+// Creates or updates an event target under a specified rule.
 //
 // Description:
 //
-// Creates or updates event targets for a specified rule.
+// Creates or updates an event target under a specified rule.
 //
 // @param tmpReq - PutTargetsRequest
 //
@@ -6341,11 +6341,11 @@ func (client *Client) PutTargetsWithOptions(tmpReq *PutTargetsRequest, runtime *
 
 // Summary:
 //
-// Create or update event targets for the specified rule.
+// Creates or updates an event target under a specified rule.
 //
 // Description:
 //
-// Creates or updates event targets for a specified rule.
+// Creates or updates an event target under a specified rule.
 //
 // @param request - PutTargetsRequest
 //
@@ -6511,7 +6511,7 @@ func (client *Client) QueryEvent(request *QueryEventRequest) (_result *QueryEven
 
 // Summary:
 //
-// # Query event store data
+// Queries event warehouse data.
 //
 // @param request - QueryEventHouseRequest
 //
@@ -6559,7 +6559,7 @@ func (client *Client) QueryEventHouseWithOptions(request *QueryEventHouseRequest
 
 // Summary:
 //
-// # Query event store data
+// Queries event warehouse data.
 //
 // @param request - QueryEventHouseRequest
 //
@@ -6889,11 +6889,11 @@ func (client *Client) QueryTracedEventByEventId(request *QueryTracedEventByEvent
 
 // Summary:
 //
-// This operation queries `event trace` data within a `time range`.
+// Queries the event trace within a specified time range.
 //
 // Description:
 //
-// Queries for event traces within a specified time range.
+// Queries the event trace within a specified time range.
 //
 // @param request - QueryTracedEventsRequest
 //
@@ -6969,11 +6969,11 @@ func (client *Client) QueryTracedEventsWithOptions(request *QueryTracedEventsReq
 
 // Summary:
 //
-// This operation queries `event trace` data within a `time range`.
+// Queries the event trace within a specified time range.
 //
 // Description:
 //
-// Queries for event traces within a specified time range.
+// Queries the event trace within a specified time range.
 //
 // @param request - QueryTracedEventsRequest
 //
@@ -6991,7 +6991,7 @@ func (client *Client) QueryTracedEvents(request *QueryTracedEventsRequest) (_res
 
 // Summary:
 //
-// Executes a SQL statement to query event warehouse data. This operation is suitable for scenarios where the exact SQL is known, without natural language conversion or conversation context. Returns a structured result set.
+// Executes an SQL statement to query data in the event warehouse. Applicable to scenarios where the exact SQL statement is known, requiring no natural language conversion or dialog context. Returns a structured result set.
 //
 // Description:
 //
@@ -7043,7 +7043,7 @@ func (client *Client) QueryWithSQLWithOptions(request *QueryWithSQLRequest, runt
 
 // Summary:
 //
-// Executes a SQL statement to query event warehouse data. This operation is suitable for scenarios where the exact SQL is known, without natural language conversion or conversation context. Returns a structured result set.
+// Executes an SQL statement to query data in the event warehouse. Applicable to scenarios where the exact SQL statement is known, requiring no natural language conversion or dialog context. Returns a structured result set.
 //
 // Description:
 //
@@ -7161,7 +7161,7 @@ func (client *Client) SaveAgentDataSemantics(request *SaveAgentDataSemanticsRequ
 
 // Summary:
 //
-// Retrieves knowledge base search results.
+// Searches a knowledge base.
 //
 // @param request - SearchKnowledgeBaseRequest
 //
@@ -7249,7 +7249,7 @@ func (client *Client) SearchKnowledgeBaseWithOptions(request *SearchKnowledgeBas
 
 // Summary:
 //
-// Retrieves knowledge base search results.
+// Searches a knowledge base.
 //
 // @param request - SearchKnowledgeBaseRequest
 //
@@ -7267,11 +7267,11 @@ func (client *Client) SearchKnowledgeBase(request *SearchKnowledgeBaseRequest) (
 
 // Summary:
 //
-// Retrieves content from a knowledge base bound to a Luma Agent and returns relevant text chunks along with their relevance scores.
+// Retrieves content in the knowledge base bound to a Luma agent and returns relevant text chunks along with their relevance scores.
 //
 // Description:
 //
-// Retrieves content from a knowledge base bound to a Luma Agent and returns relevant text chunks along with their relevance scores.
+// Retrieves content in the knowledge base bound to a Luma agent and returns relevant text chunks along with their relevance scores.
 //
 // @param request - SearchLumaKnowledgeBaseRequest
 //
@@ -7347,11 +7347,11 @@ func (client *Client) SearchLumaKnowledgeBaseWithOptions(request *SearchLumaKnow
 
 // Summary:
 //
-// Retrieves content from a knowledge base bound to a Luma Agent and returns relevant text chunks along with their relevance scores.
+// Retrieves content in the knowledge base bound to a Luma agent and returns relevant text chunks along with their relevance scores.
 //
 // Description:
 //
-// Retrieves content from a knowledge base bound to a Luma Agent and returns relevant text chunks along with their relevance scores.
+// Retrieves content in the knowledge base bound to a Luma agent and returns relevant text chunks along with their relevance scores.
 //
 // @param request - SearchLumaKnowledgeBaseRequest
 //
@@ -7439,11 +7439,11 @@ func (client *Client) StartEventStreaming(request *StartEventStreamingRequest) (
 
 // Summary:
 //
-// Tests if an event pattern matches a given event.
+// Tests whether the event pattern matches the provided JSON-formatted event.
 //
 // Description:
 //
-// Use this action to test an event pattern before you apply it to a rule.
+// Tests whether the event pattern matches the provided JSON-formatted event.
 //
 // @param request - TestEventPatternRequest
 //
@@ -7491,11 +7491,11 @@ func (client *Client) TestEventPatternWithOptions(request *TestEventPatternReque
 
 // Summary:
 //
-// Tests if an event pattern matches a given event.
+// Tests whether the event pattern matches the provided JSON-formatted event.
 //
 // Description:
 //
-// Use this action to test an event pattern before you apply it to a rule.
+// Tests whether the event pattern matches the provided JSON-formatted event.
 //
 // @param request - TestEventPatternRequest
 //
@@ -7873,11 +7873,11 @@ func (client *Client) UpdateConnection(request *UpdateConnectionRequest) (_resul
 
 // Summary:
 //
-// Updates an event bus.
+// Modifies an event bus.
 //
 // Description:
 //
-// You can call this operation to update an event bus.
+// Modifies an event bus.
 //
 // @param request - UpdateEventBusRequest
 //
@@ -7925,11 +7925,11 @@ func (client *Client) UpdateEventBusWithOptions(request *UpdateEventBusRequest, 
 
 // Summary:
 //
-// Updates an event bus.
+// Modifies an event bus.
 //
 // Description:
 //
-// You can call this operation to update an event bus.
+// Modifies an event bus.
 //
 // @param request - UpdateEventBusRequest
 //
@@ -7947,7 +7947,7 @@ func (client *Client) UpdateEventBus(request *UpdateEventBusRequest) (_result *U
 
 // Summary:
 //
-// Updates an EventHouse Runtime.
+// Updates the EventHouse runtime.
 //
 // @param request - UpdateEventHouseRuntimeRequest
 //
@@ -7995,7 +7995,7 @@ func (client *Client) UpdateEventHouseRuntimeWithOptions(request *UpdateEventHou
 
 // Summary:
 //
-// Updates an EventHouse Runtime.
+// Updates the EventHouse runtime.
 //
 // @param request - UpdateEventHouseRuntimeRequest
 //
@@ -8013,11 +8013,11 @@ func (client *Client) UpdateEventHouseRuntime(request *UpdateEventHouseRuntimeRe
 
 // Summary:
 //
-// Updates an event source.
+// Updates the configuration of an event source.
 //
 // Description:
 //
-// You can call this API operation to update an event source.
+// Updates the configuration of an event source.
 //
 // @param tmpReq - UpdateEventSourceRequest
 //
@@ -8151,11 +8151,11 @@ func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequ
 
 // Summary:
 //
-// Updates an event source.
+// Updates the configuration of an event source.
 //
 // Description:
 //
-// You can call this API operation to update an event source.
+// Updates the configuration of an event source.
 //
 // @param request - UpdateEventSourceRequest
 //

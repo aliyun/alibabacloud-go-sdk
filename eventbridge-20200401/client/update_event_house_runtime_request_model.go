@@ -16,7 +16,7 @@ type iUpdateEventHouseRuntimeRequest interface {
 }
 
 type UpdateEventHouseRuntimeRequest struct {
-	// The number of CUs for the EventHouse Runtime. The value must be greater than 0.
+	// The number of compute units (CUs) for the EventHouse runtime. The value must be greater than 0.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type UpdateEventHouseRuntimeRequest struct {
 	//
 	// 2
 	Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The name of the EventHouse Runtime. If this parameter is not specified, the default Runtime is used. In most cases, you do not need to specify this parameter.
+	// The name of the EventHouse runtime. If you do not specify this parameter, the default runtime is used. Typically, you do not need to specify this parameter in the initial phase.
 	//
 	// example:
 	//

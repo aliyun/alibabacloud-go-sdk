@@ -36,7 +36,7 @@ type iSearchKnowledgeBaseRequest interface {
 }
 
 type SearchKnowledgeBaseRequest struct {
-	// The data catalog to which the knowledge base belongs. This parameter, together with Namespace and KnowledgeBaseName, uniquely identifies a knowledge base. You can call ListCatalogs to obtain the value.
+	// The data catalog to which the knowledge base belongs. This parameter, together with Namespace and KnowledgeBaseName, uniquely identifies the knowledge base. You can call ListCatalogs to obtain the value.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// my_catalog
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The name of the knowledge base. The name is unique within a namespace and is specified at creation time. It cannot be modified.
+	// The name of the knowledge base. The name must be unique within the namespace. The name is specified upon creation and cannot be modified.
 	//
 	// This parameter is required.
 	//
@@ -52,19 +52,25 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// my-knowledge-base
 	KnowledgeBaseName *string `json:"KnowledgeBaseName,omitempty" xml:"KnowledgeBaseName,omitempty"`
-	// Filters search results by document metadata. The value is a JSON expression tree. Nodes are classified into two types: logical nodes {"AndAll": [child nodes...]} (all conditions must be met), {"OrAll": [child nodes...]} (any condition must be met), or {"NotAll": [child nodes...]} (none of the conditions must be met), which support arbitrary nesting; and leaf conditions {"Key": field name, "Operator": operator, "Value": value}, where the In and NotIn operators use "Values": [values...]. Valid values of Operator: Equals, NotEquals, In, NotIn, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual (the last four range operators apply only to LONG, DOUBLE, or DATETIME fields), StartsWith, and StringContains (applies only to STRING fields). Fields must be declared in the knowledge base schema. The nesting depth cannot exceed 5, and the total number of leaf conditions cannot exceed 20. DATETIME field value format: ISO-8601 with time zone, yyyy-MM-dd HH:mm:ss, or yyyy-MM-dd.
+	// Filters search results by document metadata. The value is a JSON expression tree. Nodes are divided into two types: logical nodes and leaf conditions. Logical nodes include {"AndAll": [child nodes...]} (all conditions met), {"OrAll": [child nodes...]} (any condition met), and {"NotAll": [child nodes...]} (no conditions met). Arbitrary nesting is supported. Leaf conditions are in the format of {"Key": field name, "Operator": operator, "Value": value}. For the In and NotIn operators, use "Values": [values...]. Valid values for Operator: Equals, NotEquals, In, NotIn, GreaterThan, GreaterThanOrEqual, LessThan, and LessThanOrEqual (the last four range operators apply only to LONG, DOUBLE, and DATETIME fields), StartsWith, and StringContains (applies only to STRING fields). The field must be declared in the knowledge base schema. The nesting depth cannot exceed 5, and the total number of leaf conditions cannot exceed 20. Valid formats for DATETIME field values: ISO-8601 with time zone, yyyy-MM-dd HH:mm:ss, or yyyy-MM-dd.
 	//
 	// example:
 	//
 	// {"AndAll": [{"Key": "env", "Operator": "In", "Values": ["prod", "staging"]}, {"OrAll": [{"Key": "score", "Operator": "GreaterThan", "Value": "0.8"}, {"Key": "owner", "Operator": "Equals", "Value": "alice"}]}]}
 	MetadataFilter *string `json:"MetadataFilter,omitempty" xml:"MetadataFilter,omitempty"`
-	// The retrieval mode. KEYWORD indicates keyword retrieval. VECTOR indicates vector retrieval. HYBRID indicates hybrid retrieval.
+	// The retrieve mode. Valid values:
+	//
+	// - KEYWORD: keyword retrieve.
+	//
+	// - VECTOR: AISearch.
+	//
+	// - HYBRID: hybrid retrieve.
 	//
 	// example:
 	//
 	// HYBRID
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The namespace to which the knowledge base belongs. The namespace must belong to the specified data catalog. This parameter, together with Catalog and KnowledgeBaseName, uniquely identifies a knowledge base. You can call ListNamespaces to obtain the value.
+	// The namespace to which the knowledge base belongs. The namespace must belong to the specified data catalog. This parameter, together with Catalog and KnowledgeBaseName, uniquely identifies the knowledge base. You can call ListNamespaces to obtain the value.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +78,7 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// my_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The query text. Both keyword retrieval and vector retrieval are based on this text.
+	// The retrieve text. Both keyword retrieve and AISearch are based on this text.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +86,7 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// How to configure event rules
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// Optional. Overrides the fusion algorithm configured for the knowledge base for this request. This parameter takes effect only in hybrid search (HYBRID) mode. RRF indicates reciprocal rank fusion. WEIGHTED indicates weighted normalization fusion (used together with VectorWeight). If you set this parameter to WEIGHTED in keyword-only or vector-only mode, an InvalidParameter error is returned.
+	// Optional. Overrides the fusion algorithm configured for the knowledge base in this request. This parameter takes effect only in HYBRID search mode. Valid values: RRF for reciprocal rank fusion, and WEIGHTED for weighted normalization fusion (used with VectorWeight). If you set this parameter to WEIGHTED in KEYWORD or VECTOR single mode, the InvalidParameter error is returned.
 	//
 	// example:
 	//
@@ -92,13 +98,13 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// false
 	Rerank *bool `json:"Rerank,omitempty" xml:"Rerank,omitempty"`
-	// Optional. Overrides the reranking model configured for the knowledge base for this request. This parameter takes effect when reranking is enabled (in all search modes). Valid values: qwen3-rerank, gte-rerank-v2, and qwen3-vl-rerank. If this parameter is not specified, the value configured for the knowledge base is used. If no value is configured, the default value qwen3-rerank is used. Score distributions differ across models and cannot be compared. Use the same model consistently for a given knowledge base.
+	// Optional. Overrides the reranking model configured for the knowledge base in this request. This parameter takes effect when reranking is enabled across all search modes. Valid values: qwen3-rerank, gte-rerank-v2, and qwen3-vl-rerank. If this parameter is not specified, the value configured for the knowledge base is used. If no value is configured, the default value is qwen3-rerank. Score distributions of different models cannot be compared horizontally. We recommend that you use a fixed model for each knowledge base.
 	//
 	// example:
 	//
 	// qwen3-rerank
 	RerankModel *string `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
-	// Optional. Overrides the reciprocal rank fusion (RRF) parameter k configured for the knowledge base for this request. This parameter takes effect only in hybrid search (HYBRID) mode. The value must be greater than 0.
+	// Optional. Overrides the RRF fusion parameter k configured for the knowledge base in this request. This parameter takes effect only in HYBRID search mode and must be greater than 0.
 	//
 	// example:
 	//
@@ -110,7 +116,7 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// 10
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// Optional. The vector weight for the WEIGHTED fusion algorithm. Valid values: 0 to 1. The keyword weight equals 1 minus this value. If this parameter is not specified, the value configured for the knowledge base is used. If no value is configured, the default value 0.7 is used.
+	// Optional. The vector path weight for the WEIGHTED fusion algorithm. Valid values: 0 to 1. The keyword path weight is 1 minus this value. If this parameter is not specified, the value configured for the knowledge base is used. If no value is configured, the default value is 0.7.
 	//
 	// example:
 	//

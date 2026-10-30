@@ -22,15 +22,15 @@ type iGetEventHouseRuntimeResponseBody interface {
 }
 
 type GetEventHouseRuntimeResponseBody struct {
-	// The response code. Success indicates a successful operation.
+	// The response code. A value of Success indicates that the operation was successful.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The Runtime information.
+	// The runtime information.
 	Data *EventHouseRuntime `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response message.
+	// The message returned by the API operation.
 	//
 	// example:
 	//

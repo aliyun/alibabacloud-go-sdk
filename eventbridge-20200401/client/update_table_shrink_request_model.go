@@ -38,7 +38,7 @@ type UpdateTableShrinkRequest struct {
 	//
 	// example:
 	//
-	// {"Name":"id","Type":"bigint","Comment":"主键"}
+	// {"Name":"id","Type":"bigint","Comment":"Primary key"}
 	AddColumnShrink *string `json:"AddColumn,omitempty" xml:"AddColumn,omitempty"`
 	// Data catalog to which it belongs
 	//
@@ -82,7 +82,7 @@ type UpdateTableShrinkRequest struct {
 	//
 	// example:
 	//
-	// {"Name":"id","Comment":"主键ID"}
+	// {"Name":"id","Comment":"Primary key ID"}
 	UpdateColumnCommentShrink *string `json:"UpdateColumnComment,omitempty" xml:"UpdateColumnComment,omitempty"`
 	// Update column type
 	//

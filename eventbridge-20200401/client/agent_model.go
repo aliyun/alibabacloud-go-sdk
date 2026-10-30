@@ -28,7 +28,17 @@ type iAgent interface {
 }
 
 type Agent struct {
-	CreatedAt   *int64  `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The creation time in UNIX milliseconds.
+	//
+	// example:
+	//
+	// 1717200000000
+	CreatedAt *int64 `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The description of the agent.
+	//
+	// example:
+	//
+	// IoT device data query agent
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the MCP server associated with the agent.
 	//
@@ -41,11 +51,27 @@ type Agent struct {
 	// example:
 	//
 	// data-analyze-agent
-	McpServerName *string   `json:"McpServerName,omitempty" xml:"McpServerName,omitempty"`
-	Metadata      *Metadata `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Prompt        *string   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	UpdatedAt     *int64    `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	McpServerName *string `json:"McpServerName,omitempty" xml:"McpServerName,omitempty"`
+	// The associated table metadata.
+	Metadata *Metadata `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The name of the agent.
+	//
+	// example:
+	//
+	// my-agent
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom prompt.
+	//
+	// example:
+	//
+	// You are an IoT data analytics assistant...
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The update time in UNIX milliseconds.
+	//
+	// example:
+	//
+	// 1717200000000
+	UpdatedAt *int64 `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 }
 
 func (s Agent) String() string {

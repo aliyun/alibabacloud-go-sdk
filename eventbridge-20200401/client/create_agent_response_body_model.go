@@ -22,11 +22,11 @@ type iCreateAgentResponseBody interface {
 }
 
 type CreateAgentResponseBody struct {
-	// The response code. Valid values:
+	// The API response code. Valid values:
 	//
-	// - Success: The request was successful.
+	// - Success: indicates success.
 	//
-	// - Other values: An error occurred. For more information, see Error codes.
+	// - Other values: indicates an error code. For more information, see Error codes.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type CreateAgentResponseBody struct {
 	//
 	// B896B484-XXXXXX-DD0E5C361108
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
+	// Specifies whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
 	//
 	// example:
 	//

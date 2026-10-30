@@ -30,13 +30,13 @@ type EventCenterQueryEventsShrinkRequest struct {
   // 
   // default
   BusName *string `json:"BusName,omitempty" xml:"BusName,omitempty"`
-  // The maximum number of results to return. Valid values: 0 to 10,000. The default value is 100.
+  // The maximum number of results to return. Valid values: 0 to 10000. Default value: 100.
   // 
   // example:
   // 
   // 100
   MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-  // The token to retrieve the next page of results.
+  // The token used to retrieve the next page of results.
   // 
   // example:
   // 

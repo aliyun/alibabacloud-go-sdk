@@ -151,8 +151,16 @@ type DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery struct {
 	// The database names, in JSON array format.
 	DatabaseNames []*string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty" type:"Repeated"`
 	// The estimated number of rows. Unit: rows.
+	//
+	// example:
+	//
+	// 0
 	EstimatedRows *int64 `json:"EstimatedRows,omitempty" xml:"EstimatedRows,omitempty"`
 	// The number of days before binary logs (binlogs) expire. Unit: days.
+	//
+	// example:
+	//
+	// 0
 	ExpireLogsDays *int32 `json:"ExpireLogsDays,omitempty" xml:"ExpireLogsDays,omitempty"`
 	// Sample table content.
 	//
@@ -165,6 +173,10 @@ type DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery struct {
 	// The table properties.
 	TableSchema *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
 	// The maximum idle time for a non-interactive connection. Unit: seconds.
+	//
+	// example:
+	//
+	// 86400
 	WaitTimeout *int32 `json:"WaitTimeout,omitempty" xml:"WaitTimeout,omitempty"`
 }
 

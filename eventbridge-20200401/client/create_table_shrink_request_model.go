@@ -26,7 +26,7 @@ type iCreateTableShrinkRequest interface {
 }
 
 type CreateTableShrinkRequest struct {
-	// The data catalog to which the table belongs.
+	// The data catalog.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type CreateTableShrinkRequest struct {
 	//
 	// example:
 	//
-	// [{"Name":"id","Type":"bigint","Comment":"主键"}]
+	// [{"Name":"id","Type":"bigint","Comment":"Primary key"}]
 	ColumnsShrink *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
-	// The description.
+	// The comment.
 	//
 	// example:
 	//
-	// 测试事件表
+	// Test event table
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateTableShrinkRequest struct {
 	//
 	// my_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace to which the table belongs.
+	// The namespace.
 	//
 	// example:
 	//

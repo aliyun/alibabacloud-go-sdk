@@ -22,27 +22,27 @@ type iSearchLumaKnowledgeBaseResponseBody interface {
 }
 
 type SearchLumaKnowledgeBaseResponseBody struct {
-	// The response code. A value of Success indicates a successful call. If the call fails, a specific error code is returned.
+	// The response code. The value is Success if the call is successful, or a specific error code if the call fails.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The retrieval result from the knowledge base bound to the Agent.
+	// The search results from the knowledge base bound to the agent.
 	Data *SearchLumaKnowledgeBaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned by the operation. The value is Operation success if the call succeeds, or a specific error description if the call fails.
+	// The response message. The value is Operation success if the call is successful, or a specific error description if the call fails.
 	//
 	// example:
 	//
 	// Operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier of the request, used for troubleshooting and ticket feedback.
+	// The unique identifier of the request. You can use this ID for troubleshooting and submitting tickets.
 	//
 	// example:
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of true indicates success.
+	// Indicates whether the call is successful. A value of true indicates that the call is successful.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *SearchLumaKnowledgeBaseResponseBody) Validate() error {
 }
 
 type SearchLumaKnowledgeBaseResponseBodyData struct {
-	// The list of matched text chunks, sorted by relevance.
+	// The list of text chunks matched by the search, sorted by relevance.
 	//
 	// example:
 	//
 	// [{"DocumentId":"doc-bp1xxxxxxxxxxxx","ChunkSeq":3,"Content":"EventBridge supports event routing"}]
 	Chunks []*KnowledgeBaseSearchChunk `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
-	// The time spent on the retrieval, in milliseconds.
+	// The duration of the search, in milliseconds.
 	//
 	// example:
 	//

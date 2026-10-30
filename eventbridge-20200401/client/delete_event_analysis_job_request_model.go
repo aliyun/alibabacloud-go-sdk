@@ -14,7 +14,7 @@ type iDeleteEventAnalysisJobRequest interface {
 }
 
 type DeleteEventAnalysisJobRequest struct {
-	// The identifier of the source resource.
+	// The source resource identifier.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ func (s *DeleteEventAnalysisJobRequestSourceResource) Validate() error {
 }
 
 type DeleteEventAnalysisJobRequestSourceResourceKafka struct {
-	// The instance ID of the Kafka instance.
+	// The Kafka instance ID.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ func (s *DeleteEventAnalysisJobRequestSourceResourceKafka) Validate() error {
 }
 
 type DeleteEventAnalysisJobRequestSourceResourceRocketMQ struct {
-	// The instance ID of the RocketMQ instance.
+	// The RocketMQ instance ID.
 	//
 	// example:
 	//

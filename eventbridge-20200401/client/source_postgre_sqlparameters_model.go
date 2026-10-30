@@ -38,19 +38,84 @@ type iSourcePostgreSQLParameters interface {
 }
 
 type SourcePostgreSQLParameters struct {
-	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	HostName        *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Port            *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the PostgreSQL database to connect to.
+	//
+	// example:
+	//
+	// analytics_db
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The hostname or IP address of the PostgreSQL database server.
+	//
+	// example:
+	//
+	// pgm-bp1xxxxx.pg.rds.aliyuncs.com
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The network type used to connect to the PostgreSQL data source. Valid values: PublicNetwork (public network) and PrivateNetwork (VPC).
+	//
+	// example:
+	//
+	// PrivateNetwork
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The password of the database connection user.
+	//
+	// example:
+	//
+	// your_password
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The connection port of the PostgreSQL database server.
+	//
+	// example:
+	//
+	// 5432
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the region where the PostgreSQL data source resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the PostgreSQL schema to synchronize.
+	//
+	// example:
+	//
+	// test_schema
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The ID of the security group used to connect to the PostgreSQL instance.
+	//
+	// example:
+	//
+	// sg-a1b2c3d4e5f6g7h8i9j0
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SnapshotMode    *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
-	TableNames      *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
-	User            *string `json:"User,omitempty" xml:"User,omitempty"`
-	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The snapshot mode used when PostgreSQL data synchronization is started for the first time.
+	//
+	// example:
+	//
+	// when_needed
+	SnapshotMode *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
+	// The names of the PostgreSQL tables to synchronize. Separate multiple table names with commas. Each table name must be in the {SchemaName}.{TableName} format.
+	//
+	// example:
+	//
+	// test_schema.test_table
+	TableNames *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
+	// The username for the database connection.
+	//
+	// example:
+	//
+	// readonly_user
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The ID of the vSwitch in the VPC.
+	//
+	// example:
+	//
+	// [vsw-a1b2c3d4e5f6g7h8i9j0k]
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The ID of the VPC where the PostgreSQL instance resides.
+	//
+	// example:
+	//
+	// vpc-a1b2c3d4e5f6g7h8i9j0k
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SourcePostgreSQLParameters) String() string {

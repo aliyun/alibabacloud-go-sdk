@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Queries data using natural language.
+// Performs a natural language query.
 //
 // @param request - AskLumaRequest
 //
@@ -65,11 +65,11 @@ func (client *Client) AskLumaWithContext(ctx context.Context, request *AskLumaRe
 
 // Summary:
 //
-// Checks whether a service-linked role is authorized for an account.
+// Checks whether the account has service-linked role authorization.
 //
 // Description:
 //
-// Checks for a service-linked role by name.
+// Checks whether a service-linked role exists based on the name of the service-linked role.
 //
 // @param request - CheckServiceLinkedRoleForProductRequest
 //
@@ -175,11 +175,11 @@ func (client *Client) CreateAgentWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// Creates an API destination.
+// Creates API destination information.
 //
 // Description:
 //
-// You can call this API operation to create an API destination.
+// Creates API destination information.
 //
 // @param tmpReq - CreateApiDestinationRequest
 //
@@ -701,7 +701,7 @@ func (client *Client) CreateKnowledgeBaseWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// # Create Namespace
+// Creates a namespace.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -833,11 +833,11 @@ func (client *Client) CreateRuleWithContext(ctx context.Context, tmpReq *CreateR
 
 // Summary:
 //
-// Creates the service-linked role (SLR) that is associated with a specified product.
+// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
 //
 // Description:
 //
-// Creates the service-linked role (SLR) that is associated with a specified product.
+// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
 //
 // @param request - CreateServiceLinkedRoleForProductRequest
 //
@@ -881,11 +881,11 @@ func (client *Client) CreateServiceLinkedRoleForProductWithContext(ctx context.C
 
 // Summary:
 //
-// # Create a data catalog
+// Creates a data catalog.
 //
 // Description:
 //
-// Creates an event target under the specified rule.
+// Creates an event target under a specified rule.
 //
 // @param tmpReq - CreateTableRequest
 //
@@ -1011,7 +1011,7 @@ func (client *Client) DeleteAgentWithContext(ctx context.Context, request *Delet
 //
 // Description:
 //
-// You can call this API operation to delete an API destination.
+// Deletes a specified API destination.
 //
 // @param request - DeleteApiDestinationRequest
 //
@@ -1055,11 +1055,11 @@ func (client *Client) DeleteApiDestinationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes a connection.
+// Deletes the specified connection configuration.
 //
 // Description:
 //
-// You can call this API operation to delete a connection.
+// Deletes the specified connection configuration.
 //
 // @param request - DeleteConnectionRequest
 //
@@ -1201,7 +1201,7 @@ func (client *Client) DeleteEventBusWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes an EventHouse Runtime.
+// Deletes an EventHouse runtime.
 //
 // @param request - DeleteEventHouseRuntimeRequest
 //
@@ -1785,7 +1785,7 @@ func (client *Client) EnableRuleWithContext(ctx context.Context, request *Enable
 
 // Summary:
 //
-// Queries events from the event center.
+// Queries events in the event analysis feature.
 //
 // @param tmpReq - EventCenterQueryEventsRequest
 //
@@ -2079,7 +2079,7 @@ func (client *Client) GetCatalogWithContext(ctx context.Context, request *GetCat
 
 // Summary:
 //
-// Queries the details of a chunk.
+// Retrieves the details of a chunk.
 //
 // @param request - GetChunkRequest
 //
@@ -2243,7 +2243,7 @@ func (client *Client) GetDocumentWithContext(ctx context.Context, request *GetDo
 
 // Summary:
 //
-// Retrieves the download URL of a document.
+// Retrieves the download URL for a document.
 //
 // @param request - GetDocumentDownloadUrlRequest
 //
@@ -2351,7 +2351,7 @@ func (client *Client) GetEventBusWithContext(ctx context.Context, request *GetEv
 
 // Summary:
 //
-// Queries the status and operation progress of an EventHouse Runtime.
+// Queries the status and operation progress of an EventHouse runtime.
 //
 // @param request - GetEventHouseRuntimeRequest
 //
@@ -3021,11 +3021,11 @@ func (client *Client) GetNamespaceWithContext(ctx context.Context, request *GetN
 
 // Summary:
 //
-// Retrieves the details of an event rule.
+// Queries the details of an event rule.
 //
 // Description:
 //
-// Gets the details of an event rule.
+// Retrieves the details of an event rule.
 //
 // @param request - GetRuleRequest
 //
@@ -3291,7 +3291,7 @@ func (client *Client) ListCatalogsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries the list of document chunks.
+// Queries a list of document chunks.
 //
 // @param request - ListChunksRequest
 //
@@ -3427,7 +3427,7 @@ func (client *Client) ListConnectionsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries a list of documents.
+// Queries the list of documents.
 //
 // @param request - ListDocumentsRequest
 //
@@ -3667,7 +3667,7 @@ func (client *Client) ListEventStreamingsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a list of knowledge bases.
+// Queries the list of knowledge bases.
 //
 // @param request - ListKnowledgeBasesRequest
 //
@@ -4123,7 +4123,7 @@ func (client *Client) ListLumaTablesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// # Query namespace list
+// Queries the list of namespaces.
 //
 // @param request - ListNamespacesRequest
 //
@@ -4351,11 +4351,11 @@ func (client *Client) ListTargetsWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// This operation queries all custom event sources.
+// Queries all external event sources.
 //
 // Description:
 //
-// Queries all custom event sources.
+// Queries all external event sources.
 //
 // @param request - ListUserDefinedEventSourcesRequest
 //
@@ -4565,11 +4565,11 @@ func (client *Client) PutEventsWithContext(ctx context.Context, tmpReq *PutEvent
 
 // Summary:
 //
-// Create or update event targets for the specified rule.
+// Creates or updates an event target under a specified rule.
 //
 // Description:
 //
-// Creates or updates event targets for a specified rule.
+// Creates or updates an event target under a specified rule.
 //
 // @param tmpReq - PutTargetsRequest
 //
@@ -4735,7 +4735,7 @@ func (client *Client) QueryEventWithContext(ctx context.Context, request *QueryE
 
 // Summary:
 //
-// # Query event store data
+// Queries event warehouse data.
 //
 // @param request - QueryEventHouseRequest
 //
@@ -5007,11 +5007,11 @@ func (client *Client) QueryTracedEventByEventIdWithContext(ctx context.Context, 
 
 // Summary:
 //
-// This operation queries `event trace` data within a `time range`.
+// Queries the event trace within a specified time range.
 //
 // Description:
 //
-// Queries for event traces within a specified time range.
+// Queries the event trace within a specified time range.
 //
 // @param request - QueryTracedEventsRequest
 //
@@ -5087,7 +5087,7 @@ func (client *Client) QueryTracedEventsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Executes a SQL statement to query event warehouse data. This operation is suitable for scenarios where the exact SQL is known, without natural language conversion or conversation context. Returns a structured result set.
+// Executes an SQL statement to query data in the event warehouse. Applicable to scenarios where the exact SQL statement is known, requiring no natural language conversion or dialog context. Returns a structured result set.
 //
 // Description:
 //
@@ -5217,7 +5217,7 @@ func (client *Client) SaveAgentDataSemanticsWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Retrieves knowledge base search results.
+// Searches a knowledge base.
 //
 // @param request - SearchKnowledgeBaseRequest
 //
@@ -5305,11 +5305,11 @@ func (client *Client) SearchKnowledgeBaseWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves content from a knowledge base bound to a Luma Agent and returns relevant text chunks along with their relevance scores.
+// Retrieves content in the knowledge base bound to a Luma agent and returns relevant text chunks along with their relevance scores.
 //
 // Description:
 //
-// Retrieves content from a knowledge base bound to a Luma Agent and returns relevant text chunks along with their relevance scores.
+// Retrieves content in the knowledge base bound to a Luma agent and returns relevant text chunks along with their relevance scores.
 //
 // @param request - SearchLumaKnowledgeBaseRequest
 //
@@ -5433,11 +5433,11 @@ func (client *Client) StartEventStreamingWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Tests if an event pattern matches a given event.
+// Tests whether the event pattern matches the provided JSON-formatted event.
 //
 // Description:
 //
-// Use this action to test an event pattern before you apply it to a rule.
+// Tests whether the event pattern matches the provided JSON-formatted event.
 //
 // @param request - TestEventPatternRequest
 //
@@ -5761,11 +5761,11 @@ func (client *Client) UpdateConnectionWithContext(ctx context.Context, tmpReq *U
 
 // Summary:
 //
-// Updates an event bus.
+// Modifies an event bus.
 //
 // Description:
 //
-// You can call this operation to update an event bus.
+// Modifies an event bus.
 //
 // @param request - UpdateEventBusRequest
 //
@@ -5813,7 +5813,7 @@ func (client *Client) UpdateEventBusWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Updates an EventHouse Runtime.
+// Updates the EventHouse runtime.
 //
 // @param request - UpdateEventHouseRuntimeRequest
 //
@@ -5861,11 +5861,11 @@ func (client *Client) UpdateEventHouseRuntimeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Updates an event source.
+// Updates the configuration of an event source.
 //
 // Description:
 //
-// You can call this API operation to update an event source.
+// Updates the configuration of an event source.
 //
 // @param tmpReq - UpdateEventSourceRequest
 //

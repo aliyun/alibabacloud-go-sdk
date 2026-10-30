@@ -26,7 +26,7 @@ type ListUserDefinedEventSourcesRequest struct {
 	//
 	// testBus
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
-	// The maximum number of entries to return per request. You can use this parameter with NextToken for pagination. The maximum value is 100.
+	// The maximum number of entries to return per request. You can use this parameter with NextToken to paginate results. The maximum value is 100.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListUserDefinedEventSourcesRequest struct {
 	//
 	// testName
 	NamePrefix *string `json:"NamePrefix,omitempty" xml:"NamePrefix,omitempty"`
-	// The token used to retrieve the next page of results. Set this parameter to the NextToken value returned from a previous call.
+	// The token returned when Limit is specified and additional results are available.
 	//
 	// example:
 	//

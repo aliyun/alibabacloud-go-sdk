@@ -18,19 +18,19 @@ type iListNamespacesRequest interface {
 }
 
 type ListNamespacesRequest struct {
-	// Data catalog
+	// The data catalog.
 	//
 	// example:
 	//
 	// my_catalog
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// Items per page
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// Pagination Token
+	// The pagination token.
 	//
 	// example:
 	//

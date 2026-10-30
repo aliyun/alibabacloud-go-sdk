@@ -22,13 +22,13 @@ type iEventCenterQueryEventsResponseBody interface {
 }
 
 type EventCenterQueryEventsResponseBody struct {
-  // The status of the API call, which can be Success or a POP error code.
+  // The API status or POP error code. Valid values: Success: Successful.
   // 
   // example:
   // 
   // Success
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // The returned data.
+  // The returned result.
   Data *EventCenterQueryEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
   // The error message.
   // 
@@ -36,13 +36,13 @@ type EventCenterQueryEventsResponseBody struct {
   // 
   // Specified parameter Limit is not valid.
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // The request ID.
+  // The ID of the request.
   // 
   // example:
   // 
   // 5DAF96FB-A4B6-548C-B999-XXXXXXXX
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the call was successful. `true` indicates success, and `false` indicates failure.
+  // Indicates whether the operation is successful. Valid values: true: Successful. false: Failed.
   // 
   // example:
   // 
@@ -113,23 +113,23 @@ func (s *EventCenterQueryEventsResponseBody) Validate() error {
 }
 
 type EventCenterQueryEventsResponseBodyData struct {
-  // The maximum number of entries to return.
+  // The maximum number of records returned for the current request.
   // 
   // example:
   // 
   // 100
   MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-  // The token used to retrieve the next page of results. If this parameter is empty, all results have been returned.
+  // The token that indicates the read position returned by the current call. An empty value indicates that all data has been read.
   // 
   // example:
   // 
   // 100
   NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-  // The query results for the `table` query type.
+  // The query results for the table query type.
   Table []*EventCenterQueryEventsResponseBodyDataTable `json:"Table,omitempty" xml:"Table,omitempty" type:"Repeated"`
-  // The query results for the `time series` query type.
+  // The query results for the timeseries query type.
   TimeSeries []*EventCenterQueryEventsResponseBodyDataTimeSeries `json:"TimeSeries,omitempty" xml:"TimeSeries,omitempty" type:"Repeated"`
-  // The total number of entries that meet the filter conditions. This parameter is optional and is not returned by default.
+  // The total number of data entries that meet the request conditions. This parameter is optional and is not returned by default.
   // 
   // example:
   // 
@@ -213,7 +213,7 @@ func (s *EventCenterQueryEventsResponseBodyData) Validate() error {
 }
 
 type EventCenterQueryEventsResponseBodyDataTable struct {
-  // A query result entry, represented as a key-value pair.
+  // The entries in the query results, represented as key-value pairs.
   // 
   // example:
   // 
@@ -249,7 +249,7 @@ func (s *EventCenterQueryEventsResponseBodyDataTable) Validate() error {
 }
 
 type EventCenterQueryEventsResponseBodyDataTimeSeries struct {
-  // A query result entry, represented as a key-value pair.
+  // The entries in the query results, represented as key-value pairs.
   // 
   // example:
   // 
@@ -261,7 +261,7 @@ type EventCenterQueryEventsResponseBodyDataTimeSeries struct {
   // 
   // }
   RowData map[string]interface{} `json:"RowData,omitempty" xml:"RowData,omitempty"`
-  // The timestamp.
+  // The timestamp used for display.
   // 
   // example:
   // 

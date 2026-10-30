@@ -24,11 +24,11 @@ type iCreateRuleRequest interface {
 }
 
 type CreateRuleRequest struct {
-	// The description of the event rule.
+	// The description of the event bus.
 	//
 	// example:
 	//
-	// SMQ filter rule
+	// Filter rule for Simple Message Queue (formerly MNS) (SMQ)
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the event bus.
 	//
@@ -38,9 +38,15 @@ type CreateRuleRequest struct {
 	//
 	// MyEventBus
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
-	// A list of event targets.
+	// The list of event targets.
 	EventTargets []*CreateRuleRequestEventTargets `json:"EventTargets,omitempty" xml:"EventTargets,omitempty" type:"Repeated"`
-	// The event pattern, in JSON format. Supported pattern types are `stringEqual` and `stringExpression`. Each field can contain a maximum of five expressions in a map structure.
+	// The event pattern in JSON format. The following patterns are supported:
+	//
+	// - stringEqual pattern
+	//
+	// - stringExpression pattern
+	//
+	// Each field supports up to five expressions in a map structure.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +96,11 @@ type CreateRuleRequest struct {
 	//
 	// SMQRule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the event rule. Valid values: `ENABLE`: The rule is enabled. This is the default value. `DISABLE`: The rule is disabled.
+	// The status of the rule. Valid values:
+	//
+	// - ENABLE: The rule is enabled. This is the default status.
+	//
+	// - DISABLE: The rule is disabled.
 	//
 	// example:
 	//
@@ -176,15 +186,19 @@ func (s *CreateRuleRequest) Validate() error {
 type CreateRuleRequestEventTargets struct {
 	// The concurrency control configuration.
 	ConcurrentConfig *CreateRuleRequestEventTargetsConcurrentConfig `json:"ConcurrentConfig,omitempty" xml:"ConcurrentConfig,omitempty" type:"Struct"`
-	// The dead-letter queue. If an event fails to be processed or exceeds the retry limit, it is sent to the dead-letter queue. Supported services for the dead-letter queue include Message Queue for Apache RocketMQ, Message Service (MNS), Message Queue for Apache Kafka, and EventBridge event buses.
+	// The dead-letter queue. Unprocessed events or events that exceed the retry count are written to the dead-letter queue. Supported queue types include ApsaraMQ for RocketMQ, Simple Message Queue (formerly MNS), ApsaraMQ for Kafka, and EventBridge event buses.
 	DeadLetterQueue *CreateRuleRequestEventTargetsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
-	// The delivery endpoint for events.
+	// The endpoint URL for delivery.
 	//
 	// example:
 	//
 	// acs:mns:cn-hangzhou:123456789098****:queues/myqueue
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The fault tolerance policy. Valid values:<br>`ALL`: Enables fault tolerance. Execution continues even if an error occurs. After all retry attempts fail, the event is sent to the dead-letter queue (if configured) or discarded.<br>`NONE`: Disables fault tolerance. Execution is blocked if an error occurs and all retry attempts fail.<br><br>
+	// The fault tolerance strategy. Valid values:
+	//
+	// - ALL: allows fault tolerance. Exceptions do not block execution. If the retry strategy is exhausted, messages are delivered to the dead-letter queue or discarded based on the configuration.
+	//
+	// - NONE: disables fault tolerance. Exceptions block execution when the retry strategy is exhausted.
 	//
 	// example:
 	//
@@ -198,9 +212,13 @@ type CreateRuleRequestEventTargets struct {
 	//
 	// Mlm123456JHd2RsRoKw
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters for the event target.
+	// The parameters of the event target.
 	ParamList []*CreateRuleRequestEventTargetsParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	// The push retry strategy. Valid values:<br>`BACKOFF_RETRY`: A backoff retry strategy where the system makes three retry attempts at random intervals of 10 to 20 seconds.<br>`EXPONENTIAL_DECAY_RETRY`: An exponential decay retry strategy where the system makes 176 retry attempts over 24 hours. The interval starts at 1 second and doubles with each of the first 10 attempts (up to 512 seconds). Subsequent retries occur every 512 seconds.<br><br>
+	// The retry policy for pushing events. Valid values:
+	//
+	// - BACKOFF_RETRY: backoff retry policy. The system retries 3 times, with a random interval of 10 to 20 seconds between each retry.
+	//
+	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry. The system retries 176 times, with the interval exponentially incrementing to 512 seconds. The total retry time is 1 day. The specific intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, and then 512 seconds for the remaining 167 retries.
 	//
 	// example:
 	//
@@ -320,7 +338,7 @@ func (s *CreateRuleRequestEventTargets) Validate() error {
 }
 
 type CreateRuleRequestEventTargetsConcurrentConfig struct {
-	// The maximum number of concurrent executions for the event target.
+	// The number of concurrent executions.
 	//
 	// example:
 	//
@@ -350,19 +368,35 @@ func (s *CreateRuleRequestEventTargetsConcurrentConfig) Validate() error {
 }
 
 type CreateRuleRequestEventTargetsDeadLetterQueue struct {
-	// The Alibaba Cloud Resource Name (ARN) of the dead-letter queue. Events that fail to be processed or exceed the retry limit are sent to this ARN. Supported services for this parameter include Message Service (MNS) and Message Queue for Apache RocketMQ.
+	// The ARN of the dead-letter queue. Unprocessed events or events that exceed the retry count are written to the dead-letter queue. Simple Message Queue (formerly MNS) and ApsaraMQ for RocketMQ are supported.
 	//
 	// example:
 	//
 	// acs:mns:cn-hangzhou:123456789098****:/queues/deadletterqueue
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	// The network type.
+	//
+	// example:
+	//
+	// PrivateNetwork
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The security group ID.
+	//
+	// example:
+	//
+	// sg-2d****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-m12345****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC where the dead-letter queue resides.
+	//
+	// example:
+	//
+	// vpc-2z****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -430,13 +464,13 @@ type CreateRuleRequestEventTargetsParamList struct {
 	//
 	// TEMPLATE
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The name of the target parameter. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+	// The resource parameter of the event target. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
 	// example:
 	//
 	// body
 	ResourceKey *string `json:"ResourceKey,omitempty" xml:"ResourceKey,omitempty"`
-	// The template for the event target parameter.
+	// The parameter template style of the event target.
 	//
 	// example:
 	//

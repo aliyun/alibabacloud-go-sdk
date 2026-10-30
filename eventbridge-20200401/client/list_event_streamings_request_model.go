@@ -24,21 +24,19 @@ type iListEventStreamingsRequest interface {
 }
 
 type ListEventStreamingsRequest struct {
-	// The maximum number of entries to return per request. You can use this parameter together with NextToken to implement paging.
-	//
-	// 	Notice: The maximum number of entries to return per request cannot exceed 100.
+	// Specifies the maximum number of entries to return per request. You can use this parameter together with NextToken to paginate results.	Notice: The maximum number of entries returned per request cannot exceed 100.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The name prefix of the event stream.
+	// The prefix of the event stream name.
 	//
 	// example:
 	//
 	// name
 	NamePrefix *string `json:"NamePrefix,omitempty" xml:"NamePrefix,omitempty"`
-	// If the number of entries that match the specified conditions exceeds the value of Limit, a NextToken is returned.
+	// The token that is returned when Limit is specified and additional results are available.
 	//
 	// example:
 	//
@@ -50,9 +48,9 @@ type ListEventStreamingsRequest struct {
 	//
 	// acs:fc:cn-hangzhou:118609547428****:services/fw1.LATEST/functions/log1
 	SinkArn *string `json:"SinkArn,omitempty" xml:"SinkArn,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the event source.
+	// The ARN of the event source.
 	SourceArn *string `json:"SourceArn,omitempty" xml:"SourceArn,omitempty"`
-	// The tags used for filtering.
+	// The tags used to filter results.
 	Tags []*ListEventStreamingsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

@@ -16,13 +16,13 @@ type iQueryWithSQLRequest interface {
 }
 
 type QueryWithSQLRequest struct {
-	// The maximum number of rows to return. Default value: 20. Maximum value: 50.
+	// The number of entries to return. Default value: 20. Maximum value: 50.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The query statement. Typically uses a three-part table name in the format of catalog.namespace.table.
+	// The query statement. Typically, a three-part table name in the format of catalog.namespace.table is used.
 	//
 	// This parameter is required.
 	//

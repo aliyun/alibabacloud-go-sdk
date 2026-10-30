@@ -22,15 +22,15 @@ type iListChunksResponseBody interface {
 }
 
 type ListChunksResponseBody struct {
-	// The response code. A value of Success indicates a successful call. If the call fails, a specific error code is returned.
+	// The response code. A value of Success indicates that the call is successful. If the call fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The chunk list query result, which contains chunk entries and pagination information.
+	// The query result of the chunk list, which includes chunk entries and pagination information.
 	Data *ListChunksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned by the operation. The value is Operation success if the call succeeds, or a specific error description if the call fails.
+	// The prompt message returned by the API. If the call is successful, the value is Operation success. If the call fails, a specific error description is returned.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListChunksResponseBody struct {
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of true indicates success.
+	// Indicates whether the call is successful. A value of true indicates that the call is successful.
 	//
 	// example:
 	//
@@ -119,19 +119,19 @@ type ListChunksResponseBodyData struct {
 	//
 	// [{"DocumentId":"doc-bp1xxxxxxxxxxxx","ChunkSeq":1,"Content":"EventBridge supports event routing"}]
 	Chunks []*KnowledgeBaseChunk `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
-	// The maximum number of results per page that took effect for this request.
+	// The actual maximum number of results per page that takes effect for the current request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page (an opaque string). Pass this value as the NextToken parameter in the next request to retrieve the next page. An empty value indicates that no more data is available.
+	// The pagination token for the next page, which is an opaque string. Pass this value to the NextToken parameter of the next request to obtain the next page. An empty value indicates that no more data is available.
 	//
 	// example:
 	//
 	// ca1eb85f5d99c7d6a97e6****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of chunks in the specified document when DocumentId is specified. In full knowledge base mode (when DocumentId is not specified), this field is not returned. Pagination ends when NextToken is empty.
+	// The total number of chunks in the specified document. This parameter is returned only when DocumentId is specified. In full-base mode (when DocumentId is not specified), this parameter is not returned, and pagination ends when NextToken is empty.
 	//
 	// example:
 	//

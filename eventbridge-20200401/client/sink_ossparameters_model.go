@@ -36,18 +36,70 @@ type iSinkOSSParameters interface {
 }
 
 type SinkOSSParameters struct {
-	BucketName       *string                            `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	CompressionType  *string                            `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
+	// The name of the OSS bucket used to store event data.
+	//
+	// example:
+	//
+	// test
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The compression type of the delivered files.
+	//
+	// example:
+	//
+	// gzip
+	CompressionType *string `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
+	// The event content transformation configuration before delivery to OSS.
 	ContentTransform *SinkOSSParametersContentTransform `json:"ContentTransform,omitempty" xml:"ContentTransform,omitempty" type:"Struct"`
-	Endpoint         *string                            `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	PathFormat       *string                            `json:"PathFormat,omitempty" xml:"PathFormat,omitempty"`
-	RegionId         *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleArn          *string                            `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	RotateIntervalMs *string                            `json:"RotateIntervalMs,omitempty" xml:"RotateIntervalMs,omitempty"`
-	RotateSizeBytes  *string                            `json:"RotateSizeBytes,omitempty" xml:"RotateSizeBytes,omitempty"`
-	SSLEnabled       *bool                              `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	TaskConcurrency  *string                            `json:"TaskConcurrency,omitempty" xml:"TaskConcurrency,omitempty"`
-	TimeZone         *string                            `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// The endpoint of the destination OSS service.
+	//
+	// example:
+	//
+	// oss-cn-hangzhou-internal.aliyuncs.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The storage path for event data in the OSS bucket.
+	//
+	// example:
+	//
+	// /EB-test/
+	PathFormat *string `json:"PathFormat,omitempty" xml:"PathFormat,omitempty"`
+	// The region ID of the destination OSS service.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ARN of the RAM role used to deliver data to OSS.
+	//
+	// example:
+	//
+	// acs:ram::1234567890123456:role/example-eventbridge-role
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The time window for batch aggregation of event data.
+	//
+	// example:
+	//
+	// 60000
+	RotateIntervalMs *string `json:"RotateIntervalMs,omitempty" xml:"RotateIntervalMs,omitempty"`
+	// The file size threshold for batch aggregation.
+	//
+	// example:
+	//
+	// 1048576
+	RotateSizeBytes *string `json:"RotateSizeBytes,omitempty" xml:"RotateSizeBytes,omitempty"`
+	// Specifies whether SSL is enabled.
+	SSLEnabled *bool `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// The number of concurrent delivery tasks.
+	//
+	// example:
+	//
+	// 1
+	TaskConcurrency *string `json:"TaskConcurrency,omitempty" xml:"TaskConcurrency,omitempty"`
+	// The time zone used for time variables in the storage path.
+	//
+	// example:
+	//
+	// UTC+8:00
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s SinkOSSParameters) String() string {
@@ -176,9 +228,24 @@ func (s *SinkOSSParameters) Validate() error {
 }
 
 type SinkOSSParametersContentTransform struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The transformation method for the delivered content.
+	//
+	// example:
+	//
+	// JSONPATH
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template string used to format parameter values. This parameter is used only when Form is set to TEMPLATE.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value expression used to generate the delivered content.
+	//
+	// example:
+	//
+	// $.data.message
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkOSSParametersContentTransform) String() string {

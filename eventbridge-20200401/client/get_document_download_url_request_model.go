@@ -22,7 +22,7 @@ type iGetDocumentDownloadUrlRequest interface {
 }
 
 type GetDocumentDownloadUrlRequest struct {
-	// The data catalog to which the knowledge base belongs. This parameter, together with Namespace and KnowledgeBaseName, uniquely identifies a knowledge base. You can call ListCatalogs to obtain the value.
+	// The data catalog to which the knowledge base belongs. This parameter, together with Namespace and KnowledgeBaseName, uniquely identifies the knowledge base. You can call ListCatalogs to obtain the value.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type GetDocumentDownloadUrlRequest struct {
 	//
 	// my_catalog
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The document ID.
+	// The ID of the document.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type GetDocumentDownloadUrlRequest struct {
 	//
 	// doc-bp1xxxxxxxxxxxx
 	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
-	// The name of the knowledge base. The name is unique within the namespace and is determined at creation time. It cannot be modified.
+	// The name of the knowledge base. The name must be unique within the namespace. It is specified upon creation and cannot be modified.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type GetDocumentDownloadUrlRequest struct {
 	//
 	// my-knowledge-base
 	KnowledgeBaseName *string `json:"KnowledgeBaseName,omitempty" xml:"KnowledgeBaseName,omitempty"`
-	// The namespace to which the knowledge base belongs. The namespace must belong to the specified data catalog. This parameter, together with Catalog and KnowledgeBaseName, uniquely identifies a knowledge base. You can call ListNamespaces to obtain the value.
+	// The namespace to which the knowledge base belongs. The namespace must belong to the specified data catalog. This parameter, together with Catalog and KnowledgeBaseName, uniquely identifies the knowledge base. You can call ListNamespaces to obtain the value.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +54,11 @@ type GetDocumentDownloadUrlRequest struct {
 	//
 	// my_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The network type of the pre-signed URL. Valid values:
+	// The network type of the presigned URL. Valid values:
 	//
-	// - PUBLIC (default): accessible over the Internet.
+	// - PUBLIC: Accessible over the Internet. This is the default value.
 	//
-	// - INTERNAL: accessible only within the same region on the Alibaba Cloud internal network, with no Internet data transfer fees.
+	// - INTERNAL: Accessible only over the internal network within the same Alibaba Cloud region. No Internet traffic fees are incurred.
 	//
 	// example:
 	//

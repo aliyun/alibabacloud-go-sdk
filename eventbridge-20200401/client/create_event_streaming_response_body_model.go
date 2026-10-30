@@ -22,11 +22,11 @@ type iCreateEventStreamingResponseBody interface {
 }
 
 type CreateEventStreamingResponseBody struct {
-	// The response code. Valid values:
+	// The API return code. Valid values:
 	//
-	// - Success: The request was successful.
+	// - Success: The operation is successful.
 	//
-	// - Other values: An error occurred. For more information about error codes, see Error codes.
+	// - Other values: An error code. For more information, see Error codes.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateEventStreamingResponseBody struct {
 	//
 	// B896B484-F16D-59DE-9E23-DD0E5C36****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. The value true is returned if the operation was successful.
+	// Indicates whether the operation is successful. A value of true indicates that the operation is successful.
 	//
 	// example:
 	//

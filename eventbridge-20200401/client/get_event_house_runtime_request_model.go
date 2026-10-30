@@ -14,7 +14,7 @@ type iGetEventHouseRuntimeRequest interface {
 }
 
 type GetEventHouseRuntimeRequest struct {
-	// The name of the EventHouse Runtime. If this parameter is not specified, the default Runtime is queried.
+	// The name of the EventHouse runtime. If this parameter is not specified, the default runtime is queried.
 	//
 	// example:
 	//

@@ -52,26 +52,126 @@ type iSourceRabbitMQMsgSyncParameters interface {
 }
 
 type SourceRabbitMQMsgSyncParameters struct {
-	BodyDataType         *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
+	// The data type of the message body.
+	//
+	// example:
+	//
+	// json
+	BodyDataType *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
+	// The ID of the RabbitMQ cloud migration task.
+	//
+	// example:
+	//
+	// 123e4567-e89b-42d3-a456-426614174000
 	CloudMigrationTaskId *string `json:"CloudMigrationTaskId,omitempty" xml:"CloudMigrationTaskId,omitempty"`
-	DstClusterHost       *string `json:"DstClusterHost,omitempty" xml:"DstClusterHost,omitempty"`
-	DstClusterType       *string `json:"DstClusterType,omitempty" xml:"DstClusterType,omitempty"`
-	Endpoint             *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OrderConsume         *string `json:"OrderConsume,omitempty" xml:"OrderConsume,omitempty"`
-	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PrefetchCount        *string `json:"PrefetchCount,omitempty" xml:"PrefetchCount,omitempty"`
-	Regex                *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
-	SecurityGroupId      *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SrcClusterHost       *string `json:"SrcClusterHost,omitempty" xml:"SrcClusterHost,omitempty"`
-	SrcClusterType       *string `json:"SrcClusterType,omitempty" xml:"SrcClusterType,omitempty"`
-	SyncMetaType         *string `json:"SyncMetaType,omitempty" xml:"SyncMetaType,omitempty"`
-	Username             *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	VSwitchIds           *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VirtualHostName      *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The address of the destination cluster.
+	//
+	// example:
+	//
+	// rabbitmq-cn-hangzhou-2x***.com
+	DstClusterHost *string `json:"DstClusterHost,omitempty" xml:"DstClusterHost,omitempty"`
+	// The type of the destination RabbitMQ cluster.
+	//
+	// example:
+	//
+	// Cloud
+	DstClusterType *string `json:"DstClusterType,omitempty" xml:"DstClusterType,omitempty"`
+	// The endpoint of the RabbitMQ cluster.
+	//
+	// example:
+	//
+	// 192.0.2.10
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	//
+	// example:
+	//
+	// rabbitmq-cn-a1b2c3d4e5f
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the source RabbitMQ instance.
+	//
+	// example:
+	//
+	// SelfBuilt
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The network type used to connect to the source RabbitMQ instance.
+	//
+	// example:
+	//
+	// PrivateNetwork
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// Specifies whether SAC is enabled. Do not specify this parameter.
+	//
+	// example:
+	//
+	// Leave empty
+	OrderConsume *string `json:"OrderConsume,omitempty" xml:"OrderConsume,omitempty"`
+	// The password used to connect to the RabbitMQ cluster.
+	//
+	// example:
+	//
+	// yourPassword
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The prefetch count.
+	//
+	// example:
+	//
+	// 2
+	PrefetchCount *string `json:"PrefetchCount,omitempty" xml:"PrefetchCount,omitempty"`
+	// The regular expression for matching. Do not specify this parameter.
+	//
+	// example:
+	//
+	// Leave empty
+	Regex *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
+	// The ID of the security group to which the machines of the RabbitMQ cluster belong.
+	//
+	// example:
+	//
+	// sg-a1b2c3d4e5f6g7h8i9j0
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The address of the source cluster.
+	//
+	// example:
+	//
+	// rabbitmq-cn-hangzhou-2x***.com
+	SrcClusterHost *string `json:"SrcClusterHost,omitempty" xml:"SrcClusterHost,omitempty"`
+	// The type of the source RabbitMQ cluster.
+	//
+	// example:
+	//
+	// SelfBuilt
+	SrcClusterType *string `json:"SrcClusterType,omitempty" xml:"SrcClusterType,omitempty"`
+	// The type of metadata to synchronize. Do not specify this parameter.
+	//
+	// example:
+	//
+	// 4
+	SyncMetaType *string `json:"SyncMetaType,omitempty" xml:"SyncMetaType,omitempty"`
+	// The username used to connect to the RabbitMQ cluster.
+	//
+	// example:
+	//
+	// admin
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The IDs of the vSwitches in the VPC where the RabbitMQ cluster is deployed.
+	//
+	// example:
+	//
+	// vsw-a1b2c3d4e5f6g7h8i9j0k
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The name of the virtual host (vhost) in the RabbitMQ cluster.
+	//
+	// example:
+	//
+	// test-001
+	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
+	// The ID of the VPC where the RabbitMQ cluster is deployed.
+	//
+	// example:
+	//
+	// vpc-a1b2c3d4e5f6g7h8i9j0k
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SourceRabbitMQMsgSyncParameters) String() string {

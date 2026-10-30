@@ -22,13 +22,13 @@ type iCreateRuleResponseBody interface {
 }
 
 type CreateRuleResponseBody struct {
-	// The response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
+	// The response code. A value of Success indicates that the request is successful. Other values indicate error codes. For more information, see Error codes.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *CreateRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -42,7 +42,7 @@ type CreateRuleResponseBody struct {
 	//
 	// 1AD6D598-7506-5D2C-81EA-30E3241A903A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. A value of true indicates that the operation is successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

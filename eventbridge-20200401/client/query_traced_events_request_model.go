@@ -30,7 +30,7 @@ type iQueryTracedEventsRequest interface {
 }
 
 type QueryTracedEventsRequest struct {
-	// The end of the time range for the query, specified as a UNIX timestamp in milliseconds.
+	// The end time of the time range to retrieve events. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type QueryTracedEventsRequest struct {
 	//
 	// eventbridge:Events:HTTPEvent
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The maximum number of entries to return per page. Use this parameter with NextToken to paginate the results.	Notice: The maximum value is 100.
+	// The maximum number of entries to return per page. You can use this parameter together with NextToken to paginate query results. 	Notice: The maximum number of entries returned per page cannot exceed 100.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type QueryTracedEventsRequest struct {
 	//
 	// test-mnsrule
 	MatchedRule *string `json:"MatchedRule,omitempty" xml:"MatchedRule,omitempty"`
-	// The token for retrieving the next page of results. It is returned in the response to a previous request if more results are available.
+	// The pagination token. If you specify Limit and more results are available, this token is returned.
 	//
 	// example:
 	//
 	// 1000
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The beginning of the time range for the query, specified as a UNIX timestamp in milliseconds.
+	// The start time of the time range to retrieve events. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,11 @@ type QueryTracedEventsRequest struct {
 	//
 	// 1661773509000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The event subject.
+	// The subject of the event.
+	//
+	// example:
+	//
+	// order-1001
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 }
 

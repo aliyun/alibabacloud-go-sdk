@@ -42,21 +42,96 @@ type iSourceRabbitMQMetaParameters interface {
 }
 
 type SourceRabbitMQMetaParameters struct {
-	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The access endpoint of the RabbitMQ cluster.
+	//
+	// example:
+	//
+	// rabbitmq-cn-a1b2c3d4e5f-cn-hangzhou-vpc.amqp.aliyuncs.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The added suffix.
+	//
+	// example:
+	//
+	// rabbitmq-cn-a1b2c3d4e5f_example_123e4567-e89b-42d3-a456-426614174000
 	InnerNameSuffix *string `json:"InnerNameSuffix,omitempty" xml:"InnerNameSuffix,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MaxHops         *string `json:"MaxHops,omitempty" xml:"MaxHops,omitempty"`
-	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OrderConsume    *string `json:"OrderConsume,omitempty" xml:"OrderConsume,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Regex           *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ (MSMQ message queue) instance.
+	//
+	// example:
+	//
+	// rabbitmq-cn-a1b2c3d4e5f
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the source RabbitMQ instance.
+	//
+	// example:
+	//
+	// Cloud
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The maximum number of hops allowed for message forwarding in a federation task. Messages that exceed this limit are dropped.
+	//
+	// example:
+	//
+	// 1
+	MaxHops *string `json:"MaxHops,omitempty" xml:"MaxHops,omitempty"`
+	// The network type.
+	//
+	// example:
+	//
+	// PrivateNetwork
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// Specifies whether to consume messages in order.
+	//
+	// example:
+	//
+	// false
+	OrderConsume *string `json:"OrderConsume,omitempty" xml:"OrderConsume,omitempty"`
+	// The password used to connect to the RabbitMQ cluster.
+	//
+	// example:
+	//
+	// yourPassword
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The regular expression used to filter exchanges.
+	//
+	// example:
+	//
+	// ^example_.*
+	Regex *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
+	// The ID of the security group to which the machines of the RabbitMQ cluster belong.
+	//
+	// example:
+	//
+	// sg-bp1****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SyncMetaType    *string `json:"SyncMetaType,omitempty" xml:"SyncMetaType,omitempty"`
-	Username        *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The type of synchronized metadata.
+	//
+	// example:
+	//
+	// queue
+	SyncMetaType *string `json:"SyncMetaType,omitempty" xml:"SyncMetaType,omitempty"`
+	// The username used to connect to the RabbitMQ cluster.
+	//
+	// example:
+	//
+	// admin
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The ID of the vSwitch in the VPC where the RabbitMQ cluster resides.
+	//
+	// example:
+	//
+	// vsw-bp1****
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The name of the virtual host (vhost) in the RabbitMQ cluster.
+	//
+	// example:
+	//
+	// test-001
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the VPC where the RabbitMQ cluster resides.
+	//
+	// example:
+	//
+	// vpc-8vb****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SourceRabbitMQMetaParameters) String() string {

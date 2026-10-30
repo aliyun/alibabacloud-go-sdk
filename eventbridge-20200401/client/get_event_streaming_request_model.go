@@ -14,7 +14,7 @@ type iGetEventStreamingRequest interface {
 }
 
 type GetEventStreamingRequest struct {
-	// The name of the event stream that you want to query.
+	// The name of the event stream.
 	//
 	// This parameter is required.
 	//

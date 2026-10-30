@@ -18,13 +18,13 @@ type iQueryAskLumaLogRequest interface {
 }
 
 type QueryAskLumaLogRequest struct {
-	// The cursor for pagination. Set this parameter to the messageId of the last entry on the previous page.
+	// The cursor, which is the message ID of the last record on the previous page.
 	//
 	// example:
 	//
 	// eyJ0cyI6MTcxN...
 	After *string `json:"After,omitempty" xml:"After,omitempty"`
-	// The agent name. If this parameter is not specified, all agent call logs are queried.
+	// The name of the agent. If this parameter is not specified, all agents are queried.
 	//
 	// example:
 	//

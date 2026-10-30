@@ -26,7 +26,7 @@ type iCreateTableRequest interface {
 }
 
 type CreateTableRequest struct {
-	// The data catalog to which the table belongs.
+	// The data catalog.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type CreateTableRequest struct {
 	//
 	// example:
 	//
-	// [{"Name":"id","Type":"bigint","Comment":"主键"}]
+	// [{"Name":"id","Type":"bigint","Comment":"Primary key"}]
 	Columns []*CreateTableRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The description.
+	// The comment.
 	//
 	// example:
 	//
-	// 测试事件表
+	// Test event table
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateTableRequest struct {
 	//
 	// my_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace to which the table belongs.
+	// The namespace.
 	//
 	// example:
 	//
@@ -162,13 +162,13 @@ func (s *CreateTableRequest) Validate() error {
 }
 
 type CreateTableRequestColumns struct {
-	// The description of the field.
+	// The comment of the field.
 	//
 	// example:
 	//
 	// Isp
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the connector.
+	// The connector name.
 	//
 	// example:
 	//
@@ -222,13 +222,13 @@ func (s *CreateTableRequestColumns) Validate() error {
 }
 
 type CreateTableRequestRetentionPolicy struct {
-	// The cold storage retention time.
+	// The cold storage duration.
 	//
 	// example:
 	//
 	// 30
 	ColdTTL *int32 `json:"ColdTTL,omitempty" xml:"ColdTTL,omitempty"`
-	// The hot storage retention time.
+	// The hot storage duration.
 	//
 	// example:
 	//

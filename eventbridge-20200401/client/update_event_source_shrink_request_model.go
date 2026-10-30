@@ -44,9 +44,9 @@ type UpdateEventSourceShrinkRequest struct {
 	//
 	// example:
 	//
-	// RabbitMQ event source
+	// Event source of the RabbitMQ type
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The event bus with which the event source is associated.
+	// The name of the associated event bus.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UpdateEventSourceShrinkRequest struct {
 	//
 	// myrabbitmq.source
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
-	// The configurations of the external data source.
+	// The external data source configuration.
 	//
 	// example:
 	//
@@ -80,20 +80,21 @@ type UpdateEventSourceShrinkRequest struct {
 	//
 	// true
 	LinkedExternalSource *bool `json:"LinkedExternalSource,omitempty" xml:"LinkedExternalSource,omitempty"`
-	// The parameters that are configured if the event source is HTTP events.
+	// The SourceHttpEventParameters request parameter.
 	SourceHttpEventParametersShrink *string `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty"`
-	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
+	// The SourceKafkaParameters request parameter.
 	SourceKafkaParametersShrink *string `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty"`
-	// The parameters that are configured if the event source is Message Service (MNS).
-	SourceMNSParametersShrink      *string `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty"`
+	// The parameters for a Simple Message Queue (formerly MNS) event source.
+	SourceMNSParametersShrink *string `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty"`
+	// The parameters for an OSS event source.
 	SourceOSSEventParametersShrink *string `json:"SourceOSSEventParameters,omitempty" xml:"SourceOSSEventParameters,omitempty"`
-	// The parameters that are configured if the event source is Message Queue for RabbitMQ.
+	// The SourceRabbitMQParameters request parameter.
 	SourceRabbitMQParametersShrink *string `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty"`
-	// The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
+	// The SourceRocketMQParameters request parameter.
 	SourceRocketMQParametersShrink *string `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty"`
-	// SourceSLSParameters
+	// The parameters for a Simple Log Service event source.
 	SourceSLSParametersShrink *string `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty"`
-	// The parameters that are configured if you specify scheduled events as the event source.
+	// The SourceScheduledEventParameters request parameter.
 	SourceScheduledEventParametersShrink *string `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty"`
 }
 

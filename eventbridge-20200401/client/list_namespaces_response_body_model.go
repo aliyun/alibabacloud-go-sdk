@@ -22,27 +22,27 @@ type iListNamespacesResponseBody interface {
 }
 
 type ListNamespacesResponseBody struct {
-	// Response code. 200 indicates success.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response data
+	// The response data.
 	Data *ListNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Response message
+	// The response message.
 	//
 	// example:
 	//
 	// Operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the operation succeeded
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -113,15 +113,15 @@ func (s *ListNamespacesResponseBody) Validate() error {
 }
 
 type ListNamespacesResponseBodyData struct {
-	// Namespace list
+	// The list of namespaces.
 	Namespaces []*Namespace `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	// Next page token
+	// The next page token.
 	//
 	// example:
 	//
 	// 10
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Total count
+	// The total number of items.
 	//
 	// example:
 	//

@@ -32,16 +32,66 @@ type iSinkRabbitMQMetaParameters interface {
 }
 
 type SinkRabbitMQMetaParameters struct {
-	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The endpoint of the ApsaraMQ for RabbitMQ cluster.
+	//
+	// example:
+	//
+	// rabbitmq-cn-a1b2c3d4e5f-cn-hangzhou-vpc.amqp.aliyuncs.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	//
+	// example:
+	//
+	// rabbitmq-cn-a1b2c3d4e5f
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the ApsaraMQ for RabbitMQ instance.
+	//
+	// example:
+	//
+	// Cloud
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The network type used to connect to the ApsaraMQ for RabbitMQ instance.
+	//
+	// example:
+	//
+	// PrivateNetwork
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The password used to connect to the ApsaraMQ for RabbitMQ cluster.
+	//
+	// example:
+	//
+	// yourPassword
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ID of the security group to which the servers of the ApsaraMQ for RabbitMQ cluster belong.
+	//
+	// example:
+	//
+	// sg-a1b2c3d4e5f6g7h8i9j0
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Username        *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The username used to connect to the ApsaraMQ for RabbitMQ cluster.
+	//
+	// example:
+	//
+	// admin
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The IDs of the vSwitches in the VPC where the ApsaraMQ for RabbitMQ cluster is deployed.
+	//
+	// example:
+	//
+	// vsw-a1b2c3d4e5f6g7h8i9j0k
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The name of the virtual host (vhost) in the ApsaraMQ for RabbitMQ cluster.
+	//
+	// example:
+	//
+	// test-001
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the VPC where the ApsaraMQ for RabbitMQ cluster is deployed.
+	//
+	// example:
+	//
+	// vpc-a1b2c3d4e5f6g7h8i9j0k
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SinkRabbitMQMetaParameters) String() string {

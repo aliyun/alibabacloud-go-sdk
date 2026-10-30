@@ -24,12 +24,38 @@ type iDashScopeTransformParameters interface {
 }
 
 type DashScopeTransformParameters struct {
-	ApiKey                     *string                                 `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	Messages                   []*DashScopeTransformParametersMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	Model                      *string                                 `json:"Model,omitempty" xml:"Model,omitempty"`
-	RequestPerMinute           *int64                                  `json:"RequestPerMinute,omitempty" xml:"RequestPerMinute,omitempty"`
-	StructuredOutputJsonSchema *string                                 `json:"StructuredOutputJsonSchema,omitempty" xml:"StructuredOutputJsonSchema,omitempty"`
-	TokenPerMinute             *int64                                  `json:"TokenPerMinute,omitempty" xml:"TokenPerMinute,omitempty"`
+	// The API key for DashScope.
+	//
+	// example:
+	//
+	// Q37sQ****
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The prompts.
+	Messages []*DashScopeTransformParametersMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// The model name.
+	//
+	// example:
+	//
+	// qwen-max
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The rate limit in requests per minute.
+	//
+	// example:
+	//
+	// 1000
+	RequestPerMinute *int64 `json:"RequestPerMinute,omitempty" xml:"RequestPerMinute,omitempty"`
+	// The structured output schema.
+	//
+	// example:
+	//
+	// {"type":"object","properties":{"message":{"type":"string"}},"required":["message"]}
+	StructuredOutputJsonSchema *string `json:"StructuredOutputJsonSchema,omitempty" xml:"StructuredOutputJsonSchema,omitempty"`
+	// The rate limit in tokens per minute.
+	//
+	// example:
+	//
+	// 10000
+	TokenPerMinute *int64 `json:"TokenPerMinute,omitempty" xml:"TokenPerMinute,omitempty"`
 }
 
 func (s DashScopeTransformParameters) String() string {
@@ -108,10 +134,30 @@ func (s *DashScopeTransformParameters) Validate() error {
 }
 
 type DashScopeTransformParametersMessages struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The template form.
+	//
+	// example:
+	//
+	// JSONPATH
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The role.
+	//
+	// example:
+	//
+	// USER
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The template.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The template value.
+	//
+	// example:
+	//
+	// $.data.message
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DashScopeTransformParametersMessages) String() string {

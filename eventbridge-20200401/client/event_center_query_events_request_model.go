@@ -30,13 +30,13 @@ type EventCenterQueryEventsRequest struct {
   // 
   // default
   BusName *string `json:"BusName,omitempty" xml:"BusName,omitempty"`
-  // The maximum number of results to return. Valid values: 0 to 10,000. The default value is 100.
+  // The maximum number of results to return. Valid values: 0 to 10000. Default value: 100.
   // 
   // example:
   // 
   // 100
   MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-  // The token to retrieve the next page of results.
+  // The token used to retrieve the next page of results.
   // 
   // example:
   // 
@@ -104,11 +104,11 @@ type EventCenterQueryEventsRequestBody struct {
   Parameters *EventCenterQueryEventsRequestBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
   // The query type. Valid values:
   // 
-  // - **timeseries**: queries time series data.
+  // - **timeseries**: time series data
   // 
-  // - **table**: queries table data.
+  // - **table**: tabular data
   // 
-  // - **timeseries_and_table**: queries both time series data and table data.
+  // - **timeseries_and_table**: both time series and tabular data
   // 
   // This parameter is required.
   // 
@@ -116,7 +116,7 @@ type EventCenterQueryEventsRequestBody struct {
   // 
   // timeseries_and_table
   QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-  // The schema ID.
+  // The ID of the schema.
   // 
   // This parameter is required.
   // 
@@ -171,51 +171,51 @@ func (s *EventCenterQueryEventsRequestBody) Validate() error {
 }
 
 type EventCenterQueryEventsRequestBodyParameters struct {
-  // An array of column names to use as dimensions for splitting the dataset.
+  // Further splits the dataset by specific dimensions (column names).
   Breakdowns []*string `json:"Breakdowns,omitempty" xml:"Breakdowns,omitempty" type:"Repeated"`
-  // The calculations to perform on specified columns.
+  // Performs calculations on the specified columns by using operators.
   Calculations []*EventCenterQueryEventsRequestBodyParametersCalculations `json:"Calculations,omitempty" xml:"Calculations,omitempty" type:"Repeated"`
-  // The end timestamp for the event query. Unit: milliseconds.
+  // The end timestamp for querying events, in milliseconds.
   // 
   // example:
   // 
   // 1687861201814
   EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-  // The logical operator for combining filter conditions.
+  // The logic for combining filter conditions.
   // 
   // example:
   // 
   // AND
   FilterCombination *string `json:"FilterCombination,omitempty" xml:"FilterCombination,omitempty"`
-  // A list of filter conditions.
+  // The list of filter conditions.
   Filters []*EventCenterQueryEventsRequestBodyParametersFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-  // The time granularity, in seconds, for querying time series data. The minimum value is 1. This is a suggested value; the actual granularity is returned in the response.
+  // The time granularity, which is the minimum time unit for querying time series data. Unit: seconds. Minimum value: 1. This parameter is a recommended value. The actual granularity is subject to the returned value.
   // 
   // example:
   // 
   // 30
   Granularity *int `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-  // The maximum number of events to query. Valid values: 1 to 10,000.
+  // The maximum number of events to query. Valid values: 1 to 10000.
   // 
   // example:
   // 
   // 100
   Limit *int `json:"Limit,omitempty" xml:"Limit,omitempty"`
-  // The starting position of the query. The count starts from 0.
+  // The starting position of the current query. The value starts from 0.
   // 
   // example:
   // 
   // 0
   Offset *int `json:"Offset,omitempty" xml:"Offset,omitempty"`
-  // The sort order for the query results. This parameter applies only when QueryType is set to table.
+  // Sorts the query results. This parameter is valid only for queries where QueryType is set to table.
   Orders []*EventCenterQueryEventsRequestBodyParametersOrders `json:"Orders,omitempty" xml:"Orders,omitempty" type:"Repeated"`
-  // The start timestamp for the event query. Unit: milliseconds.
+  // The start timestamp for querying events, in milliseconds.
   // 
   // example:
   // 
   // 1687860901814
   StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-  // The time range. Unit: milliseconds. The minimum value is 1,000.
+  // The time range. Unit: milliseconds. Minimum value: 1000.
   // 
   // example:
   // 
@@ -413,13 +413,13 @@ type EventCenterQueryEventsRequestBodyParametersFilters struct {
   // 
   // source
   Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-  // The logical operator for combining nested filters.
+  // The logical combination method for nested filter conditions.
   // 
   // example:
   // 
   // AND
   NestedFilterCombination *string `json:"NestedFilterCombination,omitempty" xml:"NestedFilterCombination,omitempty"`
-  // A list of nested filters.
+  // The list of nested filter conditions.
   NestedFilters []*EventCenterQueryEventsRequestBodyParametersFiltersNestedFilters `json:"NestedFilters,omitempty" xml:"NestedFilters,omitempty" type:"Repeated"`
   // The operator.
   // 
@@ -427,7 +427,7 @@ type EventCenterQueryEventsRequestBodyParametersFilters struct {
   // 
   // =
   Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
-  // The values to use with the operator.
+  // The values used with the operator.
   Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -499,10 +499,18 @@ func (s *EventCenterQueryEventsRequestBodyParametersFilters) Validate() error {
 
 type EventCenterQueryEventsRequestBodyParametersFiltersNestedFilters struct {
   // The column name.
+  // 
+  // example:
+  // 
+  // source
   Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
   // The operator.
+  // 
+  // example:
+  // 
+  // =
   Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
-  // A list of values to use with the operator.
+  // The list of values used with the operator.
   Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

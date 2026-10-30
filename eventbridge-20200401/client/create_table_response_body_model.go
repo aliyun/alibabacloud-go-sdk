@@ -22,7 +22,7 @@ type iCreateTableResponseBody interface {
 }
 
 type CreateTableResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateTableResponseBody struct {
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *CreateTableResponseBody) Validate() error {
 }
 
 type CreateTableResponseBodyData struct {
-	// The ARN of the table.
+	// The table ARN.
 	//
 	// example:
 	//

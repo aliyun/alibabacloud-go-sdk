@@ -22,11 +22,11 @@ type iQueryAskLumaLogResponseBody interface {
 }
 
 type QueryAskLumaLogResponseBody struct {
-	// The response code. Valid values:
+	// The return code of the API operation:
 	//
-	// 200: The request was successful.
+	// 200: The call is successful.
 	//
-	// Other values: An error occurred. For more information, see error codes.
+	// Other values: An error code. For more information, see Error codes.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type QueryAskLumaLogResponseBody struct {
 	//
 	// AgentNotFound
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier that Alibaba Cloud generates for the request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 6FB52207-7621-5292-BDF2-A17E2E984160
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns true if the operation is successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

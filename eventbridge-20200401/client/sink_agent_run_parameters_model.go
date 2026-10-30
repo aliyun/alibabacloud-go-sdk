@@ -22,11 +22,32 @@ type iSinkAgentRunParameters interface {
 }
 
 type SinkAgentRunParameters struct {
-	AgentRuntimeName *string                     `json:"AgentRuntimeName,omitempty" xml:"AgentRuntimeName,omitempty"`
-	Body             *SinkAgentRunParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	EndpointName     *string                     `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	RoleName         *string                     `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	Timeout          *string                     `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The name of the AgentRun agent runtime. You can obtain it from the Alibaba Cloud AgentRun console.
+	//
+	// example:
+	//
+	// agent-demo-example
+	AgentRuntimeName *string `json:"AgentRuntimeName,omitempty" xml:"AgentRuntimeName,omitempty"`
+	// The triplet configuration for the Body parameter template. It defines the data transformation method and supports two modes: ORIGINAL (pass-through) and TEMPLATE (template replacement).
+	Body *SinkAgentRunParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	// The endpoint name of the AgentRun agent runtime, which is used to construct the invocation URL.
+	//
+	// example:
+	//
+	// default
+	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	// The name of the AgentRun agent role.
+	//
+	// example:
+	//
+	// example-agent-role
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The HTTP request timeout period in milliseconds. Default value: 30000.
+	//
+	// example:
+	//
+	// 30000
+	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s SinkAgentRunParameters) String() string {
@@ -92,9 +113,24 @@ func (s *SinkAgentRunParameters) Validate() error {
 }
 
 type SinkAgentRunParametersBody struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The transformation format. Default value: CONSTANT. Valid values: ORIGINAL, TEMPLATE. Example: `ORIGINAL`.
+	//
+	// example:
+	//
+	// ORIGINAL
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template pattern. This parameter is required only when Form is set to TEMPLATE. It supports ${variable} placeholder replacement. Example: `The value of ${key} is ${value}!`.
+	//
+	// example:
+	//
+	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The parameter value. In ORIGINAL mode, the value is $. In TEMPLATE mode, the value is a key-value mapping in JSON format, where the value is a JSONPath expression or a constant. Example: `$`.
+	//
+	// example:
+	//
+	// $
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkAgentRunParametersBody) String() string {

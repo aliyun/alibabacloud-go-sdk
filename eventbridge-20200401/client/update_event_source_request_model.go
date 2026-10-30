@@ -44,9 +44,9 @@ type UpdateEventSourceRequest struct {
 	//
 	// example:
 	//
-	// RabbitMQ event source
+	// Event source of the RabbitMQ type
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The event bus with which the event source is associated.
+	// The name of the associated event bus.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UpdateEventSourceRequest struct {
 	//
 	// myrabbitmq.source
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
-	// The configurations of the external data source.
+	// The external data source configuration.
 	//
 	// example:
 	//
@@ -80,20 +80,21 @@ type UpdateEventSourceRequest struct {
 	//
 	// true
 	LinkedExternalSource *bool `json:"LinkedExternalSource,omitempty" xml:"LinkedExternalSource,omitempty"`
-	// The parameters that are configured if the event source is HTTP events.
+	// The SourceHttpEventParameters request parameter.
 	SourceHttpEventParameters *UpdateEventSourceRequestSourceHttpEventParameters `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
+	// The SourceKafkaParameters request parameter.
 	SourceKafkaParameters *UpdateEventSourceRequestSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Message Service (MNS).
-	SourceMNSParameters      *UpdateEventSourceRequestSourceMNSParameters      `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
+	// The parameters for a Simple Message Queue (formerly MNS) event source.
+	SourceMNSParameters *UpdateEventSourceRequestSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
+	// The parameters for an OSS event source.
 	SourceOSSEventParameters *UpdateEventSourceRequestSourceOSSEventParameters `json:"SourceOSSEventParameters,omitempty" xml:"SourceOSSEventParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Message Queue for RabbitMQ.
+	// The SourceRabbitMQParameters request parameter.
 	SourceRabbitMQParameters *UpdateEventSourceRequestSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
+	// The SourceRocketMQParameters request parameter.
 	SourceRocketMQParameters *UpdateEventSourceRequestSourceRocketMQParameters `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty" type:"Struct"`
-	// SourceSLSParameters
+	// The parameters for a Simple Log Service event source.
 	SourceSLSParameters *UpdateEventSourceRequestSourceSLSParameters `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if you specify scheduled events as the event source.
+	// The SourceScheduledEventParameters request parameter.
 	SourceScheduledEventParameters *UpdateEventSourceRequestSourceScheduledEventParameters `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty" type:"Struct"`
 }
 
@@ -276,49 +277,49 @@ func (s *UpdateEventSourceRequest) Validate() error {
 }
 
 type UpdateEventSourceRequestSourceHttpEventParameters struct {
-	// The CIDR block that is used for security settings. This parameter is required only if SecurityConfig is set to ip. You can enter a CIDR block or an IP address.
+	// The CIDR block for security configuration. This parameter is required only when the SecurityConfig parameter is set to ip. You can enter a CIDR block or an IP address.
 	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
-	// The HTTP request method supported by the generated webhook URL. You can select multiple values. Valid values:
+	// The HTTP request methods supported by the generated webhook. You can select multiple values. Valid values:
 	//
-	// 	- GET
+	// - GET
 	//
-	// 	- POST
+	// - POST
 	//
-	// 	- PUT
+	// - PUT
 	//
-	// 	- PATCH
+	// - PATCH
 	//
-	// 	- DELETE
+	// - DELETE
 	//
-	// 	- HEAD
+	// - HEAD
 	//
-	// 	- OPTIONS
+	// - OPTIONS
 	//
-	// 	- TRACE
+	// - TRACE
 	//
-	// 	- CONNECT
+	// - CONNECT
 	Method []*string `json:"Method,omitempty" xml:"Method,omitempty" type:"Repeated"`
-	// The security domain name. This parameter is required only if SecurityConfig is set to referer. You can enter a domain name.
+	// The secure domain name for security configuration. This parameter is required only when the SecurityConfig parameter is set to referer. You can enter a domain name.
 	Referer []*string `json:"Referer,omitempty" xml:"Referer,omitempty" type:"Repeated"`
-	// The type of security settings. Valid values:
+	// The type of the security configuration. Valid values:
 	//
-	// 	- none: No configuration is required.
+	// - none: No configuration is required.
 	//
-	// 	- ip: CIDR block.
+	// - ip: CIDR block.
 	//
-	// 	- referer: security domain name.
+	// - referer: Secure domain name.
 	//
 	// example:
 	//
 	// none
 	SecurityConfig *string `json:"SecurityConfig,omitempty" xml:"SecurityConfig,omitempty"`
-	// The protocol type that is supported by the generated webhook URL. Valid values:
+	// The protocol type supported by the generated webhook. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP
 	//
-	// 	- HTTPS
+	// - HTTPS
 	//
-	// 	- HTTP\\&HTTPS
+	// - HTTP&HTTPS
 	//
 	// example:
 	//
@@ -384,61 +385,61 @@ func (s *UpdateEventSourceRequestSourceHttpEventParameters) Validate() error {
 }
 
 type UpdateEventSourceRequestSourceKafkaParameters struct {
-	// The ID of the consumer group that subscribes to the topic.
+	// The group ID of the consumer that subscribes to the topic.
 	//
 	// example:
 	//
 	// dsp_online_ml_request
 	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	// The ID of the Message Queue for Apache Kafka instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cbwp-bp1o3m66wcjgbkssm3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of consumers.
+	// The concurrency quota, which is the number of consumers.
 	//
 	// example:
 	//
 	// 1
 	MaximumTasks *int32 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
-	// The network. Valid values: Default and PublicNetwork. Default value: Default. The value PublicNetwork indicates a self-managed network.
+	// The network configuration. Valid values: Default and PublicNetwork.
 	//
 	// example:
 	//
 	// Default
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// The consumer offset.
+	// The consumption offset.
 	//
 	// example:
 	//
 	// latest
 	OffsetReset *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
-	// The ID of the region where the Message Queue for Apache Kafka instance resides.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group to which the Message Queue for Apache Kafka instance belongs. This parameter is required only if you set Network to PublicNetwork.
+	// The ID of the security group. This parameter is required for self-managed networks.
 	//
 	// example:
 	//
 	// sg-5wz3mjgo9wpvdnwpwnhkj****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the topic on the Message Queue for Apache Kafka instance.
+	// The name of the topic.
 	//
 	// example:
 	//
 	// billing_notify
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The ID of the vSwitch with which the Message Queue for Apache Kafka instance is associated. This parameter is required only if you set Network to PublicNetwork.
+	// The ID of the vSwitch. This parameter is required for self-managed networks.
 	//
 	// example:
 	//
 	// vsw-bp1xyntcxiwplhqxj****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The ID of the VPC in which the Message Queue for Apache Kafka instance resides. This parameter is required only if you set Network to PublicNetwork.
+	// The ID of the VPC. This parameter is required for self-managed networks.
 	//
 	// example:
 	//
@@ -549,19 +550,19 @@ func (s *UpdateEventSourceRequestSourceKafkaParameters) Validate() error {
 }
 
 type UpdateEventSourceRequestSourceMNSParameters struct {
-	// Indicates whether Base64 decoding is enabled. By default, Base64 decoding is enabled.
+	// Specifies whether to enable Base64 decoding. Default value: true.
 	//
 	// example:
 	//
 	// true
 	IsBase64Decode *bool `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
-	// The name of the MNS queue.
+	// The name of the Simple Message Queue (formerly MNS) queue.
 	//
 	// example:
 	//
 	// queue_api_bind_1672194645178
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The region where the MNS queue resides.
+	// The region where the Simple Message Queue (formerly MNS) queue resides.
 	//
 	// example:
 	//
@@ -609,9 +610,16 @@ func (s *UpdateEventSourceRequestSourceMNSParameters) Validate() error {
 }
 
 type UpdateEventSourceRequestSourceOSSEventParameters struct {
-	EventTypes []*string                                                       `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	// The list of event types.
+	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	// The matching rules.
 	MatchRules [][]*UpdateEventSourceRequestSourceOSSEventParametersMatchRules `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
-	StsRoleArn *string                                                         `json:"StsRoleArn,omitempty" xml:"StsRoleArn,omitempty"`
+	// The ARN of the STS role.
+	//
+	// example:
+	//
+	// acs:eventbridge:cn-hangzhou:**
+	StsRoleArn *string `json:"StsRoleArn,omitempty" xml:"StsRoleArn,omitempty"`
 }
 
 func (s UpdateEventSourceRequestSourceOSSEventParameters) String() string {
@@ -654,10 +662,26 @@ func (s *UpdateEventSourceRequestSourceOSSEventParameters) Validate() error {
 }
 
 type UpdateEventSourceRequestSourceOSSEventParametersMatchRules struct {
-	Suffix     *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
-	MatchState *bool   `json:"MatchState,omitempty" xml:"MatchState,omitempty"`
-	Prefix     *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The suffix.
+	//
+	// example:
+	//
+	// /document
+	Suffix *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
+	// The match state.
+	MatchState *bool `json:"MatchState,omitempty" xml:"MatchState,omitempty"`
+	// The prefix.
+	//
+	// example:
+	//
+	// fun/document/
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// bucketName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateEventSourceRequestSourceOSSEventParametersMatchRules) String() string {
@@ -709,25 +733,25 @@ func (s *UpdateEventSourceRequestSourceOSSEventParametersMatchRules) Validate() 
 }
 
 type UpdateEventSourceRequestSourceRabbitMQParameters struct {
-	// The ID of the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+	// The instance ID of the ApsaraMQ for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
 	// example:
 	//
 	// bastionhost-cn-7mz2zky****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+	// eb-connect: The name of the queue in the ApsaraMQ for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
 	// example:
 	//
 	// eb-connect
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The ID of the region where the Message Queue for RabbitMQ instance resides.
+	// The region where the ApsaraMQ for RabbitMQ instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+	// The vhost name of the ApsaraMQ for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
 	// example:
 	//
@@ -784,83 +808,83 @@ func (s *UpdateEventSourceRequestSourceRabbitMQParameters) Validate() error {
 }
 
 type UpdateEventSourceRequestSourceRocketMQParameters struct {
-	// The authentication type. You can set this parameter to ACL or leave this parameter empty.
+	// The authentication type. Set the value to ACL or leave it empty.
 	//
 	// example:
 	//
 	// ACL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The ID of the consumer group on the Message Queue for Apache RocketMQ instance.
+	// The group ID of the ApsaraMQ for RocketMQ instance.
 	//
 	// example:
 	//
 	// GID-test
 	GroupID *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
-	// The endpoint that is used to access the Message Queue for Apache RocketMQ instance.
+	// The endpoint of the instance.
 	//
 	// example:
 	//
 	// registry-vpc****.aliyuncs.com
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	// The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+	// The instance ID of the ApsaraMQ for RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
 	// example:
 	//
 	// dbaudit-cn-i7m2nx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// None.
+	// The network type.
 	//
 	// example:
 	//
-	// None
+	// PublicNetwork
 	InstanceNetwork *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
-	// The password that is used to access the Message Queue for Apache RocketMQ instance.
+	// The password of the instance.
 	//
 	// example:
 	//
-	// ******
+	// yourPassword
 	InstancePassword *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
-	// The ID of the security group to which the Message Queue for Apache RocketMQ instance belongs.
+	// The ID of the security group. This parameter is required for VPCs.
 	//
 	// example:
 	//
 	// sg-catalog-eventlistener
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
-	// The type of the Message Queue for Apache RocketMQ instance. Valid values:
+	// The instance type. Valid values:
 	//
-	// 	- Cloud_4: Message Queue for Apache RocketMQ 4.0 instance.
+	// - Cloud_4: 4.0 instance.
 	//
-	// 	- Cloud_5: Message Queue for Apache RocketMQ 5.0 instance.
+	// - Cloud_5: 5.0 instance.
 	//
 	// example:
 	//
 	// Cloud_4
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The username that is used to access the Message Queue for Apache RocketMQ instance.
+	// The username of the instance.
 	//
 	// example:
 	//
 	// root
 	InstanceUsername *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
-	// The ID of the vSwitch with which the Message Queue for Apache RocketMQ instance is associated.
+	// The ID of the vSwitch. This parameter is required for VPCs.
 	//
 	// example:
 	//
 	// vsw-bp10rbrt6rb6vrd89****
 	InstanceVSwitchIds *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the Message Queue for Apache RocketMQ instance resides.
+	// The ID of the VPC. This parameter is required for VPCs.
 	//
 	// example:
 	//
 	// vpc-bp1a4gmlk31hyg6pt****
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
-	// The offset from which message consumption starts. Valid values:
+	// The consumption offset of the message. Valid values:
 	//
-	// 	- CONSUME_FROM_LAST_OFFSET: Start message consumption from the latest offset.
+	// - CONSUME_FROM_LAST_OFFSET: Consumes messages from the latest offset.
 	//
-	// 	- CONSUME_FROM_FIRST_OFFSET: Start message consumption from the earliest offset.
+	// - CONSUME_FROM_FIRST_OFFSET: Consumes messages from the earliest offset.
 	//
-	// 	- CONSUME_FROM_TIMESTAMP: Start message consumption from the offset at the specified point in time.
+	// - CONSUME_FROM_TIMESTAMP: Consumes messages from the offset at a specified point in time.
 	//
 	// Default value: CONSUME_FROM_LAST_OFFSET.
 	//
@@ -868,25 +892,25 @@ type UpdateEventSourceRequestSourceRocketMQParameters struct {
 	//
 	// CONSUMEFROMLASTOFFSET
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The region where the Message Queue for Apache RocketMQ instance resides.
+	// The region where the ApsaraMQ for RocketMQ instance resides.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tag that is used to filter messages.
+	// The filter tag of the message.
 	//
 	// example:
 	//
 	// KEY2
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The timestamp that specifies the time from which messages are consumed. This parameter is valid only if you set Offset to CONSUME_FROM_TIMESTAMP.
+	// The timestamp. This parameter takes effect only when the Offset parameter is set to CONSUME_FROM_TIMESTAMP.
 	//
 	// example:
 	//
 	// 1663555399032
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+	// The topic name of the ApsaraMQ for RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
 	// example:
 	//
@@ -1051,25 +1075,25 @@ func (s *UpdateEventSourceRequestSourceRocketMQParameters) Validate() error {
 }
 
 type UpdateEventSourceRequestSourceSLSParameters struct {
-	// The starting consumer offset. The value begin indicates the earliest offset, and the value end indicates the latest offset. You can also specify a time in seconds to start consumption.
+	// The start consumption offset. You can set this parameter to begin to consume from the earliest offset, end to consume from the latest offset, or a specific timestamp in seconds to consume from a specified point in time.
 	//
 	// example:
 	//
 	// end
 	ConsumePosition *string `json:"ConsumePosition,omitempty" xml:"ConsumePosition,omitempty"`
-	// The Log Service Logstore.
+	// The Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// waf-logstore
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The Log Service project.
+	// The Simple Log Service project.
 	//
 	// example:
 	//
 	// VideoTestProject
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console. For information about the permission policy of this role, see Create a custom event source of the Log Service type.
+	// When authorizing EventBridge to use this role to read Simple Log Service log content, the following conditions must be met: when creating the role in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and select EventBridge as the trusted service. For the permission policy of this role, refer to the custom event source Simple Log Service.
 	//
 	// example:
 	//
@@ -1132,13 +1156,13 @@ type UpdateEventSourceRequestSourceScheduledEventParameters struct {
 	//
 	// 10 	- 	- 	- 	- *
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The time zone in which the cron expression is executed.
+	// The time zone for the cron expression.
 	//
 	// example:
 	//
 	// GMT+0:00
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
-	// The user data that is displayed in a JSON string.
+	// The JSON string.
 	//
 	// example:
 	//

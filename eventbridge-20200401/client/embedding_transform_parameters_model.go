@@ -18,8 +18,19 @@ type iEmbeddingTransformParameters interface {
 }
 
 type EmbeddingTransformParameters struct {
+  // The API key used to call the Model Studio embedding model service.
+  // 
+  // example:
+  // 
+  // Q37sQ****
   ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+  // The input data to be vectorized and its transformation method.
   EmbeddingData *EmbeddingTransformParametersEmbeddingData `json:"EmbeddingData,omitempty" xml:"EmbeddingData,omitempty" type:"Struct"`
+  // The name of the model used to generate embeddings.
+  // 
+  // example:
+  // 
+  // text-embedding-v3
   EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
 }
 
@@ -68,8 +79,23 @@ func (s *EmbeddingTransformParameters) Validate() error {
 }
 
 type EmbeddingTransformParametersEmbeddingData struct {
+  // The method used to generate the input data. JSONPATH indicates that data is extracted from the event by using JSONPath.
+  // 
+  // example:
+  // 
+  // JSONPATH
   Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+  // The template used to build the input data. This parameter is used only when Form is set to TEMPLATE.
+  // 
+  // example:
+  // 
+  // The value of ${key} is ${value}!
   Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+  // The source content of the input data. If Form is set to JSONPATH, specify a JSONPath expression.
+  // 
+  // example:
+  // 
+  // $.data.message
   Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

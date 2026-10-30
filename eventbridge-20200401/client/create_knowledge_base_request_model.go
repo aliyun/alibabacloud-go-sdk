@@ -30,7 +30,7 @@ type iCreateKnowledgeBaseRequest interface {
 }
 
 type CreateKnowledgeBaseRequest struct {
-	// The EventHouse catalog to which the knowledge base belongs. This parameter, together with Namespace and KnowledgeBaseName, uniquely identifies the knowledge base. This parameter cannot be modified after the knowledge base is created. System catalogs cannot be bound.
+	// The EventHouse catalog to which the knowledge base belongs. This parameter, together with Namespace and KnowledgeBaseName, uniquely identifies the knowledge base. This parameter cannot be modified after the knowledge base is created. You cannot bind a system catalog.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type CreateKnowledgeBaseRequest struct {
 	//
 	// my_catalog
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// Optional. The default chunking strategy for the knowledge base. This strategy applies only to documents uploaded after the configuration is set. If this parameter is not specified, the system default chunking strategy is used.
+	// Optional. The default chunking strategy for the knowledge base. This strategy applies only to documents uploaded after the configuration. If this parameter is not specified, the system default chunking strategy is used.
 	ChunkConfiguration *CreateKnowledgeBaseRequestChunkConfiguration `json:"ChunkConfiguration,omitempty" xml:"ChunkConfiguration,omitempty" type:"Struct"`
 	// The description of the knowledge base.
 	//
@@ -46,19 +46,19 @@ type CreateKnowledgeBaseRequest struct {
 	//
 	// Product documentation knowledge base
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Optional. The vector dimensions. The value is validated against the embedding model: text-embedding-v3 supports 64, 128, 256, 512, 768, and 1024. text-embedding-v4 supports 64, 128, 256, 512, 768, 1024, 1536, and 2048. qwen3.7-text-embedding supports 256, 512, 768, 1024, 1536, 2048, and 2560. qwen3.7-text-embedding-flash supports 256, 512, 768, and 1024. Default value: 1024 (the default dimension of the model). This parameter cannot be modified after the knowledge base is created. Even if the dimensions are the same, you must rebuild the knowledge base when switching models.
+	// Optional. The vector dimensions. This parameter is attached to the embedding model for validation. Valid values for text-embedding-v3: 64, 128, 256, 512, 768, and 1024. Valid values for text-embedding-v4: 64, 128, 256, 512, 768, 1024, 1536, and 2048. Valid values for qwen3.7-text-embedding: 256, 512, 768, 1024, 1536, 2048, and 2560. Valid values for qwen3.7-text-embedding-flash: 256, 512, 768, and 1024. If this parameter is not specified, the default dimension of the model, 1024, is used. This parameter cannot be modified after the knowledge base is created. To change the model, you must rebuild the knowledge base, even if the dimensions remain the same.
 	//
 	// example:
 	//
 	// 1024
 	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
-	// Optional. The embedding model used for vectorization. This parameter cannot be modified after the knowledge base is created. Valid values: text-embedding-v3, text-embedding-v4, qwen3.7-text-embedding, and qwen3.7-text-embedding-flash. Only Bailian Tongyi models are supported. Third-party models are not supported. Default value: text-embedding-v4.
+	// Optional. The embedding model. This parameter cannot be modified after the knowledge base is created. Valid values: text-embedding-v3, text-embedding-v4, qwen3.7-text-embedding, and qwen3.7-text-embedding-flash. Only Qwen models provided by Model Studio are supported. Third-party models are not supported. Default value: text-embedding-v4.
 	//
 	// example:
 	//
 	// text-embedding-v4
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// The name of the knowledge base. The name must be unique within the namespace.
+	// The name of the knowledge base. The name must be unique within the same namespace.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateKnowledgeBaseRequest struct {
 	//
 	// product-docs
 	KnowledgeBaseName *string `json:"KnowledgeBaseName,omitempty" xml:"KnowledgeBaseName,omitempty"`
-	// Declares the metadata fields of the knowledge base. When you upload documents, the metadata can contain only the fields declared here. This parameter cannot be modified after the knowledge base is created.
+	// Declares the metadata fields for the knowledge base. When you upload documents, the metadata can only contain the fields declared here. This parameter cannot be modified after the knowledge base is created.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateKnowledgeBaseRequest struct {
 	//
 	// my_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// Optional. The default search configuration at the knowledge base level. This configuration takes effect when the corresponding parameters are not specified in search requests. You can modify this configuration after creation by calling UpdateKnowledgeBase.
+	// Optional. The default search configuration at the knowledge base level. This configuration takes effect when the corresponding parameters are not specified in a search request. You can modify this configuration by calling UpdateKnowledgeBase after the knowledge base is created.
 	SearchConfiguration *CreateKnowledgeBaseRequestSearchConfiguration `json:"SearchConfiguration,omitempty" xml:"SearchConfiguration,omitempty" type:"Struct"`
 }
 
@@ -197,45 +197,37 @@ func (s *CreateKnowledgeBaseRequest) Validate() error {
 }
 
 type CreateKnowledgeBaseRequestChunkConfiguration struct {
-	// Required for the BY_HEADING strategy. Valid values: 1 to 6. This parameter is ignored for other strategies. Headings at or above the specified level are used as split boundaries. For example, if you set this parameter to 2, both H1 and H2 headings are used as split boundaries. Deeper-level headings are not used for splitting and are retained in the chunk body. If the content within a section exceeds MaxChunkSize, the system falls back to splitting by paragraphs or sentences. Documents without headings fall back to intelligent chunking.
+	// Required for the BY_HEADING strategy. Valid values: 1 to 6. This parameter is ignored for other strategies. Headings at or above the specified level are used as chunking boundaries. For example, if you set this parameter to 2, both H1 and H2 headings are used as boundaries. Lower-level headings are not used as boundaries and are retained in the chunk text. If the section content exceeds MaxChunkSize, the system falls back to chunking by paragraph or sentence. For documents without headings, the system falls back to intelligent chunking.
 	//
 	// example:
 	//
 	// 2
 	HeadingLevel *int32 `json:"HeadingLevel,omitempty" xml:"HeadingLevel,omitempty"`
-	// The maximum character length of a single chunk. Valid values: 1 to 6000 (characters). An error is returned if the value exceeds the limit.
+	// The maximum number of characters in a single chunk. Valid values: 1 to 6000. An error is reported if the limit is exceeded.
 	//
 	// example:
 	//
 	// 512
 	MaxChunkSize *int32 `json:"MaxChunkSize,omitempty" xml:"MaxChunkSize,omitempty"`
-	// Takes effect only for the BY_LENGTH strategy. This parameter is ignored for other strategies. Specifies the overlap length (in characters) between adjacent chunks. If the value is greater than 0, the beginning of the next chunk repeats the content from the end of the previous chunk within this window. The overlap does not cause a chunk to exceed MaxChunkSize. Default value: 0, which indicates no overlap.
+	// Applies only to the BY_LENGTH strategy. This parameter is ignored for other strategies. The overlap size between adjacent chunks, in characters. If the value is greater than 0, the beginning of the next chunk repeats the content at the end of the previous chunk within this window. The overlap does not cause the chunk to exceed MaxChunkSize. Default value: 0, which indicates no overlap.
 	//
 	// example:
 	//
 	// 40
 	OverlapSize *int32 `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
-	// The pre-processing rules.
+	// The preprocessing rules.
 	PreprocessRules *CreateKnowledgeBaseRequestChunkConfigurationPreprocessRules `json:"PreprocessRules,omitempty" xml:"PreprocessRules,omitempty" type:"Struct"`
-	// Required for the BY_SEPARATOR strategy. This parameter is ignored for other strategies. The system splits content by matching the literal string as a whole (not as a regular expression). The maximum length is 32 characters. Example: \\
+	// Required for the BY_SEPARATOR strategy. This parameter is ignored for other strategies. The literal string used to split the text. Regular expressions are not supported. The maximum length is 32 characters. Example: \\
 	//
 	// \\
 	//
-	//  for paragraph separators.
+	//  for paragraph breaks.
 	//
 	// example:
 	//
 	// \\\\n\\\\n
 	Separator *string `json:"Separator,omitempty" xml:"Separator,omitempty"`
-	// Valid values:
-	//
-	// - AUTO: Intelligent chunking (heading-aware + paragraph packing).
-	//
-	// - BY_LENGTH: Sliding window chunking by length. You can specify OverlapSize.
-	//
-	// - BY_SEPARATOR: Chunking by separator. You must specify Separator.
-	//
-	// - BY_HEADING: Chunking by heading level. You must specify HeadingLevel.
+	// The chunking strategy. AUTO indicates intelligent chunking, which is heading-aware and groups paragraphs. BY_LENGTH indicates sliding window chunking by length, where you can specify OverlapSize. BY_SEPARATOR indicates chunking by separator, where you must specify Separator. BY_HEADING indicates chunking by heading level, where you must specify HeadingLevel. Valid values: AUTO, BY_LENGTH, BY_SEPARATOR, and BY_HEADING.
 	//
 	// This parameter is required.
 	//
@@ -323,7 +315,7 @@ type CreateKnowledgeBaseRequestChunkConfigurationPreprocessRules struct {
 	//
 	// false
 	RemoveUrlsAndEmails *bool `json:"RemoveUrlsAndEmails,omitempty" xml:"RemoveUrlsAndEmails,omitempty"`
-	// Specifies whether to replace consecutive whitespace characters (spaces, line breaks, and tabs) with a single space.
+	// Specifies whether to replace consecutive whitespace characters, such as spaces, line breaks, and tabs, with a single space.
 	//
 	// example:
 	//
@@ -370,7 +362,7 @@ type CreateKnowledgeBaseRequestMetadataSchema struct {
 	//
 	// department
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Valid values: STRING, LONG, DOUBLE, BOOLEAN, and DATETIME.
+	// The type of the field. Valid values: STRING, LONG, DOUBLE, BOOLEAN, and DATETIME.
 	//
 	// This parameter is required.
 	//
@@ -378,17 +370,13 @@ type CreateKnowledgeBaseRequestMetadataSchema struct {
 	//
 	// STRING
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// When ValueMode is set to CONSTANT, this parameter specifies a fixed value. An empty value indicates that the value can be assigned during upload. When ValueMode is set to SYSTEM_VARIABLE, this parameter specifies a system variable name, such as DOCUMENT_NAME, FILE_TYPE, FILE_SIZE, DOCUMENT_UPLOAD_TIME, SOURCE_TYPE, SOURCE_URI, or SOURCE_MODIFIED_TIME.
+	// The value configuration. If ValueMode is set to CONSTANT, this parameter specifies a fixed value. If it is left empty, you can assign a value during upload. If ValueMode is set to SYSTEM_VARIABLE, this parameter specifies a system variable name, such as DOCUMENT_NAME, FILE_TYPE, FILE_SIZE, DOCUMENT_UPLOAD_TIME, SOURCE_TYPE, SOURCE_URI, or SOURCE_MODIFIED_TIME.
 	//
 	// example:
 	//
 	// EventHouse
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// Valid values:
-	//
-	// - CONSTANT: Constant. If Value is not empty, all documents use the fixed value. If Value is empty, the value can be assigned during upload.
-	//
-	// - SYSTEM_VARIABLE: System variable. Value specifies the variable name. The system automatically generates the value, and the value cannot be overridden during upload.
+	// The value mode. CONSTANT indicates a constant. If Value is not empty, all documents use the fixed value. If Value is empty, you can assign a value during upload. SYSTEM_VARIABLE indicates a system variable. Value specifies the variable name, which is automatically generated by the system and cannot be overwritten during upload.
 	//
 	// This parameter is required.
 	//
@@ -447,37 +435,25 @@ func (s *CreateKnowledgeBaseRequestMetadataSchema) Validate() error {
 }
 
 type CreateKnowledgeBaseRequestSearchConfiguration struct {
-	// Valid values:
-	//
-	// - KEYWORD: Keyword retrieval.
-	//
-	// - VECTOR: Vector retrieval.
-	//
-	// - HYBRID: Hybrid retrieval.
+	// The search mode. KEYWORD indicates keyword retrieve. VECTOR indicates AISearch. HYBRID indicates hybrid retrieve. Valid values: KEYWORD, VECTOR, and HYBRID.
 	//
 	// example:
 	//
 	// HYBRID
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// Takes effect only in hybrid search mode. Valid values:
-	//
-	// - RRF: Reciprocal rank fusion.
-	//
-	// - WEIGHTED: Weighted normalization fusion. Use this value together with VectorWeight.
-	//
-	// Default value: RRF.
+	// Applies only to the hybrid search mode. RRF indicates reciprocal rank fusion. WEIGHTED indicates weighted normalization fusion, which is used together with VectorWeight. Default value: RRF.
 	//
 	// example:
 	//
 	// RRF
 	RankAlgorithm *string `json:"RankAlgorithm,omitempty" xml:"RankAlgorithm,omitempty"`
-	// Takes effect only in hybrid search mode. Specifies whether to enable reranking by default when the search request does not specify a Rerank parameter.
+	// Applies only to the hybrid search mode. Specifies whether to enable reranking by default when a search request does not specify the Rerank parameter.
 	//
 	// example:
 	//
 	// false
 	RerankEnabled *bool `json:"RerankEnabled,omitempty" xml:"RerankEnabled,omitempty"`
-	// The default reranking model used when the search request does not specify a RerankModel parameter. Valid values: qwen3-rerank. Default value: qwen3-rerank.
+	// The default rerank model used when a search request does not specify the RerankModel parameter. Valid value: qwen3-rerank. Default value: qwen3-rerank.
 	//
 	// example:
 	//
@@ -495,7 +471,7 @@ type CreateKnowledgeBaseRequestSearchConfiguration struct {
 	//
 	// 20
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// The vector weight for the WEIGHTED fusion algorithm. Valid values: 0 to 1. The keyword weight equals 1 minus this value. Default value: 0.7.
+	// The vector weight for the WEIGHTED fusion algorithm. Valid values: 0 to 1. The keyword weight is 1 minus this value. Default value: 0.7.
 	//
 	// example:
 	//

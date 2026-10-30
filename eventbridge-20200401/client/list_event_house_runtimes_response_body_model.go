@@ -22,15 +22,15 @@ type iListEventHouseRuntimesResponseBody interface {
 }
 
 type ListEventHouseRuntimesResponseBody struct {
-	// The response code. Success indicates that the operation was successful.
+	// The response code. A value of Success indicates that the request is successful.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The runtime list result.
+	// The runtime list results.
 	Data *ListEventHouseRuntimesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned by the operation.
+	// The response message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListEventHouseRuntimesResponseBody struct {
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -113,13 +113,22 @@ func (s *ListEventHouseRuntimesResponseBody) Validate() error {
 }
 
 type ListEventHouseRuntimesResponseBodyData struct {
+	// The maximum number of runtimes returned per page.
+	//
 	// example:
 	//
 	// 20
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of runtimes.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page. An empty value indicates that there are no more pages.
+	//
+	// example:
+	//
+	// 10
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The runtime list.
 	Runtimes []*EventHouseRuntime `json:"Runtimes,omitempty" xml:"Runtimes,omitempty" type:"Repeated"`
+	// The total number of runtimes that meet the query conditions.
+	//
 	// example:
 	//
 	// 1

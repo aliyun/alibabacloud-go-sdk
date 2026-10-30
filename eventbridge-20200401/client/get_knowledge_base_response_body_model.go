@@ -22,15 +22,15 @@ type iGetKnowledgeBaseResponseBody interface {
 }
 
 type GetKnowledgeBaseResponseBody struct {
-	// The response code. Success indicates a successful call. If the call fails, a specific error code is returned.
+	// The response code. A value of Success indicates that the call was successful. If the call fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The knowledge base details, including basic information, metadata schema, and chunking and retrieval configurations.
+	// The details of the knowledge base, including the basic information, metadata schema, chunking configuration, and retrieval configuration.
 	Data *KnowledgeBase `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response message. Operation success is returned for a successful call. A specific error description is returned for a failed call.
+	// The response message. If the call is successful, the value is Operation success. If the call fails, a specific error description is returned.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetKnowledgeBaseResponseBody struct {
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of true indicates success.
+	// Indicates whether the call was successful. A value of true indicates that the call was successful.
 	//
 	// example:
 	//

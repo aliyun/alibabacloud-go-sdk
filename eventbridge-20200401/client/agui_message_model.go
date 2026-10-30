@@ -30,7 +30,7 @@ type AguiMessage struct {
 	//
 	// example:
 	//
-	// 根据您的问题，我将查询过去7天的事件量...
+	// Based on your question, I will query the number of events over the past 7 days..
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The unique identifier of the message.
 	//
@@ -38,9 +38,14 @@ type AguiMessage struct {
 	//
 	// msg_123456_a1b2c3d4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The extension metadata.
-	Metadata  *AguiMessageMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
-	Reasoning *string              `json:"Reasoning,omitempty" xml:"Reasoning,omitempty"`
+	// The extended metadata.
+	Metadata *AguiMessageMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	// The reasoning content.
+	//
+	// example:
+	//
+	// "The user asked me to execute ***"
+	Reasoning *string `json:"Reasoning,omitempty" xml:"Reasoning,omitempty"`
 	// The role of the message.
 	//
 	// example:
@@ -147,7 +152,7 @@ func (s *AguiMessage) Validate() error {
 }
 
 type AguiMessageMetadata struct {
-	// The extension data.
+	// The extended data.
 	Attachments *AguiMessageMetadataAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Struct"`
 }
 
@@ -178,13 +183,13 @@ func (s *AguiMessageMetadata) Validate() error {
 }
 
 type AguiMessageMetadataAttachments struct {
-	// The name of the extension data.
+	// The name of the extended data.
 	//
 	// example:
 	//
 	// acs:eventbridge:cn-hangzhou:12345:eventhouse/system-rocketmq/namespace/rmq-cn-xxx/table/order
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the extension data.
+	// The type of the extended data.
 	//
 	// example:
 	//
@@ -223,15 +228,15 @@ func (s *AguiMessageMetadataAttachments) Validate() error {
 }
 
 type AguiMessageToolCalls struct {
-	// The tool calling function.
+	// The tool invocation method.
 	Function *AguiMessageToolCallsFunction `json:"Function,omitempty" xml:"Function,omitempty" type:"Struct"`
-	// The tool calling ID.
+	// The tool invocation ID.
 	//
 	// example:
 	//
 	// call_xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The tool calling type.
+	// The tool invocation type.
 	//
 	// example:
 	//
@@ -284,13 +289,13 @@ func (s *AguiMessageToolCalls) Validate() error {
 }
 
 type AguiMessageToolCallsFunction struct {
-	// The arguments of the tool calling function.
+	// The parameters of the tool invocation method.
 	//
 	// example:
 	//
 	// {}
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	// The name of the tool calling function.
+	// The name of the tool invocation method.
 	//
 	// example:
 	//

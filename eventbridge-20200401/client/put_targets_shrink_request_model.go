@@ -34,7 +34,7 @@ type PutTargetsShrinkRequest struct {
 	//
 	// ssr-send-to-vendor-test01
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// A list of event targets to create or update. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+	// The list of event targets to be added or updated. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
 	// This parameter is required.
 	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`

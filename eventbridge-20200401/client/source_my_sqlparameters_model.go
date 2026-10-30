@@ -39,30 +39,82 @@ type iSourceMySQLParameters interface {
 
 type SourceMySQLParameters struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// database1
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The hostname or IP address of the database server.
+	//
+	// example:
+	//
+	// rm-bp1vxxx.mysql.rds.aliyuncs.com
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// Indicates whether to include schema changes.
+	//
+	// example:
+	//
+	// false
 	IncludeSchemaChanges *string `json:"IncludeSchemaChanges,omitempty" xml:"IncludeSchemaChanges,omitempty"`
 	// The network type.
+	//
+	// example:
+	//
+	// PrivateNetwork
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The password for the user.
+	//
+	// example:
+	//
+	// admin
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The database server port.
+	//
+	// example:
+	//
+	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the region that contains the data source.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the security group.
+	//
+	// example:
+	//
+	// sg-a1b2c3d4e5f6g7h8i9j0
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The snapshot mode.
+	//
+	// example:
+	//
+	// when_needed
 	SnapshotMode *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
 	// The names of tables to synchronize. Separate multiple table names with a comma.
+	//
+	// example:
+	//
+	// database1.table1
 	TableNames *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
 	// The database username.
+	//
+	// example:
+	//
+	// example_user
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 	// The VSwitch IDs. Separate multiple IDs with a comma.
+	//
+	// example:
+	//
+	// [vsw-a1b2c3d4e5f6g7h8i9j0k]
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
 	// The ID of the VPC.
+	//
+	// example:
+	//
+	// vpc-a1b2c3d4e5f6g7h8i9j0k
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

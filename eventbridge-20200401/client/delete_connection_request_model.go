@@ -14,7 +14,7 @@ type iDeleteConnectionRequest interface {
 }
 
 type DeleteConnectionRequest struct {
-	// The name of the connection that you want to delete.
+	// The name of the connection to delete.
 	//
 	// This parameter is required.
 	//

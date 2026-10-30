@@ -28,25 +28,25 @@ type iEventHouseRuntime interface {
 }
 
 type EventHouseRuntime struct {
-  // The number of CUs that last took effect for the EventHouse Runtime.
+  // The number of CUs last successfully applied to the EventHouse runtime.
   // 
   // example:
   // 
   // 2
   Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-  // The stable error code returned when the creation or specification change operation fails.
+  // The standard error code returned when a creation or specification change fails.
   // 
   // example:
   // 
   // RUNTIME_OPERATION_TIMEOUT
   ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-  // The desensitized error message returned when the creation or specification change operation fails.
+  // The masked error message returned when a creation or specification change fails.
   // 
   // example:
   // 
   // Runtime operation timed out
   ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-  // The name of the EventHouse Runtime. Typically set to default in the initial phase.
+  // The name of the EventHouse runtime. The initial value is typically default.
   // 
   // example:
   // 
@@ -64,13 +64,13 @@ type EventHouseRuntime struct {
   // 
   // RUNTIME_HEALTH_CHECK
   Stage *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
-  // The current status of the EventHouse Runtime. RUNNING indicates that the Runtime is ready and can accept queries. Valid values: CREATING, RUNNING, UPDATING, RECOVERING, CLOSED, CREATE_FAILED, and UPDATE_FAILED.
+  // The current status of the EventHouse runtime. RUNNING indicates that the runtime is ready and can process queries. Valid values: CREATING, RUNNING, UPDATING, RECOVERING, CLOSED, CREATE_FAILED, and UPDATE_FAILED.
   // 
   // example:
   // 
   // RUNNING
   Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-  // The target number of CUs during creation, specification change, or the corresponding failed state. This parameter is not returned when the Runtime is running stably.
+  // The target number of CUs during a creation, specification change, or corresponding failure state. This parameter is not returned when the runtime is stable.
   // 
   // example:
   // 
