@@ -11,6 +11,8 @@ type iCreateRenderingInstanceResponseBody interface {
 	GoString() string
 	SetRenderingInstanceId(v string) *CreateRenderingInstanceResponseBody
 	GetRenderingInstanceId() *string
+	SetRenderingInstanceIds(v []*string) *CreateRenderingInstanceResponseBody
+	GetRenderingInstanceIds() []*string
 	SetRequestId(v string) *CreateRenderingInstanceResponseBody
 	GetRequestId() *string
 }
@@ -22,6 +24,8 @@ type CreateRenderingInstanceResponseBody struct {
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// The instance ID list of the cloud application service.
+	RenderingInstanceIds []*string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -42,12 +46,21 @@ func (s *CreateRenderingInstanceResponseBody) GetRenderingInstanceId() *string {
 	return s.RenderingInstanceId
 }
 
+func (s *CreateRenderingInstanceResponseBody) GetRenderingInstanceIds() []*string {
+	return s.RenderingInstanceIds
+}
+
 func (s *CreateRenderingInstanceResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *CreateRenderingInstanceResponseBody) SetRenderingInstanceId(v string) *CreateRenderingInstanceResponseBody {
 	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *CreateRenderingInstanceResponseBody) SetRenderingInstanceIds(v []*string) *CreateRenderingInstanceResponseBody {
+	s.RenderingInstanceIds = v
 	return s
 }
 
