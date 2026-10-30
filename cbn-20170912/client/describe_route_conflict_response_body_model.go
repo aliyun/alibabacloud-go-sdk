@@ -28,7 +28,7 @@ type DescribeRouteConflictResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page during paging.
+	// The number of entries returned per page in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//

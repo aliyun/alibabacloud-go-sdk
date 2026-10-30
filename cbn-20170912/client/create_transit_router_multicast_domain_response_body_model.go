@@ -16,7 +16,7 @@ type iCreateTransitRouterMulticastDomainResponseBody interface {
 }
 
 type CreateTransitRouterMulticastDomainResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

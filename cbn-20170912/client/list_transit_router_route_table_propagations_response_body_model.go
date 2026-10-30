@@ -22,13 +22,13 @@ type iListTransitRouterRouteTablePropagationsResponseBody interface {
 }
 
 type ListTransitRouterRouteTablePropagationsResponseBody struct {
-	// The number of entries per page for a paged query.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query in a paged query.
+	// The token used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListTransitRouterRouteTablePropagationsResponseBody struct {
 	//
 	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of route learning relationships.
+	// The route propagations.
 	TransitRouterPropagations []*ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagations `json:"TransitRouterPropagations,omitempty" xml:"TransitRouterPropagations,omitempty" type:"Repeated"`
 }
 
@@ -123,13 +123,13 @@ type ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagation
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The network instance type. Valid values:
+	// The type of the network instance. Valid values:
 	//
-	// - **VPC**: virtual private cloud (VPC) instance.
+	// - **VPC**: VPC.
 	//
-	// - **VBR**: virtual border router (VBR) instance.
+	// - **VBR**: VBR.
 	//
-	// - **TR**: transit router instance.
+	// - **TR**: transit router.
 	//
 	// - **VPN**: VPN connection.
 	//
@@ -137,25 +137,25 @@ type ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagation
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the route learning relationship. Valid values:
+	// The status of the route propagation. Valid values:
 	//
-	// - **Enabling**: being enabled.
+	// - **Enabling**: Enabling.
 	//
-	// - **Disabling**: being disabled.
+	// - **Disabling**: Disabling.
 	//
-	// - **Active**: active.
+	// - **Active**: Active.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The network instance connection ID.
+	// The ID of the network instance connection.
 	//
 	// example:
 	//
 	// tr-attach-vx6iwhjr1x1j78****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the Enterprise Edition transit router route table.
+	// The ID of the route table in the Enterprise Edition transit router.
 	//
 	// example:
 	//

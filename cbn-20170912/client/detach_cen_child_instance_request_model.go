@@ -40,13 +40,13 @@ type DetachCenChildInstanceRequest struct {
 	//
 	// cen-7qthudw0ll6jmx****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the CEN instance.
+	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
 	//
 	// example:
 	//
 	// 1688000000000000
 	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The instance ID of the network instance to uninstall.
+	// The instance ID of the network instance to be uninstalled.
 	//
 	// This parameter is required.
 	//
@@ -54,15 +54,13 @@ type DetachCenChildInstanceRequest struct {
 	//
 	// vpc-bp18sth14qii3pnvx****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the network instance.
+	// The ID of the Alibaba Cloud account to which the network instance belongs.
 	//
 	// example:
 	//
 	// 1699000000000000
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// The region ID of the network instance.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region ID of the network instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -72,11 +70,11 @@ type DetachCenChildInstanceRequest struct {
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// - **VPC**: virtual private cloud.
+	// - **VPC**: virtual private cloud (VPC).
 	//
-	// - **VBR**: virtual border router.
+	// - **VBR**: virtual border router (VBR).
 	//
-	// - **CCN**: Cloud Connect Network.
+	// - **CCN**: Cloud Connect Network (CCN).
 	//
 	// This parameter is required.
 	//

@@ -38,7 +38,7 @@ type iCreateTransitRouterMulticastDomainRequest interface {
 }
 
 type CreateTransitRouterMulticastDomainRequest struct {
-	// The instance ID of the Cloud Enterprise Network (CEN).
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// example:
 	//
@@ -54,21 +54,21 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run and does not create the multicast domain. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the multicast domain is created.
+	// - **false*	- (default): sends a normal request and creates the multicast domain if the request passes the check.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The multicast domain feature options.
+	// The feature options for the multicast domain.
 	Options      *CreateTransitRouterMulticastDomainRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 	OwnerAccount *string                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the transit router instance.
+	// The region ID of the transit router.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	//
 	// You can specify up to 20 tags at a time.
 	Tag []*CreateTransitRouterMulticastDomainRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The instance ID of the transit router.
+	// The ID of the transit router instance, which is used to forward traffic and manage routing.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The description of the multicast domain.
 	//
-	// The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
+	// The description can be left empty or be 1 to 256 characters in length. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type CreateTransitRouterMulticastDomainRequest struct {
 	TransitRouterMulticastDomainDescription *string `json:"TransitRouterMulticastDomainDescription,omitempty" xml:"TransitRouterMulticastDomainDescription,omitempty"`
 	// The name of the multicast domain.
 	//
-	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	// The name can be left empty or be 1 to 128 characters in length. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -248,7 +248,7 @@ func (s *CreateTransitRouterMulticastDomainRequest) Validate() error {
 }
 
 type CreateTransitRouterMulticastDomainRequestOptions struct {
-	// Specifies whether to enable the Internet Group Management Protocol (IGMP) feature for the multicast domain. After this feature is enabled, hosts can dynamically join or leave multicast groups by using the IGMP protocol. Valid values:
+	// Specifies whether to enable the Internet Group Management Protocol (IGMP) feature for the multicast domain. After this feature is enabled, hosts can dynamically join or leave multicast groups by using IGMP. Valid values:
 	//
 	// - **enable**: enables the IGMP feature.
 	//
@@ -262,15 +262,15 @@ type CreateTransitRouterMulticastDomainRequestOptions struct {
 	//
 	// enable
 	Igmpv2Support *string `json:"Igmpv2Support,omitempty" xml:"Igmpv2Support,omitempty"`
-	// Specifies whether to enable the strict multicast source control feature. If this feature is disabled, all ECS instances in the associated vSwitch can serve as multicast sources. If this feature is enabled, only ENIs that are statically configured or that have sent IGMP Join messages can serve as multicast sources. Valid values:
+	// Specifies whether to enable the strict multicast source control feature. If this feature is disabled, all Elastic Compute Service (ECS) instances associated with the vSwitch can act as multicast sources. If this feature is enabled, only statically configured elastic network interfaces (ENIs) or ENIs that have sent IGMP Join messages can act as multicast sources. Valid values:
 	//
 	// - ``enable``: enables the strict multicast source control feature.
 	//
 	// - ``disable``: disables the strict multicast source control feature.
 	//
-	// > - The strict multicast source control feature takes effect only for multicast domains with the IGMP feature enabled.
+	// > - The strict multicast source control feature takes effect only for multicast domains that have the IGMP feature enabled.
 	//
-	// > - Currently, only one multicast domain with the strict multicast source control feature disabled can be created under a transit router.
+	// > - You can create only one multicast domain with the strict multicast source control feature disabled under a transit router.
 	//
 	// example:
 	//
@@ -311,7 +311,7 @@ func (s *CreateTransitRouterMulticastDomainRequestOptions) Validate() error {
 type CreateTransitRouterMulticastDomainRequestTag struct {
 	// The tag key of the resource.
 	//
-	// Once you specify this parameter, it cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify up to 20 tag keys at a time.
 	//
@@ -321,9 +321,9 @@ type CreateTransitRouterMulticastDomainRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource.
 	//
-	// Once you specify this parameter, it cannot be empty. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	// The tag value cannot be empty. It can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
+	// Each tag key corresponds to a tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

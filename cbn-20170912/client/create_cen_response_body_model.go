@@ -22,7 +22,7 @@ type CreateCenResponseBody struct {
 	//
 	// cen-dc4vwznpwbobrl****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

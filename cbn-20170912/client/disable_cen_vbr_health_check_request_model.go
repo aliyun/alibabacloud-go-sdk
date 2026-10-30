@@ -28,7 +28,7 @@ type iDisableCenVbrHealthCheckRequest interface {
 }
 
 type DisableCenVbrHealthCheckRequest struct {
-	// The CEN instance ID.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,17 +48,17 @@ type DisableCenVbrHealthCheckRequest struct {
 	//
 	// vbr-wz95o9aylj181n5****
 	VbrInstanceId *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the VBR instance.
+	// The ID of the Alibaba Cloud account to which the VBR belongs.
 	//
-	// > This parameter is required if the VBR instance and the CEN instance belong to different accounts.
+	// > This parameter is required if the VBR and the CEN instance belong to different accounts.
 	//
 	// example:
 	//
 	// 1250123456123456
 	VbrInstanceOwnerId *int64 `json:"VbrInstanceOwnerId,omitempty" xml:"VbrInstanceOwnerId,omitempty"`
-	// The region ID of the VBR instance.
+	// The region ID of the VBR.
 	//
-	// You can call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to query region IDs.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

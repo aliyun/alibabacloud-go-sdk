@@ -42,9 +42,9 @@ type CreateCenChildInstanceRouteEntryToCenRequest struct {
 	//
 	// cen-7febra5nqj7jjh****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The Alibaba Cloud account ID to which the network instance belongs.
+	// The ID of the Alibaba Cloud account to which the network instance belongs.
 	//
-	// > This parameter is required if the network instance belongs to a different Alibaba Cloud account.
+	// > This parameter is required if the network instance belongs to another Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type CreateCenChildInstanceRouteEntryToCenRequest struct {
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	// The region ID of the network instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type CreateCenChildInstanceRouteEntryToCenRequest struct {
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// - **VPC**: a virtual private cloud (VPC) instance.
+	// - **VPC**: VPC.
 	//
-	// - **VBR**: a virtual border router (VBR) instance.
+	// - **VBR**: VBR.
 	//
 	// This parameter is required.
 	//

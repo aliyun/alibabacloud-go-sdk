@@ -22,7 +22,7 @@ type CreateTransitRouterVpcAttachmentResponseBody struct {
 	//
 	// C087A369-82B9-43EF-91F4-4B63A9C6E6B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VPC connection.
+	// The ID of the VPC attachment.
 	//
 	// example:
 	//

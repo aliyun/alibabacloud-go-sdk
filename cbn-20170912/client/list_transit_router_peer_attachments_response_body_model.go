@@ -22,17 +22,17 @@ type iListTransitRouterPeerAttachmentsResponseBody interface {
 }
 
 type ListTransitRouterPeerAttachmentsResponseBody struct {
-	// The number of entries per page for a paged query.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query is to be sent.
+	// - If **NextToken*	- is empty, no next query is to be sent.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token that is used for the next query.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListTransitRouterPeerAttachmentsResponseBody struct {
 	//
 	// AA97AFA3-8E48-4BD7-9F3E-A9F6176018A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -121,19 +121,19 @@ func (s *ListTransitRouterPeerAttachmentsResponseBody) Validate() error {
 }
 
 type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates whether the Enterprise Edition transit router instance automatically advertises routes of the inter-region connection to the peer region.
+	// Specifies whether the Enterprise Edition transit router automatically advertises routes of the inter-region connection to the peer region. Valid values:
 	//
-	// - **false*	- (default): No.
+	// - **false*	- (default): no.
 	//
-	// - **true**: Yes.
+	// - **true**: yes.
 	//
 	// example:
 	//
 	// false
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+	// The bandwidth of the inter-region connection. Unit: Mbit/s.
 	//
-	// - If **BandwidthType*	- is set to **BandwidthPackage**, this parameter indicates the bandwidth that the inter-region connection can use.
+	// - If **BandwidthType*	- is set to **BandwidthPackage**, this parameter indicates the bandwidth available for the inter-region connection.
 	//
 	// - If **BandwidthType*	- is set to **DataTransfer**, this parameter indicates the bandwidth limit of the inter-region connection.
 	//
@@ -143,21 +143,21 @@ type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The bandwidth allocation method. Valid values:
 	//
-	// - **BandwidthPackage**: Bandwidth is allocated from a bandwidth package.
+	// - **BandwidthPackage**: Bandwidth is allocated from a bandwidth plan.
 	//
-	// - **DataTransfer**: No bandwidth is allocated to the inter-region connection. Data transfer is pay-as-you-go.
+	// - **DataTransfer**: No bandwidth is allocated to the inter-region connection. You are charged based on the data transfer.
 	//
 	// example:
 	//
 	// BandwidthPackage
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// The ID of the bandwidth package associated with the inter-region connection.
+	// The ID of the bandwidth plan that is associated with the inter-region connection.
 	//
 	// example:
 	//
 	// cenbwp-3xrxupouolw5ou****
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	// The CEN instance ID.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
@@ -165,41 +165,41 @@ type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The time when the inter-region connection was created.
 	//
-	// The time is displayed in the ISO 8601 standard in UTC. Format: `YYYY-MM-DDThh:mmZ`.
+	// The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-06-16T02:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The default link type.
+	// The default link type. Valid values:
 	//
 	// - **Gold*	- (default): gold.
 	//
-	// - **Platinum**: Platinum.
+	// - **Platinum**: platinum.
 	//
 	// example:
 	//
 	// Gold
 	DefaultLinkType *string `json:"DefaultLinkType,omitempty" xml:"DefaultLinkType,omitempty"`
-	// The connected areas of the bandwidth package.
+	// The connected areas of the bandwidth plan.
 	//
 	// example:
 	//
 	// china_china
 	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	// The instance ID of the peer transit routing router.
+	// The instance ID of the peer transit router, which is used to forward traffic and manage routing.
 	//
 	// example:
 	//
 	// tr-m5eq27g6bndum7e88****
 	PeerTransitRouterId *string `json:"PeerTransitRouterId,omitempty" xml:"PeerTransitRouterId,omitempty"`
-	// The ID of the account to which the peer transit router instance belongs.
+	// The ID of the Alibaba Cloud account to which the peer transit router belongs.
 	//
 	// example:
 	//
 	// 253460731706911258
 	PeerTransitRouterOwnerId *int64 `json:"PeerTransitRouterOwnerId,omitempty" xml:"PeerTransitRouterOwnerId,omitempty"`
-	// The region ID of the peer transit router instance.
+	// The region ID of the peer transit router.
 	//
 	// example:
 	//
@@ -211,35 +211,35 @@ type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of resource associated with the connection.
+	// The type of the resource that is associated with the connection. Valid values:
 	//
-	// - **VPC**: virtual private cloud (VPC) instance.
+	// - **VPC**: virtual private cloud (VPC).
 	//
-	// - **CCN**: Cloud Connect Network instance.
+	// - **CCN**: Cloud Connect Network (CCN).
 	//
-	// - **VBR**: virtual border router (VBR) instance.
+	// - **VBR**: virtual border router (VBR).
 	//
-	// - **TR**: transit router instance.
+	// - **TR**: transit router.
 	//
 	// example:
 	//
 	// TR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the inter-region connection.
+	// The status of the inter-region connection. Valid values:
 	//
-	// - **Attached**: attached.
+	// - **Attached**: The connection is attached.
 	//
-	// - **Attaching**: being attached.
+	// - **Attaching**: The connection is being attached.
 	//
-	// - **Detaching**: being detached.
+	// - **Detaching**: The connection is being detached.
 	//
-	// - **Detached**: detached.
+	// - **Detached**: The connection is detached.
 	//
 	// example:
 	//
 	// Attached
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
+	// The list of tags.
 	Tags []*ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the inter-region connection.
 	//
@@ -247,7 +247,7 @@ type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct
 	//
 	// testdesc
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The inter-region connection ID.
+	// The ID of the inter-region connection.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct
 	//
 	// test
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The Enterprise Edition transit router instance ID.
+	// The instance ID of the Enterprise Edition transit router, which is used to forward traffic and manage routing.
 	//
 	// example:
 	//

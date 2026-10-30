@@ -14,7 +14,7 @@ type iAssociateTransitRouterAttachmentWithRouteTableResponseBody interface {
 }
 
 type AssociateTransitRouterAttachmentWithRouteTableResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

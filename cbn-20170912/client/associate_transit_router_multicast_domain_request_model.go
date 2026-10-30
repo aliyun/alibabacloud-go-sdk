@@ -30,9 +30,7 @@ type iAssociateTransitRouterMulticastDomainRequest interface {
 }
 
 type AssociateTransitRouterMulticastDomainRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// example:
 	//
@@ -40,9 +38,9 @@ type AssociateTransitRouterMulticastDomainRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run without associating the vSwitch with the multicast domain. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
+	// - **true**: performs a dry run and does not associate the vSwitches with the multicast domain. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the vSwitch is associated with the multicast domain.
+	// - **false*	- (default): sends a normal request and associates the vSwitches with the multicast domain if the request passes the check.
 	//
 	// example:
 	//
@@ -68,7 +66,7 @@ type AssociateTransitRouterMulticastDomainRequest struct {
 	//
 	// tr-mcast-domain-91wpg6wbhchjeq****
 	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// The list of vSwitch IDs.
+	// The IDs of the vSwitches.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 

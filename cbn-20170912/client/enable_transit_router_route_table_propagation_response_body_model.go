@@ -14,7 +14,7 @@ type iEnableTransitRouterRouteTablePropagationResponseBody interface {
 }
 
 type EnableTransitRouterRouteTablePropagationResponseBody struct {
-  // The request ID.
+  // The ID of the request.
   // 
   // example:
   // 

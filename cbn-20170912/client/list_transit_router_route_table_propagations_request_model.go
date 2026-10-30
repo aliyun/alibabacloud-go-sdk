@@ -34,13 +34,13 @@ type iListTransitRouterRouteTablePropagationsRequest interface {
 }
 
 type ListTransitRouterRouteTablePropagationsRequest struct {
-	// The number of entries per page for a paged query. Default value: **50**.
+	// The maximum number of entries to return per page. Default value: **50**.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query in a paged query.
+	// The token used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type ListTransitRouterRouteTablePropagationsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the route learning relationship. Valid values:
+	// The status of the route propagation. Valid values:
 	//
-	// - **Active**: active.
+	// - **Active**: Active.
 	//
-	// - **Enabling**: being enabled.
+	// - **Enabling**: Enabling.
 	//
-	// - **Disabling**: being disabled.
+	// - **Disabling**: Disabling.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The network instance connection ID.
+	// The ID of the network instance connection.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ListTransitRouterRouteTablePropagationsRequest struct {
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	TransitRouterAttachmentResourceId *string `json:"TransitRouterAttachmentResourceId,omitempty" xml:"TransitRouterAttachmentResourceId,omitempty"`
-	// The network instance type. Valid values:
+	// The type of the network instance. Valid values:
 	//
-	// - **VPC**: virtual private cloud (VPC) instance.
+	// - **VPC**: VPC.
 	//
-	// - **VBR**: virtual border router (VBR) instance.
+	// - **VBR**: VBR.
 	//
-	// - **TR**: transit router instance.
+	// - **TR**: transit router.
 	//
 	// - **VPN**: VPN connection.
 	//
@@ -88,7 +88,7 @@ type ListTransitRouterRouteTablePropagationsRequest struct {
 	//
 	// VPC
 	TransitRouterAttachmentResourceType *string `json:"TransitRouterAttachmentResourceType,omitempty" xml:"TransitRouterAttachmentResourceType,omitempty"`
-	// The ID of the Enterprise Edition transit router route table.
+	// The ID of the route table in the Enterprise Edition transit router.
 	//
 	// This parameter is required.
 	//

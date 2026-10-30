@@ -24,7 +24,7 @@ type iUnassociateCenBandwidthPackageRequest interface {
 }
 
 type UnassociateCenBandwidthPackageRequest struct {
-	// The bandwidth package instance ID.
+	// The bandwidth plan instance ID.
 	//
 	// This parameter is required.
 	//

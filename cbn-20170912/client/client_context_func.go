@@ -9,13 +9,13 @@ import (
 
 // Summary:
 //
-// Activates a flow log to start capturing traffic of specified resources.
+// Activates a flow log. After the activate flow log operation is complete, it starts to capture traffic of the specified resources.
 //
 // Description:
 //
-// - After a flow log is created, it is in the Active state by default. If you stopped a flow log, you can call this operation to reactivate it.
+// - After a flow log is created, it is in the Active state by default. If you stop activate flow log, you can call this operation to restart it.
 //
-// - `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a **RequestId**, but activate flow log is not fully activated. The activation task is still running in the background. You can call the `DescribeFlowlogs` operation to query the status of activate flow log.
+// - The `ActiveFlowLog` operation is asynchronous. After you call this operation, the system returns a **RequestId**, but activate flow log is not fully activated. The activation task is still running in the background. You can call the `DescribeFlowlogs` operation to query the status of activate flow log.
 //
 //   - If activate flow log is in the **Modifying*	- state, activate flow log is being activated. In this state, you can only perform query operations.
 //
@@ -91,13 +91,13 @@ func (client *Client) ActiveFlowLogWithContext(ctx context.Context, request *Act
 
 // Summary:
 //
-// Adds traffic classification rules to a traffic marking policy by calling the AddTrafficMatchRuleToTrafficMarkingPolicy operation.
+// Adds a traffic classification rule to a traffic marking policy.
 //
 // Description:
 //
-// *AddTrafficMatchRuleToTrafficMarkingPolicy*	- is an asynchronous operation. After you send a request, the system returns a **RequestId*	- but the traffic classification rule is not yet created. The creation task continues to run in the background. You can call the **ListTrafficMarkingPolicies*	- operation to query the status of the traffic classification rule.
+// The **AddTrafficMatchRuleToTrafficMarkingPolicy*	- API operation is asynchronous. After you send the request, the system returns a **RequestId**, but the traffic classification rule is not immediately created. The creation task is still running in the background. You can call the **ListTrafficMarkingPolicies*	- API operation to query the status of the traffic classification rule.
 //
-// - If the traffic classification rule is in the **Creating*	- state, the rule is being created. In this state, you can only query the rule and cannot perform other operations on it.
+// - If the traffic classification rule is in the **Creating*	- state, the rule is being created. In this state, you can only query the rule and cannot perform other operations.
 //
 // - If the traffic classification rule is in the **Active*	- state, the rule is created.
 //
@@ -173,13 +173,13 @@ func (client *Client) AddTrafficMatchRuleToTrafficMarkingPolicyWithContext(ctx c
 //
 // Summary:
 //
-// Adds traffic classification rules to a traffic marking policy.
+// Adds a traffic classification rule to a traffic marking policy.
 //
 // Description:
 //
 // ### Precautions
 //
-// The **AddTraficMatchRuleToTrafficMarkingPolicy*	- operation is deprecated and will be discontinued. To add traffic classification rules to a traffic marking policy, use the [AddTrafficMatchRuleToTrafficMarkingPolicy](https://help.aliyun.com/document_detail/427602.html) operation. This documentation is no longer maintained.
+// The **AddTraficMatchRuleToTrafficMarkingPolicy*	- operation is deprecated and will be retired soon. To add a traffic classification rule to a traffic marking policy, use the [AddTrafficMatchRuleToTrafficMarkingPolicy](https://help.aliyun.com/document_detail/427602.html) operation. This API document is no longer maintained.
 //
 // @param request - AddTraficMatchRuleToTrafficMarkingPolicyRequest
 //
@@ -251,13 +251,13 @@ func (client *Client) AddTraficMatchRuleToTrafficMarkingPolicyWithContext(ctx co
 
 // Summary:
 //
-// Associates a bandwidth package instance with a Cloud Enterprise Network (CEN) instance.
+// Associates a bandwidth plan with a Cloud Enterprise Network (CEN) instance.
 //
 // Description:
 //
-// A CEN instance supports binding multiple bandwidth packages, but does not support binding multiple bandwidth packages with the same connected areas.
+// A CEN instance can be associated with multiple bandwidth plans, but cannot be associated with multiple bandwidth plans for the same connected areas.
 //
-// For example, if a CEN instance already has a bandwidth package bound for the Chinese mainland-to-Chinese mainland connected areas, you cannot bind another bandwidth package for the Chinese mainland-to-Chinese mainland connected areas. However, you can bind a bandwidth package for the Chinese mainland-to-North America connected areas.
+// For example, if a CEN instance is already associated with a bandwidth plan for the connected areas between the Chinese mainland and the Chinese mainland, you cannot associate another bandwidth plan for the same connected areas. However, you can associate a bandwidth plan for the connected areas between the Chinese mainland and North America.
 //
 // @param request - AssociateCenBandwidthPackageRequest
 //
@@ -325,17 +325,19 @@ func (client *Client) AssociateCenBandwidthPackageWithContext(ctx context.Contex
 //
 // Description:
 //
-// After you create a network instance connection, you must set the association and forwarding relationship for it by associating the network instance connection with an Enterprise Edition transit router route table. After the association is created, the Enterprise Edition transit router forwards traffic of the network instance based on the route entries in the route table. Before you invoke this operation, take note of the following information:
+// After you create a network instance connection, you must configure the route table association to associate the network instance connection with an Enterprise Edition transit router route table. After the association is established, the Enterprise Edition transit router forwards traffic from the network instance based on the route entry information in the route table. Before you call this operation to create a route table association, take note of the following information:
 //
-// - Only Enterprise Edition transit router route tables support route table associations. For information about the regions and zones that support Enterprise Edition transit routers, see [What is Cloud Enterprise Network (CEN)?](https://help.aliyun.com/document_detail/181681.html).
+// - Only Enterprise Edition transit router route tables support route table associations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is Cloud Enterprise Network?](https://help.aliyun.com/document_detail/181681.html).
 //
-// - Each network instance connection can be associated with only one Enterprise Edition transit router route table.
+// - A network instance connection can be associated with only one Enterprise Edition transit router route table.
 //
-// - **AssociateTransitRouterAttachmentWithRouteTable*	- is an asynchronous operation. After you send a request, the system returns a **RequestId*	- but the association between the network instance connection and the route table is not complete. The association task is still running in the background. You can call **ListTransitRouterRouteTableAssociations*	- to query the association status between the network instance connection and the route table.
+// - The **AssociateTransitRouterAttachmentWithRouteTable*	- operation is asynchronous. After you send the request, the system returns a **RequestId**, but the route table association is not immediately established. The system continues to process the association task in the background. You can call the **ListTransitRouterRouteTableAssociations*	- operation to query the association status between the network instance connection and the route table.
 //
-//   - If the association status is **Associating**, the network instance connection is being associated with the route table. In this state, you can only query the association but cannot perform other operations.
+//   - If the association status is **Associating**, the route table association is being established between the network instance connection and the route table. In this state, you can only query the association status. You cannot perform other operations.
 //
-//   - If the association status is **Active**, the network instance connection is associated with the route table.
+//   - If the association status is **Active**, the route table association is successfully established between the network instance connection and the route table.
+//
+// - Before you perform the association operation, make sure that the network instance connection is in the Attached state.
 //
 // @param request - AssociateTransitRouterAttachmentWithRouteTableRequest
 //
@@ -407,17 +409,17 @@ func (client *Client) AssociateTransitRouterAttachmentWithRouteTableWithContext(
 
 // Summary:
 //
-// Associates a vSwitch in a virtual private cloud (VPC) with a multicast domain by calling the AssociateTransitRouterMulticastDomain operation so that resources in the VPC can communicate through multicast.
+// Associates a vSwitch in a virtual private cloud (VPC) with a multicast domain to enable multicast communication for resources in the VPC.
 //
 // Description:
 //
-// - A vSwitch can be associated with only one multicast domain. Make sure that the vSwitch to be associated is not already associated with another multicast domain. To disassociate a vSwitch from a multicast domain, see [DisassociateTransitRouterMulticastDomain](https://help.aliyun.com/document_detail/429774.html).
+// - A vSwitch can be associated with only one multicast domain. Make sure that the vSwitch to be associated is not associated with other multicast domains. To disassociate a vSwitch from a multicast domain, see [DisassociateTransitRouterMulticastDomain](https://help.aliyun.com/document_detail/429774.html).
 //
-// - **AssociateTransitRouterMulticastDomain*	- is an asynchronous operation. After you send a request, the system returns a **RequestId*	- but the association between the vSwitch and the multicast domain is not yet complete. The association task continues to run in the background. You can call **ListTransitRouterMulticastDomainAssociations*	- to query the association status between the vSwitch and the multicast domain.
+// - **AssociateTransitRouterMulticastDomain*	- is an asynchronous API operation. After you call this operation, the system returns a **RequestId**, but the vSwitch is not immediately associated with the multicast domain. The association task is running in the background. You can call **ListTransitRouterMulticastDomainAssociations*	- to query the association status of the vSwitch and the multicast domain.
 //
-//   - If the association status is **Associating**, the association between the vSwitch and the multicast domain is being established. In this state, you can only query the vSwitch but cannot perform other operations.
+//   - If the association status is **Associating**, the vSwitch is being associated with the multicast domain. In this state, you can only perform query operations on the vSwitch.
 //
-//   - If the association status is **Associated**, the association between the vSwitch and the multicast domain is established.
+//   - If the association status is **Associated**, the vSwitch is associated with the multicast domain.
 //
 // - The VPC to which the vSwitch belongs must be connected to an Enterprise Edition transit router. To create a VPC connection, see [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/468237.html).
 //
@@ -499,13 +501,15 @@ func (client *Client) AssociateTransitRouterMulticastDomainWithContext(ctx conte
 //
 // Description:
 //
-// CEN supports attaching cross-account network instances. Before attaching a cross-account network instance, the CEN instance must be authorized by the cross-account network instance:
+// CEN supports attaching cross-account network instances. Before attaching a cross-account network instance, the CEN instance must be authorized by the network instance:
 //
-// - For cross-account VPC instance authorization, refer to [GrantInstanceToCen](https://help.aliyun.com/document_detail/126224.html).
+// - To authorize a cross-account VPC instance, see [GrantInstanceToCen](https://help.aliyun.com/document_detail/126224.html).
 //
-// - For cross-account Cloud Connect Network instance authorization, refer to [GrantInstanceToCbn](https://help.aliyun.com/document_detail/126141.html).
+// - To authorize a cross-account CCN instance, see [GrantInstanceToCbn](https://help.aliyun.com/document_detail/126141.html).
 //
-// - Cross-account border router instance authorization is not available by default. To use this feature, contact your account manager.
+// - The cross-account VBR instance authorization feature is disabled by default. To use this feature, contact your account manager.
+//
+// This operation applies only to CEN instances that do not have an Enterprise Edition transit router. If the specified CEN instance has an Enterprise Edition transit router, the OperationFailed.InvalidTransitRouter error is returned.
 //
 // @param request - AttachCenChildInstanceRequest
 //
@@ -641,15 +645,15 @@ func (client *Client) CheckTransitRouterServiceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// A Cloud Enterprise Network (CEN) instance is the fundamental resource for managing an integrated network. A CEN instance manages one network and can span one or more regions. Before enabling connectivity between network instances, call the CreateCen operation to create a CEN instance.
+// Creates a Cloud Enterprise Network (CEN) instance, which is a basic resource for managing an integrated network. A CEN instance manages a network that can span one or more regions. Before you connect network instances, you must call the CreateCen operation to create a CEN instance.
 //
 // Description:
 //
-// The **CreateCen*	- operation is asynchronous. The system returns a CEN instance ID before the CEN instance is fully created, while the creation task continues in the background. You can call the **DescribeCens*	- operation to query the status of the CEN instance.
+// The **CreateCen*	- operation is asynchronous. The system first returns a CEN instance ID, but the instance is not yet fully created because the creation task is still running in the background. You can call the **DescribeCens*	- operation to query the status of the CEN instance.
 //
-// - If the CEN instance is in the **Creating*	- state, the CEN instance is being created. In this state, you can only query the CEN instance but cannot perform other operations on it.
+// - When the CEN instance is in the **Creating*	- state, it is being created. In this state, you can only perform query operations on the CEN instance.
 //
-// - If the CEN instance is in the **Active*	- state, the CEN instance is created.
+// - When the CEN instance is in the **Active*	- state, it is created.
 //
 // @param request - CreateCenRequest
 //
@@ -725,15 +729,15 @@ func (client *Client) CreateCenWithContext(ctx context.Context, request *CreateC
 
 // Summary:
 //
-// Creates a bandwidth plan for Cloud Enterprise Network (CEN) to enable cross-region connectivity between network instances.
+// Creates a bandwidth plan. To enable communication between network instances across regions, you must purchase a bandwidth plan.
 //
 // Description:
 //
-// - When you create a bandwidth plan instance, you must specify the connected areas. An area of a bandwidth plan is a collection of regions. Each area contains one or more Alibaba Cloud regions. Select the connected areas based on the regions that you want to connect. For more information about the relationship between areas and regions, see [Purchase a bandwidth plan](https://help.aliyun.com/document_detail/181560.html).
+// - When you create a bandwidth plan instance, you must specify the connected areas. An area is a collection of regions. Each area contains one or more Alibaba Cloud regions. You can select the connected areas based on the regions that you want to connect. For more information about the relationship between areas and regions, see [Purchase a bandwidth plan](https://help.aliyun.com/document_detail/181560.html).
 //
-// - For more information about the billing details of bandwidth plans, see [Billing](https://help.aliyun.com/document_detail/189836.html).
+// - For more information about the billing details of bandwidth plans, see [Billing overview](https://help.aliyun.com/document_detail/189836.html).
 //
-// - **CreateCenBandwidthPackage*	- is an asynchronous operation. After you invoke the operation, the system returns a bandwidth plan instance ID but the bandwidth plan is not yet created. The creation node is still running in the background. You can invoke the **DescribeCenBandwidthPackages*	- operation to query the status of the bandwidth plan. When the bandwidth plan is in the **Idle*	- or **InUse*	- state, the bandwidth plan is created.
+// - The **CreateCenBandwidthPackage*	- operation is asynchronous. The system returns the instance ID of the bandwidth plan before the bandwidth plan is created. The creation node is still running in the background. You can invoke the **DescribeCenBandwidthPackages*	- operation to query the status of the bandwidth plan. If the bandwidth plan is in the **Idle*	- or **InUse*	- state, the bandwidth plan is created.
 //
 // @param request - CreateCenBandwidthPackageRequest
 //
@@ -841,17 +845,17 @@ func (client *Client) CreateCenBandwidthPackageWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Adds a route entry to a network instance connected to an Enterprise Edition transit router. The destination CIDR block points to the transit router in the current region as the next hop.
+// Creates a route entry for a network instance connected to an Enterprise Edition transit router. The next hop of the destination CIDR block points to the transit router in the current region.
 //
 // Description:
 //
-// - You can add route entries only to Virtual Private Cloud (VPC) instances and Virtual Border Router (VBR) instances that are connected to an Enterprise Edition transit router.
+// - You can add route entries only for virtual private cloud (VPC) instances and virtual border router (VBR) instances connected to an Enterprise Edition transit router.
 //
-// - The next hop of the route entry defaults to the **transit router connection*	- (network instance connection) and cannot be modified.
+// - The next hop of the route entry defaults to the **transit router connection*	- (that is, the network instance connection) and cannot be modified.
 //
-// - **CreateCenChildInstanceRouteEntryToAttachment*	- is an asynchronous operation. After you send a request, the system returns a **RequestId*	- but the route entry is not yet created. The creation task continues to run in the background. You can call the **DescribeRouteEntryList*	- operation of VPC to query the status of the route entry.
+// - The **CreateCenChildInstanceRouteEntryToAttachment*	- operation is asynchronous. After you call the operation, the system returns a **RequestId**, but the route entry is not created yet and the creation task is still running in the background. You can call the **DescribeRouteEntryList*	- operation of the VPC to query the status of the route entry.
 //
-//   - If the route entry is in the **Pending*	- state, the route entry is being created. In this state, you can only query the route entry but cannot perform other operations.
+//   - If the route entry is in the **Pending*	- state, the route entry is being created. In this state, you can only query the route entry and cannot perform other operations.
 //
 //   - If the route entry is in the **Available*	- state, the route entry is created.
 //
@@ -933,15 +937,15 @@ func (client *Client) CreateCenChildInstanceRouteEntryToAttachmentWithContext(ct
 
 // Summary:
 //
-// Adds a route entry to a network instance by calling the CreateCenChildInstanceRouteEntryToCen operation.
+// Adds a route entry to a network instance.
 //
 // Description:
 //
-// - The CreateCenChildInstanceRouteEntryToCen operation is not available by default. To use this operation, <props="china">[submit a ticket](https://selfservice.console.aliyun.com/ticket/category/cbn/today)<props="intl">[submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+// - By default, the CreateCenChildInstanceRouteEntryToCen operation is not available. To use this operation, <props="china">[submit a ticket](https://selfservice.console.aliyun.com/ticket/category/cbn/today)<props="intl">[submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
 //
-// - The CreateCenChildInstanceRouteEntryToCen operation does not support adding route entries to network instances in an Enterprise Edition transit router.
+// - The CreateCenChildInstanceRouteEntryToCen operation does not support adding route entries to network instances in Enterprise Edition transit routers.
 //
-// - The next hop of the route entry defaults to the regional gateway of Cloud Enterprise Network (CEN) and cannot be modified.
+// - The next hop of the route entry defaults to the regional gateway of the Cloud Enterprise Network (CEN) and cannot be modified.
 //
 // @param request - CreateCenChildInstanceRouteEntryToCenRequest
 //
@@ -1025,25 +1029,25 @@ func (client *Client) CreateCenChildInstanceRouteEntryToCenWithContext(ctx conte
 
 // Summary:
 //
-// Creates a cross-region traffic scheduling policy for an Enterprise Edition transit router to optimize and control network traffic across regions.
+// Creates a cross-region traffic scheduling policy for an Enterprise Edition transit router. You can invoke the CreateCenInterRegionTrafficQosPolicy operation to optimize and control forward and routing of cross-area network traffic.
 //
 // Description:
 //
-// - Only inter-region connections of Enterprise Edition transit routers support the creation of cross-region traffic scheduling policies.
+// - Only inter-region connections of an Enterprise Edition transit router support inter-region traffic QoS policies.
 //
-// - The traffic scheduling feature takes effect only in the outbound direction of an Enterprise Edition transit router.
+// - The traffic QoS feature applies only to the outbound direction of an Enterprise Edition transit router.
 //
-//	For example, if you create an inter-region connection between the China (Hangzhou) and China (Qingdao) regions and configure the traffic scheduling feature on the transit router in the China (Hangzhou) region, the traffic scheduling feature can guarantee bandwidth for various services when traffic flows from the China (Hangzhou) region to the China (Qingdao) region. However, the traffic scheduling feature does not guarantee service bandwidth when traffic flows from the China (Qingdao) region to the China (Hangzhou) region.
+//	For example, if you create an inter-region connection between the China (Hangzhou) and China (Qingdao) regions and configure the traffic QoS feature for the transit router in the China (Hangzhou) region, the feature guarantees the bandwidth for various services when traffic flows from the China (Hangzhou) region to the China (Qingdao) region. However, the feature does not guarantee the service bandwidth when traffic flows from the China (Qingdao) region to the China (Hangzhou) region.
 //
-// - **CreateCenInterRegionTrafficQosPolicy*	- is an asynchronous operation. After you send a request, the system returns a traffic scheduling policy ID but the policy is not yet created. The creation task continues to run in the background. You can call **ListCenInterRegionTrafficQosPolicies*	- to query the status of the traffic scheduling policy.
+// - The **CreateCenInterRegionTrafficQosPolicy*	- operation is asynchronous. After you call this operation, the system returns a traffic QoS policy ID, but the policy is not immediately created. The creation task continues in the background. You can call the **ListCenInterRegionTrafficQosPolicies*	- operation to query the status of the traffic QoS policy.
 //
-//   - If the traffic scheduling policy is in the **Creating*	- state, the policy is being created. In this state, you can only query the policy but cannot perform other operations on it.
+//   - If the traffic QoS policy is in the **Creating*	- state, the policy is being created. In this state, you can only query the policy and cannot perform other operations.
 //
-//   - If the traffic scheduling policy is in the **Active*	- state, the policy is created.
+//   - If the traffic QoS policy is in the **Active*	- state, the policy is created.
 //
 // ### Before you begin
 //
-// Before you call **CreateCenInterRegionTrafficQosPolicy**, make sure that the following conditions are met:
+// Before you call the **CreateCenInterRegionTrafficQosPolicy*	- operation, make sure that the following requirements are met:
 //
 // - An inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html).
 //
@@ -1139,13 +1143,13 @@ func (client *Client) CreateCenInterRegionTrafficQosPolicyWithContext(ctx contex
 
 // Summary:
 //
-// Creates a queue configuration under a traffic scheduling policy. If you need to manage different types and priorities of network traffic to ensure the performance of critical service traffic and comply with Service-Level Agreements (SLAs), you can call the CreateCenInterRegionTrafficQosQueue operation.
+// Creates a queue configuration for a traffic scheduling policy. You can invoke the CreateCenInterRegionTrafficQosQueue operation to manage network traffic of different types and priorities in a fine-grained manner, ensuring the performance of critical service traffic and compliance with the service level protocol.
 //
 // Description:
 //
-// *CreateCenInterRegionTrafficQosQueue*	- is an asynchronous operation. After you send a request, the system returns a queue ID but the queue is not yet created. The creation task continues to run in the background. You can call the **ListCenInterRegionTrafficQosPolicies*	- operation to query the status of the traffic scheduling policy to determine the creation status of the queue. When you call this operation, you must specify the **TrafficQosPolicyId*	- parameter.
+// The **CreateCenInterRegionTrafficQosQueue*	- operation is asynchronous. The system first returns a queue ID, but the queue is not yet created and the creation task is still running in the background. You can call the **ListCenInterRegionTrafficQosPolicies*	- operation to query the status of the traffic scheduling policy and determine the creation status of the queue. When you query the status, you must specify the **TrafficQosPolicyId*	- parameter.
 //
-// - If the traffic scheduling policy is in the **Modifying*	- state, the queue is being created. In this state, you can only query the traffic scheduling policy and queue. You cannot perform other operations.
+// - If the traffic scheduling policy is in the **Modifying*	- state, the queue is being created. In this state, you can only perform query operations on the traffic scheduling policy and the queue. You cannot perform other operations.
 //
 // - If the traffic scheduling policy is in the **Active*	- state, the queue is created.
 //
@@ -1235,17 +1239,17 @@ func (client *Client) CreateCenInterRegionTrafficQosQueueWithContext(ctx context
 
 // Summary:
 //
-// Creates a routing policy. The routing policy feature allows you to filter route information and customize the management of cloud network connectivity.
+// Creates a route map for Cloud Enterprise Network (CEN) to filter route information and customize network connectivity management on Alibaba Cloud.
 //
 // Description:
 //
-// Routing policies are sorted by priority. A smaller priority value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. When a routing policy is executed, routes are matched against conditional statements starting from the routing policy with the highest priority. For routes that match all conditions, the routing policy either permits or denies the routes based on the policy action. Routes that are permitted can have their attributes modified. For routes that do not match all conditions, the system permits the routes by default. For more information, see [Routing policy overview](https://help.aliyun.com/document_detail/124157.html).
+// Route maps are sorted by priority. A smaller priority value indicates a higher priority. Each route map is a collection of conditional statements and execution statements. When a policy is executed, routing starts matching conditional statements from the policy with the highest priority. For routing that meets all match conditions, the policy will permit or deny the routing based on the policy action. Modifying the route property is supported for permitted routing. For routing that does not meet all match conditions, the system permits the routing to pass by default. For more information, see [Route map overview](https://help.aliyun.com/document_detail/124157.html).
 //
-// `CreateCenRouteMap` is an asynchronous operation. After you call this operation, a routing policy ID is returned, but the routing policy has not been created. The system continues to create the routing policy in the background. You can call `DescribeCenRouteMaps` to query the status of the routing policy.
+// The `CreateCenRouteMap` operation is asynchronous. After you invoke this operation, the system returns a route map ID, but the route map is not immediately created. The creation node is still running in the background. You can invoke the `DescribeCenRouteMaps` operation to query the status of the route map.
 //
-// - If the routing policy is in the **Creating*	- state, the routing policy is being created. In this state, you can only perform query operations.
+// - If the route map is in the **Creating*	- state, the route map is being created. In this state, you can only execute query operations.
 //
-// - If the routing policy is in the **Active*	- state, the routing policy is created.
+// - If the route map is in the **Active*	- state, the route map is created.
 //
 // @param request - CreateCenRouteMapRequest
 //
@@ -1425,17 +1429,17 @@ func (client *Client) CreateCenRouteMapWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// Flow logs help you catch traffic information transmitted by transit router instances and network instance connections (inter-region connections, VPC connections, VPN connections, ECR connections, and VBR connections). Before creating a flow log, note the following:
+// Flow logs help you capture traffic information transmitted by transit router instances and network instance connections (inter-region connections, VPC connections, VPN connections, ECR connections, and VBR connections). Before you create a flow log, take note of the following items:
 //
-// - Only Enterprise Edition transit routers support flow log creation.
+// - Only Enterprise Edition transit routers support flow logs.
 //
-// - For traffic information of inter-region connections, flow logs catch only outbound traffic of the transit router. Inbound traffic of the transit router is not caught.
+// - For inter-region connections, flow logs capture only outbound traffic from the transit router and do not capture inbound traffic to the transit router.
 //
-//	For example, an Elastic Computing Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through Cloud Enterprise Network (CEN). After you configure a flow log for the transit router in the US (Virginia) region, you can view the packet information sent from the US (Virginia) ECS instance to the US (Silicon Valley) ECS instance in the Simple Log Service console. However, you cannot view the packet information sent from the US (Silicon Valley) ECS instance to the US (Virginia) ECS instance. To view the packet information sent from the US (Silicon Valley) ECS instance to the US (Virginia) ECS instance, configure a flow log on the transit router in the US (Silicon Valley) region.
+//	For example, if an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through Cloud Enterprise Network (CEN), after you configure a flow log for the transit router in the US (Virginia) region, you can view the packet information that the ECS instance in the US (Virginia) region sends to the ECS instance in the US (Silicon Valley) region in the Simple Log Service console. However, you cannot view the packet information that the ECS instance in the US (Silicon Valley) region sends to the ECS instance in the US (Virginia) region. To view the packet information that the ECS instance in the US (Silicon Valley) region sends to the ECS instance in the US (Virginia) region, you must also configure a flow log for the transit router in the US (Silicon Valley) region.
 //
-// - When a flow log catches traffic information of a VPC connection, it catches only the traffic transmitted by the transit router elastic network interface (ENI). To view traffic information of other ENIs in the VPC, see [VPC flow log overview](https://help.aliyun.com/document_detail/127150.html).
+// - When a flow log captures traffic information for a VPC connection, it captures only the traffic transmitted by the elastic network interfaces (ENIs) of the transit router. To view the traffic transmitted by other ENIs in the VPC, see [Overview of VPC flow logs](https://help.aliyun.com/document_detail/127150.html).
 //
-// - The `CreateFlowlog` operation is asynchronous. After you send a request, the system returns a flow log ID while the flow log is still being created in the background. You can call the `DescribeFlowlogs` operation to query the status of the flow log.
+// - The `CreateFlowlog` operation is asynchronous. The system first returns a flow log ID, but the flow log is not yet created. The creation task continues to run in the background. You can call the `DescribeFlowlogs` operation to query the status of the flow log.
 //
 //   - If the flow log is in the **Creating*	- state, the flow log is being created. In this state, you can only perform query operations.
 //
@@ -1443,7 +1447,7 @@ func (client *Client) CreateCenRouteMapWithContext(ctx context.Context, request 
 //
 // ### Before you begin
 //
-// Before creating a flow log for a resource, make sure that you have created the required resources. For information about how to create each resource, see:
+// Before you create a flow log for a resource, make sure that you have the relevant resources. For more information about how to create each resource, see:
 //
 // - [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/468237.html)
 //
@@ -1549,6 +1553,182 @@ func (client *Client) CreateFlowlogWithContext(ctx context.Context, request *Cre
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFlowlogResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a route map to control the routing behavior between network instances.
+//
+// Description:
+//
+// The `CreateRouteMap` operation is asynchronous. The system first returns a route map ID, but the route map is not yet created. The creation task continues to run in the background. You can call the `ListRouteMaps` operation to query the status of the route map.
+//
+// - When the route map is in the **Creating*	- state, the route map is being created. In this state, you can only perform query operations and cannot perform other operations.
+//
+// - When the route map is in the **Active*	- state, the route map is created.
+//
+// @param request - CreateRouteMapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRouteMapResponse
+func (client *Client) CreateRouteMapWithContext(ctx context.Context, request *CreateRouteMapRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteMapResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRouteMap"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRouteMapResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a route map rule.
+//
+// Description:
+//
+// ## Request description
+//
+// - `RouteMapId` is a required parameter that specifies the route map to which the new rule belongs.
+//
+// - `Priority` is a required parameter. A smaller value indicates a higher priority. Rules within the same route map cannot have duplicate priorities.
+//
+// - `Name` and `Description` are optional parameters used to identify the rule and describe its purpose.
+//
+// - `MatchConditions` defines the match conditions for the rule, and `SetActions` defines the actions to be executed when a route meets all match conditions. Both are passed as JSON strings.
+//
+// - `DryRun` is an optional parameter used to precheck the request without actually creating the route map rule.
+//
+// @param tmpReq - CreateRouteMapRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRouteMapRuleResponse
+func (client *Client) CreateRouteMapRuleWithContext(ctx context.Context, tmpReq *CreateRouteMapRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteMapRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateRouteMapRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.MatchConditions) {
+		request.MatchConditionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MatchConditions, dara.String("MatchConditions"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SetActions) {
+		request.SetActionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SetActions, dara.String("SetActions"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.MatchConditionsShrink) {
+		query["MatchConditions"] = request.MatchConditionsShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.RouteMapId) {
+		query["RouteMapId"] = request.RouteMapId
+	}
+
+	if !dara.IsNil(request.SetActionsShrink) {
+		query["SetActions"] = request.SetActionsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRouteMapRule"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRouteMapRuleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1761,19 +1941,19 @@ func (client *Client) CreateTransitRouteTableAggregationWithContext(ctx context.
 
 // Summary:
 //
-// Calls the CreateTransitRouter operation to create an Enterprise Edition transit router instance.
+// Creates an Enterprise Edition transit router instance.
 //
 // Description:
 //
-// - You can call the **CreateTransitRouter*	- operation to create an Enterprise Edition transit router instance. Enterprise Edition transit routers are available only in some regions. For more information about regions, see [What is Cloud Enterprise Network?](https://help.aliyun.com/document_detail/181681.html).
+// - You can invoke the **CreateTransitRouter*	- operation to create an Enterprise Edition transit router instance to forward traffic and perform routing. Enterprise Edition transit routers are available only in specific regions. For more information about the supported regions, see [What is Cloud Enterprise Network?](https://help.aliyun.com/document_detail/181681.html).
 //
-// - **CreateTransitRouter*	- is an asynchronous operation. After you send a request, the system returns an Enterprise Edition transit router instance ID but the instance is not yet created. The creation task is still running in the background. You can call the [ListTransitRouters](https://help.aliyun.com/document_detail/261219.html) operation to query the status of the Enterprise Edition transit router instance.
+// - The **CreateTransitRouter*	- operation is asynchronous. After you invoke this operation, the system returns the Enterprise Edition transit router instance ID. However, the instance is not immediately created, and the creation node is still running in the background. You can invoke the [ListTransitRouters](https://help.aliyun.com/document_detail/261219.html) operation to query the status of the Enterprise Edition transit router instance.
 //
-//   - If the Enterprise Edition transit router instance is in the **Creating*	- state, the instance is being created. In this state, you can only query the instance but cannot perform other operations on it.
+//   - If the Enterprise Edition transit router instance is in the **Creating*	- state, the instance is being created. In this state, you can only execute query operations on the instance and cannot perform other operations.
 //
 //   - If the Enterprise Edition transit router instance is in the **Active*	- state, the instance is created.
 //
-// - Only one transit router instance can be created in each region within a Cloud Enterprise Network (CEN) instance.
+// - You can create only one transit router instance in each region for a Cloud Enterprise Network (CEN) instance.
 //
 // @param tmpReq - CreateTransitRouterRequest
 //
@@ -1983,37 +2163,37 @@ func (client *Client) CreateTransitRouterCidrWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates a connection between an Express Connect Router (ECR) instance and a transit router instance in the same region.
+// Creates an Express Connect Router (ECR) connection to connect an ECR network instance to a transit router in the same region.
 //
 // Description:
 //
 // - Only Enterprise Edition transit routers support ECR connections.
 //
-// - You can create an ECR connection on an Enterprise Edition transit router in the following ways:
+// - You can create an ECR connection on an Enterprise Edition transit router in one of the following ways:
 //
-//   - If you have already created an Enterprise Edition transit router instance in the target region, you can create an ECR connection by specifying **EcrId**, **RegionId**, and **TransitRouterId**.
+//   - If you have already created an Enterprise Edition transit router in the target region, you can create an ECR connection by specifying **EcrId**, **RegionId**, and **TransitRouterId**.
 //
-//   - If you do not have an Enterprise Edition transit router instance in the target region, you can create an ECR connection by specifying **EcrId**, **CenId**, and **RegionId**. The system performs automatic creation of an Enterprise Edition transit router instance when the ECR connection is created.
+//   - If you do not have an Enterprise Edition transit router in the target region, you can create an ECR connection by specifying **EcrId**, **CenId**, and **RegionId**. During the creation of the ECR connection, the system performs automatic creation of an Enterprise Edition transit router.
 //
-// - The CreateTransitRouterEcrAttachment operation is asynchronous. After you send a request, the system returns an ECR connection ID but the ECR connection is not yet created. The creation node runs in the background. You can invoke the ListTransitRouterEcrAttachments operation to query the status of the ECR connection.
+// - The CreateTransitRouterEcrAttachment operation is asynchronous. The system first returns an ECR connection ID, but the ECR connection is not fully created and the creation node is still running in the background. You can invoke the ListTransitRouterEcrAttachments operation to query the status of the ECR connection.
 //
-//   - If the ECR connection is in the **Attaching*	- state, the ECR connection is being created. In this state, you can only execute query operations on the ECR connection but cannot execute other operations on it.
+//   - If the ECR connection is in the **Attaching*	- state, the ECR connection is being created. In this state, you can only query the ECR connection and cannot execute other operations.
 //
 //   - If the ECR connection is in the **Attached*	- state, the ECR connection is created.
 //
-// - After an ECR connection is created, the ECR connection does not have a routing learning relationship or an associated forwarding relationship with any Enterprise Edition transit router route table by default.
+// - After an ECR connection is created, the ECR connection does not establish routing learning or associated forwarding relationships with any Enterprise Edition transit router routing tables by default.
 //
-//	After the ECR connection establishes a [routing learning relationship](https://help.aliyun.com/document_detail/468300.html) with an Enterprise Edition transit router route table, the system automatically propagates the routes of the ECR instance to the Enterprise Edition transit router route table.
+//	After the ECR connection establishes a [routing learning relationship](https://help.aliyun.com/document_detail/468300.html) with an Enterprise Edition transit router routing table, the system automatically propagates routing from the ECR instance to the Enterprise Edition transit router routing table.
 //
-// - After an ECR connection is created, the system automatically propagates the routes in the Enterprise Edition transit router route table associated with the ECR connection to the route table of the ECR instance.
+// - After an ECR connection is created, the system automatically propagates routing from the associated Enterprise Edition transit router routing table to the routing table of the ECR instance.
 //
 // ### Before you begin
 //
-// - The Alibaba Cloud account that owns the Enterprise Edition transit router and the Alibaba Cloud account that owns the ECR instance must belong to the same enterprise.
+// - The Alibaba Cloud account to which the Enterprise Edition transit router belongs and the Alibaba Cloud account to which the ECR instance belongs must belong to the same enterprise.
 //
-// - Enterprise Edition transit routers support connections to ECR instances that belong to the same account or a different account. Before creating a cross-account ECR connection, obtain authorization from the cross-account ECR instance. For more information, see [Cross-account authorization for network instances](https://help.aliyun.com/document_detail/181553.html).
+// - Enterprise Edition transit routers support connections to ECR instances within the same account or across accounts. Before you create a cross-account ECR connection, obtain authorization for the cross-account ECR instance. For more information, see [Grant permissions on cross-account network instances](https://help.aliyun.com/document_detail/181553.html).
 //
-// - **Before invoking this operation to create an ECR connection, invoke the [CreateExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712082.html) operation to associate the ECR instance with the Enterprise Edition transit router instance.**
+// - **Before you invoke this operation to create an ECR connection, invoke the [CreateExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712082.html) operation to associate the ECR instance with the Enterprise Edition transit router instance.**
 //
 //	**When you invoke the DeleteTransitRouterEcrAttachment operation to force delete an ECR connection, the system also deletes the association between the ECR instance and the Enterprise Edition transit router instance. You do not need to delete the association separately.**
 //
@@ -2115,13 +2295,13 @@ func (client *Client) CreateTransitRouterEcrAttachmentWithContext(ctx context.Co
 //
 // Description:
 //
-// Before you begin:
+// Before you call this operation, take note of the following information:
 //
-// - Make sure that you have created an Enterprise Edition transit router in the region where you want to establish a multicast network and that you have enabled the multicast feature for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](https://help.aliyun.com/document_detail/261169.html).
+// - Make sure that you have created an Enterprise Edition transit router in the region where you want to establish the multicast network, and enabled the multicast feature for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](https://help.aliyun.com/document_detail/261169.html).
 //
-//	If you created an Enterprise Edition transit router instance before applying for multicast resources, the Enterprise Edition transit router instance does not support the multicast feature. You can delete the current Enterprise Edition transit router instance and create a new one. For information about how to delete an Enterprise Edition transit router instance, see [DeleteTransitRouter](https://help.aliyun.com/document_detail/261218.html).
+//	If you have already created an Enterprise Edition transit router instance before applying for multicast resources, the multicast feature cannot be enabled for the instance. You can delete the current Enterprise Edition transit router instance and create a new one. For more information about how to delete an Enterprise Edition transit router instance, see [DeleteTransitRouter](https://help.aliyun.com/document_detail/261218.html).
 //
-// - When you call the **CreateTransitRouterMulticastDomain*	- operation, if you specify the **CenId*	- and **RegionId*	- parameters, you do not need to specify the **TransitRouterId*	- parameter. If you specify the **TransitRouterId*	- parameter, you do not need to specify the **CenId*	- or **RegionId*	- parameter.
+// - When you call the **CreateTransitRouterMulticastDomain*	- operation, if you specify the **CenId*	- and **RegionId*	- parameters, you do not need to specify the **TransitRouterId*	- parameter. If you specify the **TransitRouterId*	- parameter, you do not need to specify the **CenId*	- and **RegionId*	- parameters.
 //
 // @param request - CreateTransitRouterMulticastDomainRequest
 //
@@ -2639,29 +2819,29 @@ func (client *Client) CreateTransitRouterRouteTableWithContext(ctx context.Conte
 
 // Summary:
 //
-// Invokes the CreateTransitRouterVbrAttachment operation to connect a Virtual Border Router (VBR) network instance to a transit router instance in the same region. After the connection is established, the transit router can help you achieve private network peering.
+// Creates a VBR connection on an Enterprise Edition transit router. You can invoke the CreateTransitRouterVbrAttachment operation to connect a virtual border router (VBR) network instance to a transit router instance that can forward and perform routing in the same region. After the connection is established, the transit router enables private network peering.
 //
 // Description:
 //
 // - For information about the regions and zones supported by Enterprise Edition transit routers, see [What is Cloud Enterprise Network?](https://help.aliyun.com/document_detail/181681.html).
 //
-// - You can create a VBR connection on an Enterprise Edition transit router in the following ways:
+// - You can create a VBR connection on an Enterprise Edition transit router by using one of the following methods:
 //
-//   - If you have already created an Enterprise Edition transit router instance in the target region, you can create a VBR connection by specifying **VbrId**, **RegionId**, and **TransitRouterId**.
+//   - If you have already created an Enterprise Edition transit router instance that can forward and perform routing in the target region, you can create a VBR connection by specifying **VbrId**, **RegionId**, and **TransitRouterId**.
 //
-//   - If you do not have an Enterprise Edition transit router instance in the target region, you can create a VBR connection by specifying **VbrId**, **CenId**, and **RegionId**. The system automatically creates an Enterprise Edition transit router instance when the VBR connection is created.
+//   - If you have not created an Enterprise Edition transit router instance in the target region, you can create a VBR connection by specifying **VbrId**, **CenId**, and **RegionId**. The system performs automatic creation of an Enterprise Edition transit router instance that can forward and perform routing when the VBR connection is created.
 //
-// - **CreateTransitRouterVbrAttachment*	- is an asynchronous operation. After you send a request, the system returns a VBR connection ID but the VBR connection is not yet created. The creation task runs in the background. You can call **ListTransitRouterVbrAttachments*	- to query the status of the VBR connection.
+// - **CreateTransitRouterVbrAttachment*	- is an asynchronous operation. The system returns a VBR connection ID, but the VBR connection is not yet created and the creation task is still running in the background. You can call **ListTransitRouterVbrAttachments*	- to query the status of the VBR connection.
 //
 //   - If the VBR connection is in the **Attaching*	- state, the VBR connection is being created. In this state, you can only query the VBR connection and cannot perform other operations.
 //
 //   - If the VBR connection is in the **Attached*	- state, the VBR connection is created.
 //
-// - The Alibaba Cloud account that owns the transit router and the Alibaba Cloud account that owns the VBR instance must belong to the same enterprise.
+// - The Alibaba Cloud account to which the transit router belongs and the Alibaba Cloud account to which the VBR belongs must belong to the same enterprise.
 //
-// - Transit routers support connecting to VBR instances that belong to the same account or a different account. Before creating a cross-account VBR connection, obtain authorization from the VBR instance owner. For more information, see [Grant permissions for cross-account network instances](https://help.aliyun.com/document_detail/181553.html).
+// - Transit routers support connecting VBRs within the same account and across accounts. Before creating a cross-account VBR connection, obtain authorization for the cross-account VBR. For more information, see [Grant permissions on cross-account network instances](https://help.aliyun.com/document_detail/181553.html).
 //
-// - After a VBR connection is created, the VBR connection does not establish route learning or association forwarding relationships with any transit router route table by default.
+// - After a VBR connection is created, the VBR connection does not establish route learning or associated forwarding relationships with any transit router route tables by default.
 //
 // @param request - CreateTransitRouterVbrAttachmentRequest
 //
@@ -2761,33 +2941,33 @@ func (client *Client) CreateTransitRouterVbrAttachmentWithContext(ctx context.Co
 
 // Summary:
 //
-// Calls the CreateTransitRouterVpcAttachment operation to connect a Virtual Private Cloud (VPC) instance to a transit router instance for private network peering. After the connection is established, the transit router instance can help you achieve private network peering.
+// Calls the CreateTransitRouterVpcAttachment operation to attach a Virtual Private Cloud (VPC) instance to an Enterprise Edition transit router instance to enable private network peering. After the attachment is created, the transit router instance helps you implement private network connectivity through forwarding and routing.
 //
 // Description:
 //
-// - You can create a VPC connection on an Enterprise Edition transit router in the following two ways:
+// - You can create a VPC attachment for an Enterprise Edition transit router in two ways:
 //
-//   - If you have already created an Enterprise Edition transit router instance in the target region, you can create a VPC connection by specifying **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **TransitRouterId**, and **RegionId**.
+//   - If you have already created an Enterprise Edition transit router instance in the target region, specify **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **TransitRouterId**, and **RegionId*	- to create the VPC attachment.
 //
-//   - If you do not have an Enterprise Edition transit router instance in the target region, you can create a VPC connection by specifying **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. The system performs automatic creation of an Enterprise Edition transit router instance when the VPC connection is created.
+//   - If you have not created an Enterprise Edition transit router instance in the target region, specify **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId*	- to create the VPC attachment. The system uses automatic creation to create an Enterprise Edition transit router instance when you create the VPC attachment.
 //
-// - The **CreateTransitRouterVpcAttachment*	- operation is asynchronous. After you send a request, the system returns a VPC connection ID, but the VPC connection is not yet created. The creation node is still running in the background. You can invoke the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of the VPC connection.
+// - **CreateTransitRouterVpcAttachment*	- is an asynchronous operation. The system returns a VPC attachment ID before the VPC attachment is created. The creation task runs in the background. Call [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) to query the status of the VPC attachment.
 //
-//   - If the VPC connection is in the **Attaching*	- state, the VPC connection is being created. In this state, you can only execute query operations on the VPC connection but cannot execute other operations.
+//   - When the VPC attachment is in the **Attaching*	- state, the VPC attachment is being created. In this state, you can only query the VPC attachment and cannot execute other operations.
 //
-//   - If the VPC connection is in the **Attached*	- state, the VPC connection is created.
+//   - When the VPC attachment is in the **Attached*	- state, the VPC attachment is created.
 //
-// - After a VPC connection is created, the VPC connection does not establish routing learning or associate forwarding relationships with any transit router routing table by default.
+// - After a VPC attachment is created, it does not associate with any transit router route table for route learning relationships or forwarding relationships by default.
 //
 // ### Before you begin
 //
-// Before you call this operation to create a VPC connection, make sure that the following conditions are met:
+// Before you call this operation to create a VPC attachment, make sure that the following requirements are met:
 //
-// - The VPC instance has at least one vSwitch instance in a zone supported by the Enterprise Edition transit router, and the vSwitch instance has at least one idle IP address. For information about the regions and zones supported by Enterprise Edition transit routers, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
+// - The VPC instance has at least one vSwitch instance with at least one available IP address in a zone supported by the Enterprise Edition transit router. For information about the regions and zones supported by Enterprise Edition transit routers, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
 //
-// - If you want to connect a cross-account VPC-connected instance, obtain the cross-account VPC-connected instance authorization first. For more information, see [Cross-account VPC-connected instance authorization](https://help.aliyun.com/document_detail/181553.html).
+// - If you want to attach a VPC-connected instance that belongs to a different account, obtain cross-account authorization first. For more information, see [Cross-account VPC-connected instance authorization](https://help.aliyun.com/document_detail/181553.html).
 //
-// - Fees are incurred after a VPC connection is created. Make sure that you understand the billing rules. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
+// - Creating a VPC attachment incurs fees. Make sure that you understand the billing rules. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
 //
 // @param tmpReq - CreateTransitRouterVpcAttachmentRequest
 //
@@ -3763,6 +3943,130 @@ func (client *Client) DeleteFlowlogWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
+// Deletes a specified route map.
+//
+// Description:
+//
+// If the route map to be deleted is still associated with any resources, this operation fails.
+//
+// If route map rules exist under the route map, this operation is not supported.
+//
+// The DeleteRouteMap operation is asynchronous. The system returns a **RequestId**, but the route map is not completely deleted. The deletion task continues in the background. You can call the ListRouteMaps operation to query the status of the route map.
+//
+// - If the route map is in the **Deleting*	- state, the route map is being deleted. In this state, you can only perform query operations.
+//
+// - If the route map cannot be queried by using the ListRouteMaps operation, the route map is completely deleted.
+//
+// @param request - DeleteRouteMapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRouteMapResponse
+func (client *Client) DeleteRouteMapWithContext(ctx context.Context, request *DeleteRouteMapRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteMapResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.RouteMapId) {
+		query["RouteMapId"] = request.RouteMapId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRouteMap"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRouteMapResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified route map rule.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API operation deletes an existing route map rule.
+//
+// - If the rule to be deleted is still associated with any resources, this operation fails.
+//
+// @param request - DeleteRouteMapRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRouteMapRuleResponse
+func (client *Client) DeleteRouteMapRuleWithContext(ctx context.Context, request *DeleteRouteMapRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteMapRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.RouteMapRuleId) {
+		query["RouteMapRuleId"] = request.RouteMapRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRouteMapRule"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRouteMapRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Call the DeleteRouteServiceInCen operation to delete the configuration of an Alibaba Cloud service from a Basic Edition transit router.
 //
 // Description:
@@ -4007,13 +4311,13 @@ func (client *Client) DeleteTransitRouteTableAggregationWithContext(ctx context.
 
 // Summary:
 //
-// Calls the DeleteTransitRouter operation to delete an Enterprise Edition transit router instance.
+// Deletes an Enterprise Edition transit router instance.
 //
 // Description:
 //
-// *DeleteTransitRouter*	- is an asynchronous operation. After you send a request, the system returns a **RequestId*	- but the transit router instance is not yet deleted. The deletion task continues to run in the background. You can call the **ListTransitRouters*	- operation to query the status of the transit router instance.
+// *DeleteTransitRouter*	- is an asynchronous operation. After you send a request, the system returns a **RequestId*	- but the transit router instance is not immediately deleted. The deletion task runs in the background. You can call the **ListTransitRouters*	- operation to query the status of the transit router instance.
 //
-// - If the transit router instance is in the **Deleting*	- state, the transit router instance is being deleted. In this state, you can only query the transit router instance. You cannot perform other operations on the transit router instance.
+// - If the transit router instance is in the **Deleting*	- state, the transit router instance is being deleted. In this state, you can only query the transit router instance but cannot perform other operations on it.
 //
 // - If the transit router instance cannot be found, the transit router instance is deleted.
 //
@@ -4023,7 +4327,7 @@ func (client *Client) DeleteTransitRouteTableAggregationWithContext(ctx context.
 //
 // - No connections exist on the transit router instance.
 //
-//   - To delete a Virtual Private Cloud (VPC) connection, see [DeleteTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/261220.html).
+//   - To delete a virtual private cloud (VPC) connection, see [DeleteTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/261220.html).
 //
 //   - To delete an Express Connect Router (ECR) connection, see [DeleteTransitRouterEcrAttachment](https://help.aliyun.com/document_detail/2715447.html).
 //
@@ -4033,11 +4337,11 @@ func (client *Client) DeleteTransitRouteTableAggregationWithContext(ctx context.
 //
 //   - To delete an inter-region connection, see [DeleteTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261227.html).
 //
-//   - To delete a Virtual Border Router (VBR) connection, see [DeleteTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261223.html).
+//   - To delete a virtual border router (VBR) connection, see [DeleteTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261223.html).
 //
 // - No custom route tables exist on the transit router instance. For more information, see [DeleteTransitRouterRouteTable](https://help.aliyun.com/document_detail/261235.html).
 //
-// - No custom route entries, route prefixes, or aggregate routes exist in the default route table of the transit router instance. For more information, see
+// - No custom route entries, route prefixes, or aggregate routes exist in the default route table of the transit router instance. For more information, see:
 //
 //   - To delete custom route entries of an Enterprise Edition transit router, see [DeleteTransitRouterRouteEntry](https://help.aliyun.com/document_detail/468291.html).
 //
@@ -4883,11 +5187,7 @@ func (client *Client) DeleteTransitRouterVpcAttachmentWithContext(ctx context.Co
 
 // Summary:
 //
-// Deletes a VPN connection by calling the DeleteTransitRouterVpnAttachment operation.
-//
-// Description:
-//
-// When you call the **DeleteTransitRouterVpnAttachment*	- operation, make sure that the parameter values you specify are correct. If you specify incorrect parameter values, the system still returns a **RequestId*	- but does not delete the VPN connection.
+// 删除VPN连接
 //
 // @param request - DeleteTransitRouterVpnAttachmentRequest
 //
@@ -6489,7 +6789,7 @@ func (client *Client) DescribeGrantRulesToResourceWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the publish status, next hop associated instance type, and whether publishing or withdrawing is allowed for route entries of network instances (VPCs and VBRs) that are loaded into a Cloud Enterprise Network (CEN) instance.
+// Queries the publication status in Cloud Enterprise Network (CEN) for routes loaded to CEN network instances such as VPCs and VBRs, the instance type associated with the next hop of each route entry, and whether the route can be published to or withdrawn from CEN.
 //
 // @param request - DescribePublishedRouteEntriesRequest
 //
@@ -6569,7 +6869,7 @@ func (client *Client) DescribePublishedRouteEntriesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries information about conflicting route entries in a network instance.
+// Invokes the DescribeRouteConflict operation to query the routing information about route entry conflicts in a network instance.
 //
 // @param request - DescribeRouteConflictRequest
 //
@@ -6737,11 +7037,11 @@ func (client *Client) DescribeRouteServicesInCenWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries aggregate routes in an Enterprise Edition transit router route table.
+// Queries the aggregate routes in the route table of an Enterprise Edition transit router.
 //
 // Description:
 //
-// You can specify the **TransitRouteTableId*	- and **TransitRouteTableAggregationCidr*	- parameters to query information about a specific aggregate route. If you specify only the **TransitRouteTableId*	- parameter, the system queries information about all aggregate routes in the specified Enterprise Edition transit router route table.
+// You can query the information about a specific aggregate route by specifying the **TransitRouteTableId*	- and **TransitRouteTableAggregationCidr*	- parameters. If you specify only the **TransitRouteTableId*	- parameter, the system queries the information about all aggregate routes in the route table of the Enterprise Edition transit router by default.
 //
 // @param request - DescribeTransitRouteTableAggregationRequest
 //
@@ -6885,11 +7185,59 @@ func (client *Client) DescribeTransitRouteTableAggregationDetailWithContext(ctx 
 
 // Summary:
 //
+// Queries the resource reservation configuration of a specified transit router.
+//
+// @param request - DescribeTransitRouterCapacityReservationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTransitRouterCapacityReservationsResponse
+func (client *Client) DescribeTransitRouterCapacityReservationsWithContext(ctx context.Context, request *DescribeTransitRouterCapacityReservationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTransitRouterCapacityReservationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TransitRouterId) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTransitRouterCapacityReservations"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTransitRouterCapacityReservationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Detaches a network instance from a Cloud Enterprise Network (CEN) instance.
 //
 // Description:
 //
-// The **DetachCenChildInstance*	- operation supports detaching only network instances from a Basic Edition transit router.
+// The **DetachCenChildInstance*	- operation supports detaching only specified network instances from Basic Edition transit routers.
 //
 // @param request - DetachCenChildInstanceRequest
 //
@@ -6969,11 +7317,11 @@ func (client *Client) DetachCenChildInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Disables health checks for a specified virtual border router (VBR).
+// Disables the health check for a specified virtual border router (VBR).
 //
 // Description:
 //
-// *DisableCenVbrHealthCheck*	- is an asynchronous operation. After you call this operation, the system returns a **RequestId**, but the health check configuration has not been deleted. The deletion task continues to run in the background. You can call **DescribeCenVbrHealthCheck*	- to query the health check configuration. If the specified health check configuration is not found, the deletion is complete.
+// The **DisableCenVbrHealthCheck*	- operation is asynchronous. The system returns a **RequestId*	- before the health check configuration is completely deleted, and the deletion task continues in the background. You can call the **DescribeCenVbrHealthCheck*	- operation to query the health check configuration. If the specified health check configuration cannot be found, the configuration is deleted.
 //
 // @param request - DisableCenVbrHealthCheckRequest
 //
@@ -7407,15 +7755,15 @@ func (client *Client) EnableCenVbrHealthCheckWithContext(ctx context.Context, re
 //
 // Description:
 //
-// After you create a network instance connection, you can set up a route learning relationship for it. Once configured, the network instance connection automatically propagates routes from the network instance to its associated route table. Before calling this operation to create a route learning relationship, note the following information:
+// After you create a network instance connection, you can configure a route learning relationship for it. After the configuration, the network instance connection automatically propagates routes of the network instance to its associated route table. Before you call this operation to create a route learning relationship, take note of the following information:
 //
-// - Only Enterprise Edition transit routers support creating route learning relationships. For information about the regions and zones supported by Enterprise Edition transit routers, see [What is Cloud Enterprise Network (CEN)?](https://help.aliyun.com/document_detail/181681.html).
+// - Only Enterprise Edition transit routers support creating route learning relationships. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is Cloud Enterprise Network?](https://help.aliyun.com/document_detail/181681.html).
 //
-// - The **EnableTransitRouterRouteTablePropagation*	- operation is asynchronous. After you send a request, the system returns a **RequestId**, but the route learning relationship between the network instance connection and the route table is not fully established. The creation task is still running in the background. You can call the **ListTransitRouterRouteTablePropagations*	- operation to query the route learning relationship between the network instance connection and the route table.
+// - The **EnableTransitRouterRouteTablePropagation*	- operation is asynchronous. After you call the operation, the system returns a **RequestId**, but the route learning relationship between the network instance connection and the route table is not fully established, and the creation task is still running in the background. You can call the **ListTransitRouterRouteTablePropagations*	- operation to query the route learning relationship between the network instance connection and the route table.
 //
-//   - If the route learning relationship is in the **Enabling*	- state, the route learning relationship between the network instance connection and the route table is being established. In this state, you can only query the route learning relationship. You cannot perform other operations.
+//   - When the route learning relationship is in the **Enabling*	- state, the route learning relationship between the network instance connection and the route table is being established. In this state, you can only query the route learning relationship between the network instance connection and the route table, and cannot perform other operations.
 //
-//   - If the route learning relationship is in the **Active*	- state, the route learning relationship between the network instance connection and the route table is established.
+//   - When the route learning relationship is in the **Active*	- state, the route learning relationship between the network instance connection and the route table is successfully established.
 //
 // @param request - EnableTransitRouterRouteTablePropagationRequest
 //
@@ -8053,6 +8401,172 @@ func (client *Client) ListGrantVSwitchesToCenWithContext(ctx context.Context, re
 
 // Summary:
 //
+// Queries the details of one or more route map rules.
+//
+// Description:
+//
+// ## Request description
+//
+// - RouteMapId: specifies the route map whose rules you want to query.
+//
+// - RouteMapRuleIds: the list of rule IDs to query. This parameter and filter conditions can be used together for matching, and they have an OR relationship.
+//
+// - Filter: the filter. You can filter by attributes such as direction. Supported filter conditions include Status and Direction.
+//
+// - DryRun: specifies whether to enable the dry run mode. Default value: false.
+//
+// You must specify at least one of RouteMapId and RouteMapRuleIds. If both are provided, a joint query is performed based on these two parameters. If only RouteMapId is provided, all rules under the route map are returned. If only RouteMapRuleIds is provided, the details of the specified rules are returned.
+//
+// @param request - ListRouteMapRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRouteMapRulesResponse
+func (client *Client) ListRouteMapRulesWithContext(ctx context.Context, request *ListRouteMapRulesRequest, runtime *dara.RuntimeOptions) (_result *ListRouteMapRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RouteMapId) {
+		query["RouteMapId"] = request.RouteMapId
+	}
+
+	if !dara.IsNil(request.RouteMapRuleIds) {
+		query["RouteMapRuleIds"] = request.RouteMapRuleIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRouteMapRules"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRouteMapRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of one or more route maps.
+//
+// Description:
+//
+// ## Request description
+//
+// - **RouteMapIds**: optional. Specifies a list of one or more route map IDs to query. If you do not specify this parameter, all route maps are queried by default.
+//
+// - **Filter**: optional. Filters route maps based on specific conditions such as the name and direction.
+//
+// - **ResourceGroupId**: optional. Specifies the ID of the resource group to further filter the results.
+//
+// - **DryRun**: optional. Specifies whether to check the request without actually performing the operation.
+//
+// - **MaxResults*	- and **NextToken**: pagination parameters. Used to control the number of returned results and obtain the next page of data.
+//
+// Note: If you specify both `RouteMapIds` and `Filter`, they are connected by an OR logical operator. Route maps that meet either condition are queried.
+//
+// @param request - ListRouteMapsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRouteMapsResponse
+func (client *Client) ListRouteMapsWithContext(ctx context.Context, request *ListRouteMapsRequest, runtime *dara.RuntimeOptions) (_result *ListRouteMapsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.RouteMapIds) {
+		query["RouteMapIds"] = request.RouteMapIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRouteMaps"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRouteMapsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the tags bound to a Cloud Enterprise Network (CEN) instance.
 //
 // Description:
@@ -8499,17 +9013,17 @@ func (client *Client) ListTransitRouterCidrAllocationWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the connection information about Express Connect Router (ECR) instances under an Enterprise Edition transit router, including the total number of entries, connection status, connection IDs, and the payer of network instances.
+// Queries the connection information of Express Connect Router (ECR) connections under an Enterprise Edition transit router, including the total number of entries, connection status, connection ID, and payer of the network instance.
 //
 // Description:
 //
 // You can query the information about ECR connections under an Enterprise Edition transit router in the following three ways:
 //
-// - Query the information about all ECR connections under an Enterprise Edition transit router instance by specifying the transit router instance ID.
+// - Query the information about all ECR connections under the instance by using the Enterprise Edition transit router instance ID.
 //
-// - Query the information about all ECR connections under an Enterprise Edition transit router instance by specifying the Cloud Enterprise Network (CEN) instance ID and the region ID of the transit router instance.
+// - Query the information about all ECR connections under the instance by using the Cloud Enterprise Network (CEN) instance ID and the region ID of the Enterprise Edition transit router.
 //
-// - Query the information about a specific ECR connection by specifying only the **TransitRouterAttachmentId*	- parameter.
+// - Query specific ECR connection information by using only the **TransitRouterAttachmentId*	- parameter.
 //
 // @param request - ListTransitRouterEcrAttachmentsRequest
 //
@@ -8767,13 +9281,13 @@ func (client *Client) ListTransitRouterMulticastDomainVSwitchesWithContext(ctx c
 
 // Summary:
 //
-// Queries information about multicast domains, such as the status, multicast domain ID, and description of multicast domains.
+// Queries information about multicast domains, such as the status, multicast domain ID, and description.
 //
 // Description:
 //
-// - RegionId must be used together with CenId and cannot be used alone. Otherwise, multicast domain information is not displayed. However, TransitRouterId and TransitRouterMulticastDomainId can be used independently.
+// - RegionId must be used in combination with CenId and cannot be used alone. Otherwise, the multicast domain information is not displayed. However, TransitRouterId and TransitRouterMulticastDomainId can be used alone.
 //
-// - Ensure that the parameter values you specify are correct when you call this operation. If you specify invalid parameter values, the system still returns a **RequestId*	- but does not display detailed multicast domain information.
+// - Make sure that the input parameter values are correct when you call this operation. If the input parameters are invalid, the operation still returns **RequestId**, but the detailed information about the multicast domains is not displayed.
 //
 // @param request - ListTransitRouterMulticastDomainsRequest
 //
@@ -8985,15 +9499,15 @@ func (client *Client) ListTransitRouterMulticastGroupsWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the details of inter-region connections under an Enterprise Edition transit router by calling the ListTransitRouterPeerAttachments operation.
+// Queries the details of inter-region connections under an Enterprise Edition transit router.
 //
 // Description:
 //
-// You can query inter-region connections under an Enterprise Edition transit router in the following ways:
+// You can query the information about inter-region connections under an Enterprise Edition transit router in the following two ways:
 //
-// - Query all inter-region connections under an Enterprise Edition transit router by specifying the transit router instance ID.
+// - Query the information about all inter-region connections under the Enterprise Edition transit router by using instance ID of the Enterprise Edition transit router.
 //
-// - Query all inter-region connections under an Enterprise Edition transit router by specifying the Cloud Enterprise Network (CEN) instance ID and the region ID of the Enterprise Edition transit router instance.
+// - Query the information about all inter-region connections under the Enterprise Edition transit router by using instance ID of the Cloud Enterprise Network (CEN) instance and the region ID of the Enterprise Edition transit router.
 //
 // @param request - ListTransitRouterPeerAttachmentsRequest
 //
@@ -9399,7 +9913,7 @@ func (client *Client) ListTransitRouterRouteTableAssociationsWithContext(ctx con
 
 // Summary:
 //
-// Queries the route learning relationships of an Enterprise Edition transit router route table.
+// Queries the route propagations of a route table in an Enterprise Edition transit router.
 //
 // @param request - ListTransitRouterRouteTablePropagationsRequest
 //
@@ -9775,19 +10289,7 @@ func (client *Client) ListTransitRouterVpcAttachmentsWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries information about VPN connections, such as the status, IPsec connection ID, and billing method of VPN connections.
-//
-// Description:
-//
-// The ListTransitRouterVpnAttachments operation supports the following three query methods:
-//
-// - Specify only **TransitRouterAttachmentId*	- to query information about a specific VPN connection.
-//
-// - Specify only **TransitRouterId*	- to query information about all VPN connections associated with the specified transit router.
-//
-// - Specify **CenId*	- and **RegionId*	- to query information about VPN connections in a specific region of the Cloud Enterprise Network (CEN) instance.
-//
-// When calling the **ListTransitRouterVpnAttachments*	- operation, make sure that the parameter values are correct. If you specify incorrect parameter values, the response still returns a **RequestId**, but does not include the information about the target VPN connections.
+// 查询转发路由器下vpn连接的详情
 //
 // @param request - ListTransitRouterVpnAttachmentsRequest
 //
@@ -9981,11 +10483,11 @@ func (client *Client) ListTransitRoutersWithContext(ctx context.Context, request
 //
 // Description:
 //
-// *ModifyCenAttribute*	- is an asynchronous operation. After you send a request, the system returns a **RequestId**, but the CEN instance has not been modified yet. The modification task is still running in the background. You can call the **DescribeCens*	- operation to query the status of the CEN instance.
+// *ModifyCenAttribute*	- is an asynchronous operation. The system first returns a **RequestId**, but the modification of the Cloud Enterprise Network (CEN) instance is not completed. The modification task continues in the background. You can call the **DescribeCens*	- operation to query the status of the CEN instance.
 //
-// - If the CEN instance is in the **Modifying*	- state, the CEN instance is being modified. In this state, you can only query the CEN instance but cannot perform other operations on it.
+// - If the CEN instance is in the **Modifying*	- state, the instance is being modified. In this state, you can only perform query operations on the CEN instance and cannot perform other operations.
 //
-// - If the CEN instance is in the **Active*	- state, the CEN instance has been modified.
+// - If the CEN instance is in the **Active*	- state, the modification of the CEN instance is completed.
 //
 // @param request - ModifyCenAttributeRequest
 //
@@ -10461,11 +10963,11 @@ func (client *Client) ModifyFlowLogAttributeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the payer for a cross-account network instance connection of a transit router instance.
+// Modifies the payer for a cross-account network instance connected to a transit router instance.
 //
 // Description:
 //
-// The ModifyGrantInstanceToTransitRouter operation supports modifying only the payer for cross-account virtual private cloud (VPC), virtual border router (VBR), and IPsec connection instances connected to a transit router instance.
+// The ModifyGrantInstanceToTransitRouter operation only supports modifying the payer for a cross-account virtual private cloud (VPC) instance, virtual border router (VBR) instance, or IPsec instance connected to a transit router instance.
 //
 // @param request - ModifyGrantInstanceToTransitRouterRequest
 //
@@ -10713,6 +11215,84 @@ func (client *Client) ModifyTransitRouteTableAggregationWithContext(ctx context.
 
 // Summary:
 //
+// Configures the capacity reservation properties of an Enterprise Edition transit router.
+//
+// @param tmpReq - ModifyTransitRouterCapacityReservationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTransitRouterCapacityReservationsResponse
+func (client *Client) ModifyTransitRouterCapacityReservationsWithContext(ctx context.Context, tmpReq *ModifyTransitRouterCapacityReservationsRequest, runtime *dara.RuntimeOptions) (_result *ModifyTransitRouterCapacityReservationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyTransitRouterCapacityReservationsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeploymentSets) {
+		request.DeploymentSetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeploymentSets, dara.String("DeploymentSets"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MinimumTransitRouterCapacities) {
+		request.MinimumTransitRouterCapacitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MinimumTransitRouterCapacities, dara.String("MinimumTransitRouterCapacities"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ResetCapacityReservations) {
+		request.ResetCapacityReservationsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResetCapacityReservations, dara.String("ResetCapacityReservations"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DeploymentSetsShrink) {
+		query["DeploymentSets"] = request.DeploymentSetsShrink
+	}
+
+	if !dara.IsNil(request.MinimumTransitRouterCapacitiesShrink) {
+		query["MinimumTransitRouterCapacities"] = request.MinimumTransitRouterCapacitiesShrink
+	}
+
+	if !dara.IsNil(request.ResetCapacityReservationsShrink) {
+		query["ResetCapacityReservations"] = request.ResetCapacityReservationsShrink
+	}
+
+	if !dara.IsNil(request.TransitRouterId) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyTransitRouterCapacityReservations"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyTransitRouterCapacityReservationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Calls the ModifyTransitRouterCidr operation to modify a CIDR block of a transit router.
 //
 // Description:
@@ -10899,11 +11479,11 @@ func (client *Client) ModifyTransitRouterMulticastDomainWithContext(ctx context.
 
 // Summary:
 //
-// Modifies the resource group to which a Cloud Enterprise Network (CEN) instance or a bandwidth plan instance belongs.
+// Modifies the resource group of a Cloud Enterprise Network (CEN) instance or a bandwidth plan.
 //
 // Description:
 //
-// CEN instances and bandwidth plan instances belong to the default resource group by default. You can call the `MoveResourceGroup` operation to modify the resource group to which a CEN instance or a bandwidth plan instance belongs.
+// By default, CEN instances and bandwidth plans belong to the default resource group. You can call the `MoveResourceGroup` operation to change the resource group of a CEN instance or a bandwidth plan.
 //
 // @param request - MoveResourceGroupRequest
 //
@@ -11877,33 +12457,33 @@ func (client *Client) RevokeInstanceFromTransitRouterWithContext(ctx context.Con
 
 // Summary:
 //
-// Configures the PrivateZone service by calling the RoutePrivateZoneInCenToVpc operation.
+// Configures the PrivateZone service.
 //
 // Description:
 //
-// PrivateZone is a private DNS resolution and management service based on the Alibaba Cloud Virtual Private Cloud (VPC) environment. After a Virtual Border Router (VBR) instance or a Cloud Connect Network (CCN) instance is attached to a Cloud Enterprise Network (CEN) instance, the associated on-premises network can access the PrivateZone service through CEN.
+// PrivateZone is a private DNS domain name resolution and management service based on the Alibaba Cloud Virtual Private Cloud (VPC) environment. After a Virtual Border Router (VBR) instance or a Cloud Connect Network (CCN) instance is attached to a Cloud Enterprise Network (CEN) instance, the associated on-premises networks can access the PrivateZone service through the CEN instance.
 //
-// - On-premises networks associated with VBR instances and CCN instances can access only the PrivateZone service in the same region.
+// - The on-premises networks associated with VBR and CCN instances can only access the PrivateZone service in the same region.
 //
-//	For example, if the PrivateZone service is deployed in the China (Beijing) region, only on-premises networks associated with VBR instances in the China (Beijing) region and CCN instances in the Chinese mainland can access the PrivateZone service.
+//	For example, if the PrivateZone service is located in the China (Beijing) region, only the on-premises networks associated with VBR instances in the China (Beijing) region and CCN instances in the Chinese mainland can access the PrivateZone service.
 //
-// - The **RoutePrivateZoneInCenToVpc*	- operation is asynchronous. After you send a request, the system returns a **RequestId*	- but the PrivateZone service configuration is not complete. The configuration task continues to run in the background. You can call the **DescribeCenPrivateZoneRoutes*	- operation to query the status of the PrivateZone service.
+// - The **RoutePrivateZoneInCenToVpc*	- operation is asynchronous. The system first returns a **RequestId**, but the PrivateZone service configuration is not yet complete, and the background task is still running. You can call the **DescribeCenPrivateZoneRoutes*	- operation to query the status of the PrivateZone service.
 //
-//   - If the PrivateZone service is in the **Creating*	- state, the configuration is being added. In this state, you can only query the PrivateZone service configuration. You cannot perform other operations.
+//   - When the PrivateZone service is in the **Creating*	- state, the PrivateZone service configuration is being added. In this state, you can only query the PrivateZone service configuration and cannot perform other operations.
 //
-//   - If the PrivateZone service is in the **Active*	- state, the configuration is complete.
+//   - When the PrivateZone service is in the **Active*	- state, the PrivateZone service configuration is added.
 //
-//   - If the PrivateZone service is in the **Failed*	- state, the configuration failed to be added.
+//   - When the PrivateZone service is in the **Failed*	- state, the PrivateZone service configuration fails to be added.
 //
 // #### Before you begin
 //
 // Before you invoke the **RoutePrivateZoneInCenToVpc*	- operation, make sure that the following conditions are met:
 //
-// - The PrivateZone service is deployed. For more information, see [Alibaba Cloud DNS PrivateZone Getting Started](https://help.aliyun.com/document_detail/64627.html).
+// - The PrivateZone service deployment is complete. For more information, see [Quick start for PrivateZone DNS parse](https://help.aliyun.com/document_detail/64627.html).
 //
-// - The VPC-connected instance associated with the PrivateZone service, and the VBR instance or CCN instance in the access region are attached to the same CEN instance. For more information, see [AttachCenChildInstance](https://help.aliyun.com/document_detail/65902.html).
+// - Make sure that you load the VPC-connected instance associated with the PrivateZone service, and the VBR or CCN instance in the access region to the same CEN instance. For more information, see [AttachCenChildInstance](https://help.aliyun.com/document_detail/65902.html).
 //
-// - If your on-premises network uses a CCN instance to connect to Alibaba Cloud, and the CCN instance belongs to a different account from the VPC-connected instance or the CEN instance, complete the authorization for the CCN instance first. For more information, see [Cloud Connect Network authorization](https://help.aliyun.com/document_detail/106674.html).
+// - If your on-premises network is connected to Alibaba Cloud by using a CCN instance, and the account to which the CCN instance belongs is different from the account to which the VPC-connected instance or the CEN instance belongs, you must first complete the authorization for the CCN instance. For more information, see [Authorize a Cloud Connect Network](https://help.aliyun.com/document_detail/106674.html).
 //
 // @param request - RoutePrivateZoneInCenToVpcRequest
 //
@@ -12239,11 +12819,11 @@ func (client *Client) TempUpgradeCenBandwidthPackageSpecWithContext(ctx context.
 
 // Summary:
 //
-// Disassociates a bandwidth package from a Cloud Enterprise Network (CEN) instance. After the disassociation, the bandwidth package can be associated with another CEN instance.
+// Disassociates a bandwidth plan from a Cloud Enterprise Network (CEN) instance. After the disassociation, the bandwidth plan can be associated with other CEN instances.
 //
 // Description:
 //
-// Disassociates a bandwidth package from a Cloud Enterprise Network (CEN) instance. Before you call this operation, make sure that no inter-region bandwidth is configured for the bandwidth package. You can call [DescribeCenInterRegionBandwidthLimits](https://help.aliyun.com/document_detail/468275.html) to query inter-region bandwidth, and then call [SetCenInterRegionBandwidthLimit](https://help.aliyun.com/document_detail/65942.html) to set BandwidthLimit to 0 to delete the configured inter-region bandwidth.
+// Disassociates a CEN instance from a bandwidth plan. Before you call this operation, ensure that no inter-region bandwidth is configured for the target bandwidth plan. You can call [DescribeCenInterRegionBandwidthLimits](https://help.aliyun.com/document_detail/468275.html) to query the inter-region bandwidth, and then call [SetCenInterRegionBandwidthLimit](https://help.aliyun.com/document_detail/65942.html) to set BandwidthLimit to 0 to delete the configured inter-region bandwidth.
 //
 // @param request - UnassociateCenBandwidthPackageRequest
 //
@@ -12307,17 +12887,17 @@ func (client *Client) UnassociateCenBandwidthPackageWithContext(ctx context.Cont
 
 // Summary:
 //
-// Deletes a PrivateZone service configuration by calling the UnroutePrivateZoneInCenToVpc operation.
+// Deletes a PrivateZone service configuration.
 //
 // Description:
 //
-// *UnroutePrivateZoneInCenToVpc*	- is an asynchronous operation. After you call this operation, the system returns a **RequestId*	- but the PrivateZone service configuration is not immediately deleted. The deletion task continues to run in the background. You can call the **DescribeCenPrivateZoneRoutes*	- operation to query the status of the PrivateZone service.
+// The **UnroutePrivateZoneInCenToVpc*	- operation is asynchronous. The system first returns a **RequestId**, but the PrivateZone service configuration is not immediately deleted and the deletion task continues to run in the background. You can call the **DescribeCenPrivateZoneRoutes*	- operation to query the status of the PrivateZone service.
 //
-// - If the PrivateZone service is in the **Deleting*	- state, the PrivateZone service configuration is being deleted. In this state, you can only query the PrivateZone service configuration. You cannot perform other operations.
+// - If the PrivateZone service is in the **Deleting*	- state, the PrivateZone service configuration is being deleted. In this state, you can only perform query operations on the PrivateZone service configuration and cannot perform other operations.
 //
-// - If the specified PrivateZone service configuration cannot be found, the deletion is complete.
+// - If the specified PrivateZone service configuration cannot be queried, the PrivateZone service configuration is deleted.
 //
-// If a PrivateZone configuration exists with the access region set to a Cloud Connect Network region, delete the PrivateZone configuration for the Cloud Connect Network region first, and then delete the PrivateZone configurations for other access regions.
+// If a PrivateZone configuration exists in an access region that is a Cloud Connect Network region, you must first delete the PrivateZone configuration in the Cloud Connect Network region before you delete PrivateZone configurations in other access regions.
 //
 // @param request - UnroutePrivateZoneInCenToVpcRequest
 //
@@ -12533,7 +13113,7 @@ func (client *Client) UpdateCenInterRegionTrafficQosPolicyAttributeWithContext(c
 
 // Summary:
 //
-// Calls the UpdateCenInterRegionTrafficQosQueueAttribute operation to modify the name, description, cross-region bandwidth, and DSCP value configurations of a queue in a traffic scheduling policy.
+// Modifies the name, description, cross-region bandwidth, and DSCP value configurations of a queue in a traffic QoS policy.
 //
 // @param request - UpdateCenInterRegionTrafficQosQueueAttributeRequest
 //
@@ -12611,6 +13191,172 @@ func (client *Client) UpdateCenInterRegionTrafficQosQueueAttributeWithContext(ct
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCenInterRegionTrafficQosQueueAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the attributes of an existing route map.
+//
+// Description:
+//
+// The UpdateRouteMap operation is asynchronous. After you call this operation, the system returns a **RequestId**, but the route map is not immediately updated. The update task continues to run in the background. You can call the ListRouteMaps operation to query the status of the route map.
+//
+// - If the route map is in the **Updating*	- state, the route map is being updated. In this state, you can only perform query operations.
+//
+// - If the route map is in the **Active*	- state, the route map is updated.
+//
+// @param request - UpdateRouteMapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRouteMapResponse
+func (client *Client) UpdateRouteMapWithContext(ctx context.Context, request *UpdateRouteMapRequest, runtime *dara.RuntimeOptions) (_result *UpdateRouteMapResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.RouteMapId) {
+		query["RouteMapId"] = request.RouteMapId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRouteMap"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRouteMapResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the attributes of an existing route map rule.
+//
+// Description:
+//
+// ## Request description
+//
+// - `RouteMapRuleId` specifies the route map rule to be updated.
+//
+// - `Name`, `Description`, and `Priority` are used to update the name, description, and priority of the rule. Rule priorities under the same route map must be unique.
+//
+// - `MatchConditions` is used to update the match conditions of the rule, and `SetActions` is used to update the actions to be performed when a route meets the match conditions.
+//
+// - `DryRun` is an optional parameter used to precheck the request without actually updating the route map rule.
+//
+// @param tmpReq - UpdateRouteMapRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRouteMapRuleResponse
+func (client *Client) UpdateRouteMapRuleWithContext(ctx context.Context, tmpReq *UpdateRouteMapRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateRouteMapRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateRouteMapRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.MatchConditions) {
+		request.MatchConditionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MatchConditions, dara.String("MatchConditions"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SetActions) {
+		request.SetActionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SetActions, dara.String("SetActions"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.MatchConditionsShrink) {
+		query["MatchConditions"] = request.MatchConditionsShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.RouteMapRuleId) {
+		query["RouteMapRuleId"] = request.RouteMapRuleId
+	}
+
+	if !dara.IsNil(request.SetActionsShrink) {
+		query["SetActions"] = request.SetActionsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRouteMapRule"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRouteMapRuleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12711,7 +13457,7 @@ func (client *Client) UpdateTrafficMarkingPolicyAttributeWithContext(ctx context
 //
 // *UpdateTransitRouter*	- is an asynchronous operation. After you send a request, the system returns a **RequestId**, but the modification of the transit router instance is not yet complete. The modification task continues to run in the background. You can call the **ListTransitRouters*	- operation to query the status of the transit router instance.
 //
-// - If the transit router instance is in the **Modifying*	- state, the transit router instance is being modified. In this state, you can only query the transit router instance but cannot perform other operations on it.
+// - If the transit router instance is in the **Modifying*	- state, the transit router instance is being modified. In this state, you can only query the transit router instance. You cannot perform other operations on it.
 //
 // - If the transit router instance is in the **Active*	- state, the transit router instance has been modified.
 //

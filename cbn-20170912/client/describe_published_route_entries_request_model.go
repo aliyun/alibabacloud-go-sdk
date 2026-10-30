@@ -32,7 +32,7 @@ type iDescribePublishedRouteEntriesRequest interface {
 }
 
 type DescribePublishedRouteEntriesRequest struct {
-	// The CEN instance ID.
+	// The instance ID of the Cloud Enterprise Network (CEN).
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribePublishedRouteEntriesRequest struct {
 	//
 	// cen-7qthudw0ll6jm****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The network instance ID.
+	// The instance ID of the network instance.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribePublishedRouteEntriesRequest struct {
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	// The region ID of the network instance.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DescribePublishedRouteEntriesRequest struct {
 	//
 	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The route table ID of the network instance.
+	// The ID of the route table of the network instance.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type DescribePublishedRouteEntriesRequest struct {
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// - **VPC**: virtual private cloud.
+	// - **VPC**: VPC
 	//
-	// - **VBR**: virtual border router.
+	// - **VBR**: VBR
 	//
-	// - **CCN**: Cloud Connect Network.
+	// - **CCN**: Cloud Connect Network
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type DescribePublishedRouteEntriesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Default value: **10**. Valid values: **1*	- to **500**.
+	// The number of entries to return per page in a paging query. Default value: **10**. Valid values: **1*	- to **500**.
 	//
 	// example:
 	//

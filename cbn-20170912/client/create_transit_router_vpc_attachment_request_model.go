@@ -50,11 +50,11 @@ type iCreateTransitRouterVpcAttachmentRequest interface {
 }
 
 type CreateTransitRouterVpcAttachmentRequest struct {
-	// Specifies whether to allow the Enterprise Edition transit router to automatically publish routing entries to the VPC instance.
+	// Specifies whether the Enterprise Edition transit router automatically publishes route entries to the VPC instance.
 	//
-	// - **false*	- (default): No.
+	// - **false*	- (default): does not automatically publish route entries.
 	//
-	// - **true**: Yes.
+	// - **true**: automatically publishes route entries.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	//
 	// cen-j3jzhw1zpau2km****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The billing method. Default value: **POSTPAY**, which indicates pay-as-you-go.
+	// The billing method. Default value: **POSTPAY**, which indicates the pay-as-you-go billing method.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// Generate a unique value from your client for this parameter. ClientToken supports only ASCII characters.
 	//
-	// >If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+	// >If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId of each API request is different.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to execute a dry run, including permission and instance status verification. Valid values:
+	// Specifies whether to perform a dry run on the request, including permission checks and instance status validation. Valid values:
 	//
-	// - **false*	- (default): Sends a normal request and creates the VPC connection after the request passes the check.
+	// - **false*	- (default): sends a normal request and creates a VPC after the check passes. Use this value to create a VPC.
 	//
-	// - **true**: Sends a check request. Only the check is performed, and the VPC connection is not created. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+	// - **true**: sends a dry run request for validation only without creating the VPC attachment. The check includes whether required parameters are specified and whether the request format is valid. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	Options      *CreateTransitRouterVpcAttachmentRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 	OwnerAccount *string                                         `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VPC-connected instance.
+	// The ID of the region where the VPC instance is deployed.
 	//
-	// You can invoke the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
+	// You can call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to query region IDs.
 	//
 	// example:
 	//
@@ -110,17 +110,17 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	//
 	// You can specify up to 20 tags at a time.
 	Tag []*CreateTransitRouterVpcAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The description of the VPC connection.
+	// The description of the VPC attachment.
 	//
-	// The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
+	// The description can be left empty or can contain 1 to 256 characters. It cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// testname
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The name of the VPC connection.
+	// The name of the VPC attachment.
 	//
-	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	// The name can be left empty or can contain 1 to 128 characters. It cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	//
 	// tr-bp1su1ytdxtataupl****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The list of feature attributes for the VPC connection (to be deprecated, use the new parameter Options instead).
+	// The list of feature attributes for the VPC attachment (to be deprecated — use the new Options parameter instead).
 	TransitRouterVPCAttachmentOptions map[string]*string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
-	// The instance ID of the VPC-connected instance.
+	// The instance ID of the VPC.
 	//
 	// This parameter is required.
 	//
@@ -142,9 +142,9 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	//
 	// vpc-bp1kbjcre9vtsebo1****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The Alibaba Cloud account ID to which the VPC-connected instance belongs. The default value is the Alibaba Cloud account ID of the current logon user.
+	// The ID of the Alibaba Cloud account to which the VPC instance belongs. The default value is the ID of the current logon Alibaba Cloud account.
 	//
-	// > This parameter is required if you want to load a cross-account network instance.
+	// > This parameter is required if you want to attach a network instance that belongs to a different account.
 	//
 	// example:
 	//
@@ -365,21 +365,21 @@ func (s *CreateTransitRouterVpcAttachmentRequest) Validate() error {
 }
 
 type CreateTransitRouterVpcAttachmentRequestOptions struct {
-	// Specifies whether to enable the appliance mode.
+	// Specifies whether to enable the network appliance traffic redirection mode.
 	//
-	// - **disable*	- (default): No.
+	// - **disable*	- (default): disabled.
 	//
-	// - **enable**: Yes.
+	// - **enable**: enabled.
 	//
 	// example:
 	//
 	// enable
 	ApplianceModeSupport *string `json:"ApplianceModeSupport,omitempty" xml:"ApplianceModeSupport,omitempty"`
-	// Specifies whether IPv6 is supported.
+	// Specifies whether to enable IPv6 support.
 	//
-	// - **disable*	- (default): No.
+	// - **disable*	- (default): disabled.
 	//
-	// - **enable**: Yes.
+	// - **enable**: enabled.
 	//
 	// example:
 	//
@@ -420,7 +420,7 @@ func (s *CreateTransitRouterVpcAttachmentRequestOptions) Validate() error {
 type CreateTransitRouterVpcAttachmentRequestTag struct {
 	// The tag key of the resource.
 	//
-	// Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	// If this parameter is specified, it cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify up to 20 tag keys at a time.
 	//
@@ -430,9 +430,9 @@ type CreateTransitRouterVpcAttachmentRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource.
 	//
-	// Once specified, the tag value cannot be empty. The tag value can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
+	// If this parameter is specified, it cannot be empty. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
-	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
+	// Each tag key corresponds to one tag value. You can specify up to 20 tag key-value pairs at a time.
 	//
 	// example:
 	//
@@ -471,7 +471,7 @@ func (s *CreateTransitRouterVpcAttachmentRequestTag) Validate() error {
 }
 
 type CreateTransitRouterVpcAttachmentRequestZoneMappings struct {
-	// The ID of the vSwitch instance in a zone supported by the Enterprise Edition transit router.
+	// The vSwitch instance in a zone supported by the Enterprise Edition transit router.
 	//
 	// You can select vSwitch instances for up to 10 zones at a time.
 	//
@@ -483,7 +483,7 @@ type CreateTransitRouterVpcAttachmentRequestZoneMappings struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of a zone supported by the Enterprise Edition transit router.
 	//
-	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query zone IDs.
+	// You can call [DescribeZones](https://help.aliyun.com/document_detail/36064.html) to query zone IDs.
 	//
 	// You can select up to 10 zones at a time.
 	//

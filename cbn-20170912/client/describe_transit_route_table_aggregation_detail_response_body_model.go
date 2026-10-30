@@ -20,7 +20,7 @@ type iDescribeTransitRouteTableAggregationDetailResponseBody interface {
 }
 
 type DescribeTransitRouteTableAggregationDetailResponseBody struct {
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ func (s *DescribeTransitRouteTableAggregationDetailResponseBody) Validate() erro
 }
 
 type DescribeTransitRouteTableAggregationDetailResponseBodyData struct {
-	// The message returned if the configuration of the aggregate route fails.
+	// The message returned when the aggregate route configuration fails.
 	//
 	// example:
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the VPC instance for which the aggregate route is configured.
+	// The instance ID of the VPC-connected instance to which the aggregation routing is configured.
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ type DescribeTransitRouteTableAggregationDetailResponseBodyData struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The configuration status of the aggregate route.
 	//
-	// - **Configured**: The aggregate route is advertised to the VPC instance.
+	// - **Configured**: The aggregate route is delivered to the VPC-connected instance.
 	//
-	// - **Configuring**: The aggregate route is being advertised.
+	// - **Configuring**: The aggregate route is being delivered.
 	//
-	// - **ConfigFailed**: The aggregate route failed to be advertised.
+	// - **ConfigFailed**: The aggregate route fails to be delivered.
 	//
-	// - **PartialConfigured**: The aggregate route was partially advertised.
+	// - **PartialConfigured**: The aggregate route is partially delivered.
 	//
 	// - **Deleting**: The aggregate route is being deleted.
 	//

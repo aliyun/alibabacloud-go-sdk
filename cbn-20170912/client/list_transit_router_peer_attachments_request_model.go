@@ -34,23 +34,23 @@ type iListTransitRouterPeerAttachmentsRequest interface {
 }
 
 type ListTransitRouterPeerAttachmentsRequest struct {
-	// The CEN instance ID.
+	// The Cloud Enterprise Network (CEN) instance ID. If you specify this parameter, you must also specify RegionId.
 	//
 	// example:
 	//
 	// cen-j3jzhw1zpau2km****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The number of entries per page for a paged query. Default value: **20**. Maximum value: **100**.
+	// The number of entries to return on each page. Default value: **20**. Maximum value: **100**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// - If this is the first query or no subsequent query is to be sent, you do not need to specify this parameter.
+	// - If this is your first query or no next query is to be sent, ignore this parameter.
 	//
-	// - If a subsequent query is to be sent, set the value to the **NextToken*	- value returned in the previous API call.
+	// - If a next query is to be sent, set the value to the value of **NextToken*	- that is returned from the last API call.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type ListTransitRouterPeerAttachmentsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Enterprise Edition transit router instance.
+	// The region ID of the Enterprise Edition transit router. If you specify this parameter, you must also specify CenId.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type ListTransitRouterPeerAttachmentsRequest struct {
 	//
 	// You can specify up to 20 tags at a time.
 	Tag []*ListTransitRouterPeerAttachmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The inter-region connection ID.
+	// The ID of the inter-region connection.
 	//
 	// example:
 	//
 	// tr-attach-5u4qbayfv2io5v****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The Enterprise Edition transit router instance ID.
+	// The instance ID of the Enterprise Edition transit router, which is used to forward traffic and manage routing.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ func (s *ListTransitRouterPeerAttachmentsRequest) Validate() error {
 type ListTransitRouterPeerAttachmentsRequestTag struct {
 	// The tag key of the resource.
 	//
-	// Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify up to 20 tag keys at a time.
 	//
@@ -219,9 +219,9 @@ type ListTransitRouterPeerAttachmentsRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource.
 	//
-	// The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or a string of up to 128 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
+	// Each tag key is paired with a tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

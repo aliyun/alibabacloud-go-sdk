@@ -22,15 +22,15 @@ type iListTransitRouterMulticastDomainsResponseBody interface {
 }
 
 type ListTransitRouterMulticastDomainsResponseBody struct {
-	// The number of entries per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no next query is to be sent.
 	//
 	// - If **NextToken*	- is returned, the value indicates the token that is used for the next query.
 	//
@@ -44,7 +44,7 @@ type ListTransitRouterMulticastDomainsResponseBody struct {
 	//
 	// 8A0F93D1-FD6C-56FC-B6D2-668FC92D12D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains 
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags.
 	Tags []*ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The transit router instance ID.
+	// The ID of the transit router instance, which is used to forward traffic and manage routing.
 	//
 	// example:
 	//
@@ -285,13 +285,13 @@ func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDoma
 }
 
 type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions struct {
-	// Indicates whether IGMP is enabled for the multicast domain.
+	// Specifies whether the Internet Group Management Protocol (IGMP) feature is enabled for the multicast domain.
 	//
 	// example:
 	//
 	// enable
 	Igmpv2Support *string `json:"Igmpv2Support,omitempty" xml:"Igmpv2Support,omitempty"`
-	// Indicates whether strict multicast source control is enabled for the multicast domain.
+	// Specifies whether the strict multicast source control feature is enabled for the multicast domain.
 	//
 	// example:
 	//

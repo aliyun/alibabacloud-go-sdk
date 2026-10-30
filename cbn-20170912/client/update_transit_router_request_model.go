@@ -46,7 +46,7 @@ type UpdateTransitRouterRequest struct {
 	//
 	// - **false*	- (default): Sends a normal request. After the request passes the check, the transit router instance information is directly modified.
 	//
-	// - **true**: Sends a check request. Only the check is performed, and the transit router instance information is not modified. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check passes, the corresponding request ID is returned.
+	// - **true**: Sends a check request. Only the validation is performed, and the transit router instance information is not modified. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check passes, the corresponding request ID is returned.
 	//
 	// example:
 	//

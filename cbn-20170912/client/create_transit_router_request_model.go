@@ -48,19 +48,19 @@ type CreateTransitRouterRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can generate the parameter value on your client. Make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to execute a dry run, without performing the actual request. The dry run includes permission verification, instance status verification, and forwarding and routing checks. Valid values:
+	// Specifies whether to perform a dry run on the creation request. The dry run includes permission and instance status checks. Valid values:
 	//
 	// - **false*	- (default): sends a normal request and creates the Enterprise Edition transit router instance after the request passes the check.
 	//
-	// - **true**: sends a check request, without creating the Enterprise Edition transit router instance. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+	// - **true**: sends a dry run request and performs only the check without creating the Enterprise Edition transit router instance. The system checks whether required parameters are specified and whether the request format is valid. If the request fails the check, the system returns an error. If the request passes the check, the system returns the error code `DryRunOperation`.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateTransitRouterRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the Enterprise Edition transit router instance.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -82,11 +82,11 @@ type CreateTransitRouterRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 	//
-	// - **false*	- (default): disables the multicast feature.
+	// - **false*	- (default): disables the feature.
 	//
-	// - **true**: enables the multicast feature.
+	// - **true**: enables the feature.
 	//
-	// Only Enterprise Edition transit routers in some regions support the multicast feature. You can call the [ListTransitRouterAvailableResource](https://help.aliyun.com/document_detail/261356.html) operation to query the regions that support the multicast feature.
+	// The multicast feature is supported only by Enterprise Edition transit routers in specific regions. You can call the [ListTransitRouterAvailableResource](https://help.aliyun.com/document_detail/261356.html) operation to query the regions that support the multicast feature.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type CreateTransitRouterRequest struct {
 	SupportMulticast *bool `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
 	// The tag information.
 	Tag []*CreateTransitRouterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The list of transit router CIDR blocks.
+	// The transit router CIDR blocks.
 	TransitRouterCidrList []*CreateTransitRouterRequestTransitRouterCidrList `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty" type:"Repeated"`
 	// The description of the Enterprise Edition transit router instance.
 	//
@@ -264,7 +264,7 @@ func (s *CreateTransitRouterRequest) Validate() error {
 type CreateTransitRouterRequestTag struct {
 	// The tag key of the resource.
 	//
-	// Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
 	//
 	// You can specify up to 20 tag keys at a time.
 	//
@@ -274,9 +274,9 @@ type CreateTransitRouterRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource.
 	//
-	// Once specified, the tag value cannot be empty. The tag value can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
+	// The tag value cannot be empty. The tag value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
 	//
-	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
+	// Each tag key corresponds to a tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//
@@ -337,19 +337,19 @@ type CreateTransitRouterRequestTransitRouterCidrList struct {
 	//
 	// nametest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to allow the system to automatically add a route for the transit router CIDR block to the transit router route table.
+	// Specifies whether to allow the system to automatically add a route for the transit router CIDR block to the transit router route table. Valid values:
 	//
-	// - **true*	- (default): allows the system.
+	// - **true*	- (default): allows the system to automatically add the route.
 	//
 	//
 	//
-	//      If you select true, after you create a VPN connection of the private gateway type and create a route learning relationship for the VPN connection, the system automatically adds the following route entry to the transit router route table that has a route learning relationship with the VPN connection:
+	//      If you select this value, after you create a VPN connection of the private network gateway type and create a route learning correlation for the VPN connection, the system automatically adds a route entry to the transit router route table that has a route learning correlation with the VPN connection:
 	//
-	//     A blackhole route whose destination CIDR block is the transit router CIDR block from which gateway IP addresses are allocated for the IPsec connection.
+	//     The destination CIDR block of the route is a blackhole route for the transit router CIDR block. The transit router CIDR block refers to the CIDR block to which a gateway IP address has been assigned for the IPsec connection.
 	//
-	//      The blackhole route is propagated only to the route tables of virtual border router (VBR) instances connected to the transit router.
+	//      The blackhole route is propagated only to the route table of the Virtual Border Router (VBR) instance under the transit router.
 	//
-	// - **false**: does not allow the system.
+	// - **false**: does not allow the system to automatically add the route.
 	//
 	// example:
 	//

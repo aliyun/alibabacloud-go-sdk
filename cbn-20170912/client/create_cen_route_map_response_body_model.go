@@ -22,7 +22,7 @@ type CreateCenRouteMapResponseBody struct {
 	//
 	// 62172DD5-6BAC-45DF-8D44-56SDF467BAC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the routing policy.
+	// The ID of the route map.
 	//
 	// example:
 	//

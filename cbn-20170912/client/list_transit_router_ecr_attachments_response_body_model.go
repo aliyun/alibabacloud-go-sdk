@@ -22,13 +22,13 @@ type iListTransitRouterEcrAttachmentsResponseBody interface {
 }
 
 type ListTransitRouterEcrAttachmentsResponseBody struct {
-	// The number of entries per page for a paged query.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next paged query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *ListTransitRouterEcrAttachmentsResponseBody) Validate() error {
 }
 
 type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates whether the Enterprise Edition transit router automatically publishes route entries to the ECR instance.
+	// Specifies whether the Enterprise Edition transit router is configured to publish route entry to the ECR instance. Valid value:
 	//
-	// The value is **true*	- only, which indicates that route entries are automatically published.
+	// - **true**: The transit router is configured to publish route entry.
 	//
 	// example:
 	//
 	// true
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The CEN instance ID.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
@@ -133,13 +133,13 @@ type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct 
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The time when the ECR connection was created.
 	//
-	// The time is displayed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mmZ.
+	// The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	//
 	// example:
 	//
 	// 2021-06-15T02:14Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The instance ID of the associated Express Connect Router (ECR).
+	// The associated Express Connect Router (ECR) instance ID.
 	//
 	// example:
 	//
@@ -153,29 +153,29 @@ type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct 
 	EcrOwnerId *int64 `json:"EcrOwnerId,omitempty" xml:"EcrOwnerId,omitempty"`
 	// The payer of the network instance. Valid values:
 	//
-	// - **PayByCenOwner**: The connection fee and data processing fee of the ECR instance are paid by the account that owns the transit router instance.
+	// - **PayByCenOwner**: The connection fee and data transfer fee of the ECR instance are paid by the account to which the transit router belongs.
 	//
-	// - **PayByResourceOwner**: The connection fee and data processing fee of the ECR instance are paid by the account that owns the ECR instance.
+	// - **PayByResourceOwner**: The connection fee and data transfer fee of the ECR instance are paid by the account to which the ECR instance belongs.
 	//
 	// example:
 	//
 	// PayByCenOwner
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The resource type of the connection.
+	// The resource type of the connection. Valid value:
 	//
-	// The value is **ECR*	- only, which indicates an Express Connect Router (ECR) instance.
+	// - **ECR**: Express Connect Router (ECR) instance.
 	//
 	// example:
 	//
 	// ECR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the ECR connection.
+	// The status of the ECR connection. Valid values:
 	//
-	// - **Attached**: attached.
+	// - **Attached**: The connection is attached.
 	//
-	// - **Attaching**: being attached.
+	// - **Attaching**: The connection is being attached.
 	//
-	// - **Detaching**: being detached.
+	// - **Detaching**: The connection is being detached.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// desctest
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The ECR connection ID.
+	// The ID of the ECR connection.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct 
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The region ID of the transit router.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region information corresponding to the region ID.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region information represented by the region ID.
 	//
 	// example:
 	//

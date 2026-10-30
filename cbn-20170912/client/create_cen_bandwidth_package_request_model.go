@@ -48,11 +48,11 @@ type iCreateCenBandwidthPackageRequest interface {
 type CreateCenBandwidthPackageRequest struct {
 	// Specifies whether to enable automatic payment for the bill of the bandwidth plan instance. Valid values:
 	//
-	// - **true**: enables automatic payment.
+	// - **true**: yes.
 	//
-	// - **false*	- (default): disables automatic payment.
+	// - **false*	- (default): no.
 	//
-	// If you set this parameter to false, go to the Order Center in the console to complete the payment after you invoke this operation. Otherwise, the instance cannot be created.
+	// If you choose not to use automatic payment, after you invoke this operation, you must go to the Order Center in the console to complete the payment. Otherwise, the instance cannot be created.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type CreateCenBandwidthPackageRequest struct {
 	AutoPay           *bool  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AutoRenew         *bool  `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	// The maximum bandwidth value of the bandwidth plan. Unit: Mbit/s. Valid values: **2*	- to **10000**.
+	// The maximum bandwidth of the bandwidth plan. Unit: Mbit/s. Valid values: **2*	- to **10000**.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,9 @@ type CreateCenBandwidthPackageRequest struct {
 	//
 	// 2
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The billing method of the bandwidth plan. Valid values: **PREPAY**, which indicates the subscription billing method.
+	// The billing method of the bandwidth plan. Valid values:
+	//
+	// - **PREPAY**: subscription.
 	//
 	// example:
 	//
@@ -76,7 +78,7 @@ type CreateCenBandwidthPackageRequest struct {
 	BandwidthPackageChargeType *string `json:"BandwidthPackageChargeType,omitempty" xml:"BandwidthPackageChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 ASCII characters in length.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -84,7 +86,7 @@ type CreateCenBandwidthPackageRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the bandwidth plan.
 	//
-	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
+	// The description must be 1 to 256 characters in length, and can be left empty. It cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -96,7 +98,7 @@ type CreateCenBandwidthPackageRequest struct {
 	//
 	// - **North-America**: North America.
 	//
-	// - **Asia-Pacific**: Asia Pacific.
+	// - **Asia-Pacific**: Asia-Pacific.
 	//
 	// - **Europe**: Europe.
 	//
@@ -112,7 +114,7 @@ type CreateCenBandwidthPackageRequest struct {
 	//
 	// - **North-America**: North America.
 	//
-	// - **Asia-Pacific**: Asia Pacific.
+	// - **Asia-Pacific**: Asia-Pacific.
 	//
 	// - **Europe**: Europe.
 	//
@@ -124,7 +126,7 @@ type CreateCenBandwidthPackageRequest struct {
 	GeographicRegionBId *string `json:"GeographicRegionBId,omitempty" xml:"GeographicRegionBId,omitempty"`
 	// The name of the bandwidth plan.
 	//
-	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
+	// The name must be 1 to 128 characters in length, and can be left empty. It cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -134,9 +136,9 @@ type CreateCenBandwidthPackageRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The subscription duration of the bandwidth plan. Default value: 1.
 	//
-	// - If **PricingCycle*	- is set to **Month**, valid values for **Period*	- are **1*	- to **3*	- and **6**.
+	// - If **PricingCycle*	- is set to **Month**, valid values of **Period*	- are **1*	- to **3*	- and **6**.
 	//
-	// - If **PricingCycle*	- is set to **Year**, valid values for **Period*	- are **1*	- to **3**.
+	// - If **PricingCycle*	- is set to **Year**, valid values of **Period*	- are **1*	- to **3**.
 	//
 	// > This parameter is required when **BandwidthPackageChargeType*	- is set to **PREPAY**.
 	//
@@ -339,7 +341,7 @@ func (s *CreateCenBandwidthPackageRequest) Validate() error {
 type CreateCenBandwidthPackageRequestTag struct {
 	// The tag key of the resource.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. It can be up to 64 characters in length, and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// You can specify up to 20 tag keys at a time.
 	//
@@ -349,9 +351,9 @@ type CreateCenBandwidthPackageRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource.
 	//
-	// The tag value cannot be empty. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. The tag value cannot contain http:// or https://.
+	// The tag value cannot be empty. It can be up to 128 characters in length, and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
-	// Each tag key has a unique tag value. You can specify up to 20 tag values at a time.
+	// Each tag key corresponds to a tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

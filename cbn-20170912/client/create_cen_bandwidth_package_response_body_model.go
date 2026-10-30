@@ -18,7 +18,7 @@ type iCreateCenBandwidthPackageResponseBody interface {
 }
 
 type CreateCenBandwidthPackageResponseBody struct {
-	// The instance ID of the new bandwidth plan.
+	// The instance ID of the created bandwidth plan instance.
 	//
 	// example:
 	//

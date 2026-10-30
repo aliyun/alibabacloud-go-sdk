@@ -14,7 +14,7 @@ type iUpdateCenInterRegionTrafficQosQueueAttributeResponseBody interface {
 }
 
 type UpdateCenInterRegionTrafficQosQueueAttributeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

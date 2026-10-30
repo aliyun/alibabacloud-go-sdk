@@ -1,3 +1,16 @@
+2026-10-30 Version: v2.5.0
+- Support API CreateRouteMap.
+- Support API CreateRouteMapRule.
+- Support API DeleteRouteMap.
+- Support API DeleteRouteMapRule.
+- Support API DescribeTransitRouterCapacityReservations.
+- Support API ListRouteMapRules.
+- Support API ListRouteMaps.
+- Support API ModifyTransitRouterCapacityReservations.
+- Support API UpdateRouteMap.
+- Support API UpdateRouteMapRule.
+
+
 2026-09-08 Version: v2.4.4
 - Generated golang 2017-09-12 for Cbn.
 
