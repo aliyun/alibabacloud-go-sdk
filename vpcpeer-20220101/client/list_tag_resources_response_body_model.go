@@ -26,23 +26,23 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, it indicates that no next query is to be sent.
+	// - If **NextToken*	- is empty, no subsequent queries are available.
 	//
-	// 	- If **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If **NextToken*	- returns a value, the value indicates the token used to start the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DE65F6B7-7566-4802-9007-96F2494AC512
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources to which the tags are added.
+	// The information about the resources to which tags are bound.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -91,23 +91,32 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 func (s *ListTagResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagResources != nil {
+		for _, item := range s.TagResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The region of the requester VPC.
+	// The region of the initiator of the VPC peering connection.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// pcc-bp16qjewdsunr41m1****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. The value is set to **PeerConnection**, which indicates a VPC peering connection.
+	// The resource type. Valid values: **PeerConnection*	- (VPC peering connection).
 	//
 	// example:
 	//

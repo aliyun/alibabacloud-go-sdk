@@ -24,11 +24,11 @@ type iUnTagResourcesRequest interface {
 }
 
 type UnTagResourcesRequest struct {
-	// Specifies whether to remove all tags from the specified resource. Valid values:
+	// Specifies whether to remove all tags from the resource. Valid values:
 	//
-	// 	- **true**: removes all tags from the specified resource.
+	// - **true**: Removes all tags from the resource.
 	//
-	// 	- **false**: does not remove all tags from the specified resource. This is the default value.
+	// - **false*	- (default): Does not remove all tags from the resource.
 	//
 	// example:
 	//
@@ -36,17 +36,17 @@ type UnTagResourcesRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+	// You can generate the token value on your client and ensure that it is unique across different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The region ID of the tag.
+	// The ID of the region where the tag resides.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +54,11 @@ type UnTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of resources.
+	// The ID of the resource. You can specify up to 20 resource IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+	// The resource type. Valid value: **PeerConnection**, which indicates a VPC peering connection.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,9 @@ type UnTagResourcesRequest struct {
 	//
 	// PeerConnection
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag that you want to remove. You can specify at most 20 tag keys. It can be an empty string.
+	// The tag key that you want to remove. You can specify up to 20 tag keys. If you need to pass this parameter, you can enter an empty string.
 	//
-	// It can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

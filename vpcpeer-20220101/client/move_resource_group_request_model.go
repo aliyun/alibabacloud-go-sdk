@@ -20,9 +20,9 @@ type iMoveResourceGroupRequest interface {
 }
 
 type MoveResourceGroupRequest struct {
-	// The ID of the new resource group.
+	// The ID of the resource group to which you want to move the VPC peering connection.
 	//
-	// >  You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://help.aliyun.com/document_detail/94475.html)
+	// > A resource group is a mechanism that allows you to group and manage resources within an Alibaba Cloud account. Resource groups help you resolve the complexities of resource grouping and authorization management within a single cloud account. For more information, see [What is Resource Management](https://help.aliyun.com/document_detail/94475.html).
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type MoveResourceGroupRequest struct {
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	// The region ID of the resource.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the VPC peering connection.
+	// The instance ID of the VPC peering connection whose resource group you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// pcc-gu32s92f9ytsk9****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+	// The resource type. Valid value: **PeerConnection**: VPC peering connection.
 	//
 	// This parameter is required.
 	//

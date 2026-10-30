@@ -17,6 +17,8 @@ type iModifyVpcPeerConnectionRequest interface {
 	GetDescription() *string
 	SetDryRun(v bool) *ModifyVpcPeerConnectionRequest
 	GetDryRun() *bool
+	SetEnableJumboFrame(v bool) *ModifyVpcPeerConnectionRequest
+	GetEnableJumboFrame() *bool
 	SetInstanceId(v string) *ModifyVpcPeerConnectionRequest
 	GetInstanceId() *string
 	SetLinkType(v string) *ModifyVpcPeerConnectionRequest
@@ -34,9 +36,9 @@ type ModifyVpcPeerConnectionRequest struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses **RequestId*	- as **ClientToken**. **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
@@ -44,23 +46,35 @@ type ModifyVpcPeerConnectionRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new description of the VPC peering connection.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// newdescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to only precheck the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: checks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without modifying the information. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): sends a normal request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the VPC peering connection whose name or description you want to modify.
+	// Specifies whether the jumbo frame feature is enabled for the VPC peering connection. Valid values:
+	//
+	// - true: enabled.
+	//
+	// - false: disabled.
+	//
+	// > Note: To specify this parameter, make sure that you create a cross-region peering connection.
+	//
+	// example:
+	//
+	// true
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// The instance ID of the VPC peering connection whose name or description you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -68,15 +82,11 @@ type ModifyVpcPeerConnectionRequest struct {
 	//
 	// pcc-lnk0m24khwvtkm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Type of connection. Valid values:
+	// The link type.
 	//
-	// - Platinum.
+	// Valid values: Platinum and Gold. Default value: Gold.
 	//
-	// - Gold: default value.
-	//
-	// >
-	//
-	// > - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
+	// > To specify this parameter, make sure that you create a cross-region peering connection.
 	//
 	// example:
 	//
@@ -84,7 +94,7 @@ type ModifyVpcPeerConnectionRequest struct {
 	LinkType *string `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
 	// The new name of the VPC peering connection.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -116,6 +126,10 @@ func (s *ModifyVpcPeerConnectionRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
+func (s *ModifyVpcPeerConnectionRequest) GetEnableJumboFrame() *bool {
+	return s.EnableJumboFrame
+}
+
 func (s *ModifyVpcPeerConnectionRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -145,6 +159,11 @@ func (s *ModifyVpcPeerConnectionRequest) SetDescription(v string) *ModifyVpcPeer
 
 func (s *ModifyVpcPeerConnectionRequest) SetDryRun(v bool) *ModifyVpcPeerConnectionRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *ModifyVpcPeerConnectionRequest) SetEnableJumboFrame(v bool) *ModifyVpcPeerConnectionRequest {
+	s.EnableJumboFrame = &v
 	return s
 }
 

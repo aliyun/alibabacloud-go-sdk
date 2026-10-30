@@ -22,17 +22,17 @@ type iListVpcPeerConnectionsResponseBody interface {
 }
 
 type ListVpcPeerConnectionsResponseBody struct {
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The token that is used to retrieve the next page of results. Valid values:
 	//
-	// 	- If no value is returned for **NextToken**, no next queries are sent.
+	// - If **NextToken*	- is empty, no subsequent request is to be sent.
 	//
-	// 	- If the value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token used to start the next query.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListVpcPeerConnectionsResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED39DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details of the VPC peering connections.
+	// The details of the queried VPC peering connections.
 	VpcPeerConnects []*ListVpcPeerConnectionsResponseBodyVpcPeerConnects `json:"VpcPeerConnects,omitempty" xml:"VpcPeerConnects,omitempty" type:"Repeated"`
 }
 
@@ -108,43 +108,52 @@ func (s *ListVpcPeerConnectionsResponseBody) SetVpcPeerConnects(v []*ListVpcPeer
 }
 
 func (s *ListVpcPeerConnectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpcPeerConnects != nil {
+		for _, item := range s.VpcPeerConnects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
-	// The ID of the Alibaba Cloud account to which the accepter VPC belongs.
+	// The Alibaba Cloud account ID of the acceptor of the VPC peering connection.
 	//
 	// example:
 	//
-	// 253460731706911258
+	// 25346073170691****
 	AcceptingOwnerUid *int64 `json:"AcceptingOwnerUid,omitempty" xml:"AcceptingOwnerUid,omitempty"`
-	// The region ID of the accepter VPC.
+	// The region ID of the acceptor of the VPC peering connection.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	AcceptingRegionId *string `json:"AcceptingRegionId,omitempty" xml:"AcceptingRegionId,omitempty"`
-	// The details of the accepter VPC.
+	// The details of the acceptor VPC-connected instance.
 	AcceptingVpc *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc `json:"AcceptingVpc,omitempty" xml:"AcceptingVpc,omitempty" type:"Struct"`
-	// The bandwidth of the VPC peering connection. Unit: Mbit/s. The value is an integer greater than 0.
+	// The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
 	//
-	// >  If the value is set to -1, it indicates that no limit is imposed on the bandwidth.
+	// > A value of -1 indicates that no bandwidth limit is applied.
 	//
-	// Default value:
+	// Default values:
 	//
-	// 	- The default bandwidth of an inter-region VPC peering connection is **1024*	- Mbit/s.
+	// - The default bandwidth of a cross-region VPC peering connection is 1024 Mbit/s.
 	//
-	// 	- The default bandwidth of an intra-region VPC peering connection is **-1*	- Mbit/s.
+	// - The default bandwidth of an intra-region VPC peering connection is -1 Mbit/s, which indicates that no bandwidth limit is applied.
 	//
 	// example:
 	//
 	// 1024
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The business status of the VPC peering connection. Valid values:
+	// The billing status of the VPC peering connection. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **FinancialLocked**
+	// - **FinancialLocked**: Locked due to overdue payment.
 	//
 	// example:
 	//
@@ -156,27 +165,37 @@ type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the VPC peering connection was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+	// Indicates whether the jumbo frame feature is enabled for the VPC peering connection. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// true
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// The time when the VPC peering connection was created. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2022-04-24T09:02:36Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The expiration time of the VPC peering connection. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+	// The expiration time of the VPC peering connection. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
-	// The expiration time is returned only when the **Status*	- of the VPC peering connection is **Accepting*	- or **Expired**. Otherwise, **null*	- is returned.
+	// The specific expiration time is returned only when the **Status*	- of the VPC peering connection is **Accepting*	- or **Expired**. If the VPC peering connection is in other states, **null*	- is returned.
 	//
 	// example:
 	//
 	// 2022-05-01T09:02:36Z
 	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	// The time when the VPC peering connection was modified. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+	// The time when the VPC peering connection was modified. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2022-04-24T19:20:45Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the VPC peering connection.
+	// The instance ID of the VPC peering connection.
 	//
 	// example:
 	//
@@ -184,10 +203,18 @@ type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The link type of the VPC peering connection.
 	//
+	// Default values:
+	//
+	// - The default link type of a cross-region VPC peering connection is Gold.
+	//
+	// - The default link type of an intra-region VPC peering connection is empty.
+	//
 	// example:
 	//
 	// Gold
 	LinkType *string `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
+	// The associated cloud service.
+	//
 	// example:
 	//
 	// SWAS
@@ -198,13 +225,13 @@ type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
 	//
 	// vpcpeer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the Alibaba Cloud account to which the requester VPC belongs.
+	// The Alibaba Cloud account ID of the initiator of the VPC peering connection.
 	//
 	// example:
 	//
-	// 253460731706911258
+	// 25346073170691****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the requester VPC.
+	// The region ID of the initiator of the VPC peering connection.
 	//
 	// example:
 	//
@@ -214,35 +241,35 @@ type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
 	//
 	// example:
 	//
-	// rg-aek2gvbs746gt4q
+	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the VPC peering connection. Valid values:
 	//
-	// 	- **Creating**
+	// - **Creating**: Creating.
 	//
-	// 	- **Accepting**
+	// - **Accepting**: Accepting.
 	//
-	// 	- **Updating**
+	// - **Updating**: Updating.
 	//
-	// 	- **Rejected**
+	// - **Rejected**: Rejected.
 	//
-	// 	- **Expired**
+	// - **Expired**: Expired.
 	//
-	// 	- **Activated**
+	// - **Activated**: Activated.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: Deleting.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: Deleted.
 	//
-	// For more information about the status of VPC peering connections, see [Overview of VPC peering connections](https://help.aliyun.com/document_detail/418507.html).
+	// For more information about the statuses of VPC peering connections, see [VPC peering connection overview](https://help.aliyun.com/document_detail/418507.html).
 	//
 	// example:
 	//
 	// Activated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
+	// The list of tags.
 	Tags []*ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The details of the requester VPC.
+	// The details of the initiator VPC-connected instance.
 	Vpc *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Struct"`
 }
 
@@ -276,6 +303,10 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) GetBizStatus() *stri
 
 func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) GetEnableJumboFrame() *bool {
+	return s.EnableJumboFrame
 }
 
 func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) GetGmtCreate() *string {
@@ -360,6 +391,11 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetDescription(v str
 	return s
 }
 
+func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetEnableJumboFrame(v bool) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
+	s.EnableJumboFrame = &v
+	return s
+}
+
 func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetGmtCreate(v string) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
 	s.GmtCreate = &v
 	return s
@@ -426,15 +462,34 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetVpc(v *ListVpcPee
 }
 
 func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) Validate() error {
-	return dara.Validate(s)
+	if s.AcceptingVpc != nil {
+		if err := s.AcceptingVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Vpc != nil {
+		if err := s.Vpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc struct {
-	// The CIDR block of the accepter VPC.
+	// The IPv4 CIDR blocks of the acceptor.
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	// The IPv6 CIDR block of the accepter VPC.
+	// The IPv6 CIDR blocks of the acceptor.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
-	// The ID of the accepter VPC.
+	// The instance ID of the acceptor VPC-connected instance.
 	//
 	// example:
 	//
@@ -527,11 +582,11 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags) Validate() error
 }
 
 type ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc struct {
-	// The CIDR block of the requester VPC.
+	// The IPv4 CIDR blocks of the initiator.
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	// The IPv6 CIDR block of the requester VPC.
+	// The IPv6 CIDR blocks of the initiator.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
-	// The ID of the requester VPC.
+	// The instance ID of the initiator VPC-connected instance.
 	//
 	// example:
 	//

@@ -59,5 +59,10 @@ func (s *AcceptVpcPeerConnectionResponse) SetBody(v *AcceptVpcPeerConnectionResp
 }
 
 func (s *AcceptVpcPeerConnectionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

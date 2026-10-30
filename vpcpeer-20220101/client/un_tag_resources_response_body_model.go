@@ -22,11 +22,11 @@ type UnTagResourcesResponseBody struct {
 	//
 	// C46FF5A8-C5F0-4024-8262-B16B639225A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the tags are removed. Valid values:
+	// Indicates whether the unbinding was successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The creation and binding were successful.
 	//
-	// 	- **false**: no
+	// - **false**: The creation and binding failed.
 	//
 	// example:
 	//

@@ -16,17 +16,17 @@ type iTagResourcesResponseBody interface {
 }
 
 type TagResourcesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C46FF5A8-C5F0-4024-8262-B16B639225A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the tags were created and attached. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The tags were created and attached.
 	//
-	// 	- **false**: no
+	// - **false**: The tags failed to be created and attached.
 	//
 	// example:
 	//

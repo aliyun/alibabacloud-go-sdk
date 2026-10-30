@@ -16,7 +16,7 @@ type iCreateVpcPeerConnectionResponseBody interface {
 }
 
 type CreateVpcPeerConnectionResponseBody struct {
-	// The ID of the instance on which the VPC peering connection is created.
+	// The instance ID of the created VPC peering connection.
 	//
 	// example:
 	//

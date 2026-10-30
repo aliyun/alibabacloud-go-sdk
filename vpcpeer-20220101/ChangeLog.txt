@@ -1,3 +1,6 @@
+2026-10-30 Version: v3.0.5
+- Generated golang 2022-01-01 for VpcPeer.
+
 2025-09-09 Version: v3.0.4
 - Update API AcceptVpcPeerConnection: add request parameters Tag.
 - Update API CreateVpcPeerConnection: add request parameters Tag.

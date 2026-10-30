@@ -22,11 +22,11 @@ type MoveResourceGroupResponseBody struct {
 	//
 	// 611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the resource group was changed. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The resource group was changed.
 	//
-	// 	- **false**
+	// - **false**: The resource group failed to be changed.
 	//
 	// example:
 	//

@@ -26,9 +26,9 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// Tag Type:
+	// The tag type. Valid values:
 	//
-	// - All(Default)
+	// - All (default)
 	//
 	// - Custom
 	//
@@ -44,11 +44,11 @@ type ListTagResourcesRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If this is your first query or no subsequent query is to be sent, ignore this parameter.
+	// - If this is your first request or no subsequent requests are to be made, leave this parameter empty.
 	//
-	// 	- If a next query is to be sent, set the value to the value of **NextToken*	- that is returned in the last call.
+	// - If a subsequent request is to be made, set this parameter to the value of **NextToken*	- returned from the previous API call.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListTagResourcesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the resource.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,9 @@ type ListTagResourcesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Deprecated
 	//
-	// The resource ID.
+	// The resource IDs. You can specify up to 20 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+	// The resource type. Valid values: **PeerConnection*	- (VPC peering connection).
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type ListTagResourcesRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// Deprecated
 	//
-	// The tags.
+	// The tag information.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -154,25 +154,34 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 func (s *ListTagResourcesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagResourcesRequestTag struct {
-	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. This parameter cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
-	// >  You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value**.
+	// > You must specify at least one of the **ResourceId.N*	- and **Tag.N*	- (**Tag.N.Key*	- and **Tag.N.Value**) parameters.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. This parameter can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
-	// >  You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value**.
+	// > You must specify at least one of the **ResourceId.N*	- and **Tag.N*	- (**Tag.N.Key*	- and **Tag.N.Value**) parameters.
 	//
 	// example:
 	//

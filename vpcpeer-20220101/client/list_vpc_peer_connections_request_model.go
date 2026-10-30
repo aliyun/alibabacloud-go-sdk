@@ -28,13 +28,13 @@ type iListVpcPeerConnectionsRequest interface {
 }
 
 type ListVpcPeerConnectionsRequest struct {
-	// The ID of the VPC peering connection that you want to query.
+	// The instance ID of the VPC peering connection that you want to query.
 	//
 	// example:
 	//
 	// pcc-lnk0m24khwvtkm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type ListVpcPeerConnectionsRequest struct {
 	//
 	// vpcpeer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The token that is used to retrieve the next page of results. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - If this is your first request or no subsequent request is to be sent, leave this parameter empty.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - If a subsequent request is to be sent, set the value to the NextToken value returned from the last API call.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where you want to query VPC peering connections.
+	// The region ID of the VPC peering connection that you want to query.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ type ListVpcPeerConnectionsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	//
-	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
+	// For more information about resource groups, see [What is a resource group](https://help.aliyun.com/document_detail/94475.html).
 	//
 	// example:
 	//
-	// rg-acfm2ggeub5uf3y
+	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tag list.
+	// The list of tags.
 	Tags []*ListVpcPeerConnectionsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
+	// Filters the results by the VPC IDs of the initiator and acceptor. The filter does not distinguish between the initiator and the acceptor. If you specify only one VPC ID, the results are filtered based on the specified VPC ID.
 	VpcId []*string `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
 }
 
@@ -159,21 +159,30 @@ func (s *ListVpcPeerConnectionsRequest) SetVpcId(v []*string) *ListVpcPeerConnec
 }
 
 func (s *ListVpcPeerConnectionsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVpcPeerConnectionsRequestTags struct {
-	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key. You can specify up to 20 tag keys. If you specify this parameter, it cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value. You can specify up to 20 tag values. If you specify this parameter, it can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
