@@ -13,6 +13,8 @@ type iQueryAccountSafetyIncidentRequest interface {
 	GetActionCodes() []*string
 	SetAliyunLang(v string) *QueryAccountSafetyIncidentRequest
 	GetAliyunLang() *string
+	SetBusinessCodes(v []*string) *QueryAccountSafetyIncidentRequest
+	GetBusinessCodes() []*string
 	SetCaseCode(v string) *QueryAccountSafetyIncidentRequest
 	GetCaseCode() *string
 	SetCaseCodes(v []*string) *QueryAccountSafetyIncidentRequest
@@ -40,7 +42,7 @@ type iQueryAccountSafetyIncidentRequest interface {
 type QueryAccountSafetyIncidentRequest struct {
 	// The list of control action codes.
 	ActionCodes []*string `json:"ActionCodes,omitempty" xml:"ActionCodes,omitempty" type:"Repeated"`
-	// The internationalization language. Default value: zh. Valid values:
+	// The language. Default value: zh. Valid values:
 	//
 	// - **zh**: Chinese.
 	//
@@ -50,9 +52,11 @@ type QueryAccountSafetyIncidentRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The set of cloud service codes.
+	BusinessCodes []*string `json:"BusinessCodes,omitempty" xml:"BusinessCodes,omitempty" type:"Repeated"`
 	// The event name code.
 	//
-	// > This parameter does not take effect when the CaseCodes parameter is not empty.
+	// > This parameter does not take effect if the CaseCodes parameter is not empty.
 	//
 	// example:
 	//
@@ -68,7 +72,7 @@ type QueryAccountSafetyIncidentRequest struct {
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
 	// The event ID.
 	//
-	// > This parameter does not take effect when the EventIds parameter is not empty.
+	// > This parameter does not take effect if the EventIds parameter is not empty.
 	//
 	// example:
 	//
@@ -76,7 +80,7 @@ type QueryAccountSafetyIncidentRequest struct {
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The list of event IDs.
 	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
-	// The number of records per page. Valid values: 1 to 100.
+	// The number of entries to return on each page. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -106,15 +110,15 @@ type QueryAccountSafetyIncidentRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The event status. Valid values:
 	//
-	// - **Executing**: In progress.
+	// - **Executing**: The event is being executed.
 	//
-	// - **Removed**: Removed.
+	// - **Removed**: The event is removed.
 	//
-	// - **Alerting**: Alerting.
+	// - **Alerting**: The event is in the alerting state.
 	//
-	// - **Ended**: Ended.
+	// - **Ended**: The event has ended.
 	//
-	// > This parameter does not take effect when the Statuses parameter is not empty.
+	// > This parameter does not take effect if the Statuses parameter is not empty.
 	//
 	// example:
 	//
@@ -138,6 +142,10 @@ func (s *QueryAccountSafetyIncidentRequest) GetActionCodes() []*string {
 
 func (s *QueryAccountSafetyIncidentRequest) GetAliyunLang() *string {
 	return s.AliyunLang
+}
+
+func (s *QueryAccountSafetyIncidentRequest) GetBusinessCodes() []*string {
+	return s.BusinessCodes
 }
 
 func (s *QueryAccountSafetyIncidentRequest) GetCaseCode() *string {
@@ -191,6 +199,11 @@ func (s *QueryAccountSafetyIncidentRequest) SetActionCodes(v []*string) *QueryAc
 
 func (s *QueryAccountSafetyIncidentRequest) SetAliyunLang(v string) *QueryAccountSafetyIncidentRequest {
 	s.AliyunLang = &v
+	return s
+}
+
+func (s *QueryAccountSafetyIncidentRequest) SetBusinessCodes(v []*string) *QueryAccountSafetyIncidentRequest {
+	s.BusinessCodes = v
 	return s
 }
 

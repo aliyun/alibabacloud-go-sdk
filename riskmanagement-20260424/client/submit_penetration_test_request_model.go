@@ -34,7 +34,7 @@ type iSubmitPenetrationTestRequest interface {
 type SubmitPenetrationTestRequest struct {
 	// The asset list.
 	//
-	// > The array supports a maximum of 50 IP addresses.
+	// > The array supports up to 50 IP addresses.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type SubmitPenetrationTestRequest struct {
 	IsThirdpartyTest *bool `json:"IsThirdpartyTest,omitempty" xml:"IsThirdpartyTest,omitempty"`
 	// The test content.
 	//
-	// > The content must not exceed 500 characters. Provide detailed information to facilitate the approval process.
+	// > The content must be up to 500 characters in length. Provide detailed information to facilitate the approval process.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type SubmitPenetrationTestRequest struct {
 	TestEndDate *string `json:"TestEndDate,omitempty" xml:"TestEndDate,omitempty"`
 	// The source IP addresses used for the test.
 	//
-	// > A maximum of 50 IP addresses are supported. Separate multiple IP addresses with line breaks or commas (,). 0.0.0.0 indicates that all IP addresses are allowed. CIDR blocks such as 140.168.0.0/16 are not supported.
+	// > Up to 50 IP addresses are supported. Separate multiple IP addresses with line breaks or commas (,). Enter 0.0.0.0 to allow all IP addresses. CIDR blocks such as 140.168.0.0/16 are not supported.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type SubmitPenetrationTestRequest struct {
 	TestStartDate *string `json:"TestStartDate,omitempty" xml:"TestStartDate,omitempty"`
 	// The test steps.
 	//
-	// > The steps must not exceed 500 characters. Provide detailed information to facilitate the approval process.
+	// > The steps must be up to 500 characters in length. Provide detailed information to facilitate the approval process.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type SubmitPenetrationTestRequest struct {
 	//
 	// 177xxxxxx21
 	ThirdpartyMobile *string `json:"ThirdpartyMobile,omitempty" xml:"ThirdpartyMobile,omitempty"`
-	// The third-party tester.
+	// The name of the third-party tester.
 	//
 	// example:
 	//

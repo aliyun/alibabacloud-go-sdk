@@ -28,7 +28,7 @@ type SubmitPenetrationTestResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *SubmitPenetrationTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message.
 	//
@@ -42,11 +42,11 @@ type SubmitPenetrationTestResponseBody struct {
 	//
 	// 67BD8435-6624-5484-A75D-170231B51615
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The call status. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *SubmitPenetrationTestResponseBody) Validate() error {
 }
 
 type SubmitPenetrationTestResponseBodyData struct {
-	// The response data.
+	// The returned data.
 	List []*SubmitPenetrationTestResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
@@ -154,11 +154,11 @@ func (s *SubmitPenetrationTestResponseBodyData) Validate() error {
 type SubmitPenetrationTestResponseBodyDataList struct {
 	// The type of the asset. Valid values:
 	//
-	// - **EIP**: The public IP address of a virtual private cloud (VPC).
+	// - **EIP**: the public IP address of a VPC.
 	//
 	// - **SLB**: load balancing.
 	//
-	// - **ECS**: The public IP address of an Elastic Compute Service (ECS) instance in the classic network.
+	// - **ECS**: the public IP address of an ECS instance in the classic network.
 	//
 	// example:
 	//

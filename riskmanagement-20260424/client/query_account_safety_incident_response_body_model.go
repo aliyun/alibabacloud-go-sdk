@@ -24,7 +24,7 @@ type iQueryAccountSafetyIncidentResponseBody interface {
 type QueryAccountSafetyIncidentResponseBody struct {
 	// The status code.
 	//
-	// >  200: The request was successful. Other codes (500, 400, etc.): An error occurred.
+	// > 200: Success. Other values (such as 500 or 400): Error codes.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type QueryAccountSafetyIncidentResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryAccountSafetyIncidentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type QueryAccountSafetyIncidentResponseBody struct {
 	//
 	// 2FBDD713-00A5-5C98-B661-3FD31A349B6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful. Valid values:
 	//
 	// - **true**
 	//
@@ -121,7 +121,7 @@ func (s *QueryAccountSafetyIncidentResponseBody) Validate() error {
 type QueryAccountSafetyIncidentResponseBodyData struct {
 	// The event data.
 	List []*QueryAccountSafetyIncidentResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The total number of records.
+	// The pagination information.
 	PageInfo *QueryAccountSafetyIncidentResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 }
 
@@ -170,19 +170,19 @@ func (s *QueryAccountSafetyIncidentResponseBodyData) Validate() error {
 }
 
 type QueryAccountSafetyIncidentResponseBodyDataList struct {
-	// The control action code.
+	// The code of the control action name.
 	//
 	// example:
 	//
 	// success_service
 	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
-	// The control action name.
+	// The name of the control action.
 	//
 	// example:
 	//
-	// Penalty directly succeeded
+	// Penalty applied successfully
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// The time when the control action was removed.
+	// The time when the control is revoked.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -190,6 +190,12 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	//
 	// 2026-03-16 15:15:00
 	AntiPunishTime *string `json:"AntiPunishTime,omitempty" xml:"AntiPunishTime,omitempty"`
+	// The cloud service code.
+	//
+	// example:
+	//
+	// ram
+	BusinessCode *string `json:"BusinessCode,omitempty" xml:"BusinessCode,omitempty"`
 	// The called API operation.
 	//
 	// example:
@@ -210,23 +216,23 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	//
 	// ak leak.
 	EventImpact *string `json:"EventImpact,omitempty" xml:"EventImpact,omitempty"`
-	// The control event name.
+	// The name of the control event.
 	//
 	// example:
 	//
 	// ak leak.
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The event reason.
+	// The cause of the event.
 	//
 	// example:
 	//
 	// ak leak.
 	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
-	// The event subtype name.
+	// The name of the event subtype.
 	//
 	// example:
 	//
-	// Suspicious identity calling sensitive API
+	// Suspicious identity calling sensitive APIs
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The time of the abnormal call.
 	//
@@ -250,19 +256,19 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	//
 	// 2026-03-16 15:15:00
 	PunishTime *string `json:"PunishTime,omitempty" xml:"PunishTime,omitempty"`
-	// The hardening suggestion.
+	// The hardening suggestions.
 	//
 	// example:
 	//
 	// suggestion
 	Reinforcement *string `json:"Reinforcement,omitempty" xml:"Reinforcement,omitempty"`
-	// The cloud resource ID.
+	// The ID of the cloud resource.
 	//
 	// example:
 	//
 	// i-2zeanc2b2vgfpbvp60cs
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The controlled object type.
+	// The control object type.
 	//
 	// example:
 	//
@@ -270,31 +276,31 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The event status. Valid values:
 	//
-	// - **Executing**: In progress.
+	// - **Executing**: The event is being executed.
 	//
-	// - **Removed**: Removed.
+	// - **Removed**: The event is removed.
 	//
-	// - **Alerting**: Alerting.
+	// - **Alerting**: The event is in the alerting state.
 	//
-	// - **Ended**: Ended.
+	// - **Ended**: The event has ended.
 	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The handling suggestion.
+	// The remediation suggestions.
 	//
 	// example:
 	//
 	// suggestion
 	Tip *string `json:"Tip,omitempty" xml:"Tip,omitempty"`
-	// The help topic name.
+	// The name of the help document.
 	//
 	// example:
 	//
 	// help
 	UserGuideName *string `json:"UserGuideName,omitempty" xml:"UserGuideName,omitempty"`
-	// The help topic URL.
+	// The URL of the help document.
 	//
 	// example:
 	//
@@ -320,6 +326,10 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetActionName() *string
 
 func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetAntiPunishTime() *string {
 	return s.AntiPunishTime
+}
+
+func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetBusinessCode() *string {
+	return s.BusinessCode
 }
 
 func (s *QueryAccountSafetyIncidentResponseBodyDataList) GetCallApi() *string {
@@ -402,6 +412,11 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetActionName(v string)
 
 func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetAntiPunishTime(v string) *QueryAccountSafetyIncidentResponseBodyDataList {
 	s.AntiPunishTime = &v
+	return s
+}
+
+func (s *QueryAccountSafetyIncidentResponseBodyDataList) SetBusinessCode(v string) *QueryAccountSafetyIncidentResponseBodyDataList {
+	s.BusinessCode = &v
 	return s
 }
 
@@ -500,7 +515,7 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataList) Validate() error {
 }
 
 type QueryAccountSafetyIncidentResponseBodyDataListDateExtras struct {
-	// The time when the alert ended.
+	// The end time of the alert.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -508,7 +523,7 @@ type QueryAccountSafetyIncidentResponseBodyDataListDateExtras struct {
 	//
 	// 2026-03-16 15:15:00
 	AlertEndTime *string `json:"AlertEndTime,omitempty" xml:"AlertEndTime,omitempty"`
-	// The time when the first alert was triggered.
+	// The time of the first alert.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -516,7 +531,7 @@ type QueryAccountSafetyIncidentResponseBodyDataListDateExtras struct {
 	//
 	// 2026-03-16 15:15:00
 	AlertStartTime *string `json:"AlertStartTime,omitempty" xml:"AlertStartTime,omitempty"`
-	// The time of the latest detection.
+	// The time of the latest check.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -572,7 +587,7 @@ type QueryAccountSafetyIncidentResponseBodyDataPageInfo struct {
 	//
 	// 1
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
-	// The number of assets displayed on each page in a paged query.
+	// The number of assets displayed per page when you configure Settings for paging in a paged query.
 	//
 	// example:
 	//

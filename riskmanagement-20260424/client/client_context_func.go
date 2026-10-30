@@ -613,7 +613,7 @@ func (client *Client) DownloadResourceControlEventsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Immediately terminates a penetration test.
+// Immediately ends a penetration test.
 //
 // @param request - EndPenetrationTestRequest
 //
@@ -1594,6 +1594,10 @@ func (client *Client) QueryAccountSafetyIncidentWithContext(ctx context.Context,
 		request.ActionCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ActionCodes, dara.String("ActionCodes"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.BusinessCodes) {
+		request.BusinessCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BusinessCodes, dara.String("BusinessCodes"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.CaseCodes) {
 		request.CaseCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CaseCodes, dara.String("CaseCodes"), dara.String("json"))
 	}
@@ -1613,6 +1617,10 @@ func (client *Client) QueryAccountSafetyIncidentWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.AliyunLang) {
 		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.BusinessCodesShrink) {
+		query["BusinessCodes"] = request.BusinessCodesShrink
 	}
 
 	if !dara.IsNil(request.CaseCode) {
@@ -2339,7 +2347,7 @@ func (client *Client) SubmitAutoAuditUnblockWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Submits a penetration test application.
+// Submits a penetration test request.
 //
 // @param request - SubmitPenetrationTestRequest
 //

@@ -13,6 +13,8 @@ type iQueryAccountSafetyIncidentShrinkRequest interface {
 	GetActionCodesShrink() *string
 	SetAliyunLang(v string) *QueryAccountSafetyIncidentShrinkRequest
 	GetAliyunLang() *string
+	SetBusinessCodesShrink(v string) *QueryAccountSafetyIncidentShrinkRequest
+	GetBusinessCodesShrink() *string
 	SetCaseCode(v string) *QueryAccountSafetyIncidentShrinkRequest
 	GetCaseCode() *string
 	SetCaseCodesShrink(v string) *QueryAccountSafetyIncidentShrinkRequest
@@ -40,7 +42,7 @@ type iQueryAccountSafetyIncidentShrinkRequest interface {
 type QueryAccountSafetyIncidentShrinkRequest struct {
 	// The list of control action codes.
 	ActionCodesShrink *string `json:"ActionCodes,omitempty" xml:"ActionCodes,omitempty"`
-	// The internationalization language. Default value: zh. Valid values:
+	// The language. Default value: zh. Valid values:
 	//
 	// - **zh**: Chinese.
 	//
@@ -50,9 +52,11 @@ type QueryAccountSafetyIncidentShrinkRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The set of cloud service codes.
+	BusinessCodesShrink *string `json:"BusinessCodes,omitempty" xml:"BusinessCodes,omitempty"`
 	// The event name code.
 	//
-	// > This parameter does not take effect when the CaseCodes parameter is not empty.
+	// > This parameter does not take effect if the CaseCodes parameter is not empty.
 	//
 	// example:
 	//
@@ -68,7 +72,7 @@ type QueryAccountSafetyIncidentShrinkRequest struct {
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
 	// The event ID.
 	//
-	// > This parameter does not take effect when the EventIds parameter is not empty.
+	// > This parameter does not take effect if the EventIds parameter is not empty.
 	//
 	// example:
 	//
@@ -76,7 +80,7 @@ type QueryAccountSafetyIncidentShrinkRequest struct {
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The list of event IDs.
 	EventIdsShrink *string `json:"EventIds,omitempty" xml:"EventIds,omitempty"`
-	// The number of records per page. Valid values: 1 to 100.
+	// The number of entries to return on each page. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -106,15 +110,15 @@ type QueryAccountSafetyIncidentShrinkRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The event status. Valid values:
 	//
-	// - **Executing**: In progress.
+	// - **Executing**: The event is being executed.
 	//
-	// - **Removed**: Removed.
+	// - **Removed**: The event is removed.
 	//
-	// - **Alerting**: Alerting.
+	// - **Alerting**: The event is in the alerting state.
 	//
-	// - **Ended**: Ended.
+	// - **Ended**: The event has ended.
 	//
-	// > This parameter does not take effect when the Statuses parameter is not empty.
+	// > This parameter does not take effect if the Statuses parameter is not empty.
 	//
 	// example:
 	//
@@ -138,6 +142,10 @@ func (s *QueryAccountSafetyIncidentShrinkRequest) GetActionCodesShrink() *string
 
 func (s *QueryAccountSafetyIncidentShrinkRequest) GetAliyunLang() *string {
 	return s.AliyunLang
+}
+
+func (s *QueryAccountSafetyIncidentShrinkRequest) GetBusinessCodesShrink() *string {
+	return s.BusinessCodesShrink
 }
 
 func (s *QueryAccountSafetyIncidentShrinkRequest) GetCaseCode() *string {
@@ -191,6 +199,11 @@ func (s *QueryAccountSafetyIncidentShrinkRequest) SetActionCodesShrink(v string)
 
 func (s *QueryAccountSafetyIncidentShrinkRequest) SetAliyunLang(v string) *QueryAccountSafetyIncidentShrinkRequest {
 	s.AliyunLang = &v
+	return s
+}
+
+func (s *QueryAccountSafetyIncidentShrinkRequest) SetBusinessCodesShrink(v string) *QueryAccountSafetyIncidentShrinkRequest {
+	s.BusinessCodesShrink = &v
 	return s
 }
 

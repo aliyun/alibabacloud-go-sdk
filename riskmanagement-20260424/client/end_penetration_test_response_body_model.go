@@ -22,7 +22,7 @@ type iEndPenetrationTestResponseBody interface {
 type EndPenetrationTestResponseBody struct {
   // The status code.
   // 
-  // > 200: Success. Other values (such as 500 and 400): error codes.
+  // > 200: Success. Other values (such as 500 and 400): Error codes.
   // 
   // example:
   // 
@@ -40,11 +40,11 @@ type EndPenetrationTestResponseBody struct {
   // 
   // 6B48613E-86DE-5411-BDBE-429C80B45F3F
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the call is successful. Valid values:
+  // Indicates whether the call was successful. Valid values:
   // 
-  // - **true**: The call is successful.                                
+  // - **true**: The call was successful.                                
   // 
-  // - **false**: The call fails.
+  // - **false**: The call failed.
   // 
   // example:
   // 

@@ -14,9 +14,9 @@ type iQueryPenetrationTestDetailRequest interface {
 }
 
 type QueryPenetrationTestDetailRequest struct {
-	// The unique ID of the application record.
+	// The unique identity of the application record.
 	//
-	// > This field is of the Long type. Precision loss may occur when you serialize or deserialize the value. Make sure that the value does not exceed 9007199254740991.
+	// > This field is of the Long type. Precision loss may occur during the procedure to serialize or deserialize the numeric sequence. Ensure that the value does not exceed 9007199254740991.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type iQueryPenetrationTestListResponseBody interface {
 type QueryPenetrationTestListResponseBody struct {
 	// The status code.
 	//
-	// - **200**: Successful.
+	// - **200**: Success.
 	//
-	// - **Other values (such as 400 and 500)**: Failed.
+	// - **Other values (such as 400 and 500)**: Failure.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type QueryPenetrationTestListResponseBody struct {
 	//
 	// 99D93ED4-D462-5FC5-8518-9BC1C49C7B6C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - **true**: The call was successful.
+	// - **true**: The call is successful.
 	//
 	// - **false**: The call failed.
 	//
@@ -180,19 +180,19 @@ type QueryPenetrationTestListResponseBodyDataList struct {
 	ApplyTime *int64 `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// - **EIP**: Public IP address of a VPC.
+	// - **EIP**: The public IP address of a VPC.
 	//
-	// - **SLB**: Server Load Balancer (SLB) instance for load balancing.
+	// - **SLB**: Server Load Balancer.
 	//
-	// - **ECS**: Public IP address of an ECS instance in the classic network.
+	// - **ECS**: The public IP address of an ECS instance in the classic network.
 	//
 	// example:
 	//
 	// EIP
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The unique identity ID of the alerting event record.
+	// The unique identifier of the alert event record.
 	//
-	// > The data type of this field is Long. Precision loss may occur during the procedure to serialize or deserialize the numeric sequence. Make sure that the value does not exceed 9007199254740991.
+	// > The data type of this field is Long. Precision loss may occur during the serialization or deserialization process. Make sure that the value does not exceed 9007199254740991.
 	//
 	// example:
 	//
@@ -204,17 +204,17 @@ type QueryPenetrationTestListResponseBodyDataList struct {
 	//
 	// 10.0.158.58
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
 	// - **early_end**: The user applied for early termination.
 	//
 	// - **expired**: The authorization expired.
 	//
-	// - **auditing**: Under review.
+	// - **auditing**: The application is being reviewed.
 	//
-	// - **approved**: Approved.
+	// - **approved**: The application is approved.
 	//
-	// - **rejected**: Rejected.
+	// - **rejected**: The application is rejected.
 	//
 	// example:
 	//
@@ -310,9 +310,9 @@ func (s *QueryPenetrationTestListResponseBodyDataList) Validate() error {
 }
 
 type QueryPenetrationTestListResponseBodyDataPageInfo struct {
-	// The page number of the returned page.
+	// The page number from which the query results are displayed.
 	//
-	// > Default value: 1, which indicates the first page.
+	// > Default value: 1, which indicates that the query results are displayed starting from the first page.
 	//
 	// example:
 	//

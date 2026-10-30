@@ -827,7 +827,7 @@ func (client *Client) DownloadResourceControlEvents(request *DownloadResourceCon
 
 // Summary:
 //
-// Immediately terminates a penetration test.
+// Immediately ends a penetration test.
 //
 // @param request - EndPenetrationTestRequest
 //
@@ -871,7 +871,7 @@ func (client *Client) EndPenetrationTestWithOptions(request *EndPenetrationTestR
 
 // Summary:
 //
-// Immediately terminates a penetration test.
+// Immediately ends a penetration test.
 //
 // @param request - EndPenetrationTestRequest
 //
@@ -2150,6 +2150,10 @@ func (client *Client) QueryAccountSafetyIncidentWithOptions(tmpReq *QueryAccount
 		request.ActionCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ActionCodes, dara.String("ActionCodes"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.BusinessCodes) {
+		request.BusinessCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BusinessCodes, dara.String("BusinessCodes"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.CaseCodes) {
 		request.CaseCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CaseCodes, dara.String("CaseCodes"), dara.String("json"))
 	}
@@ -2169,6 +2173,10 @@ func (client *Client) QueryAccountSafetyIncidentWithOptions(tmpReq *QueryAccount
 
 	if !dara.IsNil(request.AliyunLang) {
 		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.BusinessCodesShrink) {
+		query["BusinessCodes"] = request.BusinessCodesShrink
 	}
 
 	if !dara.IsNil(request.CaseCode) {
@@ -3093,7 +3101,7 @@ func (client *Client) SubmitAutoAuditUnblock(request *SubmitAutoAuditUnblockRequ
 
 // Summary:
 //
-// Submits a penetration test application.
+// Submits a penetration test request.
 //
 // @param request - SubmitPenetrationTestRequest
 //
@@ -3173,7 +3181,7 @@ func (client *Client) SubmitPenetrationTestWithOptions(request *SubmitPenetratio
 
 // Summary:
 //
-// Submits a penetration test application.
+// Submits a penetration test request.
 //
 // @param request - SubmitPenetrationTestRequest
 //

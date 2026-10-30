@@ -1,3 +1,6 @@
+2026-10-30 Version: v1.2.1
+- Generated golang 2026-04-24 for RiskManagement.
+
 2026-10-23 Version: v1.2.0
 - Support API QueryForOperation.
 - Support API SubmitAutoAuditUnblock.

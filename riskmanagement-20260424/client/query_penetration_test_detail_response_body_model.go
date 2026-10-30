@@ -24,9 +24,9 @@ type iQueryPenetrationTestDetailResponseBody interface {
 type QueryPenetrationTestDetailResponseBody struct {
 	// The status code.
 	//
-	// - **200**: success
+	// - **200**: Success.
 	//
-	// - **Other values (400, 500)**: failure
+	// - **Other values (400 and 500)**: Failure.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type QueryPenetrationTestDetailResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response content.
 	Data *QueryPenetrationTestDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The description.
+	// The message.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type QueryPenetrationTestDetailResponseBody struct {
 	//
 	// 855FCC89-0B13-5FC0-AAD2-120878081C1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call is successful. Valid values:
 	//
 	// - **true**: The call is successful.
 	//
-	// - **false**: The call failed.
+	// - **false**: The call fails.
 	//
 	// example:
 	//
@@ -127,21 +127,21 @@ type QueryPenetrationTestDetailResponseBodyData struct {
 	//
 	// 1788873796000
 	ApplyTime *int64 `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
-	// The asset type. Valid values:
+	// The type of the asset. Valid values:
 	//
-	// - **EIP**: public IP address of a VPC
+	// - **EIP**: public IP address in a VPC.
 	//
-	// - **SLB**: load balancing
+	// - **SLB**: load balancing.
 	//
-	// - **ECS**: public IP address of an ECS instance in the classic network
+	// - **ECS**: public IP address in the classic network.
 	//
 	// example:
 	//
 	// EIP
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The unique ID of the application record.
+	// The unique identity of the application record.
 	//
-	// > This field is of the Long type. Precision loss may occur when you serialize or deserialize the value. Make sure that the value does not exceed 9007199254740991.
+	// > This field is of the Long type. Precision loss may occur during the procedure to serialize or deserialize the numeric sequence. Ensure that the value does not exceed 9007199254740991.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type QueryPenetrationTestDetailResponseBodyData struct {
 	//
 	// 47.113.186.91
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// Indicates whether the test is performed by a third-party service provider.
+	// Indicates whether the test is performed by a third-party service provider. Valid values:
 	//
 	// - true: Yes.
 	//
@@ -165,15 +165,15 @@ type QueryPenetrationTestDetailResponseBodyData struct {
 	IsThirdpartyTest *bool `json:"IsThirdpartyTest,omitempty" xml:"IsThirdpartyTest,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **early_end**: The user applies for early termination.
+	// - **early_end**: The user applied for early termination.
 	//
 	// - **expired**: The authorization has expired.
 	//
-	// - **auditing**: The application is being reviewed.
+	// - **auditing**: Under review.
 	//
-	// - **approved**: The application is approved.
+	// - **approved**: Approved.
 	//
-	// - **rejected**: The application is rejected.
+	// - **rejected**: Rejected.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type QueryPenetrationTestDetailResponseBodyData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The test content.
 	//
-	// > - The content must be within 500 characters. Carefully fill in the content to increase the chance of passing the review.
+	// > - Maximum 500 characters. Provide detailed information to increase the chance of passing the review.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type QueryPenetrationTestDetailResponseBodyData struct {
 	TestEndDate *int64 `json:"TestEndDate,omitempty" xml:"TestEndDate,omitempty"`
 	// The source IP addresses used for the test.
 	//
-	// > You can specify up to 50 IP addresses. Separate multiple IP addresses with line breaks or commas (,). Specify 0.0.0.0 to allow all IP addresses. CIDR blocks are not supported, such as 140.168.0.0/16.
+	// > A maximum of 50 IP addresses are supported. Separate multiple IP addresses with line breaks or commas (,). Specify 0.0.0.0 to allow all IP addresses. CIDR blocks are not supported, such as 140.168.0.0/16.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type QueryPenetrationTestDetailResponseBodyData struct {
 	TestStartDate *int64 `json:"TestStartDate,omitempty" xml:"TestStartDate,omitempty"`
 	// The test steps.
 	//
-	// > The content must be within 500 characters. Carefully fill in the content to increase the chance of passing the review.
+	// > Maximum 500 characters. Provide detailed information to increase the chance of passing the review.
 	//
 	// example:
 	//
