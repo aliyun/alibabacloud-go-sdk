@@ -62,13 +62,13 @@ func (s *DescribeDBInstanceAttributeResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
-	// Specifies whether the AI gateway is enabled.
+	// Indicates whether the AI gateway is enabled.
 	//
 	// example:
 	//
 	// true
 	AiGatewayEnabled *string `json:"AiGatewayEnabled,omitempty" xml:"AiGatewayEnabled,omitempty"`
-	// Indicates whether the In-Memory Column Index (IMCI) feature is supported.
+	// Indicates whether the column store index feature is supported.
 	//
 	// example:
 	//
@@ -76,27 +76,27 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	CanNotCreateColumnar *bool `json:"CanNotCreateColumnar,omitempty" xml:"CanNotCreateColumnar,omitempty"`
 	// The CN node specifications. Valid values:
 	//
-	// - **polarx.x4.medium.2e**: 2 cores, 8 GB
+	// - **polarx.x4.medium.2e**: 2 cores and 8 GB of memory
 	//
-	// - **polarx.x4.large.2e**: 4 cores, 16 GB
+	// - **polarx.x4.large.2e**: 4 cores and 16 GB of memory
 	//
-	// - **polarx.x8.large.2e**: 4 cores, 32 GB
+	// - **polarx.x8.large.2e**: 4 cores and 32 GB of memory
 	//
-	// - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
+	// - **polarx.x4.xlarge.2e**: 8 cores and 32 GB of memory
 	//
-	// - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
+	// - **polarx.x8.xlarge.2e**: 8 cores and 64 GB of memory
 	//
-	// - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
+	// - **polarx.x4.2xlarge.2e**: 16 cores and 64 GB of memory
 	//
-	// - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
+	// - **polarx.x8.2xlarge.2e**: 16 cores and 128 GB of memory
 	//
-	// - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
+	// - **polarx.x4.4xlarge.2e**: 32 cores and 128 GB of memory
 	//
-	// - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
+	// - **polarx.x8.4xlarge.2e**: 32 cores and 256 GB of memory
 	//
-	// - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
+	// - **polarx.st.8xlarge.2e**: 60 cores and 470 GB of memory
 	//
-	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB
+	// - **polarx.st.12xlarge.2e**: 90 cores and 720 GB of memory
 	//
 	// example:
 	//
@@ -114,9 +114,9 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// xxxx
 	ColumnarInstanceName *string `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
-	// The column store read-only instance information.
+	// The information about the column store read-only instances.
 	ColumnarReadDBInstances []*string `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
-	// The commodity type of the instance. The value is fixed as drds_polarxpost_public_cn.
+	// The commodity type of the instance. The value is fixed to drds_polarxpost_public_cn.
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The endpoint information.
 	ConnAddrs []*DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
-	// The internal network connection string.
+	// The internal network connection information.
 	//
 	// example:
 	//
 	// pxc-sprpx766vo****.polarx.singapore.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The processor type. Default value: intel.
+	// The chip type. Default value: intel.
 	//
 	// example:
 	//
@@ -144,9 +144,9 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - **ReadWrite**: Primary instance.
+	// - **ReadWrite**: primary instance
 	//
-	// - **ReadOnly**: Read-only instance.
+	// - **ReadOnly**: read-only instance
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	DBNodeCount *int32 `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
 	// The database node information.
 	DBNodes []*DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
-	// The database type. The value is fixed as polarx.
+	// The database type. The value is fixed to polarx.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// 5.5
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The description of the instance.
+	// The instance description.
 	//
 	// example:
 	//
@@ -196,35 +196,35 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	DifferentDNSpec *bool `json:"DifferentDNSpec,omitempty" xml:"DifferentDNSpec,omitempty"`
 	// The DN node specifications. Valid values:
 	//
-	// - **mysql.n2.medium.25**: 2 cores, 4 GB
+	// - **mysql.n2.medium.25**: 2 cores and 4 GB of memory
 	//
-	// - **mysql.n4.medium.25**: 2 cores, 8 GB
+	// - **mysql.n4.medium.25**: 2 cores and 8 GB of memory
 	//
-	// - **mysql.x8.medium.25**: 2 cores, 16 GB
+	// - **mysql.x8.medium.25**: 2 cores and 16 GB of memory
 	//
-	// - **mysql.n2.large.25**: 4 cores, 8 GB
+	// - **mysql.n2.large.25**: 4 cores and 8 GB of memory
 	//
-	// - **mysql.n4.large.25**: 4 cores, 16 GB
+	// - **mysql.n4.large.25**: 4 cores and 16 GB of memory
 	//
-	// - **mysql.x8.large.25**: 4 cores, 32 GB
+	// - **mysql.x8.large.25**: 4 cores and 32 GB of memory
 	//
-	// - **mysql.n2.xlarge.25**: 8 cores, 16 GB
+	// - **mysql.n2.xlarge.25**: 8 cores and 16 GB of memory
 	//
-	// - **mysql.n4.xlarge.25**: 8 cores, 32 GB
+	// - **mysql.n4.xlarge.25**: 8 cores and 32 GB of memory
 	//
-	// - **mysql.x8.xlarge.25**: 8 cores, 64 GB
+	// - **mysql.x8.xlarge.25**: 8 cores and 64 GB of memory
 	//
-	// - **mysql.n4.2xlarge.25**: 16 cores, 64 GB
+	// - **mysql.n4.2xlarge.25**: 16 cores and 64 GB of memory
 	//
-	// - **mysql.x8.2xlarge.25**: 16 cores, 128 GB
+	// - **mysql.x8.2xlarge.25**: 16 cores and 128 GB of memory
 	//
-	// - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
+	// - **mysql.x4.4xlarge.25**: 32 cores and 128 GB of memory
 	//
-	// - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
+	// - **mysql.x8.4xlarge.25**: 32 cores and 256 GB of memory
 	//
-	// - **mysql.st.8xlarge.25**: 60 cores, 470 GB
+	// - **mysql.st.8xlarge.25**: 60 cores and 470 GB of memory
 	//
-	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB
+	// - **mysql.st.12xlarge.25**: 90 cores and 720 GB of memory
 	//
 	// example:
 	//
@@ -236,19 +236,19 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// 2
 	DnNodeCount *int32 `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
-	// The disk space of the storage node. Unit: GB.
+	// The disk space size of the storage node, in GB.
 	//
 	// example:
 	//
 	// 20
 	DnStorageSpace *string `json:"DnStorageSpace,omitempty" xml:"DnStorageSpace,omitempty"`
-	// The database type. The value is fixed as polarx.
+	// The database type. The value is fixed to polarx.
 	//
 	// example:
 	//
 	// polarx
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version. Default value: 2.0.
+	// The DPI engine version. Default value: 2.0.
 	//
 	// example:
 	//
@@ -262,15 +262,15 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// Indicates whether the instance has expired. Valid values:
 	//
-	// - **true**: Expired.
+	// - **true**: expired
 	//
-	// - **false**: Normal.
+	// - **false**: normal
 	//
 	// example:
 	//
 	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The GDN instance name.
+	// The name of the GDN instance.
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	GdnInstanceName *string `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
 	// The GDN member list.
 	GdnMemberList []*DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList `json:"GdnMemberList,omitempty" xml:"GdnMemberList,omitempty" type:"Repeated"`
-	// The role in the global database network (GDN).
+	// The GDN role.
 	//
 	// example:
 	//
@@ -290,17 +290,17 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// pxc-zkralxpc5d****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The database engine version of the instance DPI engine. This is an internal parameter.
+	// The instance DPI engine version. This is an internal parameter.
 	//
 	// example:
 	//
 	// 18
 	KindCode *int32 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
-	// The instance version.
+	// The instance versions.
 	//
 	// This parameter is required.
 	LTSVersions []*string `json:"LTSVersions,omitempty" xml:"LTSVersions,omitempty" type:"Repeated"`
-	// The latest kernel Milvus version supported by the instance.
+	// The latest Milvus version supported by the current instance.
 	//
 	// example:
 	//
@@ -308,35 +308,35 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	LatestMinorVersion *string `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
 	// The lock mode of the instance. Valid values:
 	//
-	// - **Unlock**: Normal.
+	// - **Unlock**: normal
 	//
-	// - **ManualLock**: Manually locked.
+	// - **ManualLock**: manually locked
 	//
-	// - **LockByExpiration**: Automatically locked due to expiration.
+	// - **LockByExpiration**: automatically locked due to expiration
 	//
-	// - **LockByRestoration**: Automatically locked before a rollback.
+	// - **LockByRestoration**: automatically locked before rollback
 	//
-	// - **LockByDiskQuota**: Automatically locked due to full storage space.
+	// - **LockByDiskQuota**: automatically locked due to full disk space
 	//
-	// - **LockReadInstanceByDiskQuota**: Automatically locked due to full storage space of the read-only instance.
+	// - **LockReadInstanceByDiskQuota**: automatically locked due to full disk space of the read-only instance
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The end time of the maintenance window for the instance. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
+	// The end time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
 	//
 	// example:
 	//
 	// 06:00
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window for the instance. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
+	// The start time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
 	//
 	// example:
 	//
 	// 06:00
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The current kernel Milvus version.
+	// The current Milvus version.
 	//
 	// example:
 	//
@@ -350,9 +350,9 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **Postpaid**: Pay-as-you-go.
+	// - **Postpaid**: pay-as-you-go
 	//
-	// - **Prepaid**: Subscription.
+	// - **Prepaid**: subscription
 	//
 	// example:
 	//
@@ -380,7 +380,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
 	// The list of read-only instance names.
 	ReadDBInstances []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
-	// The region ID.
+	// The region of the instance.
 	//
 	// example:
 	//
@@ -392,30 +392,34 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// rg-*********
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the three-role mode is enabled. Valid values:
+	// The status of the three-role mode. Valid values:
 	//
-	// - **false**: Disabled.
+	// - **false**: disabled
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled
 	//
 	// example:
 	//
 	// false
 	RightsSeparationEnabled *bool `json:"RightsSeparationEnabled,omitempty" xml:"RightsSeparationEnabled,omitempty"`
-	// The three-role mode status. Valid values:
+	// The status of the three-role mode. Valid values:
 	//
-	// - **disabled**: Disabled.
+	// - **disabled**: disabled
 	//
-	// - **enabled**: Enabled.
+	// - **enabled**: enabled
 	//
-	// - **processing**: Processing.
+	// - **processing**: processing
 	//
-	// - **unknown**: Unknown. This may be caused by a connection failure to the instance.
+	// - **unknown**: unknown, which may be caused by the inability to connect to the instance
 	//
 	// example:
 	//
 	// disabled
 	RightsSeparationStatus *string `json:"RightsSeparationStatus,omitempty" xml:"RightsSeparationStatus,omitempty"`
+	// Indicates whether an associated Search instance that is not deleted exists, including instances that are being created or deleted.
+	SearchEnabled *bool `json:"SearchEnabled,omitempty" xml:"SearchEnabled,omitempty"`
+	// The unique Search instance associated with the current primary instance. This parameter is empty if the feature is not enabled.
+	SearchInstance *DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance `json:"SearchInstance,omitempty" xml:"SearchInstance,omitempty" type:"Struct"`
 	// The secondary zone.
 	//
 	// example:
@@ -424,25 +428,23 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
 	// The instance edition. Valid values:
 	//
-	// - **enterprise**: Enterprise Edition.
+	// - **enterprise**: Enterprise Edition
 	//
-	// - **standard**: Standard Edition.
+	// - **standard**: Standard Edition
 	//
 	// example:
 	//
 	// enterprise
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
-	// The specification category. Valid values:
+	// exclusive: Exclusive.
 	//
-	// - exclusive: Dedicated.
-	//
-	// - general: General-purpose.
+	// general: General.
 	//
 	// example:
 	//
 	// exclusive | general
 	SpecCategory *string `json:"SpecCategory,omitempty" xml:"SpecCategory,omitempty"`
-	// The instance status.
+	// The instance status. For more information, see the following description.
 	//
 	// example:
 	//
@@ -454,7 +456,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// custom_local_ssd | cloud_auto
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The used storage space, in bytes.
+	// The used storage capacity, in bytes.
 	//
 	// example:
 	//
@@ -462,7 +464,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
 	// The tag set.
 	TagSet []*DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
-	// The third zone in a Three-zone deployment.
+	// The third zone.
 	//
 	// example:
 	//
@@ -482,9 +484,9 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - **ReadWrite**: Primary instance.
+	// - **ReadWrite**: primary instance
 	//
-	// - **ReadOnly**: Read-only instance.
+	// - **ReadOnly**: read-only instance
 	//
 	// example:
 	//
@@ -502,7 +504,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	//
 	// vsw-********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone where the instance is deployed.
+	// The zone where the instance is located.
 	//
 	// example:
 	//
@@ -704,6 +706,14 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetRightsSeparationE
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetRightsSeparationStatus() *string {
 	return s.RightsSeparationStatus
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetSearchEnabled() *bool {
+	return s.SearchEnabled
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetSearchInstance() *DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance {
+	return s.SearchInstance
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) GetSecondaryZone() *string {
@@ -993,6 +1003,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetRightsSeparationS
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetSearchEnabled(v bool) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.SearchEnabled = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetSearchInstance(v *DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.SearchInstance = v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetSecondaryZone(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.SecondaryZone = &v
 	return s
@@ -1086,6 +1106,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) Validate() error {
 			}
 		}
 	}
+	if s.SearchInstance != nil {
+		if err := s.SearchInstance.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.TagSet != nil {
 		for _, item := range s.TagSet {
 			if item != nil {
@@ -1111,7 +1136,11 @@ type DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs struct {
 	//
 	// 3306
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The connection type. **VPC*	- indicates an internal network connection, and **PUBLIC*	- indicates a public network connection.
+	// The connection type. Valid values:
+	//
+	// - **VPC**: internal network connection
+	//
+	// - **PUBLIC**: public network connection
 	//
 	// example:
 	//
@@ -1234,7 +1263,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the zone where the node is deployed.
+	// The zone name of the node.
 	//
 	// example:
 	//
@@ -1309,17 +1338,17 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes) Validate() er
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList struct {
-	// The name of the member, which is the name of the PolarDB-X instance.
+	// The member name, which is the PolarDB-X instance name.
 	//
 	// example:
 	//
 	// pxc
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	// The role of the node. Valid values:
+	// The node role. Valid values:
 	//
-	// - **master**: The primary node.
+	// - **master**: primary node
 	//
-	// - **standby**: The secondary node.
+	// - **standby**: secondary node
 	//
 	// example:
 	//
@@ -1369,6 +1398,51 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList) SetStat
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance struct {
+	// The name of the Search engine instance.
+	//
+	// example:
+	//
+	// pxs-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the Search engine.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance) SetInstanceId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance) SetStatus(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceSearchInstance) Validate() error {
 	return dara.Validate(s)
 }
 

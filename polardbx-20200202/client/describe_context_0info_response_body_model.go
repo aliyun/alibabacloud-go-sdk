@@ -18,9 +18,9 @@ type iDescribeContext0InfoResponseBody interface {
 }
 
 type DescribeContext0InfoResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	AccessDeniedDetail *DescribeContext0InfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The parameter details.
+	// The data details.
 	Data *DescribeContext0InfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -98,7 +98,7 @@ type DescribeContext0InfoResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authentication principal type.
+	// The type of the authentication principal.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeContext0InfoResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of missing permission.
+	// The no-permission type.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ func (s *DescribeContext0InfoResponseBodyData) Validate() error {
 }
 
 type DescribeContext0InfoResponseBodyDataInstance struct {
-	// The instance specifications.
+	// The instance class.
 	//
 	// example:
 	//
@@ -245,7 +245,7 @@ type DescribeContext0InfoResponseBodyDataInstance struct {
 	//
 	// 2026-02-17T02:00:20Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The database instance name.
+	// The name of the database instance.
 	//
 	// example:
 	//
@@ -257,7 +257,7 @@ type DescribeContext0InfoResponseBodyDataInstance struct {
 	//
 	// pxc-spsil01pww4hfz-mem
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Service 当前已确认的小版本完整 tag，未知时为空。
+	// The full tag of the minor version currently confirmed for the service. This parameter is empty when the version is unknown.
 	//
 	// example:
 	//
@@ -269,7 +269,7 @@ type DescribeContext0InfoResponseBodyDataInstance struct {
 	//
 	// 1
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The PolarDB-X Search instance name.
+	// The name of the PolarDB-X Search instance.
 	//
 	// example:
 	//
@@ -487,7 +487,7 @@ type DescribeContext0InfoResponseBodyDataInstanceConnAddrs struct {
 	//
 	// pxc-spsil01pww4hfz.polarx.singapore.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The target node type: service or dashboard.
+	// The target node type. Valid values: service, dashboard.
 	//
 	// example:
 	//
@@ -517,7 +517,7 @@ type DescribeContext0InfoResponseBodyDataInstanceConnAddrs struct {
 	//
 	// vsw-t4ny14pr37spmjsbv5dc2
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC-connected instance ID.
+	// The VPC instance ID.
 	//
 	// example:
 	//
@@ -601,7 +601,7 @@ func (s *DescribeContext0InfoResponseBodyDataInstanceConnAddrs) Validate() error
 }
 
 type DescribeContext0InfoResponseBodyDataInstanceReplicaSets struct {
-	// The instance specifications.
+	// The instance class.
 	//
 	// example:
 	//
@@ -627,7 +627,7 @@ type DescribeContext0InfoResponseBodyDataInstanceReplicaSets struct {
 	//
 	// 1
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The target node type: service or dashboard.
+	// The target node type. Valid values: service, dashboard.
 	//
 	// example:
 	//
@@ -635,19 +635,19 @@ type DescribeContext0InfoResponseBodyDataInstanceReplicaSets struct {
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The node status. Valid values:
 	//
-	// - **0**: Running.
+	// - **0**: running
 	//
-	// - **1**: Creating.
+	// - **1**: creating
 	//
-	// - **2**: Abnormal.
+	// - **2**: abnormal
 	//
-	// - **3**: Expired.
+	// - **3**: expired
 	//
-	// - **4**: Releasing.
+	// - **4**: releasing
 	//
-	// - **5**: Released.
+	// - **5**: released
 	//
-	// - **6**: Locked.
+	// - **6**: locked
 	//
 	// example:
 	//
@@ -776,7 +776,7 @@ type DescribeContext0InfoResponseBodyDataInstanceReplicaSetsConnAddrs struct {
 	//
 	// pxc-hzrlz8e3khuaoz.polarx.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The target node type: service or dashboard.
+	// The target node type. Valid values: service, dashboard.
 	//
 	// example:
 	//
@@ -790,9 +790,9 @@ type DescribeContext0InfoResponseBodyDataInstanceReplicaSetsConnAddrs struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - **ReadWrite**: Primary instance.
+	// - **ReadWrite**: primary instance
 	//
-	// - **ReadOnly**: Read-only instance.
+	// - **ReadOnly**: read-only instance
 	//
 	// example:
 	//
@@ -810,7 +810,7 @@ type DescribeContext0InfoResponseBodyDataInstanceReplicaSetsConnAddrs struct {
 	//
 	// vsw-2zedp17pfss1133bvdizl
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC-connected instance ID.
+	// The VPC instance ID.
 	//
 	// example:
 	//

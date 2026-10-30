@@ -26,7 +26,7 @@ type DescribeDBInstanceAttributeRequest struct {
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region ID.
+	// The region of the instance.
 	//
 	// This parameter is required.
 	//

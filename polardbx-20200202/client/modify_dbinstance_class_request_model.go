@@ -38,8 +38,9 @@ type iModifyDBInstanceClassRequest interface {
 }
 
 type ModifyDBInstanceClassRequest struct {
+	// Specifies whether to align the primary zone of the storage nodes when you modify the instance specifications.
 	AlignStoragePrimaryAzone *bool `json:"AlignStoragePrimaryAzone,omitempty" xml:"AlignStoragePrimaryAzone,omitempty"`
-	// The client token. It is an arbitrary unique string used to ensure the idempotence of the request.
+	// The client token. You can specify any unique string to ensure the idempotence of the request.
 	//
 	// example:
 	//
@@ -49,55 +50,55 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// **Primary instance compute node specifications (Enterprise Edition CN) (General-purpose)**
 	//
-	// - polarx.x4.medium.2e 2 vCPUs, 8 GB (General-purpose)
+	// - polarx.x4.medium.2e	2 vCPUs, 8 GB (general-purpose)
 	//
-	// - polarx.x4.large.2e 4 vCPUs, 16 GB (General-purpose)
+	// - polarx.x4.large.2e	4 vCPUs, 16 GB (general-purpose)
 	//
-	// - polarx.x4.xlarge.2e 8 vCPUs, 32 GB (General-purpose)
+	// - polarx.x4.xlarge.2e	8 vCPUs, 32 GB (general-purpose)
 	//
-	// - polarx.x4.2xlarge.2e 16 vCPUs, 64 GB (General-purpose)
+	// - polarx.x4.2xlarge.2e 16 vCPUs, 64 GB (general-purpose)
 	//
 	// **Primary instance compute node specifications (Enterprise Edition CN) (Dedicated)**
 	//
-	// - polarx.x8.large.2e 4 vCPUs, 32 GB (Dedicated)
+	// - polarx.x8.large.2e	4 vCPUs, 32 GB (dedicated)
 	//
-	// - polarx.x8.xlarge.2e 8 vCPUs, 64 GB (Dedicated)
+	// - polarx.x8.xlarge.2e	8 vCPUs, 64 GB (dedicated)
 	//
-	// - polarx.x8.2xlarge.2e 16 vCPUs, 128 GB (Dedicated)
+	// - polarx.x8.2xlarge.2e	16 vCPUs, 128 GB (dedicated)
 	//
-	// - polarx.x4.4xlarge.2e 32 vCPUs, 128 GB (Dedicated)
+	// - polarx.x4.4xlarge.2e	32 vCPUs, 128 GB (dedicated)
 	//
-	// - polarx.x8.4xlarge.2e 32 vCPUs, 256 GB (Dedicated)
+	// - polarx.x8.4xlarge.2e	32 vCPUs, 256 GB (dedicated)
 	//
-	// - polarx.st.8xlarge.2e 60 vCPUs, 470 GB (Dedicated)
+	// - polarx.st.8xlarge.2e	60 vCPUs, 470 GB (dedicated)
 	//
-	// - polarx.st.12xlarge.2e 90 vCPUs, 720 GB (Dedicated)
+	// - polarx.st.12xlarge.2e	90 vCPUs, 720 GB (dedicated)
 	//
 	// **Read-only instance compute node specifications (Enterprise Edition CN) (General-purpose)**
 	//
-	// - polarxro.x4.medium.2e 2 vCPUs, 8 GB (General-purpose)
+	// - polarxro.x4.medium.2e	2 vCPUs, 8 GB (general-purpose)
 	//
-	// - polarxro.x4.large.2e 4 vCPUs, 16 GB (General-purpose)
+	// - polarxro.x4.large.2e	4 vCPUs, 16 GB (general-purpose)
 	//
-	// - polarxro.x4.xlarge.2e 8 vCPUs, 32 GB (General-purpose)
+	// - polarxro.x4.xlarge.2e	8 vCPUs, 32 GB (general-purpose)
 	//
-	// - polarxro.x4.2xlarge.2e 16 vCPUs, 64 GB (General-purpose)
+	// - polarxro.x4.2xlarge.2e	16 vCPUs, 64 GB (general-purpose)
 	//
 	// **Read-only instance compute node specifications (Enterprise Edition CN) (Dedicated)**
 	//
-	// - polarxro.x8.large.2e 4 vCPUs, 32 GB (Dedicated)
+	// - polarxro.x8.large.2e	4 vCPUs, 32 GB (dedicated)
 	//
-	// - polarxro.x8.xlarge.2e 8 vCPUs, 64 GB (Dedicated)
+	// - polarxro.x8.xlarge.2e	8 vCPUs, 64 GB (dedicated)
 	//
-	// - polarxro.x8.2xlarge.2e 16 vCPUs, 128 GB (Dedicated)
+	// - polarxro.x8.2xlarge.2e	16 vCPUs, 128 GB (dedicated)
 	//
-	// - polarxro.x4.4xlarge.2e 32 vCPUs, 128 GB (Dedicated)
+	// - polarxro.x4.4xlarge.2e	32 vCPUs, 128 GB (dedicated)
 	//
-	// - polarxro.x8.4xlarge.2e 32 vCPUs, 256 GB (Dedicated)
+	// - polarxro.x8.4xlarge.2e	32 vCPUs, 256 GB (dedicated)
 	//
-	// - polarxro.st.8xlarge.2e 60 vCPUs, 470 GB (Dedicated physical host)
+	// - polarxro.st.8xlarge.2e	60 vCPUs, 470 GB (dedicated physical host)
 	//
-	// - polarxro.st.12xlarge.2e 90 vCPUs, 720 GB (Dedicated physical host)
+	// - polarxro.st.12xlarge.2e	90 vCPUs, 720 GB (dedicated physical host)
 	//
 	// example:
 	//
@@ -115,65 +116,65 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// **Storage node specifications (Enterprise Edition DN) (General-purpose)**
 	//
-	// - mysql.n4.medium.25 2 vCPUs, 8 GB (General-purpose)
+	// - mysql.n4.medium.25	2 vCPUs, 8 GB (general-purpose)
 	//
-	// - mysql.n4.large.25 4 vCPUs, 16 GB (General-purpose)
+	// - mysql.n4.large.25	4 vCPUs, 16 GB (general-purpose)
 	//
-	// - mysql.n4.xlarge.25 8 vCPUs, 32 GB (General-purpose)
+	// - mysql.n4.xlarge.25	8 vCPUs, 32 GB (general-purpose)
 	//
-	// - mysql.n4.2xlarge.25 16 vCPUs, 64 GB (General-purpose)
+	// - mysql.n4.2xlarge.25	16 vCPUs, 64 GB (general-purpose)
 	//
 	// **Storage node specifications (Enterprise Edition DN) (Dedicated)**
 	//
-	// - mysql.x8.large.25 4 vCPUs, 32 GB (Dedicated)
+	// - mysql.x8.large.25	4 vCPUs, 32 GB (dedicated)
 	//
-	// - mysql.x8.xlarge.25 8 vCPUs, 64 GB (Dedicated)
+	// - mysql.x8.xlarge.25	8 vCPUs, 64 GB (dedicated)
 	//
-	// - mysql.x8.2xlarge.25 16 vCPUs, 128 GB (Dedicated)
+	// - mysql.x8.2xlarge.25	16 vCPUs, 128 GB (dedicated)
 	//
-	// - mysql.x4.4xlarge.25 32 vCPUs, 128 GB (Dedicated)
+	// - mysql.x4.4xlarge.25	32 vCPUs, 128 GB (dedicated)
 	//
-	// - mysql.x8.4xlarge.25 32 vCPUs, 256 GB (Dedicated)
+	// - mysql.x8.4xlarge.25	32 vCPUs, 256 GB (dedicated)
 	//
-	// - mysql.st.8xlarge.25 60 vCPUs, 470 GB (Dedicated)
+	// - mysql.st.8xlarge.25	60 vCPUs, 470 GB (dedicated)
 	//
-	// - mysql.st.12xlarge.25 90 vCPUs, 720 GB (Dedicated)
+	// - mysql.st.12xlarge.25	90 vCPUs, 720 GB (dedicated)
 	//
 	// **Read-only instance storage node specifications (Enterprise Edition DN) (General-purpose)**
 	//
-	// - rds.mysql.s2.xlarge 2 vCPUs, 8 GB (General-purpose)
+	// - rds.mysql.s2.xlarge	2 vCPUs, 8 GB (general-purpose)
 	//
-	// - mysqlro.x4.large.1 4 vCPUs, 16 GB (General-purpose)
+	// - mysqlro.x4.large.1	4 vCPUs, 16 GB (general-purpose)
 	//
-	// - mysqlro.x4.xlarge.1 8 vCPUs, 32 GB (General-purpose)
+	// - mysqlro.x4.xlarge.1	8 vCPUs, 32 GB (general-purpose)
 	//
-	// - mysqlro.x4.2xlarge.1 16 vCPUs, 64 GB (General-purpose)
+	// - mysqlro.x4.2xlarge.1	16 vCPUs, 64 GB (general-purpose)
 	//
 	// **Read-only instance storage node specifications (Enterprise Edition DN) (Dedicated)**
 	//
-	// - mysqlro.x8.large.1 4 vCPUs, 32 GB (Dedicated)
+	// - mysqlro.x8.large.1	4 vCPUs, 32 GB (dedicated)
 	//
-	// - mysqlro.x8.xlarge.1 8 vCPUs, 64 GB (Dedicated)
+	// - mysqlro.x8.xlarge.1	8 vCPUs, 64 GB (dedicated)
 	//
-	// - mysqlro.x8.2xlarge.1 16 vCPUs, 128 GB (Dedicated)
+	// - mysqlro.x8.2xlarge.1	16 vCPUs, 128 GB (dedicated)
 	//
-	// - mysqlro.x4.4xlarge.1 32 vCPUs, 128 GB (Dedicated)
+	// - mysqlro.x4.4xlarge.1	32 vCPUs, 128 GB (dedicated)
 	//
-	// - mysqlro.x8.4xlarge.1 32 vCPUs, 256 GB (Dedicated)
+	// - mysqlro.x8.4xlarge.1	32 vCPUs, 256 GB (dedicated)
 	//
-	// - rds.mysql.st.h43 60 vCPUs, 470 GB (Dedicated physical host)
+	// - rds.mysql.st.h43	60 vCPUs, 470 GB (dedicated physical host)
 	//
-	// - rds.mysql.st.v52 90 vCPUs, 720 GB (Dedicated physical host)
+	// - rds.mysql.st.v52	90 vCPUs, 720 GB (dedicated physical host)
 	//
 	// example:
 	//
 	// mysql.n4.medium.25
 	DnClass *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
-	// The target cloud disk size after the specification change.
+	// The target cloud disk size for the specification change.
 	//
 	// - If the instance uses a fixed-size cloud disk, you cannot change the cloud disk size. In this case, do not specify DnStorageSpace.
 	//
-	// - Valid values of DnStorageSpace: 20 to 3072.
+	// - Valid values for DnStorageSpace: 20 to 3072.
 	//
 	// example:
 	//
@@ -187,13 +188,13 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to change the DN nodes to different specifications.
+	// Specifies whether to change the specifications of multiple DN nodes.
 	//
 	// example:
 	//
 	// true
 	SpecifiedDNScale *bool `json:"SpecifiedDNScale,omitempty" xml:"SpecifiedDNScale,omitempty"`
-	// The target specification for each DN node when DN nodes are changed to different specifications.
+	// The target specifications for each DN node when you change the specifications of multiple DN nodes.
 	//
 	// example:
 	//
@@ -205,17 +206,17 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// cloud_auto
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The start time of the switchover. The switchover is performed within the period from the start time T to T+30 minutes. This parameter is not available.
+	// The start time of the switchover. The switchover occurs within the period from the start time T to T+30 minutes. This parameter is not available.
 	//
 	// example:
 	//
 	// 2024-12-11T17:10:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The switching time. Valid values:
+	// The time when the switchover occurs. Valid values:
 	//
-	// - 0: Immediately.
+	// - 0: immediately.
 	//
-	// - 1: Within the O&M window.
+	// - 1: within the O&M window.
 	//
 	// example:
 	//
@@ -225,77 +226,77 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// **Primary instance node specifications (Standard Edition) (General-purpose):**
 	//
-	// - mysql.n2.medium.25 2 vCPUs, 4 GB (General-purpose)
+	// - mysql.n2.medium.25	2 vCPUs, 4 GB (general-purpose)
 	//
-	// - mysql.n4.medium.25 2 vCPUs, 8 GB (General-purpose)
+	// - mysql.n4.medium.25	2 vCPUs, 8 GB (general-purpose)
 	//
-	// - mysql.n8.medium.25 2 vCPUs, 16 GB (General-purpose)
+	// - mysql.n8.medium.25	2 vCPUs, 16 GB (general-purpose)
 	//
-	// - mysql.n2.large.25 4 vCPUs, 8 GB (General-purpose)
+	// - mysql.n2.large.25	4 vCPUs, 8 GB (general-purpose)
 	//
-	// - mysql.n4.large.25 4 vCPUs, 16 GB (General-purpose)
+	// - mysql.n4.large.25	4 vCPUs, 16 GB (general-purpose)
 	//
-	// - mysql.n8.large.25 4 vCPUs, 32 GB (General-purpose)
+	// - mysql.n8.large.25	4 vCPUs, 32 GB (general-purpose)
 	//
-	// - mysql.n2.xlarge.25 8 vCPUs, 16 GB (General-purpose)
+	// - mysql.n2.xlarge.25	8 vCPUs, 16 GB (general-purpose)
 	//
-	// - mysql.n4.xlarge.25 8 vCPUs, 32 GB (General-purpose)
+	// - mysql.n4.xlarge.25	8 vCPUs, 32 GB (general-purpose)
 	//
-	// - mysql.n8.xlarge.25 8 vCPUs, 64 GB (General-purpose)
+	// - mysql.n8.xlarge.25	8 vCPUs, 64 GB (general-purpose)
 	//
-	// - mysql.n2.2xlarge.25 16 vCPUs, 32 GB (General-purpose)
+	// - mysql.n2.2xlarge.25	16 vCPUs, 32 GB (general-purpose)
 	//
-	// - mysql.n4.2xlarge.25 16 vCPUs, 64 GB (General-purpose)
+	// - mysql.n4.2xlarge.25	16 vCPUs, 64 GB (general-purpose)
 	//
-	// - mysql.n8.2xlarge.25 16 vCPUs, 128 GB (General-purpose)
+	// - mysql.n8.2xlarge.25	16 vCPUs, 128 GB (general-purpose)
 	//
 	// **Primary instance node specifications (Standard Edition) (Dedicated):**
 	//
-	// - mysql.x2.medium.25 2 vCPUs, 4 GB (Dedicated)
+	// - mysql.x2.medium.25	2 vCPUs, 4 GB (dedicated)
 	//
-	// - mysql.x4.medium.25 2 vCPUs, 8 GB (Dedicated)
+	// - mysql.x4.medium.25	2 vCPUs, 8 GB (dedicated)
 	//
-	// - mysql.x8.medium.25 2 vCPUs, 16 GB (Dedicated)
+	// - mysql.x8.medium.25	2 vCPUs, 16 GB (dedicated)
 	//
-	// - mysql.x2.large.25 4 vCPUs, 8 GB (Dedicated)
+	// - mysql.x2.large.25	4 vCPUs, 8 GB (dedicated)
 	//
-	// - mysql.x4.large.25 4 vCPUs, 16 GB (Dedicated)
+	// - mysql.x4.large.25	4 vCPUs, 16 GB (dedicated)
 	//
-	// - mysql.x8.large.25 4 vCPUs, 32 GB (Dedicated)
+	// - mysql.x8.large.25	4 vCPUs, 32 GB (dedicated)
 	//
-	// - mysql.x2.xlarge.25 8 vCPUs, 16 GB (Dedicated)
+	// - mysql.x2.xlarge.25	8 vCPUs, 16 GB (dedicated)
 	//
-	// - mysql.x4.xlarge.25 8 vCPUs, 32 GB (Dedicated)
+	// - mysql.x4.xlarge.25	8 vCPUs, 32 GB (dedicated)
 	//
-	// - mysql.x8.xlarge.25 8 vCPUs, 64 GB (Dedicated)
+	// - mysql.x8.xlarge.25	8 vCPUs, 64 GB (dedicated)
 	//
-	// - mysql.x2.2xlarge.25 16 vCPUs, 32 GB (Dedicated)
+	// - mysql.x2.2xlarge.25	16 vCPUs, 32 GB (dedicated)
 	//
-	// - mysql.x4.2xlarge.25 16 vCPUs, 64 GB (Dedicated)
+	// - mysql.x4.2xlarge.25	16 vCPUs, 64 GB (dedicated)
 	//
-	// - mysql.x8.2xlarge.25 16 vCPUs, 128 GB (Dedicated)
+	// - mysql.x8.2xlarge.25	16 vCPUs, 128 GB (dedicated)
 	//
 	// **Read-only instance node specifications (Standard Edition) (General-purpose)**
 	//
-	// - rds.mysql.s2.xlarge 2 vCPUs, 8 GB (General-purpose)
+	// - rds.mysql.s2.xlarge 	2 vCPUs, 8 GB (general-purpose)
 	//
-	// - mysqlro.x4.large.1 4 vCPUs, 16 GB (General-purpose)
+	// - mysqlro.x4.large.1 	4 vCPUs, 16 GB (general-purpose)
 	//
-	// - mysqlro.x4.xlarge.1 8 vCPUs, 32 GB (General-purpose)
+	// - mysqlro.x4.xlarge.1 	8 vCPUs, 32 GB (general-purpose)
 	//
-	// - mysqlro.x4.2xlarge.1 16 vCPUs, 64 GB (General-purpose)
+	// - mysqlro.x4.2xlarge.1 	16 vCPUs, 64 GB (general-purpose)
 	//
 	// **Read-only instance node specifications (Standard Edition) (Dedicated)**
 	//
-	// - mysqlro.x8.large.1 4 vCPUs, 32 GB (Dedicated)
+	// - mysqlro.x8.large.1 	4 vCPUs, 32 GB (dedicated)
 	//
-	// - mysqlro.x8.xlarge.1 8 vCPUs, 64 GB (Dedicated)
+	// - mysqlro.x8.xlarge.1 	8 vCPUs, 64 GB (dedicated)
 	//
-	// - mysqlro.x8.2xlarge.1 16 vCPUs, 128 GB (Dedicated)
+	// - mysqlro.x8.2xlarge.1 	16 vCPUs, 128 GB (dedicated)
 	//
-	// - mysqlro.x4.4xlarge.1 32 vCPUs, 128 GB (Dedicated)
+	// - mysqlro.x4.4xlarge.1 	32 vCPUs, 128 GB (dedicated)
 	//
-	// - mysqlro.x8.4xlarge.1 32 vCPUs, 256 GB (Dedicated)
+	// - mysqlro.x8.4xlarge.1	32 vCPUs, 256 GB (dedicated)
 	//
 	// example:
 	//

@@ -5121,11 +5121,11 @@ func (client *Client) DescribeContext0ConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about a context service instance.
+// Queries the information about context service instances.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge, but Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0InfoRequest
 //
@@ -5441,7 +5441,7 @@ func (client *Client) DescribeCustomEndpointListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the attributes of an instance.
+// Retrieves the attributes of an instance.
 //
 // Description:
 //

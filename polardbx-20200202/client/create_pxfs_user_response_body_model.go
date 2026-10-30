@@ -22,7 +22,7 @@ type CreatePxfsUserResponseBody struct {
 	AccessDeniedDetail *CreatePxfsUserResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The response data.
 	Data *CreatePxfsUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type CreatePxfsUserResponseBodyAccessDeniedDetail struct {
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type CreatePxfsUserResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authentication principal type.
+	// The description is as above.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *CreatePxfsUserResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type CreatePxfsUserResponseBodyData struct {
-	// The identity name.
+	// The name of the identity.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type CreatePxfsUserResponseBodyData struct {
 	//
 	// 1000
 	PosixUid *int64 `json:"PosixUid,omitempty" xml:"PosixUid,omitempty"`
-	// The identity role.
+	// The role of the identity.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type CreatePxfsUserResponseBodyData struct {
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iCreatePxfsUserRequest interface {
 }
 
 type CreatePxfsUserRequest struct {
-	// The instance ID of the PolarDB-X instance.
+	// The PolarDB-X instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreatePxfsUserRequest struct {
 	//
 	// pxc-xxxxxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The identity name.
+	// The name of the identity.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreatePxfsUserRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The identity role.
+	// The role of the identity.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type CreatePxfsUserRequest struct {
 	//
 	// MEMBER
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// This parameter is required.
 	//

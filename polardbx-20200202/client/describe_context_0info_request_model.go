@@ -16,7 +16,7 @@ type iDescribeContext0InfoRequest interface {
 }
 
 type DescribeContext0InfoRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
