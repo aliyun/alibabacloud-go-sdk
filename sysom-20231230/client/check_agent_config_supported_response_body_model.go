@@ -24,9 +24,9 @@ type iCheckAgentConfigSupportedResponseBody interface {
 type CheckAgentConfigSupportedResponseBody struct {
 	// The status code.
 	//
-	// - If `code` is `Success`, the authorization is successful.
+	// - If the value is `Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault message.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type CheckAgentConfigSupportedResponseBody struct {
 	Data []*CheckAgentConfigSupportedResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The error message.
 	//
-	// - If code is Success, this field is empty.
+	// - If the value of `code` is `Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error information of the request.
+	// - Otherwise, this field contains the error message of the request.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type CheckAgentConfigSupportedResponseBodyData struct {
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// The reason why the instance is not supported for management. This field is not empty when success is false.
+	// The reason why the instance is not supported for management. This field is not empty when the success field is false.
 	//
 	// example:
 	//

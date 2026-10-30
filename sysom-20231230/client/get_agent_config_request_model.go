@@ -24,7 +24,7 @@ type iGetAgentConfigRequest interface {
 }
 
 type GetAgentConfigRequest struct {
-	// The ID of the component for which you want to retrieve configurations.
+	// The ID of the component.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type GetAgentConfigRequest struct {
 	//
 	// Configuration-x
 	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
-	// The current page number. This field is available when page-based pagination is used.
+	// The current page number. This parameter is available only when pagination by page number is used.
 	//
 	// example:
 	//

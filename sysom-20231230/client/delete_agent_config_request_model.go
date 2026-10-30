@@ -16,7 +16,7 @@ type iDeleteAgentConfigRequest interface {
 }
 
 type DeleteAgentConfigRequest struct {
-	// The ID of the component associated with the configuration to delete.
+	// The ID of the component associated with the configuration to be deleted.
 	//
 	// example:
 	//

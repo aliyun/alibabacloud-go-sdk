@@ -30,9 +30,9 @@ type ListClusterAgentInstallRecordsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - `code == Success`: The authorization succeeded.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes: The authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListClusterAgentInstallRecordsResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//
@@ -125,7 +125,17 @@ func (s *ListClusterAgentInstallRecordsResponseBody) Validate() error {
 }
 
 type ListClusterAgentInstallRecordsResponseBodyData struct {
-	AgentConfigId   *string `json:"agent_config_id,omitempty" xml:"agent_config_id,omitempty"`
+	// The component configuration ID.
+	//
+	// example:
+	//
+	// f0078fbb-4213-11f0-a19b-00163e4ae208
+	AgentConfigId *string `json:"agent_config_id,omitempty" xml:"agent_config_id,omitempty"`
+	// The component configuration name.
+	//
+	// example:
+	//
+	// 123
 	AgentConfigName *string `json:"agent_config_name,omitempty" xml:"agent_config_name,omitempty"`
 	// The cluster ID.
 	//

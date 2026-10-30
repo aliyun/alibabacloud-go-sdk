@@ -22,7 +22,7 @@ type iGetListRecordRequest interface {
 }
 
 type GetListRecordRequest struct {
-	// The ID of the analysis record to query the status for.
+	// The ID of the specified analysis record.
 	//
 	// example:
 	//

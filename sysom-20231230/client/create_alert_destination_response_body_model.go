@@ -32,7 +32,7 @@ type CreateAlertDestinationResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error message of the request.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *CreateAlertDestinationResponseBody) Validate() error {
 }
 
 type CreateAlertDestinationResponseBodyData struct {
-	// The time when the contact was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type CreateAlertDestinationResponseBodyData struct {
 	//
 	// console
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The notification target. Currently, only DingTalk chatbots are supported.
+	// The push target. Currently, only DingTalk bots are supported.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type CreateAlertDestinationResponseBodyData struct {
 	//
 	// 1222933234714935
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// The time when the contact was last updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -248,13 +248,13 @@ type CreateAlertDestinationResponseBodyDataParams struct {
 	//
 	// 1xxx
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// The chatbot secret key.
+	// The secret key of the bot.
 	//
 	// example:
 	//
 	// SECxxx
 	Sec *string `json:"sec,omitempty" xml:"sec,omitempty"`
-	// The webhook URL of the chatbot.
+	// The webhook URL of the bot.
 	//
 	// example:
 	//

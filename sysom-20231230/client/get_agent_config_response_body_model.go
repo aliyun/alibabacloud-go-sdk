@@ -46,7 +46,7 @@ type GetAgentConfigResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The number of returned records.
+	// The total number of returned records.
 	//
 	// example:
 	//

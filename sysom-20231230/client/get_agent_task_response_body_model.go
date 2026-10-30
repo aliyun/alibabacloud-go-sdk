@@ -28,9 +28,9 @@ type GetAgentTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - If the value of code is Success, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. If the authorization fails, check the message field for the detailed fault message.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type GetAgentTaskResponseBody struct {
 	Data *GetAgentTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
-	// - If `code == Success`, this field is empty.
+	// - If the value of code is Success, this field is empty.
 	//
 	// - Otherwise, this field contains the request error message.
 	//
@@ -105,8 +105,13 @@ func (s *GetAgentTaskResponseBody) Validate() error {
 
 type GetAgentTaskResponseBodyData struct {
 	// The list of subtasks.
-	Jobs   []*GetAgentTaskResponseBodyDataJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
-	Status *string                             `json:"status,omitempty" xml:"status,omitempty"`
+	Jobs []*GetAgentTaskResponseBodyDataJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
+	// The running status of the agent task.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The task ID.
 	//
 	// example:
@@ -164,93 +169,93 @@ func (s *GetAgentTaskResponseBodyData) Validate() error {
 }
 
 type GetAgentTaskResponseBodyDataJobs struct {
-	// If the task fails, this field contains the cause of the failure.
+	// The cause of the task failure. This field returns an error when the task execution fails.
 	//
 	// example:
 	//
 	// Deprecated (misused)
 	Error *string `json:"error,omitempty" xml:"error,omitempty"`
-	// The error code for the subtask failure. Valid values:
+	// The error code for the subtask execution failure. Valid values:
 	//
-	// 	- Empty: The task is running normally.
+	// 	- Empty: The task is executed normally.
 	//
 	// 	- INSTANCE_NOT_SUPPORTED: The instance type is not supported.
 	//
 	// 	- INSTANCE_NOT_EXISTS: The instance does not exist.
 	//
-	// 	- INSTANCE_RELEASED: The instance has been released.
+	// 	- INSTANCE_RELEASED: The instance is released.
 	//
 	// 	- INSTANCE_NOT_RUNNING: The instance is not running.
 	//
 	// 	- INSTANCE_NOT_OWNED: The instance does not belong to the current account.
 	//
-	// 	- AGENT_ALREADY_INSTALLED: The Agent is already installed.
+	// 	- AGENT_ALREADY_INSTALLED: The agent is already installed.
 	//
-	// 	- AGENT_NOT_INSTALLED: The Agent is not installed.
+	// 	- AGENT_NOT_INSTALLED: The agent is not installed.
 	//
 	// 	- AGENT_SAME_VERSION: The version is the same.
 	//
-	// 	- HAS_RUNNING_JOB: A running task already exists.
+	// 	- HAS_RUNNING_JOB: A task is running.
 	//
-	// 	- RPM_LOCK_HELD: The RPM lock is held.
+	// 	- RPM_LOCK_HELD: The RPM lock is occupied.
 	//
 	// 	- DISK_SPACE_INSUFFICIENT: Insufficient disk space.
 	//
 	// 	- NODE_LOAD_HIGH: The node load is high.
 	//
-	// 	- COMMAND_FAILED: Command execution failed.
+	// 	- COMMAND_FAILED: The command execution failed.
 	//
-	// 	- CLIENT_NOT_RUNNING: The Cloud Assistant Agent is not running.
+	// 	- CLIENT_NOT_RUNNING: The Cloud Assistant agent is not running.
 	//
-	// 	- CLIENT_NOT_RESPONSE: The Cloud Assistant Agent is not responding.
+	// 	- CLIENT_NOT_RESPONSE: The Cloud Assistant agent is not responding.
 	//
-	// 	- DELIVERY_TIMEOUT: Command delivery timed out.
+	// 	- DELIVERY_TIMEOUT: The command delivery timed out.
 	//
-	// 	- EXECUTION_TIMEOUT: Command execution timed out.
+	// 	- EXECUTION_TIMEOUT: The command execution timed out.
 	//
-	// 	- TASK_CONCURRENCY_LIMIT: The task concurrency limit has been reached.
+	// 	- TASK_CONCURRENCY_LIMIT: The task concurrency limit is reached.
 	//
 	// example:
 	//
 	// DISK_SPACE_INSUFFICIENT
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The detailed description of the subtask failure cause. Valid values:
+	// The detailed error message for the subtask execution failure. Valid values:
 	//
 	// 	- The instance type is not supported.
 	//
 	// 	- The instance does not exist.
 	//
-	// 	- The instance has been released.
+	// 	- The instance is released.
 	//
 	// 	- The instance is not running.
 	//
 	// 	- The instance does not belong to the current account.
 	//
-	// 	- The Agent is already installed.
+	// 	- The agent is already installed.
 	//
-	// 	- The Agent is not installed.
+	// 	- The agent is not installed.
 	//
-	// 	- The Agent version is the same. No upgrade is required.
+	// 	- The agent version is the same. No upgrade is required.
 	//
-	// 	- A running task exists. Try again later.
+	// 	- A task is running. Please try again later.
 	//
-	// 	- The RPM lock is held. Try again later.
+	// 	- The RPM lock is occupied. Please try again later.
 	//
 	// 	- Insufficient disk space.
 	//
-	// 	- The node load is too high. Try again later.
+	// 	- The node load is too high. Please try again later.
 	//
-	// 	- Command execution failed. Try again later.
+	// 	- The command execution failed. Please try again later.
 	//
-	// 	- The Cloud Assistant Agent is not running.
+	// 	- The Cloud Assistant agent is not running.
 	//
-	// 	- The Cloud Assistant Agent is not responding.
+	// 	- The Cloud Assistant agent is not responding.
 	//
-	// 	- Command delivery timed out.
+	// 	- The command delivery timed out.
 	//
-	// 	- Command execution timed out.
+	// 	- The command execution timed out.
 	//
-	// 	- The task concurrency limit has been reached.
+	// 	- The task concurrency limit is reached.
 	//
 	// example:
 	//
@@ -292,11 +297,11 @@ type GetAgentTaskResponseBodyDataJobs struct {
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 	// The subtask status. Valid values:
 	//
-	// - Created: Created.
+	// - Created: The task is created.
 	//
-	// - Running: Running.
+	// - Running: The task is running.
 	//
-	// - Success: The task succeeded.
+	// - Success: The task is successful.
 	//
 	// - Fail: The task failed.
 	//

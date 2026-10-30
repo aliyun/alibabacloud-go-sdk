@@ -28,10 +28,26 @@ type iCreateAlertDestinationRequest interface {
 }
 
 type CreateAlertDestinationRequest struct {
-	AppId     *string   `json:"app_id,omitempty" xml:"app_id,omitempty"`
-	AppSecret *string   `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
-	GroupId   []*string `json:"group_id,omitempty" xml:"group_id,omitempty" type:"Repeated"`
-	Imbot     *bool     `json:"imbot,omitempty" xml:"imbot,omitempty"`
+	// The ID of the IM bot.
+	//
+	// example:
+	//
+	// 0ab724ba952448eab4b5ed7ebe1d51ab
+	AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty"`
+	// The secret key of the IM bot.
+	//
+	// example:
+	//
+	// cmxjamd2a2MwbzAweHgqZ2U4TH55RjNOP0RUOy8tVVo
+	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
+	// The ID of the group.
+	GroupId []*string `json:"group_id,omitempty" xml:"group_id,omitempty" type:"Repeated"`
+	// Specifies whether the IM bot is enabled.
+	//
+	// example:
+	//
+	// true
+	Imbot *bool `json:"imbot,omitempty" xml:"imbot,omitempty"`
 	// The name of the alert contact.
 	//
 	// example:
@@ -46,7 +62,7 @@ type CreateAlertDestinationRequest struct {
 	//
 	// console
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The notification target. Currently, only DingTalk chatbots are supported.
+	// The push target. Currently, only DingTalk bots are supported.
 	//
 	// example:
 	//
@@ -156,13 +172,13 @@ type CreateAlertDestinationRequestParams struct {
 	//
 	// 1xxx
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// The chatbot secret key.
+	// The secret key of the bot.
 	//
 	// example:
 	//
 	// SECxxx
 	Sec *string `json:"sec,omitempty" xml:"sec,omitempty"`
-	// The webhook URL of the chatbot.
+	// The webhook URL of the bot.
 	//
 	// example:
 	//

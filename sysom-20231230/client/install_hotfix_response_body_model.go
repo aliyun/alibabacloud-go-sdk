@@ -34,7 +34,7 @@ type InstallHotfixResponseBody struct {
 	Data *InstallHotfixResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
-	// - If code == Success, this field is empty.
+	// - If `code == Success`, this field is empty.
 	//
 	// - Otherwise, this field contains the request error message.
 	//

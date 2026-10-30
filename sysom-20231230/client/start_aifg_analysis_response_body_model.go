@@ -96,7 +96,7 @@ func (s *StartAifgAnalysisResponseBody) Validate() error {
 }
 
 type StartAifgAnalysisResponseBodyData struct {
-	// The task ID.
+	// The identifier.
 	//
 	// example:
 	//

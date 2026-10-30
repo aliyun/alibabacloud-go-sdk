@@ -22,7 +22,7 @@ type iGetGpuClusterArgsOptionsResponseBody interface {
 }
 
 type GetGpuClusterArgsOptionsResponseBody struct {
-	// The response code. Valid values: Success and Sysom.ServerError.
+	// The response code, which is Success or Sysom.ServerError.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetGpuClusterArgsOptionsResponseBody struct {
 	//
 	// return real request id
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of returned items.
 	//
 	// example:
 	//

@@ -28,17 +28,17 @@ type iListAlertStrategiesResponseBody interface {
 type ListAlertStrategiesResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed error message.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned result.
+	// The returned results.
 	Data []*ListAlertStrategiesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of returned results.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListAlertStrategiesResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type ListAlertStrategiesResponseBodyData struct {
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether Kubernetes labels are required.
+	// Indicates whether K8s labels are required.
 	K8sLabel *bool `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
 	// The policy name.
 	//
@@ -295,7 +295,7 @@ type ListAlertStrategiesResponseBodyDataStrategy struct {
 	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
 	// The list of alert contacts and policy destinations.
 	Destinations []*int32 `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
-	// The list of anomaly items that receive alerts.
+	// The list of exception items that receive alerts.
 	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 

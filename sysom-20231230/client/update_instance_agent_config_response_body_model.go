@@ -26,9 +26,13 @@ type UpdateInstanceAgentConfigResponseBody struct {
 	//
 	// SysomOpenAPI.ServerError
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned results.
+	// The returned result.
 	Data *UpdateInstanceAgentConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error message. If `code == Success`, this field is empty. Otherwise, this field contains the error message of the request.
+	// The error message.
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//
@@ -98,7 +102,9 @@ func (s *UpdateInstanceAgentConfigResponseBody) Validate() error {
 }
 
 type UpdateInstanceAgentConfigResponseBodyData struct {
-	// The task ID. You can use this task ID to call the GetAgentTask operation to check the task execution status.
+	// The task ID.
+	//
+	// You can use this task ID to call the GetAgentTask operation to check the task execution status.
 	//
 	// example:
 	//

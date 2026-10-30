@@ -22,13 +22,13 @@ type iListAlertStrategiesRequest interface {
 }
 
 type ListAlertStrategiesRequest struct {
-	// The current page number (starting from 1).
+	// The current page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"current,omitempty" xml:"current,omitempty"`
-	// The maximum number of records to retrieve in a single request.
+	// The maximum number of records to retrieve per request.
 	//
 	// example:
 	//

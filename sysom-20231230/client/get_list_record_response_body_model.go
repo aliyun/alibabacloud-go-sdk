@@ -28,7 +28,7 @@ type GetListRecordResponseBody struct {
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data []*GetListRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The status code description.
 	//
@@ -129,7 +129,7 @@ type GetListRecordResponseBodyData struct {
 	//
 	// 2024-12-24 12:02:05
 	AnalysisTime *string `json:"analysisTime,omitempty" xml:"analysisTime,omitempty"`
-	// The analysis parameters of the AI job analysis.
+	// The parameters for the AI job analysis.
 	//
 	// example:
 	//
@@ -139,13 +139,13 @@ type GetListRecordResponseBodyData struct {
 	//
 	// example:
 	//
-	// Analysis failed for instance i-wz9dej066kii4goqpnze. Failure reason: Not get GPU trace data for \\"e59ce870-dbd4-4c44-a814-174ac6ab5bcf\\" \\"[\\"118534\\"]\\"!
+	// Analysis failed for instance i-wz9dej066kii4goqpnze. Cause: Not get GPU trace data for \\"e59ce870-dbd4-4c44-a814-174ac6ab5bcf\\" \\"[\\"118534\\"]\\"!
 	FailedLog *string `json:"failedLog,omitempty" xml:"failedLog,omitempty"`
 	// The analysis status.
 	//
 	// example:
 	//
-	// Completed/Analysis Failed
+	// Completed/Failed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

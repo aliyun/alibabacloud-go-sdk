@@ -22,7 +22,7 @@ type iGetGpuClusterListAlarmRecordResponseBody interface {
 }
 
 type GetGpuClusterListAlarmRecordResponseBody struct {
-	// The value is "Success" or "Sysom.ServerError".
+	// The response code. Valid values: Success and Sysom.ServerError.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetGpuClusterListAlarmRecordResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The list of alert data.
 	Data []*GetGpuClusterListAlarmRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// When code is not "Success", message contains the error information.
+	// The error message returned when the code is not Success.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *GetGpuClusterListAlarmRecordResponseBody) Validate() error {
 }
 
 type GetGpuClusterListAlarmRecordResponseBodyData struct {
-	// The cluster where the alert was triggered.
+	// The cluster where the alert is triggered.
 	//
 	// example:
 	//
 	// cluster1
 	AlarmCluster *string `json:"alarmCluster,omitempty" xml:"alarmCluster,omitempty"`
-	// The additional information about the alert.
+	// The extended information of the alert.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type GetGpuClusterListAlarmRecordResponseBodyData struct {
 	//
 	// 746d13f8-9662-4441-b76b-a8ed8d485195
 	AlarmId *string `json:"alarmId,omitempty" xml:"alarmId,omitempty"`
-	// The event log associated with the alert.
+	// The alerting event log.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type GetGpuClusterListAlarmRecordResponseBodyData struct {
 	//
 	// task job id
 	AlarmTask *string `json:"alarmTask,omitempty" xml:"alarmTask,omitempty"`
-	// The date and time when the alert was triggered.
+	// The date and time when the alert is triggered.
 	//
 	// example:
 	//
@@ -361,13 +361,13 @@ type GetGpuClusterListAlarmRecordResponseBodyData struct {
 	//
 	//       },
 	AlarmTopology interface{} `json:"alarmTopology,omitempty" xml:"alarmTopology,omitempty"`
-	// The Alarm Metric for alerting.
+	// The alerting type.
 	//
 	// example:
 	//
 	// cuda OOM
 	AlarmType *string `json:"alarmType,omitempty" xml:"alarmType,omitempty"`
-	// The task status.
+	// The status of the task.
 	//
 	// example:
 	//

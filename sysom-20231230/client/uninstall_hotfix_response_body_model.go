@@ -24,7 +24,7 @@ type UninstallHotfixResponseBody struct {
 	//
 	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field to obtain the detailed fault message.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type UninstallHotfixResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error message of the request.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//

@@ -397,7 +397,7 @@ func (client *Client) CreateAlertDestinationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates an alert policy for push notifications.
+// Creates an alert push policy.
 //
 // @param request - CreateAlertStrategyRequest
 //
@@ -509,6 +509,63 @@ func (client *Client) CreateClusterVpcEndpointConnectionWithContext(ctx context.
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateClusterVpcEndpointConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建 Copilot 会话
+//
+// Description:
+//
+// - 本接口仅创建会话，不发送消息，也不触发 Agent 执行。
+//
+// - 创建成功后，使用返回的 sessionId 调用 GenerateCopilotStreamResponse 发送消息。
+//
+// - 会话 ID 由服务端生成，不支持调用方指定。
+//
+// - 每次成功调用均创建一个独立会话。本接口不提供客户端幂等参数，重复调用可能创建多个会话。
+//
+// @param request - CreateCopilotSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCopilotSessionResponse
+func (client *Client) CreateCopilotSessionWithContext(ctx context.Context, request *CreateCopilotSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCopilotSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCopilotSession"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/copilot/sessions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCopilotSessionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -780,6 +837,69 @@ func (client *Client) DeleteAlertStrategyWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAlertStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定的 Copilot 会话
+//
+// Description:
+//
+// - 仅支持删除当前用户的会话。
+//
+// - 会话存在尚未结束的执行时，不允许删除。请先通过 GenerateCopilotStreamResponse 接口发送 action=stop，确认执行结束后再删除。
+//
+// - 删除后，无法再通过会话查询接口获取该会话及其历史记录。
+//
+// - 会话不存在或不属于当前用户时返回错误。重复删除同一个会话不保证成功。
+//
+// - 删除会话不会撤销已经执行的操作，也不会删除产生该会话的定时任务。
+//
+// @param request - DeleteCopilotSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCopilotSessionResponse
+func (client *Client) DeleteCopilotSessionWithContext(ctx context.Context, request *DeleteCopilotSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCopilotSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["sessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCopilotSession"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/copilot/delete-session"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCopilotSessionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1155,7 +1275,7 @@ func (client *Client) GetAgentWithContext(ctx context.Context, request *GetAgent
 
 // Summary:
 //
-// Retrieves component configurations.
+// Retrieves the component configuration.
 //
 // @param request - GetAgentConfigRequest
 //
@@ -1222,7 +1342,7 @@ func (client *Client) GetAgentConfigWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Retrieves the execution status of an Agent installation task.
+// Retrieves the execution status of an agent installation task.
 //
 // @param request - GetAgentTaskRequest
 //
@@ -1269,11 +1389,11 @@ func (client *Client) GetAgentTaskWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// Retrieves diagnostic results.
+// Retrieves the diagnostic results.
 //
 // Description:
 //
-// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be in progress. Check the `data.status` field in the response to determine the current state. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic results from `data.result`.
+// The diagnostic process is asynchronous. Therefore, when you call this operation, the diagnosis may still be in progress. You can check the `data.status` field in the response to determine the status. If `data.status` is `Success`, the diagnosis is successful, and you can read the diagnostic results from `data.result`.
 //
 // @param request - GetAifgResultRequest
 //
@@ -1320,11 +1440,11 @@ func (client *Client) GetAifgResultWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Retrieves the URL link of a diagnostic result.
+// Retrieves the URL for diagnostic results.
 //
 // Description:
 //
-// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be in progress. You can check the `data.status` field in the response data to determine the current state. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
+// The diagnostic process is asynchronous. Therefore, when you call this operation, the diagnosis may still be in progress. You can check the `data.status` field in the response to determine the status. If `data.status` is `Success`, the diagnosis is successful, and you can read the diagnostic results from `data.result`.
 //
 // @param request - GetAifgUrlRequest
 //
@@ -1418,7 +1538,7 @@ func (client *Client) GetAlertDestinationWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves an alert rule of a user by policy ID.
+// Retrieves an alert policy for a user based on the policy ID.
 //
 // @param request - GetAlertStrategyRequest
 //
@@ -1575,6 +1695,59 @@ func (client *Client) GetCopilotHistoryWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 获取 Copilot 会话与执行状态
+//
+// Description:
+//
+// - 仅支持查询当前用户的会话，一次查询一个会话。
+//
+// - 返回会话详情及执行摘要，不返回聊天内容。查询历史消息和事件，请调用 ListCopilotSessionMessages。
+//
+// - 会话的 status 表示是否归档。判断是否正在执行，应读取 activeTurn。
+//
+// - lastTurn 表示最近一次执行，不一定已经结束；执行过程中，activeTurn 和 lastTurn 可以指向同一轮执行。
+//
+// - 会话不存在、已删除或不属于当前用户时返回错误。
+//
+// @param request - GetCopilotSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCopilotSessionResponse
+func (client *Client) GetCopilotSessionWithContext(ctx context.Context, sessionId *string, request *GetCopilotSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCopilotSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCopilotSession"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/copilot/sessions/" + dara.PercentEncode(dara.StringValue(sessionId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCopilotSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the hotfixes and compatible packages for a CVE.
 //
 // Description:
@@ -1681,15 +1854,15 @@ func (client *Client) GetDiagnosisResultWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the GPU cluster parameter list.
+// Retrieves the list of parameters for a GPU cluster.
 //
 // Description:
 //
-// After installing the component for the target ACK cluster:
+// After you install the component for the target ACK cluster:
 //
-// 1. First, when a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only 50 instances are included in the first batch.
+// 1. When the cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only 50 nodes are installed in the first batch.
 //
-// 2. Then, the operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component without user intervention.
+// 2. The operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component on the instance without user intervention.
 //
 // @param request - GetGpuClusterArgsOptionsRequest
 //
@@ -1744,11 +1917,11 @@ func (client *Client) GetGpuClusterArgsOptionsWithContext(ctx context.Context, r
 //
 // Description:
 //
-// After installing the component on the target ACK cluster:
+// After you install the component for the target ACK cluster:
 //
-// 1. When a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only the first 50 nodes are processed in the first batch.
+// 1. When the cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only 50 nodes are installed in the first batch.
 //
-// 2. The operating system console periodically checks the scaling status of managed clusters. When a new ECS instance is added to a cluster, the console automatically installs the component on it without user intervention.
+// 2. The operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component on it without user intervention.
 //
 // @param request - GetGpuClusterListAlarmRecordRequest
 //
@@ -1823,15 +1996,15 @@ func (client *Client) GetGpuClusterListAlarmRecordWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves the GPU cluster topology.
+// Retrieves the topology of a GPU cluster.
 //
 // Description:
 //
-// After you install the component on the target ACK cluster:
+// After you install the component for the target ACK cluster:
 //
-// 1. When a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only the first 50 nodes are processed in the first batch.
+// 1. When the cluster is initially managed, the component is installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only 50 nodes are installed in the first batch.
 //
-// 2. The operating system console periodically checks the scaling status of managed clusters. When a new ECS instance is added to a cluster, the console automatically installs the component on it without requiring manual intervention.
+// 2. The operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component on the instance without user intervention.
 //
 // @param request - GetGpuClusterTopologyRequest
 //
@@ -2091,7 +2264,7 @@ func (client *Client) GetHotSpotUniqListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the status of an asynchronous task for CVE hotfixes on a node.
+// Queries the status of an asynchronous CVE hotfix task.
 //
 // Description:
 //
@@ -2571,15 +2744,15 @@ func (client *Client) GetInstantScoreWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Retrieves a list of GPU clusters.
+// Queries the list of GPU clusters.
 //
 // Description:
 //
-// After installing the component for the target ACK cluster:
+// After you install components for the target ACK cluster:
 //
-// 1. First, when a cluster is managed for the first time, the component is installed on all ECS instances currently in the cluster. If the cluster contains more than 50 nodes, only 50 instances are included in the first batch.
+// 1. When the cluster is managed for the first time, the system installs components on all Elastic Compute Service (ECS) instances in the cluster. If the cluster has more than 50 nodes, only 50 nodes are installed in the first batch.
 //
-// 2. Then, the operating system console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the operating system console automatically installs the component on it without user intervention.
+// 2. The Operating System console periodically checks the scaling status of the managed cluster. When a new ECS instance is added to the cluster, the Operating System console automatically installs components without user intervention.
 //
 // @param request - GetListGpuClusterRequest
 //
@@ -3244,11 +3417,11 @@ func (client *Client) InstallAgentWithTypeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Installs CVE hotfixes asynchronously on specified instances.
+// Installs CVE hotfixes asynchronously on the specified instances.
 //
 // Description:
 //
-// This operation asynchronously installs the agent. After the operation is called, a task ID is returned. You can use this ID to call the GetHotfixTask operation to query the execution status of the task.
+// Calling this operation to install hotfixes is asynchronous. After the operation is called, a task_id is returned. You can use this ID to call the GetHotfixTask operation to query the execution status of the task.
 //
 // @param request - InstallHotfixRequest
 //
@@ -3630,11 +3803,11 @@ func (client *Client) ListAgentsWithContext(ctx context.Context, request *ListAg
 
 // Summary:
 //
-// Retrieves a list of diagnostic tasks.
+// Retrieves the list of diagnostic tasks.
 //
 // Description:
 //
-// This operation retrieves the list of regions where the current user has machines managed by SysOM. If the user has ECS instances in a region but those instances are not managed by SysOM, that region does not appear in the results.
+// This operation retrieves the list of regions where the current user has machines managed by SysOM. If a user has ECS instances in a region but they are not managed by SysOM, the region will not appear in the API response.
 //
 // @param request - ListAifgJobsRequest
 //
@@ -3797,7 +3970,7 @@ func (client *Client) ListAlertItemsWithContext(ctx context.Context, headers map
 
 // Summary:
 //
-// Retrieves all alert policies configured by the user for push notifications.
+// Retrieves all alert notification policies for the user.
 //
 // @param request - ListAlertStrategiesRequest
 //
@@ -4730,11 +4903,11 @@ func (client *Client) ListPodsOfInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists all regions that contain managed instances.
+// Lists all regions with managed instances.
 //
 // Description:
 //
-// This operation retrieves the list of regions where the current user has instances managed by SysOM. If a user has ECS instances in a region but none of them are managed by SysOM, that region is not included in the response.
+// This operation retrieves the list of regions where the current user has instances managed by SysOM. If you have ECS instances in a region but they are not managed by SysOM, the region is not included in the response.
 //
 // @param headers - map
 //
@@ -4814,11 +4987,11 @@ func (client *Client) ListVmcoreDiagnosisTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Asynchronously queries the CVE hotfix status on specified instances.
+// Asynchronously queries the CVE hotfix status on the specified instances.
 //
 // Description:
 //
-// The call to this operation to install the agent is asynchronous. After you call this operation, a task_id is returned. You can use this ID to call the GetHotfixTask operation to obtain the execution status of the task.
+// Calling this API operation to install the agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetHotfixTask operation to query the execution status of the task.
 //
 // @param request - QueryHotfixStatusRequest
 //
@@ -5027,7 +5200,7 @@ func (client *Client) StartAIDiffAnalysisWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// Currently, only comparative analysis of the same PID across different steps within the same AI Infra analysis record is supported.
+// Currently, only comparative analysis of the same PID across different steps under the same AI Infra analysis record is supported.
 //
 // @param request - StartAifgAnalysisRequest
 //
@@ -5263,11 +5436,11 @@ func (client *Client) UninstallAgentWithTypeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Asynchronously uninstalls CVE hotfixes from the specified instances.
+// Asynchronously uninstalls a CVE hotfix from a specified instance.
 //
 // Description:
 //
-// This operation is asynchronous. After you call this operation, a task_id is returned. You can use this ID to call the GetHotfixTask operation to query the execution status of the task.
+// Calling this API to install the agent is asynchronous. After you call this API, a task_id is returned. You can use this ID to call the GetHotfixTask API to obtain the execution status of the task.
 //
 // @param request - UninstallHotfixRequest
 //
@@ -5318,11 +5491,11 @@ func (client *Client) UninstallHotfixWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Updates the component configuration.
+// Updates the configuration of a component.
 //
 // Description:
 //
-// After the configuration is updated, the new configuration is delivered to all resources that use it.
+// After the configuration is updated, the new configuration is delivered to all resources to which the configuration is applied.
 //
 // @param request - UpdateAgentConfigRequest
 //
@@ -5511,7 +5684,7 @@ func (client *Client) UpdateAlertEnabledWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates a push alert policy.
+// Updates the alert push policy.
 //
 // @param request - UpdateAlertStrategyRequest
 //
@@ -5574,7 +5747,7 @@ func (client *Client) UpdateAlertStrategyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Updates the configuration of a cluster component.
+// Updates the component configuration of a cluster.
 //
 // @param request - UpdateClusterAgentConfigRequest
 //
@@ -5751,7 +5924,7 @@ func (client *Client) UpdateFuncSwitchRecordWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Updates the component configuration of an instance.
+// Updates the component configurations of an instance.
 //
 // @param request - UpdateInstanceAgentConfigRequest
 //

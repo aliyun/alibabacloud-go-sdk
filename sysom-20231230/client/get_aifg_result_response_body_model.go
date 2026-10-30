@@ -28,13 +28,13 @@ type GetAifgResultResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The data details.
 	Data *GetAifgResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The message returned.
+	// The message content.
 	//
 	// example:
 	//
 	// "Execution succeeded"
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique request ID.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *GetAifgResultResponseBody) Validate() error {
 }
 
 type GetAifgResultResponseBodyData struct {
-	// The diagnostic result.
+	// The diagnostic results.
 	//
 	// example:
 	//
@@ -108,19 +108,19 @@ type GetAifgResultResponseBodyData struct {
 	//
 	// user-service
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The status of the root data.
+	// The root data status.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the data was created.
+	// The data creation time.
 	//
 	// example:
 	//
 	// 2023-01-01T00:00:00Z
 	SubmitTime *string `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The unique task ID.
+	// The unique identifier of the task.
 	//
 	// example:
 	//

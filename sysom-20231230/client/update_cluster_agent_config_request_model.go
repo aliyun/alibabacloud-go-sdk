@@ -18,7 +18,7 @@ type iUpdateClusterAgentConfigRequest interface {
 }
 
 type UpdateClusterAgentConfigRequest struct {
-	// The ID of the component whose configuration is to be updated.
+	// The ID of the component whose configuration you want to update.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateClusterAgentConfigRequest struct {
 	//
 	// c8b90bc1b2ef0436f81213c032b75c5f3
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The ID of the component configuration to install on the cluster.
+	// The ID of the component configuration to be installed on the cluster.
 	//
 	// This parameter is required.
 	//

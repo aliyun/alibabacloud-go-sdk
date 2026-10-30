@@ -22,15 +22,15 @@ type iListAlertItemsResponseBody interface {
 type ListAlertItemsResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
+	// - Other status codes indicate authorization failure. If authorization fails, check the `message` field for detailed error messages.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned data.
 	//
 	// example:
 	//
@@ -38,55 +38,55 @@ type ListAlertItemsResponseBody struct {
 	//
 	//     "NODE": {
 	//
-	//       "饱和度": [
+	//       "Saturation": [
 	//
-	//         "节点CPU使用率检测",
+	//         "Node CPU utilization detection",
 	//
-	//         "节点内核态CPU使用检测",
+	//         "Node kernel-mode CPU utilization detection",
 	//
-	//         "节点软中断CPU使用检测",
+	//         "Node softirq CPU utilization detection",
 	//
-	//         "节点内存使用检测",
+	//         "Node memory usage detection",
 	//
-	//         "节点内核内存使用检测",
+	//         "Node kernel memory usage detection",
 	//
-	//         "节点文件描述符使用检测",
+	//         "Node file descriptor usage detection",
 	//
-	//         "节点根文件系统使用检测",
+	//         "Node root file system usage detection",
 	//
-	//         "节点cgroup泄漏检测",
+	//         "Node cgroup leak detection",
 	//
-	//         "节点Sockets使用检测",
+	//         "Node socket usage detection",
 	//
-	//         "节点TCP内存使用检测"
-	//
-	//       ],
-	//
-	//       "延时": [
-	//
-	//         "节点调度延时检测",
-	//
-	//         "节点网络延时检测",
-	//
-	//         "节点磁盘写入延迟检测",
-	//
-	//         "节点磁盘读取延迟检测"
+	//         "Node TCP memory usage detection"
 	//
 	//       ],
 	//
-	//       "负载": [
+	//       "Latency": [
 	//
-	//         "节点磁盘IO流量检测",
+	//         "Node scheduling latency detection",
 	//
-	//         "节点load average检测"
+	//         "Node network latency detection",
+	//
+	//         "Node disk write latency detection",
+	//
+	//         "Node disk read latency detection"
 	//
 	//       ],
 	//
-	//       "错误": [
+	//       "Load": [
 	//
-	//         "节点网络丢包检测",
+	//         "Node disk I/O traffic detection",
 	//
-	//         "节点OOM夯机预测及检测"
+	//         "Node load average detection"
+	//
+	//       ],
+	//
+	//       "Errors": [
+	//
+	//         "Node network packet loss detection",
+	//
+	//         "Node OOM stall prediction and detection"
 	//
 	//       ]
 	//
@@ -94,19 +94,19 @@ type ListAlertItemsResponseBody struct {
 	//
 	//     "POD": {
 	//
-	//       "饱和度": [
+	//       "Saturation": [
 	//
-	//         "Pod内存使用检测",
+	//         "Pod memory usage detection",
 	//
-	//         "Pod CPU使用率检测"
+	//         "Pod CPU utilization detection"
 	//
 	//       ],
 	//
-	//       "错误": [
+	//       "Errors": [
 	//
-	//         "Pod CPU限流检测",
+	//         "Pod CPU throttling detection",
 	//
-	//         "Pod OOM事件检测"
+	//         "Pod OOM event detection"
 	//
 	//       ]
 	//
@@ -118,7 +118,7 @@ type ListAlertItemsResponseBody struct {
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//

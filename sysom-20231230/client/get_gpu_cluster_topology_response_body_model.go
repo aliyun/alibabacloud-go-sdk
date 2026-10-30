@@ -20,7 +20,7 @@ type iGetGpuClusterTopologyResponseBody interface {
 }
 
 type GetGpuClusterTopologyResponseBody struct {
-	// The result code. Valid values: Success, Sysom.ServerError, Sysom.InvalidParameter.
+	// The response code. Valid values: Success, Sysom.ServerError, and Sysom.InvalidParameter.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ func (s *GetGpuClusterTopologyResponseBody) Validate() error {
 type GetGpuClusterTopologyResponseBodyData struct {
 	// The cluster topology data structure.
 	Data *GetGpuClusterTopologyResponseBodyDataData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The number of GPU cards returned.
+	// The total number of GPUs returned.
 	//
 	// example:
 	//

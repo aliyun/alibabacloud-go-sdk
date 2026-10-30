@@ -20,7 +20,7 @@ type iListRegionsResponseBody interface {
 }
 
 type ListRegionsResponseBody struct {
-	// The request ID, which can be used for end-to-end diagnostics.
+	// The request ID. You can use it for end-to-end diagnostics.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListRegionsResponseBody struct {
 	//
 	// ["cn-hangzhou", "cn-shengzhen"]
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The error code description. This value is empty if no error occurs.
+	// The error message. This field is empty if no error occurs.
 	//
 	// example:
 	//

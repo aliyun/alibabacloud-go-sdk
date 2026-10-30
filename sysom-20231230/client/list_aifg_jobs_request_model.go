@@ -32,15 +32,13 @@ type ListAifgJobsRequest struct {
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// The maximum number of records to retrieve in a single request.
+	// The maximum number of records to retrieve at a time.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token.
-	//
-	// > A non-empty value indicates that more data is available.
+	// The pagination cursor. A non-empty value indicates that more data is available.
 	//
 	// example:
 	//
@@ -60,7 +58,7 @@ type ListAifgJobsRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The service name of the diagnostic service.
+	// The diagnostic service name.
 	//
 	// This parameter is required.
 	//

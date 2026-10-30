@@ -22,9 +22,9 @@ type iCreateAgentConfigResponseBody interface {
 type CreateAgentConfigResponseBody struct {
 	// The status code.
 	//
-	// - If `code == Success`, the authorization is successful.
+	// - If `code` is `Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
+	// - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault message.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type CreateAgentConfigResponseBody struct {
 	Data *CreateAgentConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
-	// - If `code == Success`, this field is empty.
+	// - If `code` is `Success`, this field is empty.
 	//
 	// - Otherwise, this field contains the error message of the request.
 	//

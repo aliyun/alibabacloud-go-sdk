@@ -22,9 +22,9 @@ type iQueryHotfixStatusResponseBody interface {
 type QueryHotfixStatusResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success`: The authorization is successful.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes: The authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
+	// - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault message.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type QueryHotfixStatusResponseBody struct {
 	Data *QueryHotfixStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
-	// - If `code == Success`, this field is empty.
+	// - If code is Success, this field is empty.
 	//
 	// - Otherwise, this field contains the request error message.
 	//

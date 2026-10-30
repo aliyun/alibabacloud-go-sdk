@@ -14,7 +14,7 @@ type iGetAifgResultRequest interface {
 }
 
 type GetAifgResultRequest struct {
-	// The task ID.
+	// The task identifier.
 	//
 	// This parameter is required.
 	//

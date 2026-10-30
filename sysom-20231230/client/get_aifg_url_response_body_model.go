@@ -26,7 +26,7 @@ type GetAifgUrlResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
 	Data *GetAifgUrlResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *GetAifgUrlResponseBody) Validate() error {
 }
 
 type GetAifgUrlResponseBodyData struct {
-	// The URL of the diagnostic details.
+	// The URL for diagnostic details.
 	//
 	// example:
 	//

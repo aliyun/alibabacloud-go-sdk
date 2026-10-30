@@ -34,23 +34,21 @@ type ListAifgJobsResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The data under the root node.
 	Data []*ListAifgJobsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The maximum number of records to retrieve in a single request.
+	// The maximum number of records to retrieve at a time.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Indicates the position read by the current call. An empty value indicates that all data has been read.
+	// Indicates the read position returned by the current call. An empty value indicates that all data has been read.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Hello, World!
+	// Hello, world!
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token.
-	//
-	// > A non-empty value indicates that more data is available.
+	// The pagination cursor. A non-empty value indicates that more data is available.
 	//
 	// example:
 	//
@@ -62,7 +60,7 @@ type ListAifgJobsResponseBody struct {
 	//
 	// 1234567890
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -191,7 +189,7 @@ type ListAifgJobsResponseBodyData struct {
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The sub-status of the data item.
+	// The sub-status of data item 0.
 	//
 	// example:
 	//
@@ -203,7 +201,7 @@ type ListAifgJobsResponseBodyData struct {
 	//
 	// 2023-09-01 12:00:00
 	SubmitTime *string `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

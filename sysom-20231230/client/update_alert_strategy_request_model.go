@@ -40,7 +40,7 @@ type UpdateAlertStrategyRequest struct {
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
 	// The Kubernetes label.
 	K8sLabel *bool `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
-	// The name of the alerting policy.
+	// The alert policy name.
 	//
 	// This parameter is required.
 	//
@@ -121,7 +121,7 @@ type UpdateAlertStrategyRequestStrategy struct {
 	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
 	// The alert contacts.
 	Destinations []*int32 `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
-	// The collection of exception items that receive alerts.
+	// The collection of exception items that trigger alerts.
 	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 

@@ -30,16 +30,32 @@ type iUpdateAlertDestinationRequest interface {
 }
 
 type UpdateAlertDestinationRequest struct {
-	AppId     *string   `json:"app_id,omitempty" xml:"app_id,omitempty"`
-	AppSecret *string   `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
-	GroupId   []*string `json:"group_id,omitempty" xml:"group_id,omitempty" type:"Repeated"`
+	// The app ID of the chatbot.
+	//
+	// example:
+	//
+	// 0ab724ba952448eab4b5ed7ebe1d51ab
+	AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty"`
+	// The app secret of the chatbot.
+	//
+	// example:
+	//
+	// ZzhtNzloZTY4ZzAwRE4rXFxMRCdNTmFCbV0mQUZIcEM
+	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
+	// The group ID.
+	GroupId []*string `json:"group_id,omitempty" xml:"group_id,omitempty" type:"Repeated"`
 	// The ID of the alert contact.
 	//
 	// example:
 	//
 	// 1
-	Id    *string `json:"id,omitempty" xml:"id,omitempty"`
-	Imbot *bool   `json:"imbot,omitempty" xml:"imbot,omitempty"`
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Specifies whether the contact is an IM chatbot.
+	//
+	// example:
+	//
+	// true
+	Imbot *bool `json:"imbot,omitempty" xml:"imbot,omitempty"`
 	// The name of the alert contact.
 	//
 	// example:
@@ -173,13 +189,13 @@ type UpdateAlertDestinationRequestParams struct {
 	//
 	// 1xxx
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// The chatbot secret key.
+	// The secret of the chatbot.
 	//
 	// example:
 	//
 	// SECxxx
 	Sec *string `json:"sec,omitempty" xml:"sec,omitempty"`
-	// The webhook URL.
+	// The webhook URL of the chatbot.
 	//
 	// example:
 	//

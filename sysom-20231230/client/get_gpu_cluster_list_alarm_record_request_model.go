@@ -28,31 +28,31 @@ type iGetGpuClusterListAlarmRecordRequest interface {
 }
 
 type GetGpuClusterListAlarmRecordRequest struct {
-	// Query by a specific cluster, such as "cluster1". To query multiple clusters, separate them with commas: "cluster1,cluster2,cluster3".
+	// The cluster to query. Specify a cluster, such as "cluster1". To query multiple clusters, separate them with commas, such as "cluster1,cluster2,cluster3".
 	//
 	// example:
 	//
 	// "cluster1"
 	AlarmCluster *string `json:"alarmCluster,omitempty" xml:"alarmCluster,omitempty"`
-	// Filter anomalies by instance ID or container.
+	// The instance ID or container used to filter anomalies.
 	//
 	// example:
 	//
 	// instance id
 	AlarmExtInfo *string `json:"alarmExtInfo,omitempty" xml:"alarmExtInfo,omitempty"`
-	// Query by a specific task, such as "task1". To query multiple tasks, separate them with commas: "task1,task2,task3".
+	// The task to query. Specify a task, such as "task1". To query multiple tasks, separate them with commas, such as "task1,task2,task3".
 	//
 	// example:
 	//
 	// task id
 	AlarmTask *string `json:"alarmTask,omitempty" xml:"alarmTask,omitempty"`
-	// Query by a specific point in time, such as "2025-08-22 18:16:25". Query by a time range using the "start,end" format, such as "2025-08-22 18:16:25,2025-08-23 18:16:25".
+	// The specific time or time range to query. Specify a specific time, such as "2025-08-22 18:16:25". To specify a time range, use the "start,end" format, such as "2025-08-22 18:16:25,2025-08-23 18:16:25".
 	//
 	// example:
 	//
 	// "2025-08-22 18:16:25,2025-08-23 18:16:25"
 	AlarmTime *string `json:"alarmTime,omitempty" xml:"alarmTime,omitempty"`
-	// Filter by anomaly type, such as GPU memory access out-of-bounds or task hang.
+	// The anomaly type used to filter results, such as GPU memory access out of bounds or task hang.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type GetGpuClusterListAlarmRecordRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filter by task status, such as blocking, running, exited, or restart.
+	// The task status used to filter results. Valid values: blocking, running, exited, and restart.
 	//
 	// example:
 	//

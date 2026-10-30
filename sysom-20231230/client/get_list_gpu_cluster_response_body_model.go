@@ -22,19 +22,19 @@ type iGetListGpuClusterResponseBody interface {
 }
 
 type GetListGpuClusterResponseBody struct {
-	// The response code. Valid values: Success and Sysom.ACKClusterNotFound.
+	// The code. Valid values: Success and Sysom.ACKClusterNotFound.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The list of clusters returned.
+	// The list of clusters.
 	//
 	// example:
 	//
 	// ["cluster1", "cluster2"]
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// The error message returned when the code is not Success.
+	// The error message. If the code is not success, the message is the error information.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetListGpuClusterResponseBody struct {
 	//
 	// 1234567890
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The number of clusters returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
