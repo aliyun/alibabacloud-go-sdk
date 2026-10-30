@@ -74,6 +74,8 @@ type ChatResponseBody struct {
 	//
 	// agent-7f9c2a81
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// direct_skill_rejected
+	//
 	// example:
 	//
 	// direct_skill_rejected
@@ -96,12 +98,14 @@ type ChatResponseBody struct {
 	//
 	// task
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The display name of the child agent for STEP_STARTED.
+	// The display name of the sub-agent for STEP_STARTED.
 	//
 	// example:
 	//
 	// SQL performance diagnostics
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// [HdmApiClient] instance is not managed by the agent
+	//
 	// example:
 	//
 	// [HdmApiClient] instance is not managed by the agent
@@ -148,7 +152,7 @@ type ChatResponseBody struct {
 	//
 	// ed7cb7b1-ddc8-45d7-9ff3-b315726cb5f7
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// The execution step name.
+	// The name of the execution step.
 	//
 	// example:
 	//
@@ -178,13 +182,13 @@ type ChatResponseBody struct {
 	//
 	// 1767225600000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The error that occurred when invoking the tool.
+	// The fault that occurs when you invoke tool calling.
 	//
 	// example:
 	//
 	// error
 	ToolCallError *string `json:"ToolCallError,omitempty" xml:"ToolCallError,omitempty"`
-	// The tool call ID.
+	// The ID of the tool calling to invoke.
 	//
 	// example:
 	//
