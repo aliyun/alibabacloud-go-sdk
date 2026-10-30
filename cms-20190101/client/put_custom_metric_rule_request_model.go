@@ -72,7 +72,7 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// ECS_Group
 	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// The effective time range of the alert rule. Valid values: 00:00-23:59.
+	// The time range during which the alert rule is effective. Valid values: 00:00-23:59.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// ECS instance
 	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
-	// The number of alert retries.
+	// The number of retries for the alert.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// 7378****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The alert level. Valid values:
+	// The severity level of the alert. Valid values:
 	//
 	// - CRITICAL: critical.
 	//
@@ -114,9 +114,9 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// CRITICAL
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The metric name.
+	// The name of the metric.
 	//
-	// > For more information about how to obtain the metric name, see [DescribeCustomMetricList](https://help.aliyun.com/document_detail/115005.html).
+	// > For information about how to obtain the metric name, see [DescribeCustomMetricList](https://help.aliyun.com/document_detail/115005.html).
 	//
 	// This parameter is required.
 	//
@@ -124,7 +124,7 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The aggregation period of the custom monitoring data. Unit: seconds. Set the value to 60 or a multiple of 60. Default value: the original reporting period of the custom monitoring data.
+	// The aggregation period of the custom monitoring data. Unit: seconds. The value must be 60 or a multiple of 60. Default value: the original reporting period of the custom monitoring data.
 	//
 	// example:
 	//
@@ -156,13 +156,13 @@ type PutCustomMetricRuleRequest struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The mute for period. Unit: seconds. Default value: 86400 (1 day).
 	//
-	// > If the monitoring data continuously exceeds the alert threshold, only one alert notification is sent within each mute for period.
+	// > If monitoring data continuously exceeds the alert rule threshold, only one alert notification is sent within each mute for period.
 	//
 	// example:
 	//
 	// 86400
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The statistical method for alerts.
+	// The statistical method for the alert.
 	//
 	// This parameter is required.
 	//
@@ -178,7 +178,7 @@ type PutCustomMetricRuleRequest struct {
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The alert callback URL. An HTTP POST request is sent to the specified URL when an alert is triggered.
+	// The webhook URL that is called when an alert is triggered. A POST request is sent to this URL.
 	//
 	// example:
 	//

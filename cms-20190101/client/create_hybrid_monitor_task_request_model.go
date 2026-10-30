@@ -40,11 +40,11 @@ type iCreateHybridMonitorTaskRequest interface {
 }
 
 type CreateHybridMonitorTaskRequest struct {
-	// The tags of the metric.
+	// The labels of the metric.
 	//
-	// > This parameter is required only when TaskType is set to `aliyun_sls`.
+	// > This parameter is required only when `TaskType` is set to `aliyun_sls`.
 	AttachLabels []*CreateHybridMonitorTaskRequestAttachLabels `json:"AttachLabels,omitempty" xml:"AttachLabels,omitempty" type:"Repeated"`
-	// The IDs of the accounts of other cloud providers that are connected to CloudMonitor.
+	// The list of primary account IDs of other cloud providers that are imported into CloudMonitor.
 	CloudAccessId []*string `json:"CloudAccessId,omitempty" xml:"CloudAccessId,omitempty" type:"Repeated"`
 	// The collection period of the metric. Valid values:
 	//
@@ -54,7 +54,7 @@ type CreateHybridMonitorTaskRequest struct {
 	//
 	// Unit: seconds.
 	//
-	// > This parameter is required only when TaskType is set to `aliyun_sls`.
+	// > This parameter is required only when `TaskType` is set to `aliyun_sls`.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type CreateHybridMonitorTaskRequest struct {
 	CollectInterval *string `json:"CollectInterval,omitempty" xml:"CollectInterval,omitempty"`
 	// The type of the collection target for monitoring data.
 	//
-	// - If TaskType is set to `aliyun_fc`, set this parameter to `aliyun_fc`.
+	// - If `TaskType` is set to `aliyun_fc`, enter `aliyun_fc`.
 	//
-	// - If TaskType is set to `aliyun_sls`, set this parameter to the name of the Logstore group for SLS logs.
+	// - If `TaskType` is set to `aliyun_sls`, enter the name of the Logstore group for SLS logs.
 	//
 	// This parameter is required.
 	//
@@ -76,21 +76,21 @@ type CreateHybridMonitorTaskRequest struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud product data ingestion task.
+	// Alibaba Cloud service data import task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the application group.
+	// The application group ID.
 	//
 	// For information about how to obtain the application group ID, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
 	//
-	// > This parameter is required only when TaskType is set to `aliyun_sls`.
+	// > This parameter is required only when `TaskType` is set to `aliyun_sls`.
 	//
 	// example:
 	//
 	// 3607****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the metric repository.
+	// The name of the namespace.
 	//
-	// For information about how to obtain the name of a metric repository, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+	// For information about how to obtain the namespace name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
 	//
 	// This parameter is required.
 	//
@@ -99,21 +99,21 @@ type CreateHybridMonitorTaskRequest struct {
 	// aliyun
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The configurations of SLS logs.
+	// The SLS log configuration.
 	//
-	// > This parameter is required only when TaskType is set to `aliyun_sls`.
+	// > This parameter is required only when `TaskType` is set to `aliyun_sls`.
 	SLSProcessConfig *CreateHybridMonitorTaskRequestSLSProcessConfig `json:"SLSProcessConfig,omitempty" xml:"SLSProcessConfig,omitempty" type:"Struct"`
-	// The ID of the member account.
+	// The member ID.
 	//
-	// When you call this operation by using a management account, you can connect any Alibaba Cloud service of any member account in the resource directory to Hybrid Cloud Monitoring. This allows you to use the resource directory to monitor the Alibaba Cloud services of member accounts across the enterprise in a unified manner.
+	// When you invoke this operation by using a management account, you can use cloud native mode to import Alibaba Cloud services of any member in the resource folder into Hybrid Cloud Monitoring. This allows you to use the resource directory to monitor Alibaba Cloud services across accounts in CloudMonitor. You can go to **Settings*	- to configure this feature.
 	//
-	// > This parameter is required only when TaskType is set to `aliyun_fc`.
+	// > This parameter is required only when `TaskType` is set to `aliyun_fc`.
 	//
 	// example:
 	//
 	// 120886317861****
 	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
-	// The IDs of the member accounts. Separate multiple IDs with commas (,).
+	// The member IDs. Separate multiple member IDs with commas (,).
 	//
 	// > This parameter is required only when you call this operation by using a management account.
 	//
@@ -123,9 +123,9 @@ type CreateHybridMonitorTaskRequest struct {
 	TargetUserIdList *string `json:"TargetUserIdList,omitempty" xml:"TargetUserIdList,omitempty"`
 	// The name of the monitoring task.
 	//
-	// - If TaskType is set to `aliyun_fc`, specify the name of the data import task for the Alibaba Cloud service.
+	// - If `TaskType` is set to `aliyun_fc`, enter the name of the data import task for the Alibaba Cloud service.
 	//
-	// - If TaskType is set to `aliyun_sls`, specify the metric name for SLS logs.
+	// - If `TaskType` is set to `aliyun_sls`, enter the metric name for SLS logs.
 	//
 	// example:
 	//
@@ -133,9 +133,9 @@ type CreateHybridMonitorTaskRequest struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The type of the monitoring task. Valid values:
 	//
-	// - aliyun_fc: data import task for an Alibaba Cloud service.
+	// - aliyun_fc: a data import task for Alibaba Cloud services.
 	//
-	// - aliyun_sls: metric for SLS logs.
+	// - aliyun_sls: a metric for SLS logs.
 	//
 	// This parameter is required.
 	//
@@ -143,13 +143,13 @@ type CreateHybridMonitorTaskRequest struct {
 	//
 	// aliyun_fc
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The configuration file of the Alibaba Cloud service that is connected to Hybrid Cloud Monitoring.
+	// The configuration file of the Alibaba Cloud service to be imported into Hybrid Cloud Monitoring.
 	//
-	// - namespace: the namespace of the Alibaba Cloud service. For information about how to query the namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html).
+	// - namespace: the namespace of the Alibaba Cloud service. For information about how to query the namespace, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html).
 	//
-	// - metric_list: the metrics of the Alibaba Cloud service. For information about how to query the metrics of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html).
+	// - metric_list: the metrics of the Alibaba Cloud service. For information about how to query the metrics, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html).
 	//
-	// The following example shows a sample configuration file:
+	// The following example shows the configuration file:
 	//
 	// ```
 	//
@@ -189,7 +189,7 @@ type CreateHybridMonitorTaskRequest struct {
 	//
 	// ```
 	//
-	// > This parameter is required only when TaskType is set to `aliyun_fc`.
+	// > This parameter is required when `TaskType` is set to `aliyun_fc`.
 	//
 	// example:
 	//
@@ -350,13 +350,13 @@ func (s *CreateHybridMonitorTaskRequest) Validate() error {
 }
 
 type CreateHybridMonitorTaskRequestAttachLabels struct {
-	// The tag key of the metric.
+	// The label key of the metric.
 	//
 	// example:
 	//
 	// app_service
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The tag value of the metric.
+	// The label value of the metric.
 	//
 	// example:
 	//
@@ -395,13 +395,13 @@ func (s *CreateHybridMonitorTaskRequestAttachLabels) Validate() error {
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfig struct {
-	// The result of arithmetic operations on the extended fields of SLS log statistics results.
+	// The arithmetic operation results of the extended fields for SLS log statistical results.
 	Express []*CreateHybridMonitorTaskRequestSLSProcessConfigExpress `json:"Express,omitempty" xml:"Express,omitempty" type:"Repeated"`
 	// The filter conditions for parameters in SLS logs.
 	Filter *CreateHybridMonitorTaskRequestSLSProcessConfigFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// Aggregates data by spatial dimension, which is equivalent to the GROUP BY clause in SQL.
+	// Aggregates data by spatial dimensions, equivalent to Group By in SQL.
 	GroupBy []*CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy `json:"GroupBy,omitempty" xml:"GroupBy,omitempty" type:"Repeated"`
-	// The method used to aggregate SLS log data.
+	// The statistical method for SLS logs.
 	Statistics []*CreateHybridMonitorTaskRequestSLSProcessConfigStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
 }
 
@@ -486,13 +486,13 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfig) Validate() error {
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfigExpress struct {
-	// The alias of the arithmetic operation result on the extended fields of SLS log statistics results.
+	// The alias of the arithmetic operation result of the extended field for SLS log statistical results.
 	//
 	// example:
 	//
 	// SuccRate
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The result of arithmetic operations on the extended fields of SLS log statistics results.
+	// The arithmetic operation results of the extended fields for SLS log statistical results.
 	//
 	// example:
 	//
@@ -585,7 +585,7 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilter) Validate() error 
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters struct {
-	// The method used to filter parameter values in SLS logs. Valid values:
+	// The filter method for parameter values in SLS logs. Valid values:
 	//
 	// - `contain`: contains.
 	//
@@ -661,7 +661,7 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters) Validate()
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy struct {
-	// The alias of the SLS log statistics result.
+	// The alias of the SLS log statistical result.
 	//
 	// example:
 	//
@@ -706,13 +706,13 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy) Validate() error
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfigStatistics struct {
-	// The alias of the SLS log statistics result.
+	// The alias of the SLS log statistical result.
 	//
 	// example:
 	//
 	// level_count
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// Aggregates log data within the statistical period by using the specified statistical method. Valid values:
+	// The statistical method used to aggregate log data within the statistical period. Valid values:
 	//
 	// - count: counts the number of occurrences.
 	//
@@ -724,15 +724,15 @@ type CreateHybridMonitorTaskRequestSLSProcessConfigStatistics struct {
 	//
 	// - min: returns the minimum value.
 	//
-	// - value: samples within the statistical period.
+	// - value: samples within the period.
 	//
 	// - countps: calculates the average count per second for the specified field within the statistical period.
 	//
 	// - sumps: calculates the average sum per second for the specified field within the statistical period.
 	//
-	// - distinct: counts the number of occurrences of the specified field after deduplication within the statistical period.
+	// - distinct: calculates the number of occurrences of the specified field after deduplication within the statistical period.
 	//
-	// - distribution: counts the number of occurrences of field values within a specified range.
+	// - distribution: calculates the number of occurrences of field values within a specified range.
 	//
 	// - percentile: calculates the distribution value of field values, such as P50.
 	//
@@ -742,9 +742,9 @@ type CreateHybridMonitorTaskRequestSLSProcessConfigStatistics struct {
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
 	// The statistical value of SLS logs.
 	//
-	// - If Function is set to `distribution`, this parameter specifies the lower limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 200.
+	// - If `Function` is set to `distribution`, this parameter specifies the lower limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 200.
 	//
-	// - If Function is set to `percentile`, this parameter specifies the percentile of the statistical distribution. For example, 0.5 indicates P50.
+	// - If `Function` is set to `percentile`, this parameter specifies the percentile of the statistical distribution. For example, 0.5 indicates P50.
 	//
 	// example:
 	//
@@ -752,7 +752,7 @@ type CreateHybridMonitorTaskRequestSLSProcessConfigStatistics struct {
 	Parameter1 *string `json:"Parameter1,omitempty" xml:"Parameter1,omitempty"`
 	// The statistical value of SLS logs.
 	//
-	// > This parameter is required only when Function is set to `distribution`. This parameter specifies the upper limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 299.
+	// > This parameter is required only when `Function` is set to `distribution`. It specifies the upper limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 299.
 	//
 	// example:
 	//

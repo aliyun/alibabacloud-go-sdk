@@ -28,31 +28,31 @@ type iMetricStat interface {
 }
 
 type MetricStat struct {
-	// The additional information about the monitored object (instance).
+	// The additional information of the monitored object (instance).
 	Associated map[string]*string `json:"Associated,omitempty" xml:"Associated,omitempty"`
-	// The dimension information that is used to identify the monitored object (instance).
+	// The dimension information used to identify the monitored object (instance).
 	Dimensions []*Dimension `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The recorded time of the monitoring data. Unit: milliseconds. For non-raw data (aggregated data), the value of LogTime is NULL.
+	// The recording time of the monitoring data, in milliseconds. For non-raw data (aggregated data), LogTime is null.
 	//
 	// example:
 	//
 	// 1683686550073
 	LogTime *int64 `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-	// The measured value of the metric. The parameter contains multiple values by default.
+	// The measurement values of the metric (multi-value mode by default).
 	Measurements map[string]interface{} `json:"Measurements,omitempty" xml:"Measurements,omitempty"`
-	// The metric that is used to monitor the cloud service.
+	// The name of the metric for the cloud service.
 	//
 	// example:
 	//
 	// cpu_idle
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The namespace of the cloud service.
+	// The data namespace of the cloud service.
 	//
 	// example:
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The time interval based on which the metric value is measured.
+	// The time interval of the metric.
 	//
 	// Unit: seconds.
 	//
@@ -60,7 +60,7 @@ type MetricStat struct {
 	//
 	// 60
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The timestamp of the monitoring data. Unit: milliseconds.
+	// The timestamp of the monitoring data, in milliseconds.
 	//
 	// example:
 	//

@@ -36,37 +36,37 @@ type DescribeSyntheticProbeListRequest struct {
 	//
 	// Beijing
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// Specifies whether to return only detection points in data centers.
+	// Specifies whether to query only IDC detection points.
 	//
 	// example:
 	//
 	// false
 	IdcProbe *bool `json:"IdcProbe,omitempty" xml:"IdcProbe,omitempty"`
-	// Specifies whether to return only IPv4 detection points.
+	// Specifies whether to show only IPv4 nodes.
 	//
 	// example:
 	//
 	// false
 	Ipv4 *bool `json:"Ipv4,omitempty" xml:"Ipv4,omitempty"`
-	// Specifies whether to return only IPv6 detection points.
+	// Specifies whether to show only IPv6 nodes.
 	//
 	// example:
 	//
 	// false
 	Ipv6 *bool `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	// The name or ID of the carrier.
+	// The name or ID of the carrier detection point.
 	//
 	// example:
 	//
 	// China Unicom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// Specifies whether to return only last-mile detection points.
+	// Specifies whether to query only Lastmile residential broadband nodes.
 	//
 	// example:
 	//
 	// false
 	LmProbe *bool `json:"LmProbe,omitempty" xml:"LmProbe,omitempty"`
-	// Specifies whether to return only mobile detection points.
+	// Specifies whether to query only mobile detection points.
 	//
 	// example:
 	//
@@ -75,7 +75,7 @@ type DescribeSyntheticProbeListRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to return all detection points. Valid values:
 	//
-	// - false (default): Returns the detection points that are available to you.
+	// - false: Returns only the detection points available to the user. This is the default value.
 	//
 	// - true: Returns all detection points.
 	//

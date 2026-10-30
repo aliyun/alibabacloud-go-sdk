@@ -24,9 +24,9 @@ type iDescribeHostAvailabilityListResponseBody interface {
 }
 
 type DescribeHostAvailabilityListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// >The value 200 indicates success.
 	//
 	// example:
 	//
@@ -44,18 +44,18 @@ type DescribeHostAvailabilityListResponseBody struct {
 	//
 	// 4A288E86-45C3-4858-9DB0-6D85B10BD92A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Success  *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 	TaskList *DescribeHostAvailabilityListResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//

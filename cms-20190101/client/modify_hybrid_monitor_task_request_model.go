@@ -26,7 +26,7 @@ type iModifyHybridMonitorTaskRequest interface {
 }
 
 type ModifyHybridMonitorTaskRequest struct {
-	// The tags of the metric.
+	// The labels of the metric.
 	AttachLabels []*ModifyHybridMonitorTaskRequestAttachLabels `json:"AttachLabels,omitempty" xml:"AttachLabels,omitempty" type:"Repeated"`
 	// The collection interval of the metric. Valid values:
 	//
@@ -44,7 +44,7 @@ type ModifyHybridMonitorTaskRequest struct {
 	//
 	// example:
 	//
-	// SLS log monitoring data.
+	// SLS log monitoring data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The SLS log configuration.
@@ -159,13 +159,13 @@ func (s *ModifyHybridMonitorTaskRequest) Validate() error {
 }
 
 type ModifyHybridMonitorTaskRequestAttachLabels struct {
-	// The tag key of the metric.
+	// The label key of the metric.
 	//
 	// example:
 	//
 	// app_service
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The tag value of the metric.
+	// The label value of the metric.
 	//
 	// example:
 	//
@@ -204,11 +204,11 @@ func (s *ModifyHybridMonitorTaskRequestAttachLabels) Validate() error {
 }
 
 type ModifyHybridMonitorTaskRequestSLSProcessConfig struct {
-	// The arithmetic operation result of the extended field in the SLS log statistics result.
+	// The arithmetic result of the extended fields for the SLS log statistics result.
 	Express []*ModifyHybridMonitorTaskRequestSLSProcessConfigExpress `json:"Express,omitempty" xml:"Express,omitempty" type:"Repeated"`
 	// The filter conditions for parameters in the SLS log.
 	Filter *ModifyHybridMonitorTaskRequestSLSProcessConfigFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// Aggregates data by spatial dimension, which is equivalent to GROUP BY in SQL.
+	// The spatial dimension used to aggregate data, which is equivalent to the GROUP BY clause in SQL.
 	GroupBy []*ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy `json:"GroupBy,omitempty" xml:"GroupBy,omitempty" type:"Repeated"`
 	// None.
 	Statistics []*ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
@@ -295,13 +295,13 @@ func (s *ModifyHybridMonitorTaskRequestSLSProcessConfig) Validate() error {
 }
 
 type ModifyHybridMonitorTaskRequestSLSProcessConfigExpress struct {
-	// The alias of the arithmetic operation result of the extended field in the SLS log statistics result.
+	// The alias of the arithmetic result of the extended fields for the SLS log statistics result.
 	//
 	// example:
 	//
 	// SuccRate
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The arithmetic operation result of the extended field in the SLS log statistics result.
+	// The arithmetic result of the extended fields for the SLS log statistics result.
 	//
 	// example:
 	//
@@ -344,9 +344,9 @@ type ModifyHybridMonitorTaskRequestSLSProcessConfigFilter struct {
 	Filters []*ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The relationship between multiple filter conditions. Valid values:
 	//
-	// - and (default): Logs are processed only when all filter conditions are met.
+	// - and (default): The log is processed only when all filter conditions are met.
 	//
-	// - or: Logs are processed when any filter condition is met.
+	// - or: The log is processed when any filter condition is met.
 	//
 	// example:
 	//
@@ -523,7 +523,7 @@ type ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics struct {
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// The statistical method used to aggregate log data within a statistical period. Valid values:
 	//
-	// - count: counts the number of occurrences.
+	// - count: counts the number of entries.
 	//
 	// - sum: calculates the sum.
 	//
@@ -535,15 +535,15 @@ type ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics struct {
 	//
 	// - value: samples within the period.
 	//
-	// - countps: calculates the per-second average of the count for the specified field within the statistical period.
+	// - countps: calculates the average count per second for the specified field within the statistical period.
 	//
-	// - sumps: calculates the per-second average of the sum for the specified field within the statistical period.
+	// - sumps: calculates the average sum per second for the specified field within the statistical period.
 	//
 	// - distinct: calculates the number of occurrences of the specified field after deduplication within the statistical period.
 	//
 	// - distribution: calculates the number of occurrences of field values within a specified range.
 	//
-	// - percentile: calculates the distribution value of field values, such as P50.
+	// - percentile: calculates the distribution value of field values, for example, P50.
 	//
 	// example:
 	//
@@ -561,7 +561,7 @@ type ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics struct {
 	Parameter1 *string `json:"Parameter1,omitempty" xml:"Parameter1,omitempty"`
 	// The statistical value of the SLS log.
 	//
-	// > This parameter is required only when `Function` is set to `distribution`. It specifies the upper limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 299.
+	// > This parameter is required only when `Function` is set to `distribution`. This parameter specifies the upper limit of the statistical range. For example, to count the number of 2XX HTTP status codes, set this parameter to 299.
 	//
 	// example:
 	//

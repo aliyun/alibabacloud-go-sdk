@@ -22,7 +22,7 @@ type iDisableMetricRulesResponseBody interface {
 type DisableMetricRulesResponseBody struct {
 	// The status code.
 	//
-	// > A value of 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,7 +40,11 @@ type DisableMetricRulesResponseBody struct {
 	//
 	// FF38D33A-67C1-40EB-AB65-FAEE51EDB644
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. A value of \\`true\\` indicates success and a value of \\`false\\` indicates failure.
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: The operation is successful.
+	//
+	// - false: The operation fails.
 	//
 	// example:
 	//

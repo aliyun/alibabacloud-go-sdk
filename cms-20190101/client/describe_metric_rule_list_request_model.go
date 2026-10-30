@@ -34,7 +34,7 @@ type iDescribeMetricRuleListRequest interface {
 }
 
 type DescribeMetricRuleListRequest struct {
-	// The state of the alert rule. Valid values:
+	// The status of the alert rule. Valid values:
 	//
 	// - OK: Normal.
 	//
@@ -48,7 +48,7 @@ type DescribeMetricRuleListRequest struct {
 	AlertState *string `json:"AlertState,omitempty" xml:"AlertState,omitempty"`
 	// The monitoring dimensions of the specified resource.
 	//
-	// Format: a collection of `key:value` pairs. Example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
+	// Format: A collection of `key:value` pairs, for example, `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DescribeMetricRuleListRequest struct {
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
 	// The enabled state of the alert rule. Valid values:
 	//
-	// - true: enabled.
+	// - true: Enabled.
 	//
-	// - false: disabled.
+	// - false: Disabled.
 	//
 	// example:
 	//
@@ -74,17 +74,17 @@ type DescribeMetricRuleListRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The metric name.
 	//
-	// For information about how to obtain metric names, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For information about how to obtain metric names, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// Note: For composite metrics, you can retrieve results only by the first metric.
+	// Note: For composite metrics, you can only search by the first metric.
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the Alibaba Cloud service.
+	// The namespace of the cloud service.
 	//
-	// For information about how to obtain the namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For information about how to obtain the namespace of a cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type DescribeMetricRuleListRequest struct {
 	// 10
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the alert rules. Separate multiple IDs with commas (,). You can query up to 20 alert rules at a time.
+	// The IDs of alert rules. Separate multiple IDs with commas (,). You can query up to 20 alert rules at a time.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type DescribeMetricRuleListRequest struct {
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
 	// The name of the alert rule.
 	//
-	// This parameter supports fuzzy match.
+	// This parameter supports fuzzy search.
 	//
 	// example:
 	//

@@ -28,27 +28,27 @@ type iDescribeAlertingMetricRuleResourcesRequest interface {
 }
 
 type DescribeAlertingMetricRuleResourcesRequest struct {
-	// Queries the alerts that were triggered before the specified time. Timestamps in milliseconds are supported.
+	// Queries alerts that occurred before this point in time. The value is a millisecond-level timestamp.
 	//
 	// example:
 	//
 	// 1698827400000
 	AlertBeforeTime *string `json:"AlertBeforeTime,omitempty" xml:"AlertBeforeTime,omitempty"`
-	// The dimensions that specify the resources whose monitoring data you want to query.
+	// The dimension map used to query monitoring data of a specified resource.
 	//
 	// example:
 	//
 	// {\\"userId\\":\\"120886317861****\\",\\"region\\":\\"cn-huhehaote\\",\\"queue\\":\\"test-0128\\"}
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The ID of the application group. For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+	// The ID of the application group. For more information about how to query application group IDs, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
 	//
 	// example:
 	//
 	// 7671****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The namespace of the cloud service.
+	// The data namespace of the Alibaba Cloud service.
 	//
-	// For more information about the namespaces of cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For more information about how to obtain the data namespace of an Alibaba Cloud service, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -71,7 +71,7 @@ type DescribeAlertingMetricRuleResourcesRequest struct {
 	// 10
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the alert rule. For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	// The ID of the alert rule. For more information about how to query alert rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
 	// example:
 	//

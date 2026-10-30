@@ -22,27 +22,27 @@ type iDescribeSystemEventAttributeResponseBody interface {
 }
 
 type DescribeSystemEventAttributeResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the call is successful.
+	// >A value of 200 indicates that the call was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, `success` is returned. If the call fails, an error message is returned.
+	// The returned message. If the call is successful, `success` is returned. If the call fails, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 60912C8D-B340-4253-ADE7-61ACDFD25CFC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: True: The call is successful. false: The call fails.
+	// Indicates whether the call was successful. A value of true indicates that the call was successful. A value of false indicates that the call failed.
 	//
 	// example:
 	//

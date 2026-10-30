@@ -18,18 +18,20 @@ type iDescribeSiteMonitorAttributeRequest interface {
 }
 
 type DescribeSiteMonitorAttributeRequest struct {
-	// Specifies whether the returned task details include alert rules.
+	// Specifies whether the returned task details include alert rules. Valid values:
 	//
-	// - true: Alert rules are returned.
+	// - true: The alert rules are returned.
 	//
-	// - false (default): Alert rules are not returned.
+	// - false: The alert rules are not returned.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	IncludeAlert *bool   `json:"IncludeAlert,omitempty" xml:"IncludeAlert,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the monitoring task.
+	// The ID of the site monitoring task.
 	//
 	// This parameter is required.
 	//

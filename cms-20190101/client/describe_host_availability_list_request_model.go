@@ -38,7 +38,7 @@ type DescribeHostAvailabilityListRequest struct {
 	//
 	// 123456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IDs of the availability monitoring tasks. Separate multiple IDs with commas (,).
+	// The IDs of multiple availability monitoring tasks. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeHostAvailabilityListRequest struct {
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeHostAvailabilityListRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	//
-	// Minimum value: 1. Default value: 10
+	// Minimum value: 1. Default value: 10.
 	//
 	// example:
 	//

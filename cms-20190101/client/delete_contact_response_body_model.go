@@ -40,11 +40,7 @@ type DeleteContactResponseBody struct {
 	//
 	// 50D4CFE1-01E5-4543-939C-18BC01E3EC1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
-	//
-	// - true: Successful.
-	//
-	// - false: Failed.
+	// Indicates whether the operation was successful. A value of true indicates success, and false indicates failure.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iModifyHostAvailabilityResponseBody interface {
 type ModifyHostAvailabilityResponseBody struct {
 	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type ModifyHostAvailabilityResponseBody struct {
 	//
 	// 16E815A3-47E1-4290-87F9-D5C99471FF45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: The operation was successful.
 	//
-	// - false
+	// - false: The operation failed.
 	//
 	// example:
 	//

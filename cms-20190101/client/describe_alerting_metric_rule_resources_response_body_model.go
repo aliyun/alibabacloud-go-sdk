@@ -26,7 +26,7 @@ type iDescribeAlertingMetricRuleResourcesResponseBody interface {
 type DescribeAlertingMetricRuleResourcesResponseBody struct {
 	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// >A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -45,17 +45,17 @@ type DescribeAlertingMetricRuleResourcesResponseBody struct {
 	// 0724011B-D9E0-4B2F-8C51-F17A894CC42C
 	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *DescribeAlertingMetricRuleResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: The operation was successful.
 	//
-	// - false
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

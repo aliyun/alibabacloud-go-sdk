@@ -22,7 +22,7 @@ type iDisableEventRulesResponseBody interface {
 type DisableEventRulesResponseBody struct {
 	// The status code.
 	//
-	// > A value of 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type DisableEventRulesResponseBody struct {
 	//
 	// 3FD0E8B5-F132-4F4E-A081-2878AF378B12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

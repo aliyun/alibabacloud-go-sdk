@@ -32,31 +32,27 @@ type DescribeEventRuleListRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// Specifies whether to enable the event-triggered alert rule. Valid values:
 	//
-	// - true (default)
+	// - true: enabled. This is the default value.
 	//
-	// - false
+	// - false: disabled.
 	//
 	// example:
 	//
 	// true
 	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
-	// The prefix in the name of the event-triggered alert rule.
+	// The prefix of the event-triggered alert rule.
 	//
 	// example:
 	//
 	// test
 	NamePrefix *string `json:"NamePrefix,omitempty" xml:"NamePrefix,omitempty"`
-	// The page number.
-	//
-	// Pages start from page 1. Default value: 1.
+	// The page number. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// Pages start from page 1. Default value: 10.
+	// The number of entries to return on each page. Minimum value: 1. Default value: 10.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type DescribeMonitorGroupNotifyPolicyListRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the pause notification.
+	// The type of the pause notification policy.
 	//
 	// Currently, only PauseNotify is supported.
 	//

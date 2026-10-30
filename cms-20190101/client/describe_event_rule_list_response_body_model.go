@@ -24,16 +24,14 @@ type iDescribeEventRuleListResponseBody interface {
 }
 
 type DescribeEventRuleListResponseBody struct {
-	// The HTTP status code.
-	//
-	// > The status code 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code       *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	EventRules *DescribeEventRuleListResponseBodyEventRules `json:"EventRules,omitempty" xml:"EventRules,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -45,17 +43,17 @@ type DescribeEventRuleListResponseBody struct {
 	//
 	// D0E6D82B-16B5-422A-8136-EE5BDC01E415
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: The operation was successful.
 	//
-	// - false
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

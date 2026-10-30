@@ -9,6 +9,8 @@ type iPutMonitorGroupDynamicRuleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *PutMonitorGroupDynamicRuleRequest
+	GetDryRun() *bool
 	SetGroupId(v int64) *PutMonitorGroupDynamicRuleRequest
 	GetGroupId() *int64
 	SetGroupRules(v []*PutMonitorGroupDynamicRuleRequestGroupRules) *PutMonitorGroupDynamicRuleRequest
@@ -20,6 +22,7 @@ type iPutMonitorGroupDynamicRuleRequest interface {
 }
 
 type PutMonitorGroupDynamicRuleRequest struct {
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the application group.
 	//
 	// This parameter is required.
@@ -53,6 +56,10 @@ func (s PutMonitorGroupDynamicRuleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PutMonitorGroupDynamicRuleRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *PutMonitorGroupDynamicRuleRequest) GetGroupId() *int64 {
 	return s.GroupId
 }
@@ -67,6 +74,11 @@ func (s *PutMonitorGroupDynamicRuleRequest) GetIsAsync() *bool {
 
 func (s *PutMonitorGroupDynamicRuleRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *PutMonitorGroupDynamicRuleRequest) SetDryRun(v bool) *PutMonitorGroupDynamicRuleRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *PutMonitorGroupDynamicRuleRequest) SetGroupId(v int64) *PutMonitorGroupDynamicRuleRequest {

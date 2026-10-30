@@ -14,13 +14,9 @@ type iDeleteEventRulesRequest interface {
 }
 
 type DeleteEventRulesRequest struct {
-	// The names of the event-triggered alert rules to delete.
+	// The names of the rules to delete.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rule1
 	RuleNames []*string `json:"RuleNames,omitempty" xml:"RuleNames,omitempty" type:"Repeated"`
 }
 

@@ -11,6 +11,8 @@ type iPutMonitoringConfigRequest interface {
 	GoString() string
 	SetAutoInstall(v bool) *PutMonitoringConfigRequest
 	GetAutoInstall() *bool
+	SetDryRun(v bool) *PutMonitoringConfigRequest
+	GetDryRun() *bool
 	SetEnableInstallAgentNewECS(v bool) *PutMonitoringConfigRequest
 	GetEnableInstallAgentNewECS() *bool
 	SetRegionId(v string) *PutMonitoringConfigRequest
@@ -18,17 +20,18 @@ type iPutMonitoringConfigRequest interface {
 }
 
 type PutMonitoringConfigRequest struct {
-	// This parameter is deprecated.
+	// This parameter is not required.
 	//
 	// example:
 	//
 	// true
 	AutoInstall *bool `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
-	// Specifies whether to automatically install the CloudMonitor agent on new ECS instances. Valid values:
+	DryRun      *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to automatically install the CloudMonitor agent on newly purchased ECS instances. Valid values:
 	//
-	// - true (default): The CloudMonitor agent is automatically installed on new ECS instances.
+	// - true (default): The CloudMonitor agent is automatically installed on newly purchased ECS instances.
 	//
-	// - false: The CloudMonitor agent is not automatically installed on new ECS instances.
+	// - false: The CloudMonitor agent is not automatically installed on newly purchased ECS instances.
 	//
 	// example:
 	//
@@ -49,6 +52,10 @@ func (s *PutMonitoringConfigRequest) GetAutoInstall() *bool {
 	return s.AutoInstall
 }
 
+func (s *PutMonitoringConfigRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *PutMonitoringConfigRequest) GetEnableInstallAgentNewECS() *bool {
 	return s.EnableInstallAgentNewECS
 }
@@ -59,6 +66,11 @@ func (s *PutMonitoringConfigRequest) GetRegionId() *string {
 
 func (s *PutMonitoringConfigRequest) SetAutoInstall(v bool) *PutMonitoringConfigRequest {
 	s.AutoInstall = &v
+	return s
+}
+
+func (s *PutMonitoringConfigRequest) SetDryRun(v bool) *PutMonitoringConfigRequest {
+	s.DryRun = &v
 	return s
 }
 

@@ -30,17 +30,17 @@ type iDescribeMetricRuleTemplateListRequest interface {
 }
 
 type DescribeMetricRuleTemplateListRequest struct {
-	// Specifies whether to display the history of applying the alert templates to application groups. Valid values:
+	// Specifies whether to display the history of applying the alert template to application groups. Valid values:
 	//
-	// - true
+	// - true: Displays the history.
 	//
-	// - false (default)
+	// - false: Does not display the history. This is the default value.
 	//
 	// example:
 	//
 	// false
 	History *bool `json:"History,omitempty" xml:"History,omitempty"`
-	// The keyword of the alert template name.
+	// The keyword in the alert template name.
 	//
 	// example:
 	//
@@ -52,21 +52,21 @@ type DescribeMetricRuleTemplateListRequest struct {
 	//
 	// ECS_Template1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sorting order. Valid values:
+	// The sort order. Valid values:
 	//
-	// - true (default): ascending order
+	// - true: Ascending order. This is the default value.
 	//
-	// - false: descending order
+	// - false: Descending order.
 	//
 	// example:
 	//
 	// true
 	Order *bool `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The sorting basis. Valid values:
+	// The sort field. Valid values:
 	//
-	// - gmtMotified: sorts alert templates by modification time
+	// - gmtMotified: Modification date.
 	//
-	// - gmtCreate (default): sorts alert templates by creation time
+	// - gmtCreate: Creation date. This is the default value.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeMetricRuleTemplateListRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//

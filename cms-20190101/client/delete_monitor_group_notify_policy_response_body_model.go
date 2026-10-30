@@ -22,9 +22,9 @@ type iDeleteMonitorGroupNotifyPolicyResponseBody interface {
 }
 
 type DeleteMonitorGroupNotifyPolicyResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > The value 200 indicates success.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type DeleteMonitorGroupNotifyPolicyResponseBody struct {
 	//
 	// 1
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//

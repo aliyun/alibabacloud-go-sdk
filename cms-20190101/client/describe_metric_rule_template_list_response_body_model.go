@@ -26,7 +26,7 @@ type iDescribeMetricRuleTemplateListResponseBody interface {
 type DescribeMetricRuleTemplateListResponseBody struct {
 	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -44,18 +44,18 @@ type DescribeMetricRuleTemplateListResponseBody struct {
 	//
 	// 659401C0-6214-5C02-972A-CFA929D717B7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: The operation was successful.
 	//
-	// - false
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success   *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
 	Templates *DescribeMetricRuleTemplateListResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

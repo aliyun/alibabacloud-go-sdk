@@ -30,7 +30,7 @@ type iDescribeMonitorGroupsResponseBody interface {
 type DescribeMonitorGroupsResponseBody struct {
 	// The status code.
 	//
-	// > A value of 200 indicates that the operation was successful.
+	// > The value 200 indicates success.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeMonitorGroupsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//

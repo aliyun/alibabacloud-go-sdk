@@ -24,9 +24,9 @@ type DeleteMonitorGroupNotifyPolicyRequest struct {
 	//
 	// 6780****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The type of the policy.
+	// The type of the pause notification.
 	//
-	// Valid value: PauseNotify.
+	// Currently, only PauseNotify is supported.
 	//
 	// This parameter is required.
 	//

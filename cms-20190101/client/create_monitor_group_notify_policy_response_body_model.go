@@ -22,9 +22,9 @@ type iCreateMonitorGroupNotifyPolicyResponseBody interface {
 }
 
 type CreateMonitorGroupNotifyPolicyResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// >The value 200 indicates success.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type CreateMonitorGroupNotifyPolicyResponseBody struct {
 	//
 	// example:
 	//
-	// 13356BCA-3EC3-4748-A771-2064DA69AEF1
+	// B7AF834D-D38B-4A46-920B-FE974EB7E135
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned for the creation result.
+	// The number of affected rows.
 	//
 	// example:
 	//

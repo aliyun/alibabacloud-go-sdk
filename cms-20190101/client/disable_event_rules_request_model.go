@@ -17,13 +17,9 @@ type iDisableEventRulesRequest interface {
 
 type DisableEventRulesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The names of the event-triggered alert rules.
+	// The names of the alert rules.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ruleName1
 	RuleNames []*string `json:"RuleNames,omitempty" xml:"RuleNames,omitempty" type:"Repeated"`
 }
 

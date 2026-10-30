@@ -28,7 +28,7 @@ type iCreateInstantSiteMonitorRequest interface {
 }
 
 type CreateInstantSiteMonitorRequest struct {
-	// The URL or IP address of the detection task.
+	// The URL or IP address of the synthetic monitoring task.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type CreateInstantSiteMonitorRequest struct {
 	//
 	// http://www.aliyun.com
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The type of the detection points. Valid values: PC and MOBILE. PC indicates detection points on PCs. MOBILE indicates detection points on mobile devices. Default value: PC.
+	// The type of detection points. Valid values: PC and MOBILE. PC indicates fixed-line network detection points. MOBILE indicates mobile network detection points. Default value: PC.
 	//
 	// example:
 	//
 	// PC
 	AgentGroup *string `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
-	// The detection points. If you do not specify this parameter, the system randomly selects three detection points.
+	// The detection point information. If this parameter is left empty, the system randomly selects three detection points.
 	//
-	// The value must be a JSON array. Example: `[{"city":"546","isp":"465", "type":"IDC"},{"city":"572","isp":"465", "type":"LASTMILE"},{"city":"738","isp":"465"}]`. These values correspond to Beijing, Hangzhou, and Qingdao.
+	// The value is in `JSONArray` format. Example: [{"city":"546","isp":"465", "type":"IDC"},{"city":"572","isp":"465", "type":"LASTMILE"},{"city":"738","isp":"465"}], which correspond to Beijing, Hangzhou, and Qingdao respectively.
 	//
-	// The type parameter specifies the type of the detection point. If AgentGroup is set to PC, valid values for type are IDC and LASTMILE. IDC indicates that the detection point is deployed in a data center. LASTMILE indicates that the detection point is deployed on the PC of a netizen that is connected to the last mile of an ISP network. The type parameter is optional. The default value is IDC. You do not need to specify this parameter if AgentGroup is set to MOBILE.
+	// The type field specifies the detection point type. When AgentGroup is set to PC, valid values are IDC and LASTMILE. IDC indicates detection points deployed in data centers. LASTMILE indicates detection points deployed in end-user homes that use fixed-line networks. The type field is optional and defaults to IDC. When AgentGroup is set to MOBILE, this field does not need to be specified.
 	//
-	// For more information about how to obtain detection points, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
+	// For information about how to obtain detection point information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
 	//
 	// > You must specify either `IspCities` or `RandomIspCity`.
 	//
@@ -56,7 +56,7 @@ type CreateInstantSiteMonitorRequest struct {
 	//
 	// [{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]
 	IspCities *string `json:"IspCities,omitempty" xml:"IspCities,omitempty"`
-	// The extended options for the protocol type of the detection task. The extended options vary based on the protocol type.
+	// The advanced extended options for the protocol type of the synthetic monitoring task. Different protocol types correspond to different extended options.
 	//
 	// example:
 	//
@@ -64,30 +64,21 @@ type CreateInstantSiteMonitorRequest struct {
 	OptionsJson *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
 	// The number of detection points.
 	//
-	// > - You must specify either `IspCities` or `RandomIspCity`. If you specify `RandomIspCity`, `IspCities` is ignored.
+	// > - You must specify either `IspCities` or `RandomIspCity`.- If you set the `RandomIspCity` parameter, the `IspCities` parameter becomes invalid.
 	//
 	// example:
 	//
 	// 1
 	RandomIspCity *int32  `json:"RandomIspCity,omitempty" xml:"RandomIspCity,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the detection task.
+	// The name of the synthetic monitoring task.
 	//
-	// <props="china">
-	//
-	// The name must be 4 to 100 characters in length and can contain letters, digits, and underscores (_).
+	// <props="china">The name must be 4 to 100 characters in length and can contain letters, digits, underscores (_), and Chinese characters.
 	//
 	//
+	// <props="intl">The name must be 4 to 100 characters in length and can contain letters, digits, and underscores (_).
 	//
-	// <props="intl">
-	//
-	// The name must be 4 to 100 characters in length and can contain letters, digits, and underscores (_).
-	//
-	//
-	//
-	// <props="partner">
-	//
-	// The name must be 4 to 100 characters in length and can contain letters, digits, and underscores (_).
+	// <props="partner">The name must be 4 to 100 characters in length and can contain letters, digits, and underscores (_).
 	//
 	// This parameter is required.
 	//
@@ -95,7 +86,9 @@ type CreateInstantSiteMonitorRequest struct {
 	//
 	// task1
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the detection task. Valid values: HTTP, PING, TCP, UDP, and DNS.
+	// The type of the synthetic monitoring task.
+	//
+	// Valid values: HTTP, PING, TCP, UDP, and DNS.
 	//
 	// This parameter is required.
 	//

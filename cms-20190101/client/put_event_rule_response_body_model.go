@@ -30,7 +30,7 @@ type PutEventRuleResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of rows affected when the Event-triggered Alert Rule is created or modified.
+	// The number of rows affected when the event-triggered alert rule is created or modified.
 	//
 	// example:
 	//

@@ -22,34 +22,11 @@ type iDeleteMonitorGroupResponseBody interface {
 }
 
 type DeleteMonitorGroupResponseBody struct {
-	// The HTTP status code.
-	//
-	// > The status code 200 indicates that the call was successful.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The deleted application group.
-	Group *DeleteMonitorGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The returned message.
-	//
-	// example:
-	//
-	// The Request is not authorization.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// CA35B3AE-4FFD-4A33-AE67-67EF68711EFA
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Group     *DeleteMonitorGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteMonitorGroupResponseBody) String() string {
@@ -116,12 +93,7 @@ func (s *DeleteMonitorGroupResponseBody) Validate() error {
 
 type DeleteMonitorGroupResponseBodyGroup struct {
 	ContactGroups *DeleteMonitorGroupResponseBodyGroupContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
-	// The name of the application group.
-	//
-	// example:
-	//
-	// ECS_test
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName     *string                                           `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s DeleteMonitorGroupResponseBodyGroup) String() string {

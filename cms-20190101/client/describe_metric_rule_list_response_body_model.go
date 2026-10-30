@@ -25,9 +25,9 @@ type iDescribeMetricRuleListResponseBody interface {
 
 type DescribeMetricRuleListResponseBody struct {
 	Alarms *DescribeMetricRuleListResponseBodyAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Struct"`
-	// The status code.
+	// The HTTP status code.
 	//
-	// >A value of 200 indicates success.
+	// >200 indicates success.
 	//
 	// example:
 	//
@@ -47,9 +47,9 @@ type DescribeMetricRuleListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

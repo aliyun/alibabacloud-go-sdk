@@ -9,6 +9,10 @@ type iEnableActiveMetricRuleRequest interface {
   dara.Model
   String() string
   GoString() string
+  SetClientToken(v string) *EnableActiveMetricRuleRequest
+  GetClientToken() *string 
+  SetDryRun(v bool) *EnableActiveMetricRuleRequest
+  GetDryRun() *bool 
   SetProduct(v string) *EnableActiveMetricRuleRequest
   GetProduct() *string 
   SetRegionId(v string) *EnableActiveMetricRuleRequest
@@ -16,29 +20,43 @@ type iEnableActiveMetricRuleRequest interface {
 }
 
 type EnableActiveMetricRuleRequest struct {
-  // The cloud service for which you want to enable initiative alert. Valid values:
+  // The client token that is used to ensure the idempotence of the request.
   // 
-  // - ECS: Elastic Compute Service (ECS)
+  // You can generate the value of this parameter on the client side. Make sure that the value is unique across different requests. The value can be up to 64 ASCII characters in length.
   // 
-  // - rds: ApsaraDB RDS
+  // example:
   // 
-  // - slb: Server Load Balancer (SLB)
+  // 00000-xxxx-xxxxx--xxxx
+  ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+  // Specifies whether to check the availability of the webhook.
   // 
-  // - redis_standard: Redis Open-Source Edition (standard architecture)
+  // example:
   // 
-  // - redis_sharding: Redis Open-Source Edition (cluster architecture)
+  // false
+  DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+  // The name of the Alibaba Cloud service that supports one-click alert rules. Valid values:
   // 
-  // - redis_splitrw: Redis Open-Source Edition (read/write splitting architecture)
+  // 	- ecs: Elastic Compute Service (ECS).
   // 
-  // - mongodb: ApsaraDB for MongoDB of the replica set architecture
+  // 	- rds: ApsaraDB RDS.
   // 
-  // - mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
+  // 	- slb: Server Load Balancer (SLB).
   // 
-  // - hbase: ApsaraDB for HBase
+  // 	- redis_standard: Standard architecture of open-source Redis.
   // 
-  // - elasticsearch: Elasticsearch
+  // 	- redis_sharding: Cluster architecture of open-source Redis.
   // 
-  // - opensearch: OpenSearch
+  // 	- redis_splitrw: Read/write splitting architecture of open-source Redis.
+  // 
+  // 	- mongodb: ApsaraDB for MongoDB (replica set).
+  // 
+  // 	- mongodb_sharding: ApsaraDB for MongoDB (sharded cluster).
+  // 
+  // 	- hbase: ApsaraDB for HBase.
+  // 
+  // 	- elasticsearch: Elasticsearch.
+  // 
+  // 	- opensearch: OpenSearch.
   // 
   // This parameter is required.
   // 
@@ -57,12 +75,30 @@ func (s EnableActiveMetricRuleRequest) GoString() string {
   return s.String()
 }
 
+func (s *EnableActiveMetricRuleRequest) GetClientToken() *string  {
+  return s.ClientToken
+}
+
+func (s *EnableActiveMetricRuleRequest) GetDryRun() *bool  {
+  return s.DryRun
+}
+
 func (s *EnableActiveMetricRuleRequest) GetProduct() *string  {
   return s.Product
 }
 
 func (s *EnableActiveMetricRuleRequest) GetRegionId() *string  {
   return s.RegionId
+}
+
+func (s *EnableActiveMetricRuleRequest) SetClientToken(v string) *EnableActiveMetricRuleRequest {
+  s.ClientToken = &v
+  return s
+}
+
+func (s *EnableActiveMetricRuleRequest) SetDryRun(v bool) *EnableActiveMetricRuleRequest {
+  s.DryRun = &v
+  return s
 }
 
 func (s *EnableActiveMetricRuleRequest) SetProduct(v string) *EnableActiveMetricRuleRequest {

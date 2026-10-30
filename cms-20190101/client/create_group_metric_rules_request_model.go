@@ -131,7 +131,7 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// Unit: seconds. The default value is the minimum reporting period of the metric.
+	// Unit: seconds. The default value is the minimum reporting frequency of the metric.
 	//
 	// > Keep the detection period of the alert rule consistent with the data reporting period. If the detection period is shorter than the data reporting period, alerts may not be triggered due to insufficient data.
 	//
@@ -237,7 +237,7 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	// The callback URL to which an alert notification is sent. Valid values of N: 1 to 200.
 	//
-	// Enter a publicly accessible URL. CloudMonitor sends alert information to this URL by using POST requests. Only the HTTP protocol is supported.
+	// Specify a publicly accessible URL. CloudMonitor sends a POST request to push alert information to this URL. Only the HTTP protocol is supported.
 	//
 	// example:
 	//
@@ -494,33 +494,33 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalations) Validate() er
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical struct {
-	// 紧急级别阈值比较符。取值：
+	// The comparison operator for Critical-level alerts. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: less than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: greater than the value at the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: less than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: greater than the value in the last period.
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: less than the value in the last period.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
@@ -528,33 +528,33 @@ type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *string `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// 紧急级别报警统计方法。
+	// The statistical method for Critical-level alerts.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For information about how to obtain the valid values, see [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// 触发紧急级别报警通知的阈值。
+	// The threshold that triggers Critical-level alert notifications.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// 发送紧急报警通知需要监控指标达到报警阈值的次数。
+	// The number of times that the monitoring metric must reach the alert threshold before a Critical-level alert notification is sent.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Settings for at least one of the alert severity levels Critical, Warn (warning), or Info must be specified. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
@@ -629,33 +629,33 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical) Valid
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo struct {
-	// 普通级别阈值比较符。取值：
+	// The comparison operator for Info-level alerts. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: less than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: greater than the value at the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: less than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: greater than the value in the last period.
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: less than the value in the last period.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
@@ -663,33 +663,33 @@ type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *string `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// 普通级别报警统计方法。
+	// The statistical method for Info-level alerts.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For information about how to obtain the valid values, see [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// 普通级别报警阈值。
+	// The threshold for Info-level alerts.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
 	// 10
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// 发送普通报警通知需要监控指标达到报警阈值的次数。
+	// The number of times that the monitoring metric must reach the alert threshold before an Info-level alert notification is sent.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Settings for at least one of the alert severity levels Critical, Warn (warning), or Info must be specified. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
@@ -764,33 +764,33 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo) Validate(
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn struct {
-	// 警告级别阈值比较符。取值：
+	// The comparison operator for Warn-level alerts. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: less than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: greater than the value at the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: less than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: greater than the value in the last period.
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: less than the value in the last period.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
@@ -798,33 +798,33 @@ type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *string `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// 警告级别报警统计方法。
+	// The statistical method for Warn-level alerts.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For information about how to obtain the valid values, see [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// 警告级别报警阈值。
+	// The threshold for Warn-level alerts.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//
 	// 20
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// 发送警告报警通知需要监控指标达到报警阈值的次数。
+	// The number of times that the monitoring metric must reach the alert threshold before a Warn-level alert notification is sent.
 	//
-	// N的取值范围：1~200。
+	// Valid values of N: 1 to 200.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > Settings for at least one of the alert severity levels Critical, Warn (warning), or Info must be specified. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
 	//
 	// example:
 	//

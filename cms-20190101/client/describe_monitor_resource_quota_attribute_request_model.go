@@ -17,11 +17,11 @@ type iDescribeMonitorResourceQuotaAttributeRequest interface {
 
 type DescribeMonitorResourceQuotaAttributeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to return information about used quotas. Valid values:
+	// Specifies whether the response includes used quotas. Valid values:
 	//
-	// - true (default): yes
+	// - true (default): Included.
 	//
-	// - false: no
+	// - false: Not included.
 	//
 	// example:
 	//

@@ -20,10 +20,6 @@ type EnableEventRulesRequest struct {
   // The names of the event rules to enable.
   // 
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // ruleName1
   RuleNames []*string `json:"RuleNames,omitempty" xml:"RuleNames,omitempty" type:"Repeated"`
 }
 

@@ -22,9 +22,9 @@ type iDeleteSiteMonitorsResponseBody interface {
 }
 
 type DeleteSiteMonitorsResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The value 200 indicates success.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -32,19 +32,19 @@ type DeleteSiteMonitorsResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The number of affected rows.
 	Data *DeleteSiteMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message. If the request is successful, a success message is returned. If the request fails, the failure reason is returned, such as `TaskId not found`.
+	// The returned message. If the request is successful, a success message is returned. If the request fails, the cause of the failure is returned, such as `TaskId not found`.
 	//
 	// example:
 	//
 	// Request succeeded.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 123BCC5D-8B63-48EA-B747-9A8995BE7AA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. The value true indicates success. The value false indicates failure.
+	// Indicates whether the operation was successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//

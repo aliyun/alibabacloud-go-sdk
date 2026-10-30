@@ -22,15 +22,15 @@ type iCursorResponseBody interface {
 }
 
 type CursorResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the call is successful.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The Cursor that is used as an input parameter to export data in the [BatchExport](https://help.aliyun.com/document_detail/2329847.html) operation.
+	// The cursor used as an input parameter in the [BatchExport](https://help.aliyun.com/document_detail/2329847.html) operation to export data.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type CursorResponseBody struct {
 	//
 	// 915C2D7A-E6A4-17C3-8E13-4DBDD61E7919
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: The operation was successful.
 	//
-	// - false: The call fails.
+	// - false: The operation failed.
 	//
 	// example:
 	//

@@ -18,13 +18,13 @@ type iDescribeContactGroupListRequest interface {
 }
 
 type DescribeContactGroupListRequest struct {
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of records per page.
+	// The number of records per page.
 	//
 	// example:
 	//

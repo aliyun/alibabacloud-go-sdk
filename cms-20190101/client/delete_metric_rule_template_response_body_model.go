@@ -22,15 +22,15 @@ type iDeleteMetricRuleTemplateResponseBody interface {
 }
 
 type DeleteMetricRuleTemplateResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The value 200 indicates success.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The message.
 	//
 	// example:
 	//
@@ -44,11 +44,7 @@ type DeleteMetricRuleTemplateResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The template information.
 	Resource *DeleteMetricRuleTemplateResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// Indicates whether the operation was successful. Valid values:
-	//
-	// - true: The operation was successful.
-	//
-	// - false: The operation failed.
+	// Indicates whether the operation is successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//

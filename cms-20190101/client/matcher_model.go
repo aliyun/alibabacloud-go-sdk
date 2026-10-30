@@ -24,7 +24,7 @@ type Matcher struct {
 	//
 	// i-fewrewr*****
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The matching mode of the metric dimension. Only EQUALS is supported. Default value: EQUALS.
+	// The matching method for the metric dimension. Only EQUALS is supported. Default value: EQUALS.
 	//
 	// example:
 	//

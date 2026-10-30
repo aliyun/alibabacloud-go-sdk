@@ -22,11 +22,11 @@ type iDescribeAlertLogCountResponseBody interface {
 }
 
 type DescribeAlertLogCountResponseBody struct {
-	// The statistics of alert logs.
+	// The alert history statistics.
 	AlertLogCount []*DescribeAlertLogCountResponseBodyAlertLogCount `json:"AlertLogCount,omitempty" xml:"AlertLogCount,omitempty" type:"Repeated"`
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > The value 200 indicates success.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeAlertLogCountResponseBody struct {
 	//
 	// 1C4A3709-BF52-42EE-87B5-7435F0929585
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ func (s *DescribeAlertLogCountResponseBody) Validate() error {
 }
 
 type DescribeAlertLogCountResponseBodyAlertLogCount struct {
-	// The number of alert logs.
+	// The number of alert history statistics.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The details about alert logs.
+	// The details of the alert history statistics.
 	Logs []*DescribeAlertLogCountResponseBodyAlertLogCountLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 }
 
@@ -173,13 +173,13 @@ func (s *DescribeAlertLogCountResponseBodyAlertLogCount) Validate() error {
 }
 
 type DescribeAlertLogCountResponseBodyAlertLogCountLogs struct {
-	// The name of the dimension field based on which alert logs are aggregated.
+	// The field name of the alert history statistics.
 	//
 	// example:
 	//
 	// product
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the dimension field based on which alert logs are aggregated.
+	// The field value of the alert history statistics.
 	//
 	// example:
 	//

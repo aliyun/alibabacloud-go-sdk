@@ -42,7 +42,11 @@ type DescribeSyntheticProbeListResponseBody struct {
 	//
 	// 87170bc7-e28a-4c93-b9bf-90a1dbe84736
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values: true: The operation was successful. false: The operation failed.
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: The operation is successful.
+	//
+	// - false: The operation fails.
 	//
 	// example:
 	//
@@ -117,13 +121,13 @@ func (s *DescribeSyntheticProbeListResponseBody) Validate() error {
 }
 
 type DescribeSyntheticProbeListResponseBodyIspCityList struct {
-	// The name of the area in Chinese.
+	// The Chinese name of the region.
 	//
 	// example:
 	//
-	// 华北
+	// North China
 	AreaCn *string `json:"AreaCn,omitempty" xml:"AreaCn,omitempty"`
-	// The name of the area in English.
+	// The English name of the region.
 	//
 	// example:
 	//
@@ -135,13 +139,13 @@ type DescribeSyntheticProbeListResponseBodyIspCityList struct {
 	//
 	// 738
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The name of the city in Chinese.
+	// The Chinese name of the city.
 	//
 	// example:
 	//
-	// 北京
+	// Beijing
 	CityCn *string `json:"CityCn,omitempty" xml:"CityCn,omitempty"`
-	// The name of the city in English.
+	// The English name of the city.
 	//
 	// example:
 	//
@@ -153,25 +157,25 @@ type DescribeSyntheticProbeListResponseBodyIspCityList struct {
 	//
 	// 629
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The name of the country in Chinese.
+	// The Chinese name of the country.
 	//
 	// example:
 	//
-	// 中国
+	// China
 	CountryCn *string `json:"CountryCn,omitempty" xml:"CountryCn,omitempty"`
-	// The name of the country or region in English.
+	// The English name of the country or region.
 	//
 	// example:
 	//
 	// China
 	CountryEn *string `json:"CountryEn,omitempty" xml:"CountryEn,omitempty"`
-	// The number of IPv4 detection points in data centers.
+	// The number of IPv4 nodes in the IDC.
 	//
 	// example:
 	//
 	// 1
 	IdcV4ProbeCount *int32 `json:"IdcV4ProbeCount,omitempty" xml:"IdcV4ProbeCount,omitempty"`
-	// The number of IDC IPv6 nodes.
+	// The number of IPv6 nodes in the IDC.
 	//
 	// example:
 	//
@@ -185,19 +189,19 @@ type DescribeSyntheticProbeListResponseBodyIspCityList struct {
 	//
 	// 232
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The name of the carrier in Chinese.
+	// The Chinese name of the carrier.
 	//
 	// example:
 	//
-	// 联通
+	// China Unicom
 	IspCn *string `json:"IspCn,omitempty" xml:"IspCn,omitempty"`
-	// The name of the carrier in English.
+	// The English name of the carrier.
 	//
 	// example:
 	//
 	// China-Unicom
 	IspEn *string `json:"IspEn,omitempty" xml:"IspEn,omitempty"`
-	// The number of last-mile detection points.
+	// The number of Lastmile detection points.
 	//
 	// example:
 	//
@@ -215,13 +219,13 @@ type DescribeSyntheticProbeListResponseBodyIspCityList struct {
 	//
 	// 264
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The name of the province in Chinese.
+	// The Chinese name of the province.
 	//
 	// example:
 	//
-	// 江西省
+	// Jiangxi
 	RegionCn *string `json:"RegionCn,omitempty" xml:"RegionCn,omitempty"`
-	// The name of the province in English.
+	// The English name of the province.
 	//
 	// example:
 	//

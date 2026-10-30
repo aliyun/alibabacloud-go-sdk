@@ -26,15 +26,15 @@ type iDescribeMetricLastResponseBody interface {
 }
 
 type DescribeMetricLastResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The monitoring data.
+	// The monitoring data list.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeMetricLastResponseBody struct {
 	//
 	// The specified resource is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The pagination token.
+	// The pagination cursor.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type DescribeMetricLastResponseBody struct {
 	//
 	// 021472A6-25E3-4094-8D00-BA4B6A5486C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//

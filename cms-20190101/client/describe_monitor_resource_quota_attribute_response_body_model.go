@@ -22,7 +22,7 @@ type iDescribeMonitorResourceQuotaAttributeResponseBody interface {
 type DescribeMonitorResourceQuotaAttributeResponseBody struct {
 	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeMonitorResourceQuotaAttributeResponseBody struct {
 	//
 	// 31BC7201-00F2-47B2-B7B9-6A173076ACE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the resource quotas of CloudMonitor.
+	// The quota details of CloudMonitor.
 	ResourceQuota *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty" type:"Struct"`
 }
 
@@ -98,49 +98,49 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBody) Validate() error {
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota struct {
-	// The details about the quota of API calls.
+	// The API quota.
 	Api *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaApi `json:"Api,omitempty" xml:"Api,omitempty" type:"Struct"`
-	// The details about the quota for custom monitoring.
+	// The quota of custom monitoring.
 	CustomMonitor *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaCustomMonitor `json:"CustomMonitor,omitempty" xml:"CustomMonitor,omitempty" type:"Struct"`
-	// The details about the quota of Hybrid Cloud Monitoring.
+	// The quota details of Hybrid Cloud Monitoring.
 	EnterpriseQuota *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEnterpriseQuota `json:"EnterpriseQuota,omitempty" xml:"EnterpriseQuota,omitempty" type:"Struct"`
-	// The details about the quota for event monitoring.
+	// The quota of event monitoring.
 	EventMonitor *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEventMonitor `json:"EventMonitor,omitempty" xml:"EventMonitor,omitempty" type:"Struct"`
-	// The time when the resource plan expires.
+	// The expiration time of the plan. The time follows the ISO 8601 standard in the YYYY-MM-DD format. The default time zone is UTC+8.
 	//
 	// example:
 	//
 	// 2021-02-28
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the resource plan.
+	// The subscription plan ID.
 	//
 	// example:
 	//
 	// cms_edition-cn-n6w20rn****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The details about the quota for log monitoring.
+	// The quota of Log Monitoring.
 	LogMonitor *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaLogMonitor `json:"LogMonitor,omitempty" xml:"LogMonitor,omitempty" type:"Struct"`
-	// The details about the quota of alert phone calls.
+	// The quota of alert phone call packages.
 	Phone *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaPhone `json:"Phone,omitempty" xml:"Phone,omitempty" type:"Struct"`
-	// The details about the quota of alert text messages.
+	// The quota of alert text message packages.
 	SMS *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSMS `json:"SMS,omitempty" xml:"SMS,omitempty" type:"Struct"`
-	// The quota of browser detection tasks.
+	// The quota of browser-based monitoring tasks.
 	SiteMonitorBrowser *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser `json:"SiteMonitorBrowser,omitempty" xml:"SiteMonitorBrowser,omitempty" type:"Struct"`
-	// The details about the quota of ECS detection points for site monitoring.
+	// The quota of ECS detection points for site monitoring.
 	SiteMonitorEcsProbe *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorEcsProbe `json:"SiteMonitorEcsProbe,omitempty" xml:"SiteMonitorEcsProbe,omitempty" type:"Struct"`
-	// The quota of mobile detection tasks.
+	// The quota of mobile monitoring tasks.
 	SiteMonitorMobile *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile `json:"SiteMonitorMobile,omitempty" xml:"SiteMonitorMobile,omitempty" type:"Struct"`
-	// The details about the quota of carrier detection points for site monitoring.
+	// The quota of carrier detection points for site monitoring.
 	SiteMonitorOperatorProbe *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorOperatorProbe `json:"SiteMonitorOperatorProbe,omitempty" xml:"SiteMonitorOperatorProbe,omitempty" type:"Struct"`
 	// The quota of site monitoring tasks.
 	SiteMonitorTask *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorTask `json:"SiteMonitorTask,omitempty" xml:"SiteMonitorTask,omitempty" type:"Struct"`
 	// The current edition of CloudMonitor. Valid values:
 	//
-	// - free: Free Edition
+	// - free: Free Edition.
 	//
-	// - pro: Pro Edition
+	// - pro: Pro Edition.
 	//
-	// - cms_post: pay-as-you-go
+	// - cms_post: Pay-as-you-go.
 	//
 	// example:
 	//
@@ -356,19 +356,19 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota) Validat
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaApi struct {
-	// The total quota of API calls. Unit: 10,000 calls.
+	// The total API quota. Unit: 10,000 calls.
 	//
 	// example:
 	//
 	// 500
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of API calls in your resource plan. Unit: 10,000 calls.
+	// The API quota included in the plan. Unit: 10,000 calls.
 	//
 	// example:
 	//
 	// 500
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of API calls in your resource plan. Unit: calls.
+	// The used API quota in the plan. Unit: calls.
 	//
 	// example:
 	//
@@ -416,19 +416,19 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaApi) Vali
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaCustomMonitor struct {
-	// The total quota of the time series for custom monitoring.
+	// The total quota of custom monitoring time series. Unit: time series.
 	//
 	// example:
 	//
 	// 1200
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of the time series for custom monitoring in your resource plan.
+	// The quota of custom monitoring time series included in the plan. Unit: time series.
 	//
 	// example:
 	//
 	// 1000
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of the time series for custom monitoring in your resource plan.
+	// The used quota of custom monitoring time series in the plan. Unit: time series.
 	//
 	// example:
 	//
@@ -476,7 +476,7 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaCustomMon
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEnterpriseQuota struct {
-	// The ID of the instance monitored by Hybrid Cloud Monitoring.
+	// The instance ID of Hybrid Cloud Monitoring.
 	//
 	// example:
 	//
@@ -521,19 +521,19 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEnterpris
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEventMonitor struct {
-	// The total quota of events that can be reported in event monitoring. The total quota is the value that is multiplied by 10,000.
+	// The total quota of event monitoring. Unit: 10,000 events.
 	//
 	// example:
 	//
 	// 55
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of events that can be reported in event monitoring in your resource plan. The total quota is the value that is multiplied by 10,000.
+	// The quota of event monitoring included in the plan. Unit: 10,000 events.
 	//
 	// example:
 	//
 	// 50
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of events that can be reported in event monitoring in your resource plan. The total quota is the value that is multiplied by 10,000.
+	// The used quota of event monitoring in the plan. Unit: 10,000 events.
 	//
 	// example:
 	//
@@ -581,19 +581,19 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEventMoni
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaLogMonitor struct {
-	// The total quota of processed log data in log monitoring. Unit: MB/min.
+	// The total quota of Log Monitoring. Unit: MByte/Min.
 	//
 	// example:
 	//
 	// 150
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of processed log data in log monitoring in your resource plan. Unit: MB/min.
+	// The quota of Log Monitoring included in the plan. Unit: MByte/Min.
 	//
 	// example:
 	//
 	// 150
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of processed log data in log monitoring in your resource plan. Unit: MB/min.
+	// The used quota of Log Monitoring in the plan. Unit: MByte/Min.
 	//
 	// example:
 	//
@@ -647,13 +647,13 @@ type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaPhone struct 
 	//
 	// 550
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of alert phone calls in your resource plan. Unit: calls.
+	// The quota of alert phone call packages. Unit: calls.
 	//
 	// example:
 	//
 	// 500
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of alert phone calls in your resource plan. Unit: calls.
+	// The used quota of alert phone call packages. Unit: calls.
 	//
 	// example:
 	//
@@ -707,13 +707,13 @@ type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSMS struct {
 	//
 	// 550
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of alert text messages in your resource plan. Unit: messages.
+	// The quota of alert text message packages. Unit: messages.
 	//
 	// example:
 	//
 	// 500
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of alert text messages in your resource plan. Unit: messages.
+	// The used quota of alert text message packages. Unit: messages.
 	//
 	// example:
 	//
@@ -761,19 +761,19 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSMS) Vali
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser struct {
-	// The total quota of browser detection tasks.
+	// The total quota of browser-based monitoring tasks. Unit: tasks.
 	//
 	// example:
 	//
 	// 50
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of browser detection tasks in your resource plan.
+	// The quota of browser-based monitoring tasks included in the plan. Unit: tasks.
 	//
 	// example:
 	//
 	// 50
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of browser detection tasks in your resource plan.
+	// The used quota of browser-based monitoring tasks in the plan. Unit: tasks.
 	//
 	// example:
 	//
@@ -823,21 +823,21 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonit
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorEcsProbe struct {
 	// The total quota of ECS detection points for site monitoring.
 	//
-	// > The value indicates the maximum number of ECS detection points that you can select for a site monitoring task.
+	// > The maximum number of ECS detection points that can be selected for a single site monitoring task.
 	//
 	// example:
 	//
 	// 5
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of ECS detection points for site monitoring in your resource plan.
+	// The quota of ECS detection points for site monitoring included in the plan.
 	//
 	// example:
 	//
 	// 5
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of ECS detection points for site monitoring in your resource plan.
+	// The used quota of ECS detection points for site monitoring in the plan.
 	//
-	// > The value indicates the total number of ECS detection points that are used by existing site monitoring tasks.
+	// > The total number of ECS detection points across all site monitoring tasks that have been created.
 	//
 	// example:
 	//
@@ -885,19 +885,19 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonit
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile struct {
-	// The total quota of mobile detection tasks.
+	// The total quota of mobile monitoring tasks. Unit: tasks.
 	//
 	// example:
 	//
 	// 50
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of mobile detection tasks in your resource plan.
+	// The quota of mobile monitoring tasks included in the plan. Unit: tasks.
 	//
 	// example:
 	//
 	// 50
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of mobile detection tasks in your resource plan.
+	// The used quota of mobile monitoring tasks in the plan. Unit: tasks.
 	//
 	// example:
 	//
@@ -951,13 +951,13 @@ type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorOp
 	//
 	// 5
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of carrier detection points for site monitoring in your resource plan.
+	// The quota of carrier detection points for site monitoring included in the plan.
 	//
 	// example:
 	//
 	// 5
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of carrier detection points for site monitoring in your resource plan.
+	// The used quota of carrier detection points for site monitoring in the plan.
 	//
 	// example:
 	//
@@ -1005,19 +1005,19 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonit
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorTask struct {
-	// The total quota of site monitoring tasks.
+	// The total quota of site monitoring tasks. Unit: tasks.
 	//
 	// example:
 	//
 	// 25
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of site monitoring tasks in your resource plan.
+	// The quota of site monitoring tasks included in the plan. Unit: tasks.
 	//
 	// example:
 	//
 	// 20
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of site monitoring tasks in your resource plan.
+	// The used quota of site monitoring tasks in the plan. Unit: tasks.
 	//
 	// example:
 	//

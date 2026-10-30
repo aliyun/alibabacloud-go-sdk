@@ -22,7 +22,7 @@ type iCreateHybridMonitorTaskResponseBody interface {
 }
 
 type CreateHybridMonitorTaskResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
 	// > 200 indicates success.
 	//
@@ -44,15 +44,15 @@ type CreateHybridMonitorTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: successful.
+	// - true: Successful.
 	//
-	// - false: failed.
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the monitoring task.
+	// The monitoring task ID.
 	//
 	// example:
 	//

@@ -50,45 +50,45 @@ type iDescribeAlertLogCountRequest interface {
 }
 
 type DescribeAlertLogCountRequest struct {
-	// The alert group.
+	// The alert contact group.
 	//
 	// example:
 	//
 	// ECS_Group
 	ContactGroup *string `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
-	// The end timestamp of the alert logs to be queried.
+	// The end timestamp for querying alert history.
 	//
 	// Unit: milliseconds.
 	//
-	// You can query only the alert logs within the last year. If the query time is longer than one year, the return value of the `AlertLogCount` parameter is empty.
+	// You can query only the alert history within the last year. If the query time range exceeds one year, the `AlertLogCount` response parameter is empty.
 	//
-	// > The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. The start time and end time must be specified or left empty at the same time. If you do not specify the start time and end time, the alert logs within the last 15 minutes are queried by default.
+	// > The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. Both parameters must be specified or left empty at the same time. If neither is specified, the alert history of the last 15 minutes is queried by default.
 	//
 	// example:
 	//
 	// 1610074409694
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the alert event. Valid values:
+	// The alert type. Valid values:
 	//
 	// - TRIGGERED: The alert is triggered.
 	//
-	// - RESOLVED: The alert is resolved.
+	// - RESOLVED: The alert recovers.
 	//
 	// example:
 	//
 	// TRIGGERED
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The dimension based on which data is aggregated. This parameter is similar to the Group By clause of SQL statements. Valid values:
+	// Aggregates data by a spatial dimension, which is equivalent to the Group By clause in SQL. Valid values:
 	//
-	// - `product`: aggregates data by cloud service.
+	// - `product`: aggregates by Alibaba Cloud service.
 	//
-	// - `level`: aggregates data by alert level.
+	// - `level`: aggregates by alert level.
 	//
-	// - `groupId`: aggregates data by application group.
+	// - `groupId`: aggregates by application group.
 	//
-	// - `contactGroup`: aggregates data by alert group.
+	// - `contactGroup`: aggregates by alert contact group.
 	//
-	// - `product,metricName`: aggregates data both by cloud service and by metric.
+	// - `product,metricName`: aggregates by Alibaba Cloud service and metric.
 	//
 	// This parameter is required.
 	//
@@ -96,67 +96,69 @@ type DescribeAlertLogCountRequest struct {
 	//
 	// product
 	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	// The ID of the application group.
+	// The application group ID.
 	//
 	// example:
 	//
 	// 7301****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The statistical period of alert logs. Unit: minutes.
+	// The period for obtaining logs. Unit: minutes.
 	//
 	// example:
 	//
 	// 360
 	LastMin *string `json:"LastMin,omitempty" xml:"LastMin,omitempty"`
-	// The level and notification method of the alert. Valid values:
+	// The alert level and notification method. Valid values:
 	//
-	// - P4: Alert notifications are sent by using emails and DingTalk chatbots.
+	// <props="china">- P2: Phone call + text message + email + DingTalk chatbot.
 	//
-	// - OK: No alert is generated.
+	// <props="china">- P3: Text message + email + DingTalk chatbot.
+	//
+	// <props="china">- P4: Email + DingTalk chatbot.
+	//
+	// <props="china">- OK: No alert.
+	//
+	// <props="intl">- P4: Email + DingTalk chatbot.
+	//
+	// <props="intl">- OK: No alert.
+	//
+	// <props="partner">- P4: Email + DingTalk chatbot.
+	//
+	// <props="partner">- OK: No alert.
 	//
 	// example:
 	//
 	// P4
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The name of the metric.
+	// The metric name.
 	//
-	// > For more information about the metrics of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For information about the metrics of Alibaba Cloud services, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the cloud service.
+	// The namespace of the Alibaba Cloud service.
 	//
-	// > For more information about the namespaces of cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For information about the namespaces of Alibaba Cloud services, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. Valid values:
-	//
-	// - `product`: aggregates data by cloud service.
-	//
-	// - `level`: aggregates data by alert level.
-	//
-	// - `groupId`: aggregates data by application group.
-	//
-	// - `contactGroup`: aggregates data by alert contact group.
-	//
-	// - `product,metricName`: aggregates data both by cloud service and by metric.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The abbreviation of the service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	//
 	// example:
 	//
@@ -165,7 +167,8 @@ type DescribeAlertLogCountRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the alert rule.
 	//
-	// For more information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	//
+	// For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
 	// example:
 	//
@@ -177,43 +180,49 @@ type DescribeAlertLogCountRequest struct {
 	//
 	// test123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The keyword based on which the alert logs to be counted are searched.
+	// The search keyword for querying alert history statistics.
 	//
 	// example:
 	//
 	// test
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The status of the alert. Valid values:
+	// The alert status. Valid values:
 	//
-	// - 0: The alert is triggered or cleared.
+	// - 0: An alert is triggered or the alert recovers to Normal.
 	//
-	// - 1: The alert is generated not during the effective period.
+	// - 1: The alert rule is not effective.
 	//
-	// - 2: The alert is muted and not triggered in a specified period.
+	// - 2: The mute period.
 	//
 	// - 3: The host is restarting.
 	//
-	// - 4: Notifications are not sent for the alert.
+	// - 4: Alerts are not send.
 	//
-	// When the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
+	// <props="china">When the alert status is 0, if the value of Level is P2, P3, or P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
+	//
+	// <props="intl">When the alert status is 0, if the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
+	//
+	// <props="partner">When the alert status is 0, if the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
 	//
 	// example:
 	//
 	// 0
 	SendStatus *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
-	// This parameter is deprecated.
+	// Deprecated
+	//
+	// **[Deprecated]*	- This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// 无
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start timestamp of the alert logs to be queried.
+	// The start timestamp for querying alert history.
 	//
 	// Unit: milliseconds.
 	//
-	// You can query only the alert logs within the last year. If the query time is longer than one year, the return value of the `AlertLogCount` parameter is empty.
+	// You can query only the alert history within the last year. If the query time range exceeds one year, the `AlertLogCount` response parameter is empty.
 	//
-	// > The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. The start time and end time must be specified or left empty at the same time. If you do not specify the start time and end time, the alert logs within the last 15 minutes are queried by default.
+	// > The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. Both parameters must be specified or left empty at the same time. If neither is specified, the alert history of the last 15 minutes is queried by default.
 	//
 	// example:
 	//

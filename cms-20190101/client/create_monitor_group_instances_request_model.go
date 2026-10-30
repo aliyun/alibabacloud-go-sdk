@@ -9,6 +9,8 @@ type iCreateMonitorGroupInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v string) *CreateMonitorGroupInstancesRequest
+	GetDryRun() *string
 	SetGroupId(v string) *CreateMonitorGroupInstancesRequest
 	GetGroupId() *string
 	SetInstances(v []*CreateMonitorGroupInstancesRequestInstances) *CreateMonitorGroupInstancesRequest
@@ -18,6 +20,7 @@ type iCreateMonitorGroupInstancesRequest interface {
 }
 
 type CreateMonitorGroupInstancesRequest struct {
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the application group.
 	//
 	// This parameter is required.
@@ -41,6 +44,10 @@ func (s CreateMonitorGroupInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateMonitorGroupInstancesRequest) GetDryRun() *string {
+	return s.DryRun
+}
+
 func (s *CreateMonitorGroupInstancesRequest) GetGroupId() *string {
 	return s.GroupId
 }
@@ -51,6 +58,11 @@ func (s *CreateMonitorGroupInstancesRequest) GetInstances() []*CreateMonitorGrou
 
 func (s *CreateMonitorGroupInstancesRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *CreateMonitorGroupInstancesRequest) SetDryRun(v string) *CreateMonitorGroupInstancesRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *CreateMonitorGroupInstancesRequest) SetGroupId(v string) *CreateMonitorGroupInstancesRequest {

@@ -9,11 +9,23 @@ type iPutResourceMetricRulesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *PutResourceMetricRulesRequest
+	GetDryRun() *bool
 	SetRules(v []*PutResourceMetricRulesRequestRules) *PutResourceMetricRulesRequest
 	GetRules() []*PutResourceMetricRulesRequestRules
 }
 
 type PutResourceMetricRulesRequest struct {
+	// Specifies whether to only precheck the request. Valid values:
+	//
+	// - **true**: The system only prechecks the request and does not bind a security group to the instance. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	//
+	// - **false*	- (default): The system sends a normal request. After the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The list of threshold alert rules.
 	//
 	// Valid values of N: 1 to 50.
@@ -30,8 +42,17 @@ func (s PutResourceMetricRulesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PutResourceMetricRulesRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *PutResourceMetricRulesRequest) GetRules() []*PutResourceMetricRulesRequestRules {
 	return s.Rules
+}
+
+func (s *PutResourceMetricRulesRequest) SetDryRun(v bool) *PutResourceMetricRulesRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *PutResourceMetricRulesRequest) SetRules(v []*PutResourceMetricRulesRequestRules) *PutResourceMetricRulesRequest {
@@ -54,11 +75,11 @@ func (s *PutResourceMetricRulesRequest) Validate() error {
 
 type PutResourceMetricRulesRequestRules struct {
 	Escalations *PutResourceMetricRulesRequestRulesEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	// 报警联系组。报警通知会发送给该报警联系组中的报警联系人。
+	// The alert contact group. Alert notifications are sent to the alert contacts in this alert contact group.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// > 报警联系组是一组报警联系人，可以包含一个或多个报警联系人。关于如何创建报警联系人和报警联系组，请参见[PutContact](https://help.aliyun.com/document_detail/114923.html)和[PutContactGroup](https://help.aliyun.com/document_detail/114929.html)。
+	// > An alert contact group is a group of alert contacts and can contain one or more alert contacts. For more information about how to create alert contacts and alert contact groups, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html).
 	//
 	// This parameter is required.
 	//
@@ -66,51 +87,51 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// ECS_Group
 	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// 报警规则的生效时间范围。
+	// The effective period of the alert rule.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
 	// example:
 	//
 	// 00:00-23:59
 	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// 报警邮件主题。
+	// The subject of the alert email.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
 	// example:
 	//
 	// ECS instance alert
 	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
-	// 报警规则的触发周期。
+	// The trigger period of the alert rule.
 	//
-	// 单位：秒。
+	// Unit: seconds.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// >关于如何查询监控项的统计周期，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// > For more information about how to query the statistical period of a monitoring metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// 60
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// 当监控项达到报警条件并进行报警时，标签同时写入监控项，在报警通知中进行展示。
+	// The labels that are written to the metric and displayed in the alert notification when the metric meets the alert condition and an alert is triggered.
 	Labels []*PutResourceMetricRulesRequestRulesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// 监控项名称。
+	// The monitoring metric name.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// 关于如何查询监控项名称，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// For more information about how to query the monitoring metric name, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// 云产品的数据命名空间。
+	// The data namespace of the Alibaba Cloud service.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// 关于如何查询云产品的数据命名空间，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// For more information about how to query the data namespace of an Alibaba Cloud service, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// This parameter is required.
 	//
@@ -118,45 +139,45 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// 无监控数据时报警的处理方式。取值：
+	// The handling method for alerts when no monitoring data is available. Valid values:
 	//
-	// - KEEP_LAST_STATE（默认值）：不做任何处理。
+	// - KEEP_LAST_STATE (default): No operations are performed.
 	//
-	// - INSUFFICIENT_DATA：报警内容为无数据。
+	// - INSUFFICIENT_DATA: The alert content indicates that no data is available.
 	//
-	// - OK：正常。
+	// - OK: Normal.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
 	// example:
 	//
 	// KEEP_LAST_STATE
 	NoDataPolicy *string `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
-	// 报警规则的失效时间范围。
+	// The inactive time range of the alert rule.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
 	// example:
 	//
 	// 00:00-06:00
 	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	// 监控项的统计周期。
+	// The statistical period of the monitoring metric.
 	//
-	// 单位：秒。默认为监控项的原始上报周期。
+	// Unit: seconds. Default value: the original reporting period of the monitoring metric.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// >关于如何查询监控项的统计周期，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// > For more information about how to query the statistical period of a monitoring metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// 60
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// 资源信息，例如：`[{"instanceId":"i-uf6j91r34rnwawoo****"}]`、`[{"userId":"100931896542****"}]`。
+	// The resource information. Examples: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]` and `[{"userId":"100931896542****"}]`.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// 关于资源信息支持的维度Dimensions，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// For more information about the dimensions supported by resource information, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// This parameter is required.
 	//
@@ -164,13 +185,13 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// [{"instanceId":"i-uf6j91r34rnwawoo****"}]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// 报警规则ID。
+	// The ID of the alert rule.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// 您可以输入新的报警规则ID，也可以使用云监控已存在的报警规则ID。关于如何查询报警规则ID，请参见[DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html)。
+	// You can enter a new alert rule ID or use an existing alert rule ID in CloudMonitor. For more information about how to query the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
-	// > 输入新的报警规则ID，表示创建一条阈值报警规则。
+	// > If you enter a new alert rule ID, a threshold alert rule is created.
 	//
 	// This parameter is required.
 	//
@@ -178,13 +199,13 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// a151cd6023eacee2f0978e03863cc1697c89508****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// 报警规则名称。
+	// The name of the alert rule.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// 您可以输入新的报警规则名称，也可以使用云监控已存在的报警规则名称。关于如何查询报警规则名称，请参见[DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html)。
+	// You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For more information about how to query the name of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
-	// > 输入新的报警规则名称，表示创建一条阈值报警规则。
+	// > If you enter a new alert rule name, a threshold alert rule is created.
 	//
 	// This parameter is required.
 	//
@@ -192,27 +213,27 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// test123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// 是否发送恢复通知
+	// Specifies whether to send a recovery notification.
 	//
 	// example:
 	//
 	// true
 	SendOK *bool `json:"SendOK,omitempty" xml:"SendOK,omitempty"`
-	// 通道沉默周期。
+	// The mute epoch.
 	//
-	// 单位：秒，默认值：86400。
+	// Unit: seconds. Default value: 86400.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// > 通道沉默周期是指报警发生后未恢复正常，间隔多久重新发送一次报警通知。
+	// > The mute epoch refers to the interval at which to send an alert notification again if the alert does not recover to Normal after it is triggered.
 	//
 	// example:
 	//
 	// 86400
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// 报警发生回调时指定的URL地址，向URL发送POST请求。
+	// The webhook URL to which a POST request is sent when an alert callback is triggered.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
 	// example:
 	//
@@ -460,35 +481,35 @@ func (s *PutResourceMetricRulesRequestRulesEscalations) Validate() error {
 }
 
 type PutResourceMetricRulesRequestRulesEscalationsCritical struct {
-	// Critical级别阈值比较符。取值：
+	// The comparison operator for the Critical-level threshold. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to.
 	//
-	// - EqualToThreshold：等于。
+	// - EqualToThreshold: equal to.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: less than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: greater than the value at the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: less than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: greater than the value in the previous period.
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: less than the value in the previous period.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -496,34 +517,34 @@ type PutResourceMetricRulesRequestRulesEscalationsCritical struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *int32  `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// Critical级别报警统计方法。
+	// The statistical method for Critical-level alerts.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// Critical级别报警阈值。
+	// The threshold for Critical-level alerts.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// Critical级别报警重试次数。
+	// The number of retries for Critical-level alerts.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -598,35 +619,35 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsCritical) Validate() error
 }
 
 type PutResourceMetricRulesRequestRulesEscalationsInfo struct {
-	// Info级别阈值比较符。取值：
+	// The comparison operator for the Info-level threshold. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to.
 	//
-	// - EqualToThreshold：等于。
+	// - EqualToThreshold: equal to.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: less than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: greater than the value at the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: less than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: greater than the value in the previous period.
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: less than the value in the previous period.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -634,31 +655,31 @@ type PutResourceMetricRulesRequestRulesEscalationsInfo struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *int32  `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// Info级别报警统计方法。
+	// The statistical method for Info-level alerts.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// Info级别报警阈值。
+	// The threshold for Info-level alerts.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// Info级别报警重试次数。
+	// The number of retries for Info-level alerts.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -733,35 +754,35 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsInfo) Validate() error {
 }
 
 type PutResourceMetricRulesRequestRulesEscalationsWarn struct {
-	// Warn级别阈值比较符。取值：
+	// The comparison operator for the Warn-level threshold. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to.
 	//
-	// - EqualToThreshold：等于。
+	// - EqualToThreshold: equal to.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: less than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: greater than the value at the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: less than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: greater than the value in the previous period.
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: less than the value in the previous period.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -769,33 +790,33 @@ type PutResourceMetricRulesRequestRulesEscalationsWarn struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *int32  `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// Warn级别报警统计方法。
+	// The statistical method for Warn-level alerts.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// Warn级别报警阈值。
+	// The threshold for Warn-level alerts.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// Warn级别报警重试次数。
+	// The number of retries for Warn-level alerts.
 	//
-	// N的取值范围：1~50。
+	// Valid values of N: 1 to 50.
 	//
-	// > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
+	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -870,15 +891,15 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsWarn) Validate() error {
 }
 
 type PutResourceMetricRulesRequestRulesLabels struct {
-	// 标签键。
+	// The tag key.
 	//
 	// example:
 	//
 	// tagKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值。
+	// The tag value.
 	//
-	// > 标签值支持模板参数，将模板参数替换为实际标签值。
+	// > Tag values support template parameters. The template parameters are replaced with the actual tag values.
 	//
 	// example:
 	//

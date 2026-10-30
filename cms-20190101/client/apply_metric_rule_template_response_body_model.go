@@ -22,15 +22,15 @@ type iApplyMetricRuleTemplateResponseBody interface {
 }
 
 type ApplyMetricRuleTemplateResponseBody struct {
-	// The responses code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// >A status code of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type ApplyMetricRuleTemplateResponseBody struct {
 	//
 	// 3F897F3C-020A-4993-95B4-63ABB84F83E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources that are affected by the alert rule.
+	// The resources affected by the alert rule.
 	Resource *ApplyMetricRuleTemplateResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true
+	// - true: The operation is successful.
 	//
-	// - false
+	// - false: The operation fails.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *ApplyMetricRuleTemplateResponseBody) Validate() error {
 }
 
 type ApplyMetricRuleTemplateResponseBodyResource struct {
-	// The details of the generated alert rule.
+	// The detailed results of the generated alert rules.
 	AlertResults []*ApplyMetricRuleTemplateResponseBodyResourceAlertResults `json:"AlertResults,omitempty" xml:"AlertResults,omitempty" type:"Repeated"`
 	// The ID of the application group.
 	//
@@ -169,9 +169,9 @@ func (s *ApplyMetricRuleTemplateResponseBodyResource) Validate() error {
 }
 
 type ApplyMetricRuleTemplateResponseBodyResourceAlertResults struct {
-	// The responses code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// >A status code of 200 indicates success.
 	//
 	// example:
 	//
@@ -195,11 +195,11 @@ type ApplyMetricRuleTemplateResponseBodyResourceAlertResults struct {
 	//
 	// test123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true
+	// - true: The operation is successful.
 	//
-	// - false
+	// - false: The operation fails.
 	//
 	// example:
 	//

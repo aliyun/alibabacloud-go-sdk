@@ -22,15 +22,15 @@ type iModifyMetricRuleBlackListResponseBody interface {
 }
 
 type ModifyMetricRuleBlackListResponseBody struct {
-	// The error code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of blacklist policies that are modified.
+	// The number of alert blacklist policies that were successfully modified.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type ModifyMetricRuleBlackListResponseBody struct {
 	//
 	// 008773AE-1D86-3231-90F9-1AF7F808F9CE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: The operation was successful.
 	//
-	// - false
+	// - false: The operation failed.
 	//
 	// example:
 	//

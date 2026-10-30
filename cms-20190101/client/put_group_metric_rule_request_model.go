@@ -17,6 +17,8 @@ type iPutGroupMetricRuleRequest interface {
 	GetContactGroups() *string
 	SetDimensions(v string) *PutGroupMetricRuleRequest
 	GetDimensions() *string
+	SetDryRun(v bool) *PutGroupMetricRuleRequest
+	GetDryRun() *bool
 	SetEffectiveInterval(v string) *PutGroupMetricRuleRequest
 	GetEffectiveInterval() *string
 	SetEmailSubject(v string) *PutGroupMetricRuleRequest
@@ -55,7 +57,7 @@ type PutGroupMetricRuleRequest struct {
 	Escalations *PutGroupMetricRuleRequestEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
 	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// For information about how to obtain the abbreviation, see the `metricCategory` tag in the `Labels` response parameter of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
+	// For information about how to obtain the abbreviation of an Alibaba Cloud service name, see the `metricCategory` field in the `Labels` response parameter of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
 	//
 	// example:
 	//
@@ -67,15 +69,25 @@ type PutGroupMetricRuleRequest struct {
 	//
 	// ECS_Group
 	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// The first-level dimensions of the alert rule in the application group.
+	// The first-level dimension of the alert rule in the application group.
 	//
-	// Format: a collection of `key:value` pairs, such as `{"userId":"120886317861****"}` and `{"instanceId":"i-m5e1qg6uo38rztr4****"}`.
+	// Format: a collection of `key:value` pairs. Examples: `{"userId":"120886317861****"}` and `{"instanceId":"i-m5e1qg6uo38rztr4****"}`.
 	//
 	// example:
 	//
 	// [{"instanceId":"i-m5e1qg6uo38rztr4****"}]
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The effective period during which the alert rule takes effect.
+	// Specifies whether to only precheck the request. Valid values:
+	//
+	// - **true**: sends a check request. The system does not bind a security group to the instance. The check items include whether required parameters are specified, the request format, and service limits. If the check fails, the system returns an error. If the check succeeds, the system returns the error code `DryRunOperation`.
+	//
+	// - **false*	- (default value): sends a normal request. If the check succeeds, the system returns an HTTP 2xx status code and performs the operation.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The effective period of the alert rule.
 	//
 	// example:
 	//
@@ -87,19 +99,19 @@ type PutGroupMetricRuleRequest struct {
 	//
 	// ECS instance
 	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
-	// The second-level or third-level dimensions of the alert rule in the application group.
+	// The second-level or third-level dimension of the alert rule in the application group.
 	//
-	// Format: a collection of `key:value` pairs, such as `port:80` and `/dev/xvda:d-m5e6yphgzn3aprwu****`.
+	// Format: a collection of `key:value` pairs. Examples: `port:80` and `/dev/xvda:d-m5e6yphgzn3aprwu****`.
 	//
-	// If the first-level dimension is `{"instanceId":"i-m5e1qg6uo38rztr4****"}`, the second-level dimension is a cloud disk of the instance: `{"/dev/xvda":"d-m5e6yphgzn3aprwu****"}`.
+	// If the first-level dimension of the alert rule is `{"instanceId":"i-m5e1qg6uo38rztr4****"}`, the second-level dimension is the cloud disk in the instance, such as `{"/dev/xvda":"d-m5e6yphgzn3aprwu****"}`.
 	//
 	// example:
 	//
 	// {"/dev/xvda":"d-m5e6yphgzn3aprwu****"}
 	ExtraDimensionJson *string `json:"ExtraDimensionJson,omitempty" xml:"ExtraDimensionJson,omitempty"`
-	// The application group ID.
+	// The ID of the application group.
 	//
-	// For information about how to obtain the application group ID, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+	// For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
 	//
 	// This parameter is required.
 	//
@@ -109,7 +121,7 @@ type PutGroupMetricRuleRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The detection period of the alert rule. Unit: seconds.
 	//
-	// > Keep the detection period consistent with the data reporting period. If the detection period is shorter than the data reporting period, alerts may not be triggered due to insufficient data.
+	// > Make sure the detection period of the alert rule is the same as the data reporting period. If the detection period is shorter than the data reporting period, alerts may not be triggered due to insufficient data.
 	//
 	// example:
 	//
@@ -117,11 +129,11 @@ type PutGroupMetricRuleRequest struct {
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The tags of the alert rule.
 	//
-	// Tags are included in alert notifications.
+	// Alert notifications include tags.
 	Labels []*PutGroupMetricRuleRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The metric name.
+	// The name of the metric.
 	//
-	// For information about how to obtain the metric name, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
+	// For information about how to obtain the name of a metric, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// This parameter is required.
 	//
@@ -131,7 +143,7 @@ type PutGroupMetricRuleRequest struct {
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The namespace of the Alibaba Cloud service.
 	//
-	// For information about how to obtain the namespace, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
+	// For information about how to obtain the namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// This parameter is required.
 	//
@@ -139,19 +151,19 @@ type PutGroupMetricRuleRequest struct {
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The processing method when no monitoring data is found. Valid values:
+	// The action to take when no monitoring data is found. Valid values:
 	//
-	// - KEEP_LAST_STATE (default): No action is performed.
+	// - KEEP_LAST_STATE (default value): Takes no action.
 	//
-	// - INSUFFICIENT_DATA: An alert whose content is "Insufficient Data" is triggered.
+	// - INSUFFICIENT_DATA: Sends an alert notification indicating that no data is found.
 	//
-	// - OK: The status is considered normal.
+	// - OK: Sends an alert notification indicating that the status is normal.
 	//
 	// example:
 	//
 	// KEEP_LAST_STATE
 	NoDataPolicy *string `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
-	// The time range during which the alert rule is ineffective.
+	// The time range during which the alert rule is inactive.
 	//
 	// example:
 	//
@@ -159,7 +171,7 @@ type PutGroupMetricRuleRequest struct {
 	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
 	// The advanced settings.
 	//
-	// Format: {"key1":"value1","key2":"value2"}. Example: {"NotSendOK":true}. This specifies whether to send a notification when the alert is cleared. The key is NotSendOK, and the value is true (do not send) or false (send, which is the default).
+	// Format: `{"key1":"value1","key2":"value2"}`. Example: `{"NotSendOK":true}`, which specifies whether to send alert recovery notifications. The key is `NotSendOK`, and the value is `true` (do not send) or `false` (send by default).
 	//
 	// example:
 	//
@@ -167,17 +179,17 @@ type PutGroupMetricRuleRequest struct {
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The reporting period of monitoring data.
 	//
-	// The value of `Period` must be 60 or a multiple of 60. Unit: seconds. Default value: 300.
+	// The value of `Period` must be 60 or an integer multiple of 60. Unit: seconds. Default value: 300.
 	//
 	// example:
 	//
 	// 60
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The alert rule ID.
+	// The ID of the alert rule.
 	//
 	// - To create an alert rule for the application group, enter an alert rule ID.
 	//
-	// - To modify a specified alert rule in the application group, obtain the alert rule ID. For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	// - To modify a specified alert rule in the application group, you must obtain the alert rule ID. For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
 	// This parameter is required.
 	//
@@ -185,11 +197,11 @@ type PutGroupMetricRuleRequest struct {
 	//
 	// 123456
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The alert rule name.
+	// The name of the alert rule.
 	//
 	// - To create an alert rule for the application group, enter an alert rule name.
 	//
-	// - To modify a specified alert rule in the application group, obtain the alert rule name. For information about how to obtain the alert rule name, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	// - To modify a specified alert rule in the application group, you must obtain the alert rule name. For information about how to obtain the name of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
 	// This parameter is required.
 	//
@@ -197,7 +209,7 @@ type PutGroupMetricRuleRequest struct {
 	//
 	// Rule_01
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The mute period.
+	// The mute for epoch.
 	//
 	// Unit: seconds. Default value: 86400.
 	//
@@ -205,9 +217,9 @@ type PutGroupMetricRuleRequest struct {
 	//
 	// 86400
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The callback URL to which a request is sent when an alert is triggered.
+	// The webhook URL that is called when an alert is triggered.
 	//
-	// Enter a publicly accessible URL. CloudMonitor sends a POST request to push alert information to this URL. Only the HTTP protocol is supported.
+	// Enter a publicly accessible URL. CloudMonitor pushes alert notifications to this URL by sending POST requests. Only HTTP is supported.
 	//
 	// example:
 	//
@@ -237,6 +249,10 @@ func (s *PutGroupMetricRuleRequest) GetContactGroups() *string {
 
 func (s *PutGroupMetricRuleRequest) GetDimensions() *string {
 	return s.Dimensions
+}
+
+func (s *PutGroupMetricRuleRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *PutGroupMetricRuleRequest) GetEffectiveInterval() *string {
@@ -320,6 +336,11 @@ func (s *PutGroupMetricRuleRequest) SetContactGroups(v string) *PutGroupMetricRu
 
 func (s *PutGroupMetricRuleRequest) SetDimensions(v string) *PutGroupMetricRuleRequest {
 	s.Dimensions = &v
+	return s
+}
+
+func (s *PutGroupMetricRuleRequest) SetDryRun(v bool) *PutGroupMetricRuleRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -482,49 +503,49 @@ func (s *PutGroupMetricRuleRequestEscalations) Validate() error {
 }
 
 type PutGroupMetricRuleRequestEscalationsCritical struct {
-	// Critical级别阈值比较符。取值：
+	// The threshold comparison operator for Critical-level alerts. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: less than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: greater than the value at the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: less than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: greater than the value in the last period.
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: less than the value in the last period.
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// Critical级别报警统计方法。多个统计方法之间用半角逗号（,）分隔。
+	// The statistical method for Critical-level alerts. Separate multiple statistical methods with commas (,).
 	//
-	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service. Examples: Maximum, Minimum, and Average. For information about how to obtain the valid values of this parameter, see [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// Critical级别报警阈值。
+	// The threshold for Critical-level alerts.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// Critical级别报警重试次数。
+	// The number of retries for Critical-level alerts.
 	//
 	// example:
 	//
@@ -581,49 +602,49 @@ func (s *PutGroupMetricRuleRequestEscalationsCritical) Validate() error {
 }
 
 type PutGroupMetricRuleRequestEscalationsInfo struct {
-	// Info级别阈值比较符。取值：
+	// The threshold comparison operator for Info-level alerts. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: less than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: greater than the value at the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: less than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: greater than the value in the last period.
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: less than the value in the last period.
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// Info级别报警统计方法。多个统计方法之间用半角逗号（,）分隔。
+	// The statistical method for Info-level alerts. Separate multiple statistical methods with commas (,).
 	//
-	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service. Examples: Maximum, Minimum, and Average. For information about how to obtain the valid values of this parameter, see [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// Info级别报警阈值。
+	// The threshold for Info-level alerts.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// Info级别报警重试次数。
+	// The number of retries for Info-level alerts.
 	//
 	// example:
 	//
@@ -680,49 +701,49 @@ func (s *PutGroupMetricRuleRequestEscalationsInfo) Validate() error {
 }
 
 type PutGroupMetricRuleRequestEscalationsWarn struct {
-	// Warn级别阈值比较符。取值：
+	// The threshold comparison operator for Warn-level alerts. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: less than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: greater than the value at the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: less than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: greater than the value in the last period.
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: less than the value in the last period.
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// Warn级别报警统计方法。多个统计方法之间用半角逗号（,）分隔。
+	// The statistical method for Warn-level alerts. Separate multiple statistical methods with commas (,).
 	//
-	// 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+	// The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service. Examples: Maximum, Minimum, and Average. For information about how to obtain the valid values of this parameter, see [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// Warn级别报警阈值。
+	// The threshold for Warn-level alerts.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// Warn级别报警重试次数。
+	// The number of retries for Warn-level alerts.
 	//
 	// example:
 	//

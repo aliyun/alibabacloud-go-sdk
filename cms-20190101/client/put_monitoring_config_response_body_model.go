@@ -20,15 +20,15 @@ type iPutMonitoringConfigResponseBody interface {
 }
 
 type PutMonitoringConfigResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type PutMonitoringConfigResponseBody struct {
 	//
 	// 109C8095-6FAD-4DBB-B013-6ED18CE4C0B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//

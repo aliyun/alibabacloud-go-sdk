@@ -22,11 +22,11 @@ type iModifyGroupMonitoringAgentProcessRequest interface {
 }
 
 type ModifyGroupMonitoringAgentProcessRequest struct {
-	// The configurations of the alert rule.
+	// The alert rule configurations.
 	//
 	// This parameter is required.
 	AlertConfig []*ModifyGroupMonitoringAgentProcessRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
-	// The ID of the application group.
+	// The application group ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyGroupMonitoringAgentProcessRequest struct {
 	//
 	// 6780****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the process monitoring job for the application group.
+	// The ID of the process monitoring task in the application group.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type ModifyGroupMonitoringAgentProcessRequest struct {
 	//
 	// 92E3065F-0980-4E31-9AA0-BA6****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// This parameter is deprecated. You can ignore it.
+	// Not required.
 	//
 	// example:
 	//
-	// and
+	// and(Deprecated: true)
 	MatchExpressFilterRelation *string `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
 	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -118,29 +118,29 @@ func (s *ModifyGroupMonitoringAgentProcessRequest) Validate() error {
 }
 
 type ModifyGroupMonitoringAgentProcessRequestAlertConfig struct {
-	// The comparison operator for the threshold of the Critical alert level. The value of N can be 1 to 200. Valid values:
+	// The comparison operator for the Critical level threshold. Valid values of N: 1 to 200. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold: greater than or equal to
+	// - GreaterThanOrEqualToThreshold: greater than or equal to.
 	//
-	// - GreaterThanThreshold: greater than
+	// - GreaterThanThreshold: greater than.
 	//
-	// - LessThanOrEqualToThreshold: less than or equal to
+	// - LessThanOrEqualToThreshold: less than or equal to.
 	//
-	// - LessThanThreshold: less than
+	// - LessThanThreshold: less than.
 	//
-	// - NotEqualToThreshold: not equal to
+	// - NotEqualToThreshold: not equal to.
 	//
-	// - GreaterThanYesterday: greater than the value at the same time yesterday
+	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
-	// - LessThanYesterday: less than the value at the same time yesterday
+	// - LessThanYesterday: less than the value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek: greater than the value at the same time last week
+	// - GreaterThanLastWeek: greater than the value at the same time last week.
 	//
-	// - LessThanLastWeek: less than the value at the same time last week
+	// - LessThanLastWeek: less than the value at the same time last week.
 	//
-	// - GreaterThanLastPeriod: greater than the value in the last monitoring cycle
+	// - GreaterThanLastPeriod: greater than the value in the last period.
 	//
-	// - LessThanLastPeriod: less than the value in the last monitoring cycle
+	// - LessThanLastPeriod: less than the value in the last period.
 	//
 	// This parameter is required.
 	//
@@ -148,19 +148,19 @@ type ModifyGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The time period when the alert rule is effective. The value of N can be 1 to 200.
+	// The effective period of the alert rule. Valid values of N: 1 to 200.
 	//
 	// example:
 	//
 	// 00:00-22:59
 	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// The alert level. The value of N can be 1 to 200. Valid values:
+	// The alert level. Valid values of N: 1 to 200. Valid values:
 	//
-	// - critical (default): critical
+	// - critical (default): critical.
 	//
-	// - warn: warning
+	// - warn: warning.
 	//
-	// - info: information
+	// - info: information.
 	//
 	// This parameter is required.
 	//
@@ -168,25 +168,25 @@ type ModifyGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// warn
 	EscalationsLevel *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
-	// This parameter is deprecated. You can ignore it.
+	// Not required.
 	//
 	// example:
 	//
-	// 00:00-05:30
+	// 00:00-05:30(Deprecated: true)
 	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	// The mute period. The value of N can be 1 to 200.
+	// The mute period. Valid values of N: 1 to 200.
 	//
-	// Unit: seconds. Minimum value: 3600. Default value: 86400.
+	// Unit: seconds. Minimum value: 3600 seconds (1 hour). Default value: 86400 seconds (1 day).
 	//
-	// > If monitoring data continuously exceeds the alert threshold, an alert notification is sent only once during each mute period.
+	// >If the monitoring data continuously exceeds the alert rule threshold, only one alert notification is sent within each mute period.
 	//
 	// example:
 	//
 	// 86400
 	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The statistical method for alerts. The value of N can be 1 to 200.
+	// The statistical method for alerts. Valid values of N: 1 to 200.
 	//
-	// > Only Average is supported.
+	// >Currently, only Average is supported.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type ModifyGroupMonitoringAgentProcessRequestAlertConfig struct {
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	// None.
 	TargetList []*ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
-	// The alert threshold. The value of N can be 1 to 200.
+	// The alert threshold. Valid values of N: 1 to 200.
 	//
 	// This parameter is required.
 	//
@@ -202,9 +202,9 @@ type ModifyGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// 5
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The number of consecutive times that the alert level is reached. The value of N can be 1 to 200. Default value: 3.
+	// The number of consecutive occurrences of the alert level. Valid values of N: 1 to 200. Default value: 3.
 	//
-	// > An alert is triggered only when the alert level is reached the specified number of consecutive times and the threshold is met.
+	// >An alert is triggered only when the alert level consecutively occurs the specified number of times and the alert threshold is reached.
 	//
 	// This parameter is required.
 	//
@@ -212,7 +212,7 @@ type ModifyGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// 3
 	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
-	// The callback URL. A POST request is sent to this URL when an alert is triggered. The value of N can be 1 to 200.
+	// The callback URL to which a POST request is sent when an alert is triggered. Valid values of N: 1 to 200.
 	//
 	// example:
 	//
@@ -332,37 +332,37 @@ func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfig) Validate() error {
 }
 
 type ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	// The resource ARN.
 	//
-	// For more information, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
+	// For information about how to obtain the resource ARN, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
 	//
-	// The ARN of a resource is in the following format: `acs:{product-abbreviation}:{regionId}:{userId}:/{resource-type}/{resource-name}/message`. For example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. The parameters are described as follows:
+	// The resource ARN is in the format of `acs:{cloud_service_abbreviation}:{regionId}:{userId}:/{resource_type}/{resource_name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. The parameters are described as follows:
 	//
-	// - {product-abbreviation}: Currently, only Simple Message Queue (formerly MNS) is supported.
+	// - {cloud_service_abbreviation}: Currently, only Simple Message Queue (formerly MNS) is supported.
 	//
-	// - {userId}: The ID of your Alibaba Cloud account.
+	// - {userId}: The Alibaba Cloud account ID.
 	//
-	// - {regionId}: The region where the Simple Message Queue (formerly MNS) queue or subject is located.
+	// - {regionId}: The region where Simple Message Queue (formerly MNS) or the topic resides.
 	//
-	// - {resource-type}: The type of the resource that receives alerts. Valid values:
+	// - {resource_type}: The type of the resource that accepts alerts. Valid values:
 	//
-	//   - **queues**: a queue.
+	//   - **queues**: queue.
 	//
-	//   - **topics**: a subject.
+	//   - **topics**: topic.
 	//
-	// - {resource-name}: The name of the resource.
+	// - {resource_name}: The resource name.
 	//
 	//   - If the resource type is **queues**, the resource name is the queue name.
 	//
-	//   - If the resource type is **topics**, the resource name is the subject name.
+	//   - If the resource type is **topics**, the resource name is the topic name.
 	//
 	// example:
 	//
 	// acs:mns:cn-hangzhou:120886317861****:/queues/test/message
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the alert-triggered target.
+	// The ID of the alert trigger target.
 	//
-	// For more information, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
+	// For information about how to obtain the alert trigger target ID, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
 	//
 	// example:
 	//
@@ -376,11 +376,11 @@ type ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
 	// The alert level. Valid values:
 	//
-	// - INFO: information
+	// - INFO: information.
 	//
-	// - WARN: warning
+	// - WARN: warning.
 	//
-	// - CRITICAL: critical
+	// - CRITICAL: critical.
 	//
 	// example:
 	//

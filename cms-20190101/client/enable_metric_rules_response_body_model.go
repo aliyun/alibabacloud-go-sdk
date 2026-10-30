@@ -20,9 +20,9 @@ type iEnableMetricRulesResponseBody interface {
 }
 
 type EnableMetricRulesResponseBody struct {
-  // The HTTP status code.
+  // The status code.
   // 
-  // > The status code 200 indicates that the request was successful.
+  // > A value of 200 indicates success.
   // 
   // example:
   // 
@@ -40,11 +40,11 @@ type EnableMetricRulesResponseBody struct {
   // 
   // FF38D33A-67C1-40EB-AB65-FAEE51EDB644
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful. Valid values:
+  // Indicates whether the operation was successful. Valid values:
   // 
-  // - true
+  // - true: The operation was successful.
   // 
-  // - false
+  // - false: The operation failed.
   // 
   // example:
   // 

@@ -36,35 +36,35 @@ type BatchExportResponseBody struct {
 	//
 	// 1678781819000
 	Anchor *int64 `json:"Anchor,omitempty" xml:"Anchor,omitempty"`
-	// The status code.
+	// The HTTP status code.
 	//
-	// > The value 200 indicates success.
+	// > A status code of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The cursor that is used to call this operation again.
+	// The cursor used for the next call to this operation.
 	//
-	// > If the returned result is `null`, the monitoring data has been exported.
+	// > If the return value is `null`, the monitoring data export is complete.
 	//
 	// example:
 	//
 	// v2.5eyJidWNrZXRzIjo0LCJjdXJzb3IiOiIxNjQxNDU0ODAwMDAwMWUxY2YxNWY0NTU0MTliZjllYTY4OWQ2ODI1OTU1Yzc1NmZjMDQ2OTMxMzczMzM2MzUzMTMxMzEzMzM0MzMzODM5MzEzMTMwMjQyYzY5MmQzMjdhNjU2MjY3N2E2NjZhNzczOTY2NmM3Mjc0NjM3MzY5Njg3NDcyMjQyYyIsImN1cnNvclZlcnNpb24iOiJxdWVyeSIsImVuZFRpbWUiOjE2NDE0NTUyMzYxMTIsImV4cG9ydEVuZFRpbWUiOjE2NDE0NTUyMzYxMTIsImV4cG9ydFN0YXJ0VGltZSI6MTY0MTQ1NDYzNjExMiwiZXhwcmVzc1JhbmdlIjpmYWxzZSwiaGFzTmV4dCI6dHJ1ZSwiaW5wdXRNZXRyaWMiOiJDUFVVdGlsaXphdGlvbiIsImlucHV0TmFtZXNwYWNlIjoiYWNzX2Vjc19kYXNoYm9hcmQiLCJsaW1pdCI6MTAwMCwibG9nVGltZU1vZGUiOnRydWUsIm1hdGNoZXJzIjp7ImNoYWluIjpbeyJsYWJlbCI6InVzZXJJZCIsIm9wZXJhdG9yIjoiRVFVQUxTIiwidmFsdWUiOiIxNzM2NTExMTM0Mzg5MTEwIn1dfSwibWV0cmljIjoiQ1BVVXRpbGl6YXRpb24iLCJtZXRyaWNUeXBlIjoiTUVUUklDIiwibmFtZXNwYWNlIjoiYWNzX2Vjc19kYXNoYm9hcmQiLCJuZXh0UGtBZGFwdGVyIjp7fSwib2Zmc2V0IjowLCJwYXJlbnRVaWQiOjEyNzA2NzY2Nzk1NDY3MDQsInN0YXJ0VGltZSI6MTY0MTQ1NDYzNjExMiwic3RlcCI6LTEsInRpbWVvdXQiOjEyMCwid2luZG93Ijo2MH0***
 	Cursor *string `json:"Cursor,omitempty" xml:"Cursor,omitempty"`
-	// The data returned by this call.
+	// The data returned in the current call.
 	DataResults []*MetricStat `json:"DataResults,omitempty" xml:"DataResults,omitempty" type:"Repeated"`
-	// Indicates whether the data has been exported. Valid values:
+	// Indicates whether the data export is complete. Valid values:
 	//
-	// - true: Some data has not been exported.
+	// - true: The data export is incomplete.
 	//
-	// - false: All data has been exported.
+	// - false: The data export is complete.
 	//
 	// example:
 	//
 	// true
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// The number of data entries returned for this call.
+	// The number of data records returned in the current call.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type BatchExportResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: successful
+	// - true: The operation was successful.
 	//
-	// - false: failed
+	// - false: The operation failed.
 	//
 	// example:
 	//

@@ -53,7 +53,7 @@ type DescribeExporterRuleListResponseBody struct {
 	//
 	// 6BA047CA-8BC6-40BC-BC8F-FBECF35F1993
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
 	// - `true`: Successful.
 	//
@@ -63,7 +63,7 @@ type DescribeExporterRuleListResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

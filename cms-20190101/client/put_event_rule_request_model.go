@@ -28,17 +28,17 @@ type iPutEventRuleRequest interface {
 }
 
 type PutEventRuleRequest struct {
-	// The description of the Event-triggered Alert Rule.
+	// The description of the event-triggered alert rule.
 	//
 	// example:
 	//
 	// Event alert test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The pattern of the Event-triggered Alert Rule.
+	// The pattern of the event-triggered alert rule.
 	//
 	// This parameter is required.
 	EventPattern []*PutEventRuleRequestEventPattern `json:"EventPattern,omitempty" xml:"EventPattern,omitempty" type:"Repeated"`
-	// The type of the Event-triggered Alert Rule. Valid values:
+	// The type of the event-triggered alert rule. Valid values:
 	//
 	// - SYSTEM: system event.
 	//
@@ -48,14 +48,14 @@ type PutEventRuleRequest struct {
 	//
 	// SYSTEM
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The ID of the application group to which the Event-triggered Alert Rule belongs.
+	// The ID of the application group to which the event-triggered alert rule belongs.
 	//
 	// example:
 	//
 	// 7378****
 	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the Event-triggered Alert Rule.
+	// The name of the event-triggered alert rule.
 	//
 	// This parameter is required.
 	//
@@ -69,11 +69,11 @@ type PutEventRuleRequest struct {
 	//
 	// 86400
 	SilenceTime *int64 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The status of the Event-triggered Alert Rule. Valid values:
+	// The status of the event-triggered alert rule. Valid values:
 	//
-	// - ENABLED: enabled.
+	// - ENABLED: Enabled.
 	//
-	// - DISABLED: disabled.
+	// - DISABLED: Disabled.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type PutEventRuleRequestEventPattern struct {
 	//
 	// Stopping
 	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
-	// The type of the Event-triggered Alert Rule. Valid values of N: 1 to 50. Valid values:
+	// The type of the event-triggered alert rule. Valid values of N: 1 to 50. Valid values:
 	//
 	// - StatusNotification: fault notification.
 	//
@@ -195,7 +195,7 @@ type PutEventRuleRequestEventPattern struct {
 	//
 	// Exception
 	EventTypeList []*string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty" type:"Repeated"`
-	// The level of the Event-triggered Alert Rule. Valid values of N: 1 to 50. Valid values:
+	// The level of the event-triggered alert rule. Valid values of N: 1 to 50. Valid values:
 	//
 	// - CRITICAL: critical.
 	//
@@ -209,7 +209,7 @@ type PutEventRuleRequestEventPattern struct {
 	//
 	// CRITICAL
 	LevelList []*string `json:"LevelList,omitempty" xml:"LevelList,omitempty" type:"Repeated"`
-	// The name of the Event-triggered Alert Rule. Valid values of N: 1 to 50.
+	// The name of the event-triggered alert rule. Valid values of N: 1 to 50.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type PutEventRuleRequestEventPattern struct {
 	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
 	// The Alibaba Cloud service type. Valid values of N: 1 to 50.
 	//
-	// >For information about the Alibaba Cloud services supported by Event-triggered Alert Rules, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+	// >For information about the Alibaba Cloud services supported by event-triggered alert rules, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
 	//
 	// This parameter is required.
 	//
@@ -233,7 +233,7 @@ type PutEventRuleRequestEventPattern struct {
 	//
 	// 192.168.XX.XX and Executed
 	SQLFilter *string `json:"SQLFilter,omitempty" xml:"SQLFilter,omitempty"`
-	// The status of the Event-triggered Alert Rule. Valid values of N: 1 to 50.
+	// The status of the event-triggered alert rule. Valid values of N: 1 to 50.
 	//
 	// example:
 	//

@@ -28,9 +28,9 @@ type iDescribeSiteMonitorListResponseBody interface {
 }
 
 type DescribeSiteMonitorListResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The value 200 indicates success.
+	// > 200 indicates success.
 	//
 	// example:
 	//

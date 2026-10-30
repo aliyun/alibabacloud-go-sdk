@@ -34,31 +34,31 @@ type iDescribeMetricRuleBlackListRequest interface {
 }
 
 type DescribeMetricRuleBlackListRequest struct {
-	// The category of the Alibaba Cloud service. For example, Redis has different editions, such as `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (Read/write Splitting Edition).
+	// The category of the Alibaba Cloud service. For example, ApsaraDB for Redis has `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (read/write splitting Edition).
 	//
 	// example:
 	//
 	// ecs
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The IDs of the blacklist policies.
+	// The IDs of the alert blacklist policies.
 	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// The IDs of instances in the blacklist policy.
+	// The instance ID list in the alert blacklist policy.
 	//
-	// The value of N can be an integer from 0 to 10.
+	// Valid values of N: 0 to 10.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The status of the blacklist policy. Valid values:
+	// The status of the alert blacklist policy. Valid values:
 	//
-	// - true: enabled.
+	// - true: Enabled.
 	//
-	// - false: disabled.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
-	// The name of the blacklist policy.
+	// The name of the alert blacklist policy.
 	//
-	// Fuzzy queries are supported.
+	// This parameter supports fuzzy match.
 	//
 	// example:
 	//
@@ -66,21 +66,21 @@ type DescribeMetricRuleBlackListRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The namespace of the Alibaba Cloud service.
 	//
-	// For more information, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For information about the namespaces of Alibaba Cloud services, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The order in which to sort the results by time. Valid values:
+	// The order in which the query results are sorted by time. Valid values:
 	//
-	// - DESC (default): descending order.
+	// 0: ascending order (ASC).
 	//
-	// - ASC: ascending order.
+	// 1: descending order (DESC). This is the default value.
 	//
 	// example:
 	//
-	// DESC
+	// 1
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The page number.
 	//
@@ -90,7 +90,7 @@ type DescribeMetricRuleBlackListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Default value: 10.
 	//
@@ -99,11 +99,11 @@ type DescribeMetricRuleBlackListRequest struct {
 	// 100
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The scope of the blacklist policy. Valid values:
+	// The effective scope of the alert blacklist policy. Valid values:
 	//
-	// - USER: The blacklist policy takes effect only for the current Alibaba Cloud account.
+	// - USER: The alert blacklist policy takes effect only within the current Alibaba Cloud account.
 	//
-	// - GROUP: The blacklist policy takes effect for the specified application groups.
+	// - GROUP: The alert blacklist policy takes effect in the specified application groups.
 	//
 	// example:
 	//
