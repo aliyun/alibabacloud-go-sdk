@@ -52,37 +52,53 @@ type iUpdateAgenticDataSourceRequest interface {
 }
 
 type UpdateAgenticDataSourceRequest struct {
-	// The new display name of the data source. If this parameter is not specified, the value is not updated.
+	// The new display name of the data source. If you do not specify this parameter, the alias is not updated.
 	//
 	// example:
 	//
 	// demo_mysql
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The new logon username. If this parameter is not specified, the value is not updated.
+	// The new logon username. If you do not specify this parameter, the authentication account is not updated.
 	//
 	// example:
 	//
 	// db_user
 	AuthAccount *string `json:"AuthAccount,omitempty" xml:"AuthAccount,omitempty"`
-	// The new logon password. If this parameter is not specified, the value is not updated. This is sensitive information. Do not record or disclose it.
+	// The new logon password. If you do not specify this parameter, the authentication password is not updated. This is sensitive information. Do not record or disclose it.
 	//
 	// example:
 	//
 	// P@ss****
 	AuthPassword *string `json:"AuthPassword,omitempty" xml:"AuthPassword,omitempty"`
-	// Optional. The authentication type. Valid values: -1: No authentication required. 0: Username and password. 1: Password only. 2: Password-free. If this parameter is not specified, the value is not updated.
+	// Optional. Valid values:
+	//
+	// - -1: No authentication required.
+	//
+	// - 0: Username and password.
+	//
+	// - 1: Password only.
+	//
+	// - 2: Password-free.
+	//
+	// If you do not specify this parameter, the authentication type is not updated.
 	//
 	// example:
 	//
 	// 0
 	AuthType *int32 `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The new metadata catalog name. If this parameter is not specified, the value is not updated. The name can be up to 128 characters in length. It must start with a Chinese character, a letter, or an underscore, and can contain digits and hyphens. It cannot contain only digits.
+	// The new name of the metadata catalog. If you do not specify this parameter, the catalog name is not updated. The name can be up to 128 characters in length. It must start with a Chinese character, a letter, or an underscore, and can contain digits and hyphens. It cannot contain only digits.
 	//
 	// example:
 	//
 	// demo_catalog
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The registration method. Valid values: INSTANCE_ID: Select an existing cloud instance. HOST_PORT: Register by endpoint and port. If this parameter is not specified, the value is not updated.
+	// The registration method. Valid values:
+	//
+	// - INSTANCE_ID: Select an existing cloud instance.
+	//
+	// - HOST_PORT: Register by endpoint and port.
+	//
+	// If you do not specify this parameter, the creation mode is not updated.
 	//
 	// example:
 	//
@@ -102,49 +118,49 @@ type UpdateAgenticDataSourceRequest struct {
 	//
 	// MYSQL
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The environment type. Valid values: product, pre, dev, test, sit, uat, pet, and stag. If this parameter is not specified, the value is not updated.
+	// The environment type. Valid values: product, pre, dev, test, sit, uat, pet, and stag. If you do not specify this parameter, the environment type is not updated.
 	//
 	// example:
 	//
 	// product
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// Optional. The new database domain name or IP address. Do not include the protocol, path, or port. If this parameter is not specified, the value is not updated.
+	// Optional. The new domain name or IP address of the database. Do not include the protocol, path, or port. If you do not specify this parameter, the host is not updated.
 	//
 	// example:
 	//
 	// mysql.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The new cloud resource instance ID. If this parameter is not specified, the value is not updated.
+	// The new ID of the cloud resource instance. If you do not specify this parameter, the instance resource ID is not updated.
 	//
 	// example:
 	//
 	// rm-bp1234567890
 	InstanceResourceId *string `json:"InstanceResourceId,omitempty" xml:"InstanceResourceId,omitempty"`
-	// The new KMS managed credential name. If this parameter is not specified, the value is not updated.
+	// The new name of the KMS-managed credential. If you do not specify this parameter, the KMS secret is not updated.
 	//
 	// example:
 	//
 	// datasource-secret
 	KmsSecret *string `json:"KmsSecret,omitempty" xml:"KmsSecret,omitempty"`
-	// Optional. The new data access security policy ID. If this parameter is not specified, the value is not updated.
+	// Optional. The new ID of the data access security policy. If you do not specify this parameter, the policy ID is not updated.
 	//
 	// example:
 	//
 	// sp-usr-example
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// Optional. The new database service port. If this parameter is not specified, the value is not updated.
+	// Optional. The new service port of the database. If you do not specify this parameter, the service port is not updated.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The new Alibaba Cloud RAM role ARN. If this parameter is not specified, the value is not updated.
+	// The new ARN of the Alibaba Cloud RAM role. If you do not specify this parameter, the role ARN is not updated.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/DataSourceRole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// Optional. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, specify the database name. For ORACLE, specify the SID or service name, and prefix the service name with a forward slash (/). For POLARDB_ORACLE, specify the SID. For MAXCOMPUTE, specify the project name. For other types, leave this parameter empty. If this parameter is not specified, the value is not updated.
+	// Optional. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, specify the database name. For ORACLE, specify the SID or service name, and prefix the service name with a forward slash (/). For POLARDB_ORACLE, specify the SID. For MAXCOMPUTE, specify the project name. For other types, leave this parameter empty. If you do not specify this parameter, the schema is not updated.
 	//
 	// example:
 	//
@@ -162,13 +178,27 @@ type UpdateAgenticDataSourceRequest struct {
 	//
 	// WAREHOUSE
 	SnowflakeWarehouse *string `json:"SnowflakeWarehouse,omitempty" xml:"SnowflakeWarehouse,omitempty"`
-	// Specifies whether to use the cloud instance name as the data source name. Valid values: 1: Yes. 0: No. If this parameter is not specified, the value is not updated.
+	// Specifies whether to use the cloud instance name as the data source name. Valid values:
+	//
+	// - 1: Yes.
+	//
+	// - 0: No.
+	//
+	// If you do not specify this parameter, the sync alias setting is not updated.
 	//
 	// example:
 	//
 	// 0
 	SyncAlias *int32 `json:"SyncAlias,omitempty" xml:"SyncAlias,omitempty"`
-	// The new SSL setting. Valid values: 1: Enable. 0: Disable. -1: Use the default setting. If this parameter is not specified, the value is not updated. SSL is supported only for ADB_MYSQL, CLICKHOUSE, MARIADB, MYSQL, OCEANBASEX, POLARDB, SELECTDB, and STARROCKS.
+	// The new SSL setting. Valid values:
+	//
+	// - 1: Enable.
+	//
+	// - 0: Disable.
+	//
+	// - -1: Use default settings.
+	//
+	// If you do not specify this parameter, the SSL setting is not updated. SSL is supported only for ADB_MYSQL, CLICKHOUSE, MARIADB, MYSQL, OCEANBASEX, POLARDB, SELECTDB, and STARROCKS.
 	//
 	// example:
 	//

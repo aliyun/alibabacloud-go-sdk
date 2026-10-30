@@ -117,13 +117,13 @@ func (s *CreateDataAgentSkillMetaResponseBody) Validate() error {
 }
 
 type CreateDataAgentSkillMetaResponseBodyData struct {
-	// The Alibaba Cloud account ID.
+	// The ID of the parent Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 16738266********
 	AliyunParentUid *string `json:"AliyunParentUid,omitempty" xml:"AliyunParentUid,omitempty"`
-	// The Alibaba Cloud user ID.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -141,11 +141,7 @@ type CreateDataAgentSkillMetaResponseBodyData struct {
 	//
 	// This is a demo skill description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the skill is available. Valid values:
-	//
-	// - true: The skill is available.
-	//
-	// - false: The skill is not available.
+	// Indicates whether the skill is available. Valid values: true and false.
 	//
 	// example:
 	//
@@ -157,15 +153,13 @@ type CreateDataAgentSkillMetaResponseBodyData struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The update time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The skill parsing error message.
-	//
-	// - This message is returned when the skill status is INVALID.
+	// The error message for skill parsing. This message is returned when the skill status is INVALID.
 	//
 	// example:
 	//

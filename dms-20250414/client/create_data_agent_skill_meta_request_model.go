@@ -11,6 +11,8 @@ type iCreateDataAgentSkillMetaRequest interface {
 	GoString() string
 	SetDescription(v string) *CreateDataAgentSkillMetaRequest
 	GetDescription() *string
+	SetSkillId(v string) *CreateDataAgentSkillMetaRequest
+	GetSkillId() *string
 	SetSkillName(v string) *CreateDataAgentSkillMetaRequest
 	GetSkillName() *string
 	SetUploadLocation(v string) *CreateDataAgentSkillMetaRequest
@@ -20,25 +22,27 @@ type iCreateDataAgentSkillMetaRequest interface {
 }
 
 type CreateDataAgentSkillMetaRequest struct {
-	// The skill description.
-	//
-	// - Optional. If not specified, the system parses the ZIP package specified by UploadLocation to obtain the skill description.
+	// The skill description. This parameter is optional. If not specified, the backend parses the ZIP package specified by UploadLocation to obtain the skill description.
 	//
 	// example:
 	//
 	// This is a demo skill description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The skill name.
+	// The skill ID. If you specify this parameter, the uploaded skill overwrites the existing skill and replaces the original skill content. Note: The name of the original skill and the newly uploaded skill must be identical.
 	//
-	// - Optional. If not specified, the system parses the ZIP package specified by UploadLocation to obtain the skill name.
+	// example:
+	//
+	// ski-04pomiln*************j0
+	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// The skill name. This parameter is optional. If not specified, the backend parses the ZIP package specified by UploadLocation to obtain the skill name.
 	//
 	// example:
 	//
 	// data-query-skill
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
-	// The full path to the uploaded skill ZIP file.
+	// The full path for the skill ZIP file upload.
 	//
-	// - Format: Concatenate the file name to the UploadDir value returned by the DescribeSkillFileUploadSignature operation.
+	// - Format: The UploadDir field returned by the DescribeSkillFileUploadSignature operation concatenated with the file name.
 	//
 	// - Example: ${UploadDir}/${Filename}
 	UploadLocation *string `json:"UploadLocation,omitempty" xml:"UploadLocation,omitempty"`
@@ -62,6 +66,10 @@ func (s *CreateDataAgentSkillMetaRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateDataAgentSkillMetaRequest) GetSkillId() *string {
+	return s.SkillId
+}
+
 func (s *CreateDataAgentSkillMetaRequest) GetSkillName() *string {
 	return s.SkillName
 }
@@ -76,6 +84,11 @@ func (s *CreateDataAgentSkillMetaRequest) GetWorkspaceId() *string {
 
 func (s *CreateDataAgentSkillMetaRequest) SetDescription(v string) *CreateDataAgentSkillMetaRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateDataAgentSkillMetaRequest) SetSkillId(v string) *CreateDataAgentSkillMetaRequest {
+	s.SkillId = &v
 	return s
 }
 

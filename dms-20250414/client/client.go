@@ -1519,6 +1519,10 @@ func (client *Client) CreateDataAgentSkillMetaWithOptions(request *CreateDataAge
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.SkillId) {
+		query["SkillId"] = request.SkillId
+	}
+
 	if !dara.IsNil(request.SkillName) {
 		query["SkillName"] = request.SkillName
 	}
@@ -5953,6 +5957,104 @@ func (client *Client) ListAgenticGlobalSqlExecutionHistories(request *ListAgenti
 
 // Summary:
 //
+// Queries the user security policy of the current Alibaba Cloud account by page and returns the enabled system default security policy.
+//
+// Description:
+//
+// This operation returns the enabled system default policies and the user policies of the current Alibaba Cloud account.
+//
+// - System default policies are placed at the beginning of the list. Only policies in the ON (enabled) state are returned. They are not filtered by PolicyStatus or IncludeArchived.
+//
+// - Page and Size are used to paginate user policies. Each call also returns up to Size enabled system default policies. Therefore, the number of items in Data may be greater than Size, and the same system default policies may be repeatedly returned during pagination.
+//
+// - TotalCount is the sum of the number of all enabled system default policies and the number of user policies that meet the filter conditions.
+//
+// - You can use Readonly to distinguish between the two types of policies: true indicates a system default policy, and false indicates a user policy.
+//
+// @param request - ListAgenticSecurityPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgenticSecurityPoliciesResponse
+func (client *Client) ListAgenticSecurityPoliciesWithOptions(request *ListAgenticSecurityPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListAgenticSecurityPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IncludeArchived) {
+		query["IncludeArchived"] = request.IncludeArchived
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PolicyStatus) {
+		query["PolicyStatus"] = request.PolicyStatus
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["Size"] = request.Size
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgenticSecurityPolicies"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgenticSecurityPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the user security policy of the current Alibaba Cloud account by page and returns the enabled system default security policy.
+//
+// Description:
+//
+// This operation returns the enabled system default policies and the user policies of the current Alibaba Cloud account.
+//
+// - System default policies are placed at the beginning of the list. Only policies in the ON (enabled) state are returned. They are not filtered by PolicyStatus or IncludeArchived.
+//
+// - Page and Size are used to paginate user policies. Each call also returns up to Size enabled system default policies. Therefore, the number of items in Data may be greater than Size, and the same system default policies may be repeatedly returned during pagination.
+//
+// - TotalCount is the sum of the number of all enabled system default policies and the number of user policies that meet the filter conditions.
+//
+// - You can use Readonly to distinguish between the two types of policies: true indicates a system default policy, and false indicates a user policy.
+//
+// @param request - ListAgenticSecurityPoliciesRequest
+//
+// @return ListAgenticSecurityPoliciesResponse
+func (client *Client) ListAgenticSecurityPolicies(request *ListAgenticSecurityPoliciesRequest) (_result *ListAgenticSecurityPoliciesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgenticSecurityPoliciesResponse{}
+	_body, _err := client.ListAgenticSecurityPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the SQL execution history visible to the current caller, sorted in descending order by execution start time. Only AGENT_QUERY and WORKFLOW_QUERY are included.
 //
 // @param request - ListAgenticSqlExecutionHistoriesRequest
@@ -9181,19 +9283,19 @@ func (client *Client) SearchAgenticDatabase(request *SearchAgenticDatabaseReques
 
 // Summary:
 //
-// Sends a user message to a specified session or cancels a session.
+// Sends a user message to a specified session or cancels the session.
 //
 // Description:
 //
 // ## Request description
 //
-// - `message_type` defaults to `primary`. To append information or cancel a session, set it to `additional` or `cancel`.
+// - `message_type` defaults to `primary`. When you need to append information or cancel a session, set it to `additional` or `cancel`.
 //
-// - The `reply_to` field indicates which Agent message this message is a response to. The default value is `0`.
+// - The `reply_to` field indicates which agent message this message is responding to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
-// - `quoted_message` can be used to quote the content of a previous user message.
+// - `quoted_message` can be used to quote previous user messages.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -9311,19 +9413,19 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 
 // Summary:
 //
-// Sends a user message to a specified session or cancels a session.
+// Sends a user message to a specified session or cancels the session.
 //
 // Description:
 //
 // ## Request description
 //
-// - `message_type` defaults to `primary`. To append information or cancel a session, set it to `additional` or `cancel`.
+// - `message_type` defaults to `primary`. When you need to append information or cancel a session, set it to `additional` or `cancel`.
 //
-// - The `reply_to` field indicates which Agent message this message is a response to. The default value is `0`.
+// - The `reply_to` field indicates which agent message this message is responding to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
-// - `quoted_message` can be used to quote the content of a previous user message.
+// - `quoted_message` can be used to quote previous user messages.
 //
 // @param request - SendChatMessageRequest
 //
@@ -9895,7 +9997,7 @@ func (client *Client) TestAgenticDataSourceConnection(request *TestAgenticDataSo
 //
 // Description:
 //
-// Only the parameters passed in the current request are modified. Unpassed parameters remain unchanged. The data source type cannot be modified.
+// Only the parameters passed in the current request are modified. Unspecified parameters remain unchanged. The data source type cannot be modified.
 //
 // @param request - UpdateAgenticDataSourceRequest
 //
@@ -10019,7 +10121,7 @@ func (client *Client) UpdateAgenticDataSourceWithOptions(request *UpdateAgenticD
 //
 // Description:
 //
-// Only the parameters passed in the current request are modified. Unpassed parameters remain unchanged. The data source type cannot be modified.
+// Only the parameters passed in the current request are modified. Unspecified parameters remain unchanged. The data source type cannot be modified.
 //
 // @param request - UpdateAgenticDataSourceRequest
 //

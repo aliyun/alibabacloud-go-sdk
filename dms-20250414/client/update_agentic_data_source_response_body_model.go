@@ -36,7 +36,7 @@ type UpdateAgenticDataSourceResponseBody struct {
 	//
 	// The parameter is invalid
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The request ID, which is used to trace the call.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	AuthPassword *string `json:"AuthPassword,omitempty" xml:"AuthPassword,omitempty"`
 	// The authentication method. Valid values:
 	//
-	// - -1: No authentication required.
+	// - -1: no authentication required
 	//
-	// - 0: Username and password.
+	// - 0: username and password
 	//
-	// - 1: Password only.
+	// - 1: password only
 	//
-	// - 2: Password-free.
+	// - 2: password-free
 	//
 	// example:
 	//
@@ -149,9 +149,9 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
 	// The registration method of the data source. Valid values:
 	//
-	// - INSTANCE_ID: Select an existing cloud instance.
+	// - INSTANCE_ID: select an existing cloud instance
 	//
-	// - HOST_PORT: Register by endpoint and port.
+	// - HOST_PORT: register by endpoint and port
 	//
 	// example:
 	//
@@ -201,15 +201,15 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	InstanceResourceId *string `json:"InstanceResourceId,omitempty" xml:"InstanceResourceId,omitempty"`
 	// The source of the data source. Valid values:
 	//
-	// - RDS: ApsaraDB instance.
+	// - RDS: ApsaraDB instance
 	//
-	// - PUBLIC_OWN: Self-managed database on the Internet.
+	// - PUBLIC_OWN: self-managed database on the Internet
 	//
-	// - ECS_OWN: Self-managed database on an ECS instance.
+	// - ECS_OWN: self-managed database on an ECS instance
 	//
-	// - GATEWAY: Connected through Database Gateway.
+	// - GATEWAY: connected through Database Gateway
 	//
-	// - VPC_IDC: Connected through a VPC or IDC.
+	// - VPC_IDC: connected through a VPC or IDC
 	//
 	// example:
 	//
@@ -245,7 +245,7 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	//
 	// 123456789012****
 	ResourceAccountId *string `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	// The ARN of the RAM role used to access the data source. This parameter is empty if role-based authorization is not used.
+	// The ARN of the RAM role used to access the data source. This parameter is empty if role authorization is not used.
 	//
 	// example:
 	//
@@ -259,11 +259,11 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	// The status of the data source. Valid values:
 	//
-	// - 0: Normal.
+	// - 0: normal
 	//
-	// - -1: Deleted.
+	// - -1: deleted
 	//
-	// - -2: Disabled.
+	// - -2: disabled
 	//
 	// example:
 	//
@@ -271,9 +271,9 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
 	// Specifies whether to use the cloud instance name as the data source name. Valid values:
 	//
-	// - 1: Yes.
+	// - 1: yes
 	//
-	// - 0: No.
+	// - 0: no
 	//
 	// example:
 	//
@@ -281,11 +281,11 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	SyncAlias *int32 `json:"SyncAlias,omitempty" xml:"SyncAlias,omitempty"`
 	// The SSL settings. Valid values:
 	//
-	// - 1: Enabled.
+	// - 1: enabled
 	//
-	// - 0: Disabled.
+	// - 0: disabled
 	//
-	// - -1: Use default settings.
+	// - -1: default settings
 	//
 	// example:
 	//
