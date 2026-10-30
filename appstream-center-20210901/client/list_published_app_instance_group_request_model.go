@@ -19,6 +19,8 @@ type iListPublishedAppInstanceGroupRequest interface {
 	GetAppName() *string
 	SetExcludeUserId(v string) *ListPublishedAppInstanceGroupRequest
 	GetExcludeUserId() *string
+	SetOfficeSiteId(v string) *ListPublishedAppInstanceGroupRequest
+	GetOfficeSiteId() *string
 	SetPageNumber(v int32) *ListPublishedAppInstanceGroupRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListPublishedAppInstanceGroupRequest
@@ -28,43 +30,49 @@ type iListPublishedAppInstanceGroupRequest interface {
 }
 
 type ListPublishedAppInstanceGroupRequest struct {
-	// The application ID used for filtering delivery groups. Substring matching is supported. The delivery group must contain a deployed application that matches the condition. If this parameter is not specified or is set to an empty string, no filtering by application ID is applied. When specified together with `AppName`, the same application must satisfy both conditions.
+	// The ID of the application used to filter delivery groups. Partial matching is supported. The delivery group must contain a deployed application that meets the condition. If this parameter is not specified or is set to an empty string, the results are not filtered by application ID. If this parameter is specified together with `AppName`, both conditions must be met by the same application.
 	//
-	// This condition does not trim the returned `Apps` list.
+	// This condition does not restrict the returned `Apps` list to the matched applications.
 	//
 	// example:
 	//
 	// ca-i87mycyn419nu****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The delivery group ID used for filtering. Substring matching is supported. You can pass in a full ID or a consecutive segment of the ID. If this parameter is not specified or is set to an empty string, no filtering by ID is applied. This parameter can be used together with other filter conditions. Results must satisfy all conditions simultaneously.
+	// The ID of the delivery group used for filtering. Partial matching is supported. You can pass the complete ID or a continuous segment of it. If this parameter is not specified or is set to an empty string, the results are not filtered by ID. This parameter can be used together with other filter conditions, and the results must meet all conditions.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The delivery group name used for filtering. Substring matching is supported. For example, if you pass in `OfficeApps`, delivery groups whose names contain this text are matched. If this parameter is not specified or is set to an empty string, no filtering by name is applied. When specified together with the delivery group ID, both the ID and name must match.
+	// The name of the delivery group used for filtering. Partial matching is supported. For example, if you pass `Office applications`, delivery groups whose names contain this text are matched. If this parameter is not specified or is set to an empty string, the results are not filtered by name. If this parameter is specified together with the delivery group ID, both the ID and the name must be matched.
 	//
 	// example:
 	//
-	// OfficeApps
+	// Office applications
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The application name used for filtering delivery groups. Substring matching is supported. The delivery group must contain a deployed application whose name includes the specified text. If this parameter is not specified or is set to an empty string, no filtering by application name is applied. When specified together with `AppId`, the same application must satisfy both conditions.
+	// The name of the application used to filter delivery groups. Partial matching is supported. The delivery group must contain a deployed application whose name contains the specified text. If this parameter is not specified or is set to an empty string, the results are not filtered by application name. If this parameter is specified together with `AppId`, both conditions must be met by the same application.
 	//
-	// This condition does not trim the returned `Apps` list.
+	// This condition does not restrict the returned `Apps` list to the matched applications.
 	//
 	// example:
 	//
-	// OfficeApps
+	// Office applications
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The username to exclude based on existing authorization. Exact username matching is used, for example, `alice`. When specified, delivery groups in which all applications have been directly authorized to this user are excluded. If this parameter is not specified or is set to an empty string, no exclusion based on user authorization is applied.
+	// The username to be excluded based on existing authorizations. Exact match by full username is supported, such as `alice`. If this parameter is specified, delivery groups for which all applications have been directly authorized to the user are excluded. If this parameter is not specified or is set to an empty string, the results are not filtered by user authorization status.
 	//
-	// **Authorization granted for individual applications only, or access permissions obtained through user groups, is not fully evaluated by this condition.*	- Do not treat the returned results as a complete list of delivery groups that the user has no access permissions to.
+	// **Authorizations for a single application or access permissions obtained through user groups are not fully evaluated by this condition.*	- Do not equate the returned results with a list of delivery groups to which the user has no access at all.
 	//
 	// example:
 	//
 	// alice
 	ExcludeUserId *string `json:"ExcludeUserId,omitempty" xml:"ExcludeUserId,omitempty"`
-	// The page number. This parameter is required. Start from page `1` and use this parameter together with `PageSize`. Keep other filter conditions unchanged when querying subsequent pages.
+	// The ID of the office network.
+	//
+	// example:
+	//
+	// cn-beijing+dir-172301****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The page number. This parameter is required. Start the query from page `1` and use it in conjunction with `PageSize`. Keep other filter conditions unchanged when querying subsequent pages.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +80,7 @@ type ListPublishedAppInstanceGroupRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of delivery groups to return per page. This parameter is required. Valid values: `1` to `100`. Unit: delivery groups. Specify this value explicitly and do not rely on default values from other query operations.
+	// The maximum number of delivery groups to return per page. This parameter is required. Valid values: `1` to `100`. Explicitly specify this parameter and do not use the default values of other query operations.
 	//
 	// This parameter is required.
 	//
@@ -80,23 +88,23 @@ type ListPublishedAppInstanceGroupRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The product type. This parameter is required. The value must match the product type of the delivery groups you want to query. Only published delivery groups of the specified product type are returned. A parameter error is returned if an unrecognized value is passed in.
+	// The product type. This parameter is required. The value must be the same as the product type of the delivery groups to be queried. Only published delivery groups of this product type are returned. If an unrecognized value is passed, a parameter error is returned.
 	//
 	// Valid values:
 	//
-	// - `CloudApp`: WUYING Cloud Application.
+	// - `CloudApp`: Wuying Cloud App.
 	//
-	// - `CloudBrowser`: Cloud Browser.
+	// - `CloudBrowser`: Cloud browser.
 	//
-	// - `WuyingServer`: Enterprise Workstation.
+	// - `WuyingServer`: Enterprise Edition workstation.
 	//
-	// - `WuyingWorkstation`: Personal Edition Lingjou Container Workstation.
+	// - `WuyingWorkstation`: Personal Edition Linggou container workstation.
 	//
-	// - `WuyingWorkstationTeam`: Team Edition Lingjou Container Workstation.
+	// - `WuyingWorkstationTeam`: Team Edition Linggou container workstation.
 	//
-	// - `WuyingWorkstationBusiness`: Dedicated Edition Lingjou Container Workstation.
+	// - `WuyingWorkstationBusiness`: Dedicated Edition Linggou container workstation.
 	//
-	// - `AndroidCloud`: Cloud Phone.
+	// - `AndroidCloud`: Cloud phone.
 	//
 	// - `AIAgent`: AgentBay (AI agent).
 	//
@@ -136,6 +144,10 @@ func (s *ListPublishedAppInstanceGroupRequest) GetExcludeUserId() *string {
 	return s.ExcludeUserId
 }
 
+func (s *ListPublishedAppInstanceGroupRequest) GetOfficeSiteId() *string {
+	return s.OfficeSiteId
+}
+
 func (s *ListPublishedAppInstanceGroupRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -170,6 +182,11 @@ func (s *ListPublishedAppInstanceGroupRequest) SetAppName(v string) *ListPublish
 
 func (s *ListPublishedAppInstanceGroupRequest) SetExcludeUserId(v string) *ListPublishedAppInstanceGroupRequest {
 	s.ExcludeUserId = &v
+	return s
+}
+
+func (s *ListPublishedAppInstanceGroupRequest) SetOfficeSiteId(v string) *ListPublishedAppInstanceGroupRequest {
+	s.OfficeSiteId = &v
 	return s
 }
 

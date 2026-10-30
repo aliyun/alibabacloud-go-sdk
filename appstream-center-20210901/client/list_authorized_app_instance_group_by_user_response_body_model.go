@@ -22,15 +22,15 @@ type iListAuthorizedAppInstanceGroupByUserResponseBody interface {
 }
 
 type ListAuthorizedAppInstanceGroupByUserResponseBody struct {
-	// The list of authorized delivery groups on the current page. This is an empty list if the user has no authorized delivery groups that match the conditions.
+	// The list of authorized delivery groups on the current page. If the user does not have any authorized delivery groups that meet the conditions, an empty list is returned.
 	AppInstanceGroupModels []*ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels `json:"AppInstanceGroupModels,omitempty" xml:"AppInstanceGroupModels,omitempty" type:"Repeated"`
-	// The current page number. This value is the same as the PageNumber request parameter.
+	// The current page number. The value is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of delivery groups returned per page. This value is the same as the PageSize request parameter.
+	// The number of delivery groups returned per page. The value is the same as the PageSize request parameter.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAuthorizedAppInstanceGroupByUserResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of authorized delivery groups that match the filter conditions.
+	// The total number of authorized delivery groups that meet the filter conditions.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels stru
 	//
 	// img-8z4nztpaqvay4****
 	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	// The delivery group ID. You can pass this value to the [GetConnectionTicket](~~GetConnectionTicket~~) operation to specify the delivery group to connect to.
+	// The delivery group ID. When you call the [GetConnectionTicket](~~GetConnectionTicket~~) operation, you can specify this value to indicate the delivery group to connect to.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels stru
 	//
 	// example:
 	//
-	// Office App
+	// Office applications
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	// The specification type of the delivery group.
 	//
@@ -141,15 +141,15 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels stru
 	//
 	// __dynamic__
 	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
-	// The list of applications deployed in the delivery group. This list includes all deployed applications in the delivery group image and is not affected by the AppId or AppName request parameters.
+	// The list of applications deployed in the delivery group. This list includes all applications deployed in the delivery group image and is not affected by the AppId and AppName request parameters.
 	Apps []*ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	// The expiration time of the delivery group. The value is in the ISO 8601 datetime format with milliseconds and a time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+	// The expiration time of the delivery group. The time is in ISO 8601 format with milliseconds and a time zone offset of +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
 	//
 	// example:
 	//
 	// 2022-04-27T16:00:00.000+00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The creation time of the delivery group. The value is in the ISO 8601 datetime format with milliseconds and a time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+	// The creation time of the delivery group. The time is in ISO 8601 format with milliseconds and a time zone offset of +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
 	//
 	// example:
 	//
@@ -161,25 +161,25 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels stru
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The delivery group status. Valid values:
+	// The status of the delivery group. Valid values:
 	//
-	// - DEPLOYING: The delivery group is being created or starting resources and is not yet connectable.
+	// - DEPLOYING: Deploying. The delivery group is creating or starting resources and cannot be connected to.
 	//
-	// - DEPLOYED: The delivery group is deployed. Resources are ready but the delivery group has not been listed for service.
+	// - DEPLOYED: Deployed. Resources are ready but the delivery group is not published for external services.
 	//
-	// - PUBLISHED: The delivery group is published and listed. Users can connect to and use the delivery group.
+	// - PUBLISHED: Published. The delivery group is published and users can connect to it.
 	//
-	// - STOPPING: The delivery group is being delisted and is stopping service.
+	// - STOPPING: Unpublishing. The delivery group is stopping services.
 	//
-	// - STOPPED: The delivery group is delisted and has stopped service. Users cannot connect.
+	// - STOPPED: Unpublished. The delivery group has stopped services and users cannot connect to it.
 	//
-	// - MAINTAINING: The delivery group is being maintained or updated.
+	// - MAINTAINING: Updating. The delivery group is undergoing maintenance or changes.
 	//
-	// - FAILED: The delivery group failed to publish. Resource initialization failed.
+	// - FAILED: Publishing failed. Resource initialization failed.
 	//
-	// - MAINTAIN_FAILED: The update failed. Maintenance or changes were not successful.
+	// - MAINTAIN_FAILED: Update failed. Maintenance or changes were not successful.
 	//
-	// - DELETING: The delivery group is being deleted.
+	// - DELETING: Deleting. The delivery group is being deleted.
 	//
 	// > Deleted delivery groups are not returned.
 	//
@@ -187,6 +187,14 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels stru
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether mixed authorization of users and user groups is supported.
+	SupportUserGroupMixedAuth *bool `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
+	// The authorization mode for users and user groups.
+	//
+	// example:
+	//
+	// Mixed
+	UserGroupAuthMode *string `json:"UserGroupAuthMode,omitempty" xml:"UserGroupAuthMode,omitempty"`
 }
 
 func (s ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels) String() string {
@@ -231,6 +239,14 @@ func (s *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels)
 
 func (s *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels) GetSupportUserGroupMixedAuth() *bool {
+	return s.SupportUserGroupMixedAuth
+}
+
+func (s *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels) GetUserGroupAuthMode() *string {
+	return s.UserGroupAuthMode
 }
 
 func (s *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels) SetAppCenterImageId(v string) *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels {
@@ -278,6 +294,16 @@ func (s *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels)
 	return s
 }
 
+func (s *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels) SetSupportUserGroupMixedAuth(v bool) *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels {
+	s.SupportUserGroupMixedAuth = &v
+	return s
+}
+
+func (s *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels) SetUserGroupAuthMode(v string) *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels {
+	s.UserGroupAuthMode = &v
+	return s
+}
+
 func (s *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels) Validate() error {
 	if s.Apps != nil {
 		for _, item := range s.Apps {
@@ -298,7 +324,7 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModelsApps 
 	//
 	// https://app-center-icon-****.png
 	AppIcon *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
-	// The application ID. Pass this value to the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain a connection ticket for the application.
+	// The application ID. When you call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the connection ticket for the application, specify this value.
 	//
 	// example:
 	//
@@ -308,7 +334,7 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModelsApps 
 	//
 	// example:
 	//
-	// Office App
+	// Office applications
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The application version number.
 	//
