@@ -24,15 +24,15 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// The query token. The value is the **NextToken*	- parameter value returned from the previous call to this operation. You do not need to specify this parameter when you call this operation for the first time.
 	//
 	// example:
 	//
 	// RGuYpqDdKhzXb8C3.D1BwQgc1tMBsoxdGiEKHHUUCf****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the Anti-DDoS Origin instance resides.
+	// The region ID of the Anti-DDoS Origin instance.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all region IDs supported by Anti-DDoS Origin.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListTagResourcesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
-	// If you do not specify this parameter, the instance belongs to the default resource group.
+	// If you do not specify this parameter, the default resource group is used.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type ListTagResourcesRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The IDs of the Anti-DDoS Origin instances to query.
 	//
-	// >  The **ResourceId*	- parameter and the **key-value pair for the Tag parameter*	- cannot be left empty at the same time.
+	// > **ResourceId*	- and **Tag Key-Value pairs*	- cannot be left empty at the same time.
 	//
 	// example:
 	//
 	// ddosbgp-cn-v0h1fmwbc024
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource to query. Set the value to **INSTANCE**.
+	// The type of the resource to query. Set the value to **INSTANCE**, which indicates an instance.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type ListTagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key-value pair of the tag to query.
+	// The tag key-value pairs to query.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -144,17 +144,17 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag to query.
+	// The tag key to query.
 	//
-	// >  The **ResourceId*	- parameter and the **key-value pair for the Tag parameter*	- cannot be left empty at the same time.
+	// > **ResourceId*	- and **Tag Key-Value pairs*	- cannot be left empty at the same time.
 	//
 	// example:
 	//
 	// testKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag to query.
+	// The tag value to query.
 	//
-	// >  The **ResourceId*	- parameter and the **key-value pair for the Tag parameter*	- cannot be left empty at the same time.
+	// > **ResourceId*	- and **Tag Key-Value pairs*	- cannot be left empty at the same time.
 	//
 	// example:
 	//

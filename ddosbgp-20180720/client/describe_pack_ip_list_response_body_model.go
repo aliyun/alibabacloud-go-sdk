@@ -30,7 +30,7 @@ type DescribePackIpListResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of IP addresses that are protected by the Anti-DDoS Origin instance.
+	// The list of IP addresses protected by the Anti-DDoS Origin instance.
 	IpList []*DescribePackIpListResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -38,17 +38,17 @@ type DescribePackIpListResponseBody struct {
 	//
 	// 4FD1578A-BD77-50B7-A969-45A374A7ED22
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The number of protected IP addresses that are returned.
+	// The number of protected IP addresses queried.
 	//
 	// example:
 	//
@@ -135,53 +135,53 @@ type DescribePackIpListResponseBodyIpList struct {
 	//
 	// 170858869679****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The end time of cross-border traffic blocking.
+	// The end time of near-origin traffic diversion.
 	//
 	// example:
 	//
 	// 1715658000
 	NsmExpireAt *int64 `json:"NsmExpireAt,omitempty" xml:"NsmExpireAt,omitempty"`
-	// The start time of cross-border traffic blocking.
+	// The start time of near-origin traffic diversion.
 	//
 	// example:
 	//
 	// 1715655000
 	NsmStartAt *int64 `json:"NsmStartAt,omitempty" xml:"NsmStartAt,omitempty"`
-	// The status of cross-border traffic blocking. Valid values:
+	// The status of near-origin traffic diversion. Valid values:
 	//
-	// - **1**: Cross-border traffic is being blocked.
+	// - **1**: Near-origin traffic diversion is in progress.
 	//
-	// - **0**: Cross-border traffic is not blocked.
+	// - **0**: Near-origin traffic diversion is not in progress.
 	//
 	// example:
 	//
 	// 0
 	NsmStatus *int32 `json:"NsmStatus,omitempty" xml:"NsmStatus,omitempty"`
-	// The type of the cloud asset to which the IP address belongs. Valid values:
+	// The cloud asset type to which the IP address belongs. Valid values:
 	//
-	// - **ECS**: an ECS instance.
+	// - **ECS**: ECS instance.
 	//
-	// - **SLB**: a CLB instance.
+	// - **SLB**: Classic Load Balancer (CLB) instance.
 	//
-	// - **EIP**: an EIP instance. This includes the EIP used by an ALB instance.
+	// - **EIP**: EIP, including the EIPs used by Application Load Balancer (ALB) instances.
 	//
-	// - **WAF**: a WAF instance.
+	// - **WAF**: Web Application Firewall (WAF) instance.
 	//
 	// example:
 	//
 	// ECS
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The region where the protected IP address is deployed.
+	// The region of the protected IP address.
 	//
-	// > This parameter is not returned if the protected IP address is deployed in the same region as the instance.
+	// > If the region of the protected IP address is the same as the region of the instance, this parameter is not returned.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The remarks on the cloud asset to which the IP address belongs, such as an ECS instance or an SLB instance.
+	// The description of the cloud asset to which the IP address belongs, such as an ECS instance or a CLB instance.
 	//
-	// > This parameter is not returned if no remarks are specified for the cloud asset.
+	// > If the cloud asset has no description, this parameter is not returned.
 	//
 	// example:
 	//
@@ -189,9 +189,9 @@ type DescribePackIpListResponseBodyIpList struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The current status of the IP address. Valid values:
 	//
-	// - **normal**: The IP address is not under attack.
+	// - **normal**: The IP address is normal and not under attack.
 	//
-	// - **hole_begin**: The IP address is in blackhole filtering status.
+	// - **hole_begin**: The IP address is under blackhole filtering.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iMoveResourceGroupRequest interface {
 }
 
 type MoveResourceGroupRequest struct {
-	// The ID of the resource group to which you want to move the resource.
+	// The ID of the resource group to which you want to move the cloud resource instance.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// rg-acfm3peow3k****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource ID.
+	// The ID of the cloud resource instance whose resource group you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// ddos_originpre_public_cn-7213kxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The region ID of the resource.
+	// The region to which the resource belongs.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The resource type. Set the value to **instance**.
+	// The type of the cloud resource whose resource group you want to modify. Valid values: **instance**.
 	//
 	// This parameter is required.
 	//

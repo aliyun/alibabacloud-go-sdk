@@ -18,7 +18,7 @@ type iDescribeOpEntitiesResponseBody interface {
 }
 
 type DescribeOpEntitiesResponseBody struct {
-	// The details of the operation log.
+	// The list of Operation logs details.
 	OpEntities []*DescribeOpEntitiesResponseBodyOpEntities `json:"OpEntities,omitempty" xml:"OpEntities,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -26,7 +26,7 @@ type DescribeOpEntitiesResponseBody struct {
 	//
 	// 52C8ECB0-0B1A-4E66-A31C-B6A855120E82
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of operation logs.
+	// The total number of queried operation logs.
 	//
 	// example:
 	//
@@ -83,81 +83,81 @@ func (s *DescribeOpEntitiesResponseBody) Validate() error {
 }
 
 type DescribeOpEntitiesResponseBodyOpEntities struct {
-	// The operation object, which is the ID of the instance.
+	// The operation object, which is the ID of the Anti-DDoS Origin instance.
 	//
 	// example:
 	//
 	// ddosbgp-cn-n6w1r7nz****
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
-	// The type of the operation object. The value is fixed as **1**, which indicates Anti-DDoS Origin instances.
+	// The object type of the operation. The value is fixed as **1**, which indicates an Anti-DDoS Origin instance.
 	//
 	// example:
 	//
 	// 1
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The time when the log was generated. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the log was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1635818114000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID of the Alibaba Cloud account that performs the operation.
+	// The Alibaba Cloud account ID used to execute the operation.
 	//
-	// > If the value is **system**, the operation is performed by Anti-DDoS Origin.
+	// > If the value is **system**, the Anti-DDoS Origin service will automatically execute the operation.
 	//
 	// example:
 	//
 	// 171986973287****
 	OpAccount *string `json:"OpAccount,omitempty" xml:"OpAccount,omitempty"`
-	// The type of operation. Valid values:
+	// The operation type. Valid values:
 	//
-	// 	- **3**: indicates an operation to add an IP address to the Anti-DDoS Origin instance for protection.
+	// - **3**: add protected IP addresses to the Anti-DDoS Origin instance
 	//
-	// 	- **4**: indicates an operation to remove a protected IP address from the Anti-DDoS Origin instance.
+	// - **4**: unbind protected IP addresses from the Anti-DDoS Origin instance
 	//
-	// 	- **5**: indicates an operation to downgrade the Anti-DDoS Origin instance.
+	// - **5**: downgrade the Anti-DDoS Origin instance
 	//
-	// 	- **6**: indicates an operation to deactivate blackhole filtering for an IP address.
+	// - **6**: deactivate blackhole filtering
 	//
-	// 	- **7**: indicates an operation to reset the number of times that you can deactivate blackhole filtering.
+	// - **7**: reset the quota on blackhole filtering deactivation
 	//
-	// 	- **8**: indicates an operation to enable burstable protection.
+	// - **8**: resume burstable protection
 	//
 	// example:
 	//
 	// 8
 	OpAction *int32 `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
-	// The details of the operation. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	// The operation details. Use a JSON struct to transform the data into a character string representation. The JSON structure contains the following fields:
 	//
-	// 	- **entity**: the operation object. Data type: object. The fields that are included in the value of the **entity*	- parameter vary based on the value of the **OpAction*	- parameter. Valid values:
+	// - **entity**: Object | The operation object. The fields contained in **entity*	- vary based on the operation type (**OpAction**). Details:
 	//
-	//     	- If the value of the **OpAction*	- parameter is **3**, the value of the **entity*	- parameter consists of the following field:
+	//     - If **OpAction*	- is **3*	- (add protected IP addresses), **entity*	- contains the following fields:
 	//
-	//         	- **ips**: the public IP addresses that are protected by the Anti-DDoS Origin instance. Data type: array
+	//         - **ips**: Array | The list of assets that are assigned public IP addresses that are attached to the Anti-DDoS Origin instance for protection.
 	//
-	//     	- If the value of the **OpAction*	- parameter is **4**, the value of the **entity*	- parameter consists of the following field:
+	//     - If **OpAction*	- is **4*	- (unbind protected IP addresses), **entity*	- contains the following fields:
 	//
-	//         	- **ips**: the public IP addresses that are no longer protected by the Anti-DDoS Origin instance. Data type: array.
+	//         - **ips**: Array | The list of assets that are assigned public IP addresses that are unbound from the Anti-DDoS Origin instance.
 	//
-	//     	- If the value of the **OpAction*	- parameter is **5**, the value of the **entity*	- parameter consists of the following fields:
+	//     - If **OpAction*	- is **5*	- (decrease the quota of the instance), **entity*	- contains the following fields:
 	//
-	//         	- **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
+	//         - **baseBandwidth**: Integer | The basic protection bandwidth. Unit: Gbit/s.
 	//
-	//         	- **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
+	//         - **elasticBandwidth**: Integer | The burstable protection bandwidth. Unit: Gbit/s.
 	//
-	//         	- **opSource**: the source of the operation. The value is fixed as **1**, indicating that the operation is performed by Anti-DDoS Origin. Data type: integer.
+	//         - **opSource**: Integer | The source of the operation. The value is fixed as **1**, which indicates that the Anti-DDoS Origin service will automatically execute the operation.
 	//
-	//     	- If the value of the **OpAction*	- parameter is **6**, the value of the **entity*	- parameter consists of the following field:
+	//     - If **OpAction*	- is **6*	- (deactivate blackhole filtering), **entity*	- contains the following fields:
 	//
-	//         	- **ips**: the public IP addresses for which to deactivate blackhole filtering. Data type: array.
+	//         - **ips**: Array | The list of assets that are assigned public IP addresses for which the blackhole filtering status is deactivated.
 	//
-	//     	- If the value of the **OpAction*	- parameter is **7**, the **entity*	- parameter is not returned.
+	//     - If **OpAction*	- is **7*	- (Reset quota on blackhole filtering deactivation), **entity*	- is empty.
 	//
-	//     	- If the value of the **OpAction*	- parameter is **8**, the value of the **entity*	- parameter consists of the following fields:
+	//     - If **OpAction*	- is **8*	- (recover burstable protection), **entity*	- contains the following fields:
 	//
-	//         	- **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
+	//         - **baseBandwidth**: Integer | The basic protection bandwidth. Unit: Gbit/s.
 	//
-	//         	- **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
+	//         - **elasticBandwidth**: Integer | The burstable protection bandwidth. Unit: Gbit/s.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iDescribePackIpListRequest interface {
 type DescribePackIpListRequest struct {
 	// The ID of the Anti-DDoS Origin instance to query.
 	//
-	// > Call [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) to query the IDs of all Anti-DDoS Origin instances.
+	// > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DescribePackIpListRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of protected IP addresses to return on each page. The maximum value is 50.
+	// The number of protected IP addresses to return on each page. Maximum value: 50.
 	//
 	// This parameter is required.
 	//
@@ -66,15 +66,15 @@ type DescribePackIpListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the cloud asset to which the protected IP address belongs. Valid values:
+	// The cloud asset type of the protected IP address to query. Valid values:
 	//
-	// - **ECS**: an Elastic Compute Service (ECS) instance.
+	// - **ECS**: ECS instance.
 	//
-	// - **SLB**: a Classic Load Balancer (CLB) instance.
+	// - **SLB**: Classic Load Balancer (CLB) instance.
 	//
-	// - **EIP**: an Elastic IP Address (EIP) instance. Because Application Load Balancer (ALB) instances use EIPs, query the public IP address of an ALB instance using the EIP.
+	// - **EIP**: elastic IP address (EIP). Because Internet-facing Application Load Balancer (ALB) instances use EIPs, you must query the public IP addresses of ALB instances by using EIPs.
 	//
-	// - **WAF**: a Web Application Firewall (WAF) instance.
+	// - **WAF**: Web Application Firewall (WAF) instance.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribePackIpListRequest struct {
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The region ID of the Anti-DDoS Origin instance.
 	//
-	// > Call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query the IDs of all regions that Anti-DDoS Origin supports.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all region IDs supported by Anti-DDoS Origin.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DescribePackIpListRequest struct {
 	//
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
-	// If you do not set this parameter, the instance belongs to the default resource group.
+	// If you do not specify this parameter, the default resource group is used.
 	//
 	// example:
 	//

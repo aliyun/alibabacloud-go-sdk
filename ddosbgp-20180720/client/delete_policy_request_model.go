@@ -14,7 +14,7 @@ type iDeletePolicyRequest interface {
 }
 
 type DeletePolicyRequest struct {
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// This parameter is required.
 	//

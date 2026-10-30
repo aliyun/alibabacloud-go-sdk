@@ -18,15 +18,15 @@ type iDescribeDdosEventResponseBody interface {
 }
 
 type DescribeDdosEventResponseBody struct {
-	// The details about the DDoS attack event.
+	// The details of the DDoS attack events.
 	Events []*DescribeDdosEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F3B6C3F9-6B21-519D-B976-A1E14166F909
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of DDoS attack events that are returned.
+	// The total number of DDoS attack events returned.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *DescribeDdosEventResponseBody) Validate() error {
 }
 
 type DescribeDdosEventResponseBodyEvents struct {
-	// The time when the DDoS attack stopped. This value is a UNIX timestamp. Unit: seconds.
+	// The end time of the attack. The time is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -95,33 +95,33 @@ type DescribeDdosEventResponseBodyEvents struct {
 	//
 	// 47.89.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The volume of the request traffic at the start of the DDoS attack. Unit: Mbit/s.
+	// The traffic volume at the start of the attack. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 0
 	Mbps *int32 `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
-	// The number of packets at the start of the DDoS attack. Unit: packets per second (PPS).
+	// The packet rate at the start of the attack. Unit: pps.
 	//
 	// example:
 	//
 	// 456
 	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	// The time when the DDoS attack started. This value is a UNIX timestamp. Unit: seconds.
+	// The end time of the attack. The time is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1637554034
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the DDoS attack event. Valid values:
+	// The current status of the attack event. Valid values:
 	//
-	// 	- **hole_begin**: indicates that blackhole filtering is triggered for the attacked IP address.
+	// - **hole_begin**: Indicates that the attacked IP address is in the blackhole filtering status.
 	//
-	// 	- **hole_end**: indicates that blackhole filtering is deactivated for the attacked IP address.
+	// - **hole_end**: Indicates that the attacked IP address is removed from the blackhole filtering status.
 	//
-	// 	- **defense_begin**: indicates that attack traffic is being scrubbed.
+	// - **defense_begin**: Indicates that the system scrubs traffic.
 	//
-	// 	- **defense_end**: indicates that attack traffic is scrubbed.
+	// - **defense_end**: Indicates that the attack ends and the system scrubs traffic no more.
 	//
 	// example:
 	//

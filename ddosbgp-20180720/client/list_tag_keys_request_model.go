@@ -22,19 +22,19 @@ type iListTagKeysRequest interface {
 }
 
 type ListTagKeysRequest struct {
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. Pages start from **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page. Valid values: 1 to **50**. Default value: **10**.
+	// The paging Settings for the number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region that you want to query.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type ListTagKeysRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource type. Set the value to **INSTANCE**.
+	// The resource type. Valid values: **INSTANCE**.
 	//
 	// This parameter is required.
 	//

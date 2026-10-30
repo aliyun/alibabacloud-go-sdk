@@ -32,7 +32,7 @@ type iDescribeOpEntitiesRequest interface {
 }
 
 type DescribeOpEntitiesRequest struct {
-	// The page number.
+	// The paging Settings for the current page number in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeOpEntitiesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time. Operation logs that were generated before this time are queried.***	- The value is a UNIX timestamp. Unit: milliseconds.
+	// The end of the time range to query. The value is a UNIX timestamp in milliseconds. Operation logs generated before this time are queried.
 	//
 	// This parameter is required.
 	//
@@ -48,61 +48,61 @@ type DescribeOpEntitiesRequest struct {
 	//
 	// 1640880000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance to query.
+	// The ID of the Anti-DDoS Origin instance to query.
 	//
-	// > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
 	//
 	// example:
 	//
 	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the operation. Valid values:
+	// The operation type. Valid values:
 	//
-	// 	- **3**: Add an IP address to the instance.
+	// - **3**: attach an IP address
 	//
-	// 	- **4**: Remove an IP address from the instance.
+	// - **4**: unbind an IP address
 	//
-	// 	- **5**: Downgrade the instance.
+	// - **5**: decrease the quota
 	//
-	// 	- **6**: Deactivate blackhole filtering.
+	// - **6**: deactivate blackhole filtering
 	//
-	// 	- **7**: Reset the number of times that you can deactivate blackhole filtering.
+	// - **7**: Reset quota on blackhole filtering deactivation
 	//
-	// 	- **8**: Restore the mitigation capability.
+	// - **8**: recover burstable protection
 	//
-	// 	- **9**: Add an asset group.
+	// - **9**: add an Asset group
 	//
-	// 	- **10**: Remove an asset group.
+	// - **10**: delete an Asset group
 	//
-	// 	- **11**: Enable the metering method of daily 95th percentile for the burstable clean bandwidth feature.
+	// - **11**: enable daily 95th percentile bandwidth
 	//
-	// 	- **12**: Enable the metering method of monthly 95th percentile for the burstable clean bandwidth feature.
+	// - **12**: enable monthly 95th percentile bandwidth
 	//
-	// 	- **13**: Periodically switch between the metering methods of daily 95th percentile and monthly 95th percentile for the burstable clean bandwidth feature.
+	// - **13**: periodically switch between daily and monthly 95th percentile bandwidth patterns
 	//
-	// 	- **14**: Disable the metering method of daily 95th percentile for the burstable clean bandwidth feature.
+	// - **14**: shutdown daily 95th percentile bandwidth
 	//
-	// 	- **15**: Disable the metering method of monthly 95th percentile for the burstable clean bandwidth feature.
+	// - **15**: shutdown monthly 95th percentile bandwidth
 	//
-	// 	- **16**: Disable burstable clean bandwidth due to overdue payments.
+	// - **16**: shutdown burstable clean bandwidth due to overdue payments
 	//
-	// 	- **17**: Disable burstable clean bandwidth due to instance expiration.
+	// - **17**: shutdown burstable clean bandwidth when they expire
 	//
 	// example:
 	//
 	// 3
 	OpAction *int32 `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
-	// The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
+	// The field by which to sort the operation logs. Set the value to **opdate**, which indicates that the operation logs are sorted by operation time.
 	//
 	// example:
 	//
 	// opdate
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The sort order of operation logs. Valid values:
+	// The sort order of the operation logs. Valid values:
 	//
-	// 	- **ASC**: the ascending order.
+	// - **ASC**: ascending order
 	//
-	// 	- **DESC**: the descending order.
+	// - **DESC**: descending order
 	//
 	// Default value: **DESC**.
 	//
@@ -110,7 +110,7 @@ type DescribeOpEntitiesRequest struct {
 	//
 	// ASC
 	OrderDir *string `json:"OrderDir,omitempty" xml:"OrderDir,omitempty"`
-	// The number of entries per page. Maximum value: 50.
+	// The paging Settings for the number of Operation logs per page in a paged query. Maximum value: 50.
 	//
 	// This parameter is required.
 	//
@@ -118,23 +118,23 @@ type DescribeOpEntitiesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID of the Anti-DDoS Origin instance.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the IDs of all regions supported by Anti-DDoS Origin.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs in Resource Management.
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
-	// If you do not specify this parameter, the instance belongs to the default resource group.
+	// If you do not specify this parameter, the default resource group is used.
 	//
 	// example:
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The start time. Operation logs that were generated after this time are queried.***	- The value is a UNIX timestamp. Unit: milliseconds.
+	// The beginning of the time range to query. The value is a UNIX timestamp in milliseconds. Operation logs generated after this time are queried.
 	//
 	// This parameter is required.
 	//

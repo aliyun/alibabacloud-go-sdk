@@ -16,7 +16,7 @@ type iDescribeInstanceSpecsResponseBody interface {
 }
 
 type DescribeInstanceSpecsResponseBody struct {
-	// The specifications of the Anti-DDoS Origin instance, including whether best-effort protection is enabled, the number of available best-effort protection sessions, and the number of used best-effort protection sessions.
+	// The specification information of the Anti-DDoS Origin instance, including the enabling status of best-effort protection, and the available and used best-effort protection times.
 	InstanceSpecs []*DescribeInstanceSpecsResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,27 +66,27 @@ func (s *DescribeInstanceSpecsResponseBody) Validate() error {
 }
 
 type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
-	// The available best-effort protection sessions.
+	// The available best-effort protection times.
 	//
 	// example:
 	//
 	// 2
 	AvailableDefenseTimes *int32 `json:"AvailableDefenseTimes,omitempty" xml:"AvailableDefenseTimes,omitempty"`
-	// The number of times that blackhole filtering can be deactivated.
+	// The available quota for deactivating blackhole filtering.
 	//
 	// example:
 	//
 	// 100
 	AvailableDeleteBlackholeCount *string `json:"AvailableDeleteBlackholeCount,omitempty" xml:"AvailableDeleteBlackholeCount,omitempty"`
-	// The percentage of the used best-effort protection sessions. Unit: %.
+	// The usage percentage of best-effort protection times. Unit: %.
 	//
 	// example:
 	//
 	// 30
 	DefenseTimesPercent *int32 `json:"DefenseTimesPercent,omitempty" xml:"DefenseTimesPercent,omitempty"`
-	// Indicates whether the instance is downgraded. Valid value:
+	// The downgrade status of the instance. Valid values:
 	//
-	// 	- **8**: The instance is downgraded due to excessive bandwidth usage.
+	// - **8**: The instance is downgraded because the clean bandwidth exceeds the limit.
 	//
 	// example:
 	//
@@ -98,27 +98,27 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	//
 	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether best-effort protection is enabled. Valid values:
+	// Indicates whether best-effort protection mode is enabled for the instance. Valid values:
 	//
-	// 	- **0**: Best-effort protection is disabled.
+	// - **0**: Best-effort protection mode is disabled.
 	//
-	// 	- **1**: Best-effort protection is enabled.
+	// - **1**: Best-effort protection mode is enabled.
 	//
 	// example:
 	//
 	// 1
 	IsFullDefenseMode *int32 `json:"IsFullDefenseMode,omitempty" xml:"IsFullDefenseMode,omitempty"`
-	// The configurations of the Anti-DDoS Origin instance, including the number of protected IP addresses and protection bandwidth.
+	// The configuration information of the Anti-DDoS Origin instance, including the number of protected IP addresses and protection bandwidth information.
 	PackConfig *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig `json:"PackConfig,omitempty" xml:"PackConfig,omitempty" type:"Struct"`
 	// The region ID of the Anti-DDoS Origin instance.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the name of the region.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the details of region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The total best-effort protection sessions.
+	// The total available best-effort protection times.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig struct {
 	//
 	// 2
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The number of IP addresses that are protected by the Anti-DDoS Origin Enterprise instance.
+	// The number of protected IP addresses.
 	//
 	// example:
 	//
@@ -243,35 +243,35 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig struct {
 	//
 	// 100
 	ElasticBwMbps *int32 `json:"ElasticBwMbps,omitempty" xml:"ElasticBwMbps,omitempty"`
-	// The metering method of burstable clean bandwidth. Valid values:
+	// The burstable clean bandwidth mode. Valid values:
 	//
-	// 	- **month**: the monthly 95th percentile metering method.
+	// - **month**: Monthly 95th percentile metering method.
 	//
-	// 	- **day**: the daily 95th percentile metering method.
+	// - **day**: Daily 95th percentile metering method.
 	//
 	// example:
 	//
 	// day
 	ElasticBwMode *string `json:"ElasticBwMode,omitempty" xml:"ElasticBwMode,omitempty"`
-	// The burstable protection bandwidth of each protected IP address. Unit: Gbit/s.
+	// The burstable protection threshold for the protected IP address. Unit: Gbit/s.
 	//
 	// example:
 	//
 	// 300
 	IpAdvanceThre *int32 `json:"IpAdvanceThre,omitempty" xml:"IpAdvanceThre,omitempty"`
-	// The basic protection bandwidth of each protected IP address. Unit: Gbit/s.
+	// The basic protection threshold for the protected IP address. Unit: Gbit/s.
 	//
 	// example:
 	//
 	// 20
 	IpBasicThre *int32 `json:"IpBasicThre,omitempty" xml:"IpBasicThre,omitempty"`
-	// The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
+	// The number of IP addresses that can be added for protection.
 	//
 	// example:
 	//
 	// 100
 	IpSpec *int32 `json:"IpSpec,omitempty" xml:"IpSpec,omitempty"`
-	// The clean bandwidth. Unit: Mbit/s.
+	// The normal clean bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//

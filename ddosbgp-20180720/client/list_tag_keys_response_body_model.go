@@ -28,21 +28,21 @@ type ListTagKeysResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 97935DF1-0289-4AA2-9DD1-72377838B16B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the tags.
+	// The tag information.
 	TagKeys []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
-	// The total number of tags returned.
+	// The total number of tags.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListTagKeysResponseBody) Validate() error {
 }
 
 type ListTagKeysResponseBodyTagKeys struct {
-	// The total number of tag values that correspond to each key.
+	// The total number of tag values for the tag key.
 	//
 	// example:
 	//

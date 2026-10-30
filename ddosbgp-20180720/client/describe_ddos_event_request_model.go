@@ -28,7 +28,7 @@ type iDescribeDdosEventRequest interface {
 }
 
 type DescribeDdosEventRequest struct {
-	// The end time of the DDoS attack events to query. This value is a UNIX timestamp. Unit: seconds.
+	// The end time of the DDoS attack events to query. The time is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeDdosEventRequest struct {
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the Anti-DDoS Origin instance to query.
 	//
-	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+	// > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeDdosEventRequest struct {
 	//
 	// 47.89.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The page number.
+	// The Settings for the page number of the current page during paging in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type DescribeDdosEventRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The Settings for the number of DDoS attack events to return on each page during paging in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ type DescribeDdosEventRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the Anti-DDoS Origin instance resides.
+	// The region ID of the Anti-DDoS Origin instance.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all region IDs supported by Anti-DDoS Origin.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type DescribeDdosEventRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
-	// If you do not specify this parameter, the instance belongs to the default resource group.
+	// If you do not specify this parameter, the default resource group is used.
 	//
 	// example:
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The start time of the DDoS attack events to query. This value is a UNIX timestamp. Unit: seconds.
+	// The start time of the DDoS attack events to query. The time is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

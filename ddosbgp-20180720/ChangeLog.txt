@@ -1,3 +1,7 @@
+2026-10-30 Version: v4.2.0
+- Support API MoveIp.
+
+
 2026-09-20 Version: v4.1.1
 - Update API DescribeNetworkLayerIntercepts: add request parameters InterceptModule.
 - Update API ListPolicy: add response parameters Body.PolicyList.$.Content.FingerPrintRuleList.$.Comment.
