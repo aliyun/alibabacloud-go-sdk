@@ -64,9 +64,9 @@ type DescribeLoadBalancersRequest struct {
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	// The listener status of the load balancing instance. Valid values:
 	//
-	// - **Active**: The listeners in the instance can forward accepted traffic based on rules.
+	// - **Active**: The listeners in the instance can accept and forward traffic based on rules.
 	//
-	// - **InActive**: The listeners in the instance no longer forward accepted traffic.
+	// - **InActive**: The listeners in the instance no longer accept and forward traffic.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type DescribeLoadBalancersRequest struct {
 	//
 	// n-5s9ayrxsd9hszrlt5fgv2****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The page number of the list. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The Settings for the number of entries per page during paging in a paged query. Default value: 10. Valid values: **10*	- to **100**.
+	// The Settings for the number of entries per page for paging in a paged query. Default value: 10. Valid values: **10*	- to **100**.
 	//
 	// example:
 	//

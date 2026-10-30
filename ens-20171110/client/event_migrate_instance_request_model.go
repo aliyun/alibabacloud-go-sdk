@@ -28,11 +28,11 @@ type iEventMigrateInstanceRequest interface {
 type EventMigrateInstanceRequest struct {
   // The data migration policy. Valid values:
   // 
-  // - `abandon`: Does not migrate data. This is the default value.
+  // - abandon: Does not migrate data. This is the default value.
   // 
-  // - `force_transfer`: Forces data migration.
+  // - force_transfer: forcible migration of EPS resource.
   // 
-  // - `try_transfer`: Attempts to migrate data.
+  // - try_transfer: Attempts to migrate data.
   // 
   // example:
   // 
@@ -46,11 +46,11 @@ type EventMigrateInstanceRequest struct {
   // 
   // e-d71ff150945b9c02eb6ebc0016328468
   EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-  // The type of the O\\&M task. Valid values:
+  // The type of the O&M task. Valid values:
   // 
-  // - `immediate`: Executes the task immediately.
+  // - immediate: Executes the task immediately.
   // 
-  // - `scheduled`: Executes the task at the specified time.
+  // - scheduled: Executes the task at a scheduled time.
   // 
   // This parameter is required.
   // 
@@ -58,22 +58,25 @@ type EventMigrateInstanceRequest struct {
   // 
   // immediate
   OpsType *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
-  // The instance password. This parameter is optional. If you do not specify a password, the system generates a random one.
+  // The instance password. This parameter is optional. If you do not specify this parameter, a random password is used.
   // 
-  // The password must be 8 to 30 characters long and contain uppercase letters, lowercase letters, and digits.
+  // The password must be 8 to 30 characters in length and must contain uppercase letters, lowercase letters, and digits.
   // 
-  // Note: This parameter is not supported for scheduled execution.
+  // Note: You cannot specify a password when you schedule the execution time.
   // 
   // example:
   // 
   // AAaa1234
   Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-  // The scheduled execution time. This must be a Unix timestamp in milliseconds. This parameter is required when `OpsType` is set to `scheduled`.
+  // The scheduled execution time. The value is a timestamp in milliseconds.
+  // 
+  // This parameter is required when OpsType is set to scheduled.
   // 
   // example:
   // 
   // 1742452232000
   PlanTime *int64 `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+  // The scheduled UTC time.
   PlanUtcTime *string `json:"PlanUtcTime,omitempty" xml:"PlanUtcTime,omitempty"`
   // The ID of the resource.
   // 

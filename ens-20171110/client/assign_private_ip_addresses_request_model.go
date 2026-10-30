@@ -16,7 +16,7 @@ type iAssignPrivateIpAddressesRequest interface {
 }
 
 type AssignPrivateIpAddressesRequest struct {
-	// The ID of the ENI.
+	// The ID of the elastic network interface controller (NIC).
 	//
 	// This parameter is required.
 	//

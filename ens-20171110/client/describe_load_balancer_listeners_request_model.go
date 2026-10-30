@@ -22,19 +22,19 @@ type iDescribeLoadBalancerListenersRequest interface {
 }
 
 type DescribeLoadBalancerListenersRequest struct {
-	// The description of the image.
+	// The description of the listener.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The listener port.
+	// The frontend port used by the load balancing instance. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
 	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the ELB instance.
+	// The ID of the load balancing instance.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type DescribeLoadBalancerListenersRequest struct {
 	//
 	// lb-5s7crik3yo3p5****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page during paging in a paged query.
 	//
 	// example:
 	//

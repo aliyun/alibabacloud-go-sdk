@@ -16,7 +16,7 @@ type iSetLoadBalancerStatusRequest interface {
 }
 
 type SetLoadBalancerStatusRequest struct {
-	// The ID of the ELB instance.
+	// The instance ID of the load balancing instance.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type SetLoadBalancerStatusRequest struct {
 	//
 	// lb-5t18quoohsrc3xkf86sp*****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The new instance status. Valid values:
+	// The updated instance status. Valid values:
 	//
-	// - **Active**
+	// - **Active**: Runs the load balancing instance. Listeners in the instance can forward accepted traffic based on rules.
 	//
-	// - **InActive**
+	// - **InActive**: Stops the load balancing instance. Listeners in the instance no longer forward accepted traffic.
 	//
 	// This parameter is required.
 	//

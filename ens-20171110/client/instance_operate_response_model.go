@@ -18,9 +18,12 @@ type iInstanceOperateResponse interface {
 }
 
 type InstanceOperateResponse struct {
-	Code       *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// code
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// instance id
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s InstanceOperateResponse) String() string {

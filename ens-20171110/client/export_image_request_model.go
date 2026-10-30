@@ -22,7 +22,7 @@ type iExportImageRequest interface {
 }
 
 type ExportImageRequest struct {
-  // The ID of the image.
+  // The image ID.
   // 
   // This parameter is required.
   // 
@@ -30,7 +30,7 @@ type ExportImageRequest struct {
   // 
   // m-5ragaz3s74b7go8ks7jp9****
   ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-  // The OSS bucket to which you want to export the image.
+  // The OSS bucket used to store the exported image.
   // 
   // This parameter is required.
   // 
@@ -38,7 +38,7 @@ type ExportImageRequest struct {
   // 
   // whxyl****
   OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
-  // The prefix of the object as which you want to store the image in the OSS bucket. The prefix must be 1 to 30 characters in length and can contain digits and letters.
+  // The prefix of the OSS object. The prefix must be 1 to 30 characters in length and can contain letters and digits.
   OSSPrefix *string `json:"OSSPrefix,omitempty" xml:"OSSPrefix,omitempty"`
   // The region ID.
   // 
@@ -48,7 +48,7 @@ type ExportImageRequest struct {
   // 
   // cn-beijing
   OSSRegionId *string `json:"OSSRegionId,omitempty" xml:"OSSRegionId,omitempty"`
-  // The name of the Resource Access Management (RAM) role.
+  // The name of the authorized role.
   // 
   // example:
   // 

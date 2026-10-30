@@ -16,7 +16,7 @@ type iAttachNetworkInterfaceRequest interface {
 }
 
 type AttachNetworkInterfaceRequest struct {
-	// The ID of the instance
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type AttachNetworkInterfaceRequest struct {
 	//
 	// i-5p67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the ENI.
+	// The ID of the elastic network interfaces (ENIs).
 	//
 	// This parameter is required.
 	//

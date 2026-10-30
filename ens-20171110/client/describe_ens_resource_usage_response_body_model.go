@@ -66,7 +66,7 @@ func (s *DescribeEnsResourceUsageResponseBody) Validate() error {
 }
 
 type DescribeEnsResourceUsageResponseBodyEnsResourceUsage struct {
-	// The number of edge services. This parameter is available only when you set the ServiceType parameter to 2.
+	// The number of edge services. This field returns data only when ServiceType is set to 2.
 	//
 	// example:
 	//
@@ -78,25 +78,25 @@ type DescribeEnsResourceUsageResponseBodyEnsResourceUsage struct {
 	//
 	// 2
 	CpuSum *int64 `json:"CpuSum,omitempty" xml:"CpuSum,omitempty"`
-	// The number of data disks.
+	// The number of data cloud disks.
 	//
 	// example:
 	//
 	// 4
 	DiskCount *int32 `json:"DiskCount,omitempty" xml:"DiskCount,omitempty"`
-	// The number of stopped VMs.
+	// The number of stopped virtual machine instances.
 	//
 	// example:
 	//
 	// 7
 	DownCount *int32 `json:"DownCount,omitempty" xml:"DownCount,omitempty"`
-	// The number of expired VM instances.
+	// The number of expired virtual machine instances.
 	//
 	// example:
 	//
 	// 1
 	ExpiredCount *int32 `json:"ExpiredCount,omitempty" xml:"ExpiredCount,omitempty"`
-	// The number of VM instances that are about to expire.
+	// The number of virtual machine instances that are about to expire.
 	//
 	// example:
 	//
@@ -120,19 +120,19 @@ type DescribeEnsResourceUsageResponseBodyEnsResourceUsage struct {
 	//
 	// 19
 	RunningCount *int32 `json:"RunningCount,omitempty" xml:"RunningCount,omitempty"`
-	// The type of the service. Valid values:
+	// The service type. Valid values:
 	//
-	// - 1: subscription instance.
+	// - 1: Subscription instance.
 	//
-	// - 2: edge service instance.
+	// - 2: Edge service instance.
 	//
-	// - 3: pay-as-you-go instance.
+	// - 3: Pay-as-you-go instance.
 	//
 	// example:
 	//
 	// 1
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The total disk size.
+	// The total disk storage capacity.
 	//
 	// example:
 	//

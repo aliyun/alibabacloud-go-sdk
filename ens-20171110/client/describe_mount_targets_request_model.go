@@ -38,19 +38,19 @@ type DescribeMountTargetsRequest struct {
 	//
 	// c50f8*****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The mount target name.
+	// The name of the mount target.
 	//
 	// example:
 	//
 	// TestMountPath
 	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
-	// The page number, starting from 1. Default value: 1.
+	// The page number. Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page, with a maximum value of 100. Default value: 10.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//

@@ -56,7 +56,7 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	//
 	// 192.168.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The IP version of the load balancing instance. Valid values: ipv4 or ipv6.
+	// The IP version of the load balancing instance. Valid values: ipv4 and ipv6.
 	//
 	// example:
 	//
@@ -70,25 +70,25 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The list of backend servers.
 	BackendServers []*DescribeLoadBalancerAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
-	// The peak bandwidth of the load balancing instance. The default value is -1, which indicates that bandwidth is not throttled.
+	// The peak bandwidth of the load balancing instance. Default value: -1, which indicates that bandwidth is not throttled.
 	//
 	// example:
 	//
 	// -1
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The creation time of the load balancing instance (UTC).
+	// The time when the load balancing instance was created. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2019-05-21T12:22:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time of the load balancing instance in ISO 8601 UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The expiration time of the load balancing instance. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2020-05-21T12:22:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ENS node ID.
+	// The ID of the ENS edge zone.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	//
 	// example
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The specification of the load balancing instance.
+	// The specifications of the load balancing instance.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
 	// The listener status of the load balancing instance. Valid values:
 	//
-	// - **Active**: The listeners of the instance can forward received traffic based on rules.
+	// - **Active**: The listeners in the instance can forward accepted traffic based on rules.
 	//
-	// - **InActive**: The listeners of the instance no longer forward received traffic.
+	// - **InActive**: The listeners in the instance no longer forward accepted traffic.
 	//
 	// example:
 	//
@@ -472,7 +472,7 @@ type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols struct {
 	//
 	// 0
 	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	// Indicates whether listener forwarding is enabled.
+	// Specifies whether listener forwarding is enabled.
 	//
 	// example:
 	//

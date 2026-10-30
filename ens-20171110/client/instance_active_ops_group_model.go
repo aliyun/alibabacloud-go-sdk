@@ -14,6 +14,7 @@ type iInstanceActiveOpsGroup interface {
 }
 
 type InstanceActiveOpsGroup struct {
+	// the instance list of instance active group
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 

@@ -26,9 +26,9 @@ type DescribeKeyPairsRequest struct {
 	//
 	// ssh-50cynkq42sgj4ej1tn78t4***
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The name of the key pair that you want to bind to the simple application server. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain the following characters:
+	// The name of the key pair. The name must be 2 to 128 characters in length and can contain letters and Chinese characters. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain the following characters:
 	//
-	// - Numbers.
+	// - Digits
 	//
 	// - :
 	//
@@ -36,19 +36,19 @@ type DescribeKeyPairsRequest struct {
 	//
 	// - .
 	//
-	// You can specify only one name. By default, all key pairs are queried.
+	// Only a single name is supported. By default, information about all key pairs is queried.
 	//
 	// example:
 	//
 	// TestKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The page number of the returned page. Valid values: integers that are greater than 0. Default value: 1.
+	// The page number. Valid values: integers greater than 0. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: integers that are greater than 0. Default value: 10.
+	// The paging Settings for the number of entries per page in a paged query. Valid values: integers greater than 0. Default value: 10.
 	//
 	// example:
 	//

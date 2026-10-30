@@ -14,7 +14,7 @@ type iStopEpnInstanceRequest interface {
 }
 
 type StopEpnInstanceRequest struct {
-	// The ID of the EPN instance.
+	// The edge-to-edge network instance ID.
 	//
 	// This parameter is required.
 	//

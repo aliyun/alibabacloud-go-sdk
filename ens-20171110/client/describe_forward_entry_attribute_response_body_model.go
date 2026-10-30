@@ -40,23 +40,23 @@ type iDescribeForwardEntryAttributeResponseBody interface {
 }
 
 type DescribeForwardEntryAttributeResponseBody struct {
-	// The creation time in UTC.
+	// The time when the DNAT entry was created. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-04-26T15:38:27Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The Elastic IP Address (EIP) that provides public network access in the DNAT entry.
+	// The elastic IP address (EIP) that provides public network access in the DNAT entry.
 	//
 	// example:
 	//
 	// 36.XXX.XXX.72
 	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	// The external port or port range for port forwarding.
+	// The external port or port range used for port forwarding.
 	//
-	// - The port range must be between 1 and 65535.
+	// - The port range must be from 1 to 65535.
 	//
-	// - To forward a port range, separate the start and end ports with a forward slash (/), such as 10/20.
+	// - To forward traffic within a port range, separate the start port and the end port with a forward slash (/). Example: 10/20.
 	//
 	// example:
 	//
@@ -74,23 +74,23 @@ type DescribeForwardEntryAttributeResponseBody struct {
 	//
 	// test0
 	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
-	// The probe port for DNAT. It must fall within the internal port range. The default value is empty.
+	// The health check port for the DNAT entry. The port must be within the internal port range. Default value: null.
 	//
 	// example:
 	//
 	// 80
 	HealthCheckPort *string `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	// The private IP address of the instance that communicates over the public network through the DNAT entry.
+	// The private IP address of the instance that communicates with the Internet through the DNAT entry.
 	//
 	// example:
 	//
 	// 10.XXX.XXX.50
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	// The internal port or port range for port forwarding.
+	// The internal port or port range used for port forwarding.
 	//
-	// - The port range must be between 1 and 65535.
+	// - The port range must be from 1 to 65535.
 	//
-	// - To forward a port range, separate the start and end ports with a forward slash (/), such as 10/20.
+	// - To forward traffic within a port range, separate the start port and the end port with a forward slash (/). Example: 10/20.
 	//
 	// example:
 	//
@@ -98,17 +98,17 @@ type DescribeForwardEntryAttributeResponseBody struct {
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// - **TCP**: Forwards TCP messages.
+	// - **TCP**: Forwards TCP packets.
 	//
-	// - **UDP**: Forwards UDP messages.
+	// - **UDP**: Forwards UDP packets.
 	//
-	// - **Any**: Forwards messages of all protocols.
+	// - **Any**: Forwards packets of all protocols.
 	//
 	// example:
 	//
 	// Any
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The ID of the NAT Gateway.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
@@ -120,33 +120,33 @@ type DescribeForwardEntryAttributeResponseBody struct {
 	//
 	// 6666C5A5-75ED-422E-A022-7121FA18C968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The standby Elastic IP Address (EIP) that provides public network access. You must select a standby EIP attached to the NAT Gateway. The standby public IP becomes active after the DNAT entry is created.
+	// The standby elastic IP address (EIP) that provides public network access. You must select a standby EIP that is attached to the NAT gateway. The standby public IP address takes effect after the DNAT entry is created.
 	//
 	// example:
 	//
 	// 101.XXX.XXX.4
 	StandbyExternalIp *string `json:"StandbyExternalIp,omitempty" xml:"StandbyExternalIp,omitempty"`
-	// The status of the standby EIP.
+	// The status of the standby EIP. Valid values:
 	//
-	// - Running: Enabled.
+	// - Running: The standby EIP is enabled.
 	//
-	// - Stopping: Being disabled.
+	// - Stopping: The standby EIP is being disabled.
 	//
-	// - Stopped: Disabled.
+	// - Stopped: The standby EIP is disabled.
 	//
-	// - Starting: Being enabled.
+	// - Starting: The standby EIP is being enabled.
 	//
 	// example:
 	//
 	// Stopped
 	StandbyStatus *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
-	// The status of the DNAT entry.
+	// The status of the DNAT entry. Valid values:
 	//
-	// - Pending: The configuration is in progress, such as during creation or modification.
+	// - Pending: The DNAT entry is being configured. It may be being created or modified.
 	//
-	// - Available: The entry is active.
+	// - Available: The DNAT entry is available.
 	//
-	// - Deleting: The entry is being deleted.
+	// - Deleting: The DNAT entry is being deleted.
 	//
 	// example:
 	//

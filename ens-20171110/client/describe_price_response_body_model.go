@@ -16,9 +16,9 @@ type iDescribePriceResponseBody interface {
 }
 
 type DescribePriceResponseBody struct {
-	// The price information.
+	// The price information list.
 	PriceInfo *DescribePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DescribePriceResponseBody) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfo struct {
-	// The price.
+	// The price information.
 	Price *DescribePriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
 }
 
@@ -93,11 +93,13 @@ func (s *DescribePriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfoPrice struct {
-	// The type of currency.
+	// The currency. Valid values:
 	//
-	// - USD: US dollar
+	// <props="china">- CNY: Chinese yuan.
 	//
-	// - JPY: Japanese Yen
+	// - USD: US dollar.
+	//
+	// - JPY: Japanese yen.
 	//
 	// example:
 	//
@@ -115,7 +117,7 @@ type DescribePriceResponseBodyPriceInfoPrice struct {
 	//
 	// 16125.00
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The final price.
+	// The transaction price.
 	//
 	// example:
 	//

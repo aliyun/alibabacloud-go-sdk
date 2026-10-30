@@ -18,7 +18,7 @@ type iAssociateHaVipRequest interface {
 }
 
 type AssociateHaVipRequest struct {
-	// The ID of the HAVIP.
+	// The ID of the HaVip instance to be associated.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type AssociateHaVipRequest struct {
 	//
 	// havip-5p14t****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,11 @@ type AssociateHaVipRequest struct {
 	//
 	// i-50c4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance to be associated with the HAVIP. Valid values:
+	// The type of the instance with which you want to associate the HaVip. Valid values:
 	//
-	// - EnsInstance (default): ENS instance
+	// - EnsInstance: ENS instance. This is the default value.
 	//
-	// - NetworkInterface: elastic network interface (ENI)
+	// - NetworkInterface: elastic network interface controller (NIC). If the instance with which you want to associate the HaVip is an elastic network interface controller (NIC), you must specify this parameter.
 	//
 	// example:
 	//

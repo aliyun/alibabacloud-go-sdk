@@ -16,7 +16,9 @@ type iInstanceActiveOpsTask interface {
 }
 
 type InstanceActiveOpsTask struct {
-	InstanceActiveOpsTaskId     *string `json:"InstanceActiveOpsTaskId,omitempty" xml:"InstanceActiveOpsTaskId,omitempty"`
+	// instance active ops task id
+	InstanceActiveOpsTaskId *string `json:"InstanceActiveOpsTaskId,omitempty" xml:"InstanceActiveOpsTaskId,omitempty"`
+	// the status of instance active ops task
 	InstanceActiveOpsTaskStatus *string `json:"InstanceActiveOpsTaskStatus,omitempty" xml:"InstanceActiveOpsTaskStatus,omitempty"`
 }
 

@@ -18,7 +18,7 @@ type iAttachKeyPairRequest interface {
 }
 
 type AttachKeyPairRequest struct {
-	// A list of instance IDs.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type AttachKeyPairRequest struct {
 	//
 	// ssh-xxx
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The key pair name.
+	// The name of the key pair.
 	//
 	// if can be null:
 	// true

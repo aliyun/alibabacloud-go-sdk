@@ -18,19 +18,19 @@ type iAttachDiskRequest interface {
 }
 
 type AttachDiskRequest struct {
-	// Specifies whether the disk to be attached is released with the instance. Valid values:
+	// Specifies whether the cloud disk to be mounted is released when the instance is released. Valid values:
 	//
-	// - true: The disk will be released when the ECS instance is released.
+	// - true: The cloud disk is released when the instance is released.
 	//
-	// - false: The disk will be retained when the ECS instance is released.
+	// - false: The cloud disk is retained when the instance is released.
 	//
-	// - If you leave this parameter empty, the default value is used.
+	// - Empty: The default value is false.
 	//
 	// example:
 	//
 	// false
 	DeleteWithInstance *string `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The ID of the disk to be attached. The cloud disk and the instance must belong to the same node.
+	// The ID of the cloud disk to mount. The cloud disk and the instance must be in the same edge zone.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type AttachDiskRequest struct {
 	//
 	// d-5saf13yy6sopmmg88mzsg****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

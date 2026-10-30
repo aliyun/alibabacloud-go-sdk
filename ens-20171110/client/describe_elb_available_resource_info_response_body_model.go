@@ -18,7 +18,7 @@ type iDescribeElbAvailableResourceInfoResponseBody interface {
 type DescribeElbAvailableResourceInfoResponseBody struct {
 	// The collection of resource information.
 	ElbAvailableResourceInfo []*DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo `json:"ElbAvailableResourceInfo,omitempty" xml:"ElbAvailableResourceInfo,omitempty" type:"Repeated"`
-	// The common parameter. The ID of the request. Each request has a unique ID, which is active for troubleshooting.
+	// The common parameter. The ID of each request is unique and active for troubleshooting and locating issues.
 	//
 	// example:
 	//
@@ -73,7 +73,7 @@ type DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo struct
 	//
 	// SouthEast
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The quantity available for purchase.
+	// The Quantity available for purchase.
 	//
 	// example:
 	//
@@ -85,7 +85,7 @@ type DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo struct
 	//
 	// cn-guangdong-10
 	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	// The ID of the ENS edge zone.
+	// The edge zone ID.
 	//
 	// example:
 	//

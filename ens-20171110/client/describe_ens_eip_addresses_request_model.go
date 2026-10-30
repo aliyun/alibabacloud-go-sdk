@@ -38,7 +38,7 @@ type iDescribeEnsEipAddressesRequest interface {
 }
 
 type DescribeEnsEipAddressesRequest struct {
-	// The ID of the EIP instance to query. You can specify up to 50 EIP instance IDs separated by commas (,).
+	// The ID of the EIP instance. You can specify up to 50 EIP instance IDs. Separate multiple instance IDs with commas (,).
 	//
 	// example:
 	//
@@ -50,17 +50,17 @@ type DescribeEnsEipAddressesRequest struct {
 	//
 	// lb-5t18quoohsrc3xkf86spmnu77
 	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
-	// The type of the cloud service instance to associate. Valid values:
+	// The type of the cloud service instance to attach. Valid values:
 	//
-	// - **EnsInstance**: a VPC-type ENS instance.
+	// - **EnsInstance**: ENS instance in a VPC.
 	//
-	// - **SlbInstance**: a load balancing instance.
+	// - **SlbInstance**: load balancing instance.
 	//
 	// example:
 	//
 	// SlbInstance
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	// The IP address of the EIP to query. You can specify up to 50 EIP addresses separated by commas (,).
+	// The IP address of the EIP. You can specify up to 50 IP addresses. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
@@ -72,39 +72,39 @@ type DescribeEnsEipAddressesRequest struct {
 	//
 	// test
 	EipName *string `json:"EipName,omitempty" xml:"EipName,omitempty"`
-	// The ENS edge zone ID.
+	// The ID of the ENS edge zone.
 	//
 	// example:
 	//
 	// cn-chengdu-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The array of ENS edge zone IDs. Array length: 1 to 100.
+	// The array of ENS edge zone IDs. The array must contain 1 to 100 IDs.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	// Specifies whether ICMP echo reply is enabled. Valid values:
+	// Specifies whether to enable ICMP echo reply. Valid values:
 	//
-	// - **true*	- (default): enabled.
+	// - **true**: ICMP echo reply is enabled. This is the default value.
 	//
-	// - **false**: disabled.
+	// - **false**: ICMP echo reply is disabled.
 	//
 	// example:
 	//
 	// false
 	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
-	// The lock type.
+	// The lock reason. Valid values:
 	//
-	// - financial: locked due to overdue payment.
+	// - **financial**: The EIP is locked due to an overdue payment.
 	//
 	// example:
 	//
 	// financial
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The page number of the list. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+	// The number of entries per page in a paging query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
@@ -112,15 +112,23 @@ type DescribeEnsEipAddressesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Specifies whether the EIP is a standby EIP. Valid values:
 	//
-	// - **true**: standby.
+	// - **true**: The EIP is a standby EIP.
 	//
-	// - **false**: not standby.
+	// - **false**: The EIP is not a standby EIP.
 	//
 	// example:
 	//
 	// true
 	Standby *string `json:"Standby,omitempty" xml:"Standby,omitempty"`
-	// The status of the EIP. Valid values: Associating: being associated. Unassociating: being disassociated. InUse: allocated. Available: available.
+	// The status of the EIP. Valid values:
+	//
+	// - **Associating**: The EIP is being associated.
+	//
+	// - **Unassociating**: The EIP is being disassociated.
+	//
+	// - **InUse**: The EIP is allocated.
+	//
+	// - **Available**: The EIP is available.
 	//
 	// example:
 	//

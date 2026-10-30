@@ -22,27 +22,27 @@ type iDescribeLoadBalancerSpecResponseBody interface {
 }
 
 type DescribeLoadBalancerSpecResponseBody struct {
-	// The specifications. Valid values:
+	// The specifications.
 	LoadBalancerSpecs []*DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs `json:"LoadBalancerSpecs,omitempty" xml:"LoadBalancerSpecs,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the instance list.
 	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 100. Default value: 10.
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeLoadBalancerSpecResponseBody) Validate() error {
 }
 
 type DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs struct {
-	// The display name of the instance type.
+	// The display name of the instance specification.
 	//
 	// example:
 	//
 	// elb.s1.small
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The specifications of the ELB instance.
+	// The specification of the load balancing instance.
 	//
 	// example:
 	//

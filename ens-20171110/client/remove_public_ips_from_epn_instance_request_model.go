@@ -16,7 +16,7 @@ type iRemovePublicIpsFromEpnInstanceRequest interface {
 }
 
 type RemovePublicIpsFromEpnInstanceRequest struct {
-	// The ID of the EPN instance.
+	// The edge-to-edge communication instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type RemovePublicIpsFromEpnInstanceRequest struct {
 	//
 	// epn-xxxx
 	EPNInstanceId *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
-	// The information about the public IP addresses that you want to delete.
+	// The information about the public IP addresses to be removed.
 	//
 	// This parameter is required.
 	//

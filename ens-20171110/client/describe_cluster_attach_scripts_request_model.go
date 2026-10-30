@@ -18,7 +18,7 @@ type iDescribeClusterAttachScriptsRequest interface {
 }
 
 type DescribeClusterAttachScriptsRequest struct {
-	// The ID of the ECK cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeClusterAttachScriptsRequest struct {
 	//
 	// eck-11111111
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the node pool to which the node will be added.
+	// The node pool ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeClusterAttachScriptsRequest struct {
 	//
 	// np68mi5y1dd748ky37ojo2kqdrz
 	NodepoolId *string `json:"NodepoolId,omitempty" xml:"NodepoolId,omitempty"`
-	// Optional parameters for the script, provided as a JSON string.
+	// The optional parameters.
 	//
 	// example:
 	//

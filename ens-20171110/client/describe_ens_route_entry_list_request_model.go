@@ -30,65 +30,65 @@ type iDescribeEnsRouteEntryListRequest interface {
 }
 
 type DescribeEnsRouteEntryListRequest struct {
-	// The destination Classless Inter-Domain Routing (CIDR) block of the route entry.
+	// The destination CIDR block of the route entry.
 	//
 	// example:
 	//
 	// 11.0.0.0/16
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the next hop.
+	// The instance ID of the next hop.
 	//
 	// example:
 	//
 	// i-2zecshuv3axtr2gc4noa
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The type of next hop of the custom route entry. Valid values:
+	// The type of the next hop for a custom route entry. Valid values:
 	//
-	// - Instance (default): an ENS instance.
+	// - Instance (default): ENS instance.
 	//
-	// - HaVip: a high-availability virtual IP address (HAVIP).
+	// - HaVip: high-availability virtual IP address.
 	//
-	// - NetworkPeer: VPC peering connection.
+	// - NetworkPeer: network peering connection.
 	//
 	// example:
 	//
 	// Instance
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The page number of the returned page. Valid values: integers that are greater than 0. Default value: 1.
+	// The page number of the list to query. Valid values: greater than 0. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Valid values: 10 to 100.
+	// The number of entries per page in a paging query. Valid values: 10 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the route that you want to query.
+	// The ID of the route entry.
 	//
 	// example:
 	//
 	// rte-8vbdw66evgv44u2u7v3hx
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	// The name of the route.
+	// The name of the route entry.
 	//
 	// example:
 	//
 	// test0
 	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	// The route type. Valid values:
+	// The type of the routing entry. Valid values:
 	//
-	// - Custom: custom route
+	// - Custom: custom route.
 	//
-	// - System: system route
+	// - System: system route.
 	//
 	// example:
 	//
 	// Custom
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
-	// The ID of the route table that you want to query.
+	// The ID of the route table.
 	//
 	// example:
 	//

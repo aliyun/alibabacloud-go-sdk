@@ -16,7 +16,7 @@ type iUnassociateHaVipRequest interface {
 }
 
 type UnassociateHaVipRequest struct {
-	// The ID of the HAVIP that you want to disassociate.
+	// The ID of the HaVip to disassociate.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type UnassociateHaVipRequest struct {
 	//
 	// havip-5p14t****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
-	// The ID of the ENS instance or ENI that you want to disassociate from the HAVIP.
+	// The ID of the ENS instance or network interface controller (NIC) to disassociate from the HaVip.
 	//
 	// This parameter is required.
 	//

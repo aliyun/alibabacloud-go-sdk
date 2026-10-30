@@ -16,7 +16,7 @@ type iDescribeInstanceAutoRenewAttributeRequest interface {
 }
 
 type DescribeInstanceAutoRenewAttributeRequest struct {
-	// The ID of an instance. Separate multiple IDs with semicolons (;).
+	// The instance IDs. Separate multiple IDs with semicolons (;).
 	//
 	// This parameter is required.
 	//

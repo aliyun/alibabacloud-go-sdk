@@ -22,13 +22,13 @@ type iCreateEpnInstanceRequest interface {
 }
 
 type CreateEpnInstanceRequest struct {
-	// The name of the EPN instance.
+	// The name of the Edge-to-Edge network instance.
 	//
 	// example:
 	//
 	// test EPNInstanceName
 	EPNInstanceName *string `json:"EPNInstanceName,omitempty" xml:"EPNInstanceName,omitempty"`
-	// The type of the EPN instance. Set the value to **EdgeToEdge**.
+	// The type of the Edge-to-Edge communication instance. Valid value: **EdgeToEdge**.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type CreateEpnInstanceRequest struct {
 	//
 	// EdgeToEdge
 	EPNInstanceType *string `json:"EPNInstanceType,omitempty" xml:"EPNInstanceType,omitempty"`
-	// The billing method for network usage. Valid values:
+	// The network billing type. Valid values:
 	//
-	// - **BandwidthByDay**: Pay by daily peak bandwidth.
+	// - **BandwidthByDay**: Daily peak bandwidth.
 	//
-	// - **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth.
+	// - **95BandwidthByMonth**: Monthly 95th percentile peak bandwidth.
 	//
-	// - **PayByBandwidth4thMonth**: Pay by monthly fourth peak bandwidth.
+	// - **PayByBandwidth4thMonth**: Monthly fourth peak bandwidth.
 	//
-	// - **PayByBandwidth**: Pay by fixed bandwidth.
+	// - **PayByBandwidth**: Bandwidth with defined specifications.
 	//
-	// You can specify only one metering method for network usage and cannot overwrite the existing metering method.
+	// Only one of the Billable methods is supported. If a billing method already exists, the new value is invalid by default, and the existing one prevails.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateEpnInstanceRequest struct {
 	//
 	// BandwidthByDay
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 1 to 100.
+	// The maximum outbound bandwidth to the Internet. Unit: Mbit/s. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -64,11 +64,11 @@ type CreateEpnInstanceRequest struct {
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	// The networking mode. Valid values:
 	//
-	// - **SpeedUp**: intelligent acceleration network (Internet)
+	// - **SpeedUp**: Intelligent acceleration (Internet).
 	//
-	// - **Connection**: internal network
+	// - **Connection**: Internal network connectivity (internal network mode).
 	//
-	// - **SpeedUpAndConnection**: intelligent acceleration network and internal network
+	// - **SpeedUpAndConnection**: Intelligent acceleration and internal network connectivity (internal network mode).
 	//
 	// This parameter is required.
 	//

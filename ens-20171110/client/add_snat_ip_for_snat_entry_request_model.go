@@ -24,7 +24,7 @@ type AddSnatIpForSnatEntryRequest struct {
 	//
 	// snat-5xkzf89dndkzh8yg9stzqz9m4
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
-	// The EIP specified in the SNAT entry.
+	// The EIP in the SNAT entry.
 	//
 	// This parameter is required.
 	//

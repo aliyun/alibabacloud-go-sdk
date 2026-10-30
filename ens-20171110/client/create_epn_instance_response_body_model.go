@@ -16,7 +16,7 @@ type iCreateEpnInstanceResponseBody interface {
 }
 
 type CreateEpnInstanceResponseBody struct {
-	// The ID of the EPN instance.
+	// The Edge-to-Edge network instance ID.
 	//
 	// example:
 	//

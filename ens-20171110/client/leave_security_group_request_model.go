@@ -24,13 +24,13 @@ type LeaveSecurityGroupRequest struct {
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the ENI.
+	// The elastic network interface (ENI) ID.
 	//
 	// example:
 	//
 	// eni-58z57orgmt6d1****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// This parameter is required.
 	//

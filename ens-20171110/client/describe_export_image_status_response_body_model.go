@@ -16,21 +16,21 @@ type iDescribeExportImageStatusResponseBody interface {
 }
 
 type DescribeExportImageStatusResponseBody struct {
-	// The export status of the image. Valid values:
+	// The image export status. Valid values:
 	//
-	// - Exporting
+	// - Exporting: The image is being exported.
 	//
-	// - Exported
+	// - Exported: The image is exported.
 	//
-	// - ExportError
+	// - ExportError: An error occurred during the image export.
 	//
-	// - Unexported
+	// - Unexported: The image is not exported.
 	//
 	// example:
 	//
 	// Exporting
 	ImageExportStatus *string `json:"ImageExportStatus,omitempty" xml:"ImageExportStatus,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

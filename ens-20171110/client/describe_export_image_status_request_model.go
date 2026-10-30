@@ -14,7 +14,7 @@ type iDescribeExportImageStatusRequest interface {
 }
 
 type DescribeExportImageStatusRequest struct {
-	// The ID of the image.
+	// The image ID.
 	//
 	// This parameter is required.
 	//

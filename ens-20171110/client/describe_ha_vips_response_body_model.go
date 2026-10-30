@@ -30,7 +30,7 @@ type DescribeHaVipsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -117,11 +117,11 @@ func (s *DescribeHaVipsResponseBody) Validate() error {
 }
 
 type DescribeHaVipsResponseBodyHaVips struct {
-	// The elastic IP addresses (EIPs) associated with the HaVip.
+	// The EIPs associated with the HaVip.
 	AssociatedEipAddresses []*DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses `json:"AssociatedEipAddresses,omitempty" xml:"AssociatedEipAddresses,omitempty" type:"Repeated"`
-	// The instances associated with the HaVip.
+	// The information about the instances associated with the HaVip.
 	AssociatedInstances []*DescribeHaVipsResponseBodyHaVipsAssociatedInstances `json:"AssociatedInstances,omitempty" xml:"AssociatedInstances,omitempty" type:"Repeated"`
-	// The time when the HaVip was created. The time is in the ISO 8601 UTC format of YYYY-MM-DDTHH:mm:ssZ.
+	// The time when the HaVip was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type DescribeHaVipsResponseBodyHaVips struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ENS node.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type DescribeHaVipsResponseBodyHaVips struct {
 	//
 	// n-5wtkyrk****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The HaVip status. Valid values:
+	// The status of the HaVip. Valid values:
 	//
 	// - Creating: The HaVip is being created.
 	//
@@ -360,7 +360,7 @@ func (s *DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses) Validate() erro
 }
 
 type DescribeHaVipsResponseBodyHaVipsAssociatedInstances struct {
-	// The time when the association was created. The time is in the ISO 8601 UTC format of YYYY-MM-DDTHH:mm:ssZ.
+	// The time when the instance was associated. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -372,11 +372,11 @@ type DescribeHaVipsResponseBodyHaVipsAssociatedInstances struct {
 	//
 	// i-51p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance to attach to the HaVip. Valid values:
+	// The type of the instance to attach the HaVip to. Valid values:
 	//
-	// - EnsInstance: An ENS cloud server instance.
+	// - EnsInstance: ENS cloud server instance.
 	//
-	// - NetworkInterface: An elastic network interfaces (ENIs) instance, which is a network interface controller (NIC).
+	// - NetworkInterface: network interface controller (NIC).
 	//
 	// example:
 	//
@@ -388,11 +388,11 @@ type DescribeHaVipsResponseBodyHaVipsAssociatedInstances struct {
 	//
 	// 192.XX.XX.9
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The association status of the HaVip instance. Valid values:
+	// The association status of the HaVip. Valid values:
 	//
 	// - Associating: The HaVip is being associated.
 	//
-	// - InUse: The HaVip is available.
+	// - InUse: The HaVip is in use.
 	//
 	// - Unassociating: The HaVip is being disassociated.
 	//

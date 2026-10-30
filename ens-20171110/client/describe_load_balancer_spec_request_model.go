@@ -14,7 +14,7 @@ type iDescribeLoadBalancerSpecRequest interface {
 }
 
 type DescribeLoadBalancerSpecRequest struct {
-	// The specifications of the ELB instance.
+	// The specification of the load balancing instance.
 	//
 	// example:
 	//

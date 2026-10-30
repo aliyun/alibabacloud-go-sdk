@@ -22,25 +22,25 @@ type iDescribeFileSystemsRequest interface {
 }
 
 type DescribeFileSystemsRequest struct {
-	// The ID of the region.
+	// The edge zone ID.
 	//
 	// example:
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the file system.
+	// The NAS file system ID.
 	//
 	// example:
 	//
 	// c50f8*****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The name of the file system.
+	// The NAS file system name.
 	//
 	// example:
 	//
 	// FileSystem1
 	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. Starting value: **1**. Default value: **1**.
 	//
 	// example:
 	//

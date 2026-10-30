@@ -14,7 +14,7 @@ type iEventRebootInstanceResponseBody interface {
 }
 
 type EventRebootInstanceResponseBody struct {
-  // The ID of the Request.
+  // Id of the request
   // 
   // example:
   // 

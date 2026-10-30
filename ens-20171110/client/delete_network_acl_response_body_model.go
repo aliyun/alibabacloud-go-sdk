@@ -14,7 +14,7 @@ type iDeleteNetworkAclResponseBody interface {
 }
 
 type DeleteNetworkAclResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

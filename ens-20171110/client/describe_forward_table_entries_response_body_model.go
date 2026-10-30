@@ -22,27 +22,27 @@ type iDescribeForwardTableEntriesResponseBody interface {
 }
 
 type DescribeForwardTableEntriesResponseBody struct {
-	// Details of DNAT entries.
+	// The details of the queried DNAT entries.
 	ForwardTableEntries []*DescribeForwardTableEntriesResponseBodyForwardTableEntries `json:"ForwardTableEntries,omitempty" xml:"ForwardTableEntries,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeForwardTableEntriesResponseBody) Validate() error {
 }
 
 type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
-	// The EIP in the DNAT entry. The public IP address is used to access the Internet.
+	// The elastic IP address that provides public network access in the DNAT entry.
 	//
 	// example:
 	//
 	// 120.XXX.XXX.70
 	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	// The external port or port range that is used in port forwarding.
+	// The external port or port range used for port forwarding.
 	//
 	// example:
 	//
@@ -141,31 +141,31 @@ type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
 	//
 	// test0
 	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
-	// The probe port of DNAT.
+	// The health check port of the DNAT entry.
 	//
 	// example:
 	//
 	// 80
 	HealthCheckPort *string `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	// The private IP address of the instance that uses the DNAT entry for Internet communication.
+	// The private IP address of the instance that communicates with the Internet through the DNAT entry.
 	//
 	// example:
 	//
 	// 10.XXX.XXX.3
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	// The internal port or port range that is used for port forwarding.
+	// The internal port or port range used for port forwarding.
 	//
 	// example:
 	//
 	// 22
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	// The protocol. Valid values:
+	// The protocol type. Valid values:
 	//
-	// - **TCP**: forwards TCP packets.
+	// - **TCP**: Forwards TCP packets.
 	//
-	// - **UDP**: forwards UDP packets.
+	// - **UDP**: Forwards UDP packets.
 	//
-	// - **Any**: forwards all packets.
+	// - **Any**: Forwards packets of all protocols.
 	//
 	// example:
 	//
@@ -177,21 +177,21 @@ type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
 	//
 	// nat-5tawjw5j7sgd2deujxuk0****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The secondary EIP that is used to access the Internet.
+	// The standby elastic IP address that provides public network access.
 	//
 	// example:
 	//
 	// 101.XXX.XXX.7
 	StandbyExternalIp *string `json:"StandbyExternalIp,omitempty" xml:"StandbyExternalIp,omitempty"`
-	// The status of the secondary EIP. Valid values:
+	// The status of the standby elastic IP address. Valid values:
 	//
-	// - Running
+	// - Running: Enabled.
 	//
-	// - Stopping
+	// - Stopping: Disabling.
 	//
-	// - Stopped
+	// - Stopped: Disabled.
 	//
-	// - Starting
+	// - Starting: Enabling.
 	//
 	// example:
 	//
@@ -199,11 +199,11 @@ type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
 	StandbyStatus *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
 	// The status of the DNAT entry. Valid values:
 	//
-	// - Pending: The DNAT entry is being created or modified.
+	// - Pending: The entry is being configured, created, or modified.
 	//
-	// - Available: The DNAT entry is available.
+	// - Available: The entry is available.
 	//
-	// - Deleting: The DNAT entry is being deleted.
+	// - Deleting: The entry is being deleted.
 	//
 	// example:
 	//

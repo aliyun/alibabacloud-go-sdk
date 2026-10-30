@@ -20,25 +20,25 @@ type iDescribeInstanceBootConfigurationRequest interface {
 }
 
 type DescribeInstanceBootConfigurationRequest struct {
-	// The startup method.
+	// The boot method.
 	//
 	// example:
 	//
 	// legacy
 	BootSet *string `json:"BootSet,omitempty" xml:"BootSet,omitempty"`
-	// The startup type.
+	// The boot type.
 	//
 	// example:
 	//
 	// pxe
 	BootType *string `json:"BootType,omitempty" xml:"BootType,omitempty"`
-	// Specifies whether the startup depends on the disk.
+	// Specifies whether the boot process depends on disks.
 	//
 	// example:
 	//
 	// on
 	DiskSet *string `json:"DiskSet,omitempty" xml:"DiskSet,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

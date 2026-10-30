@@ -30,37 +30,37 @@ type iDescribeEnsRouteTablesRequest interface {
 }
 
 type DescribeEnsRouteTablesRequest struct {
-	// The type of the resource with which the route table is associated. Valid values:
+	// The type of resource associated with the route table. Valid values:
 	//
-	// - **VSwitch**
+	// - **VSwitch**: vSwitch
 	//
-	// - **Gateway**
+	// - **Gateway**: gateway
 	//
 	// example:
 	//
 	// Gateway
 	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
-	// The ID of the ENS node.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
 	// cn-xian-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The IDs of edge nodes. You can specify 1 to 100 IDs.
+	// The array of ENS edge zone IDs. Array length: 1 to 100.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//
 	// n-257gqcdfvx6n****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type DescribeEnsRouteTablesRequest struct {
 	//
 	// tftest-nat04
 	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
-	// The SNAT type.
+	// The SNAT type. Valid values:
 	//
-	// - FullCone: full cone NAT.
+	// - FullCone: full-cone NAT
 	//
 	// example:
 	//

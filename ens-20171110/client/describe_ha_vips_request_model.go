@@ -38,7 +38,7 @@ type DescribeHaVipsRequest struct {
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The IDs of ENS nodes. Array length: 1 to 100.
+	// The array of ENS edge zone IDs. The array length is 1 to 100.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The IP address of the HaVip instance.
 	//
@@ -70,13 +70,13 @@ type DescribeHaVipsRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Settings for paging.
+	// The number of entries per page in paging queries.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The HaVip status. Valid values:
+	// The status of the HaVip. Valid values:
 	//
 	// - Creating: The HaVip is being created.
 	//

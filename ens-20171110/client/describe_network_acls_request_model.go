@@ -34,13 +34,13 @@ type DescribeNetworkAclsRequest struct {
 	//
 	// acl-1
 	NetworkAclName *string `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. Starting value: **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for a paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//

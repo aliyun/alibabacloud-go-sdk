@@ -16,13 +16,13 @@ type iExportImageResponseBody interface {
 }
 
 type ExportImageResponseBody struct {
-  // The URL that points to the exported image.
+  // The URL of the exported image.
   // 
   // example:
   // 
   // http://oss.url
   ExportedImageURL *string `json:"ExportedImageURL,omitempty" xml:"ExportedImageURL,omitempty"`
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 

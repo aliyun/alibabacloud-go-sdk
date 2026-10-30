@@ -22,27 +22,27 @@ type iDescribeEnsRouteTablesResponseBody interface {
 }
 
 type DescribeEnsRouteTablesResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DC51ACB0-460D-5CA0-BA2D-E1F3B5547AE9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the route tables.
+	// The route table information.
 	RouteTables []*DescribeEnsRouteTablesResponseBodyRouteTables `json:"RouteTables,omitempty" xml:"RouteTables,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,17 +117,17 @@ func (s *DescribeEnsRouteTablesResponseBody) Validate() error {
 }
 
 type DescribeEnsRouteTablesResponseBodyRouteTables struct {
-	// The type of the resource with which the route table is associated. Valid values:
+	// The type of resource associated with the route table. Valid values:
 	//
-	// - **VSwitch**
+	// - **VSwitch**: vSwitch
 	//
-	// - **Gateway**
+	// - **Gateway**: gateway
 	//
 	// example:
 	//
 	// VSwitch
 	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
-	// The time when the route table was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -139,33 +139,31 @@ type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the edge node.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
 	// cn-beijing-15
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// Specifies whether it is the default gateway route table.
+	// Indicates whether the route table is the default gateway route table.
 	//
 	// example:
 	//
 	// false
 	IsDefaultGatewayRouteTable *bool `json:"IsDefaultGatewayRouteTable,omitempty" xml:"IsDefaultGatewayRouteTable,omitempty"`
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//
 	// n-5v9lufsezl4g****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The ID of the route table.
+	// The route table ID.
 	//
 	// example:
 	//
 	// rt-5xde2bit9****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The name of the route table that you want to query.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the route table.
 	//
 	// example:
 	//
@@ -173,23 +171,23 @@ type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
 	// The status. Valid values:
 	//
-	// - Available: The route table is available.
+	// - Available: available
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the route table. Examples:
+	// The type of the route table. Valid values:
 	//
-	// - Custom: custom route table.
+	// - Custom: custom route table
 	//
-	// - System: system route table.
+	// - System: system route table
 	//
 	// example:
 	//
 	// System
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The vSwitches that are associated with the route table.
+	// The list of vSwitches associated with the route table.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 

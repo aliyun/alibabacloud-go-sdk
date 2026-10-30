@@ -24,19 +24,19 @@ type iAttachKeyPairResponseBody interface {
 }
 
 type AttachKeyPairResponseBody struct {
-	// The number of instances where the attachment failed.
+	// The number of instances to which the key pair failed to be attached.
 	//
 	// example:
 	//
 	// 1
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The key pair ID.
+	// The ID of the key pair.
 	//
 	// example:
 	//
 	// ssh-xxx
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The key pair name.
+	// The name of the key pair.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type AttachKeyPairResponseBody struct {
 	//
 	// xx-xx-xx-xx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The attachment results for each instance.
+	// The result set that indicates the success or failure of the key pair attachment for each instance.
 	Results []*AttachKeyPairResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// The total number of instances in the request.
+	// The total number of instances to which the key pair is attached.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *AttachKeyPairResponseBody) Validate() error {
 }
 
 type AttachKeyPairResponseBodyResults struct {
-	// The status code for the operation. A value of `200` indicates success.
+	// The status code of the operation. A value of 200 indicates that the operation was successful.
 	//
 	// example:
 	//
@@ -146,13 +146,13 @@ type AttachKeyPairResponseBodyResults struct {
 	//
 	// i-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The response message. If the `Code` is `200`, this message is `successful`.
+	// The message returned for the operation. If the code is 200, the message is successful.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates if the operation succeeded for the instance.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

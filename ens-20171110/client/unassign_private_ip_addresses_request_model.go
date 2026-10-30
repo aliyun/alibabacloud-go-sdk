@@ -16,7 +16,7 @@ type iUnassignPrivateIpAddressesRequest interface {
 }
 
 type UnassignPrivateIpAddressesRequest struct {
-	// The ID of the ENI.
+	// The ID of the network interface controller (NIC).
 	//
 	// This parameter is required.
 	//

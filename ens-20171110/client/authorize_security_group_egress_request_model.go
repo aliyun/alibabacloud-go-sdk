@@ -26,9 +26,9 @@ type iAuthorizeSecurityGroupEgressRequest interface {
 }
 
 type AuthorizeSecurityGroupEgressRequest struct {
-	// The destination IP addresses. CIDR blocks and IPv4 addresses are supported.
+	// The destination IP address range. CIDR blocks and IPv4 address ranges are supported.
 	//
-	// This parameter is empty by default.
+	// Default value: none.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	//
 	// 10.0.XX.XX/8
 	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	// The transport layer protocol. The value of this parameter is case-sensitive. Valid values:
+	// The transport layer protocol. The value is case-sensitive. Valid values:
 	//
-	// - tcp
+	// - tcp: TCP.
 	//
-	// - udp
+	// - udp: UDP.
 	//
-	// - icmp
+	// - icmp: ICMP.
 	//
-	// - gre
+	// - gre: GRE.
 	//
-	// - all: All protocols are supported.
+	// - all: All protocols.
 	//
 	// This parameter is required.
 	//
@@ -54,25 +54,25 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	//
 	// all
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The action of the security group rule. Valid values:
+	// Settings for access permissions. Valid values:
 	//
-	// - accept: allows access. This is the default value.
+	// - accept (default): accept access.
 	//
-	// - drop: denies access and does not return responses.
+	// - drop: deny access without returning a deny message.
 	//
 	// example:
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The range of destination ports that correspond to the transport layer protocol for security group rule N. Valid values:
+	// The range of ports enabled for the transport layer protocol in the security group. Valid values:
 	//
-	// - When the IpProtocol parameter is set to tcp or udp, the port number range is **1*	- to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+	// - For TCP or UDP: **1*	- to **65535**. Use a forward slash (/) to separate the start port and the end port. Correct example: **1/200**. Incorrect example: **200/1**.
 	//
-	// - When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
+	// - For ICMP: **-1/-1**.
 	//
-	// - When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
+	// - For GRE: **-1/-1**.
 	//
-	// - When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
+	// - If IpProtocol is set to all: **-1/-1**.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	//
 	// 22/22
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of security group rule N. Valid values: **1 to 100**. Default value: **1**.
+	// The priority of the security group rule. Valid values: **1*	- to **100**. Default value: **1**.
 	//
 	// example:
 	//
@@ -94,15 +94,15 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	//
 	// sg-bp67acfmxazb4p****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The range of port numbers that correspond to the transport layer protocol for the source security group. Valid values:
+	// The range of ports enabled for the transport layer protocol in the source security group. Valid values:
 	//
-	// - When the IpProtocol parameter is set to tcp or udp, the port number range is **1*	- to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+	// - For TCP or UDP: **1*	- to **65535**. Use a forward slash (/) to separate the start port and the end port. Correct example: **1/200**. Incorrect example: **200/1**.
 	//
-	// - When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
+	// - For ICMP: **-1/-1**.
 	//
-	// - When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
+	// - For GRE: **-1/-1**.
 	//
-	// - When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
+	// - If IpProtocol is set to all: **-1/-1**.
 	//
 	// example:
 	//

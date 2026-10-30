@@ -29,43 +29,43 @@ type iRunServiceScheduleResponseBody interface {
 
 type RunServiceScheduleResponseBody struct {
 	CommandResults *RunServiceScheduleResponseBodyCommandResults `json:"CommandResults,omitempty" xml:"CommandResults,omitempty" type:"Struct"`
-	// The index number of the scheduled virtual device (pod).
+	// The index of the scheduled target virtual device (container pod).
 	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The ID of the scheduled instance.
+	// The ID of the target instance.
 	//
 	// example:
 	//
 	// i-5qvji3mom4ec013dyygmtxlkj
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address of the scheduled instance.
+	// The IP address of the scheduled target instance.
 	//
 	// example:
 	//
 	// 172.16.246.11
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	// The start port of the scheduled instance.
+	// The start port of the scheduled target instance.
 	//
 	// example:
 	//
 	// 1024
 	InstancePort *int32 `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is repeated. This parameter is not returned if ServcieAction is set to Console.
+	// Specifies whether the operation is repeated for ServiceAction values other than Console.
 	//
 	// example:
 	//
 	// false
 	RequestRepeated *string `json:"RequestRepeated,omitempty" xml:"RequestRepeated,omitempty"`
-	// The TCP port range of the scheduled instance or container. The value is in the ${from}-$-{to} format. Example: 80-88.
+	// The TCP service port range of the scheduled target virtual machine instance or container. Format: ${from}-${to}. Example: 80-88.
 	//
 	// example:
 	//

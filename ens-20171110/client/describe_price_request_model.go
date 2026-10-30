@@ -32,9 +32,9 @@ type iDescribePriceRequest interface {
 type DescribePriceRequest struct {
 	DataDisk   []*DescribePriceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	SystemDisk *DescribePriceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// If you leave DataDisk.1.Size empty, the value that you specified for this parameter is used.
+	// The data cloud disks. If DataDisk.1.Size is empty and this field is not empty, this field takes precedence.
 	DataDisks []*DescribePriceRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	// The ID of the ENS node.
+	// The edge zone ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribePriceRequest struct {
 	//
 	// cn-shanghai-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The specifications of instances.
+	// The instance type.
 	//
 	// This parameter is required.
 	//
@@ -50,15 +50,15 @@ type DescribePriceRequest struct {
 	//
 	// ens.sn1.tiny
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The bandwidth metering method of the instance. Valid values:
+	// The Billable methods for ENS bandwidth. Valid values:
 	//
-	// - BandwidthByDay: Pay by daily peak bandwidth
+	// - BandwidthByDay: daily peak bandwidth.
 	//
-	// - 95BandwidthByMonth: Pay by monthly 95th percentile bandwidth
+	// - 95BandwidthByMonth: monthly 95th percentile bandwidth.
 	//
-	// - PayByBandwidth4thMonth: Pay by monthly fourth peak bandwidth
+	// - PayByBandwidth4thMonth: monthly fourth peak bandwidth.
 	//
-	// - PayByBandwidth: Pay by fixed bandwidth
+	// - PayByBandwidth: bandwidth with defined specifications.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type DescribePriceRequest struct {
 	//
 	// 95BandwidthByMonth
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The subscription duration of the instance.
+	// The subscription duration of the resource.
 	//
-	// - If you leave the PeriodUnit parameter empty, the instance is purchased on a monthly basis. Valid values: Day and Month.
+	// - If PeriodUnit is not specified, the default billing cycle is month. Only Day and Month are supported.
 	//
-	// - If you set PeriodUnit to Day, you can set Period only to 3.
+	// - If PeriodUnit is set to Day, Period can only be set to 3.
 	//
-	// - If you set PeriodUnit to Month, you can set Period to a number from 1 to 9, or set Period to 12.
+	// - If PeriodUnit is set to Month, Period can be set to 1 to 9 or 12.
 	//
 	// This parameter is required.
 	//
@@ -80,17 +80,17 @@ type DescribePriceRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The billing cycle of the ENS instance. Valid values:
+	// The billing cycle for querying the prices of ENS resources. Valid values:
 	//
-	// - Month (default):
+	// - Month (default): monthly billing cycle.
 	//
-	// - Day
+	// - Day: daily billing cycle.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The number of instances.
+	// The quantity.
 	//
 	// This parameter is required.
 	//
@@ -217,7 +217,7 @@ func (s *DescribePriceRequest) Validate() error {
 }
 
 type DescribePriceRequestDataDisk struct {
-	// The size of the data disk. Unit: GB. If you specify this parameter, this parameter takes precedence over the Size property in DataDisks.
+	// The size of the data cloud disk. Unit: GB. If this field is not empty, it takes precedence.
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ func (s *DescribePriceRequestDataDisk) Validate() error {
 }
 
 type DescribePriceRequestSystemDisk struct {
-	// The size of the system disk. Unit: GB.
+	// The size of the system cloud disk. Unit: GB.
 	//
 	// This parameter is required.
 	//
@@ -279,13 +279,13 @@ func (s *DescribePriceRequestSystemDisk) Validate() error {
 }
 
 type DescribePriceRequestDataDisks struct {
-	// The category of the disk.
+	// The cloud disk category.
 	//
 	// example:
 	//
 	// cloud_efficiency
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The size of the data disk. Unit: GB.
+	// The size of the data cloud disk. Unit: GB.
 	//
 	// example:
 	//

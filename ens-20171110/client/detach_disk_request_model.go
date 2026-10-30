@@ -16,7 +16,7 @@ type iDetachDiskRequest interface {
 }
 
 type DetachDiskRequest struct {
-	// The ID of the disk.
+	// The disk ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DetachDiskRequest struct {
 	//
 	// d-5r7v69e0bejrnzger09w7****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

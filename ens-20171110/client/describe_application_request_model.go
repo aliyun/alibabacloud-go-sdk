@@ -22,7 +22,7 @@ type iDescribeApplicationRequest interface {
 }
 
 type DescribeApplicationRequest struct {
-	// The ID of the application. You can call the ListApplications operation to obtain the application ID.
+	// The ID of the application. You can obtain the ID by calling the ListApplications operation.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +30,17 @@ type DescribeApplicationRequest struct {
 	//
 	// a2bac6f4-75dc-455e-8389-2dc8e47526d3
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The version number of the application. Separate multiple version numbers with commas (,). If you want to query data of all versions of applications, specify All for this parameter. By default, only data of applications in the stable versions are queried.
+	// The business service version numbers of the application. Multiple values are supported and separated by commas (,). If you enter All, data of all versions is returned. By default, only data associated with the stable version number is returned.
 	//
 	// example:
 	//
 	// v1,v2
 	AppVersions *string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty"`
-	// The region level by which edge resources of the application are collected. The value is of the enumeration type. Valid values:
+	// The regional statistical level of the application edge resources. Valid values:
 	//
-	// - National: Chinese mainland
+	// - National: nationwide
 	//
-	// - Big: area
+	// - Big: region
 	//
 	// - Middle: province
 	//
@@ -54,13 +54,13 @@ type DescribeApplicationRequest struct {
 	//
 	// National
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Specifies whether to return other information about the application, such as statistics on resource instances and pods. The value must be a JSON string. By default, all information is returned.
+	// Specifies whether to return information about statistical resource instances and container pods. The value is a JSON string. By default, all information is returned.
 	//
 	// example:
 	//
 	// {\\"appInfo\\":true,\\"detailStat\\": true, \\"appVersionStat\\": true, \\"districtStat\\":true ,\\"instanceStat\\": true, \\"podCountStat\\": true}
 	OutDetailStatParams *string `json:"OutDetailStatParams,omitempty" xml:"OutDetailStatParams,omitempty"`
-	// The resource filtering condition.
+	// The resource filter conditions.
 	//
 	// example:
 	//

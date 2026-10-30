@@ -14,7 +14,7 @@ type iEventMigrateInstanceResponseBody interface {
 }
 
 type EventMigrateInstanceResponseBody struct {
-  // The request ID.
+  // The ID of the request.
   // 
   // example:
   // 

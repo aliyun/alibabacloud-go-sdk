@@ -16,7 +16,7 @@ type iResizeDiskRequest interface {
 }
 
 type ResizeDiskRequest struct {
-	// The ID of the disk that you want to resize.
+	// The instance ID of the cloud disk to resize.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ResizeDiskRequest struct {
 	//
 	// d-5tzm9wnhzlhjzcbtxo465****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The size of the disk that you want to resize. Unit: GiB.
+	// The target size of the cloud disk, in GiB.
 	//
 	// This parameter is required.
 	//

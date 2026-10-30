@@ -16,7 +16,7 @@ type iCreateClassicNetworkResponseBody interface {
 }
 
 type CreateClassicNetworkResponseBody struct {
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iDescribeEnsRouteEntryListResponseBody interface {
 }
 
 type DescribeEnsRouteEntryListResponseBody struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeEnsRouteEntryListResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the routes.
+	// The route entry information.
 	RouteEntrys []*DescribeEnsRouteEntryListResponseBodyRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Repeated"`
-	// The number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,33 +117,33 @@ func (s *DescribeEnsRouteEntryListResponseBody) Validate() error {
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
-	// The time when the IP address was created. The time is displayed in UTC.
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2023-02-16T03:50:05Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Enter a description for the route.
+	// The description of the route entry.
 	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block of the route.
+	// The destination CIDR block of the route entry.
 	//
 	// example:
 	//
 	// 101.0.45.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The information about the next hop.
+	// The next hop information.
 	NextHops []*DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Repeated"`
-	// The ID of the route.
+	// The ID of the route entry.
 	//
 	// example:
 	//
 	// rte-2zeksx7h436f5unk349m1
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	// The name of the route.
+	// The name of the route entry.
 	//
 	// example:
 	//
@@ -155,19 +155,19 @@ type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
 	//
 	// vtb-uf62p9o5cn35fi8xgurnm
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The source CIDR block. This field is used when you configure a route entry in the gateway route table. This field is not supported in the vSwitch route table.
+	// The source CIDR block. This parameter is used when you configure a routing entry in a gateway route table and is not supported in a vSwitch route table.
 	//
 	// example:
 	//
 	// 10.XXX.XXX.0/24
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitempty" xml:"SourceCidrBlock,omitempty"`
-	// The status of the route entry. Valid values:
+	// The status of the route entry.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the route entry.
+	// The type of the routing entry.
 	//
 	// example:
 	//
@@ -287,19 +287,19 @@ func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) Validate() error {
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops struct {
-	// The ID of the next hop.
+	// The instance ID of the next hop.
 	//
 	// example:
 	//
 	// i-bp1111yup9991890woxq
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The instance ID of the next hop.
+	// The name of the next hop instance.
 	//
 	// example:
 	//
 	// testInstance
 	NextHopName *string `json:"NextHopName,omitempty" xml:"NextHopName,omitempty"`
-	// The type of the next hop. Valid values:
+	// The next hop type.
 	//
 	// example:
 	//

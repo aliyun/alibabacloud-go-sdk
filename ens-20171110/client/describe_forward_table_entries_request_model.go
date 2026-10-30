@@ -28,7 +28,7 @@ type iDescribeForwardTableEntriesRequest interface {
 }
 
 type DescribeForwardTableEntriesRequest struct {
-	// The EIP in the DNAT entry. The public IP address is used to access the Internet.
+	// The elastic IP address that provides public network access in the DNAT entry.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type DescribeForwardTableEntriesRequest struct {
 	//
 	// test0
 	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
-	// The private IP address of the instance that uses the DNAT entry for Internet communication.
+	// The private IP address of the instance that communicates with the Internet through the DNAT entry.
 	//
 	// example:
 	//
 	// 10.XXX.XXX.50
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	// The protocol. Valid values:
+	// The protocol type. Valid values:
 	//
-	// - **TCP**: forwards TCP packets.
+	// - **TCP**: Forwards TCP packets.
 	//
-	// - **UDP**: forwards UDP packets.
+	// - **UDP**: Forwards UDP packets.
 	//
-	// - **Any**: forwards all packets.
+	// - **Any**: Forwards packets of all protocols.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeForwardTableEntriesRequest struct {
 	//
 	// nat-5t7nh1cfm6kxiszlttr38****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The page number. Pages start from page **1**.
+	// The page number of the list to query. Pages start from **1**.
 	//
 	// Default value: **1**.
 	//
@@ -80,7 +80,7 @@ type DescribeForwardTableEntriesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **100**.
+	// The paging Settings for the number of entries per page in a paged query. Maximum value: **100**.
 	//
 	// Default value: **10**.
 	//

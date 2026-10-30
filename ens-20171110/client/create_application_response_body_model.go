@@ -16,13 +16,13 @@ type iCreateApplicationResponseBody interface {
 }
 
 type CreateApplicationResponseBody struct {
-	// The ID of the application. This is the unique identifier of the edge application.
+	// The application ID generated upon successful creation. It is the unique identifier of the edge application service.
 	//
 	// example:
 	//
 	// d0639abf-789a-4527-b420-031d2cd9ad9b
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

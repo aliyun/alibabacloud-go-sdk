@@ -23,13 +23,13 @@ type iDescribeKeyPairsResponseBody interface {
 
 type DescribeKeyPairsResponseBody struct {
 	KeyPairs *DescribeKeyPairsResponseBodyKeyPairs `json:"KeyPairs,omitempty" xml:"KeyPairs,omitempty" type:"Struct"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeLoadBalancerTCPListenerAttributeRequest interface {
 }
 
 type DescribeLoadBalancerTCPListenerAttributeRequest struct {
-	// The listener port. Valid values: **1*	- to **65535**.
+	// The listener port to be queried. Valid values: **1*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeLoadBalancerTCPListenerAttributeRequest struct {
 	//
 	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the load balancer instance.
+	// The ID of the load balancing instance.
 	//
 	// This parameter is required.
 	//

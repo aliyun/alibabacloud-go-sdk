@@ -22,7 +22,7 @@ type iDescribeFileSystemsResponseBody interface {
 }
 
 type DescribeFileSystemsResponseBody struct {
-	// The information about the file systems.
+	// The collection of file system information.
 	FileSystems []*DescribeFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -36,13 +36,13 @@ type DescribeFileSystemsResponseBody struct {
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 762DD527-358B-1E48-8005-CCE3ED4EB9E0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeFileSystemsResponseBody) Validate() error {
 }
 
 type DescribeFileSystemsResponseBodyFileSystems struct {
-	// The capacity of the file system. Unit: MiB.
+	// The capacity. Unit: MiB.
 	//
 	// example:
 	//
@@ -129,65 +129,67 @@ type DescribeFileSystemsResponseBodyFileSystems struct {
 	//
 	// 2022-08-31 12:00:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// example:
 	//
 	// c50f8*****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The name of the file system.
+	// The file system name.
 	//
 	// example:
 	//
 	// FileSystem1
 	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
-	// The storage usage of the file system. The value of this parameter is the maximum storage usage of the file system over the last hour. Unit: bytes.
+	// The file system usage.
+	//
+	// Non-real-time usage. It indicates the maximum usage in the previous hour. Unit: bytes.
 	//
 	// example:
 	//
 	// 102400
 	MeteredSize *int64 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
-	// The information about mount targets.
+	// The collection of mount target information.
 	MountTargets []*DescribeFileSystemsResponseBodyFileSystemsMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Repeated"`
-	// The billing method. PostPaid is returned. PostPaid indicates the pay-as-you-go billing method.
+	// The billing method. Valid values: PostPaid (pay-as-you-go).
 	//
 	// example:
 	//
 	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The protocol type of the file system. Valid values:
+	// The file system protocol type. Valid values:
 	//
-	// - NFS: Network File System (NFS)
+	// - NFS: NFS protocol.
 	//
-	// - SMB: Server Message Block (SMB)
+	// - SMB: SMB protocol.
 	//
 	// example:
 	//
 	// NFS
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The status of the file system. Valid values:
+	// The file system status. Valid values:
 	//
-	// - pending: The file system is being created or modified.
+	// - pending: The file system is processing a node.
 	//
-	// - running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the running state.
+	// - running: The file system is active. You can perform What to do next, such as creating a mount target, only when the status is running.
 	//
 	// - stopped: The file system is unavailable.
 	//
-	// - extending: The file system is being scaled out.
+	// - extending: The file system is being expanded.
 	//
-	// - stopping: The file system is being disabled.
+	// - stopping: The file system is being stopped.
 	//
 	// - deleting: The file system is being deleted.
 	//
@@ -197,9 +199,9 @@ type DescribeFileSystemsResponseBodyFileSystems struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The storage type. Valid values:
 	//
-	// - capacity: Capacity NAS file systems
+	// - capacity: Storage-optimized.
 	//
-	// - performance: Performance NAS file systems
+	// - performance: Extreme.
 	//
 	// example:
 	//
@@ -337,33 +339,33 @@ func (s *DescribeFileSystemsResponseBodyFileSystems) Validate() error {
 }
 
 type DescribeFileSystemsResponseBodyFileSystemsMountTargets struct {
-	// The path of the mount target.
+	// The mount target path.
 	//
 	// example:
 	//
 	// *.*.*.*:/${FileSystemName}/{MountTargetName}
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	// The name of the mount target.
+	// The mount target name.
 	//
 	// example:
 	//
 	// target1
 	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
-	// The ID of the network.
+	// The network ID.
 	//
 	// example:
 	//
 	// n-****
 	NetWorkId *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
-	// The status of the mount target. Valid values:
+	// The mount target status. Valid values:
 	//
-	// - active: The mount target is available.
+	// - active: Available.
 	//
-	// - inactive: The mount target is unavailable.
+	// - inactive: Unavailable.
 	//
-	// - pending: The task is running.
+	// - pending: Processing a task.
 	//
-	// - deleting: The mount target is being deleted.
+	// - deleting: Being deleted.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iAttachEnsInstancesRequest interface {
 }
 
 type AttachEnsInstancesRequest struct {
-	// The instance ID. Only one ID is supported.
+	// The instance ID. Only a single ID is supported.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type AttachEnsInstancesRequest struct {
 	//
 	// testInstacneId
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The command to run on the instance, encoded in Base64 using UTF-8.
+	// The command to execute on the instance. The command must be encoded in Base64 and UTF-8.
 	//
 	// This parameter is required.
 	//

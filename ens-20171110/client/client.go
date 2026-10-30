@@ -217,15 +217,15 @@ func (client *Client) AddBackendServers(request *AddBackendServersRequest) (_res
 
 // Summary:
 //
-// Adds an IPv6 network interface controller (NIC). A public IP address is automatically assigned at the same time.
+// Adds an IPv6 network interface and automatically assigns a public IP address.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 5 times per second per user.
+// - Call rate per user: 5 calls per second.
 //
-// - Internal networks and IPv4 addresses are not supported.
+// - Internal networks and IPv4 are not supported.
 //
 // @param request - AddNetworkInterfaceToInstanceRequest
 //
@@ -277,15 +277,15 @@ func (client *Client) AddNetworkInterfaceToInstanceWithOptions(request *AddNetwo
 
 // Summary:
 //
-// Adds an IPv6 network interface controller (NIC). A public IP address is automatically assigned at the same time.
+// Adds an IPv6 network interface and automatically assigns a public IP address.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 5 times per second per user.
+// - Call rate per user: 5 calls per second.
 //
-// - Internal networks and IPv4 addresses are not supported.
+// - Internal networks and IPv4 are not supported.
 //
 // @param request - AddNetworkInterfaceToInstanceRequest
 //
@@ -303,7 +303,7 @@ func (client *Client) AddNetworkInterfaceToInstance(request *AddNetworkInterface
 
 // Summary:
 //
-// Adds an elastic IP address (EIP) to a Source Network Address Translation (SNAT) entry.
+// Adds a public elastic IP address (EIP) to a SNAT rule.
 //
 // @param request - AddSnatIpForSnatEntryRequest
 //
@@ -351,7 +351,7 @@ func (client *Client) AddSnatIpForSnatEntryWithOptions(request *AddSnatIpForSnat
 
 // Summary:
 //
-// Adds an elastic IP address (EIP) to a Source Network Address Translation (SNAT) entry.
+// Adds a public elastic IP address (EIP) to a SNAT rule.
 //
 // @param request - AddSnatIpForSnatEntryRequest
 //
@@ -369,7 +369,7 @@ func (client *Client) AddSnatIpForSnatEntry(request *AddSnatIpForSnatEntryReques
 
 // Summary:
 //
-// Assigns secondary private IP addresses to an elastic network interface (ENI).
+// Invokes AssignPrivateIpAddresses to assign secondary private IP addresses to an elastic network interface controller (NIC).
 //
 // @param request - AssignPrivateIpAddressesRequest
 //
@@ -417,7 +417,7 @@ func (client *Client) AssignPrivateIpAddressesWithOptions(request *AssignPrivate
 
 // Summary:
 //
-// Assigns secondary private IP addresses to an elastic network interface (ENI).
+// Invokes AssignPrivateIpAddresses to assign secondary private IP addresses to an elastic network interface controller (NIC).
 //
 // @param request - AssignPrivateIpAddressesRequest
 //
@@ -509,27 +509,25 @@ func (client *Client) AssociateEnsEipAddress(request *AssociateEnsEipAddressRequ
 
 // Summary:
 //
-// Associates a high-availability virtual IP address (HAVIP) with an Edge Node Service (ENS) instance or elastic network interface (ENI).
+// Invokes the AssociateHaVip operation to associate a high availability virtual IP address (HaVip) with an Edge Node Service (ENS) instance or an ENS elastic network interface controller (NIC).
 //
 // Description:
 //
-// When you To associate an HAVIP, take note of the following items:
+// When you invoke this operation to associate a high availability virtual IP address (HaVip), take note of the following items:
 //
-// - An HAVIP immediately takes effect after it is associated. You do not need to restart the ENS instance. However, you need to associate the HAVIP with the ENI of the ENS instance.
+// - After a HaVip is associated, you do not need to restart the ENS instance. However, you must configure the HaVip on the elastic network interface controller (NIC) of the ENS instance.
 //
-// - The HAVIP and ENS instance must belong to the same vSwitch.
+// - The HaVip and the ENS instance to be associated must belong to the same vSwitch.
 //
-// - The ENS instance must be in the Running or Stopped state.
+// - The ENS instance to be associated must be in the Running or Stopped state.
 //
-// - The HAVIP must be in the Available or InUse state.
+// - The HaVip instance must be in the Available or InUse state.
 //
-// - AssociateHaVip is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the DescribeHaVips operation to query the status of an HAVIP:
+// - The AssociateHaVip operation is an asynchronous operation. After you invoke this operation, the system returns a request ID, but the HaVip is not immediately associated. The association task is still running in the background. You can invoke the DescribeHaVips operation to query the association status of the HaVip:
 //
-//   - If the HAVIP is in the Associating state, the HAVIP is being associated.
+//   - If the HaVip is in the Associating state, the HaVip is being associated.
 //
-//     <!---->
-//
-//   - If the HAVIP is in the InUse state, the HAVIP is associated.
+//   - If the HaVip is in the InUse state, the HaVip is associated.
 //
 // @param request - AssociateHaVipRequest
 //
@@ -581,27 +579,25 @@ func (client *Client) AssociateHaVipWithOptions(request *AssociateHaVipRequest, 
 
 // Summary:
 //
-// Associates a high-availability virtual IP address (HAVIP) with an Edge Node Service (ENS) instance or elastic network interface (ENI).
+// Invokes the AssociateHaVip operation to associate a high availability virtual IP address (HaVip) with an Edge Node Service (ENS) instance or an ENS elastic network interface controller (NIC).
 //
 // Description:
 //
-// When you To associate an HAVIP, take note of the following items:
+// When you invoke this operation to associate a high availability virtual IP address (HaVip), take note of the following items:
 //
-// - An HAVIP immediately takes effect after it is associated. You do not need to restart the ENS instance. However, you need to associate the HAVIP with the ENI of the ENS instance.
+// - After a HaVip is associated, you do not need to restart the ENS instance. However, you must configure the HaVip on the elastic network interface controller (NIC) of the ENS instance.
 //
-// - The HAVIP and ENS instance must belong to the same vSwitch.
+// - The HaVip and the ENS instance to be associated must belong to the same vSwitch.
 //
-// - The ENS instance must be in the Running or Stopped state.
+// - The ENS instance to be associated must be in the Running or Stopped state.
 //
-// - The HAVIP must be in the Available or InUse state.
+// - The HaVip instance must be in the Available or InUse state.
 //
-// - AssociateHaVip is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the DescribeHaVips operation to query the status of an HAVIP:
+// - The AssociateHaVip operation is an asynchronous operation. After you invoke this operation, the system returns a request ID, but the HaVip is not immediately associated. The association task is still running in the background. You can invoke the DescribeHaVips operation to query the association status of the HaVip:
 //
-//   - If the HAVIP is in the Associating state, the HAVIP is being associated.
+//   - If the HaVip is in the Associating state, the HaVip is being associated.
 //
-//     <!---->
-//
-//   - If the HAVIP is in the InUse state, the HAVIP is associated.
+//   - If the HaVip is in the InUse state, the HaVip is associated.
 //
 // @param request - AssociateHaVipRequest
 //
@@ -705,7 +701,7 @@ func (client *Client) AssociateNetworkCidrBlock(request *AssociateNetworkCidrBlo
 
 // Summary:
 //
-// Attaches a disk to an Edge Node Service (ENS) instance.
+// Mounts a data cloud disk to an ENS instance.
 //
 // @param request - AttachDiskRequest
 //
@@ -757,7 +753,7 @@ func (client *Client) AttachDiskWithOptions(request *AttachDiskRequest, runtime 
 
 // Summary:
 //
-// Attaches a disk to an Edge Node Service (ENS) instance.
+// Mounts a data cloud disk to an ENS instance.
 //
 // @param request - AttachDiskRequest
 //
@@ -775,19 +771,17 @@ func (client *Client) AttachDisk(request *AttachDiskRequest) (_result *AttachDis
 
 // Summary:
 //
-// Add ENS instances to Container Service for Kubernetes.
+// Adds an Edge Node Service (ENS) instance to Container Service for Kubernetes.
 //
 // Description:
 //
-// - Maximum request rate per user: 10 requests per second.
+// - Rate limit per user: 10 calls per second.
 //
-// - After the command script runs successfully, the instance restarts and loads automatically.
+// - After the command script is successfully executed, the instance automatically restarts.
 //
-// - Instance requirements: minimum size of 2C4G and CentOS 7.4 or later image.
+// - Instance requirements: The minimum instance specification is 2 vCPUs and 4 GiB of memory, and the image must be CentOS 7.4 or later.
 //
-// <props="china">
-//
-// Before calling this operation, [activate Container Service for Kubernetes](https://cs.console.aliyun.com/#/k8s/overview).
+// <props="china">Before you call this operation, you must [activate Container Service for Kubernetes](https://cs.console.aliyun.com/#/k8s/overview).
 //
 // @param request - AttachEnsInstancesRequest
 //
@@ -835,19 +829,17 @@ func (client *Client) AttachEnsInstancesWithOptions(request *AttachEnsInstancesR
 
 // Summary:
 //
-// Add ENS instances to Container Service for Kubernetes.
+// Adds an Edge Node Service (ENS) instance to Container Service for Kubernetes.
 //
 // Description:
 //
-// - Maximum request rate per user: 10 requests per second.
+// - Rate limit per user: 10 calls per second.
 //
-// - After the command script runs successfully, the instance restarts and loads automatically.
+// - After the command script is successfully executed, the instance automatically restarts.
 //
-// - Instance requirements: minimum size of 2C4G and CentOS 7.4 or later image.
+// - Instance requirements: The minimum instance specification is 2 vCPUs and 4 GiB of memory, and the image must be CentOS 7.4 or later.
 //
-// <props="china">
-//
-// Before calling this operation, [activate Container Service for Kubernetes](https://cs.console.aliyun.com/#/k8s/overview).
+// <props="china">Before you call this operation, you must [activate Container Service for Kubernetes](https://cs.console.aliyun.com/#/k8s/overview).
 //
 // @param request - AttachEnsInstancesRequest
 //
@@ -1029,17 +1021,19 @@ func (client *Client) AttachInstancesToNodePool(request *AttachInstancesToNodePo
 
 // Summary:
 //
-// Attaches an SSH key pair to up to 30 instances in a single call.
+// Attaches an SSH key pair to a batch of specified instances. A maximum of 30 instances can be specified in a single call.
 //
 // Description:
 //
-// You can only attach a key pair to stopped instances.
+// ## Operation description
 //
-// - Specify up to 30 instances per call.
+// This batch operation attaches a key pair to instances. You can only perform this operation on stopped instances.
 //
-// - Specify either `KeyPairName` or `KeyPairId`.
+// - You can attach the key pair to a maximum of 30 instances in a single call.
 //
-// - We recommend using `KeyPairId`, as `KeyPairName` will be deprecated.
+// - You must specify at least one of the KeyPairName and KeyPairId parameters.
+//
+// - Specify KeyPairId when you call this operation. The KeyPairName parameter will be deprecated.
 //
 // @param tmpReq - AttachKeyPairRequest
 //
@@ -1097,17 +1091,19 @@ func (client *Client) AttachKeyPairWithOptions(tmpReq *AttachKeyPairRequest, run
 
 // Summary:
 //
-// Attaches an SSH key pair to up to 30 instances in a single call.
+// Attaches an SSH key pair to a batch of specified instances. A maximum of 30 instances can be specified in a single call.
 //
 // Description:
 //
-// You can only attach a key pair to stopped instances.
+// ## Operation description
 //
-// - Specify up to 30 instances per call.
+// This batch operation attaches a key pair to instances. You can only perform this operation on stopped instances.
 //
-// - Specify either `KeyPairName` or `KeyPairId`.
+// - You can attach the key pair to a maximum of 30 instances in a single call.
 //
-// - We recommend using `KeyPairId`, as `KeyPairName` will be deprecated.
+// - You must specify at least one of the KeyPairName and KeyPairId parameters.
+//
+// - Specify KeyPairId when you call this operation. The KeyPairName parameter will be deprecated.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -1125,21 +1121,21 @@ func (client *Client) AttachKeyPair(request *AttachKeyPairRequest) (_result *Att
 
 // Summary:
 //
-// Attaches an Elastic Network Interface (ENI) to an Edge Node Service (ECS) instance.
+// Attaches elastic network interfaces (ENIs) to an ENS instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following limits:
+// Note the following when you call this operation:
 //
-// - The ENI must be in the Available state.
+// - The elastic network interfaces (ENIs) must be in the Available state.
 //
-// - An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+// - Each ENI can be attached to only one instance in the same zone and VPC at a time.
 //
 // - The instance must be in the Stopped state.
 //
-// - A maximum of 10 ENIs can be attached to an instance.
+// - You can attach up to 10 elastic network interfaces (ENIs) to an instance.
 //
-// - This operation is an asynchronous operation. After you To attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+// - This operation is asynchronous. After the call succeeds, you can query the ENI status to check the operation result.
 //
 // @param request - AttachNetworkInterfaceRequest
 //
@@ -1187,21 +1183,21 @@ func (client *Client) AttachNetworkInterfaceWithOptions(request *AttachNetworkIn
 
 // Summary:
 //
-// Attaches an Elastic Network Interface (ENI) to an Edge Node Service (ECS) instance.
+// Attaches elastic network interfaces (ENIs) to an ENS instance.
 //
 // Description:
 //
-// When you call this operation, take note of the following limits:
+// Note the following when you call this operation:
 //
-// - The ENI must be in the Available state.
+// - The elastic network interfaces (ENIs) must be in the Available state.
 //
-// - An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+// - Each ENI can be attached to only one instance in the same zone and VPC at a time.
 //
 // - The instance must be in the Stopped state.
 //
-// - A maximum of 10 ENIs can be attached to an instance.
+// - You can attach up to 10 elastic network interfaces (ENIs) to an instance.
 //
-// - This operation is an asynchronous operation. After you To attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+// - This operation is asynchronous. After the call succeeds, you can query the ENI status to check the operation result.
 //
 // @param request - AttachNetworkInterfaceRequest
 //
@@ -1305,11 +1301,11 @@ func (client *Client) AuthorizeSecurityGroup(request *AuthorizeSecurityGroupRequ
 
 // Summary:
 //
-// Creates an outbound security group rule. This operation allows or denies the outbound traffic from the instances in the security group to other devices.
+// Invokes AuthorizeSecurityGroupEgress to specify the outbound access permissions for a security group, allowing or denying instances in the security group to send outbound traffic to other devices.
 //
 // Description:
 //
-// In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+// In the API documentation for security groups, the initiator of traffic is the source, and the receiver of data transmission is the destination.
 //
 // @param request - AuthorizeSecurityGroupEgressRequest
 //
@@ -1377,11 +1373,11 @@ func (client *Client) AuthorizeSecurityGroupEgressWithOptions(request *Authorize
 
 // Summary:
 //
-// Creates an outbound security group rule. This operation allows or denies the outbound traffic from the instances in the security group to other devices.
+// Invokes AuthorizeSecurityGroupEgress to specify the outbound access permissions for a security group, allowing or denying instances in the security group to send outbound traffic to other devices.
 //
 // Description:
 //
-// In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+// In the API documentation for security groups, the initiator of traffic is the source, and the receiver of data transmission is the destination.
 //
 // @param request - AuthorizeSecurityGroupEgressRequest
 //
@@ -1987,7 +1983,7 @@ func (client *Client) CreateARMServerInstances(request *CreateARMServerInstances
 
 // Summary:
 //
-// Creates an edge application that allows you to manage Edge Node Service (ENS) nodes in containers, bare metal instances, and virtual machines.
+// Creates an edge application service to host edge services on containers (virtual devices), bare metal instances, or virtual machines.
 //
 // @param request - CreateApplicationRequest
 //
@@ -2035,7 +2031,7 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 // Summary:
 //
-// Creates an edge application that allows you to manage Edge Node Service (ENS) nodes in containers, bare metal instances, and virtual machines.
+// Creates an edge application service to host edge services on containers (virtual devices), bare metal instances, or virtual machines.
 //
 // @param request - CreateApplicationRequest
 //
@@ -2053,7 +2049,7 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// # Creates a classic network
+// Creates a classic VPC.
 //
 // @param request - CreateClassicNetworkRequest
 //
@@ -2109,7 +2105,7 @@ func (client *Client) CreateClassicNetworkWithOptions(request *CreateClassicNetw
 
 // Summary:
 //
-// # Creates a classic network
+// Creates a classic VPC.
 //
 // @param request - CreateClassicNetworkRequest
 //
@@ -2815,7 +2811,7 @@ func (client *Client) CreateEnsService(request *CreateEnsServiceRequest) (_resul
 
 // Summary:
 //
-// Creates an edge private network (EPN) instance.
+// Creates an Edge-to-Edge network instance.
 //
 // @param request - CreateEpnInstanceRequest
 //
@@ -2875,7 +2871,7 @@ func (client *Client) CreateEpnInstanceWithOptions(request *CreateEpnInstanceReq
 
 // Summary:
 //
-// Creates an edge private network (EPN) instance.
+// Creates an Edge-to-Edge network instance.
 //
 // @param request - CreateEpnInstanceRequest
 //
@@ -3515,13 +3511,13 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a load balancing instance by calling the CreateLoadBalancer operation.
+// Creates a load balancing instance.
 //
 // Description:
 //
-// - API call frequency: 100 times per second.
+// - API rate limit: 100 calls per second.
 //
-// - Per-user call frequency: 5 times per second.
+// - Rate limit per user: 5 calls per second.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -3597,13 +3593,13 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 
 // Summary:
 //
-// Creates a load balancing instance by calling the CreateLoadBalancer operation.
+// Creates a load balancing instance.
 //
 // Description:
 //
-// - API call frequency: 100 times per second.
+// - API rate limit: 100 calls per second.
 //
-// - Per-user call frequency: 5 times per second.
+// - Rate limit per user: 5 calls per second.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -4711,19 +4707,25 @@ func (client *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequ
 
 // Summary:
 //
-// Creates a Shared Data Group (SDG) on an Android in Container (AIC) instance.
+// Creates an SDG on an AIC instance.
 //
 // Description:
 //
-// A Shared Data Group (SDG) is a data partition image of a virtual device. You can save the data partition of a virtual device as an SDG. The SDG can then be deployed to the data partition of other virtual devices for fast data sharing and application deployment. The following describes the workflow of SDG-related operations:
+// A Data Sharing Group (SDG) can be regarded as an image of a data partition on a virtual device. You can save a data partition of a virtual device as an SDG. A created SDG can be used for deployment to the data partitions of other virtual devices to enable fast data distribution and application. The workflow for SDG-related operations is as follows:
 //
-// - Call the [CreateSDG](~~CreateSDG~~) operation to create an SDG. The SDG is bound to AIC instance A (InstanceId). After the SDG is created, a blank cloud disk (also called a raw cloud disk) is mounted to device A (InstanceId) for SDG creation.
+// - Call the [CreateSDG](~~CreateSDG~~) operation to create an SDG. The SDG is bound to AIC instance A (InstanceId). After the SDG is created, an empty cloud disk (also known as the original cloud disk) is mounted to instance A (InstanceId) for SDG creation.
 //
-// - Install applications, deliver files, and perform other required operations on AIC instance A (InstanceId).
+// - Perform required operations on AIC instance A (InstanceId), such as installing applications and distributing files.
 //
-// - Call the [SaveSDG](~~SaveSDG~~) operation to save the data cloud disk of AIC instance A as SDG A.
+// - Call the [SaveSDG](~~SaveSDG~~) operation to save the data cloud disk on AIC instance A as SDG A.
 //
-// - Call the [DeploySDG](~~DeploySDG~~) operation to deploy SDG A to AIC instance B. This process is asynchronous. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the status of AIC instance B. When the status changes back to success, AIC instance B is available and has the same applications as AIC instance A.
+// - Call the [DeploySDG](~~DeploySDG~~) operation to deploy SDG A to another AIC instance B. This process is executed asynchronously. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the status of AIC instance B. When the status changes back to success, AIC instance B is available, and the applications on AIC instance B are identical to those on AIC instance A.
+//
+// **Before you begin**
+//
+// - Before you call this operation, the AIC instance must be in the **success*	- state. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation and check the AICInstances[].State field to confirm the status.
+//
+// - It usually takes 30 to 60 minutes to create an ARM server. Wait until the State changes from **creating*	- to **success*	- before you call this operation.
 //
 // @param request - CreateSDGRequest
 //
@@ -4763,19 +4765,25 @@ func (client *Client) CreateSDGWithOptions(request *CreateSDGRequest, runtime *d
 
 // Summary:
 //
-// Creates a Shared Data Group (SDG) on an Android in Container (AIC) instance.
+// Creates an SDG on an AIC instance.
 //
 // Description:
 //
-// A Shared Data Group (SDG) is a data partition image of a virtual device. You can save the data partition of a virtual device as an SDG. The SDG can then be deployed to the data partition of other virtual devices for fast data sharing and application deployment. The following describes the workflow of SDG-related operations:
+// A Data Sharing Group (SDG) can be regarded as an image of a data partition on a virtual device. You can save a data partition of a virtual device as an SDG. A created SDG can be used for deployment to the data partitions of other virtual devices to enable fast data distribution and application. The workflow for SDG-related operations is as follows:
 //
-// - Call the [CreateSDG](~~CreateSDG~~) operation to create an SDG. The SDG is bound to AIC instance A (InstanceId). After the SDG is created, a blank cloud disk (also called a raw cloud disk) is mounted to device A (InstanceId) for SDG creation.
+// - Call the [CreateSDG](~~CreateSDG~~) operation to create an SDG. The SDG is bound to AIC instance A (InstanceId). After the SDG is created, an empty cloud disk (also known as the original cloud disk) is mounted to instance A (InstanceId) for SDG creation.
 //
-// - Install applications, deliver files, and perform other required operations on AIC instance A (InstanceId).
+// - Perform required operations on AIC instance A (InstanceId), such as installing applications and distributing files.
 //
-// - Call the [SaveSDG](~~SaveSDG~~) operation to save the data cloud disk of AIC instance A as SDG A.
+// - Call the [SaveSDG](~~SaveSDG~~) operation to save the data cloud disk on AIC instance A as SDG A.
 //
-// - Call the [DeploySDG](~~DeploySDG~~) operation to deploy SDG A to AIC instance B. This process is asynchronous. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the status of AIC instance B. When the status changes back to success, AIC instance B is available and has the same applications as AIC instance A.
+// - Call the [DeploySDG](~~DeploySDG~~) operation to deploy SDG A to another AIC instance B. This process is executed asynchronously. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the status of AIC instance B. When the status changes back to success, AIC instance B is available, and the applications on AIC instance B are identical to those on AIC instance A.
+//
+// **Before you begin**
+//
+// - Before you call this operation, the AIC instance must be in the **success*	- state. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation and check the AICInstances[].State field to confirm the status.
+//
+// - It usually takes 30 to 60 minutes to create an ARM server. Wait until the State changes from **creating*	- to **success*	- before you call this operation.
 //
 // @param request - CreateSDGRequest
 //
@@ -6929,7 +6937,7 @@ func (client *Client) DeleteNetwork(request *DeleteNetworkRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a network access control list (ACL).
+// Deletes a network ACL.
 //
 // @param request - DeleteNetworkAclRequest
 //
@@ -6973,7 +6981,7 @@ func (client *Client) DeleteNetworkAclWithOptions(request *DeleteNetworkAclReque
 
 // Summary:
 //
-// Deletes a network access control list (ACL).
+// Deletes a network ACL.
 //
 // @param request - DeleteNetworkAclRequest
 //
@@ -7529,7 +7537,7 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 
 // Summary:
 //
-// Deletes a source network address translation (SNAT) entry from a specified SNAT table.
+// Deletes a specified SNAT entry.
 //
 // @param request - DeleteSnatEntryRequest
 //
@@ -7573,7 +7581,7 @@ func (client *Client) DeleteSnatEntryWithOptions(request *DeleteSnatEntryRequest
 
 // Summary:
 //
-// Deletes a source network address translation (SNAT) entry from a specified SNAT table.
+// Deletes a specified SNAT entry.
 //
 // @param request - DeleteSnatEntryRequest
 //
@@ -7591,7 +7599,7 @@ func (client *Client) DeleteSnatEntry(request *DeleteSnatEntryRequest) (_result 
 
 // Summary:
 //
-// Deletes an elastic IP address (EIP) from a source network address translation (SNAT) entry.
+// Deletes a public EIP from an SNAT rule.
 //
 // @param request - DeleteSnatIpForSnatEntryRequest
 //
@@ -7639,7 +7647,7 @@ func (client *Client) DeleteSnatIpForSnatEntryWithOptions(request *DeleteSnatIpF
 
 // Summary:
 //
-// Deletes an elastic IP address (EIP) from a source network address translation (SNAT) entry.
+// Deletes a public EIP from an SNAT rule.
 //
 // @param request - DeleteSnatIpForSnatEntryRequest
 //
@@ -8251,7 +8259,7 @@ func (client *Client) DescribeAddon(request *DescribeAddonRequest) (_result *Des
 
 // Summary:
 //
-// Queries the basic properties, resources, and container status of an application.
+// Queries the basic attributes, resources, and container statuses of an application.
 //
 // @param request - DescribeApplicationRequest
 //
@@ -8311,7 +8319,7 @@ func (client *Client) DescribeApplicationWithOptions(request *DescribeApplicatio
 
 // Summary:
 //
-// Queries the basic properties, resources, and container status of an application.
+// Queries the basic attributes, resources, and container statuses of an application.
 //
 // @param request - DescribeApplicationRequest
 //
@@ -8546,7 +8554,7 @@ func (client *Client) DescribeBandwitdhByInternetChargeType(request *DescribeBan
 
 // Summary:
 //
-// Queries the available resources in a region.
+// Queries the available cloud disk resources in a region.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -8575,7 +8583,7 @@ func (client *Client) DescribeCloudDiskAvailableResourceInfoWithOptions(runtime 
 
 // Summary:
 //
-// Queries the available resources in a region.
+// Queries the available cloud disk resources in a region.
 //
 // @return DescribeCloudDiskAvailableResourceInfoResponse
 func (client *Client) DescribeCloudDiskAvailableResourceInfo() (_result *DescribeCloudDiskAvailableResourceInfoResponse, _err error) {
@@ -8725,7 +8733,7 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 
 // Summary:
 //
-// To add an existing ENS instance to an ECK cluster as a worker node or re-add a node to a node pool, call the DescribeClusterAttachScripts operation to get the required script.
+// Retrieves the script for adding existing nodes to a cluster node pool. If you need to add existing ENS instances to an ECK cluster as worker nodes, or re-add node instances to a node pool after removing worker nodes, ECK supports manually adding existing nodes to a node pool. You can call the DescribeClusterAttachScripts operation to retrieve the script for adding existing nodes.
 //
 // @param request - DescribeClusterAttachScriptsRequest
 //
@@ -8777,7 +8785,7 @@ func (client *Client) DescribeClusterAttachScriptsWithOptions(request *DescribeC
 
 // Summary:
 //
-// To add an existing ENS instance to an ECK cluster as a worker node or re-add a node to a node pool, call the DescribeClusterAttachScripts operation to get the required script.
+// Retrieves the script for adding existing nodes to a cluster node pool. If you need to add existing ENS instances to an ECK cluster as worker nodes, or re-add node instances to a node pool after removing worker nodes, ECK supports manually adding existing nodes to a node pool. You can call the DescribeClusterAttachScripts operation to retrieve the script for adding existing nodes.
 //
 // @param request - DescribeClusterAttachScriptsRequest
 //
@@ -9799,7 +9807,7 @@ func (client *Client) DescribeDisks(request *DescribeDisksRequest) (_result *Des
 
 // Summary:
 //
-// Queries the specifications of available resources for purchase when you create an instance by calling DescribeElbAvailableResourceInfo.
+// Queries the specifications of available resources for creating an instance.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -9828,7 +9836,7 @@ func (client *Client) DescribeElbAvailableResourceInfoWithOptions(runtime *dara.
 
 // Summary:
 //
-// Queries the specifications of available resources for purchase when you create an instance by calling DescribeElbAvailableResourceInfo.
+// Queries the specifications of available resources for creating an instance.
 //
 // @return DescribeElbAvailableResourceInfoResponse
 func (client *Client) DescribeElbAvailableResourceInfo() (_result *DescribeElbAvailableResourceInfoResponse, _err error) {
@@ -9972,7 +9980,7 @@ func (client *Client) DescribeEnsCommodityModuleCode(request *DescribeEnsCommodi
 
 // Summary:
 //
-// Queries elastic IP addresses (EIPs) in Edge Node Service (ENS).
+// Queries elastic IP addresses (EIPs).
 //
 // @param request - DescribeEnsEipAddressesRequest
 //
@@ -10064,7 +10072,7 @@ func (client *Client) DescribeEnsEipAddressesWithOptions(request *DescribeEnsEip
 
 // Summary:
 //
-// Queries elastic IP addresses (EIPs) in Edge Node Service (ENS).
+// Queries elastic IP addresses (EIPs).
 //
 // @param request - DescribeEnsEipAddressesRequest
 //
@@ -10082,7 +10090,7 @@ func (client *Client) DescribeEnsEipAddresses(request *DescribeEnsEipAddressesRe
 
 // Summary:
 //
-// Invoke DescribeEnsNetDistrict to query the regions where edge service resources can be created.
+// Invokes the DescribeEnsNetDistrict operation to query the regions where EPS resources can be created.
 //
 // @param request - DescribeEnsNetDistrictRequest
 //
@@ -10134,7 +10142,7 @@ func (client *Client) DescribeEnsNetDistrictWithOptions(request *DescribeEnsNetD
 
 // Summary:
 //
-// Invoke DescribeEnsNetDistrict to query the regions where edge service resources can be created.
+// Invokes the DescribeEnsNetDistrict operation to query the regions where EPS resources can be created.
 //
 // @param request - DescribeEnsNetDistrictRequest
 //
@@ -10477,7 +10485,7 @@ func (client *Client) DescribeEnsRegions(request *DescribeEnsRegionsRequest) (_r
 
 // Summary:
 //
-// Queries the usage summary of ENS virtual machines (VMs), disks, and networks.
+// Queries the summary of virtual machine, disk, and network usage in Edge Node Service (ENS).
 //
 // @param request - DescribeEnsResourceUsageRequest
 //
@@ -10517,7 +10525,7 @@ func (client *Client) DescribeEnsResourceUsageWithOptions(request *DescribeEnsRe
 
 // Summary:
 //
-// Queries the usage summary of ENS virtual machines (VMs), disks, and networks.
+// Queries the summary of virtual machine, disk, and network usage in Edge Node Service (ENS).
 //
 // @param request - DescribeEnsResourceUsageRequest
 //
@@ -10535,7 +10543,7 @@ func (client *Client) DescribeEnsResourceUsage(request *DescribeEnsResourceUsage
 
 // Summary:
 //
-// Queries route entries.
+// Queries the routing entry list.
 //
 // @param request - DescribeEnsRouteEntryListRequest
 //
@@ -10611,7 +10619,7 @@ func (client *Client) DescribeEnsRouteEntryListWithOptions(request *DescribeEnsR
 
 // Summary:
 //
-// Queries route entries.
+// Queries the routing entry list.
 //
 // @param request - DescribeEnsRouteEntryListRequest
 //
@@ -10629,7 +10637,7 @@ func (client *Client) DescribeEnsRouteEntryList(request *DescribeEnsRouteEntryLi
 
 // Summary:
 //
-// Queries route tables.
+// Queries the list of route tables.
 //
 // @param request - DescribeEnsRouteTablesRequest
 //
@@ -10705,7 +10713,7 @@ func (client *Client) DescribeEnsRouteTablesWithOptions(request *DescribeEnsRout
 
 // Summary:
 //
-// Queries route tables.
+// Queries the list of route tables.
 //
 // @param request - DescribeEnsRouteTablesRequest
 //
@@ -11479,7 +11487,7 @@ func (client *Client) DescribeExportImageStatus(request *DescribeExportImageStat
 
 // Summary:
 //
-// Query NAS file system information.
+// Invokes DescribeFileSystems to query NAS file system info.
 //
 // @param request - DescribeFileSystemsRequest
 //
@@ -11519,7 +11527,7 @@ func (client *Client) DescribeFileSystemsWithOptions(request *DescribeFileSystem
 
 // Summary:
 //
-// Query NAS file system information.
+// Invokes DescribeFileSystems to query NAS file system info.
 //
 // @param request - DescribeFileSystemsRequest
 //
@@ -11537,7 +11545,7 @@ func (client *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (
 
 // Summary:
 //
-// Queries a DNAT rule.
+// Invokes DescribeForwardEntryAttribute to query the details of a specified DNAT rule.
 //
 // @param request - DescribeForwardEntryAttributeRequest
 //
@@ -11581,7 +11589,7 @@ func (client *Client) DescribeForwardEntryAttributeWithOptions(request *Describe
 
 // Summary:
 //
-// Queries a DNAT rule.
+// Invokes DescribeForwardEntryAttribute to query the details of a specified DNAT rule.
 //
 // @param request - DescribeForwardEntryAttributeRequest
 //
@@ -11599,7 +11607,7 @@ func (client *Client) DescribeForwardEntryAttribute(request *DescribeForwardEntr
 
 // Summary:
 //
-// Queries Destination Network Address Translation (DNAT) entries that you created.
+// Queries created DNAT entries.
 //
 // @param request - DescribeForwardTableEntriesRequest
 //
@@ -11671,7 +11679,7 @@ func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeFo
 
 // Summary:
 //
-// Queries Destination Network Address Translation (DNAT) entries that you created.
+// Queries created DNAT entries.
 //
 // @param request - DescribeForwardTableEntriesRequest
 //
@@ -12077,7 +12085,7 @@ func (client *Client) DescribeImages(request *DescribeImagesRequest) (_result *D
 
 // Summary:
 //
-// to query whether auto-renewal is enabled for an instance.
+// Queries the auto-renewal information of instances.
 //
 // @param request - DescribeInstanceAutoRenewAttributeRequest
 //
@@ -12125,7 +12133,7 @@ func (client *Client) DescribeInstanceAutoRenewAttributeWithOptions(request *Des
 
 // Summary:
 //
-// to query whether auto-renewal is enabled for an instance.
+// Queries the auto-renewal information of instances.
 //
 // @param request - DescribeInstanceAutoRenewAttributeRequest
 //
@@ -12209,11 +12217,11 @@ func (client *Client) DescribeInstanceBandwidthDetail(request *DescribeInstanceB
 
 // Summary:
 //
-// Queries the boot configuration of a heterogeneous PC Farm bare metal instance.
+// Queries the boot configuration. Only heterogeneous instances (PCFarm bare metal instances) are supported.
 //
 // Description:
 //
-// Queries the boot configuration of a heterogeneous PC Farm bare metal instance.
+// Queries the boot configuration. This operation is supported only for heterogeneous instances (PCFarm bare metal instances).
 //
 // @param request - DescribeInstanceBootConfigurationRequest
 //
@@ -12269,11 +12277,11 @@ func (client *Client) DescribeInstanceBootConfigurationWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the boot configuration of a heterogeneous PC Farm bare metal instance.
+// Queries the boot configuration. Only heterogeneous instances (PCFarm bare metal instances) are supported.
 //
 // Description:
 //
-// Queries the boot configuration of a heterogeneous PC Farm bare metal instance.
+// Queries the boot configuration. This operation is supported only for heterogeneous instances (PCFarm bare metal instances).
 //
 // @param request - DescribeInstanceBootConfigurationRequest
 //
@@ -12844,13 +12852,13 @@ func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_resul
 
 // Summary:
 //
-// Queries the details of a specified load balancing instance.
+// Invokes the DescribeLoadBalancerAttribute operation to query the details of a specified load balancing instance.
 //
 // Description:
 //
 // - API call rate: 100 calls per second.
 //
-// - Per-user call rate: 10 calls per second.
+// - API call rate per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerAttributeRequest
 //
@@ -12894,13 +12902,13 @@ func (client *Client) DescribeLoadBalancerAttributeWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the details of a specified load balancing instance.
+// Invokes the DescribeLoadBalancerAttribute operation to query the details of a specified load balancing instance.
 //
 // Description:
 //
 // - API call rate: 100 calls per second.
 //
-// - Per-user call rate: 10 calls per second.
+// - API call rate per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerAttributeRequest
 //
@@ -12918,13 +12926,13 @@ func (client *Client) DescribeLoadBalancerAttribute(request *DescribeLoadBalance
 
 // Summary:
 //
-// Queries the configuration of an HTTP listener.
+// Queries the configurations of an HTTP listener.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerHTTPListenerAttributeRequest
 //
@@ -12972,13 +12980,13 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttributeWithOptions(reque
 
 // Summary:
 //
-// Queries the configuration of an HTTP listener.
+// Queries the configurations of an HTTP listener.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerHTTPListenerAttributeRequest
 //
@@ -13000,9 +13008,9 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttribute(request *Describ
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate limit: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerHTTPSListenerAttributeRequest
 //
@@ -13054,9 +13062,9 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttributeWithOptions(requ
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate limit: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerHTTPSListenerAttributeRequest
 //
@@ -13144,7 +13152,7 @@ func (client *Client) DescribeLoadBalancerListenMonitor(request *DescribeLoadBal
 
 // Summary:
 //
-// Queries listeners of Edge Load Balancer (ELB) instances.
+// Invokes DescribeLoadBalancerListeners to query the listeners of a load balancing instance.
 //
 // @param request - DescribeLoadBalancerListenersRequest
 //
@@ -13204,7 +13212,7 @@ func (client *Client) DescribeLoadBalancerListenersWithOptions(request *Describe
 
 // Summary:
 //
-// Queries listeners of Edge Load Balancer (ELB) instances.
+// Invokes DescribeLoadBalancerListeners to query the listeners of a load balancing instance.
 //
 // @param request - DescribeLoadBalancerListenersRequest
 //
@@ -13222,7 +13230,7 @@ func (client *Client) DescribeLoadBalancerListeners(request *DescribeLoadBalance
 
 // Summary:
 //
-// Queries the specifications of an Edge Load Balancer (ELB) instance.
+// Invokes DescribeLoadBalancerSpec to query load balancing specifications.
 //
 // @param request - DescribeLoadBalancerSpecRequest
 //
@@ -13262,7 +13270,7 @@ func (client *Client) DescribeLoadBalancerSpecWithOptions(request *DescribeLoadB
 
 // Summary:
 //
-// Queries the specifications of an Edge Load Balancer (ELB) instance.
+// Invokes DescribeLoadBalancerSpec to query load balancing specifications.
 //
 // @param request - DescribeLoadBalancerSpecRequest
 //
@@ -13280,7 +13288,7 @@ func (client *Client) DescribeLoadBalancerSpec(request *DescribeLoadBalancerSpec
 
 // Summary:
 //
-// Call the `DescribeLoadBalancerTCPListenerAttribute` operation to query the configuration of a TCP listener.
+// Queries the configuration of a TCP listener.
 //
 // Description:
 //
@@ -13334,7 +13342,7 @@ func (client *Client) DescribeLoadBalancerTCPListenerAttributeWithOptions(reques
 
 // Summary:
 //
-// Call the `DescribeLoadBalancerTCPListenerAttribute` operation to query the configuration of a TCP listener.
+// Queries the configuration of a TCP listener.
 //
 // Description:
 //
@@ -13436,13 +13444,13 @@ func (client *Client) DescribeLoadBalancerUDPListenerAttribute(request *Describe
 
 // Summary:
 //
-// Invokes the DescribeLoadBalancers operation to query the list of created load balancing instances.
+// Invokes DescribeLoadBalancers to query the list of created load balancing instances.
 //
 // Description:
 //
-// - API call rate: 100 calls per second.
+// - API rate limit: 100 calls per second.
 //
-// - Call rate per user: 10 calls per second.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancersRequest
 //
@@ -13482,13 +13490,13 @@ func (client *Client) DescribeLoadBalancersWithOptions(request *DescribeLoadBala
 
 // Summary:
 //
-// Invokes the DescribeLoadBalancers operation to query the list of created load balancing instances.
+// Invokes DescribeLoadBalancers to query the list of created load balancing instances.
 //
 // Description:
 //
-// - API call rate: 100 calls per second.
+// - API rate limit: 100 calls per second.
 //
-// - Call rate per user: 10 calls per second.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancersRequest
 //
@@ -13572,7 +13580,7 @@ func (client *Client) DescribeMeasurementData(request *DescribeMeasurementDataRe
 
 // Summary:
 //
-// Queries mount target information by calling DescribeMountTargets.
+// Queries mount target information.
 //
 // @param request - DescribeMountTargetsRequest
 //
@@ -13632,7 +13640,7 @@ func (client *Client) DescribeMountTargetsWithOptions(request *DescribeMountTarg
 
 // Summary:
 //
-// Queries mount target information by calling DescribeMountTargets.
+// Queries mount target information.
 //
 // @param request - DescribeMountTargetsRequest
 //
@@ -13650,7 +13658,7 @@ func (client *Client) DescribeMountTargets(request *DescribeMountTargetsRequest)
 
 // Summary:
 //
-// Query the resources that you can purchase when creating a NAS file system.
+// Queries the available resources for purchase when creating a NAS file system.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -13679,7 +13687,7 @@ func (client *Client) DescribeNASAvailableResourceInfoWithOptions(runtime *dara.
 
 // Summary:
 //
-// Query the resources that you can purchase when creating a NAS file system.
+// Queries the available resources for purchase when creating a NAS file system.
 //
 // @return DescribeNASAvailableResourceInfoResponse
 func (client *Client) DescribeNASAvailableResourceInfo() (_result *DescribeNASAvailableResourceInfoResponse, _err error) {
@@ -13811,7 +13819,7 @@ func (client *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (
 
 // Summary:
 //
-// You can invoke the DescribeNetworkAcls API to query created network ACLs.
+// Queries created network ACLs.
 //
 // @param request - DescribeNetworkAclsRequest
 //
@@ -13871,7 +13879,7 @@ func (client *Client) DescribeNetworkAclsWithOptions(request *DescribeNetworkAcl
 
 // Summary:
 //
-// You can invoke the DescribeNetworkAcls API to query created network ACLs.
+// Queries created network ACLs.
 //
 // @param request - DescribeNetworkAclsRequest
 //
@@ -14335,7 +14343,7 @@ func (client *Client) DescribePrePaidInstanceStock(request *DescribePrePaidInsta
 
 // Summary:
 //
-// Queries the most recent price of an Edge Node Service (ENS) instance.
+// Queries the latest prices of Edge Node Service (ENS) resources.
 //
 // @param tmpReq - DescribePriceRequest
 //
@@ -14417,7 +14425,7 @@ func (client *Client) DescribePriceWithOptions(tmpReq *DescribePriceRequest, run
 
 // Summary:
 //
-// Queries the most recent price of an Edge Node Service (ENS) instance.
+// Queries the latest prices of Edge Node Service (ENS) resources.
 //
 // @param request - DescribePriceRequest
 //
@@ -14551,7 +14559,7 @@ func (client *Client) DescribeRegionResource(request *DescribeRegionResourceRequ
 
 // Summary:
 //
-// Queries the specifications of resources that you can purchase.
+// Queries the specifications of resources available for purchase.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -14580,7 +14588,7 @@ func (client *Client) DescribeReservedResourceWithOptions(runtime *dara.RuntimeO
 
 // Summary:
 //
-// Queries the specifications of resources that you can purchase.
+// Queries the specifications of resources available for purchase.
 //
 // @return DescribeReservedResourceResponse
 func (client *Client) DescribeReservedResource() (_result *DescribeReservedResourceResponse, _err error) {
@@ -16118,7 +16126,7 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 
 // Summary:
 //
-// Detaches a pay-as-you-go disk from an Edge Node Service (ENS) instance. You cannot To detach a disk that is created together with an instance.
+// Detaches a pay-as-you-go data cloud disk from an ENS instance. Only separately purchased pay-as-you-go disks can be detached. Disks created along with the instance are not supported.
 //
 // @param request - DetachDiskRequest
 //
@@ -16166,7 +16174,7 @@ func (client *Client) DetachDiskWithOptions(request *DetachDiskRequest, runtime 
 
 // Summary:
 //
-// Detaches a pay-as-you-go disk from an Edge Node Service (ENS) instance. You cannot To detach a disk that is created together with an instance.
+// Detaches a pay-as-you-go data cloud disk from an ENS instance. Only separately purchased pay-as-you-go disks can be detached. Disks created along with the instance are not supported.
 //
 // @param request - DetachDiskRequest
 //
@@ -16516,11 +16524,11 @@ func (client *Client) DistApplicationData(request *DistApplicationDataRequest) (
 
 // Summary:
 //
-// Migrates an instance across physical nodes in response to an O&M event.
+// Migrates an instance across nodes after an O&M event occurs on the instance.
 //
 // Description:
 //
-// - This O\\&M task currently supports only the `Instance:SystemUpgrade.Migrate` event type for migrations due to an underlying upgrade.
+// - This O&M operation currently supports only the following event type: Instance:SystemUpgrade.Migrate (migration required for underlying upgrades).
 //
 // @param request - EventMigrateInstanceRequest
 //
@@ -16588,11 +16596,11 @@ func (client *Client) EventMigrateInstanceWithOptions(request *EventMigrateInsta
 
 // Summary:
 //
-// Migrates an instance across physical nodes in response to an O&M event.
+// Migrates an instance across nodes after an O&M event occurs on the instance.
 //
 // Description:
 //
-// - This O\\&M task currently supports only the `Instance:SystemUpgrade.Migrate` event type for migrations due to an underlying upgrade.
+// - This O&M operation currently supports only the following event type: Instance:SystemUpgrade.Migrate (migration required for underlying upgrades).
 //
 // @param request - EventMigrateInstanceRequest
 //
@@ -16610,11 +16618,11 @@ func (client *Client) EventMigrateInstance(request *EventMigrateInstanceRequest)
 
 // Summary:
 //
-// Reboots an Instance affected by an Operational Event.
+// Restarts an instance after an O&M event occurs.
 //
 // Description:
 //
-// - This operation currently supports only the following Event Type: Instance:SystemMaintenance.Reboot (an Instance Reboot due to System Maintenance).
+// - This O&M operation currently supports only the following event type: Instance:SystemMaintenance.Reboot (instance restart due to system maintenance).
 //
 // @param request - EventRebootInstanceRequest
 //
@@ -16674,11 +16682,11 @@ func (client *Client) EventRebootInstanceWithOptions(request *EventRebootInstanc
 
 // Summary:
 //
-// Reboots an Instance affected by an Operational Event.
+// Restarts an instance after an O&M event occurs.
 //
 // Description:
 //
-// - This operation currently supports only the following Event Type: Instance:SystemMaintenance.Reboot (an Instance Reboot due to System Maintenance).
+// - This O&M operation currently supports only the following event type: Instance:SystemMaintenance.Reboot (instance restart due to system maintenance).
 //
 // @param request - EventRebootInstanceRequest
 //
@@ -16848,7 +16856,7 @@ func (client *Client) ExportBillDetailData(request *ExportBillDetailDataRequest)
 
 // Summary:
 //
-// Exports a custom image to an Object Storage Service (OSS) bucket in the same region.
+// Exports a custom image to an Object Storage Service (OSS) bucket in the same region as the image.
 //
 // @param request - ExportImageRequest
 //
@@ -16908,7 +16916,7 @@ func (client *Client) ExportImageWithOptions(request *ExportImageRequest, runtim
 
 // Summary:
 //
-// Exports a custom image to an Object Storage Service (OSS) bucket in the same region.
+// Exports a custom image to an Object Storage Service (OSS) bucket in the same region as the image.
 //
 // @param request - ExportImageRequest
 //
@@ -17496,13 +17504,13 @@ func (client *Client) ImportImage(request *ImportImageRequest) (_result *ImportI
 
 // Summary:
 //
-// Imports the public key of a Rivest–Shamir–Adleman (RSA)-encrypted key pair that is generated by a third-party tool.
+// Imports the public key of an RSA key pair generated by other tools.
 //
 // Description:
 //
-// - After the key pair is imported, ENS stores the public key. You must securely store the private key.
+// - After the key pair is imported, Alibaba Cloud ENS stores the public key. You must securely store the private key of the key pair.
 //
-// - The key pair can be only in the ssh-rsa format.
+// - Only the ssh-rsa format is supported.
 //
 // @param request - ImportKeyPairRequest
 //
@@ -17550,13 +17558,13 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 
 // Summary:
 //
-// Imports the public key of a Rivest–Shamir–Adleman (RSA)-encrypted key pair that is generated by a third-party tool.
+// Imports the public key of an RSA key pair generated by other tools.
 //
 // Description:
 //
-// - After the key pair is imported, ENS stores the public key. You must securely store the private key.
+// - After the key pair is imported, Alibaba Cloud ENS stores the public key. You must securely store the private key of the key pair.
 //
-// - The key pair can be only in the ssh-rsa format.
+// - Only the ssh-rsa format is supported.
 //
 // @param request - ImportKeyPairRequest
 //
@@ -17921,11 +17929,11 @@ func (client *Client) JoinVSwitchesToEpnInstance(request *JoinVSwitchesToEpnInst
 
 // Summary:
 //
-// Removes an instance from a security group.
+// Removes an ENS instance from the specified security group.
 //
 // Description:
 //
-// Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+// The instance must be in the Stopped or Running state before you remove it from a security group.
 //
 // @param request - LeaveSecurityGroupRequest
 //
@@ -17977,11 +17985,11 @@ func (client *Client) LeaveSecurityGroupWithOptions(request *LeaveSecurityGroupR
 
 // Summary:
 //
-// Removes an instance from a security group.
+// Removes an ENS instance from the specified security group.
 //
 // Description:
 //
-// Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+// The instance must be in the Stopped or Running state before you remove it from a security group.
 //
 // @param request - LeaveSecurityGroupRequest
 //
@@ -19551,15 +19559,15 @@ func (client *Client) ModifyImageSharePermission(request *ModifyImageSharePermis
 
 // Summary:
 //
-// Calls ModifyInstanceAttribute to modify instance attributes, including the instance password and name.
+// Modifies the attributes of an instance, including the instance password and name.
 //
 // Description:
 //
-// - You cannot reset the instance password when the instance status is Starting.
+// - You cannot reset the password of an instance when the instance status is Starting.
 //
-// - You cannot modify the instance password when the instance status is Running.
+// - You cannot modify the password of an instance when the instance status is Running.
 //
-// - After resetting the password, restart the instance in the console or invoke the RebootInstance operation for the change to take effect. Restarting the instance from within the operating system does not take effect.
+// - After you reset the password, you must restart the instance in the console or invoke the RebootInstance operation for the changes to take effect. Restarting the instance from within the operating system does not take effect.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -19623,15 +19631,15 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 
 // Summary:
 //
-// Calls ModifyInstanceAttribute to modify instance attributes, including the instance password and name.
+// Modifies the attributes of an instance, including the instance password and name.
 //
 // Description:
 //
-// - You cannot reset the instance password when the instance status is Starting.
+// - You cannot reset the password of an instance when the instance status is Starting.
 //
-// - You cannot modify the instance password when the instance status is Running.
+// - You cannot modify the password of an instance when the instance status is Running.
 //
-// - After resetting the password, restart the instance in the console or invoke the RebootInstance operation for the change to take effect. Restarting the instance from within the operating system does not take effect.
+// - After you reset the password, you must restart the instance in the console or invoke the RebootInstance operation for the changes to take effect. Restarting the instance from within the operating system does not take effect.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -19901,25 +19909,27 @@ func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeType
 
 // Summary:
 //
-// Modifies the private IP address or vSwitch of a VPC-type ECS instance.
+// Modifies the private IP address and vSwitch of an Edge Node Service (ENS) instance.
 //
 // Description:
 //
-// The instance that you want to manage must be in the Stopped state. When you modify the parameters of a scaling group, the following limits apply:
+// When you call this operation, the ENS instance must be in the Stopped state.
+//
+// Note the following when you modify the attributes:
 //
 // - Instance:
 //
-//   - Instances that are associated with SLB are not supported.
+//   - Instances associated with load balancing are not supported.
 //
 // - Network:
 //
-//   - Instances that are associated with EIPs are not supported.
+//   - Instances bound to an elastic IP address (EIP) are not supported.
 //
-//   - Instances that are associated with high-availability virtual IP addresses are not supported.
+//   - Instances bound to a high-availability virtual IP address (HAVIP) are not supported.
 //
-//   - Instances that have been used as next hops in the routing table are not supported.
+//   - Instances used as the next hop in a route table are not supported.
 //
-//   - Secondary ENIs cannot be attached to the ECS instance.
+//   - Instances bound to secondary elastic network interfaces (ENIs) are not supported.
 //
 //   - Instances configured with secondary IP addresses are not supported.
 //
@@ -19973,25 +19983,27 @@ func (client *Client) ModifyInstanceNetworkAttributeWithOptions(request *ModifyI
 
 // Summary:
 //
-// Modifies the private IP address or vSwitch of a VPC-type ECS instance.
+// Modifies the private IP address and vSwitch of an Edge Node Service (ENS) instance.
 //
 // Description:
 //
-// The instance that you want to manage must be in the Stopped state. When you modify the parameters of a scaling group, the following limits apply:
+// When you call this operation, the ENS instance must be in the Stopped state.
+//
+// Note the following when you modify the attributes:
 //
 // - Instance:
 //
-//   - Instances that are associated with SLB are not supported.
+//   - Instances associated with load balancing are not supported.
 //
 // - Network:
 //
-//   - Instances that are associated with EIPs are not supported.
+//   - Instances bound to an elastic IP address (EIP) are not supported.
 //
-//   - Instances that are associated with high-availability virtual IP addresses are not supported.
+//   - Instances bound to a high-availability virtual IP address (HAVIP) are not supported.
 //
-//   - Instances that have been used as next hops in the routing table are not supported.
+//   - Instances used as the next hop in a route table are not supported.
 //
-//   - Secondary ENIs cannot be attached to the ECS instance.
+//   - Instances bound to secondary elastic network interfaces (ENIs) are not supported.
 //
 //   - Instances configured with secondary IP addresses are not supported.
 //
@@ -20011,13 +20023,13 @@ func (client *Client) ModifyInstanceNetworkAttribute(request *ModifyInstanceNetw
 
 // Summary:
 //
-// Modifies the information about an Edge Load Balancer (ELB) instance.
+// Invokes ModifyLoadBalancerAttribute to modify the information of a load balancing instance.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - ModifyLoadBalancerAttributeRequest
 //
@@ -20065,13 +20077,13 @@ func (client *Client) ModifyLoadBalancerAttributeWithOptions(request *ModifyLoad
 
 // Summary:
 //
-// Modifies the information about an Edge Load Balancer (ELB) instance.
+// Invokes ModifyLoadBalancerAttribute to modify the information of a load balancing instance.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - ModifyLoadBalancerAttributeRequest
 //
@@ -20397,7 +20409,7 @@ func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupA
 
 // Summary:
 //
-// Modifies the information about a snapshot.
+// Modifies the attributes of a snapshot.
 //
 // @param request - ModifySnapshotAttributeRequest
 //
@@ -20449,7 +20461,7 @@ func (client *Client) ModifySnapshotAttributeWithOptions(request *ModifySnapshot
 
 // Summary:
 //
-// Modifies the information about a snapshot.
+// Modifies the attributes of a snapshot.
 //
 // @param request - ModifySnapshotAttributeRequest
 //
@@ -21083,13 +21095,13 @@ func (client *Client) PutBucketAcl(request *PutBucketAclRequest) (_result *PutBu
 
 // Summary:
 //
-// You can call the PutBucketLifecycle operation to set lifecycle rules for a bucket.
+// Configures lifecycle rules for objects.
 //
 // Description:
 //
-// - You can configure up to 1,000 rules.
+// - Up to 1,000 rules are supported.
 //
-// - If an object matches multiple rules, the rule with the earliest expiration time applies.
+// - If an object matches multiple rules, the rule with the earliest expiration time takes precedence.
 //
 // @param request - PutBucketLifecycleRequest
 //
@@ -21157,13 +21169,13 @@ func (client *Client) PutBucketLifecycleWithOptions(request *PutBucketLifecycleR
 
 // Summary:
 //
-// You can call the PutBucketLifecycle operation to set lifecycle rules for a bucket.
+// Configures lifecycle rules for objects.
 //
 // Description:
 //
-// - You can configure up to 1,000 rules.
+// - Up to 1,000 rules are supported.
 //
-// - If an object matches multiple rules, the rule with the earliest expiration time applies.
+// - If an object matches multiple rules, the rule with the earliest expiration time takes precedence.
 //
 // @param request - PutBucketLifecycleRequest
 //
@@ -22181,7 +22193,7 @@ func (client *Client) RemoveInstanceSDG(request *RemoveInstanceSDGRequest) (_res
 
 // Summary:
 //
-// Removes IP addresses from an edge private network (EPN) instance.
+// Removes instances from a public network.
 //
 // @param request - RemovePublicIpsFromEpnInstanceRequest
 //
@@ -22229,7 +22241,7 @@ func (client *Client) RemovePublicIpsFromEpnInstanceWithOptions(request *RemoveP
 
 // Summary:
 //
-// Removes IP addresses from an edge private network (EPN) instance.
+// Removes instances from a public network.
 //
 // @param request - RemovePublicIpsFromEpnInstanceRequest
 //
@@ -22923,7 +22935,7 @@ func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskRe
 
 // Summary:
 //
-// Resizes a pay-as-you-go disk that you purchase.
+// Invokes the ResizeDisk operation to resize a separately purchased pay-as-you-go cloud disk instance.
 //
 // @param request - ResizeDiskRequest
 //
@@ -22971,7 +22983,7 @@ func (client *Client) ResizeDiskWithOptions(request *ResizeDiskRequest, runtime 
 
 // Summary:
 //
-// Resizes a pay-as-you-go disk that you purchase.
+// Invokes the ResizeDisk operation to resize a separately purchased pay-as-you-go cloud disk instance.
 //
 // @param request - ResizeDiskRequest
 //
@@ -23519,7 +23531,7 @@ func (client *Client) RunInstances(request *RunInstancesRequest) (_result *RunIn
 
 // Summary:
 //
-// Schedules the nearest idle resources including instances and pods for your device based on the user ID and IP address and initializes the virtual environment.
+// Optimally schedules idle resources (instances or container pods) for a terminal device based on the customer ID and IP address, and initializes the virtual device environment.
 //
 // @param request - RunServiceScheduleRequest
 //
@@ -23595,7 +23607,7 @@ func (client *Client) RunServiceScheduleWithOptions(request *RunServiceScheduleR
 
 // Summary:
 //
-// Schedules the nearest idle resources including instances and pods for your device based on the user ID and IP address and initializes the virtual environment.
+// Optimally schedules idle resources (instances or container pods) for a terminal device based on the customer ID and IP address, and initializes the virtual device environment.
 //
 // @param request - RunServiceScheduleRequest
 //
@@ -23977,13 +23989,13 @@ func (client *Client) SetLoadBalancerHTTPListenerAttribute(request *SetLoadBalan
 
 // Summary:
 //
-// Modifies an HTTPS listener.
+// Modifies the configurations of an HTTPS listener.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API rate limit: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerHTTPSListenerAttributeRequest
 //
@@ -24091,13 +24103,13 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithOptions(request *
 
 // Summary:
 //
-// Modifies an HTTPS listener.
+// Modifies the configurations of an HTTPS listener.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API rate limit: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerHTTPSListenerAttributeRequest
 //
@@ -24115,13 +24127,13 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttribute(request *SetLoadBala
 
 // Summary:
 //
-// Modifies the status of an Edge Load Balancer (ELB) instance.
+// Invokes SetLoadBalancerStatus to modify the instance status of a load balancing instance.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerStatusRequest
 //
@@ -24169,13 +24181,13 @@ func (client *Client) SetLoadBalancerStatusWithOptions(request *SetLoadBalancerS
 
 // Summary:
 //
-// Modifies the status of an Edge Load Balancer (ELB) instance.
+// Invokes SetLoadBalancerStatus to modify the instance status of a load balancing instance.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerStatusRequest
 //
@@ -24327,13 +24339,13 @@ func (client *Client) SetLoadBalancerTCPListenerAttribute(request *SetLoadBalanc
 
 // Summary:
 //
-// Call `SetLoadBalancerUDPListenerAttribute` to modify a UDP listener.
+// Modifies the configurations of a UDP listener.
 //
 // Description:
 //
-// - API call rate limit: 100 requests/second.
+// - API call rate: 100 calls per second.
 //
-// - Per-user rate limit: 10 requests/second.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerUDPListenerAttributeRequest
 //
@@ -24425,13 +24437,13 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 
 // Summary:
 //
-// Call `SetLoadBalancerUDPListenerAttribute` to modify a UDP listener.
+// Modifies the configurations of a UDP listener.
 //
 // Description:
 //
-// - API call rate limit: 100 requests/second.
+// - API call rate: 100 calls per second.
 //
-// - Per-user rate limit: 10 requests/second.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerUDPListenerAttributeRequest
 //
@@ -24521,7 +24533,7 @@ func (client *Client) ShareAICImage(request *ShareAICImageRequest) (_result *Sha
 
 // Summary:
 //
-// Starts an edge network instance.
+// Starts an edge-to-edge communication instance.
 //
 // @param request - StartEpnInstanceRequest
 //
@@ -24565,7 +24577,7 @@ func (client *Client) StartEpnInstanceWithOptions(request *StartEpnInstanceReque
 
 // Summary:
 //
-// Starts an edge network instance.
+// Starts an edge-to-edge communication instance.
 //
 // @param request - StartEpnInstanceRequest
 //
@@ -24873,7 +24885,7 @@ func (client *Client) StartSnatIpForSnatEntry(request *StartSnatIpForSnatEntryRe
 
 // Summary:
 //
-// Stops an EPN instance.
+// Stops an Edge-to-Edge communication instance.
 //
 // @param request - StopEpnInstanceRequest
 //
@@ -24917,7 +24929,7 @@ func (client *Client) StopEpnInstanceWithOptions(request *StopEpnInstanceRequest
 
 // Summary:
 //
-// Stops an EPN instance.
+// Stops an Edge-to-Edge communication instance.
 //
 // @param request - StopEpnInstanceRequest
 //
@@ -25461,7 +25473,7 @@ func (client *Client) UnInstallClusterAddons(request *UnInstallClusterAddonsRequ
 
 // Summary:
 //
-// Unassigns secondary private IP addresses from an elastic network interface (ENI).
+// Unassigns one or more secondary private IP addresses from an elastic network interface (ENI).
 //
 // @param request - UnassignPrivateIpAddressesRequest
 //
@@ -25509,7 +25521,7 @@ func (client *Client) UnassignPrivateIpAddressesWithOptions(request *UnassignPri
 
 // Summary:
 //
-// Unassigns secondary private IP addresses from an elastic network interface (ENI).
+// Unassigns one or more secondary private IP addresses from an elastic network interface (ENI).
 //
 // @param request - UnassignPrivateIpAddressesRequest
 //
@@ -25527,7 +25539,7 @@ func (client *Client) UnassignPrivateIpAddresses(request *UnassignPrivateIpAddre
 
 // Summary:
 //
-// Disassociates a high-availability virtual IP address (HAVIP) from an Edge Node Service (ENS) instance or Elastic Network Interface (ENI).
+// Disassociates a HaVip from an ENS instance or a network interface controller (NIC).
 //
 // @param request - UnassociateHaVipRequest
 //
@@ -25575,7 +25587,7 @@ func (client *Client) UnassociateHaVipWithOptions(request *UnassociateHaVipReque
 
 // Summary:
 //
-// Disassociates a high-availability virtual IP address (HAVIP) from an Edge Node Service (ENS) instance or Elastic Network Interface (ENI).
+// Disassociates a HaVip from an ENS instance or a network interface controller (NIC).
 //
 // @param request - UnassociateHaVipRequest
 //
@@ -25889,7 +25901,7 @@ func (client *Client) UnmountInstanceSDG(request *UnmountInstanceSDGRequest) (_r
 
 // Summary:
 //
-// Removes user tags from a resource.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -25945,7 +25957,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes user tags from a resource.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //

@@ -16,7 +16,7 @@ type iModifyLoadBalancerAttributeRequest interface {
 }
 
 type ModifyLoadBalancerAttributeRequest struct {
-	// The ID of the ELB instance.
+	// The ID of the load balancing instance.
 	//
 	// This parameter is required.
 	//
@@ -24,9 +24,9 @@ type ModifyLoadBalancerAttributeRequest struct {
 	//
 	// lb-5q73cv04zeyh43lh74lp4gtm8
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the ELB instance. The name must be **2*	- to **128*	- characters in length.
+	// The name of the load balancing instance. The name must be **2*	- to **128*	- characters in length, and can contain English or Chinese characters.
 	//
-	// > The value cannot start with `http://` or `https://`.
+	// > It cannot start with `http://` or `https://`.
 	//
 	// This parameter is required.
 	//

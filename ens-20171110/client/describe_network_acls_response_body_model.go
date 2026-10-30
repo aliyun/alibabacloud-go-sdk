@@ -22,9 +22,9 @@ type iDescribeNetworkAclsResponseBody interface {
 }
 
 type DescribeNetworkAclsResponseBody struct {
-	// Details of the network ACLs.
+	// The details of the network ACLs.
 	NetworkAcls []*DescribeNetworkAclsResponseBodyNetworkAcls `json:"NetworkAcls,omitempty" xml:"NetworkAcls,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type DescribeNetworkAclsResponseBody struct {
 	//
 	// 2
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A1707FC0-430C-423A-B624-284046B20399
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeNetworkAclsResponseBody) Validate() error {
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAcls struct {
-	// The time when the network ACL was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The time when the network ACL was created. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//
@@ -129,9 +129,9 @@ type DescribeNetworkAclsResponseBodyNetworkAcls struct {
 	//
 	// This is my NetworkAcl.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Details of the outbound rules.
+	// The outbound rules.
 	EgressAclEntries []*DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries `json:"EgressAclEntries,omitempty" xml:"EgressAclEntries,omitempty" type:"Repeated"`
-	// Details of the inbound rules.
+	// The inbound rules.
 	IngressAclEntries []*DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries `json:"IngressAclEntries,omitempty" xml:"IngressAclEntries,omitempty" type:"Repeated"`
 	// The ID of the network ACL.
 	//
@@ -145,13 +145,13 @@ type DescribeNetworkAclsResponseBodyNetworkAcls struct {
 	//
 	// acl-8
 	NetworkAclName *string `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
-	// Details of the associated resources.
+	// The associated resources.
 	Resources []*DescribeNetworkAclsResponseBodyNetworkAclsResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The status of the network ACL. Valid values:
 	//
-	// - **Available**: The network ACL is available.
+	// - **Available**: Active.
 	//
-	// - **Modifying**: The network ACL is being configured.
+	// - **Modifying**: Configuring.
 	//
 	// example:
 	//
@@ -283,23 +283,23 @@ type DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries struct {
 	//
 	// This is EgressAclEntries.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the outbound rule.
+	// The ID of the outbound rule entry.
 	//
 	// example:
 	//
 	// nae-a2d447uw4tillfvgb****
 	NetworkAclEntryId *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
-	// The name of the outbound rule.
+	// The name of the outbound rule entry.
 	//
 	// example:
 	//
 	// acl-2
 	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
-	// The action that is performed on network traffic that matches the rule. Valid values:
+	// The authorization policy. Valid values:
 	//
-	// - **accept**: allows the network traffic.
+	// - **accept**: Allow.
 	//
-	// - **drop**: blocks the network traffic.
+	// - **drop**: Deny.
 	//
 	// example:
 	//
@@ -307,15 +307,15 @@ type DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries struct {
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The destination port range of the outbound rule.
 	//
-	// - If **Protocol*	- of the outbound rule is set to **all*	- or **icmp*	- the port range is **-1/-1**, which indicates all ports.
+	// - If the **Protocol*	- (Protocol Type) of the outbound rule is **all*	- or **icmp**, the port range is **-1/-1**, which indicates that all ports are allowed.
 	//
-	// - If **Protocol*	- of the outbound rule is set to **tcp*	- or **udp**, the port range is in the following format: **1/200*	- or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1 to 65535**.
+	// - If the **Protocol*	- (Protocol Type) of the outbound rule is **tcp*	- or **udp**, the port range is **1~65535**. The format is **1/200*	- or **80/80**, which indicates ports 1 to 200 or port 80.
 	//
 	// example:
 	//
 	// -1/-1
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the rule. Valid values: **1 to 100**. Default value: **1**.
+	// The priority of the rule. Valid values: **1*	- to **100**. Default value: **1**.
 	//
 	// example:
 	//
@@ -323,23 +323,23 @@ type DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// - **icmp**: ICMP.
+	// - **icmp**: Internet Control Message Protocol.
 	//
-	// - **tcp**: TCP.
+	// - **tcp**: Transmission Control Protocol.
 	//
-	// - **udp**: UDP.
+	// - **udp**: User Datagram Protocol.
 	//
-	// - **all**: all protocols.
+	// - **all**: All protocols.
 	//
 	// example:
 	//
 	// all
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// - **system**: The rule is created by the system.
+	// - **system**: System-created.
 	//
-	// - **custom**: The rule is created by a user.
+	// - **custom**: User-created.
 	//
 	// example:
 	//
@@ -453,29 +453,29 @@ type DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries struct {
 	//
 	// This is IngressAclEntries.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination network.
+	// The destination CIDR block.
 	//
 	// example:
 	//
 	// 10.0.0.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the inbound rule.
+	// The ID of the inbound rule entry.
 	//
 	// example:
 	//
 	// nae-5dk86arlydmezasw****
 	NetworkAclEntryId *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
-	// The name of the inbound rule.
+	// The name of the inbound rule entry.
 	//
 	// example:
 	//
 	// acl-3
 	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
-	// The action that is performed on network traffic that matches the rule. Valid values:
+	// The authorization policy. Valid values:
 	//
-	// - **accept**: allows the network traffic.
+	// - **accept**: Allow.
 	//
-	// - **drop**: blocks the network traffic.
+	// - **drop**: Deny.
 	//
 	// example:
 	//
@@ -483,15 +483,15 @@ type DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries struct {
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The destination port range of the inbound rule.
 	//
-	// - If **Protocol*	- of the inbound rule is set to **all*	- or **icmp**, the port range is **-1/-1**, which indicates all ports.
+	// - If the **Protocol*	- (Protocol Type) of the inbound rule is **all*	- or **icmp**, the port range is **-1/-1**, which indicates that all ports are allowed.
 	//
-	// - If **Protocol*	- of the inbound rule is set to **tcp*	- or **udp**, the port range is in the following format: **1/200*	- or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1 to 65535**.
+	// - If the **Protocol*	- (Protocol Type) of the inbound rule is **tcp*	- or **udp**, the port range is **1~65535**. The format is **1/200*	- or **80/80**, which indicates ports 1 to 200 or port 80.
 	//
 	// example:
 	//
 	// -1/-1
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the rule. Valid values: **1 to 100**. Default value: **1**.
+	// The priority of the rule. Valid values: **1*	- to **100**. Default value: **1**.
 	//
 	// example:
 	//
@@ -499,23 +499,23 @@ type DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// - **icmp**: ICMP.
+	// - **icmp**: Internet Control Message Protocol.
 	//
-	// - **tcp**: TCP.
+	// - **tcp**: Transmission Control Protocol.
 	//
-	// - **udp**: UDP.
+	// - **udp**: User Datagram Protocol.
 	//
-	// - **all**: all protocols.
+	// - **all**: All protocols.
 	//
 	// example:
 	//
 	// all
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// - **system**: The rule is created by the system.
+	// - **system**: System-created.
 	//
-	// - **custom**: The rule is created by a user.
+	// - **custom**: User-created.
 	//
 	// example:
 	//
@@ -626,7 +626,7 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) Validate()
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsResources struct {
-	// The ID of the edge node.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
@@ -644,13 +644,13 @@ type DescribeNetworkAclsResponseBodyNetworkAclsResources struct {
 	//
 	// Network
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The association status of the resource. Valid values:
+	// The status of the associated resource. Valid values:
 	//
-	// - **BINDED**: The resource is associated with the network ACL.
+	// - **BINDED**: Bound.
 	//
-	// - **BINDING**: The resource is being associated with the network ACL.
+	// - **BINDING**: Binding.
 	//
-	// - **UNBINDING**: The resource is being disassociated from the network ACL.
+	// - **UNBINDING**: Unbinding.
 	//
 	// example:
 	//

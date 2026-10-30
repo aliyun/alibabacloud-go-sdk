@@ -16,7 +16,7 @@ type iDescribeLoadBalancerHTTPListenerAttributeRequest interface {
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeRequest struct {
-	// The listener port that you want to query. Valid values: **1 to 65535**.
+	// The listener port to query. Valid values: **1*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the ELB instance.
+	// The ID of the load balancing instance.
 	//
 	// This parameter is required.
 	//

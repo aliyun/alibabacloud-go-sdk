@@ -20,21 +20,21 @@ type iDescribeNASAvailableResourceInfoResponseBody interface {
 }
 
 type DescribeNASAvailableResourceInfoResponseBody struct {
-	// Business status code. Returns 0 on success.
+	// The business status code. A value of 0 indicates success.
 	//
 	// example:
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// you are not authorized to this workspace, or workspace not exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Available NAS resource information.
+	// The available NAS resource information.
 	NasAvailableResourceInfo []*DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo `json:"NasAvailableResourceInfo,omitempty" xml:"NasAvailableResourceInfo,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,49 +100,49 @@ func (s *DescribeNASAvailableResourceInfoResponseBody) Validate() error {
 }
 
 type DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo struct {
-	// Edge zone product capabilities.
+	// The product capabilities of the edge zone.
 	Ability []*string `json:"Ability,omitempty" xml:"Ability,omitempty" type:"Repeated"`
-	// Area to which the ENS edge zone belongs.
+	// The area to which the ENS edge zone belongs.
 	//
 	// example:
 	//
 	// SouthWestChina
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// English name.
+	// The English name.
 	//
 	// example:
 	//
 	// cn-chenzhou-telecom_unicom_cmcc
 	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	// ENS edge zone ID.
+	// The ENS edge zone ID.
 	//
 	// example:
 	//
 	// cn-chenzhou-telecom_unicom_cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// ENS edge zone name.
+	// The name of the ENS edge zone.
 	//
 	// example:
 	//
 	// China Hangzhou36
 	EnsRegionName *string `json:"EnsRegionName,omitempty" xml:"EnsRegionName,omitempty"`
-	// Available NAS resource count.
+	// The resource count of active NAS resources.
 	//
 	// example:
 	//
 	// 1
 	NasAvailableAmount *int32 `json:"NasAvailableAmount,omitempty" xml:"NasAvailableAmount,omitempty"`
-	// Available NAS resource type.
+	// The type of available NAS resources.
 	//
 	// example:
 	//
 	// capacity
 	NasAvailableStorgeType *string `json:"NasAvailableStorgeType,omitempty" xml:"NasAvailableStorgeType,omitempty"`
-	// Province to which the ENS edge zone belongs.
+	// The province to which the ENS edge zone belongs.
 	//
 	// example:
 	//
-	// 湖北省
+	// Hubei Province
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 

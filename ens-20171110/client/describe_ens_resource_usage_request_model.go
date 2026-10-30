@@ -16,13 +16,13 @@ type iDescribeEnsResourceUsageRequest interface {
 }
 
 type DescribeEnsResourceUsageRequest struct {
-	// The end of the time range to query. Format: yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
+	// The end time of the query range for the expiration time of virtual machine instances. Format: yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2018-06-15T09:07:23Z
 	ExpiredEndTime *string `json:"ExpiredEndTime,omitempty" xml:"ExpiredEndTime,omitempty"`
-	// The beginning of the time range to query. Format: yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
+	// The start time of the query range for the expiration time of virtual machine instances. Format: yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
