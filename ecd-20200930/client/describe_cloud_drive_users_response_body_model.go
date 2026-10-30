@@ -18,9 +18,9 @@ type iDescribeCloudDriveUsersResponseBody interface {
 }
 
 type DescribeCloudDriveUsersResponseBody struct {
-	// A list of user personal drives.
+	// The list of user personal drives.
 	CloudDriveUsers []*DescribeCloudDriveUsersResponseBodyCloudDriveUsers `json:"CloudDriveUsers,omitempty" xml:"CloudDriveUsers,omitempty" type:"Repeated"`
-	// The token for the next page of results. An empty value indicates that all results have been returned.
+	// The pagination token for the next query. If `NextToken` is empty, no more results are available.
 	//
 	// example:
 	//
@@ -101,13 +101,13 @@ type DescribeCloudDriveUsersResponseBodyCloudDriveUsers struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Maximum storage capacity for the user’s personal drive, in bytes.
+	// The maximum storage capacity of the user personal drive. Unit: bytes.
 	//
 	// example:
 	//
 	// 104857600
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-	// The used storage space, in bytes.
+	// The size of the used storage space. Unit: bytes.
 	//
 	// example:
 	//

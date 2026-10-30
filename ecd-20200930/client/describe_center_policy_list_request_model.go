@@ -30,17 +30,17 @@ type iDescribeCenterPolicyListRequest interface {
 }
 
 type DescribeCenterPolicyListRequest struct {
-	// Specifies whether to enable the academic proxy feature. Valid values:
+	// 學術代理功能開關。取值範圍：
 	//
-	// - on: Enabled.
+	// - on：開啟。
 	//
-	// - off: Disabled.
+	// - off：關閉。
 	//
 	// example:
 	//
 	// off
 	AcademicProxy *string `json:"AcademicProxy,omitempty" xml:"AcademicProxy,omitempty"`
-	// The business type.
+	// 業務類型。
 	//
 	// This parameter is required.
 	//
@@ -48,43 +48,43 @@ type DescribeCenterPolicyListRequest struct {
 	//
 	// 1
 	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// Specifies whether to enable the model library feature. Valid values:
+	// 模型庫功能開關。取值範圍：
 	//
-	// - on: Enabled.
+	// - on：開啟。
 	//
-	// - off: Disabled.
+	// - off：關閉。
 	//
 	// example:
 	//
 	// off
 	ModelLibrary *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
-	// The page number of the current page in a paged query. This parameter implements paging.
+	// 分頁查詢時，當前頁的頁碼。
 	//
-	// Default value: 1.
+	// 預設值：1。
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of rows per page in a paged query. This parameter implements paging.
+	// 分頁查詢時，每頁最大行數。
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of Cloud Desktop policy IDs.
+	// 雲端電腦策略ID清單。
 	PolicyGroupId []*string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty" type:"Repeated"`
-	// Specifies whether to enable the port proxy feature. Valid values:
+	// 連接埠代理功能開關。取值範圍：
 	//
-	// - on: Enabled.
+	// - on：開啟。
 	//
-	// - off: Disabled.
+	// - off：關閉。
 	//
 	// example:
 	//
 	// off
 	PortProxy *string `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
-	// The resource type.
+	// 資源類型。
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type DescribeCenterPolicyListRequest struct {
 	//
 	// desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The effective scope of the Cloud Desktop policy.
+	// 雲端電腦策略的生效範圍。
 	//
 	// example:
 	//

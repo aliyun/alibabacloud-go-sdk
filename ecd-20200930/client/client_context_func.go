@@ -2453,7 +2453,7 @@ func (client *Client) CreateCdsFileShareLinkWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a region-independent Cloud Desktop policy.
+// Creates a region-independent cloud desktop policy.
 //
 // @param request - CreateCenterPolicyRequest
 //
@@ -2488,6 +2488,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 		query["AppContentProtection"] = request.AppContentProtection
 	}
 
+	if !dara.IsNil(request.AppScreenshotBuckets) {
+		query["AppScreenshotBuckets"] = request.AppScreenshotBuckets
+	}
+
 	if !dara.IsNil(request.AuthorizeAccessPolicyRule) {
 		query["AuthorizeAccessPolicyRule"] = request.AuthorizeAccessPolicyRule
 	}
@@ -2498,6 +2502,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.AutoReconnect) {
 		query["AutoReconnect"] = request.AutoReconnect
+	}
+
+	if !dara.IsNil(request.AutoSaveAppScreenshot) {
+		query["AutoSaveAppScreenshot"] = request.AutoSaveAppScreenshot
 	}
 
 	if !dara.IsNil(request.BusinessChannel) {
@@ -2698,6 +2706,10 @@ func (client *Client) CreateCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.MaxReconnectTime) {
 		query["MaxReconnectTime"] = request.MaxReconnectTime
+	}
+
+	if !dara.IsNil(request.McpService) {
+		query["McpService"] = request.McpService
 	}
 
 	if !dara.IsNil(request.MemoryDownGradeDuration) {
@@ -7818,7 +7830,7 @@ func (client *Client) DescribeCensWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Queries the details of regionless policies.
+// 查詢無地域策略的詳細資訊。
 //
 // @param request - DescribeCenterPolicyListRequest
 //
@@ -8266,7 +8278,7 @@ func (client *Client) DescribeCloudDrivePermissionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Retrieves a list of personal drives and their basic information for all users in an enterprise network drive.
+// Queries the list and basic information of all personal drives in an enterprise drive.
 //
 // @param request - DescribeCloudDriveUsersRequest
 //
@@ -11596,7 +11608,7 @@ func (client *Client) DescribePeripheralDriversWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the details of cloud computer policies.
+// Queries the details of cloud desktop policies.
 //
 // @param request - DescribePolicyGroupsRequest
 //
@@ -12489,6 +12501,10 @@ func (client *Client) DescribeResourceByCenterPolicyIdWithContext(ctx context.Co
 
 	if !dara.IsNil(request.ResourceId) {
 		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceName) {
+		query["ResourceName"] = request.ResourceName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -16312,7 +16328,7 @@ func (client *Client) ModifyCdsFileShareLinkWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the configuration of a region-free policy.
+// Modifies the configuration of a regionless policy.
 //
 // @param request - ModifyCenterPolicyRequest
 //
@@ -16347,6 +16363,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 		query["AppContentProtection"] = request.AppContentProtection
 	}
 
+	if !dara.IsNil(request.AppScreenshotBuckets) {
+		query["AppScreenshotBuckets"] = request.AppScreenshotBuckets
+	}
+
 	if !dara.IsNil(request.AuthorizeAccessPolicyRule) {
 		query["AuthorizeAccessPolicyRule"] = request.AuthorizeAccessPolicyRule
 	}
@@ -16357,6 +16377,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.AutoReconnect) {
 		query["AutoReconnect"] = request.AutoReconnect
+	}
+
+	if !dara.IsNil(request.AutoSaveAppScreenshot) {
+		query["AutoSaveAppScreenshot"] = request.AutoSaveAppScreenshot
 	}
 
 	if !dara.IsNil(request.BusinessChannel) {
@@ -16553,6 +16577,10 @@ func (client *Client) ModifyCenterPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.MaxReconnectTime) {
 		query["MaxReconnectTime"] = request.MaxReconnectTime
+	}
+
+	if !dara.IsNil(request.McpService) {
+		query["McpService"] = request.McpService
 	}
 
 	if !dara.IsNil(request.MemoryDownGradeDuration) {
@@ -19557,7 +19585,7 @@ func (client *Client) ModifyTemplateBaseInfoWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the settings of a configuration group, such as scheduled task configurations.
+// Modifies the specific settings of a configuration group, such as the configuration of scheduled tasks.
 //
 // @param request - ModifyTimerGroupRequest
 //

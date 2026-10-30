@@ -40,9 +40,9 @@ type DescribePolicyGroupsRequest struct {
 	//
 	// Enterprise
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The list of cloud computer policy IDs to exclude from the query results.
+	// The IDs of the cloud desktop policies to exclude from the query results.
 	ExternalPolicyGroupIds []*string `json:"ExternalPolicyGroupIds,omitempty" xml:"ExternalPolicyGroupIds,omitempty" type:"Repeated"`
-	// The number of entries per page for a paged query.
+	// The number of entries to return per page when paging in a paged query.
 	//
 	// - Maximum value: 100.
 	//
@@ -52,19 +52,19 @@ type DescribePolicyGroupsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the value of NextToken that was returned from the last call to this operation. You do not need to set this parameter for the first request.
+	// The query token. Set the value to the NextToken value returned from the last call to this operation. You do not need to specify this parameter for the first call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the current page for a paged query.
+	// The current page number when paging in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page for a paged query.
+	// The maximum number of entries to return per page when paging in a paged query.
 	//
 	// Default value: 20.
 	//
@@ -72,13 +72,13 @@ type DescribePolicyGroupsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of cloud computer policy IDs.
+	// The IDs of the cloud desktop policies.
 	//
 	// example:
 	//
 	// system-all-enabled-policy
 	PolicyGroupId []*string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty" type:"Repeated"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Wuying Workspace.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type DescribePolicyGroupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The effective scope of the cloud computer policy.
+	// The effective scope of the cloud desktop policies.
 	//
 	// example:
 	//

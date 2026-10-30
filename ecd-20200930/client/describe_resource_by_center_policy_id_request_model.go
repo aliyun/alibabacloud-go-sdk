@@ -19,6 +19,8 @@ type iDescribeResourceByCenterPolicyIdRequest interface {
 	GetProductType() *string
 	SetResourceId(v string) *DescribeResourceByCenterPolicyIdRequest
 	GetResourceId() *string
+	SetResourceName(v string) *DescribeResourceByCenterPolicyIdRequest
+	GetResourceName() *string
 }
 
 type DescribeResourceByCenterPolicyIdRequest struct {
@@ -32,7 +34,7 @@ type DescribeResourceByCenterPolicyIdRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
@@ -58,6 +60,12 @@ type DescribeResourceByCenterPolicyIdRequest struct {
 	//
 	// ecd-ia2zw38bi6cm7****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource name.
+	//
+	// example:
+	//
+	// testName
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
 func (s DescribeResourceByCenterPolicyIdRequest) String() string {
@@ -88,6 +96,10 @@ func (s *DescribeResourceByCenterPolicyIdRequest) GetResourceId() *string {
 	return s.ResourceId
 }
 
+func (s *DescribeResourceByCenterPolicyIdRequest) GetResourceName() *string {
+	return s.ResourceName
+}
+
 func (s *DescribeResourceByCenterPolicyIdRequest) SetMaxResults(v int32) *DescribeResourceByCenterPolicyIdRequest {
 	s.MaxResults = &v
 	return s
@@ -110,6 +122,11 @@ func (s *DescribeResourceByCenterPolicyIdRequest) SetProductType(v string) *Desc
 
 func (s *DescribeResourceByCenterPolicyIdRequest) SetResourceId(v string) *DescribeResourceByCenterPolicyIdRequest {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdRequest) SetResourceName(v string) *DescribeResourceByCenterPolicyIdRequest {
+	s.ResourceName = &v
 	return s
 }
 

@@ -20,13 +20,13 @@ type iDescribeResourceByCenterPolicyIdResponseBody interface {
 }
 
 type DescribeResourceByCenterPolicyIdResponseBody struct {
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 2
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The token for the next query. If NextToken is empty, no more results are available.
+	// The token that is used to start the next query. If NextToken is empty, no more results are available.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
 	//
 	// 64
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The target cloud desktop specification. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by WUYING Workspace.
+	// The target cloud desktop type. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the IDs of cloud desktop types supported by WUYING Workspace.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
 	//
 	// desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the resource.
+	// The resource status.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type GetDesktopGroupDetailRequest struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the list of regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

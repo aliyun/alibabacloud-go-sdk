@@ -3230,7 +3230,7 @@ func (client *Client) CreateCdsFileShareLink(request *CreateCdsFileShareLinkRequ
 
 // Summary:
 //
-// Creates a region-independent Cloud Desktop policy.
+// Creates a region-independent cloud desktop policy.
 //
 // @param request - CreateCenterPolicyRequest
 //
@@ -3265,6 +3265,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["AppContentProtection"] = request.AppContentProtection
 	}
 
+	if !dara.IsNil(request.AppScreenshotBuckets) {
+		query["AppScreenshotBuckets"] = request.AppScreenshotBuckets
+	}
+
 	if !dara.IsNil(request.AuthorizeAccessPolicyRule) {
 		query["AuthorizeAccessPolicyRule"] = request.AuthorizeAccessPolicyRule
 	}
@@ -3275,6 +3279,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !dara.IsNil(request.AutoReconnect) {
 		query["AutoReconnect"] = request.AutoReconnect
+	}
+
+	if !dara.IsNil(request.AutoSaveAppScreenshot) {
+		query["AutoSaveAppScreenshot"] = request.AutoSaveAppScreenshot
 	}
 
 	if !dara.IsNil(request.BusinessChannel) {
@@ -3475,6 +3483,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !dara.IsNil(request.MaxReconnectTime) {
 		query["MaxReconnectTime"] = request.MaxReconnectTime
+	}
+
+	if !dara.IsNil(request.McpService) {
+		query["McpService"] = request.McpService
 	}
 
 	if !dara.IsNil(request.MemoryDownGradeDuration) {
@@ -3842,7 +3854,7 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 // Summary:
 //
-// Creates a region-independent Cloud Desktop policy.
+// Creates a region-independent cloud desktop policy.
 //
 // @param request - CreateCenterPolicyRequest
 //
@@ -10021,7 +10033,7 @@ func (client *Client) DescribeCens(request *DescribeCensRequest) (_result *Descr
 
 // Summary:
 //
-// Queries the details of regionless policies.
+// 查詢無地域策略的詳細資訊。
 //
 // @param request - DescribeCenterPolicyListRequest
 //
@@ -10097,7 +10109,7 @@ func (client *Client) DescribeCenterPolicyListWithOptions(request *DescribeCente
 
 // Summary:
 //
-// Queries the details of regionless policies.
+// 查詢無地域策略的詳細資訊。
 //
 // @param request - DescribeCenterPolicyListRequest
 //
@@ -10585,7 +10597,7 @@ func (client *Client) DescribeCloudDrivePermissions(request *DescribeCloudDriveP
 
 // Summary:
 //
-// Retrieves a list of personal drives and their basic information for all users in an enterprise network drive.
+// Queries the list and basic information of all personal drives in an enterprise drive.
 //
 // @param request - DescribeCloudDriveUsersRequest
 //
@@ -10645,7 +10657,7 @@ func (client *Client) DescribeCloudDriveUsersWithOptions(request *DescribeCloudD
 
 // Summary:
 //
-// Retrieves a list of personal drives and their basic information for all users in an enterprise network drive.
+// Queries the list and basic information of all personal drives in an enterprise drive.
 //
 // @param request - DescribeCloudDriveUsersRequest
 //
@@ -14847,7 +14859,7 @@ func (client *Client) DescribePeripheralDrivers(request *DescribePeripheralDrive
 
 // Summary:
 //
-// Queries the details of cloud computer policies.
+// Queries the details of cloud desktop policies.
 //
 // @param request - DescribePolicyGroupsRequest
 //
@@ -14923,7 +14935,7 @@ func (client *Client) DescribePolicyGroupsWithOptions(request *DescribePolicyGro
 
 // Summary:
 //
-// Queries the details of cloud computer policies.
+// Queries the details of cloud desktop policies.
 //
 // @param request - DescribePolicyGroupsRequest
 //
@@ -15960,6 +15972,10 @@ func (client *Client) DescribeResourceByCenterPolicyIdWithOptions(request *Descr
 
 	if !dara.IsNil(request.ResourceId) {
 		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceName) {
+		query["ResourceName"] = request.ResourceName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -20901,7 +20917,7 @@ func (client *Client) ModifyCdsFileShareLink(request *ModifyCdsFileShareLinkRequ
 
 // Summary:
 //
-// Modifies the configuration of a region-free policy.
+// Modifies the configuration of a regionless policy.
 //
 // @param request - ModifyCenterPolicyRequest
 //
@@ -20936,6 +20952,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 		query["AppContentProtection"] = request.AppContentProtection
 	}
 
+	if !dara.IsNil(request.AppScreenshotBuckets) {
+		query["AppScreenshotBuckets"] = request.AppScreenshotBuckets
+	}
+
 	if !dara.IsNil(request.AuthorizeAccessPolicyRule) {
 		query["AuthorizeAccessPolicyRule"] = request.AuthorizeAccessPolicyRule
 	}
@@ -20946,6 +20966,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !dara.IsNil(request.AutoReconnect) {
 		query["AutoReconnect"] = request.AutoReconnect
+	}
+
+	if !dara.IsNil(request.AutoSaveAppScreenshot) {
+		query["AutoSaveAppScreenshot"] = request.AutoSaveAppScreenshot
 	}
 
 	if !dara.IsNil(request.BusinessChannel) {
@@ -21142,6 +21166,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !dara.IsNil(request.MaxReconnectTime) {
 		query["MaxReconnectTime"] = request.MaxReconnectTime
+	}
+
+	if !dara.IsNil(request.McpService) {
+		query["McpService"] = request.McpService
 	}
 
 	if !dara.IsNil(request.MemoryDownGradeDuration) {
@@ -21521,7 +21549,7 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 // Summary:
 //
-// Modifies the configuration of a region-free policy.
+// Modifies the configuration of a regionless policy.
 //
 // @param request - ModifyCenterPolicyRequest
 //
@@ -24912,7 +24940,7 @@ func (client *Client) ModifyTemplateBaseInfo(request *ModifyTemplateBaseInfoRequ
 
 // Summary:
 //
-// Modifies the settings of a configuration group, such as scheduled task configurations.
+// Modifies the specific settings of a configuration group, such as the configuration of scheduled tasks.
 //
 // @param request - ModifyTimerGroupRequest
 //
@@ -24972,7 +25000,7 @@ func (client *Client) ModifyTimerGroupWithOptions(request *ModifyTimerGroupReque
 
 // Summary:
 //
-// Modifies the settings of a configuration group, such as scheduled task configurations.
+// Modifies the specific settings of a configuration group, such as the configuration of scheduled tasks.
 //
 // @param request - ModifyTimerGroupRequest
 //

@@ -18,9 +18,9 @@ type iDescribeDesktopGroupsResponseBody interface {
 }
 
 type DescribeDesktopGroupsResponseBody struct {
-	// The list of shared cloud desktops.
+	// The list of shared cloud computers.
 	DesktopGroups []*DescribeDesktopGroupsResponseBodyDesktopGroups `json:"DesktopGroups,omitempty" xml:"DesktopGroups,omitempty" type:"Repeated"`
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -89,13 +89,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// SIMPLE
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The number of concurrent sessions allowed per cloud desktop in shared cloud desktops with multiple sessions and multiple desktops.
+	// The number of concurrent sessions allowed per cloud computer in a multi-session shared cloud computer group.
 	//
 	// example:
 	//
 	// 2
 	BindAmount *int64 `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
-	// This parameter is applicable only to subscription shared cloud desktops and indicates the number of initially purchased cloud desktops. Valid values: 0 to 200.
+	// This parameter applies only to subscription shared cloud computers and indicates the initial number of cloud computers purchased. Valid values: 0 to 200.
 	//
 	// example:
 	//
@@ -107,15 +107,15 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// comment
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The maximum duration for a session to remain connected. When the session connection duration reaches this value, the session is automatically disconnected. Unit: milliseconds.
+	// The maximum duration that a session can remain connected. When the connection duration reaches this value, the session is automatically disconnected. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 3600000
 	ConnectDuration *int64 `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
-	// The list of the number of cloud desktops in each state.
+	// The list of cloud computer counts by status.
 	CountPerStatus []*DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus `json:"CountPerStatus,omitempty" xml:"CountPerStatus,omitempty" type:"Repeated"`
-	// The number of vCPU cores.
+	// The number of vCPUs.
 	//
 	// example:
 	//
@@ -133,19 +133,19 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 1007214305******
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The user disk type.
+	// The data cloud disk category.
 	//
 	// example:
 	//
 	// cloud_ssd
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	// The user disk size. Unit: GiB.
+	// The data cloud disk size. Unit: GiB.
 	//
 	// example:
 	//
 	// 50
 	DataDiskSize *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	// The number of created cloud desktops.
+	// The number of created cloud computers.
 	//
 	// example:
 	//
@@ -157,19 +157,19 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The shared cloud desktop name.
+	// The name of the shared cloud computer.
 	//
 	// example:
 	//
 	// CloudComputerPool01
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// The target cloud desktop specification. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the specification IDs supported by Wuying Cloud Computer.
+	// The target cloud computer specifications. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the specifications supported by Elastic Desktop Service (EDS).
 	//
 	// example:
 	//
 	// eds.enterprise_office.4c4g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The number of authorized users for the shared cloud desktop.
+	// The number of authorized users for the shared cloud computer.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// Private
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The expiration time of the subscription shared cloud desktop. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The expiration time of the subscription shared cloud computer. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The list of expiration times.
 	ExpiredTimes []*string `json:"ExpiredTimes,omitempty" xml:"ExpiredTimes,omitempty" type:"Repeated"`
-	// The number of GPU cores.
+	// The number of GPUs.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 16 GiB
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
-	// The maximum idle time before a user session is disconnected. If no keyboard or mouse operations are performed within this maximum duration after a user session is established, the session is disconnected. Unit: milliseconds.
+	// The maximum idle time before a user session is disconnected. If no keyboard or mouse operations occur within this duration after the session is connected, the session is disconnected. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -231,25 +231,25 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// m-gq15cq5ydlvwn****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Indicates whether it is an LDAP directory.
+	// Indicates whether the directory is an LDAP directory.
 	IsLdap *bool `json:"IsLdap,omitempty" xml:"IsLdap,omitempty"`
 	// The retention period after a session is disconnected. Unit: milliseconds. Valid values: 180000 (3 minutes) to 345600000 (4 days). A value of 0 indicates that the session is always retained.
 	//
-	// When a session is actively disconnected by the user or unexpectedly disconnected due to other factors, the retention period starts from the time of disconnection. If the user does not reconnect to the session within this retention period, the session is logged off and unsaved data is destroyed. If the user successfully reconnects within this retention period, the user can enter the original session and access the data before the disconnection.
+	// When a session is disconnected intentionally by the user or unexpectedly due to other factors, the retention period starts from the time of disconnection. If the user does not reconnect to the session within this period, the session is logged off and unsaved data is destroyed. If the user successfully reconnects within this period, the user can enter the original session and access the data before the disconnection.
 	//
 	// example:
 	//
 	// 180000
 	KeepDuration *int64 `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
-	// The load balancing policy for shared cloud desktops with multiple sessions and multiple desktops.
+	// The load balancing policy for multi-session, multi-cloud-computer shared cloud computers.
 	//
 	// example:
 	//
 	// 1
 	LoadPolicy *int64 `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
-	// - For pay-as-you-go shared cloud desktops, this parameter indicates the maximum number of cloud desktops that can be created.
+	// - For pay-as-you-go shared cloud computers, this parameter indicates the maximum number of cloud computers that can be created.
 	//
-	// - For subscription shared cloud desktops, this parameter indicates the sum of the initially purchased cloud desktops (`BuyDesktopsCount`) and the number of cloud desktops allowed for automatic creation.
+	// - For subscription shared cloud computers, this parameter indicates the sum of the initial number of cloud computers purchased (`BuyDesktopsCount`) and the number of cloud computers allowed for automatic creation.
 	//
 	// example:
 	//
@@ -261,15 +261,15 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 16384
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// - For pay-as-you-go shared cloud desktops, this parameter indicates the minimum number of cloud desktops to be created.
+	// - For pay-as-you-go shared cloud computers, this parameter indicates the minimum number of cloud computers to be created.
 	//
-	// - For subscription shared cloud desktops, this parameter is equivalent to `BuyDesktopsCount` and indicates the number of initially purchased cloud desktops.
+	// - For subscription shared cloud computers, this parameter is equivalent to `BuyDesktopsCount` and indicates the initial number of cloud computers purchased.
 	//
 	// example:
 	//
 	// 1
 	MinDesktopsCount *int32 `json:"MinDesktopsCount,omitempty" xml:"MinDesktopsCount,omitempty"`
-	// The name of the office network to which the shared cloud desktop belongs.
+	// The name of the office network to which the shared cloud computer belongs.
 	//
 	// example:
 	//
@@ -305,13 +305,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// bundle_eds_general_4c8g_s8d5_win2019
 	OwnBundleId *string `json:"OwnBundleId,omitempty" xml:"OwnBundleId,omitempty"`
-	// The cloud desktop template name.
+	// The name of the cloud computer template.
 	//
 	// example:
 	//
 	// Standard office template
 	OwnBundleName *string `json:"OwnBundleName,omitempty" xml:"OwnBundleName,omitempty"`
-	// The shared cloud desktop type.
+	// The shared cloud computer type.
 	//
 	// example:
 	//
@@ -329,15 +329,15 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// pg-53iyi2aar0nd6c8qj
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The list of cloud desktop policy IDs.
+	// The collection of cloud computer policy IDs.
 	PolicyGroupIdList []*string `json:"PolicyGroupIdList,omitempty" xml:"PolicyGroupIdList,omitempty" type:"Repeated"`
-	// The Policy Name associated with the shared cloud desktop.
+	// The Policy Name associated with the shared cloud computer.
 	//
 	// example:
 	//
 	// All enabled policy
 	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
-	// The list of cloud desktop policy names.
+	// The list of cloud computer policy names.
 	PolicyGroupNameList []*string `json:"PolicyGroupNameList,omitempty" xml:"PolicyGroupNameList,omitempty" type:"Repeated"`
 	// The protocol type.
 	//
@@ -345,17 +345,17 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The ID of the bandwidth throttling rule.
+	// The ID of the QoS rule.
 	//
 	// example:
 	//
 	// qos-5605u0gelk200****
 	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The session usage threshold, which is used as the trigger for auto scaling of shared cloud desktops with multiple sessions and multiple desktops. The session usage is calculated by using the following formula:
+	// The session usage threshold, which serves as the trigger for auto scaling of multi-session shared cloud desktops. The formula for calculating session usage is:
 	//
 	// ```Session usage = Number of attached sessions / (Total number of cloud desktop resources × Maximum number of sessions supported per cloud desktop) × 100%```
 	//
-	// When the session usage reaches this threshold, new cloud desktops are created. When the session usage does not reach this threshold, redundant cloud desktops are deleted.
+	// When the session usage reaches this threshold, new cloud desktops are created. If the session usage falls below this threshold, excess cloud desktops are deleted.
 	//
 	// example:
 	//
@@ -367,11 +367,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 0
 	ResetType *int64 `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	// The session type. A value of 0 indicates a single session, and a value of 1 indicates multiple sessions.
+	//
 	// example:
 	//
 	// 0
 	SessionType *int32 `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
-	// The convenience user group ID.
+	// The ID of the convenience user group.
 	//
 	// example:
 	//
@@ -383,7 +385,7 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The idle shutdown time. When the idle time of the cloud desktop reaches this value, the cloud desktop is automatically shut down. If a user connects to the cloud desktop after it is shut down, the cloud desktop is automatically started. Unit: milliseconds.
+	// The idle shutdown duration. When a cloud desktop remains idle for this duration, it is automatically shut down. If a user connects to the cloud desktop after it is shut down, the cloud desktop is automatically started. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -395,13 +397,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// vsw-uf63bb6*****8gfytm
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	// The system cloud disk type.
+	// The category of the system cloud disk.
 	//
 	// example:
 	//
 	// cloud_ssd
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The system cloud disk size. Unit: GiB.
+	// The size of the system cloud disk. Unit: GiB.
 	//
 	// example:
 	//
@@ -409,13 +411,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	// The list of tags.
 	Tags []*DescribeDesktopGroupsResponseBodyDesktopGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The user group name.
+	// The name of the user group.
 	//
 	// example:
 	//
 	// R&D group
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
-	// The user organizational unit path.
+	// The organizational unit path of the user.
 	//
 	// example:
 	//
@@ -427,13 +429,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 2
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// Indicates whether the encryption feature is enabled.
+	// Indicates whether encryption is enabled.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the KMS key used to encrypt the disk.
+	// The ID of the KMS key used to encrypt the cloud disk.
 	//
 	// example:
 	//
@@ -1030,13 +1032,13 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) Validate() error {
 }
 
 type DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus struct {
-	// The number of cloud desktops.
+	// The number of cloud computers.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The cloud desktop state.
+	// The cloud computer status.
 	//
 	// example:
 	//

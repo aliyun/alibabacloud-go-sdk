@@ -16,13 +16,13 @@ type iModifyTimerGroupResponseBody interface {
 }
 
 type ModifyTimerGroupResponseBody struct {
-	// The configuration group ID.
+	// The ID of the configuration group.
 	//
 	// example:
 	//
 	// cg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
