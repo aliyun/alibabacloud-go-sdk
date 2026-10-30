@@ -20,17 +20,17 @@ type iListJobRequest interface {
 }
 
 type ListJobRequest struct {
-	// Specifies whether to return subtasks.\\
+	// Specifies whether to return subtasks.
 	//
-	// Valid values: true and false.
+	// Valid values: true, false.
 	//
 	// example:
 	//
 	// true
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// Specifies the number of migration tasks to be returned.\\
+	// Specifies the number of migration tasks to return.
 	//
-	// Valid values: 0 - 1000 (excluding 0).\\
+	// Valid values: 1 to 1000.
 	//
 	// Default value: 1000.
 	//
@@ -38,15 +38,15 @@ type ListJobRequest struct {
 	//
 	// 1000
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The marker after which the migration tasks are listed.\\
+	// Specifies the marker after which migration tasks are listed.
 	//
-	// By default, this parameter is left empty.
+	// Default value: None.
 	//
 	// example:
 	//
 	// test_marker
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The name of the parent task. If this parameter is specified, all subtasks of the parent task are returned.
+	// The name of the parent task. If you specify this parameter, all subtasks of the parent task are returned.
 	//
 	// example:
 	//

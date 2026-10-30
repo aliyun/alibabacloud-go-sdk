@@ -20,7 +20,7 @@ type GetJobResultRequest struct {
 	//
 	// example:
 	//
-	// 2
+	// 1
 	RuntimeId *int32 `json:"runtimeId,omitempty" xml:"runtimeId,omitempty"`
 }
 

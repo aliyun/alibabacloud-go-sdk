@@ -18,15 +18,15 @@ type iListJobResp interface {
 }
 
 type ListJobResp struct {
-	// The queried tasks.
+	// The task detail list.
 	ImportJob []*GetJobResp `json:"ImportJob,omitempty" xml:"ImportJob,omitempty" type:"Repeated"`
-	// The position from which the next list operation starts.
+	// The start point for the next task listing.
 	//
 	// example:
 	//
 	// test_nex_marker
 	NextMarker *string `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
-	// Indicates whether the queried results are truncated.
+	// Indicates whether the result is truncated.
 	//
 	// example:
 	//

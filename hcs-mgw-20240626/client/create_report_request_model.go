@@ -14,7 +14,7 @@ type iCreateReportRequest interface {
 }
 
 type CreateReportRequest struct {
-	// The details for creating the migration report.
+	// The details for creating a migration report.
 	CreateReport *CreateReportInfo `json:"CreateReport,omitempty" xml:"CreateReport,omitempty"`
 }
 

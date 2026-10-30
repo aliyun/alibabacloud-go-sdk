@@ -185,9 +185,9 @@ func (client *Client) CreateJobWithContext(ctx context.Context, userid *string, 
 //
 // Description:
 //
-//	  To create a migration report, you must have the permission on mgw:CreateImportReport.
+// - To create a migration report, you must have the mgw:CreateImportReport permission.
 //
-//		- If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
+// - If you specified to create a migration report when creating the task, you do not need to call this operation. Otherwise, you can call this operation to create a migration report for a specified execution ID.
 //
 // @param request - CreateReportRequest
 //
@@ -591,11 +591,11 @@ func (client *Client) GetAgentStatusWithContext(ctx context.Context, userid *str
 
 // Summary:
 //
-// Obtains the details of a migration task.
+// Retrieves the details of a migration task.
 //
 // Description:
 //
-//	To query the information about a migration task, you must have the permission on mgw:GetImportJob.
+// - To retrieve a migration task, you must have the mgw:GetImportJob permission.
 //
 // @param request - GetJobRequest
 //
@@ -645,13 +645,13 @@ func (client *Client) GetJobWithContext(ctx context.Context, userid *string, job
 
 // Summary:
 //
-// Obtains the list of files that fail to be migrated when files fail to be migrated during a migration task.
+// Retrieves the retry information for failed files in a migration task.
 //
 // Description:
 //
-//	  To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
+// - To retrieve task retry information, you must have the mgw:GetImportJobResult permission.
 //
-//		- If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
+// - If a task has failed files, the migration service generates a list of these failed files. Call this operation to retrieve the details of the list. You can then create a new data address and a subtask to remigrate the failed files.
 //
 // @param request - GetJobResultRequest
 //
@@ -917,11 +917,11 @@ func (client *Client) ListAgentWithContext(ctx context.Context, userid *string, 
 
 // Summary:
 //
-// Lists the migration tasks created by a user in the specific region.
+// Lists the migration tasks in the region.
 //
 // Description:
 //
-//	To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
+// - To list migration tasks, you must have the mgw:ListImportJob permission.
 //
 // @param request - ListJobRequest
 //

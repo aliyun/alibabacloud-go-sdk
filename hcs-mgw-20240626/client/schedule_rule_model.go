@@ -18,19 +18,19 @@ type iScheduleRule interface {
 }
 
 type ScheduleRule struct {
-	// The maximum number of times that the migration task is automatically scheduled. Each time the migration task is run, the execution ID increases by one until the task is run the specified number of times. The task is automatically scheduled based on the specified start time and pause time. The task is no longer automatically scheduled after the task is run the specified number of times. However, you can still manually start the task.
+	// The maximum number of automatic scheduling rounds. Within this limit, a task execution ID is automatically scheduled based on the start and pause times. One round consists of a complete task execution from start to finish. If the limit is exceeded, automatic scheduling stops, but the task can still be executed manually.
 	//
 	// example:
 	//
 	// 1
 	MaxScheduleCount *int64 `json:"MaxScheduleCount,omitempty" xml:"MaxScheduleCount,omitempty"`
-	// The time when the migration task started. You can use a CRON expression to specify the time. The interval at which the migration task is run is at least 1 hour.
+	// The start time specified by a cron expression. The interval must be at least 1 hour.
 	//
 	// example:
 	//
 	// 0 0 	- 	- 	- ?
 	StartCronExpression *string `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
-	// The time when the migration task paused. You can use a CRON expression to specify the time. The interval at which the migration task is run is at least 1 hour.
+	// The pause time specified by a cron expression. The interval must be at least 1 hour.
 	//
 	// example:
 	//

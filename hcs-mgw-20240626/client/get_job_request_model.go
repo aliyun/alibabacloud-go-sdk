@@ -14,7 +14,7 @@ type iGetJobRequest interface {
 }
 
 type GetJobRequest struct {
-	// Specifies whether to obtain the details of the migration task by using the task ID.
+	// Specifies whether to retrieve the task by task ID.
 	//
 	// example:
 	//

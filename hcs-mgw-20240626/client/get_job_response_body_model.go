@@ -14,7 +14,7 @@ type iGetJobResponseBody interface {
 }
 
 type GetJobResponseBody struct {
-	// The details for obtaining the details of the migration task.
+	// The task details.
 	ImportJob *GetJobResp `json:"ImportJob,omitempty" xml:"ImportJob,omitempty"`
 }
 

@@ -15,15 +15,19 @@ type iFilterRule interface {
 	GetKeyFilters() *KeyFilters
 	SetLastModifiedFilters(v *LastModifiedFilters) *FilterRule
 	GetLastModifiedFilters() *LastModifiedFilters
+	SetPrefixFilters(v *PrefixFilters) *FilterRule
+	GetPrefixFilters() *PrefixFilters
 }
 
 type FilterRule struct {
-	// The filter based on the file type.
+	// The file type filters.
 	FileTypeFilters *FileTypeFilters `json:"FileTypeFilters,omitempty" xml:"FileTypeFilters,omitempty"`
-	// The filter based on the file name.
+	// The file name filters.
 	KeyFilters *KeyFilters `json:"KeyFilters,omitempty" xml:"KeyFilters,omitempty"`
-	// The filter based on the file modification time.
+	// The file modification time filters.
 	LastModifiedFilters *LastModifiedFilters `json:"LastModifiedFilters,omitempty" xml:"LastModifiedFilters,omitempty"`
+	// The object prefix filter rules. Only Includes is supported. This filter applies only to full migration tasks.
+	PrefixFilters *PrefixFilters `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty"`
 }
 
 func (s FilterRule) String() string {
@@ -46,6 +50,10 @@ func (s *FilterRule) GetLastModifiedFilters() *LastModifiedFilters {
 	return s.LastModifiedFilters
 }
 
+func (s *FilterRule) GetPrefixFilters() *PrefixFilters {
+	return s.PrefixFilters
+}
+
 func (s *FilterRule) SetFileTypeFilters(v *FileTypeFilters) *FilterRule {
 	s.FileTypeFilters = v
 	return s
@@ -58,6 +66,11 @@ func (s *FilterRule) SetKeyFilters(v *KeyFilters) *FilterRule {
 
 func (s *FilterRule) SetLastModifiedFilters(v *LastModifiedFilters) *FilterRule {
 	s.LastModifiedFilters = v
+	return s
+}
+
+func (s *FilterRule) SetPrefixFilters(v *PrefixFilters) *FilterRule {
+	s.PrefixFilters = v
 	return s
 }
 
@@ -74,6 +87,11 @@ func (s *FilterRule) Validate() error {
 	}
 	if s.LastModifiedFilters != nil {
 		if err := s.LastModifiedFilters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrefixFilters != nil {
+		if err := s.PrefixFilters.Validate(); err != nil {
 			return err
 		}
 	}

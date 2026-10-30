@@ -16,13 +16,13 @@ type iTimeFilter interface {
 }
 
 type TimeFilter struct {
-	// The time when the migration task ended.
+	// The end time.
 	//
 	// example:
 	//
 	// 2006-12-31T59:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when the migration task started.
+	// The start time.
 	//
 	// example:
 	//

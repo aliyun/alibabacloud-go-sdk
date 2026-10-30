@@ -14,7 +14,7 @@ type iGetJobResultResponseBody interface {
 }
 
 type GetJobResultResponseBody struct {
-	// The details for obtaining the retries of the migration task.
+	// The details of the task retry information.
 	ImportJobResult *GetJobResultResp `json:"ImportJobResult,omitempty" xml:"ImportJobResult,omitempty"`
 }
 

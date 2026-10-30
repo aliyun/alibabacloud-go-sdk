@@ -14,7 +14,7 @@ type iListJobResponseBody interface {
 }
 
 type ListJobResponseBody struct {
-	// The queried migration tasks.
+	// The details of the migration task list.
 	ImportJobList *ListJobResp `json:"ImportJobList,omitempty" xml:"ImportJobList,omitempty"`
 }
 
